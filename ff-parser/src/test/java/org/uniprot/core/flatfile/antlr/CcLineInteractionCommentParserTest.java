@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.InteractionObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.*;
 
 class CcLineInteractionCommentParserTest {
     @Test
@@ -18,14 +17,14 @@ class CcLineInteractionCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.Interaction);
-        CcLineObject.Interaction ir = (CcLineObject.Interaction) cc.object;
-        assertEquals(1, ir.interactions.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof Interaction);
+        Interaction ir = (Interaction) cc.getObject();
+        assertEquals(1, ir.getInteractions().size());
 
         verify(
-                ir.interactions.get(0),
+                ir.getInteractions().get(0),
                 "EBI-126914",
                 "EBI-159556",
                 "fcp3c",
@@ -44,13 +43,13 @@ class CcLineInteractionCommentParserTest {
             boolean isSelf,
             boolean xeno,
             int nbexp) {
-        assertEquals(firstId, io.firstId);
-        assertEquals(secondId, io.secondId);
-        assertEquals(gene, io.gene);
-        assertEquals(spAc, io.spAc);
-        assertEquals(isSelf, io.isSelf);
-        assertEquals(xeno, io.xeno);
-        assertEquals(nbexp, io.nbexp);
+        assertEquals(firstId, io.getFirstId());
+        assertEquals(secondId, io.getSecondId());
+        assertEquals(gene, io.getGene());
+        assertEquals(spAc, io.getSpAc());
+        assertEquals(isSelf, io.isSelf());
+        assertEquals(xeno, io.isXeno());
+        assertEquals(nbexp, io.getNbexp());
     }
 
     @Test
@@ -61,14 +60,14 @@ class CcLineInteractionCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.Interaction);
-        CcLineObject.Interaction ir = (CcLineObject.Interaction) cc.object;
-        assertEquals(1, ir.interactions.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof Interaction);
+        Interaction ir = (Interaction) cc.getObject();
+        assertEquals(1, ir.getInteractions().size());
 
         verify(
-                ir.interactions.get(0),
+                ir.getInteractions().get(0),
                 "EBI-133844",
                 "EBI-212772",
                 "CG11299",
@@ -86,13 +85,21 @@ class CcLineInteractionCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.Interaction);
-        CcLineObject.Interaction ir = (CcLineObject.Interaction) cc.object;
-        assertEquals(1, ir.interactions.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof Interaction);
+        Interaction ir = (Interaction) cc.getObject();
+        assertEquals(1, ir.getInteractions().size());
 
-        verify(ir.interactions.get(0), "EBI-80809", "EBI-80799", "-", "Q8NI08", false, false, 1);
+        verify(
+                ir.getInteractions().get(0),
+                "EBI-80809",
+                "EBI-80799",
+                "-",
+                "Q8NI08",
+                false,
+                false,
+                1);
     }
 
     @Test
@@ -103,13 +110,13 @@ class CcLineInteractionCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.Interaction);
-        CcLineObject.Interaction ir = (CcLineObject.Interaction) cc.object;
-        assertEquals(1, ir.interactions.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof Interaction);
+        Interaction ir = (Interaction) cc.getObject();
+        assertEquals(1, ir.getInteractions().size());
 
-        verify(ir.interactions.get(0), "EBI-123485", "EBI-123485", null, null, true, false, 1);
+        verify(ir.getInteractions().get(0), "EBI-123485", "EBI-123485", null, null, true, false, 1);
     }
 
     @Test
@@ -120,14 +127,14 @@ class CcLineInteractionCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.Interaction);
-        CcLineObject.Interaction ir = (CcLineObject.Interaction) cc.object;
-        assertEquals(1, ir.interactions.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof Interaction);
+        Interaction ir = (Interaction) cc.getObject();
+        assertEquals(1, ir.getInteractions().size());
 
         verify(
-                ir.interactions.get(0),
+                ir.getInteractions().get(0),
                 "EBI-394562",
                 "EBI-398761",
                 "2410018M14Rik",
@@ -146,14 +153,14 @@ class CcLineInteractionCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.Interaction);
-        CcLineObject.Interaction ir = (CcLineObject.Interaction) cc.object;
-        assertEquals(2, ir.interactions.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof Interaction);
+        Interaction ir = (Interaction) cc.getObject();
+        assertEquals(2, ir.getInteractions().size());
 
         verify(
-                ir.interactions.get(0),
+                ir.getInteractions().get(0),
                 "EBI-448466",
                 "EBI-358664",
                 "IRAK1",
@@ -162,7 +169,7 @@ class CcLineInteractionCommentParserTest {
                 false,
                 2);
         verify(
-                ir.interactions.get(1),
+                ir.getInteractions().get(1),
                 "EBI-448472",
                 "EBI-358664",
                 "IRAK2",
@@ -183,14 +190,14 @@ class CcLineInteractionCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.Interaction);
-        CcLineObject.Interaction ir = (CcLineObject.Interaction) cc.object;
-        assertEquals(4, ir.interactions.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof Interaction);
+        Interaction ir = (Interaction) cc.getObject();
+        assertEquals(4, ir.getInteractions().size());
 
         verify(
-                ir.interactions.get(0),
+                ir.getInteractions().get(0),
                 "EBI-318108",
                 "EBI-4480523",
                 "hcf-1",
@@ -199,7 +206,7 @@ class CcLineInteractionCommentParserTest {
                 false,
                 2);
         verify(
-                ir.interactions.get(1),
+                ir.getInteractions().get(1),
                 "EBI-318108",
                 "EBI-3843983",
                 "let-756",
@@ -209,7 +216,7 @@ class CcLineInteractionCommentParserTest {
                 3);
 
         verify(
-                ir.interactions.get(2),
+                ir.getInteractions().get(2),
                 "EBI-318108",
                 "EBI-317870",
                 "pop-1",
@@ -218,7 +225,7 @@ class CcLineInteractionCommentParserTest {
                 false,
                 2);
         verify(
-                ir.interactions.get(3),
+                ir.getInteractions().get(3),
                 "EBI-318108",
                 "EBI-966082",
                 "sir-2.1",
@@ -237,14 +244,14 @@ class CcLineInteractionCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.Interaction);
-        CcLineObject.Interaction ir = (CcLineObject.Interaction) cc.object;
-        assertEquals(2, ir.interactions.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof Interaction);
+        Interaction ir = (Interaction) cc.getObject();
+        assertEquals(2, ir.getInteractions().size());
 
         verify(
-                ir.interactions.get(0),
+                ir.getInteractions().get(0),
                 "EBI-2890374",
                 "EBI-3424083",
                 "fs(1)Yb",
@@ -253,7 +260,7 @@ class CcLineInteractionCommentParserTest {
                 false,
                 4);
         verify(
-                ir.interactions.get(1),
+                ir.getInteractions().get(1),
                 "EBI-2890374",
                 "EBI-3406276",
                 "piwi",
@@ -273,14 +280,14 @@ class CcLineInteractionCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.Interaction);
-        CcLineObject.Interaction ir = (CcLineObject.Interaction) cc.object;
-        assertEquals(3, ir.interactions.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof Interaction);
+        Interaction ir = (Interaction) cc.getObject();
+        assertEquals(3, ir.getInteractions().size());
 
         verify(
-                ir.interactions.get(0),
+                ir.getInteractions().get(0),
                 "EBI-1100967",
                 "EBI-1100725",
                 "At1g03430",
@@ -289,7 +296,7 @@ class CcLineInteractionCommentParserTest {
                 false,
                 2);
         verify(
-                ir.interactions.get(1),
+                ir.getInteractions().get(1),
                 "EBI-1100967",
                 "EBI-1998000",
                 "At5g08720/T2K12_70",
@@ -298,7 +305,7 @@ class CcLineInteractionCommentParserTest {
                 false,
                 3);
         verify(
-                ir.interactions.get(2),
+                ir.getInteractions().get(2),
                 "EBI-1100967",
                 "EBI-1807790",
                 "AZF3",
@@ -316,14 +323,14 @@ class CcLineInteractionCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.Interaction);
-        CcLineObject.Interaction ir = (CcLineObject.Interaction) cc.object;
-        assertEquals(1, ir.interactions.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof Interaction);
+        Interaction ir = (Interaction) cc.getObject();
+        assertEquals(1, ir.getInteractions().size());
 
         verify(
-                ir.interactions.get(0),
+                ir.getInteractions().get(0),
                 "EBI-175067",
                 "EBI-162998",
                 "EG:BACR37P7.5",
@@ -341,14 +348,14 @@ class CcLineInteractionCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.Interaction);
-        CcLineObject.Interaction ir = (CcLineObject.Interaction) cc.object;
-        assertEquals(1, ir.interactions.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof Interaction);
+        Interaction ir = (Interaction) cc.getObject();
+        assertEquals(1, ir.getInteractions().size());
 
         verify(
-                ir.interactions.get(0),
+                ir.getInteractions().get(0),
                 "EBI-6913662",
                 "EBI-4424361",
                 "NAP1;1",
@@ -366,14 +373,14 @@ class CcLineInteractionCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.Interaction);
-        CcLineObject.Interaction ir = (CcLineObject.Interaction) cc.object;
-        assertEquals(1, ir.interactions.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof Interaction);
+        Interaction ir = (Interaction) cc.getObject();
+        assertEquals(1, ir.getInteractions().size());
 
         verify(
-                ir.interactions.get(0),
+                ir.getInteractions().get(0),
                 "EBI-491549",
                 "EBI-7286259",
                 "BCR/ABL fusion",

@@ -1,6 +1,7 @@
 package org.uniprot.core.flatfile.antlr;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,9 +11,10 @@ import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.SequenceCautionObject;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.SequenceCautionType;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.SequenceCaution;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.SequenceCautionObject;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.SequenceCautionComment;
@@ -26,25 +28,28 @@ class CcLineSeqCautionCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SequenceCaution);
-        CcLineObject.SequenceCaution sc = (CcLineObject.SequenceCaution) cc.object;
-        assertEquals(1, sc.sequenceCautionObjects.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SequenceCaution);
+        SequenceCaution sc = (SequenceCaution) cc.getObject();
+        assertEquals(1, sc.getSequenceCautionObjects().size());
         verify(
-                sc.sequenceCautionObjects.get(0),
+                sc.getSequenceCautionObjects().get(0),
                 "CAI24940.1",
-                SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION,
+                CcLineObject.SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION,
                 null);
     }
 
     private void verify(
-            SequenceCautionObject obj, String seq, SequenceCautionType type, String note) {
-        assertEquals(seq, obj.sequence);
+            SequenceCautionObject obj,
+            String seq,
+            CcLineObject.SequenceCautionType type,
+            String note) {
+        assertEquals(seq, obj.getSequence());
 
-        assertEquals(type, obj.type);
+        assertEquals(type, obj.getType());
 
-        assertEquals(note, obj.note);
+        assertEquals(note, obj.getNote());
     }
 
     @Test
@@ -55,15 +60,15 @@ class CcLineSeqCautionCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SequenceCaution);
-        CcLineObject.SequenceCaution sc = (CcLineObject.SequenceCaution) cc.object;
-        assertEquals(1, sc.sequenceCautionObjects.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SequenceCaution);
+        SequenceCaution sc = (SequenceCaution) cc.getObject();
+        assertEquals(1, sc.getSequenceCautionObjects().size());
         verify(
-                sc.sequenceCautionObjects.get(0),
+                sc.getSequenceCautionObjects().get(0),
                 "AAG34697.1",
-                SequenceCautionType.ERRONEOUS_TERMINATION,
+                CcLineObject.SequenceCautionType.ERRONEOUS_TERMINATION,
                 "Translated as Ser");
     }
 
@@ -76,20 +81,20 @@ class CcLineSeqCautionCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SequenceCaution);
-        CcLineObject.SequenceCaution sc = (CcLineObject.SequenceCaution) cc.object;
-        assertEquals(2, sc.sequenceCautionObjects.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SequenceCaution);
+        SequenceCaution sc = (SequenceCaution) cc.getObject();
+        assertEquals(2, sc.getSequenceCautionObjects().size());
         verify(
-                sc.sequenceCautionObjects.get(0),
+                sc.getSequenceCautionObjects().get(0),
                 "CAI12537.1",
-                SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION,
+                CcLineObject.SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION,
                 null);
         verify(
-                sc.sequenceCautionObjects.get(1),
+                sc.getSequenceCautionObjects().get(1),
                 "CAI39742.1",
-                SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION,
+                CcLineObject.SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION,
                 null);
     }
 
@@ -102,21 +107,21 @@ class CcLineSeqCautionCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SequenceCaution);
-        CcLineObject.SequenceCaution sc = (CcLineObject.SequenceCaution) cc.object;
-        assertEquals(2, sc.sequenceCautionObjects.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SequenceCaution);
+        SequenceCaution sc = (SequenceCaution) cc.getObject();
+        assertEquals(2, sc.getSequenceCautionObjects().size());
         verify(
-                sc.sequenceCautionObjects.get(0),
+                sc.getSequenceCautionObjects().get(0),
                 "AAA25676.1",
-                SequenceCautionType.FRAMESHIFT,
+                CcLineObject.SequenceCautionType.FRAMESHIFT,
                 null);
 
         verify(
-                sc.sequenceCautionObjects.get(1),
+                sc.getSequenceCautionObjects().get(1),
                 "CAD59919.1",
-                SequenceCautionType.FRAMESHIFT,
+                CcLineObject.SequenceCautionType.FRAMESHIFT,
                 null);
     }
 
@@ -128,15 +133,15 @@ class CcLineSeqCautionCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SequenceCaution);
-        CcLineObject.SequenceCaution sc = (CcLineObject.SequenceCaution) cc.object;
-        assertEquals(1, sc.sequenceCautionObjects.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SequenceCaution);
+        SequenceCaution sc = (SequenceCaution) cc.getObject();
+        assertEquals(1, sc.getSequenceCautionObjects().size());
         verify(
-                sc.sequenceCautionObjects.get(0),
+                sc.getSequenceCautionObjects().get(0),
                 "AAA85813.1",
-                SequenceCautionType.FRAMESHIFT,
+                CcLineObject.SequenceCautionType.FRAMESHIFT,
                 "Frameshift correction allows the C-terminal sequence to be compatible with the results of mass spectrometry and X-ray crystallography");
     }
 
@@ -148,22 +153,28 @@ class CcLineSeqCautionCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SequenceCaution);
-        CcLineObject.SequenceCaution sc = (CcLineObject.SequenceCaution) cc.object;
-        assertEquals(1, sc.sequenceCautionObjects.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SequenceCaution);
+        SequenceCaution sc = (SequenceCaution) cc.getObject();
+        assertEquals(1, sc.getSequenceCautionObjects().size());
         verify(
-                sc.sequenceCautionObjects.get(0),
+                sc.getSequenceCautionObjects().get(0),
                 "CAA57511.1",
-                SequenceCautionType.FRAMESHIFT,
+                CcLineObject.SequenceCautionType.FRAMESHIFT,
                 "The predicted gene.");
         assertEquals(
                 "ECO:0000256|HAMAP-Rule:MF_00205",
-                obj.evidenceInfo.evidences.get(sc.sequenceCautionObjects.get(0)).get(0));
+                obj.getEvidenceInfo()
+                        .getEvidences()
+                        .get(sc.getSequenceCautionObjects().get(0))
+                        .get(0));
         assertEquals(
                 "ECO:0000313|Ensembl:ENSP00000409133",
-                obj.evidenceInfo.evidences.get(sc.sequenceCautionObjects.get(0)).get(1));
+                obj.getEvidenceInfo()
+                        .getEvidences()
+                        .get(sc.getSequenceCautionObjects().get(0))
+                        .get(1));
     }
 
     @Test
@@ -176,22 +187,28 @@ class CcLineSeqCautionCommentParserTest {
         CcLineFormater formater = new CcLineFormater();
         String lines = formater.format(ccLineString);
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SequenceCaution);
-        CcLineObject.SequenceCaution sc = (CcLineObject.SequenceCaution) cc.object;
-        assertEquals(1, sc.sequenceCautionObjects.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SequenceCaution);
+        SequenceCaution sc = (SequenceCaution) cc.getObject();
+        assertEquals(1, sc.getSequenceCautionObjects().size());
         verify(
-                sc.sequenceCautionObjects.get(0),
+                sc.getSequenceCautionObjects().get(0),
                 "CAA57511.1",
-                SequenceCautionType.FRAMESHIFT,
+                CcLineObject.SequenceCautionType.FRAMESHIFT,
                 "The predicted gene.");
         assertEquals(
                 "ECO:0000256|HAMAP-Rule:MF_00205",
-                obj.evidenceInfo.evidences.get(sc.sequenceCautionObjects.get(0)).get(0));
+                obj.getEvidenceInfo()
+                        .getEvidences()
+                        .get(sc.getSequenceCautionObjects().get(0))
+                        .get(0));
         assertEquals(
                 "ECO:0000313|Ensembl:ENSP00000409133",
-                obj.evidenceInfo.evidences.get(sc.sequenceCautionObjects.get(0)).get(1));
+                obj.getEvidenceInfo()
+                        .getEvidences()
+                        .get(sc.getSequenceCautionObjects().get(0))
+                        .get(1));
     }
 
     @Test
@@ -202,15 +219,15 @@ class CcLineSeqCautionCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SequenceCaution);
-        CcLineObject.SequenceCaution sc = (CcLineObject.SequenceCaution) cc.object;
-        assertEquals(1, sc.sequenceCautionObjects.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SequenceCaution);
+        SequenceCaution sc = (SequenceCaution) cc.getObject();
+        assertEquals(1, sc.getSequenceCautionObjects().size());
         verify(
-                sc.sequenceCautionObjects.get(0),
+                sc.getSequenceCautionObjects().get(0),
                 "CAA39814.1",
-                SequenceCautionType.FRAMESHIFT,
+                CcLineObject.SequenceCautionType.FRAMESHIFT,
                 null);
         CcLineConverter converter = new CcLineConverter(new HashMap<>(), new HashMap<>(), true);
         List<Comment> comments = converter.convert(obj);

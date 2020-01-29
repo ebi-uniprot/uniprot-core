@@ -44,7 +44,7 @@ class GnLineParserTest {
             List<String> firstEvidences) {
         assertEquals(type, name.type);
         assertEquals(values, name.names);
-        assertEquals(firstEvidences, name.getEvidenceInfo().evidences.get(values.get(0)));
+        assertEquals(firstEvidences, name.getEvidenceInfo().getEvidences().get(values.get(0)));
     }
 
     @Test

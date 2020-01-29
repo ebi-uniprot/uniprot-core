@@ -31,7 +31,7 @@ class RcLineParserTest {
             RcLineObject.RC obj, RcTokenEnum token, List<String> values, List<String> evidences) {
         assertEquals(token, obj.tokenType);
         assertEquals(values, obj.values);
-        assertEquals(evidences, obj.evidenceInfo.evidences.get(obj.values.get(0)));
+        assertEquals(evidences, obj.getEvidenceInfo().getEvidences().get(obj.values.get(0)));
     }
 
     @Test

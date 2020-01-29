@@ -15,9 +15,9 @@ class OhLineConverterTest {
         // "OH   NCBI_TaxID=9598; Pan troglodytes (Chimpanzee).
         OhLineObject ohO = new OhLineObject();
         OhLineObject.OhValue ohV = new OhLineObject.OhValue();
-        ohV.tax_id = 9598;
-        ohV.hostname = "Pan troglodytes (Chimpanzee)";
-        ohO.hosts.add(ohV);
+        ohV.setTax_id(9598);
+        ohV.setHostname("Pan troglodytes (Chimpanzee)");
+        ohO.getHosts().add(ohV);
         OhLineConverter converter = new OhLineConverter();
         List<OrganismHost> ohs = converter.convert(ohO);
         assertEquals(1, ohs.size());

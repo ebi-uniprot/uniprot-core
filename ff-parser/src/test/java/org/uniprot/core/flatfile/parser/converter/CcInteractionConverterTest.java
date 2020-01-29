@@ -7,8 +7,14 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
-import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.Interaction;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.InteractionObject;
+import org.uniprot.core.uniprot.comment.Comment;
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.InteractionComment;
+import org.uniprot.core.uniprot.comment.InteractionType;
 
 class CcInteractionConverterTest {
     private final CcLineConverter converter = new CcLineConverter(null, null);
@@ -23,48 +29,49 @@ class CcInteractionConverterTest {
              CC       localization (By similarity).
         */
         CcLineObject ccLineO = new CcLineObject();
-        CcLineObject.CC cc1 = new CcLineObject.CC();
-        cc1.topic = CcLineObject.CCTopicEnum.INTERACTION;
+        CC cc1 = new CC();
+        cc1.setTopic(CcLineObject.CCTopicEnum.INTERACTION);
 
-        CcLineObject.Interaction ia = new CcLineObject.Interaction();
-        cc1.object = ia;
-        CcLineObject.InteractionObject iao1 = new CcLineObject.InteractionObject();
-        iao1.spAc = "Q9W1K5-1";
-        iao1.gene = "CG11299";
-        iao1.nbexp = 1;
-        iao1.firstId = "EBI-133844";
-        iao1.secondId = "EBI-212772";
+        Interaction ia = new Interaction();
+        cc1.setObject(ia);
+        InteractionObject iao1 = new InteractionObject();
+        iao1.setSpAc("Q9W1K5-1");
+        iao1.setGene("CG11299");
+        iao1.setNbexp(1);
+        iao1.setFirstId("EBI-133844");
+        iao1.setSecondId("EBI-212772");
 
-        CcLineObject.InteractionObject iao2 = new CcLineObject.InteractionObject();
-        iao2.isSelf = true;
+        InteractionObject iao2 = new InteractionObject();
+        iao2.setSelf(true);
 
-        iao2.nbexp = 1;
-        iao2.firstId = "EBI-123485";
-        iao2.secondId = "EBI-123484";
+        iao2.setNbexp(1);
+        iao2.setFirstId("EBI-123485");
+        iao2.setSecondId("EBI-123484");
 
-        CcLineObject.InteractionObject iao3 = new CcLineObject.InteractionObject();
-        iao3.spAc = "Q8C1S0";
-        iao3.gene = "CG112992";
-        iao3.nbexp = 1;
-        iao3.firstId = "EBI-133844";
-        iao3.secondId = "EBI-212775";
-        iao3.xeno = true;
+        InteractionObject iao3 = new InteractionObject();
+        iao3.setSpAc("Q8C1S0");
+        iao3.setGene("CG112992");
+        iao3.setNbexp(1);
+        iao3.setFirstId("EBI-133844");
+        iao3.setSecondId("EBI-212775");
+        iao3.setXeno(true);
 
-        ia.interactions.add(iao1);
-        ia.interactions.add(iao2);
-        ia.interactions.add(iao3);
-        ccLineO.ccs.add(cc1);
+        ia.getInteractions().add(iao1);
+        ia.getInteractions().add(iao2);
+        ia.getInteractions().add(iao3);
+        ccLineO.getCcs().add(cc1);
         List<Comment> comments = converter.convert(ccLineO);
         assertEquals(1, comments.size());
         Comment comment1 = comments.get(0);
         assertEquals(CommentType.INTERACTION, comment1.getCommentType());
         assertTrue(comment1 instanceof InteractionComment);
         InteractionComment icomment = (InteractionComment) comment1;
-        List<Interaction> interactions = icomment.getInteractions();
+        List<org.uniprot.core.uniprot.comment.Interaction> interactions =
+                icomment.getInteractions();
         assertEquals(3, interactions.size());
-        Interaction inter1 = interactions.get(0);
-        Interaction inter2 = interactions.get(1);
-        Interaction inter3 = interactions.get(2);
+        org.uniprot.core.uniprot.comment.Interaction inter1 = interactions.get(0);
+        org.uniprot.core.uniprot.comment.Interaction inter2 = interactions.get(1);
+        org.uniprot.core.uniprot.comment.Interaction inter3 = interactions.get(2);
         assertEquals("EBI-133844", inter1.getFirstInteractor().getValue());
         assertEquals("EBI-212772", inter1.getSecondInteractor().getValue());
         assertEquals("Q9W1K5-1", inter1.getUniProtAccession().getValue());

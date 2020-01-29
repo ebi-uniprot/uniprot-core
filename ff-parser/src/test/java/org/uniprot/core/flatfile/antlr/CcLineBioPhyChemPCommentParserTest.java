@@ -6,8 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.BiophysicochemicalProperties;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.BiophysicochemicalProperties;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 
 class CcLineBioPhyChemPCommentParserTest {
     @Test
@@ -23,17 +24,17 @@ class CcLineBioPhyChemPCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof BiophysicochemicalProperties);
-        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.object;
-        assertEquals(1, bp.kms.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof BiophysicochemicalProperties);
+        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.getObject();
+        assertEquals(1, bp.getKms().size());
         assertEquals(
                 "1.3 mM for L,L-SDAP (in the presence of Zn(2+) at 25 degrees Celsius and at pH 7.6)",
-                bp.kms.get(0).value);
-        assertEquals(1, bp.vmaxs.size());
-        assertEquals("1.9 mmol/min/mg enzyme", bp.vmaxs.get(0).value);
-        assertEquals("Optimum pH is 7.75.", bp.phDependence.get(0).value);
+                bp.getKms().get(0).getValue());
+        assertEquals(1, bp.getVmaxs().size());
+        assertEquals("1.9 mmol/min/mg enzyme", bp.getVmaxs().get(0).getValue());
+        assertEquals("Optimum pH is 7.75.", bp.getPhDependence().get(0).getValue());
     }
 
     @Test
@@ -47,16 +48,16 @@ class CcLineBioPhyChemPCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof BiophysicochemicalProperties);
-        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.object;
-        assertEquals(1, bp.kms.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof BiophysicochemicalProperties);
+        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.getObject();
+        assertEquals(1, bp.getKms().size());
         assertEquals(
                 "0.3913 uM for FAM fluorophore-coupled RNA substrate and a quencher-coupled DNA primer",
-                bp.kms.get(0).value);
-        assertEquals(1, bp.vmaxs.size());
-        assertEquals("0.000197 umol/sec/ug enzyme", bp.vmaxs.get(0).value);
+                bp.getKms().get(0).getValue());
+        assertEquals(1, bp.getVmaxs().size());
+        assertEquals("0.000197 umol/sec/ug enzyme", bp.getVmaxs().get(0).getValue());
     }
 
     @Test
@@ -74,22 +75,22 @@ class CcLineBioPhyChemPCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof BiophysicochemicalProperties);
-        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.object;
-        assertEquals(null, bp.bsorptionAbs);
-        assertEquals(0, bp.bsorptionNote.size());
-        assertEquals(4, bp.kms.size());
-        assertEquals("71 uM for ATP", bp.kms.get(0).value);
-        assertEquals("98 uM for ADP", bp.kms.get(1).value);
-        assertEquals("1.5 mM for acetate", bp.kms.get(2).value);
-        assertEquals("0.47 mM for acetyl phosphate", bp.kms.get(3).value);
-        assertEquals(0, bp.vmaxs.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof BiophysicochemicalProperties);
+        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.getObject();
+        assertEquals(null, bp.getBsorptionAbs());
+        assertEquals(0, bp.getBsorptionNote().size());
+        assertEquals(4, bp.getKms().size());
+        assertEquals("71 uM for ATP", bp.getKms().get(0).getValue());
+        assertEquals("98 uM for ADP", bp.getKms().get(1).getValue());
+        assertEquals("1.5 mM for acetate", bp.getKms().get(2).getValue());
+        assertEquals("0.47 mM for acetyl phosphate", bp.getKms().get(3).getValue());
+        assertEquals(0, bp.getVmaxs().size());
 
         assertEquals(
                 "Optimum temperature is 65 degrees Celsius. Protected from thermal inactivation by ATP.",
-                bp.temperatureDependence.get(0).value);
+                bp.getTemperatureDependence().get(0).getValue());
     }
 
     @Test
@@ -108,26 +109,29 @@ class CcLineBioPhyChemPCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof BiophysicochemicalProperties);
-        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.object;
-        assertEquals(null, bp.bsorptionAbs);
-        assertEquals(0, bp.bsorptionNote.size());
-        assertEquals(4, bp.kms.size());
-        assertEquals("71 uM for ATP", bp.kms.get(0).value);
-        assertEquals("98 uM for ADP", bp.kms.get(1).value);
-        assertEquals("1.5 mM for acetate", bp.kms.get(2).value);
-        assertEquals("0.47 mM for acetyl phosphate", bp.kms.get(3).value);
-        assertEquals(0, bp.vmaxs.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof BiophysicochemicalProperties);
+        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.getObject();
+        assertEquals(null, bp.getBsorptionAbs());
+        assertEquals(0, bp.getBsorptionNote().size());
+        assertEquals(4, bp.getKms().size());
+        assertEquals("71 uM for ATP", bp.getKms().get(0).getValue());
+        assertEquals("98 uM for ADP", bp.getKms().get(1).getValue());
+        assertEquals("1.5 mM for acetate", bp.getKms().get(2).getValue());
+        assertEquals("0.47 mM for acetyl phosphate", bp.getKms().get(3).getValue());
+        assertEquals(0, bp.getVmaxs().size());
         assertEquals(
                 "Optimum temperature is 65 degrees Celsius. Protected from thermal inactivation by ATP.",
-                bp.temperatureDependence.get(0).value);
+                bp.getTemperatureDependence().get(0).getValue());
         assertEquals(
-                "ECO:0000269|PubMed:10433555", bp.temperatureDependence.get(0).evidences.get(0));
-        assertEquals("2 thermal inactivation by ATP.", bp.temperatureDependence.get(1).value);
+                "ECO:0000269|PubMed:10433555",
+                bp.getTemperatureDependence().get(0).getEvidences().get(0));
         assertEquals(
-                "ECO:0000269|PubMed:10433556", bp.temperatureDependence.get(1).evidences.get(0));
+                "2 thermal inactivation by ATP.", bp.getTemperatureDependence().get(1).getValue());
+        assertEquals(
+                "ECO:0000269|PubMed:10433556",
+                bp.getTemperatureDependence().get(1).getEvidences().get(0));
     }
 
     @Test
@@ -139,14 +143,14 @@ class CcLineBioPhyChemPCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof BiophysicochemicalProperties);
-        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.object;
-        assertEquals("578 nm", bp.bsorptionAbs.value);
-        assertEquals(0, bp.bsorptionNote.size());
-        assertEquals(0, bp.kms.size());
-        assertEquals(0, bp.vmaxs.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof BiophysicochemicalProperties);
+        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.getObject();
+        assertEquals("578 nm", bp.getBsorptionAbs().getValue());
+        assertEquals(0, bp.getBsorptionNote().size());
+        assertEquals(0, bp.getKms().size());
+        assertEquals(0, bp.getVmaxs().size());
     }
 
     void testAbsorptionWithNote() {
@@ -159,18 +163,18 @@ class CcLineBioPhyChemPCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof BiophysicochemicalProperties);
-        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.object;
-        assertEquals("596 nm", bp.bsorptionAbs.value);
-        assertTrue(bp.bsorptionAbsApproximate);
-        assertEquals(1, bp.bsorptionNote.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof BiophysicochemicalProperties);
+        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.getObject();
+        assertEquals("596 nm", bp.getBsorptionAbs().getValue());
+        assertTrue(bp.isBsorptionAbsApproximate());
+        assertEquals(1, bp.getBsorptionNote().size());
         assertEquals(
                 "In the presence of anions, the maximum absorption shifts to about 575 nm.",
-                bp.bsorptionNote.get(0).value);
-        assertEquals(0, bp.kms.size());
-        assertEquals(0, bp.vmaxs.size());
+                bp.getBsorptionNote().get(0).getValue());
+        assertEquals(0, bp.getKms().size());
+        assertEquals(0, bp.getVmaxs().size());
     }
 
     void testAbsorptionWithNoteEvidences() {
@@ -183,20 +187,20 @@ class CcLineBioPhyChemPCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof BiophysicochemicalProperties);
-        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.object;
-        assertEquals("596 nm", bp.bsorptionAbs.value);
-        assertEquals("ECO:0000313", bp.bsorptionAbs.evidences.get(0));
-        assertTrue(bp.bsorptionAbsApproximate);
-        assertEquals(1, bp.bsorptionNote.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof BiophysicochemicalProperties);
+        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.getObject();
+        assertEquals("596 nm", bp.getBsorptionAbs().getValue());
+        assertEquals("ECO:0000313", bp.getBsorptionAbs().getEvidences().get(0));
+        assertTrue(bp.isBsorptionAbsApproximate());
+        assertEquals(1, bp.getBsorptionNote().size());
         assertEquals(
                 "In the presence of anions, the maximum absorption shifts to about 575 nm.",
-                bp.bsorptionNote.get(0).value);
-        assertEquals("ECO:0000314", bp.bsorptionNote.get(0).evidences.get(0));
-        assertEquals(0, bp.kms.size());
-        assertEquals(0, bp.vmaxs.size());
+                bp.getBsorptionNote().get(0).getValue());
+        assertEquals("ECO:0000314", bp.getBsorptionNote().get(0).getEvidences().get(0));
+        assertEquals(0, bp.getKms().size());
+        assertEquals(0, bp.getVmaxs().size());
     }
 
     @Test
@@ -220,39 +224,41 @@ class CcLineBioPhyChemPCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof BiophysicochemicalProperties);
-        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.object;
-        assertEquals("465 nm", bp.bsorptionAbs.value);
-        assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.bsorptionAbs.evidences.get(0));
-        assertFalse(bp.bsorptionAbsApproximate);
-        assertEquals(1, bp.bsorptionNote.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof BiophysicochemicalProperties);
+        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.getObject();
+        assertEquals("465 nm", bp.getBsorptionAbs().getValue());
+        assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.getBsorptionAbs().getEvidences().get(0));
+        assertFalse(bp.isBsorptionAbsApproximate());
+        assertEquals(1, bp.getBsorptionNote().size());
         assertEquals(
                 "The above maximum is for the oxidized form. Shows a maximal"
                         + " peak at 330 nm in the reduced form. These absorption peaks are"
                         + " for the tryptophylquinone cofactor.",
-                bp.bsorptionNote.get(0).value);
-        assertEquals("ECO:0000303|Ref.6", bp.bsorptionNote.get(0).evidences.get(0));
-        assertEquals("ECO:0000269|PubMed:10433554", bp.bsorptionNote.get(0).evidences.get(1));
-        assertEquals(2, bp.kms.size());
+                bp.getBsorptionNote().get(0).getValue());
+        assertEquals("ECO:0000303|Ref.6", bp.getBsorptionNote().get(0).getEvidences().get(0));
+        assertEquals(
+                "ECO:0000269|PubMed:10433554", bp.getBsorptionNote().get(0).getEvidences().get(1));
+        assertEquals(2, bp.getKms().size());
 
-        assertEquals("5.4 uM for tyramine", bp.kms.get(0).value);
-        assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.kms.get(0).evidences.get(0));
+        assertEquals("5.4 uM for tyramine", bp.getKms().get(0).getValue());
+        assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.getKms().get(0).getEvidences().get(0));
 
-        assertEquals("688 uM for pyridoxal", bp.kms.get(1).value);
-        assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.kms.get(1).evidences.get(0));
-        assertEquals("ECO:0000269|PubMed:10433554", bp.kms.get(1).evidences.get(1));
+        assertEquals("688 uM for pyridoxal", bp.getKms().get(1).getValue());
+        assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.getKms().get(1).getEvidences().get(0));
+        assertEquals("ECO:0000269|PubMed:10433554", bp.getKms().get(1).getEvidences().get(1));
 
-        assertEquals(1, bp.vmaxs.size());
+        assertEquals(1, bp.getVmaxs().size());
 
-        assertEquals("17 umol/min/mg enzyme", bp.vmaxs.get(0).value);
-        assertEquals("ECO:0000313|PDB:3OW2", bp.vmaxs.get(0).evidences.get(0));
+        assertEquals("17 umol/min/mg enzyme", bp.getVmaxs().get(0).getValue());
+        assertEquals("ECO:0000313|PDB:3OW2", bp.getVmaxs().get(0).getEvidences().get(0));
 
         assertEquals(
                 "The enzyme is substrate inhibited at high substrate concentrations (Ki=1.08 mM for tyramine).",
-                bp.kpNote.get(0).value);
-        assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", bp.kpNote.get(0).evidences.get(0));
+                bp.getKpNote().get(0).getValue());
+        assertEquals(
+                "ECO:0000256|HAMAP-Rule:MF_00205", bp.getKpNote().get(0).getEvidences().get(0));
     }
 
     @Test
@@ -269,23 +275,24 @@ class CcLineBioPhyChemPCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof BiophysicochemicalProperties);
-        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.object;
-        assertEquals("Optimum pH is 8-10.", bp.phDependence.get(0).value);
-        assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.phDependence.get(0).evidences.get(0));
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof BiophysicochemicalProperties);
+        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.getObject();
+        assertEquals("Optimum pH is 8-10.", bp.getPhDependence().get(0).getValue());
+        assertEquals(
+                "ECO:0000313|EMBL:BAG16761.1", bp.getPhDependence().get(0).getEvidences().get(0));
 
-        assertEquals("E(0) is -448 mV.", bp.rdoxPotential.get(0).value);
-        assertEquals("ECO:0000303|Ref.6", bp.rdoxPotential.get(0).evidences.get(0));
-        assertEquals("ECO:0000313|PDB:3OW2", bp.rdoxPotential.get(0).evidences.get(1));
+        assertEquals("E(0) is -448 mV.", bp.getRdoxPotential().get(0).getValue());
+        assertEquals("ECO:0000303|Ref.6", bp.getRdoxPotential().get(0).getEvidences().get(0));
+        assertEquals("ECO:0000313|PDB:3OW2", bp.getRdoxPotential().get(0).getEvidences().get(1));
 
         assertEquals(
                 "Highly active at low temperatures, even at 0 degree Celsius. Thermolabile.",
-                bp.temperatureDependence.get(0).value);
+                bp.getTemperatureDependence().get(0).getValue());
         assertEquals(
                 "ECO:0000256|HAMAP-Rule:MF_00205",
-                bp.temperatureDependence.get(0).evidences.get(0));
+                bp.getTemperatureDependence().get(0).getEvidences().get(0));
     }
 
     @Test
@@ -303,13 +310,13 @@ class CcLineBioPhyChemPCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof BiophysicochemicalProperties);
-        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.object;
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof BiophysicochemicalProperties);
+        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.getObject();
         assertEquals(
                 "19.7 uM for peptide substrate DABCYL-ARSGAKASGC(farnesyl)LVS-EDANS where EDANS is 5-[(2-aminoethyl)amino]naphthalene-1-sulphonic acid fluorophore and DABCYL is 4-{[4-(dimethylamino)phenyl]azo}benzoic acid quencher.",
-                bp.kms.get(0).value);
+                bp.getKms().get(0).getValue());
     }
 
     @Test
@@ -423,38 +430,40 @@ class CcLineBioPhyChemPCommentParserTest {
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         String lines = formater.format(linesNoHeader);
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof BiophysicochemicalProperties);
-        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.object;
-        assertEquals("465 nm", bp.bsorptionAbs.value);
-        assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.bsorptionAbs.evidences.get(0));
-        assertFalse(bp.bsorptionAbsApproximate);
-        assertEquals(1, bp.bsorptionNote.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof BiophysicochemicalProperties);
+        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.getObject();
+        assertEquals("465 nm", bp.getBsorptionAbs().getValue());
+        assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.getBsorptionAbs().getEvidences().get(0));
+        assertFalse(bp.isBsorptionAbsApproximate());
+        assertEquals(1, bp.getBsorptionNote().size());
         assertEquals(
                 "The above maximum is for the oxidized form. Shows a maximal"
                         + " peak at 330 nm in the reduced form. These absorption peaks are"
                         + " for the tryptophylquinone cofactor.",
-                bp.bsorptionNote.get(0).value);
-        assertEquals("ECO:0000303|Ref.6", bp.bsorptionNote.get(0).evidences.get(0));
-        assertEquals("ECO:0000269|PubMed:10433554", bp.bsorptionNote.get(0).evidences.get(1));
-        assertEquals(2, bp.kms.size());
+                bp.getBsorptionNote().get(0).getValue());
+        assertEquals("ECO:0000303|Ref.6", bp.getBsorptionNote().get(0).getEvidences().get(0));
+        assertEquals(
+                "ECO:0000269|PubMed:10433554", bp.getBsorptionNote().get(0).getEvidences().get(1));
+        assertEquals(2, bp.getKms().size());
 
-        assertEquals("5.4 uM for tyramine", bp.kms.get(0).value);
-        assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.kms.get(0).evidences.get(0));
+        assertEquals("5.4 uM for tyramine", bp.getKms().get(0).getValue());
+        assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.getKms().get(0).getEvidences().get(0));
 
-        assertEquals("688 uM for pyridoxal", bp.kms.get(1).value);
-        assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.kms.get(1).evidences.get(0));
-        assertEquals("ECO:0000269|PubMed:10433554", bp.kms.get(1).evidences.get(1));
+        assertEquals("688 uM for pyridoxal", bp.getKms().get(1).getValue());
+        assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.getKms().get(1).getEvidences().get(0));
+        assertEquals("ECO:0000269|PubMed:10433554", bp.getKms().get(1).getEvidences().get(1));
 
-        assertEquals(1, bp.vmaxs.size());
+        assertEquals(1, bp.getVmaxs().size());
 
-        assertEquals("17 umol/min/mg enzyme", bp.vmaxs.get(0).value);
-        assertEquals("ECO:0000313|PDB:3OW2", bp.vmaxs.get(0).evidences.get(0));
+        assertEquals("17 umol/min/mg enzyme", bp.getVmaxs().get(0).getValue());
+        assertEquals("ECO:0000313|PDB:3OW2", bp.getVmaxs().get(0).getEvidences().get(0));
 
         assertEquals(
                 "The enzyme is substrate inhibited at high substrate concentrations (Ki=1.08 mM for tyramine).",
-                bp.kpNote.get(0).value);
-        assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", bp.kpNote.get(0).evidences.get(0));
+                bp.getKpNote().get(0).getValue());
+        assertEquals(
+                "ECO:0000256|HAMAP-Rule:MF_00205", bp.getKpNote().get(0).getEvidences().get(0));
     }
 }

@@ -80,7 +80,7 @@ class DeLineParserTest {
     }
 
     private void verifyEvidences(DeLineObject obj, Object name, List<String> evidences) {
-        List<String> expected = obj.evidenceInfo.evidences.get(name);
+        List<String> expected = obj.getEvidenceInfo().getEvidences().get(name);
         assertEquals(expected, evidences);
     }
 
@@ -525,7 +525,8 @@ class DeLineParserTest {
 //    obj should not be null
 //    obj.recName.fullName should equal
 // ("(4-*{*4-[2-(gamma-L-glutamylamino)ethyl]phenoxymethyl*}*furan-2-yl)methanamine synthase")
-//    obj.getEvidenceInfo.evidences.get(obj.recName.fullName) should contain ("ECO:12345|Ref.1")
+//    obj.getEvidenceInfo.getEvidences().get(obj.recName.fullName) should contain
+// ("ECO:12345|Ref.1")
 //
 //  }
 //

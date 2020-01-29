@@ -8,9 +8,10 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.CofactorItem;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.StructuredCofactor;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CofactorItem;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.StructuredCofactor;
 
 class CcLineCofactorCommentParserTest {
     @Test
@@ -24,28 +25,29 @@ class CcLineCofactorCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof StructuredCofactor);
-        StructuredCofactor ms = (StructuredCofactor) cc.object;
-        List<CofactorItem> cofactors = ms.cofactors;
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof StructuredCofactor);
+        StructuredCofactor ms = (StructuredCofactor) cc.getObject();
+        List<CofactorItem> cofactors = ms.getCofactors();
         assertEquals(2, cofactors.size());
-        assertEquals("Mg(2+)", cofactors.get(0).name);
-        assertEquals("ChEBI:CHEBI:18420", cofactors.get(0).xref);
+        assertEquals("Mg(2+)", cofactors.get(0).getName());
+        assertEquals("ChEBI:CHEBI:18420", cofactors.get(0).getXref());
         assertEquals(
                 "ECO:0000255|HAMAP-Rule:MF_00087",
-                obj.evidenceInfo.evidences.get(cofactors.get(0)).get(0));
+                obj.getEvidenceInfo().getEvidences().get(cofactors.get(0)).get(0));
 
-        assertEquals("Co(2+)", cofactors.get(1).name);
-        assertEquals("ChEBI:CHEBI:48828", cofactors.get(1).xref);
+        assertEquals("Co(2+)", cofactors.get(1).getName());
+        assertEquals("ChEBI:CHEBI:48828", cofactors.get(1).getXref());
         assertEquals(
                 "ECO:0000255|HAMAP-Rule:MF_00088",
-                obj.evidenceInfo.evidences.get(cofactors.get(1)).get(0));
-        assertEquals("Isoform 1", ms.molecule);
-        assertEquals(1, ms.note.size());
+                obj.getEvidenceInfo().getEvidences().get(cofactors.get(1)).get(0));
+        assertEquals("Isoform 1", ms.getMolecule());
+        assertEquals(1, ms.getNote().size());
         assertEquals(
-                "Binds 2 divalent ions per subunit (magnesium or cobalt).", ms.note.get(0).value);
-        assertEquals("ECO:0000255|HAMAP-Rule:MF_00086", ms.note.get(0).evidences.get(0));
+                "Binds 2 divalent ions per subunit (magnesium or cobalt).",
+                ms.getNote().get(0).getValue());
+        assertEquals("ECO:0000255|HAMAP-Rule:MF_00086", ms.getNote().get(0).getEvidences().get(0));
     }
 
     @Test
@@ -65,38 +67,38 @@ class CcLineCofactorCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof StructuredCofactor);
-        StructuredCofactor ms = (StructuredCofactor) cc.object;
-        List<CofactorItem> cofactors = ms.cofactors;
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof StructuredCofactor);
+        StructuredCofactor ms = (StructuredCofactor) cc.getObject();
+        List<CofactorItem> cofactors = ms.getCofactors();
         assertEquals(3, cofactors.size());
-        assertEquals("Zn(2+)", cofactors.get(0).name);
-        assertEquals("ChEBI:CHEBI:29105", cofactors.get(0).xref);
+        assertEquals("Zn(2+)", cofactors.get(0).getName());
+        assertEquals("ChEBI:CHEBI:29105", cofactors.get(0).getXref());
         assertEquals(
                 "ECO:0000269|PubMed:16683188",
-                obj.evidenceInfo.evidences.get(cofactors.get(0)).get(0));
+                obj.getEvidenceInfo().getEvidences().get(cofactors.get(0)).get(0));
 
         assertEquals(
                 "A very very looooooooooooong cofactor name with 1 evidence tag",
-                cofactors.get(1).name);
-        assertEquals("ChEBI:CHEBI:12345", cofactors.get(1).xref);
+                cofactors.get(1).getName());
+        assertEquals("ChEBI:CHEBI:12345", cofactors.get(1).getXref());
         assertEquals(
                 "ECO:0000269|PubMed:16683188",
-                obj.evidenceInfo.evidences.get(cofactors.get(1)).get(0));
+                obj.getEvidenceInfo().getEvidences().get(cofactors.get(1)).get(0));
 
         assertEquals(
                 "A very very looooooooooooong cofactor name with X evidence tags",
-                cofactors.get(2).name);
-        assertEquals("ChEBI:CHEBI:54321", cofactors.get(2).xref);
+                cofactors.get(2).getName());
+        assertEquals("ChEBI:CHEBI:54321", cofactors.get(2).getXref());
         assertEquals(
                 "ECO:0000269|PubMed:16683189",
-                obj.evidenceInfo.evidences.get(cofactors.get(2)).get(1));
+                obj.getEvidenceInfo().getEvidences().get(cofactors.get(2)).get(1));
 
-        assertEquals("Serine protease NS3", ms.molecule);
-        assertEquals(1, ms.note.size());
-        assertEquals("Binds 2 divalent ions per subunit.", ms.note.get(0).value);
-        assertEquals("ECO:0000255|HAMAP-Rule:MF_00086", ms.note.get(0).evidences.get(0));
+        assertEquals("Serine protease NS3", ms.getMolecule());
+        assertEquals(1, ms.getNote().size());
+        assertEquals("Binds 2 divalent ions per subunit.", ms.getNote().get(0).getValue());
+        assertEquals("ECO:0000255|HAMAP-Rule:MF_00086", ms.getNote().get(0).getEvidences().get(0));
     }
 
     @Test
@@ -108,16 +110,17 @@ class CcLineCofactorCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof StructuredCofactor);
-        StructuredCofactor ms = (StructuredCofactor) cc.object;
-        List<CofactorItem> cofactors = ms.cofactors;
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof StructuredCofactor);
+        StructuredCofactor ms = (StructuredCofactor) cc.getObject();
+        List<CofactorItem> cofactors = ms.getCofactors();
         assertEquals(0, cofactors.size());
-        assertEquals(1, ms.note.size());
+        assertEquals(1, ms.getNote().size());
         assertEquals(
-                "Binds 2 divalent ions per subunit (magnesium or cobalt).", ms.note.get(0).value);
-        assertEquals("ECO:0000255|HAMAP-Rule:MF_00086", ms.note.get(0).evidences.get(0));
+                "Binds 2 divalent ions per subunit (magnesium or cobalt).",
+                ms.getNote().get(0).getValue());
+        assertEquals("ECO:0000255|HAMAP-Rule:MF_00086", ms.getNote().get(0).getEvidences().get(0));
     }
 
     @Test
@@ -129,17 +132,17 @@ class CcLineCofactorCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof StructuredCofactor);
-        StructuredCofactor ms = (StructuredCofactor) cc.object;
-        List<CofactorItem> cofactors = ms.cofactors;
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof StructuredCofactor);
+        StructuredCofactor ms = (StructuredCofactor) cc.getObject();
+        List<CofactorItem> cofactors = ms.getCofactors();
         assertEquals(0, cofactors.size());
-        assertEquals(1, ms.note.size());
+        assertEquals(1, ms.getNote().size());
         assertEquals(
                 "Binds 2 divalent ions per subunit (magnesium or cobalt). Binds 3 divalent ions per subunit (magnesium or cobalt).",
-                ms.note.get(0).value);
-        assertEquals(0, ms.note.get(0).evidences.size());
+                ms.getNote().get(0).getValue());
+        assertEquals(0, ms.getNote().get(0).getEvidences().size());
     }
 
     @Test
@@ -151,18 +154,20 @@ class CcLineCofactorCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof StructuredCofactor);
-        StructuredCofactor ms = (StructuredCofactor) cc.object;
-        List<CofactorItem> cofactors = ms.cofactors;
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof StructuredCofactor);
+        StructuredCofactor ms = (StructuredCofactor) cc.getObject();
+        List<CofactorItem> cofactors = ms.getCofactors();
         assertEquals(0, cofactors.size());
-        assertEquals(2, ms.note.size());
+        assertEquals(2, ms.getNote().size());
         assertEquals(
-                "Binds 2 divalent ions per subunit (magnesium or cobalt).", ms.note.get(0).value);
+                "Binds 2 divalent ions per subunit (magnesium or cobalt).",
+                ms.getNote().get(0).getValue());
         assertEquals(
-                "Binds 3 divalent ions per subunit (magnesium or cobalt).", ms.note.get(1).value);
-        assertEquals(0, ms.note.get(0).evidences.size());
+                "Binds 3 divalent ions per subunit (magnesium or cobalt).",
+                ms.getNote().get(1).getValue());
+        assertEquals(0, ms.getNote().get(0).getEvidences().size());
     }
 
     @Test
@@ -174,19 +179,21 @@ class CcLineCofactorCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof StructuredCofactor);
-        StructuredCofactor ms = (StructuredCofactor) cc.object;
-        List<CofactorItem> cofactors = ms.cofactors;
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof StructuredCofactor);
+        StructuredCofactor ms = (StructuredCofactor) cc.getObject();
+        List<CofactorItem> cofactors = ms.getCofactors();
         assertEquals(0, cofactors.size());
-        assertEquals(2, ms.note.size());
+        assertEquals(2, ms.getNote().size());
         assertEquals(
-                "Binds 2 divalent ions per subunit (magnesium or cobalt).", ms.note.get(0).value);
+                "Binds 2 divalent ions per subunit (magnesium or cobalt).",
+                ms.getNote().get(0).getValue());
         assertEquals(
-                "Binds 3 divalent ions per subunit (magnesium or cobalt).", ms.note.get(1).value);
-        assertEquals(1, ms.note.get(0).evidences.size());
-        assertEquals("ECO:0000255|HAMAP-Rule:MF_00086", ms.note.get(0).evidences.get(0));
+                "Binds 3 divalent ions per subunit (magnesium or cobalt).",
+                ms.getNote().get(1).getValue());
+        assertEquals(1, ms.getNote().get(0).getEvidences().size());
+        assertEquals("ECO:0000255|HAMAP-Rule:MF_00086", ms.getNote().get(0).getEvidences().get(0));
     }
 
     @Test

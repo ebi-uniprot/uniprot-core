@@ -16,7 +16,7 @@ public class EvidenceInfoConverter extends EvidenceCollector
         Map<Object, List<Evidence>> evidences = new HashMap<>();
         if (evidenceInfo == null) return evidences;
 
-        for (Map.Entry<Object, List<String>> entry : evidenceInfo.evidences.entrySet()) {
+        for (Map.Entry<Object, List<String>> entry : evidenceInfo.getEvidences().entrySet()) {
             evidences.put(entry.getKey(), parseEvidenceLines(entry.getValue()));
         }
 

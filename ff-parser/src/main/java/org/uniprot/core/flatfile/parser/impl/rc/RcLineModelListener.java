@@ -59,9 +59,9 @@ public class RcLineModelListener extends RcLineParserBaseListener
                 rc.values.set(i, s.substring(4));
                 indexOfAnd = i;
 
-                List<String> strings = rc.getEvidenceInfo().evidences.get(s);
+                List<String> strings = rc.getEvidenceInfo().getEvidences().get(s);
                 if (strings != null) {
-                    rc.getEvidenceInfo().evidences.put(s.substring(4), strings);
+                    rc.getEvidenceInfo().getEvidences().put(s.substring(4), strings);
                 }
 
                 break;
@@ -73,7 +73,7 @@ public class RcLineModelListener extends RcLineParserBaseListener
             String s = rc.values.get(indexOfAnd);
             for (int j = indexOfAnd + 1; j < rc.values.size(); j++) {
                 s += (", " + rc.values.get(j));
-                evidence = rc.getEvidenceInfo().evidences.remove(rc.values.get(j));
+                evidence = rc.getEvidenceInfo().getEvidences().remove(rc.values.get(j));
             }
             for (int j = indexOfAnd + 1; j < rc.values.size(); j++) {
                 rc.values.remove(j);
@@ -82,7 +82,7 @@ public class RcLineModelListener extends RcLineParserBaseListener
             rc.values.set(indexOfAnd, s);
 
             if (evidence != null) {
-                rc.getEvidenceInfo().evidences.put(s, evidence);
+                rc.getEvidenceInfo().getEvidences().put(s, evidence);
             }
         }
 

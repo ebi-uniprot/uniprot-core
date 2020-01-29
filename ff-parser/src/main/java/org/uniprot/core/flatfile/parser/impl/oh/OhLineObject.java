@@ -9,10 +9,34 @@ import java.util.List;
  */
 public class OhLineObject {
 
-    public List<OhValue> hosts = new ArrayList<OhValue>();
+    private List<OhValue> hosts = new ArrayList<>();
+
+    public List<OhValue> getHosts() {
+        return hosts;
+    }
+
+    public void setHosts(List<OhValue> hosts) {
+        this.hosts = hosts;
+    }
 
     public static class OhValue {
-        public int tax_id;
-        public String hostname;
+        private int tax_id;
+        private String hostname;
+
+        public int getTax_id() {
+            return tax_id;
+        }
+
+        public void setTax_id(int tax_id) {
+            this.tax_id = tax_id;
+        }
+
+        public String getHostname() {
+            return hostname;
+        }
+
+        public void setHostname(String hostname) {
+            this.hostname = hostname;
+        }
     }
 }

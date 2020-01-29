@@ -6,8 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.RnaEditingLocationEnum;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.RnaEditing;
 
 class CcLineRnaEdCommentParserTest {
     @Test
@@ -19,15 +20,15 @@ class CcLineRnaEdCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.RnaEditing);
-        CcLineObject.RnaEditing re = (CcLineObject.RnaEditing) cc.object;
-        assertEquals(6, re.locations.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof RnaEditing);
+        RnaEditing re = (RnaEditing) cc.getObject();
+        assertEquals(6, re.getLocations().size());
         assertEquals(
                 "The nonsense codon at position 59 is modified to a sense codon. "
                         + "The stop codon at position 121 is created by RNA editing.",
-                re.note.get(0).value);
+                re.getNote().get(0).getValue());
     }
 
     @Test
@@ -37,13 +38,13 @@ class CcLineRnaEdCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.RnaEditing);
-        CcLineObject.RnaEditing re = (CcLineObject.RnaEditing) cc.object;
-        assertEquals(5, re.locations.size());
-        assertEquals(11, re.locations.get(0).intValue());
-        assertEquals(62, re.locations.get(1).intValue());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof RnaEditing);
+        RnaEditing re = (RnaEditing) cc.getObject();
+        assertEquals(5, re.getLocations().size());
+        assertEquals(11, re.getLocations().get(0).intValue());
+        assertEquals(62, re.getLocations().get(1).intValue());
     }
 
     @Test
@@ -55,14 +56,16 @@ class CcLineRnaEdCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.RnaEditing);
-        CcLineObject.RnaEditing re = (CcLineObject.RnaEditing) cc.object;
-        assertEquals(20, re.locations.size());
-        assertEquals(1, re.locations.get(0).intValue());
-        assertEquals(313, re.locations.get(19).intValue());
-        assertEquals("The initiator methionine is created by RNA editing.", re.note.get(0).value);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof RnaEditing);
+        RnaEditing re = (RnaEditing) cc.getObject();
+        assertEquals(20, re.getLocations().size());
+        assertEquals(1, re.getLocations().get(0).intValue());
+        assertEquals(313, re.getLocations().get(19).intValue());
+        assertEquals(
+                "The initiator methionine is created by RNA editing.",
+                re.getNote().get(0).getValue());
     }
 
     @Test
@@ -73,13 +76,16 @@ class CcLineRnaEdCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.RnaEditing);
-        CcLineObject.RnaEditing re = (CcLineObject.RnaEditing) cc.object;
-        assertEquals(0, re.locations.size());
-        assertEquals(RnaEditingLocationEnum.UNDETERMINED, re.locationEnum);
-        assertEquals("Partially edited. 11 sites are edited by Adar.", re.note.get(0).value);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof RnaEditing);
+        RnaEditing re = (RnaEditing) cc.getObject();
+        assertEquals(0, re.getLocations().size());
+        assertEquals(
+                CcLineObject.RnaEditingLocationEnum.NOT_APPLICABLE.UNDETERMINED,
+                re.getLocationEnum());
+        assertEquals(
+                "Partially edited. 11 sites are edited by Adar.", re.getNote().get(0).getValue());
     }
 
     @Test
@@ -92,18 +98,18 @@ class CcLineRnaEdCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.RnaEditing);
-        CcLineObject.RnaEditing re = (CcLineObject.RnaEditing) cc.object;
-        assertEquals(6, re.locations.size());
-        assertEquals(59, re.locations.get(0).intValue());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof RnaEditing);
+        RnaEditing re = (RnaEditing) cc.getObject();
+        assertEquals(6, re.getLocations().size());
+        assertEquals(59, re.getLocations().get(0).intValue());
         assertEquals(
                 "The nonsense codon at position 59 is modified to a sense codon. "
                         + "The stop codon at position 121 is created by RNA editing.",
-                re.note.get(0).value);
-        assertEquals("ECO:0000313|PDB:3OW2", re.note.get(0).evidences.get(0));
-        assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", re.note.get(0).evidences.get(1));
+                re.getNote().get(0).getValue());
+        assertEquals("ECO:0000313|PDB:3OW2", re.getNote().get(0).getEvidences().get(0));
+        assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", re.getNote().get(0).getEvidences().get(1));
     }
 
     @Test
@@ -130,9 +136,9 @@ class CcLineRnaEdCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(2, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.RnaEditing);
+        assertEquals(2, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof RnaEditing);
     }
 
     @Test

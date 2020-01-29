@@ -80,14 +80,14 @@ class OgLineConverterTest {
 
         List<String> evs = new ArrayList<>();
         evs.add("ECO:0000256|RuleBase:RU000682");
-        ogObj.getEvidenceInfo().evidences.put(OgEnum.HYDROGENOSOME, evs);
+        ogObj.getEvidenceInfo().getEvidences().put(OgEnum.HYDROGENOSOME, evs);
         evs = new ArrayList<>();
         evs.add("ECO:0000256|RuleBase:RU000681");
         evs.add("ECO:0000256|RuleBase:RU000682");
-        ogObj.getEvidenceInfo().evidences.put("R6-5", evs);
+        ogObj.getEvidenceInfo().getEvidences().put("R6-5", evs);
         evs = new ArrayList<>();
         evs.add("ECO:0000256|RuleBase:RU000681");
-        ogObj.getEvidenceInfo().evidences.put("IncFII R100 (NR1)", evs);
+        ogObj.getEvidenceInfo().getEvidences().put("IncFII R100 (NR1)", evs);
         List<GeneLocation> orgs = converter.convert(ogObj);
         assertEquals(3, orgs.size());
         GeneLocation org1 = orgs.get(0);

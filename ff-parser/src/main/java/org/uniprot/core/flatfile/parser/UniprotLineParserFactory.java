@@ -3,7 +3,7 @@ package org.uniprot.core.flatfile.parser;
 import java.io.Serializable;
 
 import org.uniprot.core.flatfile.parser.impl.ac.AcLineObject;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject;
 import org.uniprot.core.flatfile.parser.impl.dr.DrLineObject;
 import org.uniprot.core.flatfile.parser.impl.dt.DtLineObject;
