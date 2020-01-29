@@ -21,7 +21,7 @@ public class RedundantProteomeConverter
 
     @Override
     public RedundantProteome fromXml(RedundantProteomeType xmlObj) {
-        RedundantProteomeBuilder builder = RedundantProteomeBuilder.newInstance();
+        RedundantProteomeBuilder builder = new RedundantProteomeBuilder();
         builder.proteomeId(new ProteomeIdBuilder(xmlObj.getUpid()).build());
         builder.similarity(xmlObj.getSimilarity());
         return builder.build();

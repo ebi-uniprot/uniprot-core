@@ -12,13 +12,13 @@ class TaxonomyBuilderTest {
 
     @Test
     void testTaxonId() {
-        Taxonomy taxonomy = TaxonomyBuilder.newInstance().taxonId(9606).build();
+        Taxonomy taxonomy = new TaxonomyBuilder().taxonId(9606).build();
         assertEquals(9606, taxonomy.getTaxonId());
     }
 
     @Test
     void testMnemonic() {
-        Taxonomy taxonomy = TaxonomyBuilder.newInstance().mnemonic("HUMAN").build();
+        Taxonomy taxonomy = new TaxonomyBuilder().mnemonic("HUMAN").build();
         assertEquals("HUMAN", taxonomy.getMnemonic());
     }
 
@@ -32,13 +32,13 @@ class TaxonomyBuilderTest {
     @Test
     void testScientificName() {
         Taxonomy taxonomy =
-                TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens").build();
+                new TaxonomyBuilder().taxonId(9606).scientificName("Homo sapiens").build();
         assertEquals("Homo sapiens", taxonomy.getScientificName());
     }
 
     @Test
     void testCommonName() {
-        Taxonomy taxonomy = TaxonomyBuilder.newInstance().taxonId(9606).commonName("Human").build();
+        Taxonomy taxonomy = new TaxonomyBuilder().taxonId(9606).commonName("Human").build();
         assertEquals("Human", taxonomy.getCommonName());
     }
 
@@ -57,7 +57,7 @@ class TaxonomyBuilderTest {
     }
 
     private Taxonomy getCompleteTaxonomy() {
-        return TaxonomyBuilder.newInstance()
+        return new TaxonomyBuilder()
                 .taxonId(9606)
                 .scientificName("Homo sapiens")
                 .commonName("Human")

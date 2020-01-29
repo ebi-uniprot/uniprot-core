@@ -29,7 +29,7 @@ public class ComponentConverter implements Converter<ComponentType, Component> {
 
     @Override
     public Component fromXml(ComponentType xmlObj) {
-        ComponentBuilder builder = ComponentBuilder.newInstance();
+        ComponentBuilder builder = new ComponentBuilder();
         builder.name(xmlObj.getName());
         builder.description(xmlObj.getDescription());
         List<DBCrossReference<ProteomeXReferenceType>> xrefs = new ArrayList<>();

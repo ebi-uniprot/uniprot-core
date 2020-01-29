@@ -53,7 +53,7 @@ class TaxonomyEntryTest {
     }
 
     private Taxonomy getCompleteTaxonomy() {
-        return TaxonomyBuilder.newInstance()
+        return new TaxonomyBuilder()
                 .taxonId(9606)
                 .scientificName("Homo sapiens")
                 .commonName("Human")

@@ -11,10 +11,6 @@ public class RedundantProteomeBuilder implements Builder<RedundantProteome> {
     private ProteomeId id;
     private Float similarity;
 
-    public static @Nonnull RedundantProteomeBuilder newInstance() {
-        return new RedundantProteomeBuilder();
-    }
-
     public @Nonnull RedundantProteomeBuilder proteomeId(ProteomeId id) {
         this.id = id;
         return this;

@@ -25,10 +25,7 @@ class RedundantProteomeConverterTest {
     @Test
     void testToXml() {
         RedundantProteome rProteome =
-                RedundantProteomeBuilder.newInstance()
-                        .proteomeId("UP0000123")
-                        .similarity(0.95f)
-                        .build();
+                new RedundantProteomeBuilder().proteomeId("UP0000123").similarity(0.95f).build();
         RedundantProteomeType xml = converter.toXml(rProteome);
         RedundantProteome converted = converter.fromXml(xml);
         assertEquals(rProteome, converted);

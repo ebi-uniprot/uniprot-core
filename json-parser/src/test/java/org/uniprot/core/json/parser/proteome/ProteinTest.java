@@ -18,7 +18,7 @@ class ProteinTest {
     void testProtein() {
         String accession = "P12345";
         Protein protein =
-                ProteinBuilder.newInstance()
+                new ProteinBuilder()
                         .accession(accession)
                         .entryType(UniProtEntryType.SWISSPROT)
                         .geneName("some gene")
@@ -41,7 +41,7 @@ class ProteinTest {
     void testCanonicalProtein() {
         String accession = "P12345";
         Protein protein =
-                ProteinBuilder.newInstance()
+                new ProteinBuilder()
                         .accession(accession)
                         .entryType(UniProtEntryType.SWISSPROT)
                         .geneName("some gene")
@@ -50,7 +50,7 @@ class ProteinTest {
                         .build();
 
         Protein rProtein1 =
-                ProteinBuilder.newInstance()
+                new ProteinBuilder()
                         .accession("P23456")
                         .entryType(UniProtEntryType.SWISSPROT)
                         .geneName("some gene2")
@@ -58,7 +58,7 @@ class ProteinTest {
                         .sequenceLength(303)
                         .build();
         Protein rProtein2 =
-                ProteinBuilder.newInstance()
+                new ProteinBuilder()
                         .accession("P26456")
                         .entryType(UniProtEntryType.TREMBL)
                         .geneName("some gene5")
@@ -67,7 +67,7 @@ class ProteinTest {
                         .build();
 
         CanonicalProtein cProtein =
-                CanonicalProteinBuilder.newInstance()
+                new CanonicalProteinBuilder()
                         .canonicalProtein(protein)
                         .addRelatedProtein(rProtein1)
                         .addRelatedProtein(rProtein2)

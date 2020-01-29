@@ -17,10 +17,6 @@ public class ProteinBuilder implements Builder<Protein> {
     private String geneName;
     private GeneNameType geneNameType;
 
-    public static @Nonnull ProteinBuilder newInstance() {
-        return new ProteinBuilder();
-    }
-
     @Override
     public @Nonnull Protein build() {
         return new ProteinImpl(accession, entryType, sequenceLength, geneName, geneNameType);
