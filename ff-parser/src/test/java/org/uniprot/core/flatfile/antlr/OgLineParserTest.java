@@ -154,7 +154,7 @@ class OgLineParserTest {
     }
 
     private void verifyEvidence(OgLineObject ogObj, Object obj, List<String> evidences) {
-        assertEquals(evidences, ogObj.evidence.evidences.get(obj));
+        assertEquals(evidences, ogObj.evidence.getEvidences().get(obj));
     }
 
     @Test

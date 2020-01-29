@@ -265,7 +265,7 @@ class FtLineConverterTest {
         List<String> evIds = new ArrayList<String>();
         evIds.add("ECO:0000255|HAMAP-Rule:PRU10081");
         evIds.add("ECO:0000255|HAMAP-Rule:PRU10082");
-        fobj.evidenceInfo.evidences.put(ft, evIds);
+        fobj.evidenceInfo.getEvidences().put(ft, evIds);
         fobj.fts.add(ft);
         FtLineObject.FT ft2 = new FtLineObject.FT();
         ft2.type = FtLineObject.FTType.SIGNAL;
@@ -275,7 +275,7 @@ class FtLineConverterTest {
         evIds = new ArrayList<String>();
         evIds.add("ECO:0000255|HAMAP-Rule:PRU10082");
         evIds.add("ECO:0000255|HAMAP-Rule:PRU10083");
-        fobj.evidenceInfo.evidences.put(ft2, evIds);
+        fobj.evidenceInfo.getEvidences().put(ft2, evIds);
         fobj.fts.add(ft2);
 
         FtLineObject.FT ft3 = new FtLineObject.FT();
@@ -285,7 +285,7 @@ class FtLineConverterTest {
         ft3.ft_text = "NAD (By similarity)";
         evIds = new ArrayList<String>();
         evIds.add("ECO:0000255|HAMAP-Rule:PRU10083");
-        fobj.evidenceInfo.evidences.put(ft3, evIds);
+        fobj.evidenceInfo.getEvidences().put(ft3, evIds);
         fobj.fts.add(ft3);
 
         FtLineObject.FT ft4 = new FtLineObject.FT();
@@ -362,7 +362,7 @@ class FtLineConverterTest {
         ft.location_end = "150";
         List<String> evIds = new ArrayList<String>();
         evIds.add("ECO:0000255|PROSITE-ProRule:PRU10088");
-        fobj.evidenceInfo.evidences.put(ft, evIds);
+        fobj.evidenceInfo.getEvidences().put(ft, evIds);
         fobj.fts.add(ft);
 
         List<Feature> features = converter.convert(fobj);
@@ -392,7 +392,7 @@ class FtLineConverterTest {
         ft.location_end = "150";
         List<String> evIds = new ArrayList<String>();
         evIds.add("ECO:0000255|HAMAP-Rule:PRU10088");
-        fobj.evidenceInfo.evidences.put(ft, evIds);
+        fobj.evidenceInfo.getEvidences().put(ft, evIds);
         fobj.fts.add(ft);
 
         List<Feature> features = converter.convert(fobj);

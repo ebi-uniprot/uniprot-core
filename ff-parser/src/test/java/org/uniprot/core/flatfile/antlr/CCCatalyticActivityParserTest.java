@@ -13,7 +13,7 @@ import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.*;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
@@ -37,35 +37,35 @@ class CCCatalyticActivityParserTest {
         // "CC PhysiologicalDirection=left-to-right; Xref=Rhea:RHEA:18886;\n" +
         // "CC Evidence={ECO:0000255|HAMAP-Rule:MF_00956};\n";
         CcLineObject obj = parser.parse(ccLine);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertEquals(CcLineObject.CCTopicEnum.CATALYTIC_ACTIVITY, cc.topic);
-        assertTrue(cc.object instanceof CcLineObject.CatalyticActivity);
-        CcLineObject.CatalyticActivity msObj = (CcLineObject.CatalyticActivity) cc.object;
-        CcLineObject.CAReaction reaction = msObj.reaction;
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CcLineObject.CCTopicEnum.CATALYTIC_ACTIVITY, cc.getTopic());
+        assertTrue(cc.getObject() instanceof CatalyticActivity);
+        CatalyticActivity msObj = (CatalyticActivity) cc.getObject();
+        CAReaction reaction = msObj.getReaction();
         assertNotNull(reaction);
         String reactionName =
                 "cytidine(32)/guanosine(34) in tRNA + 2 S-adenosyl-L-methionine = 2'-O-methylcytidine(32)/2'-O-methylguanosine(34) in"
                         + " tRNA + 2 H(+) + 2 S-adenosyl-L-homocysteine";
-        assertEquals(reactionName, reaction.name);
+        assertEquals(reactionName, reaction.getName());
         String xref =
                 "Rhea:RHEA:42396, Rhea:RHEA-COMP:10246, ChEBI:CHEBI:74269, ChEBI:CHEBI:82748, "
                         + "ChEBI:CHEBI:59789, Rhea:RHEA-COMP:10247, ChEBI:CHEBI:74445, "
                         + "ChEBI:CHEBI:74495, ChEBI:CHEBI:15378, ChEBI:CHEBI:57856";
-        assertEquals(xref, reaction.xref);
+        assertEquals(xref, reaction.getXref());
         String ec = "2.1.1.205";
-        assertEquals(ec, reaction.ec);
+        assertEquals(ec, reaction.getEc());
 
         List<String> evs = new ArrayList<>();
         evs.add("ECO:0000255|HAMAP-Rule:MF_03162");
         checkEvidences(reaction, obj.getEvidenceInfo(), evs);
-        List<CcLineObject.CAPhysioDirection> pds = msObj.physiologicalDirections;
+        List<CAPhysioDirection> pds = msObj.getPhysiologicalDirections();
         assertEquals(0, pds.size());
     }
 
     void checkEvidences(Object obj, EvidenceInfo evInfo, List<String> evs) {
 
-        List<String> evidences = evInfo.evidences.get(obj);
+        List<String> evidences = evInfo.getEvidences().get(obj);
         if ((evs == null) || (evs.size() == 0)) {
             assertNull(evidences);
             return;
@@ -91,21 +91,21 @@ class CCCatalyticActivityParserTest {
                         + "CC       PhysiologicalDirection=left-to-right; Xref=Rhea:RHEA:18886;\n"
                         + "CC         Evidence={ECO:0000255|HAMAP-Rule:MF_00956};\n";
         CcLineObject obj = parser.parse(ccLine);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertEquals(CcLineObject.CCTopicEnum.CATALYTIC_ACTIVITY, cc.topic);
-        assertTrue(cc.object instanceof CcLineObject.CatalyticActivity);
-        CcLineObject.CatalyticActivity msObj = (CcLineObject.CatalyticActivity) cc.object;
-        CcLineObject.CAReaction reaction = msObj.reaction;
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CcLineObject.CCTopicEnum.CATALYTIC_ACTIVITY, cc.getTopic());
+        assertTrue(cc.getObject() instanceof CatalyticActivity);
+        CatalyticActivity msObj = (CatalyticActivity) cc.getObject();
+        CAReaction reaction = msObj.getReaction();
         assertNotNull(reaction);
         String reactionName =
                 "GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-rhamnose + H(+) + NADPH";
-        assertEquals(reactionName, reaction.name);
+        assertEquals(reactionName, reaction.getName());
         String xref =
                 "Rhea:RHEA:18885, ChEBI:CHEBI:57273, ChEBI:CHEBI:58349, ChEBI:CHEBI:57964, ChEBI:CHEBI:57783";
-        assertEquals(xref, reaction.xref);
+        assertEquals(xref, reaction.getXref());
         String ec = "1.1.1.271";
-        assertEquals(ec, reaction.ec);
+        assertEquals(ec, reaction.getEc());
 
         List<String> evs = new ArrayList<>();
         evs.add("ECO:0000255|HAMAP-Rule:MF_00956");
@@ -113,11 +113,11 @@ class CCCatalyticActivityParserTest {
         evs.add("ECO:0000269|PubMed:11021971");
         evs.add("ECO:0000269|PubMed:9473059");
         checkEvidences(reaction, obj.getEvidenceInfo(), evs);
-        List<CcLineObject.CAPhysioDirection> pds = msObj.physiologicalDirections;
+        List<CAPhysioDirection> pds = msObj.getPhysiologicalDirections();
         assertEquals(1, pds.size());
-        CcLineObject.CAPhysioDirection pd = pds.get(0);
-        assertEquals("left-to-right", pd.name);
-        assertEquals("Rhea:RHEA:18886", pd.xref);
+        CAPhysioDirection pd = pds.get(0);
+        assertEquals("left-to-right", pd.getName());
+        assertEquals("Rhea:RHEA:18886", pd.getXref());
         List<String> evs2 = new ArrayList<>();
         evs2.add("ECO:0000255|HAMAP-Rule:MF_00956");
         checkEvidences(pd, obj.getEvidenceInfo(), evs2);
@@ -189,21 +189,21 @@ class CCCatalyticActivityParserTest {
                         + "CC       PhysiologicalDirection=left-to-right; Xref=Rhea:RHEA:18886;\n"
                         + "CC         Evidence={ECO:0000255|HAMAP-Rule:MF_00956};\n";
         CcLineObject obj = parser.parse(ccLine);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertEquals(CcLineObject.CCTopicEnum.CATALYTIC_ACTIVITY, cc.topic);
-        assertTrue(cc.object instanceof CcLineObject.CatalyticActivity);
-        CcLineObject.CatalyticActivity msObj = (CcLineObject.CatalyticActivity) cc.object;
-        CcLineObject.CAReaction reaction = msObj.reaction;
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CcLineObject.CCTopicEnum.CATALYTIC_ACTIVITY, cc.getTopic());
+        assertTrue(cc.getObject() instanceof CatalyticActivity);
+        CatalyticActivity msObj = (CatalyticActivity) cc.getObject();
+        CAReaction reaction = msObj.getReaction();
         assertNotNull(reaction);
         String reactionName =
                 "GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-rhamnose + H(+) + NADPH";
-        assertEquals(reactionName, reaction.name);
+        assertEquals(reactionName, reaction.getName());
         String xref =
                 "Rhea:RHEA:18885, ChEBI:CHEBI:57273, ChEBI:CHEBI:58349, ChEBI:CHEBI:57964, ChEBI:CHEBI:57783";
-        assertEquals(xref, reaction.xref);
+        assertEquals(xref, reaction.getXref());
         String ec = null;
-        assertEquals(ec, reaction.ec);
+        assertEquals(ec, reaction.getEc());
 
         List<String> evs = new ArrayList<>();
         evs.add("ECO:0000255|HAMAP-Rule:MF_00956");
@@ -211,11 +211,11 @@ class CCCatalyticActivityParserTest {
         evs.add("ECO:0000269|PubMed:11021971");
         evs.add("ECO:0000269|PubMed:9473059");
         checkEvidences(reaction, obj.getEvidenceInfo(), evs);
-        List<CcLineObject.CAPhysioDirection> pds = msObj.physiologicalDirections;
+        List<CAPhysioDirection> pds = msObj.getPhysiologicalDirections();
         assertEquals(1, pds.size());
-        CcLineObject.CAPhysioDirection pd = pds.get(0);
-        assertEquals("left-to-right", pd.name);
-        assertEquals("Rhea:RHEA:18886", pd.xref);
+        CAPhysioDirection pd = pds.get(0);
+        assertEquals("left-to-right", pd.getName());
+        assertEquals("Rhea:RHEA:18886", pd.getXref());
         List<String> evs2 = new ArrayList<>();
         evs2.add("ECO:0000255|HAMAP-Rule:MF_00956");
         checkEvidences(pd, obj.getEvidenceInfo(), evs2);
@@ -282,21 +282,21 @@ class CCCatalyticActivityParserTest {
                         + "CC       PhysiologicalDirection=right-to-left; Xref=Rhea:RHEA:18898;\n"
                         + "CC         Evidence={ECO:0000255|HAMAP-Rule:MF_00957};\n";
         CcLineObject obj = parser.parse(ccLine);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertEquals(CcLineObject.CCTopicEnum.CATALYTIC_ACTIVITY, cc.topic);
-        assertTrue(cc.object instanceof CcLineObject.CatalyticActivity);
-        CcLineObject.CatalyticActivity msObj = (CcLineObject.CatalyticActivity) cc.object;
-        CcLineObject.CAReaction reaction = msObj.reaction;
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CcLineObject.CCTopicEnum.CATALYTIC_ACTIVITY, cc.getTopic());
+        assertTrue(cc.getObject() instanceof CatalyticActivity);
+        CatalyticActivity msObj = (CatalyticActivity) cc.getObject();
+        CAReaction reaction = msObj.getReaction();
         assertNotNull(reaction);
         String reactionName =
                 "GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-rhamnose + H(+) + NADPH";
-        assertEquals(reactionName, reaction.name);
+        assertEquals(reactionName, reaction.getName());
         String xref =
                 "Rhea:RHEA:18885, ChEBI:CHEBI:57273, ChEBI:CHEBI:58349, ChEBI:CHEBI:57964, ChEBI:CHEBI:57783";
-        assertEquals(xref, reaction.xref);
+        assertEquals(xref, reaction.getXref());
         String ec = "1.1.1.271";
-        assertEquals(ec, reaction.ec);
+        assertEquals(ec, reaction.getEc());
 
         List<String> evs = new ArrayList<>();
         evs.add("ECO:0000255|HAMAP-Rule:MF_00956");
@@ -304,18 +304,18 @@ class CCCatalyticActivityParserTest {
         evs.add("ECO:0000269|PubMed:11021971");
         evs.add("ECO:0000269|PubMed:9473059");
         checkEvidences(reaction, obj.getEvidenceInfo(), evs);
-        List<CcLineObject.CAPhysioDirection> pds = msObj.physiologicalDirections;
+        List<CAPhysioDirection> pds = msObj.getPhysiologicalDirections();
         assertEquals(2, pds.size());
-        CcLineObject.CAPhysioDirection pd = pds.get(0);
-        assertEquals("left-to-right", pd.name);
-        assertEquals("Rhea:RHEA:18886", pd.xref);
+        CAPhysioDirection pd = pds.get(0);
+        assertEquals("left-to-right", pd.getName());
+        assertEquals("Rhea:RHEA:18886", pd.getXref());
         List<String> evs2 = new ArrayList<>();
         evs2.add("ECO:0000255|HAMAP-Rule:MF_00956");
         checkEvidences(pd, obj.getEvidenceInfo(), evs2);
 
-        CcLineObject.CAPhysioDirection pd2 = pds.get(1);
-        assertEquals("right-to-left", pd2.name);
-        assertEquals("Rhea:RHEA:18898", pd2.xref);
+        CAPhysioDirection pd2 = pds.get(1);
+        assertEquals("right-to-left", pd2.getName());
+        assertEquals("Rhea:RHEA:18898", pd2.getXref());
         List<String> evs3 = new ArrayList<>();
         evs3.add("ECO:0000255|HAMAP-Rule:MF_00957");
         checkEvidences(pd2, obj.getEvidenceInfo(), evs3);

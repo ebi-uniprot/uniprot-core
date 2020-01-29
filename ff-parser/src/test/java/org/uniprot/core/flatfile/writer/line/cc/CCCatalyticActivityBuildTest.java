@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
 import org.uniprot.core.uniprot.comment.Comment;
 

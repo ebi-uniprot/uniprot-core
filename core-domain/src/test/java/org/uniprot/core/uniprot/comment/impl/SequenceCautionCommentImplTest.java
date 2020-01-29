@@ -20,7 +20,7 @@ class SequenceCautionCommentImplTest {
         SequenceCautionComment impl =
                 new SequenceCautionCommentImpl(
                         "molecule",
-                        SequenceCautionType.ERRONEOUS_TERMIINATION,
+                        SequenceCautionType.ERRONEOUS_TERMINATION,
                         "sequ",
                         "note",
                         createEvidences());

@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.Disease;
 
 class CcLineDiseaseCommentParserTest {
     @Test
@@ -22,20 +24,20 @@ class CcLineDiseaseCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.Disease);
-        CcLineObject.Disease disease = (CcLineObject.Disease) cc.object;
-        assertEquals("ACAD9 deficiency", disease.abbr);
-        assertEquals("611126", disease.mim);
-        assertEquals("Acyl-CoA dehydrogenase family, member 9, deficiency", disease.name);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof Disease);
+        Disease disease = (Disease) cc.getObject();
+        assertEquals("ACAD9 deficiency", disease.getAbbr());
+        assertEquals("611126", disease.getMim());
+        assertEquals("Acyl-CoA dehydrogenase family, member 9, deficiency", disease.getName());
         assertEquals(
                 "A metabolic disorder with"
                         + " variable manifestations that include dilated cardiomyopathy, liver"
                         + " failure, muscle weakness, neurologic dysfunction, hypoglycemia and"
                         + " Reye-like episodes (brain edema and vomiting that may rapidly"
                         + " progress to seizures, coma and death)",
-                disease.description);
+                disease.getDescription());
     }
 
     @Test
@@ -55,31 +57,33 @@ class CcLineDiseaseCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.Disease);
-        CcLineObject.Disease disease = (CcLineObject.Disease) cc.object;
-        assertEquals("CRC", disease.abbr);
-        assertEquals("114500", disease.mim);
-        assertEquals("Colorectal cancer", disease.name);
-        assertNotNull(disease.description);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof Disease);
+        Disease disease = (Disease) cc.getObject();
+        assertEquals("CRC", disease.getAbbr());
+        assertEquals("114500", disease.getMim());
+        assertEquals("Colorectal cancer", disease.getName());
+        assertNotNull(disease.getDescription());
 
-        assertEquals(1, disease.note.size());
+        assertEquals(1, disease.getNote().size());
         assertEquals(
                 "The gene represented in this entry is involved in disease pathogenesis",
-                disease.note.get(0).value);
-        assertEquals("ECO:0000303|Ref.6", disease.note.get(0).evidences.get(0));
-        assertEquals("ECO:0000313|PDB:3OW2", disease.note.get(0).evidences.get(1));
-        assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", disease.note.get(0).evidences.get(2));
+                disease.getNote().get(0).getValue());
+        assertEquals("ECO:0000303|Ref.6", disease.getNote().get(0).getEvidences().get(0));
+        assertEquals("ECO:0000313|PDB:3OW2", disease.getNote().get(0).getEvidences().get(1));
+        assertEquals(
+                "ECO:0000256|HAMAP-Rule:MF_00205", disease.getNote().get(0).getEvidences().get(2));
 
         assertEquals(
                 "ECO:0000313|EMBL:BAG16761.1",
-                obj.evidenceInfo.evidences.get(disease.description).get(0));
+                obj.getEvidenceInfo().getEvidences().get(disease.getDescription()).get(0));
         assertEquals(
                 "ECO:0000269|PubMed:10433554",
-                obj.evidenceInfo.evidences.get(disease.description).get(1));
+                obj.getEvidenceInfo().getEvidences().get(disease.getDescription()).get(1));
         assertEquals(
-                "ECO:0000303|Ref.6", obj.evidenceInfo.evidences.get(disease.description).get(2));
+                "ECO:0000303|Ref.6",
+                obj.getEvidenceInfo().getEvidences().get(disease.getDescription()).get(2));
     }
 
     @Test

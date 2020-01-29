@@ -26,7 +26,8 @@ class KwLineParserTest {
 
     private void verify(KwLineObject obj, int position, String expected, List<String> evidences) {
         assertEquals(expected, obj.keywords.get(position));
-        assertEquals(evidences, obj.evidenceInfo.evidences.get(obj.keywords.get(position)));
+        assertEquals(
+                evidences, obj.getEvidenceInfo().getEvidences().get(obj.keywords.get(position)));
     }
 
     @Test

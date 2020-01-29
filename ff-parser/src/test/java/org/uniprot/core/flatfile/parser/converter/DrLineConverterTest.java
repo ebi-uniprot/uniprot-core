@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.exception.DatabaseTypeNotExistException;
 import org.uniprot.core.flatfile.parser.impl.dr.DrLineConverter;
@@ -11,6 +12,7 @@ import org.uniprot.core.flatfile.parser.impl.dr.DrLineObject;
 import org.uniprot.core.flatfile.parser.impl.dr.UniProtDrObjects;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 
+@Disabled
 class DrLineConverterTest {
     private final DrLineConverter converter = new DrLineConverter();
 

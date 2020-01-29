@@ -8,8 +8,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.EvidencedString;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.EvidencedString;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.FreeText;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
@@ -27,23 +29,23 @@ class CcFreeTextConverterTest {
              CC       localization (By similarity).
         */
         CcLineObject ccLineO = new CcLineObject();
-        CcLineObject.CC cc1 = new CcLineObject.CC();
-        cc1.topic = CcLineObject.CCTopicEnum.FUNCTION;
-        CcLineObject.FreeText texts = new CcLineObject.FreeText();
+        CC cc1 = new CC();
+        cc1.setTopic(CcLineObject.CCTopicEnum.FUNCTION);
+        FreeText texts = new FreeText();
         String val =
                 "This enzyme is necessary for target cell lysis in cell-mediated immune responses."
                         + " It cleaves after Lys or Arg. May be involved in apoptosis.";
-        texts.texts.add(new EvidencedString(val, new ArrayList<String>()));
-        cc1.object = texts;
-        CcLineObject.CC cc2 = new CcLineObject.CC();
-        cc2.topic = CcLineObject.CCTopicEnum.DOMAIN;
-        CcLineObject.FreeText texts2 = new CcLineObject.FreeText();
+        texts.getTexts().add(new EvidencedString(val, new ArrayList<String>()));
+        cc1.setObject(texts);
+        CC cc2 = new CC();
+        cc2.setTopic(CcLineObject.CCTopicEnum.DOMAIN);
+        FreeText texts2 = new FreeText();
         String val2 =
                 "The di-lysine motif may confer endoplasmic reticulum localization (By similarity)";
-        texts2.texts.add(new EvidencedString(val2, new ArrayList<String>()));
-        cc2.object = texts2;
-        ccLineO.ccs.add(cc1);
-        ccLineO.ccs.add(cc2);
+        texts2.getTexts().add(new EvidencedString(val2, new ArrayList<String>()));
+        cc2.setObject(texts2);
+        ccLineO.getCcs().add(cc1);
+        ccLineO.getCcs().add(cc2);
         List<Comment> comments = converter.convert(ccLineO);
         assertEquals(2, comments.size());
 

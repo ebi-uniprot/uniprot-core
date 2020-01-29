@@ -18,7 +18,7 @@ class OxLineParserTest {
                 new DefaultUniprotLineParserFactory().createOxLineParser();
         OxLineObject obj = parser.parse(oxLines);
         assertEquals(562, obj.taxonomy_id);
-        assertNull(obj.evidenceInfo.evidences.get(562));
+        assertNull(obj.getEvidenceInfo().getEvidences().get(562));
     }
 
     @Test
@@ -31,7 +31,7 @@ class OxLineParserTest {
         assertEquals(1085379, obj.taxonomy_id);
         assertEquals(
                 Arrays.asList(new String[] {"ECO:0000313|EMBL:EOP66756.1"}),
-                obj.evidenceInfo.evidences.get(1085379));
+                obj.getEvidenceInfo().getEvidences().get(1085379));
     }
 
     @Test
@@ -48,6 +48,6 @@ class OxLineParserTest {
                         new String[] {
                             "ECO:0000313|EMBL:EOP66756.1", "ECO:0000313|EMBL:CBL02507.1"
                         }),
-                obj.evidenceInfo.evidences.get(1085379));
+                obj.getEvidenceInfo().getEvidences().get(1085379));
     }
 }

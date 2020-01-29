@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.*;
 
 class CcLineWebRCommentParserTest {
     @Test
@@ -17,14 +17,14 @@ class CcLineWebRCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
 
-        assertTrue(cc.object instanceof CcLineObject.WebResource);
-        CcLineObject.WebResource wr = (CcLineObject.WebResource) cc.object;
-        assertEquals("CD40Lbase", wr.name);
-        assertEquals("CD40L defect database", wr.note);
-        assertEquals("http://bioinf.uta.fi/CD40Lbase/", wr.url);
+        assertTrue(cc.getObject() instanceof WebResource);
+        WebResource wr = (WebResource) cc.getObject();
+        assertEquals("CD40Lbase", wr.getName());
+        assertEquals("CD40L defect database", wr.getNote());
+        assertEquals("http://bioinf.uta.fi/CD40Lbase/", wr.getUrl());
     }
 
     @Test
@@ -36,15 +36,15 @@ class CcLineWebRCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.WebResource);
-        CcLineObject.WebResource wr = (CcLineObject.WebResource) cc.object;
-        assertEquals("Functional Glycomics Gateway - GTase", wr.name);
-        assertEquals("Beta1,4-N-acetylgalactosaminyltransferase III.", wr.note);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof WebResource);
+        WebResource wr = (WebResource) cc.getObject();
+        assertEquals("Functional Glycomics Gateway - GTase", wr.getName());
+        assertEquals("Beta1,4-N-acetylgalactosaminyltransferase III.", wr.getNote());
         assertEquals(
                 "http://www.functionalglycomics.org/glycomics/search/jsp/landing.jsp?query=gt_mou_507",
-                wr.url);
+                wr.getUrl());
     }
 
     @Test
@@ -55,13 +55,13 @@ class CcLineWebRCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
 
-        assertTrue(cc.object instanceof CcLineObject.WebResource);
-        CcLineObject.WebResource wr = (CcLineObject.WebResource) cc.object;
-        assertEquals("GeneReviews", wr.name);
-        assertEquals("http://www.genetests.org/query?gene=RP1", wr.url);
+        assertTrue(cc.getObject() instanceof WebResource);
+        WebResource wr = (WebResource) cc.getObject();
+        assertEquals("GeneReviews", wr.getName());
+        assertEquals("http://www.genetests.org/query?gene=RP1", wr.getUrl());
     }
 
     @Test
@@ -74,12 +74,12 @@ class CcLineWebRCommentParserTest {
         CcLineFormater formater = new CcLineFormater();
         String lines = formater.format(ccLineString);
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
 
-        assertTrue(cc.object instanceof CcLineObject.WebResource);
-        CcLineObject.WebResource wr = (CcLineObject.WebResource) cc.object;
-        assertEquals("GeneReviews", wr.name);
-        assertEquals("http://www.genetests.org/query?gene=RP1", wr.url);
+        assertTrue(cc.getObject() instanceof WebResource);
+        WebResource wr = (WebResource) cc.getObject();
+        assertEquals("GeneReviews", wr.getName());
+        assertEquals("http://www.genetests.org/query?gene=RP1", wr.getUrl());
     }
 }

@@ -7,7 +7,7 @@ import org.uniprot.core.util.EnumDisplay;
 public enum SequenceCautionType implements EnumDisplay<SequenceCautionType> {
     FRAMESHIFT("Frameshift"),
     ERRONEOUS_INITIATION("Erroneous initiation"),
-    ERRONEOUS_TERMIINATION("Erroneous termination"),
+    ERRONEOUS_TERMINATION("Erroneous termination"),
     ERRONEOUS_PREDICTION("Erroneous gene model prediction"),
     ERRONEOUS_TRANSLATION("Erroneous translation"),
     MISCELLANEOUS_DISCREPANCY("Miscellaneous discrepancy"),

@@ -70,7 +70,7 @@ public class FtLineModelListener extends FtLineParserBaseListener
     public void exitFt_evidence(FtLineParser.Ft_evidenceContext ctx) {
         List<TerminalNode> terminalNodes = ctx.EV_TAG();
         List<String> evidences = EvidenceInfo.processEvidence(terminalNodes);
-        object.getEvidenceInfo().evidences.put(ft, evidences);
+        object.getEvidenceInfo().getEvidences().put(ft, evidences);
     }
 
     @Override

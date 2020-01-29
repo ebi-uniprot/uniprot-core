@@ -236,7 +236,7 @@ class FtLineNoHeaderParserTest {
     }
 
     private void verifyEvidences(FtLineObject obj, Object name, List<String> evidences) {
-        List<String> expected = obj.evidenceInfo.evidences.get(name);
+        List<String> expected = obj.getEvidenceInfo().getEvidences().get(name);
         assertEquals(expected, evidences);
     }
 }
