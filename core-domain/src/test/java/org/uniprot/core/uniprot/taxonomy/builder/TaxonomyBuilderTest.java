@@ -25,7 +25,7 @@ class TaxonomyBuilderTest {
     @Test
     void testFromTaxonomy() {
         Taxonomy taxonomy = getCompleteTaxonomy();
-        Taxonomy fromTest = TaxonomyBuilder.newInstance().from(taxonomy).build();
+        Taxonomy fromTest = TaxonomyBuilder.from(taxonomy).build();
         assertEquals(taxonomy, fromTest);
     }
 

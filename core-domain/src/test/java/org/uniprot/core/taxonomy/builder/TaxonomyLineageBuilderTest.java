@@ -41,7 +41,7 @@ class TaxonomyLineageBuilderTest {
     void testFromTaxonomyLineage() {
         TaxonomyLineage taxonomyLineage = getCompleteTaxonomyLineage();
 
-        TaxonomyLineageBuilder builder = new TaxonomyLineageBuilder().from(taxonomyLineage);
+        TaxonomyLineageBuilder builder = TaxonomyLineageBuilder.from(taxonomyLineage);
 
         TaxonomyLineage other = builder.build();
         assertEquals(taxonomyLineage.toString(), other.toString());

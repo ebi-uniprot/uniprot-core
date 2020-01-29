@@ -21,7 +21,7 @@ class ReferenceCommentImplTest {
         ReferenceCommentImpl impl =
                 new ReferenceCommentImpl(
                         ReferenceCommentType.PLASMID, "val", Collections.emptyList());
-        ReferenceComment obj = new ReferenceCommentBuilder().from(impl).build();
+        ReferenceComment obj = ReferenceCommentBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

@@ -164,7 +164,7 @@ class DELineBuildTest {
         innNames.add(createName("Lenograstim", Collections.emptyList()));
         List<Name> cdAntigenNames = new ArrayList<>();
         cdAntigenNames.add(createName("CD156c", Collections.emptyList()));
-        ProteinAltName altName2 = new ProteinAltNameBuilder().from(altName).build();
+        ProteinAltName altName2 = ProteinAltNameBuilder.from(altName).build();
 
         //	ProteinAlternativeName pAltName = factory.createProteinAlternativeName(altNames, null,
         // null, cdAntigenNames,
@@ -230,7 +230,7 @@ class DELineBuildTest {
                         createEvidence(Arrays.asList(new String[] {"ECO:0000313|PDB:3OW2"}))));
         List<Name> cdAntigenNames = new ArrayList<>();
         cdAntigenNames.add(createName("CD156c", Collections.emptyList()));
-        ProteinAltName altName2 = new ProteinAltNameBuilder().from(altName).build();
+        ProteinAltName altName2 = ProteinAltNameBuilder.from(altName).build();
 
         altNames.add(altName2);
         //		ProteinAlternativeName pAltName = factory.createProteinAlternativeName(altNames, null,

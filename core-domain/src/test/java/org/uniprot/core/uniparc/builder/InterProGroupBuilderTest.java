@@ -26,9 +26,9 @@ class InterProGroupBuilderTest {
     @Test
     void testFrom() {
         InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
-        InterProGroup domain2 = new InterProGroupBuilder().from(domain).build();
+        InterProGroup domain2 = InterProGroupBuilder.from(domain).build();
         assertEquals(domain, domain2);
-        InterProGroup domain3 = new InterProGroupBuilder().from(domain).name("name2").build();
+        InterProGroup domain3 = InterProGroupBuilder.from(domain).name("name2").build();
         assertEquals("id1", domain3.getId());
         assertEquals("name2", domain3.getName());
     }

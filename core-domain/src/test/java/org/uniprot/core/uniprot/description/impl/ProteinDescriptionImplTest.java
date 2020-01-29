@@ -35,7 +35,7 @@ class ProteinDescriptionImplTest {
                         new FlagImpl(),
                         Collections.emptyList(),
                         Collections.emptyList());
-        ProteinDescription obj = new ProteinDescriptionBuilder().from(impl).build();
+        ProteinDescription obj = ProteinDescriptionBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

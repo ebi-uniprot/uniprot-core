@@ -10,7 +10,7 @@ class KeywordBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         Keyword obj = new KeywordBuilder().build();
-        KeywordBuilder builder = new KeywordBuilder().from(obj);
+        KeywordBuilder builder = KeywordBuilder.from(obj);
         assertNotNull(builder);
     }
 

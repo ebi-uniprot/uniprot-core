@@ -179,7 +179,7 @@ class MassSpectrometryCommentBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         MassSpectrometryComment obj = new MassSpectrometryCommentBuilder().build();
-        MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder().from(obj);
+        MassSpectrometryCommentBuilder builder = MassSpectrometryCommentBuilder.from(obj);
         assertNotNull(builder);
     }
 

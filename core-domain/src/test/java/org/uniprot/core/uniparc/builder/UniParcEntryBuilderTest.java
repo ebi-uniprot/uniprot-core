@@ -132,11 +132,10 @@ class UniParcEntryBuilderTest {
                         .taxonomies(taxonomies)
                         .build();
 
-        UniParcEntry entry2 = new UniParcEntryBuilder().from(entry).build();
+        UniParcEntry entry2 = UniParcEntryBuilder.from(entry).build();
         assertEquals(entry, entry2);
         UniParcEntry entry3 =
-                new UniParcEntryBuilder()
-                        .from(entry)
+                UniParcEntryBuilder.from(entry)
                         .uniParcId(new UniParcIdBuilder("UPI0000083A09").build())
                         .build();
 

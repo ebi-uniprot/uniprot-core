@@ -44,7 +44,7 @@ class CanonicalProteinBuilderTest {
         Protein protein = ProteinBuilder.newInstance().accession("P12345").build();
         CanonicalProtein cProtein =
                 CanonicalProteinBuilder.newInstance().canonicalProtein(protein).build();
-        CanonicalProtein newProtein = CanonicalProteinBuilder.newInstance().from(cProtein).build();
+        CanonicalProtein newProtein = CanonicalProteinBuilder.from(cProtein).build();
         assertEquals(cProtein, newProtein);
     }
 }

@@ -62,7 +62,7 @@ class TaxonomyEntryBuilderTest {
     void testFromTaxonomyEntry() {
         TaxonomyEntry taxonomyEntry = ObjectsForTests.getCompleteTaxonomyEntry();
 
-        TaxonomyEntry otherEntry = new TaxonomyEntryBuilder().from(taxonomyEntry).build();
+        TaxonomyEntry otherEntry = TaxonomyEntryBuilder.from(taxonomyEntry).build();
         assertEquals(taxonomyEntry.toString(), otherEntry.toString());
         boolean equals = taxonomyEntry.equals(otherEntry);
         assertTrue(equals);

@@ -228,7 +228,7 @@ class ProteinDescriptionBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         ProteinDescription obj = new ProteinDescriptionBuilder().build();
-        ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder().from(obj);
+        ProteinDescriptionBuilder builder = ProteinDescriptionBuilder.from(obj);
         assertNotNull(builder);
     }
 

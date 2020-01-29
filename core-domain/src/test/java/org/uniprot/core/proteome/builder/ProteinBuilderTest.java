@@ -68,7 +68,7 @@ class ProteinBuilderTest {
                         .geneNameType(type)
                         .build();
 
-        ProteinBuilder builder = ProteinBuilder.newInstance().from(protein);
+        ProteinBuilder builder = ProteinBuilder.from(protein);
         Protein newProtein = builder.entryType(UniProtEntryType.TREMBL).build();
 
         assertEquals(protein.getAccession(), newProtein.getAccession());

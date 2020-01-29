@@ -34,7 +34,7 @@ class UnpublishedImplTest {
                         Collections.singletonList(XREF1),
                         "title",
                         new PublicationDateImpl("date"));
-        Unpublished obj = new UnpublishedBuilder().from(impl).build();
+        Unpublished obj = UnpublishedBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

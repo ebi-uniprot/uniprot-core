@@ -10,7 +10,7 @@ class ReferenceCommentBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         ReferenceComment obj = new ReferenceCommentBuilder().build();
-        ReferenceCommentBuilder builder = new ReferenceCommentBuilder().from(obj);
+        ReferenceCommentBuilder builder = ReferenceCommentBuilder.from(obj);
         assertNotNull(builder);
     }
 

@@ -30,7 +30,7 @@ class ProteomeEntryBuilderTest {
         ProteomeId proteomeId = new ProteomeIdBuilder(id).build();
         ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().proteomeId(proteomeId).build();
 
-        ProteomeEntry proteome2 = ProteomeEntryBuilder.newInstance().from(proteome).build();
+        ProteomeEntry proteome2 = ProteomeEntryBuilder.from(proteome).build();
         assertEquals(proteome, proteome2);
     }
 

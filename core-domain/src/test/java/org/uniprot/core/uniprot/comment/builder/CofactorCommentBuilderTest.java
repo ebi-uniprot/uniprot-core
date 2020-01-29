@@ -110,7 +110,7 @@ class CofactorCommentBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         CofactorComment obj = new CofactorCommentBuilder().build();
-        CofactorCommentBuilder builder = new CofactorCommentBuilder().from(obj);
+        CofactorCommentBuilder builder = CofactorCommentBuilder.from(obj);
         assertNotNull(builder);
     }
 

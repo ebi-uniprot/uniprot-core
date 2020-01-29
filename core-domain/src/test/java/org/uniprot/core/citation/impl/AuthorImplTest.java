@@ -16,7 +16,7 @@ class AuthorImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         Author impl = new AuthorImpl("auth");
-        Author obj = new AuthorBuilder(null).from(impl).build();
+        Author obj = AuthorBuilder.from(impl).build();
 
         assertTrue(impl.hasValue());
 
@@ -27,7 +27,7 @@ class AuthorImplTest {
     @Test
     void null_author() {
         Author impl = new AuthorImpl(null);
-        Author obj = new AuthorBuilder(null).from(impl).build();
+        Author obj = AuthorBuilder.from(impl).build();
 
         assertFalse(impl.hasValue());
 

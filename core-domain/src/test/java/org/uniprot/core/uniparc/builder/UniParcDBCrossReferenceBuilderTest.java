@@ -134,10 +134,10 @@ class UniParcDBCrossReferenceBuilderTest {
         assertEquals("P12345", xref.getId());
         assertEquals(properties, xref.getProperties());
 
-        UniParcDBCrossReference newXref = new UniParcDBCrossReferenceBuilder().from(xref).build();
+        UniParcDBCrossReference newXref = UniParcDBCrossReferenceBuilder.from(xref).build();
         assertEquals(xref, newXref);
         UniParcDBCrossReference newXref2 =
-                new UniParcDBCrossReferenceBuilder().from(xref).id("P23456").build();
+                UniParcDBCrossReferenceBuilder.from(xref).id("P23456").build();
         assertNotEquals(newXref2, xref);
         assertEquals("P23456", newXref2.getId());
     }

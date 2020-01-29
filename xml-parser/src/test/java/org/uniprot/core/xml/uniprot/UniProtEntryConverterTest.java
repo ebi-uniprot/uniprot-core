@@ -232,8 +232,7 @@ class UniProtEntryConverterTest {
                         .evidences(evidences)
                         .build();
         Feature featureLocation20 =
-                new FeatureBuilder()
-                        .from(featureLocation12)
+                FeatureBuilder.from(featureLocation12)
                         .location(new FeatureLocation(20, 23))
                         .description("some desc2")
                         .build();

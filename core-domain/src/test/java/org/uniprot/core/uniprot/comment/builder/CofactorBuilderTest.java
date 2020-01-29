@@ -13,7 +13,7 @@ class CofactorBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         Cofactor obj = new CofactorBuilder().build();
-        CofactorBuilder builder = new CofactorBuilder().from(obj);
+        CofactorBuilder builder = CofactorBuilder.from(obj);
         assertNotNull(builder);
     }
 

@@ -17,7 +17,7 @@ class MaximumVelocityImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         MaximumVelocity impl = new MaximumVelocityImpl(0.7, "ab", "cd", createEvidences());
-        MaximumVelocity obj = new MaximumVelocityBuilder().from(impl).build();
+        MaximumVelocity obj = MaximumVelocityBuilder.from(impl).build();
 
         assertTrue(impl.hasEvidences());
         assertTrue(impl.hasVelocity());

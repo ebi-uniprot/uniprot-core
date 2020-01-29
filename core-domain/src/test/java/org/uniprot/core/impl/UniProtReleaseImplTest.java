@@ -19,7 +19,7 @@ class UniProtReleaseImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         UniProtRelease impl =
                 new UniProtReleaseImpl("1.0", LocalDate.now(), "2.00.87", LocalDate.now());
-        UniProtRelease obj = new UniProtReleaseBuilder().from(impl).build();
+        UniProtRelease obj = UniProtReleaseBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

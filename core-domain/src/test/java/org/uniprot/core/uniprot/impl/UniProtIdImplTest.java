@@ -24,7 +24,7 @@ class UniProtIdImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         UniProtId impl = new UniProtIdImpl("VAL");
-        UniProtId obj = new UniProtIdBuilder("VAL").from(impl).build();
+        UniProtId obj = UniProtIdBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

@@ -38,7 +38,7 @@ class JournalArticleImplTest {
                         "fpage",
                         "lpage",
                         "vol");
-        JournalArticle obj = new JournalArticleBuilder().from(impl).build();
+        JournalArticle obj = JournalArticleBuilder.from(impl).build();
 
         assertTrue(impl.hasFirstPage());
         assertTrue(impl.hasJournal());

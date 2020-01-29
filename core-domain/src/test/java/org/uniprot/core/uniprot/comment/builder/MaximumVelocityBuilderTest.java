@@ -13,7 +13,7 @@ class MaximumVelocityBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         MaximumVelocity obj = new MaximumVelocityBuilder().build();
-        MaximumVelocityBuilder builder = new MaximumVelocityBuilder().from(obj);
+        MaximumVelocityBuilder builder = MaximumVelocityBuilder.from(obj);
         assertNotNull(builder);
     }
 

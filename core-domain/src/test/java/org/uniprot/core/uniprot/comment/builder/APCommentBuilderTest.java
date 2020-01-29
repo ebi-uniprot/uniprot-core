@@ -208,7 +208,7 @@ class APCommentBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         APIsoform obj = new APIsoformBuilder().build();
-        APIsoformBuilder builder = new APIsoformBuilder().from(obj);
+        APIsoformBuilder builder = APIsoformBuilder.from(obj);
         assertNotNull(builder);
     }
 

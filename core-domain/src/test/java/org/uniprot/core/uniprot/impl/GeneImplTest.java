@@ -1,6 +1,7 @@
 package org.uniprot.core.uniprot.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.ObjectsForTests.createEvidences;
 
 import java.util.Collections;
 
@@ -19,7 +20,7 @@ class GeneImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        Gene obj = new GeneBuilder().from(gene).build();
+        Gene obj = GeneBuilder.from(gene).build();
         assertTrue(gene.equals(obj) && obj.equals(gene));
         assertEquals(gene.hashCode(), obj.hashCode());
     }
@@ -41,8 +42,7 @@ class GeneImplTest {
     @Test
     void toStringWithNameAndSynonyms() {
         Gene obj =
-                new GeneBuilder()
-                        .from(gene)
+                GeneBuilder.from(gene)
                         .synonyms(
                                 Collections.singletonList(
                                         new GeneNameSynonymBuilder().value("gs").build()))
@@ -53,8 +53,7 @@ class GeneImplTest {
     @Test
     void toStringWithNameAndOrderedLocusName() {
         Gene obj =
-                new GeneBuilder()
-                        .from(gene)
+                GeneBuilder.from(gene)
                         .orderedLocusNames(
                                 Collections.singletonList(
                                         new OrderedLocusNameBuilder().value("oln").build()))
@@ -65,8 +64,7 @@ class GeneImplTest {
     @Test
     void toStringWithNameAndORFName() {
         Gene obj =
-                new GeneBuilder()
-                        .from(gene)
+                GeneBuilder.from(gene)
                         .orfNames(
                                 Collections.singletonList(
                                         new ORFNameBuilder().value("orf").build()))
@@ -81,9 +79,25 @@ class GeneImplTest {
     }
 
     @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject_ORFNameImpl() {
+        ORFName impl = new GeneImpl.ORFNameImpl("val", createEvidences());
+        ORFName obj = ORFNameBuilder.from(impl).build();
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
+    }
+
+    @Test
     void needDefaultConstructorForJsonDeserialization_OrderedLocusNameImpl() {
         OrderedLocusName obj = new GeneImpl.OrderedLocusNameImpl();
         assertNotNull(obj);
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject_OrderedLocusNameImpl() {
+        OrderedLocusName impl = new GeneImpl.OrderedLocusNameImpl("val", createEvidences());
+        OrderedLocusName obj = OrderedLocusNameBuilder.from(impl).build();
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
     }
 
     @Test
@@ -93,8 +107,24 @@ class GeneImplTest {
     }
 
     @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject_GeneNameSynonymImpl() {
+        GeneNameSynonym impl = new GeneImpl.GeneNameSynonymImpl("val", createEvidences());
+        GeneNameSynonym obj = GeneNameSynonymBuilder.from(impl).build();
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
+    }
+
+    @Test
     void needDefaultConstructorForJsonDeserialization_GeneNameImpl() {
         GeneName obj = new GeneImpl.GeneNameImpl();
         assertNotNull(obj);
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject_GeneNameImpl() {
+        GeneName gene = new GeneImpl.GeneNameImpl("val", createEvidences());
+        GeneName obj = GeneNameBuilder.from(gene).build();
+        assertTrue(gene.equals(obj) && obj.equals(gene));
+        assertEquals(gene.hashCode(), obj.hashCode());
     }
 }

@@ -45,7 +45,7 @@ class ElectronicArticleImplTest {
                         new PublicationDateImpl(""),
                         "jn",
                         new ElectronicArticleImpl.LocatorImpl(""));
-        ElectronicArticle obj = new ElectronicArticleBuilder().from(impl).build();
+        ElectronicArticle obj = ElectronicArticleBuilder.from(impl).build();
 
         assertTrue(impl.hasJournal());
         assertTrue(impl.hasLocator());

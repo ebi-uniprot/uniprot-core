@@ -88,7 +88,7 @@ class CrossRefEntryBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         CrossRefEntry obj = new CrossRefEntryBuilder().build();
-        CrossRefEntryBuilder builder = new CrossRefEntryBuilder().from(obj);
+        CrossRefEntryBuilder builder = CrossRefEntryBuilder.from(obj);
         assertNotNull(builder);
     }
 

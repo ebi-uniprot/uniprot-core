@@ -18,7 +18,7 @@ class TaxonomyInactiveReasonImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         TaxonomyInactiveReason impl =
                 new TaxonomyInactiveReasonImpl(TaxonomyInactiveReasonType.DELETED, 765L);
-        TaxonomyInactiveReason obj = new TaxonomyInactiveReasonBuilder().from(impl).build();
+        TaxonomyInactiveReason obj = TaxonomyInactiveReasonBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

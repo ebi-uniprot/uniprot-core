@@ -203,8 +203,7 @@ class SubcellularLocationCommentBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         SubcellularLocationComment obj = new SubcellularLocationCommentBuilder().build();
-        SubcellularLocationCommentBuilder builder =
-                new SubcellularLocationCommentBuilder().from(obj);
+        SubcellularLocationCommentBuilder builder = SubcellularLocationCommentBuilder.from(obj);
         assertNotNull(builder);
     }
 

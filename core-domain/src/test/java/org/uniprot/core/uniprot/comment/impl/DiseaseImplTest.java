@@ -22,7 +22,7 @@ class DiseaseImplTest {
         DBCrossReference<DiseaseReferenceType> reference =
                 new DBCrossReferenceImpl<>(DiseaseReferenceType.MIM, "referenceId");
         Disease impl = new DiseaseImpl("id", "acc", "act", "des", reference, createEvidences());
-        Disease obj = new DiseaseBuilder().from(impl).build();
+        Disease obj = DiseaseBuilder.from(impl).build();
 
         assertTrue(impl.hasDefinedDisease());
         assertTrue(impl.hasAcronym());

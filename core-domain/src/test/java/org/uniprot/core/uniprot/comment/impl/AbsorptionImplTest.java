@@ -64,7 +64,7 @@ class AbsorptionImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         Absorption impl = new AbsorptionImpl(10, false, new NoteImpl(), createEvidences());
-        Absorption obj = new AbsorptionBuilder().from(impl).build();
+        Absorption obj = AbsorptionBuilder.from(impl).build();
 
         assertTrue(impl.hasEvidences());
         assertTrue(impl.equals(obj) && obj.equals(impl));

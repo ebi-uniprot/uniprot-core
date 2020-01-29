@@ -24,7 +24,7 @@ class SubcellularLocationCommentImplTest {
                         "mol",
                         Collections.singletonList(new SubcellularLocationBuilder().build()),
                         createNote());
-        SubcellularLocationComment obj = new SubcellularLocationCommentBuilder().from(impl).build();
+        SubcellularLocationComment obj = SubcellularLocationCommentBuilder.from(impl).build();
 
         assertTrue(impl.hasSubcellularLocations());
         assertTrue(impl.hasMolecule());

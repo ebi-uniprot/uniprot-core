@@ -88,7 +88,7 @@ class UniRefEntryIdBuilderTest {
     @Test
     void canCreateCopyFromBuilder_canSetValue() {
         UniRefEntryId ur1 = new UniRefEntryIdBuilder(null).build();
-        UniRefEntryId nullObj = new UniRefEntryIdBuilder("101").from(ur1).build();
+        UniRefEntryId nullObj = UniRefEntryIdBuilder.from(ur1).build();
         assertNull(nullObj.getValue());
         assertNull(nullObj.toString());
     }

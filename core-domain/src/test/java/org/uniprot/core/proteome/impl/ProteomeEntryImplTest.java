@@ -17,7 +17,7 @@ class ProteomeEntryImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         ProteomeEntry impl = createProteomeEntry();
-        ProteomeEntry obj = new ProteomeEntryBuilder().from(impl).build();
+        ProteomeEntry obj = ProteomeEntryBuilder.from(impl).build();
 
         assertTrue(impl.getProteinCount() > 0);
 

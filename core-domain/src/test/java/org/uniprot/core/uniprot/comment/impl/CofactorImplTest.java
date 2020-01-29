@@ -53,7 +53,7 @@ class CofactorImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         Cofactor impl = new CofactorImpl("abc", reference, createEvidences());
-        Cofactor obj = new CofactorBuilder().from(impl).build();
+        Cofactor obj = CofactorBuilder.from(impl).build();
 
         assertTrue(impl.hasName());
         assertTrue(impl.hasCofactorReference());

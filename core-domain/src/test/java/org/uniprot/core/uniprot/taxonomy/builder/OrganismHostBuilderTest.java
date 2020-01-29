@@ -24,7 +24,7 @@ class OrganismHostBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         OrganismHost organismHost = new OrganismHostBuilder().build();
-        OrganismHostBuilder builder = new OrganismHostBuilder().from(organismHost);
+        OrganismHostBuilder builder = OrganismHostBuilder.from(organismHost);
         assertNotNull(builder);
     }
 }

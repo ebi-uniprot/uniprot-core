@@ -29,7 +29,7 @@ class CanonicalProteinImplTest {
                                 "gene",
                                 GeneNameType.OLN),
                         Collections.emptyList());
-        CanonicalProtein obj = new CanonicalProteinBuilder().from(impl).build();
+        CanonicalProtein obj = CanonicalProteinBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

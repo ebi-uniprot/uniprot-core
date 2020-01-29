@@ -10,7 +10,7 @@ class UniProtAccessionBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         UniProtAccession obj = new UniProtAccessionBuilder("val").build();
-        UniProtAccessionBuilder builder = new UniProtAccessionBuilder("val").from(obj);
+        UniProtAccessionBuilder builder = UniProtAccessionBuilder.from(obj);
         assertNotNull(builder);
     }
 

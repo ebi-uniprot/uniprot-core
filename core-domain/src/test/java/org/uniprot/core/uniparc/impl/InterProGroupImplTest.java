@@ -17,7 +17,7 @@ class InterProGroupImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         InterProGroup impl = new InterProGroupImpl("id", "name");
-        InterProGroup obj = new InterProGroupBuilder().from(impl).build();
+        InterProGroup obj = InterProGroupBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

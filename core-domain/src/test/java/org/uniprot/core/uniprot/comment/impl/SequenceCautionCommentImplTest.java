@@ -24,7 +24,7 @@ class SequenceCautionCommentImplTest {
                         "sequ",
                         "note",
                         createEvidences());
-        SequenceCautionComment obj = new SequenceCautionCommentBuilder().from(impl).build();
+        SequenceCautionComment obj = SequenceCautionCommentBuilder.from(impl).build();
 
         assertTrue(impl.hasNote());
         assertTrue(impl.hasSequence());

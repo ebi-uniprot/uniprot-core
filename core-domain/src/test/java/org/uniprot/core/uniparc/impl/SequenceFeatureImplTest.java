@@ -24,7 +24,7 @@ class SequenceFeatureImplTest {
                         SignatureDbType.PFAM,
                         "dbId",
                         Collections.emptyList());
-        SequenceFeature obj = new SequenceFeatureBuilder().from(impl).build();
+        SequenceFeature obj = SequenceFeatureBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

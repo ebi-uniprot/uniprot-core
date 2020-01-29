@@ -29,7 +29,7 @@ class InteractionCommentBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         InteractionComment obj = new InteractionCommentBuilder().build();
-        InteractionCommentBuilder builder = new InteractionCommentBuilder().from(obj);
+        InteractionCommentBuilder builder = InteractionCommentBuilder.from(obj);
         assertNotNull(builder);
     }
 
