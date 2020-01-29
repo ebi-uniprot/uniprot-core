@@ -41,8 +41,8 @@ public class FtLineModelListener extends FtLineParserBaseListener
 
     @Override
     public void exitFt_line(FtLineParser.Ft_lineContext ctx) {
-        if (ft.location_end == null) {
-            ft.location_end = ft.location_start;
+        if (ft.getLocation_end() == null) {
+            ft.setLocation_end(ft.getLocation_start());
         }
         object.fts.add(ft);
         ft = null;
@@ -53,7 +53,7 @@ public class FtLineModelListener extends FtLineParserBaseListener
         String key = ctx.getText();
 
         if (!Strings.isNullOrEmpty(key)) {
-            ft.type = FtLineObject.FTType.valueOf(key);
+            ft.setType(FtLineObject.FTType.valueOf(key));
         }
     }
 
@@ -62,7 +62,7 @@ public class FtLineModelListener extends FtLineParserBaseListener
         if (ctx.note_text() != null) {
             String result = ctx.note_text().getText();
             result = result.replaceAll("''", "\"");
-            ft.ft_text = updateAltSeqText(result);
+            ft.setFt_text(updateAltSeqText(result));
         }
     }
 
@@ -75,7 +75,7 @@ public class FtLineModelListener extends FtLineParserBaseListener
 
     @Override
     public void exitFt_id(FtLineParser.Ft_idContext ctx) {
-        if (ctx.FTID_VALUE() != null) ft.ftId = ctx.FTID_VALUE().getText();
+        if (ctx.FTID_VALUE() != null) ft.setFtId(ctx.FTID_VALUE().getText());
     }
 
     @Override
@@ -83,18 +83,18 @@ public class FtLineModelListener extends FtLineParserBaseListener
         String text = ctx.getText();
         int index = text.indexOf(":");
         if (index != -1) {
-            ft.sequence = text.substring(0, index);
-            ft.location_start = text.substring(index + 1);
-        } else ft.location_start = text;
+            ft.setSequence(text.substring(0, index));
+            ft.setLocation_start(text.substring(index + 1));
+        } else ft.setLocation_start(text);
     }
 
     @Override
     public void exitLoc_end(FtLineParser.Loc_endContext ctx) {
-        ft.location_end = ctx.FT_LOCATION_2().getText().trim();
+        ft.setLocation_end(ctx.FT_LOCATION_2().getText().trim());
     }
 
     private String updateAltSeqText(String text) {
-        if (!FtLineObject.hasAltSeq(ft.type)) return text;
+        if (!FtLineObject.hasAltSeq(ft.getType())) return text;
         return fixVarSeqSpace(text);
     }
 

@@ -35,10 +35,11 @@ public class FtLineConverter extends EvidenceCollector
                 EvidenceConverterHelper.convert(f.getEvidenceInfo());
         this.addAll(evidenceMap.values());
         for (FtLineObject.FT ft : f.fts) {
-            FeatureType featureType = convert(ft.type);
+            FeatureType featureType = convert(ft.getType());
 
             FeatureLocation location =
-                    convertFeatureLocation(ft.sequence, ft.location_start, ft.location_end);
+                    convertFeatureLocation(
+                            ft.getSequence(), ft.getLocation_start(), ft.getLocation_end());
             Feature feature = convertFeature(featureType, location, ft, evidenceMap);
             features.add(feature);
         }
@@ -75,9 +76,9 @@ public class FtLineConverter extends EvidenceCollector
         return new FeatureBuilder()
                 .type(type)
                 .location(location)
-                .featureId(ft.ftId)
+                .featureId(ft.getFtId())
                 .evidences(evidences)
-                .description(ft.ft_text)
+                .description(ft.getFt_text())
                 .build();
     }
 
@@ -86,7 +87,7 @@ public class FtLineConverter extends EvidenceCollector
             FeatureLocation location,
             FtLineObject.FT ft,
             List<Evidence> evidences) {
-        String value = ft.ft_text;
+        String value = ft.getFt_text();
         value = fixVarSeqSpace(value);
         String originalSequence = "";
         List<String> alternativeSequences = new ArrayList<>();
@@ -123,7 +124,7 @@ public class FtLineConverter extends EvidenceCollector
                 .type(type)
                 .location(location)
                 .description(description)
-                .featureId(ft.ftId)
+                .featureId(ft.getFtId())
                 .alternativeSequence(altSeq)
                 .evidences(evidences)
                 .build();
@@ -179,7 +180,7 @@ public class FtLineConverter extends EvidenceCollector
             FeatureLocation location,
             FtLineObject.FT ft,
             List<Evidence> evidences) {
-        String value = ft.ft_text;
+        String value = ft.getFt_text();
         Matcher matcher = FtLineConverterUtil.VAIANT_DESC_PATTERN.matcher(value);
         String originalSequence = "";
         List<String> alternativeSequences = new ArrayList<>();
@@ -205,7 +206,7 @@ public class FtLineConverter extends EvidenceCollector
                 .type(type)
                 .location(location)
                 .description(description)
-                .featureId(ft.ftId)
+                .featureId(ft.getFtId())
                 .alternativeSequence(altSeq)
                 .evidences(evidences)
                 .dbXref(dbXref)
@@ -217,7 +218,7 @@ public class FtLineConverter extends EvidenceCollector
             FeatureLocation location,
             FtLineObject.FT ft,
             List<Evidence> evidences) {
-        String value = ft.ft_text;
+        String value = ft.getFt_text();
         Matcher matcher = FtLineConverterUtil.CONFLICT_DESC_PATTERN.matcher(value);
         String originalSequence = "";
         List<String> alternativeSequences = new ArrayList<>();
@@ -257,7 +258,7 @@ public class FtLineConverter extends EvidenceCollector
             FeatureLocation location,
             FtLineObject.FT ft,
             List<Evidence> evidences) {
-        String value = ft.ft_text;
+        String value = ft.getFt_text();
         Matcher matcher = FtLineConverterUtil.MUTAGEN_DESC_PATTERN.matcher(value);
         String originalSequence = "";
         List<String> alternativeSequences = new ArrayList<>();
@@ -300,10 +301,10 @@ public class FtLineConverter extends EvidenceCollector
                         .type(type)
                         .location(location)
                         .evidences(evidences)
-                        .description(ft.ft_text);
+                        .description(ft.getFt_text());
 
-        if (!Strings.isNullOrEmpty(ft.ftId)) {
-            featureBuilder.featureId(ft.ftId);
+        if (!Strings.isNullOrEmpty(ft.getFtId())) {
+            featureBuilder.featureId(ft.getFtId());
         }
 
         return featureBuilder.build();
