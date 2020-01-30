@@ -8,7 +8,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.*;
-import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject.AlternativeNameSequenceEnum;
 import org.uniprot.core.uniprot.comment.*;
 
 class CcAPConverterTest {
@@ -29,7 +28,7 @@ class CcAPConverterTest {
         // CC         IsoId=O43918-3; Sequence=VSP_004089, VSP_004090;
         CcLineObject ccLineO = new CcLineObject();
         CC cc1 = new CC();
-        cc1.setTopic(CcLineObject.CCTopicEnum.ALTERNATIVE_PRODUCTS);
+        cc1.setTopic(CC.CCTopicEnum.ALTERNATIVE_PRODUCTS);
         AlternativeProducts wr = new AlternativeProducts();
         String commentStr =
                 "Additional isoforms seem to exist. "
@@ -41,7 +40,7 @@ class CcAPConverterTest {
         alName1.setName(new EvidencedString("1", new ArrayList<>()));
         alName1.getSynNames().add(new EvidencedString("AIRE-1", new ArrayList<String>()));
         alName1.getIsoId().add("O43918-1");
-        alName1.setSequenceEnum(AlternativeNameSequenceEnum.DISPLAYED);
+        alName1.setSequenceEnum(AlternativeProductName.AlternativeNameSequenceEnum.DISPLAYED);
 
         AlternativeProductName alName2 = new AlternativeProductName();
         alName2.setName(new EvidencedString("2", new ArrayList<>()));

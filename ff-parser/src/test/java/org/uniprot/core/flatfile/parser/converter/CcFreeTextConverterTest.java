@@ -30,7 +30,7 @@ class CcFreeTextConverterTest {
         */
         CcLineObject ccLineO = new CcLineObject();
         CC cc1 = new CC();
-        cc1.setTopic(CcLineObject.CCTopicEnum.FUNCTION);
+        cc1.setTopic(CC.CCTopicEnum.FUNCTION);
         FreeText texts = new FreeText();
         String val =
                 "This enzyme is necessary for target cell lysis in cell-mediated immune responses."
@@ -38,7 +38,7 @@ class CcFreeTextConverterTest {
         texts.getTexts().add(new EvidencedString(val, new ArrayList<String>()));
         cc1.setObject(texts);
         CC cc2 = new CC();
-        cc2.setTopic(CcLineObject.CCTopicEnum.DOMAIN);
+        cc2.setTopic(CC.CCTopicEnum.DOMAIN);
         FreeText texts2 = new FreeText();
         String val2 =
                 "The di-lysine motif may confer endoplasmic reticulum localization (By similarity)";

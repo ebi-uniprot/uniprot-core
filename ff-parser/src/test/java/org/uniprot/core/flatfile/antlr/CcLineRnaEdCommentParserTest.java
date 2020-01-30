@@ -82,7 +82,7 @@ class CcLineRnaEdCommentParserTest {
         RnaEditing re = (RnaEditing) cc.getObject();
         assertEquals(0, re.getLocations().size());
         assertEquals(
-                CcLineObject.RnaEditingLocationEnum.NOT_APPLICABLE.UNDETERMINED,
+                RnaEditing.RnaEditingLocationEnum.NOT_APPLICABLE.UNDETERMINED,
                 re.getLocationEnum());
         assertEquals(
                 "Partially edited. 11 sites are edited by Adar.", re.getNote().get(0).getValue());

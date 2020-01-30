@@ -81,7 +81,7 @@ class CcLineSubCellCommentParserTest {
                 obj.getEvidenceInfo().getEvidences().get(sl.getLocations().get(0)).get(0));
     }
 
-    private void verify(LocationValue lv, String value, CcLineObject.LocationFlagEnum flag) {
+    private void verify(LocationValue lv, String value, LocationValue.LocationFlagEnum flag) {
         assertEquals(value, lv.getValue());
         assertEquals(flag, lv.getFlag());
     }
@@ -108,11 +108,11 @@ class CcLineSubCellCommentParserTest {
         verify(
                 sl.getLocations().get(0).getTopology(),
                 "Peripheral membrane protein",
-                CcLineObject.LocationFlagEnum.BY_SIMILARITY);
+                LocationValue.LocationFlagEnum.BY_SIMILARITY);
         verify(
                 sl.getLocations().get(1).getSubcellularLocation(),
                 "Secreted",
-                CcLineObject.LocationFlagEnum.BY_SIMILARITY);
+                LocationValue.LocationFlagEnum.BY_SIMILARITY);
     }
 
     @Test
@@ -133,7 +133,7 @@ class CcLineSubCellCommentParserTest {
         verify(
                 sl.getLocations().get(0).getSubcellularLocation(),
                 "Cytoplasm",
-                CcLineObject.LocationFlagEnum.PROBABLE);
+                LocationValue.LocationFlagEnum.PROBABLE);
         // verify(sl.getLocations().get(0).getTopology(), "Peripheral membrane protein",
         // LocationFlagEnum.By_similarity );
         // verify(sl.getLocations().get(1).subcellular_location, "Secreted",
@@ -302,7 +302,7 @@ class CcLineSubCellCommentParserTest {
         verify(
                 sl.getLocations().get(0).getTopology(),
                 "Multi-pass membrane protein",
-                CcLineObject.LocationFlagEnum.BY_SIMILARITY);
+                LocationValue.LocationFlagEnum.BY_SIMILARITY);
         // verify(sl.getLocations().get(1).subcellular_location, "Secreted",
         // LocationFlagEnum.By_similarity );
         assertEquals(
@@ -373,7 +373,7 @@ class CcLineSubCellCommentParserTest {
         verify(
                 sl.getLocations().get(0).getTopology(),
                 "Multi-pass membrane protein",
-                CcLineObject.LocationFlagEnum.BY_SIMILARITY);
+                LocationValue.LocationFlagEnum.BY_SIMILARITY);
         assertEquals(
                 "ECO:0000002|PubMed:1234213",
                 obj.getEvidenceInfo().getEvidences().get(sl.getLocations().get(0)).get(0));

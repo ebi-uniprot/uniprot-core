@@ -27,16 +27,16 @@ class CcSeqCautionConverterTest {
 
         CcLineObject ccLineO = new CcLineObject();
         CC cc1 = new CC();
-        cc1.setTopic(CcLineObject.CCTopicEnum.SEQUENCE_CAUTION);
+        cc1.setTopic(CC.CCTopicEnum.SEQUENCE_CAUTION);
         SequenceCaution sc = new SequenceCaution();
         SequenceCautionObject sco1 = new SequenceCautionObject();
         sco1.setSequence("CAI12537.1");
-        sco1.setType(CcLineObject.SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION);
+        sco1.setType(SequenceCautionObject.SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION);
         sc.getSequenceCautionObjects().add(sco1);
 
         SequenceCautionObject sco2 = new SequenceCautionObject();
         sco2.setSequence("CAI39742.1");
-        sco2.setType(CcLineObject.SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION);
+        sco2.setType(SequenceCautionObject.SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION);
 
         sc.getSequenceCautionObjects().add(sco2);
 

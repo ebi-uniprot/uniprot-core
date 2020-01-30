@@ -65,7 +65,7 @@ public class CcLineConverter extends EvidenceCollector
         this.addAll(evidences.values());
         List<Comment> comments = new ArrayList<>();
         for (CC cc : f.getCcs()) {
-            if (cc.getTopic() == CcLineObject.CCTopicEnum.SEQUENCE_CAUTION) {
+            if (cc.getTopic() == CC.CCTopicEnum.SEQUENCE_CAUTION) {
                 List<SequenceCautionComment> scComments = convertSequenceCaution(cc, evidences);
                 comments.addAll(scComments);
             } else {
@@ -81,7 +81,7 @@ public class CcLineConverter extends EvidenceCollector
             CC cc, Map<Object, List<Evidence>> evidenceMap) {
 
         List<SequenceCautionComment> comments = new ArrayList<>();
-        if (cc.getTopic() != CcLineObject.CCTopicEnum.SEQUENCE_CAUTION) {
+        if (cc.getTopic() != CC.CCTopicEnum.SEQUENCE_CAUTION) {
             return comments;
         }
         SequenceCaution seqC = (SequenceCaution) cc.getObject();
@@ -105,7 +105,8 @@ public class CcLineConverter extends EvidenceCollector
         return comments;
     }
 
-    private SequenceCautionType convertSequenceCautionType(CcLineObject.SequenceCautionType type) {
+    private SequenceCautionType convertSequenceCautionType(
+            SequenceCautionObject.SequenceCautionType type) {
         switch (type) {
             case FRAMESHIFT:
                 return SequenceCautionType.FRAMESHIFT;
@@ -125,7 +126,7 @@ public class CcLineConverter extends EvidenceCollector
 
     @SuppressWarnings("unchecked")
     private <T extends Comment> T convert(CC cc, Map<Object, List<Evidence>> evidences) {
-        CcLineObject.CCTopicEnum topic = cc.getTopic();
+        CC.CCTopicEnum topic = cc.getTopic();
 
         CommentType type = convert(topic);
         T comment = null;
@@ -222,7 +223,7 @@ public class CcLineConverter extends EvidenceCollector
     }
 
     private IsoformSequenceStatus convertIsoformSequenceStatus(
-            CcLineObject.AlternativeNameSequenceEnum type) {
+            AlternativeProductName.AlternativeNameSequenceEnum type) {
         if (type == null) return IsoformSequenceStatus.DESCRIBED;
         switch (type) {
             case DISPLAYED:
@@ -511,11 +512,10 @@ public class CcLineConverter extends EvidenceCollector
         }
 
         if (cObj.getLocations().isEmpty()) {
-            if (cObj.getLocationEnum() == CcLineObject.RnaEditingLocationEnum.UNDETERMINED) {
+            if (cObj.getLocationEnum() == RnaEditing.RnaEditingLocationEnum.UNDETERMINED) {
                 builder.locationType(RnaEditingLocationType.Undetermined);
 
-            } else if (cObj.getLocationEnum()
-                    == CcLineObject.RnaEditingLocationEnum.NOT_APPLICABLE) {
+            } else if (cObj.getLocationEnum() == RnaEditing.RnaEditingLocationEnum.NOT_APPLICABLE) {
                 builder.locationType(RnaEditingLocationType.Not_applicable);
             }
         } else {
@@ -676,7 +676,7 @@ public class CcLineConverter extends EvidenceCollector
         return new DBCrossReferenceImpl<>(ReactionReferenceType.typeOf(type), id);
     }
 
-    private CommentType convert(CcLineObject.CCTopicEnum topic) {
+    private CommentType convert(CC.CCTopicEnum topic) {
         CommentType type = CommentType.UNKNOWN;
         switch (topic) {
             case ALLERGEN:

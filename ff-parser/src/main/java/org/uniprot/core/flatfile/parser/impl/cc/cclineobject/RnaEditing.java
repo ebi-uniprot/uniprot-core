@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RnaEditing {
     private String molecule;
-    private CcLineObject.RnaEditingLocationEnum locationEnum;
+    private RnaEditingLocationEnum locationEnum;
     private List<Integer> locations = new ArrayList<>();
     private List<EvidencedString> note = new ArrayList<>();
 
@@ -17,11 +17,11 @@ public class RnaEditing {
         this.molecule = molecule;
     }
 
-    public CcLineObject.RnaEditingLocationEnum getLocationEnum() {
+    public RnaEditingLocationEnum getLocationEnum() {
         return locationEnum;
     }
 
-    public void setLocationEnum(CcLineObject.RnaEditingLocationEnum locationEnum) {
+    public void setLocationEnum(RnaEditingLocationEnum locationEnum) {
         this.locationEnum = locationEnum;
     }
 
@@ -39,5 +39,10 @@ public class RnaEditing {
 
     public void setNote(List<EvidencedString> note) {
         this.note = note;
+    }
+
+    public enum RnaEditingLocationEnum {
+        UNDETERMINED,
+        NOT_APPLICABLE
     }
 }

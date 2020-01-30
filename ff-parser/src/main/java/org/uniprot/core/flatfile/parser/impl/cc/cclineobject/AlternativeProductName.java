@@ -4,11 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AlternativeProductName {
+    public enum AlternativeNameSequenceEnum {
+        DISPLAYED,
+        EXTERNAL,
+        NOT_DESCRIBED,
+        DESCRIBED,
+        UNSURE
+    }
+
     private EvidencedString name;
     private List<EvidencedString> synNames = new ArrayList<>();
     private List<String> isoId = new ArrayList<>();
     private List<String> sequenceFTId = new ArrayList<>();
-    private CcLineObject.AlternativeNameSequenceEnum sequenceEnum = null;
+    private AlternativeNameSequenceEnum sequenceEnum = null;
     private List<EvidencedString> note = new ArrayList<>(); // list of evidenced String
 
     public EvidencedString getName() {
@@ -43,11 +51,11 @@ public class AlternativeProductName {
         this.sequenceFTId = sequenceFTId;
     }
 
-    public CcLineObject.AlternativeNameSequenceEnum getSequenceEnum() {
+    public AlternativeNameSequenceEnum getSequenceEnum() {
         return sequenceEnum;
     }
 
-    public void setSequenceEnum(CcLineObject.AlternativeNameSequenceEnum sequenceEnum) {
+    public void setSequenceEnum(AlternativeNameSequenceEnum sequenceEnum) {
         this.sequenceEnum = sequenceEnum;
     }
 

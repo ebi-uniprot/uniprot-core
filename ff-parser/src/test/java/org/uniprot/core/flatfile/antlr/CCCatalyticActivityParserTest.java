@@ -39,7 +39,7 @@ class CCCatalyticActivityParserTest {
         CcLineObject obj = parser.parse(ccLine);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
-        assertEquals(CcLineObject.CCTopicEnum.CATALYTIC_ACTIVITY, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.CATALYTIC_ACTIVITY, cc.getTopic());
         assertTrue(cc.getObject() instanceof CatalyticActivity);
         CatalyticActivity msObj = (CatalyticActivity) cc.getObject();
         CAReaction reaction = msObj.getReaction();
@@ -93,7 +93,7 @@ class CCCatalyticActivityParserTest {
         CcLineObject obj = parser.parse(ccLine);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
-        assertEquals(CcLineObject.CCTopicEnum.CATALYTIC_ACTIVITY, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.CATALYTIC_ACTIVITY, cc.getTopic());
         assertTrue(cc.getObject() instanceof CatalyticActivity);
         CatalyticActivity msObj = (CatalyticActivity) cc.getObject();
         CAReaction reaction = msObj.getReaction();
@@ -191,7 +191,7 @@ class CCCatalyticActivityParserTest {
         CcLineObject obj = parser.parse(ccLine);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
-        assertEquals(CcLineObject.CCTopicEnum.CATALYTIC_ACTIVITY, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.CATALYTIC_ACTIVITY, cc.getTopic());
         assertTrue(cc.getObject() instanceof CatalyticActivity);
         CatalyticActivity msObj = (CatalyticActivity) cc.getObject();
         CAReaction reaction = msObj.getReaction();
@@ -284,7 +284,7 @@ class CCCatalyticActivityParserTest {
         CcLineObject obj = parser.parse(ccLine);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
-        assertEquals(CcLineObject.CCTopicEnum.CATALYTIC_ACTIVITY, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.CATALYTIC_ACTIVITY, cc.getTopic());
         assertTrue(cc.getObject() instanceof CatalyticActivity);
         CatalyticActivity msObj = (CatalyticActivity) cc.getObject();
         CAReaction reaction = msObj.getReaction();
