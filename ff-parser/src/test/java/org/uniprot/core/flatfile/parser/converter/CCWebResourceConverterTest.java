@@ -22,7 +22,7 @@ class CCWebResourceConverterTest {
         // CC       URL="http://bioinf.uta.fi/CD40Lbase/";
         CcLineObject ccLineO = new CcLineObject();
         CC cc1 = new CC();
-        cc1.setTopic(CcLineObject.CCTopicEnum.WEB_RESOURCE);
+        cc1.setTopic(CC.CCTopicEnum.WEB_RESOURCE);
         WebResource wr = new WebResource();
         wr.setName("CD40Lbase");
         wr.setNote("CD40L defect database");

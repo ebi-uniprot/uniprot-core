@@ -19,7 +19,7 @@ class CcSubCellLocationConverterTest {
     void testEvidenceInLocationLevel() {
         CcLineObject ccLineO = new CcLineObject();
         CC cc1 = new CC();
-        cc1.setTopic(CcLineObject.CCTopicEnum.SUBCELLULAR_LOCATION);
+        cc1.setTopic(CC.CCTopicEnum.SUBCELLULAR_LOCATION);
         SubcullarLocation subcellLocation = new SubcullarLocation();
         LocationObject locationObj = new LocationObject();
         LocationValue location = new LocationValue();
@@ -44,7 +44,7 @@ class CcSubCellLocationConverterTest {
     void tesWithEvidence() {
         CcLineObject ccLineO = new CcLineObject();
         CC cc1 = new CC();
-        cc1.setTopic(CcLineObject.CCTopicEnum.SUBCELLULAR_LOCATION);
+        cc1.setTopic(CC.CCTopicEnum.SUBCELLULAR_LOCATION);
         SubcullarLocation subcellLocation = new SubcullarLocation();
         LocationObject locationObj = new LocationObject();
         LocationValue location = new LocationValue();

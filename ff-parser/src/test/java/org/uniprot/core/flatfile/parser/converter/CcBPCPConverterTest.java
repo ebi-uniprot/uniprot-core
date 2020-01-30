@@ -20,7 +20,7 @@ class CcBPCPConverterTest {
     void testBPCP() {
         CcLineObject ccLineO = new CcLineObject();
         CC cc1 = new CC();
-        cc1.setTopic(CcLineObject.CCTopicEnum.BIOPHYSICOCHEMICAL_PROPERTIES);
+        cc1.setTopic(CC.CCTopicEnum.BIOPHYSICOCHEMICAL_PROPERTIES);
         BiophysicochemicalProperties wr = new BiophysicochemicalProperties();
         wr.getKms()
                 .add(
@@ -67,7 +67,7 @@ class CcBPCPConverterTest {
         // CC         thermal inactivation by ATP;
         CcLineObject ccLineO = new CcLineObject();
         CC cc1 = new CC();
-        cc1.setTopic(CcLineObject.CCTopicEnum.BIOPHYSICOCHEMICAL_PROPERTIES);
+        cc1.setTopic(CC.CCTopicEnum.BIOPHYSICOCHEMICAL_PROPERTIES);
         BiophysicochemicalProperties wr = new BiophysicochemicalProperties();
         wr.getKms().add(new EvidencedString("71 uM for ATP", new ArrayList<String>()));
         wr.getKms().add(new EvidencedString("98 uM for ADP", new ArrayList<String>()));
@@ -128,7 +128,7 @@ class CcBPCPConverterTest {
         // CC         thermal inactivation by ATP;
         CcLineObject ccLineO = new CcLineObject();
         CC cc1 = new CC();
-        cc1.setTopic(CcLineObject.CCTopicEnum.BIOPHYSICOCHEMICAL_PROPERTIES);
+        cc1.setTopic(CC.CCTopicEnum.BIOPHYSICOCHEMICAL_PROPERTIES);
         BiophysicochemicalProperties wr = new BiophysicochemicalProperties();
         wr.getKms().add(new EvidencedString("71 uM for ATP", new ArrayList<String>()));
         wr.getKms().add(new EvidencedString("98 uM for ADP", new ArrayList<String>()));

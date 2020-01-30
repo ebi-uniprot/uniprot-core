@@ -26,7 +26,7 @@ class CcRnaEditingConverterTest {
         // CC       Note=The initiator methionine is created by RNA editing.
         CcLineObject ccLineO = new CcLineObject();
         CC cc1 = new CC();
-        cc1.setTopic(CcLineObject.CCTopicEnum.RNA_EDITING);
+        cc1.setTopic(CC.CCTopicEnum.RNA_EDITING);
         RnaEditing rnaEd = new RnaEditing();
         rnaEd.getNote()
                 .add(

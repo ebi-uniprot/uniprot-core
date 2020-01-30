@@ -24,7 +24,7 @@ class CcMSConverterTest {
         // CC       2); Source=PubMed:10531593;
         CcLineObject ccLineO = new CcLineObject();
         CC cc1 = new CC();
-        cc1.setTopic(CcLineObject.CCTopicEnum.MASS_SPECTROMETRY);
+        cc1.setTopic(CC.CCTopicEnum.MASS_SPECTROMETRY);
         MassSpectrometry wr = new MassSpectrometry();
         wr.setMass(13822);
         wr.setMethod("MALDI");

@@ -31,7 +31,7 @@ class CcLineTextCommentParserTest {
         CcLineObject obj = parser.parse(lines);
         assertEquals(2, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
-        assertEquals(CcLineObject.CCTopicEnum.FUNCTION, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.FUNCTION, cc.getTopic());
 
         assertTrue(cc.getObject() instanceof FreeText);
         FreeText texts = (FreeText) cc.getObject();
@@ -43,7 +43,7 @@ class CcLineTextCommentParserTest {
                 Collections.emptyList());
 
         cc = obj.getCcs().get(1);
-        assertEquals(CcLineObject.CCTopicEnum.ACTIVITY_REGULATION.CAUTION, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.ACTIVITY_REGULATION.CAUTION, cc.getTopic());
         assertTrue(cc.getObject() instanceof FreeText);
         texts = (FreeText) cc.getObject();
         assertEquals(1, texts.getTexts().size());
@@ -69,7 +69,7 @@ class CcLineTextCommentParserTest {
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
-        assertEquals(CcLineObject.CCTopicEnum.SUBUNIT, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.SUBUNIT, cc.getTopic());
 
         assertTrue(cc.getObject() instanceof FreeText);
         FreeText texts = (FreeText) cc.getObject();
@@ -90,7 +90,7 @@ class CcLineTextCommentParserTest {
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
-        assertEquals(CcLineObject.CCTopicEnum.SUBUNIT, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.SUBUNIT, cc.getTopic());
 
         assertTrue(cc.getObject() instanceof FreeText);
         FreeText texts = (FreeText) cc.getObject();
@@ -113,7 +113,7 @@ class CcLineTextCommentParserTest {
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
-        assertEquals(CcLineObject.CCTopicEnum.FUNCTION, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.FUNCTION, cc.getTopic());
 
         assertTrue(cc.getObject() instanceof FreeText);
         FreeText texts = (FreeText) cc.getObject();
@@ -135,7 +135,7 @@ class CcLineTextCommentParserTest {
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
-        assertEquals(CcLineObject.CCTopicEnum.FUNCTION, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.FUNCTION, cc.getTopic());
 
         assertTrue(cc.getObject() instanceof FreeText);
         FreeText texts = (FreeText) cc.getObject();
@@ -156,7 +156,7 @@ class CcLineTextCommentParserTest {
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
-        assertEquals(CcLineObject.CCTopicEnum.PATHWAY, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.PATHWAY, cc.getTopic());
 
         assertTrue(cc.getObject() instanceof FreeText);
         FreeText texts = (FreeText) cc.getObject();
@@ -177,7 +177,7 @@ class CcLineTextCommentParserTest {
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
-        assertEquals(CcLineObject.CCTopicEnum.FUNCTION, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.FUNCTION, cc.getTopic());
 
         assertTrue(cc.getObject() instanceof FreeText);
         FreeText texts = (FreeText) cc.getObject();
@@ -198,7 +198,7 @@ class CcLineTextCommentParserTest {
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
-        assertEquals(CcLineObject.CCTopicEnum.FUNCTION, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.FUNCTION, cc.getTopic());
 
         assertTrue(cc.getObject() instanceof FreeText);
         FreeText texts = (FreeText) cc.getObject();
@@ -243,7 +243,7 @@ class CcLineTextCommentParserTest {
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
-        assertEquals(CcLineObject.CCTopicEnum.ACTIVITY_REGULATION, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.ACTIVITY_REGULATION, cc.getTopic());
 
         assertTrue(cc.getObject() instanceof FreeText);
         FreeText texts = (FreeText) cc.getObject();
@@ -269,7 +269,7 @@ class CcLineTextCommentParserTest {
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
-        assertEquals(CcLineObject.CCTopicEnum.ACTIVITY_REGULATION, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.ACTIVITY_REGULATION, cc.getTopic());
 
         assertTrue(cc.getObject() instanceof FreeText);
         FreeText texts = (FreeText) cc.getObject();
@@ -296,7 +296,7 @@ class CcLineTextCommentParserTest {
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
-        assertEquals(CcLineObject.CCTopicEnum.SIMILARITY, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.SIMILARITY, cc.getTopic());
 
         assertTrue(cc.getObject() instanceof FreeText);
         FreeText texts = (FreeText) cc.getObject();
@@ -319,7 +319,7 @@ class CcLineTextCommentParserTest {
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
-        assertEquals(CcLineObject.CCTopicEnum.FUNCTION, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.FUNCTION, cc.getTopic());
 
         assertTrue(cc.getObject() instanceof FreeText);
         FreeText texts = (FreeText) cc.getObject();
@@ -347,7 +347,7 @@ class CcLineTextCommentParserTest {
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
-        assertEquals(CcLineObject.CCTopicEnum.ACTIVITY_REGULATION, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.ACTIVITY_REGULATION, cc.getTopic());
 
         assertTrue(cc.getObject() instanceof FreeText);
         FreeText texts = (FreeText) cc.getObject();
@@ -375,7 +375,7 @@ class CcLineTextCommentParserTest {
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
-        assertEquals(CcLineObject.CCTopicEnum.SIMILARITY, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.SIMILARITY, cc.getTopic());
 
         assertTrue(cc.getObject() instanceof FreeText);
         FreeText texts = (FreeText) cc.getObject();
@@ -398,7 +398,7 @@ class CcLineTextCommentParserTest {
         CcLineObject obj = parser.parse(lines);
         assertEquals(2, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
-        assertEquals(CcLineObject.CCTopicEnum.FUNCTION, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.FUNCTION, cc.getTopic());
 
         assertTrue(cc.getObject() instanceof FreeText);
         FreeText texts = (FreeText) cc.getObject();
@@ -411,7 +411,7 @@ class CcLineTextCommentParserTest {
                 Collections.emptyList());
 
         cc = obj.getCcs().get(1);
-        assertEquals(CcLineObject.CCTopicEnum.CAUTION, cc.getTopic());
+        assertEquals(CC.CCTopicEnum.CAUTION, cc.getTopic());
         assertTrue(cc.getObject() instanceof FreeText);
         texts = (FreeText) cc.getObject();
         assertEquals(1, texts.getTexts().size());

@@ -36,14 +36,14 @@ class CcLineSeqCautionCommentParserTest {
         verify(
                 sc.getSequenceCautionObjects().get(0),
                 "CAI24940.1",
-                CcLineObject.SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION,
+                SequenceCautionObject.SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION,
                 null);
     }
 
     private void verify(
             SequenceCautionObject obj,
             String seq,
-            CcLineObject.SequenceCautionType type,
+            SequenceCautionObject.SequenceCautionType type,
             String note) {
         assertEquals(seq, obj.getSequence());
 
@@ -68,7 +68,7 @@ class CcLineSeqCautionCommentParserTest {
         verify(
                 sc.getSequenceCautionObjects().get(0),
                 "AAG34697.1",
-                CcLineObject.SequenceCautionType.ERRONEOUS_TERMINATION,
+                SequenceCautionObject.SequenceCautionType.ERRONEOUS_TERMINATION,
                 "Translated as Ser");
     }
 
@@ -89,12 +89,12 @@ class CcLineSeqCautionCommentParserTest {
         verify(
                 sc.getSequenceCautionObjects().get(0),
                 "CAI12537.1",
-                CcLineObject.SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION,
+                SequenceCautionObject.SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION,
                 null);
         verify(
                 sc.getSequenceCautionObjects().get(1),
                 "CAI39742.1",
-                CcLineObject.SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION,
+                SequenceCautionObject.SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION,
                 null);
     }
 
@@ -115,13 +115,13 @@ class CcLineSeqCautionCommentParserTest {
         verify(
                 sc.getSequenceCautionObjects().get(0),
                 "AAA25676.1",
-                CcLineObject.SequenceCautionType.FRAMESHIFT,
+                SequenceCautionObject.SequenceCautionType.FRAMESHIFT,
                 null);
 
         verify(
                 sc.getSequenceCautionObjects().get(1),
                 "CAD59919.1",
-                CcLineObject.SequenceCautionType.FRAMESHIFT,
+                SequenceCautionObject.SequenceCautionType.FRAMESHIFT,
                 null);
     }
 
@@ -141,7 +141,7 @@ class CcLineSeqCautionCommentParserTest {
         verify(
                 sc.getSequenceCautionObjects().get(0),
                 "AAA85813.1",
-                CcLineObject.SequenceCautionType.FRAMESHIFT,
+                SequenceCautionObject.SequenceCautionType.FRAMESHIFT,
                 "Frameshift correction allows the C-terminal sequence to be compatible with the results of mass spectrometry and X-ray crystallography");
     }
 
@@ -161,7 +161,7 @@ class CcLineSeqCautionCommentParserTest {
         verify(
                 sc.getSequenceCautionObjects().get(0),
                 "CAA57511.1",
-                CcLineObject.SequenceCautionType.FRAMESHIFT,
+                SequenceCautionObject.SequenceCautionType.FRAMESHIFT,
                 "The predicted gene.");
         assertEquals(
                 "ECO:0000256|HAMAP-Rule:MF_00205",
@@ -195,7 +195,7 @@ class CcLineSeqCautionCommentParserTest {
         verify(
                 sc.getSequenceCautionObjects().get(0),
                 "CAA57511.1",
-                CcLineObject.SequenceCautionType.FRAMESHIFT,
+                SequenceCautionObject.SequenceCautionType.FRAMESHIFT,
                 "The predicted gene.");
         assertEquals(
                 "ECO:0000256|HAMAP-Rule:MF_00205",
@@ -227,7 +227,7 @@ class CcLineSeqCautionCommentParserTest {
         verify(
                 sc.getSequenceCautionObjects().get(0),
                 "CAA39814.1",
-                CcLineObject.SequenceCautionType.FRAMESHIFT,
+                SequenceCautionObject.SequenceCautionType.FRAMESHIFT,
                 null);
         CcLineConverter converter = new CcLineConverter(new HashMap<>(), new HashMap<>(), true);
         List<Comment> comments = converter.convert(obj);

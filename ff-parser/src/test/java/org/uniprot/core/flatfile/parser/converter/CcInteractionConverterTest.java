@@ -30,7 +30,7 @@ class CcInteractionConverterTest {
         */
         CcLineObject ccLineO = new CcLineObject();
         CC cc1 = new CC();
-        cc1.setTopic(CcLineObject.CCTopicEnum.INTERACTION);
+        cc1.setTopic(CC.CCTopicEnum.INTERACTION);
 
         Interaction ia = new Interaction();
         cc1.setObject(ia);

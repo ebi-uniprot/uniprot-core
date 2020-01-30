@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.AlternativeProductName;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.AlternativeProducts;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
@@ -42,7 +43,7 @@ class CcLineAPCommentParserTest {
         assertEquals(1, ap.getNames().get(0).getIsoId().size());
         assertEquals("O43918-1", ap.getNames().get(0).getIsoId().get(0));
         assertEquals(
-                CcLineObject.AlternativeNameSequenceEnum.DISPLAYED,
+                AlternativeProductName.AlternativeNameSequenceEnum.DISPLAYED,
                 ap.getNames().get(0).getSequenceEnum());
         assertTrue(ap.getNames().get(0).getSequenceFTId().isEmpty());
         assertEquals(1, ap.getNames().get(0).getSynNames().size());
@@ -92,7 +93,7 @@ class CcLineAPCommentParserTest {
         assertEquals(1, ap.getNames().get(0).getIsoId().size());
         assertEquals("P12544-1", ap.getNames().get(0).getIsoId().get(0));
         assertEquals(
-                CcLineObject.AlternativeNameSequenceEnum.DESCRIBED.DISPLAYED,
+                AlternativeProductName.AlternativeNameSequenceEnum.DESCRIBED.DISPLAYED,
                 ap.getNames().get(0).getSequenceEnum());
         assertTrue(ap.getNames().get(0).getSequenceFTId().isEmpty());
         assertEquals(0, ap.getNames().get(0).getSynNames().size());

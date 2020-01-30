@@ -39,7 +39,7 @@ class CcDiseaseConverterTest {
          */
         CcLineObject ccLineO = new CcLineObject();
         CC cc1 = new CC();
-        cc1.setTopic(CcLineObject.CCTopicEnum.DISEASE);
+        cc1.setTopic(CC.CCTopicEnum.DISEASE);
         Disease disease = new Disease();
         cc1.setObject(disease);
         disease.setName("Kleefstra syndrome");
@@ -82,7 +82,7 @@ class CcDiseaseConverterTest {
 
         CcLineObject ccLineO = new CcLineObject();
         CC cc1 = new CC();
-        cc1.setTopic(CcLineObject.CCTopicEnum.DISEASE);
+        cc1.setTopic(CC.CCTopicEnum.DISEASE);
         Disease disease = new Disease();
         cc1.setObject(disease);
         disease.setName("Kleefstra syndrome");
@@ -137,7 +137,7 @@ class CcDiseaseConverterTest {
         // Note=Frequently mutated in a variety of human cancers (PubMed:15155950)
         CcLineObject ccLineO = new CcLineObject();
         CC cc1 = new CC();
-        cc1.setTopic(CcLineObject.CCTopicEnum.DISEASE);
+        cc1.setTopic(CC.CCTopicEnum.DISEASE);
         Disease disease = new Disease();
         cc1.setObject(disease);
         String disNote = "Frequently mutated in a variety of human cancers (PubMed:15155950).";

@@ -3,7 +3,7 @@ package org.uniprot.core.flatfile.parser.impl.cc.cclineobject;
 public class SequenceCautionObject {
     private String molecule;
     private String sequence;
-    private CcLineObject.SequenceCautionType type;
+    private SequenceCautionType type;
     //   private List<Integer> positions = new ArrayList<>();
     //   private String positionValue;
     private String note;
@@ -24,11 +24,11 @@ public class SequenceCautionObject {
         this.sequence = sequence;
     }
 
-    public CcLineObject.SequenceCautionType getType() {
+    public SequenceCautionType getType() {
         return type;
     }
 
-    public void setType(CcLineObject.SequenceCautionType type) {
+    public void setType(SequenceCautionType type) {
         this.type = type;
     }
 
@@ -38,5 +38,19 @@ public class SequenceCautionObject {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public enum SequenceCautionType {
+        FRAMESHIFT,
+        ERRONEOUS_INITIATION,
+        ERRONEOUS_TERMINATION,
+        ERRONEOUS_GENE_MODEL_PREDICTION,
+        ERRONEOUS_TRANSLATION,
+        MISCELLANEOUS_DISCREPANCY;
+
+        public static SequenceCautionType fromSting(String s) {
+            String replace = s.replace(' ', '_');
+            return SequenceCautionType.valueOf(replace.toUpperCase());
+        }
     }
 }
