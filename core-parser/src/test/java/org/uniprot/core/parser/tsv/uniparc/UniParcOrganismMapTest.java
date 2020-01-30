@@ -43,13 +43,12 @@ class UniParcOrganismMapTest {
 
     private List<Taxonomy> getTaxonomies() {
         Taxonomy taxonomy =
-                TaxonomyBuilder.newInstance()
+                new TaxonomyBuilder()
                         .taxonId(9606)
                         .scientificName("Homo sapiens")
                         .commonName("HUMAN")
                         .build();
-        Taxonomy taxonomy2 =
-                TaxonomyBuilder.newInstance().taxonId(10090).scientificName("MOUSE").build();
+        Taxonomy taxonomy2 = new TaxonomyBuilder().taxonId(10090).scientificName("MOUSE").build();
         return Arrays.asList(taxonomy, taxonomy2);
     }
 }

@@ -25,14 +25,14 @@ class ProteomeComponentMapTest {
     void testAttributeValues() {
         List<Component> components = new ArrayList<>();
         Component component1 =
-                ComponentBuilder.newInstance()
+                new ComponentBuilder()
                         .name("someName1")
                         .description("some description")
                         .proteinCount(102)
                         .build();
 
         Component component2 =
-                ComponentBuilder.newInstance()
+                new ComponentBuilder()
                         .name("someName2")
                         .description("some description 2")
                         .proteinCount(102)
@@ -40,7 +40,7 @@ class ProteomeComponentMapTest {
 
         components.add(component1);
         components.add(component2);
-        ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().components(components).build();
+        ProteomeEntry proteome = new ProteomeEntryBuilder().components(components).build();
         assertEquals(2, proteome.getComponents().size());
         assertThat(proteome.getComponents(), hasItem(component1));
 

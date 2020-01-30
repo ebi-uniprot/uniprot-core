@@ -33,7 +33,7 @@ class ProteinConverterTest {
 
     @Test
     void testToXml() {
-        ProteinBuilder builder = ProteinBuilder.newInstance();
+        ProteinBuilder builder = new ProteinBuilder();
         builder.accession("P21312")
                 .entryType(UniProtEntryType.TREMBL)
                 .geneName("some gene")

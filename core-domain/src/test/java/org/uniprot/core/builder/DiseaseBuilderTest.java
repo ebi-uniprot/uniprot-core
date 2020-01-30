@@ -119,7 +119,7 @@ class DiseaseBuilderTest {
 
     @Test
     void canGetInstanceFromStaticMethod() {
-        DiseaseBuilder builder = DiseaseBuilder.newInstance();
+        DiseaseBuilder builder = new DiseaseBuilder();
         assertNotNull(builder);
     }
 

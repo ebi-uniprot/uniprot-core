@@ -11,7 +11,7 @@ class RedundantProteomeBuilderTest {
     void test() {
         String id = "UP000004340";
         RedundantProteome rproteome =
-                RedundantProteomeBuilder.newInstance()
+                new RedundantProteomeBuilder()
                         .proteomeId(new ProteomeIdBuilder(id).build())
                         .similarity(0.98f)
                         .build();

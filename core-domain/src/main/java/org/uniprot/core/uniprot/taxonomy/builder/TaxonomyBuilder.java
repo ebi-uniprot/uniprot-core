@@ -9,10 +9,6 @@ public class TaxonomyBuilder extends AbstractOrganismNameBuilder<TaxonomyBuilder
     private long taxonId;
     private String mnemonic;
 
-    public static @Nonnull TaxonomyBuilder newInstance() {
-        return new TaxonomyBuilder();
-    }
-
     @Override
     public @Nonnull Taxonomy build() {
         return new TaxonomyImpl(taxonId, scientificName, commonName, synonyms, mnemonic);

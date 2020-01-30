@@ -39,7 +39,7 @@ class CanonicalProteinConverterTest {
     @Test
     void testToXml() {
         Protein protein =
-                ProteinBuilder.newInstance()
+                new ProteinBuilder()
                         .accession("P21312")
                         .entryType(UniProtEntryType.TREMBL)
                         .geneName("some gene")
@@ -48,7 +48,7 @@ class CanonicalProteinConverterTest {
                         .build();
 
         Protein protein2 =
-                ProteinBuilder.newInstance()
+                new ProteinBuilder()
                         .accession("P21912")
                         .entryType(UniProtEntryType.SWISSPROT)
                         .geneName("some gene1")
@@ -56,14 +56,14 @@ class CanonicalProteinConverterTest {
                         .sequenceLength(334)
                         .build();
         Protein protein3 =
-                ProteinBuilder.newInstance()
+                new ProteinBuilder()
                         .accession("P31912")
                         .entryType(UniProtEntryType.SWISSPROT)
                         .geneName("some gene3")
                         .geneNameType(org.uniprot.core.proteome.GeneNameType.OLN)
                         .sequenceLength(434)
                         .build();
-        CanonicalProteinBuilder builder = CanonicalProteinBuilder.newInstance();
+        CanonicalProteinBuilder builder = new CanonicalProteinBuilder();
         CanonicalProtein cProtein =
                 builder.canonicalProtein(protein)
                         .addRelatedProtein(protein2)

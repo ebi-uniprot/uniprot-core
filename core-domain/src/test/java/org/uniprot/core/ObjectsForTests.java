@@ -426,9 +426,8 @@ public class ObjectsForTests {
 
     public static List<Taxonomy> taxonomies() {
         Taxonomy taxonomy =
-                TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens").build();
-        Taxonomy taxonomy2 =
-                TaxonomyBuilder.newInstance().taxonId(10090).scientificName("MOUSE").build();
+                new TaxonomyBuilder().taxonId(9606).scientificName("Homo sapiens").build();
+        Taxonomy taxonomy2 = new TaxonomyBuilder().taxonId(10090).scientificName("MOUSE").build();
         return Arrays.asList(taxonomy, taxonomy2);
     }
 
@@ -474,7 +473,7 @@ public class ObjectsForTests {
     }
 
     public static Taxonomy getCompleteTaxonomy() {
-        return TaxonomyBuilder.newInstance()
+        return new TaxonomyBuilder()
                 .taxonId(9606)
                 .scientificName("Homo sapiens")
                 .commonName("Human")

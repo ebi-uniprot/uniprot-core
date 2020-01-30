@@ -15,10 +15,6 @@ public class CanonicalProteinBuilder implements Builder<CanonicalProtein> {
     private Protein canonicalProtein;
     private List<Protein> relatedProteins = new ArrayList<>();
 
-    public static @Nonnull CanonicalProteinBuilder newInstance() {
-        return new CanonicalProteinBuilder();
-    }
-
     @Override
     public @Nonnull CanonicalProtein build() {
         return new CanonicalProteinImpl(canonicalProtein, relatedProteins);

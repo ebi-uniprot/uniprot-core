@@ -22,7 +22,7 @@ public class ProteinConverter implements Converter<GeneType, Protein> {
 
     @Override
     public Protein fromXml(GeneType xmlObj) {
-        ProteinBuilder proteinBuilder = ProteinBuilder.newInstance();
+        ProteinBuilder proteinBuilder = new ProteinBuilder();
         proteinBuilder
                 .accession(xmlObj.getAccession())
                 .geneName(xmlObj.getGeneName())

@@ -17,7 +17,7 @@ class ComponentBuilderTest {
     @Test
     void testNameAndDescriptionAndProteinCount() {
         Component component =
-                ComponentBuilder.newInstance()
+                new ComponentBuilder()
                         .name("someName")
                         .description("some description")
                         .proteinCount(102)
@@ -30,7 +30,7 @@ class ComponentBuilderTest {
     @Test
     void testNameAndDescriptionAndProteinCountAndType() {
         Component component =
-                ComponentBuilder.newInstance()
+                new ComponentBuilder()
                         .name("someName")
                         .description("some description")
                         .proteinCount(102)
@@ -50,7 +50,7 @@ class ComponentBuilderTest {
                         .id("ACA121")
                         .build();
         Component component =
-                ComponentBuilder.newInstance()
+                new ComponentBuilder()
                         .addDbXReference(proteomeXReferenceTypes().get(0))
                         .addDbXReference(proteomeXReferenceTypes().get(1))
                         .build();
@@ -66,7 +66,7 @@ class ComponentBuilderTest {
                         .id("ADFDA121")
                         .build();
         Component component =
-                ComponentBuilder.newInstance().dbXReferences(proteomeXReferenceTypes()).build();
+                new ComponentBuilder().dbXReferences(proteomeXReferenceTypes()).build();
         assertEquals(2, component.getDbXReferences().size());
         assertThat(component.getDbXReferences(), hasItem(xref2));
     }
