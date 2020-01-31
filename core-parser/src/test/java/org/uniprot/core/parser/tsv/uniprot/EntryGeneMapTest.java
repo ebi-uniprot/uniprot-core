@@ -30,9 +30,9 @@ class EntryGeneMapTest {
     void testGetDataAll() {
         GeneBuilder builder = new GeneBuilder();
         builder.geneName(createGeneName("name11"));
-        builder.synonyms(createGeneNameSynonym(Arrays.asList("syn1", "syn2")));
-        builder.orfNames(createORFName(Arrays.asList("orf1", "orf2")));
-        builder.orderedLocusNames(createOrderedLocusName(Arrays.asList("oln1", "oln2")));
+        builder.synonymsSet(createGeneNameSynonym(Arrays.asList("syn1", "syn2")));
+        builder.orfNamesSet(createORFName(Arrays.asList("orf1", "orf2")));
+        builder.orderedLocusNamesSet(createOrderedLocusName(Arrays.asList("oln1", "oln2")));
         List<Gene> genes = new ArrayList<>();
         genes.add(builder.build());
         EntryGeneMap dl = new EntryGeneMap(genes);
@@ -49,14 +49,14 @@ class EntryGeneMapTest {
     void testGetDataMulti() {
         GeneBuilder builder = new GeneBuilder();
         builder.geneName(createGeneName("name11"));
-        builder.synonyms(createGeneNameSynonym(Arrays.asList("syn1", "syn2")));
-        builder.orfNames(createORFName(Arrays.asList("orf1", "orf2")));
-        builder.orderedLocusNames(createOrderedLocusName(Arrays.asList("oln1", "oln2")));
+        builder.synonymsSet(createGeneNameSynonym(Arrays.asList("syn1", "syn2")));
+        builder.orfNamesSet(createORFName(Arrays.asList("orf1", "orf2")));
+        builder.orderedLocusNamesSet(createOrderedLocusName(Arrays.asList("oln1", "oln2")));
         List<Gene> genes = new ArrayList<>();
         genes.add(builder.build());
         GeneBuilder builder2 = new GeneBuilder();
         builder2.geneName(createGeneName("name12"));
-        builder2.synonyms(createGeneNameSynonym(Arrays.asList("syn3", "syn4")));
+        builder2.synonymsSet(createGeneNameSynonym(Arrays.asList("syn3", "syn4")));
         genes.add(builder2.build());
 
         EntryGeneMap dl = new EntryGeneMap(genes);
@@ -73,7 +73,7 @@ class EntryGeneMapTest {
     void testGetDataOnlyPrimarySynonym() {
         GeneBuilder builder = new GeneBuilder();
         builder.geneName(createGeneName("name11"));
-        builder.synonyms(createGeneNameSynonym(Arrays.asList("syn1", "syn2")));
+        builder.synonymsSet(createGeneNameSynonym(Arrays.asList("syn1", "syn2")));
         List<Gene> genes = new ArrayList<>();
         genes.add(builder.build());
         EntryGeneMap dl = new EntryGeneMap(genes);
@@ -90,7 +90,7 @@ class EntryGeneMapTest {
     void testGetDataOnlyPrimaryOrf() {
         GeneBuilder builder = new GeneBuilder();
         builder.geneName(createGeneName("name11"));
-        builder.orfNames(createORFName(Arrays.asList("orf1", "orf2")));
+        builder.orfNamesSet(createORFName(Arrays.asList("orf1", "orf2")));
         List<Gene> genes = new ArrayList<>();
         genes.add(builder.build());
         EntryGeneMap dl = new EntryGeneMap(genes);
@@ -106,7 +106,7 @@ class EntryGeneMapTest {
     @Test
     void testGetDataOnlyOln() {
         GeneBuilder builder = new GeneBuilder();
-        builder.orderedLocusNames(createOrderedLocusName(Arrays.asList("oln1", "oln2")));
+        builder.orderedLocusNamesSet(createOrderedLocusName(Arrays.asList("oln1", "oln2")));
         List<Gene> genes = new ArrayList<>();
         genes.add(builder.build());
         EntryGeneMap dl = new EntryGeneMap(genes);
@@ -127,9 +127,9 @@ class EntryGeneMapTest {
     void testGetGeneName() {
         GeneBuilder builder = new GeneBuilder();
         builder.geneName(createGeneName("name11"));
-        builder.synonyms(createGeneNameSynonym(Arrays.asList("syn1", "syn2")));
-        builder.orfNames(createORFName(Arrays.asList("orf1", "orf2")));
-        builder.orderedLocusNames(createOrderedLocusName(Arrays.asList("oln1", "oln2")));
+        builder.synonymsSet(createGeneNameSynonym(Arrays.asList("syn1", "syn2")));
+        builder.orfNamesSet(createORFName(Arrays.asList("orf1", "orf2")));
+        builder.orderedLocusNamesSet(createOrderedLocusName(Arrays.asList("oln1", "oln2")));
         List<Gene> genes = new ArrayList<>();
         genes.add(builder.build());
         EntryGeneMap dl = new EntryGeneMap(genes);
@@ -139,7 +139,7 @@ class EntryGeneMapTest {
 
         GeneBuilder builder2 = new GeneBuilder();
         builder2.geneName(createGeneName("name12"));
-        builder2.synonyms(createGeneNameSynonym(Arrays.asList("syn3", "syn4")));
+        builder2.synonymsSet(createGeneNameSynonym(Arrays.asList("syn3", "syn4")));
         genes.add(builder2.build());
         dl = new EntryGeneMap(genes);
         result = dl.getGeneName();
@@ -147,7 +147,7 @@ class EntryGeneMapTest {
         assertEquals(expected, result);
 
         GeneBuilder builder3 = new GeneBuilder();
-        builder3.orfNames(createORFName(Arrays.asList("orf3", "orf4")));
+        builder3.orfNamesSet(createORFName(Arrays.asList("orf3", "orf4")));
         genes.add(builder3.build());
         dl = new EntryGeneMap(genes);
         result = dl.getGeneName();
@@ -156,7 +156,7 @@ class EntryGeneMapTest {
 
         GeneBuilder builder4 = new GeneBuilder();
         builder4.geneName(createGeneName("name14"));
-        builder4.orderedLocusNames(createOrderedLocusName(Arrays.asList("oln3", "oln4")));
+        builder4.orderedLocusNamesSet(createOrderedLocusName(Arrays.asList("oln3", "oln4")));
         genes.add(builder4.build());
         dl = new EntryGeneMap(genes);
         result = dl.getGeneName();
@@ -193,7 +193,7 @@ class EntryGeneMapTest {
     void testGetSynonyms() {
         GeneBuilder builder = new GeneBuilder();
         builder.geneName(new GeneNameBuilder().value("name").build());
-        builder.synonyms(createGeneNameSynonym(Arrays.asList("syn1", "syn2")));
+        builder.synonymsSet(createGeneNameSynonym(Arrays.asList("syn1", "syn2")));
         List<Gene> genes = new ArrayList<>();
         genes.add(builder.build());
         EntryGeneMap dl = new EntryGeneMap(genes);
@@ -201,7 +201,7 @@ class EntryGeneMapTest {
         assertEquals("syn1 syn2", result);
         GeneBuilder builder2 = new GeneBuilder();
         builder2.geneName(new GeneNameBuilder().value("name").build());
-        builder2.synonyms(createGeneNameSynonym(Arrays.asList("syn3", "syn4")));
+        builder2.synonymsSet(createGeneNameSynonym(Arrays.asList("syn3", "syn4")));
         genes.add(builder2.build());
         dl = new EntryGeneMap(genes);
         result = dl.getSynonyms();
@@ -218,14 +218,14 @@ class EntryGeneMapTest {
     @Test
     void testGetOlnName() {
         GeneBuilder builder = new GeneBuilder();
-        builder.orderedLocusNames(createOrderedLocusName(Arrays.asList("oln1", "oln2")));
+        builder.orderedLocusNamesSet(createOrderedLocusName(Arrays.asList("oln1", "oln2")));
         List<Gene> genes = new ArrayList<>();
         genes.add(builder.build());
         EntryGeneMap dl = new EntryGeneMap(genes);
         String result = dl.getOlnName();
         assertEquals("oln1 oln2", result);
         GeneBuilder builder2 = new GeneBuilder();
-        builder2.orderedLocusNames(createOrderedLocusName(Arrays.asList("oln3", "oln4")));
+        builder2.orderedLocusNamesSet(createOrderedLocusName(Arrays.asList("oln3", "oln4")));
         genes.add(builder2.build());
         dl = new EntryGeneMap(genes);
         result = dl.getOlnName();
@@ -245,14 +245,14 @@ class EntryGeneMapTest {
     @Test
     void testGetOrfName() {
         GeneBuilder builder = new GeneBuilder();
-        builder.orfNames(createORFName(Arrays.asList("orf1", "orf2")));
+        builder.orfNamesSet(createORFName(Arrays.asList("orf1", "orf2")));
         List<Gene> genes = new ArrayList<>();
         genes.add(builder.build());
         EntryGeneMap dl = new EntryGeneMap(genes);
         String result = dl.getOrfName();
         assertEquals("orf1 orf2", result);
         GeneBuilder builder2 = new GeneBuilder();
-        builder2.orfNames(createORFName(Arrays.asList("orf3", "orf4")));
+        builder2.orfNamesSet(createORFName(Arrays.asList("orf3", "orf4")));
         genes.add(builder2.build());
         dl = new EntryGeneMap(genes);
         result = dl.getOrfName();

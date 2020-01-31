@@ -29,7 +29,7 @@ class TaxonomyStrainBuilderTest {
     @Test
     void testAddMethodsTaxonomyStrain() {
         TaxonomyStrain taxonomyStrain =
-                new TaxonomyStrainBuilder().addSynonym("synonym").name("name").build();
+                new TaxonomyStrainBuilder().synonymsAdd("synonym").name("name").build();
         validateTaxonomyStrain(taxonomyStrain);
     }
 

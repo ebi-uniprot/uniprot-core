@@ -214,9 +214,9 @@ class UniProtEntryConverterTest {
         Gene gene =
                 new GeneBuilder()
                         .geneName(geneName)
-                        .synonyms(synonyms)
-                        .orderedLocusNames(olnNames)
-                        .orfNames(orfNames)
+                        .synonymsSet(synonyms)
+                        .orderedLocusNamesSet(olnNames)
+                        .orfNamesSet(orfNames)
                         .build();
         return gene;
     }

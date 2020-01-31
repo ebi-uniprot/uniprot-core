@@ -35,7 +35,7 @@ class InternalSectionImplTest {
         internalLines.add(new InternalLineBuilder(InternalLineType.CX, "value1").build());
         internalLines.add(new InternalLineBuilder(InternalLineType.EV, "value2").build());
         sourceLines.add(new SourceLineBuilder("some value").build());
-        InternalSection is = new InternalSectionBuilder().internalLines(internalLines).build();
+        InternalSection is = new InternalSectionBuilder().internalLinesSet(internalLines).build();
         assertEquals(internalLines, is.getInternalLines());
         assertTrue(is.getSourceLines().isEmpty());
         assertTrue(is.getEvidenceLines().isEmpty());
@@ -52,7 +52,7 @@ class InternalSectionImplTest {
                         .creationDate(createDate)
                         .curator(curator)
                         .build());
-        InternalSection is = new InternalSectionBuilder().evidenceLines(evlines).build();
+        InternalSection is = new InternalSectionBuilder().evidenceLinesSet(evlines).build();
         assertTrue(is.getSourceLines().isEmpty());
         assertTrue(is.getInternalLines().isEmpty());
         assertEquals(evlines, is.getEvidenceLines());
@@ -77,9 +77,9 @@ class InternalSectionImplTest {
                         .build());
         InternalSection is =
                 new InternalSectionBuilder()
-                        .internalLines(internalLines)
-                        .evidenceLines(evlines)
-                        .sourceLines(sourceLines)
+                        .internalLinesSet(internalLines)
+                        .evidenceLinesSet(evlines)
+                        .sourceLinesSet(sourceLines)
                         .build();
         assertEquals(internalLines, is.getInternalLines());
         assertEquals(sourceLines, is.getSourceLines());

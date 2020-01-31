@@ -26,13 +26,13 @@ public class LiteratureStoreEntryBuilder implements Builder<LiteratureStoreEntry
         return this;
     }
 
-    public @Nonnull LiteratureStoreEntryBuilder literatureMappedReference(
+    public @Nonnull LiteratureStoreEntryBuilder literatureMappedReferencesSet(
             List<LiteratureMappedReference> literatureMappedReference) {
         this.literatureMappedReferences = Utils.modifiableList(literatureMappedReference);
         return this;
     }
 
-    public @Nonnull LiteratureStoreEntryBuilder addLiteratureMappedReference(
+    public @Nonnull LiteratureStoreEntryBuilder literatureMappedReferencesAdd(
             LiteratureMappedReference literatureMappedReference) {
         Utils.addOrIgnoreNull(literatureMappedReference, this.literatureMappedReferences);
         return this;
@@ -48,6 +48,6 @@ public class LiteratureStoreEntryBuilder implements Builder<LiteratureStoreEntry
             @Nonnull LiteratureStoreEntry instance) {
         return new LiteratureStoreEntryBuilder()
                 .literatureEntry(instance.getLiteratureEntry())
-                .literatureMappedReference(instance.getLiteratureMappedReferences());
+                .literatureMappedReferencesSet(instance.getLiteratureMappedReferences());
     }
 }

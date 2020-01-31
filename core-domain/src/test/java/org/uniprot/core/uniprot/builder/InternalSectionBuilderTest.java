@@ -15,7 +15,7 @@ class InternalSectionBuilderTest {
     @Test
     void nullInternalLine_willBeIgnore() {
         InternalSection internalSection =
-                new InternalSectionBuilder().addInternalLine(null).build();
+                new InternalSectionBuilder().internalLinesAdd(null).build();
         assertTrue(internalSection.getInternalLines().isEmpty());
     }
 
@@ -23,14 +23,14 @@ class InternalSectionBuilderTest {
     void singleInternalLine_canBeAdded() {
         InternalLine internalLine = new InternalLineBuilder(InternalLineType.PE, "abc").build();
         InternalSection internalSection =
-                new InternalSectionBuilder().addInternalLine(internalLine).build();
+                new InternalSectionBuilder().internalLinesAdd(internalLine).build();
         assertEquals(internalLine, internalSection.getInternalLines().get(0));
     }
 
     @Test
     void nullEvidence_willBeIgnore() {
         InternalSection internalSection =
-                new InternalSectionBuilder().addEvidenceLine(null).build();
+                new InternalSectionBuilder().evidenceLinesAdd(null).build();
         assertTrue(internalSection.getInternalLines().isEmpty());
     }
 
@@ -38,20 +38,20 @@ class InternalSectionBuilderTest {
     void singleEvidenceLine_canBeAdded() {
         EvidenceLine evdLine = new EvidenceLineBuilder().build();
         InternalSection internalSection =
-                new InternalSectionBuilder().addEvidenceLine(evdLine).build();
+                new InternalSectionBuilder().evidenceLinesAdd(evdLine).build();
         assertEquals(evdLine, internalSection.getEvidenceLines().get(0));
     }
 
     @Test
     void nullSourceLine_willBeIgnore() {
-        InternalSection internalSection = new InternalSectionBuilder().addSourceLine(null).build();
+        InternalSection internalSection = new InternalSectionBuilder().sourceLinesAdd(null).build();
         assertTrue(internalSection.getInternalLines().isEmpty());
     }
 
     @Test
     void singleSourceLine_canBeAdded() {
         SourceLine line = new SourceLineBuilder("line").build();
-        InternalSection internalSection = new InternalSectionBuilder().addSourceLine(line).build();
+        InternalSection internalSection = new InternalSectionBuilder().sourceLinesAdd(line).build();
         assertEquals(line, internalSection.getSourceLines().get(0));
     }
 

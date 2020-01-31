@@ -47,7 +47,7 @@ class ProteomeTest {
                         .name("someName")
                         .description("some description")
                         .proteinCount(102)
-                        .dbXReferences(xrefs)
+                        .dbXReferencesSet(xrefs)
                         .type(ComponentType.PRIMARY)
                         .build();
         ValidateJson.verifyJsonRoundTripParser(
@@ -110,8 +110,8 @@ class ProteomeTest {
                         .proteomeType(ProteomeType.REDUNDANT)
                         .redundantTo(redId)
                         .strain("some Strain")
-                        .dbXReferences(xrefs)
-                        .references(getCitations())
+                        .dbXReferencesSet(xrefs)
+                        .referencesSet(getCitations())
                         .superkingdom(Superkingdom.EUKARYOTA)
                         .panproteome(new ProteomeIdBuilder("UP000005649").build())
                         .build();
@@ -199,13 +199,13 @@ class ProteomeTest {
                         .modified(modified)
                         .proteomeType(ProteomeType.REFERENCE)
                         .strain("some Strain")
-                        .dbXReferences(xrefs)
-                        .addTaxonLineage(taxon1)
+                        .dbXReferencesSet(xrefs)
+                        .taxonLineageAdd(taxon1)
                         //		.addTaxonLineage(taxon2)
-                        .references(getCitations())
+                        .referencesSet(getCitations())
                         .superkingdom(Superkingdom.EUKARYOTA)
                         //	.components(components)
-                        .redundantProteomes(redundantProteomes)
+                        .redundantProteomesSet(redundantProteomes)
                         .build();
 
         ValidateJson.verifyJsonRoundTripParser(
@@ -243,10 +243,10 @@ class ProteomeTest {
                 .lastPage("last page")
                 .volume("volume value")
                 .publicationDate("date value")
-                .addAuthorGroup("auth group")
-                .addAuthor("author Leo")
+                .authorGroupAdd("auth group")
+                .authorsAdd("author Leo")
                 .title("Leo book tittle")
-                .citationXrefs(Collections.singletonList(xref))
+                .citationXrefsSet(Collections.singletonList(xref))
                 .build();
     }
 
@@ -259,10 +259,10 @@ class ProteomeTest {
         return new SubmissionBuilder()
                 .submittedToDatabase(SubmissionDatabase.PIR)
                 .publicationDate("date value")
-                .addAuthorGroup("auth group")
-                .addAuthor("author Leo")
+                .authorGroupAdd("auth group")
+                .authorsAdd("author Leo")
                 .title("Leo book tittle")
-                .citationXrefs(Collections.singletonList(xref))
+                .citationXrefsSet(Collections.singletonList(xref))
                 .build();
     }
 }

@@ -136,13 +136,13 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
             if (usl != null)
                 activeEntryBuilder.internalSection(
                         new InternalSectionBuilder()
-                                .evidenceLines(usl.getEvidenceLines())
-                                .sourceLines(usl.getSourceLines())
-                                .internalLines(internalLines)
+                                .evidenceLinesSet(usl.getEvidenceLines())
+                                .sourceLinesSet(usl.getSourceLines())
+                                .internalLinesSet(internalLines)
                                 .build());
             else {
                 activeEntryBuilder.internalSection(
-                        new InternalSectionBuilder().internalLines(internalLines).build());
+                        new InternalSectionBuilder().internalLinesSet(internalLines).build());
             }
         } else {
             activeEntryBuilder.internalSection(usl);
@@ -173,7 +173,7 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
                     .id(xref.getId())
                     .isoformId(xref.getIsoformId())
                     .evidences(evidences)
-                    .properties(xref.getProperties())
+                    .propertiesSet(xref.getProperties())
                     .build();
         }
         return xref;

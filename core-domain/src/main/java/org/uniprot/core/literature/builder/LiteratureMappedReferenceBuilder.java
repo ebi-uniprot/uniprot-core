@@ -46,12 +46,13 @@ public class LiteratureMappedReferenceBuilder implements Builder<LiteratureMappe
         return this;
     }
 
-    public @Nonnull LiteratureMappedReferenceBuilder sourceCategory(List<String> sourceCategory) {
+    public @Nonnull LiteratureMappedReferenceBuilder sourceCategorySet(
+            List<String> sourceCategory) {
         this.sourceCategory = Utils.modifiableList(sourceCategory);
         return this;
     }
 
-    public @Nonnull LiteratureMappedReferenceBuilder addSourceCategory(String sourceCategory) {
+    public @Nonnull LiteratureMappedReferenceBuilder sourceCategoryAdd(String sourceCategory) {
         Utils.addOrIgnoreNull(sourceCategory, this.sourceCategory);
         return this;
     }
@@ -73,7 +74,7 @@ public class LiteratureMappedReferenceBuilder implements Builder<LiteratureMappe
                 .uniprotAccession(instance.getUniprotAccession())
                 .source(instance.getSource())
                 .sourceId(instance.getSourceId())
-                .sourceCategory(instance.getSourceCategory())
+                .sourceCategorySet(instance.getSourceCategory())
                 .annotation(instance.getAnnotation());
     }
 }

@@ -67,7 +67,7 @@ class UniParcDBCrossReferenceConverterTest {
                 new Property(UniParcDBCrossReference.PROPERTY_PROTEIN_NAME, "Gelsolin, isoform J"));
         properties.add(new Property(UniParcDBCrossReference.PROPERTY_GENE_NAME, "Gel"));
 
-        builder.properties(properties);
+        builder.propertiesSet(properties);
 
         UniParcDBCrossReference xref = builder.build();
         verify(xref);

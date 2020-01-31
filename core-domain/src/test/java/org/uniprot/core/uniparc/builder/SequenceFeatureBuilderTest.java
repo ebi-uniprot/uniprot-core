@@ -59,7 +59,7 @@ class SequenceFeatureBuilderTest {
                         .interproGroup(domain)
                         .signatureDbType(SignatureDbType.PFAM)
                         .signatureDbId("sigId2")
-                        .locations(locations)
+                        .locationsSet(locations)
                         .build();
         assertEquals(domain, sf.getInterProDomain());
         assertEquals(SignatureDbType.PFAM, sf.getSignatureDbType());
@@ -76,8 +76,8 @@ class SequenceFeatureBuilderTest {
                         .interproGroup(domain)
                         .signatureDbType(SignatureDbType.PFAM)
                         .signatureDbId("sigId2")
-                        .locations(locations)
-                        .addLocation(new Location(100, 300))
+                        .locationsSet(locations)
+                        .locationsAdd(new Location(100, 300))
                         .build();
         assertEquals(domain, sf.getInterProDomain());
         assertEquals(SignatureDbType.PFAM, sf.getSignatureDbType());
@@ -94,7 +94,7 @@ class SequenceFeatureBuilderTest {
                         .interproGroup(domain)
                         .signatureDbType(SignatureDbType.PFAM)
                         .signatureDbId("sigId2")
-                        .locations(locations)
+                        .locationsSet(locations)
                         .build();
         SequenceFeature sf2 = SequenceFeatureBuilder.from(sf).build();
         assertEquals(sf, sf2);

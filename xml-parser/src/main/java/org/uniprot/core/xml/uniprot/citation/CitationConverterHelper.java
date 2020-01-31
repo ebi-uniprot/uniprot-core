@@ -24,7 +24,7 @@ public class CitationConverterHelper {
             AbstractCitationBuilder<? extends AbstractCitationBuilder<?, ?>, ? extends Citation>
                     builder) {
         if (!xmlCitation.getDbReference().isEmpty()) {
-            builder.citationXrefs(
+            builder.citationXrefsSet(
                     xmlCitation.getDbReference().stream()
                             .map(val -> fromXml(val))
                             .collect(Collectors.toList()));
@@ -36,8 +36,8 @@ public class CitationConverterHelper {
         if (!Strings.isNullOrEmpty(xmlCitation.getDate())) {
             builder.publicationDate(dateConverter.fromXml(xmlCitation.getDate()));
         }
-        builder.authors(authorsFromXml(xmlCitation.getAuthorList()));
-        builder.authoringGroups(authoringGroupfromXml(xmlCitation.getAuthorList()));
+        builder.authorsSet(authorsFromXml(xmlCitation.getAuthorList()));
+        builder.authoringGroupsSet(authoringGroupfromXml(xmlCitation.getAuthorList()));
     }
 
     private static List<String> authoringGroupfromXml(NameListType authorListXML) {

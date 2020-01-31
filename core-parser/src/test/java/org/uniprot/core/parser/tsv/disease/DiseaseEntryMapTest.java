@@ -63,7 +63,7 @@ class DiseaseEntryMapTest {
                         new KeywordImpl("KW2", "VAL2"),
                         new KeywordImpl("KW3", "VAL3"),
                         new KeywordImpl("KW4", "VAL4"));
-        builder.alternativeNames(alternativeNames).crossReferences(xrefs);
+        builder.alternativeNamesSet(alternativeNames).crossReferences(xrefs);
         builder.keywords(keywords);
 
         Disease entry = builder.build();

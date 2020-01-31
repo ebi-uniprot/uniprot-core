@@ -42,12 +42,12 @@ class TaxonomyEntryTest {
         builder.statistics(TaxonomyStatisticsTest.getCompleteTaxonomyStatistics());
 
         builder.addSynonyms("synonym");
-        builder.addOtherNames("otherName");
-        builder.addLineage(TaxonomyLineageTest.getCompleteTaxonomyLineage());
-        builder.addStrain(TaxonomyStrainTest.getCompleteTaxonomyStrain());
+        builder.otherNamesAdd("otherName");
+        builder.lineageAdd(TaxonomyLineageTest.getCompleteTaxonomyLineage());
+        builder.strainsAdd(TaxonomyStrainTest.getCompleteTaxonomyStrain());
         builder.inactiveReason(TaxonomyInactiveReasonTest.getCompleteTaxonomyInactiveReason());
-        builder.addHost(getCompleteTaxonomy());
-        builder.addLink("link");
+        builder.hostsAdd(getCompleteTaxonomy());
+        builder.linksAdd("link");
 
         return builder.build();
     }

@@ -35,7 +35,7 @@ public abstract class AbstractDBCrossReferenceBuilder<
             void init(
                     @Nonnull AbstractDBCrossReferenceBuilder<B, T, D> builder,
                     @Nonnull D instance) {
-        builder.properties(instance.getProperties())
+        builder.propertiesSet(instance.getProperties())
                 .id(instance.getId())
                 .databaseType(instance.getDatabaseType());
     }
@@ -50,17 +50,17 @@ public abstract class AbstractDBCrossReferenceBuilder<
         return getThis();
     }
 
-    public @Nonnull B properties(List<Property> properties) {
+    public @Nonnull B propertiesSet(List<Property> properties) {
         this.properties = modifiableList(properties);
         return getThis();
     }
 
-    public @Nonnull B addProperty(Property property) {
+    public @Nonnull B propertiesAdd(Property property) {
         addOrIgnoreNull(property, this.properties);
         return getThis();
     }
 
-    public @Nonnull B addProperty(String key, String value) {
+    public @Nonnull B propertiesAdd(String key, String value) {
         if (!nullOrEmpty(key) && !nullOrEmpty(value)) {
             this.properties.add(new Property(key, value));
         }

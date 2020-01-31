@@ -50,7 +50,7 @@ class DiseaseBuilderTest {
     @Test
     void canCreateWith_alternativeNamesSingle() {
         String alternativeNames = "alternativeNames";
-        Disease disease = new DiseaseBuilder().alternativeNames(alternativeNames).build();
+        Disease disease = new DiseaseBuilder().alternativeNamesAdd(alternativeNames).build();
         assertNotNull(disease);
         assertEquals(1, disease.getAlternativeNames().size());
         assertEquals(alternativeNames, disease.getAlternativeNames().get(0));
@@ -59,7 +59,7 @@ class DiseaseBuilderTest {
     @Test
     void canCreateWith_alternativeNames() {
         List<String> alternativeNames = Arrays.asList("alternativeNames", "1", "3");
-        Disease disease = new DiseaseBuilder().alternativeNames(alternativeNames).build();
+        Disease disease = new DiseaseBuilder().alternativeNamesSet(alternativeNames).build();
         assertNotNull(disease);
         assertEquals(alternativeNames, disease.getAlternativeNames());
     }

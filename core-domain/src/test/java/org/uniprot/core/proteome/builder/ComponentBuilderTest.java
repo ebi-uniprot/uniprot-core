@@ -51,8 +51,8 @@ class ComponentBuilderTest {
                         .build();
         Component component =
                 new ComponentBuilder()
-                        .addDbXReference(proteomeXReferenceTypes().get(0))
-                        .addDbXReference(proteomeXReferenceTypes().get(1))
+                        .dbXReferencesAdd(proteomeXReferenceTypes().get(0))
+                        .dbXReferencesAdd(proteomeXReferenceTypes().get(1))
                         .build();
         assertEquals(2, component.getDbXReferences().size());
         assertThat(component.getDbXReferences(), hasItem(xref1));
@@ -66,7 +66,7 @@ class ComponentBuilderTest {
                         .id("ADFDA121")
                         .build();
         Component component =
-                new ComponentBuilder().dbXReferences(proteomeXReferenceTypes()).build();
+                new ComponentBuilder().dbXReferencesSet(proteomeXReferenceTypes()).build();
         assertEquals(2, component.getDbXReferences().size());
         assertThat(component.getDbXReferences(), hasItem(xref2));
     }

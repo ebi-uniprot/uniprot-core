@@ -95,7 +95,7 @@ class UniParcDBCrossReferenceBuilderTest {
                         .active(true)
                         .created(created)
                         .lastUpdated(lastUpdated)
-                        .properties(properties)
+                        .propertiesSet(properties)
                         .build();
         assertEquals(3, xref.getVersionI());
         assertEquals(7, xref.getVersion().intValue());
@@ -123,7 +123,7 @@ class UniParcDBCrossReferenceBuilderTest {
                         .active(true)
                         .created(created)
                         .lastUpdated(lastUpdated)
-                        .properties(properties)
+                        .propertiesSet(properties)
                         .build();
         assertEquals(3, xref.getVersionI());
         assertEquals(7, xref.getVersion().intValue());

@@ -51,7 +51,7 @@ public class UniParcEntryConverter implements Converter<Entry, UniParcEntry> {
         UniParcEntryBuilder builder = new UniParcEntryBuilder();
         builder.uniParcId(new UniParcIdBuilder(xmlObj.getAccession()).build())
                 .sequence(sequenceConverter.fromXml(xmlObj.getSequence()))
-                .sequenceFeatures(
+                .sequenceFeaturesSet(
                         xmlObj.getSignatureSequenceMatch().stream()
                                 .map(seqFeatureConverter::fromXml)
                                 .collect(Collectors.toList()));
@@ -63,7 +63,7 @@ public class UniParcEntryConverter implements Converter<Entry, UniParcEntry> {
                 xmlObj.getDbReference().stream()
                         .map(xrefConverter::fromXml)
                         .collect(Collectors.toList());
-        builder.databaseCrossReferences(xrefs);
+        builder.databaseCrossReferencesSet(xrefs);
         List<Taxonomy> taxonomies =
                 xrefs.stream()
                         .flatMap(val -> val.getProperties().stream())
@@ -77,7 +77,7 @@ public class UniParcEntryConverter implements Converter<Entry, UniParcEntry> {
                         .distinct()
                         .map(this::convertTaxonomy)
                         .collect(Collectors.toList());
-        builder.taxonomies(taxonomies);
+        builder.taxonomiesSet(taxonomies);
 
         return builder.build();
     }

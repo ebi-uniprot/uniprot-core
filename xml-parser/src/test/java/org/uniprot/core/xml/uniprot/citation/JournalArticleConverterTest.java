@@ -50,10 +50,10 @@ class JournalArticleConverterTest {
                 .volume("2")
                 .title(title)
                 .publicationDate(date)
-                .addAuthor("Sulson J.E.")
-                .addAuthor("JWaterston R.")
-                .authoringGroups(Arrays.asList("The C. elegans sequencing consortium"))
-                .citationXrefs(
+                .authorsAdd("Sulson J.E.")
+                .authorsAdd("JWaterston R.")
+                .authoringGroupsSet(Arrays.asList("The C. elegans sequencing consortium"))
+                .citationXrefsSet(
                         Arrays.asList(
                                 new DBCrossReferenceImpl<>(CitationXrefType.PUBMED, "9851916"),
                                 new DBCrossReferenceImpl<>(

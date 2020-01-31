@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.Value;
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationXrefType;
@@ -28,42 +27,42 @@ public abstract class AbstractCitationBuilder<
     protected String title = "";
     protected PublicationDate publicationDate;
 
-    public @Nonnull B authoringGroups(List<String> groups) {
+    public @Nonnull B authoringGroupsSet(List<String> groups) {
         this.authoringGroups = modifiableList(groups);
         return getThis();
     }
 
-    public @Nonnull B addAuthorGroup(String group) {
+    public @Nonnull B authorGroupAdd(String group) {
         addOrIgnoreNull(group, this.authoringGroups);
         return getThis();
     }
 
-    public @Nonnull B authors(List<Author> authors) {
+    public @Nonnull B authorsSet(List<Author> authors) {
         this.authors = modifiableList(authors);
         return getThis();
     }
 
-    public @Nonnull B authors(Collection<String> authors) {
-        this.authors.addAll(authors.stream().map(AuthorImpl::new).collect(Collectors.toList()));
+    public @Nonnull B authorsSet(Collection<String> authors) {
+        this.authors = authors.stream().map(AuthorImpl::new).collect(Collectors.toList());
         return getThis();
     }
 
-    public @Nonnull B addAuthor(String author) {
+    public @Nonnull B authorsAdd(String author) {
         if (author != null) this.authors.add(new AuthorImpl(author));
         return getThis();
     }
 
-    public @Nonnull B addAuthor(Author author) {
+    public @Nonnull B authorsAdd(Author author) {
         addOrIgnoreNull(author, this.authors);
         return getThis();
     }
 
-    public @Nonnull B citationXrefs(List<DBCrossReference<CitationXrefType>> citationXrefs) {
-        this.xrefs = citationXrefs;
+    public @Nonnull B citationXrefsSet(List<DBCrossReference<CitationXrefType>> citationXrefs) {
+        this.xrefs = modifiableList(citationXrefs);
         return getThis();
     }
 
-    public @Nonnull B addCitationXrefs(DBCrossReference<CitationXrefType> citationXref) {
+    public @Nonnull B citationXrefsAdd(DBCrossReference<CitationXrefType> citationXref) {
         addOrIgnoreNull(citationXref, this.xrefs);
         return getThis();
     }
@@ -85,14 +84,11 @@ public abstract class AbstractCitationBuilder<
 
     protected static <B extends AbstractCitationBuilder<B, T>, T extends Citation> void init(
             B builder, T instance) {
-        builder.citationXrefs(instance.getCitationXrefs())
+        builder.citationXrefsSet(instance.getCitationXrefs())
                 .title(instance.getTitle())
                 .publicationDate(instance.getPublicationDate())
-                .authors(
-                        instance.getAuthors().stream()
-                                .map(Value::getValue)
-                                .collect(Collectors.toList()))
-                .authoringGroups(instance.getAuthoringGroup());
+                .authorsSet(instance.getAuthors())
+                .authoringGroupsSet(instance.getAuthoringGroup());
     }
 
     protected abstract @Nonnull B getThis();

@@ -34,7 +34,7 @@ class UniProtEntryIT {
         EntryInactiveReason inactiveReason =
                 new EntryInactiveReasonBuilder()
                         .type(InactiveReasonType.MERGED)
-                        .addMergeDemergeTo("merge id")
+                        .mergeDemergeToAdd("merge id")
                         .build();
 
         UniProtId uniProtId = new UniProtIdBuilder("uniprot id").build();

@@ -17,7 +17,7 @@ class EntryInactiveReasonImplTest {
         EntryInactiveReason reason =
                 new EntryInactiveReasonBuilder()
                         .type(InactiveReasonType.MERGED)
-                        .mergeDemergeTo(Collections.singletonList("P12345"))
+                        .mergeDemergeToSet(Collections.singletonList("P12345"))
                         .build();
         assertEquals(InactiveReasonType.MERGED, reason.getInactiveReasonType());
         assertEquals(Collections.singletonList("P12345"), reason.getMergeDemergeTo());
@@ -28,7 +28,7 @@ class EntryInactiveReasonImplTest {
         EntryInactiveReason reason =
                 new EntryInactiveReasonBuilder()
                         .type(InactiveReasonType.DEMERGED)
-                        .mergeDemergeTo(Arrays.asList("P12345", "P12347"))
+                        .mergeDemergeToSet(Arrays.asList("P12345", "P12347"))
                         .build();
         assertEquals(InactiveReasonType.DEMERGED, reason.getInactiveReasonType());
         assertEquals(Arrays.asList("P12345", "P12347"), reason.getMergeDemergeTo());
@@ -39,7 +39,7 @@ class EntryInactiveReasonImplTest {
         EntryInactiveReason reason =
                 new EntryInactiveReasonBuilder()
                         .type(InactiveReasonType.DELETED)
-                        .mergeDemergeTo(null)
+                        .mergeDemergeToSet(null)
                         .build();
         assertEquals(InactiveReasonType.DELETED, reason.getInactiveReasonType());
         assertTrue(reason.getMergeDemergeTo().isEmpty());

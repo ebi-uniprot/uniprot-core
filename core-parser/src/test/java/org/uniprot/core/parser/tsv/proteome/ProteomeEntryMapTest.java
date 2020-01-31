@@ -158,13 +158,13 @@ class ProteomeEntryMapTest {
                         .modified(modified)
                         .proteomeType(ProteomeType.REFERENCE)
                         .strain("some Strain")
-                        .dbXReferences(xrefs)
-                        .addTaxonLineage(taxon1)
-                        .addTaxonLineage(taxon2)
-                        .references(Collections.emptyList())
+                        .dbXReferencesSet(xrefs)
+                        .taxonLineageAdd(taxon1)
+                        .taxonLineageAdd(taxon2)
+                        .referencesSet(Collections.emptyList())
                         .superkingdom(Superkingdom.EUKARYOTA)
-                        .components(components)
-                        .redundantProteomes(redundantProteomes)
+                        .componentsSet(components)
+                        .redundantProteomesSet(redundantProteomes)
                         .build();
         return proteome;
     }

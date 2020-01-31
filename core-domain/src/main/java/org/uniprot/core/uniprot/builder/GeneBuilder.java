@@ -25,39 +25,33 @@ public class GeneBuilder implements Builder<Gene> {
         return this;
     }
 
-    public @Nonnull GeneBuilder addSynonyms(GeneNameSynonym synonym) {
+    public @Nonnull GeneBuilder synonymsAdd(GeneNameSynonym synonym) {
         addOrIgnoreNull(synonym, this.synonyms);
         return this;
     }
 
-    public @Nonnull GeneBuilder synonyms(List<GeneNameSynonym> synonyms) {
-        if (synonyms != null) {
-            this.synonyms = modifiableList(synonyms);
-        }
+    public @Nonnull GeneBuilder synonymsSet(List<GeneNameSynonym> synonyms) {
+        this.synonyms = modifiableList(synonyms);
         return this;
     }
 
-    public @Nonnull GeneBuilder addOrderedLocusNames(OrderedLocusName orderedLocusName) {
+    public @Nonnull GeneBuilder orderedLocusNamesAdd(OrderedLocusName orderedLocusName) {
         addOrIgnoreNull(orderedLocusName, this.orderedLocusNames);
         return this;
     }
 
-    public @Nonnull GeneBuilder orderedLocusNames(List<OrderedLocusName> orderedLocusNames) {
-        if (orderedLocusNames != null) {
-            this.orderedLocusNames = modifiableList(orderedLocusNames);
-        }
+    public @Nonnull GeneBuilder orderedLocusNamesSet(List<OrderedLocusName> orderedLocusNames) {
+        this.orderedLocusNames = modifiableList(orderedLocusNames);
         return this;
     }
 
-    public @Nonnull GeneBuilder addOrfNames(ORFName orfName) {
+    public @Nonnull GeneBuilder orfNamesAdd(ORFName orfName) {
         addOrIgnoreNull(orfName, this.orfNames);
         return this;
     }
 
-    public @Nonnull GeneBuilder orfNames(List<ORFName> orfNames) {
-        if (orfNames != null) {
-            this.orfNames = modifiableList(orfNames);
-        }
+    public @Nonnull GeneBuilder orfNamesSet(List<ORFName> orfNames) {
+        this.orfNames = modifiableList(orfNames);
         return this;
     }
 
@@ -68,8 +62,8 @@ public class GeneBuilder implements Builder<Gene> {
     public static @Nonnull GeneBuilder from(@Nonnull Gene instance) {
         return new GeneBuilder()
                 .geneName(instance.getGeneName())
-                .orfNames(instance.getOrfNames())
-                .orderedLocusNames(instance.getOrderedLocusNames())
-                .synonyms(instance.getSynonyms());
+                .orfNamesSet(instance.getOrfNames())
+                .orderedLocusNamesSet(instance.getOrderedLocusNames())
+                .synonymsSet(instance.getSynonyms());
     }
 }

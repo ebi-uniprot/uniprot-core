@@ -34,7 +34,7 @@ public class JournalArticleConverter implements Converter<ReferenceType, Journal
                 .lastPage(journal.getLast())
                 .volume(journal.getVolume())
                 .journalName(journal.getName())
-                .citationXrefs(
+                .citationXrefsSet(
                         journal.getDbReference().stream()
                                 .map(this::fromXml)
                                 .collect(Collectors.toList()));

@@ -82,9 +82,9 @@ public class GeneTest {
 
         return new GeneBuilder()
                 .geneName(geneName)
-                .addSynonyms(synonym)
-                .addOrderedLocusNames(olnName)
-                .addOrfNames(orfName)
+                .synonymsAdd(synonym)
+                .orderedLocusNamesAdd(olnName)
+                .orfNamesAdd(orfName)
                 .build();
     }
 

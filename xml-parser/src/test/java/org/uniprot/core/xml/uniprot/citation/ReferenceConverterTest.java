@@ -115,8 +115,8 @@ class ReferenceConverterTest {
         String date = "JAN-2018";
         builder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ)
                 .title(title)
-                .addAuthor("Sulson J.E.")
-                .addAuthor("JWaterston R.")
+                .authorsAdd("Sulson J.E.")
+                .authorsAdd("JWaterston R.")
                 .publicationDate(date);
         return builder.build();
     }
@@ -131,11 +131,11 @@ class ReferenceConverterTest {
                 .lastPage("223")
                 .volume("2")
                 .title(title)
-                .addAuthor("Sulson J.E.")
-                .addAuthor("JWaterston R.")
+                .authorsAdd("Sulson J.E.")
+                .authorsAdd("JWaterston R.")
                 .publicationDate(date)
-                .authoringGroups(Arrays.asList("The C. elegans sequencing consortium"))
-                .citationXrefs(
+                .authoringGroupsSet(Arrays.asList("The C. elegans sequencing consortium"))
+                .citationXrefsSet(
                         Arrays.asList(
                                 new DBCrossReferenceImpl<>(CitationXrefType.PUBMED, "9851916"),
                                 new DBCrossReferenceImpl<>(
@@ -151,8 +151,8 @@ class ReferenceConverterTest {
         String title = "Some article title";
         String date = "2009";
         builder.bookName(bookName)
-                .addEditor("David")
-                .addEditor("Charlie")
+                .editorsAdd("David")
+                .editorsAdd("Charlie")
                 .firstPage("234")
                 .lastPage("324C")
                 .volume("3")

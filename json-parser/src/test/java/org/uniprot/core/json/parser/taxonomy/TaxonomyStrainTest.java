@@ -28,7 +28,7 @@ class TaxonomyStrainTest {
 
     static TaxonomyStrain getCompleteTaxonomyStrain() {
         TaxonomyStrainBuilder builder = new TaxonomyStrainBuilder();
-        builder.synonyms(Collections.singletonList("synonym"));
+        builder.synonymsSet(Collections.singletonList("synonym"));
         builder.name("name");
         return builder.build();
     }

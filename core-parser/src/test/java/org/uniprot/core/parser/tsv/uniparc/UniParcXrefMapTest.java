@@ -63,7 +63,7 @@ class UniParcXrefMapTest {
                         .active(true)
                         .created(created)
                         .lastUpdated(lastUpdated)
-                        .properties(properties)
+                        .propertiesSet(properties)
                         .build();
 
         LocalDate created2 = LocalDate.of(2015, 1, 11);
@@ -81,7 +81,7 @@ class UniParcXrefMapTest {
                         .active(false)
                         .created(created2)
                         .lastUpdated(lastUpdated2)
-                        .properties(properties2)
+                        .propertiesSet(properties2)
                         .build();
 
         return Arrays.asList(xref, xref2);

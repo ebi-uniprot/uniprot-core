@@ -27,7 +27,7 @@ public abstract class AbstractCitationImpl implements Citation {
         this.citationType = citationType;
         this.authoringGroup = Utils.unmodifiableList(authoringGroup);
         this.authors = Utils.unmodifiableList(authors);
-        this.citationXrefs = citationXrefs;
+        this.citationXrefs = Utils.unmodifiableList(citationXrefs);
         this.title = Utils.emptyOrString(title);
         this.publicationDate = publicationDate;
     }

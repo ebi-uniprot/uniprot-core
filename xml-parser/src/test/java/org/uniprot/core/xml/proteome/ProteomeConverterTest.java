@@ -82,10 +82,10 @@ class ProteomeConverterTest {
                         .modified(modified)
                         .proteomeType(ProteomeType.NORMAL)
                         //	.redundantTo(redId)
-                        .dbXReferences(xrefs)
-                        .components(components)
+                        .dbXReferencesSet(xrefs)
+                        .componentsSet(components)
                         .superkingdom(Superkingdom.EUKARYOTA)
-                        .references(citations)
+                        .referencesSet(citations)
                         .annotationScore(15);
 
         return builder.build();
@@ -102,10 +102,10 @@ class ProteomeConverterTest {
                 .volume("2")
                 .title(title)
                 .publicationDate(date)
-                .addAuthor("Sulson J.E.")
-                .addAuthor("JWaterston R.")
-                .authoringGroups(Arrays.asList("The C. elegans sequencing consortium"))
-                .citationXrefs(
+                .authorsAdd("Sulson J.E.")
+                .authorsAdd("JWaterston R.")
+                .authoringGroupsSet(Arrays.asList("The C. elegans sequencing consortium"))
+                .citationXrefsSet(
                         Arrays.asList(
                                 new DBCrossReferenceImpl<>(CitationXrefType.PUBMED, "9851916"),
                                 new DBCrossReferenceImpl<>(
@@ -119,8 +119,8 @@ class ProteomeConverterTest {
         SubmissionBuilder builder = new SubmissionBuilder();
         String date = "JAN-2018";
         builder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ)
-                .addAuthor("Sulson J.E.")
-                .addAuthor("JWaterston R.")
+                .authorsAdd("Sulson J.E.")
+                .authorsAdd("JWaterston R.")
                 .title("Another title")
                 .publicationDate(date);
         return builder.build();

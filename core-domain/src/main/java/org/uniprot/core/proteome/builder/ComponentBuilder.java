@@ -30,13 +30,13 @@ public class ComponentBuilder implements Builder<Component> {
         return this;
     }
 
-    public @Nonnull ComponentBuilder dbXReferences(
+    public @Nonnull ComponentBuilder dbXReferencesSet(
             List<DBCrossReference<ProteomeXReferenceType>> dbXReferences) {
         this.dbXReferences = Utils.modifiableList(dbXReferences);
         return this;
     }
 
-    public @Nonnull ComponentBuilder addDbXReference(
+    public @Nonnull ComponentBuilder dbXReferencesAdd(
             DBCrossReference<ProteomeXReferenceType> dbXReference) {
         Utils.addOrIgnoreNull(dbXReference, dbXReferences);
         return this;
@@ -63,6 +63,6 @@ public class ComponentBuilder implements Builder<Component> {
                 .description(instance.getDescription())
                 .proteinCount(instance.getProteinCount())
                 .type(instance.getType())
-                .dbXReferences(instance.getDbXReferences());
+                .dbXReferencesSet(instance.getDbXReferences());
     }
 }

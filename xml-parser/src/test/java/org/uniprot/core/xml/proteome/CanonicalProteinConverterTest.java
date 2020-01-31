@@ -66,8 +66,8 @@ class CanonicalProteinConverterTest {
         CanonicalProteinBuilder builder = new CanonicalProteinBuilder();
         CanonicalProtein cProtein =
                 builder.canonicalProtein(protein)
-                        .addRelatedProtein(protein2)
-                        .addRelatedProtein(protein3)
+                        .relatedProteinsAdd(protein2)
+                        .relatedProteinsAdd(protein3)
                         .build();
 
         CanonicalGene cGene = converter.toXml(cProtein);

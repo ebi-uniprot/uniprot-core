@@ -33,21 +33,25 @@ class DBCrossReferenceBuilderTest {
     @Test
     void addSinglePropertyUsingString_keyNull_willBeIgnore() {
         DBCrossReference<CitationXrefType> cr =
-                new DBCrossReferenceBuilder<CitationXrefType>().addProperty(null, "value").build();
+                new DBCrossReferenceBuilder<CitationXrefType>()
+                        .propertiesAdd(null, "value")
+                        .build();
         assertTrue(cr.getProperties().isEmpty());
     }
 
     @Test
     void addSinglePropertyUsingString_valueNull_willBeIgnore() {
         DBCrossReference<CitationXrefType> cr =
-                new DBCrossReferenceBuilder<CitationXrefType>().addProperty("key", null).build();
+                new DBCrossReferenceBuilder<CitationXrefType>().propertiesAdd("key", null).build();
         assertTrue(cr.getProperties().isEmpty());
     }
 
     @Test
     void addSinglePropertyUsingString() {
         DBCrossReference<CitationXrefType> cr =
-                new DBCrossReferenceBuilder<CitationXrefType>().addProperty("key", "value").build();
+                new DBCrossReferenceBuilder<CitationXrefType>()
+                        .propertiesAdd("key", "value")
+                        .build();
         assertFalse(cr.getProperties().isEmpty());
         assertEquals(1, cr.getProperties().size());
     }
@@ -55,7 +59,7 @@ class DBCrossReferenceBuilderTest {
     @Test
     void addSinglePropertyUsingObject_nullWillIgnore() {
         DBCrossReference<CitationXrefType> cr =
-                new DBCrossReferenceBuilder<CitationXrefType>().addProperty(null).build();
+                new DBCrossReferenceBuilder<CitationXrefType>().propertiesAdd(null).build();
         assertTrue(cr.getProperties().isEmpty());
     }
 
@@ -63,7 +67,7 @@ class DBCrossReferenceBuilderTest {
     void addSinglePropertyUsingObject() {
         Property property = new Property(null, null);
         DBCrossReference<CitationXrefType> cr =
-                new DBCrossReferenceBuilder<CitationXrefType>().addProperty(property).build();
+                new DBCrossReferenceBuilder<CitationXrefType>().propertiesAdd(property).build();
         assertFalse(cr.getProperties().isEmpty());
         assertEquals(1, cr.getProperties().size());
     }

@@ -68,17 +68,17 @@ public class BookTest {
                         .build();
         return new BookBuilder()
                 .bookName("book Name")
-                .addEditor("editor Leo")
+                .editorsAdd("editor Leo")
                 .firstPage("first page")
                 .lastPage("last page")
                 .volume("book volume")
                 .publisher("the publisher")
                 .address("address value")
                 .publicationDate("date value")
-                .addAuthorGroup("auth group")
-                .addAuthor("author Leo")
+                .authorGroupAdd("auth group")
+                .authorsAdd("author Leo")
                 .title("Leo book tittle")
-                .citationXrefs(Collections.singletonList(xref))
+                .citationXrefsSet(Collections.singletonList(xref))
                 .build();
     }
 }

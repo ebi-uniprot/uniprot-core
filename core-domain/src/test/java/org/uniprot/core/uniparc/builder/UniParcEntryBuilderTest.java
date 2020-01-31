@@ -34,7 +34,7 @@ class UniParcEntryBuilderTest {
         UniParcEntry entry =
                 new UniParcEntryBuilder()
                         .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
-                        .databaseCrossReferences(xrefs)
+                        .databaseCrossReferencesSet(xrefs)
                         .build();
         assertEquals("UPI0000083A08", entry.getUniParcId().getValue());
         assertEquals(xrefs, entry.getDbXReferences());
@@ -48,7 +48,7 @@ class UniParcEntryBuilderTest {
         UniParcEntry entry =
                 new UniParcEntryBuilder()
                         .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
-                        .databaseCrossReferences(xrefs)
+                        .databaseCrossReferencesSet(xrefs)
                         .sequence(sequence)
                         .build();
         assertEquals("UPI0000083A08", entry.getUniParcId().getValue());
@@ -65,7 +65,7 @@ class UniParcEntryBuilderTest {
         UniParcEntry entry =
                 new UniParcEntryBuilder()
                         .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
-                        .databaseCrossReferences(xrefs)
+                        .databaseCrossReferencesSet(xrefs)
                         .sequence(sequence)
                         .uniprotExclusionReason(uniprotExclusionReason)
                         .build();
@@ -84,9 +84,9 @@ class UniParcEntryBuilderTest {
         UniParcEntry entry =
                 new UniParcEntryBuilder()
                         .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
-                        .databaseCrossReferences(xrefs)
+                        .databaseCrossReferencesSet(xrefs)
                         .sequence(sequence)
-                        .sequenceFeatures(seqFeatures)
+                        .sequenceFeaturesSet(seqFeatures)
                         .build();
         assertEquals("UPI0000083A08", entry.getUniParcId().getValue());
         assertEquals(xrefs, entry.getDbXReferences());
@@ -104,10 +104,10 @@ class UniParcEntryBuilderTest {
         UniParcEntry entry =
                 new UniParcEntryBuilder()
                         .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
-                        .databaseCrossReferences(xrefs)
+                        .databaseCrossReferencesSet(xrefs)
                         .sequence(sequence)
-                        .sequenceFeatures(seqFeatures)
-                        .taxonomies(taxonomies)
+                        .sequenceFeaturesSet(seqFeatures)
+                        .taxonomiesSet(taxonomies)
                         .build();
         assertEquals("UPI0000083A08", entry.getUniParcId().getValue());
         assertEquals(xrefs, entry.getDbXReferences());
@@ -126,10 +126,10 @@ class UniParcEntryBuilderTest {
         UniParcEntry entry =
                 new UniParcEntryBuilder()
                         .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
-                        .databaseCrossReferences(xrefs)
+                        .databaseCrossReferencesSet(xrefs)
                         .sequence(sequence)
-                        .sequenceFeatures(seqFeatures)
-                        .taxonomies(taxonomies)
+                        .sequenceFeaturesSet(seqFeatures)
+                        .taxonomiesSet(taxonomies)
                         .build();
 
         UniParcEntry entry2 = UniParcEntryBuilder.from(entry).build();
@@ -156,7 +156,7 @@ class UniParcEntryBuilderTest {
     void canAddSingleDatabaseCrossReference() {
         UniParcEntry obj =
                 new UniParcEntryBuilder()
-                        .addDatabaseCrossReference(uniParcDBCrossReferences().get(0))
+                        .databaseCrossReferencesAdd(uniParcDBCrossReferences().get(0))
                         .build();
         assertNotNull(obj.getDbXReferences());
         assertFalse(obj.getDbXReferences().isEmpty());
@@ -164,7 +164,7 @@ class UniParcEntryBuilderTest {
 
     @Test
     void nullDatabaseCrossReference_willBeIgnore() {
-        UniParcEntry obj = new UniParcEntryBuilder().addDatabaseCrossReference(null).build();
+        UniParcEntry obj = new UniParcEntryBuilder().databaseCrossReferencesAdd(null).build();
         assertNotNull(obj.getDbXReferences());
         assertTrue(obj.getDbXReferences().isEmpty());
     }
@@ -172,28 +172,28 @@ class UniParcEntryBuilderTest {
     @Test
     void canAddSingleSequenceFeature() {
         UniParcEntry obj =
-                new UniParcEntryBuilder().addSequenceFeature(sequenceFeatures().get(0)).build();
+                new UniParcEntryBuilder().sequenceFeaturesAdd(sequenceFeatures().get(0)).build();
         assertNotNull(obj.getSequenceFeatures());
         assertFalse(obj.getSequenceFeatures().isEmpty());
     }
 
     @Test
     void nullSequenceFeature_willBeIgnore() {
-        UniParcEntry obj = new UniParcEntryBuilder().addSequenceFeature(null).build();
+        UniParcEntry obj = new UniParcEntryBuilder().sequenceFeaturesAdd(null).build();
         assertNotNull(obj.getSequenceFeatures());
         assertTrue(obj.getSequenceFeatures().isEmpty());
     }
 
     @Test
     void canAddSingleTaxonomy() {
-        UniParcEntry obj = new UniParcEntryBuilder().addTaxonomy(taxonomies().get(0)).build();
+        UniParcEntry obj = new UniParcEntryBuilder().taxonomiesAdd(taxonomies().get(0)).build();
         assertNotNull(obj.getTaxonomies());
         assertFalse(obj.getTaxonomies().isEmpty());
     }
 
     @Test
     void nullTaxonomy_willBeIgnore() {
-        UniParcEntry obj = new UniParcEntryBuilder().addTaxonomy(null).build();
+        UniParcEntry obj = new UniParcEntryBuilder().taxonomiesAdd(null).build();
         assertNotNull(obj.getTaxonomies());
         assertTrue(obj.getTaxonomies().isEmpty());
     }

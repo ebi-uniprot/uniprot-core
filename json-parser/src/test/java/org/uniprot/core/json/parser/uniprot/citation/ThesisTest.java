@@ -58,10 +58,10 @@ public class ThesisTest {
                 .address("thesis address")
                 .institute("thesis institute")
                 .publicationDate("date value")
-                .addAuthorGroup("auth group")
-                .addAuthor("author Leo")
+                .authorGroupAdd("auth group")
+                .authorsAdd("author Leo")
                 .title("Leo book tittle")
-                .citationXrefs(Collections.singletonList(xref))
+                .citationXrefsSet(Collections.singletonList(xref))
                 .build();
     }
 }

@@ -39,7 +39,7 @@ public class UniParcDBCrossReferenceConverter
                 .versionI(xmlObj.getVersionI())
                 .created(XmlConverterHelper.dateFromXml(xmlObj.getCreated()))
                 .lastUpdated(XmlConverterHelper.dateFromXml(xmlObj.getLast()))
-                .properties(
+                .propertiesSet(
                         xmlObj.getProperty().stream()
                                 .map(propertyConverter::fromXml)
                                 .collect(Collectors.toList()));

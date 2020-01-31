@@ -21,12 +21,12 @@ public class TaxonomyStrainBuilder implements Builder<TaxonomyStrain> {
         return this;
     }
 
-    public @Nonnull TaxonomyStrainBuilder synonyms(List<String> synonyms) {
+    public @Nonnull TaxonomyStrainBuilder synonymsSet(List<String> synonyms) {
         this.synonyms = Utils.modifiableList(synonyms);
         return this;
     }
 
-    public @Nonnull TaxonomyStrainBuilder addSynonym(String synonym) {
+    public @Nonnull TaxonomyStrainBuilder synonymsAdd(String synonym) {
         Utils.addOrIgnoreNull(synonym, this.synonyms);
         return this;
     }
@@ -39,6 +39,6 @@ public class TaxonomyStrainBuilder implements Builder<TaxonomyStrain> {
     public static @Nonnull TaxonomyStrainBuilder from(@Nonnull TaxonomyStrain instance) {
         return new TaxonomyStrainBuilder()
                 .name(instance.getName())
-                .synonyms(instance.getSynonyms());
+                .synonymsSet(instance.getSynonyms());
     }
 }

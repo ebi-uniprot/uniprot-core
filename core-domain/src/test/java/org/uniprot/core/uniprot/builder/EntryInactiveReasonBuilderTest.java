@@ -10,7 +10,7 @@ class EntryInactiveReasonBuilderTest {
     @Test
     void canBuildWithMergeDemergeTo() {
         EntryInactiveReason reason =
-                new EntryInactiveReasonBuilder().addMergeDemergeTo("merge").build();
+                new EntryInactiveReasonBuilder().mergeDemergeToAdd("merge").build();
         assertNotNull(reason.getMergeDemergeTo());
         assertFalse(reason.getMergeDemergeTo().isEmpty());
         assertEquals("merge", reason.getMergeDemergeTo().get(0));

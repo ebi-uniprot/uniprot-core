@@ -32,37 +32,37 @@ public class InternalSectionBuilder implements Builder<InternalSection> {
 
     public static @Nonnull InternalSectionBuilder from(@Nonnull InternalSection instance) {
         return new InternalSectionBuilder()
-                .evidenceLines(instance.getEvidenceLines())
-                .internalLines(instance.getInternalLines())
-                .sourceLines(instance.getSourceLines());
+                .evidenceLinesSet(instance.getEvidenceLines())
+                .internalLinesSet(instance.getInternalLines())
+                .sourceLinesSet(instance.getSourceLines());
     }
 
-    public @Nonnull InternalSectionBuilder internalLines(List<InternalLine> internalLines) {
+    public @Nonnull InternalSectionBuilder internalLinesSet(List<InternalLine> internalLines) {
         this.internalLines = modifiableList(internalLines);
         return this;
     }
 
-    public @Nonnull InternalSectionBuilder addInternalLine(InternalLine internalLine) {
+    public @Nonnull InternalSectionBuilder internalLinesAdd(InternalLine internalLine) {
         addOrIgnoreNull(internalLine, this.internalLines);
         return this;
     }
 
-    public @Nonnull InternalSectionBuilder evidenceLines(List<EvidenceLine> evidenceLines) {
+    public @Nonnull InternalSectionBuilder evidenceLinesSet(List<EvidenceLine> evidenceLines) {
         this.evidenceLines = modifiableList(evidenceLines);
         return this;
     }
 
-    public @Nonnull InternalSectionBuilder addEvidenceLine(EvidenceLine evidenceLine) {
+    public @Nonnull InternalSectionBuilder evidenceLinesAdd(EvidenceLine evidenceLine) {
         addOrIgnoreNull(evidenceLine, this.evidenceLines);
         return this;
     }
 
-    public @Nonnull InternalSectionBuilder sourceLines(List<SourceLine> sourceLines) {
+    public @Nonnull InternalSectionBuilder sourceLinesSet(List<SourceLine> sourceLines) {
         this.sourceLines = modifiableList(sourceLines);
         return this;
     }
 
-    public @Nonnull InternalSectionBuilder addSourceLine(SourceLine sourceLine) {
+    public @Nonnull InternalSectionBuilder sourceLinesAdd(SourceLine sourceLine) {
         addOrIgnoreNull(sourceLine, this.sourceLines);
         return this;
     }

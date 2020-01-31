@@ -23,12 +23,12 @@ public class EntryInactiveReasonBuilder implements Builder<EntryInactiveReason> 
         return this;
     }
 
-    public @Nonnull EntryInactiveReasonBuilder mergeDemergeTo(List<String> mergeDemergeTo) {
+    public @Nonnull EntryInactiveReasonBuilder mergeDemergeToSet(List<String> mergeDemergeTo) {
         this.mergeDemergeTo = modifiableList(mergeDemergeTo);
         return this;
     }
 
-    public @Nonnull EntryInactiveReasonBuilder addMergeDemergeTo(String mergeDemergeTo) {
+    public @Nonnull EntryInactiveReasonBuilder mergeDemergeToAdd(String mergeDemergeTo) {
         Utils.addOrIgnoreNull(mergeDemergeTo, this.mergeDemergeTo);
         return this;
     }
@@ -41,6 +41,6 @@ public class EntryInactiveReasonBuilder implements Builder<EntryInactiveReason> 
     public static @Nonnull EntryInactiveReasonBuilder from(@Nonnull EntryInactiveReason instance) {
         return new EntryInactiveReasonBuilder()
                 .type(instance.getInactiveReasonType())
-                .mergeDemergeTo(instance.getMergeDemergeTo());
+                .mergeDemergeToSet(instance.getMergeDemergeTo());
     }
 }

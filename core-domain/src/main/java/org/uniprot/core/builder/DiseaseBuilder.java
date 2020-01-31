@@ -42,7 +42,7 @@ public class DiseaseBuilder implements Builder<Disease> {
                 .accession(instance.getAccession())
                 .acronym(instance.getAcronym())
                 .definition(instance.getDefinition())
-                .alternativeNames(instance.getAlternativeNames())
+                .alternativeNamesSet(instance.getAlternativeNames())
                 .crossReferences(instance.getCrossReferences())
                 .keywords(instance.getKeywords())
                 .reviewedProteinCount(instance.getReviewedProteinCount())
@@ -71,13 +71,13 @@ public class DiseaseBuilder implements Builder<Disease> {
     }
 
     // for single string
-    public @Nonnull DiseaseBuilder alternativeNames(String alternativeName) {
+    public @Nonnull DiseaseBuilder alternativeNamesAdd(String alternativeName) {
         this.alternativeNames = Utils.modifiableList(this.alternativeNames);
         this.alternativeNames.add(alternativeName);
         return this;
     }
 
-    public @Nonnull DiseaseBuilder alternativeNames(List<String> alternativeNames) {
+    public @Nonnull DiseaseBuilder alternativeNamesSet(List<String> alternativeNames) {
         this.alternativeNames = alternativeNames;
         return this;
     }

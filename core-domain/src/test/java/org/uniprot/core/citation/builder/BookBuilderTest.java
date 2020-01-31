@@ -40,7 +40,7 @@ class BookBuilderTest extends AbstractCitationBuilderTest {
         this.buildCitationParameters(builder);
         String bookName = "Some book name";
         builder.bookName(bookName);
-        builder.editors(Arrays.asList("David", "Charlie"));
+        builder.editorsSet(Arrays.asList("David", "Charlie"));
         Book citation = builder.build();
         this.verifyCitation(citation, CitationType.BOOK);
         assertEquals(bookName, citation.getBookName());
@@ -54,7 +54,7 @@ class BookBuilderTest extends AbstractCitationBuilderTest {
         this.buildCitationParameters(builder);
         String bookName = "Some book name";
         builder.bookName(bookName);
-        builder.editors(Arrays.asList("David", "Charlie"));
+        builder.editorsSet(Arrays.asList("David", "Charlie"));
         ;
         builder.firstPage("234");
         Book citation = builder.build();
@@ -71,7 +71,7 @@ class BookBuilderTest extends AbstractCitationBuilderTest {
         this.buildCitationParameters(builder);
         String bookName = "Some book name";
         builder.bookName(bookName)
-                .editors(Arrays.asList("David", "Charlie"))
+                .editorsSet(Arrays.asList("David", "Charlie"))
                 .firstPage("234")
                 .lastPage("324C");
         Book citation = builder.build();
@@ -89,7 +89,7 @@ class BookBuilderTest extends AbstractCitationBuilderTest {
         this.buildCitationParameters(builder);
         String bookName = "Some book name";
         builder.bookName(bookName)
-                .editors(Arrays.asList("David", "Charlie"))
+                .editorsSet(Arrays.asList("David", "Charlie"))
                 .firstPage("234")
                 .lastPage("324C")
                 .volume("3");
@@ -109,7 +109,7 @@ class BookBuilderTest extends AbstractCitationBuilderTest {
         this.buildCitationParameters(builder);
         String bookName = "Some book name";
         builder.bookName(bookName)
-                .editors(Arrays.asList("David", "Charlie"))
+                .editorsSet(Arrays.asList("David", "Charlie"))
                 .firstPage("234")
                 .lastPage("324C")
                 .volume("3")
@@ -131,7 +131,7 @@ class BookBuilderTest extends AbstractCitationBuilderTest {
         this.buildCitationParameters(builder);
         String bookName = "Some book name";
         builder.bookName(bookName)
-                .editors(Arrays.asList("David", "Charlie"))
+                .editorsSet(Arrays.asList("David", "Charlie"))
                 .firstPage("234")
                 .lastPage("324C")
                 .volume("3")
@@ -151,7 +151,7 @@ class BookBuilderTest extends AbstractCitationBuilderTest {
 
     @Test
     void canAddSingleEditor() {
-        Book book = new BookBuilder().addEditor("auth").build();
+        Book book = new BookBuilder().editorsAdd("auth").build();
         assertFalse(book.getEditors().isEmpty());
         assertEquals(1, book.getEditors().size());
     }
@@ -159,7 +159,7 @@ class BookBuilderTest extends AbstractCitationBuilderTest {
     @Test
     void addingNullAuthCollection_willBeReplacedByEmpty() {
         Collection<Author> auth = null;
-        Book book = new BookBuilder().editors(auth).build();
+        Book book = new BookBuilder().editorsSet(auth).build();
         assertNotNull(book.getEditors());
         assertTrue(book.getEditors().isEmpty());
     }
@@ -167,14 +167,14 @@ class BookBuilderTest extends AbstractCitationBuilderTest {
     @Test
     void canAddAuthCol() {
         Book book =
-                new BookBuilder().editors(Collections.singleton(new AuthorImpl("auth"))).build();
+                new BookBuilder().editorsSet(Collections.singleton(new AuthorImpl("auth"))).build();
         assertFalse(book.getEditors().isEmpty());
         assertEquals(1, book.getEditors().size());
     }
 
     @Test
     void canAddStringAuthor() {
-        Book book = new BookBuilder().addAuthor(("auth")).build();
+        Book book = new BookBuilder().authorsAdd(("auth")).build();
         assertFalse(book.getAuthors().isEmpty());
         assertEquals(1, book.getAuthors().size());
     }
@@ -182,42 +182,42 @@ class BookBuilderTest extends AbstractCitationBuilderTest {
     @Test
     void nullStringAuthorWillBeIgnore() {
         String auth = null;
-        Book book = new BookBuilder().addAuthor(auth).build();
+        Book book = new BookBuilder().authorsAdd(auth).build();
         assertTrue(book.getAuthors().isEmpty());
     }
 
     @Test
     void nullAuthorWillBeIgnored() {
         Author auth = null;
-        Book book = new BookBuilder().addAuthor(auth).build();
+        Book book = new BookBuilder().authorsAdd(auth).build();
         assertTrue(book.getAuthors().isEmpty());
     }
 
     @Test
     void canAddAuthor() {
         Author auth = new AuthorImpl("auth");
-        Book book = new BookBuilder().addAuthor(auth).build();
+        Book book = new BookBuilder().authorsAdd(auth).build();
         assertFalse(book.getAuthors().isEmpty());
         assertEquals(1, book.getAuthors().size());
     }
 
     @Test
     void canAddStringAuthGroup() {
-        Book book = new BookBuilder().addAuthorGroup("authGroup").build();
+        Book book = new BookBuilder().authorGroupAdd("authGroup").build();
         assertFalse(book.getAuthoringGroup().isEmpty());
         assertEquals(1, book.getAuthoringGroup().size());
     }
 
     @Test
     void nullAuthGroupWillIgnore() {
-        Book book = new BookBuilder().addAuthorGroup(null).build();
+        Book book = new BookBuilder().authorGroupAdd(null).build();
         assertTrue(book.getAuthoringGroup().isEmpty());
     }
 
     @Test
     void canAddUnModifiableAuthList() {
         List<Author> authorList = Collections.singletonList(new AuthorImpl("auth"));
-        Book book = new BookBuilder().authors(authorList).build();
+        Book book = new BookBuilder().authorsSet(authorList).build();
         assertFalse(book.getAuthors().isEmpty());
         assertEquals(1, book.getAuthors().size());
     }

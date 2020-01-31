@@ -54,10 +54,10 @@ class UniParcFastaParserTest {
         UniParcEntry entry =
                 new UniParcEntryBuilder()
                         .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
-                        .databaseCrossReferences(xrefs)
+                        .databaseCrossReferencesSet(xrefs)
                         .sequence(sequence)
-                        .sequenceFeatures(seqFeatures)
-                        .taxonomies(taxonomies)
+                        .sequenceFeaturesSet(seqFeatures)
+                        .taxonomiesSet(taxonomies)
                         .build();
         return entry;
     }
@@ -77,7 +77,7 @@ class UniParcFastaParserTest {
                         .interproGroup(domain)
                         .signatureDbType(SignatureDbType.PFAM)
                         .signatureDbId("sigId2")
-                        .locations(locations)
+                        .locationsSet(locations)
                         .build();
         SequenceFeature sf3 =
                 SequenceFeatureBuilder.from(sf).signatureDbType(SignatureDbType.PROSITE).build();
@@ -97,7 +97,7 @@ class UniParcFastaParserTest {
                         .active(true)
                         .created(LocalDate.of(2017, 5, 17))
                         .lastUpdated(LocalDate.of(2017, 2, 27))
-                        .properties(properties)
+                        .propertiesSet(properties)
                         .build();
 
         List<Property> properties2 = new ArrayList<>();
@@ -113,7 +113,7 @@ class UniParcFastaParserTest {
                         .active(true)
                         .created(LocalDate.of(2017, 2, 12))
                         .lastUpdated(LocalDate.of(2017, 4, 23))
-                        .properties(properties2)
+                        .propertiesSet(properties2)
                         .build();
 
         return Arrays.asList(xref, xref2);

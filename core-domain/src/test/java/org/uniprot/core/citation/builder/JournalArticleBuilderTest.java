@@ -75,7 +75,7 @@ class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
                         .databaseType(CitationXrefType.PUBMED)
                         .id("pubmedId")
                         .build();
-        JournalArticle article = new JournalArticleBuilder().addCitationXrefs(citation).build();
+        JournalArticle article = new JournalArticleBuilder().citationXrefsAdd(citation).build();
         assertEquals(citation, article.getCitationXrefs().get(0));
     }
 }

@@ -220,7 +220,7 @@ public class ObjectsForTests {
                         .interproGroup(domain)
                         .signatureDbType(SignatureDbType.PFAM)
                         .signatureDbId("sigId2")
-                        .locations(locations)
+                        .locationsSet(locations)
                         .build();
         SequenceFeature sf3 =
                 SequenceFeatureBuilder.from(sf).signatureDbType(SignatureDbType.PROSITE).build();
@@ -240,7 +240,7 @@ public class ObjectsForTests {
                         .active(true)
                         .created(LocalDate.of(2017, 5, 17))
                         .lastUpdated(LocalDate.of(2017, 2, 27))
-                        .properties(properties)
+                        .propertiesSet(properties)
                         .build();
 
         List<Property> properties2 = new ArrayList<>();
@@ -256,7 +256,7 @@ public class ObjectsForTests {
                         .active(true)
                         .created(LocalDate.of(2017, 2, 12))
                         .lastUpdated(LocalDate.of(2017, 4, 23))
-                        .properties(properties2)
+                        .propertiesSet(properties2)
                         .build();
 
         return Arrays.asList(xref, xref2);
@@ -353,14 +353,14 @@ public class ObjectsForTests {
 
     public static LiteratureMappedReference createCompleteLiteratureMappedReference() {
         return getBasicFields()
-                .sourceCategory(singletonList("source category"))
+                .sourceCategorySet(singletonList("source category"))
                 .uniprotAccession("P12345")
                 .build();
     }
 
     public static LiteratureMappedReference createCompleteLiteratureMappedReferenceWithAdd() {
         return getBasicFields()
-                .addSourceCategory("source category")
+                .sourceCategoryAdd("source category")
                 .uniprotAccession(new UniProtAccessionImpl("P12345"))
                 .build();
     }
@@ -375,7 +375,7 @@ public class ObjectsForTests {
     public static LiteratureStoreEntry createCompleteLiteratureStoreEntry() {
         return new LiteratureStoreEntryBuilder()
                 .literatureEntry(createCompleteLiteratureEntry())
-                .literatureMappedReference(
+                .literatureMappedReferencesSet(
                         Collections.singletonList(createCompleteLiteratureMappedReference()))
                 .build();
     }
@@ -383,21 +383,21 @@ public class ObjectsForTests {
     public static LiteratureStoreEntry createCompleteLiteratureStoreEntryWithAdd() {
         return new LiteratureStoreEntryBuilder()
                 .literatureEntry(createCompleteLiteratureEntry())
-                .addLiteratureMappedReference(createCompleteLiteratureMappedReference())
+                .literatureMappedReferencesAdd(createCompleteLiteratureMappedReference())
                 .build();
     }
 
     public static LiteratureEntry createCompleteLiteratureEntry() {
         return createBasicLiteratureEntryBuilder()
-                .authors(singletonList(new AuthorImpl("author name")))
-                .authoringGroup(singletonList("authoring group"))
+                .authorsSet(singletonList(new AuthorImpl("author name")))
+                .authoringGroupSet(singletonList("authoring group"))
                 .build();
     }
 
     public static LiteratureEntry createCompleteLiteratureEntryWithAdd() {
         return createBasicLiteratureEntryBuilder()
-                .addAuthor(new AuthorImpl("author name"))
-                .addAuthoringGroup("authoring group")
+                .authorAdd(new AuthorImpl("author name"))
+                .authoringGroupAdd("authoring group")
                 .build();
     }
 
@@ -435,11 +435,11 @@ public class ObjectsForTests {
         TaxonomyEntryBuilder builder = getTaxonomyEntryBuilderWithBasicData();
 
         builder.addSynonyms("synonym");
-        builder.addOtherNames("otherName");
-        builder.addLineage(getCompleteTaxonomyLineage());
-        builder.addStrain(getCompleteTaxonomyStrain());
-        builder.addHost(getCompleteTaxonomy());
-        builder.addLink("link");
+        builder.otherNamesAdd("otherName");
+        builder.lineageAdd(getCompleteTaxonomyLineage());
+        builder.strainsAdd(getCompleteTaxonomyStrain());
+        builder.hostsAdd(getCompleteTaxonomy());
+        builder.linksAdd("link");
 
         return builder.build();
     }
@@ -448,11 +448,11 @@ public class ObjectsForTests {
         TaxonomyEntryBuilder builder = getTaxonomyEntryBuilderWithBasicData();
 
         builder.synonyms(singletonList("synonym"));
-        builder.otherNames(singletonList("otherName"));
-        builder.lineage(singletonList(getCompleteTaxonomyLineage()));
-        builder.strains(singletonList(getCompleteTaxonomyStrain()));
-        builder.hosts(singletonList(getCompleteTaxonomy()));
-        builder.links(singletonList("link"));
+        builder.otherNamesSet(singletonList("otherName"));
+        builder.lineageSet(singletonList(getCompleteTaxonomyLineage()));
+        builder.strainsSet(singletonList(getCompleteTaxonomyStrain()));
+        builder.hostsSet(singletonList(getCompleteTaxonomy()));
+        builder.linksSet(singletonList("link"));
 
         return builder.build();
     }
@@ -493,7 +493,7 @@ public class ObjectsForTests {
 
     public static TaxonomyStrain getCompleteTaxonomyStrain() {
         TaxonomyStrainBuilder builder = new TaxonomyStrainBuilder();
-        builder.synonyms(singletonList("synonym"));
+        builder.synonymsSet(singletonList("synonym"));
         builder.name("name");
         return builder.build();
     }
@@ -599,9 +599,9 @@ public class ObjectsForTests {
         final List<String> AUTHORS = asList("Tom", "John");
         builder.title(TITLE)
                 .publicationDate(PUBLICATION_DATE)
-                .authoringGroups(GROUPS)
-                .authors(AUTHORS)
-                .citationXrefs(
+                .authoringGroupsSet(GROUPS)
+                .authorsSet(AUTHORS)
+                .citationXrefsSet(
                         asList(
                                 new DBCrossReferenceBuilder<CitationXrefType>()
                                         .databaseType(CitationXrefType.PUBMED)

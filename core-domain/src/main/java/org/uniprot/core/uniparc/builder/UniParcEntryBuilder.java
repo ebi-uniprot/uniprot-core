@@ -47,13 +47,13 @@ public class UniParcEntryBuilder implements Builder<UniParcEntry> {
         return this;
     }
 
-    public @Nonnull UniParcEntryBuilder databaseCrossReferences(
+    public @Nonnull UniParcEntryBuilder databaseCrossReferencesSet(
             List<UniParcDBCrossReference> databaseCrossReferences) {
         this.databaseCrossReferences = Utils.modifiableList(databaseCrossReferences);
         return this;
     }
 
-    public @Nonnull UniParcEntryBuilder addDatabaseCrossReference(
+    public @Nonnull UniParcEntryBuilder databaseCrossReferencesAdd(
             UniParcDBCrossReference databaseCrossReference) {
         Utils.addOrIgnoreNull(databaseCrossReference, databaseCrossReferences);
         return this;
@@ -69,22 +69,23 @@ public class UniParcEntryBuilder implements Builder<UniParcEntry> {
         return this;
     }
 
-    public @Nonnull UniParcEntryBuilder sequenceFeatures(List<SequenceFeature> sequenceFeatures) {
+    public @Nonnull UniParcEntryBuilder sequenceFeaturesSet(
+            List<SequenceFeature> sequenceFeatures) {
         this.sequenceFeatures = Utils.modifiableList(sequenceFeatures);
         return this;
     }
 
-    public @Nonnull UniParcEntryBuilder addSequenceFeature(SequenceFeature sequenceFeature) {
+    public @Nonnull UniParcEntryBuilder sequenceFeaturesAdd(SequenceFeature sequenceFeature) {
         Utils.addOrIgnoreNull(sequenceFeature, sequenceFeatures);
         return this;
     }
 
-    public @Nonnull UniParcEntryBuilder taxonomies(List<Taxonomy> taxonomies) {
+    public @Nonnull UniParcEntryBuilder taxonomiesSet(List<Taxonomy> taxonomies) {
         this.taxonomies = Utils.modifiableList(taxonomies);
         return this;
     }
 
-    public @Nonnull UniParcEntryBuilder addTaxonomy(Taxonomy taxonomy) {
+    public @Nonnull UniParcEntryBuilder taxonomiesAdd(Taxonomy taxonomy) {
         Utils.addOrIgnoreNull(taxonomy, taxonomies);
         return this;
     }
@@ -92,10 +93,10 @@ public class UniParcEntryBuilder implements Builder<UniParcEntry> {
     public static @Nonnull UniParcEntryBuilder from(@Nonnull UniParcEntry instance) {
         return new UniParcEntryBuilder()
                 .uniParcId(instance.getUniParcId())
-                .databaseCrossReferences(instance.getDbXReferences())
+                .databaseCrossReferencesSet(instance.getDbXReferences())
                 .sequence(instance.getSequence())
                 .uniprotExclusionReason(instance.getUniProtExclusionReason())
-                .sequenceFeatures(instance.getSequenceFeatures())
-                .taxonomies(instance.getTaxonomies());
+                .sequenceFeaturesSet(instance.getSequenceFeatures())
+                .taxonomiesSet(instance.getTaxonomies());
     }
 }

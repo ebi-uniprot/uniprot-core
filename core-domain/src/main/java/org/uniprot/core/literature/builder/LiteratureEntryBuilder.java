@@ -49,22 +49,22 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntry> {
         return this;
     }
 
-    public @Nonnull LiteratureEntryBuilder authoringGroup(List<String> authoringGroup) {
+    public @Nonnull LiteratureEntryBuilder authoringGroupSet(List<String> authoringGroup) {
         this.authoringGroup = Utils.modifiableList(authoringGroup);
         return this;
     }
 
-    public @Nonnull LiteratureEntryBuilder addAuthoringGroup(String authoringGroup) {
+    public @Nonnull LiteratureEntryBuilder authoringGroupAdd(String authoringGroup) {
         Utils.addOrIgnoreNull(authoringGroup, this.authoringGroup);
         return this;
     }
 
-    public @Nonnull LiteratureEntryBuilder authors(List<Author> authors) {
+    public @Nonnull LiteratureEntryBuilder authorsSet(List<Author> authors) {
         this.authors = Utils.modifiableList(authors);
         return this;
     }
 
-    public @Nonnull LiteratureEntryBuilder addAuthor(Author author) {
+    public @Nonnull LiteratureEntryBuilder authorAdd(Author author) {
         Utils.addOrIgnoreNull(author, this.authors);
         return this;
     }
@@ -139,8 +139,8 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntry> {
                 .pubmedId(instance.getPubmedId())
                 .doiId(instance.getDoiId())
                 .title(instance.getTitle())
-                .authoringGroup(instance.getAuthoringGroup())
-                .authors(instance.getAuthors())
+                .authoringGroupSet(instance.getAuthoringGroup())
+                .authorsSet(instance.getAuthors())
                 .completeAuthorList(instance.isCompleteAuthorList())
                 .publicationDate(instance.getPublicationDate())
                 .journal(instance.getJournal())

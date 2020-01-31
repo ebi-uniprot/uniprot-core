@@ -69,8 +69,8 @@ class ProteinTest {
         CanonicalProtein cProtein =
                 new CanonicalProteinBuilder()
                         .canonicalProtein(protein)
-                        .addRelatedProtein(rProtein1)
-                        .addRelatedProtein(rProtein2)
+                        .relatedProteinsAdd(rProtein1)
+                        .relatedProteinsAdd(rProtein2)
                         .build();
         ValidateJson.verifyJsonRoundTripParser(
                 ProteomeJsonConfig.getInstance().getFullObjectMapper(), cProtein);

@@ -40,8 +40,8 @@ class BookConverterTest {
         String title = "Some article title";
         String date = "2009";
         builder.bookName(bookName)
-                .addEditor("David")
-                .addEditor("Charlie")
+                .editorsAdd("David")
+                .editorsAdd("Charlie")
                 .firstPage("234")
                 .lastPage("324C")
                 .volume("3")

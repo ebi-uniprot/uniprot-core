@@ -67,8 +67,8 @@ class LiteratureEntryMapTest {
                 .statistics(createCompleteLiteratureStatistics())
                 .title("title")
                 .completeAuthorList(false)
-                .addAuthor(new AuthorImpl("author name"))
-                .addAuthoringGroup("authoring group")
+                .authorAdd(new AuthorImpl("author name"))
+                .authoringGroupAdd("authoring group")
                 .build();
     }
 

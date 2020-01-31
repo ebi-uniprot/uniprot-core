@@ -39,7 +39,7 @@ public class SequenceFeatureConverter implements Converter<SeqFeatureType, Seque
         builder.interproGroup(interproGroupConverter.fromXml(xmlObj.getIpr()))
                 .signatureDbType(SignatureDbType.typeOf(xmlObj.getDatabase()))
                 .signatureDbId(xmlObj.getId())
-                .locations(
+                .locationsSet(
                         xmlObj.getLcn().stream()
                                 .map(locationConverter::fromXml)
                                 .collect(Collectors.toList()));

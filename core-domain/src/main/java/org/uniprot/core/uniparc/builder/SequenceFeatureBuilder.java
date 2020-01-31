@@ -43,12 +43,12 @@ public class SequenceFeatureBuilder implements Builder<SequenceFeature> {
         return this;
     }
 
-    public @Nonnull SequenceFeatureBuilder locations(List<Location> locations) {
+    public @Nonnull SequenceFeatureBuilder locationsSet(List<Location> locations) {
         this.locations = Utils.modifiableList(locations);
         return this;
     }
 
-    public @Nonnull SequenceFeatureBuilder addLocation(Location location) {
+    public @Nonnull SequenceFeatureBuilder locationsAdd(Location location) {
         Utils.addOrIgnoreNull(location, locations);
         return this;
     }
@@ -58,6 +58,6 @@ public class SequenceFeatureBuilder implements Builder<SequenceFeature> {
                 .interproGroup(instance.getInterProDomain())
                 .signatureDbType(instance.getSignatureDbType())
                 .signatureDbId(instance.getSignatureDbId())
-                .locations(instance.getLocations());
+                .locationsSet(instance.getLocations());
     }
 }

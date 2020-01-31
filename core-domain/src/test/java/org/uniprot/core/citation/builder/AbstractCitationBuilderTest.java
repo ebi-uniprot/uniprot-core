@@ -46,9 +46,9 @@ class AbstractCitationBuilderTest {
                 new TestableCitationBuilder()
                         .title(title)
                         .publicationDate(publicationDate)
-                        .authoringGroups(authoringGroup)
-                        .authors(authors)
-                        .citationXrefs(asList(XREF1, XREF2))
+                        .authoringGroupsSet(authoringGroup)
+                        .authorsSet(authors)
+                        .citationXrefsSet(asList(XREF1, XREF2))
                         .build();
 
         assertThat(citation.getTitle(), is(title));
@@ -65,9 +65,9 @@ class AbstractCitationBuilderTest {
     void buildCitationParameters(AbstractCitationBuilder<?, ?> builder) {
         builder.title(TITLE)
                 .publicationDate(PUBLICATION_DATE)
-                .authoringGroups(GROUPS)
-                .authors(AUTHORS)
-                .citationXrefs(
+                .authoringGroupsSet(GROUPS)
+                .authorsSet(AUTHORS)
+                .citationXrefsSet(
                         asList(
                                 new DBCrossReferenceBuilder<CitationXrefType>()
                                         .databaseType(CitationXrefType.PUBMED)
