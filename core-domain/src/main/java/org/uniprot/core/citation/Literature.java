@@ -15,4 +15,16 @@ public interface Literature extends JournalArticle {
     default boolean hasLiteratureAbstract() {
         return Utils.notNullOrEmpty(getLiteratureAbstract());
     }
+
+    Long getPubmedId();
+
+    String getDoiId();
+
+    default boolean hasPubmedId() {
+        return getPubmedId() > 0L;
+    }
+
+    default boolean hasDoiId() {
+        return Utils.notNullOrEmpty(getDoiId());
+    }
 }

@@ -4,6 +4,7 @@ import static java.util.Collections.emptyList;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.citation.*;
@@ -60,6 +61,20 @@ public class LiteratureImpl extends AbstractJournalArticleImpl implements Litera
                 volume);
         this.completeAuthorList = completeAuthorList;
         this.literatureAbstract = Utils.emptyOrString(literatureAbstract);
+    }
+
+    @Override
+    public Long getPubmedId() {
+        Optional<DBCrossReference<CitationXrefType>> result =
+                getCitationXrefsByType(CitationXrefType.PUBMED);
+        return result.map(DBCrossReference::getId).map(Long::valueOf).orElse(0L);
+    }
+
+    @Override
+    public String getDoiId() {
+        Optional<DBCrossReference<CitationXrefType>> result =
+                getCitationXrefsByType(CitationXrefType.DOI);
+        return result.map(DBCrossReference::getId).orElse("");
     }
 
     @Override

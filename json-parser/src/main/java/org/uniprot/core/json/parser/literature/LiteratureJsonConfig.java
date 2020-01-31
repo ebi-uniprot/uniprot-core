@@ -1,11 +1,9 @@
 package org.uniprot.core.json.parser.literature;
 
-import org.uniprot.core.citation.Author;
-import org.uniprot.core.citation.Journal;
-import org.uniprot.core.citation.PublicationDate;
-import org.uniprot.core.citation.impl.AuthorImpl;
-import org.uniprot.core.citation.impl.JournalImpl;
-import org.uniprot.core.citation.impl.PublicationDateImpl;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.citation.*;
+import org.uniprot.core.citation.impl.*;
+import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.json.parser.serializer.AuthorSerializer;
 import org.uniprot.core.json.parser.serializer.JournalSerializer;
@@ -23,6 +21,7 @@ import org.uniprot.core.uniprot.UniProtAccession;
 import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.NamedType;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
 public class LiteratureJsonConfig extends JsonConfig {
@@ -68,6 +67,26 @@ public class LiteratureJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Author.class, AuthorImpl.class);
         mod.addAbstractTypeMapping(Journal.class, JournalImpl.class);
         mod.addAbstractTypeMapping(UniProtAccession.class, UniProtAccessionImpl.class);
+        mod.addAbstractTypeMapping(DBCrossReference.class, DBCrossReferenceImpl.class);
+
+        mod.addAbstractTypeMapping(Submission.class, SubmissionImpl.class);
+        mod.addAbstractTypeMapping(Journal.class, JournalImpl.class);
+        mod.addAbstractTypeMapping(Unpublished.class, UnpublishedImpl.class);
+        mod.addAbstractTypeMapping(Patent.class, PatentImpl.class);
+        mod.addAbstractTypeMapping(Thesis.class, ThesisImpl.class);
+        mod.addAbstractTypeMapping(Literature.class, LiteratureImpl.class);
+        mod.addAbstractTypeMapping(Book.class, BookImpl.class);
+        mod.addAbstractTypeMapping(JournalArticle.class, JournalArticleImpl.class);
+
+        mod.registerSubtypes(new NamedType(ElectronicArticleImpl.class, "ElectronicArticle"));
+        mod.registerSubtypes(new NamedType(BookImpl.class, "Book"));
+        mod.registerSubtypes(new NamedType(JournalArticleImpl.class, "JournalArticle"));
+        mod.registerSubtypes(new NamedType(PatentImpl.class, "Patent"));
+        mod.registerSubtypes(new NamedType(ThesisImpl.class, "Thesis"));
+        mod.registerSubtypes(new NamedType(LiteratureImpl.class, "Literature"));
+        mod.registerSubtypes(new NamedType(UnpublishedImpl.class, "Unpublished"));
+        mod.registerSubtypes(new NamedType(SubmissionImpl.class, "Submission"));
+
         objMapper.registerModule(mod);
 
         return objMapper;

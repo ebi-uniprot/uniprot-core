@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.citation.Author;
+import org.uniprot.core.citation.Literature;
 import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
 import org.uniprot.core.util.Utils;
@@ -16,18 +17,21 @@ import org.uniprot.core.util.Utils;
 public class LiteratureEntryMap implements NamedValueMap {
 
     private final LiteratureEntry literatureEntry;
+    private final Literature literature;
 
     public LiteratureEntryMap(LiteratureEntry literatureEntry) {
         this.literatureEntry = literatureEntry;
+        this.literature = (Literature) literatureEntry.getCitation();
     }
 
     @Override
     public Map<String, String> attributeValues() {
+
         Map<String, String> map = new HashMap<>();
-        map.put("id", String.valueOf(literatureEntry.getPubmedId()));
-        map.put("doi", Utils.emptyOrString(literatureEntry.getDoiId()));
-        map.put("title", Utils.emptyOrString(literatureEntry.getTitle()));
-        map.put("lit_abstract", Utils.emptyOrString(literatureEntry.getLiteratureAbstract()));
+        map.put("id", getPubmedId());
+        map.put("doi", getDoiId());
+        map.put("title", getTittle());
+        map.put("lit_abstract", getAbstract());
         map.put("author", getAuthors());
         map.put("authoring_group", getAuthoringGroup());
         map.put("author_and_group", getAuthorsAndAuthoringGroups());
@@ -39,18 +43,50 @@ public class LiteratureEntryMap implements NamedValueMap {
         return map;
     }
 
+    private String getAbstract() {
+        String result = "";
+        if (Utils.notNull(literature)) {
+            result = Utils.emptyOrString(literature.getLiteratureAbstract());
+        }
+        return result;
+    }
+
+    private String getTittle() {
+        String result = "";
+        if (Utils.notNull(literature)) {
+            result = Utils.emptyOrString(literature.getTitle());
+        }
+        return result;
+    }
+
+    private String getDoiId() {
+        String result = "";
+        if (Utils.notNull(literature)) {
+            result = Utils.emptyOrString(literature.getDoiId());
+        }
+        return result;
+    }
+
+    private String getPubmedId() {
+        String result = "";
+        if (Utils.notNull(literature)) {
+            result = String.valueOf(literature.getPubmedId());
+        }
+        return result;
+    }
+
     private String getPublication() {
         String result = "";
-        if (literatureEntry.hasPublicationDate()) {
-            result = literatureEntry.getPublicationDate().getValue();
+        if (Utils.notNull(literature) && literature.hasPublicationDate()) {
+            result = literature.getPublicationDate().getValue();
         }
         return result;
     }
 
     private String getJournal() {
         String result = "";
-        if (literatureEntry.hasJournal()) {
-            result = literatureEntry.getJournal().getName();
+        if (Utils.notNull(literature) && literature.hasJournal()) {
+            result = literature.getJournal().getName();
         }
         return result;
     }
@@ -64,35 +100,46 @@ public class LiteratureEntryMap implements NamedValueMap {
     }
 
     private String getAuthors() {
-        return literatureEntry.getAuthors().stream()
-                .map(Author::getValue)
-                .collect(Collectors.joining(", "));
+        String result = "";
+        if (Utils.notNull(literature)) {
+            result =
+                    literature.getAuthors().stream()
+                            .map(Author::getValue)
+                            .collect(Collectors.joining(", "));
+        }
+        return result;
     }
 
     private String getAuthoringGroup() {
-        return String.join(", ", literatureEntry.getAuthoringGroup());
+        String result = "";
+        if (Utils.notNull(literature)) {
+            result = String.join(", ", literature.getAuthoringGroup());
+        }
+        return result;
     }
 
     private String getReference() {
         StringBuilder result = new StringBuilder();
-        if (literatureEntry.hasJournal()) {
-            result.append(literatureEntry.getJournal().getName());
-        }
-        if (literatureEntry.hasVolume()) {
-            result.append(" ").append(literatureEntry.getVolume());
-        }
-        if (result.length() > 0) {
-            result.append(":");
-        }
-        if (literatureEntry.hasFirstPage()) {
-            result.append(literatureEntry.getFirstPage());
-
-            if (literatureEntry.hasLastPage()) {
-                result.append("-").append(literatureEntry.getLastPage());
+        if (Utils.notNull(literature)) {
+            if (literature.hasJournal()) {
+                result.append(literature.getJournal().getName());
             }
-        }
-        if (literatureEntry.hasPublicationDate()) {
-            result.append("(").append(literatureEntry.getPublicationDate().getValue()).append(")");
+            if (literature.hasVolume()) {
+                result.append(" ").append(literature.getVolume());
+            }
+            if (result.length() > 0) {
+                result.append(":");
+            }
+            if (literature.hasFirstPage()) {
+                result.append(literature.getFirstPage());
+
+                if (literature.hasLastPage()) {
+                    result.append("-").append(literature.getLastPage());
+                }
+            }
+            if (literature.hasPublicationDate()) {
+                result.append("(").append(literature.getPublicationDate().getValue()).append(")");
+            }
         }
         return result.toString();
     }

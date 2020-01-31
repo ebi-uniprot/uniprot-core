@@ -3,14 +3,9 @@ package org.uniprot.core.json.parser.uniprot.citation;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.util.Collections;
-
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.citation.Book;
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.CitationXrefType;
 import org.uniprot.core.citation.builder.BookBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
@@ -61,24 +56,15 @@ public class BookTest {
     }
 
     public static Book getBook() {
-        DBCrossReference<CitationXrefType> xref =
-                new DBCrossReferenceBuilder<CitationXrefType>()
-                        .databaseType(CitationXrefType.PUBMED)
-                        .id("somepID1")
-                        .build();
-        return new BookBuilder()
-                .bookName("book Name")
+        BookBuilder builder = new BookBuilder();
+        CitationUtil.populateBasicCitation(builder);
+        return builder.bookName("book Name")
                 .addEditor("editor Leo")
                 .firstPage("first page")
                 .lastPage("last page")
                 .volume("book volume")
                 .publisher("the publisher")
                 .address("address value")
-                .publicationDate("date value")
-                .addAuthorGroup("auth group")
-                .addAuthor("author Leo")
-                .title("Leo book tittle")
-                .citationXrefs(Collections.singletonList(xref))
                 .build();
     }
 }
