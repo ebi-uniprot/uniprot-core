@@ -30,12 +30,7 @@ class RnaEditingCommentImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         RnaEditingCommentImpl.RnaEdPositionImpl pos =
                 new RnaEditingCommentImpl.RnaEdPositionImpl("pos", createEvidences());
-        RnaEdPosition posBuild =
-                new RnaEditingPositionBuilder()
-                        .position("pos1")
-                        .evidences(createEvidences())
-                        .from(pos)
-                        .build();
+        RnaEdPosition posBuild = RnaEditingPositionBuilder.from(pos).build();
 
         assertTrue(pos.hasEvidences());
         assertTrue(pos.equals(posBuild) && posBuild.equals(pos));
@@ -47,7 +42,7 @@ class RnaEditingCommentImplTest {
                         RnaEditingLocationType.Undetermined,
                         Collections.singletonList(pos),
                         createNote());
-        RnaEditingComment obj = new RnaEditingCommentBuilder().from(impl).build();
+        RnaEditingComment obj = RnaEditingCommentBuilder.from(impl).build();
 
         assertTrue(impl.hasPositions());
         assertTrue(impl.hasLocationType());

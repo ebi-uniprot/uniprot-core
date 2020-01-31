@@ -36,7 +36,7 @@ class ThesisImplTest {
                         new PublicationDateImpl("date"),
                         "institute",
                         "address");
-        Thesis obj = new ThesisBuilder().from(impl).build();
+        Thesis obj = ThesisBuilder.from(impl).build();
 
         assertTrue(impl.hasAddress());
         assertTrue(impl.hasInstitute());

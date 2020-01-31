@@ -13,7 +13,7 @@ class PhysiologicalReactionBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         PhysiologicalReaction obj = new PhysiologicalReactionBuilder().build();
-        PhysiologicalReactionBuilder builder = new PhysiologicalReactionBuilder().from(obj);
+        PhysiologicalReactionBuilder builder = PhysiologicalReactionBuilder.from(obj);
         assertNotNull(builder);
     }
 

@@ -33,7 +33,7 @@ class SequenceCautionTypeTest {
         @Test
         void canConvertMixCase() {
             assertEquals(
-                    SequenceCautionType.ERRONEOUS_TERMIINATION,
+                    SequenceCautionType.ERRONEOUS_TERMINATION,
                     SequenceCautionType.typeOf("erROneOUS TerMINAtioN"));
         }
 

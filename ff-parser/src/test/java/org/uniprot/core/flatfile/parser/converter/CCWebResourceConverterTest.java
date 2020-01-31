@@ -6,7 +6,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.WebResource;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.WebResourceComment;
@@ -19,14 +21,14 @@ class CCWebResourceConverterTest {
         // CC   -!- WEB RESOURCE: Name=CD40Lbase; Note=CD40L defect database;
         // CC       URL="http://bioinf.uta.fi/CD40Lbase/";
         CcLineObject ccLineO = new CcLineObject();
-        CcLineObject.CC cc1 = new CcLineObject.CC();
-        cc1.topic = CcLineObject.CCTopicEnum.WEB_RESOURCE;
-        CcLineObject.WebResource wr = new CcLineObject.WebResource();
-        wr.name = "CD40Lbase";
-        wr.note = "CD40L defect database";
-        wr.url = "http://bioinf.uta.fi/CD40Lbase/";
-        cc1.object = wr;
-        ccLineO.ccs.add(cc1);
+        CC cc1 = new CC();
+        cc1.setTopic(CC.CCTopicEnum.WEB_RESOURCE);
+        WebResource wr = new WebResource();
+        wr.setName("CD40Lbase");
+        wr.setNote("CD40L defect database");
+        wr.setUrl("http://bioinf.uta.fi/CD40Lbase/");
+        cc1.setObject(wr);
+        ccLineO.getCcs().add(cc1);
 
         List<Comment> comments = converter.convert(ccLineO);
         assertEquals(1, comments.size());

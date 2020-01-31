@@ -63,7 +63,7 @@ class NoteImplTest {
         List<EvidencedValue> evidencedValues = Arrays.asList(ev1, ev2);
 
         Note impl = new NoteImpl(evidencedValues);
-        Note obj = new NoteBuilder(null).from(impl).build();
+        Note obj = NoteBuilder.from(impl).build();
 
         assertTrue(impl.isValid());
         assertTrue(impl.equals(obj) && obj.equals(impl));

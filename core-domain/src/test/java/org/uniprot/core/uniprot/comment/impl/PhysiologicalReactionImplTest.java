@@ -24,7 +24,7 @@ class PhysiologicalReactionImplTest {
                         PhysiologicalDirectionType.RIGHT_TO_LEFT,
                         new DBCrossReferenceImpl<>(ReactionReferenceType.RHEA, "RHEA:123"),
                         createEvidences());
-        PhysiologicalReaction obj = new PhysiologicalReactionBuilder().from(impl).build();
+        PhysiologicalReaction obj = PhysiologicalReactionBuilder.from(impl).build();
 
         assertTrue(impl.hasDirectionType());
         assertTrue(impl.hasReactionReference());

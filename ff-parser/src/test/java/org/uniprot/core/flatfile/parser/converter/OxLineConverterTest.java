@@ -30,7 +30,7 @@ class OxLineConverterTest {
         List<String> evIds = new ArrayList<String>();
         evIds.add("ECO:0000313|Ensembl:ENSTGUP00000005391");
         evIds.add("ECO:0000313|Ensembl:ENSTGUP00000005392");
-        osO.evidenceInfo.evidences.put(osO.taxonomy_id, evIds);
+        osO.evidenceInfo.getEvidences().put(osO.taxonomy_id, evIds);
 
         OxLineConverter converter = new OxLineConverter();
         Organism taxId = converter.convert(osO);

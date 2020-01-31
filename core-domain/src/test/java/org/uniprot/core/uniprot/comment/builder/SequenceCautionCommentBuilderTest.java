@@ -120,7 +120,7 @@ class SequenceCautionCommentBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         SequenceCautionComment obj = new SequenceCautionCommentBuilder().build();
-        SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder().from(obj);
+        SequenceCautionCommentBuilder builder = SequenceCautionCommentBuilder.from(obj);
         assertNotNull(builder);
     }
 

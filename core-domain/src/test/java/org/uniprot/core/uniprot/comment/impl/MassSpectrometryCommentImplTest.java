@@ -25,7 +25,7 @@ class MassSpectrometryCommentImplTest {
                         0.2F,
                         "note",
                         createEvidences());
-        MassSpectrometryComment obj = new MassSpectrometryCommentBuilder().from(impl).build();
+        MassSpectrometryComment obj = MassSpectrometryCommentBuilder.from(impl).build();
 
         assertTrue(impl.hasMolWeight());
         assertTrue(impl.hasMolWeightError());

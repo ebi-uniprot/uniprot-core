@@ -20,10 +20,6 @@ public class ComponentBuilder implements Builder<Component> {
     private ComponentType type;
     private List<DBCrossReference<ProteomeXReferenceType>> dbXReferences = new ArrayList<>();
 
-    public static @Nonnull ComponentBuilder newInstance() {
-        return new ComponentBuilder();
-    }
-
     public @Nonnull ComponentBuilder name(String name) {
         this.name = name;
         return this;

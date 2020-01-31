@@ -49,8 +49,7 @@ class UniProtDBCrossReferenceBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         UniProtDBCrossReference reference = new UniProtDBCrossReferenceBuilder().build();
-        UniProtDBCrossReferenceBuilder builder =
-                new UniProtDBCrossReferenceBuilder().from(reference);
+        UniProtDBCrossReferenceBuilder builder = UniProtDBCrossReferenceBuilder.from(reference);
         assertNotNull(builder);
     }
 }

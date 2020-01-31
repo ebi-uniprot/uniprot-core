@@ -25,7 +25,7 @@ class ProteinImplTest {
                         30,
                         "gm",
                         GeneNameType.GENE_NAME);
-        Protein obj = new ProteinBuilder().from(impl).build();
+        Protein obj = ProteinBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

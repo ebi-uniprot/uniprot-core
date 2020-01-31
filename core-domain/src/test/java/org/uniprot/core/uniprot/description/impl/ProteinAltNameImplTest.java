@@ -23,7 +23,7 @@ class ProteinAltNameImplTest {
                         new NameBuilder().build(),
                         Collections.emptyList(),
                         Collections.emptyList());
-        ProteinAltName obj = new ProteinAltNameBuilder().from(impl).build();
+        ProteinAltName obj = ProteinAltNameBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

@@ -91,7 +91,7 @@ class ReactionImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         Reaction impl = new ReactionImpl("name", references, ecNumber, createEvidences());
-        Reaction obj = new ReactionBuilder().from(impl).build();
+        Reaction obj = ReactionBuilder.from(impl).build();
 
         assertTrue(impl.hasEvidences());
         assertTrue(impl.hasName());

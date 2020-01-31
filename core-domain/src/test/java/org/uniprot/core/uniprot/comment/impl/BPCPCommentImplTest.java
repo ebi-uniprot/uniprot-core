@@ -147,7 +147,7 @@ class BPCPCommentImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        BPCPComment obj = new BPCPCommentBuilder().from(impl).build();
+        BPCPComment obj = BPCPCommentBuilder.from(impl).build();
 
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());

@@ -83,7 +83,7 @@ class FeatureImplTest {
                         new AlternativeSequenceBuilder().build(),
                         xrefs,
                         createEvidences());
-        Feature obj = new FeatureBuilder().from(impl).build();
+        Feature obj = FeatureBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

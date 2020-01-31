@@ -45,7 +45,7 @@ class EntryAuditBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         EntryAudit entryAudit = new EntryAuditBuilder().build();
-        EntryAuditBuilder builder = new EntryAuditBuilder().from(entryAudit);
+        EntryAuditBuilder builder = EntryAuditBuilder.from(entryAudit);
         assertNotNull(builder);
     }
 

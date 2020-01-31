@@ -13,27 +13,25 @@ class CanonicalProteinBuilderTest {
 
     @Test
     void testProtein() {
-        Protein protein = ProteinBuilder.newInstance().accession("P12345").build();
-        CanonicalProtein cProtein =
-                CanonicalProteinBuilder.newInstance().canonicalProtein(protein).build();
+        Protein protein = new ProteinBuilder().accession("P12345").build();
+        CanonicalProtein cProtein = new CanonicalProteinBuilder().canonicalProtein(protein).build();
         assertEquals(protein, cProtein.getCanonicalProtein());
     }
 
     @Test
     void testRelatedProteins() {
         List<Protein> proteins = new ArrayList<>();
-        proteins.add(ProteinBuilder.newInstance().accession("P12345").build());
-        proteins.add(ProteinBuilder.newInstance().accession("P12346").build());
-        CanonicalProtein cProtein =
-                CanonicalProteinBuilder.newInstance().relatedProteins(proteins).build();
+        proteins.add(new ProteinBuilder().accession("P12345").build());
+        proteins.add(new ProteinBuilder().accession("P12346").build());
+        CanonicalProtein cProtein = new CanonicalProteinBuilder().relatedProteins(proteins).build();
         assertEquals(proteins, cProtein.getRelatedProteins());
     }
 
     @Test
     void addRelatedProtein() {
-        Protein protein = ProteinBuilder.newInstance().accession("P12345").build();
+        Protein protein = new ProteinBuilder().accession("P12345").build();
         CanonicalProtein cProtein =
-                CanonicalProteinBuilder.newInstance().addRelatedProtein(protein).build();
+                new CanonicalProteinBuilder().addRelatedProtein(protein).build();
         List<Protein> proteins = new ArrayList<>();
         proteins.add(protein);
         assertEquals(proteins, cProtein.getRelatedProteins());
@@ -41,10 +39,9 @@ class CanonicalProteinBuilderTest {
 
     @Test
     void testFrom() {
-        Protein protein = ProteinBuilder.newInstance().accession("P12345").build();
-        CanonicalProtein cProtein =
-                CanonicalProteinBuilder.newInstance().canonicalProtein(protein).build();
-        CanonicalProtein newProtein = CanonicalProteinBuilder.newInstance().from(cProtein).build();
+        Protein protein = new ProteinBuilder().accession("P12345").build();
+        CanonicalProtein cProtein = new CanonicalProteinBuilder().canonicalProtein(protein).build();
+        CanonicalProtein newProtein = CanonicalProteinBuilder.from(cProtein).build();
         assertEquals(cProtein, newProtein);
     }
 }

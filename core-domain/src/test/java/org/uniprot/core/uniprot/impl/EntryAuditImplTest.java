@@ -37,10 +37,7 @@ class EntryAuditImplTest {
     @Test
     void equalConsiderAnnotationDate() {
         EntryAudit entryAudit2 =
-                new EntryAuditBuilder()
-                        .from(entryAudit)
-                        .lastAnnotationUpdate(LocalDate.now())
-                        .build();
+                EntryAuditBuilder.from(entryAudit).lastAnnotationUpdate(LocalDate.now()).build();
         assertFalse(entryAudit.equals(entryAudit2) && entryAudit2.equals(entryAudit));
         assertNotEquals(entryAudit.hashCode(), entryAudit2.hashCode());
     }
@@ -48,10 +45,7 @@ class EntryAuditImplTest {
     @Test
     void equalConsiderSequenceDate() {
         EntryAudit entryAudit2 =
-                new EntryAuditBuilder()
-                        .from(entryAudit)
-                        .lastSequenceUpdate(LocalDate.now())
-                        .build();
+                EntryAuditBuilder.from(entryAudit).lastSequenceUpdate(LocalDate.now()).build();
         assertFalse(entryAudit.equals(entryAudit2) && entryAudit2.equals(entryAudit));
         assertNotEquals(entryAudit.hashCode(), entryAudit2.hashCode());
     }

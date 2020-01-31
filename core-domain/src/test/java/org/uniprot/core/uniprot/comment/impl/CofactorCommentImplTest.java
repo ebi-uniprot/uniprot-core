@@ -120,7 +120,7 @@ class CofactorCommentImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         CofactorComment impl = new CofactorCommentImpl("mol", cofactors(), createNote());
-        CofactorComment obj = new CofactorCommentBuilder().from(impl).build();
+        CofactorComment obj = CofactorCommentBuilder.from(impl).build();
 
         assertTrue(impl.isValid());
         assertTrue(impl.hasCofactors());

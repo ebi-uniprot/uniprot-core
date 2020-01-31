@@ -36,10 +36,6 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
     private List<CanonicalProtein> canonicalProteins = new ArrayList<>();
     private String sourceDb;
 
-    public static @Nonnull ProteomeEntryBuilder newInstance() {
-        return new ProteomeEntryBuilder();
-    }
-
     @Override
     public @Nonnull ProteomeEntry build() {
         return new ProteomeEntryImpl(

@@ -43,7 +43,7 @@ class ProteomeTest {
         xrefs.add(xref1);
         xrefs.add(xref2);
         Component component =
-                ComponentBuilder.newInstance()
+                new ComponentBuilder()
                         .name("someName")
                         .description("some description")
                         .proteinCount(102)
@@ -66,7 +66,7 @@ class ProteomeTest {
     void testRedundantProteome() {
         String id = "UP000004340";
         RedundantProteome rproteome =
-                RedundantProteomeBuilder.newInstance()
+                new RedundantProteomeBuilder()
                         .proteomeId(new ProteomeIdBuilder(id).build())
                         .similarity(0.98f)
                         .build();
@@ -96,13 +96,13 @@ class ProteomeTest {
         xrefs.add(xref1);
         xrefs.add(xref2);
         Taxonomy taxonomy =
-                TaxonomyBuilder.newInstance()
+                new TaxonomyBuilder()
                         .taxonId(9606)
                         .scientificName("Homo sapiens")
                         .commonName("Human")
                         .build();
         ProteomeEntry proteome =
-                ProteomeEntryBuilder.newInstance()
+                new ProteomeEntryBuilder()
                         .proteomeId(proteomeId)
                         .description(description)
                         .taxonomy(taxonomy)
@@ -150,14 +150,14 @@ class ProteomeTest {
         xrefs.add(xref2);
         List<Component> components = new ArrayList<>();
         Component component1 =
-                ComponentBuilder.newInstance()
+                new ComponentBuilder()
                         .name("someName1")
                         .description("some description")
                         .proteinCount(102)
                         .build();
 
         Component component2 =
-                ComponentBuilder.newInstance()
+                new ComponentBuilder()
                         .name("someName2")
                         .description("some description 2")
                         .proteinCount(102)
@@ -168,20 +168,20 @@ class ProteomeTest {
         List<RedundantProteome> redundantProteomes = new ArrayList<>();
         String rid = "UP000004340";
         RedundantProteome rproteome1 =
-                RedundantProteomeBuilder.newInstance()
+                new RedundantProteomeBuilder()
                         .proteomeId(new ProteomeIdBuilder(rid).build())
                         .similarity(0.98f)
                         .build();
         String rid2 = "UP000004343";
         RedundantProteome rproteome2 =
-                RedundantProteomeBuilder.newInstance()
+                new RedundantProteomeBuilder()
                         .proteomeId(new ProteomeIdBuilder(rid2).build())
                         .similarity(0.88f)
                         .build();
         redundantProteomes.add(rproteome1);
         redundantProteomes.add(rproteome2);
         Taxonomy taxonomy =
-                TaxonomyBuilder.newInstance()
+                new TaxonomyBuilder()
                         .taxonId(9606)
                         .scientificName("Homo sapiens")
                         .commonName("Human")
@@ -192,7 +192,7 @@ class ProteomeTest {
                 new TaxonomyLineageBuilder().taxonId(9605).scientificName("Homo").build();
 
         ProteomeEntry proteome =
-                ProteomeEntryBuilder.newInstance()
+                new ProteomeEntryBuilder()
                         .proteomeId(proteomeId)
                         .description(description)
                         .taxonomy(taxonomy)

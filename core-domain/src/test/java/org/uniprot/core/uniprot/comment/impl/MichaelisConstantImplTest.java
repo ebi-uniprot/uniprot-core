@@ -19,7 +19,7 @@ class MichaelisConstantImplTest {
         MichaelisConstant impl =
                 new MichaelisConstantImpl(
                         8.2, MichaelisConstant.NORMALIZED_UNIT, "sub", createEvidences());
-        MichaelisConstant obj = new MichaelisConstantBuilder().from(impl).build();
+        MichaelisConstant obj = MichaelisConstantBuilder.from(impl).build();
 
         assertTrue(impl.hasEvidences());
         assertTrue(impl.hasConstant());

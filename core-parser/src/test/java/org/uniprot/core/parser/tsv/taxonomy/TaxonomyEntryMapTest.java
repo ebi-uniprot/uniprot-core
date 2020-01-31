@@ -107,6 +107,6 @@ class TaxonomyEntryMapTest {
     }
 
     private Taxonomy getTaxonomy() {
-        return TaxonomyBuilder.newInstance().scientificName("Homo sapiens").build();
+        return new TaxonomyBuilder().scientificName("Homo sapiens").build();
     }
 }

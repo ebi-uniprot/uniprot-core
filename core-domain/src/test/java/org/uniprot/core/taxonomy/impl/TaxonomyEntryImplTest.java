@@ -37,7 +37,7 @@ class TaxonomyEntryImplTest {
                         Collections.singletonList("links"),
                         new TaxonomyStatisticsImpl(),
                         new TaxonomyInactiveReasonImpl());
-        TaxonomyEntry obj = new TaxonomyEntryBuilder().from(impl).build();
+        TaxonomyEntry obj = TaxonomyEntryBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

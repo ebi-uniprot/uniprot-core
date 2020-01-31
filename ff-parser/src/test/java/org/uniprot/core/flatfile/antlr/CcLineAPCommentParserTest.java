@@ -6,9 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.AlternativeNameSequenceEnum;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.AlternativeProducts;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.AlternativeProductName;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.AlternativeProducts;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 
 class CcLineAPCommentParserTest {
     @Test
@@ -27,43 +28,45 @@ class CcLineAPCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof AlternativeProducts);
-        AlternativeProducts ap = (AlternativeProducts) cc.object;
-        assertEquals(1, ap.events.size());
-        assertEquals("Alternative splicing", ap.events.get(0));
-        assertEquals("3", ap.namedIsoforms);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof AlternativeProducts);
+        AlternativeProducts ap = (AlternativeProducts) cc.getObject();
+        assertEquals(1, ap.getEvents().size());
+        assertEquals("Alternative splicing", ap.getEvents().get(0));
+        assertEquals("3", ap.getNamedIsoforms());
         assertEquals(
                 "Additional isoforms seem to exist. Experimental confirmation may be lacking for some isoforms.",
-                ap.comment.get(0).value);
-        assertEquals(3, ap.names.size());
-        assertEquals("1", ap.names.get(0).name.value);
-        assertEquals(1, ap.names.get(0).isoId.size());
-        assertEquals("O43918-1", ap.names.get(0).isoId.get(0));
-        assertEquals(AlternativeNameSequenceEnum.DISPLAYED, ap.names.get(0).sequenceEnum);
-        assertTrue(ap.names.get(0).sequenceFTId.isEmpty());
-        assertEquals(1, ap.names.get(0).synNames.size());
-        assertEquals("AIRE-1", ap.names.get(0).synNames.get(0).value);
+                ap.getComment().get(0).getValue());
+        assertEquals(3, ap.getNames().size());
+        assertEquals("1", ap.getNames().get(0).getName().getValue());
+        assertEquals(1, ap.getNames().get(0).getIsoId().size());
+        assertEquals("O43918-1", ap.getNames().get(0).getIsoId().get(0));
+        assertEquals(
+                AlternativeProductName.AlternativeNameSequenceEnum.DISPLAYED,
+                ap.getNames().get(0).getSequenceEnum());
+        assertTrue(ap.getNames().get(0).getSequenceFTId().isEmpty());
+        assertEquals(1, ap.getNames().get(0).getSynNames().size());
+        assertEquals("AIRE-1", ap.getNames().get(0).getSynNames().get(0).getValue());
 
-        assertEquals("2", ap.names.get(1).name.value);
-        assertEquals(1, ap.names.get(1).isoId.size());
-        assertEquals("O43918-2", ap.names.get(1).isoId.get(0));
+        assertEquals("2", ap.getNames().get(1).getName().getValue());
+        assertEquals(1, ap.getNames().get(1).getIsoId().size());
+        assertEquals("O43918-2", ap.getNames().get(1).getIsoId().get(0));
 
-        assertEquals(1, ap.names.get(1).sequenceFTId.size());
-        assertEquals("VSP_004089", ap.names.get(1).sequenceFTId.get(0));
-        assertEquals(1, ap.names.get(1).synNames.size());
-        assertEquals("AIRE-2", ap.names.get(1).synNames.get(0).value);
+        assertEquals(1, ap.getNames().get(1).getSequenceFTId().size());
+        assertEquals("VSP_004089", ap.getNames().get(1).getSequenceFTId().get(0));
+        assertEquals(1, ap.getNames().get(1).getSynNames().size());
+        assertEquals("AIRE-2", ap.getNames().get(1).getSynNames().get(0).getValue());
 
-        assertEquals("3", ap.names.get(2).name.value);
-        assertEquals(1, ap.names.get(2).isoId.size());
-        assertEquals("O43918-3", ap.names.get(2).isoId.get(0));
-        assertEquals(null, ap.names.get(2).sequenceEnum);
-        assertEquals(2, ap.names.get(2).sequenceFTId.size());
-        assertEquals("VSP_004089", ap.names.get(2).sequenceFTId.get(0));
-        assertEquals("VSP_004090", ap.names.get(2).sequenceFTId.get(1));
-        assertEquals(1, ap.names.get(2).synNames.size());
-        assertEquals("AIRE-3", ap.names.get(2).synNames.get(0).value);
+        assertEquals("3", ap.getNames().get(2).getName().getValue());
+        assertEquals(1, ap.getNames().get(2).getIsoId().size());
+        assertEquals("O43918-3", ap.getNames().get(2).getIsoId().get(0));
+        assertEquals(null, ap.getNames().get(2).getSequenceEnum());
+        assertEquals(2, ap.getNames().get(2).getSequenceFTId().size());
+        assertEquals("VSP_004089", ap.getNames().get(2).getSequenceFTId().get(0));
+        assertEquals("VSP_004090", ap.getNames().get(2).getSequenceFTId().get(1));
+        assertEquals(1, ap.getNames().get(2).getSynNames().size());
+        assertEquals("AIRE-3", ap.getNames().get(2).getSynNames().get(0).getValue());
     }
 
     @Test
@@ -78,29 +81,31 @@ class CcLineAPCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof AlternativeProducts);
-        AlternativeProducts ap = (AlternativeProducts) cc.object;
-        assertEquals(1, ap.events.size());
-        assertEquals("Alternative promoter usage", ap.events.get(0));
-        assertEquals("2", ap.namedIsoforms);
-        assertEquals(2, ap.names.size());
-        assertEquals("alpha", ap.names.get(0).name.value);
-        assertEquals(1, ap.names.get(0).isoId.size());
-        assertEquals("P12544-1", ap.names.get(0).isoId.get(0));
-        assertEquals(AlternativeNameSequenceEnum.DISPLAYED, ap.names.get(0).sequenceEnum);
-        assertTrue(ap.names.get(0).sequenceFTId.isEmpty());
-        assertEquals(0, ap.names.get(0).synNames.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof AlternativeProducts);
+        AlternativeProducts ap = (AlternativeProducts) cc.getObject();
+        assertEquals(1, ap.getEvents().size());
+        assertEquals("Alternative promoter usage", ap.getEvents().get(0));
+        assertEquals("2", ap.getNamedIsoforms());
+        assertEquals(2, ap.getNames().size());
+        assertEquals("alpha", ap.getNames().get(0).getName().getValue());
+        assertEquals(1, ap.getNames().get(0).getIsoId().size());
+        assertEquals("P12544-1", ap.getNames().get(0).getIsoId().get(0));
+        assertEquals(
+                AlternativeProductName.AlternativeNameSequenceEnum.DESCRIBED.DISPLAYED,
+                ap.getNames().get(0).getSequenceEnum());
+        assertTrue(ap.getNames().get(0).getSequenceFTId().isEmpty());
+        assertEquals(0, ap.getNames().get(0).getSynNames().size());
 
-        assertEquals("beta", ap.names.get(1).name.value);
-        assertEquals(1, ap.names.get(1).isoId.size());
-        assertEquals("P12544-2", ap.names.get(1).isoId.get(0));
+        assertEquals("beta", ap.getNames().get(1).getName().getValue());
+        assertEquals(1, ap.getNames().get(1).getIsoId().size());
+        assertEquals("P12544-2", ap.getNames().get(1).getIsoId().get(0));
 
-        assertEquals(2, ap.names.get(1).sequenceFTId.size());
-        assertEquals("VSP_038571", ap.names.get(1).sequenceFTId.get(0));
-        assertEquals("VSP_038572", ap.names.get(1).sequenceFTId.get(1));
-        assertEquals(0, ap.names.get(1).synNames.size());
+        assertEquals(2, ap.getNames().get(1).getSequenceFTId().size());
+        assertEquals("VSP_038571", ap.getNames().get(1).getSequenceFTId().get(0));
+        assertEquals("VSP_038572", ap.getNames().get(1).getSequenceFTId().get(1));
+        assertEquals(0, ap.getNames().get(1).getSynNames().size());
     }
 
     @Test
@@ -126,12 +131,12 @@ class CcLineAPCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof AlternativeProducts);
-        AlternativeProducts ap = (AlternativeProducts) cc.object;
-        assertEquals(6, ap.names.size());
-        assertEquals(5, ap.names.get(1).sequenceFTId.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof AlternativeProducts);
+        AlternativeProducts ap = (AlternativeProducts) cc.getObject();
+        assertEquals(6, ap.getNames().size());
+        assertEquals(5, ap.getNames().get(1).getSequenceFTId().size());
     }
 
     @Test
@@ -145,15 +150,17 @@ class CcLineAPCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof AlternativeProducts);
-        AlternativeProducts ap = (AlternativeProducts) cc.object;
-        assertEquals(1, ap.names.size());
-        assertEquals(3, ap.names.get(0).synNames.size());
-        assertEquals("BCL2-like 11 transcript variant 10", ap.names.get(0).synNames.get(0).value);
-        assertEquals("BimAD", ap.names.get(0).synNames.get(1).value);
-        assertEquals("Bim-AD", ap.names.get(0).synNames.get(2).value);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof AlternativeProducts);
+        AlternativeProducts ap = (AlternativeProducts) cc.getObject();
+        assertEquals(1, ap.getNames().size());
+        assertEquals(3, ap.getNames().get(0).getSynNames().size());
+        assertEquals(
+                "BCL2-like 11 transcript variant 10",
+                ap.getNames().get(0).getSynNames().get(0).getValue());
+        assertEquals("BimAD", ap.getNames().get(0).getSynNames().get(1).getValue());
+        assertEquals("Bim-AD", ap.getNames().get(0).getSynNames().get(2).getValue());
     }
 
     @Test
@@ -167,13 +174,13 @@ class CcLineAPCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof AlternativeProducts);
-        AlternativeProducts ap = (AlternativeProducts) cc.object;
-        assertEquals(1, ap.names.size());
-        assertEquals(7, ap.names.get(0).synNames.size());
-        assertEquals("I-FLICE 1", ap.names.get(0).synNames.get(4).value);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof AlternativeProducts);
+        AlternativeProducts ap = (AlternativeProducts) cc.getObject();
+        assertEquals(1, ap.getNames().size());
+        assertEquals(7, ap.getNames().get(0).getSynNames().size());
+        assertEquals("I-FLICE 1", ap.getNames().get(0).getSynNames().get(4).getValue());
     }
 
     @Test
@@ -202,15 +209,17 @@ class CcLineAPCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof AlternativeProducts);
-        AlternativeProducts ap = (AlternativeProducts) cc.object;
-        assertEquals(6, ap.names.size());
-        assertEquals("2", ap.names.get(1).name.value);
-        assertNotNull(ap.names.get(1).name.evidences);
-        assertEquals(1, ap.names.get(1).name.evidences.size());
-        assertEquals("ECO:0000313|EMBL:BAG16761.1", ap.names.get(1).name.evidences.get(0));
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof AlternativeProducts);
+        AlternativeProducts ap = (AlternativeProducts) cc.getObject();
+        assertEquals(6, ap.getNames().size());
+        assertEquals("2", ap.getNames().get(1).getName().getValue());
+        assertNotNull(ap.getNames().get(1).getName().getEvidences());
+        assertEquals(1, ap.getNames().get(1).getName().getEvidences().size());
+        assertEquals(
+                "ECO:0000313|EMBL:BAG16761.1",
+                ap.getNames().get(1).getName().getEvidences().get(0));
     }
 
     @Test
@@ -246,52 +255,69 @@ class CcLineAPCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof AlternativeProducts);
-        AlternativeProducts ap = (AlternativeProducts) cc.object;
-        assertEquals(1, ap.events.size());
-        assertEquals("Alternative splicing", ap.events.get(0));
-        assertEquals(1, ap.comment.size());
-        assertEquals("Additional isoforms seem to exist.", ap.comment.get(0).value);
-        assertEquals("ECO:0000269|PubMed:10433554", ap.comment.get(0).evidences.get(0));
-        assertEquals("ECO:0000303|Ref.6", ap.comment.get(0).evidences.get(1));
-        assertEquals(6, ap.names.size());
-        assertEquals("1", ap.names.get(0).name.value);
-        assertNotNull(ap.names.get(0).name.evidences);
-        assertEquals(1, ap.names.get(0).name.evidences.size());
-        assertEquals("ECO:0000313|EMBL:BAG16761.1", ap.names.get(0).name.evidences.get(0));
-        assertEquals(1, ap.names.get(0).synNames.size());
-        assertEquals("A", ap.names.get(0).synNames.get(0).value);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof AlternativeProducts);
+        AlternativeProducts ap = (AlternativeProducts) cc.getObject();
+        assertEquals(1, ap.getEvents().size());
+        assertEquals("Alternative splicing", ap.getEvents().get(0));
+        assertEquals(1, ap.getComment().size());
+        assertEquals("Additional isoforms seem to exist.", ap.getComment().get(0).getValue());
+        assertEquals("ECO:0000269|PubMed:10433554", ap.getComment().get(0).getEvidences().get(0));
+        assertEquals("ECO:0000303|Ref.6", ap.getComment().get(0).getEvidences().get(1));
+        assertEquals(6, ap.getNames().size());
+        assertEquals("1", ap.getNames().get(0).getName().getValue());
+        assertNotNull(ap.getNames().get(0).getName().getEvidences());
+        assertEquals(1, ap.getNames().get(0).getName().getEvidences().size());
+        assertEquals(
+                "ECO:0000313|EMBL:BAG16761.1",
+                ap.getNames().get(0).getName().getEvidences().get(0));
+        assertEquals(1, ap.getNames().get(0).getSynNames().size());
+        assertEquals("A", ap.getNames().get(0).getSynNames().get(0).getValue());
         assertEquals(
                 "ECO:0000256|HAMAP-Rule:MF_002051",
-                ap.names.get(0).synNames.get(0).evidences.get(0));
-        assertEquals("ECO:0000313|PDB:3OW2", ap.names.get(0).synNames.get(0).evidences.get(1));
+                ap.getNames().get(0).getSynNames().get(0).getEvidences().get(0));
+        assertEquals(
+                "ECO:0000313|PDB:3OW2",
+                ap.getNames().get(0).getSynNames().get(0).getEvidences().get(1));
         assertEquals(
                 "Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is in conflict in positions: 33:I->T. No experimental confirmation available.",
-                ap.names.get(0).note.get(0).value);
-        assertEquals("ECO:0000313|PDB:3OW2", ap.names.get(0).note.get(0).evidences.get(0));
-
-        assertEquals("Bim-alpha3", ap.names.get(2).name.value);
-        assertNotNull(ap.names.get(2).name.evidences);
-        assertEquals(2, ap.names.get(2).name.evidences.size());
-        assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", ap.names.get(2).name.evidences.get(0));
-        assertEquals("ECO:0000313|PDB:3OW2", ap.names.get(2).name.evidences.get(1));
-        assertEquals(3, ap.names.get(2).synNames.size());
-        assertEquals("BCL2-like 11 transcript variant 10", ap.names.get(2).synNames.get(0).value);
+                ap.getNames().get(0).getNote().get(0).getValue());
         assertEquals(
-                "ECO:0000313|EMBL:BAG16761.1", ap.names.get(2).synNames.get(0).evidences.get(0));
+                "ECO:0000313|PDB:3OW2",
+                ap.getNames().get(0).getNote().get(0).getEvidences().get(0));
 
-        assertEquals("Bim-AD", ap.names.get(2).synNames.get(1).value);
+        assertEquals("Bim-alpha3", ap.getNames().get(2).getName().getValue());
+        assertNotNull(ap.getNames().get(2).getName().getEvidences());
+        assertEquals(2, ap.getNames().get(2).getName().getEvidences().size());
         assertEquals(
                 "ECO:0000256|HAMAP-Rule:MF_00205",
-                ap.names.get(2).synNames.get(1).evidences.get(0));
+                ap.getNames().get(2).getName().getEvidences().get(0));
+        assertEquals("ECO:0000313|PDB:3OW2", ap.getNames().get(2).getName().getEvidences().get(1));
+        assertEquals(3, ap.getNames().get(2).getSynNames().size());
+        assertEquals(
+                "BCL2-like 11 transcript variant 10",
+                ap.getNames().get(2).getSynNames().get(0).getValue());
+        assertEquals(
+                "ECO:0000313|EMBL:BAG16761.1",
+                ap.getNames().get(2).getSynNames().get(0).getEvidences().get(0));
 
-        assertEquals("BimAD", ap.names.get(2).synNames.get(2).value);
-        assertEquals("ECO:0000313|PDB:3OW2", ap.names.get(2).synNames.get(2).evidences.get(0));
+        assertEquals("Bim-AD", ap.getNames().get(2).getSynNames().get(1).getValue());
+        assertEquals(
+                "ECO:0000256|HAMAP-Rule:MF_00205",
+                ap.getNames().get(2).getSynNames().get(1).getEvidences().get(0));
 
-        assertEquals("No experimental confirmation available.", ap.names.get(4).note.get(0).value);
-        assertEquals("ECO:0000269|PubMed:10433554", ap.names.get(4).note.get(0).evidences.get(0));
+        assertEquals("BimAD", ap.getNames().get(2).getSynNames().get(2).getValue());
+        assertEquals(
+                "ECO:0000313|PDB:3OW2",
+                ap.getNames().get(2).getSynNames().get(2).getEvidences().get(0));
+
+        assertEquals(
+                "No experimental confirmation available.",
+                ap.getNames().get(4).getNote().get(0).getValue());
+        assertEquals(
+                "ECO:0000269|PubMed:10433554",
+                ap.getNames().get(4).getNote().get(0).getEvidences().get(0));
     }
 
     @Test
@@ -462,51 +488,68 @@ class CcLineAPCommentParserTest {
         String lines = formater.format(ccLineStringEvidence);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof AlternativeProducts);
-        AlternativeProducts ap = (AlternativeProducts) cc.object;
-        assertEquals(1, ap.events.size());
-        assertEquals("Alternative splicing", ap.events.get(0));
-        assertEquals(1, ap.comment.size());
-        assertEquals("Additional isoforms seem to exist.", ap.comment.get(0).value);
-        assertEquals("ECO:0000269|PubMed:10433554", ap.comment.get(0).evidences.get(0));
-        assertEquals("ECO:0000303|Ref.6", ap.comment.get(0).evidences.get(1));
-        assertEquals(6, ap.names.size());
-        assertEquals("1", ap.names.get(0).name.value);
-        assertNotNull(ap.names.get(0).name.evidences);
-        assertEquals(1, ap.names.get(0).name.evidences.size());
-        assertEquals("ECO:0000313|EMBL:BAG16761.1", ap.names.get(0).name.evidences.get(0));
-        assertEquals(1, ap.names.get(0).synNames.size());
-        assertEquals("A", ap.names.get(0).synNames.get(0).value);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof AlternativeProducts);
+        AlternativeProducts ap = (AlternativeProducts) cc.getObject();
+        assertEquals(1, ap.getEvents().size());
+        assertEquals("Alternative splicing", ap.getEvents().get(0));
+        assertEquals(1, ap.getComment().size());
+        assertEquals("Additional isoforms seem to exist.", ap.getComment().get(0).getValue());
+        assertEquals("ECO:0000269|PubMed:10433554", ap.getComment().get(0).getEvidences().get(0));
+        assertEquals("ECO:0000303|Ref.6", ap.getComment().get(0).getEvidences().get(1));
+        assertEquals(6, ap.getNames().size());
+        assertEquals("1", ap.getNames().get(0).getName().getValue());
+        assertNotNull(ap.getNames().get(0).getName().getEvidences());
+        assertEquals(1, ap.getNames().get(0).getName().getEvidences().size());
+        assertEquals(
+                "ECO:0000313|EMBL:BAG16761.1",
+                ap.getNames().get(0).getName().getEvidences().get(0));
+        assertEquals(1, ap.getNames().get(0).getSynNames().size());
+        assertEquals("A", ap.getNames().get(0).getSynNames().get(0).getValue());
         assertEquals(
                 "ECO:0000256|HAMAP-Rule:MF_002051",
-                ap.names.get(0).synNames.get(0).evidences.get(0));
-        assertEquals("ECO:0000313|PDB:3OW2", ap.names.get(0).synNames.get(0).evidences.get(1));
+                ap.getNames().get(0).getSynNames().get(0).getEvidences().get(0));
+        assertEquals(
+                "ECO:0000313|PDB:3OW2",
+                ap.getNames().get(0).getSynNames().get(0).getEvidences().get(1));
         assertEquals(
                 "Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is in conflict in positions: 33:I->T. No experimental confirmation available.",
-                ap.names.get(0).note.get(0).value);
-        assertEquals("ECO:0000313|PDB:3OW2", ap.names.get(0).note.get(0).evidences.get(0));
-
-        assertEquals("Bim-alpha3", ap.names.get(2).name.value);
-        assertNotNull(ap.names.get(2).name.evidences);
-        assertEquals(2, ap.names.get(2).name.evidences.size());
-        assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", ap.names.get(2).name.evidences.get(0));
-        assertEquals("ECO:0000313|PDB:3OW2", ap.names.get(2).name.evidences.get(1));
-        assertEquals(3, ap.names.get(2).synNames.size());
-        assertEquals("BCL2-like 11 transcript variant 10", ap.names.get(2).synNames.get(0).value);
+                ap.getNames().get(0).getNote().get(0).getValue());
         assertEquals(
-                "ECO:0000313|EMBL:BAG16761.1", ap.names.get(2).synNames.get(0).evidences.get(0));
+                "ECO:0000313|PDB:3OW2",
+                ap.getNames().get(0).getNote().get(0).getEvidences().get(0));
 
-        assertEquals("Bim-AD", ap.names.get(2).synNames.get(1).value);
+        assertEquals("Bim-alpha3", ap.getNames().get(2).getName().getValue());
+        assertNotNull(ap.getNames().get(2).getName().getEvidences());
+        assertEquals(2, ap.getNames().get(2).getName().getEvidences().size());
         assertEquals(
                 "ECO:0000256|HAMAP-Rule:MF_00205",
-                ap.names.get(2).synNames.get(1).evidences.get(0));
+                ap.getNames().get(2).getName().getEvidences().get(0));
+        assertEquals("ECO:0000313|PDB:3OW2", ap.getNames().get(2).getName().getEvidences().get(1));
+        assertEquals(3, ap.getNames().get(2).getSynNames().size());
+        assertEquals(
+                "BCL2-like 11 transcript variant 10",
+                ap.getNames().get(2).getSynNames().get(0).getValue());
+        assertEquals(
+                "ECO:0000313|EMBL:BAG16761.1",
+                ap.getNames().get(2).getSynNames().get(0).getEvidences().get(0));
 
-        assertEquals("BimAD", ap.names.get(2).synNames.get(2).value);
-        assertEquals("ECO:0000313|PDB:3OW2", ap.names.get(2).synNames.get(2).evidences.get(0));
+        assertEquals("Bim-AD", ap.getNames().get(2).getSynNames().get(1).getValue());
+        assertEquals(
+                "ECO:0000256|HAMAP-Rule:MF_00205",
+                ap.getNames().get(2).getSynNames().get(1).getEvidences().get(0));
 
-        assertEquals("No experimental confirmation available.", ap.names.get(4).note.get(0).value);
-        assertEquals("ECO:0000269|PubMed:10433554", ap.names.get(4).note.get(0).evidences.get(0));
+        assertEquals("BimAD", ap.getNames().get(2).getSynNames().get(2).getValue());
+        assertEquals(
+                "ECO:0000313|PDB:3OW2",
+                ap.getNames().get(2).getSynNames().get(2).getEvidences().get(0));
+
+        assertEquals(
+                "No experimental confirmation available.",
+                ap.getNames().get(4).getNote().get(0).getValue());
+        assertEquals(
+                "ECO:0000269|PubMed:10433554",
+                ap.getNames().get(4).getNote().get(0).getEvidences().get(0));
     }
 }

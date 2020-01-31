@@ -22,10 +22,6 @@ public class DiseaseBuilder implements Builder<Disease> {
     private Long reviewedProteinCount;
     private Long unreviewedProteinCount;
 
-    public static @Nonnull DiseaseBuilder newInstance() {
-        return new DiseaseBuilder();
-    }
-
     @Override
     public @Nonnull Disease build() {
         return new DiseaseImpl(

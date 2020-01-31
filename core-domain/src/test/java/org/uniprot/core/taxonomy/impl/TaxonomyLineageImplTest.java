@@ -17,7 +17,7 @@ class TaxonomyLineageImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         TaxonomyLineage impl = new TaxonomyLineageImpl(87L, "sciName", TaxonomyRank.FAMILY, false);
-        TaxonomyLineage obj = new TaxonomyLineageBuilder().from(impl).build();
+        TaxonomyLineage obj = TaxonomyLineageBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

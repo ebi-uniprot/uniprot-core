@@ -119,7 +119,7 @@ class DiseaseBuilderTest {
 
     @Test
     void canGetInstanceFromStaticMethod() {
-        DiseaseBuilder builder = DiseaseBuilder.newInstance();
+        DiseaseBuilder builder = new DiseaseBuilder();
         assertNotNull(builder);
     }
 
@@ -136,7 +136,7 @@ class DiseaseBuilderTest {
                         singletonList(new KeywordImpl("1", "key")),
                         3L,
                         6L);
-        Disease obj = new DiseaseBuilder().from(impl).build();
+        Disease obj = DiseaseBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }
