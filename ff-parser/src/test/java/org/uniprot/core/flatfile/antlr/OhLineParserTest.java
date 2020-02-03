@@ -15,13 +15,13 @@ class OhLineParserTest {
                 new DefaultUniprotLineParserFactory().createOhLineParser();
         OhLineObject obj = parser.parse(ohLines);
 
-        assertEquals(1, obj.hosts.size());
-        verify(obj.hosts.get(0), 9598, "Pan troglodytes (Chimpanzee)");
+        assertEquals(1, obj.getHosts().size());
+        verify(obj.getHosts().get(0), 9598, "Pan troglodytes (Chimpanzee)");
     }
 
     private void verify(OhLineObject.OhValue oh, int taxId, String hostName) {
-        assertEquals(taxId, oh.tax_id);
-        assertEquals(hostName, oh.hostname);
+        assertEquals(taxId, oh.getTax_id());
+        assertEquals(hostName, oh.getHostname());
     }
 
     @Test
@@ -32,9 +32,9 @@ class OhLineParserTest {
                 new DefaultUniprotLineParserFactory().createOhLineParser();
         OhLineObject obj = parser.parse(ohLines);
 
-        assertEquals(1, obj.hosts.size());
+        assertEquals(1, obj.getHosts().size());
         verify(
-                obj.hosts.get(0),
+                obj.getHosts().get(0),
                 3662,
                 "Cucurbita moschata (Winter crookneck squash) (Cucurbita pepo var. moschata)");
     }
@@ -48,11 +48,11 @@ class OhLineParserTest {
                 new DefaultUniprotLineParserFactory().createOhLineParser();
         OhLineObject obj = parser.parse(ohLines);
 
-        assertEquals(2, obj.hosts.size());
+        assertEquals(2, obj.getHosts().size());
         verify(
-                obj.hosts.get(0),
+                obj.getHosts().get(0),
                 3662,
                 "Cucurbita moschata (Winter crookneck squash) (Cucurbita pepo var. moschata)");
-        verify(obj.hosts.get(1), 9598, "Pan troglodytes (Chimpanzee)");
+        verify(obj.getHosts().get(1), 9598, "Pan troglodytes (Chimpanzee)");
     }
 }

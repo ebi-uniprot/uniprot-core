@@ -65,7 +65,7 @@ class CatalyticActivityCommentBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         CatalyticActivityComment obj = new CatalyticActivityCommentBuilder().build();
-        CatalyticActivityCommentBuilder builder = new CatalyticActivityCommentBuilder().from(obj);
+        CatalyticActivityCommentBuilder builder = CatalyticActivityCommentBuilder.from(obj);
         assertNotNull(builder);
     }
 

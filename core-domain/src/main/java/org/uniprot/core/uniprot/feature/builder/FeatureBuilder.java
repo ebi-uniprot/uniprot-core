@@ -27,7 +27,7 @@ import org.uniprot.core.uniprot.feature.impl.FeatureImpl;
  *
  * @author Edd
  */
-public class FeatureBuilder implements Builder<FeatureBuilder, Feature> {
+public class FeatureBuilder implements Builder<Feature> {
     private FeatureType type;
     private FeatureLocation location;
     private FeatureDescription description;
@@ -42,8 +42,7 @@ public class FeatureBuilder implements Builder<FeatureBuilder, Feature> {
                 type, location, description, featureId, alternativeSequence, dbXref, evidences);
     }
 
-    @Override
-    public @Nonnull FeatureBuilder from(@Nonnull Feature instance) {
+    public static @Nonnull FeatureBuilder from(@Nonnull Feature instance) {
         return new FeatureBuilder()
                 .evidences(instance.getEvidences())
                 .description(instance.getDescription())

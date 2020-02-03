@@ -17,4 +17,10 @@ public class NameBuilder extends AbstractEvidencedValueBuilder<NameBuilder, Name
     public @Nonnull Name build() {
         return new NameImpl(value, evidences);
     }
+
+    public static @Nonnull NameBuilder from(@Nonnull Name instance) {
+        NameBuilder builder = new NameBuilder();
+        AbstractEvidencedValueBuilder.init(builder, instance);
+        return builder;
+    }
 }

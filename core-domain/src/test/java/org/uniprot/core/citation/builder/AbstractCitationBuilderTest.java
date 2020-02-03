@@ -8,6 +8,8 @@ import static org.hamcrest.core.Is.is;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.annotation.Nonnull;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.Value;
@@ -93,18 +95,17 @@ class AbstractCitationBuilderTest {
     private static class TestableCitationBuilder
             extends AbstractCitationBuilder<TestableCitationBuilder, TestableCitation> {
         @Override
-        public TestableCitation build() {
+        public @Nonnull TestableCitation build() {
             return new TestableCitation(this);
         }
 
-        @Override
         public TestableCitationBuilder from(TestableCitation instance) {
-            init(instance);
+            AbstractCitationBuilder.init(this, instance);
             return this;
         }
 
         @Override
-        protected TestableCitationBuilder getThis() {
+        protected @Nonnull TestableCitationBuilder getThis() {
             return this;
         }
     }

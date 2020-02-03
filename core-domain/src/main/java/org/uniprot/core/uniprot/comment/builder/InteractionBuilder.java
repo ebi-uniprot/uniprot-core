@@ -12,7 +12,7 @@ import org.uniprot.core.uniprot.comment.Interactor;
 import org.uniprot.core.uniprot.comment.impl.InteractionImpl;
 import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
 
-public final class InteractionBuilder implements Builder<InteractionBuilder, Interaction> {
+public final class InteractionBuilder implements Builder<Interaction> {
     private InteractionType type;
     private UniProtAccession uniProtAccession;
     private String geneName;
@@ -30,17 +30,17 @@ public final class InteractionBuilder implements Builder<InteractionBuilder, Int
                 secondInteractor);
     }
 
-    @Override
-    public @Nonnull InteractionBuilder from(@Nonnull Interaction instance) {
-        this.uniProtAccession(instance.getUniProtAccession())
+    public static @Nonnull InteractionBuilder from(@Nonnull Interaction instance) {
+        InteractionBuilder builder = new InteractionBuilder();
+        builder.uniProtAccession(instance.getUniProtAccession())
                 .geneName(instance.getGeneName())
                 .interactionType(instance.getType())
                 .numberOfExperiments(instance.getNumberOfExperiments());
         if (nonNull(instance.getFirstInteractor()))
-            this.firstInteractor(instance.getFirstInteractor().getValue());
+            builder.firstInteractor(instance.getFirstInteractor().getValue());
         if (nonNull((instance.getSecondInteractor())))
-            this.secondInteractor(instance.getSecondInteractor().getValue());
-        return this;
+            builder.secondInteractor(instance.getSecondInteractor().getValue());
+        return builder;
     }
 
     public @Nonnull InteractionBuilder interactionType(InteractionType type) {

@@ -19,14 +19,13 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
  */
 public abstract class AbstractEvidencedValueBuilder<
                 B extends AbstractEvidencedValueBuilder<B, E>, E extends EvidencedValue>
-        implements Builder<B, E> {
+        implements Builder<E> {
     protected String value;
     protected List<Evidence> evidences = new ArrayList<>();
 
-    @Override
-    public @Nonnull B from(@Nonnull E instance) {
-        evidences.clear();
-        return this.evidences(instance.getEvidences()).value(instance.getValue());
+    protected static <B extends AbstractEvidencedValueBuilder<B, E>, E extends EvidencedValue>
+            void init(@Nonnull B builder, @Nonnull E instance) {
+        builder.evidences(instance.getEvidences()).value(instance.getValue());
     }
 
     public @Nonnull B value(String value) {

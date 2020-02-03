@@ -15,7 +15,7 @@ import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
 import org.uniprot.core.util.Utils;
 
-public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, ProteomeEntry> {
+public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
     private ProteomeId id;
     private String description;
     private Taxonomy taxonomy;
@@ -35,10 +35,6 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
     private List<TaxonomyLineage> taxonLineage = new ArrayList<>();
     private List<CanonicalProtein> canonicalProteins = new ArrayList<>();
     private String sourceDb;
-
-    public static @Nonnull ProteomeEntryBuilder newInstance() {
-        return new ProteomeEntryBuilder();
-    }
 
     @Override
     public @Nonnull ProteomeEntry build() {
@@ -64,39 +60,27 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
                 sourceDb);
     }
 
-    @Override
-    public @Nonnull ProteomeEntryBuilder from(@Nonnull ProteomeEntry instance) {
-        this.id = instance.getId();
-        this.taxonomy = instance.getTaxonomy();
-        this.description = instance.getDescription();
-
-        this.modified = instance.getModified();
-        this.proteomeType = instance.getProteomeType();
-        this.redundantTo = instance.getRedundantTo();
-        this.strain = instance.getStrain();
-        this.isolate = instance.getIsolate();
-        this.dbXReferences.clear();
-        this.dbXReferences.addAll(instance.getDbXReferences());
-
-        this.components.clear();
-        this.components.addAll(instance.getComponents());
-
-        this.references.clear();
-        this.references.addAll(instance.getReferences());
-
-        this.redundantProteomes.clear();
-        this.redundantProteomes.addAll(instance.getRedudantProteomes());
-
-        this.panproteome = instance.getPanproteome();
-        this.annotationScore = instance.getAnnotationScore();
-        this.superkingdom = instance.getSuperkingdom();
-        this.geneCount = instance.getGeneCount();
-        this.taxonLineage = instance.getTaxonLineage();
-        canonicalProteins.clear();
-        canonicalProteins.addAll(instance.getCanonicalProteins());
-        this.sourceDb = instance.getSourceDb();
-
-        return this;
+    public static @Nonnull ProteomeEntryBuilder from(@Nonnull ProteomeEntry instance) {
+        return new ProteomeEntryBuilder()
+                .proteomeId(instance.getId())
+                .taxonomy(instance.getTaxonomy())
+                .description(instance.getDescription())
+                .modified(instance.getModified())
+                .proteomeType(instance.getProteomeType())
+                .redundantTo(instance.getRedundantTo())
+                .strain(instance.getStrain())
+                .isolate(instance.getIsolate())
+                .dbXReferences(instance.getDbXReferences())
+                .components(instance.getComponents())
+                .references(instance.getReferences())
+                .redundantProteomes(instance.getRedudantProteomes())
+                .canonicalProteins(instance.getCanonicalProteins())
+                .panproteome(instance.getPanproteome())
+                .annotationScore(instance.getAnnotationScore())
+                .superkingdom(instance.getSuperkingdom())
+                .geneCount(instance.getGeneCount())
+                .taxonLineage(instance.getTaxonLineage())
+                .sourceDb(instance.getSourceDb());
     }
 
     public @Nonnull ProteomeEntryBuilder proteomeId(ProteomeId id) {

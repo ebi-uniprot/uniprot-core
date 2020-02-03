@@ -13,7 +13,7 @@ import org.uniprot.core.uniprot.impl.EntryAuditImpl;
  *
  * @author Edd
  */
-public class EntryAuditBuilder implements Builder<EntryAuditBuilder, EntryAudit> {
+public class EntryAuditBuilder implements Builder<EntryAudit> {
     private LocalDate firstPublicDate;
     private LocalDate lastAnnotationUpdateDate;
     private LocalDate lastSequenceUpdateDate;
@@ -55,8 +55,7 @@ public class EntryAuditBuilder implements Builder<EntryAuditBuilder, EntryAudit>
                 sequenceVersion);
     }
 
-    @Override
-    public @Nonnull EntryAuditBuilder from(@Nonnull EntryAudit instance) {
+    public static @Nonnull EntryAuditBuilder from(@Nonnull EntryAudit instance) {
         return new EntryAuditBuilder()
                 .lastAnnotationUpdate(instance.getLastAnnotationUpdateDate())
                 .lastSequenceUpdate(instance.getLastSequenceUpdateDate())

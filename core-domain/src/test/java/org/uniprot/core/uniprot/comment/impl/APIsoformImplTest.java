@@ -67,6 +67,15 @@ class APIsoformImplTest {
     }
 
     @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject_IsoformName() {
+        IsoformName impl = new APIsoformImpl.IsoformNameImpl("val", createEvidences());
+        IsoformName obj = IsoformNameBuilder.from(impl).build();
+
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
+    }
+
+    @Test
     void needDefaultConstructorForJsonDeserialization_IsoformId() {
         IsoformId obj = new APIsoformImpl.IsoformIdImpl();
         assertNotNull(obj);
@@ -82,7 +91,7 @@ class APIsoformImplTest {
                         Collections.emptyList(),
                         Collections.emptyList(),
                         IsoformSequenceStatus.DESCRIBED);
-        APIsoform obj = new APIsoformBuilder().from(impl).build();
+        APIsoform obj = APIsoformBuilder.from(impl).build();
 
         assertTrue(impl.hasName());
         assertTrue(impl.hasIsoformSequenceStatus());

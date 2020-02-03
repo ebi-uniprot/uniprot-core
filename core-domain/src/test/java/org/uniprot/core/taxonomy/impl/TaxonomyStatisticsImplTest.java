@@ -16,7 +16,7 @@ class TaxonomyStatisticsImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         TaxonomyStatistics impl = new TaxonomyStatisticsImpl(87L, 35L, 32L, 9867L);
-        TaxonomyStatistics obj = new TaxonomyStatisticsBuilder().from(impl).build();
+        TaxonomyStatistics obj = TaxonomyStatisticsBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

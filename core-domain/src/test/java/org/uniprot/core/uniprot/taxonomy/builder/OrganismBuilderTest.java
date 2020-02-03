@@ -75,7 +75,7 @@ class OrganismBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         Organism organism = new OrganismBuilder().build();
-        OrganismBuilder builder = new OrganismBuilder().from(organism);
+        OrganismBuilder builder = OrganismBuilder.from(organism);
         assertNotNull(builder);
     }
 

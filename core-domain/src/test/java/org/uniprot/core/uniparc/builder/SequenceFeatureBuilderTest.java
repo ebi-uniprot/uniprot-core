@@ -96,13 +96,10 @@ class SequenceFeatureBuilderTest {
                         .signatureDbId("sigId2")
                         .locations(locations)
                         .build();
-        SequenceFeature sf2 = new SequenceFeatureBuilder().from(sf).build();
+        SequenceFeature sf2 = SequenceFeatureBuilder.from(sf).build();
         assertEquals(sf, sf2);
         SequenceFeature sf3 =
-                new SequenceFeatureBuilder()
-                        .from(sf)
-                        .signatureDbType(SignatureDbType.PROSITE)
-                        .build();
+                SequenceFeatureBuilder.from(sf).signatureDbType(SignatureDbType.PROSITE).build();
         assertEquals(domain, sf3.getInterProDomain());
         assertEquals(SignatureDbType.PROSITE, sf3.getSignatureDbType());
         assertEquals("sigId2", sf3.getSignatureDbId());

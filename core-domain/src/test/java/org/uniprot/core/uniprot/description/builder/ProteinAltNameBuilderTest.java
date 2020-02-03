@@ -35,7 +35,7 @@ class ProteinAltNameBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         ProteinAltName obj = new ProteinAltNameBuilder().build();
-        ProteinAltNameBuilder builder = new ProteinAltNameBuilder().from(obj);
+        ProteinAltNameBuilder builder = ProteinAltNameBuilder.from(obj);
         assertNotNull(builder);
     }
 

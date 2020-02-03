@@ -20,11 +20,11 @@ class SequenceCautionCommentImplTest {
         SequenceCautionComment impl =
                 new SequenceCautionCommentImpl(
                         "molecule",
-                        SequenceCautionType.ERRONEOUS_TERMIINATION,
+                        SequenceCautionType.ERRONEOUS_TERMINATION,
                         "sequ",
                         "note",
                         createEvidences());
-        SequenceCautionComment obj = new SequenceCautionCommentBuilder().from(impl).build();
+        SequenceCautionComment obj = SequenceCautionCommentBuilder.from(impl).build();
 
         assertTrue(impl.hasNote());
         assertTrue(impl.hasSequence());

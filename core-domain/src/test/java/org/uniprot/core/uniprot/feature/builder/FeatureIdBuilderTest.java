@@ -9,7 +9,7 @@ class FeatureIdBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         FeatureId obj = new FeatureIdBuilder("1").build();
-        FeatureIdBuilder builder = new FeatureIdBuilder("2").from(obj);
+        FeatureIdBuilder builder = FeatureIdBuilder.from(obj);
         assertNotNull(builder);
     }
 

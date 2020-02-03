@@ -3,8 +3,6 @@ package org.uniprot.core.uniprot.comment.builder;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.evidenceValues;
 
-import java.util.Collections;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.RedoxPotential;
 
@@ -12,8 +10,7 @@ class RedoxPotentialBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         RedoxPotential obj = new RedoxPotentialBuilder(evidenceValues()).build();
-        RedoxPotentialBuilder builder =
-                new RedoxPotentialBuilder(Collections.emptyList()).from(obj);
+        RedoxPotentialBuilder builder = RedoxPotentialBuilder.from(obj);
         assertNotNull(builder);
 
         assertIterableEquals(evidenceValues(), builder.build().getTexts());

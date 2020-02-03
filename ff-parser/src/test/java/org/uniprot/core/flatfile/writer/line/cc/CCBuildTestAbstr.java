@@ -14,7 +14,7 @@ import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CCLineBuilder;
 import org.uniprot.core.flatfile.parser.impl.cc.CCLineBuilderFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.uniprot.comment.Comment;

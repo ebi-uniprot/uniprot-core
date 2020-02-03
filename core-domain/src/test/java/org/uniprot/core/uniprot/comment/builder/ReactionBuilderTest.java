@@ -15,7 +15,7 @@ class ReactionBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         Reaction obj = new ReactionBuilder().build();
-        ReactionBuilder builder = new ReactionBuilder().from(obj);
+        ReactionBuilder builder = ReactionBuilder.from(obj);
         assertNotNull(builder);
     }
 

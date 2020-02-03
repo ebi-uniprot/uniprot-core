@@ -29,7 +29,7 @@ class ComponentConverterTest {
     @Test
     void testToXml() {
         Component component =
-                ComponentBuilder.newInstance()
+                new ComponentBuilder()
                         .name("some name")
                         .description("some description")
                         .type(org.uniprot.core.proteome.ComponentType.PRIMARY)

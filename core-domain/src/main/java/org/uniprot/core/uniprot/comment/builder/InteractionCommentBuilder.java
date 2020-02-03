@@ -12,8 +12,7 @@ import org.uniprot.core.uniprot.comment.Interaction;
 import org.uniprot.core.uniprot.comment.InteractionComment;
 import org.uniprot.core.uniprot.comment.impl.InteractionCommentImpl;
 
-public class InteractionCommentBuilder
-        implements CommentBuilder<InteractionCommentBuilder, InteractionComment> {
+public class InteractionCommentBuilder implements CommentBuilder<InteractionComment> {
     private List<Interaction> interactions = new ArrayList<>();
 
     public @Nonnull InteractionCommentBuilder interactions(List<Interaction> interactions) {
@@ -31,9 +30,7 @@ public class InteractionCommentBuilder
         return new InteractionCommentImpl(interactions);
     }
 
-    @Override
-    public @Nonnull InteractionCommentBuilder from(@Nonnull InteractionComment instance) {
-        interactions.clear();
-        return this.interactions(instance.getInteractions());
+    public static @Nonnull InteractionCommentBuilder from(@Nonnull InteractionComment instance) {
+        return new InteractionCommentBuilder().interactions(instance.getInteractions());
     }
 }

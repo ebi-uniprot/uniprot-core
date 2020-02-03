@@ -10,7 +10,7 @@ class GeneLocationBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         GeneLocation obj = new GeneLocationBuilder().build();
-        GeneLocationBuilder builder = new GeneLocationBuilder().from(obj);
+        GeneLocationBuilder builder = GeneLocationBuilder.from(obj);
         assertNotNull(builder);
     }
 

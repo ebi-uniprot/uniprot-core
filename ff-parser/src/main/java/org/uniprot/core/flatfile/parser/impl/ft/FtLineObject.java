@@ -24,15 +24,63 @@ public class FtLineObject implements HasEvidenceInfo {
     }
 
     public static class FT {
-        public FTType type;
+        private FTType type;
 
         // can have fuzzy type thus cannot use int.
-        public String location_start;
-        public String location_end;
+        private String location_start;
+        private String location_end;
 
-        public String ft_text;
-        public String ftId;
-        public String sequence;
+        private String ft_text;
+        private String ftId;
+        private String sequence;
+
+        public FTType getType() {
+            return type;
+        }
+
+        public void setType(FTType type) {
+            this.type = type;
+        }
+
+        public String getLocation_start() {
+            return location_start;
+        }
+
+        public void setLocation_start(String location_start) {
+            this.location_start = location_start;
+        }
+
+        public String getLocation_end() {
+            return location_end;
+        }
+
+        public void setLocation_end(String location_end) {
+            this.location_end = location_end;
+        }
+
+        public String getFt_text() {
+            return ft_text;
+        }
+
+        public void setFt_text(String ft_text) {
+            this.ft_text = ft_text;
+        }
+
+        public String getFtId() {
+            return ftId;
+        }
+
+        public void setFtId(String ftId) {
+            this.ftId = ftId;
+        }
+
+        public String getSequence() {
+            return sequence;
+        }
+
+        public void setSequence(String sequence) {
+            this.sequence = sequence;
+        }
     }
 
     public static enum FTType {

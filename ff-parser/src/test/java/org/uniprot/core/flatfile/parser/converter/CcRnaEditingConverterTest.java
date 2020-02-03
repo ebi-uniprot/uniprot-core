@@ -1,14 +1,17 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.EvidencedString;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.EvidencedString;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.RnaEditing;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.RnaEditingComment;
@@ -22,22 +25,23 @@ class CcRnaEditingConverterTest {
         // CC   -!- RNA EDITING: Modified_positions=1, 56, 89, 103, 126, 164;
         // CC       Note=The initiator methionine is created by RNA editing.
         CcLineObject ccLineO = new CcLineObject();
-        CcLineObject.CC cc1 = new CcLineObject.CC();
-        cc1.topic = CcLineObject.CCTopicEnum.RNA_EDITING;
-        CcLineObject.RnaEditing rnaEd = new CcLineObject.RnaEditing();
-        rnaEd.note.add(
-                new EvidencedString(
-                        "The initiator methionine is created by RNA editing.",
-                        new ArrayList<String>()));
-        rnaEd.locations.add(1);
-        rnaEd.locations.add(56);
-        rnaEd.locations.add(89);
-        rnaEd.locations.add(103);
-        rnaEd.locations.add(126);
-        rnaEd.locations.add(164);
+        CC cc1 = new CC();
+        cc1.setTopic(CC.CCTopicEnum.RNA_EDITING);
+        RnaEditing rnaEd = new RnaEditing();
+        rnaEd.getNote()
+                .add(
+                        new EvidencedString(
+                                "The initiator methionine is created by RNA editing.",
+                                new ArrayList<String>()));
+        rnaEd.getLocations().add(1);
+        rnaEd.getLocations().add(56);
+        rnaEd.getLocations().add(89);
+        rnaEd.getLocations().add(103);
+        rnaEd.getLocations().add(126);
+        rnaEd.getLocations().add(164);
 
-        cc1.object = rnaEd;
-        ccLineO.ccs.add(cc1);
+        cc1.setObject(rnaEd);
+        ccLineO.getCcs().add(cc1);
 
         List<Comment> comments = converter.convert(ccLineO);
         assertEquals(1, comments.size());

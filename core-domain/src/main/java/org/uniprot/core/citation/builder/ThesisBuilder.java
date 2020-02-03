@@ -14,10 +14,10 @@ public final class ThesisBuilder extends AbstractCitationBuilder<ThesisBuilder, 
                 authoringGroups, authors, xrefs, title, publicationDate, institute, address);
     }
 
-    @Override
-    public @Nonnull ThesisBuilder from(Thesis instance) {
-        init(instance);
-        return this.institute(instance.getInstitute()).address(instance.getAddress());
+    public static @Nonnull ThesisBuilder from(Thesis instance) {
+        ThesisBuilder builder = new ThesisBuilder();
+        init(builder, instance);
+        return builder.institute(instance.getInstitute()).address(instance.getAddress());
     }
 
     public @Nonnull ThesisBuilder institute(String institute) {

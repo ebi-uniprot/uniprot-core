@@ -34,7 +34,7 @@ class GoTermBuilderTest {
         String id = "GO:0044444";
         GoTerm goTerm = new GoTermBuilder().type(type).id(id).build();
 
-        GoTerm goTerm2 = new GoTermBuilder().from(goTerm).build();
+        GoTerm goTerm2 = GoTermBuilder.from(goTerm).build();
         assertEquals(goTerm, goTerm2);
     }
 

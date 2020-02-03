@@ -29,7 +29,7 @@ class UniParcDBCrossReferenceImplTest {
                         true,
                         LocalDate.now(),
                         LocalDate.now());
-        UniParcDBCrossReference obj = new UniParcDBCrossReferenceBuilder().from(impl).build();
+        UniParcDBCrossReference obj = UniParcDBCrossReferenceBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

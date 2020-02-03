@@ -29,4 +29,8 @@ public class GeneNameBuilder extends AbstractEvidencedValueBuilder<GeneNameBuild
     public @Nonnull GeneName build() {
         return new GeneImpl.GeneNameImpl(value, evidences);
     }
+
+    public static @Nonnull GeneNameBuilder from(@Nonnull GeneName instance) {
+        return new GeneNameBuilder(instance.getValue(), instance.getEvidences());
+    }
 }

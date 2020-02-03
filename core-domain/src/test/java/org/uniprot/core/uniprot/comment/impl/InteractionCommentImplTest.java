@@ -48,7 +48,7 @@ class InteractionCommentImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         InteractionComment impl = new InteractionCommentImpl(interactions);
-        InteractionComment obj = new InteractionCommentBuilder().from(impl).build();
+        InteractionComment obj = InteractionCommentBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

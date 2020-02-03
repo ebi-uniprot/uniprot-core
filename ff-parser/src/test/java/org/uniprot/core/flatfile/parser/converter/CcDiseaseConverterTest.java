@@ -10,8 +10,10 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.EvidencedString;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.Disease;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.EvidencedString;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.DiseaseComment;
@@ -36,21 +38,21 @@ class CcDiseaseConverterTest {
          * determinant of the core disease phenotype (PubMed:19264732)
          */
         CcLineObject ccLineO = new CcLineObject();
-        CcLineObject.CC cc1 = new CcLineObject.CC();
-        cc1.topic = CcLineObject.CCTopicEnum.DISEASE;
-        CcLineObject.Disease disease = new CcLineObject.Disease();
-        cc1.object = disease;
-        disease.name = "Kleefstra syndrome";
-        disease.abbr = "KLESTS";
-        disease.mim = "610253";
+        CC cc1 = new CC();
+        cc1.setTopic(CC.CCTopicEnum.DISEASE);
+        Disease disease = new Disease();
+        cc1.setObject(disease);
+        disease.setName("Kleefstra syndrome");
+        disease.setAbbr("KLESTS");
+        disease.setMim("610253");
 
-        disease.description =
-                "A syndrome characterized by severe mental retardation, hypotonia, brachy(micro)cephaly, and facial dysmorphisms. Additionally, congenital heart defects, urogenital defects, epilepsy and behavioral problems are frequently observed.";
+        disease.setDescription(
+                "A syndrome characterized by severe mental retardation, hypotonia, brachy(micro)cephaly, and facial dysmorphisms. Additionally, congenital heart defects, urogenital defects, epilepsy and behavioral problems are frequently observed.");
         String disNote =
                 "The disease is caused by mutations affecting the gene represented in this entry (PubMed:16826528)";
-        disease.note.add(new EvidencedString(disNote, new ArrayList<String>()));
+        disease.getNote().add(new EvidencedString(disNote, new ArrayList<>()));
 
-        ccLineO.ccs.add(cc1);
+        ccLineO.getCcs().add(cc1);
         List<Comment> comments = converter.convert(ccLineO);
         assertEquals(1, comments.size());
 
@@ -62,7 +64,7 @@ class CcDiseaseConverterTest {
         assertTrue(diseaseComment.hasDefinedDisease());
         assertEquals("Kleefstra syndrome", diseaseComment.getDisease().getDiseaseId());
         assertEquals("KLESTS", diseaseComment.getDisease().getAcronym());
-        assertEquals(disease.description, diseaseComment.getDisease().getDescription());
+        assertEquals(disease.getDescription(), diseaseComment.getDisease().getDescription());
         assertEquals(0, diseaseComment.getDisease().getEvidences().size());
         DBCrossReference<DiseaseReferenceType> diseaseRef =
                 diseaseComment.getDisease().getReference();
@@ -79,25 +81,27 @@ class CcDiseaseConverterTest {
     void testFullWithEvidence() {
 
         CcLineObject ccLineO = new CcLineObject();
-        CcLineObject.CC cc1 = new CcLineObject.CC();
-        cc1.topic = CcLineObject.CCTopicEnum.DISEASE;
-        CcLineObject.Disease disease = new CcLineObject.Disease();
-        cc1.object = disease;
-        disease.name = "Kleefstra syndrome";
-        disease.abbr = "KLESTS";
-        disease.mim = "610253";
+        CC cc1 = new CC();
+        cc1.setTopic(CC.CCTopicEnum.DISEASE);
+        Disease disease = new Disease();
+        cc1.setObject(disease);
+        disease.setName("Kleefstra syndrome");
+        disease.setAbbr("KLESTS");
+        disease.setMim("610253");
 
-        disease.description =
-                "A syndrome characterized by severe mental retardation, hypotonia, brachy(micro)cephaly, and facial dysmorphisms. Additionally, congenital heart defects, urogenital defects, epilepsy and behavioral problems are frequently observed.";
+        disease.setDescription(
+                "A syndrome characterized by severe mental retardation, hypotonia, brachy(micro)cephaly, and facial dysmorphisms. Additionally, congenital heart defects, urogenital defects, epilepsy and behavioral problems are frequently observed.");
         String disNote =
                 "The disease is caused by mutations affecting the gene represented in this entry (PubMed:16826528)";
-        disease.note.add(
-                new EvidencedString(disNote, Arrays.asList("ECO:0000269|PubMed:20433554")));
-        ccLineO.evidenceInfo.evidences.put(
-                disease.description,
-                Arrays.asList("ECO:0000269|PubMed:10433554", "ECO:0000303|Ref.6"));
+        disease.getNote()
+                .add(new EvidencedString(disNote, Arrays.asList("ECO:0000269|PubMed:20433554")));
+        ccLineO.getEvidenceInfo()
+                .getEvidences()
+                .put(
+                        disease.getDescription(),
+                        Arrays.asList("ECO:0000269|PubMed:10433554", "ECO:0000303|Ref.6"));
 
-        ccLineO.ccs.add(cc1);
+        ccLineO.getCcs().add(cc1);
         List<Comment> comments = converter.convert(ccLineO);
         assertEquals(1, comments.size());
 
@@ -109,7 +113,7 @@ class CcDiseaseConverterTest {
         assertTrue(diseaseComment.hasDefinedDisease());
         assertEquals("Kleefstra syndrome", diseaseComment.getDisease().getDiseaseId());
         assertEquals("KLESTS", diseaseComment.getDisease().getAcronym());
-        assertEquals(disease.description, diseaseComment.getDisease().getDescription());
+        assertEquals(disease.getDescription(), diseaseComment.getDisease().getDescription());
         assertEquals(2, diseaseComment.getDisease().getEvidences().size());
         assertEquals(
                 "ECO:0000269|PubMed:10433554",
@@ -132,15 +136,15 @@ class CcDiseaseConverterTest {
     void testOnlyNote() {
         // Note=Frequently mutated in a variety of human cancers (PubMed:15155950)
         CcLineObject ccLineO = new CcLineObject();
-        CcLineObject.CC cc1 = new CcLineObject.CC();
-        cc1.topic = CcLineObject.CCTopicEnum.DISEASE;
-        CcLineObject.Disease disease = new CcLineObject.Disease();
-        cc1.object = disease;
+        CC cc1 = new CC();
+        cc1.setTopic(CC.CCTopicEnum.DISEASE);
+        Disease disease = new Disease();
+        cc1.setObject(disease);
         String disNote = "Frequently mutated in a variety of human cancers (PubMed:15155950).";
 
-        disease.note.add(new EvidencedString(disNote, new ArrayList<String>()));
+        disease.getNote().add(new EvidencedString(disNote, new ArrayList<>()));
 
-        ccLineO.ccs.add(cc1);
+        ccLineO.getCcs().add(cc1);
         List<Comment> comments = converter.convert(ccLineO);
         assertEquals(1, comments.size());
 

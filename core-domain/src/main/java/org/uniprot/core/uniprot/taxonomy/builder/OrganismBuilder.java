@@ -47,14 +47,13 @@ public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder
         return new OrganismImpl(lineage, taxonId, evidences, scientificName, commonName, synonyms);
     }
 
-    public @Nonnull OrganismBuilder from(@Nonnull Organism instance) {
-        evidences.clear();
-        lineage.clear();
-        super.from(instance);
-        this.taxonId(instance.getTaxonId());
-        this.evidences(instance.getEvidences());
-        this.lineage(instance.getLineage());
-        return this;
+    public static @Nonnull OrganismBuilder from(@Nonnull Organism instance) {
+        OrganismBuilder builder = new OrganismBuilder();
+        AbstractOrganismNameBuilder.init(builder, instance);
+        builder.taxonId(instance.getTaxonId())
+                .evidences(instance.getEvidences())
+                .lineage(instance.getLineage());
+        return builder;
     }
 
     @Override

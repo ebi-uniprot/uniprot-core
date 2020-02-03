@@ -119,7 +119,7 @@ class DiseaseBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         Disease obj = new DiseaseBuilder().build();
-        DiseaseBuilder builder = new DiseaseBuilder().from(obj);
+        DiseaseBuilder builder = DiseaseBuilder.from(obj);
         assertNotNull(builder);
     }
 

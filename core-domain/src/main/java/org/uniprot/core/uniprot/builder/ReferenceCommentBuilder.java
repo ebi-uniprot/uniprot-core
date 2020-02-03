@@ -31,8 +31,9 @@ public class ReferenceCommentBuilder
         return this;
     }
 
-    @Override
-    public @Nonnull ReferenceCommentBuilder from(@Nonnull ReferenceComment instance) {
-        return super.from(instance).type(instance.getType());
+    public static @Nonnull ReferenceCommentBuilder from(@Nonnull ReferenceComment instance) {
+        ReferenceCommentBuilder builder = new ReferenceCommentBuilder();
+        AbstractEvidencedValueBuilder.init(builder, instance);
+        return builder.type(instance.getType());
     }
 }

@@ -10,7 +10,7 @@ import javax.annotation.Nonnull;
  *
  * @author Edd
  */
-public interface Builder<B extends Builder, T> {
+public interface Builder<T> {
     /**
      * Creates the instance of type, {@code T}.
      *
@@ -18,14 +18,4 @@ public interface Builder<B extends Builder, T> {
      */
     @Nonnull
     T build();
-
-    /**
-     * Creates a builder of type {@code B} whose contents is copied from the supplied instance of
-     * type {@code T}.
-     *
-     * @param instance the instance whose values are copied from.
-     * @return a new builder of type {@code B} based on the values in {@code instance}.
-     */
-    @Nonnull
-    B from(@Nonnull T instance);
 }

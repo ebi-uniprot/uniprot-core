@@ -34,7 +34,7 @@ class LiteratureEntryImplTest {
                         "vol",
                         "lia",
                         null);
-        LiteratureEntry obj = new LiteratureEntryBuilder().from(impl).build();
+        LiteratureEntry obj = LiteratureEntryBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

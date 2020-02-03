@@ -17,8 +17,7 @@ import org.uniprot.core.uniprot.feature.impl.AlternativeSequenceImpl;
  *
  * @author Edd
  */
-public class AlternativeSequenceBuilder
-        implements Builder<AlternativeSequenceBuilder, AlternativeSequence> {
+public class AlternativeSequenceBuilder implements Builder<AlternativeSequence> {
     private String originalSequence;
     private List<String> alternativeSequences = new ArrayList<>();
 
@@ -27,8 +26,7 @@ public class AlternativeSequenceBuilder
         return new AlternativeSequenceImpl(originalSequence, alternativeSequences);
     }
 
-    @Override
-    public @Nonnull AlternativeSequenceBuilder from(@Nonnull AlternativeSequence instance) {
+    public static @Nonnull AlternativeSequenceBuilder from(@Nonnull AlternativeSequence instance) {
         return new AlternativeSequenceBuilder()
                 .original(instance.getOriginalSequence())
                 .alternatives(instance.getAlternativeSequences());

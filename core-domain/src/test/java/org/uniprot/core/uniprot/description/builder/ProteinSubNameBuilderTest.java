@@ -62,7 +62,7 @@ class ProteinSubNameBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         ProteinSubName obj = new ProteinSubNameBuilder().build();
-        ProteinSubNameBuilder builder = new ProteinSubNameBuilder().from(obj);
+        ProteinSubNameBuilder builder = ProteinSubNameBuilder.from(obj);
         assertNotNull(builder);
     }
 

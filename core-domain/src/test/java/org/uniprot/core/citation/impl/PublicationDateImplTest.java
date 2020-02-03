@@ -16,7 +16,7 @@ class PublicationDateImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         PublicationDate impl = new PublicationDateImpl("date");
-        PublicationDate obj = new PublicationDateBuilder(null).from(impl).build();
+        PublicationDate obj = PublicationDateBuilder.from(impl).build();
 
         assertTrue(impl.hasValue());
         assertTrue(obj.hasValue());

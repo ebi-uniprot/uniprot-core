@@ -9,7 +9,7 @@ class EvidenceBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         Evidence obj = new EvidenceBuilder().build();
-        EvidenceBuilder builder = new EvidenceBuilder().from(obj);
+        EvidenceBuilder builder = EvidenceBuilder.from(obj);
         assertNotNull(builder);
     }
 

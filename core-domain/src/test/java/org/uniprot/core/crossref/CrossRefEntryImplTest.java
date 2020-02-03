@@ -18,7 +18,7 @@ class CrossRefEntryImplTest {
                 new CrossRefEntryImpl(
                         "name", "acc", "abb", "pub", "doild", "link", "server", "dburk", "cat", 5L,
                         10L);
-        CrossRefEntry obj = new CrossRefEntryBuilder().from(impl).build();
+        CrossRefEntry obj = CrossRefEntryBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

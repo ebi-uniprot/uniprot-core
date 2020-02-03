@@ -11,7 +11,7 @@ import org.uniprot.core.uniprot.impl.UniProtIdImpl;
  *
  * @author Edd
  */
-public class UniProtIdBuilder extends AbstractValueBuilder<UniProtIdBuilder, UniProtId> {
+public class UniProtIdBuilder extends AbstractValueBuilder<UniProtId> {
     public UniProtIdBuilder(String value) {
         super(value);
     }
@@ -21,8 +21,7 @@ public class UniProtIdBuilder extends AbstractValueBuilder<UniProtIdBuilder, Uni
         return new UniProtIdImpl(value);
     }
 
-    @Override
-    protected @Nonnull UniProtIdBuilder getThis() {
-        return this;
+    public static @Nonnull UniProtIdBuilder from(@Nonnull UniProtId instance) {
+        return new UniProtIdBuilder(instance.getValue());
     }
 }

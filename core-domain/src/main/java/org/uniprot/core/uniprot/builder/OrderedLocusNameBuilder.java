@@ -31,4 +31,8 @@ public class OrderedLocusNameBuilder
     public @Nonnull OrderedLocusName build() {
         return new GeneImpl.OrderedLocusNameImpl(value, evidences);
     }
+
+    public static @Nonnull OrderedLocusNameBuilder from(@Nonnull OrderedLocusName instance) {
+        return new OrderedLocusNameBuilder(instance.getValue(), instance.getEvidences());
+    }
 }

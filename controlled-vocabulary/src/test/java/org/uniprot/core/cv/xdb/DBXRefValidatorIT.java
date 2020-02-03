@@ -64,7 +64,7 @@ class DBXRefValidatorIT {
                         DatabaseCategory.CHEMISTRY,
                         opType.getUriLink(),
                         opType.getAttributes(),
-                        "Explicit",
+                        false,
                         null);
 
         // validate, the category should mismatch

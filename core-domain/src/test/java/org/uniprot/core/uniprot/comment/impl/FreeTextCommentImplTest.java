@@ -45,7 +45,7 @@ class FreeTextCommentImplTest {
                         CommentType.DISRUPTION_PHENOTYPE,
                         "molecule",
                         createEvidenceValuesWithoutEvidences());
-        FreeTextComment obj = new FreeTextCommentBuilder().from(impl).build();
+        FreeTextComment obj = FreeTextCommentBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

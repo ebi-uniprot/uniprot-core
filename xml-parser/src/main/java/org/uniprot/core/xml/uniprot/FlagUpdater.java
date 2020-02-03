@@ -31,7 +31,7 @@ public class FlagUpdater implements Updater<SequenceType, ProteinDescription> {
         } else if (MULTIPLE.equals(frag)) {
             fType = FlagType.FRAGMENTS;
         }
-        return new ProteinDescriptionBuilder().from(modelObject).flag(fType).build();
+        return ProteinDescriptionBuilder.from(modelObject).flag(fType).build();
     }
 
     @Override

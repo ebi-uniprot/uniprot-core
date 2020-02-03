@@ -34,7 +34,7 @@ class PatentImplTest {
                         "ptitle",
                         new PublicationDateImpl("date"),
                         "pname");
-        Patent obj = new PatentBuilder().from(impl).build();
+        Patent obj = PatentBuilder.from(impl).build();
 
         assertTrue(impl.hasPatentNumber());
 
@@ -45,7 +45,7 @@ class PatentImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalNullObject() {
         Patent impl = new PatentImpl(null, null, null, null, null, null);
-        Patent obj = new PatentBuilder().from(impl).build();
+        Patent obj = PatentBuilder.from(impl).build();
 
         assertFalse(impl.hasPatentNumber());
 

@@ -48,7 +48,7 @@ class KineticParametersBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         KineticParameters obj = new KineticParametersBuilder().build();
-        KineticParametersBuilder builder = new KineticParametersBuilder().from(obj);
+        KineticParametersBuilder builder = KineticParametersBuilder.from(obj);
         assertNotNull(builder);
     }
 

@@ -73,7 +73,7 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
                         .filter(val -> val != null)
                         .collect(Collectors.toList());
 
-        ProteomeEntryBuilder builder = ProteomeEntryBuilder.newInstance();
+        ProteomeEntryBuilder builder = new ProteomeEntryBuilder();
         builder.proteomeId(proteomeId(xmlObj.getUpid()))
                 .proteomeType(proteomeType)
                 .description(xmlObj.getDescription())
@@ -165,7 +165,7 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
     }
 
     private Taxonomy getTaxonomy(Long taxonId, String name) {
-        TaxonomyBuilder builder = TaxonomyBuilder.newInstance();
+        TaxonomyBuilder builder = new TaxonomyBuilder();
         return builder.taxonId(taxonId).scientificName(name).build();
     }
 

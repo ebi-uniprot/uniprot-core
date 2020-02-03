@@ -23,7 +23,7 @@ public class CanonicalProteinConverter implements Converter<CanonicalGene, Canon
 
     @Override
     public CanonicalProtein fromXml(CanonicalGene xmlObj) {
-        CanonicalProteinBuilder builder = CanonicalProteinBuilder.newInstance();
+        CanonicalProteinBuilder builder = new CanonicalProteinBuilder();
 
         builder.canonicalProtein(proteinConverter.fromXml(xmlObj.getGene()))
                 .relatedProteins(

@@ -43,7 +43,7 @@ class InteractionImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        Interaction obj = new InteractionBuilder().from(impl).build();
+        Interaction obj = InteractionBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

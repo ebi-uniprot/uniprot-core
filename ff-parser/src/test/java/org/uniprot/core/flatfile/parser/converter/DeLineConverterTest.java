@@ -193,45 +193,45 @@ class DeLineConverterTest {
         Map<String, List<String>> evidences = new TreeMap<>();
         List<String> evs = new ArrayList<>();
         evs.add("ECO:0000269|PubMed:15208021");
-        deObject.getEvidenceInfo().evidences.put("Annexin A5", evs);
+        deObject.getEvidenceInfo().getEvidences().put("Annexin A5", evs);
         evidences.put("Annexin A5", evs);
 
         deObject.recName.shortNames.add("Annexin-5");
         evs = new ArrayList<>();
         evs.add("ECO:0000269|PubMed:15208022");
-        deObject.getEvidenceInfo().evidences.put("Annexin-5", evs);
+        deObject.getEvidenceInfo().getEvidences().put("Annexin-5", evs);
         evidences.put("Annexin-5", evs);
         deObject.altName.add(createName("Annexin V"));
         evs = new ArrayList<>();
         evs.add("ECO:0000269|PubMed:15208021");
-        deObject.getEvidenceInfo().evidences.put("Annexin V", evs);
+        deObject.getEvidenceInfo().getEvidences().put("Annexin V", evs);
         evidences.put("Annexin V", evs);
         deObject.altName.add(createName("Lipocortin V"));
         evs = new ArrayList<>();
         evs.add("ECO:0000269|PubMed:15208021");
-        deObject.getEvidenceInfo().evidences.put("Lipocortin V", evs);
+        deObject.getEvidenceInfo().getEvidences().put("Lipocortin V", evs);
         evidences.put("Lipocortin V", evs);
 
         deObject.altName.add(createName("Placental anticoagulant protein I", "PAP-I"));
         evs = new ArrayList<>();
         evs.add("ECO:0000269|PubMed:15208021");
-        deObject.getEvidenceInfo().evidences.put("Placental anticoagulant protein I", evs);
+        deObject.getEvidenceInfo().getEvidences().put("Placental anticoagulant protein I", evs);
         evidences.put("Placental anticoagulant protein I", evs);
         evs = new ArrayList<>();
         evs.add("ECO:0000269|PubMed:15208022");
-        deObject.getEvidenceInfo().evidences.put("PAP-I", evs);
+        deObject.getEvidenceInfo().getEvidences().put("PAP-I", evs);
 
         evidences.put("PAP-I", evs);
 
         deObject.altName.add(createName("PP4"));
         evs = new ArrayList<>();
         evs.add("ECO:0000269|PubMed:15208021");
-        deObject.getEvidenceInfo().evidences.put("PP4", evs);
+        deObject.getEvidenceInfo().getEvidences().put("PP4", evs);
         evidences.put("PP4", evs);
         deObject.altName.add(createName("Thromboplastin inhibitor"));
         evs = new ArrayList<>();
         evs.add("ECO:0000269|PubMed:15208023");
-        deObject.getEvidenceInfo().evidences.put("Thromboplastin inhibitor", evs);
+        deObject.getEvidenceInfo().getEvidences().put("Thromboplastin inhibitor", evs);
         evidences.put("Thromboplastin inhibitor", evs);
 
         deObject.flags.add(DeLineObject.FlagType.Precursor);
@@ -239,7 +239,7 @@ class DeLineConverterTest {
         evs.add("ECO:0000269|PubMed:15208021");
         evs.add("ECO:0000269|PubMed:15208022");
         evs.add("ECO:0000269|PubMed:15208023");
-        deObject.getEvidenceInfo().evidences.put(DeLineObject.FlagType.Precursor, evs);
+        deObject.getEvidenceInfo().getEvidences().put(DeLineObject.FlagType.Precursor, evs);
         ProteinDescription pDesc = converter.convert(deObject);
         ProteinRecName recName = pDesc.getRecommendedName();
 

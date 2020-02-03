@@ -115,10 +115,11 @@ public class AbstractEvidencedValueBuilderTest {
             return new EvidencedValueImpl(this.value, this.evidences);
         }
 
-        @Override
-        public @Nonnull TestableEvidencedValueBuilder from(@Nonnull EvidencedValueImpl instance) {
-            super.from(instance);
-            return this;
+        public static @Nonnull TestableEvidencedValueBuilder from(
+                @Nonnull EvidencedValueImpl instance) {
+            TestableEvidencedValueBuilder builder = new TestableEvidencedValueBuilder();
+            AbstractEvidencedValueBuilder.init(builder, instance);
+            return builder;
         }
 
         @Override

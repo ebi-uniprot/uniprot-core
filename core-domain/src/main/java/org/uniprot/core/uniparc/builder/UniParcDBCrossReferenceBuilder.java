@@ -53,10 +53,11 @@ public class UniParcDBCrossReferenceBuilder
         return this;
     }
 
-    @Override
-    public @Nonnull UniParcDBCrossReferenceBuilder from(@Nonnull UniParcDBCrossReference instance) {
-        return super.from(instance)
-                .versionI(instance.getVersionI())
+    public static @Nonnull UniParcDBCrossReferenceBuilder from(
+            @Nonnull UniParcDBCrossReference instance) {
+        UniParcDBCrossReferenceBuilder builder = new UniParcDBCrossReferenceBuilder();
+        AbstractDBCrossReferenceBuilder.init(builder, instance);
+        return builder.versionI(instance.getVersionI())
                 .version(instance.getVersion())
                 .active(instance.isActive())
                 .created(instance.getCreated())
@@ -64,7 +65,7 @@ public class UniParcDBCrossReferenceBuilder
     }
 
     @Override
-    protected UniParcDBCrossReferenceBuilder getThis() {
+    protected @Nonnull UniParcDBCrossReferenceBuilder getThis() {
         return this;
     }
 }

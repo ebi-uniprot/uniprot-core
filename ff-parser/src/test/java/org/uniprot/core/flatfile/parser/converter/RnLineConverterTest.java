@@ -29,7 +29,7 @@ class RnLineConverterTest {
         List<String> evIds = new ArrayList<String>();
         evIds.add("ECO:0000313|Proteomes:UP000007751");
         evIds.add("ECO:0000313|Proteomes:UP000007752");
-        osO.evidenceInfo.evidences.put(osO.number, evIds);
+        osO.evidenceInfo.getEvidences().put(osO.number, evIds);
 
         RnLineConverter converter = new RnLineConverter();
         List<Evidence> eviIds = converter.convert(osO);

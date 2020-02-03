@@ -8,6 +8,7 @@ import org.uniprot.core.cv.subcell.SubcellularLocationFileReader;
 import org.uniprot.core.flatfile.parser.LineTransformer;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 import org.uniprot.core.uniprot.comment.Comment;
 
 public class CcLineTransformer implements LineTransformer<Comment> {

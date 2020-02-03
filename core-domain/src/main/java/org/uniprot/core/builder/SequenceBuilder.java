@@ -11,7 +11,7 @@ import org.uniprot.core.impl.SequenceImpl;
  *
  * @author Edd
  */
-public class SequenceBuilder implements Builder<SequenceBuilder, Sequence> {
+public class SequenceBuilder implements Builder<Sequence> {
     private String sequence;
 
     public SequenceBuilder(String sequence) {
@@ -23,9 +23,7 @@ public class SequenceBuilder implements Builder<SequenceBuilder, Sequence> {
         return new SequenceImpl(sequence);
     }
 
-    @Override
-    public @Nonnull SequenceBuilder from(@Nonnull Sequence instance) {
-        this.sequence = instance.getValue();
-        return this;
+    public static @Nonnull SequenceBuilder from(@Nonnull Sequence instance) {
+        return new SequenceBuilder(instance.getValue());
     }
 }

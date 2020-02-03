@@ -11,8 +11,7 @@ import org.uniprot.core.citation.impl.PublicationDateImpl;
  *
  * @author Edd
  */
-public class PublicationDateBuilder
-        extends AbstractValueBuilder<PublicationDateBuilder, PublicationDate> {
+public class PublicationDateBuilder extends AbstractValueBuilder<PublicationDate> {
     public PublicationDateBuilder(String value) {
         super(value);
     }
@@ -22,8 +21,7 @@ public class PublicationDateBuilder
         return new PublicationDateImpl(value);
     }
 
-    @Override
-    protected @Nonnull PublicationDateBuilder getThis() {
-        return this;
+    public static @Nonnull PublicationDateBuilder from(@Nonnull PublicationDate instance) {
+        return new PublicationDateBuilder(instance.getValue());
     }
 }

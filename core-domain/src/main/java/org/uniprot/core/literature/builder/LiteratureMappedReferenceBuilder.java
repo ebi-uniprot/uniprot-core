@@ -13,8 +13,7 @@ import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
 import org.uniprot.core.util.Utils;
 
 /** @author lgonzales */
-public class LiteratureMappedReferenceBuilder
-        implements Builder<LiteratureMappedReferenceBuilder, LiteratureMappedReference> {
+public class LiteratureMappedReferenceBuilder implements Builder<LiteratureMappedReference> {
 
     private UniProtAccession uniprotAccession;
 
@@ -68,8 +67,7 @@ public class LiteratureMappedReferenceBuilder
                 uniprotAccession, source, sourceId, sourceCategory, annotation);
     }
 
-    @Override
-    public @Nonnull LiteratureMappedReferenceBuilder from(
+    public static @Nonnull LiteratureMappedReferenceBuilder from(
             @Nonnull LiteratureMappedReference instance) {
         return new LiteratureMappedReferenceBuilder()
                 .uniprotAccession(instance.getUniprotAccession())

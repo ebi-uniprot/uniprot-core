@@ -21,16 +21,21 @@ public abstract class AbstractDBCrossReferenceBuilder<
                 B extends AbstractDBCrossReferenceBuilder<B, T, D>,
                 T extends DatabaseType,
                 D extends DBCrossReference<T>>
-        implements Builder<B, D> {
+        implements Builder<D> {
     protected T databaseType;
     protected String id;
     protected List<Property> properties = new ArrayList<>();
 
     protected abstract @Nonnull B getThis();
 
-    @Override
-    public @Nonnull B from(@Nonnull D instance) {
-        return this.properties(instance.getProperties())
+    protected static <
+                    B extends AbstractDBCrossReferenceBuilder<B, T, D>,
+                    T extends DatabaseType,
+                    D extends DBCrossReference<T>>
+            void init(
+                    @Nonnull AbstractDBCrossReferenceBuilder<B, T, D> builder,
+                    @Nonnull D instance) {
+        builder.properties(instance.getProperties())
                 .id(instance.getId())
                 .databaseType(instance.getDatabaseType());
     }

@@ -17,7 +17,7 @@ class NameImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         Name impl = new NameImpl("abc", createEvidences());
-        Name obj = new NameBuilder().from(impl).build();
+        Name obj = NameBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

@@ -12,7 +12,7 @@ import org.uniprot.core.impl.UniProtReleaseImpl;
  * @author jluo
  * @date: 13 Aug 2019
  */
-public class UniProtReleaseBuilder implements Builder<UniProtReleaseBuilder, UniProtRelease> {
+public class UniProtReleaseBuilder implements Builder<UniProtRelease> {
     private String currentVersion;
     private LocalDate currentReleaseDate;
     private String nextVersion;
@@ -44,9 +44,9 @@ public class UniProtReleaseBuilder implements Builder<UniProtReleaseBuilder, Uni
                 currentVersion, currentReleaseDate, nextVersion, nextReleaseDate);
     }
 
-    @Override
-    public @Nonnull UniProtReleaseBuilder from(@Nonnull UniProtRelease instance) {
-        return this.currentVersion(instance.getCurrentVersion())
+    public static @Nonnull UniProtReleaseBuilder from(@Nonnull UniProtRelease instance) {
+        return new UniProtReleaseBuilder()
+                .currentVersion(instance.getCurrentVersion())
                 .currentReleaseDate(instance.getCurrentReleaseDate())
                 .nextVersion(instance.getNextVersion())
                 .nextReleaseDate(instance.getNextReleaseDate());

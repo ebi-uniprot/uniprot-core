@@ -7,14 +7,9 @@ import org.uniprot.core.proteome.ProteomeId;
 import org.uniprot.core.proteome.RedundantProteome;
 import org.uniprot.core.proteome.impl.RedundantProteomeImpl;
 
-public class RedundantProteomeBuilder
-        implements Builder<RedundantProteomeBuilder, RedundantProteome> {
+public class RedundantProteomeBuilder implements Builder<RedundantProteome> {
     private ProteomeId id;
     private Float similarity;
-
-    public static @Nonnull RedundantProteomeBuilder newInstance() {
-        return new RedundantProteomeBuilder();
-    }
 
     public @Nonnull RedundantProteomeBuilder proteomeId(ProteomeId id) {
         this.id = id;
@@ -36,10 +31,9 @@ public class RedundantProteomeBuilder
         return new RedundantProteomeImpl(id, similarity);
     }
 
-    @Override
-    public @Nonnull RedundantProteomeBuilder from(@Nonnull RedundantProteome instance) {
-        this.id = instance.getId();
-        this.similarity = instance.getSimilarity();
-        return this;
+    public static @Nonnull RedundantProteomeBuilder from(@Nonnull RedundantProteome instance) {
+        return new RedundantProteomeBuilder()
+                .proteomeId(instance.getId())
+                .similarity(instance.getSimilarity());
     }
 }

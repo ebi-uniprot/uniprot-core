@@ -8,7 +8,7 @@
 			{
 				"name": "ProteinId",
 				"xmlTag":"protein sequence ID",
-				"uriLink":"https://www.ebi.ac.uk/ena/data/view/%proteinId"			
+				"uriLink":"https://www.ebi.ac.uk/ena/data/view/%ProteinId"			
 			},
 			{
 				"name": "Status",
@@ -25,13 +25,13 @@
 		"displayName": "GenBank",
 		"category": "SEQ",
 		"uriLink": "https://www.ncbi.nlm.nih.gov/protein/%id",
-		"linkTp": "Implicit",
+		"implicit": true,
 		"linkedReason": "DR:EMBL",
 		"attributes": [
 			{
 				"name": "ProteinId",
 				"xmlTag":"protein sequence ID",
-				"uriLink":"https://www.ncbi.nlm.nih.gov/nuccore/%proteinId"			
+				"uriLink":"https://www.ncbi.nlm.nih.gov/nuccore/%ProteinId"			
 			},
 			{
 				"name": "Status",
@@ -49,13 +49,13 @@
 		"displayName": "DDBJ",
 		"category": "SEQ",
 		"uriLink": "http://getentry.ddbj.nig.ac.jp/getentry/dad/%id",
-		"linkTp": "Implicit",
+		"implicit": true,
 		"linkedReason": "DR:EMBL",
 		"attributes": [
 			{
 				"name": "ProteinId",
 				"xmlTag":"protein sequence ID",
-				"uriLink":"http://getentry.ddbj.nig.ac.jp/getentry/na/%proteinId"			
+				"uriLink":"http://getentry.ddbj.nig.ac.jp/getentry/na/%ProteinId"			
 			},
 			{
 				"name": "Status",
@@ -131,7 +131,7 @@
 		"name": "ModBase",
 		"displayName": "ModBase",
 		"category": "3DS",
-		"linkTp": "Implicit",
+		"implicit": true,
 		"linkedReason": "All UniProtKB entries",
 		"uriLink": "http://salilab.org/modbase-cgi/model_search.cgi?searchkw=name&kword=%accession"
 	},
@@ -139,7 +139,7 @@
 		"name": "SMR",
 		"displayName": "SMR",
 		"category": "3DS",
-		"uriLink": "https://swissmodel.expasy.org/repository/uniprot/%id?csm=%d"
+		"uriLink": "https://swissmodel.expasy.org/repository/uniprot/%id?csm=%src64"
 	},
 	
 	
@@ -147,7 +147,7 @@
 		"name": "SWISS-MODEL-Workspace",
 		"displayName": "SWISS-MODEL-Workspace",
 		"category": "3DS",
-		"linkTp": "Implicit",
+		"implicit": true,
 		"linkedReason": "DR:SMR<1",
 		"uriLink": "http://salilab.org/modbase-cgi/model_search.cgi?searchkw=name&kword=%accession"
 	},
@@ -155,7 +155,7 @@
 		"name": "PDBe-KB",
 		"displayName": "PDBe-KB",
 		"category": "3DS",
-		"linkTp": "Implicit",
+		"implicit": true,
 		"linkedReason": "DR: PDB",
 		"uriLink": "https://pdbe-kb.org/proteins/%id"
 	},
@@ -163,7 +163,7 @@
 		"name": "PDBj",
 		"displayName": "PDBj",
 		"category": "3DS",
-		"linkTp": "Implicit",
+		"implicit": true,
 		"linkedReason": "DR: PDB",
 		"uriLink": "https://pdbj.org/mine/summary/%id"
 	},
@@ -172,7 +172,7 @@
 		"name": "RCSB-PDB",
 		"displayName": "RCSB PDB",
 		"category": "3DS",
-		"linkTp": "Implicit",
+		"implicit": true,
 		"linkedReason": "DR: PDB",
 		"uriLink": "https://www.rcsb.org/structure/%id"
 	},
@@ -402,7 +402,7 @@
 		"name": "GPCRDB",
 		"displayName": "GPCRDB",
 		"category": "PFAM",
-		"linkTp": "Implicit",
+		"implicit": true,
 		"linkedReason": "CC:SIMILARITY: Belongs to the G-protein coupled receptor",
 		"uriLink": "https://gpcrdb.org/protein/%uniprotId/"
 	},	
@@ -597,12 +597,12 @@
 			{
 				"name": "ProteinId",
 				"xmlTag":"protein sequence ID",
-				"uriLink":"https://www.ensembl.org/id/%proteinId"			
+				"uriLink":"https://www.ensembl.org/id/%ProteinId"			
 			},
 			{
 				"name": "GeneId",
 				"xmlTag":"gene ID",
-				"uriLink":"https://www.ensembl.org/id/%geneId"			
+				"uriLink":"https://www.ensembl.org/id/%GeneId"			
 			}
 		]
 	},
@@ -615,12 +615,12 @@
 			{
 				"name": "ProteinId",
 				"xmlTag":"protein sequence ID",
-				"uriLink":"http://www.ensemblgenomes.org/id/%proteinId"		
+				"uriLink":"http://www.ensemblgenomes.org/id/%ProteinId"		
 			},
 			{
 				"name": "GeneId",
 				"xmlTag":"gene ID",
-				"uriLink":"http://www.ensemblgenomes.org/id/%geneId"		
+				"uriLink":"http://www.ensemblgenomes.org/id/%GeneId"		
 			}
 		]
 	},
@@ -633,12 +633,12 @@
 			{
 				"name": "ProteinId",
 				"xmlTag":"protein sequence ID",
-				"uriLink":"http://www.ensemblgenomes.org/id/%proteinId"		
+				"uriLink":"http://www.ensemblgenomes.org/id/%ProteinId"		
 			},
 			{
 				"name": "GeneId",
 				"xmlTag":"gene ID",
-				"uriLink":"http://www.ensemblgenomes.org/id/%geneId"		
+				"uriLink":"http://www.ensemblgenomes.org/id/%GeneId"		
 			}
 		]
 	},
@@ -651,12 +651,12 @@
 			{
 				"name": "ProteinId",
 				"xmlTag":"protein sequence ID",
-				"uriLink":"http://www.ensemblgenomes.org/id/%proteinId"		
+				"uriLink":"http://www.ensemblgenomes.org/id/%ProteinId"		
 			},
 			{
 				"name": "GeneId",
 				"xmlTag":"gene ID",
-				"uriLink":"http://www.ensemblgenomes.org/id/%geneId"		
+				"uriLink":"http://www.ensemblgenomes.org/id/%GeneId"		
 			}
 		]
 	},
@@ -669,12 +669,12 @@
 			{
 				"name": "ProteinId",
 				"xmlTag":"protein sequence ID",
-				"uriLink":"http://www.ensemblgenomes.org/id/%proteinId"		
+				"uriLink":"http://www.ensemblgenomes.org/id/%ProteinId"		
 			},
 			{
 				"name": "GeneId",
 				"xmlTag":"gene ID",
-				"uriLink":"http://www.ensemblgenomes.org/id/%geneId"		
+				"uriLink":"http://www.ensemblgenomes.org/id/%GeneId"		
 			}
 		]
 	},
@@ -687,12 +687,12 @@
 			{
 				"name": "ProteinId",
 				"xmlTag":"protein sequence ID",
-				"uriLink":"http://www.ensemblgenomes.org/id/%proteinId"		
+				"uriLink":"http://www.ensemblgenomes.org/id/%ProteinId"		
 			},
 			{
 				"name": "GeneId",
 				"xmlTag":"gene ID",
-				"uriLink":"http://www.ensemblgenomes.org/id/%geneId"		
+				"uriLink":"http://www.ensemblgenomes.org/id/%GeneId"		
 			}
 		]
 	},
@@ -717,12 +717,12 @@
 			{
 				"name": "ProteinId",
 				"xmlTag":"protein sequence ID",
-				"uriLink":"http://ensembl.gramene.org/id/%proteinId"
+				"uriLink":"http://ensembl.gramene.org/id/%ProteinId"
 			},
 			{
 				"name": "GeneId",
 				"xmlTag":"gene ID",
-				"uriLink":"http://ensembl.gramene.org/id/%geneId"	
+				"uriLink":"http://ensembl.gramene.org/id/%GeneId"	
 			}
 		]
 	},
@@ -765,12 +765,12 @@
 			{
 				"name": "ProteinId",
 				"xmlTag":"protein sequence ID",
-				"uriLink":"https://www.vectorbase.org/id/%proteinId"		
+				"uriLink":"https://www.vectorbase.org/id/%ProteinId"		
 			},
 			{
 				"name": "GeneId",
 				"xmlTag":"gene ID",
-				"uriLink":"https://www.vectorbase.org/id/%geneId"		
+				"uriLink":"https://www.vectorbase.org/id/%GeneId"		
 			}
 		]
 	},
@@ -783,12 +783,12 @@
 			{
 				"name": "ProteinId",
 				"xmlTag":"protein sequence ID",
-				"uriLink":"https://parasite.wormbase.org/id/%proteinId"
+				"uriLink":"https://parasite.wormbase.org/id/%ProteinId"
 			},
 			{
 				"name": "GeneId",
 				"xmlTag":"gene ID",
-				"uriLink":"https://parasite.wormbase.org/id/%geneId"	
+				"uriLink":"https://parasite.wormbase.org/id/%GeneId"	
 			}
 		]
 	},
@@ -917,9 +917,9 @@
 		"name": "GenAtlas",
 		"displayName": "GenAtlas",
 		"category": "ORG",
-		"linkTp": "Implicit",
+		"implicit": true,
 		"linkedReason": "DR:HGNC",
-		"uriLink": "http://genatlas.medecine.univ-paris5.fr/fiche.php?symbol=%geneName"
+		"uriLink": "http://genatlas.medecine.univ-paris5.fr/fiche.php?symbol=%GeneName"
 		
 	},
 	{
@@ -1094,12 +1094,12 @@
 			{
 				"name": "ProteinId",
 				"xmlTag":"protein sequence ID",
-				"uriLink":"http://www.wormbase.org/db/seq/protein?name=%proteinId;class=Protein"		
+				"uriLink":"http://www.wormbase.org/db/seq/protein?name=%ProteinId;class=Protein"		
 			},
 			{
 				"name": "GeneId",
 				"xmlTag":"gene ID",
-				"uriLink":"http://www.wormbase.org/db/gene/gene?name=%geneId;class=Gene"		
+				"uriLink":"http://www.wormbase.org/db/gene/gene?name=%GeneId;class=Gene"		
 			},
 			{	"name": "GeneName",
 				"xmlTag":"gene designation"			
@@ -1132,7 +1132,7 @@
 		"name": "HUGE",
 		"displayName": "HUGE",
 		"category": "ORG",
-		"linkTp": "Implicit",
+		"implicit": true,
 		"linkedReason": "GN:KIAAnnnn, Human Entries, can be multiple",
 		"uriLink": "http://www.kazusa.or.jp/huge/gfpage/%gene"
 	},
@@ -1140,7 +1140,7 @@
 		"name": "Rouge",
 		"displayName": "Rouge",
 		"category": "ORG",
-		"linkTp": "Implicit",
+		"implicit": true,
 		"linkedReason": "GN:KIAAnnnn, Mouse Entries, can be multiple",
 		"uriLink": "http://www.kazusa.or.jp/rouge/gfpage/%gene"
 	},
@@ -1149,7 +1149,7 @@
 		"name": "eggNOG",
 		"displayName": "eggNOG",
 		"category": "PLG",
-		"uriLink": "http://eggnogdb.embl.de/#/app/results?seqid=%u&target_nogs=%id",
+		"uriLink": "http://eggnogdb.embl.de/#/app/results?seqid=%accession&target_nogs=%id",
 		"attributes": [		
 			{	"name": "ToxonomicScope",
 				"xmlTag":"taxonomic scope"			
@@ -1260,7 +1260,7 @@
 		"name": "UniPathway",
 		"displayName": "UniPathway",
 		"category": "EAP",
-		"uriLink": "http://www.unipathway.org?upid=%id&entryac=%accession",
+		"uriLink": "",
 		"attributes": [		
 			{	"name": "RectionId",
 				"xmlTag":"reaction ID"			
@@ -1284,7 +1284,7 @@
 		"name": "ENZYME",
 		"displayName": "ENZYME",
 		"category": "EAP",
-		"linkTp": "Implicit",
+		"implicit": true,
 		"linkedReason": "DE:EC",
 		"uriLink": "https://enzyme.expasy.org/EC/%ec"		
 	},
@@ -1328,17 +1328,17 @@
 		"name": "SOURCE_MIM",
 		"displayName": "SOURCE",
 		"category": "OTHER",
-		"linkTp": "Implicit",
+		"implicit": true,
 		"linkedReason": "DR:MIM",
-		"uriLink": "https://puma.princeton.edu/cgi-bin/source/sourceResult?criteria=%geneName&choice=Gene&option=Symbol&organism=Hs"	
+		"uriLink": "https://puma.princeton.edu/cgi-bin/source/sourceResult?criteria=%GeneName&choice=Gene&option=Symbol&organism=Hs"	
 	},
 	{
 		"name": "SOURCE_MGI",
 		"displayName": "SOURCE",
 		"category": "OTHER",
-		"linkTp": "Implicit",
+		"implicit": true,
 		"linkedReason": "DR:MGI",
-		"uriLink": "https://puma.princeton.edu/cgi-bin/source/sourceResult?criteria=%geneName&choice=Gene&option=Symbol&organism=Mm"	
+		"uriLink": "https://puma.princeton.edu/cgi-bin/source/sourceResult?criteria=%GeneName&choice=Gene&option=Symbol&organism=Mm"	
 	},
 	
 	{
@@ -1379,7 +1379,7 @@
 		"name": "Genevisible",
 		"displayName": "Genevisible",
 		"category": "GEP",
-		"uriLink": "https://genevisible.com/tissues/%d/UniProt/%id",
+		"uriLink": "https://genevisible.com/tissues/%OrganismId/UniProt/%id",
 		"attributes": [		
 			{	"name": "OrganismId",
 				"xmlTag":"organism ID"			
@@ -1588,7 +1588,7 @@
 		"name": "MobiDB",
 		"displayName": "MobiDB",
 		"category": "FMD",
-		"linkTp": "Implicit",
+		"implicit": true,
 		"linkedReason": "All UniProtKB entries",
 		"uriLink": "http://mobidb.bio.unipd.it/entries/%accession"
 	},
@@ -1596,7 +1596,7 @@
 		"name": "ProtoNet",
 		"displayName": "ProtoNet",
 		"category": "FMD",
-		"linkTp": "Implicit",
+		"implicit": true,
 		"linkedReason": "All UniProtKB entries",
 		"uriLink": "http://www.protonet.cs.huji.ac.il/sp.php?prot=%accession"
 		
@@ -1628,12 +1628,6 @@
 				"xmlTag":"component"			
 			}		
 		]
-	},
-	{
-		"name": "ProtClustDB",
-		"displayName": "ProtClustDB",
-		"category": "UNK",
-		"uriLink": ""
 	},
 	{
 		"name": "PathwayCommons",

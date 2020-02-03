@@ -30,7 +30,7 @@ class UniProtReferenceImplTest {
                         Collections.emptyList(),
                         Collections.emptyList(),
                         Collections.emptyList());
-        UniProtReference obj = new UniProtReferenceBuilder().from(impl).build();
+        UniProtReference obj = UniProtReferenceBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

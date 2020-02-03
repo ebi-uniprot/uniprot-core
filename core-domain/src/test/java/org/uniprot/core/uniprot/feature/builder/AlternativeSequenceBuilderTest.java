@@ -37,7 +37,7 @@ class AlternativeSequenceBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         AlternativeSequence obj = new AlternativeSequenceBuilder().build();
-        AlternativeSequenceBuilder builder = new AlternativeSequenceBuilder().from(obj);
+        AlternativeSequenceBuilder builder = AlternativeSequenceBuilder.from(obj);
         assertNotNull(builder);
     }
 

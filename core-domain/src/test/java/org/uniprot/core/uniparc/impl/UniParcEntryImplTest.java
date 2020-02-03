@@ -25,7 +25,7 @@ class UniParcEntryImplTest {
                         sequenceFeatures(),
                         taxonomies(),
                         "reason");
-        UniParcEntry obj = new UniParcEntryBuilder().from(impl).build();
+        UniParcEntry obj = UniParcEntryBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

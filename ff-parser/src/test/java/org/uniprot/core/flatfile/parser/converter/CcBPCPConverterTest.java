@@ -7,8 +7,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.EvidencedString;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.BiophysicochemicalProperties;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.EvidencedString;
 import org.uniprot.core.uniprot.comment.*;
 
 class CcBPCPConverterTest {
@@ -17,17 +19,18 @@ class CcBPCPConverterTest {
     @Test
     void testBPCP() {
         CcLineObject ccLineO = new CcLineObject();
-        CcLineObject.CC cc1 = new CcLineObject.CC();
-        cc1.topic = CcLineObject.CCTopicEnum.BIOPHYSICOCHEMICAL_PROPERTIES;
-        CcLineObject.BiophysicochemicalProperties wr =
-                new CcLineObject.BiophysicochemicalProperties();
-        wr.kms.add(
-                new EvidencedString(
-                        "0.3913 uM for FAM fluorophore-coupled RNA substrate and a quencher-coupled DNA primer",
-                        new ArrayList<String>()));
-        wr.vmaxs.add(new EvidencedString("0.000197 umol/sec/ug enzyme", new ArrayList<String>()));
-        cc1.object = wr;
-        ccLineO.ccs.add(cc1);
+        CC cc1 = new CC();
+        cc1.setTopic(CC.CCTopicEnum.BIOPHYSICOCHEMICAL_PROPERTIES);
+        BiophysicochemicalProperties wr = new BiophysicochemicalProperties();
+        wr.getKms()
+                .add(
+                        new EvidencedString(
+                                "0.3913 uM for FAM fluorophore-coupled RNA substrate and a quencher-coupled DNA primer",
+                                new ArrayList<String>()));
+        wr.getVmaxs()
+                .add(new EvidencedString("0.000197 umol/sec/ug enzyme", new ArrayList<String>()));
+        cc1.setObject(wr);
+        ccLineO.getCcs().add(cc1);
         List<Comment> comments = converter.convert(ccLineO);
         assertEquals(1, comments.size());
 
@@ -63,20 +66,20 @@ class CcBPCPConverterTest {
         // CC         Optimum temperature is 65 degrees Celsius. Protected from
         // CC         thermal inactivation by ATP;
         CcLineObject ccLineO = new CcLineObject();
-        CcLineObject.CC cc1 = new CcLineObject.CC();
-        cc1.topic = CcLineObject.CCTopicEnum.BIOPHYSICOCHEMICAL_PROPERTIES;
-        CcLineObject.BiophysicochemicalProperties wr =
-                new CcLineObject.BiophysicochemicalProperties();
-        wr.kms.add(new EvidencedString("71 uM for ATP", new ArrayList<String>()));
-        wr.kms.add(new EvidencedString("98 uM for ADP", new ArrayList<String>()));
-        wr.phDependence.add(new EvidencedString("Optimum pH is 7.75", new ArrayList<String>()));
+        CC cc1 = new CC();
+        cc1.setTopic(CC.CCTopicEnum.BIOPHYSICOCHEMICAL_PROPERTIES);
+        BiophysicochemicalProperties wr = new BiophysicochemicalProperties();
+        wr.getKms().add(new EvidencedString("71 uM for ATP", new ArrayList<String>()));
+        wr.getKms().add(new EvidencedString("98 uM for ADP", new ArrayList<String>()));
+        wr.getPhDependence()
+                .add(new EvidencedString("Optimum pH is 7.75", new ArrayList<String>()));
         String tempDe =
                 "Optimum temperature is 65 degrees Celsius. Protected from "
                         + "thermal inactivation by ATP";
-        wr.temperatureDependence.add(new EvidencedString(tempDe, new ArrayList<String>()));
+        wr.getTemperatureDependence().add(new EvidencedString(tempDe, new ArrayList<String>()));
 
-        cc1.object = wr;
-        ccLineO.ccs.add(cc1);
+        cc1.setObject(wr);
+        ccLineO.getCcs().add(cc1);
 
         List<Comment> comments = converter.convert(ccLineO);
         assertEquals(1, comments.size());
@@ -124,23 +127,23 @@ class CcBPCPConverterTest {
         // CC         Optimum temperature is 65 degrees Celsius. Protected from
         // CC         thermal inactivation by ATP;
         CcLineObject ccLineO = new CcLineObject();
-        CcLineObject.CC cc1 = new CcLineObject.CC();
-        cc1.topic = CcLineObject.CCTopicEnum.BIOPHYSICOCHEMICAL_PROPERTIES;
-        CcLineObject.BiophysicochemicalProperties wr =
-                new CcLineObject.BiophysicochemicalProperties();
-        wr.kms.add(new EvidencedString("71 uM for ATP", new ArrayList<String>()));
-        wr.kms.add(new EvidencedString("98 uM for ADP", new ArrayList<String>()));
-        wr.kms.add(new EvidencedString("1.5 mM for acetate", new ArrayList<String>()));
-        wr.kms.add(new EvidencedString("0.47 mM for acetyl phosphate", new ArrayList<String>()));
+        CC cc1 = new CC();
+        cc1.setTopic(CC.CCTopicEnum.BIOPHYSICOCHEMICAL_PROPERTIES);
+        BiophysicochemicalProperties wr = new BiophysicochemicalProperties();
+        wr.getKms().add(new EvidencedString("71 uM for ATP", new ArrayList<String>()));
+        wr.getKms().add(new EvidencedString("98 uM for ADP", new ArrayList<String>()));
+        wr.getKms().add(new EvidencedString("1.5 mM for acetate", new ArrayList<String>()));
+        wr.getKms()
+                .add(new EvidencedString("0.47 mM for acetyl phosphate", new ArrayList<String>()));
         String temDe =
                 "Optimum temperature is 65 degrees Celsius. Protected from "
                         + "thermal inactivation by ATP";
-        wr.temperatureDependence.add(new EvidencedString(temDe, new ArrayList<String>()));
+        wr.getTemperatureDependence().add(new EvidencedString(temDe, new ArrayList<String>()));
 
-        wr.bsorptionAbs = new EvidencedString("3 nm", new ArrayList<String>());
-        wr.bsorptionNote.add(new EvidencedString("foo bar foo bar", new ArrayList<String>()));
-        cc1.object = wr;
-        ccLineO.ccs.add(cc1);
+        wr.setBsorptionAbs(new EvidencedString("3 nm", new ArrayList<>()));
+        wr.getBsorptionNote().add(new EvidencedString("foo bar foo bar", new ArrayList<String>()));
+        cc1.setObject(wr);
+        ccLineO.getCcs().add(cc1);
 
         List<Comment> comments = converter.convert(ccLineO);
         assertEquals(1, comments.size());

@@ -19,7 +19,7 @@ class ProteomeTaxonomyMapTest {
     @Test
     void testAttributeValues() {
         Taxonomy taxonomy =
-                TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens").build();
+                new TaxonomyBuilder().taxonId(9606).scientificName("Homo sapiens").build();
         ProteomeTaxonomyMap taxMap = new ProteomeTaxonomyMap(taxonomy);
         Map<String, String> result = taxMap.attributeValues();
         assertEquals(3, result.size());

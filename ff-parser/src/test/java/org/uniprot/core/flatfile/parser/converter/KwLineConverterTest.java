@@ -48,14 +48,14 @@ class KwLineConverterTest {
         obj.keywords.add("Transcription");
         List<String> evIds = new ArrayList<String>();
         evIds.add("ECO:0000256|RuleBase:RU000681");
-        obj.evidenceInfo.evidences.put("Activator", evIds);
+        obj.evidenceInfo.getEvidences().put("Activator", evIds);
         evIds = new ArrayList<String>();
         evIds.add("ECO:0000256|RuleBase:RU000682");
-        obj.evidenceInfo.evidences.put("Complete proteome", evIds);
+        obj.evidenceInfo.getEvidences().put("Complete proteome", evIds);
         evIds = new ArrayList<String>();
         evIds.add("ECO:0000256|RuleBase:RU000682");
         evIds.add("ECO:0000256|RuleBase:RU000683");
-        obj.evidenceInfo.evidences.put("Transcription", evIds);
+        obj.evidenceInfo.getEvidences().put("Transcription", evIds);
 
         List<Keyword> kws = converter.convert(obj);
         assertEquals(4, kws.size());

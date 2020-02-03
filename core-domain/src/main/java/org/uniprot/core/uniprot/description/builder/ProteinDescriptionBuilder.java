@@ -14,8 +14,7 @@ import org.uniprot.core.uniprot.description.impl.FlagImpl;
 import org.uniprot.core.uniprot.description.impl.ProteinDescriptionImpl;
 
 /** @author lgonzales */
-public class ProteinDescriptionBuilder
-        implements Builder<ProteinDescriptionBuilder, ProteinDescription> {
+public class ProteinDescriptionBuilder implements Builder<ProteinDescription> {
 
     private ProteinRecName recommendedName;
     private List<ProteinAltName> alternativeNames = new ArrayList<>();
@@ -83,6 +82,11 @@ public class ProteinDescriptionBuilder
         return this;
     }
 
+    public @Nonnull ProteinDescriptionBuilder flag(Flag flag) {
+        this.flag = flag;
+        return this;
+    }
+
     public @Nonnull ProteinDescriptionBuilder submissionNames(
             List<ProteinSubName> submissionNames) {
         this.submissionNames = modifiableList(submissionNames);
@@ -129,19 +133,17 @@ public class ProteinDescriptionBuilder
                 contains);
     }
 
-    @Override
-    public @Nonnull ProteinDescriptionBuilder from(@Nonnull ProteinDescription instance) {
-        this.recommendedName(instance.getRecommendedName());
-        this.alternativeNames(instance.getAlternativeNames());
-        this.allergenName(instance.getAllergenName());
-        this.biotechName(instance.getBiotechName());
-        this.cdAntigenNames(instance.getCdAntigenNames());
-        this.innNames(instance.getInnNames());
-        this.submissionNames(instance.getSubmissionNames());
-        this.flag = instance.getFlag();
-        this.contains(instance.getContains());
-        this.includes(instance.getIncludes());
-
-        return this;
+    public static @Nonnull ProteinDescriptionBuilder from(@Nonnull ProteinDescription instance) {
+        return new ProteinDescriptionBuilder()
+                .recommendedName(instance.getRecommendedName())
+                .alternativeNames(instance.getAlternativeNames())
+                .allergenName(instance.getAllergenName())
+                .biotechName(instance.getBiotechName())
+                .cdAntigenNames(instance.getCdAntigenNames())
+                .innNames(instance.getInnNames())
+                .submissionNames(instance.getSubmissionNames())
+                .flag(instance.getFlag())
+                .contains(instance.getContains())
+                .includes(instance.getIncludes());
     }
 }

@@ -33,7 +33,7 @@ class TaxonomyInactiveReasonBuilderTest {
         TaxonomyInactiveReason inactiveReason = getCompleteTaxonomyInactiveReason();
 
         TaxonomyInactiveReason otherInactiveReason =
-                new TaxonomyInactiveReasonBuilder().from(inactiveReason).build();
+                TaxonomyInactiveReasonBuilder.from(inactiveReason).build();
         assertEquals(inactiveReason.toString(), otherInactiveReason.toString());
         boolean equals = inactiveReason.equals(otherInactiveReason);
         assertTrue(equals);

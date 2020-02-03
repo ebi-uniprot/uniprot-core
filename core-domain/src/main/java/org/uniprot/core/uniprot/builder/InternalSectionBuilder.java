@@ -20,7 +20,7 @@ import org.uniprot.core.uniprot.impl.InternalSectionImpl;
  *
  * @author Edd
  */
-public class InternalSectionBuilder implements Builder<InternalSectionBuilder, InternalSection> {
+public class InternalSectionBuilder implements Builder<InternalSection> {
     private List<InternalLine> internalLines = new ArrayList<>();
     private List<EvidenceLine> evidenceLines = new ArrayList<>();
     private List<SourceLine> sourceLines = new ArrayList<>();
@@ -30,12 +30,11 @@ public class InternalSectionBuilder implements Builder<InternalSectionBuilder, I
         return new InternalSectionImpl(internalLines, evidenceLines, sourceLines);
     }
 
-    @Override
-    public @Nonnull InternalSectionBuilder from(@Nonnull InternalSection instance) {
-        this.evidenceLines(instance.getEvidenceLines());
-        this.internalLines(instance.getInternalLines());
-        this.sourceLines(instance.getSourceLines());
-        return this;
+    public static @Nonnull InternalSectionBuilder from(@Nonnull InternalSection instance) {
+        return new InternalSectionBuilder()
+                .evidenceLines(instance.getEvidenceLines())
+                .internalLines(instance.getInternalLines())
+                .sourceLines(instance.getSourceLines());
     }
 
     public @Nonnull InternalSectionBuilder internalLines(List<InternalLine> internalLines) {

@@ -10,16 +10,12 @@ import org.uniprot.core.uniprot.UniProtAccession;
 import org.uniprot.core.uniprot.UniProtEntryType;
 import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
 
-public class ProteinBuilder implements Builder<ProteinBuilder, Protein> {
+public class ProteinBuilder implements Builder<Protein> {
     private UniProtAccession accession;
     private UniProtEntryType entryType;
     private long sequenceLength;
     private String geneName;
     private GeneNameType geneNameType;
-
-    public static @Nonnull ProteinBuilder newInstance() {
-        return new ProteinBuilder();
-    }
 
     @Override
     public @Nonnull Protein build() {
@@ -55,13 +51,12 @@ public class ProteinBuilder implements Builder<ProteinBuilder, Protein> {
         return this;
     }
 
-    @Override
-    public @Nonnull ProteinBuilder from(@Nonnull Protein instance) {
-        this.accession = instance.getAccession();
-        this.entryType = instance.getEntryType();
-        this.sequenceLength = instance.getSequenceLength();
-        this.geneName = instance.getGeneName();
-        this.geneNameType = instance.getGeneNameType();
-        return this;
+    public static @Nonnull ProteinBuilder from(@Nonnull Protein instance) {
+        return new ProteinBuilder()
+                .accession(instance.getAccession())
+                .entryType(instance.getEntryType())
+                .sequenceLength(instance.getSequenceLength())
+                .geneName(instance.getGeneName())
+                .geneNameType(instance.getGeneNameType());
     }
 }

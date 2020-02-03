@@ -16,7 +16,7 @@ class ProteomeIdImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         ProteomeId impl = new ProteomeIdImpl("value");
-        ProteomeId obj = new ProteomeIdBuilder("val").from(impl).build();
+        ProteomeId obj = ProteomeIdBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

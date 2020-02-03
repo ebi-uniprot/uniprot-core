@@ -22,7 +22,7 @@ class EvidenceImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        Evidence obj = new EvidenceBuilder().from(impl).build();
+        Evidence obj = EvidenceBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }
