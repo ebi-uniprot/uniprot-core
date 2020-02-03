@@ -29,14 +29,20 @@ class LiteratureImplTest {
         DBCrossReference<CitationXrefType> XREF1 =
                 new DBCrossReferenceBuilder<CitationXrefType>()
                         .databaseType(CitationXrefType.PUBMED)
-                        .id("id1")
+                        .id("12345")
+                        .build();
+
+        DBCrossReference<CitationXrefType> XREF2 =
+                new DBCrossReferenceBuilder<CitationXrefType>()
+                        .databaseType(CitationXrefType.DOI)
+                        .id("DoidId")
                         .build();
 
         Literature impl =
                 new LiteratureImpl(
                         asList("J1", "j2"),
                         Collections.singletonList(new AuthorImpl("auth")),
-                        Collections.singletonList(XREF1),
+                        asList(XREF1, XREF2),
                         "ptitle",
                         new PublicationDateImpl("date"),
                         "jname",
@@ -53,6 +59,8 @@ class LiteratureImplTest {
         assertTrue(impl.hasVolume());
         assertTrue(impl.isCompleteAuthorList());
         assertTrue(impl.hasLiteratureAbstract());
+        assertTrue(impl.hasPubmedId());
+        assertTrue(impl.hasDoiId());
 
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());

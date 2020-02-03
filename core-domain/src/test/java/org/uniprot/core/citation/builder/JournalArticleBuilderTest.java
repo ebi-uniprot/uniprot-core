@@ -7,6 +7,8 @@ import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.citation.CitationXrefType;
 import org.uniprot.core.citation.JournalArticle;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class JournalArticleBuilderTest extends AbstractJournalArticleBuilderTest {
     @Test
     void testBuildJournalArticle() {

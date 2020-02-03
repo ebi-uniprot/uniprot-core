@@ -38,7 +38,7 @@ public abstract class AbstractJournalArticleBuilder<
     }
 
     protected static <B extends AbstractJournalArticleBuilder<B, T>, T extends JournalArticle>
-            void init(B builder, T instance) {
+            void init(@Nonnull B builder, @Nonnull T instance) {
         AbstractCitationBuilder.init(builder, instance);
         if (instance.hasJournal()) {
             builder.journalName(instance.getJournal().getName());

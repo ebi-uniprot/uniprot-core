@@ -34,4 +34,10 @@ class AuthorImplTest {
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }
+
+    @Test
+    void toStringMethod() {
+        Author impl = new AuthorImpl("auth");
+        assertEquals("auth", impl.toString());
+    }
 }

@@ -24,4 +24,10 @@ class PublicationDateImplTest {
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }
+
+    @Test
+    void toStringMethod() {
+        PublicationDate obj = new PublicationDateImpl("date");
+        assertEquals("PublicationDateImpl{value='date'}", obj.toString());
+    }
 }
