@@ -1,13 +1,13 @@
 package org.uniprot.core.citation.builder;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.citation.CitationXrefType;
 import org.uniprot.core.citation.JournalArticle;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class JournalArticleBuilderTest extends AbstractJournalArticleBuilderTest {
     @Test

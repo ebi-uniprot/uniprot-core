@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprot.taxonomy.impl;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * @author lgonzales
@@ -16,7 +16,7 @@ class AbstractOrganismNameImplTest {
         assertNull(organism.getCommonName());
     }
 
-    private static class TestableAbstractOrganismNameImpl extends AbstractOrganismNameImpl{
+    private static class TestableAbstractOrganismNameImpl extends AbstractOrganismNameImpl {
 
         private static final long serialVersionUID = 7726334016104975291L;
     }
