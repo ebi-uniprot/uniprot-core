@@ -7,8 +7,10 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.LocationFlagEnum;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.LocationValue;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.SubcullarLocation;
 
 class CcLineSubCellCommentParserTest {
     @Test
@@ -20,17 +22,20 @@ class CcLineSubCellCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SubcullarLocation);
-        CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
-        assertEquals(3, sl.locations.size());
-        verify(sl.locations.get(0).subcellularLocation, "Cytoplasm", null);
-        verify(sl.locations.get(1).subcellularLocation, "Endoplasmic reticulum membrane", null);
-        verify(sl.locations.get(1).topology, "Peripheral membrane protein", null);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SubcullarLocation);
+        SubcullarLocation sl = (SubcullarLocation) cc.getObject();
+        assertEquals(3, sl.getLocations().size());
+        verify(sl.getLocations().get(0).getSubcellularLocation(), "Cytoplasm", null);
+        verify(
+                sl.getLocations().get(1).getSubcellularLocation(),
+                "Endoplasmic reticulum membrane",
+                null);
+        verify(sl.getLocations().get(1).getTopology(), "Peripheral membrane protein", null);
 
-        verify(sl.locations.get(2).subcellularLocation, "Golgi apparatus membrane", null);
-        verify(sl.locations.get(2).topology, "Peripheral membrane protein", null);
+        verify(sl.getLocations().get(2).getSubcellularLocation(), "Golgi apparatus membrane", null);
+        verify(sl.getLocations().get(2).getTopology(), "Peripheral membrane protein", null);
     }
 
     @Test
@@ -41,16 +46,19 @@ class CcLineSubCellCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SubcullarLocation);
-        CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
-        assertEquals(1, sl.locations.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SubcullarLocation);
+        SubcullarLocation sl = (SubcullarLocation) cc.getObject();
+        assertEquals(1, sl.getLocations().size());
 
-        verify(sl.locations.get(0).subcellularLocation, "Cytoplasm", null);
+        verify(sl.getLocations().get(0).getSubcellularLocation(), "Cytoplasm", null);
         assertEquals(
                 "ECO:0000256|HAMAP-Rule:MF_01146",
-                obj.evidenceInfo.evidences.get(sl.locations.get(0).subcellularLocation).get(0));
+                obj.getEvidenceInfo()
+                        .getEvidences()
+                        .get(sl.getLocations().get(0).getSubcellularLocation())
+                        .get(0));
     }
 
     @Test
@@ -61,21 +69,21 @@ class CcLineSubCellCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SubcullarLocation);
-        CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
-        assertEquals(1, sl.locations.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SubcullarLocation);
+        SubcullarLocation sl = (SubcullarLocation) cc.getObject();
+        assertEquals(1, sl.getLocations().size());
 
-        verify(sl.locations.get(0).subcellularLocation, "Cytoplasm", null);
+        verify(sl.getLocations().get(0).getSubcellularLocation(), "Cytoplasm", null);
         assertEquals(
                 "ECO:0000256|HAMAP-Rule:MF_01146",
-                obj.evidenceInfo.evidences.get(sl.locations.get(0)).get(0));
+                obj.getEvidenceInfo().getEvidences().get(sl.getLocations().get(0)).get(0));
     }
 
-    private void verify(CcLineObject.LocationValue lv, String value, LocationFlagEnum flag) {
-        assertEquals(value, lv.value);
-        assertEquals(flag, lv.flag);
+    private void verify(LocationValue lv, String value, LocationValue.LocationFlagEnum flag) {
+        assertEquals(value, lv.getValue());
+        assertEquals(flag, lv.getFlag());
     }
 
     @Test
@@ -87,21 +95,24 @@ class CcLineSubCellCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SubcullarLocation);
-        CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SubcullarLocation);
+        SubcullarLocation sl = (SubcullarLocation) cc.getObject();
         assertEquals(
                 "The last 22 C-terminal amino acids may participate in cell membrane attachment",
-                sl.note.get(0).value);
-        assertEquals(2, sl.locations.size());
+                sl.getNote().get(0).getValue());
+        assertEquals(2, sl.getLocations().size());
 
-        verify(sl.locations.get(0).subcellularLocation, "Cell membrane", null);
+        verify(sl.getLocations().get(0).getSubcellularLocation(), "Cell membrane", null);
         verify(
-                sl.locations.get(0).topology,
+                sl.getLocations().get(0).getTopology(),
                 "Peripheral membrane protein",
-                LocationFlagEnum.BY_SIMILARITY);
-        verify(sl.locations.get(1).subcellularLocation, "Secreted", LocationFlagEnum.BY_SIMILARITY);
+                LocationValue.LocationFlagEnum.BY_SIMILARITY);
+        verify(
+                sl.getLocations().get(1).getSubcellularLocation(),
+                "Secreted",
+                LocationValue.LocationFlagEnum.BY_SIMILARITY);
     }
 
     @Test
@@ -113,16 +124,19 @@ class CcLineSubCellCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SubcullarLocation);
-        CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
-        assertEquals("Isoform 2", sl.molecule);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SubcullarLocation);
+        SubcullarLocation sl = (SubcullarLocation) cc.getObject();
+        assertEquals("Isoform 2", sl.getMolecule());
 
-        verify(sl.locations.get(0).subcellularLocation, "Cytoplasm", LocationFlagEnum.PROBABLE);
-        // verify(sl.locations.get(0).topology, "Peripheral membrane protein",
+        verify(
+                sl.getLocations().get(0).getSubcellularLocation(),
+                "Cytoplasm",
+                LocationValue.LocationFlagEnum.PROBABLE);
+        // verify(sl.getLocations().get(0).getTopology(), "Peripheral membrane protein",
         // LocationFlagEnum.By_similarity );
-        // verify(sl.locations.get(1).subcellular_location, "Secreted",
+        // verify(sl.getLocations().get(1).subcellular_location, "Secreted",
         // LocationFlagEnum.By_similarity );
 
     }
@@ -138,21 +152,22 @@ class CcLineSubCellCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SubcullarLocation);
-        CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SubcullarLocation);
+        SubcullarLocation sl = (SubcullarLocation) cc.getObject();
         assertEquals(
                 "Predominantly found in the trans-Golgi network (TGN). "
                         + "Not redistributed to the plasma membrane in response to elevated copper levels",
-                sl.note.get(0).value);
-        assertEquals(1, sl.locations.size());
+                sl.getNote().get(0).getValue());
+        assertEquals(1, sl.getLocations().size());
 
-        //	verify(sl.locations.get(0).subcellular_location, "Cytoplasm", LocationFlagEnum.Probable
+        //	verify(sl.getLocations().get(0).subcellular_location, "Cytoplasm",
+        // LocationFlagEnum.Probable
         // );
-        // verify(sl.locations.get(0).topology, "Peripheral membrane protein",
+        // verify(sl.getLocations().get(0).getTopology(), "Peripheral membrane protein",
         // LocationFlagEnum.By_similarity );
-        // verify(sl.locations.get(1).subcellular_location, "Secreted",
+        // verify(sl.getLocations().get(1).subcellular_location, "Secreted",
         // LocationFlagEnum.By_similarity );
 
     }
@@ -169,24 +184,25 @@ class CcLineSubCellCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SubcullarLocation);
-        CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SubcullarLocation);
+        SubcullarLocation sl = (SubcullarLocation) cc.getObject();
         assertEquals(
                 "Interaction with SNX27 mediates recruitment to "
                         + "early endosomes, while interaction with SLC9A3R1 and EZR might "
                         + "target the protein to specialized subcellular regions, such as "
                         + "microvilli (By similarity). Interacts (via C-terminus) with GRK5; "
                         + "this interaction is promoted by 5-HT (serotonin) (By similarity)",
-                sl.note.get(0).value);
-        assertEquals(2, sl.locations.size());
+                sl.getNote().get(0).getValue());
+        assertEquals(2, sl.getLocations().size());
 
-        //	verify(sl.locations.get(0).subcellular_location, "Cytoplasm", LocationFlagEnum.Probable
+        //	verify(sl.getLocations().get(0).subcellular_location, "Cytoplasm",
+        // LocationFlagEnum.Probable
         // );
-        // verify(sl.locations.get(0).topology, "Peripheral membrane protein",
+        // verify(sl.getLocations().get(0).getTopology(), "Peripheral membrane protein",
         // LocationFlagEnum.By_similarity );
-        // verify(sl.locations.get(1).subcellular_location, "Secreted",
+        // verify(sl.getLocations().get(1).subcellular_location, "Secreted",
         // LocationFlagEnum.By_similarity );
 
     }
@@ -200,16 +216,16 @@ class CcLineSubCellCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SubcullarLocation);
-        CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
-        assertEquals("Isoform UL12.5", sl.molecule);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SubcullarLocation);
+        SubcullarLocation sl = (SubcullarLocation) cc.getObject();
+        assertEquals("Isoform UL12.5", sl.getMolecule());
 
-        verify(sl.locations.get(0).subcellularLocation, "Host mitochondrion", null);
-        // verify(sl.locations.get(0).topology, "Peripheral membrane protein",
+        verify(sl.getLocations().get(0).getSubcellularLocation(), "Host mitochondrion", null);
+        // verify(sl.getLocations().get(0).getTopology(), "Peripheral membrane protein",
         // LocationFlagEnum.By_similarity );
-        // verify(sl.locations.get(1).subcellular_location, "Secreted",
+        // verify(sl.getLocations().get(1).subcellular_location, "Secreted",
         // LocationFlagEnum.By_similarity );
 
     }
@@ -227,17 +243,17 @@ class CcLineSubCellCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SubcullarLocation);
-        CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SubcullarLocation);
+        SubcullarLocation sl = (SubcullarLocation) cc.getObject();
 
-        assertEquals(5, sl.locations.size());
+        assertEquals(5, sl.getLocations().size());
 
-        //	verify(sl.locations.get(0).subcellular_location, "Host mitochondrion", null );
-        // verify(sl.locations.get(0).topology, "Peripheral membrane protein",
+        //	verify(sl.getLocations().get(0).subcellular_location, "Host mitochondrion", null );
+        // verify(sl.getLocations().get(0).getTopology(), "Peripheral membrane protein",
         // LocationFlagEnum.By_similarity );
-        // verify(sl.locations.get(1).subcellular_location, "Secreted",
+        // verify(sl.getLocations().get(1).subcellular_location, "Secreted",
         // LocationFlagEnum.By_similarity );
 
     }
@@ -250,17 +266,17 @@ class CcLineSubCellCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SubcullarLocation);
-        CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
-        assertEquals("Processed beta-1,4-galactosyltransferase 1", sl.molecule);
-        assertEquals(1, sl.locations.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SubcullarLocation);
+        SubcullarLocation sl = (SubcullarLocation) cc.getObject();
+        assertEquals("Processed beta-1,4-galactosyltransferase 1", sl.getMolecule());
+        assertEquals(1, sl.getLocations().size());
 
-        //	verify(sl.locations.get(0).subcellular_location, "Host mitochondrion", null );
-        // verify(sl.locations.get(0).topology, "Peripheral membrane protein",
+        //	verify(sl.getLocations().get(0).subcellular_location, "Host mitochondrion", null );
+        // verify(sl.getLocations().get(0).getTopology(), "Peripheral membrane protein",
         // LocationFlagEnum.By_similarity );
-        // verify(sl.locations.get(1).subcellular_location, "Secreted",
+        // verify(sl.getLocations().get(1).subcellular_location, "Secreted",
         // LocationFlagEnum.By_similarity );
 
     }
@@ -273,22 +289,28 @@ class CcLineSubCellCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SubcullarLocation);
-        CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
-        assertEquals(1, sl.locations.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SubcullarLocation);
+        SubcullarLocation sl = (SubcullarLocation) cc.getObject();
+        assertEquals(1, sl.getLocations().size());
 
-        verify(sl.locations.get(0).subcellularLocation, "Mitochondrion inner membrane", null);
         verify(
-                sl.locations.get(0).topology,
+                sl.getLocations().get(0).getSubcellularLocation(),
+                "Mitochondrion inner membrane",
+                null);
+        verify(
+                sl.getLocations().get(0).getTopology(),
                 "Multi-pass membrane protein",
-                LocationFlagEnum.BY_SIMILARITY);
-        // verify(sl.locations.get(1).subcellular_location, "Secreted",
+                LocationValue.LocationFlagEnum.BY_SIMILARITY);
+        // verify(sl.getLocations().get(1).subcellular_location, "Secreted",
         // LocationFlagEnum.By_similarity );
         assertEquals(
                 "ECO:0000002|PubMed:1234213",
-                obj.evidenceInfo.evidences.get(sl.locations.get(0).topology).get(0));
+                obj.getEvidenceInfo()
+                        .getEvidences()
+                        .get(sl.getLocations().get(0).getTopology())
+                        .get(0));
     }
 
     @Test
@@ -301,24 +323,33 @@ class CcLineSubCellCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SubcullarLocation);
-        CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
-        assertEquals(1, sl.locations.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SubcullarLocation);
+        SubcullarLocation sl = (SubcullarLocation) cc.getObject();
+        assertEquals(1, sl.getLocations().size());
 
-        verify(sl.locations.get(0).subcellularLocation, "Mitochondrion intermembrane space", null);
-        // verify(sl.locations.get(1).subcellular_location, "Secreted",
+        verify(
+                sl.getLocations().get(0).getSubcellularLocation(),
+                "Mitochondrion intermembrane space",
+                null);
+        // verify(sl.getLocations().get(1).subcellular_location, "Secreted",
         // LocationFlagEnum.By_similarity );
         assertEquals(
                 "ECO:0000313|EMBL:BAG16761.1",
-                obj.evidenceInfo.evidences.get(sl.locations.get(0).subcellularLocation).get(0));
+                obj.getEvidenceInfo()
+                        .getEvidences()
+                        .get(sl.getLocations().get(0).getSubcellularLocation())
+                        .get(0));
         assertEquals(
                 "ECO:0000269|PubMed:10433554",
-                obj.evidenceInfo.evidences.get(sl.locations.get(0).subcellularLocation).get(1));
-        assertEquals("Loosely associated with the inner membrane", sl.note.get(0).value);
-        assertEquals("ECO:0000303|Ref.6", sl.note.get(0).evidences.get(0));
-        assertEquals("ECO:0000313|PDB:3OW2", sl.note.get(0).evidences.get(1));
+                obj.getEvidenceInfo()
+                        .getEvidences()
+                        .get(sl.getLocations().get(0).getSubcellularLocation())
+                        .get(1));
+        assertEquals("Loosely associated with the inner membrane", sl.getNote().get(0).getValue());
+        assertEquals("ECO:0000303|Ref.6", sl.getNote().get(0).getEvidences().get(0));
+        assertEquals("ECO:0000313|PDB:3OW2", sl.getNote().get(0).getEvidences().get(1));
     }
 
     @Test
@@ -329,20 +360,23 @@ class CcLineSubCellCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SubcullarLocation);
-        CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
-        assertEquals(1, sl.locations.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SubcullarLocation);
+        SubcullarLocation sl = (SubcullarLocation) cc.getObject();
+        assertEquals(1, sl.getLocations().size());
 
-        verify(sl.locations.get(0).subcellularLocation, "Mitochondrion inner membrane", null);
         verify(
-                sl.locations.get(0).topology,
+                sl.getLocations().get(0).getSubcellularLocation(),
+                "Mitochondrion inner membrane",
+                null);
+        verify(
+                sl.getLocations().get(0).getTopology(),
                 "Multi-pass membrane protein",
-                LocationFlagEnum.BY_SIMILARITY);
+                LocationValue.LocationFlagEnum.BY_SIMILARITY);
         assertEquals(
                 "ECO:0000002|PubMed:1234213",
-                obj.evidenceInfo.evidences.get(sl.locations.get(0)).get(0));
+                obj.getEvidenceInfo().getEvidences().get(sl.getLocations().get(0)).get(0));
     }
 
     @Test
@@ -383,7 +417,7 @@ class CcLineSubCellCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(7, obj.ccs.size());
+        assertEquals(7, obj.getCcs().size());
     }
 
     @Test
@@ -398,23 +432,32 @@ class CcLineSubCellCommentParserTest {
         CcLineFormater formater = new CcLineFormater();
         String lines = formater.format(ccLineString);
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertTrue(cc.object instanceof CcLineObject.SubcullarLocation);
-        CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
-        assertEquals(1, sl.locations.size());
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SubcullarLocation);
+        SubcullarLocation sl = (SubcullarLocation) cc.getObject();
+        assertEquals(1, sl.getLocations().size());
 
-        verify(sl.locations.get(0).subcellularLocation, "Mitochondrion intermembrane space", null);
-        // verify(sl.locations.get(1).subcellular_location, "Secreted",
+        verify(
+                sl.getLocations().get(0).getSubcellularLocation(),
+                "Mitochondrion intermembrane space",
+                null);
+        // verify(sl.getLocations().get(1).subcellular_location, "Secreted",
         // LocationFlagEnum.By_similarity );
         assertEquals(
                 "ECO:0000313|EMBL:BAG16761.1",
-                obj.evidenceInfo.evidences.get(sl.locations.get(0).subcellularLocation).get(0));
+                obj.getEvidenceInfo()
+                        .getEvidences()
+                        .get(sl.getLocations().get(0).getSubcellularLocation())
+                        .get(0));
         assertEquals(
                 "ECO:0000269|PubMed:10433554",
-                obj.evidenceInfo.evidences.get(sl.locations.get(0).subcellularLocation).get(1));
-        assertEquals("Loosely associated with the inner membrane", sl.note.get(0).value);
-        assertEquals("ECO:0000303|Ref.6", sl.note.get(0).evidences.get(0));
-        assertEquals("ECO:0000313|PDB:3OW2", sl.note.get(0).evidences.get(1));
+                obj.getEvidenceInfo()
+                        .getEvidences()
+                        .get(sl.getLocations().get(0).getSubcellularLocation())
+                        .get(1));
+        assertEquals("Loosely associated with the inner membrane", sl.getNote().get(0).getValue());
+        assertEquals("ECO:0000303|Ref.6", sl.getNote().get(0).getEvidences().get(0));
+        assertEquals("ECO:0000313|PDB:3OW2", sl.getNote().get(0).getEvidences().get(1));
     }
 }

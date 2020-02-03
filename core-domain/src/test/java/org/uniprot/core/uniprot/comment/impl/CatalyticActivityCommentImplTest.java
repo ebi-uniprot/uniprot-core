@@ -50,7 +50,7 @@ class CatalyticActivityCommentImplTest {
         CatalyticActivityComment impl =
                 new CatalyticActivityCommentImpl(
                         "Isoform 3", createReaction(), createPhyReactions());
-        CatalyticActivityComment obj = new CatalyticActivityCommentBuilder().from(impl).build();
+        CatalyticActivityComment obj = CatalyticActivityCommentBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

@@ -165,7 +165,7 @@ class KineticParametersImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         KineticParameters impl =
                 new KineticParametersImpl(createVelocities(), createConstants(), createNote());
-        KineticParameters obj = new KineticParametersBuilder().from(impl).build();
+        KineticParameters obj = KineticParametersBuilder.from(impl).build();
 
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());

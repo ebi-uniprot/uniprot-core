@@ -51,7 +51,7 @@ class RcLineConverterTest {
         List<String> evIds = new ArrayList<String>();
         evIds.add("ECO:0000313|Proteomes:UP000007751");
         evIds.add("ECO:0000313|Proteomes:UP000007752");
-        rc1.evidenceInfo.evidences.put("Holstein", evIds);
+        rc1.evidenceInfo.getEvidences().put("Holstein", evIds);
         rcline.rcs.add(rc1);
 
         RcLineObject.RC rc2 = new RcLineObject.RC();
@@ -61,7 +61,7 @@ class RcLineConverterTest {
         evIds = new ArrayList<String>();
         evIds.add("ECO:0000313|Proteomes:UP000007752");
         evIds.add("ECO:0000313|Proteomes:UP000007753");
-        rc2.evidenceInfo.evidences.put("Mammary gland", evIds);
+        rc2.evidenceInfo.getEvidences().put("Mammary gland", evIds);
         rcline.rcs.add(rc2);
         RcLineConverter converter = new RcLineConverter();
         List<ReferenceComment> sss = converter.convert(rcline);

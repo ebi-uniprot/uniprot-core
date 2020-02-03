@@ -37,7 +37,7 @@ class TaxonomyStrainBuilderTest {
     void testFromTaxonomyStrain() {
         TaxonomyStrain taxonomyStrain = getCompleteTaxonomyStrain();
 
-        TaxonomyStrainBuilder builder = new TaxonomyStrainBuilder().from(taxonomyStrain);
+        TaxonomyStrainBuilder builder = TaxonomyStrainBuilder.from(taxonomyStrain);
 
         TaxonomyStrain other = builder.build();
         assertEquals(taxonomyStrain.toString(), other.toString());

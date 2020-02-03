@@ -8,6 +8,8 @@ import org.uniprot.core.cv.chebi.Chebi;
  * @author Edd
  */
 public class ChebiImpl implements Chebi {
+
+    private static final long serialVersionUID = 7578992410951294303L;
     private final String id;
     private final String inchiKey;
     private final String name;

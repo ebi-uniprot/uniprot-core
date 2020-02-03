@@ -19,7 +19,7 @@ class ProteinSubNameImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         ProteinSubName impl =
                 new ProteinSubNameImpl(new NameImpl("abc", null), Collections.emptyList());
-        ProteinSubName obj = new ProteinSubNameBuilder().from(impl).build();
+        ProteinSubName obj = ProteinSubNameBuilder.from(impl).build();
 
         assertTrue(impl.isValid());
         assertTrue(impl.equals(obj) && obj.equals(impl));

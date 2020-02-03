@@ -13,8 +13,7 @@ import org.uniprot.core.uniprot.comment.SequenceCautionType;
 import org.uniprot.core.uniprot.comment.impl.SequenceCautionCommentImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
-public final class SequenceCautionCommentBuilder
-        implements CommentBuilder<SequenceCautionCommentBuilder, SequenceCautionComment> {
+public final class SequenceCautionCommentBuilder implements CommentBuilder<SequenceCautionComment> {
     String molecule;
     private SequenceCautionType sequenceCautionType;
     private String sequence;
@@ -26,10 +25,10 @@ public final class SequenceCautionCommentBuilder
                 molecule, sequenceCautionType, sequence, note, evidences);
     }
 
-    @Override
-    public @Nonnull SequenceCautionCommentBuilder from(@Nonnull SequenceCautionComment instance) {
-        evidences.clear();
-        return this.sequenceCautionType(instance.getSequenceCautionType())
+    public static @Nonnull SequenceCautionCommentBuilder from(
+            @Nonnull SequenceCautionComment instance) {
+        return new SequenceCautionCommentBuilder()
+                .sequenceCautionType(instance.getSequenceCautionType())
                 .sequence(instance.getSequence())
                 .evidences(instance.getEvidences())
                 .note(instance.getNote())

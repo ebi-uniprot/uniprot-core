@@ -1,7 +1,6 @@
 package org.uniprot.core.uniprot.description.builder;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.description.Flag;
@@ -13,7 +12,7 @@ import org.uniprot.core.uniprot.description.impl.FlagImpl;
  *
  * @author Edd
  */
-public class FlagBuilder implements Builder<FlagBuilder, Flag> {
+public class FlagBuilder implements Builder<Flag> {
     private FlagType flagType;
 
     @Override
@@ -21,10 +20,8 @@ public class FlagBuilder implements Builder<FlagBuilder, Flag> {
         return new FlagImpl(flagType);
     }
 
-    @Override
-    public @Nullable FlagBuilder from(@Nonnull Flag instance) {
-        this.flagType = instance.getType();
-        return this;
+    public static @Nonnull FlagBuilder from(@Nonnull Flag instance) {
+        return new FlagBuilder(instance.getType());
     }
 
     public FlagBuilder(FlagType flagType) {

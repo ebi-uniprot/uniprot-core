@@ -40,7 +40,7 @@ class BookImplTest {
                         "vol",
                         "pub",
                         "add");
-        Book obj = new BookBuilder().from(impl).build();
+        Book obj = BookBuilder.from(impl).build();
 
         assertTrue(impl.hasBookName());
         assertTrue(impl.hasEditors());
@@ -64,7 +64,7 @@ class BookImplTest {
         Book impl =
                 new BookImpl(
                         null, null, null, null, null, null, null, null, null, null, null, null);
-        Book obj = new BookBuilder().from(impl).build();
+        Book obj = BookBuilder.from(impl).build();
 
         assertFalse(impl.hasBookName());
         assertFalse(impl.hasEditors());

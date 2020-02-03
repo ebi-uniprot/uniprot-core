@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.*;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
 
@@ -18,19 +18,19 @@ class CcSubCellLocationConverterTest {
     @Test
     void testEvidenceInLocationLevel() {
         CcLineObject ccLineO = new CcLineObject();
-        CcLineObject.CC cc1 = new CcLineObject.CC();
-        cc1.topic = CcLineObject.CCTopicEnum.SUBCELLULAR_LOCATION;
-        CcLineObject.SubcullarLocation subcellLocation = new CcLineObject.SubcullarLocation();
-        CcLineObject.LocationObject locationObj = new CcLineObject.LocationObject();
-        CcLineObject.LocationValue location = new CcLineObject.LocationValue();
-        location.value = "Cytoplasm";
-        locationObj.subcellularLocation = location;
+        CC cc1 = new CC();
+        cc1.setTopic(CC.CCTopicEnum.SUBCELLULAR_LOCATION);
+        SubcullarLocation subcellLocation = new SubcullarLocation();
+        LocationObject locationObj = new LocationObject();
+        LocationValue location = new LocationValue();
+        location.setValue("Cytoplasm");
+        locationObj.setSubcellularLocation(location);
         List<String> evidences = new ArrayList<>();
         evidences.add("ECO:0000256|HAMAP-Rule:MF_01146");
-        ccLineO.evidenceInfo.evidences.put(locationObj, evidences);
-        subcellLocation.locations.add(locationObj);
-        cc1.object = subcellLocation;
-        ccLineO.ccs.add(cc1);
+        ccLineO.getEvidenceInfo().getEvidences().put(locationObj, evidences);
+        subcellLocation.getLocations().add(locationObj);
+        cc1.setObject(subcellLocation);
+        ccLineO.getCcs().add(cc1);
         List<Comment> comments = converter.convert(ccLineO);
         assertEquals(1, comments.size());
         Comment comment = comments.get(0);
@@ -43,19 +43,21 @@ class CcSubCellLocationConverterTest {
     @Test
     void tesWithEvidence() {
         CcLineObject ccLineO = new CcLineObject();
-        CcLineObject.CC cc1 = new CcLineObject.CC();
-        cc1.topic = CcLineObject.CCTopicEnum.SUBCELLULAR_LOCATION;
-        CcLineObject.SubcullarLocation subcellLocation = new CcLineObject.SubcullarLocation();
-        CcLineObject.LocationObject locationObj = new CcLineObject.LocationObject();
-        CcLineObject.LocationValue location = new CcLineObject.LocationValue();
-        location.value = "Cytoplasm";
-        locationObj.subcellularLocation = location;
+        CC cc1 = new CC();
+        cc1.setTopic(CC.CCTopicEnum.SUBCELLULAR_LOCATION);
+        SubcullarLocation subcellLocation = new SubcullarLocation();
+        LocationObject locationObj = new LocationObject();
+        LocationValue location = new LocationValue();
+        location.setValue("Cytoplasm");
+        locationObj.setSubcellularLocation(location);
         List<String> evidences = new ArrayList<>();
         evidences.add("ECO:0000256|HAMAP-Rule:MF_01146");
-        ccLineO.evidenceInfo.evidences.put(locationObj.subcellularLocation, evidences);
-        subcellLocation.locations.add(locationObj);
-        cc1.object = subcellLocation;
-        ccLineO.ccs.add(cc1);
+        ccLineO.getEvidenceInfo()
+                .getEvidences()
+                .put(locationObj.getSubcellularLocation(), evidences);
+        subcellLocation.getLocations().add(locationObj);
+        cc1.setObject(subcellLocation);
+        ccLineO.getCcs().add(cc1);
         List<Comment> comments = converter.convert(ccLineO);
         assertEquals(1, comments.size());
         Comment comment = comments.get(0);

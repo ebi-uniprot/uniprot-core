@@ -14,7 +14,7 @@ import org.uniprot.core.uniprot.description.Name;
 import org.uniprot.core.uniprot.description.ProteinSubName;
 import org.uniprot.core.uniprot.description.impl.ProteinSubNameImpl;
 
-public class ProteinSubNameBuilder implements Builder<ProteinSubNameBuilder, ProteinSubName> {
+public class ProteinSubNameBuilder implements Builder<ProteinSubName> {
 
     private Name fullName;
     private List<EC> ecNumbers = new ArrayList<>();
@@ -39,10 +39,9 @@ public class ProteinSubNameBuilder implements Builder<ProteinSubNameBuilder, Pro
         return new ProteinSubNameImpl(fullName, ecNumbers);
     }
 
-    @Override
-    public @Nonnull ProteinSubNameBuilder from(@Nonnull ProteinSubName instance) {
-        this.fullName(instance.getFullName());
-        this.ecNumbers(instance.getEcNumbers());
-        return this;
+    public static @Nonnull ProteinSubNameBuilder from(@Nonnull ProteinSubName instance) {
+        return new ProteinSubNameBuilder()
+                .fullName(instance.getFullName())
+                .ecNumbers(instance.getEcNumbers());
     }
 }

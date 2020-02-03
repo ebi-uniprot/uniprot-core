@@ -21,7 +21,7 @@ class ComponentImplTest {
         Component impl =
                 new ComponentImpl(
                         "name", "des", 20, ComponentType.PRIMARY, proteomeXReferenceTypes());
-        Component obj = new ComponentBuilder().from(impl).build();
+        Component obj = ComponentBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

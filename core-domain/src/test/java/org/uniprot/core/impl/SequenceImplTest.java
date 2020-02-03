@@ -58,7 +58,7 @@ class SequenceImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         Sequence impl = new SequenceImpl("seq");
-        Sequence obj = new SequenceBuilder(null).from(impl).build();
+        Sequence obj = SequenceBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }
@@ -66,7 +66,7 @@ class SequenceImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalNullObject() {
         Sequence impl = new SequenceImpl(null);
-        Sequence obj = new SequenceBuilder(null).from(impl).build();
+        Sequence obj = SequenceBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

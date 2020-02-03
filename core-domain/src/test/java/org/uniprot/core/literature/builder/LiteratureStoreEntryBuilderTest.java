@@ -49,7 +49,7 @@ class LiteratureStoreEntryBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         LiteratureStoreEntry obj = new LiteratureStoreEntryBuilder().build();
-        LiteratureStoreEntryBuilder builder = new LiteratureStoreEntryBuilder().from(obj);
+        LiteratureStoreEntryBuilder builder = LiteratureStoreEntryBuilder.from(obj);
         assertNotNull(builder);
     }
 

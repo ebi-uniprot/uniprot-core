@@ -9,7 +9,7 @@ class SubcellularLocationValueBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         SubcellularLocationValue obj = new SubcellularLocationValueBuilder().build();
-        SubcellularLocationValueBuilder builder = new SubcellularLocationValueBuilder().from(obj);
+        SubcellularLocationValueBuilder builder = SubcellularLocationValueBuilder.from(obj);
         assertNotNull(builder);
     }
 

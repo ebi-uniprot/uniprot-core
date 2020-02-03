@@ -52,7 +52,7 @@ class DiseaseTest {
         String kwAC = "KW-1234";
         Keyword keyword = new KeywordImpl(kId, kwAC);
 
-        DiseaseBuilder builder = DiseaseBuilder.newInstance();
+        DiseaseBuilder builder = new DiseaseBuilder();
         builder.id(id).accession(accession).acronym(acronym).definition(def);
         builder.alternativeNames(altNames).crossReferences(cr);
         builder.keywords(keyword)
@@ -78,7 +78,7 @@ class DiseaseTest {
         String databaseType = "SAMPLE_TYPE";
         CrossReference cr = new CrossReference(databaseType, xrefId, props);
 
-        DiseaseBuilder builder = DiseaseBuilder.newInstance();
+        DiseaseBuilder builder = new DiseaseBuilder();
         builder.id(id).accession(accession).acronym(acronym).definition(def);
         builder.crossReferences(cr);
 
@@ -91,7 +91,7 @@ class DiseaseTest {
     @Test
     void testDiseaseWithJustId() {
         String id = "Sample Disease";
-        DiseaseBuilder builder = DiseaseBuilder.newInstance();
+        DiseaseBuilder builder = new DiseaseBuilder();
         builder.id(id);
         Disease disease = builder.build();
         ValidateJson.verifyJsonRoundTripParser(

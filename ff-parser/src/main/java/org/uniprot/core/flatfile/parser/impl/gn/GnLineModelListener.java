@@ -100,7 +100,7 @@ public class GnLineModelListener extends GnLineParserBaseListener
             String text1 = terminalNode.getText();
             strings.add(text1);
         }
-        evidenceInfo.evidences.put(text, strings);
+        evidenceInfo.getEvidences().put(text, strings);
     }
 
     public GnLineObject getObject() {

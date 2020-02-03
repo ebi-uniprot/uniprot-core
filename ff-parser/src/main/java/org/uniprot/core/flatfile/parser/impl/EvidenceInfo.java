@@ -10,8 +10,12 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 public class EvidenceInfo {
     // put the evidence for a certain object.
     // object is the value, List<String> is the list of evidence it has.
-    public Map<Object, List<String>> evidences = new HashMap<Object, List<String>>();
+    private Map<Object, List<String>> evidences = new HashMap<>();
     public static Pattern pattern = Pattern.compile("(-|:)\n[A-Z][A-Z] +");
+
+    public Map<Object, List<String>> getEvidences() {
+        return evidences;
+    }
 
     public static void processEvidence(
             EvidenceInfo ev, Object key, List<TerminalNode> terminalNodes) {

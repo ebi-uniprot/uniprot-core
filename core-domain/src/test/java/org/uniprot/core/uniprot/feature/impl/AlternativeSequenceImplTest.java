@@ -39,7 +39,7 @@ class AlternativeSequenceImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         AlternativeSequenceImpl impl =
                 new AlternativeSequenceImpl("seq", Collections.singletonList("alter"));
-        AlternativeSequence obj = new AlternativeSequenceBuilder().from(impl).build();
+        AlternativeSequence obj = AlternativeSequenceBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

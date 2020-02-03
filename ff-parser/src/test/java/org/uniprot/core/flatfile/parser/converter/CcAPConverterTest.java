@@ -7,9 +7,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.AlternativeNameSequenceEnum;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.EvidencedString;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.*;
 import org.uniprot.core.uniprot.comment.*;
 
 class CcAPConverterTest {
@@ -29,41 +27,41 @@ class CcAPConverterTest {
         // CC       Name=3; Synonyms=AIRE-3;
         // CC         IsoId=O43918-3; Sequence=VSP_004089, VSP_004090;
         CcLineObject ccLineO = new CcLineObject();
-        CcLineObject.CC cc1 = new CcLineObject.CC();
-        cc1.topic = CcLineObject.CCTopicEnum.ALTERNATIVE_PRODUCTS;
-        CcLineObject.AlternativeProducts wr = new CcLineObject.AlternativeProducts();
+        CC cc1 = new CC();
+        cc1.setTopic(CC.CCTopicEnum.ALTERNATIVE_PRODUCTS);
+        AlternativeProducts wr = new AlternativeProducts();
         String commentStr =
                 "Additional isoforms seem to exist. "
                         + "Experimental confirmation may be lacking for some isoforms";
-        wr.comment.add(new EvidencedString(commentStr, new ArrayList<String>()));
-        wr.namedIsoforms = "3";
-        wr.events.add("Alternative splicing");
-        CcLineObject.AlternativeProductName alName1 = new CcLineObject.AlternativeProductName();
-        alName1.name = new EvidencedString("1", new ArrayList<String>());
-        alName1.synNames.add(new EvidencedString("AIRE-1", new ArrayList<String>()));
-        alName1.isoId.add("O43918-1");
-        alName1.sequenceEnum = AlternativeNameSequenceEnum.DISPLAYED;
+        wr.getComment().add(new EvidencedString(commentStr, new ArrayList<String>()));
+        wr.setNamedIsoforms("3");
+        wr.getEvents().add("Alternative splicing");
+        AlternativeProductName alName1 = new AlternativeProductName();
+        alName1.setName(new EvidencedString("1", new ArrayList<>()));
+        alName1.getSynNames().add(new EvidencedString("AIRE-1", new ArrayList<String>()));
+        alName1.getIsoId().add("O43918-1");
+        alName1.setSequenceEnum(AlternativeProductName.AlternativeNameSequenceEnum.DISPLAYED);
 
-        CcLineObject.AlternativeProductName alName2 = new CcLineObject.AlternativeProductName();
-        alName2.name = new EvidencedString("2", new ArrayList<String>());
-        alName2.synNames.add(new EvidencedString("AIRE-2", new ArrayList<String>()));
-        alName2.isoId.add("O43918-2");
+        AlternativeProductName alName2 = new AlternativeProductName();
+        alName2.setName(new EvidencedString("2", new ArrayList<>()));
+        alName2.getSynNames().add(new EvidencedString("AIRE-2", new ArrayList<String>()));
+        alName2.getIsoId().add("O43918-2");
         String alNameNote = "Major isoform found in 66-78% of cDNA clones";
-        alName2.note.add(new EvidencedString(alNameNote, new ArrayList<String>()));
-        alName2.sequenceFTId.add("VSP_004089");
+        alName2.getNote().add(new EvidencedString(alNameNote, new ArrayList<String>()));
+        alName2.getSequenceFTId().add("VSP_004089");
 
-        CcLineObject.AlternativeProductName alName3 = new CcLineObject.AlternativeProductName();
-        alName3.name = new EvidencedString("3", new ArrayList<String>());
-        alName3.synNames.add(new EvidencedString("AIRE-3", new ArrayList<String>()));
-        alName3.isoId.add("O43918-3");
-        alName3.sequenceFTId.add("VSP_004089");
-        alName3.sequenceFTId.add("VSP_004090");
+        AlternativeProductName alName3 = new AlternativeProductName();
+        alName3.setName(new EvidencedString("3", new ArrayList<String>()));
+        alName3.getSynNames().add(new EvidencedString("AIRE-3", new ArrayList<String>()));
+        alName3.getIsoId().add("O43918-3");
+        alName3.getSequenceFTId().add("VSP_004089");
+        alName3.getSequenceFTId().add("VSP_004090");
 
-        wr.names.add(alName1);
-        wr.names.add(alName2);
-        wr.names.add(alName3);
-        cc1.object = wr;
-        ccLineO.ccs.add(cc1);
+        wr.getNames().add(alName1);
+        wr.getNames().add(alName2);
+        wr.getNames().add(alName3);
+        cc1.setObject(wr);
+        ccLineO.getCcs().add(cc1);
 
         List<Comment> comments = converter.convert(ccLineO);
         assertEquals(1, comments.size());

@@ -10,7 +10,7 @@ import org.uniprot.core.uniref.impl.OverlapRegionImpl;
  * @author jluo
  * @date: 12 Aug 2019
  */
-public class OverlapRegionBuilder implements Builder<OverlapRegionBuilder, OverlapRegion> {
+public class OverlapRegionBuilder implements Builder<OverlapRegion> {
     private int start;
     private int end;
 
@@ -19,9 +19,8 @@ public class OverlapRegionBuilder implements Builder<OverlapRegionBuilder, Overl
         return new OverlapRegionImpl(start, end);
     }
 
-    @Override
-    public @Nonnull OverlapRegionBuilder from(@Nonnull OverlapRegion instance) {
-        return start(instance.getStart()).end(instance.getEnd());
+    public static @Nonnull OverlapRegionBuilder from(@Nonnull OverlapRegion instance) {
+        return new OverlapRegionBuilder().start(instance.getStart()).end(instance.getEnd());
     }
 
     public @Nonnull OverlapRegionBuilder start(int start) {

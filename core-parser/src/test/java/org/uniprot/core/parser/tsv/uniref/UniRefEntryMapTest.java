@@ -77,8 +77,7 @@ class UniRefEntryMapTest {
     @Test
     void testGetMembers() {
         UniRefEntry entry = createEntry();
-        UniRefEntry entry2 =
-                new UniRefEntryBuilder().from(entry).addMember(createMember2()).build();
+        UniRefEntry entry2 = UniRefEntryBuilder.from(entry).addMember(createMember2()).build();
 
         String members = UniRefEntryMap.getMembers(entry2);
         assertEquals("P12345_HUMAN; P12347_HUMAN; UPI0000E5B23D", members);

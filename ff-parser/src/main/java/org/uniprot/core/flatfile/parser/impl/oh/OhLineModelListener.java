@@ -22,10 +22,10 @@ public class OhLineModelListener extends OhLineParserBaseListener
     @Override
     public void exitOh_line(@NotNull OhLineParser.Oh_lineContext ctx) {
         OhLineObject.OhValue ohValue = new OhLineObject.OhValue();
-        ohValue.hostname = ctx.hostname().getText();
+        ohValue.setHostname(ctx.hostname().getText());
         String text = ctx.tax().getText();
-        ohValue.tax_id = Integer.parseInt(text);
-        object.hosts.add(ohValue);
+        ohValue.setTax_id(Integer.parseInt(text));
+        object.getHosts().add(ohValue);
     }
 
     public OhLineObject getObject() {

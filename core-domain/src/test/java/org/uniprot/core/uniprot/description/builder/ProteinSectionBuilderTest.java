@@ -143,7 +143,7 @@ class ProteinSectionBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         ProteinSection obj = new ProteinSectionBuilder().build();
-        ProteinSectionBuilder builder = new ProteinSectionBuilder().from(obj);
+        ProteinSectionBuilder builder = ProteinSectionBuilder.from(obj);
         assertNotNull(builder);
     }
 

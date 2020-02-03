@@ -19,7 +19,7 @@ import org.uniprot.core.uniprot.comment.impl.APIsoformImpl;
  *
  * @author Edd
  */
-public class APIsoformBuilder implements Builder<APIsoformBuilder, APIsoform> {
+public class APIsoformBuilder implements Builder<APIsoform> {
     private IsoformName name;
     private List<IsoformName> synonyms = new ArrayList<>();
     private List<IsoformId> isoformIds = new ArrayList<>();
@@ -32,12 +32,9 @@ public class APIsoformBuilder implements Builder<APIsoformBuilder, APIsoform> {
                 name, synonyms, note, isoformIds, sequenceIds, isoformSequenceStatus);
     }
 
-    @Override
-    public @Nonnull APIsoformBuilder from(@Nonnull APIsoform instance) {
-        synonyms.clear();
-        isoformIds.clear();
-        sequenceIds.clear();
-        return this.sequenceIds(instance.getSequenceIds())
+    public static @Nonnull APIsoformBuilder from(@Nonnull APIsoform instance) {
+        return new APIsoformBuilder()
+                .sequenceIds(instance.getSequenceIds())
                 .ids(
                         instance.getIsoformIds().stream()
                                 .map(Value::getValue)

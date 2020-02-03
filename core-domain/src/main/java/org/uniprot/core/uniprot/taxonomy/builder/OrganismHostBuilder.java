@@ -18,10 +18,11 @@ public class OrganismHostBuilder
         return new OrganismHostImpl(taxonId, scientificName, commonName, synonyms);
     }
 
-    public @Nonnull OrganismHostBuilder from(@Nonnull OrganismHost instance) {
-        super.from(instance);
-        this.taxonId(instance.getTaxonId());
-        return this;
+    public static @Nonnull OrganismHostBuilder from(@Nonnull OrganismHost instance) {
+        OrganismHostBuilder builder = new OrganismHostBuilder();
+        AbstractOrganismNameBuilder.init(builder, instance);
+        builder.taxonId(instance.getTaxonId());
+        return builder;
     }
 
     @Override

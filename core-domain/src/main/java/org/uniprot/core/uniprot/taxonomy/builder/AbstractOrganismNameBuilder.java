@@ -13,7 +13,7 @@ import org.uniprot.core.uniprot.taxonomy.OrganismName;
 
 public abstract class AbstractOrganismNameBuilder<
                 B extends AbstractOrganismNameBuilder<B, T>, T extends OrganismName>
-        implements Builder<B, T> {
+        implements Builder<T> {
     protected String scientificName = "";
     protected String commonName = "";
     protected List<String> synonyms = new ArrayList<>();
@@ -40,12 +40,10 @@ public abstract class AbstractOrganismNameBuilder<
         return getThis();
     }
 
-    @Override
-    public @Nonnull B from(@Nonnull T organismName) {
-        this.synonyms.clear();
-        this.scientificName = organismName.getScientificName();
-        this.commonName = organismName.getCommonName();
-        this.synonyms = modifiableList(organismName.getSynonyms());
-        return getThis();
+    protected static <B extends AbstractOrganismNameBuilder<B, T>, T extends OrganismName>
+            void init(@Nonnull B builder, @Nonnull T organismName) {
+        builder.synonyms(organismName.getSynonyms())
+                .scientificName(organismName.getScientificName())
+                .commonName(organismName.getCommonName());
     }
 }

@@ -11,13 +11,9 @@ import org.uniprot.core.proteome.Protein;
 import org.uniprot.core.proteome.impl.CanonicalProteinImpl;
 import org.uniprot.core.util.Utils;
 
-public class CanonicalProteinBuilder implements Builder<CanonicalProteinBuilder, CanonicalProtein> {
+public class CanonicalProteinBuilder implements Builder<CanonicalProtein> {
     private Protein canonicalProtein;
     private List<Protein> relatedProteins = new ArrayList<>();
-
-    public static @Nonnull CanonicalProteinBuilder newInstance() {
-        return new CanonicalProteinBuilder();
-    }
 
     @Override
     public @Nonnull CanonicalProtein build() {
@@ -39,11 +35,9 @@ public class CanonicalProteinBuilder implements Builder<CanonicalProteinBuilder,
         return this;
     }
 
-    @Override
-    public @Nonnull CanonicalProteinBuilder from(@Nonnull CanonicalProtein instance) {
-        this.canonicalProtein = instance.getCanonicalProtein();
-        relatedProteins.clear();
-        relatedProteins.addAll(instance.getRelatedProteins());
-        return this;
+    public static @Nonnull CanonicalProteinBuilder from(@Nonnull CanonicalProtein instance) {
+        return new CanonicalProteinBuilder()
+                .canonicalProtein(instance.getCanonicalProtein())
+                .relatedProteins(instance.getRelatedProteins());
     }
 }

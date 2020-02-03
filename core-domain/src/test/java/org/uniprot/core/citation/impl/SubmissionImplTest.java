@@ -36,7 +36,7 @@ class SubmissionImplTest {
                         "title",
                         new PublicationDateImpl("date"),
                         SubmissionDatabase.EMBL_GENBANK_DDBJ);
-        Submission obj = new SubmissionBuilder().from(impl).build();
+        Submission obj = SubmissionBuilder.from(impl).build();
 
         assertTrue(impl.hasSubmissionDatabase());
 

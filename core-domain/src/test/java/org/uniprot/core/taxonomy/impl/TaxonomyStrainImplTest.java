@@ -18,7 +18,7 @@ class TaxonomyStrainImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         TaxonomyStrain impl = new TaxonomyStrainImpl("name", Collections.singletonList("syno"));
-        TaxonomyStrain obj = new TaxonomyStrainBuilder().from(impl).build();
+        TaxonomyStrain obj = TaxonomyStrainBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

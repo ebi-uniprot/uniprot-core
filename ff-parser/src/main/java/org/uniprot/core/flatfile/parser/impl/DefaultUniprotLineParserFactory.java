@@ -1,6 +1,5 @@
 package org.uniprot.core.flatfile.parser.impl;
 
-import org.uniprot.core.flatfile.antlr.*;
 import org.uniprot.core.flatfile.antlr.AcLineLexer;
 import org.uniprot.core.flatfile.antlr.AcLineParser;
 import org.uniprot.core.flatfile.antlr.CcLineLexer;
@@ -59,7 +58,7 @@ import org.uniprot.core.flatfile.parser.UniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.ac.AcLineModelListener;
 import org.uniprot.core.flatfile.parser.impl.ac.AcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineModelListener;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineModelListener;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject;
 import org.uniprot.core.flatfile.parser.impl.dr.DrLineModelListener;

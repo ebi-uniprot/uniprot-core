@@ -58,7 +58,7 @@ class InternalSectionBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         InternalSection obj = new InternalSectionBuilder().build();
-        InternalSectionBuilder builder = new InternalSectionBuilder().from(obj);
+        InternalSectionBuilder builder = InternalSectionBuilder.from(obj);
         assertNotNull(builder);
     }
 

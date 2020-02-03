@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class UniProtXDbTypeDetail implements Serializable {
+
     private static final long serialVersionUID = 8751881513996820892L;
+
     private static final DBXRefTypeAttribute DEFAULT_ATTRIBUTE =
             new DBXRefTypeAttribute("Description", "description", null);
     private String name;
@@ -14,8 +16,9 @@ public class UniProtXDbTypeDetail implements Serializable {
     private DatabaseCategory category;
     private String uriLink;
     private List<DBXRefTypeAttribute> attributes;
-    private String linkTp ="Explicit";
-    private String linkedReason= null;
+
+    private boolean implicit = false;
+    private String linkedReason = null;
 
     private UniProtXDbTypeDetail() {
         this.attributes = new ArrayList<>();
@@ -45,14 +48,15 @@ public class UniProtXDbTypeDetail implements Serializable {
             DatabaseCategory category,
             String uriLink,
             List<DBXRefTypeAttribute> attributes,
-            String linkTp,
+            boolean implicit,
             String linkedReason) {
         super();
         this.name = name;
         this.displayName = displayName;
         this.category = category;
         this.uriLink = uriLink;
-        this.linkTp= linkTp;
+
+        this.implicit = implicit;
         this.linkedReason = linkedReason;
         this.attributes = new ArrayList<>();
         if ((attributes != null) && !attributes.isEmpty()) this.attributes.addAll(attributes);
@@ -79,12 +83,14 @@ public class UniProtXDbTypeDetail implements Serializable {
         return attributes;
     }
 
-    public String getLinkTp() {
-        return linkTp;
+    public boolean isImplicit() {
+        return implicit;
     }
 
-  public String getLinkedReason() {
-  return linkedReason;}
+    public String getLinkedReason() {
+        return linkedReason;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(

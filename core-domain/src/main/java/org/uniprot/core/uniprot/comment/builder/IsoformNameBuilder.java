@@ -34,4 +34,8 @@ public class IsoformNameBuilder
     protected @Nonnull IsoformNameBuilder getThis() {
         return this;
     }
+
+    public static @Nonnull IsoformNameBuilder from(@Nonnull IsoformName instance) {
+        return new IsoformNameBuilder(instance.getValue(), instance.getEvidences());
+    }
 }

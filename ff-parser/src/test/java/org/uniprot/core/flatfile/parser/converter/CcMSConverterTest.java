@@ -7,7 +7,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.MassSpectrometry;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
@@ -21,15 +23,15 @@ class CcMSConverterTest {
         // CC   -!- MASS SPECTROMETRY: Mass=13822; Method=MALDI; Range=19-140 (P15522-
         // CC       2); Source=PubMed:10531593;
         CcLineObject ccLineO = new CcLineObject();
-        CcLineObject.CC cc1 = new CcLineObject.CC();
-        cc1.topic = CcLineObject.CCTopicEnum.MASS_SPECTROMETRY;
-        CcLineObject.MassSpectrometry wr = new CcLineObject.MassSpectrometry();
-        wr.mass = 13822;
-        wr.method = "MALDI";
-        wr.molecule = "P15522-2";
-        wr.sources.add("ECO:0000269|PubMed:15208022");
-        cc1.object = wr;
-        ccLineO.ccs.add(cc1);
+        CC cc1 = new CC();
+        cc1.setTopic(CC.CCTopicEnum.MASS_SPECTROMETRY);
+        MassSpectrometry wr = new MassSpectrometry();
+        wr.setMass(13822);
+        wr.setMethod("MALDI");
+        wr.setMolecule("P15522-2");
+        wr.getSources().add("ECO:0000269|PubMed:15208022");
+        cc1.setObject(wr);
+        ccLineO.getCcs().add(cc1);
 
         List<Comment> comments = converter.convert(ccLineO);
         assertEquals(1, comments.size());

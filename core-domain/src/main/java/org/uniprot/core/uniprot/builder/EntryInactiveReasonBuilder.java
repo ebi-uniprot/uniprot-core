@@ -14,8 +14,7 @@ import org.uniprot.core.uniprot.impl.EntryInactiveReasonImpl;
 import org.uniprot.core.util.Utils;
 
 /** @author lgonzales */
-public class EntryInactiveReasonBuilder
-        implements Builder<EntryInactiveReasonBuilder, EntryInactiveReason> {
+public class EntryInactiveReasonBuilder implements Builder<EntryInactiveReason> {
     private InactiveReasonType inactiveReasonType;
     private List<String> mergeDemergeTo = new ArrayList<>();
 
@@ -39,11 +38,9 @@ public class EntryInactiveReasonBuilder
         return new EntryInactiveReasonImpl(inactiveReasonType, mergeDemergeTo);
     }
 
-    @Override
-    public @Nonnull EntryInactiveReasonBuilder from(@Nonnull EntryInactiveReason instance) {
-        this.mergeDemergeTo.clear();
-        this.type(instance.getInactiveReasonType());
-        this.mergeDemergeTo(instance.getMergeDemergeTo());
-        return this;
+    public static @Nonnull EntryInactiveReasonBuilder from(@Nonnull EntryInactiveReason instance) {
+        return new EntryInactiveReasonBuilder()
+                .type(instance.getInactiveReasonType())
+                .mergeDemergeTo(instance.getMergeDemergeTo());
     }
 }

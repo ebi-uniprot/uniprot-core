@@ -89,7 +89,8 @@ class DrLineParserTest {
         assertEquals(1, obj.drObjects.size());
         verify(obj.drObjects.get(0), "EMBL", "HF571520", "CCQ33941.1", "-", "Genomic_DNA", null);
         assertEquals(
-                "ECO:19841122|Ref.1", obj.evidenceInfo.evidences.get(obj.drObjects.get(0)).get(0));
+                "ECO:19841122|Ref.1",
+                obj.getEvidenceInfo().getEvidences().get(obj.drObjects.get(0)).get(0));
     }
 
     @Test
@@ -213,6 +214,7 @@ class DrLineParserTest {
         verify(obj.drObjects.get(2), "PROSITE", "PS00157", "RUBISCO_LARGE", "1", null, "P21235-2");
         verify(obj.drObjects.get(3), "PROSITE", "PS00158", "RUBISCO_LARGE", "1", null, "P21235-3");
         assertEquals(
-                "ECO:19841122|Ref.1", obj.evidenceInfo.evidences.get(obj.drObjects.get(3)).get(0));
+                "ECO:19841122|Ref.1",
+                obj.getEvidenceInfo().getEvidences().get(obj.drObjects.get(3)).get(0));
     }
 }

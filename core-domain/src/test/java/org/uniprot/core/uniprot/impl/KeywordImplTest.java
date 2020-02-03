@@ -58,7 +58,7 @@ class KeywordImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         Keyword impl =
                 new KeywordImpl("abc", "edf", KeywordCategory.UNKNOWN, Collections.emptyList());
-        Keyword obj = new KeywordBuilder().from(impl).build();
+        Keyword obj = KeywordBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

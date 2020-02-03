@@ -11,7 +11,7 @@ class FlagBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         Flag obj = new FlagBuilder(FlagType.FRAGMENT).build();
-        FlagBuilder builder = new FlagBuilder(FlagType.FRAGMENT_PRECURSOR).from(obj);
+        FlagBuilder builder = FlagBuilder.from(obj);
         assertNotNull(builder);
     }
 

@@ -22,7 +22,7 @@ import org.uniprot.core.uniref.UniRefMemberIdType;
  */
 public abstract class AbstractUniRefMemberBuilder<
                 B extends AbstractUniRefMemberBuilder<B, T>, T extends UniRefMember>
-        implements Builder<B, T> {
+        implements Builder<T> {
     protected UniRefMemberIdType memberIdType;
     protected String memberId;
     protected String organismName;
@@ -111,21 +111,21 @@ public abstract class AbstractUniRefMemberBuilder<
         return getThis();
     }
 
-    <S extends UniRefMember> B fromMember(@Nonnull S instance) {
-        this.memberIdType(instance.getMemberIdType());
-        this.memberId(instance.getMemberId());
-        this.organismName(instance.getOrganismName());
-        this.organismTaxId(instance.getOrganismTaxId());
-        this.sequenceLength(instance.getSequenceLength());
-        this.proteinName(instance.getProteinName());
-        this.accessions(instance.getUniProtAccessions());
-        this.uniref100Id(instance.getUniRef100Id());
-        this.uniref90Id(instance.getUniRef90Id());
-        this.uniref50Id(instance.getUniRef50Id());
-        this.uniparcId(instance.getUniParcId());
-        this.overlapRegion(instance.getOverlapRegion());
-        this.isSeed(instance.isSeed());
-        return getThis();
+    protected static <B extends AbstractUniRefMemberBuilder, T extends UniRefMember> void init(
+            @Nonnull B builder, @Nonnull T instance) {
+        builder.memberIdType(instance.getMemberIdType());
+        builder.memberId(instance.getMemberId());
+        builder.organismName(instance.getOrganismName());
+        builder.organismTaxId(instance.getOrganismTaxId());
+        builder.sequenceLength(instance.getSequenceLength());
+        builder.proteinName(instance.getProteinName());
+        builder.accessions(instance.getUniProtAccessions());
+        builder.uniref100Id(instance.getUniRef100Id());
+        builder.uniref90Id(instance.getUniRef90Id());
+        builder.uniref50Id(instance.getUniRef50Id());
+        builder.uniparcId(instance.getUniParcId());
+        builder.overlapRegion(instance.getOverlapRegion());
+        builder.isSeed(instance.isSeed());
     }
 
     protected abstract @Nonnull B getThis();

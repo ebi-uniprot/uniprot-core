@@ -10,7 +10,7 @@ class InternalLineBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         InternalLine obj = new InternalLineBuilder(InternalLineType.PE, "abc").build();
-        InternalLineBuilder builder = new InternalLineBuilder(InternalLineType.PE, "abc").from(obj);
+        InternalLineBuilder builder = InternalLineBuilder.from(obj);
         assertNotNull(builder);
     }
 

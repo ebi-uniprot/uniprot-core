@@ -10,7 +10,7 @@ import org.uniprot.core.uniparc.impl.InterProGroupImpl;
  * @author jluo
  * @date: 23 May 2019
  */
-public class InterProGroupBuilder implements Builder<InterProGroupBuilder, InterProGroup> {
+public class InterProGroupBuilder implements Builder<InterProGroup> {
     private String id;
     private String name;
 
@@ -29,10 +29,7 @@ public class InterProGroupBuilder implements Builder<InterProGroupBuilder, Inter
         return this;
     }
 
-    @Override
-    public @Nonnull InterProGroupBuilder from(@Nonnull InterProGroup instance) {
-        this.id = instance.getId();
-        this.name = instance.getName();
-        return this;
+    public static @Nonnull InterProGroupBuilder from(@Nonnull InterProGroup instance) {
+        return new InterProGroupBuilder().id(instance.getId()).name(instance.getName());
     }
 }

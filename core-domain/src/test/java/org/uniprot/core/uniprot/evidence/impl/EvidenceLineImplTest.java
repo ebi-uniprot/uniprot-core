@@ -10,7 +10,7 @@ import org.uniprot.core.uniprot.evidence.EvidenceLine;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceLineBuilder;
 
 class EvidenceLineImplTest {
-    EvidenceLine impl =
+    private EvidenceLine impl =
             new EvidenceLineImpl(
                     "ECO:0000269|PubMed:22481068",
                     LocalDate.of(2015, Month.AUGUST, 2),
@@ -24,7 +24,7 @@ class EvidenceLineImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        EvidenceLine obj = new EvidenceLineBuilder().from(impl).build();
+        EvidenceLine obj = EvidenceLineBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

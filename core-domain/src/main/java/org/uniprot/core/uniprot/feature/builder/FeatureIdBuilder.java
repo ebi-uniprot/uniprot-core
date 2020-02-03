@@ -11,18 +11,17 @@ import org.uniprot.core.uniprot.feature.impl.FeatureIdImpl;
  *
  * @author Edd
  */
-public class FeatureIdBuilder extends AbstractValueBuilder<FeatureIdBuilder, FeatureId> {
+public class FeatureIdBuilder extends AbstractValueBuilder<FeatureId> {
     @Override
     public @Nonnull FeatureId build() {
         return new FeatureIdImpl(value);
     }
 
-    @Override
-    protected @Nonnull FeatureIdBuilder getThis() {
-        return this;
-    }
-
     public FeatureIdBuilder(String value) {
         super(value);
+    }
+
+    public static @Nonnull FeatureIdBuilder from(@Nonnull FeatureId instance) {
+        return new FeatureIdBuilder(instance.getValue());
     }
 }

@@ -26,7 +26,7 @@ class SubcellularLocationImplTest {
         SubcellularLocationImpl.SubcellularLocationValueImpl val =
                 new SubcellularLocationImpl.SubcellularLocationValueImpl();
         SubcellularLocation impl = new SubcellularLocationImpl(val, val, val);
-        SubcellularLocation obj = new SubcellularLocationBuilder().from(impl).build();
+        SubcellularLocation obj = SubcellularLocationBuilder.from(impl).build();
 
         assertTrue(impl.hasLocation());
         assertTrue(impl.hasOrientation());

@@ -7,14 +7,14 @@ import org.uniprot.core.citation.impl.UnpublishedImpl;
 
 public final class UnpublishedBuilder
         extends AbstractCitationBuilder<UnpublishedBuilder, Unpublished> {
-    public Unpublished build() {
+    public @Nonnull Unpublished build() {
         return new UnpublishedImpl(authoringGroups, authors, xrefs, title, publicationDate);
     }
 
-    @Override
-    public @Nonnull UnpublishedBuilder from(Unpublished instance) {
-        init(instance);
-        return this;
+    public static @Nonnull UnpublishedBuilder from(Unpublished instance) {
+        UnpublishedBuilder builder = new UnpublishedBuilder();
+        init(builder, instance);
+        return builder;
     }
 
     @Override

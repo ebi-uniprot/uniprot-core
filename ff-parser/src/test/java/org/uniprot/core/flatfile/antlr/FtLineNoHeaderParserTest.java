@@ -40,11 +40,11 @@ class FtLineNoHeaderParserTest {
             String end,
             String description,
             String ftid) {
-        assertEquals(type, ft.type);
-        assertEquals(start, ft.location_start);
-        assertEquals(end, ft.location_end);
-        assertEquals(description, ft.ft_text);
-        assertEquals(ftid, ft.ftId);
+        assertEquals(type, ft.getType());
+        assertEquals(start, ft.getLocation_start());
+        assertEquals(end, ft.getLocation_end());
+        assertEquals(description, ft.getFt_text());
+        assertEquals(ftid, ft.getFtId());
     }
 
     @Test
@@ -236,7 +236,7 @@ class FtLineNoHeaderParserTest {
     }
 
     private void verifyEvidences(FtLineObject obj, Object name, List<String> evidences) {
-        List<String> expected = obj.evidenceInfo.evidences.get(name);
+        List<String> expected = obj.getEvidenceInfo().getEvidences().get(name);
         assertEquals(expected, evidences);
     }
 }

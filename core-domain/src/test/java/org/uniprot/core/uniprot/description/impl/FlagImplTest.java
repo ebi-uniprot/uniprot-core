@@ -25,7 +25,7 @@ class FlagImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         Flag impl = new FlagImpl(FlagType.FRAGMENT);
-        Flag obj = new FlagBuilder(FlagType.FRAGMENT).from(impl).build();
+        Flag obj = FlagBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

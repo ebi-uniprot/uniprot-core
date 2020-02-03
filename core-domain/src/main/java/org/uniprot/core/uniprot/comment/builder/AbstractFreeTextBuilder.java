@@ -1,7 +1,5 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.uniprot.core.util.Utils.modifiableList;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,23 +14,13 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
  *
  * @author Edd
  */
-public abstract class AbstractFreeTextBuilder<
-                B extends AbstractFreeTextBuilder<B, F>, F extends FreeText>
-        implements Builder<AbstractFreeTextBuilder, F> {
+public abstract class AbstractFreeTextBuilder<F extends FreeText> implements Builder<F> {
     protected List<EvidencedValue> evidencedValues = new ArrayList<>();
 
     @Override
     public @Nonnull F build() {
         return createConcreteInstance();
     }
-
-    @Override
-    public @Nonnull B from(@Nonnull F instance) {
-        this.evidencedValues = modifiableList(instance.getTexts());
-        return getThis();
-    }
-
-    protected abstract @Nonnull B getThis();
 
     protected abstract @Nonnull F createConcreteInstance();
 }

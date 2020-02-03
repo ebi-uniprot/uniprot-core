@@ -11,8 +11,10 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.EvidencedString;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.EvidencedString;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.FreeText;
 
 class CcLineTextCommentParserTest {
     @Test
@@ -27,26 +29,26 @@ class CcLineTextCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(2, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertEquals(CcLineObject.CCTopicEnum.FUNCTION, cc.topic);
+        assertEquals(2, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CC.CCTopicEnum.FUNCTION, cc.getTopic());
 
-        assertTrue(cc.object instanceof CcLineObject.FreeText);
-        CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
-        assertEquals(1, texts.texts.size());
+        assertTrue(cc.getObject() instanceof FreeText);
+        FreeText texts = (FreeText) cc.getObject();
+        assertEquals(1, texts.getTexts().size());
         verify(
-                texts.texts.get(0),
+                texts.getTexts().get(0),
                 "This enzyme is necessary for target cell lysis in cell-mediated immune responses. "
                         + "It cleaves after Lys or Arg, or may be involved in apoptosis",
                 Collections.emptyList());
 
-        cc = obj.ccs.get(1);
-        assertEquals(CcLineObject.CCTopicEnum.CAUTION, cc.topic);
-        assertTrue(cc.object instanceof CcLineObject.FreeText);
-        texts = (CcLineObject.FreeText) cc.object;
-        assertEquals(1, texts.texts.size());
+        cc = obj.getCcs().get(1);
+        assertEquals(CC.CCTopicEnum.ACTIVITY_REGULATION.CAUTION, cc.getTopic());
+        assertTrue(cc.getObject() instanceof FreeText);
+        texts = (FreeText) cc.getObject();
+        assertEquals(1, texts.getTexts().size());
         verify(
-                texts.texts.get(0),
+                texts.getTexts().get(0),
                 "Exons 1a and 1b of the sequence reported in "
                         + "PubMed:17180578 are of human origin, however exon 2 shows strong "
                         + "similarity to the rat sequence",
@@ -54,8 +56,8 @@ class CcLineTextCommentParserTest {
     }
 
     private void verify(EvidencedString vStr, String text, List<String> evidences) {
-        assertEquals(text, vStr.value);
-        assertEquals(evidences, vStr.evidences);
+        assertEquals(text, vStr.getValue());
+        assertEquals(evidences, vStr.getEvidences());
     }
 
     @Test
@@ -65,14 +67,17 @@ class CcLineTextCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertEquals(CcLineObject.CCTopicEnum.SUBUNIT, cc.topic);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CC.CCTopicEnum.SUBUNIT, cc.getTopic());
 
-        assertTrue(cc.object instanceof CcLineObject.FreeText);
-        CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
-        assertEquals(1, texts.texts.size());
-        verify(texts.texts.get(0), "Interacts with daf-16 and sir-2.1", Collections.emptyList());
+        assertTrue(cc.getObject() instanceof FreeText);
+        FreeText texts = (FreeText) cc.getObject();
+        assertEquals(1, texts.getTexts().size());
+        verify(
+                texts.getTexts().get(0),
+                "Interacts with daf-16 and sir-2.1",
+                Collections.emptyList());
     }
 
     @Test
@@ -83,15 +88,15 @@ class CcLineTextCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertEquals(CcLineObject.CCTopicEnum.SUBUNIT, cc.topic);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CC.CCTopicEnum.SUBUNIT, cc.getTopic());
 
-        assertTrue(cc.object instanceof CcLineObject.FreeText);
-        CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
-        assertEquals(1, texts.texts.size());
+        assertTrue(cc.getObject() instanceof FreeText);
+        FreeText texts = (FreeText) cc.getObject();
+        assertEquals(1, texts.getTexts().size());
         verify(
-                texts.texts.get(0),
+                texts.getTexts().get(0),
                 "Interacts (via OIR domain) with ORC1 (via BAH domain). "
                         + "Interacts with SIR4. "
                         + "Interacts with CAC1",
@@ -106,15 +111,15 @@ class CcLineTextCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertEquals(CcLineObject.CCTopicEnum.FUNCTION, cc.topic);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CC.CCTopicEnum.FUNCTION, cc.getTopic());
 
-        assertTrue(cc.object instanceof CcLineObject.FreeText);
-        CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
-        assertEquals(1, texts.texts.size());
+        assertTrue(cc.getObject() instanceof FreeText);
+        FreeText texts = (FreeText) cc.getObject();
+        assertEquals(1, texts.getTexts().size());
         verify(
-                texts.texts.get(0),
+                texts.getTexts().get(0),
                 "May play a cri{tical role in virion formation. Essential fo}r {virus} replication in vitro",
                 Arrays.asList(new String[] {"ECO:0000313|PDB:3OW2"}));
     }
@@ -128,15 +133,15 @@ class CcLineTextCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertEquals(CcLineObject.CCTopicEnum.FUNCTION, cc.topic);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CC.CCTopicEnum.FUNCTION, cc.getTopic());
 
-        assertTrue(cc.object instanceof CcLineObject.FreeText);
-        CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
-        assertEquals(1, texts.texts.size());
+        assertTrue(cc.getObject() instanceof FreeText);
+        FreeText texts = (FreeText) cc.getObject();
+        assertEquals(1, texts.getTexts().size());
         verify(
-                texts.texts.get(0),
+                texts.getTexts().get(0),
                 "May play a cri{tical role in virion formation. Essential fo}r {virus} replication in vitro",
                 Arrays.asList(new String[] {"ECO:0000313|PDB:3OW2"}));
     }
@@ -149,15 +154,15 @@ class CcLineTextCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertEquals(CcLineObject.CCTopicEnum.PATHWAY, cc.topic);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CC.CCTopicEnum.PATHWAY, cc.getTopic());
 
-        assertTrue(cc.object instanceof CcLineObject.FreeText);
-        CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
-        assertEquals(1, texts.texts.size());
+        assertTrue(cc.getObject() instanceof FreeText);
+        FreeText texts = (FreeText) cc.getObject();
+        assertEquals(1, texts.getTexts().size());
         verify(
-                texts.texts.get(0),
+                texts.getTexts().get(0),
                 "Amino-acid biosynthesis; L-arginine biosynthesis; L-arginine from L-ornithine and carbamoyl phosphate: step 2/3",
                 Arrays.asList(new String[] {}));
     }
@@ -170,15 +175,15 @@ class CcLineTextCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertEquals(CcLineObject.CCTopicEnum.FUNCTION, cc.topic);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CC.CCTopicEnum.FUNCTION, cc.getTopic());
 
-        assertTrue(cc.object instanceof CcLineObject.FreeText);
-        CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
-        assertEquals(1, texts.texts.size());
+        assertTrue(cc.getObject() instanceof FreeText);
+        FreeText texts = (FreeText) cc.getObject();
+        assertEquals(1, texts.getTexts().size());
         verify(
-                texts.texts.get(0),
+                texts.getTexts().get(0),
                 "Transfers the 4'-phosphopantetheine moiety from coenzyme A to a Ser of acyl-carrier protein (By similarity)",
                 Arrays.asList(new String[] {}));
     }
@@ -191,15 +196,15 @@ class CcLineTextCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertEquals(CcLineObject.CCTopicEnum.FUNCTION, cc.topic);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CC.CCTopicEnum.FUNCTION, cc.getTopic());
 
-        assertTrue(cc.object instanceof CcLineObject.FreeText);
-        CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
-        assertEquals(1, texts.texts.size());
+        assertTrue(cc.getObject() instanceof FreeText);
+        FreeText texts = (FreeText) cc.getObject();
+        assertEquals(1, texts.getTexts().size());
         verify(
-                texts.texts.get(0),
+                texts.getTexts().get(0),
                 "Transfers the 4'-phosphopantetheine moiety from coenzyme A to a Ser of acyl-carrier protein",
                 Arrays.asList(new String[] {"ECO:0000006|PubMed:20858735", "ECO:0000006"}));
     }
@@ -222,7 +227,7 @@ class CcLineTextCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(5, obj.ccs.size());
+        assertEquals(5, obj.getCcs().size());
     }
 
     @Test
@@ -236,15 +241,15 @@ class CcLineTextCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertEquals(CcLineObject.CCTopicEnum.ACTIVITY_REGULATION, cc.topic);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CC.CCTopicEnum.ACTIVITY_REGULATION, cc.getTopic());
 
-        assertTrue(cc.object instanceof CcLineObject.FreeText);
-        CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
-        assertEquals(1, texts.texts.size());
+        assertTrue(cc.getObject() instanceof FreeText);
+        FreeText texts = (FreeText) cc.getObject();
+        assertEquals(1, texts.getTexts().size());
         verify(
-                texts.texts.get(0),
+                texts.getTexts().get(0),
                 "5-carboxyamino-1-(5-phospho-D-ribosyl)imidazole = 5-amino-1-(5-phospho-D-ribosyl)imidazole-4-carboxylate",
                 Arrays.asList(new String[] {"ECO:0000256|PIRNR:PIRNR001338"}));
     }
@@ -262,15 +267,15 @@ class CcLineTextCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertEquals(CcLineObject.CCTopicEnum.ACTIVITY_REGULATION, cc.topic);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CC.CCTopicEnum.ACTIVITY_REGULATION, cc.getTopic());
 
-        assertTrue(cc.object instanceof CcLineObject.FreeText);
-        CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
-        assertEquals(1, texts.texts.size());
+        assertTrue(cc.getObject() instanceof FreeText);
+        FreeText texts = (FreeText) cc.getObject();
+        assertEquals(1, texts.getTexts().size());
         verify(
-                texts.texts.get(0),
+                texts.getTexts().get(0),
                 "Hydrolysis of proteins to small peptides in "
                         + "the presence of ATP and magnesium. "
                         + "Alpha-casein is the usual test substrate. "
@@ -289,15 +294,15 @@ class CcLineTextCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertEquals(CcLineObject.CCTopicEnum.SIMILARITY, cc.topic);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CC.CCTopicEnum.SIMILARITY, cc.getTopic());
 
-        assertTrue(cc.object instanceof CcLineObject.FreeText);
-        CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
-        assertEquals(1, texts.texts.size());
+        assertTrue(cc.getObject() instanceof FreeText);
+        FreeText texts = (FreeText) cc.getObject();
+        assertEquals(1, texts.getTexts().size());
         verify(
-                texts.texts.get(0),
+                texts.getTexts().get(0),
                 "Contains 1 MIT domain",
                 Arrays.asList(new String[] {"ECO:0000255|HAMAP-Rule:MF_03021"}));
     }
@@ -312,15 +317,15 @@ class CcLineTextCommentParserTest {
         CcLineFormater formater = new CcLineFormater();
         String lines = formater.format(ccLineString);
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertEquals(CcLineObject.CCTopicEnum.FUNCTION, cc.topic);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CC.CCTopicEnum.FUNCTION, cc.getTopic());
 
-        assertTrue(cc.object instanceof CcLineObject.FreeText);
-        CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
-        assertEquals(1, texts.texts.size());
+        assertTrue(cc.getObject() instanceof FreeText);
+        FreeText texts = (FreeText) cc.getObject();
+        assertEquals(1, texts.getTexts().size());
         verify(
-                texts.texts.get(0),
+                texts.getTexts().get(0),
                 "Transfers the 4'-phosphopantetheine moiety from coenzyme A to a Ser of acyl-carrier protein",
                 Arrays.asList(new String[] {"ECO:0000006|PubMed:20858735", "ECO:0000006"}));
     }
@@ -340,15 +345,15 @@ class CcLineTextCommentParserTest {
         CcLineFormater formater = new CcLineFormater();
         String lines = formater.format(ccLineString);
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertEquals(CcLineObject.CCTopicEnum.ACTIVITY_REGULATION, cc.topic);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CC.CCTopicEnum.ACTIVITY_REGULATION, cc.getTopic());
 
-        assertTrue(cc.object instanceof CcLineObject.FreeText);
-        CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
-        assertEquals(1, texts.texts.size());
+        assertTrue(cc.getObject() instanceof FreeText);
+        FreeText texts = (FreeText) cc.getObject();
+        assertEquals(1, texts.getTexts().size());
         verify(
-                texts.texts.get(0),
+                texts.getTexts().get(0),
                 "Hydrolysis of proteins to small peptides in "
                         + "the presence of ATP and magnesium. "
                         + "Alpha-casein is the usual test substrate. "
@@ -368,15 +373,15 @@ class CcLineTextCommentParserTest {
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertEquals(CcLineObject.CCTopicEnum.SIMILARITY, cc.topic);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CC.CCTopicEnum.SIMILARITY, cc.getTopic());
 
-        assertTrue(cc.object instanceof CcLineObject.FreeText);
-        CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
-        assertEquals(1, texts.texts.size());
+        assertTrue(cc.getObject() instanceof FreeText);
+        FreeText texts = (FreeText) cc.getObject();
+        assertEquals(1, texts.getTexts().size());
         verify(
-                texts.texts.get(0),
+                texts.getTexts().get(0),
                 "Contains 1 MIT domain",
                 Arrays.asList(new String[] {"ECO:0000255|HAMAP-Rule:MF_03021"}));
     }
@@ -391,27 +396,27 @@ class CcLineTextCommentParserTest {
         CcLineFormater formater = new CcLineFormater();
         String lines = formater.format(ccLineString);
         CcLineObject obj = parser.parse(lines);
-        assertEquals(2, obj.ccs.size());
-        CcLineObject.CC cc = obj.ccs.get(0);
-        assertEquals(CcLineObject.CCTopicEnum.FUNCTION, cc.topic);
+        assertEquals(2, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CC.CCTopicEnum.FUNCTION, cc.getTopic());
 
-        assertTrue(cc.object instanceof CcLineObject.FreeText);
-        CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
-        assertEquals(1, texts.texts.size());
+        assertTrue(cc.getObject() instanceof FreeText);
+        FreeText texts = (FreeText) cc.getObject();
+        assertEquals(1, texts.getTexts().size());
         verify(
-                texts.texts.get(0),
+                texts.getTexts().get(0),
                 "This enzyme is necessary for target cell lysis in cell-mediated immune responses. "
                         + "It cleaves after Lys or Arg. "
                         + "May be involved in apoptosis",
                 Collections.emptyList());
 
-        cc = obj.ccs.get(1);
-        assertEquals(CcLineObject.CCTopicEnum.CAUTION, cc.topic);
-        assertTrue(cc.object instanceof CcLineObject.FreeText);
-        texts = (CcLineObject.FreeText) cc.object;
-        assertEquals(1, texts.texts.size());
+        cc = obj.getCcs().get(1);
+        assertEquals(CC.CCTopicEnum.CAUTION, cc.getTopic());
+        assertTrue(cc.getObject() instanceof FreeText);
+        texts = (FreeText) cc.getObject();
+        assertEquals(1, texts.getTexts().size());
         verify(
-                texts.texts.get(0),
+                texts.getTexts().get(0),
                 "Exons 1a and 1b of the sequence reported in "
                         + "PubMed:17180578 are of human origin, however exon 2 shows strong "
                         + "similarity to the rat sequence",

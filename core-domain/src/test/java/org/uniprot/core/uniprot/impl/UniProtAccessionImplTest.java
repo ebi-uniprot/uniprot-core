@@ -70,7 +70,7 @@ class UniProtAccessionImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         UniProtAccession impl = new UniProtAccessionImpl("VAL");
-        UniProtAccession obj = new UniProtAccessionBuilder("VAL").from(impl).build();
+        UniProtAccession obj = UniProtAccessionBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

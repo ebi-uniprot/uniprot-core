@@ -1,5 +1,6 @@
 package org.uniprot.core.cv.ec.impl;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import org.uniprot.core.cv.ec.EC;
@@ -9,7 +10,8 @@ import org.uniprot.core.cv.ec.EC;
  *
  * @author Edd
  */
-public class ECImpl implements EC {
+public class ECImpl implements EC, Serializable {
+    private static final long serialVersionUID = -5403788164376756075L;
     private final String id;
     private final String label;
 

@@ -27,6 +27,6 @@ class RnLineParserTest {
                             "ECO:0000269|PubMed:10433554",
                             "ECO:0000303|Ref.6"
                         });
-        assertEquals(evidences, obj.evidenceInfo.evidences.get(2));
+        assertEquals(evidences, obj.getEvidenceInfo().getEvidences().get(2));
     }
 }

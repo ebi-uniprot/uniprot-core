@@ -13,16 +13,12 @@ import org.uniprot.core.proteome.ProteomeXReferenceType;
 import org.uniprot.core.proteome.impl.ComponentImpl;
 import org.uniprot.core.util.Utils;
 
-public class ComponentBuilder implements Builder<ComponentBuilder, Component> {
+public class ComponentBuilder implements Builder<Component> {
     private String name;
     private String description;
     private int proteinCount;
     private ComponentType type;
     private List<DBCrossReference<ProteomeXReferenceType>> dbXReferences = new ArrayList<>();
-
-    public static @Nonnull ComponentBuilder newInstance() {
-        return new ComponentBuilder();
-    }
 
     public @Nonnull ComponentBuilder name(String name) {
         this.name = name;
@@ -61,15 +57,12 @@ public class ComponentBuilder implements Builder<ComponentBuilder, Component> {
         return new ComponentImpl(name, description, proteinCount, type, dbXReferences);
     }
 
-    @Override
-    public @Nonnull ComponentBuilder from(@Nonnull Component instance) {
-        this.name = instance.getName();
-        this.description = instance.getDescription();
-        this.proteinCount = instance.getProteinCount();
-        this.type = instance.getType();
-        dbXReferences.clear();
-        dbXReferences.addAll(instance.getDbXReferences());
-
-        return this;
+    public static @Nonnull ComponentBuilder from(@Nonnull Component instance) {
+        return new ComponentBuilder()
+                .name(instance.getName())
+                .description(instance.getDescription())
+                .proteinCount(instance.getProteinCount())
+                .type(instance.getType())
+                .dbXReferences(instance.getDbXReferences());
     }
 }

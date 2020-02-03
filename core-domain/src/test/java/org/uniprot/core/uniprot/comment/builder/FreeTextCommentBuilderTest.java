@@ -185,7 +185,7 @@ class FreeTextCommentBuilderTest {
     void canCreateBuilderFromInstance() {
         FreeTextComment obj =
                 new FreeTextCommentBuilder().commentType(CommentType.DISRUPTION_PHENOTYPE).build();
-        FreeTextCommentBuilder builder = new FreeTextCommentBuilder().from(obj);
+        FreeTextCommentBuilder builder = FreeTextCommentBuilder.from(obj);
         assertNotNull(builder);
     }
 

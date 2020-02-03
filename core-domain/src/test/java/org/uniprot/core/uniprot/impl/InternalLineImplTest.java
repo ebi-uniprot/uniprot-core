@@ -17,7 +17,7 @@ class InternalLineImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         InternalLineImpl impl = new InternalLineImpl(InternalLineType.EV, "def");
-        InternalLine obj = new InternalLineBuilder(InternalLineType.PE, "abc").from(impl).build();
+        InternalLine obj = InternalLineBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

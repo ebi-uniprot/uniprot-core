@@ -13,10 +13,10 @@ public final class PatentBuilder extends AbstractCitationBuilder<PatentBuilder, 
                 authoringGroups, authors, xrefs, title, publicationDate, patentNumber);
     }
 
-    @Override
-    public @Nonnull PatentBuilder from(@Nonnull Patent instance) {
-        init(instance);
-        return this.patentNumber(instance.getPatentNumber());
+    public static @Nonnull PatentBuilder from(@Nonnull Patent instance) {
+        PatentBuilder builder = new PatentBuilder();
+        init(builder, instance);
+        return builder.patentNumber(instance.getPatentNumber());
     }
 
     public @Nonnull PatentBuilder patentNumber(String patentNumber) {

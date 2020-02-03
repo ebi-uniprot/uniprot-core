@@ -18,7 +18,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
  *
  * @author Edd
  */
-public class MaximumVelocityBuilder implements Builder<MaximumVelocityBuilder, MaximumVelocity> {
+public class MaximumVelocityBuilder implements Builder<MaximumVelocity> {
     private double velocity;
     private String unit;
     private String enzyme;
@@ -29,10 +29,9 @@ public class MaximumVelocityBuilder implements Builder<MaximumVelocityBuilder, M
         return new MaximumVelocityImpl(velocity, unit, enzyme, evidences);
     }
 
-    @Override
-    public @Nonnull MaximumVelocityBuilder from(@Nonnull MaximumVelocity instance) {
-        evidences.clear();
-        return this.evidences(instance.getEvidences())
+    public static @Nonnull MaximumVelocityBuilder from(@Nonnull MaximumVelocity instance) {
+        return new MaximumVelocityBuilder()
+                .evidences(instance.getEvidences())
                 .enzyme(instance.getEnzyme())
                 .unit(instance.getUnit())
                 .velocity(instance.getVelocity());

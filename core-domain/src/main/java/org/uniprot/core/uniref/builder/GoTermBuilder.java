@@ -11,7 +11,7 @@ import org.uniprot.core.uniref.impl.GoTermImpl;
  * @author jluo
  * @date: 12 Aug 2019
  */
-public class GoTermBuilder implements Builder<GoTermBuilder, GoTerm> {
+public class GoTermBuilder implements Builder<GoTerm> {
 
     private GoTermType type;
     private String id;
@@ -31,8 +31,7 @@ public class GoTermBuilder implements Builder<GoTermBuilder, GoTerm> {
         return this;
     }
 
-    @Override
-    public GoTermBuilder from(@Nonnull GoTerm instance) {
-        return this.type(instance.getType()).id(instance.getId());
+    public static @Nonnull GoTermBuilder from(@Nonnull GoTerm instance) {
+        return new GoTermBuilder().type(instance.getType()).id(instance.getId());
     }
 }
