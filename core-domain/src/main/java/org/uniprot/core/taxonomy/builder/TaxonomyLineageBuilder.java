@@ -10,7 +10,7 @@ import org.uniprot.core.uniprot.taxonomy.builder.AbstractOrganismNameBuilder;
 
 public class TaxonomyLineageBuilder
         extends AbstractOrganismNameBuilder<TaxonomyLineageBuilder, TaxonomyLineage>
-        implements Builder<TaxonomyLineageBuilder, TaxonomyLineage> {
+        implements Builder<TaxonomyLineage> {
 
     private long taxonId;
 
@@ -38,17 +38,16 @@ public class TaxonomyLineageBuilder
         return new TaxonomyLineageImpl(taxonId, scientificName, commonName, synonyms, rank, hidden);
     }
 
-    @Override
-    public @Nonnull TaxonomyLineageBuilder from(@Nonnull TaxonomyLineage instance) {
-        if (instance != null) {
-            this.taxonId(instance.getTaxonId());
-            this.scientificName(instance.getScientificName());
-            this.commonName(instance.getCommonName());
-            this.synonyms(instance.getSynonyms());
-            this.rank(instance.getRank());
-            this.hidden(instance.isHidden());
-        }
-        return this;
+    public static @Nonnull TaxonomyLineageBuilder from(@Nonnull TaxonomyLineage instance) {
+        TaxonomyLineageBuilder builder = new TaxonomyLineageBuilder();
+        AbstractOrganismNameBuilder.init(builder, instance);
+        builder.taxonId(instance.getTaxonId());
+        builder.scientificName(instance.getScientificName());
+        builder.commonName(instance.getCommonName());
+        builder.synonyms(instance.getSynonyms());
+        builder.rank(instance.getRank());
+        builder.hidden(instance.isHidden());
+        return builder;
     }
 
     @Override

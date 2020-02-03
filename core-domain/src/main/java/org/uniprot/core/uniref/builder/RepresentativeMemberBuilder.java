@@ -39,15 +39,17 @@ public class RepresentativeMemberBuilder
                 sequence);
     }
 
-    @Override
-    public @Nonnull RepresentativeMemberBuilder from(@Nonnull RepresentativeMember instance) {
-        RepresentativeMemberBuilder builder = super.fromMember(instance);
-        builder.sequence(instance.getSequence());
-        return builder;
+    public static @Nonnull RepresentativeMemberBuilder from(
+            @Nonnull RepresentativeMember instance) {
+        RepresentativeMemberBuilder builder = new RepresentativeMemberBuilder();
+        AbstractUniRefMemberBuilder.init(builder, instance);
+        return builder.sequence(instance.getSequence());
     }
 
-    public RepresentativeMemberBuilder from(UniRefMember instance) {
-        return super.fromMember(instance);
+    public static @Nonnull RepresentativeMemberBuilder from(@Nonnull UniRefMember instance) {
+        RepresentativeMemberBuilder builder = new RepresentativeMemberBuilder();
+        AbstractUniRefMemberBuilder.init(builder, instance);
+        return builder;
     }
 
     @Override
