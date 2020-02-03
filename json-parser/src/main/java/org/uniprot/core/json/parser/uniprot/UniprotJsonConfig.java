@@ -165,6 +165,7 @@ public class UniprotJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Thesis.class, ThesisImpl.class);
         mod.addAbstractTypeMapping(Book.class, BookImpl.class);
         mod.addAbstractTypeMapping(JournalArticle.class, JournalArticleImpl.class);
+        mod.addAbstractTypeMapping(Literature.class, LiteratureImpl.class);
 
         mod.addAbstractTypeMapping(UniProtReference.class, UniProtReferenceImpl.class);
         mod.addAbstractTypeMapping(InternalLine.class, InternalLineImpl.class);
@@ -210,6 +211,7 @@ public class UniprotJsonConfig extends JsonConfig {
         mod.registerSubtypes(new NamedType(SubmissionImpl.class, "Submission"));
         mod.registerSubtypes(new NamedType(ThesisImpl.class, "Thesis"));
         mod.registerSubtypes(new NamedType(UnpublishedImpl.class, "Unpublished"));
+        mod.registerSubtypes(new NamedType(LiteratureImpl.class, "Literature"));
 
         mod.addAbstractTypeMapping(TaxonomyLineage.class, TaxonomyLineageImpl.class);
 

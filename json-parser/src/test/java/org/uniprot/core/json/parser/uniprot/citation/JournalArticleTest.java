@@ -3,13 +3,8 @@ package org.uniprot.core.json.parser.uniprot.citation;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.util.Collections;
-
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.CitationXrefType;
 import org.uniprot.core.citation.JournalArticle;
 import org.uniprot.core.citation.builder.JournalArticleBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
@@ -55,21 +50,12 @@ public class JournalArticleTest {
     }
 
     public static JournalArticle getJournalArticle() {
-        DBCrossReference<CitationXrefType> xref =
-                new DBCrossReferenceBuilder<CitationXrefType>()
-                        .databaseType(CitationXrefType.PUBMED)
-                        .id("somepID1")
-                        .build();
-        return new JournalArticleBuilder()
-                .journalName("journal name")
+        JournalArticleBuilder builder = new JournalArticleBuilder();
+        CitationUtil.populateBasicCitation(builder);
+        return builder.journalName("journal name")
                 .firstPage("first page")
                 .lastPage("last page")
                 .volume("volume value")
-                .publicationDate("date value")
-                .addAuthorGroup("auth group")
-                .addAuthor("author Leo")
-                .title("Leo book tittle")
-                .citationXrefs(Collections.singletonList(xref))
                 .build();
     }
 }
