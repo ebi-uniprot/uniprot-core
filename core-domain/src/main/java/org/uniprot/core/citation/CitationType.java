@@ -11,6 +11,7 @@ public enum CitationType implements EnumDisplay<CitationType> {
     PATENT("patent"),
     SUBMISSION("submission", "Unpublished/no plans to publish"),
     THESIS("thesis"),
+    LITERATURE("UniProt indexed literatures"),
     UNPUBLISHED("unpublished observations"),
     UNKNOWN("default as unknown");
 

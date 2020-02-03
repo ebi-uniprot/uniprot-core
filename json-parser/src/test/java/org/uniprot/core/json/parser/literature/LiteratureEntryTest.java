@@ -1,9 +1,8 @@
 package org.uniprot.core.json.parser.literature;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.citation.impl.AuthorImpl;
-import org.uniprot.core.citation.impl.PublicationDateImpl;
 import org.uniprot.core.json.parser.ValidateJson;
+import org.uniprot.core.json.parser.uniprot.citation.LiteratureTest;
 import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.literature.builder.LiteratureEntryBuilder;
 
@@ -14,7 +13,7 @@ class LiteratureEntryTest {
     void testSimpleLiteratureEntry() {
         LiteratureEntryBuilder builder = new LiteratureEntryBuilder();
 
-        LiteratureEntry literatureEntry = builder.completeAuthorList(false).build();
+        LiteratureEntry literatureEntry = builder.build();
         ValidateJson.verifyJsonRoundTripParser(
                 LiteratureJsonConfig.getInstance().getFullObjectMapper(), literatureEntry);
     }
@@ -29,18 +28,7 @@ class LiteratureEntryTest {
 
     static LiteratureEntry getCompleteLiteratureEntry() {
         return new LiteratureEntryBuilder()
-                .doiId("doi Id")
-                .pubmedId(100L)
-                .addAuthor(new AuthorImpl("author name"))
-                .addAuthoringGroup("authoring group")
-                .completeAuthorList(true)
-                .firstPage("first Page")
-                .journal("journal Name")
-                .volume("volume")
-                .lastPage("last Page")
-                .literatureAbstract("literature Abstract")
-                .publicationDate(new PublicationDateImpl("21-06-2019"))
-                .title("title")
+                .citation(LiteratureTest.getCompleteLiterature())
                 .statistics(LiteratureStatisticsTest.getCompleteLiteratureStatistics())
                 .build();
     }
