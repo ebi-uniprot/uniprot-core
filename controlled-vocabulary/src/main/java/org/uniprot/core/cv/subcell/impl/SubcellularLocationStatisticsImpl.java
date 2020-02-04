@@ -10,6 +10,7 @@ import org.uniprot.core.cv.subcell.SubcellularLocationStatistics;
  */
 public class SubcellularLocationStatisticsImpl implements SubcellularLocationStatistics {
 
+    private static final long serialVersionUID = -2917473627048690554L;
     private long reviewedProteinCount;
     private long unreviewedProteinCount;
 

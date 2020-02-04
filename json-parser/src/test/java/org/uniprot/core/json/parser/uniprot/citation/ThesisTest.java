@@ -3,13 +3,8 @@ package org.uniprot.core.json.parser.uniprot.citation;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.util.Collections;
-
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.CitationXrefType;
 import org.uniprot.core.citation.Thesis;
 import org.uniprot.core.citation.builder.ThesisBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
@@ -49,19 +44,8 @@ public class ThesisTest {
     }
 
     public static Thesis getThesis() {
-        DBCrossReference<CitationXrefType> xref =
-                new DBCrossReferenceBuilder<CitationXrefType>()
-                        .databaseType(CitationXrefType.PUBMED)
-                        .id("somepID1")
-                        .build();
-        return new ThesisBuilder()
-                .address("thesis address")
-                .institute("thesis institute")
-                .publicationDate("date value")
-                .authorGroupsAdd("auth group")
-                .authorsAdd("author Leo")
-                .title("Leo book tittle")
-                .citationXrefsSet(Collections.singletonList(xref))
-                .build();
+        ThesisBuilder builder = new ThesisBuilder();
+        CitationUtil.populateBasicCitation(builder);
+        return builder.address("thesis address").institute("thesis institute").build();
     }
 }

@@ -6,11 +6,7 @@ import org.uniprot.core.citation.JournalArticle;
 import org.uniprot.core.citation.impl.JournalArticleImpl;
 
 public final class JournalArticleBuilder
-        extends AbstractCitationBuilder<JournalArticleBuilder, JournalArticle> {
-    private String journalName;
-    private String firstPage = "";
-    private String lastPage = "";
-    private String volume = "";
+        extends AbstractJournalArticleBuilder<JournalArticleBuilder, JournalArticle> {
 
     @Override
     public @Nonnull JournalArticle build() {
@@ -29,30 +25,7 @@ public final class JournalArticleBuilder
     public static @Nonnull JournalArticleBuilder from(@Nonnull JournalArticle instance) {
         JournalArticleBuilder builder = new JournalArticleBuilder();
         init(builder, instance);
-        return builder.journalName(instance.getJournal().getName())
-                .firstPage(instance.getFirstPage())
-                .lastPage(instance.getLastPage())
-                .volume(instance.getVolume());
-    }
-
-    public @Nonnull JournalArticleBuilder journalName(String journalName) {
-        this.journalName = journalName;
-        return this;
-    }
-
-    public @Nonnull JournalArticleBuilder firstPage(String firstPage) {
-        this.firstPage = firstPage;
-        return this;
-    }
-
-    public @Nonnull JournalArticleBuilder lastPage(String lastPage) {
-        this.lastPage = lastPage;
-        return this;
-    }
-
-    public @Nonnull JournalArticleBuilder volume(String volume) {
-        this.volume = volume;
-        return this;
+        return builder;
     }
 
     @Override

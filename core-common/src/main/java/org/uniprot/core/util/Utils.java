@@ -83,7 +83,7 @@ public class Utils {
         return value == null || value.isEmpty();
     }
 
-    public static boolean nullOrEmpty(@Nullable List<?> value) {
+    public static boolean nullOrEmpty(@Nullable Collection<?> value) {
         return value == null || value.isEmpty();
     }
 
@@ -95,7 +95,7 @@ public class Utils {
         return value != null && !value.isEmpty();
     }
 
-    public static boolean notNullNotEmpty(@Nullable List<?> value) {
+    public static boolean notNullNotEmpty(@Nullable Collection<?> value) {
         return value != null && !value.isEmpty();
     }
 

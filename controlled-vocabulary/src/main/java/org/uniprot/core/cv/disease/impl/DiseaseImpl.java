@@ -9,6 +9,7 @@ import org.uniprot.core.cv.keyword.Keyword;
 
 public class DiseaseImpl implements Disease {
 
+    private static final long serialVersionUID = 3059038050252487022L;
     private String id;
 
     private final String accession;

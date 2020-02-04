@@ -2,6 +2,8 @@ package org.uniprot.core.taxonomy.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
@@ -16,8 +18,15 @@ class TaxonomyLineageImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        TaxonomyLineage impl = new TaxonomyLineageImpl(87L, "sciName", TaxonomyRank.FAMILY, false);
-        TaxonomyLineage obj = TaxonomyLineageBuilder.from(impl).build();
+        TaxonomyLineage impl =
+                new TaxonomyLineageImpl(
+                        87L,
+                        "sciName",
+                        "common",
+                        Collections.singletonList("sys"),
+                        TaxonomyRank.FAMILY,
+                        false);
+        TaxonomyLineage obj = new TaxonomyLineageBuilder().from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

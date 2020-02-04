@@ -12,6 +12,7 @@ import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 import org.uniprot.core.cv.subcell.SubcellularLocationStatistics;
 
 public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
+    private static final long serialVersionUID = 8881869836509747529L;
     private SubcellLocationCategory category;
     private String id;
     private String accession;

@@ -38,14 +38,17 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
     public Map<String, Pair<String, KeywordCategory>> parseFileToAccessionMap(String fileName) {
         List<KeywordEntry> keywordEntryList = parse(fileName);
         return keywordEntryList.stream()
-                .collect(Collectors.toMap(this::getId, this::getAccessionCategoryPair));
+                .collect(
+                        Collectors.toMap(
+                                KeywordFileReader::getId,
+                                KeywordFileReader::getAccessionCategoryPair));
     }
 
-    private String getId(KeywordEntry keyword) {
+    public static String getId(KeywordEntry keyword) {
         return keyword.getKeyword().getId();
     }
 
-    private Pair<String, KeywordCategory> getAccessionCategoryPair(KeywordEntry keyword) {
+    public static Pair<String, KeywordCategory> getAccessionCategoryPair(KeywordEntry keyword) {
         String accession = keyword.getAccession();
         Keyword kcategory = keyword.getCategory();
         KeywordCategory category;

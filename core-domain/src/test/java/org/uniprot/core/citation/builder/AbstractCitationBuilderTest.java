@@ -20,17 +20,17 @@ import org.uniprot.core.citation.CitationXrefType;
 import org.uniprot.core.citation.impl.AbstractCitationImpl;
 
 class AbstractCitationBuilderTest {
-    private static final CitationType CITATION_TYPE = CitationType.UNPUBLISHED;
-    private static final String TITLE = "Some title";
-    private static final String PUBLICATION_DATE = "2015-MAY";
-    private static final List<String> GROUPS = asList("T1", "T2");
-    private static final List<String> AUTHORS = asList("Tom", "John");
-    private static final DBCrossReference<CitationXrefType> XREF1 =
+    static final CitationType CITATION_TYPE = CitationType.UNPUBLISHED;
+    static final String TITLE = "Some title";
+    static final String PUBLICATION_DATE = "2015-MAY";
+    static final List<String> GROUPS = asList("T1", "T2");
+    static final List<String> AUTHORS = asList("Tom", "John");
+    static final DBCrossReference<CitationXrefType> XREF1 =
             new DBCrossReferenceBuilder<CitationXrefType>()
                     .databaseType(CitationXrefType.PUBMED)
                     .id("id1")
                     .build();
-    private static final DBCrossReference<CitationXrefType> XREF2 =
+    static final DBCrossReference<CitationXrefType> XREF2 =
             new DBCrossReferenceBuilder<CitationXrefType>()
                     .databaseType(CitationXrefType.AGRICOLA)
                     .id("id2")

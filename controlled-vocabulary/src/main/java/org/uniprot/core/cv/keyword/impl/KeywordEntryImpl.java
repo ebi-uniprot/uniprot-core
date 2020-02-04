@@ -9,6 +9,7 @@ import org.uniprot.core.cv.keyword.KeywordStatistics;
 
 public class KeywordEntryImpl implements KeywordEntry {
 
+    private static final long serialVersionUID = 226389200105459588L;
     private Keyword keyword;
     private String definition;
     private List<String> synonyms;

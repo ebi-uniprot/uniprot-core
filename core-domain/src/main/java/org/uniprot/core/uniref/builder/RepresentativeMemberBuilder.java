@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniref.RepresentativeMember;
+import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.impl.RepresentativeMemberImpl;
 
 /**
@@ -43,6 +44,12 @@ public class RepresentativeMemberBuilder
         RepresentativeMemberBuilder builder = new RepresentativeMemberBuilder();
         AbstractUniRefMemberBuilder.init(builder, instance);
         return builder.sequence(instance.getSequence());
+    }
+
+    public static @Nonnull RepresentativeMemberBuilder from(@Nonnull UniRefMember instance) {
+        RepresentativeMemberBuilder builder = new RepresentativeMemberBuilder();
+        AbstractUniRefMemberBuilder.init(builder, instance);
+        return builder;
     }
 
     @Override

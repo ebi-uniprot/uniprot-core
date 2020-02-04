@@ -1,32 +1,36 @@
 package org.uniprot.core.taxonomy.impl;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
-import org.uniprot.core.util.Utils;
+import org.uniprot.core.uniprot.taxonomy.impl.AbstractOrganismNameImpl;
 
 /** @author lgonzales */
-public class TaxonomyLineageImpl implements TaxonomyLineage {
+public class TaxonomyLineageImpl extends AbstractOrganismNameImpl implements TaxonomyLineage {
 
     private static final long serialVersionUID = -319775179301440774L;
 
     private long taxonId;
-
-    private String scientificName;
 
     private TaxonomyRank rank;
 
     private boolean hidden;
 
     TaxonomyLineageImpl() {
-        this(0, null, null, false);
+        this(0, null, null, null, null, false);
     }
 
     public TaxonomyLineageImpl(
-            long taxonId, String scientificName, TaxonomyRank rank, boolean hidden) {
+            long taxonId,
+            String scientificName,
+            String commonName,
+            List<String> synonyms,
+            TaxonomyRank rank,
+            boolean hidden) {
+        super(scientificName, commonName, synonyms);
         this.taxonId = taxonId;
-        this.scientificName = scientificName;
         this.rank = rank;
         this.hidden = hidden;
     }
@@ -34,11 +38,6 @@ public class TaxonomyLineageImpl implements TaxonomyLineage {
     @Override
     public long getTaxonId() {
         return taxonId;
-    }
-
-    @Override
-    public String getScientificName() {
-        return scientificName;
     }
 
     @Override
@@ -57,11 +56,6 @@ public class TaxonomyLineageImpl implements TaxonomyLineage {
     }
 
     @Override
-    public boolean hasScientificName() {
-        return Utils.notNullNotEmpty(this.scientificName);
-    }
-
-    @Override
     public boolean hasRank() {
         return this.rank != null;
     }
@@ -70,15 +64,15 @@ public class TaxonomyLineageImpl implements TaxonomyLineage {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         TaxonomyLineageImpl that = (TaxonomyLineageImpl) o;
         return getTaxonId() == that.getTaxonId()
                 && isHidden() == that.isHidden()
-                && Objects.equals(getScientificName(), that.getScientificName())
                 && getRank() == that.getRank();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getTaxonId(), getScientificName(), getRank(), isHidden());
+        return Objects.hash(super.hashCode(), getTaxonId(), getRank(), isHidden());
     }
 }

@@ -6,11 +6,13 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
 import org.uniprot.core.taxonomy.impl.TaxonomyLineageImpl;
+import org.uniprot.core.uniprot.taxonomy.builder.AbstractOrganismNameBuilder;
 
-public class TaxonomyLineageBuilder implements Builder<TaxonomyLineage> {
+public class TaxonomyLineageBuilder
+        extends AbstractOrganismNameBuilder<TaxonomyLineageBuilder, TaxonomyLineage>
+        implements Builder<TaxonomyLineage> {
+
     private long taxonId;
-
-    private String scientificName;
 
     private TaxonomyRank rank; // =TaxonomyRank.NO_RANK;
 
@@ -18,11 +20,6 @@ public class TaxonomyLineageBuilder implements Builder<TaxonomyLineage> {
 
     public @Nonnull TaxonomyLineageBuilder taxonId(long taxonId) {
         this.taxonId = taxonId;
-        return this;
-    }
-
-    public @Nonnull TaxonomyLineageBuilder scientificName(String scientificName) {
-        this.scientificName = scientificName;
         return this;
     }
 
@@ -38,14 +35,23 @@ public class TaxonomyLineageBuilder implements Builder<TaxonomyLineage> {
 
     @Override
     public @Nonnull TaxonomyLineage build() {
-        return new TaxonomyLineageImpl(taxonId, scientificName, rank, hidden);
+        return new TaxonomyLineageImpl(taxonId, scientificName, commonName, synonyms, rank, hidden);
     }
 
     public static @Nonnull TaxonomyLineageBuilder from(@Nonnull TaxonomyLineage instance) {
-        return new TaxonomyLineageBuilder()
-                .taxonId(instance.getTaxonId())
-                .scientificName(instance.getScientificName())
-                .rank(instance.getRank())
-                .hidden(instance.isHidden());
+        TaxonomyLineageBuilder builder = new TaxonomyLineageBuilder();
+        AbstractOrganismNameBuilder.init(builder, instance);
+        builder.taxonId(instance.getTaxonId());
+        builder.scientificName(instance.getScientificName());
+        builder.commonName(instance.getCommonName());
+        builder.synonyms(instance.getSynonyms());
+        builder.rank(instance.getRank());
+        builder.hidden(instance.isHidden());
+        return builder;
+    }
+
+    @Override
+    protected @Nonnull TaxonomyLineageBuilder getThis() {
+        return this;
     }
 }

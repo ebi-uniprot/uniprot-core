@@ -1,11 +1,13 @@
 package org.uniprot.core.cv.pathway;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.cv.common.AbstractFileReader;
+import org.uniprot.core.util.Utils;
 
 public class UniPathwayFileReader extends AbstractFileReader<UniPathway> {
 
@@ -17,6 +19,7 @@ public class UniPathwayFileReader extends AbstractFileReader<UniPathway> {
                         .map(this::convert)
                         .collect(Collectors.toList());
         updateRelationship(pathways);
+        cleanRelations(pathways);
         return pathways;
     }
 
@@ -35,6 +38,9 @@ public class UniPathwayFileReader extends AbstractFileReader<UniPathway> {
             UniPathway parent = getParent(pathway, pathwayIdMap);
             if (parent != null) {
                 pathway.setParent(parent);
+                if (!parent.getChildren().contains(pathway)) {
+                    parent.getChildren().add(pathway);
+                }
             }
         }
     }
@@ -48,5 +54,34 @@ public class UniPathwayFileReader extends AbstractFileReader<UniPathway> {
             String parentId = id.substring(0, index);
             return pathwayIdMap.get(parentId);
         }
+    }
+
+    private void cleanRelations(List<UniPathway> list) {
+        for (UniPathway entry : list) {
+            entry.setParent(cleanParentChildren(entry.getParent()));
+            entry.setChildren(cleanChildrenParent(entry.getChildren()));
+        }
+    }
+
+    private UniPathway cleanParentChildren(UniPathway parent) {
+        if (parent != null) {
+            UniPathway newEntry = new UniPathway(parent.getAccession(), parent.getName());
+            newEntry.setParent(cleanParentChildren(parent.getParent()));
+            return newEntry;
+        } else {
+            return parent;
+        }
+    }
+
+    private List<UniPathway> cleanChildrenParent(List<UniPathway> children) {
+        List<UniPathway> result = new ArrayList<>();
+        if (Utils.notNullOrEmpty(children)) {
+            for (UniPathway child : children) {
+                UniPathway newEntry = new UniPathway(child.getAccession(), child.getName());
+                newEntry.setChildren(cleanChildrenParent(child.getChildren()));
+                result.add(newEntry);
+            }
+        }
+        return result;
     }
 }

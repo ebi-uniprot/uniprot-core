@@ -7,8 +7,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.citation.impl.AuthorImpl;
-import org.uniprot.core.citation.impl.PublicationDateImpl;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.citation.builder.LiteratureBuilder;
 import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.literature.LiteratureStatistics;
 import org.uniprot.core.literature.builder.LiteratureEntryBuilder;
@@ -22,19 +25,22 @@ class LiteratureEntryMapTest {
 
     @Test
     void checkSimpleEntryAttributeValues() {
-        LiteratureEntry entry = new LiteratureEntryBuilder().pubmedId(10L).build();
+        LiteratureEntry entry =
+                new LiteratureEntryBuilder()
+                        .statistics(createCompleteLiteratureStatistics())
+                        .build();
         Map<String, String> mappedEntries = new LiteratureEntryMap(entry).attributeValues();
         assertThat(mappedEntries, notNullValue());
         assertEquals(11, mappedEntries.size());
-        assertEquals("10", mappedEntries.get("id"));
-        mappedEntries.remove("id");
+        assertEquals("mapped:30; reviewed:10; annotated:20", mappedEntries.get("statistics"));
+        mappedEntries.remove("statistics");
 
         mappedEntries.values().forEach(value -> assertEquals("", value));
     }
 
     @Test
     void checkCompleteEntryAttributeValues() {
-        LiteratureEntry entry = createLiteratureEntry();
+        LiteratureEntry entry = createCompleteLiteratureEntry();
 
         Map<String, String> mappedEntries = new LiteratureEntryMap(entry).attributeValues();
 
@@ -54,17 +60,38 @@ class LiteratureEntryMapTest {
         assertEquals("mapped:30; reviewed:10; annotated:20", mappedEntries.get("statistics"));
     }
 
-    private LiteratureEntry createLiteratureEntry() {
+    private LiteratureEntry createCompleteLiteratureEntry() {
         return new LiteratureEntryBuilder()
-                .doiId("doi Id")
-                .pubmedId(100L)
-                .firstPage("first Page")
-                .journal("journal Name")
-                .volume("volume")
-                .lastPage("last Page")
-                .literatureAbstract("literature Abstract")
-                .publicationDate(new PublicationDateImpl("21-06-2019"))
+                .citation(createCompleteLiteratureCitation())
                 .statistics(createCompleteLiteratureStatistics())
+                .build();
+    }
+
+    private Citation createCompleteLiteratureCitation() {
+        DBCrossReference<CitationXrefType> pubmed =
+                new DBCrossReferenceBuilder<CitationXrefType>()
+                        .databaseType(CitationXrefType.PUBMED)
+                        .id("100")
+                        .build();
+
+        DBCrossReference<CitationXrefType> doi =
+                new DBCrossReferenceBuilder<CitationXrefType>()
+                        .databaseType(CitationXrefType.DOI)
+                        .id("doi Id")
+                        .build();
+
+        return new LiteratureBuilder()
+                .literatureAbstract("literature Abstract")
+                .completeAuthorList(true)
+                .firstPage("first Page")
+                .lastPage("last Page")
+                .volume("volume")
+                .journalName("journal Name")
+                .addAuthor("author name")
+                .addAuthorGroup("authoring group")
+                .addCitationXrefs(pubmed)
+                .addCitationXrefs(doi)
+                .publicationDate("21-06-2019")
                 .title("title")
                 .completeAuthorList(false)
                 .authorsAdd(new AuthorImpl("author name"))

@@ -1,12 +1,13 @@
 package org.uniprot.core.cv.subcell;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
 import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.Keyword;
 
-public interface SubcellularLocationEntry {
+public interface SubcellularLocationEntry extends Serializable {
     SubcellLocationCategory getCategory();
 
     String getId();

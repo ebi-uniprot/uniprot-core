@@ -83,7 +83,7 @@ public abstract class AbstractCitationBuilder<
     }
 
     protected static <B extends AbstractCitationBuilder<B, T>, T extends Citation> void init(
-            B builder, T instance) {
+            @Nonnull B builder, @Nonnull T instance) {
         builder.citationXrefsSet(instance.getCitationXrefs())
                 .title(instance.getTitle())
                 .publicationDate(instance.getPublicationDate())

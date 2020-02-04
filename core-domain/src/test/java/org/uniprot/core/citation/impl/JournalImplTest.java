@@ -11,4 +11,10 @@ class JournalImplTest {
         Journal obj = new JournalImpl();
         assertNotNull(obj);
     }
+
+    @Test
+    void toStringMethod() {
+        Journal obj = new JournalImpl("name");
+        assertEquals("JournalImpl{name='name'}", obj.toString());
+    }
 }

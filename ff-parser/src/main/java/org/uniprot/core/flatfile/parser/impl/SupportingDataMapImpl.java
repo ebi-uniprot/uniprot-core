@@ -32,11 +32,12 @@ import org.uniprot.core.util.Utils;
 public class SupportingDataMapImpl implements SupportingDataMap {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SupportingDataMapImpl.class);
+    private static final long serialVersionUID = 1728773536729799626L;
 
     private Map<String, Pair<String, KeywordCategory>> keywordMap = new HashMap<>();
-    private Map<String, String> diseaseMap = new HashMap<>();;
-    private Map<String, Map<String, List<Evidence>>> goEvidencesMap = new HashMap<>();;
-    private Map<String, String> subcellularLocationMap = new HashMap<>();;
+    private Map<String, String> diseaseMap = new HashMap<>();
+    private Map<String, Map<String, List<Evidence>>> goEvidencesMap = new HashMap<>();
+    private Map<String, String> subcellularLocationMap = new HashMap<>();
 
     public SupportingDataMapImpl() {
         this(null, null, null, null);

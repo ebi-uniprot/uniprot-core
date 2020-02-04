@@ -9,21 +9,8 @@ import org.uniprot.core.gene.*;
 import org.uniprot.core.impl.*;
 import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.json.parser.deserializer.LocalDateDeserializer;
-import org.uniprot.core.json.parser.serializer.AuthorSerializer;
-import org.uniprot.core.json.parser.serializer.JournalSerializer;
-import org.uniprot.core.json.parser.serializer.LocalDateSerializer;
-import org.uniprot.core.json.parser.serializer.LocatorSerializer;
-import org.uniprot.core.json.parser.serializer.PublicationDateSerializer;
-import org.uniprot.core.json.parser.uniprot.serializer.ECNumberSerializer;
-import org.uniprot.core.json.parser.uniprot.serializer.EvidenceSerializer;
-import org.uniprot.core.json.parser.uniprot.serializer.FeatureDescriptionSerializer;
-import org.uniprot.core.json.parser.uniprot.serializer.FeatureIdSerializer;
-import org.uniprot.core.json.parser.uniprot.serializer.FlagSerializer;
-import org.uniprot.core.json.parser.uniprot.serializer.InteractorSerializer;
-import org.uniprot.core.json.parser.uniprot.serializer.IsoformIdImplSerializer;
-import org.uniprot.core.json.parser.uniprot.serializer.UniProtAccessionSerializer;
-import org.uniprot.core.json.parser.uniprot.serializer.UniProtIdSerializer;
-import org.uniprot.core.json.parser.uniprot.serializer.UniProtXDbTypeSerializer;
+import org.uniprot.core.json.parser.serializer.*;
+import org.uniprot.core.json.parser.uniprot.serializer.*;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.impl.TaxonomyLineageImpl;
 import org.uniprot.core.uniprot.*;
@@ -178,6 +165,7 @@ public class UniprotJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Thesis.class, ThesisImpl.class);
         mod.addAbstractTypeMapping(Book.class, BookImpl.class);
         mod.addAbstractTypeMapping(JournalArticle.class, JournalArticleImpl.class);
+        mod.addAbstractTypeMapping(Literature.class, LiteratureImpl.class);
 
         mod.addAbstractTypeMapping(UniProtReference.class, UniProtReferenceImpl.class);
         mod.addAbstractTypeMapping(InternalLine.class, InternalLineImpl.class);
@@ -223,6 +211,7 @@ public class UniprotJsonConfig extends JsonConfig {
         mod.registerSubtypes(new NamedType(SubmissionImpl.class, "Submission"));
         mod.registerSubtypes(new NamedType(ThesisImpl.class, "Thesis"));
         mod.registerSubtypes(new NamedType(UnpublishedImpl.class, "Unpublished"));
+        mod.registerSubtypes(new NamedType(LiteratureImpl.class, "Literature"));
 
         mod.addAbstractTypeMapping(TaxonomyLineage.class, TaxonomyLineageImpl.class);
 

@@ -1,10 +1,12 @@
 package org.uniprot.core.cv.disease;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class CrossReference {
+public class CrossReference implements Serializable {
+    private static final long serialVersionUID = -1741904153011477476L;
     private final String databaseType;
     private final String id;
     private final List<String> properties;

@@ -19,7 +19,8 @@ public abstract class AbstractOrganismNameImpl implements OrganismName {
 
     AbstractOrganismNameImpl() {}
 
-    AbstractOrganismNameImpl(String scientificName, String commonName, List<String> synonyms) {
+    public AbstractOrganismNameImpl(
+            String scientificName, String commonName, List<String> synonyms) {
         this.scientificName = emptyOrString(scientificName);
         this.commonName = emptyOrString(commonName);
         this.synonyms = unmodifiableList(synonyms);

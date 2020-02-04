@@ -175,10 +175,27 @@ class UniProtEntryBuilderTest {
         }
 
         @Test
-        void nullStringUniprotIdNotAllowed() {
-            assertThrows(
-                    IllegalArgumentException.class,
-                    () -> new UniProtEntryBuilder("acc", null, reason).build());
+        void nullUniprotIdAllowed() {
+            UniProtEntry minimumInactiveEntry =
+                    new UniProtEntryBuilder(new UniProtAccessionBuilder("acc").build(), reason)
+                            .build();
+
+            assertFalse(minimumInactiveEntry.isActive());
+            assertNull(minimumInactiveEntry.getUniProtId());
+            assertEquals(
+                    InactiveReasonType.DELETED,
+                    minimumInactiveEntry.getInactiveReason().getInactiveReasonType());
+        }
+
+        @Test
+        void nullStringUniprotIdAllowed() {
+            UniProtEntry minimumInactiveEntry = new UniProtEntryBuilder("acc", reason).build();
+
+            assertFalse(minimumInactiveEntry.isActive());
+            assertNull(minimumInactiveEntry.getUniProtId());
+            assertEquals(
+                    InactiveReasonType.DELETED,
+                    minimumInactiveEntry.getInactiveReason().getInactiveReasonType());
         }
 
         @Test
