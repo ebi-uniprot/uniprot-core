@@ -31,11 +31,11 @@ public class RecNameConverter
     public ProteinRecName fromXml(RecommendedName xmlObj) {
         return new ProteinRecNameBuilder()
                 .fullName(nameConverter.fromXml(xmlObj.getFullName()))
-                .shortNames(
+                .shortNamesSet(
                         xmlObj.getShortName().stream()
                                 .map(nameConverter::fromXml)
                                 .collect(Collectors.toList()))
-                .ecNumbers(
+                .ecNumbersSet(
                         xmlObj.getEcNumber().stream()
                                 .map(ecConverter::fromXml)
                                 .collect(Collectors.toList()))

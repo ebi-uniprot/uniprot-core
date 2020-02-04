@@ -29,7 +29,7 @@ class RnaEditingCommentConverterTest {
         RnaEdPosition position =
                 new RnaEditingPositionBuilder()
                         .position(pos)
-                        .evidences(
+                        .evidencesSet(
                                 evidencesFromLines(
                                         "ECO:0000269|PubMed:10574461",
                                         "ECO:0000269|PubMed:11230166"))
@@ -50,14 +50,14 @@ class RnaEditingCommentConverterTest {
         RnaEdPosition position =
                 new RnaEditingPositionBuilder()
                         .position(pos)
-                        .evidences(
+                        .evidencesSet(
                                 evidencesFromLines(
                                         "ECO:0000269|PubMed:10574461",
                                         "ECO:0000269|PubMed:11230166",
                                         "ECO:0000269|PubMed:15731336"))
                         .build();
         RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
-        builder.positions(Arrays.asList(position));
+        builder.positionsSet(Arrays.asList(position));
         EvidencedValue evidencedValue =
                 new EvidencedValueBuilder(
                                 "Partially edited. Editing appears to be brain-specific",

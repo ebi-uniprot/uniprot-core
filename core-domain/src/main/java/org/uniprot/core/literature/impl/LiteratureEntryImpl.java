@@ -79,7 +79,7 @@ public class LiteratureEntryImpl implements LiteratureEntry {
     }
 
     @Override
-    public List<String> getAuthoringGroup() {
+    public List<String> getAuthoringGroups() {
         return authoringGroup;
     }
 
@@ -137,7 +137,7 @@ public class LiteratureEntryImpl implements LiteratureEntry {
                 && Objects.equals(getPubmedId(), that.getPubmedId())
                 && Objects.equals(getDoiId(), that.getDoiId())
                 && Objects.equals(getTitle(), that.getTitle())
-                && Objects.equals(getAuthoringGroup(), that.getAuthoringGroup())
+                && Objects.equals(getAuthoringGroups(), that.getAuthoringGroups())
                 && Objects.equals(getAuthors(), that.getAuthors())
                 && Objects.equals(getPublicationDate(), that.getPublicationDate())
                 && Objects.equals(getJournal(), that.getJournal())
@@ -154,7 +154,7 @@ public class LiteratureEntryImpl implements LiteratureEntry {
                 getPubmedId(),
                 getDoiId(),
                 getTitle(),
-                getAuthoringGroup(),
+                getAuthoringGroups(),
                 getAuthors(),
                 isCompleteAuthorList(),
                 getPublicationDate(),

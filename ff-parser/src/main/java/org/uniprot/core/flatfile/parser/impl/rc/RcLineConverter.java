@@ -27,7 +27,7 @@ public class RcLineConverter extends EvidenceCollector
                         new ReferenceCommentBuilder()
                                 .type(type)
                                 .value(val)
-                                .evidences(evidences.get(val))
+                                .evidencesSet(evidences.get(val))
                                 .build();
                 sss.add(refComment);
             }

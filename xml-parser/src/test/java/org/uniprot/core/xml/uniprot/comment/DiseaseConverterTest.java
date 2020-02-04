@@ -44,7 +44,7 @@ class DiseaseConverterTest {
                 .description(description)
                 .diseaseAc("DI-01465")
                 .reference(createDBCrossReference(DiseaseReferenceType.MIM, "219500"))
-                .evidences(evidences);
+                .evidencesSet(evidences);
         Disease disease = builder.build();
         DiseaseConverter converter = new DiseaseConverter();
         CommentType.Disease xmlObj = converter.toXml(disease);

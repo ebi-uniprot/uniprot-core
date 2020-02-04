@@ -171,34 +171,34 @@ public class ProteinDescriptionTest {
         ProteinSection include =
                 new ProteinSectionBuilder()
                         .recommendedName(getRecommendedName("includes"))
-                        .alternativeNames(createAltName("includes"))
-                        .addInnNames(innName)
+                        .alternativeNamesSet(createAltName("includes"))
+                        .innNamesAdd(innName)
                         .allergenName(allergenName)
                         .biotechName(biotechName)
-                        .addCdAntigenNames(antigenName)
+                        .cdAntigenNamesAdd(antigenName)
                         .build();
 
         ProteinSection contain =
                 new ProteinSectionBuilder()
                         .recommendedName(getRecommendedName("contains"))
-                        .alternativeNames(createAltName("contains"))
-                        .addInnNames(innName)
+                        .alternativeNamesSet(createAltName("contains"))
+                        .innNamesAdd(innName)
                         .allergenName(allergenName)
                         .biotechName(biotechName)
-                        .addCdAntigenNames(antigenName)
+                        .cdAntigenNamesAdd(antigenName)
                         .build();
 
         return new ProteinDescriptionBuilder()
                 .allergenName(allergenName)
-                .alternativeNames(proteinAltNames)
+                .alternativeNamesSet(proteinAltNames)
                 .biotechName(biotechName)
-                .addCdAntigenNames(antigenName)
+                .cdAntigenNamesAdd(antigenName)
                 .flag(FlagType.FRAGMENT)
-                .addIncludes(include)
-                .addContains(contain)
-                .addInnNames(innName)
+                .includesAdd(include)
+                .containsAdd(contain)
+                .innNamesAdd(innName)
                 .recommendedName(recommendedName)
-                .submissionNames(subNames)
+                .submissionNamesSet(subNames)
                 .build();
     }
 
@@ -209,8 +209,8 @@ public class ProteinDescriptionTest {
 
         return new ProteinRecNameBuilder()
                 .fullName(fullName)
-                .shortNames(shortNames)
-                .ecNumbers(ecNumbers)
+                .shortNamesSet(shortNames)
+                .ecNumbersSet(ecNumbers)
                 .build();
     }
 
@@ -219,7 +219,7 @@ public class ProteinDescriptionTest {
         List<EC> ecNumbers1 = createECNumbers("1.2.3.5", 11);
 
         ProteinSubName subName =
-                new ProteinSubNameBuilder().fullName(fullName1).ecNumbers(ecNumbers1).build();
+                new ProteinSubNameBuilder().fullName(fullName1).ecNumbersSet(ecNumbers1).build();
         return Collections.singletonList(subName);
     }
 
@@ -231,8 +231,8 @@ public class ProteinDescriptionTest {
         ProteinAltName alternativeName =
                 new ProteinAltNameBuilder()
                         .fullName(fullName)
-                        .shortNames(shortNames)
-                        .ecNumbers(ecNumbers)
+                        .shortNamesSet(shortNames)
+                        .ecNumbersSet(ecNumbers)
                         .build();
         return Collections.singletonList(alternativeName);
     }
@@ -244,7 +244,7 @@ public class ProteinDescriptionTest {
     private static Name createName(String value, String id) {
         return new NameBuilder()
                 .value(value)
-                .addEvidence(CreateUtils.createEvidence("ECO:0000255|PROSITE-ProRule:" + id))
+                .evidencesAdd(CreateUtils.createEvidence("ECO:0000255|PROSITE-ProRule:" + id))
                 .build();
     }
 
@@ -252,7 +252,7 @@ public class ProteinDescriptionTest {
         return Collections.singletonList(
                 new ECBuilder()
                         .value(ec)
-                        .addEvidence(
+                        .evidencesAdd(
                                 CreateUtils.createEvidence(
                                         "ECO:0000255|PROSITE-ProRule:PRU1002" + index))
                         .build());

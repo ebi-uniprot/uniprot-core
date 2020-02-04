@@ -55,9 +55,9 @@ public class UniRefEntryBuilder implements Builder<UniRefEntry> {
                 .entryType(instance.getEntryType())
                 .commonTaxonId(instance.getCommonTaxonId())
                 .commonTaxon(instance.getCommonTaxon())
-                .goTerms(instance.getGoTerms())
+                .goTermsSet(instance.getGoTerms())
                 .representativeMember(instance.getRepresentativeMember())
-                .members(instance.getMembers());
+                .membersSet(instance.getMembers());
     }
 
     public @Nonnull UniRefEntryBuilder id(UniRefEntryId id) {
@@ -95,12 +95,12 @@ public class UniRefEntryBuilder implements Builder<UniRefEntry> {
         return this;
     }
 
-    public @Nonnull UniRefEntryBuilder goTerms(List<GoTerm> goTerms) {
+    public @Nonnull UniRefEntryBuilder goTermsSet(List<GoTerm> goTerms) {
         this.goTerms = Utils.modifiableList(goTerms);
         return this;
     }
 
-    public @Nonnull UniRefEntryBuilder addGoTerm(GoTerm goTerm) {
+    public @Nonnull UniRefEntryBuilder goTermsAdd(GoTerm goTerm) {
         Utils.addOrIgnoreNull(goTerm, this.goTerms);
         return this;
     }
@@ -111,12 +111,12 @@ public class UniRefEntryBuilder implements Builder<UniRefEntry> {
         return this;
     }
 
-    public @Nonnull UniRefEntryBuilder members(List<UniRefMember> unirefMembers) {
+    public @Nonnull UniRefEntryBuilder membersSet(List<UniRefMember> unirefMembers) {
         this.members = Utils.modifiableList(unirefMembers);
         return this;
     }
 
-    public @Nonnull UniRefEntryBuilder addMember(UniRefMember unirefMember) {
+    public @Nonnull UniRefEntryBuilder membersAdd(UniRefMember unirefMember) {
         Utils.addOrIgnoreNull(unirefMember, this.members);
         return this;
     }

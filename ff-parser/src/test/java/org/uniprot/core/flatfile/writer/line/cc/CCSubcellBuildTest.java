@@ -50,7 +50,7 @@ class CCSubcellBuildTest extends CCBuildTestAbstr {
                         orient, orientEvs,
                         top, topEvs);
         subcellularLocations.add(subLocation);
-        builder.subcellularLocations(subcellularLocations);
+        builder.subcellularLocationsSet(subcellularLocations);
         SubcellularLocationComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -106,7 +106,7 @@ class CCSubcellBuildTest extends CCBuildTestAbstr {
                         orient, orientEvs,
                         top, topEvs);
         subcellularLocations.add(subLocation);
-        builder.subcellularLocations(subcellularLocations);
+        builder.subcellularLocationsSet(subcellularLocations);
         SubcellularLocationComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -141,7 +141,7 @@ class CCSubcellBuildTest extends CCBuildTestAbstr {
                         orient, orientEvs,
                         top, topEvs);
         subcellularLocations.add(subLocation);
-        builder.subcellularLocations(subcellularLocations);
+        builder.subcellularLocationsSet(subcellularLocations);
         SubcellularLocationComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -192,7 +192,7 @@ class CCSubcellBuildTest extends CCBuildTestAbstr {
                         orient, orientEvs,
                         top, topEvs);
         subcellularLocations.add(subLocation);
-        builder.subcellularLocations(subcellularLocations);
+        builder.subcellularLocationsSet(subcellularLocations);
         SubcellularLocationComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -231,7 +231,7 @@ class CCSubcellBuildTest extends CCBuildTestAbstr {
                         orient, orientEvs,
                         top, topEvs);
         subcellularLocations.add(subLocation);
-        builder.subcellularLocations(subcellularLocations);
+        builder.subcellularLocationsSet(subcellularLocations);
         SubcellularLocationComment comment = builder.build();
         doTest(ccLine, comment);
     }
@@ -292,7 +292,7 @@ class CCSubcellBuildTest extends CCBuildTestAbstr {
                         top2, topEvs2);
         subcellularLocations.add(subLocation2);
 
-        builder.subcellularLocations(subcellularLocations);
+        builder.subcellularLocationsSet(subcellularLocations);
         SubcellularLocationComment comment = builder.build();
         doTest(ccLine, comment);
     }
@@ -394,7 +394,7 @@ class CCSubcellBuildTest extends CCBuildTestAbstr {
                         top2, topEvs2);
         subcellularLocations.add(subLocation2);
 
-        builder.subcellularLocations(subcellularLocations);
+        builder.subcellularLocationsSet(subcellularLocations);
         SubcellularLocationComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -463,7 +463,7 @@ class CCSubcellBuildTest extends CCBuildTestAbstr {
                         orient, orientEvs,
                         top, topEvs);
         subcellularLocations.add(subLocation);
-        builder.subcellularLocations(subcellularLocations);
+        builder.subcellularLocationsSet(subcellularLocations);
         SubcellularLocationComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -489,7 +489,7 @@ class CCSubcellBuildTest extends CCBuildTestAbstr {
         return new SubcellularLocationValueBuilder()
                 .id("")
                 .value(value)
-                .evidences(createEvidence(evs))
+                .evidencesSet(createEvidence(evs))
                 .build();
     }
 }

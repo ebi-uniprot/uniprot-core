@@ -104,7 +104,7 @@ class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
         builder.sequenceCautionType(type)
                 .sequence(sequence)
                 .note(note)
-                .evidences(createEvidence(evs));
+                .evidencesSet(createEvidence(evs));
 
         return builder.build();
     }

@@ -25,27 +25,27 @@ public final class APCommentBuilder implements CommentBuilder<AlternativeProduct
 
     public static @Nonnull APCommentBuilder from(@Nonnull AlternativeProductsComment instance) {
         return new APCommentBuilder()
-                .events(instance.getEvents())
-                .isoforms(instance.getIsoforms())
+                .eventsSet(instance.getEvents())
+                .isoformsSet(instance.getIsoforms())
                 .note(instance.getNote());
     }
 
-    public @Nonnull APCommentBuilder events(List<APEventType> events) {
+    public @Nonnull APCommentBuilder eventsSet(List<APEventType> events) {
         this.events = modifiableList(events);
         return this;
     }
 
-    public @Nonnull APCommentBuilder addEvent(APEventType event) {
+    public @Nonnull APCommentBuilder eventsAdd(APEventType event) {
         addOrIgnoreNull(event, this.events);
         return this;
     }
 
-    public @Nonnull APCommentBuilder isoforms(List<APIsoform> isoforms) {
+    public @Nonnull APCommentBuilder isoformsSet(List<APIsoform> isoforms) {
         this.isoforms = modifiableList(isoforms);
         return this;
     }
 
-    public @Nonnull APCommentBuilder addIsoform(APIsoform isoform) {
+    public @Nonnull APCommentBuilder isoformsAdd(APIsoform isoform) {
         addOrIgnoreNull(isoform, this.isoforms);
         return this;
     }

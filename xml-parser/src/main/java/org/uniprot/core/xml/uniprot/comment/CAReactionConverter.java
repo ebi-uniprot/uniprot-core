@@ -54,9 +54,9 @@ public class CAReactionConverter implements Converter<ReactionType, Reaction> {
 
         return new ReactionBuilder()
                 .name(name)
-                .references(references)
+                .reactionReferencesSet(references)
                 .ecNumber(ecNumber)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 

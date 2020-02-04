@@ -54,7 +54,7 @@ public class SequenceCautionCommentImpl extends CommentHasMoleculeImpl
 
     @Override
     public boolean hasSequence() {
-        return Utils.notNullOrEmpty(this.sequence);
+        return Utils.notNullNotEmpty(this.sequence);
     }
 
     @Override
@@ -74,7 +74,7 @@ public class SequenceCautionCommentImpl extends CommentHasMoleculeImpl
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notNullOrEmpty(this.evidences);
+        return Utils.notNullNotEmpty(this.evidences);
     }
 
     @Override

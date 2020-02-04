@@ -71,7 +71,7 @@ public class CofactorCommentTransformer implements CommentTransformer<CofactorCo
                         new CofactorBuilder()
                                 .name(name)
                                 .reference(reference)
-                                .evidences(evidences)
+                                .evidencesSet(evidences)
                                 .build();
                 cofactors.add(cofactor);
             }
@@ -114,7 +114,7 @@ public class CofactorCommentTransformer implements CommentTransformer<CofactorCo
                 List<Cofactor> cofactors =
                         extractCofactorReferences(
                                 annotation.substring(separatorIndex, annotation.length()));
-                builder.cofactors(cofactors);
+                builder.cofactorsSet(cofactors);
                 annotation = annotation.substring(0, separatorIndex).trim();
             }
 

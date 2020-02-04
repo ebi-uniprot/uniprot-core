@@ -250,7 +250,7 @@ class KWLineBuildTest {
                 .id(id)
                 .value(kw)
                 .category(KeywordCategory.DOMAIN)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 

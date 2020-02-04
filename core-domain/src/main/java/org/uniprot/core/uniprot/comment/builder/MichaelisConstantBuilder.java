@@ -40,12 +40,12 @@ public final class MichaelisConstantBuilder implements Builder<MichaelisConstant
         return this;
     }
 
-    public @Nonnull MichaelisConstantBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull MichaelisConstantBuilder evidencesSet(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public @Nonnull MichaelisConstantBuilder addEvidence(Evidence evidence) {
+    public @Nonnull MichaelisConstantBuilder evidencesAdd(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
@@ -57,7 +57,7 @@ public final class MichaelisConstantBuilder implements Builder<MichaelisConstant
 
     public static @Nonnull MichaelisConstantBuilder from(@Nonnull MichaelisConstant instance) {
         return new MichaelisConstantBuilder()
-                .evidences(instance.getEvidences())
+                .evidencesSet(instance.getEvidences())
                 .constant(instance.getConstant())
                 .substrate(instance.getSubstrate())
                 .unit(instance.getUnit());

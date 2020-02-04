@@ -60,7 +60,7 @@ public class MassSpectrometryCommentTest {
                 .molWeight(2.1f)
                 .molWeightError(1.2f)
                 .note("note value")
-                .evidences(CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361"))
+                .evidencesSet(CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361"))
                 .build();
     }
 }

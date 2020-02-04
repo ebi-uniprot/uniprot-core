@@ -88,7 +88,7 @@ public class MassSpectrometryCommentImpl extends CommentHasMoleculeImpl
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notNullOrEmpty(this.evidences);
+        return Utils.notNullNotEmpty(this.evidences);
     }
 
     @Override

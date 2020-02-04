@@ -32,7 +32,7 @@ class APCommentBuilderTest {
         List<APEventType> events = new ArrayList<>();
         events.add(APEventType.ALTERNATIVE_INITIATION);
         events.add(APEventType.ALTERNATIVE_SPLICING);
-        AlternativeProductsComment comment = builder.events(events).build();
+        AlternativeProductsComment comment = builder.eventsSet(events).build();
         assertEquals(2, comment.getEvents().size());
         assertEquals(0, comment.getIsoforms().size());
         //   assertFalse(comment.getNote().isPresent());
@@ -46,7 +46,8 @@ class APCommentBuilderTest {
         events.add(APEventType.ALTERNATIVE_INITIATION);
         events.add(APEventType.ALTERNATIVE_SPLICING);
         List<APIsoform> apIsoforms = singletonList(ObjectsForTests.createAPIsoform());
-        AlternativeProductsComment comment = builder.events(events).isoforms(apIsoforms).build();
+        AlternativeProductsComment comment =
+                builder.eventsSet(events).isoformsSet(apIsoforms).build();
         assertEquals(2, comment.getEvents().size());
         assertEquals(1, comment.getIsoforms().size());
         assertEquals(CommentType.ALTERNATIVE_PRODUCTS, comment.getCommentType());
@@ -62,7 +63,7 @@ class APCommentBuilderTest {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note apNote = new NoteBuilder(texts).build();
         AlternativeProductsComment comment =
-                builder.events(events).isoforms(apIsoforms).note(apNote).build();
+                builder.eventsSet(events).isoformsSet(apIsoforms).note(apNote).build();
         assertEquals(2, comment.getEvents().size());
         assertEquals(1, comment.getIsoforms().size());
         assertNotNull(comment.getNote());
@@ -112,7 +113,7 @@ class APCommentBuilderTest {
         APIsoform apIsoform =
                 isoformBuilder
                         .name(createIsoformName(name, evidences))
-                        .synonyms(isoformSynonyms)
+                        .synonymsSet(isoformSynonyms)
                         .build();
         assertEquals(name, apIsoform.getName().getValue());
         assertEquals(2, apIsoform.getSynonyms().size());
@@ -135,8 +136,8 @@ class APCommentBuilderTest {
         APIsoform apIsoform =
                 isoformBuilder
                         .name(createIsoformName(name, evidences))
-                        .synonyms(isoformSynonyms)
-                        .ids(asList("isoID1", "isoID2", "isoID3"))
+                        .synonymsSet(isoformSynonyms)
+                        .isoformIdsSet(asList("isoID1", "isoID2", "isoID3"))
                         .build();
         assertEquals(name, apIsoform.getName().getValue());
         assertEquals(2, apIsoform.getSynonyms().size());
@@ -159,10 +160,10 @@ class APCommentBuilderTest {
         APIsoform apIsoform =
                 isoformBuilder
                         .name(createIsoformName(name, evidences))
-                        .synonyms(isoformSynonyms)
-                        .ids(asList("isoID1", "isoID2", "isoID3"))
+                        .synonymsSet(isoformSynonyms)
+                        .isoformIdsSet(asList("isoID1", "isoID2", "isoID3"))
                         .sequenceStatus(IsoformSequenceStatus.DISPLAYED)
-                        .sequenceIds(singletonList("someSeqId"))
+                        .sequenceIdsSet(singletonList("someSeqId"))
                         .build();
         assertEquals(name, apIsoform.getName().getValue());
         assertEquals(2, apIsoform.getSynonyms().size());
@@ -174,7 +175,7 @@ class APCommentBuilderTest {
     @Test
     void canAddSingleIsoform() {
         AlternativeProductsComment obj =
-                new APCommentBuilder().addIsoform(ObjectsForTests.createAPIsoform()).build();
+                new APCommentBuilder().isoformsAdd(ObjectsForTests.createAPIsoform()).build();
         assertNotNull(obj.getIsoforms());
         assertFalse(obj.getIsoforms().isEmpty());
         assertTrue(obj.hasIsoforms());
@@ -182,7 +183,7 @@ class APCommentBuilderTest {
 
     @Test
     void nullIsoform_willBeIgnore() {
-        AlternativeProductsComment obj = new APCommentBuilder().addIsoform(null).build();
+        AlternativeProductsComment obj = new APCommentBuilder().isoformsAdd(null).build();
         assertNotNull(obj.getIsoforms());
         assertTrue(obj.getIsoforms().isEmpty());
         assertFalse(obj.hasIsoforms());
@@ -191,7 +192,7 @@ class APCommentBuilderTest {
     @Test
     void canAddSingleEvent() {
         AlternativeProductsComment obj =
-                new APCommentBuilder().addEvent(APEventType.ALTERNATIVE_INITIATION).build();
+                new APCommentBuilder().eventsAdd(APEventType.ALTERNATIVE_INITIATION).build();
         assertNotNull(obj.getEvents());
         assertFalse(obj.getEvents().isEmpty());
         assertTrue(obj.hasEvents());
@@ -199,7 +200,7 @@ class APCommentBuilderTest {
 
     @Test
     void nullEvent_willBeIgnore() {
-        AlternativeProductsComment obj = new APCommentBuilder().addEvent(null).build();
+        AlternativeProductsComment obj = new APCommentBuilder().eventsAdd(null).build();
         assertNotNull(obj.getEvents());
         assertTrue(obj.getEvents().isEmpty());
         assertFalse(obj.hasEvents());

@@ -68,7 +68,7 @@ public class BPCPAbsorptionConverter implements Converter<CommentType.Absorption
                 .max(maxValue)
                 .approximate(approximate)
                 .note(note)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 

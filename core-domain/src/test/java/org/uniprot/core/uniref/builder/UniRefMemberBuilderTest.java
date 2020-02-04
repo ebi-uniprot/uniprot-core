@@ -81,7 +81,7 @@ class UniRefMemberBuilderTest {
     @Test
     void testAddAccession() {
         UniProtAccession accession = new UniProtAccessionBuilder("P12345").build();
-        UniRefMember member = new UniRefMemberBuilder().addAccession(accession).build();
+        UniRefMember member = new UniRefMemberBuilder().accessionsAdd(accession).build();
         assertEquals(1, member.getUniProtAccessions().size());
         assertEquals(accession, member.getUniProtAccessions().get(0));
     }
@@ -91,7 +91,7 @@ class UniRefMemberBuilderTest {
         UniProtAccession accession1 = new UniProtAccessionBuilder("P12345").build();
         UniProtAccession accession2 = new UniProtAccessionBuilder("P12346").build();
         List<UniProtAccession> accessions = Arrays.asList(accession1, accession2);
-        UniRefMember member = new UniRefMemberBuilder().accessions(accessions).build();
+        UniRefMember member = new UniRefMemberBuilder().accessionsSet(accessions).build();
         assertEquals(2, member.getUniProtAccessions().size());
         assertEquals(accession1, member.getUniProtAccessions().get(0));
         assertEquals(accession2, member.getUniProtAccessions().get(1));

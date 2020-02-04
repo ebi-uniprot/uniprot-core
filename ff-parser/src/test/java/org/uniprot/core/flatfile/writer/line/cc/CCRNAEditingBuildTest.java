@@ -42,7 +42,7 @@ class CCRNAEditingBuildTest extends CCBuildTestAbstr {
         pEvs = new ArrayList<>();
         RnaEdPosition position4 = buildPosition(p, pEvs);
         positions.add(position4);
-        builder.positions(positions);
+        builder.positionsSet(positions);
         RnaEditingComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -119,7 +119,7 @@ class CCRNAEditingBuildTest extends CCBuildTestAbstr {
         RnaEdPosition position3 = buildPosition(p, pEvs);
         positions.add(position3);
 
-        builder.positions(positions);
+        builder.positionsSet(positions);
         RnaEditingComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -207,7 +207,7 @@ class CCRNAEditingBuildTest extends CCBuildTestAbstr {
         RnaEdPosition position3 = buildPosition(p, pEvs);
         positions.add(position3);
 
-        builder.positions(positions);
+        builder.positionsSet(positions);
         RnaEditingComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -215,6 +215,9 @@ class CCRNAEditingBuildTest extends CCBuildTestAbstr {
     }
 
     private RnaEdPosition buildPosition(String p, List<String> evs) {
-        return new RnaEditingPositionBuilder().position(p).evidences(createEvidence(evs)).build();
+        return new RnaEditingPositionBuilder()
+                .position(p)
+                .evidencesSet(createEvidence(evs))
+                .build();
     }
 }

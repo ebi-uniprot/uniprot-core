@@ -11,7 +11,7 @@ class InteractionCommentBuilderTest {
     void canAddSingleInteraction() {
         InteractionComment obj =
                 new InteractionCommentBuilder()
-                        .addInteraction(new InteractionBuilder().build())
+                        .interactionsAdd(new InteractionBuilder().build())
                         .build();
         assertNotNull(obj.getInteractions());
         assertFalse(obj.getInteractions().isEmpty());
@@ -20,7 +20,7 @@ class InteractionCommentBuilderTest {
 
     @Test
     void nullInteraction_willBeIgnore() {
-        InteractionComment obj = new InteractionCommentBuilder().addInteraction(null).build();
+        InteractionComment obj = new InteractionCommentBuilder().interactionsAdd(null).build();
         assertNotNull(obj.getInteractions());
         assertTrue(obj.getInteractions().isEmpty());
         assertFalse(obj.hasInteractions());

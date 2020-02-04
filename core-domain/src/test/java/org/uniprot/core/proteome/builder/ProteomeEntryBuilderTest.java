@@ -306,8 +306,8 @@ class ProteomeEntryBuilderTest {
         TaxonomyLineage taxon =
                 new TaxonomyLineageBuilder().taxonId(9605).scientificName("Homo").build();
         ProteomeEntry proteome =
-                new ProteomeEntryBuilder().taxonLineageSet(Arrays.asList(taxon)).build();
-        assertEquals(Arrays.asList(taxon), proteome.getTaxonLineage());
+                new ProteomeEntryBuilder().taxonLineagesSet(Arrays.asList(taxon)).build();
+        assertEquals(Arrays.asList(taxon), proteome.getTaxonLineages());
     }
 
     @Test
@@ -363,7 +363,7 @@ class ProteomeEntryBuilderTest {
     @Test
     void canAddTaxonomyLineage() {
         TaxonomyLineage taxonomyLineage = new TaxonomyLineageBuilder().build();
-        ProteomeEntry entry = new ProteomeEntryBuilder().taxonLineageAdd(taxonomyLineage).build();
-        assertFalse(entry.getTaxonLineage().isEmpty());
+        ProteomeEntry entry = new ProteomeEntryBuilder().taxonLineagesAdd(taxonomyLineage).build();
+        assertFalse(entry.getTaxonLineages().isEmpty());
     }
 }

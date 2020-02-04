@@ -58,7 +58,7 @@ public class SCCommentConverter implements CommentConverter<SequenceCautionComme
 
         if (!xmlObj.getEvidence().isEmpty()) {
             List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
-            builder.evidences(evidences);
+            builder.evidencesSet(evidences);
         }
         return builder.build();
     }

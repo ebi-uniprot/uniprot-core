@@ -227,7 +227,7 @@ class DRLineBuildTest {
                 .databaseType(opType)
                 .id(id)
                 .isoformId(isoformId)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .addProperty(opType.getAttribute(0), description)
                 .addProperty(opType.getAttribute(1), thirdAttribute)
                 .addProperty(opType.getAttribute(2), fourthAttribute)

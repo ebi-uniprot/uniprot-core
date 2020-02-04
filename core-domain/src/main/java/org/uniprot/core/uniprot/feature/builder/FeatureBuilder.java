@@ -44,7 +44,7 @@ public class FeatureBuilder implements Builder<Feature> {
 
     public static @Nonnull FeatureBuilder from(@Nonnull Feature instance) {
         return new FeatureBuilder()
-                .evidences(instance.getEvidences())
+                .evidencesSet(instance.getEvidences())
                 .description(instance.getDescription())
                 .type(instance.getType())
                 .location(instance.getLocation())
@@ -93,12 +93,12 @@ public class FeatureBuilder implements Builder<Feature> {
         return this;
     }
 
-    public @Nonnull FeatureBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull FeatureBuilder evidencesSet(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public @Nonnull FeatureBuilder evidence(Evidence evidence) {
+    public @Nonnull FeatureBuilder evidencesAdd(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }

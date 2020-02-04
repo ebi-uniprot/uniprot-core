@@ -82,7 +82,7 @@ class SequenceCautionCommentBuilderTest {
     @Test
     void canAddSingleEvidence() {
         SequenceCautionComment obj =
-                new SequenceCautionCommentBuilder().addEvidence(createEvidence()).build();
+                new SequenceCautionCommentBuilder().evidencesAdd(createEvidence()).build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
         assertTrue(obj.hasEvidences());
@@ -90,7 +90,7 @@ class SequenceCautionCommentBuilderTest {
 
     @Test
     void nullEvidence_willBeIgnore() {
-        SequenceCautionComment obj = new SequenceCautionCommentBuilder().addEvidence(null).build();
+        SequenceCautionComment obj = new SequenceCautionCommentBuilder().evidencesAdd(null).build();
         assertNotNull(obj.getEvidences());
         assertTrue(obj.getEvidences().isEmpty());
         assertFalse(obj.hasEvidences());
@@ -100,8 +100,8 @@ class SequenceCautionCommentBuilderTest {
     void evidences_willConvertUnModifiable_toModifiable() {
         SequenceCautionComment obj =
                 new SequenceCautionCommentBuilder()
-                        .evidences(Collections.emptyList())
-                        .addEvidence(createEvidence())
+                        .evidencesSet(Collections.emptyList())
+                        .evidencesAdd(createEvidence())
                         .build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
@@ -111,7 +111,7 @@ class SequenceCautionCommentBuilderTest {
     @Test
     void canAddListEvidences() {
         SequenceCautionComment obj =
-                new SequenceCautionCommentBuilder().evidences(createEvidences()).build();
+                new SequenceCautionCommentBuilder().evidencesSet(createEvidences()).build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
         assertTrue(obj.hasEvidences());

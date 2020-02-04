@@ -53,10 +53,10 @@ class ReferenceConverterTest {
             List<ReferenceComment> refComments,
             List<Evidence> evidences) {
         return new UniProtReferenceBuilder()
-                .comments(refComments)
+                .referenceCommentsSet(refComments)
                 .citation(citation)
-                .positions(referencePositions)
-                .evidences(evidences)
+                .referencePositionsSet(referencePositions)
+                .evidencesSet(evidences)
                 .build();
     }
 
@@ -65,7 +65,7 @@ class ReferenceConverterTest {
         return new ReferenceCommentBuilder()
                 .type(commentType)
                 .value(value)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 

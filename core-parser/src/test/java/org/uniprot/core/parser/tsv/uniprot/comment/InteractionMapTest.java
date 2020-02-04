@@ -28,7 +28,7 @@ class InteractionMapTest {
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(interactionLine);
 
         List<InteractionComment> interactionComments =
-                entry.getCommentByType(CommentType.INTERACTION);
+                entry.getCommentsByType(CommentType.INTERACTION);
         assertNotNull(entry);
         InteractionMap interactionMap = new InteractionMap(interactionComments);
         Map<String, String> mappedInteraction = interactionMap.attributeValues();
@@ -50,7 +50,7 @@ class InteractionMapTest {
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(interactionLine);
 
         List<InteractionComment> interactionComments =
-                entry.getCommentByType(CommentType.INTERACTION);
+                entry.getCommentsByType(CommentType.INTERACTION);
         assertNotNull(entry);
         InteractionMap interactionMap = new InteractionMap(interactionComments);
         Map<String, String> mappedInteraction = interactionMap.attributeValues();

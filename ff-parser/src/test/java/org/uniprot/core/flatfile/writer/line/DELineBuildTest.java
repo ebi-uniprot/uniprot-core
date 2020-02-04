@@ -51,8 +51,8 @@ class DELineBuildTest {
             FlagType flag) {
         return new ProteinDescriptionBuilder()
                 .recommendedName(recName)
-                .alternativeNames(altNames)
-                .submissionNames(submissionNames)
+                .alternativeNamesSet(altNames)
+                .submissionNamesSet(submissionNames)
                 .flag(flag)
                 .build();
     }
@@ -60,8 +60,8 @@ class DELineBuildTest {
     private ProteinAltName createProteinAltName(
             Name recFullName, List<Name> recShortNames, List<EC> recEcNumbers) {
         return new ProteinAltNameBuilder()
-                .ecNumbers(recEcNumbers)
-                .shortNames(recShortNames)
+                .ecNumbersSet(recEcNumbers)
+                .shortNamesSet(recShortNames)
                 .fullName(recFullName)
                 .build();
     }
@@ -69,22 +69,22 @@ class DELineBuildTest {
     private ProteinRecName createProteinRecName(
             Name recFullName, List<Name> recShortNames, List<EC> recEcNumbers) {
         return new ProteinRecNameBuilder()
-                .ecNumbers(recEcNumbers)
-                .shortNames(recShortNames)
+                .ecNumbersSet(recEcNumbers)
+                .shortNamesSet(recShortNames)
                 .fullName(recFullName)
                 .build();
     }
 
     private ProteinSubName createProteinSubName(Name recFullName, List<EC> recEcNumbers) {
-        return new ProteinSubNameBuilder().ecNumbers(recEcNumbers).fullName(recFullName).build();
+        return new ProteinSubNameBuilder().ecNumbersSet(recEcNumbers).fullName(recFullName).build();
     }
 
     private EC createECNumber(String ec, List<Evidence> evidences) {
-        return new ECBuilder().value(ec).evidences(evidences).build();
+        return new ECBuilder().value(ec).evidencesSet(evidences).build();
     }
 
     private Name createName(String name, List<Evidence> evidences) {
-        return new NameBuilder().value(name).evidences(evidences).build();
+        return new NameBuilder().value(name).evidencesSet(evidences).build();
     }
 
     private void doTest(String deLine, ProteinDescription pd) {
@@ -173,10 +173,10 @@ class DELineBuildTest {
         ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
         ProteinDescription proteinDescription =
                 builder.recommendedName(recName)
-                        .alternativeNames(altNames)
+                        .alternativeNamesSet(altNames)
                         .flag(FlagType.FRAGMENT_PRECURSOR)
-                        .innNames(innNames)
-                        .cdAntigenNames(cdAntigenNames)
+                        .innNamesSet(innNames)
+                        .cdAntigenNamesSet(cdAntigenNames)
                         .build();
 
         String deLine =
@@ -240,10 +240,10 @@ class DELineBuildTest {
         ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
         ProteinDescription proteinDescription =
                 builder.recommendedName(recName)
-                        .alternativeNames(altNames)
+                        .alternativeNamesSet(altNames)
                         .flag(FlagType.FRAGMENT_PRECURSOR)
-                        .innNames(innNames)
-                        .cdAntigenNames(cdAntigenNames)
+                        .innNamesSet(innNames)
+                        .cdAntigenNamesSet(cdAntigenNames)
                         .build();
 
         String deLine =
@@ -451,7 +451,10 @@ class DELineBuildTest {
 
         ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
         ProteinDescription proteinDescription =
-                builder.recommendedName(recName).includes(includes).contains(contains).build();
+                builder.recommendedName(recName)
+                        .includesSet(includes)
+                        .containsSet(contains)
+                        .build();
 
         doTest(deLine, proteinDescription);
     }
@@ -620,7 +623,10 @@ class DELineBuildTest {
 
         ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
         ProteinDescription proteinDescription =
-                builder.recommendedName(recName).includes(includes).contains(contains).build();
+                builder.recommendedName(recName)
+                        .includesSet(includes)
+                        .containsSet(contains)
+                        .build();
 
         doTest(deLine, proteinDescription);
     }
@@ -629,7 +635,7 @@ class DELineBuildTest {
             ProteinRecName recName, List<ProteinAltName> altNames) {
         return new ProteinSectionBuilder()
                 .recommendedName(recName)
-                .alternativeNames(altNames)
+                .alternativeNamesSet(altNames)
                 .build();
     }
 }

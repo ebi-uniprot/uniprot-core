@@ -27,7 +27,7 @@ class CatalyticActivityMapTest {
                 CommentTestUtil.createUniProtEntryFromCommentLine(catalyticActivityLine);
 
         List<CatalyticActivityComment> catalyticActivityComments =
-                entry.getCommentByType(CommentType.CATALYTIC_ACTIVITY);
+                entry.getCommentsByType(CommentType.CATALYTIC_ACTIVITY);
         assertNotNull(entry);
         CatalyticActivityMap catalyticActivityMap =
                 new CatalyticActivityMap(catalyticActivityComments);
@@ -65,7 +65,7 @@ class CatalyticActivityMapTest {
                 CommentTestUtil.createUniProtEntryFromCommentLine(catalyticActivityLine);
 
         List<CatalyticActivityComment> catalyticActivityComments =
-                entry.getCommentByType(CommentType.CATALYTIC_ACTIVITY);
+                entry.getCommentsByType(CommentType.CATALYTIC_ACTIVITY);
         assertNotNull(entry);
         CatalyticActivityMap catalyticActivityMap =
                 new CatalyticActivityMap(catalyticActivityComments);

@@ -29,7 +29,7 @@ class OrganismConverterTest {
         builder.scientificName("Homo sapiens")
                 .commonName("Human")
                 .taxonId(9606l)
-                .lineage(
+                .lineagesSet(
                         Arrays.asList(
                                 "Eukaryota",
                                 "Metazoa",
@@ -45,7 +45,7 @@ class OrganismConverterTest {
                                 "Catarrhini",
                                 "Hominidae",
                                 "Homo"))
-                .evidences(createEvidences());
+                .evidencesSet(createEvidences());
 
         return builder.build();
     }

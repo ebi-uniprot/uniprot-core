@@ -23,7 +23,7 @@ class SequenceCautionMapTest {
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(sequenceCautionLine);
 
         List<SequenceCautionComment> sequenceCautionComments =
-                entry.getCommentByType(CommentType.SEQUENCE_CAUTION);
+                entry.getCommentsByType(CommentType.SEQUENCE_CAUTION);
         assertNotNull(entry);
         SequenceCautionMap sequenceCautionMap = new SequenceCautionMap(sequenceCautionComments);
         Map<String, String> mappedSequenceCaution = sequenceCautionMap.attributeValues();
@@ -49,7 +49,7 @@ class SequenceCautionMapTest {
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(sequenceCautionLine);
 
         List<SequenceCautionComment> sequenceCautionComments =
-                entry.getCommentByType(CommentType.SEQUENCE_CAUTION);
+                entry.getCommentsByType(CommentType.SEQUENCE_CAUTION);
         assertNotNull(entry);
         SequenceCautionMap sequenceCautionMap = new SequenceCautionMap(sequenceCautionComments);
         Map<String, String> mappedSequenceCaution = sequenceCautionMap.attributeValues();

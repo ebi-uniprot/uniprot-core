@@ -135,7 +135,7 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
         List<Evidence> evidences = new ArrayList<>();
         descriptionString = CommentTransformerHelper.stripEvidences(descriptionString, evidences);
         // remove trailing full stop
-        builder.description(descriptionString).evidences(evidences);
+        builder.description(descriptionString).evidencesSet(evidences);
     }
 
     /**

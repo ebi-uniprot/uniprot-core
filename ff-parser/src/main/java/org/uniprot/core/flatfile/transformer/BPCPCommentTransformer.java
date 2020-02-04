@@ -134,7 +134,7 @@ public class BPCPCommentTransformer implements CommentTransformer<BPCPComment> {
                 .max(max)
                 .approximate(approximate)
                 .note(note)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 
@@ -193,7 +193,7 @@ public class BPCPCommentTransformer implements CommentTransformer<BPCPComment> {
                 .constant(value)
                 .unit(MichaelisConstantUnit.convert(unit))
                 .substrate(commentStr)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 
@@ -216,7 +216,7 @@ public class BPCPCommentTransformer implements CommentTransformer<BPCPComment> {
                 .velocity(value)
                 .unit(unit)
                 .enzyme(commentStr)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 
@@ -245,8 +245,8 @@ public class BPCPCommentTransformer implements CommentTransformer<BPCPComment> {
         }
 
         return new KineticParametersBuilder()
-                .maximumVelocities(velocities)
-                .michaelisConstants(mConstants)
+                .maximumVelocitiesSet(velocities)
+                .michaelisConstantsSet(mConstants)
                 .note(note)
                 .build();
     }

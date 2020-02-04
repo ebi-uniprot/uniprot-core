@@ -43,8 +43,8 @@ public class DiseaseBuilder implements Builder<Disease> {
                 .acronym(instance.getAcronym())
                 .definition(instance.getDefinition())
                 .alternativeNamesSet(instance.getAlternativeNames())
-                .crossReferences(instance.getCrossReferences())
-                .keywords(instance.getKeywords())
+                .crossReferencesSet(instance.getCrossReferences())
+                .keywordsSet(instance.getKeywords())
                 .reviewedProteinCount(instance.getReviewedProteinCount())
                 .unreviewedProteinCount(instance.getUnreviewedProteinCount());
         return builder;
@@ -83,25 +83,25 @@ public class DiseaseBuilder implements Builder<Disease> {
     }
 
     // setter for single object
-    public @Nonnull DiseaseBuilder crossReferences(CrossReference crossReference) {
+    public @Nonnull DiseaseBuilder crossReferencesAdd(CrossReference crossReference) {
         this.crossReferences = Utils.modifiableList(this.crossReferences);
         this.crossReferences.add(crossReference);
         return this;
     }
 
-    public @Nonnull DiseaseBuilder crossReferences(List<CrossReference> crossReferences) {
+    public @Nonnull DiseaseBuilder crossReferencesSet(List<CrossReference> crossReferences) {
         this.crossReferences = crossReferences;
         return this;
     }
 
     // setter for single object
-    public @Nonnull DiseaseBuilder keywords(Keyword keyword) {
+    public @Nonnull DiseaseBuilder keywordsAdd(Keyword keyword) {
         this.keywords = Utils.modifiableList(this.keywords);
         this.keywords.add(keyword);
         return this;
     }
 
-    public @Nonnull DiseaseBuilder keywords(List<Keyword> keywords) {
+    public @Nonnull DiseaseBuilder keywordsSet(List<Keyword> keywords) {
         this.keywords = keywords;
         return this;
     }

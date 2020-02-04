@@ -27,7 +27,7 @@ class MaximumVelocityBuilderTest {
 
     @Test
     void canAddSingleEvidence() {
-        MaximumVelocity obj = new MaximumVelocityBuilder().addEvidence(createEvidence()).build();
+        MaximumVelocity obj = new MaximumVelocityBuilder().evidencesAdd(createEvidence()).build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
         assertTrue(obj.hasEvidences());
@@ -35,7 +35,7 @@ class MaximumVelocityBuilderTest {
 
     @Test
     void nullEvidence_willBeIgnore() {
-        MaximumVelocity obj = new MaximumVelocityBuilder().addEvidence(null).build();
+        MaximumVelocity obj = new MaximumVelocityBuilder().evidencesAdd(null).build();
         assertNotNull(obj.getEvidences());
         assertTrue(obj.getEvidences().isEmpty());
         assertFalse(obj.hasEvidences());
@@ -45,8 +45,8 @@ class MaximumVelocityBuilderTest {
     void evidences_willConvertUnModifiable_toModifiable() {
         MaximumVelocity obj =
                 new MaximumVelocityBuilder()
-                        .evidences(Collections.emptyList())
-                        .addEvidence(createEvidence())
+                        .evidencesSet(Collections.emptyList())
+                        .evidencesAdd(createEvidence())
                         .build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
@@ -55,7 +55,7 @@ class MaximumVelocityBuilderTest {
 
     @Test
     void canAddListEvidences() {
-        MaximumVelocity obj = new MaximumVelocityBuilder().evidences(createEvidences()).build();
+        MaximumVelocity obj = new MaximumVelocityBuilder().evidencesSet(createEvidences()).build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
         assertTrue(obj.hasEvidences());

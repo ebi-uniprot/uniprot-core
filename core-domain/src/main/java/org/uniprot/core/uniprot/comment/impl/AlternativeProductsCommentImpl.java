@@ -54,12 +54,12 @@ public class AlternativeProductsCommentImpl extends CommentImpl
 
     @Override
     public boolean hasEvents() {
-        return Utils.notNullOrEmpty(this.events);
+        return Utils.notNullNotEmpty(this.events);
     }
 
     @Override
     public boolean hasIsoforms() {
-        return Utils.notNullOrEmpty(this.isoforms);
+        return Utils.notNullNotEmpty(this.isoforms);
     }
 
     @Override

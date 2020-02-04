@@ -21,7 +21,7 @@ class UniProtDBCrossReferenceBuilderTest {
     void canAddSingleEvidence() {
         UniProtDBCrossReference reference =
                 new UniProtDBCrossReferenceBuilder()
-                        .addEvidence(new EvidenceBuilder().build())
+                        .evidencesAdd(new EvidenceBuilder().build())
                         .build();
         assertNotNull(reference.getEvidences());
         assertFalse(reference.getEvidences().isEmpty());
@@ -30,7 +30,7 @@ class UniProtDBCrossReferenceBuilderTest {
     @Test
     void nullEvidence_willBeIgnore() {
         UniProtDBCrossReference reference =
-                new UniProtDBCrossReferenceBuilder().addEvidence(null).build();
+                new UniProtDBCrossReferenceBuilder().evidencesAdd(null).build();
         assertNotNull(reference.getEvidences());
         assertTrue(reference.getEvidences().isEmpty());
     }
@@ -39,8 +39,8 @@ class UniProtDBCrossReferenceBuilderTest {
     void evidences_willConvertModifiable_toUnModifiable() {
         UniProtDBCrossReference reference =
                 new UniProtDBCrossReferenceBuilder()
-                        .evidences(Collections.emptyList())
-                        .addEvidence(new EvidenceBuilder().build())
+                        .evidencesSet(Collections.emptyList())
+                        .evidencesAdd(new EvidenceBuilder().build())
                         .build();
         assertNotNull(reference.getEvidences());
         assertFalse(reference.getEvidences().isEmpty());

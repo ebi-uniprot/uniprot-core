@@ -32,7 +32,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
     private int annotationScore;
     private Superkingdom superkingdom;
     private int geneCount;
-    private List<TaxonomyLineage> taxonLineage = new ArrayList<>();
+    private List<TaxonomyLineage> taxonLineages = new ArrayList<>();
     private List<CanonicalProtein> canonicalProteins = new ArrayList<>();
     private String sourceDb;
 
@@ -55,7 +55,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 annotationScore,
                 superkingdom,
                 geneCount,
-                taxonLineage,
+                taxonLineages,
                 canonicalProteins,
                 sourceDb);
     }
@@ -79,7 +79,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 .annotationScore(instance.getAnnotationScore())
                 .superkingdom(instance.getSuperkingdom())
                 .geneCount(instance.getGeneCount())
-                .taxonLineageSet(instance.getTaxonLineage())
+                .taxonLineagesSet(instance.getTaxonLineages())
                 .sourceDb(instance.getSourceDb());
     }
 
@@ -197,13 +197,13 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
         return this;
     }
 
-    public @Nonnull ProteomeEntryBuilder taxonLineageSet(List<TaxonomyLineage> taxonLineage) {
-        this.taxonLineage = Utils.modifiableList(taxonLineage);
+    public @Nonnull ProteomeEntryBuilder taxonLineagesSet(List<TaxonomyLineage> taxonLineage) {
+        this.taxonLineages = Utils.modifiableList(taxonLineage);
         return this;
     }
 
-    public @Nonnull ProteomeEntryBuilder taxonLineageAdd(TaxonomyLineage taxon) {
-        Utils.addOrIgnoreNull(taxon, taxonLineage);
+    public @Nonnull ProteomeEntryBuilder taxonLineagesAdd(TaxonomyLineage taxon) {
+        Utils.addOrIgnoreNull(taxon, taxonLineages);
         return this;
     }
 

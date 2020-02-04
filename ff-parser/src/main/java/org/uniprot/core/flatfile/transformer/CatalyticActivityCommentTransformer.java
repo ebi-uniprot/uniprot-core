@@ -69,7 +69,7 @@ public class CatalyticActivityCommentTransformer
             if (!Strings.isNullOrEmpty(pdName2)) {
                 pds.add(createPhysiologicalDirection(pdName2, pdXref2, pdEvidence2));
             }
-            builder.physiologicalReactions(pds);
+            builder.physiologicalReactionsSet(pds);
 
             return builder.build();
         } else {
@@ -106,7 +106,7 @@ public class CatalyticActivityCommentTransformer
         return new PhysiologicalReactionBuilder()
                 .directionType(PhysiologicalDirectionType.typeOf(name))
                 .reactionReference(reference)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 
@@ -132,9 +132,9 @@ public class CatalyticActivityCommentTransformer
         }
         return new ReactionBuilder()
                 .name(name)
-                .references(references)
+                .reactionReferencesSet(references)
                 .ecNumber(ecNumber)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 

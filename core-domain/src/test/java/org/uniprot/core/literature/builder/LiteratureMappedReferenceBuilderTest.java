@@ -43,7 +43,7 @@ class LiteratureMappedReferenceBuilderTest {
 
         assertTrue(mappedReference.hasSourceCategory());
         MatcherAssert.assertThat(
-                mappedReference.getSourceCategory(), Matchers.contains("source category"));
+                mappedReference.getSourceCategories(), Matchers.contains("source category"));
 
         assertTrue(mappedReference.hasSourceId());
         assertEquals(mappedReference.getSourceId(), "source Id");

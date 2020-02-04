@@ -36,7 +36,7 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
 
     @Override
     public boolean hasPatentNumber() {
-        return Utils.notNullOrEmpty(this.patentNumber);
+        return Utils.notNullNotEmpty(this.patentNumber);
     }
 
     @Override

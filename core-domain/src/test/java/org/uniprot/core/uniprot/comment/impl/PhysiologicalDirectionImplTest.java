@@ -25,7 +25,7 @@ class PhysiologicalDirectionImplTest {
                                         .databaseType(ReactionReferenceType.RHEA)
                                         .id("RHEA:123")
                                         .build())
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build();
 
         assertEquals(PhysiologicalDirectionType.LEFT_TO_RIGHT, reaction.getDirectionType());

@@ -52,7 +52,7 @@ public class FreeTextCommentTest {
         return new FreeTextCommentBuilder()
                 .commentType(CommentType.DISRUPTION_PHENOTYPE)
                 .molecule("Isoform 4")
-                .texts(
+                .textsSet(
                         CreateUtils.createEvidencedValueList(
                                 "value", "ECO:0000256|PIRNR:PIRNR001360"))
                 .build();

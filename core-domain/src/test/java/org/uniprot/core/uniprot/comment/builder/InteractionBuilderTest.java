@@ -132,7 +132,7 @@ class InteractionBuilderTest {
         List<Interaction> interactions = Collections.singletonList(interaction);
         InteractionCommentBuilder commentBuilder = new InteractionCommentBuilder();
 
-        InteractionComment comment = commentBuilder.interactions(interactions).build();
+        InteractionComment comment = commentBuilder.interactionsSet(interactions).build();
         assertEquals(interactions, comment.getInteractions());
         assertEquals(CommentType.INTERACTION, comment.getCommentType());
     }

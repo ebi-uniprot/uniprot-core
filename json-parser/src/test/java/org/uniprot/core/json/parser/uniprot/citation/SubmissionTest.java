@@ -55,7 +55,7 @@ public class SubmissionTest {
         return new SubmissionBuilder()
                 .submittedToDatabase(SubmissionDatabase.PIR)
                 .publicationDate("date value")
-                .authorGroupAdd("auth group")
+                .authorGroupsAdd("auth group")
                 .authorsAdd("author Leo")
                 .title("Leo book tittle")
                 .citationXrefsSet(Collections.singletonList(xref))

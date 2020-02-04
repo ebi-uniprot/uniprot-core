@@ -85,13 +85,13 @@ public class ProteinDescriptionConverter
             builder.recommendedName(recNameConverter.fromXml(xmlObj.getRecommendedName()));
         }
         if (!xmlObj.getAlternativeName().isEmpty()) {
-            builder.alternativeNames(
+            builder.alternativeNamesSet(
                     xmlObj.getAlternativeName().stream()
                             .map(altNameConverter::fromXml)
                             .collect(Collectors.toList()));
         }
         if (!xmlObj.getSubmittedName().isEmpty()) {
-            builder.submissionNames(
+            builder.submissionNamesSet(
                     xmlObj.getSubmittedName().stream()
                             .map(subNameConverter::fromXml)
                             .collect(Collectors.toList()));
@@ -103,25 +103,25 @@ public class ProteinDescriptionConverter
             builder.biotechName(nameConverter.fromXml(xmlObj.getBiotechName()));
         }
         if (!xmlObj.getCdAntigenName().isEmpty()) {
-            builder.cdAntigenNames(
+            builder.cdAntigenNamesSet(
                     xmlObj.getCdAntigenName().stream()
                             .map(nameConverter::fromXml)
                             .collect(Collectors.toList()));
         }
         if (!xmlObj.getInnName().isEmpty()) {
-            builder.innNames(
+            builder.innNamesSet(
                     xmlObj.getInnName().stream()
                             .map(nameConverter::fromXml)
                             .collect(Collectors.toList()));
         }
         if (!xmlObj.getComponent().isEmpty()) {
-            builder.contains(
+            builder.containsSet(
                     xmlObj.getComponent().stream()
                             .map(componentConverter::fromXml)
                             .collect(Collectors.toList()));
         }
         if (!xmlObj.getDomain().isEmpty()) {
-            builder.includes(
+            builder.includesSet(
                     xmlObj.getDomain().stream()
                             .map(domainConverter::fromXml)
                             .collect(Collectors.toList()));

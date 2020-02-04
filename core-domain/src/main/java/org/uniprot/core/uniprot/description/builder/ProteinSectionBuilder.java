@@ -29,12 +29,13 @@ public class ProteinSectionBuilder implements Builder<ProteinSection> {
         return this;
     }
 
-    public @Nonnull ProteinSectionBuilder alternativeNames(List<ProteinAltName> alternativeNames) {
+    public @Nonnull ProteinSectionBuilder alternativeNamesSet(
+            List<ProteinAltName> alternativeNames) {
         this.alternativeNames = modifiableList(alternativeNames);
         return this;
     }
 
-    public @Nonnull ProteinSectionBuilder addAlternativeNames(ProteinAltName alternativeNames) {
+    public @Nonnull ProteinSectionBuilder alternativeNamesAdd(ProteinAltName alternativeNames) {
         addOrIgnoreNull(alternativeNames, this.alternativeNames);
         return this;
     }
@@ -49,22 +50,22 @@ public class ProteinSectionBuilder implements Builder<ProteinSection> {
         return this;
     }
 
-    public @Nonnull ProteinSectionBuilder cdAntigenNames(List<Name> cdAntigenNames) {
+    public @Nonnull ProteinSectionBuilder cdAntigenNamesSet(List<Name> cdAntigenNames) {
         this.cdAntigenNames = modifiableList(cdAntigenNames);
         return this;
     }
 
-    public @Nonnull ProteinSectionBuilder addCdAntigenNames(Name cdAntigen) {
+    public @Nonnull ProteinSectionBuilder cdAntigenNamesAdd(Name cdAntigen) {
         addOrIgnoreNull(cdAntigen, this.cdAntigenNames);
         return this;
     }
 
-    public @Nonnull ProteinSectionBuilder innNames(List<Name> innNames) {
+    public @Nonnull ProteinSectionBuilder innNamesSet(List<Name> innNames) {
         this.innNames = modifiableList(innNames);
         return this;
     }
 
-    public @Nonnull ProteinSectionBuilder addInnNames(Name innNames) {
+    public @Nonnull ProteinSectionBuilder innNamesAdd(Name innNames) {
         addOrIgnoreNull(innNames, this.innNames);
         return this;
     }
@@ -84,9 +85,9 @@ public class ProteinSectionBuilder implements Builder<ProteinSection> {
         return new ProteinSectionBuilder()
                 .allergenName(instance.getAllergenName())
                 .recommendedName(instance.getRecommendedName())
-                .alternativeNames(instance.getAlternativeNames())
+                .alternativeNamesSet(instance.getAlternativeNames())
                 .biotechName(instance.getBiotechName())
-                .cdAntigenNames(instance.getCdAntigenNames())
-                .innNames(instance.getInnNames());
+                .cdAntigenNamesSet(instance.getCdAntigenNames())
+                .innNamesSet(instance.getInnNames());
     }
 }

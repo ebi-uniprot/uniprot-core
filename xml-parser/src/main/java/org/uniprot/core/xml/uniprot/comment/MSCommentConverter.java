@@ -52,7 +52,7 @@ public class MSCommentConverter implements CommentConverter<MassSpectrometryComm
         // Sources
         if (!xmlObj.getEvidence().isEmpty()) {
             List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
-            builder.evidences(evidences);
+            builder.evidencesSet(evidences);
         }
         return builder.build();
     }

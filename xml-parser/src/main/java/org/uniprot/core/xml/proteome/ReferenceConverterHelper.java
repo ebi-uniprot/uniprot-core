@@ -70,8 +70,8 @@ public class ReferenceConverterHelper {
             xmlCitation.setDate(dateConverter.toXml(citation.getPublicationDate()));
         // Authors and Consortium
         NameListType authorsAndConsortiumList = xmlUniprotFactory.createNameListType();
-        if ((citation.getAuthoringGroup() != null) && !citation.getAuthoringGroup().isEmpty()) {
-            citation.getAuthoringGroup().stream()
+        if ((citation.getAuthoringGroups() != null) && !citation.getAuthoringGroups().isEmpty()) {
+            citation.getAuthoringGroups().stream()
                     .map(val -> toXmlAuthoringGroup(xmlUniprotFactory, val))
                     .forEach(val -> authorsAndConsortiumList.getConsortiumOrPerson().add(val));
         }

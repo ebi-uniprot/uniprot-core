@@ -46,7 +46,7 @@ public class CatalyticActivityCommentConverter
             builder.molecule(xmlObj.getMolecule().getValue());
         }
 
-        return builder.reaction(reaction).physiologicalReactions(physioReactions).build();
+        return builder.reaction(reaction).physiologicalReactionsSet(physioReactions).build();
     }
 
     @Override

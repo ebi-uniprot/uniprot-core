@@ -113,11 +113,11 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
         Organism organism =
                 new OrganismBuilder()
                         .taxonId(oxLineOrganism.getTaxonId())
-                        .evidences(oxLineOrganism.getEvidences())
-                        .lineage(ocLineConverter.convert(f.oc))
+                        .evidencesSet(oxLineOrganism.getEvidences())
+                        .lineagesSet(ocLineConverter.convert(f.oc))
                         .scientificName(orgName.getScientificName())
                         .commonName(orgName.getCommonName())
-                        .synonyms(orgName.getSynonyms())
+                        .synonymsSet(orgName.getSynonyms())
                         .build();
         activeEntryBuilder.organism(organism);
         activeEntryBuilder.proteinExistence(peLineConverter.convert(f.pe));
@@ -172,7 +172,7 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
                     .databaseType(xref.getDatabaseType())
                     .id(xref.getId())
                     .isoformId(xref.getIsoformId())
-                    .evidences(evidences)
+                    .evidencesSet(evidences)
                     .propertiesSet(xref.getProperties())
                     .build();
         }

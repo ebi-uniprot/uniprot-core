@@ -29,7 +29,7 @@ public class AlternativeSequenceBuilder implements Builder<AlternativeSequence> 
     public static @Nonnull AlternativeSequenceBuilder from(@Nonnull AlternativeSequence instance) {
         return new AlternativeSequenceBuilder()
                 .original(instance.getOriginalSequence())
-                .alternatives(instance.getAlternativeSequences());
+                .alternativeSequencesSet(instance.getAlternativeSequences());
     }
 
     public @Nonnull AlternativeSequenceBuilder original(String originalSequence) {
@@ -37,12 +37,13 @@ public class AlternativeSequenceBuilder implements Builder<AlternativeSequence> 
         return this;
     }
 
-    public @Nonnull AlternativeSequenceBuilder alternatives(List<String> alternativeSequences) {
+    public @Nonnull AlternativeSequenceBuilder alternativeSequencesSet(
+            List<String> alternativeSequences) {
         this.alternativeSequences = modifiableList(alternativeSequences);
         return this;
     }
 
-    public @Nonnull AlternativeSequenceBuilder alternative(String alternative) {
+    public @Nonnull AlternativeSequenceBuilder alternativeSequencesAdd(String alternative) {
         addOrIgnoreNull(alternative, this.alternativeSequences);
         return this;
     }

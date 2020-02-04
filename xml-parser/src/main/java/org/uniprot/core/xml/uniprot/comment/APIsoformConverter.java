@@ -43,7 +43,7 @@ public class APIsoformConverter implements Converter<IsoformType, APIsoform> {
 
         // IsoformId info
         for (String id : xmlObj.getId()) {
-            if (id != null && !id.isEmpty()) builder.addId(id);
+            if (id != null && !id.isEmpty()) builder.isoformIdsAdd(id);
         }
         // IsoformName and IsoformSynonym info
         boolean isName =
@@ -58,13 +58,13 @@ public class APIsoformConverter implements Converter<IsoformType, APIsoform> {
                 synonyms.add(isoformName);
             }
         }
-        builder.synonyms(synonyms);
+        builder.synonymsSet(synonyms);
 
         // Isoform Sequence info
         IsoformType.Sequence isoformSequence = xmlObj.getSequence();
         if (isoformSequence.getRef() != null && !isoformSequence.getRef().isEmpty()) {
             String[] isoformSequenceRefs = SPACE.split(isoformSequence.getRef());
-            builder.sequenceIds(Arrays.asList(isoformSequenceRefs));
+            builder.sequenceIdsSet(Arrays.asList(isoformSequenceRefs));
         }
 
         if (isoformSequence.getType() != null) {

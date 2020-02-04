@@ -61,9 +61,9 @@ public class ObjectsForTests {
         ECNumber ecNumber = new ECNumberImpl("1.2.4.5");
         return new ReactionBuilder()
                 .name(name)
-                .references(references)
+                .reactionReferencesSet(references)
                 .ecNumber(ecNumber)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 
@@ -82,7 +82,7 @@ public class ObjectsForTests {
                                         .databaseType(ReactionReferenceType.RHEA)
                                         .id("RHEA:123")
                                         .build())
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build());
         phyReactions.add(
                 new PhysiologicalReactionBuilder()
@@ -92,7 +92,7 @@ public class ObjectsForTests {
                                         .databaseType(ReactionReferenceType.RHEA)
                                         .id("RHEA:313")
                                         .build())
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build());
         return phyReactions;
     }
@@ -274,10 +274,10 @@ public class ObjectsForTests {
         APIsoformBuilder isoformBuilder = new APIsoformBuilder();
         return isoformBuilder
                 .name(new IsoformNameBuilder(name, evidences).build())
-                .synonyms(isoformSynonyms)
-                .ids(asList("isoID1", "isoID2", "isoID3"))
+                .synonymsSet(isoformSynonyms)
+                .isoformIdsSet(asList("isoID1", "isoID2", "isoID3"))
                 .sequenceStatus(IsoformSequenceStatus.DISPLAYED)
-                .sequenceIds(singletonList("someSeqId"))
+                .sequenceIdsSet(singletonList("someSeqId"))
                 .build();
     }
 
@@ -292,15 +292,15 @@ public class ObjectsForTests {
     public static List<EC> eCNumbers() {
         List<Evidence> evidences = createEvidences();
         List<EC> ecNumbers = new ArrayList<>();
-        ecNumbers.add(new ECBuilder().value("1.2.3.4").evidences(evidences).build());
-        ecNumbers.add(new ECBuilder().value("1.3.4.3").evidences(evidences).build());
+        ecNumbers.add(new ECBuilder().value("1.2.3.4").evidencesSet(evidences).build());
+        ecNumbers.add(new ECBuilder().value("1.3.4.3").evidencesSet(evidences).build());
         return ecNumbers;
     }
 
     public static Absorption createAbsorption() {
         Note note = createNote();
         List<Evidence> evidences = createEvidences();
-        return new AbsorptionBuilder().evidences(evidences).note(note).max(32).build();
+        return new AbsorptionBuilder().evidencesSet(evidences).note(note).max(32).build();
     }
 
     public static KineticParameters createKineticParameters() {
@@ -310,8 +310,8 @@ public class ObjectsForTests {
         Note note = createNote();
 
         return new KineticParametersBuilder()
-                .maximumVelocities(velocities)
-                .michaelisConstants(mConstants)
+                .maximumVelocitiesSet(velocities)
+                .michaelisConstantsSet(mConstants)
                 .note(note)
                 .build();
     }
@@ -323,14 +323,14 @@ public class ObjectsForTests {
                         .velocity(1.0)
                         .unit("unit1")
                         .enzyme("enzyme1")
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build());
         velocities.add(
                 new MaximumVelocityBuilder()
                         .velocity(1.32)
                         .unit("unit2")
                         .enzyme("enzyme2")
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build());
         return velocities;
     }
@@ -345,7 +345,7 @@ public class ObjectsForTests {
                         .constant(constant)
                         .unit(unit)
                         .substrate(substrate)
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build();
         mConstants.add(mconstant);
         return mConstants;
@@ -353,14 +353,14 @@ public class ObjectsForTests {
 
     public static LiteratureMappedReference createCompleteLiteratureMappedReference() {
         return getBasicFields()
-                .sourceCategorySet(singletonList("source category"))
+                .sourceCategoriesSet(singletonList("source category"))
                 .uniprotAccession("P12345")
                 .build();
     }
 
     public static LiteratureMappedReference createCompleteLiteratureMappedReferenceWithAdd() {
         return getBasicFields()
-                .sourceCategoryAdd("source category")
+                .sourceCategoriesAdd("source category")
                 .uniprotAccession(new UniProtAccessionImpl("P12345"))
                 .build();
     }
@@ -390,14 +390,14 @@ public class ObjectsForTests {
     public static LiteratureEntry createCompleteLiteratureEntry() {
         return createBasicLiteratureEntryBuilder()
                 .authorsSet(singletonList(new AuthorImpl("author name")))
-                .authoringGroupSet(singletonList("authoring group"))
+                .authoringGroupsSet(singletonList("authoring group"))
                 .build();
     }
 
     public static LiteratureEntry createCompleteLiteratureEntryWithAdd() {
         return createBasicLiteratureEntryBuilder()
-                .authorAdd(new AuthorImpl("author name"))
-                .authoringGroupAdd("authoring group")
+                .authorsAdd(new AuthorImpl("author name"))
+                .authoringGroupsAdd("authoring group")
                 .build();
     }
 
@@ -434,9 +434,9 @@ public class ObjectsForTests {
     public static TaxonomyEntry getCompleteTaxonomyEntryUsingAdd() {
         TaxonomyEntryBuilder builder = getTaxonomyEntryBuilderWithBasicData();
 
-        builder.addSynonyms("synonym");
+        builder.synonymsAdd("synonym");
         builder.otherNamesAdd("otherName");
-        builder.lineageAdd(getCompleteTaxonomyLineage());
+        builder.lineagesAdd(getCompleteTaxonomyLineage());
         builder.strainsAdd(getCompleteTaxonomyStrain());
         builder.hostsAdd(getCompleteTaxonomy());
         builder.linksAdd("link");
@@ -447,9 +447,9 @@ public class ObjectsForTests {
     public static TaxonomyEntry getCompleteTaxonomyEntry() {
         TaxonomyEntryBuilder builder = getTaxonomyEntryBuilderWithBasicData();
 
-        builder.synonyms(singletonList("synonym"));
+        builder.synonymsSet(singletonList("synonym"));
         builder.otherNamesSet(singletonList("otherName"));
-        builder.lineageSet(singletonList(getCompleteTaxonomyLineage()));
+        builder.lineagesSet(singletonList(getCompleteTaxonomyLineage()));
         builder.strainsSet(singletonList(getCompleteTaxonomyStrain()));
         builder.hostsSet(singletonList(getCompleteTaxonomy()));
         builder.linksSet(singletonList("link"));
@@ -477,7 +477,7 @@ public class ObjectsForTests {
                 .taxonId(9606)
                 .scientificName("Homo sapiens")
                 .commonName("Human")
-                .synonyms(singletonList("Some name"))
+                .synonymsSet(singletonList("Some name"))
                 .mnemonic("HUMAN")
                 .build();
     }
@@ -521,7 +521,7 @@ public class ObjectsForTests {
                 new CofactorBuilder()
                         .name("cofactor 1")
                         .reference(reference)
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build();
         DBCrossReference<CofactorReferenceType> reference2 =
                 new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:31324");
@@ -529,7 +529,7 @@ public class ObjectsForTests {
                 new CofactorBuilder()
                         .name("cofactor 2")
                         .reference(reference2)
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build();
         return Arrays.asList(cofactor, cofactor2);
     }

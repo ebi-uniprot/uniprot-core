@@ -22,7 +22,7 @@ class IsoformNameBuilderTest {
 
     @Test
     void canAddEvidences() {
-        IsoformName obj = new IsoformNameBuilder().evidences(createEvidences()).build();
+        IsoformName obj = new IsoformNameBuilder().evidencesSet(createEvidences()).build();
         assertEquals(createEvidences(), obj.getEvidences());
     }
 

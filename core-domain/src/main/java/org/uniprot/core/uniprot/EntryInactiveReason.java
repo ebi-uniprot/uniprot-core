@@ -6,5 +6,5 @@ import java.util.List;
 public interface EntryInactiveReason extends Serializable {
     InactiveReasonType getInactiveReasonType();
 
-    List<String> getMergeDemergeTo();
+    List<String> getMergeDemergeTos();
 }

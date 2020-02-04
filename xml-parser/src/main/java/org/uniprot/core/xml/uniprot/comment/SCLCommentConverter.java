@@ -38,7 +38,7 @@ public class SCLCommentConverter implements CommentConverter<SubcellularLocation
         if (xmlObj.getMolecule() != null) {
             builder.molecule(xmlObj.getMolecule().getValue());
         }
-        builder.subcellularLocations(
+        builder.subcellularLocationsSet(
                 xmlObj.getSubcellularLocation().stream()
                         .map(locationConverter::fromXml)
                         .collect(Collectors.toList()));

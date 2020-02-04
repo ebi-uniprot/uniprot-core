@@ -25,7 +25,7 @@ public abstract class AbstractEvidencedValueBuilder<
 
     protected static <B extends AbstractEvidencedValueBuilder<B, E>, E extends EvidencedValue>
             void init(@Nonnull B builder, @Nonnull E instance) {
-        builder.evidences(instance.getEvidences()).value(instance.getValue());
+        builder.evidencesSet(instance.getEvidences()).value(instance.getValue());
     }
 
     public @Nonnull B value(String value) {
@@ -33,12 +33,12 @@ public abstract class AbstractEvidencedValueBuilder<
         return getThis();
     }
 
-    public @Nonnull B evidences(List<Evidence> evidences) {
+    public @Nonnull B evidencesSet(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return getThis();
     }
 
-    public @Nonnull B addEvidence(Evidence evidence) {
+    public @Nonnull B evidencesAdd(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return getThis();
     }

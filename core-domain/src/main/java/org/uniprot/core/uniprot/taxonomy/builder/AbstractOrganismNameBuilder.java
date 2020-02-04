@@ -30,19 +30,19 @@ public abstract class AbstractOrganismNameBuilder<
         return getThis();
     }
 
-    public @Nonnull B synonyms(List<String> synonyms) {
+    public @Nonnull B synonymsSet(List<String> synonyms) {
         this.synonyms = modifiableList(synonyms);
         return getThis();
     }
 
-    public @Nonnull B addSynonyms(String synonym) {
+    public @Nonnull B synonymsAdd(String synonym) {
         addOrIgnoreNull(synonym, this.synonyms);
         return getThis();
     }
 
     protected static <B extends AbstractOrganismNameBuilder<B, T>, T extends OrganismName>
             void init(@Nonnull B builder, @Nonnull T organismName) {
-        builder.synonyms(organismName.getSynonyms())
+        builder.synonymsSet(organismName.getSynonyms())
                 .scientificName(organismName.getScientificName())
                 .commonName(organismName.getCommonName());
     }

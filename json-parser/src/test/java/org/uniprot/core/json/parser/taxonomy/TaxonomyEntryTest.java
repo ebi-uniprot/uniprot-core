@@ -41,9 +41,9 @@ class TaxonomyEntryTest {
         builder.active(true);
         builder.statistics(TaxonomyStatisticsTest.getCompleteTaxonomyStatistics());
 
-        builder.addSynonyms("synonym");
+        builder.synonymsAdd("synonym");
         builder.otherNamesAdd("otherName");
-        builder.lineageAdd(TaxonomyLineageTest.getCompleteTaxonomyLineage());
+        builder.lineagesAdd(TaxonomyLineageTest.getCompleteTaxonomyLineage());
         builder.strainsAdd(TaxonomyStrainTest.getCompleteTaxonomyStrain());
         builder.inactiveReason(TaxonomyInactiveReasonTest.getCompleteTaxonomyInactiveReason());
         builder.hostsAdd(getCompleteTaxonomy());
@@ -57,7 +57,7 @@ class TaxonomyEntryTest {
                 .taxonId(9606)
                 .scientificName("Homo sapiens")
                 .commonName("Human")
-                .synonyms(Collections.singletonList("Some name"))
+                .synonymsSet(Collections.singletonList("Some name"))
                 .mnemonic("HUMAN")
                 .build();
     }

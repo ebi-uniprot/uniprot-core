@@ -66,7 +66,7 @@ public class JournalArticleTest {
                 .lastPage("last page")
                 .volume("volume value")
                 .publicationDate("date value")
-                .authorGroupAdd("auth group")
+                .authorGroupsAdd("auth group")
                 .authorsAdd("author Leo")
                 .title("Leo book tittle")
                 .citationXrefsSet(Collections.singletonList(xref))

@@ -89,8 +89,8 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(jaBuilder.build())
-                        .positions(referencePositions)
-                        .comments(referenceComments)
+                        .referencePositionsSet(referencePositions)
+                        .referenceCommentsSet(referenceComments)
                         .build();
         doTest(rlines, uniRef, 1);
     }
@@ -175,9 +175,9 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(jaBuilder.build())
-                        .positions(referencePositions)
-                        .comments(referenceComments)
-                        .evidences(createEvidence(evs))
+                        .referencePositionsSet(referencePositions)
+                        .referenceCommentsSet(referenceComments)
+                        .evidencesSet(createEvidence(evs))
                         .build();
         doTest(rlines, uniRef, 1);
     }
@@ -220,8 +220,8 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(smBuilder.build())
-                        .positions(referencePositions)
-                        .comments(referenceComments)
+                        .referencePositionsSet(referencePositions)
+                        .referenceCommentsSet(referenceComments)
                         .build();
         doTest(rlines, uniRef, 2);
     }
@@ -296,8 +296,8 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(smBuilder.build())
-                        .positions(referencePositions)
-                        .comments(referenceComments)
+                        .referencePositionsSet(referencePositions)
+                        .referenceCommentsSet(referenceComments)
                         .build();
         doTest(rlines, uniRef, 2);
     }
@@ -345,7 +345,7 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(bkBuilder.build())
-                        .positions(referencePositions)
+                        .referencePositionsSet(referencePositions)
                         .build();
         doTest(rlines, uniRef, 1);
     }
@@ -392,7 +392,7 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(bkBuilder.build())
-                        .positions(referencePositions)
+                        .referencePositionsSet(referencePositions)
                         .build();
         doTest(rlines, uniRef, 5);
     }
@@ -432,7 +432,7 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(bkBuilder.build())
-                        .positions(referencePositions)
+                        .referencePositionsSet(referencePositions)
                         .build();
         doTest(rlines, uniRef, 5);
     }
@@ -468,7 +468,7 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(thBuilder.build())
-                        .positions(referencePositions)
+                        .referencePositionsSet(referencePositions)
                         .build();
         doTest(rlines, uniRef, 5);
     }
@@ -500,7 +500,7 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(paBuilder.build())
-                        .positions(referencePositions)
+                        .referencePositionsSet(referencePositions)
                         .build();
         doTest(rlines, uniRef, 5);
     }
@@ -532,7 +532,7 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(eaBuilder.build())
-                        .positions(referencePositions)
+                        .referencePositionsSet(referencePositions)
                         .build();
         doTest(rlines, uniRef, 5);
     }
@@ -563,7 +563,7 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(uoBuilder.build())
-                        .positions(referencePositions)
+                        .referencePositionsSet(referencePositions)
                         .build();
         doTest(rlines, uniRef, 5);
     }
@@ -573,7 +573,7 @@ class RLineBuildTest {
         return new ReferenceCommentBuilder()
                 .type(type)
                 .value(val)
-                .evidences(createEvidence(evs))
+                .evidencesSet(createEvidence(evs))
                 .build();
     }
 

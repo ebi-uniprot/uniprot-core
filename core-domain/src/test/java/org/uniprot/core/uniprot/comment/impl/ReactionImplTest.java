@@ -32,9 +32,9 @@ class ReactionImplTest {
         Reaction reaction =
                 new ReactionBuilder()
                         .name(name)
-                        .references(references)
+                        .reactionReferencesSet(references)
                         .ecNumber(ecNumber)
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build();
         assertEquals(evidences, reaction.getEvidences());
         assertEquals(name, reaction.getName());
@@ -46,7 +46,7 @@ class ReactionImplTest {
     void testNameAndEvidence() {
         List<Evidence> evidences = createEvidences();
         String name = "some reaction";
-        Reaction reaction = new ReactionBuilder().name(name).evidences(evidences).build();
+        Reaction reaction = new ReactionBuilder().name(name).evidencesSet(evidences).build();
         assertEquals(evidences, reaction.getEvidences());
         assertEquals(name, reaction.getName());
         assertEquals(null, reaction.getEcNumber());
@@ -58,7 +58,7 @@ class ReactionImplTest {
         List<Evidence> evidences = createEvidences();
         String name = "some reaction";
         Reaction reaction =
-                new ReactionBuilder().name(name).ecNumber(ecNumber).evidences(evidences).build();
+                new ReactionBuilder().name(name).ecNumber(ecNumber).evidencesSet(evidences).build();
         assertEquals(evidences, reaction.getEvidences());
         assertEquals(name, reaction.getName());
         assertEquals(ecNumber, reaction.getEcNumber());
@@ -73,8 +73,8 @@ class ReactionImplTest {
         Reaction reaction =
                 new ReactionBuilder()
                         .name(name)
-                        .references(references)
-                        .evidences(evidences)
+                        .reactionReferencesSet(references)
+                        .evidencesSet(evidences)
                         .build();
         assertEquals(evidences, reaction.getEvidences());
         assertEquals(name, reaction.getName());

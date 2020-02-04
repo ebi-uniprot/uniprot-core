@@ -31,7 +31,7 @@ public class FreeTextImpl implements FreeText {
 
     @Override
     public boolean hasTexts() {
-        return Utils.notNullOrEmpty(this.texts);
+        return Utils.notNullNotEmpty(this.texts);
     }
 
     @Override

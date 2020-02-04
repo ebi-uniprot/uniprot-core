@@ -92,19 +92,19 @@ public class SubcellularLocationCommentTest {
                                 new SubcellularLocationValueBuilder()
                                         .id("id1")
                                         .value("location value")
-                                        .evidences(evidences)
+                                        .evidencesSet(evidences)
                                         .build())
                         .orientation(
                                 new SubcellularLocationValueBuilder()
                                         .id("id2")
                                         .value("orientation value")
-                                        .evidences(evidences)
+                                        .evidencesSet(evidences)
                                         .build())
                         .topology(
                                 new SubcellularLocationValueBuilder()
                                         .id("id2")
                                         .value("topology value")
-                                        .evidences(evidences)
+                                        .evidencesSet(evidences)
                                         .build())
                         .build();
 
@@ -116,7 +116,7 @@ public class SubcellularLocationCommentTest {
                         .build();
         return new SubcellularLocationCommentBuilder()
                 .molecule("molecule value")
-                .subcellularLocations(subcellularLocations)
+                .subcellularLocationsSet(subcellularLocations)
                 .note(note)
                 .build();
     }

@@ -9,26 +9,26 @@ class ProteinAltNameBuilderTest {
     @Test
     void canAddSingleSortName() {
         ProteinAltName altName =
-                new ProteinAltNameBuilder().addShortName(new NameBuilder().build()).build();
+                new ProteinAltNameBuilder().shortNamesAdd(new NameBuilder().build()).build();
         assertTrue(altName.hasShortNames());
     }
 
     @Test
     void nullWillIgnoreWhileAddingSingleSortName() {
-        ProteinAltName altName = new ProteinAltNameBuilder().addShortName(null).build();
+        ProteinAltName altName = new ProteinAltNameBuilder().shortNamesAdd(null).build();
         assertFalse(altName.hasShortNames());
     }
 
     @Test
     void canAddEcNumber() {
         ProteinAltName altName =
-                new ProteinAltNameBuilder().addEcNumber(new ECBuilder().build()).build();
+                new ProteinAltNameBuilder().ecNumbersAdd(new ECBuilder().build()).build();
         assertTrue(altName.hasEcNumbers());
     }
 
     @Test
     void nullWillIgnoreWhileAddingEcNumber() {
-        ProteinAltName altName = new ProteinAltNameBuilder().addEcNumber(null).build();
+        ProteinAltName altName = new ProteinAltNameBuilder().ecNumbersAdd(null).build();
         assertFalse(altName.hasEcNumbers());
     }
 

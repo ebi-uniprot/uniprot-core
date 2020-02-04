@@ -62,7 +62,11 @@ class CofactorConverterTest {
         evids.add(evidence2);
 
         Cofactor cofactor =
-                new CofactorBuilder().reference(reference).evidences(evids).name("Zn(2+)").build();
+                new CofactorBuilder()
+                        .reference(reference)
+                        .evidencesSet(evids)
+                        .name("Zn(2+)")
+                        .build();
         CofactorType cofactorType = converter.toXml(cofactor);
         assertEquals("Zn(2+)", cofactorType.getName());
         assertEquals("CHEBI:29105", cofactorType.getDbReference().getId());

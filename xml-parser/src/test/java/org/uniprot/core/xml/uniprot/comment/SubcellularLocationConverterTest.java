@@ -58,7 +58,7 @@ class SubcellularLocationConverterTest {
         return new SubcellularLocationValueBuilder()
                 .id("")
                 .value(val)
-                .evidences(createEvidence(evidences))
+                .evidencesSet(createEvidence(evidences))
                 .build();
     }
 

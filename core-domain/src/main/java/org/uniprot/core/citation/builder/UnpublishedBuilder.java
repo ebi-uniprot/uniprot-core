@@ -8,7 +8,7 @@ import org.uniprot.core.citation.impl.UnpublishedImpl;
 public final class UnpublishedBuilder
         extends AbstractCitationBuilder<UnpublishedBuilder, Unpublished> {
     public @Nonnull Unpublished build() {
-        return new UnpublishedImpl(authoringGroups, authors, xrefs, title, publicationDate);
+        return new UnpublishedImpl(authoringGroups, authors, citationXrefs, title, publicationDate);
     }
 
     public static @Nonnull UnpublishedBuilder from(Unpublished instance) {

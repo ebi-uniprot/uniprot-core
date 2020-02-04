@@ -25,7 +25,7 @@ public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book
         return new BookImpl(
                 authoringGroups,
                 authors,
-                xrefs,
+                citationXrefs,
                 title,
                 publicationDate,
                 bookName,

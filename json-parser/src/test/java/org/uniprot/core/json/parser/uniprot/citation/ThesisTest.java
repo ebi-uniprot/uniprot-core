@@ -58,7 +58,7 @@ public class ThesisTest {
                 .address("thesis address")
                 .institute("thesis institute")
                 .publicationDate("date value")
-                .authorGroupAdd("auth group")
+                .authorGroupsAdd("auth group")
                 .authorsAdd("author Leo")
                 .title("Leo book tittle")
                 .citationXrefsSet(Collections.singletonList(xref))

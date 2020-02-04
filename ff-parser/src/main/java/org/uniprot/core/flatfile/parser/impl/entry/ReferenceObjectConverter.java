@@ -63,9 +63,9 @@ public class ReferenceObjectConverter extends EvidenceCollector
         }
         UniProtReference uniprotReference =
                 new UniProtReferenceBuilder()
-                        .positions(referencePositions)
-                        .comments(referenceComments)
-                        .evidences(rnLineConverter.convert(f.rn))
+                        .referencePositionsSet(referencePositions)
+                        .referenceCommentsSet(referenceComments)
+                        .evidencesSet(rnLineConverter.convert(f.rn))
                         .citation(builder.build())
                         .build();
 

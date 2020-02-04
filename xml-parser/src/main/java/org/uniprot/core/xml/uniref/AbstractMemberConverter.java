@@ -152,7 +152,7 @@ public abstract class AbstractMemberConverter<T extends UniRefMember>
             } else if (property.getType().equals(PROPERTY_SOURCE_UNIREF50)) {
                 builder.uniref50Id(new UniRefEntryIdBuilder(property.getValue()).build());
             } else if (property.getType().equals(PROPERTY_SOURCE_UNIPROT)) {
-                builder.addAccession(new UniProtAccessionBuilder(property.getValue()).build());
+                builder.accessionsAdd(new UniProtAccessionBuilder(property.getValue()).build());
             } else if (property.getType().equals(PROPERTY_IS_SEED)) {
                 builder.isSeed(Boolean.parseBoolean(property.getValue()));
             } else {

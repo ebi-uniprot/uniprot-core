@@ -47,7 +47,7 @@ public class SubNameConverter
     }
 
     private ProteinSubName createProteinName(Name fullName, List<EC> ecNumbers) {
-        return new ProteinSubNameBuilder().ecNumbers(ecNumbers).fullName(fullName).build();
+        return new ProteinSubNameBuilder().ecNumbersSet(ecNumbers).fullName(fullName).build();
     }
 
     public List<DbReferenceType> toXmlDbReferences(ProteinSubName uniObj) {

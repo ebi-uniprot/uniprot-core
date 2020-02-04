@@ -34,14 +34,14 @@ public class APCommentConverter implements CommentConverter<AlternativeProductsC
         APCommentBuilder builder = new APCommentBuilder();
 
         if (xmlObj.getEvent() != null && !xmlObj.getEvent().isEmpty()) {
-            builder.events(
+            builder.eventsSet(
                     xmlObj.getEvent().stream()
                             .map(val -> eventFromXml(val))
                             .collect(Collectors.toList()));
         }
 
         if (xmlObj.getIsoform() != null && !xmlObj.getIsoform().isEmpty()) {
-            builder.isoforms(
+            builder.isoformsSet(
                     xmlObj.getIsoform().stream()
                             .map(isoformConverter::fromXml)
                             .collect(Collectors.toList()));

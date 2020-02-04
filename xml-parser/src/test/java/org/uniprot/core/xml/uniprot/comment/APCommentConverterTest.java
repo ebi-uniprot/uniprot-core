@@ -33,7 +33,7 @@ class APCommentConverterTest {
         List<EvidencedValue> texts = createEvidenceValues();
         Note apNote = new NoteBuilder(texts).build();
         AlternativeProductsComment comment =
-                builder.events(events).isoforms(apIsoforms).note(apNote).build();
+                builder.eventsSet(events).isoformsSet(apIsoforms).note(apNote).build();
         APCommentConverter converter = new APCommentConverter(new EvidenceIndexMapper());
 
         CommentType xmlComment = converter.toXml(comment);
@@ -54,8 +54,8 @@ class APCommentConverterTest {
         APIsoformBuilder isoformBuilder = new APIsoformBuilder();
         return isoformBuilder
                 .name(new IsoformNameBuilder(name, evidences).build())
-                .synonyms(isoformSynonyms)
-                .ids(asList("isoID11", "isoID12"))
+                .synonymsSet(isoformSynonyms)
+                .isoformIdsSet(asList("isoID11", "isoID12"))
                 .sequenceStatus(IsoformSequenceStatus.DISPLAYED)
                 .build();
     }
@@ -72,10 +72,10 @@ class APCommentConverterTest {
         APIsoformBuilder isoformBuilder = new APIsoformBuilder();
         return isoformBuilder
                 .name(new IsoformNameBuilder(name, evidences).build())
-                .synonyms(isoformSynonyms)
-                .ids(asList("isoID21", "isoID 23"))
+                .synonymsSet(isoformSynonyms)
+                .isoformIdsSet(asList("isoID21", "isoID 23"))
                 .sequenceStatus(IsoformSequenceStatus.DESCRIBED)
-                .sequenceIds(asList("someSeqId1", "someSeqId2"))
+                .sequenceIdsSet(asList("someSeqId1", "someSeqId2"))
                 .build();
     }
 

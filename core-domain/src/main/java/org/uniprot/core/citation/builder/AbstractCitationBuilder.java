@@ -23,7 +23,7 @@ public abstract class AbstractCitationBuilder<
         implements CitationBuilder<T> {
     protected List<String> authoringGroups = new ArrayList<>();
     protected List<Author> authors = new ArrayList<>();
-    protected List<DBCrossReference<CitationXrefType>> xrefs = new ArrayList<>();
+    protected List<DBCrossReference<CitationXrefType>> citationXrefs = new ArrayList<>();
     protected String title = "";
     protected PublicationDate publicationDate;
 
@@ -32,7 +32,7 @@ public abstract class AbstractCitationBuilder<
         return getThis();
     }
 
-    public @Nonnull B authorGroupAdd(String group) {
+    public @Nonnull B authorGroupsAdd(String group) {
         addOrIgnoreNull(group, this.authoringGroups);
         return getThis();
     }
@@ -58,12 +58,12 @@ public abstract class AbstractCitationBuilder<
     }
 
     public @Nonnull B citationXrefsSet(List<DBCrossReference<CitationXrefType>> citationXrefs) {
-        this.xrefs = modifiableList(citationXrefs);
+        this.citationXrefs = modifiableList(citationXrefs);
         return getThis();
     }
 
     public @Nonnull B citationXrefsAdd(DBCrossReference<CitationXrefType> citationXref) {
-        addOrIgnoreNull(citationXref, this.xrefs);
+        addOrIgnoreNull(citationXref, this.citationXrefs);
         return getThis();
     }
 
@@ -88,7 +88,7 @@ public abstract class AbstractCitationBuilder<
                 .title(instance.getTitle())
                 .publicationDate(instance.getPublicationDate())
                 .authorsSet(instance.getAuthors())
-                .authoringGroupsSet(instance.getAuthoringGroup());
+                .authoringGroupsSet(instance.getAuthoringGroups());
     }
 
     protected abstract @Nonnull B getThis();

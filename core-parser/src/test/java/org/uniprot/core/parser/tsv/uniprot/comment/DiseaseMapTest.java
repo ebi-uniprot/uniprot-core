@@ -23,7 +23,7 @@ class DiseaseMapTest {
 
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(diseaseLine);
 
-        List<DiseaseComment> diseaseComments = entry.getCommentByType(CommentType.DISEASE);
+        List<DiseaseComment> diseaseComments = entry.getCommentsByType(CommentType.DISEASE);
         assertNotNull(entry);
         DiseaseMap diseaseMap = new DiseaseMap(diseaseComments);
         Map<String, String> mappedDisease = diseaseMap.attributeValues();
@@ -57,7 +57,7 @@ class DiseaseMapTest {
 
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(diseaseLine);
 
-        List<DiseaseComment> diseaseComments = entry.getCommentByType(CommentType.DISEASE);
+        List<DiseaseComment> diseaseComments = entry.getCommentsByType(CommentType.DISEASE);
         assertNotNull(entry);
         DiseaseMap diseaseMap = new DiseaseMap(diseaseComments);
         Map<String, String> mappedDisease = diseaseMap.attributeValues();
@@ -94,7 +94,7 @@ class DiseaseMapTest {
 
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(diseaseLine);
 
-        List<DiseaseComment> diseaseComments = entry.getCommentByType(CommentType.DISEASE);
+        List<DiseaseComment> diseaseComments = entry.getCommentsByType(CommentType.DISEASE);
         assertNotNull(entry);
         DiseaseMap diseaseMap = new DiseaseMap(diseaseComments);
         Map<String, String> mappedDisease = diseaseMap.attributeValues();

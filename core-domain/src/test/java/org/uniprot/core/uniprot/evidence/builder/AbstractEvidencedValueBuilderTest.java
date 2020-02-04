@@ -43,7 +43,7 @@ public class AbstractEvidencedValueBuilderTest {
         EvidencedValueImpl evidencedValue =
                 new TestableEvidencedValueBuilder()
                         .value(VALUE_2)
-                        .evidences(singletonList(EVIDENCE_1))
+                        .evidencesSet(singletonList(EVIDENCE_1))
                         .build();
 
         assertNotNull(evidencedValue);
@@ -59,8 +59,8 @@ public class AbstractEvidencedValueBuilderTest {
         EvidencedValueImpl evidencedValue =
                 new TestableEvidencedValueBuilder()
                         .value(VALUE_2)
-                        .evidences(singletonList(EVIDENCE_1))
-                        .addEvidence(EVIDENCE_2)
+                        .evidencesSet(singletonList(EVIDENCE_1))
+                        .evidencesAdd(EVIDENCE_2)
                         .build();
 
         assertNotNull(evidencedValue);
@@ -83,7 +83,7 @@ public class AbstractEvidencedValueBuilderTest {
     }
 
     protected void buildEvidencedValueParameters(AbstractEvidencedValueBuilder<?, ?> builder) {
-        builder.value(VALUE_1).evidences(singletonList(EVIDENCE_1)).addEvidence(EVIDENCE_2);
+        builder.value(VALUE_1).evidencesSet(singletonList(EVIDENCE_1)).evidencesAdd(EVIDENCE_2);
     }
 
     protected List<Evidence> getEvidenceList() {

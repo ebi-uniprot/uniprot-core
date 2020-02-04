@@ -54,8 +54,8 @@ public class BPCPKineticParametersConverter implements Converter<Kinetics, Kinet
         }
 
         return new KineticParametersBuilder()
-                .maximumVelocities(velocities)
-                .michaelisConstants(mConstants)
+                .maximumVelocitiesSet(velocities)
+                .michaelisConstantsSet(mConstants)
                 .note(note)
                 .build();
     }
@@ -99,7 +99,7 @@ public class BPCPKineticParametersConverter implements Converter<Kinetics, Kinet
                 .constant(constant)
                 .unit(unit)
                 .substrate(substrate)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 
@@ -142,7 +142,7 @@ public class BPCPKineticParametersConverter implements Converter<Kinetics, Kinet
                 .velocity(velocity)
                 .unit(unit)
                 .enzyme(enzyme)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 

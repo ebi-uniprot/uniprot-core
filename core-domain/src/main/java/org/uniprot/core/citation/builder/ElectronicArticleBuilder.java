@@ -14,7 +14,7 @@ public final class ElectronicArticleBuilder
         return new ElectronicArticleImpl(
                 authoringGroups,
                 authors,
-                xrefs,
+                citationXrefs,
                 title,
                 publicationDate,
                 journalName,

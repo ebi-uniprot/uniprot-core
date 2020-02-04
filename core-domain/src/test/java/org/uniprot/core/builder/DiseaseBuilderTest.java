@@ -84,7 +84,7 @@ class DiseaseBuilderTest {
     @Test
     void canCreateWith_keywordsSingle() {
         Keyword keywords = new KeywordImpl("1", "key");
-        Disease disease = new DiseaseBuilder().keywords(keywords).build();
+        Disease disease = new DiseaseBuilder().keywordsAdd(keywords).build();
         assertNotNull(disease);
         assertEquals(1, disease.getKeywords().size());
         assertEquals(keywords, disease.getKeywords().get(0));
@@ -94,7 +94,7 @@ class DiseaseBuilderTest {
     void canCreateWith_keywords() {
         List<Keyword> keywords =
                 Arrays.asList(new KeywordImpl("1", "key"), new KeywordImpl("2", "key2"));
-        Disease disease = new DiseaseBuilder().keywords(keywords).build();
+        Disease disease = new DiseaseBuilder().keywordsSet(keywords).build();
         assertNotNull(disease);
         assertEquals(keywords, disease.getKeywords());
     }
@@ -102,7 +102,7 @@ class DiseaseBuilderTest {
     @Test
     void canCreateWith_crossReferencesSingle() {
         CrossReference crossReferences = new CrossReference("1", "key");
-        Disease disease = new DiseaseBuilder().crossReferences(crossReferences).build();
+        Disease disease = new DiseaseBuilder().crossReferencesAdd(crossReferences).build();
         assertNotNull(disease);
         assertEquals(1, disease.getCrossReferences().size());
         assertEquals(crossReferences, disease.getCrossReferences().get(0));
@@ -112,7 +112,7 @@ class DiseaseBuilderTest {
     void canCreateWith_crossReferences() {
         List<CrossReference> crossReferences =
                 Arrays.asList(new CrossReference("pro", "2"), new CrossReference("uni", "1"));
-        Disease disease = new DiseaseBuilder().crossReferences(crossReferences).build();
+        Disease disease = new DiseaseBuilder().crossReferencesSet(crossReferences).build();
         assertNotNull(disease);
         assertEquals(crossReferences, disease.getCrossReferences());
     }

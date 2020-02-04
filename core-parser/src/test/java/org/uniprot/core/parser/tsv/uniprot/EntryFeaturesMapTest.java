@@ -177,7 +177,10 @@ class EntryFeaturesMapTest {
     }
 
     private AlternativeSequence createAlternativeSequence(String original, String alternative) {
-        return new AlternativeSequenceBuilder().original(original).alternative(alternative).build();
+        return new AlternativeSequenceBuilder()
+                .original(original)
+                .alternativeSequencesAdd(alternative)
+                .build();
     }
 
     private Feature createFeature(
@@ -192,7 +195,7 @@ class EntryFeaturesMapTest {
                 .description(description)
                 .featureId(ftid)
                 .location(range)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .alternativeSequence(alternativeSequence)
                 .build();
     }

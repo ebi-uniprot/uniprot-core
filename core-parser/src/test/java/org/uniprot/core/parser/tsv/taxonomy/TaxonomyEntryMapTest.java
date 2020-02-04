@@ -84,9 +84,9 @@ class TaxonomyEntryMapTest {
         builder.mnemonic("mnemonic");
         builder.parentId(9605L);
         builder.rank(TaxonomyRank.KINGDOM);
-        builder.synonyms(Collections.singletonList("synonym"));
+        builder.synonymsSet(Collections.singletonList("synonym"));
         builder.otherNamesSet(Collections.singletonList("otherName"));
-        builder.lineageSet(Collections.singletonList(getTaxonomyLineage()));
+        builder.lineagesSet(Collections.singletonList(getTaxonomyLineage()));
         builder.strainsSet(Collections.singletonList(getTaxonomyStrain()));
         builder.hostsSet(Collections.singletonList(getTaxonomy()));
         builder.linksSet(Collections.singletonList("link"));

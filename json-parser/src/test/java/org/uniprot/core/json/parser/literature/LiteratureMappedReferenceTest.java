@@ -28,7 +28,7 @@ class LiteratureMappedReferenceTest {
                 .annotation("annotation value")
                 .source("source value")
                 .sourceId("source Id")
-                .sourceCategoryAdd("source category")
+                .sourceCategoriesAdd("source category")
                 .uniprotAccession("P12345")
                 .build();
     }

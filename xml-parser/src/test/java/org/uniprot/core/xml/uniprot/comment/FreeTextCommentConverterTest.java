@@ -41,7 +41,7 @@ class FreeTextCommentConverterTest {
         org.uniprot.core.uniprot.comment.CommentType type =
                 org.uniprot.core.uniprot.comment.CommentType.FUNCTION;
         FreeTextComment comment =
-                new FreeTextCommentBuilder().commentType(type).texts(texts).build();
+                new FreeTextCommentBuilder().commentType(type).textsSet(texts).build();
         FreeTextCommentConverter converter =
                 new FreeTextCommentConverter(new EvidenceIndexMapper());
         CommentType xmlComment = converter.toXml(comment);
@@ -74,7 +74,7 @@ class FreeTextCommentConverterTest {
         org.uniprot.core.uniprot.comment.CommentType type =
                 org.uniprot.core.uniprot.comment.CommentType.DOMAIN;
         FreeTextComment comment =
-                new FreeTextCommentBuilder().commentType(type).texts(texts).build();
+                new FreeTextCommentBuilder().commentType(type).textsSet(texts).build();
         FreeTextCommentConverter converter =
                 new FreeTextCommentConverter(new EvidenceIndexMapper());
         CommentType xmlComment = converter.toXml(comment);

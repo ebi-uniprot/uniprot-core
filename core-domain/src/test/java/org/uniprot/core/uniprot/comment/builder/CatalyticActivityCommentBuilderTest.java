@@ -23,7 +23,7 @@ class CatalyticActivityCommentBuilderTest {
     void canAddSinglePhysiologicalReaction() {
         CatalyticActivityComment obj =
                 new CatalyticActivityCommentBuilder()
-                        .addPhysiologicalReaction(createPhyReaction())
+                        .physiologicalReactionsAdd(createPhyReaction())
                         .build();
         assertNotNull(obj.getPhysiologicalReactions());
         assertFalse(obj.getPhysiologicalReactions().isEmpty());
@@ -33,7 +33,7 @@ class CatalyticActivityCommentBuilderTest {
     @Test
     void nullPhysiologicalReaction_willBeIgnore() {
         CatalyticActivityComment obj =
-                new CatalyticActivityCommentBuilder().addPhysiologicalReaction(null).build();
+                new CatalyticActivityCommentBuilder().physiologicalReactionsAdd(null).build();
         assertNotNull(obj.getPhysiologicalReactions());
         assertTrue(obj.getPhysiologicalReactions().isEmpty());
         assertFalse(obj.hasPhysiologicalReactions());
@@ -43,8 +43,8 @@ class CatalyticActivityCommentBuilderTest {
     void physiologicalReaction_willConvertUnModifiable_toModifiable() {
         CatalyticActivityComment obj =
                 new CatalyticActivityCommentBuilder()
-                        .physiologicalReactions(Collections.emptyList())
-                        .addPhysiologicalReaction(createPhyReaction())
+                        .physiologicalReactionsSet(Collections.emptyList())
+                        .physiologicalReactionsAdd(createPhyReaction())
                         .build();
         assertNotNull(obj.getPhysiologicalReactions());
         assertFalse(obj.getPhysiologicalReactions().isEmpty());
@@ -55,7 +55,7 @@ class CatalyticActivityCommentBuilderTest {
     void canAddListPhysiologicalReaction() {
         CatalyticActivityComment obj =
                 new CatalyticActivityCommentBuilder()
-                        .physiologicalReactions(createPhyReactions())
+                        .physiologicalReactionsSet(createPhyReactions())
                         .build();
         assertNotNull(obj.getPhysiologicalReactions());
         assertFalse(obj.getPhysiologicalReactions().isEmpty());

@@ -27,7 +27,7 @@ public class ECConverter implements Converter<EvidencedStringType, EC> {
     @Override
     public EC fromXml(EvidencedStringType xmlObj) {
         List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
-        return new ECBuilder().value(xmlObj.getValue()).evidences(evidences).build();
+        return new ECBuilder().value(xmlObj.getValue()).evidencesSet(evidences).build();
     }
 
     @Override

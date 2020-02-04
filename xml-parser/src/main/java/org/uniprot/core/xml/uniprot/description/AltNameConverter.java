@@ -31,11 +31,11 @@ public class AltNameConverter
     public ProteinAltName fromXml(AlternativeName xmlObj) {
         return new ProteinAltNameBuilder()
                 .fullName(nameConverter.fromXml(xmlObj.getFullName()))
-                .shortNames(
+                .shortNamesSet(
                         xmlObj.getShortName().stream()
                                 .map(nameConverter::fromXml)
                                 .collect(Collectors.toList()))
-                .ecNumbers(
+                .ecNumbersSet(
                         xmlObj.getEcNumber().stream()
                                 .map(ecConverter::fromXml)
                                 .collect(Collectors.toList()))

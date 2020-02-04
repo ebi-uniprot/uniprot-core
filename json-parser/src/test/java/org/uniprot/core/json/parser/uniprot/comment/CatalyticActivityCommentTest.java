@@ -89,7 +89,7 @@ public class CatalyticActivityCommentTest {
     public static CatalyticActivityComment getCatalyticActivityComment() {
         return new CatalyticActivityCommentBuilder()
                 .molecule("Isoform 3")
-                .physiologicalReactions(createPhyReactions())
+                .physiologicalReactionsSet(createPhyReactions())
                 .reaction(createReaction())
                 .build();
     }
@@ -107,7 +107,7 @@ public class CatalyticActivityCommentTest {
                                         .databaseType(ReactionReferenceType.RHEA)
                                         .id("RHEA:313")
                                         .build())
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build());
         return phyReactions;
     }
@@ -118,13 +118,13 @@ public class CatalyticActivityCommentTest {
         ECNumber ecNumber = new ECNumberImpl("1.2.4.5");
         return new ReactionBuilder()
                 .name(name)
-                .addReactionReference(
+                .reactionReferencesAdd(
                         new DBCrossReferenceBuilder<ReactionReferenceType>()
                                 .databaseType(ReactionReferenceType.CHEBI)
                                 .id("ChEBI:3243")
                                 .build())
                 .ecNumber(ecNumber)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 }

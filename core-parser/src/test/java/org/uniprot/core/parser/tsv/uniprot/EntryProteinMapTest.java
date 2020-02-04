@@ -51,7 +51,7 @@ class EntryProteinMapTest {
         List<String> shortNames2 = Arrays.asList("short11", "short12");
         alternativeName.add(
                 createProteinAltName("altr name 2", shortNames2, Collections.emptyList()));
-        builder.alternativeNames(alternativeName);
+        builder.alternativeNamesSet(alternativeName);
         builder.flag(FlagType.PRECURSOR);
         ProteinDescription protein = builder.build();
         EntryProteinMap downloadable = new EntryProteinMap(protein);
@@ -82,7 +82,7 @@ class EntryProteinMapTest {
         List<String> shortNames2 = Arrays.asList("short11", "short12");
         alternativeName.add(
                 createProteinAltName("altr name 2", shortNames2, Collections.emptyList()));
-        builder.alternativeNames(alternativeName);
+        builder.alternativeNamesSet(alternativeName);
         builder.allergenName(createName("someAller"));
         builder.flag(FlagType.PRECURSOR);
         ProteinDescription protein = builder.build();
@@ -115,7 +115,7 @@ class EntryProteinMapTest {
         List<String> shortNames2 = Arrays.asList("short11", "short12");
         alternativeName.add(
                 createProteinAltName("altr name 2", shortNames2, Collections.emptyList()));
-        builder.alternativeNames(alternativeName);
+        builder.alternativeNamesSet(alternativeName);
         builder.allergenName(createName("someAller"));
         builder.biotechName(createName("some biote"));
         builder.flag(FlagType.FRAGMENTS_PRECURSOR);
@@ -146,12 +146,12 @@ class EntryProteinMapTest {
         List<String> shortNames2 = Arrays.asList("short11", "short12");
         alternativeName.add(
                 createProteinAltName("altr name 2", shortNames2, Collections.emptyList()));
-        builder.alternativeNames(alternativeName);
+        builder.alternativeNamesSet(alternativeName);
         builder.allergenName(createName("someAller"));
         List<Name> cdAntigenName = new ArrayList<>();
         cdAntigenName.add(createName("some antig1"));
         cdAntigenName.add(createName("some antig2"));
-        builder.cdAntigenNames(cdAntigenName);
+        builder.cdAntigenNamesSet(cdAntigenName);
         builder.flag(FlagType.FRAGMENTS_PRECURSOR);
         ProteinDescription protein = builder.build();
         EntryProteinMap downloadable = new EntryProteinMap(protein);
@@ -181,12 +181,12 @@ class EntryProteinMapTest {
         List<String> shortNames2 = Arrays.asList("short11", "short12");
         alternativeName.add(
                 createProteinAltName("altr name 2", shortNames2, Collections.emptyList()));
-        builder.alternativeNames(alternativeName);
+        builder.alternativeNamesSet(alternativeName);
         builder.allergenName(createName("someAller"));
         List<Name> inns = new ArrayList<>();
         inns.add(createName("some antig1"));
         inns.add(createName("some antig2"));
-        builder.innNames(inns);
+        builder.innNamesSet(inns);
         builder.flag(FlagType.FRAGMENTS_PRECURSOR);
         ProteinDescription protein = builder.build();
         EntryProteinMap downloadable = new EntryProteinMap(protein);
@@ -212,7 +212,7 @@ class EntryProteinMapTest {
         List<ProteinSubName> subnames = new ArrayList<>();
         subnames.add(createProteinSubName("subname name1", ecs));
         subnames.add(createProteinSubName("subname name 2", Collections.emptyList()));
-        builder.submissionNames(subnames);
+        builder.submissionNamesSet(subnames);
         builder.flag(FlagType.FRAGMENTS_PRECURSOR);
         ProteinDescription protein = builder.build();
         EntryProteinMap downloadable = new EntryProteinMap(protein);
@@ -238,7 +238,7 @@ class EntryProteinMapTest {
         List<ProteinSection> containsList = new ArrayList<>();
         containsList.add(createProteinSection("some contains1", true));
         containsList.add(createProteinSection("some contains 2", false));
-        builder.contains(containsList);
+        builder.containsSet(containsList);
         builder.flag(FlagType.FRAGMENT);
         ProteinDescription protein = builder.build();
         EntryProteinMap downloadable = new EntryProteinMap(protein);
@@ -267,11 +267,11 @@ class EntryProteinMapTest {
         List<ProteinSection> includeList = new ArrayList<>();
         includeList.add(createProteinSection("some domain1", false));
         includeList.add(createProteinSection("some domain 2", true));
-        builder.includes(includeList);
+        builder.includesSet(includeList);
         List<ProteinSection> containsList = new ArrayList<>();
         containsList.add(createProteinSection("some contains1", true));
         containsList.add(createProteinSection("some contains 2", false));
-        builder.contains(containsList);
+        builder.containsSet(containsList);
         builder.flag(FlagType.FRAGMENT_PRECURSOR);
         ProteinDescription protein = builder.build();
         EntryProteinMap downloadable = new EntryProteinMap(protein);
@@ -306,7 +306,7 @@ class EntryProteinMapTest {
         }
         return new ProteinSectionBuilder()
                 .recommendedName(recName)
-                .alternativeNames(alternativeName)
+                .alternativeNamesSet(alternativeName)
                 .build();
     }
 
@@ -325,8 +325,8 @@ class EntryProteinMapTest {
         }
         return new ProteinRecNameBuilder()
                 .fullName(createName(fullname))
-                .shortNames(shortNameList)
-                .ecNumbers(ecList)
+                .shortNamesSet(shortNameList)
+                .ecNumbersSet(ecList)
                 .build();
     }
 
@@ -340,7 +340,10 @@ class EntryProteinMapTest {
                             .map(ec -> new ECBuilder().value(ec).build())
                             .collect(Collectors.toList());
         }
-        return new ProteinSubNameBuilder().fullName(createName(fullname)).ecNumbers(ecList).build();
+        return new ProteinSubNameBuilder()
+                .fullName(createName(fullname))
+                .ecNumbersSet(ecList)
+                .build();
     }
 
     private ProteinAltName createProteinAltName(
@@ -358,8 +361,8 @@ class EntryProteinMapTest {
         }
         return new ProteinAltNameBuilder()
                 .fullName(createName(fullname))
-                .shortNames(shortNameList)
-                .ecNumbers(ecList)
+                .shortNamesSet(shortNameList)
+                .ecNumbersSet(ecList)
                 .build();
     }
 

@@ -28,7 +28,7 @@ class PhysiologicalReactionBuilderTest {
     @Test
     void canAddSingleEvidence() {
         PhysiologicalReaction obj =
-                new PhysiologicalReactionBuilder().addEvidence(createEvidence()).build();
+                new PhysiologicalReactionBuilder().evidencesAdd(createEvidence()).build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
         assertTrue(obj.hasEvidences());
@@ -36,7 +36,7 @@ class PhysiologicalReactionBuilderTest {
 
     @Test
     void nullEvidence_willBeIgnore() {
-        PhysiologicalReaction obj = new PhysiologicalReactionBuilder().addEvidence(null).build();
+        PhysiologicalReaction obj = new PhysiologicalReactionBuilder().evidencesAdd(null).build();
         assertNotNull(obj.getEvidences());
         assertTrue(obj.getEvidences().isEmpty());
         assertFalse(obj.hasEvidences());
@@ -46,8 +46,8 @@ class PhysiologicalReactionBuilderTest {
     void evidences_willConvertUnModifiable_toModifiable() {
         PhysiologicalReaction obj =
                 new PhysiologicalReactionBuilder()
-                        .evidences(Collections.emptyList())
-                        .addEvidence(createEvidence())
+                        .evidencesSet(Collections.emptyList())
+                        .evidencesAdd(createEvidence())
                         .build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
@@ -57,7 +57,7 @@ class PhysiologicalReactionBuilderTest {
     @Test
     void canAddListEvidences() {
         PhysiologicalReaction obj =
-                new PhysiologicalReactionBuilder().evidences(createEvidences()).build();
+                new PhysiologicalReactionBuilder().evidencesSet(createEvidences()).build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
         assertTrue(obj.hasEvidences());

@@ -19,7 +19,7 @@ class LiteratureEntryBuilderTest {
         LiteratureEntry entry = new LiteratureEntryBuilder().build();
 
         assertFalse(entry.hasAuthoringGroup());
-        assertTrue(entry.getAuthoringGroup().isEmpty());
+        assertTrue(entry.getAuthoringGroups().isEmpty());
 
         assertFalse(entry.hasAuthors());
         assertTrue(entry.getAuthors().isEmpty());
@@ -51,7 +51,7 @@ class LiteratureEntryBuilderTest {
 
     private void validateLiteratureEntry(LiteratureEntry entry) {
         assertTrue(entry.hasAuthoringGroup());
-        MatcherAssert.assertThat(entry.getAuthoringGroup(), Matchers.contains("authoring group"));
+        MatcherAssert.assertThat(entry.getAuthoringGroups(), Matchers.contains("authoring group"));
 
         assertTrue(entry.hasAuthors());
         MatcherAssert.assertThat(

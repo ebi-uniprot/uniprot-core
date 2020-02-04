@@ -45,7 +45,7 @@ public class SeqCautionCommentTransformer implements CommentTransformer<Sequence
                 List<Evidence> evidences = new ArrayList<>();
                 CommentTransformerHelper.stripEvidences(
                         token.substring(EVIDENCE.length()), evidences);
-                builder.evidences(evidences);
+                builder.evidencesSet(evidences);
             }
         }
         return builder.build();

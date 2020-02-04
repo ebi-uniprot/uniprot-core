@@ -54,8 +54,8 @@ class DiseaseTest {
 
         DiseaseBuilder builder = new DiseaseBuilder();
         builder.id(id).accession(accession).acronym(acronym).definition(def);
-        builder.alternativeNamesSet(altNames).crossReferences(cr);
-        builder.keywords(keyword)
+        builder.alternativeNamesSet(altNames).crossReferencesAdd(cr);
+        builder.keywordsAdd(keyword)
                 .reviewedProteinCount(reviwedProteinCount)
                 .unreviewedProteinCount(unreviwedProteinCount);
 
@@ -80,7 +80,7 @@ class DiseaseTest {
 
         DiseaseBuilder builder = new DiseaseBuilder();
         builder.id(id).accession(accession).acronym(acronym).definition(def);
-        builder.crossReferences(cr);
+        builder.crossReferencesAdd(cr);
 
         Disease disease = builder.build();
 

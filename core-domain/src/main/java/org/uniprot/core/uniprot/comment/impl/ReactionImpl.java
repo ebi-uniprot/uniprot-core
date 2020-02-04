@@ -43,7 +43,7 @@ public class ReactionImpl implements Reaction {
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notNullOrEmpty(this.evidences);
+        return Utils.notNullNotEmpty(this.evidences);
     }
 
     @Override
@@ -63,17 +63,17 @@ public class ReactionImpl implements Reaction {
 
     @Override
     public boolean hasName() {
-        return Utils.notNullOrEmpty(name);
+        return Utils.notNullNotEmpty(name);
     }
 
     @Override
     public boolean hasReactionReferences() {
-        return Utils.notNullOrEmpty(this.reactionReferences);
+        return Utils.notNullNotEmpty(this.reactionReferences);
     }
 
     @Override
     public boolean hasEcNumber() {
-        return ecNumber != null && Utils.notNullOrEmpty(ecNumber.getValue());
+        return ecNumber != null && Utils.notNullNotEmpty(ecNumber.getValue());
     }
 
     @Override

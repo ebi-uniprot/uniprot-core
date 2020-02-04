@@ -41,7 +41,7 @@ public class ComponentConverter
         ProteinSectionBuilder builder =
                 new ProteinSectionBuilder()
                         .recommendedName(recNameConverter.fromXml(xmlObj.getRecommendedName()))
-                        .alternativeNames(
+                        .alternativeNamesSet(
                                 xmlObj.getAlternativeName().stream()
                                         .map(altNameConverter::fromXml)
                                         .collect(Collectors.toList()));
@@ -52,13 +52,13 @@ public class ComponentConverter
             builder.biotechName(nameConverter.fromXml(xmlObj.getBiotechName()));
         }
         if (!xmlObj.getCdAntigenName().isEmpty()) {
-            builder.cdAntigenNames(
+            builder.cdAntigenNamesSet(
                     xmlObj.getCdAntigenName().stream()
                             .map(nameConverter::fromXml)
                             .collect(Collectors.toList()));
         }
         if (!xmlObj.getInnName().isEmpty()) {
-            builder.innNames(
+            builder.innNamesSet(
                     xmlObj.getInnName().stream()
                             .map(nameConverter::fromXml)
                             .collect(Collectors.toList()));

@@ -95,7 +95,7 @@ class RepresentativeMemberBuilderTest {
     void testAccession() {
         UniProtAccession accession = new UniProtAccessionBuilder("P12345").build();
         RepresentativeMember member =
-                new RepresentativeMemberBuilder().addAccession(accession).build();
+                new RepresentativeMemberBuilder().accessionsAdd(accession).build();
         assertEquals(accession, member.getUniProtAccessions().get(0));
     }
 

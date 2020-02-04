@@ -40,7 +40,7 @@ public class DiseaseEntryMap implements NamedValueMap {
     }
 
     private String getKewords(List<Keyword> keywords) {
-        if (Utils.notNullOrEmpty(keywords)) {
+        if (Utils.notNullNotEmpty(keywords)) {
             return keywords.stream().map(Keyword::getId).collect(Collectors.joining(","));
         } else {
             return EMPTY_STRING;
@@ -48,7 +48,7 @@ public class DiseaseEntryMap implements NamedValueMap {
     }
 
     private String getCrossReferences(List<CrossReference> crossReferences) {
-        if (Utils.notNullOrEmpty(crossReferences)) {
+        if (Utils.notNullNotEmpty(crossReferences)) {
             return crossReferences.stream()
                     .map(CrossReference::getId)
                     .collect(Collectors.joining(","));
@@ -58,7 +58,7 @@ public class DiseaseEntryMap implements NamedValueMap {
     }
 
     private String getAlternativeNames(List<String> alternativeNames) {
-        if (Utils.notNullOrEmpty(alternativeNames)) {
+        if (Utils.notNullNotEmpty(alternativeNames)) {
             return String.join(",", alternativeNames);
         } else {
             return EMPTY_STRING;

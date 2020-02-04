@@ -34,9 +34,9 @@ public class UniProtReferenceBuilder implements Builder<UniProtReference> {
     public static @Nonnull UniProtReferenceBuilder from(@Nonnull UniProtReference instance) {
         return new UniProtReferenceBuilder()
                 .citation(instance.getCitation())
-                .evidences(instance.getEvidences())
-                .comments(instance.getReferenceComments())
-                .positions(instance.getReferencePositions());
+                .evidencesSet(instance.getEvidences())
+                .referenceCommentsSet(instance.getReferenceComments())
+                .referencePositionsSet(instance.getReferencePositions());
     }
 
     public @Nonnull UniProtReferenceBuilder citation(Citation citation) {
@@ -44,32 +44,34 @@ public class UniProtReferenceBuilder implements Builder<UniProtReference> {
         return this;
     }
 
-    public @Nonnull UniProtReferenceBuilder positions(List<String> referencePositions) {
+    public @Nonnull UniProtReferenceBuilder referencePositionsSet(List<String> referencePositions) {
         this.referencePositions = modifiableList(referencePositions);
         return this;
     }
 
-    public @Nonnull UniProtReferenceBuilder addPositions(String referencePosition) {
+    public @Nonnull UniProtReferenceBuilder referencePositionsAdd(String referencePosition) {
         addOrIgnoreNull(referencePosition, this.referencePositions);
         return this;
     }
 
-    public @Nonnull UniProtReferenceBuilder comments(List<ReferenceComment> referenceComments) {
+    public @Nonnull UniProtReferenceBuilder referenceCommentsSet(
+            List<ReferenceComment> referenceComments) {
         this.referenceComments = modifiableList(referenceComments);
         return this;
     }
 
-    public @Nonnull UniProtReferenceBuilder addComment(ReferenceComment referenceComment) {
+    public @Nonnull UniProtReferenceBuilder referenceCommentsAdd(
+            ReferenceComment referenceComment) {
         addOrIgnoreNull(referenceComment, this.referenceComments);
         return this;
     }
 
-    public @Nonnull UniProtReferenceBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull UniProtReferenceBuilder evidencesSet(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public @Nonnull UniProtReferenceBuilder evidence(Evidence evidence) {
+    public @Nonnull UniProtReferenceBuilder evidencesAdd(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }

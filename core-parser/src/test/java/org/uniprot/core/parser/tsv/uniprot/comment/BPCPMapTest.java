@@ -25,7 +25,7 @@ class BPCPMapTest {
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
-                entry.getCommentByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
+                entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
         assertNotNull(entry);
         BPCPMap bpcpMap = new BPCPMap(bpcpComments);
         Map<String, String> mappedBPCP = bpcpMap.attributeValues();
@@ -47,7 +47,7 @@ class BPCPMapTest {
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
-                entry.getCommentByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
+                entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
         assertNotNull(entry);
         BPCPMap bpcpMap = new BPCPMap(bpcpComments);
         Map<String, String> mappedBPCP = bpcpMap.attributeValues();
@@ -71,7 +71,7 @@ class BPCPMapTest {
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
-                entry.getCommentByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
+                entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
         assertNotNull(entry);
         BPCPMap bpcpMap = new BPCPMap(bpcpComments);
         Map<String, String> mappedBPCP = bpcpMap.attributeValues();
@@ -94,7 +94,7 @@ class BPCPMapTest {
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
-                entry.getCommentByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
+                entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
         assertNotNull(entry);
         BPCPMap bpcpMap = new BPCPMap(bpcpComments);
         Map<String, String> mappedBPCP = bpcpMap.attributeValues();
@@ -125,7 +125,7 @@ class BPCPMapTest {
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
-                entry.getCommentByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
+                entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
         assertNotNull(entry);
         BPCPMap bpcpMap = new BPCPMap(bpcpComments);
         Map<String, String> mappedBPCP = bpcpMap.attributeValues();
@@ -166,7 +166,7 @@ class BPCPMapTest {
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
-                entry.getCommentByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
+                entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
         assertNotNull(entry);
         BPCPMap bpcpMap = new BPCPMap(bpcpComments);
         Map<String, String> mappedBPCP = bpcpMap.attributeValues();
@@ -197,7 +197,7 @@ class BPCPMapTest {
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
-                entry.getCommentByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
+                entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
         assertNotNull(entry);
         BPCPMap bpcpMap = new BPCPMap(bpcpComments);
         Map<String, String> mappedBPCP = bpcpMap.attributeValues();
@@ -221,7 +221,7 @@ class BPCPMapTest {
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
-                entry.getCommentByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
+                entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
         assertNotNull(entry);
         BPCPMap bpcpMap = new BPCPMap(bpcpComments);
         Map<String, String> mappedBPCP = bpcpMap.attributeValues();
@@ -243,7 +243,7 @@ class BPCPMapTest {
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
-                entry.getCommentByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
+                entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
         assertNotNull(entry);
         BPCPMap bpcpMap = new BPCPMap(bpcpComments);
         Map<String, String> mappedBPCP = bpcpMap.attributeValues();
@@ -267,7 +267,7 @@ class BPCPMapTest {
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
-                entry.getCommentByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
+                entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
         assertNotNull(entry);
         BPCPMap bpcpMap = new BPCPMap(bpcpComments);
         Map<String, String> mappedBPCP = bpcpMap.attributeValues();

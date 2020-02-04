@@ -31,7 +31,7 @@ class OSLineBuildTest {
         OrganismName organismName = OrganismNameLineParser.createFromOrganismLine(name);
         OrganismBuilder builder = new OrganismBuilder();
         builder.scientificName(organismName.getScientificName())
-                .synonyms(organismName.getSynonyms())
+                .synonymsSet(organismName.getSynonyms())
                 .commonName(organismName.getCommonName());
         return builder.build();
     }

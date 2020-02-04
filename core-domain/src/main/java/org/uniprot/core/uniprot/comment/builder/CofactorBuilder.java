@@ -30,12 +30,12 @@ public final class CofactorBuilder implements Builder<Cofactor> {
         return this;
     }
 
-    public @Nonnull CofactorBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull CofactorBuilder evidencesSet(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public @Nonnull CofactorBuilder addEvidence(Evidence evidence) {
+    public @Nonnull CofactorBuilder evidencesAdd(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
@@ -54,7 +54,7 @@ public final class CofactorBuilder implements Builder<Cofactor> {
     public static @Nonnull CofactorBuilder from(@Nonnull Cofactor instance) {
         return new CofactorBuilder()
                 .name(instance.getName())
-                .evidences(instance.getEvidences())
+                .evidencesSet(instance.getEvidences())
                 .reference(instance.getCofactorReference());
     }
 }

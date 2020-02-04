@@ -75,7 +75,7 @@ public class BookTest {
                 .publisher("the publisher")
                 .address("address value")
                 .publicationDate("date value")
-                .authorGroupAdd("auth group")
+                .authorGroupsAdd("auth group")
                 .authorsAdd("author Leo")
                 .title("Leo book tittle")
                 .citationXrefsSet(Collections.singletonList(xref))

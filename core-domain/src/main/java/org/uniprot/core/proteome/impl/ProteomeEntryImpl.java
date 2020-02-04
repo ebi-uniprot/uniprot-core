@@ -175,7 +175,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     }
 
     @Override
-    public List<TaxonomyLineage> getTaxonLineage() {
+    public List<TaxonomyLineage> getTaxonLineages() {
         return taxonLineage;
     }
 

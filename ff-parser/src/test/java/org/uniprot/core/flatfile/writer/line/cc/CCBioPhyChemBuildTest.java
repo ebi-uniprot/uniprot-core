@@ -190,8 +190,8 @@ class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 
         KineticParameters kinetic =
                 new KineticParametersBuilder()
-                        .maximumVelocities(velocities)
-                        .michaelisConstants(constants)
+                        .maximumVelocitiesSet(velocities)
+                        .michaelisConstantsSet(constants)
                         .note(kpNote)
                         .build();
         builder.kineticParameters(kinetic);
@@ -296,8 +296,8 @@ class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
         constants.add(constan2);
         KineticParameters kinetic =
                 new KineticParametersBuilder()
-                        .maximumVelocities(velocities)
-                        .michaelisConstants(constants)
+                        .maximumVelocitiesSet(velocities)
+                        .michaelisConstantsSet(constants)
                         .note(kpNote)
                         .build();
         builder.kineticParameters(kinetic);
@@ -507,8 +507,8 @@ class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
         constants.add(constan2);
         KineticParameters kinetic =
                 new KineticParametersBuilder()
-                        .maximumVelocities(velocities)
-                        .michaelisConstants(constants)
+                        .maximumVelocitiesSet(velocities)
+                        .michaelisConstantsSet(constants)
                         .note(kpNote)
                         .build();
         builder.kineticParameters(kinetic);
@@ -535,7 +535,7 @@ class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
                 .max(max)
                 .approximate(isApprox)
                 .note(abNote)
-                .evidences(createEvidence(evs))
+                .evidencesSet(createEvidence(evs))
                 .build();
     }
 
@@ -556,7 +556,7 @@ class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
                 .max(max)
                 .approximate(isApprox)
                 .note(abNote)
-                .evidences(createEvidence(evs))
+                .evidencesSet(createEvidence(evs))
                 .build();
     }
 
@@ -617,7 +617,7 @@ class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
                 .constant(constant)
                 .unit(unit)
                 .substrate(substrate)
-                .evidences(createEvidence(evs))
+                .evidencesSet(createEvidence(evs))
                 .build();
     }
 
@@ -627,7 +627,7 @@ class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
                 .velocity(velocity)
                 .unit(unit)
                 .enzyme(enzyme)
-                .evidences(createEvidence(evs))
+                .evidencesSet(createEvidence(evs))
                 .build();
     }
 }

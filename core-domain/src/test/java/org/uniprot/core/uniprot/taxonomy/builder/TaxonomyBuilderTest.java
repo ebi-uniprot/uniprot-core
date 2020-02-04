@@ -61,7 +61,7 @@ class TaxonomyBuilderTest {
                 .taxonId(9606)
                 .scientificName("Homo sapiens")
                 .commonName("Human")
-                .synonyms(Collections.singletonList("Some name"))
+                .synonymsSet(Collections.singletonList("Some name"))
                 .mnemonic("HUMAN")
                 .build();
     }

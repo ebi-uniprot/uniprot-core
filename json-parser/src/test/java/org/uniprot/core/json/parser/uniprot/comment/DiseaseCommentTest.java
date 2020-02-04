@@ -80,7 +80,7 @@ public class DiseaseCommentTest {
                         .description("some description")
                         .reference(reference)
                         .diseaseAc("Disease AC")
-                        .addEvidence(CreateUtils.createEvidence("ECO:0000256|PIRNR:PIRNR001362"))
+                        .evidencesAdd(CreateUtils.createEvidence("ECO:0000256|PIRNR:PIRNR001362"))
                         .build();
 
         Note note =

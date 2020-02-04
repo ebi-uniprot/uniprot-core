@@ -83,7 +83,11 @@ public class ReferenceCommentConverter
 
     private ReferenceComment createReferenceComment(
             ReferenceCommentType type, String value, List<Evidence> evidences) {
-        return new ReferenceCommentBuilder().type(type).value(value).evidences(evidences).build();
+        return new ReferenceCommentBuilder()
+                .type(type)
+                .value(value)
+                .evidencesSet(evidences)
+                .build();
     }
 
     @Override

@@ -89,7 +89,7 @@ class FeatureConverterTest {
             String original, List<String> alternatives) {
         return new AlternativeSequenceBuilder()
                 .original(original)
-                .alternatives(alternatives)
+                .alternativeSequencesSet(alternatives)
                 .build();
     }
 
@@ -453,7 +453,7 @@ class FeatureConverterTest {
                 .description(description)
                 .featureId(featureId)
                 .alternativeSequence(altSeq)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 }

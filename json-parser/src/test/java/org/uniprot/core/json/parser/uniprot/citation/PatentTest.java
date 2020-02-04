@@ -54,7 +54,7 @@ public class PatentTest {
         return new PatentBuilder()
                 .patentNumber("patent number")
                 .publicationDate("date value")
-                .authorGroupAdd("auth group")
+                .authorGroupsAdd("auth group")
                 .authorsAdd("author Leo")
                 .title("Leo book tittle")
                 .citationXrefsSet(Collections.singletonList(xref))

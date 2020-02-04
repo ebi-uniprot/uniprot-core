@@ -48,7 +48,7 @@ public class OrganelleConverter implements Converter<GeneLocationType, GeneLocat
         return new GeneLocationBuilder()
                 .geneEncodingType(geneEncodingType)
                 .value(value)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 

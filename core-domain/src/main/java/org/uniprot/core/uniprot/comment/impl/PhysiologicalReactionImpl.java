@@ -38,7 +38,7 @@ public class PhysiologicalReactionImpl implements PhysiologicalReaction {
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notNullOrEmpty(this.evidences);
+        return Utils.notNullNotEmpty(this.evidences);
     }
 
     @Override

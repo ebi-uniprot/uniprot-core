@@ -92,7 +92,7 @@ public class UniParcEntryConverter implements Converter<Entry, UniParcEntry> {
                 builder.commonName(node.commonName());
             }
             if (!Strings.isNullOrEmpty(node.synonymName())) {
-                builder.addSynonyms(node.synonymName());
+                builder.synonymsAdd(node.synonymName());
             }
             if (!Strings.isNullOrEmpty(node.mnemonic())) {
                 builder.mnemonic(node.mnemonic());

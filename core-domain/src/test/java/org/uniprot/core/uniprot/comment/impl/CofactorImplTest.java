@@ -26,7 +26,7 @@ class CofactorImplTest {
                 new CofactorBuilder()
                         .name(name)
                         .reference(reference)
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build();
         assertEquals(name, cofactor.getName());
         assertEquals(reference, cofactor.getCofactorReference());
@@ -38,7 +38,11 @@ class CofactorImplTest {
         String name = "Some cofactor";
         List<Evidence> evidences = Collections.emptyList();
         Cofactor cofactor =
-                new CofactorBuilder().name(name).reference(reference).evidences(evidences).build();
+                new CofactorBuilder()
+                        .name(name)
+                        .reference(reference)
+                        .evidencesSet(evidences)
+                        .build();
         assertEquals(name, cofactor.getName());
         assertEquals(reference, cofactor.getCofactorReference());
         assertEquals(evidences, cofactor.getEvidences());

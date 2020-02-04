@@ -67,17 +67,14 @@ public abstract class AbstractUniRefMemberBuilder<
         return getThis();
     }
 
-    public @Nonnull B addAccession(UniProtAccession accession) {
+    public @Nonnull B accessionsAdd(UniProtAccession accession) {
         addOrIgnoreNull(accession, this.accessions);
 
         return getThis();
     }
 
-    public @Nonnull B accessions(List<UniProtAccession> accessions) {
-        if (accessions != null) {
-            this.accessions = modifiableList(accessions);
-        }
-
+    public @Nonnull B accessionsSet(List<UniProtAccession> accessions) {
+        this.accessions = modifiableList(accessions);
         return getThis();
     }
 
@@ -119,7 +116,7 @@ public abstract class AbstractUniRefMemberBuilder<
                 .organismTaxId(instance.getOrganismTaxId())
                 .sequenceLength(instance.getSequenceLength())
                 .proteinName(instance.getProteinName())
-                .accessions(instance.getUniProtAccessions())
+                .accessionsSet(instance.getUniProtAccessions())
                 .uniref100Id(instance.getUniRef100Id())
                 .uniref90Id(instance.getUniRef90Id())
                 .uniref50Id(instance.getUniRef50Id())

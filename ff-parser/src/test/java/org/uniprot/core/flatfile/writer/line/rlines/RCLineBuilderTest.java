@@ -86,7 +86,7 @@ class RCLineBuilderTest {
         return new ReferenceCommentBuilder()
                 .type(type)
                 .value(val)
-                .evidences(createEvidence(evs))
+                .evidencesSet(createEvidence(evs))
                 .build();
     }
 

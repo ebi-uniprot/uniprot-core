@@ -35,7 +35,7 @@ public final class OrganismConverterUtil {
             } else if (xmlName.getType().equalsIgnoreCase(COMMONNAME_XMLTAG)) {
                 organismNameBuilder.commonName(xmlName.getValue());
             } else if (xmlName.getType().equalsIgnoreCase(SYNONYM_XMLTAG)) {
-                organismNameBuilder.addSynonyms(xmlName.getValue());
+                organismNameBuilder.synonymsAdd(xmlName.getValue());
             }
         }
     }

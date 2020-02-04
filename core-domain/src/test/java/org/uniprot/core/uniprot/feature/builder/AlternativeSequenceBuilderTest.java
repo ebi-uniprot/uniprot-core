@@ -17,20 +17,24 @@ class AlternativeSequenceBuilderTest {
 
     @Test
     void nullWillIgnoreInAlternatives() {
-        AlternativeSequence obj = new AlternativeSequenceBuilder().alternative(null).build();
+        AlternativeSequence obj =
+                new AlternativeSequenceBuilder().alternativeSequencesAdd(null).build();
         assertTrue(obj.getAlternativeSequences().isEmpty());
     }
 
     @Test
     void canAddSingleAlternative() {
-        AlternativeSequence obj = new AlternativeSequenceBuilder().alternative("seq").build();
+        AlternativeSequence obj =
+                new AlternativeSequenceBuilder().alternativeSequencesAdd("seq").build();
         assertEquals("seq", obj.getAlternativeSequences().get(0));
     }
 
     @Test
     void canAddListOfAlternatives() {
         AlternativeSequence obj =
-                new AlternativeSequenceBuilder().alternatives(Arrays.asList("1", "2", "3")).build();
+                new AlternativeSequenceBuilder()
+                        .alternativeSequencesSet(Arrays.asList("1", "2", "3"))
+                        .build();
         assertEquals(3, obj.getAlternativeSequences().size());
     }
 

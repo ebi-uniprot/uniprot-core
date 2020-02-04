@@ -30,7 +30,7 @@ public class TaxonomyEntryBuilder
 
     private List<String> otherNames = new ArrayList<>();
 
-    private List<TaxonomyLineage> lineage = new ArrayList<>();
+    private List<TaxonomyLineage> lineages = new ArrayList<>();
 
     private List<TaxonomyStrain> strains = new ArrayList<>();
 
@@ -97,13 +97,13 @@ public class TaxonomyEntryBuilder
         return this;
     }
 
-    public @Nonnull TaxonomyEntryBuilder lineageSet(List<TaxonomyLineage> lineage) {
-        this.lineage = Utils.modifiableList(lineage);
+    public @Nonnull TaxonomyEntryBuilder lineagesSet(List<TaxonomyLineage> lineage) {
+        this.lineages = Utils.modifiableList(lineage);
         return this;
     }
 
-    public @Nonnull TaxonomyEntryBuilder lineageAdd(TaxonomyLineage lineage) {
-        Utils.addOrIgnoreNull(lineage, this.lineage);
+    public @Nonnull TaxonomyEntryBuilder lineagesAdd(TaxonomyLineage lineage) {
+        Utils.addOrIgnoreNull(lineage, this.lineages);
         return this;
     }
 
@@ -160,7 +160,7 @@ public class TaxonomyEntryBuilder
                 hidden,
                 active,
                 otherNames,
-                lineage,
+                lineages,
                 strains,
                 hosts,
                 links,
@@ -178,7 +178,7 @@ public class TaxonomyEntryBuilder
                 .hidden(instance.isHidden())
                 .active(instance.isActive())
                 .otherNamesSet(instance.getOtherNames())
-                .lineageSet(instance.getLineage())
+                .lineagesSet(instance.getLineages())
                 .strainsSet(instance.getStrains())
                 .hostsSet(instance.getHosts())
                 .linksSet(instance.getLinks())

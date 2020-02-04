@@ -53,7 +53,7 @@ class AbstractCitationBuilderTest {
 
         assertThat(citation.getTitle(), is(title));
         assertThat(citation.getPublicationDate().getValue(), is(publicationDate));
-        assertThat(citation.getAuthoringGroup(), is(authoringGroup));
+        assertThat(citation.getAuthoringGroups(), is(authoringGroup));
         assertThat(
                 citation.getAuthors().stream().map(Value::getValue).collect(Collectors.toList()),
                 is(authors));
@@ -83,7 +83,7 @@ class AbstractCitationBuilderTest {
     void verifyCitation(Citation citation, CitationType citationType) {
         assertThat(citation.getTitle(), is(TITLE));
         assertThat(citation.getPublicationDate().getValue(), is(PUBLICATION_DATE));
-        assertThat(citation.getAuthoringGroup(), is(GROUPS));
+        assertThat(citation.getAuthoringGroups(), is(GROUPS));
         assertThat(
                 citation.getAuthors().stream().map(Value::getValue).collect(Collectors.toList()),
                 is(AUTHORS));
@@ -116,7 +116,7 @@ class AbstractCitationBuilderTest {
                     CITATION_TYPE,
                     builder.authoringGroups,
                     builder.authors,
-                    builder.xrefs,
+                    builder.citationXrefs,
                     builder.title,
                     builder.publicationDate);
         }

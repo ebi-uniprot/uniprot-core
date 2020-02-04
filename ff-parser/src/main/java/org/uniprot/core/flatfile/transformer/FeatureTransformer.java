@@ -83,7 +83,7 @@ public class FeatureTransformer {
         String evidence = entry.getValue();
         if (!Strings.isNullOrEmpty(evidence)) {
             String[] evIds = evidence.split(", ");
-            builder.evidences(
+            builder.evidencesSet(
                     Arrays.stream(evIds)
                             .map(val -> parseEvidenceLine(val.trim()))
                             .collect(Collectors.toList()));
@@ -191,7 +191,7 @@ public class FeatureTransformer {
                     description,
                     new AlternativeSequenceBuilder()
                             .original("")
-                            .alternatives(Collections.emptyList())
+                            .alternativeSequencesSet(Collections.emptyList())
                             .build());
         }
 
@@ -207,7 +207,10 @@ public class FeatureTransformer {
 
         return new PairImpl<>(
                 description,
-                new AlternativeSequenceBuilder().original(original).alternatives(altSeq).build());
+                new AlternativeSequenceBuilder()
+                        .original(original)
+                        .alternativeSequencesSet(altSeq)
+                        .build());
     }
 
     public static FeatureLocation createFeatureLocation(

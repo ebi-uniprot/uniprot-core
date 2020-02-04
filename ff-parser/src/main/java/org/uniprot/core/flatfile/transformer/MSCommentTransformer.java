@@ -84,7 +84,7 @@ public class MSCommentTransformer implements CommentTransformer<MassSpectrometry
                         if (evidenceStr.length() > 0) {
                             List<Evidence> evidences = new ArrayList<>();
                             CommentTransformerHelper.stripEvidences(evidenceStr, evidences);
-                            builder.evidences(evidences);
+                            builder.evidencesSet(evidences);
                         }
                         continue;
                     }

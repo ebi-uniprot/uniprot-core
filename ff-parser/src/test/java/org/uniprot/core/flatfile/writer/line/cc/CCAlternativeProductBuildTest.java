@@ -215,7 +215,7 @@ class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
                         isoIds,
                         seqIds,
                         IsoformSequenceStatus.DESCRIBED));
-        builder.isoforms(isoforms);
+        builder.isoformsSet(isoforms);
         AlternativeProductsComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -490,7 +490,7 @@ class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
                         seqIds,
                         IsoformSequenceStatus.DESCRIBED));
 
-        builder.isoforms(isoforms);
+        builder.isoformsSet(isoforms);
         AlternativeProductsComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -501,7 +501,7 @@ class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
         APCommentBuilder builder = new APCommentBuilder();
         List<APEventType> apEvents =
                 events.stream().map(val -> APEventType.typeOf(val)).collect(Collectors.toList());
-        builder.events(apEvents);
+        builder.eventsSet(apEvents);
         List<EvidencedValue> evidencedValues =
                 notes.entrySet().stream()
                         .map(entry -> createEvidencedValue(entry.getKey(), entry.getValue()))
@@ -531,7 +531,7 @@ class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
                                                         createEvidence(entry.getValue()))
                                                 .build())
                         .collect(Collectors.toList());
-        builder.synonyms(isoSynoyms);
+        builder.synonymsSet(isoSynoyms);
         if (!notes.isEmpty()) {
             List<EvidencedValue> evidencedValues =
                     notes.stream()
@@ -540,8 +540,8 @@ class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
             builder.note(new NoteBuilder(evidencedValues).build());
         }
 
-        builder.ids(isoformIdsStr);
-        builder.sequenceIds(seqIds);
+        builder.isoformIdsSet(isoformIdsStr);
+        builder.sequenceIdsSet(seqIds);
         builder.sequenceStatus(seqStatus);
 
         return builder.build();

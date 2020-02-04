@@ -9,7 +9,7 @@ class APIsoformBuilderTest {
 
     @Test
     void canAddSingleId() {
-        APIsoform obj = new APIsoformBuilder().addId("id").build();
+        APIsoform obj = new APIsoformBuilder().isoformIdsAdd("id").build();
         assertNotNull(obj.getIsoformIds());
         assertFalse(obj.getIsoformIds().isEmpty());
         assertTrue(obj.hasIsoformIds());
@@ -17,7 +17,7 @@ class APIsoformBuilderTest {
 
     @Test
     void nullId_willBeIgnore() {
-        APIsoform obj = new APIsoformBuilder().addId(null).build();
+        APIsoform obj = new APIsoformBuilder().isoformIdsAdd(null).build();
         assertNotNull(obj.getIsoformIds());
         assertTrue(obj.getIsoformIds().isEmpty());
         assertFalse(obj.hasIsoformIds());
@@ -25,7 +25,7 @@ class APIsoformBuilderTest {
 
     @Test
     void canAddSingleSequenceId() {
-        APIsoform obj = new APIsoformBuilder().addSequenceId("id").build();
+        APIsoform obj = new APIsoformBuilder().sequenceIdsAdd("id").build();
         assertNotNull(obj.getSequenceIds());
         assertFalse(obj.getSequenceIds().isEmpty());
         assertTrue(obj.hasSequenceIds());
@@ -33,7 +33,7 @@ class APIsoformBuilderTest {
 
     @Test
     void nullSequenceId_willBeIgnore() {
-        APIsoform obj = new APIsoformBuilder().addSequenceId(null).build();
+        APIsoform obj = new APIsoformBuilder().sequenceIdsAdd(null).build();
         assertNotNull(obj.getSequenceIds());
         assertTrue(obj.getSequenceIds().isEmpty());
         assertFalse(obj.hasSequenceIds());
@@ -41,7 +41,8 @@ class APIsoformBuilderTest {
 
     @Test
     void canAddSingleSynonym() {
-        APIsoform obj = new APIsoformBuilder().addSynonym(new IsoformNameBuilder().build()).build();
+        APIsoform obj =
+                new APIsoformBuilder().synonymsAdd(new IsoformNameBuilder().build()).build();
         assertNotNull(obj.getSynonyms());
         assertFalse(obj.getSynonyms().isEmpty());
         assertTrue(obj.hasSynonyms());
@@ -49,7 +50,7 @@ class APIsoformBuilderTest {
 
     @Test
     void nullSynonym_willBeIgnore() {
-        APIsoform obj = new APIsoformBuilder().addSynonym(null).build();
+        APIsoform obj = new APIsoformBuilder().synonymsAdd(null).build();
         assertNotNull(obj.getSynonyms());
         assertTrue(obj.getSynonyms().isEmpty());
         assertFalse(obj.hasSynonyms());

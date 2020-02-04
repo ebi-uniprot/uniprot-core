@@ -29,7 +29,7 @@ class RnaEditingMapTest {
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(rnaEditingLine);
 
         List<RnaEditingComment> rnaEditingComments =
-                entry.getCommentByType(CommentType.RNA_EDITING);
+                entry.getCommentsByType(CommentType.RNA_EDITING);
         assertNotNull(entry);
         RnaEditingMap RnaEditingMap = new RnaEditingMap(rnaEditingComments);
         Map<String, String> mappedRnaEditing = RnaEditingMap.attributeValues();

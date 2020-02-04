@@ -63,7 +63,7 @@ public class SequenceCautionCommentTest {
                 .sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
                 .sequence("sequence")
                 .note("Text note")
-                .evidences(CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361"))
+                .evidencesSet(CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361"))
                 .build();
     }
 }

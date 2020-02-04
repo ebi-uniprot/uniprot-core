@@ -28,7 +28,7 @@ public class EntryInactiveReasonImpl implements EntryInactiveReason {
     }
 
     @Override
-    public List<String> getMergeDemergeTo() {
+    public List<String> getMergeDemergeTos() {
         return mergeDemergeTo;
     }
 

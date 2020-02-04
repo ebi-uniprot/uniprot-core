@@ -29,7 +29,7 @@ class ReactionBuilderTest {
 
     @Test
     void canAddSingleEvidence() {
-        Reaction obj = new ReactionBuilder().addEvidence(createEvidence()).build();
+        Reaction obj = new ReactionBuilder().evidencesAdd(createEvidence()).build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
         assertTrue(obj.hasEvidences());
@@ -37,7 +37,7 @@ class ReactionBuilderTest {
 
     @Test
     void nullEvidence_willBeIgnore() {
-        Reaction obj = new ReactionBuilder().addEvidence(null).build();
+        Reaction obj = new ReactionBuilder().evidencesAdd(null).build();
         assertNotNull(obj.getEvidences());
         assertTrue(obj.getEvidences().isEmpty());
         assertFalse(obj.hasEvidences());
@@ -47,8 +47,8 @@ class ReactionBuilderTest {
     void evidences_willConvertUnModifiable_toModifiable() {
         Reaction obj =
                 new ReactionBuilder()
-                        .evidences(Collections.emptyList())
-                        .addEvidence(createEvidence())
+                        .evidencesSet(Collections.emptyList())
+                        .evidencesAdd(createEvidence())
                         .build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
@@ -57,7 +57,7 @@ class ReactionBuilderTest {
 
     @Test
     void canAddListEvidences() {
-        Reaction obj = new ReactionBuilder().evidences(createEvidences()).build();
+        Reaction obj = new ReactionBuilder().evidencesSet(createEvidences()).build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
         assertTrue(obj.hasEvidences());
@@ -73,7 +73,7 @@ class ReactionBuilderTest {
     void canAddReactionReference() {
         Reaction obj =
                 new ReactionBuilder()
-                        .addReactionReference(
+                        .reactionReferencesAdd(
                                 new DBCrossReferenceImpl<>(ReactionReferenceType.RHEA, "123"))
                         .build();
         assertTrue(obj.hasReactionReferences());

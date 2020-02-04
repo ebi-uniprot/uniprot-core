@@ -301,7 +301,7 @@ class CCDiseaseBuildTest extends CCBuildTestAbstr {
         DiseaseBuilder builder = new DiseaseBuilder();
         builder.diseaseId(diseaseId);
         builder.acronym(acronym);
-        builder.description(description).evidences(createEvidence(evs));
+        builder.description(description).evidencesSet(createEvidence(evs));
         builder.reference(
                 new DBCrossReferenceBuilder<DiseaseReferenceType>()
                         .databaseType(type)

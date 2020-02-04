@@ -34,13 +34,13 @@ public class ProteinDescriptionBuilder implements Builder<ProteinDescription> {
         return this;
     }
 
-    public @Nonnull ProteinDescriptionBuilder alternativeNames(
+    public @Nonnull ProteinDescriptionBuilder alternativeNamesSet(
             List<ProteinAltName> alternativeNames) {
         this.alternativeNames = modifiableList(alternativeNames);
         return this;
     }
 
-    public @Nonnull ProteinDescriptionBuilder addAlternativeNames(ProteinAltName alternativeNames) {
+    public @Nonnull ProteinDescriptionBuilder alternativeNamesAdd(ProteinAltName alternativeNames) {
         addOrIgnoreNull(alternativeNames, this.alternativeNames);
         return this;
     }
@@ -55,22 +55,22 @@ public class ProteinDescriptionBuilder implements Builder<ProteinDescription> {
         return this;
     }
 
-    public @Nonnull ProteinDescriptionBuilder cdAntigenNames(List<Name> cdAntigenNames) {
+    public @Nonnull ProteinDescriptionBuilder cdAntigenNamesSet(List<Name> cdAntigenNames) {
         this.cdAntigenNames = modifiableList(cdAntigenNames);
         return this;
     }
 
-    public @Nonnull ProteinDescriptionBuilder addCdAntigenNames(Name cdAntigen) {
+    public @Nonnull ProteinDescriptionBuilder cdAntigenNamesAdd(Name cdAntigen) {
         addOrIgnoreNull(cdAntigen, this.cdAntigenNames);
         return this;
     }
 
-    public @Nonnull ProteinDescriptionBuilder innNames(List<Name> innNames) {
+    public @Nonnull ProteinDescriptionBuilder innNamesSet(List<Name> innNames) {
         this.innNames = modifiableList(innNames);
         return this;
     }
 
-    public @Nonnull ProteinDescriptionBuilder addInnNames(Name innNames) {
+    public @Nonnull ProteinDescriptionBuilder innNamesAdd(Name innNames) {
         addOrIgnoreNull(innNames, this.innNames);
         return this;
     }
@@ -87,33 +87,33 @@ public class ProteinDescriptionBuilder implements Builder<ProteinDescription> {
         return this;
     }
 
-    public @Nonnull ProteinDescriptionBuilder submissionNames(
+    public @Nonnull ProteinDescriptionBuilder submissionNamesSet(
             List<ProteinSubName> submissionNames) {
         this.submissionNames = modifiableList(submissionNames);
         return this;
     }
 
-    public @Nonnull ProteinDescriptionBuilder addSubmissionNames(ProteinSubName submissionNames) {
+    public @Nonnull ProteinDescriptionBuilder submissionNamesAdd(ProteinSubName submissionNames) {
         addOrIgnoreNull(submissionNames, this.submissionNames);
         return this;
     }
 
-    public @Nonnull ProteinDescriptionBuilder includes(List<ProteinSection> includes) {
+    public @Nonnull ProteinDescriptionBuilder includesSet(List<ProteinSection> includes) {
         this.includes = modifiableList(includes);
         return this;
     }
 
-    public @Nonnull ProteinDescriptionBuilder addIncludes(ProteinSection includes) {
+    public @Nonnull ProteinDescriptionBuilder includesAdd(ProteinSection includes) {
         addOrIgnoreNull(includes, this.includes);
         return this;
     }
 
-    public @Nonnull ProteinDescriptionBuilder contains(List<ProteinSection> contains) {
+    public @Nonnull ProteinDescriptionBuilder containsSet(List<ProteinSection> contains) {
         this.contains = modifiableList(contains);
         return this;
     }
 
-    public @Nonnull ProteinDescriptionBuilder addContains(ProteinSection contains) {
+    public @Nonnull ProteinDescriptionBuilder containsAdd(ProteinSection contains) {
         addOrIgnoreNull(contains, this.contains);
         return this;
     }
@@ -136,14 +136,14 @@ public class ProteinDescriptionBuilder implements Builder<ProteinDescription> {
     public static @Nonnull ProteinDescriptionBuilder from(@Nonnull ProteinDescription instance) {
         return new ProteinDescriptionBuilder()
                 .recommendedName(instance.getRecommendedName())
-                .alternativeNames(instance.getAlternativeNames())
+                .alternativeNamesSet(instance.getAlternativeNames())
                 .allergenName(instance.getAllergenName())
                 .biotechName(instance.getBiotechName())
-                .cdAntigenNames(instance.getCdAntigenNames())
-                .innNames(instance.getInnNames())
-                .submissionNames(instance.getSubmissionNames())
+                .cdAntigenNamesSet(instance.getCdAntigenNames())
+                .innNamesSet(instance.getInnNames())
+                .submissionNamesSet(instance.getSubmissionNames())
                 .flag(instance.getFlag())
-                .contains(instance.getContains())
-                .includes(instance.getIncludes());
+                .containsSet(instance.getContains())
+                .includesSet(instance.getIncludes());
     }
 }

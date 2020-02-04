@@ -1,6 +1,5 @@
 package org.uniprot.core.uniprot.description.impl;
 
-import static org.uniprot.core.util.Utils.notNullOrEmpty;
 import static org.uniprot.core.util.Utils.unmodifiableList;
 
 import java.util.Collections;
@@ -9,6 +8,7 @@ import java.util.List;
 import org.uniprot.core.uniprot.description.EC;
 import org.uniprot.core.uniprot.description.Name;
 import org.uniprot.core.uniprot.description.ProteinRecName;
+import org.uniprot.core.util.Utils;
 
 public class ProteinRecNameImpl implements ProteinRecName {
 
@@ -51,12 +51,12 @@ public class ProteinRecNameImpl implements ProteinRecName {
 
     @Override
     public boolean hasShortNames() {
-        return notNullOrEmpty(shortNames);
+        return Utils.notNullNotEmpty(shortNames);
     }
 
     @Override
     public boolean hasEcNumbers() {
-        return notNullOrEmpty(ecNumbers);
+        return Utils.notNullNotEmpty(ecNumbers);
     }
 
     @Override

@@ -40,11 +40,11 @@ class ProteinDescriptionConverterTest {
         ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
         ProteinDescription description =
                 builder.recommendedName(recommendedName)
-                        .submissionNames(subNames)
-                        .alternativeNames(proteinAltNames)
+                        .submissionNamesSet(subNames)
+                        .alternativeNamesSet(proteinAltNames)
                         .allergenName(allergenName)
                         .biotechName(biotechName)
-                        .cdAntigenNames(antigenNames)
+                        .cdAntigenNamesSet(antigenNames)
                         .build();
         ProteinDescriptionConverter converter = createConverter();
         ProteinType xmlObj = converter.toXml(description);
@@ -83,10 +83,10 @@ class ProteinDescriptionConverterTest {
         subNames.add(subName);
         ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
         builder.recommendedName(recommendedName)
-                .submissionNames(subNames)
-                .alternativeNames(proteinAltNames)
-                .includes(includes)
-                .contains(contains);
+                .submissionNamesSet(subNames)
+                .alternativeNamesSet(proteinAltNames)
+                .includesSet(includes)
+                .containsSet(contains);
         ProteinDescription description = builder.build();
         ProteinDescriptionConverter converter = createConverter();
         ProteinType xmlObj = converter.toXml(description);

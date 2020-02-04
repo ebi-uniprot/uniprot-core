@@ -32,7 +32,7 @@ class CofactorMapTest {
 
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(cofactorLine);
 
-        List<CofactorComment> cofactorComments = entry.getCommentByType(CommentType.COFACTOR);
+        List<CofactorComment> cofactorComments = entry.getCommentsByType(CommentType.COFACTOR);
         assertNotNull(entry);
         CofactorMap cofactorMap = new CofactorMap(cofactorComments);
         Map<String, String> mappedCofactor = cofactorMap.attributeValues();
@@ -60,7 +60,7 @@ class CofactorMapTest {
 
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(cofactorLine);
 
-        List<CofactorComment> cofactorComments = entry.getCommentByType(CommentType.COFACTOR);
+        List<CofactorComment> cofactorComments = entry.getCommentsByType(CommentType.COFACTOR);
         assertNotNull(entry);
         CofactorMap cofactorMap = new CofactorMap(cofactorComments);
         Map<String, String> mappedCofactor = cofactorMap.attributeValues();

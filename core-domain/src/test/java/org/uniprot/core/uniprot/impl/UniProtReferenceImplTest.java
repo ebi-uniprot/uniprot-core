@@ -42,10 +42,10 @@ class UniProtReferenceImplTest {
                         new ReferenceCommentBuilder().type(ReferenceCommentType.PLASMID).build(),
                         new ReferenceCommentBuilder().type(ReferenceCommentType.STRAIN).build());
         UniProtReference reference =
-                new UniProtReferenceBuilder().comments(referenceComments).build();
+                new UniProtReferenceBuilder().referenceCommentsSet(referenceComments).build();
 
         List<ReferenceComment> typedReferenceComments =
-                reference.getTypedReferenceComments(ReferenceCommentType.PLASMID);
+                reference.getReferenceCommentsByType(ReferenceCommentType.PLASMID);
 
         assertEquals(1, typedReferenceComments.size());
     }

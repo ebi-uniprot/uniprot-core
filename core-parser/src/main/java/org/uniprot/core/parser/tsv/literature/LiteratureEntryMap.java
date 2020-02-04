@@ -57,7 +57,7 @@ public class LiteratureEntryMap implements NamedValueMap {
 
     private String getAuthorsAndAuthoringGroups() {
         String result = getAuthoringGroup();
-        if (Utils.notNullOrEmpty(result)) {
+        if (Utils.notNullNotEmpty(result)) {
             result += "; " + getAuthors();
         }
         return result;
@@ -70,7 +70,7 @@ public class LiteratureEntryMap implements NamedValueMap {
     }
 
     private String getAuthoringGroup() {
-        return String.join(", ", literatureEntry.getAuthoringGroup());
+        return String.join(", ", literatureEntry.getAuthoringGroups());
     }
 
     private String getReference() {

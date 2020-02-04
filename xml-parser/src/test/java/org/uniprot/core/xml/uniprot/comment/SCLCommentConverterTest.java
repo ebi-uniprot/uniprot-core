@@ -53,7 +53,7 @@ class SCLCommentConverterTest {
         subcelLocations.add(subcelLocation2);
         SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
         builder.molecule("Some mol")
-                .subcellularLocations(subcelLocations)
+                .subcellularLocationsSet(subcelLocations)
                 .note(
                         createNote(
                                 "Some note",
@@ -91,7 +91,7 @@ class SCLCommentConverterTest {
         return new SubcellularLocationValueBuilder()
                 .id("")
                 .value(val)
-                .evidences(createEvidence(evidences))
+                .evidencesSet(createEvidence(evidences))
                 .build();
     }
 

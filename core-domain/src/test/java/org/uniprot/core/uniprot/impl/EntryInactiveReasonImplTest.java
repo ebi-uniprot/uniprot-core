@@ -17,10 +17,10 @@ class EntryInactiveReasonImplTest {
         EntryInactiveReason reason =
                 new EntryInactiveReasonBuilder()
                         .type(InactiveReasonType.MERGED)
-                        .mergeDemergeToSet(Collections.singletonList("P12345"))
+                        .mergeDemergeTosSet(Collections.singletonList("P12345"))
                         .build();
         assertEquals(InactiveReasonType.MERGED, reason.getInactiveReasonType());
-        assertEquals(Collections.singletonList("P12345"), reason.getMergeDemergeTo());
+        assertEquals(Collections.singletonList("P12345"), reason.getMergeDemergeTos());
     }
 
     @Test
@@ -28,10 +28,10 @@ class EntryInactiveReasonImplTest {
         EntryInactiveReason reason =
                 new EntryInactiveReasonBuilder()
                         .type(InactiveReasonType.DEMERGED)
-                        .mergeDemergeToSet(Arrays.asList("P12345", "P12347"))
+                        .mergeDemergeTosSet(Arrays.asList("P12345", "P12347"))
                         .build();
         assertEquals(InactiveReasonType.DEMERGED, reason.getInactiveReasonType());
-        assertEquals(Arrays.asList("P12345", "P12347"), reason.getMergeDemergeTo());
+        assertEquals(Arrays.asList("P12345", "P12347"), reason.getMergeDemergeTos());
     }
 
     @Test
@@ -39,17 +39,17 @@ class EntryInactiveReasonImplTest {
         EntryInactiveReason reason =
                 new EntryInactiveReasonBuilder()
                         .type(InactiveReasonType.DELETED)
-                        .mergeDemergeToSet(null)
+                        .mergeDemergeTosSet(null)
                         .build();
         assertEquals(InactiveReasonType.DELETED, reason.getInactiveReasonType());
-        assertTrue(reason.getMergeDemergeTo().isEmpty());
+        assertTrue(reason.getMergeDemergeTos().isEmpty());
     }
 
     @Test
     void defaultConstructor_MergeList_shouldEmpty() {
         EntryInactiveReason reason = new EntryInactiveReasonImpl();
-        assertNotNull(reason.getMergeDemergeTo());
-        assertTrue(reason.getMergeDemergeTo().isEmpty());
+        assertNotNull(reason.getMergeDemergeTos());
+        assertTrue(reason.getMergeDemergeTos().isEmpty());
     }
 
     @Test

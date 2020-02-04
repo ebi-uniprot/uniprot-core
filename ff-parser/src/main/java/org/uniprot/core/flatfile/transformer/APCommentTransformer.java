@@ -102,10 +102,10 @@ public class APCommentTransformer implements CommentTransformer<AlternativeProdu
                 isoformBuilder.name(new IsoformNameBuilder(value, evidences).build());
             } else if (token.startsWith(SYNONYMS) && isoformBuilder != null) {
                 String label = token.substring(SYNONYMS.length());
-                isoformBuilder.synonyms(buildSynonyms(label));
+                isoformBuilder.synonymsSet(buildSynonyms(label));
             } else if (token.startsWith(ISOID) && isoformBuilder != null) {
                 String label = token.substring(ISOID.length());
-                isoformBuilder.ids(asList(label.split(",")));
+                isoformBuilder.isoformIdsSet(asList(label.split(",")));
             } else if (token.startsWith(SEQUENCE) && isoformBuilder != null) {
                 addSequenceInfoToIsoform(isoformBuilder, token);
             } else if (token.startsWith(NOTE) && isoformBuilder != null) {
@@ -129,7 +129,7 @@ public class APCommentTransformer implements CommentTransformer<AlternativeProdu
         if (isoformBuilder != null) {
             apIsoforms.add(isoformBuilder.build());
         }
-        apBuilder.isoforms(apIsoforms);
+        apBuilder.isoformsSet(apIsoforms);
         return apBuilder.build();
     }
 
@@ -140,7 +140,7 @@ public class APCommentTransformer implements CommentTransformer<AlternativeProdu
         for (String eventToken : eventTokens) {
             events.add(APEventType.typeOf(eventToken));
         }
-        apBuilder.events(events);
+        apBuilder.eventsSet(events);
     }
 
     private void addSequenceInfoToIsoform(APIsoformBuilder isoformBuilder, String token) {
@@ -154,7 +154,7 @@ public class APCommentTransformer implements CommentTransformer<AlternativeProdu
             isoformBuilder.sequenceStatus(IsoformSequenceStatus.EXTERNAL);
 
         } else {
-            isoformBuilder.sequenceIds(
+            isoformBuilder.sequenceIdsSet(
                     Arrays.stream(label.split(",")).map(String::trim).collect(Collectors.toList()));
         }
     }

@@ -14,7 +14,7 @@ import org.uniprot.core.uniprot.comment.impl.SequenceCautionCommentImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 public final class SequenceCautionCommentBuilder implements CommentBuilder<SequenceCautionComment> {
-    String molecule;
+    private String molecule;
     private SequenceCautionType sequenceCautionType;
     private String sequence;
     private String note;
@@ -30,7 +30,7 @@ public final class SequenceCautionCommentBuilder implements CommentBuilder<Seque
         return new SequenceCautionCommentBuilder()
                 .sequenceCautionType(instance.getSequenceCautionType())
                 .sequence(instance.getSequence())
-                .evidences(instance.getEvidences())
+                .evidencesSet(instance.getEvidences())
                 .note(instance.getNote())
                 .molecule(instance.getMolecule());
     }
@@ -56,12 +56,12 @@ public final class SequenceCautionCommentBuilder implements CommentBuilder<Seque
         return this;
     }
 
-    public @Nonnull SequenceCautionCommentBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull SequenceCautionCommentBuilder evidencesSet(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public @Nonnull SequenceCautionCommentBuilder addEvidence(Evidence evidence) {
+    public @Nonnull SequenceCautionCommentBuilder evidencesAdd(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }

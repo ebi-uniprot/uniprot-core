@@ -24,7 +24,7 @@ public final class CofactorCommentBuilder implements CommentBuilder<CofactorComm
 
     public static @Nonnull CofactorCommentBuilder from(@Nonnull CofactorComment instance) {
         return new CofactorCommentBuilder()
-                .cofactors(instance.getCofactors())
+                .cofactorsSet(instance.getCofactors())
                 .molecule(instance.getMolecule())
                 .note(instance.getNote());
     }
@@ -34,12 +34,12 @@ public final class CofactorCommentBuilder implements CommentBuilder<CofactorComm
         return this;
     }
 
-    public @Nonnull CofactorCommentBuilder addCofactor(Cofactor cofactors) {
+    public @Nonnull CofactorCommentBuilder cofactorsAdd(Cofactor cofactors) {
         addOrIgnoreNull(cofactors, this.cofactors);
         return this;
     }
 
-    public @Nonnull CofactorCommentBuilder cofactors(List<Cofactor> cofactors) {
+    public @Nonnull CofactorCommentBuilder cofactorsSet(List<Cofactor> cofactors) {
         this.cofactors = modifiableList(cofactors);
         return this;
     }

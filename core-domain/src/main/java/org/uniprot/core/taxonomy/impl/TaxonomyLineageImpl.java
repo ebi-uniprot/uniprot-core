@@ -58,7 +58,7 @@ public class TaxonomyLineageImpl implements TaxonomyLineage {
 
     @Override
     public boolean hasScientificName() {
-        return Utils.notNullOrEmpty(this.scientificName);
+        return Utils.notNullNotEmpty(this.scientificName);
     }
 
     @Override

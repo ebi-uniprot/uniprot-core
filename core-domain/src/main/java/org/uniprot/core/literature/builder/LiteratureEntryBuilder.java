@@ -11,7 +11,6 @@ import org.uniprot.core.citation.Journal;
 import org.uniprot.core.citation.PublicationDate;
 import org.uniprot.core.citation.impl.JournalImpl;
 import org.uniprot.core.literature.LiteratureEntry;
-import org.uniprot.core.literature.LiteratureMappedReference;
 import org.uniprot.core.literature.LiteratureStatistics;
 import org.uniprot.core.literature.impl.LiteratureEntryImpl;
 import org.uniprot.core.util.Utils;
@@ -22,7 +21,7 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntry> {
     private Long pubmedId;
     private String doiId;
     private String title = "";
-    private List<String> authoringGroup = new ArrayList<>();
+    private List<String> authoringGroups = new ArrayList<>();
     private List<Author> authors = new ArrayList<>();
     private boolean completeAuthorList = true;
     private PublicationDate publicationDate;
@@ -31,7 +30,6 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntry> {
     private String lastPage;
     private String volume;
     private String literatureAbstract = "";
-    private List<LiteratureMappedReference> literatureMappedReference = new ArrayList<>();
     private LiteratureStatistics statistics;
 
     public @Nonnull LiteratureEntryBuilder pubmedId(Long pubmedId) {
@@ -49,13 +47,13 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntry> {
         return this;
     }
 
-    public @Nonnull LiteratureEntryBuilder authoringGroupSet(List<String> authoringGroup) {
-        this.authoringGroup = Utils.modifiableList(authoringGroup);
+    public @Nonnull LiteratureEntryBuilder authoringGroupsSet(List<String> authoringGroup) {
+        this.authoringGroups = Utils.modifiableList(authoringGroup);
         return this;
     }
 
-    public @Nonnull LiteratureEntryBuilder authoringGroupAdd(String authoringGroup) {
-        Utils.addOrIgnoreNull(authoringGroup, this.authoringGroup);
+    public @Nonnull LiteratureEntryBuilder authoringGroupsAdd(String authoringGroup) {
+        Utils.addOrIgnoreNull(authoringGroup, this.authoringGroups);
         return this;
     }
 
@@ -64,7 +62,7 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntry> {
         return this;
     }
 
-    public @Nonnull LiteratureEntryBuilder authorAdd(Author author) {
+    public @Nonnull LiteratureEntryBuilder authorsAdd(Author author) {
         Utils.addOrIgnoreNull(author, this.authors);
         return this;
     }
@@ -85,7 +83,7 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntry> {
     }
 
     public @Nonnull LiteratureEntryBuilder journal(String journalName) {
-        if (Utils.notNullOrEmpty(journalName)) {
+        if (Utils.notNullNotEmpty(journalName)) {
             this.journal = new JournalImpl(journalName);
         }
         return this;
@@ -122,7 +120,7 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntry> {
                 pubmedId,
                 doiId,
                 title,
-                authoringGroup,
+                authoringGroups,
                 authors,
                 completeAuthorList,
                 publicationDate,
@@ -139,7 +137,7 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntry> {
                 .pubmedId(instance.getPubmedId())
                 .doiId(instance.getDoiId())
                 .title(instance.getTitle())
-                .authoringGroupSet(instance.getAuthoringGroup())
+                .authoringGroupsSet(instance.getAuthoringGroups())
                 .authorsSet(instance.getAuthors())
                 .completeAuthorList(instance.isCompleteAuthorList())
                 .publicationDate(instance.getPublicationDate())

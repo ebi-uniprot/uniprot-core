@@ -27,7 +27,7 @@ class CofactorBuilderTest {
 
     @Test
     void canAddSingleEvidence() {
-        Cofactor obj = new CofactorBuilder().addEvidence(createEvidence()).build();
+        Cofactor obj = new CofactorBuilder().evidencesAdd(createEvidence()).build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
         assertTrue(obj.hasEvidences());
@@ -35,7 +35,7 @@ class CofactorBuilderTest {
 
     @Test
     void nullEvidence_willBeIgnore() {
-        Cofactor obj = new CofactorBuilder().addEvidence(null).build();
+        Cofactor obj = new CofactorBuilder().evidencesAdd(null).build();
         assertNotNull(obj.getEvidences());
         assertTrue(obj.getEvidences().isEmpty());
         assertFalse(obj.hasEvidences());
@@ -45,8 +45,8 @@ class CofactorBuilderTest {
     void evidences_willConvertUnModifiable_toModifiable() {
         Cofactor obj =
                 new CofactorBuilder()
-                        .evidences(Collections.emptyList())
-                        .addEvidence(createEvidence())
+                        .evidencesSet(Collections.emptyList())
+                        .evidencesAdd(createEvidence())
                         .build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
@@ -55,7 +55,7 @@ class CofactorBuilderTest {
 
     @Test
     void canAddListEvidences() {
-        Cofactor obj = new CofactorBuilder().evidences(createEvidences()).build();
+        Cofactor obj = new CofactorBuilder().evidencesSet(createEvidences()).build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
         assertTrue(obj.hasEvidences());

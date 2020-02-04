@@ -99,7 +99,7 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
     }
 
     @Override
-    public List<TaxonomyLineage> getLineage() {
+    public List<TaxonomyLineage> getLineages() {
         return lineage;
     }
 
@@ -140,27 +140,27 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
 
     @Override
     public boolean hasOtherNames() {
-        return Utils.notNullOrEmpty(this.otherNames);
+        return Utils.notNullNotEmpty(this.otherNames);
     }
 
     @Override
     public boolean hasLineage() {
-        return Utils.notNullOrEmpty(this.lineage);
+        return Utils.notNullNotEmpty(this.lineage);
     }
 
     @Override
     public boolean hasStrains() {
-        return Utils.notNullOrEmpty(this.strains);
+        return Utils.notNullNotEmpty(this.strains);
     }
 
     @Override
     public boolean hasHosts() {
-        return Utils.notNullOrEmpty(this.hosts);
+        return Utils.notNullNotEmpty(this.hosts);
     }
 
     @Override
     public boolean hasLinks() {
-        return Utils.notNullOrEmpty(this.links);
+        return Utils.notNullNotEmpty(this.links);
     }
 
     @Override
@@ -220,7 +220,7 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
                 && isActive() == that.isActive()
                 && getRank() == that.getRank()
                 && Objects.equals(getOtherNames(), that.getOtherNames())
-                && Objects.equals(getLineage(), that.getLineage())
+                && Objects.equals(getLineages(), that.getLineages())
                 && Objects.equals(getStrains(), that.getStrains())
                 && Objects.equals(getHosts(), that.getHosts())
                 && Objects.equals(getLinks(), that.getLinks())
@@ -237,7 +237,7 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
                 isHidden(),
                 isActive(),
                 getOtherNames(),
-                getLineage(),
+                getLineages(),
                 getStrains(),
                 getHosts(),
                 getLinks(),

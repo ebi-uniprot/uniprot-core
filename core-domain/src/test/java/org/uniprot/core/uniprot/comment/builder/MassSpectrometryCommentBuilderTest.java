@@ -126,7 +126,7 @@ class MassSpectrometryCommentBuilderTest {
                         .molWeight(0.234f)
                         .molWeightError(0.123f)
                         .note("someNote")
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build();
 
         assertEquals(MassSpectrometryMethod.ELECTROSPRAY, comment.getMethod());
@@ -140,7 +140,7 @@ class MassSpectrometryCommentBuilderTest {
     @Test
     void canAddSingleEvidence() {
         MassSpectrometryComment obj =
-                new MassSpectrometryCommentBuilder().addEvidence(createEvidence()).build();
+                new MassSpectrometryCommentBuilder().evidencesAdd(createEvidence()).build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
         assertTrue(obj.hasEvidences());
@@ -149,7 +149,7 @@ class MassSpectrometryCommentBuilderTest {
     @Test
     void nullEvidence_willBeIgnore() {
         MassSpectrometryComment obj =
-                new MassSpectrometryCommentBuilder().addEvidence(null).build();
+                new MassSpectrometryCommentBuilder().evidencesAdd(null).build();
         assertNotNull(obj.getEvidences());
         assertTrue(obj.getEvidences().isEmpty());
         assertFalse(obj.hasEvidences());
@@ -159,8 +159,8 @@ class MassSpectrometryCommentBuilderTest {
     void evidences_willConvertUnModifiable_toModifiable() {
         MassSpectrometryComment obj =
                 new MassSpectrometryCommentBuilder()
-                        .evidences(Collections.emptyList())
-                        .addEvidence(createEvidence())
+                        .evidencesSet(Collections.emptyList())
+                        .evidencesAdd(createEvidence())
                         .build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
@@ -170,7 +170,7 @@ class MassSpectrometryCommentBuilderTest {
     @Test
     void canAddListEvidences() {
         MassSpectrometryComment obj =
-                new MassSpectrometryCommentBuilder().evidences(createEvidences()).build();
+                new MassSpectrometryCommentBuilder().evidencesSet(createEvidences()).build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
         assertTrue(obj.hasEvidences());

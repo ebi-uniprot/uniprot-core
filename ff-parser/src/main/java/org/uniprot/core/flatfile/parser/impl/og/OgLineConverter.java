@@ -61,7 +61,7 @@ public class OgLineConverter extends EvidenceCollector
                     new GeneLocationBuilder()
                             .geneEncodingType(type)
                             .value("")
-                            .evidences(evidenceMap.get(ogEnum))
+                            .evidencesSet(evidenceMap.get(ogEnum))
                             .build();
 
             organelles.add(org);
@@ -72,7 +72,7 @@ public class OgLineConverter extends EvidenceCollector
                     new GeneLocationBuilder()
                             .geneEncodingType(GeneEncodingType.PLASMID)
                             .value(val)
-                            .evidences(evidenceMap.get(val))
+                            .evidencesSet(evidenceMap.get(val))
                             .build();
             organelles.add(org);
         }

@@ -29,7 +29,7 @@ public class RnaEditingPositionBuilder implements Builder<RnaEdPosition> {
 
     public static @Nonnull RnaEditingPositionBuilder from(@Nonnull RnaEdPosition instance) {
         return new RnaEditingPositionBuilder()
-                .evidences(instance.getEvidences())
+                .evidencesSet(instance.getEvidences())
                 .position(instance.getPosition());
     }
 
@@ -38,12 +38,12 @@ public class RnaEditingPositionBuilder implements Builder<RnaEdPosition> {
         return this;
     }
 
-    public @Nonnull RnaEditingPositionBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull RnaEditingPositionBuilder evidencesSet(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public @Nonnull RnaEditingPositionBuilder addEvidence(Evidence evidence) {
+    public @Nonnull RnaEditingPositionBuilder evidencesAdd(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }

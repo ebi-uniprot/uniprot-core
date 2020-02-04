@@ -52,7 +52,7 @@ public class FeatureIdImpl implements FeatureId {
 
     @Override
     public boolean hasValue() {
-        return Utils.notNullOrEmpty(this.value);
+        return Utils.notNullNotEmpty(this.value);
     }
 
     @Override

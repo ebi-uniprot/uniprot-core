@@ -30,7 +30,7 @@ public class EvidencedValueImpl implements EvidencedValue {
 
     @Override
     public boolean hasValue() {
-        return Utils.notNullOrEmpty(this.value);
+        return Utils.notNullNotEmpty(this.value);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class EvidencedValueImpl implements EvidencedValue {
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notNullOrEmpty(this.evidences);
+        return Utils.notNullNotEmpty(this.evidences);
     }
 
     @Override

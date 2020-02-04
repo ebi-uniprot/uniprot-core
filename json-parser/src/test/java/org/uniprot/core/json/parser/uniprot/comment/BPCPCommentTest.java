@@ -142,26 +142,26 @@ public class BPCPCommentTest {
                         .max(10)
                         .approximate(true)
                         .note(note)
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build();
         MaximumVelocity velocity =
                 new MaximumVelocityBuilder()
                         .velocity(1.0F)
                         .unit("unit1")
                         .enzyme("enzyme1")
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build();
         MichaelisConstant mConstant =
                 new MichaelisConstantBuilder()
                         .constant(2.1F)
                         .unit(MichaelisConstantUnit.MICRO_MOL)
                         .substrate("sub1")
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build();
         KineticParameters kp =
                 new KineticParametersBuilder()
-                        .addMaximumVelocitie(velocity)
-                        .addMichaelisConstant(mConstant)
+                        .maximumVelocitiesAdd(velocity)
+                        .michaelisConstantsAdd(mConstant)
                         .note(note)
                         .build();
         return new BPCPCommentBuilder()

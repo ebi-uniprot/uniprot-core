@@ -17,7 +17,7 @@ class ProteinSectionBuilderTest {
 
     @Test
     void canAddSingleAlternativeName() {
-        ProteinSection obj = new ProteinSectionBuilder().addAlternativeNames(altName).build();
+        ProteinSection obj = new ProteinSectionBuilder().alternativeNamesAdd(altName).build();
         assertNotNull(obj.getAlternativeNames());
         assertFalse(obj.getAlternativeNames().isEmpty());
         assertTrue(obj.hasAlternativeNames());
@@ -25,7 +25,7 @@ class ProteinSectionBuilderTest {
 
     @Test
     void nullAlternativeName_willBeIgnore() {
-        ProteinSection obj = new ProteinSectionBuilder().addAlternativeNames(null).build();
+        ProteinSection obj = new ProteinSectionBuilder().alternativeNamesAdd(null).build();
         assertNotNull(obj.getAlternativeNames());
         assertTrue(obj.getAlternativeNames().isEmpty());
         assertFalse(obj.hasAlternativeNames());
@@ -35,8 +35,8 @@ class ProteinSectionBuilderTest {
     void alternativeNames_willConvertUnModifiable_toModifiable() {
         ProteinSection obj =
                 new ProteinSectionBuilder()
-                        .alternativeNames(Collections.emptyList())
-                        .addAlternativeNames(altName)
+                        .alternativeNamesSet(Collections.emptyList())
+                        .alternativeNamesAdd(altName)
                         .build();
         assertNotNull(obj.getAlternativeNames());
         assertFalse(obj.getAlternativeNames().isEmpty());
@@ -47,7 +47,7 @@ class ProteinSectionBuilderTest {
     void canAddListAlternativeNames() {
         ProteinSection obj =
                 new ProteinSectionBuilder()
-                        .alternativeNames(Collections.singletonList(altName))
+                        .alternativeNamesSet(Collections.singletonList(altName))
                         .build();
         assertNotNull(obj.getAlternativeNames());
         assertFalse(obj.getAlternativeNames().isEmpty());
@@ -70,7 +70,7 @@ class ProteinSectionBuilderTest {
 
     @Test
     void canAddSingleCdAntigenNames() {
-        ProteinSection obj = new ProteinSectionBuilder().addCdAntigenNames(name).build();
+        ProteinSection obj = new ProteinSectionBuilder().cdAntigenNamesAdd(name).build();
         assertNotNull(obj.getCdAntigenNames());
         assertFalse(obj.getCdAntigenNames().isEmpty());
         assertTrue(obj.hasCdAntigenNames());
@@ -78,7 +78,7 @@ class ProteinSectionBuilderTest {
 
     @Test
     void nullCdAntigenNames_willBeIgnore() {
-        ProteinSection obj = new ProteinSectionBuilder().addCdAntigenNames(null).build();
+        ProteinSection obj = new ProteinSectionBuilder().cdAntigenNamesAdd(null).build();
         assertNotNull(obj.getCdAntigenNames());
         assertTrue(obj.getCdAntigenNames().isEmpty());
         assertFalse(obj.hasCdAntigenNames());
@@ -88,8 +88,8 @@ class ProteinSectionBuilderTest {
     void cdAntigenNames_willConvertUnModifiable_toModifiable() {
         ProteinSection obj =
                 new ProteinSectionBuilder()
-                        .cdAntigenNames(Collections.emptyList())
-                        .addCdAntigenNames(name)
+                        .cdAntigenNamesSet(Collections.emptyList())
+                        .cdAntigenNamesAdd(name)
                         .build();
         assertNotNull(obj.getCdAntigenNames());
         assertFalse(obj.getCdAntigenNames().isEmpty());
@@ -98,7 +98,7 @@ class ProteinSectionBuilderTest {
 
     @Test
     void canAddListCdAntigenNames() {
-        ProteinSection obj = new ProteinSectionBuilder().cdAntigenNames(names).build();
+        ProteinSection obj = new ProteinSectionBuilder().cdAntigenNamesSet(names).build();
         assertNotNull(obj.getCdAntigenNames());
         assertFalse(obj.getCdAntigenNames().isEmpty());
         assertTrue(obj.hasCdAntigenNames());
@@ -106,7 +106,7 @@ class ProteinSectionBuilderTest {
 
     @Test
     void canAddSingleInnNames() {
-        ProteinSection obj = new ProteinSectionBuilder().addInnNames(name).build();
+        ProteinSection obj = new ProteinSectionBuilder().innNamesAdd(name).build();
         assertNotNull(obj.getInnNames());
         assertFalse(obj.getInnNames().isEmpty());
         assertTrue(obj.hasInnNames());
@@ -114,7 +114,7 @@ class ProteinSectionBuilderTest {
 
     @Test
     void nullInnNames_willBeIgnore() {
-        ProteinSection obj = new ProteinSectionBuilder().addInnNames(null).build();
+        ProteinSection obj = new ProteinSectionBuilder().innNamesAdd(null).build();
         assertNotNull(obj.getInnNames());
         assertTrue(obj.getInnNames().isEmpty());
         assertFalse(obj.hasInnNames());
@@ -124,8 +124,8 @@ class ProteinSectionBuilderTest {
     void innNames_willConvertUnModifiable_toModifiable() {
         ProteinSection obj =
                 new ProteinSectionBuilder()
-                        .innNames(Collections.emptyList())
-                        .addInnNames(name)
+                        .innNamesSet(Collections.emptyList())
+                        .innNamesAdd(name)
                         .build();
         assertNotNull(obj.getInnNames());
         assertFalse(obj.getInnNames().isEmpty());
@@ -134,7 +134,7 @@ class ProteinSectionBuilderTest {
 
     @Test
     void canAddListInnNames() {
-        ProteinSection obj = new ProteinSectionBuilder().innNames(names).build();
+        ProteinSection obj = new ProteinSectionBuilder().innNamesSet(names).build();
         assertNotNull(obj.getInnNames());
         assertFalse(obj.getInnNames().isEmpty());
         assertTrue(obj.hasInnNames());

@@ -6,15 +6,15 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 
 public interface MassSpectrometryComment extends Comment, HasMolecule {
 
-    public Float getMolWeight();
+    Float getMolWeight();
 
-    public Float getMolWeightError();
+    Float getMolWeightError();
 
-    public String getNote();
+    String getNote();
 
-    public MassSpectrometryMethod getMethod();
+    MassSpectrometryMethod getMethod();
 
-    public List<Evidence> getEvidences();
+    List<Evidence> getEvidences();
 
     boolean hasMolWeight();
 

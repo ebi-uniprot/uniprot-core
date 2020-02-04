@@ -22,7 +22,7 @@ public interface Citation extends Serializable {
 
     boolean hasCitationXrefs();
 
-    List<String> getAuthoringGroup();
+    List<String> getAuthoringGroups();
 
     List<Author> getAuthors();
 

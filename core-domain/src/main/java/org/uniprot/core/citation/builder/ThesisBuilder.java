@@ -11,7 +11,13 @@ public final class ThesisBuilder extends AbstractCitationBuilder<ThesisBuilder, 
 
     public @Nonnull Thesis build() {
         return new ThesisImpl(
-                authoringGroups, authors, xrefs, title, publicationDate, institute, address);
+                authoringGroups,
+                authors,
+                citationXrefs,
+                title,
+                publicationDate,
+                institute,
+                address);
     }
 
     public static @Nonnull ThesisBuilder from(Thesis instance) {

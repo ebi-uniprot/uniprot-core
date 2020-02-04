@@ -34,7 +34,7 @@ class OHLineBuildTest {
         OrganismName organismName = OrganismNameLineParser.createFromOrganismLine(name);
         OrganismHostBuilder builder = new OrganismHostBuilder();
         builder.scientificName(organismName.getScientificName())
-                .synonyms(organismName.getSynonyms())
+                .synonymsSet(organismName.getSynonyms())
                 .commonName(organismName.getCommonName())
                 .taxonId(taxid);
         return builder.build();

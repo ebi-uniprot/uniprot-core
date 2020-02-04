@@ -23,7 +23,7 @@ public class FeatureDescriptionImpl implements FeatureDescription {
 
     @Override
     public boolean hasValue() {
-        return Utils.notNullOrEmpty(this.value);
+        return Utils.notNullNotEmpty(this.value);
     }
 
     @Override

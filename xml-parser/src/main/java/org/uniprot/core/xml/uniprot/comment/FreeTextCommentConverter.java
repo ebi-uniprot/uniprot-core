@@ -43,7 +43,7 @@ public class FreeTextCommentConverter implements CommentConverter<FreeTextCommen
         if (xmlObj.getMolecule() != null) {
             builder.molecule(xmlObj.getMolecule().getValue());
         }
-        return builder.commentType(type).texts(texts).build();
+        return builder.commentType(type).textsSet(texts).build();
     }
 
     @Override

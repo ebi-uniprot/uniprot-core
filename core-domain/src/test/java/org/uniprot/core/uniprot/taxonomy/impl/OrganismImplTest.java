@@ -24,7 +24,7 @@ class OrganismImplTest {
         assertEquals(9606L, organism.getTaxonId());
         assertEquals(scientificName, organism.getScientificName());
         assertEquals(commonName, organism.getCommonName());
-        assertEquals(lineages, organism.getLineage());
+        assertEquals(lineages, organism.getLineages());
         assertEquals(synonyms, organism.getSynonyms());
     }
 
@@ -35,7 +35,7 @@ class OrganismImplTest {
         assertEquals(0, organism.getTaxonId());
         assertEquals("", organism.getScientificName());
         assertEquals("", organism.getCommonName());
-        assertTrue(organism.getLineage().isEmpty());
+        assertTrue(organism.getLineages().isEmpty());
         assertTrue(organism.getSynonyms().isEmpty());
     }
 

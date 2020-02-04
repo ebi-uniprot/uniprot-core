@@ -52,7 +52,7 @@ public class TaxonomyEntryMap implements NamedValueMap {
     }
 
     private String getHosts() {
-        if (Utils.notNullOrEmpty(taxonomyEntry.getHosts())) {
+        if (Utils.notNullNotEmpty(taxonomyEntry.getHosts())) {
             return taxonomyEntry.getHosts().stream()
                     .map(Taxonomy::getScientificName)
                     .collect(Collectors.joining(", "));
@@ -62,7 +62,7 @@ public class TaxonomyEntryMap implements NamedValueMap {
     }
 
     private String getStrains() {
-        if (Utils.notNullOrEmpty(taxonomyEntry.getStrains())) {
+        if (Utils.notNullNotEmpty(taxonomyEntry.getStrains())) {
             return taxonomyEntry.getStrains().stream()
                     .map(TaxonomyStrain::getName)
                     .collect(Collectors.joining(", "));
@@ -72,8 +72,8 @@ public class TaxonomyEntryMap implements NamedValueMap {
     }
 
     private String getLineage() {
-        if (Utils.notNullOrEmpty(taxonomyEntry.getLineage())) {
-            return taxonomyEntry.getLineage().stream()
+        if (Utils.notNullNotEmpty(taxonomyEntry.getLineages())) {
+            return taxonomyEntry.getLineages().stream()
                     .map(TaxonomyLineage::getScientificName)
                     .collect(Collectors.joining(", "));
         } else {

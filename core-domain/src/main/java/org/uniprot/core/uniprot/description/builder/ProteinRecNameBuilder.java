@@ -26,22 +26,22 @@ public class ProteinRecNameBuilder implements Builder<ProteinRecName> {
         return this;
     }
 
-    public @Nonnull ProteinRecNameBuilder shortNames(List<Name> shortNames) {
+    public @Nonnull ProteinRecNameBuilder shortNamesSet(List<Name> shortNames) {
         this.shortNames = modifiableList(shortNames);
         return this;
     }
 
-    public @Nonnull ProteinRecNameBuilder addShortName(Name shortNames) {
+    public @Nonnull ProteinRecNameBuilder shortNamesAdd(Name shortNames) {
         addOrIgnoreNull(shortNames, this.shortNames);
         return this;
     }
 
-    public @Nonnull ProteinRecNameBuilder ecNumbers(List<EC> ecNumbers) {
+    public @Nonnull ProteinRecNameBuilder ecNumbersSet(List<EC> ecNumbers) {
         this.ecNumbers = modifiableList(ecNumbers);
         return this;
     }
 
-    public @Nonnull ProteinRecNameBuilder addEcNumber(EC ecNumbers) {
+    public @Nonnull ProteinRecNameBuilder ecNumbersAdd(EC ecNumbers) {
         addOrIgnoreNull(ecNumbers, this.ecNumbers);
         return this;
     }
@@ -54,7 +54,7 @@ public class ProteinRecNameBuilder implements Builder<ProteinRecName> {
     public static @Nonnull ProteinRecNameBuilder from(@Nonnull ProteinRecName instance) {
         return new ProteinRecNameBuilder()
                 .fullName(instance.getFullName())
-                .shortNames(instance.getShortNames())
-                .ecNumbers(instance.getEcNumbers());
+                .shortNamesSet(instance.getShortNames())
+                .ecNumbersSet(instance.getEcNumbers());
     }
 }

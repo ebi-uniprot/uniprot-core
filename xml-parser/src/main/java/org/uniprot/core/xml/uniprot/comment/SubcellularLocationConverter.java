@@ -64,7 +64,7 @@ public class SubcellularLocationConverter
         return new SubcellularLocationValueBuilder()
                 .id("")
                 .value(locationStr)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 

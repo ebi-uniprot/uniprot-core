@@ -21,7 +21,7 @@ public interface LiteratureEntry extends Serializable {
 
     boolean isCompleteAuthorList();
 
-    List<String> getAuthoringGroup();
+    List<String> getAuthoringGroups();
 
     Journal getJournal();
 
@@ -42,19 +42,19 @@ public interface LiteratureEntry extends Serializable {
     }
 
     default boolean hasDoiId() {
-        return Utils.notNullOrEmpty(getDoiId());
+        return Utils.notNullNotEmpty(getDoiId());
     }
 
     default boolean hasTitle() {
-        return Utils.notNullOrEmpty(getTitle());
+        return Utils.notNullNotEmpty(getTitle());
     }
 
     default boolean hasAuthoringGroup() {
-        return Utils.notNullOrEmpty(getAuthoringGroup());
+        return Utils.notNullNotEmpty(getAuthoringGroups());
     }
 
     default boolean hasAuthors() {
-        return Utils.notNullOrEmpty(getAuthors());
+        return Utils.notNullNotEmpty(getAuthors());
     }
 
     default boolean hasPublicationDate() {
@@ -66,19 +66,19 @@ public interface LiteratureEntry extends Serializable {
     }
 
     default boolean hasFirstPage() {
-        return Utils.notNullOrEmpty(getFirstPage());
+        return Utils.notNullNotEmpty(getFirstPage());
     }
 
     default boolean hasLastPage() {
-        return Utils.notNullOrEmpty(getLastPage());
+        return Utils.notNullNotEmpty(getLastPage());
     }
 
     default boolean hasVolume() {
-        return Utils.notNullOrEmpty(getVolume());
+        return Utils.notNullNotEmpty(getVolume());
     }
 
     default boolean hasLiteratureAbstract() {
-        return Utils.notNullOrEmpty(getLiteratureAbstract());
+        return Utils.notNullNotEmpty(getLiteratureAbstract());
     }
 
     default boolean hasStatistics() {

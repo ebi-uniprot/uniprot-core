@@ -83,7 +83,7 @@ class FTBuildTestAbstr {
                 .location(location)
                 .description(description)
                 .featureId(ftId)
-                .evidences(createEvidence(evs))
+                .evidencesSet(createEvidence(evs))
                 .build();
     }
 
@@ -100,14 +100,14 @@ class FTBuildTestAbstr {
                 .description(description)
                 .featureId(ftId)
                 .alternativeSequence(alternativeSequence)
-                .evidences(createEvidence(evs))
+                .evidencesSet(createEvidence(evs))
                 .build();
     }
 
     AlternativeSequence createAlternativeSequence(
             String originalSequence, List<String> alternativeSequences) {
         return new AlternativeSequenceBuilder()
-                .alternatives(alternativeSequences)
+                .alternativeSequencesSet(alternativeSequences)
                 .original(originalSequence)
                 .build();
     }

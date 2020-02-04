@@ -59,9 +59,9 @@ public class OrganimsTest {
                 .taxonId(9606L)
                 .scientificName("scientific name")
                 .commonName("common name")
-                .synonyms(Collections.singletonList("synonyms 1"))
-                .lineage(Collections.singletonList("lineage 1"))
-                .evidences(CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001363"))
+                .synonymsSet(Collections.singletonList("synonyms 1"))
+                .lineagesSet(Collections.singletonList("lineage 1"))
+                .evidencesSet(CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001363"))
                 .build();
     }
 }
