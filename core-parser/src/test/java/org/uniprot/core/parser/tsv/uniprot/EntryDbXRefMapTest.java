@@ -163,9 +163,9 @@ class EntryDbXRefMapTest {
                 .databaseType(type)
                 .isoformId(isoform)
                 .id(id)
-                .addProperty(type.getAttribute(0), desc)
-                .addProperty(type.getAttribute(1), third)
-                .addProperty(type.getAttribute(2), fourth)
+                .propertiesAdd(type.getAttribute(0), desc)
+                .propertiesAdd(type.getAttribute(1), third)
+                .propertiesAdd(type.getAttribute(2), fourth)
                 .build();
     }
 }

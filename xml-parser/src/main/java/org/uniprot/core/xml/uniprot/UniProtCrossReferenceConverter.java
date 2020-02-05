@@ -62,9 +62,9 @@ public class UniProtCrossReferenceConverter
                 .databaseType(type)
                 .isoformId(isoformId)
                 .id(id)
-                .addProperty(type.getAttribute(0), description)
-                .addProperty(type.getAttribute(1), thirdAttribute)
-                .addProperty(type.getAttribute(2), fourthAttribute)
+                .propertiesAdd(type.getAttribute(0), description)
+                .propertiesAdd(type.getAttribute(1), thirdAttribute)
+                .propertiesAdd(type.getAttribute(2), fourthAttribute)
                 .build();
     }
 

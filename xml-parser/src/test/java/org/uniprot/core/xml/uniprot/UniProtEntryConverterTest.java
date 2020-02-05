@@ -380,9 +380,9 @@ class UniProtEntryConverterTest {
                         .databaseType(uniProtXDbType)
                         .id(id)
                         .isoformId(isoform)
-                        .addProperty(uniProtXDbType.getAttribute(0), description)
-                        .addProperty(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .addProperty(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
+                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
                         .build());
 
         // DR   EMBL; DQ185029; AAZ94714.1; -; mRNA.
@@ -399,9 +399,9 @@ class UniProtEntryConverterTest {
                         .databaseType(uniProtXDbType)
                         .id(id)
                         .isoformId(isoform)
-                        .addProperty(uniProtXDbType.getAttribute(0), description)
-                        .addProperty(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .addProperty(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
+                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
                         .build());
 
         // DR   EMBL; AK000352; BAA91105.1; ALT_INIT; mRNA.
@@ -417,9 +417,9 @@ class UniProtEntryConverterTest {
                         .databaseType(uniProtXDbType)
                         .id(id)
                         .isoformId(isoform)
-                        .addProperty(uniProtXDbType.getAttribute(0), description)
-                        .addProperty(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .addProperty(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
+                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
                         .build());
 
         // DR   EMBL; AK310815; -; NOT_ANNOTATED_CDS; mRNA.
@@ -435,9 +435,9 @@ class UniProtEntryConverterTest {
                         .databaseType(uniProtXDbType)
                         .id(id)
                         .isoformId(isoform)
-                        .addProperty(uniProtXDbType.getAttribute(0), description)
-                        .addProperty(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .addProperty(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
+                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
                         .build());
 
         //   DR   HPA; HPA021372; -.
@@ -453,9 +453,9 @@ class UniProtEntryConverterTest {
                         .databaseType(uniProtXDbType)
                         .id(id)
                         .isoformId(isoform)
-                        .addProperty(uniProtXDbType.getAttribute(0), description)
-                        .addProperty(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .addProperty(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
+                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
                         .build());
 
         //  DR   HPA; HPA021812; -.
@@ -471,9 +471,9 @@ class UniProtEntryConverterTest {
                         .databaseType(uniProtXDbType)
                         .id(id)
                         .isoformId(isoform)
-                        .addProperty(uniProtXDbType.getAttribute(0), description)
-                        .addProperty(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .addProperty(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
+                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
                         .build());
 
         return xrefs;

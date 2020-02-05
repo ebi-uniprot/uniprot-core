@@ -24,7 +24,7 @@ class UniProtDBCrossReferenceImplTest {
                 new UniProtDBCrossReferenceBuilder()
                         .databaseType(dbType)
                         .id(id)
-                        .addProperty(dbType.getAttribute(0), description)
+                        .propertiesAdd(dbType.getAttribute(0), description)
                         .build();
 
         verify(xref, val, type, id, description, null, null, null);
@@ -45,7 +45,7 @@ class UniProtDBCrossReferenceImplTest {
                 new UniProtDBCrossReferenceBuilder()
                         .databaseType(dbType)
                         .id(id)
-                        .addProperty(dbType.getAttribute(0), description)
+                        .propertiesAdd(dbType.getAttribute(0), description)
                         .build();
         verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
     }
@@ -66,8 +66,8 @@ class UniProtDBCrossReferenceImplTest {
                 new UniProtDBCrossReferenceBuilder()
                         .databaseType(dbType)
                         .id(id)
-                        .addProperty(dbType.getAttribute(0), description)
-                        .addProperty(dbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(dbType.getAttribute(0), description)
+                        .propertiesAdd(dbType.getAttribute(1), thirdAttr)
                         .build();
 
         verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
@@ -89,8 +89,8 @@ class UniProtDBCrossReferenceImplTest {
                 new UniProtDBCrossReferenceBuilder()
                         .databaseType(dbType)
                         .id(id)
-                        .addProperty(dbType.getAttribute(0), description)
-                        .addProperty(dbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(dbType.getAttribute(0), description)
+                        .propertiesAdd(dbType.getAttribute(1), thirdAttr)
                         .build();
 
         verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
@@ -112,8 +112,8 @@ class UniProtDBCrossReferenceImplTest {
                 new UniProtDBCrossReferenceBuilder()
                         .databaseType(dbType)
                         .id(id)
-                        .addProperty(dbType.getAttribute(0), description)
-                        .addProperty(dbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(dbType.getAttribute(0), description)
+                        .propertiesAdd(dbType.getAttribute(1), thirdAttr)
                         .isoformId(isoform)
                         .build();
 
@@ -136,8 +136,8 @@ class UniProtDBCrossReferenceImplTest {
                 new UniProtDBCrossReferenceBuilder()
                         .databaseType(dbType)
                         .id(id)
-                        .addProperty(dbType.getAttribute(0), description)
-                        .addProperty(dbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(dbType.getAttribute(0), description)
+                        .propertiesAdd(dbType.getAttribute(1), thirdAttr)
                         .isoformId(isoform)
                         .build();
 
@@ -160,9 +160,9 @@ class UniProtDBCrossReferenceImplTest {
                 new UniProtDBCrossReferenceBuilder()
                         .databaseType(dbType)
                         .id(id)
-                        .addProperty(dbType.getAttribute(0), description)
-                        .addProperty(dbType.getAttribute(1), thirdAttr)
-                        .addProperty(dbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(dbType.getAttribute(0), description)
+                        .propertiesAdd(dbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(dbType.getAttribute(2), fourthAttr)
                         .isoformId(isoform)
                         .build();
 
@@ -185,9 +185,9 @@ class UniProtDBCrossReferenceImplTest {
                 new UniProtDBCrossReferenceBuilder()
                         .databaseType(dbType)
                         .id(id)
-                        .addProperty(dbType.getAttribute(0), description)
-                        .addProperty(dbType.getAttribute(1), thirdAttr)
-                        .addProperty(dbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(dbType.getAttribute(0), description)
+                        .propertiesAdd(dbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(dbType.getAttribute(2), fourthAttr)
                         .isoformId(isoform)
                         .build();
 
@@ -210,9 +210,9 @@ class UniProtDBCrossReferenceImplTest {
                 new UniProtDBCrossReferenceBuilder()
                         .databaseType(dbType)
                         .id(id)
-                        .addProperty(dbType.getAttribute(0), description)
-                        .addProperty(dbType.getAttribute(1), thirdAttr)
-                        .addProperty(dbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(dbType.getAttribute(0), description)
+                        .propertiesAdd(dbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(dbType.getAttribute(2), fourthAttr)
                         .isoformId(isoform)
                         .build();
 
