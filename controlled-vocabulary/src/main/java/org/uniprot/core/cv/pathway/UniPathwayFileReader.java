@@ -75,7 +75,7 @@ public class UniPathwayFileReader extends AbstractFileReader<UniPathway> {
 
     private List<UniPathway> cleanChildrenParent(List<UniPathway> children) {
         List<UniPathway> result = new ArrayList<>();
-        if (Utils.notNullOrEmpty(children)) {
+        if (Utils.notNullNotEmpty(children)) {
             for (UniPathway child : children) {
                 UniPathway newEntry = new UniPathway(child.getAccession(), child.getName());
                 newEntry.setChildren(cleanChildrenParent(child.getChildren()));

@@ -31,9 +31,9 @@ class AbstractJournalArticleBuilderTest extends AbstractCitationBuilderTest {
                 new TestableJournalArticleBuilder()
                         .title(TITLE)
                         .publicationDate(PUBLICATION_DATE)
-                        .authoringGroups(GROUPS)
-                        .authors(AUTHORS)
-                        .citationXrefs(asList(XREF1, XREF2))
+                        .authoringGroupsSet(GROUPS)
+                        .authorsSet(AUTHORS)
+                        .citationXrefsSet(asList(XREF1, XREF2))
                         .journalName(JOURNAL_NAME)
                         .firstPage(FIRST_PAGE)
                         .lastPage(LAST_PAGE)
@@ -42,7 +42,7 @@ class AbstractJournalArticleBuilderTest extends AbstractCitationBuilderTest {
 
         assertThat(journalArticle.getTitle(), is(TITLE));
         assertThat(journalArticle.getPublicationDate().getValue(), is(PUBLICATION_DATE));
-        assertThat(journalArticle.getAuthoringGroup(), is(GROUPS));
+        assertThat(journalArticle.getAuthoringGroups(), is(GROUPS));
         assertThat(
                 journalArticle.getAuthors().stream()
                         .map(Value::getValue)
@@ -103,7 +103,7 @@ class AbstractJournalArticleBuilderTest extends AbstractCitationBuilderTest {
                     CITATION_TYPE,
                     builder.authoringGroups,
                     builder.authors,
-                    builder.xrefs,
+                    builder.citationXrefs,
                     builder.title,
                     builder.publicationDate,
                     builder.journalName,

@@ -47,10 +47,10 @@ class CitationUtil {
             AbstractCitationBuilder<? extends AbstractCitationBuilder, ? extends Citation>
                     builder) {
         builder.publicationDate("date value");
-        builder.addAuthorGroup("auth group");
-        builder.addAuthor("author Leo");
+        builder.authoringGroupsAdd("auth group");
+        builder.authorsAdd("author Leo");
         builder.title("Leo book tittle");
-        builder.citationXrefs(createCitationCrossRefs());
+        builder.citationXrefsSet(createCitationCrossRefs());
     }
 
     public static List<DBCrossReference<CitationXrefType>> createCitationCrossRefs() {

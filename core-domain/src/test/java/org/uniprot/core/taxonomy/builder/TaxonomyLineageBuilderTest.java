@@ -58,7 +58,7 @@ class TaxonomyLineageBuilderTest {
         TaxonomyLineageBuilder builder = new TaxonomyLineageBuilder();
         builder.taxonId(9606L)
                 .commonName("common Name")
-                .addSynonyms("synonyms")
+                .synonymsAdd("synonyms")
                 .scientificName("Scientific Name")
                 .hidden(true)
                 .rank(TaxonomyRank.FAMILY);

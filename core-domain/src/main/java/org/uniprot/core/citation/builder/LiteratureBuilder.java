@@ -39,7 +39,7 @@ public final class LiteratureBuilder
         return new LiteratureImpl(
                 authoringGroups,
                 authors,
-                xrefs,
+                citationXrefs,
                 title,
                 publicationDate,
                 journalName,

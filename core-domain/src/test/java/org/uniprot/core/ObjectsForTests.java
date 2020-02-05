@@ -408,9 +408,9 @@ public class ObjectsForTests {
                 .lastPage("last page")
                 .volume("the volume")
                 .journalName("The journal name")
-                .addAuthor("John")
-                .addAuthorGroup("the author group")
-                .addCitationXrefs(xref)
+                .authorsAdd("John")
+                .authoringGroupsAdd("the author group")
+                .citationXrefsAdd(xref)
                 .publicationDate("2015-MAY")
                 .title("the big title")
                 .build();

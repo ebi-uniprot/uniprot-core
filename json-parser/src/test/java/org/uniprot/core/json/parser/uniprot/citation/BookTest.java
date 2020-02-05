@@ -65,11 +65,6 @@ public class BookTest {
                 .volume("book volume")
                 .publisher("the publisher")
                 .address("address value")
-                .publicationDate("date value")
-                .authorGroupsAdd("auth group")
-                .authorsAdd("author Leo")
-                .title("Leo book tittle")
-                .citationXrefsSet(Collections.singletonList(xref))
                 .build();
     }
 }

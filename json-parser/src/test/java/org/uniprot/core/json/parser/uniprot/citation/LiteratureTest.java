@@ -79,13 +79,13 @@ public class LiteratureTest {
                 .lastPage("last page")
                 .volume("volume value")
                 .publicationDate("date value")
-                .addAuthorGroup("auth group")
-                .addAuthor("author Leo")
+                .authoringGroupsAdd("auth group")
+                .authorsAdd("author Leo")
                 .title("Leo book tittle")
                 .completeAuthorList(true)
                 .literatureAbstract("the abstract")
-                .addCitationXrefs(pubmed)
-                .addCitationXrefs(doi)
+                .citationXrefsAdd(pubmed)
+                .citationXrefsAdd(doi)
                 .build();
     }
 }

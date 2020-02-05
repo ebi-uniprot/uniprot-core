@@ -203,14 +203,14 @@ class BookBuilderTest extends AbstractCitationBuilderTest {
 
     @Test
     void canAddStringAuthGroup() {
-        Book book = new BookBuilder().authorGroupsAdd("authGroup").build();
+        Book book = new BookBuilder().authoringGroupsAdd("authGroup").build();
         assertFalse(book.getAuthoringGroups().isEmpty());
         assertEquals(1, book.getAuthoringGroups().size());
     }
 
     @Test
     void nullAuthGroupWillIgnore() {
-        Book book = new BookBuilder().authorGroupsAdd(null).build();
+        Book book = new BookBuilder().authoringGroupsAdd(null).build();
         assertTrue(book.getAuthoringGroups().isEmpty());
     }
 

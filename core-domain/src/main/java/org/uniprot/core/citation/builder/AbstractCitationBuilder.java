@@ -32,7 +32,7 @@ public abstract class AbstractCitationBuilder<
         return getThis();
     }
 
-    public @Nonnull B authorGroupsAdd(String group) {
+    public @Nonnull B authoringGroupsAdd(String group) {
         addOrIgnoreNull(group, this.authoringGroups);
         return getThis();
     }

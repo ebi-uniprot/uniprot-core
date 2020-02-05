@@ -67,17 +67,17 @@ public abstract class AbstractJournalArticleImpl extends AbstractCitationImpl
 
     @Override
     public boolean hasFirstPage() {
-        return Utils.notNullOrEmpty(this.firstPage);
+        return Utils.notNullNotEmpty(this.firstPage);
     }
 
     @Override
     public boolean hasLastPage() {
-        return Utils.notNullOrEmpty(this.lastPage);
+        return Utils.notNullNotEmpty(this.lastPage);
     }
 
     @Override
     public boolean hasVolume() {
-        return Utils.notNullOrEmpty(this.volume);
+        return Utils.notNullNotEmpty(this.volume);
     }
 
     @Override
