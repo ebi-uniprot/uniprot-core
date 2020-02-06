@@ -61,7 +61,7 @@ public abstract class AbstractDBCrossReferenceBuilder<
     }
 
     public @Nonnull B propertiesAdd(String key, String value) {
-        if (!nullOrEmpty(key) && !nullOrEmpty(value)) {
+        if (notNullNotEmpty(key) && notNullNotEmpty(value)) {
             this.properties.add(new Property(key, value));
         }
         return getThis();
