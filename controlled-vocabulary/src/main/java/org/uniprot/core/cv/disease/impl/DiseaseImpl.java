@@ -1,13 +1,14 @@
 package org.uniprot.core.cv.disease.impl;
 
+import static org.uniprot.core.util.Utils.unmodifiableList;
+
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 import org.uniprot.core.cv.disease.CrossReference;
 import org.uniprot.core.cv.disease.Disease;
 import org.uniprot.core.cv.keyword.Keyword;
-
-import static org.uniprot.core.util.Utils.unmodifiableList;
 
 public class DiseaseImpl implements Disease {
 
@@ -27,6 +28,9 @@ public class DiseaseImpl implements Disease {
     private DiseaseImpl() {
         // do nothing.. just to satisfy the objectmapper
         this.accession = null;
+        this.alternativeNames = Collections.emptyList();
+        this.crossReferences = Collections.emptyList();
+        this.keywords = Collections.emptyList();
     }
 
     public DiseaseImpl(
