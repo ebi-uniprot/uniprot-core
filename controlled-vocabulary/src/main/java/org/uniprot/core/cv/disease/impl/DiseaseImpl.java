@@ -7,6 +7,8 @@ import org.uniprot.core.cv.disease.CrossReference;
 import org.uniprot.core.cv.disease.Disease;
 import org.uniprot.core.cv.keyword.Keyword;
 
+import static org.uniprot.core.util.Utils.unmodifiableList;
+
 public class DiseaseImpl implements Disease {
 
     private static final long serialVersionUID = 3059038050252487022L;
@@ -40,9 +42,9 @@ public class DiseaseImpl implements Disease {
         this.accession = accession;
         this.acronym = acronym;
         this.definition = definition;
-        this.alternativeNames = alternativeNames;
-        this.crossReferences = crossReferences;
-        this.keywords = keywords;
+        this.alternativeNames = unmodifiableList(alternativeNames);
+        this.crossReferences = unmodifiableList(crossReferences);
+        this.keywords = unmodifiableList(keywords);
     }
 
     public DiseaseImpl(
