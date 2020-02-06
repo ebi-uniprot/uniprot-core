@@ -28,7 +28,7 @@ class CofactorCommentImplTest {
                 new CofactorBuilder()
                         .name(name)
                         .reference(reference)
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build();
         List<Cofactor> cofactors = Arrays.asList(cofactor);
 
@@ -37,7 +37,7 @@ class CofactorCommentImplTest {
         CofactorComment comment =
                 new CofactorCommentBuilder()
                         .molecule(molecule)
-                        .cofactors(cofactors)
+                        .cofactorsSet(cofactors)
                         .note(note)
                         .build();
         assertEquals(molecule, comment.getMolecule());
@@ -56,7 +56,7 @@ class CofactorCommentImplTest {
                 new CofactorBuilder()
                         .name(name)
                         .reference(reference)
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build();
         List<Cofactor> cofactors = Arrays.asList(cofactor);
 
@@ -65,7 +65,7 @@ class CofactorCommentImplTest {
         CofactorComment comment =
                 new CofactorCommentBuilder()
                         .molecule(molecule)
-                        .cofactors(cofactors)
+                        .cofactorsSet(cofactors)
                         .note(note)
                         .build();
         assertEquals(null, comment.getMolecule());
@@ -82,7 +82,7 @@ class CofactorCommentImplTest {
         CofactorComment comment =
                 new CofactorCommentBuilder()
                         .molecule(molecule)
-                        .cofactors(cofactors())
+                        .cofactorsSet(cofactors())
                         .note(note)
                         .build();
         assertEquals(molecule, comment.getMolecule());
@@ -101,7 +101,7 @@ class CofactorCommentImplTest {
         CofactorComment comment =
                 new CofactorCommentBuilder()
                         .molecule(molecule)
-                        .cofactors(cofactors)
+                        .cofactorsSet(cofactors)
                         .note(note)
                         .build();
         assertEquals(molecule, comment.getMolecule());

@@ -12,6 +12,7 @@ import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationXrefType;
 import org.uniprot.core.citation.builder.LiteratureBuilder;
+import org.uniprot.core.citation.impl.AuthorImpl;
 import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.literature.LiteratureStatistics;
 import org.uniprot.core.literature.builder.LiteratureEntryBuilder;
@@ -87,12 +88,13 @@ class LiteratureEntryMapTest {
                 .lastPage("last Page")
                 .volume("volume")
                 .journalName("journal Name")
-                .addAuthor("author name")
-                .addAuthorGroup("authoring group")
-                .addCitationXrefs(pubmed)
-                .addCitationXrefs(doi)
+                .citationXrefsAdd(pubmed)
+                .citationXrefsAdd(doi)
                 .publicationDate("21-06-2019")
                 .title("title")
+                .completeAuthorList(false)
+                .authorsAdd(new AuthorImpl("author name"))
+                .authoringGroupsAdd("authoring group")
                 .build();
     }
 

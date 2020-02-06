@@ -24,8 +24,8 @@ class ProteinRecNameImplTest {
         ProteinRecName recName =
                 new ProteinRecNameBuilder()
                         .fullName(fullName)
-                        .shortNames(shortNames)
-                        .ecNumbers(ecNumbers)
+                        .shortNamesSet(shortNames)
+                        .ecNumbersSet(ecNumbers)
                         .build();
         assertEquals(fullName, recName.getFullName());
         assertEquals(shortNames, recName.getShortNames());
@@ -42,8 +42,8 @@ class ProteinRecNameImplTest {
         ProteinRecName recName =
                 new ProteinRecNameBuilder()
                         .fullName(null)
-                        .shortNames(shortNames)
-                        .ecNumbers(ecNumbers)
+                        .shortNamesSet(shortNames)
+                        .ecNumbersSet(ecNumbers)
                         .build();
         assertFalse(recName.isValid());
     }
@@ -57,8 +57,8 @@ class ProteinRecNameImplTest {
         ProteinRecName recName =
                 new ProteinRecNameBuilder()
                         .fullName(fullName)
-                        .shortNames(null)
-                        .ecNumbers(null)
+                        .shortNamesSet(null)
+                        .ecNumbersSet(null)
                         .build();
         assertEquals(fullName, recName.getFullName());
         assertEquals(0, recName.getShortNames().size());
@@ -75,8 +75,8 @@ class ProteinRecNameImplTest {
         ProteinRecName recName =
                 new ProteinRecNameBuilder()
                         .fullName(fullName)
-                        .shortNames(null)
-                        .ecNumbers(ecNumbers)
+                        .shortNamesSet(null)
+                        .ecNumbersSet(ecNumbers)
                         .build();
         assertEquals(fullName, recName.getFullName());
         assertEquals(0, recName.getShortNames().size());
@@ -93,8 +93,8 @@ class ProteinRecNameImplTest {
         ProteinRecName recName =
                 new ProteinRecNameBuilder()
                         .fullName(fullName)
-                        .shortNames(shortNames)
-                        .ecNumbers(null)
+                        .shortNamesSet(shortNames)
+                        .ecNumbersSet(null)
                         .build();
         assertEquals(fullName, recName.getFullName());
         assertEquals(shortNames, recName.getShortNames());

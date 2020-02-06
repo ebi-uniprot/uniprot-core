@@ -85,22 +85,22 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 
     @Override
     public boolean hasAlternativeNames() {
-        return Utils.notNullOrEmpty(this.alternativeNames);
+        return Utils.notNullNotEmpty(this.alternativeNames);
     }
 
     @Override
     public boolean hasSubmissionNames() {
-        return Utils.notNullOrEmpty(this.submissionNames);
+        return Utils.notNullNotEmpty(this.submissionNames);
     }
 
     @Override
     public boolean hasIncludes() {
-        return Utils.notNullOrEmpty(this.includes);
+        return Utils.notNullNotEmpty(this.includes);
     }
 
     @Override
     public boolean hasContains() {
-        return Utils.notNullOrEmpty(this.contains);
+        return Utils.notNullNotEmpty(this.contains);
     }
 
     @Override
@@ -145,12 +145,12 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 
     @Override
     public boolean hasCdAntigenNames() {
-        return Utils.notNullOrEmpty(this.cdAntigenNames);
+        return Utils.notNullNotEmpty(this.cdAntigenNames);
     }
 
     @Override
     public boolean hasInnNames() {
-        return Utils.notNullOrEmpty(this.innNames);
+        return Utils.notNullNotEmpty(this.innNames);
     }
 
     @Override

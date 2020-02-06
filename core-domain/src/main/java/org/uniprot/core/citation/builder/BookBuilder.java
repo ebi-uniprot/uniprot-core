@@ -25,7 +25,7 @@ public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book
         return new BookImpl(
                 authoringGroups,
                 authors,
-                xrefs,
+                citationXrefs,
                 title,
                 publicationDate,
                 bookName,
@@ -42,7 +42,7 @@ public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book
         init(builder, instance);
         return builder.address(instance.getAddress())
                 .bookName(instance.getBookName())
-                .editors(
+                .editorsSet(
                         instance.getEditors().stream()
                                 .map(Author::getValue)
                                 .collect(Collectors.toList()))
@@ -57,7 +57,7 @@ public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book
         return this;
     }
 
-    public @Nonnull BookBuilder editors(List<String> editors) {
+    public @Nonnull BookBuilder editorsSet(List<String> editors) {
         List<Author> newEditors = new ArrayList<>();
         if (editors != null) {
             newEditors = editors.stream().map(AuthorImpl::new).collect(Collectors.toList());
@@ -66,7 +66,7 @@ public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book
         return this;
     }
 
-    public @Nonnull BookBuilder editors(Collection<Author> editors) {
+    public @Nonnull BookBuilder editorsSet(Collection<Author> editors) {
         List<Author> newEditors = new ArrayList<>();
         if (editors != null) {
             newEditors.addAll(editors);
@@ -75,8 +75,8 @@ public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book
         return this;
     }
 
-    public @Nonnull BookBuilder addEditor(String editor) {
-        this.editors.add(new AuthorImpl(editor));
+    public @Nonnull BookBuilder editorsAdd(String editor) {
+        if (editor != null) this.editors.add(new AuthorImpl(editor));
         return this;
     }
 

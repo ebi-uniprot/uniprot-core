@@ -24,12 +24,12 @@ public class ProteinSubNameBuilder implements Builder<ProteinSubName> {
         return this;
     }
 
-    public @Nonnull ProteinSubNameBuilder ecNumbers(List<EC> ecNumbers) {
+    public @Nonnull ProteinSubNameBuilder ecNumbersSet(List<EC> ecNumbers) {
         this.ecNumbers = modifiableList(ecNumbers);
         return this;
     }
 
-    public @Nonnull ProteinSubNameBuilder addEcNumber(EC ecNumbers) {
+    public @Nonnull ProteinSubNameBuilder ecNumbersAdd(EC ecNumbers) {
         addOrIgnoreNull(ecNumbers, this.ecNumbers);
         return this;
     }
@@ -42,6 +42,6 @@ public class ProteinSubNameBuilder implements Builder<ProteinSubName> {
     public static @Nonnull ProteinSubNameBuilder from(@Nonnull ProteinSubName instance) {
         return new ProteinSubNameBuilder()
                 .fullName(instance.getFullName())
-                .ecNumbers(instance.getEcNumbers());
+                .ecNumbersSet(instance.getEcNumbers());
     }
 }

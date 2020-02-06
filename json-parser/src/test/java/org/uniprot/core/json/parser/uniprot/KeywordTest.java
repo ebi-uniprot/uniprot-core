@@ -50,7 +50,8 @@ public class KeywordTest {
                 .id("KW-11111")
                 .value("keyword value")
                 .category(KeywordCategory.DOMAIN)
-                .evidences(CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10025"))
+                .evidencesSet(
+                        CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10025"))
                 .build();
     }
 }

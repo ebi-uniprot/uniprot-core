@@ -59,10 +59,10 @@ public class GeneConverter implements Converter<GeneType, Gene> {
         }
 
         return new GeneBuilder()
-                .orfNames(orfNames)
+                .orfNamesSet(orfNames)
                 .geneName(geneName)
-                .synonyms(synonyms)
-                .orderedLocusNames(olnNames)
+                .synonymsSet(synonyms)
+                .orderedLocusNamesSet(olnNames)
                 .build();
     }
 

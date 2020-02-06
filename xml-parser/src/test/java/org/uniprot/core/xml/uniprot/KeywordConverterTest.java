@@ -26,7 +26,7 @@ class KeywordConverterTest {
                         .id(id)
                         .value(val)
                         .category(KeywordCategory.UNKNOWN)
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build();
         KeywordType xmlObj = converter.toXml(keyword);
 

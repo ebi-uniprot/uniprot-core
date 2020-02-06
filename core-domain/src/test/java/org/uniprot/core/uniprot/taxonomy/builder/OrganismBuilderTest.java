@@ -26,29 +26,32 @@ class OrganismBuilderTest {
 
     @Test
     void settingLineageNull_willNeverBeNull() {
-        Organism organism = new OrganismBuilder().lineage(null).build();
-        assertNotNull(organism.getLineage());
-        assertTrue(organism.getLineage().isEmpty());
+        Organism organism = new OrganismBuilder().lineagesSet(null).build();
+        assertNotNull(organism.getLineages());
+        assertTrue(organism.getLineages().isEmpty());
     }
 
     @Test
     void settingLineage_unModifiable_willConvertToModifiable() {
         Organism organism =
-                new OrganismBuilder().lineage(Collections.emptyList()).addLineage("DEF").build();
-        assertEquals("DEF", organism.getLineage().get(0));
+                new OrganismBuilder()
+                        .lineagesSet(Collections.emptyList())
+                        .lineagesAdd("DEF")
+                        .build();
+        assertEquals("DEF", organism.getLineages().get(0));
     }
 
     @Test
     void canAddLineage_withOutAddingLineageList_defaultLineageListNeverBeNull() {
-        Organism organism = new OrganismBuilder().addLineage("abc").build();
-        assertNotNull(organism.getLineage());
-        assertFalse(organism.getLineage().isEmpty());
-        assertEquals("abc", organism.getLineage().get(0));
+        Organism organism = new OrganismBuilder().lineagesAdd("abc").build();
+        assertNotNull(organism.getLineages());
+        assertFalse(organism.getLineages().isEmpty());
+        assertEquals("abc", organism.getLineages().get(0));
     }
 
     @Test
     void settingEvidencesNull_willNeverBeNull() {
-        Organism organism = new OrganismBuilder().evidences(null).build();
+        Organism organism = new OrganismBuilder().evidencesSet(null).build();
         assertNotNull(organism.getEvidences());
         assertTrue(organism.getEvidences().isEmpty());
     }
@@ -57,8 +60,8 @@ class OrganismBuilderTest {
     void settingEvidences_unModifiable_willConvertToModifiable() {
         Organism organism =
                 new OrganismBuilder()
-                        .evidences(Collections.emptyList())
-                        .addEvidence(new EvidenceBuilder().build())
+                        .evidencesSet(Collections.emptyList())
+                        .evidencesAdd(new EvidenceBuilder().build())
                         .build();
         assertNotNull(organism.getEvidences().get(0));
     }
@@ -66,7 +69,7 @@ class OrganismBuilderTest {
     @Test
     void canAddEvidence_withOutAddingEvidencesList_defaultEvidencesListNeverBeNull() {
         Organism organism =
-                new OrganismBuilder().addEvidence(new EvidenceBuilder().build()).build();
+                new OrganismBuilder().evidencesAdd(new EvidenceBuilder().build()).build();
         assertNotNull(organism.getEvidences());
         assertFalse(organism.getEvidences().isEmpty());
         assertNotNull(organism.getEvidences().get(0));
@@ -88,7 +91,7 @@ class OrganismBuilderTest {
     @Test
     void whenEvidencePresent_willReturnTrue() {
         Organism organism =
-                new OrganismBuilder().addEvidence(new EvidenceBuilder().build()).build();
+                new OrganismBuilder().evidencesAdd(new EvidenceBuilder().build()).build();
         assertTrue(organism.hasEvidences());
     }
 }

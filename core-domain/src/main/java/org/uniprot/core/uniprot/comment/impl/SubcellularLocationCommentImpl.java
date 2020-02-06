@@ -46,7 +46,7 @@ public class SubcellularLocationCommentImpl extends CommentHasMoleculeImpl
 
     @Override
     public boolean hasSubcellularLocations() {
-        return Utils.notNullOrEmpty(this.subcellularLocations);
+        return Utils.notNullNotEmpty(this.subcellularLocations);
     }
 
     @Override

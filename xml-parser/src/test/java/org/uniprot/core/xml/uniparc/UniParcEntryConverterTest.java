@@ -55,7 +55,7 @@ class UniParcEntryConverterTest {
         sfBuilder
                 .signatureDbType(SignatureDbType.PANTHER)
                 .signatureDbId("PTHR11977")
-                .addLocation(new Location(49, 790))
+                .locationsAdd(new Location(49, 790))
                 .interproGroup(
                         new InterProGroupBuilder().id("IPR007122").name("Villin/Gelsolin").build());
 
@@ -63,11 +63,11 @@ class UniParcEntryConverterTest {
         sfBuilder2
                 .signatureDbType(SignatureDbType.PFAM)
                 .signatureDbId("PF00626")
-                .addLocation(new Location(81, 163))
-                .addLocation(new Location(202, 267))
-                .addLocation(new Location(330, 398))
-                .addLocation(new Location(586, 653))
-                .addLocation(new Location(692, 766))
+                .locationsAdd(new Location(81, 163))
+                .locationsAdd(new Location(202, 267))
+                .locationsAdd(new Location(330, 398))
+                .locationsAdd(new Location(586, 653))
+                .locationsAdd(new Location(692, 766))
                 .interproGroup(
                         new InterProGroupBuilder()
                                 .id("IPR007123")
@@ -77,8 +77,8 @@ class UniParcEntryConverterTest {
         sfs.add(sfBuilder2.build());
         builder.uniParcId("UPI0000083A08")
                 .sequence(uniSeq)
-                .sequenceFeatures(sfs)
-                .addDatabaseCrossReference(
+                .sequenceFeaturesSet(sfs)
+                .databaseCrossReferencesAdd(
                         new UniParcDBCrossReferenceBuilder()
                                 .databaseType(UniParcDatabaseType.ENSEMBL_VERTEBRATE)
                                 .id("CG1106-PB")
@@ -103,8 +103,8 @@ class UniParcEntryConverterTest {
                 new Property(UniParcDBCrossReference.PROPERTY_PROTEIN_NAME, "Gelsolin, isoform J"));
         properties.add(new Property(UniParcDBCrossReference.PROPERTY_GENE_NAME, "Gel"));
 
-        xrefBuilder.properties(properties);
-        builder.addDatabaseCrossReference(xrefBuilder.build());
+        xrefBuilder.propertiesSet(properties);
+        builder.databaseCrossReferencesAdd(xrefBuilder.build());
 
         // id="NC_004354_874_0" version_i="5" active="Y" created="2007-04-27" last="2007-04-27">
         UniParcDBCrossReferenceBuilder xrefBuilder2 = new UniParcDBCrossReferenceBuilder();
@@ -117,8 +117,8 @@ class UniParcEntryConverterTest {
                 .lastUpdated(LocalDate.of(2007, 4, 27));
         List<Property> properties2 = new ArrayList<>();
         properties2.add(new Property(UniParcDBCrossReference.PROPERTY_NCBI_TAXONOMY_ID, "7227"));
-        xrefBuilder2.properties(properties2);
-        builder.addDatabaseCrossReference(xrefBuilder2.build());
+        xrefBuilder2.propertiesSet(properties2);
+        builder.databaseCrossReferencesAdd(xrefBuilder2.build());
         return builder.build();
     }
 }

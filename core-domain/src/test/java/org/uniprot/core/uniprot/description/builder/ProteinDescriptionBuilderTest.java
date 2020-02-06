@@ -34,7 +34,7 @@ class ProteinDescriptionBuilderTest {
     @Test
     void canAddSingleAlternativeName() {
         ProteinDescription obj =
-                new ProteinDescriptionBuilder().addAlternativeNames(altName).build();
+                new ProteinDescriptionBuilder().alternativeNamesAdd(altName).build();
         assertNotNull(obj.getAlternativeNames());
         assertFalse(obj.getAlternativeNames().isEmpty());
         assertTrue(obj.hasAlternativeNames());
@@ -42,7 +42,7 @@ class ProteinDescriptionBuilderTest {
 
     @Test
     void nullAlternativeName_willBeIgnore() {
-        ProteinDescription obj = new ProteinDescriptionBuilder().addAlternativeNames(null).build();
+        ProteinDescription obj = new ProteinDescriptionBuilder().alternativeNamesAdd(null).build();
         assertNotNull(obj.getAlternativeNames());
         assertTrue(obj.getAlternativeNames().isEmpty());
         assertFalse(obj.hasAlternativeNames());
@@ -52,8 +52,8 @@ class ProteinDescriptionBuilderTest {
     void alternativeNames_willConvertUnModifiable_toModifiable() {
         ProteinDescription obj =
                 new ProteinDescriptionBuilder()
-                        .alternativeNames(Collections.emptyList())
-                        .addAlternativeNames(altName)
+                        .alternativeNamesSet(Collections.emptyList())
+                        .alternativeNamesAdd(altName)
                         .build();
         assertNotNull(obj.getAlternativeNames());
         assertFalse(obj.getAlternativeNames().isEmpty());
@@ -64,7 +64,7 @@ class ProteinDescriptionBuilderTest {
     void canAddListAlternativeNames() {
         ProteinDescription obj =
                 new ProteinDescriptionBuilder()
-                        .alternativeNames(Collections.singletonList(altName))
+                        .alternativeNamesSet(Collections.singletonList(altName))
                         .build();
         assertNotNull(obj.getAlternativeNames());
         assertFalse(obj.getAlternativeNames().isEmpty());
@@ -87,7 +87,7 @@ class ProteinDescriptionBuilderTest {
 
     @Test
     void canAddSingleCdAntigenNames() {
-        ProteinDescription obj = new ProteinDescriptionBuilder().addCdAntigenNames(name).build();
+        ProteinDescription obj = new ProteinDescriptionBuilder().cdAntigenNamesAdd(name).build();
         assertNotNull(obj.getCdAntigenNames());
         assertFalse(obj.getCdAntigenNames().isEmpty());
         assertTrue(obj.hasCdAntigenNames());
@@ -95,7 +95,7 @@ class ProteinDescriptionBuilderTest {
 
     @Test
     void nullCdAntigenNames_willBeIgnore() {
-        ProteinDescription obj = new ProteinDescriptionBuilder().addCdAntigenNames(null).build();
+        ProteinDescription obj = new ProteinDescriptionBuilder().cdAntigenNamesAdd(null).build();
         assertNotNull(obj.getCdAntigenNames());
         assertTrue(obj.getCdAntigenNames().isEmpty());
         assertFalse(obj.hasCdAntigenNames());
@@ -105,8 +105,8 @@ class ProteinDescriptionBuilderTest {
     void cdAntigenNames_willConvertUnModifiable_toModifiable() {
         ProteinDescription obj =
                 new ProteinDescriptionBuilder()
-                        .cdAntigenNames(Collections.emptyList())
-                        .addCdAntigenNames(name)
+                        .cdAntigenNamesSet(Collections.emptyList())
+                        .cdAntigenNamesAdd(name)
                         .build();
         assertNotNull(obj.getCdAntigenNames());
         assertFalse(obj.getCdAntigenNames().isEmpty());
@@ -115,7 +115,7 @@ class ProteinDescriptionBuilderTest {
 
     @Test
     void canAddListCdAntigenNames() {
-        ProteinDescription obj = new ProteinDescriptionBuilder().cdAntigenNames(names).build();
+        ProteinDescription obj = new ProteinDescriptionBuilder().cdAntigenNamesSet(names).build();
         assertNotNull(obj.getCdAntigenNames());
         assertFalse(obj.getCdAntigenNames().isEmpty());
         assertTrue(obj.hasCdAntigenNames());
@@ -123,7 +123,7 @@ class ProteinDescriptionBuilderTest {
 
     @Test
     void canAddSingleInnNames() {
-        ProteinDescription obj = new ProteinDescriptionBuilder().addInnNames(name).build();
+        ProteinDescription obj = new ProteinDescriptionBuilder().innNamesAdd(name).build();
         assertNotNull(obj.getInnNames());
         assertFalse(obj.getInnNames().isEmpty());
         assertTrue(obj.hasInnNames());
@@ -131,7 +131,7 @@ class ProteinDescriptionBuilderTest {
 
     @Test
     void nullInnNames_willBeIgnore() {
-        ProteinDescription obj = new ProteinDescriptionBuilder().addInnNames(null).build();
+        ProteinDescription obj = new ProteinDescriptionBuilder().innNamesAdd(null).build();
         assertNotNull(obj.getInnNames());
         assertTrue(obj.getInnNames().isEmpty());
         assertFalse(obj.hasInnNames());
@@ -141,8 +141,8 @@ class ProteinDescriptionBuilderTest {
     void innNames_willConvertUnModifiable_toModifiable() {
         ProteinDescription obj =
                 new ProteinDescriptionBuilder()
-                        .innNames(Collections.emptyList())
-                        .addInnNames(name)
+                        .innNamesSet(Collections.emptyList())
+                        .innNamesAdd(name)
                         .build();
         assertNotNull(obj.getInnNames());
         assertFalse(obj.getInnNames().isEmpty());
@@ -151,7 +151,7 @@ class ProteinDescriptionBuilderTest {
 
     @Test
     void canAddListInnNames() {
-        ProteinDescription obj = new ProteinDescriptionBuilder().innNames(names).build();
+        ProteinDescription obj = new ProteinDescriptionBuilder().innNamesSet(names).build();
         assertNotNull(obj.getInnNames());
         assertFalse(obj.getInnNames().isEmpty());
         assertTrue(obj.hasInnNames());
@@ -179,7 +179,7 @@ class ProteinDescriptionBuilderTest {
     @Test
     void canAddSingleSubmissionNames() {
         ProteinSubName sub = new ProteinSubNameBuilder().build();
-        ProteinDescription obj = new ProteinDescriptionBuilder().addSubmissionNames(sub).build();
+        ProteinDescription obj = new ProteinDescriptionBuilder().submissionNamesAdd(sub).build();
         assertNotNull(obj.getSubmissionNames());
         assertFalse(obj.getSubmissionNames().isEmpty());
         assertTrue(obj.hasSubmissionNames());
@@ -187,7 +187,7 @@ class ProteinDescriptionBuilderTest {
 
     @Test
     void submissionNames_willBeIgnore() {
-        ProteinDescription obj = new ProteinDescriptionBuilder().addSubmissionNames(null).build();
+        ProteinDescription obj = new ProteinDescriptionBuilder().submissionNamesAdd(null).build();
         assertNotNull(obj.getSubmissionNames());
         assertTrue(obj.getSubmissionNames().isEmpty());
         assertFalse(obj.hasSubmissionNames());
@@ -195,7 +195,7 @@ class ProteinDescriptionBuilderTest {
 
     @Test
     void canAddSingleIncludes() {
-        ProteinDescription obj = new ProteinDescriptionBuilder().addIncludes(pSection).build();
+        ProteinDescription obj = new ProteinDescriptionBuilder().includesAdd(pSection).build();
         assertNotNull(obj.getIncludes());
         assertFalse(obj.getIncludes().isEmpty());
         assertTrue(obj.hasIncludes());
@@ -203,7 +203,7 @@ class ProteinDescriptionBuilderTest {
 
     @Test
     void nullAddIncludes_willBeIgnore() {
-        ProteinDescription obj = new ProteinDescriptionBuilder().addIncludes(null).build();
+        ProteinDescription obj = new ProteinDescriptionBuilder().includesAdd(null).build();
         assertNotNull(obj.getIncludes());
         assertTrue(obj.getIncludes().isEmpty());
         assertFalse(obj.hasIncludes());
@@ -211,7 +211,7 @@ class ProteinDescriptionBuilderTest {
 
     @Test
     void canAddSingleContains() {
-        ProteinDescription obj = new ProteinDescriptionBuilder().addContains(pSection).build();
+        ProteinDescription obj = new ProteinDescriptionBuilder().containsAdd(pSection).build();
         assertNotNull(obj.getContains());
         assertFalse(obj.getContains().isEmpty());
         assertTrue(obj.hasContains());
@@ -219,7 +219,7 @@ class ProteinDescriptionBuilderTest {
 
     @Test
     void nullAddContains_willBeIgnore() {
-        ProteinDescription obj = new ProteinDescriptionBuilder().addContains(null).build();
+        ProteinDescription obj = new ProteinDescriptionBuilder().containsAdd(null).build();
         assertNotNull(obj.getContains());
         assertTrue(obj.getContains().isEmpty());
         assertFalse(obj.hasContains());

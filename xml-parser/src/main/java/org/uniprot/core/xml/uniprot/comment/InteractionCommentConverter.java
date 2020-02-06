@@ -25,7 +25,7 @@ public class InteractionCommentConverter
     public InteractionComment fromXml(List<CommentType> xmlObj) {
         if ((xmlObj == null) || xmlObj.isEmpty()) return null;
         InteractionCommentBuilder builder = new InteractionCommentBuilder();
-        return builder.interactions(
+        return builder.interactionsSet(
                         xmlObj.stream()
                                 .map(interactionConverter::fromXml)
                                 .collect(Collectors.toList()))

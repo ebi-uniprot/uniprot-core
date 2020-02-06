@@ -30,7 +30,7 @@ public class FreeTextCommentBuilder implements CommentBuilder<FreeTextComment> {
     public static @Nonnull FreeTextCommentBuilder from(@Nonnull FreeTextComment instance) {
         return new FreeTextCommentBuilder()
                 .commentType(instance.getCommentType())
-                .texts(instance.getTexts())
+                .textsSet(instance.getTexts())
                 .molecule(instance.getMolecule());
     }
 
@@ -44,12 +44,12 @@ public class FreeTextCommentBuilder implements CommentBuilder<FreeTextComment> {
         return this;
     }
 
-    public @Nonnull FreeTextCommentBuilder texts(List<EvidencedValue> texts) {
+    public @Nonnull FreeTextCommentBuilder textsSet(List<EvidencedValue> texts) {
         this.texts = modifiableList(texts);
         return this;
     }
 
-    public @Nonnull FreeTextCommentBuilder addText(EvidencedValue text) {
+    public @Nonnull FreeTextCommentBuilder textsAdd(EvidencedValue text) {
         addOrIgnoreNull(text, this.texts);
         return this;
     }

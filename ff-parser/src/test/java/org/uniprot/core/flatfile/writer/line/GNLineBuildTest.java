@@ -37,9 +37,9 @@ class GNLineBuildTest {
         genes.add(
                 new GeneBuilder()
                         .geneName(geneName)
-                        .synonyms(synonyms)
-                        .orderedLocusNames(olnNames)
-                        .orfNames(orfNames)
+                        .synonymsSet(synonyms)
+                        .orderedLocusNamesSet(olnNames)
+                        .orfNamesSet(orfNames)
                         .build());
 
         doTest(gnLine, genes);
@@ -94,9 +94,9 @@ class GNLineBuildTest {
         genes.add(
                 new GeneBuilder()
                         .geneName(geneName)
-                        .synonyms(synonyms)
-                        .orderedLocusNames(olnNames)
-                        .orfNames(orfNames)
+                        .synonymsSet(synonyms)
+                        .orderedLocusNamesSet(olnNames)
+                        .orfNamesSet(orfNames)
                         .build());
 
         doTest(gnLine, genes);
@@ -136,9 +136,9 @@ class GNLineBuildTest {
         genes.add(
                 new GeneBuilder()
                         .geneName(geneName)
-                        .synonyms(synonyms)
-                        .orderedLocusNames(olnNames)
-                        .orfNames(orfNames)
+                        .synonymsSet(synonyms)
+                        .orderedLocusNamesSet(olnNames)
+                        .orfNamesSet(orfNames)
                         .build());
 
         GeneName geneName1 =
@@ -165,9 +165,9 @@ class GNLineBuildTest {
         genes.add(
                 new GeneBuilder()
                         .geneName(geneName1)
-                        .synonyms(synonyms1)
-                        .orderedLocusNames(olnNames1)
-                        .orfNames(orfNames1)
+                        .synonymsSet(synonyms1)
+                        .orderedLocusNamesSet(olnNames1)
+                        .orfNamesSet(orfNames1)
                         .build());
 
         doTest(gnLine, genes);
@@ -228,9 +228,9 @@ class GNLineBuildTest {
         genes.add(
                 new GeneBuilder()
                         .geneName(geneName)
-                        .synonyms(synonyms)
-                        .orderedLocusNames(olnNames)
-                        .orfNames(orfNames)
+                        .synonymsSet(synonyms)
+                        .orderedLocusNamesSet(olnNames)
+                        .orfNamesSet(orfNames)
                         .build());
 
         GeneName geneName1 =
@@ -260,9 +260,9 @@ class GNLineBuildTest {
         genes.add(
                 new GeneBuilder()
                         .geneName(geneName1)
-                        .synonyms(synonyms1)
-                        .orderedLocusNames(olnNames1)
-                        .orfNames(orfNames1)
+                        .synonymsSet(synonyms1)
+                        .orderedLocusNamesSet(olnNames1)
+                        .orfNamesSet(orfNames1)
                         .build());
 
         doTest(gnLine, genes);
@@ -287,9 +287,9 @@ class GNLineBuildTest {
         genes.add(
                 new GeneBuilder()
                         .geneName(geneName)
-                        .synonyms(synonyms)
-                        .orderedLocusNames(olnNames)
-                        .orfNames(orfNames)
+                        .synonymsSet(synonyms)
+                        .orderedLocusNamesSet(olnNames)
+                        .orfNamesSet(orfNames)
                         .build());
 
         doTest(gnLine, genes);
@@ -346,9 +346,9 @@ class GNLineBuildTest {
         genes.add(
                 new GeneBuilder()
                         .geneName(geneName)
-                        .synonyms(synonyms)
-                        .orderedLocusNames(olnNames)
-                        .orfNames(orfNames)
+                        .synonymsSet(synonyms)
+                        .orderedLocusNamesSet(olnNames)
+                        .orfNamesSet(orfNames)
                         .build());
 
         doTest(gnLine, genes);
@@ -367,7 +367,7 @@ class GNLineBuildTest {
         List<ORFName> orfNames = new ArrayList<>();
         orfNames.add(new ORFNameBuilder("OJ1113_A10.40", emptyList()).build());
         orfNames.add(new ORFNameBuilder("OSJNBb0092C08.10", emptyList()).build());
-        genes.add(new GeneBuilder().orderedLocusNames(olnNames).orfNames(orfNames).build());
+        genes.add(new GeneBuilder().orderedLocusNamesSet(olnNames).orfNamesSet(orfNames).build());
 
         doTest(gnLine, genes);
     }

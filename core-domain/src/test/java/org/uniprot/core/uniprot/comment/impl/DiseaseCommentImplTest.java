@@ -17,7 +17,7 @@ class DiseaseCommentImplTest {
                     .diseaseId("someId")
                     .diseaseAc("I-00742")
                     .acronym("someAcron")
-                    .evidences(createEvidences())
+                    .evidencesSet(createEvidences())
                     .description("some description")
                     .reference(new DBCrossReferenceImpl<>(DiseaseReferenceType.MIM, "3124"))
                     .build();;

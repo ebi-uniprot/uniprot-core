@@ -125,8 +125,8 @@ class UtilsTest {
             @Test
             void whenNullOrEmpty_returnFalse() {
                 assertAll(
-                        () -> assertFalse(Utils.notNullOrEmpty((String) null)),
-                        () -> assertFalse(Utils.notNullOrEmpty("")));
+                        () -> assertFalse(Utils.notNullNotEmpty((String) null)),
+                        () -> assertFalse(Utils.notNullNotEmpty("")));
             }
 
             @ParameterizedTest
@@ -144,7 +144,7 @@ class UtilsTest {
                         "123432"
                     })
             void nonEmpty_shouldAlwaysReturnTrue(String test) {
-                assertTrue(Utils.notNullOrEmpty(test));
+                assertTrue(Utils.notNullNotEmpty(test));
             }
         }
     }
@@ -156,8 +156,8 @@ class UtilsTest {
             @Test
             void whenNullOrEmpty_returnFalse() {
                 assertAll(
-                        () -> assertFalse(Utils.notNullOrEmpty((Collection) null)),
-                        () -> assertFalse(Utils.notNullOrEmpty(Collections.emptyList())));
+                        () -> assertFalse(Utils.notNullNotEmpty((Collection) null)),
+                        () -> assertFalse(Utils.notNullNotEmpty(Collections.emptyList())));
             }
 
             @Test
@@ -166,14 +166,16 @@ class UtilsTest {
                 list.add("test1");
                 list.add("test2");
                 assertAll(
-                        () -> assertTrue(Utils.notNullOrEmpty(Collections.singletonList(123))),
+                        () -> assertTrue(Utils.notNullNotEmpty(Collections.singletonList(123))),
                         () ->
                                 assertTrue(
-                                        Utils.notNullOrEmpty(
+                                        Utils.notNullNotEmpty(
                                                 Collections.checkedList(list, String.class))),
-                        () -> assertTrue(Utils.notNullOrEmpty(list)),
-                        () -> assertTrue(Utils.notNullOrEmpty(Collections.synchronizedList(list))),
-                        () -> assertTrue(Utils.notNullOrEmpty(Collections.unmodifiableList(list))));
+                        () -> assertTrue(Utils.notNullNotEmpty(list)),
+                        () -> assertTrue(Utils.notNullNotEmpty(Collections.synchronizedList(list))),
+                        () ->
+                                assertTrue(
+                                        Utils.notNullNotEmpty(Collections.unmodifiableList(list))));
             }
         }
 
@@ -343,8 +345,8 @@ class UtilsTest {
             @Test
             void whenNullOrEmpty_returnFalse() {
                 assertAll(
-                        () -> assertFalse(Utils.notNullOrEmpty((Map) null)),
-                        () -> assertFalse(Utils.notNullOrEmpty(Collections.emptyMap())));
+                        () -> assertFalse(Utils.notNullNotEmpty((Map) null)),
+                        () -> assertFalse(Utils.notNullNotEmpty(Collections.emptyMap())));
             }
 
             @Test
@@ -353,15 +355,15 @@ class UtilsTest {
                 map.put("test1", true);
                 map.put("test2", false);
                 assertAll(
-                        () -> assertTrue(Utils.notNullOrEmpty(Collections.singletonMap(1, 2))),
+                        () -> assertTrue(Utils.notNullNotEmpty(Collections.singletonMap(1, 2))),
                         () ->
                                 assertTrue(
-                                        Utils.notNullOrEmpty(
+                                        Utils.notNullNotEmpty(
                                                 Collections.checkedMap(
                                                         map, String.class, Boolean.class))),
-                        () -> assertTrue(Utils.notNullOrEmpty(map)),
-                        () -> assertTrue(Utils.notNullOrEmpty(Collections.synchronizedMap(map))),
-                        () -> assertTrue(Utils.notNullOrEmpty(Collections.unmodifiableMap(map))));
+                        () -> assertTrue(Utils.notNullNotEmpty(map)),
+                        () -> assertTrue(Utils.notNullNotEmpty(Collections.synchronizedMap(map))),
+                        () -> assertTrue(Utils.notNullNotEmpty(Collections.unmodifiableMap(map))));
             }
         }
 

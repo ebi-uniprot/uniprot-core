@@ -26,7 +26,7 @@ class SubcellularLocationMapTest {
                 CommentTestUtil.createUniProtEntryFromCommentLine(subcellularLocationLine);
 
         List<SubcellularLocationComment> sclComments =
-                entry.getCommentByType(CommentType.SUBCELLULAR_LOCATION);
+                entry.getCommentsByType(CommentType.SUBCELLULAR_LOCATION);
         assertNotNull(entry);
         SubcellularLocationMap subcellularLocationMap = new SubcellularLocationMap(sclComments);
         Map<String, String> mappedCelularLocation = subcellularLocationMap.attributeValues();
@@ -53,7 +53,7 @@ class SubcellularLocationMapTest {
                 CommentTestUtil.createUniProtEntryFromCommentLine(subcellularLocationLine);
 
         List<SubcellularLocationComment> sclComments =
-                entry.getCommentByType(CommentType.SUBCELLULAR_LOCATION);
+                entry.getCommentsByType(CommentType.SUBCELLULAR_LOCATION);
         assertNotNull(entry);
         SubcellularLocationMap subcellularLocationMap = new SubcellularLocationMap(sclComments);
         Map<String, String> mappedCelularLocation = subcellularLocationMap.attributeValues();
@@ -104,7 +104,7 @@ class SubcellularLocationMapTest {
                 CommentTestUtil.createUniProtEntryFromCommentLine(subcellularLocationLine);
 
         List<SubcellularLocationComment> sclComments =
-                entry.getCommentByType(CommentType.SUBCELLULAR_LOCATION);
+                entry.getCommentsByType(CommentType.SUBCELLULAR_LOCATION);
         assertNotNull(entry);
         SubcellularLocationMap subcellularLocationMap = new SubcellularLocationMap(sclComments);
         Map<String, String> mappedCelularLocation = subcellularLocationMap.attributeValues();

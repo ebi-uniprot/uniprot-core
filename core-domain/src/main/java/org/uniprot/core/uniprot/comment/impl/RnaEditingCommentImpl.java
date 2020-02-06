@@ -57,7 +57,7 @@ public class RnaEditingCommentImpl extends CommentHasMoleculeImpl implements Rna
 
     @Override
     public boolean hasPositions() {
-        return Utils.notNullOrEmpty(this.positions);
+        return Utils.notNullNotEmpty(this.positions);
     }
 
     @Override
@@ -105,7 +105,7 @@ public class RnaEditingCommentImpl extends CommentHasMoleculeImpl implements Rna
 
         @Override
         public boolean hasEvidences() {
-            return Utils.notNullOrEmpty(this.evidences);
+            return Utils.notNullNotEmpty(this.evidences);
         }
 
         @Override

@@ -128,7 +128,7 @@ class CatalyticActivityCommentConverterTest {
         CatalyticActivityComment comment =
                 new CatalyticActivityCommentBuilder()
                         .reaction(reaction)
-                        .physiologicalReactions(physioReactions)
+                        .physiologicalReactionsSet(physioReactions)
                         .build();
 
         CommentType commentType = converter.toXml(comment);
@@ -175,7 +175,7 @@ class CatalyticActivityCommentConverterTest {
         CatalyticActivityComment comment =
                 new CatalyticActivityCommentBuilder()
                         .reaction(reaction)
-                        .physiologicalReactions(physioReactions)
+                        .physiologicalReactionsSet(physioReactions)
                         .build();
         CommentType commentType = converter.toXml(comment);
         CatalyticActivityComment converted = converter.fromXml(commentType);
@@ -251,9 +251,9 @@ class CatalyticActivityCommentConverterTest {
 
         return new ReactionBuilder()
                 .name(name)
-                .references(references)
+                .reactionReferencesSet(references)
                 .ecNumber(ecNumber)
-                .evidences(evids)
+                .evidencesSet(evids)
                 .build();
     }
 
@@ -270,9 +270,9 @@ class CatalyticActivityCommentConverterTest {
         evids.add(evidence2);
         return new ReactionBuilder()
                 .name(name)
-                .references(references)
+                .reactionReferencesSet(references)
                 .ecNumber(ecNumber)
-                .evidences(evids)
+                .evidencesSet(evids)
                 .build();
     }
 
@@ -286,7 +286,7 @@ class CatalyticActivityCommentConverterTest {
         return new PhysiologicalReactionBuilder()
                 .directionType(type)
                 .reactionReference(createReference(ReactionReferenceType.RHEA, rheaId))
-                .evidences(evids)
+                .evidencesSet(evids)
                 .build();
     }
 

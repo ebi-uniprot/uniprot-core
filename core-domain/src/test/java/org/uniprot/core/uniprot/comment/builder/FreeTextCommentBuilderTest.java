@@ -149,7 +149,7 @@ class FreeTextCommentBuilderTest {
     }
 
     private FreeTextComment buildFreeTextComment(CommentType type, List<EvidencedValue> texts) {
-        return new FreeTextCommentBuilder().texts(texts).commentType(type).build();
+        return new FreeTextCommentBuilder().textsSet(texts).commentType(type).build();
     }
 
     @Test
@@ -165,7 +165,7 @@ class FreeTextCommentBuilderTest {
         FreeTextComment obj =
                 new FreeTextCommentBuilder()
                         .commentType(CommentType.DOMAIN)
-                        .addText(new EvidencedValueBuilder("value1", emptyList()).build())
+                        .textsAdd(new EvidencedValueBuilder("value1", emptyList()).build())
                         .build();
         assertNotNull(obj.getTexts());
         assertFalse(obj.getTexts().isEmpty());
@@ -175,7 +175,7 @@ class FreeTextCommentBuilderTest {
     @Test
     void nullText_willBeIgnore() {
         FreeTextComment obj =
-                new FreeTextCommentBuilder().commentType(CommentType.DOMAIN).addText(null).build();
+                new FreeTextCommentBuilder().commentType(CommentType.DOMAIN).textsAdd(null).build();
         assertNotNull(obj.getTexts());
         assertTrue(obj.getTexts().isEmpty());
         assertFalse(obj.hasTexts());

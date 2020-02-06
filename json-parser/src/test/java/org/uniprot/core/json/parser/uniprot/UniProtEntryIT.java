@@ -32,7 +32,7 @@ class UniProtEntryIT {
         EntryInactiveReason inactiveReason =
                 new EntryInactiveReasonBuilder()
                         .type(InactiveReasonType.MERGED)
-                        .addMergeDemergeTo("merge id")
+                        .mergeDemergeTosAdd("merge id")
                         .build();
 
         UniProtId uniProtId = new UniProtIdBuilder("uniprot id").build();
@@ -69,7 +69,7 @@ class UniProtEntryIT {
                         uniProtId,
                         UniProtEntryType.SWISSPROT);
         UniProtEntry entry =
-                builder.secondaryAccessionAdd(UniProtAccessionTest.getUniProtAccession())
+                builder.secondaryAccessionsAdd(UniProtAccessionTest.getUniProtAccession())
                         .entryAudit(EntryAuditTest.getEntryAudit())
                         .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
                         .proteinDescription(ProteinDescriptionTest.getProteinDescription())

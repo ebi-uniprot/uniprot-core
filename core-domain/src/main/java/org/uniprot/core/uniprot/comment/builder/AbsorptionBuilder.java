@@ -1,5 +1,8 @@
 package org.uniprot.core.uniprot.comment.builder;
 
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +35,7 @@ public class AbsorptionBuilder implements Builder<Absorption> {
                 .note(instance.getNote())
                 .approximate(instance.isApproximate())
                 .max(instance.getMax())
-                .evidences(instance.getEvidences());
+                .evidencesSet(instance.getEvidences());
     }
 
     public @Nonnull AbsorptionBuilder max(int max) {
@@ -50,8 +53,13 @@ public class AbsorptionBuilder implements Builder<Absorption> {
         return this;
     }
 
-    public @Nonnull AbsorptionBuilder evidences(List<Evidence> evidences) {
-        this.evidences = evidences;
+    public @Nonnull AbsorptionBuilder evidencesSet(List<Evidence> evidences) {
+        this.evidences = modifiableList(evidences);
+        return this;
+    }
+
+    public @Nonnull AbsorptionBuilder evidencesAdd(Evidence evidence) {
+        addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
 }

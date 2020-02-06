@@ -79,9 +79,9 @@ public class DrLineConverter extends EvidenceCollector
                             .id(id)
                             .databaseType(type)
                             .isoformId(isoformId)
-                            .addProperty(type.getAttribute(0), description)
-                            .addProperty(type.getAttribute(1), thirdAttribute)
-                            .addProperty(type.getAttribute(2), fourthAttribute)
+                            .propertiesAdd(type.getAttribute(0), description)
+                            .propertiesAdd(type.getAttribute(1), thirdAttribute)
+                            .propertiesAdd(type.getAttribute(2), fourthAttribute)
                             .build());
         } catch (Exception e) {
             if (!ignoreWrongDR) throw new DatabaseTypeNotExistException(drline.DbName);

@@ -30,7 +30,7 @@ public class TaxonomyEntryBuilder
 
     private List<String> otherNames = new ArrayList<>();
 
-    private List<TaxonomyLineage> lineage = new ArrayList<>();
+    private List<TaxonomyLineage> lineages = new ArrayList<>();
 
     private List<TaxonomyStrain> strains = new ArrayList<>();
 
@@ -87,52 +87,52 @@ public class TaxonomyEntryBuilder
         return this;
     }
 
-    public @Nonnull TaxonomyEntryBuilder otherNames(List<String> otherNames) {
+    public @Nonnull TaxonomyEntryBuilder otherNamesSet(List<String> otherNames) {
         this.otherNames = Utils.modifiableList(otherNames);
         return this;
     }
 
-    public @Nonnull TaxonomyEntryBuilder addOtherNames(String otherNames) {
+    public @Nonnull TaxonomyEntryBuilder otherNamesAdd(String otherNames) {
         Utils.addOrIgnoreNull(otherNames, this.otherNames);
         return this;
     }
 
-    public @Nonnull TaxonomyEntryBuilder lineage(List<TaxonomyLineage> lineage) {
-        this.lineage = Utils.modifiableList(lineage);
+    public @Nonnull TaxonomyEntryBuilder lineagesSet(List<TaxonomyLineage> lineage) {
+        this.lineages = Utils.modifiableList(lineage);
         return this;
     }
 
-    public @Nonnull TaxonomyEntryBuilder addLineage(TaxonomyLineage lineage) {
-        Utils.addOrIgnoreNull(lineage, this.lineage);
+    public @Nonnull TaxonomyEntryBuilder lineagesAdd(TaxonomyLineage lineage) {
+        Utils.addOrIgnoreNull(lineage, this.lineages);
         return this;
     }
 
-    public @Nonnull TaxonomyEntryBuilder strains(List<TaxonomyStrain> strains) {
+    public @Nonnull TaxonomyEntryBuilder strainsSet(List<TaxonomyStrain> strains) {
         this.strains = Utils.modifiableList(strains);
         return this;
     }
 
-    public @Nonnull TaxonomyEntryBuilder addStrain(TaxonomyStrain strains) {
+    public @Nonnull TaxonomyEntryBuilder strainsAdd(TaxonomyStrain strains) {
         Utils.addOrIgnoreNull(strains, this.strains);
         return this;
     }
 
-    public @Nonnull TaxonomyEntryBuilder hosts(List<Taxonomy> hosts) {
+    public @Nonnull TaxonomyEntryBuilder hostsSet(List<Taxonomy> hosts) {
         this.hosts = Utils.modifiableList(hosts);
         return this;
     }
 
-    public @Nonnull TaxonomyEntryBuilder addHost(Taxonomy host) {
+    public @Nonnull TaxonomyEntryBuilder hostsAdd(Taxonomy host) {
         Utils.addOrIgnoreNull(host, this.hosts);
         return this;
     }
 
-    public @Nonnull TaxonomyEntryBuilder links(List<String> links) {
+    public @Nonnull TaxonomyEntryBuilder linksSet(List<String> links) {
         this.links = Utils.modifiableList(links);
         return this;
     }
 
-    public @Nonnull TaxonomyEntryBuilder addLink(String link) {
+    public @Nonnull TaxonomyEntryBuilder linksAdd(String link) {
         Utils.addOrIgnoreNull(link, this.links);
         return this;
     }
@@ -160,7 +160,7 @@ public class TaxonomyEntryBuilder
                 hidden,
                 active,
                 otherNames,
-                lineage,
+                lineages,
                 strains,
                 hosts,
                 links,
@@ -177,11 +177,11 @@ public class TaxonomyEntryBuilder
                 .rank(instance.getRank())
                 .hidden(instance.isHidden())
                 .active(instance.isActive())
-                .otherNames(instance.getOtherNames())
-                .lineage(instance.getLineage())
-                .strains(instance.getStrains())
-                .hosts(instance.getHosts())
-                .links(instance.getLinks())
+                .otherNamesSet(instance.getOtherNames())
+                .lineagesSet(instance.getLineages())
+                .strainsSet(instance.getStrains())
+                .hostsSet(instance.getHosts())
+                .linksSet(instance.getLinks())
                 .statistics(instance.getStatistics())
                 .inactiveReason(instance.getInactiveReason());
         return builder;

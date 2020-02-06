@@ -25,22 +25,22 @@ public class ProteinAltNameBuilder implements Builder<ProteinAltName> {
         return this;
     }
 
-    public @Nonnull ProteinAltNameBuilder shortNames(List<Name> shortNames) {
+    public @Nonnull ProteinAltNameBuilder shortNamesSet(List<Name> shortNames) {
         this.shortNames = modifiableList(shortNames);
         return this;
     }
 
-    public @Nonnull ProteinAltNameBuilder addShortName(Name shortNames) {
+    public @Nonnull ProteinAltNameBuilder shortNamesAdd(Name shortNames) {
         addOrIgnoreNull(shortNames, this.shortNames);
         return this;
     }
 
-    public @Nonnull ProteinAltNameBuilder ecNumbers(List<EC> ecNumbers) {
+    public @Nonnull ProteinAltNameBuilder ecNumbersSet(List<EC> ecNumbers) {
         this.ecNumbers = modifiableList(ecNumbers);
         return this;
     }
 
-    public @Nonnull ProteinAltNameBuilder addEcNumber(EC ecNumbers) {
+    public @Nonnull ProteinAltNameBuilder ecNumbersAdd(EC ecNumbers) {
         addOrIgnoreNull(ecNumbers, this.ecNumbers);
         return this;
     }
@@ -53,7 +53,7 @@ public class ProteinAltNameBuilder implements Builder<ProteinAltName> {
     public static @Nonnull ProteinAltNameBuilder from(@Nonnull ProteinAltName instance) {
         return new ProteinAltNameBuilder()
                 .fullName(instance.getFullName())
-                .shortNames(instance.getShortNames())
-                .ecNumbers(instance.getEcNumbers());
+                .shortNamesSet(instance.getShortNames())
+                .ecNumbersSet(instance.getEcNumbers());
     }
 }

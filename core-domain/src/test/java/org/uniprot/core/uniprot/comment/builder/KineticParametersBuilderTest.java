@@ -11,7 +11,7 @@ class KineticParametersBuilderTest {
     void canAddSingleMaximumVelocitie() {
         KineticParameters obj =
                 new KineticParametersBuilder()
-                        .addMaximumVelocitie(new MaximumVelocityBuilder().build())
+                        .maximumVelocitiesAdd(new MaximumVelocityBuilder().build())
                         .build();
         assertNotNull(obj.getMaximumVelocities());
         assertFalse(obj.getMaximumVelocities().isEmpty());
@@ -20,7 +20,7 @@ class KineticParametersBuilderTest {
 
     @Test
     void nullMaximumVelocitie_willBeIgnore() {
-        KineticParameters obj = new KineticParametersBuilder().addMaximumVelocitie(null).build();
+        KineticParameters obj = new KineticParametersBuilder().maximumVelocitiesAdd(null).build();
         assertNotNull(obj.getMaximumVelocities());
         assertTrue(obj.getMaximumVelocities().isEmpty());
         assertFalse(obj.hasMaximumVelocities());
@@ -30,7 +30,7 @@ class KineticParametersBuilderTest {
     void canAddSingleMichaelisConstant() {
         KineticParameters obj =
                 new KineticParametersBuilder()
-                        .addMichaelisConstant(new MichaelisConstantBuilder().build())
+                        .michaelisConstantsAdd(new MichaelisConstantBuilder().build())
                         .build();
         assertNotNull(obj.getMichaelisConstants());
         assertFalse(obj.getMichaelisConstants().isEmpty());
@@ -39,7 +39,7 @@ class KineticParametersBuilderTest {
 
     @Test
     void nullMichaelisConstant_willBeIgnore() {
-        KineticParameters obj = new KineticParametersBuilder().addMichaelisConstant(null).build();
+        KineticParameters obj = new KineticParametersBuilder().michaelisConstantsAdd(null).build();
         assertNotNull(obj.getMichaelisConstants());
         assertTrue(obj.getMichaelisConstants().isEmpty());
         assertFalse(obj.hasMichaelisConstants());

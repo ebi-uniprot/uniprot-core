@@ -33,7 +33,7 @@ class TaxonomyEntryBuilderTest {
         assertTrue(taxonomyEntry.getHosts().isEmpty());
         assertFalse(taxonomyEntry.hasHosts());
 
-        assertTrue(taxonomyEntry.getLineage().isEmpty());
+        assertTrue(taxonomyEntry.getLineages().isEmpty());
         assertFalse(taxonomyEntry.hasLineage());
 
         assertTrue(taxonomyEntry.getLinks().isEmpty());
@@ -99,7 +99,7 @@ class TaxonomyEntryBuilderTest {
 
         assertTrue(taxonomyEntry.hasLineage());
         MatcherAssert.assertThat(
-                taxonomyEntry.getLineage(),
+                taxonomyEntry.getLineages(),
                 Matchers.contains(ObjectsForTests.getCompleteTaxonomyLineage()));
 
         assertTrue(taxonomyEntry.hasLinks());

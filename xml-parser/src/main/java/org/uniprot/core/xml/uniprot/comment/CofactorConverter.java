@@ -39,7 +39,11 @@ public class CofactorConverter implements Converter<CofactorType, Cofactor> {
                         .id(xmlObj.getDbReference().getId())
                         .build();
 
-        return new CofactorBuilder().name(name).reference(reference).evidences(evidences).build();
+        return new CofactorBuilder()
+                .name(name)
+                .reference(reference)
+                .evidencesSet(evidences)
+                .build();
     }
 
     @Override

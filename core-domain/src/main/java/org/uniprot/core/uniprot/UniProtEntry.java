@@ -48,7 +48,7 @@ public interface UniProtEntry extends Serializable {
 
     List<Comment> getComments();
 
-    <T extends Comment> List<T> getCommentByType(CommentType type);
+    <T extends Comment> List<T> getCommentsByType(CommentType type);
 
     List<Feature> getFeatures();
 

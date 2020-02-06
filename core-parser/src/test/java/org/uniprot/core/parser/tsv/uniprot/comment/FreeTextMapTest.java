@@ -21,7 +21,7 @@ class FreeTextMapTest {
 
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(freeTextLine);
 
-        List<FreeTextComment> freeTextComments = entry.getCommentByType(CommentType.INDUCTION);
+        List<FreeTextComment> freeTextComments = entry.getCommentsByType(CommentType.INDUCTION);
         assertNotNull(entry);
         FreeTextMap freeTextMap = new FreeTextMap(freeTextComments, CommentType.INDUCTION);
         Map<String, String> mappedFreeText = freeTextMap.attributeValues();
@@ -43,7 +43,7 @@ class FreeTextMapTest {
 
         UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(freeTextLine);
 
-        List<FreeTextComment> freeTextComments = entry.getCommentByType(CommentType.SIMILARITY);
+        List<FreeTextComment> freeTextComments = entry.getCommentsByType(CommentType.SIMILARITY);
         assertNotNull(entry);
         FreeTextMap freeTextMap = new FreeTextMap(freeTextComments, CommentType.SIMILARITY);
         Map<String, String> mappedFreeText = freeTextMap.attributeValues();

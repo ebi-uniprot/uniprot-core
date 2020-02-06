@@ -36,9 +36,9 @@ public class SsLineConverter implements Converter<SsLineObject, InternalSection>
             sourceLines.add(new SourceLineBuilder(source).build());
         }
         return new InternalSectionBuilder()
-                .internalLines(internalLines)
-                .sourceLines(sourceLines)
-                .evidenceLines(evidenceLines)
+                .internalLinesSet(internalLines)
+                .sourceLinesSet(sourceLines)
+                .evidenceLinesSet(evidenceLines)
                 .build();
     }
 

@@ -33,7 +33,7 @@ class BPCPCommentBuilderTest {
                         .max(max)
                         .approximate(true)
                         .note(note)
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build();
         BPCPCommentBuilder builder = new BPCPCommentBuilder();
         BPCPComment comment = builder.absorption(absorption).build();
@@ -76,7 +76,7 @@ class BPCPCommentBuilderTest {
         return new AbsorptionBuilder()
                 .approximate(b)
                 .note(note)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .max(max)
                 .build();
     }
@@ -87,7 +87,7 @@ class BPCPCommentBuilderTest {
                 .velocity(v)
                 .unit(unit)
                 .enzyme(enzyme)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 
@@ -329,7 +329,7 @@ class BPCPCommentBuilderTest {
             double v, MichaelisConstantUnit microMol, String sub, List<Evidence> evidences) {
         return new MichaelisConstantBuilder()
                 .constant(v)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .unit(microMol)
                 .substrate(sub)
                 .build();
@@ -338,8 +338,8 @@ class BPCPCommentBuilderTest {
     private KineticParameters createKineticParameters(
             List<MaximumVelocity> velocities, List<MichaelisConstant> mConstants, Note note) {
         return new KineticParametersBuilder()
-                .maximumVelocities(velocities)
-                .michaelisConstants(mConstants)
+                .maximumVelocitiesSet(velocities)
+                .michaelisConstantsSet(mConstants)
                 .note(note)
                 .build();
     }

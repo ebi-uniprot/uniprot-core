@@ -41,7 +41,7 @@ class SubmissionConverterTest {
         xmlSubmission.setTitle("Some titles.");
         reference.setSubmission(xmlSubmission);
         Submission submission = converter.fromXml(reference);
-        assertEquals("Some consortium", submission.getAuthoringGroup().get(0));
+        assertEquals("Some consortium", submission.getAuthoringGroups().get(0));
         assertEquals(2, submission.getAuthors().size());
         assertEquals("Some titles.", submission.getTitle());
 
@@ -66,8 +66,8 @@ class SubmissionConverterTest {
         SubmissionBuilder builder = new SubmissionBuilder();
         String date = "JAN-2018";
         builder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ)
-                .addAuthor("Sulson J.E.")
-                .addAuthor("JWaterston R.")
+                .authorsAdd("Sulson J.E.")
+                .authorsAdd("JWaterston R.")
                 .publicationDate(date)
                 .title("another title");
         return builder.build();

@@ -61,7 +61,7 @@ public class WebResourceCommentImpl extends CommentHasMoleculeImpl implements We
 
     @Override
     public boolean hasResourceUrl() {
-        return Utils.notNullOrEmpty(this.resourceUrl);
+        return Utils.notNullNotEmpty(this.resourceUrl);
     }
 
     @Override

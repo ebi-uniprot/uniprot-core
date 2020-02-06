@@ -73,9 +73,9 @@ class CAReactionConverterTest {
         Reaction reaction =
                 new ReactionBuilder()
                         .name("Some value")
-                        .references(references)
+                        .reactionReferencesSet(references)
                         .ecNumber(("1.2.3.32"))
-                        .evidences(evids)
+                        .evidencesSet(evids)
                         .build();
         CAReactionConverter converter = new CAReactionConverter(new EvidenceIndexMapper());
 
@@ -111,9 +111,9 @@ class CAReactionConverterTest {
         Reaction reaction =
                 new ReactionBuilder()
                         .name("Some value")
-                        .references(references)
+                        .reactionReferencesSet(references)
                         .ecNumber(("1.2.3.32"))
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build();
         CAReactionConverter converter = new CAReactionConverter(new EvidenceIndexMapper());
 

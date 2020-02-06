@@ -80,14 +80,14 @@ public class UniProtReferenceTest {
                 new ReferenceCommentBuilder()
                         .type(ReferenceCommentType.PLASMID)
                         .value("reference comment value")
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build();
 
         return new UniProtReferenceBuilder()
                 .citation(citation)
-                .addComment(referenceComment)
-                .addPositions("position 1")
-                .evidences(evidences)
+                .referenceCommentsAdd(referenceComment)
+                .referencePositionsAdd("position 1")
+                .evidencesSet(evidences)
                 .build();
     }
 }

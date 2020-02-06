@@ -53,7 +53,7 @@ class CCInteractionBuildTest extends CCBuildTestAbstr {
                 buildInteraction(
                         InteractionType.BINARY, acc, geneName, nExperiments, firstInter, secInter);
         interactions.add(inter3);
-        builder.interactions(interactions);
+        builder.interactionsSet(interactions);
         InteractionComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -104,7 +104,7 @@ class CCInteractionBuildTest extends CCBuildTestAbstr {
                         InteractionType.XENO, acc, geneName, nExperiments, firstInter, secInter);
         interactions.add(inter3);
 
-        builder.interactions(interactions);
+        builder.interactionsSet(interactions);
         InteractionComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);

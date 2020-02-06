@@ -77,7 +77,7 @@ public class FtLineConverter extends EvidenceCollector
                 .type(type)
                 .location(location)
                 .featureId(ft.getFtId())
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .description(ft.getFt_text())
                 .build();
     }
@@ -116,7 +116,7 @@ public class FtLineConverter extends EvidenceCollector
         AlternativeSequence altSeq =
                 new AlternativeSequenceBuilder()
                         .original(originalSequence)
-                        .alternatives(alternativeSequences)
+                        .alternativeSequencesSet(alternativeSequences)
                         .build();
         //	factory.createReport(isoforms));
 
@@ -126,7 +126,7 @@ public class FtLineConverter extends EvidenceCollector
                 .description(description)
                 .featureId(ft.getFtId())
                 .alternativeSequence(altSeq)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 
@@ -198,7 +198,7 @@ public class FtLineConverter extends EvidenceCollector
         AlternativeSequence altSeq =
                 new AlternativeSequenceBuilder()
                         .original(originalSequence)
-                        .alternatives(alternativeSequences)
+                        .alternativeSequencesSet(alternativeSequences)
                         .build();
         //		factory.createReport(reports));
         DBCrossReference<FeatureXDbType> dbXref = null;
@@ -208,7 +208,7 @@ public class FtLineConverter extends EvidenceCollector
                 .description(description)
                 .featureId(ft.getFtId())
                 .alternativeSequence(altSeq)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .dbXref(dbXref)
                 .build();
     }
@@ -239,7 +239,7 @@ public class FtLineConverter extends EvidenceCollector
         AlternativeSequence altSeq =
                 new AlternativeSequenceBuilder()
                         .original(originalSequence)
-                        .alternatives(alternativeSequences)
+                        .alternativeSequencesSet(alternativeSequences)
                         .build();
         ;
         //	factory.createReport(reports));
@@ -247,7 +247,7 @@ public class FtLineConverter extends EvidenceCollector
         return new FeatureBuilder()
                 .type(type)
                 .location(location)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .alternativeSequence(altSeq)
                 .description(description)
                 .build();
@@ -278,14 +278,14 @@ public class FtLineConverter extends EvidenceCollector
         AlternativeSequence altSeq =
                 new AlternativeSequenceBuilder()
                         .original(originalSequence)
-                        .alternatives(alternativeSequences)
+                        .alternativeSequencesSet(alternativeSequences)
                         .build();
         //	factory.createReport(reports));
         return new FeatureBuilder()
                 .type(type)
                 .location(location)
                 //                .featureId(ft.ftId)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .alternativeSequence(altSeq)
                 .description(description)
                 .build();
@@ -300,7 +300,7 @@ public class FtLineConverter extends EvidenceCollector
                 new FeatureBuilder()
                         .type(type)
                         .location(location)
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .description(ft.getFt_text());
 
         if (!Strings.isNullOrEmpty(ft.getFtId())) {

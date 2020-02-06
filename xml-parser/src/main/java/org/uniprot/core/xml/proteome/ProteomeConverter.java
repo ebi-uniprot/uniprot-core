@@ -82,13 +82,13 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
                 .strain(xmlObj.getStrain())
                 .isolate(xmlObj.getIsolate())
                 .sourceDb(xmlObj.getSource())
-                .components(components)
-                .canonicalProteins(canonicalProteins)
+                .componentsSet(components)
+                .canonicalProteinsSet(canonicalProteins)
                 .geneCount(canonicalProteins.size())
-                .redundantProteomes(redundantProteomes)
-                .dbXReferences(xrefs)
+                .redundantProteomesSet(redundantProteomes)
+                .dbXReferencesSet(xrefs)
                 .superkingdom(Superkingdom.fromValue(xmlObj.getSuperregnum().value()))
-                .references(citations);
+                .referencesSet(citations);
 
         if (xmlObj.getAnnotationScore() != null) {
             builder.annotationScore(xmlObj.getAnnotationScore().getNormalizedAnnotationScore());

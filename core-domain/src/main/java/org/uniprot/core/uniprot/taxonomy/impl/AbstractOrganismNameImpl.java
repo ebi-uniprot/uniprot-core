@@ -39,15 +39,15 @@ public abstract class AbstractOrganismNameImpl implements OrganismName {
     }
 
     public boolean hasScientificName() {
-        return Utils.notNullOrEmpty(this.scientificName);
+        return Utils.notNullNotEmpty(this.scientificName);
     }
 
     public boolean hasCommonName() {
-        return Utils.notNullOrEmpty(this.commonName);
+        return Utils.notNullNotEmpty(this.commonName);
     }
 
     public boolean hasSynonyms() {
-        return Utils.notNullOrEmpty(this.synonyms);
+        return Utils.notNullNotEmpty(this.synonyms);
     }
 
     @Override

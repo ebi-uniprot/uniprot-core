@@ -9,5 +9,5 @@ public interface Organism extends OrganismName, HasEvidences, Serializable {
 
     long getTaxonId();
 
-    List<String> getLineage();
+    List<String> getLineages();
 }

@@ -43,7 +43,7 @@ public class RnaEditingCommentConverter implements CommentConverter<RnaEditingCo
         }
 
         if (xmlObj.getLocation() != null && !xmlObj.getLocation().isEmpty()) {
-            builder.positions(
+            builder.positionsSet(
                     xmlObj.getLocation().stream()
                             .map(positionConverter::fromXml)
                             .collect(Collectors.toList()));

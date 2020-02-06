@@ -16,43 +16,43 @@ import org.uniprot.core.uniprot.taxonomy.impl.OrganismImpl;
 public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder, Organism> {
     private long taxonId;
     private List<Evidence> evidences = new ArrayList<>();
-    private List<String> lineage = new ArrayList<>();
+    private List<String> lineages = new ArrayList<>();
 
     public @Nonnull OrganismBuilder taxonId(long taxonId) {
         this.taxonId = taxonId;
         return this;
     }
 
-    public @Nonnull OrganismBuilder lineage(List<String> lineage) {
-        this.lineage = modifiableList(lineage);
+    public @Nonnull OrganismBuilder lineagesSet(List<String> lineage) {
+        this.lineages = modifiableList(lineage);
         return this;
     }
 
-    public @Nonnull OrganismBuilder addLineage(String lineage) {
-        addOrIgnoreNull(lineage, this.lineage);
+    public @Nonnull OrganismBuilder lineagesAdd(String lineage) {
+        addOrIgnoreNull(lineage, this.lineages);
         return this;
     }
 
-    public @Nonnull OrganismBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull OrganismBuilder evidencesSet(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public @Nonnull OrganismBuilder addEvidence(Evidence evidence) {
+    public @Nonnull OrganismBuilder evidencesAdd(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
 
     public @Nonnull Organism build() {
-        return new OrganismImpl(lineage, taxonId, evidences, scientificName, commonName, synonyms);
+        return new OrganismImpl(lineages, taxonId, evidences, scientificName, commonName, synonyms);
     }
 
     public static @Nonnull OrganismBuilder from(@Nonnull Organism instance) {
         OrganismBuilder builder = new OrganismBuilder();
         AbstractOrganismNameBuilder.init(builder, instance);
         builder.taxonId(instance.getTaxonId())
-                .evidences(instance.getEvidences())
-                .lineage(instance.getLineage());
+                .evidencesSet(instance.getEvidences())
+                .lineagesSet(instance.getLineages());
         return builder;
     }
 

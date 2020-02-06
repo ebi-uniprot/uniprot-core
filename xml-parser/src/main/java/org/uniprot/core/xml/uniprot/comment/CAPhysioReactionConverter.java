@@ -42,7 +42,7 @@ public class CAPhysioReactionConverter
         return new PhysiologicalReactionBuilder()
                 .directionType(directionType)
                 .reactionReference(reactionReference)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 

@@ -36,11 +36,13 @@ class RnaEditingCommentBuilderTest {
     void testSetpositions() {
         List<RnaEdPosition> positions = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
-        positions.add(new RnaEditingPositionBuilder().position("123").evidences(evidences).build());
-        positions.add(new RnaEditingPositionBuilder().position("432").evidences(evidences).build());
+        positions.add(
+                new RnaEditingPositionBuilder().position("123").evidencesSet(evidences).build());
+        positions.add(
+                new RnaEditingPositionBuilder().position("432").evidencesSet(evidences).build());
         RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
         RnaEditingComment comment =
-                builder.locationType(RnaEditingLocationType.Known).positions(positions).build();
+                builder.locationType(RnaEditingLocationType.Known).positionsSet(positions).build();
         assertEquals(RnaEditingLocationType.Known, comment.getLocationType());
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
         assertFalse(comment.getNote() != null);
@@ -51,13 +53,15 @@ class RnaEditingCommentBuilderTest {
     void testSetNote() {
         List<RnaEdPosition> positions = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
-        positions.add(new RnaEditingPositionBuilder().position("123").evidences(evidences).build());
-        positions.add(new RnaEditingPositionBuilder().position("432").evidences(evidences).build());
+        positions.add(
+                new RnaEditingPositionBuilder().position("123").evidencesSet(evidences).build());
+        positions.add(
+                new RnaEditingPositionBuilder().position("432").evidencesSet(evidences).build());
         Note note = new NoteBuilder(createEvidenceValuesWithoutEvidences()).build();
         RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
         RnaEditingComment comment =
                 builder.locationType(RnaEditingLocationType.Known)
-                        .positions(positions)
+                        .positionsSet(positions)
                         .note(note)
                         .build();
         assertEquals(RnaEditingLocationType.Known, comment.getLocationType());
@@ -70,7 +74,7 @@ class RnaEditingCommentBuilderTest {
     void testCreatePosition() {
         List<Evidence> evidences = createEvidences();
         RnaEdPosition position =
-                new RnaEditingPositionBuilder().position("123").evidences(evidences).build();
+                new RnaEditingPositionBuilder().position("123").evidencesSet(evidences).build();
         assertEquals("123", position.getPosition());
         assertEquals(evidences, position.getEvidences());
     }
@@ -94,10 +98,10 @@ class RnaEditingCommentBuilderTest {
     void canAddRnaPosition() {
         RnaEditingComment obj =
                 new RnaEditingCommentBuilder()
-                        .addPosition(
+                        .positionsAdd(
                                 new RnaEditingPositionBuilder()
                                         .position("123")
-                                        .evidences(createEvidences())
+                                        .evidencesSet(createEvidences())
                                         .build())
                         .build();
         assertTrue(obj.hasPositions());

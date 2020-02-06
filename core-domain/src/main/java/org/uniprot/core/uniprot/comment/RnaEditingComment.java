@@ -5,13 +5,13 @@ import java.util.List;
 /** CC -!- RNA EDITING: Modified_positions=x[, y, z][; Note=]. */
 public interface RnaEditingComment extends Comment, HasMolecule {
 
-    public static final String POSITIONS_PREFIX = "Modified_positions=";
+    String POSITIONS_PREFIX = "Modified_positions=";
 
-    public RnaEditingLocationType getLocationType();
+    RnaEditingLocationType getLocationType();
 
-    public List<RnaEdPosition> getPositions();
+    List<RnaEdPosition> getPositions();
 
-    public Note getNote();
+    Note getNote();
 
     boolean hasLocationType();
 

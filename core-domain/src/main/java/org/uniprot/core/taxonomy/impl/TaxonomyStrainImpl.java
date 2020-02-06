@@ -32,7 +32,7 @@ public class TaxonomyStrainImpl implements TaxonomyStrain {
 
     @Override
     public boolean hasName() {
-        return Utils.notNullOrEmpty(this.name);
+        return Utils.notNullNotEmpty(this.name);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class TaxonomyStrainImpl implements TaxonomyStrain {
 
     @Override
     public boolean hasSynonyms() {
-        return Utils.notNullOrEmpty(this.synonyms);
+        return Utils.notNullNotEmpty(this.synonyms);
     }
 
     @Override

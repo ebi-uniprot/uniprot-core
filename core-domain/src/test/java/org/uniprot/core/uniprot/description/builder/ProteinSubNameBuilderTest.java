@@ -25,8 +25,8 @@ class ProteinSubNameBuilderTest {
     void ecNumber_willConvertUnModifiable_toModifiable() {
         ProteinSubName obj =
                 new ProteinSubNameBuilder()
-                        .ecNumbers(Collections.emptyList())
-                        .addEcNumber(ecNumber)
+                        .ecNumbersSet(Collections.emptyList())
+                        .ecNumbersAdd(ecNumber)
                         .build();
         assertNotNull(obj.getEcNumbers());
         assertFalse(obj.getEcNumbers().isEmpty());
@@ -36,7 +36,9 @@ class ProteinSubNameBuilderTest {
     @Test
     void canAddListEcNumber() {
         ProteinSubName obj =
-                new ProteinSubNameBuilder().ecNumbers(Collections.singletonList(ecNumber)).build();
+                new ProteinSubNameBuilder()
+                        .ecNumbersSet(Collections.singletonList(ecNumber))
+                        .build();
         assertNotNull(obj.getEcNumbers());
         assertFalse(obj.getEcNumbers().isEmpty());
         assertTrue(obj.hasEcNumbers());
@@ -45,7 +47,7 @@ class ProteinSubNameBuilderTest {
     @Test
     void canAddSingleEcNumber() {
         ProteinSubName obj =
-                new ProteinSubNameBuilder().addEcNumber(new ECBuilder().build()).build();
+                new ProteinSubNameBuilder().ecNumbersAdd(new ECBuilder().build()).build();
         assertNotNull(obj.getEcNumbers());
         assertFalse(obj.getEcNumbers().isEmpty());
         assertTrue(obj.hasEcNumbers());
@@ -53,7 +55,7 @@ class ProteinSubNameBuilderTest {
 
     @Test
     void nullEcNumber_willBeIgnore() {
-        ProteinSubName obj = new ProteinSubNameBuilder().addEcNumber(null).build();
+        ProteinSubName obj = new ProteinSubNameBuilder().ecNumbersAdd(null).build();
         assertNotNull(obj.getEcNumbers());
         assertTrue(obj.getEcNumbers().isEmpty());
         assertFalse(obj.hasEcNumbers());

@@ -10,7 +10,7 @@ class OrderedLocusNameBuilderTest extends AbstractEvidencedValueBuilderTest {
     void checkOrderedLocusNameBuilderCreationIsAsExpected() {
         OrderedLocusName orfName =
                 new OrderedLocusNameBuilder((getValue()), getEvidenceList())
-                        .addEvidence(getEvidence())
+                        .evidencesAdd(getEvidence())
                         .build();
 
         verifyEvidencedValue(orfName);

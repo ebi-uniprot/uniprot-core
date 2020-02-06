@@ -31,7 +31,7 @@ public class KeywordConverter implements Converter<KeywordType, Keyword> {
                 .id(xmlObj.getId())
                 .value(keywordValue)
                 .category(KeywordCategory.UNKNOWN)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 

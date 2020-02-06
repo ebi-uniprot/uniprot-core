@@ -39,10 +39,10 @@ class APIsoformImplTest {
         APIsoform apIsoform =
                 new APIsoformBuilder()
                         .name(isoformName)
-                        .synonyms(synonyms)
+                        .synonymsSet(synonyms)
                         .note(note)
-                        .ids(asList("id 1", "id 2"))
-                        .sequenceIds(sequenceIds)
+                        .isoformIdsSet(asList("id 1", "id 2"))
+                        .sequenceIdsSet(sequenceIds)
                         .sequenceStatus(IsoformSequenceStatus.DESCRIBED)
                         .build();
 

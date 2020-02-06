@@ -26,7 +26,7 @@ class KineticParametersImplTest {
                         .velocity(velocity)
                         .unit(unit)
                         .enzyme(enzyme)
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build();
         assertEquals(velocity, maxVelocity.getVelocity(), Float.MIN_VALUE);
         assertEquals(unit, maxVelocity.getUnit());
@@ -55,7 +55,7 @@ class KineticParametersImplTest {
         String substrate = "some value";
         MichaelisConstant mconstant =
                 new MichaelisConstantBuilder()
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .constant(constant)
                         .unit(unit)
                         .substrate(substrate)
@@ -92,8 +92,8 @@ class KineticParametersImplTest {
 
         KineticParameters kp =
                 new KineticParametersBuilder()
-                        .maximumVelocities(velocities)
-                        .michaelisConstants(mConstants)
+                        .maximumVelocitiesSet(velocities)
+                        .michaelisConstantsSet(mConstants)
                         .note(note)
                         .build();
         assertEquals(2, kp.getMaximumVelocities().size());
@@ -110,8 +110,8 @@ class KineticParametersImplTest {
 
         KineticParameters kp =
                 new KineticParametersBuilder()
-                        .maximumVelocities(velocities)
-                        .michaelisConstants(mConstants)
+                        .maximumVelocitiesSet(velocities)
+                        .michaelisConstantsSet(mConstants)
                         .note(note)
                         .build();
         assertEquals(0, kp.getMaximumVelocities().size());
@@ -128,8 +128,8 @@ class KineticParametersImplTest {
 
         KineticParameters kp =
                 new KineticParametersBuilder()
-                        .maximumVelocities(velocities)
-                        .michaelisConstants(mConstants)
+                        .maximumVelocitiesSet(velocities)
+                        .michaelisConstantsSet(mConstants)
                         .note(note)
                         .build();
         assertEquals(2, kp.getMaximumVelocities().size());
@@ -146,8 +146,8 @@ class KineticParametersImplTest {
 
         KineticParameters kp =
                 new KineticParametersBuilder()
-                        .maximumVelocities(velocities)
-                        .michaelisConstants(mConstants)
+                        .maximumVelocitiesSet(velocities)
+                        .michaelisConstantsSet(mConstants)
                         .note(note)
                         .build();
         assertEquals(2, kp.getMaximumVelocities().size());
@@ -179,14 +179,14 @@ class KineticParametersImplTest {
                         .velocity(1.0)
                         .unit("unit1")
                         .enzyme("enzyme1")
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build());
         velocities.add(
                 new MaximumVelocityBuilder()
                         .velocity(1.321)
                         .unit("unit2")
                         .enzyme("enzyme2")
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build());
         return velocities;
     }

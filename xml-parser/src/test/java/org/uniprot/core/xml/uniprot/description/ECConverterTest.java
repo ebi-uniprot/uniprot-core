@@ -36,7 +36,7 @@ class ECConverterTest {
                         .evidenceCode(EvidenceCode.ECO_0000256)
                         .build());
 
-        EC ecObj = new ECBuilder().value(ec).evidences(evidences).build();
+        EC ecObj = new ECBuilder().value(ec).evidencesSet(evidences).build();
         EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
         ECConverter converter = new ECConverter(evRefMapper);
         EvidencedStringType xmlObj = converter.toXml(ecObj);

@@ -41,7 +41,7 @@ public class ProteomeEntryMap implements NamedValueMap {
             addData(map, new ProteomeComponentMap(entry.getComponents()));
         }
         if (ProteomeTaxonomyLineageMap.contains(fields)) {
-            addData(map, new ProteomeTaxonomyLineageMap(entry.getTaxonLineage()));
+            addData(map, new ProteomeTaxonomyLineageMap(entry.getTaxonLineages()));
         }
         return map;
     }

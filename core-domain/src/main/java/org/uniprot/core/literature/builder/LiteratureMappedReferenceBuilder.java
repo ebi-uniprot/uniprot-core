@@ -21,7 +21,7 @@ public class LiteratureMappedReferenceBuilder implements Builder<LiteratureMappe
 
     private String sourceId;
 
-    private List<String> sourceCategory = new ArrayList<>();
+    private List<String> sourceCategories = new ArrayList<>();
 
     private String annotation;
 
@@ -46,13 +46,14 @@ public class LiteratureMappedReferenceBuilder implements Builder<LiteratureMappe
         return this;
     }
 
-    public @Nonnull LiteratureMappedReferenceBuilder sourceCategory(List<String> sourceCategory) {
-        this.sourceCategory = Utils.modifiableList(sourceCategory);
+    public @Nonnull LiteratureMappedReferenceBuilder sourceCategoriesSet(
+            List<String> sourceCategory) {
+        this.sourceCategories = Utils.modifiableList(sourceCategory);
         return this;
     }
 
-    public @Nonnull LiteratureMappedReferenceBuilder addSourceCategory(String sourceCategory) {
-        Utils.addOrIgnoreNull(sourceCategory, this.sourceCategory);
+    public @Nonnull LiteratureMappedReferenceBuilder sourceCategoriesAdd(String sourceCategory) {
+        Utils.addOrIgnoreNull(sourceCategory, this.sourceCategories);
         return this;
     }
 
@@ -64,7 +65,7 @@ public class LiteratureMappedReferenceBuilder implements Builder<LiteratureMappe
     @Override
     public @Nonnull LiteratureMappedReference build() {
         return new LiteratureMappedReferenceImpl(
-                uniprotAccession, source, sourceId, sourceCategory, annotation);
+                uniprotAccession, source, sourceId, sourceCategories, annotation);
     }
 
     public static @Nonnull LiteratureMappedReferenceBuilder from(
@@ -73,7 +74,7 @@ public class LiteratureMappedReferenceBuilder implements Builder<LiteratureMappe
                 .uniprotAccession(instance.getUniprotAccession())
                 .source(instance.getSource())
                 .sourceId(instance.getSourceId())
-                .sourceCategory(instance.getSourceCategory())
+                .sourceCategoriesSet(instance.getSourceCategories())
                 .annotation(instance.getAnnotation());
     }
 }

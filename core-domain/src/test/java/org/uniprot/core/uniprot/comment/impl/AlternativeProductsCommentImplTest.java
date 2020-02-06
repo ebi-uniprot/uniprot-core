@@ -40,10 +40,10 @@ class AlternativeProductsCommentImplTest {
                 new APIsoformBuilder()
                         .name(isoformName)
                         .sequenceStatus(IsoformSequenceStatus.DESCRIBED)
-                        .synonyms(synonyms)
+                        .synonymsSet(synonyms)
                         .note(note)
-                        .ids(asList("id 1", "id 2"))
-                        .sequenceIds(sequenceIds)
+                        .isoformIdsSet(asList("id 1", "id 2"))
+                        .sequenceIdsSet(sequenceIds)
                         .build();
 
         isoforms.add(apIsoform2);
@@ -58,7 +58,7 @@ class AlternativeProductsCommentImplTest {
         List<APIsoform> isoforms = createIsoforms();
         Note note = createNote();
         AlternativeProductsComment comment =
-                new APCommentBuilder().events(events).isoforms(isoforms).note(note).build();
+                new APCommentBuilder().eventsSet(events).isoformsSet(isoforms).note(note).build();
         assertEquals(events, comment.getEvents());
         assertEquals(isoforms, comment.getIsoforms());
         assertEquals(note, comment.getNote());
@@ -72,7 +72,7 @@ class AlternativeProductsCommentImplTest {
         List<APIsoform> isoforms = createIsoforms();
         Note note = null;
         AlternativeProductsComment comment =
-                new APCommentBuilder().events(events).isoforms(isoforms).note(note).build();
+                new APCommentBuilder().eventsSet(events).isoformsSet(isoforms).note(note).build();
         assertEquals(events, comment.getEvents());
         assertEquals(isoforms, comment.getIsoforms());
         assertEquals(note, comment.getNote());

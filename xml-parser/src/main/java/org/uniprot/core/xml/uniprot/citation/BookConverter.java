@@ -36,7 +36,7 @@ public class BookConverter implements Converter<CitationType, Book> {
         builder.bookName(xmlObj.getName());
 
         if (xmlObj.getEditorList() != null) {
-            builder.editors(
+            builder.editorsSet(
                     xmlObj.getEditorList().getConsortiumOrPerson().stream()
                             .map(val -> (PersonType) val)
                             .map(CitationConverterHelper::fromXmlAuthor)

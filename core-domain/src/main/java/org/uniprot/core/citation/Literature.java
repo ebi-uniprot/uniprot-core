@@ -13,7 +13,7 @@ public interface Literature extends JournalArticle {
     String getLiteratureAbstract();
 
     default boolean hasLiteratureAbstract() {
-        return Utils.notNullOrEmpty(getLiteratureAbstract());
+        return Utils.notNullNotEmpty(getLiteratureAbstract());
     }
 
     Long getPubmedId();
@@ -25,6 +25,6 @@ public interface Literature extends JournalArticle {
     }
 
     default boolean hasDoiId() {
-        return Utils.notNullOrEmpty(getDoiId());
+        return Utils.notNullNotEmpty(getDoiId());
     }
 }

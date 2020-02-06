@@ -158,9 +158,9 @@ class UniProtCrossReferenceConverterTest {
                 .databaseType(uniProtXDbType)
                 .id(id)
                 .isoformId(isoformId)
-                .addProperty(uniProtXDbType.getAttribute(0), description)
-                .addProperty(uniProtXDbType.getAttribute(1), thirdAttribute)
-                .addProperty(uniProtXDbType.getAttribute(2), fourthAttribute)
+                .propertiesAdd(uniProtXDbType.getAttribute(0), description)
+                .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttribute)
+                .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttribute)
                 .build();
     }
 }

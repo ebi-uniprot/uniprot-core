@@ -113,11 +113,11 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
         Organism organism =
                 new OrganismBuilder()
                         .taxonId(oxLineOrganism.getTaxonId())
-                        .evidences(oxLineOrganism.getEvidences())
-                        .lineage(ocLineConverter.convert(f.oc))
+                        .evidencesSet(oxLineOrganism.getEvidences())
+                        .lineagesSet(ocLineConverter.convert(f.oc))
                         .scientificName(orgName.getScientificName())
                         .commonName(orgName.getCommonName())
-                        .synonyms(orgName.getSynonyms())
+                        .synonymsSet(orgName.getSynonyms())
                         .build();
         activeEntryBuilder.organism(organism);
         activeEntryBuilder.proteinExistence(peLineConverter.convert(f.pe));
@@ -136,13 +136,13 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
             if (usl != null)
                 activeEntryBuilder.internalSection(
                         new InternalSectionBuilder()
-                                .evidenceLines(usl.getEvidenceLines())
-                                .sourceLines(usl.getSourceLines())
-                                .internalLines(internalLines)
+                                .evidenceLinesSet(usl.getEvidenceLines())
+                                .sourceLinesSet(usl.getSourceLines())
+                                .internalLinesSet(internalLines)
                                 .build());
             else {
                 activeEntryBuilder.internalSection(
-                        new InternalSectionBuilder().internalLines(internalLines).build());
+                        new InternalSectionBuilder().internalLinesSet(internalLines).build());
             }
         } else {
             activeEntryBuilder.internalSection(usl);
@@ -172,8 +172,8 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
                     .databaseType(xref.getDatabaseType())
                     .id(xref.getId())
                     .isoformId(xref.getIsoformId())
-                    .evidences(evidences)
-                    .properties(xref.getProperties())
+                    .evidencesSet(evidences)
+                    .propertiesSet(xref.getProperties())
                     .build();
         }
         return xref;

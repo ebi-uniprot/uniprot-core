@@ -98,7 +98,7 @@ public class CcLineConverter extends EvidenceCollector
                 builder.sequence(cObj.getSequence());
             }
             List<Evidence> evidences = evidenceMap.get(cObj);
-            builder.evidences(evidences);
+            builder.evidencesSet(evidences);
             SequenceCautionComment comment = builder.build();
             comments.add(comment);
         }
@@ -186,12 +186,12 @@ public class CcLineConverter extends EvidenceCollector
             AlternativeProducts cObj, Map<Object, List<Evidence>> evidences) {
 
         APCommentBuilder builder = new APCommentBuilder();
-        builder.events(
+        builder.eventsSet(
                 cObj.getEvents().stream().map(APEventType::typeOf).collect(Collectors.toList()));
         if (isNotEmpty(cObj.getComment())) {
             builder.note(new NoteBuilder(convert(cObj.getComment())).build());
         }
-        builder.isoforms(
+        builder.isoformsSet(
                 cObj.getNames().stream().map(this::convertAPIsoform).collect(Collectors.toList()));
         return builder.build();
     }
@@ -206,7 +206,7 @@ public class CcLineConverter extends EvidenceCollector
         if (isNotEmpty(name.getNote())) {
             builder.note(new NoteBuilder(convert(name.getNote())).build());
         }
-        builder.synonyms(
+        builder.synonymsSet(
                         name.getSynNames().stream()
                                 .map(
                                         syn ->
@@ -216,8 +216,8 @@ public class CcLineConverter extends EvidenceCollector
                                                                         syn.getEvidences()))
                                                         .build())
                                 .collect(Collectors.toList()))
-                .ids(name.getIsoId())
-                .sequenceIds(name.getSequenceFTId())
+                .isoformIdsSet(name.getIsoId())
+                .sequenceIdsSet(name.getSequenceFTId())
                 .sequenceStatus(convertIsoformSequenceStatus(name.getSequenceEnum()));
         return builder.build();
     }
@@ -275,8 +275,8 @@ public class CcLineConverter extends EvidenceCollector
             }
             builder.kineticParameters(
                     new KineticParametersBuilder()
-                            .maximumVelocities(mvs)
-                            .michaelisConstants(mcs)
+                            .maximumVelocitiesSet(mvs)
+                            .michaelisConstantsSet(mcs)
                             .note(note)
                             .build());
         }
@@ -305,7 +305,7 @@ public class CcLineConverter extends EvidenceCollector
                             .max(Integer.parseInt(abs))
                             .note(note)
                             .approximate(cObj.isBsorptionAbsApproximate())
-                            .evidences(parseEvidenceLines(cObj.getBsorptionAbs().getEvidences()))
+                            .evidencesSet(parseEvidenceLines(cObj.getBsorptionAbs().getEvidences()))
                             .build();
 
             builder.absorption(absorption);
@@ -324,7 +324,7 @@ public class CcLineConverter extends EvidenceCollector
         kmStr = kmStr.substring(index + 5).trim();
         double value = Double.parseDouble(val);
         return new MichaelisConstantBuilder()
-                .evidences(parseEvidenceLines(kmEvStr.getEvidences()))
+                .evidencesSet(parseEvidenceLines(kmEvStr.getEvidences()))
                 .constant(value)
                 .unit(MichaelisConstantUnit.convert(unit))
                 .substrate(kmStr)
@@ -343,7 +343,7 @@ public class CcLineConverter extends EvidenceCollector
         double value = Double.parseDouble(val);
         return new MaximumVelocityBuilder()
                 .enzyme(vmaxStr)
-                .evidences(parseEvidenceLines(vmaxEvStr.getEvidences()))
+                .evidencesSet(parseEvidenceLines(vmaxEvStr.getEvidences()))
                 .unit(unit)
                 .velocity(value)
                 .build();
@@ -385,7 +385,7 @@ public class CcLineConverter extends EvidenceCollector
 
             interactions.add(builder.build());
         }
-        return new InteractionCommentBuilder().interactions(interactions).build();
+        return new InteractionCommentBuilder().interactionsSet(interactions).build();
     }
 
     private DiseaseComment convertDisease(Disease cObj, Map<Object, List<Evidence>> evidences) {
@@ -417,7 +417,7 @@ public class CcLineConverter extends EvidenceCollector
             if (!Strings.isNullOrEmpty(cObj.getDescription())) {
                 String descr = cObj.getDescription();
                 if (!descr.endsWith(".")) descr += ".";
-                builder.description(descr).evidences(evidences.get(cObj.getDescription()));
+                builder.description(descr).evidencesSet(evidences.get(cObj.getDescription()));
             }
             commentBuilder.disease(builder.build());
         }
@@ -447,7 +447,7 @@ public class CcLineConverter extends EvidenceCollector
                                             lo, lo.getOrientation(), evidences))
                             .build());
         }
-        builder.subcellularLocations(locations);
+        builder.subcellularLocationsSet(locations);
 
         if (cObj.getNote() != null && !cObj.getNote().isEmpty()) {
             builder.note(new NoteBuilder(convert(cObj.getNote())).build());
@@ -475,7 +475,7 @@ public class CcLineConverter extends EvidenceCollector
         return new SubcellularLocationValueBuilder()
                 .id(subcellLocation)
                 .value(locationValue.getValue())
-                .evidences(evidenceMap.get(locationValue))
+                .evidencesSet(evidenceMap.get(locationValue))
                 .build();
     }
 
@@ -496,7 +496,7 @@ public class CcLineConverter extends EvidenceCollector
             builder.note(cObj.getNote());
         }
 
-        builder.evidences(
+        builder.evidencesSet(
                 cObj.getSources().stream()
                         .map(EvidenceHelper::parseEvidenceLine)
                         .collect(Collectors.toList()));
@@ -520,7 +520,7 @@ public class CcLineConverter extends EvidenceCollector
             }
         } else {
             builder.locationType(RnaEditingLocationType.Known);
-            builder.positions(
+            builder.positionsSet(
                     cObj.getLocations().stream()
                             .map(pos -> convertRNAEditingPosition(pos, evidences))
                             .collect(Collectors.toList()));
@@ -536,7 +536,7 @@ public class CcLineConverter extends EvidenceCollector
         String spos = "" + pos;
         return new RnaEditingPositionBuilder()
                 .position(spos)
-                .evidences(evidences.get(spos))
+                .evidencesSet(evidences.get(spos))
                 .build();
     }
 
@@ -558,7 +558,7 @@ public class CcLineConverter extends EvidenceCollector
         }
         return new FreeTextCommentBuilder()
                 .commentType(commentType)
-                .texts(cTexts)
+                .textsSet(cTexts)
                 .molecule(molecule)
                 .build();
     }
@@ -573,7 +573,7 @@ public class CcLineConverter extends EvidenceCollector
             builder.note(new NoteBuilder(convert(cobj.getNote())).build());
         }
         if (cobj.getCofactors() != null) {
-            builder.cofactors(
+            builder.cofactorsSet(
                     cobj.getCofactors().stream()
                             .map(item -> convertCofactor(item, evidences))
                             .collect(Collectors.toList()));
@@ -586,7 +586,7 @@ public class CcLineConverter extends EvidenceCollector
         return new CofactorBuilder()
                 .name(item.getName())
                 .reference(createCofactorReference(item.getXref()))
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 
@@ -644,7 +644,7 @@ public class CcLineConverter extends EvidenceCollector
         return new PhysiologicalReactionBuilder()
                 .directionType(PhysiologicalDirectionType.typeOf(capd.getName()))
                 .reactionReference(reactionReference)
-                .evidences(evidences.get(capd))
+                .evidencesSet(evidences.get(capd))
                 .build();
     }
 
@@ -662,9 +662,9 @@ public class CcLineConverter extends EvidenceCollector
         }
         return new ReactionBuilder()
                 .name(caReaction.getName())
-                .references(xrefs)
+                .reactionReferencesSet(xrefs)
                 .ecNumber(ecNumber)
-                .evidences(evidences.get(caReaction))
+                .evidencesSet(evidences.get(caReaction))
                 .build();
     }
 

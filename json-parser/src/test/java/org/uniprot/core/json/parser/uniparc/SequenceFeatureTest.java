@@ -40,11 +40,11 @@ class SequenceFeatureTest {
         SequenceFeatureBuilder builder = new SequenceFeatureBuilder();
         builder.signatureDbType(SignatureDbType.PFAM)
                 .signatureDbId("PF00626")
-                .addLocation(new Location(81, 163))
-                .addLocation(new Location(202, 267))
-                .addLocation(new Location(330, 398))
-                .addLocation(new Location(586, 653))
-                .addLocation(new Location(692, 766))
+                .locationsAdd(new Location(81, 163))
+                .locationsAdd(new Location(202, 267))
+                .locationsAdd(new Location(330, 398))
+                .locationsAdd(new Location(586, 653))
+                .locationsAdd(new Location(692, 766))
                 .interproGroup(
                         new InterProGroupBuilder()
                                 .id("IPR007123")

@@ -68,6 +68,6 @@ public class InteractionCommentTest {
                         .uniProtAccession(new UniProtAccessionImpl("P12345"))
                         .build();
 
-        return new InteractionCommentBuilder().addInteraction(interaction).build();
+        return new InteractionCommentBuilder().interactionsAdd(interaction).build();
     }
 }

@@ -10,7 +10,7 @@ class GeneNameSynonymBuilderTest extends AbstractEvidencedValueBuilderTest {
     void checkGeneNameSynonymBuilderCreationIsAsExpected() {
         GeneNameSynonym orfName =
                 new GeneNameSynonymBuilder(getValue(), getEvidenceList())
-                        .addEvidence(getEvidence())
+                        .evidencesAdd(getEvidence())
                         .build();
 
         verifyEvidencedValue(orfName);

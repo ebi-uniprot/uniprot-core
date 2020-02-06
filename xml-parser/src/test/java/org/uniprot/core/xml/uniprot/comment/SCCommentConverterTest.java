@@ -22,7 +22,7 @@ class SCCommentConverterTest {
         Evidence evidence = parseEvidenceLine("ECO:0000305");
         builder.sequence("AAA40939.1")
                 .sequenceCautionType(SequenceCautionType.FRAMESHIFT)
-                .evidences(Arrays.asList(evidence));
+                .evidencesSet(Arrays.asList(evidence));
         SequenceCautionComment comment = builder.build();
         SCCommentConverter converter = new SCCommentConverter(new EvidenceIndexMapper());
         CommentType xmlComment = converter.toXml(comment);
@@ -38,7 +38,7 @@ class SCCommentConverterTest {
         Evidence evidence = parseEvidenceLine("ECO:0000305");
         builder.sequence("AAA40939.1")
                 .sequenceCautionType(SequenceCautionType.FRAMESHIFT)
-                .evidences(Arrays.asList(evidence));
+                .evidencesSet(Arrays.asList(evidence));
         SequenceCautionComment comment = builder.build();
         SCCommentConverter converter = new SCCommentConverter(new EvidenceIndexMapper());
         CommentType xmlComment = converter.toXml(comment);
@@ -57,7 +57,7 @@ class SCCommentConverterTest {
         builder.sequence("AAF87955.1")
                 .sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
                 .note("Translation N-terminally extended.")
-                .evidences(Arrays.asList(evidence));
+                .evidencesSet(Arrays.asList(evidence));
         SequenceCautionComment comment = builder.build();
         SCCommentConverter converter = new SCCommentConverter(new EvidenceIndexMapper());
         CommentType xmlComment = converter.toXml(comment);

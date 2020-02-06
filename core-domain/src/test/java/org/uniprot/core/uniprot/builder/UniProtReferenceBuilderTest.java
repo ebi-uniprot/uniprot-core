@@ -26,19 +26,22 @@ class UniProtReferenceBuilderTest {
     @Test
     void canSetReferencePositions() {
         List<String> refPositions = Collections.singletonList("ref");
-        UniProtReference reference = new UniProtReferenceBuilder().positions(refPositions).build();
+        UniProtReference reference =
+                new UniProtReferenceBuilder().referencePositionsSet(refPositions).build();
         assertEquals(refPositions, reference.getReferencePositions());
     }
 
     @Test
     void nullWillIgnoreInPositions() {
-        UniProtReference reference = new UniProtReferenceBuilder().addPositions(null).build();
+        UniProtReference reference =
+                new UniProtReferenceBuilder().referencePositionsAdd(null).build();
         assertTrue(reference.getReferencePositions().isEmpty());
     }
 
     @Test
     void canAddSinglePosition() {
-        UniProtReference reference = new UniProtReferenceBuilder().addPositions("ref").build();
+        UniProtReference reference =
+                new UniProtReferenceBuilder().referencePositionsAdd("ref").build();
         assertFalse(reference.getReferencePositions().isEmpty());
         assertEquals("ref", reference.getReferencePositions().get(0));
         assertTrue(reference.hasReferencePositions());
@@ -48,20 +51,23 @@ class UniProtReferenceBuilderTest {
     void canSetComments() {
         List<ReferenceComment> refComment =
                 Collections.singletonList(new ReferenceCommentBuilder().build());
-        UniProtReference reference = new UniProtReferenceBuilder().comments(refComment).build();
+        UniProtReference reference =
+                new UniProtReferenceBuilder().referenceCommentsSet(refComment).build();
         assertEquals(refComment, reference.getReferenceComments());
     }
 
     @Test
     void nullWillIgnoreInComments() {
-        UniProtReference reference = new UniProtReferenceBuilder().addComment(null).build();
+        UniProtReference reference =
+                new UniProtReferenceBuilder().referenceCommentsAdd(null).build();
         assertTrue(reference.getReferenceComments().isEmpty());
     }
 
     @Test
     void canAddSingleComment() {
         ReferenceComment comment = new ReferenceCommentBuilder().build();
-        UniProtReference reference = new UniProtReferenceBuilder().addComment(comment).build();
+        UniProtReference reference =
+                new UniProtReferenceBuilder().referenceCommentsAdd(comment).build();
         assertFalse(reference.getReferenceComments().isEmpty());
         assertEquals(comment, reference.getReferenceComments().get(0));
         assertTrue(reference.hasReferenceComments());
@@ -70,20 +76,20 @@ class UniProtReferenceBuilderTest {
     @Test
     void canSetEvidences() {
         List<Evidence> evidences = Collections.singletonList(new EvidenceBuilder().build());
-        UniProtReference reference = new UniProtReferenceBuilder().evidences(evidences).build();
+        UniProtReference reference = new UniProtReferenceBuilder().evidencesSet(evidences).build();
         assertEquals(evidences, reference.getEvidences());
     }
 
     @Test
     void nullWillIgnoreInEvidence() {
-        UniProtReference reference = new UniProtReferenceBuilder().evidence(null).build();
+        UniProtReference reference = new UniProtReferenceBuilder().evidencesAdd(null).build();
         assertTrue(reference.getEvidences().isEmpty());
     }
 
     @Test
     void canAddSingleEvidence() {
         UniProtReference reference =
-                new UniProtReferenceBuilder().evidence(new EvidenceBuilder().build()).build();
+                new UniProtReferenceBuilder().evidencesAdd(new EvidenceBuilder().build()).build();
         assertTrue(reference.hasEvidences());
     }
 

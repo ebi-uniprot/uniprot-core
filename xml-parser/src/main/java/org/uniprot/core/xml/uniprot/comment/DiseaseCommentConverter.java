@@ -79,7 +79,7 @@ public class DiseaseCommentConverter implements CommentConverter<DiseaseComment>
                 .diseaseAc(disease.getDiseaseAccession())
                 .diseaseId(disease.getDiseaseId())
                 .reference(disease.getReference())
-                .evidences(evidences);
+                .evidencesSet(evidences);
         return builder.build();
     }
 

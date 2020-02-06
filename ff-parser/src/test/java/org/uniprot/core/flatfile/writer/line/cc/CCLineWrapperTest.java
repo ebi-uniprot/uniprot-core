@@ -138,7 +138,7 @@ class CCLineWrapperTest extends CCBuildTestAbstr {
         List<EvidencedValue> evidencedValues = new ArrayList<>();
         evidencedValues.add(createEvidencedValue(text, evs));
         FreeTextCommentBuilder builder = new FreeTextCommentBuilder();
-        builder.commentType(type).texts(evidencedValues);
+        builder.commentType(type).textsSet(evidencedValues);
         return builder.build();
     }
 }

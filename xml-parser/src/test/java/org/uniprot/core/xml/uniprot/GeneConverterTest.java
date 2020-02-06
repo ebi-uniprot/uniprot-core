@@ -170,9 +170,9 @@ class GeneConverterTest {
             List<ORFName> orfNames) {
         return new GeneBuilder()
                 .geneName(geneName)
-                .synonyms(synonyms)
-                .orderedLocusNames(olnNames)
-                .orfNames(orfNames)
+                .synonymsSet(synonyms)
+                .orderedLocusNamesSet(olnNames)
+                .orfNamesSet(orfNames)
                 .build();
     }
 

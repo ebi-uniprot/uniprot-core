@@ -54,9 +54,9 @@ class GeneBuilderTest {
         GeneBuilder builder =
                 new GeneBuilder()
                         .geneName(GENE_NAME)
-                        .orderedLocusNames(singletonList(ORDERED_LOCUS_NAME))
-                        .orfNames(singletonList(ORF_NAME))
-                        .synonyms(singletonList(SYNONYM));
+                        .orderedLocusNamesSet(singletonList(ORDERED_LOCUS_NAME))
+                        .orfNamesSet(singletonList(ORF_NAME))
+                        .synonymsSet(singletonList(SYNONYM));
 
         Gene gene = builder.build();
         assertNotNull(gene);
@@ -83,12 +83,12 @@ class GeneBuilderTest {
         GeneBuilder builder =
                 new GeneBuilder()
                         .geneName(GENE_NAME)
-                        .orderedLocusNames(singletonList(ORDERED_LOCUS_NAME))
-                        .addOrderedLocusNames(ORDERED_LOCUS_NAME)
-                        .orfNames(singletonList(ORF_NAME))
-                        .addOrfNames(ORF_NAME)
-                        .synonyms(singletonList(SYNONYM))
-                        .addSynonyms(SYNONYM);
+                        .orderedLocusNamesSet(singletonList(ORDERED_LOCUS_NAME))
+                        .orderedLocusNamesAdd(ORDERED_LOCUS_NAME)
+                        .orfNamesSet(singletonList(ORF_NAME))
+                        .orfNamesAdd(ORF_NAME)
+                        .synonymsSet(singletonList(SYNONYM))
+                        .synonymsAdd(SYNONYM);
 
         Gene gene = builder.build();
         assertNotNull(gene);
@@ -109,7 +109,7 @@ class GeneBuilderTest {
     @Test
     void testThrowsErrorGeneWithSynonymAndWithoutGeneName() {
         GeneBuilder builder = new GeneBuilder();
-        builder.synonyms(singletonList(SYNONYM));
+        builder.synonymsSet(singletonList(SYNONYM));
         assertThrows(IllegalArgumentException.class, builder::build);
     }
 

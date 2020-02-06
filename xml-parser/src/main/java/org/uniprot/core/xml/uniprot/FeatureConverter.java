@@ -62,13 +62,13 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
             altSeq =
                     new AlternativeSequenceBuilder()
                             .original(xmlObj.getOriginal())
-                            .alternatives(xmlObj.getVariation())
+                            .alternativeSequencesSet(xmlObj.getVariation())
                             .build();
         } else if (AlternativeSequenceHelper.hasAlternativeSequence(type)) {
             altSeq =
                     new AlternativeSequenceBuilder()
                             .original("")
-                            .alternatives(Collections.emptyList())
+                            .alternativeSequencesSet(Collections.emptyList())
                             .build();
         }
 
@@ -78,7 +78,7 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
                 .featureId(featureId)
                 .description(description)
                 .alternativeSequence(altSeq)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 

@@ -62,7 +62,7 @@ class CofactorCommentConverterTest {
         evids = new ArrayList<>();
         evids.add("ECO:0000269|PubMed:9060646");
         cofactors.add(create("Co(2+)", CofactorReferenceType.CHEBI, "CHEBI:29106", evids));
-        builder.cofactors(cofactors);
+        builder.cofactorsSet(cofactors);
         evids = new ArrayList<>();
         evids.add("ECO:0000269|PubMed:9060647");
         builder.note(createNote("Binds 2 zinc ions", evids));
@@ -118,7 +118,7 @@ class CofactorCommentConverterTest {
         return new CofactorBuilder()
                 .name(name)
                 .reference(reference)
-                .evidences(createEvidence(evids))
+                .evidencesSet(createEvidence(evids))
                 .build();
     }
 

@@ -59,7 +59,7 @@ public class ProteinSectionImpl implements ProteinSection {
 
     @Override
     public boolean hasAlternativeNames() {
-        return Utils.notNullOrEmpty(this.alternativeNames);
+        return Utils.notNullNotEmpty(this.alternativeNames);
     }
 
     @Override
@@ -74,12 +74,12 @@ public class ProteinSectionImpl implements ProteinSection {
 
     @Override
     public boolean hasCdAntigenNames() {
-        return Utils.notNullOrEmpty(this.cdAntigenNames);
+        return Utils.notNullNotEmpty(this.cdAntigenNames);
     }
 
     @Override
     public boolean hasInnNames() {
-        return Utils.notNullOrEmpty(this.innNames);
+        return Utils.notNullNotEmpty(this.innNames);
     }
 
     @Override

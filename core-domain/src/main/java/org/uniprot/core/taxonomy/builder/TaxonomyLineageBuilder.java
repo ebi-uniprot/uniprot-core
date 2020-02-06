@@ -44,7 +44,7 @@ public class TaxonomyLineageBuilder
         builder.taxonId(instance.getTaxonId());
         builder.scientificName(instance.getScientificName());
         builder.commonName(instance.getCommonName());
-        builder.synonyms(instance.getSynonyms());
+        builder.synonymsSet(instance.getSynonyms());
         builder.rank(instance.getRank());
         builder.hidden(instance.isHidden());
         return builder;

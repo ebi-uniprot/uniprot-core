@@ -28,8 +28,8 @@ public class ReferenceConverterHelper {
         if (!Strings.isNullOrEmpty(xmlCitation.getDate())) {
             builder.publicationDate(dateConverter.fromXml(xmlCitation.getDate()));
         }
-        builder.authors(authorsFromXml(xmlCitation.getAuthorList()));
-        builder.authoringGroups(authoringGroupfromXml(xmlCitation.getAuthorList()));
+        builder.authorsSet(authorsFromXml(xmlCitation.getAuthorList()));
+        builder.authoringGroupsSet(authoringGroupfromXml(xmlCitation.getAuthorList()));
     }
 
     private static List<String> authoringGroupfromXml(NameListType authorListXML) {
@@ -70,8 +70,8 @@ public class ReferenceConverterHelper {
             xmlCitation.setDate(dateConverter.toXml(citation.getPublicationDate()));
         // Authors and Consortium
         NameListType authorsAndConsortiumList = xmlUniprotFactory.createNameListType();
-        if ((citation.getAuthoringGroup() != null) && !citation.getAuthoringGroup().isEmpty()) {
-            citation.getAuthoringGroup().stream()
+        if ((citation.getAuthoringGroups() != null) && !citation.getAuthoringGroups().isEmpty()) {
+            citation.getAuthoringGroups().stream()
                     .map(val -> toXmlAuthoringGroup(xmlUniprotFactory, val))
                     .forEach(val -> authorsAndConsortiumList.getConsortiumOrPerson().add(val));
         }

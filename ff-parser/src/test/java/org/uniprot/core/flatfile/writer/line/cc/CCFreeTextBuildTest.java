@@ -821,7 +821,7 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
                         .map(val -> createEvidencedValue(val.getKey(), val.getValue()))
                         .collect(Collectors.toList());
         FreeTextCommentBuilder builder = new FreeTextCommentBuilder();
-        builder.commentType(type).texts(evidencedValues);
+        builder.commentType(type).textsSet(evidencedValues);
         return builder.build();
     }
 

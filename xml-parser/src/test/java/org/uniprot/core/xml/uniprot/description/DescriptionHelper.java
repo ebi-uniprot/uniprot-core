@@ -26,7 +26,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
  */
 public class DescriptionHelper {
     public static EC createEC(String ec, List<Evidence> evidences) {
-        return new ECBuilder().value(ec).evidences(evidences).build();
+        return new ECBuilder().value(ec).evidencesSet(evidences).build();
     }
 
     public static List<Evidence> createEvidences() {
@@ -37,20 +37,23 @@ public class DescriptionHelper {
     }
 
     public static Name createName(String name, List<Evidence> evidences) {
-        return new NameBuilder().value(name).evidences(evidences).build();
+        return new NameBuilder().value(name).evidencesSet(evidences).build();
     }
 
     public static ProteinSection createProteinNameSection(
             ProteinRecName name, List<ProteinAltName> altNames) {
-        return new ProteinSectionBuilder().recommendedName(name).alternativeNames(altNames).build();
+        return new ProteinSectionBuilder()
+                .recommendedName(name)
+                .alternativeNamesSet(altNames)
+                .build();
     }
 
     public static ProteinRecName createProteinRecName(
             Name fullName, List<Name> shortNames, List<EC> ecNumbers) {
         return new ProteinRecNameBuilder()
                 .fullName(fullName)
-                .shortNames(shortNames)
-                .ecNumbers(ecNumbers)
+                .shortNamesSet(shortNames)
+                .ecNumbersSet(ecNumbers)
                 .build();
     }
 
@@ -58,12 +61,12 @@ public class DescriptionHelper {
             Name fullName, List<Name> shortNames, List<EC> ecNumbers) {
         return new ProteinAltNameBuilder()
                 .fullName(fullName)
-                .shortNames(shortNames)
-                .ecNumbers(ecNumbers)
+                .shortNamesSet(shortNames)
+                .ecNumbersSet(ecNumbers)
                 .build();
     }
 
     public static ProteinSubName createProteinSubName(Name fullName, List<EC> ecNumbers) {
-        return new ProteinSubNameBuilder().fullName(fullName).ecNumbers(ecNumbers).build();
+        return new ProteinSubNameBuilder().fullName(fullName).ecNumbersSet(ecNumbers).build();
     }
 }

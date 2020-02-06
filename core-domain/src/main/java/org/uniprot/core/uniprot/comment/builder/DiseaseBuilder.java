@@ -33,7 +33,7 @@ public final class DiseaseBuilder implements Builder<Disease> {
                 .description(instance.getDescription())
                 .diseaseAc(instance.getDiseaseAccession())
                 .diseaseId(instance.getDiseaseId())
-                .evidences(instance.getEvidences())
+                .evidencesSet(instance.getEvidences())
                 .reference(instance.getReference());
     }
 
@@ -47,12 +47,12 @@ public final class DiseaseBuilder implements Builder<Disease> {
         return this;
     }
 
-    public @Nonnull DiseaseBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull DiseaseBuilder evidencesSet(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public @Nonnull DiseaseBuilder addEvidence(Evidence evidence) {
+    public @Nonnull DiseaseBuilder evidencesAdd(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }

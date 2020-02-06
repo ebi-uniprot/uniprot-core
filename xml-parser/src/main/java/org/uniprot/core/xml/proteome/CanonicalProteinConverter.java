@@ -26,7 +26,7 @@ public class CanonicalProteinConverter implements Converter<CanonicalGene, Canon
         CanonicalProteinBuilder builder = new CanonicalProteinBuilder();
 
         builder.canonicalProtein(proteinConverter.fromXml(xmlObj.getGene()))
-                .relatedProteins(
+                .relatedProteinsSet(
                         xmlObj.getRelatedGene().stream()
                                 .map(proteinConverter::fromXml)
                                 .collect(Collectors.toList()));

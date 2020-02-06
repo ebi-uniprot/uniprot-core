@@ -18,7 +18,7 @@ class AbsorptionImplTest {
         Note note = createNote();
         List<Evidence> evidences = createEvidences();
         Absorption absorption =
-                new AbsorptionBuilder().evidences(evidences).note(note).max(32).build();
+                new AbsorptionBuilder().evidencesSet(evidences).note(note).max(32).build();
         assertEquals(32, absorption.getMax());
         assertFalse(absorption.isApproximate());
         assertEquals(note, absorption.getNote());
@@ -32,7 +32,7 @@ class AbsorptionImplTest {
         Absorption absorption =
                 new AbsorptionBuilder()
                         .approximate(true)
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .note(note)
                         .max(35)
                         .build();

@@ -81,7 +81,7 @@ public class APIsoformImpl implements APIsoform {
 
     @Override
     public boolean hasSynonyms() {
-        return Utils.notNullOrEmpty(this.synonyms);
+        return Utils.notNullNotEmpty(this.synonyms);
     }
 
     @Override
@@ -91,12 +91,12 @@ public class APIsoformImpl implements APIsoform {
 
     @Override
     public boolean hasIsoformIds() {
-        return Utils.notNullOrEmpty(this.isoformIds);
+        return Utils.notNullNotEmpty(this.isoformIds);
     }
 
     @Override
     public boolean hasSequenceIds() {
-        return Utils.notNullOrEmpty(this.sequenceIds);
+        return Utils.notNullNotEmpty(this.sequenceIds);
     }
 
     @Override

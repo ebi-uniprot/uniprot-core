@@ -43,7 +43,7 @@ class GeneImplTest {
     void toStringWithNameAndSynonyms() {
         Gene obj =
                 GeneBuilder.from(gene)
-                        .synonyms(
+                        .synonymsSet(
                                 Collections.singletonList(
                                         new GeneNameSynonymBuilder().value("gs").build()))
                         .build();
@@ -54,7 +54,7 @@ class GeneImplTest {
     void toStringWithNameAndOrderedLocusName() {
         Gene obj =
                 GeneBuilder.from(gene)
-                        .orderedLocusNames(
+                        .orderedLocusNamesSet(
                                 Collections.singletonList(
                                         new OrderedLocusNameBuilder().value("oln").build()))
                         .build();
@@ -65,7 +65,7 @@ class GeneImplTest {
     void toStringWithNameAndORFName() {
         Gene obj =
                 GeneBuilder.from(gene)
-                        .orfNames(
+                        .orfNamesSet(
                                 Collections.singletonList(
                                         new ORFNameBuilder().value("orf").build()))
                         .build();

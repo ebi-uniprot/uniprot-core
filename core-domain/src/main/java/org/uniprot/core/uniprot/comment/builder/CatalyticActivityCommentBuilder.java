@@ -27,7 +27,7 @@ public class CatalyticActivityCommentBuilder implements CommentBuilder<Catalytic
             @Nonnull CatalyticActivityComment instance) {
         return new CatalyticActivityCommentBuilder()
                 .molecule(instance.getMolecule())
-                .physiologicalReactions(instance.getPhysiologicalReactions())
+                .physiologicalReactionsSet(instance.getPhysiologicalReactions())
                 .reaction(instance.getReaction());
     }
 
@@ -41,13 +41,13 @@ public class CatalyticActivityCommentBuilder implements CommentBuilder<Catalytic
         return this;
     }
 
-    public @Nonnull CatalyticActivityCommentBuilder physiologicalReactions(
+    public @Nonnull CatalyticActivityCommentBuilder physiologicalReactionsSet(
             List<PhysiologicalReaction> physiologicalReactions) {
         this.physiologicalReactions = modifiableList(physiologicalReactions);
         return this;
     }
 
-    public @Nonnull CatalyticActivityCommentBuilder addPhysiologicalReaction(
+    public @Nonnull CatalyticActivityCommentBuilder physiologicalReactionsAdd(
             PhysiologicalReaction physiologicalReaction) {
         addOrIgnoreNull(physiologicalReaction, this.physiologicalReactions);
         return this;

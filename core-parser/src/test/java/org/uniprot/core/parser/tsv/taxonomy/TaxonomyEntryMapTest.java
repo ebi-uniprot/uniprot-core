@@ -84,12 +84,12 @@ class TaxonomyEntryMapTest {
         builder.mnemonic("mnemonic");
         builder.parentId(9605L);
         builder.rank(TaxonomyRank.KINGDOM);
-        builder.synonyms(Collections.singletonList("synonym"));
-        builder.otherNames(Collections.singletonList("otherName"));
-        builder.lineage(Collections.singletonList(getTaxonomyLineage()));
-        builder.strains(Collections.singletonList(getTaxonomyStrain()));
-        builder.hosts(Collections.singletonList(getTaxonomy()));
-        builder.links(Collections.singletonList("link"));
+        builder.synonymsSet(Collections.singletonList("synonym"));
+        builder.otherNamesSet(Collections.singletonList("otherName"));
+        builder.lineagesSet(Collections.singletonList(getTaxonomyLineage()));
+        builder.strainsSet(Collections.singletonList(getTaxonomyStrain()));
+        builder.hostsSet(Collections.singletonList(getTaxonomy()));
+        builder.linksSet(Collections.singletonList("link"));
         builder.statistics(new TaxonomyStatisticsBuilder().reviewedProteinCount(10).build());
         return builder.build();
     }

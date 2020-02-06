@@ -27,7 +27,7 @@ public final class SubcellularLocationCommentBuilder
             @Nonnull SubcellularLocationComment instance) {
         return new SubcellularLocationCommentBuilder()
                 .molecule(instance.getMolecule())
-                .subcellularLocations(instance.getSubcellularLocations())
+                .subcellularLocationsSet(instance.getSubcellularLocations())
                 .note(instance.getNote());
     }
 
@@ -41,13 +41,13 @@ public final class SubcellularLocationCommentBuilder
         return this;
     }
 
-    public @Nonnull SubcellularLocationCommentBuilder subcellularLocations(
+    public @Nonnull SubcellularLocationCommentBuilder subcellularLocationsSet(
             List<SubcellularLocation> subcellularLocations) {
         this.subcellularLocations = modifiableList(subcellularLocations);
         return this;
     }
 
-    public @Nonnull SubcellularLocationCommentBuilder addSubcellularLocation(
+    public @Nonnull SubcellularLocationCommentBuilder subcellularLocationsAdd(
             SubcellularLocation subcellularLocation) {
         addOrIgnoreNull(subcellularLocation, this.subcellularLocations);
         return this;

@@ -23,7 +23,7 @@ public class AuthorImpl implements Author {
 
     @Override
     public boolean hasValue() {
-        return Utils.notNullOrEmpty(this.value);
+        return Utils.notNullNotEmpty(this.value);
     }
 
     @Override

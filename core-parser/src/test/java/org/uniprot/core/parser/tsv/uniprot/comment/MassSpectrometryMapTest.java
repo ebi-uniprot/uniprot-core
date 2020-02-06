@@ -28,7 +28,7 @@ class MassSpectrometryMapTest {
                 CommentTestUtil.createUniProtEntryFromCommentLine(massSpectrometryLine);
 
         List<MassSpectrometryComment> massSpectrometryComments =
-                entry.getCommentByType(CommentType.MASS_SPECTROMETRY);
+                entry.getCommentsByType(CommentType.MASS_SPECTROMETRY);
         assertNotNull(entry);
         MassSpectrometryMap massSpectrometryMap = new MassSpectrometryMap(massSpectrometryComments);
         Map<String, String> mappedMassSpectrometry = massSpectrometryMap.attributeValues();

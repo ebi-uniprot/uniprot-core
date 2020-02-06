@@ -35,7 +35,7 @@ public class UniProtDBCrossReferenceBuilder
             @Nonnull UniProtDBCrossReference instance) {
         UniProtDBCrossReferenceBuilder builder = new UniProtDBCrossReferenceBuilder();
         AbstractDBCrossReferenceBuilder.init(builder, instance);
-        return builder.evidences(instance.getEvidences()).isoformId(instance.getIsoformId());
+        return builder.evidencesSet(instance.getEvidences()).isoformId(instance.getIsoformId());
     }
 
     public @Nonnull UniProtDBCrossReferenceBuilder isoformId(String isoformId) {
@@ -43,19 +43,19 @@ public class UniProtDBCrossReferenceBuilder
         return this;
     }
 
-    public @Nonnull UniProtDBCrossReferenceBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull UniProtDBCrossReferenceBuilder evidencesSet(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public @Nonnull UniProtDBCrossReferenceBuilder addEvidence(Evidence evidence) {
+    public @Nonnull UniProtDBCrossReferenceBuilder evidencesAdd(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
 
-    public @Nonnull UniProtDBCrossReferenceBuilder addProperty(
+    public @Nonnull UniProtDBCrossReferenceBuilder propertiesAdd(
             DBXRefTypeAttribute attribute, String value) {
-        if (notNullOrEmpty(value) && notNull(attribute)) {
+        if (notNullNotEmpty(value) && notNull(attribute)) {
             this.properties.add(new Property(attribute.getName(), value));
         }
         return this;

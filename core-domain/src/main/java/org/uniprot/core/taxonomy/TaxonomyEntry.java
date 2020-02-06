@@ -18,7 +18,7 @@ public interface TaxonomyEntry extends Taxonomy, Serializable {
 
     List<String> getOtherNames();
 
-    List<TaxonomyLineage> getLineage();
+    List<TaxonomyLineage> getLineages();
 
     List<TaxonomyStrain> getStrains();
 

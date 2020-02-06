@@ -178,7 +178,7 @@ public class UniProtFlatfileWriter implements FlatfileWriter<UniProtEntry> {
         if (types.contains(LineType.OG))
             entryLines.add(ogLineBuilder.buildWithEvidence(entry.getGeneLocations()));
         if (types.contains(LineType.OC))
-            entryLines.add(ocLineBuilder.buildWithEvidence(entry.getOrganism().getLineage()));
+            entryLines.add(ocLineBuilder.buildWithEvidence(entry.getOrganism().getLineages()));
         if (types.contains(LineType.OX))
             entryLines.add(oxLineBuilder.buildWithEvidence(entry.getOrganism()));
         if (types.contains(LineType.OH))
@@ -246,7 +246,7 @@ public class UniProtFlatfileWriter implements FlatfileWriter<UniProtEntry> {
     private static FFLine buildComment(UniProtEntry entry, boolean showEvidence) {
         FFLine ccLines = FFLines.create();
         for (CommentType commentType : CommentType.values()) {
-            List<Comment> comments = entry.getCommentByType(commentType);
+            List<Comment> comments = entry.getCommentsByType(commentType);
             if (!comments.isEmpty()) {
                 if (showEvidence) ccLines.add(ccLineBuilder.buildWithEvidence(comments));
                 else ccLines.add(ccLineBuilder.build(comments));

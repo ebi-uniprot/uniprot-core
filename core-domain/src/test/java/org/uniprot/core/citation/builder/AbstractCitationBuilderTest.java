@@ -46,14 +46,14 @@ class AbstractCitationBuilderTest {
                 new TestableCitationBuilder()
                         .title(title)
                         .publicationDate(publicationDate)
-                        .authoringGroups(authoringGroup)
-                        .authors(authors)
-                        .citationXrefs(asList(XREF1, XREF2))
+                        .authoringGroupsSet(authoringGroup)
+                        .authorsSet(authors)
+                        .citationXrefsSet(asList(XREF1, XREF2))
                         .build();
 
         assertThat(citation.getTitle(), is(title));
         assertThat(citation.getPublicationDate().getValue(), is(publicationDate));
-        assertThat(citation.getAuthoringGroup(), is(authoringGroup));
+        assertThat(citation.getAuthoringGroups(), is(authoringGroup));
         assertThat(
                 citation.getAuthors().stream().map(Value::getValue).collect(Collectors.toList()),
                 is(authors));
@@ -65,9 +65,9 @@ class AbstractCitationBuilderTest {
     void buildCitationParameters(AbstractCitationBuilder<?, ?> builder) {
         builder.title(TITLE)
                 .publicationDate(PUBLICATION_DATE)
-                .authoringGroups(GROUPS)
-                .authors(AUTHORS)
-                .citationXrefs(
+                .authoringGroupsSet(GROUPS)
+                .authorsSet(AUTHORS)
+                .citationXrefsSet(
                         asList(
                                 new DBCrossReferenceBuilder<CitationXrefType>()
                                         .databaseType(CitationXrefType.PUBMED)
@@ -83,7 +83,7 @@ class AbstractCitationBuilderTest {
     void verifyCitation(Citation citation, CitationType citationType) {
         assertThat(citation.getTitle(), is(TITLE));
         assertThat(citation.getPublicationDate().getValue(), is(PUBLICATION_DATE));
-        assertThat(citation.getAuthoringGroup(), is(GROUPS));
+        assertThat(citation.getAuthoringGroups(), is(GROUPS));
         assertThat(
                 citation.getAuthors().stream().map(Value::getValue).collect(Collectors.toList()),
                 is(AUTHORS));
@@ -116,7 +116,7 @@ class AbstractCitationBuilderTest {
                     CITATION_TYPE,
                     builder.authoringGroups,
                     builder.authors,
-                    builder.xrefs,
+                    builder.citationXrefs,
                     builder.title,
                     builder.publicationDate);
         }

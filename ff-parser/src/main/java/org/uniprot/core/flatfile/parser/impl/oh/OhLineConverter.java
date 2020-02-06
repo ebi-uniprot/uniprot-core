@@ -23,7 +23,7 @@ public class OhLineConverter implements Converter<OhLineObject, List<OrganismHos
                             .scientificName(organismName.getScientificName())
                             .commonName(organismName.getCommonName());
             if (organismName.getSynonyms() != null) {
-                organismHostBuilder.synonyms(organismName.getSynonyms());
+                organismHostBuilder.synonymsSet(organismName.getSynonyms());
             }
             hosts.add(organismHostBuilder.build());
         }

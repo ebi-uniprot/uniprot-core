@@ -73,7 +73,7 @@ class RLLineBuilderTest {
                                 "Dano K.",
                                 "Neurath H."));
         bookBuilder
-                .editors(editors)
+                .editorsSet(editors)
                 .bookName("CONSERVATION GENETICS")
                 .firstPage("205")
                 .lastPage("227")

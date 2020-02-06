@@ -21,7 +21,7 @@ public class OxLineConverter extends EvidenceCollector
         this.addAll(evidences.values());
         return new OrganismBuilder()
                 .taxonId(f.taxonomy_id)
-                .evidences(evidences.getOrDefault(f.taxonomy_id, Collections.emptyList()))
+                .evidencesSet(evidences.getOrDefault(f.taxonomy_id, Collections.emptyList()))
                 .build();
     }
 }

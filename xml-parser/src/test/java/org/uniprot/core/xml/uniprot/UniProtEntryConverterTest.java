@@ -72,12 +72,12 @@ class UniProtEntryConverterTest {
         organelles.add(
                 new GeneLocationBuilder()
                         .geneEncodingType(GeneEncodingType.APICOPLAST)
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build());
         organelles.add(
                 new GeneLocationBuilder()
                         .geneEncodingType(GeneEncodingType.PLASMID)
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .value("some value")
                         .build());
         List<Keyword> keywords = new ArrayList<>();
@@ -87,21 +87,21 @@ class UniProtEntryConverterTest {
                         .id("KW-001")
                         .value("key1")
                         .category(KeywordCategory.UNKNOWN)
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build());
         keywords.add(
                 new KeywordBuilder()
                         .id("KW-002")
                         .value("key2")
                         .category(KeywordCategory.UNKNOWN)
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build());
         keywords.add(
                 new KeywordBuilder()
                         .id("KW-003")
                         .value("key3")
                         .category(KeywordCategory.UNKNOWN)
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build());
         String value = "MSSPASTPSRRSSRRGRVTPTQSLRSEESRSSPNRRRRGE";
         Sequence sequence = new SequenceBuilder(value).build();
@@ -133,7 +133,7 @@ class UniProtEntryConverterTest {
         builder.scientificName("Homo sapiens")
                 .commonName("Human")
                 .taxonId(9606l)
-                .lineage(
+                .lineagesSet(
                         Arrays.asList(
                                 "Eukaryota",
                                 "Metazoa",
@@ -149,7 +149,7 @@ class UniProtEntryConverterTest {
                                 "Catarrhini",
                                 "Hominidae",
                                 "Homo"))
-                .evidences(createEvidences());
+                .evidencesSet(createEvidences());
 
         return builder.build();
     }
@@ -214,9 +214,9 @@ class UniProtEntryConverterTest {
         Gene gene =
                 new GeneBuilder()
                         .geneName(geneName)
-                        .synonyms(synonyms)
-                        .orderedLocusNames(olnNames)
-                        .orfNames(orfNames)
+                        .synonymsSet(synonyms)
+                        .orderedLocusNamesSet(olnNames)
+                        .orfNamesSet(orfNames)
                         .build();
         return gene;
     }
@@ -229,7 +229,7 @@ class UniProtEntryConverterTest {
                         .type(FeatureType.TURN)
                         .location(new FeatureLocation(12, 12))
                         .description("some desc1")
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build();
         Feature featureLocation20 =
                 FeatureBuilder.from(featureLocation12)
@@ -242,7 +242,7 @@ class UniProtEntryConverterTest {
                         .location(new FeatureLocation(200, 230))
                         .description("some desc3")
                         .featureId("PRO_123")
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build();
 
         features.add(createVarSeqFeature());
@@ -264,7 +264,7 @@ class UniProtEntryConverterTest {
                 .description("some description")
                 .featureId(featureId)
                 .alternativeSequence(as)
-                .evidences(createEvidences())
+                .evidencesSet(createEvidences())
                 .build();
     }
 
@@ -273,12 +273,12 @@ class UniProtEntryConverterTest {
         comments.add(
                 new FreeTextCommentBuilder()
                         .commentType(CommentType.ALLERGEN)
-                        .texts(createEvidenceValues())
+                        .textsSet(createEvidenceValues())
                         .build());
         comments.add(
                 new FreeTextCommentBuilder()
                         .commentType(CommentType.FUNCTION)
-                        .texts(createEvidenceValues())
+                        .textsSet(createEvidenceValues())
                         .build());
         DBCrossReference<CofactorReferenceType> reference =
                 new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
@@ -286,14 +286,14 @@ class UniProtEntryConverterTest {
                 new CofactorBuilder()
                         .name("somename")
                         .reference(reference)
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build();
         List<Cofactor> cofactors = Arrays.asList(cofactor);
         CofactorCommentBuilder builder = new CofactorCommentBuilder();
         Note note = new NoteBuilder(createEvidenceValues()).build();
         String molecule = "some mol";
         CofactorComment cofactorComment =
-                builder.molecule(molecule).cofactors(cofactors).note(note).build();
+                builder.molecule(molecule).cofactorsSet(cofactors).note(note).build();
         comments.add(cofactorComment);
         return comments;
     }
@@ -325,11 +325,11 @@ class UniProtEntryConverterTest {
         subNames.add(subName);
         ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
         return builder.recommendedName(recommendedName)
-                .alternativeNames(proteinAltName)
-                .submissionNames(subNames)
+                .alternativeNamesSet(proteinAltName)
+                .submissionNamesSet(subNames)
                 .allergenName(allergenName)
                 .biotechName(biotechName)
-                .cdAntigenNames(antigenNames)
+                .cdAntigenNamesSet(antigenNames)
                 .build();
     }
 
@@ -380,9 +380,9 @@ class UniProtEntryConverterTest {
                         .databaseType(uniProtXDbType)
                         .id(id)
                         .isoformId(isoform)
-                        .addProperty(uniProtXDbType.getAttribute(0), description)
-                        .addProperty(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .addProperty(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
+                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
                         .build());
 
         // DR   EMBL; DQ185029; AAZ94714.1; -; mRNA.
@@ -399,9 +399,9 @@ class UniProtEntryConverterTest {
                         .databaseType(uniProtXDbType)
                         .id(id)
                         .isoformId(isoform)
-                        .addProperty(uniProtXDbType.getAttribute(0), description)
-                        .addProperty(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .addProperty(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
+                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
                         .build());
 
         // DR   EMBL; AK000352; BAA91105.1; ALT_INIT; mRNA.
@@ -417,9 +417,9 @@ class UniProtEntryConverterTest {
                         .databaseType(uniProtXDbType)
                         .id(id)
                         .isoformId(isoform)
-                        .addProperty(uniProtXDbType.getAttribute(0), description)
-                        .addProperty(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .addProperty(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
+                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
                         .build());
 
         // DR   EMBL; AK310815; -; NOT_ANNOTATED_CDS; mRNA.
@@ -435,9 +435,9 @@ class UniProtEntryConverterTest {
                         .databaseType(uniProtXDbType)
                         .id(id)
                         .isoformId(isoform)
-                        .addProperty(uniProtXDbType.getAttribute(0), description)
-                        .addProperty(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .addProperty(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
+                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
                         .build());
 
         //   DR   HPA; HPA021372; -.
@@ -453,9 +453,9 @@ class UniProtEntryConverterTest {
                         .databaseType(uniProtXDbType)
                         .id(id)
                         .isoformId(isoform)
-                        .addProperty(uniProtXDbType.getAttribute(0), description)
-                        .addProperty(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .addProperty(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
+                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
                         .build());
 
         //  DR   HPA; HPA021812; -.
@@ -471,9 +471,9 @@ class UniProtEntryConverterTest {
                         .databaseType(uniProtXDbType)
                         .id(id)
                         .isoformId(isoform)
-                        .addProperty(uniProtXDbType.getAttribute(0), description)
-                        .addProperty(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .addProperty(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
+                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
                         .build());
 
         return xrefs;

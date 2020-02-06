@@ -50,7 +50,7 @@ public class ComponentConverter implements Converter<ComponentType, Component> {
                             .id(xmlObj.getBiosampleId())
                             .build());
         }
-        builder.dbXReferences(xrefs).proteinCount(xmlObj.getCount());
+        builder.dbXReferencesSet(xrefs).proteinCount(xmlObj.getCount());
 
         builder.type(org.uniprot.core.proteome.ComponentType.fromValue(xmlObj.getType().value()));
 

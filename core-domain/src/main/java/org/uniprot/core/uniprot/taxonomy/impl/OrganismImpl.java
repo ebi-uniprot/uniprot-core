@@ -39,7 +39,7 @@ public class OrganismImpl extends AbstractOrganismNameImpl implements Organism {
     }
 
     @Override
-    public List<String> getLineage() {
+    public List<String> getLineages() {
         return lineage;
     }
 
@@ -50,7 +50,7 @@ public class OrganismImpl extends AbstractOrganismNameImpl implements Organism {
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notNullOrEmpty(this.evidences);
+        return Utils.notNullNotEmpty(this.evidences);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class OrganismImpl extends AbstractOrganismNameImpl implements Organism {
             sb.append(" ");
         }
         sb.append(super.toString());
-        List<String> lineage = this.getLineage();
+        List<String> lineage = this.getLineages();
         if (!lineage.isEmpty()) {
             sb.append(" (").append(String.join(", ", lineage)).append(")");
         }

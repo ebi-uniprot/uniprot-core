@@ -23,7 +23,8 @@ class CanonicalProteinBuilderTest {
         List<Protein> proteins = new ArrayList<>();
         proteins.add(new ProteinBuilder().accession("P12345").build());
         proteins.add(new ProteinBuilder().accession("P12346").build());
-        CanonicalProtein cProtein = new CanonicalProteinBuilder().relatedProteins(proteins).build();
+        CanonicalProtein cProtein =
+                new CanonicalProteinBuilder().relatedProteinsSet(proteins).build();
         assertEquals(proteins, cProtein.getRelatedProteins());
     }
 
@@ -31,7 +32,7 @@ class CanonicalProteinBuilderTest {
     void addRelatedProtein() {
         Protein protein = new ProteinBuilder().accession("P12345").build();
         CanonicalProtein cProtein =
-                new CanonicalProteinBuilder().addRelatedProtein(protein).build();
+                new CanonicalProteinBuilder().relatedProteinsAdd(protein).build();
         List<Protein> proteins = new ArrayList<>();
         proteins.add(protein);
         assertEquals(proteins, cProtein.getRelatedProteins());

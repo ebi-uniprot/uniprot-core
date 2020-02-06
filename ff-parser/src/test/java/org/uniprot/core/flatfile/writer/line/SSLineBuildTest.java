@@ -168,9 +168,9 @@ class SSLineBuildTest {
             List<EvidenceLine> evidenceLines,
             List<SourceLine> sourceLines) {
         return new InternalSectionBuilder()
-                .internalLines(internalLines)
-                .evidenceLines(evidenceLines)
-                .sourceLines(sourceLines)
+                .internalLinesSet(internalLines)
+                .evidenceLinesSet(evidenceLines)
+                .sourceLinesSet(sourceLines)
                 .build();
     }
 

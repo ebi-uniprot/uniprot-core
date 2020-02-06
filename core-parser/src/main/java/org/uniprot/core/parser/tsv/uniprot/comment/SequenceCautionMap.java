@@ -27,7 +27,7 @@ public class SequenceCautionMap implements NamedValueMap {
 
     private Map<String, String> getSeqCautionComments(List<SequenceCautionComment> scComments) {
         Map<String, String> sequenceCautionMap = new HashMap<>();
-        if (Utils.notNullOrEmpty(scComments)) {
+        if (Utils.notNullNotEmpty(scComments)) {
             String sequenceCautions =
                     scComments.stream()
                             .map(this::sequenceCautionToString)

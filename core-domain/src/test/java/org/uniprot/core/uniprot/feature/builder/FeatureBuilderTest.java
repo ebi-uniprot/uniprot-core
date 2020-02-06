@@ -76,7 +76,7 @@ class FeatureBuilderTest {
 
     @Test
     void canAddSingleEvidence() {
-        Feature obj = new FeatureBuilder().evidence(createEvidence()).build();
+        Feature obj = new FeatureBuilder().evidencesAdd(createEvidence()).build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
         assertTrue(obj.hasEvidences());
@@ -84,7 +84,7 @@ class FeatureBuilderTest {
 
     @Test
     void nullEvidence_willBeIgnore() {
-        Feature obj = new FeatureBuilder().evidence(null).build();
+        Feature obj = new FeatureBuilder().evidencesAdd(null).build();
         assertNotNull(obj.getEvidences());
         assertTrue(obj.getEvidences().isEmpty());
         assertFalse(obj.hasEvidences());
@@ -94,8 +94,8 @@ class FeatureBuilderTest {
     void evidences_willConvertUnModifiable_toModifiable() {
         Feature obj =
                 new FeatureBuilder()
-                        .evidences(Collections.emptyList())
-                        .evidence(createEvidence())
+                        .evidencesSet(Collections.emptyList())
+                        .evidencesAdd(createEvidence())
                         .build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
@@ -104,7 +104,7 @@ class FeatureBuilderTest {
 
     @Test
     void canAddListEvidences() {
-        Feature obj = new FeatureBuilder().evidences(createEvidences()).build();
+        Feature obj = new FeatureBuilder().evidencesSet(createEvidences()).build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
         assertTrue(obj.hasEvidences());

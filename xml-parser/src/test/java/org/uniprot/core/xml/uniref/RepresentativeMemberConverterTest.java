@@ -39,7 +39,7 @@ class RepresentativeMemberConverterTest {
                         .sequenceLength(length)
                         .proteinName(pName)
                         .uniparcId(new UniParcIdBuilder(upi).build())
-                        .addAccession(new UniProtAccessionBuilder(memberId).build())
+                        .accessionsAdd(new UniProtAccessionBuilder(memberId).build())
                         .uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
                         .uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
                         .uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())

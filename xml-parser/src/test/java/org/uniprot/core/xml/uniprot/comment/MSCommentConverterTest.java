@@ -27,7 +27,7 @@ class MSCommentConverterTest {
                 builder.molWeight(3042.79f)
                         .method(MassSpectrometryMethod.ELECTROSPRAY)
                         .note("Monoisotopic mass.")
-                        .evidences(singletonList(evidence))
+                        .evidencesSet(singletonList(evidence))
                         .build();
 
         MSCommentConverter converter = new MSCommentConverter(new EvidenceIndexMapper());
@@ -51,7 +51,7 @@ class MSCommentConverterTest {
                         .molWeightError(0.023f)
                         .method(MassSpectrometryMethod.ELECTROSPRAY)
                         .note("Monoisotopic mass.")
-                        .evidences(Arrays.asList(evidence))
+                        .evidencesSet(Arrays.asList(evidence))
                         .build();
 
         MSCommentConverter converter = new MSCommentConverter(new EvidenceIndexMapper());

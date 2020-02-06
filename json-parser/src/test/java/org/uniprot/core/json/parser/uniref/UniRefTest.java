@@ -61,7 +61,7 @@ class UniRefTest {
                         .sequenceLength(length)
                         .proteinName(pName)
                         .uniparcId(new UniParcIdBuilder(upi).build())
-                        .addAccession(new UniProtAccessionBuilder("P12345").build())
+                        .accessionsAdd(new UniProtAccessionBuilder("P12345").build())
                         .uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
                         .uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
                         .uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())
@@ -103,8 +103,8 @@ class UniRefTest {
                         .sequenceLength(length)
                         .proteinName(pName)
                         .uniparcId(new UniParcIdBuilder(upi).build())
-                        .addAccession(new UniProtAccessionBuilder("P12345").build())
-                        .addAccession(new UniProtAccessionBuilder("P12346").build())
+                        .accessionsAdd(new UniProtAccessionBuilder("P12345").build())
+                        .accessionsAdd(new UniProtAccessionBuilder("P12346").build())
                         .uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
                         .uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
                         .uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())
@@ -130,18 +130,18 @@ class UniRefTest {
                         .commonTaxonId(9606l)
                         .commonTaxon("Homo sapiens")
                         .representativeMember(createReprestativeMember())
-                        .addMember(createMember())
-                        .addGoTerm(
+                        .membersAdd(createMember())
+                        .goTermsAdd(
                                 new GoTermBuilder()
                                         .type(GoTermType.COMPONENT)
                                         .id("GO:0044444")
                                         .build())
-                        .addGoTerm(
+                        .goTermsAdd(
                                 new GoTermBuilder()
                                         .type(GoTermType.FUNCTION)
                                         .id("GO:0044459")
                                         .build())
-                        .addGoTerm(
+                        .goTermsAdd(
                                 new GoTermBuilder()
                                         .type(GoTermType.PROCESS)
                                         .id("GO:0032459")

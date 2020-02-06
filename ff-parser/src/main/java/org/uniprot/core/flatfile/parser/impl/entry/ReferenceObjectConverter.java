@@ -38,18 +38,18 @@ public class ReferenceObjectConverter extends EvidenceCollector
                 builder = rlLineConverter.convert(f.rl);
         if (f.ra != null) {
             List<Author> authors = raLineConverter.convert(f.ra);
-            builder.authors(authors);
+            builder.authorsSet(authors);
         }
 
         if (f.rg != null) {
-            builder.authoringGroups(rgLineConverter.convert(f.rg));
+            builder.authoringGroupsSet(rgLineConverter.convert(f.rg));
         }
 
         if (f.rt != null) {
             builder.title(rtLineConverter.convert(f.rt));
         }
         if (f.rx != null) {
-            builder.citationXrefs(rxLineConverter.convert(f.rx));
+            builder.citationXrefsSet(rxLineConverter.convert(f.rx));
         }
         List<String> referencePositions = new ArrayList<>();
         if (f.rp != null) {
@@ -63,9 +63,9 @@ public class ReferenceObjectConverter extends EvidenceCollector
         }
         UniProtReference uniprotReference =
                 new UniProtReferenceBuilder()
-                        .positions(referencePositions)
-                        .comments(referenceComments)
-                        .evidences(rnLineConverter.convert(f.rn))
+                        .referencePositionsSet(referencePositions)
+                        .referenceCommentsSet(referenceComments)
+                        .evidencesSet(rnLineConverter.convert(f.rn))
                         .citation(builder.build())
                         .build();
 

@@ -15,12 +15,12 @@ import org.uniprot.core.uniprot.comment.impl.InteractionCommentImpl;
 public class InteractionCommentBuilder implements CommentBuilder<InteractionComment> {
     private List<Interaction> interactions = new ArrayList<>();
 
-    public @Nonnull InteractionCommentBuilder interactions(List<Interaction> interactions) {
+    public @Nonnull InteractionCommentBuilder interactionsSet(List<Interaction> interactions) {
         this.interactions = modifiableList(interactions);
         return this;
     }
 
-    public @Nonnull InteractionCommentBuilder addInteraction(Interaction interaction) {
+    public @Nonnull InteractionCommentBuilder interactionsAdd(Interaction interaction) {
         addOrIgnoreNull(interaction, this.interactions);
         return this;
     }
@@ -31,6 +31,6 @@ public class InteractionCommentBuilder implements CommentBuilder<InteractionComm
     }
 
     public static @Nonnull InteractionCommentBuilder from(@Nonnull InteractionComment instance) {
-        return new InteractionCommentBuilder().interactions(instance.getInteractions());
+        return new InteractionCommentBuilder().interactionsSet(instance.getInteractions());
     }
 }

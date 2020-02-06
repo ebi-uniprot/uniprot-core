@@ -44,10 +44,10 @@ class APIsoformConverterTest {
         APIsoformBuilder isoformBuilder = new APIsoformBuilder();
         return isoformBuilder
                 .name(new IsoformNameBuilder(name, evidences).build())
-                .synonyms(isoformSynonyms)
-                .ids(asList("isoID1", "isoID2", "isoID3"))
+                .synonymsSet(isoformSynonyms)
+                .isoformIdsSet(asList("isoID1", "isoID2", "isoID3"))
                 .sequenceStatus(IsoformSequenceStatus.DESCRIBED)
-                .sequenceIds(asList("someSeqId1", "someSeqId2"))
+                .sequenceIdsSet(asList("someSeqId1", "someSeqId2"))
                 .build();
     }
 }

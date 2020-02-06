@@ -25,14 +25,14 @@ class RecNameConverterTest {
     @Test
     void testAll() {
         List<Evidence> evidences = createEvidences();
-        Name fullName = new NameBuilder().value("a full Name").evidences(evidences).build();
+        Name fullName = new NameBuilder().value("a full Name").evidencesSet(evidences).build();
         List<Name> shortNames = createShortNames();
         List<EC> ecNumbers = createECNumbers();
         ProteinRecName recName =
                 new ProteinRecNameBuilder()
                         .fullName(fullName)
-                        .shortNames(shortNames)
-                        .ecNumbers(ecNumbers)
+                        .shortNamesSet(shortNames)
+                        .ecNumbersSet(ecNumbers)
                         .build();
         EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
         ECConverter ecConverter = new ECConverter(evRefMapper);

@@ -25,7 +25,7 @@ public class InteractionCommentTransformer implements CommentTransformer<Interac
     public InteractionComment transform(CommentType type, String annotation) {
         List<Interaction> interactions = convertInteractions(annotation);
         InteractionCommentBuilder builder = new InteractionCommentBuilder();
-        return builder.interactions(interactions).build();
+        return builder.interactionsSet(interactions).build();
     }
 
     private List<Interaction> convertInteractions(String annotation) {

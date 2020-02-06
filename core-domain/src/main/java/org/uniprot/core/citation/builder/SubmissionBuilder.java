@@ -12,7 +12,7 @@ public final class SubmissionBuilder
 
     public @Nonnull Submission build() {
         return new SubmissionImpl(
-                authoringGroups, authors, xrefs, title, publicationDate, submissionDb);
+                authoringGroups, authors, citationXrefs, title, publicationDate, submissionDb);
     }
 
     public static @Nonnull SubmissionBuilder from(Submission instance) {

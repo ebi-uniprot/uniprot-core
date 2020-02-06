@@ -16,7 +16,7 @@ public interface LiteratureStoreEntry extends Serializable {
     List<LiteratureMappedReference> getLiteratureMappedReferences();
 
     default boolean hasLiteratureMappedReferences() {
-        return Utils.notNullOrEmpty(getLiteratureMappedReferences());
+        return Utils.notNullNotEmpty(getLiteratureMappedReferences());
     }
 
     default boolean hasLiteratureEntry() {

@@ -26,8 +26,8 @@ public class OrganismConverter implements Converter<OrganismType, Organism> {
         OrganismBuilder builder = new OrganismBuilder();
         builder.taxonId(Long.parseLong(xmlObj.getDbReference().get(0).getId()));
         OrganismConverterUtil.updateOrganismNameFromXml(xmlObj.getName(), builder);
-        builder.lineage(xmlObj.getLineage().getTaxon());
-        builder.evidences(evRefMapper.parseEvidenceIds(xmlObj.getEvidence()));
+        builder.lineagesSet(xmlObj.getLineage().getTaxon());
+        builder.evidencesSet(evRefMapper.parseEvidenceIds(xmlObj.getEvidence()));
         return builder.build();
     }
 
@@ -44,7 +44,7 @@ public class OrganismConverter implements Converter<OrganismType, Organism> {
                 .addAll(OrganismConverterUtil.organismNameToXml(xmlUniprotFactory, organism));
 
         OrganismType.Lineage lineage = xmlUniprotFactory.createOrganismTypeLineage();
-        organism.getLineage().forEach(val -> lineage.getTaxon().add(val));
+        organism.getLineages().forEach(val -> lineage.getTaxon().add(val));
         xmlOrganism.setLineage(lineage);
         if (!organism.getEvidences().isEmpty()) {
             List<Integer> ev = evRefMapper.writeEvidences(organism.getEvidences());

@@ -27,7 +27,7 @@ public abstract class AbstractCitationImpl implements Citation {
         this.citationType = citationType;
         this.authoringGroup = Utils.unmodifiableList(authoringGroup);
         this.authors = Utils.unmodifiableList(authors);
-        this.citationXrefs = citationXrefs;
+        this.citationXrefs = Utils.unmodifiableList(citationXrefs);
         this.title = Utils.emptyOrString(title);
         this.publicationDate = publicationDate;
     }
@@ -49,7 +49,7 @@ public abstract class AbstractCitationImpl implements Citation {
     }
 
     @Override
-    public List<String> getAuthoringGroup() {
+    public List<String> getAuthoringGroups() {
         return this.authoringGroup;
     }
 
@@ -70,7 +70,7 @@ public abstract class AbstractCitationImpl implements Citation {
 
     @Override
     public boolean hasTitle() {
-        return Utils.notNullOrEmpty(this.title);
+        return Utils.notNullNotEmpty(this.title);
     }
 
     @Override
@@ -80,12 +80,12 @@ public abstract class AbstractCitationImpl implements Citation {
 
     @Override
     public boolean hasAuthoringGroup() {
-        return Utils.notNullOrEmpty(this.authoringGroup);
+        return Utils.notNullNotEmpty(this.authoringGroup);
     }
 
     @Override
     public boolean hasAuthors() {
-        return Utils.notNullOrEmpty(this.authors);
+        return Utils.notNullNotEmpty(this.authors);
     }
 
     @Override

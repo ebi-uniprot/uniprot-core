@@ -21,7 +21,7 @@ import org.uniprot.core.uniref.UniRefMemberIdType;
  * @date: 12 Aug 2019
  */
 public abstract class AbstractUniRefMemberBuilder<
-                B extends AbstractUniRefMemberBuilder<B, T>, T extends UniRefMember>
+                B extends AbstractUniRefMemberBuilder, T extends UniRefMember>
         implements Builder<T> {
     protected UniRefMemberIdType memberIdType;
     protected String memberId;
@@ -67,17 +67,14 @@ public abstract class AbstractUniRefMemberBuilder<
         return getThis();
     }
 
-    public @Nonnull B addAccession(UniProtAccession accession) {
+    public @Nonnull B accessionsAdd(UniProtAccession accession) {
         addOrIgnoreNull(accession, this.accessions);
 
         return getThis();
     }
 
-    public @Nonnull B accessions(List<UniProtAccession> accessions) {
-        if (accessions != null) {
-            this.accessions = modifiableList(accessions);
-        }
-
+    public @Nonnull B accessionsSet(List<UniProtAccession> accessions) {
+        this.accessions = modifiableList(accessions);
         return getThis();
     }
 
@@ -111,21 +108,21 @@ public abstract class AbstractUniRefMemberBuilder<
         return getThis();
     }
 
-    protected static <B extends AbstractUniRefMemberBuilder, T extends UniRefMember> void init(
-            @Nonnull B builder, @Nonnull T instance) {
-        builder.memberIdType(instance.getMemberIdType());
-        builder.memberId(instance.getMemberId());
-        builder.organismName(instance.getOrganismName());
-        builder.organismTaxId(instance.getOrganismTaxId());
-        builder.sequenceLength(instance.getSequenceLength());
-        builder.proteinName(instance.getProteinName());
-        builder.accessions(instance.getUniProtAccessions());
-        builder.uniref100Id(instance.getUniRef100Id());
-        builder.uniref90Id(instance.getUniRef90Id());
-        builder.uniref50Id(instance.getUniRef50Id());
-        builder.uniparcId(instance.getUniParcId());
-        builder.overlapRegion(instance.getOverlapRegion());
-        builder.isSeed(instance.isSeed());
+    protected static <B extends AbstractUniRefMemberBuilder, T extends UniRefMember>
+            void init(@Nonnull B builder, @Nonnull T instance) {
+        builder.memberIdType(instance.getMemberIdType())
+                .memberId(instance.getMemberId())
+                .organismName(instance.getOrganismName())
+                .organismTaxId(instance.getOrganismTaxId())
+                .sequenceLength(instance.getSequenceLength())
+                .proteinName(instance.getProteinName())
+                .accessionsSet(instance.getUniProtAccessions())
+                .uniref100Id(instance.getUniRef100Id())
+                .uniref90Id(instance.getUniRef90Id())
+                .uniref50Id(instance.getUniRef50Id())
+                .uniparcId(instance.getUniParcId())
+                .overlapRegion(instance.getOverlapRegion())
+                .isSeed(instance.isSeed());
     }
 
     protected abstract @Nonnull B getThis();

@@ -33,7 +33,7 @@ class ECImplTest {
                         .databaseId("PIRNR001361")
                         .build());
 
-        EC ecObj = new ECBuilder().value(ec).evidences(evidences).build();
+        EC ecObj = new ECBuilder().value(ec).evidencesSet(evidences).build();
         assertEquals(ec, ecObj.getValue());
         assertTrue(ecObj.isValid());
         assertEquals(evidences, ecObj.getEvidences());

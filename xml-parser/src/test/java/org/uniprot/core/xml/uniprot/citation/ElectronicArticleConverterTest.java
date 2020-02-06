@@ -43,8 +43,8 @@ class ElectronicArticleConverterTest {
         builder.journalName(journalName)
                 .locator("Some locator")
                 .title(title)
-                .addAuthor("Sulson J.E.")
-                .addAuthor("JWaterston R.")
+                .authorsAdd("Sulson J.E.")
+                .authorsAdd("JWaterston R.")
                 .publicationDate(date);
 
         return builder.build();

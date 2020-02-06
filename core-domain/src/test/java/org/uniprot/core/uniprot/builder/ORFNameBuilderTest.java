@@ -10,7 +10,7 @@ class ORFNameBuilderTest extends AbstractEvidencedValueBuilderTest {
     void checkORFNameBuilderCreationIsAsExpected() {
         ORFName orfName =
                 new ORFNameBuilder((getValue()), getEvidenceList())
-                        .addEvidence(getEvidence())
+                        .evidencesAdd(getEvidence())
                         .build();
 
         verifyEvidencedValue(orfName);

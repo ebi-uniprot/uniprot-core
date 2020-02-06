@@ -42,7 +42,11 @@ class ReferenceCommentConverterTest {
 
     private ReferenceComment createReferenceComment(
             ReferenceCommentType type, String value, List<Evidence> evidences) {
-        return new ReferenceCommentBuilder().value(value).type(type).evidences(evidences).build();
+        return new ReferenceCommentBuilder()
+                .value(value)
+                .type(type)
+                .evidencesSet(evidences)
+                .build();
     }
 
     private List<Evidence> createEvidences() {

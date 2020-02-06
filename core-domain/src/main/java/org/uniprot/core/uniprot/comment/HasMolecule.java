@@ -10,6 +10,6 @@ public interface HasMolecule {
     String getMolecule();
 
     default boolean hasMolecule() {
-        return Utils.notNullOrEmpty(getMolecule());
+        return Utils.notNullNotEmpty(getMolecule());
     }
 }

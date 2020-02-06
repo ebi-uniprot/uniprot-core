@@ -52,7 +52,7 @@ public class CofactorCommentConverter implements CommentConverter<CofactorCommen
             builder.note(note);
         }
         if (!xmlComment.getCofactor().isEmpty()) {
-            builder.cofactors(
+            builder.cofactorsSet(
                     xmlComment.getCofactor().stream()
                             .map(cofactorConverter::fromXml)
                             .collect(Collectors.toList()));

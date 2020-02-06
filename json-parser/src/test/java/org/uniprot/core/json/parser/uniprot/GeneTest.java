@@ -62,29 +62,29 @@ public class GeneTest {
         List<Evidence> geneNameEvidences =
                 CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001360");
         GeneName geneName =
-                new GeneNameBuilder().value("some Gene").evidences(geneNameEvidences).build();
+                new GeneNameBuilder().value("some Gene").evidencesSet(geneNameEvidences).build();
 
         List<Evidence> synEvidences =
                 CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361");
         GeneNameSynonym synonym =
-                new GeneNameSynonymBuilder().value("some Syn").evidences(synEvidences).build();
+                new GeneNameSynonymBuilder().value("some Syn").evidencesSet(synEvidences).build();
 
         List<Evidence> olnNameEvidences =
                 CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001362");
         OrderedLocusName olnName =
                 new OrderedLocusNameBuilder()
                         .value("some locus")
-                        .evidences(olnNameEvidences)
+                        .evidencesSet(olnNameEvidences)
                         .build();
 
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730");
-        ORFName orfName = new ORFNameBuilder().value("some orf").evidences(evidences).build();
+        ORFName orfName = new ORFNameBuilder().value("some orf").evidencesSet(evidences).build();
 
         return new GeneBuilder()
                 .geneName(geneName)
-                .addSynonyms(synonym)
-                .addOrderedLocusNames(olnName)
-                .addOrfNames(orfName)
+                .synonymsAdd(synonym)
+                .orderedLocusNamesAdd(olnName)
+                .orfNamesAdd(orfName)
                 .build();
     }
 

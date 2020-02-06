@@ -122,8 +122,8 @@ class EntryGoXrefMapTest {
         return new UniProtDBCrossReferenceBuilder()
                 .databaseType(type)
                 .id(id)
-                .addProperty(type.getAttribute(0), term)
-                .addProperty(type.getAttribute(1), evidence)
+                .propertiesAdd(type.getAttribute(0), term)
+                .propertiesAdd(type.getAttribute(1), evidence)
                 .build();
     }
 }

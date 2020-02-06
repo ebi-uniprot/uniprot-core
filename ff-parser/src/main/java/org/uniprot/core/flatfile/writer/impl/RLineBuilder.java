@@ -70,7 +70,7 @@ public class RLineBuilder extends FFLineBuilderAbstr<UniProtReference>
         // RG line rLine.append(RGLineNew.export(citation));
         lines.addAll(
                 rgLineBuilder.buildLine(
-                        f.getCitation().getAuthoringGroup(), includeFFMarkup, showEvidence));
+                        f.getCitation().getAuthoringGroups(), includeFFMarkup, showEvidence));
         // RA line rLine.append(RALineNew.export(citation));
         lines.addAll(
                 raLineBuilder.buildLine(

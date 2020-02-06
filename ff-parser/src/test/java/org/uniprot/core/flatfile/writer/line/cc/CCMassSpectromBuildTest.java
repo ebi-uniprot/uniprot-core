@@ -172,7 +172,7 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
             List<String> evs,
             boolean setSources) {
         MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
-        builder.evidences(createEvidence(evs));
+        builder.evidencesSet(createEvidence(evs));
         builder.molWeight(molWeight);
         builder.molWeightError(molWeightError);
         builder.method(method);

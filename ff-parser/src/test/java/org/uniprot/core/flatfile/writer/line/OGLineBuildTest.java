@@ -283,7 +283,7 @@ class OGLineBuildTest {
         return new GeneLocationBuilder()
                 .geneEncodingType(GeneEncodingType.PLASMID)
                 .value(value)
-                .evidences(createEvidence(evs))
+                .evidencesSet(createEvidence(evs))
                 .build();
     }
 
@@ -291,7 +291,7 @@ class OGLineBuildTest {
         return new GeneLocationBuilder()
                 .geneEncodingType(type)
                 .value("")
-                .evidences(createEvidence(evs))
+                .evidencesSet(createEvidence(evs))
                 .build();
     }
 

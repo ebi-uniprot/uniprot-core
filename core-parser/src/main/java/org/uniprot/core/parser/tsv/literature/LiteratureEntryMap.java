@@ -93,7 +93,7 @@ public class LiteratureEntryMap implements NamedValueMap {
 
     private String getAuthorsAndAuthoringGroups() {
         String result = getAuthoringGroup();
-        if (Utils.notNullOrEmpty(result)) {
+        if (Utils.notNullNotEmpty(result)) {
             result += "; " + getAuthors();
         }
         return result;
@@ -113,7 +113,7 @@ public class LiteratureEntryMap implements NamedValueMap {
     private String getAuthoringGroup() {
         String result = "";
         if (Utils.notNull(literature)) {
-            result = String.join(", ", literature.getAuthoringGroup());
+            result = String.join(", ", literature.getAuthoringGroups());
         }
         return result;
     }

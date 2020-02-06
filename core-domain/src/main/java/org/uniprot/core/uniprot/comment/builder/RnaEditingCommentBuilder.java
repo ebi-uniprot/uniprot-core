@@ -26,7 +26,7 @@ public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditing
 
     public static @Nonnull RnaEditingCommentBuilder from(@Nonnull RnaEditingComment instance) {
         return new RnaEditingCommentBuilder()
-                .positions(instance.getPositions())
+                .positionsSet(instance.getPositions())
                 .locationType(instance.getLocationType())
                 .molecule(instance.getMolecule())
                 .note(instance.getNote());
@@ -42,12 +42,12 @@ public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditing
         return this;
     }
 
-    public @Nonnull RnaEditingCommentBuilder positions(List<RnaEdPosition> positions) {
+    public @Nonnull RnaEditingCommentBuilder positionsSet(List<RnaEdPosition> positions) {
         this.positions = modifiableList(positions);
         return this;
     }
 
-    public @Nonnull RnaEditingCommentBuilder addPosition(RnaEdPosition position) {
+    public @Nonnull RnaEditingCommentBuilder positionsAdd(RnaEdPosition position) {
         addOrIgnoreNull(position, this.positions);
         return this;
     }

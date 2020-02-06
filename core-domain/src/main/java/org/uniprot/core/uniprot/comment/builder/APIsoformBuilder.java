@@ -34,13 +34,13 @@ public class APIsoformBuilder implements Builder<APIsoform> {
 
     public static @Nonnull APIsoformBuilder from(@Nonnull APIsoform instance) {
         return new APIsoformBuilder()
-                .sequenceIds(instance.getSequenceIds())
-                .ids(
+                .sequenceIdsSet(instance.getSequenceIds())
+                .isoformIdsSet(
                         instance.getIsoformIds().stream()
                                 .map(Value::getValue)
                                 .collect(Collectors.toList()))
                 .note(instance.getNote())
-                .synonyms(instance.getSynonyms())
+                .synonymsSet(instance.getSynonyms())
                 .sequenceStatus(instance.getIsoformSequenceStatus())
                 .name(instance.getName());
     }
@@ -50,12 +50,12 @@ public class APIsoformBuilder implements Builder<APIsoform> {
         return this;
     }
 
-    public @Nonnull APIsoformBuilder synonyms(List<IsoformName> synonyms) {
+    public @Nonnull APIsoformBuilder synonymsSet(List<IsoformName> synonyms) {
         this.synonyms = modifiableList(synonyms);
         return this;
     }
 
-    public @Nonnull APIsoformBuilder addSynonym(IsoformName synonym) {
+    public @Nonnull APIsoformBuilder synonymsAdd(IsoformName synonym) {
         addOrIgnoreNull(synonym, this.synonyms);
         return this;
     }
@@ -65,22 +65,22 @@ public class APIsoformBuilder implements Builder<APIsoform> {
         return this;
     }
 
-    public @Nonnull APIsoformBuilder ids(List<String> isoformIds) {
+    public @Nonnull APIsoformBuilder isoformIdsSet(List<String> isoformIds) {
         isoformIds.stream().map(APIsoformImpl.IsoformIdImpl::new).forEach(this.isoformIds::add);
         return this;
     }
 
-    public @Nonnull APIsoformBuilder addId(String isoformId) {
+    public @Nonnull APIsoformBuilder isoformIdsAdd(String isoformId) {
         if (isoformId != null) this.isoformIds.add(new APIsoformImpl.IsoformIdImpl(isoformId));
         return this;
     }
 
-    public @Nonnull APIsoformBuilder sequenceIds(List<String> sequenceIds) {
+    public @Nonnull APIsoformBuilder sequenceIdsSet(List<String> sequenceIds) {
         this.sequenceIds = modifiableList(sequenceIds);
         return this;
     }
 
-    public @Nonnull APIsoformBuilder addSequenceId(String sequenceId) {
+    public @Nonnull APIsoformBuilder sequenceIdsAdd(String sequenceId) {
         addOrIgnoreNull(sequenceId, this.sequenceIds);
         return this;
     }

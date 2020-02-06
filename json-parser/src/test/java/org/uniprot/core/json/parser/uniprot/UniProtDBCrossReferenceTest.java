@@ -70,9 +70,9 @@ public class UniProtDBCrossReferenceTest {
         return new UniProtDBCrossReferenceBuilder()
                 .id("id value")
                 .isoformId("Q9NXB0-1")
-                .addProperty(property)
+                .propertiesAdd(property)
                 .databaseType(new UniProtXDbType("Ensembl"))
-                .addEvidence(CreateUtils.createEvidence("ECO:0000269|PubMed:11389730"))
+                .evidencesAdd(CreateUtils.createEvidence("ECO:0000269|PubMed:11389730"))
                 .build();
     }
 }

@@ -48,7 +48,7 @@ class CCCofactorBuildTest extends CCBuildTestAbstr {
         List<String> evs2 = new ArrayList<>();
         evs2.add("ECO:0000255|HAMAP-Rule:MF_00089");
         cofactors.add(buildCofactor("Co(2+)", CofactorReferenceType.CHEBI, "CHEBI:48828", evs2));
-        builder.cofactors(cofactors);
+        builder.cofactorsSet(cofactors);
         String noteValue =
                 "Binds 2 divalent ions per subunit (magnesium or cobalt). A second loosely associated metal ion is visible in the crystal structure";
         List<String> evs3 = new ArrayList<>();
@@ -76,7 +76,7 @@ class CCCofactorBuildTest extends CCBuildTestAbstr {
         List<String> evs = new ArrayList<>();
         evs.add("ECO:0000269|PubMed:9060645");
         //	cofactors.add(buildCofactor("Zn(2+)", CofactorReferenceType.CHEBI, "CHEBI:29105", evs));
-        builder.cofactors(cofactors);
+        builder.cofactorsSet(cofactors);
         String noteValue = "Binds 1 zinc ion per NS3 protease domain";
         List<String> evs3 = new ArrayList<>();
         // evs3.add("ECO:0000255|HAMAP-Rule:MF_00082");
@@ -143,7 +143,7 @@ class CCCofactorBuildTest extends CCBuildTestAbstr {
                         "CHEBI:54321",
                         evs));
 
-        builder.cofactors(cofactors);
+        builder.cofactorsSet(cofactors);
         String noteValue = "Binds 2 divalent ions per subunit";
         List<String> evs3 = new ArrayList<>();
         evs3.add("ECO:0000255|HAMAP-Rule:MF_00086");
@@ -189,7 +189,7 @@ class CCCofactorBuildTest extends CCBuildTestAbstr {
         List<String> evs2 = new ArrayList<>();
         evs2.add("ECO:0000255|HAMAP-Rule:MF_00089");
         cofactors.add(buildCofactor("Co(2+)", CofactorReferenceType.CHEBI, "CHEBI:48828", evs2));
-        builder.cofactors(cofactors);
+        builder.cofactorsSet(cofactors);
         String noteValue = "Binds 2 divalent ions per subunit (magnesium or cobalt)";
         List<String> evs3 = new ArrayList<>();
         evs3.add("ECO:0000255|HAMAP-Rule:MF_00082");
@@ -222,7 +222,7 @@ class CCCofactorBuildTest extends CCBuildTestAbstr {
         return new CofactorBuilder()
                 .name(name)
                 .reference(coRef)
-                .evidences(createEvidence(evids))
+                .evidencesSet(createEvidence(evids))
                 .build();
     }
 }

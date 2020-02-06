@@ -38,12 +38,12 @@ public final class PhysiologicalReactionBuilder implements Builder<Physiological
         return this;
     }
 
-    public @Nonnull PhysiologicalReactionBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull PhysiologicalReactionBuilder evidencesSet(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public @Nonnull PhysiologicalReactionBuilder addEvidence(Evidence evidence) {
+    public @Nonnull PhysiologicalReactionBuilder evidencesAdd(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
@@ -55,7 +55,7 @@ public final class PhysiologicalReactionBuilder implements Builder<Physiological
     public static @Nonnull PhysiologicalReactionBuilder from(
             @Nonnull PhysiologicalReaction instance) {
         return new PhysiologicalReactionBuilder()
-                .evidences(instance.getEvidences())
+                .evidencesSet(instance.getEvidences())
                 .directionType(instance.getDirectionType())
                 .reactionReference(instance.getReactionReference());
     }

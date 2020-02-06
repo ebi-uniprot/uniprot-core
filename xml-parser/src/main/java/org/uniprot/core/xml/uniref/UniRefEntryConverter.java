@@ -52,7 +52,7 @@ public class UniRefEntryConverter implements Converter<Entry, UniRefEntry> {
                 .updated(XmlConverterHelper.dateFromXml(xmlObj.getUpdated()))
                 .representativeMember(
                         representativeMemverConverter.fromXml(xmlObj.getRepresentativeMember()))
-                .members(
+                .membersSet(
                         xmlObj.getMember().stream()
                                 .map(memberConverter::fromXml)
                                 .collect(Collectors.toList()));
@@ -76,11 +76,11 @@ public class UniRefEntryConverter implements Converter<Entry, UniRefEntry> {
             } else if (property.getType().equals(PROPERTY_COMMON_TAXON_ID)) {
                 builder.commonTaxonId(Long.parseLong(property.getValue()));
             } else if (property.getType().equals(PROPERTY_GO_FUNCTION)) {
-                builder.addGoTerm(createGoTerm(GoTermType.FUNCTION, property.getValue()));
+                builder.goTermsAdd(createGoTerm(GoTermType.FUNCTION, property.getValue()));
             } else if (property.getType().equals(PROPERTY_GO_COMPONENT)) {
-                builder.addGoTerm(createGoTerm(GoTermType.COMPONENT, property.getValue()));
+                builder.goTermsAdd(createGoTerm(GoTermType.COMPONENT, property.getValue()));
             } else if (property.getType().equals(PROPERTY_GO_PROCESS)) {
-                builder.addGoTerm(createGoTerm(GoTermType.PROCESS, property.getValue()));
+                builder.goTermsAdd(createGoTerm(GoTermType.PROCESS, property.getValue()));
             } else if (property.getType().equals(PROPERTY_MEMBER_COUNT)) {
                 builder.memberCount(Integer.parseInt(property.getValue()));
             } else {

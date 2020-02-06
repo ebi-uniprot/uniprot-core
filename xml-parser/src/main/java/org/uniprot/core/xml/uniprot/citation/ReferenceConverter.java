@@ -29,9 +29,9 @@ public class ReferenceConverter implements Converter<ReferenceType, UniProtRefer
     public UniProtReference fromXml(ReferenceType xmlObj) {
         return new UniProtReferenceBuilder()
                 .citation(citationConverter.fromXml(xmlObj.getCitation()))
-                .evidences(evRefMapper.parseEvidenceIds(xmlObj.getEvidence()))
-                .positions(xmlObj.getScope())
-                .comments(rcConverter.fromXml(xmlObj.getSource()))
+                .evidencesSet(evRefMapper.parseEvidenceIds(xmlObj.getEvidence()))
+                .referencePositionsSet(xmlObj.getScope())
+                .referenceCommentsSet(rcConverter.fromXml(xmlObj.getSource()))
                 .build();
     }
 

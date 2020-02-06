@@ -59,7 +59,7 @@ public class BookTest {
         BookBuilder builder = new BookBuilder();
         CitationUtil.populateBasicCitation(builder);
         return builder.bookName("book Name")
-                .addEditor("editor Leo")
+                .editorsAdd("editor Leo")
                 .firstPage("first page")
                 .lastPage("last page")
                 .volume("book volume")

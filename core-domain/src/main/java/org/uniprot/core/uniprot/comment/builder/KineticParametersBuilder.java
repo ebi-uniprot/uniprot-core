@@ -25,24 +25,24 @@ public final class KineticParametersBuilder implements Builder<KineticParameters
     private List<MichaelisConstant> michaelisConstants = new ArrayList<>();
     private Note note;
 
-    public @Nonnull KineticParametersBuilder maximumVelocities(
+    public @Nonnull KineticParametersBuilder maximumVelocitiesSet(
             List<MaximumVelocity> maximumVelocities) {
         this.maximumVelocities = modifiableList(maximumVelocities);
         return this;
     }
 
-    public @Nonnull KineticParametersBuilder addMaximumVelocitie(MaximumVelocity maximumVelocity) {
+    public @Nonnull KineticParametersBuilder maximumVelocitiesAdd(MaximumVelocity maximumVelocity) {
         addOrIgnoreNull(maximumVelocity, this.maximumVelocities);
         return this;
     }
 
-    public @Nonnull KineticParametersBuilder michaelisConstants(
+    public @Nonnull KineticParametersBuilder michaelisConstantsSet(
             List<MichaelisConstant> michaelisConstants) {
         this.michaelisConstants = modifiableList(michaelisConstants);
         return this;
     }
 
-    public @Nonnull KineticParametersBuilder addMichaelisConstant(
+    public @Nonnull KineticParametersBuilder michaelisConstantsAdd(
             MichaelisConstant michaelisConstant) {
         addOrIgnoreNull(michaelisConstant, this.michaelisConstants);
         return this;
@@ -60,8 +60,8 @@ public final class KineticParametersBuilder implements Builder<KineticParameters
 
     public static @Nonnull KineticParametersBuilder from(@Nonnull KineticParameters instance) {
         return new KineticParametersBuilder()
-                .maximumVelocities(instance.getMaximumVelocities())
-                .michaelisConstants(instance.getMichaelisConstants())
+                .maximumVelocitiesSet(instance.getMaximumVelocities())
+                .michaelisConstantsSet(instance.getMichaelisConstants())
                 .note(instance.getNote());
     }
 }

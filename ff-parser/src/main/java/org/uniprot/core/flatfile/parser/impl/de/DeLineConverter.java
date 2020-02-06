@@ -79,13 +79,13 @@ public class DeLineConverter extends EvidenceCollector
         org.uniprot.core.uniprot.description.FlagType flag = createFlag(f.flags);
         ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
         builder.recommendedName(recName)
-                .submissionNames(subNames)
-                .alternativeNames(altNames)
-                .contains(contained)
-                .includes(included)
+                .submissionNamesSet(subNames)
+                .alternativeNamesSet(altNames)
+                .containsSet(contained)
+                .includesSet(included)
                 .flag(flag)
-                .cdAntigenNames(cdAntigenNames)
-                .innNames(innNames)
+                .cdAntigenNamesSet(cdAntigenNames)
+                .innNamesSet(innNames)
                 .allergenName(allergenName)
                 .biotechName(biotechName);
 
@@ -146,9 +146,9 @@ public class DeLineConverter extends EvidenceCollector
 
         return new ProteinSectionBuilder()
                 .recommendedName(recName)
-                .alternativeNames(altNames)
-                .cdAntigenNames(cdAntigenNames)
-                .innNames(innNames)
+                .alternativeNamesSet(altNames)
+                .cdAntigenNamesSet(cdAntigenNames)
+                .innNamesSet(innNames)
                 .allergenName(allergenName)
                 .biotechName(biotechName)
                 .build();
@@ -156,7 +156,7 @@ public class DeLineConverter extends EvidenceCollector
 
     private Name convertName(String val, Map<Object, List<Evidence>> evidenceMap) {
         NameBuilder builder = new NameBuilder();
-        return builder.value(val).evidences(evidenceMap.get(val)).build();
+        return builder.value(val).evidencesSet(evidenceMap.get(val)).build();
     }
 
     private ProteinAltName convertAltName(
@@ -166,7 +166,7 @@ public class DeLineConverter extends EvidenceCollector
             fullName =
                     new NameBuilder()
                             .value(val.fullName)
-                            .evidences(evidenceMap.get(val.fullName))
+                            .evidencesSet(evidenceMap.get(val.fullName))
                             .build();
         }
         List<Name> shortNames =
@@ -175,7 +175,7 @@ public class DeLineConverter extends EvidenceCollector
                                 shortName ->
                                         new NameBuilder()
                                                 .value(shortName)
-                                                .evidences(evidenceMap.get(shortName))
+                                                .evidencesSet(evidenceMap.get(shortName))
                                                 .build())
                         .collect(Collectors.toList());
         List<EC> ecNumbers =
@@ -188,14 +188,14 @@ public class DeLineConverter extends EvidenceCollector
                                     ecEvidence.nameECBelong = val;
                                     return new ECBuilder()
                                             .value(ec)
-                                            .evidences(evidenceMap.get(ecEvidence))
+                                            .evidencesSet(evidenceMap.get(ecEvidence))
                                             .build();
                                 })
                         .collect(Collectors.toList());
         return new ProteinAltNameBuilder()
                 .fullName(fullName)
-                .shortNames(shortNames)
-                .ecNumbers(ecNumbers)
+                .shortNamesSet(shortNames)
+                .ecNumbersSet(ecNumbers)
                 .build();
     }
 
@@ -206,7 +206,7 @@ public class DeLineConverter extends EvidenceCollector
             fullName =
                     new NameBuilder()
                             .value(val.fullName)
-                            .evidences(evidenceMap.get(val.fullName))
+                            .evidencesSet(evidenceMap.get(val.fullName))
                             .build();
         }
         List<Name> shortNames =
@@ -215,7 +215,7 @@ public class DeLineConverter extends EvidenceCollector
                                 shortName ->
                                         new NameBuilder()
                                                 .value(shortName)
-                                                .evidences(evidenceMap.get(shortName))
+                                                .evidencesSet(evidenceMap.get(shortName))
                                                 .build())
                         .collect(Collectors.toList());
         List<EC> ecNumbers =
@@ -224,8 +224,8 @@ public class DeLineConverter extends EvidenceCollector
                         .collect(Collectors.toList());
         return new ProteinRecNameBuilder()
                 .fullName(fullName)
-                .shortNames(shortNames)
-                .ecNumbers(ecNumbers)
+                .shortNamesSet(shortNames)
+                .ecNumbersSet(ecNumbers)
                 .build();
     }
 
@@ -234,7 +234,7 @@ public class DeLineConverter extends EvidenceCollector
         ecEvidence.ecValue = ec;
         ecEvidence.nameECBelong = val;
         List<Evidence> evidences = evidenceMap.get(ecEvidence);
-        return new ECBuilder().value(ec).evidences(evidences).build();
+        return new ECBuilder().value(ec).evidencesSet(evidences).build();
     }
 
     private ProteinSubName convertSubmissionName(
@@ -244,7 +244,7 @@ public class DeLineConverter extends EvidenceCollector
             fullName =
                     new NameBuilder()
                             .value(val.fullName)
-                            .evidences(evidenceMap.get(val.fullName))
+                            .evidencesSet(evidenceMap.get(val.fullName))
                             .build();
         }
         // List<Name> shortNames =val.shortNames.stream()
@@ -261,10 +261,10 @@ public class DeLineConverter extends EvidenceCollector
                                     ecEvidence.nameECBelong = val;
                                     return new ECBuilder()
                                             .value(ec)
-                                            .evidences(evidenceMap.get(ecEvidence))
+                                            .evidencesSet(evidenceMap.get(ecEvidence))
                                             .build();
                                 })
                         .collect(Collectors.toList());
-        return new ProteinSubNameBuilder().fullName(fullName).ecNumbers(ecNumbers).build();
+        return new ProteinSubNameBuilder().fullName(fullName).ecNumbersSet(ecNumbers).build();
     }
 }

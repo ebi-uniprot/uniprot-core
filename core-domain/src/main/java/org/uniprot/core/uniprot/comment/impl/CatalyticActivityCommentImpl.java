@@ -48,7 +48,7 @@ public class CatalyticActivityCommentImpl extends CommentHasMoleculeImpl
 
     @Override
     public boolean hasPhysiologicalReactions() {
-        return Utils.notNullOrEmpty(this.physiologicalReactions);
+        return Utils.notNullNotEmpty(this.physiologicalReactions);
     }
 
     @Override

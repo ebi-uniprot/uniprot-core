@@ -40,7 +40,7 @@ class ProteomeComponentMapTest {
 
         components.add(component1);
         components.add(component2);
-        ProteomeEntry proteome = new ProteomeEntryBuilder().components(components).build();
+        ProteomeEntry proteome = new ProteomeEntryBuilder().componentsSet(components).build();
         assertEquals(2, proteome.getComponents().size());
         assertThat(proteome.getComponents(), hasItem(component1));
 

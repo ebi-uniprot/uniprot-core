@@ -40,8 +40,8 @@ class SubmissionConverterTest {
         String date = "JAN-2018";
         builder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ)
                 .title(title)
-                .addAuthor("Sulson J.E.")
-                .addAuthor("JWaterston R.")
+                .authorsAdd("Sulson J.E.")
+                .authorsAdd("JWaterston R.")
                 .publicationDate(date);
         return builder.build();
     }

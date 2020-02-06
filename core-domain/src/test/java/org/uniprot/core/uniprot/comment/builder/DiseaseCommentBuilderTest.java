@@ -29,7 +29,7 @@ class DiseaseCommentBuilderTest {
         Disease disease =
                 builder.diseaseId(diseaseId)
                         .acronym("someAcron")
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .description(description)
                         .reference(reference)
                         .build();
@@ -56,7 +56,7 @@ class DiseaseCommentBuilderTest {
         Disease disease =
                 builder.diseaseId(diseaseId)
                         .acronym("someAcron")
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .description(description)
                         .reference(reference)
                         .build();

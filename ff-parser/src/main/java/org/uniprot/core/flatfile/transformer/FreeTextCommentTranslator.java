@@ -63,7 +63,7 @@ public class FreeTextCommentTranslator implements CommentTransformer<FreeTextCom
             }
             texts.add(cText);
         }
-        builder.texts(texts);
+        builder.textsSet(texts);
     }
 
     private EvidencedValue createCommentText(String value) {

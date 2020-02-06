@@ -24,7 +24,7 @@ class OrganelleConverterTest {
                 new GeneLocationBuilder()
                         .geneEncodingType(geneEncodingType)
                         .value(value)
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build();
         OrganelleConverter converter = new OrganelleConverter(new EvidenceIndexMapper());
         GeneLocationType xml = converter.toXml(organelle);
@@ -44,7 +44,7 @@ class OrganelleConverterTest {
                 new GeneLocationBuilder()
                         .geneEncodingType(geneEncodingType)
                         .value(value)
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build();
         OrganelleConverter converter = new OrganelleConverter(new EvidenceIndexMapper());
         GeneLocationType xml = converter.toXml(organelle);

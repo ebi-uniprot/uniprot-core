@@ -107,16 +107,16 @@ public class AlternativeProductsCommentTest {
         APIsoform apIsoform =
                 isoformBuilder
                         .name(name)
-                        .synonyms(isoformSynonyms)
-                        .ids(isoformIds)
+                        .synonymsSet(isoformSynonyms)
+                        .isoformIdsSet(isoformIds)
                         .sequenceStatus(IsoformSequenceStatus.DESCRIBED)
                         .note(note)
-                        .sequenceIds(Collections.singletonList("SequenceID"))
+                        .sequenceIdsSet(Collections.singletonList("SequenceID"))
                         .build();
 
         List<APEventType> events = Collections.singletonList(APEventType.ALTERNATIVE_INITIATION);
         List<APIsoform> isoforms = Collections.singletonList(apIsoform);
 
-        return new APCommentBuilder().events(events).isoforms(isoforms).note(note).build();
+        return new APCommentBuilder().eventsSet(events).isoformsSet(isoforms).note(note).build();
     }
 }

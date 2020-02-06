@@ -31,7 +31,7 @@ public class RnaEdPositionConverter implements Converter<LocationType, RnaEdPosi
             String position = xmlObj.getPosition().getPosition().toString().trim();
             return new RnaEditingPositionBuilder()
                     .position(position)
-                    .evidences(evRefMapper.parseEvidenceIds(xmlObj.getPosition().getEvidence()))
+                    .evidencesSet(evRefMapper.parseEvidenceIds(xmlObj.getPosition().getEvidence()))
                     .build();
         } else return null;
     }

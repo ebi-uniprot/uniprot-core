@@ -16,7 +16,7 @@ class UnpublishedBuilderTest extends AbstractCitationBuilderTest {
         Unpublished citation = builder.build();
         assertEquals(title, citation.getTitle());
         assertEquals("2015-MAY", citation.getPublicationDate().getValue());
-        assertTrue(citation.getAuthoringGroup().isEmpty());
+        assertTrue(citation.getAuthoringGroups().isEmpty());
         assertTrue(citation.getAuthors().isEmpty());
         assertEquals(CitationType.UNPUBLISHED, citation.getCitationType());
     }

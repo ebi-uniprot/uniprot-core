@@ -77,7 +77,7 @@ class UniRefEntryMapTest {
     @Test
     void testGetMembers() {
         UniRefEntry entry = createEntry();
-        UniRefEntry entry2 = UniRefEntryBuilder.from(entry).addMember(createMember2()).build();
+        UniRefEntry entry2 = UniRefEntryBuilder.from(entry).membersAdd(createMember2()).build();
 
         String members = UniRefEntryMap.getMembers(entry2);
         assertEquals("P12345_HUMAN; P12347_HUMAN; UPI0000E5B23D", members);
@@ -98,18 +98,18 @@ class UniRefEntryMapTest {
                         .commonTaxonId(9605l)
                         .commonTaxon("Homo")
                         .representativeMember(createReprestativeMember())
-                        .addMember(createMember())
-                        .addGoTerm(
+                        .membersAdd(createMember())
+                        .goTermsAdd(
                                 new GoTermBuilder()
                                         .type(GoTermType.COMPONENT)
                                         .id("GO:0044444")
                                         .build())
-                        .addGoTerm(
+                        .goTermsAdd(
                                 new GoTermBuilder()
                                         .type(GoTermType.FUNCTION)
                                         .id("GO:0044459")
                                         .build())
-                        .addGoTerm(
+                        .goTermsAdd(
                                 new GoTermBuilder()
                                         .type(GoTermType.PROCESS)
                                         .id("GO:0032459")
@@ -137,7 +137,7 @@ class UniRefEntryMapTest {
                         .sequenceLength(length)
                         .proteinName(pName)
                         .uniparcId(new UniParcIdBuilder(upi).build())
-                        .addAccession(new UniProtAccessionBuilder("P12345").build())
+                        .accessionsAdd(new UniProtAccessionBuilder("P12345").build())
                         .uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
                         .uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
                         .uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())
@@ -163,7 +163,7 @@ class UniRefEntryMapTest {
                         .sequenceLength(length)
                         .proteinName(pName)
                         .uniparcId(new UniParcIdBuilder(upi).build())
-                        .addAccession(new UniProtAccessionBuilder("P12347").build())
+                        .accessionsAdd(new UniProtAccessionBuilder("P12347").build())
                         .uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
                         .uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
                         .uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())

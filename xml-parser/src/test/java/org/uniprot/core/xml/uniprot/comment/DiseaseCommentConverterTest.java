@@ -52,7 +52,7 @@ class DiseaseCommentConverterTest {
                 .description(description)
                 .diseaseAc("DI-01465")
                 .reference(createDBCrossReference(DiseaseReferenceType.MIM, "219500"))
-                .evidences(evidences);
+                .evidencesSet(evidences);
         Disease disease = builder.build();
         String noteStr =
                 "The disease is caused by mutations affecting the gene represented in this entry";

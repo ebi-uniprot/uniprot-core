@@ -19,7 +19,7 @@ class DBCrossReferenceImplTest {
             new DBCrossReferenceBuilder<DefaultDatabaseType>()
                     .databaseType(new DefaultDatabaseType("EMBL"))
                     .id("DB123414")
-                    .properties(properties)
+                    .propertiesSet(properties)
                     .build();
 
     @Test

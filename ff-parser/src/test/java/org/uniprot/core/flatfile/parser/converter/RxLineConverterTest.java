@@ -28,7 +28,7 @@ class RxLineConverterTest {
         rxLine.rxs.add(rx2);
         RxLineConverter converter = new RxLineConverter();
         List<DBCrossReference<CitationXrefType>> cxrefs = converter.convert(rxLine);
-        Citation citation = new BookBuilder().citationXrefs(cxrefs).build();
+        Citation citation = new BookBuilder().citationXrefsSet(cxrefs).build();
 
         DBCrossReference<CitationXrefType> wrongXref =
                 new DBCrossReferenceBuilder<CitationXrefType>().build();

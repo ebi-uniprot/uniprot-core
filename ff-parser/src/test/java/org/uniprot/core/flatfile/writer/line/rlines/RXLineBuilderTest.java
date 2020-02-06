@@ -104,6 +104,6 @@ class RXLineBuilderTest {
                             .databaseType(CitationXrefType.AGRICOLA)
                             .id(agricolaId)
                             .build());
-        return new BookBuilder().citationXrefs(xrefs).build();
+        return new BookBuilder().citationXrefsSet(xrefs).build();
     }
 }

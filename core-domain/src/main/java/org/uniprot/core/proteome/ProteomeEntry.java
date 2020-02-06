@@ -44,7 +44,7 @@ public interface ProteomeEntry extends Serializable {
 
     int getGeneCount();
 
-    List<TaxonomyLineage> getTaxonLineage();
+    List<TaxonomyLineage> getTaxonLineages();
 
     List<CanonicalProtein> getCanonicalProteins();
 

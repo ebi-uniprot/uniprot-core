@@ -67,10 +67,10 @@ class UniRefFastaParserTest {
                 .commonTaxonId(9606l)
                 .commonTaxon("Homo sapiens")
                 .representativeMember(createReprestativeMember())
-                .addMember(createMember())
-                .addGoTerm(new GoTermBuilder().type(GoTermType.COMPONENT).id("GO:0044444").build())
-                .addGoTerm(new GoTermBuilder().type(GoTermType.FUNCTION).id("GO:0044459").build())
-                .addGoTerm(new GoTermBuilder().type(GoTermType.PROCESS).id("GO:0032459").build())
+                .membersAdd(createMember())
+                .goTermsAdd(new GoTermBuilder().type(GoTermType.COMPONENT).id("GO:0044444").build())
+                .goTermsAdd(new GoTermBuilder().type(GoTermType.FUNCTION).id("GO:0044459").build())
+                .goTermsAdd(new GoTermBuilder().type(GoTermType.PROCESS).id("GO:0032459").build())
                 .build();
     }
 
@@ -93,7 +93,7 @@ class UniRefFastaParserTest {
                         .sequenceLength(length)
                         .proteinName(pName)
                         .uniparcId(new UniParcIdBuilder(upi).build())
-                        .addAccession(new UniProtAccessionBuilder("P12345").build())
+                        .accessionsAdd(new UniProtAccessionBuilder("P12345").build())
                         .uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
                         .uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
                         .uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())
@@ -119,7 +119,7 @@ class UniRefFastaParserTest {
                         .sequenceLength(length)
                         .proteinName(pName)
                         .uniparcId(new UniParcIdBuilder(upi).build())
-                        .addAccession(new UniProtAccessionBuilder("P12345").build())
+                        .accessionsAdd(new UniProtAccessionBuilder("P12345").build())
                         .uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
                         .uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
                         .uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())

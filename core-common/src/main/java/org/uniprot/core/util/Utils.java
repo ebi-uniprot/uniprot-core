@@ -91,15 +91,15 @@ public class Utils {
         return value == null || value.isEmpty();
     }
 
-    public static boolean notNullOrEmpty(@Nullable String value) {
+    public static boolean notNullNotEmpty(@Nullable String value) {
         return value != null && !value.isEmpty();
     }
 
-    public static boolean notNullOrEmpty(@Nullable Collection<?> value) {
+    public static boolean notNullNotEmpty(@Nullable Collection<?> value) {
         return value != null && !value.isEmpty();
     }
 
-    public static boolean notNullOrEmpty(@Nullable Map<?, ?> value) {
+    public static boolean notNullNotEmpty(@Nullable Map<?, ?> value) {
         return value != null && !value.isEmpty();
     }
 

@@ -61,9 +61,9 @@ public class ObjectsForTests {
         ECNumber ecNumber = new ECNumberImpl("1.2.4.5");
         return new ReactionBuilder()
                 .name(name)
-                .references(references)
+                .reactionReferencesSet(references)
                 .ecNumber(ecNumber)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 
@@ -82,7 +82,7 @@ public class ObjectsForTests {
                                         .databaseType(ReactionReferenceType.RHEA)
                                         .id("RHEA:123")
                                         .build())
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build());
         phyReactions.add(
                 new PhysiologicalReactionBuilder()
@@ -92,7 +92,7 @@ public class ObjectsForTests {
                                         .databaseType(ReactionReferenceType.RHEA)
                                         .id("RHEA:313")
                                         .build())
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build());
         return phyReactions;
     }
@@ -220,7 +220,7 @@ public class ObjectsForTests {
                         .interproGroup(domain)
                         .signatureDbType(SignatureDbType.PFAM)
                         .signatureDbId("sigId2")
-                        .locations(locations)
+                        .locationsSet(locations)
                         .build();
         SequenceFeature sf3 =
                 SequenceFeatureBuilder.from(sf).signatureDbType(SignatureDbType.PROSITE).build();
@@ -240,7 +240,7 @@ public class ObjectsForTests {
                         .active(true)
                         .created(LocalDate.of(2017, 5, 17))
                         .lastUpdated(LocalDate.of(2017, 2, 27))
-                        .properties(properties)
+                        .propertiesSet(properties)
                         .build();
 
         List<Property> properties2 = new ArrayList<>();
@@ -256,7 +256,7 @@ public class ObjectsForTests {
                         .active(true)
                         .created(LocalDate.of(2017, 2, 12))
                         .lastUpdated(LocalDate.of(2017, 4, 23))
-                        .properties(properties2)
+                        .propertiesSet(properties2)
                         .build();
 
         return Arrays.asList(xref, xref2);
@@ -274,10 +274,10 @@ public class ObjectsForTests {
         APIsoformBuilder isoformBuilder = new APIsoformBuilder();
         return isoformBuilder
                 .name(new IsoformNameBuilder(name, evidences).build())
-                .synonyms(isoformSynonyms)
-                .ids(asList("isoID1", "isoID2", "isoID3"))
+                .synonymsSet(isoformSynonyms)
+                .isoformIdsSet(asList("isoID1", "isoID2", "isoID3"))
                 .sequenceStatus(IsoformSequenceStatus.DISPLAYED)
-                .sequenceIds(singletonList("someSeqId"))
+                .sequenceIdsSet(singletonList("someSeqId"))
                 .build();
     }
 
@@ -292,15 +292,15 @@ public class ObjectsForTests {
     public static List<EC> eCNumbers() {
         List<Evidence> evidences = createEvidences();
         List<EC> ecNumbers = new ArrayList<>();
-        ecNumbers.add(new ECBuilder().value("1.2.3.4").evidences(evidences).build());
-        ecNumbers.add(new ECBuilder().value("1.3.4.3").evidences(evidences).build());
+        ecNumbers.add(new ECBuilder().value("1.2.3.4").evidencesSet(evidences).build());
+        ecNumbers.add(new ECBuilder().value("1.3.4.3").evidencesSet(evidences).build());
         return ecNumbers;
     }
 
     public static Absorption createAbsorption() {
         Note note = createNote();
         List<Evidence> evidences = createEvidences();
-        return new AbsorptionBuilder().evidences(evidences).note(note).max(32).build();
+        return new AbsorptionBuilder().evidencesSet(evidences).note(note).max(32).build();
     }
 
     public static KineticParameters createKineticParameters() {
@@ -310,8 +310,8 @@ public class ObjectsForTests {
         Note note = createNote();
 
         return new KineticParametersBuilder()
-                .maximumVelocities(velocities)
-                .michaelisConstants(mConstants)
+                .maximumVelocitiesSet(velocities)
+                .michaelisConstantsSet(mConstants)
                 .note(note)
                 .build();
     }
@@ -323,14 +323,14 @@ public class ObjectsForTests {
                         .velocity(1.0)
                         .unit("unit1")
                         .enzyme("enzyme1")
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build());
         velocities.add(
                 new MaximumVelocityBuilder()
                         .velocity(1.32)
                         .unit("unit2")
                         .enzyme("enzyme2")
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build());
         return velocities;
     }
@@ -345,7 +345,7 @@ public class ObjectsForTests {
                         .constant(constant)
                         .unit(unit)
                         .substrate(substrate)
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build();
         mConstants.add(mconstant);
         return mConstants;
@@ -353,14 +353,14 @@ public class ObjectsForTests {
 
     public static LiteratureMappedReference createCompleteLiteratureMappedReference() {
         return getBasicFields()
-                .sourceCategory(singletonList("source category"))
+                .sourceCategoriesSet(singletonList("source category"))
                 .uniprotAccession("P12345")
                 .build();
     }
 
     public static LiteratureMappedReference createCompleteLiteratureMappedReferenceWithAdd() {
         return getBasicFields()
-                .addSourceCategory("source category")
+                .sourceCategoriesAdd("source category")
                 .uniprotAccession(new UniProtAccessionImpl("P12345"))
                 .build();
     }
@@ -375,7 +375,7 @@ public class ObjectsForTests {
     public static LiteratureStoreEntry createCompleteLiteratureStoreEntry() {
         return new LiteratureStoreEntryBuilder()
                 .literatureEntry(createCompleteLiteratureEntry())
-                .literatureMappedReference(
+                .literatureMappedReferencesSet(
                         Collections.singletonList(createCompleteLiteratureMappedReference()))
                 .build();
     }
@@ -383,7 +383,7 @@ public class ObjectsForTests {
     public static LiteratureStoreEntry createCompleteLiteratureStoreEntryWithAdd() {
         return new LiteratureStoreEntryBuilder()
                 .literatureEntry(createCompleteLiteratureEntry())
-                .addLiteratureMappedReference(createCompleteLiteratureMappedReference())
+                .literatureMappedReferencesAdd(createCompleteLiteratureMappedReference())
                 .build();
     }
 
@@ -408,9 +408,9 @@ public class ObjectsForTests {
                 .lastPage("last page")
                 .volume("the volume")
                 .journalName("The journal name")
-                .addAuthor("John")
-                .addAuthorGroup("the author group")
-                .addCitationXrefs(xref)
+                .authorsAdd("John")
+                .authoringGroupsAdd("the author group")
+                .citationXrefsAdd(xref)
                 .publicationDate("2015-MAY")
                 .title("the big title")
                 .build();
@@ -434,12 +434,12 @@ public class ObjectsForTests {
     public static TaxonomyEntry getCompleteTaxonomyEntryUsingAdd() {
         TaxonomyEntryBuilder builder = getTaxonomyEntryBuilderWithBasicData();
 
-        builder.addSynonyms("synonym");
-        builder.addOtherNames("otherName");
-        builder.addLineage(getCompleteTaxonomyLineage());
-        builder.addStrain(getCompleteTaxonomyStrain());
-        builder.addHost(getCompleteTaxonomy());
-        builder.addLink("link");
+        builder.synonymsAdd("synonym");
+        builder.otherNamesAdd("otherName");
+        builder.lineagesAdd(getCompleteTaxonomyLineage());
+        builder.strainsAdd(getCompleteTaxonomyStrain());
+        builder.hostsAdd(getCompleteTaxonomy());
+        builder.linksAdd("link");
 
         return builder.build();
     }
@@ -447,12 +447,12 @@ public class ObjectsForTests {
     public static TaxonomyEntry getCompleteTaxonomyEntry() {
         TaxonomyEntryBuilder builder = getTaxonomyEntryBuilderWithBasicData();
 
-        builder.synonyms(singletonList("synonym"));
-        builder.otherNames(singletonList("otherName"));
-        builder.lineage(singletonList(getCompleteTaxonomyLineage()));
-        builder.strains(singletonList(getCompleteTaxonomyStrain()));
-        builder.hosts(singletonList(getCompleteTaxonomy()));
-        builder.links(singletonList("link"));
+        builder.synonymsSet(singletonList("synonym"));
+        builder.otherNamesSet(singletonList("otherName"));
+        builder.lineagesSet(singletonList(getCompleteTaxonomyLineage()));
+        builder.strainsSet(singletonList(getCompleteTaxonomyStrain()));
+        builder.hostsSet(singletonList(getCompleteTaxonomy()));
+        builder.linksSet(singletonList("link"));
 
         return builder.build();
     }
@@ -477,7 +477,7 @@ public class ObjectsForTests {
                 .taxonId(9606)
                 .scientificName("Homo sapiens")
                 .commonName("Human")
-                .synonyms(singletonList("Some name"))
+                .synonymsSet(singletonList("Some name"))
                 .mnemonic("HUMAN")
                 .build();
     }
@@ -493,7 +493,7 @@ public class ObjectsForTests {
 
     public static TaxonomyStrain getCompleteTaxonomyStrain() {
         TaxonomyStrainBuilder builder = new TaxonomyStrainBuilder();
-        builder.synonyms(singletonList("synonym"));
+        builder.synonymsSet(singletonList("synonym"));
         builder.name("name");
         return builder.build();
     }
@@ -521,7 +521,7 @@ public class ObjectsForTests {
                 new CofactorBuilder()
                         .name("cofactor 1")
                         .reference(reference)
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build();
         DBCrossReference<CofactorReferenceType> reference2 =
                 new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:31324");
@@ -529,7 +529,7 @@ public class ObjectsForTests {
                 new CofactorBuilder()
                         .name("cofactor 2")
                         .reference(reference2)
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build();
         return Arrays.asList(cofactor, cofactor2);
     }
@@ -599,9 +599,9 @@ public class ObjectsForTests {
         final List<String> AUTHORS = asList("Tom", "John");
         builder.title(TITLE)
                 .publicationDate(PUBLICATION_DATE)
-                .authoringGroups(GROUPS)
-                .authors(AUTHORS)
-                .citationXrefs(
+                .authoringGroupsSet(GROUPS)
+                .authorsSet(AUTHORS)
+                .citationXrefsSet(
                         asList(
                                 new DBCrossReferenceBuilder<CitationXrefType>()
                                         .databaseType(CitationXrefType.PUBMED)

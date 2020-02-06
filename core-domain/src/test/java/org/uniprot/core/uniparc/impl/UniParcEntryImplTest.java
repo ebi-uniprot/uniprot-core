@@ -34,7 +34,7 @@ class UniParcEntryImplTest {
     void canGetTaxonomiesFromDbCrossRef_whenTaxonomiesNotPresent() {
         UniParcEntry obj =
                 new UniParcEntryBuilder()
-                        .databaseCrossReferences(uniParcDBCrossReferences())
+                        .databaseCrossReferencesSet(uniParcDBCrossReferences())
                         .build();
         assertNotNull(obj.getTaxonomies());
         assertFalse(obj.getDbXReferences().isEmpty());

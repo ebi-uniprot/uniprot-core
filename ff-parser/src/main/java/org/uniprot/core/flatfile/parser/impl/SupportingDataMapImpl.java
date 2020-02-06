@@ -55,7 +55,7 @@ public class SupportingDataMapImpl implements SupportingDataMap {
     }
 
     private void loadSubcellularLocationMap(String subcellularLocationFile) {
-        if (Utils.notNullOrEmpty(subcellularLocationFile)) {
+        if (Utils.notNullNotEmpty(subcellularLocationFile)) {
             subcellularLocationMap.putAll(
                     new SubcellularLocationFileReader()
                             .parseFileToAccessionMap(subcellularLocationFile));
@@ -66,7 +66,7 @@ public class SupportingDataMapImpl implements SupportingDataMap {
     }
 
     private void loadKeywordMap(String keywordFile) {
-        if (Utils.notNullOrEmpty(keywordFile)) {
+        if (Utils.notNullNotEmpty(keywordFile)) {
             keywordMap.putAll(new KeywordFileReader().parseFileToAccessionMap(keywordFile));
             LOGGER.info("Loaded " + keywordMap.size() + " keyword Map");
         } else {
@@ -75,7 +75,7 @@ public class SupportingDataMapImpl implements SupportingDataMap {
     }
 
     private void loadDiseaseMap(String diseaseFile) {
-        if (Utils.notNullOrEmpty(diseaseFile)) {
+        if (Utils.notNullNotEmpty(diseaseFile)) {
             diseaseMap.putAll(new DiseaseFileReader().parseFileToAccessionMap(diseaseFile));
             LOGGER.info("Loaded " + diseaseMap.size() + " disease Map");
         } else {
@@ -84,7 +84,7 @@ public class SupportingDataMapImpl implements SupportingDataMap {
     }
 
     private void loadGoEvidenceMap(String goPubmedFile) {
-        if (Utils.notNullOrEmpty(goPubmedFile)) {
+        if (Utils.notNullNotEmpty(goPubmedFile)) {
             try (BufferedReader br =
                     Files.newBufferedReader(Paths.get(goPubmedFile), StandardCharsets.UTF_8)) {
                 for (String line = null; (line = br.readLine()) != null; ) {

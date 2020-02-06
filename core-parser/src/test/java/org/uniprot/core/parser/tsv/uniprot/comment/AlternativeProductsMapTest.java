@@ -34,7 +34,7 @@ class AlternativeProductsMapTest {
                 CommentTestUtil.createUniProtEntryFromCommentLine(alternativeProductsLine);
 
         List<AlternativeProductsComment> alternativeProductsComments =
-                entry.getCommentByType(CommentType.ALTERNATIVE_PRODUCTS);
+                entry.getCommentsByType(CommentType.ALTERNATIVE_PRODUCTS);
         assertNotNull(entry);
         AlternativeProductsMap alternativeProductsMap =
                 new AlternativeProductsMap(alternativeProductsComments);
@@ -65,7 +65,7 @@ class AlternativeProductsMapTest {
                 CommentTestUtil.createUniProtEntryFromCommentLine(alternativeProductsLine);
 
         List<AlternativeProductsComment> alternativeProductsComments =
-                entry.getCommentByType(CommentType.ALTERNATIVE_PRODUCTS);
+                entry.getCommentsByType(CommentType.ALTERNATIVE_PRODUCTS);
         assertNotNull(entry);
         AlternativeProductsMap alternativeProductsMap =
                 new AlternativeProductsMap(alternativeProductsComments);
@@ -103,7 +103,7 @@ class AlternativeProductsMapTest {
                 CommentTestUtil.createUniProtEntryFromCommentLine(alternativeProductsLine);
 
         List<AlternativeProductsComment> alternativeProductsComments =
-                entry.getCommentByType(CommentType.ALTERNATIVE_PRODUCTS);
+                entry.getCommentsByType(CommentType.ALTERNATIVE_PRODUCTS);
         assertNotNull(entry);
         AlternativeProductsMap alternativeProductsMap =
                 new AlternativeProductsMap(alternativeProductsComments);

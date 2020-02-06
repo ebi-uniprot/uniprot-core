@@ -114,7 +114,8 @@ public class UniProtEntryBuilder implements Builder<UniProtEntry> {
         return this;
     }
 
-    public @Nonnull UniProtEntryBuilder secondaryAccessionAdd(UniProtAccession secondaryAccession) {
+    public @Nonnull UniProtEntryBuilder secondaryAccessionsAdd(
+            UniProtAccession secondaryAccession) {
         addOrIgnoreNull(secondaryAccession, this.secondaryAccessions);
         return this;
     }
@@ -140,7 +141,7 @@ public class UniProtEntryBuilder implements Builder<UniProtEntry> {
         return this;
     }
 
-    public @Nonnull UniProtEntryBuilder organismHostAdd(OrganismHost organismHost) {
+    public @Nonnull UniProtEntryBuilder organismHostsAdd(OrganismHost organismHost) {
         addOrIgnoreNull(organismHost, this.organismHosts);
         return this;
     }
@@ -160,7 +161,7 @@ public class UniProtEntryBuilder implements Builder<UniProtEntry> {
         return this;
     }
 
-    public @Nonnull UniProtEntryBuilder geneAdd(Gene gene) {
+    public @Nonnull UniProtEntryBuilder genesAdd(Gene gene) {
         addOrIgnoreNull(gene, this.genes);
         return this;
     }
@@ -170,7 +171,7 @@ public class UniProtEntryBuilder implements Builder<UniProtEntry> {
         return this;
     }
 
-    public @Nonnull UniProtEntryBuilder commentAdd(Comment comment) {
+    public @Nonnull UniProtEntryBuilder commentsAdd(Comment comment) {
         addOrIgnoreNull(comment, this.comments);
         return this;
     }
@@ -180,7 +181,7 @@ public class UniProtEntryBuilder implements Builder<UniProtEntry> {
         return this;
     }
 
-    public @Nonnull UniProtEntryBuilder featureAdd(Feature feature) {
+    public @Nonnull UniProtEntryBuilder featuresAdd(Feature feature) {
         addOrIgnoreNull(feature, this.features);
         return this;
     }
@@ -190,7 +191,7 @@ public class UniProtEntryBuilder implements Builder<UniProtEntry> {
         return this;
     }
 
-    public @Nonnull UniProtEntryBuilder geneLocationAdd(GeneLocation geneLocation) {
+    public @Nonnull UniProtEntryBuilder geneLocationsAdd(GeneLocation geneLocation) {
         addOrIgnoreNull(geneLocation, this.geneLocations);
         return this;
     }
@@ -200,7 +201,7 @@ public class UniProtEntryBuilder implements Builder<UniProtEntry> {
         return this;
     }
 
-    public @Nonnull UniProtEntryBuilder keywordAdd(Keyword keyword) {
+    public @Nonnull UniProtEntryBuilder keywordsAdd(Keyword keyword) {
         addOrIgnoreNull(keyword, this.keywords);
         return this;
     }
@@ -210,7 +211,7 @@ public class UniProtEntryBuilder implements Builder<UniProtEntry> {
         return this;
     }
 
-    public @Nonnull UniProtEntryBuilder referenceAdd(UniProtReference reference) {
+    public @Nonnull UniProtEntryBuilder referencesAdd(UniProtReference reference) {
         addOrIgnoreNull(reference, this.references);
         return this;
     }
@@ -220,7 +221,7 @@ public class UniProtEntryBuilder implements Builder<UniProtEntry> {
         return this;
     }
 
-    public @Nonnull UniProtEntryBuilder databaseCrossReferenceAdd(
+    public @Nonnull UniProtEntryBuilder databaseCrossReferencesAdd(
             UniProtDBCrossReference databaseCrossReference) {
         addOrIgnoreNull(databaseCrossReference, this.databaseCrossReferences);
         return this;
@@ -242,7 +243,7 @@ public class UniProtEntryBuilder implements Builder<UniProtEntry> {
         return this;
     }
 
-    public @Nonnull UniProtEntryBuilder lineageAdd(TaxonomyLineage lineage) {
+    public @Nonnull UniProtEntryBuilder lineagesAdd(TaxonomyLineage lineage) {
         addOrIgnoreNull(lineage, this.lineages);
         return this;
     }

@@ -21,7 +21,7 @@ public class ValueImpl implements Value {
 
     @Override
     public boolean hasValue() {
-        return Utils.notNullOrEmpty(this.value);
+        return Utils.notNullNotEmpty(this.value);
     }
 
     @Override

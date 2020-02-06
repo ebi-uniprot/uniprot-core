@@ -75,9 +75,9 @@ public class InternalSectionTest {
         SourceLine sourceLine = new SourceLineBuilder("source line value").build();
 
         return new InternalSectionBuilder()
-                .addEvidenceLine(evidenceLine)
-                .addInternalLine(internalLine)
-                .addSourceLine(sourceLine)
+                .evidenceLinesAdd(evidenceLine)
+                .internalLinesAdd(internalLine)
+                .sourceLinesAdd(sourceLine)
                 .build();
     }
 }

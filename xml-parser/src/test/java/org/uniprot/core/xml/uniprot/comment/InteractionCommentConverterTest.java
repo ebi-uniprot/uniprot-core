@@ -38,7 +38,7 @@ class InteractionCommentConverterTest {
         interactions.add(interaction1);
         interactions.add(interaction2);
         InteractionCommentBuilder commentBuilder = new InteractionCommentBuilder();
-        InteractionComment comment = commentBuilder.interactions(interactions).build();
+        InteractionComment comment = commentBuilder.interactionsSet(interactions).build();
 
         InteractionCommentConverter converter = new InteractionCommentConverter();
         List<CommentType> xmlComments = converter.toXml(comment);

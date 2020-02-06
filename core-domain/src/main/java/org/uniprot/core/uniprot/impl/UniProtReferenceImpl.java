@@ -44,7 +44,7 @@ public class UniProtReferenceImpl implements UniProtReference {
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notNullOrEmpty(this.evidences);
+        return Utils.notNullNotEmpty(this.evidences);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class UniProtReferenceImpl implements UniProtReference {
     }
 
     @Override
-    public List<ReferenceComment> getTypedReferenceComments(ReferenceCommentType type) {
+    public List<ReferenceComment> getReferenceCommentsByType(ReferenceCommentType type) {
         return this.referenceComments.stream()
                 .filter(val -> val.getType() == type)
                 .collect(Collectors.toList());
@@ -76,12 +76,12 @@ public class UniProtReferenceImpl implements UniProtReference {
 
     @Override
     public boolean hasReferenceComments() {
-        return Utils.notNullOrEmpty(this.referenceComments);
+        return Utils.notNullNotEmpty(this.referenceComments);
     }
 
     @Override
     public boolean hasReferencePositions() {
-        return Utils.notNullOrEmpty(this.referencePositions);
+        return Utils.notNullNotEmpty(this.referencePositions);
     }
 
     @Override

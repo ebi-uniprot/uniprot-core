@@ -132,7 +132,7 @@ public class FeatureTest {
         AlternativeSequence alternativeSequence =
                 new AlternativeSequenceBuilder()
                         .original("original value")
-                        .alternative("alternative value")
+                        .alternativeSequencesAdd("alternative value")
                         .build();
 
         DBCrossReference<FeatureXDbType> xrefs =
@@ -150,7 +150,7 @@ public class FeatureTest {
                 .alternativeSequence(alternativeSequence)
                 .dbXref(xrefs)
                 .description("description value")
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .featureId("id value")
                 .location(location)
                 .build();

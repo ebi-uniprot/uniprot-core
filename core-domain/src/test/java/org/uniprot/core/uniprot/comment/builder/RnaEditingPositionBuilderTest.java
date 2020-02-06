@@ -12,7 +12,7 @@ import org.uniprot.core.uniprot.comment.RnaEdPosition;
 class RnaEditingPositionBuilderTest {
     @Test
     void canAddSingleEvidence() {
-        RnaEdPosition obj = new RnaEditingPositionBuilder().addEvidence(createEvidence()).build();
+        RnaEdPosition obj = new RnaEditingPositionBuilder().evidencesAdd(createEvidence()).build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
         assertTrue(obj.hasEvidences());
@@ -20,7 +20,7 @@ class RnaEditingPositionBuilderTest {
 
     @Test
     void nullEvidence_willBeIgnore() {
-        RnaEdPosition obj = new RnaEditingPositionBuilder().addEvidence(null).build();
+        RnaEdPosition obj = new RnaEditingPositionBuilder().evidencesAdd(null).build();
         assertNotNull(obj.getEvidences());
         assertTrue(obj.getEvidences().isEmpty());
         assertFalse(obj.hasEvidences());
@@ -30,8 +30,8 @@ class RnaEditingPositionBuilderTest {
     void evidences_willConvertUnModifiable_toModifiable() {
         RnaEdPosition obj =
                 new RnaEditingPositionBuilder()
-                        .evidences(Collections.emptyList())
-                        .addEvidence(createEvidence())
+                        .evidencesSet(Collections.emptyList())
+                        .evidencesAdd(createEvidence())
                         .build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
@@ -40,7 +40,7 @@ class RnaEditingPositionBuilderTest {
 
     @Test
     void canAddListEvidences() {
-        RnaEdPosition obj = new RnaEditingPositionBuilder().evidences(createEvidences()).build();
+        RnaEdPosition obj = new RnaEditingPositionBuilder().evidencesSet(createEvidences()).build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
         assertTrue(obj.hasEvidences());

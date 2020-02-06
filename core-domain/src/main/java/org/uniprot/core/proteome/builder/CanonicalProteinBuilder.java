@@ -20,12 +20,12 @@ public class CanonicalProteinBuilder implements Builder<CanonicalProtein> {
         return new CanonicalProteinImpl(canonicalProtein, relatedProteins);
     }
 
-    public @Nonnull CanonicalProteinBuilder relatedProteins(List<Protein> relatedProteins) {
+    public @Nonnull CanonicalProteinBuilder relatedProteinsSet(List<Protein> relatedProteins) {
         this.relatedProteins = Utils.modifiableList(relatedProteins);
         return this;
     }
 
-    public @Nonnull CanonicalProteinBuilder addRelatedProtein(Protein relatedProtein) {
+    public @Nonnull CanonicalProteinBuilder relatedProteinsAdd(Protein relatedProtein) {
         Utils.addOrIgnoreNull(relatedProtein, relatedProteins);
         return this;
     }
@@ -38,6 +38,6 @@ public class CanonicalProteinBuilder implements Builder<CanonicalProtein> {
     public static @Nonnull CanonicalProteinBuilder from(@Nonnull CanonicalProtein instance) {
         return new CanonicalProteinBuilder()
                 .canonicalProtein(instance.getCanonicalProtein())
-                .relatedProteins(instance.getRelatedProteins());
+                .relatedProteinsSet(instance.getRelatedProteins());
     }
 }

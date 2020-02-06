@@ -70,11 +70,11 @@ public class RnaEditingCommentTransformer implements CommentTransformer<RnaEditi
                     RnaEdPosition position =
                             new RnaEditingPositionBuilder()
                                     .position(pos)
-                                    .evidences(evidences)
+                                    .evidencesSet(evidences)
                                     .build();
                     positions.add(position);
                 }
-                builder.positions(positions);
+                builder.positionsSet(positions);
             }
         }
         if (noteStr != null) {

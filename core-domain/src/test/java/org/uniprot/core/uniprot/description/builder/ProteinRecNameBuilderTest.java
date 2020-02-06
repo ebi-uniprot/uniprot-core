@@ -10,7 +10,7 @@ class ProteinRecNameBuilderTest {
     @Test
     void canAddSingleShortName() {
         ProteinRecName obj =
-                new ProteinRecNameBuilder().addShortName(new NameBuilder().build()).build();
+                new ProteinRecNameBuilder().shortNamesAdd(new NameBuilder().build()).build();
         assertNotNull(obj.getShortNames());
         assertFalse(obj.getShortNames().isEmpty());
         assertTrue(obj.hasShortNames());
@@ -18,7 +18,7 @@ class ProteinRecNameBuilderTest {
 
     @Test
     void nullShortName_willBeIgnore() {
-        ProteinRecName obj = new ProteinRecNameBuilder().addShortName(null).build();
+        ProteinRecName obj = new ProteinRecNameBuilder().shortNamesAdd(null).build();
         assertNotNull(obj.getShortNames());
         assertTrue(obj.getShortNames().isEmpty());
         assertFalse(obj.hasShortNames());
@@ -27,7 +27,7 @@ class ProteinRecNameBuilderTest {
     @Test
     void canAddSingleEcNumber() {
         ProteinRecName obj =
-                new ProteinRecNameBuilder().addEcNumber(new ECBuilder().build()).build();
+                new ProteinRecNameBuilder().ecNumbersAdd(new ECBuilder().build()).build();
         assertNotNull(obj.getEcNumbers());
         assertFalse(obj.getEcNumbers().isEmpty());
         assertTrue(obj.hasEcNumbers());
@@ -35,7 +35,7 @@ class ProteinRecNameBuilderTest {
 
     @Test
     void nullEcNumber_willBeIgnore() {
-        ProteinRecName obj = new ProteinRecNameBuilder().addEcNumber(null).build();
+        ProteinRecName obj = new ProteinRecNameBuilder().ecNumbersAdd(null).build();
         assertNotNull(obj.getEcNumbers());
         assertTrue(obj.getEcNumbers().isEmpty());
         assertFalse(obj.hasEcNumbers());

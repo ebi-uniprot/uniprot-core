@@ -22,6 +22,6 @@ public interface MichaelisConstant extends HasEvidences {
     }
 
     default boolean hasSubstrate() {
-        return Utils.notNullOrEmpty(getSubstrate());
+        return Utils.notNullNotEmpty(getSubstrate());
     }
 }

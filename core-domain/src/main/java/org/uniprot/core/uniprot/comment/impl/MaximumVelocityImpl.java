@@ -35,7 +35,7 @@ public class MaximumVelocityImpl implements MaximumVelocity {
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notNullOrEmpty(this.evidences);
+        return Utils.notNullNotEmpty(this.evidences);
     }
 
     @Override

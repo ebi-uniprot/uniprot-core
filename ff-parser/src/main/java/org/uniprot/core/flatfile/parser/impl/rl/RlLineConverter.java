@@ -57,7 +57,7 @@ public class RlLineConverter
 
         } else builder.bookName(b.title);
 
-        builder.editors(b.editors);
+        builder.editorsSet(b.editors);
         if (b.press != null && (!b.press.isEmpty())) {
             builder.publisher(b.press);
         }

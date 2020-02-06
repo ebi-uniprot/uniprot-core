@@ -27,7 +27,7 @@ class FeatureImplTest {
                         .type(FeatureType.ACT_SITE)
                         .location(location)
                         .description("Some description")
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build();
         assertEquals(location, feature.getLocation());
         assertEquals("Some description", feature.getDescription().getValue());
@@ -47,7 +47,7 @@ class FeatureImplTest {
                         .location(location)
                         .description("Some chain description")
                         .featureId(featureId)
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build();
 
         assertEquals(location, feature.getLocation());

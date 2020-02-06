@@ -44,7 +44,7 @@ public class GeneLocationTest {
         return new GeneLocationBuilder()
                 .geneEncodingType(GeneEncodingType.CYANELLE)
                 .value("geneLocation value")
-                .addEvidence(CreateUtils.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10025"))
+                .evidencesAdd(CreateUtils.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10025"))
                 .build();
     }
 }

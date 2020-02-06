@@ -52,7 +52,7 @@ public class LiteratureMappedReferenceImpl implements LiteratureMappedReference 
     }
 
     @Override
-    public List<String> getSourceCategory() {
+    public List<String> getSourceCategories() {
         return sourceCategory;
     }
 
@@ -69,7 +69,7 @@ public class LiteratureMappedReferenceImpl implements LiteratureMappedReference 
         return Objects.equals(getUniprotAccession(), that.getUniprotAccession())
                 && Objects.equals(getSource(), that.getSource())
                 && Objects.equals(getSourceId(), that.getSourceId())
-                && Objects.equals(getSourceCategory(), that.getSourceCategory())
+                && Objects.equals(getSourceCategories(), that.getSourceCategories())
                 && Objects.equals(getAnnotation(), that.getAnnotation());
     }
 
@@ -79,7 +79,7 @@ public class LiteratureMappedReferenceImpl implements LiteratureMappedReference 
                 getUniprotAccession(),
                 getSource(),
                 getSourceId(),
-                getSourceCategory(),
+                getSourceCategories(),
                 getAnnotation());
     }
 

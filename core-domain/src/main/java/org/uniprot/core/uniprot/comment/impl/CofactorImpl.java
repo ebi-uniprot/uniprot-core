@@ -41,7 +41,7 @@ public class CofactorImpl implements Cofactor {
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notNullOrEmpty(this.evidences);
+        return Utils.notNullNotEmpty(this.evidences);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class CofactorImpl implements Cofactor {
 
     @Override
     public boolean hasName() {
-        return Utils.notNullOrEmpty(this.name);
+        return Utils.notNullNotEmpty(this.name);
     }
 
     @Override

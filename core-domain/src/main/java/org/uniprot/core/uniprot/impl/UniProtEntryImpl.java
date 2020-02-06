@@ -207,7 +207,7 @@ public class UniProtEntryImpl implements UniProtEntry {
     }
 
     @Override
-    public <T extends Comment> List<T> getCommentByType(CommentType type) {
+    public <T extends Comment> List<T> getCommentsByType(CommentType type) {
         List<Comment> typedComments =
                 comments.stream()
                         .filter(val -> val.getCommentType().equals(type))
@@ -293,7 +293,7 @@ public class UniProtEntryImpl implements UniProtEntry {
 
     @Override
     public boolean hasSecondaryAccessions() {
-        return Utils.notNullOrEmpty(secondaryAccessions);
+        return Utils.notNullNotEmpty(secondaryAccessions);
     }
 
     @Override
@@ -308,7 +308,7 @@ public class UniProtEntryImpl implements UniProtEntry {
 
     @Override
     public boolean hasOrganismHosts() {
-        return Utils.notNullOrEmpty(this.organismHosts);
+        return Utils.notNullNotEmpty(this.organismHosts);
     }
 
     @Override
@@ -323,37 +323,37 @@ public class UniProtEntryImpl implements UniProtEntry {
 
     @Override
     public boolean hasGenes() {
-        return Utils.notNullOrEmpty(this.genes);
+        return Utils.notNullNotEmpty(this.genes);
     }
 
     @Override
     public boolean hasComments() {
-        return Utils.notNullOrEmpty(this.comments);
+        return Utils.notNullNotEmpty(this.comments);
     }
 
     @Override
     public boolean hasFeatures() {
-        return Utils.notNullOrEmpty(this.features);
+        return Utils.notNullNotEmpty(this.features);
     }
 
     @Override
     public boolean hasGeneLocations() {
-        return Utils.notNullOrEmpty(this.geneLocations);
+        return Utils.notNullNotEmpty(this.geneLocations);
     }
 
     @Override
     public boolean hasKeywords() {
-        return Utils.notNullOrEmpty(this.keywords);
+        return Utils.notNullNotEmpty(this.keywords);
     }
 
     @Override
     public boolean hasReferences() {
-        return Utils.notNullOrEmpty(this.references);
+        return Utils.notNullNotEmpty(this.references);
     }
 
     @Override
     public boolean hasDatabaseCrossReferences() {
-        return Utils.notNullOrEmpty(this.databaseCrossReferences);
+        return Utils.notNullNotEmpty(this.databaseCrossReferences);
     }
 
     @Override

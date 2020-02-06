@@ -37,7 +37,7 @@ class UniProtEntryImplTest {
     @Test
     void canFilterByCommentType() {
         UniProtEntry entry = UniProtEntryBuilder.from(minEntry).commentsSet(comments).build();
-        List<DiseaseComment> comments = entry.getCommentByType(CommentType.DISEASE);
+        List<DiseaseComment> comments = entry.getCommentsByType(CommentType.DISEASE);
 
         assertFalse(comments.isEmpty());
         assertEquals(1, comments.size());

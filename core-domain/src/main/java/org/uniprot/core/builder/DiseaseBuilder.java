@@ -42,9 +42,9 @@ public class DiseaseBuilder implements Builder<Disease> {
                 .accession(instance.getAccession())
                 .acronym(instance.getAcronym())
                 .definition(instance.getDefinition())
-                .alternativeNames(instance.getAlternativeNames())
-                .crossReferences(instance.getCrossReferences())
-                .keywords(instance.getKeywords())
+                .alternativeNamesSet(instance.getAlternativeNames())
+                .crossReferencesSet(instance.getCrossReferences())
+                .keywordsSet(instance.getKeywords())
                 .reviewedProteinCount(instance.getReviewedProteinCount())
                 .unreviewedProteinCount(instance.getUnreviewedProteinCount());
         return builder;
@@ -71,37 +71,37 @@ public class DiseaseBuilder implements Builder<Disease> {
     }
 
     // for single string
-    public @Nonnull DiseaseBuilder alternativeNames(String alternativeName) {
+    public @Nonnull DiseaseBuilder alternativeNamesAdd(String alternativeName) {
         this.alternativeNames = Utils.modifiableList(this.alternativeNames);
         this.alternativeNames.add(alternativeName);
         return this;
     }
 
-    public @Nonnull DiseaseBuilder alternativeNames(List<String> alternativeNames) {
+    public @Nonnull DiseaseBuilder alternativeNamesSet(List<String> alternativeNames) {
         this.alternativeNames = alternativeNames;
         return this;
     }
 
     // setter for single object
-    public @Nonnull DiseaseBuilder crossReferences(CrossReference crossReference) {
+    public @Nonnull DiseaseBuilder crossReferencesAdd(CrossReference crossReference) {
         this.crossReferences = Utils.modifiableList(this.crossReferences);
         this.crossReferences.add(crossReference);
         return this;
     }
 
-    public @Nonnull DiseaseBuilder crossReferences(List<CrossReference> crossReferences) {
+    public @Nonnull DiseaseBuilder crossReferencesSet(List<CrossReference> crossReferences) {
         this.crossReferences = crossReferences;
         return this;
     }
 
     // setter for single object
-    public @Nonnull DiseaseBuilder keywords(Keyword keyword) {
+    public @Nonnull DiseaseBuilder keywordsAdd(Keyword keyword) {
         this.keywords = Utils.modifiableList(this.keywords);
         this.keywords.add(keyword);
         return this;
     }
 
-    public @Nonnull DiseaseBuilder keywords(List<Keyword> keywords) {
+    public @Nonnull DiseaseBuilder keywordsSet(List<Keyword> keywords) {
         this.keywords = keywords;
         return this;
     }

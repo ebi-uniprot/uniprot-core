@@ -30,7 +30,7 @@ public class CrossReferenceConverter
                 new DBCrossReferenceBuilder<ProteomeXReferenceType>()
                         .databaseType(fromXml(xmlObj.getType()))
                         .id(xmlObj.getId());
-        builder.properties(
+        builder.propertiesSet(
                 xmlObj.getProperty().stream()
                         .map(this::fromXmlProperty)
                         .collect(Collectors.toList()));

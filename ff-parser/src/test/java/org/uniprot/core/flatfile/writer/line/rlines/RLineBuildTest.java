@@ -54,12 +54,13 @@ class RLineBuildTest {
                         new String[] {
                             "Tan W.G.", "Barkman T.J.", "Gregory Chinchar V.", "Essani K."
                         });
-        jaBuilder.authors(authors);
+        jaBuilder.authorsSet(authors);
 
         String title =
                 "Comparative genomic analyses of frog virus 3, type species of the genus Ranavirus (family Iridoviridae).";
         jaBuilder.title(title);
-        jaBuilder.citationXrefs(buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", null));
+        jaBuilder.citationXrefsSet(
+                buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", null));
         jaBuilder
                 .journalName("Virology")
                 .firstPage("70")
@@ -88,8 +89,8 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(jaBuilder.build())
-                        .positions(referencePositions)
-                        .comments(referenceComments)
+                        .referencePositionsSet(referencePositions)
+                        .referenceCommentsSet(referenceComments)
                         .build();
         doTest(rlines, uniRef, 1);
     }
@@ -127,12 +128,13 @@ class RLineBuildTest {
                         new String[] {
                             "Tan W.G.", "Barkman T.J.", "Gregory Chinchar V.", "Essani K."
                         });
-        jaBuilder.authors(authors);
+        jaBuilder.authorsSet(authors);
 
         String title =
                 "Comparative genomic analyses of frog virus 3, type species of the genus Ranavirus (family Iridoviridae).";
         jaBuilder.title(title);
-        jaBuilder.citationXrefs(buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", null));
+        jaBuilder.citationXrefsSet(
+                buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", null));
         jaBuilder
                 .journalName("Virology")
                 .firstPage("70")
@@ -173,9 +175,9 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(jaBuilder.build())
-                        .positions(referencePositions)
-                        .comments(referenceComments)
-                        .evidences(createEvidence(evs))
+                        .referencePositionsSet(referencePositions)
+                        .referenceCommentsSet(referenceComments)
+                        .evidencesSet(createEvidence(evs))
                         .build();
         doTest(rlines, uniRef, 1);
     }
@@ -199,7 +201,7 @@ class RLineBuildTest {
                                 new String[] {"Tan W.G.H.", "Barkman T.J.", "Chinchar V.G."}));
         String title =
                 "Emergence of plasmid-mediated quinolone resistance in Escherichia coli in Europe.";
-        smBuilder.authors(authors).title(title).publicationDate("FEB-2004");
+        smBuilder.authorsSet(authors).title(title).publicationDate("FEB-2004");
 
         smBuilder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ);
         List<ReferenceComment> referenceComments = new ArrayList<>();
@@ -218,8 +220,8 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(smBuilder.build())
-                        .positions(referencePositions)
-                        .comments(referenceComments)
+                        .referencePositionsSet(referencePositions)
+                        .referenceCommentsSet(referenceComments)
                         .build();
         doTest(rlines, uniRef, 2);
     }
@@ -252,7 +254,7 @@ class RLineBuildTest {
                 Arrays.asList(new String[] {"Tan W.G.H.", "Barkman T.J.", "Chinchar V.G."});
         String title =
                 "Emergence of plasmid-mediated quinolone resistance in Escherichia coli in Europe.";
-        smBuilder.authors(authors).title(title).publicationDate("FEB-2004");
+        smBuilder.authorsSet(authors).title(title).publicationDate("FEB-2004");
 
         smBuilder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ);
         List<ReferenceComment> referenceComments = new ArrayList<>();
@@ -294,8 +296,8 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(smBuilder.build())
-                        .positions(referencePositions)
-                        .comments(referenceComments)
+                        .referencePositionsSet(referencePositions)
+                        .referenceCommentsSet(referenceComments)
                         .build();
         doTest(rlines, uniRef, 2);
     }
@@ -327,8 +329,8 @@ class RLineBuildTest {
                                 }));
         String title =
                 "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
-        bkBuilder.authors(authors);
-        bkBuilder.editors(editors);
+        bkBuilder.authorsSet(authors);
+        bkBuilder.editorsSet(editors);
         bkBuilder.title(title);
         bkBuilder
                 .bookName("CONSERVATION GENETICS")
@@ -343,7 +345,7 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(bkBuilder.build())
-                        .positions(referencePositions)
+                        .referencePositionsSet(referencePositions)
                         .build();
         doTest(rlines, uniRef, 1);
     }
@@ -374,8 +376,8 @@ class RLineBuildTest {
                                 }));
         String title =
                 "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
-        bkBuilder.authors(authors);
-        bkBuilder.editors(editors);
+        bkBuilder.authorsSet(authors);
+        bkBuilder.editorsSet(editors);
         bkBuilder.title(title);
         bkBuilder
                 .bookName("CONSERVATION GENETICS")
@@ -390,7 +392,7 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(bkBuilder.build())
-                        .positions(referencePositions)
+                        .referencePositionsSet(referencePositions)
                         .build();
         doTest(rlines, uniRef, 5);
     }
@@ -414,8 +416,8 @@ class RLineBuildTest {
                 "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
         String bookTitle =
                 "Proceedings of the 9th international conference on Arabidopsis research";
-        bkBuilder.authors(authors);
-        bkBuilder.editors(editors);
+        bkBuilder.authorsSet(authors);
+        bkBuilder.editorsSet(editors);
         bkBuilder.title(title);
         bkBuilder
                 .bookName(bookTitle)
@@ -430,7 +432,7 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(bkBuilder.build())
-                        .positions(referencePositions)
+                        .referencePositionsSet(referencePositions)
                         .build();
         doTest(rlines, uniRef, 5);
     }
@@ -452,7 +454,7 @@ class RLineBuildTest {
 
         String title =
                 "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
-        thBuilder.authors(authors);
+        thBuilder.authorsSet(authors);
 
         thBuilder.title(title);
 
@@ -466,7 +468,7 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(thBuilder.build())
-                        .positions(referencePositions)
+                        .referencePositionsSet(referencePositions)
                         .build();
         doTest(rlines, uniRef, 5);
     }
@@ -484,7 +486,7 @@ class RLineBuildTest {
         PatentBuilder paBuilder = new PatentBuilder();
 
         List<String> authors = Arrays.asList("Arctander P.", "Fjeldsaa J.");
-        paBuilder.authors(authors);
+        paBuilder.authorsSet(authors);
         String title =
                 "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
         paBuilder.patentNumber("WO0149833");
@@ -498,7 +500,7 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(paBuilder.build())
-                        .positions(referencePositions)
+                        .referencePositionsSet(referencePositions)
                         .build();
         doTest(rlines, uniRef, 5);
     }
@@ -516,7 +518,7 @@ class RLineBuildTest {
         ElectronicArticleBuilder eaBuilder = new ElectronicArticleBuilder();
 
         List<String> authors = Arrays.asList(new String[] {"Arctander P.", "Fjeldsaa J."});
-        eaBuilder.authors(authors);
+        eaBuilder.authorsSet(authors);
         String title =
                 "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
 
@@ -530,7 +532,7 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(eaBuilder.build())
-                        .positions(referencePositions)
+                        .referencePositionsSet(referencePositions)
                         .build();
         doTest(rlines, uniRef, 5);
     }
@@ -548,7 +550,7 @@ class RLineBuildTest {
         UnpublishedBuilder uoBuilder = new UnpublishedBuilder();
 
         List<String> authors = Arrays.asList(new String[] {"Arctander P.", "Fjeldsaa J."});
-        uoBuilder.authors(authors);
+        uoBuilder.authorsSet(authors);
         String title =
                 "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
 
@@ -561,7 +563,7 @@ class RLineBuildTest {
         UniProtReference uniRef =
                 new UniProtReferenceBuilder()
                         .citation(uoBuilder.build())
-                        .positions(referencePositions)
+                        .referencePositionsSet(referencePositions)
                         .build();
         doTest(rlines, uniRef, 5);
     }
@@ -571,7 +573,7 @@ class RLineBuildTest {
         return new ReferenceCommentBuilder()
                 .type(type)
                 .value(val)
-                .evidences(createEvidence(evs))
+                .evidencesSet(createEvidence(evs))
                 .build();
     }
 

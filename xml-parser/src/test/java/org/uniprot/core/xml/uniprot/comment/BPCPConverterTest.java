@@ -203,7 +203,7 @@ class BPCPConverterTest {
                 .approximate(approximate)
                 .max(max)
                 .note(note)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 
@@ -220,7 +220,7 @@ class BPCPConverterTest {
                 .constant(constant)
                 .unit(unit)
                 .substrate(substrate)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 
@@ -230,7 +230,7 @@ class BPCPConverterTest {
                 .velocity(velocity)
                 .unit(unit)
                 .enzyme(enzyme)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 
@@ -241,8 +241,8 @@ class BPCPConverterTest {
     private KineticParameters createKineticParameters(
             List<MaximumVelocity> velocities, List<MichaelisConstant> mConstants, Note note) {
         return new KineticParametersBuilder()
-                .maximumVelocities(velocities)
-                .michaelisConstants(mConstants)
+                .maximumVelocitiesSet(velocities)
+                .michaelisConstantsSet(mConstants)
                 .note(note)
                 .build();
     }

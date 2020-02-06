@@ -72,7 +72,7 @@ public class OrganismNameLineParser {
             synonym = rest.substring(startBracketIndex + 1, endBracketIndex).trim();
             builder.scientificName(scientificName);
             builder.commonName(commonName);
-            builder.synonyms(Arrays.asList(synonym.split(", ")));
+            builder.synonymsSet(Arrays.asList(synonym.split(", ")));
             return builder.build();
         } else {
             builder.scientificName(scientificName);

@@ -45,7 +45,7 @@ class CofactorCommentBuilderTest {
         List<Cofactor> cofactors = singletonList(cofactor);
         CofactorCommentBuilder builder = new CofactorCommentBuilder();
         String molecule = "some mol";
-        CofactorComment comment = builder.molecule(molecule).cofactors(cofactors).build();
+        CofactorComment comment = builder.molecule(molecule).cofactorsSet(cofactors).build();
         assertEquals(molecule, comment.getMolecule());
         assertEquals(1, comment.getCofactors().size());
         assertEquals(cofactor, comment.getCofactors().get(0));
@@ -62,7 +62,7 @@ class CofactorCommentBuilderTest {
         Note note = new NoteBuilder(createEvidenceValuesWithoutEvidences()).build();
         String molecule = "Isoform 2";
         CofactorComment comment =
-                builder.molecule(molecule).cofactors(cofactors).note(note).build();
+                builder.molecule(molecule).cofactorsSet(cofactors).note(note).build();
         assertEquals(molecule, comment.getMolecule());
         assertEquals(1, comment.getCofactors().size());
         assertEquals(cofactor, comment.getCofactors().get(0));
@@ -93,7 +93,7 @@ class CofactorCommentBuilderTest {
     @Test
     void canAddSingleCofactor() {
         Cofactor cofactor = createCofactor("name", reference, createEvidences());
-        CofactorComment obj = new CofactorCommentBuilder().addCofactor(cofactor).build();
+        CofactorComment obj = new CofactorCommentBuilder().cofactorsAdd(cofactor).build();
         assertNotNull(obj.getCofactors());
         assertFalse(obj.getCofactors().isEmpty());
         assertTrue(obj.hasCofactors());
@@ -101,7 +101,7 @@ class CofactorCommentBuilderTest {
 
     @Test
     void nullCofactor_willBeIgnore() {
-        CofactorComment obj = new CofactorCommentBuilder().addCofactor(null).build();
+        CofactorComment obj = new CofactorCommentBuilder().cofactorsAdd(null).build();
         assertNotNull(obj.getCofactors());
         assertTrue(obj.getCofactors().isEmpty());
         assertFalse(obj.hasCofactors());
@@ -126,6 +126,10 @@ class CofactorCommentBuilderTest {
             String name,
             DBCrossReference<CofactorReferenceType> reference,
             List<Evidence> evidences) {
-        return new CofactorBuilder().name(name).reference(reference).evidences(evidences).build();
+        return new CofactorBuilder()
+                .name(name)
+                .reference(reference)
+                .evidencesSet(evidences)
+                .build();
     }
 }

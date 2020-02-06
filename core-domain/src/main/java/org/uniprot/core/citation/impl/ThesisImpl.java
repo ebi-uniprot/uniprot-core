@@ -44,12 +44,12 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
 
     @Override
     public boolean hasInstitute() {
-        return Utils.notNullOrEmpty(this.institute);
+        return Utils.notNullNotEmpty(this.institute);
     }
 
     @Override
     public boolean hasAddress() {
-        return Utils.notNullOrEmpty(this.address);
+        return Utils.notNullNotEmpty(this.address);
     }
 
     @Override

@@ -49,7 +49,7 @@ public class OrganimHostTest {
                 .taxonId(9606L)
                 .scientificName("scientific name")
                 .commonName("common name")
-                .synonyms(Collections.singletonList("synonyms 1"))
+                .synonymsSet(Collections.singletonList("synonyms 1"))
                 .build();
     }
 }

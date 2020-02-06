@@ -57,7 +57,7 @@ class DiseaseBuilderTest {
                 builder.diseaseId(diseaseId)
                         .acronym("someAcron")
                         .description(diseaseDescription)
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .build();
         assertEquals(diseaseId, disease.getDiseaseId());
         assertEquals(diseaseDescription, disease.getDescription());
@@ -80,7 +80,7 @@ class DiseaseBuilderTest {
                 builder.diseaseId(diseaseId)
                         .acronym("someAcron")
                         .description(diseaseDescription)
-                        .evidences(evidences)
+                        .evidencesSet(evidences)
                         .reference(reference)
                         .build();
         assertEquals(diseaseId, disease.getDiseaseId());
@@ -102,7 +102,7 @@ class DiseaseBuilderTest {
 
     @Test
     void canAddSingleEvidence() {
-        Disease obj = new DiseaseBuilder().addEvidence(createEvidence()).build();
+        Disease obj = new DiseaseBuilder().evidencesAdd(createEvidence()).build();
         assertNotNull(obj.getEvidences());
         assertFalse(obj.getEvidences().isEmpty());
         assertTrue(obj.hasEvidences());
@@ -110,7 +110,7 @@ class DiseaseBuilderTest {
 
     @Test
     void nullEvidence_willBeIgnore() {
-        Disease obj = new DiseaseBuilder().addEvidence(null).build();
+        Disease obj = new DiseaseBuilder().evidencesAdd(null).build();
         assertNotNull(obj.getEvidences());
         assertTrue(obj.getEvidences().isEmpty());
         assertFalse(obj.hasEvidences());

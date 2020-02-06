@@ -60,7 +60,7 @@ public class SubcelLocationCommentTransformer
         }
 
         List<SubcellularLocation> locations = populateLocations(preNote);
-        builder.subcellularLocations(locations);
+        builder.subcellularLocationsSet(locations);
         return builder.build();
     }
 
@@ -105,7 +105,7 @@ public class SubcelLocationCommentTransformer
         return new SubcellularLocationValueBuilder()
                 .id("")
                 .value(value)
-                .evidences(evidences)
+                .evidencesSet(evidences)
                 .build();
     }
 }

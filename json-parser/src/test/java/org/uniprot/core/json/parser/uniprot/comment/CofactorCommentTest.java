@@ -85,13 +85,13 @@ public class CofactorCommentTest {
                 new CofactorBuilder()
                         .name("Cofactor Name")
                         .reference(reference)
-                        .evidences(createEvidences())
+                        .evidencesSet(createEvidences())
                         .build();
         List<Cofactor> cofactors = Collections.singletonList(cofactor);
 
         Note note = new NoteBuilder(createEvidenceValues()).build();
         return new CofactorCommentBuilder()
-                .addCofactor(cofactor)
+                .cofactorsAdd(cofactor)
                 .molecule("molecule")
                 .note(note)
                 .build();

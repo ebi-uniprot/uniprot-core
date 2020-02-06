@@ -37,7 +37,7 @@ public class CofactorCommentImpl extends CommentHasMoleculeImpl implements Cofac
 
     @Override
     public boolean hasCofactors() {
-        return Utils.notNullOrEmpty(this.cofactors);
+        return Utils.notNullNotEmpty(this.cofactors);
     }
 
     @Override

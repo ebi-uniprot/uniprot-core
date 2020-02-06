@@ -104,7 +104,7 @@ class UniRefEntryBuilderTest {
 
         List<GoTerm> goTerms = Arrays.asList(goTerm, goTerm2);
 
-        UniRefEntry entry = new UniRefEntryBuilder().goTerms(goTerms).build();
+        UniRefEntry entry = new UniRefEntryBuilder().goTermsSet(goTerms).build();
         assertEquals(goTerms, entry.getGoTerms());
     }
 
@@ -118,7 +118,7 @@ class UniRefEntryBuilderTest {
         String id2 = "GO:0044435";
         GoTerm goTerm2 = new GoTermBuilder().type(type2).id(id2).build();
         List<GoTerm> goTerms = Arrays.asList(goTerm, goTerm2);
-        UniRefEntry entry = new UniRefEntryBuilder().addGoTerm(goTerm).addGoTerm(goTerm2).build();
+        UniRefEntry entry = new UniRefEntryBuilder().goTermsAdd(goTerm).goTermsAdd(goTerm2).build();
         assertEquals(goTerms, entry.getGoTerms());
     }
 
@@ -155,7 +155,7 @@ class UniRefEntryBuilderTest {
                         .build();
 
         List<UniRefMember> members = Arrays.asList(member, member2);
-        UniRefEntry entry = new UniRefEntryBuilder().members(members).build();
+        UniRefEntry entry = new UniRefEntryBuilder().membersSet(members).build();
         assertEquals(members, entry.getMembers());
     }
 
@@ -172,7 +172,7 @@ class UniRefEntryBuilderTest {
                         .organismTaxId(9606)
                         .build();
 
-        UniRefEntry entry = new UniRefEntryBuilder().addMember(member).build();
+        UniRefEntry entry = new UniRefEntryBuilder().membersAdd(member).build();
         assertEquals(Arrays.asList(member), entry.getMembers());
     }
 

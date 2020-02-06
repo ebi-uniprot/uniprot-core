@@ -26,7 +26,7 @@ public class NameConverter implements Converter<EvidencedStringType, Name> {
     @Override
     public Name fromXml(EvidencedStringType xmlObj) {
         List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
-        return new NameBuilder().value(xmlObj.getValue()).evidences(evidences).build();
+        return new NameBuilder().value(xmlObj.getValue()).evidencesSet(evidences).build();
     }
 
     @Override
