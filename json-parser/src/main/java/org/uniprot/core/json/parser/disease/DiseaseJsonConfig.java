@@ -1,7 +1,7 @@
 package org.uniprot.core.json.parser.disease;
 
 import org.uniprot.core.cv.disease.Disease;
-import org.uniprot.core.cv.disease.impl.DiseaseImpl;
+import org.uniprot.core.cv.disease.DiseaseImpl;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
 import org.uniprot.core.json.parser.JsonConfig;

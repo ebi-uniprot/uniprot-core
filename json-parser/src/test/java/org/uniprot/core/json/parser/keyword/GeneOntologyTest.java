@@ -1,9 +1,9 @@
 package org.uniprot.core.json.parser.keyword;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.keyword.GeneOntology;
-import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
 import org.uniprot.core.json.parser.ValidateJson;
+import org.uniprot.cv.keyword.GeneOntology;
+import org.uniprot.cv.keyword.impl.GeneOntologyImpl;
 
 /** @author lgonzales */
 class GeneOntologyTest {

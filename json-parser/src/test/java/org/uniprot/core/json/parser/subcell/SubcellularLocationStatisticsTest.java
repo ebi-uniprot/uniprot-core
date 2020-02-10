@@ -1,9 +1,9 @@
 package org.uniprot.core.json.parser.subcell;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.subcell.SubcellularLocationStatistics;
-import org.uniprot.core.cv.subcell.impl.SubcellularLocationStatisticsImpl;
 import org.uniprot.core.json.parser.ValidateJson;
+import org.uniprot.cv.subcell.SubcellularLocationStatistics;
+import org.uniprot.cv.subcell.impl.SubcellularLocationStatisticsImpl;
 
 /**
  * @author lgonzales

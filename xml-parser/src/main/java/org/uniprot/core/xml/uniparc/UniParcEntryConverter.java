@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.cv.taxonomy.TaxonomicNode;
-import org.uniprot.core.cv.taxonomy.TaxonomyRepo;
 import org.uniprot.core.uniparc.UniParcDBCrossReference;
 import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniparc.builder.UniParcEntryBuilder;
@@ -15,6 +13,8 @@ import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniparc.Entry;
 import org.uniprot.core.xml.jaxb.uniparc.ObjectFactory;
+import org.uniprot.cv.taxonomy.TaxonomicNode;
+import org.uniprot.cv.taxonomy.TaxonomyRepo;
 
 import com.google.common.base.Strings;
 

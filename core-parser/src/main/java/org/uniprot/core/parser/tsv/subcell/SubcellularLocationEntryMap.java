@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
 import org.uniprot.core.util.Utils;
+import org.uniprot.cv.subcell.SubcellularLocationEntry;
 
 /**
  * @author lgonzales

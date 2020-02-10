@@ -20,7 +20,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.uniprot</groupId>
-			<artifactId>core-common</artifactId>
+			<artifactId>core-domain</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>

@@ -9,7 +9,8 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.disease.CrossReference;
 import org.uniprot.core.cv.disease.Disease;
-import org.uniprot.core.cv.disease.impl.DiseaseImpl;
+import org.uniprot.core.cv.disease.DiseaseBuilder;
+import org.uniprot.core.cv.disease.DiseaseImpl;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
 
