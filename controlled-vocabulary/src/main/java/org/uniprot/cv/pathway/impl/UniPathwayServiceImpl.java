@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import org.uniprot.cv.pathway.UniPathway;
+import org.uniprot.core.cv.pathway.UniPathway;
 import org.uniprot.cv.pathway.UniPathwayCache;
 import org.uniprot.cv.pathway.UniPathwayService;
 

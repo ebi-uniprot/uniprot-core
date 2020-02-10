@@ -6,7 +6,7 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import org.uniprot.cv.ec.EC;
+import org.uniprot.core.cv.ec.EC;
 import org.uniprot.cv.ec.ECCache;
 import org.uniprot.cv.ec.ECRepo;
 

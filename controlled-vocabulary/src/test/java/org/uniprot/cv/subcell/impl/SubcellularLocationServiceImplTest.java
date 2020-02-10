@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.uniprot.cv.subcell.SubcellularLocationEntry;
+import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 
 class SubcellularLocationServiceImplTest {
     private SubcellularLocationServiceImpl service;

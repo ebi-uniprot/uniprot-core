@@ -1,4 +1,4 @@
-package org.uniprot.cv.keyword;
+package org.uniprot.core.cv.keyword;
 
 import java.io.Serializable;
 

@@ -1,13 +1,15 @@
-package org.uniprot.cv.chebi;
+package org.uniprot.core.cv.chebi;
 
-import org.uniprot.cv.chebi.impl.ChebiImpl;
+import javax.annotation.Nonnull;
+
+import org.uniprot.core.Builder;
 
 /**
  * Created 07/06/19
  *
  * @author Edd
  */
-public class ChebiBuilder {
+public class ChebiBuilder implements Builder<Chebi> {
     private String id;
     private String name;
     private String inchiKey;
@@ -27,7 +29,7 @@ public class ChebiBuilder {
         return this;
     }
 
-    public Chebi build() {
+    public @Nonnull Chebi build() {
         return new ChebiImpl(id, name, inchiKey);
     }
 }

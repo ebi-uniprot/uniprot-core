@@ -1,14 +1,14 @@
 package org.uniprot.core.json.parser.subcell;
 
+import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.Keyword;
+import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
+import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
+import org.uniprot.core.cv.subcell.SubcellularLocationStatistics;
+import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryImpl;
+import org.uniprot.core.cv.subcell.impl.SubcellularLocationStatisticsImpl;
 import org.uniprot.core.json.parser.JsonConfig;
-import org.uniprot.cv.keyword.GeneOntology;
-import org.uniprot.cv.keyword.impl.GeneOntologyImpl;
-import org.uniprot.cv.subcell.SubcellularLocationEntry;
-import org.uniprot.cv.subcell.SubcellularLocationStatistics;
-import org.uniprot.cv.subcell.impl.SubcellularLocationEntryImpl;
-import org.uniprot.cv.subcell.impl.SubcellularLocationStatisticsImpl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;

@@ -10,8 +10,9 @@ import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.disease.CrossReference;
+import org.uniprot.core.cv.pathway.Pathway;
+import org.uniprot.core.cv.pathway.PathwayImpl;
 import org.uniprot.cv.common.AbstractFileReader;
-import org.uniprot.cv.pathway.impl.PathwayImpl;
 
 public class PathwayFileReader extends AbstractFileReader<Pathway> {
     private static final String ID_LINE = "ID";

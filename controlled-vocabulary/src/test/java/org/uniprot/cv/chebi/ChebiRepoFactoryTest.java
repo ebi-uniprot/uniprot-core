@@ -6,6 +6,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.chebi.Chebi;
 
 /**
  * Created 06/06/19

@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import org.uniprot.cv.chebi.Chebi;
+import org.uniprot.core.cv.chebi.Chebi;
 import org.uniprot.cv.chebi.ChebiCache;
 import org.uniprot.cv.chebi.ChebiRepo;
 

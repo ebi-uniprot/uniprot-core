@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.cv.keyword.KeywordCache;
-import org.uniprot.cv.keyword.KeywordEntry;
 import org.uniprot.cv.keyword.KeywordService;
 
 public class KeywordServiceImpl implements KeywordService {

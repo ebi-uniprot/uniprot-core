@@ -1,4 +1,4 @@
-package org.uniprot.cv.pathway;
+package org.uniprot.core.cv.pathway;
 
 import java.util.List;
 

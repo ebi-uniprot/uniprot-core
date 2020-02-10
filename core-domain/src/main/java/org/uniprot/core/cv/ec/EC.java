@@ -1,4 +1,4 @@
-package org.uniprot.cv.ec;
+package org.uniprot.core.cv.ec;
 
 /**
  * Created 15/03/19

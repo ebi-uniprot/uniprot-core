@@ -1,11 +1,11 @@
-package org.uniprot.cv.keyword.impl;
+package org.uniprot.core.cv.keyword.impl;
 
 import java.util.*;
 
+import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.Keyword;
-import org.uniprot.cv.keyword.GeneOntology;
-import org.uniprot.cv.keyword.KeywordEntry;
-import org.uniprot.cv.keyword.KeywordStatistics;
+import org.uniprot.core.cv.keyword.KeywordEntry;
+import org.uniprot.core.cv.keyword.KeywordStatistics;
 
 public class KeywordEntryImpl implements KeywordEntry {
 

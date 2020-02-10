@@ -1,10 +1,8 @@
-package org.uniprot.cv.keyword;
+package org.uniprot.core.cv.keyword;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
-
-import org.uniprot.core.cv.keyword.Keyword;
 
 public interface KeywordEntry extends Serializable {
     Keyword getKeyword();

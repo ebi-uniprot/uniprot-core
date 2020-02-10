@@ -5,9 +5,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
 import org.uniprot.core.util.Utils;
-import org.uniprot.cv.keyword.KeywordEntry;
 
 public class KeywordEntryMap implements NamedValueMap {
 

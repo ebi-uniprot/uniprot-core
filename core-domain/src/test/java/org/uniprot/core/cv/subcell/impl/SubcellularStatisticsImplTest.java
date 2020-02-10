@@ -1,11 +1,11 @@
-package org.uniprot.cv.subcell.impl;
+package org.uniprot.core.cv.subcell.impl;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.uniprot.cv.subcell.SubcellularLocationStatistics;
+import org.uniprot.core.cv.subcell.SubcellularLocationStatistics;
 
 public class SubcellularStatisticsImplTest {
 

@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.uniprot.core.cv.chebi.Chebi;
+import org.uniprot.core.cv.chebi.ChebiBuilder;
 import org.uniprot.cv.common.AbstractFileReader;
 
 public class ChebiFileReader extends AbstractFileReader<Chebi> {
