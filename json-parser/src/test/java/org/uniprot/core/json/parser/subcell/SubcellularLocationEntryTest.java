@@ -3,13 +3,13 @@ package org.uniprot.core.json.parser.subcell;
 import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
-import org.uniprot.core.cv.subcell.SubcellLocationCategory;
-import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
-import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryImpl;
-import org.uniprot.core.cv.subcell.impl.SubcellularLocationStatisticsImpl;
 import org.uniprot.core.json.parser.ValidateJson;
+import org.uniprot.cv.keyword.impl.GeneOntologyImpl;
+import org.uniprot.cv.subcell.SubcellLocationCategory;
+import org.uniprot.cv.subcell.SubcellularLocationEntry;
+import org.uniprot.cv.subcell.impl.SubcellularLocationEntryImpl;
+import org.uniprot.cv.subcell.impl.SubcellularLocationStatisticsImpl;
 
 /**
  * @author lgonzales
