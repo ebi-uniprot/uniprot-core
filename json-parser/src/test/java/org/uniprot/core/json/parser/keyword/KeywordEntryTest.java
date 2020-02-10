@@ -3,10 +3,10 @@ package org.uniprot.core.json.parser.keyword;
 import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.keyword.KeywordEntry;
+import org.uniprot.core.cv.keyword.impl.KeywordEntryImpl;
+import org.uniprot.core.cv.keyword.impl.KeywordStatisticsImpl;
 import org.uniprot.core.json.parser.ValidateJson;
-import org.uniprot.cv.keyword.KeywordEntry;
-import org.uniprot.cv.keyword.impl.KeywordEntryImpl;
-import org.uniprot.cv.keyword.impl.KeywordStatisticsImpl;
 
 /** @author lgonzales */
 class KeywordEntryTest {

@@ -6,6 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.chebi.Chebi;
 
 public class ChebiCacheTest {
     private static final String DEFAULT_DATA_FILE = "chebi/chebi.obo";

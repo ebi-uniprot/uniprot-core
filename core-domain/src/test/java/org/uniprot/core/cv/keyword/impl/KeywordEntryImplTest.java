@@ -1,4 +1,4 @@
-package org.uniprot.cv.keyword.impl;
+package org.uniprot.core.cv.keyword.impl;
 
 import java.util.List;
 import java.util.Set;
@@ -10,11 +10,10 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.Keyword;
-import org.uniprot.core.cv.keyword.impl.KeywordImpl;
-import org.uniprot.cv.keyword.GeneOntology;
-import org.uniprot.cv.keyword.KeywordEntry;
-import org.uniprot.cv.keyword.KeywordStatistics;
+import org.uniprot.core.cv.keyword.KeywordEntry;
+import org.uniprot.core.cv.keyword.KeywordStatistics;
 
 public class KeywordEntryImplTest {
 

@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.uniprot.cv.pathway.UniPathway;
+import org.uniprot.core.cv.pathway.UniPathway;
 import org.uniprot.cv.pathway.UniPathwayService;
 
 class UniPathwayServiceImplTest {

@@ -1,4 +1,4 @@
-package org.uniprot.cv.subcell;
+package org.uniprot.core.cv.subcell;
 
 import org.uniprot.core.util.EnumDisplay;
 

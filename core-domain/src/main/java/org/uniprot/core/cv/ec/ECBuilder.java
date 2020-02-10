@@ -1,6 +1,4 @@
-package org.uniprot.cv.ec;
-
-import org.uniprot.cv.ec.impl.ECImpl;
+package org.uniprot.core.cv.ec;
 
 /**
  * Created 07/06/19

@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 
 class SubcellLocationReaderTest {
 

@@ -1,6 +1,5 @@
-package org.uniprot.cv.chebi.impl;
+package org.uniprot.core.cv.chebi;
 
-import org.uniprot.cv.chebi.Chebi;
 
 /**
  * Created 15/03/19

@@ -1,15 +1,15 @@
-package org.uniprot.cv.subcell.impl;
+package org.uniprot.core.cv.subcell.impl;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.Keyword;
-import org.uniprot.cv.keyword.GeneOntology;
-import org.uniprot.cv.subcell.SubcellLocationCategory;
-import org.uniprot.cv.subcell.SubcellularLocationEntry;
-import org.uniprot.cv.subcell.SubcellularLocationStatistics;
+import org.uniprot.core.cv.subcell.SubcellLocationCategory;
+import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
+import org.uniprot.core.cv.subcell.SubcellularLocationStatistics;
 
 public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
     private static final long serialVersionUID = 8881869836509747529L;

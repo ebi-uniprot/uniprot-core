@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.pathway.UniPathway;
 
 class UniPathwayFileReaderTest {
     private final UniPathwayFileReader reader = new UniPathwayFileReader();

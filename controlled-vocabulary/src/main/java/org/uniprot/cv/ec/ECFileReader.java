@@ -6,8 +6,9 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.uniprot.core.cv.ec.EC;
+import org.uniprot.core.cv.ec.ECImpl;
 import org.uniprot.cv.common.AbstractFileReader;
-import org.uniprot.cv.ec.impl.ECImpl;
 
 public class ECFileReader extends AbstractFileReader<EC> {
     private static final Pattern ENZYME_CLASS_PATTERN =

@@ -14,7 +14,8 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.uniprot.cv.ec.impl.ECImpl;
+import org.uniprot.core.cv.ec.EC;
+import org.uniprot.core.cv.ec.ECImpl;
 
 /**
  * Created 18/03/19

@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.uniprot.core.cv.pathway.Pathway;
+
 public enum PathwayCache {
     INSTANCE;
     public static final String FTP_LOCATION =

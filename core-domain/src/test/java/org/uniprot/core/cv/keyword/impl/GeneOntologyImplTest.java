@@ -1,11 +1,11 @@
-package org.uniprot.cv.keyword.impl;
+package org.uniprot.core.cv.keyword.impl;
 
 import java.util.UUID;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.uniprot.cv.keyword.GeneOntology;
+import org.uniprot.core.cv.keyword.GeneOntology;
 
 public class GeneOntologyImplTest {
 

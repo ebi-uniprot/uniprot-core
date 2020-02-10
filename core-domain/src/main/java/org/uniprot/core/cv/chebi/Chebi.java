@@ -1,4 +1,4 @@
-package org.uniprot.cv.chebi;
+package org.uniprot.core.cv.chebi;
 
 import java.io.Serializable;
 

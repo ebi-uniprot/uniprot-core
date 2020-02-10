@@ -1,14 +1,14 @@
 package org.uniprot.core.json.parser.keyword;
 
+import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.Keyword;
+import org.uniprot.core.cv.keyword.KeywordEntry;
+import org.uniprot.core.cv.keyword.KeywordStatistics;
+import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
+import org.uniprot.core.cv.keyword.impl.KeywordEntryImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
+import org.uniprot.core.cv.keyword.impl.KeywordStatisticsImpl;
 import org.uniprot.core.json.parser.JsonConfig;
-import org.uniprot.cv.keyword.GeneOntology;
-import org.uniprot.cv.keyword.KeywordEntry;
-import org.uniprot.cv.keyword.KeywordStatistics;
-import org.uniprot.cv.keyword.impl.GeneOntologyImpl;
-import org.uniprot.cv.keyword.impl.KeywordEntryImpl;
-import org.uniprot.cv.keyword.impl.KeywordStatisticsImpl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;

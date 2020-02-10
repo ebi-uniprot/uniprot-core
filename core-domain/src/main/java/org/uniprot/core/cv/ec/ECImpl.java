@@ -1,9 +1,7 @@
-package org.uniprot.cv.ec.impl;
+package org.uniprot.core.cv.ec;
 
 import java.io.Serializable;
 import java.util.Objects;
-
-import org.uniprot.cv.ec.EC;
 
 /**
  * Created 15/03/19

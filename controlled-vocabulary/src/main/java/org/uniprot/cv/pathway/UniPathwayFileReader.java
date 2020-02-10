@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.cv.pathway.UniPathway;
 import org.uniprot.core.util.Utils;
 import org.uniprot.cv.common.AbstractFileReader;
 

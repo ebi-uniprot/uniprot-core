@@ -1,21 +1,25 @@
-package org.uniprot.cv.keyword.impl;
+package org.uniprot.core.cv.subcell.impl;
 
 import java.util.Objects;
 
-import org.uniprot.cv.keyword.KeywordStatistics;
+import org.uniprot.core.cv.subcell.SubcellularLocationStatistics;
 
-/** @author lgonzales */
-public class KeywordStatisticsImpl implements KeywordStatistics {
+/**
+ * @author lgonzales
+ * @since 2019-07-11
+ */
+public class SubcellularLocationStatisticsImpl implements SubcellularLocationStatistics {
 
-    private static final long serialVersionUID = 1767966627449407612L;
+    private static final long serialVersionUID = -2917473627048690554L;
     private long reviewedProteinCount;
     private long unreviewedProteinCount;
 
-    private KeywordStatisticsImpl() {
+    private SubcellularLocationStatisticsImpl() {
         this(0L, 0L);
     }
 
-    public KeywordStatisticsImpl(long reviewedProteinCount, long unreviewedProteinCount) {
+    public SubcellularLocationStatisticsImpl(
+            long reviewedProteinCount, long unreviewedProteinCount) {
         this.reviewedProteinCount = reviewedProteinCount;
         this.unreviewedProteinCount = unreviewedProteinCount;
     }
@@ -34,7 +38,7 @@ public class KeywordStatisticsImpl implements KeywordStatistics {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        KeywordStatisticsImpl that = (KeywordStatisticsImpl) o;
+        SubcellularLocationStatisticsImpl that = (SubcellularLocationStatisticsImpl) o;
         return getReviewedProteinCount() == that.getReviewedProteinCount()
                 && getUnreviewedProteinCount() == that.getUnreviewedProteinCount();
     }

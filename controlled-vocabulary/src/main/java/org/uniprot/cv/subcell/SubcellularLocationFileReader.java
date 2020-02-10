@@ -8,11 +8,13 @@ import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.uniprot.core.cv.keyword.GeneOntology;
+import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
+import org.uniprot.core.cv.subcell.SubcellLocationCategory;
+import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
+import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryImpl;
 import org.uniprot.cv.common.AbstractFileReader;
-import org.uniprot.cv.keyword.GeneOntology;
-import org.uniprot.cv.keyword.impl.GeneOntologyImpl;
-import org.uniprot.cv.subcell.impl.SubcellularLocationEntryImpl;
 
 public class SubcellularLocationFileReader extends AbstractFileReader<SubcellularLocationEntry> {
     private static final String HP_LINE = "HP";
