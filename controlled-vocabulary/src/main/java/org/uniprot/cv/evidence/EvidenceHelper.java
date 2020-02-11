@@ -1,6 +1,4 @@
-package org.uniprot.core.uniprot.evidence.impl;
-
-import static org.uniprot.core.uniprot.evidence.impl.EvidenceImpl.REFERENCE;
+package org.uniprot.cv.evidence;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,6 +19,7 @@ import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
  */
 public class EvidenceHelper {
     private static final String REF_PREFIX = "Ref.";
+    private static final EvidenceType REFERENCE = new EvidenceType("Reference");
 
     public static @Nonnull List<Evidence> parseEvidenceLines(@Nonnull List<String> evStrs) {
         return evStrs.stream().map(EvidenceHelper::parseEvidenceLine).collect(Collectors.toList());

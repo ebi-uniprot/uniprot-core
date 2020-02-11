@@ -1,6 +1,5 @@
 package org.uniprot.core.cv.chebi;
 
-
 /**
  * Created 15/03/19
  *

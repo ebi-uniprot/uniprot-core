@@ -2,8 +2,8 @@ package org.uniprot.core.xml.uniprot;
 
 import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 import static org.uniprot.core.xml.uniprot.description.DescriptionHelper.*;
+import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -46,6 +46,7 @@ import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.Entry;
+import org.uniprot.cv.xdb.UniProtXDbTypeImpl;
 
 class UniProtEntryConverterTest {
 
@@ -374,7 +375,7 @@ class UniProtEntryConverterTest {
         String fourthAttr = null;
         String isoform = "Q9NXB0-1";
         List<UniProtDBCrossReference> xrefs = new ArrayList<>();
-        UniProtXDbType uniProtXDbType = new UniProtXDbType(type);
+        UniProtXDbType uniProtXDbType = new UniProtXDbTypeImpl(type);
         xrefs.add(
                 new UniProtDBCrossReferenceBuilder()
                         .databaseType(uniProtXDbType)
@@ -388,7 +389,7 @@ class UniProtEntryConverterTest {
         // DR   EMBL; DQ185029; AAZ94714.1; -; mRNA.
 
         type = "EMBL";
-        uniProtXDbType = new UniProtXDbType(type);
+        uniProtXDbType = new UniProtXDbTypeImpl(type);
         id = "DQ185029";
         description = "AAZ94714.1";
         thirdAttr = "-";
@@ -406,7 +407,7 @@ class UniProtEntryConverterTest {
 
         // DR   EMBL; AK000352; BAA91105.1; ALT_INIT; mRNA.
         type = "EMBL";
-        uniProtXDbType = new UniProtXDbType(type);
+        uniProtXDbType = new UniProtXDbTypeImpl(type);
         id = "AK000352";
         description = "BAA91105.1";
         thirdAttr = "ALT_INIT";
@@ -424,7 +425,7 @@ class UniProtEntryConverterTest {
 
         // DR   EMBL; AK310815; -; NOT_ANNOTATED_CDS; mRNA.
         type = "EMBL";
-        uniProtXDbType = new UniProtXDbType(type);
+        uniProtXDbType = new UniProtXDbTypeImpl(type);
         id = "AK310815";
         description = "-";
         thirdAttr = "NOT_ANNOTATED_CDS";
@@ -442,7 +443,7 @@ class UniProtEntryConverterTest {
 
         //   DR   HPA; HPA021372; -.
         type = "HPA";
-        uniProtXDbType = new UniProtXDbType(type);
+        uniProtXDbType = new UniProtXDbTypeImpl(type);
         id = "HPA021372";
         description = "-";
         thirdAttr = null;
@@ -460,7 +461,7 @@ class UniProtEntryConverterTest {
 
         //  DR   HPA; HPA021812; -.
         type = "HPA";
-        uniProtXDbType = new UniProtXDbType(type);
+        uniProtXDbType = new UniProtXDbTypeImpl(type);
         id = "HPA021812";
         description = "-";
         thirdAttr = null;

@@ -1,4 +1,4 @@
-package org.uniprot.core.uniprot.xdb;
+package org.uniprot.cv.xdb;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

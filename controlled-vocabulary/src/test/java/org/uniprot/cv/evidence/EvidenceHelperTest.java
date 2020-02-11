@@ -1,4 +1,4 @@
-package org.uniprot.core.uniprot.evidence.impl;
+package org.uniprot.cv.evidence;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

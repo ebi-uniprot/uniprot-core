@@ -13,6 +13,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+import org.uniprot.cv.xdb.UniProtXDbTypeImpl;
 
 class DRLineBuildTest {
     private DRLineBuilder builder = new DRLineBuilder();
@@ -222,7 +223,7 @@ class DRLineBuildTest {
             String fourthAttribute,
             String isoformId,
             List<Evidence> evidences) {
-        UniProtXDbType opType = new UniProtXDbType(databaseName);
+        UniProtXDbType opType = new UniProtXDbTypeImpl(databaseName);
         return new UniProtDBCrossReferenceBuilder()
                 .databaseType(opType)
                 .id(id)

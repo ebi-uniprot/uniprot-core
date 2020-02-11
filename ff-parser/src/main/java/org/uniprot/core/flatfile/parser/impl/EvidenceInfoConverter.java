@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.impl;
 
-import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLines;
+import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLines;
 
 import java.util.HashMap;
 import java.util.List;

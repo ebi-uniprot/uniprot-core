@@ -1,4 +1,4 @@
-package org.uniprot.core.cv.xdb;
+package org.uniprot.cv.xdb;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -7,7 +7,11 @@ import static org.uniprot.core.cv.xdb.DatabaseCategory.*;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.xdb.DBXRefTypeAttribute;
+import org.uniprot.core.cv.xdb.DatabaseCategory;
+import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
 
 class UniProtXDbTypesTest {
 
@@ -276,7 +280,7 @@ class UniProtXDbTypesTest {
         UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("Proteomes");
         assertEquals("Proteomes", opType.getName());
         assertEquals("Proteomes", opType.getDisplayName());
-        assertEquals(DatabaseCategory.PROTEOMES_DATABASES, opType.getCategory());
+        Assertions.assertEquals(DatabaseCategory.PROTEOMES_DATABASES, opType.getCategory());
         assertEquals("https://www.uniprot.org/proteomes/%id", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "Component", "component", null);

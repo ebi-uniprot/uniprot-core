@@ -4,8 +4,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
+import org.uniprot.core.cv.xdb.DBXRefTypeAttribute;
+import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
@@ -19,7 +24,7 @@ class UniProtDBCrossReferenceImplTest {
         String type = "GeneDB";
         String id = "H25N7.01:pep";
         String description = "-";
-        UniProtXDbType dbType = new UniProtXDbType(type);
+        UniProtXDbType dbType = new UniProtXDbTypeMock(type);
         UniProtDBCrossReference xref =
                 new UniProtDBCrossReferenceBuilder()
                         .databaseType(dbType)
@@ -40,7 +45,7 @@ class UniProtDBCrossReferenceImplTest {
         String thirdAttr = null;
         String fourthAttr = null;
         String isoform = null;
-        UniProtXDbType dbType = new UniProtXDbType(type);
+        UniProtXDbType dbType = new UniProtXDbTypeMock(type);
         UniProtDBCrossReference xref =
                 new UniProtDBCrossReferenceBuilder()
                         .databaseType(dbType)
@@ -61,7 +66,7 @@ class UniProtDBCrossReferenceImplTest {
         String fourthAttr = null;
         String isoform = null;
 
-        UniProtXDbType dbType = new UniProtXDbType(type);
+        UniProtXDbType dbType = new UniProtXDbTypeMock(type);
         UniProtDBCrossReference xref =
                 new UniProtDBCrossReferenceBuilder()
                         .databaseType(dbType)
@@ -84,7 +89,7 @@ class UniProtDBCrossReferenceImplTest {
         String fourthAttr = null;
         String isoform = null;
 
-        UniProtXDbType dbType = new UniProtXDbType(type);
+        UniProtXDbType dbType = new UniProtXDbTypeMock(type);
         UniProtDBCrossReference xref =
                 new UniProtDBCrossReferenceBuilder()
                         .databaseType(dbType)
@@ -107,7 +112,7 @@ class UniProtDBCrossReferenceImplTest {
         String fourthAttr = null;
         String isoform = null;
 
-        UniProtXDbType dbType = new UniProtXDbType(type);
+        UniProtXDbType dbType = new UniProtXDbTypeMock(type);
         UniProtDBCrossReference xref =
                 new UniProtDBCrossReferenceBuilder()
                         .databaseType(dbType)
@@ -131,7 +136,7 @@ class UniProtDBCrossReferenceImplTest {
         String fourthAttr = null;
         String isoform = null;
 
-        UniProtXDbType dbType = new UniProtXDbType(type);
+        UniProtXDbType dbType = new UniProtXDbTypeMock(type);
         UniProtDBCrossReference xref =
                 new UniProtDBCrossReferenceBuilder()
                         .databaseType(dbType)
@@ -155,7 +160,7 @@ class UniProtDBCrossReferenceImplTest {
         String fourthAttr = "mRNA";
         String isoform = null;
 
-        UniProtXDbType dbType = new UniProtXDbType(type);
+        UniProtXDbType dbType = new UniProtXDbTypeMock(type);
         UniProtDBCrossReference xref =
                 new UniProtDBCrossReferenceBuilder()
                         .databaseType(dbType)
@@ -180,7 +185,7 @@ class UniProtDBCrossReferenceImplTest {
         String fourthAttr = null;
         String isoform = "Q9NXB0-1";
 
-        UniProtXDbType dbType = new UniProtXDbType(type);
+        UniProtXDbType dbType = new UniProtXDbTypeMock(type);
         UniProtDBCrossReference xref =
                 new UniProtDBCrossReferenceBuilder()
                         .databaseType(dbType)
@@ -205,7 +210,7 @@ class UniProtDBCrossReferenceImplTest {
         String fourthAttr = null;
         String isoform = null;
 
-        UniProtXDbType dbType = new UniProtXDbType(type);
+        UniProtXDbType dbType = new UniProtXDbTypeMock(type);
         UniProtDBCrossReference xref =
                 new UniProtDBCrossReferenceBuilder()
                         .databaseType(dbType)
@@ -278,5 +283,25 @@ class UniProtDBCrossReferenceImplTest {
         if (properties.size() < number + 1) {
             return null;
         } else return properties.get(number).getValue();
+    }
+
+    private static class UniProtXDbTypeMock implements UniProtXDbType {
+        String name;
+
+        UniProtXDbTypeMock(String name) {
+            this.name = name;
+        }
+
+        public @Nonnull UniProtXDbTypeDetail getDetail() {
+            throw new RuntimeException("No implementation defined in mock class");
+        }
+
+        public @Nullable DBXRefTypeAttribute getAttribute(int position) {
+            return new DBXRefTypeAttribute(name + position, null, null);
+        }
+
+        public String getName() {
+            return name;
+        }
     }
 }

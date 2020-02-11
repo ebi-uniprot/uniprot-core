@@ -14,7 +14,6 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.xdb.DatabaseCategory;
 import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
-import org.uniprot.core.cv.xdb.UniProtXDbTypes;
 import org.uniprot.core.util.Pair;
 import org.uniprot.cv.xdb.validator.DBXRef;
 import org.uniprot.cv.xdb.validator.DBXRefReader;

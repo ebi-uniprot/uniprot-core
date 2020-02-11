@@ -1,6 +1,6 @@
 package org.uniprot.core.xml.uniprot.description;
 
-import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
 import java.util.ArrayList;
 import java.util.List;

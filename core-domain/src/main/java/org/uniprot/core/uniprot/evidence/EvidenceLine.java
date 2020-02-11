@@ -9,6 +9,4 @@ public interface EvidenceLine extends Serializable {
     LocalDate getCreateDate();
 
     String getCurator();
-
-    Evidence toEvidence();
 }

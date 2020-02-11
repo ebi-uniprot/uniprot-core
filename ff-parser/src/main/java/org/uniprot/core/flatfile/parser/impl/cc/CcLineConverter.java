@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.impl.cc;
 
-import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLines;
+import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLines;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +28,7 @@ import org.uniprot.core.uniprot.comment.impl.CatalyticActivityCommentImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
-import org.uniprot.core.uniprot.evidence.impl.EvidenceHelper;
+import org.uniprot.cv.evidence.EvidenceHelper;
 
 import com.google.common.base.Strings;
 

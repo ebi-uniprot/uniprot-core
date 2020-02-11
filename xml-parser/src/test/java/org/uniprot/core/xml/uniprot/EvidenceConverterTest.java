@@ -1,7 +1,7 @@
 package org.uniprot.core.xml.uniprot;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.evidence.Evidence;

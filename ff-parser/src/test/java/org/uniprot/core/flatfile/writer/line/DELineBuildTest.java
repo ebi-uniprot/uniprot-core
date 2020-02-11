@@ -14,7 +14,7 @@ import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprot.description.*;
 import org.uniprot.core.uniprot.description.builder.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.impl.EvidenceHelper;
+import org.uniprot.cv.evidence.EvidenceHelper;
 
 class DELineBuildTest {
     private DELineBuilder builder = new DELineBuilder();

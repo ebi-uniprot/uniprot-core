@@ -17,7 +17,7 @@ import org.uniprot.core.uniprot.comment.builder.CatalyticActivityCommentBuilder;
 import org.uniprot.core.uniprot.comment.builder.PhysiologicalReactionBuilder;
 import org.uniprot.core.uniprot.comment.builder.ReactionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.impl.EvidenceHelper;
+import org.uniprot.cv.evidence.EvidenceHelper;
 
 import com.google.common.base.Strings;
 
