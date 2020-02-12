@@ -1,4 +1,4 @@
-package org.uniprot.core.cv.xdb;
+package org.uniprot.cv.xdb;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.cv.xdb.DBXRefTypeAttribute;
+import org.uniprot.core.cv.xdb.DatabaseCategory;
+import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
 import org.uniprot.core.util.Utils;
 import org.uniprot.core.util.property.Property;
 

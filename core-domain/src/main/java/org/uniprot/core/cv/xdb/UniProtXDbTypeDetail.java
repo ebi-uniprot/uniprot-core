@@ -25,23 +25,6 @@ public class UniProtXDbTypeDetail implements Serializable {
         this.attributes.add(DEFAULT_ATTRIBUTE);
     }
 
-    //    public UniProtXDbTypeDetail(
-    //            String name,
-    //            String displayName,
-    //            DatabaseCategory category,
-    //            String uriLink,
-    //            List<DBXRefTypeAttribute> attributes) {
-    //        super();
-    //        this.name = name;
-    //        this.displayName = displayName;
-    //        this.category = category;
-    //        this.uriLink = uriLink;
-    //
-    //        this.attributes = new ArrayList<>();
-    //        if ((attributes != null) && !attributes.isEmpty()) this.attributes.addAll(attributes);
-    //        else this.attributes.add(DEFAULT_ATTRIBUTE);
-    //    }
-    //
     public UniProtXDbTypeDetail(
             String name,
             String displayName,

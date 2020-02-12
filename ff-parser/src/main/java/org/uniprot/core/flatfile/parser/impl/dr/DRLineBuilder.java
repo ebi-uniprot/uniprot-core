@@ -15,8 +15,8 @@ import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-import org.uniprot.core.uniprot.xdb.UniProtXDbDisplayOrder;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+import org.uniprot.cv.xdb.UniProtXDbDisplayOrder;
 
 import com.google.common.base.Strings;
 

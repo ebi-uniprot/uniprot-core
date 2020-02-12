@@ -1,4 +1,4 @@
-package org.uniprot.core.uniprot.xdb;
+package org.uniprot.cv.xdb;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
-import org.uniprot.core.cv.xdb.UniProtXDbTypes;
+import org.uniprot.core.uniprot.xdb.DatabaseDisplayOrder;
 
 /** @author jieluo */
 public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtXDbTypeDetail> {

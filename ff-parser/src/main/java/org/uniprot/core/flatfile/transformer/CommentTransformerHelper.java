@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.transformer;
 
-import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
 import java.util.ArrayList;
 import java.util.EnumMap;

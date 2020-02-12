@@ -12,6 +12,7 @@ import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceLine;
+import org.uniprot.cv.evidence.EvidenceHelper;
 
 public class SSEvidenceLineBuilder extends FFLineBuilderAbstr<List<EvidenceLine>> {
     private static final String REFERENCE = "Reference";
@@ -38,7 +39,7 @@ public class SSEvidenceLineBuilder extends FFLineBuilderAbstr<List<EvidenceLine>
         if ((evidences == null) || (evidences.isEmpty())) return FFLines.create(lines);
         for (EvidenceLine line : evidences) {
             StringBuilder sb = new StringBuilder();
-            Evidence evidence = line.toEvidence();
+            Evidence evidence = EvidenceHelper.parseEvidenceLine(line.getEvidence());
             sb.append(prefix);
 
             sb.append(evidence.getEvidenceCode().getCode());

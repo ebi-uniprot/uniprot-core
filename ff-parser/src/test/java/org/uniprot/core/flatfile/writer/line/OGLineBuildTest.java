@@ -14,7 +14,7 @@ import org.uniprot.core.uniprot.GeneEncodingType;
 import org.uniprot.core.uniprot.GeneLocation;
 import org.uniprot.core.uniprot.builder.GeneLocationBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.impl.EvidenceHelper;
+import org.uniprot.cv.evidence.EvidenceHelper;
 
 class OGLineBuildTest {
     private OGLineBuilder builder = new OGLineBuilder();

@@ -14,6 +14,7 @@ import org.uniprot.core.uniprot.builder.InternalLineBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+import org.uniprot.cv.xdb.UniProtXDbTypeImpl;
 
 public class DrLineConverter extends EvidenceCollector
         implements Converter<DrLineObject, UniProtDrObjects> {
@@ -73,7 +74,7 @@ public class DrLineConverter extends EvidenceCollector
             isoformId = drline.isoform;
         }
         try {
-            UniProtXDbType type = new UniProtXDbType(drline.DbName);
+            UniProtXDbType type = new UniProtXDbTypeImpl(drline.DbName);
             uniProtDrObjects.drObjects.add(
                     new UniProtDBCrossReferenceBuilder()
                             .id(id)

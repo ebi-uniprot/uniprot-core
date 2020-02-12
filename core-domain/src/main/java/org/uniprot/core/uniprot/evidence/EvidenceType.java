@@ -25,6 +25,10 @@ public final class EvidenceType implements DatabaseType, Serializable {
         return EvidenceTypes.INSTANCE.getType(name);
     }
 
+    public boolean isReference() {
+        return "Reference".equals(name);
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;

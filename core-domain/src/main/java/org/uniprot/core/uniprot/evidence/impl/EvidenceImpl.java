@@ -10,7 +10,6 @@ import org.uniprot.core.uniprot.evidence.EvidenceType;
 
 public class EvidenceImpl implements Evidence {
     private static final long serialVersionUID = 6892404810238028657L;
-    static final EvidenceType REFERENCE = new EvidenceType("Reference");
     private static final String PIPE = "|";
     private static final String COLON = ":";
     private EvidenceCode evidenceCode;
@@ -54,7 +53,7 @@ public class EvidenceImpl implements Evidence {
         sb.append(evidenceCode.getCode());
         if (source != null) {
             sb.append(PIPE);
-            if (source.getDatabaseType().equals(REFERENCE)) {
+            if (source.getDatabaseType().isReference()) {
                 sb.append(source.getId());
             } else {
                 sb.append(source.getDatabaseType().getDetail().getDisplayName())

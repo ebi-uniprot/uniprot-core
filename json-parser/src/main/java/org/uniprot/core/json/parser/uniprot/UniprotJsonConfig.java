@@ -40,6 +40,7 @@ import org.uniprot.core.uniprot.taxonomy.impl.OrganismImpl;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 import org.uniprot.core.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
+import org.uniprot.cv.xdb.UniProtXDbTypeImpl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.NamedType;
@@ -186,6 +187,7 @@ public class UniprotJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(FeatureId.class, FeatureIdImpl.class);
         mod.addAbstractTypeMapping(FeatureDescription.class, FeatureDescriptionImpl.class);
         mod.addAbstractTypeMapping(Feature.class, FeatureImpl.class);
+        mod.addAbstractTypeMapping(UniProtXDbType.class, UniProtXDbTypeImpl.class);
 
         mod.addAbstractTypeMapping(DatabaseType.class, DefaultDatabaseType.class);
 

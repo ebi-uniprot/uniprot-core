@@ -15,7 +15,7 @@ import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.gene.*;
 import org.uniprot.core.uniprot.builder.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.impl.EvidenceHelper;
+import org.uniprot.cv.evidence.EvidenceHelper;
 
 class GNLineBuildTest {
     GNLineBuilder builder = new GNLineBuilder();

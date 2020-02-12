@@ -2,7 +2,7 @@ package org.uniprot.core.xml.uniprot.comment;
 
 import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
 import java.util.Arrays;
 

@@ -15,7 +15,7 @@ import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprot.Keyword;
 import org.uniprot.core.uniprot.builder.KeywordBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.impl.EvidenceHelper;
+import org.uniprot.cv.evidence.EvidenceHelper;
 
 class KWLineBuildTest {
     KWLineBuilder builder = new KWLineBuilder();

@@ -8,6 +8,7 @@ import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.PropertyType;
+import org.uniprot.cv.xdb.UniProtXDbTypeImpl;
 
 import com.google.common.base.Strings;
 
@@ -153,7 +154,7 @@ class UniProtCrossReferenceConverterTest {
             String thirdAttribute,
             String fourthAttribute,
             String isoformId) {
-        UniProtXDbType uniProtXDbType = new UniProtXDbType(dbName);
+        UniProtXDbType uniProtXDbType = new UniProtXDbTypeImpl(dbName);
         return new UniProtDBCrossReferenceBuilder()
                 .databaseType(uniProtXDbType)
                 .id(id)

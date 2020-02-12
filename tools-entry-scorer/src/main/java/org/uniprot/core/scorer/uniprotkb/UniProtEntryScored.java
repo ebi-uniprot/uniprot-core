@@ -26,7 +26,7 @@ import org.uniprot.core.uniprot.evidence.EvidenceType;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureType;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-import org.uniprot.core.uniprot.xdb.UniProtXDbDisplayOrder;
+import org.uniprot.cv.xdb.UniProtXDbDisplayOrder;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 13:33:09 To change this template

@@ -100,7 +100,6 @@ class InternalSectionImplTest {
         assertEquals(createDate, evline.getCreateDate());
         assertEquals(curator, evline.getCurator());
         assertEquals(evidence, evline.getEvidence());
-        assertEquals(evidence, evline.toEvidence().getValue());
     }
 
     @Test

@@ -1,4 +1,4 @@
-package org.uniprot.core.uniprot.xdb.impl;
+package org.uniprot.cv.xdb;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,8 +6,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
-import org.uniprot.core.cv.xdb.UniProtXDbTypes;
-import org.uniprot.core.uniprot.xdb.UniProtXDbDisplayOrder;
 
 class UniProtXDbDisplayOrderTest {
 

@@ -20,7 +20,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.uniprot</groupId>
-			<artifactId>core-common</artifactId>
+			<artifactId>controlled-vocabulary</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>

@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.uniprot.core.cv.xdb.DBXRefTypeAttribute;
 import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
-import org.uniprot.core.cv.xdb.UniProtXDbTypes;
 import org.uniprot.core.uniprot.xdb.*;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 import org.uniprot.core.xml.Converter;
@@ -13,6 +12,9 @@ import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.PropertyType;
+import org.uniprot.cv.xdb.GoEvidences;
+import org.uniprot.cv.xdb.UniProtXDbTypeImpl;
+import org.uniprot.cv.xdb.UniProtXDbTypes;
 
 import com.google.common.base.Strings;
 
@@ -57,7 +59,7 @@ public class UniProtCrossReferenceConverter
             }
         }
 
-        UniProtXDbType type = new UniProtXDbType(databaseName);
+        UniProtXDbType type = new UniProtXDbTypeImpl(databaseName);
         return new UniProtDBCrossReferenceBuilder()
                 .databaseType(type)
                 .isoformId(isoformId)

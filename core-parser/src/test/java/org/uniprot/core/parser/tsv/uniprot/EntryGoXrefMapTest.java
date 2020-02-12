@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+import org.uniprot.cv.xdb.UniProtXDbTypeImpl;
 
 class EntryGoXrefMapTest {
 
@@ -118,7 +119,7 @@ class EntryGoXrefMapTest {
     }
 
     private UniProtDBCrossReference create(String id, String term, String evidence) {
-        UniProtXDbType type = new UniProtXDbType("GO");
+        UniProtXDbType type = new UniProtXDbTypeImpl("GO");
         return new UniProtDBCrossReferenceBuilder()
                 .databaseType(type)
                 .id(id)
