@@ -6,9 +6,11 @@ import org.uniprot.core.uniprot.comment.Comment;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.cfg.MapperConfig;
+import com.fasterxml.jackson.databind.introspect.Annotated;
 import com.fasterxml.jackson.databind.introspect.AnnotatedClass;
 import com.fasterxml.jackson.databind.jsontype.TypeResolverBuilder;
 import com.fasterxml.jackson.databind.jsontype.impl.StdTypeResolverBuilder;
+import com.github.bohnman.squiggly.filter.SquigglyPropertyFilter;
 
 public class CustomAnnotationIntrospector extends SimpleAnnotationIntrospector {
     private static final long serialVersionUID = 3724944589060382231L;
@@ -27,5 +29,9 @@ public class CustomAnnotationIntrospector extends SimpleAnnotationIntrospector {
             return typeResolverBuilder;
         }
         return super.findTypeResolver(config, ac, baseType);
+    }
+
+    public Object findFilterId(Annotated ann) {
+        return SquigglyPropertyFilter.FILTER_ID;
     }
 }

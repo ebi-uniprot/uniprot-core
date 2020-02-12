@@ -5,6 +5,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ser.PropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import com.github.bohnman.squiggly.filter.SquigglyPropertyFilter;
+import com.github.bohnman.squiggly.filter.SquigglyPropertyFilterMixin;
 
 /** @author lgonzales */
 public abstract class JsonConfig {
@@ -33,6 +38,12 @@ public abstract class JsonConfig {
         objMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         objMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
         objMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+        objMapper.addMixIn(Object.class, SquigglyPropertyFilterMixin.class);
+
+        PropertyFilter filter = SimpleBeanPropertyFilter.serializeAll();
+        SimpleFilterProvider filterProvider =
+                new SimpleFilterProvider().addFilter(SquigglyPropertyFilter.FILTER_ID, filter);
+        objMapper.setFilterProvider(filterProvider);
         return objMapper;
     }
 }
