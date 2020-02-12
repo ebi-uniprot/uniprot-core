@@ -7,7 +7,7 @@ import java.io.Serializable;
  *
  * @author Edd
  */
-public interface Chebi extends Serializable {
+public interface ChebiEntry extends Serializable {
     String getId();
 
     String getName();

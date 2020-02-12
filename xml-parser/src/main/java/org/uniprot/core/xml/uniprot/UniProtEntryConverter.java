@@ -99,7 +99,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
         activeEntryBuilder.commentsSet(fromXmlForComments(xmlEntry));
         activeEntryBuilder.databaseCrossReferencesSet(
                 xmlEntry.getDbReference().stream()
-                        .filter(val -> !val.getType().equals("EC"))
+                        .filter(val -> !val.getType().equals("ECEntry"))
                         .map(xrefConverter::fromXml)
                         .filter(val -> val != null)
                         .collect(Collectors.toList()));

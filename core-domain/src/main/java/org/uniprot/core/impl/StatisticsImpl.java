@@ -1,49 +1,41 @@
-package org.uniprot.core.cv.subcell.impl;
+package org.uniprot.core.impl;
 
 import java.util.Objects;
 
-import org.uniprot.core.cv.subcell.SubcellularLocationStatistics;
+import org.uniprot.core.Statistics;
 
-/**
- * @author lgonzales
- * @since 2019-07-11
- */
-public class SubcellularLocationStatisticsImpl implements SubcellularLocationStatistics {
+public class StatisticsImpl implements Statistics {
+    private static final long serialVersionUID = 1767966627449407612L;
 
-    private static final long serialVersionUID = -2917473627048690554L;
     private long reviewedProteinCount;
     private long unreviewedProteinCount;
 
-    private SubcellularLocationStatisticsImpl() {
+    // no arg constructor for JSON deserialization
+    StatisticsImpl() {
         this(0L, 0L);
     }
 
-    public SubcellularLocationStatisticsImpl(
-            long reviewedProteinCount, long unreviewedProteinCount) {
+    public StatisticsImpl(long reviewedProteinCount, long unreviewedProteinCount) {
         this.reviewedProteinCount = reviewedProteinCount;
         this.unreviewedProteinCount = unreviewedProteinCount;
     }
 
-    @Override
     public long getReviewedProteinCount() {
         return reviewedProteinCount;
     }
 
-    @Override
     public long getUnreviewedProteinCount() {
         return unreviewedProteinCount;
     }
 
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SubcellularLocationStatisticsImpl that = (SubcellularLocationStatisticsImpl) o;
+        Statistics that = (Statistics) o;
         return getReviewedProteinCount() == that.getReviewedProteinCount()
                 && getUnreviewedProteinCount() == that.getUnreviewedProteinCount();
     }
 
-    @Override
     public int hashCode() {
         return Objects.hash(getReviewedProteinCount(), getUnreviewedProteinCount());
     }

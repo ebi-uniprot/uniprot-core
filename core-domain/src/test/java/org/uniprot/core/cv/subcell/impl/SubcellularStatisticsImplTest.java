@@ -5,7 +5,8 @@ import java.util.concurrent.ThreadLocalRandom;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.subcell.SubcellularLocationStatistics;
+import org.uniprot.core.Statistics;
+import org.uniprot.core.builder.StatisticsBuilder;
 
 public class SubcellularStatisticsImplTest {
 
@@ -20,49 +21,44 @@ public class SubcellularStatisticsImplTest {
 
     @Test
     void testCreateKeywordStats() {
-        SubcellularLocationStatistics kw =
-                createSubcellularLocationStatistics(this.reviewed, this.unreviewed);
+        Statistics kw = createSubcellularLocationStatistics(this.reviewed, this.unreviewed);
         Assertions.assertEquals(this.reviewed, kw.getReviewedProteinCount());
         Assertions.assertEquals(this.unreviewed, kw.getUnreviewedProteinCount());
     }
 
     @Test
     void testValueEqual() {
-        SubcellularLocationStatistics sc1 =
-                createSubcellularLocationStatistics(this.reviewed, this.unreviewed);
-        SubcellularLocationStatistics sc2 =
-                createSubcellularLocationStatistics(this.reviewed, this.unreviewed);
+        Statistics sc1 = createSubcellularLocationStatistics(this.reviewed, this.unreviewed);
+        Statistics sc2 = createSubcellularLocationStatistics(this.reviewed, this.unreviewed);
         Assertions.assertTrue(sc1.equals(sc2));
         Assertions.assertTrue(sc1.hashCode() == sc2.hashCode());
     }
 
     @Test
     void testValueNotEqual() {
-        SubcellularLocationStatistics sc1 =
-                createSubcellularLocationStatistics(this.reviewed, this.unreviewed);
+        Statistics sc1 = createSubcellularLocationStatistics(this.reviewed, this.unreviewed);
         this.unreviewed = this.unreviewed - 1;
-        SubcellularLocationStatistics kw2 =
-                createSubcellularLocationStatistics(this.reviewed, this.unreviewed);
+        Statistics kw2 = createSubcellularLocationStatistics(this.reviewed, this.unreviewed);
         Assertions.assertFalse(sc1.equals(kw2));
     }
 
     @Test
     void testRefEqual() {
-        SubcellularLocationStatistics sc1 =
-                createSubcellularLocationStatistics(this.reviewed, this.unreviewed);
+        Statistics sc1 = createSubcellularLocationStatistics(this.reviewed, this.unreviewed);
         Assertions.assertTrue(sc1.equals(sc1));
         Assertions.assertTrue(sc1.hashCode() == sc1.hashCode());
     }
 
     @Test
     void testEqualWithNull() {
-        SubcellularLocationStatistics sc =
-                createSubcellularLocationStatistics(this.reviewed, this.unreviewed);
+        Statistics sc = createSubcellularLocationStatistics(this.reviewed, this.unreviewed);
         Assertions.assertFalse(sc.equals(null));
     }
 
-    public static SubcellularLocationStatistics createSubcellularLocationStatistics(
-            long reviewed, long unreviewed) {
-        return new SubcellularLocationStatisticsImpl(reviewed, unreviewed);
+    public static Statistics createSubcellularLocationStatistics(long reviewed, long unreviewed) {
+        return new StatisticsBuilder()
+                .reviewedProteinCount(reviewed)
+                .unreviewedProteinCount(unreviewed)
+                .build();
     }
 }

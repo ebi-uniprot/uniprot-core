@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.disease.Disease;
+import org.uniprot.core.cv.disease.DiseaseEntry;
 
 class DiseaseFileReaderTest {
     private static final DiseaseFileReader reader = new DiseaseFileReader();
@@ -17,7 +17,7 @@ class DiseaseFileReaderTest {
     @Disabled
     @Test
     void testParseDefaultFile() {
-        List<Disease> diseases = reader.parse(DiseaseCache.FTP_LOCATION);
+        List<DiseaseEntry> diseases = reader.parse(DiseaseCache.FTP_LOCATION);
         assertFalse(diseases.isEmpty());
     }
 
@@ -35,9 +35,9 @@ class DiseaseFileReaderTest {
                         "DR   MIM; 268300; phenotype.",
                         "//");
 
-        final List<Disease> retList = reader.parseLines(input);
+        final List<DiseaseEntry> retList = reader.parseLines(input);
         assertAll(
-                "Disease parse result",
+                "DiseaseEntry parse result",
                 () -> assertNotNull(retList),
                 () -> assertEquals(1, retList.size(), "should have one object return"),
                 () -> assertEquals("Roberts syndrome", retList.get(0).getId()),
@@ -78,10 +78,10 @@ class DiseaseFileReaderTest {
                         "KW   KW-1007:Palmoplantar keratoderma.",
                         "//");
 
-        final List<Disease> retList = reader.parseLines(input);
+        final List<DiseaseEntry> retList = reader.parseLines(input);
 
         assertAll(
-                "Disease parse result",
+                "DiseaseEntry parse result",
                 () -> assertNotNull(retList),
                 () -> assertEquals(1, retList.size(), "should have one object return"),
                 () ->
@@ -118,7 +118,7 @@ class DiseaseFileReaderTest {
                         "AR   SCPS.",
                         "SY   SC pseudothalidomide syndrome.",
                         "//");
-        final List<Disease> retList = reader.parseLines(input);
+        final List<DiseaseEntry> retList = reader.parseLines(input);
 
         assertNotNull(retList.get(0).getAlternativeNames());
         assertEquals(1, retList.get(0).getAlternativeNames().size());
@@ -149,8 +149,8 @@ class DiseaseFileReaderTest {
                         "KW   KW-0887:Epilepsy.",
                         "KW   KW-0991:Mental retardation.",
                         "//");
-        final List<Disease> retList = reader.parseLines(input);
-        final Disease di = retList.get(0);
+        final List<DiseaseEntry> retList = reader.parseLines(input);
+        final DiseaseEntry di = retList.get(0);
         assertNotNull(di);
         assertNotNull(di.getId());
         assertNotNull(di.getAccession());

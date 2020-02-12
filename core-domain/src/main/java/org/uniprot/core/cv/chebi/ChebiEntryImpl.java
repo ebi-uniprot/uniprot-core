@@ -5,14 +5,14 @@ package org.uniprot.core.cv.chebi;
  *
  * @author Edd
  */
-public class ChebiImpl implements Chebi {
+public class ChebiEntryImpl implements ChebiEntry {
 
     private static final long serialVersionUID = 7578992410951294303L;
     private final String id;
     private final String inchiKey;
     private final String name;
 
-    public ChebiImpl(String id, String name, String inchiKey) {
+    public ChebiEntryImpl(String id, String name, String inchiKey) {
         this.id = id;
         this.name = name;
         this.inchiKey = inchiKey;
@@ -35,7 +35,7 @@ public class ChebiImpl implements Chebi {
 
     @Override
     public String toString() {
-        return "ChebiImpl{"
+        return "ChebiEntryImpl{"
                 + "id='"
                 + id
                 + '\''

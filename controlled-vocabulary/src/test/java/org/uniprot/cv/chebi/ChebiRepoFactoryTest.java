@@ -6,7 +6,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.chebi.Chebi;
+import org.uniprot.core.cv.chebi.ChebiEntry;
 
 /**
  * Created 06/06/19
@@ -25,7 +25,7 @@ class ChebiRepoFactoryTest {
         ChebiRepo repo = ChebiRepoFactory.get("chebi/chebi.obo");
         assertThat(repo, is(notNullValue()));
 
-        Chebi chebi = repo.getById("30151");
+        ChebiEntry chebi = repo.getById("30151");
         assertThat(chebi.getName(), is("aluminide(1-)"));
         assertThat(chebi.getInchiKey(), is("SBLSYFIUPXRQRY-UHFFFAOYSA-N"));
 

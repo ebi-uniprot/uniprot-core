@@ -9,9 +9,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.disease.CrossReference;
-import org.uniprot.core.cv.disease.Disease;
-import org.uniprot.core.cv.disease.DiseaseBuilder;
+import org.uniprot.core.cv.disease.DiseaseCrossReference;
+import org.uniprot.core.cv.disease.DiseaseEntry;
+import org.uniprot.core.cv.disease.builder.DiseaseEntryBuilder;
+import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceImpl;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
 
@@ -21,13 +22,13 @@ class DiseaseEntryMapTest {
     void checkSimpleEntryAttributeValues() {
         String accession = "DI-1234";
         String acronym = "ACRONYM";
-        String id = "Disease Id";
-        String def = "Disease definition. sample";
+        String id = "DiseaseEntry Id";
+        String def = "DiseaseEntry definition. sample";
         long revCount = 10L;
         long unrevCount = 20L;
-        DiseaseBuilder builder =
+        DiseaseEntryBuilder builder =
                 getSimpleDiseaseEntry(accession, acronym, id, def, revCount, unrevCount);
-        Disease diseaseEntry = builder.build();
+        DiseaseEntry diseaseEntry = builder.build();
 
         Map<String, String> mappedEntries = new DiseaseEntryMap(diseaseEntry).attributeValues();
         assertThat(mappedEntries, notNullValue());
@@ -47,16 +48,18 @@ class DiseaseEntryMapTest {
     void checkCompleteEntryAttributeValues() {
         String accession = "DI-1234";
         String acronym = "ACRONYM";
-        String id = "Disease Id";
-        String def = "Disease definition. sample";
+        String id = "DiseaseEntry Id";
+        String def = "DiseaseEntry definition. sample";
         long revCount = 10L;
         long unrevCount = 20L;
 
-        DiseaseBuilder builder =
+        DiseaseEntryBuilder builder =
                 getSimpleDiseaseEntry(accession, acronym, id, def, revCount, unrevCount);
         List<String> alternativeNames = Arrays.asList("ALT1", "ALT2", "ALT3");
-        List<CrossReference> xrefs =
-                Arrays.asList(new CrossReference("DB1", "ID1"), new CrossReference("DB1", "ID2"));
+        List<DiseaseCrossReference> xrefs =
+                Arrays.asList(
+                        new DiseaseCrossReferenceImpl("DB1", "ID1"),
+                        new DiseaseCrossReferenceImpl("DB1", "ID2"));
         List<Keyword> keywords =
                 Arrays.asList(
                         new KeywordImpl("KW1", "VAL1"),
@@ -66,7 +69,7 @@ class DiseaseEntryMapTest {
         builder.alternativeNamesSet(alternativeNames).crossReferencesSet(xrefs);
         builder.keywordsSet(keywords);
 
-        Disease entry = builder.build();
+        DiseaseEntry entry = builder.build();
 
         Map<String, String> mappedEntries = new DiseaseEntryMap(entry).attributeValues();
 
@@ -85,14 +88,14 @@ class DiseaseEntryMapTest {
         assertEquals(String.join(",", "KW1", "KW2", "KW3", "KW4"), mappedEntries.get("keywords"));
     }
 
-    private DiseaseBuilder getSimpleDiseaseEntry(
+    private DiseaseEntryBuilder getSimpleDiseaseEntry(
             String accession,
             String acronym,
             String id,
             String def,
             long revCount,
             long unrevCount) {
-        DiseaseBuilder builder = new DiseaseBuilder();
+        DiseaseEntryBuilder builder = new DiseaseEntryBuilder();
         builder.accession(accession).acronym(acronym).id(id);
         builder.definition(def);
         builder.reviewedProteinCount(revCount).unreviewedProteinCount(unrevCount);

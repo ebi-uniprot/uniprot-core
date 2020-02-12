@@ -1,4 +1,4 @@
-package org.uniprot.core.cv.disease;
+package org.uniprot.core.cv.disease.impl;
 
 import static org.uniprot.core.util.Utils.unmodifiableList;
 
@@ -6,9 +6,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import org.uniprot.core.cv.disease.DiseaseCrossReference;
+import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.keyword.Keyword;
 
-public class DiseaseImpl implements Disease {
+public class DiseaseEntryImpl implements DiseaseEntry {
 
     private static final long serialVersionUID = 3059038050252487022L;
     private String id;
@@ -18,12 +20,12 @@ public class DiseaseImpl implements Disease {
     private String acronym;
     private String definition;
     private List<String> alternativeNames;
-    private List<CrossReference> crossReferences;
+    private List<DiseaseCrossReference> crossReferences;
     private List<Keyword> keywords;
     private Long reviewedProteinCount;
     private Long unreviewedProteinCount;
 
-    private DiseaseImpl() {
+    private DiseaseEntryImpl() {
         // do nothing.. just to satisfy the objectmapper
         this.accession = null;
         this.alternativeNames = Collections.emptyList();
@@ -31,13 +33,13 @@ public class DiseaseImpl implements Disease {
         this.keywords = Collections.emptyList();
     }
 
-    public DiseaseImpl(
+    public DiseaseEntryImpl(
             String id,
             String accession,
             String acronym,
             String definition,
             List<String> alternativeNames,
-            List<CrossReference> crossReferences,
+            List<DiseaseCrossReference> crossReferences,
             List<Keyword> keywords) {
         super();
         this.id = id;
@@ -49,13 +51,13 @@ public class DiseaseImpl implements Disease {
         this.keywords = unmodifiableList(keywords);
     }
 
-    public DiseaseImpl(
+    public DiseaseEntryImpl(
             String id,
             String accession,
             String acronym,
             String definition,
             List<String> alternativeNames,
-            List<CrossReference> crossReferences,
+            List<DiseaseCrossReference> crossReferences,
             List<Keyword> keywords,
             Long reviewedProteinCount,
             Long unreviewedProteinCount) {
@@ -97,11 +99,11 @@ public class DiseaseImpl implements Disease {
         this.alternativeNames = alternativeNames;
     }
 
-    public List<CrossReference> getCrossReferences() {
+    public List<DiseaseCrossReference> getCrossReferences() {
         return crossReferences;
     }
 
-    public void setCrossReferences(List<CrossReference> crossReferences) {
+    public void setCrossReferences(List<DiseaseCrossReference> crossReferences) {
         this.crossReferences = crossReferences;
     }
 
@@ -131,7 +133,7 @@ public class DiseaseImpl implements Disease {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DiseaseImpl disease = (DiseaseImpl) o;
+        DiseaseEntryImpl disease = (DiseaseEntryImpl) o;
         return Objects.equals(id, disease.id)
                 && Objects.equals(accession, disease.accession)
                 && Objects.equals(acronym, disease.acronym)

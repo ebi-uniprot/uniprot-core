@@ -46,9 +46,9 @@ public class DiseaseCommentTest {
         assertNotNull(jsonNode.get("disease"));
         JsonNode disease = jsonNode.get("disease");
         assertNotNull(disease.get("diseaseId"));
-        assertEquals("Disease Id", disease.get("diseaseId").asText());
+        assertEquals("DiseaseEntry Id", disease.get("diseaseId").asText());
         assertNotNull(disease.get("diseaseAccession"));
-        assertEquals("Disease AC", disease.get("diseaseAccession").asText());
+        assertEquals("DiseaseEntry AC", disease.get("diseaseAccession").asText());
         assertNotNull(disease.get("acronym"));
         assertEquals("someAcron", disease.get("acronym").asText());
         assertNotNull(disease.get("description"));
@@ -75,11 +75,11 @@ public class DiseaseCommentTest {
                         .id("3124")
                         .build();
         Disease disease =
-                builder.diseaseId("Disease Id")
+                builder.diseaseId("DiseaseEntry Id")
                         .acronym("someAcron")
                         .description("some description")
                         .reference(reference)
-                        .diseaseAc("Disease AC")
+                        .diseaseAc("DiseaseEntry AC")
                         .evidencesAdd(CreateUtils.createEvidence("ECO:0000256|PIRNR:PIRNR001362"))
                         .build();
 

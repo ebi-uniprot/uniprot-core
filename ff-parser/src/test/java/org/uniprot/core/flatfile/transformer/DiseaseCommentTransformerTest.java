@@ -286,7 +286,7 @@ class DiseaseCommentTransformerTest {
                         + "characterized by hemorrhagic necrosis of parts of the temporal and "
                         + "frontal lobes etc";
         String diseaseNote =
-                "Disease susceptibility is associated with "
+                "DiseaseEntry susceptibility is associated with "
                         + "variations affecting the gene represented in this entry. TLR3 "
                         + "mutations predispose otherwise healthy individuals to isolated "
                         + "herpes simplex encephalitis through a mechanism that involves "

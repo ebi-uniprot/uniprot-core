@@ -48,7 +48,7 @@ public class ProteinDescriptionScored implements HasScore {
             return score;
         }
 
-        // distinct EC numbers
+        // distinct ECEntry numbers
         int distinctECNumbersSize = getDistinctECs(description).size();
 
         score += distinctECNumbersSize * 3;

@@ -2,10 +2,10 @@ package org.uniprot.core.cv.keyword.impl;
 
 import java.util.*;
 
+import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordStatistics;
 
 public class KeywordEntryImpl implements KeywordEntry {
 
@@ -18,7 +18,7 @@ public class KeywordEntryImpl implements KeywordEntry {
     private List<String> sites;
     private Keyword category;
     private List<KeywordEntry> children;
-    private KeywordStatistics statistics;
+    private Statistics statistics;
 
     public KeywordEntryImpl() {
         children = new ArrayList<>();
@@ -34,7 +34,7 @@ public class KeywordEntryImpl implements KeywordEntry {
             List<String> sites,
             Keyword category,
             List<KeywordEntry> children,
-            KeywordStatistics statistics) {
+            Statistics statistics) {
         this.keyword = keyword;
         this.definition = definition;
         this.synonyms = synonyms;
@@ -123,11 +123,11 @@ public class KeywordEntryImpl implements KeywordEntry {
     }
 
     @Override
-    public KeywordStatistics getStatistics() {
+    public Statistics getStatistics() {
         return statistics;
     }
 
-    public void setStatistics(KeywordStatistics statistics) {
+    public void setStatistics(Statistics statistics) {
         this.statistics = statistics;
     }
 

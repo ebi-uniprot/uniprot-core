@@ -1,13 +1,13 @@
 package org.uniprot.core.json.parser.keyword;
 
+import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordStatistics;
 import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordEntryImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
-import org.uniprot.core.cv.keyword.impl.KeywordStatisticsImpl;
+import org.uniprot.core.impl.StatisticsImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -51,7 +51,7 @@ public class KeywordJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(KeywordEntry.class, KeywordEntryImpl.class);
         mod.addAbstractTypeMapping(Keyword.class, KeywordImpl.class);
         mod.addAbstractTypeMapping(GeneOntology.class, GeneOntologyImpl.class);
-        mod.addAbstractTypeMapping(KeywordStatistics.class, KeywordStatisticsImpl.class);
+        mod.addAbstractTypeMapping(Statistics.class, StatisticsImpl.class);
 
         objMapper.registerModule(mod);
 

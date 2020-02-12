@@ -21,7 +21,7 @@ import java.util.List;
  * <p>These values can be found in the GN line of the flat file on the marked position.
  *
  * <pre class="example">
- * <font color="#AAAAAA"> DE   Serine proteases 1/2 precursor (EC 3.4.21.-) (Protein Jonah
+ * <font color="#AAAAAA"> DE   Serine proteases 1/2 precursor (ECEntry 3.4.21.-) (Protein Jonah
  * DE   99Cii/99Ciii).
  * GN   <font color="#000000">Name=Jon99Cii; Synonyms=SER1, SER5, Ser99Da; ORFNames=CG7877;</font>
  * GN   <font color="#000000">and</font>
@@ -54,7 +54,7 @@ public interface Gene extends Serializable {
      * marked position.
      *
      * <pre class="example">
-     * <font color="#AAAAAA"> DE   Serine proteases 1/2 precursor (EC 3.4.21.-) (Protein Jonah
+     * <font color="#AAAAAA"> DE   Serine proteases 1/2 precursor (ECEntry 3.4.21.-) (Protein Jonah
      * DE   99Cii/99Ciii).
      * GN   Name=<font color="#000000">Jon99Cii</font>; Synonyms=SER1, SER5, Ser99Da; ORFNames=CG7877;
      * GN   and
@@ -71,7 +71,7 @@ public interface Gene extends Serializable {
      * this method. This value can be found in the GN line of the flat file on the marked position.
      *
      * <pre class="example">
-     * <font color="#AAAAAA"> DE   Serine proteases 1/2 precursor (EC 3.4.21.-) (Protein Jonah
+     * <font color="#AAAAAA"> DE   Serine proteases 1/2 precursor (ECEntry 3.4.21.-) (Protein Jonah
      * DE   99Cii/99Ciii).
      * GN   Name=<font color="#000000">Jon99Cii</font>; Synonyms=SER1, SER5, Ser99Da; ORFNames=CG7877;
      * GN   and
@@ -88,7 +88,7 @@ public interface Gene extends Serializable {
      * of the flat file on the marked position.
      *
      * <pre class="example">
-     * <font color="#AAAAAA"> DE   Serine proteases 1/2 precursor (EC 3.4.21.-) (Protein Jonah
+     * <font color="#AAAAAA"> DE   Serine proteases 1/2 precursor (ECEntry 3.4.21.-) (Protein Jonah
      * DE   99Cii/99Ciii).
      * GN   Name=Jon99Cii; Synonyms=<font color="#000000">SER1</font>, <font color="#000000">SER5</font>, <font color="#000000">Ser99Da</font>; ORFNames=CG7877;
      * GN   and
@@ -105,7 +105,7 @@ public interface Gene extends Serializable {
      * line of the flat file on the marked position.
      *
      * <pre class="example">
-     * <font color="#AAAAAA"> DE   Putative 3-methyladenine DNA glycosylase (EC 3.2.2.-).
+     * <font color="#AAAAAA"> DE   Putative 3-methyladenine DNA glycosylase (ECEntry 3.2.2.-).
      * GN   OrderedLocusNames=<font color="#000000">CPn_0505</font>, <font color="#000000">CP_0248</font>, <font color="#000000">CPj0505</font>, <font color="#000000">CpB0526</font>;
      * OS   Chlamydia pneumoniae (Chlamydophila pneumoniae).
      * ...</font></pre>
@@ -119,7 +119,7 @@ public interface Gene extends Serializable {
      * flat file on the marked position.
      *
      * <pre class="example">
-     * <font color="#AAAAAA"> DE   1-aminocyclopropane-1-carboxylate synthase 5 (EC 4.4.1.14) (ACC
+     * <font color="#AAAAAA"> DE   1-aminocyclopropane-1-carboxylate synthase 5 (ECEntry 4.4.1.14) (ACC
      * DE   synthase 5) (S-adenosyl-L-methionine methylthioadenosine-lyase 5)
      * DE   (Ethylene-overproduction protein 2).
      * GN   Name=ACS5; Synonyms=ACC5, ETO2; OrderedLocusNames=At5g65800;

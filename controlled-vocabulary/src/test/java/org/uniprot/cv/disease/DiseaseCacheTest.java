@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.disease.Disease;
+import org.uniprot.core.cv.disease.DiseaseEntry;
 
 public class DiseaseCacheTest {
 
@@ -23,7 +23,7 @@ public class DiseaseCacheTest {
     @Test
     void testLoadCacheFromDefaultFileAsFallback() {
         String emptyFileName = "empty.txt";
-        List<Disease> diseases = DiseaseCache.INSTANCE.get(emptyFileName);
+        List<DiseaseEntry> diseases = DiseaseCache.INSTANCE.get(emptyFileName);
         // the diseases should come from FTP
         Assertions.assertFalse(diseases.isEmpty(), "disease list is empty");
         Assertions.assertEquals(4, diseases.size());

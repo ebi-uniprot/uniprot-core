@@ -6,14 +6,15 @@ import java.util.stream.Stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.uniprot.core.cv.disease.CrossReference;
-import org.uniprot.core.cv.disease.Disease;
-import org.uniprot.core.cv.disease.DiseaseImpl;
+import org.uniprot.core.cv.disease.DiseaseCrossReference;
+import org.uniprot.core.cv.disease.DiseaseEntry;
+import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceImpl;
+import org.uniprot.core.cv.disease.impl.DiseaseEntryImpl;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
 import org.uniprot.cv.common.AbstractFileReader;
 
-public final class DiseaseFileReader extends AbstractFileReader<Disease> {
+public final class DiseaseFileReader extends AbstractFileReader<DiseaseEntry> {
     private static final String KW_LINE = "KW";
     private static final String DR_LINE = "DR";
     private static final String SY_LINE = "SY";
@@ -26,25 +27,25 @@ public final class DiseaseFileReader extends AbstractFileReader<Disease> {
     private static final String SEMICOLON = ";";
     private static final Logger LOG = LoggerFactory.getLogger(DiseaseFileReader.class);
 
-    public List<Disease> parseLines(List<String> lines) {
+    public List<DiseaseEntry> parseLines(List<String> lines) {
         return convertLinesIntoInMemoryObjectList(lines).stream()
                 .map(this::parseDiseaseFileEntry)
                 .collect(Collectors.toList());
     }
 
     public Map<String, String> parseFileToAccessionMap(String filename) {
-        List<Disease> diseaseList = parse(filename);
+        List<DiseaseEntry> diseaseList = parse(filename);
         return diseaseList.stream()
-                .collect(Collectors.toMap(Disease::getId, Disease::getAccession));
+                .collect(Collectors.toMap(DiseaseEntry::getId, DiseaseEntry::getAccession));
     }
 
-    public Iterator<Disease> getDiseaseIterator(String fileName) {
+    public Iterator<DiseaseEntry> getDiseaseIterator(String fileName) {
 
-        List<Disease> diseaseList = parse(fileName);
+        List<DiseaseEntry> diseaseList = parse(fileName);
         return diseaseList.iterator();
     }
 
-    private Disease parseDiseaseFileEntry(DiseaseFileEntry entry) {
+    private DiseaseEntry parseDiseaseFileEntry(DiseaseFileEntry entry) {
         String id = trimSpacesAndRemoveLastDot(entry.id);
         String accession = entry.ac;
         String acronym = trimSpacesAndRemoveLastDot(entry.ar);
@@ -55,13 +56,13 @@ public final class DiseaseFileReader extends AbstractFileReader<Disease> {
                         .collect(Collectors.toList());
 
         // Cross-reference(s)
-        List<CrossReference> crList =
+        List<DiseaseCrossReference> crList =
                 entry.dr.stream().map(this::parseCrossReference).collect(Collectors.toList());
 
         List<Keyword> kwList =
                 entry.kw.stream().map(this::parseKeyword).collect(Collectors.toList());
 
-        return new DiseaseImpl(id, accession, acronym, definition, synonyms, crList, kwList);
+        return new DiseaseEntryImpl(id, accession, acronym, definition, synonyms, crList, kwList);
     }
 
     private Keyword parseKeyword(String kw) {
@@ -69,7 +70,7 @@ public final class DiseaseFileReader extends AbstractFileReader<Disease> {
         return new KeywordImpl(trimSpacesAndRemoveLastDot(tokens[1]), tokens[0]);
     }
 
-    private CrossReference parseCrossReference(String cr) {
+    private DiseaseCrossReference parseCrossReference(String cr) {
         final String[] tokens = cr.split(SEMICOLON);
         final String type = trimSpacesAndRemoveLastDot(tokens[0]);
         final String id = trimSpacesAndRemoveLastDot(tokens[1]);
@@ -78,7 +79,7 @@ public final class DiseaseFileReader extends AbstractFileReader<Disease> {
                         .map(this::trimSpacesAndRemoveLastDot)
                         .collect(Collectors.toList());
 
-        return new CrossReference(type, id, des);
+        return new DiseaseCrossReferenceImpl(type, id, des);
     }
 
     private String trimSpacesAndRemoveLastDot(String str) {

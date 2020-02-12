@@ -27,7 +27,7 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
  * <p>These values can be found in the GN line of the flat file on the marked position.
  *
  * <pre class="example">
- * <font color="#AAAAAA"> DE   Putative 3-methyladenine DNA glycosylase (EC 3.2.2.-).
+ * <font color="#AAAAAA"> DE   Putative 3-methyladenine DNA glycosylase (ECEntry 3.2.2.-).
  * GN   OrderedLocusNames=<font color="#000000">CPn_0505</font>, <font color="#000000">CP_0248</font>, <font color="#000000">CPj0505</font>, <font color="#000000">CpB0526</font>;
  * OS   Chlamydia pneumoniae (Chlamydophila pneumoniae).
  * ...</font></pre>
