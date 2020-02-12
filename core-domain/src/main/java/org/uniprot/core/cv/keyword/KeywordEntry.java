@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
+import org.uniprot.core.Statistics;
+
 public interface KeywordEntry extends Serializable {
     Keyword getKeyword();
 
@@ -23,5 +25,5 @@ public interface KeywordEntry extends Serializable {
 
     String getAccession();
 
-    KeywordStatistics getStatistics();
+    Statistics getStatistics();
 }

@@ -11,6 +11,8 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceImpl;
+import org.uniprot.core.cv.disease.impl.DiseaseEntryImpl;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
 
@@ -21,7 +23,7 @@ public class DiseaseImplTest {
     private String acronym;
     private String def;
     private List<String> altNames;
-    private List<CrossReference> xrefs;
+    private List<DiseaseCrossReference> xrefs;
     private List<Keyword> kws;
     private Long rc;
     private Long urc;
@@ -45,7 +47,7 @@ public class DiseaseImplTest {
 
     @Test
     void testCreateDisease() {
-        Disease disease = createDisease();
+        DiseaseEntry disease = createDisease();
 
         Assertions.assertEquals(id, disease.getId());
         Assertions.assertEquals(acc, disease.getAccession());
@@ -59,8 +61,8 @@ public class DiseaseImplTest {
 
     @Test
     void testEquals() {
-        Disease d1 = createDisease();
-        Disease d2 = createDisease();
+        DiseaseEntry d1 = createDisease();
+        DiseaseEntry d2 = createDisease();
         Assertions.assertEquals(d1, d2);
         // their hash should also be same
         Assertions.assertEquals(d1.hashCode(), d2.hashCode());
@@ -68,15 +70,15 @@ public class DiseaseImplTest {
 
     @Test
     void testNotEquals() {
-        Disease d1 = createDisease();
-        Disease d2 = createDisease();
-        DiseaseImpl d21 = (DiseaseImpl) d2;
+        DiseaseEntry d1 = createDisease();
+        DiseaseEntry d2 = createDisease();
+        DiseaseEntryImpl d21 = (DiseaseEntryImpl) d2;
         d21.setKeywords(Collections.emptyList());
         Assertions.assertNotEquals(d1, d2);
     }
 
-    private Disease createDisease() {
-        return new DiseaseImpl(
+    private DiseaseEntry createDisease() {
+        return new DiseaseEntryImpl(
                 this.id,
                 this.acc,
                 this.acronym,
@@ -92,11 +94,11 @@ public class DiseaseImplTest {
         return new KeywordImpl("id" + i + this.uuid, "acc" + i + this.uuid);
     }
 
-    private CrossReference getXRef(int randomiser) {
+    private DiseaseCrossReference getXRef(int randomiser) {
 
         List<String> props = Arrays.asList("prop1", "prop2", "prop3");
         String id = "XREF-123" + randomiser + this.uuid;
         String databaseType = "SAMPLE_TYPE" + randomiser + this.uuid;
-        return new CrossReference(databaseType, id, props);
+        return new DiseaseCrossReferenceImpl(databaseType, id, props);
     }
 }

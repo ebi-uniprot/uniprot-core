@@ -2,8 +2,8 @@ package org.uniprot.cv.ec;
 
 import java.util.Optional;
 
-import org.uniprot.core.cv.ec.EC;
+import org.uniprot.core.cv.ec.ECEntry;
 
 public interface ECRepo {
-    Optional<EC> getEC(String id);
+    Optional<ECEntry> getEC(String id);
 }

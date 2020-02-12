@@ -28,7 +28,7 @@ class CAReactionConverterTest {
         reactionType.setText("another text");
         reactionType.getDbReference().add(createDbReferenceType("ChEBI", "CHEBI:29105"));
         reactionType.getDbReference().add(createDbReferenceType("Rhea", "RHEA:125"));
-        reactionType.getDbReference().add(createDbReferenceType("EC", "1.2.1.32"));
+        reactionType.getDbReference().add(createDbReferenceType("ECEntry", "1.2.1.32"));
         reactionType.getEvidence().add(2);
         reactionType.getEvidence().add(3);
         CAReactionConverter converter = new CAReactionConverter(new EvidenceIndexMapper());
@@ -88,7 +88,7 @@ class CAReactionConverterTest {
         assertEquals(4, reactionType.getDbReference().size());
         assertEquals("Rhea", reactionType.getDbReference().get(2).getType());
         assertEquals("RHEA:322", reactionType.getDbReference().get(2).getId());
-        assertEquals("EC", reactionType.getDbReference().get(3).getType());
+        assertEquals("ECEntry", reactionType.getDbReference().get(3).getType());
         assertEquals("1.2.3.32", reactionType.getDbReference().get(3).getId());
 
         List<Integer> evs = reactionType.getEvidence();

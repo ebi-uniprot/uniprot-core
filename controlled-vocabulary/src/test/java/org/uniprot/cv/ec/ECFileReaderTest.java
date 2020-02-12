@@ -14,8 +14,8 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.ec.EC;
-import org.uniprot.core.cv.ec.ECImpl;
+import org.uniprot.core.cv.ec.ECEntry;
+import org.uniprot.core.cv.ec.ECEntryImpl;
 
 /**
  * Created 18/03/19
@@ -29,14 +29,14 @@ class ECFileReaderTest {
     @Test
     void canCreateECFileReaderFromFTP() {
         ECFileReader reader = new ECFileReader();
-        List<EC> ecs = reader.parse(FTP_LOCATION);
+        List<ECEntry> ecs = reader.parse(FTP_LOCATION);
         assertThat(ecs, is(not(emptyList())));
     }
 
     @Test
     void canCreateECFileReaderFromFile() {
         ECFileReader reader = new ECFileReader();
-        List<EC> ecs = reader.parse("ec/");
+        List<ECEntry> ecs = reader.parse("ec/");
         assertThat(ecs, is(not(emptyList())));
     }
 
@@ -77,20 +77,20 @@ class ECFileReaderTest {
                         "1. 1. 2.-    With a cytochrome as acceptor.",
                         "1. 1. 3.-    With oxygen as acceptor.");
 
-        List<EC> retList = new ECFileReader.ECClassFileReader().parseLines(input);
+        List<ECEntry> retList = new ECFileReader.ECClassFileReader().parseLines(input);
         assertAll(
-                "EC dat file parsing result",
+                "ECEntry dat file parsing result",
                 () -> assertNotNull(retList),
                 () -> assertThat(retList, hasSize(2)),
                 () ->
                         MatcherAssert.assertThat(
                                 retList,
                                 Matchers.containsInAnyOrder(
-                                        new ECImpl.Builder()
+                                        new ECEntryImpl.Builder()
                                                 .id("1.1.3.-")
                                                 .label("With oxygen as acceptor")
                                                 .build(),
-                                        new ECImpl.Builder()
+                                        new ECEntryImpl.Builder()
                                                 .id("1.1.2.-")
                                                 .label("With a cytochrome as acceptor")
                                                 .build())));
@@ -148,27 +148,27 @@ class ECFileReaderTest {
                         "CF   Zn(2+).",
                         "CC   -!- Some members of this group oxidize only primary alcohols; others act",
                         "CC       also on secondary alcohols.",
-                        "CC   -!- May be identical with EC 1.1.1.19, EC 1.1.1.33 and EC 1.1.1.55.",
+                        "CC   -!- May be identical with ECEntry 1.1.1.19, ECEntry 1.1.1.33 and ECEntry 1.1.1.55.",
                         "CC   -!- Re-specific with respect to NADPH.",
                         "PR   PROSITE; PDOC00061;",
                         "DR   Q6AZW2, A1A1A_DANRE;  Q568L5, A1A1B_DANRE;  Q24857, ADH3_ENTHI ;",
                         "DR   P27800, ALDX_SPOSA ;  P75691, YAHK_ECOLI ;",
                         "//");
 
-        List<EC> retList = new ECFileReader.ECDatFileReader().parseLines(input);
+        List<ECEntry> retList = new ECFileReader.ECDatFileReader().parseLines(input);
         assertAll(
-                "EC dat file parsing result",
+                "ECEntry dat file parsing result",
                 () -> assertNotNull(retList),
                 () -> assertThat(retList, hasSize(2)),
                 () ->
                         assertThat(
                                 retList,
                                 Matchers.containsInAnyOrder(
-                                        new ECImpl.Builder()
+                                        new ECEntryImpl.Builder()
                                                 .id("1.1.1.1")
                                                 .label("Alcohol dehydrogenase")
                                                 .build(),
-                                        new ECImpl.Builder()
+                                        new ECEntryImpl.Builder()
                                                 .id("1.1.1.2")
                                                 .label("Alcohol dehydrogenase (NADP(+))")
                                                 .build())));

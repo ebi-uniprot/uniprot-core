@@ -2,17 +2,17 @@ package org.uniprot.core.cv.pathway;
 
 import java.util.List;
 
-import org.uniprot.core.cv.disease.CrossReference;
+import org.uniprot.core.cv.disease.DiseaseCrossReference;
 
-public class PathwayImpl implements Pathway {
+public class PathwayEntryImpl implements PathwayEntry {
     private String accession;
     private String id;
     private String pathwayClass;
     private String definition;
     private List<String> synonyms;
-    private List<Pathway> isAParents;
-    private List<Pathway> partOfParents;
-    private List<CrossReference> crossReferences;
+    private List<PathwayEntry> isAParents;
+    private List<PathwayEntry> partOfParents;
+    private List<DiseaseCrossReference> crossReferences;
 
     @Override
     public String getAccession() {
@@ -40,17 +40,17 @@ public class PathwayImpl implements Pathway {
     }
 
     @Override
-    public List<Pathway> getIsAParents() {
+    public List<PathwayEntry> getIsAParents() {
         return isAParents;
     }
 
     @Override
-    public List<Pathway> getPartOfParents() {
+    public List<PathwayEntry> getPartOfParents() {
         return partOfParents;
     }
 
     @Override
-    public List<CrossReference> getCrossReferences() {
+    public List<DiseaseCrossReference> getCrossReferences() {
         return crossReferences;
     }
 
@@ -74,15 +74,15 @@ public class PathwayImpl implements Pathway {
         this.synonyms = synonyms;
     }
 
-    public void setIsAParents(List<Pathway> isAParents) {
+    public void setIsAParents(List<PathwayEntry> isAParents) {
         this.isAParents = isAParents;
     }
 
-    public void setPartOfParents(List<Pathway> partOfParents) {
+    public void setPartOfParents(List<PathwayEntry> partOfParents) {
         this.partOfParents = partOfParents;
     }
 
-    public void setCrossReferences(List<CrossReference> crossReferences) {
+    public void setCrossReferences(List<DiseaseCrossReference> crossReferences) {
         this.crossReferences = crossReferences;
     }
 }

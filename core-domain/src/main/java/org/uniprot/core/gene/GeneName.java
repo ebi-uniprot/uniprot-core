@@ -20,7 +20,7 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
  * <p>These values can be found in the GN line of the flat file on the marked position.
  *
  * <pre class="example">
- * <font color="#AAAAAA"> DE   Serine proteases 1/2 precursor (EC 3.4.21.-) (Protein Jonah
+ * <font color="#AAAAAA"> DE   Serine proteases 1/2 precursor (ECEntry 3.4.21.-) (Protein Jonah
  * DE   99Cii/99Ciii).
  * GN   Name=<font color="#000000">Jon99Cii</font>; Synonyms=SER1, SER5, Ser99Da; ORFNames=CG7877;
  * GN   and

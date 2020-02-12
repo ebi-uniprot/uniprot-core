@@ -22,7 +22,7 @@ class Q04756ScoredTest {
                     + "DE   RecName: Full=Hepatocyte growth factor activator;\n"
                     + "DE            Short=HGF activator;\n"
                     + "DE            Short=HGFA;\n"
-                    + "DE            EC=3.4.21.-;\n"
+                    + "DE            ECEntry=3.4.21.-;\n"
                     + "DE   Contains:\n"
                     + "DE     RecName: Full=Hepatocyte growth factor activator short chain;\n"
                     + "DE   Contains:\n"

@@ -5,20 +5,22 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.cv.chebi.Chebi;
+import org.uniprot.core.cv.chebi.ChebiEntry;
 import org.uniprot.cv.chebi.ChebiCache;
 import org.uniprot.cv.chebi.ChebiRepo;
 
 public class ChebiRepoImpl implements ChebiRepo {
-    private final Map<String, Chebi> chebiMap;
+    private final Map<String, ChebiEntry> chebiMap;
 
     public ChebiRepoImpl(String dir) {
-        List<Chebi> chebiList = ChebiCache.INSTANCE.get(dir);
-        chebiMap = chebiList.stream().collect(Collectors.toMap(Chebi::getId, Function.identity()));
+        List<ChebiEntry> chebiList = ChebiCache.INSTANCE.get(dir);
+        chebiMap =
+                chebiList.stream()
+                        .collect(Collectors.toMap(ChebiEntry::getId, Function.identity()));
     }
 
     @Override
-    public Chebi getById(String id) {
+    public ChebiEntry getById(String id) {
         return chebiMap.get(id);
     }
 }

@@ -8,8 +8,8 @@ package org.uniprot.core.uniprot.comment;
  * <p>The CC DISEASE annotation has two possible representations:
  *
  * <ul>
- *   <li>Disease comments with a characterized disease referenced from an external source
- *   <li>Disease comments with no characterized disease
+ *   <li>DiseaseEntry comments with a characterized disease referenced from an external source
+ *   <li>DiseaseEntry comments with no characterized disease
  * </ul>
  *
  * <p>
@@ -41,7 +41,7 @@ public interface DiseaseComment extends Comment, HasMolecule {
     Disease getDisease();
 
     /**
-     * Helper method that verifies whether the {link Disease} object has been populated with a
+     * Helper method that verifies whether the {link DiseaseEntry} object has been populated with a
      * defined disease, or if it holds empty state
      *
      * @return true if the disease object has a defined disease, false otherwise

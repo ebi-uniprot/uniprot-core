@@ -10,7 +10,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.chebi.Chebi;
+import org.uniprot.core.cv.chebi.ChebiEntry;
 
 /**
  * Created 06/06/19
@@ -28,9 +28,9 @@ class ChebiFileReaderTest {
     @Test
     void extractsId() {
         String id = "30151";
-        List<Chebi> chebis = reader.parseLines(asList("[Term]", "id: CHEBI:" + id));
+        List<ChebiEntry> chebis = reader.parseLines(asList("[Term]", "id: CHEBI:" + id));
         assertThat(chebis, hasSize(1));
-        Chebi chebi = chebis.get(0);
+        ChebiEntry chebi = chebis.get(0);
         assertThat(chebi.getId(), is(id));
         assertThat(chebi.getName(), is(nullValue()));
         assertThat(chebi.getInchiKey(), is(nullValue()));
@@ -39,9 +39,9 @@ class ChebiFileReaderTest {
     @Test
     void extractsName() {
         String name = "aluminide(1-)";
-        List<Chebi> chebis = reader.parseLines(asList("[Term]", "name: " + name));
+        List<ChebiEntry> chebis = reader.parseLines(asList("[Term]", "name: " + name));
         assertThat(chebis, hasSize(1));
-        Chebi chebi = chebis.get(0);
+        ChebiEntry chebi = chebis.get(0);
         assertThat(chebi.getName(), is(name));
         assertThat(chebi.getId(), is(nullValue()));
         assertThat(chebi.getInchiKey(), is(nullValue()));
@@ -50,7 +50,7 @@ class ChebiFileReaderTest {
     @Test
     void extractsInchikey() {
         String inchikey = "SBLSYFIUPXRQRY-UHFFFAOYSA-N";
-        List<Chebi> chebis =
+        List<ChebiEntry> chebis =
                 reader.parseLines(
                         asList(
                                 "[Term]",
@@ -58,7 +58,7 @@ class ChebiFileReaderTest {
                                         + inchikey
                                         + "\" xsd:string"));
         assertThat(chebis, hasSize(1));
-        Chebi chebi = chebis.get(0);
+        ChebiEntry chebi = chebis.get(0);
         assertThat(chebi.getInchiKey(), is(inchikey));
         assertThat(chebi.getId(), is(nullValue()));
         assertThat(chebi.getName(), is(nullValue()));
@@ -69,7 +69,7 @@ class ChebiFileReaderTest {
         String id = "30151";
         String name = "aluminide(1-)";
         String inchikey = "SBLSYFIUPXRQRY-UHFFFAOYSA-N";
-        List<Chebi> chebis =
+        List<ChebiEntry> chebis =
                 reader.parseLines(
                         asList(
                                 "[Term]",
@@ -79,7 +79,7 @@ class ChebiFileReaderTest {
                                         + inchikey
                                         + "\" xsd:string"));
         assertThat(chebis, hasSize(1));
-        Chebi chebi = chebis.get(0);
+        ChebiEntry chebi = chebis.get(0);
         assertThat(chebi.getId(), is(id));
         assertThat(chebi.getName(), is(name));
         assertThat(chebi.getInchiKey(), is(inchikey));
@@ -94,7 +94,7 @@ class ChebiFileReaderTest {
         String name2 = "halide anion";
         String inchikey2 = "PUZPDOWCWNUUKD-UHFFFAOYSA-M";
 
-        List<Chebi> chebis =
+        List<ChebiEntry> chebis =
                 reader.parseLines(
                         asList(
                                 "[Term]",
@@ -112,12 +112,12 @@ class ChebiFileReaderTest {
                                         + "\" xsd:string"));
         assertThat(chebis, hasSize(2));
 
-        Chebi chebi1 = chebis.get(0);
+        ChebiEntry chebi1 = chebis.get(0);
         assertThat(chebi1.getId(), is(id1));
         assertThat(chebi1.getName(), is(name1));
         assertThat(chebi1.getInchiKey(), is(inchikey1));
 
-        Chebi chebi2 = chebis.get(1);
+        ChebiEntry chebi2 = chebis.get(1);
         assertThat(chebi2.getId(), is(id2));
         assertThat(chebi2.getName(), is(name2));
         assertThat(chebi2.getInchiKey(), is(inchikey2));
@@ -125,9 +125,9 @@ class ChebiFileReaderTest {
 
     @Test
     void malformedIdLineReturnsNullValue() {
-        List<Chebi> chebis = reader.parseLines(asList("[Term]", "id:???WWWRONG"));
+        List<ChebiEntry> chebis = reader.parseLines(asList("[Term]", "id:???WWWRONG"));
         assertThat(chebis, hasSize(1));
-        Chebi chebi = chebis.get(0);
+        ChebiEntry chebi = chebis.get(0);
         assertThat(chebi.getId(), is(nullValue()));
     }
 }

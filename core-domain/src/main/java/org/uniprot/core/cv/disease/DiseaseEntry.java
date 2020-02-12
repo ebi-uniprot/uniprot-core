@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.uniprot.core.cv.keyword.Keyword;
 
-public interface Disease extends Serializable {
+public interface DiseaseEntry extends Serializable {
     String getId();
 
     String getAccession();
@@ -16,7 +16,7 @@ public interface Disease extends Serializable {
 
     List<String> getAlternativeNames();
 
-    List<CrossReference> getCrossReferences();
+    List<DiseaseCrossReference> getCrossReferences();
 
     List<Keyword> getKeywords();
 

@@ -18,7 +18,7 @@ import org.uniprot.core.xml.jaxb.uniprot.ReactionType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 
 public class CAReactionConverter implements Converter<ReactionType, Reaction> {
-    private static final String EC = "EC";
+    private static final String EC = "ECEntry";
     private final EvidenceIndexMapper evRefMapper;
     private final ObjectFactory xmlUniprotFactory;
     private final CAReactionReferenceConverter refConverter;

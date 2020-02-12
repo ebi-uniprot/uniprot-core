@@ -120,7 +120,7 @@ class CommentTransformerTest {
                         + " increased chance of bilateral cancers (cancer that develop in both breasts,"
                         + " or both ovaries, independently), frequent occurrence of breast cancer among men,"
                         + " increased incidence of tumors of other specific organs, such as the prostate."
-                        + " Note=Disease susceptibility is associated with variations affecting the gene"
+                        + " Note=DiseaseEntry susceptibility is associated with variations affecting the gene"
                         + " represented in this entry. Mutations in BRCA1 are thought to be responsible"
                         + " for more than 80% of inherited breast-ovarian cancer.";
         testComment(tString, CommentType.DISEASE);
@@ -141,7 +141,7 @@ class CommentTransformerTest {
                         + "Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-"
                         + "rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273, "
                         + "ChEBI:CHEBI:58349, ChEBI:CHEBI:57964, ChEBI:CHEBI:57783;"
-                        + " EC=1.1.1.271;"
+                        + " ECEntry=1.1.1.271;"
                         + " Evidence={ECO:0000255|HAMAP-Rule:MF_00956, "
                         + "ECO:0000269|PubMed:10480878, ECO:0000269|PubMed:11021971, "
                         + "ECO:0000269|PubMed:9473059};\n"
@@ -160,7 +160,7 @@ class CommentTransformerTest {
                         + "Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-"
                         + "rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273, "
                         + "ChEBI:CHEBI:58349, ChEBI:CHEBI:57964, ChEBI:CHEBI:57783;"
-                        + " EC=1.1.1.271;\n"
+                        + " ECEntry=1.1.1.271;\n"
                         + "PhysiologicalDirection=right-to-left; Xref=Rhea:RHEA:18898;\n"
                         + "PhysiologicalDirection=left-to-right; Xref=Rhea:RHEA:18832;";
         ;

@@ -9,10 +9,10 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.pathway.Pathway;
+import org.uniprot.core.cv.pathway.PathwayEntry;
 
 class PathwayCacheIT {
-    private static List<Pathway> pathways;
+    private static List<PathwayEntry> pathways;
 
     @BeforeAll
     static void setup() {
@@ -22,11 +22,13 @@ class PathwayCacheIT {
     @Test
     void testNoParent() {
         String acc = "UPA00611";
-        Optional<Pathway> opVal =
+        Optional<PathwayEntry> opVal =
                 pathways.stream().filter(val -> val.getAccession().equals(acc)).findFirst();
         assertTrue(opVal.isPresent());
-        List<Pathway> hi = opVal.map(Pathway::getIsAParents).orElse(Collections.emptyList());
-        List<Pathway> hp = opVal.map(Pathway::getPartOfParents).orElse(Collections.emptyList());
+        List<PathwayEntry> hi =
+                opVal.map(PathwayEntry::getIsAParents).orElse(Collections.emptyList());
+        List<PathwayEntry> hp =
+                opVal.map(PathwayEntry::getPartOfParents).orElse(Collections.emptyList());
         assertTrue(hi.isEmpty());
         assertTrue(hp.isEmpty());
     }
@@ -34,10 +36,12 @@ class PathwayCacheIT {
     @Test
     void testMultiXrefWithHi() {
         String acc = "UPA00056";
-        Optional<Pathway> opVal =
+        Optional<PathwayEntry> opVal =
                 pathways.stream().filter(val -> val.getAccession().equals(acc)).findFirst();
-        List<Pathway> hi = opVal.map(Pathway::getIsAParents).orElse(Collections.emptyList());
-        List<Pathway> hp = opVal.map(Pathway::getPartOfParents).orElse(Collections.emptyList());
+        List<PathwayEntry> hi =
+                opVal.map(PathwayEntry::getIsAParents).orElse(Collections.emptyList());
+        List<PathwayEntry> hp =
+                opVal.map(PathwayEntry::getPartOfParents).orElse(Collections.emptyList());
         assertTrue(opVal.isPresent());
         assertEquals(1, hi.size());
         assertTrue(hp.isEmpty());
@@ -46,11 +50,13 @@ class PathwayCacheIT {
     @Test
     void testWithHP() {
         String acc = "UPA00056";
-        Optional<Pathway> opVal =
+        Optional<PathwayEntry> opVal =
                 pathways.stream().filter(val -> val.getAccession().equals(acc)).findFirst();
         assertTrue(opVal.isPresent());
-        List<Pathway> hi = opVal.map(Pathway::getIsAParents).orElse(Collections.emptyList());
-        List<Pathway> hp = opVal.map(Pathway::getPartOfParents).orElse(Collections.emptyList());
+        List<PathwayEntry> hi =
+                opVal.map(PathwayEntry::getIsAParents).orElse(Collections.emptyList());
+        List<PathwayEntry> hp =
+                opVal.map(PathwayEntry::getPartOfParents).orElse(Collections.emptyList());
         assertEquals(1, hi.size());
         assertTrue(hp.isEmpty());
     }

@@ -17,7 +17,7 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
 public class DELineBuilder extends FFLineBuilderAbstr<ProteinDescription>
         implements FFLineBuilder<ProteinDescription> {
 
-    private static final String EC = "EC";
+    private static final String EC = "ECEntry";
     private static final String SHORT = "Short";
     private static final String FULL = "Full";
     private static final String FLAGS = "Flags: ";

@@ -1,13 +1,13 @@
 package org.uniprot.core.json.parser.subcell;
 
+import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
-import org.uniprot.core.cv.subcell.SubcellularLocationStatistics;
 import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryImpl;
-import org.uniprot.core.cv.subcell.impl.SubcellularLocationStatisticsImpl;
+import org.uniprot.core.impl.StatisticsImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -53,8 +53,7 @@ public class SubcellularLocationJsonConfig extends JsonConfig {
         SimpleModule mod = new SimpleModule();
         mod.addAbstractTypeMapping(
                 SubcellularLocationEntry.class, SubcellularLocationEntryImpl.class);
-        mod.addAbstractTypeMapping(
-                SubcellularLocationStatistics.class, SubcellularLocationStatisticsImpl.class);
+        mod.addAbstractTypeMapping(Statistics.class, StatisticsImpl.class);
         mod.addAbstractTypeMapping(Keyword.class, KeywordImpl.class);
         mod.addAbstractTypeMapping(GeneOntology.class, GeneOntologyImpl.class);
         objMapper.registerModule(mod);

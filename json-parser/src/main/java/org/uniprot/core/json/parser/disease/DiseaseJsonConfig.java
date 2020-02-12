@@ -1,7 +1,7 @@
 package org.uniprot.core.json.parser.disease;
 
-import org.uniprot.core.cv.disease.Disease;
-import org.uniprot.core.cv.disease.DiseaseImpl;
+import org.uniprot.core.cv.disease.DiseaseEntry;
+import org.uniprot.core.cv.disease.impl.DiseaseEntryImpl;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
 import org.uniprot.core.json.parser.JsonConfig;
@@ -43,7 +43,7 @@ public class DiseaseJsonConfig extends JsonConfig {
 
         // customise the default mapper
         SimpleModule mod = new SimpleModule();
-        mod.addAbstractTypeMapping(Disease.class, DiseaseImpl.class);
+        mod.addAbstractTypeMapping(DiseaseEntry.class, DiseaseEntryImpl.class);
         mod.addAbstractTypeMapping(Keyword.class, KeywordImpl.class);
 
         objMapper.registerModule(mod);

@@ -196,7 +196,7 @@ public class UniprotJsonConfig extends JsonConfig {
         mod.registerSubtypes(
                 new NamedType(CatalyticActivityCommentImpl.class, "CatalyticActivity"));
         mod.registerSubtypes(new NamedType(CofactorCommentImpl.class, "Cofactor"));
-        mod.registerSubtypes(new NamedType(DiseaseCommentImpl.class, "Disease"));
+        mod.registerSubtypes(new NamedType(DiseaseCommentImpl.class, "DiseaseEntry"));
         mod.registerSubtypes(new NamedType(FreeTextCommentImpl.class, "FreeText"));
         mod.registerSubtypes(new NamedType(InteractionCommentImpl.class, "Interaction"));
         mod.registerSubtypes(new NamedType(MassSpectrometryCommentImpl.class, "MassSpectrometry"));

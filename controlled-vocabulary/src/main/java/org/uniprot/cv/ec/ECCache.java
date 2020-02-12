@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.uniprot.core.cv.ec.EC;
+import org.uniprot.core.cv.ec.ECEntry;
 import org.uniprot.cv.common.AbstractFileReader;
 import org.uniprot.cv.common.BaseCache;
 
@@ -13,13 +13,13 @@ import org.uniprot.cv.common.BaseCache;
  *
  * @author Edd
  */
-public enum ECCache implements BaseCache<EC> {
+public enum ECCache implements BaseCache<ECEntry> {
     INSTANCE;
     public static final String ENZYME_DAT = "enzyme.dat";
     public static final String ENZCLASS_TXT = "enzclass.txt";
     private static final String FTP_LOCATION = "ftp://ftp.expasy.org/databases/enzyme/";
-    private Map<String, List<EC>> locationECMap = new HashMap<>();
-    private AbstractFileReader<EC> reader;
+    private Map<String, List<ECEntry>> locationECMap = new HashMap<>();
+    private AbstractFileReader<ECEntry> reader;
 
     private String defaultDataLocation = FTP_LOCATION;
 
@@ -29,12 +29,12 @@ public enum ECCache implements BaseCache<EC> {
     }
 
     @Override
-    public Map<String, List<EC>> getCacheMap() {
+    public Map<String, List<ECEntry>> getCacheMap() {
         return this.locationECMap;
     }
 
     @Override
-    public AbstractFileReader<EC> getReader() {
+    public AbstractFileReader<ECEntry> getReader() {
         return this.reader != null ? this.reader : (this.reader = new ECFileReader());
     }
 }

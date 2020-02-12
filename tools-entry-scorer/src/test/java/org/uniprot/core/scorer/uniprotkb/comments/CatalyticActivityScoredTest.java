@@ -14,7 +14,7 @@ class CatalyticActivityScoredTest extends CommentScoreTestBase {
                         + "CC         Rhea:RHEA-COMP:10246, ChEBI:CHEBI:74269, ChEBI:CHEBI:82748,\n"
                         + "CC         ChEBI:CHEBI:59789, Rhea:RHEA-COMP:10247, ChEBI:CHEBI:74445,\n"
                         + "CC         ChEBI:CHEBI:74495, ChEBI:CHEBI:15378, ChEBI:CHEBI:57856;\n"
-                        + "CC         EC=2.1.1.205; Evidence={ECO:0000255|HAMAP-Rule:MF_03162};";
+                        + "CC         ECEntry=2.1.1.205; Evidence={ECO:0000255|HAMAP-Rule:MF_03162};";
         verify(CommentType.CATALYTIC_ACTIVITY, line, 3.0, true);
     }
 
@@ -23,7 +23,7 @@ class CatalyticActivityScoredTest extends CommentScoreTestBase {
         String line =
                 "CC   -!- CATALYTIC ACTIVITY:\n"
                         + "CC       Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-\n"
-                        + "CC         rhamnose + H(+) + NADPH; EC=1.1.1.n271; Evidence={ECO:0000255|HAMAP-Rule:MF_00956,\n"
+                        + "CC         rhamnose + H(+) + NADPH; ECEntry=1.1.1.n271; Evidence={ECO:0000255|HAMAP-Rule:MF_00956,\n"
                         + "CC         ECO:0000269|PubMed:10480878};";
         verify(CommentType.CATALYTIC_ACTIVITY, line, 3.0, false);
     }
@@ -35,7 +35,7 @@ class CatalyticActivityScoredTest extends CommentScoreTestBase {
                         + "CC       Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-\n"
                         + "CC         rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273,\n"
                         + "CC         ChEBI:CHEBI:58349, ChEBI:CHEBI:57964, ChEBI:CHEBI:57783;\n"
-                        + "CC         EC=1.1.1.271; Evidence={ECO:0000255|HAMAP-Rule:MF_00956,\n"
+                        + "CC         ECEntry=1.1.1.271; Evidence={ECO:0000255|HAMAP-Rule:MF_00956,\n"
                         + "CC         ECO:0000269|PubMed:10480878, ECO:0000269|PubMed:11021971,\n"
                         + "CC         ECO:0000269|PubMed:9473059};\n"
                         + "CC       PhysiologicalDirection=left-to-right; Xref=Rhea:RHEA:18886;\n"

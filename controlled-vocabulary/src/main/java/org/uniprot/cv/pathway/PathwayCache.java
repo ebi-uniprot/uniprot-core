@@ -4,21 +4,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.uniprot.core.cv.pathway.Pathway;
+import org.uniprot.core.cv.pathway.PathwayEntry;
 
 public enum PathwayCache {
     INSTANCE;
     public static final String FTP_LOCATION =
             "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/docs/pathlist.txt";
-    Map<String, List<Pathway>> locationPathwayMap = new HashMap<>();
+    Map<String, List<PathwayEntry>> locationPathwayMap = new HashMap<>();
 
-    public List<Pathway> get(String file) {
+    public List<PathwayEntry> get(String file) {
         String filename = file;
         if ((filename == null) || filename.isEmpty()) {
             filename = FTP_LOCATION;
         }
 
-        List<Pathway> result = locationPathwayMap.get(filename);
+        List<PathwayEntry> result = locationPathwayMap.get(filename);
         if (result != null) return result;
 
         result = buildCache(filename);
@@ -37,7 +37,7 @@ public enum PathwayCache {
         }
     }
 
-    private List<Pathway> buildCache(String filename) {
+    private List<PathwayEntry> buildCache(String filename) {
         PathwayFileReader reader = new PathwayFileReader();
         return reader.parse(filename);
     }

@@ -32,7 +32,7 @@ class MultiCommentScoredTest extends CommentScoreTestBase {
                         + // 3.0
                         "CC         rhamnose + H(+); Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273,\n"
                         + "CC         ChEBI:CHEBI:58349, ChEBI:CHEBI:57964, ChEBI:CHEBI:57783;\n"
-                        + "CC         EC=1.1.1.271; Evidence={ECO:0000255|HAMAP-Rule:MF_00956,\n"
+                        + "CC         ECEntry=1.1.1.271; Evidence={ECO:0000255|HAMAP-Rule:MF_00956,\n"
                         + "CC         ECO:0000269|PubMed:10480878, ECO:0000269|PubMed:11021971,\n"
                         + "CC         ECO:0000269|PubMed:9473059};\n"
                         + "CC       PhysiologicalDirection=left-to-right; Xref=Rhea:RHEA:18886;\n"

@@ -2,13 +2,12 @@ package org.uniprot.core.literature.impl;
 
 import java.util.Objects;
 
+import org.uniprot.core.impl.StatisticsImpl;
 import org.uniprot.core.literature.LiteratureStatistics;
 
 /** @author lgonzales */
-public class LiteratureStatisticsImpl implements LiteratureStatistics {
+public class LiteratureStatisticsImpl extends StatisticsImpl implements LiteratureStatistics {
 
-    private long reviewedProteinCount;
-    private long unreviewedProteinCount;
     private long mappedProteinCount;
 
     // no arg constructor for JSON deserialization
@@ -18,19 +17,8 @@ public class LiteratureStatisticsImpl implements LiteratureStatistics {
 
     public LiteratureStatisticsImpl(
             long reviewedProteinCount, long unreviewedProteinCount, long mappedProteinCount) {
-        this.reviewedProteinCount = reviewedProteinCount;
-        this.unreviewedProteinCount = unreviewedProteinCount;
+        super(reviewedProteinCount, unreviewedProteinCount);
         this.mappedProteinCount = mappedProteinCount;
-    }
-
-    @Override
-    public long getReviewedProteinCount() {
-        return reviewedProteinCount;
-    }
-
-    @Override
-    public long getUnreviewedProteinCount() {
-        return unreviewedProteinCount;
     }
 
     @Override
@@ -43,24 +31,21 @@ public class LiteratureStatisticsImpl implements LiteratureStatistics {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LiteratureStatisticsImpl that = (LiteratureStatisticsImpl) o;
-        return getReviewedProteinCount() == that.getReviewedProteinCount()
-                && getUnreviewedProteinCount() == that.getUnreviewedProteinCount()
-                && getMappedProteinCount() == that.getMappedProteinCount();
+        return super.equals(that) && getMappedProteinCount() == that.getMappedProteinCount();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(
-                getReviewedProteinCount(), getUnreviewedProteinCount(), getMappedProteinCount());
+        return Objects.hash(super.hashCode(), getMappedProteinCount());
     }
 
     @Override
     public String toString() {
         return "LiteratureStatisticsImpl{"
                 + "reviewedProteinCount="
-                + reviewedProteinCount
+                + getReviewedProteinCount()
                 + ", unreviewedProteinCount="
-                + unreviewedProteinCount
+                + getUnreviewedProteinCount()
                 + ", mappedProteinCount="
                 + mappedProteinCount
                 + '}';

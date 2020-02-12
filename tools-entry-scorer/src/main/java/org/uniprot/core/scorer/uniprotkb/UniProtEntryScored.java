@@ -248,7 +248,7 @@ public class UniProtEntryScored implements HasScore {
         localScore += scoreComments(isSP, CommentType.CAUTION, "Caution");
         localScore += scoreComments(isSP, CommentType.COFACTOR, "Cofator");
         localScore += scoreComments(isSP, CommentType.DEVELOPMENTAL_STAGE, "Developmental Stage");
-        localScore += scoreComments(isSP, CommentType.DISEASE, "Disease");
+        localScore += scoreComments(isSP, CommentType.DISEASE, "DiseaseEntry");
         localScore += scoreComments(isSP, CommentType.DISRUPTION_PHENOTYPE, "Disruption");
         localScore += scoreComments(isSP, CommentType.DOMAIN, "Domain");
         localScore += scoreComments(isSP, CommentType.ACTIVITY_REGULATION, "Enzyme");
@@ -257,7 +257,7 @@ public class UniProtEntryScored implements HasScore {
         localScore += scoreComments(isSP, CommentType.INTERACTION, "Interaction");
         localScore += scoreComments(isSP, CommentType.MASS_SPECTROMETRY, "Mass Spec");
         localScore += scoreComments(isSP, CommentType.MISCELLANEOUS, "Misc");
-        localScore += scoreComments(isSP, CommentType.PATHWAY, "Pathway");
+        localScore += scoreComments(isSP, CommentType.PATHWAY, "PathwayEntry");
         localScore += scoreComments(isSP, CommentType.PHARMACEUTICAL, "Pharma");
         localScore += scoreComments(isSP, CommentType.POLYMORPHISM, "Polym");
         localScore += scoreComments(isSP, CommentType.PTM, "PTM");

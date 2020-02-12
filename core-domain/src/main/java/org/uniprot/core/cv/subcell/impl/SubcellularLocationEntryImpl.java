@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.subcell.SubcellLocationCategory;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
-import org.uniprot.core.cv.subcell.SubcellularLocationStatistics;
 
 public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
     private static final long serialVersionUID = 8881869836509747529L;
@@ -26,7 +26,7 @@ public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
     private List<String> links = Collections.emptyList();
     private List<SubcellularLocationEntry> isA = Collections.emptyList();
     private List<SubcellularLocationEntry> partOf = Collections.emptyList();
-    private SubcellularLocationStatistics statistics;
+    private Statistics statistics;
 
     @Override
     public SubcellLocationCategory getCategory() {
@@ -94,7 +94,7 @@ public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
     }
 
     @Override
-    public SubcellularLocationStatistics getStatistics() {
+    public Statistics getStatistics() {
         return statistics;
     }
 
@@ -150,7 +150,7 @@ public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
         this.partOf = partOf;
     }
 
-    public void setStatistics(SubcellularLocationStatistics statistics) {
+    public void setStatistics(Statistics statistics) {
         this.statistics = statistics;
     }
 
