@@ -41,8 +41,8 @@ public class FtLineModelListener extends FtLineParserBaseListener
 
     @Override
     public void exitFt_line(FtLineParser.Ft_lineContext ctx) {
-        if (ft.getLocation_end() == null) {
-            ft.setLocation_end(ft.getLocation_start());
+        if (ft.getLocationEnd() == null) {
+            ft.setLocationEnd(ft.getLocationStart());
         }
         object.fts.add(ft);
         ft = null;
@@ -62,7 +62,7 @@ public class FtLineModelListener extends FtLineParserBaseListener
         if (ctx.note_text() != null) {
             String result = ctx.note_text().getText();
             result = result.replaceAll("''", "\"");
-            ft.setFt_text(updateAltSeqText(result));
+            ft.setFtText(updateAltSeqText(result));
         }
     }
 
@@ -84,13 +84,13 @@ public class FtLineModelListener extends FtLineParserBaseListener
         int index = text.indexOf(":");
         if (index != -1) {
             ft.setSequence(text.substring(0, index));
-            ft.setLocation_start(text.substring(index + 1));
-        } else ft.setLocation_start(text);
+            ft.setLocationStart(text.substring(index + 1));
+        } else ft.setLocationStart(text);
     }
 
     @Override
     public void exitLoc_end(FtLineParser.Loc_endContext ctx) {
-        ft.setLocation_end(ctx.FT_LOCATION_2().getText().trim());
+        ft.setLocationEnd(ctx.FT_LOCATION_2().getText().trim());
     }
 
     private String updateAltSeqText(String text) {

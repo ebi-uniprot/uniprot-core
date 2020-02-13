@@ -24,28 +24,28 @@ class FtLineConverterTest {
         FtLineObject fobj = new FtLineObject();
         FtLineObject.FT ft = new FtLineObject.FT();
         ft.setType(FtLineObject.FTType.HELIX);
-        ft.setLocation_start("33");
-        ft.setLocation_end("83");
+        ft.setLocationStart("33");
+        ft.setLocationEnd("83");
         fobj.fts.add(ft);
         FtLineObject.FT ft2 = new FtLineObject.FT();
         ft2.setType(FtLineObject.FTType.SIGNAL);
-        ft2.setLocation_start("<1");
-        ft2.setLocation_end("34");
-        ft2.setFt_text("Potential");
+        ft2.setLocationStart("<1");
+        ft2.setLocationEnd("34");
+        ft2.setFtText("Potential");
         fobj.fts.add(ft2);
 
         FtLineObject.FT ft3 = new FtLineObject.FT();
         ft3.setType(FtLineObject.FTType.NP_BIND);
-        ft3.setLocation_start("1");
-        ft3.setLocation_end(">17");
-        ft3.setFt_text("NAD (By similarity)");
+        ft3.setLocationStart("1");
+        ft3.setLocationEnd(">17");
+        ft3.setFtText("NAD (By similarity)");
         fobj.fts.add(ft3);
 
         FtLineObject.FT ft4 = new FtLineObject.FT();
         ft4.setType(FtLineObject.FTType.NP_BIND);
-        ft4.setLocation_start("1");
-        ft4.setLocation_end(">17");
-        ft4.setFt_text("NAD");
+        ft4.setLocationStart("1");
+        ft4.setLocationEnd(">17");
+        ft4.setFtText("NAD");
         fobj.fts.add(ft4);
 
         List<Feature> features = converter.convert(fobj);
@@ -88,9 +88,9 @@ class FtLineConverterTest {
         FtLineObject fobj = new FtLineObject();
         FtLineObject.FT ft = new FtLineObject.FT();
         ft.setType(FtLineObject.FTType.MUTAGEN);
-        ft.setLocation_start("119");
-        ft.setLocation_end("119");
-        ft.setFt_text("C->R,E,A: Loss of cADPr hydrolase and ADP-ribosyl cyclase activity");
+        ft.setLocationStart("119");
+        ft.setLocationEnd("119");
+        ft.setFtText("C->R,E,A: Loss of cADPr hydrolase and ADP-ribosyl cyclase activity");
         fobj.fts.add(ft);
         List<Feature> features = converter.convert(fobj);
         assertEquals(1, features.size());
@@ -118,9 +118,9 @@ class FtLineConverterTest {
         FtLineObject fobj = new FtLineObject();
         FtLineObject.FT ft = new FtLineObject.FT();
         ft.setType(FtLineObject.FTType.VAR_SEQ);
-        ft.setLocation_start("33");
-        ft.setLocation_end("83");
-        ft.setFt_text(
+        ft.setLocationStart("33");
+        ft.setLocationEnd("83");
+        ft.setFtText(
                 "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)");
         ft.setFtId("VSP_004370");
         fobj.fts.add(ft);
@@ -148,9 +148,9 @@ class FtLineConverterTest {
         FtLineObject fobj = new FtLineObject();
         FtLineObject.FT ft = new FtLineObject.FT();
         ft.setType(FtLineObject.FTType.VAR_SEQ);
-        ft.setLocation_start("33");
-        ft.setLocation_end("83");
-        ft.setFt_text(
+        ft.setLocationStart("33");
+        ft.setLocationEnd("83");
+        ft.setFtText(
                 "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP(in isoform 2)");
         ft.setFtId("VSP_004370");
         fobj.fts.add(ft);
@@ -178,9 +178,9 @@ class FtLineConverterTest {
         FtLineObject fobj = new FtLineObject();
         FtLineObject.FT ft = new FtLineObject.FT();
         ft.setType(FtLineObject.FTType.VARIANT);
-        ft.setLocation_start("102");
-        ft.setLocation_end("102");
-        ft.setFt_text("V -> I (in HH2; dbSNP:rs55642501)");
+        ft.setLocationStart("102");
+        ft.setLocationEnd("102");
+        ft.setFtText("V -> I (in HH2; dbSNP:rs55642501)");
         ft.setFtId("VAR_030972");
         fobj.fts.add(ft);
         List<Feature> features = converter.convert(fobj);
@@ -206,9 +206,9 @@ class FtLineConverterTest {
         FtLineObject fobj = new FtLineObject();
         FtLineObject.FT ft = new FtLineObject.FT();
         ft.setType(FtLineObject.FTType.VARIANT);
-        ft.setLocation_start("102");
-        ft.setLocation_end("102");
-        ft.setFt_text("V -> I(in HH2; dbSNP:rs55642501)");
+        ft.setLocationStart("102");
+        ft.setLocationEnd("102");
+        ft.setFtText("V -> I(in HH2; dbSNP:rs55642501)");
         ft.setFtId("VAR_030972");
         fobj.fts.add(ft);
         List<Feature> features = converter.convert(fobj);
@@ -234,9 +234,9 @@ class FtLineConverterTest {
         FtLineObject fobj = new FtLineObject();
         FtLineObject.FT ft = new FtLineObject.FT();
         ft.setType(FtLineObject.FTType.VARIANT);
-        ft.setLocation_start("267");
-        ft.setLocation_end("294");
-        ft.setFt_text("ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPDLKVPVVQKVTKRLGVTSPD");
+        ft.setLocationStart("267");
+        ft.setLocationEnd("294");
+        ft.setFtText("ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPDLKVPVVQKVTKRLGVTSPD");
         ft.setFtId("");
         fobj.fts.add(ft);
         List<Feature> features = converter.convert(fobj);
@@ -260,8 +260,8 @@ class FtLineConverterTest {
         FtLineObject fobj = new FtLineObject();
         FtLineObject.FT ft = new FtLineObject.FT();
         ft.setType(FtLineObject.FTType.HELIX);
-        ft.setLocation_start("33");
-        ft.setLocation_end("83");
+        ft.setLocationStart("33");
+        ft.setLocationEnd("83");
         List<String> evIds = new ArrayList<String>();
         evIds.add("ECO:0000255|HAMAP-Rule:PRU10081");
         evIds.add("ECO:0000255|HAMAP-Rule:PRU10082");
@@ -269,9 +269,9 @@ class FtLineConverterTest {
         fobj.fts.add(ft);
         FtLineObject.FT ft2 = new FtLineObject.FT();
         ft2.setType(FtLineObject.FTType.SIGNAL);
-        ft2.setLocation_start("<1");
-        ft2.setLocation_end("34");
-        ft2.setFt_text("Potential");
+        ft2.setLocationStart("<1");
+        ft2.setLocationEnd("34");
+        ft2.setFtText("Potential");
         evIds = new ArrayList<String>();
         evIds.add("ECO:0000255|HAMAP-Rule:PRU10082");
         evIds.add("ECO:0000255|HAMAP-Rule:PRU10083");
@@ -280,9 +280,9 @@ class FtLineConverterTest {
 
         FtLineObject.FT ft3 = new FtLineObject.FT();
         ft3.setType(FtLineObject.FTType.NP_BIND);
-        ft3.setLocation_start("1");
-        ft3.setLocation_end(">17");
-        ft3.setFt_text("NAD (By similarity)");
+        ft3.setLocationStart("1");
+        ft3.setLocationEnd(">17");
+        ft3.setFtText("NAD (By similarity)");
         evIds = new ArrayList<String>();
         evIds.add("ECO:0000255|HAMAP-Rule:PRU10083");
         fobj.evidenceInfo.getEvidences().put(ft3, evIds);
@@ -290,9 +290,9 @@ class FtLineConverterTest {
 
         FtLineObject.FT ft4 = new FtLineObject.FT();
         ft4.setType(FtLineObject.FTType.NP_BIND);
-        ft4.setLocation_start("1");
-        ft4.setLocation_end(">17");
-        ft4.setFt_text("NAD");
+        ft4.setLocationStart("1");
+        ft4.setLocationEnd(">17");
+        ft4.setFtText("NAD");
         fobj.fts.add(ft4);
 
         List<Feature> features = converter.convert(fobj);
@@ -358,8 +358,8 @@ class FtLineConverterTest {
         FtLineObject fobj = new FtLineObject();
         FtLineObject.FT ft = new FtLineObject.FT();
         ft.setType(FtLineObject.FTType.ACT_SITE);
-        ft.setLocation_start("150");
-        ft.setLocation_end("150");
+        ft.setLocationStart("150");
+        ft.setLocationEnd("150");
         List<String> evIds = new ArrayList<String>();
         evIds.add("ECO:0000255|PROSITE-ProRule:PRU10088");
         fobj.evidenceInfo.getEvidences().put(ft, evIds);
@@ -388,8 +388,8 @@ class FtLineConverterTest {
         FtLineObject fobj = new FtLineObject();
         FtLineObject.FT ft = new FtLineObject.FT();
         ft.setType(FtLineObject.FTType.ACT_SITE);
-        ft.setLocation_start("150");
-        ft.setLocation_end("150");
+        ft.setLocationStart("150");
+        ft.setLocationEnd("150");
         List<String> evIds = new ArrayList<String>();
         evIds.add("ECO:0000255|HAMAP-Rule:PRU10088");
         fobj.evidenceInfo.getEvidences().put(ft, evIds);

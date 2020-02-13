@@ -29,8 +29,8 @@ public class RlLineModelListener extends RlLineParserBaseListener
         RlLineObject.JournalArticle journalArticle = new RlLineObject.JournalArticle();
         journalArticle.journal = ctx.journal_abbr().getText();
         journalArticle.volume = ctx.journal_volume().J_ABBR_WORD().getText();
-        journalArticle.first_page = ctx.journal_volume().journal_first_page().getText();
-        journalArticle.last_page = ctx.journal_volume().journal_last_page().getText();
+        journalArticle.firstPage = ctx.journal_volume().journal_first_page().getText();
+        journalArticle.lastPage = ctx.journal_volume().journal_last_page().getText();
         journalArticle.year = Integer.parseInt(ctx.journal_year().J_WORD().getText());
         object.reference = journalArticle;
     }
@@ -88,8 +88,8 @@ public class RlLineModelListener extends RlLineParserBaseListener
                 if (book_pageContext.book_page_volume() != null) {
                     book.volume = book_pageContext.book_page_volume().BOOK_V_WORD().getText();
                 }
-                book.page_start = book_pageContext.book_page_first().getText();
-                book.page_end = book_pageContext.book_page_last().getText();
+                book.pageStart = book_pageContext.book_page_first().getText();
+                book.pageEnd = book_pageContext.book_page_last().getText();
             }
         } else if (book_abstract_pageContext != null) {
             book.pageString = book_abstract_pageContext.getText();

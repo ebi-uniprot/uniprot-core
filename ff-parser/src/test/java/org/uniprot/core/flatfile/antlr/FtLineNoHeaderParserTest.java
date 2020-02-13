@@ -41,9 +41,9 @@ class FtLineNoHeaderParserTest {
             String description,
             String ftid) {
         assertEquals(type, ft.getType());
-        assertEquals(start, ft.getLocation_start());
-        assertEquals(end, ft.getLocation_end());
-        assertEquals(description, ft.getFt_text());
+        assertEquals(start, ft.getLocationStart());
+        assertEquals(end, ft.getLocationEnd());
+        assertEquals(description, ft.getFtText());
         assertEquals(ftid, ft.getFtId());
     }
 

@@ -19,8 +19,8 @@ public class SsLineObject {
     public static class EvLine {
         public String id;
         public String db;
-        public String attr_1;
-        public String attr_2;
+        public String attr1;
+        public String attr2;
         public LocalDate date;
     }
 }

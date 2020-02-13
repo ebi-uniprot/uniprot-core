@@ -14,8 +14,8 @@ public class RlLineObject {
         public List<String> editors = new ArrayList<String>();
         public String title;
 
-        public String page_start;
-        public String page_end;
+        public String pageStart;
+        public String pageEnd;
         public String volume;
 
         // to accomodate something like "abstract#543"
@@ -38,8 +38,8 @@ public class RlLineObject {
         public String journal;
         public int year;
         public String volume;
-        public String first_page;
-        public String last_page;
+        public String firstPage;
+        public String lastPage;
     }
 
     public static class EPub implements Ref {

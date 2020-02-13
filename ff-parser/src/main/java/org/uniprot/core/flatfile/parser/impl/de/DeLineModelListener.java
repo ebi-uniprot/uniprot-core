@@ -68,50 +68,50 @@ public class DeLineModelListener extends DeLineParserBaseListener
 
     @Override
     public void exitAlt_biotech(@NotNull DeLineParser.Alt_biotechContext ctx) {
-        object.alt_Biotech = ctx.name_value().getText();
-        object.alt_Biotech = object.getEvidenceInfo().retrieveEvidenceString(object.alt_Biotech);
+        object.altBiotech = ctx.name_value().getText();
+        object.altBiotech = object.getEvidenceInfo().retrieveEvidenceString(object.altBiotech);
     }
 
     @Override
     public void exitAlt_inn(@NotNull DeLineParser.Alt_innContext ctx) {
         String text = ctx.name_value().getText();
-        object.alt_INN.add(object.getEvidenceInfo().retrieveEvidenceString(text));
+        object.altInn.add(object.getEvidenceInfo().retrieveEvidenceString(text));
     }
 
     @Override
     public void exitAlt_allergen(@NotNull DeLineParser.Alt_allergenContext ctx) {
-        object.alt_Allergen = ctx.name_value().getText();
-        object.alt_Allergen = object.getEvidenceInfo().retrieveEvidenceString(object.alt_Allergen);
+        object.altAllergen = ctx.name_value().getText();
+        object.altAllergen = object.getEvidenceInfo().retrieveEvidenceString(object.altAllergen);
     }
 
     @Override
     public void exitAlt_cdantigen(@NotNull DeLineParser.Alt_cdantigenContext ctx) {
         String text = ctx.name_value().getText();
-        object.alt_CD_antigen.add(object.getEvidenceInfo().retrieveEvidenceString(text));
+        object.altCdAntigen.add(object.getEvidenceInfo().retrieveEvidenceString(text));
     }
 
     @Override
     public void exitSub_alt_biotech(@NotNull DeLineParser.Sub_alt_biotechContext ctx) {
-        block.alt_Biotech = ctx.name_value().getText();
-        block.alt_Biotech = object.getEvidenceInfo().retrieveEvidenceString(block.alt_Biotech);
+        block.altBiotech = ctx.name_value().getText();
+        block.altBiotech = object.getEvidenceInfo().retrieveEvidenceString(block.altBiotech);
     }
 
     @Override
     public void exitSub_alt_inn(@NotNull DeLineParser.Sub_alt_innContext ctx) {
         String text = ctx.name_value().getText();
-        block.alt_INN.add(object.getEvidenceInfo().retrieveEvidenceString(text));
+        block.altInn.add(object.getEvidenceInfo().retrieveEvidenceString(text));
     }
 
     @Override
     public void exitSub_alt_allergen(@NotNull DeLineParser.Sub_alt_allergenContext ctx) {
-        block.alt_Allergen = ctx.name_value().getText();
-        block.alt_Allergen = object.getEvidenceInfo().retrieveEvidenceString(block.alt_Allergen);
+        block.altAllergen = ctx.name_value().getText();
+        block.altAllergen = object.getEvidenceInfo().retrieveEvidenceString(block.altAllergen);
     }
 
     @Override
     public void exitSub_alt_cdantigen(@NotNull DeLineParser.Sub_alt_cdantigenContext ctx) {
         String text = ctx.name_value().getText();
-        block.alt_CD_antigen.add(object.getEvidenceInfo().retrieveEvidenceString(text));
+        block.altCdAntigen.add(object.getEvidenceInfo().retrieveEvidenceString(text));
     }
 
     @Override

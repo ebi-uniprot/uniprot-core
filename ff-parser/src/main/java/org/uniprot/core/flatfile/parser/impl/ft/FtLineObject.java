@@ -27,10 +27,10 @@ public class FtLineObject implements HasEvidenceInfo {
         private FTType type;
 
         // can have fuzzy type thus cannot use int.
-        private String location_start;
-        private String location_end;
+        private String locationStart;
+        private String locationEnd;
 
-        private String ft_text;
+        private String ftText;
         private String ftId;
         private String sequence;
 
@@ -42,28 +42,28 @@ public class FtLineObject implements HasEvidenceInfo {
             this.type = type;
         }
 
-        public String getLocation_start() {
-            return location_start;
+        public String getLocationStart() {
+            return locationStart;
         }
 
-        public void setLocation_start(String location_start) {
-            this.location_start = location_start;
+        public void setLocationStart(String locationStart) {
+            this.locationStart = locationStart;
         }
 
-        public String getLocation_end() {
-            return location_end;
+        public String getLocationEnd() {
+            return locationEnd;
         }
 
-        public void setLocation_end(String location_end) {
-            this.location_end = location_end;
+        public void setLocationEnd(String locationEnd) {
+            this.locationEnd = locationEnd;
         }
 
-        public String getFt_text() {
-            return ft_text;
+        public String getFtText() {
+            return ftText;
         }
 
-        public void setFt_text(String ft_text) {
-            this.ft_text = ft_text;
+        public void setFtText(String ftText) {
+            this.ftText = ftText;
         }
 
         public String getFtId() {
