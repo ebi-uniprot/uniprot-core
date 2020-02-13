@@ -38,8 +38,8 @@ class SsLineParserTest {
     private void verify(SsLineObject.EvLine obj, String id, String db, String attr1, String attr2) {
         assertEquals(db, obj.db);
         assertEquals(id, obj.id);
-        assertEquals(attr1, obj.attr_1);
-        assertEquals(attr2, obj.attr_2);
+        assertEquals(attr1, obj.attr1);
+        assertEquals(attr2, obj.attr2);
     }
 
     @Test

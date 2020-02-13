@@ -50,7 +50,7 @@ public class SsLineModelListener extends SsLineParserBaseListener
                         .toFormatter(Locale.ENGLISH);
 
         evLine.date = LocalDate.parse(ctx.EV_DATE().getText(), formatter);
-        evLine.attr_2 = (ctx.ev_attr_2() != null) ? ctx.ev_attr_2().getText() : "";
+        evLine.attr2 = (ctx.ev_attr_2() != null) ? ctx.ev_attr_2().getText() : "";
 
         evLine.db = ctx.ev_db().getText();
         int i = evLine.db.indexOf(':');
@@ -58,9 +58,9 @@ public class SsLineModelListener extends SsLineParserBaseListener
             String db = evLine.db.substring(0, i);
             String attr = evLine.db.substring(i + 1);
             evLine.db = db;
-            evLine.attr_1 = attr;
+            evLine.attr1 = attr;
         } else {
-            evLine.attr_1 = (ctx.ev_attr_1() != null) ? ctx.ev_attr_1().getText() : "";
+            evLine.attr1 = (ctx.ev_attr_1() != null) ? ctx.ev_attr_1().getText() : "";
         }
 
         object.ssEVLines.add(evLine);

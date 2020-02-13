@@ -115,14 +115,14 @@ public class SsLineConverter implements Converter<SsLineObject, InternalSection>
         if (isValidDb(e.db)) {
             sb.append("|");
             sb.append(e.db);
-            if (!Strings.isNullOrEmpty(e.attr_1)) {
-                sb.append(":").append(e.attr_1);
+            if (!Strings.isNullOrEmpty(e.attr1)) {
+                sb.append(":").append(e.attr1);
             }
         }
         return new EvidenceLineBuilder()
                 .evidence(sb.toString())
                 .creationDate(e.date)
-                .curator(e.attr_2)
+                .curator(e.attr2)
                 .build();
     }
 

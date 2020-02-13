@@ -11,10 +11,11 @@ public class DeLineObject implements HasEvidenceInfo {
     public Name recName;
     public List<Name> altName = new ArrayList<Name>();
     public List<Name> subName = new ArrayList<Name>();
-    public String alt_Allergen;
-    public String alt_Biotech;
-    public List<String> alt_CD_antigen = new ArrayList<String>();
-    public List<String> alt_INN = new ArrayList<String>();
+    public String altAllergen;
+
+    public String altBiotech;
+    public List<String> altCdAntigen = new ArrayList<String>();
+    public List<String> altInn = new ArrayList<String>();
 
     public List<NameBlock> containedNames = new ArrayList<NameBlock>();
     public List<NameBlock> includedNames = new ArrayList<NameBlock>();
@@ -55,10 +56,10 @@ public class DeLineObject implements HasEvidenceInfo {
         public List<Name> altName = new ArrayList<Name>();
 
         public List<Name> subName = new ArrayList<Name>();
-        public String alt_Allergen;
-        public String alt_Biotech;
-        public List<String> alt_CD_antigen = new ArrayList<String>();
-        public List<String> alt_INN = new ArrayList<String>();
+        public String altAllergen;
+        public String altBiotech;
+        public List<String> altCdAntigen = new ArrayList<String>();
+        public List<String> altInn = new ArrayList<String>();
     }
 
     public static class Name {

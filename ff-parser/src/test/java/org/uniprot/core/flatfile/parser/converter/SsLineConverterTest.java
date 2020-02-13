@@ -24,15 +24,15 @@ class SsLineConverterTest {
         SsLineObject.EvLine ev1 = new SsLineObject.EvLine();
         ev1.id = "ECO:0000313";
         ev1.db = "ProtImp";
-        ev1.attr_1 = "UP99";
-        ev1.attr_2 = "-";
+        ev1.attr1 = "UP99";
+        ev1.attr2 = "-";
         ev1.date = LocalDate.now();
         obj.ssEVLines.add(ev1);
         SsLineObject.EvLine ev2 = new SsLineObject.EvLine();
         ev2.id = "ECO:0000256";
         ev2.db = "HAMAP-Rule";
-        ev2.attr_1 = "MF_01417";
-        ev2.attr_2 = "XAB";
+        ev2.attr1 = "MF_01417";
+        ev2.attr2 = "XAB";
         ev2.date = LocalDate.now();
         obj.ssEVLines.add(ev2);
         InternalSection is = converter.convert(obj);
@@ -46,7 +46,7 @@ class SsLineConverterTest {
         assertEquals("ProtImp", evidence1.getSource().getDatabaseType().getName());
         assertEquals("ECO:0000313", evidence1.getEvidenceCode().getCode());
         assertEquals(ev1.date, evidenceLine1.getCreateDate());
-        assertEquals(ev1.attr_2, evidenceLine1.getCurator());
+        assertEquals(ev1.attr2, evidenceLine1.getCurator());
 
         Evidence evidence2 = parseEvidenceLine(evidenceLine2.getEvidence());
         assertEquals("MF_01417", evidence2.getSource().getId());
@@ -54,6 +54,6 @@ class SsLineConverterTest {
         assertEquals("HAMAP-Rule", evidence2.getSource().getDatabaseType().getName());
         assertEquals("ECO:0000256", evidence2.getEvidenceCode().getCode());
         assertEquals(ev2.date, evidenceLine2.getCreateDate());
-        assertEquals(ev2.attr_2, evidenceLine2.getCurator());
+        assertEquals(ev2.attr2, evidenceLine2.getCurator());
     }
 }

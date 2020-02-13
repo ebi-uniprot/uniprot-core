@@ -45,21 +45,21 @@ public class DeLineConverter extends EvidenceCollector
                         .collect(Collectors.toList());
 
         List<Name> cdAntigenNames =
-                f.alt_CD_antigen.stream()
+                f.altCdAntigen.stream()
                         .map(val -> convertName(val, evidenceMap))
                         .collect(Collectors.toList());
 
         List<Name> innNames =
-                f.alt_INN.stream()
+                f.altInn.stream()
                         .map(val -> convertName(val, evidenceMap))
                         .collect(Collectors.toList());
         Name biotechName = null;
-        if (!Strings.isNullOrEmpty(f.alt_Biotech)) {
-            biotechName = convertName(f.alt_Biotech, evidenceMap);
+        if (!Strings.isNullOrEmpty(f.altBiotech)) {
+            biotechName = convertName(f.altBiotech, evidenceMap);
         }
         Name allergenName = null;
-        if (!Strings.isNullOrEmpty(f.alt_Allergen)) {
-            allergenName = convertName(f.alt_Allergen, evidenceMap);
+        if (!Strings.isNullOrEmpty(f.altAllergen)) {
+            allergenName = convertName(f.altAllergen, evidenceMap);
         }
         List<ProteinSubName> subNames =
                 f.subName.stream()
@@ -127,21 +127,21 @@ public class DeLineConverter extends EvidenceCollector
                         .collect(Collectors.toList());
 
         List<Name> cdAntigenNames =
-                nameBlock.alt_CD_antigen.stream()
+                nameBlock.altCdAntigen.stream()
                         .map(val -> convertName(val, evidenceMap))
                         .collect(Collectors.toList());
 
         List<Name> innNames =
-                nameBlock.alt_INN.stream()
+                nameBlock.altInn.stream()
                         .map(val -> convertName(val, evidenceMap))
                         .collect(Collectors.toList());
         Name biotechName = null;
-        if (!Strings.isNullOrEmpty(nameBlock.alt_Biotech)) {
-            biotechName = convertName(nameBlock.alt_Biotech, evidenceMap);
+        if (!Strings.isNullOrEmpty(nameBlock.altBiotech)) {
+            biotechName = convertName(nameBlock.altBiotech, evidenceMap);
         }
         Name allergenName = null;
-        if (!Strings.isNullOrEmpty(nameBlock.alt_Allergen)) {
-            allergenName = convertName(nameBlock.alt_Allergen, evidenceMap);
+        if (!Strings.isNullOrEmpty(nameBlock.altAllergen)) {
+            allergenName = convertName(nameBlock.altAllergen, evidenceMap);
         }
 
         return new ProteinSectionBuilder()

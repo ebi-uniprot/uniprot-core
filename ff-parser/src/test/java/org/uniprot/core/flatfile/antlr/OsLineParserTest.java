@@ -14,7 +14,7 @@ class OsLineParserTest {
         UniprotLineParser<OsLineObject> parser =
                 new DefaultUniprotLineParserFactory().createOsLineParser();
         OsLineObject obj = parser.parse(osLines);
-        assertEquals("Solanum melongena (Eggplant) (Aubergine)", obj.organism_species);
+        assertEquals("Solanum melongena (Eggplant) (Aubergine)", obj.organismSpecies);
     }
 
     @Test
@@ -25,7 +25,7 @@ class OsLineParserTest {
                 new DefaultUniprotLineParserFactory().createOsLineParser();
         OsLineObject obj = parser.parse(osLines);
         assertEquals(
-                "Rous (strain Schmidt-Ruppin A) (Avian leukosis virus-RSA)", obj.organism_species);
+                "Rous (strain Schmidt-Ruppin A) (Avian leukosis virus-RSA)", obj.organismSpecies);
     }
 
     @Test
@@ -38,7 +38,7 @@ class OsLineParserTest {
                 new DefaultUniprotLineParserFactory().createOsLineParser();
         OsLineObject obj = parser.parse(osLines);
         assertEquals(
-                "Rous (strain Schmidt-Ruppin A) (Avian leukosis virus-RSA)", obj.organism_species);
+                "Rous (strain Schmidt-Ruppin A) (Avian leukosis virus-RSA)", obj.organismSpecies);
     }
 
     @Test
@@ -49,7 +49,7 @@ class OsLineParserTest {
         OsLineObject obj = parser.parse(osLines);
         assertEquals(
                 "African swine fever virus (isolate Pig/Kenya/KEN-50/1950) (ASFV)",
-                obj.organism_species);
+                obj.organismSpecies);
     }
 
     @Test
@@ -59,7 +59,7 @@ class OsLineParserTest {
                 new DefaultUniprotLineParserFactory().createOsLineParser();
         OsLineObject obj = parser.parse(osLines);
         assertEquals(
-                "Salmonella enterica subsp. enterica serovar Heidelberg str", obj.organism_species);
+                "Salmonella enterica subsp. enterica serovar Heidelberg str", obj.organismSpecies);
     }
 
     @Test
@@ -68,7 +68,7 @@ class OsLineParserTest {
         UniprotLineParser<OsLineObject> parser =
                 new DefaultUniprotLineParserFactory().createOsLineParser();
         OsLineObject obj = parser.parse(osLines);
-        assertEquals("Aeromonas sp. E6(2011)", obj.organism_species);
+        assertEquals("Aeromonas sp. E6(2011)", obj.organismSpecies);
     }
 
     @Test
@@ -77,6 +77,6 @@ class OsLineParserTest {
         UniprotLineParser<OsLineObject> parser =
                 new DefaultUniprotLineParserFactory().createOsLineParser();
         OsLineObject obj = parser.parse(osLines);
-        assertEquals("Frog virus 3 (isolate Goorha) (FV-3)", obj.organism_species);
+        assertEquals("Frog virus 3 (isolate Goorha) (FV-3)", obj.organismSpecies);
     }
 }

@@ -351,7 +351,7 @@ class DeLineParserTest {
                 "Legumin-like protein 3",
                 Arrays.asList(new String[] {}),
                 Collections.emptyList());
-        assertEquals("Fag e 1", obj.alt_Allergen);
+        assertEquals("Fag e 1", obj.altAllergen);
     }
 
     @Test

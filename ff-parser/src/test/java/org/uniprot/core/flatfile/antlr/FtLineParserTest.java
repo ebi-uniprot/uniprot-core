@@ -118,7 +118,7 @@ class FtLineParserTest {
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(1, obj.fts.size());
-        System.out.println(obj.fts.get(0).getFt_text());
+        System.out.println(obj.fts.get(0).getFtText());
         String desc =
                 "MLTCNKAGSRMVVDAANSNGPFQPVVLLHIR -> MPNKNKKEKESPKAGKSGKSSKEGQDTVESEQISVRKNSLVAVPSTV"
                         + "SAKIKVPVSQPIVKKDKRQNSSRFSASNNRELQKLPSLK(in isoform 4)";
@@ -150,7 +150,7 @@ class FtLineParserTest {
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(1, obj.fts.size());
-        System.out.println(obj.fts.get(0).getFt_text());
+        System.out.println(obj.fts.get(0).getFtText());
         String desc =
                 "M -> MTDRQTDTAPSPSAHLLAGGLPTVDAAASREEPKPA"
                         + "SPSRRGSASRAGPGRASETM (in isoform L-VEGF-1). {ECO:0000305}";
@@ -351,7 +351,7 @@ class FtLineParserTest {
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
         assertEquals(1, obj.fts.size());
-        System.out.println(obj.fts.get(0).getFt_text());
+        System.out.println(obj.fts.get(0).getFtText());
         verify(
                 obj.fts.get(0),
                 FTType.CONFLICT,
@@ -374,7 +374,7 @@ class FtLineParserTest {
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
         assertEquals(1, obj.fts.size());
-        System.out.println(obj.fts.get(0).getFt_text());
+        System.out.println(obj.fts.get(0).getFtText());
         verify(
                 obj.fts.get(0),
                 FTType.CONFLICT,
@@ -395,7 +395,7 @@ class FtLineParserTest {
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
         assertEquals(1, obj.fts.size());
-        System.out.println(obj.fts.get(0).getFt_text());
+        System.out.println(obj.fts.get(0).getFtText());
         verify(
                 obj.fts.get(0),
                 FTType.VARIANT,
@@ -417,7 +417,7 @@ class FtLineParserTest {
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
         assertEquals(1, obj.fts.size());
-        System.out.println(obj.fts.get(0).getFt_text());
+        System.out.println(obj.fts.get(0).getFtText());
         verify(
                 obj.fts.get(0),
                 FTType.VARIANT,
@@ -438,7 +438,7 @@ class FtLineParserTest {
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
         assertEquals(1, obj.fts.size());
-        System.out.println(obj.fts.get(0).getFt_text());
+        System.out.println(obj.fts.get(0).getFtText());
         verify(
                 obj.fts.get(0),
                 FTType.VAR_SEQ,
@@ -527,9 +527,9 @@ class FtLineParserTest {
             String description,
             String ftid) {
         assertEquals(type, ft.getType());
-        assertEquals(start, ft.getLocation_start());
-        assertEquals(end, ft.getLocation_end());
-        assertEquals(description, ft.getFt_text());
+        assertEquals(start, ft.getLocationStart());
+        assertEquals(end, ft.getLocationEnd());
+        assertEquals(description, ft.getFtText());
         assertEquals(ftid, ft.getFtId());
     }
 

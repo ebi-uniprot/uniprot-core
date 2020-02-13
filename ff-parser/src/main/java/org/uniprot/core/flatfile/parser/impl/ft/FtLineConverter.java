@@ -39,7 +39,7 @@ public class FtLineConverter extends EvidenceCollector
 
             FeatureLocation location =
                     convertFeatureLocation(
-                            ft.getSequence(), ft.getLocation_start(), ft.getLocation_end());
+                            ft.getSequence(), ft.getLocationStart(), ft.getLocationEnd());
             Feature feature = convertFeature(featureType, location, ft, evidenceMap);
             features.add(feature);
         }
@@ -78,7 +78,7 @@ public class FtLineConverter extends EvidenceCollector
                 .location(location)
                 .featureId(ft.getFtId())
                 .evidencesSet(evidences)
-                .description(ft.getFt_text())
+                .description(ft.getFtText())
                 .build();
     }
 
@@ -87,7 +87,7 @@ public class FtLineConverter extends EvidenceCollector
             FeatureLocation location,
             FtLineObject.FT ft,
             List<Evidence> evidences) {
-        String value = ft.getFt_text();
+        String value = ft.getFtText();
         value = fixVarSeqSpace(value);
         String originalSequence = "";
         List<String> alternativeSequences = new ArrayList<>();
@@ -180,7 +180,7 @@ public class FtLineConverter extends EvidenceCollector
             FeatureLocation location,
             FtLineObject.FT ft,
             List<Evidence> evidences) {
-        String value = ft.getFt_text();
+        String value = ft.getFtText();
         Matcher matcher = FtLineConverterUtil.VAIANT_DESC_PATTERN.matcher(value);
         String originalSequence = "";
         List<String> alternativeSequences = new ArrayList<>();
@@ -218,7 +218,7 @@ public class FtLineConverter extends EvidenceCollector
             FeatureLocation location,
             FtLineObject.FT ft,
             List<Evidence> evidences) {
-        String value = ft.getFt_text();
+        String value = ft.getFtText();
         Matcher matcher = FtLineConverterUtil.CONFLICT_DESC_PATTERN.matcher(value);
         String originalSequence = "";
         List<String> alternativeSequences = new ArrayList<>();
@@ -258,7 +258,7 @@ public class FtLineConverter extends EvidenceCollector
             FeatureLocation location,
             FtLineObject.FT ft,
             List<Evidence> evidences) {
-        String value = ft.getFt_text();
+        String value = ft.getFtText();
         Matcher matcher = FtLineConverterUtil.MUTAGEN_DESC_PATTERN.matcher(value);
         String originalSequence = "";
         List<String> alternativeSequences = new ArrayList<>();
@@ -301,7 +301,7 @@ public class FtLineConverter extends EvidenceCollector
                         .type(type)
                         .location(location)
                         .evidencesSet(evidences)
-                        .description(ft.getFt_text());
+                        .description(ft.getFtText());
 
         if (!Strings.isNullOrEmpty(ft.getFtId())) {
             featureBuilder.featureId(ft.getFtId());

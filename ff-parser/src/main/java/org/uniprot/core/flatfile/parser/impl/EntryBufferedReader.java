@@ -22,23 +22,23 @@ public class EntryBufferedReader implements EntryReader {
     }
 
     public String next() throws IOException {
-        StringBuffer new_file_entry = new StringBuffer();
-        String new_line = null;
+        StringBuffer newFileEntry = new StringBuffer();
+        String newLine = null;
         if (available) {
             do {
-                new_line = this.reader.readLine();
+                newLine = this.reader.readLine();
 
-                new_file_entry.append(new_line);
-                new_file_entry.append('\n');
-            } while (new_line != null && !new_line.equals(ENTRY_END_TOKEN));
-            if (new_line == null) {
+                newFileEntry.append(newLine);
+                newFileEntry.append('\n');
+            } while (newLine != null && !newLine.equals(ENTRY_END_TOKEN));
+            if (newLine == null) {
                 available = false;
             }
         }
-        if (new_file_entry.length() <= 0 || !available) {
+        if (newFileEntry.length() <= 0 || !available) {
             return null;
         }
-        return new_file_entry.toString();
+        return newFileEntry.toString();
         //
     }
 

@@ -34,8 +34,8 @@ public class RlLineConverter
     private JournalArticleBuilder convert(RlLineObject.JournalArticle ja) {
         JournalArticleBuilder builder = new JournalArticleBuilder();
         builder.journalName(ja.journal)
-                .firstPage("" + ja.first_page)
-                .lastPage("" + ja.last_page)
+                .firstPage("" + ja.firstPage)
+                .lastPage("" + ja.lastPage)
                 .volume("" + ja.volume)
                 .publicationDate("" + ja.year);
         return builder;
@@ -43,13 +43,13 @@ public class RlLineConverter
 
     private BookBuilder convert(RlLineObject.Book b) {
         BookBuilder builder = new BookBuilder();
-        if (b.page_start != null) builder.firstPage("" + b.page_start);
-        if (b.page_end != null) builder.lastPage("" + b.page_end);
+        if (b.pageStart != null) builder.firstPage("" + b.pageStart);
+        if (b.pageEnd != null) builder.lastPage("" + b.pageEnd);
         builder.publicationDate("" + b.year);
 
         if (b.volume != null) builder.volume("" + b.volume);
 
-        if ((b.page_start == null) && (b.page_end == null) && b.pageString != null) {
+        if ((b.pageStart == null) && (b.pageEnd == null) && b.pageString != null) {
             builder.firstPage(b.pageString);
             builder.bookName(b.title);
         } else if (b.pageString != null) {

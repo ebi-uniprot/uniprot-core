@@ -8,7 +8,7 @@ public class OsLineConverter implements Converter<OsLineObject, OrganismName> {
 
     @Override
     public OrganismName convert(OsLineObject f) {
-        String value = f.organism_species;
+        String value = f.organismSpecies;
         return OrganismNameLineParser.createFromOrganismLine(value);
     }
 }

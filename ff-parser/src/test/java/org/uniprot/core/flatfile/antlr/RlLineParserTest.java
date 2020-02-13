@@ -117,8 +117,8 @@ class RlLineParserTest {
             String volume,
             int year) {
         assertEquals(journal, ja.journal);
-        assertEquals(pageStart, ja.first_page);
-        assertEquals(pageEnd, ja.last_page);
+        assertEquals(pageStart, ja.firstPage);
+        assertEquals(pageEnd, ja.lastPage);
         assertEquals(volume, ja.volume);
         assertEquals(year, ja.year);
     }
@@ -349,8 +349,8 @@ class RlLineParserTest {
             int year) {
         assertEquals(editors, book.editors);
         assertEquals(title, book.title);
-        assertEquals(pageStart, book.page_start);
-        assertEquals(pageEnd, book.page_end);
+        assertEquals(pageStart, book.pageStart);
+        assertEquals(pageEnd, book.pageEnd);
         assertEquals(volume, book.volume);
         assertEquals(press, book.press);
         assertEquals(place, book.place);
