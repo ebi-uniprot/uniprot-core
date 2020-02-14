@@ -26,27 +26,27 @@ class FtLineConverterTest {
         ft.setType(FtLineObject.FTType.HELIX);
         ft.setLocationStart("33");
         ft.setLocationEnd("83");
-        fobj.fts.add(ft);
+        fobj.getFts().add(ft);
         FtLineObject.FT ft2 = new FtLineObject.FT();
         ft2.setType(FtLineObject.FTType.SIGNAL);
         ft2.setLocationStart("<1");
         ft2.setLocationEnd("34");
         ft2.setFtText("Potential");
-        fobj.fts.add(ft2);
+        fobj.getFts().add(ft2);
 
         FtLineObject.FT ft3 = new FtLineObject.FT();
         ft3.setType(FtLineObject.FTType.NP_BIND);
         ft3.setLocationStart("1");
         ft3.setLocationEnd(">17");
         ft3.setFtText("NAD (By similarity)");
-        fobj.fts.add(ft3);
+        fobj.getFts().add(ft3);
 
         FtLineObject.FT ft4 = new FtLineObject.FT();
         ft4.setType(FtLineObject.FTType.NP_BIND);
         ft4.setLocationStart("1");
         ft4.setLocationEnd(">17");
         ft4.setFtText("NAD");
-        fobj.fts.add(ft4);
+        fobj.getFts().add(ft4);
 
         List<Feature> features = converter.convert(fobj);
         assertEquals(4, features.size());
@@ -91,7 +91,7 @@ class FtLineConverterTest {
         ft.setLocationStart("119");
         ft.setLocationEnd("119");
         ft.setFtText("C->R,E,A: Loss of cADPr hydrolase and ADP-ribosyl cyclase activity");
-        fobj.fts.add(ft);
+        fobj.getFts().add(ft);
         List<Feature> features = converter.convert(fobj);
         assertEquals(1, features.size());
         Feature feature1 = features.get(0);
@@ -123,7 +123,7 @@ class FtLineConverterTest {
         ft.setFtText(
                 "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)");
         ft.setFtId("VSP_004370");
-        fobj.fts.add(ft);
+        fobj.getFts().add(ft);
         List<Feature> features = converter.convert(fobj);
         assertEquals(1, features.size());
         Feature feature1 = features.get(0);
@@ -153,7 +153,7 @@ class FtLineConverterTest {
         ft.setFtText(
                 "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP(in isoform 2)");
         ft.setFtId("VSP_004370");
-        fobj.fts.add(ft);
+        fobj.getFts().add(ft);
         List<Feature> features = converter.convert(fobj);
         assertEquals(1, features.size());
         Feature feature1 = features.get(0);
@@ -182,7 +182,7 @@ class FtLineConverterTest {
         ft.setLocationEnd("102");
         ft.setFtText("V -> I (in HH2; dbSNP:rs55642501)");
         ft.setFtId("VAR_030972");
-        fobj.fts.add(ft);
+        fobj.getFts().add(ft);
         List<Feature> features = converter.convert(fobj);
         assertEquals(1, features.size());
         Feature feature1 = features.get(0);
@@ -210,7 +210,7 @@ class FtLineConverterTest {
         ft.setLocationEnd("102");
         ft.setFtText("V -> I(in HH2; dbSNP:rs55642501)");
         ft.setFtId("VAR_030972");
-        fobj.fts.add(ft);
+        fobj.getFts().add(ft);
         List<Feature> features = converter.convert(fobj);
         assertEquals(1, features.size());
         Feature feature1 = features.get(0);
@@ -238,7 +238,7 @@ class FtLineConverterTest {
         ft.setLocationEnd("294");
         ft.setFtText("ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPDLKVPVVQKVTKRLGVTSPD");
         ft.setFtId("");
-        fobj.fts.add(ft);
+        fobj.getFts().add(ft);
         List<Feature> features = converter.convert(fobj);
         assertEquals(1, features.size());
         Feature feature1 = features.get(0);
@@ -265,8 +265,8 @@ class FtLineConverterTest {
         List<String> evIds = new ArrayList<String>();
         evIds.add("ECO:0000255|HAMAP-Rule:PRU10081");
         evIds.add("ECO:0000255|HAMAP-Rule:PRU10082");
-        fobj.evidenceInfo.getEvidences().put(ft, evIds);
-        fobj.fts.add(ft);
+        fobj.getEvidenceInfo().getEvidences().put(ft, evIds);
+        fobj.getFts().add(ft);
         FtLineObject.FT ft2 = new FtLineObject.FT();
         ft2.setType(FtLineObject.FTType.SIGNAL);
         ft2.setLocationStart("<1");
@@ -275,8 +275,8 @@ class FtLineConverterTest {
         evIds = new ArrayList<String>();
         evIds.add("ECO:0000255|HAMAP-Rule:PRU10082");
         evIds.add("ECO:0000255|HAMAP-Rule:PRU10083");
-        fobj.evidenceInfo.getEvidences().put(ft2, evIds);
-        fobj.fts.add(ft2);
+        fobj.getEvidenceInfo().getEvidences().put(ft2, evIds);
+        fobj.getFts().add(ft2);
 
         FtLineObject.FT ft3 = new FtLineObject.FT();
         ft3.setType(FtLineObject.FTType.NP_BIND);
@@ -285,15 +285,15 @@ class FtLineConverterTest {
         ft3.setFtText("NAD (By similarity)");
         evIds = new ArrayList<String>();
         evIds.add("ECO:0000255|HAMAP-Rule:PRU10083");
-        fobj.evidenceInfo.getEvidences().put(ft3, evIds);
-        fobj.fts.add(ft3);
+        fobj.getEvidenceInfo().getEvidences().put(ft3, evIds);
+        fobj.getFts().add(ft3);
 
         FtLineObject.FT ft4 = new FtLineObject.FT();
         ft4.setType(FtLineObject.FTType.NP_BIND);
         ft4.setLocationStart("1");
         ft4.setLocationEnd(">17");
         ft4.setFtText("NAD");
-        fobj.fts.add(ft4);
+        fobj.getFts().add(ft4);
 
         List<Feature> features = converter.convert(fobj);
         assertEquals(4, features.size());
@@ -362,8 +362,8 @@ class FtLineConverterTest {
         ft.setLocationEnd("150");
         List<String> evIds = new ArrayList<String>();
         evIds.add("ECO:0000255|PROSITE-ProRule:PRU10088");
-        fobj.evidenceInfo.getEvidences().put(ft, evIds);
-        fobj.fts.add(ft);
+        fobj.getEvidenceInfo().getEvidences().put(ft, evIds);
+        fobj.getFts().add(ft);
 
         List<Feature> features = converter.convert(fobj);
         assertEquals(1, features.size());
@@ -392,8 +392,8 @@ class FtLineConverterTest {
         ft.setLocationEnd("150");
         List<String> evIds = new ArrayList<String>();
         evIds.add("ECO:0000255|HAMAP-Rule:PRU10088");
-        fobj.evidenceInfo.getEvidences().put(ft, evIds);
-        fobj.fts.add(ft);
+        fobj.getEvidenceInfo().getEvidences().put(ft, evIds);
+        fobj.getFts().add(ft);
 
         List<Feature> features = converter.convert(fobj);
         assertEquals(1, features.size());

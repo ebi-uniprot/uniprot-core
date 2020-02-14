@@ -34,7 +34,7 @@ public class FtLineConverter extends EvidenceCollector
         Map<Object, List<Evidence>> evidenceMap =
                 EvidenceConverterHelper.convert(f.getEvidenceInfo());
         this.addAll(evidenceMap.values());
-        for (FtLineObject.FT ft : f.fts) {
+        for (FtLineObject.FT ft : f.getFts()) {
             FeatureType featureType = convert(ft.getType());
 
             FeatureLocation location =

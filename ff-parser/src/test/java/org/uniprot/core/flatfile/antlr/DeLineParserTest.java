@@ -32,41 +32,45 @@ class DeLineParserTest {
         UniprotLineParser<DeLineObject> parser =
                 new DefaultUniprotLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
-        assertEquals(FlagType.Precursor, obj.flags.get(0));
+        assertEquals(FlagType.Precursor, obj.getFlags().get(0));
         verify(
-                obj.recName,
+                obj.getRecName(),
                 "Annexin A5",
                 Arrays.asList(new String[] {"Annexin-5"}),
                 Collections.emptyList());
-        assertEquals(7, obj.altName.size());
+        assertEquals(7, obj.getAltNames().size());
         verify(
-                obj.altName.get(0),
+                obj.getAltNames().get(0),
                 "Annexin V",
                 Arrays.asList(new String[] {}),
                 Collections.emptyList());
         verify(
-                obj.altName.get(1),
+                obj.getAltNames().get(1),
                 "Lipocortin V",
                 Arrays.asList(new String[] {}),
                 Collections.emptyList());
         verify(
-                obj.altName.get(2),
+                obj.getAltNames().get(2),
                 "Placental anticoagulant protein I",
                 Arrays.asList(new String[] {"PAP-I"}),
                 Collections.emptyList());
-        verify(obj.altName.get(3), "PP4", Arrays.asList(new String[] {}), Collections.emptyList());
         verify(
-                obj.altName.get(4),
+                obj.getAltNames().get(3),
+                "PP4",
+                Arrays.asList(new String[] {}),
+                Collections.emptyList());
+        verify(
+                obj.getAltNames().get(4),
                 "Thromboplastin inhibitor",
                 Arrays.asList(new String[] {}),
                 Collections.emptyList());
         verify(
-                obj.altName.get(5),
+                obj.getAltNames().get(5),
                 "Vascular anticoagulant-alpha",
                 Arrays.asList(new String[] {"VAC-alpha"}),
                 Collections.emptyList());
         verify(
-                obj.altName.get(6),
+                obj.getAltNames().get(6),
                 "Anchorin CII",
                 Arrays.asList(new String[] {}),
                 Collections.emptyList());
@@ -74,9 +78,9 @@ class DeLineParserTest {
 
     private void verify(
             DeLineObject.Name name, String fullName, List<String> shortNames, List<String> ecs) {
-        assertEquals(fullName, name.fullName);
-        assertEquals(shortNames, name.shortNames);
-        assertEquals(ecs, name.ecs);
+        assertEquals(fullName, name.getFullName());
+        assertEquals(shortNames, name.getShortNames());
+        assertEquals(ecs, name.getEcs());
     }
 
     private void verifyEvidences(DeLineObject obj, Object name, List<String> evidences) {
@@ -102,7 +106,7 @@ class DeLineParserTest {
         UniprotLineParser<DeLineObject> parser =
                 new DefaultUniprotLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
-        assertEquals(FlagType.Precursor, obj.flags.get(0));
+        assertEquals(FlagType.Precursor, obj.getFlags().get(0));
         verifyEvidences(
                 obj,
                 FlagType.Precursor,
@@ -113,23 +117,23 @@ class DeLineParserTest {
                             "ECO:0000256|PIRNR:PIRNR038998"
                         }));
         verify(
-                obj.recName,
+                obj.getRecName(),
                 "Annexin A5",
                 Arrays.asList(new String[] {"Annexin-5"}),
                 Collections.emptyList());
         verifyEvidences(
                 obj, "Annexin A5", Arrays.asList(new String[] {"ECO:0000256|PIRNR:PIRNR038994"}));
 
-        assertEquals(7, obj.altName.size());
+        assertEquals(7, obj.getAltNames().size());
         verify(
-                obj.altName.get(0),
+                obj.getAltNames().get(0),
                 "Annexin V",
                 Arrays.asList(new String[] {}),
                 Collections.emptyList());
         verifyEvidences(
                 obj, "Annexin V", Arrays.asList(new String[] {"ECO:0000256|PIRNR:PIRNR038994"}));
         verify(
-                obj.altName.get(1),
+                obj.getAltNames().get(1),
                 "Lipocortin V",
                 Arrays.asList(new String[] {}),
                 Collections.emptyList());
@@ -137,7 +141,7 @@ class DeLineParserTest {
                 obj, "Lipocortin V", Arrays.asList(new String[] {"ECO:0000256|PIRNR:PIRNR038994"}));
 
         verify(
-                obj.altName.get(2),
+                obj.getAltNames().get(2),
                 "Placental anticoagulant protein I",
                 Arrays.asList(new String[] {"PAP-I"}),
                 Collections.emptyList());
@@ -147,10 +151,14 @@ class DeLineParserTest {
                 Arrays.asList(new String[] {"ECO:0000256|PIRNR:PIRNR038994"}));
         verifyEvidences(
                 obj, "PAP-I", Arrays.asList(new String[] {"ECO:0000256|PIRNR:PIRNR038994"}));
-        verify(obj.altName.get(3), "PP4", Arrays.asList(new String[] {}), Collections.emptyList());
+        verify(
+                obj.getAltNames().get(3),
+                "PP4",
+                Arrays.asList(new String[] {}),
+                Collections.emptyList());
         verifyEvidences(obj, "PP4", Arrays.asList(new String[] {"ECO:0000256|PIRNR:PIRNR038994"}));
         verify(
-                obj.altName.get(4),
+                obj.getAltNames().get(4),
                 "Thromboplastin inhibitor",
                 Arrays.asList(new String[] {}),
                 Collections.emptyList());
@@ -159,7 +167,7 @@ class DeLineParserTest {
                 "Thromboplastin inhibitor",
                 Arrays.asList(new String[] {"ECO:0000256|PIRNR:PIRNR038995"}));
         verify(
-                obj.altName.get(5),
+                obj.getAltNames().get(5),
                 "Vascular anticoagulant-alpha",
                 Arrays.asList(new String[] {"VAC-alpha"}),
                 Collections.emptyList());
@@ -170,7 +178,7 @@ class DeLineParserTest {
         verifyEvidences(
                 obj, "VAC-alpha", Arrays.asList(new String[] {"ECO:0000256|PIRNR:PIRNR038994"}));
         verify(
-                obj.altName.get(6),
+                obj.getAltNames().get(6),
                 "Anchorin CII",
                 Arrays.asList(new String[] {}),
                 Collections.emptyList());
@@ -187,7 +195,7 @@ class DeLineParserTest {
         UniprotLineParser<DeLineObject> parser =
                 new DefaultUniprotLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
-        assertEquals(FlagType.Precursor, obj.flags.get(0));
+        assertEquals(FlagType.Precursor, obj.getFlags().get(0));
         verifyEvidences(
                 obj,
                 FlagType.Precursor,
@@ -198,7 +206,7 @@ class DeLineParserTest {
                             "ECO:0000001"
                         }));
         verify(
-                obj.recName,
+                obj.getRecName(),
                 "Annexin A5",
                 Arrays.asList(new String[] {"Annexin-5"}),
                 Collections.emptyList());
@@ -233,17 +241,17 @@ class DeLineParserTest {
         DeLineObject obj = parser.parse(deLines);
 
         verify(
-                obj.altName.get(0),
+                obj.getAltNames().get(0),
                 null,
                 Arrays.asList(new String[] {"PAP-I"}),
                 Arrays.asList(new String[] {"1.1.1.1", "1.1.1.2"}));
         verify(
-                obj.altName.get(1),
+                obj.getAltNames().get(1),
                 null,
                 Arrays.asList(new String[] {}),
                 Arrays.asList(new String[] {"1.1.1.1"}));
         verify(
-                obj.altName.get(2),
+                obj.getAltNames().get(2),
                 null,
                 Arrays.asList(new String[] {"PAP-I", "PAP.1", "PAP.2"}),
                 Collections.emptyList());
@@ -273,49 +281,49 @@ class DeLineParserTest {
         DeLineObject obj = parser.parse(deLines);
 
         verify(
-                obj.recName,
+                obj.getRecName(),
                 "Arginine biosynthesis bifunctional protein argJ",
                 Arrays.asList(new String[] {}),
                 Collections.emptyList());
-        assertEquals(2, obj.includedNames.size());
-        NameBlock include1 = obj.includedNames.get(0);
+        assertEquals(2, obj.getIncludedNames().size());
+        NameBlock include1 = obj.getIncludedNames().get(0);
         verify(
-                include1.recName,
+                include1.getRecName(),
                 "Glutamate N-acetyltransferase",
                 Arrays.asList(new String[] {}),
                 Arrays.asList(new String[] {"2.3.1.35"}));
         verify(
-                include1.altName.get(0),
+                include1.getAltNames().get(0),
                 "Ornithine acetyltransferase",
                 Arrays.asList(new String[] {"OATase"}),
                 Arrays.asList(new String[] {}));
         verify(
-                include1.altName.get(1),
+                include1.getAltNames().get(1),
                 "Ornithine transacetylase",
                 Arrays.asList(new String[] {}),
                 Arrays.asList(new String[] {}));
-        NameBlock include2 = obj.includedNames.get(1);
+        NameBlock include2 = obj.getIncludedNames().get(1);
         verify(
-                include2.recName,
+                include2.getRecName(),
                 "Amino-acid acetyltransferase",
                 Arrays.asList(new String[] {}),
                 Arrays.asList(new String[] {"2.3.1.-"}));
         verify(
-                include2.altName.get(0),
+                include2.getAltNames().get(0),
                 "N-acetylglutamate synthase",
                 Arrays.asList(new String[] {"AGS"}),
                 Arrays.asList(new String[] {}));
 
-        assertEquals(2, obj.containedNames.size());
-        NameBlock contains1 = obj.containedNames.get(0);
-        NameBlock contains2 = obj.containedNames.get(1);
+        assertEquals(2, obj.getContainedNames().size());
+        NameBlock contains1 = obj.getContainedNames().get(0);
+        NameBlock contains2 = obj.getContainedNames().get(1);
         verify(
-                contains1.recName,
+                contains1.getRecName(),
                 "Arginine biosynthesis bifunctional protein argJ alpha chain",
                 Arrays.asList(new String[] {}),
                 Arrays.asList(new String[] {}));
         verify(
-                contains2.recName,
+                contains2.getRecName(),
                 "Arginine biosynthesis bifunctional protein argJ beta chain",
                 Arrays.asList(new String[] {}),
                 Arrays.asList(new String[] {}));
@@ -327,9 +335,13 @@ class DeLineParserTest {
         UniprotLineParser<DeLineObject> parser =
                 new DefaultUniprotLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
-        verify(obj.recName, "UI", Arrays.asList(new String[] {}), Arrays.asList(new String[] {}));
-        assertEquals(FlagType.Precursor, obj.flags.get(0));
-        assertEquals(FlagType.Fragments, obj.flags.get(1));
+        verify(
+                obj.getRecName(),
+                "UI",
+                Arrays.asList(new String[] {}),
+                Arrays.asList(new String[] {}));
+        assertEquals(FlagType.Precursor, obj.getFlags().get(0));
+        assertEquals(FlagType.Fragments, obj.getFlags().get(1));
     }
 
     @Test
@@ -342,16 +354,16 @@ class DeLineParserTest {
                 new DefaultUniprotLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
         verify(
-                obj.recName,
+                obj.getRecName(),
                 "13S globulin seed storage protein 3",
                 Arrays.asList(new String[] {}),
                 Collections.emptyList());
         verify(
-                obj.altName.get(0),
+                obj.getAltNames().get(0),
                 "Legumin-like protein 3",
                 Arrays.asList(new String[] {}),
                 Collections.emptyList());
-        assertEquals("Fag e 1", obj.altAllergen);
+        assertEquals("Fag e 1", obj.getAltAllergen());
     }
 
     @Test
@@ -363,7 +375,7 @@ class DeLineParserTest {
                 new DefaultUniprotLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
         verify(
-                obj.recName,
+                obj.getRecName(),
                 "Amino acid--[acyl-carrier-protein] ligase 1",
                 Arrays.asList(new String[] {}),
                 Arrays.asList(new String[] {"6.2.1.n2"}));
@@ -379,12 +391,12 @@ class DeLineParserTest {
                 new DefaultUniprotLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
         verify(
-                obj.recName,
+                obj.getRecName(),
                 "Dual specificity phosphatase Cdc25",
                 Arrays.asList(new String[] {}),
                 Arrays.asList(new String[] {"3.1.3.48"}));
         verify(
-                obj.altName.get(0),
+                obj.getAltNames().get(0),
                 "Arath;CDC25",
                 Arrays.asList(new String[] {}),
                 Collections.emptyList());
@@ -399,7 +411,7 @@ class DeLineParserTest {
                 new DefaultUniprotLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
         verify(
-                obj.subName.get(0),
+                obj.getSubNames().get(0),
                 "Cryptic phospho-beta-glucosidase; cryptic",
                 Arrays.asList(new String[] {}),
                 Arrays.asList(new String[] {"3.2.1.86"}));
@@ -408,8 +420,8 @@ class DeLineParserTest {
                 "Cryptic phospho-beta-glucosidase; cryptic",
                 Arrays.asList(new String[] {"ECO:0000313|EMBL:CSQ00014.1"}));
         DeLineObject.ECEvidence ecEvidence = new DeLineObject.ECEvidence();
-        ecEvidence.ecValue = "3.2.1.86";
-        ecEvidence.nameECBelong = obj.subName.get(0);
+        ecEvidence.setEcValue("3.2.1.86");
+        ecEvidence.setNameECBelong(obj.getSubNames().get(0));
 
         verifyEvidences(
                 obj, ecEvidence, Arrays.asList(new String[] {"ECO:0000313|EMBL:CSQ00014.1"}));
@@ -425,17 +437,17 @@ class DeLineParserTest {
                 new DefaultUniprotLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
         verify(
-                obj.subName.get(0),
+                obj.getSubNames().get(0),
                 "Conjugal transfer protein",
                 Arrays.asList(new String[] {}),
                 Arrays.asList(new String[] {}));
         verify(
-                obj.subName.get(1),
+                obj.getSubNames().get(1),
                 "Conjugative transfer protein",
                 Arrays.asList(new String[] {}),
                 Arrays.asList(new String[] {}));
         verify(
-                obj.subName.get(2),
+                obj.getSubNames().get(2),
                 "TraR",
                 Arrays.asList(new String[] {}),
                 Arrays.asList(new String[] {}));
@@ -456,7 +468,7 @@ class DeLineParserTest {
         DeLineObject obj = parser.parse(deLines);
 
         verify(
-                obj.recName,
+                obj.getRecName(),
                 "Some name",
                 Arrays.asList(new String[] {"SN"}),
                 Arrays.asList(new String[] {"3.4.21.10"}));
@@ -469,24 +481,24 @@ class DeLineParserTest {
                 "SN",
                 Arrays.asList(new String[] {"ECO:12345|Ref.2", "ECO:0000256|HAMAP-Rule:MF_00206"}));
         DeLineObject.ECEvidence ecEvidence = new DeLineObject.ECEvidence();
-        ecEvidence.ecValue = "3.4.21.10";
-        ecEvidence.nameECBelong = obj.recName;
+        ecEvidence.setEcValue("3.4.21.10");
+        ecEvidence.setNameECBelong(obj.getRecName());
 
         verifyEvidences(
                 obj,
                 ecEvidence,
                 Arrays.asList(new String[] {"ECO:12345|Ref.3", "ECO:0000256|HAMAP-Rule:MF_00205"}));
 
-        assertEquals(2, obj.containedNames.size());
-        NameBlock contains1 = obj.containedNames.get(0);
-        NameBlock contains2 = obj.containedNames.get(1);
+        assertEquals(2, obj.getContainedNames().size());
+        NameBlock contains1 = obj.getContainedNames().get(0);
+        NameBlock contains2 = obj.getContainedNames().get(1);
         verify(
-                contains1.recName,
+                contains1.getRecName(),
                 "Chain A",
                 Arrays.asList(new String[] {}),
                 Arrays.asList(new String[] {}));
         verify(
-                contains2.recName,
+                contains2.getRecName(),
                 "Chain B",
                 Arrays.asList(new String[] {}),
                 Arrays.asList(new String[] {}));
@@ -503,7 +515,7 @@ class DeLineParserTest {
         DeLineObject obj = parser.parse(deLines);
 
         verify(
-                obj.recName,
+                obj.getRecName(),
                 "(4-*{*4-[2-(gamma-L-glutamylamino)ethyl]phenoxymethyl*}*furan-2-yl)methanamine synthase",
                 Arrays.asList(new String[] {}),
                 Arrays.asList(new String[] {}));

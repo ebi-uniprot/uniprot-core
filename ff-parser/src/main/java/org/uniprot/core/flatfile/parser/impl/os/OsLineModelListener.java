@@ -22,7 +22,7 @@ public class OsLineModelListener extends OsLineParserBaseListener
     @Override
     public void exitOs_os(@NotNull OsLineParser.Os_osContext ctx) {
         String text = ctx.os_line().getText();
-        object.organismSpecies = text;
+        object.setOrganismSpecies(text);
     }
 
     public OsLineObject getObject() {

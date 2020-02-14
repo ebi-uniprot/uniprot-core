@@ -1,16 +1,16 @@
 package org.uniprot.core.flatfile.antlr;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.rl.RlLineObject;
 import org.uniprot.core.flatfile.parser.impl.rl.RlLineObject.SubmissionDB;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class RlLineParserTest {
     @Test
@@ -19,9 +19,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.JournalArticle);
+        assertTrue(obj.getReference() instanceof RlLineObject.JournalArticle);
         verify(
-                (RlLineObject.JournalArticle) obj.reference,
+                (RlLineObject.JournalArticle) obj.getReference(),
                 "J. Mol. Biol.",
                 "321",
                 "331",
@@ -35,9 +35,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.JournalArticle);
+        assertTrue(obj.getReference() instanceof RlLineObject.JournalArticle);
         verify(
-                (RlLineObject.JournalArticle) obj.reference,
+                (RlLineObject.JournalArticle) obj.getReference(),
                 "Int. J. Parasitol.",
                 "0",
                 "0",
@@ -51,9 +51,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.JournalArticle);
+        assertTrue(obj.getReference() instanceof RlLineObject.JournalArticle);
         verify(
-                (RlLineObject.JournalArticle) obj.reference,
+                (RlLineObject.JournalArticle) obj.getReference(),
                 "Hoppe-Seyler's Z. Physiol. Chem.",
                 "1665",
                 "1669",
@@ -67,9 +67,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.JournalArticle);
+        assertTrue(obj.getReference() instanceof RlLineObject.JournalArticle);
         verify(
-                (RlLineObject.JournalArticle) obj.reference,
+                (RlLineObject.JournalArticle) obj.getReference(),
                 "Abstr. - Soc. Neurosci.",
                 "168",
                 "168",
@@ -83,9 +83,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.JournalArticle);
+        assertTrue(obj.getReference() instanceof RlLineObject.JournalArticle);
         verify(
-                (RlLineObject.JournalArticle) obj.reference,
+                (RlLineObject.JournalArticle) obj.getReference(),
                 "Clin. Endocrinol. (Oxf.)",
                 "413",
                 "418",
@@ -99,9 +99,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.JournalArticle);
+        assertTrue(obj.getReference() instanceof RlLineObject.JournalArticle);
         verify(
-                (RlLineObject.JournalArticle) obj.reference,
+                (RlLineObject.JournalArticle) obj.getReference(),
                 "PLoS ONE",
                 "E1450",
                 "E1450",
@@ -116,11 +116,11 @@ class RlLineParserTest {
             String pageEnd,
             String volume,
             int year) {
-        assertEquals(journal, ja.journal);
-        assertEquals(pageStart, ja.firstPage);
-        assertEquals(pageEnd, ja.lastPage);
-        assertEquals(volume, ja.volume);
-        assertEquals(year, ja.year);
+        assertEquals(journal, ja.getJournal());
+        assertEquals(pageStart, ja.getFirstPage());
+        assertEquals(pageEnd, ja.getLastPage());
+        assertEquals(volume, ja.getVolume());
+        assertEquals(year, ja.getYear());
     }
 
     @Test
@@ -129,8 +129,8 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.EPub);
-        verify((RlLineObject.EPub) obj.reference, "Plant Gene Register PGR98-023");
+        assertTrue(obj.getReference() instanceof RlLineObject.EPub);
+        verify((RlLineObject.EPub) obj.getReference(), "Plant Gene Register PGR98-023");
     }
 
     @Test
@@ -139,9 +139,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.EPub);
+        assertTrue(obj.getReference() instanceof RlLineObject.EPub);
         verify(
-                (RlLineObject.EPub) obj.reference,
+                (RlLineObject.EPub) obj.getReference(),
                 "Invest. Ophthalmol. Vis. Sci. 43:ARVO E-Abstract 791(2002)");
     }
 
@@ -151,12 +151,12 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.EPub);
-        verify((RlLineObject.EPub) obj.reference, "J. Am. Chem. Soc. 121:9223-9224(1999)");
+        assertTrue(obj.getReference() instanceof RlLineObject.EPub);
+        verify((RlLineObject.EPub) obj.getReference(), "J. Am. Chem. Soc. 121:9223-9224(1999)");
     }
 
     private void verify(RlLineObject.EPub epub, String title) {
-        assertEquals(title, epub.title);
+        assertEquals(title, epub.getTitle());
     }
 
     @Test
@@ -165,15 +165,15 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Submission);
-        verify((RlLineObject.Submission) obj.reference, SubmissionDB.EMBL, 1995, "OCT");
+        assertTrue(obj.getReference() instanceof RlLineObject.Submission);
+        verify((RlLineObject.Submission) obj.getReference(), SubmissionDB.EMBL, 1995, "OCT");
     }
 
     private void verify(
             RlLineObject.Submission submission, SubmissionDB db, int year, String month) {
-        assertEquals(db, submission.db);
-        assertEquals(month, submission.month);
-        assertEquals(year, submission.year);
+        assertEquals(db, submission.getDb());
+        assertEquals(month, submission.getMonth());
+        assertEquals(year, submission.getYear());
     }
 
     @Test
@@ -182,16 +182,16 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Patent);
-        verify((RlLineObject.Patent) obj.reference, "WO9010703", 1990, "SEP", 20);
+        assertTrue(obj.getReference() instanceof RlLineObject.Patent);
+        verify((RlLineObject.Patent) obj.getReference(), "WO9010703", 1990, "SEP", 20);
     }
 
     private void verify(
             RlLineObject.Patent patent, String patentNumber, int year, String month, int day) {
-        assertEquals(patentNumber, patent.patentNumber);
-        assertEquals(month, patent.month);
-        assertEquals(year, patent.year);
-        assertEquals(day, patent.day);
+        assertEquals(patentNumber, patent.getPatentNumber());
+        assertEquals(month, patent.getMonth());
+        assertEquals(year, patent.getYear());
+        assertEquals(day, patent.getDay());
     }
 
     @Test
@@ -200,8 +200,8 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Thesis);
-        verify((RlLineObject.Thesis) obj.reference, "University of Geneva", "Switzerland", 1977);
+        assertTrue(obj.getReference() instanceof RlLineObject.Thesis);
+        verify((RlLineObject.Thesis) obj.getReference(), "University of Geneva", "Switzerland", 1977);
     }
 
     @Test
@@ -210,8 +210,8 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Thesis);
-        verify((RlLineObject.Thesis) obj.reference, "A. Mickiewicz University", "Poland", 2001);
+        assertTrue(obj.getReference() instanceof RlLineObject.Thesis);
+        verify((RlLineObject.Thesis) obj.getReference(), "A. Mickiewicz University", "Poland", 2001);
     }
 
     @Test
@@ -221,9 +221,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Thesis);
+        assertTrue(obj.getReference() instanceof RlLineObject.Thesis);
         verify(
-                (RlLineObject.Thesis) obj.reference,
+                (RlLineObject.Thesis) obj.getReference(),
                 "Department of Biosystems",
                 "K.U.Leuven, Leuven, Belgium",
                 2008);
@@ -235,8 +235,8 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Thesis);
-        verify((RlLineObject.Thesis) obj.reference, "A. Mickiewicz University", null, 2001);
+        assertTrue(obj.getReference() instanceof RlLineObject.Thesis);
+        verify((RlLineObject.Thesis) obj.getReference(), "A. Mickiewicz University", null, 2001);
     }
 
     @Test
@@ -247,9 +247,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Thesis);
+        assertTrue(obj.getReference() instanceof RlLineObject.Thesis);
         verify(
-                (RlLineObject.Thesis) obj.reference,
+                (RlLineObject.Thesis) obj.getReference(),
                 "Department of Veterinary Medicine",
                 "Justus-Liebig-University, D-35392 Giessen, Germany",
                 2000);
@@ -264,18 +264,18 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Thesis);
+        assertTrue(obj.getReference() instanceof RlLineObject.Thesis);
         verify(
-                (RlLineObject.Thesis) obj.reference,
+                (RlLineObject.Thesis) obj.getReference(),
                 "Suranaree Univercity of Technology",
                 "111 Suranaree Ave. Suranaree Univercity of Technology, Thailand, Nakhon Ratchasima, Thailand",
                 2010);
     }
 
     private void verify(RlLineObject.Thesis thesis, String institute, String country, int year) {
-        assertEquals(institute, thesis.institute);
-        assertEquals(country, thesis.country);
-        assertEquals(year, thesis.year);
+        assertEquals(institute, thesis.getInstitute());
+        assertEquals(country, thesis.getCountry());
+        assertEquals(year, thesis.getYear());
     }
 
     @Test
@@ -285,13 +285,13 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Unpublished);
-        verify((RlLineObject.Unpublished) obj.reference, "OCT", 1978);
+        assertTrue(obj.getReference() instanceof RlLineObject.Unpublished);
+        verify((RlLineObject.Unpublished) obj.getReference(), "OCT", 1978);
     }
 
     private void verify(RlLineObject.Unpublished up, String month, int year) {
-        assertEquals(month, up.month);
-        assertEquals(year, up.year);
+        assertEquals(month, up.getMonth());
+        assertEquals(year, up.getYear());
     }
 
     @Test
@@ -302,9 +302,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Book);
+        assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
-                (RlLineObject.Book) obj.reference,
+                (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {"Boyer P.D."}),
                 "The enzymes (3rd ed.)",
                 "397",
@@ -324,9 +324,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Book);
+        assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
-                (RlLineObject.Book) obj.reference,
+                (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {"Rich D.H.", "Gross E."}),
                 "Proceedings of the 7th American peptide symposium",
                 "69",
@@ -347,14 +347,14 @@ class RlLineParserTest {
             String press,
             String place,
             int year) {
-        assertEquals(editors, book.editors);
-        assertEquals(title, book.title);
-        assertEquals(pageStart, book.pageStart);
-        assertEquals(pageEnd, book.pageEnd);
-        assertEquals(volume, book.volume);
-        assertEquals(press, book.press);
-        assertEquals(place, book.place);
-        assertEquals(year, book.year);
+        assertEquals(editors, book.getEditors());
+        assertEquals(title, book.getTitle());
+        assertEquals(pageStart, book.getPageStart());
+        assertEquals(pageEnd, book.getPageEnd());
+        assertEquals(volume, book.getVolume());
+        assertEquals(press, book.getPress());
+        assertEquals(place, book.getPlace());
+        assertEquals(year, book.getYear());
     }
 
     @Test
@@ -366,9 +366,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Book);
+        assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
-                (RlLineObject.Book) obj.reference,
+                (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {"Kueck U."}),
                 "The Mycota II, Genetics and Biotechnology (2nd edition)",
                 "95",
@@ -388,9 +388,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Book);
+        assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
-                (RlLineObject.Book) obj.reference,
+                (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(
                         new String[] {
                             "Cummings D.J.", "Brost P.", "Dawid I.B.", "Weissman S.M.", "Fox C.F."
@@ -412,9 +412,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Book);
+        assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
-                (RlLineObject.Book) obj.reference,
+                (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {}),
                 "Proceedings of the 20th international conference on Arabidopsis research",
                 null,
@@ -423,7 +423,7 @@ class RlLineParserTest {
                 "Edinburgh",
                 null,
                 2009);
-        assertEquals("abstract#543", ((RlLineObject.Book) obj.reference).pageString);
+        assertEquals("abstract#543", ((RlLineObject.Book) obj.getReference()).getPageString());
     }
 
     @Test
@@ -435,9 +435,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Book);
+        assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
-                (RlLineObject.Book) obj.reference,
+                (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {"Biggins J."}),
                 "Progress in photosynthesis research",
                 "13",
@@ -456,9 +456,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Book);
+        assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
-                (RlLineObject.Book) obj.reference,
+                (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {"Biggins J."}),
                 "Progress in photosynthesis research",
                 "13",
@@ -478,9 +478,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Book);
+        assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
-                (RlLineObject.Book) obj.reference,
+                (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(
                         new String[] {
                             "Barnett A.A.", "Veiga L.M.", "Ferrari S.F.", "Norconk M.A."
@@ -503,9 +503,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Book);
+        assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
-                (RlLineObject.Book) obj.reference,
+                (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {"Goffinet B.", "Hollowell V.", "Magill R."}),
                 "MOLECULAR SYSTEMATICS OF BRYOPHYTES - MONOGRAPHS IN SYSTEMATIC BOTANY",
                 "61",
@@ -526,9 +526,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Book);
+        assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
-                (RlLineObject.Book) obj.reference,
+                (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {"Unknown A."}),
                 "PROCEEDINGS OF III CONGRESSO NACIONAL DE SAUDE PUBLICA VETERINARIA E I ENCONTRO INTERNACIONAL DE SAUDE PUBLICA VETERINARIA",
                 "0",
@@ -548,9 +548,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Book);
+        assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
-                (RlLineObject.Book) obj.reference,
+                (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {"Klenk", "H.-D."}),
                 "XIIth International Congress of Virology",
                 "9",
@@ -571,9 +571,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Book);
+        assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
-                (RlLineObject.Book) obj.reference,
+                (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {"Unknown A."}),
                 "Abstract",
                 "8",
@@ -592,9 +592,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Book);
+        assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
-                (RlLineObject.Book) obj.reference,
+                (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {}),
                 "Proceedings of the 39th annual Drosophila research conference",
                 "414C",
@@ -614,9 +614,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Book);
+        assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
-                (RlLineObject.Book) obj.reference,
+                (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {}),
                 "Proceedings of Plant Biology '2000: The annual meeting of the American Society of Plant Physiologists",
                 "0",
@@ -635,9 +635,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Book);
+        assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
-                (RlLineObject.Book) obj.reference,
+                (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {}),
                 "Proceedings of the 20th international conference on Arabidopsis research",
                 null,
@@ -646,7 +646,7 @@ class RlLineParserTest {
                 "Edinburgh",
                 null,
                 2009);
-        assertEquals("abstract#501734213", ((RlLineObject.Book) obj.reference).pageString);
+        assertEquals("abstract#501734213", ((RlLineObject.Book) obj.getReference()).getPageString());
     }
 
     @Test
@@ -659,9 +659,9 @@ class RlLineParserTest {
         UniprotLineParser<RlLineObject> parser =
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
-        assertTrue(obj.reference instanceof RlLineObject.Book);
+        assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
-                (RlLineObject.Book) obj.reference,
+                (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {"Rossiter A.", "Kawanabe H."}),
                 "ADVANCES IN ECOLOGICAL RESEARCH 31: BIOLOGY OF ANCIENT LAKES; BIODIVERSITY, ECOLOGY AND EVOLUTION",
                 "275",

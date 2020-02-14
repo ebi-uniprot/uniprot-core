@@ -23,9 +23,9 @@ class FtLineNoHeaderParserTest {
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.fts.size());
+        assertEquals(1, obj.getFts().size());
         verify(
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 FTType.CHAIN,
                 "20",
                 "873",
@@ -56,8 +56,8 @@ class FtLineNoHeaderParserTest {
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.fts.size());
-        verify(obj.fts.get(0), FTType.NON_TER, "1", "1", null, null);
+        assertEquals(1, obj.getFts().size());
+        verify(obj.getFts().get(0), FTType.NON_TER, "1", "1", null, null);
     }
 
     @Test
@@ -69,8 +69,8 @@ class FtLineNoHeaderParserTest {
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.fts.size());
-        verify(obj.fts.get(0), FTType.CHAIN, "?", "121", "Potential", "PRO_5001267722");
+        assertEquals(1, obj.getFts().size());
+        verify(obj.getFts().get(0), FTType.CHAIN, "?", "121", "Potential", "PRO_5001267722");
     }
 
     @Test
@@ -83,8 +83,8 @@ class FtLineNoHeaderParserTest {
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.fts.size());
-        verify(obj.fts.get(0), FTType.BINDING, "138", "138", "NAD(P)HX; via amide nitrogen", null);
+        assertEquals(1, obj.getFts().size());
+        verify(obj.getFts().get(0), FTType.BINDING, "138", "138", "NAD(P)HX; via amide nitrogen", null);
     }
 
     @Test
@@ -96,8 +96,8 @@ class FtLineNoHeaderParserTest {
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.fts.size());
-        verify(obj.fts.get(0), FTType.SIGNAL, "<1", "33", "Potential", null);
+        assertEquals(1, obj.getFts().size());
+        verify(obj.getFts().get(0), FTType.SIGNAL, "<1", "33", "Potential", null);
     }
 
     @Test
@@ -109,9 +109,9 @@ class FtLineNoHeaderParserTest {
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.fts.size());
+        assertEquals(1, obj.getFts().size());
         verify(
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 FTType.CONFLICT,
                 "124",
                 "127",
@@ -129,9 +129,9 @@ class FtLineNoHeaderParserTest {
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.fts.size());
+        assertEquals(1, obj.getFts().size());
         verify(
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 FTType.VARIANT,
                 "421",
                 "421",
@@ -154,23 +154,23 @@ class FtLineNoHeaderParserTest {
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
 
-        assertEquals(4, obj.fts.size());
+        assertEquals(4, obj.getFts().size());
         verify(
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 FTType.VAR_SEQ,
                 "33",
                 "83",
                 "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)",
                 "VSP_004370");
         verify(
-                obj.fts.get(1),
+                obj.getFts().get(1),
                 FTType.MUTAGEN,
                 "119",
                 "119",
                 "C->R,E,A: Loss of cADPr hydrolase and ADP-ribosyl cyclase activity",
                 null);
-        verify(obj.fts.get(2), FTType.HELIX, "33", "83", null, null);
-        verify(obj.fts.get(3), FTType.TURN, "3", "33", null, null);
+        verify(obj.getFts().get(2), FTType.HELIX, "33", "83", null, null);
+        verify(obj.getFts().get(3), FTType.TURN, "3", "33", null, null);
     }
 
     @Test
@@ -184,13 +184,13 @@ class FtLineNoHeaderParserTest {
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
-        assertEquals(2, obj.fts.size());
-        verify(obj.fts.get(0), FTType.REGION, "237", "240", "Sulfate 1 binding", null);
-        verifyEvidences(obj, obj.fts.get(0), null);
-        verify(obj.fts.get(1), FTType.REGION, "275", "277", "Phosphate 2 binding", null);
+        assertEquals(2, obj.getFts().size());
+        verify(obj.getFts().get(0), FTType.REGION, "237", "240", "Sulfate 1 binding", null);
+        verifyEvidences(obj, obj.getFts().get(0), null);
+        verify(obj.getFts().get(1), FTType.REGION, "275", "277", "Phosphate 2 binding", null);
         verifyEvidences(
                 obj,
-                obj.fts.get(1),
+                obj.getFts().get(1),
                 Arrays.asList(new String[] {"ECO:0000006|PubMed:20858735", "ECO:0000006"}));
     }
 
@@ -205,11 +205,11 @@ class FtLineNoHeaderParserTest {
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.fts.size());
-        verify(obj.fts.get(0), FTType.TRANSMEM, "57", "77", "Helical; (Potential)", null);
+        assertEquals(1, obj.getFts().size());
+        verify(obj.getFts().get(0), FTType.TRANSMEM, "57", "77", "Helical; (Potential)", null);
         verifyEvidences(
                 obj,
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 Arrays.asList(new String[] {"ECO:0000257|HAMAP-Rule:MF_03021"}));
     }
 
@@ -224,11 +224,11 @@ class FtLineNoHeaderParserTest {
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
-        assertEquals(1, obj.fts.size());
-        verify(obj.fts.get(0), FTType.METAL, "186", "186", "Calcium; via carbonyl oxygen", null);
+        assertEquals(1, obj.getFts().size());
+        verify(obj.getFts().get(0), FTType.METAL, "186", "186", "Calcium; via carbonyl oxygen", null);
         verifyEvidences(
                 obj,
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 Arrays.asList(
                         new String[] {
                             "ECO:0000006|PubMed:20858735", "ECO:0000006|PubMed:23640942"
