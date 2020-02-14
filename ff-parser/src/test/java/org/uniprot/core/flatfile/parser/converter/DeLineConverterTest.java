@@ -33,17 +33,17 @@ class DeLineConverterTest {
                          |DE   Flags: Precursor;
         */
         DeLineObject deObject = new DeLineObject();
-        deObject.recName = new DeLineObject.Name();
-        deObject.recName.fullName = "Annexin A5";
-        deObject.recName.shortNames.add("Annexin-5");
-        deObject.altName.add(createName("Annexin V"));
-        deObject.altName.add(createName("Lipocortin V"));
-        deObject.altName.add(createName("Placental anticoagulant protein I", "PAP-I"));
-        deObject.altName.add(createName("PP4"));
-        deObject.altName.add(createName("Thromboplastin inhibitor"));
-        deObject.altName.add(createName("Vascular anticoagulant-alpha", "VAC-alpha"));
-        deObject.altName.add(createName("Anchorin CII"));
-        deObject.flags.add(DeLineObject.FlagType.Precursor);
+        deObject.setRecName(new DeLineObject.Name());
+        deObject.getRecName().setFullName("Annexin A5");
+        deObject.getRecName().getShortNames().add("Annexin-5");
+        deObject.getAltNames().add(createName("Annexin V"));
+        deObject.getAltNames().add(createName("Lipocortin V"));
+        deObject.getAltNames().add(createName("Placental anticoagulant protein I", "PAP-I"));
+        deObject.getAltNames().add(createName("PP4"));
+        deObject.getAltNames().add(createName("Thromboplastin inhibitor"));
+        deObject.getAltNames().add(createName("Vascular anticoagulant-alpha", "VAC-alpha"));
+        deObject.getAltNames().add(createName("Anchorin CII"));
+        deObject.getFlags().add(DeLineObject.FlagType.Precursor);
         ProteinDescription pDesc = converter.convert(deObject);
         ProteinRecName recName = pDesc.getRecommendedName();
 
@@ -65,21 +65,21 @@ class DeLineConverterTest {
     @Test
     void test2() {
         DeLineObject deObject = new DeLineObject();
-        deObject.recName = new DeLineObject.Name();
-        deObject.recName.fullName = "Annexin A5";
-        deObject.recName.shortNames.add("Annexin-5");
-        deObject.altName.add(createName("Annexin V"));
-        deObject.altName.add(createName("Lipocortin V"));
-        deObject.altName.add(createName("Placental anticoagulant protein I", "PAP-I"));
-        deObject.altName.add(createName("PP4"));
-        deObject.altName.add(createName("Thromboplastin inhibitor"));
-        deObject.altName.add(createName("Vascular anticoagulant-alpha", "VAC-alpha"));
+        deObject.setRecName(new DeLineObject.Name());
+        deObject.getRecName().setFullName("Annexin A5");
+        deObject.getRecName().getShortNames().add("Annexin-5");
+        deObject.getAltNames().add(createName("Annexin V"));
+        deObject.getAltNames().add(createName("Lipocortin V"));
+        deObject.getAltNames().add(createName("Placental anticoagulant protein I", "PAP-I"));
+        deObject.getAltNames().add(createName("PP4"));
+        deObject.getAltNames().add(createName("Thromboplastin inhibitor"));
+        deObject.getAltNames().add(createName("Vascular anticoagulant-alpha", "VAC-alpha"));
         // |DE            EC=1.1.1.1;
         //  |DE            EC=1.1.1.2;
         List<String> ecs = new ArrayList<>();
         ecs.add("1.1.1.1");
         ecs.add("1.1.1.2");
-        deObject.altName.add(createName("Anchorin CII", new ArrayList<String>(), ecs));
+        deObject.getAltNames().add(createName("Anchorin CII", new ArrayList<String>(), ecs));
         ProteinDescription pDesc = converter.convert(deObject);
         ProteinRecName recName = pDesc.getRecommendedName();
 
@@ -109,32 +109,33 @@ class DeLineConverterTest {
          * Full=Arginine biosynthesis bifunctional protein argJ beta chain;
          */
         DeLineObject deObject = new DeLineObject();
-        deObject.recName = new DeLineObject.Name();
-        deObject.recName.fullName = "Arginine biosynthesis bifunctional protein argJ";
+        deObject.setRecName(new DeLineObject.Name());
+        deObject.getRecName().setFullName("Arginine biosynthesis bifunctional protein argJ");
         DeLineObject.NameBlock incName1 = new DeLineObject.NameBlock();
         List<String> ecs = new ArrayList<>();
         ecs.add("2.3.1.35");
-        incName1.recName =
-                createName("Glutamate N-acetyltransferase", new ArrayList<String>(), ecs);
-        incName1.altName.add(createName("Ornithine acetyltransferase", "OATase"));
-        incName1.altName.add(createName("Ornithine transacetylase"));
-        deObject.includedNames.add(incName1);
+        incName1.setRecName(
+                createName("Glutamate N-acetyltransferase", new ArrayList<String>(), ecs));
+        incName1.getAltNames().add(createName("Ornithine acetyltransferase", "OATase"));
+        incName1.getAltNames().add(createName("Ornithine transacetylase"));
+        deObject.getIncludedNames().add(incName1);
         DeLineObject.NameBlock incName2 = new DeLineObject.NameBlock();
         List<String> ecs2 = new ArrayList<>();
         ecs2.add("2.3.1.1");
-        incName2.recName =
-                createName("Amino-acid acetyltransferase", new ArrayList<String>(), ecs2);
-        incName2.altName.add(createName("N-acetylglutamate synthase", "AGS"));
-        deObject.includedNames.add(incName2);
+        incName2.setRecName(
+                createName("Amino-acid acetyltransferase", new ArrayList<String>(), ecs2));
+        incName2.getAltNames().add(createName("N-acetylglutamate synthase", "AGS"));
+        deObject.getIncludedNames().add(incName2);
 
         DeLineObject.NameBlock conName1 = new DeLineObject.NameBlock();
-        conName1.recName =
-                createName("Arginine biosynthesis bifunctional protein argJ alpha chain");
+        conName1.setRecName(
+                createName("Arginine biosynthesis bifunctional protein argJ alpha chain"));
 
         DeLineObject.NameBlock conName2 = new DeLineObject.NameBlock();
-        conName2.recName = createName("Arginine biosynthesis bifunctional protein argJ beta chain");
-        deObject.containedNames.add(conName1);
-        deObject.containedNames.add(conName2);
+        conName2.setRecName(
+                createName("Arginine biosynthesis bifunctional protein argJ beta chain"));
+        deObject.getContainedNames().add(conName1);
+        deObject.getContainedNames().add(conName2);
         ProteinDescription pDesc = converter.convert(deObject);
 
         ProteinRecName recName = pDesc.getRecommendedName();
@@ -187,8 +188,8 @@ class DeLineConverterTest {
                          |DE   Flags: Precursor{EI1, EI2, EI3};
         */
         DeLineObject deObject = new DeLineObject();
-        deObject.recName = new DeLineObject.Name();
-        deObject.recName.fullName = "Annexin A5";
+        deObject.setRecName(new DeLineObject.Name());
+        deObject.getRecName().setFullName("Annexin A5");
 
         Map<String, List<String>> evidences = new TreeMap<>();
         List<String> evs = new ArrayList<>();
@@ -196,23 +197,23 @@ class DeLineConverterTest {
         deObject.getEvidenceInfo().getEvidences().put("Annexin A5", evs);
         evidences.put("Annexin A5", evs);
 
-        deObject.recName.shortNames.add("Annexin-5");
+        deObject.getRecName().getShortNames().add("Annexin-5");
         evs = new ArrayList<>();
         evs.add("ECO:0000269|PubMed:15208022");
         deObject.getEvidenceInfo().getEvidences().put("Annexin-5", evs);
         evidences.put("Annexin-5", evs);
-        deObject.altName.add(createName("Annexin V"));
+        deObject.getAltNames().add(createName("Annexin V"));
         evs = new ArrayList<>();
         evs.add("ECO:0000269|PubMed:15208021");
         deObject.getEvidenceInfo().getEvidences().put("Annexin V", evs);
         evidences.put("Annexin V", evs);
-        deObject.altName.add(createName("Lipocortin V"));
+        deObject.getAltNames().add(createName("Lipocortin V"));
         evs = new ArrayList<>();
         evs.add("ECO:0000269|PubMed:15208021");
         deObject.getEvidenceInfo().getEvidences().put("Lipocortin V", evs);
         evidences.put("Lipocortin V", evs);
 
-        deObject.altName.add(createName("Placental anticoagulant protein I", "PAP-I"));
+        deObject.getAltNames().add(createName("Placental anticoagulant protein I", "PAP-I"));
         evs = new ArrayList<>();
         evs.add("ECO:0000269|PubMed:15208021");
         deObject.getEvidenceInfo().getEvidences().put("Placental anticoagulant protein I", evs);
@@ -223,18 +224,18 @@ class DeLineConverterTest {
 
         evidences.put("PAP-I", evs);
 
-        deObject.altName.add(createName("PP4"));
+        deObject.getAltNames().add(createName("PP4"));
         evs = new ArrayList<>();
         evs.add("ECO:0000269|PubMed:15208021");
         deObject.getEvidenceInfo().getEvidences().put("PP4", evs);
         evidences.put("PP4", evs);
-        deObject.altName.add(createName("Thromboplastin inhibitor"));
+        deObject.getAltNames().add(createName("Thromboplastin inhibitor"));
         evs = new ArrayList<>();
         evs.add("ECO:0000269|PubMed:15208023");
         deObject.getEvidenceInfo().getEvidences().put("Thromboplastin inhibitor", evs);
         evidences.put("Thromboplastin inhibitor", evs);
 
-        deObject.flags.add(DeLineObject.FlagType.Precursor);
+        deObject.getFlags().add(DeLineObject.FlagType.Precursor);
         evs = new ArrayList<>();
         evs.add("ECO:0000269|PubMed:15208021");
         evs.add("ECO:0000269|PubMed:15208022");
@@ -353,9 +354,9 @@ class DeLineConverterTest {
     private DeLineObject.Name createName(
             String fullName, List<String> shortNames, List<String> ecs) {
         DeLineObject.Name name = new DeLineObject.Name();
-        name.fullName = fullName;
-        name.shortNames.addAll(shortNames);
-        name.ecs = ecs;
+        name.setFullName(fullName);
+        name.getShortNames().addAll(shortNames);
+        name.setEcs(ecs);
         return name;
     }
 }

@@ -1,8 +1,6 @@
 package org.uniprot.core.flatfile.parser.impl.ss;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.google.common.base.Strings;
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.uniprot.InternalLine;
 import org.uniprot.core.uniprot.InternalLineType;
@@ -14,7 +12,8 @@ import org.uniprot.core.uniprot.builder.SourceLineBuilder;
 import org.uniprot.core.uniprot.evidence.EvidenceLine;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceLineBuilder;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SsLineConverter implements Converter<SsLineObject, InternalSection> {
     @Override
@@ -25,14 +24,14 @@ public class SsLineConverter implements Converter<SsLineObject, InternalSection>
         List<SourceLine> sourceLines = new ArrayList<>();
         List<EvidenceLine> evidenceLines = new ArrayList<>();
 
-        for (SsLineObject.EvLine ev : f.ssEVLines) {
+        for (SsLineObject.EvLine ev : f.getSsEVLines()) {
             evidenceLines.add(convert(ev));
         }
 
-        for (SsLineObject.SsLine ia : f.ssIALines) {
+        for (SsLineObject.SsLine ia : f.getSsIALines()) {
             internalLines.add(convert(ia));
         }
-        for (String source : f.ssSourceLines) {
+        for (String source : f.getSsSourceLines()) {
             sourceLines.add(new SourceLineBuilder(source).build());
         }
         return new InternalSectionBuilder()
@@ -43,7 +42,7 @@ public class SsLineConverter implements Converter<SsLineObject, InternalSection>
     }
 
     private InternalLine convert(SsLineObject.SsLine ia) {
-        return new InternalLineBuilder(convertILType(ia.topic), ia.text).build();
+        return new InternalLineBuilder(convertILType(ia.getTopic()), ia.getText()).build();
     }
 
     private InternalLineType convertILType(String type) {
@@ -111,18 +110,18 @@ public class SsLineConverter implements Converter<SsLineObject, InternalSection>
 
     private EvidenceLine convert(SsLineObject.EvLine e) {
         StringBuilder sb = new StringBuilder();
-        sb.append(e.id);
-        if (isValidDb(e.db)) {
+        sb.append(e.getId());
+        if (isValidDb(e.getDb())) {
             sb.append("|");
-            sb.append(e.db);
-            if (!Strings.isNullOrEmpty(e.attr1)) {
-                sb.append(":").append(e.attr1);
+            sb.append(e.getDb());
+            if (!Strings.isNullOrEmpty(e.getAttr1())) {
+                sb.append(":").append(e.getAttr1());
             }
         }
         return new EvidenceLineBuilder()
                 .evidence(sb.toString())
-                .creationDate(e.date)
-                .curator(e.attr2)
+                .creationDate(e.getDate())
+                .curator(e.getAttr2())
                 .build();
     }
 

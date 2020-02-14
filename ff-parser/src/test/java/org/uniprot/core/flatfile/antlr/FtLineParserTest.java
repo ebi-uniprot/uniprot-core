@@ -23,9 +23,9 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
-        assertEquals(1, obj.fts.size());
+        assertEquals(1, obj.getFts().size());
         verify(
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 FTType.CHAIN,
                 "20",
                 "873",
@@ -39,8 +39,8 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
-        assertEquals(1, obj.fts.size());
-        verify(obj.fts.get(0), FTType.HELIX, "33", "83", null, null);
+        assertEquals(1, obj.getFts().size());
+        verify(obj.getFts().get(0), FTType.HELIX, "33", "83", null, null);
     }
 
     @Test
@@ -52,9 +52,9 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
-        assertEquals(1, obj.fts.size());
+        assertEquals(1, obj.getFts().size());
         verify(
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 FTType.MUTAGEN,
                 "119",
                 "119",
@@ -73,9 +73,9 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
-        assertEquals(1, obj.fts.size());
+        assertEquals(1, obj.getFts().size());
         verify(
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 FTType.VAR_SEQ,
                 "33",
                 "83",
@@ -94,9 +94,9 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
-        assertEquals(1, obj.fts.size());
+        assertEquals(1, obj.getFts().size());
         verify(
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 FTType.VAR_SEQ,
                 "33",
                 "83",
@@ -117,13 +117,13 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
-        assertEquals(1, obj.fts.size());
-        System.out.println(obj.fts.get(0).getFtText());
+        assertEquals(1, obj.getFts().size());
+        System.out.println(obj.getFts().get(0).getFtText());
         String desc =
                 "MLTCNKAGSRMVVDAANSNGPFQPVVLLHIR -> MPNKNKKEKESPKAGKSGKSSKEGQDTVESEQISVRKNSLVAVPSTV"
                         + "SAKIKVPVSQPIVKKDKRQNSSRFSASNNRELQKLPSLK(in isoform 4)";
         System.out.println(desc);
-        // verify(obj.fts.get(0), FTType.VAR_SEQ, "1", "31",  desc, "VSP_043645");
+        // verify(obj.getFts().get(0), FTType.VAR_SEQ, "1", "31",  desc, "VSP_043645");
         FtLineConverter converter = new FtLineConverter();
         List<Feature> features = converter.convert(obj);
         assertEquals(1, features.size());
@@ -149,13 +149,13 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
-        assertEquals(1, obj.fts.size());
-        System.out.println(obj.fts.get(0).getFtText());
+        assertEquals(1, obj.getFts().size());
+        System.out.println(obj.getFts().get(0).getFtText());
         String desc =
                 "M -> MTDRQTDTAPSPSAHLLAGGLPTVDAAASREEPKPA"
                         + "SPSRRGSASRAGPGRASETM (in isoform L-VEGF-1). {ECO:0000305}";
         System.out.println(desc);
-        // verify(obj.fts.get(0), FTType.VAR_SEQ, "1", "31",  desc, "VSP_043645");
+        // verify(obj.getFts().get(0), FTType.VAR_SEQ, "1", "31",  desc, "VSP_043645");
         FtLineConverter converter = new FtLineConverter();
         List<Feature> features = converter.convert(obj);
         assertEquals(1, features.size());
@@ -183,23 +183,23 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
-        assertEquals(4, obj.fts.size());
+        assertEquals(4, obj.getFts().size());
         verify(
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 FTType.VAR_SEQ,
                 "33",
                 "83",
                 "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)",
                 "VSP_004370");
         verify(
-                obj.fts.get(1),
+                obj.getFts().get(1),
                 FTType.MUTAGEN,
                 "119",
                 "119",
                 "C->R,E,A: Loss of cADPr hydrolase and ADP-ribosyl cyclase activity",
                 null);
-        verify(obj.fts.get(2), FTType.HELIX, "33", "83", null, null);
-        verify(obj.fts.get(3), FTType.TURN, "3", "33", null, null);
+        verify(obj.getFts().get(2), FTType.HELIX, "33", "83", null, null);
+        verify(obj.getFts().get(3), FTType.TURN, "3", "33", null, null);
     }
 
     @Test
@@ -210,9 +210,9 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
-        assertEquals(1, obj.fts.size());
+        assertEquals(1, obj.getFts().size());
         verify(
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 FTType.CARBOHYD,
                 "61",
                 "61",
@@ -232,11 +232,11 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
-        assertEquals(2, obj.fts.size());
-        verify(obj.fts.get(0), FTType.TRANSIT, "1", "?", "Mitochondrion (Potential)", null);
+        assertEquals(2, obj.getFts().size());
+        verify(obj.getFts().get(0), FTType.TRANSIT, "1", "?", "Mitochondrion (Potential)", null);
 
         verify(
-                obj.fts.get(1),
+                obj.getFts().get(1),
                 FTType.CHAIN,
                 "?",
                 "610",
@@ -254,11 +254,11 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
-        assertEquals(1, obj.fts.size());
-        verify(obj.fts.get(0), FTType.METAL, "186", "186", "Calcium; via carbonyl oxygen", null);
+        assertEquals(1, obj.getFts().size());
+        verify(obj.getFts().get(0), FTType.METAL, "186", "186", "Calcium; via carbonyl oxygen", null);
         verifyEvidences(
                 obj,
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 Arrays.asList(
                         new String[] {
                             "ECO:0000006|PubMed:20858735", "ECO:0000006|PubMed:23640942"
@@ -273,10 +273,10 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
-        assertEquals(1, obj.fts.size());
-        verify(obj.fts.get(0), FTType.HELIX, "33", "83", null, null);
+        assertEquals(1, obj.getFts().size());
+        verify(obj.getFts().get(0), FTType.HELIX, "33", "83", null, null);
         verifyEvidences(
-                obj, obj.fts.get(0), Arrays.asList(new String[] {"ECO:0000313|EMBL:BAG16761.1"}));
+                obj, obj.getFts().get(0), Arrays.asList(new String[] {"ECO:0000313|EMBL:BAG16761.1"}));
     }
 
     @Test
@@ -291,13 +291,13 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
-        assertEquals(2, obj.fts.size());
-        verify(obj.fts.get(0), FTType.REGION, "237", "240", "Sulfate 1 binding", null);
-        verifyEvidences(obj, obj.fts.get(0), null);
-        verify(obj.fts.get(1), FTType.REGION, "275", "277", "Phosphate 2 binding", null);
+        assertEquals(2, obj.getFts().size());
+        verify(obj.getFts().get(0), FTType.REGION, "237", "240", "Sulfate 1 binding", null);
+        verifyEvidences(obj, obj.getFts().get(0), null);
+        verify(obj.getFts().get(1), FTType.REGION, "275", "277", "Phosphate 2 binding", null);
         verifyEvidences(
                 obj,
-                obj.fts.get(1),
+                obj.getFts().get(1),
                 Arrays.asList(new String[] {"ECO:0000006|PubMed:20858735", "ECO:0000006"}));
     }
 
@@ -311,11 +311,11 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
-        assertEquals(1, obj.fts.size());
-        verify(obj.fts.get(0), FTType.TRANSMEM, "57", "77", "Helical; (Potential)", null);
+        assertEquals(1, obj.getFts().size());
+        verify(obj.getFts().get(0), FTType.TRANSMEM, "57", "77", "Helical; (Potential)", null);
         verifyEvidences(
                 obj,
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 Arrays.asList(new String[] {"ECO:0000257|HAMAP-Rule:MF_03021"}));
     }
 
@@ -328,15 +328,15 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
-        assertEquals(1, obj.fts.size());
+        assertEquals(1, obj.getFts().size());
         verify(
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 FTType.CONFLICT,
                 "1",
                 "1",
                 "A -> Q (in Ref. 1; BAA37160/BAA37165 and 2)",
                 null);
-        verifyEvidences(obj, obj.fts.get(0), null);
+        verifyEvidences(obj, obj.getFts().get(0), null);
     }
 
     @Test
@@ -350,16 +350,16 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
-        assertEquals(1, obj.fts.size());
-        System.out.println(obj.fts.get(0).getFtText());
+        assertEquals(1, obj.getFts().size());
+        System.out.println(obj.getFts().get(0).getFtText());
         verify(
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 FTType.CONFLICT,
                 "149",
                 "176",
                 "KREICYFQLYPDYIEQNIRSVRFNCYTK -> IERNMLLSTVS (in Ref. 4; CAA78385)",
                 null);
-        verifyEvidences(obj, obj.fts.get(0), Arrays.asList("ECO:0000305"));
+        verifyEvidences(obj, obj.getFts().get(0), Arrays.asList("ECO:0000305"));
     }
 
     @Test
@@ -373,16 +373,16 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
-        assertEquals(1, obj.fts.size());
-        System.out.println(obj.fts.get(0).getFtText());
+        assertEquals(1, obj.getFts().size());
+        System.out.println(obj.getFts().get(0).getFtText());
         verify(
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 FTType.CONFLICT,
                 "430",
                 "432",
                 "ALL -> DLV (in Ref. 1; BAA85929/BAA85930/BAA85931)",
                 null);
-        verifyEvidences(obj, obj.fts.get(0), Arrays.asList("ECO:0000305"));
+        verifyEvidences(obj, obj.getFts().get(0), Arrays.asList("ECO:0000305"));
     }
 
     @Test
@@ -394,10 +394,10 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
-        assertEquals(1, obj.fts.size());
-        System.out.println(obj.fts.get(0).getFtText());
+        assertEquals(1, obj.getFts().size());
+        System.out.println(obj.getFts().get(0).getFtText());
         verify(
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 FTType.VARIANT,
                 "267",
                 "294",
@@ -416,10 +416,10 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
-        assertEquals(1, obj.fts.size());
-        System.out.println(obj.fts.get(0).getFtText());
+        assertEquals(1, obj.getFts().size());
+        System.out.println(obj.getFts().get(0).getFtText());
         verify(
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 FTType.VARIANT,
                 "157",
                 "224",
@@ -437,10 +437,10 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
-        assertEquals(1, obj.fts.size());
-        System.out.println(obj.fts.get(0).getFtText());
+        assertEquals(1, obj.getFts().size());
+        System.out.println(obj.getFts().get(0).getFtText());
         verify(
-                obj.fts.get(0),
+                obj.getFts().get(0),
                 FTType.VAR_SEQ,
                 "267",
                 "294",
@@ -516,7 +516,7 @@ class FtLineParserTest {
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
-        assertEquals(25, obj.fts.size());
+        assertEquals(25, obj.getFts().size());
     }
 
     private void verify(

@@ -12,7 +12,7 @@ class OsLineConverterTest {
     void test() {
         // "OS   Solanum melongena (Eggplant) (Aubergine).
         OsLineObject osO = new OsLineObject();
-        osO.organismSpecies = "Solanum melongena (Eggplant) (Aubergine)";
+        osO.setOrganismSpecies("Solanum melongena (Eggplant) (Aubergine)");
         OsLineConverter converter = new OsLineConverter();
         OrganismName org = converter.convert(osO);
         assertEquals("Solanum melongena", org.getScientificName());
@@ -24,7 +24,7 @@ class OsLineConverterTest {
     void test2() {
         // OS   Homo sapiens (Human).
         OsLineObject osO = new OsLineObject();
-        osO.organismSpecies = "Homo sapiens (Human)";
+        osO.setOrganismSpecies("Homo sapiens (Human)");
         OsLineConverter converter = new OsLineConverter();
         OrganismName org = converter.convert(osO);
         assertEquals("Homo sapiens", org.getScientificName());
@@ -36,7 +36,7 @@ class OsLineConverterTest {
     void testVirus() {
         // OS   Frog virus 3 (isolate Goorha) (FV-3).
         OsLineObject osO = new OsLineObject();
-        osO.organismSpecies = "Frog virus 3 (isolate Goorha) (FV-3)";
+        osO.setOrganismSpecies("Frog virus 3 (isolate Goorha) (FV-3)");
         OsLineConverter converter = new OsLineConverter();
         OrganismName org = converter.convert(osO);
         assertEquals("Frog virus 3 (isolate Goorha)", org.getScientificName());

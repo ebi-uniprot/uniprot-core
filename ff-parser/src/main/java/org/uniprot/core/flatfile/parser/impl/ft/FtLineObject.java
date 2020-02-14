@@ -15,8 +15,20 @@ import org.uniprot.core.flatfile.parser.impl.HasEvidenceInfo;
 public class FtLineObject implements HasEvidenceInfo {
     private static final Set<FTType> ALTERNATIVE_SEQUENCE_SET =
             EnumSet.of(FTType.CONFLICT, FTType.MUTAGEN, FTType.VARIANT, FTType.VAR_SEQ);
-    public List<FT> fts = new ArrayList<FT>();
-    public EvidenceInfo evidenceInfo = new EvidenceInfo();
+    private List<FT> fts = new ArrayList<>();
+    private EvidenceInfo evidenceInfo = new EvidenceInfo();
+
+    public List<FT> getFts() {
+        return fts;
+    }
+
+    public void setFts(List<FT> fts) {
+        this.fts = fts;
+    }
+
+    public void setEvidenceInfo(EvidenceInfo evidenceInfo) {
+        this.evidenceInfo = evidenceInfo;
+    }
 
     @Override
     public EvidenceInfo getEvidenceInfo() {
@@ -83,7 +95,7 @@ public class FtLineObject implements HasEvidenceInfo {
         }
     }
 
-    public static enum FTType {
+    public enum FTType {
         INIT_MET,
         SIGNAL,
         PROPEP,

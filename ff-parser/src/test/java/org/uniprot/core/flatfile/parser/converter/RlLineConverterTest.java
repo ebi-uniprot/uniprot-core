@@ -1,13 +1,13 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.citation.builder.*;
 import org.uniprot.core.flatfile.parser.impl.rl.RlLineConverter;
 import org.uniprot.core.flatfile.parser.impl.rl.RlLineObject;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class RlLineConverterTest {
     private final RlLineConverter converter = new RlLineConverter();
@@ -17,12 +17,12 @@ class RlLineConverterTest {
         // "RL   J. Mol. Biol. 168:321-331(1983).
         RlLineObject rlObject = new RlLineObject();
         RlLineObject.JournalArticle ja = new RlLineObject.JournalArticle();
-        ja.firstPage = "321";
-        ja.lastPage = "331";
-        ja.volume = "168";
-        ja.year = 1983;
-        ja.journal = "J. Mol. Biol.";
-        rlObject.reference = ja;
+        ja.setFirstPage("321");
+        ja.setLastPage("331");
+        ja.setVolume("168");
+        ja.setYear(1983);
+        ja.setJournal("J. Mol. Biol.");
+        rlObject.setReference(ja);
         CitationBuilder builder = converter.convert(rlObject);
         assertTrue(builder instanceof JournalArticleBuilder);
         JournalArticle journal = ((JournalArticleBuilder) builder).build();
@@ -41,10 +41,10 @@ class RlLineConverterTest {
         // "RL   Submitted (OCT-1995) to the EMBL/GenBank/DDBJ databases.
         RlLineObject rlObject = new RlLineObject();
         RlLineObject.Submission subm = new RlLineObject.Submission();
-        subm.month = "OCT";
-        subm.year = 1995;
-        subm.db = RlLineObject.SubmissionDB.EMBL;
-        rlObject.reference = subm;
+        subm.setMonth("OCT");
+        subm.setYear(1995);
+        subm.setDb(RlLineObject.SubmissionDB.EMBL);
+        rlObject.setReference(subm);
         CitationBuilder builder = converter.convert(rlObject);
         assertTrue(builder instanceof SubmissionBuilder);
         Submission submission = ((SubmissionBuilder) builder).build();
@@ -60,10 +60,10 @@ class RlLineConverterTest {
         // "RL   Thesis (1977), University of Geneva, Switzerland.\n";
         RlLineObject rlObject = new RlLineObject();
         RlLineObject.Thesis th = new RlLineObject.Thesis();
-        th.country = "Switzerland";
-        th.institute = "University of Geneva";
-        th.year = 1977;
-        rlObject.reference = th;
+        th.setCountry("Switzerland");
+        th.setInstitute("University of Geneva");
+        th.setYear(1977);
+        rlObject.setReference(th);
         CitationBuilder builder = converter.convert(rlObject);
         assertTrue(builder instanceof ThesisBuilder);
         Thesis thesis = ((ThesisBuilder) builder).build();
@@ -80,11 +80,11 @@ class RlLineConverterTest {
         // "RL   Patent number WO9010703, 20-SEP-1990.\n";
         RlLineObject rlObject = new RlLineObject();
         RlLineObject.Patent th = new RlLineObject.Patent();
-        th.day = 20;
-        th.month = "SEP";
-        th.year = 1990;
-        th.patentNumber = "WO9010703";
-        rlObject.reference = th;
+        th.setDay(20);
+        th.setMonth("SEP");
+        th.setYear(1990);
+        th.setPatentNumber("WO9010703");
+        rlObject.setReference(th);
         CitationBuilder builder = converter.convert(rlObject);
         assertTrue(builder instanceof PatentBuilder);
         Patent patent = ((PatentBuilder) builder).build();
@@ -101,15 +101,15 @@ class RlLineConverterTest {
         // RL   The enzymes (3rd ed.), pp.11:397-547, Academic Press, New York (1975).
         RlLineObject rlObject = new RlLineObject();
         RlLineObject.Book th = new RlLineObject.Book();
-        th.editors.add("Boyer P.D.");
-        th.title = "The enzymes (3rd ed.)";
-        th.pageStart = "397";
-        th.pageEnd = "547";
-        th.place = "New York";
-        th.press = "Academic Press";
-        th.volume = "11";
-        th.year = 1975;
-        rlObject.reference = th;
+        th.getEditors().add("Boyer P.D.");
+        th.setTitle("The enzymes (3rd ed.)");
+        th.setPageStart("397");
+        th.setPageEnd("547");
+        th.setPlace("New York");
+        th.setPress("Academic Press");
+        th.setVolume("11");
+        th.setYear(1975);
+        rlObject.setReference(th);
         CitationBuilder builder = converter.convert(rlObject);
         assertTrue(builder instanceof BookBuilder);
         Book book = ((BookBuilder) builder).build();
@@ -129,9 +129,9 @@ class RlLineConverterTest {
         // "RL   (er) Plant Gene Register PGR98-023.\n";
         RlLineObject rlObject = new RlLineObject();
         RlLineObject.EPub th = new RlLineObject.EPub();
-        th.title = "Plant Gene Register PGR98-023";
+        th.setTitle("Plant Gene Register PGR98-023");
 
-        rlObject.reference = th;
+        rlObject.setReference(th);
 
         CitationBuilder builder = converter.convert(rlObject);
         assertTrue(builder instanceof ElectronicArticleBuilder);
@@ -146,9 +146,9 @@ class RlLineConverterTest {
         // "RL   (er) J. Am. Chem. Soc. 121:9223-9224(1999).\n";
         RlLineObject rlObject = new RlLineObject();
         RlLineObject.EPub th = new RlLineObject.EPub();
-        th.title = "J. Am. Chem. Soc. 121:9223-9224(1999)";
+        th.setTitle("J. Am. Chem. Soc. 121:9223-9224(1999)");
 
-        rlObject.reference = th;
+        rlObject.setReference(th);
 
         CitationBuilder builder = converter.convert(rlObject);
         assertTrue(builder instanceof ElectronicArticleBuilder);
@@ -163,10 +163,10 @@ class RlLineConverterTest {
         // "RL   Unpublished observations (OCT-1978).\n";
         RlLineObject rlObject = new RlLineObject();
         RlLineObject.Unpublished th = new RlLineObject.Unpublished();
-        th.month = "OCT";
-        th.year = 1978;
+        th.setMonth("OCT");
+        th.setYear(1978);
 
-        rlObject.reference = th;
+        rlObject.setReference(th);
 
         CitationBuilder builder = converter.convert(rlObject);
         assertTrue(builder instanceof UnpublishedBuilder);

@@ -44,7 +44,7 @@ public class FtLineModelListener extends FtLineParserBaseListener
         if (ft.getLocationEnd() == null) {
             ft.setLocationEnd(ft.getLocationStart());
         }
-        object.fts.add(ft);
+        object.getFts().add(ft);
         ft = null;
     }
 

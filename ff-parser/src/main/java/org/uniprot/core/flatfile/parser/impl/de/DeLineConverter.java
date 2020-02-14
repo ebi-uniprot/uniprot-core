@@ -36,47 +36,47 @@ public class DeLineConverter extends EvidenceCollector
         this.addAll(evidenceMap.values());
         // ProteinDescription pd = factory.buildProteinDescription();
         ProteinRecName recName = null;
-        if (f.recName != null) {
-            recName = convertRecName(f.recName, evidenceMap);
+        if (f.getRecName() != null) {
+            recName = convertRecName(f.getRecName(), evidenceMap);
         }
         List<ProteinAltName> altNames =
-                f.altName.stream()
+                f.getAltNames().stream()
                         .map(val -> convertAltName(val, evidenceMap))
                         .collect(Collectors.toList());
 
         List<Name> cdAntigenNames =
-                f.altCdAntigen.stream()
+                f.getAltCdAntigens().stream()
                         .map(val -> convertName(val, evidenceMap))
                         .collect(Collectors.toList());
 
         List<Name> innNames =
-                f.altInn.stream()
+                f.getAltInns().stream()
                         .map(val -> convertName(val, evidenceMap))
                         .collect(Collectors.toList());
         Name biotechName = null;
-        if (!Strings.isNullOrEmpty(f.altBiotech)) {
-            biotechName = convertName(f.altBiotech, evidenceMap);
+        if (!Strings.isNullOrEmpty(f.getAltBiotech())) {
+            biotechName = convertName(f.getAltBiotech(), evidenceMap);
         }
         Name allergenName = null;
-        if (!Strings.isNullOrEmpty(f.altAllergen)) {
-            allergenName = convertName(f.altAllergen, evidenceMap);
+        if (!Strings.isNullOrEmpty(f.getAltAllergen())) {
+            allergenName = convertName(f.getAltAllergen(), evidenceMap);
         }
         List<ProteinSubName> subNames =
-                f.subName.stream()
+                f.getSubNames().stream()
                         .map(val -> convertSubmissionName(val, evidenceMap))
                         .collect(Collectors.toList());
 
         List<ProteinSection> contained =
-                f.containedNames.stream()
+                f.getContainedNames().stream()
                         .map(val -> convertProteinNameSection(val, evidenceMap))
                         .collect(Collectors.toList());
 
         List<ProteinSection> included =
-                f.includedNames.stream()
+                f.getIncludedNames().stream()
                         .map(val -> convertProteinNameSection(val, evidenceMap))
                         .collect(Collectors.toList());
 
-        org.uniprot.core.uniprot.description.FlagType flag = createFlag(f.flags);
+        org.uniprot.core.uniprot.description.FlagType flag = createFlag(f.getFlags());
         ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
         builder.recommendedName(recName)
                 .submissionNamesSet(subNames)
@@ -117,31 +117,31 @@ public class DeLineConverter extends EvidenceCollector
     private ProteinSection convertProteinNameSection(
             DeLineObject.NameBlock nameBlock, Map<Object, List<Evidence>> evidenceMap) {
         ProteinRecName recName = null;
-        if (nameBlock.recName != null) {
-            recName = convertRecName(nameBlock.recName, evidenceMap);
+        if (nameBlock.getRecName() != null) {
+            recName = convertRecName(nameBlock.getRecName(), evidenceMap);
         }
 
         List<ProteinAltName> altNames =
-                nameBlock.altName.stream()
+                nameBlock.getAltNames().stream()
                         .map(val -> convertAltName(val, evidenceMap))
                         .collect(Collectors.toList());
 
         List<Name> cdAntigenNames =
-                nameBlock.altCdAntigen.stream()
+                nameBlock.getAltCdAntigens().stream()
                         .map(val -> convertName(val, evidenceMap))
                         .collect(Collectors.toList());
 
         List<Name> innNames =
-                nameBlock.altInn.stream()
+                nameBlock.getAltInns().stream()
                         .map(val -> convertName(val, evidenceMap))
                         .collect(Collectors.toList());
         Name biotechName = null;
-        if (!Strings.isNullOrEmpty(nameBlock.altBiotech)) {
-            biotechName = convertName(nameBlock.altBiotech, evidenceMap);
+        if (!Strings.isNullOrEmpty(nameBlock.getAltBiotech())) {
+            biotechName = convertName(nameBlock.getAltBiotech(), evidenceMap);
         }
         Name allergenName = null;
-        if (!Strings.isNullOrEmpty(nameBlock.altAllergen)) {
-            allergenName = convertName(nameBlock.altAllergen, evidenceMap);
+        if (!Strings.isNullOrEmpty(nameBlock.getAltAllergen())) {
+            allergenName = convertName(nameBlock.getAltAllergen(), evidenceMap);
         }
 
         return new ProteinSectionBuilder()
@@ -162,15 +162,15 @@ public class DeLineConverter extends EvidenceCollector
     private ProteinAltName convertAltName(
             DeLineObject.Name val, Map<Object, List<Evidence>> evidenceMap) {
         Name fullName = null;
-        if ((val.fullName != null) || (!val.fullName.isEmpty())) {
+        if ((val.getFullName() != null) || (!val.getFullName().isEmpty())) {
             fullName =
                     new NameBuilder()
-                            .value(val.fullName)
-                            .evidencesSet(evidenceMap.get(val.fullName))
+                            .value(val.getFullName())
+                            .evidencesSet(evidenceMap.get(val.getFullName()))
                             .build();
         }
         List<Name> shortNames =
-                val.shortNames.stream()
+                val.getShortNames().stream()
                         .map(
                                 shortName ->
                                         new NameBuilder()
@@ -179,13 +179,13 @@ public class DeLineConverter extends EvidenceCollector
                                                 .build())
                         .collect(Collectors.toList());
         List<EC> ecNumbers =
-                val.ecs.stream()
+                val.getEcs().stream()
                         .map(
                                 ec -> {
                                     DeLineObject.ECEvidence ecEvidence =
                                             new DeLineObject.ECEvidence();
-                                    ecEvidence.ecValue = ec;
-                                    ecEvidence.nameECBelong = val;
+                                    ecEvidence.setEcValue(ec);
+                                    ecEvidence.setNameECBelong(val);
                                     return new ECBuilder()
                                             .value(ec)
                                             .evidencesSet(evidenceMap.get(ecEvidence))
@@ -202,15 +202,15 @@ public class DeLineConverter extends EvidenceCollector
     private ProteinRecName convertRecName(
             DeLineObject.Name val, Map<Object, List<Evidence>> evidenceMap) {
         Name fullName = null;
-        if ((val.fullName != null) || (!val.fullName.isEmpty())) {
+        if ((val.getFullName() != null) || (!val.getFullName().isEmpty())) {
             fullName =
                     new NameBuilder()
-                            .value(val.fullName)
-                            .evidencesSet(evidenceMap.get(val.fullName))
+                            .value(val.getFullName())
+                            .evidencesSet(evidenceMap.get(val.getFullName()))
                             .build();
         }
         List<Name> shortNames =
-                val.shortNames.stream()
+                val.getShortNames().stream()
                         .map(
                                 shortName ->
                                         new NameBuilder()
@@ -219,7 +219,7 @@ public class DeLineConverter extends EvidenceCollector
                                                 .build())
                         .collect(Collectors.toList());
         List<EC> ecNumbers =
-                val.ecs.stream()
+                val.getEcs().stream()
                         .map(ec -> createEC(ec, val, evidenceMap))
                         .collect(Collectors.toList());
         return new ProteinRecNameBuilder()
@@ -231,8 +231,8 @@ public class DeLineConverter extends EvidenceCollector
 
     private EC createEC(String ec, DeLineObject.Name val, Map<Object, List<Evidence>> evidenceMap) {
         DeLineObject.ECEvidence ecEvidence = new DeLineObject.ECEvidence();
-        ecEvidence.ecValue = ec;
-        ecEvidence.nameECBelong = val;
+        ecEvidence.setEcValue(ec);
+        ecEvidence.setNameECBelong(val);
         List<Evidence> evidences = evidenceMap.get(ecEvidence);
         return new ECBuilder().value(ec).evidencesSet(evidences).build();
     }
@@ -240,11 +240,11 @@ public class DeLineConverter extends EvidenceCollector
     private ProteinSubName convertSubmissionName(
             DeLineObject.Name val, Map<Object, List<Evidence>> evidenceMap) {
         Name fullName = null;
-        if ((val.fullName != null) || (!val.fullName.isEmpty())) {
+        if ((val.getFullName() != null) || (!val.getFullName().isEmpty())) {
             fullName =
                     new NameBuilder()
-                            .value(val.fullName)
-                            .evidencesSet(evidenceMap.get(val.fullName))
+                            .value(val.getFullName())
+                            .evidencesSet(evidenceMap.get(val.getFullName()))
                             .build();
         }
         // List<Name> shortNames =val.shortNames.stream()
@@ -252,13 +252,13 @@ public class DeLineConverter extends EvidenceCollector
         // evidenceMap.get(shortName)) )
         // .collect(Collectors.toList());
         List<EC> ecNumbers =
-                val.ecs.stream()
+                val.getEcs().stream()
                         .map(
                                 ec -> {
                                     DeLineObject.ECEvidence ecEvidence =
                                             new DeLineObject.ECEvidence();
-                                    ecEvidence.ecValue = ec;
-                                    ecEvidence.nameECBelong = val;
+                                    ecEvidence.setEcValue(ec);
+                                    ecEvidence.setNameECBelong(val);
                                     return new ECBuilder()
                                             .value(ec)
                                             .evidencesSet(evidenceMap.get(ecEvidence))

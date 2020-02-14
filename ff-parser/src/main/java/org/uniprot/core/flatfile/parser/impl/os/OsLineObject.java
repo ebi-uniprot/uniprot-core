@@ -5,5 +5,13 @@ package org.uniprot.core.flatfile.parser.impl.os;
  * File | Settings | File Templates.
  */
 public class OsLineObject {
-    public String organismSpecies;
+    private String organismSpecies;
+
+    public String getOrganismSpecies() {
+        return organismSpecies;
+    }
+
+    public void setOrganismSpecies(String organismSpecies) {
+        this.organismSpecies = organismSpecies;
+    }
 }

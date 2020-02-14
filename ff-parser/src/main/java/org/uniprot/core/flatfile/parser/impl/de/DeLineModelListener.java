@@ -1,5 +1,6 @@
 package org.uniprot.core.flatfile.parser.impl.de;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.antlr.v4.runtime.misc.NotNull;
@@ -33,220 +34,132 @@ public class DeLineModelListener extends DeLineParserBaseListener
 
     @Override
     public void exitRec_name(@NotNull DeLineParser.Rec_nameContext ctx) {
-        object.recName = new DeLineObject.Name();
-        object.recName.fullName = ctx.full_name().name_value().getText();
-        object.recName.fullName =
-                object.getEvidenceInfo().retrieveEvidenceString(object.recName.fullName);
-
-        List<DeLineParser.Short_nameContext> short_nameContexts = ctx.short_name();
-        for (DeLineParser.Short_nameContext short_nameContext : short_nameContexts) {
-            String name = short_nameContext.name_value().getText();
-            object.recName.shortNames.add(object.getEvidenceInfo().retrieveEvidenceString(name));
-        }
-
-        List<DeLineParser.EcContext> ec = ctx.ec();
-        for (DeLineParser.EcContext ecContext : ec) {
-            processECs(ecContext, object.recName);
-        }
-    }
-
-    private void processECs(DeLineParser.EcContext context, DeLineObject.Name nameBelong) {
-        String ecValue = context.EC_NAME_VALUE().getText();
-        nameBelong.ecs.add(ecValue);
-
-        DeLineParser.EvidenceContext evidence = context.evidence();
-        if (evidence != null) {
-            List<TerminalNode> terminalNodes = evidence.EV_TAG();
-
-            DeLineObject.ECEvidence ecEvidence = new DeLineObject.ECEvidence();
-            ecEvidence.ecValue = ecValue;
-            ecEvidence.nameECBelong = nameBelong;
-
-            EvidenceInfo.processEvidence(object.getEvidenceInfo(), ecEvidence, terminalNodes);
-        }
+        DeLineObject.Name recName = createDeLineObjectName(ctx.full_name(), ctx.short_name());
+        this.object.setRecName(recName);
+        processECs(ctx.ec(), recName);
     }
 
     @Override
     public void exitAlt_biotech(@NotNull DeLineParser.Alt_biotechContext ctx) {
-        object.altBiotech = ctx.name_value().getText();
-        object.altBiotech = object.getEvidenceInfo().retrieveEvidenceString(object.altBiotech);
+        String name = ctx.name_value().getText();
+        this.object.setAltBiotech(this.object.getEvidenceInfo().retrieveEvidenceString(name));
     }
 
     @Override
     public void exitAlt_inn(@NotNull DeLineParser.Alt_innContext ctx) {
-        String text = ctx.name_value().getText();
-        object.altInn.add(object.getEvidenceInfo().retrieveEvidenceString(text));
+        String name = ctx.name_value().getText();
+        object.getAltInns().add(this.object.getEvidenceInfo().retrieveEvidenceString(name));
     }
 
     @Override
     public void exitAlt_allergen(@NotNull DeLineParser.Alt_allergenContext ctx) {
-        object.altAllergen = ctx.name_value().getText();
-        object.altAllergen = object.getEvidenceInfo().retrieveEvidenceString(object.altAllergen);
+        String name = ctx.name_value().getText();
+        this.object.setAltAllergen(this.object.getEvidenceInfo().retrieveEvidenceString(name));
     }
 
     @Override
     public void exitAlt_cdantigen(@NotNull DeLineParser.Alt_cdantigenContext ctx) {
         String text = ctx.name_value().getText();
-        object.altCdAntigen.add(object.getEvidenceInfo().retrieveEvidenceString(text));
+        this.object
+                .getAltCdAntigens()
+                .add(this.object.getEvidenceInfo().retrieveEvidenceString(text));
     }
 
     @Override
     public void exitSub_alt_biotech(@NotNull DeLineParser.Sub_alt_biotechContext ctx) {
-        block.altBiotech = ctx.name_value().getText();
-        block.altBiotech = object.getEvidenceInfo().retrieveEvidenceString(block.altBiotech);
+        String name = ctx.name_value().getText();
+        block.setAltBiotech(object.getEvidenceInfo().retrieveEvidenceString(name));
     }
 
     @Override
     public void exitSub_alt_inn(@NotNull DeLineParser.Sub_alt_innContext ctx) {
         String text = ctx.name_value().getText();
-        block.altInn.add(object.getEvidenceInfo().retrieveEvidenceString(text));
+        block.getAltInns().add(object.getEvidenceInfo().retrieveEvidenceString(text));
     }
 
     @Override
     public void exitSub_alt_allergen(@NotNull DeLineParser.Sub_alt_allergenContext ctx) {
-        block.altAllergen = ctx.name_value().getText();
-        block.altAllergen = object.getEvidenceInfo().retrieveEvidenceString(block.altAllergen);
+        String name = ctx.name_value().getText();
+        block.setAltAllergen(object.getEvidenceInfo().retrieveEvidenceString(name));
     }
 
     @Override
     public void exitSub_alt_cdantigen(@NotNull DeLineParser.Sub_alt_cdantigenContext ctx) {
         String text = ctx.name_value().getText();
-        block.altCdAntigen.add(object.getEvidenceInfo().retrieveEvidenceString(text));
+        block.getAltCdAntigens().add(object.getEvidenceInfo().retrieveEvidenceString(text));
     }
 
     @Override
     public void exitSub_rec_name(@NotNull DeLineParser.Sub_rec_nameContext ctx) {
-        block.recName = new DeLineObject.Name();
-        block.recName.fullName = ctx.full_name().name_value().getText();
-        block.recName.fullName =
-                object.getEvidenceInfo().retrieveEvidenceString(block.recName.fullName);
-
-        List<DeLineParser.Short_nameContext> short_nameContexts = ctx.short_name();
-        for (DeLineParser.Short_nameContext short_nameContext : short_nameContexts) {
-            String text = short_nameContext.name_value().getText();
-            block.recName.shortNames.add(object.getEvidenceInfo().retrieveEvidenceString(text));
-        }
-        List<DeLineParser.EcContext> ec = ctx.ec();
-        for (DeLineParser.EcContext ecContext : ec) {
-            processECs(ecContext, block.recName);
-        }
-        //        for (DeLineParser.EcContext ecContext : ec) {
-        //            String text = ecContext.EC_NAME_VALUE().getText();
-        //            block.recName.ecs.add(object.getEvidenceInfo().retrieveEvidenceString(text));
-        //        }
+        DeLineObject.Name recName = createDeLineObjectName(ctx.full_name(), ctx.short_name());
+        this.block.setRecName(recName);
+        processECs(ctx.ec(), recName);
     }
 
     @Override
     public void exitSub_alt_name(@NotNull DeLineParser.Sub_alt_nameContext ctx) {
-        DeLineObject.Name name = new DeLineObject.Name();
-        DeLineParser.Sub_alt_name_1Context alt_name_1Context = ctx.sub_alt_name_1();
-        DeLineParser.Sub_alt_name_2Context alt_name_2Context = ctx.sub_alt_name_2();
-        DeLineParser.Sub_alt_name_3Context alt_name_3Context = ctx.sub_alt_name_3();
+        DeLineObject.Name altName = new DeLineObject.Name();
+        DeLineParser.Sub_alt_name_1Context altName1Context = ctx.sub_alt_name_1();
+        DeLineParser.Sub_alt_name_2Context altName2Context = ctx.sub_alt_name_2();
+        DeLineParser.Sub_alt_name_3Context altName3Context = ctx.sub_alt_name_3();
 
-        if (alt_name_1Context != null) {
-            DeLineParser.Full_nameContext full_nameContext = alt_name_1Context.full_name();
-            if (full_nameContext != null) {
-                name.fullName = full_nameContext.name_value().getText();
-                name.fullName = object.getEvidenceInfo().retrieveEvidenceString(name.fullName);
-            }
-
-            List<DeLineParser.Short_nameContext> short_nameContexts =
-                    alt_name_1Context.short_name();
-            for (DeLineParser.Short_nameContext short_nameContext : short_nameContexts) {
-                String text = short_nameContext.name_value().getText();
-                name.shortNames.add(object.getEvidenceInfo().retrieveEvidenceString(text));
-            }
-            List<DeLineParser.EcContext> ec = alt_name_1Context.ec();
-            for (DeLineParser.EcContext ecContext : ec) {
-                processECs(ecContext, name);
-            }
-        } else if (alt_name_2Context != null) {
-            List<DeLineParser.Short_nameContext> short_nameContexts =
-                    alt_name_2Context.short_name();
-            for (DeLineParser.Short_nameContext short_nameContext : short_nameContexts) {
-                String text = short_nameContext.name_value().getText();
-                name.shortNames.add(object.getEvidenceInfo().retrieveEvidenceString(text));
-            }
-
-            List<DeLineParser.EcContext> ec = alt_name_2Context.ec();
-            for (DeLineParser.EcContext ecContext : ec) {
-                processECs(ecContext, name);
-            }
-        } else if (alt_name_3Context != null) {
-            List<DeLineParser.EcContext> ec = alt_name_3Context.ec();
-            for (DeLineParser.EcContext ecContext : ec) {
-                processECs(ecContext, name);
-            }
+        if (altName1Context != null) {
+            altName =
+                    createDeLineObjectName(
+                            altName1Context.full_name(), altName1Context.short_name());
+            processECs(altName1Context.ec(), altName);
+        } else if (altName2Context != null) {
+            altName = createDeLineObjectName(null, altName2Context.short_name());
+            processECs(altName2Context.ec(), altName);
+        } else if (altName3Context != null) {
+            processECs(altName3Context.ec(), altName);
         }
-        block.altName.add(name);
+
+        this.block.getAltNames().add(altName);
     }
 
     @Override
     public void exitAlt_name(@NotNull DeLineParser.Alt_nameContext ctx) {
-        DeLineObject.Name name = new DeLineObject.Name();
-        DeLineParser.Alt_name_1Context alt_name_1Context = ctx.alt_name_1();
-        DeLineParser.Alt_name_2Context alt_name_2Context = ctx.alt_name_2();
-        DeLineParser.Alt_name_3Context alt_name_3Context = ctx.alt_name_3();
+        DeLineParser.Alt_name_1Context altName1Context = ctx.alt_name_1();
+        DeLineParser.Alt_name_2Context altName2Context = ctx.alt_name_2();
+        DeLineParser.Alt_name_3Context altName3Context = ctx.alt_name_3();
+        DeLineObject.Name altName = new DeLineObject.Name();
 
-        if (alt_name_1Context != null) {
-            if (alt_name_1Context.full_name() != null) {
-                name.fullName = alt_name_1Context.full_name().name_value().getText();
-                name.fullName = object.getEvidenceInfo().retrieveEvidenceString(name.fullName);
-            }
-
-            List<DeLineParser.Short_nameContext> short_nameContexts =
-                    alt_name_1Context.short_name();
-            for (DeLineParser.Short_nameContext short_nameContext : short_nameContexts) {
-                String text = short_nameContext.name_value().getText();
-                name.shortNames.add(object.getEvidenceInfo().retrieveEvidenceString(text));
-            }
-
-            List<DeLineParser.EcContext> ec = alt_name_1Context.ec();
-            for (DeLineParser.EcContext ecContext : ec) {
-                processECs(ecContext, name);
-            }
-        } else if (alt_name_2Context != null) {
-            List<DeLineParser.Short_nameContext> short_nameContexts =
-                    alt_name_2Context.short_name();
-            for (DeLineParser.Short_nameContext short_nameContext : short_nameContexts) {
-                String text = short_nameContext.name_value().getText();
-                name.shortNames.add(object.getEvidenceInfo().retrieveEvidenceString(text));
-            }
-
-            List<DeLineParser.EcContext> ec = alt_name_2Context.ec();
-            for (DeLineParser.EcContext ecContext : ec) {
-                processECs(ecContext, name);
-            }
-        } else if (alt_name_3Context != null) {
-            List<DeLineParser.EcContext> ec = alt_name_3Context.ec();
-            for (DeLineParser.EcContext ecContext : ec) {
-                processECs(ecContext, name);
-            }
+        if (altName1Context != null) {
+            altName =
+                    createDeLineObjectName(
+                            altName1Context.full_name(), altName1Context.short_name());
+            processECs(altName1Context.ec(), altName);
+        } else if (altName2Context != null) {
+            altName = createDeLineObjectName(null, altName2Context.short_name());
+            processECs(altName2Context.ec(), altName);
+        } else if (altName3Context != null) {
+            processECs(altName3Context.ec(), altName);
         }
-        object.altName.add(name);
+        this.object.getAltNames().add(altName);
     }
 
     @Override
     public void exitSub_name(@NotNull DeLineParser.Sub_nameContext ctx) {
-        processExitSubname(ctx.full_name().name_value().getText(), ctx.ec(), object.subName);
+        processExitSubname(
+                ctx.full_name().name_value().getText(), ctx.ec(), this.object.getSubNames());
     }
 
     private void processExitSubname(
-            String nameString, List<DeLineParser.EcContext> ec, List<DeLineObject.Name> container) {
-        DeLineObject.Name name = new DeLineObject.Name();
+            String nameString,
+            List<DeLineParser.EcContext> ecs,
+            List<DeLineObject.Name> container) {
 
-        name.fullName = object.getEvidenceInfo().retrieveEvidenceString(nameString);
-
-        for (DeLineParser.EcContext ecContext : ec) {
-            processECs(ecContext, name);
-        }
-
-        container.add(name);
+        DeLineObject.Name subName = new DeLineObject.Name();
+        String fullName = this.object.getEvidenceInfo().retrieveEvidenceString(nameString);
+        subName.setFullName(fullName);
+        processECs(ecs, subName);
+        container.add(subName);
     }
 
     @Override
     public void exitSub_sub_name(@NotNull DeLineParser.Sub_sub_nameContext ctx) {
-        processExitSubname(ctx.full_name().name_value().getText(), ctx.ec(), block.subName);
+        processExitSubname(ctx.full_name().name_value().getText(), ctx.ec(), block.getSubNames());
     }
 
     @Override
@@ -256,8 +169,8 @@ public class DeLineModelListener extends DeLineParserBaseListener
 
     @Override
     public void exitIncluded_de(@NotNull DeLineParser.Included_deContext ctx) {
-        object.includedNames.add(block);
-        block = null;
+        this.object.getIncludedNames().add(this.block);
+        this.block = null;
     }
 
     @Override
@@ -267,8 +180,8 @@ public class DeLineModelListener extends DeLineParserBaseListener
 
     @Override
     public void exitContained_de(@NotNull DeLineParser.Contained_deContext ctx) {
-        object.containedNames.add(block);
-        block = null;
+        this.object.getContainedNames().add(this.block);
+        this.block = null;
     }
 
     @Override
@@ -284,12 +197,59 @@ public class DeLineModelListener extends DeLineParserBaseListener
             flag = DeLineObject.FlagType.Fragments;
         }
 
-        object.flags.add(flag);
+        this.object.getFlags().add(flag);
 
         DeLineParser.EvidenceContext evidence = ctx.evidence();
         if (evidence != null) {
             List<TerminalNode> terminalNodes = evidence.EV_TAG();
-            EvidenceInfo.processEvidence(object.getEvidenceInfo(), flag, terminalNodes);
+            EvidenceInfo.processEvidence(this.object.getEvidenceInfo(), flag, terminalNodes);
+        }
+    }
+
+    private DeLineObject.Name createDeLineObjectName(
+            DeLineParser.Full_nameContext fContext,
+            List<DeLineParser.Short_nameContext> sContexts) {
+
+        DeLineObject.Name recName = new DeLineObject.Name();
+
+        EvidenceInfo evidenceInfo = this.object.getEvidenceInfo();
+
+        if (fContext != null) {
+            String name = fContext.name_value().getText();
+            String fullName = evidenceInfo.retrieveEvidenceString(name);
+            recName.setFullName(fullName);
+        }
+
+        List<String> shortNames = new ArrayList<>();
+        List<DeLineParser.Short_nameContext> short_nameContexts = sContexts;
+        for (DeLineParser.Short_nameContext short_nameContext : short_nameContexts) {
+            String name = short_nameContext.name_value().getText();
+            String shortName = evidenceInfo.retrieveEvidenceString(name);
+            shortNames.add(shortName);
+        }
+        recName.setShortNames(shortNames);
+        return recName;
+    }
+
+    private void processECs(List<DeLineParser.EcContext> ecs, DeLineObject.Name nameBelong) {
+        for (DeLineParser.EcContext ecContext : ecs) {
+            processEC(ecContext, nameBelong);
+        }
+    }
+
+    private void processEC(DeLineParser.EcContext context, DeLineObject.Name nameBelong) {
+        String ecValue = context.EC_NAME_VALUE().getText();
+        nameBelong.getEcs().add(ecValue);
+
+        DeLineParser.EvidenceContext evidence = context.evidence();
+        if (evidence != null) {
+            List<TerminalNode> terminalNodes = evidence.EV_TAG();
+
+            DeLineObject.ECEvidence ecEvidence = new DeLineObject.ECEvidence();
+            ecEvidence.setEcValue(ecValue);
+            ecEvidence.setNameECBelong(nameBelong);
+
+            EvidenceInfo.processEvidence(this.object.getEvidenceInfo(), ecEvidence, terminalNodes);
         }
     }
 }
