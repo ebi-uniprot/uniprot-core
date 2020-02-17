@@ -21,8 +21,8 @@ class ProteinDescriptionScoredTest {
 
         String description =
                 "DE   SubName: Full=Type IIS restriction enzyme Eco57I;\n"
-                        + "DE            ECEntry=3.1.21.4;\n"
-                        + "DE            ECEntry=2.1.1.72;\n";
+                        + "DE            EC=3.1.21.4;\n"
+                        + "DE            EC=2.1.1.72;\n";
         testDescription(description, 6.0, Consensus.COMPLEX);
     }
 
@@ -39,7 +39,7 @@ class ProteinDescriptionScoredTest {
     void shouldSubnameScore3() {
         String description =
                 "DE   SubName: Full=Glutamate synthase large chain. {ECO:0000269|PubMed:10433554};\n"
-                        + "DE            ECEntry=1.4.1.13 {ECO:0000269|PubMed:10433554};\n";
+                        + "DE            EC=1.4.1.13 {ECO:0000269|PubMed:10433554};\n";
         testDescription(description, 3.0, Consensus.COMPLEX);
     }
 
@@ -48,7 +48,7 @@ class ProteinDescriptionScoredTest {
         String description =
                 "DE   SubName: Full=Catalytic activity: beta-D-glucuronoside + H2O = D-glucuronate + "
                         + "alcohol. {ECO:0000269|PubMed:10433554};\n"
-                        + "DE            ECEntry=3.2.1.31 {ECO:0000269|PubMed:10433554};\n";
+                        + "DE            EC=3.2.1.31 {ECO:0000269|PubMed:10433554};\n";
 
         testDescription(description, 3.0, Consensus.COMPLEX);
     }
@@ -72,7 +72,7 @@ class ProteinDescriptionScoredTest {
         String description =
                 "DE   RecName: Full=A disintegrin and metalloproteinase domain 10;\n"
                         + "DE            Short=ADAM 10;\n"
-                        + "DE            ECEntry=3.4.24.81;\n"
+                        + "DE            EC=3.4.24.81;\n"
                         + "DE   AltName: Full=Mammalian disintegrin-metalloprotease;\n"
                         + "DE   AltName: Full=Kuzbanian protein homolog;\n"
                         + "DE   AltName: CD_antigen=CD156c;\n"
@@ -87,7 +87,7 @@ class ProteinDescriptionScoredTest {
         String description =
                 "DE   RecName: Full=A disintegrin and metalloproteinase domain 10;\n"
                         + "DE            Short=ADAM 10;\n"
-                        + "DE            ECEntry=3.4.24.81;\n"
+                        + "DE            EC=3.4.24.81;\n"
                         + "DE   AltName: Full=Mammalian disintegrin-metalloprotease;\n"
                         + "DE   AltName: Full=Kuzbanian protein homolog;\n"
                         + "DE   AltName: Allergen=Some value;\n"
@@ -104,13 +104,13 @@ class ProteinDescriptionScoredTest {
                 "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n"
                         + "DE   Includes:\n"
                         + "DE     RecName: Full=Glutamate N-acetyltransferase;\n"
-                        + "DE              ECEntry=2.3.1.35;\n"
+                        + "DE              EC=2.3.1.35;\n"
                         + "DE     AltName: Full=Ornithine acetyltransferase;\n"
                         + "DE              Short=OATase;\n"
                         + "DE     AltName: Full=Ornithine transacetylase;\n"
                         + "DE   Includes:\n"
                         + "DE     RecName: Full=Amino-acid acetyltransferase;\n"
-                        + "DE              ECEntry=2.3.1.1;\n"
+                        + "DE              EC=2.3.1.1;\n"
                         + "DE     AltName: Full=N-acetylglutamate synthase;\n"
                         + "DE              Short=AGS;\n";
         testDescription(description, 11.0, Consensus.COMPLEX);
@@ -123,7 +123,7 @@ class ProteinDescriptionScoredTest {
                 "DE   RecName: Full=Multifunctional CCA protein;\n"
                         + "DE   Includes:\n"
                         + "DE     RecName: Full=CCA-adding enzyme;\n"
-                        + "DE              ECEntry=2.7.7.72;\n"
+                        + "DE              EC=2.7.7.72;\n"
                         + "DE     AltName: Full=CCA tRNA nucleotidyltransferase;\n"
                         + "DE     AltName: Full=tRNA CCA-pyrophosphorylase;\n"
                         + "DE     AltName: Full=tRNA adenylyl-/cytidylyl-transferase;\n"
@@ -131,13 +131,13 @@ class ProteinDescriptionScoredTest {
                         + "DE     AltName: Full=tRNA-NT;\n"
                         + "DE   Includes:\n"
                         + "DE     RecName: Full=2'-nucleotidase;\n"
-                        + "DE              ECEntry=3.1.3.-;\n"
+                        + "DE              EC=3.1.3.-;\n"
                         + "DE   Includes:\n"
                         + "DE     RecName: Full=2',3'-cyclic phosphodiesterase;\n"
-                        + "DE              ECEntry=3.1.4.-;\n"
+                        + "DE              EC=3.1.4.-;\n"
                         + "DE   Includes:\n"
                         + "DE     RecName: Full=Phosphatase;\n"
-                        + "DE              ECEntry=3.1.3.-;\n";
+                        + "DE              EC=3.1.3.-;\n";
         testDescription(description, 14.0, Consensus.COMPLEX);
     }
 
@@ -148,13 +148,13 @@ class ProteinDescriptionScoredTest {
                 "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n"
                         + "DE   Includes:\n"
                         + "DE     RecName: Full=Glutamate N-acetyltransferase;\n"
-                        + "DE              ECEntry=2.3.1.35;\n"
+                        + "DE              EC=2.3.1.35;\n"
                         + "DE     AltName: Full=Ornithine acetyltransferase;\n"
                         + "DE              Short=OATase;\n"
                         + "DE     AltName: Full=Ornithine transacetylase;\n"
                         + "DE   Includes:\n"
                         + "DE     RecName: Full=Amino-acid acetyltransferase;\n"
-                        + "DE              ECEntry=2.3.1.1;\n"
+                        + "DE              EC=2.3.1.1;\n"
                         + "DE     AltName: Full=N-acetylglutamate synthase;\n"
                         + "DE              Short=AGS;\n"
                         + "DE   Contains:\n"
@@ -180,7 +180,7 @@ class ProteinDescriptionScoredTest {
         String description =
                 "DE   Includes:\n"
                         + "DE     RecName: Full=Phosphoribosylaminoimidazolecarboxamide formyltransferase;\n"
-                        + "DE              ECEntry=2.1.2.3;\n"
+                        + "DE              EC=2.1.2.3;\n"
                         + "DE     AltName: Full=5-aminoimidazole-4-carboxamide ribonucleotide formyltransferase;\n"
                         + "DE     AltName: Full=AICAR transformylase;\n";
         testDescription(description, 3.0, Consensus.COMPLEX);
@@ -193,13 +193,13 @@ class ProteinDescriptionScoredTest {
                 "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n"
                         + "DE   Includes:\n"
                         + "DE     RecName: Full=Glutamate N-acetyltransferase;\n"
-                        + "DE              ECEntry=2.3.1.35;\n"
+                        + "DE              EC=2.3.1.35;\n"
                         + "DE     AltName: Full=Ornithine acetyltransferase;\n"
                         + "DE              Short=OATase;\n"
                         + "DE     AltName: Full=Ornithine transacetylase;\n"
                         + "DE   Includes:\n"
                         + "DE     RecName: Full=Amino-acid acetyltransferase;\n"
-                        + "DE              ECEntry=2.3.1.1;\n"
+                        + "DE              EC=2.3.1.1;\n"
                         + "DE     AltName: Full=N-acetylglutamate synthase;\n"
                         + "DE              Short=AGS;\n"
                         + "DE   Contains:\n"
@@ -227,19 +227,19 @@ class ProteinDescriptionScoredTest {
                 "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n"
                         + "DE   Includes:\n"
                         + "DE     RecName: Full=Glutamate N-acetyltransferase;\n"
-                        + "DE              ECEntry=2.3.1.35;\n"
+                        + "DE              EC=2.3.1.35;\n"
                         + "DE     AltName: Full=Ornithine acetyltransferase;\n"
                         + "DE              Short=OATase;\n"
                         + "DE     AltName: Full=Ornithine transacetylase;\n"
-                        + "DE              ECEntry=2.3.1.1;\n"
+                        + "DE              EC=2.3.1.1;\n"
                         + "DE   Includes:\n"
                         + "DE     RecName: Full=Amino-acid acetyltransferase;\n"
-                        + "DE              ECEntry=2.3.1.4;\n"
+                        + "DE              EC=2.3.1.4;\n"
                         + "DE     AltName: Full=N-acetylglutamate synthase;\n"
                         + "DE              Short=AGS;\n"
                         + "DE   Contains:\n"
                         + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha chain;\n"
-                        + "DE              ECEntry=2.3.1.56;\n";
+                        + "DE              EC=2.3.1.56;\n";
 
         testDescription(description, 17.0, Consensus.COMPLEX);
     }
@@ -264,13 +264,13 @@ class ProteinDescriptionScoredTest {
                 "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n"
                         + "DE   Includes:\n"
                         + "DE     RecName: Full=Glutamate N-acetyltransferase;\n"
-                        + "DE              ECEntry=2.3.1.35;\n"
+                        + "DE              EC=2.3.1.35;\n"
                         + "DE     AltName: Full=Ornithine acetyltransferase;\n"
                         + "DE              Short=OATase;\n"
                         + "DE     AltName: Full=Ornithine transacetylase;\n"
                         + "DE   Includes:\n"
                         + "DE     RecName: Full=Amino-acid acetyltransferase;\n"
-                        + "DE              ECEntry=2.3.1.1;\n"
+                        + "DE              EC=2.3.1.1;\n"
                         + "DE     AltName: Full=N-acetylglutamate synthase;\n"
                         + "DE              Short=AGS;\n"
                         + "DE   Contains:\n"
@@ -286,7 +286,7 @@ class ProteinDescriptionScoredTest {
 
         String description =
                 "DE   RecName: Full=4-coumarate--CoA ligase-like 5;\n"
-                        + "DE            ECEntry=6.2.1.-;\n"
+                        + "DE            EC=6.2.1.-;\n"
                         + "DE   AltName: Full=Peroxisomal OPC-8:0-CoA ligase 1;\n"
                         + "DE   AltName: Full=4-coumarate--CoA ligase isoform 9;\n"
                         + "DE   AltName: Full=At4CL9;\n";

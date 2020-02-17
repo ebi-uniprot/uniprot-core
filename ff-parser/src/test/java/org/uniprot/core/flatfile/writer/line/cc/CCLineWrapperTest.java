@@ -25,12 +25,12 @@ class CCLineWrapperTest extends CCBuildTestAbstr {
 
     @Test
     void testECSpace() {
-        String text = "Belongs to the sodium:solute symporter (SSF) (ECEntry 2.A.21) family";
+        String text = "Belongs to the sodium:solute symporter (SSF) (EC 2.A.21) family";
         List<String> evs = new ArrayList<>();
         String evi = "ECO:0000256|RuleBase:RU362091";
         evs.add(evi);
         String expected =
-                "CC   -!- SIMILARITY: Belongs to the sodium:solute symporter (SSF) (ECEntry 2.A.21)\n"
+                "CC   -!- SIMILARITY: Belongs to the sodium:solute symporter (SSF) (EC 2.A.21)\n"
                         + "CC       family. {ECO:0000256|RuleBase:RU362091}.";
         FreeTextComment comment = buildComment(CommentType.SIMILARITY, text, evs);
         doTest(expected, comment);

@@ -132,7 +132,7 @@ class EntryMapTest {
         List<String> result = dl.getData();
         assertEquals(fields.size(), result.size());
         String proteinName =
-                "RNA-directed RNA polymerase catalytic subunit, ECEntry 2.7.7.48 (Polymerase basic protein 1, PB1)"
+                "RNA-directed RNA polymerase catalytic subunit, EC 2.7.7.48 (Polymerase basic protein 1, PB1)"
                         + " (RNA-directed RNA polymerase subunit P1)";
         verify("P03431", 0, result);
         verify(proteinName, 1, result);

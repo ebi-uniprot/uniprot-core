@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import org.uniprot.core.uniprot.description.*;
 
 public class EntryProteinMap implements NamedValueMap {
-    private static final String EC2 = "ECEntry";
+    private static final String EC2 = "EC";
     private static final String SQUARE_BLACKET_RIGHT = "]";
     private static final String SQUARE_BLACKET_LEFT = "[";
     private static final String SEMICOLON = "; ";

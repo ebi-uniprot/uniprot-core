@@ -74,8 +74,8 @@ class DeLineConverterTest {
         deObject.altName.add(createName("PP4"));
         deObject.altName.add(createName("Thromboplastin inhibitor"));
         deObject.altName.add(createName("Vascular anticoagulant-alpha", "VAC-alpha"));
-        // |DE            ECEntry=1.1.1.1;
-        //  |DE            ECEntry=1.1.1.2;
+        // |DE            EC=1.1.1.1;
+        //  |DE            EC=1.1.1.2;
         List<String> ecs = new ArrayList<>();
         ecs.add("1.1.1.1");
         ecs.add("1.1.1.2");
@@ -101,13 +101,12 @@ class DeLineConverterTest {
     void test3() {
         /**
          * "DE RecName: Full=Arginine biosynthesis bifunctional protein argJ; |DE Includes: |DE
-         * RecName: Full=Glutamate N-acetyltransferase; |DE ECEntry=2.3.1.35; |DE AltName:
-         * Full=Ornithine acetyltransferase; |DE Short=OATase; |DE AltName: Full=Ornithine
-         * transacetylase; |DE Includes: |DE RecName: Full=Amino-acid acetyltransferase; |DE
-         * ECEntry=2.3.1.1; |DE AltName: Full=N-acetylglutamate synthase; |DE Short=AGS; |DE
-         * Contains: |DE RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha chain;
-         * |DE Contains: |DE RecName: Full=Arginine biosynthesis bifunctional protein argJ beta
-         * chain;
+         * RecName: Full=Glutamate N-acetyltransferase; |DE EC=2.3.1.35; |DE AltName: Full=Ornithine
+         * acetyltransferase; |DE Short=OATase; |DE AltName: Full=Ornithine transacetylase; |DE
+         * Includes: |DE RecName: Full=Amino-acid acetyltransferase; |DE EC=2.3.1.1; |DE AltName:
+         * Full=N-acetylglutamate synthase; |DE Short=AGS; |DE Contains: |DE RecName: Full=Arginine
+         * biosynthesis bifunctional protein argJ alpha chain; |DE Contains: |DE RecName:
+         * Full=Arginine biosynthesis bifunctional protein argJ beta chain;
          */
         DeLineObject deObject = new DeLineObject();
         deObject.recName = new DeLineObject.Name();
