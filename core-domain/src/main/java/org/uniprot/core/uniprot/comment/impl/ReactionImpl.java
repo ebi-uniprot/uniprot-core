@@ -87,7 +87,7 @@ public class ReactionImpl implements Reaction {
                                 .collect(Collectors.joining(", ")))
                 .append(";");
         if ((ecNumber != null) && ecNumber.isValid()) {
-            sb.append(" ECEntry=").append(ecNumber.getValue()).append(";");
+            sb.append(" EC=").append(ecNumber.getValue()).append(";");
         }
         if (!evidences.isEmpty()) {
             sb.append(" Evidence={")

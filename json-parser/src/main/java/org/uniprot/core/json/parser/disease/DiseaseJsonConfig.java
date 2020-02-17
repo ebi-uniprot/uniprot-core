@@ -1,6 +1,8 @@
 package org.uniprot.core.json.parser.disease;
 
+import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
+import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceImpl;
 import org.uniprot.core.cv.disease.impl.DiseaseEntryImpl;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
@@ -45,6 +47,7 @@ public class DiseaseJsonConfig extends JsonConfig {
         SimpleModule mod = new SimpleModule();
         mod.addAbstractTypeMapping(DiseaseEntry.class, DiseaseEntryImpl.class);
         mod.addAbstractTypeMapping(Keyword.class, KeywordImpl.class);
+        mod.addAbstractTypeMapping(DiseaseCrossReference.class, DiseaseCrossReferenceImpl.class);
 
         objMapper.registerModule(mod);
 

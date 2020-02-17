@@ -166,7 +166,7 @@ class DrLineParserTest {
     @Test
     void testWithCurlyBracket() {
         String dfLines =
-                "DR   GO; GO:0033942; F:4-alpha-D-{(1->4)-alpha-D-glucano}trehalose trehalohydrolase activity; IEA:UniProtKB-ECEntry.\n";
+                "DR   GO; GO:0033942; F:4-alpha-D-{(1->4)-alpha-D-glucano}trehalose trehalohydrolase activity; IEA:UniProtKB-EC.\n";
         UniprotLineParser<DrLineObject> parser =
                 new DefaultUniprotLineParserFactory().createDrLineParser();
         DrLineObject obj = parser.parse(dfLines);
@@ -176,7 +176,7 @@ class DrLineParserTest {
                 "GO",
                 "GO:0033942",
                 "F:4-alpha-D-{(1->4)-alpha-D-glucano}trehalose trehalohydrolase activity",
-                "IEA:UniProtKB-ECEntry",
+                "IEA:UniProtKB-EC",
                 null,
                 null);
     }

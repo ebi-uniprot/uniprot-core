@@ -18,13 +18,13 @@ import org.uniprot.core.uniprot.comment.ReactionReferenceType;
 public class CatalyticActivityCCLineBuilder extends CCLineBuilderAbstr<CatalyticActivityComment> {
     private static final String EVIDENCE = "Evidence=";
     private static final String XREF = "Xref=";
-    private static final String EC = "ECEntry=";
+    private static final String EC = "EC=";
     private static final String PHYSIO_DIRECTION = "PhysiologicalDirection=";
     private static final String REACTION = "Reaction=";
     // CC Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-
     // CC rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273,
     // CC ChEBI:CHEBI:58349, ChEBI:CHEBI:57964, ChEBI:CHEBI:57783;
-    // CC ECEntry=1.1.1.271; Evidence={ECO:0000255|HAMAP-Rule:MF_00956,
+    // CC EC=1.1.1.271; Evidence={ECO:0000255|HAMAP-Rule:MF_00956,
     // CC ECO:0000269|PubMed:10480878, ECO:0000269|PubMed:11021971,
     // CC ECO:0000269|PubMed:9473059};
     // CC PhysiologicalDirection=left-to-right; Xref=Rhea:RHEA:18886;

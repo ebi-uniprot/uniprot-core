@@ -22,7 +22,7 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
  * <p>These values can be found in the GN line of the flat file on the marked position.
  *
  * <pre class="example">
- * <font color="#AAAAAA"> DE   1-aminocyclopropane-1-carboxylate synthase 5 (ECEntry 4.4.1.14) (ACC
+ * <font color="#AAAAAA"> DE   1-aminocyclopropane-1-carboxylate synthase 5 (EC 4.4.1.14) (ACC
  * DE   synthase 5) (S-adenosyl-L-methionine methylthioadenosine-lyase 5)
  * DE   (Ethylene-overproduction protein 2).
  * GN   Name=ACS5; Synonyms=ACC5, ETO2; OrderedLocusNames=At5g65800;

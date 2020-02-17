@@ -3,7 +3,7 @@ package org.uniprot.core.flatfile.writer.impl;
 import java.util.*;
 
 public class FFLineWrapper {
-    private static final String[] NOT_WRAPPED = {"->", "-->", "- ", "ECEntry ", "TC ", "ECO:"};
+    private static final String[] NOT_WRAPPED = {"->", "-->", "- ", "EC ", "TC ", "ECO:"};
     //	private final static String[] DASHS ={"->", "-->", "- "};
     private static final String DASH = "-";
 

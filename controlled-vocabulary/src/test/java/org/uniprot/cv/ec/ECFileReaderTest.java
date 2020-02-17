@@ -79,7 +79,7 @@ class ECFileReaderTest {
 
         List<ECEntry> retList = new ECFileReader.ECClassFileReader().parseLines(input);
         assertAll(
-                "ECEntry dat file parsing result",
+                "EC dat file parsing result",
                 () -> assertNotNull(retList),
                 () -> assertThat(retList, hasSize(2)),
                 () ->
@@ -148,7 +148,7 @@ class ECFileReaderTest {
                         "CF   Zn(2+).",
                         "CC   -!- Some members of this group oxidize only primary alcohols; others act",
                         "CC       also on secondary alcohols.",
-                        "CC   -!- May be identical with ECEntry 1.1.1.19, ECEntry 1.1.1.33 and ECEntry 1.1.1.55.",
+                        "CC   -!- May be identical with EC 1.1.1.19, EC 1.1.1.33 and EC 1.1.1.55.",
                         "CC   -!- Re-specific with respect to NADPH.",
                         "PR   PROSITE; PDOC00061;",
                         "DR   Q6AZW2, A1A1A_DANRE;  Q568L5, A1A1B_DANRE;  Q24857, ADH3_ENTHI ;",
@@ -157,7 +157,7 @@ class ECFileReaderTest {
 
         List<ECEntry> retList = new ECFileReader.ECDatFileReader().parseLines(input);
         assertAll(
-                "ECEntry dat file parsing result",
+                "EC dat file parsing result",
                 () -> assertNotNull(retList),
                 () -> assertThat(retList, hasSize(2)),
                 () ->

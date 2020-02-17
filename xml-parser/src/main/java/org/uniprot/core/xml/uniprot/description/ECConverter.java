@@ -45,7 +45,7 @@ public class ECConverter implements Converter<EvidencedStringType, EC> {
         DbReferenceType xmlDbRef = xmlUniprotFactory.createDbReferenceType();
 
         xmlDbRef.setId(uniObj.getValue());
-        xmlDbRef.setType("ECEntry");
+        xmlDbRef.setType("EC");
 
         if (!uniObj.getEvidences().isEmpty()) {
             List<Integer> ev = evRefMapper.writeEvidences(uniObj.getEvidences());

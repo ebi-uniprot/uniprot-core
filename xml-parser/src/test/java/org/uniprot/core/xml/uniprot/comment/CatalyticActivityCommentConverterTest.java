@@ -57,7 +57,7 @@ class CatalyticActivityCommentConverterTest {
         reactionType.setText("another text");
         reactionType.getDbReference().add(createDbReferenceType("ChEBI", "CHEBI:29105"));
         reactionType.getDbReference().add(createDbReferenceType("Rhea", "RHEA:125"));
-        reactionType.getDbReference().add(createDbReferenceType("ECEntry", "1.2.1.32"));
+        reactionType.getDbReference().add(createDbReferenceType("EC", "1.2.1.32"));
         reactionType.getEvidence().add(2);
         reactionType.getEvidence().add(3);
 
@@ -139,7 +139,7 @@ class CatalyticActivityCommentConverterTest {
         assertEquals(4, reactionType.getDbReference().size());
         assertEquals("Rhea", reactionType.getDbReference().get(2).getType());
         assertEquals("RHEA:322", reactionType.getDbReference().get(2).getId());
-        assertEquals("ECEntry", reactionType.getDbReference().get(3).getType());
+        assertEquals("EC", reactionType.getDbReference().get(3).getType());
         assertEquals("1.1.2.42", reactionType.getDbReference().get(3).getId());
 
         List<Integer> evs = reactionType.getEvidence();
@@ -197,7 +197,7 @@ class CatalyticActivityCommentConverterTest {
         assertEquals(4, reactionType.getDbReference().size());
         assertEquals("Rhea", reactionType.getDbReference().get(2).getType());
         assertEquals("RHEA:322", reactionType.getDbReference().get(2).getId());
-        assertEquals("ECEntry", reactionType.getDbReference().get(3).getType());
+        assertEquals("EC", reactionType.getDbReference().get(3).getType());
         assertEquals("1.1.2.42", reactionType.getDbReference().get(3).getId());
 
         List<Integer> evs = reactionType.getEvidence();
@@ -224,7 +224,7 @@ class CatalyticActivityCommentConverterTest {
         assertEquals("some value", reactionType.getText());
         assertEquals(1, reactionType.getDbReference().size());
 
-        assertEquals("ECEntry", reactionType.getDbReference().get(0).getType());
+        assertEquals("EC", reactionType.getDbReference().get(0).getType());
         assertEquals("1.1.2.42", reactionType.getDbReference().get(0).getId());
 
         List<Integer> evs = reactionType.getEvidence();
