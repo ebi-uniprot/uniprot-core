@@ -8,6 +8,7 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceBuilder;
 import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceImpl;
 
 public class CrossReferenceTest {
@@ -40,14 +41,14 @@ public class CrossReferenceTest {
 
     @Test
     void testToStringWithoutProps() {
-        DiseaseCrossReferenceImpl xref = createCrossRef(false);
+        DiseaseCrossReference xref = createCrossRef(false);
         String expected = this.dbType + "; " + this.id + ".";
         Assertions.assertEquals(expected, xref.toString());
     }
 
     @Test
     void testToStringWithProps() {
-        DiseaseCrossReferenceImpl xref = createCrossRef(true);
+        DiseaseCrossReference xref = createCrossRef(true);
         String expected = this.dbType + "; " + this.id;
         for (String property : this.props) {
             expected = expected + "; " + property;
@@ -58,30 +59,30 @@ public class CrossReferenceTest {
 
     @Test
     void testEqualsValue() {
-        DiseaseCrossReferenceImpl xref1 = createCrossRef(false);
-        DiseaseCrossReferenceImpl xref2 = createCrossRef(false);
+        DiseaseCrossReference xref1 = createCrossRef(false);
+        DiseaseCrossReference xref2 = createCrossRef(false);
         Assertions.assertTrue(xref1.equals(xref2));
         Assertions.assertEquals(xref1.hashCode(), xref2.hashCode());
     }
 
     @Test
     void testEqualsRef() {
-        DiseaseCrossReferenceImpl xref1 = createCrossRef(false);
+        DiseaseCrossReference xref1 = createCrossRef(false);
         Assertions.assertTrue(xref1.equals(xref1));
         Assertions.assertEquals(xref1.hashCode(), xref1.hashCode());
     }
 
     @Test
     void testEqualsWithNull() {
-        DiseaseCrossReferenceImpl xref1 = createCrossRef(false);
+        DiseaseCrossReference xref1 = createCrossRef(false);
         Assertions.assertFalse(xref1.equals(null));
     }
 
-    private DiseaseCrossReferenceImpl createCrossRef(boolean withProps) {
+    private DiseaseCrossReference createCrossRef(boolean withProps) {
         if (withProps) {
-            return new DiseaseCrossReferenceImpl(this.dbType, this.id, this.props);
+            return new DiseaseCrossReferenceBuilder().databaseType(this.dbType).id(this.id).propertiesSet(this.props).build();
         } else {
-            return new DiseaseCrossReferenceImpl(this.dbType, this.id);
+            return new DiseaseCrossReferenceBuilder().databaseType(this.dbType).id(this.id).build();
         }
     }
 }

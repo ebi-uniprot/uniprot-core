@@ -1,11 +1,11 @@
 package org.uniprot.core.flatfile.antlr;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.ss.SsLineObject;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SsLineParserTest {
     @Test

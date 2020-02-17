@@ -6,7 +6,7 @@ package org.uniprot.core.cv.ec;
  * @author Edd
  */
 public interface ECEntry {
-    String id();
+    String getId();
 
-    String label();
+    String getLabel();
 }

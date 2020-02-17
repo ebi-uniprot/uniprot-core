@@ -11,6 +11,8 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceBuilder;
+import org.uniprot.core.cv.disease.builder.DiseaseEntryBuilder;
 import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceImpl;
 import org.uniprot.core.cv.disease.impl.DiseaseEntryImpl;
 import org.uniprot.core.cv.keyword.Keyword;
@@ -71,9 +73,7 @@ public class DiseaseImplTest {
     @Test
     void testNotEquals() {
         DiseaseEntry d1 = createDisease();
-        DiseaseEntry d2 = createDisease();
-        DiseaseEntryImpl d21 = (DiseaseEntryImpl) d2;
-        d21.setKeywords(Collections.emptyList());
+        DiseaseEntry d2 = DiseaseEntryBuilder.from(d1).keywordsSet(Collections.emptyList()).build();
         Assertions.assertNotEquals(d1, d2);
     }
 
@@ -99,6 +99,6 @@ public class DiseaseImplTest {
         List<String> props = Arrays.asList("prop1", "prop2", "prop3");
         String id = "XREF-123" + randomiser + this.uuid;
         String databaseType = "SAMPLE_TYPE" + randomiser + this.uuid;
-        return new DiseaseCrossReferenceImpl(databaseType, id, props);
+        return new DiseaseCrossReferenceBuilder().databaseType(databaseType).id(id).propertiesSet(props).build();
     }
 }

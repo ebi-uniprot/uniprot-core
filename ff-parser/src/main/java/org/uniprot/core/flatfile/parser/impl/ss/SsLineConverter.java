@@ -1,6 +1,8 @@
 package org.uniprot.core.flatfile.parser.impl.ss;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.uniprot.InternalLine;
 import org.uniprot.core.uniprot.InternalLineType;
@@ -12,8 +14,7 @@ import org.uniprot.core.uniprot.builder.SourceLineBuilder;
 import org.uniprot.core.uniprot.evidence.EvidenceLine;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceLineBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.base.Strings;
 
 public class SsLineConverter implements Converter<SsLineObject, InternalSection> {
     @Override

@@ -1,4 +1,6 @@
-package org.uniprot.core.cv.ec;
+package org.uniprot.core.cv.ec.impl;
+
+import org.uniprot.core.cv.ec.ECEntry;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -19,12 +21,12 @@ public class ECEntryImpl implements ECEntry, Serializable {
     }
 
     @Override
-    public String id() {
+    public String getId() {
         return id;
     }
 
     @Override
-    public String label() {
+    public String getLabel() {
         return label;
     }
 
@@ -39,24 +41,5 @@ public class ECEntryImpl implements ECEntry, Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id, label);
-    }
-
-    public static class Builder {
-        private String id;
-        private String label;
-
-        public Builder id(String id) {
-            this.id = id;
-            return this;
-        }
-
-        public Builder label(String label) {
-            this.label = label;
-            return this;
-        }
-
-        public ECEntry build() {
-            return new ECEntryImpl(id, label);
-        }
     }
 }

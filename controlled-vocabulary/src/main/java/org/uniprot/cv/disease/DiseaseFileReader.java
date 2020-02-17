@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
+import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceBuilder;
 import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceImpl;
 import org.uniprot.core.cv.disease.impl.DiseaseEntryImpl;
 import org.uniprot.core.cv.keyword.Keyword;
@@ -79,7 +80,7 @@ public final class DiseaseFileReader extends AbstractFileReader<DiseaseEntry> {
                         .map(this::trimSpacesAndRemoveLastDot)
                         .collect(Collectors.toList());
 
-        return new DiseaseCrossReferenceImpl(type, id, des);
+        return new DiseaseCrossReferenceBuilder().databaseType(type).id(id).propertiesSet(des).build();
     }
 
     private String trimSpacesAndRemoveLastDot(String str) {

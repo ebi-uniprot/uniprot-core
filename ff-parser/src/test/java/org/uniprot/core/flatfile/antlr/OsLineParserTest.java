@@ -25,7 +25,8 @@ class OsLineParserTest {
                 new DefaultUniprotLineParserFactory().createOsLineParser();
         OsLineObject obj = parser.parse(osLines);
         assertEquals(
-                "Rous (strain Schmidt-Ruppin A) (Avian leukosis virus-RSA)", obj.getOrganismSpecies());
+                "Rous (strain Schmidt-Ruppin A) (Avian leukosis virus-RSA)",
+                obj.getOrganismSpecies());
     }
 
     @Test
@@ -38,7 +39,8 @@ class OsLineParserTest {
                 new DefaultUniprotLineParserFactory().createOsLineParser();
         OsLineObject obj = parser.parse(osLines);
         assertEquals(
-                "Rous (strain Schmidt-Ruppin A) (Avian leukosis virus-RSA)", obj.getOrganismSpecies());
+                "Rous (strain Schmidt-Ruppin A) (Avian leukosis virus-RSA)",
+                obj.getOrganismSpecies());
     }
 
     @Test
@@ -59,7 +61,8 @@ class OsLineParserTest {
                 new DefaultUniprotLineParserFactory().createOsLineParser();
         OsLineObject obj = parser.parse(osLines);
         assertEquals(
-                "Salmonella enterica subsp. enterica serovar Heidelberg str", obj.getOrganismSpecies());
+                "Salmonella enterica subsp. enterica serovar Heidelberg str",
+                obj.getOrganismSpecies());
     }
 
     @Test

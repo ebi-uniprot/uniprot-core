@@ -29,8 +29,8 @@ class ECRepoFactoryTest {
                 ecRepo.getEC(id1)
                         .map(
                                 ec -> {
-                                    assertThat(ec.id(), is(id1));
-                                    assertThat(ec.label(), is("Oxidoreductases"));
+                                    assertThat(ec.getId(), is(id1));
+                                    assertThat(ec.getLabel(), is("Oxidoreductases"));
                                     return true;
                                 })
                         .orElse(false));
@@ -40,8 +40,8 @@ class ECRepoFactoryTest {
                 ecRepo.getEC(id2)
                         .map(
                                 ec -> {
-                                    assertThat(ec.id(), is(id2));
-                                    assertThat(ec.label(), is("With other acceptors"));
+                                    assertThat(ec.getId(), is(id2));
+                                    assertThat(ec.getLabel(), is("With other acceptors"));
                                     return true;
                                 })
                         .orElse(false));
@@ -52,8 +52,8 @@ class ECRepoFactoryTest {
                 ecRepo.getEC(id3)
                         .map(
                                 ec -> {
-                                    assertThat(ec.id(), is(id3));
-                                    assertThat(ec.label(), is("Alcohol dehydrogenase (NADP(+))"));
+                                    assertThat(ec.getId(), is(id3));
+                                    assertThat(ec.getLabel(), is("Alcohol dehydrogenase (NADP(+))"));
                                     return true;
                                 })
                         .orElse(false));

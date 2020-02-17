@@ -7,7 +7,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.uniprot.core.cv.ec.ECEntry;
-import org.uniprot.core.cv.ec.ECEntryImpl;
+import org.uniprot.core.cv.ec.ECEntryBuilder;
+import org.uniprot.core.cv.ec.impl.ECEntryImpl;
 import org.uniprot.cv.common.AbstractFileReader;
 
 public class ECFileReader extends AbstractFileReader<ECEntry> {
@@ -67,7 +68,7 @@ public class ECFileReader extends AbstractFileReader<ECEntry> {
         @Override
         public List<ECEntry> parseLines(List<String> lines) {
             List<ECEntry> ecs = new ArrayList<>();
-            ECEntryImpl.Builder builder = new ECEntryImpl.Builder();
+            ECEntryBuilder builder = new ECEntryBuilder();
             for (String line : lines) {
                 if (line.startsWith("ID")) {
                     builder.id(removePrefixFrom(line));
@@ -76,7 +77,7 @@ public class ECFileReader extends AbstractFileReader<ECEntry> {
                 }
                 if (line.startsWith("//")) {
                     ECEntry ec = builder.build();
-                    if (Objects.nonNull(ec.id()) && Objects.nonNull(ec.label())) {
+                    if (Objects.nonNull(ec.getId()) && Objects.nonNull(ec.getLabel())) {
                         ecs.add(ec);
                     }
                 }

@@ -6,24 +6,22 @@ import java.util.Objects;
 
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 
+import static org.uniprot.core.util.Utils.unmodifiableList;
+
 public class DiseaseCrossReferenceImpl implements DiseaseCrossReference {
     private static final long serialVersionUID = -1741904153011477476L;
     private final String databaseType;
     private final String id;
     private final List<String> properties;
 
-    private DiseaseCrossReferenceImpl() {
+    DiseaseCrossReferenceImpl() {
         this(null, null, Collections.emptyList());
-    }
-
-    public DiseaseCrossReferenceImpl(String databaseType, String id) {
-        this(databaseType, id, Collections.emptyList());
     }
 
     public DiseaseCrossReferenceImpl(String databaseType, String id, List<String> properties) {
         this.databaseType = databaseType;
         this.id = id;
-        this.properties = properties;
+        this.properties = unmodifiableList(properties);
     }
 
     @Override

@@ -84,7 +84,13 @@ class FtLineNoHeaderParserTest {
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getFts().size());
-        verify(obj.getFts().get(0), FTType.BINDING, "138", "138", "NAD(P)HX; via amide nitrogen", null);
+        verify(
+                obj.getFts().get(0),
+                FTType.BINDING,
+                "138",
+                "138",
+                "NAD(P)HX; via amide nitrogen",
+                null);
     }
 
     @Test
@@ -225,7 +231,13 @@ class FtLineNoHeaderParserTest {
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getFts().size());
-        verify(obj.getFts().get(0), FTType.METAL, "186", "186", "Calcium; via carbonyl oxygen", null);
+        verify(
+                obj.getFts().get(0),
+                FTType.METAL,
+                "186",
+                "186",
+                "Calcium; via carbonyl oxygen",
+                null);
         verifyEvidences(
                 obj,
                 obj.getFts().get(0),

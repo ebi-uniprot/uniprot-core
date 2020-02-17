@@ -1,16 +1,16 @@
 package org.uniprot.core.flatfile.antlr;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.rl.RlLineObject;
 import org.uniprot.core.flatfile.parser.impl.rl.RlLineObject.SubmissionDB;
-
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class RlLineParserTest {
     @Test
@@ -201,7 +201,11 @@ class RlLineParserTest {
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Thesis);
-        verify((RlLineObject.Thesis) obj.getReference(), "University of Geneva", "Switzerland", 1977);
+        verify(
+                (RlLineObject.Thesis) obj.getReference(),
+                "University of Geneva",
+                "Switzerland",
+                1977);
     }
 
     @Test
@@ -211,7 +215,11 @@ class RlLineParserTest {
                 new DefaultUniprotLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Thesis);
-        verify((RlLineObject.Thesis) obj.getReference(), "A. Mickiewicz University", "Poland", 2001);
+        verify(
+                (RlLineObject.Thesis) obj.getReference(),
+                "A. Mickiewicz University",
+                "Poland",
+                2001);
     }
 
     @Test
@@ -646,7 +654,8 @@ class RlLineParserTest {
                 "Edinburgh",
                 null,
                 2009);
-        assertEquals("abstract#501734213", ((RlLineObject.Book) obj.getReference()).getPageString());
+        assertEquals(
+                "abstract#501734213", ((RlLineObject.Book) obj.getReference()).getPageString());
     }
 
     @Test
