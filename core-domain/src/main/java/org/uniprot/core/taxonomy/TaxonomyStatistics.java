@@ -1,24 +1,12 @@
 package org.uniprot.core.taxonomy;
 
-import java.io.Serializable;
+import org.uniprot.core.Statistics;
 
-public interface TaxonomyStatistics extends Serializable {
-
-    long getReviewedProteinCount();
-
-    long getUnreviewedProteinCount();
+public interface TaxonomyStatistics extends Statistics {
 
     long getReferenceProteomeCount();
 
     long getProteomeCount();
-
-    default boolean hasReviewedProteinCount() {
-        return getReviewedProteinCount() > 0L;
-    }
-
-    default boolean hasUnreviewedProteinCount() {
-        return getUnreviewedProteinCount() > 0L;
-    }
 
     default boolean hasReferenceProteomeCount() {
         return getReferenceProteomeCount() > 0L;

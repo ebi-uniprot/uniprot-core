@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
+import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.Keyword;
 
@@ -34,5 +35,5 @@ public interface SubcellularLocationEntry extends Serializable {
 
     List<SubcellularLocationEntry> getPartOf();
 
-    SubcellularLocationStatistics getStatistics();
+    Statistics getStatistics();
 }

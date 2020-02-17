@@ -7,27 +7,27 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.uniprot.core.cv.chebi.Chebi;
-import org.uniprot.core.cv.chebi.ChebiBuilder;
+import org.uniprot.core.cv.chebi.ChebiEntry;
+import org.uniprot.core.cv.chebi.ChebiEntryBuilder;
 import org.uniprot.cv.common.AbstractFileReader;
 
-public class ChebiFileReader extends AbstractFileReader<Chebi> {
+public class ChebiFileReader extends AbstractFileReader<ChebiEntry> {
     private static final String ID_PREFIX = "id: CHEBI:";
     private static final String NAME_PREFIX = "name: ";
     private static final Pattern INCHI_PATTERN =
             Pattern.compile("^property_value: \\S+chebi/inchikey\\s+\"(.*)\"\\s.*$");
 
     @Override
-    public List<Chebi> parseLines(List<String> lines) {
-        List<Chebi> chebiList = new ArrayList<>();
-        ChebiBuilder chebiBuilder = null;
+    public List<ChebiEntry> parseLines(List<String> lines) {
+        List<ChebiEntry> chebiList = new ArrayList<>();
+        ChebiEntryBuilder chebiBuilder = null;
         for (String line : lines) {
             if (line.startsWith("[Term]")) {
                 if (notNull(chebiBuilder)) {
                     chebiList.add(chebiBuilder.build());
                 }
                 // start of new term
-                chebiBuilder = new ChebiBuilder();
+                chebiBuilder = new ChebiEntryBuilder();
             }
             if (notNull(chebiBuilder)) {
                 Matcher inchiMatcher = INCHI_PATTERN.matcher(line);

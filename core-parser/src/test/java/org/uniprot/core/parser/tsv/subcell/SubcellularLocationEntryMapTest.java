@@ -8,12 +8,13 @@ import java.util.Collections;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.Statistics;
+import org.uniprot.core.builder.StatisticsBuilder;
 import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
 import org.uniprot.core.cv.subcell.SubcellLocationCategory;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryImpl;
-import org.uniprot.core.cv.subcell.impl.SubcellularLocationStatisticsImpl;
 
 /**
  * @author lgonzales
@@ -60,6 +61,8 @@ class SubcellularLocationEntryMapTest {
     }
 
     private SubcellularLocationEntry createSubcellularLocationEntry(boolean hasChild) {
+        Statistics statistics =
+                new StatisticsBuilder().reviewedProteinCount(10).unreviewedProteinCount(20).build();
         SubcellularLocationEntryImpl entry = new SubcellularLocationEntryImpl();
         entry.setAccession("SL-0001");
         entry.setContent("content value");
@@ -71,7 +74,7 @@ class SubcellularLocationEntryMapTest {
         entry.setLinks(Collections.singletonList("linkValue"));
         entry.setNote("noteValue");
         entry.setReferences(Collections.singletonList("referenceValue"));
-        entry.setStatistics(new SubcellularLocationStatisticsImpl(10L, 20L));
+        entry.setStatistics(statistics);
         entry.setSynonyms(Collections.singletonList("synonymValue"));
         entry.setCategory(SubcellLocationCategory.LOCATION);
         if (hasChild) {

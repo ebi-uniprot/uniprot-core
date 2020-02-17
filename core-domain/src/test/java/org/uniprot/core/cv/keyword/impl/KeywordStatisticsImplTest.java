@@ -5,7 +5,8 @@ import java.util.concurrent.ThreadLocalRandom;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.keyword.KeywordStatistics;
+import org.uniprot.core.Statistics;
+import org.uniprot.core.builder.StatisticsBuilder;
 
 public class KeywordStatisticsImplTest {
 
@@ -20,41 +21,44 @@ public class KeywordStatisticsImplTest {
 
     @Test
     void testCreateKeywordStats() {
-        KeywordStatistics kw = createKeywordStatistics(this.reviewed, this.unreviewed);
+        Statistics kw = createKeywordStatistics(this.reviewed, this.unreviewed);
         Assertions.assertEquals(this.reviewed, kw.getReviewedProteinCount());
         Assertions.assertEquals(this.unreviewed, kw.getUnreviewedProteinCount());
     }
 
     @Test
     void testValueEqual() {
-        KeywordStatistics kw1 = createKeywordStatistics(this.reviewed, this.unreviewed);
-        KeywordStatistics kw2 = createKeywordStatistics(this.reviewed, this.unreviewed);
+        Statistics kw1 = createKeywordStatistics(this.reviewed, this.unreviewed);
+        Statistics kw2 = createKeywordStatistics(this.reviewed, this.unreviewed);
         Assertions.assertTrue(kw1.equals(kw2));
         Assertions.assertTrue(kw1.hashCode() == kw2.hashCode());
     }
 
     @Test
     void testValueNotEqual() {
-        KeywordStatistics kw1 = createKeywordStatistics(this.reviewed, this.unreviewed);
+        Statistics kw1 = createKeywordStatistics(this.reviewed, this.unreviewed);
         this.unreviewed = this.unreviewed - 1;
-        KeywordStatistics kw2 = createKeywordStatistics(this.reviewed, this.unreviewed);
+        Statistics kw2 = createKeywordStatistics(this.reviewed, this.unreviewed);
         Assertions.assertFalse(kw1.equals(kw2));
     }
 
     @Test
     void testRefEqual() {
-        KeywordStatistics kw1 = createKeywordStatistics(this.reviewed, this.unreviewed);
+        Statistics kw1 = createKeywordStatistics(this.reviewed, this.unreviewed);
         Assertions.assertTrue(kw1.equals(kw1));
         Assertions.assertTrue(kw1.hashCode() == kw1.hashCode());
     }
 
     @Test
     void testEqualWithNull() {
-        KeywordStatistics kw = createKeywordStatistics(this.reviewed, this.unreviewed);
+        Statistics kw = createKeywordStatistics(this.reviewed, this.unreviewed);
         Assertions.assertFalse(kw.equals(null));
     }
 
-    public static KeywordStatistics createKeywordStatistics(long reviewed, long unreviewed) {
-        return new KeywordStatisticsImpl(reviewed, unreviewed);
+    public static Statistics createKeywordStatistics(long reviewed, long unreviewed) {
+        return new StatisticsBuilder()
+                .reviewedProteinCount(reviewed)
+                .unreviewedProteinCount(unreviewed)
+                .build();
     }
 }

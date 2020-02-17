@@ -8,6 +8,7 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceImpl;
 
 public class CrossReferenceTest {
     private String random;
@@ -29,7 +30,7 @@ public class CrossReferenceTest {
     @Test
     void testCreateObject() {
 
-        CrossReference xref = createCrossRef(false);
+        DiseaseCrossReference xref = createCrossRef(false);
         // verify the values
         Assertions.assertEquals(this.id, xref.getId());
         Assertions.assertEquals(this.dbType, xref.getDatabaseType());
@@ -39,14 +40,14 @@ public class CrossReferenceTest {
 
     @Test
     void testToStringWithoutProps() {
-        CrossReference xref = createCrossRef(false);
+        DiseaseCrossReferenceImpl xref = createCrossRef(false);
         String expected = this.dbType + "; " + this.id + ".";
         Assertions.assertEquals(expected, xref.toString());
     }
 
     @Test
     void testToStringWithProps() {
-        CrossReference xref = createCrossRef(true);
+        DiseaseCrossReferenceImpl xref = createCrossRef(true);
         String expected = this.dbType + "; " + this.id;
         for (String property : this.props) {
             expected = expected + "; " + property;
@@ -57,30 +58,30 @@ public class CrossReferenceTest {
 
     @Test
     void testEqualsValue() {
-        CrossReference xref1 = createCrossRef(false);
-        CrossReference xref2 = createCrossRef(false);
+        DiseaseCrossReferenceImpl xref1 = createCrossRef(false);
+        DiseaseCrossReferenceImpl xref2 = createCrossRef(false);
         Assertions.assertTrue(xref1.equals(xref2));
         Assertions.assertEquals(xref1.hashCode(), xref2.hashCode());
     }
 
     @Test
     void testEqualsRef() {
-        CrossReference xref1 = createCrossRef(false);
+        DiseaseCrossReferenceImpl xref1 = createCrossRef(false);
         Assertions.assertTrue(xref1.equals(xref1));
         Assertions.assertEquals(xref1.hashCode(), xref1.hashCode());
     }
 
     @Test
     void testEqualsWithNull() {
-        CrossReference xref1 = createCrossRef(false);
+        DiseaseCrossReferenceImpl xref1 = createCrossRef(false);
         Assertions.assertFalse(xref1.equals(null));
     }
 
-    private CrossReference createCrossRef(boolean withProps) {
+    private DiseaseCrossReferenceImpl createCrossRef(boolean withProps) {
         if (withProps) {
-            return new CrossReference(this.dbType, this.id, this.props);
+            return new DiseaseCrossReferenceImpl(this.dbType, this.id, this.props);
         } else {
-            return new CrossReference(this.dbType, this.id);
+            return new DiseaseCrossReferenceImpl(this.dbType, this.id);
         }
     }
 }

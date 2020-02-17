@@ -1,38 +1,42 @@
-package org.uniprot.core.cv.disease;
+package org.uniprot.core.cv.disease.impl;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class CrossReference implements Serializable {
+import org.uniprot.core.cv.disease.DiseaseCrossReference;
+
+public class DiseaseCrossReferenceImpl implements DiseaseCrossReference {
     private static final long serialVersionUID = -1741904153011477476L;
     private final String databaseType;
     private final String id;
     private final List<String> properties;
 
-    private CrossReference() {
+    private DiseaseCrossReferenceImpl() {
         this(null, null, Collections.emptyList());
     }
 
-    public CrossReference(String databaseType, String id) {
+    public DiseaseCrossReferenceImpl(String databaseType, String id) {
         this(databaseType, id, Collections.emptyList());
     }
 
-    public CrossReference(String databaseType, String id, List<String> properties) {
+    public DiseaseCrossReferenceImpl(String databaseType, String id, List<String> properties) {
         this.databaseType = databaseType;
         this.id = id;
         this.properties = properties;
     }
 
+    @Override
     public String getDatabaseType() {
         return databaseType;
     }
 
+    @Override
     public String getId() {
         return id;
     }
 
+    @Override
     public List<String> getProperties() {
         return properties;
     }
@@ -62,7 +66,7 @@ public class CrossReference implements Serializable {
         if (obj == null || this.getClass() != obj.getClass()) {
             return false;
         }
-        CrossReference other = (CrossReference) obj;
+        DiseaseCrossReferenceImpl other = (DiseaseCrossReferenceImpl) obj;
         return Objects.equals(this.id, other.id)
                 && Objects.equals(this.databaseType, other.databaseType)
                 && Objects.equals(this.properties, other.properties);

@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.cv.disease.CrossReference;
-import org.uniprot.core.cv.disease.Disease;
+import org.uniprot.core.cv.disease.DiseaseCrossReference;
+import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
 import org.uniprot.core.util.Utils;
@@ -14,9 +14,9 @@ import org.uniprot.core.util.Utils;
 public class DiseaseEntryMap implements NamedValueMap {
     public static final String EMPTY_STRING = "";
 
-    private final Disease diseaseEntry;
+    private final DiseaseEntry diseaseEntry;
 
-    public DiseaseEntryMap(Disease diseaseEntry) {
+    public DiseaseEntryMap(DiseaseEntry diseaseEntry) {
         this.diseaseEntry = diseaseEntry;
     }
 
@@ -47,10 +47,10 @@ public class DiseaseEntryMap implements NamedValueMap {
         }
     }
 
-    private String getCrossReferences(List<CrossReference> crossReferences) {
+    private String getCrossReferences(List<DiseaseCrossReference> crossReferences) {
         if (Utils.notNullNotEmpty(crossReferences)) {
             return crossReferences.stream()
-                    .map(CrossReference::getId)
+                    .map(DiseaseCrossReference::getId)
                     .collect(Collectors.joining(","));
         } else {
             return EMPTY_STRING;

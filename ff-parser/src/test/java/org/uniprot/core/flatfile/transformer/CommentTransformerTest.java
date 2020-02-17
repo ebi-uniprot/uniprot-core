@@ -120,7 +120,7 @@ class CommentTransformerTest {
                         + " increased chance of bilateral cancers (cancer that develop in both breasts,"
                         + " or both ovaries, independently), frequent occurrence of breast cancer among men,"
                         + " increased incidence of tumors of other specific organs, such as the prostate."
-                        + " Note=Disease susceptibility is associated with variations affecting the gene"
+                        + " Note=DiseaseEntry susceptibility is associated with variations affecting the gene"
                         + " represented in this entry. Mutations in BRCA1 are thought to be responsible"
                         + " for more than 80% of inherited breast-ovarian cancer.";
         testComment(tString, CommentType.DISEASE);

@@ -53,7 +53,7 @@ class ProteinRecNameImplTest {
         List<Evidence> evidences = createEvidences();
         Name fullName = new NameImpl("a full Name", evidences);
         //	List<Name> shortNames = createShortNames();
-        //	List<EC> ecNumbers = createECNumbers();
+        //	List<ECEntry> ecNumbers = createECNumbers();
         ProteinRecName recName =
                 new ProteinRecNameBuilder()
                         .fullName(fullName)
@@ -89,7 +89,7 @@ class ProteinRecNameImplTest {
         List<Evidence> evidences = createEvidences();
         Name fullName = new NameImpl("a full Name", evidences);
         List<Name> shortNames = shortNames();
-        //	List<EC> ecNumbers = createECNumbers();
+        //	List<ECEntry> ecNumbers = createECNumbers();
         ProteinRecName recName =
                 new ProteinRecNameBuilder()
                         .fullName(fullName)

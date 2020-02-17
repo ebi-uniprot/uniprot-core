@@ -10,10 +10,10 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordStatistics;
 
 public class KeywordEntryImplTest {
 
@@ -26,7 +26,7 @@ public class KeywordEntryImplTest {
     private List<String> sites;
     private Keyword category;
     private List<KeywordEntry> children;
-    private KeywordStatistics statistics;
+    private Statistics statistics;
 
     @BeforeEach
     void setUp() {

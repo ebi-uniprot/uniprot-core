@@ -40,10 +40,10 @@ public class TextHelper {
                 parser.text_cc_disease_abbr_mim();
         Preconditions.checkState(
                 context.p_text_cc_disease_abbr_mim_abbr() != null,
-                "Not be able to parse CC Disease Abbr and MIM for String: " + string);
+                "Not be able to parse CC DiseaseEntry Abbr and MIM for String: " + string);
         Preconditions.checkState(
                 context.p_text_cc_disease_abbr_mim_mim() != null,
-                "Not be able to parse CC Disease Abbr and MIM for String: " + string);
+                "Not be able to parse CC DiseaseEntry Abbr and MIM for String: " + string);
 
         return new String[] {
             context.p_text_cc_disease_abbr_mim_abbr().getText(),

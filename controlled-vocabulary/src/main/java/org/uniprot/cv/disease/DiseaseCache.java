@@ -4,16 +4,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.uniprot.core.cv.disease.Disease;
+import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.cv.common.AbstractFileReader;
 import org.uniprot.cv.common.BaseCache;
 
-public enum DiseaseCache implements BaseCache<Disease> {
+public enum DiseaseCache implements BaseCache<DiseaseEntry> {
     INSTANCE;
     public static final String FTP_LOCATION =
             "ftp://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/docs/humdisease.txt";
-    private Map<String, List<Disease>> locationDiseaseMap = new HashMap<>();
-    private AbstractFileReader<Disease> reader;
+    private Map<String, List<DiseaseEntry>> locationDiseaseMap = new HashMap<>();
+    private AbstractFileReader<DiseaseEntry> reader;
 
     private String defaultDataLocation = FTP_LOCATION;
 
@@ -23,12 +23,12 @@ public enum DiseaseCache implements BaseCache<Disease> {
     }
 
     @Override
-    public Map<String, List<Disease>> getCacheMap() {
+    public Map<String, List<DiseaseEntry>> getCacheMap() {
         return this.locationDiseaseMap;
     }
 
     @Override
-    public AbstractFileReader<Disease> getReader() {
+    public AbstractFileReader<DiseaseEntry> getReader() {
         return this.reader != null ? this.reader : (this.reader = new DiseaseFileReader());
     }
 }

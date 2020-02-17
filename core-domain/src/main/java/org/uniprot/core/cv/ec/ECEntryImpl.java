@@ -8,12 +8,12 @@ import java.util.Objects;
  *
  * @author Edd
  */
-public class ECImpl implements EC, Serializable {
+public class ECEntryImpl implements ECEntry, Serializable {
     private static final long serialVersionUID = -5403788164376756075L;
     private final String id;
     private final String label;
 
-    public ECImpl(String id, String label) {
+    public ECEntryImpl(String id, String label) {
         this.id = id;
         this.label = label;
     }
@@ -32,7 +32,7 @@ public class ECImpl implements EC, Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ECImpl ec = (ECImpl) o;
+        ECEntryImpl ec = (ECEntryImpl) o;
         return Objects.equals(id, ec.id) && Objects.equals(label, ec.label);
     }
 
@@ -55,8 +55,8 @@ public class ECImpl implements EC, Serializable {
             return this;
         }
 
-        public EC build() {
-            return new ECImpl(id, label);
+        public ECEntry build() {
+            return new ECEntryImpl(id, label);
         }
     }
 }

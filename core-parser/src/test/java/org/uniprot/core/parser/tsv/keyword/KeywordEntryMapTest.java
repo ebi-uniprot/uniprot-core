@@ -10,12 +10,13 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.Statistics;
+import org.uniprot.core.builder.StatisticsBuilder;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordEntryImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
-import org.uniprot.core.cv.keyword.impl.KeywordStatisticsImpl;
 
 class KeywordEntryMapTest {
 
@@ -55,6 +56,8 @@ class KeywordEntryMapTest {
     }
 
     private KeywordEntryImpl getKeywordEntry(boolean hierarchy) {
+        Statistics statistics =
+                new StatisticsBuilder().reviewedProteinCount(10).unreviewedProteinCount(20).build();
         KeywordEntryImpl keywordEntry = new KeywordEntryImpl();
         keywordEntry.setDefinition("Definition value");
         keywordEntry.setKeyword(getKeyword());
@@ -68,7 +71,7 @@ class KeywordEntryMapTest {
         keywordEntry.setParents(Collections.singleton(parent));
 
         keywordEntry.setCategory(getKeyword());
-        keywordEntry.setStatistics(new KeywordStatisticsImpl(10, 20));
+        keywordEntry.setStatistics(statistics);
 
         if (hierarchy) {
             KeywordEntryImpl children = getKeywordEntry(false);

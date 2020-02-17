@@ -9,27 +9,27 @@ import org.uniprot.core.Builder;
  *
  * @author Edd
  */
-public class ChebiBuilder implements Builder<Chebi> {
+public class ChebiEntryBuilder implements Builder<ChebiEntry> {
     private String id;
     private String name;
     private String inchiKey;
 
-    public ChebiBuilder id(String id) {
+    public ChebiEntryBuilder id(String id) {
         this.id = id;
         return this;
     }
 
-    public ChebiBuilder name(String name) {
+    public ChebiEntryBuilder name(String name) {
         this.name = name;
         return this;
     }
 
-    public ChebiBuilder inchiKey(String inchiKey) {
+    public ChebiEntryBuilder inchiKey(String inchiKey) {
         this.inchiKey = inchiKey;
         return this;
     }
 
-    public @Nonnull Chebi build() {
-        return new ChebiImpl(id, name, inchiKey);
+    public @Nonnull ChebiEntry build() {
+        return new ChebiEntryImpl(id, name, inchiKey);
     }
 }

@@ -1,6 +1,6 @@
 package org.uniprot.cv.chebi;
 
-import org.uniprot.core.cv.chebi.Chebi;
+import org.uniprot.core.cv.chebi.ChebiEntry;
 
 /**
  * Created 05/06/19
@@ -8,5 +8,5 @@ import org.uniprot.core.cv.chebi.Chebi;
  * @author Edd
  */
 public interface ChebiRepo {
-    Chebi getById(String id);
+    ChebiEntry getById(String id);
 }

@@ -1,8 +1,8 @@
 package org.uniprot.core.json.parser.subcell;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.subcell.SubcellularLocationStatistics;
-import org.uniprot.core.cv.subcell.impl.SubcellularLocationStatisticsImpl;
+import org.uniprot.core.Statistics;
+import org.uniprot.core.builder.StatisticsBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
 /**
@@ -13,7 +13,8 @@ class SubcellularLocationStatisticsTest {
 
     @Test
     void testCompleteSubcellularLocationEntry() {
-        SubcellularLocationStatistics statistics = new SubcellularLocationStatisticsImpl(10L, 20L);
+        Statistics statistics =
+                new StatisticsBuilder().reviewedProteinCount(10).unreviewedProteinCount(20).build();
         ValidateJson.verifyJsonRoundTripParser(
                 SubcellularLocationJsonConfig.getInstance().getFullObjectMapper(), statistics);
         ValidateJson.verifyEmptyFields(statistics);
