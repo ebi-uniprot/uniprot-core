@@ -53,7 +53,8 @@ class ECRepoFactoryTest {
                         .map(
                                 ec -> {
                                     assertThat(ec.getId(), is(id3));
-                                    assertThat(ec.getLabel(), is("Alcohol dehydrogenase (NADP(+))"));
+                                    assertThat(
+                                            ec.getLabel(), is("Alcohol dehydrogenase (NADP(+))"));
                                     return true;
                                 })
                         .orElse(false));

@@ -1,9 +1,9 @@
 package org.uniprot.core.cv.ec;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.cv.ec.impl.ECEntryImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 07/06/19
@@ -29,8 +29,6 @@ public class ECEntryBuilder implements Builder<ECEntry> {
     }
 
     public static @Nonnull ECEntryBuilder from(@Nonnull ECEntry instance) {
-        return new ECEntryBuilder()
-          .id(instance.getId())
-          .label(instance.getLabel());
+        return new ECEntryBuilder().id(instance.getId()).label(instance.getLabel());
     }
 }

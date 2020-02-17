@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceBuilder;
-import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceImpl;
 
 public class CrossReferenceTest {
     private String random;
@@ -80,7 +79,11 @@ public class CrossReferenceTest {
 
     private DiseaseCrossReference createCrossRef(boolean withProps) {
         if (withProps) {
-            return new DiseaseCrossReferenceBuilder().databaseType(this.dbType).id(this.id).propertiesSet(this.props).build();
+            return new DiseaseCrossReferenceBuilder()
+                    .databaseType(this.dbType)
+                    .id(this.id)
+                    .propertiesSet(this.props)
+                    .build();
         } else {
             return new DiseaseCrossReferenceBuilder().databaseType(this.dbType).id(this.id).build();
         }

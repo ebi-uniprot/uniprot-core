@@ -36,8 +36,8 @@ public class ChebiEntryBuilder implements Builder<ChebiEntry> {
 
     public static @Nonnull ChebiEntryBuilder from(@Nonnull ChebiEntry instance) {
         return new ChebiEntryBuilder()
-          .id(instance.getId())
-          .name(instance.getName())
-          .inchiKey(instance.getInchiKey());
+                .id(instance.getId())
+                .name(instance.getName())
+                .inchiKey(instance.getInchiKey());
     }
 }

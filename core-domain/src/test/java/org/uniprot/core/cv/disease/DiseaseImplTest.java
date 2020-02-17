@@ -13,7 +13,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceBuilder;
 import org.uniprot.core.cv.disease.builder.DiseaseEntryBuilder;
-import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceImpl;
 import org.uniprot.core.cv.disease.impl.DiseaseEntryImpl;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
@@ -99,6 +98,10 @@ public class DiseaseImplTest {
         List<String> props = Arrays.asList("prop1", "prop2", "prop3");
         String id = "XREF-123" + randomiser + this.uuid;
         String databaseType = "SAMPLE_TYPE" + randomiser + this.uuid;
-        return new DiseaseCrossReferenceBuilder().databaseType(databaseType).id(id).propertiesSet(props).build();
+        return new DiseaseCrossReferenceBuilder()
+                .databaseType(databaseType)
+                .id(id)
+                .propertiesSet(props)
+                .build();
     }
 }

@@ -1,12 +1,12 @@
 package org.uniprot.core.cv.disease.impl;
 
+import static org.uniprot.core.util.Utils.unmodifiableList;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
-
-import static org.uniprot.core.util.Utils.unmodifiableList;
 
 public class DiseaseCrossReferenceImpl implements DiseaseCrossReference {
     private static final long serialVersionUID = -1741904153011477476L;
