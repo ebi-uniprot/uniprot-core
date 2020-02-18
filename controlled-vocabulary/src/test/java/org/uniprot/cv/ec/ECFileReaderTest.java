@@ -15,7 +15,7 @@ import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.ec.ECEntry;
-import org.uniprot.core.cv.ec.ECEntryImpl;
+import org.uniprot.core.cv.ec.ECEntryBuilder;
 
 /**
  * Created 18/03/19
@@ -86,11 +86,11 @@ class ECFileReaderTest {
                         MatcherAssert.assertThat(
                                 retList,
                                 Matchers.containsInAnyOrder(
-                                        new ECEntryImpl.Builder()
+                                        new ECEntryBuilder()
                                                 .id("1.1.3.-")
                                                 .label("With oxygen as acceptor")
                                                 .build(),
-                                        new ECEntryImpl.Builder()
+                                        new ECEntryBuilder()
                                                 .id("1.1.2.-")
                                                 .label("With a cytochrome as acceptor")
                                                 .build())));
@@ -164,11 +164,11 @@ class ECFileReaderTest {
                         assertThat(
                                 retList,
                                 Matchers.containsInAnyOrder(
-                                        new ECEntryImpl.Builder()
+                                        new ECEntryBuilder()
                                                 .id("1.1.1.1")
                                                 .label("Alcohol dehydrogenase")
                                                 .build(),
-                                        new ECEntryImpl.Builder()
+                                        new ECEntryBuilder()
                                                 .id("1.1.1.2")
                                                 .label("Alcohol dehydrogenase (NADP(+))")
                                                 .build())));

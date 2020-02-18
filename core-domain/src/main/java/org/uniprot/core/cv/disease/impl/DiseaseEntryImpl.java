@@ -71,48 +71,24 @@ public class DiseaseEntryImpl implements DiseaseEntry {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getAcronym() {
         return acronym;
-    }
-
-    public void setAcronym(String acronym) {
-        this.acronym = acronym;
     }
 
     public String getDefinition() {
         return definition;
     }
 
-    public void setDefinition(String definition) {
-        this.definition = definition;
-    }
-
     public List<String> getAlternativeNames() {
         return alternativeNames;
-    }
-
-    public void setAlternativeNames(List<String> alternativeNames) {
-        this.alternativeNames = alternativeNames;
     }
 
     public List<DiseaseCrossReference> getCrossReferences() {
         return crossReferences;
     }
 
-    public void setCrossReferences(List<DiseaseCrossReference> crossReferences) {
-        this.crossReferences = crossReferences;
-    }
-
     public List<Keyword> getKeywords() {
         return keywords;
-    }
-
-    public void setKeywords(List<Keyword> keywords) {
-        this.keywords = keywords;
     }
 
     public String getAccession() {

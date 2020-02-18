@@ -15,7 +15,7 @@ public class ECRepoImpl implements ECRepo {
 
     public ECRepoImpl(String dir) {
         List<ECEntry> eclist = ECCache.INSTANCE.get(dir);
-        ecIdMap = eclist.stream().collect(Collectors.toMap(ECEntry::id, Function.identity()));
+        ecIdMap = eclist.stream().collect(Collectors.toMap(ECEntry::getId, Function.identity()));
     }
 
     @Override

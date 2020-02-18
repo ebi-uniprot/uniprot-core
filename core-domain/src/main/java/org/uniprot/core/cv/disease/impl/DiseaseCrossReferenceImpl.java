@@ -1,5 +1,7 @@
 package org.uniprot.core.cv.disease.impl;
 
+import static org.uniprot.core.util.Utils.unmodifiableList;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -12,18 +14,14 @@ public class DiseaseCrossReferenceImpl implements DiseaseCrossReference {
     private final String id;
     private final List<String> properties;
 
-    private DiseaseCrossReferenceImpl() {
+    DiseaseCrossReferenceImpl() {
         this(null, null, Collections.emptyList());
-    }
-
-    public DiseaseCrossReferenceImpl(String databaseType, String id) {
-        this(databaseType, id, Collections.emptyList());
     }
 
     public DiseaseCrossReferenceImpl(String databaseType, String id, List<String> properties) {
         this.databaseType = databaseType;
         this.id = id;
-        this.properties = properties;
+        this.properties = unmodifiableList(properties);
     }
 
     @Override

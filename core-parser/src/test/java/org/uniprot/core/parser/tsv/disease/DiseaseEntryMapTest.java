@@ -11,8 +11,8 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
+import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceBuilder;
 import org.uniprot.core.cv.disease.builder.DiseaseEntryBuilder;
-import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceImpl;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
 
@@ -58,8 +58,8 @@ class DiseaseEntryMapTest {
         List<String> alternativeNames = Arrays.asList("ALT1", "ALT2", "ALT3");
         List<DiseaseCrossReference> xrefs =
                 Arrays.asList(
-                        new DiseaseCrossReferenceImpl("DB1", "ID1"),
-                        new DiseaseCrossReferenceImpl("DB1", "ID2"));
+                        new DiseaseCrossReferenceBuilder().databaseType("DB1").id("ID1").build(),
+                        new DiseaseCrossReferenceBuilder().databaseType("DB1").id("ID2").build());
         List<Keyword> keywords =
                 Arrays.asList(
                         new KeywordImpl("KW1", "VAL1"),

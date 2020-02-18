@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
-import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceImpl;
+import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceBuilder;
 import org.uniprot.core.cv.pathway.PathwayEntry;
 import org.uniprot.core.cv.pathway.PathwayEntryImpl;
 import org.uniprot.cv.common.AbstractFileReader;
@@ -111,7 +111,11 @@ public class PathwayFileReader extends AbstractFileReader<PathwayEntry> {
                         .map(this::trimSpacesAndRemoveLastDot)
                         .collect(Collectors.toList());
 
-        return new DiseaseCrossReferenceImpl(type, id, des);
+        return new DiseaseCrossReferenceBuilder()
+                .databaseType(type)
+                .id(id)
+                .propertiesSet(des)
+                .build();
     }
 
     private void updateListWithRelationShips(

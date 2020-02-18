@@ -7,8 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceBuilder;
 import org.uniprot.core.cv.disease.builder.DiseaseEntryBuilder;
-import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceImpl;
 import org.uniprot.core.cv.disease.impl.DiseaseEntryImpl;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
@@ -104,7 +104,8 @@ class DiseaseEntryBuilderTest {
 
     @Test
     void canCreateWith_crossReferencesSingle() {
-        DiseaseCrossReference crossReferences = new DiseaseCrossReferenceImpl("1", "key");
+        DiseaseCrossReference crossReferences =
+                new DiseaseCrossReferenceBuilder().databaseType("1").id("key").build();
         DiseaseEntry disease =
                 new DiseaseEntryBuilder().crossReferencesAdd(crossReferences).build();
         assertNotNull(disease);
@@ -116,8 +117,8 @@ class DiseaseEntryBuilderTest {
     void canCreateWith_crossReferences() {
         List<DiseaseCrossReference> crossReferences =
                 Arrays.asList(
-                        new DiseaseCrossReferenceImpl("pro", "2"),
-                        new DiseaseCrossReferenceImpl("uni", "1"));
+                        new DiseaseCrossReferenceBuilder().databaseType("pro").id("2").build(),
+                        new DiseaseCrossReferenceBuilder().databaseType("uni").id("1").build());
         DiseaseEntry disease =
                 new DiseaseEntryBuilder().crossReferencesSet(crossReferences).build();
         assertNotNull(disease);
@@ -139,7 +140,11 @@ class DiseaseEntryBuilderTest {
                         "acr",
                         "def",
                         singletonList("al name"),
-                        singletonList(new DiseaseCrossReferenceImpl("pro", "2")),
+                        singletonList(
+                                new DiseaseCrossReferenceBuilder()
+                                        .databaseType("pro")
+                                        .id("2")
+                                        .build()),
                         singletonList(new KeywordImpl("1", "key")),
                         3L,
                         6L);

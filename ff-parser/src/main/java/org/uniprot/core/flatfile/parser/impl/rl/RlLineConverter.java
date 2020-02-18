@@ -15,7 +15,8 @@ public class RlLineConverter
     public AbstractCitationBuilder<? extends AbstractCitationBuilder<?, ?>, ? extends Citation>
             convert(RlLineObject f) {
         if (f.getReference() instanceof RlLineObject.JournalArticle) {
-            return (AbstractCitationBuilder) convert((RlLineObject.JournalArticle) f.getReference());
+            return (AbstractCitationBuilder)
+                    convert((RlLineObject.JournalArticle) f.getReference());
         } else if (f.getReference() instanceof RlLineObject.Book) {
             return (AbstractCitationBuilder) convert((RlLineObject.Book) f.getReference());
         } else if (f.getReference() instanceof RlLineObject.EPub) {
