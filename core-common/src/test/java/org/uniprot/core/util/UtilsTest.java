@@ -448,4 +448,159 @@ class UtilsTest {
             }
         }
     }
+
+    @Nested
+    class Sets {
+        @Nested
+        class notNullOrEmpty {
+            @Test
+            void whenNullOrEmpty_returnFalse() {
+                assertAll(
+                        () -> assertFalse(Utils.notNullNotEmpty((Collection) null)),
+                        () -> assertFalse(Utils.notNullNotEmpty(Collections.emptySet())));
+            }
+
+            @Test
+            void nonEmpty_shouldAlwaysReturnTrue() {
+                Set<String> set = new HashSet<>();
+                set.add("test1");
+                set.add("test2");
+                assertAll(
+                        () -> assertTrue(Utils.notNullNotEmpty(Collections.singleton(123))),
+                        () ->
+                                assertTrue(
+                                        Utils.notNullNotEmpty(
+                                                Collections.checkedSet(set, String.class))),
+                        () -> assertTrue(Utils.notNullNotEmpty(set)),
+                        () -> assertTrue(Utils.notNullNotEmpty(Collections.synchronizedSet(set))),
+                        () -> assertTrue(Utils.notNullNotEmpty(Collections.unmodifiableSet(set))));
+            }
+        }
+
+        @Nested
+        class nullOrEmpty {
+            @Test
+            void whenNullOrEmpty_returnTrue() {
+                assertTrue(Utils.nullOrEmpty((Collection) null));
+                assertTrue(Utils.nullOrEmpty(Collections.emptySet()));
+            }
+
+            @Test
+            void nonEmpty_shouldAlwaysReturnFalse() {
+                Set<Integer> set = new HashSet<>();
+                set.add(-12321);
+                set.add(454353);
+                assertAll(
+                        () -> assertFalse(Utils.nullOrEmpty(Collections.singleton("test"))),
+                        () ->
+                                assertFalse(
+                                        Utils.nullOrEmpty(
+                                                Collections.checkedSet(set, Integer.class))),
+                        () -> assertFalse(Utils.nullOrEmpty(set)),
+                        () -> assertFalse(Utils.nullOrEmpty(Collections.synchronizedSet(set))),
+                        () -> assertFalse(Utils.nullOrEmpty(Collections.unmodifiableSet(set))));
+            }
+        }
+
+        @Nested
+        class unmodifiableSet {
+            @Test
+            void passingNullReturnEmptySet() {
+                Set s = Utils.unmodifiableSet(null);
+                assertTrue(s.isEmpty());
+            }
+
+            @Test
+            void passing_emptySet_returnEmptyList() {
+                Set s = Utils.unmodifiableSet(new HashSet<Strings>());
+                assertTrue(s.isEmpty());
+            }
+
+            @Test
+            void passingNullReturnEmptySet_unmodifiable() {
+                Set<String> s = Utils.unmodifiableSet(null);
+                assertThrows(UnsupportedOperationException.class, () -> s.add("abc"));
+            }
+
+            @Test
+            void passing_emptySet_returnEmptySet_unmodifiable() {
+                Set<String> s = Utils.unmodifiableSet(new HashSet<>());
+                assertThrows(UnsupportedOperationException.class, () -> s.add("abc"));
+            }
+
+            @Test
+            void passingList_returnUnmodifiable() {
+                Set<String> set = new HashSet<>();
+                set.add("a");
+                set.add("b");
+                Set<String> s = Utils.unmodifiableSet(set);
+                assertThrows(UnsupportedOperationException.class, () -> s.add("c"));
+            }
+        }
+
+        @Nested
+        class addOrIgnoreNull {
+            @Test
+            void addingNullValueInNullSet_nullSet() {
+                Set<String> s = null;
+                Utils.addOrIgnoreNull(null, s);
+                assertNull(s);
+            }
+
+            @Test
+            void addingNotNullValueInNullSet_NPE() {
+                Set<String> s = null;
+                assertThrows(NullPointerException.class, () -> Utils.addOrIgnoreNull("test", s));
+            }
+
+            @Test
+            void nonNulValue() {
+                Set<String> s = new HashSet<>();
+                Utils.addOrIgnoreNull("abc", s);
+                assertNotNull(s);
+                assertEquals(1, s.size());
+            }
+        }
+
+        @Nested
+        class modifiableSet {
+            @Test
+            void whenNull_returnsEmptySet() {
+                assertAll(
+                        () -> assertNotNull(Utils.modifiableSet((null))),
+                        () -> assertTrue(Utils.modifiableSet((null)).isEmpty()));
+            }
+
+            @Test
+            void canAddElementsInEmptySet() {
+                Set<String> nullSet = null;
+                Set<String> set = Utils.modifiableSet(nullSet);
+                set.add("a");
+                assertAll(
+                        () -> assertEquals(1, set.size()),
+                        () -> assertFalse(set.isEmpty()),
+                        () -> assertNotSame(nullSet, set));
+            }
+
+            @Test
+            void whenUnModifiable_returnModifiable() {
+                Set<String> set = new HashSet<>();
+                set.add("test1");
+                set.add("test2");
+                Set<String> unmodifiableSet = Collections.unmodifiableSet(set);
+                assertThrows(
+                        UnsupportedOperationException.class,
+                        () -> unmodifiableSet.add("shouldNotBeAdded"));
+
+                assertAll(
+                        () -> assertNotSame(set, Utils.modifiableSet(set)),
+                        () -> assertNotSame(unmodifiableSet, Utils.modifiableSet(unmodifiableSet)),
+                        () -> {
+                            Set<String> retSet = Utils.modifiableSet(unmodifiableSet);
+                            retSet.add("1");
+                            assertEquals(3, retSet.size());
+                        });
+            }
+        }
+    }
 }

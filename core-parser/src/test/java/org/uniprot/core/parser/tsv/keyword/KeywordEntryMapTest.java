@@ -12,18 +12,18 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.builder.StatisticsBuilder;
-import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
-import org.uniprot.core.cv.keyword.impl.KeywordEntryImpl;
-import org.uniprot.core.cv.keyword.impl.KeywordImpl;
+import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
+import org.uniprot.core.cv.keyword.KeywordGeneOntology;
+import org.uniprot.core.cv.keyword.builder.KeywordEntryBuilder;
+import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
+import org.uniprot.core.cv.keyword.builder.KeywordGeneOntologyBuilder;
 
 class KeywordEntryMapTest {
 
     @Test
     void checkSimpleEntryAttributeValues() {
-        KeywordEntryImpl entry = new KeywordEntryImpl();
-        entry.setKeyword(getKeyword());
+        KeywordEntry entry = new KeywordEntryBuilder().keyword(getKeyword()).build();
         Map<String, String> mappedEntries = new KeywordEntryMap(entry).attributeValues();
         assertThat(mappedEntries, notNullValue());
         assertEquals(9, mappedEntries.size());
@@ -55,39 +55,46 @@ class KeywordEntryMapTest {
         assertEquals("reviewed:10; annotated:20", mappedEntries.get("statistics"));
     }
 
-    private KeywordEntryImpl getKeywordEntry(boolean hierarchy) {
+    private KeywordEntry getKeywordEntry(boolean hierarchy) {
         Statistics statistics =
                 new StatisticsBuilder().reviewedProteinCount(10).unreviewedProteinCount(20).build();
-        KeywordEntryImpl keywordEntry = new KeywordEntryImpl();
-        keywordEntry.setDefinition("Definition value");
-        keywordEntry.setKeyword(getKeyword());
-        keywordEntry.setGeneOntologies(
-                Collections.singletonList(new GeneOntologyImpl("goId", "goTerm")));
-        keywordEntry.setSynonyms(Collections.singletonList("synonym"));
-        keywordEntry.setSites(Collections.singletonList("site"));
+        KeywordGeneOntology go = new KeywordGeneOntologyBuilder().id("goId").term("goTerm").build();
+        KeywordEntry parent =
+                KeywordEntryBuilder.from(getKeywordEntryParent())
+                        .parentsSet(Collections.singleton(getKeywordEntryParent()))
+                        .build();
 
-        KeywordEntryImpl parent = getKeywordEntryParent();
-        parent.setParents(Collections.singleton(getKeywordEntryParent()));
-        keywordEntry.setParents(Collections.singleton(parent));
-
-        keywordEntry.setCategory(getKeyword());
-        keywordEntry.setStatistics(statistics);
+        KeywordEntry keywordEntry =
+                new KeywordEntryBuilder()
+                        .definition("Definition value")
+                        .keyword(getKeyword())
+                        .geneOntologiesAdd(go)
+                        .synonymsAdd("synonym")
+                        .sitesAdd("site")
+                        .parentsAdd(parent)
+                        .category(getKeyword())
+                        .statistics(statistics)
+                        .build();
 
         if (hierarchy) {
-            KeywordEntryImpl children = getKeywordEntry(false);
-            children.setChildren(Collections.singletonList(getKeywordEntry(false)));
-            keywordEntry.setChildren(Collections.singletonList(children));
+            KeywordEntry children =
+                    KeywordEntryBuilder.from(getKeywordEntry(false))
+                            .childrenSet(Collections.singletonList(getKeywordEntry(false)))
+                            .build();
+
+            keywordEntry =
+                    KeywordEntryBuilder.from(keywordEntry)
+                            .childrenSet(Collections.singletonList(children))
+                            .build();
         }
         return keywordEntry;
     }
 
-    private Keyword getKeyword() {
-        return new KeywordImpl("Ligand", "KW-0005");
+    private KeywordEntryKeyword getKeyword() {
+        return new KeywordEntryKeywordBuilder().id("Ligand").accession("KW-0005").build();
     }
 
-    private KeywordEntryImpl getKeywordEntryParent() {
-        KeywordEntryImpl keywordEntry = new KeywordEntryImpl();
-        keywordEntry.setKeyword(getKeyword());
-        return keywordEntry;
+    private KeywordEntry getKeywordEntryParent() {
+        return new KeywordEntryBuilder().keyword(getKeyword()).build();
     }
 }

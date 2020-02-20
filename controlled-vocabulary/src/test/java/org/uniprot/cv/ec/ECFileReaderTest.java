@@ -15,7 +15,7 @@ import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.ec.ECEntry;
-import org.uniprot.core.cv.ec.ECEntryBuilder;
+import org.uniprot.core.cv.ec.builder.ECEntryBuilder;
 
 /**
  * Created 18/03/19

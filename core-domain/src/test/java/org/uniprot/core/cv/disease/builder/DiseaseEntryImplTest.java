@@ -1,4 +1,4 @@
-package org.uniprot.core.cv.disease;
+package org.uniprot.core.cv.disease.builder;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -11,13 +11,12 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceBuilder;
-import org.uniprot.core.cv.disease.builder.DiseaseEntryBuilder;
-import org.uniprot.core.cv.disease.impl.DiseaseEntryImpl;
-import org.uniprot.core.cv.keyword.Keyword;
-import org.uniprot.core.cv.keyword.impl.KeywordImpl;
+import org.uniprot.core.cv.disease.DiseaseCrossReference;
+import org.uniprot.core.cv.disease.DiseaseEntry;
+import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
+import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
 
-public class DiseaseImplTest {
+class DiseaseEntryImplTest {
     private String uuid;
     private String id;
     private String acc;
@@ -25,7 +24,7 @@ public class DiseaseImplTest {
     private String def;
     private List<String> altNames;
     private List<DiseaseCrossReference> xrefs;
-    private List<Keyword> kws;
+    private List<KeywordEntryKeyword> kws;
     private Long rc;
     private Long urc;
 
@@ -89,8 +88,11 @@ public class DiseaseImplTest {
                 this.urc);
     }
 
-    private Keyword getKeyword(int i) {
-        return new KeywordImpl("id" + i + this.uuid, "acc" + i + this.uuid);
+    private KeywordEntryKeyword getKeyword(int i) {
+        return new KeywordEntryKeywordBuilder()
+                .id("id" + i + this.uuid)
+                .accession("acc" + i + this.uuid)
+                .build();
     }
 
     private DiseaseCrossReference getXRef(int randomiser) {

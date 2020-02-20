@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
-import org.uniprot.core.cv.keyword.Keyword;
+import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
 import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
 import org.uniprot.core.util.Utils;
 
@@ -39,9 +39,11 @@ public class DiseaseEntryMap implements NamedValueMap {
         return map;
     }
 
-    private String getKewords(List<Keyword> keywords) {
+    private String getKewords(List<KeywordEntryKeyword> keywords) {
         if (Utils.notNullNotEmpty(keywords)) {
-            return keywords.stream().map(Keyword::getId).collect(Collectors.joining(","));
+            return keywords.stream()
+                    .map(KeywordEntryKeyword::getId)
+                    .collect(Collectors.joining(","));
         } else {
             return EMPTY_STRING;
         }
