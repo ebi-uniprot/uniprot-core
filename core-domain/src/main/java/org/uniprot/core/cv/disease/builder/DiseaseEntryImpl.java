@@ -1,4 +1,4 @@
-package org.uniprot.core.cv.disease.impl;
+package org.uniprot.core.cv.disease.builder;
 
 import static org.uniprot.core.util.Utils.unmodifiableList;
 
@@ -8,7 +8,7 @@ import java.util.Objects;
 
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
-import org.uniprot.core.cv.keyword.Keyword;
+import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
 
 public class DiseaseEntryImpl implements DiseaseEntry {
 
@@ -21,11 +21,11 @@ public class DiseaseEntryImpl implements DiseaseEntry {
     private String definition;
     private List<String> alternativeNames;
     private List<DiseaseCrossReference> crossReferences;
-    private List<Keyword> keywords;
+    private List<KeywordEntryKeyword> keywords;
     private Long reviewedProteinCount;
     private Long unreviewedProteinCount;
 
-    private DiseaseEntryImpl() {
+    DiseaseEntryImpl() {
         // do nothing.. just to satisfy the objectmapper
         this.accession = null;
         this.alternativeNames = Collections.emptyList();
@@ -33,14 +33,17 @@ public class DiseaseEntryImpl implements DiseaseEntry {
         this.keywords = Collections.emptyList();
     }
 
-    public DiseaseEntryImpl(
+    DiseaseEntryImpl(
             String id,
             String accession,
             String acronym,
             String definition,
             List<String> alternativeNames,
             List<DiseaseCrossReference> crossReferences,
-            List<Keyword> keywords) {
+            List<KeywordEntryKeyword> keywords,
+            Long reviewedProteinCount,
+            Long unreviewedProteinCount) {
+
         super();
         this.id = id;
         this.accession = accession;
@@ -49,20 +52,6 @@ public class DiseaseEntryImpl implements DiseaseEntry {
         this.alternativeNames = unmodifiableList(alternativeNames);
         this.crossReferences = unmodifiableList(crossReferences);
         this.keywords = unmodifiableList(keywords);
-    }
-
-    public DiseaseEntryImpl(
-            String id,
-            String accession,
-            String acronym,
-            String definition,
-            List<String> alternativeNames,
-            List<DiseaseCrossReference> crossReferences,
-            List<Keyword> keywords,
-            Long reviewedProteinCount,
-            Long unreviewedProteinCount) {
-
-        this(id, accession, acronym, definition, alternativeNames, crossReferences, keywords);
         this.reviewedProteinCount = reviewedProteinCount;
         this.unreviewedProteinCount = unreviewedProteinCount;
     }
@@ -87,7 +76,7 @@ public class DiseaseEntryImpl implements DiseaseEntry {
         return crossReferences;
     }
 
-    public List<Keyword> getKeywords() {
+    public List<KeywordEntryKeyword> getKeywords() {
         return keywords;
     }
 

@@ -1,19 +1,19 @@
-package org.uniprot.core.cv.keyword.impl;
+package org.uniprot.core.cv.keyword.builder;
 
 import java.util.Objects;
 
-import org.uniprot.core.cv.keyword.Keyword;
+import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
 
-public class KeywordImpl implements Keyword {
+public class KeywordEntryKeywordImpl implements KeywordEntryKeyword {
     private static final long serialVersionUID = -1281635311660829402L;
     private final String id;
     private final String accession;
 
-    private KeywordImpl() {
+    KeywordEntryKeywordImpl() {
         this(null, null);
     }
 
-    public KeywordImpl(String id, String accession) {
+    KeywordEntryKeywordImpl(String id, String accession) {
         super();
         this.id = id;
         this.accession = accession;
@@ -41,7 +41,7 @@ public class KeywordImpl implements Keyword {
             return false;
         }
 
-        KeywordImpl other = (KeywordImpl) obj;
+        KeywordEntryKeywordImpl other = (KeywordEntryKeywordImpl) obj;
 
         return Objects.equals(this.id, other.id) && Objects.equals(this.accession, other.accession);
     }

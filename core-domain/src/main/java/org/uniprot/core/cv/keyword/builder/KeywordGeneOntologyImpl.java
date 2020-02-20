@@ -1,23 +1,19 @@
-package org.uniprot.core.cv.keyword.impl;
+package org.uniprot.core.cv.keyword.builder;
 
 import java.util.Objects;
 
-import org.uniprot.core.cv.keyword.GeneOntology;
+import org.uniprot.core.cv.keyword.KeywordGeneOntology;
 
-public class GeneOntologyImpl implements GeneOntology {
+public class KeywordGeneOntologyImpl implements KeywordGeneOntology {
     private static final long serialVersionUID = -5760727679729608097L;
     private final String goId;
     private final String goTerm;
 
-    private GeneOntologyImpl() {
+    KeywordGeneOntologyImpl() {
         this(null, null);
     }
 
-    public static GeneOntology create(String goId, String goTerm) {
-        return new GeneOntologyImpl(goId, goTerm);
-    }
-
-    public GeneOntologyImpl(String goId, String goTerm) {
+    KeywordGeneOntologyImpl(String goId, String goTerm) {
         this.goId = goId;
         this.goTerm = goTerm;
     }
@@ -48,7 +44,7 @@ public class GeneOntologyImpl implements GeneOntology {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        GeneOntologyImpl other = (GeneOntologyImpl) obj;
+        KeywordGeneOntologyImpl other = (KeywordGeneOntologyImpl) obj;
         return Objects.equals(this.goId, other.goId) && Objects.equals(this.goTerm, other.goTerm);
     }
 }

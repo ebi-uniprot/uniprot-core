@@ -8,9 +8,9 @@ import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.uniprot.core.cv.keyword.GeneOntology;
-import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
-import org.uniprot.core.cv.keyword.impl.KeywordImpl;
+import org.uniprot.core.cv.keyword.KeywordGeneOntology;
+import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
+import org.uniprot.core.cv.keyword.builder.KeywordGeneOntologyBuilder;
 import org.uniprot.core.cv.subcell.SubcellLocationCategory;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryImpl;
@@ -170,7 +170,11 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
 
         // Keyword is a single string will null by default
         if ((entry.kw != null) && !entry.kw.isEmpty())
-            retObj.setKeyword(new KeywordImpl(retObj.getId(), entry.kw));
+            retObj.setKeyword(
+                    new KeywordEntryKeywordBuilder()
+                            .id(retObj.getId())
+                            .accession(entry.kw)
+                            .build());
 
         // Links
         retObj.setLinks(entry.ww.isEmpty() ? null : entry.ww);
@@ -187,7 +191,7 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
         retObj.setReferences(refList.isEmpty() ? null : refList);
 
         // GoMapping
-        List<GeneOntology> goList =
+        List<KeywordGeneOntology> goList =
                 entry.go.stream().map(this::parseGeneOntology).collect(Collectors.toList());
         retObj.setGeneOntologies(goList.isEmpty() ? null : goList);
 
@@ -246,9 +250,9 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
                 .orElse(null);
     }
 
-    private GeneOntology parseGeneOntology(String go) {
+    private KeywordGeneOntology parseGeneOntology(String go) {
         String[] tokens = go.split(";");
-        return new GeneOntologyImpl(tokens[0], tokens[1].trim());
+        return new KeywordGeneOntologyBuilder().id(tokens[0]).term(tokens[1].trim()).build();
     }
 
     private String trimSpacesAndRemoveLastDot(String str) {

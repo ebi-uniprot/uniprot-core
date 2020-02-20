@@ -1,4 +1,4 @@
-package org.uniprot.core.cv.disease.impl;
+package org.uniprot.core.cv.disease.builder;
 
 import static org.uniprot.core.util.Utils.unmodifiableList;
 
@@ -18,7 +18,7 @@ public class DiseaseCrossReferenceImpl implements DiseaseCrossReference {
         this(null, null, Collections.emptyList());
     }
 
-    public DiseaseCrossReferenceImpl(String databaseType, String id, List<String> properties) {
+    DiseaseCrossReferenceImpl(String databaseType, String id, List<String> properties) {
         this.databaseType = databaseType;
         this.id = id;
         this.properties = unmodifiableList(properties);

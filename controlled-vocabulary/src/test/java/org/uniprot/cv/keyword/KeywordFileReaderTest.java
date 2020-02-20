@@ -10,9 +10,9 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
-import org.uniprot.core.cv.keyword.GeneOntology;
-import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.KeywordEntry;
+import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
+import org.uniprot.core.cv.keyword.KeywordGeneOntology;
 
 class KeywordFileReaderTest {
 
@@ -137,12 +137,13 @@ class KeywordFileReaderTest {
         assertNotNull(kw.getChildren());
         assertEquals(2, kw.getChildren().size());
 
-        assertNull(kw.getSites());
+        assertNotNull(kw.getSites());
+        assertTrue(kw.getSites().isEmpty());
     }
 
     private static class WrongKeywordEntry implements KeywordEntry {
         @Override
-        public Keyword getKeyword() {
+        public KeywordEntryKeyword getKeyword() {
             return null;
         }
 
@@ -157,7 +158,7 @@ class KeywordFileReaderTest {
         }
 
         @Override
-        public List<GeneOntology> getGeneOntologies() {
+        public List<KeywordGeneOntology> getGeneOntologies() {
             return null;
         }
 
@@ -172,7 +173,7 @@ class KeywordFileReaderTest {
         }
 
         @Override
-        public Keyword getCategory() {
+        public KeywordEntryKeyword getCategory() {
             return null;
         }
 

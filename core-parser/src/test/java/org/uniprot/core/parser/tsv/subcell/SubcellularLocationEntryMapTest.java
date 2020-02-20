@@ -10,8 +10,8 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.builder.StatisticsBuilder;
-import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
-import org.uniprot.core.cv.keyword.impl.KeywordImpl;
+import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
+import org.uniprot.core.cv.keyword.builder.KeywordGeneOntologyBuilder;
 import org.uniprot.core.cv.subcell.SubcellLocationCategory;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryImpl;
@@ -68,9 +68,17 @@ class SubcellularLocationEntryMapTest {
         entry.setContent("content value");
         entry.setDefinition("definition value");
         entry.setGeneOntologies(
-                Collections.singletonList(new GeneOntologyImpl("goIdValue", "goTermValue")));
+                Collections.singletonList(
+                        new KeywordGeneOntologyBuilder()
+                                .id("goIdValue")
+                                .term("goTermValue")
+                                .build()));
         entry.setId("idValue");
-        entry.setKeyword(new KeywordImpl("keywordIdValue", "keywordAccessionValue"));
+        entry.setKeyword(
+                new KeywordEntryKeywordBuilder()
+                        .id("keywordIdValue")
+                        .accession("keywordAccessionValue")
+                        .build());
         entry.setLinks(Collections.singletonList("linkValue"));
         entry.setNote("noteValue");
         entry.setReferences(Collections.singletonList("referenceValue"));

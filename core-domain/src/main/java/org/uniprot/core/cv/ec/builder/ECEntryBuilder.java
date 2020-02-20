@@ -1,9 +1,9 @@
-package org.uniprot.core.cv.ec;
+package org.uniprot.core.cv.ec.builder;
 
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.cv.ec.impl.ECEntryImpl;
+import org.uniprot.core.cv.ec.ECEntry;
 
 /**
  * Created 07/06/19

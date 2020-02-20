@@ -1,12 +1,12 @@
 package org.uniprot.core.json.parser.keyword;
 
 import org.uniprot.core.Statistics;
-import org.uniprot.core.cv.keyword.GeneOntology;
-import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
-import org.uniprot.core.cv.keyword.impl.KeywordEntryImpl;
-import org.uniprot.core.cv.keyword.impl.KeywordImpl;
+import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
+import org.uniprot.core.cv.keyword.KeywordGeneOntology;
+import org.uniprot.core.cv.keyword.builder.KeywordEntryImpl;
+import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordImpl;
+import org.uniprot.core.cv.keyword.builder.KeywordGeneOntologyImpl;
 import org.uniprot.core.impl.StatisticsImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 
@@ -49,8 +49,8 @@ public class KeywordJsonConfig extends JsonConfig {
         // customise the default mapper
         SimpleModule mod = new SimpleModule();
         mod.addAbstractTypeMapping(KeywordEntry.class, KeywordEntryImpl.class);
-        mod.addAbstractTypeMapping(Keyword.class, KeywordImpl.class);
-        mod.addAbstractTypeMapping(GeneOntology.class, GeneOntologyImpl.class);
+        mod.addAbstractTypeMapping(KeywordEntryKeyword.class, KeywordEntryKeywordImpl.class);
+        mod.addAbstractTypeMapping(KeywordGeneOntology.class, KeywordGeneOntologyImpl.class);
         mod.addAbstractTypeMapping(Statistics.class, StatisticsImpl.class);
 
         objMapper.registerModule(mod);

@@ -1,8 +1,8 @@
 package org.uniprot.core.json.parser.keyword;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.keyword.Keyword;
-import org.uniprot.core.cv.keyword.impl.KeywordImpl;
+import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
+import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
 /** @author lgonzales */
@@ -10,20 +10,20 @@ class KeywordTest {
 
     @Test
     void testSimpleKeyword() {
-        Keyword keyword = new KeywordImpl(null, null);
+        KeywordEntryKeyword keyword = new KeywordEntryKeywordBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(
                 KeywordJsonConfig.getInstance().getFullObjectMapper(), keyword);
     }
 
     @Test
     void testCompleteKeyword() {
-        Keyword keyword = getCompleteKeyword();
+        KeywordEntryKeyword keyword = getCompleteKeyword();
         ValidateJson.verifyJsonRoundTripParser(
                 KeywordJsonConfig.getInstance().getFullObjectMapper(), keyword);
         ValidateJson.verifyEmptyFields(keyword);
     }
 
-    static Keyword getCompleteKeyword() {
-        return new KeywordImpl("idValue", "accessionValue");
+    static KeywordEntryKeyword getCompleteKeyword() {
+        return new KeywordEntryKeywordBuilder().id("idValue").accession("accessionValue").build();
     }
 }

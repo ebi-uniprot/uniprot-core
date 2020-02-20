@@ -1,4 +1,4 @@
-package org.uniprot.core.cv.disease;
+package org.uniprot.core.cv.disease.builder;
 
 import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,11 +7,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceBuilder;
-import org.uniprot.core.cv.disease.builder.DiseaseEntryBuilder;
-import org.uniprot.core.cv.disease.impl.DiseaseEntryImpl;
-import org.uniprot.core.cv.keyword.Keyword;
-import org.uniprot.core.cv.keyword.impl.KeywordImpl;
+import org.uniprot.core.cv.disease.DiseaseCrossReference;
+import org.uniprot.core.cv.disease.DiseaseEntry;
+import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
+import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
 
 class DiseaseEntryBuilderTest {
 
@@ -86,7 +85,7 @@ class DiseaseEntryBuilderTest {
 
     @Test
     void canCreateWith_keywordsSingle() {
-        Keyword keywords = new KeywordImpl("1", "key");
+        KeywordEntryKeyword keywords = kw("1", "key");
         DiseaseEntry disease = new DiseaseEntryBuilder().keywordsAdd(keywords).build();
         assertNotNull(disease);
         assertEquals(1, disease.getKeywords().size());
@@ -95,8 +94,7 @@ class DiseaseEntryBuilderTest {
 
     @Test
     void canCreateWith_keywords() {
-        List<Keyword> keywords =
-                Arrays.asList(new KeywordImpl("1", "key"), new KeywordImpl("2", "key2"));
+        List<KeywordEntryKeyword> keywords = Arrays.asList(kw("1", "key"), kw("2", "key2"));
         DiseaseEntry disease = new DiseaseEntryBuilder().keywordsSet(keywords).build();
         assertNotNull(disease);
         assertEquals(keywords, disease.getKeywords());
@@ -145,11 +143,15 @@ class DiseaseEntryBuilderTest {
                                         .databaseType("pro")
                                         .id("2")
                                         .build()),
-                        singletonList(new KeywordImpl("1", "key")),
+                        singletonList(kw("1", "key")),
                         3L,
                         6L);
         DiseaseEntry obj = DiseaseEntryBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
+    }
+
+    private KeywordEntryKeyword kw(String id, String accession) {
+        return new KeywordEntryKeywordBuilder().id(id).accession(accession).build();
     }
 }

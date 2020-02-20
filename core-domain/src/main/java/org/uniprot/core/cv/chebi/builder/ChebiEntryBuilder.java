@@ -1,9 +1,9 @@
-package org.uniprot.core.cv.chebi;
+package org.uniprot.core.cv.chebi.builder;
 
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.cv.chebi.impl.ChebiEntryImpl;
+import org.uniprot.core.cv.chebi.ChebiEntry;
 
 /**
  * Created 07/06/19

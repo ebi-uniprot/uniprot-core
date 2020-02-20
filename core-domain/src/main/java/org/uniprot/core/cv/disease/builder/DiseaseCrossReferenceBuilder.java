@@ -10,7 +10,6 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
-import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceImpl;
 
 public class DiseaseCrossReferenceBuilder implements Builder<DiseaseCrossReference> {
 
