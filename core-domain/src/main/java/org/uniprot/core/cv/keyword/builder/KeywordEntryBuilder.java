@@ -12,8 +12,8 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.Builder;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.KeywordGeneOntology;
+import org.uniprot.core.cv.keyword.KeywordId;
 
 public class KeywordEntryBuilder implements Builder<KeywordEntry> {
     private KeywordId keyword;

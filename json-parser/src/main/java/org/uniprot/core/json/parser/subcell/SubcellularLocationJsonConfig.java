@@ -1,10 +1,10 @@
 package org.uniprot.core.json.parser.subcell;
 
 import org.uniprot.core.Statistics;
-import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.KeywordGeneOntology;
-import org.uniprot.core.cv.keyword.builder.KeywordIdImpl;
+import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.builder.KeywordGeneOntologyImpl;
+import org.uniprot.core.cv.keyword.builder.KeywordIdImpl;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryImpl;
 import org.uniprot.core.impl.StatisticsImpl;

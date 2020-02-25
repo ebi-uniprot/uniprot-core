@@ -23,6 +23,8 @@ public class KeywordTest {
 
         assertNotNull(jsonNode.get("id"));
         assertEquals("KW-00000", jsonNode.get("id").asText());
+        assertNotNull(jsonNode.get("name"));
+        assertEquals("NAME NOT SET", jsonNode.get("name").asText());
     }
 
     @Test
@@ -33,8 +35,8 @@ public class KeywordTest {
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(keyword);
 
-        assertNotNull(jsonNode.get("value"));
-        assertEquals("keyword value", jsonNode.get("value").asText());
+        assertNotNull(jsonNode.get("name"));
+        assertEquals("keyword value", jsonNode.get("name").asText());
 
         assertNotNull(jsonNode.get("id"));
         assertEquals("KW-11111", jsonNode.get("id").asText());
@@ -48,7 +50,7 @@ public class KeywordTest {
     public static Keyword getKeyword() {
         return new KeywordBuilder()
                 .id("KW-11111")
-                .value("keyword value")
+                .name("keyword value")
                 .category(KeywordCategory.DOMAIN)
                 .evidencesSet(
                         CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10025"))

@@ -29,7 +29,7 @@ public class KeywordConverter implements Converter<KeywordType, Keyword> {
         List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
         return new KeywordBuilder()
                 .id(xmlObj.getId())
-                .value(keywordValue)
+                .name(keywordValue)
                 .category(KeywordCategory.UNKNOWN)
                 .evidencesSet(evidences)
                 .build();
@@ -38,7 +38,7 @@ public class KeywordConverter implements Converter<KeywordType, Keyword> {
     @Override
     public KeywordType toXml(Keyword uniObj) {
         KeywordType xmlKeyword = xmlUniprotFactory.createKeywordType();
-        String value = uniObj.getValue();
+        String value = uniObj.getName();
         xmlKeyword.setValue(value);
         xmlKeyword.setId(uniObj.getId());
 

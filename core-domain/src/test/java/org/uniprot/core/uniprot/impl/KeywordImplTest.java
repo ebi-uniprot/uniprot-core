@@ -23,7 +23,7 @@ class KeywordImplTest {
         KeywordCategory category = KeywordCategory.DOMAIN;
         List<Evidence> evidences = createEvidences();
         Keyword keyword = new KeywordImpl(id, val, category, evidences);
-        assertEquals(val, keyword.getValue());
+        assertEquals(val, keyword.getName());
         assertEquals(2, keyword.getEvidences().size());
         assertEquals(category, keyword.getCategory());
     }
@@ -35,9 +35,6 @@ class KeywordImplTest {
         KeywordCategory category = KeywordCategory.DOMAIN;
         List<Evidence> evidences = createEvidences();
         Keyword keyword = new KeywordImpl(id, val, category, evidences);
-        String expected =
-                "Transmembrane {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}";
-        assertEquals(expected, keyword.getDisplayed(" "));
         assertEquals(category, keyword.getCategory());
     }
 

@@ -7,8 +7,8 @@ import java.util.*;
 
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.KeywordGeneOntology;
+import org.uniprot.core.cv.keyword.KeywordId;
 
 public class KeywordEntryImpl implements KeywordEntry {
 

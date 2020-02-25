@@ -47,7 +47,7 @@ public class KWLineBuilder extends FFLineBuilderAbstr<List<Keyword>>
         for (Keyword keyword : f) {
             StringBuilder item = new StringBuilder();
             counter++;
-            item.append(keyword.getValue());
+            item.append(keyword.getName());
             addEvidences(item, keyword, showEvidence);
 
             if (f.size() == counter) {

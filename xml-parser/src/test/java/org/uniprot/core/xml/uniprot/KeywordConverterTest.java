@@ -24,7 +24,7 @@ class KeywordConverterTest {
         Keyword keyword =
                 new KeywordBuilder()
                         .id(id)
-                        .value(val)
+                        .name(val)
                         .category(KeywordCategory.UNKNOWN)
                         .evidencesSet(evidences)
                         .build();

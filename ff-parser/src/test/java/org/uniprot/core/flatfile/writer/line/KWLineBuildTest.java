@@ -239,16 +239,14 @@ class KWLineBuildTest {
                 createKeyword(
                         "",
                         "Virus entry into host cell",
-                        createEvidence(
-                                Arrays.asList(
-                                        new String[] {"ECO:0000256|SAAS:SAAS000777_004_000842"}))));
+                        createEvidence(Arrays.asList("ECO:0000256|SAAS:SAAS000777_004_000842"))));
         doTest(kwLine, keywords);
     }
 
     private Keyword createKeyword(String id, String kw, List<Evidence> evidences) {
         return new KeywordBuilder()
                 .id(id)
-                .value(kw)
+                .name(kw)
                 .category(KeywordCategory.DOMAIN)
                 .evidencesSet(evidences)
                 .build();

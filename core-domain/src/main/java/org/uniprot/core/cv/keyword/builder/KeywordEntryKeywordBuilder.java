@@ -19,14 +19,11 @@ public class KeywordEntryKeywordBuilder implements Builder<KeywordId> {
         return this;
     }
 
-    public @Nonnull
-    KeywordId build() {
+    public @Nonnull KeywordId build() {
         return new KeywordIdImpl(id, accession);
     }
 
     public static @Nonnull KeywordEntryKeywordBuilder from(@Nonnull KeywordId instance) {
-        return new KeywordEntryKeywordBuilder()
-                .id(instance.getName())
-                .accession(instance.getId());
+        return new KeywordEntryKeywordBuilder().id(instance.getName()).accession(instance.getId());
     }
 }

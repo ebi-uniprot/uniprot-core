@@ -41,9 +41,7 @@ public class DiseaseEntryMap implements NamedValueMap {
 
     private String getKewords(List<KeywordId> keywords) {
         if (Utils.notNullNotEmpty(keywords)) {
-            return keywords.stream()
-                    .map(KeywordId::getName)
-                    .collect(Collectors.joining(","));
+            return keywords.stream().map(KeywordId::getName).collect(Collectors.joining(","));
         } else {
             return EMPTY_STRING;
         }

@@ -9,31 +9,45 @@ import java.util.Objects;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.uniprot.Keyword;
 import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.impl.EvidencedValueImpl;
+import org.uniprot.core.uniprot.evidence.impl.HasEvidencesImpl;
+import org.uniprot.core.util.Utils;
 
-public class KeywordImpl extends EvidencedValueImpl implements Keyword {
+public class KeywordImpl extends HasEvidencesImpl implements Keyword {
 
     public static final String DEFAULT_ACCESSION = "KW-00000";
+    public static final String DEFAULT_NAME = "NAME NOT SET";
     private static final long serialVersionUID = -8858878734008282808L;
     private String id;
     private KeywordCategory category;
+    private String name;
 
     // no arg constructor for JSON deserialization
     KeywordImpl() {
         this("", "", KeywordCategory.UNKNOWN, Collections.emptyList());
     }
 
-    public KeywordImpl(
-            String id, String value, KeywordCategory category, List<Evidence> evidences) {
-        super(value, evidences);
+    public KeywordImpl(String id, String name, KeywordCategory category, List<Evidence> evidences) {
+        super(evidences);
         if (nullOrEmpty(id)) {
             this.id = DEFAULT_ACCESSION;
         } else this.id = id;
-        this.category = category;
+        if (Utils.notNull(category)) this.category = category;
+        else this.category = KeywordCategory.UNKNOWN;
+        if (nullOrEmpty(name)) {
+            this.name = DEFAULT_NAME;
+        } else this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getId() {
         return id;
+    }
+
+    public KeywordCategory getCategory() {
+        return category;
     }
 
     @Override
@@ -42,16 +56,11 @@ public class KeywordImpl extends EvidencedValueImpl implements Keyword {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         KeywordImpl keyword = (KeywordImpl) o;
-        return Objects.equals(id, keyword.id);
+        return id.equals(keyword.id) && category == keyword.category && name.equals(keyword.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), id);
-    }
-
-    @Override
-    public KeywordCategory getCategory() {
-        return category;
+        return Objects.hash(super.hashCode(), id, category, name);
     }
 }

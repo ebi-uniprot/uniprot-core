@@ -7,8 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.KeywordGeneOntology;
+import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.builder.KeywordEntryBuilder;
 import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
 import org.uniprot.core.cv.keyword.builder.KeywordGeneOntologyBuilder;
@@ -36,8 +36,8 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         List<KEFRBuilder> inMemoryGraph = parseKeywordFileEntryList(rawList);
         updateListWithRelationShips(inMemoryGraph, rawList);
         return inMemoryGraph.stream()
-                        .map(KEFRBuilder::builderLimitedKeywordEntry)
-                        .collect(Collectors.toList());
+                .map(KEFRBuilder::builderLimitedKeywordEntry)
+                .collect(Collectors.toList());
     }
 
     public Map<String, Pair<String, KeywordCategory>> parseFileToAccessionMap(String fileName) {

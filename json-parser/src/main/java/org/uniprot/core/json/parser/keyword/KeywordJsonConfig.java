@@ -2,11 +2,11 @@ package org.uniprot.core.json.parser.keyword;
 
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.KeywordGeneOntology;
+import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.builder.KeywordEntryImpl;
-import org.uniprot.core.cv.keyword.builder.KeywordIdImpl;
 import org.uniprot.core.cv.keyword.builder.KeywordGeneOntologyImpl;
+import org.uniprot.core.cv.keyword.builder.KeywordIdImpl;
 import org.uniprot.core.impl.StatisticsImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 

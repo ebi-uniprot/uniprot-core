@@ -32,8 +32,7 @@ class DiseaseTest {
     void testKeyword() {
         String id = "Sample Keyword";
         String accession = "KW-1234";
-        KeywordId keyword =
-                new KeywordEntryKeywordBuilder().id(id).accession(accession).build();
+        KeywordId keyword = new KeywordEntryKeywordBuilder().id(id).accession(accession).build();
         ValidateJson.verifyJsonRoundTripParser(
                 DiseaseJsonConfig.getInstance().getFullObjectMapper(), keyword);
     }
@@ -62,8 +61,7 @@ class DiseaseTest {
         // keyword
         String kId = "Sample Keyword";
         String kwAC = "KW-1234";
-        KeywordId keyword =
-                new KeywordEntryKeywordBuilder().id(kId).accession(kwAC).build();
+        KeywordId keyword = new KeywordEntryKeywordBuilder().id(kId).accession(kwAC).build();
 
         DiseaseEntryBuilder builder = new DiseaseEntryBuilder();
         builder.id(id).accession(accession).acronym(acronym).definition(def);

@@ -48,7 +48,7 @@ public class KwLineConverter extends EvidenceCollector
             keywords.add(
                     new KeywordBuilder()
                             .id(keywordId.getKey())
-                            .value(kw)
+                            .name(kw)
                             .category(keywordId.getValue())
                             .evidencesSet(evidences.get(kw))
                             .build());
