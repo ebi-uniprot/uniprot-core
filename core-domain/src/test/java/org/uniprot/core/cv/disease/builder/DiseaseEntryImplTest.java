@@ -13,7 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
-import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
+import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
 
 class DiseaseEntryImplTest {
@@ -24,7 +24,7 @@ class DiseaseEntryImplTest {
     private String def;
     private List<String> altNames;
     private List<DiseaseCrossReference> xrefs;
-    private List<KeywordEntryKeyword> kws;
+    private List<KeywordId> kws;
     private Long rc;
     private Long urc;
 
@@ -88,7 +88,7 @@ class DiseaseEntryImplTest {
                 this.urc);
     }
 
-    private KeywordEntryKeyword getKeyword(int i) {
+    private KeywordId getKeyword(int i) {
         return new KeywordEntryKeywordBuilder()
                 .id("id" + i + this.uuid)
                 .accession("acc" + i + this.uuid)

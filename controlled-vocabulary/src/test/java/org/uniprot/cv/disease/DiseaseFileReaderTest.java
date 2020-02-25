@@ -101,10 +101,10 @@ class DiseaseFileReaderTest {
                 () ->
                         Assertions.assertEquals(
                                 "Palmoplantar keratoderma",
-                                retList.get(0).getKeywords().get(0).getId()),
+                                retList.get(0).getKeywords().get(0).getName()),
                 () ->
                         Assertions.assertEquals(
-                                "KW-1007", retList.get(0).getKeywords().get(0).getAccession()));
+                                "KW-1007", retList.get(0).getKeywords().get(0).getId()));
     }
 
     @Test

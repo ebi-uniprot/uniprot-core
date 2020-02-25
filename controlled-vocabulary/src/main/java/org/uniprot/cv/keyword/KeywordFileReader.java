@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
+import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.KeywordGeneOntology;
 import org.uniprot.core.cv.keyword.builder.KeywordEntryBuilder;
 import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
@@ -50,17 +50,17 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
     }
 
     public static String getId(KeywordEntry keyword) {
-        return keyword.getKeyword().getId();
+        return keyword.getKeyword().getName();
     }
 
     public static Pair<String, KeywordCategory> getAccessionCategoryPair(KeywordEntry keyword) {
         String accession = keyword.getAccession();
-        KeywordEntryKeyword kcategory = keyword.getCategory();
+        KeywordId kcategory = keyword.getCategory();
         KeywordCategory category;
         if (kcategory != null) {
-            category = KeywordCategory.fromValue(kcategory.getId());
+            category = KeywordCategory.fromValue(kcategory.getName());
         } else {
-            category = KeywordCategory.fromValue(keyword.getKeyword().getId());
+            category = KeywordCategory.fromValue(keyword.getKeyword().getName());
         }
 
         return new PairImpl<>(accession, category);
@@ -120,7 +120,7 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
 
     private KEFRBuilder findByIdentifier(List<KEFRBuilder> list, String id) {
         for (KEFRBuilder builder : list) {
-            if (builder.build().getKeyword().getId().equals(trimSpacesAndRemoveLastDot(id)))
+            if (builder.build().getKeyword().getName().equals(trimSpacesAndRemoveLastDot(id)))
                 return builder;
         }
         return null;
@@ -133,7 +133,7 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
     private KEFRBuilder parseKeywordFileEntry(KeyFileEntry entry) {
         final String identifier = entry.id != null ? entry.id : entry.ic;
         KEFRBuilder retObj = new KEFRBuilder();
-        KeywordEntryKeyword keyword =
+        KeywordId keyword =
                 new KeywordEntryKeywordBuilder()
                         .id(trimSpacesAndRemoveLastDot(identifier))
                         .accession(entry.ac)
@@ -280,12 +280,12 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
                             keywordEntry ->
                                     keywordEntry
                                                     .getKeyword()
-                                                    .getAccession()
-                                                    .equals(child.getKeyword().getAccession())
+                                                    .getId()
+                                                    .equals(child.getKeyword().getId())
                                             && keywordEntry
                                                     .getKeyword()
-                                                    .getId()
-                                                    .equals(child.getKeyword().getId()))
+                                                    .getName()
+                                                    .equals(child.getKeyword().getName()))
                     .findFirst();
         }
 

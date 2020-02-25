@@ -25,7 +25,7 @@ class KeywordCacheIT {
         String acc = "KW-0869";
         Optional<KeywordEntry> opVal =
                 keywords.stream()
-                        .filter(val -> val.getKeyword().getAccession().equals(acc))
+                        .filter(val -> val.getKeyword().getId().equals(acc))
                         .findFirst();
         assertTrue(opVal.isPresent());
         List<KeywordEntry> children =
@@ -41,7 +41,7 @@ class KeywordCacheIT {
         String acc = "KW-9990";
         Optional<KeywordEntry> opVal =
                 keywords.stream()
-                        .filter(val -> val.getKeyword().getAccession().equals(acc))
+                        .filter(val -> val.getKeyword().getId().equals(acc))
                         .findFirst();
         assertTrue(opVal.isPresent());
         List<KeywordEntry> children =
@@ -58,7 +58,7 @@ class KeywordCacheIT {
         String acc = "KW-0540";
         Optional<KeywordEntry> opVal =
                 keywords.stream()
-                        .filter(val -> val.getKeyword().getAccession().equals(acc))
+                        .filter(val -> val.getKeyword().getId().equals(acc))
                         .findFirst();
         assertTrue(opVal.isPresent());
         List<KeywordEntry> children =

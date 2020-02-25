@@ -10,7 +10,7 @@ import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceBuilder;
 import org.uniprot.core.cv.disease.builder.DiseaseEntryBuilder;
-import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
+import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
 import org.uniprot.cv.common.AbstractFileReader;
 
@@ -59,7 +59,7 @@ public final class DiseaseFileReader extends AbstractFileReader<DiseaseEntry> {
         List<DiseaseCrossReference> crList =
                 entry.dr.stream().map(this::parseCrossReference).collect(Collectors.toList());
 
-        List<KeywordEntryKeyword> kwList =
+        List<KeywordId> kwList =
                 entry.kw.stream().map(this::parseKeyword).collect(Collectors.toList());
 
         return new DiseaseEntryBuilder()
@@ -73,7 +73,7 @@ public final class DiseaseFileReader extends AbstractFileReader<DiseaseEntry> {
                 .build();
     }
 
-    private KeywordEntryKeyword parseKeyword(String kw) {
+    private KeywordId parseKeyword(String kw) {
         final String[] tokens = kw.split(COLON);
         return new KeywordEntryKeywordBuilder()
                 .id(trimSpacesAndRemoveLastDot(tokens[1]))

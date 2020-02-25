@@ -8,7 +8,7 @@ import java.util.Objects;
 
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
-import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
+import org.uniprot.core.cv.keyword.KeywordId;
 
 public class DiseaseEntryImpl implements DiseaseEntry {
 
@@ -21,7 +21,7 @@ public class DiseaseEntryImpl implements DiseaseEntry {
     private String definition;
     private List<String> alternativeNames;
     private List<DiseaseCrossReference> crossReferences;
-    private List<KeywordEntryKeyword> keywords;
+    private List<KeywordId> keywords;
     private Long reviewedProteinCount;
     private Long unreviewedProteinCount;
 
@@ -40,7 +40,7 @@ public class DiseaseEntryImpl implements DiseaseEntry {
             String definition,
             List<String> alternativeNames,
             List<DiseaseCrossReference> crossReferences,
-            List<KeywordEntryKeyword> keywords,
+            List<KeywordId> keywords,
             Long reviewedProteinCount,
             Long unreviewedProteinCount) {
 
@@ -76,7 +76,7 @@ public class DiseaseEntryImpl implements DiseaseEntry {
         return crossReferences;
     }
 
-    public List<KeywordEntryKeyword> getKeywords() {
+    public List<KeywordId> getKeywords() {
         return keywords;
     }
 

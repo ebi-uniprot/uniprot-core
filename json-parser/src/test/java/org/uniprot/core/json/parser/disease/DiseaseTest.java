@@ -8,7 +8,7 @@ import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceBuilder;
 import org.uniprot.core.cv.disease.builder.DiseaseEntryBuilder;
-import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
+import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
@@ -32,7 +32,7 @@ class DiseaseTest {
     void testKeyword() {
         String id = "Sample Keyword";
         String accession = "KW-1234";
-        KeywordEntryKeyword keyword =
+        KeywordId keyword =
                 new KeywordEntryKeywordBuilder().id(id).accession(accession).build();
         ValidateJson.verifyJsonRoundTripParser(
                 DiseaseJsonConfig.getInstance().getFullObjectMapper(), keyword);
@@ -62,7 +62,7 @@ class DiseaseTest {
         // keyword
         String kId = "Sample Keyword";
         String kwAC = "KW-1234";
-        KeywordEntryKeyword keyword =
+        KeywordId keyword =
                 new KeywordEntryKeywordBuilder().id(kId).accession(kwAC).build();
 
         DiseaseEntryBuilder builder = new DiseaseEntryBuilder();

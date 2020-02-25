@@ -14,20 +14,20 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
+import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.KeywordGeneOntology;
 import org.uniprot.core.cv.keyword.impl.KeywordStatisticsImplTest;
 
 public class KeywordEntryImplTest {
 
     private String random;
-    private KeywordEntryKeyword keyword;
+    private KeywordId keyword;
     private String definition;
     private List<String> synonyms;
     private List<KeywordGeneOntology> geneOntologies;
     private Set<KeywordEntry> parents;
     private List<String> sites;
-    private KeywordEntryKeyword category;
+    private KeywordId category;
     private List<KeywordEntry> children;
     private Statistics statistics;
 
@@ -137,7 +137,7 @@ public class KeywordEntryImplTest {
                 this.statistics);
     }
 
-    public static KeywordEntryKeyword createKeyword(String id, String accession) {
+    public static KeywordId createKeyword(String id, String accession) {
         return new KeywordEntryKeywordBuilder().id(id).accession(accession).build();
     }
 }

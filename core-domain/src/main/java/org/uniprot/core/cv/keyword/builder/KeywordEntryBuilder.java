@@ -12,21 +12,21 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.Builder;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
+import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.KeywordGeneOntology;
 
 public class KeywordEntryBuilder implements Builder<KeywordEntry> {
-    private KeywordEntryKeyword keyword;
+    private KeywordId keyword;
     private String definition;
     private List<String> synonyms = new ArrayList<>();
     private List<KeywordGeneOntology> geneOntologies = new ArrayList<>();
     private Set<KeywordEntry> parents = new HashSet<>();
     private List<String> sites = new ArrayList<>();
-    private KeywordEntryKeyword category;
+    private KeywordId category;
     private List<KeywordEntry> children = new ArrayList<>();
     private Statistics statistics;
 
-    public @Nonnull KeywordEntryBuilder keyword(KeywordEntryKeyword keyword) {
+    public @Nonnull KeywordEntryBuilder keyword(KeywordId keyword) {
         this.keyword = keyword;
         return this;
     }
@@ -77,7 +77,7 @@ public class KeywordEntryBuilder implements Builder<KeywordEntry> {
         return this;
     }
 
-    public @Nonnull KeywordEntryBuilder category(KeywordEntryKeyword category) {
+    public @Nonnull KeywordEntryBuilder category(KeywordId category) {
         this.category = category;
         return this;
     }

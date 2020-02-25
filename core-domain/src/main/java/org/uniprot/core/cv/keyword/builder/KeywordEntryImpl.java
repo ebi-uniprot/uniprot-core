@@ -7,19 +7,19 @@ import java.util.*;
 
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
+import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.KeywordGeneOntology;
 
 public class KeywordEntryImpl implements KeywordEntry {
 
     private static final long serialVersionUID = 226389200105459588L;
-    private KeywordEntryKeyword keyword;
+    private KeywordId keyword;
     private String definition;
     private List<String> synonyms;
     private List<KeywordGeneOntology> geneOntologies;
     private Set<KeywordEntry> parents;
     private List<String> sites;
-    private KeywordEntryKeyword category;
+    private KeywordId category;
     private List<KeywordEntry> children;
     private Statistics statistics;
 
@@ -32,13 +32,13 @@ public class KeywordEntryImpl implements KeywordEntry {
     }
 
     KeywordEntryImpl(
-            KeywordEntryKeyword keyword,
+            KeywordId keyword,
             String definition,
             List<String> synonyms,
             List<KeywordGeneOntology> geneOntologies,
             Set<KeywordEntry> parents,
             List<String> sites,
-            KeywordEntryKeyword category,
+            KeywordId category,
             List<KeywordEntry> children,
             Statistics statistics) {
         this.keyword = keyword;
@@ -56,11 +56,11 @@ public class KeywordEntryImpl implements KeywordEntry {
         return parents;
     }
 
-    public KeywordEntryKeyword getCategory() {
+    public KeywordId getCategory() {
         return category;
     }
 
-    public KeywordEntryKeyword getKeyword() {
+    public KeywordId getKeyword() {
         return keyword;
     }
 
@@ -85,7 +85,7 @@ public class KeywordEntryImpl implements KeywordEntry {
     }
 
     public String getAccession() {
-        return getKeyword().getAccession();
+        return getKeyword().getId();
     }
 
     public Statistics getStatistics() {

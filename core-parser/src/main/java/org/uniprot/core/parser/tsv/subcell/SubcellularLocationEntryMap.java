@@ -96,7 +96,7 @@ public class SubcellularLocationEntryMap implements NamedValueMap {
     }
 
     private String getKeyword() {
-        return entry.getKeyword().map(val -> val.getAccession()).orElse("");
+        return entry.getKeyword().map(val -> val.getId()).orElse("");
     }
 
     private String getCategory() {

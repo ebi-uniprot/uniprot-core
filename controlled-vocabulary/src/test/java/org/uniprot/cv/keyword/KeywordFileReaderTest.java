@@ -11,7 +11,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
+import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.KeywordGeneOntology;
 
 class KeywordFileReaderTest {
@@ -43,8 +43,8 @@ class KeywordFileReaderTest {
                 "Category parse result",
                 () -> assertNotNull(retList),
                 () -> assertEquals(1, retList.size(), "should have one object return"),
-                () -> assertEquals("Domain", retList.get(0).getKeyword().getId()),
-                () -> assertEquals("KW-9994", retList.get(0).getKeyword().getAccession()),
+                () -> assertEquals("Domain", retList.get(0).getKeyword().getName()),
+                () -> assertEquals("KW-9994", retList.get(0).getKeyword().getId()),
                 () ->
                         assertEquals(
                                 "Keywords assigned to proteins because they have at least one specimen of a specific domain.",
@@ -126,13 +126,13 @@ class KeywordFileReaderTest {
         WrongKeywordEntry wrongKeywordEntry = new WrongKeywordEntry();
         final KeywordEntry kw =
                 retList.stream()
-                        .filter(k -> k.getKeyword().getId().equals("2Fe-2S"))
+                        .filter(k -> k.getKeyword().getName().equals("2Fe-2S"))
                         .findFirst()
                         .orElse(wrongKeywordEntry);
         assertNotEquals(kw, wrongKeywordEntry);
 
         assertNotNull(kw.getCategory());
-        assertEquals("KW-9993", kw.getCategory().getAccession());
+        assertEquals("KW-9993", kw.getCategory().getId());
 
         assertNotNull(kw.getChildren());
         assertEquals(2, kw.getChildren().size());
@@ -143,7 +143,7 @@ class KeywordFileReaderTest {
 
     private static class WrongKeywordEntry implements KeywordEntry {
         @Override
-        public KeywordEntryKeyword getKeyword() {
+        public KeywordId getKeyword() {
             return null;
         }
 
@@ -173,7 +173,7 @@ class KeywordFileReaderTest {
         }
 
         @Override
-        public KeywordEntryKeyword getCategory() {
+        public KeywordId getCategory() {
             return null;
         }
 
@@ -184,7 +184,7 @@ class KeywordFileReaderTest {
 
         @Override
         public String getAccession() {
-            return getKeyword().getAccession();
+            return getKeyword().getId();
         }
 
         @Override

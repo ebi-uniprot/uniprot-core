@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
-import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
+import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
 
 class DiseaseEntryBuilderTest {
@@ -85,7 +85,7 @@ class DiseaseEntryBuilderTest {
 
     @Test
     void canCreateWith_keywordsSingle() {
-        KeywordEntryKeyword keywords = kw("1", "key");
+        KeywordId keywords = kw("1", "key");
         DiseaseEntry disease = new DiseaseEntryBuilder().keywordsAdd(keywords).build();
         assertNotNull(disease);
         assertEquals(1, disease.getKeywords().size());
@@ -94,7 +94,7 @@ class DiseaseEntryBuilderTest {
 
     @Test
     void canCreateWith_keywords() {
-        List<KeywordEntryKeyword> keywords = Arrays.asList(kw("1", "key"), kw("2", "key2"));
+        List<KeywordId> keywords = Arrays.asList(kw("1", "key"), kw("2", "key2"));
         DiseaseEntry disease = new DiseaseEntryBuilder().keywordsSet(keywords).build();
         assertNotNull(disease);
         assertEquals(keywords, disease.getKeywords());
@@ -151,7 +151,7 @@ class DiseaseEntryBuilderTest {
         assertEquals(impl.hashCode(), obj.hashCode());
     }
 
-    private KeywordEntryKeyword kw(String id, String accession) {
+    private KeywordId kw(String id, String accession) {
         return new KeywordEntryKeywordBuilder().id(id).accession(accession).build();
     }
 }

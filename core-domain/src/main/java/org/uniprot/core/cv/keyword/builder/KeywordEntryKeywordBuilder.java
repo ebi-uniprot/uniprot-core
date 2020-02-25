@@ -3,9 +3,9 @@ package org.uniprot.core.cv.keyword.builder;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
+import org.uniprot.core.cv.keyword.KeywordId;
 
-public class KeywordEntryKeywordBuilder implements Builder<KeywordEntryKeyword> {
+public class KeywordEntryKeywordBuilder implements Builder<KeywordId> {
     private String id;
     private String accession;
 
@@ -19,13 +19,14 @@ public class KeywordEntryKeywordBuilder implements Builder<KeywordEntryKeyword> 
         return this;
     }
 
-    public @Nonnull KeywordEntryKeyword build() {
-        return new KeywordEntryKeywordImpl(id, accession);
+    public @Nonnull
+    KeywordId build() {
+        return new KeywordIdImpl(id, accession);
     }
 
-    public static @Nonnull KeywordEntryKeywordBuilder from(@Nonnull KeywordEntryKeyword instance) {
+    public static @Nonnull KeywordEntryKeywordBuilder from(@Nonnull KeywordId instance) {
         return new KeywordEntryKeywordBuilder()
-                .id(instance.getId())
-                .accession(instance.getAccession());
+                .id(instance.getName())
+                .accession(instance.getId());
     }
 }

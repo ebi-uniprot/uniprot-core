@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.builder.StatisticsBuilder;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
+import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.KeywordGeneOntology;
 import org.uniprot.core.cv.keyword.builder.KeywordEntryBuilder;
 import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
@@ -90,7 +90,7 @@ class KeywordEntryMapTest {
         return keywordEntry;
     }
 
-    private KeywordEntryKeyword getKeyword() {
+    private KeywordId getKeyword() {
         return new KeywordEntryKeywordBuilder().id("Ligand").accession("KW-0005").build();
     }
 

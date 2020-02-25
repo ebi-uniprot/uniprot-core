@@ -4,8 +4,8 @@ import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceImpl;
 import org.uniprot.core.cv.disease.builder.DiseaseEntryImpl;
-import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
-import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordImpl;
+import org.uniprot.core.cv.keyword.KeywordId;
+import org.uniprot.core.cv.keyword.builder.KeywordIdImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -46,7 +46,7 @@ public class DiseaseJsonConfig extends JsonConfig {
         // customise the default mapper
         SimpleModule mod = new SimpleModule();
         mod.addAbstractTypeMapping(DiseaseEntry.class, DiseaseEntryImpl.class);
-        mod.addAbstractTypeMapping(KeywordEntryKeyword.class, KeywordEntryKeywordImpl.class);
+        mod.addAbstractTypeMapping(KeywordId.class, KeywordIdImpl.class);
         mod.addAbstractTypeMapping(DiseaseCrossReference.class, DiseaseCrossReferenceImpl.class);
 
         objMapper.registerModule(mod);

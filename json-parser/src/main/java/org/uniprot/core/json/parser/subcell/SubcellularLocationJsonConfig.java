@@ -1,9 +1,9 @@
 package org.uniprot.core.json.parser.subcell;
 
 import org.uniprot.core.Statistics;
-import org.uniprot.core.cv.keyword.KeywordEntryKeyword;
+import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.KeywordGeneOntology;
-import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordImpl;
+import org.uniprot.core.cv.keyword.builder.KeywordIdImpl;
 import org.uniprot.core.cv.keyword.builder.KeywordGeneOntologyImpl;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryImpl;
@@ -54,7 +54,7 @@ public class SubcellularLocationJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(
                 SubcellularLocationEntry.class, SubcellularLocationEntryImpl.class);
         mod.addAbstractTypeMapping(Statistics.class, StatisticsImpl.class);
-        mod.addAbstractTypeMapping(KeywordEntryKeyword.class, KeywordEntryKeywordImpl.class);
+        mod.addAbstractTypeMapping(KeywordId.class, KeywordIdImpl.class);
         mod.addAbstractTypeMapping(KeywordGeneOntology.class, KeywordGeneOntologyImpl.class);
         objMapper.registerModule(mod);
 
