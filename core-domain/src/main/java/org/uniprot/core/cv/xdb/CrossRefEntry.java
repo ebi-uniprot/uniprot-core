@@ -1,4 +1,4 @@
-package org.uniprot.core.crossref;
+package org.uniprot.core.cv.xdb;
 
 import java.io.Serializable;
 

@@ -1,6 +1,8 @@
-package org.uniprot.core.crossref;
+package org.uniprot.core.cv.xdb.builder;
 
 import java.util.Objects;
+
+import org.uniprot.core.cv.xdb.CrossRefEntry;
 
 public class CrossRefEntryImpl implements CrossRefEntry {
 

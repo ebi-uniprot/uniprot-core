@@ -1,8 +1,9 @@
-package org.uniprot.core.crossref;
+package org.uniprot.core.cv.xdb.builder;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.xdb.CrossRefEntry;
 
 class CrossRefEntryBuilderTest {
 
