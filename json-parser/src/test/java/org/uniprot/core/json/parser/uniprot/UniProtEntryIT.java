@@ -2,9 +2,7 @@ package org.uniprot.core.json.parser.uniprot;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -18,9 +16,14 @@ import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
 import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
 import org.uniprot.core.uniprot.builder.UniProtIdBuilder;
 import org.uniprot.core.uniprot.comment.Comment;
+import org.uniprot.core.uniprot.impl.UniProtEntryImpl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import com.github.bohnman.squiggly.context.provider.SimpleSquigglyContextProvider;
+import com.github.bohnman.squiggly.filter.SquigglyPropertyFilter;
+import com.github.bohnman.squiggly.parser.SquigglyParser;
 
 /** @author lgonzales */
 class UniProtEntryIT {
@@ -48,6 +51,51 @@ class UniProtEntryIT {
 
     @Test
     void testUniProtEntryComplete() {
+
+        UniProtEntry entry = getCompleteUniProtEntry();
+        ValidateJson.verifyJsonRoundTripParser(entry);
+        ValidateJson.verifyEmptyFields(entry);
+
+        try {
+            ObjectMapper mapper = UniprotJsonConfig.getInstance().getSimpleObjectMapper();
+            String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
+            System.out.println(json);
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+    }
+
+    @Test
+    void testFilterFieldsInEntry() throws Exception {
+        UniProtEntry entry = getCompleteUniProtEntry();
+        ObjectMapper mapper = UniprotJsonConfig.getInstance().getFullObjectMapper().copy();
+        String fieldsPath =
+                "primaryAccession,proteinDescription.cdAntigenNames,proteinDescription.recommendedName";
+        SquigglyPropertyFilter filter =
+                new SquigglyPropertyFilter(
+                        new SimpleSquigglyContextProvider(new SquigglyParser(), fieldsPath));
+        SimpleFilterProvider filterProvider =
+                new SimpleFilterProvider().addFilter(SquigglyPropertyFilter.FILTER_ID, filter);
+        mapper.setFilterProvider(filterProvider);
+        String pathJson = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
+        System.out.println("Filtered Fields Only: \n" + pathJson);
+        UniProtEntry converted = mapper.readValue(pathJson, UniProtEntryImpl.class);
+
+        // returned requested ones
+        assertNotNull(converted.getPrimaryAccession());
+        assertNotNull(converted.getProteinDescription());
+        assertNotNull(converted.getProteinDescription().getCdAntigenNames());
+        assertNotNull(converted.getProteinDescription().getRecommendedName());
+        assertFalse(converted.getProteinDescription().getCdAntigenNames().isEmpty());
+
+        // not requested fields are null or empty
+        assertNull(converted.getProteinDescription().getAllergenName());
+        assertNull(converted.getEntryType());
+        assertNull(converted.getOrganism());
+        assertTrue(converted.getComments().isEmpty());
+    }
+
+    private UniProtEntry getCompleteUniProtEntry() {
         List<Comment> comments = new ArrayList<>();
         comments.add(AlternativeProductsCommentTest.getAlternativeProductsComment());
         comments.add(BPCPCommentTest.getBpcpComment());
@@ -68,41 +116,26 @@ class UniProtEntryIT {
                         UniProtAccessionTest.getUniProtAccession(),
                         uniProtId,
                         UniProtEntryType.SWISSPROT);
-        UniProtEntry entry =
-                builder.secondaryAccessionsAdd(UniProtAccessionTest.getUniProtAccession())
-                        .entryAudit(EntryAuditTest.getEntryAudit())
-                        .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
-                        .proteinDescription(ProteinDescriptionTest.getProteinDescription())
-                        .genesSet(Collections.singletonList(GeneTest.createCompleteGene()))
-                        .annotationScore(2)
-                        .organism(OrganimsTest.getOrganism())
-                        .organismHostsSet(
-                                Collections.singletonList(OrganimHostTest.getOrganismHost()))
-                        .commentsSet(comments)
-                        .featuresSet(Collections.singletonList(FeatureTest.getFeature()))
-                        .internalSection(InternalSectionTest.getInternalSection())
-                        .keywordsSet(Collections.singletonList(KeywordTest.getKeyword()))
-                        .geneLocationsSet(
-                                Collections.singletonList(GeneLocationTest.getGeneLocation()))
-                        .referencesSet(UniProtReferenceTest.getUniProtReferences())
-                        .databaseCrossReferencesSet(
-                                Collections.singletonList(
-                                        UniProtDBCrossReferenceTest.getUniProtDBCrossReference()))
-                        .sequence(SequenceTest.getSequence())
-                        .lineagesSet(
-                                Collections.singletonList(
-                                        TaxonomyLineageTest.getCompleteTaxonomyLineage()))
-                        .build();
-
-        ValidateJson.verifyJsonRoundTripParser(entry);
-        ValidateJson.verifyEmptyFields(entry);
-
-        try {
-            ObjectMapper mapper = UniprotJsonConfig.getInstance().getSimpleObjectMapper();
-            String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
-            System.out.println(json);
-        } catch (Exception e) {
-            fail(e.getMessage());
-        }
+        return builder.secondaryAccessionsAdd(UniProtAccessionTest.getUniProtAccession())
+                .entryAudit(EntryAuditTest.getEntryAudit())
+                .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
+                .proteinDescription(ProteinDescriptionTest.getProteinDescription())
+                .genesAdd(GeneTest.createCompleteGene())
+                .annotationScore(2)
+                .organism(OrganimsTest.getOrganism())
+                .organismHostsSet(Collections.singletonList(OrganimHostTest.getOrganismHost()))
+                .commentsSet(comments)
+                .featuresAdd(FeatureTest.getFeature())
+                .internalSection(InternalSectionTest.getInternalSection())
+                .keywordsSet(Collections.singletonList(KeywordTest.getKeyword()))
+                .geneLocationsSet(Collections.singletonList(GeneLocationTest.getGeneLocation()))
+                .referencesSet(UniProtReferenceTest.getUniProtReferences())
+                .databaseCrossReferencesSet(
+                        Collections.singletonList(
+                                UniProtDBCrossReferenceTest.getUniProtDBCrossReference()))
+                .sequence(SequenceTest.getSequence())
+                .lineagesSet(
+                        Collections.singletonList(TaxonomyLineageTest.getCompleteTaxonomyLineage()))
+                .build();
     }
 }
