@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 import org.uniprot.core.Statistics;
-import org.uniprot.core.cv.keyword.KeywordGeneOntology;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.subcell.SubcellLocationCategory;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
@@ -20,7 +20,7 @@ public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
     private String content;
     private List<String> synonyms = Collections.emptyList();
     private KeywordId keyword;
-    private List<KeywordGeneOntology> geneOntologies = Collections.emptyList();
+    private List<GeneOntologyEntry> geneOntologies = Collections.emptyList();
     private String note;
     private List<String> references = Collections.emptyList();
     private List<String> links = Collections.emptyList();
@@ -64,7 +64,7 @@ public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
     }
 
     @Override
-    public List<KeywordGeneOntology> getGeneOntologies() {
+    public List<GeneOntologyEntry> getGeneOntologies() {
         return geneOntologies;
     }
 
@@ -126,7 +126,7 @@ public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
         this.keyword = keyword;
     }
 
-    public void setGeneOntologies(List<KeywordGeneOntology> geneOntologies) {
+    public void setGeneOntologies(List<GeneOntologyEntry> geneOntologies) {
         this.geneOntologies = geneOntologies;
     }
 

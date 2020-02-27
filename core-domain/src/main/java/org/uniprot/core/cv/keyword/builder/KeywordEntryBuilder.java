@@ -11,15 +11,15 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.Statistics;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordGeneOntology;
 import org.uniprot.core.cv.keyword.KeywordId;
 
 public class KeywordEntryBuilder implements Builder<KeywordEntry> {
     private KeywordId keyword;
     private String definition;
     private List<String> synonyms = new ArrayList<>();
-    private List<KeywordGeneOntology> geneOntologies = new ArrayList<>();
+    private List<GeneOntologyEntry> geneOntologies = new ArrayList<>();
     private Set<KeywordEntry> parents = new HashSet<>();
     private List<String> sites = new ArrayList<>();
     private KeywordId category;
@@ -46,13 +46,12 @@ public class KeywordEntryBuilder implements Builder<KeywordEntry> {
         return this;
     }
 
-    public @Nonnull KeywordEntryBuilder geneOntologiesSet(
-            List<KeywordGeneOntology> geneOntologies) {
+    public @Nonnull KeywordEntryBuilder geneOntologiesSet(List<GeneOntologyEntry> geneOntologies) {
         this.geneOntologies = modifiableList(geneOntologies);
         return this;
     }
 
-    public @Nonnull KeywordEntryBuilder geneOntologiesAdd(KeywordGeneOntology geneOntology) {
+    public @Nonnull KeywordEntryBuilder geneOntologiesAdd(GeneOntologyEntry geneOntology) {
         addOrIgnoreNull(geneOntology, this.geneOntologies);
         return this;
     }

@@ -12,12 +12,12 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.builder.StatisticsBuilder;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.go.builder.GeneOntologyEntryBuilder;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordGeneOntology;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.builder.KeywordEntryBuilder;
 import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
-import org.uniprot.core.cv.keyword.builder.KeywordGeneOntologyBuilder;
 
 class KeywordEntryMapTest {
 
@@ -58,7 +58,7 @@ class KeywordEntryMapTest {
     private KeywordEntry getKeywordEntry(boolean hierarchy) {
         Statistics statistics =
                 new StatisticsBuilder().reviewedProteinCount(10).unreviewedProteinCount(20).build();
-        KeywordGeneOntology go = new KeywordGeneOntologyBuilder().id("goId").term("goTerm").build();
+        GeneOntologyEntry go = new GeneOntologyEntryBuilder().id("goId").name("goTerm").build();
         KeywordEntry parent =
                 KeywordEntryBuilder.from(getKeywordEntryParent())
                         .parentsSet(Collections.singleton(getKeywordEntryParent()))

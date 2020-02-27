@@ -13,8 +13,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.go.builder.GeneOntologyEntryBuilder;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordGeneOntology;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.impl.KeywordStatisticsImplTest;
 
@@ -24,7 +25,7 @@ public class KeywordEntryImplTest {
     private KeywordId keyword;
     private String definition;
     private List<String> synonyms;
-    private List<KeywordGeneOntology> geneOntologies;
+    private List<GeneOntologyEntry> geneOntologies;
     private Set<KeywordEntry> parents;
     private List<String> sites;
     private KeywordId category;
@@ -42,11 +43,7 @@ public class KeywordEntryImplTest {
                         .collect(Collectors.toList());
         this.geneOntologies =
                 IntStream.range(0, 3)
-                        .mapToObj(
-                                i ->
-                                        KeywordGeneOntologyImplTest.go(
-                                                i + "-id-" + this.random,
-                                                i + "-term-" + this.random))
+                        .mapToObj(i -> go(i + "-id-" + this.random, i + "-term-" + this.random))
                         .collect(Collectors.toList());
         this.sites =
                 IntStream.range(0, 5)
@@ -139,5 +136,9 @@ public class KeywordEntryImplTest {
 
     public static KeywordId createKeyword(String id, String accession) {
         return new KeywordEntryKeywordBuilder().id(id).accession(accession).build();
+    }
+
+    private static GeneOntologyEntry go(String id, String term) {
+        return new GeneOntologyEntryBuilder().id(id).name(term).build();
     }
 }

@@ -1,16 +1,16 @@
-package org.uniprot.core.uniref;
+package org.uniprot.core.cv.go;
 
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-public enum GoTermType implements EnumDisplay<GoTermType> {
+public enum GoAspect implements EnumDisplay<GoAspect> {
     FUNCTION("GO Molecular Function"),
     PROCESS("GO Biological Process"),
     COMPONENT("GO Cellular Component");
     private final String displayName;
 
-    GoTermType(String displayName) {
+    GoAspect(String displayName) {
         this.displayName = displayName;
     }
 

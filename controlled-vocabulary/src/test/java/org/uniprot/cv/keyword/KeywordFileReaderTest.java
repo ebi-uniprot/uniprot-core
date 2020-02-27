@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordGeneOntology;
 import org.uniprot.core.cv.keyword.KeywordId;
 
 class KeywordFileReaderTest {
@@ -91,13 +91,11 @@ class KeywordFileReaderTest {
                                 "should be without dot"),
                 () -> assertNotNull(retList.get(0).getGeneOntologies()),
                 () -> assertEquals(1, retList.get(0).getGeneOntologies().size()),
-                () ->
-                        assertEquals(
-                                "GO:0051537", retList.get(0).getGeneOntologies().get(0).getGoId()),
+                () -> assertEquals("GO:0051537", retList.get(0).getGeneOntologies().get(0).getId()),
                 () ->
                         assertEquals(
                                 "2 iron, 2 sulfur cluster binding",
-                                retList.get(0).getGeneOntologies().get(0).getGoTerm()));
+                                retList.get(0).getGeneOntologies().get(0).getName()));
     }
 
     @Test
@@ -158,7 +156,7 @@ class KeywordFileReaderTest {
         }
 
         @Override
-        public List<KeywordGeneOntology> getGeneOntologies() {
+        public List<GeneOntologyEntry> getGeneOntologies() {
             return null;
         }
 

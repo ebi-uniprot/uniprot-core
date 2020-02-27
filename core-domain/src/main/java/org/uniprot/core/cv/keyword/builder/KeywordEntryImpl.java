@@ -6,8 +6,8 @@ import static org.uniprot.core.util.Utils.unmodifiableSet;
 import java.util.*;
 
 import org.uniprot.core.Statistics;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordGeneOntology;
 import org.uniprot.core.cv.keyword.KeywordId;
 
 public class KeywordEntryImpl implements KeywordEntry {
@@ -16,7 +16,7 @@ public class KeywordEntryImpl implements KeywordEntry {
     private KeywordId keyword;
     private String definition;
     private List<String> synonyms;
-    private List<KeywordGeneOntology> geneOntologies;
+    private List<GeneOntologyEntry> geneOntologies;
     private Set<KeywordEntry> parents;
     private List<String> sites;
     private KeywordId category;
@@ -35,7 +35,7 @@ public class KeywordEntryImpl implements KeywordEntry {
             KeywordId keyword,
             String definition,
             List<String> synonyms,
-            List<KeywordGeneOntology> geneOntologies,
+            List<GeneOntologyEntry> geneOntologies,
             Set<KeywordEntry> parents,
             List<String> sites,
             KeywordId category,
@@ -72,7 +72,7 @@ public class KeywordEntryImpl implements KeywordEntry {
         return synonyms;
     }
 
-    public List<KeywordGeneOntology> getGeneOntologies() {
+    public List<GeneOntologyEntry> getGeneOntologies() {
         return geneOntologies;
     }
 

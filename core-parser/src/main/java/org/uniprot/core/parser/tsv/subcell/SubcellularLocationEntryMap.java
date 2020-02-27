@@ -88,7 +88,7 @@ public class SubcellularLocationEntryMap implements NamedValueMap {
     private String getGeneOntologies() {
         if (Utils.notNullNotEmpty(entry.getGeneOntologies())) {
             return entry.getGeneOntologies().stream()
-                    .map(mapped -> mapped.getGoId() + ":" + mapped.getGoTerm())
+                    .map(mapped -> mapped.getId() + ":" + mapped.getName())
                     .collect(Collectors.joining(", "));
         } else {
             return "";

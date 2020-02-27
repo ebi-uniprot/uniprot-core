@@ -8,9 +8,9 @@ import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.uniprot.core.cv.keyword.KeywordGeneOntology;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.go.builder.GeneOntologyEntryBuilder;
 import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
-import org.uniprot.core.cv.keyword.builder.KeywordGeneOntologyBuilder;
 import org.uniprot.core.cv.subcell.SubcellLocationCategory;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryImpl;
@@ -191,7 +191,7 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
         retObj.setReferences(refList.isEmpty() ? null : refList);
 
         // GoMapping
-        List<KeywordGeneOntology> goList =
+        List<GeneOntologyEntry> goList =
                 entry.go.stream().map(this::parseGeneOntology).collect(Collectors.toList());
         retObj.setGeneOntologies(goList.isEmpty() ? null : goList);
 
@@ -250,9 +250,9 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
                 .orElse(null);
     }
 
-    private KeywordGeneOntology parseGeneOntology(String go) {
+    private GeneOntologyEntry parseGeneOntology(String go) {
         String[] tokens = go.split(";");
-        return new KeywordGeneOntologyBuilder().id(tokens[0]).term(tokens[1].trim()).build();
+        return new GeneOntologyEntryBuilder().id(tokens[0]).name(tokens[1].trim()).build();
     }
 
     private String trimSpacesAndRemoveLastDot(String str) {

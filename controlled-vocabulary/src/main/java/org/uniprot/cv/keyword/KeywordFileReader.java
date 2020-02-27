@@ -5,13 +5,13 @@ import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.go.builder.GeneOntologyEntryBuilder;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordGeneOntology;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.builder.KeywordEntryBuilder;
 import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
-import org.uniprot.core.cv.keyword.builder.KeywordGeneOntologyBuilder;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
 import org.uniprot.cv.common.AbstractFileReader;
@@ -152,7 +152,7 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         retObj.synonymsSet(synList);
 
         // GoMapping
-        List<KeywordGeneOntology> goList =
+        List<GeneOntologyEntry> goList =
                 entry.go.stream().map(this::parseGeneOntology).collect(Collectors.toList());
         retObj.geneOntologiesSet(goList);
 
@@ -170,9 +170,9 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         return str.endsWith(".") ? str.substring(0, str.length() - 1) : str;
     }
 
-    private KeywordGeneOntology parseGeneOntology(String go) {
+    private GeneOntologyEntry parseGeneOntology(String go) {
         String[] tokens = go.split(";");
-        return new KeywordGeneOntologyBuilder().id(tokens[0]).term(tokens[1].trim()).build();
+        return new GeneOntologyEntryBuilder().id(tokens[0]).name(tokens[1].trim()).build();
     }
 
     private List<KeyFileEntry> convertLinesIntoInMemoryObjectList(List<String> lines) {

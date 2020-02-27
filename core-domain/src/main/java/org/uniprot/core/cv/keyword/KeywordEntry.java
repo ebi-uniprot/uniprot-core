@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.uniprot.core.Statistics;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
 
 /**
  * Graphical representation of keywords according to old uniprot website Reverse of flat text file
@@ -19,7 +20,7 @@ public interface KeywordEntry extends Serializable {
 
     List<String> getSynonyms();
 
-    List<KeywordGeneOntology> getGeneOntologies();
+    List<GeneOntologyEntry> getGeneOntologies();
 
     /**
      * Keyword's immediate children e-g KW-0411 will have one parent KW-0001 Category will always

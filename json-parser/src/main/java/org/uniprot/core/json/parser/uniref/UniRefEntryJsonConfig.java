@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import org.uniprot.core.Sequence;
 import org.uniprot.core.Value;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.go.builder.GeneOntologyEntryImpl;
 import org.uniprot.core.impl.SequenceImpl;
 import org.uniprot.core.impl.ValueImpl;
 import org.uniprot.core.json.parser.JsonConfig;
@@ -15,13 +17,11 @@ import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniparc.impl.UniParcIdImpl;
 import org.uniprot.core.uniprot.UniProtAccession;
 import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
-import org.uniprot.core.uniref.GoTerm;
 import org.uniprot.core.uniref.OverlapRegion;
 import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefMember;
-import org.uniprot.core.uniref.impl.GoTermImpl;
 import org.uniprot.core.uniref.impl.OverlapRegionImpl;
 import org.uniprot.core.uniref.impl.RepresentativeMemberImpl;
 import org.uniprot.core.uniref.impl.UniRefEntryIdImpl;
@@ -72,7 +72,7 @@ public class UniRefEntryJsonConfig extends JsonConfig {
         mod.addDeserializer(LocalDate.class, new LocalDateDeserializer());
         mod.addAbstractTypeMapping(UniRefEntry.class, UniRefEntryImpl.class);
 
-        mod.addAbstractTypeMapping(GoTerm.class, GoTermImpl.class);
+        mod.addAbstractTypeMapping(GeneOntologyEntry.class, GeneOntologyEntryImpl.class);
         mod.addAbstractTypeMapping(OverlapRegion.class, OverlapRegionImpl.class);
 
         mod.addAbstractTypeMapping(Value.class, ValueImpl.class);

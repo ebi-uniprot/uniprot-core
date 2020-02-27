@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import org.uniprot.core.uniref.GoTerm;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefEntryId;
@@ -27,7 +27,7 @@ public class UniRefEntryImpl implements UniRefEntry {
     private UniRefType entryType;
     private long commonTaxonId;
     private String commonTaxon;
-    private List<GoTerm> goTerms;
+    private List<GeneOntologyEntry> goTerms;
     private RepresentativeMember representativeMember;
     private List<UniRefMember> members;
 
@@ -45,7 +45,7 @@ public class UniRefEntryImpl implements UniRefEntry {
             UniRefType entryType,
             long commonTaxonId,
             String commonTaxon,
-            List<GoTerm> goTerms,
+            List<GeneOntologyEntry> goTerms,
             RepresentativeMember representativeMember,
             List<UniRefMember> members) {
         this.id = id;
@@ -95,7 +95,7 @@ public class UniRefEntryImpl implements UniRefEntry {
     }
 
     @Override
-    public List<GoTerm> getGoTerms() {
+    public List<GeneOntologyEntry> getGoTerms() {
         return goTerms;
     }
 
