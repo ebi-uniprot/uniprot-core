@@ -47,13 +47,29 @@ public class Utils {
     }
 
     /**
+     * Creates new hash set from source. Can be expensive call depending on set size. Will change
+     * the implementation of set to HashSet.
+     *
+     * @param source can be null or any Set
+     * @param <T> Type of source Set
+     * @return non null HashSet
+     */
+    public @Nonnull static <T> Set<T> modifiableSet(@Nullable Set<T> source) {
+        if (source != null) {
+            return new HashSet<>(source);
+        } else {
+            return new HashSet<>();
+        }
+    }
+
+    /**
      * Add value in list or ignore if value is null
      *
      * @param value value or null when you want to add in list
      * @param target list to add value, should be notNull and modifiable
      * @param <T> Type of value and list should be same
      */
-    public static <T> void addOrIgnoreNull(@Nullable T value, @Nonnull List<T> target) {
+    public static <T> void addOrIgnoreNull(@Nullable T value, @Nonnull Collection<T> target) {
         if (value != null) {
             target.add(value);
         }
@@ -71,6 +87,21 @@ public class Utils {
             return Collections.emptyList();
         } else {
             return Collections.unmodifiableList(targetList);
+        }
+    }
+
+    /**
+     * Converts Set to unmodifiable Set
+     *
+     * @param targetSet can be null or any Set
+     * @param <T> type of the Set
+     * @return Always returns non null un modifiable Set
+     */
+    public @Nonnull static <T> Set<T> unmodifiableSet(@Nullable Set<T> targetSet) {
+        if ((targetSet == null) || targetSet.isEmpty()) {
+            return Collections.emptySet();
+        } else {
+            return Collections.unmodifiableSet(targetSet);
         }
     }
 

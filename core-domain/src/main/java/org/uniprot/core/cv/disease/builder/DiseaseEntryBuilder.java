@@ -7,8 +7,7 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.Builder;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
-import org.uniprot.core.cv.disease.impl.DiseaseEntryImpl;
-import org.uniprot.core.cv.keyword.Keyword;
+import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.util.Utils;
 
 public class DiseaseEntryBuilder implements Builder<DiseaseEntry> {
@@ -18,7 +17,7 @@ public class DiseaseEntryBuilder implements Builder<DiseaseEntry> {
     private String definition;
     private List<String> alternativeNames;
     private List<DiseaseCrossReference> crossReferences;
-    private List<Keyword> keywords;
+    private List<KeywordId> keywords;
     private Long reviewedProteinCount;
     private Long unreviewedProteinCount;
 
@@ -96,13 +95,13 @@ public class DiseaseEntryBuilder implements Builder<DiseaseEntry> {
     }
 
     // setter for single object
-    public @Nonnull DiseaseEntryBuilder keywordsAdd(Keyword keyword) {
+    public @Nonnull DiseaseEntryBuilder keywordsAdd(KeywordId keyword) {
         this.keywords = Utils.modifiableList(this.keywords);
         this.keywords.add(keyword);
         return this;
     }
 
-    public @Nonnull DiseaseEntryBuilder keywordsSet(List<Keyword> keywords) {
+    public @Nonnull DiseaseEntryBuilder keywordsSet(List<KeywordId> keywords) {
         this.keywords = keywords;
         return this;
     }

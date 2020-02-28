@@ -3,7 +3,6 @@ package org.uniprot.core.parser.tsv.uniprot;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.Value;
 import org.uniprot.core.uniprot.Keyword;
 
 public class EntryKeywordMap implements NamedValueMap {
@@ -25,7 +24,7 @@ public class EntryKeywordMap implements NamedValueMap {
         }
 
         Map<String, String> map = new HashMap<>();
-        String kwValue = keywords.stream().map(Value::getValue).collect(Collectors.joining(";"));
+        String kwValue = keywords.stream().map(Keyword::getName).collect(Collectors.joining(";"));
         map.put(FIELDS.get(0), kwValue);
         String kwIds =
                 keywords.stream()

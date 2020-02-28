@@ -10,9 +10,10 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
-import org.uniprot.core.cv.keyword.GeneOntology;
-import org.uniprot.core.cv.keyword.Keyword;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
+import org.uniprot.core.cv.keyword.KeywordId;
 
 class KeywordFileReaderTest {
 
@@ -43,8 +44,8 @@ class KeywordFileReaderTest {
                 "Category parse result",
                 () -> assertNotNull(retList),
                 () -> assertEquals(1, retList.size(), "should have one object return"),
-                () -> assertEquals("Domain", retList.get(0).getKeyword().getId()),
-                () -> assertEquals("KW-9994", retList.get(0).getKeyword().getAccession()),
+                () -> assertEquals("Domain", retList.get(0).getKeyword().getName()),
+                () -> assertEquals("KW-9994", retList.get(0).getKeyword().getId()),
                 () ->
                         assertEquals(
                                 "Keywords assigned to proteins because they have at least one specimen of a specific domain.",
@@ -91,13 +92,11 @@ class KeywordFileReaderTest {
                                 "should be without dot"),
                 () -> assertNotNull(retList.get(0).getGeneOntologies()),
                 () -> assertEquals(1, retList.get(0).getGeneOntologies().size()),
-                () ->
-                        assertEquals(
-                                "GO:0051537", retList.get(0).getGeneOntologies().get(0).getGoId()),
+                () -> assertEquals("GO:0051537", retList.get(0).getGeneOntologies().get(0).getId()),
                 () ->
                         assertEquals(
                                 "2 iron, 2 sulfur cluster binding",
-                                retList.get(0).getGeneOntologies().get(0).getGoTerm()));
+                                retList.get(0).getGeneOntologies().get(0).getName()));
     }
 
     @Test
@@ -126,23 +125,24 @@ class KeywordFileReaderTest {
         WrongKeywordEntry wrongKeywordEntry = new WrongKeywordEntry();
         final KeywordEntry kw =
                 retList.stream()
-                        .filter(k -> k.getKeyword().getId().equals("2Fe-2S"))
+                        .filter(k -> k.getKeyword().getName().equals("2Fe-2S"))
                         .findFirst()
                         .orElse(wrongKeywordEntry);
         assertNotEquals(kw, wrongKeywordEntry);
 
         assertNotNull(kw.getCategory());
-        assertEquals("KW-9993", kw.getCategory().getAccession());
+        assertEquals("KW-9993", kw.getCategory().getId());
 
         assertNotNull(kw.getChildren());
         assertEquals(2, kw.getChildren().size());
 
-        assertNull(kw.getSites());
+        assertNotNull(kw.getSites());
+        assertTrue(kw.getSites().isEmpty());
     }
 
     private static class WrongKeywordEntry implements KeywordEntry {
         @Override
-        public Keyword getKeyword() {
+        public KeywordId getKeyword() {
             return null;
         }
 
@@ -157,7 +157,7 @@ class KeywordFileReaderTest {
         }
 
         @Override
-        public List<GeneOntology> getGeneOntologies() {
+        public List<GeneOntologyEntry> getGeneOntologies() {
             return null;
         }
 
@@ -172,7 +172,7 @@ class KeywordFileReaderTest {
         }
 
         @Override
-        public Keyword getCategory() {
+        public KeywordCategory getCategory() {
             return null;
         }
 
@@ -183,7 +183,7 @@ class KeywordFileReaderTest {
 
         @Override
         public String getAccession() {
-            return getKeyword().getAccession();
+            return getKeyword().getId();
         }
 
         @Override

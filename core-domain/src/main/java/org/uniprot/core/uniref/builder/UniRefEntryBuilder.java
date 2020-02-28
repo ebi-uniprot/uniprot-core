@@ -7,7 +7,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.uniref.GoTerm;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefEntryId;
@@ -28,7 +28,7 @@ public class UniRefEntryBuilder implements Builder<UniRefEntry> {
     private UniRefType entryType;
     private long commonTaxonId;
     private String commonTaxon;
-    private List<GoTerm> goTerms = new ArrayList<>();
+    private List<GeneOntologyEntry> goTerms = new ArrayList<>();
     private RepresentativeMember representativeMember;
     private List<UniRefMember> members = new ArrayList<>();
 
@@ -95,12 +95,12 @@ public class UniRefEntryBuilder implements Builder<UniRefEntry> {
         return this;
     }
 
-    public @Nonnull UniRefEntryBuilder goTermsSet(List<GoTerm> goTerms) {
+    public @Nonnull UniRefEntryBuilder goTermsSet(List<GeneOntologyEntry> goTerms) {
         this.goTerms = Utils.modifiableList(goTerms);
         return this;
     }
 
-    public @Nonnull UniRefEntryBuilder goTermsAdd(GoTerm goTerm) {
+    public @Nonnull UniRefEntryBuilder goTermsAdd(GeneOntologyEntry goTerm) {
         Utils.addOrIgnoreNull(goTerm, this.goTerms);
         return this;
     }

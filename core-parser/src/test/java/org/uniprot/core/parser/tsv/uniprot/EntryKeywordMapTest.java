@@ -27,8 +27,8 @@ class EntryKeywordMapTest {
     @Test
     void testMap() {
         List<Keyword> keywords = new ArrayList<>();
-        keywords.add(new KeywordBuilder().id("KW-0002").value("3D-structure").build());
-        keywords.add(new KeywordBuilder().id("KW-0106").value("Calcium").build());
+        keywords.add(new KeywordBuilder().id("KW-0002").name("3D-structure").build());
+        keywords.add(new KeywordBuilder().id("KW-0106").name("Calcium").build());
         EntryKeywordMap dl = new EntryKeywordMap(keywords);
         Map<String, String> result = dl.attributeValues();
         assertEquals(2, result.size());

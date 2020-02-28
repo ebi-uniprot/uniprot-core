@@ -9,9 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceBuilder;
-import org.uniprot.core.cv.disease.impl.DiseaseEntryImpl;
-import org.uniprot.core.cv.keyword.Keyword;
-import org.uniprot.core.cv.keyword.impl.KeywordImpl;
+import org.uniprot.core.cv.disease.builder.DiseaseEntryBuilder;
+import org.uniprot.core.cv.keyword.KeywordId;
+import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
 import org.uniprot.cv.common.AbstractFileReader;
 
 public final class DiseaseFileReader extends AbstractFileReader<DiseaseEntry> {
@@ -59,15 +59,26 @@ public final class DiseaseFileReader extends AbstractFileReader<DiseaseEntry> {
         List<DiseaseCrossReference> crList =
                 entry.dr.stream().map(this::parseCrossReference).collect(Collectors.toList());
 
-        List<Keyword> kwList =
+        List<KeywordId> kwList =
                 entry.kw.stream().map(this::parseKeyword).collect(Collectors.toList());
 
-        return new DiseaseEntryImpl(id, accession, acronym, definition, synonyms, crList, kwList);
+        return new DiseaseEntryBuilder()
+                .id(id)
+                .accession(accession)
+                .acronym(acronym)
+                .definition(definition)
+                .alternativeNamesSet(synonyms)
+                .crossReferencesSet(crList)
+                .keywordsSet(kwList)
+                .build();
     }
 
-    private Keyword parseKeyword(String kw) {
+    private KeywordId parseKeyword(String kw) {
         final String[] tokens = kw.split(COLON);
-        return new KeywordImpl(trimSpacesAndRemoveLastDot(tokens[1]), tokens[0]);
+        return new KeywordEntryKeywordBuilder()
+                .id(trimSpacesAndRemoveLastDot(tokens[1]))
+                .accession(tokens[0])
+                .build();
     }
 
     private DiseaseCrossReference parseCrossReference(String cr) {

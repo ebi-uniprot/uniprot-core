@@ -13,8 +13,8 @@ import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceBuilder;
 import org.uniprot.core.cv.disease.builder.DiseaseEntryBuilder;
-import org.uniprot.core.cv.keyword.Keyword;
-import org.uniprot.core.cv.keyword.impl.KeywordImpl;
+import org.uniprot.core.cv.keyword.KeywordId;
+import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
 
 class DiseaseEntryMapTest {
 
@@ -60,12 +60,9 @@ class DiseaseEntryMapTest {
                 Arrays.asList(
                         new DiseaseCrossReferenceBuilder().databaseType("DB1").id("ID1").build(),
                         new DiseaseCrossReferenceBuilder().databaseType("DB1").id("ID2").build());
-        List<Keyword> keywords =
+        List<KeywordId> keywords =
                 Arrays.asList(
-                        new KeywordImpl("KW1", "VAL1"),
-                        new KeywordImpl("KW2", "VAL2"),
-                        new KeywordImpl("KW3", "VAL3"),
-                        new KeywordImpl("KW4", "VAL4"));
+                        kw("KW1", "VAL1"), kw("KW2", "VAL2"), kw("KW3", "VAL3"), kw("KW4", "VAL4"));
         builder.alternativeNamesSet(alternativeNames).crossReferencesSet(xrefs);
         builder.keywordsSet(keywords);
 
@@ -100,5 +97,9 @@ class DiseaseEntryMapTest {
         builder.definition(def);
         builder.reviewedProteinCount(revCount).unreviewedProteinCount(unrevCount);
         return builder;
+    }
+
+    private KeywordId kw(String id, String accession) {
+        return new KeywordEntryKeywordBuilder().id(id).accession(accession).build();
     }
 }

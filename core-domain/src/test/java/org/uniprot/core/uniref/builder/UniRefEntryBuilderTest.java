@@ -9,8 +9,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.builder.SequenceBuilder;
-import org.uniprot.core.uniref.GoTerm;
-import org.uniprot.core.uniref.GoTermType;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.go.GoAspect;
+import org.uniprot.core.cv.go.builder.GeneOntologyEntryBuilder;
 import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefEntryId;
@@ -94,15 +95,15 @@ class UniRefEntryBuilderTest {
 
     @Test
     void testGoTerms() {
-        GoTermType type = GoTermType.COMPONENT;
+        GoAspect type = GoAspect.COMPONENT;
         String id = "GO:0044444";
-        GoTerm goTerm = new GoTermBuilder().type(type).id(id).build();
+        GeneOntologyEntry goTerm = new GeneOntologyEntryBuilder().aspect(type).id(id).build();
 
-        GoTermType type2 = GoTermType.PROCESS;
+        GoAspect type2 = GoAspect.PROCESS;
         String id2 = "GO:0044435";
-        GoTerm goTerm2 = new GoTermBuilder().type(type2).id(id2).build();
+        GeneOntologyEntry goTerm2 = new GeneOntologyEntryBuilder().aspect(type2).id(id2).build();
 
-        List<GoTerm> goTerms = Arrays.asList(goTerm, goTerm2);
+        List<GeneOntologyEntry> goTerms = Arrays.asList(goTerm, goTerm2);
 
         UniRefEntry entry = new UniRefEntryBuilder().goTermsSet(goTerms).build();
         assertEquals(goTerms, entry.getGoTerms());
@@ -110,14 +111,14 @@ class UniRefEntryBuilderTest {
 
     @Test
     void testAddGoTerm() {
-        GoTermType type = GoTermType.COMPONENT;
+        GoAspect type = GoAspect.COMPONENT;
         String id = "GO:0044444";
-        GoTerm goTerm = new GoTermBuilder().type(type).id(id).build();
+        GeneOntologyEntry goTerm = new GeneOntologyEntryBuilder().aspect(type).id(id).build();
 
-        GoTermType type2 = GoTermType.PROCESS;
+        GoAspect type2 = GoAspect.PROCESS;
         String id2 = "GO:0044435";
-        GoTerm goTerm2 = new GoTermBuilder().type(type2).id(id2).build();
-        List<GoTerm> goTerms = Arrays.asList(goTerm, goTerm2);
+        GeneOntologyEntry goTerm2 = new GeneOntologyEntryBuilder().aspect(type2).id(id2).build();
+        List<GeneOntologyEntry> goTerms = Arrays.asList(goTerm, goTerm2);
         UniRefEntry entry = new UniRefEntryBuilder().goTermsAdd(goTerm).goTermsAdd(goTerm2).build();
         assertEquals(goTerms, entry.getGoTerms());
     }

@@ -2,11 +2,11 @@ package org.uniprot.core.xml.uniref;
 
 import java.util.stream.Collectors;
 
-import org.uniprot.core.uniref.GoTerm;
-import org.uniprot.core.uniref.GoTermType;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.go.GoAspect;
+import org.uniprot.core.cv.go.builder.GeneOntologyEntryBuilder;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefType;
-import org.uniprot.core.uniref.builder.GoTermBuilder;
 import org.uniprot.core.uniref.builder.UniRefEntryBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniref.Entry;
@@ -76,11 +76,11 @@ public class UniRefEntryConverter implements Converter<Entry, UniRefEntry> {
             } else if (property.getType().equals(PROPERTY_COMMON_TAXON_ID)) {
                 builder.commonTaxonId(Long.parseLong(property.getValue()));
             } else if (property.getType().equals(PROPERTY_GO_FUNCTION)) {
-                builder.goTermsAdd(createGoTerm(GoTermType.FUNCTION, property.getValue()));
+                builder.goTermsAdd(createGoTerm(GoAspect.FUNCTION, property.getValue()));
             } else if (property.getType().equals(PROPERTY_GO_COMPONENT)) {
-                builder.goTermsAdd(createGoTerm(GoTermType.COMPONENT, property.getValue()));
+                builder.goTermsAdd(createGoTerm(GoAspect.COMPONENT, property.getValue()));
             } else if (property.getType().equals(PROPERTY_GO_PROCESS)) {
-                builder.goTermsAdd(createGoTerm(GoTermType.PROCESS, property.getValue()));
+                builder.goTermsAdd(createGoTerm(GoAspect.PROCESS, property.getValue()));
             } else if (property.getType().equals(PROPERTY_MEMBER_COUNT)) {
                 builder.memberCount(Integer.parseInt(property.getValue()));
             } else {
@@ -89,8 +89,8 @@ public class UniRefEntryConverter implements Converter<Entry, UniRefEntry> {
         }
     }
 
-    private GoTerm createGoTerm(GoTermType type, String id) {
-        return new GoTermBuilder().type(type).id(id).build();
+    private GeneOntologyEntry createGoTerm(GoAspect aspect, String id) {
+        return new GeneOntologyEntryBuilder().aspect(aspect).id(id).build();
     }
 
     @Override
@@ -129,8 +129,8 @@ public class UniRefEntryConverter implements Converter<Entry, UniRefEntry> {
         uniObj.getGoTerms().stream().map(this::convert).forEach(jaxbEntry.getProperty()::add);
     }
 
-    private PropertyType convert(GoTerm goTerm) {
-        switch (goTerm.getType()) {
+    private PropertyType convert(GeneOntologyEntry goTerm) {
+        switch (goTerm.getAspect()) {
             case FUNCTION:
                 return createProperty(PROPERTY_GO_FUNCTION, goTerm.getId());
             case COMPONENT:
@@ -138,7 +138,7 @@ public class UniRefEntryConverter implements Converter<Entry, UniRefEntry> {
             case PROCESS:
                 return createProperty(PROPERTY_GO_PROCESS, goTerm.getId());
         }
-        return createProperty(goTerm.getType().toDisplayName(), goTerm.getId());
+        return createProperty(goTerm.getAspect().toDisplayName(), goTerm.getId());
     }
 
     private PropertyType createProperty(String type, String value) {

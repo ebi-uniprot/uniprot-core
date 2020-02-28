@@ -39,9 +39,9 @@ class SubcellLocationReaderTest {
 
         assertEquals(1, retObj.getGeneOntologies().size(), "Size of GO mapping shoud be exactly 1");
         Assertions.assertEquals(
-                "GO:0051286", retObj.getGeneOntologies().get(0).getGoId(), "GO id check");
+                "GO:0051286", retObj.getGeneOntologies().get(0).getId(), "GO id check");
         Assertions.assertEquals(
-                "cell tip", retObj.getGeneOntologies().get(0).getGoTerm(), "GO definition check");
+                "cell tip", retObj.getGeneOntologies().get(0).getName(), "GO definition check");
     }
 
     @Test

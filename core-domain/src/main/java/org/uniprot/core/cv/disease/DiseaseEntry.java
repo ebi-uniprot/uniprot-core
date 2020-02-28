@@ -3,7 +3,7 @@ package org.uniprot.core.cv.disease;
 import java.io.Serializable;
 import java.util.List;
 
-import org.uniprot.core.cv.keyword.Keyword;
+import org.uniprot.core.cv.keyword.KeywordId;
 
 public interface DiseaseEntry extends Serializable {
     String getId();
@@ -18,7 +18,7 @@ public interface DiseaseEntry extends Serializable {
 
     List<DiseaseCrossReference> getCrossReferences();
 
-    List<Keyword> getKeywords();
+    List<KeywordId> getKeywords();
 
     Long getReviewedProteinCount();
 

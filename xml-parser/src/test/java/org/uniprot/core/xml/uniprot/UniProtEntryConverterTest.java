@@ -86,21 +86,21 @@ class UniProtEntryConverterTest {
         keywords.add(
                 new KeywordBuilder()
                         .id("KW-001")
-                        .value("key1")
+                        .name("key1")
                         .category(KeywordCategory.UNKNOWN)
                         .evidencesSet(evidences)
                         .build());
         keywords.add(
                 new KeywordBuilder()
                         .id("KW-002")
-                        .value("key2")
+                        .name("key2")
                         .category(KeywordCategory.UNKNOWN)
                         .evidencesSet(evidences)
                         .build());
         keywords.add(
                 new KeywordBuilder()
                         .id("KW-003")
-                        .value("key3")
+                        .name("key3")
                         .category(KeywordCategory.UNKNOWN)
                         .evidencesSet(evidences)
                         .build());

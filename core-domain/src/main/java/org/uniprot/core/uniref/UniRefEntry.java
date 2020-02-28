@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+
 /**
  * @author jluo
  * @date: 9 Aug 2019
@@ -21,7 +23,7 @@ public interface UniRefEntry extends Serializable {
 
     String getCommonTaxon();
 
-    List<GoTerm> getGoTerms();
+    List<GeneOntologyEntry> getGoTerms();
 
     RepresentativeMember getRepresentativeMember();
 

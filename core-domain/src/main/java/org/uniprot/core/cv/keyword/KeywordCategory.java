@@ -2,7 +2,7 @@ package org.uniprot.core.cv.keyword;
 
 import org.uniprot.core.util.EnumDisplay;
 
-public enum KeywordCategory implements EnumDisplay<KeywordCategory> {
+public enum KeywordCategory implements EnumDisplay<KeywordCategory>, KeywordId {
     BIOLOGICAL_PROCESS("Biological process", "KW-9999"),
     CELLULAR_COMPONENT("Cellular component", "KW-9998"),
     CODING_SEQUENCE_DIVERSITY("Coding sequence diversity", "KW-9997"),
@@ -16,31 +16,31 @@ public enum KeywordCategory implements EnumDisplay<KeywordCategory> {
     UNKNOWN("Unknown", "KW-0000");
 
     private final String name;
-    private final String accession;
+    private final String id;
 
-    KeywordCategory(String name, String accession) {
+    KeywordCategory(String name, String id) {
         this.name = name;
-        this.accession = accession;
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getAccession() {
-        return accession;
+    public String getId() {
+        return id;
     }
 
     public static KeywordCategory fromValue(String name) {
         for (KeywordCategory cat : KeywordCategory.values()) {
-            if (name.equals(cat.getName())) return cat;
+            if (cat.getName().equalsIgnoreCase(name)) return cat;
         }
         return KeywordCategory.UNKNOWN;
     }
 
-    public static KeywordCategory fromAccession(String accession) {
+    public static KeywordCategory fromId(String id) {
         for (KeywordCategory cat : KeywordCategory.values()) {
-            if (accession.equals(cat.getAccession())) return cat;
+            if (cat.getId().equalsIgnoreCase(id)) return cat;
         }
         return KeywordCategory.UNKNOWN;
     }
