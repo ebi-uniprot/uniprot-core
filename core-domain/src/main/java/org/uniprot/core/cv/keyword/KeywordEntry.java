@@ -32,7 +32,7 @@ public interface KeywordEntry extends Serializable {
 
     List<String> getSites();
 
-    KeywordId getCategory();
+    KeywordCategory getCategory();
 
     /**
      * Keyword's immediate children e-g KW-0411 will have two children (KW-0479 and KW-0408)

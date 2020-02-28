@@ -27,7 +27,7 @@ class KeywordEntryMapTest {
         Map<String, String> mappedEntries = new KeywordEntryMap(entry).attributeValues();
         assertThat(mappedEntries, notNullValue());
         assertEquals(9, mappedEntries.size());
-        assertEquals("KW-0005", mappedEntries.get("id"));
+        assertEquals("KW-9993", mappedEntries.get("id"));
         mappedEntries.remove("id");
         assertEquals("Ligand", mappedEntries.get("name"));
         mappedEntries.remove("name");
@@ -43,7 +43,7 @@ class KeywordEntryMapTest {
         Map<String, String> mappedEntries = new KeywordEntryMap(entry).attributeValues();
 
         assertEquals(10, mappedEntries.size());
-        assertEquals("KW-0005", mappedEntries.get("id"));
+        assertEquals("KW-9993", mappedEntries.get("id"));
         assertEquals("Ligand", mappedEntries.get("name"));
         assertEquals("Definition value", mappedEntries.get("description"));
         assertEquals("Ligand", mappedEntries.get("category"));
@@ -91,7 +91,7 @@ class KeywordEntryMapTest {
     }
 
     private KeywordId getKeyword() {
-        return new KeywordEntryKeywordBuilder().id("Ligand").accession("KW-0005").build();
+        return new KeywordEntryKeywordBuilder().id("Ligand").accession("KW-9993").build();
     }
 
     private KeywordEntry getKeywordEntryParent() {

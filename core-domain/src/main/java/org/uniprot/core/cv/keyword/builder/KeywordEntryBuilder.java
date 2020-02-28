@@ -12,6 +12,7 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.Builder;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
 
@@ -77,6 +78,11 @@ public class KeywordEntryBuilder implements Builder<KeywordEntry> {
     }
 
     public @Nonnull KeywordEntryBuilder category(KeywordId category) {
+        this.category = category;
+        return this;
+    }
+
+    public @Nonnull KeywordEntryBuilder category(KeywordCategory category) {
         this.category = category;
         return this;
     }

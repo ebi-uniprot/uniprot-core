@@ -15,11 +15,12 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.cv.go.builder.GeneOntologyEntryBuilder;
+import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.impl.KeywordStatisticsImplTest;
 
-public class KeywordEntryImplTest {
+class KeywordEntryImplTest {
 
     private String random;
     private KeywordId keyword;
@@ -69,7 +70,7 @@ public class KeywordEntryImplTest {
         assertNotNull(keywordEntry.getChildren());
         assertTrue(keywordEntry.getChildren().isEmpty());
         assertArrayEquals(this.sites.toArray(), keywordEntry.getSites().toArray());
-        assertEquals(this.category, keywordEntry.getCategory());
+        assertEquals(KeywordCategory.fromId(this.category.getId()), keywordEntry.getCategory());
         assertEquals(this.statistics, keywordEntry.getStatistics());
     }
 

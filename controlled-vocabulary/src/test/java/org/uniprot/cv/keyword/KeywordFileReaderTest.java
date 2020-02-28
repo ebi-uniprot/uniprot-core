@@ -11,6 +11,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
 
@@ -171,7 +172,7 @@ class KeywordFileReaderTest {
         }
 
         @Override
-        public KeywordId getCategory() {
+        public KeywordCategory getCategory() {
             return null;
         }
 
