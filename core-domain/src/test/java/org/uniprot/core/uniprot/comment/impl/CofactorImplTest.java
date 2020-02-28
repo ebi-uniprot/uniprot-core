@@ -10,13 +10,13 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.uniprot.comment.Cofactor;
-import org.uniprot.core.uniprot.comment.CofactorReferenceType;
+import org.uniprot.core.uniprot.comment.CofactorDatabase;
 import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 class CofactorImplTest {
-    private final DBCrossReference<CofactorReferenceType> reference =
-            new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "ChEBI:213");
+    private final DBCrossReference<CofactorDatabase> reference =
+            new DBCrossReferenceImpl<>(CofactorDatabase.CHEBI, "ChEBI:213");
 
     @Test
     void testCofactorImpl() {

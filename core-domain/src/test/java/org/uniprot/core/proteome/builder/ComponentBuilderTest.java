@@ -10,7 +10,7 @@ import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.proteome.Component;
 import org.uniprot.core.proteome.ComponentType;
-import org.uniprot.core.proteome.ProteomeXReferenceType;
+import org.uniprot.core.proteome.ProteomeDatabase;
 
 class ComponentBuilderTest {
 
@@ -44,9 +44,9 @@ class ComponentBuilderTest {
 
     @Test
     void testAddXref() {
-        DBCrossReference<ProteomeXReferenceType> xref1 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ACCESSION)
+        DBCrossReference<ProteomeDatabase> xref1 =
+                new DBCrossReferenceBuilder<ProteomeDatabase>()
+                        .databaseType(ProteomeDatabase.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
         Component component =
@@ -60,9 +60,9 @@ class ComponentBuilderTest {
 
     @Test
     void testXrefs() {
-        DBCrossReference<ProteomeXReferenceType> xref2 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ANNOTATION)
+        DBCrossReference<ProteomeDatabase> xref2 =
+                new DBCrossReferenceBuilder<ProteomeDatabase>()
+                        .databaseType(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
         Component component =

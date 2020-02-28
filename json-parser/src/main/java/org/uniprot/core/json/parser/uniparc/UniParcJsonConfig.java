@@ -3,11 +3,11 @@ package org.uniprot.core.json.parser.uniparc;
 import java.time.LocalDate;
 
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.DatabaseType;
+import org.uniprot.core.Database;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.Value;
 import org.uniprot.core.impl.DBCrossReferenceImpl;
-import org.uniprot.core.impl.DefaultDatabaseType;
+import org.uniprot.core.impl.DefaultDatabase;
 import org.uniprot.core.impl.SequenceImpl;
 import org.uniprot.core.impl.ValueImpl;
 import org.uniprot.core.json.parser.JsonConfig;
@@ -77,7 +77,7 @@ public class UniParcJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Value.class, ValueImpl.class);
         mod.addAbstractTypeMapping(UniParcId.class, UniParcIdImpl.class);
         mod.addAbstractTypeMapping(DBCrossReference.class, DBCrossReferenceImpl.class);
-        mod.addAbstractTypeMapping(DatabaseType.class, DefaultDatabaseType.class);
+        mod.addAbstractTypeMapping(Database.class, DefaultDatabase.class);
         mod.addAbstractTypeMapping(Sequence.class, SequenceImpl.class);
 
         objMapper.registerModule(mod);

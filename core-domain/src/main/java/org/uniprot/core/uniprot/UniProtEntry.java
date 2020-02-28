@@ -16,7 +16,7 @@ import org.uniprot.core.uniprot.feature.FeatureType;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+import org.uniprot.core.uniprot.xdb.UniProtDatabase;
 
 /**
  * @author jieluo
@@ -64,7 +64,7 @@ public interface UniProtEntry extends Serializable {
 
     List<UniProtDBCrossReference> getDatabaseCrossReferences();
 
-    List<UniProtDBCrossReference> getDatabaseCrossReferencesByType(UniProtXDbType type);
+    List<UniProtDBCrossReference> getDatabaseCrossReferencesByType(UniProtDatabase type);
 
     List<UniProtDBCrossReference> getDatabaseCrossReferencesByType(String dbName);
 

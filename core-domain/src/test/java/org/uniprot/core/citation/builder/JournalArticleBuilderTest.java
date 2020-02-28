@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.CitationType;
-import org.uniprot.core.citation.CitationXrefType;
 import org.uniprot.core.citation.JournalArticle;
 
 class JournalArticleBuilderTest extends AbstractJournalArticleBuilderTest {
@@ -20,9 +20,9 @@ class JournalArticleBuilderTest extends AbstractJournalArticleBuilderTest {
 
     @Test
     void canAddSingleCitation() {
-        DBCrossReference<CitationXrefType> citation =
-                new DBCrossReferenceBuilder<CitationXrefType>()
-                        .databaseType(CitationXrefType.PUBMED)
+        DBCrossReference<CitationDatabase> citation =
+                new DBCrossReferenceBuilder<CitationDatabase>()
+                        .databaseType(CitationDatabase.PUBMED)
                         .id("pubmedId")
                         .build();
         JournalArticle article = new JournalArticleBuilder().citationXrefsAdd(citation).build();

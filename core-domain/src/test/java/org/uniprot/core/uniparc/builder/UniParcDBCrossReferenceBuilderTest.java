@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.uniparc.UniParcDBCrossReference;
-import org.uniprot.core.uniparc.UniParcDatabaseType;
+import org.uniprot.core.uniparc.UniParcDatabase;
 
 /**
  * @author jluo
@@ -63,7 +63,7 @@ class UniParcDBCrossReferenceBuilderTest {
         UniParcDBCrossReference xref =
                 new UniParcDBCrossReferenceBuilder()
                         .versionI(3)
-                        .databaseType(UniParcDatabaseType.SWISSPROT)
+                        .databaseType(UniParcDatabase.SWISSPROT)
                         .id("P12345")
                         .version(7)
                         .active(true)
@@ -75,7 +75,7 @@ class UniParcDBCrossReferenceBuilderTest {
         assertTrue(xref.isActive());
         assertEquals(created, xref.getCreated());
         assertEquals(lastUpdated, xref.getLastUpdated());
-        assertEquals(UniParcDatabaseType.SWISSPROT, xref.getDatabaseType());
+        assertEquals(UniParcDatabase.SWISSPROT, xref.getDatabaseType());
         assertEquals("P12345", xref.getId());
     }
 
@@ -89,7 +89,7 @@ class UniParcDBCrossReferenceBuilderTest {
         UniParcDBCrossReference xref =
                 new UniParcDBCrossReferenceBuilder()
                         .versionI(3)
-                        .databaseType(UniParcDatabaseType.SWISSPROT)
+                        .databaseType(UniParcDatabase.SWISSPROT)
                         .id("P12345")
                         .version(7)
                         .active(true)
@@ -102,7 +102,7 @@ class UniParcDBCrossReferenceBuilderTest {
         assertTrue(xref.isActive());
         assertEquals(created, xref.getCreated());
         assertEquals(lastUpdated, xref.getLastUpdated());
-        assertEquals(UniParcDatabaseType.SWISSPROT, xref.getDatabaseType());
+        assertEquals(UniParcDatabase.SWISSPROT, xref.getDatabaseType());
         assertEquals("P12345", xref.getId());
         assertEquals(properties, xref.getProperties());
     }
@@ -117,7 +117,7 @@ class UniParcDBCrossReferenceBuilderTest {
         UniParcDBCrossReference xref =
                 new UniParcDBCrossReferenceBuilder()
                         .versionI(3)
-                        .databaseType(UniParcDatabaseType.SWISSPROT)
+                        .databaseType(UniParcDatabase.SWISSPROT)
                         .id("P12345")
                         .version(7)
                         .active(true)
@@ -130,7 +130,7 @@ class UniParcDBCrossReferenceBuilderTest {
         assertTrue(xref.isActive());
         assertEquals(created, xref.getCreated());
         assertEquals(lastUpdated, xref.getLastUpdated());
-        assertEquals(UniParcDatabaseType.SWISSPROT, xref.getDatabaseType());
+        assertEquals(UniParcDatabase.SWISSPROT, xref.getDatabaseType());
         assertEquals("P12345", xref.getId());
         assertEquals(properties, xref.getProperties());
 

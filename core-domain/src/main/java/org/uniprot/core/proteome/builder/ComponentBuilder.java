@@ -9,7 +9,7 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.proteome.Component;
 import org.uniprot.core.proteome.ComponentType;
-import org.uniprot.core.proteome.ProteomeXReferenceType;
+import org.uniprot.core.proteome.ProteomeDatabase;
 import org.uniprot.core.proteome.impl.ComponentImpl;
 import org.uniprot.core.util.Utils;
 
@@ -18,7 +18,7 @@ public class ComponentBuilder implements Builder<Component> {
     private String description;
     private int proteinCount;
     private ComponentType type;
-    private List<DBCrossReference<ProteomeXReferenceType>> dbXReferences = new ArrayList<>();
+    private List<DBCrossReference<ProteomeDatabase>> dbXReferences = new ArrayList<>();
 
     public @Nonnull ComponentBuilder name(String name) {
         this.name = name;
@@ -31,13 +31,13 @@ public class ComponentBuilder implements Builder<Component> {
     }
 
     public @Nonnull ComponentBuilder dbXReferencesSet(
-            List<DBCrossReference<ProteomeXReferenceType>> dbXReferences) {
+            List<DBCrossReference<ProteomeDatabase>> dbXReferences) {
         this.dbXReferences = Utils.modifiableList(dbXReferences);
         return this;
     }
 
     public @Nonnull ComponentBuilder dbXReferencesAdd(
-            DBCrossReference<ProteomeXReferenceType> dbXReference) {
+            DBCrossReference<ProteomeDatabase> dbXReference) {
         Utils.addOrIgnoreNull(dbXReference, dbXReferences);
         return this;
     }

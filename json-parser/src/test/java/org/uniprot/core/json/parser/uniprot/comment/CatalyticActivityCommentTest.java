@@ -103,8 +103,8 @@ public class CatalyticActivityCommentTest {
                 new PhysiologicalReactionBuilder()
                         .directionType(PhysiologicalDirectionType.RIGHT_TO_LEFT)
                         .reactionReference(
-                                new DBCrossReferenceBuilder<ReactionReferenceType>()
-                                        .databaseType(ReactionReferenceType.RHEA)
+                                new DBCrossReferenceBuilder<ReactionDatabase>()
+                                        .databaseType(ReactionDatabase.RHEA)
                                         .id("RHEA:313")
                                         .build())
                         .evidencesSet(evidences)
@@ -119,8 +119,8 @@ public class CatalyticActivityCommentTest {
         return new ReactionBuilder()
                 .name(name)
                 .reactionReferencesAdd(
-                        new DBCrossReferenceBuilder<ReactionReferenceType>()
-                                .databaseType(ReactionReferenceType.CHEBI)
+                        new DBCrossReferenceBuilder<ReactionDatabase>()
+                                .databaseType(ReactionDatabase.CHEBI)
                                 .id("ChEBI:3243")
                                 .build())
                 .ecNumber(ecNumber)

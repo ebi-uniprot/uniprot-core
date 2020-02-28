@@ -29,15 +29,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 class ProteomeTest {
     @Test
     void testComponent() {
-        List<DBCrossReference<ProteomeXReferenceType>> xrefs = new ArrayList<>();
-        DBCrossReference<ProteomeXReferenceType> xref1 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ACCESSION)
+        List<DBCrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
+        DBCrossReference<ProteomeDatabase> xref1 =
+                new DBCrossReferenceBuilder<ProteomeDatabase>()
+                        .databaseType(ProteomeDatabase.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
-        DBCrossReference<ProteomeXReferenceType> xref2 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ANNOTATION)
+        DBCrossReference<ProteomeDatabase> xref2 =
+                new DBCrossReferenceBuilder<ProteomeDatabase>()
+                        .databaseType(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
         xrefs.add(xref1);
@@ -82,15 +82,15 @@ class ProteomeTest {
         ProteomeId proteomeId = new ProteomeIdBuilder(id).build();
         String redundantId = "UP000005642";
         ProteomeId redId = new ProteomeIdBuilder(redundantId).build();
-        List<DBCrossReference<ProteomeXReferenceType>> xrefs = new ArrayList<>();
-        DBCrossReference<ProteomeXReferenceType> xref1 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ACCESSION)
+        List<DBCrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
+        DBCrossReference<ProteomeDatabase> xref1 =
+                new DBCrossReferenceBuilder<ProteomeDatabase>()
+                        .databaseType(ProteomeDatabase.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
-        DBCrossReference<ProteomeXReferenceType> xref2 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ANNOTATION)
+        DBCrossReference<ProteomeDatabase> xref2 =
+                new DBCrossReferenceBuilder<ProteomeDatabase>()
+                        .databaseType(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
         xrefs.add(xref1);
@@ -135,15 +135,15 @@ class ProteomeTest {
         LocalDate modified = LocalDate.of(2015, 11, 5);
         ProteomeId proteomeId = new ProteomeIdBuilder(id).build();
 
-        List<DBCrossReference<ProteomeXReferenceType>> xrefs = new ArrayList<>();
-        DBCrossReference<ProteomeXReferenceType> xref1 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ACCESSION)
+        List<DBCrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
+        DBCrossReference<ProteomeDatabase> xref1 =
+                new DBCrossReferenceBuilder<ProteomeDatabase>()
+                        .databaseType(ProteomeDatabase.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
-        DBCrossReference<ProteomeXReferenceType> xref2 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ANNOTATION)
+        DBCrossReference<ProteomeDatabase> xref2 =
+                new DBCrossReferenceBuilder<ProteomeDatabase>()
+                        .databaseType(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
         xrefs.add(xref1);
@@ -232,9 +232,9 @@ class ProteomeTest {
     }
 
     private JournalArticle getJournalArticle() {
-        DBCrossReference<CitationXrefType> xref =
-                new DBCrossReferenceBuilder<CitationXrefType>()
-                        .databaseType(CitationXrefType.PUBMED)
+        DBCrossReference<CitationDatabase> xref =
+                new DBCrossReferenceBuilder<CitationDatabase>()
+                        .databaseType(CitationDatabase.PUBMED)
                         .id("somepID1")
                         .build();
         return new JournalArticleBuilder()
@@ -251,9 +251,9 @@ class ProteomeTest {
     }
 
     private Submission getSubmission() {
-        DBCrossReference<CitationXrefType> xref =
-                new DBCrossReferenceBuilder<CitationXrefType>()
-                        .databaseType(CitationXrefType.PUBMED)
+        DBCrossReference<CitationDatabase> xref =
+                new DBCrossReferenceBuilder<CitationDatabase>()
+                        .databaseType(CitationDatabase.PUBMED)
                         .id("somepID1")
                         .build();
         return new SubmissionBuilder()

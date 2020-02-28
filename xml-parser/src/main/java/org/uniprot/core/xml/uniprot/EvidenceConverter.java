@@ -6,6 +6,7 @@ import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
@@ -32,8 +33,7 @@ public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
 
         EvidenceBuilder evidenceBuilder = new EvidenceBuilder().evidenceCode(evCode);
         if (xmlObj.getSource() != null) {
-            DBCrossReference<org.uniprot.core.uniprot.evidence.EvidenceType> xref =
-                    xrefConverter.fromXml(xmlObj.getSource());
+            DBCrossReference<EvidenceDatabase> xref = xrefConverter.fromXml(xmlObj.getSource());
             evidenceBuilder.databaseId(xref.getId()).databaseName(xref.getDatabaseType().getName());
         }
 
@@ -53,8 +53,7 @@ public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
     }
 
     public static class EvidenceXrefConverter
-            implements Converter<
-                    SourceType, DBCrossReference<org.uniprot.core.uniprot.evidence.EvidenceType>> {
+            implements Converter<SourceType, DBCrossReference<EvidenceDatabase>> {
         private static final String REFERENCE = "Reference";
         private static final String REF = "Ref.";
         private final ObjectFactory xmlUniprotFactory;
@@ -68,27 +67,23 @@ public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
         }
 
         @Override
-        public DBCrossReference<org.uniprot.core.uniprot.evidence.EvidenceType> fromXml(
-                SourceType xmlObj) {
+        public DBCrossReference<EvidenceDatabase> fromXml(SourceType xmlObj) {
             if (xmlObj.getDbReference() != null) {
-                return new DBCrossReferenceBuilder<org.uniprot.core.uniprot.evidence.EvidenceType>()
-                        .databaseType(
-                                new org.uniprot.core.uniprot.evidence.EvidenceType(
-                                        xmlObj.getDbReference().getType()))
+                return new DBCrossReferenceBuilder<EvidenceDatabase>()
+                        .databaseType(new EvidenceDatabase(xmlObj.getDbReference().getType()))
                         .id(xmlObj.getDbReference().getId())
                         .build();
             } else {
                 String attr = REF + xmlObj.getRef().toString();
-                return new DBCrossReferenceBuilder<org.uniprot.core.uniprot.evidence.EvidenceType>()
-                        .databaseType(new org.uniprot.core.uniprot.evidence.EvidenceType(REFERENCE))
+                return new DBCrossReferenceBuilder<EvidenceDatabase>()
+                        .databaseType(new EvidenceDatabase(REFERENCE))
                         .id(attr)
                         .build();
             }
         }
 
         @Override
-        public SourceType toXml(
-                DBCrossReference<org.uniprot.core.uniprot.evidence.EvidenceType> uniObj) {
+        public SourceType toXml(DBCrossReference<EvidenceDatabase> uniObj) {
             SourceType source = xmlUniprotFactory.createSourceType();
             if (uniObj.getDatabaseType().getName().equals(REFERENCE)) {
                 String val = uniObj.getId().substring(4).trim();

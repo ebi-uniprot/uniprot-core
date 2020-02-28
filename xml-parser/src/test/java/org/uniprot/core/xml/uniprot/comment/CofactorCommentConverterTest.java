@@ -16,7 +16,7 @@ import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.Cofactor;
 import org.uniprot.core.uniprot.comment.CofactorComment;
-import org.uniprot.core.uniprot.comment.CofactorReferenceType;
+import org.uniprot.core.uniprot.comment.CofactorDatabase;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
 import org.uniprot.core.uniprot.comment.builder.CofactorCommentBuilder;
@@ -58,10 +58,10 @@ class CofactorCommentConverterTest {
         List<String> evids = new ArrayList<>();
         evids.add("ECO:0000269|PubMed:9060645");
         List<Cofactor> cofactors = new ArrayList<>();
-        cofactors.add(create("Zn(2+)", CofactorReferenceType.CHEBI, "CHEBI:29105", evids));
+        cofactors.add(create("Zn(2+)", CofactorDatabase.CHEBI, "CHEBI:29105", evids));
         evids = new ArrayList<>();
         evids.add("ECO:0000269|PubMed:9060646");
-        cofactors.add(create("Co(2+)", CofactorReferenceType.CHEBI, "CHEBI:29106", evids));
+        cofactors.add(create("Co(2+)", CofactorDatabase.CHEBI, "CHEBI:29106", evids));
         builder.cofactorsSet(cofactors);
         evids = new ArrayList<>();
         evids.add("ECO:0000269|PubMed:9060647");
@@ -108,10 +108,9 @@ class CofactorCommentConverterTest {
                 .build();
     }
 
-    private Cofactor create(
-            String name, CofactorReferenceType type, String xrefId, List<String> evids) {
-        DBCrossReference<CofactorReferenceType> reference =
-                new DBCrossReferenceBuilder<CofactorReferenceType>()
+    private Cofactor create(String name, CofactorDatabase type, String xrefId, List<String> evids) {
+        DBCrossReference<CofactorDatabase> reference =
+                new DBCrossReferenceBuilder<CofactorDatabase>()
                         .databaseType(type)
                         .id(xrefId)
                         .build();

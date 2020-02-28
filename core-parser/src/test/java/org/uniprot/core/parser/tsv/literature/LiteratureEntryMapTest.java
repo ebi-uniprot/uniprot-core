@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.builder.LiteratureBuilder;
 import org.uniprot.core.citation.impl.AuthorImpl;
 import org.uniprot.core.literature.LiteratureEntry;
@@ -69,15 +69,15 @@ class LiteratureEntryMapTest {
     }
 
     private Citation createCompleteLiteratureCitation() {
-        DBCrossReference<CitationXrefType> pubmed =
-                new DBCrossReferenceBuilder<CitationXrefType>()
-                        .databaseType(CitationXrefType.PUBMED)
+        DBCrossReference<CitationDatabase> pubmed =
+                new DBCrossReferenceBuilder<CitationDatabase>()
+                        .databaseType(CitationDatabase.PUBMED)
                         .id("100")
                         .build();
 
-        DBCrossReference<CitationXrefType> doi =
-                new DBCrossReferenceBuilder<CitationXrefType>()
-                        .databaseType(CitationXrefType.DOI)
+        DBCrossReference<CitationDatabase> doi =
+                new DBCrossReferenceBuilder<CitationDatabase>()
+                        .databaseType(CitationDatabase.DOI)
                         .id("doi Id")
                         .build();
 

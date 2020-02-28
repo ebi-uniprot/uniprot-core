@@ -7,7 +7,7 @@ import org.uniprot.core.DBCrossReference;
 public interface Evidence extends Comparable<Evidence>, Serializable {
     EvidenceCode getEvidenceCode();
 
-    DBCrossReference<EvidenceType> getSource();
+    DBCrossReference<EvidenceDatabase> getSource();
 
     String getValue();
 }

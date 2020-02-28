@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.cv.xdb.DBXRefTypeAttribute;
-import org.uniprot.core.cv.xdb.DatabaseCategory;
-import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
+import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
+import org.uniprot.core.cv.xdb.UniProtDatabaseCategory;
+import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.util.Utils;
 import org.uniprot.core.util.property.Property;
 
@@ -19,33 +19,33 @@ public enum UniProtXDbTypes {
     private final String FILENAME = "META-INF/drlineconfiguration.json";
     private final String NEW_DB_LIST = "META-INF/new_db_list.txt";
 
-    private List<UniProtXDbTypeDetail> types = new ArrayList<>();
-    private Map<String, UniProtXDbTypeDetail> typeMap;
+    private List<UniProtDatabaseDetail> types = new ArrayList<>();
+    private Map<String, UniProtDatabaseDetail> typeMap;
 
     UniProtXDbTypes() {
         init();
     }
 
-    public List<UniProtXDbTypeDetail> getAllDBXRefTypes() {
+    public List<UniProtDatabaseDetail> getAllDBXRefTypes() {
         return types;
     }
 
-    public Map<String, UniProtXDbTypeDetail> getTypeMap() {
+    public Map<String, UniProtDatabaseDetail> getTypeMap() {
         return this.typeMap;
     }
 
-    public UniProtXDbTypeDetail getType(String typeName) {
-        UniProtXDbTypeDetail type = typeMap.get(typeName);
+    public UniProtDatabaseDetail getType(String typeName) {
+        UniProtDatabaseDetail type = typeMap.get(typeName);
         if (type == null) {
             throw new IllegalArgumentException(
                     typeName + " does not exist in UniProt database type list");
         }
-        // validate the UniProtXDbTypeDetail with dbXRef.txt
+        // validate the UniProtDatabaseDetail with dbXRef.txt
 
         return type;
     }
 
-    public List<UniProtXDbTypeDetail> getDBTypesByCategory(DatabaseCategory dbCatergory) {
+    public List<UniProtDatabaseDetail> getDBTypesByCategory(UniProtDatabaseCategory dbCatergory) {
         return this.types.stream()
                 .filter(dbType -> dbType.getCategory() == dbCatergory)
                 .collect(Collectors.toList());
@@ -87,7 +87,7 @@ public enum UniProtXDbTypes {
 
                         String linkedReason = item.optString("linkedReason", null);
 
-                        List<DBXRefTypeAttribute> attributes = new ArrayList<>();
+                        List<UniProtDatabaseAttribute> attributes = new ArrayList<>();
                         List<Property> properties = item.getProperties("attributes");
                         if (properties != null) {
                             properties.forEach(
@@ -96,17 +96,17 @@ public enum UniProtXDbTypes {
                                         String attributeXmlTag = p.optString("xmlTag", null);
                                         String attributeUriLink = p.optString("uriLink", null);
                                         attributes.add(
-                                                new DBXRefTypeAttribute(
+                                                new UniProtDatabaseAttribute(
                                                         attributeName,
                                                         attributeXmlTag,
                                                         attributeUriLink));
                                     });
                         }
-                        UniProtXDbTypeDetail xdbType =
-                                new UniProtXDbTypeDetail(
+                        UniProtDatabaseDetail xdbType =
+                                new UniProtDatabaseDetail(
                                         name,
                                         displayName,
-                                        DatabaseCategory.typeOf(category),
+                                        UniProtDatabaseCategory.typeOf(category),
                                         uriLink,
                                         attributes,
                                         isImplicit,
@@ -115,7 +115,7 @@ public enum UniProtXDbTypes {
                     });
             typeMap =
                     types.stream()
-                            .collect(Collectors.toMap(UniProtXDbTypeDetail::getName, val -> val));
+                            .collect(Collectors.toMap(UniProtDatabaseDetail::getName, val -> val));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

@@ -22,7 +22,7 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
     public ElectronicArticleImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<DBCrossReference<CitationXrefType>> citationXrefs,
+            List<DBCrossReference<CitationDatabase>> citationXrefs,
             String title,
             PublicationDate publicationDate,
             String journalName,

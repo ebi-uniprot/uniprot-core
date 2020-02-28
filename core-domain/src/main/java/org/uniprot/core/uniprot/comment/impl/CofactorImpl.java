@@ -6,7 +6,7 @@ import java.util.Objects;
 
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.uniprot.comment.Cofactor;
-import org.uniprot.core.uniprot.comment.CofactorReferenceType;
+import org.uniprot.core.uniprot.comment.CofactorDatabase;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.util.Utils;
 
@@ -14,7 +14,7 @@ public class CofactorImpl implements Cofactor {
     private static final long serialVersionUID = -1446627008409869566L;
     private String name;
     private List<Evidence> evidences;
-    private DBCrossReference<CofactorReferenceType> cofactorReference;
+    private DBCrossReference<CofactorDatabase> cofactorReference;
 
     // no arg constructor for JSON deserialization
     CofactorImpl() {
@@ -23,7 +23,7 @@ public class CofactorImpl implements Cofactor {
 
     public CofactorImpl(
             String name,
-            DBCrossReference<CofactorReferenceType> cofactorReference,
+            DBCrossReference<CofactorDatabase> cofactorReference,
             List<Evidence> evidences) {
         this.name = name;
         if ((evidences == null) || evidences.isEmpty()) {
@@ -50,7 +50,7 @@ public class CofactorImpl implements Cofactor {
     }
 
     @Override
-    public DBCrossReference<CofactorReferenceType> getCofactorReference() {
+    public DBCrossReference<CofactorDatabase> getCofactorReference() {
         return cofactorReference;
     }
 

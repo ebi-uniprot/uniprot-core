@@ -6,7 +6,7 @@ import java.util.List;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprot.comment.DiseaseComment;
 import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 15:08:03 To change this template
@@ -16,8 +16,8 @@ public class DiseaseCommentScored extends CommentScoredAbstr {
 
     private final DiseaseComment comment;
 
-    public DiseaseCommentScored(DiseaseComment copy, List<EvidenceType> evidenceTypes) {
-        super(copy.getCommentType(), evidenceTypes);
+    public DiseaseCommentScored(DiseaseComment copy, List<EvidenceDatabase> evidenceDatabases) {
+        super(copy.getCommentType(), evidenceDatabases);
         this.comment = copy;
     }
 
@@ -35,6 +35,6 @@ public class DiseaseCommentScored extends CommentScoredAbstr {
         if (comment.hasDefinedDisease()) {
             evidences.addAll(comment.getDisease().getEvidences());
         }
-        return ScoreUtil.hasEvidence(evidences, evidenceTypes);
+        return ScoreUtil.hasEvidence(evidences, evidenceDatabases);
     }
 }

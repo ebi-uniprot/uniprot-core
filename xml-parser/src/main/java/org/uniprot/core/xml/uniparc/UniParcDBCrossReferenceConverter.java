@@ -4,7 +4,7 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.Property;
 import org.uniprot.core.uniparc.UniParcDBCrossReference;
-import org.uniprot.core.uniparc.UniParcDatabaseType;
+import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.builder.UniParcDBCrossReferenceBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniparc.DbReferenceType;
@@ -33,7 +33,7 @@ public class UniParcDBCrossReferenceConverter
     @Override
     public UniParcDBCrossReference fromXml(DbReferenceType xmlObj) {
         UniParcDBCrossReferenceBuilder builder = new UniParcDBCrossReferenceBuilder();
-        builder.databaseType(UniParcDatabaseType.typeOf(xmlObj.getType()))
+        builder.databaseType(UniParcDatabase.typeOf(xmlObj.getType()))
                 .id(xmlObj.getId())
                 .active(xmlObj.getActive().equals("Y"))
                 .versionI(xmlObj.getVersionI())

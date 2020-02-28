@@ -8,13 +8,13 @@ import java.util.Objects;
 import org.uniprot.core.Property;
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.uniparc.UniParcDBCrossReference;
-import org.uniprot.core.uniparc.UniParcDatabaseType;
+import org.uniprot.core.uniparc.UniParcDatabase;
 
 /**
  * @author jluo
  * @date: 22 May 2019
  */
-public class UniParcDBCrossReferenceImpl extends DBCrossReferenceImpl<UniParcDatabaseType>
+public class UniParcDBCrossReferenceImpl extends DBCrossReferenceImpl<UniParcDatabase>
         implements UniParcDBCrossReference {
     private static final long serialVersionUID = 1387909162449408089L;
     private int versionI;
@@ -28,7 +28,7 @@ public class UniParcDBCrossReferenceImpl extends DBCrossReferenceImpl<UniParcDat
     }
 
     public UniParcDBCrossReferenceImpl(
-            UniParcDatabaseType databaseType,
+            UniParcDatabase databaseType,
             String id,
             List<Property> properties,
             int versionI,

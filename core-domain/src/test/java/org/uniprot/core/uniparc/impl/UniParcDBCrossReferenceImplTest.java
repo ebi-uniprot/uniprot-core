@@ -7,7 +7,7 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniparc.UniParcDBCrossReference;
-import org.uniprot.core.uniparc.UniParcDatabaseType;
+import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.builder.UniParcDBCrossReferenceBuilder;
 
 class UniParcDBCrossReferenceImplTest {
@@ -21,7 +21,7 @@ class UniParcDBCrossReferenceImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         UniParcDBCrossReference impl =
                 new UniParcDBCrossReferenceImpl(
-                        UniParcDatabaseType.SWISSPROT,
+                        UniParcDatabase.SWISSPROT,
                         "id",
                         Collections.emptyList(),
                         2,

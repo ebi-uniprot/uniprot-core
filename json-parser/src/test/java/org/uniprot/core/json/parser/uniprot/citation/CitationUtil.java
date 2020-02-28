@@ -9,7 +9,7 @@ import java.util.List;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.builder.AbstractCitationBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -53,18 +53,18 @@ class CitationUtil {
         builder.citationXrefsSet(createCitationCrossRefs());
     }
 
-    public static List<DBCrossReference<CitationXrefType>> createCitationCrossRefs() {
-        List<DBCrossReference<CitationXrefType>> result = new ArrayList<>();
+    public static List<DBCrossReference<CitationDatabase>> createCitationCrossRefs() {
+        List<DBCrossReference<CitationDatabase>> result = new ArrayList<>();
 
         result.add(
-                new DBCrossReferenceBuilder<CitationXrefType>()
-                        .databaseType(CitationXrefType.PUBMED)
+                new DBCrossReferenceBuilder<CitationDatabase>()
+                        .databaseType(CitationDatabase.PUBMED)
                         .id("12345")
                         .build());
 
         result.add(
-                new DBCrossReferenceBuilder<CitationXrefType>()
-                        .databaseType(CitationXrefType.DOI)
+                new DBCrossReferenceBuilder<CitationDatabase>()
+                        .databaseType(CitationDatabase.DOI)
                         .id("doiId")
                         .build());
 

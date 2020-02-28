@@ -13,11 +13,11 @@ import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureDatabase;
 import org.uniprot.core.uniprot.feature.FeatureDescription;
 import org.uniprot.core.uniprot.feature.FeatureId;
 import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.uniprot.feature.FeatureType;
-import org.uniprot.core.uniprot.feature.FeatureXDbType;
 import org.uniprot.core.uniprot.feature.impl.FeatureDescriptionImpl;
 import org.uniprot.core.uniprot.feature.impl.FeatureIdImpl;
 import org.uniprot.core.uniprot.feature.impl.FeatureImpl;
@@ -33,7 +33,7 @@ public class FeatureBuilder implements Builder<Feature> {
     private FeatureDescription description;
     private FeatureId featureId;
     private AlternativeSequence alternativeSequence;
-    private DBCrossReference<FeatureXDbType> dbXref;
+    private DBCrossReference<FeatureDatabase> dbXref;
     private List<Evidence> evidences = new ArrayList<>();
 
     @Override
@@ -88,7 +88,7 @@ public class FeatureBuilder implements Builder<Feature> {
         return this;
     }
 
-    public @Nonnull FeatureBuilder dbXref(DBCrossReference<FeatureXDbType> dbXref) {
+    public @Nonnull FeatureBuilder dbXref(DBCrossReference<FeatureDatabase> dbXref) {
         this.dbXref = dbXref;
         return this;
     }

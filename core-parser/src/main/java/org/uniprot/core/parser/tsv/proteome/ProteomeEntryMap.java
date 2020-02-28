@@ -9,8 +9,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
+import org.uniprot.core.proteome.ProteomeDatabase;
 import org.uniprot.core.proteome.ProteomeEntry;
-import org.uniprot.core.proteome.ProteomeXReferenceType;
 
 /**
  * @author jluo
@@ -75,7 +75,7 @@ public class ProteomeEntryMap implements NamedValueMap {
     private String getGenomeAssemblyId() {
 
         return entry.getDbXReferences().stream()
-                .filter(val -> val.getDatabaseType() == ProteomeXReferenceType.GENOME_ASSEMBLY)
+                .filter(val -> val.getDatabaseType() == ProteomeDatabase.GENOME_ASSEMBLY)
                 .map(val -> val.getId())
                 .collect(Collectors.joining(", "));
     }

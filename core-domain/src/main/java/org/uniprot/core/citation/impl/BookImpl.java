@@ -39,7 +39,7 @@ public class BookImpl extends AbstractCitationImpl implements Book {
     public BookImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<DBCrossReference<CitationXrefType>> citationXrefs,
+            List<DBCrossReference<CitationDatabase>> citationXrefs,
             String title,
             PublicationDate publicationDate,
             String bookName,

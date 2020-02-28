@@ -13,7 +13,7 @@ import org.uniprot.core.uniprot.comment.SubcellularLocation;
 import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
 import org.uniprot.core.uniprot.comment.SubcellularLocationValue;
 import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 16:15:13 To change this template
@@ -23,8 +23,8 @@ public class SubcellularLocationCommentScored extends CommentScoredAbstr {
     private final SubcellularLocationComment comment;
 
     public SubcellularLocationCommentScored(
-            SubcellularLocationComment copy, List<EvidenceType> evidenceTypes) {
-        super(copy.getCommentType(), evidenceTypes);
+            SubcellularLocationComment copy, List<EvidenceDatabase> evidenceDatabases) {
+        super(copy.getCommentType(), evidenceDatabases);
         this.comment = copy;
     }
 
@@ -63,7 +63,7 @@ public class SubcellularLocationCommentScored extends CommentScoredAbstr {
         if (nonNull(loc.getTopology())) {
             evidences.addAll(loc.getTopology().getEvidences());
         }
-        return ScoreUtil.hasEvidence(evidences, evidenceTypes);
+        return ScoreUtil.hasEvidence(evidences, evidenceDatabases);
     }
 
     private Collection<ScoreStatus> getScoreStatusTypes(SubcellularLocationValue slocVal) {

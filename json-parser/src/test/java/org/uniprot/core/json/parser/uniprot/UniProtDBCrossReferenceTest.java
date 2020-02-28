@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+import org.uniprot.core.uniprot.xdb.UniProtDatabase;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
-import org.uniprot.cv.xdb.UniProtXDbTypeImpl;
+import org.uniprot.cv.xdb.UniProtDatabaseImpl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -18,7 +18,7 @@ public class UniProtDBCrossReferenceTest {
 
     @Test
     void testUniProtDBCrossReferenceSimple() {
-        UniProtXDbType opType = new UniProtXDbTypeImpl("PIR");
+        UniProtDatabase opType = new UniProtDatabaseImpl("PIR");
         UniProtDBCrossReference dbCrossReference =
                 new UniProtDBCrossReferenceBuilder().databaseType(opType).id("S61096").build();
 
@@ -72,7 +72,7 @@ public class UniProtDBCrossReferenceTest {
                 .id("id value")
                 .isoformId("Q9NXB0-1")
                 .propertiesAdd(property)
-                .databaseType(new UniProtXDbTypeImpl("Ensembl"))
+                .databaseType(new UniProtDatabaseImpl("Ensembl"))
                 .evidencesAdd(CreateUtils.createEvidence("ECO:0000269|PubMed:11389730"))
                 .build();
     }

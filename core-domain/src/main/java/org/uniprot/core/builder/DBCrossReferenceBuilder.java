@@ -3,7 +3,7 @@ package org.uniprot.core.builder;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.DatabaseType;
+import org.uniprot.core.Database;
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 
 /**
@@ -11,7 +11,7 @@ import org.uniprot.core.impl.DBCrossReferenceImpl;
  *
  * @author Edd
  */
-public class DBCrossReferenceBuilder<T extends DatabaseType>
+public class DBCrossReferenceBuilder<T extends Database>
         extends AbstractDBCrossReferenceBuilder<
                 DBCrossReferenceBuilder<T>, T, DBCrossReference<T>> {
     @Override
@@ -24,7 +24,7 @@ public class DBCrossReferenceBuilder<T extends DatabaseType>
         return this;
     }
 
-    public static @Nonnull <T extends DatabaseType> DBCrossReferenceBuilder<T> from(
+    public static @Nonnull <T extends Database> DBCrossReferenceBuilder<T> from(
             @Nonnull DBCrossReference<T> instance) {
         DBCrossReferenceBuilder<T> builder = new DBCrossReferenceBuilder<>();
         AbstractDBCrossReferenceBuilder.init(builder, instance);

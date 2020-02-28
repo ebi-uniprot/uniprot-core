@@ -3,7 +3,7 @@ package org.uniprot.core.xml.uniprot.comment;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.Disease;
-import org.uniprot.core.uniprot.comment.DiseaseReferenceType;
+import org.uniprot.core.uniprot.comment.DiseaseDatabase;
 import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
@@ -31,10 +31,9 @@ public class DiseaseConverter implements Converter<CommentType.Disease, Disease>
                 .description(xmlDisease.getDescription());
 
         if (xmlDisease.getDbReference() != null) {
-            DiseaseReferenceType type =
-                    DiseaseReferenceType.typeOf(xmlDisease.getDbReference().getType());
-            DBCrossReference<DiseaseReferenceType> reference =
-                    new DBCrossReferenceBuilder<DiseaseReferenceType>()
+            DiseaseDatabase type = DiseaseDatabase.typeOf(xmlDisease.getDbReference().getType());
+            DBCrossReference<DiseaseDatabase> reference =
+                    new DBCrossReferenceBuilder<DiseaseDatabase>()
                             .databaseType(type)
                             .id(xmlDisease.getDbReference().getId())
                             .build();

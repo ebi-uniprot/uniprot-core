@@ -9,10 +9,10 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.Property;
 import org.uniprot.core.builder.AbstractDBCrossReferenceBuilder;
-import org.uniprot.core.cv.xdb.DBXRefTypeAttribute;
+import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+import org.uniprot.core.uniprot.xdb.UniProtDatabase;
 import org.uniprot.core.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
 
 /**
@@ -22,7 +22,7 @@ import org.uniprot.core.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
  */
 public class UniProtDBCrossReferenceBuilder
         extends AbstractDBCrossReferenceBuilder<
-                UniProtDBCrossReferenceBuilder, UniProtXDbType, UniProtDBCrossReference> {
+                UniProtDBCrossReferenceBuilder, UniProtDatabase, UniProtDBCrossReference> {
     private String isoformId;
     private List<Evidence> evidences = new ArrayList<>();
 
@@ -54,7 +54,7 @@ public class UniProtDBCrossReferenceBuilder
     }
 
     public @Nonnull UniProtDBCrossReferenceBuilder propertiesAdd(
-            DBXRefTypeAttribute attribute, String value) {
+            UniProtDatabaseAttribute attribute, String value) {
         if (notNullNotEmpty(value) && notNull(attribute)) {
             this.properties.add(new Property(attribute.getName(), value));
         }

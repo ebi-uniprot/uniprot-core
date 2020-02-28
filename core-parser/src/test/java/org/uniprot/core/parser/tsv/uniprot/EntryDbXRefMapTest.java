@@ -9,9 +9,9 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+import org.uniprot.core.uniprot.xdb.UniProtDatabase;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
-import org.uniprot.cv.xdb.UniProtXDbTypeImpl;
+import org.uniprot.cv.xdb.UniProtDatabaseImpl;
 
 class EntryDbXRefMapTest {
 
@@ -27,7 +27,7 @@ class EntryDbXRefMapTest {
         List<UniProtDBCrossReference> xrefs = new ArrayList<>();
         xrefs.add(
                 createXref(
-                        new UniProtXDbTypeImpl("EMBL"),
+                        new UniProtDatabaseImpl("EMBL"),
                         "AY189288",
                         "AAO86732.1",
                         "-",
@@ -35,7 +35,7 @@ class EntryDbXRefMapTest {
                         null));
         xrefs.add(
                 createXref(
-                        new UniProtXDbTypeImpl("EMBL"),
+                        new UniProtDatabaseImpl("EMBL"),
                         "AK022746",
                         "BAB14220.1",
                         "-",
@@ -52,7 +52,7 @@ class EntryDbXRefMapTest {
         List<UniProtDBCrossReference> xrefs = new ArrayList<>();
         xrefs.add(
                 createXref(
-                        new UniProtXDbTypeImpl("EMBL"),
+                        new UniProtDatabaseImpl("EMBL"),
                         "AY189288",
                         "AAO86732.1",
                         "-",
@@ -60,7 +60,7 @@ class EntryDbXRefMapTest {
                         null));
         xrefs.add(
                 createXref(
-                        new UniProtXDbTypeImpl("EMBL"),
+                        new UniProtDatabaseImpl("EMBL"),
                         "AK022746",
                         "BAB14220.1",
                         "-",
@@ -70,7 +70,7 @@ class EntryDbXRefMapTest {
         // Ensembl; ENST00000439351; ENSP00000414398; ENSG00000090520.
         xrefs.add(
                 createXref(
-                        new UniProtXDbTypeImpl("Ensembl"),
+                        new UniProtDatabaseImpl("Ensembl"),
                         "ENST00000330899",
                         "ENSP00000369127",
                         "ENSG00000086061",
@@ -78,7 +78,7 @@ class EntryDbXRefMapTest {
                         "P31689-1"));
         xrefs.add(
                 createXref(
-                        new UniProtXDbTypeImpl("Ensembl"),
+                        new UniProtDatabaseImpl("Ensembl"),
                         "ENST00000439351",
                         "ENSP00000414398",
                         "ENSG00000090520",
@@ -94,18 +94,18 @@ class EntryDbXRefMapTest {
     @Test
     void hasPdbAndSmr() {
         List<UniProtDBCrossReference> xrefs = new ArrayList<>();
-        xrefs.add(createXref(new UniProtXDbTypeImpl("PDB"), "2LO1", "NMR", "-", "A=1-70", null));
-        xrefs.add(createXref(new UniProtXDbTypeImpl("PDB"), "2M6Y", "NMR", "-", "A=1-67", null));
+        xrefs.add(createXref(new UniProtDatabaseImpl("PDB"), "2LO1", "NMR", "-", "A=1-70", null));
+        xrefs.add(createXref(new UniProtDatabaseImpl("PDB"), "2M6Y", "NMR", "-", "A=1-67", null));
         // PDB; 5TKG; X-ray; 1.20 A; A/B=16-23
         xrefs.add(
                 createXref(
-                        new UniProtXDbTypeImpl("PDB"),
+                        new UniProtDatabaseImpl("PDB"),
                         "5TKG",
                         "X-ray",
                         "1.20 A",
                         "A/B=16-23",
                         null));
-        xrefs.add(createXref(new UniProtXDbTypeImpl("SMR"), "P31689", "-", null, null, null));
+        xrefs.add(createXref(new UniProtDatabaseImpl("SMR"), "P31689", "-", null, null, null));
         EntryDbXRefMap dl = new EntryDbXRefMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(3, result.size());
@@ -118,11 +118,11 @@ class EntryDbXRefMapTest {
     @Test
     void hasIntactAndString() {
         List<UniProtDBCrossReference> xrefs = new ArrayList<>();
-        xrefs.add(createXref(new UniProtXDbTypeImpl("IntAct"), "P31689", "97", null, null, null));
+        xrefs.add(createXref(new UniProtDatabaseImpl("IntAct"), "P31689", "97", null, null, null));
 
         xrefs.add(
                 createXref(
-                        new UniProtXDbTypeImpl("STRING"),
+                        new UniProtDatabaseImpl("STRING"),
                         "9606.ENSP00000369127",
                         "-",
                         null,
@@ -140,11 +140,11 @@ class EntryDbXRefMapTest {
         List<UniProtDBCrossReference> xrefs = new ArrayList<>();
         xrefs.add(
                 createXref(
-                        new UniProtXDbTypeImpl("ChEMBL"), "CHEMBL2189122", "-", null, null, null));
+                        new UniProtDatabaseImpl("ChEMBL"), "CHEMBL2189122", "-", null, null, null));
 
         xrefs.add(
                 createXref(
-                        new UniProtXDbTypeImpl("SwissLipids"),
+                        new UniProtDatabaseImpl("SwissLipids"),
                         "SLP:000000475",
                         "-",
                         null,
@@ -161,7 +161,7 @@ class EntryDbXRefMapTest {
     void testBbXrefToString() {
         UniProtDBCrossReference dbxref =
                 createXref(
-                        new UniProtXDbTypeImpl("EMBL"),
+                        new UniProtDatabaseImpl("EMBL"),
                         "AY189288",
                         "AAO86732.1",
                         "-",
@@ -176,7 +176,7 @@ class EntryDbXRefMapTest {
         // UP000006548: Chromosome 4
         UniProtDBCrossReference dbxref =
                 createXref(
-                        new UniProtXDbTypeImpl("Proteomes"),
+                        new UniProtDatabaseImpl("Proteomes"),
                         "UP000006548",
                         "Chromosome 4",
                         null,
@@ -192,7 +192,7 @@ class EntryDbXRefMapTest {
     }
 
     private UniProtDBCrossReference createXref(
-            UniProtXDbType type,
+            UniProtDatabase type,
             String id,
             String desc,
             String third,

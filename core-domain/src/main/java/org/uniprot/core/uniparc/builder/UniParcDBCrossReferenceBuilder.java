@@ -6,7 +6,7 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.builder.AbstractDBCrossReferenceBuilder;
 import org.uniprot.core.uniparc.UniParcDBCrossReference;
-import org.uniprot.core.uniparc.UniParcDatabaseType;
+import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.impl.UniParcDBCrossReferenceImpl;
 
 /**
@@ -15,7 +15,7 @@ import org.uniprot.core.uniparc.impl.UniParcDBCrossReferenceImpl;
  */
 public class UniParcDBCrossReferenceBuilder
         extends AbstractDBCrossReferenceBuilder<
-                UniParcDBCrossReferenceBuilder, UniParcDatabaseType, UniParcDBCrossReference> {
+                UniParcDBCrossReferenceBuilder, UniParcDatabase, UniParcDBCrossReference> {
     private int versionI;
     private Integer version;
     private boolean active;

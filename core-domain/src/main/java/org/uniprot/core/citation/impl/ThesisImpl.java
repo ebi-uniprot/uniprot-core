@@ -22,7 +22,7 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
     public ThesisImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<DBCrossReference<CitationXrefType>> citationXrefs,
+            List<DBCrossReference<CitationDatabase>> citationXrefs,
             String title,
             PublicationDate publicationDate,
             String institute,

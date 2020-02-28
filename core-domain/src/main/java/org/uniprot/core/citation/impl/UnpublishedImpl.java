@@ -18,7 +18,7 @@ public class UnpublishedImpl extends AbstractCitationImpl implements Unpublished
     public UnpublishedImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<DBCrossReference<CitationXrefType>> citationXrefs,
+            List<DBCrossReference<CitationDatabase>> citationXrefs,
             String title,
             PublicationDate publicationDate) {
         super(

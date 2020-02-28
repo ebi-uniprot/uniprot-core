@@ -137,9 +137,9 @@ class ReferenceConverterTest {
                 .authoringGroupsSet(Arrays.asList("The C. elegans sequencing consortium"))
                 .citationXrefsSet(
                         Arrays.asList(
-                                new DBCrossReferenceImpl<>(CitationXrefType.PUBMED, "9851916"),
+                                new DBCrossReferenceImpl<>(CitationDatabase.PUBMED, "9851916"),
                                 new DBCrossReferenceImpl<>(
-                                        CitationXrefType.DOI,
+                                        CitationDatabase.DOI,
                                         "https://doi.org/10.1126/science.282.5396.2012")));
         JournalArticle citation = builder.build();
         return citation;

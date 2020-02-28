@@ -12,7 +12,7 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.uniprot.comment.PhysiologicalDirectionType;
 import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
-import org.uniprot.core.uniprot.comment.ReactionReferenceType;
+import org.uniprot.core.uniprot.comment.ReactionDatabase;
 import org.uniprot.core.uniprot.comment.impl.PhysiologicalReactionImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
@@ -23,7 +23,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
  */
 public final class PhysiologicalReactionBuilder implements Builder<PhysiologicalReaction> {
     private PhysiologicalDirectionType directionType;
-    private DBCrossReference<ReactionReferenceType> reactionReference;
+    private DBCrossReference<ReactionDatabase> reactionReference;
     private List<Evidence> evidences = new ArrayList<>();
 
     public @Nonnull PhysiologicalReactionBuilder directionType(
@@ -33,7 +33,7 @@ public final class PhysiologicalReactionBuilder implements Builder<Physiological
     }
 
     public @Nonnull PhysiologicalReactionBuilder reactionReference(
-            DBCrossReference<ReactionReferenceType> reactionReference) {
+            DBCrossReference<ReactionDatabase> reactionReference) {
         this.reactionReference = reactionReference;
         return this;
     }

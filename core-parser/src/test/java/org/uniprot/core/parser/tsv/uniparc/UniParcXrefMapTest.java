@@ -11,7 +11,7 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.uniparc.UniParcDBCrossReference;
-import org.uniprot.core.uniparc.UniParcDatabaseType;
+import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.builder.UniParcDBCrossReferenceBuilder;
 
 /**
@@ -57,7 +57,7 @@ class UniParcXrefMapTest {
         UniParcDBCrossReference xref =
                 new UniParcDBCrossReferenceBuilder()
                         .versionI(3)
-                        .databaseType(UniParcDatabaseType.SWISSPROT)
+                        .databaseType(UniParcDatabase.SWISSPROT)
                         .id("P12345")
                         .version(7)
                         .active(true)
@@ -75,7 +75,7 @@ class UniParcXrefMapTest {
         UniParcDBCrossReference xref2 =
                 new UniParcDBCrossReferenceBuilder()
                         .versionI(3)
-                        .databaseType(UniParcDatabaseType.TREMBL)
+                        .databaseType(UniParcDatabase.TREMBL)
                         .id("P12347")
                         .version(2)
                         .active(false)

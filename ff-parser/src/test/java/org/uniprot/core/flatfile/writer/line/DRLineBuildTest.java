@@ -11,9 +11,9 @@ import org.uniprot.core.flatfile.parser.impl.dr.DRLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+import org.uniprot.core.uniprot.xdb.UniProtDatabase;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
-import org.uniprot.cv.xdb.UniProtXDbTypeImpl;
+import org.uniprot.cv.xdb.UniProtDatabaseImpl;
 
 class DRLineBuildTest {
     private DRLineBuilder builder = new DRLineBuilder();
@@ -223,7 +223,7 @@ class DRLineBuildTest {
             String fourthAttribute,
             String isoformId,
             List<Evidence> evidences) {
-        UniProtXDbType opType = new UniProtXDbTypeImpl(databaseName);
+        UniProtDatabase opType = new UniProtDatabaseImpl(databaseName);
         return new UniProtDBCrossReferenceBuilder()
                 .databaseType(opType)
                 .id(id)

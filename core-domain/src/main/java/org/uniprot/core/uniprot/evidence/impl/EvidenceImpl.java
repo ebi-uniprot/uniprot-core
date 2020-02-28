@@ -6,23 +6,23 @@ import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 
 public class EvidenceImpl implements Evidence {
     private static final long serialVersionUID = 6892404810238028657L;
     private static final String PIPE = "|";
     private static final String COLON = ":";
     private EvidenceCode evidenceCode;
-    private DBCrossReference<EvidenceType> source;
+    private DBCrossReference<EvidenceDatabase> source;
 
     public EvidenceImpl(EvidenceCode evidenceCode, String databaseName, String dbId) {
-        this(evidenceCode, new DBCrossReferenceImpl<>(new EvidenceType(databaseName), dbId));
+        this(evidenceCode, new DBCrossReferenceImpl<>(new EvidenceDatabase(databaseName), dbId));
     }
 
     // no arg constructor for JSON deserialization
     EvidenceImpl() {}
 
-    public EvidenceImpl(EvidenceCode evidenceCode, DBCrossReference<EvidenceType> source) {
+    public EvidenceImpl(EvidenceCode evidenceCode, DBCrossReference<EvidenceDatabase> source) {
         this.evidenceCode = evidenceCode;
         this.source = source;
     }
@@ -33,7 +33,7 @@ public class EvidenceImpl implements Evidence {
     }
 
     @Override
-    public DBCrossReference<EvidenceType> getSource() {
+    public DBCrossReference<EvidenceDatabase> getSource() {
         return source;
     }
 

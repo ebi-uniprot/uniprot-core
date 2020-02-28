@@ -13,7 +13,7 @@ public abstract class AbstractCitationImpl implements Citation {
     private CitationType citationType;
     private List<String> authoringGroup;
     private List<Author> authors;
-    private List<DBCrossReference<CitationXrefType>> citationXrefs;
+    private List<DBCrossReference<CitationDatabase>> citationXrefs;
     private String title;
     private PublicationDate publicationDate;
 
@@ -21,7 +21,7 @@ public abstract class AbstractCitationImpl implements Citation {
             CitationType citationType,
             List<String> authoringGroup,
             List<Author> authors,
-            List<DBCrossReference<CitationXrefType>> citationXrefs,
+            List<DBCrossReference<CitationDatabase>> citationXrefs,
             String title,
             PublicationDate publicationDate) {
         this.citationType = citationType;
@@ -33,13 +33,13 @@ public abstract class AbstractCitationImpl implements Citation {
     }
 
     @Override
-    public List<DBCrossReference<CitationXrefType>> getCitationXrefs() {
+    public List<DBCrossReference<CitationDatabase>> getCitationXrefs() {
         return citationXrefs;
     }
 
     @Override
-    public Optional<DBCrossReference<CitationXrefType>> getCitationXrefsByType(
-            CitationXrefType type) {
+    public Optional<DBCrossReference<CitationDatabase>> getCitationXrefsByType(
+            CitationDatabase type) {
         return citationXrefs.stream().filter(xref -> xref.getDatabaseType() == type).findAny();
     }
 

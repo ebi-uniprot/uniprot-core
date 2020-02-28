@@ -8,7 +8,7 @@ import java.util.Optional;
 
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.RLine;
 
@@ -25,19 +25,19 @@ public class RXLineBuilder implements RLine<Citation> {
                 buildLine(
                         lines,
                         line,
-                        xrefs.getCitationXrefsByType(CitationXrefType.PUBMED),
+                        xrefs.getCitationXrefsByType(CitationDatabase.PUBMED),
                         includeFFMarkup);
         line =
                 buildLine(
                         lines,
                         line,
-                        xrefs.getCitationXrefsByType(CitationXrefType.AGRICOLA),
+                        xrefs.getCitationXrefsByType(CitationDatabase.AGRICOLA),
                         includeFFMarkup);
         line =
                 buildLine(
                         lines,
                         line,
-                        xrefs.getCitationXrefsByType(CitationXrefType.DOI),
+                        xrefs.getCitationXrefsByType(CitationDatabase.DOI),
                         includeFFMarkup);
         if (line.length() > 0) {
             lines.add(line.toString());
@@ -48,7 +48,7 @@ public class RXLineBuilder implements RLine<Citation> {
     private StringBuilder buildLine(
             List<String> lines,
             StringBuilder line,
-            Optional<DBCrossReference<CitationXrefType>> xref,
+            Optional<DBCrossReference<CitationDatabase>> xref,
             boolean includeFFMarkup) {
         if (xref.isPresent()) {
             if ((line.length() > 0)
@@ -68,7 +68,7 @@ public class RXLineBuilder implements RLine<Citation> {
         } else return line;
     }
 
-    private String getString(DBCrossReference<CitationXrefType> xref) {
+    private String getString(DBCrossReference<CitationDatabase> xref) {
         StringBuilder sb = new StringBuilder();
         sb.append(xref.getDatabaseType().getName()).append(EQUAL_SIGN).append(xref.getId());
         return sb.toString();

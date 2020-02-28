@@ -147,10 +147,10 @@ class CCCatalyticActivityParserTest {
 
         assertEquals(reactionName, reaction.getName());
         assertEquals("1.1.1.271", reaction.getEcNumber().getValue());
-        List<DBCrossReference<ReactionReferenceType>> xrefs = reaction.getReactionReferences();
+        List<DBCrossReference<ReactionDatabase>> xrefs = reaction.getReactionReferences();
         assertEquals(5, xrefs.size());
-        verify(xrefs.get(0), ReactionReferenceType.RHEA, "RHEA:18885");
-        verify(xrefs.get(1), ReactionReferenceType.CHEBI, "CHEBI:57273");
+        verify(xrefs.get(0), ReactionDatabase.RHEA, "RHEA:18885");
+        verify(xrefs.get(1), ReactionDatabase.CHEBI, "CHEBI:57273");
         List<Evidence> eviIds = reaction.getEvidences();
         assertEquals(4, eviIds.size());
         Evidence eviId = eviIds.get(2);
@@ -161,7 +161,7 @@ class CCCatalyticActivityParserTest {
         assertEquals(1, directions.size());
         PhysiologicalReaction direction = directions.get(0);
         assertEquals(PhysiologicalDirectionType.LEFT_TO_RIGHT, direction.getDirectionType());
-        verify(direction.getReactionReference(), ReactionReferenceType.RHEA, "RHEA:18886");
+        verify(direction.getReactionReference(), ReactionDatabase.RHEA, "RHEA:18886");
 
         eviIds = direction.getEvidences();
         assertEquals(1, eviIds.size());
@@ -170,8 +170,7 @@ class CCCatalyticActivityParserTest {
         assertEquals("ECO:0000255|HAMAP-Rule:MF_00956", eviId.getValue());
     }
 
-    private void verify(
-            DBCrossReference<ReactionReferenceType> xref, ReactionReferenceType type, String id) {
+    private void verify(DBCrossReference<ReactionDatabase> xref, ReactionDatabase type, String id) {
         assertEquals(type, xref.getDatabaseType());
         assertEquals(id, xref.getId());
     }
@@ -244,10 +243,10 @@ class CCCatalyticActivityParserTest {
 
         assertEquals(reactionName, reaction.getName());
         assertEquals(null, reaction.getEcNumber());
-        List<DBCrossReference<ReactionReferenceType>> xrefs = reaction.getReactionReferences();
+        List<DBCrossReference<ReactionDatabase>> xrefs = reaction.getReactionReferences();
         assertEquals(4, xrefs.size());
-        verify(xrefs.get(0), ReactionReferenceType.RHEA, "RHEA:18885");
-        verify(xrefs.get(2), ReactionReferenceType.CHEBI, "CHEBI:58349");
+        verify(xrefs.get(0), ReactionDatabase.RHEA, "RHEA:18885");
+        verify(xrefs.get(2), ReactionDatabase.CHEBI, "CHEBI:58349");
         List<Evidence> eviIds = reaction.getEvidences();
         assertEquals(3, eviIds.size());
         Evidence eviId = eviIds.get(1);
@@ -258,7 +257,7 @@ class CCCatalyticActivityParserTest {
         assertEquals(1, directions.size());
         PhysiologicalReaction direction = directions.get(0);
         assertEquals(PhysiologicalDirectionType.LEFT_TO_RIGHT, direction.getDirectionType());
-        verify(direction.getReactionReference(), ReactionReferenceType.RHEA, "RHEA:18886");
+        verify(direction.getReactionReference(), ReactionDatabase.RHEA, "RHEA:18886");
 
         eviIds = direction.getEvidences();
         assertEquals(1, eviIds.size());
@@ -347,10 +346,10 @@ class CCCatalyticActivityParserTest {
 
         assertEquals(reactionName, reaction.getName());
         assertEquals("1.1.1.271", reaction.getEcNumber().getValue());
-        List<DBCrossReference<ReactionReferenceType>> xrefs = reaction.getReactionReferences();
+        List<DBCrossReference<ReactionDatabase>> xrefs = reaction.getReactionReferences();
         assertEquals(5, xrefs.size());
-        verify(xrefs.get(0), ReactionReferenceType.RHEA, "RHEA:18885");
-        verify(xrefs.get(1), ReactionReferenceType.CHEBI, "CHEBI:57273");
+        verify(xrefs.get(0), ReactionDatabase.RHEA, "RHEA:18885");
+        verify(xrefs.get(1), ReactionDatabase.CHEBI, "CHEBI:57273");
         List<Evidence> eviIds = reaction.getEvidences();
         assertEquals(4, eviIds.size());
         Evidence eviId = eviIds.get(2);
@@ -361,7 +360,7 @@ class CCCatalyticActivityParserTest {
         assertEquals(2, directions.size());
         PhysiologicalReaction direction = directions.get(0);
         assertEquals(PhysiologicalDirectionType.LEFT_TO_RIGHT, direction.getDirectionType());
-        verify(direction.getReactionReference(), ReactionReferenceType.RHEA, "RHEA:18886");
+        verify(direction.getReactionReference(), ReactionDatabase.RHEA, "RHEA:18886");
 
         eviIds = direction.getEvidences();
         assertEquals(1, eviIds.size());
@@ -371,7 +370,7 @@ class CCCatalyticActivityParserTest {
 
         PhysiologicalReaction direction2 = directions.get(1);
         assertEquals(PhysiologicalDirectionType.RIGHT_TO_LEFT, direction2.getDirectionType());
-        verify(direction2.getReactionReference(), ReactionReferenceType.RHEA, "RHEA:18898");
+        verify(direction2.getReactionReference(), ReactionDatabase.RHEA, "RHEA:18898");
 
         eviIds = direction2.getEvidences();
         assertEquals(1, eviIds.size());
@@ -400,7 +399,7 @@ class CCCatalyticActivityParserTest {
 
         assertEquals(reactionName, reaction.getName());
         assertEquals("1.1.1.271", reaction.getEcNumber().getValue());
-        List<DBCrossReference<ReactionReferenceType>> xrefs = reaction.getReactionReferences();
+        List<DBCrossReference<ReactionDatabase>> xrefs = reaction.getReactionReferences();
         assertEquals(0, xrefs.size());
         List<Evidence> eviIds = reaction.getEvidences();
         assertEquals(2, eviIds.size());
@@ -429,7 +428,7 @@ class CCCatalyticActivityParserTest {
 
         assertEquals(reactionName, reaction.getName());
         assertEquals("1.1.1.n271", reaction.getEcNumber().getValue());
-        List<DBCrossReference<ReactionReferenceType>> xrefs = reaction.getReactionReferences();
+        List<DBCrossReference<ReactionDatabase>> xrefs = reaction.getReactionReferences();
         assertEquals(0, xrefs.size());
         List<Evidence> eviIds = reaction.getEvidences();
         assertEquals(2, eviIds.size());

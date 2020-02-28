@@ -15,8 +15,8 @@ import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 class CofactorCommentBuilderTest {
-    private final DBCrossReference<CofactorReferenceType> reference =
-            new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
+    private final DBCrossReference<CofactorDatabase> reference =
+            new DBCrossReferenceImpl<>(CofactorDatabase.CHEBI, "CHEBI:324");
 
     @Test
     void testNewInstance() {
@@ -73,9 +73,9 @@ class CofactorCommentBuilderTest {
 
     @Test
     void testCreateCofactorReference() {
-        CofactorReferenceType type = CofactorReferenceType.CHEBI;
+        CofactorDatabase type = CofactorDatabase.CHEBI;
         String referenceId = "CHEBI:314";
-        DBCrossReference<CofactorReferenceType> reference =
+        DBCrossReference<CofactorDatabase> reference =
                 new DBCrossReferenceImpl<>(type, referenceId);
         assertEquals(type, reference.getDatabaseType());
         assertEquals(referenceId, reference.getId());
@@ -123,9 +123,7 @@ class CofactorCommentBuilderTest {
     }
 
     private Cofactor createCofactor(
-            String name,
-            DBCrossReference<CofactorReferenceType> reference,
-            List<Evidence> evidences) {
+            String name, DBCrossReference<CofactorDatabase> reference, List<Evidence> evidences) {
         return new CofactorBuilder()
                 .name(name)
                 .reference(reference)

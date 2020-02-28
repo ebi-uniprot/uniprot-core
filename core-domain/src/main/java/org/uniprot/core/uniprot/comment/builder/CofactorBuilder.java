@@ -11,7 +11,7 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.Builder;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.uniprot.comment.Cofactor;
-import org.uniprot.core.uniprot.comment.CofactorReferenceType;
+import org.uniprot.core.uniprot.comment.CofactorDatabase;
 import org.uniprot.core.uniprot.comment.impl.CofactorImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
@@ -23,7 +23,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 public final class CofactorBuilder implements Builder<Cofactor> {
     private String name;
     private List<Evidence> evidences = new ArrayList<>();
-    private DBCrossReference<CofactorReferenceType> cofactorReference;
+    private DBCrossReference<CofactorDatabase> cofactorReference;
 
     public @Nonnull CofactorBuilder name(String name) {
         this.name = name;
@@ -41,7 +41,7 @@ public final class CofactorBuilder implements Builder<Cofactor> {
     }
 
     public @Nonnull CofactorBuilder reference(
-            DBCrossReference<CofactorReferenceType> cofactorReference) {
+            DBCrossReference<CofactorDatabase> cofactorReference) {
         this.cofactorReference = cofactorReference;
         return this;
     }

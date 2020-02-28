@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.builder.BookBuilder;
 import org.uniprot.core.flatfile.parser.impl.rx.RXLineBuilder;
 
@@ -85,23 +85,23 @@ class RXLineBuilderTest {
 
     private Citation buildCitationXref(String pubmed, String doi, String agricolaId) {
 
-        List<DBCrossReference<CitationXrefType>> xrefs = new ArrayList<>();
+        List<DBCrossReference<CitationDatabase>> xrefs = new ArrayList<>();
         if (pubmed != null)
             xrefs.add(
-                    new DBCrossReferenceBuilder<CitationXrefType>()
-                            .databaseType(CitationXrefType.PUBMED)
+                    new DBCrossReferenceBuilder<CitationDatabase>()
+                            .databaseType(CitationDatabase.PUBMED)
                             .id(pubmed)
                             .build());
         if (doi != null)
             xrefs.add(
-                    new DBCrossReferenceBuilder<CitationXrefType>()
-                            .databaseType(CitationXrefType.DOI)
+                    new DBCrossReferenceBuilder<CitationDatabase>()
+                            .databaseType(CitationDatabase.DOI)
                             .id(doi)
                             .build());
         if (agricolaId != null)
             xrefs.add(
-                    new DBCrossReferenceBuilder<CitationXrefType>()
-                            .databaseType(CitationXrefType.AGRICOLA)
+                    new DBCrossReferenceBuilder<CitationDatabase>()
+                            .databaseType(CitationDatabase.AGRICOLA)
                             .id(agricolaId)
                             .build());
         return new BookBuilder().citationXrefsSet(xrefs).build();

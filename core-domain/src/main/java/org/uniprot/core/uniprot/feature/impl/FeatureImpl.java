@@ -8,11 +8,11 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.AlternativeSequenceHelper;
 import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureDatabase;
 import org.uniprot.core.uniprot.feature.FeatureDescription;
 import org.uniprot.core.uniprot.feature.FeatureId;
 import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.uniprot.feature.FeatureType;
-import org.uniprot.core.uniprot.feature.FeatureXDbType;
 import org.uniprot.core.util.Utils;
 
 public class FeatureImpl implements Feature {
@@ -22,7 +22,7 @@ public class FeatureImpl implements Feature {
     private FeatureDescription description;
     private FeatureId featureId;
     private AlternativeSequence alternativeSequence;
-    private DBCrossReference<FeatureXDbType> dbXref;
+    private DBCrossReference<FeatureDatabase> dbXref;
     private List<Evidence> evidences;
 
     // no arg constructor for JSON deserialization
@@ -36,7 +36,7 @@ public class FeatureImpl implements Feature {
             FeatureDescription description,
             FeatureId featureId,
             AlternativeSequence alternativeSequence,
-            DBCrossReference<FeatureXDbType> dbXref,
+            DBCrossReference<FeatureDatabase> dbXref,
             List<Evidence> evidences) {
 
         this.type = type;
@@ -99,7 +99,7 @@ public class FeatureImpl implements Feature {
     }
 
     @Override
-    public DBCrossReference<FeatureXDbType> getDbXref() {
+    public DBCrossReference<FeatureDatabase> getDbXref() {
         return dbXref;
     }
 

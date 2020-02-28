@@ -23,7 +23,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     private ProteomeId redundantTo;
     private String strain;
     private String isolate;
-    private List<DBCrossReference<ProteomeXReferenceType>> dbXReferences;
+    private List<DBCrossReference<ProteomeDatabase>> dbXReferences;
     private List<Component> components;
     private List<Citation> references;
     private List<RedundantProteome> redundantProteomes;
@@ -55,7 +55,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
             ProteomeId redundantTo,
             String strain,
             String isolate,
-            List<DBCrossReference<ProteomeXReferenceType>> dbXReferences,
+            List<DBCrossReference<ProteomeDatabase>> dbXReferences,
             List<Component> components,
             List<Citation> references,
             List<RedundantProteome> redundantProteomes,
@@ -130,7 +130,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     }
 
     @Override
-    public List<DBCrossReference<ProteomeXReferenceType>> getDbXReferences() {
+    public List<DBCrossReference<ProteomeDatabase>> getDbXReferences() {
         return dbXReferences;
     }
 

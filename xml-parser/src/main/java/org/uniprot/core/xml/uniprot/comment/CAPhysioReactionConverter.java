@@ -5,7 +5,7 @@ import java.util.List;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.uniprot.comment.PhysiologicalDirectionType;
 import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
-import org.uniprot.core.uniprot.comment.ReactionReferenceType;
+import org.uniprot.core.uniprot.comment.ReactionDatabase;
 import org.uniprot.core.uniprot.comment.builder.PhysiologicalReactionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.xml.Converter;
@@ -35,7 +35,7 @@ public class CAPhysioReactionConverter
 
         PhysiologicalDirectionType directionType =
                 PhysiologicalDirectionType.typeOf(xmlObj.getDirection());
-        DBCrossReference<ReactionReferenceType> reactionReference =
+        DBCrossReference<ReactionDatabase> reactionReference =
                 refConverter.fromXml(xmlObj.getDbReference());
         // Evidences
         List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());

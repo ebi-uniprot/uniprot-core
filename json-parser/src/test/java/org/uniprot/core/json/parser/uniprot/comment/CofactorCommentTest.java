@@ -13,7 +13,7 @@ import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
 import org.uniprot.core.uniprot.comment.Cofactor;
 import org.uniprot.core.uniprot.comment.CofactorComment;
-import org.uniprot.core.uniprot.comment.CofactorReferenceType;
+import org.uniprot.core.uniprot.comment.CofactorDatabase;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
 import org.uniprot.core.uniprot.comment.builder.CofactorCommentBuilder;
@@ -76,9 +76,9 @@ public class CofactorCommentTest {
     }
 
     public static CofactorComment getCofactorComment() {
-        DBCrossReference<CofactorReferenceType> reference =
-                new DBCrossReferenceBuilder<CofactorReferenceType>()
-                        .databaseType(CofactorReferenceType.CHEBI)
+        DBCrossReference<CofactorDatabase> reference =
+                new DBCrossReferenceBuilder<CofactorDatabase>()
+                        .databaseType(CofactorDatabase.CHEBI)
                         .id("CHEBI:314")
                         .build();
         Cofactor cofactor =

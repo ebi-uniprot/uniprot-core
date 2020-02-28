@@ -4,11 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+import org.uniprot.core.uniprot.xdb.UniProtDatabase;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.PropertyType;
-import org.uniprot.cv.xdb.UniProtXDbTypeImpl;
+import org.uniprot.cv.xdb.UniProtDatabaseImpl;
 
 import com.google.common.base.Strings;
 
@@ -154,14 +154,14 @@ class UniProtCrossReferenceConverterTest {
             String thirdAttribute,
             String fourthAttribute,
             String isoformId) {
-        UniProtXDbType uniProtXDbType = new UniProtXDbTypeImpl(dbName);
+        UniProtDatabase uniProtDatabase = new UniProtDatabaseImpl(dbName);
         return new UniProtDBCrossReferenceBuilder()
-                .databaseType(uniProtXDbType)
+                .databaseType(uniProtDatabase)
                 .id(id)
                 .isoformId(isoformId)
-                .propertiesAdd(uniProtXDbType.getAttribute(0), description)
-                .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttribute)
-                .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttribute)
+                .propertiesAdd(uniProtDatabase.getAttribute(0), description)
+                .propertiesAdd(uniProtDatabase.getAttribute(1), thirdAttribute)
+                .propertiesAdd(uniProtDatabase.getAttribute(2), fourthAttribute)
                 .build();
     }
 }

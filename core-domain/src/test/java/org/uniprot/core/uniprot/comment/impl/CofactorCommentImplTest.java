@@ -19,9 +19,9 @@ class CofactorCommentImplTest {
     @Test
     void testCofactorCommentImpl() {
         String name = "someName";
-        DBCrossReference<CofactorReferenceType> reference =
-                new DBCrossReferenceBuilder<CofactorReferenceType>()
-                        .databaseType(CofactorReferenceType.CHEBI)
+        DBCrossReference<CofactorDatabase> reference =
+                new DBCrossReferenceBuilder<CofactorDatabase>()
+                        .databaseType(CofactorDatabase.CHEBI)
                         .id("CHEBI:324")
                         .build();
         Cofactor cofactor =
@@ -50,8 +50,8 @@ class CofactorCommentImplTest {
     @Test
     void testCofactorCommentImplNoMolecule() {
         String name = "someName";
-        DBCrossReference<CofactorReferenceType> reference =
-                new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
+        DBCrossReference<CofactorDatabase> reference =
+                new DBCrossReferenceImpl<>(CofactorDatabase.CHEBI, "CHEBI:324");
         Cofactor cofactor =
                 new CofactorBuilder()
                         .name(name)

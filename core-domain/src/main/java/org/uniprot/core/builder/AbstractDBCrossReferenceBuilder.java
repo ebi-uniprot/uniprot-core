@@ -9,7 +9,7 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.DatabaseType;
+import org.uniprot.core.Database;
 import org.uniprot.core.Property;
 
 /**
@@ -19,7 +19,7 @@ import org.uniprot.core.Property;
  */
 public abstract class AbstractDBCrossReferenceBuilder<
                 B extends AbstractDBCrossReferenceBuilder<B, T, D>,
-                T extends DatabaseType,
+                T extends Database,
                 D extends DBCrossReference<T>>
         implements Builder<D> {
     protected T databaseType;
@@ -30,7 +30,7 @@ public abstract class AbstractDBCrossReferenceBuilder<
 
     protected static <
                     B extends AbstractDBCrossReferenceBuilder<B, T, D>,
-                    T extends DatabaseType,
+                    T extends Database,
                     D extends DBCrossReference<T>>
             void init(
                     @Nonnull AbstractDBCrossReferenceBuilder<B, T, D> builder,

@@ -5,7 +5,7 @@ import java.util.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
+import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
 
@@ -32,7 +32,7 @@ public class DBXRefValidator {
 
     private DBXRefValidator() {}
 
-    public static List<Pair<String, String>> validate(UniProtXDbTypeDetail dbTypeDetail) {
+    public static List<Pair<String, String>> validate(UniProtDatabaseDetail dbTypeDetail) {
         DBXRef dbXRef = ABB_DBXREF.get(dbTypeDetail.getName().toLowerCase());
         List<Pair<String, String>> mismatches = new ArrayList<>();
         if (dbXRef == null) {
@@ -53,7 +53,7 @@ public class DBXRefValidator {
     }
 
     private static List<Pair<String, String>> compare(
-            DBXRef dbXRef, UniProtXDbTypeDetail dbTypeDetail) {
+            DBXRef dbXRef, UniProtDatabaseDetail dbTypeDetail) {
         List<Pair<String, String>> mismatches = new ArrayList<>();
 
         if (!Objects.equals(dbXRef.getAbbr(), dbTypeDetail.getName())) {

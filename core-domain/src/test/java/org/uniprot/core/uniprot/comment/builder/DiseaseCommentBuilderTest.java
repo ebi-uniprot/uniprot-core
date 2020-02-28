@@ -21,9 +21,9 @@ class DiseaseCommentBuilderTest {
         String description = "some description";
         List<Evidence> evidences = createEvidences();
 
-        DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
+        DiseaseDatabase referenceType = DiseaseDatabase.MIM;
         String referenceId = "3124";
-        DBCrossReference<DiseaseReferenceType> reference =
+        DBCrossReference<DiseaseDatabase> reference =
                 new DBCrossReferenceImpl<>(referenceType, referenceId);
         String diseaseId = "someId";
         Disease disease =
@@ -48,9 +48,9 @@ class DiseaseCommentBuilderTest {
         String description = "some description";
         List<Evidence> evidences = createEvidences();
 
-        DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
+        DiseaseDatabase referenceType = DiseaseDatabase.MIM;
         String referenceId = "3124";
-        DBCrossReference<DiseaseReferenceType> reference =
+        DBCrossReference<DiseaseDatabase> reference =
                 new DBCrossReferenceImpl<>(referenceType, referenceId);
         String diseaseId = "someId";
         Disease disease =

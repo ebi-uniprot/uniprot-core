@@ -9,10 +9,10 @@ import org.uniprot.core.Property;
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+import org.uniprot.core.uniprot.xdb.UniProtDatabase;
 import org.uniprot.core.util.Utils;
 
-public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDbType>
+public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtDatabase>
         implements UniProtDBCrossReference {
     private static final long serialVersionUID = -3661768450999840694L;
     private static final String SEMICOLON = "; ";
@@ -26,7 +26,7 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
     }
 
     public UniProtDBCrossReferenceImpl(
-            UniProtXDbType database,
+            UniProtDatabase database,
             String id,
             List<Property> properties,
             String isoformId,

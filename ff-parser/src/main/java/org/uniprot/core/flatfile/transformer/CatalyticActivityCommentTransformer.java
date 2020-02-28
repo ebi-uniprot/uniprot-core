@@ -93,7 +93,7 @@ public class CatalyticActivityCommentTransformer
 
     private PhysiologicalReaction createPhysiologicalDirection(
             String name, String xref, String evidence) {
-        DBCrossReference<ReactionReferenceType> reference = null;
+        DBCrossReference<ReactionDatabase> reference = null;
         if (!Strings.isNullOrEmpty(xref)) {
             reference = convertReactionReference(xref);
         }
@@ -116,7 +116,7 @@ public class CatalyticActivityCommentTransformer
         if (!Strings.isNullOrEmpty(ec)) {
             ecNumber = new ECNumberImpl(ec);
         }
-        List<DBCrossReference<ReactionReferenceType>> references = new ArrayList<>();
+        List<DBCrossReference<ReactionDatabase>> references = new ArrayList<>();
         if (!Strings.isNullOrEmpty(xref)) {
             references =
                     stream(xref.split(", "))
@@ -138,13 +138,13 @@ public class CatalyticActivityCommentTransformer
                 .build();
     }
 
-    private DBCrossReference<ReactionReferenceType> convertReactionReference(String val) {
+    private DBCrossReference<ReactionDatabase> convertReactionReference(String val) {
 
         int index = val.indexOf(':');
         String type = val.substring(0, index);
         String id = val.substring(index + 1);
-        return new DBCrossReferenceBuilder<ReactionReferenceType>()
-                .databaseType(ReactionReferenceType.typeOf(type))
+        return new DBCrossReferenceBuilder<ReactionDatabase>()
+                .databaseType(ReactionDatabase.typeOf(type))
                 .id(id)
                 .build();
     }

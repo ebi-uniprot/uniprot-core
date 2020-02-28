@@ -10,7 +10,7 @@ import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.Disease;
 import org.uniprot.core.uniprot.comment.DiseaseComment;
-import org.uniprot.core.uniprot.comment.DiseaseReferenceType;
+import org.uniprot.core.uniprot.comment.DiseaseDatabase;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 class DiseaseCommentTransformerTest {
@@ -50,8 +50,7 @@ class DiseaseCommentTransformerTest {
         assertEquals(diseaseId, comment.getDisease().getDiseaseId());
         assertEquals(acronyn, comment.getDisease().getAcronym());
         assertEquals("114500", comment.getDisease().getReference().getId());
-        assertEquals(
-                DiseaseReferenceType.MIM, comment.getDisease().getReference().getDatabaseType());
+        assertEquals(DiseaseDatabase.MIM, comment.getDisease().getReference().getDatabaseType());
     }
 
     @Test
@@ -100,8 +99,7 @@ class DiseaseCommentTransformerTest {
         assertEquals(diseaseId, comment.getDisease().getDiseaseId());
         assertEquals(acronyn, comment.getDisease().getAcronym());
         assertEquals("114500", comment.getDisease().getReference().getId());
-        assertEquals(
-                DiseaseReferenceType.MIM, comment.getDisease().getReference().getDatabaseType());
+        assertEquals(DiseaseDatabase.MIM, comment.getDisease().getReference().getDatabaseType());
     }
 
     @Test
@@ -142,7 +140,7 @@ class DiseaseCommentTransformerTest {
         assertEquals(disease.getAcronym(), diseaseAcronym);
         assertEquals(disease.getDescription(), diseaseDescription);
 
-        DBCrossReference<DiseaseReferenceType> diseaseReference = disease.getReference();
+        DBCrossReference<DiseaseDatabase> diseaseReference = disease.getReference();
         assertEquals(diseaseReference.getDatabaseType().getName(), diseaseReferenceType);
         assertEquals(diseaseReference.getId(), diseaseReferenceId);
 
@@ -196,7 +194,7 @@ class DiseaseCommentTransformerTest {
         assertEquals(disease.getAcronym(), diseaseAcronym);
         assertEquals(disease.getDescription(), diseaseDescription);
 
-        DBCrossReference<DiseaseReferenceType> diseaseReference = disease.getReference();
+        DBCrossReference<DiseaseDatabase> diseaseReference = disease.getReference();
         assertEquals(diseaseReference.getDatabaseType().getName(), diseaseReferenceType);
         assertEquals(diseaseReference.getId(), diseaseReferenceId);
 
@@ -257,7 +255,7 @@ class DiseaseCommentTransformerTest {
         assertEquals(disease.getAcronym(), diseaseAcronym);
         assertEquals(disease.getDescription(), diseaseDescription);
 
-        DBCrossReference<DiseaseReferenceType> diseaseReference = disease.getReference();
+        DBCrossReference<DiseaseDatabase> diseaseReference = disease.getReference();
         assertEquals(diseaseReference.getDatabaseType().getName(), diseaseReferenceType);
         assertEquals(diseaseReference.getId(), diseaseReferenceId);
 
@@ -318,7 +316,7 @@ class DiseaseCommentTransformerTest {
         assertEquals(disease.getAcronym(), diseaseAcronym);
         assertEquals(disease.getDescription(), diseaseDescription);
 
-        DBCrossReference<DiseaseReferenceType> diseaseReference = disease.getReference();
+        DBCrossReference<DiseaseDatabase> diseaseReference = disease.getReference();
         assertEquals(diseaseReference.getDatabaseType().getName(), diseaseReferenceType);
         assertEquals(diseaseReference.getId(), diseaseReferenceId);
 
@@ -360,7 +358,7 @@ class DiseaseCommentTransformerTest {
         assertEquals(disease.getAcronym(), diseaseAcronym);
         assertEquals(disease.getDescription(), diseaseDescription);
 
-        DBCrossReference<DiseaseReferenceType> diseaseReference = disease.getReference();
+        DBCrossReference<DiseaseDatabase> diseaseReference = disease.getReference();
         assertEquals(diseaseReference.getDatabaseType().getName(), diseaseReferenceType);
         assertEquals(diseaseReference.getId(), diseaseReferenceId);
 

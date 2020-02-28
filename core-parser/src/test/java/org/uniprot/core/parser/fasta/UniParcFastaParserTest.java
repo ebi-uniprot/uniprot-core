@@ -16,7 +16,7 @@ import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.SignatureDbType;
 import org.uniprot.core.uniparc.UniParcDBCrossReference;
-import org.uniprot.core.uniparc.UniParcDatabaseType;
+import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniparc.builder.InterProGroupBuilder;
 import org.uniprot.core.uniparc.builder.SequenceFeatureBuilder;
@@ -91,7 +91,7 @@ class UniParcFastaParserTest {
         UniParcDBCrossReference xref =
                 new UniParcDBCrossReferenceBuilder()
                         .versionI(3)
-                        .databaseType(UniParcDatabaseType.SWISSPROT)
+                        .databaseType(UniParcDatabase.SWISSPROT)
                         .id("P12345")
                         .version(7)
                         .active(true)
@@ -107,7 +107,7 @@ class UniParcFastaParserTest {
         UniParcDBCrossReference xref2 =
                 new UniParcDBCrossReferenceBuilder()
                         .versionI(1)
-                        .databaseType(UniParcDatabaseType.TREMBL)
+                        .databaseType(UniParcDatabase.TREMBL)
                         .id("P52346")
                         .version(7)
                         .active(true)

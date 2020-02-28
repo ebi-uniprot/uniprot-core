@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Objects;
 
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.DatabaseType;
+import org.uniprot.core.Database;
 import org.uniprot.core.Property;
 import org.uniprot.core.util.Utils;
 
-public class DBCrossReferenceImpl<T extends DatabaseType> implements DBCrossReference<T> {
+public class DBCrossReferenceImpl<T extends Database> implements DBCrossReference<T> {
     private static final long serialVersionUID = 4318477387676269483L;
     protected T databaseType;
     protected String id;

@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.JournalArticle;
 import org.uniprot.core.citation.builder.JournalArticleBuilder;
 import org.uniprot.core.impl.DBCrossReferenceImpl;
@@ -55,9 +55,9 @@ class JournalArticleConverterTest {
                 .authoringGroupsSet(Arrays.asList("The C. elegans sequencing consortium"))
                 .citationXrefsSet(
                         Arrays.asList(
-                                new DBCrossReferenceImpl<>(CitationXrefType.PUBMED, "9851916"),
+                                new DBCrossReferenceImpl<>(CitationDatabase.PUBMED, "9851916"),
                                 new DBCrossReferenceImpl<>(
-                                        CitationXrefType.DOI,
+                                        CitationDatabase.DOI,
                                         "https://doi.org/10.1126/science.282.5396.2012")));
         JournalArticle citation = builder.build();
         return citation;

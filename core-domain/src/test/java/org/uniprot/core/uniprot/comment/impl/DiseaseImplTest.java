@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.uniprot.comment.Disease;
-import org.uniprot.core.uniprot.comment.DiseaseReferenceType;
+import org.uniprot.core.uniprot.comment.DiseaseDatabase;
 import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
 
 class DiseaseImplTest {
@@ -19,8 +19,8 @@ class DiseaseImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        DBCrossReference<DiseaseReferenceType> reference =
-                new DBCrossReferenceImpl<>(DiseaseReferenceType.MIM, "referenceId");
+        DBCrossReference<DiseaseDatabase> reference =
+                new DBCrossReferenceImpl<>(DiseaseDatabase.MIM, "referenceId");
         Disease impl = new DiseaseImpl("id", "acc", "act", "des", reference, createEvidences());
         Disease obj = DiseaseBuilder.from(impl).build();
 

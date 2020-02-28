@@ -3,8 +3,8 @@ package org.uniprot.core.xml.uniprot;
 import java.util.List;
 import java.util.Optional;
 
-import org.uniprot.core.cv.xdb.DBXRefTypeAttribute;
-import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
+import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
+import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.uniprot.xdb.*;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 import org.uniprot.core.xml.Converter;
@@ -13,7 +13,7 @@ import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.PropertyType;
 import org.uniprot.cv.xdb.GoEvidences;
-import org.uniprot.cv.xdb.UniProtXDbTypeImpl;
+import org.uniprot.cv.xdb.UniProtDatabaseImpl;
 import org.uniprot.cv.xdb.UniProtXDbTypes;
 
 import com.google.common.base.Strings;
@@ -34,7 +34,7 @@ public class UniProtCrossReferenceConverter
 
     @Override
     public UniProtDBCrossReference fromXml(DbReferenceType xmlObj) {
-        UniProtXDbTypeDetail xdbType = UniProtXDbTypes.INSTANCE.getType(xmlObj.getType());
+        UniProtDatabaseDetail xdbType = UniProtXDbTypes.INSTANCE.getType(xmlObj.getType());
 
         String databaseName = xdbType.getName();
         String id = xmlObj.getId();
@@ -59,7 +59,7 @@ public class UniProtCrossReferenceConverter
             }
         }
 
-        UniProtXDbType type = new UniProtXDbTypeImpl(databaseName);
+        UniProtDatabase type = new UniProtDatabaseImpl(databaseName);
         return new UniProtDBCrossReferenceBuilder()
                 .databaseType(type)
                 .isoformId(isoformId)
@@ -70,7 +70,7 @@ public class UniProtCrossReferenceConverter
                 .build();
     }
 
-    private String getGOThirdAttribute(DbReferenceType xmlObj, UniProtXDbTypeDetail xdbType) {
+    private String getGOThirdAttribute(DbReferenceType xmlObj, UniProtDatabaseDetail xdbType) {
         String evXmlTag = xdbType.getAttributes().get(1).getXmlTag();
         String eco = getValue(xmlObj, evXmlTag);
         String projectXmlTag = xdbType.getAttributes().get(2).getXmlTag();
@@ -129,8 +129,8 @@ public class UniProtCrossReferenceConverter
     }
 
     private void addProperties(DbReferenceType xmlReference, UniProtDBCrossReference uniObj) {
-        UniProtXDbTypeDetail xdbTypeDetail = uniObj.getDatabaseType().getDetail();
-        List<DBXRefTypeAttribute> attributes = xdbTypeDetail.getAttributes();
+        UniProtDatabaseDetail xdbTypeDetail = uniObj.getDatabaseType().getDetail();
+        List<UniProtDatabaseAttribute> attributes = xdbTypeDetail.getAttributes();
         int size = attributes.size();
         for (int i = 0; i < size; i++) {
             String val = getValue(uniObj, i);

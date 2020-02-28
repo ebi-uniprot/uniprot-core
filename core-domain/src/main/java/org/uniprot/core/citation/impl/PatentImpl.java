@@ -21,7 +21,7 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
     public PatentImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<DBCrossReference<CitationXrefType>> citationXrefs,
+            List<DBCrossReference<CitationDatabase>> citationXrefs,
             String title,
             PublicationDate publicationDate,
             String patentNumber) {

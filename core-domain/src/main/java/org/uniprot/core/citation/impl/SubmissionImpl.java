@@ -19,7 +19,7 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
     public SubmissionImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<DBCrossReference<CitationXrefType>> citationXrefs,
+            List<DBCrossReference<CitationDatabase>> citationXrefs,
             String title,
             PublicationDate publicationDate,
             SubmissionDatabase submissionDatabase) {

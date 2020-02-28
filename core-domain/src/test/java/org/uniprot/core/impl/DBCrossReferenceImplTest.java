@@ -15,18 +15,18 @@ class DBCrossReferenceImplTest {
 
     private List<Property> properties =
             asList(new Property("key1", "value1"), new Property("key2", "value2"));
-    private DBCrossReference<DefaultDatabaseType> xref =
-            new DBCrossReferenceBuilder<DefaultDatabaseType>()
-                    .databaseType(new DefaultDatabaseType("EMBL"))
+    private DBCrossReference<DefaultDatabase> xref =
+            new DBCrossReferenceBuilder<DefaultDatabase>()
+                    .databaseType(new DefaultDatabase("EMBL"))
                     .id("DB123414")
                     .propertiesSet(properties)
                     .build();
 
     @Test
     void testDBCrossReferenceImplStringString() {
-        DBCrossReference<DefaultDatabaseType> xref =
-                new DBCrossReferenceBuilder<DefaultDatabaseType>()
-                        .databaseType(new DefaultDatabaseType("EMBL"))
+        DBCrossReference<DefaultDatabase> xref =
+                new DBCrossReferenceBuilder<DefaultDatabase>()
+                        .databaseType(new DefaultDatabase("EMBL"))
                         .id("DB123414")
                         .build();
         verify(xref, "EMBL", "DB123414", Collections.emptyList());
@@ -38,7 +38,7 @@ class DBCrossReferenceImplTest {
     }
 
     private void verify(
-            DBCrossReference<DefaultDatabaseType> xref,
+            DBCrossReference<DefaultDatabase> xref,
             String dbName,
             String id,
             List<Property> properties) {
@@ -49,15 +49,15 @@ class DBCrossReferenceImplTest {
 
     @Test
     void needDefaultConstructorForJsonDeserialization() {
-        DBCrossReference<DefaultDatabaseType> obj = new DBCrossReferenceImpl<>();
+        DBCrossReference<DefaultDatabase> obj = new DBCrossReferenceImpl<>();
         assertNotNull(obj);
     }
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        DBCrossReference<DefaultDatabaseType> impl =
-                new DBCrossReferenceImpl<>(new DefaultDatabaseType("EMBL"), "one", properties);
-        DBCrossReference<DefaultDatabaseType> obj = DBCrossReferenceBuilder.from(impl).build();
+        DBCrossReference<DefaultDatabase> impl =
+                new DBCrossReferenceImpl<>(new DefaultDatabase("EMBL"), "one", properties);
+        DBCrossReference<DefaultDatabase> obj = DBCrossReferenceBuilder.from(impl).build();
 
         assertTrue(impl.hasDatabaseType());
         assertTrue(impl.hasId());

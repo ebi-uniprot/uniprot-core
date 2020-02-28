@@ -4,7 +4,7 @@ import static java.util.Collections.singletonList;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 
 class CommentWithEvidenceScoredTest extends CommentScoreTestBase {
     @Test
@@ -13,7 +13,7 @@ class CommentWithEvidenceScoredTest extends CommentScoreTestBase {
                 "CC   -!- SUBUNIT: Component of the eukaryotic translation initiation factor\n"
                         + "CC       3 (eIF-3) complex. {ECO:0000256|HAMAP-Rule:MF_03004,\n"
                         + "CC       ECO:0000256|PIRNR:PIRNR016255, ECO:0000256|SAAS:SAAS00549133}.";
-        verify(CommentType.SUBUNIT, line, 3.0, singletonList(new EvidenceType("HAMAP-Rule")));
+        verify(CommentType.SUBUNIT, line, 3.0, singletonList(new EvidenceDatabase("HAMAP-Rule")));
     }
 
     @Test
@@ -22,7 +22,7 @@ class CommentWithEvidenceScoredTest extends CommentScoreTestBase {
                 "CC   -!- SUBUNIT: Component of the eukaryotic translation initiation factor\n"
                         + "CC       3 (eIF-3) complex. {ECO:0000256|HAMAP-Rule:MF_03004,\n"
                         + "CC       ECO:0000256|PIRNR:PIRNR016255, ECO:0000256|SAAS:SAAS00549133}.";
-        verify(CommentType.SUBUNIT, line, 3.0, singletonList(new EvidenceType("SAAS")));
+        verify(CommentType.SUBUNIT, line, 3.0, singletonList(new EvidenceDatabase("SAAS")));
     }
 
     @Test
@@ -31,7 +31,7 @@ class CommentWithEvidenceScoredTest extends CommentScoreTestBase {
                 "CC   -!- SUBUNIT: Component of the eukaryotic translation initiation factor\n"
                         + "CC       3 (eIF-3) complex. {ECO:0000256|HAMAP-Rule:MF_03004,\n"
                         + "CC       ECO:0000256|PIRNR:PIRNR016255, ECO:0000256|SAAS:SAAS00549133}.";
-        verify(CommentType.SUBUNIT, line, 0.0, singletonList(new EvidenceType("RULEBASE")));
+        verify(CommentType.SUBUNIT, line, 0.0, singletonList(new EvidenceDatabase("RULEBASE")));
     }
 
     @Test
@@ -44,7 +44,7 @@ class CommentWithEvidenceScoredTest extends CommentScoreTestBase {
                 CommentType.SUBCELLULAR_LOCATION,
                 line,
                 1.0,
-                singletonList(new EvidenceType("HAMAP-Rule")));
+                singletonList(new EvidenceDatabase("HAMAP-Rule")));
     }
 
     @Test
@@ -57,7 +57,7 @@ class CommentWithEvidenceScoredTest extends CommentScoreTestBase {
                 CommentType.SUBCELLULAR_LOCATION,
                 line,
                 1.0,
-                singletonList(new EvidenceType("PIRNR")));
+                singletonList(new EvidenceDatabase("PIRNR")));
     }
 
     @Test
@@ -70,6 +70,6 @@ class CommentWithEvidenceScoredTest extends CommentScoreTestBase {
                 CommentType.SUBCELLULAR_LOCATION,
                 line,
                 0.0,
-                singletonList(new EvidenceType("RULEBASE")));
+                singletonList(new EvidenceDatabase("RULEBASE")));
     }
 }

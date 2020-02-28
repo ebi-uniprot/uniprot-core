@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniparc.UniParcDBCrossReference;
-import org.uniprot.core.uniparc.UniParcDatabaseType;
+import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.builder.UniParcDBCrossReferenceBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,7 +23,7 @@ class UniParcDbCrossReferenceTest {
     @Test
     void test() {
         UniParcDBCrossReferenceBuilder builder = new UniParcDBCrossReferenceBuilder();
-        builder.databaseType(UniParcDatabaseType.TREMBL)
+        builder.databaseType(UniParcDatabase.TREMBL)
                 .id("A0A0C4DHG2")
                 .versionI(1)
                 .version(1)
@@ -55,7 +55,7 @@ class UniParcDbCrossReferenceTest {
     @Test
     void testNoProperty() {
         UniParcDBCrossReferenceBuilder builder = new UniParcDBCrossReferenceBuilder();
-        builder.databaseType(UniParcDatabaseType.ENSEMBL_VERTEBRATE)
+        builder.databaseType(UniParcDatabase.ENSEMBL_VERTEBRATE)
                 .id("CG1106-PB")
                 .versionI(1)
                 .active(false)

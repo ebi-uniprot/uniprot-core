@@ -5,7 +5,7 @@ import java.util.List;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.Cofactor;
-import org.uniprot.core.uniprot.comment.CofactorReferenceType;
+import org.uniprot.core.uniprot.comment.CofactorDatabase;
 import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.xml.Converter;
@@ -31,10 +31,9 @@ public class CofactorConverter implements Converter<CofactorType, Cofactor> {
     public Cofactor fromXml(CofactorType xmlObj) {
         String name = xmlObj.getName();
         List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
-        CofactorReferenceType type =
-                CofactorReferenceType.typeOf(xmlObj.getDbReference().getType());
-        DBCrossReference<CofactorReferenceType> reference =
-                new DBCrossReferenceBuilder<CofactorReferenceType>()
+        CofactorDatabase type = CofactorDatabase.typeOf(xmlObj.getDbReference().getType());
+        DBCrossReference<CofactorDatabase> reference =
+                new DBCrossReferenceBuilder<CofactorDatabase>()
                         .databaseType(type)
                         .id(xmlObj.getDbReference().getId())
                         .build();

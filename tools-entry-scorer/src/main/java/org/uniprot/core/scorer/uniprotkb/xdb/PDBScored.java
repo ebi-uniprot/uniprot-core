@@ -5,17 +5,18 @@ import java.util.List;
 import org.uniprot.core.scorer.uniprotkb.Consensus;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 
 public class PDBScored implements HasScore {
     private List<UniProtDBCrossReference> xrefs;
 
-    private final List<EvidenceType> evidenceTypes;
+    private final List<EvidenceDatabase> evidenceDatabases;
 
-    public PDBScored(List<UniProtDBCrossReference> xrefs, List<EvidenceType> evidenceTypes) {
+    public PDBScored(
+            List<UniProtDBCrossReference> xrefs, List<EvidenceDatabase> evidenceDatabases) {
         this.xrefs = xrefs;
-        this.evidenceTypes = evidenceTypes;
+        this.evidenceDatabases = evidenceDatabases;
     }
 
     public PDBScored(List<UniProtDBCrossReference> xrefs) {
@@ -31,7 +32,7 @@ public class PDBScored implements HasScore {
 
     private boolean hasEvidences() {
         for (UniProtDBCrossReference xref : xrefs) {
-            if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceTypes)) {
+            if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceDatabases)) {
                 return true;
             }
         }

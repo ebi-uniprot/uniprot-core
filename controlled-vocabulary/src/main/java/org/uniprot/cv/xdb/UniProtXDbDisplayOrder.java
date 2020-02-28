@@ -10,11 +10,11 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
+import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.uniprot.xdb.DatabaseDisplayOrder;
 
 /** @author jieluo */
-public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtXDbTypeDetail> {
+public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtDatabaseDetail> {
     INSTANCE;
     private Map<String, DBDisplayOrder> databaseType2DefsNoCase;
     private static final String DR_ORD_FILE = "META-INF/dr_ord";
@@ -26,8 +26,8 @@ public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtXDbTyp
     }
 
     @Override
-    public List<UniProtXDbTypeDetail> getOrderedDatabases() {
-        return SafeLazyInitializer.uniProtXDbTypeDetails;
+    public List<UniProtDatabaseDetail> getOrderedDatabases() {
+        return SafeLazyInitializer.uniProtDatabaseDetails;
     }
 
     private void initCache() {
@@ -116,19 +116,19 @@ public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtXDbTyp
     }
 
     private static class SafeLazyInitializer {
-        static List<UniProtXDbTypeDetail> uniProtXDbTypeDetails =
+        static List<UniProtDatabaseDetail> uniProtDatabaseDetails =
                 initValues(UniProtXDbDisplayOrder.INSTANCE.databaseType2DefsNoCase);
 
-        private static List<UniProtXDbTypeDetail> initValues(
+        private static List<UniProtDatabaseDetail> initValues(
                 Map<String, DBDisplayOrder> databaseType2DefsNoCase) {
-            List<UniProtXDbTypeDetail> values =
+            List<UniProtDatabaseDetail> values =
                     new CopyOnWriteArrayList<>(UniProtXDbTypes.INSTANCE.getAllDBXRefTypes());
             values.sort(new XRefDBOrder(databaseType2DefsNoCase));
             return values;
         }
     }
 
-    private static class XRefDBOrder implements Comparator<UniProtXDbTypeDetail> {
+    private static class XRefDBOrder implements Comparator<UniProtDatabaseDetail> {
         private final Map<String, DBDisplayOrder> databaseType2DefsNoCase;
 
         private XRefDBOrder(Map<String, DBDisplayOrder> databaseType2DefsNoCase) {
@@ -136,7 +136,7 @@ public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtXDbTyp
         }
 
         @Override
-        public int compare(UniProtXDbTypeDetail o1, UniProtXDbTypeDetail o2) {
+        public int compare(UniProtDatabaseDetail o1, UniProtDatabaseDetail o2) {
             DBDisplayOrder dbOrder1 = getXRefDBDef(o1);
             DBDisplayOrder dbOrder2 = getXRefDBDef(o2);
 
@@ -153,7 +153,7 @@ public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtXDbTyp
             }
         }
 
-        private DBDisplayOrder getXRefDBDef(UniProtXDbTypeDetail type) {
+        private DBDisplayOrder getXRefDBDef(UniProtDatabaseDetail type) {
             return databaseType2DefsNoCase.get(type.getDisplayName().toUpperCase());
         }
     }

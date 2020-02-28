@@ -409,8 +409,8 @@ public class CcLineConverter extends EvidenceCollector
             }
             if (!Strings.isNullOrEmpty(cObj.getMim())) {
                 builder.reference(
-                        new DBCrossReferenceBuilder<DiseaseReferenceType>()
-                                .databaseType(DiseaseReferenceType.MIM)
+                        new DBCrossReferenceBuilder<DiseaseDatabase>()
+                                .databaseType(DiseaseDatabase.MIM)
                                 .id(cObj.getMim())
                                 .build());
             }
@@ -590,13 +590,13 @@ public class CcLineConverter extends EvidenceCollector
                 .build();
     }
 
-    private DBCrossReference<CofactorReferenceType> createCofactorReference(String val) {
+    private DBCrossReference<CofactorDatabase> createCofactorReference(String val) {
         int index = val.indexOf(':');
         String type = val.substring(0, index);
         String id = val.substring(index + 1);
-        return new DBCrossReferenceBuilder<CofactorReferenceType>()
+        return new DBCrossReferenceBuilder<CofactorDatabase>()
                 .id(id)
-                .databaseType(CofactorReferenceType.typeOf(type))
+                .databaseType(CofactorDatabase.typeOf(type))
                 .build();
     }
 
@@ -638,7 +638,7 @@ public class CcLineConverter extends EvidenceCollector
 
     private PhysiologicalReaction convertPhysiologicalDirection(
             CAPhysioDirection capd, Map<Object, List<Evidence>> evidences) {
-        DBCrossReference<ReactionReferenceType> reactionReference = null;
+        DBCrossReference<ReactionDatabase> reactionReference = null;
         if (capd.getXref() != null) reactionReference = convertReactionReference(capd.getXref());
 
         return new PhysiologicalReactionBuilder()
@@ -649,7 +649,7 @@ public class CcLineConverter extends EvidenceCollector
     }
 
     private Reaction convertReaction(CAReaction caReaction, Map<Object, List<Evidence>> evidences) {
-        List<DBCrossReference<ReactionReferenceType>> xrefs = null;
+        List<DBCrossReference<ReactionDatabase>> xrefs = null;
         ECNumber ecNumber = null;
         if (!Strings.isNullOrEmpty(caReaction.getXref())) {
             xrefs =
@@ -668,12 +668,12 @@ public class CcLineConverter extends EvidenceCollector
                 .build();
     }
 
-    private DBCrossReference<ReactionReferenceType> convertReactionReference(String val) {
+    private DBCrossReference<ReactionDatabase> convertReactionReference(String val) {
 
         int index = val.indexOf(':');
         String type = val.substring(0, index);
         String id = val.substring(index + 1);
-        return new DBCrossReferenceImpl<>(ReactionReferenceType.typeOf(type), id);
+        return new DBCrossReferenceImpl<>(ReactionDatabase.typeOf(type), id);
     }
 
     private CommentType convert(CC.CCTopicEnum topic) {

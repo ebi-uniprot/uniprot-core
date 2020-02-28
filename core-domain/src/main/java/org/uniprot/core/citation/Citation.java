@@ -16,9 +16,9 @@ import org.uniprot.core.DBCrossReference;
  */
 public interface Citation extends Serializable {
 
-    List<DBCrossReference<CitationXrefType>> getCitationXrefs();
+    List<DBCrossReference<CitationDatabase>> getCitationXrefs();
 
-    Optional<DBCrossReference<CitationXrefType>> getCitationXrefsByType(CitationXrefType type);
+    Optional<DBCrossReference<CitationDatabase>> getCitationXrefsByType(CitationDatabase type);
 
     boolean hasCitationXrefs();
 

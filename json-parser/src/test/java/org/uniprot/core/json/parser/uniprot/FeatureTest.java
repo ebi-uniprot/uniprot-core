@@ -13,9 +13,9 @@ import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureDatabase;
 import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.uniprot.feature.FeatureType;
-import org.uniprot.core.uniprot.feature.FeatureXDbType;
 import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
 
@@ -135,9 +135,9 @@ public class FeatureTest {
                         .alternativeSequencesAdd("alternative value")
                         .build();
 
-        DBCrossReference<FeatureXDbType> xrefs =
-                new DBCrossReferenceBuilder<FeatureXDbType>()
-                        .databaseType(FeatureXDbType.DBSNP)
+        DBCrossReference<FeatureDatabase> xrefs =
+                new DBCrossReferenceBuilder<FeatureDatabase>()
+                        .databaseType(FeatureDatabase.DBSNP)
                         .id("db id")
                         .build();
 

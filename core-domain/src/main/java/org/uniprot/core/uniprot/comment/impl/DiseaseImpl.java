@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.uniprot.comment.Disease;
-import org.uniprot.core.uniprot.comment.DiseaseReferenceType;
+import org.uniprot.core.uniprot.comment.DiseaseDatabase;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.util.Utils;
 
@@ -17,7 +17,7 @@ public class DiseaseImpl implements Disease {
     private String diseaseAccession;
     private String acronym;
     private String description;
-    private DBCrossReference<DiseaseReferenceType> reference;
+    private DBCrossReference<DiseaseDatabase> reference;
     private List<Evidence> evidences;
 
     // no arg constructor for JSON deserialization
@@ -30,7 +30,7 @@ public class DiseaseImpl implements Disease {
             String diseaseAccession,
             String acronym,
             String description,
-            DBCrossReference<DiseaseReferenceType> reference,
+            DBCrossReference<DiseaseDatabase> reference,
             List<Evidence> evidences) {
         this.diseaseId = diseaseId;
         if (diseaseAccession == null || diseaseAccession.isEmpty()) {
@@ -75,7 +75,7 @@ public class DiseaseImpl implements Disease {
     }
 
     @Override
-    public DBCrossReference<DiseaseReferenceType> getReference() {
+    public DBCrossReference<DiseaseDatabase> getReference() {
         return reference;
     }
 
@@ -138,6 +138,6 @@ public class DiseaseImpl implements Disease {
         return (getReference() != null
                 && getReference().getId() != null
                 && !getReference().getId().isEmpty()
-                && getReference().getDatabaseType() != DiseaseReferenceType.NONE);
+                && getReference().getDatabaseType() != DiseaseDatabase.NONE);
     }
 }

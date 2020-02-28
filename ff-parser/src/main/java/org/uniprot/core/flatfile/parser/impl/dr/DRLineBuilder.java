@@ -8,14 +8,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.Property;
-import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
+import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+import org.uniprot.core.uniprot.xdb.UniProtDatabase;
 import org.uniprot.cv.xdb.UniProtXDbDisplayOrder;
 
 import com.google.common.base.Strings;
@@ -50,7 +50,7 @@ public class DRLineBuilder extends FFLineBuilderAbstr<List<UniProtDBCrossReferen
         UniProtXDbDisplayOrder dorder = UniProtXDbDisplayOrder.INSTANCE;
         List<String> lines = new ArrayList<>();
 
-        for (UniProtXDbTypeDetail databaseType : dorder.getOrderedDatabases()) {
+        for (UniProtDatabaseDetail databaseType : dorder.getOrderedDatabases()) {
             List<UniProtDBCrossReference> listDBXref =
                     getCrossReferencesByType(f, databaseType.getName());
             listDBXref.stream()
@@ -69,7 +69,7 @@ public class DRLineBuilder extends FFLineBuilderAbstr<List<UniProtDBCrossReferen
 
     public String export(
             UniProtDBCrossReference reference, boolean includeFFMarkings, boolean showEvidence) {
-        UniProtXDbType dbType = reference.getDatabaseType();
+        UniProtDatabase dbType = reference.getDatabaseType();
         if ((dbType.getName().equals("EMBL")) && !includeFFMarkings)
             return exportEMBLNoFF(reference);
         StringBuilder sb = new StringBuilder();

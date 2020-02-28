@@ -5,16 +5,16 @@ import java.util.List;
 import org.uniprot.core.scorer.uniprotkb.Consensus;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 
 public class GoScored implements HasScore {
     private final List<UniProtDBCrossReference> xrefs;
-    private final List<EvidenceType> evidenceTypes;
+    private final List<EvidenceDatabase> evidenceDatabases;
 
-    public GoScored(List<UniProtDBCrossReference> xrefs, List<EvidenceType> evidenceTypes) {
+    public GoScored(List<UniProtDBCrossReference> xrefs, List<EvidenceDatabase> evidenceDatabases) {
         this.xrefs = xrefs;
-        this.evidenceTypes = evidenceTypes;
+        this.evidenceDatabases = evidenceDatabases;
     }
 
     public GoScored(List<UniProtDBCrossReference> xrefs) {
@@ -25,7 +25,7 @@ public class GoScored implements HasScore {
     public double score() {
         double score = 0;
         for (UniProtDBCrossReference xref : xrefs) {
-            if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceTypes)) score += score(xref);
+            if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceDatabases)) score += score(xref);
         }
         return score;
     }

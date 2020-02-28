@@ -14,7 +14,7 @@ class EvidenceTypesTest {
     @Test
     void testGetType() {
         String name = "EMBL";
-        EvidenceTypeDetail emblEvidence = EvidenceTypes.INSTANCE.getType(name);
+        EvidenceDatabaseDetail emblEvidence = EvidenceTypes.INSTANCE.getType(name);
         assertNotNull(emblEvidence);
     }
 

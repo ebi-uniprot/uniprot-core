@@ -99,15 +99,15 @@ class ProteomeEntryBuilderTest {
 
     @Test
     void testDbXReferences() {
-        List<DBCrossReference<ProteomeXReferenceType>> xrefs = new ArrayList<>();
-        DBCrossReference<ProteomeXReferenceType> xref1 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ACCESSION)
+        List<DBCrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
+        DBCrossReference<ProteomeDatabase> xref1 =
+                new DBCrossReferenceBuilder<ProteomeDatabase>()
+                        .databaseType(ProteomeDatabase.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
-        DBCrossReference<ProteomeXReferenceType> xref2 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ANNOTATION)
+        DBCrossReference<ProteomeDatabase> xref2 =
+                new DBCrossReferenceBuilder<ProteomeDatabase>()
+                        .databaseType(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
         xrefs.add(xref1);
@@ -120,14 +120,14 @@ class ProteomeEntryBuilderTest {
     @Test
     void testAddDbXReferences() {
 
-        DBCrossReference<ProteomeXReferenceType> xref1 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ACCESSION)
+        DBCrossReference<ProteomeDatabase> xref1 =
+                new DBCrossReferenceBuilder<ProteomeDatabase>()
+                        .databaseType(ProteomeDatabase.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
-        DBCrossReference<ProteomeXReferenceType> xref2 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ANNOTATION)
+        DBCrossReference<ProteomeDatabase> xref2 =
+                new DBCrossReferenceBuilder<ProteomeDatabase>()
+                        .databaseType(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
         ProteomeEntry proteome =

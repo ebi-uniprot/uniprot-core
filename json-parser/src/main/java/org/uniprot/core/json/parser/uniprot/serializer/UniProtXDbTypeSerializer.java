@@ -2,22 +2,22 @@ package org.uniprot.core.json.parser.uniprot.serializer;
 
 import java.io.IOException;
 
-import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+import org.uniprot.core.uniprot.xdb.UniProtDatabase;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 /** @author lgonzales */
-public class UniProtXDbTypeSerializer extends StdSerializer<UniProtXDbType> {
+public class UniProtXDbTypeSerializer extends StdSerializer<UniProtDatabase> {
 
     public UniProtXDbTypeSerializer() {
-        super(UniProtXDbType.class);
+        super(UniProtDatabase.class);
     }
 
     @Override
     public void serialize(
-            UniProtXDbType value,
+            UniProtDatabase value,
             JsonGenerator jsonGenerator,
             SerializerProvider serializerProvider)
             throws IOException {

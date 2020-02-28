@@ -26,7 +26,7 @@ public interface ProteomeEntry extends Serializable {
 
     String getIsolate();
 
-    List<DBCrossReference<ProteomeXReferenceType>> getDbXReferences();
+    List<DBCrossReference<ProteomeDatabase>> getDbXReferences();
 
     List<Component> getComponents();
 

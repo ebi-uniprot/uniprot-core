@@ -11,9 +11,9 @@ import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureDatabase;
 import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.uniprot.feature.FeatureType;
-import org.uniprot.core.uniprot.feature.FeatureXDbType;
 import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
 
@@ -201,7 +201,7 @@ public class FtLineConverter extends EvidenceCollector
                         .alternativeSequencesSet(alternativeSequences)
                         .build();
         //		factory.createReport(reports));
-        DBCrossReference<FeatureXDbType> dbXref = null;
+        DBCrossReference<FeatureDatabase> dbXref = null;
         return new FeatureBuilder()
                 .type(type)
                 .location(location)

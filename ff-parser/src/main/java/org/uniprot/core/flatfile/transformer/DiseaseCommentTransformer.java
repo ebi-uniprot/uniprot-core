@@ -144,7 +144,7 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
      * @param diseaseString - the annotation with the definition of disease
      * @return the disease reference
      */
-    private DBCrossReference<DiseaseReferenceType> populateDiseaseReference(String diseaseString) {
+    private DBCrossReference<DiseaseDatabase> populateDiseaseReference(String diseaseString) {
 
         Matcher bracketsMatcher = BETWEEN_SQUARE_BRACKETS_PATTERN.matcher(diseaseString);
 
@@ -154,9 +154,9 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
 
             String[] referenceElements = referenceString.split(":");
 
-            DiseaseReferenceType referenceType = DiseaseReferenceType.typeOf(referenceElements[0]);
+            DiseaseDatabase referenceType = DiseaseDatabase.typeOf(referenceElements[0]);
 
-            return new DBCrossReferenceBuilder<DiseaseReferenceType>()
+            return new DBCrossReferenceBuilder<DiseaseDatabase>()
                     .databaseType(referenceType)
                     .id(referenceElements[1])
                     .build();

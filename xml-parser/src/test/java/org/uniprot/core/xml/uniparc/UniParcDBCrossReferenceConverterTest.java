@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.uniparc.UniParcDBCrossReference;
-import org.uniprot.core.uniparc.UniParcDatabaseType;
+import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.builder.UniParcDBCrossReferenceBuilder;
 import org.uniprot.core.xml.jaxb.uniparc.DbReferenceType;
 
@@ -25,7 +25,7 @@ class UniParcDBCrossReferenceConverterTest {
         // <dbReference type="Ensembl" id="CG1106-PB" version_i="1" active="N" created="2003-04-01"
         // last="2007-11-22"/>
         UniParcDBCrossReferenceBuilder builder = new UniParcDBCrossReferenceBuilder();
-        builder.databaseType(UniParcDatabaseType.ENSEMBL_VERTEBRATE)
+        builder.databaseType(UniParcDatabase.ENSEMBL_VERTEBRATE)
                 .id("CG1106-PB")
                 .versionI(1)
                 .active(false)
@@ -54,7 +54,7 @@ class UniParcDBCrossReferenceConverterTest {
         //		</dbReference>
 
         UniParcDBCrossReferenceBuilder builder = new UniParcDBCrossReferenceBuilder();
-        builder.databaseType(UniParcDatabaseType.TREMBL)
+        builder.databaseType(UniParcDatabase.TREMBL)
                 .id("A0A0C4DHG2-PB")
                 .versionI(1)
                 .version(1)

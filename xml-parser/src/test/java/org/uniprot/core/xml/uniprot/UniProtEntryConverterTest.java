@@ -43,10 +43,10 @@ import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
 import org.uniprot.core.uniprot.taxonomy.builder.OrganismHostBuilder;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+import org.uniprot.core.uniprot.xdb.UniProtDatabase;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.Entry;
-import org.uniprot.cv.xdb.UniProtXDbTypeImpl;
+import org.uniprot.cv.xdb.UniProtDatabaseImpl;
 
 class UniProtEntryConverterTest {
 
@@ -281,8 +281,8 @@ class UniProtEntryConverterTest {
                         .commentType(CommentType.FUNCTION)
                         .textsSet(createEvidenceValues())
                         .build());
-        DBCrossReference<CofactorReferenceType> reference =
-                new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
+        DBCrossReference<CofactorDatabase> reference =
+                new DBCrossReferenceImpl<>(CofactorDatabase.CHEBI, "CHEBI:324");
         Cofactor cofactor =
                 new CofactorBuilder()
                         .name("somename")
@@ -375,21 +375,21 @@ class UniProtEntryConverterTest {
         String fourthAttr = null;
         String isoform = "Q9NXB0-1";
         List<UniProtDBCrossReference> xrefs = new ArrayList<>();
-        UniProtXDbType uniProtXDbType = new UniProtXDbTypeImpl(type);
+        UniProtDatabase uniProtDatabase = new UniProtDatabaseImpl(type);
         xrefs.add(
                 new UniProtDBCrossReferenceBuilder()
-                        .databaseType(uniProtXDbType)
+                        .databaseType(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
-                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
-                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtDatabase.getAttribute(0), description)
+                        .propertiesAdd(uniProtDatabase.getAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtDatabase.getAttribute(2), fourthAttr)
                         .build());
 
         // DR   EMBL; DQ185029; AAZ94714.1; -; mRNA.
 
         type = "EMBL";
-        uniProtXDbType = new UniProtXDbTypeImpl(type);
+        uniProtDatabase = new UniProtDatabaseImpl(type);
         id = "DQ185029";
         description = "AAZ94714.1";
         thirdAttr = "-";
@@ -397,17 +397,17 @@ class UniProtEntryConverterTest {
         isoform = null;
         xrefs.add(
                 new UniProtDBCrossReferenceBuilder()
-                        .databaseType(uniProtXDbType)
+                        .databaseType(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
-                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
-                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtDatabase.getAttribute(0), description)
+                        .propertiesAdd(uniProtDatabase.getAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtDatabase.getAttribute(2), fourthAttr)
                         .build());
 
         // DR   EMBL; AK000352; BAA91105.1; ALT_INIT; mRNA.
         type = "EMBL";
-        uniProtXDbType = new UniProtXDbTypeImpl(type);
+        uniProtDatabase = new UniProtDatabaseImpl(type);
         id = "AK000352";
         description = "BAA91105.1";
         thirdAttr = "ALT_INIT";
@@ -415,17 +415,17 @@ class UniProtEntryConverterTest {
         isoform = null;
         xrefs.add(
                 new UniProtDBCrossReferenceBuilder()
-                        .databaseType(uniProtXDbType)
+                        .databaseType(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
-                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
-                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtDatabase.getAttribute(0), description)
+                        .propertiesAdd(uniProtDatabase.getAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtDatabase.getAttribute(2), fourthAttr)
                         .build());
 
         // DR   EMBL; AK310815; -; NOT_ANNOTATED_CDS; mRNA.
         type = "EMBL";
-        uniProtXDbType = new UniProtXDbTypeImpl(type);
+        uniProtDatabase = new UniProtDatabaseImpl(type);
         id = "AK310815";
         description = "-";
         thirdAttr = "NOT_ANNOTATED_CDS";
@@ -433,17 +433,17 @@ class UniProtEntryConverterTest {
         isoform = null;
         xrefs.add(
                 new UniProtDBCrossReferenceBuilder()
-                        .databaseType(uniProtXDbType)
+                        .databaseType(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
-                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
-                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtDatabase.getAttribute(0), description)
+                        .propertiesAdd(uniProtDatabase.getAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtDatabase.getAttribute(2), fourthAttr)
                         .build());
 
         //   DR   HPA; HPA021372; -.
         type = "HPA";
-        uniProtXDbType = new UniProtXDbTypeImpl(type);
+        uniProtDatabase = new UniProtDatabaseImpl(type);
         id = "HPA021372";
         description = "-";
         thirdAttr = null;
@@ -451,17 +451,17 @@ class UniProtEntryConverterTest {
         isoform = null;
         xrefs.add(
                 new UniProtDBCrossReferenceBuilder()
-                        .databaseType(uniProtXDbType)
+                        .databaseType(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
-                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
-                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtDatabase.getAttribute(0), description)
+                        .propertiesAdd(uniProtDatabase.getAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtDatabase.getAttribute(2), fourthAttr)
                         .build());
 
         //  DR   HPA; HPA021812; -.
         type = "HPA";
-        uniProtXDbType = new UniProtXDbTypeImpl(type);
+        uniProtDatabase = new UniProtDatabaseImpl(type);
         id = "HPA021812";
         description = "-";
         thirdAttr = null;
@@ -469,12 +469,12 @@ class UniProtEntryConverterTest {
         isoform = null;
         xrefs.add(
                 new UniProtDBCrossReferenceBuilder()
-                        .databaseType(uniProtXDbType)
+                        .databaseType(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
-                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
-                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtDatabase.getAttribute(0), description)
+                        .propertiesAdd(uniProtDatabase.getAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtDatabase.getAttribute(2), fourthAttr)
                         .build());
 
         return xrefs;

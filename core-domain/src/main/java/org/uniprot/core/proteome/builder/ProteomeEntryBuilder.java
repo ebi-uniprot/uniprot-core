@@ -24,7 +24,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
     private ProteomeId redundantTo;
     private String strain;
     private String isolate;
-    private List<DBCrossReference<ProteomeXReferenceType>> dbXReferences = new ArrayList<>();
+    private List<DBCrossReference<ProteomeDatabase>> dbXReferences = new ArrayList<>();
     private List<Component> components = new ArrayList<>();
     private List<Citation> references = new ArrayList<>();
     private List<RedundantProteome> redundantProteomes = new ArrayList<>();
@@ -134,13 +134,13 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
     }
 
     public @Nonnull ProteomeEntryBuilder dbXReferencesSet(
-            List<DBCrossReference<ProteomeXReferenceType>> dbXReferences) {
+            List<DBCrossReference<ProteomeDatabase>> dbXReferences) {
         this.dbXReferences = Utils.modifiableList(dbXReferences);
         return this;
     }
 
     public @Nonnull ProteomeEntryBuilder dbXReferencesAdd(
-            DBCrossReference<ProteomeXReferenceType> dbXReference) {
+            DBCrossReference<ProteomeDatabase> dbXReference) {
         Utils.addOrIgnoreNull(dbXReference, dbXReferences);
         return this;
     }

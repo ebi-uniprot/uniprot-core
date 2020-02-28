@@ -9,7 +9,7 @@ import org.uniprot.core.uniprot.evidence.HasEvidences;
 public interface Reaction extends HasEvidences {
     String getName();
 
-    List<DBCrossReference<ReactionReferenceType>> getReactionReferences();
+    List<DBCrossReference<ReactionDatabase>> getReactionReferences();
 
     ECNumber getEcNumber();
 

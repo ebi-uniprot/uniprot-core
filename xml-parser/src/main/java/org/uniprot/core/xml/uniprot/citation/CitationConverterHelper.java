@@ -9,7 +9,7 @@ import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.builder.AbstractCitationBuilder;
 import org.uniprot.core.citation.builder.AuthorBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.*;
@@ -73,8 +73,8 @@ public class CitationConverterHelper {
     public static void updateToXmlCitatation(
             ObjectFactory xmlUniprotFactory, CitationType xmlCitation, Citation citation) {
         if (citation.hasCitationXrefs()) {
-            List<DBCrossReference<CitationXrefType>> xrefs = citation.getCitationXrefs();
-            for (DBCrossReference<CitationXrefType> xref : xrefs) {
+            List<DBCrossReference<CitationDatabase>> xrefs = citation.getCitationXrefs();
+            for (DBCrossReference<CitationDatabase> xref : xrefs) {
                 xmlCitation.getDbReference().add(toXml(xmlUniprotFactory, xref));
             }
         }
@@ -122,16 +122,16 @@ public class CitationConverterHelper {
     }
 
     private static DbReferenceType toXml(
-            ObjectFactory xmlUniprotFactory, DBCrossReference<CitationXrefType> xref) {
+            ObjectFactory xmlUniprotFactory, DBCrossReference<CitationDatabase> xref) {
         DbReferenceType dbReferenceType = xmlUniprotFactory.createDbReferenceType();
         dbReferenceType.setId(xref.getId());
         dbReferenceType.setType(xref.getDatabaseType().getName());
         return dbReferenceType;
     }
 
-    private static DBCrossReference<CitationXrefType> fromXml(DbReferenceType xmlRef) {
-        CitationXrefType type = CitationXrefType.typeOf(xmlRef.getType());
-        return new DBCrossReferenceBuilder<CitationXrefType>()
+    private static DBCrossReference<CitationDatabase> fromXml(DbReferenceType xmlRef) {
+        CitationDatabase type = CitationDatabase.typeOf(xmlRef.getType());
+        return new DBCrossReferenceBuilder<CitationDatabase>()
                 .databaseType(type)
                 .id(xmlRef.getId())
                 .build();

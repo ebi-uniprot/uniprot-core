@@ -8,7 +8,7 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprot.evidence.impl.EvidenceImpl;
 
 /**
@@ -31,7 +31,7 @@ public class EvidenceBuilder implements Builder<Evidence> {
     }
 
     public static @Nonnull EvidenceBuilder from(Evidence instance) {
-        DBCrossReference<EvidenceType> source = instance.getSource();
+        DBCrossReference<EvidenceDatabase> source = instance.getSource();
         EvidenceBuilder retBuilder = new EvidenceBuilder().evidenceCode(instance.getEvidenceCode());
         if (notNull(source)) {
             retBuilder.databaseId(source.getId()).databaseName(source.getDatabaseType().getName());

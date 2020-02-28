@@ -6,7 +6,7 @@ import org.uniprot.core.uniprot.evidence.HasEvidences;
 public interface Cofactor extends HasEvidences {
     String getName();
 
-    DBCrossReference<CofactorReferenceType> getCofactorReference();
+    DBCrossReference<CofactorDatabase> getCofactorReference();
 
     boolean hasName();
 

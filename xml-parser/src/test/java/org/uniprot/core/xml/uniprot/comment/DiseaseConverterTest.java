@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.Disease;
-import org.uniprot.core.uniprot.comment.DiseaseReferenceType;
+import org.uniprot.core.uniprot.comment.DiseaseDatabase;
 import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
@@ -43,7 +43,7 @@ class DiseaseConverterTest {
                 .diseaseId("Cystathioninuria")
                 .description(description)
                 .diseaseAc("DI-01465")
-                .reference(createDBCrossReference(DiseaseReferenceType.MIM, "219500"))
+                .reference(createDBCrossReference(DiseaseDatabase.MIM, "219500"))
                 .evidencesSet(evidences);
         Disease disease = builder.build();
         DiseaseConverter converter = new DiseaseConverter();
@@ -56,11 +56,8 @@ class DiseaseConverterTest {
                 UniProtXmlTestHelper.toXmlString(xmlObj, CommentType.Disease.class, "disease"));
     }
 
-    private DBCrossReference<DiseaseReferenceType> createDBCrossReference(
-            DiseaseReferenceType type, String id) {
-        return new DBCrossReferenceBuilder<DiseaseReferenceType>()
-                .databaseType(type)
-                .id(id)
-                .build();
+    private DBCrossReference<DiseaseDatabase> createDBCrossReference(
+            DiseaseDatabase type, String id) {
+        return new DBCrossReferenceBuilder<DiseaseDatabase>().databaseType(type).id(id).build();
     }
 }

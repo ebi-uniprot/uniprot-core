@@ -11,7 +11,7 @@ import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
 import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
 import org.uniprot.core.uniprot.comment.Reaction;
-import org.uniprot.core.uniprot.comment.ReactionReferenceType;
+import org.uniprot.core.uniprot.comment.ReactionDatabase;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 import com.google.common.base.Strings;
@@ -299,7 +299,7 @@ class CatalyticActivityCommentTransformerTest {
         assertEquals(xref, xrefToString(pd.getReactionReference()));
     }
 
-    private String xrefToString(DBCrossReference<ReactionReferenceType> xref) {
+    private String xrefToString(DBCrossReference<ReactionDatabase> xref) {
         return xref.getDatabaseType().getName() + ":" + xref.getId();
     }
 

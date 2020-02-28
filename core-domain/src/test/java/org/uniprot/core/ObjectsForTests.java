@@ -12,7 +12,7 @@ import java.util.List;
 
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.builder.AbstractCitationBuilder;
 import org.uniprot.core.citation.builder.JournalArticleBuilder;
 import org.uniprot.core.citation.builder.LiteratureBuilder;
@@ -54,10 +54,10 @@ public class ObjectsForTests {
     public static Reaction createReaction() {
         List<Evidence> evidences = createEvidences();
         String name = "some reaction";
-        List<DBCrossReference<ReactionReferenceType>> references = new ArrayList<>();
-        references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.RHEA, "RHEA:123"));
-        references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.RHEA, "RHEA:323"));
-        references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.CHEBI, "ChEBI:3243"));
+        List<DBCrossReference<ReactionDatabase>> references = new ArrayList<>();
+        references.add(new DBCrossReferenceImpl<>(ReactionDatabase.RHEA, "RHEA:123"));
+        references.add(new DBCrossReferenceImpl<>(ReactionDatabase.RHEA, "RHEA:323"));
+        references.add(new DBCrossReferenceImpl<>(ReactionDatabase.CHEBI, "ChEBI:3243"));
         ECNumber ecNumber = new ECNumberImpl("1.2.4.5");
         return new ReactionBuilder()
                 .name(name)
@@ -78,8 +78,8 @@ public class ObjectsForTests {
                 new PhysiologicalReactionBuilder()
                         .directionType(PhysiologicalDirectionType.LEFT_TO_RIGHT)
                         .reactionReference(
-                                new DBCrossReferenceBuilder<ReactionReferenceType>()
-                                        .databaseType(ReactionReferenceType.RHEA)
+                                new DBCrossReferenceBuilder<ReactionDatabase>()
+                                        .databaseType(ReactionDatabase.RHEA)
                                         .id("RHEA:123")
                                         .build())
                         .evidencesSet(evidences)
@@ -88,8 +88,8 @@ public class ObjectsForTests {
                 new PhysiologicalReactionBuilder()
                         .directionType(PhysiologicalDirectionType.RIGHT_TO_LEFT)
                         .reactionReference(
-                                new DBCrossReferenceBuilder<ReactionReferenceType>()
-                                        .databaseType(ReactionReferenceType.RHEA)
+                                new DBCrossReferenceBuilder<ReactionDatabase>()
+                                        .databaseType(ReactionDatabase.RHEA)
                                         .id("RHEA:313")
                                         .build())
                         .evidencesSet(evidences)
@@ -234,7 +234,7 @@ public class ObjectsForTests {
         UniParcDBCrossReference xref =
                 new UniParcDBCrossReferenceBuilder()
                         .versionI(3)
-                        .databaseType(UniParcDatabaseType.SWISSPROT)
+                        .databaseType(UniParcDatabase.SWISSPROT)
                         .id("P12345")
                         .version(7)
                         .active(true)
@@ -250,7 +250,7 @@ public class ObjectsForTests {
         UniParcDBCrossReference xref2 =
                 new UniParcDBCrossReferenceBuilder()
                         .versionI(1)
-                        .databaseType(UniParcDatabaseType.TREMBL)
+                        .databaseType(UniParcDatabase.TREMBL)
                         .id("P52345")
                         .version(7)
                         .active(true)
@@ -395,9 +395,9 @@ public class ObjectsForTests {
     }
 
     public static Citation createCompleteLiteratureCitation() {
-        DBCrossReference<CitationXrefType> xref =
-                new DBCrossReferenceBuilder<CitationXrefType>()
-                        .databaseType(CitationXrefType.PUBMED)
+        DBCrossReference<CitationDatabase> xref =
+                new DBCrossReferenceBuilder<CitationDatabase>()
+                        .databaseType(CitationDatabase.PUBMED)
                         .id("id1")
                         .build();
 
@@ -515,16 +515,16 @@ public class ObjectsForTests {
     }
 
     public static List<Cofactor> cofactors() {
-        DBCrossReference<CofactorReferenceType> reference =
-                new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
+        DBCrossReference<CofactorDatabase> reference =
+                new DBCrossReferenceImpl<>(CofactorDatabase.CHEBI, "CHEBI:324");
         Cofactor cofactor =
                 new CofactorBuilder()
                         .name("cofactor 1")
                         .reference(reference)
                         .evidencesSet(createEvidences())
                         .build();
-        DBCrossReference<CofactorReferenceType> reference2 =
-                new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:31324");
+        DBCrossReference<CofactorDatabase> reference2 =
+                new DBCrossReferenceImpl<>(CofactorDatabase.CHEBI, "CHEBI:31324");
         Cofactor cofactor2 =
                 new CofactorBuilder()
                         .name("cofactor 2")
@@ -534,15 +534,15 @@ public class ObjectsForTests {
         return Arrays.asList(cofactor, cofactor2);
     }
 
-    public static List<DBCrossReference<ProteomeXReferenceType>> proteomeXReferenceTypes() {
-        DBCrossReference<ProteomeXReferenceType> xref1 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ACCESSION)
+    public static List<DBCrossReference<ProteomeDatabase>> proteomeXReferenceTypes() {
+        DBCrossReference<ProteomeDatabase> xref1 =
+                new DBCrossReferenceBuilder<ProteomeDatabase>()
+                        .databaseType(ProteomeDatabase.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
-        DBCrossReference<ProteomeXReferenceType> xref2 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ANNOTATION)
+        DBCrossReference<ProteomeDatabase> xref2 =
+                new DBCrossReferenceBuilder<ProteomeDatabase>()
+                        .databaseType(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
         return Arrays.asList(xref1, xref2);
@@ -603,12 +603,12 @@ public class ObjectsForTests {
                 .authorsSet(AUTHORS)
                 .citationXrefsSet(
                         asList(
-                                new DBCrossReferenceBuilder<CitationXrefType>()
-                                        .databaseType(CitationXrefType.PUBMED)
+                                new DBCrossReferenceBuilder<CitationDatabase>()
+                                        .databaseType(CitationDatabase.PUBMED)
                                         .id("id1")
                                         .build(),
-                                new DBCrossReferenceBuilder<CitationXrefType>()
-                                        .databaseType(CitationXrefType.AGRICOLA)
+                                new DBCrossReferenceBuilder<CitationDatabase>()
+                                        .databaseType(CitationDatabase.AGRICOLA)
                                         .id("id2")
                                         .build()));
     }

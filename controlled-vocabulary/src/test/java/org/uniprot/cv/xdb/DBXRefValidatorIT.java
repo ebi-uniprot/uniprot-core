@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.xdb.DatabaseCategory;
-import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
+import org.uniprot.core.cv.xdb.UniProtDatabaseCategory;
+import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.util.Pair;
 import org.uniprot.cv.xdb.validator.DBXRef;
 import org.uniprot.cv.xdb.validator.DBXRefReader;
@@ -49,7 +49,7 @@ class DBXRefValidatorIT {
 
     @Test
     void testSuccessfulValidation() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("EMBL");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("EMBL");
         // validate
         List<Pair<String, String>> mismatches = DBXRefValidator.validate(opType);
         assertEquals(1, mismatches.size());
@@ -57,13 +57,13 @@ class DBXRefValidatorIT {
 
     @Test
     void testFailedValidation() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("ArachnoServer");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("ArachnoServer");
 
-        UniProtXDbTypeDetail actualOpType =
-                new UniProtXDbTypeDetail(
+        UniProtDatabaseDetail actualOpType =
+                new UniProtDatabaseDetail(
                         opType.getName(),
                         opType.getDisplayName(),
-                        DatabaseCategory.CHEMISTRY,
+                        UniProtDatabaseCategory.CHEMISTRY,
                         opType.getUriLink(),
                         opType.getAttributes(),
                         false,
@@ -73,10 +73,10 @@ class DBXRefValidatorIT {
         List<Pair<String, String>> mismatches = DBXRefValidator.validate(actualOpType);
         assertEquals(2, mismatches.size());
         assertEquals(
-                DatabaseCategory.ORGANISM_SPECIFIC_DATABASES.getDisplayName(),
+                UniProtDatabaseCategory.ORGANISM_SPECIFIC_DATABASES.getDisplayName(),
                 mismatches.get(0).getKey()); // expected
         assertEquals(
-                DatabaseCategory.CHEMISTRY.getDisplayName(),
+                UniProtDatabaseCategory.CHEMISTRY.getDisplayName(),
                 mismatches.get(0).getValue()); // actual
     }
 
@@ -84,7 +84,7 @@ class DBXRefValidatorIT {
     @Test
     void testValidateEachDBXRef() {
         // check if all the drlineconfig.json is in sync with dbxref.txt
-        for (UniProtXDbTypeDetail dbTypeDetail : UniProtXDbTypes.INSTANCE.getAllDBXRefTypes()) {
+        for (UniProtDatabaseDetail dbTypeDetail : UniProtXDbTypes.INSTANCE.getAllDBXRefTypes()) {
             if (!NEW_DBS.contains(dbTypeDetail.getName())) {
                 System.out.println(dbTypeDetail.getName());
                 List<Pair<String, String>> mismatches = DBXRefValidator.validate(dbTypeDetail);
@@ -103,7 +103,7 @@ class DBXRefValidatorIT {
     void testCompareDRLineConfig() throws IOException {
         // check if all dbxref db are there in drlineconfig.json file except for the
         // ignored dbs
-        Map<String, UniProtXDbTypeDetail> typeMap = UniProtXDbTypes.INSTANCE.getTypeMap();
+        Map<String, UniProtDatabaseDetail> typeMap = UniProtXDbTypes.INSTANCE.getTypeMap();
 
         try (DBXRefReader reader = new DBXRefReader(DBXRefValidator.DBREF_FTP)) {
             DBXRef dbXRef;

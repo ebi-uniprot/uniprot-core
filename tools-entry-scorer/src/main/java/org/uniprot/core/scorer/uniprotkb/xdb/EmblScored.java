@@ -5,7 +5,7 @@ import java.util.List;
 import org.uniprot.core.scorer.uniprotkb.Consensus;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 
 public class EmblScored implements HasScore {
@@ -14,11 +14,12 @@ public class EmblScored implements HasScore {
     private boolean isEmblDone = false;
     private boolean isEmblNotAnnotatedCDSDone = false;
 
-    private final List<EvidenceType> evidenceTypes;
+    private final List<EvidenceDatabase> evidenceDatabases;
 
-    public EmblScored(List<UniProtDBCrossReference> xrefs, List<EvidenceType> evidenceTypes) {
+    public EmblScored(
+            List<UniProtDBCrossReference> xrefs, List<EvidenceDatabase> evidenceDatabases) {
         this.xrefs = xrefs;
-        this.evidenceTypes = evidenceTypes;
+        this.evidenceDatabases = evidenceDatabases;
     }
 
     public EmblScored(List<UniProtDBCrossReference> xrefs) {
@@ -30,7 +31,7 @@ public class EmblScored implements HasScore {
 
         double score = 0;
         for (UniProtDBCrossReference xref : xrefs) {
-            if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceTypes)) {
+            if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceDatabases)) {
                 String status = xref.getProperties().get(1).getValue();
                 if (status.equals("NOT_ANNOTATED_CDS")) {
                     if (!isEmblNotAnnotatedCDSDone) {

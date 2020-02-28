@@ -63,7 +63,7 @@ public interface Disease extends HasEvidences {
 
     String getDescription();
 
-    DBCrossReference<DiseaseReferenceType> getReference();
+    DBCrossReference<DiseaseDatabase> getReference();
 
     boolean hasDefinedDisease();
 

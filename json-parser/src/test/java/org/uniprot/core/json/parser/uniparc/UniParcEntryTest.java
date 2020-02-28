@@ -15,7 +15,7 @@ import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.SignatureDbType;
 import org.uniprot.core.uniparc.UniParcDBCrossReference;
-import org.uniprot.core.uniparc.UniParcDatabaseType;
+import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniparc.builder.InterProGroupBuilder;
 import org.uniprot.core.uniparc.builder.SequenceFeatureBuilder;
@@ -86,7 +86,7 @@ class UniParcEntryTest {
                 .sequenceFeaturesSet(sfs)
                 .databaseCrossReferencesAdd(
                         new UniParcDBCrossReferenceBuilder()
-                                .databaseType(UniParcDatabaseType.ENSEMBL_VERTEBRATE)
+                                .databaseType(UniParcDatabase.ENSEMBL_VERTEBRATE)
                                 .id("CG1106-PB")
                                 .versionI(1)
                                 .active(false)
@@ -96,7 +96,7 @@ class UniParcEntryTest {
 
         UniParcDBCrossReferenceBuilder xrefBuilder = new UniParcDBCrossReferenceBuilder();
         xrefBuilder
-                .databaseType(UniParcDatabaseType.TREMBL)
+                .databaseType(UniParcDatabase.TREMBL)
                 .id("A0A0C4DHG2")
                 .versionI(1)
                 .version(1)
@@ -115,7 +115,7 @@ class UniParcEntryTest {
         // id="NC_004354_874_0" version_i="5" active="Y" created="2007-04-27" last="2007-04-27">
         UniParcDBCrossReferenceBuilder xrefBuilder2 = new UniParcDBCrossReferenceBuilder();
         xrefBuilder2
-                .databaseType(UniParcDatabaseType.TROME)
+                .databaseType(UniParcDatabase.TROME)
                 .id("NC_004354_874_0")
                 .versionI(5)
                 .active(true)

@@ -78,11 +78,9 @@ class CatalyticActivityCommentConverterTest {
         assertEquals("another text", reaction.getName());
         assertEquals(2, reaction.getReactionReferences().size());
         verifyReactionReference(
-                reaction.getReactionReferences().get(0),
-                ReactionReferenceType.CHEBI,
-                "CHEBI:29105");
+                reaction.getReactionReferences().get(0), ReactionDatabase.CHEBI, "CHEBI:29105");
         verifyReactionReference(
-                reaction.getReactionReferences().get(1), ReactionReferenceType.RHEA, "RHEA:125");
+                reaction.getReactionReferences().get(1), ReactionDatabase.RHEA, "RHEA:125");
         assertEquals("1.2.1.32", reaction.getEcNumber().getValue());
         List<Evidence> evids = reaction.getEvidences();
         assertEquals(2, evids.size());
@@ -96,7 +94,7 @@ class CatalyticActivityCommentConverterTest {
         assertEquals(PhysiologicalDirectionType.RIGHT_TO_LEFT, physioReaction.getDirectionType());
 
         verifyReactionReference(
-                physioReaction.getReactionReference(), ReactionReferenceType.RHEA, "RHEA:125");
+                physioReaction.getReactionReference(), ReactionDatabase.RHEA, "RHEA:125");
         evids = physioReaction.getEvidences();
         assertEquals(2, evids.size());
         assertEquals("ECO:0000269|PubMed:9060646", evids.get(0).getValue());
@@ -104,7 +102,7 @@ class CatalyticActivityCommentConverterTest {
     }
 
     private void verifyReactionReference(
-            DBCrossReference<ReactionReferenceType> ref, ReactionReferenceType type, String id) {
+            DBCrossReference<ReactionDatabase> ref, ReactionDatabase type, String id) {
         assertEquals(type, ref.getDatabaseType());
         assertEquals(id, ref.getId());
     }
@@ -236,10 +234,10 @@ class CatalyticActivityCommentConverterTest {
     }
 
     private Reaction createReaction(String name, String ec) {
-        List<DBCrossReference<ReactionReferenceType>> references = new ArrayList<>();
-        references.add(createReference(ReactionReferenceType.RHEA, "RHEA:12"));
-        references.add(createReference(ReactionReferenceType.CHEBI, "CHEBI:22"));
-        references.add(createReference(ReactionReferenceType.RHEA, "RHEA:322"));
+        List<DBCrossReference<ReactionDatabase>> references = new ArrayList<>();
+        references.add(createReference(ReactionDatabase.RHEA, "RHEA:12"));
+        references.add(createReference(ReactionDatabase.CHEBI, "CHEBI:22"));
+        references.add(createReference(ReactionDatabase.RHEA, "RHEA:322"));
 
         ECNumber ecNumber = null;
         if (!Strings.isNullOrEmpty(ec)) ecNumber = new ECNumberImpl(ec);
@@ -259,7 +257,7 @@ class CatalyticActivityCommentConverterTest {
 
     private Reaction createReaction2(String name, String ec) {
 
-        List<DBCrossReference<ReactionReferenceType>> references = new ArrayList<>();
+        List<DBCrossReference<ReactionDatabase>> references = new ArrayList<>();
 
         ECNumber ecNumber = null;
         if (!Strings.isNullOrEmpty(ec)) ecNumber = new ECNumberImpl(ec);
@@ -285,14 +283,14 @@ class CatalyticActivityCommentConverterTest {
         evids.add(evidence2);
         return new PhysiologicalReactionBuilder()
                 .directionType(type)
-                .reactionReference(createReference(ReactionReferenceType.RHEA, rheaId))
+                .reactionReference(createReference(ReactionDatabase.RHEA, rheaId))
                 .evidencesSet(evids)
                 .build();
     }
 
-    private DBCrossReference<ReactionReferenceType> createReference(
-            ReactionReferenceType type, String rheaId) {
-        return new DBCrossReferenceBuilder<ReactionReferenceType>()
+    private DBCrossReference<ReactionDatabase> createReference(
+            ReactionDatabase type, String rheaId) {
+        return new DBCrossReferenceBuilder<ReactionDatabase>()
                 .databaseType(type)
                 .id(rheaId)
                 .build();

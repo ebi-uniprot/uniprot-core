@@ -10,7 +10,7 @@ import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
 import org.uniprot.core.uniprot.comment.Disease;
 import org.uniprot.core.uniprot.comment.DiseaseComment;
-import org.uniprot.core.uniprot.comment.DiseaseReferenceType;
+import org.uniprot.core.uniprot.comment.DiseaseDatabase;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
 import org.uniprot.core.uniprot.comment.builder.DiseaseCommentBuilder;
@@ -69,9 +69,9 @@ public class DiseaseCommentTest {
 
     public static DiseaseComment getDiseaseComment() {
         DiseaseBuilder builder = new DiseaseBuilder();
-        DBCrossReference<DiseaseReferenceType> reference =
-                new DBCrossReferenceBuilder<DiseaseReferenceType>()
-                        .databaseType(DiseaseReferenceType.MIM)
+        DBCrossReference<DiseaseDatabase> reference =
+                new DBCrossReferenceBuilder<DiseaseDatabase>()
+                        .databaseType(DiseaseDatabase.MIM)
                         .id("3124")
                         .build();
         Disease disease =

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.builder.BookBuilder;
 import org.uniprot.core.flatfile.parser.impl.rx.RxLineConverter;
 import org.uniprot.core.flatfile.parser.impl.rx.RxLineObject;
@@ -27,19 +27,19 @@ class RxLineConverterTest {
         rx2.value = "10.1016/j.toxicon.2004.10.011";
         rxLine.rxs.add(rx2);
         RxLineConverter converter = new RxLineConverter();
-        List<DBCrossReference<CitationXrefType>> cxrefs = converter.convert(rxLine);
+        List<DBCrossReference<CitationDatabase>> cxrefs = converter.convert(rxLine);
         Citation citation = new BookBuilder().citationXrefsSet(cxrefs).build();
 
-        DBCrossReference<CitationXrefType> wrongXref =
-                new DBCrossReferenceBuilder<CitationXrefType>().build();
-        DBCrossReference<CitationXrefType> pubmedXref =
-                citation.getCitationXrefsByType(CitationXrefType.PUBMED).orElse(wrongXref);
+        DBCrossReference<CitationDatabase> wrongXref =
+                new DBCrossReferenceBuilder<CitationDatabase>().build();
+        DBCrossReference<CitationDatabase> pubmedXref =
+                citation.getCitationXrefsByType(CitationDatabase.PUBMED).orElse(wrongXref);
         assertNotEquals(pubmedXref, wrongXref);
-        DBCrossReference<CitationXrefType> doiXref =
-                citation.getCitationXrefsByType(CitationXrefType.DOI).orElse(wrongXref);
+        DBCrossReference<CitationDatabase> doiXref =
+                citation.getCitationXrefsByType(CitationDatabase.DOI).orElse(wrongXref);
         assertNotEquals(doiXref, wrongXref);
-        DBCrossReference<CitationXrefType> agricolaXref =
-                citation.getCitationXrefsByType(CitationXrefType.AGRICOLA).orElse(wrongXref);
+        DBCrossReference<CitationDatabase> agricolaXref =
+                citation.getCitationXrefsByType(CitationDatabase.AGRICOLA).orElse(wrongXref);
         assertEquals(agricolaXref, wrongXref);
 
         assertEquals("15626370", pubmedXref.getId());

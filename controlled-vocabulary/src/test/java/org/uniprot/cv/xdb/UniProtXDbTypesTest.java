@@ -3,21 +3,21 @@ package org.uniprot.cv.xdb;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.uniprot.core.cv.xdb.DatabaseCategory.*;
+import static org.uniprot.core.cv.xdb.UniProtDatabaseCategory.*;
 
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.xdb.DBXRefTypeAttribute;
-import org.uniprot.core.cv.xdb.DatabaseCategory;
-import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
+import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
+import org.uniprot.core.cv.xdb.UniProtDatabaseCategory;
+import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 
 class UniProtXDbTypesTest {
 
     @Test
     void testGetAllTypes() {
-        List<UniProtXDbTypeDetail> types = UniProtXDbTypes.INSTANCE.getAllDBXRefTypes();
+        List<UniProtDatabaseDetail> types = UniProtXDbTypes.INSTANCE.getAllDBXRefTypes();
 
         assertFalse(types.isEmpty());
         System.out.println(types.size());
@@ -25,7 +25,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testEmblType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("EMBL");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("EMBL");
         assertEquals("EMBL", opType.getName());
         assertFalse(opType.isImplicit());
         assertEquals(SEQUENCE_DATABASES, opType.getCategory());
@@ -42,7 +42,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testGeneBankType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("GenBank");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("GenBank");
         assertEquals("GenBank", opType.getName());
         assertTrue(opType.isImplicit());
         assertEquals(SEQUENCE_DATABASES, opType.getCategory());
@@ -59,7 +59,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testPDBType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("PDB");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("PDB");
         assertEquals("PDB", opType.getName());
         assertEquals("PDB", opType.getDisplayName());
         assertEquals(D3_STRUCTURE_DATABASES, opType.getCategory());
@@ -72,7 +72,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testComplexPortalType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("ComplexPortal");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("ComplexPortal");
         assertEquals("ComplexPortal", opType.getName());
         assertEquals("ComplexPortal", opType.getDisplayName());
         assertEquals(PROTEIN_PROTEIN_INTERACTION_DATABASES, opType.getCategory());
@@ -83,7 +83,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testChEMBLType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("ChEMBL");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("ChEMBL");
         assertEquals("ChEMBL", opType.getName());
         assertEquals("ChEMBL", opType.getDisplayName());
         assertEquals(CHEMISTRY, opType.getCategory());
@@ -94,7 +94,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testMoonDBType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("MoonDB");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("MoonDB");
         assertEquals("MoonDB", opType.getName());
         assertEquals("MoonDB", opType.getDisplayName());
         assertEquals(PROTEIN_FAMILY_GROUP_DATABASES, opType.getCategory());
@@ -105,7 +105,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testiPTMnetType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("iPTMnet");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("iPTMnet");
         assertEquals("iPTMnet", opType.getName());
         assertEquals("iPTMnet", opType.getDisplayName());
         assertEquals(PTM_DATABASES, opType.getCategory());
@@ -117,7 +117,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testdbSNPType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("dbSNP");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("dbSNP");
         assertEquals("dbSNP", opType.getName());
         assertEquals("dbSNP", opType.getDisplayName());
         assertEquals(POLYMORPHISM_AND_MUTATION_DATABASES, opType.getCategory());
@@ -129,7 +129,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testSwiss2dpageType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("SWISS-2DPAGE");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("SWISS-2DPAGE");
 
         assertEquals("SWISS-2DPAGE", opType.getName());
         assertEquals("SWISS-2DPAGE", opType.getDisplayName());
@@ -141,7 +141,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testMaxQBType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("MaxQB");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("MaxQB");
         assertEquals("MaxQB", opType.getName());
         assertEquals("MaxQB", opType.getDisplayName());
         assertEquals(PROTEOMIC_DATABASES, opType.getCategory());
@@ -152,7 +152,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testDNASUType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("DNASU");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("DNASU");
 
         assertEquals("DNASU", opType.getName());
         assertEquals("DNASU", opType.getDisplayName());
@@ -166,7 +166,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testEnsemblType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("Ensembl");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("Ensembl");
         assertEquals("Ensembl", opType.getName());
         assertEquals("Ensembl", opType.getDisplayName());
         assertEquals(GENOME_ANNOTATION_DATABASES, opType.getCategory());
@@ -186,7 +186,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testVGNCType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("VGNC");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("VGNC");
         assertEquals("VGNC", opType.getName());
         assertEquals("VGNC", opType.getDisplayName());
         assertEquals(ORGANISM_SPECIFIC_DATABASES, opType.getCategory());
@@ -199,7 +199,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testeggNOGType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("eggNOG");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("eggNOG");
 
         assertEquals("eggNOG", opType.getName());
         assertEquals("eggNOG", opType.getDisplayName());
@@ -213,7 +213,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testReactomeType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("Reactome");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("Reactome");
 
         assertEquals("Reactome", opType.getName());
         assertEquals("Reactome", opType.getDisplayName());
@@ -226,7 +226,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testChiTaRSType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("ChiTaRS");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("ChiTaRS");
         assertEquals("ChiTaRS", opType.getName());
         assertEquals("ChiTaRS", opType.getDisplayName());
         assertEquals(OTHER, opType.getCategory());
@@ -239,7 +239,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testExpressionAtlasType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("ExpressionAtlas");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("ExpressionAtlas");
         assertEquals("ExpressionAtlas", opType.getName());
         assertEquals("ExpressionAtlas", opType.getDisplayName());
         assertEquals(GENE_EXPRESSION_DATABASES, opType.getCategory());
@@ -251,7 +251,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testPIRSFType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("PIRSF");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("PIRSF");
         assertEquals("PIRSF", opType.getName());
         assertEquals("PIRSF", opType.getDisplayName());
         assertEquals(FAMILY_AND_DOMAIN_DATABASES, opType.getCategory());
@@ -264,7 +264,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testGOType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("GO");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("GO");
         assertEquals("GO", opType.getName());
         assertEquals("GO", opType.getDisplayName());
         assertEquals(GENE_ONTOLOGY_DATABASES, opType.getCategory());
@@ -277,10 +277,10 @@ class UniProtXDbTypesTest {
 
     @Test
     void testProteomesType() {
-        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("Proteomes");
+        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("Proteomes");
         assertEquals("Proteomes", opType.getName());
         assertEquals("Proteomes", opType.getDisplayName());
-        Assertions.assertEquals(DatabaseCategory.PROTEOMES_DATABASES, opType.getCategory());
+        Assertions.assertEquals(UniProtDatabaseCategory.PROTEOMES_DATABASES, opType.getCategory());
         assertEquals("https://www.uniprot.org/proteomes/%id", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "Component", "component", null);
@@ -322,11 +322,11 @@ class UniProtXDbTypesTest {
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(PROTEOMES_DATABASES), 1);
     }
 
-    private void verifyGroupSize(List<UniProtXDbTypeDetail> dbTypesByCategory, int size) {
+    private void verifyGroupSize(List<UniProtDatabaseDetail> dbTypesByCategory, int size) {
         assertEquals(size, dbTypesByCategory.size());
     }
 
-    void verifyAttribute(DBXRefTypeAttribute attr, String name, String xmlTag, String link) {
+    void verifyAttribute(UniProtDatabaseAttribute attr, String name, String xmlTag, String link) {
         assertEquals(name, attr.getName());
         assertEquals(xmlTag, attr.getXmlTag());
         assertEquals(link, attr.getUriLink());

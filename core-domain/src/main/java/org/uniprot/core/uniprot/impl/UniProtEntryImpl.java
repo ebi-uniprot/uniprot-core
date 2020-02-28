@@ -44,7 +44,7 @@ import org.uniprot.core.uniprot.feature.FeatureType;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+import org.uniprot.core.uniprot.xdb.UniProtDatabase;
 import org.uniprot.core.util.Utils;
 
 public class UniProtEntryImpl implements UniProtEntry {
@@ -255,7 +255,7 @@ public class UniProtEntryImpl implements UniProtEntry {
     }
 
     @Override
-    public List<UniProtDBCrossReference> getDatabaseCrossReferencesByType(UniProtXDbType type) {
+    public List<UniProtDBCrossReference> getDatabaseCrossReferencesByType(UniProtDatabase type) {
         return getDatabaseCrossReferencesByType(type.getName());
     }
 

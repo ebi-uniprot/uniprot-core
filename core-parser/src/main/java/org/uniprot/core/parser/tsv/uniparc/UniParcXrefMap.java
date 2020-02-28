@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.uniprot.core.Property;
 import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
 import org.uniprot.core.uniparc.UniParcDBCrossReference;
-import org.uniprot.core.uniparc.UniParcDatabaseType;
+import org.uniprot.core.uniparc.UniParcDatabase;
 
 /**
  * @author jluo
@@ -92,10 +92,10 @@ public class UniParcXrefMap implements NamedValueMap {
     }
 
     private String getUniProtAccession(UniParcDBCrossReference xref) {
-        UniParcDatabaseType type = xref.getDatabaseType();
-        if ((type == UniParcDatabaseType.SWISSPROT)
-                || (type == UniParcDatabaseType.TREMBL)
-                || (type == UniParcDatabaseType.SWISSPROT_VARSPLIC)) {
+        UniParcDatabase type = xref.getDatabaseType();
+        if ((type == UniParcDatabase.SWISSPROT)
+                || (type == UniParcDatabase.TREMBL)
+                || (type == UniParcDatabase.SWISSPROT_VARSPLIC)) {
             String accession = xref.getId();
             if (!xref.isActive()) {
                 accession += "." + xref.getVersion() + " (obsolete)";
