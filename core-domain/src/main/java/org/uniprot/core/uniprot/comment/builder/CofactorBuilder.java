@@ -9,7 +9,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprot.comment.Cofactor;
 import org.uniprot.core.uniprot.comment.CofactorDatabase;
 import org.uniprot.core.uniprot.comment.impl.CofactorImpl;
@@ -23,7 +23,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 public final class CofactorBuilder implements Builder<Cofactor> {
     private String name;
     private List<Evidence> evidences = new ArrayList<>();
-    private DBCrossReference<CofactorDatabase> cofactorReference;
+    private CrossReference<CofactorDatabase> cofactorReference;
 
     public @Nonnull CofactorBuilder name(String name) {
         this.name = name;
@@ -40,8 +40,7 @@ public final class CofactorBuilder implements Builder<Cofactor> {
         return this;
     }
 
-    public @Nonnull CofactorBuilder reference(
-            DBCrossReference<CofactorDatabase> cofactorReference) {
+    public @Nonnull CofactorBuilder reference(CrossReference<CofactorDatabase> cofactorReference) {
         this.cofactorReference = cofactorReference;
         return this;
     }

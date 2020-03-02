@@ -7,8 +7,8 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
 import org.uniprot.core.uniprot.comment.Cofactor;
@@ -76,8 +76,8 @@ public class CofactorCommentTest {
     }
 
     public static CofactorComment getCofactorComment() {
-        DBCrossReference<CofactorDatabase> reference =
-                new DBCrossReferenceBuilder<CofactorDatabase>()
+        CrossReference<CofactorDatabase> reference =
+                new CrossReferenceBuilder<CofactorDatabase>()
                         .databaseType(CofactorDatabase.CHEBI)
                         .id("CHEBI:314")
                         .build();

@@ -5,7 +5,7 @@ import static org.uniprot.core.util.Utils.notNull;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
@@ -31,10 +31,10 @@ public class EvidenceBuilder implements Builder<Evidence> {
     }
 
     public static @Nonnull EvidenceBuilder from(Evidence instance) {
-        DBCrossReference<EvidenceDatabase> source = instance.getSource();
+        CrossReference<EvidenceDatabase> source = instance.getSource();
         EvidenceBuilder retBuilder = new EvidenceBuilder().evidenceCode(instance.getEvidenceCode());
         if (notNull(source)) {
-            retBuilder.databaseId(source.getId()).databaseName(source.getDatabaseType().getName());
+            retBuilder.databaseId(source.getId()).databaseName(source.getDatabase().getName());
         }
         return retBuilder;
     }

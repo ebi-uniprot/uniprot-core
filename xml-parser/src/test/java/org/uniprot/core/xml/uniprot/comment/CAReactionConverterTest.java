@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.Reaction;
 import org.uniprot.core.uniprot.comment.ReactionDatabase;
 import org.uniprot.core.uniprot.comment.builder.ReactionBuilder;
@@ -43,8 +43,8 @@ class CAReactionConverterTest {
     }
 
     private void verifyReactionReference(
-            DBCrossReference<ReactionDatabase> ref, ReactionDatabase type, String id) {
-        assertEquals(type, ref.getDatabaseType());
+            CrossReference<ReactionDatabase> ref, ReactionDatabase type, String id) {
+        assertEquals(type, ref.getDatabase());
         assertEquals(id, ref.getId());
     }
 
@@ -58,7 +58,7 @@ class CAReactionConverterTest {
     @Test
     void testToXmlBinding() {
 
-        List<DBCrossReference<ReactionDatabase>> references = new ArrayList<>();
+        List<CrossReference<ReactionDatabase>> references = new ArrayList<>();
         references.add(createReference(ReactionDatabase.RHEA, "RHEA:12"));
         references.add(createReference(ReactionDatabase.CHEBI, "CHEBI:22"));
         references.add(createReference(ReactionDatabase.RHEA, "RHEA:322"));
@@ -97,7 +97,7 @@ class CAReactionConverterTest {
 
     @Test
     void testRoundTrip() {
-        List<DBCrossReference<ReactionDatabase>> references = new ArrayList<>();
+        List<CrossReference<ReactionDatabase>> references = new ArrayList<>();
         references.add(createReference(ReactionDatabase.RHEA, "RHEA:12"));
         references.add(createReference(ReactionDatabase.CHEBI, "CHEBI:22"));
         references.add(createReference(ReactionDatabase.RHEA, "RHEA:322"));
@@ -122,7 +122,7 @@ class CAReactionConverterTest {
         assertEquals(reaction, converted);
     }
 
-    private DBCrossReference<ReactionDatabase> createReference(ReactionDatabase type, String id) {
-        return new DBCrossReferenceBuilder<ReactionDatabase>().databaseType(type).id(id).build();
+    private CrossReference<ReactionDatabase> createReference(ReactionDatabase type, String id) {
+        return new CrossReferenceBuilder<ReactionDatabase>().databaseType(type).id(id).build();
     }
 }

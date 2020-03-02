@@ -11,7 +11,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.json.parser.uniprot.UniprotJsonConfig;
 import org.uniprot.core.uniprot.impl.UniProtEntryImpl;
 
@@ -123,7 +123,7 @@ public class ValidateJson {
      */
     private static <T> boolean isJsonField(Field field, T object) {
         boolean result = true;
-        if (field.getName().equals("properties") && object instanceof DBCrossReferenceImpl) {
+        if (field.getName().equals("properties") && object instanceof CrossReferenceImpl) {
             result = false;
         }
         if (field.getName().equals("inactiveReason") && object instanceof UniProtEntryImpl) {

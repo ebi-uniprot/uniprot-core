@@ -33,8 +33,8 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismName;
 import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.uniprot.xdb.builder.UniProtCrossReferenceBuilder;
 
 public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry> {
 
@@ -151,8 +151,8 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
         return activeEntryBuilder.build();
     }
 
-    private List<UniProtDBCrossReference> addGoEvidence(
-            String accession, List<UniProtDBCrossReference> dbRefs) {
+    private List<UniProtCrossReference> addGoEvidence(
+            String accession, List<UniProtCrossReference> dbRefs) {
         Map<String, List<Evidence>> goEvidenceMap = accessionGoEvidences.get(accession);
         if (goEvidenceMap == null) {
             return dbRefs;
@@ -160,16 +160,16 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
         return dbRefs.stream().map(val -> convert(val, goEvidenceMap)).collect(Collectors.toList());
     }
 
-    private UniProtDBCrossReference convert(
-            UniProtDBCrossReference xref, Map<String, List<Evidence>> goEvidenceMap) {
-        if ("GO".equals(xref.getDatabaseType().getName())) {
+    private UniProtCrossReference convert(
+            UniProtCrossReference xref, Map<String, List<Evidence>> goEvidenceMap) {
+        if ("GO".equals(xref.getDatabase().getName())) {
             String id = xref.getId();
             List<Evidence> evidences = goEvidenceMap.get(id);
             if ((evidences == null) || (evidences.isEmpty())) {
                 return xref;
             }
-            return new UniProtDBCrossReferenceBuilder()
-                    .databaseType(xref.getDatabaseType())
+            return new UniProtCrossReferenceBuilder()
+                    .databaseType(xref.getDatabase())
                     .id(xref.getId())
                     .isoformId(xref.getIsoformId())
                     .evidencesSet(evidences)

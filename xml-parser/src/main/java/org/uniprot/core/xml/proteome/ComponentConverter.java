@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.proteome.Component;
 import org.uniprot.core.proteome.ProteomeDatabase;
 import org.uniprot.core.proteome.builder.ComponentBuilder;
@@ -32,12 +32,12 @@ public class ComponentConverter implements Converter<ComponentType, Component> {
         ComponentBuilder builder = new ComponentBuilder();
         builder.name(xmlObj.getName());
         builder.description(xmlObj.getDescription());
-        List<DBCrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
+        List<CrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
         if (!xmlObj.getGenomeAccession().isEmpty()) {
             xmlObj.getGenomeAccession().stream()
                     .map(
                             val ->
-                                    new DBCrossReferenceBuilder<ProteomeDatabase>()
+                                    new CrossReferenceBuilder<ProteomeDatabase>()
                                             .databaseType(ProteomeDatabase.GENOME_ACCESSION)
                                             .id(val)
                                             .build())
@@ -45,7 +45,7 @@ public class ComponentConverter implements Converter<ComponentType, Component> {
         }
         if (!Strings.isNullOrEmpty(xmlObj.getBiosampleId())) {
             xrefs.add(
-                    new DBCrossReferenceBuilder<ProteomeDatabase>()
+                    new CrossReferenceBuilder<ProteomeDatabase>()
                             .databaseType(ProteomeDatabase.BIOSAMPLE)
                             .id(xmlObj.getBiosampleId())
                             .build());
@@ -62,15 +62,15 @@ public class ComponentConverter implements Converter<ComponentType, Component> {
         ComponentType xmlObj = xmlFactory.createComponentType();
         xmlObj.setName(uniObj.getName());
         xmlObj.setDescription(uniObj.getDescription());
-        Optional<DBCrossReference<ProteomeDatabase>> biosample =
+        Optional<CrossReference<ProteomeDatabase>> biosample =
                 uniObj.getDbXReferences().stream()
-                        .filter(val -> val.getDatabaseType() == ProteomeDatabase.BIOSAMPLE)
+                        .filter(val -> val.getDatabase() == ProteomeDatabase.BIOSAMPLE)
                         .findFirst();
         if (biosample.isPresent()) {
             xmlObj.setBiosampleId(biosample.get().getId());
         }
         uniObj.getDbXReferences().stream()
-                .filter(val -> val.getDatabaseType() == ProteomeDatabase.GENOME_ACCESSION)
+                .filter(val -> val.getDatabase() == ProteomeDatabase.GENOME_ACCESSION)
                 .map(val -> val.getId())
                 .forEach(val -> xmlObj.getGenomeAccession().add(val));
         xmlObj.setCount(uniObj.getProteinCount());

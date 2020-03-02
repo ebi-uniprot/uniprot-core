@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.uniparc.UniParcDBCrossReference;
+import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniparc.builder.UniParcEntryBuilder;
 import org.uniprot.core.uniparc.builder.UniParcIdBuilder;
@@ -59,7 +59,7 @@ public class UniParcEntryConverter implements Converter<Entry, UniParcEntry> {
             builder.uniprotExclusionReason(xmlObj.getUniProtKBExclusion());
         }
 
-        List<UniParcDBCrossReference> xrefs =
+        List<UniParcCrossReference> xrefs =
                 xmlObj.getDbReference().stream()
                         .map(xrefConverter::fromXml)
                         .collect(Collectors.toList());
@@ -71,7 +71,7 @@ public class UniParcEntryConverter implements Converter<Entry, UniParcEntry> {
                                 val ->
                                         val.getKey()
                                                 .equals(
-                                                        UniParcDBCrossReference
+                                                        UniParcCrossReference
                                                                 .PROPERTY_NCBI_TAXONOMY_ID))
                         .map(val -> val.getValue())
                         .distinct()

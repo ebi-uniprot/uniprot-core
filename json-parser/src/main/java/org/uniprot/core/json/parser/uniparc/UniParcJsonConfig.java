@@ -2,11 +2,11 @@ package org.uniprot.core.json.parser.uniparc;
 
 import java.time.LocalDate;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.Database;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.Value;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.impl.DefaultDatabase;
 import org.uniprot.core.impl.SequenceImpl;
 import org.uniprot.core.impl.ValueImpl;
@@ -15,14 +15,11 @@ import org.uniprot.core.json.parser.deserializer.LocalDateDeserializer;
 import org.uniprot.core.json.parser.serializer.LocalDateSerializer;
 import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
-import org.uniprot.core.uniparc.UniParcDBCrossReference;
+import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniparc.UniParcId;
-import org.uniprot.core.uniparc.impl.InterProGroupImpl;
-import org.uniprot.core.uniparc.impl.SequenceFeatureImpl;
-import org.uniprot.core.uniparc.impl.UniParcDBCrossReferenceImpl;
-import org.uniprot.core.uniparc.impl.UniParcEntryImpl;
-import org.uniprot.core.uniparc.impl.UniParcIdImpl;
+import org.uniprot.core.uniparc.impl.*;
+import org.uniprot.core.uniparc.impl.UniParcCrossReferenceImpl;
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
 import org.uniprot.core.uniprot.taxonomy.impl.TaxonomyImpl;
 
@@ -71,12 +68,11 @@ public class UniParcJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(InterProGroup.class, InterProGroupImpl.class);
         mod.addAbstractTypeMapping(SequenceFeature.class, SequenceFeatureImpl.class);
         mod.addAbstractTypeMapping(Taxonomy.class, TaxonomyImpl.class);
-        mod.addAbstractTypeMapping(
-                UniParcDBCrossReference.class, UniParcDBCrossReferenceImpl.class);
+        mod.addAbstractTypeMapping(UniParcCrossReference.class, UniParcCrossReferenceImpl.class);
 
         mod.addAbstractTypeMapping(Value.class, ValueImpl.class);
         mod.addAbstractTypeMapping(UniParcId.class, UniParcIdImpl.class);
-        mod.addAbstractTypeMapping(DBCrossReference.class, DBCrossReferenceImpl.class);
+        mod.addAbstractTypeMapping(CrossReference.class, CrossReferenceImpl.class);
         mod.addAbstractTypeMapping(Database.class, DefaultDatabase.class);
         mod.addAbstractTypeMapping(Sequence.class, SequenceImpl.class);
 

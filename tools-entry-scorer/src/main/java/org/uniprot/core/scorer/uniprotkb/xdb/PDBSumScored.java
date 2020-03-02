@@ -5,22 +5,22 @@ import java.util.List;
 import org.uniprot.core.scorer.uniprotkb.Consensus;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 
 public class PDBSumScored implements HasScore {
     @SuppressWarnings("unused")
-    private List<UniProtDBCrossReference> xrefs;
+    private List<UniProtCrossReference> xrefs;
 
     @SuppressWarnings("unused")
     private final List<EvidenceDatabase> evidenceDatabases;
 
     public PDBSumScored(
-            List<UniProtDBCrossReference> xrefs, List<EvidenceDatabase> evidenceDatabases) {
+            List<UniProtCrossReference> xrefs, List<EvidenceDatabase> evidenceDatabases) {
         this.xrefs = xrefs;
         this.evidenceDatabases = evidenceDatabases;
     }
 
-    public PDBSumScored(List<UniProtDBCrossReference> xrefs) {
+    public PDBSumScored(List<UniProtCrossReference> xrefs) {
         this(xrefs, null);
     }
 

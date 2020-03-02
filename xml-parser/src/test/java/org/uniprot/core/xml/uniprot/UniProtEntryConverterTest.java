@@ -12,12 +12,12 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.builder.SequenceBuilder;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.gene.*;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.uniprot.*;
 import org.uniprot.core.uniprot.builder.*;
 import org.uniprot.core.uniprot.comment.*;
@@ -42,9 +42,9 @@ import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
 import org.uniprot.core.uniprot.taxonomy.builder.OrganismHostBuilder;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtDatabase;
-import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+import org.uniprot.core.uniprot.xdb.builder.UniProtCrossReferenceBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.Entry;
 import org.uniprot.cv.xdb.UniProtDatabaseImpl;
 
@@ -281,8 +281,8 @@ class UniProtEntryConverterTest {
                         .commentType(CommentType.FUNCTION)
                         .textsSet(createEvidenceValues())
                         .build());
-        DBCrossReference<CofactorDatabase> reference =
-                new DBCrossReferenceImpl<>(CofactorDatabase.CHEBI, "CHEBI:324");
+        CrossReference<CofactorDatabase> reference =
+                new CrossReferenceImpl<>(CofactorDatabase.CHEBI, "CHEBI:324");
         Cofactor cofactor =
                 new CofactorBuilder()
                         .name("somename")
@@ -366,7 +366,7 @@ class UniProtEntryConverterTest {
         return ecNumbers;
     }
 
-    List<UniProtDBCrossReference> createDbXref() {
+    List<UniProtCrossReference> createDbXref() {
         // DR   Ensembl; ENST00000393119; ENSP00000376827; ENSG00000011143. [Q9NXB0-1]
         String type = "Ensembl";
         String id = "ENST00000393119";
@@ -374,10 +374,10 @@ class UniProtEntryConverterTest {
         String thirdAttr = "ENSG00000011143";
         String fourthAttr = null;
         String isoform = "Q9NXB0-1";
-        List<UniProtDBCrossReference> xrefs = new ArrayList<>();
+        List<UniProtCrossReference> xrefs = new ArrayList<>();
         UniProtDatabase uniProtDatabase = new UniProtDatabaseImpl(type);
         xrefs.add(
-                new UniProtDBCrossReferenceBuilder()
+                new UniProtCrossReferenceBuilder()
                         .databaseType(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
@@ -396,7 +396,7 @@ class UniProtEntryConverterTest {
         fourthAttr = "mRNA";
         isoform = null;
         xrefs.add(
-                new UniProtDBCrossReferenceBuilder()
+                new UniProtCrossReferenceBuilder()
                         .databaseType(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
@@ -414,7 +414,7 @@ class UniProtEntryConverterTest {
         fourthAttr = "mRNA";
         isoform = null;
         xrefs.add(
-                new UniProtDBCrossReferenceBuilder()
+                new UniProtCrossReferenceBuilder()
                         .databaseType(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
@@ -432,7 +432,7 @@ class UniProtEntryConverterTest {
         fourthAttr = "mRNA";
         isoform = null;
         xrefs.add(
-                new UniProtDBCrossReferenceBuilder()
+                new UniProtCrossReferenceBuilder()
                         .databaseType(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
@@ -450,7 +450,7 @@ class UniProtEntryConverterTest {
         fourthAttr = null;
         isoform = null;
         xrefs.add(
-                new UniProtDBCrossReferenceBuilder()
+                new UniProtCrossReferenceBuilder()
                         .databaseType(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
@@ -468,7 +468,7 @@ class UniProtEntryConverterTest {
         fourthAttr = null;
         isoform = null;
         xrefs.add(
-                new UniProtDBCrossReferenceBuilder()
+                new UniProtCrossReferenceBuilder()
                         .databaseType(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)

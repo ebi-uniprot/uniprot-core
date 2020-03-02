@@ -35,7 +35,7 @@ public class UniProtDatabaseDetailTest {
 
     @Test
     void testCreateObject() {
-        UniProtDatabaseDetail dbType = createUniProtXDbTypeDetail(false);
+        UniProtDatabaseDetail dbType = createUniProtDatabaseDetail(false);
         Assertions.assertNotNull(dbType);
         Assertions.assertEquals(this.name, dbType.getName());
         Assertions.assertEquals(this.displayName, dbType.getDisplayName());
@@ -49,7 +49,7 @@ public class UniProtDatabaseDetailTest {
 
     @Test
     void testCreateObjectWithAttrib() {
-        UniProtDatabaseDetail dbType = createUniProtXDbTypeDetail(true);
+        UniProtDatabaseDetail dbType = createUniProtDatabaseDetail(true);
         Assertions.assertNotNull(dbType);
         Assertions.assertEquals(this.name, dbType.getName());
         Assertions.assertEquals(this.displayName, dbType.getDisplayName());
@@ -60,44 +60,44 @@ public class UniProtDatabaseDetailTest {
 
     @Test
     void testValueEqual() {
-        UniProtDatabaseDetail n1 = createUniProtXDbTypeDetail(false);
-        UniProtDatabaseDetail n2 = createUniProtXDbTypeDetail(false);
+        UniProtDatabaseDetail n1 = createUniProtDatabaseDetail(false);
+        UniProtDatabaseDetail n2 = createUniProtDatabaseDetail(false);
         Assertions.assertTrue(n1.equals(n2));
         Assertions.assertTrue(n1.hashCode() == n2.hashCode());
     }
 
     @Test
     void testRefEqual() {
-        UniProtDatabaseDetail n1 = createUniProtXDbTypeDetail(true);
+        UniProtDatabaseDetail n1 = createUniProtDatabaseDetail(true);
         Assertions.assertTrue(n1.equals(n1));
         Assertions.assertTrue(n1.hashCode() == n1.hashCode());
     }
 
     @Test
     void testEqualWithNull() {
-        UniProtDatabaseDetail n1 = createUniProtXDbTypeDetail(true);
+        UniProtDatabaseDetail n1 = createUniProtDatabaseDetail(true);
         Assertions.assertFalse(n1.equals(null));
     }
 
     @Test
     void testValueNotEqual() {
-        UniProtDatabaseDetail n1 = createUniProtXDbTypeDetail(false);
+        UniProtDatabaseDetail n1 = createUniProtDatabaseDetail(false);
         this.uriLink = null;
-        UniProtDatabaseDetail n2 = createUniProtXDbTypeDetail(false);
+        UniProtDatabaseDetail n2 = createUniProtDatabaseDetail(false);
         Assertions.assertFalse(n1.equals(n2));
     }
 
-    private UniProtDatabaseDetail createUniProtXDbTypeDetail(boolean passAttribute) {
+    private UniProtDatabaseDetail createUniProtDatabaseDetail(boolean passAttribute) {
         if (passAttribute) {
-            return createUniProtXDbTypeDetail(
+            return createUniProtDatabaseDetail(
                     this.name, this.displayName, this.category, this.uriLink, this.attributes);
         } else {
-            return createUniProtXDbTypeDetail(
+            return createUniProtDatabaseDetail(
                     this.name, this.displayName, this.category, this.uriLink, null);
         }
     }
 
-    public static UniProtDatabaseDetail createUniProtXDbTypeDetail(
+    public static UniProtDatabaseDetail createUniProtDatabaseDetail(
             String name,
             String displayName,
             UniProtDatabaseCategory category,

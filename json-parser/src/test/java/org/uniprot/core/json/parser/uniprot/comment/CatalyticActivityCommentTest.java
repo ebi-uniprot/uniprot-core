@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.ECNumber;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.impl.ECNumberImpl;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
@@ -103,7 +103,7 @@ public class CatalyticActivityCommentTest {
                 new PhysiologicalReactionBuilder()
                         .directionType(PhysiologicalDirectionType.RIGHT_TO_LEFT)
                         .reactionReference(
-                                new DBCrossReferenceBuilder<ReactionDatabase>()
+                                new CrossReferenceBuilder<ReactionDatabase>()
                                         .databaseType(ReactionDatabase.RHEA)
                                         .id("RHEA:313")
                                         .build())
@@ -119,7 +119,7 @@ public class CatalyticActivityCommentTest {
         return new ReactionBuilder()
                 .name(name)
                 .reactionReferencesAdd(
-                        new DBCrossReferenceBuilder<ReactionDatabase>()
+                        new CrossReferenceBuilder<ReactionDatabase>()
                                 .databaseType(ReactionDatabase.CHEBI)
                                 .id("ChEBI:3243")
                                 .build())

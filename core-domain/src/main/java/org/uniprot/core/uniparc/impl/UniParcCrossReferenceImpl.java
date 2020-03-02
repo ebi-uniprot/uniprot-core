@@ -6,16 +6,16 @@ import java.util.List;
 import java.util.Objects;
 
 import org.uniprot.core.Property;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
-import org.uniprot.core.uniparc.UniParcDBCrossReference;
+import org.uniprot.core.impl.CrossReferenceImpl;
+import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 
 /**
  * @author jluo
  * @date: 22 May 2019
  */
-public class UniParcDBCrossReferenceImpl extends DBCrossReferenceImpl<UniParcDatabase>
-        implements UniParcDBCrossReference {
+public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabase>
+        implements UniParcCrossReference {
     private static final long serialVersionUID = 1387909162449408089L;
     private int versionI;
     private Integer version;
@@ -23,11 +23,11 @@ public class UniParcDBCrossReferenceImpl extends DBCrossReferenceImpl<UniParcDat
     private LocalDate created;
     private LocalDate lastUpdated;
 
-    protected UniParcDBCrossReferenceImpl() {
+    protected UniParcCrossReferenceImpl() {
         super(null, "", Collections.emptyList());
     }
 
-    public UniParcDBCrossReferenceImpl(
+    public UniParcCrossReferenceImpl(
             UniParcDatabase databaseType,
             String id,
             List<Property> properties,
@@ -74,7 +74,7 @@ public class UniParcDBCrossReferenceImpl extends DBCrossReferenceImpl<UniParcDat
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        UniParcDBCrossReferenceImpl that = (UniParcDBCrossReferenceImpl) o;
+        UniParcCrossReferenceImpl that = (UniParcCrossReferenceImpl) o;
         return (this.versionI == that.versionI)
                 && Objects.equals(version, that.version)
                 && (this.active == that.active)

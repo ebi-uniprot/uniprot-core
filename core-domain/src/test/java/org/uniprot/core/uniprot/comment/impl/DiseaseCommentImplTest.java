@@ -5,7 +5,7 @@ import static org.uniprot.core.ObjectsForTests.createEvidences;
 import static org.uniprot.core.ObjectsForTests.createNote;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
 import org.uniprot.core.uniprot.comment.builder.DiseaseCommentBuilder;
@@ -19,7 +19,7 @@ class DiseaseCommentImplTest {
                     .acronym("someAcron")
                     .evidencesSet(createEvidences())
                     .description("some description")
-                    .reference(new DBCrossReferenceImpl<>(DiseaseDatabase.MIM, "3124"))
+                    .reference(new CrossReferenceImpl<>(DiseaseDatabase.MIM, "3124"))
                     .build();;
 
     @Test

@@ -6,20 +6,19 @@ import org.uniprot.core.scorer.uniprotkb.Consensus;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 
 public class PDBScored implements HasScore {
-    private List<UniProtDBCrossReference> xrefs;
+    private List<UniProtCrossReference> xrefs;
 
     private final List<EvidenceDatabase> evidenceDatabases;
 
-    public PDBScored(
-            List<UniProtDBCrossReference> xrefs, List<EvidenceDatabase> evidenceDatabases) {
+    public PDBScored(List<UniProtCrossReference> xrefs, List<EvidenceDatabase> evidenceDatabases) {
         this.xrefs = xrefs;
         this.evidenceDatabases = evidenceDatabases;
     }
 
-    public PDBScored(List<UniProtDBCrossReference> xrefs) {
+    public PDBScored(List<UniProtCrossReference> xrefs) {
         this(xrefs, null);
     }
 
@@ -31,7 +30,7 @@ public class PDBScored implements HasScore {
     }
 
     private boolean hasEvidences() {
-        for (UniProtDBCrossReference xref : xrefs) {
+        for (UniProtCrossReference xref : xrefs) {
             if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceDatabases)) {
                 return true;
             }

@@ -8,12 +8,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.citation.builder.JournalArticleBuilder;
 import org.uniprot.core.citation.builder.SubmissionBuilder;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.proteome.*;
 import org.uniprot.core.proteome.builder.ComponentBuilder;
 import org.uniprot.core.proteome.builder.ProteomeEntryBuilder;
@@ -41,14 +41,14 @@ class ProteomeConverterTest {
         LocalDate modified = LocalDate.of(2015, 11, 5);
         //	String reId = "UP000005641";
         //	ProteomeId redId = new ProteomeIdBuilder (reId).build();
-        List<DBCrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
-        DBCrossReference<ProteomeDatabase> xref1 =
-                new DBCrossReferenceBuilder<ProteomeDatabase>()
+        List<CrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
+        CrossReference<ProteomeDatabase> xref1 =
+                new CrossReferenceBuilder<ProteomeDatabase>()
                         .databaseType(ProteomeDatabase.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
-        DBCrossReference<ProteomeDatabase> xref2 =
-                new DBCrossReferenceBuilder<ProteomeDatabase>()
+        CrossReference<ProteomeDatabase> xref2 =
+                new CrossReferenceBuilder<ProteomeDatabase>()
                         .databaseType(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
@@ -107,8 +107,8 @@ class ProteomeConverterTest {
                 .authoringGroupsSet(Arrays.asList("The C. elegans sequencing consortium"))
                 .citationXrefsSet(
                         Arrays.asList(
-                                new DBCrossReferenceImpl<>(CitationDatabase.PUBMED, "9851916"),
-                                new DBCrossReferenceImpl<>(
+                                new CrossReferenceImpl<>(CitationDatabase.PUBMED, "9851916"),
+                                new CrossReferenceImpl<>(
                                         CitationDatabase.DOI,
                                         "https://doi.org/10.1126/science.282.5396.2012")));
         JournalArticle citation = builder.build();

@@ -2,9 +2,9 @@ package org.uniprot.core.xml.proteome;
 
 import java.util.stream.Collectors;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.Property;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.proteome.ProteomeDatabase;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.DbReferenceType;
@@ -12,7 +12,7 @@ import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 import org.uniprot.core.xml.jaxb.proteome.PropertyType;
 
 public class CrossReferenceConverter
-        implements Converter<DbReferenceType, DBCrossReference<ProteomeDatabase>> {
+        implements Converter<DbReferenceType, CrossReference<ProteomeDatabase>> {
     private static final String GC_SET_ACC = "GCSetAcc";
     private final ObjectFactory xmlFactory;
 
@@ -25,9 +25,9 @@ public class CrossReferenceConverter
     }
 
     @Override
-    public DBCrossReference<ProteomeDatabase> fromXml(DbReferenceType xmlObj) {
-        DBCrossReferenceBuilder<ProteomeDatabase> builder =
-                new DBCrossReferenceBuilder<ProteomeDatabase>()
+    public CrossReference<ProteomeDatabase> fromXml(DbReferenceType xmlObj) {
+        CrossReferenceBuilder<ProteomeDatabase> builder =
+                new CrossReferenceBuilder<ProteomeDatabase>()
                         .databaseType(fromXml(xmlObj.getType()))
                         .id(xmlObj.getId());
         builder.propertiesSet(
@@ -39,9 +39,9 @@ public class CrossReferenceConverter
     }
 
     @Override
-    public DbReferenceType toXml(DBCrossReference<ProteomeDatabase> uniObj) {
+    public DbReferenceType toXml(CrossReference<ProteomeDatabase> uniObj) {
         DbReferenceType xmlObj = xmlFactory.createDbReferenceType();
-        xmlObj.setType(toXml(uniObj.getDatabaseType()));
+        xmlObj.setType(toXml(uniObj.getDatabase()));
         xmlObj.setId(uniObj.getId());
         uniObj.getProperties().stream()
                 .map(this::toXmlProperty)

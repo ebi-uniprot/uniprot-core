@@ -3,7 +3,7 @@ package org.uniprot.core.flatfile.parser.impl.ft;
 import java.util.*;
 import java.util.regex.Matcher;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
@@ -201,7 +201,7 @@ public class FtLineConverter extends EvidenceCollector
                         .alternativeSequencesSet(alternativeSequences)
                         .build();
         //		factory.createReport(reports));
-        DBCrossReference<FeatureDatabase> dbXref = null;
+        CrossReference<FeatureDatabase> dbXref = null;
         return new FeatureBuilder()
                 .type(type)
                 .location(location)

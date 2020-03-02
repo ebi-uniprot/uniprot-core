@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.Property;
 import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
-import org.uniprot.core.uniparc.UniParcDBCrossReference;
+import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 
 /**
@@ -22,17 +22,17 @@ public class UniParcXrefMap implements NamedValueMap {
                     Arrays.asList(
                             "gene", "protein", "proteome", "accession", "first_seen", "last_seen"));
 
-    private final List<UniParcDBCrossReference> xrefs;
+    private final List<UniParcCrossReference> xrefs;
 
-    public UniParcXrefMap(List<UniParcDBCrossReference> xrefs) {
+    public UniParcXrefMap(List<UniParcCrossReference> xrefs) {
         this.xrefs = xrefs;
     }
 
     @Override
     public Map<String, String> attributeValues() {
         Map<String, String> map = new HashMap<>();
-        String proteins = getData(UniParcDBCrossReference.PROPERTY_PROTEIN_NAME);
-        String genes = getData(UniParcDBCrossReference.PROPERTY_GENE_NAME);
+        String proteins = getData(UniParcCrossReference.PROPERTY_PROTEIN_NAME);
+        String genes = getData(UniParcCrossReference.PROPERTY_GENE_NAME);
         ;
         String accessions = getUniProtAccessions();
         String proteomes = getProteomes();
@@ -70,11 +70,11 @@ public class UniParcXrefMap implements NamedValueMap {
                 .collect(Collectors.joining(DELIMITER));
     }
 
-    private String getProteome(UniParcDBCrossReference xref) {
-        Optional<Property> opUpid = getProperty(xref, UniParcDBCrossReference.PROPERTY_PROTEOME_ID);
+    private String getProteome(UniParcCrossReference xref) {
+        Optional<Property> opUpid = getProperty(xref, UniParcCrossReference.PROPERTY_PROTEOME_ID);
         if (opUpid.isPresent()) {
             Optional<Property> opPComponent =
-                    getProperty(xref, UniParcDBCrossReference.PROPERTY_COMPONENT);
+                    getProperty(xref, UniParcCrossReference.PROPERTY_COMPONENT);
             String proteome = opUpid.get().getValue();
             if (opPComponent.isPresent()) {
                 proteome += ":" + opPComponent.get().getValue();
@@ -91,8 +91,8 @@ public class UniParcXrefMap implements NamedValueMap {
                 .collect(Collectors.joining(DELIMITER));
     }
 
-    private String getUniProtAccession(UniParcDBCrossReference xref) {
-        UniParcDatabase type = xref.getDatabaseType();
+    private String getUniProtAccession(UniParcCrossReference xref) {
+        UniParcDatabase type = xref.getDatabase();
         if ((type == UniParcDatabase.SWISSPROT)
                 || (type == UniParcDatabase.TREMBL)
                 || (type == UniParcDatabase.SWISSPROT_VARSPLIC)) {
@@ -112,7 +112,7 @@ public class UniParcXrefMap implements NamedValueMap {
                 .collect(Collectors.joining(DELIMITER2));
     }
 
-    private Optional<Property> getProperty(UniParcDBCrossReference xref, String propertyType) {
+    private Optional<Property> getProperty(UniParcCrossReference xref, String propertyType) {
         return xref.getProperties().stream()
                 .filter(val -> val.getKey().equals(propertyType))
                 .findFirst();

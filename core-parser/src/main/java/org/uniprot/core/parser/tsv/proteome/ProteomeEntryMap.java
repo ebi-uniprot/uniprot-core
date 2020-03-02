@@ -75,7 +75,7 @@ public class ProteomeEntryMap implements NamedValueMap {
     private String getGenomeAssemblyId() {
 
         return entry.getDbXReferences().stream()
-                .filter(val -> val.getDatabaseType() == ProteomeDatabase.GENOME_ASSEMBLY)
+                .filter(val -> val.getDatabase() == ProteomeDatabase.GENOME_ASSEMBLY)
                 .map(val -> val.getId())
                 .collect(Collectors.joining(", "));
     }

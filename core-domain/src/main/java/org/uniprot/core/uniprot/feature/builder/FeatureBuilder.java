@@ -9,7 +9,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.Feature;
@@ -33,7 +33,7 @@ public class FeatureBuilder implements Builder<Feature> {
     private FeatureDescription description;
     private FeatureId featureId;
     private AlternativeSequence alternativeSequence;
-    private DBCrossReference<FeatureDatabase> dbXref;
+    private CrossReference<FeatureDatabase> dbXref;
     private List<Evidence> evidences = new ArrayList<>();
 
     @Override
@@ -88,7 +88,7 @@ public class FeatureBuilder implements Builder<Feature> {
         return this;
     }
 
-    public @Nonnull FeatureBuilder dbXref(DBCrossReference<FeatureDatabase> dbXref) {
+    public @Nonnull FeatureBuilder dbXref(CrossReference<FeatureDatabase> dbXref) {
         this.dbXref = dbXref;
         return this;
     }

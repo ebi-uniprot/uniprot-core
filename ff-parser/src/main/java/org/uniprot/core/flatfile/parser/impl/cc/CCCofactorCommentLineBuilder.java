@@ -10,7 +10,7 @@ import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.STOP;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.LineBuilderHelper;
 import org.uniprot.core.uniprot.comment.Cofactor;
@@ -48,9 +48,9 @@ public class CCCofactorCommentLineBuilder extends CCLineBuilderAbstr<CofactorCom
             StringBuilder sb = new StringBuilder();
             if (includeFFMarkings) sb.append(this.linePrefix);
             sb.append(NAME).append(cofactor.getName()).append(SEPARATOR_SEMICOLON);
-            DBCrossReference<CofactorDatabase> coRef = cofactor.getCofactorReference();
+            CrossReference<CofactorDatabase> coRef = cofactor.getCofactorReference();
             sb.append(XREF)
-                    .append(coRef.getDatabaseType().toDisplayName())
+                    .append(coRef.getDatabase().toDisplayName())
                     .append(":")
                     .append(coRef.getId())
                     .append(SEMICOLON);

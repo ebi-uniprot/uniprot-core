@@ -24,8 +24,8 @@ import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
 import org.uniprot.core.uniprot.taxonomy.builder.OrganismHostBuilder;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.uniprot.xdb.builder.UniProtCrossReferenceBuilder;
 
 class UniProtEntryBuilderTest {
     private UniProtEntry minEntry =
@@ -736,7 +736,7 @@ class UniProtEntryBuilderTest {
 
     @Nested
     class databaseCrossReferences {
-        private UniProtDBCrossReference reference = new UniProtDBCrossReferenceBuilder().build();
+        private UniProtCrossReference reference = new UniProtCrossReferenceBuilder().build();
 
         @Test
         void canAddSingle() {
@@ -783,7 +783,7 @@ class UniProtEntryBuilderTest {
 
         @Test
         void previousAddedWillBeIgnoreUponSet() {
-            List<UniProtDBCrossReference> list = null;
+            List<UniProtCrossReference> list = null;
             UniProtEntry obj =
                     UniProtEntryBuilder.from(minEntry)
                             .databaseCrossReferencesAdd(reference)

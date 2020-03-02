@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.uniprot.comment.PhysiologicalDirectionType;
 import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
 import org.uniprot.core.uniprot.comment.ReactionDatabase;
@@ -22,7 +22,7 @@ class PhysiologicalReactionImplTest {
         PhysiologicalReaction impl =
                 new PhysiologicalReactionImpl(
                         PhysiologicalDirectionType.RIGHT_TO_LEFT,
-                        new DBCrossReferenceImpl<>(ReactionDatabase.RHEA, "RHEA:123"),
+                        new CrossReferenceImpl<>(ReactionDatabase.RHEA, "RHEA:123"),
                         createEvidences());
         PhysiologicalReaction obj = PhysiologicalReactionBuilder.from(impl).build();
 

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 
 /**
  * The basic type containing the common values that are present in each and every Citation
@@ -16,9 +16,9 @@ import org.uniprot.core.DBCrossReference;
  */
 public interface Citation extends Serializable {
 
-    List<DBCrossReference<CitationDatabase>> getCitationXrefs();
+    List<CrossReference<CitationDatabase>> getCitationXrefs();
 
-    Optional<DBCrossReference<CitationDatabase>> getCitationXrefsByType(CitationDatabase type);
+    Optional<CrossReference<CitationDatabase>> getCitationXrefsByType(CitationDatabase type);
 
     boolean hasCitationXrefs();
 

@@ -2,8 +2,8 @@ package org.uniprot.core.xml.uniprot.comment;
 
 import java.util.List;
 
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.Cofactor;
 import org.uniprot.core.uniprot.comment.CofactorDatabase;
 import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
@@ -32,8 +32,8 @@ public class CofactorConverter implements Converter<CofactorType, Cofactor> {
         String name = xmlObj.getName();
         List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
         CofactorDatabase type = CofactorDatabase.typeOf(xmlObj.getDbReference().getType());
-        DBCrossReference<CofactorDatabase> reference =
-                new DBCrossReferenceBuilder<CofactorDatabase>()
+        CrossReference<CofactorDatabase> reference =
+                new CrossReferenceBuilder<CofactorDatabase>()
                         .databaseType(type)
                         .id(xmlObj.getDbReference().getId())
                         .build();
@@ -51,7 +51,7 @@ public class CofactorConverter implements Converter<CofactorType, Cofactor> {
         CofactorType xmlCofactor = xmlUniprotFactory.createCofactorType();
         xmlCofactor.setName(cofactor.getName());
         DbReferenceType dbref = xmlUniprotFactory.createDbReferenceType();
-        dbref.setType(cofactor.getCofactorReference().getDatabaseType().toDisplayName());
+        dbref.setType(cofactor.getCofactorReference().getDatabase().toDisplayName());
         dbref.setId(cofactor.getCofactorReference().getId());
         xmlCofactor.setDbReference(dbref);
         List<Evidence> evidenceIds = cofactor.getEvidences();

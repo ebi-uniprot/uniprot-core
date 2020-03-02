@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
@@ -66,9 +66,9 @@ class CcDiseaseConverterTest {
         assertEquals("KLESTS", diseaseComment.getDisease().getAcronym());
         assertEquals(disease.getDescription(), diseaseComment.getDisease().getDescription());
         assertEquals(0, diseaseComment.getDisease().getEvidences().size());
-        DBCrossReference<DiseaseDatabase> diseaseRef = diseaseComment.getDisease().getReference();
+        CrossReference<DiseaseDatabase> diseaseRef = diseaseComment.getDisease().getReference();
         assertNotNull(diseaseRef);
-        assertEquals(DiseaseDatabase.MIM, diseaseRef.getDatabaseType());
+        assertEquals(DiseaseDatabase.MIM, diseaseRef.getDatabase());
         assertEquals("610253", diseaseRef.getId());
         assertEquals(
                 "The disease is caused by mutations affecting the gene represented in this entry (PubMed:16826528)",
@@ -117,9 +117,9 @@ class CcDiseaseConverterTest {
         assertEquals(
                 "ECO:0000269|PubMed:10433554",
                 diseaseComment.getDisease().getEvidences().get(0).getValue());
-        DBCrossReference<DiseaseDatabase> diseaseRef = diseaseComment.getDisease().getReference();
+        CrossReference<DiseaseDatabase> diseaseRef = diseaseComment.getDisease().getReference();
         assertNotNull(diseaseRef);
-        assertEquals(DiseaseDatabase.MIM, diseaseRef.getDatabaseType());
+        assertEquals(DiseaseDatabase.MIM, diseaseRef.getDatabase());
         assertEquals("610253", diseaseRef.getId());
         assertEquals(
                 "The disease is caused by mutations affecting the gene represented in this entry (PubMed:16826528)",

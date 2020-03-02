@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
 import org.uniprot.core.uniprot.comment.builder.DiseaseCommentBuilder;
@@ -144,7 +144,7 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
      * @param diseaseString - the annotation with the definition of disease
      * @return the disease reference
      */
-    private DBCrossReference<DiseaseDatabase> populateDiseaseReference(String diseaseString) {
+    private CrossReference<DiseaseDatabase> populateDiseaseReference(String diseaseString) {
 
         Matcher bracketsMatcher = BETWEEN_SQUARE_BRACKETS_PATTERN.matcher(diseaseString);
 
@@ -156,7 +156,7 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
 
             DiseaseDatabase referenceType = DiseaseDatabase.typeOf(referenceElements[0]);
 
-            return new DBCrossReferenceBuilder<DiseaseDatabase>()
+            return new CrossReferenceBuilder<DiseaseDatabase>()
                     .databaseType(referenceType)
                     .id(referenceElements[1])
                     .build();

@@ -4,13 +4,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.Property;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 
 public class EntryGoXrefMap implements NamedValueMap {
-    private final List<UniProtDBCrossReference> dbReferences;
+    private final List<UniProtCrossReference> dbReferences;
     public static final List<String> FIELDS = Arrays.asList("go", "go_c", "go_f", "go_p", "go_id");
 
-    public EntryGoXrefMap(List<UniProtDBCrossReference> dbReferences) {
+    public EntryGoXrefMap(List<UniProtCrossReference> dbReferences) {
         if (dbReferences == null) {
             this.dbReferences = Collections.emptyList();
         } else {
@@ -33,7 +33,7 @@ public class EntryGoXrefMap implements NamedValueMap {
         map.put(
                 FIELDS.get(4),
                 dbReferences.stream()
-                        .map(UniProtDBCrossReference::getId)
+                        .map(UniProtCrossReference::getId)
                         .sorted()
                         .collect(Collectors.joining("; ")));
 
@@ -41,10 +41,7 @@ public class EntryGoXrefMap implements NamedValueMap {
     }
 
     private void addTypedGoXRefToMap(
-            Map<String, String> map,
-            String field,
-            String type,
-            List<UniProtDBCrossReference> xrefs) {
+            Map<String, String> map, String field, String type, List<UniProtCrossReference> xrefs) {
         String result =
                 xrefs.stream()
                         .map(val -> getGoTypedString(val, type))
@@ -55,7 +52,7 @@ public class EntryGoXrefMap implements NamedValueMap {
         }
     }
 
-    private String getGoTypedString(UniProtDBCrossReference xref, String type) {
+    private String getGoTypedString(UniProtCrossReference xref, String type) {
         Optional<Property> result;
         if (type == null || type.isEmpty()) {
             result =

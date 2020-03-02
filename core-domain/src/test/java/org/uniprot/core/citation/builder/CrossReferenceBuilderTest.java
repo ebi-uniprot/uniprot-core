@@ -5,9 +5,9 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.Property;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.citation.CitationDatabase;
 
 /**
@@ -15,59 +15,54 @@ import org.uniprot.core.citation.CitationDatabase;
  *
  * @author Edd
  */
-class DBCrossReferenceBuilderTest {
+class CrossReferenceBuilderTest {
     @Test
     void canCreateInstance() {
-        DBCrossReference<CitationDatabase> xref =
-                new DBCrossReferenceBuilder<CitationDatabase>()
+        CrossReference<CitationDatabase> xref =
+                new CrossReferenceBuilder<CitationDatabase>()
                         .databaseType(CitationDatabase.PUBMED)
                         .id("id1")
                         .build();
 
-        DBCrossReference<CitationDatabase> copiedInstance =
-                DBCrossReferenceBuilder.from(xref).build();
+        CrossReference<CitationDatabase> copiedInstance = CrossReferenceBuilder.from(xref).build();
 
         assertThat(xref, is(copiedInstance));
     }
 
     @Test
     void addSinglePropertyUsingString_keyNull_willBeIgnore() {
-        DBCrossReference<CitationDatabase> cr =
-                new DBCrossReferenceBuilder<CitationDatabase>()
-                        .propertiesAdd(null, "value")
-                        .build();
+        CrossReference<CitationDatabase> cr =
+                new CrossReferenceBuilder<CitationDatabase>().propertiesAdd(null, "value").build();
         assertTrue(cr.getProperties().isEmpty());
     }
 
     @Test
     void addSinglePropertyUsingString_valueNull_willBeIgnore() {
-        DBCrossReference<CitationDatabase> cr =
-                new DBCrossReferenceBuilder<CitationDatabase>().propertiesAdd("key", null).build();
+        CrossReference<CitationDatabase> cr =
+                new CrossReferenceBuilder<CitationDatabase>().propertiesAdd("key", null).build();
         assertTrue(cr.getProperties().isEmpty());
     }
 
     @Test
     void addSinglePropertyUsingString() {
-        DBCrossReference<CitationDatabase> cr =
-                new DBCrossReferenceBuilder<CitationDatabase>()
-                        .propertiesAdd("key", "value")
-                        .build();
+        CrossReference<CitationDatabase> cr =
+                new CrossReferenceBuilder<CitationDatabase>().propertiesAdd("key", "value").build();
         assertFalse(cr.getProperties().isEmpty());
         assertEquals(1, cr.getProperties().size());
     }
 
     @Test
     void addSinglePropertyUsingObject_nullWillIgnore() {
-        DBCrossReference<CitationDatabase> cr =
-                new DBCrossReferenceBuilder<CitationDatabase>().propertiesAdd(null).build();
+        CrossReference<CitationDatabase> cr =
+                new CrossReferenceBuilder<CitationDatabase>().propertiesAdd(null).build();
         assertTrue(cr.getProperties().isEmpty());
     }
 
     @Test
     void addSinglePropertyUsingObject() {
         Property property = new Property(null, null);
-        DBCrossReference<CitationDatabase> cr =
-                new DBCrossReferenceBuilder<CitationDatabase>().propertiesAdd(property).build();
+        CrossReference<CitationDatabase> cr =
+                new CrossReferenceBuilder<CitationDatabase>().propertiesAdd(property).build();
         assertFalse(cr.getProperties().isEmpty());
         assertEquals(1, cr.getProperties().size());
     }

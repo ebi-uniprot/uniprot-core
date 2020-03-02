@@ -6,26 +6,26 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.Property;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtDatabase;
 import org.uniprot.core.util.Utils;
 
-public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtDatabase>
-        implements UniProtDBCrossReference {
+public class UniProtCrossReferenceImpl extends CrossReferenceImpl<UniProtDatabase>
+        implements UniProtCrossReference {
     private static final long serialVersionUID = -3661768450999840694L;
     private static final String SEMICOLON = "; ";
     private static final String DASH = "-";
     private String isoformId;
     private List<Evidence> evidences;
 
-    UniProtDBCrossReferenceImpl() {
+    UniProtCrossReferenceImpl() {
         super(null, "", Collections.emptyList());
         evidences = Collections.emptyList();
     }
 
-    public UniProtDBCrossReferenceImpl(
+    public UniProtCrossReferenceImpl(
             UniProtDatabase database,
             String id,
             List<Property> properties,
@@ -81,7 +81,7 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtDat
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        UniProtDBCrossReferenceImpl that = (UniProtDBCrossReferenceImpl) o;
+        UniProtCrossReferenceImpl that = (UniProtCrossReferenceImpl) o;
         return Objects.equals(isoformId, that.isoformId)
                 && Objects.equals(evidences, that.evidences);
     }
@@ -92,7 +92,7 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtDat
     }
 
     private String getDatabaseName() {
-        if (getDatabaseType() != null) return getDatabaseType().getName();
+        if (getDatabase() != null) return getDatabase().getName();
         return "";
     }
 }

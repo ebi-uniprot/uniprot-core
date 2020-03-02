@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.flatfile.writer.impl.FFLineConstant;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
@@ -30,11 +30,9 @@ public class CatalyticActivityCCLineBuilder extends CCLineBuilderAbstr<Catalytic
     // CC PhysiologicalDirection=left-to-right; Xref=Rhea:RHEA:18886;
     // CC Evidence={ECO:0000255|HAMAP-Rule:MF_00956};
 
-    private String convertReactionReference(DBCrossReference<ReactionDatabase> rs) {
+    private String convertReactionReference(CrossReference<ReactionDatabase> rs) {
         StringBuilder sb = new StringBuilder();
-        sb.append(rs.getDatabaseType().toDisplayName())
-                .append(FFLineConstant.COLON)
-                .append(rs.getId());
+        sb.append(rs.getDatabase().toDisplayName()).append(FFLineConstant.COLON).append(rs.getId());
 
         return sb.toString();
     }
@@ -55,7 +53,7 @@ public class CatalyticActivityCCLineBuilder extends CCLineBuilderAbstr<Catalytic
         StringBuilder sb = new StringBuilder();
         if (includeFFMarkings) sb.append(this.linePrefix);
         sb.append(REACTION).append(reaction.getName()).append(FFLineConstant.SEMICOLON);
-        List<DBCrossReference<ReactionDatabase>> xrefs = reaction.getReactionReferences();
+        List<CrossReference<ReactionDatabase>> xrefs = reaction.getReactionReferences();
         //	List<String> words = new ArrayList<>();
         if (!xrefs.isEmpty()) {
             //	words =xrefs.stream().map(val ->

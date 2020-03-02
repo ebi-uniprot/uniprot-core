@@ -6,21 +6,21 @@ import java.time.LocalDate;
 import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniparc.UniParcDBCrossReference;
+import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.uniparc.builder.UniParcDBCrossReferenceBuilder;
+import org.uniprot.core.uniparc.builder.UniParcCrossReferenceBuilder;
 
-class UniParcDBCrossReferenceImplTest {
+class UniParcCrossReferenceImplTest {
     @Test
     void needDefaultConstructorForJsonDeserialization() {
-        UniParcDBCrossReference obj = new UniParcDBCrossReferenceImpl();
+        UniParcCrossReference obj = new UniParcCrossReferenceImpl();
         assertNotNull(obj);
     }
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        UniParcDBCrossReference impl =
-                new UniParcDBCrossReferenceImpl(
+        UniParcCrossReference impl =
+                new UniParcCrossReferenceImpl(
                         UniParcDatabase.SWISSPROT,
                         "id",
                         Collections.emptyList(),
@@ -29,7 +29,7 @@ class UniParcDBCrossReferenceImplTest {
                         true,
                         LocalDate.now(),
                         LocalDate.now());
-        UniParcDBCrossReference obj = UniParcDBCrossReferenceBuilder.from(impl).build();
+        UniParcCrossReference obj = UniParcCrossReferenceBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

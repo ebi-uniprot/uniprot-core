@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.Cofactor;
 import org.uniprot.core.uniprot.comment.CofactorComment;
 import org.uniprot.core.uniprot.comment.CofactorDatabase;
@@ -214,11 +214,8 @@ class CCCofactorBuildTest extends CCBuildTestAbstr {
     private Cofactor buildCofactor(
             String name, CofactorDatabase type, String refId, List<String> evids) {
 
-        DBCrossReference<CofactorDatabase> coRef =
-                new DBCrossReferenceBuilder<CofactorDatabase>()
-                        .databaseType(type)
-                        .id(refId)
-                        .build();
+        CrossReference<CofactorDatabase> coRef =
+                new CrossReferenceBuilder<CofactorDatabase>().databaseType(type).id(refId).build();
         return new CofactorBuilder()
                 .name(name)
                 .reference(coRef)

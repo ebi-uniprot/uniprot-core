@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.PositionModifier;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
@@ -135,8 +135,8 @@ public class FeatureTest {
                         .alternativeSequencesAdd("alternative value")
                         .build();
 
-        DBCrossReference<FeatureDatabase> xrefs =
-                new DBCrossReferenceBuilder<FeatureDatabase>()
+        CrossReference<FeatureDatabase> xrefs =
+                new CrossReferenceBuilder<FeatureDatabase>()
                         .databaseType(FeatureDatabase.DBSNP)
                         .id("db id")
                         .build();

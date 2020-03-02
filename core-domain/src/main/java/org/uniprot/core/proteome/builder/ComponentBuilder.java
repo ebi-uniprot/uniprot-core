@@ -6,7 +6,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.proteome.Component;
 import org.uniprot.core.proteome.ComponentType;
 import org.uniprot.core.proteome.ProteomeDatabase;
@@ -18,7 +18,7 @@ public class ComponentBuilder implements Builder<Component> {
     private String description;
     private int proteinCount;
     private ComponentType type;
-    private List<DBCrossReference<ProteomeDatabase>> dbXReferences = new ArrayList<>();
+    private List<CrossReference<ProteomeDatabase>> dbXReferences = new ArrayList<>();
 
     public @Nonnull ComponentBuilder name(String name) {
         this.name = name;
@@ -31,13 +31,13 @@ public class ComponentBuilder implements Builder<Component> {
     }
 
     public @Nonnull ComponentBuilder dbXReferencesSet(
-            List<DBCrossReference<ProteomeDatabase>> dbXReferences) {
+            List<CrossReference<ProteomeDatabase>> dbXReferences) {
         this.dbXReferences = Utils.modifiableList(dbXReferences);
         return this;
     }
 
     public @Nonnull ComponentBuilder dbXReferencesAdd(
-            DBCrossReference<ProteomeDatabase> dbXReference) {
+            CrossReference<ProteomeDatabase> dbXReference) {
         Utils.addOrIgnoreNull(dbXReference, dbXReferences);
         return this;
     }

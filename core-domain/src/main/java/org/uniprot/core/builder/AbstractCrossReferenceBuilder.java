@@ -8,7 +8,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.Database;
 import org.uniprot.core.Property;
 
@@ -17,10 +17,10 @@ import org.uniprot.core.Property;
  *
  * @author Edd
  */
-public abstract class AbstractDBCrossReferenceBuilder<
-                B extends AbstractDBCrossReferenceBuilder<B, T, D>,
+public abstract class AbstractCrossReferenceBuilder<
+                B extends AbstractCrossReferenceBuilder<B, T, D>,
                 T extends Database,
-                D extends DBCrossReference<T>>
+                D extends CrossReference<T>>
         implements Builder<D> {
     protected T databaseType;
     protected String id;
@@ -29,15 +29,14 @@ public abstract class AbstractDBCrossReferenceBuilder<
     protected abstract @Nonnull B getThis();
 
     protected static <
-                    B extends AbstractDBCrossReferenceBuilder<B, T, D>,
+                    B extends AbstractCrossReferenceBuilder<B, T, D>,
                     T extends Database,
-                    D extends DBCrossReference<T>>
+                    D extends CrossReference<T>>
             void init(
-                    @Nonnull AbstractDBCrossReferenceBuilder<B, T, D> builder,
-                    @Nonnull D instance) {
+                    @Nonnull AbstractCrossReferenceBuilder<B, T, D> builder, @Nonnull D instance) {
         builder.propertiesSet(instance.getProperties())
                 .id(instance.getId())
-                .databaseType(instance.getDatabaseType());
+                .databaseType(instance.getDatabase());
     }
 
     public @Nonnull B databaseType(T type) {

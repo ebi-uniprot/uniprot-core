@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.Disease;
 import org.uniprot.core.uniprot.comment.DiseaseDatabase;
 import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
@@ -56,8 +56,8 @@ class DiseaseConverterTest {
                 UniProtXmlTestHelper.toXmlString(xmlObj, CommentType.Disease.class, "disease"));
     }
 
-    private DBCrossReference<DiseaseDatabase> createDBCrossReference(
+    private CrossReference<DiseaseDatabase> createDBCrossReference(
             DiseaseDatabase type, String id) {
-        return new DBCrossReferenceBuilder<DiseaseDatabase>().databaseType(type).id(id).build();
+        return new CrossReferenceBuilder<DiseaseDatabase>().databaseType(type).id(id).build();
     }
 }

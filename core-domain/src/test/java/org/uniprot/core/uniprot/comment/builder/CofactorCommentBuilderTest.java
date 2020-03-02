@@ -9,14 +9,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 class CofactorCommentBuilderTest {
-    private final DBCrossReference<CofactorDatabase> reference =
-            new DBCrossReferenceImpl<>(CofactorDatabase.CHEBI, "CHEBI:324");
+    private final CrossReference<CofactorDatabase> reference =
+            new CrossReferenceImpl<>(CofactorDatabase.CHEBI, "CHEBI:324");
 
     @Test
     void testNewInstance() {
@@ -75,9 +75,8 @@ class CofactorCommentBuilderTest {
     void testCreateCofactorReference() {
         CofactorDatabase type = CofactorDatabase.CHEBI;
         String referenceId = "CHEBI:314";
-        DBCrossReference<CofactorDatabase> reference =
-                new DBCrossReferenceImpl<>(type, referenceId);
-        assertEquals(type, reference.getDatabaseType());
+        CrossReference<CofactorDatabase> reference = new CrossReferenceImpl<>(type, referenceId);
+        assertEquals(type, reference.getDatabase());
         assertEquals(referenceId, reference.getId());
     }
 
@@ -123,7 +122,7 @@ class CofactorCommentBuilderTest {
     }
 
     private Cofactor createCofactor(
-            String name, DBCrossReference<CofactorDatabase> reference, List<Evidence> evidences) {
+            String name, CrossReference<CofactorDatabase> reference, List<Evidence> evidences) {
         return new CofactorBuilder()
                 .name(name)
                 .reference(reference)

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.Disease;
 import org.uniprot.core.uniprot.comment.DiseaseComment;
 import org.uniprot.core.uniprot.comment.DiseaseDatabase;
@@ -303,10 +303,7 @@ class CCDiseaseBuildTest extends CCBuildTestAbstr {
         builder.acronym(acronym);
         builder.description(description).evidencesSet(createEvidence(evs));
         builder.reference(
-                new DBCrossReferenceBuilder<DiseaseDatabase>()
-                        .databaseType(type)
-                        .id(refId)
-                        .build());
+                new CrossReferenceBuilder<DiseaseDatabase>().databaseType(type).id(refId).build());
         return builder.build();
     }
 }

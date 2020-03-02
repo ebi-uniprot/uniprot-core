@@ -18,7 +18,7 @@ import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.impl.UniProtEntryImpl;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 
 public class UniProtEntryBuilder implements Builder<UniProtEntry> {
 
@@ -38,7 +38,7 @@ public class UniProtEntryBuilder implements Builder<UniProtEntry> {
     private List<GeneLocation> geneLocations = new ArrayList<>();
     private List<Keyword> keywords = new ArrayList<>();
     private List<UniProtReference> references = new ArrayList<>();
-    private List<UniProtDBCrossReference> databaseCrossReferences = new ArrayList<>();
+    private List<UniProtCrossReference> databaseCrossReferences = new ArrayList<>();
     private Sequence sequence = null;
     private InternalSection internalSection = null;
     private EntryInactiveReason inactiveReason;
@@ -222,13 +222,13 @@ public class UniProtEntryBuilder implements Builder<UniProtEntry> {
     }
 
     public @Nonnull UniProtEntryBuilder databaseCrossReferencesAdd(
-            UniProtDBCrossReference databaseCrossReference) {
+            UniProtCrossReference databaseCrossReference) {
         addOrIgnoreNull(databaseCrossReference, this.databaseCrossReferences);
         return this;
     }
 
     public @Nonnull UniProtEntryBuilder databaseCrossReferencesSet(
-            List<UniProtDBCrossReference> databaseCrossReferences) {
+            List<UniProtCrossReference> databaseCrossReferences) {
         this.databaseCrossReferences = modifiableList(databaseCrossReferences);
         return this;
     }

@@ -9,9 +9,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.json.parser.ValidateJson;
-import org.uniprot.core.uniparc.UniParcDBCrossReference;
+import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.uniparc.builder.UniParcDBCrossReferenceBuilder;
+import org.uniprot.core.uniparc.builder.UniParcCrossReferenceBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 class UniParcDbCrossReferenceTest {
     @Test
     void test() {
-        UniParcDBCrossReferenceBuilder builder = new UniParcDBCrossReferenceBuilder();
+        UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder();
         builder.databaseType(UniParcDatabase.TREMBL)
                 .id("A0A0C4DHG2")
                 .versionI(1)
@@ -31,14 +31,14 @@ class UniParcDbCrossReferenceTest {
                 .created(LocalDate.of(2015, 4, 1))
                 .lastUpdated(LocalDate.of(2019, 5, 8));
         List<Property> properties = new ArrayList<>();
-        properties.add(new Property(UniParcDBCrossReference.PROPERTY_NCBI_TAXONOMY_ID, "7227"));
-        properties.add(new Property(UniParcDBCrossReference.PROPERTY_NCBI_TAXONOMY_ID, "9606"));
+        properties.add(new Property(UniParcCrossReference.PROPERTY_NCBI_TAXONOMY_ID, "7227"));
+        properties.add(new Property(UniParcCrossReference.PROPERTY_NCBI_TAXONOMY_ID, "9606"));
         properties.add(
-                new Property(UniParcDBCrossReference.PROPERTY_PROTEIN_NAME, "Gelsolin, isoform J"));
-        properties.add(new Property(UniParcDBCrossReference.PROPERTY_GENE_NAME, "Gel"));
+                new Property(UniParcCrossReference.PROPERTY_PROTEIN_NAME, "Gelsolin, isoform J"));
+        properties.add(new Property(UniParcCrossReference.PROPERTY_GENE_NAME, "Gel"));
         builder.propertiesSet(properties);
 
-        UniParcDBCrossReference xref = builder.build();
+        UniParcCrossReference xref = builder.build();
 
         ValidateJson.verifyJsonRoundTripParser(
                 UniParcJsonConfig.getInstance().getFullObjectMapper(), xref);
@@ -54,14 +54,14 @@ class UniParcDbCrossReferenceTest {
 
     @Test
     void testNoProperty() {
-        UniParcDBCrossReferenceBuilder builder = new UniParcDBCrossReferenceBuilder();
+        UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder();
         builder.databaseType(UniParcDatabase.ENSEMBL_VERTEBRATE)
                 .id("CG1106-PB")
                 .versionI(1)
                 .active(false)
                 .created(LocalDate.of(2003, 4, 1))
                 .lastUpdated(LocalDate.of(2007, 11, 22));
-        UniParcDBCrossReference xref = builder.build();
+        UniParcCrossReference xref = builder.build();
         ValidateJson.verifyJsonRoundTripParser(
                 UniParcJsonConfig.getInstance().getFullObjectMapper(), xref);
 

@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
 import org.uniprot.core.uniprot.comment.Disease;
@@ -69,8 +69,8 @@ public class DiseaseCommentTest {
 
     public static DiseaseComment getDiseaseComment() {
         DiseaseBuilder builder = new DiseaseBuilder();
-        DBCrossReference<DiseaseDatabase> reference =
-                new DBCrossReferenceBuilder<DiseaseDatabase>()
+        CrossReference<DiseaseDatabase> reference =
+                new CrossReferenceBuilder<DiseaseDatabase>()
                         .databaseType(DiseaseDatabase.MIM)
                         .id("3124")
                         .build();

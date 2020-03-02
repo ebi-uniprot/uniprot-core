@@ -5,7 +5,7 @@ import static java.util.Collections.emptyList;
 import java.util.List;
 import java.util.Objects;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.util.Utils;
 
@@ -21,7 +21,7 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
     public PatentImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<DBCrossReference<CitationDatabase>> citationXrefs,
+            List<CrossReference<CitationDatabase>> citationXrefs,
             String title,
             PublicationDate publicationDate,
             String patentNumber) {

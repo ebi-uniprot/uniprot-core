@@ -25,7 +25,7 @@ import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureType;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 import org.uniprot.cv.xdb.UniProtXDbDisplayOrder;
 
 /**
@@ -166,7 +166,7 @@ public class UniProtEntryScored implements HasScore {
     private double scoreGo() {
         double localScore = 0;
         {
-            List<UniProtDBCrossReference> dbxs = entry.getDatabaseCrossReferencesByType("GO");
+            List<UniProtCrossReference> dbxs = entry.getDatabaseCrossReferencesByType("GO");
             localScore = new GoScored(dbxs, evidenceDatabases).score();
         }
         return localScore;
@@ -176,7 +176,7 @@ public class UniProtEntryScored implements HasScore {
         double oldscore = 0;
         double localScore = 0;
         {
-            List<UniProtDBCrossReference> dbxs = entry.getDatabaseCrossReferencesByType("EMBL");
+            List<UniProtCrossReference> dbxs = entry.getDatabaseCrossReferencesByType("EMBL");
             oldscore = localScore;
             localScore += new EmblScored(dbxs, evidenceDatabases).score();
             if (Math.abs(oldscore - localScore) > 0.001)
@@ -184,14 +184,14 @@ public class UniProtEntryScored implements HasScore {
         }
 
         {
-            List<UniProtDBCrossReference> dbxs = entry.getDatabaseCrossReferencesByType("PDB");
+            List<UniProtCrossReference> dbxs = entry.getDatabaseCrossReferencesByType("PDB");
             oldscore = localScore;
             localScore += new PDBScored(dbxs, evidenceDatabases).score();
             if (Math.abs(oldscore - localScore) > 0.001)
                 LOG.debug("Xref score for PDB {}", localScore - oldscore);
         }
         {
-            List<UniProtDBCrossReference> dbxs = entry.getDatabaseCrossReferencesByType("PDBsum");
+            List<UniProtCrossReference> dbxs = entry.getDatabaseCrossReferencesByType("PDBsum");
             oldscore = localScore;
             localScore += new PDBSumScored(dbxs, evidenceDatabases).score();
             if (Math.abs(oldscore - localScore) > 0.001)
@@ -200,7 +200,7 @@ public class UniProtEntryScored implements HasScore {
 
         oldscore = localScore;
         for (String type : DATABASE_TYPES) {
-            List<UniProtDBCrossReference> xrefs = entry.getDatabaseCrossReferencesByType(type);
+            List<UniProtCrossReference> xrefs = entry.getDatabaseCrossReferencesByType(type);
             if (!xrefs.isEmpty() && hasEvidences(xrefs)) localScore += 0.1;
         }
         if (Math.abs(oldscore - localScore) > 0.001)
@@ -209,8 +209,8 @@ public class UniProtEntryScored implements HasScore {
         return localScore;
     }
 
-    private boolean hasEvidences(List<UniProtDBCrossReference> xrefs) {
-        for (UniProtDBCrossReference xref : xrefs) {
+    private boolean hasEvidences(List<UniProtCrossReference> xrefs) {
+        for (UniProtCrossReference xref : xrefs) {
             if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceDatabases)) {
                 return true;
             }

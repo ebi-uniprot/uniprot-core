@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.proteome.*;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
@@ -23,7 +23,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     private ProteomeId redundantTo;
     private String strain;
     private String isolate;
-    private List<DBCrossReference<ProteomeDatabase>> dbXReferences;
+    private List<CrossReference<ProteomeDatabase>> dbXReferences;
     private List<Component> components;
     private List<Citation> references;
     private List<RedundantProteome> redundantProteomes;
@@ -55,7 +55,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
             ProteomeId redundantTo,
             String strain,
             String isolate,
-            List<DBCrossReference<ProteomeDatabase>> dbXReferences,
+            List<CrossReference<ProteomeDatabase>> dbXReferences,
             List<Component> components,
             List<Citation> references,
             List<RedundantProteome> redundantProteomes,
@@ -130,7 +130,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     }
 
     @Override
-    public List<DBCrossReference<ProteomeDatabase>> getDbXReferences() {
+    public List<CrossReference<ProteomeDatabase>> getDbXReferences() {
         return dbXReferences;
     }
 

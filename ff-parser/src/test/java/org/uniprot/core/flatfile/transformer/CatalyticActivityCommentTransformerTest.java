@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
 import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
 import org.uniprot.core.uniprot.comment.Reaction;
@@ -299,8 +299,8 @@ class CatalyticActivityCommentTransformerTest {
         assertEquals(xref, xrefToString(pd.getReactionReference()));
     }
 
-    private String xrefToString(DBCrossReference<ReactionDatabase> xref) {
-        return xref.getDatabaseType().getName() + ":" + xref.getId();
+    private String xrefToString(CrossReference<ReactionDatabase> xref) {
+        return xref.getDatabase().getName() + ":" + xref.getId();
     }
 
     private void verifyEvidence(List<Evidence> evIds, String evidences) {

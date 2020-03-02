@@ -2,8 +2,8 @@ package org.uniprot.core.uniprot.evidence.impl;
 
 import java.util.Objects;
 
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
@@ -13,16 +13,16 @@ public class EvidenceImpl implements Evidence {
     private static final String PIPE = "|";
     private static final String COLON = ":";
     private EvidenceCode evidenceCode;
-    private DBCrossReference<EvidenceDatabase> source;
+    private CrossReference<EvidenceDatabase> source;
 
     public EvidenceImpl(EvidenceCode evidenceCode, String databaseName, String dbId) {
-        this(evidenceCode, new DBCrossReferenceImpl<>(new EvidenceDatabase(databaseName), dbId));
+        this(evidenceCode, new CrossReferenceImpl<>(new EvidenceDatabase(databaseName), dbId));
     }
 
     // no arg constructor for JSON deserialization
     EvidenceImpl() {}
 
-    public EvidenceImpl(EvidenceCode evidenceCode, DBCrossReference<EvidenceDatabase> source) {
+    public EvidenceImpl(EvidenceCode evidenceCode, CrossReference<EvidenceDatabase> source) {
         this.evidenceCode = evidenceCode;
         this.source = source;
     }
@@ -33,7 +33,7 @@ public class EvidenceImpl implements Evidence {
     }
 
     @Override
-    public DBCrossReference<EvidenceDatabase> getSource() {
+    public CrossReference<EvidenceDatabase> getSource() {
         return source;
     }
 
@@ -53,10 +53,10 @@ public class EvidenceImpl implements Evidence {
         sb.append(evidenceCode.getCode());
         if (source != null) {
             sb.append(PIPE);
-            if (source.getDatabaseType().isReference()) {
+            if (source.getDatabase().isReference()) {
                 sb.append(source.getId());
             } else {
-                sb.append(source.getDatabaseType().getDetail().getDisplayName())
+                sb.append(source.getDatabase().getDetail().getDisplayName())
                         .append(COLON)
                         .append(source.getId());
             }

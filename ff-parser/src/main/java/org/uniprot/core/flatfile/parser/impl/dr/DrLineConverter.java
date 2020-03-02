@@ -13,7 +13,7 @@ import org.uniprot.core.uniprot.InternalLineType;
 import org.uniprot.core.uniprot.builder.InternalLineBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.xdb.UniProtDatabase;
-import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+import org.uniprot.core.uniprot.xdb.builder.UniProtCrossReferenceBuilder;
 import org.uniprot.cv.xdb.UniProtDatabaseImpl;
 
 public class DrLineConverter extends EvidenceCollector
@@ -76,7 +76,7 @@ public class DrLineConverter extends EvidenceCollector
         try {
             UniProtDatabase type = new UniProtDatabaseImpl(drline.DbName);
             uniProtDrObjects.drObjects.add(
-                    new UniProtDBCrossReferenceBuilder()
+                    new UniProtCrossReferenceBuilder()
                             .id(id)
                             .databaseType(type)
                             .isoformId(isoformId)

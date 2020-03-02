@@ -10,9 +10,9 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
-import org.uniprot.core.uniparc.UniParcDBCrossReference;
+import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.uniparc.builder.UniParcDBCrossReferenceBuilder;
+import org.uniprot.core.uniparc.builder.UniParcCrossReferenceBuilder;
 
 /**
  * @author jluo
@@ -22,7 +22,7 @@ class UniParcXrefMapTest {
 
     @Test
     void testAttributeValues() {
-        List<UniParcDBCrossReference> xrefs = create();
+        List<UniParcCrossReference> xrefs = create();
         UniParcXrefMap xrefMap = new UniParcXrefMap(xrefs);
         Map<String, String> result = xrefMap.attributeValues();
         assertEquals(6, result.size());
@@ -48,14 +48,14 @@ class UniParcXrefMapTest {
         assertTrue(UniParcXrefMap.contains(fields));
     }
 
-    List<UniParcDBCrossReference> create() {
+    List<UniParcCrossReference> create() {
         LocalDate created = LocalDate.of(2017, 5, 17);
         LocalDate lastUpdated = LocalDate.of(2018, 2, 7);
         List<Property> properties = new ArrayList<>();
-        properties.add(new Property(UniParcDBCrossReference.PROPERTY_PROTEIN_NAME, "some pname"));
-        //	properties.add(new Property(UniParcDBCrossReference.PROPERTY_GENE_NAME, "some gname"));
-        UniParcDBCrossReference xref =
-                new UniParcDBCrossReferenceBuilder()
+        properties.add(new Property(UniParcCrossReference.PROPERTY_PROTEIN_NAME, "some pname"));
+        //	properties.add(new Property(UniParcCrossReference.PROPERTY_GENE_NAME, "some gname"));
+        UniParcCrossReference xref =
+                new UniParcCrossReferenceBuilder()
                         .versionI(3)
                         .databaseType(UniParcDatabase.SWISSPROT)
                         .id("P12345")
@@ -69,11 +69,11 @@ class UniParcXrefMapTest {
         LocalDate created2 = LocalDate.of(2015, 1, 11);
         LocalDate lastUpdated2 = LocalDate.of(2017, 2, 27);
         List<Property> properties2 = new ArrayList<>();
-        properties2.add(new Property(UniParcDBCrossReference.PROPERTY_PROTEIN_NAME, "some pname2"));
-        properties2.add(new Property(UniParcDBCrossReference.PROPERTY_PROTEOME_ID, "UP00000564"));
-        properties2.add(new Property(UniParcDBCrossReference.PROPERTY_COMPONENT, "chromosome 1"));
-        UniParcDBCrossReference xref2 =
-                new UniParcDBCrossReferenceBuilder()
+        properties2.add(new Property(UniParcCrossReference.PROPERTY_PROTEIN_NAME, "some pname2"));
+        properties2.add(new Property(UniParcCrossReference.PROPERTY_PROTEOME_ID, "UP00000564"));
+        properties2.add(new Property(UniParcCrossReference.PROPERTY_COMPONENT, "chromosome 1"));
+        UniParcCrossReference xref2 =
+                new UniParcCrossReferenceBuilder()
                         .versionI(3)
                         .databaseType(UniParcDatabase.TREMBL)
                         .id("P12347")

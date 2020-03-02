@@ -7,8 +7,8 @@ import static org.uniprot.core.ObjectsForTests.createEvidences;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.uniprot.comment.Disease;
 import org.uniprot.core.uniprot.comment.DiseaseDatabase;
 import org.uniprot.core.uniprot.evidence.Evidence;
@@ -72,8 +72,8 @@ class DiseaseBuilderTest {
         List<Evidence> evidences = createEvidences();
 
         String referenceId = "3124";
-        DBCrossReference<DiseaseDatabase> reference =
-                new DBCrossReferenceImpl<>(DiseaseDatabase.MIM, referenceId);
+        CrossReference<DiseaseDatabase> reference =
+                new CrossReferenceImpl<>(DiseaseDatabase.MIM, referenceId);
         String diseaseId = "someId";
         String diseaseDescription = "some description";
         Disease disease =
@@ -93,10 +93,10 @@ class DiseaseBuilderTest {
     void testCreateDiseaseReference() {
         DiseaseDatabase referenceType = DiseaseDatabase.MIM;
         String referenceId = "3124";
-        DBCrossReference<DiseaseDatabase> reference =
-                new DBCrossReferenceImpl<>(referenceType, referenceId);
+        CrossReference<DiseaseDatabase> reference =
+                new CrossReferenceImpl<>(referenceType, referenceId);
 
-        assertEquals(referenceType, reference.getDatabaseType());
+        assertEquals(referenceType, reference.getDatabase());
         assertEquals(referenceId, reference.getId());
     }
 

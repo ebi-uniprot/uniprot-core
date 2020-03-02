@@ -6,21 +6,21 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 
-class UniProtDBCrossReferenceBuilderTest {
+class UniProtCrossReferenceBuilderTest {
 
     @Test
     void defaultEvidences_willNotNull() {
-        UniProtDBCrossReference reference = new UniProtDBCrossReferenceBuilder().build();
+        UniProtCrossReference reference = new UniProtCrossReferenceBuilder().build();
         assertNotNull(reference.getEvidences());
         assertTrue(reference.getEvidences().isEmpty());
     }
 
     @Test
     void canAddSingleEvidence() {
-        UniProtDBCrossReference reference =
-                new UniProtDBCrossReferenceBuilder()
+        UniProtCrossReference reference =
+                new UniProtCrossReferenceBuilder()
                         .evidencesAdd(new EvidenceBuilder().build())
                         .build();
         assertNotNull(reference.getEvidences());
@@ -29,16 +29,16 @@ class UniProtDBCrossReferenceBuilderTest {
 
     @Test
     void nullEvidence_willBeIgnore() {
-        UniProtDBCrossReference reference =
-                new UniProtDBCrossReferenceBuilder().evidencesAdd(null).build();
+        UniProtCrossReference reference =
+                new UniProtCrossReferenceBuilder().evidencesAdd(null).build();
         assertNotNull(reference.getEvidences());
         assertTrue(reference.getEvidences().isEmpty());
     }
 
     @Test
     void evidences_willConvertModifiable_toUnModifiable() {
-        UniProtDBCrossReference reference =
-                new UniProtDBCrossReferenceBuilder()
+        UniProtCrossReference reference =
+                new UniProtCrossReferenceBuilder()
                         .evidencesSet(Collections.emptyList())
                         .evidencesAdd(new EvidenceBuilder().build())
                         .build();
@@ -48,8 +48,8 @@ class UniProtDBCrossReferenceBuilderTest {
 
     @Test
     void canCreateBuilderFromInstance() {
-        UniProtDBCrossReference reference = new UniProtDBCrossReferenceBuilder().build();
-        UniProtDBCrossReferenceBuilder builder = UniProtDBCrossReferenceBuilder.from(reference);
+        UniProtCrossReference reference = new UniProtCrossReferenceBuilder().build();
+        UniProtCrossReferenceBuilder builder = UniProtCrossReferenceBuilder.from(reference);
         assertNotNull(builder);
     }
 }

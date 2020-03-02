@@ -37,9 +37,9 @@ import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.taxonomy.impl.OrganismHostImpl;
 import org.uniprot.core.uniprot.taxonomy.impl.OrganismImpl;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtDatabase;
-import org.uniprot.core.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
+import org.uniprot.core.uniprot.xdb.impl.UniProtCrossReferenceImpl;
 import org.uniprot.cv.xdb.UniProtDatabaseImpl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -178,9 +178,8 @@ public class UniprotJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(SourceLine.class, SourceLineImpl.class);
         mod.addAbstractTypeMapping(Sequence.class, SequenceImpl.class);
 
-        mod.addAbstractTypeMapping(DBCrossReference.class, DBCrossReferenceImpl.class);
-        mod.addAbstractTypeMapping(
-                UniProtDBCrossReference.class, UniProtDBCrossReferenceImpl.class);
+        mod.addAbstractTypeMapping(CrossReference.class, CrossReferenceImpl.class);
+        mod.addAbstractTypeMapping(UniProtCrossReference.class, UniProtCrossReferenceImpl.class);
 
         mod.addAbstractTypeMapping(AlternativeSequence.class, AlternativeSequenceImpl.class);
 

@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.builder.AbstractCitationBuilder;
@@ -53,17 +53,17 @@ class CitationUtil {
         builder.citationXrefsSet(createCitationCrossRefs());
     }
 
-    public static List<DBCrossReference<CitationDatabase>> createCitationCrossRefs() {
-        List<DBCrossReference<CitationDatabase>> result = new ArrayList<>();
+    public static List<CrossReference<CitationDatabase>> createCitationCrossRefs() {
+        List<CrossReference<CitationDatabase>> result = new ArrayList<>();
 
         result.add(
-                new DBCrossReferenceBuilder<CitationDatabase>()
+                new CrossReferenceBuilder<CitationDatabase>()
                         .databaseType(CitationDatabase.PUBMED)
                         .id("12345")
                         .build());
 
         result.add(
-                new DBCrossReferenceBuilder<CitationDatabase>()
+                new CrossReferenceBuilder<CitationDatabase>()
                         .databaseType(CitationDatabase.DOI)
                         .id("doiId")
                         .build());

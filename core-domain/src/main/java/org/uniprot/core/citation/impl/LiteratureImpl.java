@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.util.Utils;
 
@@ -39,7 +39,7 @@ public class LiteratureImpl extends AbstractJournalArticleImpl implements Litera
     public LiteratureImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<DBCrossReference<CitationDatabase>> citationXrefs,
+            List<CrossReference<CitationDatabase>> citationXrefs,
             String title,
             PublicationDate publicationDate,
             String journalName,
@@ -65,16 +65,16 @@ public class LiteratureImpl extends AbstractJournalArticleImpl implements Litera
 
     @Override
     public Long getPubmedId() {
-        Optional<DBCrossReference<CitationDatabase>> result =
+        Optional<CrossReference<CitationDatabase>> result =
                 getCitationXrefsByType(CitationDatabase.PUBMED);
-        return result.map(DBCrossReference::getId).map(Long::valueOf).orElse(0L);
+        return result.map(CrossReference::getId).map(Long::valueOf).orElse(0L);
     }
 
     @Override
     public String getDoiId() {
-        Optional<DBCrossReference<CitationDatabase>> result =
+        Optional<CrossReference<CitationDatabase>> result =
                 getCitationXrefsByType(CitationDatabase.DOI);
-        return result.map(DBCrossReference::getId).orElse("");
+        return result.map(CrossReference::getId).orElse("");
     }
 
     @Override

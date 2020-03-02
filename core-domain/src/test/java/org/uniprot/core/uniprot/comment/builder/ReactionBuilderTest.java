@@ -7,7 +7,7 @@ import static org.uniprot.core.ObjectsForTests.createEvidences;
 import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.uniprot.comment.Reaction;
 import org.uniprot.core.uniprot.comment.ReactionDatabase;
 
@@ -74,7 +74,7 @@ class ReactionBuilderTest {
         Reaction obj =
                 new ReactionBuilder()
                         .reactionReferencesAdd(
-                                new DBCrossReferenceImpl<>(ReactionDatabase.RHEA, "123"))
+                                new CrossReferenceImpl<>(ReactionDatabase.RHEA, "123"))
                         .build();
         assertTrue(obj.hasReactionReferences());
     }

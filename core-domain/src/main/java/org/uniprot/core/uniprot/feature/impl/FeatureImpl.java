@@ -3,7 +3,7 @@ package org.uniprot.core.uniprot.feature.impl;
 import java.util.Collections;
 import java.util.List;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.AlternativeSequenceHelper;
@@ -22,7 +22,7 @@ public class FeatureImpl implements Feature {
     private FeatureDescription description;
     private FeatureId featureId;
     private AlternativeSequence alternativeSequence;
-    private DBCrossReference<FeatureDatabase> dbXref;
+    private CrossReference<FeatureDatabase> dbXref;
     private List<Evidence> evidences;
 
     // no arg constructor for JSON deserialization
@@ -36,7 +36,7 @@ public class FeatureImpl implements Feature {
             FeatureDescription description,
             FeatureId featureId,
             AlternativeSequence alternativeSequence,
-            DBCrossReference<FeatureDatabase> dbXref,
+            CrossReference<FeatureDatabase> dbXref,
             List<Evidence> evidences) {
 
         this.type = type;
@@ -99,7 +99,7 @@ public class FeatureImpl implements Feature {
     }
 
     @Override
-    public DBCrossReference<FeatureDatabase> getDbXref() {
+    public CrossReference<FeatureDatabase> getDbXref() {
         return dbXref;
     }
 

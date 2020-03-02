@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtDatabase;
-import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+import org.uniprot.core.uniprot.xdb.builder.UniProtCrossReferenceBuilder;
 import org.uniprot.cv.xdb.UniProtDatabaseImpl;
 
 class EntryGoXrefMapTest {
@@ -32,7 +32,7 @@ class EntryGoXrefMapTest {
 
     @Test
     void testGetDataFull() {
-        List<UniProtDBCrossReference> xrefs = create();
+        List<UniProtCrossReference> xrefs = create();
         EntryGoXrefMap dl = new EntryGoXrefMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(5, result.size());
@@ -67,7 +67,7 @@ class EntryGoXrefMapTest {
 
     @Test
     void testGetDataFullWithDownloadableDbXref() {
-        List<UniProtDBCrossReference> xrefs = create();
+        List<UniProtCrossReference> xrefs = create();
         EntryDbXRefMap dl = new EntryDbXRefMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(5, result.size());
@@ -105,8 +105,8 @@ class EntryGoXrefMapTest {
         assertEquals(expected, evaluated);
     }
 
-    private List<UniProtDBCrossReference> create() {
-        List<UniProtDBCrossReference> xrefs = new ArrayList<>();
+    private List<UniProtCrossReference> create() {
+        List<UniProtCrossReference> xrefs = new ArrayList<>();
         xrefs.add(create("GO:0005783", "C:endoplasmic reticulum", "IDA:AgBase"));
         xrefs.add(create("GO:0005788", "C:endoplasmic reticulum lumen", "TAS:Reactome"));
         xrefs.add(create("GO:0016020", "C:membrane", "HDA:UniProtKB"));
@@ -118,9 +118,9 @@ class EntryGoXrefMapTest {
         return xrefs;
     }
 
-    private UniProtDBCrossReference create(String id, String term, String evidence) {
+    private UniProtCrossReference create(String id, String term, String evidence) {
         UniProtDatabase type = new UniProtDatabaseImpl("GO");
-        return new UniProtDBCrossReferenceBuilder()
+        return new UniProtCrossReferenceBuilder()
                 .databaseType(type)
                 .id(id)
                 .propertiesAdd(type.getAttribute(0), term)

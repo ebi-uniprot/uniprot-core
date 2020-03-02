@@ -5,34 +5,34 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.Database;
 import org.uniprot.core.Property;
 import org.uniprot.core.util.Utils;
 
-public class DBCrossReferenceImpl<T extends Database> implements DBCrossReference<T> {
+public class CrossReferenceImpl<T extends Database> implements CrossReference<T> {
     private static final long serialVersionUID = 4318477387676269483L;
     protected T databaseType;
     protected String id;
     protected List<Property> properties;
 
     // no arg constructor for JSON deserialization
-    DBCrossReferenceImpl() {
+    CrossReferenceImpl() {
         this.properties = Collections.emptyList();
     }
 
-    public DBCrossReferenceImpl(T database, String id) {
+    public CrossReferenceImpl(T database, String id) {
         this(database, id, Collections.emptyList());
     }
 
-    public DBCrossReferenceImpl(T databaseType, String id, List<Property> properties) {
+    public CrossReferenceImpl(T databaseType, String id, List<Property> properties) {
         this.databaseType = databaseType;
         this.id = id;
         setProperties(properties);
     }
 
     @Override
-    public T getDatabaseType() {
+    public T getDatabase() {
         return databaseType;
     }
 
@@ -47,7 +47,7 @@ public class DBCrossReferenceImpl<T extends Database> implements DBCrossReferenc
     }
 
     @Override
-    public boolean hasDatabaseType() {
+    public boolean hasDatabase() {
         return this.databaseType != null;
     }
 
@@ -81,7 +81,7 @@ public class DBCrossReferenceImpl<T extends Database> implements DBCrossReferenc
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DBCrossReferenceImpl<?> that = (DBCrossReferenceImpl<?>) o;
+        CrossReferenceImpl<?> that = (CrossReferenceImpl<?>) o;
         return Objects.equals(databaseType, that.databaseType)
                 && Objects.equals(id, that.id)
                 && Objects.equals(properties, that.properties);

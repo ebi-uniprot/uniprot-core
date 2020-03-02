@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.proteome.Component;
 import org.uniprot.core.proteome.ComponentType;
 import org.uniprot.core.proteome.ProteomeDatabase;
@@ -17,7 +17,7 @@ public class ComponentImpl implements Component {
     private int proteinCount;
     private ComponentType type;
 
-    private List<DBCrossReference<ProteomeDatabase>> dbXReferences;
+    private List<CrossReference<ProteomeDatabase>> dbXReferences;
 
     protected ComponentImpl() {
         dbXReferences = Collections.emptyList();
@@ -28,7 +28,7 @@ public class ComponentImpl implements Component {
             String description,
             int proteinCount,
             ComponentType type,
-            List<DBCrossReference<ProteomeDatabase>> dbXReferences) {
+            List<CrossReference<ProteomeDatabase>> dbXReferences) {
         this.name = name;
         this.description = description;
         this.proteinCount = proteinCount;
@@ -47,7 +47,7 @@ public class ComponentImpl implements Component {
     }
 
     @Override
-    public List<DBCrossReference<ProteomeDatabase>> getDbXReferences() {
+    public List<CrossReference<ProteomeDatabase>> getDbXReferences() {
         return dbXReferences;
     }
 

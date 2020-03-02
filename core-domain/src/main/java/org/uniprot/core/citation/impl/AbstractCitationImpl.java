@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.util.Utils;
 
@@ -13,7 +13,7 @@ public abstract class AbstractCitationImpl implements Citation {
     private CitationType citationType;
     private List<String> authoringGroup;
     private List<Author> authors;
-    private List<DBCrossReference<CitationDatabase>> citationXrefs;
+    private List<CrossReference<CitationDatabase>> citationXrefs;
     private String title;
     private PublicationDate publicationDate;
 
@@ -21,7 +21,7 @@ public abstract class AbstractCitationImpl implements Citation {
             CitationType citationType,
             List<String> authoringGroup,
             List<Author> authors,
-            List<DBCrossReference<CitationDatabase>> citationXrefs,
+            List<CrossReference<CitationDatabase>> citationXrefs,
             String title,
             PublicationDate publicationDate) {
         this.citationType = citationType;
@@ -33,14 +33,14 @@ public abstract class AbstractCitationImpl implements Citation {
     }
 
     @Override
-    public List<DBCrossReference<CitationDatabase>> getCitationXrefs() {
+    public List<CrossReference<CitationDatabase>> getCitationXrefs() {
         return citationXrefs;
     }
 
     @Override
-    public Optional<DBCrossReference<CitationDatabase>> getCitationXrefsByType(
+    public Optional<CrossReference<CitationDatabase>> getCitationXrefsByType(
             CitationDatabase type) {
-        return citationXrefs.stream().filter(xref -> xref.getDatabaseType() == type).findAny();
+        return citationXrefs.stream().filter(xref -> xref.getDatabase() == type).findAny();
     }
 
     @Override

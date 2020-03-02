@@ -11,11 +11,11 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtDatabase;
-import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+import org.uniprot.core.uniprot.xdb.builder.UniProtCrossReferenceBuilder;
 
-class UniProtDBCrossReferenceImplTest {
+class UniProtCrossReferenceImplTest {
 
     @Test
     void testUniProtDatabaseCrossReferenceImpl12() {
@@ -25,8 +25,8 @@ class UniProtDBCrossReferenceImplTest {
         String id = "H25N7.01:pep";
         String description = "-";
         UniProtDatabase dbType = new UniProtDatabaseMock(type);
-        UniProtDBCrossReference xref =
-                new UniProtDBCrossReferenceBuilder()
+        UniProtCrossReference xref =
+                new UniProtCrossReferenceBuilder()
                         .databaseType(dbType)
                         .id(id)
                         .propertiesAdd(dbType.getAttribute(0), description)
@@ -46,8 +46,8 @@ class UniProtDBCrossReferenceImplTest {
         String fourthAttr = null;
         String isoform = null;
         UniProtDatabase dbType = new UniProtDatabaseMock(type);
-        UniProtDBCrossReference xref =
-                new UniProtDBCrossReferenceBuilder()
+        UniProtCrossReference xref =
+                new UniProtCrossReferenceBuilder()
                         .databaseType(dbType)
                         .id(id)
                         .propertiesAdd(dbType.getAttribute(0), description)
@@ -67,8 +67,8 @@ class UniProtDBCrossReferenceImplTest {
         String isoform = null;
 
         UniProtDatabase dbType = new UniProtDatabaseMock(type);
-        UniProtDBCrossReference xref =
-                new UniProtDBCrossReferenceBuilder()
+        UniProtCrossReference xref =
+                new UniProtCrossReferenceBuilder()
                         .databaseType(dbType)
                         .id(id)
                         .propertiesAdd(dbType.getAttribute(0), description)
@@ -90,8 +90,8 @@ class UniProtDBCrossReferenceImplTest {
         String isoform = null;
 
         UniProtDatabase dbType = new UniProtDatabaseMock(type);
-        UniProtDBCrossReference xref =
-                new UniProtDBCrossReferenceBuilder()
+        UniProtCrossReference xref =
+                new UniProtCrossReferenceBuilder()
                         .databaseType(dbType)
                         .id(id)
                         .propertiesAdd(dbType.getAttribute(0), description)
@@ -113,8 +113,8 @@ class UniProtDBCrossReferenceImplTest {
         String isoform = null;
 
         UniProtDatabase dbType = new UniProtDatabaseMock(type);
-        UniProtDBCrossReference xref =
-                new UniProtDBCrossReferenceBuilder()
+        UniProtCrossReference xref =
+                new UniProtCrossReferenceBuilder()
                         .databaseType(dbType)
                         .id(id)
                         .propertiesAdd(dbType.getAttribute(0), description)
@@ -137,8 +137,8 @@ class UniProtDBCrossReferenceImplTest {
         String isoform = null;
 
         UniProtDatabase dbType = new UniProtDatabaseMock(type);
-        UniProtDBCrossReference xref =
-                new UniProtDBCrossReferenceBuilder()
+        UniProtCrossReference xref =
+                new UniProtCrossReferenceBuilder()
                         .databaseType(dbType)
                         .id(id)
                         .propertiesAdd(dbType.getAttribute(0), description)
@@ -161,8 +161,8 @@ class UniProtDBCrossReferenceImplTest {
         String isoform = null;
 
         UniProtDatabase dbType = new UniProtDatabaseMock(type);
-        UniProtDBCrossReference xref =
-                new UniProtDBCrossReferenceBuilder()
+        UniProtCrossReference xref =
+                new UniProtCrossReferenceBuilder()
                         .databaseType(dbType)
                         .id(id)
                         .propertiesAdd(dbType.getAttribute(0), description)
@@ -186,8 +186,8 @@ class UniProtDBCrossReferenceImplTest {
         String isoform = "Q9NXB0-1";
 
         UniProtDatabase dbType = new UniProtDatabaseMock(type);
-        UniProtDBCrossReference xref =
-                new UniProtDBCrossReferenceBuilder()
+        UniProtCrossReference xref =
+                new UniProtCrossReferenceBuilder()
                         .databaseType(dbType)
                         .id(id)
                         .propertiesAdd(dbType.getAttribute(0), description)
@@ -211,8 +211,8 @@ class UniProtDBCrossReferenceImplTest {
         String isoform = null;
 
         UniProtDatabase dbType = new UniProtDatabaseMock(type);
-        UniProtDBCrossReference xref =
-                new UniProtDBCrossReferenceBuilder()
+        UniProtCrossReference xref =
+                new UniProtCrossReferenceBuilder()
                         .databaseType(dbType)
                         .id(id)
                         .propertiesAdd(dbType.getAttribute(0), description)
@@ -226,13 +226,13 @@ class UniProtDBCrossReferenceImplTest {
 
     @Test
     void canCheckIsformIsNotPresent() {
-        UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder().build();
+        UniProtCrossReference xref = new UniProtCrossReferenceBuilder().build();
         assertFalse(xref.hasIsoformId());
     }
 
     @Test
     void canCheckEvidencesNotPresent() {
-        UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder().build();
+        UniProtCrossReference xref = new UniProtCrossReferenceBuilder().build();
         assertFalse(xref.hasEvidences());
         assertNotNull(xref.getEvidences());
         assertTrue(xref.getEvidences().isEmpty());
@@ -240,28 +240,28 @@ class UniProtDBCrossReferenceImplTest {
 
     @Test
     void toStringWillHave_DASH_propertiesNull() {
-        UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder().build();
+        UniProtCrossReference xref = new UniProtCrossReferenceBuilder().build();
         assertEquals("; null; -.", xref.toString());
     }
 
     @Test
     void twoDifferentEmptyObjectFromBuilder_areEqual() {
-        UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder().build();
-        UniProtDBCrossReference xref2 = new UniProtDBCrossReferenceBuilder().build();
+        UniProtCrossReference xref = new UniProtCrossReferenceBuilder().build();
+        UniProtCrossReference xref2 = new UniProtCrossReferenceBuilder().build();
         assertTrue(xref.equals(xref2) && xref2.equals(xref));
         assertEquals(xref.hashCode(), xref2.hashCode());
     }
 
     @Test
     void defaultConstructor_jsonDeSerialization() {
-        UniProtDBCrossReference xref = new UniProtDBCrossReferenceImpl();
-        assertNull(xref.getDatabaseType());
+        UniProtCrossReference xref = new UniProtCrossReferenceImpl();
+        assertNull(xref.getDatabase());
         assertEquals("", xref.getId());
         assertTrue(xref.getEvidences().isEmpty());
     }
 
     private void verify(
-            UniProtDBCrossReference xref,
+            UniProtCrossReference xref,
             String drVal,
             String type,
             String id,
@@ -270,7 +270,7 @@ class UniProtDBCrossReferenceImplTest {
             String fourAttr,
             String isoformId) {
         assertEquals(drVal, xref.toString());
-        assertEquals(type, xref.getDatabaseType().getName());
+        assertEquals(type, xref.getDatabase().getName());
         assertEquals(id, xref.getId());
         assertEquals(description, getValue(xref, 0));
         assertEquals(isoformId, xref.getIsoformId());
@@ -278,7 +278,7 @@ class UniProtDBCrossReferenceImplTest {
         assertEquals(fourAttr, getValue(xref, 2));
     }
 
-    private String getValue(UniProtDBCrossReference xref, int number) {
+    private String getValue(UniProtCrossReference xref, int number) {
         List<Property> properties = xref.getProperties();
         if (properties.size() < number + 1) {
             return null;

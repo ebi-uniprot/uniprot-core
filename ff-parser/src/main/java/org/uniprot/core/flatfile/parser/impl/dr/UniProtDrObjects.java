@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.uniprot.core.uniprot.InternalLine;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 
 public class UniProtDrObjects {
-    public List<UniProtDBCrossReference> drObjects = new ArrayList<>();
+    public List<UniProtCrossReference> drObjects = new ArrayList<>();
     public List<InternalLine> ssProsites = null;
 }

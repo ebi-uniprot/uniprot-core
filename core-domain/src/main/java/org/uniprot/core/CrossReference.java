@@ -3,14 +3,14 @@ package org.uniprot.core;
 import java.io.Serializable;
 import java.util.List;
 
-public interface DBCrossReference<T extends Database> extends Serializable {
-    T getDatabaseType();
+public interface CrossReference<T extends Database> extends Serializable {
+    T getDatabase();
 
     String getId();
 
     List<Property> getProperties();
 
-    boolean hasDatabaseType();
+    boolean hasDatabase();
 
     boolean hasId();
 

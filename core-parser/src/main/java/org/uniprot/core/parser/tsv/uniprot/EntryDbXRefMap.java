@@ -4,11 +4,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.Property;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 
 public class EntryDbXRefMap implements NamedValueMap {
     private static final String DR = "dr_";
-    private final List<UniProtDBCrossReference> dbReferences;
+    private final List<UniProtCrossReference> dbReferences;
     private static final Map<String, String> D3MethodMAP = new HashMap<>();
 
     static {
@@ -26,7 +26,7 @@ public class EntryDbXRefMap implements NamedValueMap {
                 || EntryGoXrefMap.contains(fields);
     }
 
-    public EntryDbXRefMap(List<UniProtDBCrossReference> dbReferences) {
+    public EntryDbXRefMap(List<UniProtCrossReference> dbReferences) {
         if (dbReferences == null) {
             this.dbReferences = Collections.emptyList();
         } else {
@@ -41,15 +41,14 @@ public class EntryDbXRefMap implements NamedValueMap {
         }
 
         Map<String, String> map = new HashMap<>();
-        Map<String, List<UniProtDBCrossReference>> xrefMap =
+        Map<String, List<UniProtCrossReference>> xrefMap =
                 dbReferences.stream()
-                        .collect(Collectors.groupingBy(xref -> xref.getDatabaseType().getName()));
+                        .collect(Collectors.groupingBy(xref -> xref.getDatabase().getName()));
         xrefMap.forEach((key, value) -> addToMap(map, key, value));
         return map;
     }
 
-    private void addToMap(
-            Map<String, String> map, String type, List<UniProtDBCrossReference> xrefs) {
+    private void addToMap(Map<String, String> map, String type, List<UniProtCrossReference> xrefs) {
         if (type.equalsIgnoreCase("GO")) {
             EntryGoXrefMap dlGoXref = new EntryGoXrefMap(xrefs);
             Map<String, String> goMap = dlGoXref.attributeValues();
@@ -72,7 +71,7 @@ public class EntryDbXRefMap implements NamedValueMap {
         }
     }
 
-    private String pdbXrefTo3DString(List<UniProtDBCrossReference> xrefs) {
+    private String pdbXrefTo3DString(List<UniProtCrossReference> xrefs) {
         Map<String, Long> result =
                 xrefs.stream()
                         .flatMap(val -> val.getProperties().stream())
@@ -89,7 +88,7 @@ public class EntryDbXRefMap implements NamedValueMap {
                 .collect(Collectors.joining("; "));
     }
 
-    public static String dbXrefToString(UniProtDBCrossReference xref) {
+    public static String dbXrefToString(UniProtCrossReference xref) {
         StringBuilder sb = new StringBuilder();
         sb.append(xref.getId());
         if (xref.getIsoformId() != null && !xref.getIsoformId().isEmpty()) {
@@ -98,7 +97,7 @@ public class EntryDbXRefMap implements NamedValueMap {
         return sb.toString();
     }
 
-    public static String proteomeXrefToString(UniProtDBCrossReference xref) {
+    public static String proteomeXrefToString(UniProtCrossReference xref) {
         StringBuilder sb = new StringBuilder();
         sb.append(xref.getId()).append(": ").append(xref.getProperties().get(0).getValue());
 

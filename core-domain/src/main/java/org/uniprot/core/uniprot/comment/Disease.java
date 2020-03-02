@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.comment;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprot.evidence.HasEvidences;
 
 /**
@@ -63,7 +63,7 @@ public interface Disease extends HasEvidences {
 
     String getDescription();
 
-    DBCrossReference<DiseaseDatabase> getReference();
+    CrossReference<DiseaseDatabase> getReference();
 
     boolean hasDefinedDisease();
 

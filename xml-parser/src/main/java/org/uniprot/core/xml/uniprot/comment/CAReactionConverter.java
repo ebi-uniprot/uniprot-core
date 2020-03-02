@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
 import org.uniprot.core.impl.ECNumberImpl;
 import org.uniprot.core.uniprot.comment.Reaction;
@@ -36,7 +36,7 @@ public class CAReactionConverter implements Converter<ReactionType, Reaction> {
     @Override
     public Reaction fromXml(ReactionType xmlObj) {
         String name = xmlObj.getText();
-        List<DBCrossReference<ReactionDatabase>> references =
+        List<CrossReference<ReactionDatabase>> references =
                 xmlObj.getDbReference().stream()
                         .filter(val -> !EC.equals(val.getType()))
                         .map(val -> refConverter.fromXml(val))

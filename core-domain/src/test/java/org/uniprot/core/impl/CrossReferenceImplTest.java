@@ -7,16 +7,16 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.Property;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 
-class DBCrossReferenceImplTest {
+class CrossReferenceImplTest {
 
     private List<Property> properties =
             asList(new Property("key1", "value1"), new Property("key2", "value2"));
-    private DBCrossReference<DefaultDatabase> xref =
-            new DBCrossReferenceBuilder<DefaultDatabase>()
+    private CrossReference<DefaultDatabase> xref =
+            new CrossReferenceBuilder<DefaultDatabase>()
                     .databaseType(new DefaultDatabase("EMBL"))
                     .id("DB123414")
                     .propertiesSet(properties)
@@ -24,8 +24,8 @@ class DBCrossReferenceImplTest {
 
     @Test
     void testDBCrossReferenceImplStringString() {
-        DBCrossReference<DefaultDatabase> xref =
-                new DBCrossReferenceBuilder<DefaultDatabase>()
+        CrossReference<DefaultDatabase> xref =
+                new CrossReferenceBuilder<DefaultDatabase>()
                         .databaseType(new DefaultDatabase("EMBL"))
                         .id("DB123414")
                         .build();
@@ -38,28 +38,28 @@ class DBCrossReferenceImplTest {
     }
 
     private void verify(
-            DBCrossReference<DefaultDatabase> xref,
+            CrossReference<DefaultDatabase> xref,
             String dbName,
             String id,
             List<Property> properties) {
-        assertEquals(dbName, xref.getDatabaseType().getName());
+        assertEquals(dbName, xref.getDatabase().getName());
         assertEquals(id, xref.getId());
         assertEquals(properties, xref.getProperties());
     }
 
     @Test
     void needDefaultConstructorForJsonDeserialization() {
-        DBCrossReference<DefaultDatabase> obj = new DBCrossReferenceImpl<>();
+        CrossReference<DefaultDatabase> obj = new CrossReferenceImpl<>();
         assertNotNull(obj);
     }
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        DBCrossReference<DefaultDatabase> impl =
-                new DBCrossReferenceImpl<>(new DefaultDatabase("EMBL"), "one", properties);
-        DBCrossReference<DefaultDatabase> obj = DBCrossReferenceBuilder.from(impl).build();
+        CrossReference<DefaultDatabase> impl =
+                new CrossReferenceImpl<>(new DefaultDatabase("EMBL"), "one", properties);
+        CrossReference<DefaultDatabase> obj = CrossReferenceBuilder.from(impl).build();
 
-        assertTrue(impl.hasDatabaseType());
+        assertTrue(impl.hasDatabase());
         assertTrue(impl.hasId());
         assertTrue(impl.hasProperties());
 

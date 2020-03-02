@@ -2,13 +2,13 @@ package org.uniprot.core.uniparc;
 
 import java.time.LocalDate;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 
 /**
  * @author jluo
  * @date: 21 May 2019
  */
-public interface UniParcDBCrossReference extends DBCrossReference<UniParcDatabase> {
+public interface UniParcCrossReference extends CrossReference<UniParcDatabase> {
     String PROPERTY_GENE_NAME = "gene_name";
     String PROPERTY_PROTEIN_NAME = "protein_name";
     String PROPERTY_UNIPROT_KB_ACCESSION = "UniProtKB_accession";

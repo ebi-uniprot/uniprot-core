@@ -9,7 +9,7 @@ import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.JournalArticle;
 import org.uniprot.core.citation.builder.JournalArticleBuilder;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.xml.jaxb.proteome.ConsortiumType;
 import org.uniprot.core.xml.jaxb.proteome.JournalType;
 import org.uniprot.core.xml.jaxb.proteome.NameListType;
@@ -81,8 +81,8 @@ class JournalArticleConverterTest {
                 .authoringGroupsSet(Arrays.asList("The C. elegans sequencing consortium"))
                 .citationXrefsSet(
                         Arrays.asList(
-                                new DBCrossReferenceImpl<>(CitationDatabase.PUBMED, "9851916"),
-                                new DBCrossReferenceImpl<>(
+                                new CrossReferenceImpl<>(CitationDatabase.PUBMED, "9851916"),
+                                new CrossReferenceImpl<>(
                                         CitationDatabase.DOI,
                                         "https://doi.org/10.1126/science.282.5396.2012")));
         JournalArticle citation = builder.build();

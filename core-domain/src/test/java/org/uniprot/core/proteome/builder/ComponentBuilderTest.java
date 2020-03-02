@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.core.ObjectsForTests.proteomeXReferenceTypes;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.proteome.Component;
 import org.uniprot.core.proteome.ComponentType;
 import org.uniprot.core.proteome.ProteomeDatabase;
@@ -44,8 +44,8 @@ class ComponentBuilderTest {
 
     @Test
     void testAddXref() {
-        DBCrossReference<ProteomeDatabase> xref1 =
-                new DBCrossReferenceBuilder<ProteomeDatabase>()
+        CrossReference<ProteomeDatabase> xref1 =
+                new CrossReferenceBuilder<ProteomeDatabase>()
                         .databaseType(ProteomeDatabase.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
@@ -60,8 +60,8 @@ class ComponentBuilderTest {
 
     @Test
     void testXrefs() {
-        DBCrossReference<ProteomeDatabase> xref2 =
-                new DBCrossReferenceBuilder<ProteomeDatabase>()
+        CrossReference<ProteomeDatabase> xref2 =
+                new CrossReferenceBuilder<ProteomeDatabase>()
                         .databaseType(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();

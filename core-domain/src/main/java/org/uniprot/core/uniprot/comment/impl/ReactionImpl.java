@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
 import org.uniprot.core.uniprot.comment.Reaction;
 import org.uniprot.core.uniprot.comment.ReactionDatabase;
@@ -15,7 +15,7 @@ import org.uniprot.core.util.Utils;
 public class ReactionImpl implements Reaction {
     private static final long serialVersionUID = 7533995250813372108L;
     private String name;
-    private List<DBCrossReference<ReactionDatabase>> reactionReferences;
+    private List<CrossReference<ReactionDatabase>> reactionReferences;
     private ECNumber ecNumber;
     private List<Evidence> evidences;
 
@@ -27,7 +27,7 @@ public class ReactionImpl implements Reaction {
 
     public ReactionImpl(
             String name,
-            List<DBCrossReference<ReactionDatabase>> reactionReferences,
+            List<CrossReference<ReactionDatabase>> reactionReferences,
             ECNumber ecNumber,
             List<Evidence> evidences) {
         this.name = name;
@@ -52,7 +52,7 @@ public class ReactionImpl implements Reaction {
     }
 
     @Override
-    public List<DBCrossReference<ReactionDatabase>> getReactionReferences() {
+    public List<CrossReference<ReactionDatabase>> getReactionReferences() {
         return reactionReferences;
     }
 
@@ -117,7 +117,7 @@ public class ReactionImpl implements Reaction {
         return Objects.hash(name, reactionReferences, ecNumber, evidences);
     }
 
-    private String getReferenceString(DBCrossReference<ReactionDatabase> ref) {
-        return ref.getDatabaseType().getName() + ":" + ref.getId();
+    private String getReferenceString(CrossReference<ReactionDatabase> ref) {
+        return ref.getDatabase().getName() + ":" + ref.getId();
     }
 }

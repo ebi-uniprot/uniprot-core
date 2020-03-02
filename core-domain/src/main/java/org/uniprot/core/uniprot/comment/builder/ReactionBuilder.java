@@ -9,7 +9,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
 import org.uniprot.core.impl.ECNumberImpl;
 import org.uniprot.core.uniprot.comment.Reaction;
@@ -25,7 +25,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 public final class ReactionBuilder implements Builder<Reaction> {
     private String name;
     private ECNumber ecNumber;
-    private List<DBCrossReference<ReactionDatabase>> reactionReferences = new ArrayList<>();
+    private List<CrossReference<ReactionDatabase>> reactionReferences = new ArrayList<>();
     private List<Evidence> evidences = new ArrayList<>();
 
     public @Nonnull ReactionBuilder name(String name) {
@@ -34,13 +34,13 @@ public final class ReactionBuilder implements Builder<Reaction> {
     }
 
     public @Nonnull ReactionBuilder reactionReferencesSet(
-            List<DBCrossReference<ReactionDatabase>> reactionReferences) {
+            List<CrossReference<ReactionDatabase>> reactionReferences) {
         this.reactionReferences = modifiableList(reactionReferences);
         return this;
     }
 
     public @Nonnull ReactionBuilder reactionReferencesAdd(
-            DBCrossReference<ReactionDatabase> reactionReference) {
+            CrossReference<ReactionDatabase> reactionReference) {
         addOrIgnoreNull(reactionReference, this.reactionReferences);
         return this;
     }

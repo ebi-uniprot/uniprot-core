@@ -12,7 +12,7 @@ import org.uniprot.core.citation.*;
 import org.uniprot.core.citation.builder.BookBuilder;
 import org.uniprot.core.citation.builder.JournalArticleBuilder;
 import org.uniprot.core.citation.builder.SubmissionBuilder;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.uniprot.ReferenceComment;
 import org.uniprot.core.uniprot.ReferenceCommentType;
 import org.uniprot.core.uniprot.UniProtReference;
@@ -137,8 +137,8 @@ class ReferenceConverterTest {
                 .authoringGroupsSet(Arrays.asList("The C. elegans sequencing consortium"))
                 .citationXrefsSet(
                         Arrays.asList(
-                                new DBCrossReferenceImpl<>(CitationDatabase.PUBMED, "9851916"),
-                                new DBCrossReferenceImpl<>(
+                                new CrossReferenceImpl<>(CitationDatabase.PUBMED, "9851916"),
+                                new CrossReferenceImpl<>(
                                         CitationDatabase.DOI,
                                         "https://doi.org/10.1126/science.282.5396.2012")));
         JournalArticle citation = builder.build();

@@ -6,21 +6,21 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.json.parser.ValidateJson;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtDatabase;
-import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+import org.uniprot.core.uniprot.xdb.builder.UniProtCrossReferenceBuilder;
 import org.uniprot.cv.xdb.UniProtDatabaseImpl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
 /** @author lgonzales */
-public class UniProtDBCrossReferenceTest {
+public class UniProtCrossReferenceTest {
 
     @Test
     void testUniProtDBCrossReferenceSimple() {
         UniProtDatabase opType = new UniProtDatabaseImpl("PIR");
-        UniProtDBCrossReference dbCrossReference =
-                new UniProtDBCrossReferenceBuilder().databaseType(opType).id("S61096").build();
+        UniProtCrossReference dbCrossReference =
+                new UniProtCrossReferenceBuilder().databaseType(opType).id("S61096").build();
 
         ValidateJson.verifyJsonRoundTripParser(dbCrossReference);
 
@@ -35,7 +35,7 @@ public class UniProtDBCrossReferenceTest {
     @Test
     void testUniProtDBCrossReferenceComplete() {
 
-        UniProtDBCrossReference dbCrossReference = getUniProtDBCrossReference();
+        UniProtCrossReference dbCrossReference = getUniProtDBCrossReference();
 
         ValidateJson.verifyJsonRoundTripParser(dbCrossReference);
         ValidateJson.verifyEmptyFields(dbCrossReference);
@@ -66,9 +66,9 @@ public class UniProtDBCrossReferenceTest {
         assertEquals("description value", property.get("value").asText());
     }
 
-    public static UniProtDBCrossReference getUniProtDBCrossReference() {
+    public static UniProtCrossReference getUniProtDBCrossReference() {
         Property property = new Property("ProteinId", "description value");
-        return new UniProtDBCrossReferenceBuilder()
+        return new UniProtCrossReferenceBuilder()
                 .id("id value")
                 .isoformId("Q9NXB0-1")
                 .propertiesAdd(property)

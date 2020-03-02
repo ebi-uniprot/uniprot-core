@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.builder.BookBuilder;
@@ -27,18 +27,18 @@ class RxLineConverterTest {
         rx2.value = "10.1016/j.toxicon.2004.10.011";
         rxLine.rxs.add(rx2);
         RxLineConverter converter = new RxLineConverter();
-        List<DBCrossReference<CitationDatabase>> cxrefs = converter.convert(rxLine);
+        List<CrossReference<CitationDatabase>> cxrefs = converter.convert(rxLine);
         Citation citation = new BookBuilder().citationXrefsSet(cxrefs).build();
 
-        DBCrossReference<CitationDatabase> wrongXref =
-                new DBCrossReferenceBuilder<CitationDatabase>().build();
-        DBCrossReference<CitationDatabase> pubmedXref =
+        CrossReference<CitationDatabase> wrongXref =
+                new CrossReferenceBuilder<CitationDatabase>().build();
+        CrossReference<CitationDatabase> pubmedXref =
                 citation.getCitationXrefsByType(CitationDatabase.PUBMED).orElse(wrongXref);
         assertNotEquals(pubmedXref, wrongXref);
-        DBCrossReference<CitationDatabase> doiXref =
+        CrossReference<CitationDatabase> doiXref =
                 citation.getCitationXrefsByType(CitationDatabase.DOI).orElse(wrongXref);
         assertNotEquals(doiXref, wrongXref);
-        DBCrossReference<CitationDatabase> agricolaXref =
+        CrossReference<CitationDatabase> agricolaXref =
                 citation.getCitationXrefsByType(CitationDatabase.AGRICOLA).orElse(wrongXref);
         assertEquals(agricolaXref, wrongXref);
 
