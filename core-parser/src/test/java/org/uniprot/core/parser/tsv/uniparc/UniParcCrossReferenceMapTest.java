@@ -18,12 +18,12 @@ import org.uniprot.core.uniparc.builder.UniParcCrossReferenceBuilder;
  * @author jluo
  * @date: 24 Jun 2019
  */
-class UniParcXrefMapTest {
+class UniParcCrossReferenceMapTest {
 
     @Test
     void testAttributeValues() {
         List<UniParcCrossReference> xrefs = create();
-        UniParcXrefMap xrefMap = new UniParcXrefMap(xrefs);
+        UniParcCrossReferenceMap xrefMap = new UniParcCrossReferenceMap(xrefs);
         Map<String, String> result = xrefMap.attributeValues();
         assertEquals(6, result.size());
         assertEquals(";", result.get("gene"));
@@ -39,13 +39,13 @@ class UniParcXrefMapTest {
         List<String> fields =
                 Arrays.asList(
                         "gene", "protein", "proteome", "accession", "first_seen", "last_seen");
-        assertEquals(UniParcXrefMap.FIELDS, fields);
+        assertEquals(UniParcCrossReferenceMap.FIELDS, fields);
     }
 
     @Test
     void testContains() {
         List<String> fields = Arrays.asList("gene", "upi", "CDD");
-        assertTrue(UniParcXrefMap.contains(fields));
+        assertTrue(UniParcCrossReferenceMap.contains(fields));
     }
 
     List<UniParcCrossReference> create() {

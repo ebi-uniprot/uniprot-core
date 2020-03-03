@@ -9,17 +9,17 @@ import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
 
-public class DBXRefValidator {
+public class CrossReferenceValidator {
     private static final String EXPLICIT = "Explicit";
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DBXRefValidator.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CrossReferenceValidator.class);
 
     private static Map<String, DBXRef> ABB_DBXREF = new HashMap<>();
     public static final String DBREF_FTP =
             "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/docs/dbxref.txt";
 
     static {
-        try (DBXRefReader reader = new DBXRefReader(DBREF_FTP)) {
+        try (CrossReferenceReader reader = new CrossReferenceReader(DBREF_FTP)) {
             DBXRef xref;
             while ((xref = reader.read()) != null) {
                 if (!xref.getLinkType().equals(EXPLICIT)) continue;
@@ -30,7 +30,7 @@ public class DBXRefValidator {
         }
     }
 
-    private DBXRefValidator() {}
+    private CrossReferenceValidator() {}
 
     public static List<Pair<String, String>> validate(UniProtDatabaseDetail dbTypeDetail) {
         DBXRef dbXRef = ABB_DBXREF.get(dbTypeDetail.getName().toLowerCase());

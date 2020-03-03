@@ -40,8 +40,8 @@ public class UniParcEntryMap implements NamedValueMap {
         if (UniParcSequenceMap.contains(fields)) {
             addData(map, new UniParcSequenceMap(entry.getSequence()));
         }
-        if (UniParcXrefMap.contains(fields)) {
-            addData(map, new UniParcXrefMap(entry.getDbXReferences()));
+        if (UniParcCrossReferenceMap.contains(fields)) {
+            addData(map, new UniParcCrossReferenceMap(entry.getDbXReferences()));
         }
         return map;
     }

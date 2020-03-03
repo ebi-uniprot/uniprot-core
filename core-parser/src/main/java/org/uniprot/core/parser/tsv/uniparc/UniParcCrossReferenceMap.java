@@ -13,7 +13,7 @@ import org.uniprot.core.uniparc.UniParcDatabase;
  * @author jluo
  * @date: 24 Jun 2019
  */
-public class UniParcXrefMap implements NamedValueMap {
+public class UniParcCrossReferenceMap implements NamedValueMap {
     private static final String DELIMITER = "; ";
     private static final String DELIMITER2 = ";";
 
@@ -24,7 +24,7 @@ public class UniParcXrefMap implements NamedValueMap {
 
     private final List<UniParcCrossReference> xrefs;
 
-    public UniParcXrefMap(List<UniParcCrossReference> xrefs) {
+    public UniParcCrossReferenceMap(List<UniParcCrossReference> xrefs) {
         this.xrefs = xrefs;
     }
 
@@ -42,8 +42,8 @@ public class UniParcXrefMap implements NamedValueMap {
         map.put(FIELDS.get(1), proteins);
         map.put(FIELDS.get(2), proteomes);
         map.put(FIELDS.get(3), accessions);
-        map.put(FIELDS.get(4), firstSeen.map(val -> val.toString()).orElse(""));
-        map.put(FIELDS.get(5), lastSeen.map(val -> val.toString()).orElse(""));
+        map.put(FIELDS.get(4), firstSeen.map(LocalDate::toString).orElse(""));
+        map.put(FIELDS.get(5), lastSeen.map(LocalDate::toString).orElse(""));
         return map;
     }
 
@@ -53,20 +53,20 @@ public class UniParcXrefMap implements NamedValueMap {
 
     private Optional<LocalDate> getFirstSeenDate() {
         return xrefs.stream()
-                .map(val -> val.getCreated())
+                .map(UniParcCrossReference::getCreated)
                 .min(Comparator.comparing(LocalDate::toEpochDay));
     }
 
     private Optional<LocalDate> getLastSeenDate() {
         return xrefs.stream()
-                .map(val -> val.getLastUpdated())
+                .map(UniParcCrossReference::getLastUpdated)
                 .max(Comparator.comparing(LocalDate::toEpochDay));
     }
 
     private String getProteomes() {
         return xrefs.stream()
                 .map(this::getProteome)
-                .filter(val -> val != null)
+                .filter(Objects::nonNull)
                 .collect(Collectors.joining(DELIMITER));
     }
 
@@ -87,7 +87,7 @@ public class UniParcXrefMap implements NamedValueMap {
     private String getUniProtAccessions() {
         return xrefs.stream()
                 .map(this::getUniProtAccession)
-                .filter(val -> val != null)
+                .filter(Objects::nonNull)
                 .collect(Collectors.joining(DELIMITER));
     }
 
@@ -108,7 +108,7 @@ public class UniParcXrefMap implements NamedValueMap {
     private String getData(String propertyType) {
         return xrefs.stream()
                 .map(val -> getProperty(val, propertyType))
-                .map(val -> val.isPresent() ? val.get().getValue() : "")
+                .map(val -> val.map(Property::getValue).orElse(""))
                 .collect(Collectors.joining(DELIMITER2));
     }
 

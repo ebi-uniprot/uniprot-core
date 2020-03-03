@@ -15,11 +15,11 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.xdb.UniProtDatabaseCategory;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.util.Pair;
+import org.uniprot.cv.xdb.validator.CrossReferenceReader;
+import org.uniprot.cv.xdb.validator.CrossReferenceValidator;
 import org.uniprot.cv.xdb.validator.DBXRef;
-import org.uniprot.cv.xdb.validator.DBXRefReader;
-import org.uniprot.cv.xdb.validator.DBXRefValidator;
 
-class DBXRefValidatorIT {
+class CrossReferenceValidatorIT {
     private static Set<String> IGNORED_DBS;
     private static Set<String> NEW_DBS;
 
@@ -49,15 +49,16 @@ class DBXRefValidatorIT {
 
     @Test
     void testSuccessfulValidation() {
-        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("EMBL");
+        UniProtDatabaseDetail opType = UniProtDatabaseTypes.INSTANCE.getDbTypeByName("EMBL");
         // validate
-        List<Pair<String, String>> mismatches = DBXRefValidator.validate(opType);
+        List<Pair<String, String>> mismatches = CrossReferenceValidator.validate(opType);
         assertEquals(1, mismatches.size());
     }
 
     @Test
     void testFailedValidation() {
-        UniProtDatabaseDetail opType = UniProtXDbTypes.INSTANCE.getType("ArachnoServer");
+        UniProtDatabaseDetail opType =
+                UniProtDatabaseTypes.INSTANCE.getDbTypeByName("ArachnoServer");
 
         UniProtDatabaseDetail actualOpType =
                 new UniProtDatabaseDetail(
@@ -70,7 +71,7 @@ class DBXRefValidatorIT {
                         null);
 
         // validate, the category should mismatch
-        List<Pair<String, String>> mismatches = DBXRefValidator.validate(actualOpType);
+        List<Pair<String, String>> mismatches = CrossReferenceValidator.validate(actualOpType);
         assertEquals(2, mismatches.size());
         assertEquals(
                 UniProtDatabaseCategory.ORGANISM_SPECIFIC_DATABASES.getDisplayName(),
@@ -84,10 +85,11 @@ class DBXRefValidatorIT {
     @Test
     void testValidateEachDBXRef() {
         // check if all the drlineconfig.json is in sync with dbxref.txt
-        for (UniProtDatabaseDetail dbTypeDetail : UniProtXDbTypes.INSTANCE.getAllDBXRefTypes()) {
+        for (UniProtDatabaseDetail dbTypeDetail : UniProtDatabaseTypes.INSTANCE.getAllDbTypes()) {
             if (!NEW_DBS.contains(dbTypeDetail.getName())) {
                 System.out.println(dbTypeDetail.getName());
-                List<Pair<String, String>> mismatches = DBXRefValidator.validate(dbTypeDetail);
+                List<Pair<String, String>> mismatches =
+                        CrossReferenceValidator.validate(dbTypeDetail);
                 assertTrue(
                         mismatches.isEmpty(),
                         mismatches.stream()
@@ -103,9 +105,11 @@ class DBXRefValidatorIT {
     void testCompareDRLineConfig() throws IOException {
         // check if all dbxref db are there in drlineconfig.json file except for the
         // ignored dbs
-        Map<String, UniProtDatabaseDetail> typeMap = UniProtXDbTypes.INSTANCE.getTypeMap();
+        Map<String, UniProtDatabaseDetail> typeMap =
+                UniProtDatabaseTypes.INSTANCE.getAllDbTypesMap();
 
-        try (DBXRefReader reader = new DBXRefReader(DBXRefValidator.DBREF_FTP)) {
+        try (CrossReferenceReader reader =
+                new CrossReferenceReader(CrossReferenceValidator.DBREF_FTP)) {
             DBXRef dbXRef;
             while ((dbXRef = reader.read()) != null) {
                 String linkType = dbXRef.getLinkType();
@@ -117,7 +121,7 @@ class DBXRefValidatorIT {
                                         + dbXRef.getAbbr()
                                         + " is not there in drlineconfiguration");
                         List<Pair<String, String>> mismatches =
-                                DBXRefValidator.validate(typeMap.get(dbXRef.getAbbr()));
+                                CrossReferenceValidator.validate(typeMap.get(dbXRef.getAbbr()));
 
                         assertTrue(
                                 mismatches.isEmpty(),

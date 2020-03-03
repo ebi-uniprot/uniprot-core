@@ -5,13 +5,13 @@ import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.uniprot.core.cv.go.GeneOntologyEntry;
-import org.uniprot.core.cv.go.builder.GeneOntologyEntryBuilder;
+import org.uniprot.core.cv.go.GoTerm;
+import org.uniprot.core.cv.go.builder.GoTermBuilder;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.builder.KeywordEntryBuilder;
-import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
+import org.uniprot.core.cv.keyword.builder.KeywordIdBuilder;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
 import org.uniprot.cv.common.AbstractFileReader;
@@ -134,7 +134,7 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         final String identifier = entry.id != null ? entry.id : entry.ic;
         KEFRBuilder retObj = new KEFRBuilder();
         KeywordId keyword =
-                new KeywordEntryKeywordBuilder()
+                new KeywordIdBuilder()
                         .id(trimSpacesAndRemoveLastDot(identifier))
                         .accession(entry.ac)
                         .build();
@@ -152,7 +152,7 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         retObj.synonymsSet(synList);
 
         // GoMapping
-        List<GeneOntologyEntry> goList =
+        List<GoTerm> goList =
                 entry.go.stream().map(this::parseGeneOntology).collect(Collectors.toList());
         retObj.geneOntologiesSet(goList);
 
@@ -170,9 +170,9 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         return str.endsWith(".") ? str.substring(0, str.length() - 1) : str;
     }
 
-    private GeneOntologyEntry parseGeneOntology(String go) {
+    private GoTerm parseGeneOntology(String go) {
         String[] tokens = go.split(";");
-        return new GeneOntologyEntryBuilder().id(tokens[0]).name(tokens[1].trim()).build();
+        return new GoTermBuilder().id(tokens[0]).name(tokens[1].trim()).build();
     }
 
     private List<KeyFileEntry> convertLinesIntoInMemoryObjectList(List<String> lines) {

@@ -9,11 +9,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.cv.xdb.validator.CrossReferenceReader;
+import org.uniprot.cv.xdb.validator.CrossReferenceValidator;
 import org.uniprot.cv.xdb.validator.DBXRef;
-import org.uniprot.cv.xdb.validator.DBXRefReader;
-import org.uniprot.cv.xdb.validator.DBXRefValidator;
 
-class DBXRefReaderIT {
+class CrossReferenceReaderIT {
     private static Set<String> ACCESSION_WITHOUT_REF =
             new HashSet<>(
                     Arrays.asList(
@@ -25,7 +25,8 @@ class DBXRefReaderIT {
     @Test
     void testReadAll() throws IOException {
         int count = 0;
-        try (DBXRefReader reader = new DBXRefReader(DBXRefValidator.DBREF_FTP)) {
+        try (CrossReferenceReader reader =
+                new CrossReferenceReader(CrossReferenceValidator.DBREF_FTP)) {
             DBXRef dbxRef;
             while ((dbxRef = reader.read()) != null) {
                 verifyDBXRef(dbxRef);

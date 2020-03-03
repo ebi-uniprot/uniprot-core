@@ -26,7 +26,7 @@ import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureType;
 import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
-import org.uniprot.cv.xdb.UniProtXDbDisplayOrder;
+import org.uniprot.cv.xdb.UniProtCrossReferenceDisplayOrder;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 13:33:09 To change this template
@@ -40,7 +40,8 @@ public class UniProtEntryScored implements HasScore {
 
     static {
         DATABASE_TYPES = new ArrayList<>();
-        List<UniProtDatabaseDetail> allDBs = UniProtXDbDisplayOrder.INSTANCE.getOrderedDatabases();
+        List<UniProtDatabaseDetail> allDBs =
+                UniProtCrossReferenceDisplayOrder.INSTANCE.getOrderedDatabases();
         Set<String> excludedCrossReferences =
                 new HashSet<>(Arrays.asList("GO", "EMBL", "PDB", "PDBsum"));
         for (UniProtDatabaseDetail xdb : allDBs) {

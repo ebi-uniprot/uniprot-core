@@ -14,7 +14,7 @@ import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.PropertyType;
 import org.uniprot.cv.xdb.GoEvidences;
 import org.uniprot.cv.xdb.UniProtDatabaseImpl;
-import org.uniprot.cv.xdb.UniProtXDbTypes;
+import org.uniprot.cv.xdb.UniProtDatabaseTypes;
 
 import com.google.common.base.Strings;
 
@@ -34,7 +34,8 @@ public class UniProtCrossReferenceConverter
 
     @Override
     public UniProtCrossReference fromXml(DbReferenceType xmlObj) {
-        UniProtDatabaseDetail xdbType = UniProtXDbTypes.INSTANCE.getType(xmlObj.getType());
+        UniProtDatabaseDetail xdbType =
+                UniProtDatabaseTypes.INSTANCE.getDbTypeByName(xmlObj.getType());
 
         String databaseName = xdbType.getName();
         String id = xmlObj.getId();

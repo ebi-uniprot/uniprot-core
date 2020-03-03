@@ -16,7 +16,7 @@ import org.uniprot.core.xml.jaxb.uniprot.SourceType;
 
 public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
     private final ObjectFactory xmlUniprotFactory;
-    private final EvidenceXrefConverter xrefConverter;
+    private final EvidenceCrossRefConverter xrefConverter;
 
     public EvidenceConverter() {
         this(new ObjectFactory());
@@ -24,7 +24,7 @@ public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
 
     public EvidenceConverter(ObjectFactory xmlUniprotFactory) {
         this.xmlUniprotFactory = xmlUniprotFactory;
-        this.xrefConverter = new EvidenceXrefConverter(xmlUniprotFactory);
+        this.xrefConverter = new EvidenceCrossRefConverter(xmlUniprotFactory);
     }
 
     @Override
@@ -52,17 +52,17 @@ public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
         return xmlObj;
     }
 
-    public static class EvidenceXrefConverter
+    public static class EvidenceCrossRefConverter
             implements Converter<SourceType, CrossReference<EvidenceDatabase>> {
         private static final String REFERENCE = "Reference";
         private static final String REF = "Ref.";
         private final ObjectFactory xmlUniprotFactory;
 
-        public EvidenceXrefConverter() {
+        public EvidenceCrossRefConverter() {
             this(new ObjectFactory());
         }
 
-        public EvidenceXrefConverter(ObjectFactory xmlUniprotFactory) {
+        public EvidenceCrossRefConverter(ObjectFactory xmlUniprotFactory) {
             this.xmlUniprotFactory = xmlUniprotFactory;
         }
 

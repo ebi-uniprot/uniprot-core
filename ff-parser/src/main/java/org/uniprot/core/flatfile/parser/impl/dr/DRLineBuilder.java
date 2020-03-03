@@ -16,7 +16,7 @@ import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtDatabase;
-import org.uniprot.cv.xdb.UniProtXDbDisplayOrder;
+import org.uniprot.cv.xdb.UniProtCrossReferenceDisplayOrder;
 
 import com.google.common.base.Strings;
 
@@ -47,7 +47,7 @@ public class DRLineBuilder extends FFLineBuilderAbstr<List<UniProtCrossReference
     private List<String> buildLine(
             List<UniProtCrossReference> f, boolean includeFFMarkings, boolean showEvidence) {
 
-        UniProtXDbDisplayOrder dorder = UniProtXDbDisplayOrder.INSTANCE;
+        UniProtCrossReferenceDisplayOrder dorder = UniProtCrossReferenceDisplayOrder.INSTANCE;
         List<String> lines = new ArrayList<>();
 
         for (UniProtDatabaseDetail databaseType : dorder.getOrderedDatabases()) {

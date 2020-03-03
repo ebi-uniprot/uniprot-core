@@ -14,7 +14,7 @@ import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.util.Utils;
 import org.uniprot.core.util.property.Property;
 
-public enum UniProtXDbTypes {
+public enum UniProtDatabaseTypes {
     INSTANCE;
     private final String FILENAME = "META-INF/drlineconfiguration.json";
     private final String NEW_DB_LIST = "META-INF/new_db_list.txt";
@@ -22,19 +22,19 @@ public enum UniProtXDbTypes {
     private List<UniProtDatabaseDetail> types = new ArrayList<>();
     private Map<String, UniProtDatabaseDetail> typeMap;
 
-    UniProtXDbTypes() {
+    UniProtDatabaseTypes() {
         init();
     }
 
-    public List<UniProtDatabaseDetail> getAllDBXRefTypes() {
+    public List<UniProtDatabaseDetail> getAllDbTypes() {
         return types;
     }
 
-    public Map<String, UniProtDatabaseDetail> getTypeMap() {
+    public Map<String, UniProtDatabaseDetail> getAllDbTypesMap() {
         return this.typeMap;
     }
 
-    public UniProtDatabaseDetail getType(String typeName) {
+    public UniProtDatabaseDetail getDbTypeByName(String typeName) {
         UniProtDatabaseDetail type = typeMap.get(typeName);
         if (type == null) {
             throw new IllegalArgumentException(
@@ -55,7 +55,9 @@ public enum UniProtXDbTypes {
         List<String> newDbs = new ArrayList<>();
 
         try (InputStream inputStream =
-                        UniProtXDbTypes.class.getClassLoader().getResourceAsStream(NEW_DB_LIST);
+                        UniProtDatabaseTypes.class
+                                .getClassLoader()
+                                .getResourceAsStream(NEW_DB_LIST);
                 BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -71,7 +73,7 @@ public enum UniProtXDbTypes {
     private void init() {
         List<String> newDbs = getNewDB();
         try (InputStream configFile =
-                UniProtXDbTypes.class.getClassLoader().getResourceAsStream(FILENAME)) {
+                UniProtDatabaseTypes.class.getClassLoader().getResourceAsStream(FILENAME)) {
             String source = Utils.loadPropertyInput(configFile);
             List<Property> jsonArray = Property.parseJsonArray(source);
 

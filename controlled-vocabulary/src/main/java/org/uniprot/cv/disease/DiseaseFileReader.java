@@ -11,7 +11,7 @@ import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceBuilder;
 import org.uniprot.core.cv.disease.builder.DiseaseEntryBuilder;
 import org.uniprot.core.cv.keyword.KeywordId;
-import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
+import org.uniprot.core.cv.keyword.builder.KeywordIdBuilder;
 import org.uniprot.cv.common.AbstractFileReader;
 
 public final class DiseaseFileReader extends AbstractFileReader<DiseaseEntry> {
@@ -75,7 +75,7 @@ public final class DiseaseFileReader extends AbstractFileReader<DiseaseEntry> {
 
     private KeywordId parseKeyword(String kw) {
         final String[] tokens = kw.split(COLON);
-        return new KeywordEntryKeywordBuilder()
+        return new KeywordIdBuilder()
                 .id(trimSpacesAndRemoveLastDot(tokens[1]))
                 .accession(tokens[0])
                 .build();

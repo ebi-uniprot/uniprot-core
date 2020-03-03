@@ -11,17 +11,17 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
-import org.uniprot.core.uniprot.xdb.DatabaseDisplayOrder;
 
 /** @author jieluo */
-public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtDatabaseDetail> {
+public enum UniProtCrossReferenceDisplayOrder
+        implements org.uniprot.core.uniprot.xdb.DatabaseDisplayOrder {
     INSTANCE;
-    private Map<String, DBDisplayOrder> databaseType2DefsNoCase;
+    private Map<String, DatabaseDisplayOrder> databaseType2DefsNoCase;
     private static final String DR_ORD_FILE = "META-INF/dr_ord";
     private static final String DR_ORD_LOCATION = "https://www.ebi.ac.uk/~trembl/generator/dr_ord";
     private boolean init = false;
 
-    UniProtXDbDisplayOrder() {
+    UniProtCrossReferenceDisplayOrder() {
         initCache();
     }
 
@@ -45,7 +45,7 @@ public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtDataba
             while ((readLine != null)) {
                 readLine = readLine.trim();
                 if (!readLine.startsWith("#")) {
-                    DBDisplayOrder def = createDatabaseDef(readLine, pos);
+                    DatabaseDisplayOrder def = createDatabaseDef(readLine, pos);
                     databaseType2DefsNoCase.put(def.getDbName().toUpperCase(), def);
                     pos++;
                 }
@@ -59,14 +59,14 @@ public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtDataba
         init = true;
     }
 
-    private DBDisplayOrder createDatabaseDef(String line, int pos) {
+    private DatabaseDisplayOrder createDatabaseDef(String line, int pos) {
         String[] data = line.split(" ");
         String db = data[0].trim();
         int secondOrder = 1;
         if (data.length > 1) {
             secondOrder = getSecondOrder(data[1]);
         }
-        return new DBDisplayOrder(db, pos, secondOrder);
+        return new DatabaseDisplayOrder(db, pos, secondOrder);
     }
 
     private int getSecondOrder(String val) {
@@ -83,7 +83,7 @@ public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtDataba
         URL url = null;
         BufferedReader reader = null;
         try {
-            url = new URL(UniProtXDbDisplayOrder.DR_ORD_LOCATION);
+            url = new URL(UniProtCrossReferenceDisplayOrder.DR_ORD_LOCATION);
         } catch (MalformedURLException ex) {
             return null;
         }
@@ -100,11 +100,11 @@ public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtDataba
 
     private BufferedReader getReaderFromFile() {
         InputStream inputStream =
-                UniProtXDbDisplayOrder.class
+                UniProtCrossReferenceDisplayOrder.class
                         .getClassLoader()
-                        .getResourceAsStream(UniProtXDbDisplayOrder.DR_ORD_FILE);
+                        .getResourceAsStream(UniProtCrossReferenceDisplayOrder.DR_ORD_FILE);
         if (inputStream == null) {
-            File file = new File(UniProtXDbDisplayOrder.DR_ORD_FILE);
+            File file = new File(UniProtCrossReferenceDisplayOrder.DR_ORD_FILE);
             try (InputStream fileInputStream = new FileInputStream(file)) {
                 inputStream = fileInputStream;
             } catch (IOException e) {
@@ -117,28 +117,28 @@ public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtDataba
 
     private static class SafeLazyInitializer {
         static List<UniProtDatabaseDetail> uniProtDatabaseDetails =
-                initValues(UniProtXDbDisplayOrder.INSTANCE.databaseType2DefsNoCase);
+                initValues(UniProtCrossReferenceDisplayOrder.INSTANCE.databaseType2DefsNoCase);
 
         private static List<UniProtDatabaseDetail> initValues(
-                Map<String, DBDisplayOrder> databaseType2DefsNoCase) {
+                Map<String, DatabaseDisplayOrder> databaseType2DefsNoCase) {
             List<UniProtDatabaseDetail> values =
-                    new CopyOnWriteArrayList<>(UniProtXDbTypes.INSTANCE.getAllDBXRefTypes());
-            values.sort(new XRefDBOrder(databaseType2DefsNoCase));
+                    new CopyOnWriteArrayList<>(UniProtDatabaseTypes.INSTANCE.getAllDbTypes());
+            values.sort(new CrossReferenceDbOrder(databaseType2DefsNoCase));
             return values;
         }
     }
 
-    private static class XRefDBOrder implements Comparator<UniProtDatabaseDetail> {
-        private final Map<String, DBDisplayOrder> databaseType2DefsNoCase;
+    private static class CrossReferenceDbOrder implements Comparator<UniProtDatabaseDetail> {
+        private final Map<String, DatabaseDisplayOrder> databaseType2DefsNoCase;
 
-        private XRefDBOrder(Map<String, DBDisplayOrder> databaseType2DefsNoCase) {
+        private CrossReferenceDbOrder(Map<String, DatabaseDisplayOrder> databaseType2DefsNoCase) {
             this.databaseType2DefsNoCase = databaseType2DefsNoCase;
         }
 
         @Override
         public int compare(UniProtDatabaseDetail o1, UniProtDatabaseDetail o2) {
-            DBDisplayOrder dbOrder1 = getXRefDBDef(o1);
-            DBDisplayOrder dbOrder2 = getXRefDBDef(o2);
+            DatabaseDisplayOrder dbOrder1 = getXRefDBDef(o1);
+            DatabaseDisplayOrder dbOrder2 = getXRefDBDef(o2);
 
             if (dbOrder1 == null) {
                 return 1;
@@ -153,17 +153,17 @@ public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtDataba
             }
         }
 
-        private DBDisplayOrder getXRefDBDef(UniProtDatabaseDetail type) {
+        private DatabaseDisplayOrder getXRefDBDef(UniProtDatabaseDetail type) {
             return databaseType2DefsNoCase.get(type.getDisplayName().toUpperCase());
         }
     }
 
-    private class DBDisplayOrder {
+    private class DatabaseDisplayOrder {
         private final String dbName;
         private final int displayOrder;
         private final int secondaryOrder;
 
-        DBDisplayOrder(String dbName, int displayOrder, int secondaryOrder) {
+        DatabaseDisplayOrder(String dbName, int displayOrder, int secondaryOrder) {
             this.dbName = dbName;
             this.displayOrder = displayOrder;
             this.secondaryOrder = secondaryOrder;

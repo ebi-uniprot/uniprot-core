@@ -5,17 +5,14 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.Property;
 import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.util.Utils;
 
-public class EntryGoXrefMap implements NamedValueMap {
+public class EntryGoCrossReferenceMap implements NamedValueMap {
     private final List<UniProtCrossReference> dbReferences;
     public static final List<String> FIELDS = Arrays.asList("go", "go_c", "go_f", "go_p", "go_id");
 
-    public EntryGoXrefMap(List<UniProtCrossReference> dbReferences) {
-        if (dbReferences == null) {
-            this.dbReferences = Collections.emptyList();
-        } else {
-            this.dbReferences = Collections.unmodifiableList(dbReferences);
-        }
+    public EntryGoCrossReferenceMap(List<UniProtCrossReference> dbReferences) {
+        this.dbReferences = Utils.unmodifiableList(dbReferences);
     }
 
     @Override

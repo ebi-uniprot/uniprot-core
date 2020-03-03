@@ -237,7 +237,7 @@ public class UniprotJsonConfig extends JsonConfig {
         simpleMod.addSerializer(PublicationDateImpl.class, new PublicationDateSerializer());
         simpleMod.addSerializer(ElectronicArticleImpl.LocatorImpl.class, new LocatorSerializer());
         simpleMod.addSerializer(JournalImpl.class, new JournalSerializer());
-        simpleMod.addSerializer(UniProtDatabase.class, new UniProtXDbTypeSerializer());
+        simpleMod.addSerializer(UniProtDatabase.class, new UniProtDatabaseSerializer());
         simpleMod.addSerializer(FeatureDescriptionImpl.class, new FeatureDescriptionSerializer());
         simpleMod.addSerializer(FeatureIdImpl.class, new FeatureIdSerializer());
 

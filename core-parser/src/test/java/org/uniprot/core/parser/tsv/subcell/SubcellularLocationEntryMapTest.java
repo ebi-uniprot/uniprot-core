@@ -4,17 +4,16 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Collections;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.builder.StatisticsBuilder;
 import org.uniprot.core.cv.go.builder.GeneOntologyEntryBuilder;
-import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
+import org.uniprot.core.cv.keyword.builder.KeywordIdBuilder;
 import org.uniprot.core.cv.subcell.SubcellLocationCategory;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
-import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryImpl;
+import org.uniprot.core.cv.subcell.builder.SubcellularLocationEntryBuilder;
 
 /**
  * @author lgonzales
@@ -24,8 +23,8 @@ class SubcellularLocationEntryMapTest {
 
     @Test
     void checkSimpleEntryAttributeValues() {
-        SubcellularLocationEntryImpl entry = new SubcellularLocationEntryImpl();
-        entry.setAccession("SL-0001");
+        SubcellularLocationEntry entry =
+                new SubcellularLocationEntryBuilder().accession("SL-0001").build();
         Map<String, String> mappedEntries =
                 new SubcellularLocationEntryMap(entry).attributeValues();
         assertThat(mappedEntries, notNullValue());
@@ -63,32 +62,28 @@ class SubcellularLocationEntryMapTest {
     private SubcellularLocationEntry createSubcellularLocationEntry(boolean hasChild) {
         Statistics statistics =
                 new StatisticsBuilder().reviewedProteinCount(10).unreviewedProteinCount(20).build();
-        SubcellularLocationEntryImpl entry = new SubcellularLocationEntryImpl();
-        entry.setAccession("SL-0001");
-        entry.setContent("content value");
-        entry.setDefinition("definition value");
-        entry.setGeneOntologies(
-                Collections.singletonList(
-                        new GeneOntologyEntryBuilder()
-                                .id("goIdValue")
-                                .name("goTermValue")
-                                .build()));
-        entry.setId("idValue");
-        entry.setKeyword(
-                new KeywordEntryKeywordBuilder()
+        SubcellularLocationEntryBuilder entry = new SubcellularLocationEntryBuilder();
+        entry.accession("SL-0001");
+        entry.content("content value");
+        entry.definition("definition value");
+        entry.geneOntologiesAdd(
+                new GeneOntologyEntryBuilder().id("goIdValue").name("goTermValue").build());
+        entry.id("idValue");
+        entry.keyword(
+                new KeywordIdBuilder()
                         .id("keywordIdValue")
                         .accession("keywordAccessionValue")
                         .build());
-        entry.setLinks(Collections.singletonList("linkValue"));
-        entry.setNote("noteValue");
-        entry.setReferences(Collections.singletonList("referenceValue"));
-        entry.setStatistics(statistics);
-        entry.setSynonyms(Collections.singletonList("synonymValue"));
-        entry.setCategory(SubcellLocationCategory.LOCATION);
+        entry.linksAdd("linkValue");
+        entry.note("noteValue");
+        entry.referencesAdd("referenceValue");
+        entry.statistics(statistics);
+        entry.synonymsAdd("synonymValue");
+        entry.category(SubcellLocationCategory.LOCATION);
         if (hasChild) {
-            entry.setIsA(Collections.singletonList(createSubcellularLocationEntry(false)));
-            entry.setPartOf(Collections.singletonList(createSubcellularLocationEntry(false)));
+            entry.isAAdd(createSubcellularLocationEntry(false));
+            entry.partOfAdd(createSubcellularLocationEntry(false));
         }
-        return entry;
+        return entry.build();
     }
 }

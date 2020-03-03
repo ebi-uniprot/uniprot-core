@@ -9,9 +9,9 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 /** @author lgonzales */
-public class UniProtXDbTypeSerializer extends StdSerializer<UniProtDatabase> {
+public class UniProtDatabaseSerializer extends StdSerializer<UniProtDatabase> {
 
-    public UniProtXDbTypeSerializer() {
+    public UniProtDatabaseSerializer() {
         super(UniProtDatabase.class);
     }
 

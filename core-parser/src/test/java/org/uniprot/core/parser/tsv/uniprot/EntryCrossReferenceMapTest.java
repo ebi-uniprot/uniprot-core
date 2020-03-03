@@ -13,11 +13,11 @@ import org.uniprot.core.uniprot.xdb.UniProtDatabase;
 import org.uniprot.core.uniprot.xdb.builder.UniProtCrossReferenceBuilder;
 import org.uniprot.cv.xdb.UniProtDatabaseImpl;
 
-class EntryDbXRefMapTest {
+class EntryCrossReferenceMapTest {
 
     @Test
     void testGetDataEmpty() {
-        EntryDbXRefMap dl = new EntryDbXRefMap(null);
+        EntryCrossReferenceMap dl = new EntryCrossReferenceMap(null);
         Map<String, String> result = dl.attributeValues();
         assertTrue(result.isEmpty());
     }
@@ -41,7 +41,7 @@ class EntryDbXRefMapTest {
                         "-",
                         "mRNA",
                         null));
-        EntryDbXRefMap dl = new EntryDbXRefMap(xrefs);
+        EntryCrossReferenceMap dl = new EntryCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(1, result.size());
         verify("AY189288;AK022746;", "dr_embl", result);
@@ -84,7 +84,7 @@ class EntryDbXRefMapTest {
                         "ENSG00000090520",
                         null,
                         null));
-        EntryDbXRefMap dl = new EntryDbXRefMap(xrefs);
+        EntryCrossReferenceMap dl = new EntryCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(2, result.size());
         verify("AY189288;AK022746;", "dr_embl", result);
@@ -106,7 +106,7 @@ class EntryDbXRefMapTest {
                         "A/B=16-23",
                         null));
         xrefs.add(createXref(new UniProtDatabaseImpl("SMR"), "P31689", "-", null, null, null));
-        EntryDbXRefMap dl = new EntryDbXRefMap(xrefs);
+        EntryCrossReferenceMap dl = new EntryCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(3, result.size());
         verify("2LO1;2M6Y;5TKG;", "dr_pdb", result);
@@ -128,7 +128,7 @@ class EntryDbXRefMapTest {
                         null,
                         null,
                         null));
-        EntryDbXRefMap dl = new EntryDbXRefMap(xrefs);
+        EntryCrossReferenceMap dl = new EntryCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(2, result.size());
         verify("P31689;", "dr_intact", result);
@@ -150,7 +150,7 @@ class EntryDbXRefMapTest {
                         null,
                         null,
                         null));
-        EntryDbXRefMap dl = new EntryDbXRefMap(xrefs);
+        EntryCrossReferenceMap dl = new EntryCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(2, result.size());
         verify("CHEMBL2189122;", "dr_chembl", result);
@@ -167,7 +167,7 @@ class EntryDbXRefMapTest {
                         "-",
                         "mRNA",
                         null);
-        String result = EntryDbXRefMap.dbXrefToString(dbxref);
+        String result = EntryCrossReferenceMap.dbXrefToString(dbxref);
         assertEquals("AY189288", result);
     }
 
@@ -182,7 +182,7 @@ class EntryDbXRefMapTest {
                         null,
                         null,
                         null);
-        String result = EntryDbXRefMap.proteomeXrefToString(dbxref);
+        String result = EntryCrossReferenceMap.proteomeXrefToString(dbxref);
         assertEquals("UP000006548: Chromosome 4", result);
     }
 

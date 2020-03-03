@@ -5,8 +5,9 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.Property;
 import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.util.Utils;
 
-public class EntryDbXRefMap implements NamedValueMap {
+public class EntryCrossReferenceMap implements NamedValueMap {
     private static final String DR = "dr_";
     private final List<UniProtCrossReference> dbReferences;
     private static final Map<String, String> D3MethodMAP = new HashMap<>();
@@ -23,15 +24,11 @@ public class EntryDbXRefMap implements NamedValueMap {
 
     public static boolean contains(List<String> fields) {
         return fields.stream().anyMatch(val -> val.startsWith(DR))
-                || EntryGoXrefMap.contains(fields);
+                || EntryGoCrossReferenceMap.contains(fields);
     }
 
-    public EntryDbXRefMap(List<UniProtCrossReference> dbReferences) {
-        if (dbReferences == null) {
-            this.dbReferences = Collections.emptyList();
-        } else {
-            this.dbReferences = Collections.unmodifiableList(dbReferences);
-        }
+    public EntryCrossReferenceMap(List<UniProtCrossReference> dbReferences) {
+        this.dbReferences = Utils.unmodifiableList(dbReferences);
     }
 
     @Override
@@ -50,20 +47,20 @@ public class EntryDbXRefMap implements NamedValueMap {
 
     private void addToMap(Map<String, String> map, String type, List<UniProtCrossReference> xrefs) {
         if (type.equalsIgnoreCase("GO")) {
-            EntryGoXrefMap dlGoXref = new EntryGoXrefMap(xrefs);
+            EntryGoCrossReferenceMap dlGoXref = new EntryGoCrossReferenceMap(xrefs);
             Map<String, String> goMap = dlGoXref.attributeValues();
             goMap.forEach(map::put);
         } else if (type.equalsIgnoreCase("PROTEOMES")) {
             map.put(
                     DR + type.toLowerCase(),
                     xrefs.stream()
-                            .map(EntryDbXRefMap::proteomeXrefToString)
+                            .map(EntryCrossReferenceMap::proteomeXrefToString)
                             .collect(Collectors.joining("; ")));
         } else {
             map.put(
                     DR + type.toLowerCase(),
                     xrefs.stream()
-                            .map(EntryDbXRefMap::dbXrefToString)
+                            .map(EntryCrossReferenceMap::dbXrefToString)
                             .collect(Collectors.joining(";", "", ";")));
             if (type.equalsIgnoreCase("PDB")) {
                 map.put("3d", pdbXrefTo3DString(xrefs));

@@ -14,7 +14,7 @@ import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceBuilder;
 import org.uniprot.core.cv.disease.builder.DiseaseEntryBuilder;
 import org.uniprot.core.cv.keyword.KeywordId;
-import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
+import org.uniprot.core.cv.keyword.builder.KeywordIdBuilder;
 
 class DiseaseEntryMapTest {
 
@@ -100,6 +100,6 @@ class DiseaseEntryMapTest {
     }
 
     private KeywordId kw(String id, String accession) {
-        return new KeywordEntryKeywordBuilder().id(id).accession(accession).build();
+        return new KeywordIdBuilder().id(id).accession(accession).build();
     }
 }

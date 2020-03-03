@@ -14,18 +14,18 @@ import org.uniprot.core.uniprot.xdb.UniProtDatabase;
 import org.uniprot.core.uniprot.xdb.builder.UniProtCrossReferenceBuilder;
 import org.uniprot.cv.xdb.UniProtDatabaseImpl;
 
-class EntryGoXrefMapTest {
+class EntryGoCrossReferenceMapTest {
 
     @Test
     void testFields() {
-        List<String> fields = EntryGoXrefMap.FIELDS;
+        List<String> fields = EntryGoCrossReferenceMap.FIELDS;
         List<String> expected = Arrays.asList("go", "go_c", "go_f", "go_p", "go_id");
         assertEquals(expected, fields);
     }
 
     @Test
     void testGetDataEmpty() {
-        EntryGoXrefMap dl = new EntryGoXrefMap(null);
+        EntryGoCrossReferenceMap dl = new EntryGoCrossReferenceMap(null);
         Map<String, String> result = dl.attributeValues();
         assertTrue(result.isEmpty());
     }
@@ -33,7 +33,7 @@ class EntryGoXrefMapTest {
     @Test
     void testGetDataFull() {
         List<UniProtCrossReference> xrefs = create();
-        EntryGoXrefMap dl = new EntryGoXrefMap(xrefs);
+        EntryGoCrossReferenceMap dl = new EntryGoCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(5, result.size());
         String go =
@@ -68,7 +68,7 @@ class EntryGoXrefMapTest {
     @Test
     void testGetDataFullWithDownloadableDbXref() {
         List<UniProtCrossReference> xrefs = create();
-        EntryDbXRefMap dl = new EntryDbXRefMap(xrefs);
+        EntryCrossReferenceMap dl = new EntryCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(5, result.size());
         String go =

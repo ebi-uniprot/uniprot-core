@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class DBXRefReader implements AutoCloseable {
+public class CrossReferenceReader implements AutoCloseable {
     private static final String DATA_REGION_SEP =
             "___________________________________________________________________________";
     private static final String COPYRIGHT_SEP =
@@ -31,7 +31,7 @@ public class DBXRefReader implements AutoCloseable {
     private Scanner reader;
     private boolean dataRegionStarted;
 
-    public DBXRefReader(String ftpUrl) throws IOException {
+    public CrossReferenceReader(String ftpUrl) throws IOException {
         URL url = new URL(ftpUrl);
         URLConnection conn = url.openConnection();
         InputStream inputStream = conn.getInputStream();

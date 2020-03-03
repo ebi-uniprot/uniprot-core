@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Deprecated
+// Should be deleted with TRM-23729
 public class UniPathway implements Comparable<UniPathway>, Serializable {
     private static final long serialVersionUID = 7579189176261471604L;
     private final String accession;
