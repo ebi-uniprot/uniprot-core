@@ -14,7 +14,7 @@
 	<version>${project.parent.version}</version>
 
 	<properties>
-		<jackson.version>2.9.6</jackson.version>
+		<jackson.version>2.10.3</jackson.version>
 		<mbknor-jackson-jsonschema.version>1.0.31</mbknor-jackson-jsonschema.version>
 	</properties>
 
