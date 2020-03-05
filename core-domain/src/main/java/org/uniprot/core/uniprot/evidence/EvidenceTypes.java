@@ -7,14 +7,14 @@ import javax.annotation.Nonnull;
 
 public enum EvidenceTypes {
     INSTANCE;
-    private Map<String, EvidenceTypeDetail> typeMap = new HashMap<>();
+    private Map<String, EvidenceDatabaseDetail> typeMap = new HashMap<>();
 
     EvidenceTypes() {
         init();
     }
 
-    public @Nonnull EvidenceTypeDetail getType(@Nonnull String typeName) {
-        EvidenceTypeDetail type = typeMap.get(typeName);
+    public @Nonnull EvidenceDatabaseDetail getType(@Nonnull String typeName) {
+        EvidenceDatabaseDetail type = typeMap.get(typeName);
         if (type == null) {
             throw new IllegalArgumentException(typeName + " does not exist in Evidence type list");
         }
@@ -215,9 +215,9 @@ public enum EvidenceTypes {
                         "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/proteomics_mapping/README"));
     }
 
-    private EvidenceTypeDetail evd(
+    private EvidenceDatabaseDetail evd(
             String name, String displayName, String category, String uriLink) {
-        EvidenceTypeCategory etCategory = EvidenceTypeCategory.valueOf(category);
-        return new EvidenceTypeDetail(name, displayName, etCategory, uriLink);
+        EvidenceDatabaseCategory etCategory = EvidenceDatabaseCategory.valueOf(category);
+        return new EvidenceDatabaseDetail(name, displayName, etCategory, uriLink);
     }
 }

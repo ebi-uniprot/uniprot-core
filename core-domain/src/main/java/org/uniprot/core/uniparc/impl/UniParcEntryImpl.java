@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import org.uniprot.core.Property;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniparc.SequenceFeature;
-import org.uniprot.core.uniparc.UniParcDBCrossReference;
+import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
@@ -25,7 +25,7 @@ public class UniParcEntryImpl implements UniParcEntry {
     private static final long serialVersionUID = 1558006779501834241L;
 
     private UniParcId uniParcId;
-    private List<UniParcDBCrossReference> databaseCrossReferences;
+    private List<UniParcCrossReference> databaseCrossReferences;
     private Sequence sequence;
     private String uniprotExclusionReason;
     private List<SequenceFeature> sequenceFeatures;
@@ -39,7 +39,7 @@ public class UniParcEntryImpl implements UniParcEntry {
 
     public UniParcEntryImpl(
             UniParcId uniParcId,
-            List<UniParcDBCrossReference> databaseCrossReferences,
+            List<UniParcCrossReference> databaseCrossReferences,
             Sequence sequence,
             List<SequenceFeature> sequenceFeatures,
             List<Taxonomy> taxonomies,
@@ -60,7 +60,7 @@ public class UniParcEntryImpl implements UniParcEntry {
     }
 
     @Override
-    public List<UniParcDBCrossReference> getDbXReferences() {
+    public List<UniParcCrossReference> getDbXReferences() {
         return databaseCrossReferences;
     }
 
@@ -89,7 +89,7 @@ public class UniParcEntryImpl implements UniParcEntry {
                                     val ->
                                             val.getKey()
                                                     .equals(
-                                                            UniParcDBCrossReference
+                                                            UniParcCrossReference
                                                                     .PROPERTY_NCBI_TAXONOMY_ID))
                             .map(Property::getValue)
                             .distinct()

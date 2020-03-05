@@ -4,7 +4,7 @@ import static java.util.Collections.emptyList;
 
 import java.util.List;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
 
 public class UnpublishedImpl extends AbstractCitationImpl implements Unpublished {
@@ -18,7 +18,7 @@ public class UnpublishedImpl extends AbstractCitationImpl implements Unpublished
     public UnpublishedImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<DBCrossReference<CitationXrefType>> citationXrefs,
+            List<CrossReference<CitationDatabase>> citationXrefs,
             String title,
             PublicationDate publicationDate) {
         super(

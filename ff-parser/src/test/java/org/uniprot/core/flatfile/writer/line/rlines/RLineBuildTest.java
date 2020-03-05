@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
-import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.builder.CrossReferenceBuilder;
+import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.SubmissionDatabase;
 import org.uniprot.core.citation.builder.*;
 import org.uniprot.core.flatfile.writer.FFLine;
@@ -588,26 +588,26 @@ class RLineBuildTest {
         return sss;
     }
 
-    private List<DBCrossReference<CitationXrefType>> buildCitationXref(
+    private List<CrossReference<CitationDatabase>> buildCitationXref(
             String pubmed, String doi, String agricolaId) {
-        List<DBCrossReference<CitationXrefType>> xrefs = new ArrayList<>();
+        List<CrossReference<CitationDatabase>> xrefs = new ArrayList<>();
         if (pubmed != null) {
             xrefs.add(
-                    new DBCrossReferenceBuilder<CitationXrefType>()
-                            .databaseType(CitationXrefType.PUBMED)
+                    new CrossReferenceBuilder<CitationDatabase>()
+                            .databaseType(CitationDatabase.PUBMED)
                             .id(pubmed)
                             .build());
         }
         if (doi != null)
             xrefs.add(
-                    new DBCrossReferenceBuilder<CitationXrefType>()
-                            .databaseType(CitationXrefType.DOI)
+                    new CrossReferenceBuilder<CitationDatabase>()
+                            .databaseType(CitationDatabase.DOI)
                             .id(doi)
                             .build());
         if (agricolaId != null)
             xrefs.add(
-                    new DBCrossReferenceBuilder<CitationXrefType>()
-                            .databaseType(CitationXrefType.AGRICOLA)
+                    new CrossReferenceBuilder<CitationDatabase>()
+                            .databaseType(CitationDatabase.AGRICOLA)
                             .id(agricolaId)
                             .build());
         return xrefs;

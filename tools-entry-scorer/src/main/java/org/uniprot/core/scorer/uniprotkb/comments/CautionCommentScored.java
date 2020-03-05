@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 /**
@@ -21,8 +21,8 @@ public class CautionCommentScored extends CommentScoredAbstr {
 
     private final FreeTextComment comment;
 
-    public CautionCommentScored(FreeTextComment copy, List<EvidenceType> evidenceTypes) {
-        super(copy.getCommentType(), evidenceTypes);
+    public CautionCommentScored(FreeTextComment copy, List<EvidenceDatabase> evidenceDatabases) {
+        super(copy.getCommentType(), evidenceDatabases);
         this.comment = copy;
     }
 
@@ -51,6 +51,6 @@ public class CautionCommentScored extends CommentScoredAbstr {
     private boolean hasScored(EvidencedValue val) {
         if (val.getValue().equals(PROBLEM_CAUTION)
                 || val.getValue().equals(ANOTHER_PROBLEM_CAUTION)) return false;
-        return ScoreUtil.hasEvidence(val.getEvidences(), evidenceTypes);
+        return ScoreUtil.hasEvidence(val.getEvidences(), evidenceDatabases);
     }
 }

@@ -10,10 +10,10 @@ import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.PublicationDate;
 import org.uniprot.core.citation.impl.AuthorImpl;
 import org.uniprot.core.citation.impl.PublicationDateImpl;
@@ -23,7 +23,7 @@ public abstract class AbstractCitationBuilder<
         implements CitationBuilder<T> {
     protected List<String> authoringGroups = new ArrayList<>();
     protected List<Author> authors = new ArrayList<>();
-    protected List<DBCrossReference<CitationXrefType>> citationXrefs = new ArrayList<>();
+    protected List<CrossReference<CitationDatabase>> citationXrefs = new ArrayList<>();
     protected String title = "";
     protected PublicationDate publicationDate;
 
@@ -57,12 +57,12 @@ public abstract class AbstractCitationBuilder<
         return getThis();
     }
 
-    public @Nonnull B citationXrefsSet(List<DBCrossReference<CitationXrefType>> citationXrefs) {
+    public @Nonnull B citationXrefsSet(List<CrossReference<CitationDatabase>> citationXrefs) {
         this.citationXrefs = modifiableList(citationXrefs);
         return getThis();
     }
 
-    public @Nonnull B citationXrefsAdd(DBCrossReference<CitationXrefType> citationXref) {
+    public @Nonnull B citationXrefsAdd(CrossReference<CitationDatabase> citationXref) {
         addOrIgnoreNull(citationXref, this.citationXrefs);
         return getThis();
     }

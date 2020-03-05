@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 15:46:26 To change this template
@@ -15,8 +15,8 @@ public class MassSpectrometryCommentScored extends CommentScoredAbstr {
     private final MassSpectrometryComment comment;
 
     public MassSpectrometryCommentScored(
-            MassSpectrometryComment copy, List<EvidenceType> evidenceTypes) {
-        super(copy.getCommentType(), evidenceTypes);
+            MassSpectrometryComment copy, List<EvidenceDatabase> evidenceDatabases) {
+        super(copy.getCommentType(), evidenceDatabases);
         this.comment = copy;
     }
 
@@ -30,6 +30,6 @@ public class MassSpectrometryCommentScored extends CommentScoredAbstr {
     }
 
     private boolean hasEvidence() {
-        return ScoreUtil.hasEvidence(new ArrayList<>(comment.getEvidences()), evidenceTypes);
+        return ScoreUtil.hasEvidence(new ArrayList<>(comment.getEvidences()), evidenceDatabases);
     }
 }

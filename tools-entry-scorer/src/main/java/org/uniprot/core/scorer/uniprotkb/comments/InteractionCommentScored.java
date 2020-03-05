@@ -3,7 +3,7 @@ package org.uniprot.core.scorer.uniprotkb.comments;
 import java.util.List;
 
 import org.uniprot.core.uniprot.comment.InteractionComment;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 15:43:07 To change this template
@@ -12,8 +12,9 @@ import org.uniprot.core.uniprot.evidence.EvidenceType;
 public class InteractionCommentScored extends CommentScoredAbstr {
     private final InteractionComment comment;
 
-    public InteractionCommentScored(InteractionComment copy, List<EvidenceType> evidenceTypes) {
-        super(copy.getCommentType(), evidenceTypes);
+    public InteractionCommentScored(
+            InteractionComment copy, List<EvidenceDatabase> evidenceDatabases) {
+        super(copy.getCommentType(), evidenceDatabases);
         this.comment = copy;
     }
 

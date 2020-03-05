@@ -17,7 +17,7 @@ import org.uniprot.core.cv.go.builder.GeneOntologyEntryBuilder;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.builder.KeywordEntryBuilder;
-import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
+import org.uniprot.core.cv.keyword.builder.KeywordIdBuilder;
 
 class KeywordEntryMapTest {
 
@@ -91,7 +91,7 @@ class KeywordEntryMapTest {
     }
 
     private KeywordId getKeyword() {
-        return new KeywordEntryKeywordBuilder().id("Ligand").accession("KW-9993").build();
+        return new KeywordIdBuilder().id("Ligand").accession("KW-9993").build();
     }
 
     private KeywordEntry getKeywordEntryParent() {

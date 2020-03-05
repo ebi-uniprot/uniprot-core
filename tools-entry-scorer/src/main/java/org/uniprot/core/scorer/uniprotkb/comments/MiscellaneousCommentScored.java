@@ -9,7 +9,7 @@ import org.uniprot.core.scorer.uniprotkb.ScoreStatus;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 /**
@@ -25,8 +25,9 @@ public class MiscellaneousCommentScored extends CommentScoredAbstr {
                 "The sequence shown here is derived from an EMBL/GenBank/DDBJ third party annotation (TPA) entry");
     }
 
-    public MiscellaneousCommentScored(FreeTextComment copy, List<EvidenceType> evidenceTypes) {
-        super(copy.getCommentType(), evidenceTypes);
+    public MiscellaneousCommentScored(
+            FreeTextComment copy, List<EvidenceDatabase> evidenceDatabases) {
+        super(copy.getCommentType(), evidenceDatabases);
         this.comment = copy;
     }
 
@@ -56,7 +57,7 @@ public class MiscellaneousCommentScored extends CommentScoredAbstr {
     private boolean hasEvidence() {
         List<Evidence> evidences = new ArrayList<>();
         comment.getTexts().forEach(text -> evidences.addAll(text.getEvidences()));
-        return ScoreUtil.hasEvidence(evidences, evidenceTypes);
+        return ScoreUtil.hasEvidence(evidences, evidenceDatabases);
     }
 
     private boolean hasScored() {

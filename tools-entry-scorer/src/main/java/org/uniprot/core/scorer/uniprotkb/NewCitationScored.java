@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 02-Mar-2010 Time: 16:14:37 To change this template
@@ -15,7 +15,7 @@ public class NewCitationScored implements HasScore {
     private final Citation citation;
 
     @SuppressWarnings("unused")
-    private final List<EvidenceType> evidenceTypes;
+    private final List<EvidenceDatabase> evidenceDatabases;
 
     /** GENOME REANNOTATION ERRATUM RETRACTION SEQUENCE REVISION GENE NAME NOMENCLATURE */
     Pattern largeScaleRegEx = Pattern.compile("\\[LARGE SCALE\\b");
@@ -30,9 +30,9 @@ public class NewCitationScored implements HasScore {
     Pattern nomenclatureRegEx = Pattern.compile("\\bNOMENCLATURE\\b");
     Pattern submissionRegEx = Pattern.compile("^EMBL[/]GenBank[/]DDBJ databases$");
 
-    public NewCitationScored(Citation citation, List<EvidenceType> evidenceTypes) {
+    public NewCitationScored(Citation citation, List<EvidenceDatabase> evidenceDatabases) {
         this.citation = citation;
-        this.evidenceTypes = evidenceTypes;
+        this.evidenceDatabases = evidenceDatabases;
     }
 
     public NewCitationScored(Citation citation) {

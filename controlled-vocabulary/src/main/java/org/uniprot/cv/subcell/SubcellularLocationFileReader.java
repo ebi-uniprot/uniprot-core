@@ -9,11 +9,12 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.go.GoTerm;
 import org.uniprot.core.cv.go.builder.GeneOntologyEntryBuilder;
-import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
+import org.uniprot.core.cv.keyword.builder.KeywordIdBuilder;
 import org.uniprot.core.cv.subcell.SubcellLocationCategory;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
-import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryImpl;
+import org.uniprot.core.cv.subcell.builder.SubcellularLocationEntryBuilder;
 import org.uniprot.cv.common.AbstractFileReader;
 
 public class SubcellularLocationFileReader extends AbstractFileReader<SubcellularLocationEntry> {
@@ -37,8 +38,7 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
     public List<SubcellularLocationEntry> parseLines(List<String> lines) {
         List<SubcellularFileEntry> rawList = convertLinesIntoInMemoryObjectList(lines);
         List<SubcellularLocationEntry> list = parseSubcellularFileEntryList(rawList);
-        updateListWithRelationShips(list, rawList);
-        return list;
+        return updateListWithRelationShips(list, rawList);
     }
 
     public Map<String, String> parseFileToAccessionMap(String fileName) {
@@ -146,79 +146,76 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
      * In case properties (strings or list) are empty setting it null. OGM will not insert null
      * properties in neo4j node
      *
-     * @param entry
-     * @return
+     * @param entry SubcellularFileEntry
+     * @return SubcellularLocationEntry
      */
     private SubcellularLocationEntry parseSubcellularFileEntry(SubcellularFileEntry entry) {
-        SubcellularLocationEntryImpl retObj = new SubcellularLocationEntryImpl();
-        retObj.setAccession(entry.ac);
-        retObj.setContent(trimSpacesAndRemoveLastDot(entry.sl));
+        SubcellularLocationEntryBuilder retObj = new SubcellularLocationEntryBuilder();
+        retObj.accession(entry.ac);
+        retObj.content(trimSpacesAndRemoveLastDot(entry.sl));
 
         if (entry.id != null) {
-            retObj.setId(trimSpacesAndRemoveLastDot(entry.id));
-            retObj.setCategory(SubcellLocationCategory.LOCATION);
+            retObj.id(trimSpacesAndRemoveLastDot(entry.id));
+            retObj.category(SubcellLocationCategory.LOCATION);
         } else if (entry.it != null) {
-            retObj.setId(trimSpacesAndRemoveLastDot(entry.it));
-            retObj.setCategory(SubcellLocationCategory.TOPOLOGY);
+            retObj.id(trimSpacesAndRemoveLastDot(entry.it));
+            retObj.category(SubcellLocationCategory.TOPOLOGY);
         } else {
-            retObj.setId(trimSpacesAndRemoveLastDot(entry.io));
-            retObj.setCategory(SubcellLocationCategory.ORIENTATION);
+            retObj.id(trimSpacesAndRemoveLastDot(entry.io));
+            retObj.category(SubcellLocationCategory.ORIENTATION);
         }
         // definition
         String def = String.join(" ", entry.de);
-        retObj.setDefinition(def.isEmpty() ? null : def);
+        retObj.definition(def.isEmpty() ? null : def);
 
         // Keyword is a single string will null by default
         if ((entry.kw != null) && !entry.kw.isEmpty())
-            retObj.setKeyword(
-                    new KeywordEntryKeywordBuilder()
-                            .id(retObj.getId())
-                            .accession(entry.kw)
-                            .build());
+            retObj.keyword(
+                    new KeywordIdBuilder().id(retObj.build().getId()).accession(entry.kw).build());
 
         // Links
-        retObj.setLinks(entry.ww.isEmpty() ? null : entry.ww);
+        retObj.linksSet(entry.ww);
 
         // Notes
-        String note = entry.an.stream().collect(Collectors.joining(" "));
-        retObj.setNote(note.isEmpty() ? null : note);
+        String note = String.join(" ", entry.an);
+        retObj.note(note.isEmpty() ? null : note);
 
         // Interesting references
         List<String> refList =
                 entry.rx.stream()
-                        .flatMap(s -> Arrays.asList(s.split(";")).stream())
+                        .flatMap(s -> Arrays.stream(s.split(";")))
                         .collect(Collectors.toList());
-        retObj.setReferences(refList.isEmpty() ? null : refList);
+        retObj.referencesSet(refList);
 
         // GoMapping
-        List<GeneOntologyEntry> goList =
+        List<GoTerm> goList =
                 entry.go.stream().map(this::parseGeneOntology).collect(Collectors.toList());
-        retObj.setGeneOntologies(goList.isEmpty() ? null : goList);
+        retObj.geneOntologiesSet(goList);
 
         // Synonyms
         List<String> synList =
                 entry.sy.stream()
-                        .flatMap(s -> Arrays.asList(s.split(";")).stream())
+                        .flatMap(s -> Arrays.stream(s.split(";")))
                         .map(this::trimSpacesAndRemoveLastDot)
                         .collect(Collectors.toList());
-        retObj.setSynonyms(synList.isEmpty() ? null : synList);
+        retObj.synonymsSet(synList);
 
-        return retObj;
+        return retObj.build();
     }
 
-    private void updateListWithRelationShips(
+    private List<SubcellularLocationEntry> updateListWithRelationShips(
             List<SubcellularLocationEntry> list, List<SubcellularFileEntry> rawList) {
+        List<SubcellularLocationEntryBuilder> retList = new ArrayList<>(list.size());
         for (SubcellularFileEntry raw : rawList) {
+            SubcellularLocationEntryBuilder target =
+                    SubcellularLocationEntryBuilder.from(
+                            findByIdentifier(list, getIdentifier(raw)));
 
             // Only check for those who have relationships
             if (raw.hi.isEmpty() && raw.hp.isEmpty()) {
+                retList.add(target);
                 continue;
             }
-
-            SubcellularLocationEntryImpl target =
-                    (SubcellularLocationEntryImpl) findByIdentifier(list, getIdentifier(raw));
-
-            assert (target != null);
 
             if (!raw.hi.isEmpty()) {
                 List<SubcellularLocationEntry> isA = new ArrayList<>();
@@ -226,15 +223,18 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
                 for (String id : raw.hi) {
                     isA.add(findByIdentifier(list, id));
                 }
-                target.setIsA(isA);
+                target.isASet(isA);
             }
             if (!raw.hp.isEmpty()) {
-                target.setPartOf(new ArrayList<>());
                 for (String id : raw.hp) {
-                    target.getPartOf().add(findByIdentifier(list, id));
+                    target.partOfAdd(findByIdentifier(list, id));
                 }
             }
+            retList.add(target);
         }
+        return retList.stream()
+                .map(SubcellularLocationEntryBuilder::build)
+                .collect(Collectors.toList());
     }
 
     private String getIdentifier(SubcellularFileEntry raw) {

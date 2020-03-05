@@ -6,30 +6,31 @@ import org.uniprot.core.cv.keyword.KeywordId;
 
 public class KeywordIdImpl implements KeywordId {
     private static final long serialVersionUID = -1281635311660829402L;
+    private final String name;
+    // id=accession
     private final String id;
-    private final String accession;
 
     KeywordIdImpl() {
         this(null, null);
     }
 
-    KeywordIdImpl(String id, String accession) {
+    KeywordIdImpl(String name, String id) {
         super();
+        this.name = name;
         this.id = id;
-        this.accession = accession;
     }
 
     public String getName() {
-        return id;
+        return name;
     }
 
     public String getId() {
-        return accession;
+        return id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id, this.accession);
+        return Objects.hash(this.name, this.id);
     }
 
     @Override
@@ -43,6 +44,6 @@ public class KeywordIdImpl implements KeywordId {
 
         KeywordIdImpl other = (KeywordIdImpl) obj;
 
-        return Objects.equals(this.id, other.id) && Objects.equals(this.accession, other.accession);
+        return Objects.equals(this.name, other.name) && Objects.equals(this.id, other.id);
     }
 }

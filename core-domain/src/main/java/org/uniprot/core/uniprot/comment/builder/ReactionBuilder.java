@@ -9,11 +9,11 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
 import org.uniprot.core.impl.ECNumberImpl;
 import org.uniprot.core.uniprot.comment.Reaction;
-import org.uniprot.core.uniprot.comment.ReactionReferenceType;
+import org.uniprot.core.uniprot.comment.ReactionDatabase;
 import org.uniprot.core.uniprot.comment.impl.ReactionImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
@@ -25,7 +25,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 public final class ReactionBuilder implements Builder<Reaction> {
     private String name;
     private ECNumber ecNumber;
-    private List<DBCrossReference<ReactionReferenceType>> reactionReferences = new ArrayList<>();
+    private List<CrossReference<ReactionDatabase>> reactionReferences = new ArrayList<>();
     private List<Evidence> evidences = new ArrayList<>();
 
     public @Nonnull ReactionBuilder name(String name) {
@@ -34,13 +34,13 @@ public final class ReactionBuilder implements Builder<Reaction> {
     }
 
     public @Nonnull ReactionBuilder reactionReferencesSet(
-            List<DBCrossReference<ReactionReferenceType>> reactionReferences) {
+            List<CrossReference<ReactionDatabase>> reactionReferences) {
         this.reactionReferences = modifiableList(reactionReferences);
         return this;
     }
 
     public @Nonnull ReactionBuilder reactionReferencesAdd(
-            DBCrossReference<ReactionReferenceType> reactionReference) {
+            CrossReference<ReactionDatabase> reactionReference) {
         addOrIgnoreNull(reactionReference, this.reactionReferences);
         return this;
     }

@@ -3,13 +3,13 @@ package org.uniprot.core.xml.proteome;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.proteome.CanonicalProtein;
 import org.uniprot.core.proteome.Component;
+import org.uniprot.core.proteome.ProteomeDatabase;
 import org.uniprot.core.proteome.ProteomeEntry;
 import org.uniprot.core.proteome.ProteomeId;
-import org.uniprot.core.proteome.ProteomeXReferenceType;
 import org.uniprot.core.proteome.RedundantProteome;
 import org.uniprot.core.proteome.Superkingdom;
 import org.uniprot.core.proteome.builder.ProteomeEntryBuilder;
@@ -62,7 +62,7 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
                 xmlObj.getRedundantProteome().stream()
                         .map(redundantProteomeConverter::fromXml)
                         .collect(Collectors.toList());
-        List<DBCrossReference<ProteomeXReferenceType>> xrefs =
+        List<CrossReference<ProteomeDatabase>> xrefs =
                 xmlObj.getDbReference().stream()
                         .map(xrefConverter::fromXml)
                         .collect(Collectors.toList());

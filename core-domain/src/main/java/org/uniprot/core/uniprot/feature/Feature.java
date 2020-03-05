@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.feature;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprot.evidence.HasEvidences;
 
 public interface Feature extends HasEvidences {
@@ -14,7 +14,7 @@ public interface Feature extends HasEvidences {
 
     AlternativeSequence getAlternativeSequence();
 
-    DBCrossReference<FeatureXDbType> getDbXref();
+    CrossReference<FeatureDatabase> getDbXref();
 
     boolean hasLocation();
 

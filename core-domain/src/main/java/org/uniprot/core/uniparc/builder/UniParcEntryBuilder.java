@@ -8,7 +8,7 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.Builder;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniparc.SequenceFeature;
-import org.uniprot.core.uniparc.UniParcDBCrossReference;
+import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniparc.impl.UniParcEntryImpl;
@@ -21,7 +21,7 @@ import org.uniprot.core.util.Utils;
  */
 public class UniParcEntryBuilder implements Builder<UniParcEntry> {
     private UniParcId uniParcId;
-    private List<UniParcDBCrossReference> databaseCrossReferences = new ArrayList<>();
+    private List<UniParcCrossReference> databaseCrossReferences = new ArrayList<>();
     private Sequence sequence;
     private String uniprotExclusionReason;
     private List<SequenceFeature> sequenceFeatures = new ArrayList<>();
@@ -48,13 +48,13 @@ public class UniParcEntryBuilder implements Builder<UniParcEntry> {
     }
 
     public @Nonnull UniParcEntryBuilder databaseCrossReferencesSet(
-            List<UniParcDBCrossReference> databaseCrossReferences) {
+            List<UniParcCrossReference> databaseCrossReferences) {
         this.databaseCrossReferences = Utils.modifiableList(databaseCrossReferences);
         return this;
     }
 
     public @Nonnull UniParcEntryBuilder databaseCrossReferencesAdd(
-            UniParcDBCrossReference databaseCrossReference) {
+            UniParcCrossReference databaseCrossReference) {
         Utils.addOrIgnoreNull(databaseCrossReference, databaseCrossReferences);
         return this;
     }

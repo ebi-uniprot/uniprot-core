@@ -11,12 +11,12 @@ import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.Value;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.citation.Citation;
+import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.CitationType;
-import org.uniprot.core.citation.CitationXrefType;
 import org.uniprot.core.citation.impl.AbstractCitationImpl;
 
 class AbstractCitationBuilderTest {
@@ -25,14 +25,14 @@ class AbstractCitationBuilderTest {
     static final String PUBLICATION_DATE = "2015-MAY";
     static final List<String> GROUPS = asList("T1", "T2");
     static final List<String> AUTHORS = asList("Tom", "John");
-    static final DBCrossReference<CitationXrefType> XREF1 =
-            new DBCrossReferenceBuilder<CitationXrefType>()
-                    .databaseType(CitationXrefType.PUBMED)
+    static final CrossReference<CitationDatabase> XREF1 =
+            new CrossReferenceBuilder<CitationDatabase>()
+                    .databaseType(CitationDatabase.PUBMED)
                     .id("id1")
                     .build();
-    static final DBCrossReference<CitationXrefType> XREF2 =
-            new DBCrossReferenceBuilder<CitationXrefType>()
-                    .databaseType(CitationXrefType.AGRICOLA)
+    static final CrossReference<CitationDatabase> XREF2 =
+            new CrossReferenceBuilder<CitationDatabase>()
+                    .databaseType(CitationDatabase.AGRICOLA)
                     .id("id2")
                     .build();
 
@@ -69,12 +69,12 @@ class AbstractCitationBuilderTest {
                 .authorsSet(AUTHORS)
                 .citationXrefsSet(
                         asList(
-                                new DBCrossReferenceBuilder<CitationXrefType>()
-                                        .databaseType(CitationXrefType.PUBMED)
+                                new CrossReferenceBuilder<CitationDatabase>()
+                                        .databaseType(CitationDatabase.PUBMED)
                                         .id("id1")
                                         .build(),
-                                new DBCrossReferenceBuilder<CitationXrefType>()
-                                        .databaseType(CitationXrefType.AGRICOLA)
+                                new CrossReferenceBuilder<CitationDatabase>()
+                                        .databaseType(CitationDatabase.AGRICOLA)
                                         .id("id2")
                                         .build()))
                 .build();

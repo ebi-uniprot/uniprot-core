@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.uniprot.core.Statistics;
-import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.go.GoTerm;
 import org.uniprot.core.cv.keyword.KeywordId;
 
 public interface SubcellularLocationEntry extends Serializable {
@@ -23,7 +23,7 @@ public interface SubcellularLocationEntry extends Serializable {
 
     Optional<KeywordId> getKeyword();
 
-    List<GeneOntologyEntry> getGeneOntologies();
+    List<GoTerm> getGeneOntologies();
 
     String getNote();
 

@@ -9,7 +9,7 @@ import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprot.comment.APIsoform;
 import org.uniprot.core.uniprot.comment.AlternativeProductsComment;
 import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 14:32:51 To change this template
@@ -19,8 +19,8 @@ public class AlternativeProductsCommentScored extends CommentScoredAbstr {
     private final AlternativeProductsComment comment;
 
     public AlternativeProductsCommentScored(
-            AlternativeProductsComment copy, List<EvidenceType> evidenceTypes) {
-        super(copy.getCommentType(), evidenceTypes);
+            AlternativeProductsComment copy, List<EvidenceDatabase> evidenceDatabases) {
+        super(copy.getCommentType(), evidenceDatabases);
         this.comment = copy;
     }
 
@@ -46,7 +46,7 @@ public class AlternativeProductsCommentScored extends CommentScoredAbstr {
         if (isoform.getNote() != null) {
             isoform.getNote().getTexts().forEach(val -> evidences.addAll(val.getEvidences()));
         }
-        return ScoreUtil.hasEvidence(evidences, evidenceTypes);
+        return ScoreUtil.hasEvidence(evidences, evidenceDatabases);
     }
 
     @Override

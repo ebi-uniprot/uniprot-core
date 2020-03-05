@@ -7,22 +7,22 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.impl.ECNumberImpl;
 import org.uniprot.core.uniprot.comment.Reaction;
-import org.uniprot.core.uniprot.comment.ReactionReferenceType;
+import org.uniprot.core.uniprot.comment.ReactionDatabase;
 import org.uniprot.core.uniprot.comment.builder.ReactionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 class ReactionImplTest {
 
-    private List<DBCrossReference<ReactionReferenceType>> references =
+    private List<CrossReference<ReactionDatabase>> references =
             Arrays.asList(
-                    xref(ReactionReferenceType.RHEA, "RHEA:123"),
-                    xref(ReactionReferenceType.RHEA, "RHEA:323"),
-                    xref(ReactionReferenceType.CHEBI, "ChEBI:3243"));
+                    xref(ReactionDatabase.RHEA, "RHEA:123"),
+                    xref(ReactionDatabase.RHEA, "RHEA:323"),
+                    xref(ReactionDatabase.CHEBI, "ChEBI:3243"));
     private ECNumber ecNumber = new ECNumberImpl("1.2.4.5");
 
     @Test
@@ -108,10 +108,7 @@ class ReactionImplTest {
                 impl.toString());
     }
 
-    private DBCrossReference<ReactionReferenceType> xref(ReactionReferenceType type, String id) {
-        return new DBCrossReferenceBuilder<ReactionReferenceType>()
-                .databaseType(type)
-                .id(id)
-                .build();
+    private CrossReference<ReactionDatabase> xref(ReactionDatabase type, String id) {
+        return new CrossReferenceBuilder<ReactionDatabase>().databaseType(type).id(id).build();
     }
 }

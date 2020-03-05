@@ -13,7 +13,7 @@ import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineConverter;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject;
 import org.uniprot.core.uniprot.description.ProteinDescription;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 
 class ProteinDescriptionScoredWithEvidencesTest {
     @Test
@@ -35,7 +35,7 @@ class ProteinDescriptionScoredWithEvidencesTest {
                         + "DE   AltName: Full=Eukaryotic translation initiation factor 3 subunit 6 {ECO:0000256|HAMAP-Rule:MF_03004};\n";
 
         testDescription(
-                deLine, 7.0, Consensus.COMPLEX, singletonList(new EvidenceType("HAMAP-Rule")));
+                deLine, 7.0, Consensus.COMPLEX, singletonList(new EvidenceDatabase("HAMAP-Rule")));
     }
 
     @Test
@@ -50,7 +50,7 @@ class ProteinDescriptionScoredWithEvidencesTest {
                 deLine,
                 7.0,
                 Consensus.COMPLEX,
-                asList(new EvidenceType("HAMAP-Rule"), new EvidenceType("RuleBase")));
+                asList(new EvidenceDatabase("HAMAP-Rule"), new EvidenceDatabase("RuleBase")));
     }
 
     @Test
@@ -61,7 +61,8 @@ class ProteinDescriptionScoredWithEvidencesTest {
                         + "DE            Short=eIF3e {ECO:0000256|HAMAP-Rule:MF_03004};\n"
                         + "DE   AltName: Full=Eukaryotic translation initiation factor 3 subunit 6 {ECO:0000256|HAMAP-Rule:MF_03004};\n";
 
-        testDescription(deLine, 5.0, Consensus.COMPLEX, singletonList(new EvidenceType("PIRNR")));
+        testDescription(
+                deLine, 5.0, Consensus.COMPLEX, singletonList(new EvidenceDatabase("PIRNR")));
     }
 
     @Test
@@ -73,11 +74,14 @@ class ProteinDescriptionScoredWithEvidencesTest {
                         + "DE   AltName: Full=Eukaryotic translation initiation factor 3 subunit 6 {ECO:0000256|HAMAP-Rule:MF_03004};\n";
 
         testDescription(
-                deLine, 0.0, Consensus.COMPLEX, singletonList(new EvidenceType("RULEBASE")));
+                deLine, 0.0, Consensus.COMPLEX, singletonList(new EvidenceDatabase("RULEBASE")));
     }
 
     private void testDescription(
-            String description, double score, Consensus consensus, List<EvidenceType> evidences) {
+            String description,
+            double score,
+            Consensus consensus,
+            List<EvidenceDatabase> evidences) {
         UniprotLineParserFactory parserFactory = new DefaultUniprotLineParserFactory();
         UniprotLineParser<DeLineObject> parser = parserFactory.createDeLineParser();
         DeLineConverter converter = new DeLineConverter();

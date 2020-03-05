@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
-import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.go.GoTerm;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
@@ -157,7 +157,7 @@ class KeywordFileReaderTest {
         }
 
         @Override
-        public List<GeneOntologyEntry> getGeneOntologies() {
+        public List<GoTerm> getGeneOntologies() {
             return null;
         }
 

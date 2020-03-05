@@ -7,8 +7,8 @@ import static org.uniprot.core.ObjectsForTests.createEvidences;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
@@ -21,10 +21,10 @@ class DiseaseCommentBuilderTest {
         String description = "some description";
         List<Evidence> evidences = createEvidences();
 
-        DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
+        DiseaseDatabase referenceType = DiseaseDatabase.MIM;
         String referenceId = "3124";
-        DBCrossReference<DiseaseReferenceType> reference =
-                new DBCrossReferenceImpl<>(referenceType, referenceId);
+        CrossReference<DiseaseDatabase> reference =
+                new CrossReferenceImpl<>(referenceType, referenceId);
         String diseaseId = "someId";
         Disease disease =
                 builder.diseaseId(diseaseId)
@@ -48,10 +48,10 @@ class DiseaseCommentBuilderTest {
         String description = "some description";
         List<Evidence> evidences = createEvidences();
 
-        DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
+        DiseaseDatabase referenceType = DiseaseDatabase.MIM;
         String referenceId = "3124";
-        DBCrossReference<DiseaseReferenceType> reference =
-                new DBCrossReferenceImpl<>(referenceType, referenceId);
+        CrossReference<DiseaseDatabase> reference =
+                new CrossReferenceImpl<>(referenceType, referenceId);
         String diseaseId = "someId";
         Disease disease =
                 builder.diseaseId(diseaseId)

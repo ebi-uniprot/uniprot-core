@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
-import org.uniprot.core.cv.keyword.builder.KeywordEntryKeywordBuilder;
+import org.uniprot.core.cv.keyword.builder.KeywordIdBuilder;
 
 class DiseaseEntryImplTest {
     private String uuid;
@@ -89,7 +89,7 @@ class DiseaseEntryImplTest {
     }
 
     private KeywordId getKeyword(int i) {
-        return new KeywordEntryKeywordBuilder()
+        return new KeywordIdBuilder()
                 .id("id" + i + this.uuid)
                 .accession("acc" + i + this.uuid)
                 .build();

@@ -87,7 +87,7 @@ class UniProtEntryIT {
                         .referencesSet(UniProtReferenceTest.getUniProtReferences())
                         .databaseCrossReferencesSet(
                                 Collections.singletonList(
-                                        UniProtDBCrossReferenceTest.getUniProtDBCrossReference()))
+                                        UniProtCrossReferenceTest.getUniProtDBCrossReference()))
                         .sequence(SequenceTest.getSequence())
                         .lineagesSet(
                                 Collections.singletonList(

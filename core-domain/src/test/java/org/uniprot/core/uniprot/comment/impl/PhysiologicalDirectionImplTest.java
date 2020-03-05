@@ -6,9 +6,9 @@ import static org.uniprot.core.ObjectsForTests.createEvidences;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.PhysiologicalDirectionType;
-import org.uniprot.core.uniprot.comment.ReactionReferenceType;
+import org.uniprot.core.uniprot.comment.ReactionDatabase;
 import org.uniprot.core.uniprot.comment.builder.PhysiologicalReactionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
@@ -21,8 +21,8 @@ class PhysiologicalDirectionImplTest {
                 new PhysiologicalReactionBuilder()
                         .directionType(PhysiologicalDirectionType.LEFT_TO_RIGHT)
                         .reactionReference(
-                                new DBCrossReferenceBuilder<ReactionReferenceType>()
-                                        .databaseType(ReactionReferenceType.RHEA)
+                                new CrossReferenceBuilder<ReactionDatabase>()
+                                        .databaseType(ReactionDatabase.RHEA)
                                         .id("RHEA:123")
                                         .build())
                         .evidencesSet(evidences)

@@ -4,17 +4,17 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprot.comment.PhysiologicalDirectionType;
 import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
-import org.uniprot.core.uniprot.comment.ReactionReferenceType;
+import org.uniprot.core.uniprot.comment.ReactionDatabase;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.util.Utils;
 
 public class PhysiologicalReactionImpl implements PhysiologicalReaction {
     private static final long serialVersionUID = -3913438195830117987L;
     private PhysiologicalDirectionType directionType;
-    private DBCrossReference<ReactionReferenceType> reactionReference;
+    private CrossReference<ReactionDatabase> reactionReference;
     private List<Evidence> evidences;
 
     // no arg constructor for JSON deserialization
@@ -24,7 +24,7 @@ public class PhysiologicalReactionImpl implements PhysiologicalReaction {
 
     public PhysiologicalReactionImpl(
             PhysiologicalDirectionType directionType,
-            DBCrossReference<ReactionReferenceType> reactionReference,
+            CrossReference<ReactionDatabase> reactionReference,
             List<Evidence> evidences) {
         this.directionType = directionType;
         this.reactionReference = reactionReference;
@@ -47,7 +47,7 @@ public class PhysiologicalReactionImpl implements PhysiologicalReaction {
     }
 
     @Override
-    public DBCrossReference<ReactionReferenceType> getReactionReference() {
+    public CrossReference<ReactionDatabase> getReactionReference() {
         return reactionReference;
     }
 

@@ -14,6 +14,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.go.GoTerm;
 import org.uniprot.core.cv.go.builder.GeneOntologyEntryBuilder;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
@@ -26,7 +27,7 @@ class KeywordEntryImplTest {
     private KeywordId keyword;
     private String definition;
     private List<String> synonyms;
-    private List<GeneOntologyEntry> geneOntologies;
+    private List<GoTerm> geneOntologies;
     private Set<KeywordEntry> parents;
     private List<String> sites;
     private KeywordId category;
@@ -136,7 +137,7 @@ class KeywordEntryImplTest {
     }
 
     public static KeywordId createKeyword(String id, String accession) {
-        return new KeywordEntryKeywordBuilder().id(id).accession(accession).build();
+        return new KeywordIdBuilder().id(id).accession(accession).build();
     }
 
     private static GeneOntologyEntry go(String id, String term) {

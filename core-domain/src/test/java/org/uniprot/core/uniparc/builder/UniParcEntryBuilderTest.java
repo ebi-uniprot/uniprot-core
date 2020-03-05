@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.builder.SequenceBuilder;
 import org.uniprot.core.uniparc.SequenceFeature;
-import org.uniprot.core.uniparc.UniParcDBCrossReference;
+import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
 
@@ -30,7 +30,7 @@ class UniParcEntryBuilderTest {
 
     @Test
     void testDatabaseCrossReferences() {
-        List<UniParcDBCrossReference> xrefs = uniParcDBCrossReferences();
+        List<UniParcCrossReference> xrefs = uniParcDBCrossReferences();
         UniParcEntry entry =
                 new UniParcEntryBuilder()
                         .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
@@ -44,7 +44,7 @@ class UniParcEntryBuilderTest {
     void testSequence() {
         String seq = "MVSWGRFICLVVVTMATLSLARPSFSLVED";
         Sequence sequence = new SequenceBuilder(seq).build();
-        List<UniParcDBCrossReference> xrefs = uniParcDBCrossReferences();
+        List<UniParcCrossReference> xrefs = uniParcDBCrossReferences();
         UniParcEntry entry =
                 new UniParcEntryBuilder()
                         .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
@@ -61,7 +61,7 @@ class UniParcEntryBuilderTest {
         String uniprotExclusionReason = "Small sequence";
         String seq = "MVSWGRFICLVVVTMATLSLARPSFSLVED";
         Sequence sequence = new SequenceBuilder(seq).build();
-        List<UniParcDBCrossReference> xrefs = uniParcDBCrossReferences();
+        List<UniParcCrossReference> xrefs = uniParcDBCrossReferences();
         UniParcEntry entry =
                 new UniParcEntryBuilder()
                         .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
@@ -79,7 +79,7 @@ class UniParcEntryBuilderTest {
     void testSequenceFeatures() {
         String seq = "MVSWGRFICLVVVTMATLSLARPSFSLVED";
         Sequence sequence = new SequenceBuilder(seq).build();
-        List<UniParcDBCrossReference> xrefs = uniParcDBCrossReferences();
+        List<UniParcCrossReference> xrefs = uniParcDBCrossReferences();
         List<SequenceFeature> seqFeatures = sequenceFeatures();
         UniParcEntry entry =
                 new UniParcEntryBuilder()
@@ -98,7 +98,7 @@ class UniParcEntryBuilderTest {
     void testTaxonomies() {
         String seq = "MVSWGRFICLVVVTMATLSLARPSFSLVED";
         Sequence sequence = new SequenceBuilder(seq).build();
-        List<UniParcDBCrossReference> xrefs = uniParcDBCrossReferences();
+        List<UniParcCrossReference> xrefs = uniParcDBCrossReferences();
         List<SequenceFeature> seqFeatures = sequenceFeatures();
         List<Taxonomy> taxonomies = taxonomies();
         UniParcEntry entry =
@@ -120,7 +120,7 @@ class UniParcEntryBuilderTest {
     void testFrom() {
         String seq = "MVSWGRFICLVVVTMATLSLARPSFSLVED";
         Sequence sequence = new SequenceBuilder(seq).build();
-        List<UniParcDBCrossReference> xrefs = uniParcDBCrossReferences();
+        List<UniParcCrossReference> xrefs = uniParcDBCrossReferences();
         List<SequenceFeature> seqFeatures = sequenceFeatures();
         List<Taxonomy> taxonomies = taxonomies();
         UniParcEntry entry =

@@ -10,14 +10,14 @@ import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 
 public class CatalyticActivityCommentScored extends CommentScoredAbstr {
     private final CatalyticActivityComment comment;
 
     public CatalyticActivityCommentScored(
-            CatalyticActivityComment copy, List<EvidenceType> evidenceTypes) {
-        super(copy.getCommentType(), evidenceTypes);
+            CatalyticActivityComment copy, List<EvidenceDatabase> evidenceDatabases) {
+        super(copy.getCommentType(), evidenceDatabases);
         this.comment = copy;
     }
 
@@ -65,6 +65,6 @@ public class CatalyticActivityCommentScored extends CommentScoredAbstr {
     }
 
     private boolean hasEvidence() {
-        return ScoreUtil.hasEvidence(getEvidences(comment), evidenceTypes);
+        return ScoreUtil.hasEvidence(getEvidences(comment), evidenceDatabases);
     }
 }

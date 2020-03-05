@@ -15,8 +15,8 @@ import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureType;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtDatabase;
 
 /**
  * @author jieluo
@@ -62,11 +62,11 @@ public interface UniProtEntry extends Serializable {
 
     List<UniProtReference> getReferencesByType(CitationType type);
 
-    List<UniProtDBCrossReference> getDatabaseCrossReferences();
+    List<UniProtCrossReference> getDatabaseCrossReferences();
 
-    List<UniProtDBCrossReference> getDatabaseCrossReferencesByType(UniProtXDbType type);
+    List<UniProtCrossReference> getDatabaseCrossReferencesByType(UniProtDatabase type);
 
-    List<UniProtDBCrossReference> getDatabaseCrossReferencesByType(String dbName);
+    List<UniProtCrossReference> getDatabaseCrossReferencesByType(String dbName);
 
     Sequence getSequence();
 

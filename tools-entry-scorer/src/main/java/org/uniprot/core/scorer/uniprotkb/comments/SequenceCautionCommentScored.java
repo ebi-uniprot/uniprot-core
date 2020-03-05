@@ -3,7 +3,7 @@ package org.uniprot.core.scorer.uniprotkb.comments;
 import java.util.List;
 
 import org.uniprot.core.uniprot.comment.SequenceCautionComment;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 16:04:13 To change this template
@@ -14,8 +14,8 @@ public class SequenceCautionCommentScored extends CommentScoredAbstr {
     private final SequenceCautionComment comment;
 
     public SequenceCautionCommentScored(
-            SequenceCautionComment copy, List<EvidenceType> evidenceTypes) {
-        super(copy.getCommentType(), evidenceTypes);
+            SequenceCautionComment copy, List<EvidenceDatabase> evidenceDatabases) {
+        super(copy.getCommentType(), evidenceDatabases);
         this.comment = copy;
     }
 

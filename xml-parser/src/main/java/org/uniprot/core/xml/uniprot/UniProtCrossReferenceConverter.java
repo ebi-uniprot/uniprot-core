@@ -3,23 +3,23 @@ package org.uniprot.core.xml.uniprot;
 import java.util.List;
 import java.util.Optional;
 
-import org.uniprot.core.cv.xdb.DBXRefTypeAttribute;
-import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
+import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
+import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.uniprot.xdb.*;
-import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+import org.uniprot.core.uniprot.xdb.builder.UniProtCrossReferenceBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.PropertyType;
 import org.uniprot.cv.xdb.GoEvidences;
-import org.uniprot.cv.xdb.UniProtXDbTypeImpl;
-import org.uniprot.cv.xdb.UniProtXDbTypes;
+import org.uniprot.cv.xdb.UniProtDatabaseImpl;
+import org.uniprot.cv.xdb.UniProtDatabaseTypes;
 
 import com.google.common.base.Strings;
 
 public class UniProtCrossReferenceConverter
-        implements Converter<DbReferenceType, UniProtDBCrossReference> {
+        implements Converter<DbReferenceType, UniProtCrossReference> {
     private static final String GO = "GO";
     private static final String DASH = "-";
     private final ObjectFactory xmlUniprotFactory;
@@ -33,8 +33,9 @@ public class UniProtCrossReferenceConverter
     }
 
     @Override
-    public UniProtDBCrossReference fromXml(DbReferenceType xmlObj) {
-        UniProtXDbTypeDetail xdbType = UniProtXDbTypes.INSTANCE.getType(xmlObj.getType());
+    public UniProtCrossReference fromXml(DbReferenceType xmlObj) {
+        UniProtDatabaseDetail xdbType =
+                UniProtDatabaseTypes.INSTANCE.getDbTypeByName(xmlObj.getType());
 
         String databaseName = xdbType.getName();
         String id = xmlObj.getId();
@@ -59,8 +60,8 @@ public class UniProtCrossReferenceConverter
             }
         }
 
-        UniProtXDbType type = new UniProtXDbTypeImpl(databaseName);
-        return new UniProtDBCrossReferenceBuilder()
+        UniProtDatabase type = new UniProtDatabaseImpl(databaseName);
+        return new UniProtCrossReferenceBuilder()
                 .databaseType(type)
                 .isoformId(isoformId)
                 .id(id)
@@ -70,7 +71,7 @@ public class UniProtCrossReferenceConverter
                 .build();
     }
 
-    private String getGOThirdAttribute(DbReferenceType xmlObj, UniProtXDbTypeDetail xdbType) {
+    private String getGOThirdAttribute(DbReferenceType xmlObj, UniProtDatabaseDetail xdbType) {
         String evXmlTag = xdbType.getAttributes().get(1).getXmlTag();
         String eco = getValue(xmlObj, evXmlTag);
         String projectXmlTag = xdbType.getAttributes().get(2).getXmlTag();
@@ -89,8 +90,8 @@ public class UniProtCrossReferenceConverter
         } else return DASH;
     }
 
-    private String getValue(UniProtDBCrossReference uniObj, int nProperty) {
-        if (GO.equals(uniObj.getDatabaseType().getName())) {
+    private String getValue(UniProtCrossReference uniObj, int nProperty) {
+        if (GO.equals(uniObj.getDatabase().getName())) {
             return getGOValue(uniObj, nProperty);
         }
         if (nProperty >= uniObj.getProperties().size()) {
@@ -98,7 +99,7 @@ public class UniProtCrossReferenceConverter
         } else return uniObj.getProperties().get(nProperty).getValue();
     }
 
-    private String getGOValue(UniProtDBCrossReference uniObj, int nProperty) {
+    private String getGOValue(UniProtCrossReference uniObj, int nProperty) {
         if (nProperty == 1) {
             String value = uniObj.getProperties().get(1).getValue();
             String[] tokens = value.split(":");
@@ -115,9 +116,9 @@ public class UniProtCrossReferenceConverter
     }
 
     @Override
-    public DbReferenceType toXml(UniProtDBCrossReference uniObj) {
+    public DbReferenceType toXml(UniProtCrossReference uniObj) {
         DbReferenceType xmlReference = xmlUniprotFactory.createDbReferenceType();
-        xmlReference.setType(uniObj.getDatabaseType().getDetail().getDisplayName());
+        xmlReference.setType(uniObj.getDatabase().getDetail().getDisplayName());
         xmlReference.setId(uniObj.getId());
         if (!Strings.isNullOrEmpty(uniObj.getIsoformId())) {
             MoleculeType mol = xmlUniprotFactory.createMoleculeType();
@@ -128,9 +129,9 @@ public class UniProtCrossReferenceConverter
         return xmlReference;
     }
 
-    private void addProperties(DbReferenceType xmlReference, UniProtDBCrossReference uniObj) {
-        UniProtXDbTypeDetail xdbTypeDetail = uniObj.getDatabaseType().getDetail();
-        List<DBXRefTypeAttribute> attributes = xdbTypeDetail.getAttributes();
+    private void addProperties(DbReferenceType xmlReference, UniProtCrossReference uniObj) {
+        UniProtDatabaseDetail xdbTypeDetail = uniObj.getDatabase().getDetail();
+        List<UniProtDatabaseAttribute> attributes = xdbTypeDetail.getAttributes();
         int size = attributes.size();
         for (int i = 0; i < size; i++) {
             String val = getValue(uniObj, i);

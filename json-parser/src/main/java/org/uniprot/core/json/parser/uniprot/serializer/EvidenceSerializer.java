@@ -23,8 +23,8 @@ public class EvidenceSerializer extends StdSerializer<EvidenceImpl> {
         gen.writeStartObject();
         gen.writeStringField("evidenceCode", evidence.getEvidenceCode().getCode());
         if (evidence.getSource() != null) {
-            if (evidence.getSource().getDatabaseType() != null) {
-                gen.writeStringField("source", evidence.getSource().getDatabaseType().getName());
+            if (evidence.getSource().getDatabase() != null) {
+                gen.writeStringField("source", evidence.getSource().getDatabase().getName());
             }
             gen.writeStringField("id", evidence.getSource().getId());
         }

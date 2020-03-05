@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.exception.ParseDiseaseException;
 import org.uniprot.core.flatfile.parser.exception.ParseSubcellularLocationException;
@@ -20,7 +20,7 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.*;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.Disease;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.FreeText;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.Interaction;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.impl.ECNumberImpl;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.comment.builder.*;
@@ -409,8 +409,8 @@ public class CcLineConverter extends EvidenceCollector
             }
             if (!Strings.isNullOrEmpty(cObj.getMim())) {
                 builder.reference(
-                        new DBCrossReferenceBuilder<DiseaseReferenceType>()
-                                .databaseType(DiseaseReferenceType.MIM)
+                        new CrossReferenceBuilder<DiseaseDatabase>()
+                                .databaseType(DiseaseDatabase.MIM)
                                 .id(cObj.getMim())
                                 .build());
             }
@@ -590,13 +590,13 @@ public class CcLineConverter extends EvidenceCollector
                 .build();
     }
 
-    private DBCrossReference<CofactorReferenceType> createCofactorReference(String val) {
+    private CrossReference<CofactorDatabase> createCofactorReference(String val) {
         int index = val.indexOf(':');
         String type = val.substring(0, index);
         String id = val.substring(index + 1);
-        return new DBCrossReferenceBuilder<CofactorReferenceType>()
+        return new CrossReferenceBuilder<CofactorDatabase>()
                 .id(id)
-                .databaseType(CofactorReferenceType.typeOf(type))
+                .databaseType(CofactorDatabase.typeOf(type))
                 .build();
     }
 
@@ -638,7 +638,7 @@ public class CcLineConverter extends EvidenceCollector
 
     private PhysiologicalReaction convertPhysiologicalDirection(
             CAPhysioDirection capd, Map<Object, List<Evidence>> evidences) {
-        DBCrossReference<ReactionReferenceType> reactionReference = null;
+        CrossReference<ReactionDatabase> reactionReference = null;
         if (capd.getXref() != null) reactionReference = convertReactionReference(capd.getXref());
 
         return new PhysiologicalReactionBuilder()
@@ -649,7 +649,7 @@ public class CcLineConverter extends EvidenceCollector
     }
 
     private Reaction convertReaction(CAReaction caReaction, Map<Object, List<Evidence>> evidences) {
-        List<DBCrossReference<ReactionReferenceType>> xrefs = null;
+        List<CrossReference<ReactionDatabase>> xrefs = null;
         ECNumber ecNumber = null;
         if (!Strings.isNullOrEmpty(caReaction.getXref())) {
             xrefs =
@@ -668,12 +668,12 @@ public class CcLineConverter extends EvidenceCollector
                 .build();
     }
 
-    private DBCrossReference<ReactionReferenceType> convertReactionReference(String val) {
+    private CrossReference<ReactionDatabase> convertReactionReference(String val) {
 
         int index = val.indexOf(':');
         String type = val.substring(0, index);
         String id = val.substring(index + 1);
-        return new DBCrossReferenceImpl<>(ReactionReferenceType.typeOf(type), id);
+        return new CrossReferenceImpl<>(ReactionDatabase.typeOf(type), id);
     }
 
     private CommentType convert(CC.CCTopicEnum topic) {

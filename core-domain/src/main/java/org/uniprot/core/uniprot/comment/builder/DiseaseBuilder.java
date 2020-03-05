@@ -9,9 +9,9 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprot.comment.Disease;
-import org.uniprot.core.uniprot.comment.DiseaseReferenceType;
+import org.uniprot.core.uniprot.comment.DiseaseDatabase;
 import org.uniprot.core.uniprot.comment.impl.DiseaseImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
@@ -20,7 +20,7 @@ public final class DiseaseBuilder implements Builder<Disease> {
     private String diseaseAc;
     private String acronym;
     private String description;
-    private DBCrossReference<DiseaseReferenceType> reference;
+    private CrossReference<DiseaseDatabase> reference;
     private List<Evidence> evidences = new ArrayList<>();
 
     public @Nonnull Disease build() {
@@ -67,7 +67,7 @@ public final class DiseaseBuilder implements Builder<Disease> {
         return this;
     }
 
-    public @Nonnull DiseaseBuilder reference(DBCrossReference<DiseaseReferenceType> reference) {
+    public @Nonnull DiseaseBuilder reference(CrossReference<DiseaseDatabase> reference) {
         this.reference = reference;
         return this;
     }

@@ -1,0 +1,120 @@
+package org.uniprot.core.parser.tsv.uniparc;
+
+import java.time.LocalDate;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import org.uniprot.core.Property;
+import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
+import org.uniprot.core.uniparc.UniParcCrossReference;
+import org.uniprot.core.uniparc.UniParcDatabase;
+
+/**
+ * @author jluo
+ * @date: 24 Jun 2019
+ */
+public class UniParcCrossReferenceMap implements NamedValueMap {
+    private static final String DELIMITER = "; ";
+    private static final String DELIMITER2 = ";";
+
+    public static final List<String> FIELDS =
+            Collections.unmodifiableList(
+                    Arrays.asList(
+                            "gene", "protein", "proteome", "accession", "first_seen", "last_seen"));
+
+    private final List<UniParcCrossReference> xrefs;
+
+    public UniParcCrossReferenceMap(List<UniParcCrossReference> xrefs) {
+        this.xrefs = xrefs;
+    }
+
+    @Override
+    public Map<String, String> attributeValues() {
+        Map<String, String> map = new HashMap<>();
+        String proteins = getData(UniParcCrossReference.PROPERTY_PROTEIN_NAME);
+        String genes = getData(UniParcCrossReference.PROPERTY_GENE_NAME);
+        ;
+        String accessions = getUniProtAccessions();
+        String proteomes = getProteomes();
+        Optional<LocalDate> firstSeen = getFirstSeenDate();
+        Optional<LocalDate> lastSeen = getLastSeenDate();
+        map.put(FIELDS.get(0), genes);
+        map.put(FIELDS.get(1), proteins);
+        map.put(FIELDS.get(2), proteomes);
+        map.put(FIELDS.get(3), accessions);
+        map.put(FIELDS.get(4), firstSeen.map(LocalDate::toString).orElse(""));
+        map.put(FIELDS.get(5), lastSeen.map(LocalDate::toString).orElse(""));
+        return map;
+    }
+
+    public static boolean contains(List<String> fields) {
+        return fields.stream().anyMatch(FIELDS::contains);
+    }
+
+    private Optional<LocalDate> getFirstSeenDate() {
+        return xrefs.stream()
+                .map(UniParcCrossReference::getCreated)
+                .min(Comparator.comparing(LocalDate::toEpochDay));
+    }
+
+    private Optional<LocalDate> getLastSeenDate() {
+        return xrefs.stream()
+                .map(UniParcCrossReference::getLastUpdated)
+                .max(Comparator.comparing(LocalDate::toEpochDay));
+    }
+
+    private String getProteomes() {
+        return xrefs.stream()
+                .map(this::getProteome)
+                .filter(Objects::nonNull)
+                .collect(Collectors.joining(DELIMITER));
+    }
+
+    private String getProteome(UniParcCrossReference xref) {
+        Optional<Property> opUpid = getProperty(xref, UniParcCrossReference.PROPERTY_PROTEOME_ID);
+        if (opUpid.isPresent()) {
+            Optional<Property> opPComponent =
+                    getProperty(xref, UniParcCrossReference.PROPERTY_COMPONENT);
+            String proteome = opUpid.get().getValue();
+            if (opPComponent.isPresent()) {
+                proteome += ":" + opPComponent.get().getValue();
+            }
+            return proteome;
+        }
+        return null;
+    }
+
+    private String getUniProtAccessions() {
+        return xrefs.stream()
+                .map(this::getUniProtAccession)
+                .filter(Objects::nonNull)
+                .collect(Collectors.joining(DELIMITER));
+    }
+
+    private String getUniProtAccession(UniParcCrossReference xref) {
+        UniParcDatabase type = xref.getDatabase();
+        if ((type == UniParcDatabase.SWISSPROT)
+                || (type == UniParcDatabase.TREMBL)
+                || (type == UniParcDatabase.SWISSPROT_VARSPLIC)) {
+            String accession = xref.getId();
+            if (!xref.isActive()) {
+                accession += "." + xref.getVersion() + " (obsolete)";
+            }
+            return accession;
+        }
+        return null;
+    }
+
+    private String getData(String propertyType) {
+        return xrefs.stream()
+                .map(val -> getProperty(val, propertyType))
+                .map(val -> val.map(Property::getValue).orElse(""))
+                .collect(Collectors.joining(DELIMITER2));
+    }
+
+    private Optional<Property> getProperty(UniParcCrossReference xref, String propertyType) {
+        return xref.getProperties().stream()
+                .filter(val -> val.getKey().equals(propertyType))
+                .findFirst();
+    }
+}

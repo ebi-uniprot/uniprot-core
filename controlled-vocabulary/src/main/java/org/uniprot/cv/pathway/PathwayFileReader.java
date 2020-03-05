@@ -1,9 +1,6 @@
 package org.uniprot.cv.pathway;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -12,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceBuilder;
 import org.uniprot.core.cv.pathway.PathwayEntry;
-import org.uniprot.core.cv.pathway.PathwayEntryImpl;
+import org.uniprot.core.cv.pathway.builder.PathwayEntryBuilder;
 import org.uniprot.cv.common.AbstractFileReader;
 
 public class PathwayFileReader extends AbstractFileReader<PathwayEntry> {
@@ -39,9 +36,8 @@ public class PathwayFileReader extends AbstractFileReader<PathwayEntry> {
     public List<PathwayEntry> parseLines(List<String> lines) {
         List<PathwayFileEntry> rawList = convertLinesIntoInMemoryObjectList(lines);
         List<PathwayEntry> list = parsePathwayFileEntryList(rawList);
-        updateListWithRelationShips(list, rawList);
         //	updateCategories(list);
-        return list;
+        return updateListWithRelationShips(list, rawList);
     }
 
     private List<PathwayEntry> parsePathwayFileEntryList(List<PathwayFileEntry> rawList) {
@@ -49,30 +45,30 @@ public class PathwayFileReader extends AbstractFileReader<PathwayEntry> {
     }
 
     private PathwayEntry parsePathwayFileEntry(PathwayFileEntry entry) {
-        PathwayEntryImpl retObj = new PathwayEntryImpl();
-        retObj.setAccession(entry.ac);
-        retObj.setId(trimSpacesAndRemoveLastDot(entry.id));
-        retObj.setPathwayClass(entry.cl);
+        PathwayEntryBuilder retObj = new PathwayEntryBuilder();
+        retObj.accession(entry.ac);
+        retObj.id(trimSpacesAndRemoveLastDot(entry.id));
+        retObj.pathwayClass(entry.cl);
         // definition
         String def = String.join(" ", entry.de);
-        retObj.setDefinition(def.isEmpty() ? null : def);
+        retObj.definition(def.isEmpty() ? null : def);
 
         // Synonyms
         List<String> synList =
                 entry.sy.stream()
-                        .flatMap(s -> Arrays.asList(s.split(";")).stream())
+                        .flatMap(s -> Arrays.stream(s.split(";")))
                         .map(this::trimSpacesAndRemoveLastDot)
                         .collect(Collectors.toList());
-        retObj.setSynonyms(synList.isEmpty() ? null : synList);
+        retObj.synonymsSet(synList);
 
         // Cross-reference(s)
         List<DiseaseCrossReference> crList =
                 remergeDrLine(entry.dr).stream()
                         .map(this::parseCrossReference)
-                        .filter(val -> val != null)
+                        .filter(Objects::nonNull)
                         .collect(Collectors.toList());
-        retObj.setCrossReferences(crList);
-        return retObj;
+        retObj.crossReferencesSet(crList);
+        return retObj.build();
     }
 
     private List<String> remergeDrLine(List<String> dr) {
@@ -118,17 +114,17 @@ public class PathwayFileReader extends AbstractFileReader<PathwayEntry> {
                 .build();
     }
 
-    private void updateListWithRelationShips(
+    private List<PathwayEntry> updateListWithRelationShips(
             List<PathwayEntry> list, List<PathwayFileEntry> rawList) {
+        List<PathwayEntry> retList = new ArrayList<>(list.size());
+
         for (PathwayFileEntry raw : rawList) {
-            // category will not have relationship, so ignore them
+            PathwayEntry target = findByIdentifier(list, raw.ac);
+            assert (target != null);
             if (raw.hi.isEmpty() && raw.hp.isEmpty()) {
+                retList.add(target);
                 continue;
             }
-
-            // Only getting keywords
-            PathwayEntryImpl target = (PathwayEntryImpl) findByIdentifier(list, raw.ac);
-            assert (target != null);
 
             final List<String> hiList =
                     raw.hi.stream()
@@ -145,18 +141,22 @@ public class PathwayFileReader extends AbstractFileReader<PathwayEntry> {
             List<PathwayEntry> isAParents =
                     hiList.stream()
                             .map(val -> findByIdentifier(list, val))
-                            .filter(val -> val != null)
+                            .filter(Objects::nonNull)
                             .collect(Collectors.toList());
 
             List<PathwayEntry> partOfParents =
                     hpList.stream()
                             .map(val -> findByIdentifier(list, val))
-                            .filter(val -> val != null)
+                            .filter(Objects::nonNull)
                             .collect(Collectors.toList());
 
-            target.setIsAParents(isAParents);
-            target.setPartOfParents(partOfParents);
+            retList.add(
+                    PathwayEntryBuilder.from(target)
+                            .isAParentsSet(isAParents)
+                            .partOfParentsSet(partOfParents)
+                            .build());
         }
+        return retList;
     }
 
     private PathwayEntry findByIdentifier(List<PathwayEntry> list, String ac) {

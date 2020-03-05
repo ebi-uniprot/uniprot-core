@@ -43,8 +43,8 @@ import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureType;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtDatabase;
 import org.uniprot.core.util.Utils;
 
 public class UniProtEntryImpl implements UniProtEntry {
@@ -68,7 +68,7 @@ public class UniProtEntryImpl implements UniProtEntry {
 
     private List<Keyword> keywords;
     private List<UniProtReference> references;
-    private List<UniProtDBCrossReference> databaseCrossReferences;
+    private List<UniProtCrossReference> databaseCrossReferences;
     private Sequence sequence;
 
     private InternalSection internalSection;
@@ -106,7 +106,7 @@ public class UniProtEntryImpl implements UniProtEntry {
             List<GeneLocation> geneLocations,
             List<Keyword> keywords,
             List<UniProtReference> references,
-            List<UniProtDBCrossReference> databaseCrossReferences,
+            List<UniProtCrossReference> databaseCrossReferences,
             Sequence sequence,
             InternalSection internalSection,
             List<TaxonomyLineage> lineages,
@@ -250,19 +250,19 @@ public class UniProtEntryImpl implements UniProtEntry {
     }
 
     @Override
-    public List<UniProtDBCrossReference> getDatabaseCrossReferences() {
+    public List<UniProtCrossReference> getDatabaseCrossReferences() {
         return databaseCrossReferences;
     }
 
     @Override
-    public List<UniProtDBCrossReference> getDatabaseCrossReferencesByType(UniProtXDbType type) {
+    public List<UniProtCrossReference> getDatabaseCrossReferencesByType(UniProtDatabase type) {
         return getDatabaseCrossReferencesByType(type.getName());
     }
 
     @Override
-    public List<UniProtDBCrossReference> getDatabaseCrossReferencesByType(String dbName) {
+    public List<UniProtCrossReference> getDatabaseCrossReferencesByType(String dbName) {
         return this.databaseCrossReferences.stream()
-                .filter(val -> dbName.equals(val.getDatabaseType().getName()))
+                .filter(val -> dbName.equals(val.getDatabase().getName()))
                 .collect(Collectors.toList());
     }
 

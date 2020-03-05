@@ -10,10 +10,10 @@ import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.Cofactor;
-import org.uniprot.core.uniprot.comment.CofactorReferenceType;
+import org.uniprot.core.uniprot.comment.CofactorDatabase;
 import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.xml.jaxb.uniprot.CofactorType;
@@ -49,9 +49,9 @@ class CofactorConverterTest {
         // CC Name=Zn(2+); Xref=ChEBI:CHEBI:29105;
         // CC Evidence={ECO:0000269|PubMed:9060645, ECO:0000269|PubMed:9060647};
 
-        DBCrossReference<CofactorReferenceType> reference =
-                new DBCrossReferenceBuilder<CofactorReferenceType>()
-                        .databaseType(CofactorReferenceType.CHEBI)
+        CrossReference<CofactorDatabase> reference =
+                new CrossReferenceBuilder<CofactorDatabase>()
+                        .databaseType(CofactorDatabase.CHEBI)
                         .id("CHEBI:29105")
                         .build();
 
@@ -96,8 +96,7 @@ class CofactorConverterTest {
         Cofactor cofactor = converter.fromXml(cofactorType);
         assertEquals("Zn(2+)", cofactor.getName());
         assertEquals("CHEBI:29105", cofactor.getCofactorReference().getId());
-        assertEquals(
-                CofactorReferenceType.CHEBI, cofactor.getCofactorReference().getDatabaseType());
+        assertEquals(CofactorDatabase.CHEBI, cofactor.getCofactorReference().getDatabase());
         List<Evidence> evids = cofactor.getEvidences();
         assertEquals(2, evids.size());
         assertEquals("ECO:0000269|PubMed:9060646", evids.get(0).getValue());

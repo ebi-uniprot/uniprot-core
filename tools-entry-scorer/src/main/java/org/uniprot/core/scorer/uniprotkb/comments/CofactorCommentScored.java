@@ -8,7 +8,7 @@ import org.uniprot.core.scorer.uniprotkb.ScoreStatus;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprot.comment.Cofactor;
 import org.uniprot.core.uniprot.comment.CofactorComment;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 15:05:15 To change this template
@@ -18,8 +18,8 @@ public class CofactorCommentScored extends CommentScoredAbstr {
 
     private final CofactorComment comment;
 
-    public CofactorCommentScored(CofactorComment copy, List<EvidenceType> evidenceTypes) {
-        super(copy.getCommentType(), evidenceTypes);
+    public CofactorCommentScored(CofactorComment copy, List<EvidenceDatabase> evidenceDatabases) {
+        super(copy.getCommentType(), evidenceDatabases);
         this.comment = copy;
     }
 
@@ -32,7 +32,7 @@ public class CofactorCommentScored extends CommentScoredAbstr {
         double score = 0;
         List<Cofactor> cofactors = comment.getCofactors();
         for (Cofactor cofactor : cofactors) {
-            if (ScoreUtil.hasEvidence(cofactor.getEvidences(), evidenceTypes)) {
+            if (ScoreUtil.hasEvidence(cofactor.getEvidences(), evidenceDatabases)) {
                 ScoreStatus status = getCommentScoreStatus(cofactor);
                 switch (status) {
                     case EXPERIMENTAL:

@@ -45,8 +45,8 @@ public class SSEvidenceLineBuilder extends FFLineBuilderAbstr<List<EvidenceLine>
             sb.append(evidence.getEvidenceCode().getCode());
             sb.append(SEPARATOR_SEMICOLON);
             if (evidence.getSource() != null) {
-                if (!evidence.getSource().getDatabaseType().getName().equals(REFERENCE)) {
-                    sb.append(evidence.getSource().getDatabaseType().getName()).append(":");
+                if (!evidence.getSource().getDatabase().getName().equals(REFERENCE)) {
+                    sb.append(evidence.getSource().getDatabase().getName()).append(":");
                 }
                 sb.append(evidence.getSource().getId());
             } else {

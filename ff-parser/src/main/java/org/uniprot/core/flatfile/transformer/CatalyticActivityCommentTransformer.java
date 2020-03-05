@@ -8,9 +8,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.impl.ECNumberImpl;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.comment.builder.CatalyticActivityCommentBuilder;
@@ -93,7 +93,7 @@ public class CatalyticActivityCommentTransformer
 
     private PhysiologicalReaction createPhysiologicalDirection(
             String name, String xref, String evidence) {
-        DBCrossReference<ReactionReferenceType> reference = null;
+        CrossReference<ReactionDatabase> reference = null;
         if (!Strings.isNullOrEmpty(xref)) {
             reference = convertReactionReference(xref);
         }
@@ -116,7 +116,7 @@ public class CatalyticActivityCommentTransformer
         if (!Strings.isNullOrEmpty(ec)) {
             ecNumber = new ECNumberImpl(ec);
         }
-        List<DBCrossReference<ReactionReferenceType>> references = new ArrayList<>();
+        List<CrossReference<ReactionDatabase>> references = new ArrayList<>();
         if (!Strings.isNullOrEmpty(xref)) {
             references =
                     stream(xref.split(", "))
@@ -138,13 +138,13 @@ public class CatalyticActivityCommentTransformer
                 .build();
     }
 
-    private DBCrossReference<ReactionReferenceType> convertReactionReference(String val) {
+    private CrossReference<ReactionDatabase> convertReactionReference(String val) {
 
         int index = val.indexOf(':');
         String type = val.substring(0, index);
         String id = val.substring(index + 1);
-        return new DBCrossReferenceBuilder<ReactionReferenceType>()
-                .databaseType(ReactionReferenceType.typeOf(type))
+        return new CrossReferenceBuilder<ReactionDatabase>()
+                .databaseType(ReactionDatabase.typeOf(type))
                 .id(id)
                 .build();
     }

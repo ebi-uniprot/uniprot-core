@@ -8,50 +8,50 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.Property;
-import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
+import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-import org.uniprot.core.uniprot.xdb.UniProtXDbType;
-import org.uniprot.cv.xdb.UniProtXDbDisplayOrder;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtDatabase;
+import org.uniprot.cv.xdb.UniProtCrossReferenceDisplayOrder;
 
 import com.google.common.base.Strings;
 
-public class DRLineBuilder extends FFLineBuilderAbstr<List<UniProtDBCrossReference>>
-        implements FFLineBuilder<List<UniProtDBCrossReference>> {
+public class DRLineBuilder extends FFLineBuilderAbstr<List<UniProtCrossReference>>
+        implements FFLineBuilder<List<UniProtCrossReference>> {
     public DRLineBuilder() {
         super(LineType.DR);
     }
 
     @Override
-    public String buildString(List<UniProtDBCrossReference> f) {
+    public String buildString(List<UniProtCrossReference> f) {
         List<String> lines = buildLine(f, false, false);
         return FFLines.create(lines).toString();
     }
 
     @Override
-    public String buildStringWithEvidence(List<UniProtDBCrossReference> f) {
+    public String buildStringWithEvidence(List<UniProtCrossReference> f) {
         List<String> lines = buildLine(f, false, true);
         return FFLines.create(lines).toString();
     }
 
     @Override
-    protected FFLine buildLine(List<UniProtDBCrossReference> f, boolean showEvidence) {
+    protected FFLine buildLine(List<UniProtCrossReference> f, boolean showEvidence) {
         List<String> lines = buildLine(f, true, showEvidence);
         return FFLines.create(lines);
     }
 
     private List<String> buildLine(
-            List<UniProtDBCrossReference> f, boolean includeFFMarkings, boolean showEvidence) {
+            List<UniProtCrossReference> f, boolean includeFFMarkings, boolean showEvidence) {
 
-        UniProtXDbDisplayOrder dorder = UniProtXDbDisplayOrder.INSTANCE;
+        UniProtCrossReferenceDisplayOrder dorder = UniProtCrossReferenceDisplayOrder.INSTANCE;
         List<String> lines = new ArrayList<>();
 
-        for (UniProtXDbTypeDetail databaseType : dorder.getOrderedDatabases()) {
-            List<UniProtDBCrossReference> listDBXref =
+        for (UniProtDatabaseDetail databaseType : dorder.getOrderedDatabases()) {
+            List<UniProtCrossReference> listDBXref =
                     getCrossReferencesByType(f, databaseType.getName());
             listDBXref.stream()
                     .map(xref -> export(xref, includeFFMarkings, showEvidence))
@@ -60,22 +60,22 @@ public class DRLineBuilder extends FFLineBuilderAbstr<List<UniProtDBCrossReferen
         return lines;
     }
 
-    private List<UniProtDBCrossReference> getCrossReferencesByType(
-            List<UniProtDBCrossReference> list, String dbName) {
+    private List<UniProtCrossReference> getCrossReferencesByType(
+            List<UniProtCrossReference> list, String dbName) {
         return list.stream()
-                .filter(val -> dbName.equals(val.getDatabaseType().getName()))
+                .filter(val -> dbName.equals(val.getDatabase().getName()))
                 .collect(Collectors.toList());
     }
 
     public String export(
-            UniProtDBCrossReference reference, boolean includeFFMarkings, boolean showEvidence) {
-        UniProtXDbType dbType = reference.getDatabaseType();
+            UniProtCrossReference reference, boolean includeFFMarkings, boolean showEvidence) {
+        UniProtDatabase dbType = reference.getDatabase();
         if ((dbType.getName().equals("EMBL")) && !includeFFMarkings)
             return exportEMBLNoFF(reference);
         StringBuilder sb = new StringBuilder();
         if (includeFFMarkings) {
             sb.append(linePrefix);
-            sb.append(reference.getDatabaseType().getDetail().getDisplayName()).append("; ");
+            sb.append(reference.getDatabase().getDetail().getDisplayName()).append("; ");
         }
         sb.append(reference.getId());
         append(sb, reference.getProperties(), 0, includeFFMarkings);
@@ -107,7 +107,7 @@ public class DRLineBuilder extends FFLineBuilderAbstr<List<UniProtDBCrossReferen
         } else return sb;
     }
 
-    private static String exportEMBLNoFF(UniProtDBCrossReference embl) {
+    private static String exportEMBLNoFF(UniProtCrossReference embl) {
         StringBuilder sb = new StringBuilder();
         sb.append(embl.getId());
         sb.append(" ");
