@@ -25,7 +25,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 public final class ReactionBuilder implements Builder<Reaction> {
     private String name;
     private ECNumber ecNumber;
-    private List<CrossReference<ReactionDatabase>> reactionReferences = new ArrayList<>();
+    private List<CrossReference<ReactionDatabase>> reactionCrossReferences = new ArrayList<>();
     private List<Evidence> evidences = new ArrayList<>();
 
     public @Nonnull ReactionBuilder name(String name) {
@@ -33,15 +33,15 @@ public final class ReactionBuilder implements Builder<Reaction> {
         return this;
     }
 
-    public @Nonnull ReactionBuilder reactionReferencesSet(
-            List<CrossReference<ReactionDatabase>> reactionReferences) {
-        this.reactionReferences = modifiableList(reactionReferences);
+    public @Nonnull ReactionBuilder reactionCrossReferencesSet(
+            List<CrossReference<ReactionDatabase>> reactionCrossReferences) {
+        this.reactionCrossReferences = modifiableList(reactionCrossReferences);
         return this;
     }
 
-    public @Nonnull ReactionBuilder reactionReferencesAdd(
-            CrossReference<ReactionDatabase> reactionReference) {
-        addOrIgnoreNull(reactionReference, this.reactionReferences);
+    public @Nonnull ReactionBuilder reactionCrossReferencesAdd(
+            CrossReference<ReactionDatabase> reactionCrossReference) {
+        addOrIgnoreNull(reactionCrossReference, this.reactionCrossReferences);
         return this;
     }
 
@@ -66,7 +66,7 @@ public final class ReactionBuilder implements Builder<Reaction> {
     }
 
     public @Nonnull ReactionImpl build() {
-        return new ReactionImpl(name, reactionReferences, ecNumber, evidences);
+        return new ReactionImpl(name, reactionCrossReferences, ecNumber, evidences);
     }
 
     public static @Nonnull ReactionBuilder from(@Nonnull Reaction instance) {
@@ -74,6 +74,6 @@ public final class ReactionBuilder implements Builder<Reaction> {
                 .ecNumber(instance.getEcNumber())
                 .evidencesSet(instance.getEvidences())
                 .name(instance.getName())
-                .reactionReferencesSet(instance.getReactionReferences());
+                .reactionCrossReferencesSet(instance.getReactionCrossReferences());
     }
 }

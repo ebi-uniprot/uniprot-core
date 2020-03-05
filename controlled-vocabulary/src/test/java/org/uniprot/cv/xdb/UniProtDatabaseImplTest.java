@@ -10,7 +10,7 @@ class UniProtDatabaseImplTest {
 
     @Test
     void canGetDetail() {
-        UniProtDatabaseDetail embl = new UniProtDatabaseImpl("EMBL").getDetail();
+        UniProtDatabaseDetail embl = new UniProtDatabaseImpl("EMBL").getUniProtDatabaseDetail();
         assertNotNull(embl);
     }
 

@@ -38,7 +38,7 @@ public class UniProtEntryBuilder implements Builder<UniProtEntry> {
     private List<GeneLocation> geneLocations = new ArrayList<>();
     private List<Keyword> keywords = new ArrayList<>();
     private List<UniProtReference> references = new ArrayList<>();
-    private List<UniProtCrossReference> databaseCrossReferences = new ArrayList<>();
+    private List<UniProtCrossReference> uniProtCrossReferences = new ArrayList<>();
     private Sequence sequence = null;
     private InternalSection internalSection = null;
     private EntryInactiveReason inactiveReason;
@@ -221,15 +221,15 @@ public class UniProtEntryBuilder implements Builder<UniProtEntry> {
         return this;
     }
 
-    public @Nonnull UniProtEntryBuilder databaseCrossReferencesAdd(
-            UniProtCrossReference databaseCrossReference) {
-        addOrIgnoreNull(databaseCrossReference, this.databaseCrossReferences);
+    public @Nonnull UniProtEntryBuilder uniProtCrossReferencesAdd(
+            UniProtCrossReference uniProtCrossReference) {
+        addOrIgnoreNull(uniProtCrossReference, this.uniProtCrossReferences);
         return this;
     }
 
-    public @Nonnull UniProtEntryBuilder databaseCrossReferencesSet(
-            List<UniProtCrossReference> databaseCrossReferences) {
-        this.databaseCrossReferences = modifiableList(databaseCrossReferences);
+    public @Nonnull UniProtEntryBuilder uniProtCrossReferencesSet(
+            List<UniProtCrossReference> uniProtCrossReferences) {
+        this.uniProtCrossReferences = modifiableList(uniProtCrossReferences);
         return this;
     }
 
@@ -272,7 +272,7 @@ public class UniProtEntryBuilder implements Builder<UniProtEntry> {
                 geneLocations,
                 keywords,
                 references,
-                databaseCrossReferences,
+                uniProtCrossReferences,
                 sequence,
                 internalSection,
                 lineages,
@@ -297,7 +297,7 @@ public class UniProtEntryBuilder implements Builder<UniProtEntry> {
                 .geneLocationsSet(instance.getGeneLocations())
                 .keywordsSet(instance.getKeywords())
                 .referencesSet(instance.getReferences())
-                .databaseCrossReferencesSet(instance.getDatabaseCrossReferences())
+                .uniProtCrossReferencesSet(instance.getUniProtCrossReferences())
                 .sequence(instance.getSequence())
                 .internalSection(instance.getInternalSection())
                 .annotationScore(instance.getAnnotationScore())

@@ -28,18 +28,19 @@ class RxLineConverterTest {
         rxLine.rxs.add(rx2);
         RxLineConverter converter = new RxLineConverter();
         List<CrossReference<CitationDatabase>> cxrefs = converter.convert(rxLine);
-        Citation citation = new BookBuilder().citationXrefsSet(cxrefs).build();
+        Citation citation = new BookBuilder().citationCrossReferencesSet(cxrefs).build();
 
         CrossReference<CitationDatabase> wrongXref =
                 new CrossReferenceBuilder<CitationDatabase>().build();
         CrossReference<CitationDatabase> pubmedXref =
-                citation.getCitationXrefsByType(CitationDatabase.PUBMED).orElse(wrongXref);
+                citation.getCitationCrossReferenceByType(CitationDatabase.PUBMED).orElse(wrongXref);
         assertNotEquals(pubmedXref, wrongXref);
         CrossReference<CitationDatabase> doiXref =
-                citation.getCitationXrefsByType(CitationDatabase.DOI).orElse(wrongXref);
+                citation.getCitationCrossReferenceByType(CitationDatabase.DOI).orElse(wrongXref);
         assertNotEquals(doiXref, wrongXref);
         CrossReference<CitationDatabase> agricolaXref =
-                citation.getCitationXrefsByType(CitationDatabase.AGRICOLA).orElse(wrongXref);
+                citation.getCitationCrossReferenceByType(CitationDatabase.AGRICOLA)
+                        .orElse(wrongXref);
         assertEquals(agricolaXref, wrongXref);
 
         assertEquals("15626370", pubmedXref.getId());

@@ -48,7 +48,7 @@ public class CCCofactorCommentLineBuilder extends CCLineBuilderAbstr<CofactorCom
             StringBuilder sb = new StringBuilder();
             if (includeFFMarkings) sb.append(this.linePrefix);
             sb.append(NAME).append(cofactor.getName()).append(SEPARATOR_SEMICOLON);
-            CrossReference<CofactorDatabase> coRef = cofactor.getCofactorReference();
+            CrossReference<CofactorDatabase> coRef = cofactor.getCofactorCrossReference();
             sb.append(XREF)
                     .append(coRef.getDatabase().toDisplayName())
                     .append(":")

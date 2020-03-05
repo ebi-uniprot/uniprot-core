@@ -75,9 +75,9 @@ class UniParcEntryConverterTest {
         builder.uniParcId("UPI0000083A08")
                 .sequence(uniSeq)
                 .sequenceFeaturesSet(sfs)
-                .databaseCrossReferencesAdd(
+                .uniParcCrossReferencesAdd(
                         new UniParcCrossReferenceBuilder()
-                                .databaseType(UniParcDatabase.ENSEMBL_VERTEBRATE)
+                                .database(UniParcDatabase.ENSEMBL_VERTEBRATE)
                                 .id("CG1106-PB")
                                 .versionI(1)
                                 .active(false)
@@ -87,7 +87,7 @@ class UniParcEntryConverterTest {
 
         UniParcCrossReferenceBuilder xrefBuilder = new UniParcCrossReferenceBuilder();
         xrefBuilder
-                .databaseType(UniParcDatabase.TREMBL)
+                .database(UniParcDatabase.TREMBL)
                 .id("A0A0C4DHG2")
                 .versionI(1)
                 .version(1)
@@ -101,12 +101,12 @@ class UniParcEntryConverterTest {
         properties.add(new Property(UniParcCrossReference.PROPERTY_GENE_NAME, "Gel"));
 
         xrefBuilder.propertiesSet(properties);
-        builder.databaseCrossReferencesAdd(xrefBuilder.build());
+        builder.uniParcCrossReferencesAdd(xrefBuilder.build());
 
         // id="NC_004354_874_0" version_i="5" active="Y" created="2007-04-27" last="2007-04-27">
         UniParcCrossReferenceBuilder xrefBuilder2 = new UniParcCrossReferenceBuilder();
         xrefBuilder2
-                .databaseType(UniParcDatabase.TROME)
+                .database(UniParcDatabase.TROME)
                 .id("NC_004354_874_0")
                 .versionI(5)
                 .active(true)
@@ -115,7 +115,7 @@ class UniParcEntryConverterTest {
         List<Property> properties2 = new ArrayList<>();
         properties2.add(new Property(UniParcCrossReference.PROPERTY_NCBI_TAXONOMY_ID, "7227"));
         xrefBuilder2.propertiesSet(properties2);
-        builder.databaseCrossReferencesAdd(xrefBuilder2.build());
+        builder.uniParcCrossReferencesAdd(xrefBuilder2.build());
         return builder.build();
     }
 }

@@ -33,7 +33,7 @@ class AbstractJournalArticleBuilderTest extends AbstractCitationBuilderTest {
                         .publicationDate(PUBLICATION_DATE)
                         .authoringGroupsSet(GROUPS)
                         .authorsSet(AUTHORS)
-                        .citationXrefsSet(asList(XREF1, XREF2))
+                        .citationCrossReferencesSet(asList(XREF1, XREF2))
                         .journalName(JOURNAL_NAME)
                         .firstPage(FIRST_PAGE)
                         .lastPage(LAST_PAGE)
@@ -49,8 +49,8 @@ class AbstractJournalArticleBuilderTest extends AbstractCitationBuilderTest {
                         .collect(Collectors.toList()),
                 is(AUTHORS));
         assertThat(journalArticle.getCitationType(), is(CITATION_TYPE));
-        assertThat(journalArticle.hasCitationXrefs(), is(true));
-        assertThat(journalArticle.getCitationXrefs(), contains(XREF1, XREF2));
+        assertThat(journalArticle.hasCitationCrossReferences(), is(true));
+        assertThat(journalArticle.getCitationCrossReferences(), contains(XREF1, XREF2));
 
         assertThat(journalArticle.getJournal().getName(), is(JOURNAL_NAME));
         assertThat(journalArticle.getFirstPage(), is(FIRST_PAGE));
@@ -103,7 +103,7 @@ class AbstractJournalArticleBuilderTest extends AbstractCitationBuilderTest {
                     CITATION_TYPE,
                     builder.authoringGroups,
                     builder.authors,
-                    builder.citationXrefs,
+                    builder.citationCrossReferences,
                     builder.title,
                     builder.publicationDate,
                     builder.journalName,

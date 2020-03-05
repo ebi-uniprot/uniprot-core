@@ -374,7 +374,7 @@ class FtLineConverterTest {
         List<Evidence> eviIds = unFeature1.getEvidences();
         assertEquals(1, eviIds.size());
         Evidence eviId = eviIds.get(0);
-        assertEquals("PROSITE-ProRule", eviId.getSource().getDatabase().getName());
+        assertEquals("PROSITE-ProRule", eviId.getEvidenceCrossReference().getDatabase().getName());
         assertEquals("ECO:0000255|PROSITE-ProRule:PRU10088", eviId.getValue());
 
         validateLocation(
@@ -403,7 +403,8 @@ class FtLineConverterTest {
 
         List<Evidence> eviIds = unFeature.getEvidences();
         assertEquals(1, eviIds.size());
-        assertEquals("HAMAP-Rule", eviIds.get(0).getSource().getDatabase().getName());
+        assertEquals(
+                "HAMAP-Rule", eviIds.get(0).getEvidenceCrossReference().getDatabase().getName());
         assertEquals("ECO:0000255|HAMAP-Rule:PRU10088", eviIds.get(0).getValue());
 
         validateLocation(

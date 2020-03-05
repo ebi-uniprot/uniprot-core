@@ -18,7 +18,7 @@ public class JournalArticleImpl extends AbstractJournalArticleImpl implements Jo
     public JournalArticleImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<CrossReference<CitationDatabase>> citationXrefs,
+            List<CrossReference<CitationDatabase>> citationCrossReferences,
             String title,
             PublicationDate publicationDate,
             String journalName,
@@ -29,7 +29,7 @@ public class JournalArticleImpl extends AbstractJournalArticleImpl implements Jo
                 CitationType.JOURNAL_ARTICLE,
                 authoringGroup,
                 authors,
-                citationXrefs,
+                citationCrossReferences,
                 title,
                 publicationDate,
                 journalName,

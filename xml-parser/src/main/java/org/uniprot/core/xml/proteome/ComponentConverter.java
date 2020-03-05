@@ -38,7 +38,7 @@ public class ComponentConverter implements Converter<ComponentType, Component> {
                     .map(
                             val ->
                                     new CrossReferenceBuilder<ProteomeDatabase>()
-                                            .databaseType(ProteomeDatabase.GENOME_ACCESSION)
+                                            .database(ProteomeDatabase.GENOME_ACCESSION)
                                             .id(val)
                                             .build())
                     .forEach(val -> xrefs.add(val));
@@ -46,11 +46,11 @@ public class ComponentConverter implements Converter<ComponentType, Component> {
         if (!Strings.isNullOrEmpty(xmlObj.getBiosampleId())) {
             xrefs.add(
                     new CrossReferenceBuilder<ProteomeDatabase>()
-                            .databaseType(ProteomeDatabase.BIOSAMPLE)
+                            .database(ProteomeDatabase.BIOSAMPLE)
                             .id(xmlObj.getBiosampleId())
                             .build());
         }
-        builder.dbXReferencesSet(xrefs).proteinCount(xmlObj.getCount());
+        builder.proteomeCrossReferencesSet(xrefs).proteinCount(xmlObj.getCount());
 
         builder.type(org.uniprot.core.proteome.ComponentType.fromValue(xmlObj.getType().value()));
 
@@ -63,13 +63,13 @@ public class ComponentConverter implements Converter<ComponentType, Component> {
         xmlObj.setName(uniObj.getName());
         xmlObj.setDescription(uniObj.getDescription());
         Optional<CrossReference<ProteomeDatabase>> biosample =
-                uniObj.getDbXReferences().stream()
+                uniObj.getProteomeCrossReferences().stream()
                         .filter(val -> val.getDatabase() == ProteomeDatabase.BIOSAMPLE)
                         .findFirst();
         if (biosample.isPresent()) {
             xmlObj.setBiosampleId(biosample.get().getId());
         }
-        uniObj.getDbXReferences().stream()
+        uniObj.getProteomeCrossReferences().stream()
                 .filter(val -> val.getDatabase() == ProteomeDatabase.GENOME_ACCESSION)
                 .map(val -> val.getId())
                 .forEach(val -> xmlObj.getGenomeAccession().add(val));

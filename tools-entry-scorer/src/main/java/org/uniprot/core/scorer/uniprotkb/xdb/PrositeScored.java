@@ -10,17 +10,18 @@ import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 
 // Not used
 public class PrositeScored implements HasScore {
-    private final List<UniProtCrossReference> xrefs;
+    private final List<UniProtCrossReference> uniProtCrossReferences;
     private final List<EvidenceDatabase> evidenceDatabases;
 
     public PrositeScored(
-            List<UniProtCrossReference> xrefs, List<EvidenceDatabase> evidenceDatabases) {
-        this.xrefs = xrefs;
+            List<UniProtCrossReference> uniProtCrossReferences,
+            List<EvidenceDatabase> evidenceDatabases) {
+        this.uniProtCrossReferences = uniProtCrossReferences;
         this.evidenceDatabases = evidenceDatabases;
     }
 
-    public PrositeScored(List<UniProtCrossReference> xrefs) {
-        this(xrefs, null);
+    public PrositeScored(List<UniProtCrossReference> uniProtCrossReferences) {
+        this(uniProtCrossReferences, null);
     }
 
     @Override
@@ -29,7 +30,7 @@ public class PrositeScored implements HasScore {
         boolean found3 = false;
         boolean found01 = false;
 
-        for (UniProtCrossReference xref : xrefs) {
+        for (UniProtCrossReference xref : uniProtCrossReferences) {
             if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceDatabases)) {
                 String des = xref.getProperties().get(1).getValue();
                 if (des.equals("FALSE_NEG") || des.equals("PARTIAL")) {

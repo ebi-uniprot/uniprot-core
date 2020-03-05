@@ -34,13 +34,13 @@ public class CofactorConverter implements Converter<CofactorType, Cofactor> {
         CofactorDatabase type = CofactorDatabase.typeOf(xmlObj.getDbReference().getType());
         CrossReference<CofactorDatabase> reference =
                 new CrossReferenceBuilder<CofactorDatabase>()
-                        .databaseType(type)
+                        .database(type)
                         .id(xmlObj.getDbReference().getId())
                         .build();
 
         return new CofactorBuilder()
                 .name(name)
-                .reference(reference)
+                .cofactorCrossReference(reference)
                 .evidencesSet(evidences)
                 .build();
     }
@@ -51,8 +51,8 @@ public class CofactorConverter implements Converter<CofactorType, Cofactor> {
         CofactorType xmlCofactor = xmlUniprotFactory.createCofactorType();
         xmlCofactor.setName(cofactor.getName());
         DbReferenceType dbref = xmlUniprotFactory.createDbReferenceType();
-        dbref.setType(cofactor.getCofactorReference().getDatabase().toDisplayName());
-        dbref.setId(cofactor.getCofactorReference().getId());
+        dbref.setType(cofactor.getCofactorCrossReference().getDatabase().toDisplayName());
+        dbref.setId(cofactor.getCofactorCrossReference().getId());
         xmlCofactor.setDbReference(dbref);
         List<Evidence> evidenceIds = cofactor.getEvidences();
         if ((evidenceIds != null) && !evidenceIds.isEmpty()) {

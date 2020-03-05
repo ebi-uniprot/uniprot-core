@@ -29,7 +29,7 @@ class DiseaseImplTest {
         assertTrue(impl.hasDescription());
         assertTrue(impl.hasDiseaseAccession());
         assertTrue(impl.hasDiseaseId());
-        assertTrue(impl.hasReference());
+        assertTrue(impl.hasDiseaseCrossReference());
         assertTrue(impl.hasEvidences());
 
         assertTrue(impl.equals(obj) && obj.equals(impl));

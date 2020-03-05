@@ -51,7 +51,7 @@ class EvidenceImplTest {
 
     @Test
     void canGetSource() {
-        assertEquals("id", impl.getSource().getId());
+        assertEquals("id", impl.getEvidenceCrossReference().getId());
     }
 
     @Test

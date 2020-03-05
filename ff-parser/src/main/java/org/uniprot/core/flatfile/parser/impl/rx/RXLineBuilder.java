@@ -17,27 +17,28 @@ public class RXLineBuilder implements RLine<Citation> {
     private final String linePrefix = lineType + DEFAUT_LINESPACE;
 
     @Override
-    public List<String> buildLine(Citation xrefs, boolean includeFFMarkup, boolean showEvidence) {
+    public List<String> buildLine(
+            Citation citation, boolean includeFFMarkup, boolean showEvidence) {
         List<String> lines = new ArrayList<>();
-        if (xrefs == null) return lines;
+        if (citation == null) return lines;
         StringBuilder line = new StringBuilder();
         line =
                 buildLine(
                         lines,
                         line,
-                        xrefs.getCitationXrefsByType(CitationDatabase.PUBMED),
+                        citation.getCitationCrossReferenceByType(CitationDatabase.PUBMED),
                         includeFFMarkup);
         line =
                 buildLine(
                         lines,
                         line,
-                        xrefs.getCitationXrefsByType(CitationDatabase.AGRICOLA),
+                        citation.getCitationCrossReferenceByType(CitationDatabase.AGRICOLA),
                         includeFFMarkup);
         line =
                 buildLine(
                         lines,
                         line,
-                        xrefs.getCitationXrefsByType(CitationDatabase.DOI),
+                        citation.getCitationCrossReferenceByType(CitationDatabase.DOI),
                         includeFFMarkup);
         if (line.length() > 0) {
             lines.add(line.toString());

@@ -9,28 +9,30 @@ import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 
 public class PDBScored implements HasScore {
-    private List<UniProtCrossReference> xrefs;
+    private List<UniProtCrossReference> uniProtCrossReferences;
 
     private final List<EvidenceDatabase> evidenceDatabases;
 
-    public PDBScored(List<UniProtCrossReference> xrefs, List<EvidenceDatabase> evidenceDatabases) {
-        this.xrefs = xrefs;
+    public PDBScored(
+            List<UniProtCrossReference> uniProtCrossReferences,
+            List<EvidenceDatabase> evidenceDatabases) {
+        this.uniProtCrossReferences = uniProtCrossReferences;
         this.evidenceDatabases = evidenceDatabases;
     }
 
-    public PDBScored(List<UniProtCrossReference> xrefs) {
-        this(xrefs, null);
+    public PDBScored(List<UniProtCrossReference> uniProtCrossReferences) {
+        this(uniProtCrossReferences, null);
     }
 
     @Override
     public double score() {
         double score = 0;
-        if (!xrefs.isEmpty() && hasEvidences()) score += 1;
+        if (!uniProtCrossReferences.isEmpty() && hasEvidences()) score += 1;
         return score;
     }
 
     private boolean hasEvidences() {
-        for (UniProtCrossReference xref : xrefs) {
+        for (UniProtCrossReference xref : uniProtCrossReferences) {
             if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceDatabases)) {
                 return true;
             }

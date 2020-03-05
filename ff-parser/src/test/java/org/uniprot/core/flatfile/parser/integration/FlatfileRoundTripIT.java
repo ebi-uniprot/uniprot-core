@@ -123,8 +123,8 @@ class FlatfileRoundTripIT {
         EntryObject parse2 = entryParser.parse(convertedEntryStr);
         UniProtEntry converted2 = entryObjectConverter.convert(parse2);
 
-        List<UniProtCrossReference> originalDBXrefs = converted.getDatabaseCrossReferences();
-        List<UniProtCrossReference> convertedDBXrefs = converted2.getDatabaseCrossReferences();
+        List<UniProtCrossReference> originalDBXrefs = converted.getUniProtCrossReferences();
+        List<UniProtCrossReference> convertedDBXrefs = converted2.getUniProtCrossReferences();
         assertEquals(originalDBXrefs.size(), convertedDBXrefs.size());
         for (int i = 0; i < originalDBXrefs.size(); i++) {
             UniProtCrossReference origXref = originalDBXrefs.get(i);

@@ -51,7 +51,7 @@ class CofactorConverterTest {
 
         CrossReference<CofactorDatabase> reference =
                 new CrossReferenceBuilder<CofactorDatabase>()
-                        .databaseType(CofactorDatabase.CHEBI)
+                        .database(CofactorDatabase.CHEBI)
                         .id("CHEBI:29105")
                         .build();
 
@@ -63,7 +63,7 @@ class CofactorConverterTest {
 
         Cofactor cofactor =
                 new CofactorBuilder()
-                        .reference(reference)
+                        .cofactorCrossReference(reference)
                         .evidencesSet(evids)
                         .name("Zn(2+)")
                         .build();
@@ -95,8 +95,8 @@ class CofactorConverterTest {
         cofactorType.getEvidence().add(3);
         Cofactor cofactor = converter.fromXml(cofactorType);
         assertEquals("Zn(2+)", cofactor.getName());
-        assertEquals("CHEBI:29105", cofactor.getCofactorReference().getId());
-        assertEquals(CofactorDatabase.CHEBI, cofactor.getCofactorReference().getDatabase());
+        assertEquals("CHEBI:29105", cofactor.getCofactorCrossReference().getId());
+        assertEquals(CofactorDatabase.CHEBI, cofactor.getCofactorCrossReference().getDatabase());
         List<Evidence> evids = cofactor.getEvidences();
         assertEquals(2, evids.size());
         assertEquals("ECO:0000269|PubMed:9060646", evids.get(0).getValue());

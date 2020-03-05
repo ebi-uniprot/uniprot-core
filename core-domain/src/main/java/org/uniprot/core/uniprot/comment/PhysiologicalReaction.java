@@ -6,9 +6,9 @@ import org.uniprot.core.uniprot.evidence.HasEvidences;
 public interface PhysiologicalReaction extends HasEvidences {
     PhysiologicalDirectionType getDirectionType();
 
-    CrossReference<ReactionDatabase> getReactionReference();
+    CrossReference<ReactionDatabase> getReactionCrossReference();
 
     boolean hasDirectionType();
 
-    boolean hasReactionReference();
+    boolean hasReactionCrossReference();
 }

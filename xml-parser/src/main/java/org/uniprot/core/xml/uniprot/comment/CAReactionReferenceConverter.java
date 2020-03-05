@@ -23,7 +23,7 @@ public class CAReactionReferenceConverter
     public CrossReference<ReactionDatabase> fromXml(DbReferenceType xmlObj) {
         ReactionDatabase type = ReactionDatabase.typeOf(xmlObj.getType());
         return new CrossReferenceBuilder<ReactionDatabase>()
-                .databaseType(type)
+                .database(type)
                 .id(xmlObj.getId())
                 .build();
     }

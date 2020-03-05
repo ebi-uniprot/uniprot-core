@@ -78,7 +78,7 @@ public class DiseaseCommentConverter implements CommentConverter<DiseaseComment>
                 .description(disease.getDescription())
                 .diseaseAc(disease.getDiseaseAccession())
                 .diseaseId(disease.getDiseaseId())
-                .reference(disease.getReference())
+                .diseaseCrossReference(disease.getDiseaseCrossReference())
                 .evidencesSet(evidences);
         return builder.build();
     }

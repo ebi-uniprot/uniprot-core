@@ -13,7 +13,7 @@ import org.uniprot.core.uniprot.taxonomy.Taxonomy;
 public interface UniParcEntry extends Serializable {
     UniParcId getUniParcId();
 
-    List<UniParcCrossReference> getDbXReferences();
+    List<UniParcCrossReference> getUniParcCrossReferences();
 
     Sequence getSequence();
 

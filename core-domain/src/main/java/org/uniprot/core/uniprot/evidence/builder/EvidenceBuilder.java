@@ -31,7 +31,7 @@ public class EvidenceBuilder implements Builder<Evidence> {
     }
 
     public static @Nonnull EvidenceBuilder from(Evidence instance) {
-        CrossReference<EvidenceDatabase> source = instance.getSource();
+        CrossReference<EvidenceDatabase> source = instance.getEvidenceCrossReference();
         EvidenceBuilder retBuilder = new EvidenceBuilder().evidenceCode(instance.getEvidenceCode());
         if (notNull(source)) {
             retBuilder.databaseId(source.getId()).databaseName(source.getDatabase().getName());

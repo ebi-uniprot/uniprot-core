@@ -23,7 +23,7 @@ class UniParcDbCrossReferenceTest {
     @Test
     void test() {
         UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder();
-        builder.databaseType(UniParcDatabase.TREMBL)
+        builder.database(UniParcDatabase.TREMBL)
                 .id("A0A0C4DHG2")
                 .versionI(1)
                 .version(1)
@@ -55,7 +55,7 @@ class UniParcDbCrossReferenceTest {
     @Test
     void testNoProperty() {
         UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder();
-        builder.databaseType(UniParcDatabase.ENSEMBL_VERTEBRATE)
+        builder.database(UniParcDatabase.ENSEMBL_VERTEBRATE)
                 .id("CG1106-PB")
                 .versionI(1)
                 .active(false)

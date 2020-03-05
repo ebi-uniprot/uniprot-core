@@ -12,8 +12,8 @@ import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 public interface UniProtDatabase extends Database, Serializable {
 
     @Nonnull
-    UniProtDatabaseDetail getDetail();
+    UniProtDatabaseDetail getUniProtDatabaseDetail();
 
     @Nullable
-    UniProtDatabaseAttribute getAttribute(int position);
+    UniProtDatabaseAttribute getUniProtDatabaseAttribute(int position);
 }

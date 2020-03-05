@@ -285,7 +285,7 @@ class CatalyticActivityCommentTransformerTest {
             assertNull(reaction.getEcNumber());
         } else assertEquals(ec, reaction.getEcNumber().getValue());
         String xrefRes =
-                reaction.getReactionReferences().stream()
+                reaction.getReactionCrossReferences().stream()
                         .map(val -> xrefToString(val))
                         .collect(Collectors.joining(", "));
         assertEquals(xref, xrefRes);
@@ -296,7 +296,7 @@ class CatalyticActivityCommentTransformerTest {
     private void verifyPhysiologicalDirection(
             PhysiologicalReaction pd, String name, String xref, String evidences) {
         assertEquals(name, pd.getDirectionType().toDisplayName());
-        assertEquals(xref, xrefToString(pd.getReactionReference()));
+        assertEquals(xref, xrefToString(pd.getReactionCrossReference()));
     }
 
     private String xrefToString(CrossReference<ReactionDatabase> xref) {

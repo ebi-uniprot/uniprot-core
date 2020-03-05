@@ -66,12 +66,12 @@ class FeatureBuilderTest {
     void canSetDbXref() {
         CrossReference<FeatureDatabase> xrefs =
                 new CrossReferenceBuilder<FeatureDatabase>()
-                        .databaseType(FeatureDatabase.DBSNP)
+                        .database(FeatureDatabase.DBSNP)
                         .id("db id")
                         .build();
-        Feature obj = new FeatureBuilder().dbXref(xrefs).build();
-        assertEquals(xrefs, obj.getDbXref());
-        assertTrue(obj.hasDbXref());
+        Feature obj = new FeatureBuilder().featureCrossReference(xrefs).build();
+        assertEquals(xrefs, obj.getFeatureCrossReference());
+        assertTrue(obj.hasFeatureCrossReference());
     }
 
     @Test

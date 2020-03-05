@@ -62,11 +62,11 @@ public interface UniProtEntry extends Serializable {
 
     List<UniProtReference> getReferencesByType(CitationType type);
 
-    List<UniProtCrossReference> getDatabaseCrossReferences();
+    List<UniProtCrossReference> getUniProtCrossReferences();
 
-    List<UniProtCrossReference> getDatabaseCrossReferencesByType(UniProtDatabase type);
+    List<UniProtCrossReference> getUniProtCrossReferencesByType(UniProtDatabase type);
 
-    List<UniProtCrossReference> getDatabaseCrossReferencesByType(String dbName);
+    List<UniProtCrossReference> getUniProtCrossReferencesByType(String dbName);
 
     Sequence getSequence();
 
@@ -102,7 +102,7 @@ public interface UniProtEntry extends Serializable {
 
     boolean hasReferences();
 
-    boolean hasDatabaseCrossReferences();
+    boolean hasUniProtCrossReferences();
 
     List<Evidence> gatherEvidences();
 

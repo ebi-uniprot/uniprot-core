@@ -199,12 +199,12 @@ class EntryCrossReferenceMapTest {
             String fourth,
             String isoform) {
         return new UniProtCrossReferenceBuilder()
-                .databaseType(type)
+                .database(type)
                 .isoformId(isoform)
                 .id(id)
-                .propertiesAdd(type.getAttribute(0), desc)
-                .propertiesAdd(type.getAttribute(1), third)
-                .propertiesAdd(type.getAttribute(2), fourth)
+                .propertiesAdd(type.getUniProtDatabaseAttribute(0), desc)
+                .propertiesAdd(type.getUniProtDatabaseAttribute(1), third)
+                .propertiesAdd(type.getUniProtDatabaseAttribute(2), fourth)
                 .build();
     }
 }

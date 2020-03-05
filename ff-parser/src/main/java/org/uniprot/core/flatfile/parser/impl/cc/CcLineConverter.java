@@ -408,9 +408,9 @@ public class CcLineConverter extends EvidenceCollector
                 builder.acronym(cObj.getAbbr());
             }
             if (!Strings.isNullOrEmpty(cObj.getMim())) {
-                builder.reference(
+                builder.diseaseCrossReference(
                         new CrossReferenceBuilder<DiseaseDatabase>()
-                                .databaseType(DiseaseDatabase.MIM)
+                                .database(DiseaseDatabase.MIM)
                                 .id(cObj.getMim())
                                 .build());
             }
@@ -585,7 +585,7 @@ public class CcLineConverter extends EvidenceCollector
         List<Evidence> evidences = evidenceMap.get(item);
         return new CofactorBuilder()
                 .name(item.getName())
-                .reference(createCofactorReference(item.getXref()))
+                .cofactorCrossReference(createCofactorReference(item.getXref()))
                 .evidencesSet(evidences)
                 .build();
     }
@@ -596,7 +596,7 @@ public class CcLineConverter extends EvidenceCollector
         String id = val.substring(index + 1);
         return new CrossReferenceBuilder<CofactorDatabase>()
                 .id(id)
-                .databaseType(CofactorDatabase.typeOf(type))
+                .database(CofactorDatabase.typeOf(type))
                 .build();
     }
 
@@ -643,7 +643,7 @@ public class CcLineConverter extends EvidenceCollector
 
         return new PhysiologicalReactionBuilder()
                 .directionType(PhysiologicalDirectionType.typeOf(capd.getName()))
-                .reactionReference(reactionReference)
+                .reactionCrossReference(reactionReference)
                 .evidencesSet(evidences.get(capd))
                 .build();
     }
@@ -662,7 +662,7 @@ public class CcLineConverter extends EvidenceCollector
         }
         return new ReactionBuilder()
                 .name(caReaction.getName())
-                .reactionReferencesSet(xrefs)
+                .reactionCrossReferencesSet(xrefs)
                 .ecNumber(ecNumber)
                 .evidencesSet(evidences.get(caReaction))
                 .build();

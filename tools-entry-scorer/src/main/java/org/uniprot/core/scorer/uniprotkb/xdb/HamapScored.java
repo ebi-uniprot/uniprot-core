@@ -9,17 +9,18 @@ import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 
 public class HamapScored implements HasScore {
-    private List<UniProtCrossReference> xrefs;
+    private List<UniProtCrossReference> uniProtCrossReferences;
     private final List<EvidenceDatabase> evidenceDatabases;
 
     public HamapScored(
-            List<UniProtCrossReference> xrefs, List<EvidenceDatabase> evidenceDatabases) {
-        this.xrefs = xrefs;
+            List<UniProtCrossReference> uniProtCrossReferences,
+            List<EvidenceDatabase> evidenceDatabases) {
+        this.uniProtCrossReferences = uniProtCrossReferences;
         this.evidenceDatabases = evidenceDatabases;
     }
 
-    public HamapScored(List<UniProtCrossReference> xrefs) {
-        this(xrefs, null);
+    public HamapScored(List<UniProtCrossReference> uniProtCrossReferences) {
+        this(uniProtCrossReferences, null);
     }
 
     @Override
@@ -32,7 +33,7 @@ public class HamapScored implements HasScore {
     }
 
     private boolean hasEvidences() {
-        for (UniProtCrossReference xref : xrefs) {
+        for (UniProtCrossReference xref : uniProtCrossReferences) {
             if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceDatabases)) {
                 return true;
             }

@@ -34,10 +34,10 @@ public class DiseaseConverter implements Converter<CommentType.Disease, Disease>
             DiseaseDatabase type = DiseaseDatabase.typeOf(xmlDisease.getDbReference().getType());
             CrossReference<DiseaseDatabase> reference =
                     new CrossReferenceBuilder<DiseaseDatabase>()
-                            .databaseType(type)
+                            .database(type)
                             .id(xmlDisease.getDbReference().getId())
                             .build();
-            builder.reference(reference);
+            builder.diseaseCrossReference(reference);
         }
         return builder.build();
     }
@@ -53,8 +53,8 @@ public class DiseaseConverter implements Converter<CommentType.Disease, Disease>
         xmlDisease.setId(disease.getDiseaseAccession());
 
         DbReferenceType dbReferenceType = xmlUniprotFactory.createDbReferenceType();
-        dbReferenceType.setId(disease.getReference().getId());
-        dbReferenceType.setType(disease.getReference().getDatabase().name());
+        dbReferenceType.setId(disease.getDiseaseCrossReference().getId());
+        dbReferenceType.setType(disease.getDiseaseCrossReference().getDatabase().name());
         xmlDisease.setDbReference(dbReferenceType);
 
         return xmlDisease;

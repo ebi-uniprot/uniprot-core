@@ -114,7 +114,7 @@ class UniProtEntryConverterTest {
                         .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
                         .entryAudit(entryAudit)
                         .geneLocationsSet(organelles)
-                        .databaseCrossReferencesSet(createDbXref())
+                        .uniProtCrossReferencesSet(createDbXref())
                         .keywordsSet(keywords)
                         .proteinDescription(createProteinDescription())
                         .genesSet(singletonList(createGene()))
@@ -286,7 +286,7 @@ class UniProtEntryConverterTest {
         Cofactor cofactor =
                 new CofactorBuilder()
                         .name("somename")
-                        .reference(reference)
+                        .cofactorCrossReference(reference)
                         .evidencesSet(createEvidences())
                         .build();
         List<Cofactor> cofactors = Arrays.asList(cofactor);
@@ -378,12 +378,12 @@ class UniProtEntryConverterTest {
         UniProtDatabase uniProtDatabase = new UniProtDatabaseImpl(type);
         xrefs.add(
                 new UniProtCrossReferenceBuilder()
-                        .databaseType(uniProtDatabase)
+                        .database(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
-                        .propertiesAdd(uniProtDatabase.getAttribute(0), description)
-                        .propertiesAdd(uniProtDatabase.getAttribute(1), thirdAttr)
-                        .propertiesAdd(uniProtDatabase.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(2), fourthAttr)
                         .build());
 
         // DR   EMBL; DQ185029; AAZ94714.1; -; mRNA.
@@ -397,12 +397,12 @@ class UniProtEntryConverterTest {
         isoform = null;
         xrefs.add(
                 new UniProtCrossReferenceBuilder()
-                        .databaseType(uniProtDatabase)
+                        .database(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
-                        .propertiesAdd(uniProtDatabase.getAttribute(0), description)
-                        .propertiesAdd(uniProtDatabase.getAttribute(1), thirdAttr)
-                        .propertiesAdd(uniProtDatabase.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(2), fourthAttr)
                         .build());
 
         // DR   EMBL; AK000352; BAA91105.1; ALT_INIT; mRNA.
@@ -415,12 +415,12 @@ class UniProtEntryConverterTest {
         isoform = null;
         xrefs.add(
                 new UniProtCrossReferenceBuilder()
-                        .databaseType(uniProtDatabase)
+                        .database(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
-                        .propertiesAdd(uniProtDatabase.getAttribute(0), description)
-                        .propertiesAdd(uniProtDatabase.getAttribute(1), thirdAttr)
-                        .propertiesAdd(uniProtDatabase.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(2), fourthAttr)
                         .build());
 
         // DR   EMBL; AK310815; -; NOT_ANNOTATED_CDS; mRNA.
@@ -433,12 +433,12 @@ class UniProtEntryConverterTest {
         isoform = null;
         xrefs.add(
                 new UniProtCrossReferenceBuilder()
-                        .databaseType(uniProtDatabase)
+                        .database(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
-                        .propertiesAdd(uniProtDatabase.getAttribute(0), description)
-                        .propertiesAdd(uniProtDatabase.getAttribute(1), thirdAttr)
-                        .propertiesAdd(uniProtDatabase.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(2), fourthAttr)
                         .build());
 
         //   DR   HPA; HPA021372; -.
@@ -451,12 +451,12 @@ class UniProtEntryConverterTest {
         isoform = null;
         xrefs.add(
                 new UniProtCrossReferenceBuilder()
-                        .databaseType(uniProtDatabase)
+                        .database(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
-                        .propertiesAdd(uniProtDatabase.getAttribute(0), description)
-                        .propertiesAdd(uniProtDatabase.getAttribute(1), thirdAttr)
-                        .propertiesAdd(uniProtDatabase.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(2), fourthAttr)
                         .build());
 
         //  DR   HPA; HPA021812; -.
@@ -469,12 +469,12 @@ class UniProtEntryConverterTest {
         isoform = null;
         xrefs.add(
                 new UniProtCrossReferenceBuilder()
-                        .databaseType(uniProtDatabase)
+                        .database(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
-                        .propertiesAdd(uniProtDatabase.getAttribute(0), description)
-                        .propertiesAdd(uniProtDatabase.getAttribute(1), thirdAttr)
-                        .propertiesAdd(uniProtDatabase.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(2), fourthAttr)
                         .build());
 
         return xrefs;

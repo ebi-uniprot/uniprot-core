@@ -27,12 +27,12 @@ class AbstractCitationBuilderTest {
     static final List<String> AUTHORS = asList("Tom", "John");
     static final CrossReference<CitationDatabase> XREF1 =
             new CrossReferenceBuilder<CitationDatabase>()
-                    .databaseType(CitationDatabase.PUBMED)
+                    .database(CitationDatabase.PUBMED)
                     .id("id1")
                     .build();
     static final CrossReference<CitationDatabase> XREF2 =
             new CrossReferenceBuilder<CitationDatabase>()
-                    .databaseType(CitationDatabase.AGRICOLA)
+                    .database(CitationDatabase.AGRICOLA)
                     .id("id2")
                     .build();
 
@@ -48,7 +48,7 @@ class AbstractCitationBuilderTest {
                         .publicationDate(publicationDate)
                         .authoringGroupsSet(authoringGroup)
                         .authorsSet(authors)
-                        .citationXrefsSet(asList(XREF1, XREF2))
+                        .citationCrossReferencesSet(asList(XREF1, XREF2))
                         .build();
 
         assertThat(citation.getTitle(), is(title));
@@ -58,8 +58,8 @@ class AbstractCitationBuilderTest {
                 citation.getAuthors().stream().map(Value::getValue).collect(Collectors.toList()),
                 is(authors));
         assertThat(citation.getCitationType(), is(CITATION_TYPE));
-        assertThat(citation.hasCitationXrefs(), is(true));
-        assertThat(citation.getCitationXrefs(), contains(XREF1, XREF2));
+        assertThat(citation.hasCitationCrossReferences(), is(true));
+        assertThat(citation.getCitationCrossReferences(), contains(XREF1, XREF2));
     }
 
     void buildCitationParameters(AbstractCitationBuilder<?, ?> builder) {
@@ -67,14 +67,14 @@ class AbstractCitationBuilderTest {
                 .publicationDate(PUBLICATION_DATE)
                 .authoringGroupsSet(GROUPS)
                 .authorsSet(AUTHORS)
-                .citationXrefsSet(
+                .citationCrossReferencesSet(
                         asList(
                                 new CrossReferenceBuilder<CitationDatabase>()
-                                        .databaseType(CitationDatabase.PUBMED)
+                                        .database(CitationDatabase.PUBMED)
                                         .id("id1")
                                         .build(),
                                 new CrossReferenceBuilder<CitationDatabase>()
-                                        .databaseType(CitationDatabase.AGRICOLA)
+                                        .database(CitationDatabase.AGRICOLA)
                                         .id("id2")
                                         .build()))
                 .build();
@@ -88,8 +88,8 @@ class AbstractCitationBuilderTest {
                 citation.getAuthors().stream().map(Value::getValue).collect(Collectors.toList()),
                 is(AUTHORS));
         assertThat(citation.getCitationType(), is(citationType));
-        assertThat(citation.hasCitationXrefs(), is(true));
-        assertThat(citation.getCitationXrefs(), contains(XREF1, XREF2));
+        assertThat(citation.hasCitationCrossReferences(), is(true));
+        assertThat(citation.getCitationCrossReferences(), contains(XREF1, XREF2));
     }
 
     private static class TestableCitationBuilder
@@ -116,7 +116,7 @@ class AbstractCitationBuilderTest {
                     CITATION_TYPE,
                     builder.authoringGroups,
                     builder.authors,
-                    builder.citationXrefs,
+                    builder.citationCrossReferences,
                     builder.title,
                     builder.publicationDate);
         }

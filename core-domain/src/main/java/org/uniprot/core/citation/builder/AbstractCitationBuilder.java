@@ -23,7 +23,7 @@ public abstract class AbstractCitationBuilder<
         implements CitationBuilder<T> {
     protected List<String> authoringGroups = new ArrayList<>();
     protected List<Author> authors = new ArrayList<>();
-    protected List<CrossReference<CitationDatabase>> citationXrefs = new ArrayList<>();
+    protected List<CrossReference<CitationDatabase>> citationCrossReferences = new ArrayList<>();
     protected String title = "";
     protected PublicationDate publicationDate;
 
@@ -57,13 +57,15 @@ public abstract class AbstractCitationBuilder<
         return getThis();
     }
 
-    public @Nonnull B citationXrefsSet(List<CrossReference<CitationDatabase>> citationXrefs) {
-        this.citationXrefs = modifiableList(citationXrefs);
+    public @Nonnull B citationCrossReferencesSet(
+            List<CrossReference<CitationDatabase>> citationCrossReferences) {
+        this.citationCrossReferences = modifiableList(citationCrossReferences);
         return getThis();
     }
 
-    public @Nonnull B citationXrefsAdd(CrossReference<CitationDatabase> citationXref) {
-        addOrIgnoreNull(citationXref, this.citationXrefs);
+    public @Nonnull B citationCrossReferencesAdd(
+            CrossReference<CitationDatabase> citationCrossReference) {
+        addOrIgnoreNull(citationCrossReference, this.citationCrossReferences);
         return getThis();
     }
 
@@ -84,7 +86,7 @@ public abstract class AbstractCitationBuilder<
 
     protected static <B extends AbstractCitationBuilder<B, T>, T extends Citation> void init(
             @Nonnull B builder, @Nonnull T instance) {
-        builder.citationXrefsSet(instance.getCitationXrefs())
+        builder.citationCrossReferencesSet(instance.getCitationCrossReferences())
                 .title(instance.getTitle())
                 .publicationDate(instance.getPublicationDate())
                 .authorsSet(instance.getAuthors())

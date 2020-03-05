@@ -21,7 +21,7 @@ public final class EvidenceDatabase implements Database, Serializable {
         return name;
     }
 
-    public @Nonnull EvidenceDatabaseDetail getDetail() {
+    public @Nonnull EvidenceDatabaseDetail getEvidenceDatabaseDetail() {
         return EvidenceTypes.INSTANCE.getType(name);
     }
 

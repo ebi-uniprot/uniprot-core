@@ -39,7 +39,7 @@ public class BookImpl extends AbstractCitationImpl implements Book {
     public BookImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<CrossReference<CitationDatabase>> citationXrefs,
+            List<CrossReference<CitationDatabase>> citationCrossReferences,
             String title,
             PublicationDate publicationDate,
             String bookName,
@@ -49,7 +49,13 @@ public class BookImpl extends AbstractCitationImpl implements Book {
             String volume,
             String publisher,
             String address) {
-        super(CitationType.BOOK, authoringGroup, authors, citationXrefs, title, publicationDate);
+        super(
+                CitationType.BOOK,
+                authoringGroup,
+                authors,
+                citationCrossReferences,
+                title,
+                publicationDate);
         this.bookName = Utils.emptyOrString(bookName);
         this.editors = Utils.unmodifiableList(editors);
         this.firstPage = Utils.emptyOrString(firstPage);

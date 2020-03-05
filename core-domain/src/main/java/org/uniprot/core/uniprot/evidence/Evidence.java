@@ -7,7 +7,7 @@ import org.uniprot.core.CrossReference;
 public interface Evidence extends Comparable<Evidence>, Serializable {
     EvidenceCode getEvidenceCode();
 
-    CrossReference<EvidenceDatabase> getSource();
+    CrossReference<EvidenceDatabase> getEvidenceCrossReference();
 
     String getValue();
 }

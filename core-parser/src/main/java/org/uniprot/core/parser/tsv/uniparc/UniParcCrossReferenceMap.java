@@ -22,10 +22,10 @@ public class UniParcCrossReferenceMap implements NamedValueMap {
                     Arrays.asList(
                             "gene", "protein", "proteome", "accession", "first_seen", "last_seen"));
 
-    private final List<UniParcCrossReference> xrefs;
+    private final List<UniParcCrossReference> uniParcCrossReferences;
 
-    public UniParcCrossReferenceMap(List<UniParcCrossReference> xrefs) {
-        this.xrefs = xrefs;
+    public UniParcCrossReferenceMap(List<UniParcCrossReference> uniParcCrossReferences) {
+        this.uniParcCrossReferences = uniParcCrossReferences;
     }
 
     @Override
@@ -52,19 +52,19 @@ public class UniParcCrossReferenceMap implements NamedValueMap {
     }
 
     private Optional<LocalDate> getFirstSeenDate() {
-        return xrefs.stream()
+        return uniParcCrossReferences.stream()
                 .map(UniParcCrossReference::getCreated)
                 .min(Comparator.comparing(LocalDate::toEpochDay));
     }
 
     private Optional<LocalDate> getLastSeenDate() {
-        return xrefs.stream()
+        return uniParcCrossReferences.stream()
                 .map(UniParcCrossReference::getLastUpdated)
                 .max(Comparator.comparing(LocalDate::toEpochDay));
     }
 
     private String getProteomes() {
-        return xrefs.stream()
+        return uniParcCrossReferences.stream()
                 .map(this::getProteome)
                 .filter(Objects::nonNull)
                 .collect(Collectors.joining(DELIMITER));
@@ -85,7 +85,7 @@ public class UniParcCrossReferenceMap implements NamedValueMap {
     }
 
     private String getUniProtAccessions() {
-        return xrefs.stream()
+        return uniParcCrossReferences.stream()
                 .map(this::getUniProtAccession)
                 .filter(Objects::nonNull)
                 .collect(Collectors.joining(DELIMITER));
@@ -106,7 +106,7 @@ public class UniParcCrossReferenceMap implements NamedValueMap {
     }
 
     private String getData(String propertyType) {
-        return xrefs.stream()
+        return uniParcCrossReferences.stream()
                 .map(val -> getProperty(val, propertyType))
                 .map(val -> val.map(Property::getValue).orElse(""))
                 .collect(Collectors.joining(DELIMITER2));

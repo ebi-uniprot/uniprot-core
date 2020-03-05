@@ -78,11 +78,11 @@ public class DrLineConverter extends EvidenceCollector
             uniProtDrObjects.drObjects.add(
                     new UniProtCrossReferenceBuilder()
                             .id(id)
-                            .databaseType(type)
+                            .database(type)
                             .isoformId(isoformId)
-                            .propertiesAdd(type.getAttribute(0), description)
-                            .propertiesAdd(type.getAttribute(1), thirdAttribute)
-                            .propertiesAdd(type.getAttribute(2), fourthAttribute)
+                            .propertiesAdd(type.getUniProtDatabaseAttribute(0), description)
+                            .propertiesAdd(type.getUniProtDatabaseAttribute(1), thirdAttribute)
+                            .propertiesAdd(type.getUniProtDatabaseAttribute(2), fourthAttribute)
                             .build());
         } catch (Exception e) {
             if (!ignoreWrongDR) throw new DatabaseTypeNotExistException(drline.DbName);

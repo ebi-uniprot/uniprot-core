@@ -209,7 +209,7 @@ public class FtLineConverter extends EvidenceCollector
                 .featureId(ft.getFtId())
                 .alternativeSequence(altSeq)
                 .evidencesSet(evidences)
-                .dbXref(dbXref)
+                .featureCrossReference(dbXref)
                 .build();
     }
 

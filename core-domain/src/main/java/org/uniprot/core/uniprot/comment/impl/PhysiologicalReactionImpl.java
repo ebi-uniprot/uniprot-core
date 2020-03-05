@@ -14,7 +14,7 @@ import org.uniprot.core.util.Utils;
 public class PhysiologicalReactionImpl implements PhysiologicalReaction {
     private static final long serialVersionUID = -3913438195830117987L;
     private PhysiologicalDirectionType directionType;
-    private CrossReference<ReactionDatabase> reactionReference;
+    private CrossReference<ReactionDatabase> reactionCrossReference;
     private List<Evidence> evidences;
 
     // no arg constructor for JSON deserialization
@@ -24,10 +24,10 @@ public class PhysiologicalReactionImpl implements PhysiologicalReaction {
 
     public PhysiologicalReactionImpl(
             PhysiologicalDirectionType directionType,
-            CrossReference<ReactionDatabase> reactionReference,
+            CrossReference<ReactionDatabase> reactionCrossReference,
             List<Evidence> evidences) {
         this.directionType = directionType;
-        this.reactionReference = reactionReference;
+        this.reactionCrossReference = reactionCrossReference;
         this.evidences = Utils.unmodifiableList(evidences);
     }
 
@@ -47,8 +47,8 @@ public class PhysiologicalReactionImpl implements PhysiologicalReaction {
     }
 
     @Override
-    public CrossReference<ReactionDatabase> getReactionReference() {
-        return reactionReference;
+    public CrossReference<ReactionDatabase> getReactionCrossReference() {
+        return reactionCrossReference;
     }
 
     @Override
@@ -57,8 +57,8 @@ public class PhysiologicalReactionImpl implements PhysiologicalReaction {
     }
 
     @Override
-    public boolean hasReactionReference() {
-        return this.reactionReference != null;
+    public boolean hasReactionCrossReference() {
+        return this.reactionCrossReference != null;
     }
 
     @Override
@@ -67,12 +67,12 @@ public class PhysiologicalReactionImpl implements PhysiologicalReaction {
         if (o == null || getClass() != o.getClass()) return false;
         PhysiologicalReactionImpl that = (PhysiologicalReactionImpl) o;
         return directionType == that.directionType
-                && Objects.equals(reactionReference, that.reactionReference)
+                && Objects.equals(reactionCrossReference, that.reactionCrossReference)
                 && Objects.equals(evidences, that.evidences);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(directionType, reactionReference, evidences);
+        return Objects.hash(directionType, reactionCrossReference, evidences);
     }
 }

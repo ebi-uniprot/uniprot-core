@@ -225,13 +225,13 @@ class DRLineBuildTest {
             List<Evidence> evidences) {
         UniProtDatabase opType = new UniProtDatabaseImpl(databaseName);
         return new UniProtCrossReferenceBuilder()
-                .databaseType(opType)
+                .database(opType)
                 .id(id)
                 .isoformId(isoformId)
                 .evidencesSet(evidences)
-                .propertiesAdd(opType.getAttribute(0), description)
-                .propertiesAdd(opType.getAttribute(1), thirdAttribute)
-                .propertiesAdd(opType.getAttribute(2), fourthAttribute)
+                .propertiesAdd(opType.getUniProtDatabaseAttribute(0), description)
+                .propertiesAdd(opType.getUniProtDatabaseAttribute(1), thirdAttribute)
+                .propertiesAdd(opType.getUniProtDatabaseAttribute(2), fourthAttribute)
                 .build();
     }
 }

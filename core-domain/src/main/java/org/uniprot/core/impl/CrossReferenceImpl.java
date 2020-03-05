@@ -12,7 +12,7 @@ import org.uniprot.core.util.Utils;
 
 public class CrossReferenceImpl<T extends Database> implements CrossReference<T> {
     private static final long serialVersionUID = 4318477387676269483L;
-    protected T databaseType;
+    protected T database;
     protected String id;
     protected List<Property> properties;
 
@@ -25,15 +25,15 @@ public class CrossReferenceImpl<T extends Database> implements CrossReference<T>
         this(database, id, Collections.emptyList());
     }
 
-    public CrossReferenceImpl(T databaseType, String id, List<Property> properties) {
-        this.databaseType = databaseType;
+    public CrossReferenceImpl(T database, String id, List<Property> properties) {
+        this.database = database;
         this.id = id;
         setProperties(properties);
     }
 
     @Override
     public T getDatabase() {
-        return databaseType;
+        return database;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class CrossReferenceImpl<T extends Database> implements CrossReference<T>
 
     @Override
     public boolean hasDatabase() {
-        return this.databaseType != null;
+        return this.database != null;
     }
 
     @Override
@@ -72,7 +72,7 @@ public class CrossReferenceImpl<T extends Database> implements CrossReference<T>
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(this.databaseType.getName()).append(":").append(id);
+        sb.append(this.database.getName()).append(":").append(id);
 
         return sb.toString();
     }
@@ -82,13 +82,13 @@ public class CrossReferenceImpl<T extends Database> implements CrossReference<T>
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CrossReferenceImpl<?> that = (CrossReferenceImpl<?>) o;
-        return Objects.equals(databaseType, that.databaseType)
+        return Objects.equals(database, that.database)
                 && Objects.equals(id, that.id)
                 && Objects.equals(properties, that.properties);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(databaseType, id, properties);
+        return Objects.hash(database, id, properties);
     }
 }

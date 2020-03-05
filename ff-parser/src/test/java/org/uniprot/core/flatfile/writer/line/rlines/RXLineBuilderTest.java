@@ -89,21 +89,21 @@ class RXLineBuilderTest {
         if (pubmed != null)
             xrefs.add(
                     new CrossReferenceBuilder<CitationDatabase>()
-                            .databaseType(CitationDatabase.PUBMED)
+                            .database(CitationDatabase.PUBMED)
                             .id(pubmed)
                             .build());
         if (doi != null)
             xrefs.add(
                     new CrossReferenceBuilder<CitationDatabase>()
-                            .databaseType(CitationDatabase.DOI)
+                            .database(CitationDatabase.DOI)
                             .id(doi)
                             .build());
         if (agricolaId != null)
             xrefs.add(
                     new CrossReferenceBuilder<CitationDatabase>()
-                            .databaseType(CitationDatabase.AGRICOLA)
+                            .database(CitationDatabase.AGRICOLA)
                             .id(agricolaId)
                             .build());
-        return new BookBuilder().citationXrefsSet(xrefs).build();
+        return new BookBuilder().citationCrossReferencesSet(xrefs).build();
     }
 }

@@ -9,27 +9,29 @@ import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 
 public class EmblScored implements HasScore {
-    List<UniProtCrossReference> xrefs;
+    List<UniProtCrossReference> uniProtCrossReferences;
     private boolean isEmblSequenceDone = false;
     private boolean isEmblDone = false;
     private boolean isEmblNotAnnotatedCDSDone = false;
 
     private final List<EvidenceDatabase> evidenceDatabases;
 
-    public EmblScored(List<UniProtCrossReference> xrefs, List<EvidenceDatabase> evidenceDatabases) {
-        this.xrefs = xrefs;
+    public EmblScored(
+            List<UniProtCrossReference> uniProtCrossReferences,
+            List<EvidenceDatabase> evidenceDatabases) {
+        this.uniProtCrossReferences = uniProtCrossReferences;
         this.evidenceDatabases = evidenceDatabases;
     }
 
-    public EmblScored(List<UniProtCrossReference> xrefs) {
-        this(xrefs, null);
+    public EmblScored(List<UniProtCrossReference> uniProtCrossReferences) {
+        this(uniProtCrossReferences, null);
     }
 
     @Override
     public double score() {
 
         double score = 0;
-        for (UniProtCrossReference xref : xrefs) {
+        for (UniProtCrossReference xref : uniProtCrossReferences) {
             if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceDatabases)) {
                 String status = xref.getProperties().get(1).getValue();
                 if (status.equals("NOT_ANNOTATED_CDS")) {

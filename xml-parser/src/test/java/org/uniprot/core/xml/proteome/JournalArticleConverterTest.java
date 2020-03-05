@@ -79,7 +79,7 @@ class JournalArticleConverterTest {
                 .authorsAdd("Sulson J.E.")
                 .authorsAdd("JWaterston R.")
                 .authoringGroupsSet(Arrays.asList("The C. elegans sequencing consortium"))
-                .citationXrefsSet(
+                .citationCrossReferencesSet(
                         Arrays.asList(
                                 new CrossReferenceImpl<>(CitationDatabase.PUBMED, "9851916"),
                                 new CrossReferenceImpl<>(

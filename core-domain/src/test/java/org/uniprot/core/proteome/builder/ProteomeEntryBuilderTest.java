@@ -102,19 +102,20 @@ class ProteomeEntryBuilderTest {
         List<CrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
         CrossReference<ProteomeDatabase> xref1 =
                 new CrossReferenceBuilder<ProteomeDatabase>()
-                        .databaseType(ProteomeDatabase.GENOME_ACCESSION)
+                        .database(ProteomeDatabase.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
         CrossReference<ProteomeDatabase> xref2 =
                 new CrossReferenceBuilder<ProteomeDatabase>()
-                        .databaseType(ProteomeDatabase.GENOME_ANNOTATION)
+                        .database(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
         xrefs.add(xref1);
         xrefs.add(xref2);
-        ProteomeEntry proteome = new ProteomeEntryBuilder().dbXReferencesSet(xrefs).build();
-        assertEquals(2, proteome.getDbXReferences().size());
-        assertThat(proteome.getDbXReferences(), hasItem(xref2));
+        ProteomeEntry proteome =
+                new ProteomeEntryBuilder().proteomeCrossReferencesSet(xrefs).build();
+        assertEquals(2, proteome.getProteomeCrossReferences().size());
+        assertThat(proteome.getProteomeCrossReferences(), hasItem(xref2));
     }
 
     @Test
@@ -122,18 +123,21 @@ class ProteomeEntryBuilderTest {
 
         CrossReference<ProteomeDatabase> xref1 =
                 new CrossReferenceBuilder<ProteomeDatabase>()
-                        .databaseType(ProteomeDatabase.GENOME_ACCESSION)
+                        .database(ProteomeDatabase.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
         CrossReference<ProteomeDatabase> xref2 =
                 new CrossReferenceBuilder<ProteomeDatabase>()
-                        .databaseType(ProteomeDatabase.GENOME_ANNOTATION)
+                        .database(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
         ProteomeEntry proteome =
-                new ProteomeEntryBuilder().dbXReferencesAdd(xref1).dbXReferencesAdd(xref2).build();
-        assertEquals(2, proteome.getDbXReferences().size());
-        assertThat(proteome.getDbXReferences(), hasItem(xref1));
+                new ProteomeEntryBuilder()
+                        .proteomeCrossReferencesAdd(xref1)
+                        .proteomeCrossReferencesAdd(xref2)
+                        .build();
+        assertEquals(2, proteome.getProteomeCrossReferences().size());
+        assertThat(proteome.getProteomeCrossReferences(), hasItem(xref1));
     }
 
     @Test
@@ -200,9 +204,9 @@ class ProteomeEntryBuilderTest {
         List<Citation> citations = new ArrayList<>();
         citations.add(citation1);
         citations.add(citation2);
-        ProteomeEntry proteome = new ProteomeEntryBuilder().referencesSet(citations).build();
-        assertEquals(2, proteome.getReferences().size());
-        assertThat(proteome.getReferences(), hasItem(citation1));
+        ProteomeEntry proteome = new ProteomeEntryBuilder().citationsSet(citations).build();
+        assertEquals(2, proteome.getCitations().size());
+        assertThat(proteome.getCitations(), hasItem(citation1));
     }
 
     @Test
@@ -218,12 +222,9 @@ class ProteomeEntryBuilderTest {
         Submission citation2 = builder2.build();
 
         ProteomeEntry proteome =
-                new ProteomeEntryBuilder()
-                        .referencesAdd(citation1)
-                        .referencesAdd(citation2)
-                        .build();
-        assertEquals(2, proteome.getReferences().size());
-        assertThat(proteome.getReferences(), hasItem(citation2));
+                new ProteomeEntryBuilder().citationsAdd(citation1).citationsAdd(citation2).build();
+        assertEquals(2, proteome.getCitations().size());
+        assertThat(proteome.getCitations(), hasItem(citation2));
     }
 
     @Test

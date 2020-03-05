@@ -13,7 +13,7 @@ public final class ThesisBuilder extends AbstractCitationBuilder<ThesisBuilder, 
         return new ThesisImpl(
                 authoringGroups,
                 authors,
-                citationXrefs,
+                citationCrossReferences,
                 title,
                 publicationDate,
                 institute,

@@ -17,7 +17,7 @@ class CrossReferenceImplTest {
             asList(new Property("key1", "value1"), new Property("key2", "value2"));
     private CrossReference<DefaultDatabase> xref =
             new CrossReferenceBuilder<DefaultDatabase>()
-                    .databaseType(new DefaultDatabase("EMBL"))
+                    .database(new DefaultDatabase("EMBL"))
                     .id("DB123414")
                     .propertiesSet(properties)
                     .build();
@@ -26,7 +26,7 @@ class CrossReferenceImplTest {
     void testDBCrossReferenceImplStringString() {
         CrossReference<DefaultDatabase> xref =
                 new CrossReferenceBuilder<DefaultDatabase>()
-                        .databaseType(new DefaultDatabase("EMBL"))
+                        .database(new DefaultDatabase("EMBL"))
                         .id("DB123414")
                         .build();
         verify(xref, "EMBL", "DB123414", Collections.emptyList());

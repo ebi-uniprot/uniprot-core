@@ -23,7 +23,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 public final class CofactorBuilder implements Builder<Cofactor> {
     private String name;
     private List<Evidence> evidences = new ArrayList<>();
-    private CrossReference<CofactorDatabase> cofactorReference;
+    private CrossReference<CofactorDatabase> cofactorCrossReference;
 
     public @Nonnull CofactorBuilder name(String name) {
         this.name = name;
@@ -40,20 +40,21 @@ public final class CofactorBuilder implements Builder<Cofactor> {
         return this;
     }
 
-    public @Nonnull CofactorBuilder reference(CrossReference<CofactorDatabase> cofactorReference) {
-        this.cofactorReference = cofactorReference;
+    public @Nonnull CofactorBuilder cofactorCrossReference(
+            CrossReference<CofactorDatabase> cofactorCrossReference) {
+        this.cofactorCrossReference = cofactorCrossReference;
         return this;
     }
 
     @Override
     public @Nonnull Cofactor build() {
-        return new CofactorImpl(name, cofactorReference, evidences);
+        return new CofactorImpl(name, cofactorCrossReference, evidences);
     }
 
     public static @Nonnull CofactorBuilder from(@Nonnull Cofactor instance) {
         return new CofactorBuilder()
                 .name(instance.getName())
                 .evidencesSet(instance.getEvidences())
-                .reference(instance.getCofactorReference());
+                .cofactorCrossReference(instance.getCofactorCrossReference());
     }
 }

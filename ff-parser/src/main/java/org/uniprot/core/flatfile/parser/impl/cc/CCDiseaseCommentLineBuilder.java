@@ -65,9 +65,9 @@ public class CCDiseaseCommentLineBuilder extends CCLineBuilderAbstr<DiseaseComme
                         + disease.getAcronym()
                         + ") "
                         + "["
-                        + disease.getReference().getDatabase().toDisplayName()
+                        + disease.getDiseaseCrossReference().getDatabase().toDisplayName()
                         + ":"
-                        + disease.getReference().getId()
+                        + disease.getDiseaseCrossReference().getId()
                         + "]: "
                         + disease.getDescription();
 

@@ -49,7 +49,7 @@ public class ReferenceObjectConverter extends EvidenceCollector
             builder.title(rtLineConverter.convert(f.rt));
         }
         if (f.rx != null) {
-            builder.citationXrefsSet(rxLineConverter.convert(f.rx));
+            builder.citationCrossReferencesSet(rxLineConverter.convert(f.rx));
         }
         List<String> referencePositions = new ArrayList<>();
         if (f.rp != null) {

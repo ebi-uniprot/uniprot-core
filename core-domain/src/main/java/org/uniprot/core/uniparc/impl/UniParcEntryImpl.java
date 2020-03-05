@@ -25,28 +25,28 @@ public class UniParcEntryImpl implements UniParcEntry {
     private static final long serialVersionUID = 1558006779501834241L;
 
     private UniParcId uniParcId;
-    private List<UniParcCrossReference> databaseCrossReferences;
+    private List<UniParcCrossReference> uniParcCrossReferences;
     private Sequence sequence;
     private String uniprotExclusionReason;
     private List<SequenceFeature> sequenceFeatures;
     private List<Taxonomy> taxonomies;
 
     protected UniParcEntryImpl() {
-        this.databaseCrossReferences = Collections.emptyList();
+        this.uniParcCrossReferences = Collections.emptyList();
         this.sequenceFeatures = Collections.emptyList();
         this.taxonomies = Collections.emptyList();
     }
 
     public UniParcEntryImpl(
             UniParcId uniParcId,
-            List<UniParcCrossReference> databaseCrossReferences,
+            List<UniParcCrossReference> uniParcCrossReferences,
             Sequence sequence,
             List<SequenceFeature> sequenceFeatures,
             List<Taxonomy> taxonomies,
             String uniprotExclusionReason) {
         super();
         this.uniParcId = uniParcId;
-        this.databaseCrossReferences = Utils.unmodifiableList(databaseCrossReferences);
+        this.uniParcCrossReferences = Utils.unmodifiableList(uniParcCrossReferences);
         this.sequence = sequence;
 
         this.sequenceFeatures = Utils.unmodifiableList(sequenceFeatures);
@@ -60,8 +60,8 @@ public class UniParcEntryImpl implements UniParcEntry {
     }
 
     @Override
-    public List<UniParcCrossReference> getDbXReferences() {
-        return databaseCrossReferences;
+    public List<UniParcCrossReference> getUniParcCrossReferences() {
+        return uniParcCrossReferences;
     }
 
     @Override
@@ -83,7 +83,7 @@ public class UniParcEntryImpl implements UniParcEntry {
     public List<Taxonomy> getTaxonomies() {
         if ((taxonomies == null) || taxonomies.isEmpty()) {
             taxonomies =
-                    databaseCrossReferences.stream()
+                    uniParcCrossReferences.stream()
                             .flatMap(val -> val.getProperties().stream())
                             .filter(
                                     val ->
@@ -109,7 +109,7 @@ public class UniParcEntryImpl implements UniParcEntry {
         if (o == null || getClass() != o.getClass()) return false;
         UniParcEntryImpl that = (UniParcEntryImpl) o;
         return Objects.equals(uniParcId, that.uniParcId)
-                && Objects.equals(databaseCrossReferences, that.databaseCrossReferences)
+                && Objects.equals(uniParcCrossReferences, that.uniParcCrossReferences)
                 && Objects.equals(sequence, that.sequence)
                 && Objects.equals(uniprotExclusionReason, that.uniprotExclusionReason)
                 && Objects.equals(sequenceFeatures, that.sequenceFeatures);
@@ -119,7 +119,7 @@ public class UniParcEntryImpl implements UniParcEntry {
     public int hashCode() {
         return Objects.hash(
                 uniParcId,
-                databaseCrossReferences,
+                uniParcCrossReferences,
                 sequence,
                 uniprotExclusionReason,
                 sequenceFeatures);

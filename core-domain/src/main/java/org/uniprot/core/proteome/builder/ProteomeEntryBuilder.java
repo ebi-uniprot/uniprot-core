@@ -24,9 +24,9 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
     private ProteomeId redundantTo;
     private String strain;
     private String isolate;
-    private List<CrossReference<ProteomeDatabase>> dbXReferences = new ArrayList<>();
+    private List<CrossReference<ProteomeDatabase>> proteomeCrossReferences = new ArrayList<>();
     private List<Component> components = new ArrayList<>();
-    private List<Citation> references = new ArrayList<>();
+    private List<Citation> citations = new ArrayList<>();
     private List<RedundantProteome> redundantProteomes = new ArrayList<>();
     private ProteomeId panproteome;
     private int annotationScore;
@@ -47,9 +47,9 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 redundantTo,
                 strain,
                 isolate,
-                dbXReferences,
+                proteomeCrossReferences,
                 components,
-                references,
+                citations,
                 redundantProteomes,
                 panproteome,
                 annotationScore,
@@ -70,9 +70,9 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 .redundantTo(instance.getRedundantTo())
                 .strain(instance.getStrain())
                 .isolate(instance.getIsolate())
-                .dbXReferencesSet(instance.getDbXReferences())
+                .proteomeCrossReferencesSet(instance.getProteomeCrossReferences())
                 .componentsSet(instance.getComponents())
-                .referencesSet(instance.getReferences())
+                .citationsSet(instance.getCitations())
                 .redundantProteomesSet(instance.getRedudantProteomes())
                 .canonicalProteinsSet(instance.getCanonicalProteins())
                 .panproteome(instance.getPanproteome())
@@ -133,15 +133,15 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
         return this;
     }
 
-    public @Nonnull ProteomeEntryBuilder dbXReferencesSet(
-            List<CrossReference<ProteomeDatabase>> dbXReferences) {
-        this.dbXReferences = Utils.modifiableList(dbXReferences);
+    public @Nonnull ProteomeEntryBuilder proteomeCrossReferencesSet(
+            List<CrossReference<ProteomeDatabase>> proteomeCrossReferences) {
+        this.proteomeCrossReferences = Utils.modifiableList(proteomeCrossReferences);
         return this;
     }
 
-    public @Nonnull ProteomeEntryBuilder dbXReferencesAdd(
-            CrossReference<ProteomeDatabase> dbXReference) {
-        Utils.addOrIgnoreNull(dbXReference, dbXReferences);
+    public @Nonnull ProteomeEntryBuilder proteomeCrossReferencesAdd(
+            CrossReference<ProteomeDatabase> proteomeCrossReference) {
+        Utils.addOrIgnoreNull(proteomeCrossReference, proteomeCrossReferences);
         return this;
     }
 
@@ -155,13 +155,13 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
         return this;
     }
 
-    public @Nonnull ProteomeEntryBuilder referencesSet(List<Citation> references) {
-        this.references = Utils.modifiableList(references);
+    public @Nonnull ProteomeEntryBuilder citationsSet(List<Citation> citations) {
+        this.citations = Utils.modifiableList(citations);
         return this;
     }
 
-    public @Nonnull ProteomeEntryBuilder referencesAdd(Citation reference) {
-        Utils.addOrIgnoreNull(reference, references);
+    public @Nonnull ProteomeEntryBuilder citationsAdd(Citation citation) {
+        Utils.addOrIgnoreNull(citation, citations);
         return this;
     }
 

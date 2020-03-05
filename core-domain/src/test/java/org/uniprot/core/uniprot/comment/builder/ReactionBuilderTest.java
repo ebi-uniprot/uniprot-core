@@ -73,9 +73,9 @@ class ReactionBuilderTest {
     void canAddReactionReference() {
         Reaction obj =
                 new ReactionBuilder()
-                        .reactionReferencesAdd(
+                        .reactionCrossReferencesAdd(
                                 new CrossReferenceImpl<>(ReactionDatabase.RHEA, "123"))
                         .build();
-        assertTrue(obj.hasReactionReferences());
+        assertTrue(obj.hasReactionCrossReferences());
     }
 }

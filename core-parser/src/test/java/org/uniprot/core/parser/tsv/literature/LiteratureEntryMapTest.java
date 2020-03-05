@@ -71,13 +71,13 @@ class LiteratureEntryMapTest {
     private Citation createCompleteLiteratureCitation() {
         CrossReference<CitationDatabase> pubmed =
                 new CrossReferenceBuilder<CitationDatabase>()
-                        .databaseType(CitationDatabase.PUBMED)
+                        .database(CitationDatabase.PUBMED)
                         .id("100")
                         .build();
 
         CrossReference<CitationDatabase> doi =
                 new CrossReferenceBuilder<CitationDatabase>()
-                        .databaseType(CitationDatabase.DOI)
+                        .database(CitationDatabase.DOI)
                         .id("doi Id")
                         .build();
 
@@ -88,8 +88,8 @@ class LiteratureEntryMapTest {
                 .lastPage("last Page")
                 .volume("volume")
                 .journalName("journal Name")
-                .citationXrefsAdd(pubmed)
-                .citationXrefsAdd(doi)
+                .citationCrossReferencesAdd(pubmed)
+                .citationCrossReferencesAdd(doi)
                 .publicationDate("21-06-2019")
                 .title("title")
                 .completeAuthorList(false)

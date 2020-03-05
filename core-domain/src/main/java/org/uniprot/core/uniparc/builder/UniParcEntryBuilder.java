@@ -21,7 +21,7 @@ import org.uniprot.core.util.Utils;
  */
 public class UniParcEntryBuilder implements Builder<UniParcEntry> {
     private UniParcId uniParcId;
-    private List<UniParcCrossReference> databaseCrossReferences = new ArrayList<>();
+    private List<UniParcCrossReference> uniParcCrossReferences = new ArrayList<>();
     private Sequence sequence;
     private String uniprotExclusionReason;
     private List<SequenceFeature> sequenceFeatures = new ArrayList<>();
@@ -31,7 +31,7 @@ public class UniParcEntryBuilder implements Builder<UniParcEntry> {
     public @Nonnull UniParcEntry build() {
         return new UniParcEntryImpl(
                 uniParcId,
-                databaseCrossReferences,
+                uniParcCrossReferences,
                 sequence,
                 sequenceFeatures,
                 taxonomies,
@@ -47,15 +47,15 @@ public class UniParcEntryBuilder implements Builder<UniParcEntry> {
         return this;
     }
 
-    public @Nonnull UniParcEntryBuilder databaseCrossReferencesSet(
-            List<UniParcCrossReference> databaseCrossReferences) {
-        this.databaseCrossReferences = Utils.modifiableList(databaseCrossReferences);
+    public @Nonnull UniParcEntryBuilder uniParcCrossReferencesSet(
+            List<UniParcCrossReference> uniParcCrossReferences) {
+        this.uniParcCrossReferences = Utils.modifiableList(uniParcCrossReferences);
         return this;
     }
 
-    public @Nonnull UniParcEntryBuilder databaseCrossReferencesAdd(
-            UniParcCrossReference databaseCrossReference) {
-        Utils.addOrIgnoreNull(databaseCrossReference, databaseCrossReferences);
+    public @Nonnull UniParcEntryBuilder uniParcCrossReferencesAdd(
+            UniParcCrossReference uniParcCrossReference) {
+        Utils.addOrIgnoreNull(uniParcCrossReference, uniParcCrossReferences);
         return this;
     }
 
@@ -93,7 +93,7 @@ public class UniParcEntryBuilder implements Builder<UniParcEntry> {
     public static @Nonnull UniParcEntryBuilder from(@Nonnull UniParcEntry instance) {
         return new UniParcEntryBuilder()
                 .uniParcId(instance.getUniParcId())
-                .databaseCrossReferencesSet(instance.getDbXReferences())
+                .uniParcCrossReferencesSet(instance.getUniParcCrossReferences())
                 .sequence(instance.getSequence())
                 .uniprotExclusionReason(instance.getUniProtExclusionReason())
                 .sequenceFeaturesSet(instance.getSequenceFeatures())

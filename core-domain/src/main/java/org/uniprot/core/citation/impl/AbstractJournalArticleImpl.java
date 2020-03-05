@@ -24,14 +24,20 @@ public abstract class AbstractJournalArticleImpl extends AbstractCitationImpl
             CitationType citationType,
             List<String> authoringGroup,
             List<Author> authors,
-            List<CrossReference<CitationDatabase>> citationXrefs,
+            List<CrossReference<CitationDatabase>> citationCrossReferences,
             String title,
             PublicationDate publicationDate,
             String journalName,
             String firstPage,
             String lastPage,
             String volume) {
-        super(citationType, authoringGroup, authors, citationXrefs, title, publicationDate);
+        super(
+                citationType,
+                authoringGroup,
+                authors,
+                citationCrossReferences,
+                title,
+                publicationDate);
         if (journalName != null) {
             this.journal = new JournalImpl(journalName);
         }

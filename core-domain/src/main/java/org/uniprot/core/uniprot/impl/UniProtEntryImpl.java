@@ -68,7 +68,7 @@ public class UniProtEntryImpl implements UniProtEntry {
 
     private List<Keyword> keywords;
     private List<UniProtReference> references;
-    private List<UniProtCrossReference> databaseCrossReferences;
+    private List<UniProtCrossReference> uniProtCrossReferences;
     private Sequence sequence;
 
     private InternalSection internalSection;
@@ -82,7 +82,7 @@ public class UniProtEntryImpl implements UniProtEntry {
         genes = Collections.emptyList();
         comments = Collections.emptyList();
         references = Collections.emptyList();
-        databaseCrossReferences = Collections.emptyList();
+        uniProtCrossReferences = Collections.emptyList();
         features = Collections.emptyList();
         geneLocations = Collections.emptyList();
         keywords = Collections.emptyList();
@@ -106,7 +106,7 @@ public class UniProtEntryImpl implements UniProtEntry {
             List<GeneLocation> geneLocations,
             List<Keyword> keywords,
             List<UniProtReference> references,
-            List<UniProtCrossReference> databaseCrossReferences,
+            List<UniProtCrossReference> uniProtCrossReferences,
             Sequence sequence,
             InternalSection internalSection,
             List<TaxonomyLineage> lineages,
@@ -139,7 +139,7 @@ public class UniProtEntryImpl implements UniProtEntry {
         this.geneLocations = Utils.unmodifiableList(geneLocations);
         this.keywords = Utils.unmodifiableList(keywords);
         this.references = Utils.unmodifiableList(references);
-        this.databaseCrossReferences = Utils.modifiableList(databaseCrossReferences);
+        this.uniProtCrossReferences = Utils.modifiableList(uniProtCrossReferences);
         this.sequence = sequence;
         this.internalSection = internalSection;
         this.lineages = Utils.unmodifiableList(lineages);
@@ -250,18 +250,18 @@ public class UniProtEntryImpl implements UniProtEntry {
     }
 
     @Override
-    public List<UniProtCrossReference> getDatabaseCrossReferences() {
-        return databaseCrossReferences;
+    public List<UniProtCrossReference> getUniProtCrossReferences() {
+        return uniProtCrossReferences;
     }
 
     @Override
-    public List<UniProtCrossReference> getDatabaseCrossReferencesByType(UniProtDatabase type) {
-        return getDatabaseCrossReferencesByType(type.getName());
+    public List<UniProtCrossReference> getUniProtCrossReferencesByType(UniProtDatabase type) {
+        return getUniProtCrossReferencesByType(type.getName());
     }
 
     @Override
-    public List<UniProtCrossReference> getDatabaseCrossReferencesByType(String dbName) {
-        return this.databaseCrossReferences.stream()
+    public List<UniProtCrossReference> getUniProtCrossReferencesByType(String dbName) {
+        return this.uniProtCrossReferences.stream()
                 .filter(val -> dbName.equals(val.getDatabase().getName()))
                 .collect(Collectors.toList());
     }
@@ -352,8 +352,8 @@ public class UniProtEntryImpl implements UniProtEntry {
     }
 
     @Override
-    public boolean hasDatabaseCrossReferences() {
-        return Utils.notNullNotEmpty(this.databaseCrossReferences);
+    public boolean hasUniProtCrossReferences() {
+        return Utils.notNullNotEmpty(this.uniProtCrossReferences);
     }
 
     @Override
@@ -377,7 +377,7 @@ public class UniProtEntryImpl implements UniProtEntry {
                 && Objects.equals(geneLocations, that.geneLocations)
                 && Objects.equals(keywords, that.keywords)
                 && Objects.equals(references, that.references)
-                && Objects.equals(databaseCrossReferences, that.databaseCrossReferences)
+                && Objects.equals(uniProtCrossReferences, that.uniProtCrossReferences)
                 && Objects.equals(sequence, that.sequence)
                 && Objects.equals(internalSection, that.internalSection)
                 && Objects.equals(inactiveReason, that.inactiveReason);
@@ -402,7 +402,7 @@ public class UniProtEntryImpl implements UniProtEntry {
                 geneLocations,
                 keywords,
                 references,
-                databaseCrossReferences,
+                uniProtCrossReferences,
                 sequence,
                 internalSection,
                 inactiveReason);

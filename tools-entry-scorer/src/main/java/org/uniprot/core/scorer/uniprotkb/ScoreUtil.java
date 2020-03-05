@@ -60,7 +60,7 @@ public class ScoreUtil {
             List<Evidence> evidences, List<EvidenceDatabase> evidenceDatabases) {
         if ((evidenceDatabases == null) || (evidenceDatabases.isEmpty())) return true;
         return evidences.stream()
-                .map(e -> e.getSource().getDatabase())
+                .map(e -> e.getEvidenceCrossReference().getDatabase())
                 .anyMatch(evidenceDatabases::contains);
     }
 }

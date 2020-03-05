@@ -23,11 +23,11 @@ public final class UniProtDatabaseImpl implements UniProtDatabase {
         return name;
     }
 
-    public @Nonnull UniProtDatabaseDetail getDetail() {
+    public @Nonnull UniProtDatabaseDetail getUniProtDatabaseDetail() {
         return UniProtDatabaseTypes.INSTANCE.getDbTypeByName(name);
     }
 
-    public @Nullable UniProtDatabaseAttribute getAttribute(int position) {
+    public @Nullable UniProtDatabaseAttribute getUniProtDatabaseAttribute(int position) {
         UniProtDatabaseAttribute toReturn = null;
         List<UniProtDatabaseAttribute> attributes =
                 UniProtDatabaseTypes.INSTANCE.getDbTypeByName(name).getAttributes();

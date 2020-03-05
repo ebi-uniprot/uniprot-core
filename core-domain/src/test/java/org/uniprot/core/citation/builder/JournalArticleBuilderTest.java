@@ -22,10 +22,11 @@ class JournalArticleBuilderTest extends AbstractJournalArticleBuilderTest {
     void canAddSingleCitation() {
         CrossReference<CitationDatabase> citation =
                 new CrossReferenceBuilder<CitationDatabase>()
-                        .databaseType(CitationDatabase.PUBMED)
+                        .database(CitationDatabase.PUBMED)
                         .id("pubmedId")
                         .build();
-        JournalArticle article = new JournalArticleBuilder().citationXrefsAdd(citation).build();
-        assertEquals(citation, article.getCitationXrefs().get(0));
+        JournalArticle article =
+                new JournalArticleBuilder().citationCrossReferencesAdd(citation).build();
+        assertEquals(citation, article.getCitationCrossReferences().get(0));
     }
 }

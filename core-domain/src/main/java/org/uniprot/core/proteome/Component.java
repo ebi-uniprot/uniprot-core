@@ -10,7 +10,7 @@ public interface Component extends Serializable {
 
     String getDescription();
 
-    List<CrossReference<ProteomeDatabase>> getDbXReferences();
+    List<CrossReference<ProteomeDatabase>> getProteomeCrossReferences();
 
     int getProteinCount();
 

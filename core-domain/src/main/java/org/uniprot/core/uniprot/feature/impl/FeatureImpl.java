@@ -22,7 +22,7 @@ public class FeatureImpl implements Feature {
     private FeatureDescription description;
     private FeatureId featureId;
     private AlternativeSequence alternativeSequence;
-    private CrossReference<FeatureDatabase> dbXref;
+    private CrossReference<FeatureDatabase> featureCrossReference;
     private List<Evidence> evidences;
 
     // no arg constructor for JSON deserialization
@@ -36,7 +36,7 @@ public class FeatureImpl implements Feature {
             FeatureDescription description,
             FeatureId featureId,
             AlternativeSequence alternativeSequence,
-            CrossReference<FeatureDatabase> dbXref,
+            CrossReference<FeatureDatabase> featureCrossReference,
             List<Evidence> evidences) {
 
         this.type = type;
@@ -44,7 +44,7 @@ public class FeatureImpl implements Feature {
         this.description = description;
         this.featureId = featureId;
         this.alternativeSequence = alternativeSequence;
-        this.dbXref = dbXref;
+        this.featureCrossReference = featureCrossReference;
         this.evidences = Utils.unmodifiableList(evidences);
     }
 
@@ -94,13 +94,13 @@ public class FeatureImpl implements Feature {
     }
 
     @Override
-    public boolean hasDbXref() {
-        return this.dbXref != null;
+    public boolean hasFeatureCrossReference() {
+        return this.featureCrossReference != null;
     }
 
     @Override
-    public CrossReference<FeatureDatabase> getDbXref() {
-        return dbXref;
+    public CrossReference<FeatureDatabase> getFeatureCrossReference() {
+        return featureCrossReference;
     }
 
     @Override
@@ -120,7 +120,9 @@ public class FeatureImpl implements Feature {
         result =
                 prime * result
                         + ((alternativeSequence == null) ? 0 : alternativeSequence.hashCode());
-        result = prime * result + ((dbXref == null) ? 0 : dbXref.hashCode());
+        result =
+                prime * result
+                        + ((featureCrossReference == null) ? 0 : featureCrossReference.hashCode());
         result = prime * result + ((description == null) ? 0 : description.hashCode());
         result = prime * result + ((evidences == null) ? 0 : evidences.hashCode());
         result = prime * result + ((featureId == null) ? 0 : featureId.hashCode());
@@ -138,9 +140,9 @@ public class FeatureImpl implements Feature {
         if (alternativeSequence == null) {
             if (other.alternativeSequence != null) return false;
         } else if (!alternativeSequence.equals(other.alternativeSequence)) return false;
-        if (dbXref == null) {
-            if (other.dbXref != null) return false;
-        } else if (!dbXref.equals(other.dbXref)) return false;
+        if (featureCrossReference == null) {
+            if (other.featureCrossReference != null) return false;
+        } else if (!featureCrossReference.equals(other.featureCrossReference)) return false;
         if (description == null) {
             if (other.description != null) return false;
         } else if (!description.equals(other.description)) return false;

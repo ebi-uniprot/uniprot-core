@@ -86,9 +86,9 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
                 .canonicalProteinsSet(canonicalProteins)
                 .geneCount(canonicalProteins.size())
                 .redundantProteomesSet(redundantProteomes)
-                .dbXReferencesSet(xrefs)
+                .proteomeCrossReferencesSet(xrefs)
                 .superkingdom(Superkingdom.fromValue(xmlObj.getSuperregnum().value()))
-                .referencesSet(citations);
+                .citationsSet(citations);
 
         if (xmlObj.getAnnotationScore() != null) {
             builder.annotationScore(xmlObj.getAnnotationScore().getNormalizedAnnotationScore());
@@ -141,11 +141,11 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
                 .map(redundantProteomeConverter::toXml)
                 .forEach(val -> xmlObj.getRedundantProteome().add(val));
 
-        uniObj.getDbXReferences().stream()
+        uniObj.getProteomeCrossReferences().stream()
                 .map(xrefConverter::toXml)
                 .forEach(val -> xmlObj.getDbReference().add(val));
 
-        uniObj.getReferences().stream()
+        uniObj.getCitations().stream()
                 .map(referenceConverter::toXml)
                 .filter(val -> val != null)
                 .forEach(val -> xmlObj.getReference().add(val));

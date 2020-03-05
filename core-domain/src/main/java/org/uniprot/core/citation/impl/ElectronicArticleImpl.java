@@ -22,7 +22,7 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
     public ElectronicArticleImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<CrossReference<CitationDatabase>> citationXrefs,
+            List<CrossReference<CitationDatabase>> citationCrossReferences,
             String title,
             PublicationDate publicationDate,
             String journalName,
@@ -31,7 +31,7 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
                 CitationType.ELECTRONIC_ARTICLE,
                 authoringGroup,
                 authors,
-                citationXrefs,
+                citationCrossReferences,
                 title,
                 publicationDate);
         if (journalName != null) {

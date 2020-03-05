@@ -17,7 +17,7 @@ public class DiseaseImpl implements Disease {
     private String diseaseAccession;
     private String acronym;
     private String description;
-    private CrossReference<DiseaseDatabase> reference;
+    private CrossReference<DiseaseDatabase> diseaseCrossReference;
     private List<Evidence> evidences;
 
     // no arg constructor for JSON deserialization
@@ -30,7 +30,7 @@ public class DiseaseImpl implements Disease {
             String diseaseAccession,
             String acronym,
             String description,
-            CrossReference<DiseaseDatabase> reference,
+            CrossReference<DiseaseDatabase> diseaseCrossReference,
             List<Evidence> evidences) {
         this.diseaseId = diseaseId;
         if (diseaseAccession == null || diseaseAccession.isEmpty()) {
@@ -40,7 +40,7 @@ public class DiseaseImpl implements Disease {
         }
         this.acronym = acronym;
         this.description = description;
-        this.reference = reference;
+        this.diseaseCrossReference = diseaseCrossReference;
         this.evidences = Utils.unmodifiableList(evidences);
     }
 
@@ -75,8 +75,8 @@ public class DiseaseImpl implements Disease {
     }
 
     @Override
-    public CrossReference<DiseaseDatabase> getReference() {
-        return reference;
+    public CrossReference<DiseaseDatabase> getDiseaseCrossReference() {
+        return diseaseCrossReference;
     }
 
     @Override
@@ -109,8 +109,8 @@ public class DiseaseImpl implements Disease {
     }
 
     @Override
-    public boolean hasReference() {
-        return this.reference != null;
+    public boolean hasDiseaseCrossReference() {
+        return this.diseaseCrossReference != null;
     }
 
     @Override
@@ -122,12 +122,13 @@ public class DiseaseImpl implements Disease {
                 && Objects.equals(diseaseAccession, disease.diseaseAccession)
                 && Objects.equals(acronym, disease.acronym)
                 && Objects.equals(description, disease.description)
-                && Objects.equals(reference, disease.reference);
+                && Objects.equals(diseaseCrossReference, disease.diseaseCrossReference);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(diseaseId, diseaseAccession, acronym, description, reference);
+        return Objects.hash(
+                diseaseId, diseaseAccession, acronym, description, diseaseCrossReference);
     }
 
     private boolean isValidDescription() {
@@ -135,9 +136,9 @@ public class DiseaseImpl implements Disease {
     }
 
     private boolean isValidReference() {
-        return (getReference() != null
-                && getReference().getId() != null
-                && !getReference().getId().isEmpty()
-                && getReference().getDatabase() != DiseaseDatabase.NONE);
+        return (getDiseaseCrossReference() != null
+                && getDiseaseCrossReference().getId() != null
+                && !getDiseaseCrossReference().getId().isEmpty()
+                && getDiseaseCrossReference().getDatabase() != DiseaseDatabase.NONE);
     }
 }

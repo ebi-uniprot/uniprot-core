@@ -22,7 +22,7 @@ class ComponentConverterTest {
         Component component = converter.fromXml(xmlObj);
         assertEquals("component name", component.getName());
         assertEquals("component description", component.getDescription());
-        assertEquals(0, component.getDbXReferences().size());
+        assertEquals(0, component.getProteomeCrossReferences().size());
         assertEquals(org.uniprot.core.proteome.ComponentType.CON, component.getType());
     }
 

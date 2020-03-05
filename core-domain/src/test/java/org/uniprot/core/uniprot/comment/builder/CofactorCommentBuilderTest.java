@@ -85,7 +85,7 @@ class CofactorCommentBuilderTest {
         String name = "someName";
         Cofactor cofactor = createCofactor(name, reference, createEvidences());
         assertEquals(name, cofactor.getName());
-        assertEquals(reference, cofactor.getCofactorReference());
+        assertEquals(reference, cofactor.getCofactorCrossReference());
         assertEquals(2, cofactor.getEvidences().size());
     }
 
@@ -125,7 +125,7 @@ class CofactorCommentBuilderTest {
             String name, CrossReference<CofactorDatabase> reference, List<Evidence> evidences) {
         return new CofactorBuilder()
                 .name(name)
-                .reference(reference)
+                .cofactorCrossReference(reference)
                 .evidencesSet(evidences)
                 .build();
     }

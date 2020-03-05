@@ -41,17 +41,17 @@ class SsLineConverterTest {
         EvidenceLine evidenceLine1 = evidences.get(0);
         EvidenceLine evidenceLine2 = evidences.get(1);
         Evidence evidence1 = parseEvidenceLine(evidenceLine1.getEvidence());
-        assertEquals("UP99", evidence1.getSource().getId());
+        assertEquals("UP99", evidence1.getEvidenceCrossReference().getId());
         assertEquals("ECO:0000313|ProtImp:UP99", evidenceLine1.getEvidence());
-        assertEquals("ProtImp", evidence1.getSource().getDatabase().getName());
+        assertEquals("ProtImp", evidence1.getEvidenceCrossReference().getDatabase().getName());
         assertEquals("ECO:0000313", evidence1.getEvidenceCode().getCode());
         assertEquals(ev1.getDate(), evidenceLine1.getCreateDate());
         assertEquals(ev1.getAttr2(), evidenceLine1.getCurator());
 
         Evidence evidence2 = parseEvidenceLine(evidenceLine2.getEvidence());
-        assertEquals("MF_01417", evidence2.getSource().getId());
+        assertEquals("MF_01417", evidence2.getEvidenceCrossReference().getId());
         assertEquals("ECO:0000256|HAMAP-Rule:MF_01417", evidenceLine2.getEvidence());
-        assertEquals("HAMAP-Rule", evidence2.getSource().getDatabase().getName());
+        assertEquals("HAMAP-Rule", evidence2.getEvidenceCrossReference().getDatabase().getName());
         assertEquals("ECO:0000256", evidence2.getEvidenceCode().getCode());
         assertEquals(ev2.getDate(), evidenceLine2.getCreateDate());
         assertEquals(ev2.getAttr2(), evidenceLine2.getCurator());

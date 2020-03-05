@@ -302,8 +302,8 @@ class CCDiseaseBuildTest extends CCBuildTestAbstr {
         builder.diseaseId(diseaseId);
         builder.acronym(acronym);
         builder.description(description).evidencesSet(createEvidence(evs));
-        builder.reference(
-                new CrossReferenceBuilder<DiseaseDatabase>().databaseType(type).id(refId).build());
+        builder.diseaseCrossReference(
+                new CrossReferenceBuilder<DiseaseDatabase>().database(type).id(refId).build());
         return builder.build();
     }
 }

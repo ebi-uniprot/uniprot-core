@@ -53,7 +53,7 @@ public class CatalyticActivityCCLineBuilder extends CCLineBuilderAbstr<Catalytic
         StringBuilder sb = new StringBuilder();
         if (includeFFMarkings) sb.append(this.linePrefix);
         sb.append(REACTION).append(reaction.getName()).append(FFLineConstant.SEMICOLON);
-        List<CrossReference<ReactionDatabase>> xrefs = reaction.getReactionReferences();
+        List<CrossReference<ReactionDatabase>> xrefs = reaction.getReactionCrossReferences();
         //	List<String> words = new ArrayList<>();
         if (!xrefs.isEmpty()) {
             //	words =xrefs.stream().map(val ->
@@ -102,7 +102,7 @@ public class CatalyticActivityCCLineBuilder extends CCLineBuilderAbstr<Catalytic
                     .append(FFLineConstant.SEPARATOR_SEMICOLON);
 
             sb2.append(XREF)
-                    .append(convertReactionReference(direction.getReactionReference()))
+                    .append(convertReactionReference(direction.getReactionCrossReference()))
                     .append(FFLineConstant.SEMICOLON);
             if (!direction.getEvidences().isEmpty() && showEvidence) {
                 sb2.append(FFLineConstant.SPACE);

@@ -21,13 +21,13 @@ class CofactorCommentImplTest {
         String name = "someName";
         CrossReference<CofactorDatabase> reference =
                 new CrossReferenceBuilder<CofactorDatabase>()
-                        .databaseType(CofactorDatabase.CHEBI)
+                        .database(CofactorDatabase.CHEBI)
                         .id("CHEBI:324")
                         .build();
         Cofactor cofactor =
                 new CofactorBuilder()
                         .name(name)
-                        .reference(reference)
+                        .cofactorCrossReference(reference)
                         .evidencesSet(createEvidences())
                         .build();
         List<Cofactor> cofactors = Arrays.asList(cofactor);
@@ -55,7 +55,7 @@ class CofactorCommentImplTest {
         Cofactor cofactor =
                 new CofactorBuilder()
                         .name(name)
-                        .reference(reference)
+                        .cofactorCrossReference(reference)
                         .evidencesSet(createEvidences())
                         .build();
         List<Cofactor> cofactors = Arrays.asList(cofactor);

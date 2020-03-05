@@ -26,11 +26,11 @@ public interface ProteomeEntry extends Serializable {
 
     String getIsolate();
 
-    List<CrossReference<ProteomeDatabase>> getDbXReferences();
+    List<CrossReference<ProteomeDatabase>> getProteomeCrossReferences();
 
     List<Component> getComponents();
 
-    List<Citation> getReferences();
+    List<Citation> getCitations();
 
     List<RedundantProteome> getRedudantProteomes();
 

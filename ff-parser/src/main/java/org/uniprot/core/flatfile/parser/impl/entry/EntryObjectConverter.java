@@ -91,7 +91,7 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
         if (f.cc != null) activeEntryBuilder.commentsSet(ccLineConverter.convert(f.cc));
         activeEntryBuilder.proteinDescription(deLineConverter.convert(f.de));
         UniProtDrObjects drObjects = drLineConverter.convert(f.dr);
-        activeEntryBuilder.databaseCrossReferencesSet(
+        activeEntryBuilder.uniProtCrossReferencesSet(
                 addGoEvidence(f.ac.primaryAcc, drObjects.drObjects));
 
         if (f.ft != null) {
@@ -169,7 +169,7 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
                 return xref;
             }
             return new UniProtCrossReferenceBuilder()
-                    .databaseType(xref.getDatabase())
+                    .database(xref.getDatabase())
                     .id(xref.getId())
                     .isoformId(xref.getIsoformId())
                     .evidencesSet(evidences)

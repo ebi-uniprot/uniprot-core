@@ -22,12 +22,18 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
     public ThesisImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<CrossReference<CitationDatabase>> citationXrefs,
+            List<CrossReference<CitationDatabase>> citationCrossReferences,
             String title,
             PublicationDate publicationDate,
             String institute,
             String address) {
-        super(CitationType.THESIS, authoringGroup, authors, citationXrefs, title, publicationDate);
+        super(
+                CitationType.THESIS,
+                authoringGroup,
+                authors,
+                citationCrossReferences,
+                title,
+                publicationDate);
         this.institute = Utils.emptyOrString(institute);
         this.address = Utils.emptyOrString(address);
     }

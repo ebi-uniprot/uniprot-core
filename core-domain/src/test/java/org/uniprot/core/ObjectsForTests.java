@@ -61,7 +61,7 @@ public class ObjectsForTests {
         ECNumber ecNumber = new ECNumberImpl("1.2.4.5");
         return new ReactionBuilder()
                 .name(name)
-                .reactionReferencesSet(references)
+                .reactionCrossReferencesSet(references)
                 .ecNumber(ecNumber)
                 .evidencesSet(evidences)
                 .build();
@@ -77,9 +77,9 @@ public class ObjectsForTests {
         phyReactions.add(
                 new PhysiologicalReactionBuilder()
                         .directionType(PhysiologicalDirectionType.LEFT_TO_RIGHT)
-                        .reactionReference(
+                        .reactionCrossReference(
                                 new CrossReferenceBuilder<ReactionDatabase>()
-                                        .databaseType(ReactionDatabase.RHEA)
+                                        .database(ReactionDatabase.RHEA)
                                         .id("RHEA:123")
                                         .build())
                         .evidencesSet(evidences)
@@ -87,9 +87,9 @@ public class ObjectsForTests {
         phyReactions.add(
                 new PhysiologicalReactionBuilder()
                         .directionType(PhysiologicalDirectionType.RIGHT_TO_LEFT)
-                        .reactionReference(
+                        .reactionCrossReference(
                                 new CrossReferenceBuilder<ReactionDatabase>()
-                                        .databaseType(ReactionDatabase.RHEA)
+                                        .database(ReactionDatabase.RHEA)
                                         .id("RHEA:313")
                                         .build())
                         .evidencesSet(evidences)
@@ -234,7 +234,7 @@ public class ObjectsForTests {
         UniParcCrossReference xref =
                 new UniParcCrossReferenceBuilder()
                         .versionI(3)
-                        .databaseType(UniParcDatabase.SWISSPROT)
+                        .database(UniParcDatabase.SWISSPROT)
                         .id("P12345")
                         .version(7)
                         .active(true)
@@ -250,7 +250,7 @@ public class ObjectsForTests {
         UniParcCrossReference xref2 =
                 new UniParcCrossReferenceBuilder()
                         .versionI(1)
-                        .databaseType(UniParcDatabase.TREMBL)
+                        .database(UniParcDatabase.TREMBL)
                         .id("P52345")
                         .version(7)
                         .active(true)
@@ -397,7 +397,7 @@ public class ObjectsForTests {
     public static Citation createCompleteLiteratureCitation() {
         CrossReference<CitationDatabase> xref =
                 new CrossReferenceBuilder<CitationDatabase>()
-                        .databaseType(CitationDatabase.PUBMED)
+                        .database(CitationDatabase.PUBMED)
                         .id("id1")
                         .build();
 
@@ -410,7 +410,7 @@ public class ObjectsForTests {
                 .journalName("The journal name")
                 .authorsAdd("John")
                 .authoringGroupsAdd("the author group")
-                .citationXrefsAdd(xref)
+                .citationCrossReferencesAdd(xref)
                 .publicationDate("2015-MAY")
                 .title("the big title")
                 .build();
@@ -520,7 +520,7 @@ public class ObjectsForTests {
         Cofactor cofactor =
                 new CofactorBuilder()
                         .name("cofactor 1")
-                        .reference(reference)
+                        .cofactorCrossReference(reference)
                         .evidencesSet(createEvidences())
                         .build();
         CrossReference<CofactorDatabase> reference2 =
@@ -528,7 +528,7 @@ public class ObjectsForTests {
         Cofactor cofactor2 =
                 new CofactorBuilder()
                         .name("cofactor 2")
-                        .reference(reference2)
+                        .cofactorCrossReference(reference2)
                         .evidencesSet(createEvidences())
                         .build();
         return Arrays.asList(cofactor, cofactor2);
@@ -537,12 +537,12 @@ public class ObjectsForTests {
     public static List<CrossReference<ProteomeDatabase>> proteomeXReferenceTypes() {
         CrossReference<ProteomeDatabase> xref1 =
                 new CrossReferenceBuilder<ProteomeDatabase>()
-                        .databaseType(ProteomeDatabase.GENOME_ACCESSION)
+                        .database(ProteomeDatabase.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
         CrossReference<ProteomeDatabase> xref2 =
                 new CrossReferenceBuilder<ProteomeDatabase>()
-                        .databaseType(ProteomeDatabase.GENOME_ANNOTATION)
+                        .database(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
         return Arrays.asList(xref1, xref2);
@@ -601,14 +601,14 @@ public class ObjectsForTests {
                 .publicationDate(PUBLICATION_DATE)
                 .authoringGroupsSet(GROUPS)
                 .authorsSet(AUTHORS)
-                .citationXrefsSet(
+                .citationCrossReferencesSet(
                         asList(
                                 new CrossReferenceBuilder<CitationDatabase>()
-                                        .databaseType(CitationDatabase.PUBMED)
+                                        .database(CitationDatabase.PUBMED)
                                         .id("id1")
                                         .build(),
                                 new CrossReferenceBuilder<CitationDatabase>()
-                                        .databaseType(CitationDatabase.AGRICOLA)
+                                        .database(CitationDatabase.AGRICOLA)
                                         .id("id2")
                                         .build()));
     }

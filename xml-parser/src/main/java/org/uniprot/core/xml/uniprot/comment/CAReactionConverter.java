@@ -54,7 +54,7 @@ public class CAReactionConverter implements Converter<ReactionType, Reaction> {
 
         return new ReactionBuilder()
                 .name(name)
-                .reactionReferencesSet(references)
+                .reactionCrossReferencesSet(references)
                 .ecNumber(ecNumber)
                 .evidencesSet(evidences)
                 .build();
@@ -67,7 +67,7 @@ public class CAReactionConverter implements Converter<ReactionType, Reaction> {
         reactionType
                 .getDbReference()
                 .addAll(
-                        uniObj.getReactionReferences().stream()
+                        uniObj.getReactionCrossReferences().stream()
                                 .map(val -> refConverter.toXml(val))
                                 .collect(Collectors.toList()));
         if (uniObj.getEcNumber() != null) {

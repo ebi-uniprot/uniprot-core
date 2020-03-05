@@ -156,12 +156,12 @@ class UniProtCrossReferenceConverterTest {
             String isoformId) {
         UniProtDatabase uniProtDatabase = new UniProtDatabaseImpl(dbName);
         return new UniProtCrossReferenceBuilder()
-                .databaseType(uniProtDatabase)
+                .database(uniProtDatabase)
                 .id(id)
                 .isoformId(isoformId)
-                .propertiesAdd(uniProtDatabase.getAttribute(0), description)
-                .propertiesAdd(uniProtDatabase.getAttribute(1), thirdAttribute)
-                .propertiesAdd(uniProtDatabase.getAttribute(2), fourthAttribute)
+                .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(0), description)
+                .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(1), thirdAttribute)
+                .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(2), fourthAttribute)
                 .build();
     }
 }

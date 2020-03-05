@@ -215,10 +215,10 @@ class CCCofactorBuildTest extends CCBuildTestAbstr {
             String name, CofactorDatabase type, String refId, List<String> evids) {
 
         CrossReference<CofactorDatabase> coRef =
-                new CrossReferenceBuilder<CofactorDatabase>().databaseType(type).id(refId).build();
+                new CrossReferenceBuilder<CofactorDatabase>().database(type).id(refId).build();
         return new CofactorBuilder()
                 .name(name)
-                .reference(coRef)
+                .cofactorCrossReference(coRef)
                 .evidencesSet(createEvidence(evids))
                 .build();
     }

@@ -34,11 +34,13 @@ class CAReactionConverterTest {
         CAReactionConverter converter = new CAReactionConverter(new EvidenceIndexMapper());
         Reaction reaction = converter.fromXml(reactionType);
         assertEquals("another text", reaction.getName());
-        assertEquals(2, reaction.getReactionReferences().size());
+        assertEquals(2, reaction.getReactionCrossReferences().size());
         verifyReactionReference(
-                reaction.getReactionReferences().get(0), ReactionDatabase.CHEBI, "CHEBI:29105");
+                reaction.getReactionCrossReferences().get(0),
+                ReactionDatabase.CHEBI,
+                "CHEBI:29105");
         verifyReactionReference(
-                reaction.getReactionReferences().get(1), ReactionDatabase.RHEA, "RHEA:125");
+                reaction.getReactionCrossReferences().get(1), ReactionDatabase.RHEA, "RHEA:125");
         assertEquals("1.2.1.32", reaction.getEcNumber().getValue());
     }
 
@@ -71,7 +73,7 @@ class CAReactionConverterTest {
         Reaction reaction =
                 new ReactionBuilder()
                         .name("Some value")
-                        .reactionReferencesSet(references)
+                        .reactionCrossReferencesSet(references)
                         .ecNumber(("1.2.3.32"))
                         .evidencesSet(evids)
                         .build();
@@ -109,7 +111,7 @@ class CAReactionConverterTest {
         Reaction reaction =
                 new ReactionBuilder()
                         .name("Some value")
-                        .reactionReferencesSet(references)
+                        .reactionCrossReferencesSet(references)
                         .ecNumber(("1.2.3.32"))
                         .evidencesSet(evidences)
                         .build();
@@ -123,6 +125,6 @@ class CAReactionConverterTest {
     }
 
     private CrossReference<ReactionDatabase> createReference(ReactionDatabase type, String id) {
-        return new CrossReferenceBuilder<ReactionDatabase>().databaseType(type).id(id).build();
+        return new CrossReferenceBuilder<ReactionDatabase>().database(type).id(id).build();
     }
 }

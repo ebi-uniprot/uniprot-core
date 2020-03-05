@@ -25,7 +25,7 @@ class UniParcCrossReferenceConverterTest {
         // <dbReference type="Ensembl" id="CG1106-PB" version_i="1" active="N" created="2003-04-01"
         // last="2007-11-22"/>
         UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder();
-        builder.databaseType(UniParcDatabase.ENSEMBL_VERTEBRATE)
+        builder.database(UniParcDatabase.ENSEMBL_VERTEBRATE)
                 .id("CG1106-PB")
                 .versionI(1)
                 .active(false)
@@ -54,7 +54,7 @@ class UniParcCrossReferenceConverterTest {
         //		</dbReference>
 
         UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder();
-        builder.databaseType(UniParcDatabase.TREMBL)
+        builder.database(UniParcDatabase.TREMBL)
                 .id("A0A0C4DHG2-PB")
                 .versionI(1)
                 .version(1)

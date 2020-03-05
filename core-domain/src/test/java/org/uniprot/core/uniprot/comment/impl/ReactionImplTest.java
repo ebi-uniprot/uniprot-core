@@ -32,14 +32,14 @@ class ReactionImplTest {
         Reaction reaction =
                 new ReactionBuilder()
                         .name(name)
-                        .reactionReferencesSet(references)
+                        .reactionCrossReferencesSet(references)
                         .ecNumber(ecNumber)
                         .evidencesSet(evidences)
                         .build();
         assertEquals(evidences, reaction.getEvidences());
         assertEquals(name, reaction.getName());
         assertEquals(ecNumber, reaction.getEcNumber());
-        assertEquals(references, reaction.getReactionReferences());
+        assertEquals(references, reaction.getReactionCrossReferences());
     }
 
     @Test
@@ -50,7 +50,7 @@ class ReactionImplTest {
         assertEquals(evidences, reaction.getEvidences());
         assertEquals(name, reaction.getName());
         assertEquals(null, reaction.getEcNumber());
-        assertTrue(reaction.getReactionReferences().isEmpty());
+        assertTrue(reaction.getReactionCrossReferences().isEmpty());
     }
 
     @Test
@@ -62,7 +62,7 @@ class ReactionImplTest {
         assertEquals(evidences, reaction.getEvidences());
         assertEquals(name, reaction.getName());
         assertEquals(ecNumber, reaction.getEcNumber());
-        assertTrue(reaction.getReactionReferences().isEmpty());
+        assertTrue(reaction.getReactionCrossReferences().isEmpty());
     }
 
     @Test
@@ -73,13 +73,13 @@ class ReactionImplTest {
         Reaction reaction =
                 new ReactionBuilder()
                         .name(name)
-                        .reactionReferencesSet(references)
+                        .reactionCrossReferencesSet(references)
                         .evidencesSet(evidences)
                         .build();
         assertEquals(evidences, reaction.getEvidences());
         assertEquals(name, reaction.getName());
         assertEquals(null, reaction.getEcNumber());
-        assertEquals(references, reaction.getReactionReferences());
+        assertEquals(references, reaction.getReactionCrossReferences());
     }
 
     @Test
@@ -109,6 +109,6 @@ class ReactionImplTest {
     }
 
     private CrossReference<ReactionDatabase> xref(ReactionDatabase type, String id) {
-        return new CrossReferenceBuilder<ReactionDatabase>().databaseType(type).id(id).build();
+        return new CrossReferenceBuilder<ReactionDatabase>().database(type).id(id).build();
     }
 }
