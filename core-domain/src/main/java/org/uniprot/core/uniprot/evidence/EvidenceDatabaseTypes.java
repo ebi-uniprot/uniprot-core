@@ -5,11 +5,11 @@ import java.util.Map;
 
 import javax.annotation.Nonnull;
 
-public enum EvidenceTypes {
+public enum EvidenceDatabaseTypes {
     INSTANCE;
     private Map<String, EvidenceDatabaseDetail> typeMap = new HashMap<>();
 
-    EvidenceTypes() {
+    EvidenceDatabaseTypes() {
         init();
     }
 

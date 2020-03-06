@@ -22,7 +22,7 @@ public final class EvidenceDatabase implements Database, Serializable {
     }
 
     public @Nonnull EvidenceDatabaseDetail getEvidenceDatabaseDetail() {
-        return EvidenceTypes.INSTANCE.getType(name);
+        return EvidenceDatabaseTypes.INSTANCE.getType(name);
     }
 
     public boolean isReference() {
