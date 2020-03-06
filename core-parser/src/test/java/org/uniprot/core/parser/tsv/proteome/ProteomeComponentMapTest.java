@@ -12,8 +12,8 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.Component;
 import org.uniprot.core.proteome.ProteomeEntry;
-import org.uniprot.core.proteome.builder.ComponentBuilder;
-import org.uniprot.core.proteome.builder.ProteomeEntryBuilder;
+import org.uniprot.core.proteome.impl.ComponentBuilder;
+import org.uniprot.core.proteome.impl.ProteomeEntryBuilder;
 
 /**
  * @author jluo

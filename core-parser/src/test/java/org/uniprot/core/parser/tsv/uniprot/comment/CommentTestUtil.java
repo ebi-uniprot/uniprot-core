@@ -2,12 +2,12 @@ package org.uniprot.core.parser.tsv.uniprot.comment;
 
 import java.util.List;
 
-import org.uniprot.core.builder.SequenceBuilder;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineTransformer;
+import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniprot.UniProtEntry;
 import org.uniprot.core.uniprot.UniProtEntryType;
-import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
 import org.uniprot.core.uniprot.comment.Comment;
+import org.uniprot.core.uniprot.impl.UniProtEntryBuilder;
 
 class CommentTestUtil {
 

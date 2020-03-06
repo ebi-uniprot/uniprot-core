@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.uniprot.xdb.*;
-import org.uniprot.core.uniprot.xdb.builder.UniProtCrossReferenceBuilder;
+import org.uniprot.core.uniprot.xdb.impl.UniProtCrossReferenceBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;

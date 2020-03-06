@@ -20,18 +20,14 @@ public class RnaEditingCommentImpl extends CommentHasMoleculeImpl implements Rna
         this.positions = Collections.emptyList();
     }
 
-    public RnaEditingCommentImpl(
+    RnaEditingCommentImpl(
             String molecule,
             RnaEditingLocationType locationType,
             List<RnaEdPosition> positions,
             Note note) {
         super(CommentType.RNA_EDITING, molecule);
         this.locationType = locationType;
-        if ((positions == null) || positions.isEmpty()) {
-            this.positions = Collections.emptyList();
-        } else {
-            this.positions = Collections.unmodifiableList(positions);
-        }
+        this.positions = Utils.unmodifiableList(positions);
         this.note = note;
     }
 
@@ -93,7 +89,7 @@ public class RnaEditingCommentImpl extends CommentHasMoleculeImpl implements Rna
             this.evidences = Collections.emptyList();
         }
 
-        public RnaEdPositionImpl(String position, List<Evidence> evidences) {
+        RnaEdPositionImpl(String position, List<Evidence> evidences) {
             this.position = position;
             this.evidences = Utils.unmodifiableList(evidences);
         }

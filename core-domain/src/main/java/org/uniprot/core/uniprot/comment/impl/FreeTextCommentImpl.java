@@ -41,7 +41,7 @@ public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment
         super(Collections.emptyList());
     }
 
-    public FreeTextCommentImpl(CommentType type, String molecule, List<EvidencedValue> texts) {
+    FreeTextCommentImpl(CommentType type, String molecule, List<EvidencedValue> texts) {
         super(texts);
         this.commentType = type;
         this.molecule = molecule;

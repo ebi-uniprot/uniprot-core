@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcEntry;
-import org.uniprot.core.uniparc.builder.UniParcEntryBuilder;
-import org.uniprot.core.uniparc.builder.UniParcIdBuilder;
+import org.uniprot.core.uniparc.impl.UniParcEntryBuilder;
+import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
-import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.TaxonomyBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniparc.Entry;
 import org.uniprot.core.xml.jaxb.uniparc.ObjectFactory;

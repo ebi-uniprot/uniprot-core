@@ -15,7 +15,7 @@ public class UnpublishedImpl extends AbstractCitationImpl implements Unpublished
         this(emptyList(), emptyList(), emptyList(), null, null);
     }
 
-    public UnpublishedImpl(
+    UnpublishedImpl(
             List<String> authoringGroup,
             List<Author> authors,
             List<CrossReference<CitationDatabase>> citationCrossReferences,

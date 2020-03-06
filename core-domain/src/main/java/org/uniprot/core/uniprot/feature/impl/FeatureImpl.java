@@ -30,7 +30,7 @@ public class FeatureImpl implements Feature {
         evidences = Collections.emptyList();
     }
 
-    public FeatureImpl(
+    FeatureImpl(
             FeatureType type,
             FeatureLocation location,
             FeatureDescription description,

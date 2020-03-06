@@ -13,7 +13,6 @@ import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtDatabase;
-import org.uniprot.core.uniprot.xdb.builder.UniProtCrossReferenceBuilder;
 
 class UniProtCrossReferenceImplTest {
 

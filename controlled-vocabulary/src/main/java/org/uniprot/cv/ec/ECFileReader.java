@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.uniprot.core.cv.ec.ECEntry;
-import org.uniprot.core.cv.ec.builder.ECEntryBuilder;
+import org.uniprot.core.cv.ec.impl.ECEntryBuilder;
 import org.uniprot.cv.common.AbstractFileReader;
 
 public class ECFileReader extends AbstractFileReader<ECEntry> {

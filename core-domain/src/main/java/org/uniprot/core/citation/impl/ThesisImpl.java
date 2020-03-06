@@ -19,7 +19,7 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
         this(emptyList(), emptyList(), emptyList(), null, null, null, null);
     }
 
-    public ThesisImpl(
+    ThesisImpl(
             List<String> authoringGroup,
             List<Author> authors,
             List<CrossReference<CitationDatabase>> citationCrossReferences,

@@ -22,7 +22,7 @@ public class PhysiologicalReactionImpl implements PhysiologicalReaction {
         this.evidences = Collections.emptyList();
     }
 
-    public PhysiologicalReactionImpl(
+    PhysiologicalReactionImpl(
             PhysiologicalDirectionType directionType,
             CrossReference<ReactionDatabase> reactionCrossReference,
             List<Evidence> evidences) {

@@ -26,7 +26,7 @@ public class GeneImpl implements Gene {
         orfNames = new ArrayList<>();
     }
 
-    public GeneImpl(
+    GeneImpl(
             GeneName geneName,
             List<GeneNameSynonym> synonyms,
             List<OrderedLocusName> orderedLocusNames,

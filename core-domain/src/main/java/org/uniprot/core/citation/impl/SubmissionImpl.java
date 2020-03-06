@@ -16,7 +16,7 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
         this(emptyList(), emptyList(), emptyList(), null, null, null);
     }
 
-    public SubmissionImpl(
+    SubmissionImpl(
             List<String> authoringGroup,
             List<Author> authors,
             List<CrossReference<CitationDatabase>> citationCrossReferences,

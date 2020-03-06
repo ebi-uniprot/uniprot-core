@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
-import org.uniprot.core.uniprot.comment.builder.RnaEditingCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.RnaEditingPositionBuilder;
+import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
+import org.uniprot.core.uniprot.comment.impl.RnaEditingCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.RnaEditingPositionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class RnaEditingCommentTransformer implements CommentTransformer<RnaEditingComment> {

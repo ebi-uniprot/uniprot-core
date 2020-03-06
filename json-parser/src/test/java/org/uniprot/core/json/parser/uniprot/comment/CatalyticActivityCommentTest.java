@@ -8,14 +8,14 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.ECNumber;
-import org.uniprot.core.builder.CrossReferenceBuilder;
-import org.uniprot.core.impl.ECNumberImpl;
+import org.uniprot.core.impl.CrossReferenceBuilder;
+import org.uniprot.core.impl.ECNumberBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.CatalyticActivityCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.PhysiologicalReactionBuilder;
-import org.uniprot.core.uniprot.comment.builder.ReactionBuilder;
+import org.uniprot.core.uniprot.comment.impl.CatalyticActivityCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.PhysiologicalReactionBuilder;
+import org.uniprot.core.uniprot.comment.impl.ReactionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -115,7 +115,7 @@ public class CatalyticActivityCommentTest {
     private static Reaction createReaction() {
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361");
         String name = "some reaction";
-        ECNumber ecNumber = new ECNumberImpl("1.2.4.5");
+        ECNumber ecNumber = new ECNumberBuilder("1.2.4.5").build();
         return new ReactionBuilder()
                 .name(name)
                 .reactionCrossReferencesAdd(

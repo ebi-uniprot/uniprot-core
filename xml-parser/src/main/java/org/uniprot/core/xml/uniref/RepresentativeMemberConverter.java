@@ -1,9 +1,9 @@
 package org.uniprot.core.xml.uniref;
 
 import org.uniprot.core.Sequence;
-import org.uniprot.core.builder.SequenceBuilder;
+import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniref.RepresentativeMember;
-import org.uniprot.core.uniref.builder.RepresentativeMemberBuilder;
+import org.uniprot.core.uniref.impl.RepresentativeMemberBuilder;
 import org.uniprot.core.xml.jaxb.uniref.MemberType;
 import org.uniprot.core.xml.jaxb.uniref.ObjectFactory;
 

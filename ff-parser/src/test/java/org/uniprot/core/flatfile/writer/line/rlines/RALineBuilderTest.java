@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Author;
-import org.uniprot.core.citation.builder.AuthorBuilder;
+import org.uniprot.core.citation.impl.AuthorBuilder;
 import org.uniprot.core.flatfile.parser.impl.ra.RALineBuilder;
 
 class RALineBuilderTest {

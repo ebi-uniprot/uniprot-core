@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Book;
-import org.uniprot.core.citation.builder.BookBuilder;
+import org.uniprot.core.citation.impl.BookBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CitationType;
 import org.uniprot.core.xml.jaxb.uniprot.NameListType;

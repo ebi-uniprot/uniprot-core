@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.*;
+import org.uniprot.core.uniprot.comment.impl.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 

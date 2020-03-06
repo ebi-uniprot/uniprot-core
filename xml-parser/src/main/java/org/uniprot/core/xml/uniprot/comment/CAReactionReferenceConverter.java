@@ -1,7 +1,7 @@
 package org.uniprot.core.xml.uniprot.comment;
 
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.builder.CrossReferenceBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.ReactionDatabase;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;

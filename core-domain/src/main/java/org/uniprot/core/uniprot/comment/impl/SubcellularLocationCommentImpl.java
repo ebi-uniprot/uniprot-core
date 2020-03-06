@@ -22,7 +22,7 @@ public class SubcellularLocationCommentImpl extends CommentHasMoleculeImpl
         this.subcellularLocations = Collections.emptyList();
     }
 
-    public SubcellularLocationCommentImpl(
+    SubcellularLocationCommentImpl(
             String molecule, List<SubcellularLocation> subcellularLocations, Note note) {
         super(CommentType.SUBCELLULAR_LOCATION, molecule);
         this.subcellularLocations = Utils.unmodifiableList(subcellularLocations);

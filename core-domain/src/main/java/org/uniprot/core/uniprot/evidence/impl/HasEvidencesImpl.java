@@ -14,13 +14,12 @@ public class HasEvidencesImpl implements HasEvidences {
     private List<Evidence> evidences;
 
     // no arg constructor for JSON deserialization
-    public HasEvidencesImpl() {
+    HasEvidencesImpl() {
         this.evidences = Collections.emptyList();
     }
 
-    public HasEvidencesImpl(List<Evidence> evidences) {
+    protected HasEvidencesImpl(List<Evidence> evidences) {
         this.evidences = unmodifiableList(evidences);
-        ;
     }
 
     public List<Evidence> getEvidences() {

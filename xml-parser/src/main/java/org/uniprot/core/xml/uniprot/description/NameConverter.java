@@ -3,7 +3,7 @@ package org.uniprot.core.xml.uniprot.description;
 import java.util.List;
 
 import org.uniprot.core.uniprot.description.Name;
-import org.uniprot.core.uniprot.description.builder.NameBuilder;
+import org.uniprot.core.uniprot.description.impl.NameBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;

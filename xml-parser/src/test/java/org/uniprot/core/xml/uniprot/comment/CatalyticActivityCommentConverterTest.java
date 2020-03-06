@@ -13,12 +13,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
-import org.uniprot.core.builder.CrossReferenceBuilder;
-import org.uniprot.core.impl.ECNumberImpl;
+import org.uniprot.core.impl.CrossReferenceBuilder;
+import org.uniprot.core.impl.ECNumberBuilder;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.CatalyticActivityCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.PhysiologicalReactionBuilder;
-import org.uniprot.core.uniprot.comment.builder.ReactionBuilder;
+import org.uniprot.core.uniprot.comment.impl.CatalyticActivityCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.PhysiologicalReactionBuilder;
+import org.uniprot.core.uniprot.comment.impl.ReactionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.xml.jaxb.uniprot.*;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
@@ -242,7 +242,7 @@ class CatalyticActivityCommentConverterTest {
         references.add(createReference(ReactionDatabase.RHEA, "RHEA:322"));
 
         ECNumber ecNumber = null;
-        if (!Strings.isNullOrEmpty(ec)) ecNumber = new ECNumberImpl(ec);
+        if (!Strings.isNullOrEmpty(ec)) ecNumber = new ECNumberBuilder(ec).build();
         Evidence evidence1 = parseEvidenceLine("ECO:0000269|PubMed:9060645");
         Evidence evidence2 = parseEvidenceLine("ECO:0000269|PubMed:9060647");
         List<Evidence> evids = new ArrayList<>();
@@ -262,7 +262,7 @@ class CatalyticActivityCommentConverterTest {
         List<CrossReference<ReactionDatabase>> references = new ArrayList<>();
 
         ECNumber ecNumber = null;
-        if (!Strings.isNullOrEmpty(ec)) ecNumber = new ECNumberImpl(ec);
+        if (!Strings.isNullOrEmpty(ec)) ecNumber = new ECNumberBuilder(ec).build();
         Evidence evidence1 = parseEvidenceLine("ECO:0000269|PubMed:9060645");
         Evidence evidence2 = parseEvidenceLine("ECO:0000269|PubMed:9060647");
         List<Evidence> evids = new ArrayList<>();

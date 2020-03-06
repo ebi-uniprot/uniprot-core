@@ -6,10 +6,10 @@ import java.util.List;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineUtils;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
-import org.uniprot.core.uniprot.comment.builder.FreeTextCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.FreeTextCommentBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
-import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
+import org.uniprot.core.uniprot.evidence.impl.EvidencedValueBuilder;
 
 public class FreeTextCommentTranslator implements CommentTransformer<FreeTextComment> {
     private static final String EVIDENCE_PREFIX = "{ECO";

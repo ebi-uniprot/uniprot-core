@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import org.uniprot.core.Property;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.uniparc.builder.UniParcCrossReferenceBuilder;
+import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniparc.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniparc.ObjectFactory;

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.uniprot.core.uniprot.comment.Interaction;
 import org.uniprot.core.uniprot.comment.InteractionType;
-import org.uniprot.core.uniprot.comment.builder.InteractionBuilder;
+import org.uniprot.core.uniprot.comment.impl.InteractionBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.InteractantType;

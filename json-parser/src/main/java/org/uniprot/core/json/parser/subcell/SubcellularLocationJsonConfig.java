@@ -2,11 +2,11 @@ package org.uniprot.core.json.parser.subcell;
 
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.go.GoTerm;
-import org.uniprot.core.cv.go.builder.GoTermImpl;
+import org.uniprot.core.cv.go.impl.GoTermImpl;
 import org.uniprot.core.cv.keyword.KeywordId;
-import org.uniprot.core.cv.keyword.builder.KeywordIdImpl;
+import org.uniprot.core.cv.keyword.impl.KeywordIdImpl;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
-import org.uniprot.core.cv.subcell.builder.SubcellularLocationEntryImpl;
+import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryImpl;
 import org.uniprot.core.impl.StatisticsImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 

@@ -46,7 +46,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
         canonicalProteins = Collections.emptyList();
     }
 
-    public ProteomeEntryImpl(
+    ProteomeEntryImpl(
             ProteomeId id,
             Taxonomy taxonomy,
             String description,

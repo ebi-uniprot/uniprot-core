@@ -13,9 +13,9 @@ import org.uniprot.core.json.parser.uniprot.citation.*;
 import org.uniprot.core.uniprot.ReferenceComment;
 import org.uniprot.core.uniprot.ReferenceCommentType;
 import org.uniprot.core.uniprot.UniProtReference;
-import org.uniprot.core.uniprot.builder.ReferenceCommentBuilder;
-import org.uniprot.core.uniprot.builder.UniProtReferenceBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.impl.ReferenceCommentBuilder;
+import org.uniprot.core.uniprot.impl.UniProtReferenceBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

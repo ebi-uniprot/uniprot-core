@@ -9,20 +9,20 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.citation.*;
-import org.uniprot.core.citation.builder.JournalArticleBuilder;
-import org.uniprot.core.citation.builder.SubmissionBuilder;
+import org.uniprot.core.citation.impl.JournalArticleBuilder;
+import org.uniprot.core.citation.impl.SubmissionBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.proteome.*;
-import org.uniprot.core.proteome.builder.ComponentBuilder;
-import org.uniprot.core.proteome.builder.ProteomeEntryBuilder;
-import org.uniprot.core.proteome.builder.ProteomeIdBuilder;
-import org.uniprot.core.proteome.builder.RedundantProteomeBuilder;
+import org.uniprot.core.proteome.impl.ComponentBuilder;
+import org.uniprot.core.proteome.impl.ProteomeEntryBuilder;
+import org.uniprot.core.proteome.impl.ProteomeIdBuilder;
+import org.uniprot.core.proteome.impl.RedundantProteomeBuilder;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
-import org.uniprot.core.taxonomy.builder.TaxonomyLineageBuilder;
+import org.uniprot.core.taxonomy.impl.TaxonomyLineageBuilder;
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
-import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.TaxonomyBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

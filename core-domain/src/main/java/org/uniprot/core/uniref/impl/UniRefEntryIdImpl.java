@@ -17,11 +17,11 @@ public class UniRefEntryIdImpl extends ValueImpl implements UniRefEntryId {
             Pattern.compile(UNIREF_ACC_REX, Pattern.CASE_INSENSITIVE);
 
     // no arg constructor for JSON deserialization
-    protected UniRefEntryIdImpl() {
+    UniRefEntryIdImpl() {
         super(null);
     }
 
-    public UniRefEntryIdImpl(String value) {
+    UniRefEntryIdImpl(String value) {
         super(value);
     }
 

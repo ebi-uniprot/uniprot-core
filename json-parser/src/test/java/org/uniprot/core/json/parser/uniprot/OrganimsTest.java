@@ -8,7 +8,7 @@ import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.taxonomy.Organism;
-import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.OrganismBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

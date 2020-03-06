@@ -2,13 +2,12 @@ package org.uniprot.core.uniprot.comment.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
+import static org.uniprot.core.ObjectsForTests.crossReference;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.uniprot.comment.Disease;
 import org.uniprot.core.uniprot.comment.DiseaseDatabase;
-import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
 
 class DiseaseImplTest {
     @Test
@@ -20,7 +19,7 @@ class DiseaseImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         CrossReference<DiseaseDatabase> reference =
-                new CrossReferenceImpl<>(DiseaseDatabase.MIM, "referenceId");
+                crossReference(DiseaseDatabase.MIM, "referenceId");
         Disease impl = new DiseaseImpl("id", "acc", "act", "des", reference, createEvidences());
         Disease obj = DiseaseBuilder.from(impl).build();
 

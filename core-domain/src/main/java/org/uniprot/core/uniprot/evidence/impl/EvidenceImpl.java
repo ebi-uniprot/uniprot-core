@@ -3,7 +3,7 @@ package org.uniprot.core.uniprot.evidence.impl;
 import java.util.Objects;
 
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.impl.CrossReferenceImpl;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
@@ -15,14 +15,19 @@ public class EvidenceImpl implements Evidence {
     private EvidenceCode evidenceCode;
     private CrossReference<EvidenceDatabase> evidenceCrossReference;
 
-    public EvidenceImpl(EvidenceCode evidenceCode, String databaseName, String dbId) {
-        this(evidenceCode, new CrossReferenceImpl<>(new EvidenceDatabase(databaseName), dbId));
+    EvidenceImpl(EvidenceCode evidenceCode, String databaseName, String dbId) {
+        this(
+                evidenceCode,
+                new CrossReferenceBuilder<EvidenceDatabase>()
+                        .database(new EvidenceDatabase(databaseName))
+                        .id(dbId)
+                        .build());
     }
 
     // no arg constructor for JSON deserialization
     EvidenceImpl() {}
 
-    public EvidenceImpl(
+    EvidenceImpl(
             EvidenceCode evidenceCode, CrossReference<EvidenceDatabase> evidenceCrossReference) {
         this.evidenceCode = evidenceCode;
         this.evidenceCrossReference = evidenceCrossReference;

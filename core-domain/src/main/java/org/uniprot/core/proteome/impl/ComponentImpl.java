@@ -19,7 +19,7 @@ public class ComponentImpl implements Component {
 
     private List<CrossReference<ProteomeDatabase>> proteomeCrossReferences;
 
-    protected ComponentImpl() {
+    ComponentImpl() {
         proteomeCrossReferences = Collections.emptyList();
     }
 

@@ -22,7 +22,7 @@ public class TaxonomyLineageImpl extends AbstractOrganismNameImpl implements Tax
         this(0, null, null, null, null, false);
     }
 
-    public TaxonomyLineageImpl(
+    TaxonomyLineageImpl(
             long taxonId,
             String scientificName,
             String commonName,

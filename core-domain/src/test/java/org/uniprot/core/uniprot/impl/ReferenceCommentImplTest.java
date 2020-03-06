@@ -7,7 +7,6 @@ import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.ReferenceComment;
 import org.uniprot.core.uniprot.ReferenceCommentType;
-import org.uniprot.core.uniprot.builder.ReferenceCommentBuilder;
 
 class ReferenceCommentImplTest {
     @Test

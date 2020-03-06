@@ -19,7 +19,7 @@ public abstract class AbstractOrganismNameImpl implements OrganismName {
 
     AbstractOrganismNameImpl() {}
 
-    public AbstractOrganismNameImpl(
+    protected AbstractOrganismNameImpl(
             String scientificName, String commonName, List<String> synonyms) {
         this.scientificName = emptyOrString(scientificName);
         this.commonName = emptyOrString(commonName);

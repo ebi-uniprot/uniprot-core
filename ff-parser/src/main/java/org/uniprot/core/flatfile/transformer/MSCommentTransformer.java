@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
 import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
-import org.uniprot.core.uniprot.comment.builder.MassSpectrometryCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.MassSpectrometryCommentBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class MSCommentTransformer implements CommentTransformer<MassSpectrometryComment> {

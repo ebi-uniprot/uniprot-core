@@ -13,11 +13,11 @@ import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.taxonomy.TaxonomyLineageTest;
 import org.uniprot.core.json.parser.uniprot.comment.*;
 import org.uniprot.core.uniprot.*;
-import org.uniprot.core.uniprot.builder.EntryInactiveReasonBuilder;
-import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
-import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
-import org.uniprot.core.uniprot.builder.UniProtIdBuilder;
 import org.uniprot.core.uniprot.comment.Comment;
+import org.uniprot.core.uniprot.impl.EntryInactiveReasonBuilder;
+import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
+import org.uniprot.core.uniprot.impl.UniProtEntryBuilder;
+import org.uniprot.core.uniprot.impl.UniProtIdBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

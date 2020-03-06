@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.citation.PublicationDate;
-import org.uniprot.core.citation.builder.PublicationDateBuilder;
+import org.uniprot.core.citation.impl.PublicationDateBuilder;
 import org.uniprot.core.xml.Converter;
 
 import com.google.common.base.Strings;

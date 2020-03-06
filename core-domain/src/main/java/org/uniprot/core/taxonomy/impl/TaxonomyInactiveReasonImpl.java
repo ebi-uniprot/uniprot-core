@@ -16,8 +16,7 @@ public class TaxonomyInactiveReasonImpl implements TaxonomyInactiveReason {
         this(null, 0);
     }
 
-    public TaxonomyInactiveReasonImpl(
-            TaxonomyInactiveReasonType inactiveReasonType, long mergedTo) {
+    TaxonomyInactiveReasonImpl(TaxonomyInactiveReasonType inactiveReasonType, long mergedTo) {
         this.inactiveReasonType = inactiveReasonType;
         this.mergedTo = mergedTo;
     }

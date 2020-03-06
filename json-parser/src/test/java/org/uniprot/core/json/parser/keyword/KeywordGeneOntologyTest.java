@@ -2,8 +2,8 @@ package org.uniprot.core.json.parser.keyword;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.go.GoTerm;
-import org.uniprot.core.cv.go.builder.GeneOntologyEntryBuilder;
-import org.uniprot.core.cv.go.builder.GoTermBuilder;
+import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
+import org.uniprot.core.cv.go.impl.GoTermBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
 /** @author lgonzales */

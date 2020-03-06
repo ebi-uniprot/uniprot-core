@@ -7,9 +7,8 @@ import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.CanonicalProtein;
 import org.uniprot.core.proteome.GeneNameType;
-import org.uniprot.core.proteome.builder.CanonicalProteinBuilder;
 import org.uniprot.core.uniprot.UniProtEntryType;
-import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
+import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
 
 class CanonicalProteinImplTest {
     @Test
@@ -23,7 +22,7 @@ class CanonicalProteinImplTest {
         CanonicalProtein impl =
                 new CanonicalProteinImpl(
                         new ProteinImpl(
-                                new UniProtAccessionImpl("acc"),
+                                new UniProtAccessionBuilder("acc").build(),
                                 UniProtEntryType.SWISSPROT,
                                 78L,
                                 "gene",

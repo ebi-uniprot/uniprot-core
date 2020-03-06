@@ -5,7 +5,7 @@ import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.taxonomy.TaxonomyStrain;
-import org.uniprot.core.taxonomy.builder.TaxonomyStrainBuilder;
+import org.uniprot.core.taxonomy.impl.TaxonomyStrainBuilder;
 
 class TaxonomyStrainTest {
 

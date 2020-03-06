@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Book;
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.builder.BookBuilder;
+import org.uniprot.core.citation.impl.BookBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
 import com.fasterxml.jackson.databind.JsonNode;

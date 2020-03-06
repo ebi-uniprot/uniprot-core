@@ -6,7 +6,6 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.description.ProteinSubName;
-import org.uniprot.core.uniprot.description.builder.ProteinSubNameBuilder;
 
 class ProteinSubNameImplTest {
     @Test

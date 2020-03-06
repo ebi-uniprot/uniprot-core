@@ -2,21 +2,20 @@ package org.uniprot.core.uniprot.comment.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
+import static org.uniprot.core.ObjectsForTests.crossReference;
 
 import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.uniprot.comment.Cofactor;
 import org.uniprot.core.uniprot.comment.CofactorDatabase;
-import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 class CofactorImplTest {
     private final CrossReference<CofactorDatabase> reference =
-            new CrossReferenceImpl<>(CofactorDatabase.CHEBI, "ChEBI:213");
+            crossReference(CofactorDatabase.CHEBI, "ChEBI:213");
 
     @Test
     void testCofactorImpl() {

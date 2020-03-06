@@ -12,7 +12,7 @@ public class AuthorImpl implements Author {
         this.value = "";
     }
 
-    public AuthorImpl(String value) {
+    AuthorImpl(String value) {
         this.value = value;
     }
 

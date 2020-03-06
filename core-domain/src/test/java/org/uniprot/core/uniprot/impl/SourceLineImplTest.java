@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.SourceLine;
-import org.uniprot.core.uniprot.builder.SourceLineBuilder;
 
 class SourceLineImplTest {
     private final String VAL = "val";

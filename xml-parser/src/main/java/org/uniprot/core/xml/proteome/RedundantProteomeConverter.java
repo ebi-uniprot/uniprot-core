@@ -1,8 +1,8 @@
 package org.uniprot.core.xml.proteome;
 
 import org.uniprot.core.proteome.RedundantProteome;
-import org.uniprot.core.proteome.builder.ProteomeIdBuilder;
-import org.uniprot.core.proteome.builder.RedundantProteomeBuilder;
+import org.uniprot.core.proteome.impl.ProteomeIdBuilder;
+import org.uniprot.core.proteome.impl.RedundantProteomeBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 import org.uniprot.core.xml.jaxb.proteome.RedundantProteomeType;

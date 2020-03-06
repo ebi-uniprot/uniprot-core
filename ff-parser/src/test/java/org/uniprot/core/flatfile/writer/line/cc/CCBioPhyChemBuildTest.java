@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.*;
+import org.uniprot.core.uniprot.comment.impl.*;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 import com.google.common.base.Strings;

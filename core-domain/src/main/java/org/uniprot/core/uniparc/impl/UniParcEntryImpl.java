@@ -12,7 +12,7 @@ import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
-import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.TaxonomyBuilder;
 import org.uniprot.core.util.Utils;
 
 /**
@@ -31,13 +31,13 @@ public class UniParcEntryImpl implements UniParcEntry {
     private List<SequenceFeature> sequenceFeatures;
     private List<Taxonomy> taxonomies;
 
-    protected UniParcEntryImpl() {
+    UniParcEntryImpl() {
         this.uniParcCrossReferences = Collections.emptyList();
         this.sequenceFeatures = Collections.emptyList();
         this.taxonomies = Collections.emptyList();
     }
 
-    public UniParcEntryImpl(
+    UniParcEntryImpl(
             UniParcId uniParcId,
             List<UniParcCrossReference> uniParcCrossReferences,
             Sequence sequence,

@@ -22,20 +22,12 @@ public class KineticParametersImpl implements KineticParameters {
         this.michaelisConstants = Collections.emptyList();
     }
 
-    public KineticParametersImpl(
+    KineticParametersImpl(
             List<MaximumVelocity> maximumVelocities,
             List<MichaelisConstant> michaelisConstants,
             Note note) {
-        if ((maximumVelocities == null) || maximumVelocities.isEmpty()) {
-            this.maximumVelocities = Collections.emptyList();
-        } else {
-            this.maximumVelocities = Collections.unmodifiableList(maximumVelocities);
-        }
-        if ((michaelisConstants == null) || michaelisConstants.isEmpty()) {
-            this.michaelisConstants = Collections.emptyList();
-        } else {
-            this.michaelisConstants = Collections.unmodifiableList(michaelisConstants);
-        }
+        this.maximumVelocities = Utils.unmodifiableList(maximumVelocities);
+        this.michaelisConstants = Utils.unmodifiableList(michaelisConstants);
         this.note = note;
     }
 

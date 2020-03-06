@@ -10,7 +10,7 @@ import org.uniprot.core.flatfile.parser.impl.cc.CCSequenceCautionCommentLineBuil
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprot.comment.SequenceCautionComment;
 import org.uniprot.core.uniprot.comment.SequenceCautionType;
-import org.uniprot.core.uniprot.comment.builder.SequenceCautionCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.SequenceCautionCommentBuilder;
 
 class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
     private CCSequenceCautionCommentLineBuilder builder = new CCSequenceCautionCommentLineBuilder();

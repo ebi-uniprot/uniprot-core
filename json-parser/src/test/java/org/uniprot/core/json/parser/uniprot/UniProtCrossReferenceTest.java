@@ -8,7 +8,7 @@ import org.uniprot.core.Property;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtDatabase;
-import org.uniprot.core.uniprot.xdb.builder.UniProtCrossReferenceBuilder;
+import org.uniprot.core.uniprot.xdb.impl.UniProtCrossReferenceBuilder;
 import org.uniprot.cv.xdb.UniProtDatabaseImpl;
 
 import com.fasterxml.jackson.databind.JsonNode;

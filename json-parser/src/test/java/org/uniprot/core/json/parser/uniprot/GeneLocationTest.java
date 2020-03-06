@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.GeneEncodingType;
 import org.uniprot.core.uniprot.GeneLocation;
-import org.uniprot.core.uniprot.builder.GeneLocationBuilder;
+import org.uniprot.core.uniprot.impl.GeneLocationBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

@@ -16,9 +16,9 @@ public class InterProGroupImpl implements InterProGroup {
     private String id;
     private String name;
 
-    protected InterProGroupImpl() {}
+    InterProGroupImpl() {}
 
-    public InterProGroupImpl(String id, String name) {
+    InterProGroupImpl(String id, String name) {
         super();
         this.id = id;
         this.name = name;

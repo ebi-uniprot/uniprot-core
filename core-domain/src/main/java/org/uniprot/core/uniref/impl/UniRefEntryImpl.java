@@ -32,12 +32,12 @@ public class UniRefEntryImpl implements UniRefEntry {
     private List<UniRefMember> members;
 
     // no arg constructor for JSON deserialization
-    protected UniRefEntryImpl() {
+    UniRefEntryImpl() {
         goTerms = Collections.emptyList();
         members = Collections.emptyList();
     }
 
-    public UniRefEntryImpl(
+    UniRefEntryImpl(
             UniRefEntryId id,
             String name,
             int memberCount,

@@ -6,7 +6,7 @@ import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprot.comment.PhysiologicalDirectionType;
 import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
 import org.uniprot.core.uniprot.comment.ReactionDatabase;
-import org.uniprot.core.uniprot.comment.builder.PhysiologicalReactionBuilder;
+import org.uniprot.core.uniprot.comment.impl.PhysiologicalReactionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;

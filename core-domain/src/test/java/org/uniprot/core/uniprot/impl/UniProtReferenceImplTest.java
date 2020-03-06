@@ -7,12 +7,10 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.citation.builder.ElectronicArticleBuilder;
+import org.uniprot.core.citation.impl.ElectronicArticleBuilder;
 import org.uniprot.core.uniprot.ReferenceComment;
 import org.uniprot.core.uniprot.ReferenceCommentType;
 import org.uniprot.core.uniprot.UniProtReference;
-import org.uniprot.core.uniprot.builder.ReferenceCommentBuilder;
-import org.uniprot.core.uniprot.builder.UniProtReferenceBuilder;
 
 class UniProtReferenceImplTest {
 

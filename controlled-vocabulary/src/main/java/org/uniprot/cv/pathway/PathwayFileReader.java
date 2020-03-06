@@ -7,9 +7,9 @@ import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
-import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceBuilder;
+import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceBuilder;
 import org.uniprot.core.cv.pathway.PathwayEntry;
-import org.uniprot.core.cv.pathway.builder.PathwayEntryBuilder;
+import org.uniprot.core.cv.pathway.impl.PathwayEntryBuilder;
 import org.uniprot.cv.common.AbstractFileReader;
 
 public class PathwayFileReader extends AbstractFileReader<PathwayEntry> {

@@ -20,7 +20,7 @@ public class BPCPCommentImpl extends CommentHasMoleculeImpl implements BPCPComme
         super(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, null);
     }
 
-    public BPCPCommentImpl(
+    BPCPCommentImpl(
             String molecule,
             Absorption absorption,
             KineticParameters kineticParameters,
@@ -188,7 +188,7 @@ public class BPCPCommentImpl extends CommentHasMoleculeImpl implements BPCPComme
             super(Collections.emptyList());
         }
 
-        public RedoxPotentialImpl(List<EvidencedValue> texts) {
+        RedoxPotentialImpl(List<EvidencedValue> texts) {
             super(texts);
         }
     }
@@ -203,7 +203,7 @@ public class BPCPCommentImpl extends CommentHasMoleculeImpl implements BPCPComme
             super(Collections.emptyList());
         }
 
-        public PhDependenceImpl(List<EvidencedValue> texts) {
+        PhDependenceImpl(List<EvidencedValue> texts) {
             super(texts);
         }
     }
@@ -219,7 +219,7 @@ public class BPCPCommentImpl extends CommentHasMoleculeImpl implements BPCPComme
             super(Collections.emptyList());
         }
 
-        public TemperatureDependenceImpl(List<EvidencedValue> texts) {
+        TemperatureDependenceImpl(List<EvidencedValue> texts) {
             super(texts);
         }
     }

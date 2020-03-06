@@ -9,8 +9,8 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.uniprot.Keyword;
-import org.uniprot.core.uniprot.builder.KeywordBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.impl.KeywordBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.KeywordType;
 
 class KeywordConverterTest {

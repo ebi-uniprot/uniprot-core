@@ -19,7 +19,7 @@ public class ProteinImpl implements Protein {
     // no arg constructor for JSON deserialization
     ProteinImpl() {}
 
-    public ProteinImpl(
+    ProteinImpl(
             UniProtAccession accession,
             UniProtEntryType entryType,
             long sequenceLength,

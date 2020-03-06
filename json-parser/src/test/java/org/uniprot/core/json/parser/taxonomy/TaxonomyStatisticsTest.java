@@ -3,7 +3,7 @@ package org.uniprot.core.json.parser.taxonomy;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.taxonomy.TaxonomyStatistics;
-import org.uniprot.core.taxonomy.builder.TaxonomyStatisticsBuilder;
+import org.uniprot.core.taxonomy.impl.TaxonomyStatisticsBuilder;
 
 class TaxonomyStatisticsTest {
 

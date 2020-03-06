@@ -8,7 +8,7 @@ import java.time.Month;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.EntryAudit;
-import org.uniprot.core.uniprot.builder.EntryAuditBuilder;
+import org.uniprot.core.uniprot.impl.EntryAuditBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

@@ -23,7 +23,7 @@ public class ProteinRecNameImpl implements ProteinRecName {
         ecNumbers = Collections.emptyList();
     }
 
-    public ProteinRecNameImpl(Name fullName, List<Name> shortNames, List<EC> ecNumbers) {
+    ProteinRecNameImpl(Name fullName, List<Name> shortNames, List<EC> ecNumbers) {
         this.fullName = fullName;
         this.shortNames = unmodifiableList(shortNames);
         this.ecNumbers = unmodifiableList(ecNumbers);

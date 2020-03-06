@@ -1,7 +1,7 @@
 package org.uniprot.core.xml.uniprot.citation;
 
 import org.uniprot.core.uniprot.UniProtReference;
-import org.uniprot.core.uniprot.builder.UniProtReferenceBuilder;
+import org.uniprot.core.uniprot.impl.UniProtReferenceBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.ReferenceType;

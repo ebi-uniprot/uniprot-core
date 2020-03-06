@@ -21,7 +21,7 @@ public class CofactorImpl implements Cofactor {
         this.evidences = Collections.emptyList();
     }
 
-    public CofactorImpl(
+    CofactorImpl(
             String name,
             CrossReference<CofactorDatabase> cofactorCrossReference,
             List<Evidence> evidences) {

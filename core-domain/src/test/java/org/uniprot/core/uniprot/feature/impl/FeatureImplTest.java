@@ -6,15 +6,12 @@ import static org.uniprot.core.ObjectsForTests.createEvidences;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.PositionModifier;
-import org.uniprot.core.builder.CrossReferenceBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureDatabase;
 import org.uniprot.core.uniprot.feature.FeatureId;
 import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.uniprot.feature.FeatureType;
-import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
-import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
-import org.uniprot.core.uniprot.feature.builder.FeatureIdBuilder;
 
 class FeatureImplTest {
 

@@ -21,8 +21,7 @@ public class AlternativeProductsCommentImpl extends CommentImpl
         this.isoforms = Collections.emptyList();
     }
 
-    public AlternativeProductsCommentImpl(
-            List<APEventType> events, List<APIsoform> isoforms, Note note) {
+    AlternativeProductsCommentImpl(List<APEventType> events, List<APIsoform> isoforms, Note note) {
         super(CommentType.ALTERNATIVE_PRODUCTS);
         if ((events == null) || events.isEmpty()) {
             this.events = Collections.emptyList();

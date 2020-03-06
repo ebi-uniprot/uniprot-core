@@ -17,7 +17,7 @@ public class FreeTextImpl implements FreeText {
         this.texts = Collections.emptyList();
     }
 
-    public FreeTextImpl(List<EvidencedValue> texts) {
+    FreeTextImpl(List<EvidencedValue> texts) {
         if ((texts == null) || texts.isEmpty()) {
             this.texts = Collections.emptyList();
         } else {

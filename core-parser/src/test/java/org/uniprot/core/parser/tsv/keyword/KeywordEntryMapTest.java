@@ -11,13 +11,13 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
-import org.uniprot.core.builder.StatisticsBuilder;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
-import org.uniprot.core.cv.go.builder.GeneOntologyEntryBuilder;
+import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
-import org.uniprot.core.cv.keyword.builder.KeywordEntryBuilder;
-import org.uniprot.core.cv.keyword.builder.KeywordIdBuilder;
+import org.uniprot.core.cv.keyword.impl.KeywordEntryBuilder;
+import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
+import org.uniprot.core.impl.StatisticsBuilder;
 
 class KeywordEntryMapTest {
 

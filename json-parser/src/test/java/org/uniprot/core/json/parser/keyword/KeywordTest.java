@@ -2,7 +2,7 @@ package org.uniprot.core.json.parser.keyword;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.KeywordId;
-import org.uniprot.core.cv.keyword.builder.KeywordIdBuilder;
+import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
 /** @author lgonzales */

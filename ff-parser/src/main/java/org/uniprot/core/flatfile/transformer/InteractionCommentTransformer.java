@@ -8,8 +8,8 @@ import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.Interaction;
 import org.uniprot.core.uniprot.comment.InteractionComment;
 import org.uniprot.core.uniprot.comment.InteractionType;
-import org.uniprot.core.uniprot.comment.builder.InteractionBuilder;
-import org.uniprot.core.uniprot.comment.builder.InteractionCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.InteractionBuilder;
+import org.uniprot.core.uniprot.comment.impl.InteractionCommentBuilder;
 
 public class InteractionCommentTransformer implements CommentTransformer<InteractionComment> {
     private static final CommentType COMMENT_TYPE = CommentType.INTERACTION;

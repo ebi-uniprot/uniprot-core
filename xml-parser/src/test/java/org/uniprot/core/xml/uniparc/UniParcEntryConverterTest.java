@@ -10,13 +10,13 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.Location;
 import org.uniprot.core.Property;
 import org.uniprot.core.Sequence;
-import org.uniprot.core.builder.SequenceBuilder;
+import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.*;
 import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.uniparc.builder.InterProGroupBuilder;
-import org.uniprot.core.uniparc.builder.SequenceFeatureBuilder;
-import org.uniprot.core.uniparc.builder.UniParcCrossReferenceBuilder;
-import org.uniprot.core.uniparc.builder.UniParcEntryBuilder;
+import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
+import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
+import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
+import org.uniprot.core.uniparc.impl.UniParcEntryBuilder;
 import org.uniprot.core.xml.jaxb.uniparc.Entry;
 
 /**

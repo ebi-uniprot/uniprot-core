@@ -7,13 +7,13 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.builder.CrossReferenceBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.Cofactor;
 import org.uniprot.core.uniprot.comment.CofactorComment;
 import org.uniprot.core.uniprot.comment.CofactorDatabase;
 import org.uniprot.core.uniprot.comment.Note;
-import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
-import org.uniprot.core.uniprot.comment.builder.CofactorCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.CofactorBuilder;
+import org.uniprot.core.uniprot.comment.impl.CofactorCommentBuilder;
 
 class CCCofactorBuildTest extends CCBuildTestAbstr {
     @Test

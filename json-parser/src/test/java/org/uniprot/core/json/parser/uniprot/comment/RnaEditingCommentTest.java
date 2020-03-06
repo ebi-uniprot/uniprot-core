@@ -10,9 +10,9 @@ import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.RnaEdPosition;
 import org.uniprot.core.uniprot.comment.RnaEditingComment;
 import org.uniprot.core.uniprot.comment.RnaEditingLocationType;
-import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
-import org.uniprot.core.uniprot.comment.builder.RnaEditingCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.RnaEditingPositionBuilder;
+import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
+import org.uniprot.core.uniprot.comment.impl.RnaEditingCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.RnaEditingPositionBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

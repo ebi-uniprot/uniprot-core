@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.uniprot.UniProtAccession;
-import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
+import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
 
 public class AcLineConverter implements Converter<AcLineObject, UniProtAcLineObject> {
 

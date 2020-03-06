@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationDatabase;
-import org.uniprot.core.citation.builder.AbstractCitationBuilder;
-import org.uniprot.core.citation.builder.AuthorBuilder;
+import org.uniprot.core.citation.impl.AbstractCitationBuilder;
+import org.uniprot.core.citation.impl.AuthorBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.*;
 
 import com.google.common.base.Strings;

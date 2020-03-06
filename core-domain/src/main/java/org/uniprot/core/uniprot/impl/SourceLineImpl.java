@@ -11,7 +11,7 @@ public class SourceLineImpl extends ValueImpl implements SourceLine {
         super("");
     }
 
-    public SourceLineImpl(String value) {
+    SourceLineImpl(String value) {
         super(value);
     }
 }

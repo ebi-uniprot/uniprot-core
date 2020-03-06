@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.builder.AbstractCitationBuilder;
+import org.uniprot.core.citation.impl.AbstractCitationBuilder;
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
 import org.uniprot.core.flatfile.parser.impl.entry.EntryObject.ReferenceObject;
@@ -19,7 +19,7 @@ import org.uniprot.core.flatfile.parser.impl.rt.RtLineConverter;
 import org.uniprot.core.flatfile.parser.impl.rx.RxLineConverter;
 import org.uniprot.core.uniprot.ReferenceComment;
 import org.uniprot.core.uniprot.UniProtReference;
-import org.uniprot.core.uniprot.builder.UniProtReferenceBuilder;
+import org.uniprot.core.uniprot.impl.UniProtReferenceBuilder;
 
 public class ReferenceObjectConverter extends EvidenceCollector
         implements Converter<EntryObject.ReferenceObject, UniProtReference> {

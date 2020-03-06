@@ -8,7 +8,6 @@ import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.uniparc.builder.UniParcCrossReferenceBuilder;
 
 class UniParcCrossReferenceImplTest {
     @Test

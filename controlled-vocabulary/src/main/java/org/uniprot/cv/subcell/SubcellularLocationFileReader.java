@@ -10,11 +10,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.cv.go.GoTerm;
-import org.uniprot.core.cv.go.builder.GeneOntologyEntryBuilder;
-import org.uniprot.core.cv.keyword.builder.KeywordIdBuilder;
+import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
+import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
 import org.uniprot.core.cv.subcell.SubcellLocationCategory;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
-import org.uniprot.core.cv.subcell.builder.SubcellularLocationEntryBuilder;
+import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryBuilder;
 import org.uniprot.cv.common.AbstractFileReader;
 
 public class SubcellularLocationFileReader extends AbstractFileReader<SubcellularLocationEntry> {

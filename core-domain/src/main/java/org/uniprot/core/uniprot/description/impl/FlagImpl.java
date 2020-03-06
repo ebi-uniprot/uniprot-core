@@ -10,7 +10,7 @@ public class FlagImpl implements Flag {
     // no arg constructor for JSON deserialization
     FlagImpl() {}
 
-    public FlagImpl(FlagType type) {
+    FlagImpl(FlagType type) {
         this.type = type;
     }
 

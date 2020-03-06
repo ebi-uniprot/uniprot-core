@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
-import org.uniprot.core.taxonomy.builder.TaxonomyLineageBuilder;
+import org.uniprot.core.taxonomy.impl.TaxonomyLineageBuilder;
 
 public class TaxonomyLineageTest {
 

@@ -3,11 +3,10 @@ package org.uniprot.core.uniprot.comment.impl;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
 import org.uniprot.core.uniprot.comment.Interaction;
 import org.uniprot.core.uniprot.comment.InteractionType;
 import org.uniprot.core.uniprot.comment.Interactor;
-import org.uniprot.core.uniprot.comment.builder.InteractionBuilder;
+import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
 
 class InteractionImplTest {
 

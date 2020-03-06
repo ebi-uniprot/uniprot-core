@@ -15,7 +15,7 @@ public class TaxonomyStatisticsImpl extends StatisticsImpl implements TaxonomySt
         this(0, 0, 0, 0);
     }
 
-    public TaxonomyStatisticsImpl(
+    TaxonomyStatisticsImpl(
             long reviewedProteinCount,
             long unreviewedProteinCount,
             long referenceProteomeCount,

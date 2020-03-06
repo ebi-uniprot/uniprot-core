@@ -8,8 +8,8 @@ import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.SignatureDbType;
-import org.uniprot.core.uniparc.builder.InterProGroupBuilder;
-import org.uniprot.core.uniparc.builder.SequenceFeatureBuilder;
+import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
+import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

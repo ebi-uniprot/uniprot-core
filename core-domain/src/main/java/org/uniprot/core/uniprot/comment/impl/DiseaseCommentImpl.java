@@ -17,7 +17,7 @@ public class DiseaseCommentImpl extends CommentHasMoleculeImpl implements Diseas
         super(CommentType.DISEASE, null);
     }
 
-    public DiseaseCommentImpl(String molecule, Disease disease, Note note) {
+    DiseaseCommentImpl(String molecule, Disease disease, Note note) {
         super(CommentType.DISEASE, molecule);
         this.disease = disease;
         this.note = note;

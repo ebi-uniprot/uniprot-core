@@ -10,8 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.RnaEdPosition;
 import org.uniprot.core.uniprot.comment.RnaEditingComment;
 import org.uniprot.core.uniprot.comment.RnaEditingLocationType;
-import org.uniprot.core.uniprot.comment.builder.RnaEditingCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.RnaEditingPositionBuilder;
 
 class RnaEditingCommentImplTest {
     @Test

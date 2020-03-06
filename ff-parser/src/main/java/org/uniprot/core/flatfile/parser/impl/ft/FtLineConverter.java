@@ -14,8 +14,8 @@ import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureDatabase;
 import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.uniprot.feature.FeatureType;
-import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
-import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
+import org.uniprot.core.uniprot.feature.impl.AlternativeSequenceBuilder;
+import org.uniprot.core.uniprot.feature.impl.FeatureBuilder;
 
 import com.google.common.base.Strings;
 

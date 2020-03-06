@@ -21,7 +21,7 @@ public class MichaelisConstantImpl implements MichaelisConstant {
         this.evidences = Collections.emptyList();
     }
 
-    public MichaelisConstantImpl(
+    MichaelisConstantImpl(
             double constant,
             MichaelisConstantUnit unit,
             String substrate,

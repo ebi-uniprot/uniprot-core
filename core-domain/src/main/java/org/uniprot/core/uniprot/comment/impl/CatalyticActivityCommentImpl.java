@@ -22,7 +22,7 @@ public class CatalyticActivityCommentImpl extends CommentHasMoleculeImpl
         this.physiologicalReactions = Collections.emptyList();
     }
 
-    public CatalyticActivityCommentImpl(
+    CatalyticActivityCommentImpl(
             String molecule,
             Reaction reaction,
             List<PhysiologicalReaction> physiologicalReactions) {

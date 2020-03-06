@@ -36,7 +36,7 @@ public class LiteratureImpl extends AbstractJournalArticleImpl implements Litera
                 false);
     }
 
-    public LiteratureImpl(
+    LiteratureImpl(
             List<String> authoringGroup,
             List<Author> authors,
             List<CrossReference<CitationDatabase>> citationCrossReferences,

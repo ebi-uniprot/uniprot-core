@@ -4,6 +4,7 @@ import org.uniprot.core.MoleculeWeight;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.util.Crc64;
 import org.uniprot.core.util.MessageDigestUtil;
+import org.uniprot.core.util.Utils;
 
 public class SequenceImpl implements Sequence {
     private static final long serialVersionUID = 8906599014658129082L;
@@ -18,10 +19,8 @@ public class SequenceImpl implements Sequence {
         this.value = "";
     }
 
-    public SequenceImpl(String sequence) {
-        if (sequence == null) {
-            this.value = "";
-        } else this.value = sequence;
+    SequenceImpl(String sequence) {
+        this.value = Utils.emptyOrString(sequence);
         this.length = this.value.length();
         this.molWeight = MoleculeWeight.calcMolecularWeight(this.value);
         this.crc64 = Crc64.getCrc64(value);

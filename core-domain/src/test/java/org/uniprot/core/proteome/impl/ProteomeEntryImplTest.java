@@ -5,7 +5,6 @@ import static org.uniprot.core.ObjectsForTests.createProteomeEntry;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.ProteomeEntry;
-import org.uniprot.core.proteome.builder.ProteomeEntryBuilder;
 
 class ProteomeEntryImplTest {
     @Test

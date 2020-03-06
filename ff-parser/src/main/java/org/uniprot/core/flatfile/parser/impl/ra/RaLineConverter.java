@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.citation.Author;
-import org.uniprot.core.citation.builder.AuthorBuilder;
+import org.uniprot.core.citation.impl.AuthorBuilder;
 import org.uniprot.core.flatfile.parser.Converter;
 
 public class RaLineConverter implements Converter<RaLineObject, List<Author>> {

@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
-import org.uniprot.core.builder.SequenceBuilder;
 import org.uniprot.core.flatfile.parser.impl.sq.SQLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
+import org.uniprot.core.impl.SequenceBuilder;
 
 class SQLineBuildTest {
     @Test

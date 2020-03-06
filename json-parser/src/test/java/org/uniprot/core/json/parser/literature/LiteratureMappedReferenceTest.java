@@ -3,7 +3,7 @@ package org.uniprot.core.json.parser.literature;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.literature.LiteratureMappedReference;
-import org.uniprot.core.literature.builder.LiteratureMappedReferenceBuilder;
+import org.uniprot.core.literature.impl.LiteratureMappedReferenceBuilder;
 
 /** @author lgonzales */
 class LiteratureMappedReferenceTest {

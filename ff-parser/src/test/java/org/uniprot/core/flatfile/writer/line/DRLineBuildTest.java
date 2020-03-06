@@ -12,7 +12,7 @@ import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtDatabase;
-import org.uniprot.core.uniprot.xdb.builder.UniProtCrossReferenceBuilder;
+import org.uniprot.core.uniprot.xdb.impl.UniProtCrossReferenceBuilder;
 import org.uniprot.cv.xdb.UniProtDatabaseImpl;
 
 class DRLineBuildTest {

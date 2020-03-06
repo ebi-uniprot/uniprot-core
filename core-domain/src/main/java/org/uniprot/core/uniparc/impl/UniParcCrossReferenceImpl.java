@@ -23,11 +23,11 @@ public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabas
     private LocalDate created;
     private LocalDate lastUpdated;
 
-    protected UniParcCrossReferenceImpl() {
+    UniParcCrossReferenceImpl() {
         super(null, "", Collections.emptyList());
     }
 
-    public UniParcCrossReferenceImpl(
+    UniParcCrossReferenceImpl(
             UniParcDatabase database,
             String id,
             List<Property> properties,

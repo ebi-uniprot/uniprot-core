@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
 import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
 import org.uniprot.core.uniprot.comment.Reaction;
-import org.uniprot.core.uniprot.comment.builder.CatalyticActivityCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.CatalyticActivityCommentBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;

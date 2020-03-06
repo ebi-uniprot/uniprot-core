@@ -2,7 +2,7 @@ package org.uniprot.core.xml.proteome;
 
 import org.uniprot.core.proteome.GeneNameType;
 import org.uniprot.core.proteome.Protein;
-import org.uniprot.core.proteome.builder.ProteinBuilder;
+import org.uniprot.core.proteome.impl.ProteinBuilder;
 import org.uniprot.core.uniprot.UniProtEntryType;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.EntryType;

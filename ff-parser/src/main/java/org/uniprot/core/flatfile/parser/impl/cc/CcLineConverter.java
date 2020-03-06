@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
-import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.exception.ParseDiseaseException;
 import org.uniprot.core.flatfile.parser.exception.ParseSubcellularLocationException;
@@ -20,14 +19,13 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.*;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.Disease;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.FreeText;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.Interaction;
-import org.uniprot.core.impl.CrossReferenceImpl;
-import org.uniprot.core.impl.ECNumberImpl;
+import org.uniprot.core.impl.CrossReferenceBuilder;
+import org.uniprot.core.impl.ECNumberBuilder;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.*;
-import org.uniprot.core.uniprot.comment.impl.CatalyticActivityCommentImpl;
+import org.uniprot.core.uniprot.comment.impl.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
-import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
+import org.uniprot.core.uniprot.evidence.impl.EvidencedValueBuilder;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
 import com.google.common.base.Strings;
@@ -632,8 +630,11 @@ public class CcLineConverter extends EvidenceCollector
                         .map(val -> convertPhysiologicalDirection(val, evidences))
                         .collect(Collectors.toList());
 
-        return new CatalyticActivityCommentImpl(
-                object.getMolecule(), reaction, physiologicalReactions);
+        return new CatalyticActivityCommentBuilder()
+                .molecule(object.getMolecule())
+                .reaction(reaction)
+                .physiologicalReactionsSet(physiologicalReactions)
+                .build();
     }
 
     private PhysiologicalReaction convertPhysiologicalDirection(
@@ -658,7 +659,7 @@ public class CcLineConverter extends EvidenceCollector
                             .collect(Collectors.toList());
         }
         if (caReaction.getEc() != null) {
-            ecNumber = new ECNumberImpl(caReaction.getEc());
+            ecNumber = new ECNumberBuilder(caReaction.getEc()).build();
         }
         return new ReactionBuilder()
                 .name(caReaction.getName())
@@ -673,7 +674,10 @@ public class CcLineConverter extends EvidenceCollector
         int index = val.indexOf(':');
         String type = val.substring(0, index);
         String id = val.substring(index + 1);
-        return new CrossReferenceImpl<>(ReactionDatabase.typeOf(type), id);
+        return new CrossReferenceBuilder<ReactionDatabase>()
+                .database(ReactionDatabase.typeOf(type))
+                .id(id)
+                .build();
     }
 
     private CommentType convert(CC.CCTopicEnum topic) {

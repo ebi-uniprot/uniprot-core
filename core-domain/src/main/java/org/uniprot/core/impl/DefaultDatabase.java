@@ -8,7 +8,7 @@ public final class DefaultDatabase implements Database {
     // no arg constructor for JSON deserialization
     DefaultDatabase() {}
 
-    public DefaultDatabase(String name) {
+    DefaultDatabase(String name) {
         this.name = name;
     }
 

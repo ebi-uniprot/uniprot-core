@@ -20,7 +20,7 @@ public abstract class AbstractJournalArticleImpl extends AbstractCitationImpl
     private String lastPage;
     private String volume;
 
-    public AbstractJournalArticleImpl(
+    AbstractJournalArticleImpl(
             CitationType citationType,
             List<String> authoringGroup,
             List<Author> authors,

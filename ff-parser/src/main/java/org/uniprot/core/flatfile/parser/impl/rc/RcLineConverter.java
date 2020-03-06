@@ -9,8 +9,8 @@ import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
 import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
 import org.uniprot.core.uniprot.ReferenceComment;
 import org.uniprot.core.uniprot.ReferenceCommentType;
-import org.uniprot.core.uniprot.builder.ReferenceCommentBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.impl.ReferenceCommentBuilder;
 
 public class RcLineConverter extends EvidenceCollector
         implements Converter<RcLineObject, List<ReferenceComment>> {

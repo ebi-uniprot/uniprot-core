@@ -8,15 +8,15 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationDatabase;
-import org.uniprot.core.citation.builder.LiteratureBuilder;
-import org.uniprot.core.citation.impl.AuthorImpl;
+import org.uniprot.core.citation.impl.AuthorBuilder;
+import org.uniprot.core.citation.impl.LiteratureBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.literature.LiteratureStatistics;
-import org.uniprot.core.literature.builder.LiteratureEntryBuilder;
-import org.uniprot.core.literature.builder.LiteratureStatisticsBuilder;
+import org.uniprot.core.literature.impl.LiteratureEntryBuilder;
+import org.uniprot.core.literature.impl.LiteratureStatisticsBuilder;
 
 /**
  * @author lgonzales
@@ -93,7 +93,7 @@ class LiteratureEntryMapTest {
                 .publicationDate("21-06-2019")
                 .title("title")
                 .completeAuthorList(false)
-                .authorsAdd(new AuthorImpl("author name"))
+                .authorsAdd(new AuthorBuilder("author name").build())
                 .authoringGroupsAdd("authoring group")
                 .build();
     }

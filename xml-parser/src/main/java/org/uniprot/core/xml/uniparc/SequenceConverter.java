@@ -1,7 +1,7 @@
 package org.uniprot.core.xml.uniparc;
 
 import org.uniprot.core.Sequence;
-import org.uniprot.core.builder.SequenceBuilder;
+import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniparc.ObjectFactory;
 

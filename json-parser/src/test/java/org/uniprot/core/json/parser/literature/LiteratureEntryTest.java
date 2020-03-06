@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.citation.LiteratureTest;
 import org.uniprot.core.literature.LiteratureEntry;
-import org.uniprot.core.literature.builder.LiteratureEntryBuilder;
+import org.uniprot.core.literature.impl.LiteratureEntryBuilder;
 
 /** @author lgonzales */
 class LiteratureEntryTest {

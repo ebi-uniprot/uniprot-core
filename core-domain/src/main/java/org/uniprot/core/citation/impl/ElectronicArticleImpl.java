@@ -19,7 +19,7 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
         this(emptyList(), emptyList(), emptyList(), null, null, null, null);
     }
 
-    public ElectronicArticleImpl(
+    ElectronicArticleImpl(
             List<String> authoringGroup,
             List<Author> authors,
             List<CrossReference<CitationDatabase>> citationCrossReferences,

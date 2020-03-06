@@ -19,7 +19,7 @@ public class CofactorCommentImpl extends CommentHasMoleculeImpl implements Cofac
         this(null, null, null);
     }
 
-    public CofactorCommentImpl(String molecule, List<Cofactor> cofactors, Note note) {
+    CofactorCommentImpl(String molecule, List<Cofactor> cofactors, Note note) {
         super(CommentType.COFACTOR, molecule);
         this.cofactors = Utils.unmodifiableList(cofactors);
         this.note = note;

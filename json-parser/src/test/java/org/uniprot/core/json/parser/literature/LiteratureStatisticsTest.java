@@ -3,7 +3,7 @@ package org.uniprot.core.json.parser.literature;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.literature.LiteratureStatistics;
-import org.uniprot.core.literature.builder.LiteratureStatisticsBuilder;
+import org.uniprot.core.literature.impl.LiteratureStatisticsBuilder;
 
 /** @author lgonzales */
 class LiteratureStatisticsTest {

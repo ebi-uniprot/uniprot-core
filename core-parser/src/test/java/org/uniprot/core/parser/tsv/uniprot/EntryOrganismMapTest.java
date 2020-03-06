@@ -8,7 +8,7 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.taxonomy.Organism;
-import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.OrganismBuilder;
 
 class EntryOrganismMapTest {
 

@@ -15,9 +15,9 @@ public class OverlapRegionImpl implements OverlapRegion {
     private int end;
 
     // no arg constructor for JSON deserialization
-    protected OverlapRegionImpl() {}
+    OverlapRegionImpl() {}
 
-    public OverlapRegionImpl(int start, int end) {
+    OverlapRegionImpl(int start, int end) {
         this.start = start;
         this.end = end;
     }

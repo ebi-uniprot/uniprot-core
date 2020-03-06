@@ -16,9 +16,9 @@ public class UniProtReleaseImpl implements UniProtRelease {
     private String nextVersion;
     private LocalDate nextReleaseDate;
 
-    protected UniProtReleaseImpl() {}
+    UniProtReleaseImpl() {}
 
-    public UniProtReleaseImpl(
+    UniProtReleaseImpl(
             String currentVersion,
             LocalDate currentReleaseDate,
             String nextVersion,

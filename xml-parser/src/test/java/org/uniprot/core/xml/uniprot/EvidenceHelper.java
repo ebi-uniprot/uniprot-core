@@ -9,8 +9,8 @@ import java.util.List;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
-import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
-import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
+import org.uniprot.core.uniprot.evidence.impl.EvidenceBuilder;
+import org.uniprot.core.uniprot.evidence.impl.EvidencedValueBuilder;
 
 /**
  * Created 16/01/19

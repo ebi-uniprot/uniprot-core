@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.Submission;
 import org.uniprot.core.citation.SubmissionDatabase;
-import org.uniprot.core.citation.builder.SubmissionBuilder;
+import org.uniprot.core.citation.impl.SubmissionBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
 import com.fasterxml.jackson.databind.JsonNode;

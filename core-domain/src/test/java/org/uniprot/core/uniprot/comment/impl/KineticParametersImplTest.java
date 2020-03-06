@@ -10,9 +10,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.KineticParametersBuilder;
-import org.uniprot.core.uniprot.comment.builder.MaximumVelocityBuilder;
-import org.uniprot.core.uniprot.comment.builder.MichaelisConstantBuilder;
 
 class KineticParametersImplTest {
     @Test

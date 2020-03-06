@@ -21,7 +21,7 @@ public class ProteinSubNameImpl implements ProteinSubName {
         ecNumbers = Collections.emptyList();
     }
 
-    public ProteinSubNameImpl(Name fullName, List<EC> ecNumbers) {
+    ProteinSubNameImpl(Name fullName, List<EC> ecNumbers) {
         this.fullName = fullName;
         this.ecNumbers = unmodifiableList(ecNumbers);
     }
