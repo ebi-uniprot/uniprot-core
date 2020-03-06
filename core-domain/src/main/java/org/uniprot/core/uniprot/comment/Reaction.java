@@ -9,13 +9,13 @@ import org.uniprot.core.uniprot.evidence.HasEvidences;
 public interface Reaction extends HasEvidences {
     String getName();
 
-    List<CrossReference<ReactionDatabase>> getReactionReferences();
+    List<CrossReference<ReactionDatabase>> getReactionCrossReferences();
 
     ECNumber getEcNumber();
 
     boolean hasName();
 
-    boolean hasReactionReferences();
+    boolean hasReactionCrossReferences();
 
     boolean hasEcNumber();
 }

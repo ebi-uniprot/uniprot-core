@@ -9,22 +9,24 @@ import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 
 public class GoScored implements HasScore {
-    private final List<UniProtCrossReference> xrefs;
+    private final List<UniProtCrossReference> uniProtCrossReferences;
     private final List<EvidenceDatabase> evidenceDatabases;
 
-    public GoScored(List<UniProtCrossReference> xrefs, List<EvidenceDatabase> evidenceDatabases) {
-        this.xrefs = xrefs;
+    public GoScored(
+            List<UniProtCrossReference> uniProtCrossReferences,
+            List<EvidenceDatabase> evidenceDatabases) {
+        this.uniProtCrossReferences = uniProtCrossReferences;
         this.evidenceDatabases = evidenceDatabases;
     }
 
-    public GoScored(List<UniProtCrossReference> xrefs) {
-        this(xrefs, null);
+    public GoScored(List<UniProtCrossReference> uniProtCrossReferences) {
+        this(uniProtCrossReferences, null);
     }
 
     @Override
     public double score() {
         double score = 0;
-        for (UniProtCrossReference xref : xrefs) {
+        for (UniProtCrossReference xref : uniProtCrossReferences) {
             if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceDatabases)) score += score(xref);
         }
         return score;

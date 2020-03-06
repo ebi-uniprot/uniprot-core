@@ -121,10 +121,10 @@ class EntryGoCrossReferenceMapTest {
     private UniProtCrossReference create(String id, String term, String evidence) {
         UniProtDatabase type = new UniProtDatabaseImpl("GO");
         return new UniProtCrossReferenceBuilder()
-                .databaseType(type)
+                .database(type)
                 .id(id)
-                .propertiesAdd(type.getAttribute(0), term)
-                .propertiesAdd(type.getAttribute(1), evidence)
+                .propertiesAdd(type.getUniProtDatabaseAttribute(0), term)
+                .propertiesAdd(type.getUniProtDatabaseAttribute(1), evidence)
                 .build();
     }
 }

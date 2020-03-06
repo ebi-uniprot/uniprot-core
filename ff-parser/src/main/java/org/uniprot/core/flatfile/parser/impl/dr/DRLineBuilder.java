@@ -75,7 +75,8 @@ public class DRLineBuilder extends FFLineBuilderAbstr<List<UniProtCrossReference
         StringBuilder sb = new StringBuilder();
         if (includeFFMarkings) {
             sb.append(linePrefix);
-            sb.append(reference.getDatabase().getDetail().getDisplayName()).append("; ");
+            sb.append(reference.getDatabase().getUniProtDatabaseDetail().getDisplayName())
+                    .append("; ");
         }
         sb.append(reference.getId());
         append(sb, reference.getProperties(), 0, includeFFMarkings);

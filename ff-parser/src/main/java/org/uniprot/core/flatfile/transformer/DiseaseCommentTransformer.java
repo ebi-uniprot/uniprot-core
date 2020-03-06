@@ -75,7 +75,7 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
             // retrieve the text between square brackets
             builder.diseaseId(populateDiseaseId(firstPart));
             builder.acronym(populateDiseaseAcronym(firstPart));
-            builder.reference(populateDiseaseReference(firstPart));
+            builder.diseaseCrossReference(populateDiseaseReference(firstPart));
             populateDiseaseDescription(builder, description);
 
             return builder.build();
@@ -157,7 +157,7 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
             DiseaseDatabase referenceType = DiseaseDatabase.typeOf(referenceElements[0]);
 
             return new CrossReferenceBuilder<DiseaseDatabase>()
-                    .databaseType(referenceType)
+                    .database(referenceType)
                     .id(referenceElements[1])
                     .build();
         }

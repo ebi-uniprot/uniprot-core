@@ -18,7 +18,7 @@ public class ComponentBuilder implements Builder<Component> {
     private String description;
     private int proteinCount;
     private ComponentType type;
-    private List<CrossReference<ProteomeDatabase>> dbXReferences = new ArrayList<>();
+    private List<CrossReference<ProteomeDatabase>> proteomeCrossReferences = new ArrayList<>();
 
     public @Nonnull ComponentBuilder name(String name) {
         this.name = name;
@@ -30,15 +30,15 @@ public class ComponentBuilder implements Builder<Component> {
         return this;
     }
 
-    public @Nonnull ComponentBuilder dbXReferencesSet(
-            List<CrossReference<ProteomeDatabase>> dbXReferences) {
-        this.dbXReferences = Utils.modifiableList(dbXReferences);
+    public @Nonnull ComponentBuilder proteomeCrossReferencesSet(
+            List<CrossReference<ProteomeDatabase>> proteomeCrossReferences) {
+        this.proteomeCrossReferences = Utils.modifiableList(proteomeCrossReferences);
         return this;
     }
 
-    public @Nonnull ComponentBuilder dbXReferencesAdd(
-            CrossReference<ProteomeDatabase> dbXReference) {
-        Utils.addOrIgnoreNull(dbXReference, dbXReferences);
+    public @Nonnull ComponentBuilder proteomeCrossReferencesAdd(
+            CrossReference<ProteomeDatabase> proteomeCrossReference) {
+        Utils.addOrIgnoreNull(proteomeCrossReference, proteomeCrossReferences);
         return this;
     }
 
@@ -54,7 +54,7 @@ public class ComponentBuilder implements Builder<Component> {
 
     @Override
     public @Nonnull Component build() {
-        return new ComponentImpl(name, description, proteinCount, type, dbXReferences);
+        return new ComponentImpl(name, description, proteinCount, type, proteomeCrossReferences);
     }
 
     public static @Nonnull ComponentBuilder from(@Nonnull Component instance) {
@@ -63,6 +63,6 @@ public class ComponentBuilder implements Builder<Component> {
                 .description(instance.getDescription())
                 .proteinCount(instance.getProteinCount())
                 .type(instance.getType())
-                .dbXReferencesSet(instance.getDbXReferences());
+                .proteomeCrossReferencesSet(instance.getProteomeCrossReferences());
     }
 }

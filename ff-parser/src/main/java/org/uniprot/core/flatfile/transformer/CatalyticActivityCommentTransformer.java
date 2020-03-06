@@ -105,7 +105,7 @@ public class CatalyticActivityCommentTransformer
         }
         return new PhysiologicalReactionBuilder()
                 .directionType(PhysiologicalDirectionType.typeOf(name))
-                .reactionReference(reference)
+                .reactionCrossReference(reference)
                 .evidencesSet(evidences)
                 .build();
     }
@@ -132,7 +132,7 @@ public class CatalyticActivityCommentTransformer
         }
         return new ReactionBuilder()
                 .name(name)
-                .reactionReferencesSet(references)
+                .reactionCrossReferencesSet(references)
                 .ecNumber(ecNumber)
                 .evidencesSet(evidences)
                 .build();
@@ -144,7 +144,7 @@ public class CatalyticActivityCommentTransformer
         String type = val.substring(0, index);
         String id = val.substring(index + 1);
         return new CrossReferenceBuilder<ReactionDatabase>()
-                .databaseType(ReactionDatabase.typeOf(type))
+                .database(ReactionDatabase.typeOf(type))
                 .id(id)
                 .build();
     }

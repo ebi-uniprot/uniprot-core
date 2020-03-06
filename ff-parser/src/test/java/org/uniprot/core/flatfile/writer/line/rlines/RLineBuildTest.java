@@ -59,7 +59,7 @@ class RLineBuildTest {
         String title =
                 "Comparative genomic analyses of frog virus 3, type species of the genus Ranavirus (family Iridoviridae).";
         jaBuilder.title(title);
-        jaBuilder.citationXrefsSet(
+        jaBuilder.citationCrossReferencesSet(
                 buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", null));
         jaBuilder
                 .journalName("Virology")
@@ -133,7 +133,7 @@ class RLineBuildTest {
         String title =
                 "Comparative genomic analyses of frog virus 3, type species of the genus Ranavirus (family Iridoviridae).";
         jaBuilder.title(title);
-        jaBuilder.citationXrefsSet(
+        jaBuilder.citationCrossReferencesSet(
                 buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", null));
         jaBuilder
                 .journalName("Virology")
@@ -594,20 +594,20 @@ class RLineBuildTest {
         if (pubmed != null) {
             xrefs.add(
                     new CrossReferenceBuilder<CitationDatabase>()
-                            .databaseType(CitationDatabase.PUBMED)
+                            .database(CitationDatabase.PUBMED)
                             .id(pubmed)
                             .build());
         }
         if (doi != null)
             xrefs.add(
                     new CrossReferenceBuilder<CitationDatabase>()
-                            .databaseType(CitationDatabase.DOI)
+                            .database(CitationDatabase.DOI)
                             .id(doi)
                             .build());
         if (agricolaId != null)
             xrefs.add(
                     new CrossReferenceBuilder<CitationDatabase>()
-                            .databaseType(CitationDatabase.AGRICOLA)
+                            .database(CitationDatabase.AGRICOLA)
                             .id(agricolaId)
                             .build());
         return xrefs;

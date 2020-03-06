@@ -10,7 +10,12 @@ public final class PatentBuilder extends AbstractCitationBuilder<PatentBuilder, 
 
     public @Nonnull Patent build() {
         return new PatentImpl(
-                authoringGroups, authors, citationXrefs, title, publicationDate, patentNumber);
+                authoringGroups,
+                authors,
+                citationCrossReferences,
+                title,
+                publicationDate,
+                patentNumber);
     }
 
     public static @Nonnull PatentBuilder from(@Nonnull Patent instance) {

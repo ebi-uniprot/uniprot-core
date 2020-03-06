@@ -115,10 +115,10 @@ public class FeatureTest {
                 "alternative value",
                 alternativeSequence.get("alternativeSequences").get(0).asText());
 
-        assertNotNull(jsonNode.get("dbXref"));
-        JsonNode dbXref = jsonNode.get("dbXref");
-        assertNotNull(dbXref.get("databaseType"));
-        assertEquals("dbSNP", dbXref.get("databaseType").asText());
+        assertNotNull(jsonNode.get("featureCrossReference"));
+        JsonNode dbXref = jsonNode.get("featureCrossReference");
+        assertNotNull(dbXref.get("database"));
+        assertEquals("dbSNP", dbXref.get("database").asText());
         assertNotNull(dbXref.get("id"));
         assertEquals("db id", dbXref.get("id").asText());
 
@@ -137,7 +137,7 @@ public class FeatureTest {
 
         CrossReference<FeatureDatabase> xrefs =
                 new CrossReferenceBuilder<FeatureDatabase>()
-                        .databaseType(FeatureDatabase.DBSNP)
+                        .database(FeatureDatabase.DBSNP)
                         .id("db id")
                         .build();
 
@@ -148,7 +148,7 @@ public class FeatureTest {
         return new FeatureBuilder()
                 .type(FeatureType.CHAIN)
                 .alternativeSequence(alternativeSequence)
-                .dbXref(xrefs)
+                .featureCrossReference(xrefs)
                 .description("description value")
                 .evidencesSet(evidences)
                 .featureId("id value")

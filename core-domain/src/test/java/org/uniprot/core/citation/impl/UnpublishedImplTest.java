@@ -23,7 +23,7 @@ class UnpublishedImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         CrossReference<CitationDatabase> XREF1 =
                 new CrossReferenceBuilder<CitationDatabase>()
-                        .databaseType(CitationDatabase.PUBMED)
+                        .database(CitationDatabase.PUBMED)
                         .id("id1")
                         .build();
 

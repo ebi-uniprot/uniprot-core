@@ -63,7 +63,7 @@ class UniParcCrossReferenceBuilderTest {
         UniParcCrossReference xref =
                 new UniParcCrossReferenceBuilder()
                         .versionI(3)
-                        .databaseType(UniParcDatabase.SWISSPROT)
+                        .database(UniParcDatabase.SWISSPROT)
                         .id("P12345")
                         .version(7)
                         .active(true)
@@ -89,7 +89,7 @@ class UniParcCrossReferenceBuilderTest {
         UniParcCrossReference xref =
                 new UniParcCrossReferenceBuilder()
                         .versionI(3)
-                        .databaseType(UniParcDatabase.SWISSPROT)
+                        .database(UniParcDatabase.SWISSPROT)
                         .id("P12345")
                         .version(7)
                         .active(true)
@@ -117,7 +117,7 @@ class UniParcCrossReferenceBuilderTest {
         UniParcCrossReference xref =
                 new UniParcCrossReferenceBuilder()
                         .versionI(3)
-                        .databaseType(UniParcDatabase.SWISSPROT)
+                        .database(UniParcDatabase.SWISSPROT)
                         .id("P12345")
                         .version(7)
                         .active(true)

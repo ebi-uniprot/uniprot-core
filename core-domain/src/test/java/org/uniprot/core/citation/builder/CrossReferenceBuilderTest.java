@@ -20,7 +20,7 @@ class CrossReferenceBuilderTest {
     void canCreateInstance() {
         CrossReference<CitationDatabase> xref =
                 new CrossReferenceBuilder<CitationDatabase>()
-                        .databaseType(CitationDatabase.PUBMED)
+                        .database(CitationDatabase.PUBMED)
                         .id("id1")
                         .build();
 

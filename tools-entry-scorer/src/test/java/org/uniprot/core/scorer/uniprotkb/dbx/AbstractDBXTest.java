@@ -28,7 +28,7 @@ abstract class AbstractDBXTest {
         UniProtEntry entry =
                 new DefaultUniProtParser(new SupportingDataMapImpl("", "", "", ""), true)
                         .parse(trEMBLEntry(citationLines));
-        return entry.getDatabaseCrossReferencesByType(type);
+        return entry.getUniProtCrossReferencesByType(type);
     }
 
     private static String trEMBLEntry(String citationLines) {

@@ -41,7 +41,7 @@ public class CAPhysioReactionConverter
         List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
         return new PhysiologicalReactionBuilder()
                 .directionType(directionType)
-                .reactionReference(reactionReference)
+                .reactionCrossReference(reactionReference)
                 .evidencesSet(evidences)
                 .build();
     }
@@ -51,7 +51,7 @@ public class CAPhysioReactionConverter
         PhysiologicalReactionType physioReactionType =
                 xmlUniprotFactory.createPhysiologicalReactionType();
         physioReactionType.setDirection(uniObj.getDirectionType().toDisplayName());
-        physioReactionType.setDbReference(refConverter.toXml(uniObj.getReactionReference()));
+        physioReactionType.setDbReference(refConverter.toXml(uniObj.getReactionCrossReference()));
         List<Evidence> evidenceIds = uniObj.getEvidences();
         if ((evidenceIds != null) && !evidenceIds.isEmpty()) {
             List<Integer> evs = evRefMapper.writeEvidences(evidenceIds);

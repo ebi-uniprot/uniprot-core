@@ -110,10 +110,10 @@ class CofactorCommentConverterTest {
 
     private Cofactor create(String name, CofactorDatabase type, String xrefId, List<String> evids) {
         CrossReference<CofactorDatabase> reference =
-                new CrossReferenceBuilder<CofactorDatabase>().databaseType(type).id(xrefId).build();
+                new CrossReferenceBuilder<CofactorDatabase>().database(type).id(xrefId).build();
         return new CofactorBuilder()
                 .name(name)
-                .reference(reference)
+                .cofactorCrossReference(reference)
                 .evidencesSet(createEvidence(evids))
                 .build();
     }

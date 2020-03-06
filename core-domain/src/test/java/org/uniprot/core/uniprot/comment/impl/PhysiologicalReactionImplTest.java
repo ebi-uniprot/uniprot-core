@@ -27,7 +27,7 @@ class PhysiologicalReactionImplTest {
         PhysiologicalReaction obj = PhysiologicalReactionBuilder.from(impl).build();
 
         assertTrue(impl.hasDirectionType());
-        assertTrue(impl.hasReactionReference());
+        assertTrue(impl.hasReactionCrossReference());
         assertTrue(impl.hasEvidences());
         assertTrue(impl.getEvidences().size() > 0);
 

@@ -27,9 +27,9 @@ class UniProtCrossReferenceImplTest {
         UniProtDatabase dbType = new UniProtDatabaseMock(type);
         UniProtCrossReference xref =
                 new UniProtCrossReferenceBuilder()
-                        .databaseType(dbType)
+                        .database(dbType)
                         .id(id)
-                        .propertiesAdd(dbType.getAttribute(0), description)
+                        .propertiesAdd(dbType.getUniProtDatabaseAttribute(0), description)
                         .build();
 
         verify(xref, val, type, id, description, null, null, null);
@@ -48,9 +48,9 @@ class UniProtCrossReferenceImplTest {
         UniProtDatabase dbType = new UniProtDatabaseMock(type);
         UniProtCrossReference xref =
                 new UniProtCrossReferenceBuilder()
-                        .databaseType(dbType)
+                        .database(dbType)
                         .id(id)
-                        .propertiesAdd(dbType.getAttribute(0), description)
+                        .propertiesAdd(dbType.getUniProtDatabaseAttribute(0), description)
                         .build();
         verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
     }
@@ -69,10 +69,10 @@ class UniProtCrossReferenceImplTest {
         UniProtDatabase dbType = new UniProtDatabaseMock(type);
         UniProtCrossReference xref =
                 new UniProtCrossReferenceBuilder()
-                        .databaseType(dbType)
+                        .database(dbType)
                         .id(id)
-                        .propertiesAdd(dbType.getAttribute(0), description)
-                        .propertiesAdd(dbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(dbType.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(dbType.getUniProtDatabaseAttribute(1), thirdAttr)
                         .build();
 
         verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
@@ -92,10 +92,10 @@ class UniProtCrossReferenceImplTest {
         UniProtDatabase dbType = new UniProtDatabaseMock(type);
         UniProtCrossReference xref =
                 new UniProtCrossReferenceBuilder()
-                        .databaseType(dbType)
+                        .database(dbType)
                         .id(id)
-                        .propertiesAdd(dbType.getAttribute(0), description)
-                        .propertiesAdd(dbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(dbType.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(dbType.getUniProtDatabaseAttribute(1), thirdAttr)
                         .build();
 
         verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
@@ -115,10 +115,10 @@ class UniProtCrossReferenceImplTest {
         UniProtDatabase dbType = new UniProtDatabaseMock(type);
         UniProtCrossReference xref =
                 new UniProtCrossReferenceBuilder()
-                        .databaseType(dbType)
+                        .database(dbType)
                         .id(id)
-                        .propertiesAdd(dbType.getAttribute(0), description)
-                        .propertiesAdd(dbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(dbType.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(dbType.getUniProtDatabaseAttribute(1), thirdAttr)
                         .isoformId(isoform)
                         .build();
 
@@ -139,10 +139,10 @@ class UniProtCrossReferenceImplTest {
         UniProtDatabase dbType = new UniProtDatabaseMock(type);
         UniProtCrossReference xref =
                 new UniProtCrossReferenceBuilder()
-                        .databaseType(dbType)
+                        .database(dbType)
                         .id(id)
-                        .propertiesAdd(dbType.getAttribute(0), description)
-                        .propertiesAdd(dbType.getAttribute(1), thirdAttr)
+                        .propertiesAdd(dbType.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(dbType.getUniProtDatabaseAttribute(1), thirdAttr)
                         .isoformId(isoform)
                         .build();
 
@@ -163,11 +163,11 @@ class UniProtCrossReferenceImplTest {
         UniProtDatabase dbType = new UniProtDatabaseMock(type);
         UniProtCrossReference xref =
                 new UniProtCrossReferenceBuilder()
-                        .databaseType(dbType)
+                        .database(dbType)
                         .id(id)
-                        .propertiesAdd(dbType.getAttribute(0), description)
-                        .propertiesAdd(dbType.getAttribute(1), thirdAttr)
-                        .propertiesAdd(dbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(dbType.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(dbType.getUniProtDatabaseAttribute(1), thirdAttr)
+                        .propertiesAdd(dbType.getUniProtDatabaseAttribute(2), fourthAttr)
                         .isoformId(isoform)
                         .build();
 
@@ -188,11 +188,11 @@ class UniProtCrossReferenceImplTest {
         UniProtDatabase dbType = new UniProtDatabaseMock(type);
         UniProtCrossReference xref =
                 new UniProtCrossReferenceBuilder()
-                        .databaseType(dbType)
+                        .database(dbType)
                         .id(id)
-                        .propertiesAdd(dbType.getAttribute(0), description)
-                        .propertiesAdd(dbType.getAttribute(1), thirdAttr)
-                        .propertiesAdd(dbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(dbType.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(dbType.getUniProtDatabaseAttribute(1), thirdAttr)
+                        .propertiesAdd(dbType.getUniProtDatabaseAttribute(2), fourthAttr)
                         .isoformId(isoform)
                         .build();
 
@@ -213,11 +213,11 @@ class UniProtCrossReferenceImplTest {
         UniProtDatabase dbType = new UniProtDatabaseMock(type);
         UniProtCrossReference xref =
                 new UniProtCrossReferenceBuilder()
-                        .databaseType(dbType)
+                        .database(dbType)
                         .id(id)
-                        .propertiesAdd(dbType.getAttribute(0), description)
-                        .propertiesAdd(dbType.getAttribute(1), thirdAttr)
-                        .propertiesAdd(dbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(dbType.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(dbType.getUniProtDatabaseAttribute(1), thirdAttr)
+                        .propertiesAdd(dbType.getUniProtDatabaseAttribute(2), fourthAttr)
                         .isoformId(isoform)
                         .build();
 
@@ -292,11 +292,11 @@ class UniProtCrossReferenceImplTest {
             this.name = name;
         }
 
-        public @Nonnull UniProtDatabaseDetail getDetail() {
+        public @Nonnull UniProtDatabaseDetail getUniProtDatabaseDetail() {
             throw new RuntimeException("No implementation defined in mock class");
         }
 
-        public @Nullable UniProtDatabaseAttribute getAttribute(int position) {
+        public @Nullable UniProtDatabaseAttribute getUniProtDatabaseAttribute(int position) {
             return new UniProtDatabaseAttribute(name + position, null, null);
         }
 

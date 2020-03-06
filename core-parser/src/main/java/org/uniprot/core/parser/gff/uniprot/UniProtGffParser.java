@@ -92,14 +92,14 @@ public class UniProtGffParser {
 
         String pubmed =
                 evidences.stream()
-                        .filter(evidence -> evidence.getSource() != null)
+                        .filter(evidence -> evidence.getEvidenceCrossReference() != null)
                         .filter(
                                 evidence ->
-                                        evidence.getSource()
+                                        evidence.getEvidenceCrossReference()
                                                 .getDatabase()
                                                 .getName()
                                                 .equals("PubMed"))
-                        .map(Evidence::getSource)
+                        .map(Evidence::getEvidenceCrossReference)
                         .map(CrossReference::getId)
                         .collect(Collectors.toSet())
                         .stream()

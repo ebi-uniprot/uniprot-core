@@ -10,7 +10,8 @@ public class UniParcFastaParser {
     public static String toFasta(UniParcEntry entry) {
         StringBuilder sb = new StringBuilder();
         String status = "active";
-        boolean isActive = entry.getDbXReferences().stream().anyMatch(val -> val.isActive());
+        boolean isActive =
+                entry.getUniParcCrossReferences().stream().anyMatch(val -> val.isActive());
         if (!isActive) {
             status = "inactive";
         }

@@ -60,12 +60,12 @@ public class CofactorCommentTest {
         assertEquals(1, cofactor.get("evidences").size());
         ValidateJson.validateEvidence(
                 cofactor.get("evidences").get(0), "ECO:0000256", "PIRNR", "PIRNR001361");
-        assertNotNull(cofactor.get("cofactorReference"));
-        JsonNode reactionReferences = cofactor.get("cofactorReference");
-        assertNotNull(reactionReferences.get("databaseType"));
-        assertEquals("ChEBI", reactionReferences.get("databaseType").asText());
-        assertNotNull(reactionReferences.get("id"));
-        assertEquals("CHEBI:314", reactionReferences.get("id").asText());
+        assertNotNull(cofactor.get("cofactorCrossReference"));
+        JsonNode cofactorCrossReference = cofactor.get("cofactorCrossReference");
+        assertNotNull(cofactorCrossReference.get("database"));
+        assertEquals("ChEBI", cofactorCrossReference.get("database").asText());
+        assertNotNull(cofactorCrossReference.get("id"));
+        assertEquals("CHEBI:314", cofactorCrossReference.get("id").asText());
 
         assertNotNull(jsonNode.get("note"));
         assertNotNull(jsonNode.get("note").get("texts"));
@@ -78,13 +78,13 @@ public class CofactorCommentTest {
     public static CofactorComment getCofactorComment() {
         CrossReference<CofactorDatabase> reference =
                 new CrossReferenceBuilder<CofactorDatabase>()
-                        .databaseType(CofactorDatabase.CHEBI)
+                        .database(CofactorDatabase.CHEBI)
                         .id("CHEBI:314")
                         .build();
         Cofactor cofactor =
                 new CofactorBuilder()
                         .name("Cofactor Name")
-                        .reference(reference)
+                        .cofactorCrossReference(reference)
                         .evidencesSet(createEvidences())
                         .build();
         List<Cofactor> cofactors = Collections.singletonList(cofactor);

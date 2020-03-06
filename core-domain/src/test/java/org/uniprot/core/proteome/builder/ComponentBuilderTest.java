@@ -46,28 +46,30 @@ class ComponentBuilderTest {
     void testAddXref() {
         CrossReference<ProteomeDatabase> xref1 =
                 new CrossReferenceBuilder<ProteomeDatabase>()
-                        .databaseType(ProteomeDatabase.GENOME_ACCESSION)
+                        .database(ProteomeDatabase.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
         Component component =
                 new ComponentBuilder()
-                        .dbXReferencesAdd(proteomeXReferenceTypes().get(0))
-                        .dbXReferencesAdd(proteomeXReferenceTypes().get(1))
+                        .proteomeCrossReferencesAdd(proteomeXReferenceTypes().get(0))
+                        .proteomeCrossReferencesAdd(proteomeXReferenceTypes().get(1))
                         .build();
-        assertEquals(2, component.getDbXReferences().size());
-        assertThat(component.getDbXReferences(), hasItem(xref1));
+        assertEquals(2, component.getProteomeCrossReferences().size());
+        assertThat(component.getProteomeCrossReferences(), hasItem(xref1));
     }
 
     @Test
     void testXrefs() {
         CrossReference<ProteomeDatabase> xref2 =
                 new CrossReferenceBuilder<ProteomeDatabase>()
-                        .databaseType(ProteomeDatabase.GENOME_ANNOTATION)
+                        .database(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
         Component component =
-                new ComponentBuilder().dbXReferencesSet(proteomeXReferenceTypes()).build();
-        assertEquals(2, component.getDbXReferences().size());
-        assertThat(component.getDbXReferences(), hasItem(xref2));
+                new ComponentBuilder()
+                        .proteomeCrossReferencesSet(proteomeXReferenceTypes())
+                        .build();
+        assertEquals(2, component.getProteomeCrossReferences().size());
+        assertThat(component.getProteomeCrossReferences(), hasItem(xref2));
     }
 }

@@ -63,7 +63,7 @@ public class UniParcEntryConverter implements Converter<Entry, UniParcEntry> {
                 xmlObj.getDbReference().stream()
                         .map(xrefConverter::fromXml)
                         .collect(Collectors.toList());
-        builder.databaseCrossReferencesSet(xrefs);
+        builder.uniParcCrossReferencesSet(xrefs);
         List<Taxonomy> taxonomies =
                 xrefs.stream()
                         .flatMap(val -> val.getProperties().stream())
@@ -117,7 +117,7 @@ public class UniParcEntryConverter implements Converter<Entry, UniParcEntry> {
             entry.setUniProtKBExclusion(uniObj.getUniProtExclusionReason());
         }
         entry.setSequence(sequenceConverter.toXml(uniObj.getSequence()));
-        uniObj.getDbXReferences().stream()
+        uniObj.getUniParcCrossReferences().stream()
                 .map(xrefConverter::toXml)
                 .forEach(val -> entry.getDbReference().add(val));
         uniObj.getSequenceFeatures().stream()

@@ -28,7 +28,7 @@ public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabas
     }
 
     public UniParcCrossReferenceImpl(
-            UniParcDatabase databaseType,
+            UniParcDatabase database,
             String id,
             List<Property> properties,
             int versionI,
@@ -36,7 +36,7 @@ public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabas
             boolean active,
             LocalDate created,
             LocalDate lastUpdated) {
-        super(databaseType, id, properties);
+        super(database, id, properties);
         this.versionI = versionI;
         this.version = version;
         this.active = active;

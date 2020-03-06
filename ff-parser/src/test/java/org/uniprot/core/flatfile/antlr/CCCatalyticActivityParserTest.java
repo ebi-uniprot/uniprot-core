@@ -147,26 +147,26 @@ class CCCatalyticActivityParserTest {
 
         assertEquals(reactionName, reaction.getName());
         assertEquals("1.1.1.271", reaction.getEcNumber().getValue());
-        List<CrossReference<ReactionDatabase>> xrefs = reaction.getReactionReferences();
+        List<CrossReference<ReactionDatabase>> xrefs = reaction.getReactionCrossReferences();
         assertEquals(5, xrefs.size());
         verify(xrefs.get(0), ReactionDatabase.RHEA, "RHEA:18885");
         verify(xrefs.get(1), ReactionDatabase.CHEBI, "CHEBI:57273");
         List<Evidence> eviIds = reaction.getEvidences();
         assertEquals(4, eviIds.size());
         Evidence eviId = eviIds.get(2);
-        assertEquals("PubMed", eviId.getSource().getDatabase().getName());
+        assertEquals("PubMed", eviId.getEvidenceCrossReference().getDatabase().getName());
         assertEquals("ECO:0000269|PubMed:11021971", eviId.getValue());
 
         List<PhysiologicalReaction> directions = comment.getPhysiologicalReactions();
         assertEquals(1, directions.size());
         PhysiologicalReaction direction = directions.get(0);
         assertEquals(PhysiologicalDirectionType.LEFT_TO_RIGHT, direction.getDirectionType());
-        verify(direction.getReactionReference(), ReactionDatabase.RHEA, "RHEA:18886");
+        verify(direction.getReactionCrossReference(), ReactionDatabase.RHEA, "RHEA:18886");
 
         eviIds = direction.getEvidences();
         assertEquals(1, eviIds.size());
         eviId = eviIds.get(0);
-        assertEquals("HAMAP-Rule", eviId.getSource().getDatabase().getName());
+        assertEquals("HAMAP-Rule", eviId.getEvidenceCrossReference().getDatabase().getName());
         assertEquals("ECO:0000255|HAMAP-Rule:MF_00956", eviId.getValue());
     }
 
@@ -243,26 +243,26 @@ class CCCatalyticActivityParserTest {
 
         assertEquals(reactionName, reaction.getName());
         assertEquals(null, reaction.getEcNumber());
-        List<CrossReference<ReactionDatabase>> xrefs = reaction.getReactionReferences();
+        List<CrossReference<ReactionDatabase>> xrefs = reaction.getReactionCrossReferences();
         assertEquals(4, xrefs.size());
         verify(xrefs.get(0), ReactionDatabase.RHEA, "RHEA:18885");
         verify(xrefs.get(2), ReactionDatabase.CHEBI, "CHEBI:58349");
         List<Evidence> eviIds = reaction.getEvidences();
         assertEquals(3, eviIds.size());
         Evidence eviId = eviIds.get(1);
-        assertEquals("PubMed", eviId.getSource().getDatabase().getName());
+        assertEquals("PubMed", eviId.getEvidenceCrossReference().getDatabase().getName());
         assertEquals("ECO:0000269|PubMed:10480878", eviId.getValue());
 
         List<PhysiologicalReaction> directions = comment.getPhysiologicalReactions();
         assertEquals(1, directions.size());
         PhysiologicalReaction direction = directions.get(0);
         assertEquals(PhysiologicalDirectionType.LEFT_TO_RIGHT, direction.getDirectionType());
-        verify(direction.getReactionReference(), ReactionDatabase.RHEA, "RHEA:18886");
+        verify(direction.getReactionCrossReference(), ReactionDatabase.RHEA, "RHEA:18886");
 
         eviIds = direction.getEvidences();
         assertEquals(1, eviIds.size());
         eviId = eviIds.get(0);
-        assertEquals("HAMAP-Rule", eviId.getSource().getDatabase().getName());
+        assertEquals("HAMAP-Rule", eviId.getEvidenceCrossReference().getDatabase().getName());
         assertEquals("ECO:0000255|HAMAP-Rule:MF_00956", eviId.getValue());
     }
 
@@ -346,36 +346,36 @@ class CCCatalyticActivityParserTest {
 
         assertEquals(reactionName, reaction.getName());
         assertEquals("1.1.1.271", reaction.getEcNumber().getValue());
-        List<CrossReference<ReactionDatabase>> xrefs = reaction.getReactionReferences();
+        List<CrossReference<ReactionDatabase>> xrefs = reaction.getReactionCrossReferences();
         assertEquals(5, xrefs.size());
         verify(xrefs.get(0), ReactionDatabase.RHEA, "RHEA:18885");
         verify(xrefs.get(1), ReactionDatabase.CHEBI, "CHEBI:57273");
         List<Evidence> eviIds = reaction.getEvidences();
         assertEquals(4, eviIds.size());
         Evidence eviId = eviIds.get(2);
-        assertEquals("PubMed", eviId.getSource().getDatabase().getName());
+        assertEquals("PubMed", eviId.getEvidenceCrossReference().getDatabase().getName());
         assertEquals("ECO:0000269|PubMed:11021971", eviId.getValue());
 
         List<PhysiologicalReaction> directions = comment.getPhysiologicalReactions();
         assertEquals(2, directions.size());
         PhysiologicalReaction direction = directions.get(0);
         assertEquals(PhysiologicalDirectionType.LEFT_TO_RIGHT, direction.getDirectionType());
-        verify(direction.getReactionReference(), ReactionDatabase.RHEA, "RHEA:18886");
+        verify(direction.getReactionCrossReference(), ReactionDatabase.RHEA, "RHEA:18886");
 
         eviIds = direction.getEvidences();
         assertEquals(1, eviIds.size());
         eviId = eviIds.get(0);
-        assertEquals("HAMAP-Rule", eviId.getSource().getDatabase().getName());
+        assertEquals("HAMAP-Rule", eviId.getEvidenceCrossReference().getDatabase().getName());
         assertEquals("ECO:0000255|HAMAP-Rule:MF_00956", eviId.getValue());
 
         PhysiologicalReaction direction2 = directions.get(1);
         assertEquals(PhysiologicalDirectionType.RIGHT_TO_LEFT, direction2.getDirectionType());
-        verify(direction2.getReactionReference(), ReactionDatabase.RHEA, "RHEA:18898");
+        verify(direction2.getReactionCrossReference(), ReactionDatabase.RHEA, "RHEA:18898");
 
         eviIds = direction2.getEvidences();
         assertEquals(1, eviIds.size());
         eviId = eviIds.get(0);
-        assertEquals("HAMAP-Rule", eviId.getSource().getDatabase().getName());
+        assertEquals("HAMAP-Rule", eviId.getEvidenceCrossReference().getDatabase().getName());
         assertEquals("ECO:0000255|HAMAP-Rule:MF_00957", eviId.getValue());
     }
 
@@ -399,12 +399,12 @@ class CCCatalyticActivityParserTest {
 
         assertEquals(reactionName, reaction.getName());
         assertEquals("1.1.1.271", reaction.getEcNumber().getValue());
-        List<CrossReference<ReactionDatabase>> xrefs = reaction.getReactionReferences();
+        List<CrossReference<ReactionDatabase>> xrefs = reaction.getReactionCrossReferences();
         assertEquals(0, xrefs.size());
         List<Evidence> eviIds = reaction.getEvidences();
         assertEquals(2, eviIds.size());
         Evidence eviId = eviIds.get(1);
-        assertEquals("PubMed", eviId.getSource().getDatabase().getName());
+        assertEquals("PubMed", eviId.getEvidenceCrossReference().getDatabase().getName());
         assertEquals("ECO:0000269|PubMed:10480878", eviId.getValue());
     }
 
@@ -428,12 +428,12 @@ class CCCatalyticActivityParserTest {
 
         assertEquals(reactionName, reaction.getName());
         assertEquals("1.1.1.n271", reaction.getEcNumber().getValue());
-        List<CrossReference<ReactionDatabase>> xrefs = reaction.getReactionReferences();
+        List<CrossReference<ReactionDatabase>> xrefs = reaction.getReactionCrossReferences();
         assertEquals(0, xrefs.size());
         List<Evidence> eviIds = reaction.getEvidences();
         assertEquals(2, eviIds.size());
         Evidence eviId = eviIds.get(1);
-        assertEquals("PubMed", eviId.getSource().getDatabase().getName());
+        assertEquals("PubMed", eviId.getEvidenceCrossReference().getDatabase().getName());
         assertEquals("ECO:0000269|PubMed:10480878", eviId.getValue());
     }
 }

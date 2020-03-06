@@ -16,11 +16,12 @@ import org.uniprot.core.CrossReference;
  */
 public interface Citation extends Serializable {
 
-    List<CrossReference<CitationDatabase>> getCitationXrefs();
+    List<CrossReference<CitationDatabase>> getCitationCrossReferences();
 
-    Optional<CrossReference<CitationDatabase>> getCitationXrefsByType(CitationDatabase type);
+    Optional<CrossReference<CitationDatabase>> getCitationCrossReferenceByType(
+            CitationDatabase type);
 
-    boolean hasCitationXrefs();
+    boolean hasCitationCrossReferences();
 
     List<String> getAuthoringGroups();
 

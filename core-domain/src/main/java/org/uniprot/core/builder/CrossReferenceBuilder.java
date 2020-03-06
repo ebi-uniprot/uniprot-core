@@ -15,7 +15,7 @@ public class CrossReferenceBuilder<T extends Database>
         extends AbstractCrossReferenceBuilder<CrossReferenceBuilder<T>, T, CrossReference<T>> {
     @Override
     public @Nonnull CrossReference<T> build() {
-        return new CrossReferenceImpl<>(databaseType, id, properties);
+        return new CrossReferenceImpl<>(database, id, properties);
     }
 
     @Override

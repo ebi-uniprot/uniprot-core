@@ -97,12 +97,12 @@ class ProteomeEntryMapTest {
         List<CrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
         CrossReference<ProteomeDatabase> xref1 =
                 new CrossReferenceBuilder<ProteomeDatabase>()
-                        .databaseType(ProteomeDatabase.GENOME_ACCESSION)
+                        .database(ProteomeDatabase.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
         CrossReference<ProteomeDatabase> xref2 =
                 new CrossReferenceBuilder<ProteomeDatabase>()
-                        .databaseType(ProteomeDatabase.GENOME_ANNOTATION)
+                        .database(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
         xrefs.add(xref1);
@@ -158,10 +158,10 @@ class ProteomeEntryMapTest {
                         .modified(modified)
                         .proteomeType(ProteomeType.REFERENCE)
                         .strain("some Strain")
-                        .dbXReferencesSet(xrefs)
+                        .proteomeCrossReferencesSet(xrefs)
                         .taxonLineagesAdd(taxon1)
                         .taxonLineagesAdd(taxon2)
-                        .referencesSet(Collections.emptyList())
+                        .citationsSet(Collections.emptyList())
                         .superkingdom(Superkingdom.EUKARYOTA)
                         .componentsSet(components)
                         .redundantProteomesSet(redundantProteomes)

@@ -85,7 +85,7 @@ class UniProtEntryIT {
                         .geneLocationsSet(
                                 Collections.singletonList(GeneLocationTest.getGeneLocation()))
                         .referencesSet(UniProtReferenceTest.getUniProtReferences())
-                        .databaseCrossReferencesSet(
+                        .uniProtCrossReferencesSet(
                                 Collections.singletonList(
                                         UniProtCrossReferenceTest.getUniProtDBCrossReference()))
                         .sequence(SequenceTest.getSequence())

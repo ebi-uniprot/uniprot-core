@@ -28,7 +28,7 @@ public class CrossReferenceConverter
     public CrossReference<ProteomeDatabase> fromXml(DbReferenceType xmlObj) {
         CrossReferenceBuilder<ProteomeDatabase> builder =
                 new CrossReferenceBuilder<ProteomeDatabase>()
-                        .databaseType(fromXml(xmlObj.getType()))
+                        .database(fromXml(xmlObj.getType()))
                         .id(xmlObj.getId());
         builder.propertiesSet(
                 xmlObj.getProperty().stream()

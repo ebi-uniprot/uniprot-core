@@ -43,7 +43,7 @@ class DiseaseConverterTest {
                 .diseaseId("Cystathioninuria")
                 .description(description)
                 .diseaseAc("DI-01465")
-                .reference(createDBCrossReference(DiseaseDatabase.MIM, "219500"))
+                .diseaseCrossReference(createDBCrossReference(DiseaseDatabase.MIM, "219500"))
                 .evidencesSet(evidences);
         Disease disease = builder.build();
         DiseaseConverter converter = new DiseaseConverter();
@@ -58,6 +58,6 @@ class DiseaseConverterTest {
 
     private CrossReference<DiseaseDatabase> createDBCrossReference(
             DiseaseDatabase type, String id) {
-        return new CrossReferenceBuilder<DiseaseDatabase>().databaseType(type).id(id).build();
+        return new CrossReferenceBuilder<DiseaseDatabase>().database(type).id(id).build();
     }
 }

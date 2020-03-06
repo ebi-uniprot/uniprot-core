@@ -13,7 +13,7 @@ public final class JournalArticleBuilder
         return new JournalArticleImpl(
                 authoringGroups,
                 authors,
-                citationXrefs,
+                citationCrossReferences,
                 title,
                 publicationDate,
                 journalName,

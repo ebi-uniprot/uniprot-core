@@ -57,7 +57,7 @@ class UniParcCrossReferenceMapTest {
         UniParcCrossReference xref =
                 new UniParcCrossReferenceBuilder()
                         .versionI(3)
-                        .databaseType(UniParcDatabase.SWISSPROT)
+                        .database(UniParcDatabase.SWISSPROT)
                         .id("P12345")
                         .version(7)
                         .active(true)
@@ -75,7 +75,7 @@ class UniParcCrossReferenceMapTest {
         UniParcCrossReference xref2 =
                 new UniParcCrossReferenceBuilder()
                         .versionI(3)
-                        .databaseType(UniParcDatabase.TREMBL)
+                        .database(UniParcDatabase.TREMBL)
                         .id("P12347")
                         .version(2)
                         .active(false)

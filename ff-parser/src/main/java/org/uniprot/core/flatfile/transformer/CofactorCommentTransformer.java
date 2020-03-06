@@ -59,7 +59,7 @@ public class CofactorCommentTransformer implements CommentTransformer<CofactorCo
                 String xref = ref.substring(dbTypeSeperator + 1, ref.length());
                 CrossReference<CofactorDatabase> reference =
                         new CrossReferenceBuilder<CofactorDatabase>()
-                                .databaseType(CofactorDatabase.typeOf(dbType))
+                                .database(CofactorDatabase.typeOf(dbType))
                                 .id(xref)
                                 .build();
                 List<Evidence> evidences = new ArrayList<>();
@@ -70,7 +70,7 @@ public class CofactorCommentTransformer implements CommentTransformer<CofactorCo
                 Cofactor cofactor =
                         new CofactorBuilder()
                                 .name(name)
-                                .reference(reference)
+                                .cofactorCrossReference(reference)
                                 .evidencesSet(evidences)
                                 .build();
                 cofactors.add(cofactor);

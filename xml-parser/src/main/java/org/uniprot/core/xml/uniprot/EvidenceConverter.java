@@ -44,8 +44,8 @@ public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
     public EvidenceType toXml(Evidence uniObj) {
         EvidenceType xmlObj = xmlUniprotFactory.createEvidenceType();
         xmlObj.setType(uniObj.getEvidenceCode().getCode());
-        if (uniObj.getSource() != null) {
-            xmlObj.setSource(xrefConverter.toXml(uniObj.getSource()));
+        if (uniObj.getEvidenceCrossReference() != null) {
+            xmlObj.setSource(xrefConverter.toXml(uniObj.getEvidenceCrossReference()));
         }
 
         xmlObj.setKey(BigInteger.valueOf(1)); // set default key
@@ -70,13 +70,13 @@ public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
         public CrossReference<EvidenceDatabase> fromXml(SourceType xmlObj) {
             if (xmlObj.getDbReference() != null) {
                 return new CrossReferenceBuilder<EvidenceDatabase>()
-                        .databaseType(new EvidenceDatabase(xmlObj.getDbReference().getType()))
+                        .database(new EvidenceDatabase(xmlObj.getDbReference().getType()))
                         .id(xmlObj.getDbReference().getId())
                         .build();
             } else {
                 String attr = REF + xmlObj.getRef().toString();
                 return new CrossReferenceBuilder<EvidenceDatabase>()
-                        .databaseType(new EvidenceDatabase(REFERENCE))
+                        .database(new EvidenceDatabase(REFERENCE))
                         .id(attr)
                         .build();
             }

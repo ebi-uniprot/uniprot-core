@@ -34,7 +34,7 @@ public class JournalArticleConverter implements Converter<ReferenceType, Journal
                 .lastPage(journal.getLast())
                 .volume(journal.getVolume())
                 .journalName(journal.getName())
-                .citationXrefsSet(
+                .citationCrossReferencesSet(
                         journal.getDbReference().stream()
                                 .map(this::fromXml)
                                 .collect(Collectors.toList()));
@@ -51,7 +51,7 @@ public class JournalArticleConverter implements Converter<ReferenceType, Journal
         xmlJournal.setTitle(uniObj.getTitle());
         xmlJournal.setName(uniObj.getJournal().getName());
         xmlJournal.setVolume(uniObj.getVolume());
-        uniObj.getCitationXrefs().stream()
+        uniObj.getCitationCrossReferences().stream()
                 .map(this::toXml)
                 .forEach(val -> xmlJournal.getDbReference().add(val));
         xmlCitation.setJournal(xmlJournal);
@@ -61,7 +61,7 @@ public class JournalArticleConverter implements Converter<ReferenceType, Journal
     private CrossReference<CitationDatabase> fromXml(DbReferenceType xmlRef) {
         CitationDatabase type = CitationDatabase.typeOf(xmlRef.getType());
         return new CrossReferenceBuilder<CitationDatabase>()
-                .databaseType(type)
+                .database(type)
                 .id(xmlRef.getId())
                 .build();
     }

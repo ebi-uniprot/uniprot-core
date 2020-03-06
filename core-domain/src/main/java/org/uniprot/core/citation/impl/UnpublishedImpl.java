@@ -18,14 +18,14 @@ public class UnpublishedImpl extends AbstractCitationImpl implements Unpublished
     public UnpublishedImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<CrossReference<CitationDatabase>> citationXrefs,
+            List<CrossReference<CitationDatabase>> citationCrossReferences,
             String title,
             PublicationDate publicationDate) {
         super(
                 CitationType.UNPUBLISHED,
                 authoringGroup,
                 authors,
-                citationXrefs,
+                citationCrossReferences,
                 title,
                 publicationDate);
     }

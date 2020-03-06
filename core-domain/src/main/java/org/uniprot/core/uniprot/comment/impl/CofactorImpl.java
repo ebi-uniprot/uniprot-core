@@ -14,7 +14,7 @@ public class CofactorImpl implements Cofactor {
     private static final long serialVersionUID = -1446627008409869566L;
     private String name;
     private List<Evidence> evidences;
-    private CrossReference<CofactorDatabase> cofactorReference;
+    private CrossReference<CofactorDatabase> cofactorCrossReference;
 
     // no arg constructor for JSON deserialization
     CofactorImpl() {
@@ -23,15 +23,11 @@ public class CofactorImpl implements Cofactor {
 
     public CofactorImpl(
             String name,
-            CrossReference<CofactorDatabase> cofactorReference,
+            CrossReference<CofactorDatabase> cofactorCrossReference,
             List<Evidence> evidences) {
         this.name = name;
-        if ((evidences == null) || evidences.isEmpty()) {
-            this.evidences = Collections.emptyList();
-        } else {
-            this.evidences = Collections.unmodifiableList(evidences);
-        }
-        this.cofactorReference = cofactorReference;
+        this.evidences = Utils.unmodifiableList(evidences);
+        this.cofactorCrossReference = cofactorCrossReference;
     }
 
     @Override
@@ -50,8 +46,8 @@ public class CofactorImpl implements Cofactor {
     }
 
     @Override
-    public CrossReference<CofactorDatabase> getCofactorReference() {
-        return cofactorReference;
+    public CrossReference<CofactorDatabase> getCofactorCrossReference() {
+        return cofactorCrossReference;
     }
 
     @Override
@@ -60,8 +56,8 @@ public class CofactorImpl implements Cofactor {
     }
 
     @Override
-    public boolean hasCofactorReference() {
-        return this.cofactorReference != null;
+    public boolean hasCofactorCrossReference() {
+        return this.cofactorCrossReference != null;
     }
 
     @Override
@@ -71,11 +67,11 @@ public class CofactorImpl implements Cofactor {
         CofactorImpl cofactor = (CofactorImpl) o;
         return Objects.equals(name, cofactor.name)
                 && Objects.equals(evidences, cofactor.evidences)
-                && Objects.equals(cofactorReference, cofactor.cofactorReference);
+                && Objects.equals(cofactorCrossReference, cofactor.cofactorCrossReference);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, evidences, cofactorReference);
+        return Objects.hash(name, evidences, cofactorCrossReference);
     }
 }

@@ -20,11 +20,12 @@ public final class DiseaseBuilder implements Builder<Disease> {
     private String diseaseAc;
     private String acronym;
     private String description;
-    private CrossReference<DiseaseDatabase> reference;
+    private CrossReference<DiseaseDatabase> diseaseCrossReference;
     private List<Evidence> evidences = new ArrayList<>();
 
     public @Nonnull Disease build() {
-        return new DiseaseImpl(diseaseId, diseaseAc, acronym, description, reference, evidences);
+        return new DiseaseImpl(
+                diseaseId, diseaseAc, acronym, description, diseaseCrossReference, evidences);
     }
 
     public static @Nonnull DiseaseBuilder from(@Nonnull Disease instance) {
@@ -34,7 +35,7 @@ public final class DiseaseBuilder implements Builder<Disease> {
                 .diseaseAc(instance.getDiseaseAccession())
                 .diseaseId(instance.getDiseaseId())
                 .evidencesSet(instance.getEvidences())
-                .reference(instance.getReference());
+                .diseaseCrossReference(instance.getDiseaseCrossReference());
     }
 
     public @Nonnull DiseaseBuilder diseaseId(String diseaseId) {
@@ -67,8 +68,9 @@ public final class DiseaseBuilder implements Builder<Disease> {
         return this;
     }
 
-    public @Nonnull DiseaseBuilder reference(CrossReference<DiseaseDatabase> reference) {
-        this.reference = reference;
+    public @Nonnull DiseaseBuilder diseaseCrossReference(
+            CrossReference<DiseaseDatabase> diseaseCrossReference) {
+        this.diseaseCrossReference = diseaseCrossReference;
         return this;
     }
 }

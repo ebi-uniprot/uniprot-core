@@ -21,11 +21,17 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
     public PatentImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<CrossReference<CitationDatabase>> citationXrefs,
+            List<CrossReference<CitationDatabase>> citationCrossReferences,
             String title,
             PublicationDate publicationDate,
             String patentNumber) {
-        super(CitationType.PATENT, authoringGroup, authors, citationXrefs, title, publicationDate);
+        super(
+                CitationType.PATENT,
+                authoringGroup,
+                authors,
+                citationCrossReferences,
+                title,
+                publicationDate);
         this.patentNumber = Utils.emptyOrString(patentNumber);
     }
 

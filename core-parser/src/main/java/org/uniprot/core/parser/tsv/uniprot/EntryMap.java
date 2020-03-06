@@ -45,7 +45,7 @@ public class EntryMap implements NamedValueMap {
             addData(map, new EntryEncodedMap(entry.getGeneLocations()));
         }
         if (EntryCrossReferenceMap.contains(fields)) {
-            addData(map, new EntryCrossReferenceMap(entry.getDatabaseCrossReferences()));
+            addData(map, new EntryCrossReferenceMap(entry.getUniProtCrossReferences()));
         }
 
         if (EntryTypeMap.contains(fields)) {

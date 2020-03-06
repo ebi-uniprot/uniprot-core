@@ -30,7 +30,7 @@ class DiseaseBuilderTest {
         Disease disease = builder.diseaseId(diseaseId).build();
         assertEquals(diseaseId, disease.getDiseaseId());
         assertNull(disease.getDescription());
-        assertNull(disease.getReference());
+        assertNull(disease.getDiseaseCrossReference());
         assertNull(disease.getAcronym());
     }
 
@@ -41,7 +41,7 @@ class DiseaseBuilderTest {
         Disease disease = builder.diseaseId(diseaseId).acronym("someAcron").build();
         assertEquals(diseaseId, disease.getDiseaseId());
         assertNull(disease.getDescription());
-        assertNull(disease.getReference());
+        assertNull(disease.getDiseaseCrossReference());
         assertEquals("someAcron", disease.getAcronym());
     }
 
@@ -61,7 +61,7 @@ class DiseaseBuilderTest {
                         .build();
         assertEquals(diseaseId, disease.getDiseaseId());
         assertEquals(diseaseDescription, disease.getDescription());
-        assertNull(disease.getReference());
+        assertNull(disease.getDiseaseCrossReference());
         assertEquals("someAcron", disease.getAcronym());
     }
 
@@ -81,11 +81,11 @@ class DiseaseBuilderTest {
                         .acronym("someAcron")
                         .description(diseaseDescription)
                         .evidencesSet(evidences)
-                        .reference(reference)
+                        .diseaseCrossReference(reference)
                         .build();
         assertEquals(diseaseId, disease.getDiseaseId());
         assertEquals(diseaseDescription, disease.getDescription());
-        assertEquals(reference, disease.getReference());
+        assertEquals(reference, disease.getDiseaseCrossReference());
         assertEquals("someAcron", disease.getAcronym());
     }
 

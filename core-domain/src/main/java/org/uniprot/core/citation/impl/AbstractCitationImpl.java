@@ -13,7 +13,7 @@ public abstract class AbstractCitationImpl implements Citation {
     private CitationType citationType;
     private List<String> authoringGroup;
     private List<Author> authors;
-    private List<CrossReference<CitationDatabase>> citationXrefs;
+    private List<CrossReference<CitationDatabase>> citationCrossReferences;
     private String title;
     private PublicationDate publicationDate;
 
@@ -21,31 +21,33 @@ public abstract class AbstractCitationImpl implements Citation {
             CitationType citationType,
             List<String> authoringGroup,
             List<Author> authors,
-            List<CrossReference<CitationDatabase>> citationXrefs,
+            List<CrossReference<CitationDatabase>> citationCrossReferences,
             String title,
             PublicationDate publicationDate) {
         this.citationType = citationType;
         this.authoringGroup = Utils.unmodifiableList(authoringGroup);
         this.authors = Utils.unmodifiableList(authors);
-        this.citationXrefs = Utils.unmodifiableList(citationXrefs);
+        this.citationCrossReferences = Utils.unmodifiableList(citationCrossReferences);
         this.title = Utils.emptyOrString(title);
         this.publicationDate = publicationDate;
     }
 
     @Override
-    public List<CrossReference<CitationDatabase>> getCitationXrefs() {
-        return citationXrefs;
+    public List<CrossReference<CitationDatabase>> getCitationCrossReferences() {
+        return citationCrossReferences;
     }
 
     @Override
-    public Optional<CrossReference<CitationDatabase>> getCitationXrefsByType(
-            CitationDatabase type) {
-        return citationXrefs.stream().filter(xref -> xref.getDatabase() == type).findAny();
+    public Optional<CrossReference<CitationDatabase>> getCitationCrossReferenceByType(
+            CitationDatabase citationDatabase) {
+        return citationCrossReferences.stream()
+                .filter(xref -> xref.getDatabase() == citationDatabase)
+                .findAny();
     }
 
     @Override
-    public boolean hasCitationXrefs() {
-        return citationXrefs != null;
+    public boolean hasCitationCrossReferences() {
+        return citationCrossReferences != null;
     }
 
     @Override
@@ -100,7 +102,11 @@ public abstract class AbstractCitationImpl implements Citation {
         result = prime * result + ((authoringGroup == null) ? 0 : authoringGroup.hashCode());
         result = prime * result + ((authors == null) ? 0 : authors.hashCode());
         result = prime * result + ((citationType == null) ? 0 : citationType.hashCode());
-        result = prime * result + ((citationXrefs == null) ? 0 : citationXrefs.hashCode());
+        result =
+                prime * result
+                        + ((citationCrossReferences == null)
+                                ? 0
+                                : citationCrossReferences.hashCode());
         result = prime * result + ((publicationDate == null) ? 0 : publicationDate.hashCode());
         result = prime * result + ((title == null) ? 0 : title.hashCode());
         return result;
@@ -115,7 +121,7 @@ public abstract class AbstractCitationImpl implements Citation {
         return Objects.equals(this.authoringGroup, other.authoringGroup)
                 && Objects.equals(this.authors, other.authors)
                 && Objects.equals(this.citationType, other.citationType)
-                && Objects.equals(this.citationXrefs, other.citationXrefs)
+                && Objects.equals(this.citationCrossReferences, other.citationCrossReferences)
                 && Objects.equals(this.publicationDate, other.publicationDate)
                 && Objects.equals(this.title, other.title);
     }

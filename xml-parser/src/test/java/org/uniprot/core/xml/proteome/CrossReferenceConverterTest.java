@@ -30,7 +30,7 @@ class CrossReferenceConverterTest {
                 new CrossReferenceBuilder<ProteomeDatabase>();
 
         CrossReference<ProteomeDatabase> xref =
-                builder.databaseType(ProteomeDatabase.GENOME_ASSEMBLY).id("AGA21341.1").build();
+                builder.database(ProteomeDatabase.GENOME_ASSEMBLY).id("AGA21341.1").build();
         DbReferenceType xml = converter.toXml(xref);
 
         CrossReference<ProteomeDatabase> converted = converter.fromXml(xml);

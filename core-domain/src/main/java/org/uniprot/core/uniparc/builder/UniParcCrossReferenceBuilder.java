@@ -25,7 +25,7 @@ public class UniParcCrossReferenceBuilder
     @Override
     public @Nonnull UniParcCrossReference build() {
         return new UniParcCrossReferenceImpl(
-                databaseType, id, properties, versionI, version, active, created, lastUpdated);
+                database, id, properties, versionI, version, active, created, lastUpdated);
     }
 
     public @Nonnull UniParcCrossReferenceBuilder versionI(int versionI) {

@@ -257,7 +257,7 @@ public class UniProtFlatfileWriter implements FlatfileWriter<UniProtEntry> {
 
     private static FFLine buildDRLines(UniProtEntry entry, boolean showEvidence) {
         FFLine drLines = FFLines.create();
-        drLines.add(drLineBuilder.build(entry.getDatabaseCrossReferences()));
+        drLines.add(drLineBuilder.build(entry.getUniProtCrossReferences()));
 
         // add **PROSITE if it exists
         InternalSection internalSection = entry.getInternalSection();

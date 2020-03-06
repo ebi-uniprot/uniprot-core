@@ -14,7 +14,7 @@ public interface Feature extends HasEvidences {
 
     AlternativeSequence getAlternativeSequence();
 
-    CrossReference<FeatureDatabase> getDbXref();
+    CrossReference<FeatureDatabase> getFeatureCrossReference();
 
     boolean hasLocation();
 
@@ -24,5 +24,5 @@ public interface Feature extends HasEvidences {
 
     boolean hasAlternativeSequence();
 
-    boolean hasDbXref();
+    boolean hasFeatureCrossReference();
 }

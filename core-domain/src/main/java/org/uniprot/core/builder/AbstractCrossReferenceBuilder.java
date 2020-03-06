@@ -22,7 +22,7 @@ public abstract class AbstractCrossReferenceBuilder<
                 T extends Database,
                 D extends CrossReference<T>>
         implements Builder<D> {
-    protected T databaseType;
+    protected T database;
     protected String id;
     protected List<Property> properties = new ArrayList<>();
 
@@ -36,11 +36,11 @@ public abstract class AbstractCrossReferenceBuilder<
                     @Nonnull AbstractCrossReferenceBuilder<B, T, D> builder, @Nonnull D instance) {
         builder.propertiesSet(instance.getProperties())
                 .id(instance.getId())
-                .databaseType(instance.getDatabase());
+                .database(instance.getDatabase());
     }
 
-    public @Nonnull B databaseType(T type) {
-        this.databaseType = type;
+    public @Nonnull B database(T database) {
+        this.database = database;
         return getThis();
     }
 

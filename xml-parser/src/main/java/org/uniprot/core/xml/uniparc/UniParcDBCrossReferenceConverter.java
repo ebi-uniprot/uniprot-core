@@ -33,7 +33,7 @@ public class UniParcDBCrossReferenceConverter
     @Override
     public UniParcCrossReference fromXml(DbReferenceType xmlObj) {
         UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder();
-        builder.databaseType(UniParcDatabase.typeOf(xmlObj.getType()))
+        builder.database(UniParcDatabase.typeOf(xmlObj.getType()))
                 .id(xmlObj.getId())
                 .active(xmlObj.getActive().equals("Y"))
                 .versionI(xmlObj.getVersionI())

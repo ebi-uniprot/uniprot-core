@@ -31,7 +31,7 @@ class DiseaseCommentBuilderTest {
                         .acronym("someAcron")
                         .evidencesSet(evidences)
                         .description(description)
-                        .reference(reference)
+                        .diseaseCrossReference(reference)
                         .build();
         DiseaseCommentBuilder commentBuilder = new DiseaseCommentBuilder();
 
@@ -58,7 +58,7 @@ class DiseaseCommentBuilderTest {
                         .acronym("someAcron")
                         .evidencesSet(evidences)
                         .description(description)
-                        .reference(reference)
+                        .diseaseCrossReference(reference)
                         .build();
         Note note = new NoteBuilder(createEvidenceValuesWithoutEvidences()).build();
         DiseaseCommentBuilder commentBuilder = new DiseaseCommentBuilder();

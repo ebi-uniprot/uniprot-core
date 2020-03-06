@@ -9,17 +9,17 @@ import org.junit.jupiter.api.Test;
  * @author jluo
  * @date: 30 Aug 2019
  */
-class EvidenceTypesTest {
+class EvidenceDatabaseTypesTest {
 
     @Test
     void testGetType() {
         String name = "EMBL";
-        EvidenceDatabaseDetail emblEvidence = EvidenceTypes.INSTANCE.getType(name);
+        EvidenceDatabaseDetail emblEvidence = EvidenceDatabaseTypes.INSTANCE.getType(name);
         assertNotNull(emblEvidence);
     }
 
     @Test
     void IllegalArgumentExceptionWithTypeNotFound() {
-        assertThrows(IllegalArgumentException.class, () -> EvidenceTypes.INSTANCE.getType(null));
+        assertThrows(IllegalArgumentException.class, () -> EvidenceDatabaseTypes.INSTANCE.getType(null));
     }
 }

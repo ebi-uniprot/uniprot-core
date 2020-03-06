@@ -64,13 +64,13 @@ public class LiteratureTest {
     public static Literature getCompleteLiterature() {
         CrossReference<CitationDatabase> pubmed =
                 new CrossReferenceBuilder<CitationDatabase>()
-                        .databaseType(CitationDatabase.PUBMED)
+                        .database(CitationDatabase.PUBMED)
                         .id("12345")
                         .build();
 
         CrossReference<CitationDatabase> doi =
                 new CrossReferenceBuilder<CitationDatabase>()
-                        .databaseType(CitationDatabase.DOI)
+                        .database(CitationDatabase.DOI)
                         .id("doiId")
                         .build();
         return new LiteratureBuilder()
@@ -84,8 +84,8 @@ public class LiteratureTest {
                 .title("Leo book tittle")
                 .completeAuthorList(true)
                 .literatureAbstract("the abstract")
-                .citationXrefsAdd(pubmed)
-                .citationXrefsAdd(doi)
+                .citationCrossReferencesAdd(pubmed)
+                .citationCrossReferencesAdd(doi)
                 .build();
     }
 }

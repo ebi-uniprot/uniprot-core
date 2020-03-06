@@ -17,10 +17,10 @@ public class ComponentImpl implements Component {
     private int proteinCount;
     private ComponentType type;
 
-    private List<CrossReference<ProteomeDatabase>> dbXReferences;
+    private List<CrossReference<ProteomeDatabase>> proteomeCrossReferences;
 
     protected ComponentImpl() {
-        dbXReferences = Collections.emptyList();
+        proteomeCrossReferences = Collections.emptyList();
     }
 
     public ComponentImpl(
@@ -28,12 +28,12 @@ public class ComponentImpl implements Component {
             String description,
             int proteinCount,
             ComponentType type,
-            List<CrossReference<ProteomeDatabase>> dbXReferences) {
+            List<CrossReference<ProteomeDatabase>> proteomeCrossReferences) {
         this.name = name;
         this.description = description;
         this.proteinCount = proteinCount;
         this.type = type;
-        this.dbXReferences = Utils.unmodifiableList(dbXReferences);
+        this.proteomeCrossReferences = Utils.unmodifiableList(proteomeCrossReferences);
     }
 
     @Override
@@ -47,8 +47,8 @@ public class ComponentImpl implements Component {
     }
 
     @Override
-    public List<CrossReference<ProteomeDatabase>> getDbXReferences() {
-        return dbXReferences;
+    public List<CrossReference<ProteomeDatabase>> getProteomeCrossReferences() {
+        return proteomeCrossReferences;
     }
 
     @Override
@@ -63,7 +63,7 @@ public class ComponentImpl implements Component {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, proteinCount, dbXReferences, type);
+        return Objects.hash(name, description, proteinCount, proteomeCrossReferences, type);
     }
 
     @Override
@@ -76,6 +76,6 @@ public class ComponentImpl implements Component {
                 && Objects.equals(description, other.description)
                 && Objects.equals(proteinCount, other.proteinCount)
                 && Objects.equals(type, other.type)
-                && Objects.equals(dbXReferences, other.dbXReferences);
+                && Objects.equals(proteomeCrossReferences, other.proteomeCrossReferences);
     }
 }

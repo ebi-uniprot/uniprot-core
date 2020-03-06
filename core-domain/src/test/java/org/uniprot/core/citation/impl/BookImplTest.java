@@ -23,7 +23,7 @@ class BookImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         CrossReference<CitationDatabase> XREF1 =
                 new CrossReferenceBuilder<CitationDatabase>()
-                        .databaseType(CitationDatabase.PUBMED)
+                        .database(CitationDatabase.PUBMED)
                         .id("id1")
                         .build();
         Book impl =
@@ -53,7 +53,7 @@ class BookImplTest {
         assertTrue(impl.hasAuthoringGroup());
         assertTrue(impl.hasAuthors());
         assertTrue(impl.hasPublicationDate());
-        assertTrue(impl.getCitationXrefsByType(CitationDatabase.PUBMED).isPresent());
+        assertTrue(impl.getCitationCrossReferenceByType(CitationDatabase.PUBMED).isPresent());
 
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());

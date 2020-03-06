@@ -76,11 +76,13 @@ class CatalyticActivityCommentConverterTest {
 
         Reaction reaction = converted.getReaction();
         assertEquals("another text", reaction.getName());
-        assertEquals(2, reaction.getReactionReferences().size());
+        assertEquals(2, reaction.getReactionCrossReferences().size());
         verifyReactionReference(
-                reaction.getReactionReferences().get(0), ReactionDatabase.CHEBI, "CHEBI:29105");
+                reaction.getReactionCrossReferences().get(0),
+                ReactionDatabase.CHEBI,
+                "CHEBI:29105");
         verifyReactionReference(
-                reaction.getReactionReferences().get(1), ReactionDatabase.RHEA, "RHEA:125");
+                reaction.getReactionCrossReferences().get(1), ReactionDatabase.RHEA, "RHEA:125");
         assertEquals("1.2.1.32", reaction.getEcNumber().getValue());
         List<Evidence> evids = reaction.getEvidences();
         assertEquals(2, evids.size());
@@ -94,7 +96,7 @@ class CatalyticActivityCommentConverterTest {
         assertEquals(PhysiologicalDirectionType.RIGHT_TO_LEFT, physioReaction.getDirectionType());
 
         verifyReactionReference(
-                physioReaction.getReactionReference(), ReactionDatabase.RHEA, "RHEA:125");
+                physioReaction.getReactionCrossReference(), ReactionDatabase.RHEA, "RHEA:125");
         evids = physioReaction.getEvidences();
         assertEquals(2, evids.size());
         assertEquals("ECO:0000269|PubMed:9060646", evids.get(0).getValue());
@@ -249,7 +251,7 @@ class CatalyticActivityCommentConverterTest {
 
         return new ReactionBuilder()
                 .name(name)
-                .reactionReferencesSet(references)
+                .reactionCrossReferencesSet(references)
                 .ecNumber(ecNumber)
                 .evidencesSet(evids)
                 .build();
@@ -268,7 +270,7 @@ class CatalyticActivityCommentConverterTest {
         evids.add(evidence2);
         return new ReactionBuilder()
                 .name(name)
-                .reactionReferencesSet(references)
+                .reactionCrossReferencesSet(references)
                 .ecNumber(ecNumber)
                 .evidencesSet(evids)
                 .build();
@@ -283,12 +285,12 @@ class CatalyticActivityCommentConverterTest {
         evids.add(evidence2);
         return new PhysiologicalReactionBuilder()
                 .directionType(type)
-                .reactionReference(createReference(ReactionDatabase.RHEA, rheaId))
+                .reactionCrossReference(createReference(ReactionDatabase.RHEA, rheaId))
                 .evidencesSet(evids)
                 .build();
     }
 
     private CrossReference<ReactionDatabase> createReference(ReactionDatabase type, String rheaId) {
-        return new CrossReferenceBuilder<ReactionDatabase>().databaseType(type).id(rheaId).build();
+        return new CrossReferenceBuilder<ReactionDatabase>().database(type).id(rheaId).build();
     }
 }

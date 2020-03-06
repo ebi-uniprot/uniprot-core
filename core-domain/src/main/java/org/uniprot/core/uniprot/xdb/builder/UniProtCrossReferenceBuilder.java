@@ -28,7 +28,7 @@ public class UniProtCrossReferenceBuilder
 
     @Override
     public @Nonnull UniProtCrossReference build() {
-        return new UniProtCrossReferenceImpl(databaseType, id, properties, isoformId, evidences);
+        return new UniProtCrossReferenceImpl(database, id, properties, isoformId, evidences);
     }
 
     public static @Nonnull UniProtCrossReferenceBuilder from(

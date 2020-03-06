@@ -741,44 +741,42 @@ class UniProtEntryBuilderTest {
         @Test
         void canAddSingle() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.from(minEntry)
-                            .databaseCrossReferencesAdd(reference)
-                            .build();
-            assertNotNull(obj.getDatabaseCrossReferences());
-            assertFalse(obj.getDatabaseCrossReferences().isEmpty());
-            assertTrue(obj.hasDatabaseCrossReferences());
+                    UniProtEntryBuilder.from(minEntry).uniProtCrossReferencesAdd(reference).build();
+            assertNotNull(obj.getUniProtCrossReferences());
+            assertFalse(obj.getUniProtCrossReferences().isEmpty());
+            assertTrue(obj.hasUniProtCrossReferences());
         }
 
         @Test
         void null_singleAdd_willBeIgnore() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.from(minEntry).databaseCrossReferencesAdd(null).build();
-            assertNotNull(obj.getDatabaseCrossReferences());
-            assertTrue(obj.getDatabaseCrossReferences().isEmpty());
-            assertFalse(obj.hasDatabaseCrossReferences());
+                    UniProtEntryBuilder.from(minEntry).uniProtCrossReferencesAdd(null).build();
+            assertNotNull(obj.getUniProtCrossReferences());
+            assertTrue(obj.getUniProtCrossReferences().isEmpty());
+            assertFalse(obj.hasUniProtCrossReferences());
         }
 
         @Test
         void set_willConvertUnModifiable_toModifiable() {
             UniProtEntry obj =
                     UniProtEntryBuilder.from(minEntry)
-                            .databaseCrossReferencesSet(emptyList())
-                            .databaseCrossReferencesAdd(reference)
+                            .uniProtCrossReferencesSet(emptyList())
+                            .uniProtCrossReferencesAdd(reference)
                             .build();
-            assertNotNull(obj.getDatabaseCrossReferences());
-            assertFalse(obj.getDatabaseCrossReferences().isEmpty());
-            assertTrue(obj.hasDatabaseCrossReferences());
+            assertNotNull(obj.getUniProtCrossReferences());
+            assertFalse(obj.getUniProtCrossReferences().isEmpty());
+            assertTrue(obj.hasUniProtCrossReferences());
         }
 
         @Test
         void canSetList() {
             UniProtEntry obj =
                     UniProtEntryBuilder.from(minEntry)
-                            .databaseCrossReferencesSet(singletonList(reference))
+                            .uniProtCrossReferencesSet(singletonList(reference))
                             .build();
-            assertNotNull(obj.getDatabaseCrossReferences());
-            assertFalse(obj.getDatabaseCrossReferences().isEmpty());
-            assertTrue(obj.hasDatabaseCrossReferences());
+            assertNotNull(obj.getUniProtCrossReferences());
+            assertFalse(obj.getUniProtCrossReferences().isEmpty());
+            assertTrue(obj.hasUniProtCrossReferences());
         }
 
         @Test
@@ -786,12 +784,12 @@ class UniProtEntryBuilderTest {
             List<UniProtCrossReference> list = null;
             UniProtEntry obj =
                     UniProtEntryBuilder.from(minEntry)
-                            .databaseCrossReferencesAdd(reference)
-                            .databaseCrossReferencesSet(list)
+                            .uniProtCrossReferencesAdd(reference)
+                            .uniProtCrossReferencesSet(list)
                             .build();
-            assertNotNull(obj.getDatabaseCrossReferences());
-            assertTrue(obj.getDatabaseCrossReferences().isEmpty());
-            assertFalse(obj.hasDatabaseCrossReferences());
+            assertNotNull(obj.getUniProtCrossReferences());
+            assertTrue(obj.getUniProtCrossReferences().isEmpty());
+            assertFalse(obj.hasUniProtCrossReferences());
         }
     }
 

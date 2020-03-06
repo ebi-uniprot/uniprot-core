@@ -21,8 +21,8 @@ public final class EvidenceDatabase implements Database, Serializable {
         return name;
     }
 
-    public @Nonnull EvidenceDatabaseDetail getDetail() {
-        return EvidenceTypes.INSTANCE.getType(name);
+    public @Nonnull EvidenceDatabaseDetail getEvidenceDatabaseDetail() {
+        return EvidenceDatabaseTypes.INSTANCE.getType(name);
     }
 
     public boolean isReference() {

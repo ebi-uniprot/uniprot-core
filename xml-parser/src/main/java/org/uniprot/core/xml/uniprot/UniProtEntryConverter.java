@@ -97,7 +97,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
                         .map(referenceConverter::fromXml)
                         .collect(Collectors.toList()));
         activeEntryBuilder.commentsSet(fromXmlForComments(xmlEntry));
-        activeEntryBuilder.databaseCrossReferencesSet(
+        activeEntryBuilder.uniProtCrossReferencesSet(
                 xmlEntry.getDbReference().stream()
                         .filter(val -> !val.getType().equals("EC"))
                         .map(xrefConverter::fromXml)
@@ -136,7 +136,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
                 .addAll(descriptionConverter.toXmlDbReferences(entry.getProteinDescription()));
         xmlEntry.getDbReference()
                 .addAll(
-                        entry.getDatabaseCrossReferences().stream()
+                        entry.getUniProtCrossReferences().stream()
                                 .map(xrefConverter::toXml)
                                 .collect(Collectors.toList()));
         entry.getKeywords().forEach(val -> xmlEntry.getKeyword().add(keywordConverter.toXml(val)));

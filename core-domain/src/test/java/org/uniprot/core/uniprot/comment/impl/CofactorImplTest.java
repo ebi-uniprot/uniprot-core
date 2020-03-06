@@ -25,11 +25,11 @@ class CofactorImplTest {
         Cofactor cofactor =
                 new CofactorBuilder()
                         .name(name)
-                        .reference(reference)
+                        .cofactorCrossReference(reference)
                         .evidencesSet(createEvidences())
                         .build();
         assertEquals(name, cofactor.getName());
-        assertEquals(reference, cofactor.getCofactorReference());
+        assertEquals(reference, cofactor.getCofactorCrossReference());
         assertEquals(evidences, cofactor.getEvidences());
     }
 
@@ -40,11 +40,11 @@ class CofactorImplTest {
         Cofactor cofactor =
                 new CofactorBuilder()
                         .name(name)
-                        .reference(reference)
+                        .cofactorCrossReference(reference)
                         .evidencesSet(evidences)
                         .build();
         assertEquals(name, cofactor.getName());
-        assertEquals(reference, cofactor.getCofactorReference());
+        assertEquals(reference, cofactor.getCofactorCrossReference());
         assertEquals(evidences, cofactor.getEvidences());
     }
 
@@ -60,7 +60,7 @@ class CofactorImplTest {
         Cofactor obj = CofactorBuilder.from(impl).build();
 
         assertTrue(impl.hasName());
-        assertTrue(impl.hasCofactorReference());
+        assertTrue(impl.hasCofactorCrossReference());
 
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());

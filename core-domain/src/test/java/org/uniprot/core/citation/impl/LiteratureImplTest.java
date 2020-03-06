@@ -28,13 +28,13 @@ class LiteratureImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         CrossReference<CitationDatabase> XREF1 =
                 new CrossReferenceBuilder<CitationDatabase>()
-                        .databaseType(CitationDatabase.PUBMED)
+                        .database(CitationDatabase.PUBMED)
                         .id("12345")
                         .build();
 
         CrossReference<CitationDatabase> XREF2 =
                 new CrossReferenceBuilder<CitationDatabase>()
-                        .databaseType(CitationDatabase.DOI)
+                        .database(CitationDatabase.DOI)
                         .id("DoidId")
                         .build();
 

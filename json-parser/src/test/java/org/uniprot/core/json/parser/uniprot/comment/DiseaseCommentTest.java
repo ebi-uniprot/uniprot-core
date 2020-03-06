@@ -71,14 +71,14 @@ public class DiseaseCommentTest {
         DiseaseBuilder builder = new DiseaseBuilder();
         CrossReference<DiseaseDatabase> reference =
                 new CrossReferenceBuilder<DiseaseDatabase>()
-                        .databaseType(DiseaseDatabase.MIM)
+                        .database(DiseaseDatabase.MIM)
                         .id("3124")
                         .build();
         Disease disease =
                 builder.diseaseId("DiseaseEntry Id")
                         .acronym("someAcron")
                         .description("some description")
-                        .reference(reference)
+                        .diseaseCrossReference(reference)
                         .diseaseAc("DiseaseEntry AC")
                         .evidencesAdd(CreateUtils.createEvidence("ECO:0000256|PIRNR:PIRNR001362"))
                         .build();

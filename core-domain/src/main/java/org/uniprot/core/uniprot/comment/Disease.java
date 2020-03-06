@@ -63,7 +63,7 @@ public interface Disease extends HasEvidences {
 
     String getDescription();
 
-    CrossReference<DiseaseDatabase> getReference();
+    CrossReference<DiseaseDatabase> getDiseaseCrossReference();
 
     boolean hasDefinedDisease();
 
@@ -76,5 +76,5 @@ public interface Disease extends HasEvidences {
 
     boolean hasDescription();
 
-    boolean hasReference();
+    boolean hasDiseaseCrossReference();
 }

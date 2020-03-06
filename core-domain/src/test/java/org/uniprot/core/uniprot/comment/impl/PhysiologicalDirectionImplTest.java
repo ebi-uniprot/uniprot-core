@@ -20,15 +20,15 @@ class PhysiologicalDirectionImplTest {
         PhysiologicalReactionImpl reaction =
                 new PhysiologicalReactionBuilder()
                         .directionType(PhysiologicalDirectionType.LEFT_TO_RIGHT)
-                        .reactionReference(
+                        .reactionCrossReference(
                                 new CrossReferenceBuilder<ReactionDatabase>()
-                                        .databaseType(ReactionDatabase.RHEA)
+                                        .database(ReactionDatabase.RHEA)
                                         .id("RHEA:123")
                                         .build())
                         .evidencesSet(evidences)
                         .build();
 
         assertEquals(PhysiologicalDirectionType.LEFT_TO_RIGHT, reaction.getDirectionType());
-        assertEquals("RHEA:123", reaction.getReactionReference().getId());
+        assertEquals("RHEA:123", reaction.getReactionCrossReference().getId());
     }
 }

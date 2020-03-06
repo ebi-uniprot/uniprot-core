@@ -39,7 +39,7 @@ public class LiteratureImpl extends AbstractJournalArticleImpl implements Litera
     public LiteratureImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<CrossReference<CitationDatabase>> citationXrefs,
+            List<CrossReference<CitationDatabase>> citationCrossReferences,
             String title,
             PublicationDate publicationDate,
             String journalName,
@@ -52,7 +52,7 @@ public class LiteratureImpl extends AbstractJournalArticleImpl implements Litera
                 CitationType.LITERATURE,
                 authoringGroup,
                 authors,
-                citationXrefs,
+                citationCrossReferences,
                 title,
                 publicationDate,
                 journalName,
@@ -66,14 +66,14 @@ public class LiteratureImpl extends AbstractJournalArticleImpl implements Litera
     @Override
     public Long getPubmedId() {
         Optional<CrossReference<CitationDatabase>> result =
-                getCitationXrefsByType(CitationDatabase.PUBMED);
+                getCitationCrossReferenceByType(CitationDatabase.PUBMED);
         return result.map(CrossReference::getId).map(Long::valueOf).orElse(0L);
     }
 
     @Override
     public String getDoiId() {
         Optional<CrossReference<CitationDatabase>> result =
-                getCitationXrefsByType(CitationDatabase.DOI);
+                getCitationCrossReferenceByType(CitationDatabase.DOI);
         return result.map(CrossReference::getId).orElse("");
     }
 

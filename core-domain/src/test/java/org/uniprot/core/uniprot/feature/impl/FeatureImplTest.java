@@ -58,7 +58,7 @@ class FeatureImplTest {
         assertTrue(feature.hasFeatureId());
         assertEquals(featureId, feature.getFeatureId());
         assertNull(feature.getAlternativeSequence());
-        assertNull(feature.getDbXref());
+        assertNull(feature.getFeatureCrossReference());
     }
 
     @Test
@@ -71,7 +71,7 @@ class FeatureImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         CrossReference<FeatureDatabase> xrefs =
                 new CrossReferenceBuilder<FeatureDatabase>()
-                        .databaseType(FeatureDatabase.DBSNP)
+                        .database(FeatureDatabase.DBSNP)
                         .id("db id")
                         .build();
         Feature impl =

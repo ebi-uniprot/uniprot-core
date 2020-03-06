@@ -32,15 +32,15 @@ class CitationUtil {
         assertNotNull(jsonNode.get("title"));
         assertEquals("Leo book tittle", jsonNode.get("title").asText());
 
-        assertNotNull(jsonNode.get("citationXrefs"));
-        assertEquals(2, jsonNode.get("citationXrefs").size());
-        JsonNode citationXrefs = jsonNode.get("citationXrefs").get(0);
+        assertNotNull(jsonNode.get("citationCrossReferences"));
+        assertEquals(2, jsonNode.get("citationCrossReferences").size());
+        JsonNode citationCrossReferences = jsonNode.get("citationCrossReferences").get(0);
 
-        assertNotNull(citationXrefs.get("databaseType"));
-        assertEquals("PubMed", citationXrefs.get("databaseType").asText());
+        assertNotNull(citationCrossReferences.get("database"));
+        assertEquals("PubMed", citationCrossReferences.get("database").asText());
 
-        assertNotNull(citationXrefs.get("id"));
-        assertEquals("12345", citationXrefs.get("id").asText());
+        assertNotNull(citationCrossReferences.get("id"));
+        assertEquals("12345", citationCrossReferences.get("id").asText());
     }
 
     public static void populateBasicCitation(
@@ -50,7 +50,7 @@ class CitationUtil {
         builder.authoringGroupsAdd("auth group");
         builder.authorsAdd("author Leo");
         builder.title("Leo book tittle");
-        builder.citationXrefsSet(createCitationCrossRefs());
+        builder.citationCrossReferencesSet(createCitationCrossRefs());
     }
 
     public static List<CrossReference<CitationDatabase>> createCitationCrossRefs() {
@@ -58,13 +58,13 @@ class CitationUtil {
 
         result.add(
                 new CrossReferenceBuilder<CitationDatabase>()
-                        .databaseType(CitationDatabase.PUBMED)
+                        .database(CitationDatabase.PUBMED)
                         .id("12345")
                         .build());
 
         result.add(
                 new CrossReferenceBuilder<CitationDatabase>()
-                        .databaseType(CitationDatabase.DOI)
+                        .database(CitationDatabase.DOI)
                         .id("doiId")
                         .build());
 

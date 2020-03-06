@@ -19,7 +19,7 @@ class DiseaseCommentImplTest {
                     .acronym("someAcron")
                     .evidencesSet(createEvidences())
                     .description("some description")
-                    .reference(new CrossReferenceImpl<>(DiseaseDatabase.MIM, "3124"))
+                    .diseaseCrossReference(new CrossReferenceImpl<>(DiseaseDatabase.MIM, "3124"))
                     .build();;
 
     @Test

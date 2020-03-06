@@ -23,7 +23,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
  */
 public final class PhysiologicalReactionBuilder implements Builder<PhysiologicalReaction> {
     private PhysiologicalDirectionType directionType;
-    private CrossReference<ReactionDatabase> reactionReference;
+    private CrossReference<ReactionDatabase> reactionCrossReference;
     private List<Evidence> evidences = new ArrayList<>();
 
     public @Nonnull PhysiologicalReactionBuilder directionType(
@@ -32,9 +32,9 @@ public final class PhysiologicalReactionBuilder implements Builder<Physiological
         return this;
     }
 
-    public @Nonnull PhysiologicalReactionBuilder reactionReference(
+    public @Nonnull PhysiologicalReactionBuilder reactionCrossReference(
             CrossReference<ReactionDatabase> reactionReference) {
-        this.reactionReference = reactionReference;
+        this.reactionCrossReference = reactionReference;
         return this;
     }
 
@@ -49,7 +49,7 @@ public final class PhysiologicalReactionBuilder implements Builder<Physiological
     }
 
     public @Nonnull PhysiologicalReactionImpl build() {
-        return new PhysiologicalReactionImpl(directionType, reactionReference, evidences);
+        return new PhysiologicalReactionImpl(directionType, reactionCrossReference, evidences);
     }
 
     public static @Nonnull PhysiologicalReactionBuilder from(
@@ -57,6 +57,6 @@ public final class PhysiologicalReactionBuilder implements Builder<Physiological
         return new PhysiologicalReactionBuilder()
                 .evidencesSet(instance.getEvidences())
                 .directionType(instance.getDirectionType())
-                .reactionReference(instance.getReactionReference());
+                .reactionCrossReference(instance.getReactionCrossReference());
     }
 }

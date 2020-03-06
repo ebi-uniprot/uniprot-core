@@ -24,7 +24,7 @@ public class CitationConverterHelper {
             AbstractCitationBuilder<? extends AbstractCitationBuilder<?, ?>, ? extends Citation>
                     builder) {
         if (!xmlCitation.getDbReference().isEmpty()) {
-            builder.citationXrefsSet(
+            builder.citationCrossReferencesSet(
                     xmlCitation.getDbReference().stream()
                             .map(val -> fromXml(val))
                             .collect(Collectors.toList()));
@@ -72,8 +72,8 @@ public class CitationConverterHelper {
 
     public static void updateToXmlCitatation(
             ObjectFactory xmlUniprotFactory, CitationType xmlCitation, Citation citation) {
-        if (citation.hasCitationXrefs()) {
-            List<CrossReference<CitationDatabase>> xrefs = citation.getCitationXrefs();
+        if (citation.hasCitationCrossReferences()) {
+            List<CrossReference<CitationDatabase>> xrefs = citation.getCitationCrossReferences();
             for (CrossReference<CitationDatabase> xref : xrefs) {
                 xmlCitation.getDbReference().add(toXml(xmlUniprotFactory, xref));
             }
@@ -132,7 +132,7 @@ public class CitationConverterHelper {
     private static CrossReference<CitationDatabase> fromXml(DbReferenceType xmlRef) {
         CitationDatabase type = CitationDatabase.typeOf(xmlRef.getType());
         return new CrossReferenceBuilder<CitationDatabase>()
-                .databaseType(type)
+                .database(type)
                 .id(xmlRef.getId())
                 .build();
     }

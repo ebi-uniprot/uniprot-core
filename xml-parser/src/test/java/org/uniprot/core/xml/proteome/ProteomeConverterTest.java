@@ -44,12 +44,12 @@ class ProteomeConverterTest {
         List<CrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
         CrossReference<ProteomeDatabase> xref1 =
                 new CrossReferenceBuilder<ProteomeDatabase>()
-                        .databaseType(ProteomeDatabase.GENOME_ACCESSION)
+                        .database(ProteomeDatabase.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
         CrossReference<ProteomeDatabase> xref2 =
                 new CrossReferenceBuilder<ProteomeDatabase>()
-                        .databaseType(ProteomeDatabase.GENOME_ANNOTATION)
+                        .database(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
         xrefs.add(xref1);
@@ -82,10 +82,10 @@ class ProteomeConverterTest {
                         .modified(modified)
                         .proteomeType(ProteomeType.NORMAL)
                         //	.redundantTo(redId)
-                        .dbXReferencesSet(xrefs)
+                        .proteomeCrossReferencesSet(xrefs)
                         .componentsSet(components)
                         .superkingdom(Superkingdom.EUKARYOTA)
-                        .referencesSet(citations)
+                        .citationsSet(citations)
                         .annotationScore(15);
 
         return builder.build();
@@ -105,7 +105,7 @@ class ProteomeConverterTest {
                 .authorsAdd("Sulson J.E.")
                 .authorsAdd("JWaterston R.")
                 .authoringGroupsSet(Arrays.asList("The C. elegans sequencing consortium"))
-                .citationXrefsSet(
+                .citationCrossReferencesSet(
                         Arrays.asList(
                                 new CrossReferenceImpl<>(CitationDatabase.PUBMED, "9851916"),
                                 new CrossReferenceImpl<>(

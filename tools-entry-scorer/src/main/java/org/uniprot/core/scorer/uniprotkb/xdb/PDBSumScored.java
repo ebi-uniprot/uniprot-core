@@ -9,19 +9,20 @@ import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 
 public class PDBSumScored implements HasScore {
     @SuppressWarnings("unused")
-    private List<UniProtCrossReference> xrefs;
+    private List<UniProtCrossReference> uniProtCrossReferences;
 
     @SuppressWarnings("unused")
     private final List<EvidenceDatabase> evidenceDatabases;
 
     public PDBSumScored(
-            List<UniProtCrossReference> xrefs, List<EvidenceDatabase> evidenceDatabases) {
-        this.xrefs = xrefs;
+            List<UniProtCrossReference> uniProtCrossReferences,
+            List<EvidenceDatabase> evidenceDatabases) {
+        this.uniProtCrossReferences = uniProtCrossReferences;
         this.evidenceDatabases = evidenceDatabases;
     }
 
-    public PDBSumScored(List<UniProtCrossReference> xrefs) {
-        this(xrefs, null);
+    public PDBSumScored(List<UniProtCrossReference> uniProtCrossReferences) {
+        this(uniProtCrossReferences, null);
     }
 
     // PDBsum replicates PDB DR lines so PDBsum DR lines could be scored as zero.

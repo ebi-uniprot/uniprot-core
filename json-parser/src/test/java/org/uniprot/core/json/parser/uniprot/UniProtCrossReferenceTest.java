@@ -20,13 +20,13 @@ public class UniProtCrossReferenceTest {
     void testUniProtDBCrossReferenceSimple() {
         UniProtDatabase opType = new UniProtDatabaseImpl("PIR");
         UniProtCrossReference dbCrossReference =
-                new UniProtCrossReferenceBuilder().databaseType(opType).id("S61096").build();
+                new UniProtCrossReferenceBuilder().database(opType).id("S61096").build();
 
         ValidateJson.verifyJsonRoundTripParser(dbCrossReference);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(dbCrossReference);
-        assertNotNull(jsonNode.get("databaseType"));
-        assertEquals("PIR", jsonNode.get("databaseType").asText());
+        assertNotNull(jsonNode.get("database"));
+        assertEquals("PIR", jsonNode.get("database").asText());
 
         assertNotNull(jsonNode.get("id"));
         assertEquals("S61096", jsonNode.get("id").asText());
@@ -41,8 +41,8 @@ public class UniProtCrossReferenceTest {
         ValidateJson.verifyEmptyFields(dbCrossReference);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(dbCrossReference);
-        assertNotNull(jsonNode.get("databaseType"));
-        assertEquals("Ensembl", jsonNode.get("databaseType").asText());
+        assertNotNull(jsonNode.get("database"));
+        assertEquals("Ensembl", jsonNode.get("database").asText());
 
         assertNotNull(jsonNode.get("id"));
         assertEquals("id value", jsonNode.get("id").asText());
@@ -72,7 +72,7 @@ public class UniProtCrossReferenceTest {
                 .id("id value")
                 .isoformId("Q9NXB0-1")
                 .propertiesAdd(property)
-                .databaseType(new UniProtDatabaseImpl("Ensembl"))
+                .database(new UniProtDatabaseImpl("Ensembl"))
                 .evidencesAdd(CreateUtils.createEvidence("ECO:0000269|PubMed:11389730"))
                 .build();
     }

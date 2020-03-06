@@ -106,7 +106,7 @@ class UniParcEntryMapTest {
         UniParcEntry entry =
                 new UniParcEntryBuilder()
                         .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
-                        .databaseCrossReferencesSet(xrefs)
+                        .uniParcCrossReferencesSet(xrefs)
                         .sequence(sequence)
                         .sequenceFeaturesSet(seqFeatures)
                         .taxonomiesSet(taxonomies)
@@ -143,7 +143,7 @@ class UniParcEntryMapTest {
         UniParcCrossReference xref =
                 new UniParcCrossReferenceBuilder()
                         .versionI(3)
-                        .databaseType(UniParcDatabase.SWISSPROT)
+                        .database(UniParcDatabase.SWISSPROT)
                         .id("P12345")
                         .version(7)
                         .active(true)
@@ -159,7 +159,7 @@ class UniParcEntryMapTest {
         UniParcCrossReference xref2 =
                 new UniParcCrossReferenceBuilder()
                         .versionI(1)
-                        .databaseType(UniParcDatabase.TREMBL)
+                        .database(UniParcDatabase.TREMBL)
                         .id("P52346")
                         .version(7)
                         .active(true)

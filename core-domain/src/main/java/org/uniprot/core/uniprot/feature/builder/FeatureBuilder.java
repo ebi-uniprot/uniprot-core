@@ -33,13 +33,19 @@ public class FeatureBuilder implements Builder<Feature> {
     private FeatureDescription description;
     private FeatureId featureId;
     private AlternativeSequence alternativeSequence;
-    private CrossReference<FeatureDatabase> dbXref;
+    private CrossReference<FeatureDatabase> featureCrossReference;
     private List<Evidence> evidences = new ArrayList<>();
 
     @Override
     public @Nonnull Feature build() {
         return new FeatureImpl(
-                type, location, description, featureId, alternativeSequence, dbXref, evidences);
+                type,
+                location,
+                description,
+                featureId,
+                alternativeSequence,
+                featureCrossReference,
+                evidences);
     }
 
     public static @Nonnull FeatureBuilder from(@Nonnull Feature instance) {
@@ -50,7 +56,7 @@ public class FeatureBuilder implements Builder<Feature> {
                 .location(instance.getLocation())
                 .featureId(instance.getFeatureId())
                 .alternativeSequence(instance.getAlternativeSequence())
-                .dbXref(instance.getDbXref());
+                .featureCrossReference(instance.getFeatureCrossReference());
     }
 
     public @Nonnull FeatureBuilder type(FeatureType type) {
@@ -88,8 +94,9 @@ public class FeatureBuilder implements Builder<Feature> {
         return this;
     }
 
-    public @Nonnull FeatureBuilder dbXref(CrossReference<FeatureDatabase> dbXref) {
-        this.dbXref = dbXref;
+    public @Nonnull FeatureBuilder featureCrossReference(
+            CrossReference<FeatureDatabase> featureCrossReference) {
+        this.featureCrossReference = featureCrossReference;
         return this;
     }
 

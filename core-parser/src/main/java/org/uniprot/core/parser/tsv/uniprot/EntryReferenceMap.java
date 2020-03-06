@@ -28,8 +28,8 @@ public class EntryReferenceMap implements NamedValueMap {
         String result =
                 references.stream()
                         .map(UniProtReference::getCitation)
-                        .filter(val -> val.getCitationXrefs() != null)
-                        .flatMap(val -> val.getCitationXrefs().stream())
+                        .filter(val -> val.getCitationCrossReferences() != null)
+                        .flatMap(val -> val.getCitationCrossReferences().stream())
                         .filter(val -> val.getDatabase().equals(CitationDatabase.PUBMED))
                         .map(CrossReference::getId)
                         .collect(Collectors.joining("; "));

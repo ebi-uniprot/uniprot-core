@@ -13,7 +13,7 @@ public class EvidenceImpl implements Evidence {
     private static final String PIPE = "|";
     private static final String COLON = ":";
     private EvidenceCode evidenceCode;
-    private CrossReference<EvidenceDatabase> source;
+    private CrossReference<EvidenceDatabase> evidenceCrossReference;
 
     public EvidenceImpl(EvidenceCode evidenceCode, String databaseName, String dbId) {
         this(evidenceCode, new CrossReferenceImpl<>(new EvidenceDatabase(databaseName), dbId));
@@ -22,9 +22,10 @@ public class EvidenceImpl implements Evidence {
     // no arg constructor for JSON deserialization
     EvidenceImpl() {}
 
-    public EvidenceImpl(EvidenceCode evidenceCode, CrossReference<EvidenceDatabase> source) {
+    public EvidenceImpl(
+            EvidenceCode evidenceCode, CrossReference<EvidenceDatabase> evidenceCrossReference) {
         this.evidenceCode = evidenceCode;
-        this.source = source;
+        this.evidenceCrossReference = evidenceCrossReference;
     }
 
     @Override
@@ -33,8 +34,8 @@ public class EvidenceImpl implements Evidence {
     }
 
     @Override
-    public CrossReference<EvidenceDatabase> getSource() {
-        return source;
+    public CrossReference<EvidenceDatabase> getEvidenceCrossReference() {
+        return evidenceCrossReference;
     }
 
     @Override
@@ -51,14 +52,18 @@ public class EvidenceImpl implements Evidence {
     public String getValue() {
         StringBuilder sb = new StringBuilder();
         sb.append(evidenceCode.getCode());
-        if (source != null) {
+        if (evidenceCrossReference != null) {
             sb.append(PIPE);
-            if (source.getDatabase().isReference()) {
-                sb.append(source.getId());
+            if (evidenceCrossReference.getDatabase().isReference()) {
+                sb.append(evidenceCrossReference.getId());
             } else {
-                sb.append(source.getDatabase().getDetail().getDisplayName())
+                sb.append(
+                                evidenceCrossReference
+                                        .getDatabase()
+                                        .getEvidenceDatabaseDetail()
+                                        .getDisplayName())
                         .append(COLON)
-                        .append(source.getId());
+                        .append(evidenceCrossReference.getId());
             }
         }
 
@@ -70,11 +75,12 @@ public class EvidenceImpl implements Evidence {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         EvidenceImpl evidence = (EvidenceImpl) o;
-        return evidenceCode == evidence.evidenceCode && Objects.equals(source, evidence.source);
+        return evidenceCode == evidence.evidenceCode
+                && Objects.equals(evidenceCrossReference, evidence.evidenceCrossReference);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(evidenceCode, source);
+        return Objects.hash(evidenceCode, evidenceCrossReference);
     }
 }

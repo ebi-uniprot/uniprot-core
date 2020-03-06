@@ -66,7 +66,8 @@ class CcDiseaseConverterTest {
         assertEquals("KLESTS", diseaseComment.getDisease().getAcronym());
         assertEquals(disease.getDescription(), diseaseComment.getDisease().getDescription());
         assertEquals(0, diseaseComment.getDisease().getEvidences().size());
-        CrossReference<DiseaseDatabase> diseaseRef = diseaseComment.getDisease().getReference();
+        CrossReference<DiseaseDatabase> diseaseRef =
+                diseaseComment.getDisease().getDiseaseCrossReference();
         assertNotNull(diseaseRef);
         assertEquals(DiseaseDatabase.MIM, diseaseRef.getDatabase());
         assertEquals("610253", diseaseRef.getId());
@@ -117,7 +118,8 @@ class CcDiseaseConverterTest {
         assertEquals(
                 "ECO:0000269|PubMed:10433554",
                 diseaseComment.getDisease().getEvidences().get(0).getValue());
-        CrossReference<DiseaseDatabase> diseaseRef = diseaseComment.getDisease().getReference();
+        CrossReference<DiseaseDatabase> diseaseRef =
+                diseaseComment.getDisease().getDiseaseCrossReference();
         assertNotNull(diseaseRef);
         assertEquals(DiseaseDatabase.MIM, diseaseRef.getDatabase());
         assertEquals("610253", diseaseRef.getId());
