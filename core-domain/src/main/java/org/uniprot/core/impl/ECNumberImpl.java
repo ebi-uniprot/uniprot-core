@@ -15,7 +15,7 @@ public class ECNumberImpl implements ECNumber {
         this.value = "";
     }
 
-    public ECNumberImpl(String value) {
+    protected ECNumberImpl(String value) {
         this.value = value;
     }
 

@@ -22,7 +22,7 @@ public class InternalSectionImpl implements InternalSection {
         this.sourceLines = Collections.emptyList();
     }
 
-    public InternalSectionImpl(
+    InternalSectionImpl(
             List<InternalLine> internalLines,
             List<EvidenceLine> evidenceLines,
             List<SourceLine> sourceLines) {

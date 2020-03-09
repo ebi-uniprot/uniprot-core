@@ -6,18 +6,18 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.PositionModifier;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureDatabase;
 import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.uniprot.feature.FeatureType;
-import org.uniprot.core.uniprot.feature.FeatureXDbType;
-import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
-import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
+import org.uniprot.core.uniprot.feature.impl.AlternativeSequenceBuilder;
+import org.uniprot.core.uniprot.feature.impl.FeatureBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -115,10 +115,10 @@ public class FeatureTest {
                 "alternative value",
                 alternativeSequence.get("alternativeSequences").get(0).asText());
 
-        assertNotNull(jsonNode.get("dbXref"));
-        JsonNode dbXref = jsonNode.get("dbXref");
-        assertNotNull(dbXref.get("databaseType"));
-        assertEquals("dbSNP", dbXref.get("databaseType").asText());
+        assertNotNull(jsonNode.get("featureCrossReference"));
+        JsonNode dbXref = jsonNode.get("featureCrossReference");
+        assertNotNull(dbXref.get("database"));
+        assertEquals("dbSNP", dbXref.get("database").asText());
         assertNotNull(dbXref.get("id"));
         assertEquals("db id", dbXref.get("id").asText());
 
@@ -135,9 +135,9 @@ public class FeatureTest {
                         .alternativeSequencesAdd("alternative value")
                         .build();
 
-        DBCrossReference<FeatureXDbType> xrefs =
-                new DBCrossReferenceBuilder<FeatureXDbType>()
-                        .databaseType(FeatureXDbType.DBSNP)
+        CrossReference<FeatureDatabase> xrefs =
+                new CrossReferenceBuilder<FeatureDatabase>()
+                        .database(FeatureDatabase.DBSNP)
                         .id("db id")
                         .build();
 
@@ -148,7 +148,7 @@ public class FeatureTest {
         return new FeatureBuilder()
                 .type(FeatureType.CHAIN)
                 .alternativeSequence(alternativeSequence)
-                .dbXref(xrefs)
+                .featureCrossReference(xrefs)
                 .description("description value")
                 .evidencesSet(evidences)
                 .featureId("id value")

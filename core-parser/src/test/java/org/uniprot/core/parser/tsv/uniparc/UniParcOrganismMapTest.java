@@ -8,7 +8,7 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
-import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.TaxonomyBuilder;
 
 /**
  * @author jluo

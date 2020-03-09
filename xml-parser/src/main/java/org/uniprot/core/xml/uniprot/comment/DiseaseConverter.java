@@ -1,10 +1,10 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.Disease;
-import org.uniprot.core.uniprot.comment.DiseaseReferenceType;
-import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
+import org.uniprot.core.uniprot.comment.DiseaseDatabase;
+import org.uniprot.core.uniprot.comment.impl.DiseaseBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
@@ -31,14 +31,13 @@ public class DiseaseConverter implements Converter<CommentType.Disease, Disease>
                 .description(xmlDisease.getDescription());
 
         if (xmlDisease.getDbReference() != null) {
-            DiseaseReferenceType type =
-                    DiseaseReferenceType.typeOf(xmlDisease.getDbReference().getType());
-            DBCrossReference<DiseaseReferenceType> reference =
-                    new DBCrossReferenceBuilder<DiseaseReferenceType>()
-                            .databaseType(type)
+            DiseaseDatabase type = DiseaseDatabase.typeOf(xmlDisease.getDbReference().getType());
+            CrossReference<DiseaseDatabase> reference =
+                    new CrossReferenceBuilder<DiseaseDatabase>()
+                            .database(type)
                             .id(xmlDisease.getDbReference().getId())
                             .build();
-            builder.reference(reference);
+            builder.diseaseCrossReference(reference);
         }
         return builder.build();
     }
@@ -54,8 +53,8 @@ public class DiseaseConverter implements Converter<CommentType.Disease, Disease>
         xmlDisease.setId(disease.getDiseaseAccession());
 
         DbReferenceType dbReferenceType = xmlUniprotFactory.createDbReferenceType();
-        dbReferenceType.setId(disease.getReference().getId());
-        dbReferenceType.setType(disease.getReference().getDatabaseType().name());
+        dbReferenceType.setId(disease.getDiseaseCrossReference().getId());
+        dbReferenceType.setType(disease.getDiseaseCrossReference().getDatabase().name());
         xmlDisease.setDbReference(dbReferenceType);
 
         return xmlDisease;

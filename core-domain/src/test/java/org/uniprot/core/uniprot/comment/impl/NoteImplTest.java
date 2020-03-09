@@ -10,13 +10,11 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.Note;
-import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
-import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
-import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
-import org.uniprot.core.uniprot.evidence.impl.EvidencedValueImpl;
+import org.uniprot.core.uniprot.evidence.impl.EvidenceBuilder;
+import org.uniprot.core.uniprot.evidence.impl.EvidencedValueBuilder;
 
 class NoteImplTest {
 
@@ -58,8 +56,9 @@ class NoteImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        EvidencedValue ev1 = new EvidencedValueImpl("1", createEvidences());
-        EvidencedValue ev2 = new EvidencedValueImpl("1", null);
+        EvidencedValue ev1 =
+                new EvidencedValueBuilder().value("1").evidencesSet(createEvidences()).build();
+        EvidencedValue ev2 = new EvidencedValueBuilder().value("1").build();
         List<EvidencedValue> evidencedValues = Arrays.asList(ev1, ev2);
 
         Note impl = new NoteImpl(evidencedValues);

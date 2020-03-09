@@ -14,7 +14,7 @@ public final class EntryAuditImpl implements EntryAudit {
 
     EntryAuditImpl() {}
 
-    public EntryAuditImpl(
+    EntryAuditImpl(
             LocalDate firstPublicDate,
             LocalDate lastAnnotationUpdateDate,
             LocalDate lastSequenceUpdateDate,

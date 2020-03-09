@@ -7,13 +7,14 @@ import org.uniprot.core.scorer.uniprotkb.ScoreStatus;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 
 public class DefaultTextOnlyCommentScored extends CommentScoredAbstr {
     private FreeTextComment comment;
 
-    public DefaultTextOnlyCommentScored(FreeTextComment copy, List<EvidenceType> evidenceTypes) {
-        super(copy.getCommentType(), evidenceTypes);
+    public DefaultTextOnlyCommentScored(
+            FreeTextComment copy, List<EvidenceDatabase> evidenceDatabases) {
+        super(copy.getCommentType(), evidenceDatabases);
         this.comment = copy;
     }
 
@@ -46,6 +47,6 @@ public class DefaultTextOnlyCommentScored extends CommentScoredAbstr {
     private boolean hasEvidence() {
         List<Evidence> evidences = new ArrayList<>();
         comment.getTexts().forEach(text -> evidences.addAll(text.getEvidences()));
-        return ScoreUtil.hasEvidence(evidences, evidenceTypes);
+        return ScoreUtil.hasEvidence(evidences, evidenceDatabases);
     }
 }

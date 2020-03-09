@@ -15,7 +15,7 @@ public abstract class CommentHasMoleculeImpl extends CommentImpl implements HasM
 
     private String molecule;
 
-    public CommentHasMoleculeImpl(CommentType commentType, String molecule) {
+    CommentHasMoleculeImpl(CommentType commentType, String molecule) {
         super(commentType);
         this.molecule = molecule;
     }

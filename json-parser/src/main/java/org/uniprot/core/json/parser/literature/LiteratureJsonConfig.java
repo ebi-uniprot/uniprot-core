@@ -1,9 +1,9 @@
 package org.uniprot.core.json.parser.literature;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.citation.impl.*;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.json.parser.serializer.AuthorSerializer;
 import org.uniprot.core.json.parser.serializer.JournalSerializer;
@@ -67,7 +67,7 @@ public class LiteratureJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Author.class, AuthorImpl.class);
         mod.addAbstractTypeMapping(Journal.class, JournalImpl.class);
         mod.addAbstractTypeMapping(UniProtAccession.class, UniProtAccessionImpl.class);
-        mod.addAbstractTypeMapping(DBCrossReference.class, DBCrossReferenceImpl.class);
+        mod.addAbstractTypeMapping(CrossReference.class, CrossReferenceImpl.class);
 
         mod.addAbstractTypeMapping(Submission.class, SubmissionImpl.class);
         mod.addAbstractTypeMapping(Journal.class, JournalImpl.class);

@@ -2,11 +2,11 @@ package org.uniprot.core.xml.proteome;
 
 import java.util.stream.Collectors;
 
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
-import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.JournalArticle;
-import org.uniprot.core.citation.builder.JournalArticleBuilder;
+import org.uniprot.core.citation.impl.JournalArticleBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.DbReferenceType;
 import org.uniprot.core.xml.jaxb.proteome.JournalType;
@@ -34,7 +34,7 @@ public class JournalArticleConverter implements Converter<ReferenceType, Journal
                 .lastPage(journal.getLast())
                 .volume(journal.getVolume())
                 .journalName(journal.getName())
-                .citationXrefsSet(
+                .citationCrossReferencesSet(
                         journal.getDbReference().stream()
                                 .map(this::fromXml)
                                 .collect(Collectors.toList()));
@@ -51,25 +51,25 @@ public class JournalArticleConverter implements Converter<ReferenceType, Journal
         xmlJournal.setTitle(uniObj.getTitle());
         xmlJournal.setName(uniObj.getJournal().getName());
         xmlJournal.setVolume(uniObj.getVolume());
-        uniObj.getCitationXrefs().stream()
+        uniObj.getCitationCrossReferences().stream()
                 .map(this::toXml)
                 .forEach(val -> xmlJournal.getDbReference().add(val));
         xmlCitation.setJournal(xmlJournal);
         return xmlCitation;
     }
 
-    private DBCrossReference<CitationXrefType> fromXml(DbReferenceType xmlRef) {
-        CitationXrefType type = CitationXrefType.typeOf(xmlRef.getType());
-        return new DBCrossReferenceBuilder<CitationXrefType>()
-                .databaseType(type)
+    private CrossReference<CitationDatabase> fromXml(DbReferenceType xmlRef) {
+        CitationDatabase type = CitationDatabase.typeOf(xmlRef.getType());
+        return new CrossReferenceBuilder<CitationDatabase>()
+                .database(type)
                 .id(xmlRef.getId())
                 .build();
     }
 
-    private DbReferenceType toXml(DBCrossReference<CitationXrefType> xref) {
+    private DbReferenceType toXml(CrossReference<CitationDatabase> xref) {
         DbReferenceType dbReferenceType = xmlFactory.createDbReferenceType();
         dbReferenceType.setId(xref.getId());
-        dbReferenceType.setType(xref.getDatabaseType().getName());
+        dbReferenceType.setType(xref.getDatabase().getName());
         return dbReferenceType;
     }
 }

@@ -5,13 +5,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.CitationXrefType;
-import org.uniprot.core.citation.builder.AbstractCitationBuilder;
-import org.uniprot.core.citation.builder.AuthorBuilder;
+import org.uniprot.core.citation.CitationDatabase;
+import org.uniprot.core.citation.impl.AbstractCitationBuilder;
+import org.uniprot.core.citation.impl.AuthorBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.*;
 
 import com.google.common.base.Strings;
@@ -24,7 +24,7 @@ public class CitationConverterHelper {
             AbstractCitationBuilder<? extends AbstractCitationBuilder<?, ?>, ? extends Citation>
                     builder) {
         if (!xmlCitation.getDbReference().isEmpty()) {
-            builder.citationXrefsSet(
+            builder.citationCrossReferencesSet(
                     xmlCitation.getDbReference().stream()
                             .map(val -> fromXml(val))
                             .collect(Collectors.toList()));
@@ -72,9 +72,9 @@ public class CitationConverterHelper {
 
     public static void updateToXmlCitatation(
             ObjectFactory xmlUniprotFactory, CitationType xmlCitation, Citation citation) {
-        if (citation.hasCitationXrefs()) {
-            List<DBCrossReference<CitationXrefType>> xrefs = citation.getCitationXrefs();
-            for (DBCrossReference<CitationXrefType> xref : xrefs) {
+        if (citation.hasCitationCrossReferences()) {
+            List<CrossReference<CitationDatabase>> xrefs = citation.getCitationCrossReferences();
+            for (CrossReference<CitationDatabase> xref : xrefs) {
                 xmlCitation.getDbReference().add(toXml(xmlUniprotFactory, xref));
             }
         }
@@ -122,17 +122,17 @@ public class CitationConverterHelper {
     }
 
     private static DbReferenceType toXml(
-            ObjectFactory xmlUniprotFactory, DBCrossReference<CitationXrefType> xref) {
+            ObjectFactory xmlUniprotFactory, CrossReference<CitationDatabase> xref) {
         DbReferenceType dbReferenceType = xmlUniprotFactory.createDbReferenceType();
         dbReferenceType.setId(xref.getId());
-        dbReferenceType.setType(xref.getDatabaseType().getName());
+        dbReferenceType.setType(xref.getDatabase().getName());
         return dbReferenceType;
     }
 
-    private static DBCrossReference<CitationXrefType> fromXml(DbReferenceType xmlRef) {
-        CitationXrefType type = CitationXrefType.typeOf(xmlRef.getType());
-        return new DBCrossReferenceBuilder<CitationXrefType>()
-                .databaseType(type)
+    private static CrossReference<CitationDatabase> fromXml(DbReferenceType xmlRef) {
+        CitationDatabase type = CitationDatabase.typeOf(xmlRef.getType());
+        return new CrossReferenceBuilder<CitationDatabase>()
+                .database(type)
                 .id(xmlRef.getId())
                 .build();
     }

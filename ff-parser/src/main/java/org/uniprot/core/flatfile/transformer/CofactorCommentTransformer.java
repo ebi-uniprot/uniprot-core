@@ -6,15 +6,15 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.Cofactor;
 import org.uniprot.core.uniprot.comment.CofactorComment;
-import org.uniprot.core.uniprot.comment.CofactorReferenceType;
+import org.uniprot.core.uniprot.comment.CofactorDatabase;
 import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
-import org.uniprot.core.uniprot.comment.builder.CofactorCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.comment.impl.CofactorBuilder;
+import org.uniprot.core.uniprot.comment.impl.CofactorCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class CofactorCommentTransformer implements CommentTransformer<CofactorComment> {
@@ -57,9 +57,9 @@ public class CofactorCommentTransformer implements CommentTransformer<CofactorCo
 
                 String dbType = ref.substring(0, dbTypeSeperator);
                 String xref = ref.substring(dbTypeSeperator + 1, ref.length());
-                DBCrossReference<CofactorReferenceType> reference =
-                        new DBCrossReferenceBuilder<CofactorReferenceType>()
-                                .databaseType(CofactorReferenceType.typeOf(dbType))
+                CrossReference<CofactorDatabase> reference =
+                        new CrossReferenceBuilder<CofactorDatabase>()
+                                .database(CofactorDatabase.typeOf(dbType))
                                 .id(xref)
                                 .build();
                 List<Evidence> evidences = new ArrayList<>();
@@ -70,7 +70,7 @@ public class CofactorCommentTransformer implements CommentTransformer<CofactorCo
                 Cofactor cofactor =
                         new CofactorBuilder()
                                 .name(name)
-                                .reference(reference)
+                                .cofactorCrossReference(reference)
                                 .evidencesSet(evidences)
                                 .build();
                 cofactors.add(cofactor);

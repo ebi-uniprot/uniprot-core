@@ -12,41 +12,39 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.Sequence;
-import org.uniprot.core.builder.SequenceBuilder;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.gene.*;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.impl.CrossReferenceBuilder;
+import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniprot.*;
-import org.uniprot.core.uniprot.builder.*;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
-import org.uniprot.core.uniprot.comment.builder.CofactorCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.FreeTextCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.comment.impl.CofactorBuilder;
+import org.uniprot.core.uniprot.comment.impl.CofactorCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.FreeTextCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
 import org.uniprot.core.uniprot.description.*;
-import org.uniprot.core.uniprot.description.builder.ProteinDescriptionBuilder;
+import org.uniprot.core.uniprot.description.impl.ProteinDescriptionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
-import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
+import org.uniprot.core.uniprot.evidence.impl.EvidencedValueBuilder;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureId;
 import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.uniprot.feature.FeatureType;
-import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
-import org.uniprot.core.uniprot.feature.impl.AlternativeSequenceImpl;
-import org.uniprot.core.uniprot.feature.impl.FeatureIdImpl;
+import org.uniprot.core.uniprot.feature.impl.*;
+import org.uniprot.core.uniprot.impl.*;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
-import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
-import org.uniprot.core.uniprot.taxonomy.builder.OrganismHostBuilder;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-import org.uniprot.core.uniprot.xdb.UniProtXDbType;
-import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.OrganismBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.OrganismHostBuilder;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtDatabase;
+import org.uniprot.core.uniprot.xdb.impl.UniProtCrossReferenceBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.Entry;
-import org.uniprot.cv.xdb.UniProtXDbTypeImpl;
+import org.uniprot.cv.xdb.UniProtDatabaseImpl;
 
 class UniProtEntryConverterTest {
 
@@ -86,21 +84,21 @@ class UniProtEntryConverterTest {
         keywords.add(
                 new KeywordBuilder()
                         .id("KW-001")
-                        .value("key1")
+                        .name("key1")
                         .category(KeywordCategory.UNKNOWN)
                         .evidencesSet(evidences)
                         .build());
         keywords.add(
                 new KeywordBuilder()
                         .id("KW-002")
-                        .value("key2")
+                        .name("key2")
                         .category(KeywordCategory.UNKNOWN)
                         .evidencesSet(evidences)
                         .build());
         keywords.add(
                 new KeywordBuilder()
                         .id("KW-003")
-                        .value("key3")
+                        .name("key3")
                         .category(KeywordCategory.UNKNOWN)
                         .evidencesSet(evidences)
                         .build());
@@ -114,7 +112,7 @@ class UniProtEntryConverterTest {
                         .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
                         .entryAudit(entryAudit)
                         .geneLocationsSet(organelles)
-                        .databaseCrossReferencesSet(createDbXref())
+                        .uniProtCrossReferencesSet(createDbXref())
                         .keywordsSet(keywords)
                         .proteinDescription(createProteinDescription())
                         .genesSet(singletonList(createGene()))
@@ -256,9 +254,12 @@ class UniProtEntryConverterTest {
 
     private Feature createVarSeqFeature() {
         FeatureLocation location = new FeatureLocation(65, 86);
-        AlternativeSequence as = new AlternativeSequenceImpl("RS", Arrays.asList("DB", "AA"));
-        FeatureId featureId = new FeatureIdImpl("VSP_112");
-
+        AlternativeSequence as =
+                new AlternativeSequenceBuilder()
+                        .original("RS")
+                        .alternativeSequencesSet(Arrays.asList("DB", "AA"))
+                        .build();
+        FeatureId featureId = new FeatureIdBuilder("VSP_112").build();
         return new FeatureBuilder()
                 .type(FeatureType.VAR_SEQ)
                 .location(location)
@@ -281,12 +282,15 @@ class UniProtEntryConverterTest {
                         .commentType(CommentType.FUNCTION)
                         .textsSet(createEvidenceValues())
                         .build());
-        DBCrossReference<CofactorReferenceType> reference =
-                new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
+        CrossReference<CofactorDatabase> reference =
+                new CrossReferenceBuilder<CofactorDatabase>()
+                        .database(CofactorDatabase.CHEBI)
+                        .id("CHEBI:324")
+                        .build();
         Cofactor cofactor =
                 new CofactorBuilder()
                         .name("somename")
-                        .reference(reference)
+                        .cofactorCrossReference(reference)
                         .evidencesSet(createEvidences())
                         .build();
         List<Cofactor> cofactors = Arrays.asList(cofactor);
@@ -366,7 +370,7 @@ class UniProtEntryConverterTest {
         return ecNumbers;
     }
 
-    List<UniProtDBCrossReference> createDbXref() {
+    List<UniProtCrossReference> createDbXref() {
         // DR   Ensembl; ENST00000393119; ENSP00000376827; ENSG00000011143. [Q9NXB0-1]
         String type = "Ensembl";
         String id = "ENST00000393119";
@@ -374,107 +378,107 @@ class UniProtEntryConverterTest {
         String thirdAttr = "ENSG00000011143";
         String fourthAttr = null;
         String isoform = "Q9NXB0-1";
-        List<UniProtDBCrossReference> xrefs = new ArrayList<>();
-        UniProtXDbType uniProtXDbType = new UniProtXDbTypeImpl(type);
+        List<UniProtCrossReference> xrefs = new ArrayList<>();
+        UniProtDatabase uniProtDatabase = new UniProtDatabaseImpl(type);
         xrefs.add(
-                new UniProtDBCrossReferenceBuilder()
-                        .databaseType(uniProtXDbType)
+                new UniProtCrossReferenceBuilder()
+                        .database(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
-                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
-                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(2), fourthAttr)
                         .build());
 
         // DR   EMBL; DQ185029; AAZ94714.1; -; mRNA.
 
         type = "EMBL";
-        uniProtXDbType = new UniProtXDbTypeImpl(type);
+        uniProtDatabase = new UniProtDatabaseImpl(type);
         id = "DQ185029";
         description = "AAZ94714.1";
         thirdAttr = "-";
         fourthAttr = "mRNA";
         isoform = null;
         xrefs.add(
-                new UniProtDBCrossReferenceBuilder()
-                        .databaseType(uniProtXDbType)
+                new UniProtCrossReferenceBuilder()
+                        .database(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
-                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
-                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(2), fourthAttr)
                         .build());
 
         // DR   EMBL; AK000352; BAA91105.1; ALT_INIT; mRNA.
         type = "EMBL";
-        uniProtXDbType = new UniProtXDbTypeImpl(type);
+        uniProtDatabase = new UniProtDatabaseImpl(type);
         id = "AK000352";
         description = "BAA91105.1";
         thirdAttr = "ALT_INIT";
         fourthAttr = "mRNA";
         isoform = null;
         xrefs.add(
-                new UniProtDBCrossReferenceBuilder()
-                        .databaseType(uniProtXDbType)
+                new UniProtCrossReferenceBuilder()
+                        .database(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
-                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
-                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(2), fourthAttr)
                         .build());
 
         // DR   EMBL; AK310815; -; NOT_ANNOTATED_CDS; mRNA.
         type = "EMBL";
-        uniProtXDbType = new UniProtXDbTypeImpl(type);
+        uniProtDatabase = new UniProtDatabaseImpl(type);
         id = "AK310815";
         description = "-";
         thirdAttr = "NOT_ANNOTATED_CDS";
         fourthAttr = "mRNA";
         isoform = null;
         xrefs.add(
-                new UniProtDBCrossReferenceBuilder()
-                        .databaseType(uniProtXDbType)
+                new UniProtCrossReferenceBuilder()
+                        .database(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
-                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
-                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(2), fourthAttr)
                         .build());
 
         //   DR   HPA; HPA021372; -.
         type = "HPA";
-        uniProtXDbType = new UniProtXDbTypeImpl(type);
+        uniProtDatabase = new UniProtDatabaseImpl(type);
         id = "HPA021372";
         description = "-";
         thirdAttr = null;
         fourthAttr = null;
         isoform = null;
         xrefs.add(
-                new UniProtDBCrossReferenceBuilder()
-                        .databaseType(uniProtXDbType)
+                new UniProtCrossReferenceBuilder()
+                        .database(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
-                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
-                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(2), fourthAttr)
                         .build());
 
         //  DR   HPA; HPA021812; -.
         type = "HPA";
-        uniProtXDbType = new UniProtXDbTypeImpl(type);
+        uniProtDatabase = new UniProtDatabaseImpl(type);
         id = "HPA021812";
         description = "-";
         thirdAttr = null;
         fourthAttr = null;
         isoform = null;
         xrefs.add(
-                new UniProtDBCrossReferenceBuilder()
-                        .databaseType(uniProtXDbType)
+                new UniProtCrossReferenceBuilder()
+                        .database(uniProtDatabase)
                         .id(id)
                         .isoformId(isoform)
-                        .propertiesAdd(uniProtXDbType.getAttribute(0), description)
-                        .propertiesAdd(uniProtXDbType.getAttribute(1), thirdAttr)
-                        .propertiesAdd(uniProtXDbType.getAttribute(2), fourthAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtDatabase.getUniProtDatabaseAttribute(2), fourthAttr)
                         .build());
 
         return xrefs;

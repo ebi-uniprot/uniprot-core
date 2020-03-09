@@ -9,7 +9,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.Absorption;
 import org.uniprot.core.uniprot.comment.Note;
-import org.uniprot.core.uniprot.comment.builder.AbsorptionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 class AbsorptionImplTest {

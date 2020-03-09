@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.builder.AbstractCitationBuilder;
-import org.uniprot.core.citation.builder.AuthorBuilder;
+import org.uniprot.core.citation.impl.AbstractCitationBuilder;
+import org.uniprot.core.citation.impl.AuthorBuilder;
 import org.uniprot.core.xml.jaxb.proteome.ConsortiumType;
 import org.uniprot.core.xml.jaxb.proteome.NameListType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;

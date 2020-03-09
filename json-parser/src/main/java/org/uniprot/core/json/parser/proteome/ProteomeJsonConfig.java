@@ -2,8 +2,8 @@ package org.uniprot.core.json.parser.proteome;
 
 import java.time.LocalDate;
 
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.DatabaseType;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.Database;
 import org.uniprot.core.Value;
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Book;
@@ -26,8 +26,8 @@ import org.uniprot.core.citation.impl.PublicationDateImpl;
 import org.uniprot.core.citation.impl.SubmissionImpl;
 import org.uniprot.core.citation.impl.ThesisImpl;
 import org.uniprot.core.citation.impl.UnpublishedImpl;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
-import org.uniprot.core.impl.DefaultDatabaseType;
+import org.uniprot.core.impl.CrossReferenceImpl;
+import org.uniprot.core.impl.DefaultDatabase;
 import org.uniprot.core.impl.ValueImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.json.parser.deserializer.LocalDateDeserializer;
@@ -102,8 +102,8 @@ public class ProteomeJsonConfig extends JsonConfig {
 
         mod.addAbstractTypeMapping(Value.class, ValueImpl.class);
         mod.addAbstractTypeMapping(RedundantProteome.class, RedundantProteomeImpl.class);
-        mod.addAbstractTypeMapping(DBCrossReference.class, DBCrossReferenceImpl.class);
-        mod.addAbstractTypeMapping(DatabaseType.class, DefaultDatabaseType.class);
+        mod.addAbstractTypeMapping(CrossReference.class, CrossReferenceImpl.class);
+        mod.addAbstractTypeMapping(Database.class, DefaultDatabase.class);
 
         mod.addAbstractTypeMapping(Protein.class, ProteinImpl.class);
         mod.addAbstractTypeMapping(CanonicalProtein.class, CanonicalProteinImpl.class);

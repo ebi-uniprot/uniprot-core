@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprot.description.ProteinSection;
-import org.uniprot.core.uniprot.description.builder.ProteinSectionBuilder;
+import org.uniprot.core.uniprot.description.impl.ProteinSectionBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;

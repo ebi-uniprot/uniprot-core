@@ -3,8 +3,8 @@ package org.uniprot.core.parser.tsv.uniprot;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.uniprot.UniProtReference;
 
 public class EntryReferenceMap implements NamedValueMap {
@@ -28,10 +28,10 @@ public class EntryReferenceMap implements NamedValueMap {
         String result =
                 references.stream()
                         .map(UniProtReference::getCitation)
-                        .filter(val -> val.getCitationXrefs() != null)
-                        .flatMap(val -> val.getCitationXrefs().stream())
-                        .filter(val -> val.getDatabaseType().equals(CitationXrefType.PUBMED))
-                        .map(DBCrossReference::getId)
+                        .filter(val -> val.getCitationCrossReferences() != null)
+                        .flatMap(val -> val.getCitationCrossReferences().stream())
+                        .filter(val -> val.getDatabase().equals(CitationDatabase.PUBMED))
+                        .map(CrossReference::getId)
                         .collect(Collectors.joining("; "));
         Map<String, String> map = new HashMap<>();
         map.put(FIELDS.get(0), result);

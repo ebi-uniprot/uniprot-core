@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.taxonomy.TaxonomyInactiveReason;
 import org.uniprot.core.taxonomy.TaxonomyInactiveReasonType;
-import org.uniprot.core.taxonomy.builder.TaxonomyInactiveReasonBuilder;
 
 class TaxonomyInactiveReasonImplTest {
     @Test

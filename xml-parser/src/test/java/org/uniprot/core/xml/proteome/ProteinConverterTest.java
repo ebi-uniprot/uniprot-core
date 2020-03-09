@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.Protein;
-import org.uniprot.core.proteome.builder.ProteinBuilder;
+import org.uniprot.core.proteome.impl.ProteinBuilder;
 import org.uniprot.core.uniprot.UniProtEntryType;
 import org.uniprot.core.xml.jaxb.proteome.EntryType;
 import org.uniprot.core.xml.jaxb.proteome.GeneNameType;

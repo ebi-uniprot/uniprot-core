@@ -7,7 +7,6 @@ import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
-import org.uniprot.core.taxonomy.builder.TaxonomyLineageBuilder;
 
 class TaxonomyLineageImplTest {
     @Test

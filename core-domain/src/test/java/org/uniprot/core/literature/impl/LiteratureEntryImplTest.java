@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.ObjectsForTests;
 import org.uniprot.core.literature.LiteratureEntry;
-import org.uniprot.core.literature.builder.LiteratureEntryBuilder;
 
 class LiteratureEntryImplTest {
     @Test

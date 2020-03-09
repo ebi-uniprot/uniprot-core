@@ -7,8 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.uniprot.core.cv.ec.ECEntry;
-import org.uniprot.core.cv.ec.ECEntryBuilder;
-import org.uniprot.core.cv.ec.impl.ECEntryImpl;
+import org.uniprot.core.cv.ec.impl.ECEntryBuilder;
 import org.uniprot.cv.common.AbstractFileReader;
 
 public class ECFileReader extends AbstractFileReader<ECEntry> {
@@ -57,7 +56,11 @@ public class ECFileReader extends AbstractFileReader<ECEntry> {
                                     + matcher.group(2)
                                     + matcher.group(3)
                                     + matcher.group(4);
-                    ecs.add(new ECEntryImpl(id, removeLastDotsFrom(matcher.group(5))));
+                    ecs.add(
+                            new ECEntryBuilder()
+                                    .id(id)
+                                    .label(removeLastDotsFrom(matcher.group(5)))
+                                    .build());
                 }
             }
             return ecs;

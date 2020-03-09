@@ -8,26 +8,23 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
-import org.uniprot.core.uniprot.comment.builder.CofactorCommentBuilder;
 
 class CofactorCommentImplTest {
     @Test
     void testCofactorCommentImpl() {
         String name = "someName";
-        DBCrossReference<CofactorReferenceType> reference =
-                new DBCrossReferenceBuilder<CofactorReferenceType>()
-                        .databaseType(CofactorReferenceType.CHEBI)
+        CrossReference<CofactorDatabase> reference =
+                new CrossReferenceBuilder<CofactorDatabase>()
+                        .database(CofactorDatabase.CHEBI)
                         .id("CHEBI:324")
                         .build();
         Cofactor cofactor =
                 new CofactorBuilder()
                         .name(name)
-                        .reference(reference)
+                        .cofactorCrossReference(reference)
                         .evidencesSet(createEvidences())
                         .build();
         List<Cofactor> cofactors = Arrays.asList(cofactor);
@@ -50,12 +47,12 @@ class CofactorCommentImplTest {
     @Test
     void testCofactorCommentImplNoMolecule() {
         String name = "someName";
-        DBCrossReference<CofactorReferenceType> reference =
-                new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
+        CrossReference<CofactorDatabase> reference =
+                crossReference(CofactorDatabase.CHEBI, "CHEBI:324");
         Cofactor cofactor =
                 new CofactorBuilder()
                         .name(name)
-                        .reference(reference)
+                        .cofactorCrossReference(reference)
                         .evidencesSet(createEvidences())
                         .build();
         List<Cofactor> cofactors = Arrays.asList(cofactor);

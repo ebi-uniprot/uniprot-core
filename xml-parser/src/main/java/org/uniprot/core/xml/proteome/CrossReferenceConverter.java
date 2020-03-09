@@ -2,17 +2,17 @@ package org.uniprot.core.xml.proteome;
 
 import java.util.stream.Collectors;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.Property;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
-import org.uniprot.core.proteome.ProteomeXReferenceType;
+import org.uniprot.core.impl.CrossReferenceBuilder;
+import org.uniprot.core.proteome.ProteomeDatabase;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.DbReferenceType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 import org.uniprot.core.xml.jaxb.proteome.PropertyType;
 
 public class CrossReferenceConverter
-        implements Converter<DbReferenceType, DBCrossReference<ProteomeXReferenceType>> {
+        implements Converter<DbReferenceType, CrossReference<ProteomeDatabase>> {
     private static final String GC_SET_ACC = "GCSetAcc";
     private final ObjectFactory xmlFactory;
 
@@ -25,10 +25,10 @@ public class CrossReferenceConverter
     }
 
     @Override
-    public DBCrossReference<ProteomeXReferenceType> fromXml(DbReferenceType xmlObj) {
-        DBCrossReferenceBuilder<ProteomeXReferenceType> builder =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(fromXml(xmlObj.getType()))
+    public CrossReference<ProteomeDatabase> fromXml(DbReferenceType xmlObj) {
+        CrossReferenceBuilder<ProteomeDatabase> builder =
+                new CrossReferenceBuilder<ProteomeDatabase>()
+                        .database(fromXml(xmlObj.getType()))
                         .id(xmlObj.getId());
         builder.propertiesSet(
                 xmlObj.getProperty().stream()
@@ -39,9 +39,9 @@ public class CrossReferenceConverter
     }
 
     @Override
-    public DbReferenceType toXml(DBCrossReference<ProteomeXReferenceType> uniObj) {
+    public DbReferenceType toXml(CrossReference<ProteomeDatabase> uniObj) {
         DbReferenceType xmlObj = xmlFactory.createDbReferenceType();
-        xmlObj.setType(toXml(uniObj.getDatabaseType()));
+        xmlObj.setType(toXml(uniObj.getDatabase()));
         xmlObj.setId(uniObj.getId());
         uniObj.getProperties().stream()
                 .map(this::toXmlProperty)
@@ -50,15 +50,15 @@ public class CrossReferenceConverter
         return xmlObj;
     }
 
-    private String toXml(ProteomeXReferenceType type) {
-        if (type == ProteomeXReferenceType.GENOME_ASSEMBLY) return GC_SET_ACC;
+    private String toXml(ProteomeDatabase type) {
+        if (type == ProteomeDatabase.GENOME_ASSEMBLY) return GC_SET_ACC;
         else return type.getName();
     }
 
-    private ProteomeXReferenceType fromXml(String type) {
+    private ProteomeDatabase fromXml(String type) {
         if (GC_SET_ACC.equals(type)) {
-            return ProteomeXReferenceType.GENOME_ASSEMBLY;
-        } else return ProteomeXReferenceType.fromValue(type);
+            return ProteomeDatabase.GENOME_ASSEMBLY;
+        } else return ProteomeDatabase.fromValue(type);
     }
 
     private Property fromXmlProperty(PropertyType property) {

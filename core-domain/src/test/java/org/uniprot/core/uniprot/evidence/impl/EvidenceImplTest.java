@@ -9,7 +9,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
-import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
 
 class EvidenceImplTest {
     Evidence impl = new EvidenceImpl(EvidenceCode.ECO_0000256, "EnsemblPlants", "id");
@@ -51,7 +50,7 @@ class EvidenceImplTest {
 
     @Test
     void canGetSource() {
-        assertEquals("id", impl.getSource().getId());
+        assertEquals("id", impl.getEvidenceCrossReference().getId());
     }
 
     @Test

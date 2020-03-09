@@ -8,18 +8,17 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
-import org.uniprot.core.citation.builder.JournalArticleBuilder;
-import org.uniprot.core.citation.builder.SubmissionBuilder;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.citation.impl.JournalArticleBuilder;
+import org.uniprot.core.citation.impl.SubmissionBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.proteome.*;
-import org.uniprot.core.proteome.builder.ComponentBuilder;
-import org.uniprot.core.proteome.builder.ProteomeEntryBuilder;
-import org.uniprot.core.proteome.builder.ProteomeIdBuilder;
+import org.uniprot.core.proteome.impl.ComponentBuilder;
+import org.uniprot.core.proteome.impl.ProteomeEntryBuilder;
+import org.uniprot.core.proteome.impl.ProteomeIdBuilder;
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
-import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.TaxonomyBuilder;
 
 class ProteomeConverterTest {
 
@@ -41,15 +40,15 @@ class ProteomeConverterTest {
         LocalDate modified = LocalDate.of(2015, 11, 5);
         //	String reId = "UP000005641";
         //	ProteomeId redId = new ProteomeIdBuilder (reId).build();
-        List<DBCrossReference<ProteomeXReferenceType>> xrefs = new ArrayList<>();
-        DBCrossReference<ProteomeXReferenceType> xref1 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ACCESSION)
+        List<CrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
+        CrossReference<ProteomeDatabase> xref1 =
+                new CrossReferenceBuilder<ProteomeDatabase>()
+                        .database(ProteomeDatabase.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
-        DBCrossReference<ProteomeXReferenceType> xref2 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ANNOTATION)
+        CrossReference<ProteomeDatabase> xref2 =
+                new CrossReferenceBuilder<ProteomeDatabase>()
+                        .database(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
         xrefs.add(xref1);
@@ -82,10 +81,10 @@ class ProteomeConverterTest {
                         .modified(modified)
                         .proteomeType(ProteomeType.NORMAL)
                         //	.redundantTo(redId)
-                        .dbXReferencesSet(xrefs)
+                        .proteomeCrossReferencesSet(xrefs)
                         .componentsSet(components)
                         .superkingdom(Superkingdom.EUKARYOTA)
-                        .referencesSet(citations)
+                        .citationsSet(citations)
                         .annotationScore(15);
 
         return builder.build();
@@ -105,12 +104,16 @@ class ProteomeConverterTest {
                 .authorsAdd("Sulson J.E.")
                 .authorsAdd("JWaterston R.")
                 .authoringGroupsSet(Arrays.asList("The C. elegans sequencing consortium"))
-                .citationXrefsSet(
-                        Arrays.asList(
-                                new DBCrossReferenceImpl<>(CitationXrefType.PUBMED, "9851916"),
-                                new DBCrossReferenceImpl<>(
-                                        CitationXrefType.DOI,
-                                        "https://doi.org/10.1126/science.282.5396.2012")));
+                .citationCrossReferencesAdd(
+                        new CrossReferenceBuilder<CitationDatabase>()
+                                .database(CitationDatabase.PUBMED)
+                                .id("9851916")
+                                .build())
+                .citationCrossReferencesAdd(
+                        new CrossReferenceBuilder<CitationDatabase>()
+                                .database(CitationDatabase.DOI)
+                                .id("https://doi.org/10.1126/science.282.5396.2012")
+                                .build());
         JournalArticle citation = builder.build();
         return citation;
     }

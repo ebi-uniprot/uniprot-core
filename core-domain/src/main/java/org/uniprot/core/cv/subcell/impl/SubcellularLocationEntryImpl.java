@@ -1,32 +1,67 @@
 package org.uniprot.core.cv.subcell.impl;
 
+import static org.uniprot.core.util.Utils.unmodifiableList;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
 import org.uniprot.core.Statistics;
-import org.uniprot.core.cv.keyword.GeneOntology;
-import org.uniprot.core.cv.keyword.Keyword;
+import org.uniprot.core.cv.go.GoTerm;
+import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.subcell.SubcellLocationCategory;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 
 public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
     private static final long serialVersionUID = 8881869836509747529L;
-    private SubcellLocationCategory category;
     private String id;
     private String accession;
     private String definition;
     private String content;
-    private List<String> synonyms = Collections.emptyList();
-    private Keyword keyword;
-    private List<GeneOntology> geneOntologies = Collections.emptyList();
+    private KeywordId keyword;
     private String note;
+    private Statistics statistics;
+    private SubcellLocationCategory category;
+    private List<GoTerm> geneOntologies = Collections.emptyList();
+    private List<String> synonyms = Collections.emptyList();
     private List<String> references = Collections.emptyList();
     private List<String> links = Collections.emptyList();
     private List<SubcellularLocationEntry> isA = Collections.emptyList();
     private List<SubcellularLocationEntry> partOf = Collections.emptyList();
-    private Statistics statistics;
+
+    SubcellularLocationEntryImpl() {}
+
+    SubcellularLocationEntryImpl(
+            String id,
+            String accession,
+            String definition,
+            String content,
+            KeywordId keyword,
+            String note,
+            Statistics statistics,
+            SubcellLocationCategory category,
+            List<GoTerm> geneOntologies,
+            List<String> synonyms,
+            List<String> references,
+            List<String> links,
+            List<SubcellularLocationEntry> isA,
+            List<SubcellularLocationEntry> partOf) {
+        this.id = id;
+        this.accession = accession;
+        this.definition = definition;
+        this.content = content;
+        this.keyword = keyword;
+        this.note = note;
+        this.statistics = statistics;
+        this.category = category;
+        this.geneOntologies = unmodifiableList(geneOntologies);
+        this.synonyms = unmodifiableList(synonyms);
+        this.references = unmodifiableList(references);
+        this.links = unmodifiableList(links);
+        this.isA = unmodifiableList(isA);
+        this.partOf = unmodifiableList(partOf);
+    }
 
     @Override
     public SubcellLocationCategory getCategory() {
@@ -59,12 +94,12 @@ public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
     }
 
     @Override
-    public Optional<Keyword> getKeyword() {
+    public Optional<KeywordId> getKeyword() {
         return Optional.ofNullable(keyword);
     }
 
     @Override
-    public List<GeneOntology> getGeneOntologies() {
+    public List<GoTerm> getGeneOntologies() {
         return geneOntologies;
     }
 
@@ -98,67 +133,11 @@ public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
         return statistics;
     }
 
-    public void setCategory(SubcellLocationCategory category) {
-        this.category = category;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setAccession(String accession) {
-        this.accession = accession;
-    }
-
-    public void setDefinition(String definition) {
-        this.definition = definition;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public void setSynonyms(List<String> synonyms) {
-        this.synonyms = synonyms;
-    }
-
-    public void setKeyword(Keyword keyword) {
-        this.keyword = keyword;
-    }
-
-    public void setGeneOntologies(List<GeneOntology> geneOntologies) {
-        this.geneOntologies = geneOntologies;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
-    }
-
-    public void setReferences(List<String> references) {
-        this.references = references;
-    }
-
-    public void setLinks(List<String> links) {
-        this.links = links;
-    }
-
-    public void setIsA(List<SubcellularLocationEntry> isA) {
-        this.isA = isA;
-    }
-
-    public void setPartOf(List<SubcellularLocationEntry> partOf) {
-        this.partOf = partOf;
-    }
-
-    public void setStatistics(Statistics statistics) {
-        this.statistics = statistics;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SubcellularLocationEntryImpl that = (SubcellularLocationEntryImpl) o;
+        SubcellularLocationEntry that = (SubcellularLocationEntry) o;
         return getCategory() == that.getCategory()
                 && Objects.equals(getId(), that.getId())
                 && Objects.equals(getAccession(), that.getAccession())

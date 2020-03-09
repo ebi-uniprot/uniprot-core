@@ -9,18 +9,18 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.*;
-import org.uniprot.core.citation.builder.BookBuilder;
-import org.uniprot.core.citation.builder.JournalArticleBuilder;
-import org.uniprot.core.citation.builder.SubmissionBuilder;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.citation.impl.BookBuilder;
+import org.uniprot.core.citation.impl.JournalArticleBuilder;
+import org.uniprot.core.citation.impl.SubmissionBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.ReferenceComment;
 import org.uniprot.core.uniprot.ReferenceCommentType;
 import org.uniprot.core.uniprot.UniProtReference;
-import org.uniprot.core.uniprot.builder.ReferenceCommentBuilder;
-import org.uniprot.core.uniprot.builder.UniProtReferenceBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
-import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
+import org.uniprot.core.uniprot.evidence.impl.EvidenceBuilder;
+import org.uniprot.core.uniprot.impl.ReferenceCommentBuilder;
+import org.uniprot.core.uniprot.impl.UniProtReferenceBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.ReferenceType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
@@ -135,12 +135,16 @@ class ReferenceConverterTest {
                 .authorsAdd("JWaterston R.")
                 .publicationDate(date)
                 .authoringGroupsSet(Arrays.asList("The C. elegans sequencing consortium"))
-                .citationXrefsSet(
-                        Arrays.asList(
-                                new DBCrossReferenceImpl<>(CitationXrefType.PUBMED, "9851916"),
-                                new DBCrossReferenceImpl<>(
-                                        CitationXrefType.DOI,
-                                        "https://doi.org/10.1126/science.282.5396.2012")));
+                .citationCrossReferencesAdd(
+                        new CrossReferenceBuilder<CitationDatabase>()
+                                .database(CitationDatabase.PUBMED)
+                                .id("9851916")
+                                .build())
+                .citationCrossReferencesAdd(
+                        new CrossReferenceBuilder<CitationDatabase>()
+                                .database(CitationDatabase.DOI)
+                                .id("https://doi.org/10.1126/science.282.5396.2012")
+                                .build());
         JournalArticle citation = builder.build();
         return citation;
     }

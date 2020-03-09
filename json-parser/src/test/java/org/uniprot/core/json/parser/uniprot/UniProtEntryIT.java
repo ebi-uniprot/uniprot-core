@@ -11,12 +11,11 @@ import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.taxonomy.TaxonomyLineageTest;
 import org.uniprot.core.json.parser.uniprot.comment.*;
 import org.uniprot.core.uniprot.*;
-import org.uniprot.core.uniprot.builder.EntryInactiveReasonBuilder;
-import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
-import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
-import org.uniprot.core.uniprot.builder.UniProtIdBuilder;
 import org.uniprot.core.uniprot.comment.Comment;
-import org.uniprot.core.uniprot.impl.UniProtEntryImpl;
+import org.uniprot.core.uniprot.impl.EntryInactiveReasonBuilder;
+import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
+import org.uniprot.core.uniprot.impl.UniProtEntryBuilder;
+import org.uniprot.core.uniprot.impl.UniProtIdBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -116,26 +115,41 @@ class UniProtEntryIT {
                         UniProtAccessionTest.getUniProtAccession(),
                         uniProtId,
                         UniProtEntryType.SWISSPROT);
-        return builder.secondaryAccessionsAdd(UniProtAccessionTest.getUniProtAccession())
-                .entryAudit(EntryAuditTest.getEntryAudit())
-                .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
-                .proteinDescription(ProteinDescriptionTest.getProteinDescription())
-                .genesAdd(GeneTest.createCompleteGene())
-                .annotationScore(2)
-                .organism(OrganimsTest.getOrganism())
-                .organismHostsSet(Collections.singletonList(OrganimHostTest.getOrganismHost()))
-                .commentsSet(comments)
-                .featuresAdd(FeatureTest.getFeature())
-                .internalSection(InternalSectionTest.getInternalSection())
-                .keywordsSet(Collections.singletonList(KeywordTest.getKeyword()))
-                .geneLocationsSet(Collections.singletonList(GeneLocationTest.getGeneLocation()))
-                .referencesSet(UniProtReferenceTest.getUniProtReferences())
-                .databaseCrossReferencesSet(
-                        Collections.singletonList(
-                                UniProtDBCrossReferenceTest.getUniProtDBCrossReference()))
-                .sequence(SequenceTest.getSequence())
-                .lineagesSet(
-                        Collections.singletonList(TaxonomyLineageTest.getCompleteTaxonomyLineage()))
-                .build();
+        UniProtEntry entry =
+                builder.secondaryAccessionsAdd(UniProtAccessionTest.getUniProtAccession())
+                        .entryAudit(EntryAuditTest.getEntryAudit())
+                        .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
+                        .proteinDescription(ProteinDescriptionTest.getProteinDescription())
+                        .genesSet(Collections.singletonList(GeneTest.createCompleteGene()))
+                        .annotationScore(2)
+                        .organism(OrganimsTest.getOrganism())
+                        .organismHostsSet(
+                                Collections.singletonList(OrganimHostTest.getOrganismHost()))
+                        .commentsSet(comments)
+                        .featuresSet(Collections.singletonList(FeatureTest.getFeature()))
+                        .internalSection(InternalSectionTest.getInternalSection())
+                        .keywordsSet(Collections.singletonList(KeywordTest.getKeyword()))
+                        .geneLocationsSet(
+                                Collections.singletonList(GeneLocationTest.getGeneLocation()))
+                        .referencesSet(UniProtReferenceTest.getUniProtReferences())
+                        .uniProtCrossReferencesSet(
+                                Collections.singletonList(
+                                        UniProtCrossReferenceTest.getUniProtDBCrossReference()))
+                        .sequence(SequenceTest.getSequence())
+                        .lineagesSet(
+                                Collections.singletonList(
+                                        TaxonomyLineageTest.getCompleteTaxonomyLineage()))
+                        .build();
+
+        ValidateJson.verifyJsonRoundTripParser(entry);
+        ValidateJson.verifyEmptyFields(entry);
+
+        try {
+            ObjectMapper mapper = UniprotJsonConfig.getInstance().getSimpleObjectMapper();
+            String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
+            System.out.println(json);
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
     }
 }

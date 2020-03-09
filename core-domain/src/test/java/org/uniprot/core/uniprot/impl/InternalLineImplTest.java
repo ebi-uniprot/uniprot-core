@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.InternalLine;
 import org.uniprot.core.uniprot.InternalLineType;
-import org.uniprot.core.uniprot.builder.InternalLineBuilder;
 
 class InternalLineImplTest {
     @Test

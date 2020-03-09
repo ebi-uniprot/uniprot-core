@@ -5,7 +5,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.xdb.EmblScored;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 
 class EMBLScoredTest extends AbstractDBXTest {
     @Test
@@ -143,7 +143,7 @@ class EMBLScoredTest extends AbstractDBXTest {
 
     @Override
     HasScore getScored(String lines) {
-        List<UniProtDBCrossReference> crossReferences = getDBXRefs(lines, "EMBL");
+        List<UniProtCrossReference> crossReferences = getDBXRefs(lines, "EMBL");
         return new EmblScored(crossReferences);
     }
 }

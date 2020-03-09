@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceBuilder;
+import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceBuilder;
 
 public class CrossReferenceTest {
     private String random;

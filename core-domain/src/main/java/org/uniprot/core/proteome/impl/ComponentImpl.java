@@ -4,10 +4,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.proteome.Component;
 import org.uniprot.core.proteome.ComponentType;
-import org.uniprot.core.proteome.ProteomeXReferenceType;
+import org.uniprot.core.proteome.ProteomeDatabase;
 import org.uniprot.core.util.Utils;
 
 public class ComponentImpl implements Component {
@@ -17,10 +17,10 @@ public class ComponentImpl implements Component {
     private int proteinCount;
     private ComponentType type;
 
-    private List<DBCrossReference<ProteomeXReferenceType>> dbXReferences;
+    private List<CrossReference<ProteomeDatabase>> proteomeCrossReferences;
 
-    protected ComponentImpl() {
-        dbXReferences = Collections.emptyList();
+    ComponentImpl() {
+        proteomeCrossReferences = Collections.emptyList();
     }
 
     public ComponentImpl(
@@ -28,12 +28,12 @@ public class ComponentImpl implements Component {
             String description,
             int proteinCount,
             ComponentType type,
-            List<DBCrossReference<ProteomeXReferenceType>> dbXReferences) {
+            List<CrossReference<ProteomeDatabase>> proteomeCrossReferences) {
         this.name = name;
         this.description = description;
         this.proteinCount = proteinCount;
         this.type = type;
-        this.dbXReferences = Utils.unmodifiableList(dbXReferences);
+        this.proteomeCrossReferences = Utils.unmodifiableList(proteomeCrossReferences);
     }
 
     @Override
@@ -47,8 +47,8 @@ public class ComponentImpl implements Component {
     }
 
     @Override
-    public List<DBCrossReference<ProteomeXReferenceType>> getDbXReferences() {
-        return dbXReferences;
+    public List<CrossReference<ProteomeDatabase>> getProteomeCrossReferences() {
+        return proteomeCrossReferences;
     }
 
     @Override
@@ -63,7 +63,7 @@ public class ComponentImpl implements Component {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, proteinCount, dbXReferences, type);
+        return Objects.hash(name, description, proteinCount, proteomeCrossReferences, type);
     }
 
     @Override
@@ -76,6 +76,6 @@ public class ComponentImpl implements Component {
                 && Objects.equals(description, other.description)
                 && Objects.equals(proteinCount, other.proteinCount)
                 && Objects.equals(type, other.type)
-                && Objects.equals(dbXReferences, other.dbXReferences);
+                && Objects.equals(proteomeCrossReferences, other.proteomeCrossReferences);
     }
 }

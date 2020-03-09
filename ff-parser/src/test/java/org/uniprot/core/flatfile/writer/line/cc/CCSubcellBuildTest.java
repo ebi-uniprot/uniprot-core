@@ -10,9 +10,9 @@ import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.SubcellularLocation;
 import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
 import org.uniprot.core.uniprot.comment.SubcellularLocationValue;
-import org.uniprot.core.uniprot.comment.builder.SubcellularLocationBuilder;
-import org.uniprot.core.uniprot.comment.builder.SubcellularLocationCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.SubcellularLocationValueBuilder;
+import org.uniprot.core.uniprot.comment.impl.SubcellularLocationBuilder;
+import org.uniprot.core.uniprot.comment.impl.SubcellularLocationCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.SubcellularLocationValueBuilder;
 
 import com.google.common.base.Strings;
 

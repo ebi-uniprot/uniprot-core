@@ -8,14 +8,14 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.ECNumber;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
-import org.uniprot.core.impl.ECNumberImpl;
+import org.uniprot.core.impl.CrossReferenceBuilder;
+import org.uniprot.core.impl.ECNumberBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.CatalyticActivityCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.PhysiologicalReactionBuilder;
-import org.uniprot.core.uniprot.comment.builder.ReactionBuilder;
+import org.uniprot.core.uniprot.comment.impl.CatalyticActivityCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.PhysiologicalReactionBuilder;
+import org.uniprot.core.uniprot.comment.impl.ReactionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -52,13 +52,13 @@ public class CatalyticActivityCommentTest {
         JsonNode reaction = jsonNode.get("reaction");
         assertNotNull(reaction.get("name"));
         assertEquals("some reaction", reaction.get("name").asText());
-        assertNotNull(reaction.get("reactionReferences"));
-        assertEquals(1, reaction.get("reactionReferences").size());
-        JsonNode reactionReferences = reaction.get("reactionReferences").get(0);
-        assertNotNull(reactionReferences.get("databaseType"));
-        assertEquals("ChEBI", reactionReferences.get("databaseType").asText());
-        assertNotNull(reactionReferences.get("id"));
-        assertEquals("ChEBI:3243", reactionReferences.get("id").asText());
+        assertNotNull(reaction.get("reactionCrossReferences"));
+        assertEquals(1, reaction.get("reactionCrossReferences").size());
+        JsonNode reactionCrossReferences = reaction.get("reactionCrossReferences").get(0);
+        assertNotNull(reactionCrossReferences.get("database"));
+        assertEquals("ChEBI", reactionCrossReferences.get("database").asText());
+        assertNotNull(reactionCrossReferences.get("id"));
+        assertEquals("ChEBI:3243", reactionCrossReferences.get("id").asText());
         assertNotNull(reaction.get("ecNumber"));
         assertEquals("1.2.4.5", reaction.get("ecNumber").asText());
         assertNotNull(reaction.get("evidences"));
@@ -71,12 +71,12 @@ public class CatalyticActivityCommentTest {
         JsonNode physiologicalReactions = jsonNode.get("physiologicalReactions").get(0);
         assertNotNull(physiologicalReactions.get("directionType"));
         assertEquals("right-to-left", physiologicalReactions.get("directionType").asText());
-        assertNotNull(physiologicalReactions.get("reactionReference"));
-        reactionReferences = physiologicalReactions.get("reactionReference");
-        assertNotNull(reactionReferences.get("databaseType"));
-        assertEquals("Rhea", reactionReferences.get("databaseType").asText());
-        assertNotNull(reactionReferences.get("id"));
-        assertEquals("RHEA:313", reactionReferences.get("id").asText());
+        assertNotNull(physiologicalReactions.get("reactionCrossReference"));
+        reactionCrossReferences = physiologicalReactions.get("reactionCrossReference");
+        assertNotNull(reactionCrossReferences.get("database"));
+        assertEquals("Rhea", reactionCrossReferences.get("database").asText());
+        assertNotNull(reactionCrossReferences.get("id"));
+        assertEquals("RHEA:313", reactionCrossReferences.get("id").asText());
         assertNotNull(physiologicalReactions.get("evidences"));
         assertEquals(1, physiologicalReactions.get("evidences").size());
         ValidateJson.validateEvidence(
@@ -102,9 +102,9 @@ public class CatalyticActivityCommentTest {
         phyReactions.add(
                 new PhysiologicalReactionBuilder()
                         .directionType(PhysiologicalDirectionType.RIGHT_TO_LEFT)
-                        .reactionReference(
-                                new DBCrossReferenceBuilder<ReactionReferenceType>()
-                                        .databaseType(ReactionReferenceType.RHEA)
+                        .reactionCrossReference(
+                                new CrossReferenceBuilder<ReactionDatabase>()
+                                        .database(ReactionDatabase.RHEA)
                                         .id("RHEA:313")
                                         .build())
                         .evidencesSet(evidences)
@@ -115,12 +115,12 @@ public class CatalyticActivityCommentTest {
     private static Reaction createReaction() {
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361");
         String name = "some reaction";
-        ECNumber ecNumber = new ECNumberImpl("1.2.4.5");
+        ECNumber ecNumber = new ECNumberBuilder("1.2.4.5").build();
         return new ReactionBuilder()
                 .name(name)
-                .reactionReferencesAdd(
-                        new DBCrossReferenceBuilder<ReactionReferenceType>()
-                                .databaseType(ReactionReferenceType.CHEBI)
+                .reactionCrossReferencesAdd(
+                        new CrossReferenceBuilder<ReactionDatabase>()
+                                .database(ReactionDatabase.CHEBI)
                                 .id("ChEBI:3243")
                                 .build())
                 .ecNumber(ecNumber)

@@ -3,72 +3,77 @@ package org.uniprot.core.scorer.uniprotkb.comments;
 import java.util.List;
 
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 
 public class CommentScoredFactory {
     public static CommentScored create(Comment t) {
         return create(t, null);
     }
 
-    public static CommentScored create(Comment t, List<EvidenceType> evidenceTypes) {
+    public static CommentScored create(Comment t, List<EvidenceDatabase> evidenceDatabases) {
         CommentScored commentScored = null;
         switch (t.getCommentType()) {
             case ALTERNATIVE_PRODUCTS:
                 commentScored =
                         new AlternativeProductsCommentScored(
-                                (AlternativeProductsComment) t, evidenceTypes);
+                                (AlternativeProductsComment) t, evidenceDatabases);
                 break;
             case BIOPHYSICOCHEMICAL_PROPERTIES:
                 commentScored =
                         new BioPhysicoChemicalPropertiesCommentScored(
-                                (BPCPComment) t, evidenceTypes);
+                                (BPCPComment) t, evidenceDatabases);
                 break;
             case CAUTION:
-                commentScored = new CautionCommentScored((FreeTextComment) t, evidenceTypes);
+                commentScored = new CautionCommentScored((FreeTextComment) t, evidenceDatabases);
                 break;
             case COFACTOR:
-                commentScored = new CofactorCommentScored((CofactorComment) t, evidenceTypes);
+                commentScored = new CofactorCommentScored((CofactorComment) t, evidenceDatabases);
                 break;
             case DISEASE:
-                commentScored = new DiseaseCommentScored((DiseaseComment) t, evidenceTypes);
+                commentScored = new DiseaseCommentScored((DiseaseComment) t, evidenceDatabases);
                 break;
             case INTERACTION:
-                commentScored = new InteractionCommentScored((InteractionComment) t, evidenceTypes);
+                commentScored =
+                        new InteractionCommentScored((InteractionComment) t, evidenceDatabases);
                 break;
             case MASS_SPECTROMETRY:
                 commentScored =
                         new MassSpectrometryCommentScored(
-                                (MassSpectrometryComment) t, evidenceTypes);
+                                (MassSpectrometryComment) t, evidenceDatabases);
                 break;
             case MISCELLANEOUS:
-                commentScored = new MiscellaneousCommentScored((FreeTextComment) t, evidenceTypes);
+                commentScored =
+                        new MiscellaneousCommentScored((FreeTextComment) t, evidenceDatabases);
                 break;
             case RNA_EDITING:
-                commentScored = new RnaEditingCommentScored((RnaEditingComment) t, evidenceTypes);
+                commentScored =
+                        new RnaEditingCommentScored((RnaEditingComment) t, evidenceDatabases);
                 break;
             case SEQUENCE_CAUTION:
                 commentScored =
-                        new SequenceCautionCommentScored((SequenceCautionComment) t, evidenceTypes);
+                        new SequenceCautionCommentScored(
+                                (SequenceCautionComment) t, evidenceDatabases);
                 break;
             case SIMILARITY:
-                commentScored = new SimilarityCommentScored((FreeTextComment) t, evidenceTypes);
+                commentScored = new SimilarityCommentScored((FreeTextComment) t, evidenceDatabases);
                 break;
             case SUBCELLULAR_LOCATION:
                 commentScored =
                         new SubcellularLocationCommentScored(
-                                (SubcellularLocationComment) t, evidenceTypes);
+                                (SubcellularLocationComment) t, evidenceDatabases);
                 break;
             case WEBRESOURCE:
-                commentScored = new WebResourceCommentScored((WebResourceComment) t, evidenceTypes);
+                commentScored =
+                        new WebResourceCommentScored((WebResourceComment) t, evidenceDatabases);
                 break;
             case CATALYTIC_ACTIVITY:
                 commentScored =
                         new CatalyticActivityCommentScored(
-                                (CatalyticActivityComment) t, evidenceTypes);
+                                (CatalyticActivityComment) t, evidenceDatabases);
                 break;
             default:
                 commentScored =
-                        new DefaultTextOnlyCommentScored((FreeTextComment) t, evidenceTypes);
+                        new DefaultTextOnlyCommentScored((FreeTextComment) t, evidenceDatabases);
                 break;
         }
         return commentScored;

@@ -18,7 +18,7 @@ public class DiseaseCrossReferenceImpl implements DiseaseCrossReference {
         this(null, null, Collections.emptyList());
     }
 
-    public DiseaseCrossReferenceImpl(String databaseType, String id, List<String> properties) {
+    DiseaseCrossReferenceImpl(String databaseType, String id, List<String> properties) {
         this.databaseType = databaseType;
         this.id = id;
         this.properties = unmodifiableList(properties);

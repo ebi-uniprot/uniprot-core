@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.proteome.*;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
@@ -23,9 +23,9 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     private ProteomeId redundantTo;
     private String strain;
     private String isolate;
-    private List<DBCrossReference<ProteomeXReferenceType>> dbXReferences;
+    private List<CrossReference<ProteomeDatabase>> proteomeCrossReferences;
     private List<Component> components;
-    private List<Citation> references;
+    private List<Citation> citations;
     private List<RedundantProteome> redundantProteomes;
     private ProteomeId panproteome;
     private int annotationScore;
@@ -38,15 +38,15 @@ public class ProteomeEntryImpl implements ProteomeEntry {
 
     // no arg constructor for JSON deserialization
     ProteomeEntryImpl() {
-        dbXReferences = Collections.emptyList();
+        proteomeCrossReferences = Collections.emptyList();
         components = Collections.emptyList();
-        references = Collections.emptyList();
+        citations = Collections.emptyList();
         redundantProteomes = Collections.emptyList();
         taxonLineage = Collections.emptyList();
         canonicalProteins = Collections.emptyList();
     }
 
-    public ProteomeEntryImpl(
+    ProteomeEntryImpl(
             ProteomeId id,
             Taxonomy taxonomy,
             String description,
@@ -55,9 +55,9 @@ public class ProteomeEntryImpl implements ProteomeEntry {
             ProteomeId redundantTo,
             String strain,
             String isolate,
-            List<DBCrossReference<ProteomeXReferenceType>> dbXReferences,
+            List<CrossReference<ProteomeDatabase>> proteomeCrossReferences,
             List<Component> components,
-            List<Citation> references,
+            List<Citation> citations,
             List<RedundantProteome> redundantProteomes,
             ProteomeId panproteome,
             int annotationScore,
@@ -76,9 +76,9 @@ public class ProteomeEntryImpl implements ProteomeEntry {
         this.redundantTo = redundantTo;
         this.strain = strain;
         this.isolate = isolate;
-        this.dbXReferences = Utils.unmodifiableList(dbXReferences);
+        this.proteomeCrossReferences = Utils.unmodifiableList(proteomeCrossReferences);
         this.components = Utils.unmodifiableList(components);
-        this.references = Utils.unmodifiableList(references);
+        this.citations = Utils.unmodifiableList(citations);
         this.redundantProteomes = Utils.unmodifiableList(redundantProteomes);
         this.panproteome = panproteome;
         this.annotationScore = annotationScore;
@@ -130,8 +130,8 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     }
 
     @Override
-    public List<DBCrossReference<ProteomeXReferenceType>> getDbXReferences() {
-        return dbXReferences;
+    public List<CrossReference<ProteomeDatabase>> getProteomeCrossReferences() {
+        return proteomeCrossReferences;
     }
 
     @Override
@@ -140,8 +140,8 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     }
 
     @Override
-    public List<Citation> getReferences() {
-        return references;
+    public List<Citation> getCitations() {
+        return citations;
     }
 
     @Override
@@ -193,7 +193,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     public int hashCode() {
         return Objects.hash(
                 components,
-                dbXReferences,
+                proteomeCrossReferences,
                 description,
                 id,
                 isolate,
@@ -201,7 +201,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
                 panproteome,
                 redundantProteomes,
                 redundantTo,
-                references,
+                citations,
                 strain,
                 superkingdom,
                 taxonomy,
@@ -216,7 +216,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
         if (getClass() != obj.getClass()) return false;
         ProteomeEntryImpl other = (ProteomeEntryImpl) obj;
         return Objects.equals(components, other.components)
-                && Objects.equals(dbXReferences, other.dbXReferences)
+                && Objects.equals(proteomeCrossReferences, other.proteomeCrossReferences)
                 && Objects.equals(description, other.description)
                 && Objects.equals(id, other.id)
                 && Objects.equals(isolate, other.isolate)
@@ -224,7 +224,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
                 && Objects.equals(panproteome, other.panproteome)
                 && Objects.equals(redundantProteomes, other.redundantProteomes)
                 && Objects.equals(redundantTo, other.redundantTo)
-                && Objects.equals(references, other.references)
+                && Objects.equals(citations, other.citations)
                 && Objects.equals(strain, other.strain)
                 && Objects.equals(superkingdom, other.superkingdom)
                 && Objects.equals(taxonomy, other.taxonomy)

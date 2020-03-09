@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.Submission;
 import org.uniprot.core.citation.SubmissionDatabase;
-import org.uniprot.core.citation.builder.SubmissionBuilder;
+import org.uniprot.core.citation.impl.SubmissionBuilder;
 import org.uniprot.core.xml.jaxb.proteome.ConsortiumType;
 import org.uniprot.core.xml.jaxb.proteome.NameListType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;

@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprot.comment.Absorption;
 import org.uniprot.core.uniprot.comment.BPCPComment;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 14:38:24 To change this template
@@ -16,8 +16,8 @@ public class BioPhysicoChemicalPropertiesCommentScored extends CommentScoredAbst
     private final BPCPComment comment;
 
     public BioPhysicoChemicalPropertiesCommentScored(
-            BPCPComment copy, List<EvidenceType> evidenceTypes) {
-        super(copy.getCommentType(), evidenceTypes);
+            BPCPComment copy, List<EvidenceDatabase> evidenceDatabases) {
+        super(copy.getCommentType(), evidenceDatabases);
         this.comment = copy;
     }
 
@@ -39,7 +39,8 @@ public class BioPhysicoChemicalPropertiesCommentScored extends CommentScoredAbst
                                         .filter(
                                                 val ->
                                                         ScoreUtil.hasEvidence(
-                                                                val.getEvidences(), evidenceTypes))
+                                                                val.getEvidences(),
+                                                                evidenceDatabases))
                                         .collect(Collectors.toList())
                                         .size()
                                 * 2;
@@ -49,7 +50,8 @@ public class BioPhysicoChemicalPropertiesCommentScored extends CommentScoredAbst
                                         .filter(
                                                 val ->
                                                         ScoreUtil.hasEvidence(
-                                                                val.getEvidences(), evidenceTypes))
+                                                                val.getEvidences(),
+                                                                evidenceDatabases))
                                         .collect(Collectors.toList())
                                         .size()
                                 * 2;
@@ -67,7 +69,7 @@ public class BioPhysicoChemicalPropertiesCommentScored extends CommentScoredAbst
         if (absorption == null) {
             return false;
         } else {
-            return ScoreUtil.hasEvidence(absorption.getEvidences(), evidenceTypes);
+            return ScoreUtil.hasEvidence(absorption.getEvidences(), evidenceDatabases);
         }
     }
 
@@ -77,7 +79,7 @@ public class BioPhysicoChemicalPropertiesCommentScored extends CommentScoredAbst
                 comment.getPhDependence().getTexts().stream()
                         .flatMap(val -> val.getEvidences().stream())
                         .collect(Collectors.toList()),
-                evidenceTypes);
+                evidenceDatabases);
     }
 
     private boolean hasRedoxPotentialProperty(BPCPComment comment) {
@@ -86,7 +88,7 @@ public class BioPhysicoChemicalPropertiesCommentScored extends CommentScoredAbst
                 comment.getRedoxPotential().getTexts().stream()
                         .flatMap(val -> val.getEvidences().stream())
                         .collect(Collectors.toList()),
-                evidenceTypes);
+                evidenceDatabases);
     }
 
     private boolean hasTemperatureDependenceProperty(BPCPComment comment) {
@@ -95,6 +97,6 @@ public class BioPhysicoChemicalPropertiesCommentScored extends CommentScoredAbst
                 comment.getTemperatureDependence().getTexts().stream()
                         .flatMap(val -> val.getEvidences().stream())
                         .collect(Collectors.toList()),
-                evidenceTypes);
+                evidenceDatabases);
     }
 }

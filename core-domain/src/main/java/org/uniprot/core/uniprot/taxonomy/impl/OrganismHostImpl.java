@@ -15,7 +15,7 @@ public class OrganismHostImpl extends AbstractOrganismNameImpl implements Organi
         this(-1, null, null, null);
     }
 
-    public OrganismHostImpl(
+    OrganismHostImpl(
             long taxonId, String scientificName, String commonName, List<String> synonyms) {
         super(scientificName, commonName, synonyms);
         this.taxonId = taxonId;

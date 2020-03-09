@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniProtEntryIterator;
 import org.uniprot.core.uniprot.UniProtEntry;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 
 import com.google.common.base.Strings;
 
@@ -31,7 +31,7 @@ public class UniProtEntryScorer {
 
     boolean keepSetScores = false;
     boolean withTaxId = false;
-    private final List<EvidenceType> evidenceTypes;
+    private final List<EvidenceDatabase> evidenceDatabases;
 
     public UniProtEntryScorer(OutputStream out) {
         this(out, true);
@@ -42,10 +42,10 @@ public class UniProtEntryScorer {
     }
 
     public UniProtEntryScorer(
-            OutputStream out, boolean keepSetScores, List<EvidenceType> evidenceTypes) {
+            OutputStream out, boolean keepSetScores, List<EvidenceDatabase> evidenceDatabases) {
         withTaxId = false;
         this.keepSetScores = keepSetScores;
-        this.evidenceTypes = evidenceTypes;
+        this.evidenceDatabases = evidenceDatabases;
         init();
         writer = new BufferedWriter(new OutputStreamWriter(out));
     }
@@ -54,11 +54,12 @@ public class UniProtEntryScorer {
         this(out, keepSetScores, null);
     }
 
-    public UniProtEntryScorer(Writer out, boolean keepSetScores, List<EvidenceType> evidenceTypes) {
+    public UniProtEntryScorer(
+            Writer out, boolean keepSetScores, List<EvidenceDatabase> evidenceDatabases) {
 
         this.keepSetScores = keepSetScores;
         withTaxId = false;
-        this.evidenceTypes = evidenceTypes;
+        this.evidenceDatabases = evidenceDatabases;
         init();
         writer = new BufferedWriter(out);
     }
@@ -130,8 +131,9 @@ public class UniProtEntryScorer {
             DefaultUniProtEntryIterator newEntryIterator =
                     new DefaultUniProtEntryIterator(8, 10000, 50000);
             newEntryIterator.setInput(fileName, keywordFile, diseaseFile, goFile, subcellFile);
-            List<EvidenceType> evidenceTypes = convertEvidenceTypes(configure.getEvidences());
-            UniProtEntryScorer scorer = new UniProtEntryScorer(out, true, evidenceTypes);
+            List<EvidenceDatabase> evidenceDatabases =
+                    convertEvidenceTypes(configure.getEvidences());
+            UniProtEntryScorer scorer = new UniProtEntryScorer(out, true, evidenceDatabases);
             scorer.setWithTaxId(true);
             scorer.startUp();
             scorer.scoreEntries(newEntryIterator);
@@ -144,39 +146,39 @@ public class UniProtEntryScorer {
         LOG.info("Total process time: {}", Duration.between(start, end));
     }
 
-    private static List<EvidenceType> convertEvidenceTypes(List<String> evidences) {
+    private static List<EvidenceDatabase> convertEvidenceTypes(List<String> evidences) {
         if ((evidences == null) || (evidences.isEmpty())) {
             return null;
         }
-        List<EvidenceType> evidenceTypes = new ArrayList<>();
+        List<EvidenceDatabase> evidenceDatabases = new ArrayList<>();
         for (String evidence : evidences) {
             if ("AA".equals(evidence)) {
-                evidenceTypes.addAll(getAllAAEvidenceTypes());
+                evidenceDatabases.addAll(getAllAAEvidenceTypes());
             }
             try {
-                EvidenceType type = new EvidenceType(evidence);
-                evidenceTypes.add(type);
+                EvidenceDatabase type = new EvidenceDatabase(evidence);
+                evidenceDatabases.add(type);
             } catch (Exception e) {
 
             }
         }
-        return evidenceTypes;
+        return evidenceDatabases;
     }
 
-    private static List<EvidenceType> getAllAAEvidenceTypes() {
-        List<EvidenceType> evidenceTypes = new ArrayList<>();
-        evidenceTypes.add(new EvidenceType("SAM"));
-        evidenceTypes.add(new EvidenceType("PIRNR"));
-        evidenceTypes.add(new EvidenceType("PIRSR"));
-        evidenceTypes.add(new EvidenceType("RuleBase"));
-        evidenceTypes.add(new EvidenceType("SAAS"));
-        evidenceTypes.add(new EvidenceType("UniRule"));
-        evidenceTypes.add(new EvidenceType("HAMAP-Rule"));
-        evidenceTypes.add(new EvidenceType("PROSITE-ProRule"));
-        evidenceTypes.add(new EvidenceType("PROSITE"));
-        evidenceTypes.add(new EvidenceType("SMART"));
-        evidenceTypes.add(new EvidenceType("Pfam"));
-        return evidenceTypes;
+    private static List<EvidenceDatabase> getAllAAEvidenceTypes() {
+        List<EvidenceDatabase> evidenceDatabases = new ArrayList<>();
+        evidenceDatabases.add(new EvidenceDatabase("SAM"));
+        evidenceDatabases.add(new EvidenceDatabase("PIRNR"));
+        evidenceDatabases.add(new EvidenceDatabase("PIRSR"));
+        evidenceDatabases.add(new EvidenceDatabase("RuleBase"));
+        evidenceDatabases.add(new EvidenceDatabase("SAAS"));
+        evidenceDatabases.add(new EvidenceDatabase("UniRule"));
+        evidenceDatabases.add(new EvidenceDatabase("HAMAP-Rule"));
+        evidenceDatabases.add(new EvidenceDatabase("PROSITE-ProRule"));
+        evidenceDatabases.add(new EvidenceDatabase("PROSITE"));
+        evidenceDatabases.add(new EvidenceDatabase("SMART"));
+        evidenceDatabases.add(new EvidenceDatabase("Pfam"));
+        return evidenceDatabases;
     }
 
     private void addScore(EntryScore score) {
@@ -233,7 +235,8 @@ public class UniProtEntryScorer {
             try {
                 UniProtEntry entry = is.next();
                 if (entry == null) continue;
-                EntryScore scored = new UniProtEntryScored(entry, evidenceTypes).getEntryScore();
+                EntryScore scored =
+                        new UniProtEntryScored(entry, evidenceDatabases).getEntryScore();
                 if (keepSetScores) addScore(scored);
                 if (withTaxId) {
                     writer.write(scored.toStringWithTaxId());

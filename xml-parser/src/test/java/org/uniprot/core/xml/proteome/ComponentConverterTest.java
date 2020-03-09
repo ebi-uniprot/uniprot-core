@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.Component;
-import org.uniprot.core.proteome.builder.ComponentBuilder;
+import org.uniprot.core.proteome.impl.ComponentBuilder;
 import org.uniprot.core.xml.jaxb.proteome.ComponentType;
 import org.uniprot.core.xml.jaxb.proteome.ComponentTypeType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
@@ -22,7 +22,7 @@ class ComponentConverterTest {
         Component component = converter.fromXml(xmlObj);
         assertEquals("component name", component.getName());
         assertEquals("component description", component.getDescription());
-        assertEquals(0, component.getDbXReferences().size());
+        assertEquals(0, component.getProteomeCrossReferences().size());
         assertEquals(org.uniprot.core.proteome.ComponentType.CON, component.getType());
     }
 

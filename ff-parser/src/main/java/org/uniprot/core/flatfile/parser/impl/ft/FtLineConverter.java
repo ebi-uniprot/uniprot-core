@@ -3,7 +3,7 @@ package org.uniprot.core.flatfile.parser.impl.ft;
 import java.util.*;
 import java.util.regex.Matcher;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
@@ -11,11 +11,11 @@ import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureDatabase;
 import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.uniprot.feature.FeatureType;
-import org.uniprot.core.uniprot.feature.FeatureXDbType;
-import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
-import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
+import org.uniprot.core.uniprot.feature.impl.AlternativeSequenceBuilder;
+import org.uniprot.core.uniprot.feature.impl.FeatureBuilder;
 
 import com.google.common.base.Strings;
 
@@ -201,7 +201,7 @@ public class FtLineConverter extends EvidenceCollector
                         .alternativeSequencesSet(alternativeSequences)
                         .build();
         //		factory.createReport(reports));
-        DBCrossReference<FeatureXDbType> dbXref = null;
+        CrossReference<FeatureDatabase> dbXref = null;
         return new FeatureBuilder()
                 .type(type)
                 .location(location)
@@ -209,7 +209,7 @@ public class FtLineConverter extends EvidenceCollector
                 .featureId(ft.getFtId())
                 .alternativeSequence(altSeq)
                 .evidencesSet(evidences)
-                .dbXref(dbXref)
+                .featureCrossReference(dbXref)
                 .build();
     }
 

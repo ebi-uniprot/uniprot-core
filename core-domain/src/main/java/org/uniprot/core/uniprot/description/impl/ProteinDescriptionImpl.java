@@ -30,7 +30,7 @@ public class ProteinDescriptionImpl implements ProteinDescription {
         this.contains = Collections.emptyList();
     }
 
-    public ProteinDescriptionImpl(
+    ProteinDescriptionImpl(
             ProteinRecName recommendedName,
             List<ProteinAltName> alternativeNames,
             Name allergenName,

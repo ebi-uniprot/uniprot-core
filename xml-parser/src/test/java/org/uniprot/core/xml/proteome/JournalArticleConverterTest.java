@@ -6,10 +6,10 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.JournalArticle;
-import org.uniprot.core.citation.builder.JournalArticleBuilder;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.citation.impl.JournalArticleBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.xml.jaxb.proteome.ConsortiumType;
 import org.uniprot.core.xml.jaxb.proteome.JournalType;
 import org.uniprot.core.xml.jaxb.proteome.NameListType;
@@ -79,12 +79,16 @@ class JournalArticleConverterTest {
                 .authorsAdd("Sulson J.E.")
                 .authorsAdd("JWaterston R.")
                 .authoringGroupsSet(Arrays.asList("The C. elegans sequencing consortium"))
-                .citationXrefsSet(
-                        Arrays.asList(
-                                new DBCrossReferenceImpl<>(CitationXrefType.PUBMED, "9851916"),
-                                new DBCrossReferenceImpl<>(
-                                        CitationXrefType.DOI,
-                                        "https://doi.org/10.1126/science.282.5396.2012")));
+                .citationCrossReferencesAdd(
+                        new CrossReferenceBuilder<CitationDatabase>()
+                                .database(CitationDatabase.PUBMED)
+                                .id("9851916")
+                                .build())
+                .citationCrossReferencesAdd(
+                        new CrossReferenceBuilder<CitationDatabase>()
+                                .database(CitationDatabase.DOI)
+                                .id("https://doi.org/10.1126/science.282.5396.2012")
+                                .build());
         JournalArticle citation = builder.build();
         return citation;
     }

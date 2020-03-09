@@ -20,8 +20,7 @@ public class MaximumVelocityImpl implements MaximumVelocity {
         this.evidences = Collections.emptyList();
     }
 
-    public MaximumVelocityImpl(
-            double velocity, String unit, String enzyme, List<Evidence> evidences) {
+    MaximumVelocityImpl(double velocity, String unit, String enzyme, List<Evidence> evidences) {
         this.velocity = velocity;
         this.unit = unit;
         this.enzyme = enzyme;

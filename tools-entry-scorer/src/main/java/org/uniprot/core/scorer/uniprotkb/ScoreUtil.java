@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprot.evidence.HasEvidences;
 
 public class ScoreUtil {
@@ -56,10 +56,11 @@ public class ScoreUtil {
         return type;
     }
 
-    public static boolean hasEvidence(List<Evidence> evidences, List<EvidenceType> evidenceTypes) {
-        if ((evidenceTypes == null) || (evidenceTypes.isEmpty())) return true;
+    public static boolean hasEvidence(
+            List<Evidence> evidences, List<EvidenceDatabase> evidenceDatabases) {
+        if ((evidenceDatabases == null) || (evidenceDatabases.isEmpty())) return true;
         return evidences.stream()
-                .map(e -> e.getSource().getDatabaseType())
-                .anyMatch(evidenceTypes::contains);
+                .map(e -> e.getEvidenceCrossReference().getDatabase())
+                .anyMatch(evidenceDatabases::contains);
     }
 }

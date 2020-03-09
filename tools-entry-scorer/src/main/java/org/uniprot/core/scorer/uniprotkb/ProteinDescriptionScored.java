@@ -19,7 +19,7 @@ import org.uniprot.core.uniprot.description.ProteinDescription;
 import org.uniprot.core.uniprot.description.ProteinRecName;
 import org.uniprot.core.uniprot.description.ProteinSubName;
 import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprot.evidence.HasEvidences;
 
 /**
@@ -28,12 +28,12 @@ import org.uniprot.core.uniprot.evidence.HasEvidences;
  */
 public class ProteinDescriptionScored implements HasScore {
     private final ProteinDescription description;
-    private final List<EvidenceType> evidenceTypes;
+    private final List<EvidenceDatabase> evidenceDatabases;
 
     public ProteinDescriptionScored(
-            ProteinDescription description, List<EvidenceType> evidenceTypes) {
+            ProteinDescription description, List<EvidenceDatabase> evidenceDatabases) {
         this.description = description;
-        this.evidenceTypes = evidenceTypes;
+        this.evidenceDatabases = evidenceDatabases;
     }
 
     public ProteinDescriptionScored(ProteinDescription description) {
@@ -93,19 +93,19 @@ public class ProteinDescriptionScored implements HasScore {
         if ((name == null) || !name.isValid()) {
             return false;
         }
-        return ScoreUtil.hasEvidence(name.getEvidences(), evidenceTypes);
+        return ScoreUtil.hasEvidence(name.getEvidences(), evidenceDatabases);
     }
 
     private boolean hasValidEvidences(ProteinAltName name) {
 
         List<Evidence> evidences = extractProteinAltNameEvidences(name);
-        return ScoreUtil.hasEvidence(evidences, evidenceTypes);
+        return ScoreUtil.hasEvidence(evidences, evidenceDatabases);
     }
 
     private boolean hasValidEvidences(ProteinRecName name) {
 
         List<Evidence> evidences = extractProteinRecNameEvidences(name);
-        return ScoreUtil.hasEvidence(evidences, evidenceTypes);
+        return ScoreUtil.hasEvidence(evidences, evidenceDatabases);
     }
 
     private Set<EC> getDistinctECs(ProteinDescription description) {

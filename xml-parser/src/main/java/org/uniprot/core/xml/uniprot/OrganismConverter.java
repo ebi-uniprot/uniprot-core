@@ -3,7 +3,7 @@ package org.uniprot.core.xml.uniprot;
 import java.util.List;
 
 import org.uniprot.core.uniprot.taxonomy.Organism;
-import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.OrganismType;

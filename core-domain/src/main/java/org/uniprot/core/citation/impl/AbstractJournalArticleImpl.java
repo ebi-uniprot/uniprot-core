@@ -3,7 +3,7 @@ package org.uniprot.core.citation.impl;
 import java.util.List;
 import java.util.Objects;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.util.Utils;
 
@@ -20,18 +20,24 @@ public abstract class AbstractJournalArticleImpl extends AbstractCitationImpl
     private String lastPage;
     private String volume;
 
-    public AbstractJournalArticleImpl(
+    AbstractJournalArticleImpl(
             CitationType citationType,
             List<String> authoringGroup,
             List<Author> authors,
-            List<DBCrossReference<CitationXrefType>> citationXrefs,
+            List<CrossReference<CitationDatabase>> citationCrossReferences,
             String title,
             PublicationDate publicationDate,
             String journalName,
             String firstPage,
             String lastPage,
             String volume) {
-        super(citationType, authoringGroup, authors, citationXrefs, title, publicationDate);
+        super(
+                citationType,
+                authoringGroup,
+                authors,
+                citationCrossReferences,
+                title,
+                publicationDate);
         if (journalName != null) {
             this.journal = new JournalImpl(journalName);
         }

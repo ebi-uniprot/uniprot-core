@@ -5,7 +5,7 @@ import static java.util.Collections.emptyList;
 import java.util.List;
 import java.util.Objects;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.util.Utils;
 
@@ -19,10 +19,10 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
         this(emptyList(), emptyList(), emptyList(), null, null, null, null);
     }
 
-    public ElectronicArticleImpl(
+    ElectronicArticleImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<DBCrossReference<CitationXrefType>> citationXrefs,
+            List<CrossReference<CitationDatabase>> citationCrossReferences,
             String title,
             PublicationDate publicationDate,
             String journalName,
@@ -31,7 +31,7 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
                 CitationType.ELECTRONIC_ARTICLE,
                 authoringGroup,
                 authors,
-                citationXrefs,
+                citationCrossReferences,
                 title,
                 publicationDate);
         if (journalName != null) {

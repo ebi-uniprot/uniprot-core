@@ -1,26 +1,24 @@
 package org.uniprot.core.uniprot.evidence.impl;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import org.uniprot.core.util.Utils;
 
-public class EvidencedValueImpl implements EvidencedValue {
+public class EvidencedValueImpl extends HasEvidencesImpl implements EvidencedValue {
     private String value;
-    private List<Evidence> evidences;
 
     // no arg constructor for JSON deserialization
     EvidencedValueImpl() {
         this.value = "";
-        this.evidences = Collections.emptyList();
     }
 
-    public EvidencedValueImpl(String value, List<Evidence> evidences) {
+    protected EvidencedValueImpl(String value, List<Evidence> evidences) {
+        super(evidences);
         this.value = Utils.emptyOrString(value);
-        this.evidences = Utils.unmodifiableList(evidences);
     }
 
     @Override
@@ -34,32 +32,17 @@ public class EvidencedValueImpl implements EvidencedValue {
     }
 
     @Override
-    public List<Evidence> getEvidences() {
-        return evidences;
-    }
-
-    @Override
-    public boolean hasEvidences() {
-        return Utils.notNullNotEmpty(this.evidences);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        EvidencedValueImpl that = (EvidencedValueImpl) o;
+        return value.equals(that.value);
     }
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + evidences.hashCode();
-        result = prime * result + value.hashCode();
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null) return false;
-        if (getClass() != obj.getClass()) return false;
-        EvidencedValueImpl other = (EvidencedValueImpl) obj;
-        if (!evidences.equals(other.evidences)) return false;
-        return value.equals(other.value);
+        return Objects.hash(super.hashCode(), value);
     }
 
     @Override
@@ -71,10 +54,10 @@ public class EvidencedValueImpl implements EvidencedValue {
     public String getDisplayed(String separator) {
         StringBuilder sb = new StringBuilder();
         sb.append(value);
-        if (!evidences.isEmpty()) {
+        if (!getEvidences().isEmpty()) {
             sb.append(separator)
                     .append(
-                            evidences.stream()
+                            getEvidences().stream()
                                     .map(Evidence::getValue)
                                     .collect(Collectors.joining(", ", "{", "}")));
         }

@@ -9,19 +9,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
-import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.SubmissionDatabase;
-import org.uniprot.core.citation.builder.*;
+import org.uniprot.core.citation.impl.*;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.impl.RLineBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.ReferenceComment;
 import org.uniprot.core.uniprot.ReferenceCommentType;
 import org.uniprot.core.uniprot.UniProtReference;
-import org.uniprot.core.uniprot.builder.ReferenceCommentBuilder;
-import org.uniprot.core.uniprot.builder.UniProtReferenceBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.impl.ReferenceCommentBuilder;
+import org.uniprot.core.uniprot.impl.UniProtReferenceBuilder;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
 class RLineBuildTest {
@@ -59,7 +59,7 @@ class RLineBuildTest {
         String title =
                 "Comparative genomic analyses of frog virus 3, type species of the genus Ranavirus (family Iridoviridae).";
         jaBuilder.title(title);
-        jaBuilder.citationXrefsSet(
+        jaBuilder.citationCrossReferencesSet(
                 buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", null));
         jaBuilder
                 .journalName("Virology")
@@ -133,7 +133,7 @@ class RLineBuildTest {
         String title =
                 "Comparative genomic analyses of frog virus 3, type species of the genus Ranavirus (family Iridoviridae).";
         jaBuilder.title(title);
-        jaBuilder.citationXrefsSet(
+        jaBuilder.citationCrossReferencesSet(
                 buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", null));
         jaBuilder
                 .journalName("Virology")
@@ -588,26 +588,26 @@ class RLineBuildTest {
         return sss;
     }
 
-    private List<DBCrossReference<CitationXrefType>> buildCitationXref(
+    private List<CrossReference<CitationDatabase>> buildCitationXref(
             String pubmed, String doi, String agricolaId) {
-        List<DBCrossReference<CitationXrefType>> xrefs = new ArrayList<>();
+        List<CrossReference<CitationDatabase>> xrefs = new ArrayList<>();
         if (pubmed != null) {
             xrefs.add(
-                    new DBCrossReferenceBuilder<CitationXrefType>()
-                            .databaseType(CitationXrefType.PUBMED)
+                    new CrossReferenceBuilder<CitationDatabase>()
+                            .database(CitationDatabase.PUBMED)
                             .id(pubmed)
                             .build());
         }
         if (doi != null)
             xrefs.add(
-                    new DBCrossReferenceBuilder<CitationXrefType>()
-                            .databaseType(CitationXrefType.DOI)
+                    new CrossReferenceBuilder<CitationDatabase>()
+                            .database(CitationDatabase.DOI)
                             .id(doi)
                             .build());
         if (agricolaId != null)
             xrefs.add(
-                    new DBCrossReferenceBuilder<CitationXrefType>()
-                            .databaseType(CitationXrefType.AGRICOLA)
+                    new CrossReferenceBuilder<CitationDatabase>()
+                            .database(CitationDatabase.AGRICOLA)
                             .id(agricolaId)
                             .build());
         return xrefs;

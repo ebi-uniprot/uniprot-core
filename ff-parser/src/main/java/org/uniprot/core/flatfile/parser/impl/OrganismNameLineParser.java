@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.uniprot.core.uniprot.taxonomy.OrganismName;
-import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
 

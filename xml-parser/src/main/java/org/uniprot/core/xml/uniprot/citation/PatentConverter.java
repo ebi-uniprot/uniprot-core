@@ -1,7 +1,7 @@
 package org.uniprot.core.xml.uniprot.citation;
 
 import org.uniprot.core.citation.Patent;
-import org.uniprot.core.citation.builder.PatentBuilder;
+import org.uniprot.core.citation.impl.PatentBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CitationType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;

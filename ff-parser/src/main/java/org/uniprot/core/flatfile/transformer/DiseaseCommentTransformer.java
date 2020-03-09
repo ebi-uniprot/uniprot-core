@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
-import org.uniprot.core.uniprot.comment.builder.DiseaseCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.comment.impl.DiseaseBuilder;
+import org.uniprot.core.uniprot.comment.impl.DiseaseCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComment> {
@@ -75,7 +75,7 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
             // retrieve the text between square brackets
             builder.diseaseId(populateDiseaseId(firstPart));
             builder.acronym(populateDiseaseAcronym(firstPart));
-            builder.reference(populateDiseaseReference(firstPart));
+            builder.diseaseCrossReference(populateDiseaseReference(firstPart));
             populateDiseaseDescription(builder, description);
 
             return builder.build();
@@ -144,7 +144,7 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
      * @param diseaseString - the annotation with the definition of disease
      * @return the disease reference
      */
-    private DBCrossReference<DiseaseReferenceType> populateDiseaseReference(String diseaseString) {
+    private CrossReference<DiseaseDatabase> populateDiseaseReference(String diseaseString) {
 
         Matcher bracketsMatcher = BETWEEN_SQUARE_BRACKETS_PATTERN.matcher(diseaseString);
 
@@ -154,10 +154,10 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
 
             String[] referenceElements = referenceString.split(":");
 
-            DiseaseReferenceType referenceType = DiseaseReferenceType.typeOf(referenceElements[0]);
+            DiseaseDatabase referenceType = DiseaseDatabase.typeOf(referenceElements[0]);
 
-            return new DBCrossReferenceBuilder<DiseaseReferenceType>()
-                    .databaseType(referenceType)
+            return new CrossReferenceBuilder<DiseaseDatabase>()
+                    .database(referenceType)
                     .id(referenceElements[1])
                     .build();
         }

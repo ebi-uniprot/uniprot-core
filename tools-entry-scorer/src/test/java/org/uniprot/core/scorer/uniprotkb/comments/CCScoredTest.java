@@ -11,9 +11,9 @@ import org.uniprot.core.flatfile.parser.impl.cc.CcLineTransformer;
 import org.uniprot.core.scorer.uniprotkb.UniProtEntryScored;
 import org.uniprot.core.uniprot.UniProtEntry;
 import org.uniprot.core.uniprot.UniProtEntryType;
-import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.impl.UniProtEntryBuilder;
 
 class CCScoredTest {
     private static final String CC =

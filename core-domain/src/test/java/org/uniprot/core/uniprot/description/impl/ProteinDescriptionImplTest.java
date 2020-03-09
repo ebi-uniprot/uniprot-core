@@ -6,7 +6,6 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.description.ProteinDescription;
-import org.uniprot.core.uniprot.description.builder.ProteinDescriptionBuilder;
 
 class ProteinDescriptionImplTest {
     @Test

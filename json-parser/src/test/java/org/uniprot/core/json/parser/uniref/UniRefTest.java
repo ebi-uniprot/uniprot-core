@@ -6,22 +6,22 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
-import org.uniprot.core.builder.SequenceBuilder;
+import org.uniprot.core.cv.go.GoAspect;
+import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
+import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
-import org.uniprot.core.uniparc.builder.UniParcIdBuilder;
-import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
-import org.uniprot.core.uniref.GoTermType;
+import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
+import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
 import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
-import org.uniprot.core.uniref.builder.GoTermBuilder;
-import org.uniprot.core.uniref.builder.RepresentativeMemberBuilder;
-import org.uniprot.core.uniref.builder.UniRefEntryBuilder;
-import org.uniprot.core.uniref.builder.UniRefEntryIdBuilder;
-import org.uniprot.core.uniref.builder.UniRefMemberBuilder;
+import org.uniprot.core.uniref.impl.RepresentativeMemberBuilder;
+import org.uniprot.core.uniref.impl.UniRefEntryBuilder;
+import org.uniprot.core.uniref.impl.UniRefEntryIdBuilder;
+import org.uniprot.core.uniref.impl.UniRefMemberBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -132,18 +132,18 @@ class UniRefTest {
                         .representativeMember(createReprestativeMember())
                         .membersAdd(createMember())
                         .goTermsAdd(
-                                new GoTermBuilder()
-                                        .type(GoTermType.COMPONENT)
+                                new GeneOntologyEntryBuilder()
+                                        .aspect(GoAspect.COMPONENT)
                                         .id("GO:0044444")
                                         .build())
                         .goTermsAdd(
-                                new GoTermBuilder()
-                                        .type(GoTermType.FUNCTION)
+                                new GeneOntologyEntryBuilder()
+                                        .aspect(GoAspect.FUNCTION)
                                         .id("GO:0044459")
                                         .build())
                         .goTermsAdd(
-                                new GoTermBuilder()
-                                        .type(GoTermType.PROCESS)
+                                new GeneOntologyEntryBuilder()
+                                        .aspect(GoAspect.PROCESS)
                                         .id("GO:0032459")
                                         .build())
                         .memberCount(2)

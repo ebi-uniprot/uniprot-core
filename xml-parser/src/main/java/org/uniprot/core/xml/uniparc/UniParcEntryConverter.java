@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.uniparc.UniParcDBCrossReference;
+import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcEntry;
-import org.uniprot.core.uniparc.builder.UniParcEntryBuilder;
-import org.uniprot.core.uniparc.builder.UniParcIdBuilder;
+import org.uniprot.core.uniparc.impl.UniParcEntryBuilder;
+import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
-import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.TaxonomyBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniparc.Entry;
 import org.uniprot.core.xml.jaxb.uniparc.ObjectFactory;
@@ -59,11 +59,11 @@ public class UniParcEntryConverter implements Converter<Entry, UniParcEntry> {
             builder.uniprotExclusionReason(xmlObj.getUniProtKBExclusion());
         }
 
-        List<UniParcDBCrossReference> xrefs =
+        List<UniParcCrossReference> xrefs =
                 xmlObj.getDbReference().stream()
                         .map(xrefConverter::fromXml)
                         .collect(Collectors.toList());
-        builder.databaseCrossReferencesSet(xrefs);
+        builder.uniParcCrossReferencesSet(xrefs);
         List<Taxonomy> taxonomies =
                 xrefs.stream()
                         .flatMap(val -> val.getProperties().stream())
@@ -71,7 +71,7 @@ public class UniParcEntryConverter implements Converter<Entry, UniParcEntry> {
                                 val ->
                                         val.getKey()
                                                 .equals(
-                                                        UniParcDBCrossReference
+                                                        UniParcCrossReference
                                                                 .PROPERTY_NCBI_TAXONOMY_ID))
                         .map(val -> val.getValue())
                         .distinct()
@@ -117,7 +117,7 @@ public class UniParcEntryConverter implements Converter<Entry, UniParcEntry> {
             entry.setUniProtKBExclusion(uniObj.getUniProtExclusionReason());
         }
         entry.setSequence(sequenceConverter.toXml(uniObj.getSequence()));
-        uniObj.getDbXReferences().stream()
+        uniObj.getUniParcCrossReferences().stream()
                 .map(xrefConverter::toXml)
                 .forEach(val -> entry.getDbReference().add(val));
         uniObj.getSequenceFeatures().stream()

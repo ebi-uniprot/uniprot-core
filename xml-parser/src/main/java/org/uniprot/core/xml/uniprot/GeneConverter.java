@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.uniprot.core.gene.*;
-import org.uniprot.core.uniprot.builder.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.HasEvidences;
+import org.uniprot.core.uniprot.impl.*;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.GeneNameType;
 import org.uniprot.core.xml.jaxb.uniprot.GeneType;

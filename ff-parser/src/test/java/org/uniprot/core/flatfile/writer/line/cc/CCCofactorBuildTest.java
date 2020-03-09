@@ -6,14 +6,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.Cofactor;
 import org.uniprot.core.uniprot.comment.CofactorComment;
-import org.uniprot.core.uniprot.comment.CofactorReferenceType;
+import org.uniprot.core.uniprot.comment.CofactorDatabase;
 import org.uniprot.core.uniprot.comment.Note;
-import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
-import org.uniprot.core.uniprot.comment.builder.CofactorCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.CofactorBuilder;
+import org.uniprot.core.uniprot.comment.impl.CofactorCommentBuilder;
 
 class CCCofactorBuildTest extends CCBuildTestAbstr {
     @Test
@@ -44,10 +44,10 @@ class CCCofactorBuildTest extends CCBuildTestAbstr {
         List<Cofactor> cofactors = new ArrayList<>();
         List<String> evs = new ArrayList<>();
         evs.add("ECO:0000255|HAMAP-Rule:MF_00086");
-        cofactors.add(buildCofactor("Mg(2+)", CofactorReferenceType.CHEBI, "CHEBI:18420", evs));
+        cofactors.add(buildCofactor("Mg(2+)", CofactorDatabase.CHEBI, "CHEBI:18420", evs));
         List<String> evs2 = new ArrayList<>();
         evs2.add("ECO:0000255|HAMAP-Rule:MF_00089");
-        cofactors.add(buildCofactor("Co(2+)", CofactorReferenceType.CHEBI, "CHEBI:48828", evs2));
+        cofactors.add(buildCofactor("Co(2+)", CofactorDatabase.CHEBI, "CHEBI:48828", evs2));
         builder.cofactorsSet(cofactors);
         String noteValue =
                 "Binds 2 divalent ions per subunit (magnesium or cobalt). A second loosely associated metal ion is visible in the crystal structure";
@@ -75,7 +75,7 @@ class CCCofactorBuildTest extends CCBuildTestAbstr {
         List<Cofactor> cofactors = new ArrayList<>();
         List<String> evs = new ArrayList<>();
         evs.add("ECO:0000269|PubMed:9060645");
-        //	cofactors.add(buildCofactor("Zn(2+)", CofactorReferenceType.CHEBI, "CHEBI:29105", evs));
+        //	cofactors.add(buildCofactor("Zn(2+)", CofactorDatabase.CHEBI, "CHEBI:29105", evs));
         builder.cofactorsSet(cofactors);
         String noteValue = "Binds 1 zinc ion per NS3 protease domain";
         List<String> evs3 = new ArrayList<>();
@@ -122,14 +122,14 @@ class CCCofactorBuildTest extends CCBuildTestAbstr {
         List<String> evs = new ArrayList<>();
         evs.add("ECO:0000269|PubMed:16683188");
         evs.add("ECO:0000269|PubMed:16683189");
-        cofactors.add(buildCofactor("Zn(2+)", CofactorReferenceType.CHEBI, "CHEBI:29105", evs));
+        cofactors.add(buildCofactor("Zn(2+)", CofactorDatabase.CHEBI, "CHEBI:29105", evs));
 
         evs = new ArrayList<>();
         evs.add("ECO:0000269|PubMed:16683188");
         cofactors.add(
                 buildCofactor(
                         "A very looooooooooooong cofactor name with 1 evidence tag",
-                        CofactorReferenceType.CHEBI,
+                        CofactorDatabase.CHEBI,
                         "CHEBI:12345",
                         evs));
 
@@ -139,7 +139,7 @@ class CCCofactorBuildTest extends CCBuildTestAbstr {
         cofactors.add(
                 buildCofactor(
                         "A very very looooooooooooong cofactor name with X evidence tags",
-                        CofactorReferenceType.CHEBI,
+                        CofactorDatabase.CHEBI,
                         "CHEBI:54321",
                         evs));
 
@@ -185,10 +185,10 @@ class CCCofactorBuildTest extends CCBuildTestAbstr {
         List<Cofactor> cofactors = new ArrayList<>();
         List<String> evs = new ArrayList<>();
         evs.add("ECO:0000255|HAMAP-Rule:MF_00086");
-        cofactors.add(buildCofactor("Mg(2+)", CofactorReferenceType.CHEBI, "CHEBI:18420", evs));
+        cofactors.add(buildCofactor("Mg(2+)", CofactorDatabase.CHEBI, "CHEBI:18420", evs));
         List<String> evs2 = new ArrayList<>();
         evs2.add("ECO:0000255|HAMAP-Rule:MF_00089");
-        cofactors.add(buildCofactor("Co(2+)", CofactorReferenceType.CHEBI, "CHEBI:48828", evs2));
+        cofactors.add(buildCofactor("Co(2+)", CofactorDatabase.CHEBI, "CHEBI:48828", evs2));
         builder.cofactorsSet(cofactors);
         String noteValue = "Binds 2 divalent ions per subunit (magnesium or cobalt)";
         List<String> evs3 = new ArrayList<>();
@@ -212,16 +212,13 @@ class CCCofactorBuildTest extends CCBuildTestAbstr {
     }
 
     private Cofactor buildCofactor(
-            String name, CofactorReferenceType type, String refId, List<String> evids) {
+            String name, CofactorDatabase type, String refId, List<String> evids) {
 
-        DBCrossReference<CofactorReferenceType> coRef =
-                new DBCrossReferenceBuilder<CofactorReferenceType>()
-                        .databaseType(type)
-                        .id(refId)
-                        .build();
+        CrossReference<CofactorDatabase> coRef =
+                new CrossReferenceBuilder<CofactorDatabase>().database(type).id(refId).build();
         return new CofactorBuilder()
                 .name(name)
-                .reference(coRef)
+                .cofactorCrossReference(coRef)
                 .evidencesSet(createEvidence(evids))
                 .build();
     }

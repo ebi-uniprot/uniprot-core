@@ -6,7 +6,6 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.UniProtRelease;
-import org.uniprot.core.builder.UniProtReleaseBuilder;
 
 class UniProtReleaseImplTest {
     @Test

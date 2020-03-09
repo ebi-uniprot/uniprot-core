@@ -6,7 +6,6 @@ import static org.uniprot.core.ObjectsForTests.createEvidences;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.SequenceCautionComment;
 import org.uniprot.core.uniprot.comment.SequenceCautionType;
-import org.uniprot.core.uniprot.comment.builder.SequenceCautionCommentBuilder;
 
 class SequenceCautionCommentImplTest {
     @Test

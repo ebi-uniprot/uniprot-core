@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.CitationXrefType;
-import org.uniprot.core.citation.builder.BookBuilder;
+import org.uniprot.core.citation.CitationDatabase;
+import org.uniprot.core.citation.impl.BookBuilder;
 import org.uniprot.core.flatfile.parser.impl.rx.RXLineBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 
 class RXLineBuilderTest {
     private RXLineBuilder builder = new RXLineBuilder();
@@ -85,25 +85,25 @@ class RXLineBuilderTest {
 
     private Citation buildCitationXref(String pubmed, String doi, String agricolaId) {
 
-        List<DBCrossReference<CitationXrefType>> xrefs = new ArrayList<>();
+        List<CrossReference<CitationDatabase>> xrefs = new ArrayList<>();
         if (pubmed != null)
             xrefs.add(
-                    new DBCrossReferenceBuilder<CitationXrefType>()
-                            .databaseType(CitationXrefType.PUBMED)
+                    new CrossReferenceBuilder<CitationDatabase>()
+                            .database(CitationDatabase.PUBMED)
                             .id(pubmed)
                             .build());
         if (doi != null)
             xrefs.add(
-                    new DBCrossReferenceBuilder<CitationXrefType>()
-                            .databaseType(CitationXrefType.DOI)
+                    new CrossReferenceBuilder<CitationDatabase>()
+                            .database(CitationDatabase.DOI)
                             .id(doi)
                             .build());
         if (agricolaId != null)
             xrefs.add(
-                    new DBCrossReferenceBuilder<CitationXrefType>()
-                            .databaseType(CitationXrefType.AGRICOLA)
+                    new CrossReferenceBuilder<CitationDatabase>()
+                            .database(CitationDatabase.AGRICOLA)
                             .id(agricolaId)
                             .build());
-        return new BookBuilder().citationXrefsSet(xrefs).build();
+        return new BookBuilder().citationCrossReferencesSet(xrefs).build();
     }
 }

@@ -18,7 +18,7 @@ public class EvidenceLineImpl implements EvidenceLine {
         evidence = "";
     }
 
-    public EvidenceLineImpl(String evidence, LocalDate createDate, String curator) {
+    EvidenceLineImpl(String evidence, LocalDate createDate, String curator) {
         this.evidence = emptyOrString(evidence);
         this.createDate = createDate;
         this.curator = emptyOrString(curator);

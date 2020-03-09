@@ -7,11 +7,11 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
 import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
 import org.uniprot.core.uniprot.comment.Reaction;
-import org.uniprot.core.uniprot.comment.ReactionReferenceType;
+import org.uniprot.core.uniprot.comment.ReactionDatabase;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 import com.google.common.base.Strings;
@@ -285,7 +285,7 @@ class CatalyticActivityCommentTransformerTest {
             assertNull(reaction.getEcNumber());
         } else assertEquals(ec, reaction.getEcNumber().getValue());
         String xrefRes =
-                reaction.getReactionReferences().stream()
+                reaction.getReactionCrossReferences().stream()
                         .map(val -> xrefToString(val))
                         .collect(Collectors.joining(", "));
         assertEquals(xref, xrefRes);
@@ -296,11 +296,11 @@ class CatalyticActivityCommentTransformerTest {
     private void verifyPhysiologicalDirection(
             PhysiologicalReaction pd, String name, String xref, String evidences) {
         assertEquals(name, pd.getDirectionType().toDisplayName());
-        assertEquals(xref, xrefToString(pd.getReactionReference()));
+        assertEquals(xref, xrefToString(pd.getReactionCrossReference()));
     }
 
-    private String xrefToString(DBCrossReference<ReactionReferenceType> xref) {
-        return xref.getDatabaseType().getName() + ":" + xref.getId();
+    private String xrefToString(CrossReference<ReactionDatabase> xref) {
+        return xref.getDatabase().getName() + ":" + xref.getId();
     }
 
     private void verifyEvidence(List<Evidence> evIds, String evidences) {

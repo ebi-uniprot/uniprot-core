@@ -14,7 +14,7 @@ public class ChebiEntryImpl implements ChebiEntry {
     private final String inchiKey;
     private final String name;
 
-    public ChebiEntryImpl(String id, String name, String inchiKey) {
+    ChebiEntryImpl(String id, String name, String inchiKey) {
         this.id = id;
         this.name = name;
         this.inchiKey = inchiKey;

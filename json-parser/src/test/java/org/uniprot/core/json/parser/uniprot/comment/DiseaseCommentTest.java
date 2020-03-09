@@ -4,17 +4,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
 import org.uniprot.core.uniprot.comment.Disease;
 import org.uniprot.core.uniprot.comment.DiseaseComment;
-import org.uniprot.core.uniprot.comment.DiseaseReferenceType;
+import org.uniprot.core.uniprot.comment.DiseaseDatabase;
 import org.uniprot.core.uniprot.comment.Note;
-import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
-import org.uniprot.core.uniprot.comment.builder.DiseaseCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.comment.impl.DiseaseBuilder;
+import org.uniprot.core.uniprot.comment.impl.DiseaseCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -69,16 +69,16 @@ public class DiseaseCommentTest {
 
     public static DiseaseComment getDiseaseComment() {
         DiseaseBuilder builder = new DiseaseBuilder();
-        DBCrossReference<DiseaseReferenceType> reference =
-                new DBCrossReferenceBuilder<DiseaseReferenceType>()
-                        .databaseType(DiseaseReferenceType.MIM)
+        CrossReference<DiseaseDatabase> reference =
+                new CrossReferenceBuilder<DiseaseDatabase>()
+                        .database(DiseaseDatabase.MIM)
                         .id("3124")
                         .build();
         Disease disease =
                 builder.diseaseId("DiseaseEntry Id")
                         .acronym("someAcron")
                         .description("some description")
-                        .reference(reference)
+                        .diseaseCrossReference(reference)
                         .diseaseAc("DiseaseEntry AC")
                         .evidencesAdd(CreateUtils.createEvidence("ECO:0000256|PIRNR:PIRNR001362"))
                         .build();

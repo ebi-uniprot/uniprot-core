@@ -3,9 +3,9 @@ package org.uniprot.core.xml.uniparc;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.Property;
-import org.uniprot.core.uniparc.UniParcDBCrossReference;
-import org.uniprot.core.uniparc.UniParcDatabaseType;
-import org.uniprot.core.uniparc.builder.UniParcDBCrossReferenceBuilder;
+import org.uniprot.core.uniparc.UniParcCrossReference;
+import org.uniprot.core.uniparc.UniParcDatabase;
+import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniparc.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniparc.ObjectFactory;
@@ -17,7 +17,7 @@ import org.uniprot.core.xml.uniprot.XmlConverterHelper;
  * @date: 23 May 2019
  */
 public class UniParcDBCrossReferenceConverter
-        implements Converter<DbReferenceType, UniParcDBCrossReference> {
+        implements Converter<DbReferenceType, UniParcCrossReference> {
     private final PropertyConverter propertyConverter;
     private final ObjectFactory xmlFactory;
 
@@ -31,9 +31,9 @@ public class UniParcDBCrossReferenceConverter
     }
 
     @Override
-    public UniParcDBCrossReference fromXml(DbReferenceType xmlObj) {
-        UniParcDBCrossReferenceBuilder builder = new UniParcDBCrossReferenceBuilder();
-        builder.databaseType(UniParcDatabaseType.typeOf(xmlObj.getType()))
+    public UniParcCrossReference fromXml(DbReferenceType xmlObj) {
+        UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder();
+        builder.database(UniParcDatabase.typeOf(xmlObj.getType()))
                 .id(xmlObj.getId())
                 .active(xmlObj.getActive().equals("Y"))
                 .versionI(xmlObj.getVersionI())
@@ -48,11 +48,11 @@ public class UniParcDBCrossReferenceConverter
     }
 
     @Override
-    public DbReferenceType toXml(UniParcDBCrossReference uniObj) {
+    public DbReferenceType toXml(UniParcCrossReference uniObj) {
         DbReferenceType xmlObj = xmlFactory.createDbReferenceType();
         xmlObj.setActive(uniObj.isActive() ? "Y" : "N");
         xmlObj.setId(uniObj.getId());
-        xmlObj.setType(uniObj.getDatabaseType().toDisplayName());
+        xmlObj.setType(uniObj.getDatabase().toDisplayName());
         xmlObj.setVersionI(uniObj.getVersionI());
         if (uniObj.getVersion() != null) xmlObj.setVersion(uniObj.getVersion());
         xmlObj.setCreated(XmlConverterHelper.dateToXml(uniObj.getCreated()));

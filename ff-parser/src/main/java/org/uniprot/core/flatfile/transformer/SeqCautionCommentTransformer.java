@@ -6,7 +6,7 @@ import java.util.List;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.SequenceCautionComment;
 import org.uniprot.core.uniprot.comment.SequenceCautionType;
-import org.uniprot.core.uniprot.comment.builder.SequenceCautionCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.SequenceCautionCommentBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class SeqCautionCommentTransformer implements CommentTransformer<SequenceCautionComment> {

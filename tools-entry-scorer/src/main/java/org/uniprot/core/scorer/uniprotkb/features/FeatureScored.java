@@ -12,7 +12,7 @@ import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.ScoreStatus;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureType;
 
@@ -115,11 +115,11 @@ public class FeatureScored implements HasScore {
     private final Feature feature;
     private boolean isSP = false;
 
-    private final List<EvidenceType> evidenceTypes;
+    private final List<EvidenceDatabase> evidenceDatabases;
 
-    public FeatureScored(Feature copy, List<EvidenceType> evidenceTypes) {
+    public FeatureScored(Feature copy, List<EvidenceDatabase> evidenceDatabases) {
         feature = copy;
-        this.evidenceTypes = evidenceTypes;
+        this.evidenceDatabases = evidenceDatabases;
     }
 
     public FeatureScored(Feature copy) {
@@ -133,7 +133,7 @@ public class FeatureScored implements HasScore {
     @Override
     public double score() {
         double score = 0;
-        if (ScoreUtil.hasEvidence(feature.getEvidences(), evidenceTypes)) {
+        if (ScoreUtil.hasEvidence(feature.getEvidences(), evidenceDatabases)) {
 
             if (feature.getType() == FeatureType.COMPBIAS) {
                 return 3.0;

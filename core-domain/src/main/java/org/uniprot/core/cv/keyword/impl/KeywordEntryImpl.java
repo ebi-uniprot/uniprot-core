@@ -1,137 +1,99 @@
 package org.uniprot.core.cv.keyword.impl;
 
+import static org.uniprot.core.util.Utils.unmodifiableList;
+import static org.uniprot.core.util.Utils.unmodifiableSet;
+
 import java.util.*;
 
 import org.uniprot.core.Statistics;
-import org.uniprot.core.cv.keyword.GeneOntology;
-import org.uniprot.core.cv.keyword.Keyword;
+import org.uniprot.core.cv.go.GoTerm;
+import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
+import org.uniprot.core.cv.keyword.KeywordId;
+import org.uniprot.core.util.Utils;
 
 public class KeywordEntryImpl implements KeywordEntry {
 
     private static final long serialVersionUID = 226389200105459588L;
-    private Keyword keyword;
+    private KeywordId keyword;
     private String definition;
     private List<String> synonyms;
-    private List<GeneOntology> geneOntologies;
+    private List<GoTerm> geneOntologies;
     private Set<KeywordEntry> parents;
     private List<String> sites;
-    private Keyword category;
+    private KeywordCategory category;
     private List<KeywordEntry> children;
     private Statistics statistics;
 
-    public KeywordEntryImpl() {
-        children = new ArrayList<>();
-        parents = new HashSet<>();
+    KeywordEntryImpl() {
+        children = Collections.emptyList();
+        parents = Collections.emptySet();
+        synonyms = Collections.emptyList();
+        geneOntologies = Collections.emptyList();
+        sites = Collections.emptyList();
     }
 
-    public KeywordEntryImpl(
-            Keyword keyword,
+    KeywordEntryImpl(
+            KeywordId keyword,
             String definition,
             List<String> synonyms,
-            List<GeneOntology> geneOntologies,
+            List<GoTerm> geneOntologies,
             Set<KeywordEntry> parents,
             List<String> sites,
-            Keyword category,
+            KeywordId category,
             List<KeywordEntry> children,
             Statistics statistics) {
         this.keyword = keyword;
         this.definition = definition;
-        this.synonyms = synonyms;
-        this.geneOntologies = geneOntologies;
-        this.parents = parents;
-        this.sites = sites;
-        this.category = category;
-        this.children = children;
+        this.synonyms = unmodifiableList(synonyms);
+        this.geneOntologies = unmodifiableList(geneOntologies);
+        this.parents = unmodifiableSet(parents);
+        this.sites = unmodifiableList(sites);
+        if (Utils.notNull(category)) this.category = KeywordCategory.fromId(category.getId());
+        this.children = unmodifiableList(children);
         this.statistics = statistics;
     }
 
-    public void setDefinition(String definition) {
-        this.definition = definition;
-    }
-
-    public void setSynonyms(List<String> synonyms) {
-        this.synonyms = synonyms;
-    }
-
-    public void setGeneOntologies(List<GeneOntology> geneOntologies) {
-        this.geneOntologies = geneOntologies;
-    }
-
-    public void setSites(List<String> sites) {
-        this.sites = sites;
-    }
-
-    @Override
     public Set<KeywordEntry> getParents() {
         return parents;
     }
 
-    public void setParents(Set<KeywordEntry> parents) {
-        this.parents = parents;
-    }
-
-    public void setChildren(List<KeywordEntry> children) {
-        this.children = children;
-    }
-
-    @Override
-    public Keyword getCategory() {
+    public KeywordCategory getCategory() {
         return category;
     }
 
-    public void setCategory(Keyword category) {
-        this.category = category;
-    }
-
-    @Override
-    public Keyword getKeyword() {
+    public KeywordId getKeyword() {
         return keyword;
     }
 
-    public void setKeyword(Keyword keyword) {
-        this.keyword = keyword;
-    }
-
-    @Override
     public String getDefinition() {
         return definition;
     }
 
-    @Override
     public List<String> getSynonyms() {
         return synonyms;
     }
 
-    public List<GeneOntology> getGeneOntologies() {
+    public List<GoTerm> getGeneOntologies() {
         return geneOntologies;
     }
 
-    @Override
     public List<String> getSites() {
         return sites;
     }
 
-    @Override
     public List<KeywordEntry> getChildren() {
         return children;
     }
 
-    @Override
     public String getAccession() {
-        return getKeyword().getAccession();
+        return getKeyword().getId();
     }
 
-    @Override
     public Statistics getStatistics() {
         return statistics;
     }
 
-    public void setStatistics(Statistics statistics) {
-        this.statistics = statistics;
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -147,7 +109,6 @@ public class KeywordEntryImpl implements KeywordEntry {
                 && Objects.equals(getStatistics(), that.getStatistics());
     }
 
-    @Override
     public int hashCode() {
         return Objects.hash(
                 getKeyword(),

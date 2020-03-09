@@ -18,7 +18,7 @@ public class LiteratureEntryImpl implements LiteratureEntry {
         this(null, null);
     }
 
-    public LiteratureEntryImpl(Citation citation, LiteratureStatistics statistics) {
+    LiteratureEntryImpl(Citation citation, LiteratureStatistics statistics) {
         this.citation = citation;
         this.statistics = statistics;
     }

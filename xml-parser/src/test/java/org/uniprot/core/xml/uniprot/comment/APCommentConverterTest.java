@@ -10,13 +10,13 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.APCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.APIsoformBuilder;
-import org.uniprot.core.uniprot.comment.builder.IsoformNameBuilder;
-import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.comment.impl.APCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.APIsoformBuilder;
+import org.uniprot.core.uniprot.comment.impl.IsoformNameBuilder;
+import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
-import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
+import org.uniprot.core.uniprot.evidence.impl.EvidencedValueBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;

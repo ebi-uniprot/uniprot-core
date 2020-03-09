@@ -13,13 +13,13 @@ import org.uniprot.core.uniprot.ProteinExistence;
 import org.uniprot.core.uniprot.UniProtEntry;
 import org.uniprot.core.uniprot.UniProtEntryType;
 import org.uniprot.core.uniprot.UniProtReference;
-import org.uniprot.core.uniprot.builder.EntryAuditBuilder;
-import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
-import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.InteractionComment;
 import org.uniprot.core.uniprot.description.ProteinDescription;
 import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.impl.EntryAuditBuilder;
+import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
+import org.uniprot.core.uniprot.impl.UniProtEntryBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.Entry;
 import org.uniprot.core.xml.jaxb.uniprot.EvidenceType;
@@ -97,7 +97,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
                         .map(referenceConverter::fromXml)
                         .collect(Collectors.toList()));
         activeEntryBuilder.commentsSet(fromXmlForComments(xmlEntry));
-        activeEntryBuilder.databaseCrossReferencesSet(
+        activeEntryBuilder.uniProtCrossReferencesSet(
                 xmlEntry.getDbReference().stream()
                         .filter(val -> !val.getType().equals("EC"))
                         .map(xrefConverter::fromXml)
@@ -136,7 +136,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
                 .addAll(descriptionConverter.toXmlDbReferences(entry.getProteinDescription()));
         xmlEntry.getDbReference()
                 .addAll(
-                        entry.getDatabaseCrossReferences().stream()
+                        entry.getUniProtCrossReferences().stream()
                                 .map(xrefConverter::toXml)
                                 .collect(Collectors.toList()));
         entry.getKeywords().forEach(val -> xmlEntry.getKeyword().add(keywordConverter.toXml(val)));

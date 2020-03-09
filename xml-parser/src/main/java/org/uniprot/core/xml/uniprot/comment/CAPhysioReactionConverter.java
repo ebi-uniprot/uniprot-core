@@ -2,11 +2,11 @@ package org.uniprot.core.xml.uniprot.comment;
 
 import java.util.List;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprot.comment.PhysiologicalDirectionType;
 import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
-import org.uniprot.core.uniprot.comment.ReactionReferenceType;
-import org.uniprot.core.uniprot.comment.builder.PhysiologicalReactionBuilder;
+import org.uniprot.core.uniprot.comment.ReactionDatabase;
+import org.uniprot.core.uniprot.comment.impl.PhysiologicalReactionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
@@ -35,13 +35,13 @@ public class CAPhysioReactionConverter
 
         PhysiologicalDirectionType directionType =
                 PhysiologicalDirectionType.typeOf(xmlObj.getDirection());
-        DBCrossReference<ReactionReferenceType> reactionReference =
+        CrossReference<ReactionDatabase> reactionReference =
                 refConverter.fromXml(xmlObj.getDbReference());
         // Evidences
         List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
         return new PhysiologicalReactionBuilder()
                 .directionType(directionType)
-                .reactionReference(reactionReference)
+                .reactionCrossReference(reactionReference)
                 .evidencesSet(evidences)
                 .build();
     }
@@ -51,7 +51,7 @@ public class CAPhysioReactionConverter
         PhysiologicalReactionType physioReactionType =
                 xmlUniprotFactory.createPhysiologicalReactionType();
         physioReactionType.setDirection(uniObj.getDirectionType().toDisplayName());
-        physioReactionType.setDbReference(refConverter.toXml(uniObj.getReactionReference()));
+        physioReactionType.setDbReference(refConverter.toXml(uniObj.getReactionCrossReference()));
         List<Evidence> evidenceIds = uniObj.getEvidences();
         if ((evidenceIds != null) && !evidenceIds.isEmpty()) {
             List<Integer> evs = evRefMapper.writeEvidences(evidenceIds);

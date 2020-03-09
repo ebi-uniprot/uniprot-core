@@ -20,7 +20,7 @@ public class TaxonomyStrainImpl implements TaxonomyStrain {
         this(null, null);
     }
 
-    public TaxonomyStrainImpl(String name, List<String> synonyms) {
+    TaxonomyStrainImpl(String name, List<String> synonyms) {
         this.name = name;
         this.synonyms = Utils.unmodifiableList(synonyms);
     }

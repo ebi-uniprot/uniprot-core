@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ac.ACLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprot.UniProtAccession;
-import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
+import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
 
 class ACLineBuildTest {
     private ACLineBuilder builder = new ACLineBuilder();

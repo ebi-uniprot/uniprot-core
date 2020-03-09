@@ -6,12 +6,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
-import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.Submission;
 import org.uniprot.core.citation.SubmissionDatabase;
-import org.uniprot.core.citation.builder.SubmissionBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 
 class SubmissionImplTest {
     @Test
@@ -22,9 +21,9 @@ class SubmissionImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        DBCrossReference<CitationXrefType> XREF1 =
-                new DBCrossReferenceBuilder<CitationXrefType>()
-                        .databaseType(CitationXrefType.PUBMED)
+        CrossReference<CitationDatabase> XREF1 =
+                new CrossReferenceBuilder<CitationDatabase>()
+                        .database(CitationDatabase.PUBMED)
                         .id("id1")
                         .build();
 

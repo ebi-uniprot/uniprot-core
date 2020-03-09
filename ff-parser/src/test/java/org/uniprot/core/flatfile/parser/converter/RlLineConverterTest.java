@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.*;
-import org.uniprot.core.citation.builder.*;
+import org.uniprot.core.citation.impl.*;
 import org.uniprot.core.flatfile.parser.impl.rl.RlLineConverter;
 import org.uniprot.core.flatfile.parser.impl.rl.RlLineObject;
 

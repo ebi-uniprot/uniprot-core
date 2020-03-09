@@ -2,29 +2,35 @@ package org.uniprot.core.uniprot.evidence.impl;
 
 import java.util.Objects;
 
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 
 public class EvidenceImpl implements Evidence {
     private static final long serialVersionUID = 6892404810238028657L;
     private static final String PIPE = "|";
     private static final String COLON = ":";
     private EvidenceCode evidenceCode;
-    private DBCrossReference<EvidenceType> source;
+    private CrossReference<EvidenceDatabase> evidenceCrossReference;
 
-    public EvidenceImpl(EvidenceCode evidenceCode, String databaseName, String dbId) {
-        this(evidenceCode, new DBCrossReferenceImpl<>(new EvidenceType(databaseName), dbId));
+    EvidenceImpl(EvidenceCode evidenceCode, String databaseName, String dbId) {
+        this(
+                evidenceCode,
+                new CrossReferenceBuilder<EvidenceDatabase>()
+                        .database(new EvidenceDatabase(databaseName))
+                        .id(dbId)
+                        .build());
     }
 
     // no arg constructor for JSON deserialization
     EvidenceImpl() {}
 
-    public EvidenceImpl(EvidenceCode evidenceCode, DBCrossReference<EvidenceType> source) {
+    EvidenceImpl(
+            EvidenceCode evidenceCode, CrossReference<EvidenceDatabase> evidenceCrossReference) {
         this.evidenceCode = evidenceCode;
-        this.source = source;
+        this.evidenceCrossReference = evidenceCrossReference;
     }
 
     @Override
@@ -33,8 +39,8 @@ public class EvidenceImpl implements Evidence {
     }
 
     @Override
-    public DBCrossReference<EvidenceType> getSource() {
-        return source;
+    public CrossReference<EvidenceDatabase> getEvidenceCrossReference() {
+        return evidenceCrossReference;
     }
 
     @Override
@@ -51,14 +57,18 @@ public class EvidenceImpl implements Evidence {
     public String getValue() {
         StringBuilder sb = new StringBuilder();
         sb.append(evidenceCode.getCode());
-        if (source != null) {
+        if (evidenceCrossReference != null) {
             sb.append(PIPE);
-            if (source.getDatabaseType().isReference()) {
-                sb.append(source.getId());
+            if (evidenceCrossReference.getDatabase().isReference()) {
+                sb.append(evidenceCrossReference.getId());
             } else {
-                sb.append(source.getDatabaseType().getDetail().getDisplayName())
+                sb.append(
+                                evidenceCrossReference
+                                        .getDatabase()
+                                        .getEvidenceDatabaseDetail()
+                                        .getDisplayName())
                         .append(COLON)
-                        .append(source.getId());
+                        .append(evidenceCrossReference.getId());
             }
         }
 
@@ -70,11 +80,12 @@ public class EvidenceImpl implements Evidence {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         EvidenceImpl evidence = (EvidenceImpl) o;
-        return evidenceCode == evidence.evidenceCode && Objects.equals(source, evidence.source);
+        return evidenceCode == evidence.evidenceCode
+                && Objects.equals(evidenceCrossReference, evidence.evidenceCrossReference);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(evidenceCode, source);
+        return Objects.hash(evidenceCode, evidenceCrossReference);
     }
 }

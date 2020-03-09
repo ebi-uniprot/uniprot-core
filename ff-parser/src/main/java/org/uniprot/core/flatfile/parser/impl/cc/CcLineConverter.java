@@ -8,9 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.exception.ParseDiseaseException;
 import org.uniprot.core.flatfile.parser.exception.ParseSubcellularLocationException;
@@ -20,14 +19,13 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.*;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.Disease;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.FreeText;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.Interaction;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
-import org.uniprot.core.impl.ECNumberImpl;
+import org.uniprot.core.impl.CrossReferenceBuilder;
+import org.uniprot.core.impl.ECNumberBuilder;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.*;
-import org.uniprot.core.uniprot.comment.impl.CatalyticActivityCommentImpl;
+import org.uniprot.core.uniprot.comment.impl.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
-import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
+import org.uniprot.core.uniprot.evidence.impl.EvidencedValueBuilder;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
 import com.google.common.base.Strings;
@@ -408,9 +406,9 @@ public class CcLineConverter extends EvidenceCollector
                 builder.acronym(cObj.getAbbr());
             }
             if (!Strings.isNullOrEmpty(cObj.getMim())) {
-                builder.reference(
-                        new DBCrossReferenceBuilder<DiseaseReferenceType>()
-                                .databaseType(DiseaseReferenceType.MIM)
+                builder.diseaseCrossReference(
+                        new CrossReferenceBuilder<DiseaseDatabase>()
+                                .database(DiseaseDatabase.MIM)
                                 .id(cObj.getMim())
                                 .build());
             }
@@ -585,18 +583,18 @@ public class CcLineConverter extends EvidenceCollector
         List<Evidence> evidences = evidenceMap.get(item);
         return new CofactorBuilder()
                 .name(item.getName())
-                .reference(createCofactorReference(item.getXref()))
+                .cofactorCrossReference(createCofactorReference(item.getXref()))
                 .evidencesSet(evidences)
                 .build();
     }
 
-    private DBCrossReference<CofactorReferenceType> createCofactorReference(String val) {
+    private CrossReference<CofactorDatabase> createCofactorReference(String val) {
         int index = val.indexOf(':');
         String type = val.substring(0, index);
         String id = val.substring(index + 1);
-        return new DBCrossReferenceBuilder<CofactorReferenceType>()
+        return new CrossReferenceBuilder<CofactorDatabase>()
                 .id(id)
-                .databaseType(CofactorReferenceType.typeOf(type))
+                .database(CofactorDatabase.typeOf(type))
                 .build();
     }
 
@@ -632,24 +630,27 @@ public class CcLineConverter extends EvidenceCollector
                         .map(val -> convertPhysiologicalDirection(val, evidences))
                         .collect(Collectors.toList());
 
-        return new CatalyticActivityCommentImpl(
-                object.getMolecule(), reaction, physiologicalReactions);
+        return new CatalyticActivityCommentBuilder()
+                .molecule(object.getMolecule())
+                .reaction(reaction)
+                .physiologicalReactionsSet(physiologicalReactions)
+                .build();
     }
 
     private PhysiologicalReaction convertPhysiologicalDirection(
             CAPhysioDirection capd, Map<Object, List<Evidence>> evidences) {
-        DBCrossReference<ReactionReferenceType> reactionReference = null;
+        CrossReference<ReactionDatabase> reactionReference = null;
         if (capd.getXref() != null) reactionReference = convertReactionReference(capd.getXref());
 
         return new PhysiologicalReactionBuilder()
                 .directionType(PhysiologicalDirectionType.typeOf(capd.getName()))
-                .reactionReference(reactionReference)
+                .reactionCrossReference(reactionReference)
                 .evidencesSet(evidences.get(capd))
                 .build();
     }
 
     private Reaction convertReaction(CAReaction caReaction, Map<Object, List<Evidence>> evidences) {
-        List<DBCrossReference<ReactionReferenceType>> xrefs = null;
+        List<CrossReference<ReactionDatabase>> xrefs = null;
         ECNumber ecNumber = null;
         if (!Strings.isNullOrEmpty(caReaction.getXref())) {
             xrefs =
@@ -658,22 +659,25 @@ public class CcLineConverter extends EvidenceCollector
                             .collect(Collectors.toList());
         }
         if (caReaction.getEc() != null) {
-            ecNumber = new ECNumberImpl(caReaction.getEc());
+            ecNumber = new ECNumberBuilder(caReaction.getEc()).build();
         }
         return new ReactionBuilder()
                 .name(caReaction.getName())
-                .reactionReferencesSet(xrefs)
+                .reactionCrossReferencesSet(xrefs)
                 .ecNumber(ecNumber)
                 .evidencesSet(evidences.get(caReaction))
                 .build();
     }
 
-    private DBCrossReference<ReactionReferenceType> convertReactionReference(String val) {
+    private CrossReference<ReactionDatabase> convertReactionReference(String val) {
 
         int index = val.indexOf(':');
         String type = val.substring(0, index);
         String id = val.substring(index + 1);
-        return new DBCrossReferenceImpl<>(ReactionReferenceType.typeOf(type), id);
+        return new CrossReferenceBuilder<ReactionDatabase>()
+                .database(ReactionDatabase.typeOf(type))
+                .id(id)
+                .build();
     }
 
     private CommentType convert(CC.CCTopicEnum topic) {

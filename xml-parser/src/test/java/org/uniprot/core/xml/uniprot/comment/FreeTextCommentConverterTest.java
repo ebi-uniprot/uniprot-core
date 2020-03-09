@@ -8,10 +8,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
-import org.uniprot.core.uniprot.comment.builder.FreeTextCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.FreeTextCommentBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
-import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
+import org.uniprot.core.uniprot.evidence.impl.EvidencedValueBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;

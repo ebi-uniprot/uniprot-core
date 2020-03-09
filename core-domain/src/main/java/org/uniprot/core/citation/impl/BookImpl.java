@@ -5,7 +5,7 @@ import static java.util.Collections.emptyList;
 import java.util.List;
 import java.util.Objects;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.util.Utils;
 
@@ -36,10 +36,10 @@ public class BookImpl extends AbstractCitationImpl implements Book {
                 null);
     }
 
-    public BookImpl(
+    BookImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<DBCrossReference<CitationXrefType>> citationXrefs,
+            List<CrossReference<CitationDatabase>> citationCrossReferences,
             String title,
             PublicationDate publicationDate,
             String bookName,
@@ -49,7 +49,13 @@ public class BookImpl extends AbstractCitationImpl implements Book {
             String volume,
             String publisher,
             String address) {
-        super(CitationType.BOOK, authoringGroup, authors, citationXrefs, title, publicationDate);
+        super(
+                CitationType.BOOK,
+                authoringGroup,
+                authors,
+                citationCrossReferences,
+                title,
+                publicationDate);
         this.bookName = Utils.emptyOrString(bookName);
         this.editors = Utils.unmodifiableList(editors);
         this.firstPage = Utils.emptyOrString(firstPage);

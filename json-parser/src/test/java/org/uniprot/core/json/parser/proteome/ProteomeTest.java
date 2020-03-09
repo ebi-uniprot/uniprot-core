@@ -8,36 +8,36 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
-import org.uniprot.core.citation.builder.JournalArticleBuilder;
-import org.uniprot.core.citation.builder.SubmissionBuilder;
+import org.uniprot.core.citation.impl.JournalArticleBuilder;
+import org.uniprot.core.citation.impl.SubmissionBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.proteome.*;
-import org.uniprot.core.proteome.builder.ComponentBuilder;
-import org.uniprot.core.proteome.builder.ProteomeEntryBuilder;
-import org.uniprot.core.proteome.builder.ProteomeIdBuilder;
-import org.uniprot.core.proteome.builder.RedundantProteomeBuilder;
+import org.uniprot.core.proteome.impl.ComponentBuilder;
+import org.uniprot.core.proteome.impl.ProteomeEntryBuilder;
+import org.uniprot.core.proteome.impl.ProteomeIdBuilder;
+import org.uniprot.core.proteome.impl.RedundantProteomeBuilder;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
-import org.uniprot.core.taxonomy.builder.TaxonomyLineageBuilder;
+import org.uniprot.core.taxonomy.impl.TaxonomyLineageBuilder;
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
-import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.TaxonomyBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 class ProteomeTest {
     @Test
     void testComponent() {
-        List<DBCrossReference<ProteomeXReferenceType>> xrefs = new ArrayList<>();
-        DBCrossReference<ProteomeXReferenceType> xref1 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ACCESSION)
+        List<CrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
+        CrossReference<ProteomeDatabase> xref1 =
+                new CrossReferenceBuilder<ProteomeDatabase>()
+                        .database(ProteomeDatabase.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
-        DBCrossReference<ProteomeXReferenceType> xref2 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ANNOTATION)
+        CrossReference<ProteomeDatabase> xref2 =
+                new CrossReferenceBuilder<ProteomeDatabase>()
+                        .database(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
         xrefs.add(xref1);
@@ -47,7 +47,7 @@ class ProteomeTest {
                         .name("someName")
                         .description("some description")
                         .proteinCount(102)
-                        .dbXReferencesSet(xrefs)
+                        .proteomeCrossReferencesSet(xrefs)
                         .type(ComponentType.PRIMARY)
                         .build();
         ValidateJson.verifyJsonRoundTripParser(
@@ -82,15 +82,15 @@ class ProteomeTest {
         ProteomeId proteomeId = new ProteomeIdBuilder(id).build();
         String redundantId = "UP000005642";
         ProteomeId redId = new ProteomeIdBuilder(redundantId).build();
-        List<DBCrossReference<ProteomeXReferenceType>> xrefs = new ArrayList<>();
-        DBCrossReference<ProteomeXReferenceType> xref1 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ACCESSION)
+        List<CrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
+        CrossReference<ProteomeDatabase> xref1 =
+                new CrossReferenceBuilder<ProteomeDatabase>()
+                        .database(ProteomeDatabase.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
-        DBCrossReference<ProteomeXReferenceType> xref2 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ANNOTATION)
+        CrossReference<ProteomeDatabase> xref2 =
+                new CrossReferenceBuilder<ProteomeDatabase>()
+                        .database(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
         xrefs.add(xref1);
@@ -110,8 +110,8 @@ class ProteomeTest {
                         .proteomeType(ProteomeType.REDUNDANT)
                         .redundantTo(redId)
                         .strain("some Strain")
-                        .dbXReferencesSet(xrefs)
-                        .referencesSet(getCitations())
+                        .proteomeCrossReferencesSet(xrefs)
+                        .citationsSet(getCitations())
                         .superkingdom(Superkingdom.EUKARYOTA)
                         .panproteome(new ProteomeIdBuilder("UP000005649").build())
                         .build();
@@ -135,15 +135,15 @@ class ProteomeTest {
         LocalDate modified = LocalDate.of(2015, 11, 5);
         ProteomeId proteomeId = new ProteomeIdBuilder(id).build();
 
-        List<DBCrossReference<ProteomeXReferenceType>> xrefs = new ArrayList<>();
-        DBCrossReference<ProteomeXReferenceType> xref1 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ACCESSION)
+        List<CrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
+        CrossReference<ProteomeDatabase> xref1 =
+                new CrossReferenceBuilder<ProteomeDatabase>()
+                        .database(ProteomeDatabase.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
-        DBCrossReference<ProteomeXReferenceType> xref2 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ANNOTATION)
+        CrossReference<ProteomeDatabase> xref2 =
+                new CrossReferenceBuilder<ProteomeDatabase>()
+                        .database(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
         xrefs.add(xref1);
@@ -199,10 +199,10 @@ class ProteomeTest {
                         .modified(modified)
                         .proteomeType(ProteomeType.REFERENCE)
                         .strain("some Strain")
-                        .dbXReferencesSet(xrefs)
+                        .proteomeCrossReferencesSet(xrefs)
                         .taxonLineagesAdd(taxon1)
                         //		.addTaxonLineage(taxon2)
-                        .referencesSet(getCitations())
+                        .citationsSet(getCitations())
                         .superkingdom(Superkingdom.EUKARYOTA)
                         //	.components(components)
                         .redundantProteomesSet(redundantProteomes)
@@ -232,9 +232,9 @@ class ProteomeTest {
     }
 
     private JournalArticle getJournalArticle() {
-        DBCrossReference<CitationXrefType> xref =
-                new DBCrossReferenceBuilder<CitationXrefType>()
-                        .databaseType(CitationXrefType.PUBMED)
+        CrossReference<CitationDatabase> xref =
+                new CrossReferenceBuilder<CitationDatabase>()
+                        .database(CitationDatabase.PUBMED)
                         .id("somepID1")
                         .build();
         return new JournalArticleBuilder()
@@ -246,14 +246,14 @@ class ProteomeTest {
                 .authoringGroupsAdd("auth group")
                 .authorsAdd("author Leo")
                 .title("Leo book tittle")
-                .citationXrefsSet(Collections.singletonList(xref))
+                .citationCrossReferencesSet(Collections.singletonList(xref))
                 .build();
     }
 
     private Submission getSubmission() {
-        DBCrossReference<CitationXrefType> xref =
-                new DBCrossReferenceBuilder<CitationXrefType>()
-                        .databaseType(CitationXrefType.PUBMED)
+        CrossReference<CitationDatabase> xref =
+                new CrossReferenceBuilder<CitationDatabase>()
+                        .database(CitationDatabase.PUBMED)
                         .id("somepID1")
                         .build();
         return new SubmissionBuilder()
@@ -262,7 +262,7 @@ class ProteomeTest {
                 .authoringGroupsAdd("auth group")
                 .authorsAdd("author Leo")
                 .title("Leo book tittle")
-                .citationXrefsSet(Collections.singletonList(xref))
+                .citationCrossReferencesSet(Collections.singletonList(xref))
                 .build();
     }
 }

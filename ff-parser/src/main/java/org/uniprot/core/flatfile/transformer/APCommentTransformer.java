@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.APCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.APIsoformBuilder;
-import org.uniprot.core.uniprot.comment.builder.IsoformNameBuilder;
-import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.comment.impl.APCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.APIsoformBuilder;
+import org.uniprot.core.uniprot.comment.impl.IsoformNameBuilder;
+import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 

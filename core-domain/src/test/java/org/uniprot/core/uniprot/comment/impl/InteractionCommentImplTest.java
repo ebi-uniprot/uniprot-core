@@ -10,8 +10,6 @@ import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.Interaction;
 import org.uniprot.core.uniprot.comment.InteractionComment;
 import org.uniprot.core.uniprot.comment.InteractionType;
-import org.uniprot.core.uniprot.comment.builder.InteractionBuilder;
-import org.uniprot.core.uniprot.comment.builder.InteractionCommentBuilder;
 
 class InteractionCommentImplTest {
     private List<Interaction> interactions =

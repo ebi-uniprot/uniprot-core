@@ -12,7 +12,7 @@ import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 public abstract class CommentScoredAbstr implements CommentScored {
@@ -21,11 +21,11 @@ public abstract class CommentScoredAbstr implements CommentScored {
     private static final String BY_SIMILARITY = "(By similarity)";
     private static final String PROBABLE = "(Probable)";
     private static final String POTENTIAL = "(Potential)";
-    protected final List<EvidenceType> evidenceTypes;
+    protected final List<EvidenceDatabase> evidenceDatabases;
 
-    public CommentScoredAbstr(CommentType type, List<EvidenceType> evidenceTypes) {
+    public CommentScoredAbstr(CommentType type, List<EvidenceDatabase> evidenceDatabases) {
         info = CommentScoredTable.getCommentScoredInfo(type);
-        this.evidenceTypes = evidenceTypes;
+        this.evidenceDatabases = evidenceDatabases;
     }
 
     CommentScoredTable.CommentScoredInfo getCommentScoredInfo() {

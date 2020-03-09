@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 /**
@@ -19,8 +19,8 @@ public class SimilarityCommentScored extends CommentScoredAbstr {
     private final Pattern belongsRegEx = Pattern.compile("\\b[Bb]elongs\\b");
     private final FreeTextComment comment;
 
-    public SimilarityCommentScored(FreeTextComment copy, List<EvidenceType> evidenceTypes) {
-        super(copy.getCommentType(), evidenceTypes);
+    public SimilarityCommentScored(FreeTextComment copy, List<EvidenceDatabase> evidenceDatabases) {
+        super(copy.getCommentType(), evidenceDatabases);
         this.comment = copy;
     }
 
@@ -38,7 +38,7 @@ public class SimilarityCommentScored extends CommentScoredAbstr {
     private boolean hasEvidence() {
         List<Evidence> evidences = new ArrayList<>();
         comment.getTexts().forEach(val -> evidences.addAll(val.getEvidences()));
-        return ScoreUtil.hasEvidence(evidences, evidenceTypes);
+        return ScoreUtil.hasEvidence(evidences, evidenceDatabases);
     }
 
     private boolean hasScored() {

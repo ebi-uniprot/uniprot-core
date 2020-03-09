@@ -19,7 +19,7 @@ public class InteractionCommentImpl extends CommentImpl implements InteractionCo
         this.interactions = Collections.emptyList();
     }
 
-    public InteractionCommentImpl(List<Interaction> interactions) {
+    InteractionCommentImpl(List<Interaction> interactions) {
         super(CommentType.INTERACTION);
         this.interactions = Utils.unmodifiableList(interactions);
     }

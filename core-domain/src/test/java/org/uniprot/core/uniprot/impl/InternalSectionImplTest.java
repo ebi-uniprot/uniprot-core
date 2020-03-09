@@ -13,11 +13,8 @@ import org.uniprot.core.uniprot.InternalLine;
 import org.uniprot.core.uniprot.InternalLineType;
 import org.uniprot.core.uniprot.InternalSection;
 import org.uniprot.core.uniprot.SourceLine;
-import org.uniprot.core.uniprot.builder.InternalLineBuilder;
-import org.uniprot.core.uniprot.builder.InternalSectionBuilder;
-import org.uniprot.core.uniprot.builder.SourceLineBuilder;
 import org.uniprot.core.uniprot.evidence.EvidenceLine;
-import org.uniprot.core.uniprot.evidence.builder.EvidenceLineBuilder;
+import org.uniprot.core.uniprot.evidence.impl.EvidenceLineBuilder;
 
 class InternalSectionImplTest {
 

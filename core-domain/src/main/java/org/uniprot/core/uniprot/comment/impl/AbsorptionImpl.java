@@ -21,7 +21,7 @@ public class AbsorptionImpl implements Absorption {
         this.evidences = Collections.emptyList();
     }
 
-    public AbsorptionImpl(int max, boolean approximate, Note note, List<Evidence> evidences) {
+    AbsorptionImpl(int max, boolean approximate, Note note, List<Evidence> evidences) {
         this.max = max;
         this.approximate = approximate;
         this.note = note;

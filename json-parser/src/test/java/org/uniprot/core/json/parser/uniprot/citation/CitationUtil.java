@@ -6,11 +6,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.CitationXrefType;
-import org.uniprot.core.citation.builder.AbstractCitationBuilder;
+import org.uniprot.core.citation.CitationDatabase;
+import org.uniprot.core.citation.impl.AbstractCitationBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -32,15 +32,15 @@ class CitationUtil {
         assertNotNull(jsonNode.get("title"));
         assertEquals("Leo book tittle", jsonNode.get("title").asText());
 
-        assertNotNull(jsonNode.get("citationXrefs"));
-        assertEquals(2, jsonNode.get("citationXrefs").size());
-        JsonNode citationXrefs = jsonNode.get("citationXrefs").get(0);
+        assertNotNull(jsonNode.get("citationCrossReferences"));
+        assertEquals(2, jsonNode.get("citationCrossReferences").size());
+        JsonNode citationCrossReferences = jsonNode.get("citationCrossReferences").get(0);
 
-        assertNotNull(citationXrefs.get("databaseType"));
-        assertEquals("PubMed", citationXrefs.get("databaseType").asText());
+        assertNotNull(citationCrossReferences.get("database"));
+        assertEquals("PubMed", citationCrossReferences.get("database").asText());
 
-        assertNotNull(citationXrefs.get("id"));
-        assertEquals("12345", citationXrefs.get("id").asText());
+        assertNotNull(citationCrossReferences.get("id"));
+        assertEquals("12345", citationCrossReferences.get("id").asText());
     }
 
     public static void populateBasicCitation(
@@ -50,21 +50,21 @@ class CitationUtil {
         builder.authoringGroupsAdd("auth group");
         builder.authorsAdd("author Leo");
         builder.title("Leo book tittle");
-        builder.citationXrefsSet(createCitationCrossRefs());
+        builder.citationCrossReferencesSet(createCitationCrossRefs());
     }
 
-    public static List<DBCrossReference<CitationXrefType>> createCitationCrossRefs() {
-        List<DBCrossReference<CitationXrefType>> result = new ArrayList<>();
+    public static List<CrossReference<CitationDatabase>> createCitationCrossRefs() {
+        List<CrossReference<CitationDatabase>> result = new ArrayList<>();
 
         result.add(
-                new DBCrossReferenceBuilder<CitationXrefType>()
-                        .databaseType(CitationXrefType.PUBMED)
+                new CrossReferenceBuilder<CitationDatabase>()
+                        .database(CitationDatabase.PUBMED)
                         .id("12345")
                         .build());
 
         result.add(
-                new DBCrossReferenceBuilder<CitationXrefType>()
-                        .databaseType(CitationXrefType.DOI)
+                new CrossReferenceBuilder<CitationDatabase>()
+                        .database(CitationDatabase.DOI)
                         .id("doiId")
                         .build());
 

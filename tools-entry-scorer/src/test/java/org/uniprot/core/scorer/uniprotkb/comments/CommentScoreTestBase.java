@@ -8,10 +8,10 @@ import org.uniprot.core.flatfile.parser.impl.cc.CcLineTransformer;
 import org.uniprot.core.scorer.uniprotkb.UniProtEntryScored;
 import org.uniprot.core.uniprot.UniProtEntry;
 import org.uniprot.core.uniprot.UniProtEntryType;
-import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprot.impl.UniProtEntryBuilder;
 
 class CommentScoreTestBase {
     private CcLineTransformer ccLineTransformer = new CcLineTransformer("", "");
@@ -25,8 +25,11 @@ class CommentScoreTestBase {
     }
 
     void verify(
-            CommentType type, String line, double expectedScore, List<EvidenceType> evidenceTypes) {
-        verify(type, line, expectedScore, false, evidenceTypes);
+            CommentType type,
+            String line,
+            double expectedScore,
+            List<EvidenceDatabase> evidenceDatabases) {
+        verify(type, line, expectedScore, false, evidenceDatabases);
     }
 
     void verify(
@@ -34,7 +37,7 @@ class CommentScoreTestBase {
             String line,
             double expectedScore,
             boolean isSp,
-            List<EvidenceType> evidenceTypes) {
+            List<EvidenceDatabase> evidenceDatabases) {
         Comment comment =
                 ccLineTransformer.transformNoHeader(line).stream()
                         .filter(c -> c.getCommentType().equals(type))
@@ -43,7 +46,7 @@ class CommentScoreTestBase {
                                 () ->
                                         new IllegalStateException(
                                                 "Could not create comment of type: " + type));
-        CommentScored scored = CommentScoredFactory.create(comment, evidenceTypes);
+        CommentScored scored = CommentScoredFactory.create(comment, evidenceDatabases);
         scored.setIsSwissProt(isSp);
         assertEquals(expectedScore, scored.score(), 0.001);
     }

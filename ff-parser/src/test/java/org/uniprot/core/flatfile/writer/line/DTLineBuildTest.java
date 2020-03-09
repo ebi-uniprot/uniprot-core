@@ -11,7 +11,7 @@ import org.uniprot.core.flatfile.parser.impl.dt.DTLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprot.EntryAudit;
 import org.uniprot.core.uniprot.UniProtEntryType;
-import org.uniprot.core.uniprot.builder.EntryAuditBuilder;
+import org.uniprot.core.uniprot.impl.EntryAuditBuilder;
 
 class DTLineBuildTest {
     private DTLineBuilder builder = new DTLineBuilder();

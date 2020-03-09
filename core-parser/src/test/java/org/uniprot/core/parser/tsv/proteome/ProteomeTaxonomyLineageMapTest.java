@@ -10,7 +10,7 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
-import org.uniprot.core.taxonomy.builder.TaxonomyLineageBuilder;
+import org.uniprot.core.taxonomy.impl.TaxonomyLineageBuilder;
 
 /**
  * @author jluo

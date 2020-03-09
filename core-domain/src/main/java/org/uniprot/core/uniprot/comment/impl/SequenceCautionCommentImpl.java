@@ -24,7 +24,7 @@ public class SequenceCautionCommentImpl extends CommentHasMoleculeImpl
         this.evidences = Collections.emptyList();
     }
 
-    public SequenceCautionCommentImpl(
+    SequenceCautionCommentImpl(
             String molecule,
             SequenceCautionType sequenceCautionType,
             String sequence,

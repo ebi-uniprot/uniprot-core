@@ -37,10 +37,10 @@ import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.taxonomy.impl.OrganismHostImpl;
 import org.uniprot.core.uniprot.taxonomy.impl.OrganismImpl;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-import org.uniprot.core.uniprot.xdb.UniProtXDbType;
-import org.uniprot.core.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
-import org.uniprot.cv.xdb.UniProtXDbTypeImpl;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtDatabase;
+import org.uniprot.core.uniprot.xdb.impl.UniProtCrossReferenceImpl;
+import org.uniprot.cv.xdb.UniProtDatabaseImpl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.NamedType;
@@ -178,18 +178,17 @@ public class UniprotJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(SourceLine.class, SourceLineImpl.class);
         mod.addAbstractTypeMapping(Sequence.class, SequenceImpl.class);
 
-        mod.addAbstractTypeMapping(DBCrossReference.class, DBCrossReferenceImpl.class);
-        mod.addAbstractTypeMapping(
-                UniProtDBCrossReference.class, UniProtDBCrossReferenceImpl.class);
+        mod.addAbstractTypeMapping(CrossReference.class, CrossReferenceImpl.class);
+        mod.addAbstractTypeMapping(UniProtCrossReference.class, UniProtCrossReferenceImpl.class);
 
         mod.addAbstractTypeMapping(AlternativeSequence.class, AlternativeSequenceImpl.class);
 
         mod.addAbstractTypeMapping(FeatureId.class, FeatureIdImpl.class);
         mod.addAbstractTypeMapping(FeatureDescription.class, FeatureDescriptionImpl.class);
         mod.addAbstractTypeMapping(Feature.class, FeatureImpl.class);
-        mod.addAbstractTypeMapping(UniProtXDbType.class, UniProtXDbTypeImpl.class);
+        mod.addAbstractTypeMapping(UniProtDatabase.class, UniProtDatabaseImpl.class);
 
-        mod.addAbstractTypeMapping(DatabaseType.class, DefaultDatabaseType.class);
+        mod.addAbstractTypeMapping(Database.class, DefaultDatabase.class);
 
         mod.registerSubtypes(new NamedType(AlternativeProductsCommentImpl.class, "AP"));
         mod.registerSubtypes(new NamedType(BPCPCommentImpl.class, "BPCP"));
@@ -238,7 +237,7 @@ public class UniprotJsonConfig extends JsonConfig {
         simpleMod.addSerializer(PublicationDateImpl.class, new PublicationDateSerializer());
         simpleMod.addSerializer(ElectronicArticleImpl.LocatorImpl.class, new LocatorSerializer());
         simpleMod.addSerializer(JournalImpl.class, new JournalSerializer());
-        simpleMod.addSerializer(UniProtXDbType.class, new UniProtXDbTypeSerializer());
+        simpleMod.addSerializer(UniProtDatabase.class, new UniProtDatabaseSerializer());
         simpleMod.addSerializer(FeatureDescriptionImpl.class, new FeatureDescriptionSerializer());
         simpleMod.addSerializer(FeatureIdImpl.class, new FeatureIdSerializer());
 

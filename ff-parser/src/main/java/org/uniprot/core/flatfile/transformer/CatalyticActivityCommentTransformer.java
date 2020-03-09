@@ -8,14 +8,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
-import org.uniprot.core.impl.ECNumberImpl;
+import org.uniprot.core.impl.CrossReferenceBuilder;
+import org.uniprot.core.impl.ECNumberBuilder;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.CatalyticActivityCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.PhysiologicalReactionBuilder;
-import org.uniprot.core.uniprot.comment.builder.ReactionBuilder;
+import org.uniprot.core.uniprot.comment.impl.CatalyticActivityCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.PhysiologicalReactionBuilder;
+import org.uniprot.core.uniprot.comment.impl.ReactionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
@@ -93,7 +93,7 @@ public class CatalyticActivityCommentTransformer
 
     private PhysiologicalReaction createPhysiologicalDirection(
             String name, String xref, String evidence) {
-        DBCrossReference<ReactionReferenceType> reference = null;
+        CrossReference<ReactionDatabase> reference = null;
         if (!Strings.isNullOrEmpty(xref)) {
             reference = convertReactionReference(xref);
         }
@@ -105,7 +105,7 @@ public class CatalyticActivityCommentTransformer
         }
         return new PhysiologicalReactionBuilder()
                 .directionType(PhysiologicalDirectionType.typeOf(name))
-                .reactionReference(reference)
+                .reactionCrossReference(reference)
                 .evidencesSet(evidences)
                 .build();
     }
@@ -114,9 +114,9 @@ public class CatalyticActivityCommentTransformer
         ECNumber ecNumber = null;
 
         if (!Strings.isNullOrEmpty(ec)) {
-            ecNumber = new ECNumberImpl(ec);
+            ecNumber = new ECNumberBuilder(ec).build();
         }
-        List<DBCrossReference<ReactionReferenceType>> references = new ArrayList<>();
+        List<CrossReference<ReactionDatabase>> references = new ArrayList<>();
         if (!Strings.isNullOrEmpty(xref)) {
             references =
                     stream(xref.split(", "))
@@ -132,19 +132,19 @@ public class CatalyticActivityCommentTransformer
         }
         return new ReactionBuilder()
                 .name(name)
-                .reactionReferencesSet(references)
+                .reactionCrossReferencesSet(references)
                 .ecNumber(ecNumber)
                 .evidencesSet(evidences)
                 .build();
     }
 
-    private DBCrossReference<ReactionReferenceType> convertReactionReference(String val) {
+    private CrossReference<ReactionDatabase> convertReactionReference(String val) {
 
         int index = val.indexOf(':');
         String type = val.substring(0, index);
         String id = val.substring(index + 1);
-        return new DBCrossReferenceBuilder<ReactionReferenceType>()
-                .databaseType(ReactionReferenceType.typeOf(type))
+        return new CrossReferenceBuilder<ReactionDatabase>()
+                .database(ReactionDatabase.typeOf(type))
                 .id(id)
                 .build();
     }

@@ -2,7 +2,7 @@ package org.uniprot.core.flatfile.parser.impl.rl;
 
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.SubmissionDatabase;
-import org.uniprot.core.citation.builder.*;
+import org.uniprot.core.citation.impl.*;
 import org.uniprot.core.flatfile.parser.Converter;
 
 public class RlLineConverter

@@ -33,11 +33,11 @@ public class UniRefMemberImpl implements UniRefMember {
     private Boolean seed;
 
     // no arg constructor for JSON deserialization
-    protected UniRefMemberImpl() {
+    UniRefMemberImpl() {
         accessions = Collections.emptyList();
     }
 
-    public UniRefMemberImpl(
+    UniRefMemberImpl(
             UniRefMemberIdType memberIdType,
             String memberId,
             String organismName,

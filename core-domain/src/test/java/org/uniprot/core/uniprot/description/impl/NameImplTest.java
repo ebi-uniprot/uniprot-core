@@ -5,7 +5,6 @@ import static org.uniprot.core.ObjectsForTests.createEvidences;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.description.Name;
-import org.uniprot.core.uniprot.description.builder.NameBuilder;
 
 class NameImplTest {
     @Test

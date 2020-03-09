@@ -5,13 +5,13 @@ import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.uniprot.core.cv.keyword.GeneOntology;
-import org.uniprot.core.cv.keyword.Keyword;
+import org.uniprot.core.cv.go.GoTerm;
+import org.uniprot.core.cv.go.impl.GoTermBuilder;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
-import org.uniprot.core.cv.keyword.impl.KeywordEntryImpl;
-import org.uniprot.core.cv.keyword.impl.KeywordImpl;
+import org.uniprot.core.cv.keyword.KeywordId;
+import org.uniprot.core.cv.keyword.impl.KeywordEntryBuilder;
+import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
 import org.uniprot.cv.common.AbstractFileReader;
@@ -33,10 +33,11 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
 
     public List<KeywordEntry> parseLines(List<String> lines) {
         List<KeyFileEntry> rawList = convertLinesIntoInMemoryObjectList(lines);
-        List<KeywordEntry> list = parseKeywordFileEntryList(rawList);
-        updateListWithRelationShips(list, rawList);
-        cleanParentChildren(list);
-        return list;
+        List<KEFRBuilder> inMemoryGraph = parseKeywordFileEntryList(rawList);
+        updateListWithRelationShips(inMemoryGraph, rawList);
+        return inMemoryGraph.stream()
+                .map(KEFRBuilder::builderLimitedKeywordEntry)
+                .collect(Collectors.toList());
     }
 
     public Map<String, Pair<String, KeywordCategory>> parseFileToAccessionMap(String fileName) {
@@ -49,42 +50,23 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
     }
 
     public static String getId(KeywordEntry keyword) {
-        return keyword.getKeyword().getId();
+        return keyword.getKeyword().getName();
     }
 
     public static Pair<String, KeywordCategory> getAccessionCategoryPair(KeywordEntry keyword) {
         String accession = keyword.getAccession();
-        Keyword kcategory = keyword.getCategory();
+        KeywordId kcategory = keyword.getCategory();
         KeywordCategory category;
         if (kcategory != null) {
-            category = KeywordCategory.fromValue(kcategory.getId());
+            category = KeywordCategory.fromValue(kcategory.getName());
         } else {
-            category = KeywordCategory.fromValue(keyword.getKeyword().getId());
+            category = KeywordCategory.fromValue(keyword.getKeyword().getName());
         }
 
         return new PairImpl<>(accession, category);
     }
 
-    private void cleanParentChildren(List<KeywordEntry> list) {
-        for (KeywordEntry entry : list) {
-            KeywordEntryImpl entryImpl = (KeywordEntryImpl) entry;
-            Set<KeywordEntry> newParentList = cleanParentChildren(entryImpl.getParents());
-            entryImpl.setParents(newParentList);
-        }
-    }
-
-    private Set<KeywordEntry> cleanParentChildren(Set<KeywordEntry> list) {
-        Set<KeywordEntry> result = new HashSet<>();
-        for (KeywordEntry entry : list) {
-            KeywordEntryImpl newEntry = new KeywordEntryImpl();
-            newEntry.setKeyword(entry.getKeyword());
-            newEntry.setParents(cleanParentChildren(entry.getParents()));
-            result.add(newEntry);
-        }
-        return result;
-    }
-
-    private void updateListWithRelationShips(List<KeywordEntry> list, List<KeyFileEntry> rawList) {
+    private void updateListWithRelationShips(List<KEFRBuilder> list, List<KeyFileEntry> rawList) {
         for (KeyFileEntry raw : rawList) {
             // category will not have relationship, so ignore them
             if (raw.hi.isEmpty()) {
@@ -92,13 +74,13 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
             }
 
             // Only getting keywords
-            KeywordEntryImpl target = (KeywordEntryImpl) findByIdentifier(list, raw.id);
+            KEFRBuilder target = findByIdentifier(list, raw.id);
             assert (target != null);
 
             // Setting the category
-            KeywordEntry category = findByIdentifier(list, raw.ca);
+            KEFRBuilder category = findByIdentifier(list, raw.ca);
             if (category != null) {
-                target.setCategory(category.getKeyword());
+                target.category(category.build().getKeyword());
             }
 
             final List<String> withOutCategory =
@@ -115,44 +97,51 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
                             .collect(Collectors.toSet());
 
             // getting relationships and update it parents for directRelations
-            final List<KeywordEntry> relations =
+            final List<KEFRBuilder> relations =
                     directRelations.stream()
                             .map(s -> findByIdentifier(list, s))
                             .filter(Objects::nonNull)
                             .peek(
-                                    keywordEntry -> {
-                                        keywordEntry.getParents().add(target);
+                                    kwb -> {
+                                        kwb.parentsAdd(target);
                                     })
                             .collect(Collectors.toList());
 
             // Only setting hierarchy if present
-            target.getChildren().addAll(relations);
+            relations.forEach(target::childrenAdd);
+
+            // no relationship means children is category
             if (relations.isEmpty() && (category != null)) {
-                target.getChildren().add(category);
-                category.getParents().add(target);
+                target.childrenAdd(category);
+                category.parentsAdd(target);
             }
         }
     }
 
-    private KeywordEntry findByIdentifier(List<KeywordEntry> list, String id) {
-        return list.stream()
-                .filter(s -> s.getKeyword().getId().equals(trimSpacesAndRemoveLastDot(id)))
-                .findFirst()
-                .orElse(null);
+    private KEFRBuilder findByIdentifier(List<KEFRBuilder> list, String id) {
+        for (KEFRBuilder builder : list) {
+            if (builder.build().getKeyword().getName().equals(trimSpacesAndRemoveLastDot(id)))
+                return builder;
+        }
+        return null;
     }
 
-    private List<KeywordEntry> parseKeywordFileEntryList(List<KeyFileEntry> rawList) {
+    private List<KEFRBuilder> parseKeywordFileEntryList(List<KeyFileEntry> rawList) {
         return rawList.stream().map(this::parseKeywordFileEntry).collect(Collectors.toList());
     }
 
-    private KeywordEntry parseKeywordFileEntry(KeyFileEntry entry) {
+    private KEFRBuilder parseKeywordFileEntry(KeyFileEntry entry) {
         final String identifier = entry.id != null ? entry.id : entry.ic;
-        KeywordEntryImpl retObj = new KeywordEntryImpl();
-        Keyword keyword = new KeywordImpl(trimSpacesAndRemoveLastDot(identifier), entry.ac);
-        retObj.setKeyword(keyword);
+        KEFRBuilder retObj = new KEFRBuilder();
+        KeywordId keyword =
+                new KeywordIdBuilder()
+                        .id(trimSpacesAndRemoveLastDot(identifier))
+                        .accession(entry.ac)
+                        .build();
+        retObj.keyword(keyword);
         // definition
         String def = String.join(" ", entry.de);
-        retObj.setDefinition(def.isEmpty() ? null : def);
+        retObj.definition(def.isEmpty() ? null : def);
 
         // Synonyms
         List<String> synList =
@@ -160,15 +149,15 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
                         .flatMap(s -> Arrays.asList(s.split(";")).stream())
                         .map(this::trimSpacesAndRemoveLastDot)
                         .collect(Collectors.toList());
-        retObj.setSynonyms(synList.isEmpty() ? null : synList);
+        retObj.synonymsSet(synList);
 
         // GoMapping
-        List<GeneOntology> goList =
+        List<GoTerm> goList =
                 entry.go.stream().map(this::parseGeneOntology).collect(Collectors.toList());
-        retObj.setGeneOntologies(goList);
+        retObj.geneOntologiesSet(goList);
 
         // Sites
-        retObj.setSites(entry.ww.isEmpty() ? null : entry.ww);
+        retObj.sitesSet(entry.ww);
 
         return retObj;
     }
@@ -181,9 +170,9 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         return str.endsWith(".") ? str.substring(0, str.length() - 1) : str;
     }
 
-    private GeneOntology parseGeneOntology(String go) {
+    private GoTerm parseGeneOntology(String go) {
         String[] tokens = go.split(";");
-        return new GeneOntologyImpl(tokens[0], tokens[1].trim());
+        return new GoTermBuilder().id(tokens[0]).name(tokens[1].trim()).build();
     }
 
     private List<KeyFileEntry> convertLinesIntoInMemoryObjectList(List<String> lines) {
@@ -277,6 +266,88 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
             hi = new ArrayList<>();
             go = new ArrayList<>();
             ww = new ArrayList<>();
+        }
+    }
+
+    private static class KEFRBuilder extends KeywordEntryBuilder {
+        List<KEFRBuilder> parents = new ArrayList<>();
+        List<KEFRBuilder> children = new ArrayList<>();
+        private static final List<KeywordEntry> completedChildren = new ArrayList<>();
+
+        private Optional<KeywordEntry> findInCompletedChildren(KeywordEntry child) {
+            return completedChildren.stream()
+                    .filter(
+                            keywordEntry ->
+                                    keywordEntry
+                                                    .getKeyword()
+                                                    .getId()
+                                                    .equals(child.getKeyword().getId())
+                                            && keywordEntry
+                                                    .getKeyword()
+                                                    .getName()
+                                                    .equals(child.getKeyword().getName()))
+                    .findFirst();
+        }
+
+        private void addInCompletedChildrenIfAbsent(KeywordEntry keywordEntry) {
+            Optional<KeywordEntry> found = findInCompletedChildren(keywordEntry);
+            if (!found.isPresent()) {
+                completedChildren.add(keywordEntry);
+            }
+        }
+
+        private KeywordEntry retainAllChildrenWithConcreteImplementation(
+                KEFRBuilder currentKeyword, List<KEFRBuilder> children) {
+
+            Optional<KeywordEntry> currentInCompletedChildren =
+                    findInCompletedChildren(currentKeyword.build());
+            if (currentInCompletedChildren.isPresent()) {
+                return currentInCompletedChildren.get();
+            }
+
+            if (children.isEmpty()) {
+                KeywordEntry retKeyword = currentKeyword.build();
+                addInCompletedChildrenIfAbsent(retKeyword);
+                return retKeyword;
+            }
+
+            for (KEFRBuilder child : children) {
+                KeywordEntry completed =
+                        retainAllChildrenWithConcreteImplementation(child, child.children);
+                currentKeyword.childrenAdd(completed);
+            }
+
+            KeywordEntry current = currentKeyword.build();
+            addInCompletedChildrenIfAbsent(current);
+            return current;
+        }
+
+        private void retainImmediateParentsOnlyWithOutChildren(
+                KEFRBuilder currentKeyword, List<KEFRBuilder> parents) {
+            for (KEFRBuilder key : parents) {
+                KeywordEntry limitedParent =
+                        KeywordEntryBuilder.from(key.build())
+                                .childrenSet(Collections.emptyList())
+                                .parentsSet(Collections.emptySet())
+                                .build();
+                currentKeyword.parentsAdd(limitedParent);
+            }
+        }
+
+        KEFRBuilder parentsAdd(KEFRBuilder parent) {
+            parents.add(parent);
+            return this;
+        }
+
+        KEFRBuilder childrenAdd(KEFRBuilder child) {
+            children.add(child);
+            return this;
+        }
+
+        KeywordEntry builderLimitedKeywordEntry() {
+            retainAllChildrenWithConcreteImplementation(this, this.children);
+            retainImmediateParentsOnlyWithOutChildren(this, this.parents);
+            return super.build();
         }
     }
 }

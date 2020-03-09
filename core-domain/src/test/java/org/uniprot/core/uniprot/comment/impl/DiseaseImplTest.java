@@ -2,13 +2,12 @@ package org.uniprot.core.uniprot.comment.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
+import static org.uniprot.core.ObjectsForTests.crossReference;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprot.comment.Disease;
-import org.uniprot.core.uniprot.comment.DiseaseReferenceType;
-import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
+import org.uniprot.core.uniprot.comment.DiseaseDatabase;
 
 class DiseaseImplTest {
     @Test
@@ -19,8 +18,8 @@ class DiseaseImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        DBCrossReference<DiseaseReferenceType> reference =
-                new DBCrossReferenceImpl<>(DiseaseReferenceType.MIM, "referenceId");
+        CrossReference<DiseaseDatabase> reference =
+                crossReference(DiseaseDatabase.MIM, "referenceId");
         Disease impl = new DiseaseImpl("id", "acc", "act", "des", reference, createEvidences());
         Disease obj = DiseaseBuilder.from(impl).build();
 
@@ -29,7 +28,7 @@ class DiseaseImplTest {
         assertTrue(impl.hasDescription());
         assertTrue(impl.hasDiseaseAccession());
         assertTrue(impl.hasDiseaseId());
-        assertTrue(impl.hasReference());
+        assertTrue(impl.hasDiseaseCrossReference());
         assertTrue(impl.hasEvidences());
 
         assertTrue(impl.equals(obj) && obj.equals(impl));

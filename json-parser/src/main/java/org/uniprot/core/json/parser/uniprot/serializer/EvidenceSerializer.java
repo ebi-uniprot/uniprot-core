@@ -22,11 +22,12 @@ public class EvidenceSerializer extends StdSerializer<EvidenceImpl> {
             throws IOException {
         gen.writeStartObject();
         gen.writeStringField("evidenceCode", evidence.getEvidenceCode().getCode());
-        if (evidence.getSource() != null) {
-            if (evidence.getSource().getDatabaseType() != null) {
-                gen.writeStringField("source", evidence.getSource().getDatabaseType().getName());
+        if (evidence.getEvidenceCrossReference() != null) {
+            if (evidence.getEvidenceCrossReference().getDatabase() != null) {
+                gen.writeStringField(
+                        "source", evidence.getEvidenceCrossReference().getDatabase().getName());
             }
-            gen.writeStringField("id", evidence.getSource().getId());
+            gen.writeStringField("id", evidence.getEvidenceCrossReference().getId());
         }
         gen.writeEndObject();
     }

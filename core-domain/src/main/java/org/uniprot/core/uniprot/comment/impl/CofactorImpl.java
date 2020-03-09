@@ -4,9 +4,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprot.comment.Cofactor;
-import org.uniprot.core.uniprot.comment.CofactorReferenceType;
+import org.uniprot.core.uniprot.comment.CofactorDatabase;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.util.Utils;
 
@@ -14,24 +14,20 @@ public class CofactorImpl implements Cofactor {
     private static final long serialVersionUID = -1446627008409869566L;
     private String name;
     private List<Evidence> evidences;
-    private DBCrossReference<CofactorReferenceType> cofactorReference;
+    private CrossReference<CofactorDatabase> cofactorCrossReference;
 
     // no arg constructor for JSON deserialization
     CofactorImpl() {
         this.evidences = Collections.emptyList();
     }
 
-    public CofactorImpl(
+    CofactorImpl(
             String name,
-            DBCrossReference<CofactorReferenceType> cofactorReference,
+            CrossReference<CofactorDatabase> cofactorCrossReference,
             List<Evidence> evidences) {
         this.name = name;
-        if ((evidences == null) || evidences.isEmpty()) {
-            this.evidences = Collections.emptyList();
-        } else {
-            this.evidences = Collections.unmodifiableList(evidences);
-        }
-        this.cofactorReference = cofactorReference;
+        this.evidences = Utils.unmodifiableList(evidences);
+        this.cofactorCrossReference = cofactorCrossReference;
     }
 
     @Override
@@ -50,8 +46,8 @@ public class CofactorImpl implements Cofactor {
     }
 
     @Override
-    public DBCrossReference<CofactorReferenceType> getCofactorReference() {
-        return cofactorReference;
+    public CrossReference<CofactorDatabase> getCofactorCrossReference() {
+        return cofactorCrossReference;
     }
 
     @Override
@@ -60,8 +56,8 @@ public class CofactorImpl implements Cofactor {
     }
 
     @Override
-    public boolean hasCofactorReference() {
-        return this.cofactorReference != null;
+    public boolean hasCofactorCrossReference() {
+        return this.cofactorCrossReference != null;
     }
 
     @Override
@@ -71,11 +67,11 @@ public class CofactorImpl implements Cofactor {
         CofactorImpl cofactor = (CofactorImpl) o;
         return Objects.equals(name, cofactor.name)
                 && Objects.equals(evidences, cofactor.evidences)
-                && Objects.equals(cofactorReference, cofactor.cofactorReference);
+                && Objects.equals(cofactorCrossReference, cofactor.cofactorCrossReference);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, evidences, cofactorReference);
+        return Objects.hash(name, evidences, cofactorCrossReference);
     }
 }

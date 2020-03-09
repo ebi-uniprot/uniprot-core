@@ -7,8 +7,6 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
-import org.uniprot.core.uniprot.comment.builder.SubcellularLocationBuilder;
-import org.uniprot.core.uniprot.comment.builder.SubcellularLocationCommentBuilder;
 
 class SubcellularLocationCommentImplTest {
     @Test

@@ -18,7 +18,7 @@ public class SubcellularLocationImpl implements SubcellularLocation {
     // no arg constructor for JSON deserialization
     SubcellularLocationImpl() {}
 
-    public SubcellularLocationImpl(
+    SubcellularLocationImpl(
             SubcellularLocationValue location,
             SubcellularLocationValue topology,
             SubcellularLocationValue orientation) {
@@ -83,7 +83,7 @@ public class SubcellularLocationImpl implements SubcellularLocation {
             super(null, Collections.emptyList());
         }
 
-        public SubcellularLocationValueImpl(String id, String value, List<Evidence> evidences) {
+        SubcellularLocationValueImpl(String id, String value, List<Evidence> evidences) {
             super(value, evidences);
             this.id = id;
         }

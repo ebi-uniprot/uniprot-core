@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprot.comment.InteractionComment;
-import org.uniprot.core.uniprot.comment.builder.InteractionCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.InteractionCommentBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;

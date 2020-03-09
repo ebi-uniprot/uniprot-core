@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprot.comment.FreeTextComment;
-import org.uniprot.core.uniprot.comment.builder.FreeTextCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.FreeTextCommentBuilder;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;

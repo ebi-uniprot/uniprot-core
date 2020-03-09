@@ -9,7 +9,7 @@ import org.uniprot.core.scorer.uniprotkb.ScoreStatus;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprot.comment.RnaEditingComment;
 import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 16:02:58 To change this template
@@ -18,8 +18,9 @@ import org.uniprot.core.uniprot.evidence.EvidenceType;
 public class RnaEditingCommentScored extends CommentScoredAbstr {
     private final RnaEditingComment comment;
 
-    public RnaEditingCommentScored(RnaEditingComment copy, List<EvidenceType> evidenceTypes) {
-        super(copy.getCommentType(), evidenceTypes);
+    public RnaEditingCommentScored(
+            RnaEditingComment copy, List<EvidenceDatabase> evidenceDatabases) {
+        super(copy.getCommentType(), evidenceDatabases);
         this.comment = copy;
     }
 
@@ -57,7 +58,7 @@ public class RnaEditingCommentScored extends CommentScoredAbstr {
 
     private boolean hasEvidence() {
         List<Evidence> evidences = new ArrayList<>(getEvidences(comment));
-        return ScoreUtil.hasEvidence(evidences, evidenceTypes);
+        return ScoreUtil.hasEvidence(evidences, evidenceDatabases);
     }
 
     private List<Evidence> getEvidences(RnaEditingComment comment) {

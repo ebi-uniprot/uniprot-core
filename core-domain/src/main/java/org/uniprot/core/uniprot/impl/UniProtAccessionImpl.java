@@ -17,7 +17,7 @@ public class UniProtAccessionImpl extends ValueImpl implements UniProtAccession 
         super(null);
     }
 
-    public UniProtAccessionImpl(String value) {
+    UniProtAccessionImpl(String value) {
         super(value);
     }
 

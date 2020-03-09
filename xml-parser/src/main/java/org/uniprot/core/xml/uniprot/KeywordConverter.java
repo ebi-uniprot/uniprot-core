@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.uniprot.Keyword;
-import org.uniprot.core.uniprot.builder.KeywordBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.impl.KeywordBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.KeywordType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
@@ -29,7 +29,7 @@ public class KeywordConverter implements Converter<KeywordType, Keyword> {
         List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
         return new KeywordBuilder()
                 .id(xmlObj.getId())
-                .value(keywordValue)
+                .name(keywordValue)
                 .category(KeywordCategory.UNKNOWN)
                 .evidencesSet(evidences)
                 .build();
@@ -38,7 +38,7 @@ public class KeywordConverter implements Converter<KeywordType, Keyword> {
     @Override
     public KeywordType toXml(Keyword uniObj) {
         KeywordType xmlKeyword = xmlUniprotFactory.createKeywordType();
-        String value = uniObj.getValue();
+        String value = uniObj.getName();
         xmlKeyword.setValue(value);
         xmlKeyword.setId(uniObj.getId());
 

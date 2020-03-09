@@ -1,14 +1,10 @@
 package org.uniprot.core.uniprot.comment.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.ObjectsForTests.createEvidences;
-import static org.uniprot.core.ObjectsForTests.createNote;
+import static org.uniprot.core.ObjectsForTests.*;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
-import org.uniprot.core.uniprot.comment.builder.DiseaseCommentBuilder;
 
 class DiseaseCommentImplTest {
 
@@ -19,7 +15,7 @@ class DiseaseCommentImplTest {
                     .acronym("someAcron")
                     .evidencesSet(createEvidences())
                     .description("some description")
-                    .reference(new DBCrossReferenceImpl<>(DiseaseReferenceType.MIM, "3124"))
+                    .diseaseCrossReference(crossReference(DiseaseDatabase.MIM, "3124"))
                     .build();;
 
     @Test

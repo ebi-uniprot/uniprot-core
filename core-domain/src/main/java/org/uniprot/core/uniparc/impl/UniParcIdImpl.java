@@ -18,11 +18,11 @@ public class UniParcIdImpl extends ValueImpl implements UniParcId {
     private static final Pattern UNIPARC_ACC_PATTERN =
             Pattern.compile(UNIPARC_ACC_REX, Pattern.CASE_INSENSITIVE);
 
-    protected UniParcIdImpl() {
+    UniParcIdImpl() {
         super(null);
     }
 
-    public UniParcIdImpl(String value) {
+    UniParcIdImpl(String value) {
         super(value);
     }
 

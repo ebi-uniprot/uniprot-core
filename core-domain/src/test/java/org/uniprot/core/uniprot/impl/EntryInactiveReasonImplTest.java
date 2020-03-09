@@ -8,7 +8,6 @@ import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.EntryInactiveReason;
 import org.uniprot.core.uniprot.InactiveReasonType;
-import org.uniprot.core.uniprot.builder.EntryInactiveReasonBuilder;
 
 class EntryInactiveReasonImplTest {
 

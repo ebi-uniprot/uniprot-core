@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.Disease;
 import org.uniprot.core.uniprot.comment.DiseaseComment;
-import org.uniprot.core.uniprot.comment.DiseaseReferenceType;
-import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
-import org.uniprot.core.uniprot.comment.builder.DiseaseCommentBuilder;
+import org.uniprot.core.uniprot.comment.DiseaseDatabase;
+import org.uniprot.core.uniprot.comment.impl.DiseaseBuilder;
+import org.uniprot.core.uniprot.comment.impl.DiseaseCommentBuilder;
 
 class CCDiseaseBuildTest extends CCBuildTestAbstr {
     @Test
@@ -54,7 +54,7 @@ class CCDiseaseBuildTest extends CCBuildTestAbstr {
         String refId = "114500";
 
         Disease disease =
-                buildDisease(diseaseId, acronyn, description, DiseaseReferenceType.MIM, refId, evs);
+                buildDisease(diseaseId, acronyn, description, DiseaseDatabase.MIM, refId, evs);
 
         builder.disease(disease);
 
@@ -124,7 +124,7 @@ class CCDiseaseBuildTest extends CCBuildTestAbstr {
                         + "long-standing ulcerative colitis, and genetic family history.";
         String refId = "114500";
         Disease disease =
-                buildDisease(diseaseId, acronyn, description, DiseaseReferenceType.MIM, refId, evs);
+                buildDisease(diseaseId, acronyn, description, DiseaseDatabase.MIM, refId, evs);
         builder.disease(disease);
 
         DiseaseComment comment = builder.build();
@@ -198,7 +198,7 @@ class CCDiseaseBuildTest extends CCBuildTestAbstr {
                         + "long-standing ulcerative colitis, and genetic family history.";
         String refId = "114500";
         Disease disease =
-                buildDisease(diseaseId, acronyn, description, DiseaseReferenceType.MIM, refId, evs);
+                buildDisease(diseaseId, acronyn, description, DiseaseDatabase.MIM, refId, evs);
         builder.disease(disease);
 
         DiseaseComment comment = builder.build();
@@ -282,7 +282,7 @@ class CCDiseaseBuildTest extends CCBuildTestAbstr {
                         + "long-standing ulcerative colitis, and genetic family history.";
         String refId = "114500";
         Disease disease =
-                buildDisease(diseaseId, acronyn, description, DiseaseReferenceType.MIM, refId, evs);
+                buildDisease(diseaseId, acronyn, description, DiseaseDatabase.MIM, refId, evs);
         builder.disease(disease);
 
         DiseaseComment comment = builder.build();
@@ -295,18 +295,15 @@ class CCDiseaseBuildTest extends CCBuildTestAbstr {
             String diseaseId,
             String acronym,
             String description,
-            DiseaseReferenceType type,
+            DiseaseDatabase type,
             String refId,
             List<String> evs) {
         DiseaseBuilder builder = new DiseaseBuilder();
         builder.diseaseId(diseaseId);
         builder.acronym(acronym);
         builder.description(description).evidencesSet(createEvidence(evs));
-        builder.reference(
-                new DBCrossReferenceBuilder<DiseaseReferenceType>()
-                        .databaseType(type)
-                        .id(refId)
-                        .build());
+        builder.diseaseCrossReference(
+                new CrossReferenceBuilder<DiseaseDatabase>().database(type).id(refId).build());
         return builder.build();
     }
 }

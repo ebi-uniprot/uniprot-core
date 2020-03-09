@@ -5,7 +5,6 @@ import static org.uniprot.core.ObjectsForTests.createEvidences;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.MichaelisConstant;
-import org.uniprot.core.uniprot.comment.builder.MichaelisConstantBuilder;
 
 class MichaelisConstantImplTest {
     @Test

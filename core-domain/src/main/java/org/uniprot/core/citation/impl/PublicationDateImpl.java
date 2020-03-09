@@ -12,7 +12,7 @@ public class PublicationDateImpl implements PublicationDate {
     // no arg constructor for JSON deserialization
     PublicationDateImpl() {}
 
-    public PublicationDateImpl(String value) {
+    PublicationDateImpl(String value) {
         this.value = value;
     }
 

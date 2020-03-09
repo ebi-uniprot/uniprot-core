@@ -11,7 +11,7 @@ public class JournalImpl implements Journal {
     // no arg constructor for JSON deserialization
     JournalImpl() {}
 
-    public JournalImpl(String name) {
+    JournalImpl(String name) {
         this.name = name;
     }
 

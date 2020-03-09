@@ -4,7 +4,7 @@ import static java.util.Collections.emptyList;
 
 import java.util.List;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
 
 public class SubmissionImpl extends AbstractCitationImpl implements Submission {
@@ -16,10 +16,10 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
         this(emptyList(), emptyList(), emptyList(), null, null, null);
     }
 
-    public SubmissionImpl(
+    SubmissionImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<DBCrossReference<CitationXrefType>> citationXrefs,
+            List<CrossReference<CitationDatabase>> citationCrossReferences,
             String title,
             PublicationDate publicationDate,
             SubmissionDatabase submissionDatabase) {
@@ -27,7 +27,7 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
                 CitationType.SUBMISSION,
                 authoringGroup,
                 authors,
-                citationXrefs,
+                citationCrossReferences,
                 title,
                 publicationDate);
         this.submissionDatabase = submissionDatabase;

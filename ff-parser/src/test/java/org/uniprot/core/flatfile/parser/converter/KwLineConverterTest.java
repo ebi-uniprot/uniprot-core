@@ -32,7 +32,7 @@ class KwLineConverterTest {
         List<Keyword> kws = converter.convert(obj);
         assertEquals(4, kws.size());
         for (Keyword kw : kws) {
-            keywords.contains(kw.getValue());
+            keywords.contains(kw.getName());
         }
     }
 
@@ -64,13 +64,13 @@ class KwLineConverterTest {
         Keyword kw3 = kws.get(2);
         Keyword kw4 = kws.get(3);
         for (Keyword kw : kws) {
-            if (kw.getValue().equals("Activator")) {
+            if (kw.getName().equals("Activator")) {
                 kw1 = kw;
-            } else if (kw.getValue().equals("Complete proteome")) {
+            } else if (kw.getName().equals("Complete proteome")) {
                 kw2 = kw;
-            } else if (kw.getValue().equals("Reference proteome")) {
+            } else if (kw.getName().equals("Reference proteome")) {
                 kw3 = kw;
-            } else if (kw.getValue().equals("Transcription")) {
+            } else if (kw.getName().equals("Transcription")) {
                 kw4 = kw;
             }
         }

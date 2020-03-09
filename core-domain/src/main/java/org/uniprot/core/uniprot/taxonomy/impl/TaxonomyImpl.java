@@ -16,7 +16,7 @@ public class TaxonomyImpl extends AbstractOrganismNameImpl implements Taxonomy {
         this(-1, null, null, null, null);
     }
 
-    public TaxonomyImpl(
+    protected TaxonomyImpl(
             long taxonId,
             String scientificName,
             String commonName,

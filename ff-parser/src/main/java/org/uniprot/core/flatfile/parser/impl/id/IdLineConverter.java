@@ -6,7 +6,7 @@ import java.util.Map;
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.uniprot.UniProtEntryType;
 import org.uniprot.core.uniprot.UniProtId;
-import org.uniprot.core.uniprot.builder.UniProtIdBuilder;
+import org.uniprot.core.uniprot.impl.UniProtIdBuilder;
 
 public class IdLineConverter
         implements Converter<IdLineObject, Map.Entry<UniProtId, UniProtEntryType>> {

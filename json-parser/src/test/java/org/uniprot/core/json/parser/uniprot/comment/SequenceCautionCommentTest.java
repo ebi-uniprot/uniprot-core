@@ -8,7 +8,7 @@ import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
 import org.uniprot.core.uniprot.comment.SequenceCautionComment;
 import org.uniprot.core.uniprot.comment.SequenceCautionType;
-import org.uniprot.core.uniprot.comment.builder.SequenceCautionCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.SequenceCautionCommentBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

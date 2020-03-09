@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
-import org.uniprot.core.impl.ECNumberImpl;
+import org.uniprot.core.impl.ECNumberBuilder;
 import org.uniprot.core.uniprot.comment.Reaction;
-import org.uniprot.core.uniprot.comment.ReactionReferenceType;
-import org.uniprot.core.uniprot.comment.builder.ReactionBuilder;
+import org.uniprot.core.uniprot.comment.ReactionDatabase;
+import org.uniprot.core.uniprot.comment.impl.ReactionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
@@ -36,7 +36,7 @@ public class CAReactionConverter implements Converter<ReactionType, Reaction> {
     @Override
     public Reaction fromXml(ReactionType xmlObj) {
         String name = xmlObj.getText();
-        List<DBCrossReference<ReactionReferenceType>> references =
+        List<CrossReference<ReactionDatabase>> references =
                 xmlObj.getDbReference().stream()
                         .filter(val -> !EC.equals(val.getType()))
                         .map(val -> refConverter.fromXml(val))
@@ -48,13 +48,13 @@ public class CAReactionConverter implements Converter<ReactionType, Reaction> {
                         .findFirst();
         ECNumber ecNumber = null;
         if (opEc.isPresent()) {
-            ecNumber = new ECNumberImpl(opEc.get().getId());
+            ecNumber = new ECNumberBuilder(opEc.get().getId()).build();
         }
         List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
 
         return new ReactionBuilder()
                 .name(name)
-                .reactionReferencesSet(references)
+                .reactionCrossReferencesSet(references)
                 .ecNumber(ecNumber)
                 .evidencesSet(evidences)
                 .build();
@@ -67,7 +67,7 @@ public class CAReactionConverter implements Converter<ReactionType, Reaction> {
         reactionType
                 .getDbReference()
                 .addAll(
-                        uniObj.getReactionReferences().stream()
+                        uniObj.getReactionCrossReferences().stream()
                                 .map(val -> refConverter.toXml(val))
                                 .collect(Collectors.toList()));
         if (uniObj.getEcNumber() != null) {

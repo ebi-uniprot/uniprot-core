@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
-import org.uniprot.core.builder.SequenceBuilder;
+import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
 import com.fasterxml.jackson.databind.JsonNode;

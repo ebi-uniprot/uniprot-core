@@ -1,6 +1,5 @@
 package org.uniprot.core.cv.ec.impl;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 import org.uniprot.core.cv.ec.ECEntry;
@@ -10,12 +9,12 @@ import org.uniprot.core.cv.ec.ECEntry;
  *
  * @author Edd
  */
-public class ECEntryImpl implements ECEntry, Serializable {
+public class ECEntryImpl implements ECEntry {
     private static final long serialVersionUID = -5403788164376756075L;
     private final String id;
     private final String label;
 
-    public ECEntryImpl(String id, String label) {
+    ECEntryImpl(String id, String label) {
         this.id = id;
         this.label = label;
     }

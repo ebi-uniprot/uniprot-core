@@ -26,7 +26,7 @@ public class ProteinSectionImpl implements ProteinSection {
         this.innNames = Collections.emptyList();
     }
 
-    public ProteinSectionImpl(
+    ProteinSectionImpl(
             ProteinRecName recommendedName,
             List<ProteinAltName> alternativeNames,
             Name allergenName,

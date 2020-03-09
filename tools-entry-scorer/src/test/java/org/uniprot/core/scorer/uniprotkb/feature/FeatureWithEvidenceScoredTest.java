@@ -12,7 +12,7 @@ import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject;
 import org.uniprot.core.scorer.uniprotkb.features.FeatureScored;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprot.feature.Feature;
 
 class FeatureWithEvidenceScoredTest {
@@ -24,7 +24,7 @@ class FeatureWithEvidenceScoredTest {
                         + "FT                   /evidence=\"ECO:0000256|HAMAP-Rule:MF_00111\"\n";
 
         Feature feature = createFeature(ftLine);
-        verify(feature, 3.0, singletonList(new EvidenceType("HAMAP-Rule")));
+        verify(feature, 3.0, singletonList(new EvidenceDatabase("HAMAP-Rule")));
     }
 
     @Test
@@ -35,7 +35,7 @@ class FeatureWithEvidenceScoredTest {
                         + "FT                   /evidence=\"ECO:0000256|HAMAP-Rule:MF_00111\"\n";
 
         Feature feature = createFeature(ftLine);
-        verify(feature, 0.0, singletonList(new EvidenceType("RuleBase")));
+        verify(feature, 0.0, singletonList(new EvidenceDatabase("RuleBase")));
     }
 
     @Test
@@ -46,7 +46,7 @@ class FeatureWithEvidenceScoredTest {
                         + "FT                   /evidence=\"ECO:0000256|SAM:Phobius\"\n";
 
         Feature feature = createFeature(ftLine);
-        verify(feature, 3.0, singletonList(new EvidenceType("SAM")));
+        verify(feature, 3.0, singletonList(new EvidenceDatabase("SAM")));
     }
 
     @Test
@@ -57,7 +57,7 @@ class FeatureWithEvidenceScoredTest {
                         + "FT                   /evidence=\"ECO:0000256|SAM:Phobius\"\n";
 
         Feature feature = createFeature(ftLine);
-        verify(feature, 0.0, singletonList(new EvidenceType("HAMAP-Rule")));
+        verify(feature, 0.0, singletonList(new EvidenceDatabase("HAMAP-Rule")));
     }
 
     @Test
@@ -68,7 +68,7 @@ class FeatureWithEvidenceScoredTest {
                         + "FT                   /evidence=\"ECO:0000259|PROSITE:PS51382\"\n";
 
         Feature feature = createFeature(ftLine);
-        verify(feature, 0.0, singletonList(new EvidenceType("PROSITE")));
+        verify(feature, 0.0, singletonList(new EvidenceDatabase("PROSITE")));
     }
 
     @Test
@@ -79,10 +79,10 @@ class FeatureWithEvidenceScoredTest {
                         + "FT                   /evidence=\"ECO:0000259|PROSITE:PS51382\"\n";
 
         Feature feature = createFeature(ftLine);
-        verify(feature, 0.0, singletonList(new EvidenceType("SAM")));
+        verify(feature, 0.0, singletonList(new EvidenceDatabase("SAM")));
     }
 
-    private void verify(Feature feature, double expectedScore, List<EvidenceType> types) {
+    private void verify(Feature feature, double expectedScore, List<EvidenceDatabase> types) {
         FeatureScored scored = new FeatureScored(feature, types);
         assertEquals(expectedScore, scored.score(), 0.00001);
     }

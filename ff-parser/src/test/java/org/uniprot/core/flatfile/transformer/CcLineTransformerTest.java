@@ -484,15 +484,13 @@ class CcLineTransformerTest {
         Cofactor cofactor1 = comment.getCofactors().get(0);
         Cofactor cofactor2 = comment.getCofactors().get(1);
         assertEquals("Mg(2+)", cofactor1.getName());
-        assertEquals("CHEBI:18420", cofactor1.getCofactorReference().getId());
-        assertEquals(
-                CofactorReferenceType.CHEBI, cofactor1.getCofactorReference().getDatabaseType());
+        assertEquals("CHEBI:18420", cofactor1.getCofactorCrossReference().getId());
+        assertEquals(CofactorDatabase.CHEBI, cofactor1.getCofactorCrossReference().getDatabase());
         assertEquals(1, cofactor1.getEvidences().size());
         assertEquals("ECO:0000255|HAMAP-Rule:MF_00086", cofactor1.getEvidences().get(0).getValue());
         assertEquals("Co(2+)", cofactor2.getName());
-        assertEquals("CHEBI:48828", cofactor2.getCofactorReference().getId());
-        assertEquals(
-                CofactorReferenceType.CHEBI, cofactor2.getCofactorReference().getDatabaseType());
+        assertEquals("CHEBI:48828", cofactor2.getCofactorCrossReference().getId());
+        assertEquals(CofactorDatabase.CHEBI, cofactor2.getCofactorCrossReference().getDatabase());
         assertEquals(2, cofactor2.getEvidences().size());
         assertEquals("ECO:0000255|HAMAP-Rule:MF_00089", cofactor2.getEvidences().get(0).getValue());
         Note note = comment.getNote();
@@ -529,17 +527,15 @@ class CcLineTransformerTest {
         Cofactor cofactor1 = comment.getCofactors().get(0);
         Cofactor cofactor3 = comment.getCofactors().get(2);
         assertEquals("Zn(2+)", cofactor1.getName());
-        assertEquals("CHEBI:29105", cofactor1.getCofactorReference().getId());
-        assertEquals(
-                CofactorReferenceType.CHEBI, cofactor1.getCofactorReference().getDatabaseType());
+        assertEquals("CHEBI:29105", cofactor1.getCofactorCrossReference().getId());
+        assertEquals(CofactorDatabase.CHEBI, cofactor1.getCofactorCrossReference().getDatabase());
         assertEquals(2, cofactor1.getEvidences().size());
         assertEquals("ECO:0000269|PubMed:16683188", cofactor1.getEvidences().get(0).getValue());
         assertEquals(
                 "A very very looooooooooooong cofactor name with X evidence tags",
                 cofactor3.getName());
-        assertEquals("CHEBI:54321", cofactor3.getCofactorReference().getId());
-        assertEquals(
-                CofactorReferenceType.CHEBI, cofactor3.getCofactorReference().getDatabaseType());
+        assertEquals("CHEBI:54321", cofactor3.getCofactorCrossReference().getId());
+        assertEquals(CofactorDatabase.CHEBI, cofactor3.getCofactorCrossReference().getDatabase());
         assertEquals(2, cofactor3.getEvidences().size());
         assertEquals("ECO:0000269|PubMed:16683189", cofactor3.getEvidences().get(1).getValue());
         Note note = comment.getNote();
@@ -573,9 +569,8 @@ class CcLineTransformerTest {
         Cofactor cofactor1 = comment.getCofactors().get(0);
 
         assertEquals("Zn(2+)", cofactor1.getName());
-        assertEquals("CHEBI:29105", cofactor1.getCofactorReference().getId());
-        assertEquals(
-                CofactorReferenceType.CHEBI, cofactor1.getCofactorReference().getDatabaseType());
+        assertEquals("CHEBI:29105", cofactor1.getCofactorCrossReference().getId());
+        assertEquals(CofactorDatabase.CHEBI, cofactor1.getCofactorCrossReference().getDatabase());
         assertEquals(1, cofactor1.getEvidences().size());
         assertEquals("ECO:0000269|PubMed:9060645", cofactor1.getEvidences().get(0).getValue());
 
@@ -606,9 +601,8 @@ class CcLineTransformerTest {
         Cofactor cofactor1 = comment.getCofactors().get(0);
 
         assertEquals("Zn(2+)", cofactor1.getName());
-        assertEquals("CHEBI:29105", cofactor1.getCofactorReference().getId());
-        assertEquals(
-                CofactorReferenceType.CHEBI, cofactor1.getCofactorReference().getDatabaseType());
+        assertEquals("CHEBI:29105", cofactor1.getCofactorCrossReference().getId());
+        assertEquals(CofactorDatabase.CHEBI, cofactor1.getCofactorCrossReference().getDatabase());
         assertEquals(1, cofactor1.getEvidences().size());
         assertEquals("ECO:0000250", cofactor1.getEvidences().get(0).getValue());
 
@@ -660,9 +654,9 @@ class CcLineTransformerTest {
         assertEquals(0, comment.getNote().getTexts().get(0).getEvidences().size());
         assertEquals(diseaseId, comment.getDisease().getDiseaseId());
         assertEquals(acronyn, comment.getDisease().getAcronym());
-        assertEquals("114500", comment.getDisease().getReference().getId());
+        assertEquals("114500", comment.getDisease().getDiseaseCrossReference().getId());
         assertEquals(
-                DiseaseReferenceType.MIM, comment.getDisease().getReference().getDatabaseType());
+                DiseaseDatabase.MIM, comment.getDisease().getDiseaseCrossReference().getDatabase());
     }
 
     @Test
@@ -714,9 +708,9 @@ class CcLineTransformerTest {
                 comment.getNote().getTexts().get(1).getEvidences().get(0).getValue());
         assertEquals(diseaseId, comment.getDisease().getDiseaseId());
         assertEquals(acronyn, comment.getDisease().getAcronym());
-        assertEquals("114500", comment.getDisease().getReference().getId());
+        assertEquals("114500", comment.getDisease().getDiseaseCrossReference().getId());
         assertEquals(
-                DiseaseReferenceType.MIM, comment.getDisease().getReference().getDatabaseType());
+                DiseaseDatabase.MIM, comment.getDisease().getDiseaseCrossReference().getDatabase());
     }
 
     @Test
@@ -756,8 +750,9 @@ class CcLineTransformerTest {
         assertEquals(disease.getDescription(), diseaseDescription);
 
         assertEquals(
-                disease.getReference().getDatabaseType().toDisplayName(), diseaseReferenceType);
-        assertEquals(disease.getReference().getId(), diseaseReferenceId);
+                disease.getDiseaseCrossReference().getDatabase().toDisplayName(),
+                diseaseReferenceType);
+        assertEquals(disease.getDiseaseCrossReference().getId(), diseaseReferenceId);
 
         assertEquals(comment.getNote().getTexts().get(0).getValue(), diseaseNote);
     }

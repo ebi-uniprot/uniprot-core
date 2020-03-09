@@ -21,12 +21,12 @@ public class KeywordEntryMap implements NamedValueMap {
     public Map<String, String> attributeValues() {
         Map<String, String> map = new HashMap<>();
         if (Utils.notNull(keywordEntry.getKeyword())) {
-            map.put("id", keywordEntry.getKeyword().getAccession());
-            map.put("name", keywordEntry.getKeyword().getId());
+            map.put("id", keywordEntry.getKeyword().getId());
+            map.put("name", keywordEntry.getKeyword().getName());
         }
         map.put("description", getOrDefaultEmpty(keywordEntry.getDefinition()));
         if (Utils.notNull(keywordEntry.getCategory())) {
-            map.put("category", getOrDefaultEmpty(keywordEntry.getCategory().getId()));
+            map.put("category", getOrDefaultEmpty(keywordEntry.getCategory().getName()));
         }
         map.put("synonym", getOrDefaultEmpty(keywordEntry.getSynonyms()));
         map.put("gene_ontology", getGeneOntology());
@@ -42,7 +42,7 @@ public class KeywordEntryMap implements NamedValueMap {
         if (Utils.notNullNotEmpty(keywordEntry.getGeneOntologies())) {
             result =
                     keywordEntry.getGeneOntologies().stream()
-                            .map(go -> go.getGoId() + ":" + go.getGoTerm())
+                            .map(go -> go.getId() + ":" + go.getName())
                             .collect(Collectors.joining(", "));
         }
         return result;
@@ -51,7 +51,7 @@ public class KeywordEntryMap implements NamedValueMap {
     private String getChildren() {
         return keywordEntry.getChildren().stream()
                 .flatMap(this::getAllChildrenLevel)
-                .map(entry -> entry.getKeyword().getId())
+                .map(entry -> entry.getKeyword().getName())
                 .collect(Collectors.joining(", "));
     }
 
@@ -67,7 +67,7 @@ public class KeywordEntryMap implements NamedValueMap {
     private String getParent() {
         return keywordEntry.getParents().stream()
                 .flatMap(this::getAllParentLevel)
-                .map(entry -> entry.getKeyword().getId())
+                .map(entry -> entry.getKeyword().getName())
                 .collect(Collectors.joining(", "));
     }
 

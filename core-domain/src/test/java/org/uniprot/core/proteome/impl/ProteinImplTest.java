@@ -5,9 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.GeneNameType;
 import org.uniprot.core.proteome.Protein;
-import org.uniprot.core.proteome.builder.ProteinBuilder;
 import org.uniprot.core.uniprot.UniProtEntryType;
-import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
+import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
 
 class ProteinImplTest {
     @Test
@@ -20,7 +19,7 @@ class ProteinImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         Protein impl =
                 new ProteinImpl(
-                        new UniProtAccessionImpl("acc"),
+                        new UniProtAccessionBuilder("acc").build(),
                         UniProtEntryType.INACTIVE,
                         30,
                         "gm",

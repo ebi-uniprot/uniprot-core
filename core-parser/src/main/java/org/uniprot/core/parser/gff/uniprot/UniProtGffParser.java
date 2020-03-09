@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.flatfile.parser.impl.ft.FTLineBuilderHelper;
 import org.uniprot.core.uniprot.UniProtEntry;
 import org.uniprot.core.uniprot.evidence.Evidence;
@@ -92,15 +92,15 @@ public class UniProtGffParser {
 
         String pubmed =
                 evidences.stream()
-                        .filter(evidence -> evidence.getSource() != null)
+                        .filter(evidence -> evidence.getEvidenceCrossReference() != null)
                         .filter(
                                 evidence ->
-                                        evidence.getSource()
-                                                .getDatabaseType()
+                                        evidence.getEvidenceCrossReference()
+                                                .getDatabase()
                                                 .getName()
                                                 .equals("PubMed"))
-                        .map(Evidence::getSource)
-                        .map(DBCrossReference::getId)
+                        .map(Evidence::getEvidenceCrossReference)
+                        .map(CrossReference::getId)
                         .collect(Collectors.toSet())
                         .stream()
                         // UUW pmid not in order, eg. P00550

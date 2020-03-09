@@ -13,8 +13,8 @@ import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.flatfile.parser.impl.kw.KWLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprot.Keyword;
-import org.uniprot.core.uniprot.builder.KeywordBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.impl.KeywordBuilder;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
 class KWLineBuildTest {
@@ -239,16 +239,14 @@ class KWLineBuildTest {
                 createKeyword(
                         "",
                         "Virus entry into host cell",
-                        createEvidence(
-                                Arrays.asList(
-                                        new String[] {"ECO:0000256|SAAS:SAAS000777_004_000842"}))));
+                        createEvidence(Arrays.asList("ECO:0000256|SAAS:SAAS000777_004_000842"))));
         doTest(kwLine, keywords);
     }
 
     private Keyword createKeyword(String id, String kw, List<Evidence> evidences) {
         return new KeywordBuilder()
                 .id(id)
-                .value(kw)
+                .name(kw)
                 .category(KeywordCategory.DOMAIN)
                 .evidencesSet(evidences)
                 .build();

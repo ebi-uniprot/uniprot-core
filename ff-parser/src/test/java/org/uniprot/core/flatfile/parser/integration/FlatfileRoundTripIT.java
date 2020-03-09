@@ -21,7 +21,7 @@ import org.uniprot.core.flatfile.parser.impl.entry.EntryObjectConverter;
 import org.uniprot.core.flatfile.writer.FlatfileWriter;
 import org.uniprot.core.flatfile.writer.impl.UniProtFlatfileWriter;
 import org.uniprot.core.uniprot.UniProtEntry;
-import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 
 import com.google.common.io.CharSource;
 import com.google.common.io.Resources;
@@ -123,12 +123,12 @@ class FlatfileRoundTripIT {
         EntryObject parse2 = entryParser.parse(convertedEntryStr);
         UniProtEntry converted2 = entryObjectConverter.convert(parse2);
 
-        List<UniProtDBCrossReference> originalDBXrefs = converted.getDatabaseCrossReferences();
-        List<UniProtDBCrossReference> convertedDBXrefs = converted2.getDatabaseCrossReferences();
+        List<UniProtCrossReference> originalDBXrefs = converted.getUniProtCrossReferences();
+        List<UniProtCrossReference> convertedDBXrefs = converted2.getUniProtCrossReferences();
         assertEquals(originalDBXrefs.size(), convertedDBXrefs.size());
         for (int i = 0; i < originalDBXrefs.size(); i++) {
-            UniProtDBCrossReference origXref = originalDBXrefs.get(i);
-            UniProtDBCrossReference convertedXref = convertedDBXrefs.get(i);
+            UniProtCrossReference origXref = originalDBXrefs.get(i);
+            UniProtCrossReference convertedXref = convertedDBXrefs.get(i);
             assertEquals(origXref, convertedXref, "DBXref at index " + i + " differs");
         }
 

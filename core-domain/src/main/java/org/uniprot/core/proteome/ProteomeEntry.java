@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
@@ -26,11 +26,11 @@ public interface ProteomeEntry extends Serializable {
 
     String getIsolate();
 
-    List<DBCrossReference<ProteomeXReferenceType>> getDbXReferences();
+    List<CrossReference<ProteomeDatabase>> getProteomeCrossReferences();
 
     List<Component> getComponents();
 
-    List<Citation> getReferences();
+    List<Citation> getCitations();
 
     List<RedundantProteome> getRedudantProteomes();
 

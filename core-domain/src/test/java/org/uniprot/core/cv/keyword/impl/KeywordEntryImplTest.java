@@ -1,5 +1,7 @@
 package org.uniprot.core.cv.keyword.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -11,20 +13,23 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
-import org.uniprot.core.cv.keyword.GeneOntology;
-import org.uniprot.core.cv.keyword.Keyword;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.go.GoTerm;
+import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
+import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
+import org.uniprot.core.cv.keyword.KeywordId;
 
-public class KeywordEntryImplTest {
+class KeywordEntryImplTest {
 
     private String random;
-    private Keyword keyword;
+    private KeywordId keyword;
     private String definition;
     private List<String> synonyms;
-    private List<GeneOntology> geneOntologies;
+    private List<GoTerm> geneOntologies;
     private Set<KeywordEntry> parents;
     private List<String> sites;
-    private Keyword category;
+    private KeywordId category;
     private List<KeywordEntry> children;
     private Statistics statistics;
 
@@ -39,11 +44,7 @@ public class KeywordEntryImplTest {
                         .collect(Collectors.toList());
         this.geneOntologies =
                 IntStream.range(0, 3)
-                        .mapToObj(
-                                i ->
-                                        GeneOntologyImplTest.createGeneOntology(
-                                                i + "-id-" + this.random,
-                                                i + "-term-" + this.random))
+                        .mapToObj(i -> go(i + "-id-" + this.random, i + "-term-" + this.random))
                         .collect(Collectors.toList());
         this.sites =
                 IntStream.range(0, 5)
@@ -59,47 +60,52 @@ public class KeywordEntryImplTest {
     @Test
     void testCreateKeywordEntry() {
         KeywordEntry keywordEntry = createKeywordEntry();
-        Assertions.assertEquals(this.keyword, keywordEntry.getKeyword());
-        Assertions.assertEquals(this.definition, keywordEntry.getDefinition());
-        Assertions.assertArrayEquals(this.synonyms.toArray(), keywordEntry.getSynonyms().toArray());
-        Assertions.assertArrayEquals(
+        assertEquals(this.keyword, keywordEntry.getKeyword());
+        assertEquals(this.definition, keywordEntry.getDefinition());
+        assertArrayEquals(this.synonyms.toArray(), keywordEntry.getSynonyms().toArray());
+        assertArrayEquals(
                 this.geneOntologies.toArray(), keywordEntry.getGeneOntologies().toArray());
-        Assertions.assertNull(keywordEntry.getParents());
-        Assertions.assertNull(keywordEntry.getChildren());
-        Assertions.assertArrayEquals(this.sites.toArray(), keywordEntry.getSites().toArray());
-        Assertions.assertEquals(this.category, keywordEntry.getCategory());
-        Assertions.assertEquals(this.statistics, keywordEntry.getStatistics());
+        assertNotNull(keywordEntry.getParents());
+        assertTrue(keywordEntry.getParents().isEmpty());
+        assertNotNull(keywordEntry.getChildren());
+        assertTrue(keywordEntry.getChildren().isEmpty());
+        assertArrayEquals(this.sites.toArray(), keywordEntry.getSites().toArray());
+        assertEquals(KeywordCategory.fromId(this.category.getId()), keywordEntry.getCategory());
+        assertEquals(this.statistics, keywordEntry.getStatistics());
     }
 
     @Test
     void testCreateKeywordEntryDefaultConstructor() {
         KeywordEntry keywordEntry = new KeywordEntryImpl();
-        Assertions.assertNull(keywordEntry.getKeyword());
-        Assertions.assertNull(keywordEntry.getDefinition());
-        Assertions.assertNull(keywordEntry.getSynonyms());
-        Assertions.assertNull(keywordEntry.getGeneOntologies());
-        Assertions.assertNotNull(keywordEntry.getParents());
-        Assertions.assertTrue(keywordEntry.getParents().isEmpty());
-        Assertions.assertNotNull(keywordEntry.getChildren());
-        Assertions.assertTrue(keywordEntry.getChildren().isEmpty());
-        Assertions.assertNull(keywordEntry.getSites());
-        Assertions.assertNull(keywordEntry.getCategory());
-        Assertions.assertNull(keywordEntry.getStatistics());
+        assertNull(keywordEntry.getKeyword());
+        assertNull(keywordEntry.getDefinition());
+        Assertions.assertNotNull(keywordEntry.getSynonyms());
+        assertTrue(keywordEntry.getSynonyms().isEmpty());
+        Assertions.assertNotNull(keywordEntry.getGeneOntologies());
+        assertTrue(keywordEntry.getGeneOntologies().isEmpty());
+        assertNotNull(keywordEntry.getParents());
+        assertTrue(keywordEntry.getParents().isEmpty());
+        assertNotNull(keywordEntry.getChildren());
+        assertTrue(keywordEntry.getChildren().isEmpty());
+        assertNotNull(keywordEntry.getSites());
+        assertTrue(keywordEntry.getSites().isEmpty());
+        assertNull(keywordEntry.getCategory());
+        assertNull(keywordEntry.getStatistics());
     }
 
     @Test
     void testValueEqual() {
         KeywordEntry kw1 = createKeywordEntry();
         KeywordEntry kw2 = createKeywordEntry();
-        Assertions.assertTrue(kw1.equals(kw2));
-        Assertions.assertTrue(kw1.hashCode() == kw2.hashCode());
+        assertTrue(kw1.equals(kw2));
+        assertTrue(kw1.hashCode() == kw2.hashCode());
     }
 
     @Test
     void testRefEqual() {
         KeywordEntry kw1 = createKeywordEntry();
-        Assertions.assertTrue(kw1.equals(kw1));
-        Assertions.assertTrue(kw1.hashCode() == kw1.hashCode());
+        assertTrue(kw1.equals(kw1));
+        assertTrue(kw1.hashCode() == kw1.hashCode());
     }
 
     @Test
@@ -129,7 +135,11 @@ public class KeywordEntryImplTest {
                 this.statistics);
     }
 
-    static Keyword createKeyword(String id, String accession) {
-        return new KeywordImpl(id, accession);
+    public static KeywordId createKeyword(String id, String accession) {
+        return new KeywordIdBuilder().id(id).accession(accession).build();
+    }
+
+    private static GeneOntologyEntry go(String id, String term) {
+        return new GeneOntologyEntryBuilder().id(id).name(term).build();
     }
 }

@@ -15,7 +15,7 @@ public class StatisticsImpl implements Statistics {
         this(0L, 0L);
     }
 
-    public StatisticsImpl(long reviewedProteinCount, long unreviewedProteinCount) {
+    protected StatisticsImpl(long reviewedProteinCount, long unreviewedProteinCount) {
         this.reviewedProteinCount = reviewedProteinCount;
         this.unreviewedProteinCount = unreviewedProteinCount;
     }

@@ -7,7 +7,6 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
-import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
 
 class AlternativeSequenceImplTest {
 

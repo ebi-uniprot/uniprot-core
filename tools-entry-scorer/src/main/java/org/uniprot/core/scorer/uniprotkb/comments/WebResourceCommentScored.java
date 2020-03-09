@@ -3,7 +3,7 @@ package org.uniprot.core.scorer.uniprotkb.comments;
 import java.util.List;
 
 import org.uniprot.core.uniprot.comment.WebResourceComment;
-import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 17:21:42 To change this template
@@ -13,8 +13,9 @@ public class WebResourceCommentScored extends CommentScoredAbstr {
     @SuppressWarnings("unused")
     private final WebResourceComment comment;
 
-    public WebResourceCommentScored(WebResourceComment copy, List<EvidenceType> evidenceTypes) {
-        super(copy.getCommentType(), evidenceTypes);
+    public WebResourceCommentScored(
+            WebResourceComment copy, List<EvidenceDatabase> evidenceDatabases) {
+        super(copy.getCommentType(), evidenceDatabases);
         this.comment = copy;
     }
 

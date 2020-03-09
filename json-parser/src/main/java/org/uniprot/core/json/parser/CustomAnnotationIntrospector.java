@@ -17,8 +17,8 @@ public class CustomAnnotationIntrospector extends SimpleAnnotationIntrospector {
     public TypeResolverBuilder<?> findTypeResolver(
             MapperConfig<?> config, AnnotatedClass ac, JavaType baseType) {
         if (baseType.isTypeOrSubTypeOf(Comment.class)
-                // || (baseType.isTypeOrSubTypeOf(DatabaseType.class) &&
-                // !baseType.hasRawClass(EvidenceType.class))
+                // || (baseType.isTypeOrSubTypeOf(Database.class) &&
+                // !baseType.hasRawClass(EvidenceDatabase.class))
                 || baseType.isTypeOrSubTypeOf(Citation.class)) {
             StdTypeResolverBuilder typeResolverBuilder = new StdTypeResolverBuilder();
             typeResolverBuilder.init(JsonTypeInfo.Id.NAME, null);

@@ -12,8 +12,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.APIsoformBuilder;
-import org.uniprot.core.uniprot.comment.builder.IsoformNameBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 class APIsoformImplTest {

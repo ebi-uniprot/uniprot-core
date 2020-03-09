@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.UniProtId;
-import org.uniprot.core.uniprot.builder.UniProtIdBuilder;
 
 class UniProtIdImplTest {
 

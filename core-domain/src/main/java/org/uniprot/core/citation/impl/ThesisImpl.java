@@ -5,7 +5,7 @@ import static java.util.Collections.emptyList;
 import java.util.List;
 import java.util.Objects;
 
-import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.util.Utils;
 
@@ -19,15 +19,21 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
         this(emptyList(), emptyList(), emptyList(), null, null, null, null);
     }
 
-    public ThesisImpl(
+    ThesisImpl(
             List<String> authoringGroup,
             List<Author> authors,
-            List<DBCrossReference<CitationXrefType>> citationXrefs,
+            List<CrossReference<CitationDatabase>> citationCrossReferences,
             String title,
             PublicationDate publicationDate,
             String institute,
             String address) {
-        super(CitationType.THESIS, authoringGroup, authors, citationXrefs, title, publicationDate);
+        super(
+                CitationType.THESIS,
+                authoringGroup,
+                authors,
+                citationCrossReferences,
+                title,
+                publicationDate);
         this.institute = Utils.emptyOrString(institute);
         this.address = Utils.emptyOrString(address);
     }
