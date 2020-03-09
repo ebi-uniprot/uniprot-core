@@ -4,9 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.*;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.impl.SequenceImpl;
+import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.UniParcEntry;
-import org.uniprot.core.uniparc.builder.UniParcEntryBuilder;
 
 class UniParcEntryImplTest {
     @Test
@@ -21,7 +20,7 @@ class UniParcEntryImplTest {
                 new UniParcEntryImpl(
                         new UniParcIdImpl("id"),
                         uniParcDBCrossReferences(),
-                        new SequenceImpl("seq"),
+                        new SequenceBuilder("seq").build(),
                         sequenceFeatures(),
                         taxonomies(),
                         "reason");

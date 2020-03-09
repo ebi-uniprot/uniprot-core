@@ -24,11 +24,11 @@ public class SequenceFeatureImpl implements SequenceFeature {
     private String databaseId;
     private List<Location> locations;
 
-    protected SequenceFeatureImpl() {
+    SequenceFeatureImpl() {
         this.locations = Collections.emptyList();
     }
 
-    public SequenceFeatureImpl(
+    SequenceFeatureImpl(
             InterProGroup domain, SignatureDbType dbType, String dbId, List<Location> locations) {
         super();
         this.interproGroup = domain;

@@ -2,7 +2,7 @@ package org.uniprot.core.xml.uniprot.citation;
 
 import org.uniprot.core.citation.Submission;
 import org.uniprot.core.citation.SubmissionDatabase;
-import org.uniprot.core.citation.builder.SubmissionBuilder;
+import org.uniprot.core.citation.impl.SubmissionBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CitationType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;

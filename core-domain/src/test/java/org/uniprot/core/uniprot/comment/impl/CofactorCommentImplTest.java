@@ -9,11 +9,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.builder.CrossReferenceBuilder;
-import org.uniprot.core.impl.CrossReferenceImpl;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
-import org.uniprot.core.uniprot.comment.builder.CofactorCommentBuilder;
 
 class CofactorCommentImplTest {
     @Test
@@ -51,7 +48,7 @@ class CofactorCommentImplTest {
     void testCofactorCommentImplNoMolecule() {
         String name = "someName";
         CrossReference<CofactorDatabase> reference =
-                new CrossReferenceImpl<>(CofactorDatabase.CHEBI, "CHEBI:324");
+                crossReference(CofactorDatabase.CHEBI, "CHEBI:324");
         Cofactor cofactor =
                 new CofactorBuilder()
                         .name(name)

@@ -26,7 +26,7 @@ public class UniProtReferenceImpl implements UniProtReference {
         this.evidences = Collections.emptyList();
     }
 
-    public UniProtReferenceImpl(
+    UniProtReferenceImpl(
             Citation citation,
             List<String> referencePositions,
             List<ReferenceComment> referenceComments,

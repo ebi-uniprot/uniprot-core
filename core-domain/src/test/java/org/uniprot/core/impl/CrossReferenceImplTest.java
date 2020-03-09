@@ -9,7 +9,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Property;
-import org.uniprot.core.builder.CrossReferenceBuilder;
 
 class CrossReferenceImplTest {
 

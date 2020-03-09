@@ -6,8 +6,7 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.literature.LiteratureMappedReference;
-import org.uniprot.core.literature.builder.LiteratureMappedReferenceBuilder;
-import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
+import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
 
 class LiteratureMappedReferenceImplTest {
 
@@ -21,7 +20,7 @@ class LiteratureMappedReferenceImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         LiteratureMappedReference impl =
                 new LiteratureMappedReferenceImpl(
-                        new UniProtAccessionImpl("acc"),
+                        new UniProtAccessionBuilder("acc").build(),
                         "sou",
                         "sid",
                         Collections.singletonList("sou cat"),

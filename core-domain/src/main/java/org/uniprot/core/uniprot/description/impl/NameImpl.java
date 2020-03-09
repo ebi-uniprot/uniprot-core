@@ -16,7 +16,7 @@ public class NameImpl extends EvidencedValueImpl implements Name {
         super("", Collections.emptyList());
     }
 
-    public NameImpl(String value, List<Evidence> evidences) {
+    NameImpl(String value, List<Evidence> evidences) {
         super(value, evidences);
     }
 

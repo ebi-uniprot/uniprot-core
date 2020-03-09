@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.RedundantProteome;
-import org.uniprot.core.proteome.builder.RedundantProteomeBuilder;
+import org.uniprot.core.proteome.impl.RedundantProteomeBuilder;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 import org.uniprot.core.xml.jaxb.proteome.RedundantProteomeType;
 

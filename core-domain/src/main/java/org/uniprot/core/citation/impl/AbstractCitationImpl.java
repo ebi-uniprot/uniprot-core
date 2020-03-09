@@ -17,7 +17,7 @@ public abstract class AbstractCitationImpl implements Citation {
     private String title;
     private PublicationDate publicationDate;
 
-    public AbstractCitationImpl(
+    AbstractCitationImpl(
             CitationType citationType,
             List<String> authoringGroup,
             List<Author> authors,

@@ -37,7 +37,7 @@ public class FeatureIdImpl implements FeatureId {
         this.value = "";
     }
 
-    public FeatureIdImpl(String value) {
+    FeatureIdImpl(String value) {
         this.value = Utils.emptyOrString(value);
     }
 

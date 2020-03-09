@@ -3,7 +3,7 @@ package org.uniprot.core.xml.proteome;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.proteome.CanonicalProtein;
-import org.uniprot.core.proteome.builder.CanonicalProteinBuilder;
+import org.uniprot.core.proteome.impl.CanonicalProteinBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.CanonicalGene;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;

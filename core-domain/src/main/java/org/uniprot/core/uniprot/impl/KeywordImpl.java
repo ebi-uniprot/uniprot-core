@@ -26,7 +26,7 @@ public class KeywordImpl extends HasEvidencesImpl implements Keyword {
         this("", "", KeywordCategory.UNKNOWN, Collections.emptyList());
     }
 
-    public KeywordImpl(String id, String name, KeywordCategory category, List<Evidence> evidences) {
+    KeywordImpl(String id, String name, KeywordCategory category, List<Evidence> evidences) {
         super(evidences);
         if (nullOrEmpty(id)) {
             this.id = DEFAULT_ACCESSION;

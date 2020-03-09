@@ -11,12 +11,12 @@ import org.uniprot.core.uniprot.description.ProteinAltName;
 import org.uniprot.core.uniprot.description.ProteinRecName;
 import org.uniprot.core.uniprot.description.ProteinSection;
 import org.uniprot.core.uniprot.description.ProteinSubName;
-import org.uniprot.core.uniprot.description.builder.ECBuilder;
-import org.uniprot.core.uniprot.description.builder.NameBuilder;
-import org.uniprot.core.uniprot.description.builder.ProteinAltNameBuilder;
-import org.uniprot.core.uniprot.description.builder.ProteinRecNameBuilder;
-import org.uniprot.core.uniprot.description.builder.ProteinSectionBuilder;
-import org.uniprot.core.uniprot.description.builder.ProteinSubNameBuilder;
+import org.uniprot.core.uniprot.description.impl.ECBuilder;
+import org.uniprot.core.uniprot.description.impl.NameBuilder;
+import org.uniprot.core.uniprot.description.impl.ProteinAltNameBuilder;
+import org.uniprot.core.uniprot.description.impl.ProteinRecNameBuilder;
+import org.uniprot.core.uniprot.description.impl.ProteinSectionBuilder;
+import org.uniprot.core.uniprot.description.impl.ProteinSubNameBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 /**

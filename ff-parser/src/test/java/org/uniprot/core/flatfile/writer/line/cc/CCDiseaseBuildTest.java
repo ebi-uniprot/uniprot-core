@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.builder.CrossReferenceBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.Disease;
 import org.uniprot.core.uniprot.comment.DiseaseComment;
 import org.uniprot.core.uniprot.comment.DiseaseDatabase;
-import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
-import org.uniprot.core.uniprot.comment.builder.DiseaseCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.DiseaseBuilder;
+import org.uniprot.core.uniprot.comment.impl.DiseaseCommentBuilder;
 
 class CCDiseaseBuildTest extends CCBuildTestAbstr {
     @Test

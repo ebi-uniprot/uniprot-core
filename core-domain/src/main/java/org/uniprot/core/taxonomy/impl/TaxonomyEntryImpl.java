@@ -42,7 +42,7 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
                 null, null);
     }
 
-    public TaxonomyEntryImpl(
+    TaxonomyEntryImpl(
             long taxonId,
             String scientificName,
             String commonName,

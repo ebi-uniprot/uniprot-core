@@ -7,11 +7,10 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.ElectronicArticle;
 import org.uniprot.core.citation.Locator;
-import org.uniprot.core.citation.builder.ElectronicArticleBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 
 class ElectronicArticleImplTest {
 

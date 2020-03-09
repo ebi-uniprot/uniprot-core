@@ -7,7 +7,6 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.gene.*;
-import org.uniprot.core.uniprot.builder.*;
 
 class GeneImplTest {
 

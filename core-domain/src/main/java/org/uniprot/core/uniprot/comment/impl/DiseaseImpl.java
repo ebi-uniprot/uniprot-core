@@ -25,7 +25,7 @@ public class DiseaseImpl implements Disease {
         this(null, null, null, null, null, null);
     }
 
-    public DiseaseImpl(
+    DiseaseImpl(
             String diseaseId,
             String diseaseAccession,
             String acronym,

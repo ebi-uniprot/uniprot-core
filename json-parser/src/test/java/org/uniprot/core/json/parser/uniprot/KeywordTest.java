@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.Keyword;
-import org.uniprot.core.uniprot.builder.KeywordBuilder;
+import org.uniprot.core.uniprot.impl.KeywordBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

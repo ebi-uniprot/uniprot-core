@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.taxonomy.TaxonomyStatistics;
-import org.uniprot.core.taxonomy.builder.TaxonomyStatisticsBuilder;
 
 class TaxonomyStatisticsImplTest {
     @Test

@@ -4,7 +4,7 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Property;
-import org.uniprot.core.builder.CrossReferenceBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.proteome.ProteomeDatabase;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.DbReferenceType;

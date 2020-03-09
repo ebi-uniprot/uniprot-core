@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.RedundantProteome;
-import org.uniprot.core.proteome.builder.RedundantProteomeBuilder;
 
 class RedundantProteomeImplTest {
     @Test

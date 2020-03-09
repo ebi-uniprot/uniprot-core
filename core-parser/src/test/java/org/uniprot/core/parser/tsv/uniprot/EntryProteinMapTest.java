@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.description.*;
-import org.uniprot.core.uniprot.description.builder.*;
+import org.uniprot.core.uniprot.description.impl.*;
 
 class EntryProteinMapTest {
 

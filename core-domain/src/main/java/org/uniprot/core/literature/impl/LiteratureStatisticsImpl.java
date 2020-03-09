@@ -15,7 +15,7 @@ public class LiteratureStatisticsImpl extends StatisticsImpl implements Literatu
         this(0, 0, 0);
     }
 
-    public LiteratureStatisticsImpl(
+    LiteratureStatisticsImpl(
             long reviewedProteinCount, long unreviewedProteinCount, long mappedProteinCount) {
         super(reviewedProteinCount, unreviewedProteinCount);
         this.mappedProteinCount = mappedProteinCount;

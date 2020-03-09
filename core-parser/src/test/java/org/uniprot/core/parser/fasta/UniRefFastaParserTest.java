@@ -6,21 +6,21 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
-import org.uniprot.core.builder.SequenceBuilder;
 import org.uniprot.core.cv.go.GoAspect;
-import org.uniprot.core.cv.go.builder.GeneOntologyEntryBuilder;
-import org.uniprot.core.uniparc.builder.UniParcIdBuilder;
-import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
+import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
+import org.uniprot.core.impl.SequenceBuilder;
+import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
+import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
 import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
-import org.uniprot.core.uniref.builder.RepresentativeMemberBuilder;
-import org.uniprot.core.uniref.builder.UniRefEntryBuilder;
-import org.uniprot.core.uniref.builder.UniRefEntryIdBuilder;
-import org.uniprot.core.uniref.builder.UniRefMemberBuilder;
+import org.uniprot.core.uniref.impl.RepresentativeMemberBuilder;
+import org.uniprot.core.uniref.impl.UniRefEntryBuilder;
+import org.uniprot.core.uniref.impl.UniRefEntryIdBuilder;
+import org.uniprot.core.uniref.impl.UniRefMemberBuilder;
 
 /**
  * @author jluo

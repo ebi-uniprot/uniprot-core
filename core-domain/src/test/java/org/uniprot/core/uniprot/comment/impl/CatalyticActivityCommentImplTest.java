@@ -12,7 +12,6 @@ import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
 import org.uniprot.core.uniprot.comment.Reaction;
-import org.uniprot.core.uniprot.comment.builder.CatalyticActivityCommentBuilder;
 
 class CatalyticActivityCommentImplTest {
     @Test

@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.Location;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.SignatureDbType;
-import org.uniprot.core.uniparc.builder.InterProGroupBuilder;
-import org.uniprot.core.uniparc.builder.SequenceFeatureBuilder;
+import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
+import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
 import org.uniprot.core.xml.jaxb.uniparc.SeqFeatureType;
 
 /**

@@ -2,10 +2,10 @@ package org.uniprot.core.json.parser.disease;
 
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
-import org.uniprot.core.cv.disease.builder.DiseaseCrossReferenceImpl;
-import org.uniprot.core.cv.disease.builder.DiseaseEntryImpl;
+import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceImpl;
+import org.uniprot.core.cv.disease.impl.DiseaseEntryImpl;
 import org.uniprot.core.cv.keyword.KeywordId;
-import org.uniprot.core.cv.keyword.builder.KeywordIdImpl;
+import org.uniprot.core.cv.keyword.impl.KeywordIdImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 
 import com.fasterxml.jackson.databind.ObjectMapper;

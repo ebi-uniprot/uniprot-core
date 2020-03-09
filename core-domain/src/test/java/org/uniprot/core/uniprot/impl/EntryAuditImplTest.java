@@ -7,7 +7,6 @@ import java.time.Month;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.EntryAudit;
-import org.uniprot.core.uniprot.builder.EntryAuditBuilder;
 
 class EntryAuditImplTest {
 

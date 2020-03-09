@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniparc.InterProGroup;
-import org.uniprot.core.uniparc.builder.InterProGroupBuilder;
 
 class InterProGroupImplTest {
 

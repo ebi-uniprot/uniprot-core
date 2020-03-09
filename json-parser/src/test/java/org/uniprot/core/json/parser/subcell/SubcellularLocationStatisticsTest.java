@@ -2,7 +2,7 @@ package org.uniprot.core.json.parser.subcell;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
-import org.uniprot.core.builder.StatisticsBuilder;
+import org.uniprot.core.impl.StatisticsBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
 /**

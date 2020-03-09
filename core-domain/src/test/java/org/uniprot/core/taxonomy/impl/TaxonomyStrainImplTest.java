@@ -6,7 +6,6 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.taxonomy.TaxonomyStrain;
-import org.uniprot.core.taxonomy.builder.TaxonomyStrainBuilder;
 
 class TaxonomyStrainImplTest {
     @Test

@@ -11,7 +11,7 @@ public class UniProtIdImpl extends ValueImpl implements UniProtId {
         super(null);
     }
 
-    public UniProtIdImpl(String value) {
+    UniProtIdImpl(String value) {
         super(value);
     }
 }

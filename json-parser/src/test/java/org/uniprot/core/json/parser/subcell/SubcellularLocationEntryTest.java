@@ -2,12 +2,12 @@ package org.uniprot.core.json.parser.subcell;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
-import org.uniprot.core.builder.StatisticsBuilder;
-import org.uniprot.core.cv.go.builder.GoTermBuilder;
-import org.uniprot.core.cv.keyword.builder.KeywordIdBuilder;
+import org.uniprot.core.cv.go.impl.GoTermBuilder;
+import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
 import org.uniprot.core.cv.subcell.SubcellLocationCategory;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
-import org.uniprot.core.cv.subcell.builder.SubcellularLocationEntryBuilder;
+import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryBuilder;
+import org.uniprot.core.impl.StatisticsBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
 /**

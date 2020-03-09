@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationDatabase;
-import org.uniprot.core.citation.builder.AbstractCitationBuilder;
+import org.uniprot.core.citation.impl.AbstractCitationBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

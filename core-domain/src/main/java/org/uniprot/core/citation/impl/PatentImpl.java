@@ -18,7 +18,7 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
         this(emptyList(), emptyList(), emptyList(), null, null, null);
     }
 
-    public PatentImpl(
+    PatentImpl(
             List<String> authoringGroup,
             List<Author> authors,
             List<CrossReference<CitationDatabase>> citationCrossReferences,

@@ -25,7 +25,7 @@ public class UniProtCrossReferenceImpl extends CrossReferenceImpl<UniProtDatabas
         evidences = Collections.emptyList();
     }
 
-    public UniProtCrossReferenceImpl(
+    UniProtCrossReferenceImpl(
             UniProtDatabase database,
             String id,
             List<Property> properties,

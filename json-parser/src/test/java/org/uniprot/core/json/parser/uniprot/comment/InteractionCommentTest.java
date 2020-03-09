@@ -8,9 +8,9 @@ import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.comment.Interaction;
 import org.uniprot.core.uniprot.comment.InteractionComment;
 import org.uniprot.core.uniprot.comment.InteractionType;
-import org.uniprot.core.uniprot.comment.builder.InteractionBuilder;
-import org.uniprot.core.uniprot.comment.builder.InteractionCommentBuilder;
-import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
+import org.uniprot.core.uniprot.comment.impl.InteractionBuilder;
+import org.uniprot.core.uniprot.comment.impl.InteractionCommentBuilder;
+import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -65,7 +65,7 @@ public class InteractionCommentTest {
                         .numberOfExperiments(10)
                         .firstInteractor("first")
                         .secondInteractor("second")
-                        .uniProtAccession(new UniProtAccessionImpl("P12345"))
+                        .uniProtAccession(new UniProtAccessionBuilder("P12345").build())
                         .build();
 
         return new InteractionCommentBuilder().interactionsAdd(interaction).build();

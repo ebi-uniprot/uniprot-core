@@ -21,11 +21,7 @@ public class CrossReferenceImpl<T extends Database> implements CrossReference<T>
         this.properties = Collections.emptyList();
     }
 
-    public CrossReferenceImpl(T database, String id) {
-        this(database, id, Collections.emptyList());
-    }
-
-    public CrossReferenceImpl(T database, String id, List<Property> properties) {
+    protected CrossReferenceImpl(T database, String id, List<Property> properties) {
         this.database = database;
         this.id = id;
         setProperties(properties);

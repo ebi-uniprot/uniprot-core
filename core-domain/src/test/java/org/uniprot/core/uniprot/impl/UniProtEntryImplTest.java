@@ -8,15 +8,14 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.UniProtEntry;
 import org.uniprot.core.uniprot.UniProtEntryType;
-import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.DiseaseComment;
-import org.uniprot.core.uniprot.comment.builder.BPCPCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.DiseaseCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.BPCPCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.DiseaseCommentBuilder;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureType;
-import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
+import org.uniprot.core.uniprot.feature.impl.FeatureBuilder;
 
 class UniProtEntryImplTest {
     private UniProtEntry minEntry =

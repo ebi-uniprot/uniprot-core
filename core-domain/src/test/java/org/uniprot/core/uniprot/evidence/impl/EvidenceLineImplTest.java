@@ -7,7 +7,6 @@ import java.time.Month;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.evidence.EvidenceLine;
-import org.uniprot.core.uniprot.evidence.builder.EvidenceLineBuilder;
 
 class EvidenceLineImplTest {
     private EvidenceLine impl =

@@ -14,37 +14,35 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Sequence;
-import org.uniprot.core.builder.SequenceBuilder;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.gene.*;
-import org.uniprot.core.impl.CrossReferenceImpl;
+import org.uniprot.core.impl.CrossReferenceBuilder;
+import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniprot.*;
-import org.uniprot.core.uniprot.builder.*;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
-import org.uniprot.core.uniprot.comment.builder.CofactorCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.FreeTextCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.comment.impl.CofactorBuilder;
+import org.uniprot.core.uniprot.comment.impl.CofactorCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.FreeTextCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
 import org.uniprot.core.uniprot.description.*;
-import org.uniprot.core.uniprot.description.builder.ProteinDescriptionBuilder;
+import org.uniprot.core.uniprot.description.impl.ProteinDescriptionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
-import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
+import org.uniprot.core.uniprot.evidence.impl.EvidencedValueBuilder;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureId;
 import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.uniprot.feature.FeatureType;
-import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
-import org.uniprot.core.uniprot.feature.impl.AlternativeSequenceImpl;
-import org.uniprot.core.uniprot.feature.impl.FeatureIdImpl;
+import org.uniprot.core.uniprot.feature.impl.*;
+import org.uniprot.core.uniprot.impl.*;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
-import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
-import org.uniprot.core.uniprot.taxonomy.builder.OrganismHostBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.OrganismBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.OrganismHostBuilder;
 import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtDatabase;
-import org.uniprot.core.uniprot.xdb.builder.UniProtCrossReferenceBuilder;
+import org.uniprot.core.uniprot.xdb.impl.UniProtCrossReferenceBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.Entry;
 import org.uniprot.cv.xdb.UniProtDatabaseImpl;
 
@@ -256,9 +254,12 @@ class UniProtEntryConverterTest {
 
     private Feature createVarSeqFeature() {
         FeatureLocation location = new FeatureLocation(65, 86);
-        AlternativeSequence as = new AlternativeSequenceImpl("RS", Arrays.asList("DB", "AA"));
-        FeatureId featureId = new FeatureIdImpl("VSP_112");
-
+        AlternativeSequence as =
+                new AlternativeSequenceBuilder()
+                        .original("RS")
+                        .alternativeSequencesSet(Arrays.asList("DB", "AA"))
+                        .build();
+        FeatureId featureId = new FeatureIdBuilder("VSP_112").build();
         return new FeatureBuilder()
                 .type(FeatureType.VAR_SEQ)
                 .location(location)
@@ -282,7 +283,10 @@ class UniProtEntryConverterTest {
                         .textsSet(createEvidenceValues())
                         .build());
         CrossReference<CofactorDatabase> reference =
-                new CrossReferenceImpl<>(CofactorDatabase.CHEBI, "CHEBI:324");
+                new CrossReferenceBuilder<CofactorDatabase>()
+                        .database(CofactorDatabase.CHEBI)
+                        .id("CHEBI:324")
+                        .build();
         Cofactor cofactor =
                 new CofactorBuilder()
                         .name("somename")

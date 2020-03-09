@@ -89,7 +89,7 @@ public class UniProtEntryImpl implements UniProtEntry {
         lineages = Collections.emptyList();
     }
 
-    public UniProtEntryImpl(
+    UniProtEntryImpl(
             UniProtEntryType entryType,
             UniProtAccession primaryAccession,
             List<UniProtAccession> secondaryAccessions,

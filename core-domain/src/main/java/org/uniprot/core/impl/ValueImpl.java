@@ -10,7 +10,7 @@ public class ValueImpl implements Value {
     // no arg constructor for JSON deserialization
     ValueImpl() {}
 
-    public ValueImpl(String value) {
+    protected ValueImpl(String value) {
         this.value = value;
     }
 

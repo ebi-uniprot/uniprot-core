@@ -7,7 +7,7 @@ import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.impl.OrganismNameLineParser;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.taxonomy.OrganismName;
-import org.uniprot.core.uniprot.taxonomy.builder.OrganismHostBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.OrganismHostBuilder;
 
 public class OhLineConverter implements Converter<OhLineObject, List<OrganismHost>> {
 

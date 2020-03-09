@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.Interaction;
 import org.uniprot.core.uniprot.comment.InteractionComment;
 import org.uniprot.core.uniprot.comment.InteractionType;
-import org.uniprot.core.uniprot.comment.builder.InteractionBuilder;
-import org.uniprot.core.uniprot.comment.builder.InteractionCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.InteractionBuilder;
+import org.uniprot.core.uniprot.comment.impl.InteractionCommentBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 
 class InteractionCommentConverterTest {

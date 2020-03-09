@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.ElectronicArticle;
-import org.uniprot.core.citation.builder.ElectronicArticleBuilder;
+import org.uniprot.core.citation.impl.ElectronicArticleBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CitationType;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 

@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.builder.CrossReferenceBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.proteome.Component;
 import org.uniprot.core.proteome.ProteomeDatabase;
-import org.uniprot.core.proteome.builder.ComponentBuilder;
+import org.uniprot.core.proteome.impl.ComponentBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.ComponentType;
 import org.uniprot.core.xml.jaxb.proteome.ComponentTypeType;

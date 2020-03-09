@@ -4,8 +4,8 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
-import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
-import org.uniprot.core.uniprot.comment.builder.SubcellularLocationCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
+import org.uniprot.core.uniprot.comment.impl.SubcellularLocationCommentBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;

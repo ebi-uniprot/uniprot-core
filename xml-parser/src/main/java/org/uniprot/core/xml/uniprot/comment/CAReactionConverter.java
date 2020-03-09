@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
-import org.uniprot.core.impl.ECNumberImpl;
+import org.uniprot.core.impl.ECNumberBuilder;
 import org.uniprot.core.uniprot.comment.Reaction;
 import org.uniprot.core.uniprot.comment.ReactionDatabase;
-import org.uniprot.core.uniprot.comment.builder.ReactionBuilder;
+import org.uniprot.core.uniprot.comment.impl.ReactionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
@@ -48,7 +48,7 @@ public class CAReactionConverter implements Converter<ReactionType, Reaction> {
                         .findFirst();
         ECNumber ecNumber = null;
         if (opEc.isPresent()) {
-            ecNumber = new ECNumberImpl(opEc.get().getId());
+            ecNumber = new ECNumberBuilder(opEc.get().getId()).build();
         }
         List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
 

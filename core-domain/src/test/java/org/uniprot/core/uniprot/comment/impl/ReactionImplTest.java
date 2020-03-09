@@ -9,11 +9,10 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
-import org.uniprot.core.builder.CrossReferenceBuilder;
-import org.uniprot.core.impl.ECNumberImpl;
+import org.uniprot.core.impl.CrossReferenceBuilder;
+import org.uniprot.core.impl.ECNumberBuilder;
 import org.uniprot.core.uniprot.comment.Reaction;
 import org.uniprot.core.uniprot.comment.ReactionDatabase;
-import org.uniprot.core.uniprot.comment.builder.ReactionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 class ReactionImplTest {
@@ -23,7 +22,7 @@ class ReactionImplTest {
                     xref(ReactionDatabase.RHEA, "RHEA:123"),
                     xref(ReactionDatabase.RHEA, "RHEA:323"),
                     xref(ReactionDatabase.CHEBI, "ChEBI:3243"));
-    private ECNumber ecNumber = new ECNumberImpl("1.2.4.5");
+    private ECNumber ecNumber = new ECNumberBuilder("1.2.4.5").build();
 
     @Test
     void testFull() {

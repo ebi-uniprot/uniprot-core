@@ -21,11 +21,11 @@ public class RepresentativeMemberImpl extends UniRefMemberImpl implements Repres
     private Sequence sequence;
 
     // no arg constructor for JSON deserialization
-    protected RepresentativeMemberImpl() {
+    RepresentativeMemberImpl() {
         super();
     }
 
-    public RepresentativeMemberImpl(
+    RepresentativeMemberImpl(
             UniRefMemberIdType memberIdType,
             String memberId,
             String organismName,

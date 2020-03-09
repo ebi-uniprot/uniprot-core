@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.description.EC;
 import org.uniprot.core.uniprot.description.Name;
 import org.uniprot.core.uniprot.description.ProteinRecName;
-import org.uniprot.core.uniprot.description.builder.ProteinRecNameBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 class ProteinRecNameImplTest {

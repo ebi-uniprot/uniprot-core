@@ -16,7 +16,7 @@ public class EvidencedValueImpl extends HasEvidencesImpl implements EvidencedVal
         this.value = "";
     }
 
-    public EvidencedValueImpl(String value, List<Evidence> evidences) {
+    protected EvidencedValueImpl(String value, List<Evidence> evidences) {
         super(evidences);
         this.value = Utils.emptyOrString(value);
     }

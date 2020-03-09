@@ -17,8 +17,7 @@ public class GeneLocationImpl extends EvidencedValueImpl implements GeneLocation
         super("", Collections.emptyList());
     }
 
-    public GeneLocationImpl(
-            GeneEncodingType geneEncodingType, String value, List<Evidence> evidences) {
+    GeneLocationImpl(GeneEncodingType geneEncodingType, String value, List<Evidence> evidences) {
         super(value, evidences);
         this.geneEncodingType = geneEncodingType;
     }

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.Value;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
-import org.uniprot.core.cv.go.builder.GeneOntologyEntryImpl;
+import org.uniprot.core.cv.go.impl.GeneOntologyEntryImpl;
 import org.uniprot.core.impl.SequenceImpl;
 import org.uniprot.core.impl.ValueImpl;
 import org.uniprot.core.json.parser.JsonConfig;

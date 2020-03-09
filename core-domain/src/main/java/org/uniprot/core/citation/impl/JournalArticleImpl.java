@@ -15,7 +15,7 @@ public class JournalArticleImpl extends AbstractJournalArticleImpl implements Jo
         this(emptyList(), emptyList(), emptyList(), null, null, null, null, null, null);
     }
 
-    public JournalArticleImpl(
+    JournalArticleImpl(
             List<String> authoringGroup,
             List<Author> authors,
             List<CrossReference<CitationDatabase>> citationCrossReferences,

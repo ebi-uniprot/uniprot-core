@@ -6,11 +6,11 @@ import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.impl.CrossReferenceImpl;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
-import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
+import org.uniprot.core.uniprot.evidence.impl.EvidenceBuilder;
 
 /**
  * Created 22/01/19
@@ -34,14 +34,22 @@ public class EvidenceHelper {
             int index = token[1].indexOf(':');
             if (index == -1) {
                 if (token[1].startsWith(REF_PREFIX)) {
-                    xref = new CrossReferenceImpl<>(REFERENCE, token[1]);
+                    xref =
+                            new CrossReferenceBuilder<EvidenceDatabase>()
+                                    .database(REFERENCE)
+                                    .id(token[1])
+                                    .build();
                 } else {
                     throw new IllegalArgumentException(val + " is not valid evidence string");
                 }
             } else {
                 String type = token[1].substring(0, index);
                 String id = token[1].substring(index + 1);
-                xref = new CrossReferenceImpl<>(new EvidenceDatabase(type), id);
+                xref =
+                        new CrossReferenceBuilder<EvidenceDatabase>()
+                                .database(new EvidenceDatabase(type))
+                                .id(id)
+                                .build();
             }
         }
 

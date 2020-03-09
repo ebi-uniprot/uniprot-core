@@ -11,7 +11,7 @@ import org.uniprot.core.flatfile.parser.impl.oh.OHLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.taxonomy.OrganismName;
-import org.uniprot.core.uniprot.taxonomy.builder.OrganismHostBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.OrganismHostBuilder;
 
 class OHLineBuildTest {
     private OHLineBuilder builder = new OHLineBuilder();

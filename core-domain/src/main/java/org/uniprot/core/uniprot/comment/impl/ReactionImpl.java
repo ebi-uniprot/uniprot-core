@@ -25,7 +25,7 @@ public class ReactionImpl implements Reaction {
         this.reactionCrossReferences = Collections.emptyList();
     }
 
-    public ReactionImpl(
+    ReactionImpl(
             String name,
             List<CrossReference<ReactionDatabase>> reactionCrossReferences,
             ECNumber ecNumber,

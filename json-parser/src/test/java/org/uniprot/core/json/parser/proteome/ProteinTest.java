@@ -7,8 +7,8 @@ import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.proteome.CanonicalProtein;
 import org.uniprot.core.proteome.GeneNameType;
 import org.uniprot.core.proteome.Protein;
-import org.uniprot.core.proteome.builder.CanonicalProteinBuilder;
-import org.uniprot.core.proteome.builder.ProteinBuilder;
+import org.uniprot.core.proteome.impl.CanonicalProteinBuilder;
+import org.uniprot.core.proteome.impl.ProteinBuilder;
 import org.uniprot.core.uniprot.UniProtEntryType;
 
 import com.fasterxml.jackson.databind.ObjectMapper;

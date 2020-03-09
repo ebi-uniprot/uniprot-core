@@ -20,7 +20,7 @@ public class OrganismImpl extends AbstractOrganismNameImpl implements Organism {
         this(emptyList(), 0L, emptyList(), null, null, emptyList());
     }
 
-    public OrganismImpl(
+    OrganismImpl(
             List<String> lineage,
             long taxonId,
             List<Evidence> evidences,

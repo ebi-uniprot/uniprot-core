@@ -5,7 +5,6 @@ import static org.uniprot.core.ObjectsForTests.createEvidences;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.MaximumVelocity;
-import org.uniprot.core.uniprot.comment.builder.MaximumVelocityBuilder;
 
 class MaximumVelocityImplTest {
     @Test

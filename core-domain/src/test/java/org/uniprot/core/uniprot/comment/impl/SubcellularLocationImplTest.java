@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.SubcellularLocation;
-import org.uniprot.core.uniprot.comment.builder.SubcellularLocationBuilder;
 
 class SubcellularLocationImplTest {
     @Test

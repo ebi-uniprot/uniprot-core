@@ -27,14 +27,14 @@ import org.uniprot.core.flatfile.parser.impl.pe.PeLineConverter;
 import org.uniprot.core.flatfile.parser.impl.sq.SqLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ss.SsLineConverter;
 import org.uniprot.core.uniprot.*;
-import org.uniprot.core.uniprot.builder.InternalSectionBuilder;
-import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.impl.InternalSectionBuilder;
+import org.uniprot.core.uniprot.impl.UniProtEntryBuilder;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismName;
-import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
-import org.uniprot.core.uniprot.xdb.builder.UniProtCrossReferenceBuilder;
+import org.uniprot.core.uniprot.xdb.impl.UniProtCrossReferenceBuilder;
 
 public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry> {
 

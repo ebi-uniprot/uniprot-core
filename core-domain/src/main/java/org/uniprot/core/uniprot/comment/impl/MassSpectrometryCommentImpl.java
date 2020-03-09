@@ -25,7 +25,7 @@ public class MassSpectrometryCommentImpl extends CommentHasMoleculeImpl
         this.evidences = Collections.emptyList();
     }
 
-    public MassSpectrometryCommentImpl(
+    MassSpectrometryCommentImpl(
             String molecule,
             MassSpectrometryMethod method,
             Float molWeight,

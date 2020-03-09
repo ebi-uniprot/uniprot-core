@@ -18,7 +18,7 @@ public class ProteomeIdImpl extends ValueImpl implements ProteomeId {
         super(null);
     }
 
-    public ProteomeIdImpl(String value) {
+    ProteomeIdImpl(String value) {
         super(value);
     }
 

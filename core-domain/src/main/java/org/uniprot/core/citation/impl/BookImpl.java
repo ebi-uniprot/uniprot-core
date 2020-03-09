@@ -36,7 +36,7 @@ public class BookImpl extends AbstractCitationImpl implements Book {
                 null);
     }
 
-    public BookImpl(
+    BookImpl(
             List<String> authoringGroup,
             List<Author> authors,
             List<CrossReference<CitationDatabase>> citationCrossReferences,

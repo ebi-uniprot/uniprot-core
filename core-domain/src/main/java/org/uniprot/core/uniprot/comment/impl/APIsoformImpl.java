@@ -26,7 +26,7 @@ public class APIsoformImpl implements APIsoform {
         synonyms = Collections.emptyList();
     }
 
-    public APIsoformImpl(
+    APIsoformImpl(
             IsoformName name,
             List<IsoformName> synonyms,
             Note note,
@@ -131,7 +131,7 @@ public class APIsoformImpl implements APIsoform {
             super("", Collections.emptyList());
         }
 
-        public IsoformNameImpl(String value, List<Evidence> evidences) {
+        IsoformNameImpl(String value, List<Evidence> evidences) {
             super(value, evidences);
         }
     }
@@ -145,7 +145,7 @@ public class APIsoformImpl implements APIsoform {
             super("");
         }
 
-        public IsoformIdImpl(String value) {
+        IsoformIdImpl(String value) {
             super(value);
         }
     }

@@ -23,7 +23,7 @@ public class LiteratureMappedReferenceImpl implements LiteratureMappedReference 
         this(null, null, null, null, null);
     }
 
-    public LiteratureMappedReferenceImpl(
+    LiteratureMappedReferenceImpl(
             UniProtAccession uniprotAccession,
             String source,
             String sourceId,

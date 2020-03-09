@@ -3,7 +3,7 @@ package org.uniprot.core.xml.uniprot.comment;
 import java.math.BigInteger;
 
 import org.uniprot.core.uniprot.comment.RnaEdPosition;
-import org.uniprot.core.uniprot.comment.builder.RnaEditingPositionBuilder;
+import org.uniprot.core.uniprot.comment.impl.RnaEditingPositionBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.LocationType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;

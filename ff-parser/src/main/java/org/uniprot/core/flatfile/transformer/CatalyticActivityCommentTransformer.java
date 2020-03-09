@@ -10,12 +10,12 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
-import org.uniprot.core.builder.CrossReferenceBuilder;
-import org.uniprot.core.impl.ECNumberImpl;
+import org.uniprot.core.impl.CrossReferenceBuilder;
+import org.uniprot.core.impl.ECNumberBuilder;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.CatalyticActivityCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.PhysiologicalReactionBuilder;
-import org.uniprot.core.uniprot.comment.builder.ReactionBuilder;
+import org.uniprot.core.uniprot.comment.impl.CatalyticActivityCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.PhysiologicalReactionBuilder;
+import org.uniprot.core.uniprot.comment.impl.ReactionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
@@ -114,7 +114,7 @@ public class CatalyticActivityCommentTransformer
         ECNumber ecNumber = null;
 
         if (!Strings.isNullOrEmpty(ec)) {
-            ecNumber = new ECNumberImpl(ec);
+            ecNumber = new ECNumberBuilder(ec).build();
         }
         List<CrossReference<ReactionDatabase>> references = new ArrayList<>();
         if (!Strings.isNullOrEmpty(xref)) {

@@ -6,7 +6,6 @@ import static org.uniprot.core.ObjectsForTests.proteomeXReferenceTypes;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.Component;
 import org.uniprot.core.proteome.ComponentType;
-import org.uniprot.core.proteome.builder.ComponentBuilder;
 
 class ComponentImplTest {
 

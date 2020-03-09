@@ -8,7 +8,7 @@ import org.uniprot.core.flatfile.parser.impl.os.OSLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismName;
-import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.OrganismBuilder;
 
 class OSLineBuildTest {
     private OSLineBuilder builder = new OSLineBuilder();

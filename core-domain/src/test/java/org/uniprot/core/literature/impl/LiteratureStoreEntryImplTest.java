@@ -7,7 +7,6 @@ import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.ObjectsForTests;
 import org.uniprot.core.literature.LiteratureStoreEntry;
-import org.uniprot.core.literature.builder.LiteratureStoreEntryBuilder;
 
 /**
  * @author lgonzales

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.taxonomy.TaxonomyInactiveReason;
 import org.uniprot.core.taxonomy.TaxonomyInactiveReasonType;
-import org.uniprot.core.taxonomy.builder.TaxonomyInactiveReasonBuilder;
+import org.uniprot.core.taxonomy.impl.TaxonomyInactiveReasonBuilder;
 
 /** @author lgonzales */
 class TaxonomyInactiveReasonTest {

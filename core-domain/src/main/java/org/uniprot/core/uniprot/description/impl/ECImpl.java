@@ -19,7 +19,7 @@ public class ECImpl extends ECNumberImpl implements EC {
         this("", null);
     }
 
-    public ECImpl(String value, List<Evidence> evidences) {
+    ECImpl(String value, List<Evidence> evidences) {
         super(value);
         this.evidences = unmodifiableList(evidences);
     }

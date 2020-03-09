@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.Component;
-import org.uniprot.core.proteome.builder.ComponentBuilder;
+import org.uniprot.core.proteome.impl.ComponentBuilder;
 import org.uniprot.core.xml.jaxb.proteome.ComponentType;
 import org.uniprot.core.xml.jaxb.proteome.ComponentTypeType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;

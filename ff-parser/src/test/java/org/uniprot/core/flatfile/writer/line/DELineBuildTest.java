@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.de.DELineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprot.description.*;
-import org.uniprot.core.uniprot.description.builder.*;
+import org.uniprot.core.uniprot.description.impl.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.cv.evidence.EvidenceHelper;
 

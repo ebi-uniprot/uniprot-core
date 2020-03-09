@@ -7,7 +7,6 @@ import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.SignatureDbType;
-import org.uniprot.core.uniparc.builder.SequenceFeatureBuilder;
 
 class SequenceFeatureImplTest {
     @Test

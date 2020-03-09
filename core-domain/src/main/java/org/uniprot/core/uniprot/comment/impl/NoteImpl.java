@@ -14,7 +14,7 @@ public class NoteImpl extends FreeTextImpl implements Note {
         super(Collections.emptyList());
     }
 
-    public NoteImpl(List<EvidencedValue> texts) {
+    NoteImpl(List<EvidencedValue> texts) {
         super(texts);
     }
 

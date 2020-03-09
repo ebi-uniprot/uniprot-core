@@ -22,7 +22,7 @@ public class LiteratureStoreEntryImpl implements LiteratureStoreEntry {
         this(null, null);
     }
 
-    public LiteratureStoreEntryImpl(
+    LiteratureStoreEntryImpl(
             LiteratureEntry literatureEntry,
             List<LiteratureMappedReference> literatureMappedReferences) {
         this.literatureEntry = literatureEntry;

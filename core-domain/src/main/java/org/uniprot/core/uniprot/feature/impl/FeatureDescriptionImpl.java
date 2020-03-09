@@ -12,7 +12,7 @@ public class FeatureDescriptionImpl implements FeatureDescription {
         value = "";
     }
 
-    public FeatureDescriptionImpl(String value) {
+    FeatureDescriptionImpl(String value) {
         this.value = Utils.emptyOrString(value);
     }
 

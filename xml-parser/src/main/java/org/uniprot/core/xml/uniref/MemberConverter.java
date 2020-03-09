@@ -1,7 +1,7 @@
 package org.uniprot.core.xml.uniref;
 
 import org.uniprot.core.uniref.UniRefMember;
-import org.uniprot.core.uniref.builder.UniRefMemberBuilder;
+import org.uniprot.core.uniref.impl.UniRefMemberBuilder;
 import org.uniprot.core.xml.jaxb.uniref.MemberType;
 import org.uniprot.core.xml.jaxb.uniref.ObjectFactory;
 

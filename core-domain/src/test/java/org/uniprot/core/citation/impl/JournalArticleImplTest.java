@@ -7,10 +7,9 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.builder.CrossReferenceBuilder;
 import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.JournalArticle;
-import org.uniprot.core.citation.builder.JournalArticleBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 
 class JournalArticleImplTest {
     @Test

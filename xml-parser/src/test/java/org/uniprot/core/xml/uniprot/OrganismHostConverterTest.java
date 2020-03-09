@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
-import org.uniprot.core.uniprot.taxonomy.builder.OrganismHostBuilder;
+import org.uniprot.core.uniprot.taxonomy.impl.OrganismHostBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.OrganismType;
 
 class OrganismHostConverterTest {

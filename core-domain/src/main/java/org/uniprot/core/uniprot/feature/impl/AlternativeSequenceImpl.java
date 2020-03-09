@@ -17,7 +17,7 @@ public class AlternativeSequenceImpl implements AlternativeSequence {
         this.originalSequence = "";
     }
 
-    public AlternativeSequenceImpl(String originalSequence, List<String> alternativeSequences) {
+    AlternativeSequenceImpl(String originalSequence, List<String> alternativeSequences) {
         this.originalSequence = Utils.emptyOrString(originalSequence);
         this.alternativeSequences = Utils.unmodifiableList(alternativeSequences);
     }

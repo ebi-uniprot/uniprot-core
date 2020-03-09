@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import org.uniprot.core.impl.ECNumberImpl;
 import org.uniprot.core.uniprot.description.EC;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprot.evidence.impl.EvidencedValueBuilder;
 import org.uniprot.core.uniprot.evidence.impl.EvidencedValueImpl;
 
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -22,8 +24,11 @@ public class ECNumberSerializer extends StdSerializer<ECNumberImpl> {
             ECNumberImpl value, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
             throws IOException {
         if (value instanceof EC) {
-            EvidencedValueImpl evidencedValue =
-                    new EvidencedValueImpl(value.getValue(), ((EC) value).getEvidences());
+            EvidencedValue evidencedValue =
+                    new EvidencedValueBuilder()
+                            .value(value.getValue())
+                            .evidencesSet(((EC) value).getEvidences())
+                            .build();
             serializerProvider
                     .findValueSerializer(EvidencedValueImpl.class)
                     .serialize(evidencedValue, jsonGenerator, serializerProvider);

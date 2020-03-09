@@ -11,9 +11,9 @@ import org.uniprot.core.citation.Book;
 import org.uniprot.core.citation.JournalArticle;
 import org.uniprot.core.citation.Submission;
 import org.uniprot.core.citation.SubmissionDatabase;
-import org.uniprot.core.citation.builder.BookBuilder;
-import org.uniprot.core.citation.builder.JournalArticleBuilder;
-import org.uniprot.core.citation.builder.SubmissionBuilder;
+import org.uniprot.core.citation.impl.BookBuilder;
+import org.uniprot.core.citation.impl.JournalArticleBuilder;
+import org.uniprot.core.citation.impl.SubmissionBuilder;
 import org.uniprot.core.flatfile.parser.impl.rl.RLLineBuilder;
 
 class RLLineBuilderTest {

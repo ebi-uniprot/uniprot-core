@@ -1,7 +1,7 @@
 package org.uniprot.core.xml.uniprot.citation;
 
 import org.uniprot.core.citation.Thesis;
-import org.uniprot.core.citation.builder.ThesisBuilder;
+import org.uniprot.core.citation.impl.ThesisBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CitationType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;

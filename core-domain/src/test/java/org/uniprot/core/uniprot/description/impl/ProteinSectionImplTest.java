@@ -13,14 +13,9 @@ import org.uniprot.core.uniprot.description.Name;
 import org.uniprot.core.uniprot.description.ProteinAltName;
 import org.uniprot.core.uniprot.description.ProteinRecName;
 import org.uniprot.core.uniprot.description.ProteinSection;
-import org.uniprot.core.uniprot.description.builder.ECBuilder;
-import org.uniprot.core.uniprot.description.builder.NameBuilder;
-import org.uniprot.core.uniprot.description.builder.ProteinAltNameBuilder;
-import org.uniprot.core.uniprot.description.builder.ProteinRecNameBuilder;
-import org.uniprot.core.uniprot.description.builder.ProteinSectionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
-import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
+import org.uniprot.core.uniprot.evidence.impl.EvidenceBuilder;
 
 class ProteinSectionImplTest {
 

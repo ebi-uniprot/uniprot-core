@@ -6,10 +6,9 @@ import static org.uniprot.core.ObjectsForTests.createEvidences;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.builder.CrossReferenceBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.PhysiologicalDirectionType;
 import org.uniprot.core.uniprot.comment.ReactionDatabase;
-import org.uniprot.core.uniprot.comment.builder.PhysiologicalReactionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 class PhysiologicalDirectionImplTest {

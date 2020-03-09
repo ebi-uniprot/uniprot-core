@@ -12,10 +12,10 @@ import org.uniprot.core.json.parser.uniprot.CreateUtils;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.SubcellularLocation;
 import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
-import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
-import org.uniprot.core.uniprot.comment.builder.SubcellularLocationBuilder;
-import org.uniprot.core.uniprot.comment.builder.SubcellularLocationCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.SubcellularLocationValueBuilder;
+import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
+import org.uniprot.core.uniprot.comment.impl.SubcellularLocationBuilder;
+import org.uniprot.core.uniprot.comment.impl.SubcellularLocationCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.SubcellularLocationValueBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 import com.fasterxml.jackson.databind.JsonNode;

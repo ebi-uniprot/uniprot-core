@@ -18,7 +18,7 @@ public class ReferenceCommentImpl extends EvidencedValueImpl implements Referenc
         super("", Collections.emptyList());
     }
 
-    public ReferenceCommentImpl(ReferenceCommentType type, String value, List<Evidence> evidences) {
+    ReferenceCommentImpl(ReferenceCommentType type, String value, List<Evidence> evidences) {
         super(value, evidences);
         this.type = type;
     }

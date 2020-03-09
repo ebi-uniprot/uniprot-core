@@ -7,7 +7,7 @@ import java.util.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.Keyword;
-import org.uniprot.core.uniprot.builder.KeywordBuilder;
+import org.uniprot.core.uniprot.impl.KeywordBuilder;
 
 class EntryKeywordMapTest {
     @Test

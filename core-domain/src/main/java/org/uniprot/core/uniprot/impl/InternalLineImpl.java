@@ -13,7 +13,7 @@ public class InternalLineImpl extends ValueImpl implements InternalLine {
         super(null);
     }
 
-    public InternalLineImpl(InternalLineType type, String value) {
+    InternalLineImpl(InternalLineType type, String value) {
         super(value);
         this.type = type;
     }

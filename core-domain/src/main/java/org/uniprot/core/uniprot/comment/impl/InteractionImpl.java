@@ -21,7 +21,7 @@ public class InteractionImpl implements Interaction {
     // no arg constructor for JSON deserialization
     InteractionImpl() {}
 
-    public InteractionImpl(
+    InteractionImpl(
             InteractionType type,
             UniProtAccession uniProtAccession,
             String geneName,

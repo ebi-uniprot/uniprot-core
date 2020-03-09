@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.KineticParametersBuilder;
-import org.uniprot.core.uniprot.comment.builder.MaximumVelocityBuilder;
-import org.uniprot.core.uniprot.comment.builder.MichaelisConstantBuilder;
-import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.comment.impl.KineticParametersBuilder;
+import org.uniprot.core.uniprot.comment.impl.MaximumVelocityBuilder;
+import org.uniprot.core.uniprot.comment.impl.MichaelisConstantBuilder;
+import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType.Kinetics;

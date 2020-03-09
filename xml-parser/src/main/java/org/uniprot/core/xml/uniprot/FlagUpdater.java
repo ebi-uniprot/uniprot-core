@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.uniprot.core.uniprot.description.Flag;
 import org.uniprot.core.uniprot.description.FlagType;
 import org.uniprot.core.uniprot.description.ProteinDescription;
-import org.uniprot.core.uniprot.description.builder.ProteinDescriptionBuilder;
+import org.uniprot.core.uniprot.description.impl.ProteinDescriptionBuilder;
 import org.uniprot.core.xml.Updater;
 import org.uniprot.core.xml.jaxb.uniprot.SequenceType;
 

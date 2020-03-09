@@ -10,8 +10,8 @@ import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.RnaEdPosition;
 import org.uniprot.core.uniprot.comment.RnaEditingComment;
 import org.uniprot.core.uniprot.comment.RnaEditingLocationType;
-import org.uniprot.core.uniprot.comment.builder.RnaEditingCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.RnaEditingPositionBuilder;
+import org.uniprot.core.uniprot.comment.impl.RnaEditingCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.RnaEditingPositionBuilder;
 
 class CCRNAEditingBuildTest extends CCBuildTestAbstr {
     @Test
