@@ -19,10 +19,6 @@ import org.uniprot.core.uniprot.impl.UniProtIdBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import com.github.bohnman.squiggly.context.provider.SimpleSquigglyContextProvider;
-import com.github.bohnman.squiggly.filter.SquigglyPropertyFilter;
-import com.github.bohnman.squiggly.parser.SquigglyParser;
 
 /** @author lgonzales */
 class UniProtEntryIT {
@@ -50,51 +46,6 @@ class UniProtEntryIT {
 
     @Test
     void testUniProtEntryComplete() {
-
-        UniProtEntry entry = getCompleteUniProtEntry();
-        ValidateJson.verifyJsonRoundTripParser(entry);
-        ValidateJson.verifyEmptyFields(entry);
-
-        try {
-            ObjectMapper mapper = UniprotJsonConfig.getInstance().getSimpleObjectMapper();
-            String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
-            System.out.println(json);
-        } catch (Exception e) {
-            fail(e.getMessage());
-        }
-    }
-
-    @Test
-    void testFilterFieldsInEntry() throws Exception {
-        UniProtEntry entry = getCompleteUniProtEntry();
-        ObjectMapper mapper = UniprotJsonConfig.getInstance().getFullObjectMapper().copy();
-        String fieldsPath =
-                "primaryAccession,proteinDescription.cdAntigenNames,proteinDescription.recommendedName";
-        SquigglyPropertyFilter filter =
-                new SquigglyPropertyFilter(
-                        new SimpleSquigglyContextProvider(new SquigglyParser(), fieldsPath));
-        SimpleFilterProvider filterProvider =
-                new SimpleFilterProvider().addFilter(SquigglyPropertyFilter.FILTER_ID, filter);
-        mapper.setFilterProvider(filterProvider);
-        String pathJson = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
-        System.out.println("Filtered Fields Only: \n" + pathJson);
-        UniProtEntry converted = mapper.readValue(pathJson, UniProtEntryImpl.class);
-
-        // returned requested ones
-        assertNotNull(converted.getPrimaryAccession());
-        assertNotNull(converted.getProteinDescription());
-        assertNotNull(converted.getProteinDescription().getCdAntigenNames());
-        assertNotNull(converted.getProteinDescription().getRecommendedName());
-        assertFalse(converted.getProteinDescription().getCdAntigenNames().isEmpty());
-
-        // not requested fields are null or empty
-        assertNull(converted.getProteinDescription().getAllergenName());
-        assertNull(converted.getEntryType());
-        assertNull(converted.getOrganism());
-        assertTrue(converted.getComments().isEmpty());
-    }
-
-    private UniProtEntry getCompleteUniProtEntry() {
         List<Comment> comments = new ArrayList<>();
         comments.add(AlternativeProductsCommentTest.getAlternativeProductsComment());
         comments.add(BPCPCommentTest.getBpcpComment());
