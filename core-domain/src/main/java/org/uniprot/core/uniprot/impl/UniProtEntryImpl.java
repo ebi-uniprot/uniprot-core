@@ -223,6 +223,7 @@ public class UniProtEntryImpl implements UniProtEntry {
 
     public List<Feature> getFeaturesByType(FeatureType type) {
         return features.stream()
+                .filter(feature -> notNull(feature.getType()))
                 .filter(feature -> feature.getType().equals(type))
                 .collect(Collectors.toList());
     }
@@ -245,6 +246,8 @@ public class UniProtEntryImpl implements UniProtEntry {
     @Override
     public List<UniProtReference> getReferencesByType(CitationType type) {
         return this.references.stream()
+                .filter(uniProtReference -> notNull(uniProtReference.getCitation()))
+                .filter(uniProtReference -> notNull(uniProtReference.getCitation().getCitationType()))
                 .filter(val -> val.getCitation().getCitationType().equals(type))
                 .collect(Collectors.toList());
     }
@@ -262,6 +265,7 @@ public class UniProtEntryImpl implements UniProtEntry {
     @Override
     public List<UniProtCrossReference> getUniProtCrossReferencesByType(String dbName) {
         return this.uniProtCrossReferences.stream()
+                .filter(val -> notNull(val.getDatabase()))
                 .filter(val -> dbName.equals(val.getDatabase().getName()))
                 .collect(Collectors.toList());
     }

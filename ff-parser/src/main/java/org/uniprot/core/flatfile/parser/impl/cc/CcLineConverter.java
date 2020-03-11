@@ -183,7 +183,7 @@ public class CcLineConverter extends EvidenceCollector
     private AlternativeProductsComment convertAlternativeProduct(
             AlternativeProducts cObj, Map<Object, List<Evidence>> evidences) {
 
-        APCommentBuilder builder = new APCommentBuilder();
+        AlternativeProductsCommentBuilder builder = new AlternativeProductsCommentBuilder();
         builder.eventsSet(
                 cObj.getEvents().stream().map(APEventType::typeOf).collect(Collectors.toList()));
         if (isNotEmpty(cObj.getComment())) {

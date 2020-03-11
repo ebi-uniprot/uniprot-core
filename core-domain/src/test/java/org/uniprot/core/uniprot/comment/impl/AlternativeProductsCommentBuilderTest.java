@@ -16,11 +16,11 @@ import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
-class APCommentBuilderTest {
+class AlternativeProductsCommentBuilderTest {
     @Test
     void testNewInstance() {
-        APCommentBuilder builder1 = new APCommentBuilder();
-        APCommentBuilder builder2 = new APCommentBuilder();
+        AlternativeProductsCommentBuilder builder1 = new AlternativeProductsCommentBuilder();
+        AlternativeProductsCommentBuilder builder2 = new AlternativeProductsCommentBuilder();
         assertNotNull(builder1);
         assertNotNull(builder2);
         assertNotSame(builder1, builder2);
@@ -28,7 +28,7 @@ class APCommentBuilderTest {
 
     @Test
     void testSetEvents() {
-        APCommentBuilder builder = new APCommentBuilder();
+        AlternativeProductsCommentBuilder builder = new AlternativeProductsCommentBuilder();
         List<APEventType> events = new ArrayList<>();
         events.add(APEventType.ALTERNATIVE_INITIATION);
         events.add(APEventType.ALTERNATIVE_SPLICING);
@@ -41,7 +41,7 @@ class APCommentBuilderTest {
 
     @Test
     void testSetEventIsoforms() {
-        APCommentBuilder builder = new APCommentBuilder();
+        AlternativeProductsCommentBuilder builder = new AlternativeProductsCommentBuilder();
         List<APEventType> events = new ArrayList<>();
         events.add(APEventType.ALTERNATIVE_INITIATION);
         events.add(APEventType.ALTERNATIVE_SPLICING);
@@ -55,7 +55,7 @@ class APCommentBuilderTest {
 
     @Test
     void testSetEventIsoformsNote() {
-        APCommentBuilder builder = new APCommentBuilder();
+        AlternativeProductsCommentBuilder builder = new AlternativeProductsCommentBuilder();
         List<APEventType> events = new ArrayList<>();
         events.add(APEventType.ALTERNATIVE_INITIATION);
         events.add(APEventType.ALTERNATIVE_SPLICING);
@@ -175,7 +175,7 @@ class APCommentBuilderTest {
     @Test
     void canAddSingleIsoform() {
         AlternativeProductsComment obj =
-                new APCommentBuilder().isoformsAdd(ObjectsForTests.createAPIsoform()).build();
+                new AlternativeProductsCommentBuilder().isoformsAdd(ObjectsForTests.createAPIsoform()).build();
         assertNotNull(obj.getIsoforms());
         assertFalse(obj.getIsoforms().isEmpty());
         assertTrue(obj.hasIsoforms());
@@ -183,7 +183,7 @@ class APCommentBuilderTest {
 
     @Test
     void nullIsoform_willBeIgnore() {
-        AlternativeProductsComment obj = new APCommentBuilder().isoformsAdd(null).build();
+        AlternativeProductsComment obj = new AlternativeProductsCommentBuilder().isoformsAdd(null).build();
         assertNotNull(obj.getIsoforms());
         assertTrue(obj.getIsoforms().isEmpty());
         assertFalse(obj.hasIsoforms());
@@ -192,7 +192,7 @@ class APCommentBuilderTest {
     @Test
     void canAddSingleEvent() {
         AlternativeProductsComment obj =
-                new APCommentBuilder().eventsAdd(APEventType.ALTERNATIVE_INITIATION).build();
+                new AlternativeProductsCommentBuilder().eventsAdd(APEventType.ALTERNATIVE_INITIATION).build();
         assertNotNull(obj.getEvents());
         assertFalse(obj.getEvents().isEmpty());
         assertTrue(obj.hasEvents());
@@ -200,7 +200,7 @@ class APCommentBuilderTest {
 
     @Test
     void nullEvent_willBeIgnore() {
-        AlternativeProductsComment obj = new APCommentBuilder().eventsAdd(null).build();
+        AlternativeProductsComment obj = new AlternativeProductsCommentBuilder().eventsAdd(null).build();
         assertNotNull(obj.getEvents());
         assertTrue(obj.getEvents().isEmpty());
         assertFalse(obj.hasEvents());

@@ -10,7 +10,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.impl.APCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.AlternativeProductsCommentBuilder;
 import org.uniprot.core.uniprot.comment.impl.APIsoformBuilder;
 import org.uniprot.core.uniprot.comment.impl.IsoformNameBuilder;
 import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
@@ -25,7 +25,7 @@ class APCommentConverterTest {
 
     @Test
     void test() {
-        APCommentBuilder builder = new APCommentBuilder();
+        AlternativeProductsCommentBuilder builder = new AlternativeProductsCommentBuilder();
         List<APEventType> events = new ArrayList<>();
         events.add(APEventType.ALTERNATIVE_PROMOTER_USAGE);
         events.add(APEventType.ALTERNATIVE_SPLICING);

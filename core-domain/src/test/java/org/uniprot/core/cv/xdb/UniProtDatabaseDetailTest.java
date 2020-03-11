@@ -9,8 +9,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class UniProtDatabaseDetailTest {
-    private String random;
+import static org.junit.jupiter.api.Assertions.*;
+
+class UniProtDatabaseDetailTest {
     private String name;
     private String displayName;
     private UniProtDatabaseCategory category;
@@ -19,11 +20,11 @@ public class UniProtDatabaseDetailTest {
 
     @BeforeEach
     void setUp() {
-        this.random = UUID.randomUUID().toString();
-        this.name = "name-" + this.random;
-        this.displayName = "displayName-" + this.random;
+        String  random = UUID.randomUUID().toString();
+        this.name = "name-" + random;
+        this.displayName = "displayName-" + random;
         this.category = UniProtDatabaseCategory.CHEMISTRY;
-        this.uriLink = "uriLink-" + this.random;
+        this.uriLink = "uriLink-" + random;
         this.attributes =
                 IntStream.range(0, 3)
                         .mapToObj(
@@ -36,47 +37,47 @@ public class UniProtDatabaseDetailTest {
     @Test
     void testCreateObject() {
         UniProtDatabaseDetail dbType = createUniProtDatabaseDetail(false);
-        Assertions.assertNotNull(dbType);
-        Assertions.assertEquals(this.name, dbType.getName());
-        Assertions.assertEquals(this.displayName, dbType.getDisplayName());
-        Assertions.assertEquals(this.category, dbType.getCategory());
-        Assertions.assertEquals(this.uriLink, dbType.getUriLink());
-        Assertions.assertEquals(1, dbType.getAttributes().size());
-        Assertions.assertEquals("Description", dbType.getAttributes().get(0).getName());
-        Assertions.assertEquals("description", dbType.getAttributes().get(0).getXmlTag());
+        assertNotNull(dbType);
+        assertEquals(this.name, dbType.getName());
+        assertEquals(this.displayName, dbType.getDisplayName());
+        assertEquals(this.category, dbType.getCategory());
+        assertEquals(this.uriLink, dbType.getUriLink());
+        assertEquals(1, dbType.getAttributes().size());
+        assertEquals("Description", dbType.getAttributes().get(0).getName());
+        assertEquals("description", dbType.getAttributes().get(0).getXmlTag());
         Assertions.assertNull(dbType.getAttributes().get(0).getUriLink());
     }
 
     @Test
     void testCreateObjectWithAttrib() {
         UniProtDatabaseDetail dbType = createUniProtDatabaseDetail(true);
-        Assertions.assertNotNull(dbType);
-        Assertions.assertEquals(this.name, dbType.getName());
-        Assertions.assertEquals(this.displayName, dbType.getDisplayName());
-        Assertions.assertEquals(this.category, dbType.getCategory());
-        Assertions.assertEquals(this.uriLink, dbType.getUriLink());
-        Assertions.assertEquals(3, dbType.getAttributes().size());
+        assertNotNull(dbType);
+        assertEquals(this.name, dbType.getName());
+        assertEquals(this.displayName, dbType.getDisplayName());
+        assertEquals(this.category, dbType.getCategory());
+        assertEquals(this.uriLink, dbType.getUriLink());
+        assertEquals(3, dbType.getAttributes().size());
     }
 
     @Test
     void testValueEqual() {
         UniProtDatabaseDetail n1 = createUniProtDatabaseDetail(false);
         UniProtDatabaseDetail n2 = createUniProtDatabaseDetail(false);
-        Assertions.assertTrue(n1.equals(n2));
-        Assertions.assertTrue(n1.hashCode() == n2.hashCode());
+        assertEquals(n1, n2);
+        assertEquals(n1.hashCode(), n2.hashCode());
     }
 
     @Test
     void testRefEqual() {
         UniProtDatabaseDetail n1 = createUniProtDatabaseDetail(true);
-        Assertions.assertTrue(n1.equals(n1));
-        Assertions.assertTrue(n1.hashCode() == n1.hashCode());
+        assertEquals(n1, n1);
+        assertEquals(n1.hashCode(), n1.hashCode());
     }
 
     @Test
     void testEqualWithNull() {
         UniProtDatabaseDetail n1 = createUniProtDatabaseDetail(true);
-        Assertions.assertFalse(n1.equals(null));
+        assertNotEquals(null, n1);
     }
 
     @Test
@@ -84,7 +85,16 @@ public class UniProtDatabaseDetailTest {
         UniProtDatabaseDetail n1 = createUniProtDatabaseDetail(false);
         this.uriLink = null;
         UniProtDatabaseDetail n2 = createUniProtDatabaseDetail(false);
-        Assertions.assertFalse(n1.equals(n2));
+        assertNotEquals(n1, n2);
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        UniProtDatabaseDetail obj = new UniProtDatabaseDetail();
+        assertNotNull(obj);
+        assertEquals(1, obj.getAttributes().size());
+        assertNull(obj.getLinkedReason());
+        assertFalse(obj.isImplicit());
     }
 
     private UniProtDatabaseDetail createUniProtDatabaseDetail(boolean passAttribute) {
@@ -97,12 +107,12 @@ public class UniProtDatabaseDetailTest {
         }
     }
 
-    public static UniProtDatabaseDetail createUniProtDatabaseDetail(
-            String name,
-            String displayName,
-            UniProtDatabaseCategory category,
-            String uriLink,
-            List<UniProtDatabaseAttribute> attributes) {
+    static UniProtDatabaseDetail createUniProtDatabaseDetail(
+      String name,
+      String displayName,
+      UniProtDatabaseCategory category,
+      String uriLink,
+      List<UniProtDatabaseAttribute> attributes) {
         return new UniProtDatabaseDetail(
                 name, displayName, category, uriLink, attributes, false, null);
     }

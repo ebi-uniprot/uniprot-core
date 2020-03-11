@@ -1,13 +1,16 @@
 package org.uniprot.core.cv.go.impl;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class GeneOntologyEntryImplTest {
 
@@ -54,6 +57,16 @@ class GeneOntologyEntryImplTest {
     void needDefaultConstructorForJsonDeserialization() {
         GeneOntologyEntry obj = new GeneOntologyEntryImpl();
         assertNotNull(obj);
+    }
+
+    @Test
+    void canCompareWithIds() {
+        GeneOntologyEntry go1 = go("go1", null);
+        GeneOntologyEntry go2 = go("go2", null);
+        List<GeneOntologyEntry> geneOntologyEntries = Arrays.asList(go1, go2);
+        Collections.sort(geneOntologyEntries);
+
+        assertEquals(go2, geneOntologyEntries.get(0));
     }
 
     private static GeneOntologyEntry go(String id, String term) {

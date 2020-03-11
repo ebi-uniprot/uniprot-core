@@ -16,6 +16,8 @@ import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 class DiseaseEntryImplTest {
     private String uuid;
     private String id;
@@ -49,30 +51,36 @@ class DiseaseEntryImplTest {
     void testCreateDisease() {
         DiseaseEntry disease = createDisease();
 
-        Assertions.assertEquals(id, disease.getId());
-        Assertions.assertEquals(acc, disease.getAccession());
-        Assertions.assertEquals(def, disease.getDefinition());
+        assertEquals(id, disease.getId());
+        assertEquals(acc, disease.getAccession());
+        assertEquals(def, disease.getDefinition());
         Assertions.assertIterableEquals(altNames, disease.getAlternativeNames());
         Assertions.assertIterableEquals(xrefs, disease.getCrossReferences());
         Assertions.assertIterableEquals(kws, disease.getKeywords());
-        Assertions.assertEquals(rc, disease.getReviewedProteinCount());
-        Assertions.assertEquals(urc, disease.getUnreviewedProteinCount());
+        assertEquals(rc, disease.getReviewedProteinCount());
+        assertEquals(urc, disease.getUnreviewedProteinCount());
     }
 
     @Test
     void testEquals() {
         DiseaseEntry d1 = createDisease();
         DiseaseEntry d2 = createDisease();
-        Assertions.assertEquals(d1, d2);
+        assertEquals(d1, d2);
         // their hash should also be same
-        Assertions.assertEquals(d1.hashCode(), d2.hashCode());
+        assertEquals(d1.hashCode(), d2.hashCode());
     }
 
     @Test
     void testNotEquals() {
         DiseaseEntry d1 = createDisease();
         DiseaseEntry d2 = DiseaseEntryBuilder.from(d1).keywordsSet(Collections.emptyList()).build();
-        Assertions.assertNotEquals(d1, d2);
+        assertNotEquals(d1, d2);
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        DiseaseEntry obj = new DiseaseEntryImpl();
+        assertNotNull(obj);
     }
 
     private DiseaseEntry createDisease() {
