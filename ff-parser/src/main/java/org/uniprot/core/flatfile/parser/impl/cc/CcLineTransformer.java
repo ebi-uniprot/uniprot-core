@@ -4,16 +4,16 @@ import java.util.List;
 import java.util.Map;
 
 import org.uniprot.core.flatfile.parser.LineTransformer;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
-import org.uniprot.core.uniprot.comment.Comment;
+import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.cv.disease.DiseaseFileReader;
 import org.uniprot.cv.subcell.SubcellularLocationFileReader;
 
 public class CcLineTransformer implements LineTransformer<Comment> {
-    private final UniprotLineParser<CcLineObject> parser =
-            new DefaultUniprotLineParserFactory().createCcLineParser();
+    private final UniprotkbLineParser<CcLineObject> parser =
+            new DefaultUniprotkbLineParserFactory().createCcLineParser();
     private final CcLineFormater formater = new CcLineFormater();
     private final CcLineConverter converter;
 

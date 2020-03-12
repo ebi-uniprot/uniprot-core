@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.pe.PELineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
-import org.uniprot.core.uniprot.ProteinExistence;
+import org.uniprot.core.uniprotkb.ProteinExistence;
 
 class PELineBuildTest {
     @Test

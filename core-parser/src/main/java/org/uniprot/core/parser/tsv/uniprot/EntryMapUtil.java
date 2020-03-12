@@ -2,7 +2,7 @@ package org.uniprot.core.parser.tsv.uniprot;
 
 import java.util.List;
 
-import org.uniprot.core.uniprot.taxonomy.OrganismName;
+import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
 
 public class EntryMapUtil {
     public static String convertOrganism(OrganismName organism) {

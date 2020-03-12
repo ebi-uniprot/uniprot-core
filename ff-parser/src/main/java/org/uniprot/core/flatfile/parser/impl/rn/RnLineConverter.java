@@ -7,7 +7,7 @@ import java.util.Map;
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
 import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 public class RnLineConverter extends EvidenceCollector
         implements Converter<RnLineObject, List<Evidence>> {

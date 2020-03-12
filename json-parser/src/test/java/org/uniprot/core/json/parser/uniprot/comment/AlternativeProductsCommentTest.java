@@ -9,14 +9,14 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
-import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.impl.APIsoformBuilder;
-import org.uniprot.core.uniprot.comment.impl.AlternativeProductsCommentBuilder;
-import org.uniprot.core.uniprot.comment.impl.IsoformNameBuilder;
-import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
-import org.uniprot.core.uniprot.evidence.impl.EvidencedValueBuilder;
+import org.uniprot.core.uniprotkb.comment.*;
+import org.uniprot.core.uniprotkb.comment.impl.APIsoformBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.AlternativeProductsCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.IsoformNameBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.NoteBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

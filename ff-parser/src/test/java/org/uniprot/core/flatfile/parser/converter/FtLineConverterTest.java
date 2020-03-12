@@ -10,9 +10,9 @@ import org.uniprot.core.PositionModifier;
 import org.uniprot.core.Range;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.feature.Feature;
-import org.uniprot.core.uniprot.feature.FeatureType;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.feature.Feature;
+import org.uniprot.core.uniprotkb.feature.FeatureType;
 
 class FtLineConverterTest {
     private final FtLineConverter converter = new FtLineConverter();

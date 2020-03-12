@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.oh.OhLineConverter;
 import org.uniprot.core.flatfile.parser.impl.oh.OhLineObject;
-import org.uniprot.core.uniprot.taxonomy.OrganismHost;
+import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 
 class OhLineConverterTest {
     @Test

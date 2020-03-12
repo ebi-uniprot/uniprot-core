@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
-import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
-import org.uniprot.core.uniprot.comment.impl.MassSpectrometryCommentBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.MassSpectrometryComment;
+import org.uniprot.core.uniprotkb.comment.MassSpectrometryMethod;
+import org.uniprot.core.uniprotkb.comment.impl.MassSpectrometryCommentBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 public class MSCommentTransformer implements CommentTransformer<MassSpectrometryComment> {
 

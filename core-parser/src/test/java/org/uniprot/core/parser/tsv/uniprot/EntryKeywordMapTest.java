@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.*;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.Keyword;
-import org.uniprot.core.uniprot.impl.KeywordBuilder;
+import org.uniprot.core.uniprotkb.Keyword;
+import org.uniprot.core.uniprotkb.impl.KeywordBuilder;
 
 class EntryKeywordMapTest {
     @Test

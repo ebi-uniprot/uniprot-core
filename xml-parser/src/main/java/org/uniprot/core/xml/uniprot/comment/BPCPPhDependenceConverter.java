@@ -2,8 +2,8 @@ package org.uniprot.core.xml.uniprot.comment;
 
 import java.util.stream.Collectors;
 
-import org.uniprot.core.uniprot.comment.PhDependence;
-import org.uniprot.core.uniprot.comment.impl.PhDependenceBuilder;
+import org.uniprot.core.uniprotkb.comment.PhDependence;
+import org.uniprot.core.uniprotkb.comment.impl.PhDependenceBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;

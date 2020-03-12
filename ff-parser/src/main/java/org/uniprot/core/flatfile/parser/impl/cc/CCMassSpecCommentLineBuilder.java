@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
-import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
+import org.uniprot.core.uniprotkb.comment.MassSpectrometryComment;
 
 import com.google.common.base.Strings;
 

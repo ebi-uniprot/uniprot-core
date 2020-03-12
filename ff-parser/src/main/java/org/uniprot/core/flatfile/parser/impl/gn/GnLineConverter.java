@@ -10,8 +10,8 @@ import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
 import org.uniprot.core.flatfile.parser.impl.gn.GnLineObject.GnName;
 import org.uniprot.core.flatfile.parser.impl.gn.GnLineObject.GnObject;
 import org.uniprot.core.gene.*;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.impl.*;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.impl.*;
 
 public class GnLineConverter extends EvidenceCollector
         implements Converter<GnLineObject, List<Gene>> {

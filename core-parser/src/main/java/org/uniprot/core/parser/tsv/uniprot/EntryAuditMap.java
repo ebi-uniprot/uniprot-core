@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.uniprot.core.uniprot.EntryAudit;
+import org.uniprot.core.uniprotkb.EntryAudit;
 
 public class EntryAuditMap implements NamedValueMap {
 

@@ -7,12 +7,12 @@ import java.net.URL;
 import java.nio.charset.Charset;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
 import org.uniprot.core.flatfile.parser.impl.entry.EntryObject;
 import org.uniprot.core.flatfile.parser.impl.entry.EntryObjectConverter;
-import org.uniprot.core.uniprot.UniProtEntry;
+import org.uniprot.core.uniprotkb.UniProtkbEntry;
 
 import com.google.common.io.CharSource;
 import com.google.common.io.Resources;
@@ -75,14 +75,14 @@ class EntryConverterIT {
     }
 
     private void testEntry(String entryToParse) {
-        UniprotLineParser<EntryObject> entryParser =
-                new DefaultUniprotLineParserFactory().createEntryParser();
+        UniprotkbLineParser<EntryObject> entryParser =
+                new DefaultUniprotkbLineParserFactory().createEntryParser();
         EntryObject parse = entryParser.parse(entryToParse);
         assertNotNull(parse);
 
         EntryObjectConverter entryObjectConverter =
                 new EntryObjectConverter(new SupportingDataMapImpl(), true);
-        UniProtEntry convert = entryObjectConverter.convert(parse);
+        UniProtkbEntry convert = entryObjectConverter.convert(parse);
         assertNotNull(convert);
     }
 

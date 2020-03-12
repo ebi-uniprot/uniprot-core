@@ -7,17 +7,17 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.SequenceCaution;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.SequenceCautionObject;
-import org.uniprot.core.uniprot.comment.Comment;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.comment.SequenceCautionComment;
+import org.uniprot.core.uniprotkb.comment.Comment;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
 
 class CcLineSeqCautionCommentParserTest {
     @Test
@@ -25,8 +25,8 @@ class CcLineSeqCautionCommentParserTest {
         String lines =
                 "CC   -!- SEQUENCE CAUTION:\n"
                         + "CC       Sequence=CAI24940.1; Type=Erroneous gene model prediction;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -57,8 +57,8 @@ class CcLineSeqCautionCommentParserTest {
         String lines =
                 "CC   -!- SEQUENCE CAUTION:\n"
                         + "CC       Sequence=AAG34697.1; Type=Erroneous termination; Note=Translated as Ser;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -78,8 +78,8 @@ class CcLineSeqCautionCommentParserTest {
                 "CC   -!- SEQUENCE CAUTION:\n"
                         + "CC       Sequence=CAI12537.1; Type=Erroneous gene model prediction;\n"
                         + "CC       Sequence=CAI39742.1; Type=Erroneous gene model prediction;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -104,8 +104,8 @@ class CcLineSeqCautionCommentParserTest {
                 "CC   -!- SEQUENCE CAUTION:\n"
                         + "CC       Sequence=AAA25676.1; Type=Frameshift;\n"
                         + "CC       Sequence=CAD59919.1; Type=Frameshift;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -130,8 +130,8 @@ class CcLineSeqCautionCommentParserTest {
         String lines =
                 "CC   -!- SEQUENCE CAUTION:\n"
                         + "CC       Sequence=AAA85813.1; Type=Frameshift; Note=Frameshift correction allows the C-terminal sequence to be compatible with the results of mass spectrometry and X-ray crystallography;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -150,8 +150,8 @@ class CcLineSeqCautionCommentParserTest {
         String lines =
                 "CC   -!- SEQUENCE CAUTION:\n"
                         + "CC       Sequence=CAA57511.1; Type=Frameshift; Note=The predicted gene.; Evidence={ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133};\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -182,8 +182,8 @@ class CcLineSeqCautionCommentParserTest {
         String ccLineString =
                 "SEQUENCE CAUTION:\n"
                         + "Sequence=CAA57511.1; Type=Frameshift; Note=The predicted gene.; Evidence={ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133};\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineFormater formater = new CcLineFormater();
         String lines = formater.format(ccLineString);
         CcLineObject obj = parser.parse(lines);
@@ -216,8 +216,8 @@ class CcLineSeqCautionCommentParserTest {
         String lines =
                 "CC   -!- SEQUENCE CAUTION:\n"
                         + "CC       Sequence=CAA39814.1; Type=Frameshift; Evidence={ECO:0000305};\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -236,7 +236,7 @@ class CcLineSeqCautionCommentParserTest {
         SequenceCautionComment comment = (SequenceCautionComment) comments.get(0);
         assertEquals("CAA39814.1", comment.getSequence());
         assertEquals(
-                org.uniprot.core.uniprot.comment.SequenceCautionType.FRAMESHIFT,
+                org.uniprot.core.uniprotkb.comment.SequenceCautionType.FRAMESHIFT,
                 comment.getSequenceCautionType());
     }
 }

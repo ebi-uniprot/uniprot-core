@@ -8,14 +8,14 @@ import org.uniprot.core.PositionModifier;
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
 import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.feature.AlternativeSequence;
-import org.uniprot.core.uniprot.feature.Feature;
-import org.uniprot.core.uniprot.feature.FeatureDatabase;
-import org.uniprot.core.uniprot.feature.FeatureLocation;
-import org.uniprot.core.uniprot.feature.FeatureType;
-import org.uniprot.core.uniprot.feature.impl.AlternativeSequenceBuilder;
-import org.uniprot.core.uniprot.feature.impl.FeatureBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
+import org.uniprot.core.uniprotkb.feature.Feature;
+import org.uniprot.core.uniprotkb.feature.FeatureDatabase;
+import org.uniprot.core.uniprotkb.feature.FeatureLocation;
+import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
+import org.uniprot.core.uniprotkb.feature.impl.FeatureBuilder;
 
 import com.google.common.base.Strings;
 

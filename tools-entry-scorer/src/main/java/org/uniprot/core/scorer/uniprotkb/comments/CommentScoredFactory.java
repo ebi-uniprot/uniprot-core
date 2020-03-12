@@ -2,8 +2,8 @@ package org.uniprot.core.scorer.uniprotkb.comments;
 
 import java.util.List;
 
-import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprotkb.comment.*;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 
 public class CommentScoredFactory {
     public static CommentScored create(Comment t) {

@@ -1,7 +1,7 @@
 package org.uniprot.core.json.parser;
 
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.uniprot.comment.Comment;
+import org.uniprot.core.uniprotkb.comment.Comment;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.JavaType;

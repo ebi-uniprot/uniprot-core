@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
-import org.uniprot.core.uniprot.comment.APEventType;
-import org.uniprot.core.uniprot.comment.APIsoform;
-import org.uniprot.core.uniprot.comment.AlternativeProductsComment;
-import org.uniprot.core.uniprot.comment.Note;
+import org.uniprot.core.uniprotkb.comment.APEventType;
+import org.uniprot.core.uniprotkb.comment.APIsoform;
+import org.uniprot.core.uniprotkb.comment.AlternativeProductsComment;
+import org.uniprot.core.uniprotkb.comment.Note;
 
 /**
  * @author jieluo CC -!- ALTERNATIVE PRODUCTS: |CC Event=Alternative splicing; Named isoforms=3; |CC

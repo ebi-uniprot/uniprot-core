@@ -13,14 +13,14 @@ import org.uniprot.core.citation.impl.BookBuilder;
 import org.uniprot.core.citation.impl.JournalArticleBuilder;
 import org.uniprot.core.citation.impl.SubmissionBuilder;
 import org.uniprot.core.impl.CrossReferenceBuilder;
-import org.uniprot.core.uniprot.ReferenceComment;
-import org.uniprot.core.uniprot.ReferenceCommentType;
-import org.uniprot.core.uniprot.UniProtReference;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidenceCode;
-import org.uniprot.core.uniprot.evidence.impl.EvidenceBuilder;
-import org.uniprot.core.uniprot.impl.ReferenceCommentBuilder;
-import org.uniprot.core.uniprot.impl.UniProtReferenceBuilder;
+import org.uniprot.core.uniprotkb.ReferenceComment;
+import org.uniprot.core.uniprotkb.ReferenceCommentType;
+import org.uniprot.core.uniprotkb.UniProtkbReference;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
+import org.uniprot.core.uniprotkb.impl.ReferenceCommentBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtkbReferenceBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.ReferenceType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
@@ -36,23 +36,23 @@ class ReferenceConverterTest {
         List<ReferenceComment> refComments = new ArrayList<>();
         refComments.add(createReferenceComment(ReferenceCommentType.STRAIN, "S1", evidences));
         refComments.add(createReferenceComment(ReferenceCommentType.TISSUE, "S11", evidences));
-        UniProtReference uniReference =
+        UniProtkbReference uniReference =
                 createUniProtReference(
                         submission, referencePositions, refComments, Collections.emptyList());
         ReferenceConverter converter = new ReferenceConverter(new EvidenceIndexMapper());
         ReferenceType xmlReference = converter.toXml(uniReference);
         System.out.println(
                 UniProtXmlTestHelper.toXmlString(xmlReference, ReferenceType.class, "reference"));
-        UniProtReference converted = converter.fromXml(xmlReference);
+        UniProtkbReference converted = converter.fromXml(xmlReference);
         assertEquals(uniReference, converted);
     }
 
-    private UniProtReference createUniProtReference(
+    private UniProtkbReference createUniProtReference(
             Citation citation,
             List<String> referencePositions,
             List<ReferenceComment> refComments,
             List<Evidence> evidences) {
-        return new UniProtReferenceBuilder()
+        return new UniProtkbReferenceBuilder()
                 .referenceCommentsSet(refComments)
                 .citation(citation)
                 .referencePositionsSet(referencePositions)
@@ -78,13 +78,13 @@ class ReferenceConverterTest {
         List<ReferenceComment> refComments = new ArrayList<>();
         refComments.add(createReferenceComment(ReferenceCommentType.STRAIN, "S1", evidences));
         refComments.add(createReferenceComment(ReferenceCommentType.TISSUE, "S11", evidences));
-        UniProtReference uniReference =
+        UniProtkbReference uniReference =
                 createUniProtReference(citation, referencePositions, refComments, evidences);
         ReferenceConverter converter = new ReferenceConverter(new EvidenceIndexMapper());
         ReferenceType xmlReference = converter.toXml(uniReference);
         System.out.println(
                 UniProtXmlTestHelper.toXmlString(xmlReference, ReferenceType.class, "reference"));
-        UniProtReference converted = converter.fromXml(xmlReference);
+        UniProtkbReference converted = converter.fromXml(xmlReference);
         assertEquals(uniReference, converted);
     }
 
@@ -99,13 +99,13 @@ class ReferenceConverterTest {
         //				createReferenceComment(ReferenceCommentType.STRAIN, "S1", evidences));
         //		refComments.add(
         //				createReferenceComment(ReferenceCommentType.TISSUE, "S11", evidences));
-        UniProtReference uniReference =
+        UniProtkbReference uniReference =
                 createUniProtReference(citation, referencePositions, refComments, evidences);
         ReferenceConverter converter = new ReferenceConverter(new EvidenceIndexMapper());
         ReferenceType xmlReference = converter.toXml(uniReference);
         System.out.println(
                 UniProtXmlTestHelper.toXmlString(xmlReference, ReferenceType.class, "reference"));
-        UniProtReference converted = converter.fromXml(xmlReference);
+        UniProtkbReference converted = converter.fromXml(xmlReference);
         assertEquals(uniReference, converted);
     }
 

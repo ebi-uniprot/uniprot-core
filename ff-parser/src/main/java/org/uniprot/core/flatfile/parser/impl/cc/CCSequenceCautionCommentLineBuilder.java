@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.uniprot.core.flatfile.writer.impl.LineBuilderHelper;
-import org.uniprot.core.uniprot.comment.SequenceCautionComment;
+import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
 
 import com.google.common.base.Strings;
 

@@ -5,11 +5,11 @@ import java.util.List;
 import org.uniprot.core.scorer.uniprotkb.Consensus;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
-import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
-import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprotkb.xdb.UniProtkbCrossReference;
 
 public class EmblScored implements HasScore {
-    List<UniProtCrossReference> uniProtCrossReferences;
+    List<UniProtkbCrossReference> uniProtkbCrossReferences;
     private boolean isEmblSequenceDone = false;
     private boolean isEmblDone = false;
     private boolean isEmblNotAnnotatedCDSDone = false;
@@ -17,21 +17,21 @@ public class EmblScored implements HasScore {
     private final List<EvidenceDatabase> evidenceDatabases;
 
     public EmblScored(
-            List<UniProtCrossReference> uniProtCrossReferences,
+            List<UniProtkbCrossReference> uniProtkbCrossReferences,
             List<EvidenceDatabase> evidenceDatabases) {
-        this.uniProtCrossReferences = uniProtCrossReferences;
+        this.uniProtkbCrossReferences = uniProtkbCrossReferences;
         this.evidenceDatabases = evidenceDatabases;
     }
 
-    public EmblScored(List<UniProtCrossReference> uniProtCrossReferences) {
-        this(uniProtCrossReferences, null);
+    public EmblScored(List<UniProtkbCrossReference> uniProtkbCrossReferences) {
+        this(uniProtkbCrossReferences, null);
     }
 
     @Override
     public double score() {
 
         double score = 0;
-        for (UniProtCrossReference xref : uniProtCrossReferences) {
+        for (UniProtkbCrossReference xref : uniProtkbCrossReferences) {
             if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceDatabases)) {
                 String status = xref.getProperties().get(1).getValue();
                 if (status.equals("NOT_ANNOTATED_CDS")) {

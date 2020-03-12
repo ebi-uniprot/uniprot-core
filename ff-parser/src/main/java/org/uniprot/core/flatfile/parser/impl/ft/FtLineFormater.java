@@ -1,7 +1,7 @@
 package org.uniprot.core.flatfile.parser.impl.ft;
 
 import org.uniprot.core.flatfile.parser.LineFormater;
-import org.uniprot.core.uniprot.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.FeatureType;
 
 public class FtLineFormater implements LineFormater {
     private static final String OTHER_LINE_PREFIX = "FT                   ";

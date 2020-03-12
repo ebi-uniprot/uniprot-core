@@ -10,10 +10,10 @@ import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.MassSpectrometry;
-import org.uniprot.core.uniprot.comment.Comment;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.comment.Comment;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.MassSpectrometryComment;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 class CcMSConverterTest {
     private final CcLineConverter converter = new CcLineConverter(null, null);

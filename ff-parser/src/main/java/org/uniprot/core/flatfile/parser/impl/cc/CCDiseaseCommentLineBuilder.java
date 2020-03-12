@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
-import org.uniprot.core.uniprot.comment.Disease;
-import org.uniprot.core.uniprot.comment.DiseaseComment;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.comment.Disease;
+import org.uniprot.core.uniprotkb.comment.DiseaseComment;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
 public class CCDiseaseCommentLineBuilder extends CCLineBuilderAbstr<DiseaseComment> {
 

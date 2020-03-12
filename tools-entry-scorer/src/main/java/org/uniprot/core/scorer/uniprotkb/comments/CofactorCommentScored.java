@@ -6,9 +6,9 @@ import java.util.List;
 
 import org.uniprot.core.scorer.uniprotkb.ScoreStatus;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
-import org.uniprot.core.uniprot.comment.Cofactor;
-import org.uniprot.core.uniprot.comment.CofactorComment;
-import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprotkb.comment.Cofactor;
+import org.uniprot.core.uniprotkb.comment.CofactorComment;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 15:05:15 To change this template

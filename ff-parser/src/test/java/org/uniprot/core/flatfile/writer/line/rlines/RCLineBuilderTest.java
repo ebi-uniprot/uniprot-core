@@ -8,10 +8,10 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.rc.RCLineBuilder;
-import org.uniprot.core.uniprot.ReferenceComment;
-import org.uniprot.core.uniprot.ReferenceCommentType;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.impl.ReferenceCommentBuilder;
+import org.uniprot.core.uniprotkb.ReferenceComment;
+import org.uniprot.core.uniprotkb.ReferenceCommentType;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.impl.ReferenceCommentBuilder;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
 class RCLineBuilderTest {

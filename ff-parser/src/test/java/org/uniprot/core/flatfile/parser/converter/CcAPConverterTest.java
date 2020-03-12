@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.*;
-import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprotkb.comment.*;
 
 class CcAPConverterTest {
     private final CcLineConverter converter = new CcLineConverter(null, null);

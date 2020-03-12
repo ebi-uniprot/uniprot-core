@@ -4,10 +4,10 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidenceCode;
-import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
-import org.uniprot.core.uniprot.evidence.HasEvidences;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprotkb.evidence.HasEvidences;
 
 public class ScoreUtil {
     public static ScoreStatus getScoreStatus(Collection<ScoreStatus> types) {

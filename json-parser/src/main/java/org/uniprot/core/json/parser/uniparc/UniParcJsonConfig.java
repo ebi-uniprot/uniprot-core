@@ -20,8 +20,8 @@ import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniparc.impl.*;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceImpl;
-import org.uniprot.core.uniprot.taxonomy.Taxonomy;
-import org.uniprot.core.uniprot.taxonomy.impl.TaxonomyImpl;
+import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
+import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyImpl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;

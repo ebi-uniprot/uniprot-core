@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.OrganismNameLineParser;
 import org.uniprot.core.flatfile.parser.impl.os.OSLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
-import org.uniprot.core.uniprot.taxonomy.Organism;
-import org.uniprot.core.uniprot.taxonomy.OrganismName;
-import org.uniprot.core.uniprot.taxonomy.impl.OrganismBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
 class OSLineBuildTest {
     private OSLineBuilder builder = new OSLineBuilder();

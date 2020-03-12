@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.impl.*;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.comment.*;
+import org.uniprot.core.uniprotkb.comment.impl.*;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
 public class BPCPCommentTransformer implements CommentTransformer<BPCPComment> {
     private static final String VMAX = "Vmax=";

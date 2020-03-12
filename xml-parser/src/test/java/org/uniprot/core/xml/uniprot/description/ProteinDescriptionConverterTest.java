@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.description.*;
-import org.uniprot.core.uniprot.description.impl.ProteinDescriptionBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.description.*;
+import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.ProteinType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;

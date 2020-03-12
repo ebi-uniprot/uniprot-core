@@ -8,8 +8,8 @@ import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniProtEntryIterator;
-import org.uniprot.core.uniprot.UniProtEntry;
-import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprotkb.UniProtkbEntry;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 
 import com.google.common.base.Strings;
 
@@ -196,7 +196,7 @@ public class UniProtEntryScorer {
 
     public UniProtEntryScorer startUp() throws IOException {
         if (itState != state.CREATED)
-            throw new IllegalStateException("You can only start a new UniProtEntry Scorer");
+            throw new IllegalStateException("You can only start a new UniProtkbEntry Scorer");
         if (withTaxId)
             writer.write(
                     "accession, taxonomy, description, gene, comment, xref, goxref, keyword , feature, citation, total");
@@ -226,14 +226,14 @@ public class UniProtEntryScorer {
         return this;
     }
 
-    public void scoreEntries(Iterator<UniProtEntry> is) throws IOException {
+    public void scoreEntries(Iterator<UniProtkbEntry> is) throws IOException {
         if (itState != state.STARTED)
             throw new IllegalStateException("You need to start the scorer before scoring entries");
         int counter = 0;
 
         while (is.hasNext()) {
             try {
-                UniProtEntry entry = is.next();
+                UniProtkbEntry entry = is.next();
                 if (entry == null) continue;
                 EntryScore scored =
                         new UniProtEntryScored(entry, evidenceDatabases).getEntryScore();
@@ -257,7 +257,7 @@ public class UniProtEntryScorer {
         writer.flush();
     }
 
-    public synchronized void scoreEntry(UniProtEntry entry) throws IOException {
+    public synchronized void scoreEntry(UniProtkbEntry entry) throws IOException {
         if (itState != state.STARTED)
             throw new IllegalStateException("You need to start the scorer before scoring entries");
         UniProtEntryScored entryScored = new UniProtEntryScored(entry);

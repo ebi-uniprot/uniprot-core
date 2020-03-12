@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import org.uniprot.core.flatfile.parser.HasEvidence;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 public class EvidenceCollector implements HasEvidence {
     private Collection<Evidence> evidences = new HashSet<>();

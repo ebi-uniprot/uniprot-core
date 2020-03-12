@@ -2,9 +2,9 @@ package org.uniprot.core.xml.uniprot.description;
 
 import java.util.List;
 
-import org.uniprot.core.uniprot.description.EC;
-import org.uniprot.core.uniprot.description.impl.ECBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.description.EC;
+import org.uniprot.core.uniprotkb.description.impl.ECBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;

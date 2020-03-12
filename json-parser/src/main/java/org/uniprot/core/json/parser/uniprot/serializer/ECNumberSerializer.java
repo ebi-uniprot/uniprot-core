@@ -3,10 +3,10 @@ package org.uniprot.core.json.parser.uniprot.serializer;
 import java.io.IOException;
 
 import org.uniprot.core.impl.ECNumberImpl;
-import org.uniprot.core.uniprot.description.EC;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
-import org.uniprot.core.uniprot.evidence.impl.EvidencedValueBuilder;
-import org.uniprot.core.uniprot.evidence.impl.EvidencedValueImpl;
+import org.uniprot.core.uniprotkb.description.EC;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueImpl;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;

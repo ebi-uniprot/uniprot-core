@@ -11,8 +11,8 @@ import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
-import org.uniprot.core.uniprot.GeneEncodingType;
-import org.uniprot.core.uniprot.GeneLocation;
+import org.uniprot.core.uniprotkb.GeneEncodingType;
+import org.uniprot.core.uniprotkb.GeneLocation;
 
 public class OGLineBuilder extends FFLineBuilderAbstr<List<GeneLocation>>
         implements FFLineBuilder<List<GeneLocation>> {

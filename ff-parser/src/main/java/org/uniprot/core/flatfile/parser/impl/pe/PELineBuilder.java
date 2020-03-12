@@ -9,7 +9,7 @@ import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
-import org.uniprot.core.uniprot.ProteinExistence;
+import org.uniprot.core.uniprotkb.ProteinExistence;
 
 public class PELineBuilder extends FFLineBuilderAbstr<ProteinExistence> {
     public PELineBuilder() {

@@ -4,8 +4,8 @@ import org.antlr.v4.runtime.misc.NotNull;
 import org.uniprot.core.flatfile.antlr.UniprotParser;
 import org.uniprot.core.flatfile.antlr.UniprotParserBaseListener;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.ac.AcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject;
@@ -41,7 +41,8 @@ public class EntryModelListener extends UniprotParserBaseListener
 
     private EntryObject object;
     private EntryObject.ReferenceObject ref;
-    private DefaultUniprotLineParserFactory parserFactory = new DefaultUniprotLineParserFactory();
+    private DefaultUniprotkbLineParserFactory parserFactory =
+            new DefaultUniprotkbLineParserFactory();
 
     @Override
     public void enterEntry(@NotNull UniprotParser.EntryContext ctx) {
@@ -49,7 +50,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableKw = true;
-    private UniprotLineParser<KwLineObject> kwLineParser = parserFactory.createKwLineParser();
+    private UniprotkbLineParser<KwLineObject> kwLineParser = parserFactory.createKwLineParser();
 
     @Override
     public void exitKw(@NotNull UniprotParser.KwContext ctx) {
@@ -60,7 +61,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableDt = true;
-    private UniprotLineParser<DtLineObject> dtLineParser = parserFactory.createDtLineParser();
+    private UniprotkbLineParser<DtLineObject> dtLineParser = parserFactory.createDtLineParser();
 
     @Override
     public void exitDt(@NotNull UniprotParser.DtContext ctx) {
@@ -71,7 +72,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableRp = true;
-    private UniprotLineParser<RpLineObject> rpLineParser = parserFactory.createRpLineParser();
+    private UniprotkbLineParser<RpLineObject> rpLineParser = parserFactory.createRpLineParser();
 
     @Override
     public void exitRp(@NotNull UniprotParser.RpContext ctx) {
@@ -82,7 +83,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableOs = true;
-    private UniprotLineParser<OsLineObject> osLIneParser = parserFactory.createOsLineParser();
+    private UniprotkbLineParser<OsLineObject> osLIneParser = parserFactory.createOsLineParser();
 
     @Override
     public void exitOs(@NotNull UniprotParser.OsContext ctx) {
@@ -93,7 +94,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableRn = true;
-    private UniprotLineParser<RnLineObject> rnLineParser = parserFactory.createRnLineParser();
+    private UniprotkbLineParser<RnLineObject> rnLineParser = parserFactory.createRnLineParser();
 
     @Override
     public void exitRn(@NotNull UniprotParser.RnContext ctx) {
@@ -104,7 +105,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableRl = true;
-    private UniprotLineParser<RlLineObject> rlLineParser = parserFactory.createRlLineParser();
+    private UniprotkbLineParser<RlLineObject> rlLineParser = parserFactory.createRlLineParser();
 
     @Override
     public void exitRl(@NotNull UniprotParser.RlContext ctx) {
@@ -115,7 +116,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableSq = true;
-    private UniprotLineParser<SqLineObject> seLineParser = parserFactory.createSqLineParser();
+    private UniprotkbLineParser<SqLineObject> seLineParser = parserFactory.createSqLineParser();
 
     @Override
     public void exitSq(@NotNull UniprotParser.SqContext ctx) {
@@ -126,7 +127,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableRg = true;
-    private UniprotLineParser<RgLineObject> rgLineParser = parserFactory.createRgLineParser();
+    private UniprotkbLineParser<RgLineObject> rgLineParser = parserFactory.createRgLineParser();
 
     @Override
     public void exitRg(@NotNull UniprotParser.RgContext ctx) {
@@ -137,7 +138,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableOx = true;
-    private UniprotLineParser<OxLineObject> oxLineParser = parserFactory.createOxLineParser();
+    private UniprotkbLineParser<OxLineObject> oxLineParser = parserFactory.createOxLineParser();
 
     @Override
     public void exitOx(@NotNull UniprotParser.OxContext ctx) {
@@ -148,7 +149,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableRc = true;
-    private UniprotLineParser<RcLineObject> rcLineParser = parserFactory.createRcLineParser();
+    private UniprotkbLineParser<RcLineObject> rcLineParser = parserFactory.createRcLineParser();
 
     @Override
     public void exitRc(@NotNull UniprotParser.RcContext ctx) {
@@ -176,7 +177,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableId = true;
-    private UniprotLineParser<IdLineObject> idLineParser = parserFactory.createIdLineParser();
+    private UniprotkbLineParser<IdLineObject> idLineParser = parserFactory.createIdLineParser();
 
     @Override
     public void exitId(@NotNull UniprotParser.IdContext ctx) {
@@ -187,7 +188,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableDe = true;
-    private UniprotLineParser<DeLineObject> deLineParser = parserFactory.createDeLineParser();
+    private UniprotkbLineParser<DeLineObject> deLineParser = parserFactory.createDeLineParser();
 
     @Override
     public void exitDe(@NotNull UniprotParser.DeContext ctx) {
@@ -198,7 +199,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableGn = true;
-    private UniprotLineParser<GnLineObject> gnLineParser = parserFactory.createGnLineParser();
+    private UniprotkbLineParser<GnLineObject> gnLineParser = parserFactory.createGnLineParser();
 
     @Override
     public void exitGn(@NotNull UniprotParser.GnContext ctx) {
@@ -209,7 +210,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableRa = true;
-    private UniprotLineParser<RaLineObject> raLineParser = parserFactory.createRaLineParser();
+    private UniprotkbLineParser<RaLineObject> raLineParser = parserFactory.createRaLineParser();
 
     @Override
     public void exitRa(@NotNull UniprotParser.RaContext ctx) {
@@ -220,7 +221,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enablePe = true;
-    UniprotLineParser<PeLineObject> peLineParser = parserFactory.createPeLineParser();
+    UniprotkbLineParser<PeLineObject> peLineParser = parserFactory.createPeLineParser();
 
     @Override
     public void exitPe(@NotNull UniprotParser.PeContext ctx) {
@@ -231,7 +232,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableOc = true;
-    private UniprotLineParser<OcLineObject> ocLineParser = parserFactory.createOcLineParser();
+    private UniprotkbLineParser<OcLineObject> ocLineParser = parserFactory.createOcLineParser();
 
     @Override
     public void exitOc(@NotNull UniprotParser.OcContext ctx) {
@@ -242,7 +243,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableAc = true;
-    private UniprotLineParser<AcLineObject> acLineParser = parserFactory.createAcLineParser();
+    private UniprotkbLineParser<AcLineObject> acLineParser = parserFactory.createAcLineParser();
 
     @Override
     public void exitAc(@NotNull UniprotParser.AcContext ctx) {
@@ -253,7 +254,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableRt = true;
-    private UniprotLineParser<RtLineObject> rtLineParser = parserFactory.createRtLineParser();
+    private UniprotkbLineParser<RtLineObject> rtLineParser = parserFactory.createRtLineParser();
 
     @Override
     public void exitRt(@NotNull UniprotParser.RtContext ctx) {
@@ -264,7 +265,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableFt = true;
-    private UniprotLineParser<FtLineObject> ftLineParser = parserFactory.createFtLineParser();
+    private UniprotkbLineParser<FtLineObject> ftLineParser = parserFactory.createFtLineParser();
 
     @Override
     public void exitFt(@NotNull UniprotParser.FtContext ctx) {
@@ -275,7 +276,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableRx = true;
-    private UniprotLineParser<RxLineObject> rxLineParser = parserFactory.createRxLineParser();
+    private UniprotkbLineParser<RxLineObject> rxLineParser = parserFactory.createRxLineParser();
 
     @Override
     public void exitRx(@NotNull UniprotParser.RxContext ctx) {
@@ -286,7 +287,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableCc = true;
-    private UniprotLineParser<CcLineObject> ccLineParser = parserFactory.createCcLineParser();
+    private UniprotkbLineParser<CcLineObject> ccLineParser = parserFactory.createCcLineParser();
 
     @Override
     public void exitCc(@NotNull UniprotParser.CcContext ctx) {
@@ -297,7 +298,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableOg = true;
-    private UniprotLineParser<OgLineObject> ogLineParser = parserFactory.createOgLineParser();
+    private UniprotkbLineParser<OgLineObject> ogLineParser = parserFactory.createOgLineParser();
 
     @Override
     public void exitOg(@NotNull UniprotParser.OgContext ctx) {
@@ -308,7 +309,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableDr = true;
-    private UniprotLineParser<DrLineObject> drLineParser = parserFactory.createDrLineParser();
+    private UniprotkbLineParser<DrLineObject> drLineParser = parserFactory.createDrLineParser();
 
     @Override
     public void exitDr(@NotNull UniprotParser.DrContext ctx) {
@@ -319,7 +320,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableOh = true;
-    private UniprotLineParser<OhLineObject> ohLIneParser = parserFactory.createOhLineParser();
+    private UniprotkbLineParser<OhLineObject> ohLIneParser = parserFactory.createOhLineParser();
 
     @Override
     public void exitOh(@NotNull UniprotParser.OhContext ctx) {
@@ -330,7 +331,7 @@ public class EntryModelListener extends UniprotParserBaseListener
     }
 
     private boolean enableSs = true;
-    private UniprotLineParser<SsLineObject> ssLineParser = parserFactory.createSsLineParser();
+    private UniprotkbLineParser<SsLineObject> ssLineParser = parserFactory.createSsLineParser();
 
     @Override
     public void exitSs(@NotNull UniprotParser.SsContext ctx) {

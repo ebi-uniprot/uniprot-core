@@ -3,7 +3,7 @@ package org.uniprot.core.parser.tsv.uniprot;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.uniprot.taxonomy.OrganismHost;
+import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 
 public class EntryOrganismHostMap implements NamedValueMap {
     public static final List<String> FIELDS = Arrays.asList("organism_host");

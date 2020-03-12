@@ -8,8 +8,8 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
@@ -26,8 +26,8 @@ class CcLineTextCommentParserTest {
                         + "CC   -!- CAUTION: Exons 1a and 1b of the sequence reported in\n"
                         + "CC       PubMed:17180578 are of human origin, however exon 2 shows strong\n"
                         + "CC       similarity to the rat sequence.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(2, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -64,8 +64,8 @@ class CcLineTextCommentParserTest {
     void testDotInSide() {
         String lines = "CC   -!- SUBUNIT: Interacts with daf-16 and sir-2.1.\n";
 
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -85,8 +85,8 @@ class CcLineTextCommentParserTest {
         String lines =
                 "CC   -!- SUBUNIT: Interacts (via OIR domain) with ORC1 (via BAH domain).\n"
                         + "CC       Interacts with SIR4. Interacts with CAC1.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -108,8 +108,8 @@ class CcLineTextCommentParserTest {
         String lines =
                 "CC   -!- FUNCTION: May play a cri{tical role in virion formation. Essential\n"
                         + "CC       fo}r {virus} replication in vitro. {ECO:0000313|PDB:3OW2}.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -130,8 +130,8 @@ class CcLineTextCommentParserTest {
                 "CC   -!- FUNCTION: May play a cri{tical role in virion formation. Essential\n"
                         + "CC       fo}r {virus} replication in vitro.\n"
                         + "CC       {ECO:0000313|PDB:3OW2}.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -151,8 +151,8 @@ class CcLineTextCommentParserTest {
         String lines =
                 "CC   -!- PATHWAY: Amino-acid biosynthesis; L-arginine biosynthesis; L-\n"
                         + "CC       arginine from L-ornithine and carbamoyl phosphate: step 2/3.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -172,8 +172,8 @@ class CcLineTextCommentParserTest {
         String lines =
                 "CC   -!- FUNCTION: Transfers the 4'-phosphopantetheine moiety from coenzyme\n"
                         + "CC       A to a Ser of acyl-carrier protein (By similarity).\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -193,8 +193,8 @@ class CcLineTextCommentParserTest {
         String lines =
                 "CC   -!- FUNCTION: Transfers the 4'-phosphopantetheine moiety from coenzyme\n"
                         + "CC       A to a Ser of acyl-carrier protein. {ECO:0000006|PubMed:20858735, ECO:0000006}.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -224,8 +224,8 @@ class CcLineTextCommentParserTest {
                         + "CC   -!- MISCELLANEOUS: Strongly immunoreactive, inducing both humoral and\n"
                         + "CC       cellular immune responses in hosts during the course of infection.\n"
                         + "CC   -!- SIMILARITY: Belongs to the BA14k family.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(5, obj.getCcs().size());
     }
@@ -238,8 +238,8 @@ class CcLineTextCommentParserTest {
                         + "CC       5-carboxyamino-1-(5-phospho-D-ribosyl)imidazole =\n"
                         + "CC       5-amino-1-(5-phospho-D-ribosyl)imidazole-4-carboxylate.\n"
                         + "CC       {ECO:0000256|PIRNR:PIRNR001338}.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -264,8 +264,8 @@ class CcLineTextCommentParserTest {
                         + "CC       five residues are hydrolyzed (such as succinyl-Leu-Tyr-|-NHMec;\n"
                         + "CC       and Leu-Tyr-Leu-|-Tyr-Trp, in which cleavage of the -Tyr-|-Leu-\n"
                         + "CC       and -Tyr-|-Trp bonds also occurs).\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -291,8 +291,8 @@ class CcLineTextCommentParserTest {
         String lines =
                 "CC   -!- SIMILARITY: Contains 1 MIT domain. {ECO:0000255|HAMAP-\n"
                         + "CC       Rule:MF_03021}.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -312,8 +312,8 @@ class CcLineTextCommentParserTest {
         String ccLineString =
                 "FUNCTION: Transfers the 4'-phosphopantetheine moiety from coenzyme\n"
                         + "A to a Ser of acyl-carrier protein. {ECO:0000006|PubMed:20858735, ECO:0000006}.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineFormater formater = new CcLineFormater();
         String lines = formater.format(ccLineString);
         CcLineObject obj = parser.parse(lines);
@@ -340,8 +340,8 @@ class CcLineTextCommentParserTest {
                         + "five residues are hydrolyzed (such as succinyl-Leu-Tyr-|-NHMec;\n"
                         + "and Leu-Tyr-Leu-|-Tyr-Trp, in which cleavage of the -Tyr-|-Leu-\n"
                         + "and -Tyr-|-Trp bonds also occurs).\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineFormater formater = new CcLineFormater();
         String lines = formater.format(ccLineString);
         CcLineObject obj = parser.parse(lines);
@@ -370,8 +370,8 @@ class CcLineTextCommentParserTest {
                 "SIMILARITY: Contains 1 MIT domain. {ECO:0000255|HAMAP-\n" + "Rule:MF_03021}.";
         CcLineFormater formater = new CcLineFormater();
         String lines = formater.format(ccLineString);
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -391,8 +391,8 @@ class CcLineTextCommentParserTest {
         String ccLineString =
                 "FUNCTION: This enzyme is necessary for target cell lysis in cell-mediated immune responses. It cleaves after Lys or Arg. May be involved in apoptosis.\n"
                         + "CAUTION: Exons 1a and 1b of the sequence reported in PubMed:17180578 are of human origin, however exon 2 shows strong similarity to the rat sequence.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineFormater formater = new CcLineFormater();
         String lines = formater.format(ccLineString);
         CcLineObject obj = parser.parse(lines);

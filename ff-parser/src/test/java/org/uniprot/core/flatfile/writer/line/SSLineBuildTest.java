@@ -12,15 +12,15 @@ import org.uniprot.core.flatfile.parser.impl.ss.SSInternalLineBuilder;
 import org.uniprot.core.flatfile.parser.impl.ss.SSLineBuilder;
 import org.uniprot.core.flatfile.parser.impl.ss.SSSourceLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
-import org.uniprot.core.uniprot.InternalLine;
-import org.uniprot.core.uniprot.InternalLineType;
-import org.uniprot.core.uniprot.InternalSection;
-import org.uniprot.core.uniprot.SourceLine;
-import org.uniprot.core.uniprot.evidence.EvidenceLine;
-import org.uniprot.core.uniprot.evidence.impl.EvidenceLineBuilder;
-import org.uniprot.core.uniprot.impl.InternalLineBuilder;
-import org.uniprot.core.uniprot.impl.InternalSectionBuilder;
-import org.uniprot.core.uniprot.impl.SourceLineBuilder;
+import org.uniprot.core.uniprotkb.InternalLine;
+import org.uniprot.core.uniprotkb.InternalLineType;
+import org.uniprot.core.uniprotkb.InternalSection;
+import org.uniprot.core.uniprotkb.SourceLine;
+import org.uniprot.core.uniprotkb.evidence.EvidenceLine;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidenceLineBuilder;
+import org.uniprot.core.uniprotkb.impl.InternalLineBuilder;
+import org.uniprot.core.uniprotkb.impl.InternalSectionBuilder;
+import org.uniprot.core.uniprotkb.impl.SourceLineBuilder;
 
 class SSLineBuildTest {
     @Test

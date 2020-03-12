@@ -10,10 +10,10 @@ import java.util.stream.Collectors;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.flatfile.writer.impl.FFLineConstant;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
-import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
-import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
-import org.uniprot.core.uniprot.comment.Reaction;
-import org.uniprot.core.uniprot.comment.ReactionDatabase;
+import org.uniprot.core.uniprotkb.comment.CatalyticActivityComment;
+import org.uniprot.core.uniprotkb.comment.PhysiologicalReaction;
+import org.uniprot.core.uniprotkb.comment.Reaction;
+import org.uniprot.core.uniprotkb.comment.ReactionDatabase;
 
 public class CatalyticActivityCCLineBuilder extends CCLineBuilderAbstr<CatalyticActivityComment> {
     private static final String EVIDENCE = "Evidence=";

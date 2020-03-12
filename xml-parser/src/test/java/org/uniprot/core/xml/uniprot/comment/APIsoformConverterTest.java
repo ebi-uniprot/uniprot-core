@@ -9,12 +9,12 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.comment.APIsoform;
-import org.uniprot.core.uniprot.comment.IsoformName;
-import org.uniprot.core.uniprot.comment.IsoformSequenceStatus;
-import org.uniprot.core.uniprot.comment.impl.APIsoformBuilder;
-import org.uniprot.core.uniprot.comment.impl.IsoformNameBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.comment.APIsoform;
+import org.uniprot.core.uniprotkb.comment.IsoformName;
+import org.uniprot.core.uniprotkb.comment.IsoformSequenceStatus;
+import org.uniprot.core.uniprotkb.comment.impl.APIsoformBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.IsoformNameBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.xml.jaxb.uniprot.IsoformType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;

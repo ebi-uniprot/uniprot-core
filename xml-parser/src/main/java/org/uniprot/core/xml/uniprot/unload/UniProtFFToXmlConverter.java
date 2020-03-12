@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.uniprot.core.flatfile.parser.UniProtParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniProtParser;
 import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
-import org.uniprot.core.uniprot.UniProtEntry;
+import org.uniprot.core.uniprotkb.UniProtkbEntry;
 import org.uniprot.core.xml.jaxb.uniprot.Entry;
 import org.uniprot.core.xml.uniprot.UniProtEntryConverter;
 
@@ -30,7 +30,7 @@ public class UniProtFFToXmlConverter implements Function<String, Entry> {
 
     @Override
     public Entry apply(String t) {
-        UniProtEntry uniprotEntry = ffParser.parse(t);
+        UniProtkbEntry uniprotEntry = ffParser.parse(t);
         if (uniprotEntry != null) return xmlConverter.toXml(uniprotEntry);
         else return null;
     }

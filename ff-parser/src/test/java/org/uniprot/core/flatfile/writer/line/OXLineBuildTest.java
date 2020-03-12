@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ox.OXLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
-import org.uniprot.core.uniprot.taxonomy.Organism;
-import org.uniprot.core.uniprot.taxonomy.impl.OrganismBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
 class OXLineBuildTest {
     private OXLineBuilder builder = new OXLineBuilder();

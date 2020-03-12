@@ -3,7 +3,7 @@ package org.uniprot.core.parser.tsv.uniprot;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.uniprot.description.*;
+import org.uniprot.core.uniprotkb.description.*;
 
 public class EntryProteinMap implements NamedValueMap {
     private static final String EC2 = "EC";

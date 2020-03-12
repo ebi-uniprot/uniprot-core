@@ -12,9 +12,9 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.flatfile.parser.impl.kw.KWLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
-import org.uniprot.core.uniprot.Keyword;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.impl.KeywordBuilder;
+import org.uniprot.core.uniprotkb.Keyword;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.impl.KeywordBuilder;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
 class KWLineBuildTest {

@@ -10,8 +10,8 @@ import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidenceLine;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidenceLine;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
 public class SSEvidenceLineBuilder extends FFLineBuilderAbstr<List<EvidenceLine>> {

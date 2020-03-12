@@ -1,7 +1,7 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import org.uniprot.core.uniprot.comment.BPCPComment;
-import org.uniprot.core.uniprot.comment.impl.BPCPCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.BPCPComment;
+import org.uniprot.core.uniprotkb.comment.impl.BPCPCommentBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;

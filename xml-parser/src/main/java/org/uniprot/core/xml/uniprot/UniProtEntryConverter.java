@@ -8,18 +8,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.uniprot.EntryAudit;
-import org.uniprot.core.uniprot.ProteinExistence;
-import org.uniprot.core.uniprot.UniProtEntry;
-import org.uniprot.core.uniprot.UniProtEntryType;
-import org.uniprot.core.uniprot.UniProtReference;
-import org.uniprot.core.uniprot.comment.Comment;
-import org.uniprot.core.uniprot.comment.InteractionComment;
-import org.uniprot.core.uniprot.description.ProteinDescription;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.impl.EntryAuditBuilder;
-import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
-import org.uniprot.core.uniprot.impl.UniProtEntryBuilder;
+import org.uniprot.core.uniprotkb.*;
+import org.uniprot.core.uniprotkb.UniProtkbEntry;
+import org.uniprot.core.uniprotkb.comment.Comment;
+import org.uniprot.core.uniprotkb.comment.InteractionComment;
+import org.uniprot.core.uniprotkb.description.ProteinDescription;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.impl.EntryAuditBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtkbAccessionBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtkbEntryBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.Entry;
 import org.uniprot.core.xml.jaxb.uniprot.EvidenceType;
@@ -31,7 +28,7 @@ import org.uniprot.core.xml.uniprot.citation.ReferenceConverter;
 import org.uniprot.core.xml.uniprot.comment.CommentConverterFactory;
 import org.uniprot.core.xml.uniprot.description.ProteinDescriptionConverter;
 
-public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
+public class UniProtEntryConverter implements Converter<Entry, UniProtkbEntry> {
     private static final String INTERACTION = "interaction";
     private EvidenceIndexMapper evRefMapper;
     private ObjectFactory xmlUniprotFactory;
@@ -70,10 +67,10 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
     }
 
     @Override
-    public UniProtEntry fromXml(Entry xmlEntry) {
+    public UniProtkbEntry fromXml(Entry xmlEntry) {
         Map<Evidence, Integer> evidenceIdMap = fromXmlForEvidences(xmlEntry);
         evRefMapper.reset(evidenceIdMap);
-        UniProtEntryBuilder activeEntryBuilder = createUniprotEntryBuilderFromXml(xmlEntry);
+        UniProtkbEntryBuilder activeEntryBuilder = createUniprotEntryBuilderFromXml(xmlEntry);
         activeEntryBuilder.organism(organismConverter.fromXml(xmlEntry.getOrganism()));
         if (!xmlEntry.getOrganismHost().isEmpty()) {
             activeEntryBuilder.organismHostsSet(
@@ -116,7 +113,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
     }
 
     @Override
-    public Entry toXml(UniProtEntry entry) {
+    public Entry toXml(UniProtkbEntry entry) {
         evRefMapper.reset(getEvidences(entry));
         Entry xmlEntry = xmlUniprotFactory.createEntry();
         updateMetaDataToXml(xmlEntry, entry);
@@ -136,7 +133,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
                 .addAll(descriptionConverter.toXmlDbReferences(entry.getProteinDescription()));
         xmlEntry.getDbReference()
                 .addAll(
-                        entry.getUniProtCrossReferences().stream()
+                        entry.getUniProtkbCrossReferences().stream()
                                 .map(xrefConverter::toXml)
                                 .collect(Collectors.toList()));
         entry.getKeywords().forEach(val -> xmlEntry.getKeyword().add(keywordConverter.toXml(val)));
@@ -157,7 +154,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
                         });
     }
 
-    private SequenceType toXmlForSequence(UniProtEntry entry) {
+    private SequenceType toXmlForSequence(UniProtkbEntry entry) {
 
         // Sequence related
         SequenceType sequenceXml = sequenceConverter.toXml(entry.getSequence());
@@ -192,8 +189,9 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
                                     .fromXml(interactionComment));
                 }
             } else {
-                org.uniprot.core.uniprot.comment.CommentType type =
-                        org.uniprot.core.uniprot.comment.CommentType.typeOf(commentType.getType());
+                org.uniprot.core.uniprotkb.comment.CommentType type =
+                        org.uniprot.core.uniprotkb.comment.CommentType.typeOf(
+                                commentType.getType());
                 uniComments.add(
                         CommentConverterFactory.INSTANCE
                                 .createCommentConverter(type, evRefMapper, xmlUniprotFactory)
@@ -204,10 +202,10 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
     }
 
     // Must process interaction comments separately
-    private void toXmlForComments(Entry xmlEntry, UniProtEntry uniProtEntry) {
-        for (Comment comment : uniProtEntry.getComments()) {
+    private void toXmlForComments(Entry xmlEntry, UniProtkbEntry uniProtkbEntry) {
+        for (Comment comment : uniProtkbEntry.getComments()) {
             if (comment.getCommentType()
-                    == org.uniprot.core.uniprot.comment.CommentType.INTERACTION) {
+                    == org.uniprot.core.uniprotkb.comment.CommentType.INTERACTION) {
 
                 xmlEntry.getComment()
                         .addAll(
@@ -227,9 +225,9 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
         }
     }
 
-    private void toXmlForCitations(Entry xmlEntry, UniProtEntry uniProtEntry) {
+    private void toXmlForCitations(Entry xmlEntry, UniProtkbEntry uniProtkbEntry) {
         int keyVal = 0;
-        for (UniProtReference citation : uniProtEntry.getReferences()) {
+        for (UniProtkbReference citation : uniProtkbEntry.getReferences()) {
             final ReferenceType referenceType = referenceConverter.toXml(citation);
             referenceType.setKey(String.valueOf(++keyVal)); // todo required??
             xmlEntry.getReference().add(referenceType);
@@ -237,16 +235,16 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
         }
     }
 
-    private UniProtEntryBuilder createUniprotEntryBuilderFromXml(Entry xmlEntry) {
+    private UniProtkbEntryBuilder createUniprotEntryBuilderFromXml(Entry xmlEntry) {
         List<String> accessions = xmlEntry.getAccession();
-        return new UniProtEntryBuilder(
+        return new UniProtkbEntryBuilder(
                         accessions.get(0),
                         xmlEntry.getName().get(0),
-                        UniProtEntryType.typeOf(xmlEntry.getDataset()))
+                        UniProtkbEntryType.typeOf(xmlEntry.getDataset()))
                 .proteinExistence(ProteinExistence.typeOf(xmlEntry.getProteinExistence().getType()))
                 .secondaryAccessionsSet(
                         accessions.subList(1, accessions.size()).stream()
-                                .map(sec -> new UniProtAccessionBuilder(sec).build())
+                                .map(sec -> new UniProtkbAccessionBuilder(sec).build())
                                 .collect(Collectors.toList()))
                 .entryAudit(entryAuditFromXml(xmlEntry));
     }
@@ -266,12 +264,12 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
                 .build();
     }
 
-    private void updateMetaDataToXml(Entry xmlEntry, UniProtEntry entry) {
+    private void updateMetaDataToXml(Entry xmlEntry, UniProtkbEntry entry) {
         xmlEntry.setDataset(entry.getEntryType().getValue());
         ProteinExistenceType pet = xmlUniprotFactory.createProteinExistenceType();
         pet.setType(entry.getProteinExistence().getValue().toLowerCase());
         xmlEntry.setProteinExistence(pet);
-        xmlEntry.getName().add(entry.getUniProtId().getValue());
+        xmlEntry.getName().add(entry.getUniProtkbId().getValue());
         xmlEntry.getAccession().add(entry.getPrimaryAccession().getValue());
         entry.getSecondaryAccessions().forEach(val -> xmlEntry.getAccession().add(val.getValue()));
         xmlEntry.setCreated(
@@ -290,7 +288,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
         return evIdMap;
     }
 
-    private List<Evidence> getEvidences(UniProtEntry entry) {
+    private List<Evidence> getEvidences(UniProtkbEntry entry) {
         return entry.gatherEvidences();
     }
 }

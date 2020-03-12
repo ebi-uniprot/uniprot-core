@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * Encapsulates a protein sequence, in particular the sequence annotation in the {@link
- * uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtEntry} and {@link
+ * uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtkbEntry} and {@link
  * uk.ac.ebi.kraken.interfaces.uniparc.UniParcEntry UniParcEntry}. <br>
  * <br>
  * These values can be found in the SQ line of the flat file on the marked position.
@@ -44,7 +44,7 @@ public interface Sequence extends Serializable {
      * Returns the molecular weight of this sequence. <br>
      * <br>
      * These values can be found in the SQ line of the flat file on the marked position in the
-     * {@link uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtEntry}.
+     * {@link uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtkbEntry}.
      *
      * <pre class="example"><font color="#AAAAAA"> ...
      * FT   CONFLICT     40     40       T -> I (in Ref. 7; AAH68464).
@@ -75,7 +75,7 @@ public interface Sequence extends Serializable {
      * Returns the crc64 hashcode of this sequence. <br>
      * <br>
      * These values can be found in the SQ line of the flat file on the marked position in the
-     * {@link uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtEntry}.
+     * {@link uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtkbEntry}.
      *
      * <pre class="example"><font color="#AAAAAA"> ...
      * FT   CONFLICT     40     40       T -> I (in Ref. 7; AAH68464).
@@ -108,7 +108,7 @@ public interface Sequence extends Serializable {
      * Returns the String representation of the amino acid composition of this sequence. <br>
      * <br>
      * These values can be found in the SQ line of the flat file on the marked position in the
-     * {@link uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtEntry}.
+     * {@link uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtkbEntry}.
      *
      * <pre class="example"><font color="#AAAAAA"> ...
      * FT   CONFLICT     40     40       T -> I (in Ref. 7; AAH68464).

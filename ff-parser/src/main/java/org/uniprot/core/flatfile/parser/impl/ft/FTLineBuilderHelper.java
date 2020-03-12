@@ -12,12 +12,12 @@ import java.util.stream.Collectors;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.LineBuilderHelper;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.feature.Feature;
-import org.uniprot.core.uniprot.feature.FeatureDescription;
-import org.uniprot.core.uniprot.feature.FeatureId;
-import org.uniprot.core.uniprot.feature.FeatureLocation;
-import org.uniprot.core.uniprot.feature.FeatureType;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.feature.Feature;
+import org.uniprot.core.uniprotkb.feature.FeatureDescription;
+import org.uniprot.core.uniprotkb.feature.FeatureId;
+import org.uniprot.core.uniprotkb.feature.FeatureLocation;
+import org.uniprot.core.uniprotkb.feature.FeatureType;
 
 import com.google.common.base.Strings;
 

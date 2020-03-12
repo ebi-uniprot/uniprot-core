@@ -1,7 +1,7 @@
 package org.uniprot.core.scorer.uniprotkb.comments;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.CommentType;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 17-Jul-2007 Time: 10:47:25 To change this template

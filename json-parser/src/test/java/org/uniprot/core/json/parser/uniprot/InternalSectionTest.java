@@ -7,15 +7,15 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
-import org.uniprot.core.uniprot.InternalLine;
-import org.uniprot.core.uniprot.InternalLineType;
-import org.uniprot.core.uniprot.InternalSection;
-import org.uniprot.core.uniprot.SourceLine;
-import org.uniprot.core.uniprot.evidence.EvidenceLine;
-import org.uniprot.core.uniprot.evidence.impl.EvidenceLineBuilder;
-import org.uniprot.core.uniprot.impl.InternalLineBuilder;
-import org.uniprot.core.uniprot.impl.InternalSectionBuilder;
-import org.uniprot.core.uniprot.impl.SourceLineBuilder;
+import org.uniprot.core.uniprotkb.InternalLine;
+import org.uniprot.core.uniprotkb.InternalLineType;
+import org.uniprot.core.uniprotkb.InternalSection;
+import org.uniprot.core.uniprotkb.SourceLine;
+import org.uniprot.core.uniprotkb.evidence.EvidenceLine;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidenceLineBuilder;
+import org.uniprot.core.uniprotkb.impl.InternalLineBuilder;
+import org.uniprot.core.uniprotkb.impl.InternalSectionBuilder;
+import org.uniprot.core.uniprotkb.impl.SourceLineBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

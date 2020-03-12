@@ -12,11 +12,11 @@ import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.impl.ECNumberBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
-import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.impl.CatalyticActivityCommentBuilder;
-import org.uniprot.core.uniprot.comment.impl.PhysiologicalReactionBuilder;
-import org.uniprot.core.uniprot.comment.impl.ReactionBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.comment.*;
+import org.uniprot.core.uniprotkb.comment.impl.CatalyticActivityCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.PhysiologicalReactionBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.ReactionBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

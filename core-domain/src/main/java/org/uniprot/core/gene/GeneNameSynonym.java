@@ -1,6 +1,6 @@
 package org.uniprot.core.gene;
 
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
 /**
  *
@@ -9,7 +9,7 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
  *
  * <p>Encapsulates the Gene Name Synonyms of a {@link GeneName GeneName} in a {@link
  * uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene} object of a {@link
- * uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtEntry}.
+ * uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtkbEntry}.
  *
  * <h3>The Semantics of this Data Structure</h3>
  *
@@ -31,14 +31,14 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
  * <h3>How to work with this Interface</h3>
  *
  * <p>The standard way of retrieving this data type <div class="codeexample"> {@link
- * uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtEntry} entry = getEntryFromParserOrAPI();
- * List<{@link uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene}> genes =
- * entry.getGenes(); for ({@link uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene}
- * gene : genes) { for (GeneNameSynonym synonym : gene.getGeneNameSynonyms()) {
- * System.out.println(synonym); } }</div>
+ * uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtkbEntry} entry =
+ * getEntryFromParserOrAPI(); List<{@link
+ * uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene}> genes = entry.getGenes(); for
+ * ({@link uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene} gene : genes) { for
+ * (GeneNameSynonym synonym : gene.getGeneNameSynonyms()) { System.out.println(synonym); } }</div>
  *
  * <p>The standard way of setting this data type <div class="codeexample"> {@link
- * uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtEntry} uniProtEntry = {@link
+ * uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtkbEntry} uniProtEntry = {@link
  * uk.ac.ebi.kraken.model.factories.DefaultUniProtFactory
  * DefaultUniProtFactory}.getInstance().buildEntry(); {@link
  * uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene} gene = {@link

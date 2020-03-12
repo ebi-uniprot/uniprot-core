@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.comment.Interaction;
-import org.uniprot.core.uniprot.comment.InteractionComment;
-import org.uniprot.core.uniprot.comment.InteractionType;
-import org.uniprot.core.uniprot.comment.impl.InteractionBuilder;
-import org.uniprot.core.uniprot.comment.impl.InteractionCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.Interaction;
+import org.uniprot.core.uniprotkb.comment.InteractionComment;
+import org.uniprot.core.uniprotkb.comment.InteractionType;
+import org.uniprot.core.uniprotkb.comment.impl.InteractionBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.InteractionCommentBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 
 class InteractionCommentConverterTest {

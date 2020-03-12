@@ -6,12 +6,12 @@ import java.util.List;
 
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineTransformer;
 import org.uniprot.core.scorer.uniprotkb.UniProtEntryScored;
-import org.uniprot.core.uniprot.UniProtEntry;
-import org.uniprot.core.uniprot.UniProtEntryType;
-import org.uniprot.core.uniprot.comment.Comment;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
-import org.uniprot.core.uniprot.impl.UniProtEntryBuilder;
+import org.uniprot.core.uniprotkb.UniProtkbEntry;
+import org.uniprot.core.uniprotkb.UniProtkbEntryType;
+import org.uniprot.core.uniprotkb.comment.Comment;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprotkb.impl.UniProtkbEntryBuilder;
 
 class CommentScoreTestBase {
     private CcLineTransformer ccLineTransformer = new CcLineTransformer("", "");
@@ -53,9 +53,10 @@ class CommentScoreTestBase {
 
     void verifyMulti(String line, double expectedScore, boolean isSp) throws Exception {
         List<Comment> comments = ccLineTransformer.transformNoHeader(line);
-        UniProtEntryType entryType = isSp ? UniProtEntryType.SWISSPROT : UniProtEntryType.TREMBL;
-        UniProtEntry entry =
-                new UniProtEntryBuilder("P12345", "ID_12345", entryType)
+        UniProtkbEntryType entryType =
+                isSp ? UniProtkbEntryType.SWISSPROT : UniProtkbEntryType.TREMBL;
+        UniProtkbEntry entry =
+                new UniProtkbEntryBuilder("P12345", "ID_12345", entryType)
                         .commentsSet(comments)
                         .build();
 

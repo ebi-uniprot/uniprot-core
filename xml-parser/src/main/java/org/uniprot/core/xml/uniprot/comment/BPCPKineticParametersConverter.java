@@ -3,12 +3,12 @@ package org.uniprot.core.xml.uniprot.comment;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.impl.KineticParametersBuilder;
-import org.uniprot.core.uniprot.comment.impl.MaximumVelocityBuilder;
-import org.uniprot.core.uniprot.comment.impl.MichaelisConstantBuilder;
-import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.comment.*;
+import org.uniprot.core.uniprotkb.comment.impl.KineticParametersBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.MaximumVelocityBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.MichaelisConstantBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.NoteBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType.Kinetics;
 import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;

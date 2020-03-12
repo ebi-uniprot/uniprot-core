@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.UniProtEntry;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
+import org.uniprot.core.uniprotkb.UniProtkbEntry;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.MassSpectrometryComment;
 
 class MassSpectrometryMapTest {
 
@@ -24,7 +24,7 @@ class MassSpectrometryMapTest {
                         + "     CC   -!- MASS SPECTROMETRY: Mass=17580; Mass_error=2; Method=Electrospray;\n"
                         + "     CC       Evidence={ECO:0000269|PubMed:15923259};";
 
-        UniProtEntry entry =
+        UniProtkbEntry entry =
                 CommentTestUtil.createUniProtEntryFromCommentLine(massSpectrometryLine);
 
         List<MassSpectrometryComment> massSpectrometryComments =

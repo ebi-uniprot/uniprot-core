@@ -8,7 +8,7 @@ import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
-import org.uniprot.core.uniprot.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 
 public class OXLineBuilder extends FFLineBuilderAbstr<Organism> implements FFLineBuilder<Organism> {
     private static final String NAME = "NCBI_TaxID=";

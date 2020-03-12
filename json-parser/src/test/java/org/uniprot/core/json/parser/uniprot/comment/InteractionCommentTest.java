@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
-import org.uniprot.core.uniprot.comment.Interaction;
-import org.uniprot.core.uniprot.comment.InteractionComment;
-import org.uniprot.core.uniprot.comment.InteractionType;
-import org.uniprot.core.uniprot.comment.impl.InteractionBuilder;
-import org.uniprot.core.uniprot.comment.impl.InteractionCommentBuilder;
-import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
+import org.uniprot.core.uniprotkb.comment.Interaction;
+import org.uniprot.core.uniprotkb.comment.InteractionComment;
+import org.uniprot.core.uniprotkb.comment.InteractionType;
+import org.uniprot.core.uniprotkb.comment.impl.InteractionBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.InteractionCommentBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtkbAccessionBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -45,8 +45,8 @@ public class InteractionCommentTest {
 
         assertNotNull(interaction.get("type"));
         assertEquals("BINARY", interaction.get("type").asText());
-        assertNotNull(interaction.get("uniProtAccession"));
-        assertEquals("P12345", interaction.get("uniProtAccession").asText());
+        assertNotNull(interaction.get("uniProtkbAccession"));
+        assertEquals("P12345", interaction.get("uniProtkbAccession").asText());
         assertNotNull(interaction.get("geneName"));
         assertEquals("gene name", interaction.get("geneName").asText());
         assertNotNull(interaction.get("numberOfExperiments"));
@@ -65,7 +65,7 @@ public class InteractionCommentTest {
                         .numberOfExperiments(10)
                         .firstInteractor("first")
                         .secondInteractor("second")
-                        .uniProtAccession(new UniProtAccessionBuilder("P12345").build())
+                        .uniProtAccession(new UniProtkbAccessionBuilder("P12345").build())
                         .build();
 
         return new InteractionCommentBuilder().interactionsAdd(interaction).build();

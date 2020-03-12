@@ -3,8 +3,8 @@ package org.uniprot.core.xml.uniprot.comment;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.comment.WebResourceComment;
-import org.uniprot.core.uniprot.comment.impl.WebResourceCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.WebResourceComment;
+import org.uniprot.core.uniprotkb.comment.impl.WebResourceCommentBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 

@@ -9,7 +9,7 @@ import org.uniprot.core.flatfile.parser.exception.DatabaseTypeNotExistException;
 import org.uniprot.core.flatfile.parser.impl.dr.DrLineConverter;
 import org.uniprot.core.flatfile.parser.impl.dr.DrLineObject;
 import org.uniprot.core.flatfile.parser.impl.dr.UniProtDrObjects;
-import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.uniprotkb.xdb.UniProtkbCrossReference;
 
 class DrLineConverterTest {
     private final DrLineConverter converter = new DrLineConverter();
@@ -20,7 +20,7 @@ class DrLineConverterTest {
         obj.drObjects.add(
                 creatDrObject("EMBL", "AY548484", "AAT09660.1", "someValue", "Genomic_DNA"));
         UniProtDrObjects drObjects = converter.convert(obj);
-        List<UniProtCrossReference> xrefs = drObjects.drObjects;
+        List<UniProtkbCrossReference> xrefs = drObjects.drObjects;
         assertEquals(1, xrefs.size());
         validate(xrefs.get(0), "EMBL", "AY548484", "AAT09660.1", "someValue", "Genomic_DNA");
     }
@@ -54,7 +54,7 @@ class DrLineConverterTest {
                         null));
         obj.drObjects.add(creatDrObject("InterPro", "IPR007031", "Poxvirus_VLTF3", null, null));
         UniProtDrObjects drObjects = converter.convert(obj);
-        List<UniProtCrossReference> xrefs = drObjects.drObjects;
+        List<UniProtkbCrossReference> xrefs = drObjects.drObjects;
         assertEquals(6, xrefs.size());
         validate(xrefs.get(0), "EMBL", "AY548484", "AAT09660.1", "-", "Genomic_DNA");
         validate(xrefs.get(1), "REFSEQ", "YP_031579.1", "NC_005946.1", null, null);
@@ -125,7 +125,7 @@ class DrLineConverterTest {
         obj.drObjects.add(creatDrObject("InterPro", "IPR007031", "Poxvirus_VLTF3", null, null));
         DrLineConverter converter2 = new DrLineConverter(true);
         UniProtDrObjects drObjects = converter2.convert(obj);
-        List<UniProtCrossReference> xrefs = drObjects.drObjects;
+        List<UniProtkbCrossReference> xrefs = drObjects.drObjects;
         assertEquals(5, xrefs.size());
         //	validate( xrefs.get(0), "EMBL,
         //			"AY548484", "AAT09660.1", "-", "Genomic_DNA");
@@ -175,7 +175,7 @@ class DrLineConverterTest {
         obj.drObjects.add(creatDrObject("InterPro", "IPR007031", "Poxvirus_VLTF3", null, null));
         DrLineConverter converter2 = new DrLineConverter(true);
         UniProtDrObjects drObjects = converter2.convert(obj);
-        List<UniProtCrossReference> xrefs = drObjects.drObjects;
+        List<UniProtkbCrossReference> xrefs = drObjects.drObjects;
         assertEquals(5, xrefs.size());
         //	validate( xrefs.get(0), "EMBL,
         //			"AY548484", "AAT09660.1", "-", "Genomic_DNA");
@@ -224,7 +224,7 @@ class DrLineConverterTest {
         obj.drObjects.add(creatDrObject("InterPro", "IPR007031", "Poxvirus_VLTF3", null, null));
         DrLineConverter converter2 = new DrLineConverter(true);
         UniProtDrObjects drObjects = converter2.convert(obj);
-        List<UniProtCrossReference> xrefs = drObjects.drObjects;
+        List<UniProtkbCrossReference> xrefs = drObjects.drObjects;
         assertEquals(5, xrefs.size());
         //	validate( xrefs.get(0), "EMBL,
         //			"AY548484", "AAT09660.1", "-", "Genomic_DNA");
@@ -265,18 +265,18 @@ class DrLineConverterTest {
         obj.drObjects.add(obj3);
 
         UniProtDrObjects drObjects = converter.convert(obj);
-        List<UniProtCrossReference> xrefs = drObjects.drObjects;
+        List<UniProtkbCrossReference> xrefs = drObjects.drObjects;
         assertEquals(3, xrefs.size());
-        UniProtCrossReference xref1 = xrefs.get(0);
-        UniProtCrossReference xref2 = xrefs.get(1);
-        UniProtCrossReference xref3 = xrefs.get(2);
+        UniProtkbCrossReference xref1 = xrefs.get(0);
+        UniProtkbCrossReference xref2 = xrefs.get(1);
+        UniProtkbCrossReference xref3 = xrefs.get(2);
         validate(xref1, "EMBL", "CP001509", "ACT41999.1", "-", "Genomic_DNA");
         validate(xref2, "EMBL", "AM946981", "CAQ30614.1", "-", "Genomic_DNA");
         validate(xref3, "GENEID", "2947773", "-", null, null);
     }
 
     private void validate(
-            UniProtCrossReference xref,
+            UniProtkbCrossReference xref,
             String type,
             String first,
             String second,

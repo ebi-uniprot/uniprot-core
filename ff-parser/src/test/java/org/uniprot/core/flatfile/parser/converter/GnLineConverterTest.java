@@ -13,8 +13,8 @@ import org.uniprot.core.gene.Gene;
 import org.uniprot.core.gene.GeneName;
 import org.uniprot.core.gene.GeneNameSynonym;
 import org.uniprot.core.gene.ORFName;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
 class GnLineConverterTest {
     private final GnLineConverter converter = new GnLineConverter();

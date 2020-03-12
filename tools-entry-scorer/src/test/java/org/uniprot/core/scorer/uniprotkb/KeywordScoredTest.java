@@ -7,17 +7,17 @@ import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.UniprotLineParserFactory;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
+import org.uniprot.core.flatfile.parser.UniprotkbLineParserFactory;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.kw.KwLineConverter;
 import org.uniprot.core.flatfile.parser.impl.kw.KwLineObject;
-import org.uniprot.core.uniprot.Keyword;
+import org.uniprot.core.uniprotkb.Keyword;
 
 /** Tests if the KW line is parsed correctly for SwissProt and TrEMBL entries. */
 class KeywordScoredTest {
-    private static final UniprotLineParserFactory PARSER_FACTORY =
-            new DefaultUniprotLineParserFactory();
+    private static final UniprotkbLineParserFactory PARSER_FACTORY =
+            new DefaultUniprotkbLineParserFactory();
 
     @DisplayName(
             "Inserts a single KW line into the entry. The keywords given "
@@ -46,7 +46,7 @@ class KeywordScoredTest {
     }
 
     private List<Keyword> parseLines(String lines) {
-        UniprotLineParser<KwLineObject> parser = PARSER_FACTORY.createKwLineParser();
+        UniprotkbLineParser<KwLineObject> parser = PARSER_FACTORY.createKwLineParser();
         KwLineObject obj = parser.parse(lines);
         KwLineConverter converter = new KwLineConverter(new HashMap<>());
         return converter.convert(obj);

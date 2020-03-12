@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.SupportingDataMap;
 import org.uniprot.core.flatfile.parser.impl.ac.AcLineConverter;
-import org.uniprot.core.flatfile.parser.impl.ac.UniProtAcLineObject;
+import org.uniprot.core.flatfile.parser.impl.ac.UniProtkbAcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineConverter;
 import org.uniprot.core.flatfile.parser.impl.dr.DrLineConverter;
@@ -26,17 +26,17 @@ import org.uniprot.core.flatfile.parser.impl.ox.OxLineConverter;
 import org.uniprot.core.flatfile.parser.impl.pe.PeLineConverter;
 import org.uniprot.core.flatfile.parser.impl.sq.SqLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ss.SsLineConverter;
-import org.uniprot.core.uniprot.*;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.impl.InternalSectionBuilder;
-import org.uniprot.core.uniprot.impl.UniProtEntryBuilder;
-import org.uniprot.core.uniprot.taxonomy.Organism;
-import org.uniprot.core.uniprot.taxonomy.OrganismName;
-import org.uniprot.core.uniprot.taxonomy.impl.OrganismBuilder;
-import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
-import org.uniprot.core.uniprot.xdb.impl.UniProtCrossReferenceBuilder;
+import org.uniprot.core.uniprotkb.*;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.impl.InternalSectionBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtkbEntryBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+import org.uniprot.core.uniprotkb.xdb.UniProtkbCrossReference;
+import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
 
-public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry> {
+public class EntryObjectConverter implements Converter<EntryObject, UniProtkbEntry> {
 
     /** */
     private static final long serialVersionUID = -1548724347898352705L;
@@ -79,12 +79,12 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
     }
 
     @Override
-    public UniProtEntry convert(EntryObject f) {
+    public UniProtkbEntry convert(EntryObject f) {
         clear();
-        Map.Entry<UniProtId, UniProtEntryType> ids = idLineConverter.convert(f.id);
-        UniProtAcLineObject acLineObj = acLineConverter.convert(f.ac);
-        UniProtEntryBuilder activeEntryBuilder =
-                new UniProtEntryBuilder(
+        Map.Entry<UniProtkbId, UniProtkbEntryType> ids = idLineConverter.convert(f.id);
+        UniProtkbAcLineObject acLineObj = acLineConverter.convert(f.ac);
+        UniProtkbEntryBuilder activeEntryBuilder =
+                new UniProtkbEntryBuilder(
                                 acLineObj.getPrimaryAccession(), ids.getKey(), ids.getValue())
                         .secondaryAccessionsSet(acLineObj.getSecondAccessions())
                         .entryAudit(dtLineConverter.convert(f.dt));
@@ -122,7 +122,7 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
         activeEntryBuilder.organism(organism);
         activeEntryBuilder.proteinExistence(peLineConverter.convert(f.pe));
         activeEntryBuilder.sequence(sqLineConverter.convert(f.sq));
-        List<UniProtReference> citations = new ArrayList<>();
+        List<UniProtkbReference> citations = new ArrayList<>();
         for (EntryObject.ReferenceObject refObj : f.ref) {
             citations.add(refObjConverter.convert(refObj));
         }
@@ -151,8 +151,8 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
         return activeEntryBuilder.build();
     }
 
-    private List<UniProtCrossReference> addGoEvidence(
-            String accession, List<UniProtCrossReference> dbRefs) {
+    private List<UniProtkbCrossReference> addGoEvidence(
+            String accession, List<UniProtkbCrossReference> dbRefs) {
         Map<String, List<Evidence>> goEvidenceMap = accessionGoEvidences.get(accession);
         if (goEvidenceMap == null) {
             return dbRefs;
@@ -160,8 +160,8 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
         return dbRefs.stream().map(val -> convert(val, goEvidenceMap)).collect(Collectors.toList());
     }
 
-    private UniProtCrossReference convert(
-            UniProtCrossReference xref, Map<String, List<Evidence>> goEvidenceMap) {
+    private UniProtkbCrossReference convert(
+            UniProtkbCrossReference xref, Map<String, List<Evidence>> goEvidenceMap) {
         if ("GO".equals(xref.getDatabase().getName())) {
             String id = xref.getId();
             List<Evidence> evidences = goEvidenceMap.get(id);

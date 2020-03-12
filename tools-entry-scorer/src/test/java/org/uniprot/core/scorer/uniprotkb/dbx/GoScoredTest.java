@@ -5,7 +5,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.xdb.GoScored;
-import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.uniprotkb.xdb.UniProtkbCrossReference;
 
 class GoScoredTest extends AbstractDBXTest {
     @Test
@@ -154,7 +154,7 @@ class GoScoredTest extends AbstractDBXTest {
 
     @Override
     HasScore getScored(String lines) {
-        List<UniProtCrossReference> crossReferences = getDBXRefs(lines, "GO");
+        List<UniProtkbCrossReference> crossReferences = getDBXRefs(lines, "GO");
         return new GoScored(crossReferences);
     }
 }

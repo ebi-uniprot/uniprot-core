@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.flatfile.parser.*;
-import org.uniprot.core.uniprot.UniProtEntry;
+import org.uniprot.core.uniprotkb.UniProtkbEntry;
 
 import com.google.common.util.concurrent.Uninterruptibles;
 
@@ -28,7 +28,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 
     private final int numberOfThreads;
     private final List<ParsingTask> workers = new ArrayList<>();
-    private final BlockingQueue<UniProtEntry> entriesQueue;
+    private final BlockingQueue<UniProtkbEntry> entriesQueue;
     private final BlockingQueue<String> ffQueue;
 
     private CountDownLatch parsingJobCountDownLatch;
@@ -95,9 +95,9 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
         }
     }
 
-    public UniProtEntry next() {
+    public UniProtkbEntry next() {
         try {
-            UniProtEntry poll = this.entriesQueue.take();
+            UniProtkbEntry poll = this.entriesQueue.take();
 
             if (poll != null) {
                 entryCounter.getAndDecrement();
@@ -118,7 +118,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
      *
      * @return
      */
-    public Queue<UniProtEntry> getEntryQueue() {
+    public Queue<UniProtkbEntry> getEntryQueue() {
         return this.entriesQueue;
     }
 
@@ -249,14 +249,14 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 
     public class ParsingTask extends Thread {
         private final BlockingQueue<String> ffQueue;
-        private final BlockingQueue<UniProtEntry> queue;
+        private final BlockingQueue<UniProtkbEntry> queue;
         private final CountDownLatch countDown;
         private final AtomicBoolean notFinished = new AtomicBoolean(false);
         private UniProtParser parser;
 
         ParsingTask(
                 BlockingQueue<String> ffQueue,
-                BlockingQueue<UniProtEntry> queue,
+                BlockingQueue<UniProtkbEntry> queue,
                 CountDownLatch countDown) {
             this.ffQueue = ffQueue;
             this.queue = queue;
@@ -281,7 +281,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 
                 if (poll != null) {
                     try {
-                        UniProtEntry convert = parser.parse(poll);
+                        UniProtkbEntry convert = parser.parse(poll);
                         // using put to block current thread if wait is necessary.
                         queue.put(convert);
                         counter++;

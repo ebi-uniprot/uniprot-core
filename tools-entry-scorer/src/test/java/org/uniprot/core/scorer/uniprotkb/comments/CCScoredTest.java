@@ -1,7 +1,7 @@
 package org.uniprot.core.scorer.uniprotkb.comments;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.uniprot.core.uniprot.comment.CommentType.*;
+import static org.uniprot.core.uniprotkb.comment.CommentType.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,11 +9,11 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineTransformer;
 import org.uniprot.core.scorer.uniprotkb.UniProtEntryScored;
-import org.uniprot.core.uniprot.UniProtEntry;
-import org.uniprot.core.uniprot.UniProtEntryType;
-import org.uniprot.core.uniprot.comment.Comment;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.impl.UniProtEntryBuilder;
+import org.uniprot.core.uniprotkb.UniProtkbEntry;
+import org.uniprot.core.uniprotkb.UniProtkbEntryType;
+import org.uniprot.core.uniprotkb.comment.Comment;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.impl.UniProtkbEntryBuilder;
 
 class CCScoredTest {
     private static final String CC =
@@ -39,8 +39,8 @@ class CCScoredTest {
     void test1() throws Exception {
         CcLineTransformer ccLineTransformer = new CcLineTransformer("", "");
         List<Comment> comments = ccLineTransformer.transformNoHeader(CC);
-        UniProtEntry entry =
-                new UniProtEntryBuilder("P12345", "ID_12345", UniProtEntryType.SWISSPROT)
+        UniProtkbEntry entry =
+                new UniProtkbEntryBuilder("P12345", "ID_12345", UniProtkbEntryType.SWISSPROT)
                         .commentsSet(comments)
                         .build();
 
@@ -136,8 +136,8 @@ class CCScoredTest {
     void test2() {
         CcLineTransformer ccLineTransformer = new CcLineTransformer("", "");
         List<Comment> comments = ccLineTransformer.transformNoHeader(CC_2);
-        UniProtEntry entry =
-                new UniProtEntryBuilder("P12345", "ID_12345", UniProtEntryType.SWISSPROT)
+        UniProtkbEntry entry =
+                new UniProtkbEntryBuilder("P12345", "ID_12345", UniProtkbEntryType.SWISSPROT)
                         .commentsSet(comments)
                         .build();
 

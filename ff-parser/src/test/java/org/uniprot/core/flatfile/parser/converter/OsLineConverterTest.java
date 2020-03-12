@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.os.OsLineConverter;
 import org.uniprot.core.flatfile.parser.impl.os.OsLineObject;
-import org.uniprot.core.uniprot.taxonomy.OrganismName;
+import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
 
 class OsLineConverterTest {
     @Test

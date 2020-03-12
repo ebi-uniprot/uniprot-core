@@ -9,7 +9,7 @@ import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.proteome.*;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
-import org.uniprot.core.uniprot.taxonomy.Taxonomy;
+import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.util.Utils;
 
 public class ProteomeEntryImpl implements ProteomeEntry {

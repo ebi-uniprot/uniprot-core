@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.uniprot.description.ProteinDescription;
-import org.uniprot.core.uniprot.description.impl.ProteinDescriptionBuilder;
+import org.uniprot.core.uniprotkb.description.ProteinDescription;
+import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;

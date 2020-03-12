@@ -16,12 +16,12 @@ import org.uniprot.core.citation.impl.*;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.impl.RLineBuilder;
 import org.uniprot.core.impl.CrossReferenceBuilder;
-import org.uniprot.core.uniprot.ReferenceComment;
-import org.uniprot.core.uniprot.ReferenceCommentType;
-import org.uniprot.core.uniprot.UniProtReference;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.impl.ReferenceCommentBuilder;
-import org.uniprot.core.uniprot.impl.UniProtReferenceBuilder;
+import org.uniprot.core.uniprotkb.ReferenceComment;
+import org.uniprot.core.uniprotkb.ReferenceCommentType;
+import org.uniprot.core.uniprotkb.UniProtkbReference;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.impl.ReferenceCommentBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtkbReferenceBuilder;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
 class RLineBuildTest {
@@ -86,8 +86,8 @@ class RLineBuildTest {
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA]");
-        UniProtReference uniRef =
-                new UniProtReferenceBuilder()
+        UniProtkbReference uniRef =
+                new UniProtkbReferenceBuilder()
                         .citation(jaBuilder.build())
                         .referencePositionsSet(referencePositions)
                         .referenceCommentsSet(referenceComments)
@@ -172,8 +172,8 @@ class RLineBuildTest {
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA]");
-        UniProtReference uniRef =
-                new UniProtReferenceBuilder()
+        UniProtkbReference uniRef =
+                new UniProtkbReferenceBuilder()
                         .citation(jaBuilder.build())
                         .referencePositionsSet(referencePositions)
                         .referenceCommentsSet(referenceComments)
@@ -217,8 +217,8 @@ class RLineBuildTest {
                 buildReferenceComments(transponsons, ReferenceCommentType.TRANSPOSON));
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA]");
-        UniProtReference uniRef =
-                new UniProtReferenceBuilder()
+        UniProtkbReference uniRef =
+                new UniProtkbReferenceBuilder()
                         .citation(smBuilder.build())
                         .referencePositionsSet(referencePositions)
                         .referenceCommentsSet(referenceComments)
@@ -293,8 +293,8 @@ class RLineBuildTest {
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA]");
-        UniProtReference uniRef =
-                new UniProtReferenceBuilder()
+        UniProtkbReference uniRef =
+                new UniProtkbReferenceBuilder()
                         .citation(smBuilder.build())
                         .referencePositionsSet(referencePositions)
                         .referenceCommentsSet(referenceComments)
@@ -342,8 +342,8 @@ class RLineBuildTest {
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE");
-        UniProtReference uniRef =
-                new UniProtReferenceBuilder()
+        UniProtkbReference uniRef =
+                new UniProtkbReferenceBuilder()
                         .citation(bkBuilder.build())
                         .referencePositionsSet(referencePositions)
                         .build();
@@ -389,8 +389,8 @@ class RLineBuildTest {
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE");
-        UniProtReference uniRef =
-                new UniProtReferenceBuilder()
+        UniProtkbReference uniRef =
+                new UniProtkbReferenceBuilder()
                         .citation(bkBuilder.build())
                         .referencePositionsSet(referencePositions)
                         .build();
@@ -429,8 +429,8 @@ class RLineBuildTest {
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE");
-        UniProtReference uniRef =
-                new UniProtReferenceBuilder()
+        UniProtkbReference uniRef =
+                new UniProtkbReferenceBuilder()
                         .citation(bkBuilder.build())
                         .referencePositionsSet(referencePositions)
                         .build();
@@ -465,8 +465,8 @@ class RLineBuildTest {
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE");
-        UniProtReference uniRef =
-                new UniProtReferenceBuilder()
+        UniProtkbReference uniRef =
+                new UniProtkbReferenceBuilder()
                         .citation(thBuilder.build())
                         .referencePositionsSet(referencePositions)
                         .build();
@@ -497,8 +497,8 @@ class RLineBuildTest {
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE");
-        UniProtReference uniRef =
-                new UniProtReferenceBuilder()
+        UniProtkbReference uniRef =
+                new UniProtkbReferenceBuilder()
                         .citation(paBuilder.build())
                         .referencePositionsSet(referencePositions)
                         .build();
@@ -529,8 +529,8 @@ class RLineBuildTest {
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE");
-        UniProtReference uniRef =
-                new UniProtReferenceBuilder()
+        UniProtkbReference uniRef =
+                new UniProtkbReferenceBuilder()
                         .citation(eaBuilder.build())
                         .referencePositionsSet(referencePositions)
                         .build();
@@ -560,8 +560,8 @@ class RLineBuildTest {
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE");
-        UniProtReference uniRef =
-                new UniProtReferenceBuilder()
+        UniProtkbReference uniRef =
+                new UniProtkbReferenceBuilder()
                         .citation(uoBuilder.build())
                         .referencePositionsSet(referencePositions)
                         .build();
@@ -613,7 +613,7 @@ class RLineBuildTest {
         return xrefs;
     }
 
-    private void doTest(String rlines, UniProtReference citation, int num) {
+    private void doTest(String rlines, UniProtkbReference citation, int num) {
         builder.setRN(num);
         FFLine ffLine = builder.buildWithEvidence(citation);
         String resultString = ffLine.toString();

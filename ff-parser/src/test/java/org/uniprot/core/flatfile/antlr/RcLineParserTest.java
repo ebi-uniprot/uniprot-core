@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.rc.RcLineObject;
 import org.uniprot.core.flatfile.parser.impl.rc.RcLineObject.RcTokenEnum;
 
@@ -15,8 +15,8 @@ class RcLineParserTest {
     @Test
     void test() {
         String rcLines = "RC   STRAIN=Sprague-Dawley; TISSUE=Liver;\n";
-        UniprotLineParser<RcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createRcLineParser();
+        UniprotkbLineParser<RcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createRcLineParser();
         RcLineObject obj = parser.parse(rcLines);
         assertEquals(2, obj.rcs.size());
         verify(
@@ -37,8 +37,8 @@ class RcLineParserTest {
     @Test
     void testMultTissue() {
         String rcLines = "RC   STRAIN=Holstein; TISSUE=Lymph node, and Mammary gland;\n";
-        UniprotLineParser<RcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createRcLineParser();
+        UniprotkbLineParser<RcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createRcLineParser();
         RcLineObject obj = parser.parse(rcLines);
         assertEquals(2, obj.rcs.size());
         verify(obj.rcs.get(0), RcTokenEnum.STRAIN, Arrays.asList(new String[] {"Holstein"}), null);
@@ -54,8 +54,8 @@ class RcLineParserTest {
         String rcLines =
                 "RC   STRAIN=AL.012, AZ.026, AZ.180, DC.005, GA.039, GA2181, IL.014, IL2.17,\n"
                         + "RC   IN.018, KY.172, KY2.37, LA.013, MI.035, MN.001, MNb027, and VA.015;\n";
-        UniprotLineParser<RcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createRcLineParser();
+        UniprotkbLineParser<RcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createRcLineParser();
         RcLineObject obj = parser.parse(rcLines);
         assertEquals(1, obj.rcs.size());
         verify(
@@ -79,8 +79,8 @@ class RcLineParserTest {
                 "RC   STRAIN=AL.012, AZ.026, AZ.180, DC.005, GA.039, GA2181, IL.014, IL2.17,\n"
                         + "RC   IN.018, KY.172, KY2.37, LA.013, MI.035, MN.001, MNb027, and VA.015;\n"
                         + "RC   TISSUE=Liver;\n";
-        UniprotLineParser<RcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createRcLineParser();
+        UniprotkbLineParser<RcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createRcLineParser();
         RcLineObject obj = parser.parse(rcLines);
         assertEquals(2, obj.rcs.size());
         verify(
@@ -104,8 +104,8 @@ class RcLineParserTest {
                         + "RC   {ECO:0000269|PubMed:10433554}, pSd13_G1271 {ECO:0000313|PDB:3OW2,\n"
                         + "RC   ECO:0000256|HAMAP-Rule:MF_00205}, pSd4_G1190 {ECO:0000303|Ref.6}, and\n"
                         + "RC   pSd5_G1213 {ECO:0000256|HAMAP-Rule:MF_00205};\n";
-        UniprotLineParser<RcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createRcLineParser();
+        UniprotkbLineParser<RcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createRcLineParser();
         RcLineObject obj = parser.parse(rcLines);
         assertEquals(1, obj.rcs.size());
         verify(
@@ -131,8 +131,8 @@ class RcLineParserTest {
                         + "RC   and pSd2_G1252 {ECO:0000303|Ref.6};\n"
                         + "RC   TRANSPOSON=Tn2502 {ECO:0000256|HAMAP-Rule:MF_00205}, and pSd4_G1190\n"
                         + "RC   {ECO:0000256|HAMAP-Rule:MF_00205};\n";
-        UniprotLineParser<RcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createRcLineParser();
+        UniprotkbLineParser<RcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createRcLineParser();
         RcLineObject obj = parser.parse(rcLines);
         assertEquals(3, obj.rcs.size());
         verify(
@@ -161,8 +161,8 @@ class RcLineParserTest {
         String rcLines =
                 "RC   STRAIN=ATCC 6260 / CBS 566 / DSM 6381 / JCM 1539 / NBRC 10279 / NRRL\n"
                         + "RC   Y-324;\n";
-        UniprotLineParser<RcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createRcLineParser();
+        UniprotkbLineParser<RcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createRcLineParser();
         RcLineObject obj = parser.parse(rcLines);
         assertEquals(1, obj.rcs.size());
         verify(
@@ -178,8 +178,8 @@ class RcLineParserTest {
     @Test
     void testContentComma() {
         String rcLines = "RC   STRAIN=PP24[03,07,10];\n";
-        UniprotLineParser<RcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createRcLineParser();
+        UniprotkbLineParser<RcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createRcLineParser();
         RcLineObject obj = parser.parse(rcLines);
         assertEquals(1, obj.rcs.size());
         verify(
@@ -191,8 +191,8 @@ class RcLineParserTest {
 
     void testContentAnd() {
         String rcLines = "RC   STRAIN=Black and white Danish dairy cattle;\n";
-        UniprotLineParser<RcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createRcLineParser();
+        UniprotkbLineParser<RcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createRcLineParser();
         RcLineObject obj = parser.parse(rcLines);
         assertEquals(1, obj.rcs.size());
         verify(
@@ -204,8 +204,8 @@ class RcLineParserTest {
 
     void testContentComma2() {
         String rcLines = "RC   PLASMID=MCA 2997, and Plasmid pMR3, Mitochondrial;\n";
-        UniprotLineParser<RcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createRcLineParser();
+        UniprotkbLineParser<RcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createRcLineParser();
         RcLineObject obj = parser.parse(rcLines);
         assertEquals(1, obj.rcs.size());
         verify(
@@ -220,8 +220,8 @@ class RcLineParserTest {
         String rcLines =
                 "RC   STRAIN=ATCC 15692 / DSM 22644 / CIP 104116 / JCM 14847 / LMG 12228 /\n"
                         + "RC   1C / PRS 101 / PAO1;\n";
-        UniprotLineParser<RcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createRcLineParser();
+        UniprotkbLineParser<RcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createRcLineParser();
         RcLineObject obj = parser.parse(rcLines);
         assertEquals(1, obj.rcs.size());
         verify(

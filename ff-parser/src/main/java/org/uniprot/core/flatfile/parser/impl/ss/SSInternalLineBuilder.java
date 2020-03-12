@@ -7,8 +7,8 @@ import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
-import org.uniprot.core.uniprot.InternalLine;
-import org.uniprot.core.uniprot.InternalLineType;
+import org.uniprot.core.uniprotkb.InternalLine;
+import org.uniprot.core.uniprotkb.InternalLineType;
 
 public class SSInternalLineBuilder extends FFLineBuilderAbstr<List<InternalLine>> {
 

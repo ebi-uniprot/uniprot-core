@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniparc.UniParcId;
-import org.uniprot.core.uniprot.UniProtAccession;
+import org.uniprot.core.uniprotkb.UniProtkbAccession;
 import org.uniprot.core.uniref.OverlapRegion;
 import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefEntryId;
@@ -32,7 +32,7 @@ public class RepresentativeMemberImpl extends UniRefMemberImpl implements Repres
             long organismTaxId,
             int sequenceLength,
             String proteinName,
-            List<UniProtAccession> accessions,
+            List<UniProtkbAccession> accessions,
             UniRefEntryId uniref50Id,
             UniRefEntryId uniref90Id,
             UniRefEntryId uniref100Id,

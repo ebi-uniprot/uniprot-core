@@ -12,11 +12,11 @@ import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.json.parser.deserializer.LocalDateDeserializer;
 import org.uniprot.core.json.parser.serializer.LocalDateSerializer;
 import org.uniprot.core.json.parser.uniparc.UniParcIdSerializer;
-import org.uniprot.core.json.parser.uniprot.serializer.UniProtAccessionSerializer;
+import org.uniprot.core.json.parser.uniprot.serializer.UniProtkbAccessionSerializer;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniparc.impl.UniParcIdImpl;
-import org.uniprot.core.uniprot.UniProtAccession;
-import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
+import org.uniprot.core.uniprotkb.UniProtkbAccession;
+import org.uniprot.core.uniprotkb.impl.UniProtkbAccessionImpl;
 import org.uniprot.core.uniref.OverlapRegion;
 import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefEntry;
@@ -81,7 +81,7 @@ public class UniRefEntryJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(UniRefMember.class, UniRefMemberImpl.class);
         mod.addAbstractTypeMapping(RepresentativeMember.class, RepresentativeMemberImpl.class);
         mod.addAbstractTypeMapping(Sequence.class, SequenceImpl.class);
-        mod.addAbstractTypeMapping(UniProtAccession.class, UniProtAccessionImpl.class);
+        mod.addAbstractTypeMapping(UniProtkbAccession.class, UniProtkbAccessionImpl.class);
         objMapper.registerModule(mod);
 
         return objMapper;
@@ -94,7 +94,7 @@ public class UniRefEntryJsonConfig extends JsonConfig {
         simpleMod.addSerializer(UniParcIdImpl.class, new UniParcIdSerializer());
 
         simpleMod.addSerializer(UniRefEntryIdImpl.class, new UniRefEntryIdSerializer());
-        simpleMod.addSerializer(UniProtAccessionImpl.class, new UniProtAccessionSerializer());
+        simpleMod.addSerializer(UniProtkbAccessionImpl.class, new UniProtkbAccessionSerializer());
         prettyObjMapper.registerModule(simpleMod);
         return prettyObjMapper;
     }

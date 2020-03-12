@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineFormater;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject.FTType;
@@ -18,8 +18,8 @@ class FtLineNoHeaderParserTest {
         String ftLines =
                 "CHAIN 20..873\n/note=\"104 kDa microneme/rhoptry antigen\"\n"
                         + "/id=\"PRO_0000232680\"\n";
-        UniprotLineParser<FtLineObject> parser =
-                new DefaultUniprotLineParserFactory().createFtLineParser();
+        UniprotkbLineParser<FtLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createFtLineParser();
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
@@ -51,8 +51,8 @@ class FtLineNoHeaderParserTest {
     void testNonTer() {
         String ftLines = "NON_TER 1";
         ;
-        UniprotLineParser<FtLineObject> parser =
-                new DefaultUniprotLineParserFactory().createFtLineParser();
+        UniprotkbLineParser<FtLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createFtLineParser();
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
@@ -64,8 +64,8 @@ class FtLineNoHeaderParserTest {
     void testChain2() {
         String ftLines = "CHAIN ?..121\n/note=\"Potential\"\n" + "/id=\"PRO_5001267722\"";
 
-        UniprotLineParser<FtLineObject> parser =
-                new DefaultUniprotLineParserFactory().createFtLineParser();
+        UniprotkbLineParser<FtLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createFtLineParser();
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
@@ -78,8 +78,8 @@ class FtLineNoHeaderParserTest {
         String ftLines = "BINDING 138\n/note=\"NAD(P)HX; via amide nitrogen\"";
 
         ;
-        UniprotLineParser<FtLineObject> parser =
-                new DefaultUniprotLineParserFactory().createFtLineParser();
+        UniprotkbLineParser<FtLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createFtLineParser();
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
@@ -97,8 +97,8 @@ class FtLineNoHeaderParserTest {
     void testSignal() {
         String ftLines = "SIGNAL <1..33\n/note=\"Potential\"";
 
-        UniprotLineParser<FtLineObject> parser =
-                new DefaultUniprotLineParserFactory().createFtLineParser();
+        UniprotkbLineParser<FtLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createFtLineParser();
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
@@ -110,8 +110,8 @@ class FtLineNoHeaderParserTest {
     void testCONFLICT() {
         String ftLines = "CONFLICT 124..127\n/note=\"GLTA -> ESHP (in Ref. 1; AAA98633)\"";
 
-        UniprotLineParser<FtLineObject> parser =
-                new DefaultUniprotLineParserFactory().createFtLineParser();
+        UniprotkbLineParser<FtLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createFtLineParser();
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
@@ -130,8 +130,8 @@ class FtLineNoHeaderParserTest {
         String ftLines =
                 "VARIANT 421\n/note=\"C -> R (in GS; dbSNP:rs28936387)\"\n/id=\"VAR_007115\"";
 
-        UniprotLineParser<FtLineObject> parser =
-                new DefaultUniprotLineParserFactory().createFtLineParser();
+        UniprotkbLineParser<FtLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createFtLineParser();
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
@@ -154,8 +154,8 @@ class FtLineNoHeaderParserTest {
                         + "HELIX 33..83\n"
                         + "TURN 3..33";
 
-        UniprotLineParser<FtLineObject> parser =
-                new DefaultUniprotLineParserFactory().createFtLineParser();
+        UniprotkbLineParser<FtLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createFtLineParser();
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
@@ -185,8 +185,8 @@ class FtLineNoHeaderParserTest {
                 "REGION 237..240\n/note=\"Sulfate 1 binding\"\n"
                         + "REGION 275..277\n/note=\"Phosphate 2 binding\"\n"
                         + "/evidence=\"ECO:0000006|PubMed:20858735, ECO:0000006\"";
-        UniprotLineParser<FtLineObject> parser =
-                new DefaultUniprotLineParserFactory().createFtLineParser();
+        UniprotkbLineParser<FtLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createFtLineParser();
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
@@ -206,8 +206,8 @@ class FtLineNoHeaderParserTest {
                 "TRANSMEM 57..77\n/note=\"Helical; (Potential)\"\n"
                         + "/evidence=\"ECO:0000257|HAMAP-Rule:MF_03021\"";
 
-        UniprotLineParser<FtLineObject> parser =
-                new DefaultUniprotLineParserFactory().createFtLineParser();
+        UniprotkbLineParser<FtLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createFtLineParser();
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);
@@ -225,8 +225,8 @@ class FtLineNoHeaderParserTest {
                 "METAL 186\n/note=\"Calcium; via carbonyl oxygen\"\n"
                         + "/evidence=\"ECO:0000006|PubMed:20858735, ECO:0000006|PubMed:23640942\"";
 
-        UniprotLineParser<FtLineObject> parser =
-                new DefaultUniprotLineParserFactory().createFtLineParser();
+        UniprotkbLineParser<FtLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createFtLineParser();
         FtLineFormater formater = new FtLineFormater();
         String lines = formater.format(ftLines);
         FtLineObject obj = parser.parse(lines);

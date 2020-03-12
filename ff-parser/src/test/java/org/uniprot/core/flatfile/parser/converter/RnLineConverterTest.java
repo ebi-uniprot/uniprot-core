@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.rn.RnLineConverter;
 import org.uniprot.core.flatfile.parser.impl.rn.RnLineObject;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 class RnLineConverterTest {
     @Test

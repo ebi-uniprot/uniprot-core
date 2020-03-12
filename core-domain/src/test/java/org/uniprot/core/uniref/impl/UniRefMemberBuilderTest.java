@@ -8,8 +8,8 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
-import org.uniprot.core.uniprot.UniProtAccession;
-import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
+import org.uniprot.core.uniprotkb.UniProtkbAccession;
+import org.uniprot.core.uniprotkb.impl.UniProtkbAccessionBuilder;
 import org.uniprot.core.uniref.OverlapRegion;
 import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefMember;
@@ -80,7 +80,7 @@ class UniRefMemberBuilderTest {
 
     @Test
     void testAddAccession() {
-        UniProtAccession accession = new UniProtAccessionBuilder("P12345").build();
+        UniProtkbAccession accession = new UniProtkbAccessionBuilder("P12345").build();
         UniRefMember member = new UniRefMemberBuilder().accessionsAdd(accession).build();
         assertEquals(1, member.getUniProtAccessions().size());
         assertEquals(accession, member.getUniProtAccessions().get(0));
@@ -88,9 +88,9 @@ class UniRefMemberBuilderTest {
 
     @Test
     void testAccessions() {
-        UniProtAccession accession1 = new UniProtAccessionBuilder("P12345").build();
-        UniProtAccession accession2 = new UniProtAccessionBuilder("P12346").build();
-        List<UniProtAccession> accessions = Arrays.asList(accession1, accession2);
+        UniProtkbAccession accession1 = new UniProtkbAccessionBuilder("P12345").build();
+        UniProtkbAccession accession2 = new UniProtkbAccessionBuilder("P12346").build();
+        List<UniProtkbAccession> accessions = Arrays.asList(accession1, accession2);
         UniRefMember member = new UniRefMemberBuilder().accessionsSet(accessions).build();
         assertEquals(2, member.getUniProtAccessions().size());
         assertEquals(accession1, member.getUniProtAccessions().get(0));
