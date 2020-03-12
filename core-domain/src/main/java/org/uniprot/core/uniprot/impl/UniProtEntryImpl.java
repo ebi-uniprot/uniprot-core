@@ -573,18 +573,12 @@ public class UniProtEntryImpl implements UniProtEntry {
     }
 
     private void updateProteinAltNameEvidences(Set<Evidence> evidences, ProteinAltName pn) {
-        if (pn == null) {
-            return;
-        }
         updateHasEvidence(evidences, pn.getFullName());
         updateHasEvidences(evidences, pn.getShortNames());
         updateHasEvidences(evidences, pn.getEcNumbers());
     }
 
     private void updateProteinSubNameEvidences(Set<Evidence> evidences, ProteinSubName pn) {
-        if (pn == null) {
-            return;
-        }
         updateHasEvidence(evidences, pn.getFullName());
         updateHasEvidences(evidences, pn.getEcNumbers());
     }
