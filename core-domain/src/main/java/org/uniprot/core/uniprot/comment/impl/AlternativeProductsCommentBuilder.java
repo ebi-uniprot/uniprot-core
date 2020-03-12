@@ -13,7 +13,8 @@ import org.uniprot.core.uniprot.comment.APIsoform;
 import org.uniprot.core.uniprot.comment.AlternativeProductsComment;
 import org.uniprot.core.uniprot.comment.Note;
 
-public final class APCommentBuilder implements CommentBuilder<AlternativeProductsComment> {
+public final class AlternativeProductsCommentBuilder
+        implements CommentBuilder<AlternativeProductsComment> {
     private List<APEventType> events = new ArrayList<>();
     private List<APIsoform> isoforms = new ArrayList<>();
     private Note note;
@@ -22,34 +23,35 @@ public final class APCommentBuilder implements CommentBuilder<AlternativeProduct
         return new AlternativeProductsCommentImpl(events, isoforms, note);
     }
 
-    public static @Nonnull APCommentBuilder from(@Nonnull AlternativeProductsComment instance) {
-        return new APCommentBuilder()
+    public static @Nonnull AlternativeProductsCommentBuilder from(
+            @Nonnull AlternativeProductsComment instance) {
+        return new AlternativeProductsCommentBuilder()
                 .eventsSet(instance.getEvents())
                 .isoformsSet(instance.getIsoforms())
                 .note(instance.getNote());
     }
 
-    public @Nonnull APCommentBuilder eventsSet(List<APEventType> events) {
+    public @Nonnull AlternativeProductsCommentBuilder eventsSet(List<APEventType> events) {
         this.events = modifiableList(events);
         return this;
     }
 
-    public @Nonnull APCommentBuilder eventsAdd(APEventType event) {
+    public @Nonnull AlternativeProductsCommentBuilder eventsAdd(APEventType event) {
         addOrIgnoreNull(event, this.events);
         return this;
     }
 
-    public @Nonnull APCommentBuilder isoformsSet(List<APIsoform> isoforms) {
+    public @Nonnull AlternativeProductsCommentBuilder isoformsSet(List<APIsoform> isoforms) {
         this.isoforms = modifiableList(isoforms);
         return this;
     }
 
-    public @Nonnull APCommentBuilder isoformsAdd(APIsoform isoform) {
+    public @Nonnull AlternativeProductsCommentBuilder isoformsAdd(APIsoform isoform) {
         addOrIgnoreNull(isoform, this.isoforms);
         return this;
     }
 
-    public @Nonnull APCommentBuilder note(Note note) {
+    public @Nonnull AlternativeProductsCommentBuilder note(Note note) {
         this.note = note;
         return this;
     }

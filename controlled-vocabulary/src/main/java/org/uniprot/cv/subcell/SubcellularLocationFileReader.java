@@ -207,9 +207,10 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
             List<SubcellularLocationEntry> list, List<SubcellularFileEntry> rawList) {
         List<SubcellularLocationEntryBuilder> retList = new ArrayList<>(list.size());
         for (SubcellularFileEntry raw : rawList) {
+            SubcellularLocationEntry targetFromList = findByIdentifier(list, getIdentifier(raw));
+            assert (targetFromList != null);
             SubcellularLocationEntryBuilder target =
-                    SubcellularLocationEntryBuilder.from(
-                            findByIdentifier(list, getIdentifier(raw)));
+                    SubcellularLocationEntryBuilder.from(targetFromList);
 
             // Only check for those who have relationships
             if (raw.hi.isEmpty() && raw.hp.isEmpty()) {

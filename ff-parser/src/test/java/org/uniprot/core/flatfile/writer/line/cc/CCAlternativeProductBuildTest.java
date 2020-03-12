@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CCAPCommentLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.impl.APCommentBuilder;
 import org.uniprot.core.uniprot.comment.impl.APIsoformBuilder;
+import org.uniprot.core.uniprot.comment.impl.AlternativeProductsCommentBuilder;
 import org.uniprot.core.uniprot.comment.impl.IsoformNameBuilder;
 import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
@@ -68,7 +68,7 @@ class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
         List<String> commentEvs = new ArrayList<>();
         Map<String, List<String>> commentNotes = new TreeMap<>();
         commentNotes.put(commentStr, commentEvs);
-        APCommentBuilder builder =
+        AlternativeProductsCommentBuilder builder =
                 buildComment(Arrays.asList(new String[] {"Alternative splicing"}), commentNotes);
 
         List<APIsoform> isoforms = new ArrayList<>();
@@ -315,7 +315,7 @@ class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
         Map<String, List<String>> commentNotes = new TreeMap<>();
         commentNotes.put(commentStr, commentEvs);
         commentNotes.put(commentStr2, commentEvs);
-        APCommentBuilder builder =
+        AlternativeProductsCommentBuilder builder =
                 buildComment(Arrays.asList(new String[] {"Alternative splicing"}), commentNotes);
 
         List<APIsoform> isoforms = new ArrayList<>();
@@ -497,8 +497,9 @@ class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
         doTestStringEv(ccLineStringEvidence, comment);
     }
 
-    private APCommentBuilder buildComment(List<String> events, Map<String, List<String>> notes) {
-        APCommentBuilder builder = new APCommentBuilder();
+    private AlternativeProductsCommentBuilder buildComment(
+            List<String> events, Map<String, List<String>> notes) {
+        AlternativeProductsCommentBuilder builder = new AlternativeProductsCommentBuilder();
         List<APEventType> apEvents =
                 events.stream().map(val -> APEventType.typeOf(val)).collect(Collectors.toList());
         builder.eventsSet(apEvents);

@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.ObjectsForTests;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
@@ -55,7 +56,8 @@ class EvidencedValueImplTest {
 
     @Test
     void toStringIsSeperatedBySpace() {
-        EvidencedValueImpl evidencedValue = new EvidencedValueImpl("value", null);
+        EvidencedValueImpl evidencedValue =
+                new EvidencedValueImpl("value", ObjectsForTests.createEvidences());
         assertEquals(evidencedValue.toString(), evidencedValue.getDisplayed(" "));
     }
 

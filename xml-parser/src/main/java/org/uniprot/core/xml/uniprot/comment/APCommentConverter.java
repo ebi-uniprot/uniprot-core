@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import org.uniprot.core.uniprot.comment.APEventType;
 import org.uniprot.core.uniprot.comment.AlternativeProductsComment;
 import org.uniprot.core.uniprot.comment.Note;
-import org.uniprot.core.uniprot.comment.impl.APCommentBuilder;
+import org.uniprot.core.uniprot.comment.impl.AlternativeProductsCommentBuilder;
 import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.EventType;
@@ -31,7 +31,7 @@ public class APCommentConverter implements CommentConverter<AlternativeProductsC
 
     @Override
     public AlternativeProductsComment fromXml(CommentType xmlObj) {
-        APCommentBuilder builder = new APCommentBuilder();
+        AlternativeProductsCommentBuilder builder = new AlternativeProductsCommentBuilder();
 
         if (xmlObj.getEvent() != null && !xmlObj.getEvent().isEmpty()) {
             builder.eventsSet(

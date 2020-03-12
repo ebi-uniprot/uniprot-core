@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.impl.APCommentBuilder;
 import org.uniprot.core.uniprot.comment.impl.APIsoformBuilder;
+import org.uniprot.core.uniprot.comment.impl.AlternativeProductsCommentBuilder;
 import org.uniprot.core.uniprot.comment.impl.IsoformNameBuilder;
 import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
@@ -59,7 +59,7 @@ public class APCommentTransformer implements CommentTransformer<AlternativeProdu
         annotation = CommentTransformerHelper.trimCommentHeader(annotation, COMMENT_TYPE);
         String[] tokens = annotation.split(";");
         APIsoformBuilder isoformBuilder = null;
-        APCommentBuilder apBuilder = new APCommentBuilder();
+        AlternativeProductsCommentBuilder apBuilder = new AlternativeProductsCommentBuilder();
         List<APEventType> events = new ArrayList<>();
         List<APIsoform> apIsoforms = new ArrayList<>();
         for (int i = 0; i < tokens.length; i++) {
@@ -134,7 +134,7 @@ public class APCommentTransformer implements CommentTransformer<AlternativeProdu
     }
 
     private void addEventInfoToAPBuilder(
-            APCommentBuilder apBuilder, List<APEventType> events, String token) {
+            AlternativeProductsCommentBuilder apBuilder, List<APEventType> events, String token) {
         String val = token.substring(EVENT.length());
         String[] eventTokens = val.split(",");
         for (String eventToken : eventTokens) {

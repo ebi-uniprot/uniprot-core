@@ -14,6 +14,10 @@ public class ECEntryImpl implements ECEntry {
     private final String id;
     private final String label;
 
+    ECEntryImpl() {
+        this(null, null);
+    }
+
     ECEntryImpl(String id, String label) {
         this.id = id;
         this.label = label;

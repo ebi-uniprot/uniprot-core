@@ -34,7 +34,7 @@ class ECNumberImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         ECNumber impl = new ECNumberImpl("ec");
-        ECNumber obj = new ECNumberImpl("ec");
+        ECNumber obj = ECNumberBuilder.from(impl).build();
 
         assertTrue(impl.hasValue());
 

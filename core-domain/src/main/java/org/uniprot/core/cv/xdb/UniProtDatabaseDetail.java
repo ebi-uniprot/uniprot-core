@@ -20,7 +20,7 @@ public class UniProtDatabaseDetail implements Serializable {
     private boolean implicit = false;
     private String linkedReason = null;
 
-    private UniProtDatabaseDetail() {
+    UniProtDatabaseDetail() {
         this.attributes = new ArrayList<>();
         this.attributes.add(DEFAULT_ATTRIBUTE);
     }

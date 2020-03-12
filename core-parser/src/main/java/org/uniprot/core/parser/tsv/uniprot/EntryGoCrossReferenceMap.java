@@ -9,7 +9,7 @@ import org.uniprot.core.util.Utils;
 
 public class EntryGoCrossReferenceMap implements NamedValueMap {
     private final List<UniProtCrossReference> dbReferences;
-    public static final List<String> FIELDS = Arrays.asList("go", "go_c", "go_f", "go_p", "go_id");
+    static final List<String> FIELDS = Arrays.asList("go", "go_c", "go_f", "go_p", "go_id");
 
     public EntryGoCrossReferenceMap(List<UniProtCrossReference> dbReferences) {
         this.dbReferences = Utils.unmodifiableList(dbReferences);

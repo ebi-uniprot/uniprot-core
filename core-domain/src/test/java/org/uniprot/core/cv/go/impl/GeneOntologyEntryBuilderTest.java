@@ -45,4 +45,13 @@ class GeneOntologyEntryBuilderTest {
         assertTrue(goTerm1.equals(goTerm2) && goTerm2.equals(goTerm1));
         assertEquals(goTerm1.hashCode(), goTerm2.hashCode());
     }
+
+    @Test
+    void canAddSingleAn() {
+        GeneOntologyEntry goTerm =
+                new GeneOntologyEntryBuilder().ancestorsAdd(new GeneOntologyEntryImpl()).build();
+
+        assertFalse(goTerm.getAncestors().isEmpty());
+        assertEquals(1, goTerm.getAncestors().size());
+    }
 }

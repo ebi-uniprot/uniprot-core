@@ -9,7 +9,7 @@ public final class UniProtDatabaseAttribute implements Serializable {
     private String xmlTag;
     private String uriLink;
 
-    private UniProtDatabaseAttribute() {}
+    UniProtDatabaseAttribute() {}
 
     public UniProtDatabaseAttribute(String name, String xmlTag, String uriLink) {
         this.name = name;
