@@ -1,8 +1,8 @@
 package org.uniprot.core.cv.chebi.impl;
 
-import org.uniprot.core.cv.chebi.ChebiEntry;
-
 import java.util.Objects;
+
+import org.uniprot.core.cv.chebi.ChebiEntry;
 
 /**
  * Created 15/03/19
@@ -61,9 +61,9 @@ public class ChebiEntryImpl implements ChebiEntry {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ChebiEntryImpl that = (ChebiEntryImpl) o;
-        return Objects.equals(id, that.id) &&
-          Objects.equals(inchiKey, that.inchiKey) &&
-          Objects.equals(name, that.name);
+        return Objects.equals(id, that.id)
+                && Objects.equals(inchiKey, that.inchiKey)
+                && Objects.equals(name, that.name);
     }
 
     @Override

@@ -175,7 +175,9 @@ class AlternativeProductsCommentBuilderTest {
     @Test
     void canAddSingleIsoform() {
         AlternativeProductsComment obj =
-                new AlternativeProductsCommentBuilder().isoformsAdd(ObjectsForTests.createAPIsoform()).build();
+                new AlternativeProductsCommentBuilder()
+                        .isoformsAdd(ObjectsForTests.createAPIsoform())
+                        .build();
         assertNotNull(obj.getIsoforms());
         assertFalse(obj.getIsoforms().isEmpty());
         assertTrue(obj.hasIsoforms());
@@ -183,7 +185,8 @@ class AlternativeProductsCommentBuilderTest {
 
     @Test
     void nullIsoform_willBeIgnore() {
-        AlternativeProductsComment obj = new AlternativeProductsCommentBuilder().isoformsAdd(null).build();
+        AlternativeProductsComment obj =
+                new AlternativeProductsCommentBuilder().isoformsAdd(null).build();
         assertNotNull(obj.getIsoforms());
         assertTrue(obj.getIsoforms().isEmpty());
         assertFalse(obj.hasIsoforms());
@@ -192,7 +195,9 @@ class AlternativeProductsCommentBuilderTest {
     @Test
     void canAddSingleEvent() {
         AlternativeProductsComment obj =
-                new AlternativeProductsCommentBuilder().eventsAdd(APEventType.ALTERNATIVE_INITIATION).build();
+                new AlternativeProductsCommentBuilder()
+                        .eventsAdd(APEventType.ALTERNATIVE_INITIATION)
+                        .build();
         assertNotNull(obj.getEvents());
         assertFalse(obj.getEvents().isEmpty());
         assertTrue(obj.hasEvents());
@@ -200,7 +205,8 @@ class AlternativeProductsCommentBuilderTest {
 
     @Test
     void nullEvent_willBeIgnore() {
-        AlternativeProductsComment obj = new AlternativeProductsCommentBuilder().eventsAdd(null).build();
+        AlternativeProductsComment obj =
+                new AlternativeProductsCommentBuilder().eventsAdd(null).build();
         assertNotNull(obj.getEvents());
         assertTrue(obj.getEvents().isEmpty());
         assertFalse(obj.hasEvents());

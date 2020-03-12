@@ -82,18 +82,26 @@ public class PathwayEntryImpl implements PathwayEntry {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PathwayEntryImpl that = (PathwayEntryImpl) o;
-        return Objects.equals(accession, that.accession) &&
-          Objects.equals(id, that.id) &&
-          Objects.equals(pathwayClass, that.pathwayClass) &&
-          Objects.equals(definition, that.definition) &&
-          Objects.equals(synonyms, that.synonyms) &&
-          Objects.equals(isAParents, that.isAParents) &&
-          Objects.equals(partOfParents, that.partOfParents) &&
-          Objects.equals(crossReferences, that.crossReferences);
+        return Objects.equals(accession, that.accession)
+                && Objects.equals(id, that.id)
+                && Objects.equals(pathwayClass, that.pathwayClass)
+                && Objects.equals(definition, that.definition)
+                && Objects.equals(synonyms, that.synonyms)
+                && Objects.equals(isAParents, that.isAParents)
+                && Objects.equals(partOfParents, that.partOfParents)
+                && Objects.equals(crossReferences, that.crossReferences);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(accession, id, pathwayClass, definition, synonyms, isAParents, partOfParents, crossReferences);
+        return Objects.hash(
+                accession,
+                id,
+                pathwayClass,
+                definition,
+                synonyms,
+                isAParents,
+                partOfParents,
+                crossReferences);
     }
 }

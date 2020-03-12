@@ -48,9 +48,8 @@ class GeneOntologyEntryBuilderTest {
 
     @Test
     void canAddSingleAn() {
-        GeneOntologyEntry goTerm = new GeneOntologyEntryBuilder()
-          .ancestorsAdd(new GeneOntologyEntryImpl())
-          .build();
+        GeneOntologyEntry goTerm =
+                new GeneOntologyEntryBuilder().ancestorsAdd(new GeneOntologyEntryImpl()).build();
 
         assertFalse(goTerm.getAncestors().isEmpty());
         assertEquals(1, goTerm.getAncestors().size());

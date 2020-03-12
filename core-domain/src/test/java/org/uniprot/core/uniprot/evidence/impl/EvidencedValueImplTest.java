@@ -56,7 +56,8 @@ class EvidencedValueImplTest {
 
     @Test
     void toStringIsSeperatedBySpace() {
-        EvidencedValueImpl evidencedValue = new EvidencedValueImpl("value", ObjectsForTests.createEvidences());
+        EvidencedValueImpl evidencedValue =
+                new EvidencedValueImpl("value", ObjectsForTests.createEvidences());
         assertEquals(evidencedValue.toString(), evidencedValue.getDisplayed(" "));
     }
 

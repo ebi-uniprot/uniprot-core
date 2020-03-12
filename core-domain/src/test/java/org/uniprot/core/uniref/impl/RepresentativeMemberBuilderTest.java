@@ -2,6 +2,8 @@ package org.uniprot.core.uniref.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
@@ -10,8 +12,6 @@ import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
 import org.uniprot.core.uniprot.UniProtAccession;
 import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
 import org.uniprot.core.uniref.*;
-
-import java.util.Collections;
 
 /**
  * @author jluo
@@ -161,9 +161,21 @@ class RepresentativeMemberBuilderTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        UniRefMember impl = new UniRefMemberImpl(UniRefMemberIdType.UNIPARC, "memId","orgName",
-          56L,56, "proName", Collections.emptyList(), new UniRefEntryIdImpl("50"), new UniRefEntryIdImpl("90"),
-          new UniRefEntryIdImpl("100"), new UniParcIdBuilder("id").build(),null, false);
+        UniRefMember impl =
+                new UniRefMemberImpl(
+                        UniRefMemberIdType.UNIPARC,
+                        "memId",
+                        "orgName",
+                        56L,
+                        56,
+                        "proName",
+                        Collections.emptyList(),
+                        new UniRefEntryIdImpl("50"),
+                        new UniRefEntryIdImpl("90"),
+                        new UniRefEntryIdImpl("100"),
+                        new UniParcIdBuilder("id").build(),
+                        null,
+                        false);
         RepresentativeMember obj = RepresentativeMemberBuilder.from(impl).build();
 
         assertEquals(impl.getUniProtAccessions(), obj.getUniProtAccessions());

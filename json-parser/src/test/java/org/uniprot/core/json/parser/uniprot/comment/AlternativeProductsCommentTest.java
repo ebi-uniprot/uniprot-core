@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.impl.AlternativeProductsCommentBuilder;
 import org.uniprot.core.uniprot.comment.impl.APIsoformBuilder;
+import org.uniprot.core.uniprot.comment.impl.AlternativeProductsCommentBuilder;
 import org.uniprot.core.uniprot.comment.impl.IsoformNameBuilder;
 import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
@@ -117,6 +117,10 @@ public class AlternativeProductsCommentTest {
         List<APEventType> events = Collections.singletonList(APEventType.ALTERNATIVE_INITIATION);
         List<APIsoform> isoforms = Collections.singletonList(apIsoform);
 
-        return new AlternativeProductsCommentBuilder().eventsSet(events).isoformsSet(isoforms).note(note).build();
+        return new AlternativeProductsCommentBuilder()
+                .eventsSet(events)
+                .isoformsSet(isoforms)
+                .note(note)
+                .build();
     }
 }

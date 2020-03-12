@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CCAPCommentLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.impl.AlternativeProductsCommentBuilder;
 import org.uniprot.core.uniprot.comment.impl.APIsoformBuilder;
+import org.uniprot.core.uniprot.comment.impl.AlternativeProductsCommentBuilder;
 import org.uniprot.core.uniprot.comment.impl.IsoformNameBuilder;
 import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
@@ -497,7 +497,8 @@ class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
         doTestStringEv(ccLineStringEvidence, comment);
     }
 
-    private AlternativeProductsCommentBuilder buildComment(List<String> events, Map<String, List<String>> notes) {
+    private AlternativeProductsCommentBuilder buildComment(
+            List<String> events, Map<String, List<String>> notes) {
         AlternativeProductsCommentBuilder builder = new AlternativeProductsCommentBuilder();
         List<APEventType> apEvents =
                 events.stream().map(val -> APEventType.typeOf(val)).collect(Collectors.toList());

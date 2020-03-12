@@ -55,7 +55,11 @@ class AlternativeProductsCommentImplTest {
         List<APIsoform> isoforms = createIsoforms();
         Note note = createNote();
         AlternativeProductsComment comment =
-                new AlternativeProductsCommentBuilder().eventsSet(events).isoformsSet(isoforms).note(note).build();
+                new AlternativeProductsCommentBuilder()
+                        .eventsSet(events)
+                        .isoformsSet(isoforms)
+                        .note(note)
+                        .build();
         assertEquals(events, comment.getEvents());
         assertEquals(isoforms, comment.getIsoforms());
         assertEquals(note, comment.getNote());
@@ -69,7 +73,11 @@ class AlternativeProductsCommentImplTest {
         List<APIsoform> isoforms = createIsoforms();
         Note note = null;
         AlternativeProductsComment comment =
-                new AlternativeProductsCommentBuilder().eventsSet(events).isoformsSet(isoforms).note(note).build();
+                new AlternativeProductsCommentBuilder()
+                        .eventsSet(events)
+                        .isoformsSet(isoforms)
+                        .note(note)
+                        .build();
         assertEquals(events, comment.getEvents());
         assertEquals(isoforms, comment.getIsoforms());
         assertEquals(note, comment.getNote());

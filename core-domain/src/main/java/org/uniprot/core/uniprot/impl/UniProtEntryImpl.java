@@ -247,7 +247,9 @@ public class UniProtEntryImpl implements UniProtEntry {
     public List<UniProtReference> getReferencesByType(CitationType type) {
         return this.references.stream()
                 .filter(uniProtReference -> notNull(uniProtReference.getCitation()))
-                .filter(uniProtReference -> notNull(uniProtReference.getCitation().getCitationType()))
+                .filter(
+                        uniProtReference ->
+                                notNull(uniProtReference.getCitation().getCitationType()))
                 .filter(val -> val.getCitation().getCitationType().equals(type))
                 .collect(Collectors.toList());
     }

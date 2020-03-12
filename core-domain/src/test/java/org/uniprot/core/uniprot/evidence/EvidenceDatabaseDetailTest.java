@@ -45,7 +45,7 @@ class EvidenceDatabaseDetailTest {
     @Test
     void canGetName() {
         EvidenceDatabaseDetail obj =
-          new EvidenceDatabaseDetail("a", "b", EvidenceDatabaseCategory.A, null);
+                new EvidenceDatabaseDetail("a", "b", EvidenceDatabaseCategory.A, null);
         assertEquals("a", obj.getName());
     }
 }

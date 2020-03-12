@@ -1,5 +1,7 @@
 package org.uniprot.core.cv.disease.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -15,8 +17,6 @@ import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class DiseaseEntryImplTest {
     private String uuid;

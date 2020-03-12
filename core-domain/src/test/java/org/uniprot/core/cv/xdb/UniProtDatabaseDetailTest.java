@@ -1,5 +1,7 @@
 package org.uniprot.core.cv.xdb;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -8,8 +10,6 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class UniProtDatabaseDetailTest {
     private String name;
@@ -20,7 +20,7 @@ class UniProtDatabaseDetailTest {
 
     @BeforeEach
     void setUp() {
-        String  random = UUID.randomUUID().toString();
+        String random = UUID.randomUUID().toString();
         this.name = "name-" + random;
         this.displayName = "displayName-" + random;
         this.category = UniProtDatabaseCategory.CHEMISTRY;
@@ -108,11 +108,11 @@ class UniProtDatabaseDetailTest {
     }
 
     static UniProtDatabaseDetail createUniProtDatabaseDetail(
-      String name,
-      String displayName,
-      UniProtDatabaseCategory category,
-      String uriLink,
-      List<UniProtDatabaseAttribute> attributes) {
+            String name,
+            String displayName,
+            UniProtDatabaseCategory category,
+            String uriLink,
+            List<UniProtDatabaseAttribute> attributes) {
         return new UniProtDatabaseDetail(
                 name, displayName, category, uriLink, attributes, false, null);
     }

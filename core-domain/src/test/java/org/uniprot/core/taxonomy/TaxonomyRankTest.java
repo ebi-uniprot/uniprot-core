@@ -22,6 +22,6 @@ class TaxonomyRankTest {
     @ParameterizedTest
     @ValueSource(strings = {" ", "", "not exit"})
     void typeOfWillThrowException_notMatched(String val) {
-        assertThrows(IllegalArgumentException.class, ()-> TaxonomyRank.typeOf(val));
+        assertThrows(IllegalArgumentException.class, () -> TaxonomyRank.typeOf(val));
     }
 }

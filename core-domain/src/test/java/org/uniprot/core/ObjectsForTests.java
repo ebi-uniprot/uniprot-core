@@ -183,15 +183,13 @@ public class ObjectsForTests {
     }
 
     public static EvidencedValue createEvidenceValueWithSingleEvidence() {
-        Evidence evidence = new EvidenceBuilder()
-          .databaseName("CGD")
-          .databaseId("CGD")
-          .evidenceCode(EvidenceCode.ECO_0000259)
-          .build();
-        return new EvidencedValueBuilder()
-          .evidencesAdd(evidence)
-          .value("CGD")
-          .build();
+        Evidence evidence =
+                new EvidenceBuilder()
+                        .databaseName("CGD")
+                        .databaseId("CGD")
+                        .evidenceCode(EvidenceCode.ECO_0000259)
+                        .build();
+        return new EvidencedValueBuilder().evidencesAdd(evidence).value("CGD").build();
     }
 
     public static List<EvidencedValue> createEvidenceValuesWithEvidences() {
