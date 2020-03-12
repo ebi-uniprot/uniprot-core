@@ -3,8 +3,7 @@ package org.uniprot.core.uniprot.impl;
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.ObjectsForTests.createEvidence;
-import static org.uniprot.core.ObjectsForTests.createEvidenceValuesWithEvidences;
+import static org.uniprot.core.ObjectsForTests.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -17,6 +16,7 @@ import org.uniprot.core.citation.impl.BookBuilder;
 import org.uniprot.core.citation.impl.PatentBuilder;
 import org.uniprot.core.impl.ECNumberBuilder;
 import org.uniprot.core.impl.SequenceBuilder;
+import org.uniprot.core.proteome.impl.RedundantProteomeBuilder;
 import org.uniprot.core.uniprot.*;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.CommentType;
@@ -259,6 +259,16 @@ class UniProtEntryImplTest {
     }
 
     @Test
+    void canGatherEvidencesFrom_ProteinDescription_AlternativeNames_isNull() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .proteinDescription(new ProteinDescriptionBuilder()
+            .alternativeNamesAdd(null)
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
     void canGatherEvidencesFrom_ProteinDescription_AlternativeNames_FullName_whenNoEvidence() {
         List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
           .proteinDescription(new ProteinDescriptionBuilder()
@@ -335,6 +345,17 @@ class UniProtEntryImplTest {
         List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
           .proteinDescription(new ProteinDescriptionBuilder()
             .submissionNamesAdd(new ProteinSubNameBuilder().build())
+            .build())
+          .organism(new OrganismBuilder().build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_ProteinDescription_SubmissionNames_isNull() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .proteinDescription(new ProteinDescriptionBuilder()
+            .submissionNamesAdd(null)
             .build())
           .organism(new OrganismBuilder().build())
           .build().gatherEvidences();
@@ -872,7 +893,10 @@ class UniProtEntryImplTest {
     @Test
     void canGatherEvidencesFrom_Genes_Synonyms_whenNoEvidence() {
         List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
-          .genesAdd(new GeneBuilder().synonymsAdd(new GeneNameSynonymBuilder().build()).build())
+          .genesAdd(new GeneBuilder()
+            .synonymsAdd(new GeneNameSynonymBuilder().build())
+            .geneName(new GeneNameBuilder().value("gene").build())
+            .build())
           .build().gatherEvidences();
         assertTrue(evidences.isEmpty());
     }
@@ -880,9 +904,10 @@ class UniProtEntryImplTest {
     @Test
     void canGatherEvidencesFrom_Genes_Synonyms() {
         List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
-          .genesAdd(new GeneBuilder().synonymsAdd(new GeneNameSynonymBuilder()
-            .evidencesAdd(createEvidence())
-            .build()).build())
+          .genesAdd(new GeneBuilder()
+            .synonymsAdd(new GeneNameSynonymBuilder().evidencesAdd(createEvidence()).build())
+            .geneName(new GeneNameBuilder().value("gene").build())
+            .build())
           .build().gatherEvidences();
         assertEquals(1, evidences.size());
     }
@@ -962,7 +987,7 @@ class UniProtEntryImplTest {
     @Test
     void canGatherEvidencesFrom_Comments_FreeText_whenNoEvidence() {
         List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
-          .commentsAdd(new FreeTextCommentBuilder().build())
+          .commentsAdd(new FreeTextCommentBuilder().commentType(CommentType.FUNCTION).build())
           .build().gatherEvidences();
         assertTrue(evidences.isEmpty());
     }
@@ -971,6 +996,7 @@ class UniProtEntryImplTest {
     void canGatherEvidencesFrom_Comments_FreeText_noEvidenceInEvidenceValue() {
         List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
           .commentsAdd(new FreeTextCommentBuilder()
+            .commentType(CommentType.PTM)
             .textsAdd(new EvidencedValueBuilder().build())
             .build())
           .build().gatherEvidences();
@@ -981,6 +1007,7 @@ class UniProtEntryImplTest {
     void canGatherEvidencesFrom_Comments_FreeText() {
         List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
           .commentsAdd(new FreeTextCommentBuilder()
+            .commentType(CommentType.DISRUPTION_PHENOTYPE)
             .textsAdd(new EvidencedValueBuilder().evidencesAdd(createEvidence()).build())
             .build())
           .build().gatherEvidences();
@@ -1057,7 +1084,7 @@ class UniProtEntryImplTest {
     void canGatherEvidencesFrom_Comments_AlternativeProducts_Isoforms_Note() {
         List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
           .commentsAdd(new AlternativeProductsCommentBuilder().isoformsAdd(new APIsoformBuilder()
-            .note(new NoteBuilder(Collections.singletonList(createEvidenceValuesWithEvidences().get(0))).build())
+            .note(new NoteBuilder(Collections.singletonList(createEvidenceValueWithSingleEvidence())).build())
             .build()).build())
           .build().gatherEvidences();
         assertEquals(1, evidences.size());
@@ -1077,10 +1104,560 @@ class UniProtEntryImplTest {
     void canGatherEvidencesFrom_Comments_AlternativeProducts_Note() {
         List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
           .commentsAdd(new AlternativeProductsCommentBuilder()
-            .note(new NoteBuilder(Collections.singletonList(createEvidenceValuesWithEvidences().get(0)))
+            .note(new NoteBuilder(Collections.singletonList(createEvidenceValueWithSingleEvidence()))
             .build()).build())
           .build().gatherEvidences();
         assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_BPCPComment_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new BPCPCommentBuilder().build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_BPCPComment_Absorption_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new BPCPCommentBuilder()
+            .absorption(new AbsorptionBuilder().build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_BPCPComment_Absorption() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new BPCPCommentBuilder()
+            .absorption(new AbsorptionBuilder().evidencesAdd(createEvidence()).build())
+            .build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_BPCPComment_PhDependence_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new BPCPCommentBuilder()
+            .phDependence(new PhDependenceBuilder(null).build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_BPCPComment_PhDependence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new BPCPCommentBuilder()
+            .phDependence(new PhDependenceBuilder(Collections.singletonList(createEvidenceValueWithSingleEvidence())).build())
+            .build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_BPCPComment_RedoxPotential_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new BPCPCommentBuilder()
+            .redoxPotential(new RedoxPotentialBuilder(null).build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_BPCPComment_RedoxPotential() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new BPCPCommentBuilder()
+            .redoxPotential(new RedoxPotentialBuilder(Collections.singletonList(createEvidenceValueWithSingleEvidence())).build())
+            .build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_BPCPComment_TemperatureDependence_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new BPCPCommentBuilder()
+            .temperatureDependence(new TemperatureDependenceBuilder(null).build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_BPCPComment_TemperatureDependence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new BPCPCommentBuilder()
+            .temperatureDependence(new TemperatureDependenceBuilder(Collections.singletonList(createEvidenceValueWithSingleEvidence())).build())
+            .build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_BPCPComment_KineticParameters_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new BPCPCommentBuilder()
+            .kineticParameters(new KineticParametersBuilder().build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_BPCPComment_KineticParameters_MaximumVelocities_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new BPCPCommentBuilder()
+            .kineticParameters(new KineticParametersBuilder()
+              .maximumVelocitiesAdd(new MaximumVelocityBuilder().build())
+              .build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_BPCPComment_KineticParameters_MaximumVelocities() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new BPCPCommentBuilder()
+            .kineticParameters(new KineticParametersBuilder()
+              .maximumVelocitiesAdd(new MaximumVelocityBuilder().evidencesAdd(createEvidence()).build())
+              .build())
+            .build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_BPCPComment_KineticParameters_MichaelisConstants_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new BPCPCommentBuilder()
+            .kineticParameters(new KineticParametersBuilder()
+              .michaelisConstantsAdd(new MichaelisConstantBuilder().build())
+              .build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_BPCPComment_KineticParameters_MichaelisConstants() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new BPCPCommentBuilder()
+            .kineticParameters(new KineticParametersBuilder()
+              .michaelisConstantsAdd(new MichaelisConstantBuilder().evidencesAdd(createEvidence()).build())
+              .build())
+            .build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_BPCPComment_KineticParameters_Note_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new BPCPCommentBuilder()
+            .kineticParameters(new KineticParametersBuilder()
+              .note(new NoteBuilder(null).build())
+              .build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_BPCPComment_KineticParameters_Note() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new BPCPCommentBuilder()
+            .kineticParameters(new KineticParametersBuilder()
+              .note(new NoteBuilder(Collections.singletonList(createEvidenceValueWithSingleEvidence())).build())
+              .build())
+            .build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_CatalyticActivityComment_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new CatalyticActivityCommentBuilder().build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_CatalyticActivityComment_Reaction_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new CatalyticActivityCommentBuilder()
+            .reaction(new ReactionBuilder().build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_CatalyticActivityComment_Reaction() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new CatalyticActivityCommentBuilder()
+            .reaction(new ReactionBuilder().evidencesAdd(createEvidence()).build())
+            .build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_CatalyticActivityComment_PhysiologicalReactions_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new CatalyticActivityCommentBuilder()
+            .physiologicalReactionsAdd(new PhysiologicalReactionBuilder().build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_CatalyticActivityComment_PhysiologicalReactions() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new CatalyticActivityCommentBuilder()
+            .physiologicalReactionsAdd(new PhysiologicalReactionBuilder().evidencesAdd(createEvidence()).build())
+            .build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_CofactorComment_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new CofactorCommentBuilder().build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_CofactorComment_notes_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new CofactorCommentBuilder()
+            .note(new NoteBuilder(null).build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_CofactorComment_notes() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new CofactorCommentBuilder()
+            .note(new NoteBuilder(Collections.singletonList(createEvidenceValueWithSingleEvidence())).build())
+            .build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_CofactorComment_Cofactors_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new CofactorCommentBuilder()
+            .cofactorsAdd(new CofactorBuilder().build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_CofactorComment_Cofactors() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new CofactorCommentBuilder()
+            .cofactorsAdd(new CofactorBuilder().evidencesAdd(createEvidence()).build())
+            .build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_DiseaseComment_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new DiseaseCommentBuilder().build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_DiseaseComment_notes_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new DiseaseCommentBuilder()
+            .note(new NoteBuilder(null).build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_DiseaseComment_notes() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new DiseaseCommentBuilder()
+            .note(new NoteBuilder(Collections.singletonList(createEvidenceValueWithSingleEvidence())).build())
+            .build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_DiseaseComment_Disease_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new DiseaseCommentBuilder()
+            .disease(new DiseaseBuilder().build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_DiseaseComment_Disease() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new DiseaseCommentBuilder()
+            .disease(new DiseaseBuilder().evidencesAdd(createEvidence()).build())
+            .build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_RnaEditingComment_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new RnaEditingCommentBuilder().build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_RnaEditingComment_notes_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new RnaEditingCommentBuilder()
+            .note(new NoteBuilder(null).build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_RnaEditingComment_notes() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new RnaEditingCommentBuilder()
+            .note(new NoteBuilder(Collections.singletonList(createEvidenceValueWithSingleEvidence())).build())
+            .build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_RnaEditingComment_Positions_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new RnaEditingCommentBuilder()
+            .positionsAdd(new RnaEditingPositionBuilder().build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_RnaEditingComment_Positions() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new RnaEditingCommentBuilder()
+            .positionsAdd(new RnaEditingPositionBuilder().evidencesAdd(createEvidence()).build())
+            .build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_SubcellularLocationComment_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new SubcellularLocationCommentBuilder().build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_SubcellularLocationComment_notes_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new SubcellularLocationCommentBuilder()
+            .note(new NoteBuilder(null).build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_SubcellularLocationComment_notes() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new SubcellularLocationCommentBuilder()
+            .note(new NoteBuilder(Collections.singletonList(createEvidenceValueWithSingleEvidence())).build())
+            .build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_SubcellularLocationComment_SubcellularLocations_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new SubcellularLocationCommentBuilder()
+            .subcellularLocationsAdd(new SubcellularLocationBuilder().build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_SubcellularLocationComment_SubcellularLocations_location_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new SubcellularLocationCommentBuilder()
+            .subcellularLocationsAdd(new SubcellularLocationBuilder()
+              .location(new SubcellularLocationValueBuilder().build())
+              .build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_SubcellularLocationComment_SubcellularLocations_location() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new SubcellularLocationCommentBuilder()
+            .subcellularLocationsAdd(new SubcellularLocationBuilder()
+              .location(new SubcellularLocationValueBuilder().evidencesAdd(createEvidence()).build())
+              .build())
+            .build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_SubcellularLocationComment_SubcellularLocations_orientation_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new SubcellularLocationCommentBuilder()
+            .subcellularLocationsAdd(new SubcellularLocationBuilder()
+              .orientation(new SubcellularLocationValueBuilder().build())
+              .build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_SubcellularLocationComment_SubcellularLocations_orientation() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new SubcellularLocationCommentBuilder()
+            .subcellularLocationsAdd(new SubcellularLocationBuilder()
+              .orientation(new SubcellularLocationValueBuilder().evidencesAdd(createEvidence()).build())
+              .build())
+            .build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_SubcellularLocationComment_SubcellularLocations_topology_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new SubcellularLocationCommentBuilder()
+            .subcellularLocationsAdd(new SubcellularLocationBuilder()
+              .topology(new SubcellularLocationValueBuilder().build())
+              .build())
+            .build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_SubcellularLocationComment_SubcellularLocations_topology() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new SubcellularLocationCommentBuilder()
+            .subcellularLocationsAdd(new SubcellularLocationBuilder()
+              .topology(new SubcellularLocationValueBuilder().evidencesAdd(createEvidence()).build())
+              .build())
+            .build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_MassSpectrometryComment_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new MassSpectrometryCommentBuilder().build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_MassSpectrometryComment() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new MassSpectrometryCommentBuilder().evidencesAdd(createEvidence()).build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_SequenceCautionComment_whenNoEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new SequenceCautionCommentBuilder().build())
+          .build().gatherEvidences();
+        assertTrue(evidences.isEmpty());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_Comments_SequenceCautionComment() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new SequenceCautionCommentBuilder().evidencesAdd(createEvidence()).build())
+          .build().gatherEvidences();
+        assertEquals(1, evidences.size());
+    }
+
+    @Test
+    void canGatherEvidencesFrom_multipleSourcesUsesSameEvidence_shouldReturnUniqueEvidence() {
+        List<Evidence> evidences = UniProtEntryBuilder.from(minEntry)
+          .commentsAdd(new SequenceCautionCommentBuilder().evidencesAdd(createEvidence()).build())
+          .commentsAdd(new MassSpectrometryCommentBuilder().evidencesAdd(createEvidence()).build())
+          .commentsAdd(new SubcellularLocationCommentBuilder().subcellularLocationsAdd(new SubcellularLocationBuilder().topology(new SubcellularLocationValueBuilder().evidencesAdd(createEvidence()).build()).build()).build())
+          .commentsAdd(new SubcellularLocationCommentBuilder()
+            .subcellularLocationsAdd(new SubcellularLocationBuilder()
+              .orientation(new SubcellularLocationValueBuilder().evidencesAdd(createEvidence()).build())
+              .build())
+            .build())
+          .commentsAdd(new SubcellularLocationCommentBuilder()
+            .subcellularLocationsAdd(new SubcellularLocationBuilder()
+              .location(new SubcellularLocationValueBuilder().evidencesAdd(createEvidence()).build())
+              .build())
+            .build())
+          .commentsAdd(new SubcellularLocationCommentBuilder()
+            .note(new NoteBuilder(Collections.singletonList(createEvidenceValueWithSingleEvidence())).build())
+            .build())
+          .commentsAdd(new RnaEditingCommentBuilder()
+            .positionsAdd(new RnaEditingPositionBuilder().evidencesAdd(createEvidence()).build())
+            .build())
+          .commentsAdd(new RnaEditingCommentBuilder()
+            .note(new NoteBuilder(Collections.singletonList(createEvidenceValueWithSingleEvidence())).build())
+            .build())
+          .commentsAdd(new DiseaseCommentBuilder()
+            .disease(new DiseaseBuilder().evidencesAdd(createEvidence()).build())
+            .build())
+          .commentsAdd(new DiseaseCommentBuilder()
+            .note(new NoteBuilder(Collections.singletonList(createEvidenceValueWithSingleEvidence())).build())
+            .build())
+          .commentsAdd(new BPCPCommentBuilder()
+            .kineticParameters(new KineticParametersBuilder()
+              .maximumVelocitiesAdd(new MaximumVelocityBuilder().evidencesAdd(createEvidence()).build())
+              .build())
+            .build())
+          .referencesAdd(new UniProtReferenceBuilder().referenceCommentsAdd(new ReferenceCommentBuilder()
+            .evidencesAdd(createEvidence())
+            .build()).build())
+          .genesAdd(new GeneBuilder().orderedLocusNamesAdd(new OrderedLocusNameBuilder()
+            .evidencesAdd(createEvidence())
+            .build()).build())
+          .build().gatherEvidences();
+        assertEquals(2, evidences.size());
     }
 
     @Test
