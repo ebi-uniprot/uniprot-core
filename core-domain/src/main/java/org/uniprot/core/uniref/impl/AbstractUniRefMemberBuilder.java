@@ -10,7 +10,7 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniparc.UniParcId;
-import org.uniprot.core.uniprot.UniProtAccession;
+import org.uniprot.core.uniprotkb.UniProtkbAccession;
 import org.uniprot.core.uniref.OverlapRegion;
 import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefMember;
@@ -29,7 +29,7 @@ public abstract class AbstractUniRefMemberBuilder<
     protected long organismTaxId;
     protected int sequenceLength;
     protected String proteinName;
-    protected List<UniProtAccession> accessions = new ArrayList<>();;
+    protected List<UniProtkbAccession> accessions = new ArrayList<>();;
     protected UniRefEntryId uniref50Id;
     protected UniRefEntryId uniref90Id;
     protected UniRefEntryId uniref100Id;
@@ -67,13 +67,13 @@ public abstract class AbstractUniRefMemberBuilder<
         return getThis();
     }
 
-    public @Nonnull B accessionsAdd(UniProtAccession accession) {
+    public @Nonnull B accessionsAdd(UniProtkbAccession accession) {
         addOrIgnoreNull(accession, this.accessions);
 
         return getThis();
     }
 
-    public @Nonnull B accessionsSet(List<UniProtAccession> accessions) {
+    public @Nonnull B accessionsSet(List<UniProtkbAccession> accessions) {
         this.accessions = modifiableList(accessions);
         return getThis();
     }

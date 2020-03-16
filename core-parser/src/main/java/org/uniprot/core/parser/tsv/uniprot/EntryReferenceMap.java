@@ -5,13 +5,13 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.CitationDatabase;
-import org.uniprot.core.uniprot.UniProtReference;
+import org.uniprot.core.uniprotkb.UniProtkbReference;
 
 public class EntryReferenceMap implements NamedValueMap {
     public static final List<String> FIELDS = Arrays.asList("pm_id");
-    private final List<UniProtReference> references;
+    private final List<UniProtkbReference> references;
 
-    public EntryReferenceMap(List<UniProtReference> references) {
+    public EntryReferenceMap(List<UniProtkbReference> references) {
         if (references == null) {
             this.references = Collections.emptyList();
         } else {
@@ -27,7 +27,7 @@ public class EntryReferenceMap implements NamedValueMap {
 
         String result =
                 references.stream()
-                        .map(UniProtReference::getCitation)
+                        .map(UniProtkbReference::getCitation)
                         .filter(val -> val.getCitationCrossReferences() != null)
                         .flatMap(val -> val.getCitationCrossReferences().stream())
                         .filter(val -> val.getDatabase().equals(CitationDatabase.PUBMED))

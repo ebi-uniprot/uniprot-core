@@ -11,7 +11,7 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.BiophysicochemicalP
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.EvidencedString;
-import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprotkb.comment.*;
 
 class CcBPCPConverterTest {
     private final CcLineConverter converter = new CcLineConverter(null, null);

@@ -7,9 +7,9 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
-import org.uniprot.core.uniprot.comment.Interaction;
-import org.uniprot.core.uniprot.comment.InteractionComment;
-import org.uniprot.core.uniprot.comment.InteractionType;
+import org.uniprot.core.uniprotkb.comment.Interaction;
+import org.uniprot.core.uniprotkb.comment.InteractionComment;
+import org.uniprot.core.uniprotkb.comment.InteractionType;
 
 public class InteractionMap implements NamedValueMap {
 
@@ -43,7 +43,7 @@ public class InteractionMap implements NamedValueMap {
         if (InteractionType.SELF.equals(interAct.getType())) {
             return "Itself";
         } else if (interAct.hasUniProtAccession()) {
-            return interAct.getUniProtAccession().getValue();
+            return interAct.getUniProtkbAccession().getValue();
         }
         return null;
     }

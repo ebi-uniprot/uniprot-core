@@ -10,8 +10,8 @@ import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.LineBuilder;
 import org.uniprot.core.flatfile.writer.impl.LineBuilderHelper;
 import org.uniprot.core.flatfile.writer.impl.RLine;
-import org.uniprot.core.uniprot.ReferenceComment;
-import org.uniprot.core.uniprot.ReferenceCommentType;
+import org.uniprot.core.uniprotkb.ReferenceComment;
+import org.uniprot.core.uniprotkb.ReferenceCommentType;
 
 public class RCLineBuilder implements RLine<List<ReferenceComment>> {
     private final LineType lineType = LineType.RC;

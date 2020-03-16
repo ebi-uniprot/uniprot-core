@@ -3,13 +3,13 @@ package org.uniprot.core.literature;
 import java.io.Serializable;
 import java.util.List;
 
-import org.uniprot.core.uniprot.UniProtAccession;
+import org.uniprot.core.uniprotkb.UniProtkbAccession;
 import org.uniprot.core.util.Utils;
 
 /** @author lgonzales */
 public interface LiteratureMappedReference extends Serializable {
 
-    UniProtAccession getUniprotAccession();
+    UniProtkbAccession getUniprotAccession();
 
     String getSource();
 

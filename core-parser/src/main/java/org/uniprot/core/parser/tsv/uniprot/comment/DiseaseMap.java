@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.flatfile.parser.impl.cc.CCDiseaseCommentLineBuilder;
 import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
-import org.uniprot.core.uniprot.comment.DiseaseComment;
+import org.uniprot.core.uniprotkb.comment.DiseaseComment;
 
 public class DiseaseMap implements NamedValueMap {
 

@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
-import org.uniprot.core.uniprot.comment.RnaEdPosition;
-import org.uniprot.core.uniprot.comment.RnaEditingComment;
+import org.uniprot.core.uniprotkb.comment.RnaEdPosition;
+import org.uniprot.core.uniprotkb.comment.RnaEditingComment;
 
 /**
  * @author jieluo "CC -!- RNA EDITING: Modified_positions=59, 78, 94, 98, 102, 121; Note=The |CC

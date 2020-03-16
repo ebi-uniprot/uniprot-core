@@ -3,8 +3,8 @@ package org.uniprot.core.flatfile.antlr;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.*;
 
@@ -14,8 +14,8 @@ class CcLineInteractionCommentParserTest {
         String lines =
                 "CC   -!- INTERACTION:\n"
                         + "CC       P11450:fcp3c; NbExp=1; IntAct=EBI-126914, EBI-159556;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -57,8 +57,8 @@ class CcLineInteractionCommentParserTest {
         String lines =
                 "CC   -!- INTERACTION:\n"
                         + "CC       Q9W1K5-1:CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -82,8 +82,8 @@ class CcLineInteractionCommentParserTest {
         String lines =
                 "CC   -!- INTERACTION:\n"
                         + "CC       Q8NI08:-; NbExp=1; IntAct=EBI-80809, EBI-80799;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -107,8 +107,8 @@ class CcLineInteractionCommentParserTest {
         String lines =
                 "CC   -!- INTERACTION:\n"
                         + "CC       Self; NbExp=1; IntAct=EBI-123485, EBI-123485;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -124,8 +124,8 @@ class CcLineInteractionCommentParserTest {
         String lines =
                 "CC   -!- INTERACTION:\n"
                         + "CC       Q8C1S0:2410018M14Rik (xeno); NbExp=1; IntAct=EBI-394562, EBI-398761;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -150,8 +150,8 @@ class CcLineInteractionCommentParserTest {
                 "CC   -!- INTERACTION:\n"
                         + "CC       P51618:IRAK1; NbExp=2; IntAct=EBI-448466, EBI-358664;\n"
                         + "CC       P51617:IRAK2; NbExp=3; IntAct=EBI-448472, EBI-358664;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -187,8 +187,8 @@ class CcLineInteractionCommentParserTest {
                         + "CC       Q11184:let-756; NbExp=3; IntAct=EBI-318108, EBI-3843983;\n"
                         + "CC       Q10666:pop-1; NbExp=2; IntAct=EBI-318108, EBI-317870;\n"
                         + "CC       Q21921:sir-2.1; NbExp=3; IntAct=EBI-318108, EBI-966082;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -241,8 +241,8 @@ class CcLineInteractionCommentParserTest {
                 "CC   -!- INTERACTION:\n"
                         + "CC       Q9W4W2:fs(1)Yb; NbExp=4; IntAct=EBI-2890374, EBI-3424083;\n"
                         + "CC       Q9VKM1:piwi; NbExp=4; IntAct=EBI-2890374, EBI-3406276;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -277,8 +277,8 @@ class CcLineInteractionCommentParserTest {
                         + "CC       Q67XQ1:At1g03430; NbExp=2; IntAct=EBI-1100967, EBI-1100725;\n"
                         + "CC       Q9C5A5:At5g08720/T2K12_70; NbExp=3; IntAct=EBI-1100967, EBI-1998000;\n"
                         + "CC       Q9SSW0:AZF3; NbExp=2; IntAct=EBI-1100967, EBI-1807790;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -320,8 +320,8 @@ class CcLineInteractionCommentParserTest {
         String lines =
                 "CC   -!- INTERACTION:\n"
                         + "CC       Q9V3G9:EG:BACR37P7.5; NbExp=1; IntAct=EBI-175067, EBI-162998;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -345,8 +345,8 @@ class CcLineInteractionCommentParserTest {
         String lines =
                 "CC   -!- INTERACTION:\n"
                         + "CC       Q9SZI2:NAP1;1; NbExp=4; IntAct=EBI-6913662, EBI-4424361;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -370,8 +370,8 @@ class CcLineInteractionCommentParserTest {
         String lines =
                 "CC   -!- INTERACTION:\n"
                         + "CC       A1Z199:BCR/ABL fusion; NbExp=2; IntAct=EBI-491549, EBI-7286259;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -399,8 +399,8 @@ class CcLineInteractionCommentParserTest {
                         + "Q9VYI0:fne; NbExp=1; IntAct=EBI-123485, EBI-126770;");
 
         CcLineFormater formater = new CcLineFormater();
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineString);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);
@@ -415,8 +415,8 @@ class CcLineInteractionCommentParserTest {
                         + "Q6ZWQ9:Myl12a (xeno); NbExp=3; IntAct=EBI-372428, EBI-8034418;");
 
         CcLineFormater formater = new CcLineFormater();
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineString);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);

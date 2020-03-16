@@ -9,8 +9,8 @@ import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
-import org.uniprot.core.uniprot.UniProtAccession;
-import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
+import org.uniprot.core.uniprotkb.UniProtkbAccession;
+import org.uniprot.core.uniprotkb.impl.UniProtkbAccessionBuilder;
 import org.uniprot.core.uniref.*;
 
 /**
@@ -95,7 +95,7 @@ class RepresentativeMemberBuilderTest {
 
     @Test
     void testAccession() {
-        UniProtAccession accession = new UniProtAccessionBuilder("P12345").build();
+        UniProtkbAccession accession = new UniProtkbAccessionBuilder("P12345").build();
         RepresentativeMember member =
                 new RepresentativeMemberBuilder().accessionsAdd(accession).build();
         assertEquals(accession, member.getUniProtAccessions().get(0));

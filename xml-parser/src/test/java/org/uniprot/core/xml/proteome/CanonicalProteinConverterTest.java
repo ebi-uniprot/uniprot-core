@@ -7,7 +7,7 @@ import org.uniprot.core.proteome.CanonicalProtein;
 import org.uniprot.core.proteome.Protein;
 import org.uniprot.core.proteome.impl.CanonicalProteinBuilder;
 import org.uniprot.core.proteome.impl.ProteinBuilder;
-import org.uniprot.core.uniprot.UniProtEntryType;
+import org.uniprot.core.uniprotkb.UniProtkbEntryType;
 import org.uniprot.core.xml.jaxb.proteome.CanonicalGene;
 import org.uniprot.core.xml.jaxb.proteome.EntryType;
 import org.uniprot.core.xml.jaxb.proteome.GeneNameType;
@@ -29,7 +29,7 @@ class CanonicalProteinConverterTest {
 
         Protein protein = cProtein.getCanonicalProtein();
         assertEquals("P12345", protein.getAccession().getValue());
-        assertEquals(UniProtEntryType.SWISSPROT, protein.getEntryType());
+        assertEquals(UniProtkbEntryType.SWISSPROT, protein.getEntryType());
         assertEquals("gen1", protein.getGeneName());
         assertEquals(org.uniprot.core.proteome.GeneNameType.MOD, protein.getGeneNameType());
         assertEquals(123l, protein.getSequenceLength());
@@ -41,7 +41,7 @@ class CanonicalProteinConverterTest {
         Protein protein =
                 new ProteinBuilder()
                         .accession("P21312")
-                        .entryType(UniProtEntryType.TREMBL)
+                        .entryType(UniProtkbEntryType.TREMBL)
                         .geneName("some gene")
                         .geneNameType(org.uniprot.core.proteome.GeneNameType.ENSEMBL)
                         .sequenceLength(324)
@@ -50,7 +50,7 @@ class CanonicalProteinConverterTest {
         Protein protein2 =
                 new ProteinBuilder()
                         .accession("P21912")
-                        .entryType(UniProtEntryType.SWISSPROT)
+                        .entryType(UniProtkbEntryType.SWISSPROT)
                         .geneName("some gene1")
                         .geneNameType(org.uniprot.core.proteome.GeneNameType.ENSEMBL)
                         .sequenceLength(334)
@@ -58,7 +58,7 @@ class CanonicalProteinConverterTest {
         Protein protein3 =
                 new ProteinBuilder()
                         .accession("P31912")
-                        .entryType(UniProtEntryType.SWISSPROT)
+                        .entryType(UniProtkbEntryType.SWISSPROT)
                         .geneName("some gene3")
                         .geneNameType(org.uniprot.core.proteome.GeneNameType.OLN)
                         .sequenceLength(434)

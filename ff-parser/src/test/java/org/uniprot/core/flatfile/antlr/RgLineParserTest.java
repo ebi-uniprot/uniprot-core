@@ -6,16 +6,16 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.rg.RgLineObject;
 
 class RgLineParserTest {
     @Test
     void test() {
         String rgLines = "RG   The mouse genome sequencing consortium;\n";
-        UniprotLineParser<RgLineObject> parser =
-                new DefaultUniprotLineParserFactory().createRgLineParser();
+        UniprotkbLineParser<RgLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createRgLineParser();
         RgLineObject obj = parser.parse(rgLines);
         verify(obj, Arrays.asList(new String[] {"The mouse genome sequencing consortium"}));
     }
@@ -29,8 +29,8 @@ class RgLineParserTest {
         String rgLines =
                 "RG   The mouse genome sequencing consortium;\n"
                         + "RG   The something else consortium;\n";
-        UniprotLineParser<RgLineObject> parser =
-                new DefaultUniprotLineParserFactory().createRgLineParser();
+        UniprotkbLineParser<RgLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createRgLineParser();
         RgLineObject obj = parser.parse(rgLines);
         verify(
                 obj,

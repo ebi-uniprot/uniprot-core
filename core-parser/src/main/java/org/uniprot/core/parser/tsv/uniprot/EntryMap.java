@@ -3,10 +3,10 @@ package org.uniprot.core.parser.tsv.uniprot;
 import java.util.*;
 
 import org.uniprot.core.parser.tsv.uniprot.comment.EntryCommentsMap;
-import org.uniprot.core.uniprot.UniProtEntry;
+import org.uniprot.core.uniprotkb.UniProtkbEntry;
 
 public class EntryMap implements NamedValueMap {
-    private final UniProtEntry entry;
+    private final UniProtkbEntry entry;
     private final List<String> fields;
 
     public static final List<String> DEFAULT_FIELDS =
@@ -14,7 +14,7 @@ public class EntryMap implements NamedValueMap {
 
     public static final String FIELD_FEATURE = "feature";
 
-    public EntryMap(UniProtEntry entry, List<String> fields) {
+    public EntryMap(UniProtkbEntry entry, List<String> fields) {
         this.entry = entry;
         this.fields = Collections.unmodifiableList(fields);
     }
@@ -45,7 +45,7 @@ public class EntryMap implements NamedValueMap {
             addData(map, new EntryEncodedMap(entry.getGeneLocations()));
         }
         if (EntryCrossReferenceMap.contains(fields)) {
-            addData(map, new EntryCrossReferenceMap(entry.getUniProtCrossReferences()));
+            addData(map, new EntryCrossReferenceMap(entry.getUniProtkbCrossReferences()));
         }
 
         if (EntryTypeMap.contains(fields)) {
@@ -103,7 +103,7 @@ public class EntryMap implements NamedValueMap {
     private Map<String, String> getSimpleFields() {
         Map<String, String> map = new HashMap<>();
         map.put("accession", entry.getPrimaryAccession().getValue());
-        map.put("id", entry.getUniProtId().getValue());
+        map.put("id", entry.getUniProtkbId().getValue());
         // map.put("score", entry.getAnnotationScore() + ""); TODO: Check with Jie about the
         // annotation score field
         if (entry.getProteinExistence() != null) {

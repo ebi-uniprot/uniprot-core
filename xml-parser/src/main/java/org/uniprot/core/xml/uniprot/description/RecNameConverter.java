@@ -3,8 +3,8 @@ package org.uniprot.core.xml.uniprot.description;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.uniprot.description.ProteinRecName;
-import org.uniprot.core.uniprot.description.impl.ProteinRecNameBuilder;
+import org.uniprot.core.uniprotkb.description.ProteinRecName;
+import org.uniprot.core.uniprotkb.description.impl.ProteinRecNameBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;

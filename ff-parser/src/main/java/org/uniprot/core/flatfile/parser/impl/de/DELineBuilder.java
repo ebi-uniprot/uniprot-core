@@ -11,8 +11,8 @@ import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
-import org.uniprot.core.uniprot.description.*;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.description.*;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
 public class DELineBuilder extends FFLineBuilderAbstr<ProteinDescription>
         implements FFLineBuilder<ProteinDescription> {

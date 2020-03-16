@@ -11,10 +11,10 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.Interaction;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.InteractionObject;
-import org.uniprot.core.uniprot.comment.Comment;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.comment.InteractionComment;
-import org.uniprot.core.uniprot.comment.InteractionType;
+import org.uniprot.core.uniprotkb.comment.Comment;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.InteractionComment;
+import org.uniprot.core.uniprotkb.comment.InteractionType;
 
 class CcInteractionConverterTest {
     private final CcLineConverter converter = new CcLineConverter(null, null);
@@ -66,15 +66,15 @@ class CcInteractionConverterTest {
         assertEquals(CommentType.INTERACTION, comment1.getCommentType());
         assertTrue(comment1 instanceof InteractionComment);
         InteractionComment icomment = (InteractionComment) comment1;
-        List<org.uniprot.core.uniprot.comment.Interaction> interactions =
+        List<org.uniprot.core.uniprotkb.comment.Interaction> interactions =
                 icomment.getInteractions();
         assertEquals(3, interactions.size());
-        org.uniprot.core.uniprot.comment.Interaction inter1 = interactions.get(0);
-        org.uniprot.core.uniprot.comment.Interaction inter2 = interactions.get(1);
-        org.uniprot.core.uniprot.comment.Interaction inter3 = interactions.get(2);
+        org.uniprot.core.uniprotkb.comment.Interaction inter1 = interactions.get(0);
+        org.uniprot.core.uniprotkb.comment.Interaction inter2 = interactions.get(1);
+        org.uniprot.core.uniprotkb.comment.Interaction inter3 = interactions.get(2);
         assertEquals("EBI-133844", inter1.getFirstInteractor().getValue());
         assertEquals("EBI-212772", inter1.getSecondInteractor().getValue());
-        assertEquals("Q9W1K5-1", inter1.getUniProtAccession().getValue());
+        assertEquals("Q9W1K5-1", inter1.getUniProtkbAccession().getValue());
         assertEquals("CG11299", inter1.getGeneName());
         assertEquals(1, inter1.getNumberOfExperiments());
         assertEquals(InteractionType.BINARY, inter1.getType());
@@ -85,7 +85,7 @@ class CcInteractionConverterTest {
 
         assertEquals("EBI-133844", inter3.getFirstInteractor().getValue());
         assertEquals("EBI-212775", inter3.getSecondInteractor().getValue());
-        assertEquals("Q8C1S0", inter3.getUniProtAccession().getValue());
+        assertEquals("Q8C1S0", inter3.getUniProtkbAccession().getValue());
         assertEquals("CG112992", inter3.getGeneName());
         assertEquals(1, inter3.getNumberOfExperiments());
         assertEquals(InteractionType.XENO, inter3.getType());

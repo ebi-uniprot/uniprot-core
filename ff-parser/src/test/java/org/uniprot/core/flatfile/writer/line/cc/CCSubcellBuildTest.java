@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.comment.Note;
-import org.uniprot.core.uniprot.comment.SubcellularLocation;
-import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
-import org.uniprot.core.uniprot.comment.SubcellularLocationValue;
-import org.uniprot.core.uniprot.comment.impl.SubcellularLocationBuilder;
-import org.uniprot.core.uniprot.comment.impl.SubcellularLocationCommentBuilder;
-import org.uniprot.core.uniprot.comment.impl.SubcellularLocationValueBuilder;
+import org.uniprot.core.uniprotkb.comment.Note;
+import org.uniprot.core.uniprotkb.comment.SubcellularLocation;
+import org.uniprot.core.uniprotkb.comment.SubcellularLocationComment;
+import org.uniprot.core.uniprotkb.comment.SubcellularLocationValue;
+import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationValueBuilder;
 
 import com.google.common.base.Strings;
 

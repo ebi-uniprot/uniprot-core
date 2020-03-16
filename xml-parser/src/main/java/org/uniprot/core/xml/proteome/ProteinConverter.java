@@ -3,7 +3,7 @@ package org.uniprot.core.xml.proteome;
 import org.uniprot.core.proteome.GeneNameType;
 import org.uniprot.core.proteome.Protein;
 import org.uniprot.core.proteome.impl.ProteinBuilder;
-import org.uniprot.core.uniprot.UniProtEntryType;
+import org.uniprot.core.uniprotkb.UniProtkbEntryType;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.EntryType;
 import org.uniprot.core.xml.jaxb.proteome.GeneType;
@@ -46,13 +46,13 @@ public class ProteinConverter implements Converter<GeneType, Protein> {
         return xmlObj;
     }
 
-    private UniProtEntryType fromXml(EntryType xmlObj) {
-        if (xmlObj == EntryType.SWISS_PROT) return UniProtEntryType.SWISSPROT;
-        else return UniProtEntryType.TREMBL;
+    private UniProtkbEntryType fromXml(EntryType xmlObj) {
+        if (xmlObj == EntryType.SWISS_PROT) return UniProtkbEntryType.SWISSPROT;
+        else return UniProtkbEntryType.TREMBL;
     }
 
-    private EntryType toXml(UniProtEntryType uniObj) {
-        if (uniObj == UniProtEntryType.SWISSPROT) return EntryType.SWISS_PROT;
+    private EntryType toXml(UniProtkbEntryType uniObj) {
+        if (uniObj == UniProtkbEntryType.SWISSPROT) return EntryType.SWISS_PROT;
         else return EntryType.TR_EMBL;
     }
 }

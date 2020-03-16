@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.uniprot.core.flatfile.parser.LineFormater;
-import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.CommentType;
 
 public class CcLineFormater implements LineFormater {
 

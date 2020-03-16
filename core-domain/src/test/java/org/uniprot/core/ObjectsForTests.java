@@ -33,21 +33,21 @@ import org.uniprot.core.uniparc.*;
 import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
 import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
-import org.uniprot.core.uniprot.UniProtEntryType;
-import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.impl.*;
-import org.uniprot.core.uniprot.description.EC;
-import org.uniprot.core.uniprot.description.Name;
-import org.uniprot.core.uniprot.description.impl.ECBuilder;
-import org.uniprot.core.uniprot.description.impl.NameBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidenceCode;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
-import org.uniprot.core.uniprot.evidence.impl.EvidenceBuilder;
-import org.uniprot.core.uniprot.evidence.impl.EvidencedValueBuilder;
-import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
-import org.uniprot.core.uniprot.taxonomy.Taxonomy;
-import org.uniprot.core.uniprot.taxonomy.impl.TaxonomyBuilder;
+import org.uniprot.core.uniprotkb.UniProtkbEntryType;
+import org.uniprot.core.uniprotkb.comment.*;
+import org.uniprot.core.uniprotkb.comment.impl.*;
+import org.uniprot.core.uniprotkb.description.EC;
+import org.uniprot.core.uniprotkb.description.Name;
+import org.uniprot.core.uniprotkb.description.impl.ECBuilder;
+import org.uniprot.core.uniprotkb.description.impl.NameBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtkbAccessionBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
+import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 
 public class ObjectsForTests {
     public static Reaction createReaction() {
@@ -370,7 +370,7 @@ public class ObjectsForTests {
     public static LiteratureMappedReference createCompleteLiteratureMappedReferenceWithAdd() {
         return getBasicFields()
                 .sourceCategoriesAdd("source category")
-                .uniprotAccession(new UniProtAccessionBuilder("P12345").build())
+                .uniprotAccession(new UniProtkbAccessionBuilder("P12345").build())
                 .build();
     }
 
@@ -572,7 +572,7 @@ public class ObjectsForTests {
         Protein protein =
                 new ProteinBuilder()
                         .accession("val")
-                        .entryType(UniProtEntryType.INACTIVE)
+                        .entryType(UniProtkbEntryType.INACTIVE)
                         .sequenceLength(20L)
                         .geneName("gene")
                         .geneNameType(GeneNameType.ORF)

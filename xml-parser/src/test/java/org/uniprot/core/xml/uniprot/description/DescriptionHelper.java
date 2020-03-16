@@ -5,19 +5,19 @@ import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.uniprot.core.uniprot.description.EC;
-import org.uniprot.core.uniprot.description.Name;
-import org.uniprot.core.uniprot.description.ProteinAltName;
-import org.uniprot.core.uniprot.description.ProteinRecName;
-import org.uniprot.core.uniprot.description.ProteinSection;
-import org.uniprot.core.uniprot.description.ProteinSubName;
-import org.uniprot.core.uniprot.description.impl.ECBuilder;
-import org.uniprot.core.uniprot.description.impl.NameBuilder;
-import org.uniprot.core.uniprot.description.impl.ProteinAltNameBuilder;
-import org.uniprot.core.uniprot.description.impl.ProteinRecNameBuilder;
-import org.uniprot.core.uniprot.description.impl.ProteinSectionBuilder;
-import org.uniprot.core.uniprot.description.impl.ProteinSubNameBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.description.EC;
+import org.uniprot.core.uniprotkb.description.Name;
+import org.uniprot.core.uniprotkb.description.ProteinAltName;
+import org.uniprot.core.uniprotkb.description.ProteinRecName;
+import org.uniprot.core.uniprotkb.description.ProteinSection;
+import org.uniprot.core.uniprotkb.description.ProteinSubName;
+import org.uniprot.core.uniprotkb.description.impl.ECBuilder;
+import org.uniprot.core.uniprotkb.description.impl.NameBuilder;
+import org.uniprot.core.uniprotkb.description.impl.ProteinAltNameBuilder;
+import org.uniprot.core.uniprotkb.description.impl.ProteinRecNameBuilder;
+import org.uniprot.core.uniprotkb.description.impl.ProteinSectionBuilder;
+import org.uniprot.core.uniprotkb.description.impl.ProteinSubNameBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 /**
  * Created 30/01/19

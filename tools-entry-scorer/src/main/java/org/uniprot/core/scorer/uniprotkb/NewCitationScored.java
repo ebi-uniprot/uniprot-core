@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import org.uniprot.core.citation.Citation;
-import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 02-Mar-2010 Time: 16:14:37 To change this template

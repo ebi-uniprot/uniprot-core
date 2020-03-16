@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
-import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
-import org.uniprot.core.uniprot.comment.impl.MassSpectrometryCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.MassSpectrometryComment;
+import org.uniprot.core.uniprotkb.comment.MassSpectrometryMethod;
+import org.uniprot.core.uniprotkb.comment.impl.MassSpectrometryCommentBuilder;
 
 import com.google.common.base.Strings;
 

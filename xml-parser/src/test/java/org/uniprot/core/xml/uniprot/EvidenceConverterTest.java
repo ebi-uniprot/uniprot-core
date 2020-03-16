@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.xml.jaxb.uniprot.EvidenceType;
 
 class EvidenceConverterTest {

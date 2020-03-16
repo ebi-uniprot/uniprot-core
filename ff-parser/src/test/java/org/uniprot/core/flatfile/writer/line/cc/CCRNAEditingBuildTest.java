@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.comment.Note;
-import org.uniprot.core.uniprot.comment.RnaEdPosition;
-import org.uniprot.core.uniprot.comment.RnaEditingComment;
-import org.uniprot.core.uniprot.comment.RnaEditingLocationType;
-import org.uniprot.core.uniprot.comment.impl.RnaEditingCommentBuilder;
-import org.uniprot.core.uniprot.comment.impl.RnaEditingPositionBuilder;
+import org.uniprot.core.uniprotkb.comment.Note;
+import org.uniprot.core.uniprotkb.comment.RnaEdPosition;
+import org.uniprot.core.uniprotkb.comment.RnaEditingComment;
+import org.uniprot.core.uniprotkb.comment.RnaEditingLocationType;
+import org.uniprot.core.uniprotkb.comment.impl.RnaEditingCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.RnaEditingPositionBuilder;
 
 class CCRNAEditingBuildTest extends CCBuildTestAbstr {
     @Test

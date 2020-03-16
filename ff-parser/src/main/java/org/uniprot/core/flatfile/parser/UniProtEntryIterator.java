@@ -2,9 +2,9 @@ package org.uniprot.core.flatfile.parser;
 
 import java.util.Iterator;
 
-import org.uniprot.core.uniprot.UniProtEntry;
+import org.uniprot.core.uniprotkb.UniProtkbEntry;
 
-public interface UniProtEntryIterator extends Iterator<UniProtEntry> {
+public interface UniProtEntryIterator extends Iterator<UniProtkbEntry> {
     void setInput(
             String filename,
             String keywordFile,

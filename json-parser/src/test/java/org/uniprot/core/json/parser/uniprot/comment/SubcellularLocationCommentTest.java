@@ -9,14 +9,14 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
-import org.uniprot.core.uniprot.comment.Note;
-import org.uniprot.core.uniprot.comment.SubcellularLocation;
-import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
-import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
-import org.uniprot.core.uniprot.comment.impl.SubcellularLocationBuilder;
-import org.uniprot.core.uniprot.comment.impl.SubcellularLocationCommentBuilder;
-import org.uniprot.core.uniprot.comment.impl.SubcellularLocationValueBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.comment.Note;
+import org.uniprot.core.uniprotkb.comment.SubcellularLocation;
+import org.uniprot.core.uniprotkb.comment.SubcellularLocationComment;
+import org.uniprot.core.uniprotkb.comment.impl.NoteBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationValueBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

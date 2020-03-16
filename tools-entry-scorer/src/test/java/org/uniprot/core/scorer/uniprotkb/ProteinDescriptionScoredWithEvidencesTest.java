@@ -7,13 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.UniprotLineParserFactory;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
+import org.uniprot.core.flatfile.parser.UniprotkbLineParserFactory;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineConverter;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject;
-import org.uniprot.core.uniprot.description.ProteinDescription;
-import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprotkb.description.ProteinDescription;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 
 class ProteinDescriptionScoredWithEvidencesTest {
     @Test
@@ -82,8 +82,8 @@ class ProteinDescriptionScoredWithEvidencesTest {
             double score,
             Consensus consensus,
             List<EvidenceDatabase> evidences) {
-        UniprotLineParserFactory parserFactory = new DefaultUniprotLineParserFactory();
-        UniprotLineParser<DeLineObject> parser = parserFactory.createDeLineParser();
+        UniprotkbLineParserFactory parserFactory = new DefaultUniprotkbLineParserFactory();
+        UniprotkbLineParser<DeLineObject> parser = parserFactory.createDeLineParser();
         DeLineConverter converter = new DeLineConverter();
         DeLineObject object = parser.parse(description);
 

@@ -5,7 +5,7 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.Builder;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
-import org.uniprot.core.uniprot.taxonomy.impl.AbstractOrganismNameBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.impl.AbstractOrganismNameBuilder;
 
 public class TaxonomyLineageBuilder
         extends AbstractOrganismNameBuilder<TaxonomyLineageBuilder, TaxonomyLineage>

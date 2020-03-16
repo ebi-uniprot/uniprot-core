@@ -8,11 +8,11 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
-import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
-import org.uniprot.core.uniprot.comment.Reaction;
-import org.uniprot.core.uniprot.comment.ReactionDatabase;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.comment.CatalyticActivityComment;
+import org.uniprot.core.uniprotkb.comment.PhysiologicalReaction;
+import org.uniprot.core.uniprotkb.comment.Reaction;
+import org.uniprot.core.uniprotkb.comment.ReactionDatabase;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 import com.google.common.base.Strings;
 

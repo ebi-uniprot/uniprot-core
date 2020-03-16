@@ -12,15 +12,15 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.uniprot.description.EC;
-import org.uniprot.core.uniprot.description.Name;
-import org.uniprot.core.uniprot.description.ProteinAltName;
-import org.uniprot.core.uniprot.description.ProteinDescription;
-import org.uniprot.core.uniprot.description.ProteinRecName;
-import org.uniprot.core.uniprot.description.ProteinSubName;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
-import org.uniprot.core.uniprot.evidence.HasEvidences;
+import org.uniprot.core.uniprotkb.description.EC;
+import org.uniprot.core.uniprotkb.description.Name;
+import org.uniprot.core.uniprotkb.description.ProteinAltName;
+import org.uniprot.core.uniprotkb.description.ProteinDescription;
+import org.uniprot.core.uniprotkb.description.ProteinRecName;
+import org.uniprot.core.uniprotkb.description.ProteinSubName;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprotkb.evidence.HasEvidences;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 13:34:03 To change this template

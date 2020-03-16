@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.parser.tsv.uniprot.EntryMapUtil;
 import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
-import org.uniprot.core.uniprot.taxonomy.Taxonomy;
+import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 
 import com.google.common.base.Strings;
 

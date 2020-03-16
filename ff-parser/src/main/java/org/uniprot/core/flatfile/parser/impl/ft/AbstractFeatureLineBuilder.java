@@ -14,7 +14,7 @@ import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
-import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprotkb.feature.Feature;
 
 public abstract class AbstractFeatureLineBuilder extends FFLineBuilderAbstr<Feature>
         implements FFLineBuilder<Feature> {

@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.*;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.GeneEncodingType;
-import org.uniprot.core.uniprot.GeneLocation;
-import org.uniprot.core.uniprot.impl.GeneLocationBuilder;
+import org.uniprot.core.uniprotkb.GeneEncodingType;
+import org.uniprot.core.uniprotkb.GeneLocation;
+import org.uniprot.core.uniprotkb.impl.GeneLocationBuilder;
 
 class EntryEncodedMapTest {
     @Test

@@ -8,13 +8,13 @@ import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.exception.DatabaseTypeNotExistException;
 import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
 import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
-import org.uniprot.core.uniprot.InternalLine;
-import org.uniprot.core.uniprot.InternalLineType;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.impl.InternalLineBuilder;
-import org.uniprot.core.uniprot.xdb.UniProtDatabase;
-import org.uniprot.core.uniprot.xdb.impl.UniProtCrossReferenceBuilder;
-import org.uniprot.cv.xdb.UniProtDatabaseImpl;
+import org.uniprot.core.uniprotkb.InternalLine;
+import org.uniprot.core.uniprotkb.InternalLineType;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.impl.InternalLineBuilder;
+import org.uniprot.core.uniprotkb.xdb.UniProtkbDatabase;
+import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
+import org.uniprot.cv.xdb.UniProtkbDatabaseImpl;
 
 public class DrLineConverter extends EvidenceCollector
         implements Converter<DrLineObject, UniProtDrObjects> {
@@ -74,7 +74,7 @@ public class DrLineConverter extends EvidenceCollector
             isoformId = drline.isoform;
         }
         try {
-            UniProtDatabase type = new UniProtDatabaseImpl(drline.DbName);
+            UniProtkbDatabase type = new UniProtkbDatabaseImpl(drline.DbName);
             uniProtDrObjects.drObjects.add(
                     new UniProtCrossReferenceBuilder()
                             .id(id)

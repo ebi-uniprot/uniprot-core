@@ -5,16 +5,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.UniprotLineParserFactory;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
+import org.uniprot.core.flatfile.parser.UniprotkbLineParserFactory;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.gn.GnLineConverter;
 import org.uniprot.core.flatfile.parser.impl.gn.GnLineObject;
 import org.uniprot.core.gene.Gene;
 
 class GeneScoredTest {
-    private static final UniprotLineParserFactory PARSER_FACTORY =
-            new DefaultUniprotLineParserFactory();
+    private static final UniprotkbLineParserFactory PARSER_FACTORY =
+            new DefaultUniprotkbLineParserFactory();
 
     @Test
     void shouldGeneScore4() {
@@ -74,7 +74,7 @@ class GeneScoredTest {
     }
 
     private List<Gene> parseLines(String lines) {
-        UniprotLineParser<GnLineObject> parser = PARSER_FACTORY.createGnLineParser();
+        UniprotkbLineParser<GnLineObject> parser = PARSER_FACTORY.createGnLineParser();
         GnLineObject obj = parser.parse(lines);
         GnLineConverter converter = new GnLineConverter();
         return converter.convert(obj);

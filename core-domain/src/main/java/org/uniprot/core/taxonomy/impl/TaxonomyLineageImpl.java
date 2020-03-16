@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
-import org.uniprot.core.uniprot.taxonomy.impl.AbstractOrganismNameImpl;
+import org.uniprot.core.uniprotkb.taxonomy.impl.AbstractOrganismNameImpl;
 
 /** @author lgonzales */
 public class TaxonomyLineageImpl extends AbstractOrganismNameImpl implements TaxonomyLineage {

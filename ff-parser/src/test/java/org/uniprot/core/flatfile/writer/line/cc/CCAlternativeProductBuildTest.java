@@ -8,12 +8,12 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CCAPCommentLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
-import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.impl.APIsoformBuilder;
-import org.uniprot.core.uniprot.comment.impl.AlternativeProductsCommentBuilder;
-import org.uniprot.core.uniprot.comment.impl.IsoformNameBuilder;
-import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.comment.*;
+import org.uniprot.core.uniprotkb.comment.impl.APIsoformBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.AlternativeProductsCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.IsoformNameBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.NoteBuilder;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
 class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
     CCAPCommentLineBuilder ccLineBuilder = new CCAPCommentLineBuilder();

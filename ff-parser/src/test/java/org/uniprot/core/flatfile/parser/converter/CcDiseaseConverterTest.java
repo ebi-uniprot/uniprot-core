@@ -14,10 +14,10 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.Disease;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.EvidencedString;
-import org.uniprot.core.uniprot.comment.Comment;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.comment.DiseaseComment;
-import org.uniprot.core.uniprot.comment.DiseaseDatabase;
+import org.uniprot.core.uniprotkb.comment.Comment;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.DiseaseComment;
+import org.uniprot.core.uniprotkb.comment.DiseaseDatabase;
 
 class CcDiseaseConverterTest {
     private final CcLineConverter converter =

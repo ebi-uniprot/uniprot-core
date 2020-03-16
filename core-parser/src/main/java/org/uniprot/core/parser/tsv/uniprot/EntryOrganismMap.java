@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.uniprot.core.uniprot.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 
 public class EntryOrganismMap implements NamedValueMap {
     public static final List<String> FIELDS = Arrays.asList("organism", "organism_id", "tax_id");

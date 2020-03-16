@@ -1,14 +1,14 @@
 package org.uniprot.core.xml.uniprot.citation;
 
-import org.uniprot.core.uniprot.UniProtReference;
-import org.uniprot.core.uniprot.impl.UniProtReferenceBuilder;
+import org.uniprot.core.uniprotkb.UniProtkbReference;
+import org.uniprot.core.uniprotkb.impl.UniProtkbReferenceBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.ReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.SourceDataType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 
-public class ReferenceConverter implements Converter<ReferenceType, UniProtReference> {
+public class ReferenceConverter implements Converter<ReferenceType, UniProtkbReference> {
     private final EvidenceIndexMapper evRefMapper;
     private final ObjectFactory xmlUniprotFactory;
     private final ReferenceCommentConverter rcConverter;
@@ -26,8 +26,8 @@ public class ReferenceConverter implements Converter<ReferenceType, UniProtRefer
     }
 
     @Override
-    public UniProtReference fromXml(ReferenceType xmlObj) {
-        return new UniProtReferenceBuilder()
+    public UniProtkbReference fromXml(ReferenceType xmlObj) {
+        return new UniProtkbReferenceBuilder()
                 .citation(citationConverter.fromXml(xmlObj.getCitation()))
                 .evidencesSet(evRefMapper.parseEvidenceIds(xmlObj.getEvidence()))
                 .referencePositionsSet(xmlObj.getScope())
@@ -36,7 +36,7 @@ public class ReferenceConverter implements Converter<ReferenceType, UniProtRefer
     }
 
     @Override
-    public ReferenceType toXml(UniProtReference uniObj) {
+    public ReferenceType toXml(UniProtkbReference uniObj) {
         ReferenceType xmlReference = xmlUniprotFactory.createReferenceType();
         // SCOPE
         if (uniObj.getReferencePositions() != null) {

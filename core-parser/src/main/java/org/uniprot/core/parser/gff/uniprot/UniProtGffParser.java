@@ -1,6 +1,6 @@
 package org.uniprot.core.parser.gff.uniprot;
 
-import static org.uniprot.core.uniprot.feature.FeatureType.*;
+import static org.uniprot.core.uniprotkb.feature.FeatureType.*;
 import static org.uniprot.core.util.Utils.nullOrEmpty;
 
 import java.util.List;
@@ -11,11 +11,11 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.flatfile.parser.impl.ft.FTLineBuilderHelper;
-import org.uniprot.core.uniprot.UniProtEntry;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidenceCode;
-import org.uniprot.core.uniprot.feature.Feature;
-import org.uniprot.core.uniprot.feature.FeatureType;
+import org.uniprot.core.uniprotkb.UniProtkbEntry;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
+import org.uniprot.core.uniprotkb.feature.Feature;
+import org.uniprot.core.uniprotkb.feature.FeatureType;
 
 /** @author gqi */
 public class UniProtGffParser {
@@ -27,7 +27,7 @@ public class UniProtGffParser {
     private static final String ATTRIBUTE_SEPARATOR = ";";
     private static final String LINE_SEPARATOR = "\n";
 
-    public static String convert(UniProtEntry entry) {
+    public static String convert(UniProtkbEntry entry) {
         // Note: the trailing '/t' character at the end of the line is strange, but is there to
         // conform to the
         //       way the current uniprot.org produces GFF files, as of 06/02/2019
@@ -45,7 +45,7 @@ public class UniProtGffParser {
                 + "\t";
     }
 
-    private static String convert(Feature feature, UniProtEntry entry) {
+    private static String convert(Feature feature, UniProtkbEntry entry) {
         String accession = entry.getPrimaryAccession().getValue(); // 1: seqid
         String type = FeatureLabel.getLabelFromName(feature.getType().getName()); // 3: type
         int start = feature.getLocation().getStart().getValue(); // 4: start
@@ -148,7 +148,7 @@ public class UniProtGffParser {
         return GFF_HEADER;
     }
 
-    private static String getEntryHeader(UniProtEntry entry) {
+    private static String getEntryHeader(UniProtkbEntry entry) {
         return ENTRY_PREFIX
                 + entry.getPrimaryAccession().getValue()
                 + " 1 "

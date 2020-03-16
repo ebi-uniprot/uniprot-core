@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.Range;
-import org.uniprot.core.uniprot.feature.FeatureLocation;
+import org.uniprot.core.uniprotkb.feature.FeatureLocation;
 import org.uniprot.core.xml.jaxb.uniprot.LocationType;
 
 class FeatureLocationConverterTest {

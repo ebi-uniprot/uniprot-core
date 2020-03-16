@@ -8,9 +8,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.rc.RcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.rc.RcLineObject;
-import org.uniprot.core.uniprot.ReferenceComment;
-import org.uniprot.core.uniprot.ReferenceCommentType;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.ReferenceComment;
+import org.uniprot.core.uniprotkb.ReferenceCommentType;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 class RcLineConverterTest {
     @Test

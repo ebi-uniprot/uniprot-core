@@ -2,8 +2,8 @@ package org.uniprot.core.scorer.uniprotkb;
 
 import java.util.List;
 
-import org.uniprot.core.uniprot.Keyword;
-import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprotkb.Keyword;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 17:43:31 To change this template

@@ -7,17 +7,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.UniprotLineParserFactory;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
+import org.uniprot.core.flatfile.parser.UniprotkbLineParserFactory;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineTransformer;
 import org.uniprot.core.scorer.uniprotkb.Consensus;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.features.FeatureScored;
-import org.uniprot.core.uniprot.feature.Feature;
-import org.uniprot.core.uniprot.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.Feature;
+import org.uniprot.core.uniprotkb.feature.FeatureType;
 
 class FeatureScoredTest {
 
@@ -246,8 +246,8 @@ class FeatureScoredTest {
     }
 
     private void testFeatureScore(String featureLines, double expectedScore) throws Exception {
-        UniprotLineParserFactory parserFactory = new DefaultUniprotLineParserFactory();
-        UniprotLineParser<FtLineObject> parser = parserFactory.createFtLineParser();
+        UniprotkbLineParserFactory parserFactory = new DefaultUniprotkbLineParserFactory();
+        UniprotkbLineParser<FtLineObject> parser = parserFactory.createFtLineParser();
         FtLineObject obj = parser.parse(featureLines);
         FtLineConverter converter = new FtLineConverter();
         List<Feature> features = converter.convert(obj);

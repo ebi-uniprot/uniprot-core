@@ -3,8 +3,8 @@ package org.uniprot.core.json.parser.taxonomy;
 import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.taxonomy.*;
 import org.uniprot.core.taxonomy.impl.*;
-import org.uniprot.core.uniprot.taxonomy.Taxonomy;
-import org.uniprot.core.uniprot.taxonomy.impl.TaxonomyImpl;
+import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
+import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyImpl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;

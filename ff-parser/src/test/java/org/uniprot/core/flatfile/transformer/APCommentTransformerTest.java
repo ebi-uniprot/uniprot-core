@@ -3,7 +3,7 @@ package org.uniprot.core.flatfile.transformer;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprotkb.comment.*;
 
 class APCommentTransformerTest {
     private final APCommentTransformer transformer = new APCommentTransformer();

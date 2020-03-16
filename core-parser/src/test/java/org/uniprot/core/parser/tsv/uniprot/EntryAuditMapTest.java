@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.EntryAudit;
-import org.uniprot.core.uniprot.impl.EntryAuditBuilder;
+import org.uniprot.core.uniprotkb.EntryAudit;
+import org.uniprot.core.uniprotkb.impl.EntryAuditBuilder;
 
 class EntryAuditMapTest {
 

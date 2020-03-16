@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.impl.ft;
 
-import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprotkb.feature.Feature;
 
 public class MutagenFeatureLineBuilder extends AbstractFeatureLineBuilder {
     protected StringBuilder getDescription(Feature f) {

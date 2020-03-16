@@ -14,7 +14,7 @@ import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 
 /** @author jieluo */
 public enum UniProtCrossReferenceDisplayOrder
-        implements org.uniprot.core.uniprot.xdb.DatabaseDisplayOrder {
+        implements org.uniprot.core.uniprotkb.xdb.DatabaseDisplayOrder {
     INSTANCE;
     private Map<String, DatabaseDisplayOrder> databaseType2DefsNoCase;
     private static final String DR_ORD_FILE = "META-INF/dr_ord";

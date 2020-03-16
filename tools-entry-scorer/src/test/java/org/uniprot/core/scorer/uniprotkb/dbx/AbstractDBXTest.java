@@ -7,8 +7,8 @@ import java.util.List;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniProtParser;
 import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
-import org.uniprot.core.uniprot.UniProtEntry;
-import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.uniprotkb.UniProtkbEntry;
+import org.uniprot.core.uniprotkb.xdb.UniProtkbCrossReference;
 
 /**
  * Created 27/02/19
@@ -24,8 +24,8 @@ abstract class AbstractDBXTest {
         assertEquals(expectedScore, getScored(line).score(), 0.001);
     }
 
-    List<UniProtCrossReference> getDBXRefs(String citationLines, String type) {
-        UniProtEntry entry =
+    List<UniProtkbCrossReference> getDBXRefs(String citationLines, String type) {
+        UniProtkbEntry entry =
                 new DefaultUniProtParser(new SupportingDataMapImpl("", "", "", ""), true)
                         .parse(trEMBLEntry(citationLines));
         return entry.getUniProtCrossReferencesByType(type);

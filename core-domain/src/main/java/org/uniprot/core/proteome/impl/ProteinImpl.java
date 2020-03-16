@@ -4,14 +4,14 @@ import java.util.Objects;
 
 import org.uniprot.core.proteome.GeneNameType;
 import org.uniprot.core.proteome.Protein;
-import org.uniprot.core.uniprot.UniProtAccession;
-import org.uniprot.core.uniprot.UniProtEntryType;
+import org.uniprot.core.uniprotkb.UniProtkbAccession;
+import org.uniprot.core.uniprotkb.UniProtkbEntryType;
 
 public class ProteinImpl implements Protein {
 
     private static final long serialVersionUID = 1L;
-    private UniProtAccession accession;
-    private UniProtEntryType entryType;
+    private UniProtkbAccession accession;
+    private UniProtkbEntryType entryType;
     private long sequenceLength;
     private String geneName;
     private GeneNameType geneNameType;
@@ -20,8 +20,8 @@ public class ProteinImpl implements Protein {
     ProteinImpl() {}
 
     ProteinImpl(
-            UniProtAccession accession,
-            UniProtEntryType entryType,
+            UniProtkbAccession accession,
+            UniProtkbEntryType entryType,
             long sequenceLength,
             String geneName,
             GeneNameType geneNameType) {
@@ -33,12 +33,12 @@ public class ProteinImpl implements Protein {
     }
 
     @Override
-    public UniProtAccession getAccession() {
+    public UniProtkbAccession getAccession() {
         return accession;
     }
 
     @Override
-    public UniProtEntryType getEntryType() {
+    public UniProtkbEntryType getEntryType() {
         return entryType;
     }
 

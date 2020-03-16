@@ -12,11 +12,11 @@ import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
-import org.uniprot.core.uniprot.EntryAudit;
-import org.uniprot.core.uniprot.UniProtEntryType;
+import org.uniprot.core.uniprotkb.EntryAudit;
+import org.uniprot.core.uniprotkb.UniProtkbEntryType;
 
-public class DTLineBuilder extends FFLineBuilderAbstr<Map.Entry<EntryAudit, UniProtEntryType>>
-        implements FFLineBuilder<Map.Entry<EntryAudit, UniProtEntryType>> {
+public class DTLineBuilder extends FFLineBuilderAbstr<Map.Entry<EntryAudit, UniProtkbEntryType>>
+        implements FFLineBuilder<Map.Entry<EntryAudit, UniProtkbEntryType>> {
     private static final String ENTRY_VERSION = "entry version ";
     private static final String SEQUENCE_VERSION = "sequence version ";
 
@@ -25,25 +25,25 @@ public class DTLineBuilder extends FFLineBuilderAbstr<Map.Entry<EntryAudit, UniP
     }
 
     @Override
-    public String buildString(Map.Entry<EntryAudit, UniProtEntryType> f) {
+    public String buildString(Map.Entry<EntryAudit, UniProtkbEntryType> f) {
         List<String> lines = build(f.getKey(), f.getValue(), false);
         return FFLines.create(lines).toString();
     }
 
     @Override
-    public String buildStringWithEvidence(Map.Entry<EntryAudit, UniProtEntryType> f) {
+    public String buildStringWithEvidence(Map.Entry<EntryAudit, UniProtkbEntryType> f) {
         List<String> lines = build(f.getKey(), f.getValue(), false);
         return FFLines.create(lines).toString();
     }
 
     @Override
-    protected FFLine buildLine(Map.Entry<EntryAudit, UniProtEntryType> f, boolean showEvidence) {
+    protected FFLine buildLine(Map.Entry<EntryAudit, UniProtkbEntryType> f, boolean showEvidence) {
         List<String> lines = build(f.getKey(), f.getValue(), true);
         return FFLines.create(lines);
     }
 
     private List<String> build(
-            EntryAudit audit, UniProtEntryType type, boolean includeFlatFileMarkings) {
+            EntryAudit audit, UniProtkbEntryType type, boolean includeFlatFileMarkings) {
         List<String> lines = new ArrayList<>();
         lines.add(
                 buildLine(
@@ -76,7 +76,7 @@ public class DTLineBuilder extends FFLineBuilderAbstr<Map.Entry<EntryAudit, UniP
         return sb.toString();
     }
 
-    private String getIntegrateString(UniProtEntryType type) {
+    private String getIntegrateString(UniProtkbEntryType type) {
         StringBuilder sb = new StringBuilder("integrated into ");
         switch (type) {
             case SWISSPROT:

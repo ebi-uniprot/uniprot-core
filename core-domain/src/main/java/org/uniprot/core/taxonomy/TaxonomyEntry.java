@@ -3,7 +3,7 @@ package org.uniprot.core.taxonomy;
 import java.io.Serializable;
 import java.util.List;
 
-import org.uniprot.core.uniprot.taxonomy.Taxonomy;
+import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 
 /** @author lgonzales */
 public interface TaxonomyEntry extends Taxonomy, Serializable {

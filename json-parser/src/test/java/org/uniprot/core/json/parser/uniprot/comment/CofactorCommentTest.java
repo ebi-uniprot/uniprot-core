@@ -11,15 +11,15 @@ import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
-import org.uniprot.core.uniprot.comment.Cofactor;
-import org.uniprot.core.uniprot.comment.CofactorComment;
-import org.uniprot.core.uniprot.comment.CofactorDatabase;
-import org.uniprot.core.uniprot.comment.Note;
-import org.uniprot.core.uniprot.comment.impl.CofactorBuilder;
-import org.uniprot.core.uniprot.comment.impl.CofactorCommentBuilder;
-import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.comment.Cofactor;
+import org.uniprot.core.uniprotkb.comment.CofactorComment;
+import org.uniprot.core.uniprotkb.comment.CofactorDatabase;
+import org.uniprot.core.uniprotkb.comment.Note;
+import org.uniprot.core.uniprotkb.comment.impl.CofactorBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.CofactorCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.NoteBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

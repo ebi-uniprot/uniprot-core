@@ -7,12 +7,12 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
-import org.uniprot.core.uniprot.comment.Comment;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.comment.FreeTextComment;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
-import org.uniprot.core.uniprot.evidence.impl.EvidencedValueBuilder;
+import org.uniprot.core.uniprotkb.comment.Comment;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.FreeTextComment;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
 
 public class CommentTransformerHelper {
     private static final CommentTransformer<FreeTextComment> DEAFULT_BUILDER =

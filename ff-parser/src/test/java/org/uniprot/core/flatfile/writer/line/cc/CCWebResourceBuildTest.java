@@ -1,8 +1,8 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.comment.WebResourceComment;
-import org.uniprot.core.uniprot.comment.impl.WebResourceCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.WebResourceComment;
+import org.uniprot.core.uniprotkb.comment.impl.WebResourceCommentBuilder;
 
 class CCWebResourceBuildTest extends CCBuildTestAbstr {
     @Test

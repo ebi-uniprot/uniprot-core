@@ -11,7 +11,7 @@ import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcEntry;
-import org.uniprot.core.uniprot.taxonomy.Taxonomy;
+import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 
 /**
  * @author jluo

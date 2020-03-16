@@ -3,8 +3,8 @@ package org.uniprot.core.scorer.uniprotkb;
 import java.util.List;
 
 import org.uniprot.core.gene.Gene;
-import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
-import org.uniprot.core.uniprot.evidence.HasEvidences;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprotkb.evidence.HasEvidences;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 13:37:49 To change this template

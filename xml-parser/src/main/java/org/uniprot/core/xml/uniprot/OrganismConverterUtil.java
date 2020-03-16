@@ -3,8 +3,8 @@ package org.uniprot.core.xml.uniprot;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.uniprot.core.uniprot.taxonomy.OrganismName;
-import org.uniprot.core.uniprot.taxonomy.impl.AbstractOrganismNameBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
+import org.uniprot.core.uniprotkb.taxonomy.impl.AbstractOrganismNameBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.OrganismNameType;

@@ -5,7 +5,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.xdb.HamapScored;
-import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.uniprotkb.xdb.UniProtkbCrossReference;
 
 class HamapScoredTest extends AbstractDBXTest {
     @Test
@@ -66,7 +66,7 @@ class HamapScoredTest extends AbstractDBXTest {
 
     @Override
     HasScore getScored(String lines) {
-        List<UniProtCrossReference> crossReferences = getDBXRefs(lines, "HAMAP");
+        List<UniProtkbCrossReference> crossReferences = getDBXRefs(lines, "HAMAP");
         return new HamapScored(crossReferences);
     }
 }

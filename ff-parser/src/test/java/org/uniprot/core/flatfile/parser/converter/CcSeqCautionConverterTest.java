@@ -11,10 +11,10 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.SequenceCaution;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.SequenceCautionObject;
-import org.uniprot.core.uniprot.comment.Comment;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.comment.SequenceCautionComment;
-import org.uniprot.core.uniprot.comment.SequenceCautionType;
+import org.uniprot.core.uniprotkb.comment.Comment;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
+import org.uniprot.core.uniprotkb.comment.SequenceCautionType;
 
 class CcSeqCautionConverterTest {
     private final CcLineConverter converter = new CcLineConverter(null, null);

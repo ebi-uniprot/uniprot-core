@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineTransformer;
-import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.comment.*;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
 class CcLineTransformerTest {
     private CcLineTransformer transformer = new CcLineTransformer();
@@ -773,7 +773,7 @@ class CcLineTransformerTest {
         Interaction interaction1 = comment.getInteractions().get(0);
         assertEquals(InteractionType.SELF, interaction1.getType());
         assertEquals(1, interaction1.getNumberOfExperiments());
-        assertNull(interaction1.getUniProtAccession());
+        assertNull(interaction1.getUniProtkbAccession());
         assertNull(interaction1.getGeneName());
         assertEquals("EBI-123485", interaction1.getFirstInteractor().getValue());
         assertEquals("EBI-123485", interaction1.getSecondInteractor().getValue());
@@ -781,7 +781,7 @@ class CcLineTransformerTest {
         Interaction interaction2 = comment.getInteractions().get(1);
         assertEquals(InteractionType.BINARY, interaction2.getType());
         assertEquals(1, interaction2.getNumberOfExperiments());
-        assertEquals("Q9W158", interaction2.getUniProtAccession().getValue());
+        assertEquals("Q9W158", interaction2.getUniProtkbAccession().getValue());
         assertEquals("CG4612", interaction2.getGeneName());
         assertEquals("EBI-123485", interaction2.getFirstInteractor().getValue());
         assertEquals("EBI-89895", interaction2.getSecondInteractor().getValue());
@@ -789,7 +789,7 @@ class CcLineTransformerTest {
         Interaction interaction3 = comment.getInteractions().get(2);
         assertEquals(InteractionType.BINARY, interaction3.getType());
         assertEquals(1, interaction3.getNumberOfExperiments());
-        assertEquals("Q9VYI0", interaction3.getUniProtAccession().getValue());
+        assertEquals("Q9VYI0", interaction3.getUniProtkbAccession().getValue());
         assertEquals("fne", interaction3.getGeneName());
         assertEquals("EBI-123485", interaction3.getFirstInteractor().getValue());
         assertEquals("EBI-126770", interaction3.getSecondInteractor().getValue());
@@ -811,7 +811,7 @@ class CcLineTransformerTest {
         Interaction interaction1 = comment.getInteractions().get(0);
         assertEquals(InteractionType.BINARY, interaction1.getType());
         assertEquals(1, interaction1.getNumberOfExperiments());
-        assertEquals("Q9W1K5-1", interaction1.getUniProtAccession().getValue());
+        assertEquals("Q9W1K5-1", interaction1.getUniProtkbAccession().getValue());
         assertEquals("CG11299", interaction1.getGeneName());
         assertEquals("EBI-133844", interaction1.getFirstInteractor().getValue());
         assertEquals("EBI-212772", interaction1.getSecondInteractor().getValue());
@@ -819,7 +819,7 @@ class CcLineTransformerTest {
         Interaction interaction2 = comment.getInteractions().get(1);
         assertEquals(InteractionType.BINARY, interaction2.getType());
         assertEquals(4, interaction2.getNumberOfExperiments());
-        assertEquals("O96017", interaction2.getUniProtAccession().getValue());
+        assertEquals("O96017", interaction2.getUniProtkbAccession().getValue());
         assertEquals("CHEK2", interaction2.getGeneName());
         assertEquals("EBI-372428", interaction2.getFirstInteractor().getValue());
         assertEquals("EBI-1180783", interaction2.getSecondInteractor().getValue());
@@ -827,7 +827,7 @@ class CcLineTransformerTest {
         Interaction interaction3 = comment.getInteractions().get(2);
         assertEquals(InteractionType.XENO, interaction3.getType());
         assertEquals(3, interaction3.getNumberOfExperiments());
-        assertEquals("Q6ZWQ9", interaction3.getUniProtAccession().getValue());
+        assertEquals("Q6ZWQ9", interaction3.getUniProtkbAccession().getValue());
         assertEquals("Myl12a", interaction3.getGeneName());
         assertEquals("EBI-372428", interaction3.getFirstInteractor().getValue());
         assertEquals("EBI-8034418", interaction3.getSecondInteractor().getValue());

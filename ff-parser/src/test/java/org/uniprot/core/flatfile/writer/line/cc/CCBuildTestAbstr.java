@@ -9,20 +9,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CCLineBuilder;
 import org.uniprot.core.flatfile.parser.impl.cc.CCLineBuilderFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
-import org.uniprot.core.uniprot.comment.Comment;
-import org.uniprot.core.uniprot.comment.Note;
-import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
-import org.uniprot.core.uniprot.evidence.impl.EvidencedValueBuilder;
+import org.uniprot.core.uniprotkb.comment.Comment;
+import org.uniprot.core.uniprotkb.comment.Note;
+import org.uniprot.core.uniprotkb.comment.impl.NoteBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
 
 import com.google.common.base.Strings;
 
@@ -56,8 +56,8 @@ abstract class CCBuildTestAbstr {
     }
 
     protected void doTest(String ccLine) {
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotkbLineParser<CcLineObject> parser =
+                new DefaultUniprotkbLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(ccLine + "\n");
         CcLineConverter converter = new CcLineConverter(new HashMap<>(), new HashMap<>(), true);
         List<Comment> comments = converter.convert(obj);

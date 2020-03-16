@@ -3,7 +3,7 @@ package org.uniprot.core.parser.tsv.uniprot;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.uniprot.GeneLocation;
+import org.uniprot.core.uniprotkb.GeneLocation;
 
 public class EntryEncodedMap implements NamedValueMap {
     public static final List<String> FIELDS = Arrays.asList(new String[] {"organelle"});

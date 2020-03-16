@@ -6,8 +6,8 @@ import static org.uniprot.core.xml.uniprot.EvidenceHelper.createEvidences;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.taxonomy.Organism;
-import org.uniprot.core.uniprot.taxonomy.impl.OrganismBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.OrganismType;
 
 class OrganismConverterTest {

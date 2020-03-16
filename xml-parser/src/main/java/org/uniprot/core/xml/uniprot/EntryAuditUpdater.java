@@ -2,8 +2,8 @@ package org.uniprot.core.xml.uniprot;
 
 import java.time.LocalDate;
 
-import org.uniprot.core.uniprot.EntryAudit;
-import org.uniprot.core.uniprot.impl.EntryAuditBuilder;
+import org.uniprot.core.uniprotkb.EntryAudit;
+import org.uniprot.core.uniprotkb.impl.EntryAuditBuilder;
 import org.uniprot.core.xml.Updater;
 import org.uniprot.core.xml.jaxb.uniprot.SequenceType;
 

@@ -1,8 +1,8 @@
 package org.uniprot.core.flatfile.parser.impl.dt;
 
 import org.uniprot.core.flatfile.parser.Converter;
-import org.uniprot.core.uniprot.EntryAudit;
-import org.uniprot.core.uniprot.impl.EntryAuditBuilder;
+import org.uniprot.core.uniprotkb.EntryAudit;
+import org.uniprot.core.uniprotkb.impl.EntryAuditBuilder;
 
 public class DtLineConverter implements Converter<DtLineObject, EntryAudit> {
 

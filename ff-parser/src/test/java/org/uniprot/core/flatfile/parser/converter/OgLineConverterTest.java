@@ -10,9 +10,9 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.og.OgLineConverter;
 import org.uniprot.core.flatfile.parser.impl.og.OgLineObject;
 import org.uniprot.core.flatfile.parser.impl.og.OgLineObject.OgEnum;
-import org.uniprot.core.uniprot.GeneEncodingType;
-import org.uniprot.core.uniprot.GeneLocation;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.GeneEncodingType;
+import org.uniprot.core.uniprotkb.GeneLocation;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 class OgLineConverterTest {
     private final OgLineConverter converter = new OgLineConverter();

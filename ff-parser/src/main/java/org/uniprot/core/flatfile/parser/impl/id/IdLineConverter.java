@@ -4,19 +4,19 @@ import java.util.AbstractMap;
 import java.util.Map;
 
 import org.uniprot.core.flatfile.parser.Converter;
-import org.uniprot.core.uniprot.UniProtEntryType;
-import org.uniprot.core.uniprot.UniProtId;
-import org.uniprot.core.uniprot.impl.UniProtIdBuilder;
+import org.uniprot.core.uniprotkb.UniProtkbEntryType;
+import org.uniprot.core.uniprotkb.UniProtkbId;
+import org.uniprot.core.uniprotkb.impl.UniProtkbIdBuilder;
 
 public class IdLineConverter
-        implements Converter<IdLineObject, Map.Entry<UniProtId, UniProtEntryType>> {
+        implements Converter<IdLineObject, Map.Entry<UniProtkbId, UniProtkbEntryType>> {
 
     @Override
-    public Map.Entry<UniProtId, UniProtEntryType> convert(IdLineObject f) {
-        UniProtId id = new UniProtIdBuilder(f.getEntryName()).build();
-        UniProtEntryType type = UniProtEntryType.TREMBL;
+    public Map.Entry<UniProtkbId, UniProtkbEntryType> convert(IdLineObject f) {
+        UniProtkbId id = new UniProtkbIdBuilder(f.getEntryName()).build();
+        UniProtkbEntryType type = UniProtkbEntryType.TREMBL;
         if (f.getReviewed()) {
-            type = UniProtEntryType.SWISSPROT;
+            type = UniProtkbEntryType.SWISSPROT;
         }
         return new AbstractMap.SimpleEntry<>(id, type);
     }

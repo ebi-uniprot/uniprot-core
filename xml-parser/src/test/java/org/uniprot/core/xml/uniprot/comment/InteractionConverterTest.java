@@ -3,9 +3,9 @@ package org.uniprot.core.xml.uniprot.comment;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.comment.Interaction;
-import org.uniprot.core.uniprot.comment.InteractionType;
-import org.uniprot.core.uniprot.comment.impl.InteractionBuilder;
+import org.uniprot.core.uniprotkb.comment.Interaction;
+import org.uniprot.core.uniprotkb.comment.InteractionType;
+import org.uniprot.core.uniprotkb.comment.impl.InteractionBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 

@@ -3,8 +3,8 @@ package org.uniprot.core.scorer.uniprotkb.comments;
 import static java.util.Collections.singletonList;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 
 class CommentWithEvidenceScoredTest extends CommentScoreTestBase {
     @Test

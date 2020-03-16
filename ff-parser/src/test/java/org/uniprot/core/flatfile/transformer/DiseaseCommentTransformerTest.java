@@ -7,11 +7,11 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.comment.Disease;
-import org.uniprot.core.uniprot.comment.DiseaseComment;
-import org.uniprot.core.uniprot.comment.DiseaseDatabase;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.Disease;
+import org.uniprot.core.uniprotkb.comment.DiseaseComment;
+import org.uniprot.core.uniprotkb.comment.DiseaseDatabase;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 class DiseaseCommentTransformerTest {
     private final DiseaseCommentTransformer transformer = new DiseaseCommentTransformer();
