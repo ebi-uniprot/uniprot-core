@@ -10,11 +10,10 @@ class ChebiCacheTest {
     private static final String DEFAULT_DATA_FILE = "chebi/chebi.obo";
 
     @Test
-    void testLoadCacheFromDefaultFileAsFallback() {
+    void passingEmptyFileToCache_returnsEmptyList() {
         String emptyFileName = "empty.txt";
         List<ChebiEntry> chebis = ChebiCache.INSTANCE.get(emptyFileName);
         // the chebis should come from FTP
-        Assertions.assertFalse(chebis.isEmpty(), "list is empty");
-        Assertions.assertEquals(3, chebis.size());
+        Assertions.assertTrue(chebis.isEmpty(), "list should be empty because passing empty file");
     }
 }
