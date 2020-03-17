@@ -1,5 +1,12 @@
 package org.uniprot.core.uniprotkb.comment;
 
-import org.uniprot.core.Value;
+import java.io.Serializable;
 
-public interface Interactor extends Value {}
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
+
+public interface Interactor extends Serializable {
+	String getChainId();
+	UniProtKBAccession getUniProtKBAccession();
+	String getInterActId();
+	boolean hasChain();
+}
