@@ -12,8 +12,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.impl.CrossReferenceImpl;
-import org.uniprot.core.json.parser.uniprot.UniprotkbJsonConfig;
-import org.uniprot.core.uniprotkb.impl.UniProtkbEntryImpl;
+import org.uniprot.core.json.parser.uniprot.UniprotKBJsonConfig;
+import org.uniprot.core.uniprotkb.impl.UniProtKBEntryImpl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,7 +24,7 @@ public class ValidateJson {
 
     public static <T> void verifyJsonRoundTripParser(T obj) {
         try {
-            ObjectMapper mapper = UniprotkbJsonConfig.getInstance().getFullObjectMapper();
+            ObjectMapper mapper = UniprotKBJsonConfig.getInstance().getFullObjectMapper();
             verifyJsonRoundTripParser(mapper, obj);
         } catch (Exception e) {
             fail(e.getMessage());
@@ -57,7 +57,7 @@ public class ValidateJson {
     }
 
     public static <T> JsonNode getJsonNodeFromSerializeOnlyMapper(T obj) {
-        ObjectMapper mapper = UniprotkbJsonConfig.getInstance().getSimpleObjectMapper();
+        ObjectMapper mapper = UniprotKBJsonConfig.getInstance().getSimpleObjectMapper();
         return getJsonNodeFromSerializeOnlyMapper(mapper, obj);
     }
 
@@ -126,7 +126,7 @@ public class ValidateJson {
         if (field.getName().equals("properties") && object instanceof CrossReferenceImpl) {
             result = false;
         }
-        if (field.getName().equals("inactiveReason") && object instanceof UniProtkbEntryImpl) {
+        if (field.getName().equals("inactiveReason") && object instanceof UniProtKBEntryImpl) {
             result = false;
         }
         return result;

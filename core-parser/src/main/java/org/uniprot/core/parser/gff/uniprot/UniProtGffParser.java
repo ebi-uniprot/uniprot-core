@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.flatfile.parser.impl.ft.FTLineBuilderHelper;
-import org.uniprot.core.uniprotkb.UniProtkbEntry;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.feature.Feature;
@@ -27,7 +27,7 @@ public class UniProtGffParser {
     private static final String ATTRIBUTE_SEPARATOR = ";";
     private static final String LINE_SEPARATOR = "\n";
 
-    public static String convert(UniProtkbEntry entry) {
+    public static String convert(UniProtKBEntry entry) {
         // Note: the trailing '/t' character at the end of the line is strange, but is there to
         // conform to the
         //       way the current uniprot.org produces GFF files, as of 06/02/2019
@@ -45,7 +45,7 @@ public class UniProtGffParser {
                 + "\t";
     }
 
-    private static String convert(Feature feature, UniProtkbEntry entry) {
+    private static String convert(Feature feature, UniProtKBEntry entry) {
         String accession = entry.getPrimaryAccession().getValue(); // 1: seqid
         String type = FeatureLabel.getLabelFromName(feature.getType().getName()); // 3: type
         int start = feature.getLocation().getStart().getValue(); // 4: start
@@ -148,7 +148,7 @@ public class UniProtGffParser {
         return GFF_HEADER;
     }
 
-    private static String getEntryHeader(UniProtkbEntry entry) {
+    private static String getEntryHeader(UniProtKBEntry entry) {
         return ENTRY_PREFIX
                 + entry.getPrimaryAccession().getValue()
                 + " 1 "

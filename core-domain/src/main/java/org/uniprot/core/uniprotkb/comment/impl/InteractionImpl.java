@@ -3,7 +3,7 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import java.util.Objects;
 
 import org.uniprot.core.impl.ValueImpl;
-import org.uniprot.core.uniprotkb.UniProtkbAccession;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.InteractionType;
 import org.uniprot.core.uniprotkb.comment.Interactor;
@@ -12,7 +12,7 @@ import org.uniprot.core.util.Utils;
 public class InteractionImpl implements Interaction {
     private static final long serialVersionUID = -1102213995267310387L;
     private InteractionType type;
-    private UniProtkbAccession uniProtkbAccession;
+    private UniProtKBAccession uniProtkbAccession;
     private String geneName;
     private int numberOfExperiments;
     private Interactor firstInteractor;
@@ -23,7 +23,7 @@ public class InteractionImpl implements Interaction {
 
     InteractionImpl(
             InteractionType type,
-            UniProtkbAccession uniProtkbAccession,
+            UniProtKBAccession uniProtkbAccession,
             String geneName,
             int numberOfExperiments,
             Interactor firstInteractor,
@@ -42,7 +42,7 @@ public class InteractionImpl implements Interaction {
     }
 
     @Override
-    public UniProtkbAccession getUniProtkbAccession() {
+    public UniProtKBAccession getUniProtkbAccession() {
         return uniProtkbAccession;
     }
 

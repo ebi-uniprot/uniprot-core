@@ -3,8 +3,8 @@ package org.uniprot.core.flatfile.antlr;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.*;
 
@@ -14,8 +14,8 @@ class CcLineWebRCommentParserTest {
         String lines =
                 "CC   -!- WEB RESOURCE: Name=CD40Lbase; Note=CD40L defect database;\n"
                         + "CC       URL=\"http://bioinf.uta.fi/CD40Lbase/\";\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -33,8 +33,8 @@ class CcLineWebRCommentParserTest {
                 "CC   -!- WEB RESOURCE: Name=Functional Glycomics Gateway - GTase;\n"
                         + "CC       Note=Beta1,4-N-acetylgalactosaminyltransferase III.;\n"
                         + "CC       URL=\"http://www.functionalglycomics.org/glycomics/search/jsp/landing.jsp?query=gt_mou_507\";\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -52,8 +52,8 @@ class CcLineWebRCommentParserTest {
         String lines =
                 "CC   -!- WEB RESOURCE: Name=GeneReviews;\n"
                         + "CC       URL=\"http://www.genetests.org/query?gene=RP1\";\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -69,8 +69,8 @@ class CcLineWebRCommentParserTest {
         String ccLineString =
                 "WEB RESOURCE: Name=GeneReviews;\n"
                         + "URL=\"http://www.genetests.org/query?gene=RP1\";\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineFormater formater = new CcLineFormater();
         String lines = formater.format(ccLineString);
         CcLineObject obj = parser.parse(lines);

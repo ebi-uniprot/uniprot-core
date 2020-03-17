@@ -11,39 +11,39 @@ import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
-import org.uniprot.core.uniprotkb.UniProtkbAccession;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
-public class ACLineBuilder extends FFLineBuilderAbstr<List<UniProtkbAccession>>
-        implements FFLineBuilder<List<UniProtkbAccession>> {
+public class ACLineBuilder extends FFLineBuilderAbstr<List<UniProtKBAccession>>
+        implements FFLineBuilder<List<UniProtKBAccession>> {
     public ACLineBuilder() {
         super(LineType.AC);
     }
 
     @Override
-    public String buildString(List<UniProtkbAccession> f) {
+    public String buildString(List<UniProtKBAccession> f) {
         return build(f, false).toString();
     }
 
     @Override
-    public String buildStringWithEvidence(List<UniProtkbAccession> f) {
+    public String buildStringWithEvidence(List<UniProtKBAccession> f) {
         return build(f, true).toString();
     }
 
     @Override
-    protected FFLine buildLine(List<UniProtkbAccession> f, boolean showEvidence) {
+    protected FFLine buildLine(List<UniProtKBAccession> f, boolean showEvidence) {
         StringBuilder sb = build(f, true);
         List<String> lls = FFLineWrapper.buildLines(sb, SEPARATOR_SEMICOLON, linePrefix);
         return FFLines.create(lls);
     }
 
-    private StringBuilder build(List<UniProtkbAccession> f, boolean includeFFMarkup) {
+    private StringBuilder build(List<UniProtKBAccession> f, boolean includeFFMarkup) {
 
         StringBuilder sb = new StringBuilder();
         if (includeFFMarkup) {
             sb.append(linePrefix);
         }
         boolean isFirst = true;
-        for (UniProtkbAccession ac : f) {
+        for (UniProtKBAccession ac : f) {
             if (!isFirst) {
                 sb.append(SEPARATOR_SEMICOLON);
             }

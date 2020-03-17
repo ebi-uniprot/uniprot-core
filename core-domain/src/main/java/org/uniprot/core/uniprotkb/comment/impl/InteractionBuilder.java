@@ -5,15 +5,15 @@ import static java.util.Objects.nonNull;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.uniprotkb.UniProtkbAccession;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.InteractionType;
 import org.uniprot.core.uniprotkb.comment.Interactor;
-import org.uniprot.core.uniprotkb.impl.UniProtkbAccessionBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 
 public final class InteractionBuilder implements Builder<Interaction> {
     private InteractionType type;
-    private UniProtkbAccession uniProtkbAccession;
+    private UniProtKBAccession uniProtkbAccession;
     private String geneName;
     private int numberOfExperiments;
     private Interactor firstInteractor;
@@ -67,13 +67,13 @@ public final class InteractionBuilder implements Builder<Interaction> {
         return this;
     }
 
-    public @Nonnull InteractionBuilder uniProtAccession(UniProtkbAccession uniprotAccession) {
+    public @Nonnull InteractionBuilder uniProtAccession(UniProtKBAccession uniprotAccession) {
         this.uniProtkbAccession = uniprotAccession;
         return this;
     }
 
     public @Nonnull InteractionBuilder uniProtAccession(String uniProtAccession) {
-        this.uniProtkbAccession = new UniProtkbAccessionBuilder(uniProtAccession).build();
+        this.uniProtkbAccession = new UniProtKBAccessionBuilder(uniProtAccession).build();
         return this;
     }
 }

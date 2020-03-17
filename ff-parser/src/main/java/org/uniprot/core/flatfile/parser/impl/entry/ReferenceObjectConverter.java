@@ -18,11 +18,11 @@ import org.uniprot.core.flatfile.parser.impl.rp.RpLineConverter;
 import org.uniprot.core.flatfile.parser.impl.rt.RtLineConverter;
 import org.uniprot.core.flatfile.parser.impl.rx.RxLineConverter;
 import org.uniprot.core.uniprotkb.ReferenceComment;
-import org.uniprot.core.uniprotkb.UniProtkbReference;
-import org.uniprot.core.uniprotkb.impl.UniProtkbReferenceBuilder;
+import org.uniprot.core.uniprotkb.UniProtKBReference;
+import org.uniprot.core.uniprotkb.impl.UniProtKBReferenceBuilder;
 
 public class ReferenceObjectConverter extends EvidenceCollector
-        implements Converter<EntryObject.ReferenceObject, UniProtkbReference> {
+        implements Converter<EntryObject.ReferenceObject, UniProtKBReference> {
     private final RaLineConverter raLineConverter = new RaLineConverter();
     private final RcLineConverter rcLineConverter = new RcLineConverter();
     private final RgLineConverter rgLineConverter = new RgLineConverter();
@@ -33,7 +33,7 @@ public class ReferenceObjectConverter extends EvidenceCollector
     private final RxLineConverter rxLineConverter = new RxLineConverter();
 
     @Override
-    public UniProtkbReference convert(ReferenceObject f) {
+    public UniProtKBReference convert(ReferenceObject f) {
         AbstractCitationBuilder<? extends AbstractCitationBuilder<?, ?>, ? extends Citation>
                 builder = rlLineConverter.convert(f.rl);
         if (f.ra != null) {
@@ -61,8 +61,8 @@ public class ReferenceObjectConverter extends EvidenceCollector
 
             referenceComments = rcLineConverter.convert(f.rc);
         }
-        UniProtkbReference uniprotReference =
-                new UniProtkbReferenceBuilder()
+        UniProtKBReference uniprotReference =
+                new UniProtKBReferenceBuilder()
                         .referencePositionsSet(referencePositions)
                         .referenceCommentsSet(referenceComments)
                         .evidencesSet(rnLineConverter.convert(f.rn))

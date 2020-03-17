@@ -3,8 +3,8 @@ package org.uniprot.core.flatfile.antlr;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.BiophysicochemicalProperties;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
@@ -21,8 +21,8 @@ class CcLineBioPhyChemPCommentParserTest {
                         + "CC         Vmax=1.9 mmol/min/mg enzyme;\n"
                         + "CC       pH dependence:\n"
                         + "CC         Optimum pH is 7.75.;\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -45,8 +45,8 @@ class CcLineBioPhyChemPCommentParserTest {
                         + "CC         KM=0.3913 uM for FAM fluorophore-coupled RNA substrate and a\n"
                         + "CC         quencher-coupled DNA primer {ECO:0000269|PubMed:26779609};\n"
                         + "CC         Vmax=0.000197 umol/sec/ug enzyme {ECO:0000269|PubMed:26779609};\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -72,8 +72,8 @@ class CcLineBioPhyChemPCommentParserTest {
                         + "CC       Temperature dependence:\n"
                         + "CC         Optimum temperature is 65 degrees Celsius. Protected from\n"
                         + "CC         thermal inactivation by ATP.;\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -106,8 +106,8 @@ class CcLineBioPhyChemPCommentParserTest {
                         + "CC         Optimum temperature is 65 degrees Celsius. Protected from\n"
                         + "CC         thermal inactivation by ATP. {ECO:0000269|PubMed:10433555};\n"
                         + "CC         2 thermal inactivation by ATP. {ECO:0000269|PubMed:10433556};\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -140,8 +140,8 @@ class CcLineBioPhyChemPCommentParserTest {
                 "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
                         + "CC       Absorption:\n"
                         + "CC         Abs(max)=578 nm;\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -160,8 +160,8 @@ class CcLineBioPhyChemPCommentParserTest {
                         + "CC         Abs(max)=~596 nm;\n"
                         + "CC         Note=In the presence of anions, the maximum absorption shifts to\n"
                         + "CC         about 575 nm.;\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -184,8 +184,8 @@ class CcLineBioPhyChemPCommentParserTest {
                         + "CC         Abs(max)=~596 nm {ECO:0000313};\n"
                         + "CC         Note=In the presence of anions, the maximum absorption shifts to\n"
                         + "CC         about 575 nm. {ECO:0000314};\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -221,8 +221,8 @@ class CcLineBioPhyChemPCommentParserTest {
                         + "CC         Note=The enzyme is substrate inhibited at high substrate\n"
                         + "CC         concentrations (Ki=1.08 mM for tyramine).\n"
                         + "CC         {ECO:0000256|HAMAP-Rule:MF_00205};\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -272,8 +272,8 @@ class CcLineBioPhyChemPCommentParserTest {
                         + "CC       Temperature dependence:\n"
                         + "CC         Highly active at low temperatures, even at 0 degree Celsius.\n"
                         + "CC         Thermolabile. {ECO:0000256|HAMAP-Rule:MF_00205};\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -307,8 +307,8 @@ class CcLineBioPhyChemPCommentParserTest {
                         + "CC         {ECO:0000269|PubMed:24291792};\n"
                         + "CC         Note=kcat is 0.175 s(-1) for peptide substrate DABCYL-\n"
                         + "CC         ARSGAKASGC(farnesyl)LVS-EDANS. {ECO:0000269|PubMed:24291792};\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -336,8 +336,8 @@ class CcLineBioPhyChemPCommentParserTest {
                         + " {ECO:0000256|HAMAP-Rule:MF_00205}. "
                         + "Another note is very very long. {ECO:0000256|HAMAP-Rule:MF_00205};");
         CcLineFormater formater = new CcLineFormater();
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineStringEvidence);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);
@@ -360,8 +360,8 @@ class CcLineBioPhyChemPCommentParserTest {
                         + " {ECO:0000256|HAMAP-Rule:MF_00205}. "
                         + "Another note is very very long. {ECO:0000256|HAMAP-Rule:MF_00205};");
         CcLineFormater formater = new CcLineFormater();
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineStringEvidence);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);
@@ -380,8 +380,8 @@ class CcLineBioPhyChemPCommentParserTest {
                         + "  Highly active at low temperatures, even at 0 degree Celsius.\n"
                         + "  Thermolabile. {ECO:0000256|HAMAP-Rule:MF_00205};\n";
         CcLineFormater formater = new CcLineFormater();
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(linesNoHeader);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);
@@ -400,8 +400,8 @@ class CcLineBioPhyChemPCommentParserTest {
                         + "Highly active at low temperatures, even at 0 degree Celsius.\n"
                         + "Thermolabile. {ECO:0000256|HAMAP-Rule:MF_00205};\n";
         CcLineFormater formater = new CcLineFormater();
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(linesNoHeader);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);
@@ -426,8 +426,8 @@ class CcLineBioPhyChemPCommentParserTest {
                         + "concentrations (Ki=1.08 mM for tyramine).\n"
                         + "{ECO:0000256|HAMAP-Rule:MF_00205};\n";
         CcLineFormater formater = new CcLineFormater();
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(linesNoHeader);
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());

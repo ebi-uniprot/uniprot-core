@@ -3,7 +3,7 @@ package org.uniprot.core.uniprotkb;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
 /**
- * Encapsulates a single gene coding of the {@link UniProtkbEntry UniProtkbEntry}. The gene coding
+ * Encapsulates a single gene coding of the {@link UniProtKBEntry UniProtKBEntry}. The gene coding
  * for a protein originates from the mitochondria, the chloroplast, the cyanelle, the nucleomorph or
  * a plasmid. <br>
  * <br>

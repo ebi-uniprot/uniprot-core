@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.UniProtkbEntry;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
 
@@ -20,7 +20,7 @@ class SequenceCautionMapTest {
                         + "CC       Sequence=BAB43866.1; Type=Miscellaneous discrepancy; Note=Chimeric cDNA. "
                         + "It is a chimera between Dox-A3 and PPO2.; Evidence={ECO:0000305};";
 
-        UniProtkbEntry entry =
+        UniProtKBEntry entry =
                 CommentTestUtil.createUniProtEntryFromCommentLine(sequenceCautionLine);
 
         List<SequenceCautionComment> sequenceCautionComments =
@@ -47,7 +47,7 @@ class SequenceCautionMapTest {
                         + "CC   -!- SEQUENCE CAUTION:\n"
                         + "CC       Sequence=CAH10679.1; Type=Erroneous termination; Note=Translated as Trp.; Evidence={ECO:0000305};";
 
-        UniProtkbEntry entry =
+        UniProtKBEntry entry =
                 CommentTestUtil.createUniProtEntryFromCommentLine(sequenceCautionLine);
 
         List<SequenceCautionComment> sequenceCautionComments =

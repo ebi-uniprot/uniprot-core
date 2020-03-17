@@ -27,7 +27,7 @@ import org.uniprot.core.uniprotkb.*;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 
-public class UniProtFlatfileWriter implements FlatfileWriter<UniProtkbEntry> {
+public class UniProtFlatfileWriter implements FlatfileWriter<UniProtKBEntry> {
 
     public static final Collection<LineType> ALL_LINES_NO_COPYRIGHT =
             Collections.unmodifiableList(
@@ -144,28 +144,28 @@ public class UniProtFlatfileWriter implements FlatfileWriter<UniProtkbEntry> {
     private static final FFLine copyRightLine = FFLines.create(COPY_RIGHT);
     private static final String ENTRY_END = "//";
 
-    public static String write(UniProtkbEntry entry) {
+    public static String write(UniProtKBEntry entry) {
         return write(entry, true, true);
     }
 
-    public static String write(UniProtkbEntry entry, Collection<LineType> types) {
+    public static String write(UniProtKBEntry entry, Collection<LineType> types) {
         FFLine entryLines = FFLines.create();
         if (types.contains(LineType.ID)) {
             IdLineObject idlineObject =
                     new IdLineObject(
                             entry.getUniProtkbId().getValue(),
-                            entry.getEntryType() == UniProtkbEntryType.SWISSPROT,
+                            entry.getEntryType() == UniProtKBEntryType.SWISSPROT,
                             entry.getSequence().getLength());
             entryLines.add(idLineBuilder.build(idlineObject));
         }
         if (types.contains(LineType.AC)) {
-            List<UniProtkbAccession> acc = new ArrayList<UniProtkbAccession>();
+            List<UniProtKBAccession> acc = new ArrayList<UniProtKBAccession>();
             acc.add(entry.getPrimaryAccession());
             acc.addAll(entry.getSecondaryAccessions());
             entryLines.add(acLineBuilder.buildWithEvidence(acc));
         }
         if (types.contains(LineType.DT)) {
-            Map.Entry<EntryAudit, UniProtkbEntryType> dt =
+            Map.Entry<EntryAudit, UniProtKBEntryType> dt =
                     new AbstractMap.SimpleEntry<>(entry.getEntryAudit(), entry.getEntryType());
             entryLines.add(dtLineBuilder.buildWithEvidence(dt));
         }
@@ -192,7 +192,7 @@ public class UniProtFlatfileWriter implements FlatfileWriter<UniProtkbEntry> {
                 || (types.contains(LineType.RG))
                 || (types.contains(LineType.RX))) {
             int citationNum = 0;
-            for (UniProtkbReference reference : entry.getReferences()) {
+            for (UniProtKBReference reference : entry.getReferences()) {
                 citationNum++;
                 rLineBuilder.setRN(citationNum);
                 entryLines.add(rLineBuilder.buildWithEvidence(reference));
@@ -219,14 +219,14 @@ public class UniProtFlatfileWriter implements FlatfileWriter<UniProtkbEntry> {
         return entryLines.toString();
     }
 
-    public static String write(UniProtkbEntry entry, LineType type) {
+    public static String write(UniProtKBEntry entry, LineType type) {
         Collection<LineType> types = new ArrayList<>();
         types.add(type);
         return write(entry, types);
     }
 
     @Override
-    public String write(UniProtkbEntry entry, boolean isPublic) {
+    public String write(UniProtKBEntry entry, boolean isPublic) {
         if (isPublic) {
             return write(entry, isPublic, false);
         } else {
@@ -235,7 +235,7 @@ public class UniProtFlatfileWriter implements FlatfileWriter<UniProtkbEntry> {
     }
 
     public static String write(
-            UniProtkbEntry entry, boolean hasCopyRight, boolean hasInternalSection) {
+            UniProtKBEntry entry, boolean hasCopyRight, boolean hasInternalSection) {
         Collection<LineType> set = new HashSet<LineType>(ALL_LINES);
         if (!hasCopyRight) set.remove(LineType.CR); // remove copyright notice
         if (!hasInternalSection) set.remove(LineType.STAR_STAR); // remove star star line
@@ -243,7 +243,7 @@ public class UniProtFlatfileWriter implements FlatfileWriter<UniProtkbEntry> {
         return write(entry, set);
     }
 
-    private static FFLine buildComment(UniProtkbEntry entry, boolean showEvidence) {
+    private static FFLine buildComment(UniProtKBEntry entry, boolean showEvidence) {
         FFLine ccLines = FFLines.create();
         for (CommentType commentType : CommentType.values()) {
             List<Comment> comments = entry.getCommentsByType(commentType);
@@ -255,9 +255,9 @@ public class UniProtFlatfileWriter implements FlatfileWriter<UniProtkbEntry> {
         return ccLines;
     }
 
-    private static FFLine buildDRLines(UniProtkbEntry entry, boolean showEvidence) {
+    private static FFLine buildDRLines(UniProtKBEntry entry, boolean showEvidence) {
         FFLine drLines = FFLines.create();
-        drLines.add(drLineBuilder.build(entry.getUniProtkbCrossReferences()));
+        drLines.add(drLineBuilder.build(entry.getUniProtKBCrossReferences()));
 
         // add **PROSITE if it exists
         InternalSection internalSection = entry.getInternalSection();

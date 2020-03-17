@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.SupportingDataMap;
 import org.uniprot.core.flatfile.parser.impl.ac.AcLineConverter;
-import org.uniprot.core.flatfile.parser.impl.ac.UniProtkbAcLineObject;
+import org.uniprot.core.flatfile.parser.impl.ac.UniProtKBAcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineConverter;
 import org.uniprot.core.flatfile.parser.impl.dr.DrLineConverter;
@@ -29,14 +29,14 @@ import org.uniprot.core.flatfile.parser.impl.ss.SsLineConverter;
 import org.uniprot.core.uniprotkb.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.impl.InternalSectionBuilder;
-import org.uniprot.core.uniprotkb.impl.UniProtkbEntryBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
-import org.uniprot.core.uniprotkb.xdb.UniProtkbCrossReference;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
 
-public class EntryObjectConverter implements Converter<EntryObject, UniProtkbEntry> {
+public class EntryObjectConverter implements Converter<EntryObject, UniProtKBEntry> {
 
     /** */
     private static final long serialVersionUID = -1548724347898352705L;
@@ -79,12 +79,12 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtkbEnt
     }
 
     @Override
-    public UniProtkbEntry convert(EntryObject f) {
+    public UniProtKBEntry convert(EntryObject f) {
         clear();
-        Map.Entry<UniProtkbId, UniProtkbEntryType> ids = idLineConverter.convert(f.id);
-        UniProtkbAcLineObject acLineObj = acLineConverter.convert(f.ac);
-        UniProtkbEntryBuilder activeEntryBuilder =
-                new UniProtkbEntryBuilder(
+        Map.Entry<UniProtKBId, UniProtKBEntryType> ids = idLineConverter.convert(f.id);
+        UniProtKBAcLineObject acLineObj = acLineConverter.convert(f.ac);
+        UniProtKBEntryBuilder activeEntryBuilder =
+                new UniProtKBEntryBuilder(
                                 acLineObj.getPrimaryAccession(), ids.getKey(), ids.getValue())
                         .secondaryAccessionsSet(acLineObj.getSecondAccessions())
                         .entryAudit(dtLineConverter.convert(f.dt));
@@ -122,7 +122,7 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtkbEnt
         activeEntryBuilder.organism(organism);
         activeEntryBuilder.proteinExistence(peLineConverter.convert(f.pe));
         activeEntryBuilder.sequence(sqLineConverter.convert(f.sq));
-        List<UniProtkbReference> citations = new ArrayList<>();
+        List<UniProtKBReference> citations = new ArrayList<>();
         for (EntryObject.ReferenceObject refObj : f.ref) {
             citations.add(refObjConverter.convert(refObj));
         }
@@ -151,8 +151,8 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtkbEnt
         return activeEntryBuilder.build();
     }
 
-    private List<UniProtkbCrossReference> addGoEvidence(
-            String accession, List<UniProtkbCrossReference> dbRefs) {
+    private List<UniProtKBCrossReference> addGoEvidence(
+            String accession, List<UniProtKBCrossReference> dbRefs) {
         Map<String, List<Evidence>> goEvidenceMap = accessionGoEvidences.get(accession);
         if (goEvidenceMap == null) {
             return dbRefs;
@@ -160,8 +160,8 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtkbEnt
         return dbRefs.stream().map(val -> convert(val, goEvidenceMap)).collect(Collectors.toList());
     }
 
-    private UniProtkbCrossReference convert(
-            UniProtkbCrossReference xref, Map<String, List<Evidence>> goEvidenceMap) {
+    private UniProtKBCrossReference convert(
+            UniProtKBCrossReference xref, Map<String, List<Evidence>> goEvidenceMap) {
         if ("GO".equals(xref.getDatabase().getName())) {
             String id = xref.getId();
             List<Evidence> evidences = goEvidenceMap.get(id);

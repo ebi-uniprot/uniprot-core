@@ -8,7 +8,7 @@ import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.json.parser.serializer.AuthorSerializer;
 import org.uniprot.core.json.parser.serializer.JournalSerializer;
 import org.uniprot.core.json.parser.serializer.PublicationDateSerializer;
-import org.uniprot.core.json.parser.uniprot.serializer.UniProtkbAccessionSerializer;
+import org.uniprot.core.json.parser.uniprot.serializer.UniProtKBAccessionSerializer;
 import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.literature.LiteratureMappedReference;
 import org.uniprot.core.literature.LiteratureStatistics;
@@ -17,8 +17,8 @@ import org.uniprot.core.literature.impl.LiteratureEntryImpl;
 import org.uniprot.core.literature.impl.LiteratureMappedReferenceImpl;
 import org.uniprot.core.literature.impl.LiteratureStatisticsImpl;
 import org.uniprot.core.literature.impl.LiteratureStoreEntryImpl;
-import org.uniprot.core.uniprotkb.UniProtkbAccession;
-import org.uniprot.core.uniprotkb.impl.UniProtkbAccessionImpl;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionImpl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.NamedType;
@@ -66,7 +66,7 @@ public class LiteratureJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(PublicationDate.class, PublicationDateImpl.class);
         mod.addAbstractTypeMapping(Author.class, AuthorImpl.class);
         mod.addAbstractTypeMapping(Journal.class, JournalImpl.class);
-        mod.addAbstractTypeMapping(UniProtkbAccession.class, UniProtkbAccessionImpl.class);
+        mod.addAbstractTypeMapping(UniProtKBAccession.class, UniProtKBAccessionImpl.class);
         mod.addAbstractTypeMapping(CrossReference.class, CrossReferenceImpl.class);
 
         mod.addAbstractTypeMapping(Submission.class, SubmissionImpl.class);
@@ -99,7 +99,7 @@ public class LiteratureJsonConfig extends JsonConfig {
         simpleMod.addSerializer(AuthorImpl.class, new AuthorSerializer());
         simpleMod.addSerializer(PublicationDateImpl.class, new PublicationDateSerializer());
         simpleMod.addSerializer(JournalImpl.class, new JournalSerializer());
-        simpleMod.addSerializer(UniProtkbAccessionImpl.class, new UniProtkbAccessionSerializer());
+        simpleMod.addSerializer(UniProtKBAccessionImpl.class, new UniProtKBAccessionSerializer());
 
         prettyObjMapper.registerModule(simpleMod);
         return prettyObjMapper;

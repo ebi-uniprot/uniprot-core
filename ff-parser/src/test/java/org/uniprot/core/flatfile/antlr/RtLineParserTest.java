@@ -3,8 +3,8 @@ package org.uniprot.core.flatfile.antlr;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.rt.RtLineObject;
 
 class RtLineParserTest {
@@ -12,8 +12,8 @@ class RtLineParserTest {
     void testSimple() {
         String rtLines =
                 "RT   \"A novel adapter protein employs a phosphotyrosine binding domain.\";\n";
-        UniprotkbLineParser<RtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRtLineParser();
+        UniprotKBLineParser<RtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRtLineParser();
         RtLineObject obj = parser.parse(rtLines);
         assertEquals(
                 "A novel adapter protein employs a phosphotyrosine binding domain.", obj.title);
@@ -23,8 +23,8 @@ class RtLineParserTest {
     void testWithDoubleQuotes() {
         String rtLines =
                 "RT   \"A novel adapter \"protein\" employs a phosphotyrosine binding domain.\";\n";
-        UniprotkbLineParser<RtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRtLineParser();
+        UniprotKBLineParser<RtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRtLineParser();
         RtLineObject obj = parser.parse(rtLines);
         assertEquals(
                 "A novel adapter \"protein\" employs a phosphotyrosine binding domain.", obj.title);
@@ -36,8 +36,8 @@ class RtLineParserTest {
                 "RT   \"New insulin-like proteins with atypical disulfide bond pattern\n"
                         + "RT   characterized in Caenorhabditis elegans by comparative sequence\n"
                         + "RT   analysis and homology modeling?\";\n";
-        UniprotkbLineParser<RtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRtLineParser();
+        UniprotKBLineParser<RtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRtLineParser();
         RtLineObject obj = parser.parse(rtLines);
         assertEquals(
                 "New insulin-like proteins with atypical disulfide bond pattern"
@@ -51,8 +51,8 @@ class RtLineParserTest {
                 "RT   \"14-3-3 is phosphorylated by casein kinase I on residue 233.\n"
                         + "RT   Phosphorylation at this site in vivo regulates Raf/14-3-3\n"
                         + "RT   interaction.\";\n";
-        UniprotkbLineParser<RtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRtLineParser();
+        UniprotKBLineParser<RtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRtLineParser();
         RtLineObject obj = parser.parse(rtLines);
         assertEquals(
                 "14-3-3 is phosphorylated by casein kinase I on residue 233. "
@@ -65,8 +65,8 @@ class RtLineParserTest {
         String rtLines =
                 "RT   \"Nuclear localization of protein kinase U-alpha is regulated by 14-3-\n"
                         + "RT   3.\";\n";
-        UniprotkbLineParser<RtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRtLineParser();
+        UniprotKBLineParser<RtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRtLineParser();
         RtLineObject obj = parser.parse(rtLines);
         assertEquals(
                 "Nuclear localization of protein kinase U-alpha is regulated by 14-3-3.",
@@ -78,8 +78,8 @@ class RtLineParserTest {
         String rtLines =
                 "RT   \"The success of acinetobacter species; genetic, metabolic and\n"
                         + "RT   virulence attributes.\";\n";
-        UniprotkbLineParser<RtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRtLineParser();
+        UniprotKBLineParser<RtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRtLineParser();
         RtLineObject obj = parser.parse(rtLines);
         assertEquals(
                 "The success of acinetobacter species; genetic, metabolic and virulence attributes.",
@@ -91,8 +91,8 @@ class RtLineParserTest {
         String rtLines =
                 "RT   \"The success of acinetobacter species; genetic. metabolic and\n"
                         + "RT   virulence attributes.\";\n";
-        UniprotkbLineParser<RtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRtLineParser();
+        UniprotKBLineParser<RtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRtLineParser();
         RtLineObject obj = parser.parse(rtLines);
         assertEquals(
                 "The success of acinetobacter species; genetic. metabolic and virulence attributes.",
@@ -104,8 +104,8 @@ class RtLineParserTest {
         String rtLines =
                 "RT   \"The success of \"acinetobacter\" species; genetic. metabolic and\n"
                         + "RT   virulence attributes.\";\n";
-        UniprotkbLineParser<RtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRtLineParser();
+        UniprotKBLineParser<RtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRtLineParser();
         RtLineObject obj = parser.parse(rtLines);
         assertEquals(
                 "The success of \"acinetobacter\" species; genetic. metabolic and virulence attributes.",
@@ -117,8 +117,8 @@ class RtLineParserTest {
         String rtLines =
                 "RT   \"The success of \"acinetobacter\" species; genetic. metabolic and\n"
                         + "RT   virulence \"attributes\".\";\n";
-        UniprotkbLineParser<RtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRtLineParser();
+        UniprotKBLineParser<RtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRtLineParser();
         RtLineObject obj = parser.parse(rtLines);
         assertEquals(
                 "The success of \"acinetobacter\" species; genetic. metabolic and virulence \"attributes\".",
@@ -128,8 +128,8 @@ class RtLineParserTest {
     @Test
     void testWithBracket() {
         String rtLines = "RT   \"[Primary structure of proline tRNA of bacteriophage T5].\";\n";
-        UniprotkbLineParser<RtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRtLineParser();
+        UniprotKBLineParser<RtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRtLineParser();
         RtLineObject obj = parser.parse(rtLines);
         assertEquals("[Primary structure of proline tRNA of bacteriophage T5].", obj.title);
     }

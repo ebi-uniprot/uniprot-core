@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.UniProtkbEntry;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.FreeTextComment;
 
@@ -19,7 +19,7 @@ class FreeTextMapTest {
                 "CC   -!- INDUCTION: Cell cycle-regulated with highest activity in S phase.\n"
                         + "CC       Moderately induced by DNA-damage. {ECO:0000269|PubMed:2199320}.";
 
-        UniProtkbEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(freeTextLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(freeTextLine);
 
         List<FreeTextComment> freeTextComments = entry.getCommentsByType(CommentType.INDUCTION);
         assertNotNull(entry);
@@ -41,7 +41,7 @@ class FreeTextMapTest {
                         + "CC   -!- SIMILARITY: In the C-terminal section; belongs to the\n"
                         + "CC       pectinesterase family. {ECO:0000305}.";
 
-        UniProtkbEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(freeTextLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(freeTextLine);
 
         List<FreeTextComment> freeTextComments = entry.getCommentsByType(CommentType.SIMILARITY);
         assertNotNull(entry);

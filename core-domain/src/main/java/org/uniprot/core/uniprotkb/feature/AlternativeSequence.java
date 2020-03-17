@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * Indicates that a {@link uk.ac.ebi.Feature.interfaces.uniprot.oldfeatures.Feature Feature} in an
- * UniProtkbEntry can have an alternative sequence ({@link
+ * UniProtKBEntry can have an alternative sequence ({@link
  * uk.ac.ebi.kraken.interfaces.uniprot.oldfeatures.SubSequence SubSequence}). <br>
  * <br>
  * These values can be found in the FT line of the flat file on the marked position.

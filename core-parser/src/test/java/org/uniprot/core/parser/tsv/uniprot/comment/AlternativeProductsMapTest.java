@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.UniProtkbEntry;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.comment.AlternativeProductsComment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 
@@ -30,7 +30,7 @@ class AlternativeProductsMapTest {
                         + "CC         Note=Produced by alternative initiation from the subgenomic\n"
                         + "CC         RNA.;";
 
-        UniProtkbEntry entry =
+        UniProtKBEntry entry =
                 CommentTestUtil.createUniProtEntryFromCommentLine(alternativeProductsLine);
 
         List<AlternativeProductsComment> alternativeProductsComments =
@@ -61,7 +61,7 @@ class AlternativeProductsMapTest {
                         + "CC       Name=1;\n"
                         + "CC         IsoId=P37238-2; Sequence=VSP_003647;";
 
-        UniProtkbEntry entry =
+        UniProtKBEntry entry =
                 CommentTestUtil.createUniProtEntryFromCommentLine(alternativeProductsLine);
 
         List<AlternativeProductsComment> alternativeProductsComments =
@@ -99,7 +99,7 @@ class AlternativeProductsMapTest {
                         + "CC         Note=Produced by conventional translation.\n"
                         + "CC         {ECO:0000269|PubMed:8416368};";
 
-        UniProtkbEntry entry =
+        UniProtKBEntry entry =
                 CommentTestUtil.createUniProtEntryFromCommentLine(alternativeProductsLine);
 
         List<AlternativeProductsComment> alternativeProductsComments =

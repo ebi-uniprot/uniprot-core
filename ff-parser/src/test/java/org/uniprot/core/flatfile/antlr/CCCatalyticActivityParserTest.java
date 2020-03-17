@@ -9,8 +9,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.*;
@@ -20,8 +20,8 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 class CCCatalyticActivityParserTest {
     private final CcLineConverter converter =
             new CcLineConverter(new HashMap<>(), new HashMap<>(), true);
-    UniprotkbLineParser<CcLineObject> parser =
-            new DefaultUniprotkbLineParserFactory().createCcLineParser();
+    UniprotKBLineParser<CcLineObject> parser =
+            new DefaultUniprotKBLineParserFactory().createCcLineParser();
 
     @Test
     void testAllWithoutPD() {

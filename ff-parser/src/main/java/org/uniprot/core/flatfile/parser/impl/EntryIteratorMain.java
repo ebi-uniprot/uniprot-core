@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 
 import org.slf4j.Logger;
-import org.uniprot.core.uniprotkb.UniProtkbEntry;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
 
 /**
  * Created 28/02/19
@@ -42,7 +42,7 @@ public class EntryIteratorMain {
         long count = 0;
         long start = System.currentTimeMillis();
         while ((maxCount < 1 || count < maxCount) && entryIterator.hasNext()) {
-            UniProtkbEntry entry = entryIterator.next();
+            UniProtKBEntry entry = entryIterator.next();
             if (count % 5000 == 0) {
                 long duration = System.currentTimeMillis() - start;
                 double entriesPerSec = (double) (count * 1000) / duration;

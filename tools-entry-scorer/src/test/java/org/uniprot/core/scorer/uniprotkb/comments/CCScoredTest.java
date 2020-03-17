@@ -9,11 +9,11 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineTransformer;
 import org.uniprot.core.scorer.uniprotkb.UniProtEntryScored;
-import org.uniprot.core.uniprotkb.UniProtkbEntry;
-import org.uniprot.core.uniprotkb.UniProtkbEntryType;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
+import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
-import org.uniprot.core.uniprotkb.impl.UniProtkbEntryBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
 
 class CCScoredTest {
     private static final String CC =
@@ -39,8 +39,8 @@ class CCScoredTest {
     void test1() throws Exception {
         CcLineTransformer ccLineTransformer = new CcLineTransformer("", "");
         List<Comment> comments = ccLineTransformer.transformNoHeader(CC);
-        UniProtkbEntry entry =
-                new UniProtkbEntryBuilder("P12345", "ID_12345", UniProtkbEntryType.SWISSPROT)
+        UniProtKBEntry entry =
+                new UniProtKBEntryBuilder("P12345", "ID_12345", UniProtKBEntryType.SWISSPROT)
                         .commentsSet(comments)
                         .build();
 
@@ -136,8 +136,8 @@ class CCScoredTest {
     void test2() {
         CcLineTransformer ccLineTransformer = new CcLineTransformer("", "");
         List<Comment> comments = ccLineTransformer.transformNoHeader(CC_2);
-        UniProtkbEntry entry =
-                new UniProtkbEntryBuilder("P12345", "ID_12345", UniProtkbEntryType.SWISSPROT)
+        UniProtKBEntry entry =
+                new UniProtKBEntryBuilder("P12345", "ID_12345", UniProtKBEntryType.SWISSPROT)
                         .commentsSet(comments)
                         .build();
 

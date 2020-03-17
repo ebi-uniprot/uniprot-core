@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.InteractionType;
 import org.uniprot.core.uniprotkb.comment.Interactor;
-import org.uniprot.core.uniprotkb.impl.UniProtkbAccessionBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 
 class InteractionImplTest {
 
     private Interaction impl =
             new InteractionImpl(
                     InteractionType.BINARY,
-                    new UniProtkbAccessionBuilder("ac").build(),
+                    new UniProtKBAccessionBuilder("ac").build(),
                     "gene",
                     12,
                     new InteractionImpl.InteractorImpl("1st"),

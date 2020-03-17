@@ -6,33 +6,33 @@ import org.uniprot.core.scorer.uniprotkb.Consensus;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
-import org.uniprot.core.uniprotkb.xdb.UniProtkbCrossReference;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 
 public class PDBScored implements HasScore {
-    private List<UniProtkbCrossReference> uniProtkbCrossReferences;
+    private List<UniProtKBCrossReference> uniProtKBCrossReferences;
 
     private final List<EvidenceDatabase> evidenceDatabases;
 
     public PDBScored(
-            List<UniProtkbCrossReference> uniProtkbCrossReferences,
+            List<UniProtKBCrossReference> uniProtKBCrossReferences,
             List<EvidenceDatabase> evidenceDatabases) {
-        this.uniProtkbCrossReferences = uniProtkbCrossReferences;
+        this.uniProtKBCrossReferences = uniProtKBCrossReferences;
         this.evidenceDatabases = evidenceDatabases;
     }
 
-    public PDBScored(List<UniProtkbCrossReference> uniProtkbCrossReferences) {
-        this(uniProtkbCrossReferences, null);
+    public PDBScored(List<UniProtKBCrossReference> uniProtKBCrossReferences) {
+        this(uniProtKBCrossReferences, null);
     }
 
     @Override
     public double score() {
         double score = 0;
-        if (!uniProtkbCrossReferences.isEmpty() && hasEvidences()) score += 1;
+        if (!uniProtKBCrossReferences.isEmpty() && hasEvidences()) score += 1;
         return score;
     }
 
     private boolean hasEvidences() {
-        for (UniProtkbCrossReference xref : uniProtkbCrossReferences) {
+        for (UniProtKBCrossReference xref : uniProtKBCrossReferences) {
             if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceDatabases)) {
                 return true;
             }

@@ -6,33 +6,33 @@ import org.uniprot.core.scorer.uniprotkb.Consensus;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
-import org.uniprot.core.uniprotkb.xdb.UniProtkbCrossReference;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 
 public class GoScored implements HasScore {
-    private final List<UniProtkbCrossReference> uniProtkbCrossReferences;
+    private final List<UniProtKBCrossReference> uniProtKBCrossReferences;
     private final List<EvidenceDatabase> evidenceDatabases;
 
     public GoScored(
-            List<UniProtkbCrossReference> uniProtkbCrossReferences,
+            List<UniProtKBCrossReference> uniProtKBCrossReferences,
             List<EvidenceDatabase> evidenceDatabases) {
-        this.uniProtkbCrossReferences = uniProtkbCrossReferences;
+        this.uniProtKBCrossReferences = uniProtKBCrossReferences;
         this.evidenceDatabases = evidenceDatabases;
     }
 
-    public GoScored(List<UniProtkbCrossReference> uniProtkbCrossReferences) {
-        this(uniProtkbCrossReferences, null);
+    public GoScored(List<UniProtKBCrossReference> uniProtKBCrossReferences) {
+        this(uniProtKBCrossReferences, null);
     }
 
     @Override
     public double score() {
         double score = 0;
-        for (UniProtkbCrossReference xref : uniProtkbCrossReferences) {
+        for (UniProtKBCrossReference xref : uniProtKBCrossReferences) {
             if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceDatabases)) score += score(xref);
         }
         return score;
     }
 
-    private double score(UniProtkbCrossReference xref) {
+    private double score(UniProtKBCrossReference xref) {
 
         String type = xref.getProperties().get(1).getValue();
         int index = type.indexOf(':');

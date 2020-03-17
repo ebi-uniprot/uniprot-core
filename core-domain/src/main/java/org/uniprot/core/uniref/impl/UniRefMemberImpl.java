@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import org.uniprot.core.uniparc.UniParcId;
-import org.uniprot.core.uniprotkb.UniProtkbAccession;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniref.OverlapRegion;
 import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefMember;
@@ -24,7 +24,7 @@ public class UniRefMemberImpl implements UniRefMember {
     private long organismTaxId;
     private int sequenceLength;
     private String proteinName;
-    private List<UniProtkbAccession> accessions;
+    private List<UniProtKBAccession> accessions;
     private UniRefEntryId uniref50Id;
     private UniRefEntryId uniref90Id;
     private UniRefEntryId uniref100Id;
@@ -44,7 +44,7 @@ public class UniRefMemberImpl implements UniRefMember {
             long organismTaxId,
             int sequenceLength,
             String proteinName,
-            List<UniProtkbAccession> accessions,
+            List<UniProtKBAccession> accessions,
             UniRefEntryId uniref50Id,
             UniRefEntryId uniref90Id,
             UniRefEntryId uniref100Id,
@@ -97,7 +97,7 @@ public class UniRefMemberImpl implements UniRefMember {
     }
 
     @Override
-    public List<UniProtkbAccession> getUniProtAccessions() {
+    public List<UniProtKBAccession> getUniProtAccessions() {
         return accessions;
     }
 

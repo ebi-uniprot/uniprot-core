@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniProtParser;
 import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
-import org.uniprot.core.uniprotkb.UniProtkbEntry;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 08-Mar-2010 Time: 13:47:47 To change this template
@@ -494,7 +494,7 @@ class Q04756ScoredTest {
 
     @Test
     void test() {
-        UniProtkbEntry entry =
+        UniProtKBEntry entry =
                 new DefaultUniProtParser(new SupportingDataMapImpl(), true).parse(this.entry);
         UniProtEntryScored scored = new UniProtEntryScored(entry);
         System.out.println(scored.score());

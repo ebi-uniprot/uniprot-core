@@ -6,21 +6,21 @@ import org.uniprot.core.scorer.uniprotkb.Consensus;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
-import org.uniprot.core.uniprotkb.xdb.UniProtkbCrossReference;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 
 public class HamapScored implements HasScore {
-    private List<UniProtkbCrossReference> uniProtkbCrossReferences;
+    private List<UniProtKBCrossReference> uniProtKBCrossReferences;
     private final List<EvidenceDatabase> evidenceDatabases;
 
     public HamapScored(
-            List<UniProtkbCrossReference> uniProtkbCrossReferences,
+            List<UniProtKBCrossReference> uniProtKBCrossReferences,
             List<EvidenceDatabase> evidenceDatabases) {
-        this.uniProtkbCrossReferences = uniProtkbCrossReferences;
+        this.uniProtKBCrossReferences = uniProtKBCrossReferences;
         this.evidenceDatabases = evidenceDatabases;
     }
 
-    public HamapScored(List<UniProtkbCrossReference> uniProtkbCrossReferences) {
-        this(uniProtkbCrossReferences, null);
+    public HamapScored(List<UniProtKBCrossReference> uniProtKBCrossReferences) {
+        this(uniProtKBCrossReferences, null);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class HamapScored implements HasScore {
     }
 
     private boolean hasEvidences() {
-        for (UniProtkbCrossReference xref : uniProtkbCrossReferences) {
+        for (UniProtKBCrossReference xref : uniProtKBCrossReferences) {
             if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceDatabases)) {
                 return true;
             }

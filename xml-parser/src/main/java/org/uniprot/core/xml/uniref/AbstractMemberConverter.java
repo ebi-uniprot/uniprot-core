@@ -5,8 +5,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
-import org.uniprot.core.uniprotkb.UniProtkbAccession;
-import org.uniprot.core.uniprotkb.impl.UniProtkbAccessionBuilder;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.impl.AbstractUniRefMemberBuilder;
@@ -85,7 +85,7 @@ public abstract class AbstractMemberConverter<T extends UniRefMember>
                                     PROPERTY_SOURCE_UNIREF50, uniObj.getUniRef50Id().getValue()));
         }
         if ((uniObj.getUniProtAccessions() != null) && !uniObj.getUniProtAccessions().isEmpty()) {
-            List<UniProtkbAccession> accessions = uniObj.getUniProtAccessions();
+            List<UniProtKBAccession> accessions = uniObj.getUniProtAccessions();
             accessions.forEach(
                     accession -> {
                         xref.getProperty()
@@ -152,7 +152,7 @@ public abstract class AbstractMemberConverter<T extends UniRefMember>
             } else if (property.getType().equals(PROPERTY_SOURCE_UNIREF50)) {
                 builder.uniref50Id(new UniRefEntryIdBuilder(property.getValue()).build());
             } else if (property.getType().equals(PROPERTY_SOURCE_UNIPROT)) {
-                builder.accessionsAdd(new UniProtkbAccessionBuilder(property.getValue()).build());
+                builder.accessionsAdd(new UniProtKBAccessionBuilder(property.getValue()).build());
             } else if (property.getType().equals(PROPERTY_IS_SEED)) {
                 builder.isSeed(Boolean.parseBoolean(property.getValue()));
             } else {
