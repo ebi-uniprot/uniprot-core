@@ -17,7 +17,7 @@ class DiseaseFileReaderTest {
     @Disabled
     @Test
     void testParseDefaultFile() {
-        List<DiseaseEntry> diseases = reader.parse(DiseaseCache.FTP_LOCATION);
+        List<DiseaseEntry> diseases = reader.parse("disease/sample_humdisease.txt");
         assertFalse(diseases.isEmpty());
     }
 

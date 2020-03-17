@@ -22,7 +22,7 @@ class KeywordFileReaderTest {
     @Disabled
     @Test
     void testParseDefaultFile() {
-        List<KeywordEntry> keywords = parser.parse(KeywordCache.FTP_LOCATION);
+        List<KeywordEntry> keywords = parser.parse("keyword/keywlist.txt");
         assertFalse(keywords.isEmpty());
     }
 

@@ -13,10 +13,6 @@ public class SubcellularLocationServiceImpl implements SubcellularLocationServic
     private List<SubcellularLocationEntry> subcellularLocations;
     private Map<String, SubcellularLocationEntry> subcellularLocationIdMap;
 
-    public SubcellularLocationServiceImpl() {
-        this(SubcellularLocationCache.FTP_LOCATION);
-    }
-
     public SubcellularLocationServiceImpl(String diseasefile) {
 
         subcellularLocations = SubcellularLocationCache.INSTANCE.get(diseasefile);

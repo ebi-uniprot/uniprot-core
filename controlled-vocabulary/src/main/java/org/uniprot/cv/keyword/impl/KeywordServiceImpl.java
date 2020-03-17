@@ -25,10 +25,6 @@ public class KeywordServiceImpl implements KeywordService {
                         .collect(Collectors.toList());
     }
 
-    public KeywordServiceImpl() {
-        this(KeywordCache.FTP_LOCATION);
-    }
-
     @Override
     public KeywordEntry getByAccession(String id) {
         return keywordAccessionMap.get(id);
