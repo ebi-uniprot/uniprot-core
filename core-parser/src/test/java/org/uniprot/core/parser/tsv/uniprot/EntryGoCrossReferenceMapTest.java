@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.xdb.UniProtkbCrossReference;
-import org.uniprot.core.uniprotkb.xdb.UniProtkbDatabase;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
-import org.uniprot.cv.xdb.UniProtkbDatabaseImpl;
+import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 
 class EntryGoCrossReferenceMapTest {
 
@@ -32,7 +32,7 @@ class EntryGoCrossReferenceMapTest {
 
     @Test
     void testGetDataFull() {
-        List<UniProtkbCrossReference> xrefs = create();
+        List<UniProtKBCrossReference> xrefs = create();
         EntryGoCrossReferenceMap dl = new EntryGoCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(5, result.size());
@@ -67,7 +67,7 @@ class EntryGoCrossReferenceMapTest {
 
     @Test
     void testGetDataFullWithDownloadableDbXref() {
-        List<UniProtkbCrossReference> xrefs = create();
+        List<UniProtKBCrossReference> xrefs = create();
         EntryCrossReferenceMap dl = new EntryCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(5, result.size());
@@ -105,8 +105,8 @@ class EntryGoCrossReferenceMapTest {
         assertEquals(expected, evaluated);
     }
 
-    private List<UniProtkbCrossReference> create() {
-        List<UniProtkbCrossReference> xrefs = new ArrayList<>();
+    private List<UniProtKBCrossReference> create() {
+        List<UniProtKBCrossReference> xrefs = new ArrayList<>();
         xrefs.add(create("GO:0005783", "C:endoplasmic reticulum", "IDA:AgBase"));
         xrefs.add(create("GO:0005788", "C:endoplasmic reticulum lumen", "TAS:Reactome"));
         xrefs.add(create("GO:0016020", "C:membrane", "HDA:UniProtKB"));
@@ -118,8 +118,8 @@ class EntryGoCrossReferenceMapTest {
         return xrefs;
     }
 
-    private UniProtkbCrossReference create(String id, String term, String evidence) {
-        UniProtkbDatabase type = new UniProtkbDatabaseImpl("GO");
+    private UniProtKBCrossReference create(String id, String term, String evidence) {
+        UniProtKBDatabase type = new UniProtKBDatabaseImpl("GO");
         return new UniProtCrossReferenceBuilder()
                 .database(type)
                 .id(id)

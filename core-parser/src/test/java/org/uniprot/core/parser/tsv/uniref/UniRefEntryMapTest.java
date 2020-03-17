@@ -12,7 +12,7 @@ import org.uniprot.core.cv.go.GoAspect;
 import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
-import org.uniprot.core.uniprotkb.impl.UniProtkbAccessionBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefEntryId;
@@ -137,7 +137,7 @@ class UniRefEntryMapTest {
                         .sequenceLength(length)
                         .proteinName(pName)
                         .uniparcId(new UniParcIdBuilder(upi).build())
-                        .accessionsAdd(new UniProtkbAccessionBuilder("P12345").build())
+                        .accessionsAdd(new UniProtKBAccessionBuilder("P12345").build())
                         .uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
                         .uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
                         .uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())
@@ -163,7 +163,7 @@ class UniRefEntryMapTest {
                         .sequenceLength(length)
                         .proteinName(pName)
                         .uniparcId(new UniParcIdBuilder(upi).build())
-                        .accessionsAdd(new UniProtkbAccessionBuilder("P12347").build())
+                        .accessionsAdd(new UniProtKBAccessionBuilder("P12347").build())
                         .uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
                         .uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
                         .uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())

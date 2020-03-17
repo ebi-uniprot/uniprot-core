@@ -1,11 +1,11 @@
 package org.uniprot.core.flatfile.parser;
 
 import org.uniprot.core.flatfile.parser.impl.DefaultUniProtEntryIterator;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
 import org.uniprot.core.flatfile.parser.impl.entry.EntryObject;
 import org.uniprot.core.flatfile.parser.impl.entry.EntryObjectConverter;
-import org.uniprot.core.uniprotkb.UniProtkbEntry;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
 
 public final class UniProtParserHelper {
 
@@ -14,21 +14,21 @@ public final class UniProtParserHelper {
 
     /**
      * <em class="text"> Parses the String representation of a SWISS-PROT or TrEMBL flat file. The
-     * {@link UniProtkbEntry UniProtkbEntry} parameter determines the parsing behaviour. </em> <br>
+     * {@link UniProtKBEntry UniProtKBEntry} parameter determines the parsing behaviour. </em> <br>
      * <br>
      *
-     * @param factory The Factory instance used for creating objects of the UniProtkbEntry and other
+     * @param factory The Factory instance used for creating objects of the UniProtKBEntry and other
      *     related interfaces.
      * @param entryText The String representation of a SWISS-PROT or TrEMBL flat file
      * @throws org.uniprot.core.flatfile.parser.UniProtParserException if the entry could not be
      *     parsed
-     * @see UniProtkbEntry UniProtkbEntry
+     * @see UniProtKBEntry UniProtKBEntry
      */
-    private static final ThreadLocal<UniprotkbLineParser<EntryObject>> entryParser =
-            new ThreadLocal<UniprotkbLineParser<EntryObject>>() {
+    private static final ThreadLocal<UniprotKBLineParser<EntryObject>> entryParser =
+            new ThreadLocal<UniprotKBLineParser<EntryObject>>() {
                 @Override
-                protected UniprotkbLineParser<EntryObject> initialValue() {
-                    return new DefaultUniprotkbLineParserFactory().createEntryParser();
+                protected UniprotKBLineParser<EntryObject> initialValue() {
+                    return new DefaultUniprotKBLineParserFactory().createEntryParser();
                 }
             };
 
@@ -48,16 +48,16 @@ public final class UniProtParserHelper {
                 }
             };
 
-    public static UniProtkbEntry parse(String entryText) throws UniProtParserException {
+    public static UniProtKBEntry parse(String entryText) throws UniProtParserException {
         return parse(entryText, false);
     }
 
-    public static UniProtkbEntry parse(String entryText, boolean ignoreWrongDR) {
+    public static UniProtKBEntry parse(String entryText, boolean ignoreWrongDR) {
         try {
             EntryObject parse = entryParser.get().parse(entryText);
             EntryObjectConverter entryConverter = entryObjectConverter.get();
             if (ignoreWrongDR) entryConverter = entryObjectConverterIgnoreDR.get();
-            UniProtkbEntry convert = entryConverter.convert(parse);
+            UniProtKBEntry convert = entryConverter.convert(parse);
             return convert;
         } catch (ParseException e) {
             throw new UniProtParserException(e.getDetailedMessage());

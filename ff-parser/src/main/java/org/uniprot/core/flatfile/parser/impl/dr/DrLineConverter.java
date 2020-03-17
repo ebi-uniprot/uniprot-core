@@ -12,9 +12,9 @@ import org.uniprot.core.uniprotkb.InternalLine;
 import org.uniprot.core.uniprotkb.InternalLineType;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.impl.InternalLineBuilder;
-import org.uniprot.core.uniprotkb.xdb.UniProtkbDatabase;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
-import org.uniprot.cv.xdb.UniProtkbDatabaseImpl;
+import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 
 public class DrLineConverter extends EvidenceCollector
         implements Converter<DrLineObject, UniProtDrObjects> {
@@ -74,7 +74,7 @@ public class DrLineConverter extends EvidenceCollector
             isoformId = drline.isoform;
         }
         try {
-            UniProtkbDatabase type = new UniProtkbDatabaseImpl(drline.DbName);
+            UniProtKBDatabase type = new UniProtKBDatabaseImpl(drline.DbName);
             uniProtDrObjects.drObjects.add(
                     new UniProtCrossReferenceBuilder()
                             .id(id)

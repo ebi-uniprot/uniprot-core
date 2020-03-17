@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject.FTType;
@@ -20,8 +20,8 @@ class FtLineParserTest {
                 "FT   CHAIN           20..873\n"
                         + "FT                   /note=\"104 kDa microneme/rhoptry antigen\"\n"
                         + "FT                   /id=\"PRO_0000232680\"\n";
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(1, obj.getFts().size());
         verify(
@@ -36,8 +36,8 @@ class FtLineParserTest {
     @Test
     void testHelix() {
         String ftLines = "FT   HELIX           33..83\n";
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(1, obj.getFts().size());
         verify(obj.getFts().get(0), FTType.HELIX, "33", "83", null, null);
@@ -49,8 +49,8 @@ class FtLineParserTest {
                 "FT   MUTAGEN         119\n"
                         + "FT                   /note=\"C->R,E,A: Loss of cADPr hydrolase and\n"
                         + "FT                   ADP-ribosyl cyclase activity\"\n";
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(1, obj.getFts().size());
         verify(
@@ -70,8 +70,8 @@ class FtLineParserTest {
                         + "FT                   DGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)\"\n"
                         + "FT                   /evidence=\"ECO:0000269|PubMed:17344846\"\n"
                         + "FT                   /id=\"VSP_004370\"\n";
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(1, obj.getFts().size());
         verify(
@@ -91,8 +91,8 @@ class FtLineParserTest {
                         + "FT                   -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)\"\n"
                         + "FT                   /evidence=\"ECO:0000269|PubMed:17344846\"\n"
                         + "FT                   /id=\"VSP_004370\"\n";
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(1, obj.getFts().size());
         verify(
@@ -114,8 +114,8 @@ class FtLineParserTest {
                         + "FT                   /evidence=\"ECO:0000303|PubMed:14702039\"\n"
                         + "FT                   /id=\"VSP_043645\"\n";
 
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(1, obj.getFts().size());
         System.out.println(obj.getFts().get(0).getFtText());
@@ -146,8 +146,8 @@ class FtLineParserTest {
                         + "FT                   /evidence=\"ECO:0000305\"\n"
                         + "FT                   /id=\"VSP_038746\"\n";
 
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(1, obj.getFts().size());
         System.out.println(obj.getFts().get(0).getFtText());
@@ -180,8 +180,8 @@ class FtLineParserTest {
                         + "FT                   ADP-ribosyl cyclase activity\"\n"
                         + "FT   HELIX           33..83\n"
                         + "FT   TURN            3..33\n";
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(4, obj.getFts().size());
         verify(
@@ -207,8 +207,8 @@ class FtLineParserTest {
         String ftLines =
                 "FT   CARBOHYD        61\n"
                         + "FT                   /note=\"N-linked (GlcNAc...); by host (Potential)\"\n";
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(1, obj.getFts().size());
         verify(
@@ -229,8 +229,8 @@ class FtLineParserTest {
                         + "FT                   /note=\"Protein ABC1 homolog, mitochondrial\"\n"
                         + "FT                   /id=\"PRO_0000000261\"\n";
 
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(2, obj.getFts().size());
         verify(obj.getFts().get(0), FTType.TRANSIT, "1", "?", "Mitochondrion (Potential)", null);
@@ -251,8 +251,8 @@ class FtLineParserTest {
                         + "FT                   /note=\"Calcium; via carbonyl oxygen\"\n"
                         + "FT                   /evidence=\"ECO:0000006|PubMed:20858735, ECO:0000006|PubMed:23640942\"\n";
 
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(1, obj.getFts().size());
         verify(
@@ -276,8 +276,8 @@ class FtLineParserTest {
         String ftLines =
                 "FT   HELIX           33..83\n"
                         + "FT                   /evidence=\"ECO:0000313|EMBL:BAG16761.1\"\n";
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(1, obj.getFts().size());
         verify(obj.getFts().get(0), FTType.HELIX, "33", "83", null, null);
@@ -296,8 +296,8 @@ class FtLineParserTest {
                         + "FT                   /note=\"Phosphate 2 binding\"\n"
                         + "FT                   /evidence=\"ECO:0000006|PubMed:20858735, ECO:0000006\"\n";
 
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(2, obj.getFts().size());
         verify(obj.getFts().get(0), FTType.REGION, "237", "240", "Sulfate 1 binding", null);
@@ -316,8 +316,8 @@ class FtLineParserTest {
                         + "FT                   /note=\"Helical; (Potential)\"\n"
                         + "FT                   /evidence=\"ECO:0000257|HAMAP-Rule:MF_03021\"\n";
 
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(1, obj.getFts().size());
         verify(obj.getFts().get(0), FTType.TRANSMEM, "57", "77", "Helical; (Potential)", null);
@@ -333,8 +333,8 @@ class FtLineParserTest {
                 "FT   CONFLICT        1\n"
                         + "FT                   /note=\"A -> Q (in Ref. 1; BAA37160/BAA37165 and 2)\"\n";
 
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
         assertEquals(1, obj.getFts().size());
         verify(
@@ -355,8 +355,8 @@ class FtLineParserTest {
                         + "FT                   VS (in Ref. 4; CAA78385)\"\n"
                         + "FT                   /evidence=\"ECO:0000305\"\n";
 
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
         assertEquals(1, obj.getFts().size());
         System.out.println(obj.getFts().get(0).getFtText());
@@ -378,8 +378,8 @@ class FtLineParserTest {
                         + "FT                   BAA85931)\"\n"
                         + "FT                   /evidence=\"ECO:0000305\"\n";
 
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
         assertEquals(1, obj.getFts().size());
         System.out.println(obj.getFts().get(0).getFtText());
@@ -399,8 +399,8 @@ class FtLineParserTest {
                 "FT   VARIANT         267..294\n"
                         + "FT                   /note=\"ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPD\n"
                         + "FT                   LKVPVVQKVTKRLGVTSPD\"\n";
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
         assertEquals(1, obj.getFts().size());
         System.out.println(obj.getFts().get(0).getFtText());
@@ -421,8 +421,8 @@ class FtLineParserTest {
                         + "FT                   PGYKMAVCAAHPDFPEDITMVSYEELL -> GRQRLIASA\n"
                         + "FT                   (in strain 168 and its derivatives, non surfactin-producing strains)\"\n";
 
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
         assertEquals(1, obj.getFts().size());
         System.out.println(obj.getFts().get(0).getFtText());
@@ -442,8 +442,8 @@ class FtLineParserTest {
                 "FT   VAR_SEQ         267..294\n"
                         + "FT                   /note=\"ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPD\n"
                         + "FT                   LKVPVVQKVTKRLGVTSPD\"\n";
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
         assertEquals(1, obj.getFts().size());
         System.out.println(obj.getFts().get(0).getFtText());
@@ -521,8 +521,8 @@ class FtLineParserTest {
                         + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
                         + "FT   TURN            138..141\n"
                         + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n";
-        UniprotkbLineParser<FtLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createFtLineParser();
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(25, obj.getFts().size());
     }

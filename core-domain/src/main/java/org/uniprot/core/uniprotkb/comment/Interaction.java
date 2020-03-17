@@ -2,12 +2,12 @@ package org.uniprot.core.uniprotkb.comment;
 
 import java.io.Serializable;
 
-import org.uniprot.core.uniprotkb.UniProtkbAccession;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
 public interface Interaction extends Serializable {
     InteractionType getType();
 
-    UniProtkbAccession getUniProtkbAccession();
+    UniProtKBAccession getUniProtkbAccession();
 
     String getGeneName();
 

@@ -6,16 +6,16 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.ox.OxLineObject;
 
 class OxLineParserTest {
     @Test
     void test() {
         String oxLines = "OX   NCBI_TaxID=562;\n";
-        UniprotkbLineParser<OxLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createOxLineParser();
+        UniprotKBLineParser<OxLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createOxLineParser();
         OxLineObject obj = parser.parse(oxLines);
         assertEquals(562, obj.taxonomy_id);
         assertNull(obj.getEvidenceInfo().getEvidences().get(562));
@@ -25,8 +25,8 @@ class OxLineParserTest {
     void testWithEvidence() {
         String oxLines = "OX   NCBI_TaxID=1085379 {ECO:0000313|EMBL:EOP66756.1};\n";
 
-        UniprotkbLineParser<OxLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createOxLineParser();
+        UniprotKBLineParser<OxLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createOxLineParser();
         OxLineObject obj = parser.parse(oxLines);
         assertEquals(1085379, obj.taxonomy_id);
         assertEquals(
@@ -39,8 +39,8 @@ class OxLineParserTest {
         String oxLines =
                 "OX   NCBI_TaxID=1085379 {ECO:0000313|EMBL:EOP66756.1,\n"
                         + "OX   ECO:0000313|EMBL:CBL02507.1};\n";
-        UniprotkbLineParser<OxLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createOxLineParser();
+        UniprotKBLineParser<OxLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createOxLineParser();
         OxLineObject obj = parser.parse(oxLines);
         assertEquals(1085379, obj.taxonomy_id);
         assertEquals(

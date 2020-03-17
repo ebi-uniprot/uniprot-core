@@ -11,8 +11,8 @@ import org.uniprot.core.Property;
 import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
 import org.uniprot.core.impl.AbstractCrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.uniprotkb.xdb.UniProtkbCrossReference;
-import org.uniprot.core.uniprotkb.xdb.UniProtkbDatabase;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 
 /**
  * Created 22/01/19
@@ -21,17 +21,17 @@ import org.uniprot.core.uniprotkb.xdb.UniProtkbDatabase;
  */
 public class UniProtCrossReferenceBuilder
         extends AbstractCrossReferenceBuilder<
-                UniProtCrossReferenceBuilder, UniProtkbDatabase, UniProtkbCrossReference> {
+                UniProtCrossReferenceBuilder, UniProtKBDatabase, UniProtKBCrossReference> {
     private String isoformId;
     private List<Evidence> evidences = new ArrayList<>();
 
     @Override
-    public @Nonnull UniProtkbCrossReference build() {
-        return new UniProtkbCrossReferenceImpl(database, id, properties, isoformId, evidences);
+    public @Nonnull UniProtKBCrossReference build() {
+        return new UniProtKBCrossReferenceImpl(database, id, properties, isoformId, evidences);
     }
 
     public static @Nonnull UniProtCrossReferenceBuilder from(
-            @Nonnull UniProtkbCrossReference instance) {
+            @Nonnull UniProtKBCrossReference instance) {
         UniProtCrossReferenceBuilder builder = new UniProtCrossReferenceBuilder();
         AbstractCrossReferenceBuilder.init(builder, instance);
         return builder.evidencesSet(instance.getEvidences()).isoformId(instance.getIsoformId());

@@ -118,7 +118,7 @@ public class Scorer {
         setScores.get(SetScore.Type.TOTAL_SCORE).addScore(score.totalScore);
     }
 
-    //    public SetScore score(Iterator<UniProtkbEntry> is, OutputStream out,
+    //    public SetScore score(Iterator<UniProtKBEntry> is, OutputStream out,
     // List<EvidenceDatabase>
     // evidenceDatabases)
     //            throws IOException {
@@ -131,7 +131,7 @@ public class Scorer {
     //            writer.newLine();
     //
     //            while (is.hasNext()) {
-    //                UniProtkbEntry entry = is.next();
+    //                UniProtKBEntry entry = is.next();
     //                LOG.debug("****************************************************************");
     //                EntryScore scored = new UniProtEntryScored(entry,
     // evidenceDatabases).getEntryScore();

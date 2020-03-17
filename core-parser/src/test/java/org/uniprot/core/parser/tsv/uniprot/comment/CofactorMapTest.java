@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.UniProtkbEntry;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.comment.CofactorComment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 
@@ -30,7 +30,7 @@ class CofactorMapTest {
                         + "CC       Note=Magnesium ions are required for integrase activity. Binds at\n"
                         + "CC       least 1, maybe 2 magnesium ions. {ECO:0000305};";
 
-        UniProtkbEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(cofactorLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(cofactorLine);
 
         List<CofactorComment> cofactorComments = entry.getCommentsByType(CommentType.COFACTOR);
         assertNotNull(entry);
@@ -58,7 +58,7 @@ class CofactorMapTest {
                         + "CC         Evidence={ECO:0000269|PubMed:9060645};\n"
                         + "CC       Note=Binds 1 zinc ion. {ECO:0000269|PubMed:9060645};";
 
-        UniProtkbEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(cofactorLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(cofactorLine);
 
         List<CofactorComment> cofactorComments = entry.getCommentsByType(CommentType.COFACTOR);
         assertNotNull(entry);

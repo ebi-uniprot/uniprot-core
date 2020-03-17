@@ -2,8 +2,8 @@ package org.uniprot.core.flatfile.parser;
 
 import java.io.Serializable;
 
-import org.uniprot.core.uniprotkb.UniProtkbEntry;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
 
 public interface UniProtParser extends Serializable {
-    UniProtkbEntry parse(String entryff);
+    UniProtKBEntry parse(String entryff);
 }

@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.dt.DTLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprotkb.EntryAudit;
-import org.uniprot.core.uniprotkb.UniProtkbEntryType;
+import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.impl.EntryAuditBuilder;
 
 class DTLineBuildTest {
@@ -36,8 +36,8 @@ class DTLineBuildTest {
                         + "DT   23-JAN-2007, sequence version 3.\n"
                         + "DT   13-NOV-2007, entry version 106.";
 
-        Map.Entry<EntryAudit, UniProtkbEntryType> data =
-                new AbstractMap.SimpleEntry<>(entryAudit, UniProtkbEntryType.SWISSPROT);
+        Map.Entry<EntryAudit, UniProtKBEntryType> data =
+                new AbstractMap.SimpleEntry<>(entryAudit, UniProtKBEntryType.SWISSPROT);
         FFLine ffLine = builder.build(data);
 
         String resultString = ffLine.toString();
@@ -65,8 +65,8 @@ class DTLineBuildTest {
                         + "DT   24-MAY-2005, sequence version 1.\n"
                         + "DT   20-DEC-2017, entry version 113.";
 
-        Map.Entry<EntryAudit, UniProtkbEntryType> data =
-                new AbstractMap.SimpleEntry<>(entryAudit, UniProtkbEntryType.TREMBL);
+        Map.Entry<EntryAudit, UniProtKBEntryType> data =
+                new AbstractMap.SimpleEntry<>(entryAudit, UniProtKBEntryType.TREMBL);
         FFLine ffLine = builder.build(data);
 
         String resultString = ffLine.toString();

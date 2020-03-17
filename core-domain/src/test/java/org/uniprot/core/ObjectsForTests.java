@@ -33,7 +33,7 @@ import org.uniprot.core.uniparc.*;
 import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
 import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
-import org.uniprot.core.uniprotkb.UniProtkbEntryType;
+import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.comment.impl.*;
 import org.uniprot.core.uniprotkb.description.EC;
@@ -45,7 +45,7 @@ import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
-import org.uniprot.core.uniprotkb.impl.UniProtkbAccessionBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 
@@ -370,7 +370,7 @@ public class ObjectsForTests {
     public static LiteratureMappedReference createCompleteLiteratureMappedReferenceWithAdd() {
         return getBasicFields()
                 .sourceCategoriesAdd("source category")
-                .uniprotAccession(new UniProtkbAccessionBuilder("P12345").build())
+                .uniprotAccession(new UniProtKBAccessionBuilder("P12345").build())
                 .build();
     }
 
@@ -572,7 +572,7 @@ public class ObjectsForTests {
         Protein protein =
                 new ProteinBuilder()
                         .accession("val")
-                        .entryType(UniProtkbEntryType.INACTIVE)
+                        .entryType(UniProtKBEntryType.INACTIVE)
                         .sequenceLength(20L)
                         .geneName("gene")
                         .geneNameType(GeneNameType.ORF)

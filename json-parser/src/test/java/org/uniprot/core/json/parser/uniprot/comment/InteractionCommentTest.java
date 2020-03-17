@@ -10,7 +10,7 @@ import org.uniprot.core.uniprotkb.comment.InteractionComment;
 import org.uniprot.core.uniprotkb.comment.InteractionType;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionCommentBuilder;
-import org.uniprot.core.uniprotkb.impl.UniProtkbAccessionBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -65,7 +65,7 @@ public class InteractionCommentTest {
                         .numberOfExperiments(10)
                         .firstInteractor("first")
                         .secondInteractor("second")
-                        .uniProtAccession(new UniProtkbAccessionBuilder("P12345").build())
+                        .uniProtAccession(new UniProtKBAccessionBuilder("P12345").build())
                         .build();
 
         return new InteractionCommentBuilder().interactionsAdd(interaction).build();

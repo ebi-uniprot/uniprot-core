@@ -3,8 +3,8 @@ package org.uniprot.core.flatfile.antlr;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.AlternativeProductName;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.AlternativeProducts;
@@ -25,8 +25,8 @@ class CcLineAPCommentParserTest {
                         + "CC         IsoId=O43918-2; Sequence=VSP_004089;\n"
                         + "CC       Name=3; Synonyms=AIRE-3;\n"
                         + "CC         IsoId=O43918-3; Sequence=VSP_004089, VSP_004090;\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -78,8 +78,8 @@ class CcLineAPCommentParserTest {
                         + "CC         IsoId=P12544-1; Sequence=Displayed;\n"
                         + "CC       Name=beta;\n"
                         + "CC         IsoId=P12544-2; Sequence=VSP_038571, VSP_038572;\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -128,8 +128,8 @@ class CcLineAPCommentParserTest {
                         + "CC       Name=6; Synonyms=D;\n"
                         + "CC         IsoId=Q9V8R9-6; Sequence=VSP_000478;\n"
                         + "CC         Note=No experimental confirmation available.;\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -147,8 +147,8 @@ class CcLineAPCommentParserTest {
                         + "CC       Name=Bim-alpha3; Synonyms=BCL2-like 11 transcript variant 10,\n"
                         + "CC       BimAD, Bim-AD;\n"
                         + "CC         IsoId=O43521-6; Sequence=VSP_035608, VSP_035620;\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -171,8 +171,8 @@ class CcLineAPCommentParserTest {
                         + "CC       Name=1; Synonyms=FLIP-L, CLARP1, MRIT alpha-1, CASH alpha, I-FLICE\n"
                         + "CC       1, FLAME-1 gamma, Usurpin alpha;\n"
                         + "CC         IsoId=O15519-1; Sequence=Displayed;\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -206,8 +206,8 @@ class CcLineAPCommentParserTest {
                         + "CC       Name=6 {ECO:0000313|EMBL:BAG16761.1};\n"
                         + "CC         IsoId=Q9NQ94-6; Sequence=VSP_051928;\n"
                         + "CC         Note=Minor isoform found in 2-3% of cDNA clones. {ECO:0000313|EMBL:BAG16761.1};\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -252,8 +252,8 @@ class CcLineAPCommentParserTest {
                         + "CC       Name=6; Synonyms=D;\n"
                         + "CC         IsoId=Q9V8R9-6; Sequence=Described;\n"
                         + "CC         Note=No experimental confirmation.;\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -347,8 +347,8 @@ class CcLineAPCommentParserTest {
                         + "  IsoId=Q9V8R9-6; Sequence=Described;\n"
                         + "  Note=No experimental confirmation.;";
         CcLineFormater formater = new CcLineFormater();
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineStringEvidence);
         System.out.println(lines);
         CcLineObject obj = parser.parse(lines);
@@ -378,8 +378,8 @@ class CcLineAPCommentParserTest {
                         + "IsoId=Q9V8R9-6; Sequence=Described;\n"
                         + "Note=No experimental confirmation available.;";
         CcLineFormater formater = new CcLineFormater();
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineString);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);
@@ -411,8 +411,8 @@ class CcLineAPCommentParserTest {
                         + "IsoId=Q9V8R9-6; Sequence=Described;\n"
                         + "Note=No experimental confirmation.;";
         CcLineFormater formater = new CcLineFormater();
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineStringEvidence);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);
@@ -445,8 +445,8 @@ class CcLineAPCommentParserTest {
                         + "IsoId=Q9V8R9-6; Sequence=Described;\n"
                         + "Note=No experimental confirmation.;";
         CcLineFormater formater = new CcLineFormater();
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineStringEvidence);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);
@@ -483,8 +483,8 @@ class CcLineAPCommentParserTest {
                         + "IsoId=Q9V8R9-6; Sequence=Described;\n"
                         + "Note=No experimental confirmation.;\n";
         CcLineFormater formater = new CcLineFormater();
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineStringEvidence);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);

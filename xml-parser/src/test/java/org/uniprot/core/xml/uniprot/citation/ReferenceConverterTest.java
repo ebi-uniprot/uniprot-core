@@ -15,12 +15,12 @@ import org.uniprot.core.citation.impl.SubmissionBuilder;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.ReferenceComment;
 import org.uniprot.core.uniprotkb.ReferenceCommentType;
-import org.uniprot.core.uniprotkb.UniProtkbReference;
+import org.uniprot.core.uniprotkb.UniProtKBReference;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
 import org.uniprot.core.uniprotkb.impl.ReferenceCommentBuilder;
-import org.uniprot.core.uniprotkb.impl.UniProtkbReferenceBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtKBReferenceBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.ReferenceType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
@@ -36,23 +36,23 @@ class ReferenceConverterTest {
         List<ReferenceComment> refComments = new ArrayList<>();
         refComments.add(createReferenceComment(ReferenceCommentType.STRAIN, "S1", evidences));
         refComments.add(createReferenceComment(ReferenceCommentType.TISSUE, "S11", evidences));
-        UniProtkbReference uniReference =
+        UniProtKBReference uniReference =
                 createUniProtReference(
                         submission, referencePositions, refComments, Collections.emptyList());
         ReferenceConverter converter = new ReferenceConverter(new EvidenceIndexMapper());
         ReferenceType xmlReference = converter.toXml(uniReference);
         System.out.println(
                 UniProtXmlTestHelper.toXmlString(xmlReference, ReferenceType.class, "reference"));
-        UniProtkbReference converted = converter.fromXml(xmlReference);
+        UniProtKBReference converted = converter.fromXml(xmlReference);
         assertEquals(uniReference, converted);
     }
 
-    private UniProtkbReference createUniProtReference(
+    private UniProtKBReference createUniProtReference(
             Citation citation,
             List<String> referencePositions,
             List<ReferenceComment> refComments,
             List<Evidence> evidences) {
-        return new UniProtkbReferenceBuilder()
+        return new UniProtKBReferenceBuilder()
                 .referenceCommentsSet(refComments)
                 .citation(citation)
                 .referencePositionsSet(referencePositions)
@@ -78,13 +78,13 @@ class ReferenceConverterTest {
         List<ReferenceComment> refComments = new ArrayList<>();
         refComments.add(createReferenceComment(ReferenceCommentType.STRAIN, "S1", evidences));
         refComments.add(createReferenceComment(ReferenceCommentType.TISSUE, "S11", evidences));
-        UniProtkbReference uniReference =
+        UniProtKBReference uniReference =
                 createUniProtReference(citation, referencePositions, refComments, evidences);
         ReferenceConverter converter = new ReferenceConverter(new EvidenceIndexMapper());
         ReferenceType xmlReference = converter.toXml(uniReference);
         System.out.println(
                 UniProtXmlTestHelper.toXmlString(xmlReference, ReferenceType.class, "reference"));
-        UniProtkbReference converted = converter.fromXml(xmlReference);
+        UniProtKBReference converted = converter.fromXml(xmlReference);
         assertEquals(uniReference, converted);
     }
 
@@ -99,13 +99,13 @@ class ReferenceConverterTest {
         //				createReferenceComment(ReferenceCommentType.STRAIN, "S1", evidences));
         //		refComments.add(
         //				createReferenceComment(ReferenceCommentType.TISSUE, "S11", evidences));
-        UniProtkbReference uniReference =
+        UniProtKBReference uniReference =
                 createUniProtReference(citation, referencePositions, refComments, evidences);
         ReferenceConverter converter = new ReferenceConverter(new EvidenceIndexMapper());
         ReferenceType xmlReference = converter.toXml(uniReference);
         System.out.println(
                 UniProtXmlTestHelper.toXmlString(xmlReference, ReferenceType.class, "reference"));
-        UniProtkbReference converted = converter.fromXml(xmlReference);
+        UniProtKBReference converted = converter.fromXml(xmlReference);
         assertEquals(uniReference, converted);
     }
 

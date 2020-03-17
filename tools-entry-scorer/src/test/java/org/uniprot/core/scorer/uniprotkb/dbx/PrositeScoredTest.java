@@ -5,7 +5,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.xdb.PrositeScored;
-import org.uniprot.core.uniprotkb.xdb.UniProtkbCrossReference;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 
 class PrositeScoredTest extends AbstractDBXTest {
     @Test
@@ -56,7 +56,7 @@ class PrositeScoredTest extends AbstractDBXTest {
 
     @Override
     HasScore getScored(String lines) {
-        List<UniProtkbCrossReference> crossReferences = getDBXRefs(lines, "PROSITE");
+        List<UniProtKBCrossReference> crossReferences = getDBXRefs(lines, "PROSITE");
         return new PrositeScored(crossReferences);
     }
 }

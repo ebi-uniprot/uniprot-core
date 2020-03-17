@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.UniProtkbEntry;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocationComment;
 
@@ -22,7 +22,7 @@ class SubcellularLocationMapTest {
                         + "CC       region {ECO:0000250|UniProtKB:P17763}. Host cytoplasm\n"
                         + "CC       {ECO:0000250|UniProtKB:P17763}.";
 
-        UniProtkbEntry entry =
+        UniProtKBEntry entry =
                 CommentTestUtil.createUniProtEntryFromCommentLine(subcellularLocationLine);
 
         List<SubcellularLocationComment> sclComments =
@@ -49,7 +49,7 @@ class SubcellularLocationMapTest {
                         + "CC       vesicles hosting the replication complex.\n"
                         + "CC       {ECO:0000250|UniProtKB:Q9Q6P4}.";
 
-        UniProtkbEntry entry =
+        UniProtKBEntry entry =
                 CommentTestUtil.createUniProtEntryFromCommentLine(subcellularLocationLine);
 
         List<SubcellularLocationComment> sclComments =
@@ -100,7 +100,7 @@ class SubcellularLocationMapTest {
                         + "CC       complex. NS5 protein is mainly localized in the nucleus rather\n"
                         + "CC       than in ER vesicles. {ECO:0000250|UniProtKB:P17763}.";
 
-        UniProtkbEntry entry =
+        UniProtKBEntry entry =
                 CommentTestUtil.createUniProtEntryFromCommentLine(subcellularLocationLine);
 
         List<SubcellularLocationComment> sclComments =

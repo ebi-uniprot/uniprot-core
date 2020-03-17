@@ -3,9 +3,9 @@ package org.uniprot.core.scorer.uniprotkb;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
-import org.uniprot.core.flatfile.parser.UniprotkbLineParserFactory;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParserFactory;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineConverter;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
@@ -13,8 +13,8 @@ import org.uniprot.core.uniprotkb.description.ProteinDescription;
 /** Tests if the DE line is parsed correctly for SwissProt and TrEMBL entries. */
 class ProteinDescriptionScoredTest {
 
-    private static final UniprotkbLineParserFactory PARSER_FACTORY =
-            new DefaultUniprotkbLineParserFactory();
+    private static final UniprotKBLineParserFactory PARSER_FACTORY =
+            new DefaultUniprotKBLineParserFactory();
 
     @Test
     void shouldSubNameScore6() {
@@ -330,7 +330,7 @@ class ProteinDescriptionScoredTest {
     }
 
     private ProteinDescription parseLines(String lines) {
-        UniprotkbLineParser<DeLineObject> parser = PARSER_FACTORY.createDeLineParser();
+        UniprotKBLineParser<DeLineObject> parser = PARSER_FACTORY.createDeLineParser();
         DeLineObject obj = parser.parse(lines);
         DeLineConverter converter = new DeLineConverter();
         return converter.convert(obj);

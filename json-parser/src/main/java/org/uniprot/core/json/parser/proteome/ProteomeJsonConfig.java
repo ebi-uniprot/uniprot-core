@@ -36,7 +36,7 @@ import org.uniprot.core.json.parser.serializer.JournalSerializer;
 import org.uniprot.core.json.parser.serializer.LocalDateSerializer;
 import org.uniprot.core.json.parser.serializer.LocatorSerializer;
 import org.uniprot.core.json.parser.serializer.PublicationDateSerializer;
-import org.uniprot.core.json.parser.uniprot.serializer.UniProtkbAccessionSerializer;
+import org.uniprot.core.json.parser.uniprot.serializer.UniProtKBAccessionSerializer;
 import org.uniprot.core.proteome.CanonicalProtein;
 import org.uniprot.core.proteome.Component;
 import org.uniprot.core.proteome.Protein;
@@ -51,8 +51,8 @@ import org.uniprot.core.proteome.impl.ProteomeIdImpl;
 import org.uniprot.core.proteome.impl.RedundantProteomeImpl;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.impl.TaxonomyLineageImpl;
-import org.uniprot.core.uniprotkb.UniProtkbAccession;
-import org.uniprot.core.uniprotkb.impl.UniProtkbAccessionImpl;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionImpl;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyImpl;
 
@@ -107,7 +107,7 @@ public class ProteomeJsonConfig extends JsonConfig {
 
         mod.addAbstractTypeMapping(Protein.class, ProteinImpl.class);
         mod.addAbstractTypeMapping(CanonicalProtein.class, CanonicalProteinImpl.class);
-        mod.addAbstractTypeMapping(UniProtkbAccession.class, UniProtkbAccessionImpl.class);
+        mod.addAbstractTypeMapping(UniProtKBAccession.class, UniProtKBAccessionImpl.class);
 
         mod.addAbstractTypeMapping(PublicationDate.class, PublicationDateImpl.class);
         mod.addAbstractTypeMapping(Locator.class, ElectronicArticleImpl.LocatorImpl.class);
@@ -139,7 +139,7 @@ public class ProteomeJsonConfig extends JsonConfig {
 
         SimpleModule simpleMod = new SimpleModule();
         simpleMod.addSerializer(LocalDate.class, new LocalDateSerializer());
-        simpleMod.addSerializer(UniProtkbAccessionImpl.class, new UniProtkbAccessionSerializer());
+        simpleMod.addSerializer(UniProtKBAccessionImpl.class, new UniProtKBAccessionSerializer());
         simpleMod.addSerializer(AuthorImpl.class, new AuthorSerializer());
         simpleMod.addSerializer(PublicationDateImpl.class, new PublicationDateSerializer());
         simpleMod.addSerializer(ElectronicArticleImpl.LocatorImpl.class, new LocatorSerializer());

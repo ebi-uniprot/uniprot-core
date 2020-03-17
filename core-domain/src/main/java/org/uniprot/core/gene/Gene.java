@@ -9,7 +9,7 @@ import java.util.List;
  * <h3>About This Data Structure</h3>
  *
  * <p>Encapsulates the Genes of a {@link uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry
- * UniProtkbEntry}.
+ * UniProtKBEntry}.
  *
  * <h3>The Semantics of this Data Structure</h3>
  *
@@ -32,14 +32,14 @@ import java.util.List;
  * <h3>How to work with this Interface</h3>
  *
  * <p>The standard way of retrieving this data type <div class="codeexample"> {@link
- * uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtkbEntry} entry =
+ * uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtKBEntry} entry =
  * getEntryFromParserOrAPI(); List<{@link
  * uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene}> genes = entry.getGenes(); for
  * ({@link uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene} gene : genes) { for
  * (ORFName orfName : gene.getORFNames()) { System.out.println(orfName); } }</div>
  *
  * <p>The standard way of setting this data type <div class="codeexample"> {@link
- * uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtkbEntry} uniProtEntry = {@link
+ * uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtKBEntry} uniProtEntry = {@link
  * uk.ac.ebi.kraken.model.factories.DefaultUniProtFactory
  * DefaultUniProtFactory}.getInstance().buildEntry(); {@link
  * uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene} gene = {@link

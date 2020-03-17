@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.*;
 
@@ -15,8 +15,8 @@ class CcLineMSCommentParserTest {
         String lines =
                 "CC   -!- MASS SPECTROMETRY: Mass=24948; Mass_error=6; Method=MALDI;\n"
                         + "CC       Evidence={ECO:0000006|PubMed:16629414};\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -43,8 +43,8 @@ class CcLineMSCommentParserTest {
         String lines =
                 "CC   -!- MASS SPECTROMETRY: [P15522-2]: Mass=13822; Method=MALDI; Range=19-140;\n"
                         + "CC       Evidence={ECO:0000006|PubMed:16629414};\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -66,8 +66,8 @@ class CcLineMSCommentParserTest {
                 "CC   -!- MASS SPECTROMETRY: Mass=514.2; Method=Electrospray;\n"
                         + "CC       Note=The measured mass is that of\n"
                         + "CC       RPGW-amide.; Evidence={ECO:0000006|PubMed:16629414};\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -88,8 +88,8 @@ class CcLineMSCommentParserTest {
         String lines =
                 "CC   -!- MASS SPECTROMETRY: Mass=9571; Method=Electrospray;\n"
                         + "CC       Evidence={ECO:0000006|PubMed:16629414};\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -109,8 +109,8 @@ class CcLineMSCommentParserTest {
         String lines =
                 "CC   -!- MASS SPECTROMETRY: Mass=7190; Method=MALDI;\n"
                         + "CC       Note=Variant 6.01; Evidence={ECO:0000006|PubMed:16629414};\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -132,8 +132,8 @@ class CcLineMSCommentParserTest {
         String lines =
                 "CC   -!- MASS SPECTROMETRY: Mass=1200.8; Mass_error=2.0E-4; Method=MALDI;\n"
                         + "CC       Evidence={ECO:0000006|PubMed:16629414};\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -155,8 +155,8 @@ class CcLineMSCommentParserTest {
         String lines =
                 "CC   -!- MASS SPECTROMETRY: Mass=3979.9; Method=Electrospray;\n"
                         + "CC       Evidence={ECO:0000006|PubMed:16629414, ECO:0000006|PubMed:16629415};\n";
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -182,8 +182,8 @@ class CcLineMSCommentParserTest {
                 "MASS SPECTROMETRY: Mass=3979.9; Method=Electrospray;\n"
                         + "Evidence={ECO:0000006|PubMed:16629414, ECO:0000006|PubMed:16629415};\n";
         CcLineFormater formater = new CcLineFormater();
-        UniprotkbLineParser<CcLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineString);
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());

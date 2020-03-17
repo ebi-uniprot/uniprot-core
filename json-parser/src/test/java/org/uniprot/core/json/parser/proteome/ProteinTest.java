@@ -9,7 +9,7 @@ import org.uniprot.core.proteome.GeneNameType;
 import org.uniprot.core.proteome.Protein;
 import org.uniprot.core.proteome.impl.CanonicalProteinBuilder;
 import org.uniprot.core.proteome.impl.ProteinBuilder;
-import org.uniprot.core.uniprotkb.UniProtkbEntryType;
+import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -20,7 +20,7 @@ class ProteinTest {
         Protein protein =
                 new ProteinBuilder()
                         .accession(accession)
-                        .entryType(UniProtkbEntryType.SWISSPROT)
+                        .entryType(UniProtKBEntryType.SWISSPROT)
                         .geneName("some gene")
                         .geneNameType(GeneNameType.ENSEMBL)
                         .sequenceLength(307)
@@ -43,7 +43,7 @@ class ProteinTest {
         Protein protein =
                 new ProteinBuilder()
                         .accession(accession)
-                        .entryType(UniProtkbEntryType.SWISSPROT)
+                        .entryType(UniProtKBEntryType.SWISSPROT)
                         .geneName("some gene")
                         .geneNameType(GeneNameType.ENSEMBL)
                         .sequenceLength(307)
@@ -52,7 +52,7 @@ class ProteinTest {
         Protein rProtein1 =
                 new ProteinBuilder()
                         .accession("P23456")
-                        .entryType(UniProtkbEntryType.SWISSPROT)
+                        .entryType(UniProtKBEntryType.SWISSPROT)
                         .geneName("some gene2")
                         .geneNameType(GeneNameType.ENSEMBL)
                         .sequenceLength(303)
@@ -60,7 +60,7 @@ class ProteinTest {
         Protein rProtein2 =
                 new ProteinBuilder()
                         .accession("P26456")
-                        .entryType(UniProtkbEntryType.TREMBL)
+                        .entryType(UniProtKBEntryType.TREMBL)
                         .geneName("some gene5")
                         .geneNameType(GeneNameType.MOD)
                         .sequenceLength(504)

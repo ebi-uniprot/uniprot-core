@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ac.AcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ac.AcLineObject;
-import org.uniprot.core.flatfile.parser.impl.ac.UniProtkbAcLineObject;
-import org.uniprot.core.uniprotkb.UniProtkbAccession;
+import org.uniprot.core.flatfile.parser.impl.ac.UniProtKBAcLineObject;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
 class AcLineConverterTest {
     private AcLineConverter converter = new AcLineConverter();
@@ -20,7 +20,7 @@ class AcLineConverterTest {
         acObj.secondaryAcc.add("Q6GZX5");
         acObj.secondaryAcc.add("Q6GZX6");
 
-        UniProtkbAcLineObject uniObj = converter.convert(acObj);
+        UniProtKBAcLineObject uniObj = converter.convert(acObj);
         assertEquals("Q6GZX4", uniObj.getPrimaryAccession().getValue());
         assertEquals(2, uniObj.getSecondAccessions().size());
         testSecondAccIn("Q6GZX5", uniObj);
@@ -33,14 +33,14 @@ class AcLineConverterTest {
         AcLineObject acObj = new AcLineObject();
         acObj.primaryAcc = "Q6GZX4";
 
-        UniProtkbAcLineObject uniObj = converter.convert(acObj);
+        UniProtKBAcLineObject uniObj = converter.convert(acObj);
         assertEquals("Q6GZX4", uniObj.getPrimaryAccession().getValue());
         assertEquals(0, uniObj.getSecondAccessions().size());
     }
 
-    private void testSecondAccIn(String val, UniProtkbAcLineObject uniObj) {
+    private void testSecondAccIn(String val, UniProtKBAcLineObject uniObj) {
         boolean found = false;
-        for (UniProtkbAccession scObj : uniObj.getSecondAccessions()) {
+        for (UniProtKBAccession scObj : uniObj.getSecondAccessions()) {
             if (val.equals(scObj.getValue())) {
                 found = true;
                 break;

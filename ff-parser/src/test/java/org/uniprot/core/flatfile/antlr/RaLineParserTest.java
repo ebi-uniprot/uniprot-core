@@ -6,16 +6,16 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.ra.RaLineObject;
 
 class RaLineParserTest {
     @Test
     void test() {
         String raLines = "RA   Tan W.G., Barkman T.J., Gregory Chinchar V., Essani K.;\n";
-        UniprotkbLineParser<RaLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRaLineParser();
+        UniprotKBLineParser<RaLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRaLineParser();
         RaLineObject obj = parser.parse(raLines);
         verify(
                 obj,
@@ -32,8 +32,8 @@ class RaLineParserTest {
     @Test
     void test2() {
         String raLines = "RA   Galinier A., Perriere G., Duclos B.;\n";
-        UniprotkbLineParser<RaLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRaLineParser();
+        UniprotKBLineParser<RaLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRaLineParser();
         RaLineObject obj = parser.parse(raLines);
         verify(obj, Arrays.asList(new String[] {"Galinier A.", "Perriere G.", "Duclos B."}));
     }
@@ -41,8 +41,8 @@ class RaLineParserTest {
     @Test
     void test3() {
         String raLines = "RA   Galinier A. B.;\n";
-        UniprotkbLineParser<RaLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRaLineParser();
+        UniprotKBLineParser<RaLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRaLineParser();
         RaLineObject obj = parser.parse(raLines);
         verify(obj, Arrays.asList(new String[] {"Galinier A. B."}));
     }
@@ -52,8 +52,8 @@ class RaLineParserTest {
         String raLines =
                 "RA   Galinier A., Bleicher F., Nasoff M.S., Baker H.V. II, Wolf R.E. Jr.,\n"
                         + "RA   Cozzone A.J., Cortay J.-C.;\n";
-        UniprotkbLineParser<RaLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRaLineParser();
+        UniprotKBLineParser<RaLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRaLineParser();
         RaLineObject obj = parser.parse(raLines);
         verify(
                 obj,

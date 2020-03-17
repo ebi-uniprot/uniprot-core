@@ -6,12 +6,12 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.UniProtkbAccession;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
 import org.uniprot.core.uniprotkb.comment.InteractionType;
-import org.uniprot.core.uniprotkb.impl.UniProtkbAccessionBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 
 class InteractionBuilderTest {
     @Test
@@ -139,7 +139,7 @@ class InteractionBuilderTest {
 
     @Test
     void canSetUniProtAccession() {
-        UniProtkbAccession accession = new UniProtkbAccessionBuilder("ac").build();
+        UniProtKBAccession accession = new UniProtKBAccessionBuilder("ac").build();
         Interaction obj = new InteractionBuilder().uniProtAccession(accession).build();
         assertEquals(accession, obj.getUniProtkbAccession());
     }

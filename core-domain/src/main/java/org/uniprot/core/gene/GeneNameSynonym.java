@@ -9,7 +9,7 @@ import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
  *
  * <p>Encapsulates the Gene Name Synonyms of a {@link GeneName GeneName} in a {@link
  * uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene} object of a {@link
- * uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtkbEntry}.
+ * uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtKBEntry}.
  *
  * <h3>The Semantics of this Data Structure</h3>
  *
@@ -31,14 +31,14 @@ import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
  * <h3>How to work with this Interface</h3>
  *
  * <p>The standard way of retrieving this data type <div class="codeexample"> {@link
- * uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtkbEntry} entry =
+ * uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtKBEntry} entry =
  * getEntryFromParserOrAPI(); List<{@link
  * uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene}> genes = entry.getGenes(); for
  * ({@link uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene} gene : genes) { for
  * (GeneNameSynonym synonym : gene.getGeneNameSynonyms()) { System.out.println(synonym); } }</div>
  *
  * <p>The standard way of setting this data type <div class="codeexample"> {@link
- * uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtkbEntry} uniProtEntry = {@link
+ * uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtKBEntry} uniProtEntry = {@link
  * uk.ac.ebi.kraken.model.factories.DefaultUniProtFactory
  * DefaultUniProtFactory}.getInstance().buildEntry(); {@link
  * uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene} gene = {@link

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.UniProtkbEntry;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.comment.CatalyticActivityComment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 
@@ -23,7 +23,7 @@ class CatalyticActivityMapTest {
                         + "CC         ChEBI:CHEBI:83400; EC=2.7.7.48; Evidence={ECO:0000255|PROSITE-\n"
                         + "CC         ProRule:PRU00539};";
 
-        UniProtkbEntry entry =
+        UniProtKBEntry entry =
                 CommentTestUtil.createUniProtEntryFromCommentLine(catalyticActivityLine);
 
         List<CatalyticActivityComment> catalyticActivityComments =
@@ -61,7 +61,7 @@ class CatalyticActivityMapTest {
                         + "CC       Reaction=Endonucleolytic cleavage to 5'-phosphomonoester.;\n"
                         + "CC         EC=3.1.26.4; Evidence={ECO:0000255|PROSITE-ProRule:PRU00408};";
 
-        UniProtkbEntry entry =
+        UniProtKBEntry entry =
                 CommentTestUtil.createUniProtEntryFromCommentLine(catalyticActivityLine);
 
         List<CatalyticActivityComment> catalyticActivityComments =

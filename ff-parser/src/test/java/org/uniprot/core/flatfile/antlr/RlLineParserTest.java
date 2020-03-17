@@ -7,8 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.rl.RlLineObject;
 import org.uniprot.core.flatfile.parser.impl.rl.RlLineObject.SubmissionDB;
 
@@ -16,8 +16,8 @@ class RlLineParserTest {
     @Test
     void testJournalArticle1() {
         String rgLines = "RL   J. Mol. Biol. 168:321-331(1983).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.JournalArticle);
         verify(
@@ -32,8 +32,8 @@ class RlLineParserTest {
     @Test
     void testJournalArticle2() {
         String rgLines = "RL   Int. J. Parasitol. 0:0-0(2005).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.JournalArticle);
         verify(
@@ -48,8 +48,8 @@ class RlLineParserTest {
     @Test
     void testJournalContainDash() {
         String rgLines = "RL   Hoppe-Seyler's Z. Physiol. Chem. 362:1665-1669(1981).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.JournalArticle);
         verify(
@@ -64,8 +64,8 @@ class RlLineParserTest {
     @Test
     void testJournalContainDash2() {
         String rgLines = "RL   Abstr. - Soc. Neurosci. 25:168-168(1999).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.JournalArticle);
         verify(
@@ -80,8 +80,8 @@ class RlLineParserTest {
     @Test
     void testJournalContainBracket() {
         String rgLines = "RL   Clin. Endocrinol. (Oxf.) 56:413-418(2002).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.JournalArticle);
         verify(
@@ -96,8 +96,8 @@ class RlLineParserTest {
     @Test
     void testJournalWithSpeciealPage() {
         String rgLines = "RL   PLoS ONE 3:E1450-E1450(2008).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.JournalArticle);
         verify(
@@ -126,8 +126,8 @@ class RlLineParserTest {
     @Test
     void testEpub() {
         String rgLines = "RL   (er) Plant Gene Register PGR98-023.\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.EPub);
         verify((RlLineObject.EPub) obj.getReference(), "Plant Gene Register PGR98-023");
@@ -136,8 +136,8 @@ class RlLineParserTest {
     @Test
     void testEpub2() {
         String rgLines = "RL   (er) Invest. Ophthalmol. Vis. Sci. 43:ARVO E-Abstract 791(2002).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.EPub);
         verify(
@@ -148,8 +148,8 @@ class RlLineParserTest {
     @Test
     void testEpub3() {
         String rgLines = "RL   (er) J. Am. Chem. Soc. 121:9223-9224(1999).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.EPub);
         verify((RlLineObject.EPub) obj.getReference(), "J. Am. Chem. Soc. 121:9223-9224(1999)");
@@ -162,8 +162,8 @@ class RlLineParserTest {
     @Test
     void testSubmission() {
         String rgLines = "RL   Submitted (OCT-1995) to the EMBL/GenBank/DDBJ databases.\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Submission);
         verify((RlLineObject.Submission) obj.getReference(), SubmissionDB.EMBL, 1995, "OCT");
@@ -179,8 +179,8 @@ class RlLineParserTest {
     @Test
     void testPatent() {
         String rgLines = "RL   Patent number WO9010703, 20-SEP-1990.\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Patent);
         verify((RlLineObject.Patent) obj.getReference(), "WO9010703", 1990, "SEP", 20);
@@ -197,8 +197,8 @@ class RlLineParserTest {
     @Test
     void testThesis() {
         String rgLines = "RL   Thesis (1977), University of Geneva, Switzerland.\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Thesis);
         verify(
@@ -211,8 +211,8 @@ class RlLineParserTest {
     @Test
     void testThesis2() {
         String rgLines = "RL   Thesis (2001), A. Mickiewicz University, Poland.\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Thesis);
         verify(
@@ -226,8 +226,8 @@ class RlLineParserTest {
     void testThesis3() {
         String rgLines =
                 "RL   Thesis (2008), Department of Biosystems, K.U.Leuven, Leuven, Belgium.\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Thesis);
         verify(
@@ -240,8 +240,8 @@ class RlLineParserTest {
     @Test
     void testThesis4() {
         String rgLines = "RL   Thesis (2001), A. Mickiewicz University.\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Thesis);
         verify((RlLineObject.Thesis) obj.getReference(), "A. Mickiewicz University", null, 2001);
@@ -252,8 +252,8 @@ class RlLineParserTest {
         String rgLines =
                 "RL   Thesis (2000), Department of Veterinary Medicine,\n"
                         + "RL   Justus-Liebig-University, D-35392 Giessen, Germany.\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Thesis);
         verify(
@@ -269,8 +269,8 @@ class RlLineParserTest {
                 "RL   Thesis (2010), Suranaree Univercity of Technology, 111 Suranaree Ave.\n"
                         + "RL   Suranaree Univercity of Technology, Thailand, Nakhon Ratchasima,\n"
                         + "RL   Thailand.\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Thesis);
         verify(
@@ -290,8 +290,8 @@ class RlLineParserTest {
     void testUnpublished() {
         String rgLines = "RL   Unpublished observations (OCT-1978).\n";
 
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Unpublished);
         verify((RlLineObject.Unpublished) obj.getReference(), "OCT", 1978);
@@ -307,8 +307,8 @@ class RlLineParserTest {
         String rgLines =
                 "RL   (In) Boyer P.D. (eds.);\n"
                         + "RL   The enzymes (3rd ed.), pp.11:397-547, Academic Press, New York (1975).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
@@ -329,8 +329,8 @@ class RlLineParserTest {
                 "RL   (In) Rich D.H., Gross E. (eds.);\n"
                         + "RL   Proceedings of the 7th American peptide symposium, pp.69-72, Pierce\n"
                         + "RL   Chemical Co., Rockford Il. (1981).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
@@ -371,8 +371,8 @@ class RlLineParserTest {
                 "RL   (In) Kueck U. (eds.);\n"
                         + "RL   The Mycota II, Genetics and Biotechnology (2nd edition), pp.95-112,\n"
                         + "RL   Springer-Verlag, Berlin-Heidelberg (2004).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
@@ -393,8 +393,8 @@ class RlLineParserTest {
                 "RL   (In) Cummings D.J., Brost P., Dawid I.B., Weissman S.M., Fox C.F.\n"
                         + "RL   (eds.);\n"
                         + "RL   Extrachromosomal DNA, pp.339-355, Academic Press, New York (1979).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
@@ -417,8 +417,8 @@ class RlLineParserTest {
         String rgLines =
                 "RL   (In) Proceedings of the 20th international conference on Arabidopsis\n"
                         + "RL   research, abstract#543, Edinburgh (2009).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
@@ -440,8 +440,8 @@ class RlLineParserTest {
                 "RL   (In) Biggins J. (eds.);\n"
                         + "RL   Progress in photosynthesis research, pp.II.1:13-16, Martinus Nijhoff,\n"
                         + "RL   The Hague (1987).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
@@ -461,8 +461,8 @@ class RlLineParserTest {
         String rgLines =
                 "RL   (In) Biggins J. (eds.);\n"
                         + "RL   Progress in photosynthesis research, pp.II.1:13-16, Martinus Nijhoff (1987).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
@@ -483,8 +483,8 @@ class RlLineParserTest {
                 "RL   (In) Barnett A.A., Veiga L.M., Ferrari S.F., Norconk M.A. (eds.);\n"
                         + "RL   EVOLUTIONARY BIOLOGY AND CONSERVATION OF TITIS, SAKIS AND UACARIS,\n"
                         + "RL   pp.0-0, Cambridge University Press, Cambridge, UK (2009).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
@@ -508,8 +508,8 @@ class RlLineParserTest {
                 "RL   (In) Goffinet B., Hollowell V., Magill R. (eds.);\n"
                         + "RL   MOLECULAR SYSTEMATICS OF BRYOPHYTES - MONOGRAPHS IN SYSTEMATIC BOTANY,\n"
                         + "RL   pp.61-86, Missouri Botanical Garden Press, USA (2004).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
@@ -531,8 +531,8 @@ class RlLineParserTest {
                         + "RL   PROCEEDINGS OF III CONGRESSO NACIONAL DE SAUDE PUBLICA VETERINARIA E I\n"
                         + "RL   ENCONTRO INTERNACIONAL DE SAUDE PUBLICA VETERINARIA, pp.0-0, Brazil\n"
                         + "RL   (2009).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
@@ -553,8 +553,8 @@ class RlLineParserTest {
                 "RL   (In) Klenk, H.-D. (eds.);\n"
                         + "RL   XIIth International Congress of Virology, pp.9-0, EDK. Medical and\n"
                         + "RL   Scientific International Pubulisher, 75014 Paris, France (2002).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
@@ -576,8 +576,8 @@ class RlLineParserTest {
                         + "RL   Abstract, pp.8-0, European Symposium on Drosophila\n"
                         + "RL   Neurobiology(Neurofly-2000) Alicante, Spain:23rd to 27th September\n"
                         + "RL   2000:1-1; CSIC (2000).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
@@ -597,8 +597,8 @@ class RlLineParserTest {
         String rgLines =
                 "RL   (In) Proceedings of the 39th annual Drosophila research conference,\n"
                         + "RL   pp.39:414C-414C, Washington D.C. (1998).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
@@ -619,8 +619,8 @@ class RlLineParserTest {
                 "RL   (In) Proceedings of Plant Biology '2000: The annual meeting of the\n"
                         + "RL   American Society of Plant Physiologists, pp.abstract#272:0-0,\n"
                         + "RL   San Diego (2000).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
@@ -640,8 +640,8 @@ class RlLineParserTest {
         String rgLines =
                 "RL   (In) Proceedings of the 20th international conference on Arabidopsis\n"
                         + "RL   research, abstract#501734213, Edinburgh (2009).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(
@@ -665,8 +665,8 @@ class RlLineParserTest {
                         + "RL   ADVANCES IN ECOLOGICAL RESEARCH 31: BIOLOGY OF ANCIENT LAKES;\n"
                         + "RL   BIODIVERSITY, ECOLOGY AND EVOLUTION, pp.275-302, Academic Press,\n"
                         + "RL   London, United Kingdom (2000).\n";
-        UniprotkbLineParser<RlLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createRlLineParser();
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
         assertTrue(obj.getReference() instanceof RlLineObject.Book);
         verify(

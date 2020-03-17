@@ -16,12 +16,12 @@ import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
-import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
 import org.uniprot.core.flatfile.parser.impl.entry.EntryObject;
 import org.uniprot.core.flatfile.parser.impl.entry.EntryObjectConverter;
-import org.uniprot.core.uniprotkb.UniProtkbEntry;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
 
 /**
  * Created 05/02/19
@@ -36,7 +36,7 @@ class UniProtGffParserIT {
     void validateOutputForQ8NDV7() {
         String entryPath = TEST_FILE_PATH + "Q8NDV7.dat";
         String gffPath = TEST_FILE_PATH + "Q8NDV7.gff";
-        UniProtkbEntry entry = readEntry(entryPath);
+        UniProtKBEntry entry = readEntry(entryPath);
         String entryGff = UniProtGffParser.convert(entry);
 
         String gffAsString =
@@ -51,7 +51,7 @@ class UniProtGffParserIT {
     void validateOutputForP21802() {
         String entryPath = TEST_FILE_PATH + "P21802.dat";
         String gffPath = TEST_FILE_PATH + "P21802.gff";
-        UniProtkbEntry entry = readEntry(entryPath);
+        UniProtKBEntry entry = readEntry(entryPath);
         String entryGff = UniProtGffParser.convert(entry);
 
         String gffAsString =
@@ -66,7 +66,7 @@ class UniProtGffParserIT {
     void validateOutputForQ8IWB6() {
         String entryPath = TEST_FILE_PATH + "Q8IWB6.dat";
         String gffPath = TEST_FILE_PATH + "Q8IWB6.gff";
-        UniProtkbEntry entry = readEntry(entryPath);
+        UniProtKBEntry entry = readEntry(entryPath);
         String entryGff = UniProtGffParser.convert(entry);
 
         String gffAsString =
@@ -90,9 +90,9 @@ class UniProtGffParserIT {
         }
     }
 
-    private UniProtkbEntry readEntry(String path) {
-        UniprotkbLineParser<EntryObject> entryParser =
-                new DefaultUniprotkbLineParserFactory().createEntryParser();
+    private UniProtKBEntry readEntry(String path) {
+        UniprotKBLineParser<EntryObject> entryParser =
+                new DefaultUniprotKBLineParserFactory().createEntryParser();
         String entryAsString =
                 readEntryFromFile(path)
                         .orElseThrow(

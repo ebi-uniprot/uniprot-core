@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.dr.DRLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.uniprotkb.xdb.UniProtkbCrossReference;
-import org.uniprot.core.uniprotkb.xdb.UniProtkbDatabase;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
-import org.uniprot.cv.xdb.UniProtkbDatabaseImpl;
+import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 
 class DRLineBuildTest {
     private DRLineBuilder builder = new DRLineBuilder();
@@ -22,7 +22,7 @@ class DRLineBuildTest {
     void testMint() {
         String drLine =
                 "DR   EMBL; U12141; AAA99664.1; -; Genomic_DNA.\n" + "DR   MINT; MINT-1356407; -.";
-        List<UniProtkbCrossReference> xrefs = new ArrayList<>();
+        List<UniProtKBCrossReference> xrefs = new ArrayList<>();
         xrefs.add(
                 createUniProtDBCrossReference("EMBL", "U12141", "AAA99664.1", "-", "Genomic_DNA"));
         xrefs.add(createUniProtDBCrossReference("MINT", "MINT-1356407", "-"));
@@ -76,7 +76,7 @@ class DRLineBuildTest {
                         + "DR   Pfam; PF00534; Glycos_transf_1; 1.";
         // "DR CYGD; YNL048w; -.\n" +
         //			"DR   NMPDR; fig|4932.3.peg.5426; -.";
-        List<UniProtkbCrossReference> xrefs = new ArrayList<>();
+        List<UniProtKBCrossReference> xrefs = new ArrayList<>();
         xrefs.add(
                 createUniProtDBCrossReference("EMBL", "U12141", "AAA99664.1", "-", "Genomic_DNA"));
         xrefs.add(
@@ -153,7 +153,7 @@ class DRLineBuildTest {
                         + "DR   Pfam; PF02788; RuBisCO_large_N; 1.\n"
                         + "DR   PROSITE; PS00157; RUBISCO_LARGE; 1. [P21235-2]";
 
-        List<UniProtkbCrossReference> xrefs = new ArrayList<>();
+        List<UniProtKBCrossReference> xrefs = new ArrayList<>();
         xrefs.add(
                 createUniProtDBCrossReference("Gene3D", "G3DSA:3.20.20.110", "RuBisCO_large", "1"));
         xrefs.add(
@@ -177,17 +177,17 @@ class DRLineBuildTest {
         assertEquals(drLine, resultString);
     }
 
-    private UniProtkbCrossReference createUniProtDBCrossReference(
+    private UniProtKBCrossReference createUniProtDBCrossReference(
             String type, String id, String description) {
         return createUniProtDBCrossReference(type, id, description, null);
     }
 
-    private UniProtkbCrossReference createUniProtDBCrossReference(
+    private UniProtKBCrossReference createUniProtDBCrossReference(
             String type, String id, String description, String thirdAttribute) {
         return createUniProtDBCrossReference(type, id, description, thirdAttribute, null);
     }
 
-    private UniProtkbCrossReference createUniProtDBCrossReference(
+    private UniProtKBCrossReference createUniProtDBCrossReference(
             String type,
             String id,
             String description,
@@ -197,7 +197,7 @@ class DRLineBuildTest {
                 type, id, description, thirdAttribute, fourthAttribute, null);
     }
 
-    private UniProtkbCrossReference createUniProtDBCrossReference(
+    private UniProtKBCrossReference createUniProtDBCrossReference(
             String databaseName,
             String id,
             String description,
@@ -215,7 +215,7 @@ class DRLineBuildTest {
                 Collections.emptyList());
     }
 
-    private UniProtkbCrossReference createUniProtDBCrossReference(
+    private UniProtKBCrossReference createUniProtDBCrossReference(
             String databaseName,
             String id,
             String description,
@@ -223,7 +223,7 @@ class DRLineBuildTest {
             String fourthAttribute,
             String isoformId,
             List<Evidence> evidences) {
-        UniProtkbDatabase opType = new UniProtkbDatabaseImpl(databaseName);
+        UniProtKBDatabase opType = new UniProtKBDatabaseImpl(databaseName);
         return new UniProtCrossReferenceBuilder()
                 .database(opType)
                 .id(id)

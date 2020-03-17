@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.GeneNameType;
 import org.uniprot.core.proteome.Protein;
-import org.uniprot.core.uniprotkb.UniProtkbEntryType;
-import org.uniprot.core.uniprotkb.impl.UniProtkbAccessionBuilder;
+import org.uniprot.core.uniprotkb.UniProtKBEntryType;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 
 class ProteinBuilderTest {
 
@@ -18,7 +18,7 @@ class ProteinBuilderTest {
         assertEquals(accession, protein.getAccession().getValue());
         protein =
                 new ProteinBuilder()
-                        .accession(new UniProtkbAccessionBuilder(accession).build())
+                        .accession(new UniProtKBAccessionBuilder(accession).build())
                         .build();
 
         assertEquals(accession, protein.getAccession().getValue());
@@ -26,11 +26,11 @@ class ProteinBuilderTest {
 
     @Test
     void testEntryType() {
-        UniProtkbEntryType entryType = UniProtkbEntryType.SWISSPROT;
+        UniProtKBEntryType entryType = UniProtKBEntryType.SWISSPROT;
         Protein protein = new ProteinBuilder().entryType(entryType).build();
         assertEquals(entryType, protein.getEntryType());
 
-        entryType = UniProtkbEntryType.TREMBL;
+        entryType = UniProtKBEntryType.TREMBL;
         protein = new ProteinBuilder().entryType(entryType).build();
         assertEquals(entryType, protein.getEntryType());
     }
@@ -63,17 +63,17 @@ class ProteinBuilderTest {
         Protein protein =
                 new ProteinBuilder()
                         .accession(accession)
-                        .entryType(UniProtkbEntryType.SWISSPROT)
+                        .entryType(UniProtKBEntryType.SWISSPROT)
                         .geneName(gene)
                         .geneNameType(type)
                         .build();
 
         ProteinBuilder builder = ProteinBuilder.from(protein);
-        Protein newProtein = builder.entryType(UniProtkbEntryType.TREMBL).build();
+        Protein newProtein = builder.entryType(UniProtKBEntryType.TREMBL).build();
 
         assertEquals(protein.getAccession(), newProtein.getAccession());
         assertEquals(protein.getGeneName(), newProtein.getGeneName());
-        assertEquals(UniProtkbEntryType.SWISSPROT, protein.getEntryType());
-        assertEquals(UniProtkbEntryType.TREMBL, newProtein.getEntryType());
+        assertEquals(UniProtKBEntryType.SWISSPROT, protein.getEntryType());
+        assertEquals(UniProtKBEntryType.TREMBL, newProtein.getEntryType());
     }
 }

@@ -6,16 +6,16 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotkbLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotkbLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.kw.KwLineObject;
 
 class KwLineParserTest {
     @Test
     void test() {
         String kwLines = "KW   Activator; Complete proteome; Reference proteome; Transcription.\n";
-        UniprotkbLineParser<KwLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createKwLineParser();
+        UniprotKBLineParser<KwLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createKwLineParser();
         KwLineObject obj = parser.parse(kwLines);
         assertEquals(4, obj.keywords.size());
         verify(obj, 0, "Activator", null);
@@ -36,8 +36,8 @@ class KwLineParserTest {
                 "KW   Activator; Complete proteome;\n"
                         + "KW   Reference proteome; Transcription;\n"
                         + "KW   Transcription regulation.\n";
-        UniprotkbLineParser<KwLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createKwLineParser();
+        UniprotKBLineParser<KwLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createKwLineParser();
         KwLineObject obj = parser.parse(kwLines);
         assertEquals(5, obj.keywords.size());
         verify(obj, 0, "Activator", null);
@@ -53,8 +53,8 @@ class KwLineParserTest {
                 "KW   Activator {ECO:00000001}; Complete proteome {ECO:00000001};\n"
                         + "KW   Reference proteome; Transcription {ECO:0000006|PubMed:20858735, ECO:0000006};\n"
                         + "KW   Transcription regulation.\n";
-        UniprotkbLineParser<KwLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createKwLineParser();
+        UniprotKBLineParser<KwLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createKwLineParser();
         KwLineObject obj = parser.parse(kwLines);
         assertEquals(5, obj.keywords.size());
         verify(obj, 0, "Activator", Arrays.asList(new String[] {"ECO:00000001"}));
@@ -75,8 +75,8 @@ class KwLineParserTest {
                         + "KW   Reference proteome; Transcription {ECO:0000006|PubMed:20858735,\n"
                         + "KW   ECO:0000006};\n"
                         + "KW   Transcription regulation.\n";
-        UniprotkbLineParser<KwLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createKwLineParser();
+        UniprotKBLineParser<KwLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createKwLineParser();
         KwLineObject obj = parser.parse(kwLines);
         assertEquals(5, obj.keywords.size());
         verify(obj, 0, "Activator", Arrays.asList(new String[] {"ECO:00000001"}));
@@ -97,8 +97,8 @@ class KwLineParserTest {
                         + "KW   Reference proteome; Transcription\n"
                         + "KW   {ECO:0000006|PubMed:20858735, ECO:0000006};\n"
                         + "KW   Transcription regulation.\n";
-        UniprotkbLineParser<KwLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createKwLineParser();
+        UniprotKBLineParser<KwLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createKwLineParser();
         KwLineObject obj = parser.parse(kwLines);
         assertEquals(5, obj.keywords.size());
         verify(obj, 0, "Activator", Arrays.asList(new String[] {"ECO:00000001"}));
@@ -127,8 +127,8 @@ class KwLineParserTest {
                         + "KW   Virus entry into host cell {ECO:0000256|SAAS:SAAS000777_004_000842};\n"
                         + "KW   Complete proteome; Metal-binding; Repeat; Virus reference strain;\n"
                         + "KW   Zinc-finger.\n";
-        UniprotkbLineParser<KwLineObject> parser =
-                new DefaultUniprotkbLineParserFactory().createKwLineParser();
+        UniprotKBLineParser<KwLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createKwLineParser();
         KwLineObject obj = parser.parse(kwLines);
         assertEquals(13, obj.keywords.size());
         verify(
