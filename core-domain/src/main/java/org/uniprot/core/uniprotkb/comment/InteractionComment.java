@@ -2,8 +2,11 @@ package org.uniprot.core.uniprotkb.comment;
 
 import java.util.List;
 
+import org.uniprot.core.util.Utils;
+
 public interface InteractionComment extends Comment {
     List<Interaction> getInteractions();
-
-    boolean hasInteractions();
+   default boolean hasInteractions() {
+	  return Utils.notNullNotEmpty(getInteractions());
+   }
 }
