@@ -6,5 +6,5 @@ public interface Interaction extends Serializable {
 	Interactant getFirstInteractant();
 	Interactant getSecondInteractant();
     int getNumberOfExperiments();
-    boolean isXeno();
+    boolean isOrganismsDiffer();
 }

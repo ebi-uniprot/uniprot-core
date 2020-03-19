@@ -23,7 +23,7 @@ class InteractionCommentTransformerTest {
 		
 		Interaction interaction1 = comment.getInteractions().get(0);
 		assertEquals(1, interaction1.getNumberOfExperiments());
-		assertFalse(interaction1.isXeno());
+		assertFalse(interaction1.isOrganismsDiffer());
 		verifyInteractor(interaction1.getFirstInteractant(),
 				null, "P12345", null, "EBI-123485"
 				);
@@ -33,7 +33,7 @@ class InteractionCommentTransformerTest {
 		
 		Interaction interaction2 = comment.getInteractions().get(1);
 		assertEquals(2, interaction2.getNumberOfExperiments());
-		assertTrue(interaction2.isXeno());
+		assertTrue(interaction2.isOrganismsDiffer());
 		verifyInteractor(interaction2.getFirstInteractant(),
 				null, "P12345", null, "EBI-123485"
 				);
@@ -67,7 +67,7 @@ class InteractionCommentTransformerTest {
         assertEquals(3, comment.getInteractions().size());
         Interaction interaction1 = comment.getInteractions().get(0);
 		assertEquals(1, interaction1.getNumberOfExperiments());
-		assertFalse(interaction1.isXeno());
+		assertFalse(interaction1.isOrganismsDiffer());
 		verifyInteractor(interaction1.getFirstInteractant(),
 				null, "P12345", null, "EBI-133844"
 				);
@@ -77,7 +77,7 @@ class InteractionCommentTransformerTest {
 		
 		Interaction interaction2 = comment.getInteractions().get(1);
 		assertEquals(4, interaction2.getNumberOfExperiments());
-		assertFalse(interaction2.isXeno());
+		assertFalse(interaction2.isOrganismsDiffer());
 		verifyInteractor(interaction2.getFirstInteractant(),
 				"PRO_0000037566", null, null, "EBI-372428"
 				);
@@ -87,7 +87,7 @@ class InteractionCommentTransformerTest {
 		
 		Interaction interaction3 = comment.getInteractions().get(2);
 		assertEquals(3, interaction3.getNumberOfExperiments());
-		assertTrue(interaction3.isXeno());
+		assertTrue(interaction3.isOrganismsDiffer());
 		verifyInteractor(interaction3.getFirstInteractant(),
 				null, "P12345", null, "EBI-372428"
 				);
@@ -107,7 +107,7 @@ class InteractionCommentTransformerTest {
         assertEquals(3, comment.getInteractions().size());
         Interaction interaction1 = comment.getInteractions().get(0);
 		assertEquals(1, interaction1.getNumberOfExperiments());
-		assertFalse(interaction1.isXeno());
+		assertFalse(interaction1.isOrganismsDiffer());
 		verifyInteractor(interaction1.getFirstInteractant(),
 				null, "P12345", null, "EBI-133844"
 				);
@@ -117,7 +117,7 @@ class InteractionCommentTransformerTest {
 		
 		Interaction interaction2 = comment.getInteractions().get(1);
 		assertEquals(4, interaction2.getNumberOfExperiments());
-		assertFalse(interaction2.isXeno());
+		assertFalse(interaction2.isOrganismsDiffer());
 		verifyInteractor(interaction2.getFirstInteractant(),
 				null, "P12345-1", null, "EBI-372428"
 				);
@@ -127,7 +127,7 @@ class InteractionCommentTransformerTest {
 		
 		Interaction interaction3 = comment.getInteractions().get(2);
 		assertEquals(3, interaction3.getNumberOfExperiments());
-		assertTrue(interaction3.isXeno());
+		assertTrue(interaction3.isOrganismsDiffer());
 		verifyInteractor(interaction3.getFirstInteractant(),
 				null, "P12345", null, "EBI-372428"
 				);

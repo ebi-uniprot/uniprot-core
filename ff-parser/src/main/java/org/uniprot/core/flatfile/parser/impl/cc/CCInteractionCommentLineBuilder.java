@@ -56,7 +56,7 @@ public class CCInteractionCommentLineBuilder extends CCLineBuilderAbstr<Interact
 		}
         sb.append("; ");
        
-        if (act.isXeno()) {
+        if (act.isOrganismsDiffer()) {
             sb.append("Xeno; ");
         }
         sb.append("NbExp=");

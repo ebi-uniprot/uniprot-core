@@ -8,6 +8,7 @@ import org.uniprot.core.uniprotkb.comment.impl.InteractantBuilder;
 import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
+import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.InteractantType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 
@@ -89,26 +90,22 @@ public class InteractionConverter implements Converter<CommentType, Interaction>
     
         InteractantType secondactantType = xmlUniprotFactory.createInteractantType();
         secondactantType.setIntactId(uniObj.getSecondInteractant().getIntActId());
-        
-        
-        String secondInteract = uniObj.getSecondInteractant().getValue();
-        secondactantType.setIntactId(secondInteract);
+        if(!Utils.nullOrEmpty(uniObj.getSecondInteractant().getGeneName())) {
+        	secondactantType.setLabel(uniObj.getSecondInteractant().getGeneName());
+        }
+        if(!Utils.nullOrEmpty(uniObj.getSecondInteractant().getChainId())) {
+        	secondactantType.setId(uniObj.getSecondInteractant().getChainId());
+        	 DbReferenceType xmlReference = xmlUniprotFactory.createDbReferenceType();
+			 xmlReference.setType("UniProtKB");
+		     xmlReference.setId(uniObj.getSecondInteractant().getUniProtkbAccession().getValue());
+		     secondactantType.setDbReference(xmlReference);
+        	
+        }else {
+        	secondactantType.setId(uniObj.getSecondInteractant().getUniProtkbAccession().getValue());
+        }
         commentType.getInteractant().add(secondactantType);
+        commentType.setOrganismsDiffer(uniObj.isOrganismsDiffer());
 
-        InteractionType type = uniObj.getType();
-        if (type != InteractionType.SELF) {
-            secondactantType.setId(uniObj.getUniProtkbAccession().getValue());
-            String interactionGeneName = uniObj.getGeneName();
-            if (!Strings.isNullOrEmpty(interactionGeneName) && !"-".equals(interactionGeneName)) {
-                secondactantType.setLabel(interactionGeneName);
-            }
-        }
-
-        if (type == InteractionType.XENO) {
-            commentType.setOrganismsDiffer(true);
-        } else {
-            commentType.setOrganismsDiffer(false);
-        }
         commentType.setExperiments(uniObj.getNumberOfExperiments());
 
         return commentType;

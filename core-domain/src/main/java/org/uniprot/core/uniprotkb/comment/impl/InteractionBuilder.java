@@ -11,10 +11,10 @@ public final class InteractionBuilder implements Builder<Interaction> {
   private Interactant firstInteractor;
   private Interactant secondInteractor;
   private int numberOfExperiments;
-  private boolean isXeno = false;
+  private boolean organismDiffer = false;
 
   public @Nonnull Interaction build() {
-    return new InteractionImpl(firstInteractor, secondInteractor, numberOfExperiments, isXeno);
+    return new InteractionImpl(firstInteractor, secondInteractor, numberOfExperiments, organismDiffer);
   }
 
   public static @Nonnull InteractionBuilder from(@Nonnull Interaction instance) {
@@ -23,7 +23,7 @@ public final class InteractionBuilder implements Builder<Interaction> {
         .firstInteractor(instance.getFirstInteractant())
         .secondInteractor(instance.getSecondInteractant())
         .numberOfExperiments(instance.getNumberOfExperiments())
-        .isXeno(instance.isXeno());
+        .isOrganismDiffer(instance.isOrganismsDiffer());
     return builder;
   }
 
@@ -42,8 +42,8 @@ public final class InteractionBuilder implements Builder<Interaction> {
     return this;
   }
 
-  public @Nonnull InteractionBuilder isXeno(boolean isXeno) {
-    this.isXeno = isXeno;
+  public @Nonnull InteractionBuilder isOrganismDiffer(boolean isXeno) {
+    this.organismDiffer = isXeno;
     return this;
   }
 }

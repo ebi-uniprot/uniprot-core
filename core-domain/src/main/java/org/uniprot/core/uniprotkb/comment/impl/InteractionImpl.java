@@ -10,7 +10,7 @@ public class InteractionImpl implements Interaction {
   private Interactant firstInteractor;
   private Interactant secondInteractor;
   private int numberOfExperiments;
-  private boolean isXeno;
+  private boolean organismDiffer;
 
   InteractionImpl() {}
 
@@ -18,12 +18,12 @@ public class InteractionImpl implements Interaction {
       Interactant firstInteractor,
       Interactant secondInteractor,
       int numberOfExperiments,
-      boolean isXeno) {
+      boolean organismDiffer) {
     super();
     this.firstInteractor = firstInteractor;
     this.secondInteractor = secondInteractor;
     this.numberOfExperiments = numberOfExperiments;
-    this.isXeno = isXeno;
+    this.organismDiffer = organismDiffer;
   }
 
   @Override
@@ -42,13 +42,13 @@ public class InteractionImpl implements Interaction {
   }
 
   @Override
-  public boolean isXeno() {
-    return this.isXeno;
+  public boolean isOrganismsDiffer() {
+    return this.organismDiffer;
   }
 
   @Override
   public int hashCode() {
-	  return Objects.hash(firstInteractor, secondInteractor, numberOfExperiments, isXeno);
+	  return Objects.hash(firstInteractor, secondInteractor, numberOfExperiments, organismDiffer);
 	
   }
 
@@ -60,6 +60,6 @@ public class InteractionImpl implements Interaction {
 	    return Objects.equals(firstInteractor, interaction.firstInteractor)
 	        && Objects.equals(secondInteractor, interaction.secondInteractor)
 	        && Objects.equals(numberOfExperiments, interaction.numberOfExperiments)
-	        && Objects.equals(isXeno, interaction.isXeno);
+	        && Objects.equals(organismDiffer, interaction.organismDiffer);
   }
 }

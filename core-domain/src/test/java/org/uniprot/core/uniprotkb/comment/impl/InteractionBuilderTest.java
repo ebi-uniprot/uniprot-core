@@ -49,7 +49,7 @@ class InteractionBuilderTest {
         assertEquals(3, interaction.getNumberOfExperiments());
         assertEquals(interactor1, interaction.getFirstInteractant());
         assertNull(interaction.getSecondInteractant());
-        assertFalse(interaction.isXeno());
+        assertFalse(interaction.isOrganismsDiffer());
     }
 
     @Test
@@ -74,7 +74,7 @@ class InteractionBuilderTest {
         assertEquals(interactor1, interaction.getFirstInteractant());
 
         assertEquals(interactor2, interaction.getSecondInteractant());
-        assertFalse(interaction.isXeno());
+        assertFalse(interaction.isOrganismsDiffer());
     }
     @Test
     void testSetIsXeno() {
@@ -92,14 +92,14 @@ class InteractionBuilderTest {
                         .numberOfExperiments(3)
                         .firstInteractor(interactor1)
                         .secondInteractor(interactor2)
-                        .isXeno(true)
+                        .isOrganismDiffer(true)
                         .build();
       
         assertEquals(3, interaction.getNumberOfExperiments());
         assertEquals(interactor1, interaction.getFirstInteractant());
 
         assertEquals(interactor2, interaction.getSecondInteractant());
-        assertTrue(interaction.isXeno());
+        assertTrue(interaction.isOrganismsDiffer());
     }
 
     @Test

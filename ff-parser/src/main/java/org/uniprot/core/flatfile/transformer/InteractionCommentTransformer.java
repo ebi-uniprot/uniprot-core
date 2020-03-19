@@ -114,7 +114,7 @@ public class InteractionCommentTransformer implements CommentTransformer<Interac
 		builder2.intActId(acc2);
 		builder.firstInteractor(builder1.build())
 		.secondInteractor(builder2.build())
-		.isXeno(xeno)
+		.isOrganismDiffer(xeno)
 		.numberOfExperiments(Integer.parseInt(nbexp.substring(6)));
 		return builder.build();
 	}

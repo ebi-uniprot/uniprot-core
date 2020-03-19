@@ -39,7 +39,7 @@ class InteractionImplTest {
     	assertEquals(interactor1, interaction.getFirstInteractant())  ;
     	assertEquals(interactor2, interaction.getSecondInteractant());
     	assertEquals(3, interaction.getNumberOfExperiments());
-    	assertFalse(interaction.isXeno());
+    	assertFalse(interaction.isOrganismsDiffer());
         
     }
 

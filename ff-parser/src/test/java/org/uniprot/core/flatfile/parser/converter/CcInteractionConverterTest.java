@@ -88,18 +88,18 @@ class CcInteractionConverterTest {
         Interactant interactor31= inter3.getFirstInteractant();
         Interactant interactor32= inter3.getSecondInteractant();
         assertEquals(4, inter1.getNumberOfExperiments());
-        assertFalse(inter1.isXeno());
+        assertFalse(inter1.isOrganismsDiffer());
         verifyInteractor(interactor11, "PRO_0000033156", null, null, "EBI-20824092");
         verifyInteractor(interactor12, "PRO_0000000092", "P05067", "APP", "EBI-821758");
         
         assertEquals(3, inter2.getNumberOfExperiments());
-        assertFalse(inter2.isXeno());
+        assertFalse(inter2.isOrganismsDiffer());
         verifyInteractor(interactor21, null, "D3ZAR1", null, "EBI-9250714");
         verifyInteractor(interactor22, "PRO_0000017322", "P98158", "Lrp2", "EBI-9251342");
         
         
         assertEquals(4, inter3.getNumberOfExperiments());
-        assertTrue(inter3.isXeno());
+        assertTrue(inter3.isOrganismsDiffer());
         verifyInteractor(interactor31, null, "P12345", null, "EBI-356498");
         verifyInteractor(interactor32, null, "P84198-1", "VIM", "EBI-457639");
         

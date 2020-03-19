@@ -121,7 +121,7 @@ class CCInteractionBuildTest extends CCBuildTestAbstr {
         builder.firstInteractor(builder1.build())
         .secondInteractor(builder2.build())
         .numberOfExperiments(nExperments)
-        .isXeno(xeno);
+        .isOrganismDiffer(xeno);
 
         return builder.build();
     }

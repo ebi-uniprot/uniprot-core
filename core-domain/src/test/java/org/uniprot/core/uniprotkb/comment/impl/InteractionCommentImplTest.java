@@ -40,7 +40,7 @@ class InteractionCommentImplTest {
     			.firstInteractor(interactor3)
     			.secondInteractor(interactor4)
     			.numberOfExperiments(2)
-    			.isXeno(true)
+    			.isOrganismDiffer(true)
     			.build();
     	
     	interactions = Arrays.asList(interaction1, interaction2);

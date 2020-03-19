@@ -394,7 +394,7 @@ public class CcLineConverter extends EvidenceCollector
     	itBuilder.firstInteractor(builder1.build())
     	.secondInteractor(builder2.build())
     	.numberOfExperiments(obj.getNbexp())
-    	.isXeno(obj.isXeno());  	
+    	.isOrganismDiffer(obj.isXeno());  	
     	return itBuilder.build();
     }
     private DiseaseComment convertDisease(Disease cObj, Map<Object, List<Evidence>> evidences) {
