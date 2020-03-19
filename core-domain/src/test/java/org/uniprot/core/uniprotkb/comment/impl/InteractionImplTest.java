@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.Interaction;
-import org.uniprot.core.uniprotkb.comment.Interactor;
+import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 
 class InteractionImplTest {
-	private Interactor interactor1;
-	private Interactor interactor2;
+	private Interactant interactor1;
+	private Interactant interactor2;
 	
     @BeforeEach
     void setup() {
@@ -36,8 +36,8 @@ class InteractionImplTest {
     void completeObjConstructor() {
     	Interaction interaction = new InteractionImpl(
     		      interactor1, interactor2, 3, false);
-    	assertEquals(interactor1, interaction.getFirstInteractor())  ;
-    	assertEquals(interactor2, interaction.getSecondInteractor());
+    	assertEquals(interactor1, interaction.getFirstInteractant())  ;
+    	assertEquals(interactor2, interaction.getSecondInteractant());
     	assertEquals(3, interaction.getNumberOfExperiments());
     	assertFalse(interaction.isXeno());
         

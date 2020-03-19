@@ -16,7 +16,7 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.InteractionObject;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
-import org.uniprot.core.uniprotkb.comment.Interactor;
+import org.uniprot.core.uniprotkb.comment.Interactant;
 
 
 class CcInteractionConverterTest {
@@ -81,12 +81,12 @@ class CcInteractionConverterTest {
         org.uniprot.core.uniprotkb.comment.Interaction inter1 = interactions.get(0);
         org.uniprot.core.uniprotkb.comment.Interaction inter2 = interactions.get(1);
         org.uniprot.core.uniprotkb.comment.Interaction inter3 = interactions.get(2);
-        Interactor interactor11= inter1.getFirstInteractor();
-        Interactor interactor12= inter1.getSecondInteractor();
-        Interactor interactor21= inter2.getFirstInteractor();
-        Interactor interactor22= inter2.getSecondInteractor();
-        Interactor interactor31= inter3.getFirstInteractor();
-        Interactor interactor32= inter3.getSecondInteractor();
+        Interactant interactor11= inter1.getFirstInteractant();
+        Interactant interactor12= inter1.getSecondInteractant();
+        Interactant interactor21= inter2.getFirstInteractant();
+        Interactant interactor22= inter2.getSecondInteractant();
+        Interactant interactor31= inter3.getFirstInteractant();
+        Interactant interactor32= inter3.getSecondInteractant();
         assertEquals(4, inter1.getNumberOfExperiments());
         assertFalse(inter1.isXeno());
         verifyInteractor(interactor11, "PRO_0000033156", null, null, "EBI-20824092");
@@ -105,7 +105,7 @@ class CcInteractionConverterTest {
         
 
     }
-    private void verifyInteractor(Interactor interactor, String chainId, String acc, String gene, String intActId) {
+    private void verifyInteractor(Interactant interactor, String chainId, String acc, String gene, String intActId) {
     	assertEquals(chainId, interactor.getChainId());
     	if(acc ==null) {
     		assertNull(interactor.getUniProtkbAccession());

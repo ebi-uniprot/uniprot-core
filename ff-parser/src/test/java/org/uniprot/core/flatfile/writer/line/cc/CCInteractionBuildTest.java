@@ -8,7 +8,7 @@ import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionCommentBuilder;
-import org.uniprot.core.uniprotkb.comment.impl.InteractorBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.InteractantBuilder;
 
 class CCInteractionBuildTest extends CCBuildTestAbstr {
     @Test
@@ -107,8 +107,8 @@ class CCInteractionBuildTest extends CCBuildTestAbstr {
           
             boolean xeno) {
         InteractionBuilder builder = new InteractionBuilder();
-        InteractorBuilder builder1 = new InteractorBuilder();
-        InteractorBuilder builder2 = new InteractorBuilder();
+        InteractantBuilder builder1 = new InteractantBuilder();
+        InteractantBuilder builder2 = new InteractantBuilder();
         if(acc1 !=null) {
         	builder1.uniProtAccession(acc1);
         }

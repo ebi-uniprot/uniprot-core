@@ -371,8 +371,8 @@ public class CcLineConverter extends EvidenceCollector
 
     private org.uniprot.core.uniprotkb.comment.Interaction convertFromInteractionObject(InteractionObject obj) {
     	InteractionBuilder itBuilder = new InteractionBuilder();
-    	InteractorBuilder builder1 = new InteractorBuilder();
-    	InteractorBuilder builder2 = new InteractorBuilder();
+    	InteractantBuilder builder1 = new InteractantBuilder();
+    	InteractantBuilder builder2 = new InteractantBuilder();
     	UniProtKBAccession interactant1 = new UniProtKBAccessionBuilder(obj.getFirstInteractant()).build();
     	if(interactant1.isValidAccession())
     		builder1.uniProtAccession(interactant1);

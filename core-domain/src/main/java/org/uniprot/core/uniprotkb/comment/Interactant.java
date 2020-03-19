@@ -5,7 +5,7 @@ import java.io.Serializable;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.util.Utils;
 
-public interface Interactor extends Serializable {
+public interface Interactant extends Serializable {
 	UniProtKBAccession getUniProtkbAccession();
 	String getGeneName();
 	String getChainId();	

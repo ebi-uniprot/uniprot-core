@@ -3,13 +3,13 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import java.util.Objects;
 
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
-import org.uniprot.core.uniprotkb.comment.Interactor;
+import org.uniprot.core.uniprotkb.comment.Interactant;
 
 /**
  * @author jluo
  * @date: 17 Mar 2020
  */
-public class InteractorImpl implements Interactor {
+public class InteractorImpl implements Interactant {
 
   /** */
   private static final long serialVersionUID = 4480365784795150723L;

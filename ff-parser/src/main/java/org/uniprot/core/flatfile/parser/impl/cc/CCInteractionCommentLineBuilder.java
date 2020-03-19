@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
-import org.uniprot.core.uniprotkb.comment.Interactor;
+import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.util.Utils;
 
 /**
@@ -36,8 +36,8 @@ public class CCInteractionCommentLineBuilder extends CCLineBuilderAbstr<Interact
    
     public String buildLine(Interaction act) {
     	StringBuilder sb= new StringBuilder();
-    	Interactor interactor1 = act.getFirstInteractor();
-    	Interactor interactor2 = act.getSecondInteractor();
+    	Interactant interactor1 = act.getFirstInteractant();
+    	Interactant interactor2 = act.getSecondInteractant();
     	if(Utils.nullOrEmpty(interactor1.getChainId()))
     		sb.append(interactor1.getUniProtkbAccession().getValue());
     	else

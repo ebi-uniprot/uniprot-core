@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.comment.Interactor;
+import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 
 /**
@@ -20,23 +20,23 @@ class InteractorBuilderTest {
 
 	 @Test
 	    void testNewInstance() {
-	        InteractorBuilder builder1 = new InteractorBuilder();
-	        InteractorBuilder builder2 = new InteractorBuilder();
+	        InteractantBuilder builder1 = new InteractantBuilder();
+	        InteractantBuilder builder2 = new InteractantBuilder();
 	        assertNotNull(builder1);
 	        assertNotNull(builder2);
 	        assertFalse(builder1 == builder2);
 	    }
   @Test
   void testFrom(){
-	  Interactor obj = new InteractorBuilder().build();
-      InteractorBuilder builder = InteractorBuilder.from(obj);
+	  Interactant obj = new InteractantBuilder().build();
+      InteractantBuilder builder = InteractantBuilder.from(obj);
       assertNotNull(builder);
   }
 
 @Test
 void testGeneName(){
-	InteractorBuilder builder = new InteractorBuilder();
-	Interactor obj = builder.geneName("gene1").build();
+	InteractantBuilder builder = new InteractantBuilder();
+	Interactant obj = builder.geneName("gene1").build();
 	assertEquals("gene1", obj.getGeneName());
 	assertNull(obj.getUniProtkbAccession());
 	assertNull(obj.getChainId());
@@ -45,8 +45,8 @@ void testGeneName(){
 
 @Test
 void testUniProtAccessionUniProtKBAccession(){
-	InteractorBuilder builder = new InteractorBuilder();
-	Interactor obj = builder.uniProtAccession( new UniProtKBAccessionBuilder("P12345").build()).build();
+	InteractantBuilder builder = new InteractantBuilder();
+	Interactant obj = builder.uniProtAccession( new UniProtKBAccessionBuilder("P12345").build()).build();
 	assertNull(obj.getGeneName());
 	assertNotNull(obj.getUniProtkbAccession());
 	assertEquals("P12345", obj.getUniProtkbAccession().getValue());
@@ -56,8 +56,8 @@ void testUniProtAccessionUniProtKBAccession(){
 
 @Test
 void testUniProtAccessionString(){
-	InteractorBuilder builder = new InteractorBuilder();
-	Interactor obj = builder.uniProtAccession("P12345").build();
+	InteractantBuilder builder = new InteractantBuilder();
+	Interactant obj = builder.uniProtAccession("P12345").build();
 	assertNull(obj.getGeneName());
 	assertNotNull(obj.getUniProtkbAccession());
 	assertEquals("P12345", obj.getUniProtkbAccession().getValue());
@@ -67,8 +67,8 @@ void testUniProtAccessionString(){
 
 @Test
 void testChainId(){
-	InteractorBuilder builder = new InteractorBuilder();
-	Interactor obj = builder.chainId("P_1234").build();
+	InteractantBuilder builder = new InteractantBuilder();
+	Interactant obj = builder.chainId("P_1234").build();
 	assertEquals("P_1234", obj.getChainId());
 	assertNull(obj.getUniProtkbAccession());
 	assertNull(obj.getGeneName());
@@ -77,8 +77,8 @@ void testChainId(){
 
 @Test
 void testIntActId(){
-	InteractorBuilder builder = new InteractorBuilder();
-	Interactor obj = builder.intActId("EBI-1036653").build();
+	InteractantBuilder builder = new InteractantBuilder();
+	Interactant obj = builder.intActId("EBI-1036653").build();
 	assertEquals("EBI-1036653", obj.getIntActId());
 	assertNull(obj.getUniProtkbAccession());
 	assertNull(obj.getChainId());

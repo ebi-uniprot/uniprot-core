@@ -10,7 +10,7 @@ import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionCommentBuilder;
-import org.uniprot.core.uniprotkb.comment.impl.InteractorBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.InteractantBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 
 public class InteractionCommentTransformer implements CommentTransformer<InteractionComment> {
@@ -52,8 +52,8 @@ public class InteractionCommentTransformer implements CommentTransformer<Interac
 
 		}
 		InteractionBuilder builder = new InteractionBuilder();
-		InteractorBuilder builder1 = new InteractorBuilder();  
-		InteractorBuilder builder2 = new InteractorBuilder();  
+		InteractantBuilder builder1 = new InteractantBuilder();  
+		InteractantBuilder builder2 = new InteractantBuilder();  
 		
 		// todo: handle parse errors
 		String[] tokens = value.split("; ");

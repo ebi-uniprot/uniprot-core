@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.comment.Interactor;
+import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 
 /**
@@ -20,13 +20,13 @@ class InteractorImplTest {
 	
 	 @Test
 	 void needDefaultConstructorForJsonDeserialization() {
-	        Interactor obj = new InteractorImpl();
+	        Interactant obj = new InteractorImpl();
 	        assertNotNull(obj);
 	    }
 
 	 @Test
 	 void completeObjHasMethods() {
-		 Interactor obj =
+		 Interactant obj =
 		  new InteractorImpl(
 				  new UniProtKBAccessionBuilder("P12345").build(),
 				  "gene1", "P_1234", "EBI-1223708");
@@ -36,11 +36,11 @@ class InteractorImplTest {
 	 }
 	 @Test
 	 void builderFrom_constructorImp_shouldCreate_equalObject() {
-		 Interactor obj =
+		 Interactant obj =
 		  new InteractorImpl(
 				  new UniProtKBAccessionBuilder("P12345").build(),
 				  "gene1", "P_1234", "EBI-1223708");
-		 Interactor objBuilderFrom = InteractorBuilder.from(obj).build();
+		 Interactant objBuilderFrom = InteractantBuilder.from(obj).build();
 		 assertEquals(obj, objBuilderFrom);
 
 	    assertEquals(obj.hashCode(), objBuilderFrom.hashCode());

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.Interaction;
-import org.uniprot.core.uniprotkb.comment.Interactor;
+import org.uniprot.core.uniprotkb.comment.Interactant;
 
 class InteractionBuilderTest {
     @Test
@@ -29,14 +29,14 @@ class InteractionBuilderTest {
                         .build();
       
         assertEquals(3, interaction.getNumberOfExperiments());
-        assertNull(interaction.getFirstInteractor());
-        assertNull(interaction.getSecondInteractor());
+        assertNull(interaction.getFirstInteractant());
+        assertNull(interaction.getSecondInteractant());
     }
 
     @Test
     void testSetFirstInteractor() {
-    	Interactor interactor1 =
-    			new InteractorBuilder()
+    	Interactant interactor1 =
+    			new InteractantBuilder()
     			.uniProtAccession("P12345").build();
     	
         InteractionBuilder builder = new InteractionBuilder();
@@ -47,18 +47,18 @@ class InteractionBuilderTest {
                         .build();
     
         assertEquals(3, interaction.getNumberOfExperiments());
-        assertEquals(interactor1, interaction.getFirstInteractor());
-        assertNull(interaction.getSecondInteractor());
+        assertEquals(interactor1, interaction.getFirstInteractant());
+        assertNull(interaction.getSecondInteractant());
         assertFalse(interaction.isXeno());
     }
 
     @Test
     void testSetSecondInteractor() {
-    	Interactor interactor1 =
-    			new InteractorBuilder()
+    	Interactant interactor1 =
+    			new InteractantBuilder()
     			.uniProtAccession("P12345").build();
-    	Interactor interactor2 =
-    			new InteractorBuilder()
+    	Interactant interactor2 =
+    			new InteractantBuilder()
     			.uniProtAccession("P12346")
     			.geneName("gen1").build();
     	
@@ -71,18 +71,18 @@ class InteractionBuilderTest {
                         .build();
       
         assertEquals(3, interaction.getNumberOfExperiments());
-        assertEquals(interactor1, interaction.getFirstInteractor());
+        assertEquals(interactor1, interaction.getFirstInteractant());
 
-        assertEquals(interactor2, interaction.getSecondInteractor());
+        assertEquals(interactor2, interaction.getSecondInteractant());
         assertFalse(interaction.isXeno());
     }
     @Test
     void testSetIsXeno() {
-    	Interactor interactor1 =
-    			new InteractorBuilder()
+    	Interactant interactor1 =
+    			new InteractantBuilder()
     			.uniProtAccession("P12345").build();
-    	Interactor interactor2 =
-    			new InteractorBuilder()
+    	Interactant interactor2 =
+    			new InteractantBuilder()
     			.uniProtAccession("P12346")
     			.geneName("gen1").build();
     	
@@ -96,9 +96,9 @@ class InteractionBuilderTest {
                         .build();
       
         assertEquals(3, interaction.getNumberOfExperiments());
-        assertEquals(interactor1, interaction.getFirstInteractor());
+        assertEquals(interactor1, interaction.getFirstInteractant());
 
-        assertEquals(interactor2, interaction.getSecondInteractor());
+        assertEquals(interactor2, interaction.getSecondInteractant());
         assertTrue(interaction.isXeno());
     }
 

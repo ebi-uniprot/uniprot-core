@@ -3,20 +3,20 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import java.util.Objects;
 
 import org.uniprot.core.uniprotkb.comment.Interaction;
-import org.uniprot.core.uniprotkb.comment.Interactor;
+import org.uniprot.core.uniprotkb.comment.Interactant;
 
 public class InteractionImpl implements Interaction {
   private static final long serialVersionUID = -1102213995267310387L;
-  private Interactor firstInteractor;
-  private Interactor secondInteractor;
+  private Interactant firstInteractor;
+  private Interactant secondInteractor;
   private int numberOfExperiments;
   private boolean isXeno;
 
   InteractionImpl() {}
 
   InteractionImpl(
-      Interactor firstInteractor,
-      Interactor secondInteractor,
+      Interactant firstInteractor,
+      Interactant secondInteractor,
       int numberOfExperiments,
       boolean isXeno) {
     super();
@@ -27,12 +27,12 @@ public class InteractionImpl implements Interaction {
   }
 
   @Override
-  public Interactor getFirstInteractor() {
+  public Interactant getFirstInteractant() {
     return this.firstInteractor;
   }
 
   @Override
-  public Interactor getSecondInteractor() {
+  public Interactant getSecondInteractant() {
     return secondInteractor;
   }
 

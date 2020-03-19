@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.InteractantBuilder;
+import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.InteractantType;
@@ -33,7 +35,11 @@ public class InteractionConverter implements Converter<CommentType, Interaction>
         assert (actTypes.size() == 2);
         InteractantType firstAct = actTypes.get(0);
         InteractantType secondAct = actTypes.get(1);
-
+        InteractantBuilder builder1 =new InteractantBuilder();
+        InteractantBuilder builder2 =new InteractantBuilder();
+        
+        
+        
         if ((firstAct.getId() != null) && (!firstAct.getId().isEmpty())) {
             InteractantType temp = firstAct;
             firstAct = secondAct;
@@ -64,20 +70,28 @@ public class InteractionConverter implements Converter<CommentType, Interaction>
         builder.numberOfExperiments(xmlObject.getExperiments());
         return builder.build();
     }
+    
+    
 
     @Override
     public CommentType toXml(Interaction uniObj) {
         if (uniObj == null) return null;
         CommentType commentType = xmlUniprotFactory.createCommentType();
         commentType.setType(INTERACTION);
-
-        String firstInteract = uniObj.getFirstInteractor().getValue();
         InteractantType firstactantType = xmlUniprotFactory.createInteractantType();
-        firstactantType.setIntactId(firstInteract);
+        firstactantType.setIntactId(uniObj.getFirstInteractant().getIntActId());
+        if(!Utils.nullOrEmpty(uniObj.getFirstInteractant().getChainId())) {
+        	firstactantType.setId(uniObj.getFirstInteractant().getChainId());
+        }else {
+        	firstactantType.setId(uniObj.getFirstInteractant().getUniProtkbAccession().getValue());
+        }
         commentType.getInteractant().add(firstactantType);
-
+    
         InteractantType secondactantType = xmlUniprotFactory.createInteractantType();
-        String secondInteract = uniObj.getSecondInteractor().getValue();
+        secondactantType.setIntactId(uniObj.getSecondInteractant().getIntActId());
+        
+        
+        String secondInteract = uniObj.getSecondInteractant().getValue();
         secondactantType.setIntactId(secondInteract);
         commentType.getInteractant().add(secondactantType);
 

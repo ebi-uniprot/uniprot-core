@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
-import org.uniprot.core.uniprotkb.comment.Interactor;
+import org.uniprot.core.uniprotkb.comment.Interactant;
 
 class InteractionCommentTransformerTest {
     private final InteractionCommentTransformer transformer = new InteractionCommentTransformer();
@@ -24,25 +24,25 @@ class InteractionCommentTransformerTest {
 		Interaction interaction1 = comment.getInteractions().get(0);
 		assertEquals(1, interaction1.getNumberOfExperiments());
 		assertFalse(interaction1.isXeno());
-		verifyInteractor(interaction1.getFirstInteractor(),
+		verifyInteractor(interaction1.getFirstInteractant(),
 				null, "P12345", null, "EBI-123485"
 				);
-		verifyInteractor(interaction1.getSecondInteractor(),
+		verifyInteractor(interaction1.getSecondInteractant(),
 				null, "Q9W158", "CG4612", "EBI-89895"
 				);
 		
 		Interaction interaction2 = comment.getInteractions().get(1);
 		assertEquals(2, interaction2.getNumberOfExperiments());
 		assertTrue(interaction2.isXeno());
-		verifyInteractor(interaction2.getFirstInteractor(),
+		verifyInteractor(interaction2.getFirstInteractant(),
 				null, "P12345", null, "EBI-123485"
 				);
-		verifyInteractor(interaction2.getSecondInteractor(),
+		verifyInteractor(interaction2.getSecondInteractant(),
 				"PRO_0000037566", "P27958", null, "EBI-126770"
 				);
 	
 	}
-    private void verifyInteractor(Interactor interactor, String chainId, String acc, String gene, String intActId) {
+    private void verifyInteractor(Interactant interactor, String chainId, String acc, String gene, String intActId) {
     	assertEquals(chainId, interactor.getChainId());
     	if(acc ==null) {
     		assertNull(interactor.getUniProtkbAccession());
@@ -68,30 +68,30 @@ class InteractionCommentTransformerTest {
         Interaction interaction1 = comment.getInteractions().get(0);
 		assertEquals(1, interaction1.getNumberOfExperiments());
 		assertFalse(interaction1.isXeno());
-		verifyInteractor(interaction1.getFirstInteractor(),
+		verifyInteractor(interaction1.getFirstInteractant(),
 				null, "P12345", null, "EBI-133844"
 				);
-		verifyInteractor(interaction1.getSecondInteractor(),
+		verifyInteractor(interaction1.getSecondInteractant(),
 				null, "Q9W1K5-1", "CG11299", "EBI-212772"
 				);
 		
 		Interaction interaction2 = comment.getInteractions().get(1);
 		assertEquals(4, interaction2.getNumberOfExperiments());
 		assertFalse(interaction2.isXeno());
-		verifyInteractor(interaction2.getFirstInteractor(),
+		verifyInteractor(interaction2.getFirstInteractant(),
 				"PRO_0000037566", null, null, "EBI-372428"
 				);
-		verifyInteractor(interaction2.getSecondInteractor(),
+		verifyInteractor(interaction2.getSecondInteractant(),
 				null, "O96017", "CHEK2", "EBI-1180783"
 				);
 		
 		Interaction interaction3 = comment.getInteractions().get(2);
 		assertEquals(3, interaction3.getNumberOfExperiments());
 		assertTrue(interaction3.isXeno());
-		verifyInteractor(interaction3.getFirstInteractor(),
+		verifyInteractor(interaction3.getFirstInteractant(),
 				null, "P12345", null, "EBI-372428"
 				);
-		verifyInteractor(interaction3.getSecondInteractor(),
+		verifyInteractor(interaction3.getSecondInteractant(),
 				null, "Q6ZWQ9", "Myl12a", "EBI-8034418"
 				);
     }
@@ -108,30 +108,30 @@ class InteractionCommentTransformerTest {
         Interaction interaction1 = comment.getInteractions().get(0);
 		assertEquals(1, interaction1.getNumberOfExperiments());
 		assertFalse(interaction1.isXeno());
-		verifyInteractor(interaction1.getFirstInteractor(),
+		verifyInteractor(interaction1.getFirstInteractant(),
 				null, "P12345", null, "EBI-133844"
 				);
-		verifyInteractor(interaction1.getSecondInteractor(),
+		verifyInteractor(interaction1.getSecondInteractant(),
 				null, "Q9W1K5-1", "CG11299", "EBI-212772"
 				);
 		
 		Interaction interaction2 = comment.getInteractions().get(1);
 		assertEquals(4, interaction2.getNumberOfExperiments());
 		assertFalse(interaction2.isXeno());
-		verifyInteractor(interaction2.getFirstInteractor(),
+		verifyInteractor(interaction2.getFirstInteractant(),
 				null, "P12345-1", null, "EBI-372428"
 				);
-		verifyInteractor(interaction2.getSecondInteractor(),
+		verifyInteractor(interaction2.getSecondInteractant(),
 				null, "O96017", "CHEK2", "EBI-1180783"
 				);
 		
 		Interaction interaction3 = comment.getInteractions().get(2);
 		assertEquals(3, interaction3.getNumberOfExperiments());
 		assertTrue(interaction3.isXeno());
-		verifyInteractor(interaction3.getFirstInteractor(),
+		verifyInteractor(interaction3.getFirstInteractant(),
 				null, "P12345", null, "EBI-372428"
 				);
-		verifyInteractor(interaction3.getSecondInteractor(),
+		verifyInteractor(interaction3.getSecondInteractant(),
 				null, "Q6ZWQ9", "Myl12a", "EBI-8034418"
 				);
     }
