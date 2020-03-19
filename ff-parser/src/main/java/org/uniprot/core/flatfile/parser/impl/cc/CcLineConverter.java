@@ -18,14 +18,18 @@ import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.*;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.Disease;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.FreeText;
+
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.Interaction;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.impl.ECNumberBuilder;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.comment.impl.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
+import org.uniprot.core.util.Utils;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
 import com.google.common.base.Strings;
@@ -358,34 +362,41 @@ public class CcLineConverter extends EvidenceCollector
     }
 
     private InteractionComment convertInteraction(Interaction cObj) {
-
-        List<org.uniprot.core.uniprotkb.comment.Interaction> interactions = new ArrayList<>();
-        for (InteractionObject io : cObj.getInteractions()) {
-            InteractionBuilder builder = new InteractionBuilder();
-
-            if (!io.isSelf()) {
-                builder.uniProtAccession(io.getSpAc());
-            }
-            if (!Strings.isNullOrEmpty(io.getGene())) {
-                builder.geneName(io.getGene());
-            }
-            if (io.isXeno()) builder.interactionType(InteractionType.XENO);
-            else if (io.isSelf()) {
-                builder.interactionType(InteractionType.SELF);
-            } else {
-                builder.interactionType(InteractionType.BINARY);
-            }
-            builder.firstInteractor(io.getFirstId());
-            if (!Strings.isNullOrEmpty(io.getSecondId())) {
-                builder.secondInteractor(io.getSecondId());
-            }
-            builder.numberOfExperiments(io.getNbexp());
-
-            interactions.add(builder.build());
-        }
+        List<org.uniprot.core.uniprotkb.comment.Interaction> interactions
+        = cObj.getInteractions()
+        .stream().map(this::convertFromInteractionObject)
+        .collect(Collectors.toList());
         return new InteractionCommentBuilder().interactionsSet(interactions).build();
     }
 
+    private org.uniprot.core.uniprotkb.comment.Interaction convertFromInteractionObject(InteractionObject obj) {
+    	InteractionBuilder itBuilder = new InteractionBuilder();
+    	InteractorBuilder builder1 = new InteractorBuilder();
+    	InteractorBuilder builder2 = new InteractorBuilder();
+    	UniProtKBAccession interactant1 = new UniProtKBAccessionBuilder(obj.getFirstInteractant()).build();
+    	if(interactant1.isValidAccession())
+    		builder1.uniProtAccession(interactant1);
+    	else
+    		builder1.chainId(obj.getFirstInteractant());
+    	builder1.intActId(obj.getFirstId());
+    	
+    	if(Utils.nullOrEmpty(obj.getSecondInteractantParent())) {
+    		builder2.uniProtAccession(obj.getSecondInteractant());
+    	}else {
+    		builder2.chainId(obj.getSecondInteractant())
+    		.uniProtAccession(obj.getSecondInteractantParent());
+    	}
+    	builder2.intActId(obj.getSecondId());
+    	if(!Utils.nullOrEmpty(obj.getGene())) {
+    		builder2.geneName(obj.getGene());
+    	}
+    	
+    	itBuilder.firstInteractor(builder1.build())
+    	.secondInteractor(builder2.build())
+    	.numberOfExperiments(obj.getNbexp())
+    	.isXeno(obj.isXeno());  	
+    	return itBuilder.build();
+    }
     private DiseaseComment convertDisease(Disease cObj, Map<Object, List<Evidence>> evidences) {
         DiseaseCommentBuilder commentBuilder = new DiseaseCommentBuilder();
         if (!Strings.isNullOrEmpty(cObj.getMolecule())) {

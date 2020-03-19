@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
-import org.uniprot.core.uniprotkb.comment.InteractionType;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.InteractorBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 
 public class InteractionCommentTransformer implements CommentTransformer<InteractionComment> {
     private static final CommentType COMMENT_TYPE = CommentType.INTERACTION;
@@ -45,51 +47,76 @@ public class InteractionCommentTransformer implements CommentTransformer<Interac
     }
 
     public Interaction convertInteraction(String value) {
-        if (value == null) {
-            throw new IllegalArgumentException();
-        }
-        InteractionBuilder builder = new InteractionBuilder();
+		if (value == null) {
+			throw new IllegalArgumentException();
 
-        String[] tokens = value.split("; ");
-        String first = tokens[0];
-        String nbexp = tokens[1];
-        String intact = tokens[2];
+		}
+		InteractionBuilder builder = new InteractionBuilder();
+		InteractorBuilder builder1 = new InteractorBuilder();  
+		InteractorBuilder builder2 = new InteractorBuilder();  
+		
+		// todo: handle parse errors
+		String[] tokens = value.split("; ");
+		String first = tokens[0];
+		String second = tokens[1];
+		boolean xeno = false;
+		int length = tokens.length;
+		if (length == 5) {
+			xeno = true;
+		}
+		String nbexp = tokens[length - 2];
+		String intact = tokens[length - 1];
+		UniProtKBAccession interactant1 = new UniProtKBAccessionBuilder(first).build();
+    	if(interactant1.isValidAccession())
+    		builder1.uniProtAccession(interactant1);
+    	else
+    		builder1.chainId(first);
+		
 
-        int index = first.indexOf(':');
-        String acc = null;
-        String genename = null;
-        if (index != -1) {
-            acc = first.substring(0, index);
-            genename = first.substring(index + 1);
-        } else {
-            acc = first;
-        }
+		int index = second.indexOf(':');
+		String acc = null;
+		String genename = null;
+		String parent = null;
+		if (index != -1) {
+			acc = second.substring(0, index);
+			genename = second.substring(index + 1).trim();
+		} else {
+			acc = second;
+		}
+		index = acc.indexOf('[');
+		if (index != -1) {
+			parent = acc.substring(index + 1, acc.length() - 1);
+			acc = acc.substring(0, index).trim();
+		}
+	//	builder.isXeno(xeno);
+		if(parent !=null) {
+			builder2.chainId(acc)
+			.uniProtAccession(parent);
+		}else {
+			builder2.uniProtAccession(acc);
+		}
+		if (genename != null) {
+			builder2.geneName(genename);
+		}
+		
+	//	builder.numberOfExperiments(Integer.parseInt(nbexp.substring(6)));
 
-        if (acc.equalsIgnoreCase("self")) {
-            builder.interactionType(InteractionType.SELF);
-        } else {
-            if (genename != null && genename.endsWith("(xeno)")) {
-                builder.interactionType(InteractionType.XENO);
-                genename = genename.substring(0, genename.length() - 7);
-            } else {
-                builder.interactionType(InteractionType.BINARY);
-            }
-            builder.uniProtAccession(acc);
-            builder.geneName(genename);
-        }
-        builder.numberOfExperiments(Integer.parseInt(nbexp.substring(6)));
-
-        // intact is something like
-        // IntAct=EBI-206607, EBI-108331
-        if (intact.endsWith(";")) {
-            intact = intact.substring(0, intact.length() - 1);
-        }
-        StringTokenizer st = new StringTokenizer(intact, "=, ");
-        st.nextToken(); // IntAct
-        String acc1 = st.nextToken(); // EBI-206607
-        String acc2 = st.nextToken(); // EBI-108331
-        builder.firstInteractor(acc1).secondInteractor(acc2);
-
-        return builder.build();
-    }
+		// intact is something like
+		// IntAct=EBI-206607, EBI-108331
+		if (intact.endsWith(";")) {
+			intact = intact.substring(0, intact.length() - 1);
+		}
+		StringTokenizer st = new StringTokenizer(intact, "=, ");
+		st.nextToken(); // IntAct
+		String acc1 = st.nextToken(); // EBI-206607
+		String acc2 = st.nextToken(); // EBI-108331
+		builder1.intActId(acc1);
+		builder2.intActId(acc2);
+		builder.firstInteractor(builder1.build())
+		.secondInteractor(builder2.build())
+		.isXeno(xeno)
+		.numberOfExperiments(Integer.parseInt(nbexp.substring(6)));
+		return builder.build();
+	}
+  
 }

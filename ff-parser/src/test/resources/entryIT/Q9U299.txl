@@ -2,7 +2,7 @@ ID   XRN2_CAEEL              Reviewed;         975 AA.
 AC   Q9U299;
 DT   19-SEP-2006, integrated into UniProtKB/Swiss-Prot.
 DT   16-DEC-2008, sequence version 2.
-DT   10-APR-2019, entry version 129.
+DT   22-APR-2020, entry version 135.
 DE   RecName: Full=5'-3' exoribonuclease 2 homolog;
 DE            EC=3.1.13.- {ECO:0000269|PubMed:19734881, ECO:0000269|PubMed:24462208, ECO:0000269|PubMed:26779609};
 GN   Name=xrn-2 {ECO:0000312|WormBase:Y48B6A.3};
@@ -87,7 +87,7 @@ CC   -!- SUBUNIT: Interacts with paxt-1 (via N-terminus); the interaction is
 CC       direct and results in stabilization of xrn-2 in the complex.
 CC       {ECO:0000269|PubMed:24462208, ECO:0000269|PubMed:26779609}.
 CC   -!- INTERACTION:
-CC       Q21738:paxt-1; NbExp=5; IntAct=EBI-320499, EBI-11705385;
+CC       Q9U299; Q21738: paxt-1; NbExp=5; IntAct=EBI-320499, EBI-11705385;
 CC   -!- SUBCELLULAR LOCATION: Nucleus {ECO:0000269|PubMed:23541767}.
 CC   -!- TISSUE SPECIFICITY: Expressed in the pharyngeal myoepithelium and
 CC       intestine. Also expressed in several anterior neurons including the
@@ -115,7 +115,7 @@ DR   RefSeq; NP_496958.2; NM_064557.5.
 DR   PDB; 5FIR; X-ray; 2.84 A; A/C/E/G/I/K=1-787.
 DR   PDBsum; 5FIR; -.
 DR   SMR; Q9U299; -.
-DR   BioGrid; 40353; 1.
+DR   BioGrid; 40353; 9.
 DR   ComplexPortal; CPX-420; xtbd-paxt-1 complex.
 DR   DIP; DIP-24636N; -.
 DR   IntAct; Q9U299; 3.
@@ -124,7 +124,7 @@ DR   EPD; Q9U299; -.
 DR   PaxDb; Q9U299; -.
 DR   PeptideAtlas; Q9U299; -.
 DR   PRIDE; Q9U299; -.
-DR   EnsemblMetazoa; Y48B6A.3; Y48B6A.3; WBGene00006964.
+DR   EnsemblMetazoa; Y48B6A.3.1; Y48B6A.3.1; WBGene00006964.
 DR   GeneID; 175071; -.
 DR   KEGG; cel:CELE_Y48B6A.3; -.
 DR   UCSC; Y48B6A.3; c. elegans.
@@ -133,7 +133,7 @@ DR   WormBase; Y48B6A.3; CE42702; WBGene00006964; xrn-2.
 DR   eggNOG; KOG2044; Eukaryota.
 DR   eggNOG; COG5049; LUCA.
 DR   GeneTree; ENSGT00670000098098; -.
-DR   HOGENOM; HOG000205514; -.
+DR   HOGENOM; CLU_006038_1_2_1; -.
 DR   InParanoid; Q9U299; -.
 DR   KO; K12619; -.
 DR   OMA; GEHFDSN; -.
@@ -142,7 +142,7 @@ DR   PhylomeDB; Q9U299; -.
 DR   SABIO-RK; Q9U299; -.
 DR   PRO; PR:Q9U299; -.
 DR   Proteomes; UP000001940; Chromosome II.
-DR   Bgee; WBGene00006964; Expressed in 5 organ(s), highest expression level in multi-cellular organism.
+DR   Bgee; WBGene00006964; Expressed in multi-cellular organism and 4 other tissues.
 DR   GO; GO:0005730; C:nucleolus; ISS:UniProtKB.
 DR   GO; GO:0005634; C:nucleus; IDA:WormBase.
 DR   GO; GO:0008409; F:5'-3' exonuclease activity; ISS:UniProtKB.
@@ -159,15 +159,16 @@ DR   GO; GO:0040034; P:regulation of development, heterochronic; IGI:WormBase.
 DR   GO; GO:0040028; P:regulation of vulval development; IGI:WormBase.
 DR   InterPro; IPR027073; 5_3_exoribonuclease.
 DR   InterPro; IPR004859; Put_53exo.
+DR   InterPro; IPR041412; Xrn1_helical.
 DR   InterPro; IPR017151; Xrn2/3/4.
 DR   PANTHER; PTHR12341; PTHR12341; 1.
+DR   Pfam; PF17846; XRN_M; 2.
 DR   Pfam; PF03159; XRN_N; 1.
 DR   PIRSF; PIRSF037239; Exonuclease_Xrn2; 1.
 PE   1: Evidence at protein level;
-KW   3D-structure; Complete proteome; Developmental protein; Exonuclease;
-KW   Hydrolase; Metal-binding; mRNA processing; Nuclease; Nucleus;
-KW   Reference proteome; Transcription; Transcription regulation;
-KW   Transcription termination; Zinc; Zinc-finger.
+KW   3D-structure; Developmental protein; Exonuclease; Hydrolase; Metal-binding;
+KW   mRNA processing; Nuclease; Nucleus; Reference proteome; Transcription;
+KW   Transcription regulation; Transcription termination; Zinc; Zinc-finger.
 FT   CHAIN           1..975
 FT                   /note="5'-3' exoribonuclease 2 homolog"
 FT                   /id="PRO_0000249916"
@@ -274,14 +275,14 @@ FT   STRAND          778..784
 FT                   /evidence="ECO:0000244|PDB:5FIR"
 **
 **   #################    INTERNAL SECTION    ##################
-**EV ECO:0000244; PDB:5FIR; HEB; 29-JUL-2016.
-**EV ECO:0000269; PubMed:16122351; HEB; 04-NOV-2018.
+**EV ECO:0000244; PDB:5FIR; HEB; 10-NOV-2019.
+**EV ECO:0000269; PubMed:16122351; HEB; 06-FEB-2020.
 **EV ECO:0000269; PubMed:19734881; HEB; 29-JUL-2016.
-**EV ECO:0000269; PubMed:21397849; XXX; 04-NOV-2018.
-**EV ECO:0000269; PubMed:23541767; XXX; 04-NOV-2018.
+**EV ECO:0000269; PubMed:21397849; XXX; 06-FEB-2020.
+**EV ECO:0000269; PubMed:23541767; XXX; 06-FEB-2020.
 **EV ECO:0000269; PubMed:24462208; HEB; 29-JUL-2016.
 **EV ECO:0000269; PubMed:26779609; HEB; 29-JUL-2016.
-**EV ECO:0000305; -; XXX; 04-NOV-2018.
+**EV ECO:0000305; -; XXX; 06-FEB-2020.
 **EV ECO:0000312; WormBase:Y48B6A.3; HEB; 13-JAN-2017.
 **DR PROSITE; PS50158; ZF_CCHC; FALSE_NEG.
 **SO UPD; 77934; 14-JUN-2013.

@@ -6,53 +6,40 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
-import org.uniprot.core.uniprotkb.comment.InteractionType;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.InteractorBuilder;
 
 class CCInteractionBuildTest extends CCBuildTestAbstr {
     @Test
     void testINTERACTION1() {
-        String ccLine =
-                ("CC   -!- INTERACTION:\n"
-                        + "CC       Self; NbExp=1; IntAct=EBI-123485, EBI-123485;\n"
-                        + "CC       Q9W158:CG4612; NbExp=1; IntAct=EBI-123485, EBI-89895;\n"
-                        + "CC       Q9VYI0:fne; NbExp=1; IntAct=EBI-123485, EBI-126770;");
-        String ccLineString =
-                ("INTERACTION:\n"
-                        + "Self; NbExp=1; IntAct=EBI-123485, EBI-123485;\n"
-                        + "Q9W158:CG4612; NbExp=1; IntAct=EBI-123485, EBI-89895;\n"
-                        + "Q9VYI0:fne; NbExp=1; IntAct=EBI-123485, EBI-126770;");
+    	String ccLine =("CC   -!- INTERACTION:\n" +
+				"CC       P12345; Q9W158: CG4612; NbExp=1; IntAct=EBI-123485, EBI-89895;\n" +
+				"CC       P12345-2; PRO_0000037566 [P27958]; Xeno; NbExp=1; IntAct=EBI-123485, EBI-126770;");
+		String ccLineString =("INTERACTION:\n" +			
+				"P12345; Q9W158: CG4612; NbExp=1; IntAct=EBI-123485, EBI-89895;\n" +
+				"P12345-2; PRO_0000037566 [P27958]; Xeno; NbExp=1; IntAct=EBI-123485, EBI-126770;");
+    	
         InteractionCommentBuilder builder = new InteractionCommentBuilder();
         List<Interaction> interactions = new ArrayList<>();
-        String acc = "";
-        String geneName = "";
+        String acc1 = "P12345";
+        String acc2 = "Q9W158";
+        String geneName = "CG4612";
         int nExperiments = 1;
         String firstInter = "EBI-123485";
-        String secInter = "EBI-123485";
+        String secInter = "EBI-89895";
         Interaction inter1 =
-                buildInteraction(
-                        InteractionType.SELF, acc, geneName, nExperiments, firstInter, secInter);
+                buildInteraction(acc1, null, firstInter,
+                         acc2, null, geneName, secInter, nExperiments, false);
         interactions.add(inter1);
-        acc = "Q9W158";
-        geneName = "CG4612";
-        nExperiments = 1;
-        firstInter = "EBI-123485";
-        secInter = "EBI-89895";
-        Interaction inter2 =
-                buildInteraction(
-                        InteractionType.BINARY, acc, geneName, nExperiments, firstInter, secInter);
-        interactions.add(inter2);
-
-        acc = "Q9VYI0";
-        geneName = "fne";
-        nExperiments = 1;
         firstInter = "EBI-123485";
         secInter = "EBI-126770";
-        Interaction inter3 =
-                buildInteraction(
-                        InteractionType.BINARY, acc, geneName, nExperiments, firstInter, secInter);
-        interactions.add(inter3);
+        Interaction inter2 =
+                buildInteraction( "P12345-2", null, firstInter,
+                		"P27958", "PRO_0000037566", null, secInter, 1, true);
+ 
+        interactions.add(inter2);
+
         builder.interactionsSet(interactions);
         InteractionComment comment = builder.build();
         doTest(ccLine, comment);
@@ -62,46 +49,43 @@ class CCInteractionBuildTest extends CCBuildTestAbstr {
     //
     @Test
     void testINTERACTION2() {
-        String ccLine =
-                ("CC   -!- INTERACTION:\n"
-                        + "CC       Q9W1K5-1:CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n"
-                        + "CC       O96017:CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n"
-                        + "CC       Q6ZWQ9:Myl12a (xeno); NbExp=3; IntAct=EBI-372428, EBI-8034418;");
-        String ccLineString =
-                ("INTERACTION:\n"
-                        + "Q9W1K5-1:CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n"
-                        + "O96017:CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n"
-                        + "Q6ZWQ9:Myl12a (xeno); NbExp=3; IntAct=EBI-372428, EBI-8034418;");
+//        String ccLine =
+//                ("CC   -!- INTERACTION:\n"
+//                        + "CC       Q9W1K5-1:CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n"
+//                        + "CC       O96017:CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n"
+//                        + "CC       Q6ZWQ9:Myl12a (xeno); NbExp=3; IntAct=EBI-372428, EBI-8034418;");
+//        String ccLineString =
+//                ("INTERACTION:\n"
+//                        + "Q9W1K5-1:CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n"
+//                        + "O96017:CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n"
+//                        + "Q6ZWQ9:Myl12a (xeno); NbExp=3; IntAct=EBI-372428, EBI-8034418;");
+        
+    	String ccLine =("CC   -!- INTERACTION:\n" +
+				"CC       PRO_0000037566; Q9W1K5-1: CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n" +
+				"CC       P12345-1; O96017: CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n" +
+				"CC       P12345-2; Q6ZWQ9: Myl12a; Xeno; NbExp=3; IntAct=EBI-372428, EBI-8034418;");
+		String ccLineString =("INTERACTION:\n" +
+				"PRO_0000037566; Q9W1K5-1: CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n" +
+				"P12345-1; O96017: CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n" +
+				"P12345-2; Q6ZWQ9: Myl12a; Xeno; NbExp=3; IntAct=EBI-372428, EBI-8034418;");
+	
         InteractionCommentBuilder builder = new InteractionCommentBuilder();
         List<Interaction> interactions = new ArrayList<>();
-        String acc = "Q9W1K5-1";
-        String geneName = "CG11299";
-        int nExperiments = 1;
-        String firstInter = "EBI-133844";
-        String secInter = "EBI-212772";
         Interaction inter1 =
                 buildInteraction(
-                        InteractionType.BINARY, acc, geneName, nExperiments, firstInter, secInter);
+                		null, "PRO_0000037566", "EBI-133844",
+                		"Q9W1K5-1", null, "CG11299", "EBI-212772", 1, false);
         interactions.add(inter1);
-
-        acc = "O96017";
-        geneName = "CHEK2";
-        nExperiments = 4;
-        firstInter = "EBI-372428";
-        secInter = "EBI-1180783";
-        Interaction inter2 =
-                buildInteraction(
-                        InteractionType.BINARY, acc, geneName, nExperiments, firstInter, secInter);
+        Interaction inter2 = buildInteraction(
+        		"P12345-1", null, "EBI-372428",
+        		"O96017", null, "CHEK2", "EBI-1180783", 4, false);
+              
         interactions.add(inter2);
 
-        acc = "Q6ZWQ9";
-        geneName = "Myl12a";
-        nExperiments = 3;
-        firstInter = "EBI-372428";
-        secInter = "EBI-8034418";
         Interaction inter3 =
-                buildInteraction(
-                        InteractionType.XENO, acc, geneName, nExperiments, firstInter, secInter);
+        		  buildInteraction(
+                  		"P12345-2", null, "EBI-372428",
+                  		"Q6ZWQ9", null, "Myl12a", "EBI-8034418", 3, true);
         interactions.add(inter3);
 
         builder.interactionsSet(interactions);
@@ -111,20 +95,34 @@ class CCInteractionBuildTest extends CCBuildTestAbstr {
     }
 
     private Interaction buildInteraction(
-            InteractionType type,
-            String uniProtAcc,
+            
+            String acc1,
+            String chainId1,
+            String intActId1,
+            String acc2, 
+            String chainId2,
             String geneName,
+            String intActId2,
             int nExperments,
-            String firstAcc,
-            String secAcc) {
+          
+            boolean xeno) {
         InteractionBuilder builder = new InteractionBuilder();
+        InteractorBuilder builder1 = new InteractorBuilder();
+        InteractorBuilder builder2 = new InteractorBuilder();
+        if(acc1 !=null) {
+        	builder1.uniProtAccession(acc1);
+        }
+        if(chainId1 !=null) {
+        	builder1.chainId(chainId1);
+        }
+        builder1.intActId(intActId1);
+        builder2.chainId(chainId2).uniProtAccession(acc2)
+        .geneName(geneName).intActId(intActId2);
+        builder.firstInteractor(builder1.build())
+        .secondInteractor(builder2.build())
+        .numberOfExperiments(nExperments)
+        .isXeno(xeno);
 
-        builder.interactionType(type);
-        builder.firstInteractor(firstAcc);
-        builder.secondInteractor(secAcc);
-        builder.uniProtAccession(uniProtAcc);
-        builder.geneName(geneName);
-        builder.numberOfExperiments(nExperments);
         return builder.build();
     }
 }

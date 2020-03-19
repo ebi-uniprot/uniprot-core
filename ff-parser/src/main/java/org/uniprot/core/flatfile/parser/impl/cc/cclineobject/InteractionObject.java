@@ -1,31 +1,35 @@
 package org.uniprot.core.flatfile.parser.impl.cc.cclineobject;
 
 public class InteractionObject {
-    private boolean isSelf;
-    private String spAc;
-    private String gene;
-    private boolean xeno;
-    private int nbexp;
-    private String firstId;
-    private String secondId;
+	  private String firstInteractant;
+	  private String secondInteractant;
+	  private String secondInteractantParent;
+	  private String gene;
+	  private boolean xeno;
+	  private int nbexp;
+	  private String firstId;
+	  private String secondId;
 
-    public boolean isSelf() {
-        return isSelf;
-    }
 
-    public void setSelf(boolean self) {
-        isSelf = self;
-    }
+    public String getFirstInteractant() {
+  return firstInteractant;}
 
-    public String getSpAc() {
-        return spAc;
-    }
+  public void setFirstInteractant(String firstInteractant) {
+  this.firstInteractant = firstInteractant;}
 
-    public void setSpAc(String spAc) {
-        this.spAc = spAc;
-    }
+  public String getSecondInteractant() {
+  return secondInteractant;}
 
-    public String getGene() {
+  public void setSecondInteractant(String secondInteractant) {
+  this.secondInteractant = secondInteractant;}
+
+  public String getSecondInteractantParent() {
+  return secondInteractantParent;}
+
+  public void setSecondInteractantParent(String secondInteractantParent) {
+  this.secondInteractantParent = secondInteractantParent;}
+
+  public String getGene() {
         return gene;
     }
 

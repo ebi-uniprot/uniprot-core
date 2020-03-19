@@ -73,7 +73,7 @@ class InteractionBuilderTest {
         assertEquals(3, interaction.getNumberOfExperiments());
         assertEquals(interactor1, interaction.getFirstInteractor());
 
-        assertEquals(interactor1, interaction.getSecondInteractor());
+        assertEquals(interactor2, interaction.getSecondInteractor());
         assertFalse(interaction.isXeno());
     }
     @Test
@@ -98,7 +98,7 @@ class InteractionBuilderTest {
         assertEquals(3, interaction.getNumberOfExperiments());
         assertEquals(interactor1, interaction.getFirstInteractor());
 
-        assertEquals(interactor1, interaction.getSecondInteractor());
+        assertEquals(interactor2, interaction.getSecondInteractor());
         assertTrue(interaction.isXeno());
     }
 

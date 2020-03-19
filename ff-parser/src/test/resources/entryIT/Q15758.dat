@@ -3,7 +3,7 @@ AC   Q15758; A8K9H5; B4DR77; B4DWS4; B7ZB81; D0EYG6; E9PC01; O95720; Q96RL9;
 AC   Q9BWQ3; Q9UNP2;
 DT   15-JUL-1998, integrated into UniProtKB/Swiss-Prot.
 DT   20-JUN-2002, sequence version 2.
-DT   13-FEB-2019, entry version 187.
+DT   22-APR-2020, entry version 197.
 DE   RecName: Full=Neutral amino acid transporter B(0);
 DE            Short=ATB(0);
 DE   AltName: Full=Baboon M7 virus receptor;
@@ -214,7 +214,7 @@ RA   Mayya V., Lundgren D.H., Hwang S.I., Rezaul K., Wu L., Eng J.K.,
 RA   Rodionov V., Han D.K.;
 RT   "Quantitative phosphoproteomic analysis of T cell receptor signaling
 RT   reveals system-wide modulation of protein-protein interactions.";
-RL   Sci. Signal. 2:ra46-RA46(2009).
+RL   Sci. Signal. 2:RA46-RA46(2009).
 RN   [17]
 RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-535, AND IDENTIFICATION BY
 RP   MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
@@ -224,7 +224,7 @@ RA   Olsen J.V., Vermeulen M., Santamaria A., Kumar C., Miller M.L.,
 RA   Jensen L.J., Gnad F., Cox J., Jensen T.S., Nigg E.A., Brunak S., Mann M.;
 RT   "Quantitative phosphoproteomics reveals widespread full phosphorylation
 RT   site occupancy during mitosis.";
-RL   Sci. Signal. 3:ra3-RA3(2010).
+RL   Sci. Signal. 3:RA3-RA3(2010).
 RN   [18]
 RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
 RX   PubMed=21269460; DOI=10.1186/1752-0509-5-17;
@@ -240,7 +240,7 @@ RA   Rigbolt K.T., Prokhorova T.A., Akimov V., Henningsen J., Johansen P.T.,
 RA   Kratchmarova I., Kassem M., Mann M., Olsen J.V., Blagoev B.;
 RT   "System-wide temporal characterization of the proteome and phosphoproteome
 RT   of human embryonic stem cell differentiation.";
-RL   Sci. Signal. 4:rs3-RS3(2011).
+RL   Sci. Signal. 4:RS3-RS3(2011).
 RN   [20]
 RP   ACETYLATION [LARGE SCALE ANALYSIS] AT MET-1, AND IDENTIFICATION BY MASS
 RP   SPECTROMETRY [LARGE SCALE ANALYSIS].
@@ -252,12 +252,6 @@ RT   "N-terminal acetylome analyses and functional insights of the N-terminal
 RT   acetyltransferase NatB.";
 RL   Proc. Natl. Acad. Sci. U.S.A. 109:12449-12454(2012).
 RN   [21]
-RP   FUNCTION, INTERACTION WITH ERVH48-1, AND SUBCELLULAR LOCATION.
-RX   PubMed=23492904; DOI=10.1038/srep01462;
-RA   Sugimoto J., Sugimoto M., Bernstein H., Jinno Y., Schust D.;
-RT   "A novel human endogenous retroviral protein inhibits cell-cell fusion.";
-RL   Sci. Rep. 3:1462-1462(2013).
-RN   [22]
 RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-493; THR-494; SER-535 AND
 RP   SER-539, AND IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
 RC   TISSUE=Cervix carcinoma, and Erythroleukemia;
@@ -267,6 +261,11 @@ RA   Mohammed S.;
 RT   "Toward a comprehensive characterization of a human cancer cell
 RT   phosphoproteome.";
 RL   J. Proteome Res. 12:260-271(2013).
+RN   [22]
+RP   FUNCTION, INTERACTION WITH ERVH48-1, AND SUBCELLULAR LOCATION.
+RA   Sugimoto J., Sugimoto M., Bernstein H., Jinno Y., Schust D.;
+RT   "A novel human endogenous retroviral protein inhibits cell-cell fusion.";
+RL   Sci. Rep. 3:1462-1462(2013).
 RN   [23]
 RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
 RX   PubMed=25944712;
@@ -313,7 +312,10 @@ CC       ERVH48-1/suppressyn; may negatively regulate syncytialization
 CC       (PubMed:23492904). {ECO:0000269|PubMed:23492904,
 CC       ECO:0000269|PubMed:29872227, ECO:0000305|PubMed:28424515}.
 CC   -!- INTERACTION:
-CC       Q99942:RNF5; NbExp=4; IntAct=EBI-356576, EBI-348482;
+CC       Q15758; O95236-2: APOL3; NbExp=3; IntAct=EBI-356576, EBI-11976321;
+CC       Q15758; P60201-2: PLP1; NbExp=3; IntAct=EBI-356576, EBI-12188331;
+CC       Q15758; Q99942: RNF5; NbExp=4; IntAct=EBI-356576, EBI-348482;
+CC       Q15758; A5PKU2: TUSC5; NbExp=3; IntAct=EBI-356576, EBI-11988865;
 CC   -!- SUBCELLULAR LOCATION: Cell membrane {ECO:0000269|PubMed:8702519,
 CC       ECO:0000305|PubMed:29872227}; Multi-pass membrane protein
 CC       {ECO:0000269|PubMed:29872227}. Melanosome. Note=Identified by mass
@@ -327,10 +329,8 @@ CC       Name=1;
 CC         IsoId=Q15758-1; Sequence=Displayed;
 CC       Name=2;
 CC         IsoId=Q15758-2; Sequence=VSP_046354;
-CC         Note=No experimental confirmation available.;
 CC       Name=3;
 CC         IsoId=Q15758-3; Sequence=VSP_046851;
-CC         Note=No experimental confirmation available.;
 CC   -!- TISSUE SPECIFICITY: Placenta, lung, skeletal muscle, kidney, pancreas,
 CC       and intestine.
 CC   -!- SIMILARITY: Belongs to the dicarboxylate/amino acid:cation symporter
@@ -362,35 +362,50 @@ DR   PDB; 5LLU; X-ray; 3.32 A; A=158-230.
 DR   PDB; 5LM4; X-ray; 3.10 A; A=158-230.
 DR   PDB; 5MJU; X-ray; 3.71 A; A=158-230.
 DR   PDB; 6GCT; EM; 3.85 A; A/B/C=1-541.
+DR   PDB; 6MP6; EM; 3.54 A; A/B/C=1-541.
+DR   PDB; 6MPB; EM; 3.84 A; A/B/C=1-541.
+DR   PDB; 6RVX; EM; 3.61 A; A/B/C=1-541.
+DR   PDB; 6RVY; EM; 4.13 A; A/B/C=1-541.
 DR   PDBsum; 5LLM; -.
 DR   PDBsum; 5LLU; -.
 DR   PDBsum; 5LM4; -.
 DR   PDBsum; 5MJU; -.
 DR   PDBsum; 6GCT; -.
+DR   PDBsum; 6MP6; -.
+DR   PDBsum; 6MPB; -.
+DR   PDBsum; 6RVX; -.
+DR   PDBsum; 6RVY; -.
 DR   SMR; Q15758; -.
-DR   BioGrid; 112401; 75.
-DR   IntAct; Q15758; 49.
+DR   BioGrid; 112401; 97.
+DR   IntAct; Q15758; 75.
 DR   MINT; Q15758; -.
 DR   STRING; 9606.ENSP00000444408; -.
 DR   BindingDB; Q15758; -.
 DR   ChEMBL; CHEMBL3562162; -.
-DR   DrugBank; DB00174; L-Asparagine.
+DR   DrugBank; DB00174; Asparagine.
+DR   DrugBank; DB13146; Fluciclovine (18F).
 DR   DrugBank; DB00130; L-Glutamine.
 DR   GuidetoPHARMACOLOGY; 874; -.
 DR   TCDB; 2.A.23.3.3; the dicarboxylate/amino acid:cation (na(+) or h(+)) symporter (daacs) family.
 DR   GlyConnect; 1562; -.
 DR   iPTMnet; Q15758; -.
+DR   MetOSite; Q15758; -.
 DR   PhosphoSitePlus; Q15758; -.
 DR   SwissPalm; Q15758; -.
 DR   BioMuta; SLC1A5; -.
 DR   DMDM; 21542389; -.
 DR   EPD; Q15758; -.
 DR   jPOST; Q15758; -.
+DR   MassIVE; Q15758; -.
 DR   MaxQB; Q15758; -.
 DR   PaxDb; Q15758; -.
 DR   PeptideAtlas; Q15758; -.
 DR   PRIDE; Q15758; -.
-DR   ProteomicsDB; 60744; -.
+DR   ProteomicsDB; 19331; -.
+DR   ProteomicsDB; 5376; -.
+DR   ProteomicsDB; 60744; -. [Q15758-1]
+DR   ABCD; Q15758; -.
+DR   Antibodypedia; 18149; 272 antibodies.
 DR   DNASU; 6510; -.
 DR   Ensembl; ENST00000412532; ENSP00000397924; ENSG00000105281. [Q15758-3]
 DR   Ensembl; ENST00000434726; ENSP00000406532; ENSG00000105281. [Q15758-2]
@@ -400,11 +415,9 @@ DR   KEGG; hsa:6510; -.
 DR   UCSC; uc002pfr.4; human. [Q15758-1]
 DR   CTD; 6510; -.
 DR   DisGeNET; 6510; -.
-DR   EuPathDB; HostDB:ENSG00000105281.12; -.
 DR   GeneCards; SLC1A5; -.
 DR   HGNC; HGNC:10943; SLC1A5.
-DR   HPA; HPA035239; -.
-DR   HPA; HPA035240; -.
+DR   HPA; ENSG00000105281; Low tissue specificity.
 DR   MIM; 109190; gene.
 DR   neXtProt; NX_Q15758; -.
 DR   OpenTargets; ENSG00000105281; -.
@@ -412,20 +425,21 @@ DR   PharmGKB; PA35830; -.
 DR   eggNOG; KOG3787; Eukaryota.
 DR   eggNOG; COG1301; LUCA.
 DR   GeneTree; ENSGT00940000159485; -.
-DR   HOGENOM; HOG000208776; -.
+DR   HOGENOM; CLU_019375_3_3_1; -.
 DR   InParanoid; Q15758; -.
 DR   KO; K05616; -.
-DR   OMA; NPYTFLW; -.
-DR   OrthoDB; 1340284at2759; -.
+DR   OMA; GNLIGNC; -.
 DR   PhylomeDB; Q15758; -.
 DR   TreeFam; TF315206; -.
 DR   Reactome; R-HSA-352230; Amino acid transport across the plasma membrane.
 DR   ChiTaRS; SLC1A5; human.
 DR   GeneWiki; SLC1A5; -.
 DR   GenomeRNAi; 6510; -.
+DR   Pharos; Q15758; Tchem.
 DR   PRO; PR:Q15758; -.
 DR   Proteomes; UP000005640; Chromosome 19.
-DR   Bgee; ENSG00000105281; Expressed in 220 organ(s), highest expression level in urinary bladder.
+DR   RNAct; Q15758; protein.
+DR   Bgee; ENSG00000105281; Expressed in urinary bladder and 219 other tissues.
 DR   ExpressionAtlas; Q15758; baseline and differential.
 DR   Genevisible; Q15758; HS.
 DR   GO; GO:0070062; C:extracellular exosome; HDA:UniProtKB.
@@ -458,7 +472,7 @@ DR   PROSITE; PS00713; NA_DICARBOXYL_SYMP_1; 1.
 DR   PROSITE; PS00714; NA_DICARBOXYL_SYMP_2; 1.
 PE   1: Evidence at protein level;
 KW   3D-structure; Acetylation; Alternative initiation; Alternative splicing;
-KW   Amino-acid transport; Cell membrane; Complete proteome; Glycoprotein;
+KW   Amino-acid transport; Cell membrane; Glycoprotein;
 KW   Host cell receptor for virus entry; Host-virus interaction; Membrane;
 KW   Metal-binding; Phosphoprotein; Polymorphism; Receptor; Reference proteome;
 KW   Sodium; Symport; Transmembrane; Transmembrane helix; Transport.

@@ -103,10 +103,15 @@ cc_biophyiochemical_kinetic_note: CC_BP_NOTE SPACE* cc_properties_notes_level_2;
 
 cc_interaction: CC_TOPIC_START  CC_TOPIC_INTERACTION  NEW_LINE
                    cc_interaction_line+;
-cc_interaction_line: CC_HEADER_1 cc_interaction_sp cc_interaction_nbexp cc_interaction_intact;
-cc_interaction_sp: ( CC_IR_SELF | ( CC_IR_AC COLON (cc_interaction_gene|DASH) (SPACE CC_IR_XENO)?)) SEMICOLON SPACE;
+cc_interaction_line: CC_HEADER_1 cc_interaction_first cc_interaction_sp cc_interaction_xeno? cc_interaction_nbexp cc_interaction_intact;
+
+cc_interaction_first:  CC_IR_AC  SEMICOLON SPACE;
+cc_interaction_sp:  CC_IR_AC (SPACE cc_interaction_parent )? (COLON_SPACE cc_interaction_gene)? SEMICOLON SPACE;
 cc_interaction_gene: CC_IR_GENENAME (SPACE CC_IR_GENENAME)*;
+cc_interaction_xeno: CC_IR_XENO SEMICOLON SPACE;
+
 cc_interaction_nbexp: CC_IR_NBEXP INTEGER SEMICOLON SPACE;
+cc_interaction_parent: LEFT_SQ CC_IR_AC RIGHT_SQ;
 cc_interaction_intact: CC_IR_INTACT CC_IR_AC COMA SPACE CC_IR_AC SEMICOLON NEW_LINE;
 
 cc_subcellular_location: CC_TOPIC_START CC_TOPIC_SUBCELLUR_LOCATION (COLON_SPACE_SQ cc_molecule2)? COLON (SPACE|CHANGE_OF_LINE) 
@@ -115,8 +120,8 @@ cc_subcellular_location: CC_TOPIC_START CC_TOPIC_SUBCELLUR_LOCATION (COLON_SPACE
                               (cc_subcellular_text_separator cc_subcellular_note)? )
                              | cc_subcellular_note
                          )
-                         NEW_LINE;
-
+                         NEW_LINE;                        
+                         
 cc_subcellular_location_section:
             cc_subcellular_location_location_with_evidence ( DOT cc_subcellular_text_separator cc_subcellular_location_location_with_evidence)*  DOT;
 
