@@ -68,7 +68,7 @@ public class InteractionCommentTransformer implements CommentTransformer<Interac
 		String intact = tokens[length - 1];
 		UniProtKBAccession interactant1 = new UniProtKBAccessionBuilder(first).build();
     	if(interactant1.isValidAccession())
-    		builder1.uniProtAccession(interactant1);
+    		builder1.uniProtKBAccession(interactant1);
     	else
     		builder1.chainId(first);
 		
@@ -91,9 +91,9 @@ public class InteractionCommentTransformer implements CommentTransformer<Interac
 	//	builder.isXeno(xeno);
 		if(parent !=null) {
 			builder2.chainId(acc)
-			.uniProtAccession(parent);
+			.uniProtKBAccession(parent);
 		}else {
-			builder2.uniProtAccession(acc);
+			builder2.uniProtKBAccession(acc);
 		}
 		if (genename != null) {
 			builder2.geneName(genename);
@@ -112,8 +112,8 @@ public class InteractionCommentTransformer implements CommentTransformer<Interac
 		String acc2 = st.nextToken(); // EBI-108331
 		builder1.intActId(acc1);
 		builder2.intActId(acc2);
-		builder.firstInteractor(builder1.build())
-		.secondInteractor(builder2.build())
+		builder.firstInteractant(builder1.build())
+		.secondInteractant(builder2.build())
 		.isOrganismDiffer(xeno)
 		.numberOfExperiments(Integer.parseInt(nbexp.substring(6)));
 		return builder.build();

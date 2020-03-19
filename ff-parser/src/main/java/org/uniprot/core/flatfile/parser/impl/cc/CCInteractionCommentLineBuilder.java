@@ -39,16 +39,16 @@ public class CCInteractionCommentLineBuilder extends CCLineBuilderAbstr<Interact
     	Interactant interactor1 = act.getFirstInteractant();
     	Interactant interactor2 = act.getSecondInteractant();
     	if(Utils.nullOrEmpty(interactor1.getChainId()))
-    		sb.append(interactor1.getUniProtkbAccession().getValue());
+    		sb.append(interactor1.getUniProtKBAccession().getValue());
     	else
     		sb.append(interactor1.getChainId());
     	
        	sb.append("; ");
        	if(Utils.nullOrEmpty(interactor2.getChainId())) {
-       		sb.append(interactor2.getUniProtkbAccession().getValue());
+       		sb.append(interactor2.getUniProtKBAccession().getValue());
        	}else {
        		sb.append(interactor2.getChainId());
-       		sb.append(" [").append(interactor2.getUniProtkbAccession().getValue()).append("]");
+       		sb.append(" [").append(interactor2.getUniProtKBAccession().getValue()).append("]");
        	}
        	if(!Utils.nullOrEmpty(interactor2.getGeneName())) {
 			sb.append(": ");

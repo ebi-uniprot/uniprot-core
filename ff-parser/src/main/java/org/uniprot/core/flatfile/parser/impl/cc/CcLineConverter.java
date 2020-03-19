@@ -375,24 +375,24 @@ public class CcLineConverter extends EvidenceCollector
     	InteractantBuilder builder2 = new InteractantBuilder();
     	UniProtKBAccession interactant1 = new UniProtKBAccessionBuilder(obj.getFirstInteractant()).build();
     	if(interactant1.isValidAccession())
-    		builder1.uniProtAccession(interactant1);
+    		builder1.uniProtKBAccession(interactant1);
     	else
     		builder1.chainId(obj.getFirstInteractant());
     	builder1.intActId(obj.getFirstId());
     	
     	if(Utils.nullOrEmpty(obj.getSecondInteractantParent())) {
-    		builder2.uniProtAccession(obj.getSecondInteractant());
+    		builder2.uniProtKBAccession(obj.getSecondInteractant());
     	}else {
     		builder2.chainId(obj.getSecondInteractant())
-    		.uniProtAccession(obj.getSecondInteractantParent());
+    		.uniProtKBAccession(obj.getSecondInteractantParent());
     	}
     	builder2.intActId(obj.getSecondId());
     	if(!Utils.nullOrEmpty(obj.getGene())) {
     		builder2.geneName(obj.getGene());
     	}
     	
-    	itBuilder.firstInteractor(builder1.build())
-    	.secondInteractor(builder2.build())
+    	itBuilder.firstInteractant(builder1.build())
+    	.secondInteractant(builder2.build())
     	.numberOfExperiments(obj.getNbexp())
     	.isOrganismDiffer(obj.isXeno());  	
     	return itBuilder.build();

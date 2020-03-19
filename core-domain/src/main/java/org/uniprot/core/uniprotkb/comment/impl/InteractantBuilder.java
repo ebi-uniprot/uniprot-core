@@ -19,12 +19,12 @@ public class InteractantBuilder implements Builder<Interactant> {
 
   @Override 
   public Interactant build(){
-	  return new InteractorImpl(
+	  return new InteractantImpl(
 		       uniProtkbAccession,  geneName,  chainId,  intActId);
   }
   public static  @Nonnull InteractantBuilder from(@Nonnull Interactant instance) {
 	  InteractantBuilder builder = new InteractantBuilder();
-      builder.uniProtAccession(instance.getUniProtkbAccession())
+      builder.uniProtKBAccession(instance.getUniProtKBAccession())
               .geneName(instance.getGeneName())
               .chainId(instance.getChainId())
               .intActId(instance.getIntActId());
@@ -36,12 +36,12 @@ public class InteractantBuilder implements Builder<Interactant> {
     return this;
   }
 
-  public @Nonnull InteractantBuilder uniProtAccession(UniProtKBAccession uniprotAccession) {
+  public @Nonnull InteractantBuilder uniProtKBAccession(UniProtKBAccession uniprotAccession) {
     this.uniProtkbAccession = uniprotAccession;
     return this;
   }
 
-  public @Nonnull InteractantBuilder uniProtAccession(String uniProtAccession) {
+  public @Nonnull InteractantBuilder uniProtKBAccession(String uniProtAccession) {
     this.uniProtkbAccession = new UniProtKBAccessionBuilder(uniProtAccession).build();
     return this;
   }

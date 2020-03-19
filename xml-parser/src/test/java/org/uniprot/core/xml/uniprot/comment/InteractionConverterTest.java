@@ -3,69 +3,58 @@ package org.uniprot.core.xml.uniprot.comment;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.uniprotkb.comment.Interaction;
-import org.uniprot.core.uniprotkb.comment.InteractionType;
+import org.uniprot.core.uniprotkb.comment.impl.InteractantBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
-import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
 class InteractionConverterTest {
 
     @Test
-    void testBinary() {
-        // Q96NT3:GUCD1; NbExp=3; IntAct=EBI-749763, EBI-8293751;
+    void testBinary1() {
         InteractionBuilder builder = new InteractionBuilder();
+        Interactant interactant1 =  createInteractant("PROC_12344","EBI-0001", null, null);     
+        Interactant interactant2 =  createInteractant(null,"EBI-0001", "P12345-1", "gene1");
+ 
         Interaction interaction =
-                builder.interactionType(InteractionType.BINARY)
-                        .geneName("GUCD1")
-                        .numberOfExperiments(3)
-                        .firstInteractor("EBI-749763")
-                        .secondInteractor("EBI-8293751")
-                        .uniProtAccession("Q96NT3")
+                builder.firstInteractant(interactant1)
+                .secondInteractant(interactant2)
+                .numberOfExperiments(3)
+                .isOrganismDiffer(false)
                         .build();
         InteractionConverter converter = new InteractionConverter();
         CommentType xmlComment = converter.toXml(interaction);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         Interaction converted = converter.fromXml(xmlComment);
         assertEquals(interaction, converted);
     }
 
     @Test
-    void testSelf() {
-        // Self; NbExp=4; IntAct=EBI-749763, EBI-749763;
+    void testBinary2() {
         InteractionBuilder builder = new InteractionBuilder();
+        Interactant interactant1 =  createInteractant(null,"EBI-0001", "P12345", null);       
+        Interactant interactant2 =  createInteractant("PROC_12344","EBI-0001", "P12346", "gene1");
+ 
         Interaction interaction =
-                builder.interactionType(InteractionType.SELF)
-                        .numberOfExperiments(4)
-                        .firstInteractor("EBI-749763")
-                        .secondInteractor("EBI-749763")
+                builder.firstInteractant(interactant1)
+                .secondInteractant(interactant2)
+                .numberOfExperiments(3)
+                .isOrganismDiffer(false)
                         .build();
         InteractionConverter converter = new InteractionConverter();
         CommentType xmlComment = converter.toXml(interaction);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         Interaction converted = converter.fromXml(xmlComment);
         assertEquals(interaction, converted);
     }
 
-    @Test
-    void testXENO() {
-        // P05845:tnsE (xeno); NbExp=4; IntAct=EBI-542385, EBI-2434514;
-        InteractionBuilder builder = new InteractionBuilder();
-        Interaction interaction =
-                builder.interactionType(InteractionType.XENO)
-                        .geneName("tnsE")
-                        .numberOfExperiments(4)
-                        .firstInteractor("EBI-542385")
-                        .secondInteractor("EBI-2434514")
-                        .uniProtAccession("P05845")
-                        .build();
-        InteractionConverter converter = new InteractionConverter();
-        CommentType xmlComment = converter.toXml(interaction);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
-        Interaction converted = converter.fromXml(xmlComment);
-        assertEquals(interaction, converted);
+    
+    private Interactant createInteractant(String chainId, String intActId, String accession, String geneName ) {
+  	  InteractantBuilder builder = new InteractantBuilder();
+  	  builder.chainId(chainId)
+  	  .geneName(geneName)
+  	  .intActId(intActId);
+  	if(accession !=null)
+  		builder.uniProtKBAccession(accession);
+  	  return builder.build();
     }
 }

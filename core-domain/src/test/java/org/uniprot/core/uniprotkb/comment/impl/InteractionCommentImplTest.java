@@ -17,10 +17,10 @@ class InteractionCommentImplTest {
          
     @BeforeEach
     void setup() {
-    	Interactant interactor1 = new InteractantBuilder().uniProtAccession("P12345")
+    	Interactant interactor1 = new InteractantBuilder().uniProtKBAccession("P12345")
     			.intActId("EBI-12498321")
     			.build();
-    	Interactant interactor2= new InteractantBuilder().uniProtAccession("P12346")
+    	Interactant interactor2= new InteractantBuilder().uniProtKBAccession("P12346")
     			.geneName("gene1")
     			.intActId("EBI-12498322")
     			.build();
@@ -28,17 +28,17 @@ class InteractionCommentImplTest {
     			.intActId("EBI-12498323")
     			.build();
     	Interactant interactor4 = new InteractantBuilder().chainId("P_123457")
-    			.uniProtAccession("P12347")
+    			.uniProtKBAccession("P12347")
     			.intActId("EBI-12498324")
     			.build();
     	Interaction interaction1 = new InteractionBuilder()
-    			.firstInteractor(interactor1)
-    			.secondInteractor(interactor2)
+    			.firstInteractant(interactor1)
+    			.secondInteractant(interactor2)
     			.numberOfExperiments(4)
     			.build();
     	Interaction interaction2 = new InteractionBuilder()
-    			.firstInteractor(interactor3)
-    			.secondInteractor(interactor4)
+    			.firstInteractant(interactor3)
+    			.secondInteractant(interactor4)
     			.numberOfExperiments(2)
     			.isOrganismDiffer(true)
     			.build();

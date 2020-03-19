@@ -9,7 +9,7 @@ import org.uniprot.core.uniprotkb.comment.Interactant;
  * @author jluo
  * @date: 17 Mar 2020
  */
-public class InteractorImpl implements Interactant {
+public class InteractantImpl implements Interactant {
 
   /** */
   private static final long serialVersionUID = 4480365784795150723L;
@@ -19,9 +19,9 @@ public class InteractorImpl implements Interactant {
   private String chainId;
   private String intActId;
 
-  InteractorImpl() {}
+  InteractantImpl() {}
 
-  InteractorImpl(
+  InteractantImpl(
       UniProtKBAccession uniProtkbAccession, String geneName, String chainId, String intActId) {
     super();
     this.uniProtkbAccession = uniProtkbAccession;
@@ -36,7 +36,7 @@ public class InteractorImpl implements Interactant {
   }
 
   @Override
-  public UniProtKBAccession getUniProtkbAccession() {
+  public UniProtKBAccession getUniProtKBAccession() {
     return uniProtkbAccession;
   }
 
@@ -59,7 +59,7 @@ public class InteractorImpl implements Interactant {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    InteractorImpl interactor = (InteractorImpl) o;
+    InteractantImpl interactor = (InteractantImpl) o;
     return Objects.equals(uniProtkbAccession, interactor.uniProtkbAccession)
         && Objects.equals(geneName, interactor.geneName)
         && Objects.equals(chainId, interactor.chainId)

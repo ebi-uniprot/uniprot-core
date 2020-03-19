@@ -108,9 +108,9 @@ class CcInteractionConverterTest {
     private void verifyInteractor(Interactant interactor, String chainId, String acc, String gene, String intActId) {
     	assertEquals(chainId, interactor.getChainId());
     	if(acc ==null) {
-    		assertNull(interactor.getUniProtkbAccession());
+    		assertNull(interactor.getUniProtKBAccession());
     	}else {
-    		assertEquals(acc, interactor.getUniProtkbAccession().getValue());
+    		assertEquals(acc, interactor.getUniProtKBAccession().getValue());
     	}
     	assertEquals(gene, interactor.getGeneName());
     	assertEquals(intActId, interactor.getIntActId());

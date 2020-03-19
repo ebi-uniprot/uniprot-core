@@ -37,13 +37,13 @@ class InteractionBuilderTest {
     void testSetFirstInteractor() {
     	Interactant interactor1 =
     			new InteractantBuilder()
-    			.uniProtAccession("P12345").build();
+    			.uniProtKBAccession("P12345").build();
     	
         InteractionBuilder builder = new InteractionBuilder();
         Interaction interaction =
                 builder
                         .numberOfExperiments(3)
-                        .firstInteractor(interactor1)
+                        .firstInteractant(interactor1)
                         .build();
     
         assertEquals(3, interaction.getNumberOfExperiments());
@@ -56,18 +56,18 @@ class InteractionBuilderTest {
     void testSetSecondInteractor() {
     	Interactant interactor1 =
     			new InteractantBuilder()
-    			.uniProtAccession("P12345").build();
+    			.uniProtKBAccession("P12345").build();
     	Interactant interactor2 =
     			new InteractantBuilder()
-    			.uniProtAccession("P12346")
+    			.uniProtKBAccession("P12346")
     			.geneName("gen1").build();
     	
         InteractionBuilder builder = new InteractionBuilder();
         Interaction interaction =
                 builder
                         .numberOfExperiments(3)
-                        .firstInteractor(interactor1)
-                        .secondInteractor(interactor2)
+                        .firstInteractant(interactor1)
+                        .secondInteractant(interactor2)
                         .build();
       
         assertEquals(3, interaction.getNumberOfExperiments());
@@ -80,18 +80,18 @@ class InteractionBuilderTest {
     void testSetIsXeno() {
     	Interactant interactor1 =
     			new InteractantBuilder()
-    			.uniProtAccession("P12345").build();
+    			.uniProtKBAccession("P12345").build();
     	Interactant interactor2 =
     			new InteractantBuilder()
-    			.uniProtAccession("P12346")
+    			.uniProtKBAccession("P12346")
     			.geneName("gen1").build();
     	
         InteractionBuilder builder = new InteractionBuilder();
         Interaction interaction =
                 builder
                         .numberOfExperiments(3)
-                        .firstInteractor(interactor1)
-                        .secondInteractor(interactor2)
+                        .firstInteractant(interactor1)
+                        .secondInteractant(interactor2)
                         .isOrganismDiffer(true)
                         .build();
       

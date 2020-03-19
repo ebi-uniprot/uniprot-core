@@ -15,12 +15,12 @@ class InteractionImplTest {
     @BeforeEach
     void setup() {
     	 interactor1 =
-   			  new InteractorImpl(
+   			  new InteractantImpl(
    					  new UniProtKBAccessionBuilder("P12346").build(),
    					  "", "", "EBI-1223708");
     	
     	 interactor2 =
-    			  new InteractorImpl(
+    			  new InteractantImpl(
     					  new UniProtKBAccessionBuilder("P12345").build(),
     					  "gene1", "P_1234", "EBI-1223708");
     	

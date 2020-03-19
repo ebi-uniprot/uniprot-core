@@ -110,16 +110,16 @@ class CCInteractionBuildTest extends CCBuildTestAbstr {
         InteractantBuilder builder1 = new InteractantBuilder();
         InteractantBuilder builder2 = new InteractantBuilder();
         if(acc1 !=null) {
-        	builder1.uniProtAccession(acc1);
+        	builder1.uniProtKBAccession(acc1);
         }
         if(chainId1 !=null) {
         	builder1.chainId(chainId1);
         }
         builder1.intActId(intActId1);
-        builder2.chainId(chainId2).uniProtAccession(acc2)
+        builder2.chainId(chainId2).uniProtKBAccession(acc2)
         .geneName(geneName).intActId(intActId2);
-        builder.firstInteractor(builder1.build())
-        .secondInteractor(builder2.build())
+        builder.firstInteractant(builder1.build())
+        .secondInteractant(builder2.build())
         .numberOfExperiments(nExperments)
         .isOrganismDiffer(xeno);
 

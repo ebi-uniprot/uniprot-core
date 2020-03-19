@@ -20,14 +20,14 @@ class InteractorImplTest {
 	
 	 @Test
 	 void needDefaultConstructorForJsonDeserialization() {
-	        Interactant obj = new InteractorImpl();
+	        Interactant obj = new InteractantImpl();
 	        assertNotNull(obj);
 	    }
 
 	 @Test
 	 void completeObjHasMethods() {
 		 Interactant obj =
-		  new InteractorImpl(
+		  new InteractantImpl(
 				  new UniProtKBAccessionBuilder("P12345").build(),
 				  "gene1", "P_1234", "EBI-1223708");
 		 
@@ -37,7 +37,7 @@ class InteractorImplTest {
 	 @Test
 	 void builderFrom_constructorImp_shouldCreate_equalObject() {
 		 Interactant obj =
-		  new InteractorImpl(
+		  new InteractantImpl(
 				  new UniProtKBAccessionBuilder("P12345").build(),
 				  "gene1", "P_1234", "EBI-1223708");
 		 Interactant objBuilderFrom = InteractantBuilder.from(obj).build();

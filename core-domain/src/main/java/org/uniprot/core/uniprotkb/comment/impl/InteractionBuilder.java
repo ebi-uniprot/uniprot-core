@@ -8,20 +8,20 @@ import org.uniprot.core.uniprotkb.comment.Interactant;
 
 public final class InteractionBuilder implements Builder<Interaction> {
 
-  private Interactant firstInteractor;
-  private Interactant secondInteractor;
+  private Interactant firstInteractant;
+  private Interactant secondInteractant;
   private int numberOfExperiments;
   private boolean organismDiffer = false;
 
   public @Nonnull Interaction build() {
-    return new InteractionImpl(firstInteractor, secondInteractor, numberOfExperiments, organismDiffer);
+    return new InteractionImpl(firstInteractant, secondInteractant, numberOfExperiments, organismDiffer);
   }
 
   public static @Nonnull InteractionBuilder from(@Nonnull Interaction instance) {
     InteractionBuilder builder = new InteractionBuilder();
     builder
-        .firstInteractor(instance.getFirstInteractant())
-        .secondInteractor(instance.getSecondInteractant())
+        .firstInteractant(instance.getFirstInteractant())
+        .secondInteractant(instance.getSecondInteractant())
         .numberOfExperiments(instance.getNumberOfExperiments())
         .isOrganismDiffer(instance.isOrganismsDiffer());
     return builder;
@@ -32,18 +32,18 @@ public final class InteractionBuilder implements Builder<Interaction> {
     return this;
   }
 
-  public @Nonnull InteractionBuilder firstInteractor(Interactant firstInteractor) {
-    this.firstInteractor = firstInteractor;
+  public @Nonnull InteractionBuilder firstInteractant(Interactant firstInteractant) {
+    this.firstInteractant = firstInteractant;
     return this;
   }
 
-  public @Nonnull InteractionBuilder secondInteractor(Interactant secondInteractor) {
-    this.secondInteractor = secondInteractor;
+  public @Nonnull InteractionBuilder secondInteractant(Interactant secondInteractant) {
+    this.secondInteractant = secondInteractant;
     return this;
   }
 
-  public @Nonnull InteractionBuilder isOrganismDiffer(boolean isXeno) {
-    this.organismDiffer = isXeno;
+  public @Nonnull InteractionBuilder isOrganismDiffer(boolean organismDiffer) {
+    this.organismDiffer = organismDiffer;
     return this;
   }
 }

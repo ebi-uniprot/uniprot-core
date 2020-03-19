@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
-import org.uniprot.core.uniprotkb.comment.InteractionType;
+import org.uniprot.core.uniprotkb.comment.impl.InteractantBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionCommentBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
@@ -17,23 +18,27 @@ class InteractionCommentConverterTest {
 
     @Test
     void test() {
-        InteractionBuilder builder = new InteractionBuilder();
-        Interaction interaction1 =
-                builder.interactionType(InteractionType.SELF)
-                        .numberOfExperiments(4)
-                        .firstInteractor("EBI-749763")
-                        .secondInteractor("EBI-749763")
-                        .build();
+    	 InteractionBuilder builder = new InteractionBuilder();
+         Interactant interactant1 =  createInteractant("PROC_12344","EBI-0001", null, null);     
+         Interactant interactant2 =  createInteractant(null,"EBI-0001", "P12345-1", "gene1");
+  
+         Interaction interaction1 =
+                 builder.firstInteractant(interactant1)
+                 .secondInteractant(interactant2)
+                 .numberOfExperiments(3)
+                 .isOrganismDiffer(false)
+                         .build();
 
-        InteractionBuilder builder2 = new InteractionBuilder();
-        Interaction interaction2 =
-                builder2.interactionType(InteractionType.BINARY)
-                        .geneName("GUCD1")
-                        .numberOfExperiments(3)
-                        .firstInteractor("EBI-749763")
-                        .secondInteractor("EBI-8293751")
-                        .uniProtAccession("Q96NT3")
-                        .build();
+         InteractionBuilder builder2 = new InteractionBuilder();
+         Interactant interactant21 =  createInteractant(null,"EBI-0001", "P12345", null);       
+         Interactant interactant22 =  createInteractant("PROC_12344","EBI-0001", "P12346", "gene1");
+  
+         Interaction interaction2 =
+                 builder2.firstInteractant(interactant21)
+                 .secondInteractant(interactant22)
+                 .numberOfExperiments(3)
+                 .isOrganismDiffer(false)
+                         .build();
         List<Interaction> interactions = new ArrayList<>();
         interactions.add(interaction1);
         interactions.add(interaction2);
@@ -45,4 +50,14 @@ class InteractionCommentConverterTest {
         InteractionComment converted = converter.fromXml(xmlComments);
         assertEquals(comment, converted);
     }
+    
+    private Interactant createInteractant(String chainId, String intActId, String accession, String geneName ) {
+    	  InteractantBuilder builder = new InteractantBuilder();
+    	  builder.chainId(chainId)
+    	  .geneName(geneName)
+    	  .intActId(intActId);
+    	if(accession !=null)
+    		builder.uniProtKBAccession(accession);
+    	  return builder.build();
+      }
 }

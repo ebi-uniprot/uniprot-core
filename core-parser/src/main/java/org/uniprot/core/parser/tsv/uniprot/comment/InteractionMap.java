@@ -43,7 +43,7 @@ public class InteractionMap implements NamedValueMap {
         if (InteractionType.SELF.equals(interAct.getType())) {
             return "Itself";
         } else if (interAct.hasUniProtAccession()) {
-            return interAct.getUniProtkbAccession().getValue();
+            return interAct.getUniProtKBAccession().getValue();
         }
         return null;
     }

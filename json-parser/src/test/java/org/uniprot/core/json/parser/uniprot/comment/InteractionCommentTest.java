@@ -63,8 +63,8 @@ public class InteractionCommentTest {
                         .interactionType(InteractionType.BINARY)
                         .geneName("gene name")
                         .numberOfExperiments(10)
-                        .firstInteractor("first")
-                        .secondInteractor("second")
+                        .firstInteractant("first")
+                        .secondInteractant("second")
                         .uniProtAccession(new UniProtKBAccessionBuilder("P12345").build())
                         .build();
 
