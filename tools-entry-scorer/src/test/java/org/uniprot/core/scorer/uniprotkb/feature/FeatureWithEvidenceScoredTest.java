@@ -6,14 +6,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.UniprotLineParserFactory;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParserFactory;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject;
 import org.uniprot.core.scorer.uniprotkb.features.FeatureScored;
-import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
-import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprotkb.feature.Feature;
 
 class FeatureWithEvidenceScoredTest {
     @Test
@@ -88,8 +88,8 @@ class FeatureWithEvidenceScoredTest {
     }
 
     private Feature createFeature(String ftLine) {
-        UniprotLineParserFactory parserFactory = new DefaultUniprotLineParserFactory();
-        UniprotLineParser<FtLineObject> parser = parserFactory.createFtLineParser();
+        UniprotKBLineParserFactory parserFactory = new DefaultUniprotKBLineParserFactory();
+        UniprotKBLineParser<FtLineObject> parser = parserFactory.createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
         FtLineConverter converter = new FtLineConverter();
         List<Feature> features = converter.convert(obj);

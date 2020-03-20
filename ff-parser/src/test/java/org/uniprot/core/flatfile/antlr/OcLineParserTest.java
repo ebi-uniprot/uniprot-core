@@ -6,16 +6,16 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.oc.OcLineObject;
 
 class OcLineParserTest {
     @Test
     void test() {
         String ocLines = "OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi.\n";
-        UniprotLineParser<OcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createOcLineParser();
+        UniprotKBLineParser<OcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createOcLineParser();
         OcLineObject obj = parser.parse(ocLines);
         verify(
                 obj,
@@ -40,8 +40,8 @@ class OcLineParserTest {
                 "OC   Eukaryota; Metazoa; Chordata; Craniata;\n"
                         + "OC   Vertebrata; Euteleostomi.\n";
         ;
-        UniprotLineParser<OcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createOcLineParser();
+        UniprotKBLineParser<OcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createOcLineParser();
         OcLineObject obj = parser.parse(ocLines);
         verify(
                 obj,
@@ -60,8 +60,8 @@ class OcLineParserTest {
     void test3() {
         String ocLines = "OC   Viruses; dsDNA viruses, no RNA stage; Iridoviridae; Ranavirus.\n";
 
-        UniprotLineParser<OcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createOcLineParser();
+        UniprotKBLineParser<OcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createOcLineParser();
         OcLineObject obj = parser.parse(ocLines);
         verify(
                 obj,
@@ -76,8 +76,8 @@ class OcLineParserTest {
         String ocLines =
                 "OC   Bacteria; Bacteroidetes; Bacteroidetes Order II. Incertae sedis;\n"
                         + "OC   Rhodothermaceae; Salinibacter.\n";
-        UniprotLineParser<OcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createOcLineParser();
+        UniprotKBLineParser<OcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createOcLineParser();
         OcLineObject obj = parser.parse(ocLines);
         verify(
                 obj,

@@ -3,13 +3,13 @@ package org.uniprot.core.flatfile.parser.impl.ft;
 import java.util.List;
 
 import org.uniprot.core.flatfile.parser.LineTransformer;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
-import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
+import org.uniprot.core.uniprotkb.feature.Feature;
 
 public class FtLineTransformer implements LineTransformer<Feature> {
-    private final UniprotLineParser<FtLineObject> parser =
-            new DefaultUniprotLineParserFactory().createFtLineParser();
+    private final UniprotKBLineParser<FtLineObject> parser =
+            new DefaultUniprotKBLineParserFactory().createFtLineParser();
     private final FtLineFormater formater = new FtLineFormater();
     private final FtLineConverter converter = new FtLineConverter();
 

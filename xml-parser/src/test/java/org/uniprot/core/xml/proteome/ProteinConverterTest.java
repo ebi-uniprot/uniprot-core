@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.Protein;
 import org.uniprot.core.proteome.impl.ProteinBuilder;
-import org.uniprot.core.uniprot.UniProtEntryType;
+import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.xml.jaxb.proteome.EntryType;
 import org.uniprot.core.xml.jaxb.proteome.GeneNameType;
 import org.uniprot.core.xml.jaxb.proteome.GeneType;
@@ -25,7 +25,7 @@ class ProteinConverterTest {
         gene.setLength(123l);
         Protein protein = converter.fromXml(gene);
         assertEquals("P12345", protein.getAccession().getValue());
-        assertEquals(UniProtEntryType.SWISSPROT, protein.getEntryType());
+        assertEquals(UniProtKBEntryType.SWISSPROT, protein.getEntryType());
         assertEquals("gen1", protein.getGeneName());
         assertEquals(org.uniprot.core.proteome.GeneNameType.MOD, protein.getGeneNameType());
         assertEquals(123l, protein.getSequenceLength());
@@ -35,7 +35,7 @@ class ProteinConverterTest {
     void testToXml() {
         ProteinBuilder builder = new ProteinBuilder();
         builder.accession("P21312")
-                .entryType(UniProtEntryType.TREMBL)
+                .entryType(UniProtKBEntryType.TREMBL)
                 .geneName("some gene")
                 .geneNameType(org.uniprot.core.proteome.GeneNameType.ENSEMBL)
                 .sequenceLength(324);

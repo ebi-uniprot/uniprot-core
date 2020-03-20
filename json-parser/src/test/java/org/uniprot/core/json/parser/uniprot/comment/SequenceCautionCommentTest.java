@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
-import org.uniprot.core.uniprot.comment.SequenceCautionComment;
-import org.uniprot.core.uniprot.comment.SequenceCautionType;
-import org.uniprot.core.uniprot.comment.impl.SequenceCautionCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
+import org.uniprot.core.uniprotkb.comment.SequenceCautionType;
+import org.uniprot.core.uniprotkb.comment.impl.SequenceCautionCommentBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

@@ -3,11 +3,11 @@ package org.uniprot.core.xml.uniprot.comment;
 import java.util.List;
 
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.uniprot.comment.PhysiologicalDirectionType;
-import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
-import org.uniprot.core.uniprot.comment.ReactionDatabase;
-import org.uniprot.core.uniprot.comment.impl.PhysiologicalReactionBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.comment.PhysiologicalDirectionType;
+import org.uniprot.core.uniprotkb.comment.PhysiologicalReaction;
+import org.uniprot.core.uniprotkb.comment.ReactionDatabase;
+import org.uniprot.core.uniprotkb.comment.impl.PhysiologicalReactionBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.PhysiologicalReactionType;

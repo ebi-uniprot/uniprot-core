@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprotkb.comment.*;
 
 class BPCPCommentTransformerTest {
     private final BPCPCommentTransformer transformer = new BPCPCommentTransformer();

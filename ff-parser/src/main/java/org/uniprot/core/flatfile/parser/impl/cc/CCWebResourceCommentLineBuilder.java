@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
-import org.uniprot.core.uniprot.comment.WebResourceComment;
+import org.uniprot.core.uniprotkb.comment.WebResourceComment;
 
 import com.google.common.base.Strings;
 

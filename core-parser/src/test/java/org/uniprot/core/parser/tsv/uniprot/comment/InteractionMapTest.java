@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.UniProtEntry;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.comment.InteractionComment;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.InteractionComment;
 
 class InteractionMapTest {
 
@@ -25,7 +25,7 @@ class InteractionMapTest {
                         + "CC       O95983:MBD3; NbExp=3; IntAct=EBI-475687, EBI-1783068;\n"
                         + "CC       O00308:WWP2; NbExp=4; IntAct=EBI-475687, EBI-743923;";
 
-        UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(interactionLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(interactionLine);
 
         List<InteractionComment> interactionComments =
                 entry.getCommentsByType(CommentType.INTERACTION);
@@ -47,7 +47,7 @@ class InteractionMapTest {
                         + "CC       P49723:RNR4; NbExp=5; IntAct=EBI-15234, EBI-15251;\n"
                         + "CC       Q04964:SML1; NbExp=4; IntAct=EBI-15234, EBI-27834;";
 
-        UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(interactionLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(interactionLine);
 
         List<InteractionComment> interactionComments =
                 entry.getCommentsByType(CommentType.INTERACTION);

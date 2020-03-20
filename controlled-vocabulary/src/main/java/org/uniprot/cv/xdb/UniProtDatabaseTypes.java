@@ -1,8 +1,6 @@
 package org.uniprot.cv.xdb;
 
-import java.io.BufferedReader;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -16,8 +14,7 @@ import org.uniprot.core.util.property.Property;
 
 public enum UniProtDatabaseTypes {
     INSTANCE;
-    private final String FILENAME = "META-INF/drlineconfiguration.json";
-    private final String NEW_DB_LIST = "META-INF/new_db_list.txt";
+    private String fileName = "META-INF/drlineconfiguration.json";
 
     private List<UniProtDatabaseDetail> types = new ArrayList<>();
     private Map<String, UniProtDatabaseDetail> typeMap;
@@ -51,29 +48,9 @@ public enum UniProtDatabaseTypes {
                 .collect(Collectors.toList());
     }
 
-    private List<String> getNewDB() {
-        List<String> newDbs = new ArrayList<>();
-
-        try (InputStream inputStream =
-                        UniProtDatabaseTypes.class
-                                .getClassLoader()
-                                .getResourceAsStream(NEW_DB_LIST);
-                BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                newDbs.add(line);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return newDbs;
-    }
-
     private void init() {
-        List<String> newDbs = getNewDB();
         try (InputStream configFile =
-                UniProtDatabaseTypes.class.getClassLoader().getResourceAsStream(FILENAME)) {
+                UniProtDatabaseTypes.class.getClassLoader().getResourceAsStream(fileName)) {
             String source = Utils.loadPropertyInput(configFile);
             List<Property> jsonArray = Property.parseJsonArray(source);
 

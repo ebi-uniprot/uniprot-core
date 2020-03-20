@@ -12,7 +12,7 @@ import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.flatfile.writer.impl.LineBuilder;
 import org.uniprot.core.gene.Gene;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
 public class GNLineBuilder extends FFLineBuilderAbstr<List<Gene>>
         implements FFLineBuilder<List<Gene>> {

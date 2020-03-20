@@ -3,7 +3,7 @@ package org.uniprot.core.xml.uniprot;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 public final class EvidenceIndexMapper {
     private Map<Evidence, Integer> evidenceToIndexMap = new HashMap<>();

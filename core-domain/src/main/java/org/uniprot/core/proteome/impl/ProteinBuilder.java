@@ -5,13 +5,13 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.Builder;
 import org.uniprot.core.proteome.GeneNameType;
 import org.uniprot.core.proteome.Protein;
-import org.uniprot.core.uniprot.UniProtAccession;
-import org.uniprot.core.uniprot.UniProtEntryType;
-import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
+import org.uniprot.core.uniprotkb.UniProtKBEntryType;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 
 public class ProteinBuilder implements Builder<Protein> {
-    private UniProtAccession accession;
-    private UniProtEntryType entryType;
+    private UniProtKBAccession accession;
+    private UniProtKBEntryType entryType;
     private long sequenceLength;
     private String geneName;
     private GeneNameType geneNameType;
@@ -22,15 +22,15 @@ public class ProteinBuilder implements Builder<Protein> {
     }
 
     public @Nonnull ProteinBuilder accession(String accession) {
-        return accession(new UniProtAccessionBuilder(accession).build());
+        return accession(new UniProtKBAccessionBuilder(accession).build());
     }
 
-    public @Nonnull ProteinBuilder accession(UniProtAccession accession) {
+    public @Nonnull ProteinBuilder accession(UniProtKBAccession accession) {
         this.accession = accession;
         return this;
     }
 
-    public @Nonnull ProteinBuilder entryType(UniProtEntryType entryType) {
+    public @Nonnull ProteinBuilder entryType(UniProtKBEntryType entryType) {
         this.entryType = entryType;
         return this;
     }

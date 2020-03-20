@@ -30,10 +30,6 @@ public enum UniProtDatabaseCategory implements EnumDisplay<UniProtDatabaseCatego
     private final String displayName;
     private final boolean searchable;
 
-    UniProtDatabaseCategory(String name) {
-        this(name, name);
-    }
-
     UniProtDatabaseCategory(String name, String displayName) {
         this(name, displayName, true);
     }

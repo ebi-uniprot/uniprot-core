@@ -8,21 +8,21 @@ import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
 import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject.FlagType;
-import org.uniprot.core.uniprot.description.EC;
-import org.uniprot.core.uniprot.description.Name;
-import org.uniprot.core.uniprot.description.ProteinAltName;
-import org.uniprot.core.uniprot.description.ProteinDescription;
-import org.uniprot.core.uniprot.description.ProteinRecName;
-import org.uniprot.core.uniprot.description.ProteinSection;
-import org.uniprot.core.uniprot.description.ProteinSubName;
-import org.uniprot.core.uniprot.description.impl.ECBuilder;
-import org.uniprot.core.uniprot.description.impl.NameBuilder;
-import org.uniprot.core.uniprot.description.impl.ProteinAltNameBuilder;
-import org.uniprot.core.uniprot.description.impl.ProteinDescriptionBuilder;
-import org.uniprot.core.uniprot.description.impl.ProteinRecNameBuilder;
-import org.uniprot.core.uniprot.description.impl.ProteinSectionBuilder;
-import org.uniprot.core.uniprot.description.impl.ProteinSubNameBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.description.EC;
+import org.uniprot.core.uniprotkb.description.Name;
+import org.uniprot.core.uniprotkb.description.ProteinAltName;
+import org.uniprot.core.uniprotkb.description.ProteinDescription;
+import org.uniprot.core.uniprotkb.description.ProteinRecName;
+import org.uniprot.core.uniprotkb.description.ProteinSection;
+import org.uniprot.core.uniprotkb.description.ProteinSubName;
+import org.uniprot.core.uniprotkb.description.impl.ECBuilder;
+import org.uniprot.core.uniprotkb.description.impl.NameBuilder;
+import org.uniprot.core.uniprotkb.description.impl.ProteinAltNameBuilder;
+import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilder;
+import org.uniprot.core.uniprotkb.description.impl.ProteinRecNameBuilder;
+import org.uniprot.core.uniprotkb.description.impl.ProteinSectionBuilder;
+import org.uniprot.core.uniprotkb.description.impl.ProteinSubNameBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 import com.google.common.base.Strings;
 
@@ -76,7 +76,7 @@ public class DeLineConverter extends EvidenceCollector
                         .map(val -> convertProteinNameSection(val, evidenceMap))
                         .collect(Collectors.toList());
 
-        org.uniprot.core.uniprot.description.FlagType flag = createFlag(f.getFlags());
+        org.uniprot.core.uniprotkb.description.FlagType flag = createFlag(f.getFlags());
         ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
         builder.recommendedName(recName)
                 .submissionNamesSet(subNames)
@@ -92,23 +92,23 @@ public class DeLineConverter extends EvidenceCollector
         return builder.build();
     }
 
-    private org.uniprot.core.uniprot.description.FlagType createFlag(List<FlagType> flags) {
+    private org.uniprot.core.uniprotkb.description.FlagType createFlag(List<FlagType> flags) {
         if (flags.contains(FlagType.Fragment)) {
             if (flags.contains(FlagType.Precursor)) {
-                return org.uniprot.core.uniprot.description.FlagType.FRAGMENT_PRECURSOR;
+                return org.uniprot.core.uniprotkb.description.FlagType.FRAGMENT_PRECURSOR;
             } else {
-                return org.uniprot.core.uniprot.description.FlagType.FRAGMENT;
+                return org.uniprot.core.uniprotkb.description.FlagType.FRAGMENT;
             }
         } else if (flags.contains(FlagType.Fragments)) {
             if (flags.contains(FlagType.Precursor)) {
-                return org.uniprot.core.uniprot.description.FlagType.FRAGMENTS_PRECURSOR;
+                return org.uniprot.core.uniprotkb.description.FlagType.FRAGMENTS_PRECURSOR;
             } else {
-                return org.uniprot.core.uniprot.description.FlagType.FRAGMENTS;
+                return org.uniprot.core.uniprotkb.description.FlagType.FRAGMENTS;
             }
         } else if (flags.contains(FlagType.Precursor)) {
-            return org.uniprot.core.uniprot.description.FlagType.PRECURSOR;
+            return org.uniprot.core.uniprotkb.description.FlagType.PRECURSOR;
         } else if (flags.contains(FlagType.Precursor_Fragment)) {
-            return org.uniprot.core.uniprot.description.FlagType.FRAGMENT_PRECURSOR;
+            return org.uniprot.core.uniprotkb.description.FlagType.FRAGMENT_PRECURSOR;
         } else {
             return null;
         }

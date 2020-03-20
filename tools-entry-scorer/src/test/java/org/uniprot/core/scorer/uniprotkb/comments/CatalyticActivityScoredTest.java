@@ -1,7 +1,7 @@
 package org.uniprot.core.scorer.uniprotkb.comments;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.CommentType;
 
 class CatalyticActivityScoredTest extends CommentScoreTestBase {
     @Test

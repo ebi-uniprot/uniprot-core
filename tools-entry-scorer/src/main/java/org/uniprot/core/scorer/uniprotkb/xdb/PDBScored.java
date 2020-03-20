@@ -5,34 +5,34 @@ import java.util.List;
 import org.uniprot.core.scorer.uniprotkb.Consensus;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
-import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
-import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 
 public class PDBScored implements HasScore {
-    private List<UniProtCrossReference> uniProtCrossReferences;
+    private List<UniProtKBCrossReference> uniProtKBCrossReferences;
 
     private final List<EvidenceDatabase> evidenceDatabases;
 
     public PDBScored(
-            List<UniProtCrossReference> uniProtCrossReferences,
+            List<UniProtKBCrossReference> uniProtKBCrossReferences,
             List<EvidenceDatabase> evidenceDatabases) {
-        this.uniProtCrossReferences = uniProtCrossReferences;
+        this.uniProtKBCrossReferences = uniProtKBCrossReferences;
         this.evidenceDatabases = evidenceDatabases;
     }
 
-    public PDBScored(List<UniProtCrossReference> uniProtCrossReferences) {
-        this(uniProtCrossReferences, null);
+    public PDBScored(List<UniProtKBCrossReference> uniProtKBCrossReferences) {
+        this(uniProtKBCrossReferences, null);
     }
 
     @Override
     public double score() {
         double score = 0;
-        if (!uniProtCrossReferences.isEmpty() && hasEvidences()) score += 1;
+        if (!uniProtKBCrossReferences.isEmpty() && hasEvidences()) score += 1;
         return score;
     }
 
     private boolean hasEvidences() {
-        for (UniProtCrossReference xref : uniProtCrossReferences) {
+        for (UniProtKBCrossReference xref : uniProtKBCrossReferences) {
             if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceDatabases)) {
                 return true;
             }

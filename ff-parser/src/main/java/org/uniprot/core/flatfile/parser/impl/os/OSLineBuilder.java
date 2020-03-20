@@ -11,7 +11,7 @@ import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
-import org.uniprot.core.uniprot.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 
 public class OSLineBuilder extends FFLineBuilderAbstr<Organism>
         implements FFLineBuilder<Organism> {;

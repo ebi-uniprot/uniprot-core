@@ -5,7 +5,7 @@ import java.math.BigInteger;
 import org.uniprot.core.Position;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.Range;
-import org.uniprot.core.uniprot.feature.FeatureLocation;
+import org.uniprot.core.uniprotkb.feature.FeatureLocation;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.LocationType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;

@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
-import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
-import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
-import org.uniprot.core.uniprot.comment.impl.MassSpectrometryCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.MassSpectrometryComment;
+import org.uniprot.core.uniprotkb.comment.MassSpectrometryMethod;
+import org.uniprot.core.uniprotkb.comment.impl.MassSpectrometryCommentBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

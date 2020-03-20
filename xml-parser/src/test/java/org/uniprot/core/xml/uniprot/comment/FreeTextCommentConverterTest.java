@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.comment.FreeTextComment;
-import org.uniprot.core.uniprot.comment.impl.FreeTextCommentBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
-import org.uniprot.core.uniprot.evidence.impl.EvidencedValueBuilder;
+import org.uniprot.core.uniprotkb.comment.FreeTextComment;
+import org.uniprot.core.uniprotkb.comment.impl.FreeTextCommentBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
@@ -38,8 +38,8 @@ class FreeTextCommentConverterTest {
         List<EvidencedValue> texts = new ArrayList<>();
         texts.add(new EvidencedValueBuilder(text1, evids).build());
         texts.add(new EvidencedValueBuilder(text2, evids2).build());
-        org.uniprot.core.uniprot.comment.CommentType type =
-                org.uniprot.core.uniprot.comment.CommentType.FUNCTION;
+        org.uniprot.core.uniprotkb.comment.CommentType type =
+                org.uniprot.core.uniprotkb.comment.CommentType.FUNCTION;
         FreeTextComment comment =
                 new FreeTextCommentBuilder().commentType(type).textsSet(texts).build();
         FreeTextCommentConverter converter =
@@ -71,8 +71,8 @@ class FreeTextCommentConverterTest {
         List<EvidencedValue> texts = new ArrayList<>();
         texts.add(new EvidencedValueBuilder(text1, evids).build());
         texts.add(new EvidencedValueBuilder(text2, evids2).build());
-        org.uniprot.core.uniprot.comment.CommentType type =
-                org.uniprot.core.uniprot.comment.CommentType.DOMAIN;
+        org.uniprot.core.uniprotkb.comment.CommentType type =
+                org.uniprot.core.uniprotkb.comment.CommentType.DOMAIN;
         FreeTextComment comment =
                 new FreeTextCommentBuilder().commentType(type).textsSet(texts).build();
         FreeTextCommentConverter converter =

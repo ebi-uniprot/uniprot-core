@@ -2,13 +2,15 @@ package org.uniprot.core.uniref.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
-import org.uniprot.core.uniprot.UniProtAccession;
-import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.uniref.*;
 
 /**
@@ -93,7 +95,7 @@ class RepresentativeMemberBuilderTest {
 
     @Test
     void testAccession() {
-        UniProtAccession accession = new UniProtAccessionBuilder("P12345").build();
+        UniProtKBAccession accession = new UniProtKBAccessionBuilder("P12345").build();
         RepresentativeMember member =
                 new RepresentativeMemberBuilder().accessionsAdd(accession).build();
         assertEquals(accession, member.getUniProtAccessions().get(0));
@@ -155,5 +157,33 @@ class RepresentativeMemberBuilderTest {
         RepresentativeMember rm2 = new RepresentativeMemberBuilder().build();
         assertTrue(rm1.equals(rm2) && rm2.equals(rm1));
         assertEquals(rm1.hashCode(), rm2.hashCode());
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        UniRefMember impl =
+                new UniRefMemberImpl(
+                        UniRefMemberIdType.UNIPARC,
+                        "memId",
+                        "orgName",
+                        56L,
+                        56,
+                        "proName",
+                        Collections.emptyList(),
+                        new UniRefEntryIdImpl("50"),
+                        new UniRefEntryIdImpl("90"),
+                        new UniRefEntryIdImpl("100"),
+                        new UniParcIdBuilder("id").build(),
+                        null,
+                        false);
+        RepresentativeMember obj = RepresentativeMemberBuilder.from(impl).build();
+
+        assertEquals(impl.getUniProtAccessions(), obj.getUniProtAccessions());
+        assertEquals(impl.getMemberIdType(), obj.getMemberIdType());
+        assertEquals(impl.getMemberId(), obj.getMemberId());
+        assertEquals(impl.getUniParcId(), obj.getUniParcId());
+        assertEquals(impl.getOrganismName(), obj.getOrganismName());
+        assertEquals(impl.getOverlapRegion(), obj.getOverlapRegion());
+        assertEquals(impl.getOrganismTaxId(), obj.getOrganismTaxId());
     }
 }

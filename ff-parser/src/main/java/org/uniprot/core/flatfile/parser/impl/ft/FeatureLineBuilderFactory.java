@@ -4,8 +4,8 @@ import java.util.EnumMap;
 import java.util.Map;
 
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
-import org.uniprot.core.uniprot.feature.Feature;
-import org.uniprot.core.uniprot.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.Feature;
+import org.uniprot.core.uniprotkb.feature.FeatureType;
 
 public class FeatureLineBuilderFactory {
     private static Map<FeatureType, FFLineBuilder<Feature>> featureBuilders =

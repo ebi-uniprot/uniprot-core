@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.entry.EntryObject;
 
 class EntryParserTest {
@@ -60,8 +60,8 @@ class EntryParserTest {
                         + "     EKDLVKDFKA LVESAHRMRQ GHMINVKYIL YQLLKKHGHG PDGPDILTVK TGSKGVLYDD\n"
                         + "     SFRKIYTDLG WKFTPL\n"
                         + "//\n";
-        UniprotLineParser<EntryObject> parser =
-                new DefaultUniprotLineParserFactory().createEntryParser();
+        UniprotKBLineParser<EntryObject> parser =
+                new DefaultUniprotKBLineParserFactory().createEntryParser();
         EntryObject obj = parser.parse(entryLines);
         assertNotNull(obj);
         assertEquals("Q6GZX4", obj.ac.primaryAcc);

@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.flatfile.parser.impl.cc.CCBioPhyChemCommentLineBuilder;
 import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
-import org.uniprot.core.uniprot.comment.Absorption;
-import org.uniprot.core.uniprot.comment.BPCPComment;
-import org.uniprot.core.uniprot.comment.KineticParameters;
+import org.uniprot.core.uniprotkb.comment.Absorption;
+import org.uniprot.core.uniprotkb.comment.BPCPComment;
+import org.uniprot.core.uniprotkb.comment.KineticParameters;
 
 public class BPCPMap implements NamedValueMap {
 

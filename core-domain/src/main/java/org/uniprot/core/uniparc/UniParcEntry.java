@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.uniprot.core.Sequence;
-import org.uniprot.core.uniprot.taxonomy.Taxonomy;
+import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 
 /**
  * @author jluo

@@ -13,9 +13,9 @@ import java.util.List;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.LineBuilderHelper;
-import org.uniprot.core.uniprot.comment.Cofactor;
-import org.uniprot.core.uniprot.comment.CofactorComment;
-import org.uniprot.core.uniprot.comment.CofactorDatabase;
+import org.uniprot.core.uniprotkb.comment.Cofactor;
+import org.uniprot.core.uniprotkb.comment.CofactorComment;
+import org.uniprot.core.uniprotkb.comment.CofactorDatabase;
 
 /**
  * CC -!- COFACTOR: CC Name=Mg(2+); Xref=ChEBI:CHEBI:18420;

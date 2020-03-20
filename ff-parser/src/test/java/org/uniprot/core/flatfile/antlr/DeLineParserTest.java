@@ -7,8 +7,8 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject.FlagType;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject.NameBlock;
@@ -29,8 +29,8 @@ class DeLineParserTest {
                         + "DE            Short=VAC-alpha;\n"
                         + "DE   AltName: Full=Anchorin CII;\n"
                         + "DE   Flags: Precursor;\n";
-        UniprotLineParser<DeLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDeLineParser();
+        UniprotKBLineParser<DeLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
         assertEquals(FlagType.Precursor, obj.getFlags().get(0));
         verify(
@@ -103,8 +103,8 @@ class DeLineParserTest {
                         + "DE            Short=VAC-alpha {ECO:0000256|PIRNR:PIRNR038994};\n"
                         + "DE   AltName: Full=Anchorin CII {ECO:0000256|PIRNR:PIRNR038996};\n"
                         + "DE   Flags: Precursor {ECO:0000256|PIRNR:PIRNR038994, ECO:0000256|PIRNR:PIRNR038995, ECO:0000256|PIRNR:PIRNR038998};\n";
-        UniprotLineParser<DeLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDeLineParser();
+        UniprotKBLineParser<DeLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
         assertEquals(FlagType.Precursor, obj.getFlags().get(0));
         verifyEvidences(
@@ -192,8 +192,8 @@ class DeLineParserTest {
                 "DE   RecName: Full=Annexin A5 {ECO:0000006|PubMed:20858735, ECO:0000006|PubMed:23640942};\n"
                         + "DE            Short=Annexin-5 {ECO:0000006|PubMed:20858735, ECO:0000006|PubMed:23640943};\n"
                         + "DE   Flags: Precursor {ECO:0000006|PubMed:20858735, ECO:0000006|PubMed:23640942, ECO:0000001};\n";
-        UniprotLineParser<DeLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDeLineParser();
+        UniprotKBLineParser<DeLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
         assertEquals(FlagType.Precursor, obj.getFlags().get(0));
         verifyEvidences(
@@ -236,8 +236,8 @@ class DeLineParserTest {
                         + "DE   AltName: Short=PAP-I;\n"
                         + "DE            Short=PAP.1;\n"
                         + "DE            Short=PAP.2;\n";
-        UniprotLineParser<DeLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDeLineParser();
+        UniprotKBLineParser<DeLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
 
         verify(
@@ -276,8 +276,8 @@ class DeLineParserTest {
                         + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha chain;\n"
                         + "DE   Contains:\n"
                         + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta chain;\n";
-        UniprotLineParser<DeLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDeLineParser();
+        UniprotKBLineParser<DeLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
 
         verify(
@@ -332,8 +332,8 @@ class DeLineParserTest {
     @Test
     void testFlags() {
         String deLines = "DE   RecName: Full=UI;\n" + "DE   Flags: Precursor; Fragments;\n";
-        UniprotLineParser<DeLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDeLineParser();
+        UniprotKBLineParser<DeLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
         verify(
                 obj.getRecName(),
@@ -350,8 +350,8 @@ class DeLineParserTest {
                 "DE   RecName: Full=13S globulin seed storage protein 3;\n"
                         + "DE   AltName: Full=Legumin-like protein 3;\n"
                         + "DE   AltName: Allergen=Fag e 1;\n";
-        UniprotLineParser<DeLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDeLineParser();
+        UniprotKBLineParser<DeLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
         verify(
                 obj.getRecName(),
@@ -371,8 +371,8 @@ class DeLineParserTest {
         String deLines =
                 "DE   RecName: Full=Amino acid--[acyl-carrier-protein] ligase 1;\n"
                         + "DE            EC=6.2.1.n2;\n";
-        UniprotLineParser<DeLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDeLineParser();
+        UniprotKBLineParser<DeLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
         verify(
                 obj.getRecName(),
@@ -387,8 +387,8 @@ class DeLineParserTest {
                 "DE   RecName: Full=Dual specificity phosphatase Cdc25;\n"
                         + "DE            EC=3.1.3.48;\n"
                         + "DE   AltName: Full=Arath;CDC25;\n";
-        UniprotLineParser<DeLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDeLineParser();
+        UniprotKBLineParser<DeLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
         verify(
                 obj.getRecName(),
@@ -407,8 +407,8 @@ class DeLineParserTest {
         String deLines =
                 "DE   SubName: Full=Cryptic phospho-beta-glucosidase; cryptic {ECO:0000313|EMBL:CSQ00014.1};\n"
                         + "DE            EC=3.2.1.86 {ECO:0000313|EMBL:CSQ00014.1};\n";
-        UniprotLineParser<DeLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDeLineParser();
+        UniprotKBLineParser<DeLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
         verify(
                 obj.getSubNames().get(0),
@@ -433,8 +433,8 @@ class DeLineParserTest {
                 "DE   SubName: Full=Conjugal transfer protein;\n"
                         + "DE   SubName: Full=Conjugative transfer protein;\n"
                         + "DE   SubName: Full=TraR;\n";
-        UniprotLineParser<DeLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDeLineParser();
+        UniprotKBLineParser<DeLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
         verify(
                 obj.getSubNames().get(0),
@@ -463,8 +463,8 @@ class DeLineParserTest {
                         + "DE     RecName: Full=Chain A {ECO:12345|Ref.1};\n"
                         + "DE   Contains:\n"
                         + "DE     RecName: Full=Chain B {ECO:12345|Ref.2};\n";
-        UniprotLineParser<DeLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDeLineParser();
+        UniprotKBLineParser<DeLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
 
         verify(
@@ -510,8 +510,8 @@ class DeLineParserTest {
     void testWithCurlyBracket() {
         String deLines =
                 "DE   RecName: Full=(4-*{*4-[2-(gamma-L-glutamylamino)ethyl]phenoxymethyl*}*furan-2-yl)methanamine synthase {ECO:12345|Ref.1};\n";
-        UniprotLineParser<DeLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDeLineParser();
+        UniprotKBLineParser<DeLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
 
         verify(
@@ -532,7 +532,7 @@ class DeLineParserTest {
 // {ECO:12345|Ref.1};
 //                    |""".stripMargin.replace("\r", "");
 //
-//    val obj = (new DefaultUniprotLineParserFactory).createDeLineParser().parse(deLines)
+//    val obj = (new DefaultUniprotKBLineParserFactory).createDeLineParser().parse(deLines)
 //
 //    obj should not be null
 //    obj.recName.fullName should equal

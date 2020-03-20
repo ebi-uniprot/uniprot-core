@@ -8,8 +8,8 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ox.OxLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ox.OxLineObject;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 
 class OxLineConverterTest {
     @Test

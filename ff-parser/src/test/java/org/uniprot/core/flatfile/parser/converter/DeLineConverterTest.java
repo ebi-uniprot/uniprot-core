@@ -10,8 +10,8 @@ import java.util.TreeMap;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineConverter;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject;
-import org.uniprot.core.uniprot.description.*;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.description.*;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 class DeLineConverterTest {
     private DeLineConverter converter = new DeLineConverter();

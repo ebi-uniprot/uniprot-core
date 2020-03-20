@@ -15,13 +15,13 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniProtParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniProtParser;
 import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
-import org.uniprot.core.uniprot.UniProtEntry;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
 
 class EntryMapTest {
-    private static UniProtEntry entryQ15758;
-    private static UniProtEntry entryP03431;
-    private static UniProtEntry entryQ84MC7;
-    private static UniProtEntry entryQ70KY3;
+    private static UniProtKBEntry entryQ15758;
+    private static UniProtKBEntry entryP03431;
+    private static UniProtKBEntry entryQ84MC7;
+    private static UniProtKBEntry entryQ70KY3;
 
     @BeforeAll
     static void setup() throws Exception {

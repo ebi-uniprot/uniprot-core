@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.taxonomy.OrganismName;
+import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
 
 class OrganismNameLineParserTest {
 

@@ -4,25 +4,25 @@ import java.util.List;
 
 import org.uniprot.core.scorer.uniprotkb.Consensus;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
-import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
-import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 
 public class PDBSumScored implements HasScore {
     @SuppressWarnings("unused")
-    private List<UniProtCrossReference> uniProtCrossReferences;
+    private List<UniProtKBCrossReference> uniProtKBCrossReferences;
 
     @SuppressWarnings("unused")
     private final List<EvidenceDatabase> evidenceDatabases;
 
     public PDBSumScored(
-            List<UniProtCrossReference> uniProtCrossReferences,
+            List<UniProtKBCrossReference> uniProtKBCrossReferences,
             List<EvidenceDatabase> evidenceDatabases) {
-        this.uniProtCrossReferences = uniProtCrossReferences;
+        this.uniProtKBCrossReferences = uniProtKBCrossReferences;
         this.evidenceDatabases = evidenceDatabases;
     }
 
-    public PDBSumScored(List<UniProtCrossReference> uniProtCrossReferences) {
-        this(uniProtCrossReferences, null);
+    public PDBSumScored(List<UniProtKBCrossReference> uniProtKBCrossReferences) {
+        this(uniProtKBCrossReferences, null);
     }
 
     // PDBsum replicates PDB DR lines so PDBsum DR lines could be scored as zero.

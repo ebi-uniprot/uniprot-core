@@ -9,9 +9,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ss.SsLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ss.SsLineObject;
-import org.uniprot.core.uniprot.InternalSection;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidenceLine;
+import org.uniprot.core.uniprotkb.InternalSection;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidenceLine;
 
 class SsLineConverterTest {
     private SsLineConverter converter = new SsLineConverter();

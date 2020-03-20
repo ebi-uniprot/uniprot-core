@@ -5,23 +5,23 @@ import java.util.List;
 import org.uniprot.core.scorer.uniprotkb.Consensus;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
-import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
-import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 
 // Not used
 public class PrositeScored implements HasScore {
-    private final List<UniProtCrossReference> uniProtCrossReferences;
+    private final List<UniProtKBCrossReference> uniProtKBCrossReferences;
     private final List<EvidenceDatabase> evidenceDatabases;
 
     public PrositeScored(
-            List<UniProtCrossReference> uniProtCrossReferences,
+            List<UniProtKBCrossReference> uniProtKBCrossReferences,
             List<EvidenceDatabase> evidenceDatabases) {
-        this.uniProtCrossReferences = uniProtCrossReferences;
+        this.uniProtKBCrossReferences = uniProtKBCrossReferences;
         this.evidenceDatabases = evidenceDatabases;
     }
 
-    public PrositeScored(List<UniProtCrossReference> uniProtCrossReferences) {
-        this(uniProtCrossReferences, null);
+    public PrositeScored(List<UniProtKBCrossReference> uniProtKBCrossReferences) {
+        this(uniProtKBCrossReferences, null);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class PrositeScored implements HasScore {
         boolean found3 = false;
         boolean found01 = false;
 
-        for (UniProtCrossReference xref : uniProtCrossReferences) {
+        for (UniProtKBCrossReference xref : uniProtKBCrossReferences) {
             if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceDatabases)) {
                 String des = xref.getProperties().get(1).getValue();
                 if (des.equals("FALSE_NEG") || des.equals("PARTIAL")) {

@@ -18,14 +18,14 @@ import org.uniprot.core.scorer.uniprotkb.xdb.EmblScored;
 import org.uniprot.core.scorer.uniprotkb.xdb.GoScored;
 import org.uniprot.core.scorer.uniprotkb.xdb.PDBScored;
 import org.uniprot.core.scorer.uniprotkb.xdb.PDBSumScored;
-import org.uniprot.core.uniprot.Keyword;
-import org.uniprot.core.uniprot.UniProtEntry;
-import org.uniprot.core.uniprot.UniProtEntryType;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
-import org.uniprot.core.uniprot.feature.Feature;
-import org.uniprot.core.uniprot.feature.FeatureType;
-import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.uniprotkb.Keyword;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
+import org.uniprot.core.uniprotkb.UniProtKBEntryType;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprotkb.feature.Feature;
+import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.cv.xdb.UniProtCrossReferenceDisplayOrder;
 
 /**
@@ -52,10 +52,10 @@ public class UniProtEntryScored implements HasScore {
         }
     }
 
-    private final UniProtEntry entry;
+    private final UniProtKBEntry entry;
     private final List<EvidenceDatabase> evidenceDatabases;
 
-    public UniProtEntryScored(UniProtEntry copy, List<EvidenceDatabase> evidenceDatabases) {
+    public UniProtEntryScored(UniProtKBEntry copy, List<EvidenceDatabase> evidenceDatabases) {
         this.entry = copy;
         this.evidenceDatabases = evidenceDatabases;
         this.score = new EntryScore(copy.getPrimaryAccession().getValue());
@@ -97,7 +97,7 @@ public class UniProtEntryScored implements HasScore {
                         + this.score.citiationScore;
     }
 
-    public UniProtEntryScored(UniProtEntry copy) {
+    public UniProtEntryScored(UniProtKBEntry copy) {
         this(copy, null);
     }
 
@@ -145,7 +145,7 @@ public class UniProtEntryScored implements HasScore {
     private double scoreFeatures() {
         double oldscore = 0;
         double localScore = 0;
-        boolean isSP = (entry.getEntryType() == UniProtEntryType.SWISSPROT);
+        boolean isSP = (entry.getEntryType() == UniProtKBEntryType.SWISSPROT);
         for (FeatureType type : FeatureType.values()) {
             List<HasScore> scoredList = new ArrayList<>();
             for (Feature feature :
@@ -167,7 +167,7 @@ public class UniProtEntryScored implements HasScore {
     private double scoreGo() {
         double localScore = 0;
         {
-            List<UniProtCrossReference> dbxs = entry.getUniProtCrossReferencesByType("GO");
+            List<UniProtKBCrossReference> dbxs = entry.getUniProtCrossReferencesByType("GO");
             localScore = new GoScored(dbxs, evidenceDatabases).score();
         }
         return localScore;
@@ -177,7 +177,7 @@ public class UniProtEntryScored implements HasScore {
         double oldscore = 0;
         double localScore = 0;
         {
-            List<UniProtCrossReference> dbxs = entry.getUniProtCrossReferencesByType("EMBL");
+            List<UniProtKBCrossReference> dbxs = entry.getUniProtCrossReferencesByType("EMBL");
             oldscore = localScore;
             localScore += new EmblScored(dbxs, evidenceDatabases).score();
             if (Math.abs(oldscore - localScore) > 0.001)
@@ -185,14 +185,14 @@ public class UniProtEntryScored implements HasScore {
         }
 
         {
-            List<UniProtCrossReference> dbxs = entry.getUniProtCrossReferencesByType("PDB");
+            List<UniProtKBCrossReference> dbxs = entry.getUniProtCrossReferencesByType("PDB");
             oldscore = localScore;
             localScore += new PDBScored(dbxs, evidenceDatabases).score();
             if (Math.abs(oldscore - localScore) > 0.001)
                 LOG.debug("Xref score for PDB {}", localScore - oldscore);
         }
         {
-            List<UniProtCrossReference> dbxs = entry.getUniProtCrossReferencesByType("PDBsum");
+            List<UniProtKBCrossReference> dbxs = entry.getUniProtCrossReferencesByType("PDBsum");
             oldscore = localScore;
             localScore += new PDBSumScored(dbxs, evidenceDatabases).score();
             if (Math.abs(oldscore - localScore) > 0.001)
@@ -201,7 +201,7 @@ public class UniProtEntryScored implements HasScore {
 
         oldscore = localScore;
         for (String type : DATABASE_TYPES) {
-            List<UniProtCrossReference> xrefs = entry.getUniProtCrossReferencesByType(type);
+            List<UniProtKBCrossReference> xrefs = entry.getUniProtCrossReferencesByType(type);
             if (!xrefs.isEmpty() && hasEvidences(xrefs)) localScore += 0.1;
         }
         if (Math.abs(oldscore - localScore) > 0.001)
@@ -210,8 +210,8 @@ public class UniProtEntryScored implements HasScore {
         return localScore;
     }
 
-    private boolean hasEvidences(List<UniProtCrossReference> xrefs) {
-        for (UniProtCrossReference xref : xrefs) {
+    private boolean hasEvidences(List<UniProtKBCrossReference> xrefs) {
+        for (UniProtKBCrossReference xref : xrefs) {
             if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceDatabases)) {
                 return true;
             }
@@ -237,7 +237,7 @@ public class UniProtEntryScored implements HasScore {
 
     private double scoreComments() {
         double localScore = 0.0;
-        boolean isSP = (entry.getEntryType() == UniProtEntryType.SWISSPROT);
+        boolean isSP = (entry.getEntryType() == UniProtKBEntryType.SWISSPROT);
         localScore += scoreComments(isSP, CommentType.ALLERGEN, "Allergen");
         localScore += scoreComments(isSP, CommentType.ALTERNATIVE_PRODUCTS, "Alternative Products");
         localScore +=

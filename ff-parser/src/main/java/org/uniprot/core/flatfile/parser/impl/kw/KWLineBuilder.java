@@ -11,7 +11,7 @@ import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
-import org.uniprot.core.uniprot.Keyword;
+import org.uniprot.core.uniprotkb.Keyword;
 
 public class KWLineBuilder extends FFLineBuilderAbstr<List<Keyword>>
         implements FFLineBuilder<List<Keyword>> {

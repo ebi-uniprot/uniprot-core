@@ -1,7 +1,7 @@
 package org.uniprot.core.flatfile.parser.impl.pe;
 
 import org.uniprot.core.flatfile.parser.Converter;
-import org.uniprot.core.uniprot.ProteinExistence;
+import org.uniprot.core.uniprotkb.ProteinExistence;
 
 public class PeLineConverter implements Converter<PeLineObject, ProteinExistence> {
     @Override

@@ -15,11 +15,11 @@ import org.uniprot.core.flatfile.parser.impl.rx.RXLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
-import org.uniprot.core.uniprot.UniProtReference;
-import org.uniprot.core.uniprot.evidence.HasEvidences;
+import org.uniprot.core.uniprotkb.UniProtKBReference;
+import org.uniprot.core.uniprotkb.evidence.HasEvidences;
 
-public class RLineBuilder extends FFLineBuilderAbstr<UniProtReference>
-        implements FFLineBuilder<UniProtReference> {
+public class RLineBuilder extends FFLineBuilderAbstr<UniProtKBReference>
+        implements FFLineBuilder<UniProtKBReference> {
     private static final RPLineBuilder rpLineBuilder = new RPLineBuilder();
     private static final RCLineBuilder rcLineBuilder = new RCLineBuilder();
     private static final RXLineBuilder rxLineBuilder = new RXLineBuilder();
@@ -38,21 +38,21 @@ public class RLineBuilder extends FFLineBuilderAbstr<UniProtReference>
     }
 
     @Override
-    public String buildString(UniProtReference f) {
+    public String buildString(UniProtKBReference f) {
         return buildLine(f, false, false).toString();
     }
 
     @Override
-    public String buildStringWithEvidence(UniProtReference f) {
+    public String buildStringWithEvidence(UniProtKBReference f) {
         return buildLine(f, false, true).toString();
     }
 
     @Override
-    protected FFLine buildLine(UniProtReference f, boolean showEvidence) {
+    protected FFLine buildLine(UniProtKBReference f, boolean showEvidence) {
         return buildLine(f, true, showEvidence);
     }
 
-    private FFLine buildLine(UniProtReference f, boolean includeFFMarkup, boolean showEvidence) {
+    private FFLine buildLine(UniProtKBReference f, boolean includeFFMarkup, boolean showEvidence) {
         List<String> lines = new ArrayList<>();
         // RN LINE
 

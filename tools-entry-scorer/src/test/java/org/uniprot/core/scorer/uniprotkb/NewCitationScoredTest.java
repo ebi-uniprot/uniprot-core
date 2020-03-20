@@ -9,8 +9,8 @@ import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniProtParser;
 import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
-import org.uniprot.core.uniprot.UniProtEntry;
-import org.uniprot.core.uniprot.UniProtReference;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
+import org.uniprot.core.uniprotkb.UniProtKBReference;
 
 /**
  * @author jieluo
@@ -22,57 +22,58 @@ class NewCitationScoredTest {
 
     @Test
     void shouldCitationScore0() {
-        List<UniProtReference> uniProtReferences =
+        List<UniProtKBReference> uniProtKBReferences =
                 parseLines(
                         "RP   SUBCELLULAR LOCATION, INTERACTION WITH PKC-3, PHOSPHORYLATION SITES\n"
                                 + "RP   SER-17 AND SER-65, AND MUTAGENESIS OF SER-17 AND SER-65.");
-        assertEquals(1, uniProtReferences.size());
-        Citation citation = uniProtReferences.get(0).getCitation();
+        assertEquals(1, uniProtKBReferences.size());
+        Citation citation = uniProtKBReferences.get(0).getCitation();
         assertEquals(CitationType.JOURNAL_ARTICLE, citation.getCitationType());
         assertEquals(0.0, new NewCitationScored(citation).score(), 0.001);
     }
 
     @Test
     void shouldCitation2Score0() {
-        List<UniProtReference> uniProtReferences = parseLines("RP   PROTEIN SEQUENCE OF 3-20.");
-        assertEquals(1, uniProtReferences.size());
-        Citation citation = uniProtReferences.get(0).getCitation();
+        List<UniProtKBReference> uniProtKBReferences = parseLines("RP   PROTEIN SEQUENCE OF 3-20.");
+        assertEquals(1, uniProtKBReferences.size());
+        Citation citation = uniProtKBReferences.get(0).getCitation();
         assertEquals(CitationType.JOURNAL_ARTICLE, citation.getCitationType());
         assertEquals(0.0, new NewCitationScored(citation).score(), 0.001);
     }
 
     @Test
     void shouldCitation3Score0() {
-        List<UniProtReference> uniProtReferences = parseLines("RP   PROTEIN SEQUENCE OF 3-20.");
-        assertEquals(1, uniProtReferences.size());
-        Citation citation = uniProtReferences.get(0).getCitation();
+        List<UniProtKBReference> uniProtKBReferences = parseLines("RP   PROTEIN SEQUENCE OF 3-20.");
+        assertEquals(1, uniProtKBReferences.size());
+        Citation citation = uniProtKBReferences.get(0).getCitation();
         assertEquals(CitationType.JOURNAL_ARTICLE, citation.getCitationType());
         assertEquals(0.0, new NewCitationScored(citation).score(), 0.001);
     }
 
     @Test
     void shouldCitation4Score0() {
-        List<UniProtReference> uniProtReferences =
+        List<UniProtKBReference> uniProtKBReferences =
                 parseLines(
                         "RP   ACETYLATION [LARGE SCALE ANALYSIS] AT LYS-70 AND LYS-117, AND MASS\n"
                                 + "RP   SPECTROMETRY.");
-        assertEquals(1, uniProtReferences.size());
-        Citation citation = uniProtReferences.get(0).getCitation();
+        assertEquals(1, uniProtKBReferences.size());
+        Citation citation = uniProtKBReferences.get(0).getCitation();
         assertEquals(CitationType.JOURNAL_ARTICLE, citation.getCitationType());
         assertEquals(0.0, new NewCitationScored(citation).score(), 0.001);
     }
 
     @Test
     void shouldCitation5Score0() {
-        List<UniProtReference> uniProtReferences = parseLines("RP   NUCLEOTIDE SEQUENCE [MRNA].");
-        assertEquals(1, uniProtReferences.size());
-        Citation citation = uniProtReferences.get(0).getCitation();
+        List<UniProtKBReference> uniProtKBReferences =
+                parseLines("RP   NUCLEOTIDE SEQUENCE [MRNA].");
+        assertEquals(1, uniProtKBReferences.size());
+        Citation citation = uniProtKBReferences.get(0).getCitation();
         assertEquals(CitationType.JOURNAL_ARTICLE, citation.getCitationType());
         assertEquals(0.0, new NewCitationScored(citation).score(), 0.001);
     }
 
-    private List<UniProtReference> parseLines(String citationLines) {
-        UniProtEntry entry =
+    private List<UniProtKBReference> parseLines(String citationLines) {
+        UniProtKBEntry entry =
                 new DefaultUniProtParser(new SupportingDataMapImpl(), true)
                         .parse(swissProtEntry(citationLines));
         return entry.getReferences();

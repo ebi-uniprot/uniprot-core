@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.UniProtEntry;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.comment.RnaEditingComment;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.RnaEditingComment;
 
 class RnaEditingMapTest {
 
@@ -26,7 +26,7 @@ class RnaEditingMapTest {
                         + "CC       has slightly higher levels during early development with only a\n"
                         + "CC       four-fold increase at pupation.;";
 
-        UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(rnaEditingLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(rnaEditingLine);
 
         List<RnaEditingComment> rnaEditingComments =
                 entry.getCommentsByType(CommentType.RNA_EDITING);

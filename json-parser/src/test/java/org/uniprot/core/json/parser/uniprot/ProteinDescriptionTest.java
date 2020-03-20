@@ -8,8 +8,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
-import org.uniprot.core.uniprot.description.*;
-import org.uniprot.core.uniprot.description.impl.*;
+import org.uniprot.core.uniprotkb.description.*;
+import org.uniprot.core.uniprotkb.description.impl.*;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

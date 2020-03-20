@@ -3,8 +3,8 @@ package org.uniprot.core.flatfile.antlr;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
@@ -21,8 +21,8 @@ class CcLineDiseaseCommentParserTest {
                         + "CC       Reye-like episodes (brain edema and vomiting that may rapidly\n"
                         + "CC       progress to seizures, coma and death). Note=The disease is caused\n"
                         + "CC       by mutations affecting the gene represented in this entry.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -54,8 +54,8 @@ class CcLineDiseaseCommentParserTest {
                         + "CC       ECO:0000303|Ref.6}. Note=The gene represented in this entry is\n"
                         + "CC       involved in disease pathogenesis. {ECO:0000303|Ref.6,\n"
                         + "CC       ECO:0000313|PDB:3OW2, ECO:0000256|HAMAP-Rule:MF_00205}.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -102,8 +102,8 @@ class CcLineDiseaseCommentParserTest {
                         + "involved in disease pathogenesis. {ECO:0000303|Ref.6,\n"
                         + "ECO:0000313|PDB:3OW2, ECO:0000256|HAMAP-Rule:MF_00205}.\n";
         CcLineFormater formater = new CcLineFormater();
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineStringEvidence);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);
@@ -123,8 +123,8 @@ class CcLineDiseaseCommentParserTest {
                         + "Note=The gene represented in this "
                         + "entry is involved in disease pathogenesis. Another note.");
         CcLineFormater formater = new CcLineFormater();
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineStringEvidence);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);
@@ -146,8 +146,8 @@ class CcLineDiseaseCommentParserTest {
                         + "Rule:MF_00205, ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2}. Another"
                         + " note. {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000303|Ref.6}.");
         CcLineFormater formater = new CcLineFormater();
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineStringEvidence);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);
@@ -167,8 +167,8 @@ class CcLineDiseaseCommentParserTest {
                         + " Note=The disease is caused by mutations affecting the gene represented in this entry.";
 
         CcLineFormater formater = new CcLineFormater();
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineStringEvidence);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);

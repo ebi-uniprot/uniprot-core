@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
-import org.uniprot.core.uniprot.xdb.UniProtDatabase;
-import org.uniprot.core.uniprot.xdb.impl.UniProtCrossReferenceBuilder;
-import org.uniprot.cv.xdb.UniProtDatabaseImpl;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
+import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
+import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 
 class EntryCrossReferenceMapTest {
 
@@ -24,10 +24,10 @@ class EntryCrossReferenceMapTest {
 
     @Test
     void hasEmbl() {
-        List<UniProtCrossReference> xrefs = new ArrayList<>();
+        List<UniProtKBCrossReference> xrefs = new ArrayList<>();
         xrefs.add(
                 createXref(
-                        new UniProtDatabaseImpl("EMBL"),
+                        new UniProtKBDatabaseImpl("EMBL"),
                         "AY189288",
                         "AAO86732.1",
                         "-",
@@ -35,7 +35,7 @@ class EntryCrossReferenceMapTest {
                         null));
         xrefs.add(
                 createXref(
-                        new UniProtDatabaseImpl("EMBL"),
+                        new UniProtKBDatabaseImpl("EMBL"),
                         "AK022746",
                         "BAB14220.1",
                         "-",
@@ -49,10 +49,10 @@ class EntryCrossReferenceMapTest {
 
     @Test
     void hasEmblAndEnsembl() {
-        List<UniProtCrossReference> xrefs = new ArrayList<>();
+        List<UniProtKBCrossReference> xrefs = new ArrayList<>();
         xrefs.add(
                 createXref(
-                        new UniProtDatabaseImpl("EMBL"),
+                        new UniProtKBDatabaseImpl("EMBL"),
                         "AY189288",
                         "AAO86732.1",
                         "-",
@@ -60,7 +60,7 @@ class EntryCrossReferenceMapTest {
                         null));
         xrefs.add(
                 createXref(
-                        new UniProtDatabaseImpl("EMBL"),
+                        new UniProtKBDatabaseImpl("EMBL"),
                         "AK022746",
                         "BAB14220.1",
                         "-",
@@ -70,7 +70,7 @@ class EntryCrossReferenceMapTest {
         // Ensembl; ENST00000439351; ENSP00000414398; ENSG00000090520.
         xrefs.add(
                 createXref(
-                        new UniProtDatabaseImpl("Ensembl"),
+                        new UniProtKBDatabaseImpl("Ensembl"),
                         "ENST00000330899",
                         "ENSP00000369127",
                         "ENSG00000086061",
@@ -78,7 +78,7 @@ class EntryCrossReferenceMapTest {
                         "P31689-1"));
         xrefs.add(
                 createXref(
-                        new UniProtDatabaseImpl("Ensembl"),
+                        new UniProtKBDatabaseImpl("Ensembl"),
                         "ENST00000439351",
                         "ENSP00000414398",
                         "ENSG00000090520",
@@ -93,19 +93,19 @@ class EntryCrossReferenceMapTest {
 
     @Test
     void hasPdbAndSmr() {
-        List<UniProtCrossReference> xrefs = new ArrayList<>();
-        xrefs.add(createXref(new UniProtDatabaseImpl("PDB"), "2LO1", "NMR", "-", "A=1-70", null));
-        xrefs.add(createXref(new UniProtDatabaseImpl("PDB"), "2M6Y", "NMR", "-", "A=1-67", null));
+        List<UniProtKBCrossReference> xrefs = new ArrayList<>();
+        xrefs.add(createXref(new UniProtKBDatabaseImpl("PDB"), "2LO1", "NMR", "-", "A=1-70", null));
+        xrefs.add(createXref(new UniProtKBDatabaseImpl("PDB"), "2M6Y", "NMR", "-", "A=1-67", null));
         // PDB; 5TKG; X-ray; 1.20 A; A/B=16-23
         xrefs.add(
                 createXref(
-                        new UniProtDatabaseImpl("PDB"),
+                        new UniProtKBDatabaseImpl("PDB"),
                         "5TKG",
                         "X-ray",
                         "1.20 A",
                         "A/B=16-23",
                         null));
-        xrefs.add(createXref(new UniProtDatabaseImpl("SMR"), "P31689", "-", null, null, null));
+        xrefs.add(createXref(new UniProtKBDatabaseImpl("SMR"), "P31689", "-", null, null, null));
         EntryCrossReferenceMap dl = new EntryCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(3, result.size());
@@ -117,12 +117,13 @@ class EntryCrossReferenceMapTest {
 
     @Test
     void hasIntactAndString() {
-        List<UniProtCrossReference> xrefs = new ArrayList<>();
-        xrefs.add(createXref(new UniProtDatabaseImpl("IntAct"), "P31689", "97", null, null, null));
+        List<UniProtKBCrossReference> xrefs = new ArrayList<>();
+        xrefs.add(
+                createXref(new UniProtKBDatabaseImpl("IntAct"), "P31689", "97", null, null, null));
 
         xrefs.add(
                 createXref(
-                        new UniProtDatabaseImpl("STRING"),
+                        new UniProtKBDatabaseImpl("STRING"),
                         "9606.ENSP00000369127",
                         "-",
                         null,
@@ -137,14 +138,19 @@ class EntryCrossReferenceMapTest {
 
     @Test
     void hasChemblAndSwissLipids() {
-        List<UniProtCrossReference> xrefs = new ArrayList<>();
+        List<UniProtKBCrossReference> xrefs = new ArrayList<>();
         xrefs.add(
                 createXref(
-                        new UniProtDatabaseImpl("ChEMBL"), "CHEMBL2189122", "-", null, null, null));
+                        new UniProtKBDatabaseImpl("ChEMBL"),
+                        "CHEMBL2189122",
+                        "-",
+                        null,
+                        null,
+                        null));
 
         xrefs.add(
                 createXref(
-                        new UniProtDatabaseImpl("SwissLipids"),
+                        new UniProtKBDatabaseImpl("SwissLipids"),
                         "SLP:000000475",
                         "-",
                         null,
@@ -159,9 +165,9 @@ class EntryCrossReferenceMapTest {
 
     @Test
     void testBbXrefToString() {
-        UniProtCrossReference dbxref =
+        UniProtKBCrossReference dbxref =
                 createXref(
-                        new UniProtDatabaseImpl("EMBL"),
+                        new UniProtKBDatabaseImpl("EMBL"),
                         "AY189288",
                         "AAO86732.1",
                         "-",
@@ -174,9 +180,9 @@ class EntryCrossReferenceMapTest {
     @Test
     void testProteomeXrefToString() {
         // UP000006548: Chromosome 4
-        UniProtCrossReference dbxref =
+        UniProtKBCrossReference dbxref =
                 createXref(
-                        new UniProtDatabaseImpl("Proteomes"),
+                        new UniProtKBDatabaseImpl("Proteomes"),
                         "UP000006548",
                         "Chromosome 4",
                         null,
@@ -191,8 +197,8 @@ class EntryCrossReferenceMapTest {
         assertEquals(expected, evaluated);
     }
 
-    private UniProtCrossReference createXref(
-            UniProtDatabase type,
+    private UniProtKBCrossReference createXref(
+            UniProtKBDatabase type,
             String id,
             String desc,
             String third,

@@ -2,13 +2,13 @@ package org.uniprot.core.parser.tsv.uniprot;
 
 import java.util.*;
 
-import org.uniprot.core.uniprot.UniProtEntryType;
+import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 
 public class EntryTypeMap implements NamedValueMap {
     public static final List<String> FIELDS = Collections.singletonList("reviewed");
-    private final UniProtEntryType entryType;
+    private final UniProtKBEntryType entryType;
 
-    public EntryTypeMap(UniProtEntryType entryType) {
+    public EntryTypeMap(UniProtKBEntryType entryType) {
         this.entryType = entryType;
     }
 
@@ -17,7 +17,7 @@ public class EntryTypeMap implements NamedValueMap {
         Map<String, String> map = new HashMap<>();
         map.put(
                 FIELDS.get(0),
-                entryType.equals(UniProtEntryType.SWISSPROT) ? "reviewed" : "unreviewed");
+                entryType.equals(UniProtKBEntryType.SWISSPROT) ? "reviewed" : "unreviewed");
         return map;
     }
 

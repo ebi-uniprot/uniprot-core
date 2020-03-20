@@ -8,11 +8,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.comment.SubcellularLocation;
-import org.uniprot.core.uniprot.comment.SubcellularLocationValue;
-import org.uniprot.core.uniprot.comment.impl.SubcellularLocationBuilder;
-import org.uniprot.core.uniprot.comment.impl.SubcellularLocationValueBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.comment.SubcellularLocation;
+import org.uniprot.core.uniprotkb.comment.SubcellularLocationValue;
+import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationValueBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.xml.jaxb.uniprot.SubcellularLocationType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;

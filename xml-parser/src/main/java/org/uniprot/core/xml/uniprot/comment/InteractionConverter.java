@@ -2,9 +2,9 @@ package org.uniprot.core.xml.uniprot.comment;
 
 import java.util.List;
 
-import org.uniprot.core.uniprot.comment.Interaction;
-import org.uniprot.core.uniprot.comment.InteractionType;
-import org.uniprot.core.uniprot.comment.impl.InteractionBuilder;
+import org.uniprot.core.uniprotkb.comment.Interaction;
+import org.uniprot.core.uniprotkb.comment.InteractionType;
+import org.uniprot.core.uniprotkb.comment.impl.InteractionBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.InteractantType;
@@ -84,7 +84,7 @@ public class InteractionConverter implements Converter<CommentType, Interaction>
 
         InteractionType type = uniObj.getType();
         if (type != InteractionType.SELF) {
-            secondactantType.setId(uniObj.getUniProtAccession().getValue());
+            secondactantType.setId(uniObj.getUniProtkbAccession().getValue());
             String interactionGeneName = uniObj.getGeneName();
             if (!Strings.isNullOrEmpty(interactionGeneName) && !"-".equals(interactionGeneName)) {
                 secondactantType.setLabel(interactionGeneName);

@@ -3,8 +3,8 @@ package org.uniprot.core.flatfile.antlr;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.ss.SsLineObject;
 
 class SsLineParserTest {
@@ -18,8 +18,8 @@ class SsLineParserTest {
                         + "**EV EI4; EMBL; -; CAQ30614.1; 18-DEC-2010.\n"
                         + "**DG dg-000-000-614_P;\n"
                         + "**ZB YOK, 19-NOV-2002;\n";
-        UniprotLineParser<SsLineObject> parser =
-                new DefaultUniprotLineParserFactory().createSsLineParser();
+        UniprotKBLineParser<SsLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createSsLineParser();
         SsLineObject obj = parser.parse(ssLines);
         assertEquals(3, obj.getSsEVLines().size());
         assertEquals(2, obj.getSsIALines().size());
@@ -52,8 +52,8 @@ class SsLineParserTest {
                         + "**EV ECO:0000256; SAAS:SAAS022644_004_000329; -; 11-FEB-2014.\n"
                         + "**DG dg-000-000-614_P;\n"
                         + "**ZD YOK, 19-NOV-2004;\n";
-        UniprotLineParser<SsLineObject> parser =
-                new DefaultUniprotLineParserFactory().createSsLineParser();
+        UniprotKBLineParser<SsLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createSsLineParser();
         SsLineObject obj = parser.parse(ssLines);
         assertEquals(3, obj.getSsEVLines().size());
         assertEquals(2, obj.getSsIALines().size());
@@ -70,8 +70,8 @@ class SsLineParserTest {
                 "**\n"
                         + "**   #################    INTERNAL SECTION    ##################\n"
                         + "**EV ECO:0000313; ProtImp; -; 07-NOV-2006.\n";
-        UniprotLineParser<SsLineObject> parser =
-                new DefaultUniprotLineParserFactory().createSsLineParser();
+        UniprotKBLineParser<SsLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createSsLineParser();
         SsLineObject obj = parser.parse(ssLines);
         assertEquals(1, obj.getSsEVLines().size());
         assertEquals(0, obj.getSsIALines().size());
@@ -89,8 +89,8 @@ class SsLineParserTest {
                         + "**EV ECO:0000303; Reference:x; XXX; 13-NOV-1978.\n"
                         + "**EV ECO:0000312; DatabaseName:DatabaseId; XXX; 13-NOV-1978.\n"
                         + "**EV ECO:0000305; -; XXX; 13-NOV-1978.\n";
-        UniprotLineParser<SsLineObject> parser =
-                new DefaultUniprotLineParserFactory().createSsLineParser();
+        UniprotKBLineParser<SsLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createSsLineParser();
         SsLineObject obj = parser.parse(ssLines);
         assertEquals(6, obj.getSsEVLines().size());
         assertEquals(0, obj.getSsIALines().size());
@@ -109,8 +109,8 @@ class SsLineParserTest {
                         + "**   #################     SOURCE SECTION     ##################\n"
                         + "**   LOCUS       999163         29 aa\n"
                         + "**               26-SEP-1995\n";
-        UniprotLineParser<SsLineObject> parser =
-                new DefaultUniprotLineParserFactory().createSsLineParser();
+        UniprotKBLineParser<SsLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createSsLineParser();
         SsLineObject obj = parser.parse(ssLines);
         assertEquals(0, obj.getSsEVLines().size());
         assertEquals(0, obj.getSsIALines().size());
@@ -136,8 +136,8 @@ class SsLineParserTest {
                         + "**EV ECO:0000256; HAMAP-Rule:MF_01417; -; 01-OCT-2010.\n"
                         + "**DG dg-000-000-614_P;\n"
                         + "**ZB YOK, 19-NOV-2002;\n";
-        UniprotLineParser<SsLineObject> parser =
-                new DefaultUniprotLineParserFactory().createSsLineParser();
+        UniprotKBLineParser<SsLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createSsLineParser();
         SsLineObject obj = parser.parse(ssLines);
         assertEquals(1, obj.getSsEVLines().size());
         assertEquals(2, obj.getSsIALines().size());

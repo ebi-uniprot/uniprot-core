@@ -4,6 +4,7 @@ import static org.uniprot.core.util.Utils.unmodifiableList;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.pathway.PathwayEntry;
@@ -74,5 +75,33 @@ public class PathwayEntryImpl implements PathwayEntry {
 
     public List<DiseaseCrossReference> getCrossReferences() {
         return crossReferences;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PathwayEntryImpl that = (PathwayEntryImpl) o;
+        return Objects.equals(accession, that.accession)
+                && Objects.equals(id, that.id)
+                && Objects.equals(pathwayClass, that.pathwayClass)
+                && Objects.equals(definition, that.definition)
+                && Objects.equals(synonyms, that.synonyms)
+                && Objects.equals(isAParents, that.isAParents)
+                && Objects.equals(partOfParents, that.partOfParents)
+                && Objects.equals(crossReferences, that.crossReferences);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                accession,
+                id,
+                pathwayClass,
+                definition,
+                synonyms,
+                isAParents,
+                partOfParents,
+                crossReferences);
     }
 }

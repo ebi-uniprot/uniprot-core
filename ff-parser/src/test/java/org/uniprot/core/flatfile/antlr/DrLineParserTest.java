@@ -3,8 +3,8 @@ package org.uniprot.core.flatfile.antlr;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.dr.DrLineObject;
 import org.uniprot.core.flatfile.parser.impl.dr.DrLineObject.DrObject;
 
@@ -12,8 +12,8 @@ class DrLineParserTest {
     @Test
     void testEMBL() {
         String dfLines = "DR   EMBL; AY548484; AAT09660.1; -; Genomic_DNA.\n";
-        UniprotLineParser<DrLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDrLineParser();
+        UniprotKBLineParser<DrLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDrLineParser();
         DrLineObject obj = parser.parse(dfLines);
         assertEquals(1, obj.drObjects.size());
         verify(obj.drObjects.get(0), "EMBL", "AY548484", "AAT09660.1", "-", "Genomic_DNA", null);
@@ -51,8 +51,8 @@ class DrLineParserTest {
                         + "DR   GO; GO:0046782; P:regulation of viral transcription; IEA:InterPro.\n"
                         + "DR   InterPro; IPR007031; Poxvirus_VLTF3.\n"
                         + "DR   Pfam; PF04947; Pox_VLTF3; 1.\n";
-        UniprotLineParser<DrLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDrLineParser();
+        UniprotKBLineParser<DrLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDrLineParser();
         DrLineObject obj = parser.parse(dfLines);
         assertEquals(9, obj.drObjects.size());
         verify(obj.drObjects.get(0), "EMBL", "AY548484", "AAT09660.1", "-", "Genomic_DNA", null);
@@ -83,8 +83,8 @@ class DrLineParserTest {
     @Test
     void testWithEvidence() {
         String dfLines = "DR   EMBL; HF571520; CCQ33941.1; -; Genomic_DNA. {ECO:19841122|Ref.1}\n";
-        UniprotLineParser<DrLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDrLineParser();
+        UniprotKBLineParser<DrLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDrLineParser();
         DrLineObject obj = parser.parse(dfLines);
         assertEquals(1, obj.drObjects.size());
         verify(obj.drObjects.get(0), "EMBL", "HF571520", "CCQ33941.1", "-", "Genomic_DNA", null);
@@ -98,8 +98,8 @@ class DrLineParserTest {
         String dfLines =
                 "DR   EMBL; AY548484; AAT09696.1; -; Genomic_DNA.\n"
                         + "DR   Gene3D; 3.40.50.1000; -; 2.\n";
-        UniprotLineParser<DrLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDrLineParser();
+        UniprotKBLineParser<DrLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDrLineParser();
         DrLineObject obj = parser.parse(dfLines);
         assertEquals(2, obj.drObjects.size());
         verify(obj.drObjects.get(0), "EMBL", "AY548484", "AAT09696.1", "-", "Genomic_DNA", null);
@@ -110,8 +110,8 @@ class DrLineParserTest {
     void testWithSemicolon() {
         String dfLines =
                 "DR   Orphanet; 102724; Acute myeloid leukemia with t(8;21)(q22;q22) translocation.\n";
-        UniprotLineParser<DrLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDrLineParser();
+        UniprotKBLineParser<DrLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDrLineParser();
         DrLineObject obj = parser.parse(dfLines);
         assertEquals(1, obj.drObjects.size());
         verify(
@@ -128,8 +128,8 @@ class DrLineParserTest {
     void testWithDots2() {
         String dfLines =
                 "DR   UCSC; T23F11.3a.1; c. elegans.\n" + "DR   Gene3D; 3.40.50.1000; -; 2.\n";
-        UniprotLineParser<DrLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDrLineParser();
+        UniprotKBLineParser<DrLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDrLineParser();
         DrLineObject obj = parser.parse(dfLines);
         assertEquals(2, obj.drObjects.size());
         verify(obj.drObjects.get(0), "UCSC", "T23F11.3a.1", "c. elegans", null, null, null);
@@ -139,8 +139,8 @@ class DrLineParserTest {
     @Test
     void testWithSlash() {
         String dfLines = "DR   FlyBase; FBgn0013067; Dvir\\Cdc37.\n";
-        UniprotLineParser<DrLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDrLineParser();
+        UniprotKBLineParser<DrLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDrLineParser();
         DrLineObject obj = parser.parse(dfLines);
         assertEquals(1, obj.drObjects.size());
         verify(obj.drObjects.get(0), "FlyBase", "FBgn0013067", "Dvir\\Cdc37", null, null, null);
@@ -149,8 +149,8 @@ class DrLineParserTest {
     @Test
     void testWithDash() {
         String dfLines = "DR   Orphanet; 99880; Hyperparathyroidism - jaw tumor syndrome.\n";
-        UniprotLineParser<DrLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDrLineParser();
+        UniprotKBLineParser<DrLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDrLineParser();
         DrLineObject obj = parser.parse(dfLines);
         assertEquals(1, obj.drObjects.size());
         verify(
@@ -167,8 +167,8 @@ class DrLineParserTest {
     void testWithCurlyBracket() {
         String dfLines =
                 "DR   GO; GO:0033942; F:4-alpha-D-{(1->4)-alpha-D-glucano}trehalose trehalohydrolase activity; IEA:UniProtKB-EC.\n";
-        UniprotLineParser<DrLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDrLineParser();
+        UniprotKBLineParser<DrLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDrLineParser();
         DrLineObject obj = parser.parse(dfLines);
         assertEquals(1, obj.drObjects.size());
         verify(
@@ -188,8 +188,8 @@ class DrLineParserTest {
                         + "DR   PROSITE; PS01261; UPF0020; 1.\n"
                         + "**   PROSITE; PS00092; N6_MTASE; FALSE_POS_1.\n"
                         + "**   PROSITE; PS00092; N6_MTASE; FALSE_POS_2.\n";
-        UniprotLineParser<DrLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDrLineParser();
+        UniprotKBLineParser<DrLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDrLineParser();
         DrLineObject obj = parser.parse(dfLines);
         assertEquals(4, obj.drObjects.size());
         verify(obj.drObjects.get(0), "PROSITE", "PS51165", "THUMP", "1", null, null);
@@ -205,8 +205,8 @@ class DrLineParserTest {
                         + "DR   PRIDE; P19803; -. [P19802-2]\n"
                         + "DR   PROSITE; PS00157; RUBISCO_LARGE; 1. [P21235-2]\n"
                         + "DR   PROSITE; PS00158; RUBISCO_LARGE; 1. [P21235-3]{ECO:19841122|Ref.1}\n";
-        UniprotLineParser<DrLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDrLineParser();
+        UniprotKBLineParser<DrLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDrLineParser();
         DrLineObject obj = parser.parse(dfLines);
         assertEquals(4, obj.drObjects.size());
         verify(obj.drObjects.get(0), "PRIDE", "P19802", "-", null, null, null);

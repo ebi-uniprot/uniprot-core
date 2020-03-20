@@ -1,7 +1,7 @@
 package org.uniprot.core.xml.uniprot;
 
-import org.uniprot.core.uniprot.taxonomy.OrganismHost;
-import org.uniprot.core.uniprot.taxonomy.impl.OrganismHostBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismHostBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.OrganismType;

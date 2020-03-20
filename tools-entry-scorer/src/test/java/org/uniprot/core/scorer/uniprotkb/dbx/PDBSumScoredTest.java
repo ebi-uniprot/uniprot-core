@@ -5,7 +5,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.xdb.PDBSumScored;
-import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 
 class PDBSumScoredTest extends AbstractDBXTest {
     @Test
@@ -22,7 +22,7 @@ class PDBSumScoredTest extends AbstractDBXTest {
 
     @Override
     HasScore getScored(String lines) {
-        List<UniProtCrossReference> crossReferences = getDBXRefs(lines, "PDBsum");
+        List<UniProtKBCrossReference> crossReferences = getDBXRefs(lines, "PDBsum");
         return new PDBSumScored(crossReferences);
     }
 }

@@ -3,9 +3,9 @@ package org.uniprot.core.flatfile.parser.impl.cc;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.uniprot.core.uniprot.comment.Interaction;
-import org.uniprot.core.uniprot.comment.InteractionComment;
-import org.uniprot.core.uniprot.comment.InteractionType;
+import org.uniprot.core.uniprotkb.comment.Interaction;
+import org.uniprot.core.uniprotkb.comment.InteractionComment;
+import org.uniprot.core.uniprotkb.comment.InteractionType;
 
 /**
  * @author jieluo CC -!- INTERACTION: |CC G5EC23:hcf-1; NbExp=2; IntAct=EBI-318108, EBI-4480523; |CC
@@ -30,7 +30,7 @@ public class CCInteractionCommentLineBuilder extends CCLineBuilderAbstr<Interact
             if (act.getType().equals(InteractionType.SELF)) {
                 sb.append("Self");
             } else {
-                sb.append(act.getUniProtAccession().getValue());
+                sb.append(act.getUniProtkbAccession().getValue());
                 sb.append(":");
                 sb.append(act.getGeneName());
             }

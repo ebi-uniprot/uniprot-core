@@ -2,7 +2,7 @@ package org.uniprot.core.json.parser.uniprot.serializer;
 
 import java.io.IOException;
 
-import org.uniprot.core.uniprot.evidence.impl.EvidenceImpl;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidenceImpl;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;

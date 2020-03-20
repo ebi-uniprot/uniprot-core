@@ -7,7 +7,7 @@ import java.util.List;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
-import org.uniprot.core.uniprot.taxonomy.Taxonomy;
+import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 
 public interface ProteomeEntry extends Serializable {
     ProteomeId getId();

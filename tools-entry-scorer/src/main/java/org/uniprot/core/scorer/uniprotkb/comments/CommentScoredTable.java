@@ -5,8 +5,8 @@ import static org.uniprot.core.scorer.uniprotkb.Consensus.*;
 import java.util.EnumMap;
 
 import org.uniprot.core.scorer.uniprotkb.Consensus;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.evidence.EvidenceCode;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 
 public class CommentScoredTable {
     private static EnumMap<CommentType, CommentScoredInfo> commentMap =

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.uniprot.core.uniprot.comment.SubcellularLocation;
-import org.uniprot.core.uniprot.comment.SubcellularLocationValue;
-import org.uniprot.core.uniprot.comment.impl.SubcellularLocationBuilder;
-import org.uniprot.core.uniprot.comment.impl.SubcellularLocationValueBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.comment.SubcellularLocation;
+import org.uniprot.core.uniprotkb.comment.SubcellularLocationValue;
+import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationValueBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;

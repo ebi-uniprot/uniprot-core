@@ -7,8 +7,8 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.taxonomy.*;
-import org.uniprot.core.uniprot.taxonomy.Taxonomy;
-import org.uniprot.core.uniprot.taxonomy.impl.AbstractOrganismNameBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
+import org.uniprot.core.uniprotkb.taxonomy.impl.AbstractOrganismNameBuilder;
 import org.uniprot.core.util.Utils;
 
 public class TaxonomyEntryBuilder

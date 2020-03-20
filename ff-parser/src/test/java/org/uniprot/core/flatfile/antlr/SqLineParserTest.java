@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.sq.SqLineObject;
 
 class SqLineParserTest {
@@ -19,8 +19,8 @@ class SqLineParserTest {
                         + "     EKDLVKDFKA LVESAHRMRQ GHMINVKYIL YQLLKKHGHG PDGPDILTVK TGSKGVLYDD\n"
                         + "     SFRKIYTDLG WKFTPL\n";
 
-        UniprotLineParser<SqLineObject> parser =
-                new DefaultUniprotLineParserFactory().createSqLineParser();
+        UniprotKBLineParser<SqLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createSqLineParser();
         SqLineObject obj = parser.parse(osLines);
         verify(obj, 256, "B4840739BF7D4121", 29735, "MAFSAEDVLKE", "GWKFTPL");
     }
@@ -40,8 +40,8 @@ class SqLineParserTest {
                 "SQ   SEQUENCE   256 AA;  29735 MW;  B4840739BF7D4121 CRC64;\n"
                         + "     MAFSAEDVLK WKFTPL\n";
 
-        UniprotLineParser<SqLineObject> parser =
-                new DefaultUniprotLineParserFactory().createSqLineParser();
+        UniprotKBLineParser<SqLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createSqLineParser();
         SqLineObject obj = parser.parse(osLines);
         verify(obj, 256, "B4840739BF7D4121", 29735, "MAFSAEDVLK", "WKFTPL");
         assertEquals("MAFSAEDVLKWKFTPL", obj.sequence);
@@ -54,8 +54,8 @@ class SqLineParserTest {
                         + "     MDEGYYSGNL ESVLGYVSDM HTKLASITQL VIAKIETIDN DILNNDIVNF IMCRSNLNNP\n"
                         + "     FISFLDTVYT IIDQEIYQNE\n";
 
-        UniprotLineParser<SqLineObject> parser =
-                new DefaultUniprotLineParserFactory().createSqLineParser();
+        UniprotKBLineParser<SqLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createSqLineParser();
         SqLineObject obj = parser.parse(osLines);
         verify(obj, 162, "1883589730544714", 18749, "MDEGYYSGNL", "IIDQEIYQNE");
         assertEquals(

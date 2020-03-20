@@ -11,12 +11,12 @@ import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.flatfile.writer.impl.LineBuilderHelper;
-import org.uniprot.core.uniprot.comment.Comment;
-import org.uniprot.core.uniprot.comment.FreeText;
-import org.uniprot.core.uniprot.comment.HasMolecule;
-import org.uniprot.core.uniprot.comment.Note;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
-import org.uniprot.core.uniprot.evidence.HasEvidences;
+import org.uniprot.core.uniprotkb.comment.Comment;
+import org.uniprot.core.uniprotkb.comment.FreeText;
+import org.uniprot.core.uniprotkb.comment.HasMolecule;
+import org.uniprot.core.uniprotkb.comment.Note;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.evidence.HasEvidences;
 
 import com.google.common.base.Strings;
 

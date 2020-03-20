@@ -3,16 +3,16 @@ package org.uniprot.core.flatfile.antlr;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.oh.OhLineObject;
 
 class OhLineParserTest {
     @Test
     void test() {
         String ohLines = "OH   NCBI_TaxID=9598; Pan troglodytes (Chimpanzee).\n";
-        UniprotLineParser<OhLineObject> parser =
-                new DefaultUniprotLineParserFactory().createOhLineParser();
+        UniprotKBLineParser<OhLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createOhLineParser();
         OhLineObject obj = parser.parse(ohLines);
 
         assertEquals(1, obj.getHosts().size());
@@ -28,8 +28,8 @@ class OhLineParserTest {
     void test2() {
         String ohLines =
                 "OH   NCBI_TaxID=3662; Cucurbita moschata (Winter crookneck squash) (Cucurbita pepo var. moschata).\n";
-        UniprotLineParser<OhLineObject> parser =
-                new DefaultUniprotLineParserFactory().createOhLineParser();
+        UniprotKBLineParser<OhLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createOhLineParser();
         OhLineObject obj = parser.parse(ohLines);
 
         assertEquals(1, obj.getHosts().size());
@@ -44,8 +44,8 @@ class OhLineParserTest {
         String ohLines =
                 "OH   NCBI_TaxID=3662; Cucurbita moschata (Winter crookneck squash) (Cucurbita pepo var. moschata).\n"
                         + "OH   NCBI_TaxID=9598; Pan troglodytes (Chimpanzee).\n";
-        UniprotLineParser<OhLineObject> parser =
-                new DefaultUniprotLineParserFactory().createOhLineParser();
+        UniprotKBLineParser<OhLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createOhLineParser();
         OhLineObject obj = parser.parse(ohLines);
 
         assertEquals(2, obj.getHosts().size());

@@ -2,10 +2,10 @@ package org.uniprot.core.xml.uniprot;
 
 import java.util.List;
 
-import org.uniprot.core.uniprot.GeneEncodingType;
-import org.uniprot.core.uniprot.GeneLocation;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.impl.GeneLocationBuilder;
+import org.uniprot.core.uniprotkb.GeneEncodingType;
+import org.uniprot.core.uniprotkb.GeneLocation;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.impl.GeneLocationBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.GeneLocationType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;

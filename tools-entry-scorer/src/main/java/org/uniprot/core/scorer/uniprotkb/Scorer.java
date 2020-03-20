@@ -7,7 +7,7 @@ import java.util.TreeMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.uniprot.core.uniprot.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 08-Mar-2010 Time: 14:29:39 To change this template
@@ -118,7 +118,8 @@ public class Scorer {
         setScores.get(SetScore.Type.TOTAL_SCORE).addScore(score.totalScore);
     }
 
-    //    public SetScore score(Iterator<UniProtEntry> is, OutputStream out, List<EvidenceDatabase>
+    //    public SetScore score(Iterator<UniProtKBEntry> is, OutputStream out,
+    // List<EvidenceDatabase>
     // evidenceDatabases)
     //            throws IOException {
     //
@@ -130,7 +131,7 @@ public class Scorer {
     //            writer.newLine();
     //
     //            while (is.hasNext()) {
-    //                UniProtEntry entry = is.next();
+    //                UniProtKBEntry entry = is.next();
     //                LOG.debug("****************************************************************");
     //                EntryScore scored = new UniProtEntryScored(entry,
     // evidenceDatabases).getEntryScore();

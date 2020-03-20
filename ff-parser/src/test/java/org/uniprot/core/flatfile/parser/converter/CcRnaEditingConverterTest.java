@@ -12,10 +12,10 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.EvidencedString;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.RnaEditing;
-import org.uniprot.core.uniprot.comment.Comment;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.comment.RnaEditingComment;
-import org.uniprot.core.uniprot.comment.RnaEditingLocationType;
+import org.uniprot.core.uniprotkb.comment.Comment;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.RnaEditingComment;
+import org.uniprot.core.uniprotkb.comment.RnaEditingLocationType;
 
 class CcRnaEditingConverterTest {
     private final CcLineConverter converter = new CcLineConverter(null, null);

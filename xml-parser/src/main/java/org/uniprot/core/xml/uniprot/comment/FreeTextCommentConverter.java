@@ -3,9 +3,9 @@ package org.uniprot.core.xml.uniprot.comment;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.uniprot.comment.FreeTextComment;
-import org.uniprot.core.uniprot.comment.impl.FreeTextCommentBuilder;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.comment.FreeTextComment;
+import org.uniprot.core.uniprotkb.comment.impl.FreeTextCommentBuilder;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
@@ -31,8 +31,8 @@ public class FreeTextCommentConverter implements CommentConverter<FreeTextCommen
     @Override
     public FreeTextComment fromXml(CommentType xmlObj) {
         if ((xmlObj == null) || xmlObj.getText().isEmpty()) return null;
-        org.uniprot.core.uniprot.comment.CommentType type =
-                org.uniprot.core.uniprot.comment.CommentType.typeOf(xmlObj.getType());
+        org.uniprot.core.uniprotkb.comment.CommentType type =
+                org.uniprot.core.uniprotkb.comment.CommentType.typeOf(xmlObj.getType());
         List<EvidencedValue> texts =
                 xmlObj.getText().stream()
                         .map(eviValueConverter::fromXml)

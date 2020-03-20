@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.time.format.DateTimeFormatter;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.dt.DtLineObject;
 
 class DtLineParserTest {
@@ -17,8 +17,8 @@ class DtLineParserTest {
                 "DT   28-JUN-2011, integrated into UniProtKB/Swiss-Prot.\n"
                         + "DT   19-JUL-2004, sequence version 1.\n"
                         + "DT   18-APR-2012, entry version 24.\n";
-        UniprotLineParser<DtLineObject> parser =
-                new DefaultUniprotLineParserFactory().createDtLineParser();
+        UniprotKBLineParser<DtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createDtLineParser();
         DtLineObject obj = parser.parse(dtLines);
         assertTrue(obj.isSiwssprot);
         assertEquals(1, obj.seq_version);

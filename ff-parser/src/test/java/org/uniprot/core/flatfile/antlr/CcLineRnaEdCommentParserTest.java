@@ -3,8 +3,8 @@ package org.uniprot.core.flatfile.antlr;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
@@ -17,8 +17,8 @@ class CcLineRnaEdCommentParserTest {
                 "CC   -!- RNA EDITING: Modified_positions=59, 78, 94, 98, 102, 121; Note=The\n"
                         + "CC       nonsense codon at position 59 is modified to a sense codon. The\n"
                         + "CC       stop codon at position 121 is created by RNA editing.;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -35,8 +35,8 @@ class CcLineRnaEdCommentParserTest {
     void test2() {
         String lines = "CC   -!- RNA EDITING: Modified_positions=11, 62, 72, 97, 117;\n";
 
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -53,8 +53,8 @@ class CcLineRnaEdCommentParserTest {
                 "CC   -!- RNA EDITING: Modified_positions=1, 56, 89, 103, 126, 164, 165,\n"
                         + "CC       167, 179, 191, 194, 212, 225, 242, 248, 252, 275, 300, 310, 313;\n"
                         + "CC       Note=The initiator methionine is created by RNA editing.;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -73,8 +73,8 @@ class CcLineRnaEdCommentParserTest {
         String lines =
                 "CC   -!- RNA EDITING: Modified_positions=Undetermined; Note=Partially\n"
                         + "CC       edited. 11 sites are edited by Adar.;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -95,8 +95,8 @@ class CcLineRnaEdCommentParserTest {
                         + "CC       nonsense codon at position 59 is modified to a sense codon. The\n"
                         + "CC       stop codon at position 121 is created by RNA editing. {ECO:0000313|PDB:3OW2,\n"
                         + "CC       ECO:0000256|HAMAP-Rule:MF_00205};\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -133,8 +133,8 @@ class CcLineRnaEdCommentParserTest {
                         + "CC       modulation of serotonergic neurotransmission in the central\n"
                         + "CC       nervous system. {ECO:0000313|PDB:3OW2,\n"
                         + "CC       ECO:0000256|HAMAP-Rule:MF_00205};\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(2, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -149,8 +149,8 @@ class CcLineRnaEdCommentParserTest {
                         + " Note=The nonsense codons at positions 46, 421, 973, 984 and 1048 are modified to sense codons.;";
 
         CcLineFormater formater = new CcLineFormater();
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineString);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);

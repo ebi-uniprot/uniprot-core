@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
@@ -19,8 +19,8 @@ class CcLineSubCellCommentParserTest {
                 "CC   -!- SUBCELLULAR LOCATION: Cytoplasm. Endoplasmic reticulum membrane;\n"
                         + "CC       Peripheral membrane protein. Golgi apparatus membrane; Peripheral\n"
                         + "CC       membrane protein.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -43,8 +43,8 @@ class CcLineSubCellCommentParserTest {
         String lines =
                 "CC   -!- SUBCELLULAR LOCATION: Cytoplasm {ECO:0000256|HAMAP-Rule:MF_01146}.\n";
         ;
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -66,8 +66,8 @@ class CcLineSubCellCommentParserTest {
         String lines =
                 "CC   -!- SUBCELLULAR LOCATION: Cytoplasm. {ECO:0000256|HAMAP-Rule:MF_01146}.\n";
         ;
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -92,8 +92,8 @@ class CcLineSubCellCommentParserTest {
                 "CC   -!- SUBCELLULAR LOCATION: Cell membrane; Peripheral membrane protein\n"
                         + "CC       (By similarity). Secreted (By similarity). Note=The last 22 C-\n"
                         + "CC       terminal amino acids may participate in cell membrane attachment.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -121,8 +121,8 @@ class CcLineSubCellCommentParserTest {
                 //	+"CC       (By similarity). Secreted (By similarity). Note=The last 22 C-\n"
                 //	+"CC       terminal amino acids may participate in cell membrane attachment.\n"
                 ;
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -149,8 +149,8 @@ class CcLineSubCellCommentParserTest {
                         + "CC       Note=Predominantly found in the trans-Golgi network (TGN). Not\n"
                         + "CC       redistributed to the plasma membrane in response to elevated\n"
                         + "CC       copper levels.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -181,8 +181,8 @@ class CcLineSubCellCommentParserTest {
                         + "CC       target the protein to specialized subcellular regions, such as\n"
                         + "CC       microvilli (By similarity). Interacts (via C-terminus) with GRK5;\n"
                         + "CC       this interaction is promoted by 5-HT (serotonin) (By similarity).\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -213,8 +213,8 @@ class CcLineSubCellCommentParserTest {
                 //	+"CC       (By similarity). Secreted (By similarity). Note=The last 22 C-\n"
                 //	+"CC       terminal amino acids may participate in cell membrane attachment.\n"
                 ;
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -240,8 +240,8 @@ class CcLineSubCellCommentParserTest {
                         + "CC       and is further released upon microtubule depolymerization.\n"
                         + "CC       Recruited into membrane ruffles induced by S.flexneri at tight\n"
                         + "CC       junctions of polarized epithelial cells.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -263,8 +263,8 @@ class CcLineSubCellCommentParserTest {
         String lines =
                 "CC   -!- SUBCELLULAR LOCATION: [Processed beta-1,4-galactosyltransferase 1]:\n"
                         + "CC       Secreted. Note=Soluble form found in body fluids.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -286,8 +286,8 @@ class CcLineSubCellCommentParserTest {
         String lines =
                 "CC   -!- SUBCELLULAR LOCATION: Mitochondrion inner membrane; Multi-pass\n"
                         + "CC       membrane protein (By similarity) {ECO:0000002|PubMed:1234213}.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -320,8 +320,8 @@ class CcLineSubCellCommentParserTest {
                         + "CC       {ECO:0000313|EMBL:BAG16761.1, ECO:0000269|PubMed:10433554}.\n"
                         + "CC       Note=Loosely associated with the inner membrane.\n"
                         + "CC       {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2}.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -357,8 +357,8 @@ class CcLineSubCellCommentParserTest {
         String lines =
                 "CC   -!- SUBCELLULAR LOCATION: Mitochondrion inner membrane; Multi-pass\n"
                         + "CC       membrane protein (By similarity). {ECO:0000002|PubMed:1234213}.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -414,8 +414,8 @@ class CcLineSubCellCommentParserTest {
                         + "CC       {ECO:0000313|EMBL:BAG16761.1, ECO:0000269|PubMed:10433554}.\n"
                         + "CC       Note=Loosely associated with the inner membrane.\n"
                         + "CC       {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2}.\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(7, obj.getCcs().size());
     }
@@ -427,8 +427,8 @@ class CcLineSubCellCommentParserTest {
                         + "{ECO:0000313|EMBL:BAG16761.1, ECO:0000269|PubMed:10433554}.\n"
                         + "Note=Loosely associated with the inner membrane.\n"
                         + "{ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2}.";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineFormater formater = new CcLineFormater();
         String lines = formater.format(ccLineString);
         CcLineObject obj = parser.parse(lines);

@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.UniProtEntry;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.comment.DiseaseComment;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.DiseaseComment;
 
 class DiseaseMapTest {
 
@@ -21,7 +21,7 @@ class DiseaseMapTest {
                         + "CC       intermittent vomiting, hypotonia, lethargy, opisthotonos, terminal\n"
                         + "CC       bleeding and death in early infancy. {ECO:0000269|PubMed:5410815}.";
 
-        UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(diseaseLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(diseaseLine);
 
         List<DiseaseComment> diseaseComments = entry.getCommentsByType(CommentType.DISEASE);
         assertNotNull(entry);
@@ -55,7 +55,7 @@ class DiseaseMapTest {
                         + "CC       disease is caused by mutations affecting the gene represented in\n"
                         + "CC       this entry.";
 
-        UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(diseaseLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(diseaseLine);
 
         List<DiseaseComment> diseaseComments = entry.getCommentsByType(CommentType.DISEASE);
         assertNotNull(entry);
@@ -92,7 +92,7 @@ class DiseaseMapTest {
                         + "CC       Note=The disease is caused by mutations affecting the gene\n"
                         + "CC       represented in this entry.";
 
-        UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(diseaseLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(diseaseLine);
 
         List<DiseaseComment> diseaseComments = entry.getCommentsByType(CommentType.DISEASE);
         assertNotNull(entry);

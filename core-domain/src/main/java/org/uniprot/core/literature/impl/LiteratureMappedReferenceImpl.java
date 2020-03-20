@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 import org.uniprot.core.literature.LiteratureMappedReference;
-import org.uniprot.core.uniprot.UniProtAccession;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.util.Utils;
 
 /** @author lgonzales */
@@ -12,7 +12,7 @@ public class LiteratureMappedReferenceImpl implements LiteratureMappedReference 
 
     private static final long serialVersionUID = -1925700851366460682L;
 
-    private UniProtAccession uniprotAccession;
+    private UniProtKBAccession uniprotAccession;
     private String source;
     private String sourceId;
     private List<String> sourceCategory;
@@ -24,7 +24,7 @@ public class LiteratureMappedReferenceImpl implements LiteratureMappedReference 
     }
 
     LiteratureMappedReferenceImpl(
-            UniProtAccession uniprotAccession,
+            UniProtKBAccession uniprotAccession,
             String source,
             String sourceId,
             List<String> sourceCategory,
@@ -37,7 +37,7 @@ public class LiteratureMappedReferenceImpl implements LiteratureMappedReference 
     }
 
     @Override
-    public UniProtAccession getUniprotAccession() {
+    public UniProtKBAccession getUniprotAccession() {
         return uniprotAccession;
     }
 

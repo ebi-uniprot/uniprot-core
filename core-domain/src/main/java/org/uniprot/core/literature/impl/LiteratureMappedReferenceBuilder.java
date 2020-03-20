@@ -7,14 +7,14 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.literature.LiteratureMappedReference;
-import org.uniprot.core.uniprot.UniProtAccession;
-import org.uniprot.core.uniprot.impl.UniProtAccessionBuilder;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.util.Utils;
 
 /** @author lgonzales */
 public class LiteratureMappedReferenceBuilder implements Builder<LiteratureMappedReference> {
 
-    private UniProtAccession uniprotAccession;
+    private UniProtKBAccession uniprotAccession;
 
     private String source;
 
@@ -25,14 +25,14 @@ public class LiteratureMappedReferenceBuilder implements Builder<LiteratureMappe
     private String annotation;
 
     public @Nonnull LiteratureMappedReferenceBuilder uniprotAccession(
-            UniProtAccession uniprotAccession) {
+            UniProtKBAccession uniprotAccession) {
         this.uniprotAccession = uniprotAccession;
         return this;
     }
 
     public @Nonnull LiteratureMappedReferenceBuilder uniprotAccession(String uniprotAccession) {
         this.uniprotAccession =
-                new UniProtAccessionBuilder(Utils.emptyOrString(uniprotAccession)).build();
+                new UniProtKBAccessionBuilder(Utils.emptyOrString(uniprotAccession)).build();
         return this;
     }
 

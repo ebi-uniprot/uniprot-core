@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.UniProtEntryType;
+import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 
 class EntryTypeMapTest {
     @Test
@@ -19,7 +19,7 @@ class EntryTypeMapTest {
 
     @Test
     void testSWISSPROT() {
-        UniProtEntryType info = UniProtEntryType.SWISSPROT;
+        UniProtKBEntryType info = UniProtKBEntryType.SWISSPROT;
         EntryTypeMap downloadable = new EntryTypeMap(info);
         Map<String, String> result = downloadable.attributeValues();
         assertEquals(1, result.size());
@@ -28,7 +28,7 @@ class EntryTypeMapTest {
 
     @Test
     void testTREMBL() {
-        UniProtEntryType info = UniProtEntryType.TREMBL;
+        UniProtKBEntryType info = UniProtKBEntryType.TREMBL;
         EntryTypeMap downloadable = new EntryTypeMap(info);
         Map<String, String> result = downloadable.attributeValues();
         assertEquals(1, result.size());

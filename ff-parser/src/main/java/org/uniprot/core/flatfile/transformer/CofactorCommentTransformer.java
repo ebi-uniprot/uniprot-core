@@ -8,14 +8,14 @@ import java.util.regex.Pattern;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
-import org.uniprot.core.uniprot.comment.Cofactor;
-import org.uniprot.core.uniprot.comment.CofactorComment;
-import org.uniprot.core.uniprot.comment.CofactorDatabase;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.comment.impl.CofactorBuilder;
-import org.uniprot.core.uniprot.comment.impl.CofactorCommentBuilder;
-import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.comment.Cofactor;
+import org.uniprot.core.uniprotkb.comment.CofactorComment;
+import org.uniprot.core.uniprotkb.comment.CofactorDatabase;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.impl.CofactorBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.CofactorCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.NoteBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 public class CofactorCommentTransformer implements CommentTransformer<CofactorComment> {
 

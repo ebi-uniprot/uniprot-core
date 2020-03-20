@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatterBuilder;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.dt.DtLineConverter;
 import org.uniprot.core.flatfile.parser.impl.dt.DtLineObject;
-import org.uniprot.core.uniprot.EntryAudit;
+import org.uniprot.core.uniprotkb.EntryAudit;
 
 class DtLineConverterTest {
     private DtLineConverter converter = new DtLineConverter();

@@ -1,8 +1,8 @@
 package org.uniprot.core.flatfile.transformer;
 
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.comment.WebResourceComment;
-import org.uniprot.core.uniprot.comment.impl.WebResourceCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.WebResourceComment;
+import org.uniprot.core.uniprotkb.comment.impl.WebResourceCommentBuilder;
 
 public class WebResourceCommentTransformer implements CommentTransformer<WebResourceComment> {
     private static final CommentType COMMENT_TYPE = CommentType.WEBRESOURCE;

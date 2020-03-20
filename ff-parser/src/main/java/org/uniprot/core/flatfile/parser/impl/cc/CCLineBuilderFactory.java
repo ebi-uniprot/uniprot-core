@@ -4,9 +4,9 @@ import java.util.EnumMap;
 import java.util.Map;
 
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
-import org.uniprot.core.uniprot.comment.Comment;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.comment.FreeTextComment;
+import org.uniprot.core.uniprotkb.comment.Comment;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.FreeTextComment;
 
 public class CCLineBuilderFactory {
     private static Map<CommentType, FFLineBuilder<? extends Comment>> commentBuilders =

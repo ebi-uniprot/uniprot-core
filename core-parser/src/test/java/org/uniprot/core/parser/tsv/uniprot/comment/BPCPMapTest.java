@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.UniProtEntry;
-import org.uniprot.core.uniprot.comment.BPCPComment;
-import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
+import org.uniprot.core.uniprotkb.comment.BPCPComment;
+import org.uniprot.core.uniprotkb.comment.CommentType;
 
 class BPCPMapTest {
 
@@ -22,7 +22,7 @@ class BPCPMapTest {
                         + "CC         Note=Shoulder at 335 nm (at pH 7.5 and 30 degrees Celsius).\n"
                         + "CC         {ECO:0000269|PubMed:22547782};";
 
-        UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
                 entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
@@ -44,7 +44,7 @@ class BPCPMapTest {
                         + "CC       Absorption:\n"
                         + "CC         Abs(max)=~550 nm {ECO:0000269|PubMed:10510276};";
 
-        UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
                 entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
@@ -68,7 +68,7 @@ class BPCPMapTest {
                         + "CC         degradation at pH 7, and alginate degradation at pH 9.\n"
                         + "CC         {ECO:0000269|PubMed:24257754};";
 
-        UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
                 entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
@@ -91,7 +91,7 @@ class BPCPMapTest {
                         + "CC       pH dependence:\n"
                         + "CC         Optimally active at alkaline pHs.;";
 
-        UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
                 entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
@@ -122,7 +122,7 @@ class BPCPMapTest {
                         + "CC         1) with poly-ManA as substrate (at pH 9) (PubMed:24808176).\n"
                         + "CC         {ECO:0000269|PubMed:24257754, ECO:0000269|PubMed:24808176};";
 
-        UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
                 entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
@@ -163,7 +163,7 @@ class BPCPMapTest {
                         + "CC         KM=30 uM for beta-glycerophosphate (at pH 5.5 and 25 degrees\n"
                         + "CC         Celsius) {ECO:0000269|PubMed:10510276};";
 
-        UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
                 entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
@@ -194,7 +194,7 @@ class BPCPMapTest {
                         + "CC         gelatinase activity. {ECO:0000269|PubMed:2172980,\n"
                         + "CC         ECO:0000269|PubMed:9065413};";
 
-        UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
                 entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
@@ -218,7 +218,7 @@ class BPCPMapTest {
                         + "CC         Optimum temperature is 28 degrees Celsius. Active from 4 to 40\n"
                         + "CC         degrees Celsius.;";
 
-        UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
                 entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
@@ -240,7 +240,7 @@ class BPCPMapTest {
                         + "CC       Redox potential:\n"
                         + "CC         E is 0 +/- 10 mV for 2Fe-2S at pH 7.5.;";
 
-        UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
                 entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
@@ -264,7 +264,7 @@ class BPCPMapTest {
                         + "CC         by approximately -45 mV/pH unit. {ECO:0000269|PubMed:10940005,\n"
                         + "CC         ECO:0000269|PubMed:17547421};";
 
-        UniProtEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
+        UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(bpcpLine);
 
         List<BPCPComment> bpcpComments =
                 entry.getCommentsByType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);

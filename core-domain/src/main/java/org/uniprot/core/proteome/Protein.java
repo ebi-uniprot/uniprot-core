@@ -2,13 +2,13 @@ package org.uniprot.core.proteome;
 
 import java.io.Serializable;
 
-import org.uniprot.core.uniprot.UniProtAccession;
-import org.uniprot.core.uniprot.UniProtEntryType;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
+import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 
 public interface Protein extends Serializable {
-    UniProtAccession getAccession();
+    UniProtKBAccession getAccession();
 
-    UniProtEntryType getEntryType();
+    UniProtKBEntryType getEntryType();
 
     long getSequenceLength();
 

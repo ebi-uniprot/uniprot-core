@@ -16,7 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.flatfile.parser.SupportingDataMap;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.Utils;
 import org.uniprot.cv.disease.DiseaseFileReader;

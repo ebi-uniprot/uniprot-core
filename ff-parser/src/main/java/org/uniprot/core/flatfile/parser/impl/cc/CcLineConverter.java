@@ -21,11 +21,11 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.FreeText;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.Interaction;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.impl.ECNumberBuilder;
-import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.impl.*;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
-import org.uniprot.core.uniprot.evidence.impl.EvidencedValueBuilder;
+import org.uniprot.core.uniprotkb.comment.*;
+import org.uniprot.core.uniprotkb.comment.impl.*;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
 import com.google.common.base.Strings;
@@ -183,7 +183,7 @@ public class CcLineConverter extends EvidenceCollector
     private AlternativeProductsComment convertAlternativeProduct(
             AlternativeProducts cObj, Map<Object, List<Evidence>> evidences) {
 
-        APCommentBuilder builder = new APCommentBuilder();
+        AlternativeProductsCommentBuilder builder = new AlternativeProductsCommentBuilder();
         builder.eventsSet(
                 cObj.getEvents().stream().map(APEventType::typeOf).collect(Collectors.toList()));
         if (isNotEmpty(cObj.getComment())) {
@@ -359,7 +359,7 @@ public class CcLineConverter extends EvidenceCollector
 
     private InteractionComment convertInteraction(Interaction cObj) {
 
-        List<org.uniprot.core.uniprot.comment.Interaction> interactions = new ArrayList<>();
+        List<org.uniprot.core.uniprotkb.comment.Interaction> interactions = new ArrayList<>();
         for (InteractionObject io : cObj.getInteractions()) {
             InteractionBuilder builder = new InteractionBuilder();
 

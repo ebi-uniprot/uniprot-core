@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
-import org.uniprot.core.uniprot.comment.Cofactor;
-import org.uniprot.core.uniprot.comment.CofactorDatabase;
-import org.uniprot.core.uniprot.comment.impl.CofactorBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprotkb.comment.Cofactor;
+import org.uniprot.core.uniprotkb.comment.CofactorDatabase;
+import org.uniprot.core.uniprotkb.comment.impl.CofactorBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CofactorType;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;

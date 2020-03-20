@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
@@ -22,8 +22,8 @@ class CcLineCofactorCommentParserTest {
                         + "CC       Name=Co(2+); Xref=ChEBI:CHEBI:48828; Evidence={ECO:0000255|HAMAP-Rule:MF_00088};\n"
                         + "CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt).\n"
                         + "CC       {ECO:0000255|HAMAP-Rule:MF_00086};\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -64,8 +64,8 @@ class CcLineCofactorCommentParserTest {
                         + "CC         Evidence={ECO:0000269|PubMed:16683188, ECO:0000269|PubMed:16683189};\n"
                         + "CC       Note=Binds 2 divalent ions per subunit.\n"
                         + "CC       {ECO:0000255|HAMAP-Rule:MF_00086};\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -107,8 +107,8 @@ class CcLineCofactorCommentParserTest {
                 "CC   -!- COFACTOR:\n"
                         + "CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt).\n"
                         + "CC       {ECO:0000255|HAMAP-Rule:MF_00086};\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -129,8 +129,8 @@ class CcLineCofactorCommentParserTest {
                 "CC   -!- COFACTOR:\n"
                         + "CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt).\n"
                         + "CC       Binds 3 divalent ions per subunit (magnesium or cobalt).;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -151,8 +151,8 @@ class CcLineCofactorCommentParserTest {
                 "CC   -!- COFACTOR:\n"
                         + "CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt).;\n"
                         + "CC       Binds 3 divalent ions per subunit (magnesium or cobalt).;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -176,8 +176,8 @@ class CcLineCofactorCommentParserTest {
                 "CC   -!- COFACTOR:\n"
                         + "CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt). {ECO:0000255|HAMAP-Rule:MF_00086};\n"
                         + "CC       Binds 3 divalent ions per subunit (magnesium or cobalt).;\n";
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
@@ -210,8 +210,8 @@ class CcLineCofactorCommentParserTest {
                         + "Note=Binds 2 divalent ions per subunit. {ECO:0000269|PubMed:16683188, "
                         + "ECO:0000255|HAMAP-Rule:MF_00086}. Another note. {ECO:0000269|PubMed:16683189};";
         CcLineFormater formater = new CcLineFormater();
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineStringEvidence);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);
@@ -225,8 +225,8 @@ class CcLineCofactorCommentParserTest {
                         + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:9060645};\n"
                         + "Note=Binds 1 zinc ion. {ECO:0000269|PubMed:9060645};";
         CcLineFormater formater = new CcLineFormater();
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineStringEvidence);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);
@@ -240,8 +240,8 @@ class CcLineCofactorCommentParserTest {
                         + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000250};\n"
                         + "Note=Binds 1 zinc ion in the NS5A N-terminal domain. {ECO:0000250};";
         CcLineFormater formater = new CcLineFormater();
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineStringEvidence);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);
@@ -257,8 +257,8 @@ class CcLineCofactorCommentParserTest {
                         + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt). "
                         + "A second loosely associated metal ion is visible in the crystal structure. {ECO:0000255|HAMAP-Rule:MF_00082};";
         CcLineFormater formater = new CcLineFormater();
-        UniprotLineParser<CcLineObject> parser =
-                new DefaultUniprotLineParserFactory().createCcLineParser();
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineStringEvidence);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);

@@ -9,14 +9,14 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
-import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.impl.APCommentBuilder;
-import org.uniprot.core.uniprot.comment.impl.APIsoformBuilder;
-import org.uniprot.core.uniprot.comment.impl.IsoformNameBuilder;
-import org.uniprot.core.uniprot.comment.impl.NoteBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
-import org.uniprot.core.uniprot.evidence.impl.EvidencedValueBuilder;
+import org.uniprot.core.uniprotkb.comment.*;
+import org.uniprot.core.uniprotkb.comment.impl.APIsoformBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.AlternativeProductsCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.IsoformNameBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.NoteBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -26,7 +26,7 @@ public class AlternativeProductsCommentTest {
     @Test
     void testAlternativeProductsCommentSimple() {
 
-        AlternativeProductsComment comment = new APCommentBuilder().build();
+        AlternativeProductsComment comment = new AlternativeProductsCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
@@ -117,6 +117,10 @@ public class AlternativeProductsCommentTest {
         List<APEventType> events = Collections.singletonList(APEventType.ALTERNATIVE_INITIATION);
         List<APIsoform> isoforms = Collections.singletonList(apIsoform);
 
-        return new APCommentBuilder().eventsSet(events).isoformsSet(isoforms).note(note).build();
+        return new AlternativeProductsCommentBuilder()
+                .eventsSet(events)
+                .isoformsSet(isoforms)
+                .note(note)
+                .build();
     }
 }

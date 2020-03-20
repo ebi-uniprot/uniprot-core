@@ -7,8 +7,8 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.id.IdLineConverter;
 import org.uniprot.core.flatfile.parser.impl.id.IdLineObject;
-import org.uniprot.core.uniprot.UniProtEntryType;
-import org.uniprot.core.uniprot.UniProtId;
+import org.uniprot.core.uniprotkb.UniProtKBEntryType;
+import org.uniprot.core.uniprotkb.UniProtKBId;
 
 class IdLineConverterTest {
     private IdLineConverter converter = new IdLineConverter();
@@ -20,10 +20,10 @@ class IdLineConverterTest {
         idObj.setReviewed(true);
         idObj.setEntryName("001R_FRG3G");
         idObj.setSequenceLength(256);
-        Map.Entry<UniProtId, UniProtEntryType> uniObj = converter.convert(idObj);
+        Map.Entry<UniProtKBId, UniProtKBEntryType> uniObj = converter.convert(idObj);
 
         assertEquals("001R_FRG3G", uniObj.getKey().getValue());
-        assertEquals(UniProtEntryType.SWISSPROT, uniObj.getValue());
+        assertEquals(UniProtKBEntryType.SWISSPROT, uniObj.getValue());
     }
 
     @Test
@@ -34,9 +34,9 @@ class IdLineConverterTest {
         idObj.setEntryName("001R_FRG3G");
         idObj.setSequenceLength(256);
 
-        Map.Entry<UniProtId, UniProtEntryType> uniObj = converter.convert(idObj);
+        Map.Entry<UniProtKBId, UniProtKBEntryType> uniObj = converter.convert(idObj);
 
         assertEquals("001R_FRG3G", uniObj.getKey().getValue());
-        assertEquals(UniProtEntryType.TREMBL, uniObj.getValue());
+        assertEquals(UniProtKBEntryType.TREMBL, uniObj.getValue());
     }
 }

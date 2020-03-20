@@ -8,21 +8,21 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
-import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
-import org.uniprot.core.uniprot.comment.Comment;
+import org.uniprot.core.uniprotkb.comment.CatalyticActivityComment;
+import org.uniprot.core.uniprotkb.comment.Comment;
 
 class CCCatalyticActivityBuildTest extends CCBuildTestAbstr {
-    private static UniprotLineParser<CcLineObject> parser;
+    private static UniprotKBLineParser<CcLineObject> parser;
     private final CcLineConverter converter =
             new CcLineConverter(new HashMap<>(), new HashMap<>(), true);
 
     @BeforeAll
     static void setup() {
-        parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+        parser = new DefaultUniprotKBLineParserFactory().createCcLineParser();
     }
 
     @Test

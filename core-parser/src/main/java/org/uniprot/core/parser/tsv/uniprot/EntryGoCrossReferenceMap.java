@@ -4,14 +4,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.Property;
-import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.util.Utils;
 
 public class EntryGoCrossReferenceMap implements NamedValueMap {
-    private final List<UniProtCrossReference> dbReferences;
-    public static final List<String> FIELDS = Arrays.asList("go", "go_c", "go_f", "go_p", "go_id");
+    private final List<UniProtKBCrossReference> dbReferences;
+    static final List<String> FIELDS = Arrays.asList("go", "go_c", "go_f", "go_p", "go_id");
 
-    public EntryGoCrossReferenceMap(List<UniProtCrossReference> dbReferences) {
+    public EntryGoCrossReferenceMap(List<UniProtKBCrossReference> dbReferences) {
         this.dbReferences = Utils.unmodifiableList(dbReferences);
     }
 
@@ -30,7 +30,7 @@ public class EntryGoCrossReferenceMap implements NamedValueMap {
         map.put(
                 FIELDS.get(4),
                 dbReferences.stream()
-                        .map(UniProtCrossReference::getId)
+                        .map(UniProtKBCrossReference::getId)
                         .sorted()
                         .collect(Collectors.joining("; ")));
 
@@ -38,7 +38,10 @@ public class EntryGoCrossReferenceMap implements NamedValueMap {
     }
 
     private void addTypedGoXRefToMap(
-            Map<String, String> map, String field, String type, List<UniProtCrossReference> xrefs) {
+            Map<String, String> map,
+            String field,
+            String type,
+            List<UniProtKBCrossReference> xrefs) {
         String result =
                 xrefs.stream()
                         .map(val -> getGoTypedString(val, type))
@@ -49,7 +52,7 @@ public class EntryGoCrossReferenceMap implements NamedValueMap {
         }
     }
 
-    private String getGoTypedString(UniProtCrossReference xref, String type) {
+    private String getGoTypedString(UniProtKBCrossReference xref, String type) {
         Optional<Property> result;
         if (type == null || type.isEmpty()) {
             result =

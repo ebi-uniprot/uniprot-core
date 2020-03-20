@@ -2,7 +2,7 @@ package org.uniprot.core.json.parser.uniprot.serializer;
 
 import java.io.IOException;
 
-import org.uniprot.core.uniprot.feature.impl.FeatureIdImpl;
+import org.uniprot.core.uniprotkb.feature.impl.FeatureIdImpl;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;

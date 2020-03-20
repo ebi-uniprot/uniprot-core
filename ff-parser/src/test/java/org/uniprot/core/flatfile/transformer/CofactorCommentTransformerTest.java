@@ -12,8 +12,8 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprotkb.comment.*;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
 class CofactorCommentTransformerTest {
     private final CofactorCommentTransformer transformer = new CofactorCommentTransformer();

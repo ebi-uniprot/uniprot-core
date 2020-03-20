@@ -8,9 +8,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CCSequenceCautionCommentLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
-import org.uniprot.core.uniprot.comment.SequenceCautionComment;
-import org.uniprot.core.uniprot.comment.SequenceCautionType;
-import org.uniprot.core.uniprot.comment.impl.SequenceCautionCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
+import org.uniprot.core.uniprotkb.comment.SequenceCautionType;
+import org.uniprot.core.uniprotkb.comment.impl.SequenceCautionCommentBuilder;
 
 class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
     private CCSequenceCautionCommentLineBuilder builder = new CCSequenceCautionCommentLineBuilder();

@@ -2,7 +2,7 @@ package org.uniprot.core.json.parser.uniprot.serializer;
 
 import java.io.IOException;
 
-import org.uniprot.core.uniprot.description.impl.FlagImpl;
+import org.uniprot.core.uniprotkb.description.impl.FlagImpl;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;

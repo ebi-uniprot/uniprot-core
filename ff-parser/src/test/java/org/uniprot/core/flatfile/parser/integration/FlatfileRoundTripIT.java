@@ -13,15 +13,15 @@ import java.util.TreeSet;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.slf4j.Logger;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
 import org.uniprot.core.flatfile.parser.impl.entry.EntryObject;
 import org.uniprot.core.flatfile.parser.impl.entry.EntryObjectConverter;
 import org.uniprot.core.flatfile.writer.FlatfileWriter;
 import org.uniprot.core.flatfile.writer.impl.UniProtFlatfileWriter;
-import org.uniprot.core.uniprot.UniProtEntry;
-import org.uniprot.core.uniprot.xdb.UniProtCrossReference;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 
 import com.google.common.io.CharSource;
 import com.google.common.io.Resources;
@@ -104,15 +104,15 @@ class FlatfileRoundTripIT {
     }
 
     private void testEntry(String entryToParse, boolean isPublic) {
-        UniprotLineParser<EntryObject> entryParser =
-                new DefaultUniprotLineParserFactory().createEntryParser();
+        UniprotKBLineParser<EntryObject> entryParser =
+                new DefaultUniprotKBLineParserFactory().createEntryParser();
         EntryObject parse = entryParser.parse(entryToParse);
         assertNotNull(parse);
 
         EntryObjectConverter entryObjectConverter =
                 new EntryObjectConverter(new SupportingDataMapImpl(), true);
-        UniProtEntry converted = entryObjectConverter.convert(parse);
-        FlatfileWriter<UniProtEntry> writer = new UniProtFlatfileWriter();
+        UniProtKBEntry converted = entryObjectConverter.convert(parse);
+        FlatfileWriter<UniProtKBEntry> writer = new UniProtFlatfileWriter();
 
         assertNotNull(converted);
         String convertedEntryStr = writer.write(converted, isPublic);
@@ -121,14 +121,14 @@ class FlatfileRoundTripIT {
         LOGGER.info(diff);
 
         EntryObject parse2 = entryParser.parse(convertedEntryStr);
-        UniProtEntry converted2 = entryObjectConverter.convert(parse2);
+        UniProtKBEntry converted2 = entryObjectConverter.convert(parse2);
 
-        List<UniProtCrossReference> originalDBXrefs = converted.getUniProtCrossReferences();
-        List<UniProtCrossReference> convertedDBXrefs = converted2.getUniProtCrossReferences();
+        List<UniProtKBCrossReference> originalDBXrefs = converted.getUniProtKBCrossReferences();
+        List<UniProtKBCrossReference> convertedDBXrefs = converted2.getUniProtKBCrossReferences();
         assertEquals(originalDBXrefs.size(), convertedDBXrefs.size());
         for (int i = 0; i < originalDBXrefs.size(); i++) {
-            UniProtCrossReference origXref = originalDBXrefs.get(i);
-            UniProtCrossReference convertedXref = convertedDBXrefs.get(i);
+            UniProtKBCrossReference origXref = originalDBXrefs.get(i);
+            UniProtKBCrossReference convertedXref = convertedDBXrefs.get(i);
             assertEquals(origXref, convertedXref, "DBXref at index " + i + " differs");
         }
 
