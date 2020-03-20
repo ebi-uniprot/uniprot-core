@@ -18,7 +18,7 @@ public class InteractantBuilder implements Builder<Interactant> {
     private String intActId;
 
     @Override
-    public Interactant build() {
+    public @Nonnull Interactant build() {
         return new InteractantImpl(uniProtkbAccession, geneName, chainId, intActId);
     }
 
