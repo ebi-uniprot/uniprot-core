@@ -36,8 +36,8 @@ public class CCInteractionCommentLineBuilder extends CCLineBuilderAbstr<Interact
    
     public String buildLine(Interaction act) {
     	StringBuilder sb= new StringBuilder();
-    	Interactant interactor1 = act.getFirstInteractant();
-    	Interactant interactor2 = act.getSecondInteractant();
+    	Interactant interactor1 = act.getInteractantOne();
+    	Interactant interactor2 = act.getInteractantTwo();
     	if(Utils.nullOrEmpty(interactor1.getChainId()))
     		sb.append(interactor1.getUniProtKBAccession().getValue());
     	else

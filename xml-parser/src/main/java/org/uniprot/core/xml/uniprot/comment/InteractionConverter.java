@@ -36,8 +36,8 @@ public class InteractionConverter implements Converter<CommentType, Interaction>
     Interactant interactant1 = interactantConverter.fromXml(firstAct);
     Interactant interactant2= interactantConverter.fromXml(secondAct);
     
-    builder.firstInteractant(interactant1)
-    .secondInteractant(interactant2)
+    builder.interactantOne(interactant1)
+    .interactantTwo(interactant2)
     .numberOfExperiments(xmlObject.getExperiments())
     .isOrganismDiffer(xmlObject.isOrganismsDiffer());
     
@@ -51,8 +51,8 @@ public class InteractionConverter implements Converter<CommentType, Interaction>
     CommentType commentType = xmlUniprotFactory.createCommentType();
     commentType.setType(INTERACTION);
 
-    commentType.getInteractant().add(interactantConverter.toXml(uniObj.getFirstInteractant()));	
-    commentType.getInteractant().add(interactantConverter.toXml(uniObj.getSecondInteractant()));		
+    commentType.getInteractant().add(interactantConverter.toXml(uniObj.getInteractantOne()));	
+    commentType.getInteractant().add(interactantConverter.toXml(uniObj.getInteractantTwo()));		
     commentType.setOrganismsDiffer(uniObj.isOrganismsDiffer());
 
     commentType.setExperiments(uniObj.getNumberOfExperiments());

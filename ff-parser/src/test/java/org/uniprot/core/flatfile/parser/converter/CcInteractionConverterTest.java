@@ -81,12 +81,12 @@ class CcInteractionConverterTest {
         org.uniprot.core.uniprotkb.comment.Interaction inter1 = interactions.get(0);
         org.uniprot.core.uniprotkb.comment.Interaction inter2 = interactions.get(1);
         org.uniprot.core.uniprotkb.comment.Interaction inter3 = interactions.get(2);
-        Interactant interactor11= inter1.getFirstInteractant();
-        Interactant interactor12= inter1.getSecondInteractant();
-        Interactant interactor21= inter2.getFirstInteractant();
-        Interactant interactor22= inter2.getSecondInteractant();
-        Interactant interactor31= inter3.getFirstInteractant();
-        Interactant interactor32= inter3.getSecondInteractant();
+        Interactant interactor11= inter1.getInteractantOne();
+        Interactant interactor12= inter1.getInteractantTwo();
+        Interactant interactor21= inter2.getInteractantOne();
+        Interactant interactor22= inter2.getInteractantTwo();
+        Interactant interactor31= inter3.getInteractantOne();
+        Interactant interactor32= inter3.getInteractantTwo();
         assertEquals(4, inter1.getNumberOfExperiments());
         assertFalse(inter1.isOrganismsDiffer());
         verifyInteractor(interactor11, "PRO_0000033156", null, null, "EBI-20824092");

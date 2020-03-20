@@ -23,8 +23,8 @@ class InteractionCommentConverterTest {
          Interactant interactant2 =  createInteractant(null,"EBI-0001", "P12345-1", "gene1");
   
          Interaction interaction1 =
-                 builder.firstInteractant(interactant1)
-                 .secondInteractant(interactant2)
+                 builder.interactantOne(interactant1)
+                 .interactantTwo(interactant2)
                  .numberOfExperiments(3)
                  .isOrganismDiffer(false)
                          .build();
@@ -34,8 +34,8 @@ class InteractionCommentConverterTest {
          Interactant interactant22 =  createInteractant("PROC_12344","EBI-0001", "P12346", "gene1");
   
          Interaction interaction2 =
-                 builder2.firstInteractant(interactant21)
-                 .secondInteractant(interactant22)
+                 builder2.interactantOne(interactant21)
+                 .interactantTwo(interactant22)
                  .numberOfExperiments(3)
                  .isOrganismDiffer(false)
                          .build();

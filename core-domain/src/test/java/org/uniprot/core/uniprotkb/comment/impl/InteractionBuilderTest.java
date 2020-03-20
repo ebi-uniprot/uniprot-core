@@ -29,8 +29,8 @@ class InteractionBuilderTest {
                         .build();
       
         assertEquals(3, interaction.getNumberOfExperiments());
-        assertNull(interaction.getFirstInteractant());
-        assertNull(interaction.getSecondInteractant());
+        assertNull(interaction.getInteractantOne());
+        assertNull(interaction.getInteractantTwo());
     }
 
     @Test
@@ -43,12 +43,12 @@ class InteractionBuilderTest {
         Interaction interaction =
                 builder
                         .numberOfExperiments(3)
-                        .firstInteractant(interactor1)
+                        .interactantOne(interactor1)
                         .build();
     
         assertEquals(3, interaction.getNumberOfExperiments());
-        assertEquals(interactor1, interaction.getFirstInteractant());
-        assertNull(interaction.getSecondInteractant());
+        assertEquals(interactor1, interaction.getInteractantOne());
+        assertNull(interaction.getInteractantTwo());
         assertFalse(interaction.isOrganismsDiffer());
     }
 
@@ -66,14 +66,14 @@ class InteractionBuilderTest {
         Interaction interaction =
                 builder
                         .numberOfExperiments(3)
-                        .firstInteractant(interactor1)
-                        .secondInteractant(interactor2)
+                        .interactantOne(interactor1)
+                        .interactantTwo(interactor2)
                         .build();
       
         assertEquals(3, interaction.getNumberOfExperiments());
-        assertEquals(interactor1, interaction.getFirstInteractant());
+        assertEquals(interactor1, interaction.getInteractantOne());
 
-        assertEquals(interactor2, interaction.getSecondInteractant());
+        assertEquals(interactor2, interaction.getInteractantTwo());
         assertFalse(interaction.isOrganismsDiffer());
     }
     @Test
@@ -90,15 +90,15 @@ class InteractionBuilderTest {
         Interaction interaction =
                 builder
                         .numberOfExperiments(3)
-                        .firstInteractant(interactor1)
-                        .secondInteractant(interactor2)
+                        .interactantOne(interactor1)
+                        .interactantTwo(interactor2)
                         .isOrganismDiffer(true)
                         .build();
       
         assertEquals(3, interaction.getNumberOfExperiments());
-        assertEquals(interactor1, interaction.getFirstInteractant());
+        assertEquals(interactor1, interaction.getInteractantOne());
 
-        assertEquals(interactor2, interaction.getSecondInteractant());
+        assertEquals(interactor2, interaction.getInteractantTwo());
         assertTrue(interaction.isOrganismsDiffer());
     }
 

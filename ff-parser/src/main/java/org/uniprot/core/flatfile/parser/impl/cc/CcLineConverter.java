@@ -391,8 +391,8 @@ public class CcLineConverter extends EvidenceCollector
     		builder2.geneName(obj.getGene());
     	}
     	
-    	itBuilder.firstInteractant(builder1.build())
-    	.secondInteractant(builder2.build())
+    	itBuilder.interactantOne(builder1.build())
+    	.interactantTwo(builder2.build())
     	.numberOfExperiments(obj.getNbexp())
     	.isOrganismDiffer(obj.isXeno());  	
     	return itBuilder.build();

@@ -36,8 +36,8 @@ class InteractionImplTest {
     void completeObjConstructor() {
     	Interaction interaction = new InteractionImpl(
     		      interactor1, interactor2, 3, false);
-    	assertEquals(interactor1, interaction.getFirstInteractant())  ;
-    	assertEquals(interactor2, interaction.getSecondInteractant());
+    	assertEquals(interactor1, interaction.getInteractantOne())  ;
+    	assertEquals(interactor2, interaction.getInteractantTwo());
     	assertEquals(3, interaction.getNumberOfExperiments());
     	assertFalse(interaction.isOrganismsDiffer());
         

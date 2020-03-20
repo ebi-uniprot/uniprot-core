@@ -112,8 +112,8 @@ public class InteractionCommentTransformer implements CommentTransformer<Interac
 		String acc2 = st.nextToken(); // EBI-108331
 		builder1.intActId(acc1);
 		builder2.intActId(acc2);
-		builder.firstInteractant(builder1.build())
-		.secondInteractant(builder2.build())
+		builder.interactantOne(builder1.build())
+		.interactantTwo(builder2.build())
 		.isOrganismDiffer(xeno)
 		.numberOfExperiments(Integer.parseInt(nbexp.substring(6)));
 		return builder.build();

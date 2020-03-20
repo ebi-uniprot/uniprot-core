@@ -8,20 +8,20 @@ import org.uniprot.core.uniprotkb.comment.Interactant;
 
 public final class InteractionBuilder implements Builder<Interaction> {
 
-  private Interactant firstInteractant;
-  private Interactant secondInteractant;
+  private Interactant interactantOne;
+  private Interactant interactantTwo;
   private int numberOfExperiments;
   private boolean organismDiffer = false;
 
   public @Nonnull Interaction build() {
-    return new InteractionImpl(firstInteractant, secondInteractant, numberOfExperiments, organismDiffer);
+    return new InteractionImpl(interactantOne, interactantTwo, numberOfExperiments, organismDiffer);
   }
 
   public static @Nonnull InteractionBuilder from(@Nonnull Interaction instance) {
     InteractionBuilder builder = new InteractionBuilder();
     builder
-        .firstInteractant(instance.getFirstInteractant())
-        .secondInteractant(instance.getSecondInteractant())
+        .interactantOne(instance.getInteractantOne())
+        .interactantTwo(instance.getInteractantTwo())
         .numberOfExperiments(instance.getNumberOfExperiments())
         .isOrganismDiffer(instance.isOrganismsDiffer());
     return builder;
@@ -32,13 +32,13 @@ public final class InteractionBuilder implements Builder<Interaction> {
     return this;
   }
 
-  public @Nonnull InteractionBuilder firstInteractant(Interactant firstInteractant) {
-    this.firstInteractant = firstInteractant;
+  public @Nonnull InteractionBuilder interactantOne(Interactant interactantOne) {
+    this.interactantOne = interactantOne;
     return this;
   }
 
-  public @Nonnull InteractionBuilder secondInteractant(Interactant secondInteractant) {
-    this.secondInteractant = secondInteractant;
+  public @Nonnull InteractionBuilder interactantTwo(Interactant interactantTwo) {
+    this.interactantTwo = interactantTwo;
     return this;
   }
 

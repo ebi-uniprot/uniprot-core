@@ -7,33 +7,33 @@ import org.uniprot.core.uniprotkb.comment.Interactant;
 
 public class InteractionImpl implements Interaction {
   private static final long serialVersionUID = -1102213995267310387L;
-  private Interactant firstInteractor;
-  private Interactant secondInteractor;
+  private Interactant interactantOne;
+  private Interactant interactantTwo;
   private int numberOfExperiments;
   private boolean organismDiffer;
 
   InteractionImpl() {}
 
   InteractionImpl(
-      Interactant firstInteractor,
-      Interactant secondInteractor,
+      Interactant interactantOne,
+      Interactant interactantTwo,
       int numberOfExperiments,
       boolean organismDiffer) {
     super();
-    this.firstInteractor = firstInteractor;
-    this.secondInteractor = secondInteractor;
+    this.interactantOne = interactantOne;
+    this.interactantTwo = interactantTwo;
     this.numberOfExperiments = numberOfExperiments;
     this.organismDiffer = organismDiffer;
   }
 
   @Override
-  public Interactant getFirstInteractant() {
-    return this.firstInteractor;
+  public Interactant getInteractantOne() {
+    return this.interactantOne;
   }
 
   @Override
-  public Interactant getSecondInteractant() {
-    return secondInteractor;
+  public Interactant getInteractantTwo() {
+    return interactantTwo;
   }
 
   @Override
@@ -48,7 +48,7 @@ public class InteractionImpl implements Interaction {
 
   @Override
   public int hashCode() {
-	  return Objects.hash(firstInteractor, secondInteractor, numberOfExperiments, organismDiffer);
+	  return Objects.hash(interactantOne, interactantTwo, numberOfExperiments, organismDiffer);
 	
   }
 
@@ -57,8 +57,8 @@ public class InteractionImpl implements Interaction {
 	  if (this == o) return true;
 	    if (o == null || getClass() != o.getClass()) return false;
 	    InteractionImpl interaction = (InteractionImpl) o;
-	    return Objects.equals(firstInteractor, interaction.firstInteractor)
-	        && Objects.equals(secondInteractor, interaction.secondInteractor)
+	    return Objects.equals(interactantOne, interaction.interactantOne)
+	        && Objects.equals(interactantTwo, interaction.interactantTwo)
 	        && Objects.equals(numberOfExperiments, interaction.numberOfExperiments)
 	        && Objects.equals(organismDiffer, interaction.organismDiffer);
   }

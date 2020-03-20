@@ -32,13 +32,13 @@ class InteractionCommentImplTest {
     			.intActId("EBI-12498324")
     			.build();
     	Interaction interaction1 = new InteractionBuilder()
-    			.firstInteractant(interactor1)
-    			.secondInteractant(interactor2)
+    			.interactantOne(interactor1)
+    			.interactantTwo(interactor2)
     			.numberOfExperiments(4)
     			.build();
     	Interaction interaction2 = new InteractionBuilder()
-    			.firstInteractant(interactor3)
-    			.secondInteractant(interactor4)
+    			.interactantOne(interactor3)
+    			.interactantTwo(interactor4)
     			.numberOfExperiments(2)
     			.isOrganismDiffer(true)
     			.build();

@@ -118,8 +118,8 @@ class CCInteractionBuildTest extends CCBuildTestAbstr {
         builder1.intActId(intActId1);
         builder2.chainId(chainId2).uniProtKBAccession(acc2)
         .geneName(geneName).intActId(intActId2);
-        builder.firstInteractant(builder1.build())
-        .secondInteractant(builder2.build())
+        builder.interactantOne(builder1.build())
+        .interactantTwo(builder2.build())
         .numberOfExperiments(nExperments)
         .isOrganismDiffer(xeno);
 
