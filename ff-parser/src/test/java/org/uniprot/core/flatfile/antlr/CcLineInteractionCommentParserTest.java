@@ -106,11 +106,12 @@ class CcLineInteractionCommentParserTest {
                 false,
                 1);
     }
+
     @Test
     void testWithParent() {
         String lines =
                 "CC   -!- INTERACTION:\n"
-                + "CC       D3ZAR1; PRO_0000017322 [P98158]: Lrp2; NbExp=3; IntAct=EBI-9250714, EBI-9251342;\n";
+                        + "CC       D3ZAR1; PRO_0000017322 [P98158]: Lrp2; NbExp=3; IntAct=EBI-9250714, EBI-9251342;\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -131,12 +132,12 @@ class CcLineInteractionCommentParserTest {
                 false,
                 3);
     }
-    
+
     @Test
     void testChainIdWithParent() {
         String lines =
-        		"CC   -!- INTERACTION:\n" +				
-        				"CC       PRO_0000033156; PRO_0000000092 [P05067]: APP; NbExp=4; IntAct=EBI-20824092, EBI-821758;\n";
+                "CC   -!- INTERACTION:\n"
+                        + "CC       PRO_0000033156; PRO_0000000092 [P05067]: APP; NbExp=4; IntAct=EBI-20824092, EBI-821758;\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -158,12 +159,12 @@ class CcLineInteractionCommentParserTest {
                 4);
     }
 
-   
     @Test
     void test5() {
         String lines =
                 "CC   -!- INTERACTION:\n"
-                        + "CC       P12345; P84198-1: VIM; Xeno; NbExp=4; IntAct=EBI-356498, EBI-457639;\n";;
+                        + "CC       P12345; P84198-1: VIM; Xeno; NbExp=4; IntAct=EBI-356498, EBI-457639;\n";
+        ;
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -216,7 +217,7 @@ class CcLineInteractionCommentParserTest {
                 "EBI-358664",
                 "IRAK2",
                 "P12345",
-                "P51617",                
+                "P51617",
                 null,
                 false,
                 3);
@@ -226,10 +227,10 @@ class CcLineInteractionCommentParserTest {
     void test7() {
         String lines =
                 "CC   -!- INTERACTION:\n"
-              + "CC       P12345; G5EC23: hcf-1; NbExp=2; IntAct=EBI-318108, EBI-4480523;\n"
-              + "CC       P12345; Q11184: let-756; NbExp=3; IntAct=EBI-318108, EBI-3843983;\n"
-              + "CC       P12345; Q10666: pop-1; Xeno; NbExp=2; IntAct=EBI-318108, EBI-317870;\n"
-              + "CC       P12345; Q21921: sir-2.1; NbExp=3; IntAct=EBI-318108, EBI-966082;\n";
+                        + "CC       P12345; G5EC23: hcf-1; NbExp=2; IntAct=EBI-318108, EBI-4480523;\n"
+                        + "CC       P12345; Q11184: let-756; NbExp=3; IntAct=EBI-318108, EBI-3843983;\n"
+                        + "CC       P12345; Q10666: pop-1; Xeno; NbExp=2; IntAct=EBI-318108, EBI-317870;\n"
+                        + "CC       P12345; Q21921: sir-2.1; NbExp=3; IntAct=EBI-318108, EBI-966082;\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -448,7 +449,7 @@ class CcLineInteractionCommentParserTest {
     @Test
     void testNoHeader() {
         String ccLineString =
-                ("INTERACTION:\n"                       
+                ("INTERACTION:\n"
                         + "P12345; Q9W158: CG4612; NbExp=1; IntAct=EBI-123485, EBI-89895;\n"
                         + "P12345; Q9VYI0: fne; NbExp=1; IntAct=EBI-123485, EBI-126770;");
 

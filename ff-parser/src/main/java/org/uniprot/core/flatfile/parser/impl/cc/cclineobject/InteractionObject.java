@@ -1,35 +1,40 @@
 package org.uniprot.core.flatfile.parser.impl.cc.cclineobject;
 
 public class InteractionObject {
-	  private String firstInteractant;
-	  private String secondInteractant;
-	  private String secondInteractantParent;
-	  private String gene;
-	  private boolean xeno;
-	  private int nbexp;
-	  private String firstId;
-	  private String secondId;
-
+    private String firstInteractant;
+    private String secondInteractant;
+    private String secondInteractantParent;
+    private String gene;
+    private boolean xeno;
+    private int nbexp;
+    private String firstId;
+    private String secondId;
 
     public String getFirstInteractant() {
-  return firstInteractant;}
+        return firstInteractant;
+    }
 
-  public void setFirstInteractant(String firstInteractant) {
-  this.firstInteractant = firstInteractant;}
+    public void setFirstInteractant(String firstInteractant) {
+        this.firstInteractant = firstInteractant;
+    }
 
-  public String getSecondInteractant() {
-  return secondInteractant;}
+    public String getSecondInteractant() {
+        return secondInteractant;
+    }
 
-  public void setSecondInteractant(String secondInteractant) {
-  this.secondInteractant = secondInteractant;}
+    public void setSecondInteractant(String secondInteractant) {
+        this.secondInteractant = secondInteractant;
+    }
 
-  public String getSecondInteractantParent() {
-  return secondInteractantParent;}
+    public String getSecondInteractantParent() {
+        return secondInteractantParent;
+    }
 
-  public void setSecondInteractantParent(String secondInteractantParent) {
-  this.secondInteractantParent = secondInteractantParent;}
+    public void setSecondInteractantParent(String secondInteractantParent) {
+        this.secondInteractantParent = secondInteractantParent;
+    }
 
-  public String getGene() {
+    public String getGene() {
         return gene;
     }
 

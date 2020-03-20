@@ -243,56 +243,54 @@ public class CcLineModelListener extends CcLineParserBaseListener
     }
 
     @Override
-	public void exitCc_interaction(CcLineParser.Cc_interactionContext ctx) {
-      CC cc = new CC();
-      cc.setTopic(CC.CCTopicEnum.INTERACTION);
-      Interaction ir = new Interaction();
-      cc.setObject(ir);
-      object.getCcs().add(cc);
-	
-	
-		// CC {{SP_Ac:identifier[ (xeno)]}|Self}; NbExp=n; IntAct=IntAct_Protein_Ac,
-		// IntAct_Protein_Ac;
-      List<InteractionObject> interactionObjects = new ArrayList<>();
-		List<CcLineParser.Cc_interaction_lineContext> ccInteractionLineContexts = ctx.cc_interaction_line();
-		for (CcLineParser.Cc_interaction_lineContext io : ccInteractionLineContexts) {
-			 InteractionObject interactionObject = new InteractionObject();
+    public void exitCc_interaction(CcLineParser.Cc_interactionContext ctx) {
+        CC cc = new CC();
+        cc.setTopic(CC.CCTopicEnum.INTERACTION);
+        Interaction ir = new Interaction();
+        cc.setObject(ir);
+        object.getCcs().add(cc);
 
-			Cc_interaction_firstContext firstInteractantCtx = io.cc_interaction_first();
-			interactionObject.setFirstInteractant( firstInteractantCtx.CC_IR_AC().getText());
+        // CC {{SP_Ac:identifier[ (xeno)]}|Self}; NbExp=n; IntAct=IntAct_Protein_Ac,
+        // IntAct_Protein_Ac;
+        List<InteractionObject> interactionObjects = new ArrayList<>();
+        List<CcLineParser.Cc_interaction_lineContext> ccInteractionLineContexts =
+                ctx.cc_interaction_line();
+        for (CcLineParser.Cc_interaction_lineContext io : ccInteractionLineContexts) {
+            InteractionObject interactionObject = new InteractionObject();
 
-			CcLineParser.Cc_interaction_spContext ccInteractionSpContext = io.cc_interaction_sp();
+            Cc_interaction_firstContext firstInteractantCtx = io.cc_interaction_first();
+            interactionObject.setFirstInteractant(firstInteractantCtx.CC_IR_AC().getText());
 
-			interactionObject.setSecondInteractant( ccInteractionSpContext.CC_IR_AC().getText());
-			Cc_interaction_parentContext parentCtx = ccInteractionSpContext.cc_interaction_parent();
-			if (parentCtx != null) {
-				interactionObject.setSecondInteractantParent ( parentCtx.CC_IR_AC().getText());
-			}
+            CcLineParser.Cc_interaction_spContext ccInteractionSpContext = io.cc_interaction_sp();
 
-			if (ccInteractionSpContext.cc_interaction_gene() != null) {
-				interactionObject.setGene( ccInteractionSpContext.cc_interaction_gene().getText());
-			}
-			
-			if(io.cc_interaction_xeno() !=null) {
-				interactionObject.setXeno(true);
-			}else {
-				interactionObject.setXeno(false);
-			}
-			
-			
-			TerminalNode integer = io.cc_interaction_nbexp().INTEGER();
-			interactionObject.setNbexp(Integer.parseInt(integer.getText()));
+            interactionObject.setSecondInteractant(ccInteractionSpContext.CC_IR_AC().getText());
+            Cc_interaction_parentContext parentCtx = ccInteractionSpContext.cc_interaction_parent();
+            if (parentCtx != null) {
+                interactionObject.setSecondInteractantParent(parentCtx.CC_IR_AC().getText());
+            }
 
-			CcLineParser.Cc_interaction_intactContext ccInteractionIntactContext = io.cc_interaction_intact();
-			interactionObject.setFirstId (ccInteractionIntactContext.CC_IR_AC(0).getText());
-			interactionObject.setSecondId (ccInteractionIntactContext.CC_IR_AC(1).getText());
+            if (ccInteractionSpContext.cc_interaction_gene() != null) {
+                interactionObject.setGene(ccInteractionSpContext.cc_interaction_gene().getText());
+            }
 
-			interactionObjects.add(interactionObject);
-		}
-		ir.setInteractions(interactionObjects);
-	}
+            if (io.cc_interaction_xeno() != null) {
+                interactionObject.setXeno(true);
+            } else {
+                interactionObject.setXeno(false);
+            }
 
- 
+            TerminalNode integer = io.cc_interaction_nbexp().INTEGER();
+            interactionObject.setNbexp(Integer.parseInt(integer.getText()));
+
+            CcLineParser.Cc_interaction_intactContext ccInteractionIntactContext =
+                    io.cc_interaction_intact();
+            interactionObject.setFirstId(ccInteractionIntactContext.CC_IR_AC(0).getText());
+            interactionObject.setSecondId(ccInteractionIntactContext.CC_IR_AC(1).getText());
+
+            interactionObjects.add(interactionObject);
+        }
+        ir.setInteractions(interactionObjects);
+    }
 
     @Override
     public void exitCc_biophyiochemical(CcLineParser.Cc_biophyiochemicalContext ctx) {

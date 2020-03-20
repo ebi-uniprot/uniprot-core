@@ -15,9 +15,8 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.Interaction;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.InteractionObject;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
-import org.uniprot.core.uniprotkb.comment.InteractionComment;
 import org.uniprot.core.uniprotkb.comment.Interactant;
-
+import org.uniprot.core.uniprotkb.comment.InteractionComment;
 
 class CcInteractionConverterTest {
     private final CcLineConverter converter = new CcLineConverter(null, null);
@@ -29,7 +28,7 @@ class CcInteractionConverterTest {
               CC       PRO_0000033156; PRO_0000000092 [P05067]: APP; NbExp=4; IntAct=EBI-20824092, EBI-821758;
               CC       D3ZAR1; PRO_0000017322 [P98158]: Lrp2; NbExp=3; IntAct=EBI-9250714, EBI-9251342;
               CC       P12345; P84198-1: VIM; Xeno; NbExp=4; IntAct=EBI-356498, EBI-457639;
-           
+
         */
         CcLineObject ccLineO = new CcLineObject();
         CC cc1 = new CC();
@@ -81,38 +80,37 @@ class CcInteractionConverterTest {
         org.uniprot.core.uniprotkb.comment.Interaction inter1 = interactions.get(0);
         org.uniprot.core.uniprotkb.comment.Interaction inter2 = interactions.get(1);
         org.uniprot.core.uniprotkb.comment.Interaction inter3 = interactions.get(2);
-        Interactant interactor11= inter1.getInteractantOne();
-        Interactant interactor12= inter1.getInteractantTwo();
-        Interactant interactor21= inter2.getInteractantOne();
-        Interactant interactor22= inter2.getInteractantTwo();
-        Interactant interactor31= inter3.getInteractantOne();
-        Interactant interactor32= inter3.getInteractantTwo();
+        Interactant interactor11 = inter1.getInteractantOne();
+        Interactant interactor12 = inter1.getInteractantTwo();
+        Interactant interactor21 = inter2.getInteractantOne();
+        Interactant interactor22 = inter2.getInteractantTwo();
+        Interactant interactor31 = inter3.getInteractantOne();
+        Interactant interactor32 = inter3.getInteractantTwo();
         assertEquals(4, inter1.getNumberOfExperiments());
         assertFalse(inter1.isOrganismsDiffer());
         verifyInteractor(interactor11, "PRO_0000033156", null, null, "EBI-20824092");
         verifyInteractor(interactor12, "PRO_0000000092", "P05067", "APP", "EBI-821758");
-        
+
         assertEquals(3, inter2.getNumberOfExperiments());
         assertFalse(inter2.isOrganismsDiffer());
         verifyInteractor(interactor21, null, "D3ZAR1", null, "EBI-9250714");
         verifyInteractor(interactor22, "PRO_0000017322", "P98158", "Lrp2", "EBI-9251342");
-        
-        
+
         assertEquals(4, inter3.getNumberOfExperiments());
         assertTrue(inter3.isOrganismsDiffer());
         verifyInteractor(interactor31, null, "P12345", null, "EBI-356498");
         verifyInteractor(interactor32, null, "P84198-1", "VIM", "EBI-457639");
-        
-
     }
-    private void verifyInteractor(Interactant interactor, String chainId, String acc, String gene, String intActId) {
-    	assertEquals(chainId, interactor.getChainId());
-    	if(acc ==null) {
-    		assertNull(interactor.getUniProtKBAccession());
-    	}else {
-    		assertEquals(acc, interactor.getUniProtKBAccession().getValue());
-    	}
-    	assertEquals(gene, interactor.getGeneName());
-    	assertEquals(intActId, interactor.getIntActId());
+
+    private void verifyInteractor(
+            Interactant interactor, String chainId, String acc, String gene, String intActId) {
+        assertEquals(chainId, interactor.getChainId());
+        if (acc == null) {
+            assertNull(interactor.getUniProtKBAccession());
+        } else {
+            assertEquals(acc, interactor.getUniProtKBAccession().getValue());
+        }
+        assertEquals(gene, interactor.getGeneName());
+        assertEquals(intActId, interactor.getIntActId());
     }
 }

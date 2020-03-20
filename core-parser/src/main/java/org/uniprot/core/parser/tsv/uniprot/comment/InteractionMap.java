@@ -41,11 +41,14 @@ public class InteractionMap implements NamedValueMap {
     }
 
     private String getInterAct(Interaction interAct) {
-    	Interactant secondInteractant = interAct.getInteractantTwo();
-    	if(!Utils.nullOrEmpty(secondInteractant.getChainId())){
-    		return secondInteractant.getChainId() +" [" + secondInteractant.getUniProtKBAccession().getValue() +"]";
-    	}else {
-    		return secondInteractant.getUniProtKBAccession().getValue();
-    	}
+        Interactant secondInteractant = interAct.getInteractantTwo();
+        if (!Utils.nullOrEmpty(secondInteractant.getChainId())) {
+            return secondInteractant.getChainId()
+                    + " ["
+                    + secondInteractant.getUniProtKBAccession().getValue()
+                    + "]";
+        } else {
+            return secondInteractant.getUniProtKBAccession().getValue();
+        }
     }
 }

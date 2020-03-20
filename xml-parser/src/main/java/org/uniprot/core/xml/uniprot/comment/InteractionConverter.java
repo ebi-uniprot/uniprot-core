@@ -11,54 +11,52 @@ import org.uniprot.core.xml.jaxb.uniprot.InteractantType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 
 public class InteractionConverter implements Converter<CommentType, Interaction> {
-  private static final String INTERACTION = "interaction";
-  private final ObjectFactory xmlUniprotFactory;
-  private final InteractantConverter interactantConverter;
-  public InteractionConverter() {
-    this(new ObjectFactory());
-  }
+    private static final String INTERACTION = "interaction";
+    private final ObjectFactory xmlUniprotFactory;
+    private final InteractantConverter interactantConverter;
 
-  public InteractionConverter(ObjectFactory xmlUniprotFactory) {
+    public InteractionConverter() {
+        this(new ObjectFactory());
+    }
 
-    this.xmlUniprotFactory = xmlUniprotFactory;
-    this.interactantConverter = new InteractantConverter(xmlUniprotFactory);
-  }
+    public InteractionConverter(ObjectFactory xmlUniprotFactory) {
 
-  @Override
-  public Interaction fromXml(CommentType xmlObject) {
-    if (xmlObject == null) return null;
-    InteractionBuilder builder = new InteractionBuilder();
+        this.xmlUniprotFactory = xmlUniprotFactory;
+        this.interactantConverter = new InteractantConverter(xmlUniprotFactory);
+    }
 
-    List<InteractantType> actTypes = xmlObject.getInteractant();
-    assert (actTypes.size() == 2);
-    InteractantType firstAct = actTypes.get(0);
-    InteractantType secondAct = actTypes.get(1);
-    Interactant interactant1 = interactantConverter.fromXml(firstAct);
-    Interactant interactant2= interactantConverter.fromXml(secondAct);
-    
-    builder.interactantOne(interactant1)
-    .interactantTwo(interactant2)
-    .numberOfExperiments(xmlObject.getExperiments())
-    .isOrganismDiffer(xmlObject.isOrganismsDiffer());
-    
-   
-    return builder.build();
-  }
+    @Override
+    public Interaction fromXml(CommentType xmlObject) {
+        if (xmlObject == null) return null;
+        InteractionBuilder builder = new InteractionBuilder();
 
-  @Override
-  public CommentType toXml(Interaction uniObj) {
-    if (uniObj == null) return null;
-    CommentType commentType = xmlUniprotFactory.createCommentType();
-    commentType.setType(INTERACTION);
+        List<InteractantType> actTypes = xmlObject.getInteractant();
+        assert (actTypes.size() == 2);
+        InteractantType firstAct = actTypes.get(0);
+        InteractantType secondAct = actTypes.get(1);
+        Interactant interactant1 = interactantConverter.fromXml(firstAct);
+        Interactant interactant2 = interactantConverter.fromXml(secondAct);
 
-    commentType.getInteractant().add(interactantConverter.toXml(uniObj.getInteractantOne()));	
-    commentType.getInteractant().add(interactantConverter.toXml(uniObj.getInteractantTwo()));		
-    commentType.setOrganismsDiffer(uniObj.isOrganismsDiffer());
+        builder.interactantOne(interactant1)
+                .interactantTwo(interactant2)
+                .numberOfExperiments(xmlObject.getExperiments())
+                .isOrganismDiffer(xmlObject.isOrganismsDiffer());
 
-    commentType.setExperiments(uniObj.getNumberOfExperiments());
+        return builder.build();
+    }
 
-    return commentType;
-  }
+    @Override
+    public CommentType toXml(Interaction uniObj) {
+        if (uniObj == null) return null;
+        CommentType commentType = xmlUniprotFactory.createCommentType();
+        commentType.setType(INTERACTION);
 
-  
+        commentType.getInteractant().add(interactantConverter.toXml(uniObj.getInteractantOne()));
+        commentType.getInteractant().add(interactantConverter.toXml(uniObj.getInteractantTwo()));
+        commentType.setOrganismsDiffer(uniObj.isOrganismsDiffer());
+
+        commentType.setExperiments(uniObj.getNumberOfExperiments());
+
+        return commentType;
+    }
 }

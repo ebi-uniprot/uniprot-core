@@ -757,7 +757,6 @@ class CcLineTransformerTest {
         assertEquals(comment.getNote().getTexts().get(0).getValue(), diseaseNote);
     }
 
-  
     @Test
     void testRnaEditing() {
         String ccLineString =

@@ -18,7 +18,6 @@ import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.*;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.Disease;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.FreeText;
-
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.Interaction;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.impl.ECNumberBuilder;
@@ -362,41 +361,43 @@ public class CcLineConverter extends EvidenceCollector
     }
 
     private InteractionComment convertInteraction(Interaction cObj) {
-        List<org.uniprot.core.uniprotkb.comment.Interaction> interactions
-        = cObj.getInteractions()
-        .stream().map(this::convertFromInteractionObject)
-        .collect(Collectors.toList());
+        List<org.uniprot.core.uniprotkb.comment.Interaction> interactions =
+                cObj.getInteractions().stream()
+                        .map(this::convertFromInteractionObject)
+                        .collect(Collectors.toList());
         return new InteractionCommentBuilder().interactionsSet(interactions).build();
     }
 
-    private org.uniprot.core.uniprotkb.comment.Interaction convertFromInteractionObject(InteractionObject obj) {
-    	InteractionBuilder itBuilder = new InteractionBuilder();
-    	InteractantBuilder builder1 = new InteractantBuilder();
-    	InteractantBuilder builder2 = new InteractantBuilder();
-    	UniProtKBAccession interactant1 = new UniProtKBAccessionBuilder(obj.getFirstInteractant()).build();
-    	if(interactant1.isValidAccession())
-    		builder1.uniProtKBAccession(interactant1);
-    	else
-    		builder1.chainId(obj.getFirstInteractant());
-    	builder1.intActId(obj.getFirstId());
-    	
-    	if(Utils.nullOrEmpty(obj.getSecondInteractantParent())) {
-    		builder2.uniProtKBAccession(obj.getSecondInteractant());
-    	}else {
-    		builder2.chainId(obj.getSecondInteractant())
-    		.uniProtKBAccession(obj.getSecondInteractantParent());
-    	}
-    	builder2.intActId(obj.getSecondId());
-    	if(!Utils.nullOrEmpty(obj.getGene())) {
-    		builder2.geneName(obj.getGene());
-    	}
-    	
-    	itBuilder.interactantOne(builder1.build())
-    	.interactantTwo(builder2.build())
-    	.numberOfExperiments(obj.getNbexp())
-    	.isOrganismDiffer(obj.isXeno());  	
-    	return itBuilder.build();
+    private org.uniprot.core.uniprotkb.comment.Interaction convertFromInteractionObject(
+            InteractionObject obj) {
+        InteractionBuilder itBuilder = new InteractionBuilder();
+        InteractantBuilder builder1 = new InteractantBuilder();
+        InteractantBuilder builder2 = new InteractantBuilder();
+        UniProtKBAccession interactant1 =
+                new UniProtKBAccessionBuilder(obj.getFirstInteractant()).build();
+        if (interactant1.isValidAccession()) builder1.uniProtKBAccession(interactant1);
+        else builder1.chainId(obj.getFirstInteractant());
+        builder1.intActId(obj.getFirstId());
+
+        if (Utils.nullOrEmpty(obj.getSecondInteractantParent())) {
+            builder2.uniProtKBAccession(obj.getSecondInteractant());
+        } else {
+            builder2.chainId(obj.getSecondInteractant())
+                    .uniProtKBAccession(obj.getSecondInteractantParent());
+        }
+        builder2.intActId(obj.getSecondId());
+        if (Utils.notNullNotEmpty(obj.getGene())) {
+            builder2.geneName(obj.getGene());
+        }
+
+        itBuilder
+                .interactantOne(builder1.build())
+                .interactantTwo(builder2.build())
+                .numberOfExperiments(obj.getNbexp())
+                .isOrganismDiffer(obj.isXeno());
+        return itBuilder.build();
     }
+
     private DiseaseComment convertDisease(Disease cObj, Map<Object, List<Evidence>> evidences) {
         DiseaseCommentBuilder commentBuilder = new DiseaseCommentBuilder();
         if (!Strings.isNullOrEmpty(cObj.getMolecule())) {

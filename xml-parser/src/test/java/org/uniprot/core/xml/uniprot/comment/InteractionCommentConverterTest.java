@@ -18,27 +18,27 @@ class InteractionCommentConverterTest {
 
     @Test
     void test() {
-    	 InteractionBuilder builder = new InteractionBuilder();
-         Interactant interactant1 =  createInteractant("PROC_12344","EBI-0001", null, null);     
-         Interactant interactant2 =  createInteractant(null,"EBI-0001", "P12345-1", "gene1");
-  
-         Interaction interaction1 =
-                 builder.interactantOne(interactant1)
-                 .interactantTwo(interactant2)
-                 .numberOfExperiments(3)
-                 .isOrganismDiffer(false)
-                         .build();
+        InteractionBuilder builder = new InteractionBuilder();
+        Interactant interactant1 = createInteractant("PROC_12344", "EBI-0001", null, null);
+        Interactant interactant2 = createInteractant(null, "EBI-0001", "P12345-1", "gene1");
 
-         InteractionBuilder builder2 = new InteractionBuilder();
-         Interactant interactant21 =  createInteractant(null,"EBI-0001", "P12345", null);       
-         Interactant interactant22 =  createInteractant("PROC_12344","EBI-0001", "P12346", "gene1");
-  
-         Interaction interaction2 =
-                 builder2.interactantOne(interactant21)
-                 .interactantTwo(interactant22)
-                 .numberOfExperiments(3)
-                 .isOrganismDiffer(false)
-                         .build();
+        Interaction interaction1 =
+                builder.interactantOne(interactant1)
+                        .interactantTwo(interactant2)
+                        .numberOfExperiments(3)
+                        .isOrganismDiffer(false)
+                        .build();
+
+        InteractionBuilder builder2 = new InteractionBuilder();
+        Interactant interactant21 = createInteractant(null, "EBI-0001", "P12345", null);
+        Interactant interactant22 = createInteractant("PROC_12344", "EBI-0001", "P12346", "gene1");
+
+        Interaction interaction2 =
+                builder2.interactantOne(interactant21)
+                        .interactantTwo(interactant22)
+                        .numberOfExperiments(3)
+                        .isOrganismDiffer(false)
+                        .build();
         List<Interaction> interactions = new ArrayList<>();
         interactions.add(interaction1);
         interactions.add(interaction2);
@@ -50,14 +50,12 @@ class InteractionCommentConverterTest {
         InteractionComment converted = converter.fromXml(xmlComments);
         assertEquals(comment, converted);
     }
-    
-    private Interactant createInteractant(String chainId, String intActId, String accession, String geneName ) {
-    	  InteractantBuilder builder = new InteractantBuilder();
-    	  builder.chainId(chainId)
-    	  .geneName(geneName)
-    	  .intActId(intActId);
-    	if(accession !=null)
-    		builder.uniProtKBAccession(accession);
-    	  return builder.build();
-      }
+
+    private Interactant createInteractant(
+            String chainId, String intActId, String accession, String geneName) {
+        InteractantBuilder builder = new InteractantBuilder();
+        builder.chainId(chainId).geneName(geneName).intActId(intActId);
+        if (accession != null) builder.uniProtKBAccession(accession);
+        return builder.build();
+    }
 }
