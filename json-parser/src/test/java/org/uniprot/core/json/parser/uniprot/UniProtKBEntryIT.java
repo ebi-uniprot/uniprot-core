@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /** @author lgonzales */
-class UniProtKBEntryIT {
+public class UniProtKBEntryIT {
 
     private static Logger logger = LoggerFactory.getLogger(UniProtKBEntryIT.class);
 
@@ -46,13 +46,13 @@ class UniProtKBEntryIT {
 
     @Test
     void testUniProtEntryComplete() {
-        UniProtEntry entry = getCompleteUniProtEntry();
+        UniProtKBEntry entry = getCompleteUniProtEntry();
 
         ValidateJson.verifyJsonRoundTripParser(entry);
         ValidateJson.verifyEmptyFields(entry);
 
         try {
-            ObjectMapper mapper = UniprotJsonConfig.getInstance().getSimpleObjectMapper();
+            ObjectMapper mapper = UniprotKBJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
             System.out.println(json);
         } catch (Exception e) {
@@ -60,7 +60,7 @@ class UniProtKBEntryIT {
         }
     }
 
-    public static UniProtEntry getCompleteUniProtEntry() {
+    public static UniProtKBEntry getCompleteUniProtEntry() {
         List<Comment> comments = new ArrayList<>();
         comments.add(AlternativeProductsCommentTest.getAlternativeProductsComment());
         comments.add(BPCPCommentTest.getBpcpComment());
@@ -94,8 +94,8 @@ class UniProtKBEntryIT {
                 .internalSection(InternalSectionTest.getInternalSection())
                 .keywordsAdd(KeywordTest.getKeyword())
                 .geneLocationsAdd(GeneLocationTest.getGeneLocation())
-                .referencesSet(UniProtReferenceTest.getUniProtReferences())
-                .uniProtCrossReferencesAdd(UniProtCrossReferenceTest.getUniProtDBCrossReference())
+                .referencesSet(UniProtKBReferenceTest.getUniProtReferences())
+                .uniProtCrossReferencesAdd(UniProtKBCrossReferenceTest.getUniProtDBCrossReference())
                 .sequence(SequenceTest.getSequence())
                 .lineagesAdd(TaxonomyLineageTest.getCompleteTaxonomyLineage())
                 .build();

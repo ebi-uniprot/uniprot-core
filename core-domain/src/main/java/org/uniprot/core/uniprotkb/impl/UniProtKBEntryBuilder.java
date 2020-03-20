@@ -41,7 +41,7 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
     private Sequence sequence = null;
     private InternalSection internalSection = null;
     private EntryInactiveReason inactiveReason;
-    private List<TaxonomyLineage> lineages;
+    private List<TaxonomyLineage> lineages = new ArrayList<>();
 
     public UniProtKBEntryBuilder(
             String primaryAccession, String uniProtId, UniProtKBEntryType type) {
