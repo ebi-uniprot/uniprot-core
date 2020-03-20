@@ -74,4 +74,45 @@ class CVSystemPropertiesTest {
         assertEquals(value, CVSystemProperties.getDrDatabaseTypesLocation());
         System.clearProperty(DR_DATABASE_TYPES_LOCATION);
     }
+
+    @Test
+    void whenPropertyNotSetReturnNull_getDatabaseTypesLocation() {
+        assertNull(CVSystemProperties.getDatabaseTypesLocation());
+    }
+
+    @Test
+    void returnEmpty_whenPropertySetHttps_getDatabaseTypesLocation() {
+        String value = "https://";
+        System.setProperty(DATABASE_TYPES_LOCATION, value);
+        assertNotNull(CVSystemProperties.getDatabaseTypesLocation());
+        assertFalse(CVSystemProperties.getDatabaseTypesLocation().isEmpty());
+        assertEquals(value, CVSystemProperties.getDatabaseTypesLocation());
+        System.clearProperty(DATABASE_TYPES_LOCATION);
+    }
+
+    @Test
+    void returnValue_whenPropertySetFtp_getDatabaseTypesLocation() {
+        String value = "ftp://abc";
+        System.setProperty(DATABASE_TYPES_LOCATION, value);
+        assertNotNull(CVSystemProperties.getDatabaseTypesLocation());
+        assertFalse(CVSystemProperties.getDatabaseTypesLocation().isEmpty());
+        assertEquals(value, CVSystemProperties.getDatabaseTypesLocation());
+        System.clearProperty(DATABASE_TYPES_LOCATION);
+    }
+
+    @Test
+    void throwException_whenPropertyEmpty_getDatabaseTypesLocation() {
+        System.setProperty(DATABASE_TYPES_LOCATION, "");
+        assertThrows(
+                CacheFileLocationException.class, CVSystemProperties::getDatabaseTypesLocation);
+        System.clearProperty(DATABASE_TYPES_LOCATION);
+    }
+
+    @Test
+    void throwException_whenPropertyNotURL_getDatabaseTypesLocation() {
+        System.setProperty(DATABASE_TYPES_LOCATION, "/i/am/not/url");
+        assertThrows(
+                CacheFileLocationException.class, CVSystemProperties::getDatabaseTypesLocation);
+        System.clearProperty(DATABASE_TYPES_LOCATION);
+    }
 }
