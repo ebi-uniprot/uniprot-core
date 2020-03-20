@@ -15,6 +15,7 @@ class DiseaseCacheTest {
         String emptyFileName = "empty.txt";
         List<DiseaseEntry> diseases = DiseaseCache.INSTANCE.get(emptyFileName);
         // the diseases should come from FTP
-        Assertions.assertTrue(diseases.isEmpty(), "disease should be empty because passing empty file");
+        Assertions.assertTrue(
+                diseases.isEmpty(), "disease should be empty because passing empty file");
     }
 }

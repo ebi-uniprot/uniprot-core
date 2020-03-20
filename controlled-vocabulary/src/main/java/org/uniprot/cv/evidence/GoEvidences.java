@@ -1,24 +1,20 @@
-package org.uniprot.cv.xdb;
+package org.uniprot.cv.evidence;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.uniprot.cv.common.AbstractFileReader;
+import org.uniprot.cv.common.CVSystemProperties;
 
 public enum GoEvidences {
     INSTANCE;
-    private static final Logger LOGGER = LoggerFactory.getLogger(GoEvidences.class);
+
     private static final String COLON = ":";
     private static final String DEFAULT = "Default";
     private static final String GAF_ECO_URL =
             "https://raw.githubusercontent.com/evidenceontology/evidenceontology/master/gaf-eco-mapping.txt";
-    private static final String LOCAL_GAF_ECO_FILE = "META-INF/gaf-eco-mapping.txt";
     private Map<String, String> defaultMapping = new HashMap<>();
     private Map<String, String> defaultMappingFromEco = new HashMap<>();
     private Map<String, String> otherMapping = new HashMap<>();
@@ -53,40 +49,15 @@ public enum GoEvidences {
     }
 
     private void init() {
-        try {
-            InputStream is = getInputStreamFromURL();
-            if (is == null) {
-                is = this.getClass().getClassLoader().getResourceAsStream(LOCAL_GAF_ECO_FILE);
-
-                if (is == null) {
-                    throw new IllegalArgumentException("GAF_ECO file cannot be accessed.");
-                }
-            }
-
-            try (BufferedReader bif = new BufferedReader(new InputStreamReader(is))) {
-                String line;
-
-                while ((line = bif.readLine()) != null) {
-                    line = line.trim();
-                    if ((line.length() == 0) || line.startsWith("#")) continue;
-                    parseLine(line);
-                }
-            }
-
-        } catch (Exception e) {
-            LOGGER.error("Error encountered when initialising GO evidences", e);
+        List<String> lines =
+                AbstractFileReader.readLines(
+                        Optional.ofNullable(CVSystemProperties.getGafEcoLocation())
+                                .orElse(GAF_ECO_URL));
+        for (String line : lines) {
+            line = line.trim();
+            if ((line.length() == 0) || line.startsWith("#")) continue;
+            parseLine(line);
         }
-    }
-
-    private InputStream getInputStreamFromURL() {
-        try {
-            URL url = new URL(GAF_ECO_URL);
-            return url.openStream();
-        } catch (Exception e) {
-            LOGGER.warn("Could not open stream for {}", GAF_ECO_URL);
-        }
-
-        return null;
     }
 
     private void parseLine(String line) {

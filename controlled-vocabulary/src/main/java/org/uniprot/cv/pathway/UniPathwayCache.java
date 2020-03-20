@@ -10,6 +10,7 @@ import org.uniprot.cv.common.BaseCache;
 
 public enum UniPathwayCache implements BaseCache<UniPathway> {
     INSTANCE;
+
     private Map<String, List<UniPathway>> locationPathwayMap = new HashMap<>();
     private AbstractFileReader<UniPathway> reader;
 

@@ -12,7 +12,7 @@ import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.PropertyType;
-import org.uniprot.cv.xdb.GoEvidences;
+import org.uniprot.cv.evidence.GoEvidences;
 import org.uniprot.cv.xdb.UniProtDatabaseTypes;
 import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 

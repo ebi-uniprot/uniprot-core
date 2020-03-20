@@ -1,4 +1,4 @@
-package org.uniprot.cv.xdb;
+package org.uniprot.cv.evidence;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

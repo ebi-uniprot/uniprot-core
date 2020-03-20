@@ -9,12 +9,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.slf4j.Logger;
 import org.uniprot.cv.FileReader;
 
 public abstract class AbstractFileReader<T> implements FileReader<T> {
     private static final Logger LOGGER = getLogger(AbstractFileReader.class);
     private static final String FTP_PREFIX = "ftp://";
+    private static final String HTTP_PREFIX = "http://";
+    private static final String HTTPS_PREFIX = "https://";
     protected static final List<String> COPYRIGHT_LINES =
             Arrays.asList(
                     "-----------------------------------------------------------------------",
@@ -30,7 +34,7 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
         return parseLines(lines);
     }
 
-    private List<String> fetchFromFTP(String ftpUrl) {
+    private static List<String> fetchFromURL(String ftpUrl) {
         List<String> lines = new ArrayList<>();
         try {
             final URL url = new URL(ftpUrl);
@@ -53,9 +57,11 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
         return lines;
     }
 
-    private List<String> readLines(String filename) {
-        if (filename.startsWith(FTP_PREFIX)) {
-            return fetchFromFTP(filename);
+    public static List<String> readLines(@Nonnull String filename) {
+        if (filename.startsWith(FTP_PREFIX)
+                || filename.startsWith(HTTP_PREFIX)
+                || filename.startsWith(HTTPS_PREFIX)) {
+            return fetchFromURL(filename);
         } else {
 
             InputStream inputStream =
