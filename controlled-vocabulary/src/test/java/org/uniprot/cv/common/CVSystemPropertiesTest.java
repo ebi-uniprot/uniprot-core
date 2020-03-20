@@ -1,8 +1,7 @@
 package org.uniprot.cv.common;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.cv.common.CVSystemProperties.DR_ORD_LOCATION;
-import static org.uniprot.cv.common.CVSystemProperties.GAF_ECO_LOCATION;
+import static org.uniprot.cv.common.CVSystemProperties.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -51,5 +50,28 @@ class CVSystemPropertiesTest {
         assertFalse(CVSystemProperties.getDrOrdLocation().isEmpty());
         assertEquals(value, CVSystemProperties.getDrOrdLocation());
         System.clearProperty(DR_ORD_LOCATION);
+    }
+
+    @Test
+    void whenPropertyNotSetReturnNull_getDrDatabaseTypesLocation() {
+        assertNull(CVSystemProperties.getDrDatabaseTypesLocation());
+    }
+
+    @Test
+    void returnEmpty_whenPropertySetEmpty_getDrDatabaseTypesLocation() {
+        System.setProperty(DR_DATABASE_TYPES_LOCATION, "");
+        assertNotNull(CVSystemProperties.getDrDatabaseTypesLocation());
+        assertTrue(CVSystemProperties.getDrDatabaseTypesLocation().isEmpty());
+        System.clearProperty(DR_DATABASE_TYPES_LOCATION);
+    }
+
+    @Test
+    void returnValue_whenPropertySet_getDrDatabaseTypesLocation() {
+        String value = "value in Property";
+        System.setProperty(DR_DATABASE_TYPES_LOCATION, value);
+        assertNotNull(CVSystemProperties.getDrDatabaseTypesLocation());
+        assertFalse(CVSystemProperties.getDrDatabaseTypesLocation().isEmpty());
+        assertEquals(value, CVSystemProperties.getDrDatabaseTypesLocation());
+        System.clearProperty(DR_DATABASE_TYPES_LOCATION);
     }
 }

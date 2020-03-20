@@ -1,16 +1,18 @@
 package org.uniprot.cv.xdb;
 
-import java.io.InputStream;
+import static org.uniprot.cv.common.CVSystemProperties.getDrDatabaseTypesLocation;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
 import org.uniprot.core.cv.xdb.UniProtDatabaseCategory;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
-import org.uniprot.core.util.Utils;
 import org.uniprot.core.util.property.Property;
+import org.uniprot.cv.common.AbstractFileReader;
 
 public enum UniProtDatabaseTypes {
     INSTANCE;
@@ -49,54 +51,54 @@ public enum UniProtDatabaseTypes {
     }
 
     private void init() {
-        try (InputStream configFile =
-                UniProtDatabaseTypes.class.getClassLoader().getResourceAsStream(fileName)) {
-            String source = Utils.loadPropertyInput(configFile);
-            List<Property> jsonArray = Property.parseJsonArray(source);
+        String source =
+                String.join(
+                        "",
+                        AbstractFileReader.readLines(
+                                Optional.ofNullable(getDrDatabaseTypesLocation())
+                                        .orElse(fileName)));
+        List<Property> jsonArray = Property.parseJsonArray(source);
 
-            jsonArray.forEach(
-                    item -> {
-                        String name = item.getString("name");
-                        String displayName = item.getString("displayName");
-                        String category = item.getString("category");
-                        String uriLink = item.getString("uriLink");
+        jsonArray.forEach(
+                item -> {
+                    String name = item.getString("name");
+                    String displayName = item.getString("displayName");
+                    String category = item.getString("category");
+                    String uriLink = item.getString("uriLink");
 
-                        String implicit = item.optString("implicit", "false");
-                        boolean isImplicit = Boolean.parseBoolean(implicit);
+                    String implicit = item.optString("implicit", "false");
+                    boolean isImplicit = Boolean.parseBoolean(implicit);
 
-                        String linkedReason = item.optString("linkedReason", null);
+                    String linkedReason = item.optString("linkedReason", null);
 
-                        List<UniProtDatabaseAttribute> attributes = new ArrayList<>();
-                        List<Property> properties = item.getProperties("attributes");
-                        if (properties != null) {
-                            properties.forEach(
-                                    p -> {
-                                        String attributeName = p.getString("name");
-                                        String attributeXmlTag = p.optString("xmlTag", null);
-                                        String attributeUriLink = p.optString("uriLink", null);
-                                        attributes.add(
-                                                new UniProtDatabaseAttribute(
-                                                        attributeName,
-                                                        attributeXmlTag,
-                                                        attributeUriLink));
-                                    });
-                        }
-                        UniProtDatabaseDetail xdbType =
-                                new UniProtDatabaseDetail(
-                                        name,
-                                        displayName,
-                                        UniProtDatabaseCategory.typeOf(category),
-                                        uriLink,
-                                        attributes,
-                                        isImplicit,
-                                        linkedReason);
-                        types.add(xdbType);
-                    });
-            typeMap =
-                    types.stream()
-                            .collect(Collectors.toMap(UniProtDatabaseDetail::getName, val -> val));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+                    List<UniProtDatabaseAttribute> attributes = new ArrayList<>();
+                    List<Property> properties = item.getProperties("attributes");
+                    if (properties != null) {
+                        properties.forEach(
+                                p -> {
+                                    String attributeName = p.getString("name");
+                                    String attributeXmlTag = p.optString("xmlTag", null);
+                                    String attributeUriLink = p.optString("uriLink", null);
+                                    attributes.add(
+                                            new UniProtDatabaseAttribute(
+                                                    attributeName,
+                                                    attributeXmlTag,
+                                                    attributeUriLink));
+                                });
+                    }
+                    UniProtDatabaseDetail xdbType =
+                            new UniProtDatabaseDetail(
+                                    name,
+                                    displayName,
+                                    UniProtDatabaseCategory.typeOf(category),
+                                    uriLink,
+                                    attributes,
+                                    isImplicit,
+                                    linkedReason);
+                    types.add(xdbType);
+                });
+        typeMap =
+                types.stream()
+                        .collect(Collectors.toMap(UniProtDatabaseDetail::getName, val -> val));
     }
 }

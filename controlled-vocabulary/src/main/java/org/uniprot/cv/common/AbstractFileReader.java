@@ -58,9 +58,7 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
     }
 
     public static List<String> readLines(@Nonnull String filename) {
-        if (filename.startsWith(FTP_PREFIX)
-                || filename.startsWith(HTTP_PREFIX)
-                || filename.startsWith(HTTPS_PREFIX)) {
+        if (isUrl(filename)) {
             return fetchFromURL(filename);
         } else {
 
@@ -83,5 +81,12 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
 
             return lines;
         }
+    }
+
+    static boolean isUrl(@Nonnull String location) {
+        location = location.toLowerCase();
+        return location.startsWith(FTP_PREFIX)
+                || location.startsWith(HTTP_PREFIX)
+                || location.startsWith(HTTPS_PREFIX);
     }
 }

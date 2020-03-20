@@ -28,7 +28,6 @@ public class Reloader extends ClassLoader {
     }
 
     private byte[] loadClassData(String className) throws IOException {
-        //    System.out.println(new File("").getAbsoluteFile());
         File f = new File("target/classes/" + className.replaceAll("\\.", "/") + ".class");
         int size = (int) f.length();
         byte buff[] = new byte[size];

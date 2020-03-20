@@ -1,3 +1,11 @@
 package org.uniprot.cv.common;
 
-public class CacheFileLocationException extends RuntimeException {}
+class CacheFileLocationException extends RuntimeException {
+    CacheFileLocationException() {
+        super();
+    }
+
+    CacheFileLocationException(String message) {
+        super(message);
+    }
+}
