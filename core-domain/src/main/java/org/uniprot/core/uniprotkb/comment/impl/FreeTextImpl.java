@@ -3,6 +3,7 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprotkb.comment.FreeText;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
@@ -45,5 +46,10 @@ public class FreeTextImpl implements FreeText {
     @Override
     public int hashCode() {
         return Objects.hash(texts);
+    }
+    @Override
+    public String toString() {
+    	return texts.stream().map(val ->val.toString())
+    	.collect(Collectors.joining(". ")) + ";";
     }
 }

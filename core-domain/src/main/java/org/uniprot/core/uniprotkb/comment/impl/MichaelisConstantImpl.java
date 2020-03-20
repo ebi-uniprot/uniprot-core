@@ -72,4 +72,17 @@ public class MichaelisConstantImpl implements MichaelisConstant {
     public int hashCode() {
         return Objects.hash(constant, unit, substrate, evidences);
     }
+    @Override
+    public String toString() {
+    	StringBuilder sb=new StringBuilder();
+    	sb.append("KM=")
+    	.append(this.getConstant())
+    	.append(" ")
+    	.append(getUnit());
+    	if(!Utils.nullOrEmpty(substrate))
+    		sb.append(" for ").append(substrate);
+    	sb.append(";");
+    	
+    	return sb.toString();
+    }
 }
