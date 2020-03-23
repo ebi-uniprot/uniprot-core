@@ -13,7 +13,7 @@ public final class UniProtKBDatabaseImpl implements UniProtKBDatabase {
     private static final long serialVersionUID = 201534956573963997L;
     private String name;
 
-    private UniProtKBDatabaseImpl() {}
+     UniProtKBDatabaseImpl() {}
 
     public UniProtKBDatabaseImpl(@Nullable String name) {
         this.name = name;

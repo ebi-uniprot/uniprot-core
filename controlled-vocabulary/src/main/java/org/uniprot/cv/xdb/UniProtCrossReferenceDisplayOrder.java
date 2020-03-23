@@ -1,6 +1,5 @@
 package org.uniprot.cv.xdb;
 
-import java.io.*;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +13,7 @@ import org.uniprot.cv.common.CVSystemProperties;
 
 /** @author jieluo */
 public enum UniProtCrossReferenceDisplayOrder
-        implements org.uniprot.core.uniprotkb.xdb.DatabaseDisplayOrder {
+        implements org.uniprot.core.uniprotkb.xdb.DatabaseDisplayOrder<UniProtDatabaseDetail> {
     INSTANCE;
 
     private Map<String, DatabaseDisplayOrder> databaseType2DefsNoCase;
