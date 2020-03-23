@@ -269,10 +269,10 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         }
     }
 
-    private class KEFRBuilder extends KeywordEntryBuilder {
+    private static class KEFRBuilder extends KeywordEntryBuilder {
         List<KEFRBuilder> parents = new ArrayList<>();
         List<KEFRBuilder> children = new ArrayList<>();
-        private final List<KeywordEntry> completedChildren = new ArrayList<>();
+        private static final List<KeywordEntry> completedChildren = new ArrayList<>();
 
         private Optional<KeywordEntry> findInCompletedChildren(KeywordEntry child) {
             return completedChildren.stream()
