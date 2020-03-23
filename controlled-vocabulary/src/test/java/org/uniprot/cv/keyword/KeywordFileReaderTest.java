@@ -19,7 +19,6 @@ class KeywordFileReaderTest {
 
     private final KeywordFileReader parser = new KeywordFileReader();
 
-    @Disabled
     @Test
     void testParseDefaultFile() {
         List<KeywordEntry> keywords = parser.parse("keyword/keywlist.txt");
