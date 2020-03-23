@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 
-public interface SubcellularLocationService {
+public interface SubcellularLocationRepo {
     List<SubcellularLocationEntry> getAll();
 
     SubcellularLocationEntry getById(String id);

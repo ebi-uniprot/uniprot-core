@@ -7,13 +7,13 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 import org.uniprot.cv.subcell.SubcellularLocationCache;
-import org.uniprot.cv.subcell.SubcellularLocationService;
+import org.uniprot.cv.subcell.SubcellularLocationRepo;
 
-public class SubcellularLocationServiceImpl implements SubcellularLocationService {
+public class SubcellularLocationRepoImpl implements SubcellularLocationRepo {
     private List<SubcellularLocationEntry> subcellularLocations;
     private Map<String, SubcellularLocationEntry> subcellularLocationIdMap;
 
-    public SubcellularLocationServiceImpl(String diseasefile) {
+    public SubcellularLocationRepoImpl(String diseasefile) {
 
         subcellularLocations = SubcellularLocationCache.INSTANCE.get(diseasefile);
         subcellularLocationIdMap =

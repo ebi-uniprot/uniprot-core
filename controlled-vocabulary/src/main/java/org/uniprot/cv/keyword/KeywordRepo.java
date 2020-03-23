@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.uniprot.core.cv.keyword.KeywordEntry;
 
-public interface KeywordService {
+public interface KeywordRepo {
     KeywordEntry getByAccession(String id);
 
     Collection<KeywordEntry> getAll();

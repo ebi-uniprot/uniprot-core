@@ -8,13 +8,13 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.cv.keyword.KeywordCache;
-import org.uniprot.cv.keyword.KeywordService;
+import org.uniprot.cv.keyword.KeywordRepo;
 
-public class KeywordServiceImpl implements KeywordService {
+public class KeywordRepoImpl implements KeywordRepo {
     private Map<String, KeywordEntry> keywordAccessionMap;
     private List<KeywordEntry> categories;
 
-    public KeywordServiceImpl(String filename) {
+    public KeywordRepoImpl(String filename) {
         List<KeywordEntry> keywords = KeywordCache.INSTANCE.get(filename);
         keywordAccessionMap =
                 keywords.stream()
