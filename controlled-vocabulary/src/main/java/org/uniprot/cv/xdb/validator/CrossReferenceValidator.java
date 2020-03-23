@@ -1,5 +1,7 @@
 package org.uniprot.cv.xdb.validator;
 
+import static org.uniprot.cv.common.CVSystemProperties.getDatabaseTypesLocation;
+
 import java.io.IOException;
 import java.util.*;
 
@@ -19,7 +21,9 @@ public class CrossReferenceValidator {
             "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/docs/dbxref.txt";
 
     static {
-        try (CrossReferenceReader reader = new CrossReferenceReader(DBREF_FTP)) {
+        try (CrossReferenceReader reader =
+                new CrossReferenceReader(
+                        Optional.ofNullable(getDatabaseTypesLocation()).orElse(DBREF_FTP))) {
             DBXRef xref;
             while ((xref = reader.read()) != null) {
                 if (!xref.getLinkType().equals(EXPLICIT)) continue;

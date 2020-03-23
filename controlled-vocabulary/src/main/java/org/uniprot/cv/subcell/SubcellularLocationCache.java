@@ -10,17 +10,10 @@ import org.uniprot.cv.common.BaseCache;
 
 public enum SubcellularLocationCache implements BaseCache<SubcellularLocationEntry> {
     INSTANCE;
-    public static final String FTP_LOCATION =
-            "ftp://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/docs/subcell.txt";
+
     private Map<String, List<SubcellularLocationEntry>> locationSubcellularLocationMap =
             new HashMap<>();
     private AbstractFileReader<SubcellularLocationEntry> reader;
-    private String defaultDataLocation = FTP_LOCATION;
-
-    @Override
-    public String getDefaultDataFile() {
-        return this.defaultDataLocation;
-    }
 
     @Override
     public Map<String, List<SubcellularLocationEntry>> getCacheMap() {

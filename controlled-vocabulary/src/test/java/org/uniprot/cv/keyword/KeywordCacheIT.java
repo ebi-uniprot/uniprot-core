@@ -17,7 +17,7 @@ class KeywordCacheIT {
 
     @BeforeAll
     static void setup() {
-        keywords = KeywordCache.INSTANCE.get("");
+        keywords = KeywordCache.INSTANCE.get("keyword/keywlist.txt");
     }
 
     @Test

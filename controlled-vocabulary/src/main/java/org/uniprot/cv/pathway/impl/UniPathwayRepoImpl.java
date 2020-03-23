@@ -8,13 +8,13 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.cv.pathway.UniPathway;
 import org.uniprot.cv.pathway.UniPathwayCache;
-import org.uniprot.cv.pathway.UniPathwayService;
+import org.uniprot.cv.pathway.UniPathwayRepo;
 
-public class UniPathwayServiceImpl implements UniPathwayService {
+public class UniPathwayRepoImpl implements UniPathwayRepo {
     private final Map<String, UniPathway> pathwayIdMap;
     private final Map<String, UniPathway> pathwayNameMap;
 
-    public UniPathwayServiceImpl(String filename) {
+    public UniPathwayRepoImpl(String filename) {
         List<UniPathway> pathwayList = UniPathwayCache.INSTANCE.get(filename);
         pathwayIdMap =
                 pathwayList.stream()

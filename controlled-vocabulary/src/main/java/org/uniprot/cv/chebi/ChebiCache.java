@@ -16,16 +16,8 @@ import org.uniprot.cv.common.BaseCache;
 public enum ChebiCache implements BaseCache<ChebiEntry> {
     INSTANCE;
 
-    private static final String FTP_LOCATION =
-            "ftp://ftp.ebi.ac.uk/pub/databases/chebi/ontology/chebi.obo";
     private Map<String, List<ChebiEntry>> chebiMap = new HashMap<>();
     private AbstractFileReader<ChebiEntry> reader;
-    private String defaultDataLocation = FTP_LOCATION;
-
-    @Override
-    public String getDefaultDataFile() {
-        return this.defaultDataLocation;
-    }
 
     @Override
     public Map<String, List<ChebiEntry>> getCacheMap() {

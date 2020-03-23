@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.uniprot.core.cv.pathway.UniPathway;
 
-public interface UniPathwayService {
+public interface UniPathwayRepo {
     UniPathway getById(String id);
 
     UniPathway getByName(String name);
