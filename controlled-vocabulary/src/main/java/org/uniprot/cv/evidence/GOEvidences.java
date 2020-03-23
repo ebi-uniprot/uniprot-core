@@ -8,7 +8,7 @@ import java.util.Optional;
 import org.uniprot.cv.common.AbstractFileReader;
 import org.uniprot.cv.common.CVSystemProperties;
 
-public enum GoEvidences {
+public enum GOEvidences {
     INSTANCE;
 
     private static final String COLON = ":";
@@ -19,7 +19,7 @@ public enum GoEvidences {
     private Map<String, String> defaultMappingFromEco = new HashMap<>();
     private Map<String, String> otherMapping = new HashMap<>();
 
-    GoEvidences() {
+    GOEvidences() {
         init();
     }
 

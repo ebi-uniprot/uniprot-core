@@ -15,7 +15,7 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.uniprot.cv.Reloader;
 
 @TestInstance(Lifecycle.PER_CLASS)
-class GoEvidencesPropertyLocationTest {
+class GOEvidencesPropertyLocationTest {
     private File tmpFile;
     private Method convertGAFToECO;
     private Object enumInstance;
@@ -33,7 +33,7 @@ class GoEvidencesPropertyLocationTest {
          * need to load it again (to test different behaviours) with different class loader
          */
         Class<?> goEvidences =
-                Class.forName("org.uniprot.cv.evidence.GoEvidences", true, new Reloader());
+                Class.forName("org.uniprot.cv.evidence.GOEvidences", true, new Reloader());
         convertGAFToECO = goEvidences.getDeclaredMethod("convertGAFToECO", String.class);
         enumInstance = goEvidences.getField("INSTANCE").get(null);
     }

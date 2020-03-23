@@ -12,7 +12,7 @@ import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.PropertyType;
-import org.uniprot.cv.evidence.GoEvidences;
+import org.uniprot.cv.evidence.GOEvidences;
 import org.uniprot.cv.xdb.UniProtDatabaseTypes;
 import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 
@@ -75,7 +75,7 @@ public class UniProtCrossReferenceConverter
         String evXmlTag = xdbType.getAttributes().get(1).getXmlTag();
         String eco = getValue(xmlObj, evXmlTag);
         String projectXmlTag = xdbType.getAttributes().get(2).getXmlTag();
-        Optional<String> gaf = GoEvidences.INSTANCE.convertECOToGAF(eco);
+        Optional<String> gaf = GOEvidences.INSTANCE.convertECOToGAF(eco);
         String project = getValue(xmlObj, projectXmlTag);
         return gaf.orElse("") + ":" + project;
     }
@@ -103,7 +103,7 @@ public class UniProtCrossReferenceConverter
         if (nProperty == 1) {
             String value = uniObj.getProperties().get(1).getValue();
             String[] tokens = value.split(":");
-            Optional<String> evidence = GoEvidences.INSTANCE.convertGAFToECO(tokens[0]);
+            Optional<String> evidence = GOEvidences.INSTANCE.convertGAFToECO(tokens[0]);
             return evidence.orElse("");
         } else if (nProperty == 2) {
             String value = uniObj.getProperties().get(1).getValue();
