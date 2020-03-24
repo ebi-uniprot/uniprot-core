@@ -89,7 +89,7 @@ public class AbsorptionImpl implements Absorption {
          sb.append(getMax());
 
          sb.append(" nm;");
-        if( (note != null) && note.isValid()) {
+        if(hasNote()) {
         	sb.append("note=");
         	sb.append(
         	note.getTexts().stream().map(val ->val.getValue())

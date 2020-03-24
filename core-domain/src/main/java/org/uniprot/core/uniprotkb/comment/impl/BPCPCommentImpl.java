@@ -115,30 +115,27 @@ public class BPCPCommentImpl extends CommentHasMoleculeImpl implements BPCPComme
         sb.append(getCommentType().toDisplayName());
         sb.append(":");
         
-        if (getAbsorption() != null) {
+        if (hasAbsorption()) {
         	sb.append("\nAbsorption:\n")
              .append(getAbsorption().toString());
         }
 
-        if (getKineticParameters() != null) {
+        if (this.hasKineticParameters()) {
         	sb.append("\nKinetic parameters:\n")
             .append(getKineticParameters().toString());
         }
-        if (getPhDependence() != null) {
+        if (this.hasPhDependence()) {
         	sb.append("\npH dependence:\n")
             .append(getPhDependence().toString());
         }
-        if (getRedoxPotential() != null) {
+        if (this.hasRedoxPotential()) {
         	sb.append("\nRedox potential:\n")
             .append(getRedoxPotential().toString());
         }
-        if (getTemperatureDependence() != null) {
+        if (this.hasTemperatureDependence()) {
          	sb.append("\nTemperature dependence:\n")
             .append(getTemperatureDependence().toString());
         }
-
-        // commentsCounter++;
-
         return sb.toString();
     }
 

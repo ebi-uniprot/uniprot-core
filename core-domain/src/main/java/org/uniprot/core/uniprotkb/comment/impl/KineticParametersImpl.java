@@ -83,8 +83,8 @@ public class KineticParametersImpl implements KineticParameters {
     	michaelisConstants.stream()
     	.map(val -> val.toString())
     	.collect(Collectors.joining("\n")));
-    	if(!maximumVelocities.isEmpty()) {
-    		if(!michaelisConstants.isEmpty()) {
+    	if(hasMaximumVelocities()) {
+    		if(hasMichaelisConstants()) {
     			sb.append("\n");
     		}
     	sb.append(
@@ -92,8 +92,8 @@ public class KineticParametersImpl implements KineticParameters {
     	    	.map(val -> val.toString())
     	    	.collect(Collectors.joining("\n")));
     	}
-    	 if( (note != null) && note.isValid()) {
-    		 if(!maximumVelocities.isEmpty() || !maximumVelocities.isEmpty()) {
+    	 if(hasNote()) {
+    		 if(hasMaximumVelocities()) {
     			 sb.append("\n");
     		 }
     		 
