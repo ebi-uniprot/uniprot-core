@@ -22,12 +22,13 @@ import org.uniprot.core.taxonomy.impl.TaxonomyStrainBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 
-class TaxonomyEntryMapTest {
+class TaxonomyEntryValueMapperTest {
 
     @Test
     void checkSimpleEntryAttributeValues() {
         TaxonomyEntry entry = new TaxonomyEntryBuilder().taxonId(9606L).parentId(100L).build();
-        Map<String, String> mappedEntries = new TaxonomyEntryMap(entry).attributeValues();
+        Map<String, String> mappedEntries =
+                new TaxonomyEntryValueMapper().mapEntity(entry, Collections.emptyList());
         assertThat(mappedEntries, notNullValue());
         assertEquals(14, mappedEntries.size());
         assertEquals("9606", mappedEntries.get("id"));
@@ -45,7 +46,8 @@ class TaxonomyEntryMapTest {
     void checkCompleteEntryAttributeValues() {
         TaxonomyEntry entry = getTaxonomyEntry();
 
-        Map<String, String> mappedEntries = new TaxonomyEntryMap(entry).attributeValues();
+        Map<String, String> mappedEntries =
+                new TaxonomyEntryValueMapper().mapEntity(entry, Collections.emptyList());
 
         assertEquals(14, mappedEntries.size());
         assertEquals("9606", mappedEntries.get("id"));
@@ -71,7 +73,8 @@ class TaxonomyEntryMapTest {
         TaxonomyEntryBuilder builder = new TaxonomyEntryBuilder();
         builder.statistics(new TaxonomyStatisticsBuilder().unreviewedProteinCount(10).build());
         TaxonomyEntry entry = builder.build();
-        Map<String, String> mappedEntries = new TaxonomyEntryMap(entry).attributeValues();
+        Map<String, String> mappedEntries =
+                new TaxonomyEntryValueMapper().mapEntity(entry, Collections.emptyList());
         assertEquals(14, mappedEntries.size());
         assertEquals("annotated", mappedEntries.get("reviewed"));
     }

@@ -3,10 +3,7 @@ package org.uniprot.core.parser.tsv.proteome;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
@@ -31,61 +28,57 @@ import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
  * @author jluo
  * @date: 24 Jun 2019
  */
-class ProteomeEntryMapTest {
+class ProteomeEntryValueMapperTest {
 
     @Test
     void testGetDataSimple() {
         ProteomeEntry entry = create();
         List<String> fields = Arrays.asList("upid", "genome_assembly_id", "protein_count");
-        ProteomeEntryMap entryMap = new ProteomeEntryMap(entry, fields);
-        List<String> result = entryMap.getData();
+        Map<String, String> entryMap = new ProteomeEntryMapper().mapEntity(entry, fields);
 
-        assertEquals(fields.size(), result.size());
-        verify("UP000005640", 0, result);
-        verify("", 1, result);
-        verify("204", 2, result);
+        assertEquals(fields.size(), entryMap.size());
+        verify("UP000005640", "upid", entryMap);
+        verify("204", "protein_count", entryMap);
+        verify("", "genome_assembly_id", entryMap);
     }
 
     @Test
     void testGetDataLineage() {
         ProteomeEntry entry = create();
         List<String> fields = Arrays.asList("upid", "lineage");
-        ProteomeEntryMap entryMap = new ProteomeEntryMap(entry, fields);
-        List<String> result = entryMap.getData();
+        Map<String, String> entryMap = new ProteomeEntryMapper().mapEntity(entry, fields);
 
-        assertEquals(fields.size(), result.size());
-        verify("UP000005640", 0, result);
-        verify("Hominidae, Homo", 1, result);
+        assertEquals(4, entryMap.size());
+        verify("UP000005640", "upid", entryMap);
+        verify("Hominidae, Homo", "lineage", entryMap);
     }
 
     @Test
     void testGetDataComponent() {
         ProteomeEntry entry = create();
         List<String> fields = Arrays.asList("upid", "proteome_components");
-        ProteomeEntryMap entryMap = new ProteomeEntryMap(entry, fields);
-        List<String> result = entryMap.getData();
+        Map<String, String> entryMap = new ProteomeEntryMapper().mapEntity(entry, fields);
 
-        assertEquals(fields.size(), result.size());
-        verify("UP000005640", 0, result);
-        verify("someName1; someName2", 1, result);
+        assertEquals(4, entryMap.size());
+        verify("UP000005640", "upid", entryMap);
+        verify("someName1; someName2", "proteome_components", entryMap);
     }
 
     @Test
     void testGetDataOrganism() {
         ProteomeEntry entry = create();
         List<String> fields = Arrays.asList("upid", "organism", "organism_id", "taxon_mnemonic");
-        ProteomeEntryMap entryMap = new ProteomeEntryMap(entry, fields);
-        List<String> result = entryMap.getData();
+        Map<String, String> entryMap = new ProteomeEntryMapper().mapEntity(entry, fields);
 
-        assertEquals(fields.size(), result.size());
-        verify("UP000005640", 0, result);
-        verify("Homo sapiens (Human)", 1, result);
-        verify("9606", 2, result);
-        verify(null, 3, result);
+        assertEquals(6, entryMap.size());
+        verify("UP000005640", "upid", entryMap);
+        verify("Homo sapiens (Human)", "organism", entryMap);
+        verify("9606", "organism_id", entryMap);
+        verify(null, "taxon_mnemonic", entryMap);
     }
 
-    private void verify(String expected, int pos, List<String> result) {
-        assertEquals(expected, result.get(pos));
+    private void verify(String expected, String field, Map<String, String> result) {
+        assertEquals(expected, result.get(field));
     }
 
     private ProteomeEntry create() {

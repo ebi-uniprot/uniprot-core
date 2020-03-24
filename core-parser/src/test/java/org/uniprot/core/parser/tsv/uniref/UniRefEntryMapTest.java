@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
@@ -43,34 +44,31 @@ class UniRefEntryMapTest {
                         "created",
                         "length",
                         "sequence");
-        UniRefEntryMap entryMap = new UniRefEntryMap(entry, fields);
+        Map<String, String> entryMap = new UniRefEntryValueMapper().mapEntity(entry, fields);
 
-        List<String> data = entryMap.getData();
-
-        List<String> expected =
-                Arrays.asList(
-                        "UniRef50_P03923",
-                        "Cluster: AMP-binding enzyme family protein",
-                        "Homo",
-                        "9605",
-                        "2",
-                        "2018-06-21",
-                        "312",
-                        "MVSWGRFICLVVVTMATLSLARPSFSLVEDDFSAGSADFAFWERDGDSDGFDSHSDJHETRHJREH");
-        assertEquals(expected, data);
+        assertEquals("UniRef50_P03923", entryMap.get("id"));
+        assertEquals("Cluster: AMP-binding enzyme family protein", entryMap.get("name"));
+        assertEquals("Homo", entryMap.get("common_taxon"));
+        assertEquals("9605", entryMap.get("common_taxonid"));
+        assertEquals("2", entryMap.get("count"));
+        assertEquals("2018-06-21", entryMap.get("created"));
+        assertEquals("312", entryMap.get("length"));
+        assertEquals(
+                "MVSWGRFICLVVVTMATLSLARPSFSLVEDDFSAGSADFAFWERDGDSDGFDSHSDJHETRHJREH",
+                entryMap.get("sequence"));
     }
 
     @Test
     void testGetOrganism() {
         UniRefEntry entry = createEntry();
-        String organsms = UniRefEntryMap.getOrganisms(entry);
+        String organsms = UniRefEntryValueMapper.getOrganisms(entry);
         assertEquals("Homo sapiens; Streptomyces sp. NWU49", organsms);
     }
 
     @Test
     void testGetOrganismIDs() {
         UniRefEntry entry = createEntry();
-        String organsmTaxID = UniRefEntryMap.getOrganismTaxId(entry);
+        String organsmTaxID = UniRefEntryValueMapper.getOrganismTaxId(entry);
         assertEquals("9606; 2201153", organsmTaxID);
     }
 
@@ -79,7 +77,7 @@ class UniRefEntryMapTest {
         UniRefEntry entry = createEntry();
         UniRefEntry entry2 = UniRefEntryBuilder.from(entry).membersAdd(createMember2()).build();
 
-        String members = UniRefEntryMap.getMembers(entry2);
+        String members = UniRefEntryValueMapper.getMembers(entry2);
         assertEquals("P12345_HUMAN; P12347_HUMAN; UPI0000E5B23D", members);
     }
 

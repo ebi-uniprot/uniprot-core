@@ -2,6 +2,8 @@ package org.uniprot.core.parser.tsv.uniprot;
 
 import java.util.*;
 
+import org.uniprot.core.parser.tsv.NamedValueMap;
+
 public class EntryLineageMap implements NamedValueMap {
     /*    private final List<TaxNode> lineage;
     public static final List<String> DEFAULT_FIELDS =

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.uniprot.core.Sequence;
+import org.uniprot.core.parser.tsv.NamedValueMap;
 
 public class EntrySequenceMap implements NamedValueMap {
     public static final List<String> FIELDS = Arrays.asList("sequence", "mass", "length");

@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Location;
@@ -26,75 +27,71 @@ import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
  * @author jluo
  * @date: 24 Jun 2019
  */
-class UniParcEntryMapTest {
+class UniParcEntryValueMapperTest {
 
     @Test
     void testGetDataOrganism() {
         UniParcEntry entry = create();
         List<String> fields = Arrays.asList("upi", "organism", "organism_id");
-        UniParcEntryMap entryMap = new UniParcEntryMap(entry, fields);
-        List<String> result = entryMap.getData();
+
+        Map<String, String> result = new UniParcEntryValueMapper().mapEntity(entry, fields);
 
         assertEquals(fields.size(), result.size());
-        verify("UPI0000083A08", 0, result);
-        verify("Homo sapiens; MOUSE", 1, result);
-        verify("9606; 10090", 2, result);
+        verify("UPI0000083A08", "upi", result);
+        verify("Homo sapiens; MOUSE", "organism", result);
+        verify("9606; 10090", "organism_id", result);
     }
 
     @Test
     void testGetDataProteinGene() {
         UniParcEntry entry = create();
         List<String> fields = Arrays.asList("upi", "protein", "gene", "accession");
-        UniParcEntryMap entryMap = new UniParcEntryMap(entry, fields);
-        List<String> result = entryMap.getData();
-        assertEquals(fields.size(), result.size());
-        verify("UPI0000083A08", 0, result);
-        verify("some pname;some pname", 1, result);
-        verify("some gname;", 2, result);
-        verify("P12345; P52346", 3, result);
+        Map<String, String> result = new UniParcEntryValueMapper().mapEntity(entry, fields);
+        assertEquals(7, result.size());
+        verify("UPI0000083A08", "upi", result);
+        verify("some pname;some pname", "protein", result);
+        verify("some gname;", "gene", result);
+        verify("P12345; P52346", "accession", result);
     }
 
     @Test
     void testGetDate() {
         UniParcEntry entry = create();
         List<String> fields = Arrays.asList("upi", "first_seen", "last_seen");
-        UniParcEntryMap entryMap = new UniParcEntryMap(entry, fields);
-        List<String> result = entryMap.getData();
-        assertEquals(fields.size(), result.size());
-        verify("UPI0000083A08", 0, result);
-        verify("2017-02-12", 1, result);
-        verify("2017-04-23", 2, result);
+        Map<String, String> result = new UniParcEntryValueMapper().mapEntity(entry, fields);
+        assertEquals(7, result.size());
+        verify("UPI0000083A08", "upi", result);
+        verify("2017-02-12", "first_seen", result);
+        verify("2017-04-23", "last_seen", result);
     }
 
     @Test
     void testGetSequence() {
         UniParcEntry entry = create();
         List<String> fields = Arrays.asList("upi", "checksum", "length", "sequence");
-        UniParcEntryMap entryMap = new UniParcEntryMap(entry, fields);
-        List<String> result = entryMap.getData();
+        Map<String, String> result = new UniParcEntryValueMapper().mapEntity(entry, fields);
         assertEquals(fields.size(), result.size());
-        verify("UPI0000083A08", 0, result);
-        verify("AA7812161AF4EB5E", 1, result);
-        verify("30", 2, result);
-        verify("MVSWGRFICLVVVTMATLSLARPSFSLVED", 3, result);
+        verify("UPI0000083A08", "upi", result);
+        verify("AA7812161AF4EB5E", "checksum", result);
+        verify("30", "length", result);
+        verify("MVSWGRFICLVVVTMATLSLARPSFSLVED", "sequence", result);
     }
 
     @Test
     void testGetSequenceFeature() {
         UniParcEntry entry = create();
         List<String> fields = Arrays.asList("upi", "HAMAP", "InterPro", "Pfam", "PROSITE");
-        UniParcEntryMap entryMap = new UniParcEntryMap(entry, fields);
-        List<String> result = entryMap.getData();
-        assertEquals(fields.size(), result.size());
-        verify("UPI0000083A08", 0, result);
-        verify("", 1, result);
-        verify("id1", 2, result);
-        verify("sigId2", 3, result);
-        verify("sigId2", 4, result);
+        Map<String, String> result = new UniParcEntryValueMapper().mapEntity(entry, fields);
+        assertEquals(15, result.size());
+        verify("UPI0000083A08", "upi", result);
+        verify("", "HAMAP", result);
+        verify("id1", "InterPro", result);
+        verify("sigId2", "Pfam", result);
+        verify("sigId2", "PROSITE", result);
     }
 
-    private void verify(String expected, int pos, List<String> result) {
-        assertEquals(expected, result.get(pos));
+    private void verify(String expected, String field, Map<String, String> result) {
+        assertEquals(expected, result.get(field));
     }
 
     private UniParcEntry create() {

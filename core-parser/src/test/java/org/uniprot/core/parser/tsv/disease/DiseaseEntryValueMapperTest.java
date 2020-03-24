@@ -5,6 +5,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -16,10 +17,10 @@ import org.uniprot.core.cv.disease.impl.DiseaseEntryBuilder;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
 
-class DiseaseEntryMapTest {
+class DiseaseEntryValueMapperTest {
 
     @Test
-    void checkSimpleEntryAttributeValues() {
+    void checkSimpleMapEntity() {
         String accession = "DI-1234";
         String acronym = "ACRONYM";
         String id = "DiseaseEntry Id";
@@ -30,7 +31,9 @@ class DiseaseEntryMapTest {
                 getSimpleDiseaseEntry(accession, acronym, id, def, revCount, unrevCount);
         DiseaseEntry diseaseEntry = builder.build();
 
-        Map<String, String> mappedEntries = new DiseaseEntryMap(diseaseEntry).attributeValues();
+        Map<String, String> mappedEntries =
+                new DiseaseEntryMapper().mapEntity(diseaseEntry, Collections.emptyList());
+
         assertThat(mappedEntries, notNullValue());
         assertEquals(9, mappedEntries.size());
         assertEquals(accession, mappedEntries.get("accession"));
@@ -39,9 +42,9 @@ class DiseaseEntryMapTest {
         assertEquals(def, mappedEntries.get("definition"));
         assertEquals(String.valueOf(revCount), mappedEntries.get("reviewed_protein_count"));
         assertEquals(String.valueOf(unrevCount), mappedEntries.get("unreviewed_protein_count"));
-        assertEquals(DiseaseEntryMap.EMPTY_STRING, mappedEntries.get("alternative_names"));
-        assertEquals(DiseaseEntryMap.EMPTY_STRING, mappedEntries.get("cross_references"));
-        assertEquals(DiseaseEntryMap.EMPTY_STRING, mappedEntries.get("keywords"));
+        assertEquals(DiseaseEntryMapper.EMPTY_STRING, mappedEntries.get("alternative_names"));
+        assertEquals(DiseaseEntryMapper.EMPTY_STRING, mappedEntries.get("cross_references"));
+        assertEquals(DiseaseEntryMapper.EMPTY_STRING, mappedEntries.get("keywords"));
     }
 
     @Test
@@ -68,7 +71,8 @@ class DiseaseEntryMapTest {
 
         DiseaseEntry entry = builder.build();
 
-        Map<String, String> mappedEntries = new DiseaseEntryMap(entry).attributeValues();
+        Map<String, String> mappedEntries =
+                new DiseaseEntryMapper().mapEntity(entry, Collections.emptyList());
 
         assertThat(mappedEntries, notNullValue());
         assertEquals(9, mappedEntries.size());

@@ -5,9 +5,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import java.util.Collections;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
@@ -19,12 +17,13 @@ import org.uniprot.core.cv.keyword.impl.KeywordEntryBuilder;
 import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
 import org.uniprot.core.impl.StatisticsBuilder;
 
-class KeywordEntryMapTest {
+class KeywordEntryValueMapperTest {
 
     @Test
     void checkSimpleEntryAttributeValues() {
         KeywordEntry entry = new KeywordEntryBuilder().keyword(getKeyword()).build();
-        Map<String, String> mappedEntries = new KeywordEntryMap(entry).attributeValues();
+        Map<String, String> mappedEntries =
+                new KeywordEntryMapper().mapEntity(entry, Collections.emptyList());
         assertThat(mappedEntries, notNullValue());
         assertEquals(9, mappedEntries.size());
         assertEquals("KW-9993", mappedEntries.get("id"));
@@ -39,8 +38,8 @@ class KeywordEntryMapTest {
     @Test
     void checkCompleteEntryAttributeValues() {
         KeywordEntry entry = getKeywordEntry(true);
-
-        Map<String, String> mappedEntries = new KeywordEntryMap(entry).attributeValues();
+        Map<String, String> mappedEntries =
+                new KeywordEntryMapper().mapEntity(entry, Collections.emptyList());
 
         assertEquals(10, mappedEntries.size());
         assertEquals("KW-9993", mappedEntries.get("id"));

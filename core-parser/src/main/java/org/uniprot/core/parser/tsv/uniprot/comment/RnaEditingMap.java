@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.flatfile.parser.impl.cc.CCRnaEditingCommentLineBuilder;
-import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
+import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.comment.RnaEditingComment;
 
 public class RnaEditingMap implements NamedValueMap {

@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.flatfile.parser.impl.ft.FeatureLineBuilderFactory;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
+import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.feature.Feature;
 import org.uniprot.core.uniprotkb.feature.FeatureDescription;
 import org.uniprot.core.uniprotkb.feature.FeatureType;

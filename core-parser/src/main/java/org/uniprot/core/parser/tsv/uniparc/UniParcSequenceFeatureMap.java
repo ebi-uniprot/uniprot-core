@@ -3,7 +3,7 @@ package org.uniprot.core.parser.tsv.uniparc;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
+import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.SignatureDbType;
 

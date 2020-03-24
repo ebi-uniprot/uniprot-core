@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.flatfile.parser.impl.cc.CCCofactorCommentLineBuilder;
-import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
+import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.comment.CofactorComment;
 
 public class CofactorMap implements NamedValueMap {

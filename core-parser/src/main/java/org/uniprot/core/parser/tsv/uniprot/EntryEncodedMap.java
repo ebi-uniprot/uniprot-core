@@ -3,6 +3,7 @@ package org.uniprot.core.parser.tsv.uniprot;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.GeneLocation;
 
 public class EntryEncodedMap implements NamedValueMap {

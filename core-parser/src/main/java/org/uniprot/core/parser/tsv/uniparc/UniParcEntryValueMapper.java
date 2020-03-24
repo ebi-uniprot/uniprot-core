@@ -1,35 +1,27 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
+import org.uniprot.core.parser.tsv.EntityValueMapper;
+import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniparc.UniParcEntry;
 
 /**
  * @author jluo
  * @date: 21 Jun 2019
  */
-public class UniParcEntryMap implements NamedValueMap {
-    private final UniParcEntry entry;
-    private final List<String> fields;
+public class UniParcEntryValueMapper implements EntityValueMapper<UniParcEntry> {
 
-    public static final List<String> UNIPARC_FIELDS = Arrays.asList("upi");
-
-    public UniParcEntryMap(UniParcEntry entry, List<String> fields) {
-        this.entry = entry;
-        this.fields = Collections.unmodifiableList(fields);
-    }
+    private static final List<String> UNIPARC_FIELDS = Collections.singletonList("upi");
 
     @Override
-    public Map<String, String> attributeValues() {
+    public Map<String, String> mapEntity(UniParcEntry entry, List<String> fields) {
         Map<String, String> map = new HashMap<>();
         if (contains(fields)) {
-            map.putAll(getSimpleAttributeValues());
+            map.putAll(getSimpleAttributeValues(entry));
         }
         if (UniParcOrganismMap.contains(fields)) {
             addData(map, new UniParcOrganismMap(entry.getTaxonomies()));
@@ -46,15 +38,6 @@ public class UniParcEntryMap implements NamedValueMap {
         return map;
     }
 
-    public List<String> getData() {
-        List<String> result = new ArrayList<>();
-        Map<String, String> mapped = attributeValues();
-        for (String field : fields) {
-            result.add(mapped.getOrDefault(field, ""));
-        }
-        return result;
-    }
-
     private void addData(Map<String, String> map, NamedValueMap dl) {
         map.putAll(dl.attributeValues());
     }
@@ -63,7 +46,7 @@ public class UniParcEntryMap implements NamedValueMap {
         return fields.stream().anyMatch(UNIPARC_FIELDS::contains);
     }
 
-    private Map<String, String> getSimpleAttributeValues() {
+    private Map<String, String> getSimpleAttributeValues(UniParcEntry entry) {
         Map<String, String> map = new HashMap<>();
         map.put(UNIPARC_FIELDS.get(0), entry.getUniParcId().getValue());
         return map;

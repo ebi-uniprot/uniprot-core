@@ -8,34 +8,26 @@ import java.util.stream.Collectors;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
-import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
+import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.util.Utils;
 
-public class DiseaseEntryMap implements NamedValueMap {
-    public static final String EMPTY_STRING = "";
-
-    private final DiseaseEntry diseaseEntry;
-
-    public DiseaseEntryMap(DiseaseEntry diseaseEntry) {
-        this.diseaseEntry = diseaseEntry;
-    }
+public class DiseaseEntryMapper implements EntityValueMapper<DiseaseEntry> {
+    static final String EMPTY_STRING = "";
 
     @Override
-    public Map<String, String> attributeValues() {
+    public Map<String, String> mapEntity(DiseaseEntry diseaseEntry, List<String> fields) {
         Map<String, String> map = new HashMap<>();
-        map.put("id", this.diseaseEntry.getId());
-        map.put("acronym", this.diseaseEntry.getAcronym());
-        map.put("accession", this.diseaseEntry.getAccession());
-        map.put("definition", this.diseaseEntry.getDefinition());
-        map.put("alternative_names", getAlternativeNames(this.diseaseEntry.getAlternativeNames()));
-        map.put("cross_references", getCrossReferences(this.diseaseEntry.getCrossReferences()));
-        map.put("keywords", getKewords(this.diseaseEntry.getKeywords()));
-        map.put(
-                "reviewed_protein_count",
-                String.valueOf(this.diseaseEntry.getReviewedProteinCount()));
+        map.put("id", diseaseEntry.getId());
+        map.put("acronym", diseaseEntry.getAcronym());
+        map.put("accession", diseaseEntry.getAccession());
+        map.put("definition", diseaseEntry.getDefinition());
+        map.put("alternative_names", getAlternativeNames(diseaseEntry.getAlternativeNames()));
+        map.put("cross_references", getCrossReferences(diseaseEntry.getCrossReferences()));
+        map.put("keywords", getKewords(diseaseEntry.getKeywords()));
+        map.put("reviewed_protein_count", String.valueOf(diseaseEntry.getReviewedProteinCount()));
         map.put(
                 "unreviewed_protein_count",
-                String.valueOf(this.diseaseEntry.getUnreviewedProteinCount()));
+                String.valueOf(diseaseEntry.getUnreviewedProteinCount()));
         return map;
     }
 

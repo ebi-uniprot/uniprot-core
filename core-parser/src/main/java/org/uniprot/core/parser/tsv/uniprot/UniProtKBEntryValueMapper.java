@@ -2,38 +2,23 @@ package org.uniprot.core.parser.tsv.uniprot;
 
 import java.util.*;
 
+import org.uniprot.core.parser.tsv.EntityValueMapper;
+import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.parser.tsv.uniprot.comment.EntryCommentsMap;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 
-public class EntryMap implements NamedValueMap {
-    private final UniProtKBEntry entry;
-    private final List<String> fields;
+public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEntry> {
 
     public static final List<String> DEFAULT_FIELDS =
             Arrays.asList("accession", "id", "score", "protein_existence");
 
     public static final String FIELD_FEATURE = "feature";
 
-    public EntryMap(UniProtKBEntry entry, List<String> fields) {
-        this.entry = entry;
-        this.fields = Collections.unmodifiableList(fields);
-    }
-
     public static boolean contains(List<String> fields) {
         return fields.stream().anyMatch(DEFAULT_FIELDS::contains);
     }
 
-    public List<String> getData() {
-        List<String> result = new ArrayList<>();
-        Map<String, String> mapped = attributeValues();
-        for (String field : fields) {
-            result.add(mapped.getOrDefault(field, ""));
-        }
-        return result;
-    }
-
-    @Override
-    public Map<String, String> attributeValues() {
+    public Map<String, String> mapEntity(UniProtKBEntry entry, List<String> fields) {
         Map<String, String> map = new HashMap<>();
         if (EntryAuditMap.contains(fields)) {
             addData(map, new EntryAuditMap(entry.getEntryAudit()));
@@ -88,10 +73,10 @@ public class EntryMap implements NamedValueMap {
             addData(map, new EntrySequenceMap(entry.getSequence()));
         }
         if (contains(fields)) {
-            map.putAll(getSimpleFields());
+            map.putAll(getSimpleFields(entry));
         }
         if (fields.contains(FIELD_FEATURE)) {
-            map.put(FIELD_FEATURE, getFeatures());
+            map.put(FIELD_FEATURE, getFeatures(entry));
         }
         return map;
     }
@@ -100,7 +85,7 @@ public class EntryMap implements NamedValueMap {
         map.putAll(dl.attributeValues());
     }
 
-    private Map<String, String> getSimpleFields() {
+    private Map<String, String> getSimpleFields(UniProtKBEntry entry) {
         Map<String, String> map = new HashMap<>();
         map.put("accession", entry.getPrimaryAccession().getValue());
         map.put("id", entry.getUniProtkbId().getValue());
@@ -112,7 +97,7 @@ public class EntryMap implements NamedValueMap {
         return map;
     }
 
-    private String getFeatures() {
+    private String getFeatures(UniProtKBEntry entry) {
         Set<String> listFeatures = new TreeSet<>();
         listFeatures.addAll(EntryFeaturesMap.getFeatures(entry.getFeatures()));
         listFeatures.addAll(EntryCommentsMap.getSequenceCautionTypes(entry.getComments()));

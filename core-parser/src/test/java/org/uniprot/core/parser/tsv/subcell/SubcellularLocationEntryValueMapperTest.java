@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Collections;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
@@ -19,14 +20,14 @@ import org.uniprot.core.impl.StatisticsBuilder;
  * @author lgonzales
  * @since 2019-08-30
  */
-class SubcellularLocationEntryMapTest {
+class SubcellularLocationEntryValueMapperTest {
 
     @Test
     void checkSimpleEntryAttributeValues() {
         SubcellularLocationEntry entry =
                 new SubcellularLocationEntryBuilder().accession("SL-0001").build();
         Map<String, String> mappedEntries =
-                new SubcellularLocationEntryMap(entry).attributeValues();
+                new SubcellularLocationEntryMapper().mapEntity(entry, Collections.emptyList());
         assertThat(mappedEntries, notNullValue());
         assertEquals(14, mappedEntries.size());
         assertEquals("SL-0001", mappedEntries.get("accession"));
@@ -40,7 +41,7 @@ class SubcellularLocationEntryMapTest {
         SubcellularLocationEntry entry = createSubcellularLocationEntry(true);
 
         Map<String, String> mappedEntries =
-                new SubcellularLocationEntryMap(entry).attributeValues();
+                new SubcellularLocationEntryMapper().mapEntity(entry, Collections.emptyList());
 
         assertEquals(14, mappedEntries.size());
         assertEquals("noteValue", mappedEntries.get("note"));
