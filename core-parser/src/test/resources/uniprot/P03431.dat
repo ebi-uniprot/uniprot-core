@@ -2,7 +2,7 @@ ID   RDRP_I34A1              Reviewed;         757 AA.
 AC   P03431; A4GXH1; Q20N30; Q8JUU7;
 DT   21-JUL-1986, integrated into UniProtKB/Swiss-Prot.
 DT   02-OCT-2007, sequence version 2.
-DT   11-DEC-2019, entry version 118.
+DT   22-APR-2020, entry version 119.
 DE   RecName: Full=RNA-directed RNA polymerase catalytic subunit {ECO:0000255|HAMAP-Rule:MF_04065};
 DE            EC=2.7.7.48 {ECO:0000255|HAMAP-Rule:MF_04065};
 DE   AltName: Full=Polymerase basic protein 1 {ECO:0000255|HAMAP-Rule:MF_04065};
@@ -114,11 +114,11 @@ CC       is essential for transcription initiation. {ECO:0000255|HAMAP-
 CC       Rule:MF_04065, ECO:0000269|PubMed:18660801,
 CC       ECO:0000269|PubMed:19461581}.
 CC   -!- INTERACTION:
-CC       Q14318:FKBP8 (xeno); NbExp=5; IntAct=EBI-2547514, EBI-724839;
-CC       P03466:NP; NbExp=5; IntAct=EBI-2547514, EBI-2547640;
-CC       P03433:PA; NbExp=6; IntAct=EBI-2547514, EBI-2547616;
-CC       P03428:PB2; NbExp=3; IntAct=EBI-2547514, EBI-2547475;
-CC       Q99959:PKP2 (xeno); NbExp=8; IntAct=EBI-2547514, EBI-702235;
+CC       P03431; Q14318: FKBP8; Xeno; NbExp=5; IntAct=EBI-2547514, EBI-724839;
+CC       P03431; P03466: NP; NbExp=5; IntAct=EBI-2547514, EBI-2547640;
+CC       P03431; P03433: PA; NbExp=6; IntAct=EBI-2547514, EBI-2547616;
+CC       P03431; P03428: PB2; NbExp=3; IntAct=EBI-2547514, EBI-2547475;
+CC       P03431; Q99959: PKP2; Xeno; NbExp=8; IntAct=EBI-2547514, EBI-702235;
 CC   -!- SUBCELLULAR LOCATION: Host nucleus {ECO:0000255|HAMAP-Rule:MF_04065,
 CC       ECO:0000269|PubMed:19906916}. Host cytoplasm {ECO:0000255|HAMAP-
 CC       Rule:MF_04065, ECO:0000269|PubMed:19906916}.
@@ -150,7 +150,6 @@ DR   PRIDE; P03431; -.
 DR   GeneID; 956534; -.
 DR   KEGG; vg:956534; -.
 DR   KO; K19389; -.
-DR   OrthoDB; 573at10239; -.
 DR   Reactome; R-HSA-168255; Influenza Life Cycle.
 DR   Reactome; R-HSA-168271; Transport of Ribonucleoproteins into the Host Nucleus.
 DR   Reactome; R-HSA-168275; Entry of Influenza Virion into Host Cell via Endocytosis.

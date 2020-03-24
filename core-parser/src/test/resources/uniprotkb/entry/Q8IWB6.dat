@@ -2,7 +2,7 @@ ID   TEX14_HUMAN             Reviewed;        1497 AA.
 AC   Q8IWB6; A6NH19; Q7RTP3; Q8ND97; Q9BXT9;
 DT   25-JUL-2006, integrated into UniProtKB/Swiss-Prot.
 DT   25-JUL-2006, sequence version 2.
-DT   11-DEC-2019, entry version 154.
+DT   22-APR-2020, entry version 156.
 DE   RecName: Full=Inactive serine/threonine-protein kinase TEX14;
 DE   AltName: Full=Protein kinase-like protein SgK307;
 DE   AltName: Full=Sugen kinase 307;
@@ -141,8 +141,11 @@ CC   -!- SUBUNIT: Interacts with KIF23 and RBM44. Interacts with CEP55;
 CC       inhibiting interaction between CEP55 and PDCD6IP/ALIX and TSG101 (By
 CC       similarity). {ECO:0000250}.
 CC   -!- INTERACTION:
-CC       Q53EZ4:CEP55; NbExp=3; IntAct=EBI-6674697, EBI-747776;
-CC       P61968:LMO4; NbExp=4; IntAct=EBI-6674697, EBI-2798728;
+CC       Q8IWB6; Q53EZ4: CEP55; NbExp=3; IntAct=EBI-6674697, EBI-747776;
+CC       Q8IWB6; Q96D03: DDIT4L; NbExp=3; IntAct=EBI-6674697, EBI-742054;
+CC       Q8IWB6; Q9UBR4-2: LHX3; NbExp=5; IntAct=EBI-6674697, EBI-12039345;
+CC       Q8IWB6; P61968: LMO4; NbExp=3; IntAct=EBI-6674697, EBI-2798728;
+CC       Q8IWB6; Q6FHY5: MEOX2; NbExp=3; IntAct=EBI-6674697, EBI-16439278;
 CC   -!- SUBCELLULAR LOCATION: Cytoplasm {ECO:0000250}. Midbody {ECO:0000250}.
 CC       Chromosome, centromere, kinetochore {ECO:0000250}. Note=Detected in the
 CC       intercellular bridges that connect male germ cell daughter cells after
@@ -196,7 +199,7 @@ DR   PDB; 3WUU; X-ray; 2.90 A; C/F/I/L=791-805.
 DR   PDBsum; 3WUT; -.
 DR   PDBsum; 3WUU; -.
 DR   SMR; Q8IWB6; -.
-DR   BioGrid; 121089; 3.
+DR   BioGRID; 121089; 3.
 DR   ELM; Q8IWB6; -.
 DR   IntAct; Q8IWB6; 6.
 DR   STRING; 9606.ENSP00000240361; -.
@@ -213,6 +216,7 @@ DR   PRIDE; Q8IWB6; -.
 DR   ProteomicsDB; 70835; -. [Q8IWB6-1]
 DR   ProteomicsDB; 70836; -. [Q8IWB6-2]
 DR   ProteomicsDB; 70837; -. [Q8IWB6-3]
+DR   Antibodypedia; 31015; 79 antibodies.
 DR   DNASU; 56155; -.
 DR   Ensembl; ENST00000240361; ENSP00000240361; ENSG00000121101. [Q8IWB6-1]
 DR   Ensembl; ENST00000349033; ENSP00000268910; ENSG00000121101. [Q8IWB6-3]
@@ -222,11 +226,9 @@ DR   KEGG; hsa:56155; -.
 DR   UCSC; uc002iwr.3; human. [Q8IWB6-1]
 DR   CTD; 56155; -.
 DR   DisGeNET; 56155; -.
-DR   EuPathDB; HostDB:ENSG00000121101.15; -.
 DR   GeneCards; TEX14; -.
 DR   HGNC; HGNC:11737; TEX14.
-DR   HPA; HPA030620; -.
-DR   HPA; HPA077020; -.
+DR   HPA; ENSG00000121101; Tissue enriched (testis).
 DR   MalaCards; TEX14; -.
 DR   MIM; 605792; gene.
 DR   MIM; 617707; phenotype.
@@ -237,7 +239,7 @@ DR   PharmGKB; PA36454; -.
 DR   eggNOG; ENOG410IHZA; Eukaryota.
 DR   eggNOG; ENOG410XT67; LUCA.
 DR   GeneTree; ENSGT00390000015123; -.
-DR   HOGENOM; HOG000059264; -.
+DR   HOGENOM; CLU_004733_0_0_1; -.
 DR   InParanoid; Q8IWB6; -.
 DR   KO; K17540; -.
 DR   OMA; HEYFYSS; -.
@@ -250,7 +252,7 @@ DR   Pharos; Q8IWB6; Tbio.
 DR   PRO; PR:Q8IWB6; -.
 DR   Proteomes; UP000005640; Chromosome 17.
 DR   RNAct; Q8IWB6; protein.
-DR   Bgee; ENSG00000121101; Expressed in 102 organ(s), highest expression level in testis.
+DR   Bgee; ENSG00000121101; Expressed in testis and 101 other tissues.
 DR   ExpressionAtlas; Q8IWB6; baseline and differential.
 DR   Genevisible; Q8IWB6; HS.
 DR   GO; GO:0005623; C:cell; ISS:UniProtKB.

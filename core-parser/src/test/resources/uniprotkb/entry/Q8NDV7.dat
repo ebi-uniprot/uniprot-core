@@ -3,7 +3,7 @@ AC   Q8NDV7; C9JAR8; O15408; Q658L5; Q6NVB5; Q8NEZ0; Q8TBT8; Q8TCR0; Q9NV59;
 AC   Q9P268;
 DT   29-MAR-2005, integrated into UniProtKB/Swiss-Prot.
 DT   18-MAY-2010, sequence version 2.
-DT   11-DEC-2019, entry version 177.
+DT   22-APR-2020, entry version 179.
 DE   RecName: Full=Trinucleotide repeat-containing gene 6A protein;
 DE   AltName: Full=CAG repeat protein 26;
 DE   AltName: Full=EMSY interactor protein;
@@ -196,7 +196,7 @@ RA   Fritzler M.J., Chan E.K.L.;
 RT   "Disruption of GW bodies impairs mammalian RNA interference.";
 RL   Nat. Cell Biol. 7:1267-1274(2005).
 RN   [15]
-RP   ERRATUM.
+RP   ERRATUM OF PUBMED:16284622.
 RA   Jakymiw A., Lian S.L., Eystathioy T., Li S., Satoh M., Hamel J.C.,
 RA   Fritzler M.J., Chan E.K.L.;
 RL   Nat. Cell Biol. 8:100-100(2006).
@@ -215,7 +215,7 @@ RT   "Let-7 microRNA-mediated mRNA deadenylation and translational repression in
 RT   a mammalian cell-free system.";
 RL   Genes Dev. 21:1857-1862(2007).
 RN   [18]
-RP   ERRATUM.
+RP   ERRATUM OF PUBMED:17671087.
 RA   Wakiyama M., Takimoto K., Ohara O., Yokoyama S.;
 RL   Genes Dev. 21:2509-2509(2007).
 RN   [19]
@@ -227,7 +227,7 @@ RT   "Small interfering RNA-mediated silencing induces target-dependent assembly
 RT   of GW/P bodies.";
 RL   Mol. Biol. Cell 18:3375-3387(2007).
 RN   [20]
-RP   ERRATUM.
+RP   ERRATUM OF PUBMED:17596515.
 RA   Lian S.L., Fritzler M.J., Katz J., Hamazaki T., Terada N., Satoh M.,
 RA   Chan E.K.L.;
 RL   Mol. Biol. Cell 18:4200-4200(2007).
@@ -377,14 +377,15 @@ CC       ECO:0000269|PubMed:19324964, ECO:0000269|PubMed:19383768,
 CC       ECO:0000269|PubMed:21981923, ECO:0000269|PubMed:26134560,
 CC       ECO:0000269|PubMed:28546213}.
 CC   -!- INTERACTION:
-CC       Q9UL18:AGO1; NbExp=5; IntAct=EBI-2269715, EBI-527363;
-CC       Q9UKV8:AGO2; NbExp=16; IntAct=EBI-2269715, EBI-528269;
-CC       Q9H9G7:AGO3; NbExp=3; IntAct=EBI-2269715, EBI-2267883;
-CC       Q9HCK5:AGO4; NbExp=4; IntAct=EBI-2269715, EBI-2269696;
-CC       A5YKK6:CNOT1; NbExp=2; IntAct=EBI-2269715, EBI-1222758;
-CC       P11940:PABPC1; NbExp=3; IntAct=EBI-2269715, EBI-81531;
-CC       Q58A45:PAN3; NbExp=2; IntAct=EBI-2269715, EBI-2513054;
-CC       Q15645:TRIP13; NbExp=3; IntAct=EBI-2269715, EBI-358993;
+CC       Q8NDV7; Q9UL18: AGO1; NbExp=5; IntAct=EBI-2269715, EBI-527363;
+CC       Q8NDV7; Q9UKV8: AGO2; NbExp=22; IntAct=EBI-2269715, EBI-528269;
+CC       Q8NDV7; Q9H9G7: AGO3; NbExp=5; IntAct=EBI-2269715, EBI-2267883;
+CC       Q8NDV7; Q9HCK5: AGO4; NbExp=4; IntAct=EBI-2269715, EBI-2269696;
+CC       Q8NDV7; A5YKK6: CNOT1; NbExp=2; IntAct=EBI-2269715, EBI-1222758;
+CC       Q8NDV7; Q9UGP4: LIMD1; NbExp=2; IntAct=EBI-2269715, EBI-2652871;
+CC       Q8NDV7; P11940: PABPC1; NbExp=3; IntAct=EBI-2269715, EBI-81531;
+CC       Q8NDV7; Q58A45: PAN3; NbExp=2; IntAct=EBI-2269715, EBI-2513054;
+CC       Q8NDV7; Q15645: TRIP13; NbExp=3; IntAct=EBI-2269715, EBI-358993;
 CC   -!- SUBCELLULAR LOCATION: Cytoplasm, P-body {ECO:0000269|PubMed:11950943,
 CC       ECO:0000269|PubMed:13130130, ECO:0000269|PubMed:15494374,
 CC       ECO:0000269|PubMed:15908945, ECO:0000269|PubMed:16284622,
@@ -454,10 +455,10 @@ DR   RefSeq; XP_016878642.1; XM_017023153.1. [Q8NDV7-2]
 DR   PDB; 5W6V; X-ray; 2.83 A; B=1073-1094.
 DR   PDBsum; 5W6V; -.
 DR   SMR; Q8NDV7; -.
-DR   BioGrid; 118141; 105.
+DR   BioGRID; 118141; 112.
 DR   DIP; DIP-54489N; -.
 DR   ELM; Q8NDV7; -.
-DR   IntAct; Q8NDV7; 87.
+DR   IntAct; Q8NDV7; 75.
 DR   MINT; Q8NDV7; -.
 DR   STRING; 9606.ENSP00000379144; -.
 DR   iPTMnet; Q8NDV7; -.
@@ -477,6 +478,7 @@ DR   ProteomicsDB; 73063; -. [Q8NDV7-3]
 DR   ProteomicsDB; 73064; -. [Q8NDV7-4]
 DR   ProteomicsDB; 73065; -. [Q8NDV7-5]
 DR   ProteomicsDB; 73066; -. [Q8NDV7-6]
+DR   Antibodypedia; 12719; 104 antibodies.
 DR   Ensembl; ENST00000315183; ENSP00000326900; ENSG00000090905. [Q8NDV7-6]
 DR   Ensembl; ENST00000395799; ENSP00000379144; ENSG00000090905. [Q8NDV7-1]
 DR   Ensembl; ENST00000672933; ENSP00000500125; ENSG00000288130. [Q8NDV7-6]
@@ -486,11 +488,9 @@ DR   KEGG; hsa:27327; -.
 DR   UCSC; uc002dmm.4; human. [Q8NDV7-1]
 DR   CTD; 27327; -.
 DR   DisGeNET; 27327; -.
-DR   EuPathDB; HostDB:ENSG00000090905.17; -.
 DR   GeneCards; TNRC6A; -.
 DR   HGNC; HGNC:11969; TNRC6A.
-DR   HPA; HPA015305; -.
-DR   HPA; HPA017869; -.
+DR   HPA; ENSG00000090905; Low tissue specificity.
 DR   MalaCards; TNRC6A; -.
 DR   MIM; 610739; gene.
 DR   MIM; 618074; phenotype.
@@ -500,6 +500,7 @@ DR   PharmGKB; PA36656; -.
 DR   eggNOG; ENOG410IF5S; Eukaryota.
 DR   eggNOG; ENOG41110AX; LUCA.
 DR   GeneTree; ENSGT00940000158180; -.
+DR   HOGENOM; CLU_001298_3_1_1; -.
 DR   InParanoid; Q8NDV7; -.
 DR   KO; K18412; -.
 DR   OMA; MDTGTSW; -.
@@ -514,6 +515,7 @@ DR   Reactome; R-HSA-426496; Post-transcriptional silencing by small RNAs.
 DR   Reactome; R-HSA-5578749; Transcriptional regulation by small RNAs.
 DR   Reactome; R-HSA-5628897; TP53 Regulates Metabolic Genes.
 DR   Reactome; R-HSA-5687128; MAPK6/MAPK4 signaling.
+DR   Reactome; R-HSA-8853884; Transcriptional Regulation by VENTX.
 DR   Reactome; R-HSA-8934593; Regulation of RUNX1 Expression and Activity.
 DR   Reactome; R-HSA-8936459; RUNX1 regulates genes involved in megakaryocyte differentiation and platelet function.
 DR   Reactome; R-HSA-8943723; Regulation of PTEN mRNA translation.
@@ -529,7 +531,7 @@ DR   Pharos; Q8NDV7; Tbio.
 DR   PRO; PR:Q8NDV7; -.
 DR   Proteomes; UP000005640; Chromosome 16.
 DR   RNAct; Q8NDV7; protein.
-DR   Bgee; ENSG00000090905; Expressed in 205 organ(s), highest expression level in cerebellar vermis.
+DR   Bgee; ENSG00000090905; Expressed in cerebellar vermis and 204 other tissues.
 DR   ExpressionAtlas; Q8NDV7; baseline and differential.
 DR   Genevisible; Q8NDV7; HS.
 DR   GO; GO:0005829; C:cytosol; TAS:Reactome.

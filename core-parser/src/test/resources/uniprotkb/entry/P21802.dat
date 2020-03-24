@@ -6,7 +6,7 @@ AC   Q9UIH3; Q9UIH4; Q9UIH5; Q9UIH6; Q9UIH7; Q9UIH8; Q9UM87; Q9UMC6; Q9UNS7;
 AC   Q9UQH7; Q9UQH8; Q9UQH9; Q9UQI0;
 DT   01-MAY-1991, integrated into UniProtKB/Swiss-Prot.
 DT   01-MAY-1991, sequence version 1.
-DT   11-DEC-2019, entry version 251.
+DT   22-APR-2020, entry version 253.
 DE   RecName: Full=Fibroblast growth factor receptor 2;
 DE            Short=FGFR-2;
 DE            EC=2.7.10.1 {ECO:0000269|PubMed:16844695, ECO:0000269|PubMed:18056630, ECO:0000269|PubMed:19410646};
@@ -31,7 +31,7 @@ RT   "Cloning and expression of two distinct high-affinity receptors cross-
 RT   reacting with acidic and basic fibroblast growth factors.";
 RL   EMBO J. 9:2685-2692(1990).
 RN   [2]
-RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM 16).
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM 10).
 RX   PubMed=2172978; DOI=10.1073/pnas.87.20.8180;
 RA   Houssaint E., Blanquet P.R., Champion-Arnaud P., Gesnel M.-C.,
 RA   Torriglia A., Courtois Y., Breathnach R.;
@@ -39,7 +39,7 @@ RT   "Related fibroblast growth factor receptor genes exist in the human
 RT   genome.";
 RL   Proc. Natl. Acad. Sci. U.S.A. 87:8180-8184(1990).
 RN   [3]
-RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM 17).
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM 11).
 RX   PubMed=1647213; DOI=10.1016/0167-4781(91)90015-E;
 RA   Seno M., Sasada R., Watanabe T., Ishimaru K., Igarashi K.;
 RT   "Two cDNAs encoding novel human FGF receptor.";
@@ -54,7 +54,7 @@ RT   "K-sam, an amplified gene in stomach cancer, is a member of the heparin-
 RT   binding growth factor receptor genes.";
 RL   Proc. Natl. Acad. Sci. U.S.A. 87:5983-5987(1990).
 RN   [5]
-RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORMS 5; 14 AND 15).
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORMS 5; 8; 9 AND 16).
 RX   PubMed=1313574; DOI=10.1073/pnas.89.7.2960;
 RA   Katoh M., Hattori Y., Sasaki H., Tanaka M., Sugano K., Yazaki Y.,
 RA   Sugimura T., Terada M.;
@@ -62,7 +62,7 @@ RT   "K-sam gene encodes secreted as well as transmembrane receptor tyrosine
 RT   kinase.";
 RL   Proc. Natl. Acad. Sci. U.S.A. 89:2960-2964(1992).
 RN   [6]
-RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM 3), DOMAIN, AND SUBUNIT.
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORMS 3 AND 16), DOMAIN, AND SUBUNIT.
 RC   TISSUE=Placenta;
 RX   PubMed=1400433;
 RA   Dell K.R., Williams L.T.;
@@ -71,7 +71,7 @@ RT   of the third immunoglobulin-like domain confers ligand binding
 RT   specificity.";
 RL   J. Biol. Chem. 267:21225-21229(1992).
 RN   [7]
-RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORMS 3 AND 19), SUBUNIT, DOMAIN, AND
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORMS 3; 13 AND 16), SUBUNIT, DOMAIN, AND
 RP   VARIANT ARG-613.
 RC   TISSUE=Mammary gland;
 RX   PubMed=1309608; DOI=10.1073/pnas.89.1.246;
@@ -81,7 +81,7 @@ RT   "Determination of ligand-binding specificity by alternative splicing: two
 RT   distinct growth factor receptors encoded by a single gene.";
 RL   Proc. Natl. Acad. Sci. U.S.A. 89:246-250(1992).
 RN   [8]
-RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM 19).
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM 13).
 RC   TISSUE=Cornea, and Mammary gland;
 RX   PubMed=7866434;
 RA   Wilson S.E., Weng J., Chwang E.L., Gollahon L., Leitch A.M., Shay J.W.;
@@ -89,7 +89,7 @@ RT   "Hepatocyte growth factor (HGF), keratinocyte growth factor (KGF), and
 RT   their receptors in human breast cells and tissues: alternative receptors.";
 RL   Cell. Mol. Biol. Res. 40:337-350(1994).
 RN   [9]
-RP   ERRATUM.
+RP   ERRATUM OF PUBMED:7866434.
 RA   Wilson S.E., Weng J., Chwang E.L., Gollahon L., Leitch A.M., Shay J.W.;
 RL   Cell. Mol. Biol. Res. 40:707-707(1994).
 RN   [10]
@@ -98,8 +98,7 @@ RC   TISSUE=Blood;
 RA   Steinberger D., Mueller U.;
 RL   Submitted (APR-1996) to the EMBL/GenBank/DDBJ databases.
 RN   [11]
-RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORMS 7; 9; 10; 11; 12 AND 13), AND VARIANT
-RP   ARG-613.
+RP   NUCLEOTIDE SEQUENCE [MRNA], AND VARIANT ARG-613.
 RX   PubMed=10626794;
 RA   Ueda T., Sasaki H., Kuwahara Y., Nezu M., Shibuya T., Sakamoto H.,
 RA   Ishii H., Yanagihara K., Mafune K., Makuuchi M., Terada M.;
@@ -108,7 +107,7 @@ RT   mediated recombination, generating preferential expression of specific
 RT   messenger RNAs.";
 RL   Cancer Res. 59:6080-6086(1999).
 RN   [12]
-RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA] (ISOFORMS 5; 6; 8; 14 AND 18).
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA] (ISOFORMS 5; 6; 7; 8 AND 12).
 RX   PubMed=11856867;
 RA   Ingersoll R.G., Paznekas W.A., Tran A.K., Scott A.F., Jiang G., Jabs E.W.;
 RT   "Fibroblast growth factor receptor 2 (FGFR2): genomic sequence and
@@ -121,7 +120,7 @@ RT   "Sequence and polymorphisms in fibroblast growth factor receptor 2 (FGFR2)
 RT   gene in humans.";
 RL   Submitted (FEB-2002) to the EMBL/GenBank/DDBJ databases.
 RN   [14]
-RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM 23).
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM 17).
 RA   Jang J.;
 RT   "Identification of a novel variant of FGFR2.";
 RL   Submitted (APR-2002) to the EMBL/GenBank/DDBJ databases.
@@ -130,7 +129,7 @@ RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA], AND VARIANTS PRO-6 AND THR-186.
 RG   NIEHS SNPs program;
 RL   Submitted (APR-2006) to the EMBL/GenBank/DDBJ databases.
 RN   [16]
-RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (ISOFORM 21).
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (ISOFORM 15).
 RC   TISSUE=Cerebellum;
 RX   PubMed=14702039; DOI=10.1038/ng1285;
 RA   Ota T., Suzuki Y., Nishikawa T., Otsuki T., Sugiyama T., Irie R.,
@@ -193,7 +192,7 @@ RA   Durbin R., Hubbard T., Doucette-Stamm L., Beck S., Smith D.R., Rogers J.;
 RT   "The DNA sequence and comparative analysis of human chromosome 10.";
 RL   Nature 429:375-381(2004).
 RN   [18]
-RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (ISOFORM 20).
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (ISOFORM 14).
 RC   TISSUE=Brain;
 RX   PubMed=15489334; DOI=10.1101/gr.2596504;
 RG   The MGC Project Team;
@@ -231,7 +230,7 @@ RT   and Pfeiffer syndrome.";
 RL   Am. J. Hum. Genet. 66:768-777(2000).
 RN   [20]
 RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA] OF 1-209; 212-767 AND 771-821 (ISOFORMS
-RP   5; 14 AND 18).
+RP   5; 8 AND 12).
 RX   PubMed=10196476; DOI=10.1016/S0378-1119(99)00047-5;
 RA   Zhang Y., Gorry M.C., Post J.C., Ehrlich G.D.;
 RT   "Genomic organization of the human fibroblast growth factor receptor 2
@@ -883,15 +882,19 @@ CC       ECO:0000269|PubMed:18056630, ECO:0000269|PubMed:19060208,
 CC       ECO:0000269|PubMed:19103595, ECO:0000269|PubMed:21454610,
 CC       ECO:0000269|PubMed:8663044, ECO:0000269|PubMed:8961926}.
 CC   -!- INTERACTION:
-CC       P03968:FGF1 (xeno); NbExp=2; IntAct=EBI-1028658, EBI-6358090;
-CC       P05230:FGF1; NbExp=2; IntAct=EBI-1028658, EBI-698068;
-CC       P05230-1:FGF1; NbExp=2; IntAct=EBI-15489960, EBI-15489950;
-CC       O15520:FGF10; NbExp=2; IntAct=EBI-1028658, EBI-1035684;
-CC       P09038:FGF2; NbExp=3; IntAct=EBI-1028658, EBI-977447;
-CC       P09038-2:FGF2; NbExp=2; IntAct=EBI-1028658, EBI-11122080;
-CC       P21781:FGF7; NbExp=2; IntAct=EBI-6354683, EBI-3937699;
-CC       P62993:GRB2; NbExp=5; IntAct=EBI-1028658, EBI-401755;
-CC       P19174:PLCG1; NbExp=9; IntAct=EBI-15489960, EBI-79387;
+CC       P21802-1; P21802-1; NbExp=3; IntAct=EBI-15489960, EBI-15489960;
+CC       P21802; P03968: FGF1; Xeno; NbExp=2; IntAct=EBI-1028658, EBI-6358090;
+CC       P21802-3; P03968: FGF1; Xeno; NbExp=2; IntAct=EBI-6354683, EBI-6358090;
+CC       P21802; P05230: FGF1; NbExp=2; IntAct=EBI-1028658, EBI-698068;
+CC       P21802-1; P05230-1: FGF1; NbExp=2; IntAct=EBI-15489960, EBI-15489950;
+CC       P21802; PRO_0000008908 [P05230]: FGF1; NbExp=5; IntAct=EBI-1028658, EBI-6880860;
+CC       P21802; O15520: FGF10; NbExp=2; IntAct=EBI-1028658, EBI-1035684;
+CC       P21802; P09038: FGF2; NbExp=3; IntAct=EBI-1028658, EBI-977447;
+CC       P21802-1; P09038: FGF2; NbExp=2; IntAct=EBI-15489960, EBI-977447;
+CC       P21802; P09038-2: FGF2; NbExp=2; IntAct=EBI-1028658, EBI-11122080;
+CC       P21802-3; P21781: FGF7; NbExp=2; IntAct=EBI-6354683, EBI-3937699;
+CC       P21802; P62993: GRB2; NbExp=5; IntAct=EBI-1028658, EBI-401755;
+CC       P21802-1; P19174: PLCG1; NbExp=9; IntAct=EBI-15489960, EBI-79387;
 CC   -!- SUBCELLULAR LOCATION: Cell membrane; Single-pass type I membrane
 CC       protein. Golgi apparatus. Cytoplasmic vesicle. Note=Detected on
 CC       osteoblast plasma membrane lipid rafts. After ligand binding, the
@@ -902,10 +905,10 @@ CC       rapidly internalized and degraded.
 CC   -!- SUBCELLULAR LOCATION: [Isoform 3]: Cell membrane; Single-pass type I
 CC       membrane protein. Note=After ligand binding, the activated receptor is
 CC       rapidly internalized and degraded.
-CC   -!- SUBCELLULAR LOCATION: [Isoform 14]: Secreted.
-CC   -!- SUBCELLULAR LOCATION: [Isoform 19]: Secreted.
+CC   -!- SUBCELLULAR LOCATION: [Isoform 8]: Secreted.
+CC   -!- SUBCELLULAR LOCATION: [Isoform 13]: Secreted.
 CC   -!- ALTERNATIVE PRODUCTS:
-CC       Event=Alternative splicing; Named isoforms=23;
+CC       Event=Alternative splicing; Named isoforms=17;
 CC       Name=1; Synonyms=BEK, FGFR2IIIc;
 CC         IsoId=P21802-1; Sequence=Displayed;
 CC       Name=2; Synonyms=Short;
@@ -921,49 +924,31 @@ CC       Name=5; Synonyms=K-sam-I, BEK, IgIIIc;
 CC         IsoId=P21802-5; Sequence=VSP_002975;
 CC       Name=6; Synonyms=K-sam-IIC2;
 CC         IsoId=P21802-6; Sequence=VSP_002975, VSP_002984;
-CC       Name=7; Synonyms=K-sam-IIO2;
-CC         IsoId=P21802-7; Sequence=VSP_002969, VSP_002970, VSP_002971,
-CC                                  VSP_002972, VSP_002979;
-CC       Name=8; Synonyms=K-sam-IIC3;
+CC       Name=7; Synonyms=K-sam-IIC3;
 CC         IsoId=P21802-8; Sequence=VSP_002975, VSP_002978;
-CC       Name=9; Synonyms=K-sam-IIH1;
-CC         IsoId=P21802-9; Sequence=VSP_002969, VSP_002970, VSP_002971,
-CC                                  VSP_002972, VSP_002980;
-CC       Name=10; Synonyms=K-sam-IIH2;
-CC         IsoId=P21802-10; Sequence=VSP_002969, VSP_002970, VSP_002971,
-CC                                   VSP_002972, VSP_002981;
-CC       Name=11; Synonyms=K-sam-IIH3, K-sam-IIO4;
-CC         IsoId=P21802-11; Sequence=VSP_002969, VSP_002970, VSP_002971,
-CC                                   VSP_002972, VSP_002982;
-CC       Name=12; Synonyms=K-sam-IIO1;
-CC         IsoId=P21802-12; Sequence=VSP_002969, VSP_002970, VSP_002971,
-CC                                   VSP_002972, VSP_002983;
-CC       Name=13; Synonyms=K-sam-IIO3;
-CC         IsoId=P21802-13; Sequence=VSP_002969, VSP_002970, VSP_002971,
-CC                                   VSP_002972, VSP_002977;
-CC       Name=14; Synonyms=K-sam-IV, Soluble KGFR;
+CC       Name=8; Synonyms=K-sam-IV, Soluble KGFR;
 CC         IsoId=P21802-14; Sequence=VSP_002965, VSP_002966;
-CC       Name=15; Synonyms=K-sam-III;
+CC       Name=9; Synonyms=K-sam-III;
 CC         IsoId=P21802-15; Sequence=VSP_002968;
-CC       Name=16; Synonyms=TK14;
+CC       Name=10; Synonyms=TK14;
 CC         IsoId=P21802-16; Sequence=VSP_002967, VSP_002975;
-CC       Name=17;
+CC       Name=11;
 CC         IsoId=P21802-17; Sequence=VSP_002969, VSP_002970, VSP_002971,
 CC                                   VSP_002972, VSP_002978;
-CC       Name=18; Synonyms=K-sam-IIC1, KGFR, IgIIIb;
+CC       Name=12; Synonyms=K-sam-IIC1, KGFR, IgIIIb;
 CC         IsoId=P21802-18; Sequence=VSP_002969, VSP_002970, VSP_002971,
 CC                                   VSP_002972, VSP_002975;
-CC       Name=19; Synonyms=Soluble KGFR;
+CC       Name=13; Synonyms=Soluble KGFR;
 CC         IsoId=P21802-19; Sequence=VSP_002969, VSP_002970, VSP_002971,
 CC                                   VSP_002972, VSP_002973, VSP_002974;
-CC       Name=20;
+CC       Name=14;
 CC         IsoId=P21802-20; Sequence=VSP_019608, VSP_019609;
-CC       Name=21;
+CC       Name=15;
 CC         IsoId=P21802-21; Sequence=VSP_002964, VSP_041915;
-CC       Name=22;
+CC       Name=16;
 CC         IsoId=P21802-22; Sequence=VSP_002964, VSP_002969, VSP_002970,
 CC                                   VSP_002971, VSP_002972, VSP_002978;
-CC       Name=23;
+CC       Name=17;
 CC         IsoId=P21802-23; Sequence=VSP_041914;
 CC   -!- DOMAIN: The second and third Ig-like domains directly interact with
 CC       fibroblast growth factors (FGF) and heparan sulfate proteoglycans.
@@ -1091,6 +1076,12 @@ CC   -!- SIMILARITY: Belongs to the protein kinase superfamily. Tyr protein
 CC       kinase family. Fibroblast growth factor receptor subfamily.
 CC       {ECO:0000255|PROSITE-ProRule:PRU00159}.
 CC   -!- SEQUENCE CAUTION:
+CC       Sequence=BAA89296.1; Type=Miscellaneous discrepancy; Note=Contaminating sequence. Somatic variant that appeared in a cancer cell line as a result of genome instability.; Evidence={ECO:0000305|PubMed:10626794};
+CC       Sequence=BAA89297.1; Type=Miscellaneous discrepancy; Note=Contaminating sequence. Somatic variant that appeared in a cancer cell line as a result of genome instability.; Evidence={ECO:0000305|PubMed:10626794};
+CC       Sequence=BAA89298.1; Type=Miscellaneous discrepancy; Note=Contaminating sequence. Somatic variant that appeared in a cancer cell line as a result of genome instability.; Evidence={ECO:0000305|PubMed:10626794};
+CC       Sequence=BAA89299.1; Type=Miscellaneous discrepancy; Note=Contaminating sequence. Somatic variant that appeared in a cancer cell line as a result of genome instability.; Evidence={ECO:0000305|PubMed:10626794};
+CC       Sequence=BAA89300.1; Type=Miscellaneous discrepancy; Note=Contaminating sequence. Somatic variant that appeared in a cancer cell line as a result of genome instability.; Evidence={ECO:0000305|PubMed:10626794};
+CC       Sequence=BAA89301.1; Type=Miscellaneous discrepancy; Note=Contaminating sequence. Somatic variant that appeared in a cancer cell line as a result of genome instability.; Evidence={ECO:0000305|PubMed:10626794};
 CC       Sequence=BAG57383.1; Type=Erroneous initiation; Note=Extended N-terminus.; Evidence={ECO:0000305};
 CC   -!- WEB RESOURCE: Name=Atlas of Genetics and Cytogenetics in Oncology and
 CC       Haematology;
@@ -1112,12 +1103,12 @@ DR   EMBL; M97193; AAA52449.1; -; mRNA.
 DR   EMBL; U11814; AAA68514.1; -; mRNA.
 DR   EMBL; M80634; AAA36147.1; -; mRNA.
 DR   EMBL; Z71929; CAA96492.1; -; mRNA.
-DR   EMBL; AB030073; BAA89296.1; -; mRNA.
-DR   EMBL; AB030074; BAA89297.1; -; mRNA.
-DR   EMBL; AB030075; BAA89298.1; -; mRNA.
-DR   EMBL; AB030076; BAA89299.1; -; mRNA.
-DR   EMBL; AB030077; BAA89300.1; -; mRNA.
-DR   EMBL; AB030078; BAA89301.1; -; mRNA.
+DR   EMBL; AB030073; BAA89296.1; ALT_SEQ; mRNA.
+DR   EMBL; AB030074; BAA89297.1; ALT_SEQ; mRNA.
+DR   EMBL; AB030075; BAA89298.1; ALT_SEQ; mRNA.
+DR   EMBL; AB030076; BAA89299.1; ALT_SEQ; mRNA.
+DR   EMBL; AB030077; BAA89300.1; ALT_SEQ; mRNA.
+DR   EMBL; AB030078; BAA89301.1; ALT_SEQ; mRNA.
 DR   EMBL; AF360695; AAK94205.1; -; Genomic_DNA.
 DR   EMBL; AF410480; AAK94205.1; JOINED; Genomic_DNA.
 DR   EMBL; AF360695; AAK94206.1; -; Genomic_DNA.
@@ -1283,14 +1274,15 @@ DR   PDBsum; 5UHN; -.
 DR   PDBsum; 5UI0; -.
 DR   PDBsum; 6AGX; -.
 DR   SMR; P21802; -.
-DR   BioGrid; 108554; 103.
+DR   BioGRID; 108554; 103.
 DR   CORUM; P21802; -.
 DR   DIP; DIP-3788N; -.
-DR   IntAct; P21802; 74.
+DR   IntAct; P21802; 89.
 DR   MINT; P21802; -.
 DR   STRING; 9606.ENSP00000410294; -.
 DR   BindingDB; P21802; -.
 DR   ChEMBL; CHEMBL4142; -.
+DR   DrugBank; DB02058; 3-[4-(1-formylpiperazin-4-yl)-benzylidenyl]-2-indolinone.
 DR   DrugBank; DB02491; 4-[4-(1-Amino-1-Methylethyl)Phenyl]-5-Chloro-N-[4-(2-Morpholin-4-Ylethyl)Phenyl]Pyrimidin-2-Amine.
 DR   DrugBank; DB12147; Erdafitinib.
 DR   DrugBank; DB10770; Foreskin fibroblast (neonatal).
@@ -1302,7 +1294,6 @@ DR   DrugBank; DB09079; Nintedanib.
 DR   DrugBank; DB00039; Palifermin.
 DR   DrugBank; DB08901; Ponatinib.
 DR   DrugBank; DB08896; Regorafenib.
-DR   DrugBank; DB02058; SU4984.
 DR   DrugBank; DB01901; Sucrosofate.
 DR   DrugBank; DB01041; Thalidomide.
 DR   DrugCentral; P21802; -.
@@ -1318,10 +1309,6 @@ DR   PaxDb; P21802; -.
 DR   PeptideAtlas; P21802; -.
 DR   PRIDE; P21802; -.
 DR   ProteomicsDB; 53905; -. [P21802-1]
-DR   ProteomicsDB; 53906; -. [P21802-10]
-DR   ProteomicsDB; 53907; -. [P21802-11]
-DR   ProteomicsDB; 53908; -. [P21802-12]
-DR   ProteomicsDB; 53909; -. [P21802-13]
 DR   ProteomicsDB; 53910; -. [P21802-14]
 DR   ProteomicsDB; 53911; -. [P21802-15]
 DR   ProteomicsDB; 53912; -. [P21802-16]
@@ -1337,11 +1324,10 @@ DR   ProteomicsDB; 53921; -. [P21802-3]
 DR   ProteomicsDB; 53922; -. [P21802-4]
 DR   ProteomicsDB; 53923; -. [P21802-5]
 DR   ProteomicsDB; 53924; -. [P21802-6]
-DR   ProteomicsDB; 53925; -. [P21802-7]
 DR   ProteomicsDB; 53926; -. [P21802-8]
-DR   ProteomicsDB; 53927; -. [P21802-9]
 DR   TopDownProteomics; P21802-8; -. [P21802-8]
 DR   ABCD; P21802; -.
+DR   Antibodypedia; 4393; 1222 antibodies.
 DR   Ensembl; ENST00000346997; ENSP00000263451; ENSG00000066468. [P21802-5]
 DR   Ensembl; ENST00000356226; ENSP00000348559; ENSG00000066468. [P21802-20]
 DR   Ensembl; ENST00000357555; ENSP00000350166; ENSG00000066468. [P21802-21]
@@ -1349,7 +1335,6 @@ DR   Ensembl; ENST00000358487; ENSP00000351276; ENSG00000066468. [P21802-1]
 DR   Ensembl; ENST00000359354; ENSP00000352309; ENSG00000066468. [P21802-14]
 DR   Ensembl; ENST00000360144; ENSP00000353262; ENSG00000066468. [P21802-22]
 DR   Ensembl; ENST00000369056; ENSP00000358052; ENSG00000066468. [P21802-17]
-DR   Ensembl; ENST00000369058; ENSP00000358054; ENSG00000066468. [P21802-13]
 DR   Ensembl; ENST00000369060; ENSP00000358056; ENSG00000066468. [P21802-15]
 DR   Ensembl; ENST00000369061; ENSP00000358057; ENSG00000066468. [P21802-23]
 DR   Ensembl; ENST00000457416; ENSP00000410294; ENSG00000066468. [P21802-3]
@@ -1358,12 +1343,10 @@ DR   KEGG; hsa:2263; -.
 DR   UCSC; uc010qtl.3; human. [P21802-1]
 DR   CTD; 2263; -.
 DR   DisGeNET; 2263; -.
-DR   EuPathDB; HostDB:ENSG00000066468.20; -.
 DR   GeneCards; FGFR2; -.
 DR   GeneReviews; FGFR2; -.
 DR   HGNC; HGNC:3689; FGFR2.
-DR   HPA; CAB010886; -.
-DR   HPA; HPA035305; -.
+DR   HPA; ENSG00000066468; Tissue enhanced (brain).
 DR   MalaCards; FGFR2; -.
 DR   MIM; 101200; phenotype.
 DR   MIM; 101400; phenotype.
@@ -1394,11 +1377,11 @@ DR   PharmGKB; PA28128; -.
 DR   eggNOG; KOG0200; Eukaryota.
 DR   eggNOG; COG0515; LUCA.
 DR   GeneTree; ENSGT00940000155447; -.
-DR   HOGENOM; HOG000263410; -.
+DR   HOGENOM; CLU_000288_74_2_1; -.
 DR   InParanoid; P21802; -.
 DR   KO; K05093; -.
 DR   OMA; HMNGSVK; -.
-DR   OrthoDB; 702827at2759; -.
+DR   OrthoDB; 543832at2759; -.
 DR   PhylomeDB; P21802; -.
 DR   TreeFam; TF316307; -.
 DR   BRENDA; 2.7.10.1; 2681.
@@ -1406,7 +1389,7 @@ DR   Reactome; R-HSA-109704; PI3K Cascade.
 DR   Reactome; R-HSA-1257604; PIP3 activates AKT signaling.
 DR   Reactome; R-HSA-190375; FGFR2c ligand binding and activation.
 DR   Reactome; R-HSA-190377; FGFR2b ligand binding and activation.
-DR   Reactome; R-HSA-2023837; Signaling by FGFR2 amplification mutants.
+DR   Reactome; R-HSA-2023837; Signaling by FGFR2 amplification mutants. [P21802-17]
 DR   Reactome; R-HSA-2033519; Activated point mutants of FGFR2.
 DR   Reactome; R-HSA-2219530; Constitutive Signaling by Aberrant PI3K in Cancer.
 DR   Reactome; R-HSA-5654221; Phospholipase C-mediated cascade, FGFR2.
@@ -1429,7 +1412,7 @@ DR   Pharos; P21802; Tclin.
 DR   PRO; PR:P21802; -.
 DR   Proteomes; UP000005640; Chromosome 10.
 DR   RNAct; P21802; protein.
-DR   Bgee; ENSG00000066468; Expressed in 222 organ(s), highest expression level in C1 segment of cervical spinal cord.
+DR   Bgee; ENSG00000066468; Expressed in C1 segment of cervical spinal cord and 221 other tissues.
 DR   ExpressionAtlas; P21802; baseline and differential.
 DR   Genevisible; P21802; HS.
 DR   GO; GO:0005938; C:cell cortex; IDA:UniProtKB.
@@ -1507,6 +1490,7 @@ DR   GO; GO:0060916; P:mesenchymal cell proliferation involved in lung developme
 DR   GO; GO:0048333; P:mesodermal cell differentiation; IEA:Ensembl.
 DR   GO; GO:0030901; P:midbrain development; ISS:UniProtKB.
 DR   GO; GO:0016331; P:morphogenesis of embryonic epithelium; ISS:UniProtKB.
+DR   GO; GO:0007275; P:multicellular organism development; IBA:GO_Central.
 DR   GO; GO:0050680; P:negative regulation of epithelial cell proliferation; IEA:Ensembl.
 DR   GO; GO:0000122; P:negative regulation of transcription by RNA polymerase II; ISS:UniProtKB.
 DR   GO; GO:0042476; P:odontogenesis; ISS:UniProtKB.
@@ -1523,6 +1507,7 @@ DR   GO; GO:0008284; P:positive regulation of cell population proliferation; IDA
 DR   GO; GO:0050679; P:positive regulation of epithelial cell proliferation; ISS:UniProtKB.
 DR   GO; GO:0060501; P:positive regulation of epithelial cell proliferation involved in lung morphogenesis; ISS:UniProtKB.
 DR   GO; GO:0070374; P:positive regulation of ERK1 and ERK2 cascade; ISS:UniProtKB.
+DR   GO; GO:0033674; P:positive regulation of kinase activity; IBA:GO_Central.
 DR   GO; GO:0043410; P:positive regulation of MAPK cascade; IMP:UniProtKB.
 DR   GO; GO:0002053; P:positive regulation of mesenchymal cell proliferation; ISS:UniProtKB.
 DR   GO; GO:0010518; P:positive regulation of phospholipase activity; IMP:UniProtKB.
@@ -1698,82 +1683,78 @@ FT                   ECO:0000269|PubMed:16384934"
 FT   VAR_SEQ         37..152
 FT                   /note="EPPTKYQISQPEVYVAAPGESLEVRCLLKDAAVISWTKDGVHLGPNNRTVLI
 FT                   GEYLQIKGATPRDSGLYACTASRTVDSETWYFMVNVTDAISSGDDEDDTDGAEDFVSEN
-FT                   SNNKR -> G (in isoform 20)"
+FT                   SNNKR -> G (in isoform 14)"
 FT                   /evidence="ECO:0000303|PubMed:15489334"
 FT                   /id="VSP_019608"
 FT   VAR_SEQ         37..125
-FT                   /note="Missing (in isoform 4, isoform 21 and isoform 22)"
+FT                   /note="Missing (in isoform 4, isoform 15 and isoform 16)"
 FT                   /evidence="ECO:0000303|PubMed:14702039,
 FT                   ECO:0000303|PubMed:2377625"
 FT                   /id="VSP_002964"
 FT   VAR_SEQ         250..361
-FT                   /note="Missing (in isoform 23)"
+FT                   /note="Missing (in isoform 17)"
 FT                   /evidence="ECO:0000303|Ref.14"
 FT                   /id="VSP_041914"
 FT   VAR_SEQ         250..254
-FT                   /note="ERSPH -> GSQGL (in isoform 14)"
+FT                   /note="ERSPH -> GSQGL (in isoform 8)"
 FT                   /evidence="ECO:0000303|PubMed:1313574"
 FT                   /id="VSP_002965"
 FT   VAR_SEQ         255..821
-FT                   /note="Missing (in isoform 14)"
+FT                   /note="Missing (in isoform 8)"
 FT                   /evidence="ECO:0000303|PubMed:1313574"
 FT                   /id="VSP_002966"
 FT   VAR_SEQ         313
-FT                   /note="K -> KVTK (in isoform 16)"
+FT                   /note="K -> KVTK (in isoform 10)"
 FT                   /evidence="ECO:0000303|PubMed:2172978"
 FT                   /id="VSP_002967"
 FT   VAR_SEQ         314..429
-FT                   /note="Missing (in isoform 15)"
+FT                   /note="Missing (in isoform 9)"
 FT                   /evidence="ECO:0000303|PubMed:1313574"
 FT                   /id="VSP_002968"
 FT   VAR_SEQ         314..330
 FT                   /note="AAGVNTTDKEIEVLYIR -> HSGINSSNAEVLALF (in isoform 3,
-FT                   isoform 4, isoform 7, isoform 9, isoform 10, isoform 11,
-FT                   isoform 12, isoform 13, isoform 17, isoform 18, isoform 19
-FT                   and isoform 22)"
+FT                   isoform 4, isoform 11, isoform 12, isoform 13 and isoform
+FT                   16)"
 FT                   /evidence="ECO:0000303|PubMed:10626794,
 FT                   ECO:0000303|PubMed:1309608, ECO:0000303|PubMed:1400433"
 FT                   /id="VSP_002969"
 FT   VAR_SEQ         334..335
-FT                   /note="FE -> EA (in isoform 3, isoform 4, isoform 7,
-FT                   isoform 9, isoform 10, isoform 11, isoform 12, isoform 13,
-FT                   isoform 17, isoform 18, isoform 19 and isoform 22)"
+FT                   /note="FE -> EA (in isoform 3, isoform 4, isoform 11,
+FT                   isoform 12, isoform 13 and isoform 16)"
 FT                   /evidence="ECO:0000303|PubMed:10626794,
 FT                   ECO:0000303|PubMed:1309608, ECO:0000303|PubMed:1400433"
 FT                   /id="VSP_002970"
 FT   VAR_SEQ         341..353
 FT                   /note="TCLAGNSIGISFH -> ICKVSNYIGQANQ (in isoform 3,
-FT                   isoform 4, isoform 7, isoform 9, isoform 10, isoform 11,
-FT                   isoform 12, isoform 13, isoform 17, isoform 18, isoform 19
-FT                   and isoform 22)"
+FT                   isoform 4, isoform 11, isoform 12, isoform 13 and isoform
+FT                   16)"
 FT                   /evidence="ECO:0000303|PubMed:10626794,
 FT                   ECO:0000303|PubMed:1309608, ECO:0000303|PubMed:1400433"
 FT                   /id="VSP_002971"
 FT   VAR_SEQ         361
-FT                   /note="P -> PKQQ (in isoform 3, isoform 4, isoform 7,
-FT                   isoform 9, isoform 10, isoform 11, isoform 12, isoform 13,
-FT                   isoform 17, isoform 18, isoform 19 and isoform 22)"
+FT                   /note="P -> PKQQ (in isoform 3, isoform 4, isoform 11,
+FT                   isoform 12, isoform 13 and isoform 16)"
 FT                   /evidence="ECO:0000303|PubMed:10626794,
 FT                   ECO:0000303|PubMed:1309608, ECO:0000303|PubMed:1400433"
 FT                   /id="VSP_002972"
 FT   VAR_SEQ         362..365
-FT                   /note="APGR -> GRRC (in isoform 19)"
+FT                   /note="APGR -> GRRC (in isoform 13)"
 FT                   /evidence="ECO:0000303|PubMed:1309608,
 FT                   ECO:0000303|PubMed:7866434"
 FT                   /id="VSP_002973"
 FT   VAR_SEQ         366..821
-FT                   /note="Missing (in isoform 19)"
+FT                   /note="Missing (in isoform 13)"
 FT                   /evidence="ECO:0000303|PubMed:1309608,
 FT                   ECO:0000303|PubMed:7866434"
 FT                   /id="VSP_002974"
 FT   VAR_SEQ         428..429
 FT                   /note="Missing (in isoform 4, isoform 5, isoform 6, isoform
-FT                   8, isoform 16 and isoform 18)"
+FT                   7, isoform 10 and isoform 12)"
 FT                   /evidence="ECO:0000303|PubMed:1313574,
 FT                   ECO:0000303|PubMed:2172978, ECO:0000303|PubMed:2377625"
 FT                   /id="VSP_002975"
 FT   VAR_SEQ         429..430
-FT                   /note="Missing (in isoform 20)"
+FT                   /note="Missing (in isoform 14)"
 FT                   /evidence="ECO:0000303|PubMed:15489334"
 FT                   /id="VSP_019609"
 FT   VAR_SEQ         761..821
@@ -1783,46 +1764,13 @@ FT                   /evidence="ECO:0000303|PubMed:2377625"
 FT                   /id="VSP_002976"
 FT   VAR_SEQ         768..821
 FT                   /note="EYLDLSQPLEQYSPSYPDTRSSCSSGDDSVFSPDPMPYEPCLPQYPHINGSV
-FT                   KT -> SFQSSLKSSSTGIPGWPPGSEVFSEVAFRGILNYDIERPILCAGSKKIYDI
-FT                   (in isoform 10)"
-FT                   /evidence="ECO:0000303|PubMed:10626794"
-FT                   /id="VSP_002981"
-FT   VAR_SEQ         768..821
-FT                   /note="EYLDLSQPLEQYSPSYPDTRSSCSSGDDSVFSPDPMPYEPCLPQYPHINGSV
-FT                   KT -> GRLPAWASQEKENSQTSLFAISHVTLSSISKTRSSAKRDEKPGSSPHLALVRS
-FT                   QGLPQSVVP (in isoform 11)"
-FT                   /evidence="ECO:0000303|PubMed:10626794"
-FT                   /id="VSP_002982"
-FT   VAR_SEQ         768..821
-FT                   /note="EYLDLSQPLEQYSPSYPDTRSSCSSGDDSVFSPDPMPYEPCLPQYPHINGSV
-FT                   KT -> PLS (in isoform 12)"
-FT                   /evidence="ECO:0000303|PubMed:10626794"
-FT                   /id="VSP_002983"
-FT   VAR_SEQ         768..821
-FT                   /note="Missing (in isoform 13)"
-FT                   /evidence="ECO:0000303|PubMed:10626794"
-FT                   /id="VSP_002977"
-FT   VAR_SEQ         768..821
-FT                   /note="EYLDLSQPLEQYSPSYPDTRSSCSSGDDSVFSPDPMPYEPCLPQYPHINGSV
-FT                   KT -> I (in isoform 2, isoform 8, isoform 17 and isoform
-FT                   22)"
+FT                   KT -> I (in isoform 2, isoform 7, isoform 11 and isoform
+FT                   16)"
 FT                   /evidence="ECO:0000303|PubMed:1647213"
 FT                   /id="VSP_002978"
-FT   VAR_SEQ         768..821
-FT                   /note="EYLDLSQPLEQYSPSYPDTRSSCSSGDDSVFSPDPMPYEPCLPQYPHINGSV
-FT                   KT -> RYKLLPCPDKHNKRCKPEERGDLTEAGAAGSSRCVDSRKRVRQEKISTG (in
-FT                   isoform 7)"
-FT                   /evidence="ECO:0000303|PubMed:10626794"
-FT                   /id="VSP_002979"
-FT   VAR_SEQ         768..821
-FT                   /note="EYLDLSQPLEQYSPSYPDTRSSCSSGDDSVFSPDPMPYEPCLPQYPHINGSV
-FT                   KT -> RILTLTTNENFQSTSGREGTEIHALQCLRSEVTPAISCESPLADTGSKVPN
-FT                   (in isoform 9)"
-FT                   /evidence="ECO:0000303|PubMed:10626794"
-FT                   /id="VSP_002980"
 FT   VAR_SEQ         769..821
 FT                   /note="YLDLSQPLEQYSPSYPDTRSSCSSGDDSVFSPDPMPYEPCLPQYPHINGSVK
-FT                   T -> EKKVSGAVDCHKPPCNPSHLPCVLAVDQ (in isoform 21)"
+FT                   T -> EKKVSGAVDCHKPPCNPSHLPCVLAVDQ (in isoform 15)"
 FT                   /evidence="ECO:0000303|PubMed:14702039"
 FT                   /id="VSP_041915"
 FT   VAR_SEQ         778..821
