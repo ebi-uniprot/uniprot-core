@@ -91,8 +91,7 @@
 				maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>Describes names of "domains".
-						Equivalent to the
-						flat file DE-line Includes: section.</xs:documentation>
+						Equivalent to the flat file DE-line Includes: section.</xs:documentation>
 				</xs:annotation>
 				<xs:complexType>
 					<xs:group ref="proteinNameGroup" />
@@ -102,8 +101,7 @@
 				maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>Describes names of processed products.
-						Equivalent
-						to the flat file DE-line Contains: section.</xs:documentation>
+						Equivalent to the flat file DE-line Contains: section.</xs:documentation>
 				</xs:annotation>
 				<xs:complexType>
 					<xs:group ref="proteinNameGroup" />
@@ -166,8 +164,7 @@
 	<xs:complexType name="geneType">
 		<xs:annotation>
 			<xs:documentation>Describes a gene.
-				Equivalent to the flat file
-				GN-line.</xs:documentation>
+				Equivalent to the flat file GN-line.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="name" type="geneNameType"
@@ -329,15 +326,13 @@
 	<xs:complexType name="citationType">
 		<xs:annotation>
 			<xs:documentation>Describes different types of citations.
-				Equivalent
-				to the flat file RX-, RG-, RA-, RT- and RL-lines.</xs:documentation>
+				Equivalent to the flat file RX-, RG-, RA-, RT- and RL-lines.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="title" type="xs:string" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Describes the title of a citation.
-						Equivalent to
-						the flat file RT-line.</xs:documentation>
+						Equivalent to the flat file RT-line.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="editorList" type="nameListType"
@@ -352,8 +347,7 @@
 				minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Describes the authors of a citation.
-						Equivalent to
-						the flat file RA-line.</xs:documentation>
+						Equivalent to the flat file RA-line.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="locator" type="xs:string" minOccurs="0">
@@ -480,8 +474,7 @@
 				maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>Describes the scope of a citation.
-						Equivalent to
-						the flat file RP-line.</xs:documentation>
+						Equivalent to the flat file RP-line.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="source" type="sourceDataType"
@@ -944,6 +937,8 @@
 		<xs:sequence>
 			<xs:element name="id" type="xs:string" />
 			<xs:element name="label" type="xs:string" minOccurs="0" />
+			<xs:element name="dbReference" type="dbReferenceType"
+				minOccurs="0" />
 		</xs:sequence>
 	</xs:group>
 	<xs:complexType name="interactantType">
@@ -957,8 +952,7 @@
 	<xs:complexType name="dbReferenceType">
 		<xs:annotation>
 			<xs:documentation>Describes a database cross-reference.
-				Equivalent to
-				the flat file DR-line.
+				Equivalent to the flat file DR-line.
 			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
@@ -1191,8 +1185,7 @@
 	<xs:complexType name="evidenceType">
 		<xs:annotation>
 			<xs:documentation>Describes the evidence for an annotation.
-				No flat
-				file equivalent.</xs:documentation>
+				No flat file equivalent.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="source" type="sourceType" minOccurs="0" />

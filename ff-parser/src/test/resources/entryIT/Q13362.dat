@@ -2,7 +2,7 @@ ID   2A5G_HUMAN              Reviewed;         524 AA.
 AC   Q13362; B4DYJ8; B5BUA5; F5GWP3; Q14391; Q15060; Q15174; Q6ZN33;
 DT   30-MAY-2000, integrated into UniProtKB/Swiss-Prot.
 DT   17-OCT-2006, sequence version 3.
-DT   10-APR-2019, entry version 188.
+DT   22-APR-2020, entry version 196.
 DE   RecName: Full=Serine/threonine-protein phosphatase 2A 56 kDa regulatory subunit gamma isoform;
 DE   AltName: Full=PP2A B subunit isoform B'-gamma;
 DE   AltName: Full=PP2A B subunit isoform B56-gamma;
@@ -264,14 +264,18 @@ CC       ECO:0000269|PubMed:17086192, ECO:0000269|PubMed:17174897,
 CC       ECO:0000269|PubMed:17245430, ECO:0000269|PubMed:17967874,
 CC       ECO:0000269|PubMed:19716788, ECO:0000269|PubMed:28174209}.
 CC   -!- INTERACTION:
-CC       O96017:CHEK2; NbExp=4; IntAct=EBI-1266176, EBI-1180783;
-CC       P46695:IER3; NbExp=2; IntAct=EBI-1266156, EBI-1748945;
-CC       Q00987:MDM2; NbExp=5; IntAct=EBI-1266156, EBI-389668;
-CC       P67775:PPP2CA; NbExp=9; IntAct=EBI-1266156, EBI-712311;
-CC       P30153:PPP2R1A; NbExp=10; IntAct=EBI-1266156, EBI-302388;
-CC       P30154:PPP2R1B; NbExp=2; IntAct=EBI-1266156, EBI-357094;
-CC       P04049:RAF1; NbExp=2; IntAct=EBI-1266156, EBI-365996;
-CC       P04637:TP53; NbExp=4; IntAct=EBI-1266156, EBI-366083;
+CC       Q13362-1; O96017: CHEK2; NbExp=3; IntAct=EBI-1266170, EBI-1180783;
+CC       Q13362-2; O96017: CHEK2; NbExp=2; IntAct=EBI-1266173, EBI-1180783;
+CC       Q13362-3; O96017: CHEK2; NbExp=4; IntAct=EBI-1266176, EBI-1180783;
+CC       Q13362; P46695: IER3; NbExp=2; IntAct=EBI-1266156, EBI-1748945;
+CC       Q13362; Q00987: MDM2; NbExp=5; IntAct=EBI-1266156, EBI-389668;
+CC       Q13362; P67775: PPP2CA; NbExp=9; IntAct=EBI-1266156, EBI-712311;
+CC       Q13362; P30153: PPP2R1A; NbExp=10; IntAct=EBI-1266156, EBI-302388;
+CC       Q13362-1; P30153: PPP2R1A; NbExp=5; IntAct=EBI-1266170, EBI-302388;
+CC       Q13362-2; P30153: PPP2R1A; NbExp=4; IntAct=EBI-1266173, EBI-302388;
+CC       Q13362; P30154: PPP2R1B; NbExp=2; IntAct=EBI-1266156, EBI-357094;
+CC       Q13362; P04049: RAF1; NbExp=2; IntAct=EBI-1266156, EBI-365996;
+CC       Q13362; P04637: TP53; NbExp=4; IntAct=EBI-1266156, EBI-366083;
 CC   -!- SUBCELLULAR LOCATION: Nucleus. Chromosome, centromere.
 CC   -!- ALTERNATIVE PRODUCTS:
 CC       Event=Alternative splicing; Named isoforms=5;
@@ -283,11 +287,8 @@ CC       Name=Gamma-2;
 CC         IsoId=Q13362-3; Sequence=VSP_005113;
 CC       Name=4;
 CC         IsoId=Q13362-4; Sequence=VSP_043645, VSP_005113;
-CC         Note=No experimental confirmation available.;
 CC       Name=5;
 CC         IsoId=Q13362-5; Sequence=VSP_046768;
-CC         Note=Ref.3 (BAG63760) sequence is in conflict in position: 3:N->K. No
-CC         experimental confirmation available. {ECO:0000305};
 CC   -!- TISSUE SPECIFICITY: Highest levels in heart, skeletal muscle and brain.
 CC       Lower levels in pancreas, kidney, lung and placenta. Very low levels in
 CC       liver.
@@ -299,8 +300,8 @@ CC       ECO:0000269|PubMed:8703017}.
 CC   -!- SIMILARITY: Belongs to the phosphatase 2A regulatory subunit B56
 CC       family. {ECO:0000305}.
 CC   -!- SEQUENCE CAUTION:
-CC       Sequence=AAC50387.1; Type=Erroneous initiation; Note=Translation N-terminally extended.; Evidence={ECO:0000305};
-CC       Sequence=BAG63760.1; Type=Erroneous initiation; Note=Translation N-terminally extended.; Evidence={ECO:0000305};
+CC       Sequence=AAC50387.1; Type=Erroneous initiation; Note=Truncated N-terminus.; Evidence={ECO:0000305};
+CC       Sequence=BAG63760.1; Type=Erroneous initiation; Note=Truncated N-terminus.; Evidence={ECO:0000305};
 CC   ---------------------------------------------------------------------------
 CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
 CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
@@ -351,19 +352,28 @@ DR   SMR; Q13362; -.
 DR   BioGrid; 111519; 44.
 DR   DIP; DIP-39401N; -.
 DR   ELM; Q13362; -.
-DR   IntAct; Q13362; 22.
+DR   IntAct; Q13362; 29.
 DR   MINT; Q13362; -.
 DR   STRING; 9606.ENSP00000412324; -.
+DR   DrugBank; DB06905; (2S,3S,4E,6E,8S,9S)-3-amino-9-methoxy-2,6,8-trimethyl-10-phenyldeca-4,6-dienoic acid.
+DR   DrugBank; DB02506; 2,6,8-Trimethyl-3-Amino-9-Benzyl-9-Methoxynonanoic Acid.
 DR   iPTMnet; Q13362; -.
 DR   PhosphoSitePlus; Q13362; -.
+DR   SwissPalm; Q13362; -.
 DR   BioMuta; PPP2R5C; -.
 DR   DMDM; 116241235; -.
-DR   EPD; Q13362; -.
 DR   jPOST; Q13362; -.
+DR   MassIVE; Q13362; -.
 DR   MaxQB; Q13362; -.
 DR   PaxDb; Q13362; -.
 DR   PeptideAtlas; Q13362; -.
 DR   PRIDE; Q13362; -.
+DR   ProteomicsDB; 24176; -.
+DR   ProteomicsDB; 59345; -.
+DR   ProteomicsDB; 59346; -. [Q13362-2]
+DR   ProteomicsDB; 59347; -. [Q13362-3]
+DR   ProteomicsDB; 59348; -. [Q13362-4]
+DR   Antibodypedia; 27667; 231 antibodies.
 DR   DNASU; 5527; -.
 DR   Ensembl; ENST00000328724; ENSP00000329009; ENSG00000078304. [Q13362-4]
 DR   Ensembl; ENST00000334743; ENSP00000333905; ENSG00000078304. [Q13362-1]
@@ -375,10 +385,9 @@ DR   KEGG; hsa:5527; -.
 DR   UCSC; uc001ykk.4; human. [Q13362-1]
 DR   CTD; 5527; -.
 DR   DisGeNET; 5527; -.
-DR   EuPathDB; HostDB:ENSG00000078304.19; -.
 DR   GeneCards; PPP2R5C; -.
 DR   HGNC; HGNC:9311; PPP2R5C.
-DR   HPA; HPA027553; -.
+DR   HPA; ENSG00000078304; Low tissue specificity.
 DR   MIM; 601645; gene.
 DR   neXtProt; NX_Q13362; -.
 DR   OpenTargets; ENSG00000078304; -.
@@ -386,10 +395,10 @@ DR   PharmGKB; PA33674; -.
 DR   eggNOG; KOG2085; Eukaryota.
 DR   eggNOG; ENOG410XQJW; LUCA.
 DR   GeneTree; ENSGT00950000182781; -.
-DR   HOGENOM; HOG000067326; -.
+DR   HOGENOM; CLU_012437_3_2_1; -.
 DR   InParanoid; Q13362; -.
 DR   KO; K11584; -.
-DR   OMA; SHCRADE; -.
+DR   OMA; RNSKNHW; -.
 DR   OrthoDB; 890437at2759; -.
 DR   PhylomeDB; Q13362; -.
 DR   TreeFam; TF105556; -.
@@ -415,15 +424,18 @@ DR   Reactome; R-HSA-5675221; Negative regulation of MAPK pathway.
 DR   Reactome; R-HSA-6804757; Regulation of TP53 Degradation.
 DR   Reactome; R-HSA-6811558; PI5P, PP2A and IER3 Regulate PI3K/AKT Signaling.
 DR   Reactome; R-HSA-68877; Mitotic Prometaphase.
+DR   Reactome; R-HSA-9648025; EML4 and NUDC in mitotic spindle formation.
 DR   SignaLink; Q13362; -.
 DR   SIGNOR; Q13362; -.
 DR   ChiTaRS; PPP2R5C; human.
 DR   EvolutionaryTrace; Q13362; -.
 DR   GeneWiki; PPP2R5C; -.
 DR   GenomeRNAi; 5527; -.
+DR   Pharos; Q13362; Tbio.
 DR   PRO; PR:Q13362; -.
 DR   Proteomes; UP000005640; Chromosome 14.
-DR   Bgee; ENSG00000078304; Expressed in 232 organ(s), highest expression level in sperm.
+DR   RNAct; Q13362; protein.
+DR   Bgee; ENSG00000078304; Expressed in sperm and 231 other tissues.
 DR   ExpressionAtlas; Q13362; baseline and differential.
 DR   Genevisible; Q13362; HS.
 DR   GO; GO:0000775; C:chromosome, centromeric region; IDA:UniProtKB.
@@ -437,6 +449,7 @@ DR   GO; GO:0019888; F:protein phosphatase regulator activity; IDA:UniProtKB.
 DR   GO; GO:0006977; P:DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest; IDA:UniProtKB.
 DR   GO; GO:0042771; P:intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator; IMP:UniProtKB.
 DR   GO; GO:0008285; P:negative regulation of cell population proliferation; IDA:UniProtKB.
+DR   GO; GO:0051898; P:negative regulation of protein kinase B signaling; TAS:Reactome.
 DR   GO; GO:0043161; P:proteasome-mediated ubiquitin-dependent protein catabolic process; IMP:MGI.
 DR   GO; GO:0006470; P:protein dephosphorylation; IBA:GO_Central.
 DR   GO; GO:0014066; P:regulation of phosphatidylinositol 3-kinase signaling; TAS:Reactome.
@@ -452,8 +465,7 @@ DR   PIRSF; PIRSF028043; PP2A_B56; 1.
 DR   SUPFAM; SSF48371; SSF48371; 1.
 PE   1: Evidence at protein level;
 KW   3D-structure; Acetylation; Alternative splicing; Centromere; Chromosome;
-KW   Complete proteome; Nucleus; Phosphoprotein; Polymorphism;
-KW   Reference proteome.
+KW   Nucleus; Phosphoprotein; Polymorphism; Reference proteome.
 FT   CHAIN           1..524
 FT                   /note="Serine/threonine-protein phosphatase 2A 56 kDa
 FT                   regulatory subunit gamma isoform"
@@ -492,6 +504,9 @@ FT                   /note="A -> P (in dbSNP:rs3742424)"
 FT                   /id="VAR_051745"
 FT   CONFLICT        494
 FT                   /note="R -> L (in Ref. 1; AAC50387)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        Q13362-5:3
+FT                   /note="N -> K (in Ref. 3; BAG63760)"
 FT                   /evidence="ECO:0000305"
 FT   HELIX           30..32
 FT                   /evidence="ECO:0000244|PDB:5JJA"

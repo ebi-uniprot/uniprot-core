@@ -2,7 +2,7 @@ ID   MS18A_HUMAN             Reviewed;         233 AA.
 AC   Q9NYP9; B2R562; Q542Z0;
 DT   11-JAN-2001, integrated into UniProtKB/Swiss-Prot.
 DT   01-OCT-2000, sequence version 1.
-DT   13-FEB-2019, entry version 134.
+DT   22-APR-2020, entry version 143.
 DE   RecName: Full=Protein Mis18-alpha;
 DE   AltName: Full=FAPP1-associated protein 1;
 GN   Name=MIS18A; Synonyms=C21orf45, C21orf46, FASP1;
@@ -139,7 +139,7 @@ RA   Olsen J.V., Vermeulen M., Santamaria A., Kumar C., Miller M.L.,
 RA   Jensen L.J., Gnad F., Cox J., Jensen T.S., Nigg E.A., Brunak S., Mann M.;
 RT   "Quantitative phosphoproteomics reveals widespread full phosphorylation
 RT   site occupancy during mitosis.";
-RL   Sci. Signal. 3:ra3-RA3(2010).
+RL   Sci. Signal. 3:RA3-RA3(2010).
 RN   [10]
 RP   SUBUNIT, AND MUTAGENESIS OF VAL-82 AND TYR-176.
 RX   PubMed=26921242; DOI=10.15252/embr.201541520;
@@ -175,12 +175,34 @@ CC       PubMed:26921242). Identified in a complex containing MIS18A,
 CC       OIP5/MIS18B, MIS18BP1, RBBP7 and RBBP4 (PubMed:17199038).
 CC       {ECO:0000269|PubMed:17199038, ECO:0000269|PubMed:26921242}.
 CC   -!- INTERACTION:
-CC       Q13155:AIMP2; NbExp=5; IntAct=EBI-1104552, EBI-745226;
-CC       Q96IX9:ANKRD36BP1; NbExp=4; IntAct=EBI-1104552, EBI-744859;
-CC       Q9H0E9-2:BRD8; NbExp=3; IntAct=EBI-1104552, EBI-10304361;
-CC       Q9NS73-5:MBIP; NbExp=3; IntAct=EBI-1104552, EBI-10182361;
-CC       Q9GZM8:NDEL1; NbExp=3; IntAct=EBI-1104552, EBI-928842;
-CC       O43482:OIP5; NbExp=17; IntAct=EBI-1104552, EBI-536879;
+CC       Q9NYP9; B4DJ69; NbExp=3; IntAct=EBI-1104552, EBI-23918878;
+CC       Q9NYP9; Q9NYP9; NbExp=3; IntAct=EBI-1104552, EBI-1104552;
+CC       Q9NYP9; Q9P2A4: ABI3; NbExp=3; IntAct=EBI-1104552, EBI-742038;
+CC       Q9NYP9; Q13155: AIMP2; NbExp=6; IntAct=EBI-1104552, EBI-745226;
+CC       Q9NYP9; A2BDD9: AMOT; NbExp=3; IntAct=EBI-1104552, EBI-17286414;
+CC       Q9NYP9; Q6ZNE5: ATG14; NbExp=4; IntAct=EBI-1104552, EBI-2690371;
+CC       Q9NYP9; Q9H0E9-2: BRD8; NbExp=3; IntAct=EBI-1104552, EBI-10304361;
+CC       Q9NYP9; Q8TAB5: C1orf216; NbExp=3; IntAct=EBI-1104552, EBI-747505;
+CC       Q9NYP9; Q96NT0: CCDC115; NbExp=3; IntAct=EBI-1104552, EBI-2810325;
+CC       Q9NYP9; Q16281: CNGA3; NbExp=3; IntAct=EBI-1104552, EBI-1642108;
+CC       Q9NYP9; Q9NPF5: DMAP1; NbExp=3; IntAct=EBI-1104552, EBI-399105;
+CC       Q9NYP9; Q9BVV2: FNDC11; NbExp=3; IntAct=EBI-1104552, EBI-744935;
+CC       Q9NYP9; P23434: GCSH; NbExp=3; IntAct=EBI-1104552, EBI-715444;
+CC       Q9NYP9; Q8IVS8: GLYCTK; NbExp=4; IntAct=EBI-1104552, EBI-748515;
+CC       Q9NYP9; Q8IY31-3: IFT20; NbExp=3; IntAct=EBI-1104552, EBI-9091197;
+CC       Q9NYP9; Q9NS73-5: MBIP; NbExp=3; IntAct=EBI-1104552, EBI-10182361;
+CC       Q9NYP9; Q9GZM8: NDEL1; NbExp=5; IntAct=EBI-1104552, EBI-928842;
+CC       Q9NYP9; Q9BVL2: NUP58; NbExp=3; IntAct=EBI-1104552, EBI-2811583;
+CC       Q9NYP9; O43482: OIP5; NbExp=23; IntAct=EBI-1104552, EBI-536879;
+CC       Q9NYP9; Q96KQ4: PPP1R13B; NbExp=3; IntAct=EBI-1104552, EBI-1105153;
+CC       Q9NYP9; Q14D33: RTP5; NbExp=3; IntAct=EBI-1104552, EBI-10217913;
+CC       Q9NYP9; O75558: STX11; NbExp=3; IntAct=EBI-1104552, EBI-714135;
+CC       Q9NYP9; Q7L2K0: TEDC2; NbExp=3; IntAct=EBI-1104552, EBI-8465456;
+CC       Q9NYP9; Q9NVV9: THAP1; NbExp=3; IntAct=EBI-1104552, EBI-741515;
+CC       Q9NYP9; Q3SY00: TSGA10IP; NbExp=3; IntAct=EBI-1104552, EBI-10241197;
+CC       Q9NYP9; P40222: TXLNA; NbExp=4; IntAct=EBI-1104552, EBI-359793;
+CC       Q9NYP9; Q96HA8: WDYHV1; NbExp=3; IntAct=EBI-1104552, EBI-741158;
+CC       Q9NYP9; Q8N720: ZNF655; NbExp=3; IntAct=EBI-1104552, EBI-625509;
 CC   -!- SUBCELLULAR LOCATION: Nucleus {ECO:0000269|PubMed:17199038}. Chromosome
 CC       {ECO:0000269|PubMed:17199038}. Chromosome, centromere
 CC       {ECO:0000269|PubMed:17199038}. Note=Associated with centromeres in
@@ -202,34 +224,36 @@ DR   EMBL; CH471079; EAX09881.1; -; Genomic_DNA.
 DR   EMBL; BC042917; AAH42917.1; -; mRNA.
 DR   CCDS; CCDS13611.1; -.
 DR   RefSeq; NP_061817.1; NM_018944.2.
-DR   BioGrid; 119875; 56.
+DR   SMR; Q9NYP9; -.
+DR   BioGrid; 119875; 58.
 DR   ComplexPortal; CPX-3272; Mis18 complex.
 DR   CORUM; Q9NYP9; -.
-DR   IntAct; Q9NYP9; 47.
+DR   IntAct; Q9NYP9; 72.
 DR   MINT; Q9NYP9; -.
 DR   STRING; 9606.ENSP00000290130; -.
 DR   iPTMnet; Q9NYP9; -.
 DR   PhosphoSitePlus; Q9NYP9; -.
+DR   SwissPalm; Q9NYP9; -.
 DR   BioMuta; MIS18A; -.
 DR   DMDM; 12229716; -.
 DR   EPD; Q9NYP9; -.
 DR   jPOST; Q9NYP9; -.
+DR   MassIVE; Q9NYP9; -.
 DR   MaxQB; Q9NYP9; -.
 DR   PaxDb; Q9NYP9; -.
 DR   PeptideAtlas; Q9NYP9; -.
 DR   PRIDE; Q9NYP9; -.
 DR   ProteomicsDB; 83261; -.
+DR   Antibodypedia; 6843; 61 antibodies.
 DR   DNASU; 54069; -.
 DR   Ensembl; ENST00000290130; ENSP00000290130; ENSG00000159055.
 DR   GeneID; 54069; -.
 DR   KEGG; hsa:54069; -.
 DR   UCSC; uc002ypi.4; human.
 DR   CTD; 54069; -.
-DR   EuPathDB; HostDB:ENSG00000159055.3; -.
 DR   GeneCards; MIS18A; -.
 DR   HGNC; HGNC:1286; MIS18A.
-DR   HPA; HPA018286; -.
-DR   HPA; HPA020585; -.
+DR   HPA; ENSG00000159055; Low tissue specificity.
 DR   MIM; 618137; gene.
 DR   neXtProt; NX_Q9NYP9; -.
 DR   OpenTargets; ENSG00000159055; -.
@@ -237,10 +261,10 @@ DR   PharmGKB; PA25840; -.
 DR   eggNOG; ENOG410IKYV; Eukaryota.
 DR   eggNOG; ENOG41125JV; LUCA.
 DR   GeneTree; ENSGT00940000154267; -.
-DR   HOGENOM; HOG000059535; -.
+DR   HOGENOM; CLU_101031_0_0_1; -.
 DR   InParanoid; Q9NYP9; -.
 DR   KO; K11564; -.
-DR   OMA; WVASQED; -.
+DR   OMA; LQKWTSM; -.
 DR   OrthoDB; 1453138at2759; -.
 DR   PhylomeDB; Q9NYP9; -.
 DR   TreeFam; TF333200; -.
@@ -248,15 +272,17 @@ DR   Reactome; R-HSA-606279; Deposition of new CENPA-containing nucleosomes at t
 DR   ChiTaRS; MIS18A; human.
 DR   GeneWiki; C21orf45; -.
 DR   GenomeRNAi; 54069; -.
+DR   Pharos; Q9NYP9; Tbio.
 DR   PRO; PR:Q9NYP9; -.
 DR   Proteomes; UP000005640; Chromosome 21.
-DR   Bgee; ENSG00000159055; Expressed in 198 organ(s), highest expression level in oocyte.
+DR   RNAct; Q9NYP9; protein.
+DR   Bgee; ENSG00000159055; Expressed in oocyte and 197 other tissues.
 DR   Genevisible; Q9NYP9; HS.
 DR   GO; GO:0000785; C:chromatin; IBA:GO_Central.
 DR   GO; GO:0000775; C:chromosome, centromeric region; IBA:GO_Central.
 DR   GO; GO:0005829; C:cytosol; IDA:HPA.
-DR   GO; GO:0005654; C:nucleoplasm; TAS:Reactome.
-DR   GO; GO:0005634; C:nucleus; IDA:HPA.
+DR   GO; GO:0005654; C:nucleoplasm; IDA:HPA.
+DR   GO; GO:0005634; C:nucleus; IBA:GO_Central.
 DR   GO; GO:0046872; F:metal ion binding; IEA:UniProtKB-KW.
 DR   GO; GO:0007049; P:cell cycle; IEA:UniProtKB-KW.
 DR   GO; GO:0051301; P:cell division; IEA:UniProtKB-KW.
@@ -268,9 +294,9 @@ DR   InterPro; IPR004910; Yippee/Mis18/Cereblon.
 DR   Pfam; PF03226; Yippee-Mis18; 1.
 DR   PROSITE; PS51793; MIS18; 1.
 PE   1: Evidence at protein level;
-KW   Cell cycle; Cell division; Centromere; Chromosome; Complete proteome;
-KW   Isopeptide bond; Metal-binding; Mitosis; Nucleus; Phosphoprotein;
-KW   Reference proteome; Ubl conjugation; Zinc.
+KW   Cell cycle; Cell division; Centromere; Chromosome; Isopeptide bond;
+KW   Metal-binding; Mitosis; Nucleus; Phosphoprotein; Reference proteome;
+KW   Ubl conjugation; Zinc.
 FT   CHAIN           1..233
 FT                   /note="Protein Mis18-alpha"
 FT                   /id="PRO_0000079515"

@@ -3,6 +3,7 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprotkb.comment.MaximumVelocity;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
@@ -66,5 +67,18 @@ public class MaximumVelocityImpl implements MaximumVelocity {
     @Override
     public int hashCode() {
         return Objects.hash(velocity, unit, enzyme, evidences);
+    }
+    @Override
+    public String toString() {
+    	StringBuilder sb=new StringBuilder();
+    	sb.append("Vmax=")
+    	.append(this.getVelocity())
+    	.append(" ")
+    	.append(getUnit());
+    	if(!Utils.nullOrEmpty(enzyme))
+    		sb.append(" ").append(getEnzyme());
+    	sb.append(";");
+    	
+    	return sb.toString();
     }
 }

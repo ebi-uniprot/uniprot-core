@@ -21,11 +21,14 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.FreeText;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.Interaction;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.impl.ECNumberBuilder;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.comment.impl.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
+import org.uniprot.core.util.Utils;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
 import com.google.common.base.Strings;
@@ -358,32 +361,41 @@ public class CcLineConverter extends EvidenceCollector
     }
 
     private InteractionComment convertInteraction(Interaction cObj) {
-
-        List<org.uniprot.core.uniprotkb.comment.Interaction> interactions = new ArrayList<>();
-        for (InteractionObject io : cObj.getInteractions()) {
-            InteractionBuilder builder = new InteractionBuilder();
-
-            if (!io.isSelf()) {
-                builder.uniProtAccession(io.getSpAc());
-            }
-            if (!Strings.isNullOrEmpty(io.getGene())) {
-                builder.geneName(io.getGene());
-            }
-            if (io.isXeno()) builder.interactionType(InteractionType.XENO);
-            else if (io.isSelf()) {
-                builder.interactionType(InteractionType.SELF);
-            } else {
-                builder.interactionType(InteractionType.BINARY);
-            }
-            builder.firstInteractor(io.getFirstId());
-            if (!Strings.isNullOrEmpty(io.getSecondId())) {
-                builder.secondInteractor(io.getSecondId());
-            }
-            builder.numberOfExperiments(io.getNbexp());
-
-            interactions.add(builder.build());
-        }
+        List<org.uniprot.core.uniprotkb.comment.Interaction> interactions =
+                cObj.getInteractions().stream()
+                        .map(this::convertFromInteractionObject)
+                        .collect(Collectors.toList());
         return new InteractionCommentBuilder().interactionsSet(interactions).build();
+    }
+
+    private org.uniprot.core.uniprotkb.comment.Interaction convertFromInteractionObject(
+            InteractionObject obj) {
+        InteractionBuilder itBuilder = new InteractionBuilder();
+        InteractantBuilder builder1 = new InteractantBuilder();
+        InteractantBuilder builder2 = new InteractantBuilder();
+        UniProtKBAccession interactant1 =
+                new UniProtKBAccessionBuilder(obj.getFirstInteractant()).build();
+        if (interactant1.isValidAccession()) builder1.uniProtKBAccession(interactant1);
+        else builder1.chainId(obj.getFirstInteractant());
+        builder1.intActId(obj.getFirstId());
+
+        if (Utils.nullOrEmpty(obj.getSecondInteractantParent())) {
+            builder2.uniProtKBAccession(obj.getSecondInteractant());
+        } else {
+            builder2.chainId(obj.getSecondInteractant())
+                    .uniProtKBAccession(obj.getSecondInteractantParent());
+        }
+        builder2.intActId(obj.getSecondId());
+        if (Utils.notNullNotEmpty(obj.getGene())) {
+            builder2.geneName(obj.getGene());
+        }
+
+        itBuilder
+                .interactantOne(builder1.build())
+                .interactantTwo(builder2.build())
+                .numberOfExperiments(obj.getNbexp())
+                .isOrganismDiffer(obj.isXeno());
+        return itBuilder.build();
     }
 
     private DiseaseComment convertDisease(Disease cObj, Map<Object, List<Evidence>> evidences) {

@@ -1,55 +1,30 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import static java.util.Objects.nonNull;
-
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.uniprotkb.UniProtKBAccession;
+import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.uniprotkb.comment.Interaction;
-import org.uniprot.core.uniprotkb.comment.InteractionType;
-import org.uniprot.core.uniprotkb.comment.Interactor;
-import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 
 public final class InteractionBuilder implements Builder<Interaction> {
-    private InteractionType type;
-    private UniProtKBAccession uniProtkbAccession;
-    private String geneName;
+
+    private Interactant interactantOne;
+    private Interactant interactantTwo;
     private int numberOfExperiments;
-    private Interactor firstInteractor;
-    private Interactor secondInteractor;
+    private boolean organismDiffer = false;
 
     public @Nonnull Interaction build() {
         return new InteractionImpl(
-                type,
-                uniProtkbAccession,
-                geneName,
-                numberOfExperiments,
-                firstInteractor,
-                secondInteractor);
+                interactantOne, interactantTwo, numberOfExperiments, organismDiffer);
     }
 
     public static @Nonnull InteractionBuilder from(@Nonnull Interaction instance) {
         InteractionBuilder builder = new InteractionBuilder();
-        builder.uniProtAccession(instance.getUniProtkbAccession())
-                .geneName(instance.getGeneName())
-                .interactionType(instance.getType())
-                .numberOfExperiments(instance.getNumberOfExperiments());
-        if (nonNull(instance.getFirstInteractor()))
-            builder.firstInteractor(instance.getFirstInteractor().getValue());
-        if (nonNull((instance.getSecondInteractor())))
-            builder.secondInteractor(instance.getSecondInteractor().getValue());
+        builder.interactantOne(instance.getInteractantOne())
+                .interactantTwo(instance.getInteractantTwo())
+                .numberOfExperiments(instance.getNumberOfExperiments())
+                .isOrganismDiffer(instance.isOrganismsDiffer());
         return builder;
-    }
-
-    public @Nonnull InteractionBuilder interactionType(InteractionType type) {
-        this.type = type;
-        return this;
-    }
-
-    public @Nonnull InteractionBuilder geneName(String geneName) {
-        this.geneName = geneName;
-        return this;
     }
 
     public @Nonnull InteractionBuilder numberOfExperiments(int nbExp) {
@@ -57,23 +32,18 @@ public final class InteractionBuilder implements Builder<Interaction> {
         return this;
     }
 
-    public @Nonnull InteractionBuilder firstInteractor(String firstInteractor) {
-        this.firstInteractor = new InteractionImpl.InteractorImpl(firstInteractor);
+    public @Nonnull InteractionBuilder interactantOne(Interactant interactantOne) {
+        this.interactantOne = interactantOne;
         return this;
     }
 
-    public @Nonnull InteractionBuilder secondInteractor(String secondInteractor) {
-        this.secondInteractor = new InteractionImpl.InteractorImpl(secondInteractor);
+    public @Nonnull InteractionBuilder interactantTwo(Interactant interactantTwo) {
+        this.interactantTwo = interactantTwo;
         return this;
     }
 
-    public @Nonnull InteractionBuilder uniProtAccession(UniProtKBAccession uniprotAccession) {
-        this.uniProtkbAccession = uniprotAccession;
-        return this;
-    }
-
-    public @Nonnull InteractionBuilder uniProtAccession(String uniProtAccession) {
-        this.uniProtkbAccession = new UniProtKBAccessionBuilder(uniProtAccession).build();
+    public @Nonnull InteractionBuilder isOrganismDiffer(boolean organismDiffer) {
+        this.organismDiffer = organismDiffer;
         return this;
     }
 }

@@ -47,6 +47,21 @@ class BPCPCommentImplTest {
         assertEquals(phDependence, comment.getPhDependence());
         assertEquals(redoxPotential, comment.getRedoxPotential());
         assertEquals(temperatureDependence, comment.getTemperatureDependence());
+        String toString ="BIOPHYSICOCHEMICAL PROPERTIES:\n" + 
+            "Absorption:\n" + 
+            "Abs(max)=32 nm;note=value 1. value2;\n" + 
+            "Kinetic parameters:\n" + 
+            "KM=2.13 MG_ML_2 for some value;\n" + 
+            "Vmax=1.0 unit1 enzyme1;\n" + 
+            "Vmax=1.32 unit2 enzyme2;\n" + 
+            "note=value 1. value2;\n" + 
+            "pH dependence:\n" + 
+            "value1. value2;\n" + 
+            "Redox potential:\n" + 
+            "value1. value2;\n" + 
+            "Temperature dependence:\n" + 
+            "value1. value2;";
+        assertEquals(toString, comment.toString());
     }
 
     @Test
@@ -161,21 +176,5 @@ class BPCPCommentImplTest {
         assertTrue(impl.hasTemperatureDependence());
     }
 
-    @Test
-    void completeObjectToString() {
-        // todo change below expected once TRM-23041 is completed
-        String expected =
-                "CC       Kinetic parameters:\n"
-                        + "CC         KM=6.7 uM for substrate;\n"
-                        + "CC         Vmax=3.4 unit enzyme;";
-        // assertEquals(expected, impl.toString());
-        assertTrue(impl.toString().contains(expected));
-    }
-
-    @Test
-    void defaultToString() {
-        String expected = "\nCC   -!- BIOPHYSICOCHEMICAL PROPERTIES:";
-        BPCPComment obj = new BPCPCommentImpl();
-        assertEquals(expected, obj.toString());
-    }
+   
 }

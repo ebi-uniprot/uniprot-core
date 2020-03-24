@@ -96,6 +96,11 @@ class KineticParametersImplTest {
         assertEquals(2, kp.getMaximumVelocities().size());
         assertEquals(1, kp.getMichaelisConstants().size());
         assertEquals(note, kp.getNote());
+        String toString ="KM=2.13 MG_ML_2 for some value;\n" + 
+            "Vmax=1.0 unit1 enzyme1;\n" + 
+            "Vmax=1.321 unit2 enzyme2;\n" + 
+            "note=value 1. value2;";
+        assertEquals(toString, kp.toString());
     }
 
     @Test

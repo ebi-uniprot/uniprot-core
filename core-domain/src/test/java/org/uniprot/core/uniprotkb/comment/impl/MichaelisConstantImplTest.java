@@ -27,5 +27,6 @@ class MichaelisConstantImplTest {
 
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
+        assertEquals("KM=8.2 NANO_MOL for sub;", impl.toString());
     }
 }

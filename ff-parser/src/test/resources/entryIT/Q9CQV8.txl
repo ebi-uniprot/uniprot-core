@@ -2,7 +2,7 @@ ID   1433B_MOUSE             Reviewed;         246 AA.
 AC   Q9CQV8; O70455; Q3TY33; Q3UAN6;
 DT   26-SEP-2001, integrated into UniProtKB/Swiss-Prot.
 DT   23-JAN-2007, sequence version 3.
-DT   10-APR-2019, entry version 176.
+DT   22-APR-2020, entry version 185.
 DE   RecName: Full=14-3-3 protein beta/alpha;
 DE   AltName: Full=Protein kinase C inhibitor protein 1;
 DE            Short=KCIP-1;
@@ -107,19 +107,19 @@ RA   Beausoleil S.A., Villen J., Haas W., Sowa M.E., Gygi S.P.;
 RT   "A tissue-specific atlas of mouse protein phosphorylation and expression.";
 RL   Cell 143:1174-1189(2010).
 RN   [9]
-RP   INTERACTION WITH SAMSN1.
-RX   PubMed=20478393; DOI=10.1016/j.biocel.2010.05.004;
-RA   Brandt S., Ellwanger K., Beuter-Gunia C., Schuster M., Hausser A.,
-RA   Schmitz I., Beer-Hammer S.;
-RT   "SLy2 targets the nuclear SAP30/HDAC1 complex.";
-RL   Int. J. Biochem. Cell Biol. 42:1472-1481(2010).
-RN   [10]
 RP   INTERACTION WITH DAPK2.
 RX   PubMed=26047703; DOI=10.1016/j.bbrc.2015.05.105;
 RA   Yuasa K., Ota R., Matsuda S., Isshiki K., Inoue M., Tsuji A.;
 RT   "Suppression of death-associated protein kinase 2 by interaction with 14-3-
 RT   3 proteins.";
 RL   Biochem. Biophys. Res. Commun. 464:70-75(2015).
+RN   [10]
+RP   INTERACTION WITH SAMSN1.
+RX   PubMed=20478393; DOI=10.1016/j.biocel.2010.05.004;
+RA   Brandt S., Ellwanger K., Beuter-Gunia C., Schuster M., Hausser A.,
+RA   Schmitz I., Beer-Hammer S.;
+RT   "SLy2 targets the nuclear SAP30/HDAC1 complex.";
+RL   Int. J. Biochem. Cell Biol. 42:1472-1481(2010).
 CC   -!- FUNCTION: Adapter protein implicated in the regulation of a large
 CC       spectrum of both general and specialized signaling pathways. Binds to a
 CC       large number of partners, usually by recognition of a phosphoserine or
@@ -150,14 +150,14 @@ CC       SYNPO2 (phosphorylated form); YWHAB competes with ACTN2 for interaction
 CC       with SYNPO2 (PubMed:15883195). Interacts with RIPOR2 (via
 CC       phosphorylated form); this interaction occurs in a chemokine-dependent
 CC       manner and does not compete for binding of RIPOR2 with RHOA nor blocks
-CC       inhibition of RIPOR2-mediated RHOA activity (By similarity).
-CC       {ECO:0000250|UniProtKB:P31946, ECO:0000269|PubMed:15883195,
-CC       ECO:0000269|PubMed:18604201, ECO:0000269|PubMed:20478393,
-CC       ECO:0000269|PubMed:26047703}.
+CC       inhibition of RIPOR2-mediated RHOA activity (By similarity). Interacts
+CC       with MARK2 and MARK3 (By similarity). {ECO:0000250|UniProtKB:P31946,
+CC       ECO:0000269|PubMed:15883195, ECO:0000269|PubMed:18604201,
+CC       ECO:0000269|PubMed:20478393, ECO:0000269|PubMed:26047703}.
 CC   -!- INTERACTION:
-CC       Q5S006:Lrrk2; NbExp=3; IntAct=EBI-771608, EBI-2693710;
-CC       P16054:Prkce; NbExp=6; IntAct=EBI-771608, EBI-298451;
-CC       Q91YE8:Synpo2; NbExp=3; IntAct=EBI-771608, EBI-7623057;
+CC       Q9CQV8; Q5S006: Lrrk2; NbExp=6; IntAct=EBI-771608, EBI-2693710;
+CC       Q9CQV8; P16054: Prkce; NbExp=6; IntAct=EBI-771608, EBI-298451;
+CC       Q9CQV8; Q91YE8: Synpo2; NbExp=3; IntAct=EBI-771608, EBI-7623057;
 CC   -!- SUBCELLULAR LOCATION: Cytoplasm {ECO:0000250|UniProtKB:P31946}.
 CC       Melanosome {ECO:0000250|UniProtKB:P31946}.
 CC   -!- ALTERNATIVE PRODUCTS:
@@ -166,8 +166,6 @@ CC       Name=Long;
 CC         IsoId=Q9CQV8-1; Sequence=Displayed;
 CC       Name=Short;
 CC         IsoId=Q9CQV8-2; Sequence=VSP_018634;
-CC         Note=No experimental confirmation available. Contains a N-
-CC         acetylmethionine at position 1. {ECO:0000250};
 CC   -!- PTM: Isoform alpha differs from isoform beta in being phosphorylated
 CC       (By similarity). Phosphorylated on Ser-60 by protein kinase C delta
 CC       type catalytic subunit in a sphingosine-dependent fashion.
@@ -196,8 +194,8 @@ DR   PDBsum; 5F74; -.
 DR   PDBsum; 5WFU; -.
 DR   PDBsum; 5WFX; -.
 DR   SMR; Q9CQV8; -.
-DR   BioGrid; 207648; 32.
-DR   IntAct; Q9CQV8; 635.
+DR   BioGrid; 207648; 37.
+DR   IntAct; Q9CQV8; 636.
 DR   MINT; Q9CQV8; -.
 DR   STRING; 10090.ENSMUSP00000018470; -.
 DR   iPTMnet; Q9CQV8; -.
@@ -209,6 +207,7 @@ DR   PaxDb; Q9CQV8; -.
 DR   PeptideAtlas; Q9CQV8; -.
 DR   PRIDE; Q9CQV8; -.
 DR   TopDownProteomics; Q9CQV8-1; -. [Q9CQV8-1]
+DR   Antibodypedia; 1906; 673 antibodies.
 DR   Ensembl; ENSMUST00000018470; ENSMUSP00000018470; ENSMUSG00000018326. [Q9CQV8-1]
 DR   GeneID; 54401; -.
 DR   KEGG; mmu:54401; -.
@@ -217,21 +216,21 @@ DR   CTD; 7529; -.
 DR   MGI; MGI:1891917; Ywhab.
 DR   eggNOG; KOG0841; Eukaryota.
 DR   eggNOG; COG5040; LUCA.
-DR   GeneTree; ENSGT00950000182620; -.
-DR   HOGENOM; HOG000240379; -.
+DR   GeneTree; ENSGT00970000193355; -.
+DR   HOGENOM; CLU_058290_1_0_1; -.
 DR   InParanoid; Q9CQV8; -.
 DR   KO; K16197; -.
-DR   OMA; KKQQMGR; -.
-DR   OrthoDB; 1176818at2759; -.
+DR   OMA; KGCQLAR; -.
 DR   PhylomeDB; Q9CQV8; -.
 DR   TreeFam; TF102003; -.
 DR   Reactome; R-MMU-111447; Activation of BAD and translocation to mitochondria.
-DR   Reactome; R-MMU-1445148; Translocation of SLC2A4 (GLUT4) to the plasma membrane.
 DR   Reactome; R-MMU-165159; mTOR signalling.
 DR   Reactome; R-MMU-166208; mTORC1-mediated signalling.
+DR   Reactome; R-MMU-170968; Frs2-mediated activation.
 DR   Reactome; R-MMU-2028269; Signaling by Hippo.
 DR   Reactome; R-MMU-392517; Rap1 signalling.
 DR   Reactome; R-MMU-450385; Butyrate Response Factor 1 (BRF1) binds and destabilizes mRNA.
+DR   Reactome; R-MMU-450513; Tristetraprolin (TTP, ZFP36) binds and destabilizes mRNA.
 DR   Reactome; R-MMU-5625740; RHO GTPases activate PKNs.
 DR   Reactome; R-MMU-5628897; TP53 Regulates Metabolic Genes.
 DR   Reactome; R-MMU-5673000; RAF activation.
@@ -242,7 +241,8 @@ DR   Reactome; R-MMU-9614399; Regulation of localization of FOXO transcription f
 DR   ChiTaRS; Ywhab; mouse.
 DR   PRO; PR:Q9CQV8; -.
 DR   Proteomes; UP000000589; Chromosome 2.
-DR   Bgee; ENSMUSG00000018326; Expressed in 303 organ(s), highest expression level in substantia nigra.
+DR   RNAct; Q9CQV8; protein.
+DR   Bgee; ENSMUSG00000018326; Expressed in substantia nigra and 302 other tissues.
 DR   ExpressionAtlas; Q9CQV8; baseline and differential.
 DR   Genevisible; Q9CQV8; MM.
 DR   GO; GO:0005737; C:cytoplasm; ISO:MGI.
@@ -265,7 +265,6 @@ DR   GO; GO:0045744; P:negative regulation of G protein-coupled receptor signali
 DR   GO; GO:0035308; P:negative regulation of protein dephosphorylation; ISO:MGI.
 DR   GO; GO:0045892; P:negative regulation of transcription, DNA-templated; ISO:MGI.
 DR   GO; GO:0043085; P:positive regulation of catalytic activity; ISO:MGI.
-DR   GO; GO:0051291; P:protein heterooligomerization; ISO:MGI.
 DR   GO; GO:0006605; P:protein targeting; IDA:MGI.
 DR   Gene3D; 1.20.190.20; -; 1.
 DR   InterPro; IPR000308; 14-3-3.
@@ -281,9 +280,9 @@ DR   SUPFAM; SSF48445; SSF48445; 1.
 DR   PROSITE; PS00796; 1433_1; 1.
 DR   PROSITE; PS00797; 1433_2; 1.
 PE   1: Evidence at protein level;
-KW   3D-structure; Acetylation; Alternative initiation; Complete proteome;
-KW   Cytoplasm; Direct protein sequencing; Isopeptide bond; Nitration;
-KW   Phosphoprotein; Reference proteome; Ubl conjugation.
+KW   3D-structure; Acetylation; Alternative initiation; Cytoplasm;
+KW   Direct protein sequencing; Isopeptide bond; Nitration; Phosphoprotein;
+KW   Reference proteome; Ubl conjugation.
 FT   CHAIN           1..246
 FT                   /note="14-3-3 protein beta/alpha"
 FT                   /id="PRO_0000367902"
@@ -338,6 +337,9 @@ FT                   /evidence="ECO:0000250|UniProtKB:P68251"
 FT   MOD_RES         232
 FT                   /note="Phosphoserine"
 FT                   /evidence="ECO:0000250|UniProtKB:P31946"
+FT   MOD_RES         Q9CQV8-2:1
+FT                   /note="N-acetylmethionine"
+FT                   /evidence="ECO:0000305"
 FT   CROSSLNK        51
 FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
 FT                   G-Cter in SUMO2); alternate"
@@ -381,18 +383,18 @@ FT   HELIX           213..232
 FT                   /evidence="ECO:0000244|PDB:5WFX"
 **
 **   #################    INTERNAL SECTION    ##################
-**EV ECO:0000244; PDB:5WFX; INT; 16-JUL-2018.
-**EV ECO:0000244; PubMed:16800626; 001; 16-JUL-2018.
-**EV ECO:0000250; -; XXX; 16-JUL-2018.
-**EV ECO:0000250; UniProtKB:P27348; 001; 16-JUL-2018.
-**EV ECO:0000250; UniProtKB:P31946; 001; 16-JUL-2018.
-**EV ECO:0000250; UniProtKB:P68251; 001; 16-JUL-2018.
-**EV ECO:0000269; PubMed:15883195; BER; 03-MAY-2017.
-**EV ECO:0000269; PubMed:18604201; UHI; 03-MAY-2017.
-**EV ECO:0000269; PubMed:20478393; UHI; 03-MAY-2017.
-**EV ECO:0000269; PubMed:26047703; UHI; 03-MAY-2017.
-**EV ECO:0000269; PubMed:9705322; XXX; 16-JUL-2018.
-**EV ECO:0000305; -; XXX; 16-JUL-2018.
+**EV ECO:0000244; PDB:5WFX; INT; 10-NOV-2019.
+**EV ECO:0000244; PubMed:16800626; 001; 10-NOV-2019.
+**EV ECO:0000250; -; XXX; 10-NOV-2019.
+**EV ECO:0000250; UniProtKB:P27348; 001; 10-NOV-2019.
+**EV ECO:0000250; UniProtKB:P31946; CRC; 10-NOV-2019.
+**EV ECO:0000250; UniProtKB:P68251; 001; 10-NOV-2019.
+**EV ECO:0000269; PubMed:15883195; BER; 06-FEB-2020.
+**EV ECO:0000269; PubMed:18604201; UHI; 06-FEB-2020.
+**EV ECO:0000269; PubMed:20478393; UHI; 06-FEB-2020.
+**EV ECO:0000269; PubMed:26047703; UHI; 06-FEB-2020.
+**EV ECO:0000269; PubMed:9705322; XXX; 10-NOV-2019.
+**EV ECO:0000305; -; XXX; 10-NOV-2019.
 **SO UPD; 20141; 17-APR-2007.
 **SO UPD; 38830; 26-JAN-2009.
 **SO UPD; 62097; 29-AUG-2011.

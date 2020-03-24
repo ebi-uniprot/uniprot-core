@@ -2,22 +2,29 @@ package org.uniprot.core.uniprotkb.comment.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.uniprotkb.comment.Interaction;
-import org.uniprot.core.uniprotkb.comment.InteractionType;
-import org.uniprot.core.uniprotkb.comment.Interactor;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 
 class InteractionImplTest {
+    private Interactant interactant1;
+    private Interactant interactant2;
 
-    private Interaction impl =
-            new InteractionImpl(
-                    InteractionType.BINARY,
-                    new UniProtKBAccessionBuilder("ac").build(),
-                    "gene",
-                    12,
-                    new InteractionImpl.InteractorImpl("1st"),
-                    new InteractionImpl.InteractorImpl("2nd"));
+    @BeforeEach
+    void setup() {
+        interactant1 =
+                new InteractantImpl(
+                        new UniProtKBAccessionBuilder("P12346").build(), "", "", "EBI-1223708");
+
+        interactant2 =
+                new InteractantImpl(
+                        new UniProtKBAccessionBuilder("P12345").build(),
+                        "gene1",
+                        "P_1234",
+                        "EBI-1223708");
+    }
 
     @Test
     void needDefaultConstructorForJsonDeserialization() {
@@ -26,24 +33,28 @@ class InteractionImplTest {
     }
 
     @Test
-    void needDefaultConstructorForJsonDeserialization_InteractorImpl() {
-        Interactor obj = new InteractionImpl.InteractorImpl();
-        assertNotNull(obj);
+    void completeObjConstructor() {
+        Interaction interaction = new InteractionImpl(interactant1, interactant2, 3, false);
+        assertEquals(interactant1, interaction.getInteractantOne());
+        assertEquals(interactant2, interaction.getInteractantTwo());
+        assertEquals(3, interaction.getNumberOfExperiments());
+        assertFalse(interaction.isOrganismsDiffer());
     }
 
     @Test
     void completeObjHasMethods() {
-        assertTrue(impl.hasFirstInteractor());
-        assertTrue(impl.hasGeneName());
-        assertTrue(impl.hasNumberOfExperiments());
-        assertTrue(impl.hasSecondInteractor());
-        assertTrue(impl.hasUniProtAccession());
+        Interaction interaction = new InteractionImpl(interactant1, interactant2, 3, true);
+        assertTrue(interaction.hasInteractantOne());
+        assertTrue(interaction.hasInteractantTwo());
+        assertTrue(interaction.hasNumberOfExperiments());
+        assertTrue(interaction.isOrganismsDiffer());
     }
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        Interaction obj = InteractionBuilder.from(impl).build();
-        assertTrue(impl.equals(obj) && obj.equals(impl));
-        assertEquals(impl.hashCode(), obj.hashCode());
+        Interaction interaction = new InteractionImpl(interactant1, interactant2, 5, true);
+        Interaction obj = InteractionBuilder.from(interaction).build();
+        assertEquals(interaction, obj);
+        assertEquals(interaction.hashCode(), obj.hashCode());
     }
 }

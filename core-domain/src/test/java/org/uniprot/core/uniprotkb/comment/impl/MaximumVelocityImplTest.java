@@ -25,5 +25,7 @@ class MaximumVelocityImplTest {
 
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
+        
+        assertEquals("Vmax=0.7 ab cd;", impl.toString());
     }
 }

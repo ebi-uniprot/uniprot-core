@@ -3,6 +3,7 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprotkb.comment.Absorption;
 import org.uniprot.core.uniprotkb.comment.Note;
@@ -77,5 +78,24 @@ public class AbsorptionImpl implements Absorption {
     @Override
     public int hashCode() {
         return Objects.hash(max, approximate, note, evidences);
+    }
+    @Override
+    public String toString() {
+    	 StringBuilder sb = new StringBuilder();
+    	 sb.append("Abs(max)=");
+         if (isApproximate()) {
+             sb.append("~");
+         }
+         sb.append(getMax());
+
+         sb.append(" nm;");
+        if( (note != null) && note.isValid()) {
+        	sb.append("note=");
+        	sb.append(
+        	note.getTexts().stream().map(val ->val.getValue())
+        	.collect(Collectors.joining(". ")))
+        	.append(";");
+        }
+      return sb.toString();
     }
 }

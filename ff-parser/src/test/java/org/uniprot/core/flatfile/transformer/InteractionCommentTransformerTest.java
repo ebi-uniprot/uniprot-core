@@ -4,114 +4,108 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
-import org.uniprot.core.uniprotkb.comment.InteractionType;
 
 class InteractionCommentTransformerTest {
     private final InteractionCommentTransformer transformer = new InteractionCommentTransformer();
 
     @Test
-    void test1() {
+    public void test1() {
         String ccLineString =
                 ("INTERACTION:\n"
-                        + "Self; NbExp=1; IntAct=EBI-123485, EBI-123485;\n"
-                        + "Q9W158:CG4612; NbExp=1; IntAct=EBI-123485, EBI-89895;\n"
-                        + "Q9VYI0:fne; NbExp=1; IntAct=EBI-123485, EBI-126770;");
+                        + "P12345; Q9W158: CG4612; NbExp=1; IntAct=EBI-123485, EBI-89895;\n"
+                        + "P12345; PRO_0000037566 [P27958]; Xeno; NbExp=2; IntAct=EBI-123485, EBI-126770;");
         InteractionComment comment = transformer.transform(CommentType.INTERACTION, ccLineString);
         assertNotNull(comment);
-        assertEquals(3, comment.getInteractions().size());
+        assertEquals(2, comment.getInteractions().size());
+
         Interaction interaction1 = comment.getInteractions().get(0);
-        assertEquals(InteractionType.SELF, interaction1.getType());
         assertEquals(1, interaction1.getNumberOfExperiments());
-        assertNull(interaction1.getUniProtkbAccession());
-        assertNull(interaction1.getGeneName());
-        assertEquals("EBI-123485", interaction1.getFirstInteractor().getValue());
-        assertEquals("EBI-123485", interaction1.getSecondInteractor().getValue());
+        assertFalse(interaction1.isOrganismsDiffer());
+        verifyInteractor(interaction1.getInteractantOne(), null, "P12345", null, "EBI-123485");
+        verifyInteractor(interaction1.getInteractantTwo(), null, "Q9W158", "CG4612", "EBI-89895");
 
         Interaction interaction2 = comment.getInteractions().get(1);
-        assertEquals(InteractionType.BINARY, interaction2.getType());
-        assertEquals(1, interaction2.getNumberOfExperiments());
-        assertEquals("Q9W158", interaction2.getUniProtkbAccession().getValue());
-        assertEquals("CG4612", interaction2.getGeneName());
-        assertEquals("EBI-123485", interaction2.getFirstInteractor().getValue());
-        assertEquals("EBI-89895", interaction2.getSecondInteractor().getValue());
+        assertEquals(2, interaction2.getNumberOfExperiments());
+        assertTrue(interaction2.isOrganismsDiffer());
+        verifyInteractor(interaction2.getInteractantOne(), null, "P12345", null, "EBI-123485");
+        verifyInteractor(
+                interaction2.getInteractantTwo(), "PRO_0000037566", "P27958", null, "EBI-126770");
+    }
 
-        Interaction interaction3 = comment.getInteractions().get(2);
-        assertEquals(InteractionType.BINARY, interaction3.getType());
-        assertEquals(1, interaction3.getNumberOfExperiments());
-        assertEquals("Q9VYI0", interaction3.getUniProtkbAccession().getValue());
-        assertEquals("fne", interaction3.getGeneName());
-        assertEquals("EBI-123485", interaction3.getFirstInteractor().getValue());
-        assertEquals("EBI-126770", interaction3.getSecondInteractor().getValue());
+    private void verifyInteractor(
+            Interactant interactor, String chainId, String acc, String gene, String intActId) {
+        assertEquals(chainId, interactor.getChainId());
+        if (acc == null) {
+            assertNull(interactor.getUniProtKBAccession());
+        } else {
+            assertEquals(acc, interactor.getUniProtKBAccession().getValue());
+        }
+        assertEquals(gene, interactor.getGeneName());
+        assertEquals(intActId, interactor.getIntActId());
     }
 
     @Test
     void test2() {
+
         String ccLineString =
                 ("INTERACTION:\n"
-                        + "Q9W1K5-1:CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n"
-                        + "O96017:CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n"
-                        + "Q6ZWQ9:Myl12a (xeno); NbExp=3; IntAct=EBI-372428, EBI-8034418;");
+                        + "P12345; Q9W1K5-1: CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n"
+                        + "PRO_0000037566; O96017: CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n"
+                        + "P12345; Q6ZWQ9: Myl12a; Xeno; NbExp=3; IntAct=EBI-372428, EBI-8034418;");
+
         InteractionComment comment = transformer.transform(CommentType.INTERACTION, ccLineString);
         assertNotNull(comment);
         assertEquals(3, comment.getInteractions().size());
         Interaction interaction1 = comment.getInteractions().get(0);
-        assertEquals(InteractionType.BINARY, interaction1.getType());
         assertEquals(1, interaction1.getNumberOfExperiments());
-        assertEquals("Q9W1K5-1", interaction1.getUniProtkbAccession().getValue());
-        assertEquals("CG11299", interaction1.getGeneName());
-        assertEquals("EBI-133844", interaction1.getFirstInteractor().getValue());
-        assertEquals("EBI-212772", interaction1.getSecondInteractor().getValue());
+        assertFalse(interaction1.isOrganismsDiffer());
+        verifyInteractor(interaction1.getInteractantOne(), null, "P12345", null, "EBI-133844");
+        verifyInteractor(
+                interaction1.getInteractantTwo(), null, "Q9W1K5-1", "CG11299", "EBI-212772");
 
         Interaction interaction2 = comment.getInteractions().get(1);
-        assertEquals(InteractionType.BINARY, interaction2.getType());
         assertEquals(4, interaction2.getNumberOfExperiments());
-        assertEquals("O96017", interaction2.getUniProtkbAccession().getValue());
-        assertEquals("CHEK2", interaction2.getGeneName());
-        assertEquals("EBI-372428", interaction2.getFirstInteractor().getValue());
-        assertEquals("EBI-1180783", interaction2.getSecondInteractor().getValue());
+        assertFalse(interaction2.isOrganismsDiffer());
+        verifyInteractor(
+                interaction2.getInteractantOne(), "PRO_0000037566", null, null, "EBI-372428");
+        verifyInteractor(interaction2.getInteractantTwo(), null, "O96017", "CHEK2", "EBI-1180783");
 
         Interaction interaction3 = comment.getInteractions().get(2);
-        assertEquals(InteractionType.XENO, interaction3.getType());
         assertEquals(3, interaction3.getNumberOfExperiments());
-        assertEquals("Q6ZWQ9", interaction3.getUniProtkbAccession().getValue());
-        assertEquals("Myl12a", interaction3.getGeneName());
-        assertEquals("EBI-372428", interaction3.getFirstInteractor().getValue());
-        assertEquals("EBI-8034418", interaction3.getSecondInteractor().getValue());
+        assertTrue(interaction3.isOrganismsDiffer());
+        verifyInteractor(interaction3.getInteractantOne(), null, "P12345", null, "EBI-372428");
+        verifyInteractor(interaction3.getInteractantTwo(), null, "Q6ZWQ9", "Myl12a", "EBI-8034418");
     }
 
     @Test
     void test3() {
         String ccLineString =
-                ("Q9W1K5-1:CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n"
-                        + "O96017:CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n"
-                        + "Q6ZWQ9:Myl12a (xeno); NbExp=3; IntAct=EBI-372428, EBI-8034418;");
+                ("P12345; Q9W1K5-1: CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n"
+                        + "P12345-1; O96017: CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n"
+                        + "P12345; Q6ZWQ9: Myl12a; Xeno; NbExp=3; IntAct=EBI-372428, EBI-8034418;");
         InteractionComment comment = transformer.transform(CommentType.INTERACTION, ccLineString);
         assertNotNull(comment);
         assertEquals(3, comment.getInteractions().size());
         Interaction interaction1 = comment.getInteractions().get(0);
-        assertEquals(InteractionType.BINARY, interaction1.getType());
         assertEquals(1, interaction1.getNumberOfExperiments());
-        assertEquals("Q9W1K5-1", interaction1.getUniProtkbAccession().getValue());
-        assertEquals("CG11299", interaction1.getGeneName());
-        assertEquals("EBI-133844", interaction1.getFirstInteractor().getValue());
-        assertEquals("EBI-212772", interaction1.getSecondInteractor().getValue());
+        assertFalse(interaction1.isOrganismsDiffer());
+        verifyInteractor(interaction1.getInteractantOne(), null, "P12345", null, "EBI-133844");
+        verifyInteractor(
+                interaction1.getInteractantTwo(), null, "Q9W1K5-1", "CG11299", "EBI-212772");
 
         Interaction interaction2 = comment.getInteractions().get(1);
-        assertEquals(InteractionType.BINARY, interaction2.getType());
         assertEquals(4, interaction2.getNumberOfExperiments());
-        assertEquals("O96017", interaction2.getUniProtkbAccession().getValue());
-        assertEquals("CHEK2", interaction2.getGeneName());
-        assertEquals("EBI-372428", interaction2.getFirstInteractor().getValue());
-        assertEquals("EBI-1180783", interaction2.getSecondInteractor().getValue());
+        assertFalse(interaction2.isOrganismsDiffer());
+        verifyInteractor(interaction2.getInteractantOne(), null, "P12345-1", null, "EBI-372428");
+        verifyInteractor(interaction2.getInteractantTwo(), null, "O96017", "CHEK2", "EBI-1180783");
 
         Interaction interaction3 = comment.getInteractions().get(2);
-        assertEquals(InteractionType.XENO, interaction3.getType());
         assertEquals(3, interaction3.getNumberOfExperiments());
-        assertEquals("Q6ZWQ9", interaction3.getUniProtkbAccession().getValue());
-        assertEquals("Myl12a", interaction3.getGeneName());
-        assertEquals("EBI-372428", interaction3.getFirstInteractor().getValue());
-        assertEquals("EBI-8034418", interaction3.getSecondInteractor().getValue());
+        assertTrue(interaction3.isOrganismsDiffer());
+        verifyInteractor(interaction3.getInteractantOne(), null, "P12345", null, "EBI-372428");
+        verifyInteractor(interaction3.getInteractantTwo(), null, "Q6ZWQ9", "Myl12a", "EBI-8034418");
     }
 }
