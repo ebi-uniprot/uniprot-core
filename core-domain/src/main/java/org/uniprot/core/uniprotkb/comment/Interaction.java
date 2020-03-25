@@ -2,28 +2,26 @@ package org.uniprot.core.uniprotkb.comment;
 
 import java.io.Serializable;
 
-import org.uniprot.core.uniprotkb.UniProtKBAccession;
+import org.uniprot.core.util.Utils;
 
 public interface Interaction extends Serializable {
-    InteractionType getType();
+    Interactant getInteractantOne();
 
-    UniProtKBAccession getUniProtkbAccession();
-
-    String getGeneName();
+    Interactant getInteractantTwo();
 
     int getNumberOfExperiments();
 
-    Interactor getFirstInteractor();
+    boolean isOrganismsDiffer();
 
-    Interactor getSecondInteractor();
+    default boolean hasInteractantOne() {
+        return Utils.notNull(getInteractantOne());
+    }
 
-    boolean hasUniProtAccession();
+    default boolean hasInteractantTwo() {
+        return Utils.notNull(getInteractantTwo());
+    }
 
-    boolean hasGeneName();
-
-    boolean hasNumberOfExperiments();
-
-    boolean hasFirstInteractor();
-
-    boolean hasSecondInteractor();
+    default boolean hasNumberOfExperiments() {
+        return getNumberOfExperiments() > 0;
+    }
 }

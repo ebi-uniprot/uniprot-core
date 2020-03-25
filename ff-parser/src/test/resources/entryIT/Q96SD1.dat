@@ -3,7 +3,7 @@ AC   Q96SD1; D3DRT6; Q1HCL2; Q5JSR4; Q5JSR5; Q5JSR7; Q5JSR8; Q5JSR9; Q5JSS0;
 AC   Q5JSS7; Q6PK14; Q8N101; Q8N132; Q8TBW9; Q9BVW9; Q9HAM4;
 DT   19-JUL-2005, integrated into UniProtKB/Swiss-Prot.
 DT   19-JUL-2005, sequence version 2.
-DT   16-JAN-2019, entry version 136.
+DT   22-APR-2020, entry version 143.
 DE   RecName: Full=Protein artemis;
 DE            EC=3.1.-.-;
 DE   AltName: Full=DNA cross-link repair 1C protein;
@@ -246,7 +246,7 @@ RA   Mayya V., Lundgren D.H., Hwang S.I., Rezaul K., Wu L., Eng J.K.,
 RA   Rodionov V., Han D.K.;
 RT   "Quantitative phosphoproteomic analysis of T cell receptor signaling
 RT   reveals system-wide modulation of protein-protein interactions.";
-RL   Sci. Signal. 2:ra46-RA46(2009).
+RL   Sci. Signal. 2:RA46-RA46(2009).
 RN   [20]
 RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
 RC   TISSUE=Cervix carcinoma, and Erythroleukemia;
@@ -284,6 +284,13 @@ RT   "Novel Artemis gene mutations of radiosensitive severe combined
 RT   immunodeficiency in Japanese families.";
 RL   Hum. Genet. 112:348-352(2003).
 RN   [24]
+RP   VARIANT OMENN SYNDROME ASP-35.
+RX   PubMed=15731174; DOI=10.1182/blood-2004-12-4861;
+RA   Ege M., Ma Y., Manfras B., Kalwak K., Lu H., Lieber M.R., Schwarz K.,
+RA   Pannicke U.;
+RT   "Omenn syndrome due to ARTEMIS mutations.";
+RL   Blood 105:4179-4186(2005).
+RN   [25]
 RP   INVOLVEMENT IN RSSCID.
 RX   PubMed=12569164;
 RA   Moshous D., Pannetier C., de Chasseval R., le Deist F., Cavazzana-Calvo M.,
@@ -292,13 +299,6 @@ RA   Casanova J.-L., de Villartay J.-P.;
 RT   "Partial T and B lymphocyte immunodeficiency and predisposition to lymphoma
 RT   in patients with hypomorphic mutations in Artemis.";
 RL   J. Clin. Invest. 111:381-387(2003).
-RN   [25]
-RP   VARIANT OMENN SYNDROME ASP-35.
-RX   PubMed=15731174; DOI=10.1182/blood-2004-12-4861;
-RA   Ege M., Ma Y., Manfras B., Kalwak K., Lu H., Lieber M.R., Schwarz K.,
-RA   Pannicke U.;
-RT   "Omenn syndrome due to ARTEMIS mutations.";
-RL   Blood 105:4179-4186(2005).
 CC   -!- FUNCTION: Required for V(D)J recombination, the process by which exons
 CC       encoding the antigen-binding domains of immunoglobulins and T-cell
 CC       receptor proteins are assembled from individual V, (D), and J gene
@@ -328,8 +328,8 @@ CC       ECO:0000269|PubMed:14744996, ECO:0000269|PubMed:15456891,
 CC       ECO:0000269|PubMed:15574326, ECO:0000269|PubMed:15574327,
 CC       ECO:0000269|PubMed:15723659, ECO:0000269|PubMed:15936993}.
 CC   -!- INTERACTION:
-CC       P49917:LIG4; NbExp=16; IntAct=EBI-11694104, EBI-847896;
-CC       P78527:PRKDC; NbExp=4; IntAct=EBI-11694104, EBI-352053;
+CC       Q96SD1; P49917: LIG4; NbExp=16; IntAct=EBI-11694104, EBI-847896;
+CC       Q96SD1; P78527: PRKDC; NbExp=4; IntAct=EBI-11694104, EBI-352053;
 CC   -!- SUBCELLULAR LOCATION: Nucleus {ECO:0000269|PubMed:12055248,
 CC       ECO:0000269|PubMed:15071507}.
 CC   -!- ALTERNATIVE PRODUCTS:
@@ -438,7 +438,7 @@ DR   PDBsum; 4HTP; -.
 DR   SMR; Q96SD1; -.
 DR   BioGrid; 122170; 36.
 DR   CORUM; Q96SD1; -.
-DR   IntAct; Q96SD1; 3.
+DR   IntAct; Q96SD1; 21.
 DR   STRING; 9606.ENSP00000367527; -.
 DR   BindingDB; Q96SD1; -.
 DR   iPTMnet; Q96SD1; -.
@@ -447,14 +447,16 @@ DR   BioMuta; DCLRE1C; -.
 DR   DMDM; 71153325; -.
 DR   EPD; Q96SD1; -.
 DR   jPOST; Q96SD1; -.
+DR   MassIVE; Q96SD1; -.
 DR   MaxQB; Q96SD1; -.
 DR   PaxDb; Q96SD1; -.
 DR   PeptideAtlas; Q96SD1; -.
 DR   PRIDE; Q96SD1; -.
-DR   ProteomicsDB; 78103; -.
+DR   ProteomicsDB; 78103; -. [Q96SD1-1]
 DR   ProteomicsDB; 78104; -. [Q96SD1-2]
 DR   ProteomicsDB; 78105; -. [Q96SD1-3]
 DR   ProteomicsDB; 78106; -. [Q96SD1-4]
+DR   Antibodypedia; 24989; 339 antibodies.
 DR   Ensembl; ENST00000357717; ENSP00000350349; ENSG00000152457. [Q96SD1-3]
 DR   Ensembl; ENST00000378246; ENSP00000367492; ENSG00000152457. [Q96SD1-3]
 DR   Ensembl; ENST00000378249; ENSP00000367496; ENSG00000152457. [Q96SD1-3]
@@ -469,10 +471,9 @@ DR   KEGG; hsa:64421; -.
 DR   UCSC; uc001inl.5; human. [Q96SD1-1]
 DR   CTD; 64421; -.
 DR   DisGeNET; 64421; -.
-DR   EuPathDB; HostDB:ENSG00000152457.17; -.
 DR   GeneCards; DCLRE1C; -.
 DR   HGNC; HGNC:17642; DCLRE1C.
-DR   HPA; HPA069295; -.
+DR   HPA; ENSG00000152457; Low tissue specificity.
 DR   MalaCards; DCLRE1C; -.
 DR   MIM; 602450; phenotype.
 DR   MIM; 603554; phenotype.
@@ -485,6 +486,7 @@ DR   PharmGKB; PA27176; -.
 DR   eggNOG; KOG1361; Eukaryota.
 DR   eggNOG; COG1236; LUCA.
 DR   GeneTree; ENSGT00940000157779; -.
+DR   HOGENOM; CLU_005260_1_1_1; -.
 DR   InParanoid; Q96SD1; -.
 DR   KO; K10887; -.
 DR   OMA; CYSTHAS; -.
@@ -495,9 +497,11 @@ DR   Reactome; R-HSA-5693571; Nonhomologous End-Joining (NHEJ).
 DR   SIGNOR; Q96SD1; -.
 DR   ChiTaRS; DCLRE1C; human.
 DR   GenomeRNAi; 64421; -.
+DR   Pharos; Q96SD1; Tbio.
 DR   PRO; PR:Q96SD1; -.
 DR   Proteomes; UP000005640; Chromosome 10.
-DR   Bgee; ENSG00000152457; Expressed in 235 organ(s), highest expression level in buccal mucosa cell.
+DR   RNAct; Q96SD1; protein.
+DR   Bgee; ENSG00000152457; Expressed in buccal mucosa cell and 234 other tissues.
 DR   ExpressionAtlas; Q96SD1; baseline and differential.
 DR   Genevisible; Q96SD1; HS.
 DR   GO; GO:0005794; C:Golgi apparatus; IDA:HPA.
@@ -516,6 +520,7 @@ DR   GO; GO:0036297; P:interstrand cross-link repair; IBA:GO_Central.
 DR   GO; GO:0031848; P:protection from non-homologous end joining at telomere; IBA:GO_Central.
 DR   GO; GO:0010212; P:response to ionizing radiation; IEA:Ensembl.
 DR   GO; GO:0033151; P:V(D)J recombination; IEA:Ensembl.
+DR   DisProt; DP01162; -.
 DR   Gene3D; 3.60.15.10; -; 1.
 DR   InterPro; IPR011084; DRMBL.
 DR   InterPro; IPR001279; Metallo-B-lactamas.
@@ -524,10 +529,10 @@ DR   Pfam; PF07522; DRMBL; 1.
 DR   Pfam; PF12706; Lactamase_B_2; 1.
 DR   SUPFAM; SSF56281; SSF56281; 1.
 PE   1: Evidence at protein level;
-KW   3D-structure; Adaptive immunity; Alternative splicing; Complete proteome;
-KW   Disease mutation; DNA damage; DNA recombination; DNA repair; Endonuclease;
-KW   Exonuclease; Hydrolase; Immunity; Magnesium; Nuclease; Nucleus;
-KW   Phosphoprotein; Polymorphism; Reference proteome; SCID.
+KW   3D-structure; Adaptive immunity; Alternative splicing; Disease mutation;
+KW   DNA damage; DNA recombination; DNA repair; Endonuclease; Exonuclease;
+KW   Hydrolase; Immunity; Magnesium; Nuclease; Nucleus; Phosphoprotein;
+KW   Polymorphism; Reference proteome; SCID.
 FT   CHAIN           1..692
 FT                   /note="Protein artemis"
 FT                   /id="PRO_0000209122"

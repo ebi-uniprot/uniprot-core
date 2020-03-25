@@ -1,23 +1,22 @@
 package org.uniprot.cv.xdb;
 
-import java.io.*;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
+import org.uniprot.cv.common.AbstractFileReader;
+import org.uniprot.cv.common.CVSystemProperties;
 
 /** @author jieluo */
 public enum UniProtCrossReferenceDisplayOrder
-        implements org.uniprot.core.uniprotkb.xdb.DatabaseDisplayOrder {
+        implements org.uniprot.core.uniprotkb.xdb.DatabaseDisplayOrder<UniProtDatabaseDetail> {
     INSTANCE;
+
     private Map<String, DatabaseDisplayOrder> databaseType2DefsNoCase;
-    private static final String DR_ORD_FILE = "META-INF/dr_ord";
     private static final String DR_ORD_LOCATION = "https://www.ebi.ac.uk/~trembl/generator/dr_ord";
     private boolean init = false;
 
@@ -35,26 +34,18 @@ public enum UniProtCrossReferenceDisplayOrder
             return;
         }
         databaseType2DefsNoCase = new ConcurrentHashMap<>();
-        try {
-            BufferedReader orderFileReader = getReaderFromUrl();
-            if (orderFileReader == null) {
-                orderFileReader = getReaderFromFile();
+        List<String> lines =
+                AbstractFileReader.readLines(
+                        Optional.ofNullable(CVSystemProperties.getDrOrdLocation())
+                                .orElse(DR_ORD_LOCATION));
+        int pos = 1;
+        for (String readLine : lines) {
+            readLine = readLine.trim();
+            if (!readLine.startsWith("#")) {
+                DatabaseDisplayOrder def = createDatabaseDef(readLine, pos);
+                databaseType2DefsNoCase.put(def.getDbName().toUpperCase(), def);
+                pos++;
             }
-            String readLine = orderFileReader.readLine();
-            int pos = 1;
-            while ((readLine != null)) {
-                readLine = readLine.trim();
-                if (!readLine.startsWith("#")) {
-                    DatabaseDisplayOrder def = createDatabaseDef(readLine, pos);
-                    databaseType2DefsNoCase.put(def.getDbName().toUpperCase(), def);
-                    pos++;
-                }
-                readLine = orderFileReader.readLine();
-            }
-            orderFileReader.close();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
         init = true;
     }
@@ -78,46 +69,9 @@ public enum UniProtCrossReferenceDisplayOrder
         return 1; // use default
     }
 
-    private BufferedReader getReaderFromUrl() {
-        URLConnection urlConnection = null;
-        URL url = null;
-        BufferedReader reader = null;
-        try {
-            url = new URL(UniProtCrossReferenceDisplayOrder.DR_ORD_LOCATION);
-        } catch (MalformedURLException ex) {
-            return null;
-        }
-        try {
-            urlConnection = url.openConnection();
-            urlConnection.setUseCaches(true);
-            urlConnection.connect();
-            reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-        } catch (IOException ex) {
-            return null;
-        }
-        return reader;
-    }
-
-    private BufferedReader getReaderFromFile() {
-        InputStream inputStream =
-                UniProtCrossReferenceDisplayOrder.class
-                        .getClassLoader()
-                        .getResourceAsStream(UniProtCrossReferenceDisplayOrder.DR_ORD_FILE);
-        if (inputStream == null) {
-            File file = new File(UniProtCrossReferenceDisplayOrder.DR_ORD_FILE);
-            try (InputStream fileInputStream = new FileInputStream(file)) {
-                inputStream = fileInputStream;
-            } catch (IOException e) {
-                throw new RuntimeException(" Database Cross Reference order file could not open.");
-            }
-        }
-
-        return new BufferedReader(new InputStreamReader(inputStream));
-    }
-
     private static class SafeLazyInitializer {
         static List<UniProtDatabaseDetail> uniProtDatabaseDetails =
-                initValues(UniProtCrossReferenceDisplayOrder.INSTANCE.databaseType2DefsNoCase);
+                initValues(INSTANCE.databaseType2DefsNoCase);
 
         private static List<UniProtDatabaseDetail> initValues(
                 Map<String, DatabaseDisplayOrder> databaseType2DefsNoCase) {

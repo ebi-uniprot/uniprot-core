@@ -16,7 +16,7 @@ class PathwayCacheIT {
 
     @BeforeAll
     static void setup() {
-        pathways = PathwayCache.INSTANCE.get("");
+        pathways = PathwayCache.INSTANCE.get("pathway/pathlist.txt");
     }
 
     @Test

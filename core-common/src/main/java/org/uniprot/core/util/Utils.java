@@ -1,6 +1,5 @@
 package org.uniprot.core.util;
 
-import java.io.InputStream;
 import java.util.*;
 
 import javax.annotation.Nonnull;
@@ -103,11 +102,6 @@ public class Utils {
         } else {
             return Collections.unmodifiableSet(targetSet);
         }
-    }
-
-    public @Nonnull static String loadPropertyInput(@Nonnull InputStream configFile) {
-        Scanner s = new Scanner(configFile).useDelimiter("\\A");
-        return s.hasNext() ? s.next() : "";
     }
 
     public static boolean nullOrEmpty(@Nullable String value) {

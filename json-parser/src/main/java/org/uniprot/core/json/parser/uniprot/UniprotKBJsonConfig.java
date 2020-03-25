@@ -131,7 +131,7 @@ public class UniprotKBJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(SubcellularLocation.class, SubcellularLocationImpl.class);
         mod.addAbstractTypeMapping(
                 TemperatureDependence.class, BPCPCommentImpl.TemperatureDependenceImpl.class);
-        mod.addAbstractTypeMapping(Interactor.class, InteractionImpl.InteractorImpl.class);
+        mod.addAbstractTypeMapping(Interactant.class, InteractantImpl.class);
         mod.addAbstractTypeMapping(DiseaseComment.class, DiseaseCommentImpl.class);
         mod.addAbstractTypeMapping(Cofactor.class, CofactorImpl.class);
         mod.addAbstractTypeMapping(
@@ -230,7 +230,6 @@ public class UniprotKBJsonConfig extends JsonConfig {
         simpleMod.addSerializer(UniProtKBAccessionImpl.class, new UniProtKBAccessionSerializer());
         simpleMod.addSerializer(UniProtKBIdImpl.class, new UniProtIdSerializer());
         simpleMod.addSerializer(AuthorImpl.class, new AuthorSerializer());
-        simpleMod.addSerializer(InteractionImpl.InteractorImpl.class, new InteractorSerializer());
         simpleMod.addSerializer(APIsoformImpl.IsoformIdImpl.class, new IsoformIdImplSerializer());
         simpleMod.addSerializer(EvidenceImpl.class, new EvidenceSerializer());
         simpleMod.addSerializer(ECNumberImpl.class, new ECNumberSerializer());

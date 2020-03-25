@@ -312,7 +312,7 @@ CC       ERVH48-1/suppressyn; may negatively regulate syncytialization
 CC       (PubMed:23492904). {ECO:0000269|PubMed:23492904,
 CC       ECO:0000269|PubMed:29872227, ECO:0000305|PubMed:28424515}.
 CC   -!- INTERACTION:
-CC       Q99942:RNF5; NbExp=4; IntAct=EBI-356576, EBI-348482;
+CC       Q15758; Q99942: RNF5; NbExp=4; IntAct=EBI-356576, EBI-348482;
 CC   -!- SUBCELLULAR LOCATION: Cell membrane {ECO:0000269|PubMed:8702519,
 CC       ECO:0000305|PubMed:29872227}; Multi-pass membrane protein
 CC       {ECO:0000269|PubMed:29872227}. Melanosome. Note=Identified by mass

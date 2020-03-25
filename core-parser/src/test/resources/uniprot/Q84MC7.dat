@@ -2,7 +2,7 @@ ID   PYL9_ARATH              Reviewed;         187 AA.
 AC   Q84MC7; Q8LA91; Q9LNI7;
 DT   02-MAR-2010, integrated into UniProtKB/Swiss-Prot.
 DT   01-JUN-2003, sequence version 1.
-DT   11-DEC-2019, entry version 91.
+DT   22-APR-2020, entry version 93.
 DE   RecName: Full=Abscisic acid receptor PYL9;
 DE   AltName: Full=ABI1-binding protein 4;
 DE   AltName: Full=PYR1-like protein 9;
@@ -22,11 +22,11 @@ RA   Theologis A., Ecker J.R., Palm C.J., Federspiel N.A., Kaul S., White O.,
 RA   Alonso J., Altafi H., Araujo R., Bowman C.L., Brooks S.Y., Buehler E.,
 RA   Chan A., Chao Q., Chen H., Cheuk R.F., Chin C.W., Chung M.K., Conn L.,
 RA   Conway A.B., Conway A.R., Creasy T.H., Dewar K., Dunn P., Etgu P.,
-RA   Feldblyum T.V., Feng J., Fong B., Fujii C.Y., Gill J.E., Goldsmith A.D.,
+RA   Feldblyum T.V., Feng J.-D., Fong B., Fujii C.Y., Gill J.E., Goldsmith A.D.,
 RA   Haas B., Hansen N.F., Hughes B., Huizar L., Hunter J.L., Jenkins J.,
 RA   Johnson-Hopson C., Khan S., Khaykin E., Kim C.J., Koo H.L.,
 RA   Kremenetskaia I., Kurtz D.B., Kwan A., Lam B., Langin-Hooper S., Lee A.,
-RA   Lee J.M., Lenz C.A., Li J.H., Li Y., Lin X., Liu S.X., Liu Z.A.,
+RA   Lee J.M., Lenz C.A., Li J.H., Li Y.-P., Lin X., Liu S.X., Liu Z.A.,
 RA   Luros J.S., Maiti R., Marziali A., Militscher J., Miranda M., Nguyen M.,
 RA   Nierman W.C., Osborne B.I., Pai G., Peterson J., Pham P.K., Rizzo M.,
 RA   Rooney T., Rowley D., Sakano H., Salzberg S.L., Schwartz J.R., Shinn P.,
@@ -169,8 +169,8 @@ CC       ECO:0000269|PubMed:19874541, ECO:0000269|PubMed:21658606,
 CC       ECO:0000269|PubMed:23844015, ECO:0000269|PubMed:24563205,
 CC       ECO:0000269|PubMed:24645846, ECO:0000269|PubMed:26943172}.
 CC   -!- INTERACTION:
-CC       P49597:ABI1; NbExp=5; IntAct=EBI-2349513, EBI-782526;
-CC       O04719:ABI2; NbExp=3; IntAct=EBI-2349513, EBI-537680;
+CC       Q84MC7; P49597: ABI1; NbExp=5; IntAct=EBI-2349513, EBI-782526;
+CC       Q84MC7; O04719: ABI2; NbExp=3; IntAct=EBI-2349513, EBI-537680;
 CC   -!- SUBCELLULAR LOCATION: Cytoplasm {ECO:0000250|UniProtKB:Q9FLB1}. Nucleus
 CC       {ECO:0000250|UniProtKB:O49686}. Cell membrane
 CC       {ECO:0000250|UniProtKB:O49686}. Note=Localizes at the plasma membrane
@@ -202,7 +202,7 @@ DR   PDB; 3W9R; X-ray; 1.90 A; A=1-187.
 DR   PDBsum; 3OQU; -.
 DR   PDBsum; 3W9R; -.
 DR   SMR; Q84MC7; -.
-DR   BioGrid; 23691; 9.
+DR   BioGRID; 23691; 9.
 DR   DIP; DIP-53480N; -.
 DR   IntAct; Q84MC7; 3.
 DR   STRING; 3702.AT1G01360.1; -.
@@ -215,7 +215,7 @@ DR   Araport; AT1G01360; -.
 DR   TAIR; locus:2035227; AT1G01360.
 DR   eggNOG; ENOG410IIK9; Eukaryota.
 DR   eggNOG; ENOG4111HU5; LUCA.
-DR   HOGENOM; HOG000238422; -.
+DR   HOGENOM; CLU_077517_0_0_1; -.
 DR   InParanoid; Q84MC7; -.
 DR   KO; K14496; -.
 DR   OMA; HSCREDQ; -.

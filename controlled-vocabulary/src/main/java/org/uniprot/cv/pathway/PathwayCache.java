@@ -5,40 +5,22 @@ import java.util.List;
 import java.util.Map;
 
 import org.uniprot.core.cv.pathway.PathwayEntry;
+import org.uniprot.cv.common.AbstractFileReader;
+import org.uniprot.cv.common.BaseCache;
 
-public enum PathwayCache {
+public enum PathwayCache implements BaseCache<PathwayEntry> {
     INSTANCE;
-    public static final String FTP_LOCATION =
-            "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/docs/pathlist.txt";
+
     Map<String, List<PathwayEntry>> locationPathwayMap = new HashMap<>();
+    private AbstractFileReader<PathwayEntry> reader;
 
-    public List<PathwayEntry> get(String file) {
-        String filename = file;
-        if ((filename == null) || filename.isEmpty()) {
-            filename = FTP_LOCATION;
-        }
-
-        List<PathwayEntry> result = locationPathwayMap.get(filename);
-        if (result != null) return result;
-
-        result = buildCache(filename);
-        if (result.isEmpty() && !FTP_LOCATION.equals(filename)) {
-            result = locationPathwayMap.get(FTP_LOCATION);
-            if (result == null) {
-                result = buildCache(FTP_LOCATION);
-                locationPathwayMap.put(FTP_LOCATION, result);
-                return result;
-            } else {
-                return result;
-            }
-        } else {
-            locationPathwayMap.put(filename, result);
-            return result;
-        }
+    @Override
+    public Map<String, List<PathwayEntry>> getCacheMap() {
+        return locationPathwayMap;
     }
 
-    private List<PathwayEntry> buildCache(String filename) {
-        PathwayFileReader reader = new PathwayFileReader();
-        return reader.parse(filename);
+    @Override
+    public AbstractFileReader<PathwayEntry> getReader() {
+        return this.reader != null ? this.reader : (this.reader = new PathwayFileReader());
     }
 }

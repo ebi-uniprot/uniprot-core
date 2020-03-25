@@ -11,13 +11,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 
-class SubcellularLocationServiceImplTest {
-    private SubcellularLocationServiceImpl service;
+class SubcellularLocationRepoImplTest {
+    private SubcellularLocationRepoImpl service;
 
     @BeforeEach
     void setUp() {
         String file = "src/test/resources/subcell.txt";
-        this.service = new SubcellularLocationServiceImpl(file);
+        this.service = new SubcellularLocationRepoImpl(file);
     }
 
     @Test

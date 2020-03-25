@@ -3,6 +3,7 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprotkb.comment.KineticParameters;
 import org.uniprot.core.uniprotkb.comment.MaximumVelocity;
@@ -74,5 +75,36 @@ public class KineticParametersImpl implements KineticParameters {
     @Override
     public int hashCode() {
         return Objects.hash(maximumVelocities, michaelisConstants, note);
+    }
+    @Override
+    public String toString() {
+    	StringBuilder sb = new StringBuilder();
+    	sb.append(
+    	michaelisConstants.stream()
+    	.map(val -> val.toString())
+    	.collect(Collectors.joining("\n")));
+    	if(hasMaximumVelocities()) {
+    		if(hasMichaelisConstants()) {
+    			sb.append("\n");
+    		}
+    	sb.append(
+    			maximumVelocities.stream()
+    	    	.map(val -> val.toString())
+    	    	.collect(Collectors.joining("\n")));
+    	}
+    	 if(hasNote()) {
+    		 if(hasMaximumVelocities()) {
+    			 sb.append("\n");
+    		 }
+    		 
+         	sb.append("note=");
+         	sb.append(
+         	note.getTexts().stream().map(val ->val.getValue())
+         	.collect(Collectors.joining(". ")))
+         	.append(";");
+         }
+    	
+    	return sb.toString();
+    		
     }
 }

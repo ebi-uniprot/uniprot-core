@@ -50,14 +50,6 @@ class CommentTransformerTest {
     }
 
     @Test
-    void testInteraction() {
-        String tString =
-                "INTERACTION:\nP14222:PRF1; NbExp=3; IntAct=EBI-2505785,"
-                        + " EBI-724466;\nP10124:SRGN; NbExp=2; IntAct=EBI-2505785, EBI-744915;";
-        testComment(tString, CommentType.INTERACTION);
-    }
-
-    @Test
     void testSubcellularLocation() {
         String tString =
                 "SUBCELLULAR LOCATION: Cytoplasmic granule. Note=Cytoplasmic "

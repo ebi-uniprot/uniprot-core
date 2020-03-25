@@ -3,15 +3,11 @@ package org.uniprot.core.flatfile.parser.impl.cc;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
-import org.uniprot.core.uniprotkb.comment.InteractionType;
 
-/**
- * @author jieluo CC -!- INTERACTION: |CC G5EC23:hcf-1; NbExp=2; IntAct=EBI-318108, EBI-4480523; |CC
- *     Q11184:let-756; NbExp=3; IntAct=EBI-318108, EBI-3843983; |CC Q10666:pop-1; NbExp=2;
- *     IntAct=EBI-318108, EBI-317870; |CC Q21921:sir-2.1; NbExp=3; IntAct=EBI-318108, EBI-966082;
- */
+/** @author jieluo */
 public class CCInteractionCommentLineBuilder extends CCLineBuilderAbstr<InteractionComment> {
 
     @Override
@@ -27,28 +23,45 @@ public class CCInteractionCommentLineBuilder extends CCLineBuilderAbstr<Interact
         for (Interaction act : comment.getInteractions()) {
             StringBuilder sb = new StringBuilder();
             if (includeFlatFileMarkings) sb.append(this.linePrefix);
-            if (act.getType().equals(InteractionType.SELF)) {
-                sb.append("Self");
-            } else {
-                sb.append(act.getUniProtkbAccession().getValue());
-                sb.append(":");
-                sb.append(act.getGeneName());
-            }
-            if (act.getType().equals(InteractionType.XENO)) {
-                sb.append(" (xeno)");
-            }
-            sb.append("; NbExp=");
-            sb.append(act.getNumberOfExperiments());
-            sb.append("; IntAct");
-            sb.append("=");
-            sb.append(act.getFirstInteractor().getValue());
-            if (act.getSecondInteractor() != null) {
-                sb.append(", ");
-                sb.append(act.getSecondInteractor().getValue());
-            }
-            sb.append(";");
+            sb.append(buildLine(act));
             lines.add(sb.toString());
         }
         return lines;
+    }
+
+    public String buildLine(Interaction act) {
+        StringBuilder sb = new StringBuilder();
+        Interactant interactor1 = act.getInteractantOne();
+        Interactant interactor2 = act.getInteractantTwo();
+        if (interactor1.hasChainId()) sb.append(interactor1.getChainId());
+        else sb.append(interactor1.getUniProtKBAccession().getValue());
+
+        sb.append("; ");
+        if (interactor2.hasChainId()) {
+            sb.append(interactor2.getChainId());
+            sb.append(" [").append(interactor2.getUniProtKBAccession().getValue()).append("]");
+        } else {
+            sb.append(interactor2.getUniProtKBAccession().getValue());
+        }
+        if (interactor2.hasGeneName()) {
+            sb.append(": ");
+            sb.append(interactor2.getGeneName());
+        }
+        sb.append("; ");
+
+        if (act.isOrganismsDiffer()) {
+            sb.append("Xeno; ");
+        }
+        sb.append("NbExp=");
+        sb.append(act.getNumberOfExperiments());
+        sb.append("; IntAct");
+        sb.append("=");
+        sb.append(interactor1.getIntActId());
+        if (interactor2.hasIntActId()) {
+            sb.append(", ");
+            sb.append(interactor2.getIntActId());
+        }
+        sb.append(";");
+        return sb.toString();
     }
 }

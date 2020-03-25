@@ -3,7 +3,7 @@ AC   Q63HN8; C9JCP4; D6RI12; F8WKS1; Q658P6; Q69YK7; Q6MZR1; Q8IWF4; Q8IZX1;
 AC   Q8IZX2; Q8N406; Q8TEU0; Q9H6C9; Q9H6H9; Q9H6P3; Q9H8A9; Q9HCF4; Q9HCL8;
 DT   20-FEB-2007, integrated into UniProtKB/Swiss-Prot.
 DT   21-MAR-2012, sequence version 3.
-DT   10-APR-2019, entry version 145.
+DT   22-APR-2020, entry version 154.
 DE   RecName: Full=E3 ubiquitin-protein ligase RNF213 {ECO:0000305};
 DE            EC=2.3.2.27 {ECO:0000269|PubMed:21799892};
 DE            EC=3.6.4.- {ECO:0000269|PubMed:21799892};
@@ -193,7 +193,7 @@ RA   Mayya V., Lundgren D.H., Hwang S.I., Rezaul K., Wu L., Eng J.K.,
 RA   Rodionov V., Han D.K.;
 RT   "Quantitative phosphoproteomic analysis of T cell receptor signaling
 RT   reveals system-wide modulation of protein-protein interactions.";
-RL   Sci. Signal. 2:ra46-RA46(2009).
+RL   Sci. Signal. 2:RA46-RA46(2009).
 RN   [13]
 RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-217 AND SER-1258, AND
 RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
@@ -203,7 +203,7 @@ RA   Olsen J.V., Vermeulen M., Santamaria A., Kumar C., Miller M.L.,
 RA   Jensen L.J., Gnad F., Cox J., Jensen T.S., Nigg E.A., Brunak S., Mann M.;
 RT   "Quantitative phosphoproteomics reveals widespread full phosphorylation
 RT   site occupancy during mitosis.";
-RL   Sci. Signal. 3:ra3-RA3(2010).
+RL   Sci. Signal. 3:RA3-RA3(2010).
 RN   [14]
 RP   INTERACTION WITH M.TUBERCULOSIS RV3655C (MICROBIAL INFECTION), AND
 RP   INDUCTION (MICROBIAL INFECTION).
@@ -220,7 +220,7 @@ RA   Rigbolt K.T., Prokhorova T.A., Akimov V., Henningsen J., Johansen P.T.,
 RA   Kratchmarova I., Kassem M., Mann M., Olsen J.V., Blagoev B.;
 RT   "System-wide temporal characterization of the proteome and phosphoproteome
 RT   of human embryonic stem cell differentiation.";
-RL   Sci. Signal. 4:rs3-RS3(2011).
+RL   Sci. Signal. 4:RS3-RS3(2011).
 RN   [16]
 RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
 RX   PubMed=21269460; DOI=10.1186/1752-0509-5-17;
@@ -229,16 +229,6 @@ RA   Bennett K.L., Superti-Furga G., Colinge J.;
 RT   "Initial characterization of the human central proteome.";
 RL   BMC Syst. Biol. 5:17-17(2011).
 RN   [17]
-RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-208; SER-217 AND SER-1258,
-RP   AND IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
-RC   TISSUE=Liver;
-RX   PubMed=24275569; DOI=10.1016/j.jprot.2013.11.014;
-RA   Bian Y., Song C., Cheng K., Dong M., Wang F., Huang J., Sun D., Wang L.,
-RA   Ye M., Zou H.;
-RT   "An enzyme assisted RP-RPLC approach for in-depth analysis of human liver
-RT   phosphoproteome.";
-RL   J. Proteomics 96:253-262(2014).
-RN   [18]
 RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-217; SER-1258 AND SER-2273,
 RP   AND IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
 RC   TISSUE=Cervix carcinoma, and Erythroleukemia;
@@ -248,7 +238,24 @@ RA   Mohammed S.;
 RT   "Toward a comprehensive characterization of a human cancer cell
 RT   phosphoproteome.";
 RL   J. Proteome Res. 12:260-271(2013).
+RN   [18]
+RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-208; SER-217 AND SER-1258,
+RP   AND IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Liver;
+RX   PubMed=24275569; DOI=10.1016/j.jprot.2013.11.014;
+RA   Bian Y., Song C., Cheng K., Dong M., Wang F., Huang J., Sun D., Wang L.,
+RA   Ye M., Zou H.;
+RT   "An enzyme assisted RP-RPLC approach for in-depth analysis of human liver
+RT   phosphoproteome.";
+RL   J. Proteomics 96:253-262(2014).
 RN   [19]
+RP   INDUCTION.
+RX   PubMed=26070522; DOI=10.1016/j.jstrokecerebrovasdis.2015.01.041;
+RA   Zhao S., Gong Z., Zhang J., Xu X., Liu P., Guan W., Jing L., Peng T.,
+RA   Teng J., Jia Y.;
+RT   "Elevated serum microRNA Let-7c in Moyamoya disease.";
+RL   J. Stroke Cerebrovasc. Dis. 24:1709-1714(2015).
+RN   [20]
 RP   SUMOYLATION [LARGE SCALE ANALYSIS] AT LYS-1151, AND IDENTIFICATION BY MASS
 RP   SPECTROMETRY [LARGE SCALE ANALYSIS].
 RX   PubMed=25218447;
@@ -257,7 +264,15 @@ RA   Vertegaal A.C.;
 RT   "Uncovering global SUMOylation signaling networks in a site-specific
 RT   manner.";
 RL   Nat. Struct. Mol. Biol. 21:927-936(2014).
-RN   [20]
+RN   [21]
+RP   FUNCTION, AND INDUCTION.
+RX   PubMed=26278786; DOI=10.1038/srep13191;
+RA   Ohkubo K., Sakai Y., Inoue H., Akamine S., Ishizaki Y., Matsushita Y.,
+RA   Sanefuji M., Torisu H., Ihara K., Sardiello M., Hara T.;
+RT   "Moyamoya disease susceptibility gene RNF213 links inflammatory and
+RT   angiogenic signals in endothelial cells.";
+RL   Sci. Rep. 5:13191-13191(2015).
+RN   [22]
 RP   FUNCTION, SUBUNIT, AND MUTAGENESIS OF LYS-2426; GLU-2488; LYS-2775 AND
 RP   GLU-2845.
 RX   PubMed=24658080; DOI=10.1038/srep04442;
@@ -266,21 +281,6 @@ RA   Kinjo M., Fujiyoshi Y., Nagata K.;
 RT   "Moyamoya disease-associated protein mysterin/RNF213 is a novel AAA+
 RT   ATPase, which dynamically changes its oligomeric state.";
 RL   Sci. Rep. 4:4442-4442(2014).
-RN   [21]
-RP   INDUCTION.
-RX   PubMed=26070522; DOI=10.1016/j.jstrokecerebrovasdis.2015.01.041;
-RA   Zhao S., Gong Z., Zhang J., Xu X., Liu P., Guan W., Jing L., Peng T.,
-RA   Teng J., Jia Y.;
-RT   "Elevated serum microRNA Let-7c in Moyamoya disease.";
-RL   J. Stroke Cerebrovasc. Dis. 24:1709-1714(2015).
-RN   [22]
-RP   FUNCTION, AND INDUCTION.
-RX   PubMed=26278786; DOI=10.1038/srep13191;
-RA   Ohkubo K., Sakai Y., Inoue H., Akamine S., Ishizaki Y., Matsushita Y.,
-RA   Sanefuji M., Torisu H., Ihara K., Sardiello M., Hara T.;
-RT   "Moyamoya disease susceptibility gene RNF213 links inflammatory and
-RT   angiogenic signals in endothelial cells.";
-RL   Sci. Rep. 5:13191-13191(2015).
 RN   [23]
 RP   FUNCTION.
 RX   PubMed=26766444; DOI=10.1016/j.devcel.2015.12.015;
@@ -327,6 +327,14 @@ RT   "Identification of a novel RNF213 variant in a family with heterogeneous
 RT   intracerebral vasculopathy.";
 RL   Int. J. Stroke 9:E26-E27(2014).
 RN   [28]
+RP   VARIANT PHE-4118, AND INVOLVEMENT IN MYMY2.
+RX   PubMed=26198278; DOI=10.1002/ajmg.a.37230;
+RA   Harel T., Posey J.E., Graham B.H., Walkiewicz M., Yang Y., Lalani S.R.,
+RA   Belmont J.W.;
+RT   "Atypical presentation of moyamoya disease in an infant with a de novo
+RT   RNF213 variant.";
+RL   Am. J. Med. Genet. A 167A:2742-2747(2015).
+RN   [29]
 RP   VARIANTS MYMY2 ASN-4013 AND LYS-4810, AND VARIANTS ALA-529 DEL; GLN-3922;
 RP   TYR-3997; CYS-4019; VAL-4076; LYS-4115 DEL; GLU-4237; THR-4732 AND
 RP   ILE-5163.
@@ -338,15 +346,13 @@ RA   Grotta J.C., Nickerson D.A., Pannu H., Milewicz D.M.;
 RT   "RNF213 rare variants in an ethnically diverse population with Moyamoya
 RT   disease.";
 RL   Stroke 45:3200-3207(2014).
-RN   [29]
-RP   VARIANT PHE-4118, AND INVOLVEMENT IN MYMY2.
-RX   PubMed=26198278; DOI=10.1002/ajmg.a.37230;
-RA   Harel T., Posey J.E., Graham B.H., Walkiewicz M., Yang Y., Lalani S.R.,
-RA   Belmont J.W.;
-RT   "Atypical presentation of moyamoya disease in an infant with a de novo
-RT   RNF213 variant.";
-RL   Am. J. Med. Genet. A 167A:2742-2747(2015).
 RN   [30]
+RP   VARIANTS VAL-1622; MET-3933 AND CYS-4131, AND VARIANT MYMY2 LYS-4810.
+RX   PubMed=25956231; DOI=10.1016/j.jns.2015.04.019;
+RA   Lee M.J., Chen Y.F., Fan P.C., Wang K.C., Wang K., Wang J., Kuo M.F.;
+RT   "Mutation genotypes of RNF213 gene from moyamoya patients in Taiwan.";
+RL   J. Neurol. Sci. 353:161-165(2015).
+RN   [31]
 RP   CHARACTERIZATION OF VARIANT MYMY2 LYS-4810, FUNCTION, SUBUNIT, AND
 RP   MUTAGENESIS OF GLU-2488.
 RX   PubMed=26126547; DOI=10.1161/JAHA.115.002146;
@@ -356,13 +362,7 @@ RA   Koizumi A.;
 RT   "Biochemical and functional characterization of RNF213 (Mysterin) R4810K, a
 RT   susceptibility mutation of Moyamoya disease, in angiogenesis in vitro and
 RT   in vivo.";
-RL   J. Am. Heart. Assoc. 4:0-0(2015).
-RN   [31]
-RP   VARIANTS VAL-1622; MET-3933 AND CYS-4131, AND VARIANT MYMY2 LYS-4810.
-RX   PubMed=25956231; DOI=10.1016/j.jns.2015.04.019;
-RA   Lee M.J., Chen Y.F., Fan P.C., Wang K.C., Wang K., Wang J., Kuo M.F.;
-RT   "Mutation genotypes of RNF213 gene from moyamoya patients in Taiwan.";
-RL   J. Neurol. Sci. 353:161-165(2015).
+RL   J. Am. Heart Assoc. 4:0-0(2015).
 RN   [32]
 RP   VARIANTS CYS-4019; LYS-4042; ALA-4146 AND LEU-4677, CHARACTERIZATION OF
 RP   VARIANT MYMY2 ASN-4013, AND CHARACTERIZATION OF VARIANTS CYS-4019 AND
@@ -398,28 +398,24 @@ CC       Rv3655c, which impairs caspase-8 activation and suppresses macrophage
 CC       apoptosis by blocking the extrinsic pathway.
 CC       {ECO:0000269|PubMed:20454556}.
 CC   -!- INTERACTION:
-CC       Q08379:GOLGA2; NbExp=3; IntAct=EBI-10248548, EBI-618309;
-CC       Q6A162:KRT40; NbExp=3; IntAct=EBI-10248548, EBI-10171697;
-CC       Q04864:REL; NbExp=3; IntAct=EBI-10248548, EBI-307352;
-CC       P36406:TRIM23; NbExp=3; IntAct=EBI-10248548, EBI-740098;
-CC       P14373:TRIM27; NbExp=3; IntAct=EBI-10248548, EBI-719493;
-CC       Q15654:TRIP6; NbExp=3; IntAct=EBI-10248548, EBI-742327;
-CC       Q5T124:UBXN11; NbExp=3; IntAct=EBI-10248548, EBI-746004;
+CC       Q63HN8-6; Q08379: GOLGA2; NbExp=3; IntAct=EBI-10248548, EBI-618309;
+CC       Q63HN8-6; Q6A162: KRT40; NbExp=3; IntAct=EBI-10248548, EBI-10171697;
+CC       Q63HN8-6; Q04864: REL; NbExp=3; IntAct=EBI-10248548, EBI-307352;
+CC       Q63HN8-6; P36406: TRIM23; NbExp=3; IntAct=EBI-10248548, EBI-740098;
+CC       Q63HN8-6; P14373: TRIM27; NbExp=3; IntAct=EBI-10248548, EBI-719493;
+CC       Q63HN8-6; Q15654: TRIP6; NbExp=3; IntAct=EBI-10248548, EBI-742327;
+CC       Q63HN8-6; Q5T124: UBXN11; NbExp=3; IntAct=EBI-10248548, EBI-746004;
 CC   -!- SUBCELLULAR LOCATION: Cytoplasm, cytosol {ECO:0000269|PubMed:21799892}.
 CC   -!- ALTERNATIVE PRODUCTS:
 CC       Event=Alternative splicing; Named isoforms=4;
 CC       Name=1;
 CC         IsoId=Q63HN8-3; Sequence=Displayed;
-CC         Note=Major isoform detected in all tissues examined.;
 CC       Name=2;
 CC         IsoId=Q63HN8-4; Sequence=VSP_042417;
-CC         Note=Minor isoform with restricted expression. Gene prediction based
-CC         on partial EST data.;
 CC       Name=3;
 CC         IsoId=Q63HN8-5; Sequence=VSP_042418, VSP_042419;
 CC       Name=4;
 CC         IsoId=Q63HN8-6; Sequence=VSP_042416, VSP_042420;
-CC         Note=No experimental confirmation available.;
 CC   -!- TISSUE SPECIFICITY: Widely expressed (at protein level).
 CC       {ECO:0000269|PubMed:21799892}.
 CC   -!- INDUCTION: Down-regulated by let-7c miRNA, which binds to the 3'-UTR
@@ -449,16 +445,20 @@ CC       with variations affecting the gene represented in this entry.
 CC   -!- DISEASE: Note=A chromosomal aberration involving RNF213 is associated
 CC       with anaplastic large-cell lymphoma (ALCL). Translocation
 CC       t(2;17)(p23;q25) with ALK. {ECO:0000269|PubMed:12112524}.
+CC   -!- MISCELLANEOUS: [Isoform 1]: Major isoform detected in all tissues
+CC       examined.
+CC   -!- MISCELLANEOUS: [Isoform 2]: Minor isoform with restricted expression.
+CC       {ECO:0000305}.
 CC   -!- SIMILARITY: Belongs to the AAA ATPase family. {ECO:0000305}.
 CC   -!- SEQUENCE CAUTION:
-CC       Sequence=AAH32220.1; Type=Erroneous initiation; Note=Translation N-terminally extended.; Evidence={ECO:0000305};
+CC       Sequence=AAH32220.1; Type=Erroneous initiation; Note=Truncated N-terminus.; Evidence={ECO:0000305};
 CC       Sequence=BAB13444.1; Type=Miscellaneous discrepancy; Note=Probable cloning artifact.; Evidence={ECO:0000305};
-CC       Sequence=BAB14708.1; Type=Erroneous initiation; Note=Translation N-terminally extended.; Evidence={ECO:0000305};
-CC       Sequence=BAB15212.1; Type=Erroneous initiation; Note=Translation N-terminally extended.; Evidence={ECO:0000305};
-CC       Sequence=BAB15280.1; Type=Erroneous termination; Note=Translated as Gln.; Evidence={ECO:0000305};
-CC       Sequence=BAB15330.1; Type=Erroneous initiation; Note=Translation N-terminally extended.; Evidence={ECO:0000305};
+CC       Sequence=BAB14708.1; Type=Erroneous initiation; Note=Truncated N-terminus.; Evidence={ECO:0000305};
+CC       Sequence=BAB15212.1; Type=Erroneous initiation; Note=Truncated N-terminus.; Evidence={ECO:0000305};
+CC       Sequence=BAB15280.1; Type=Erroneous termination; Note=Truncated C-terminus.; Evidence={ECO:0000305};
+CC       Sequence=BAB15330.1; Type=Erroneous initiation; Note=Truncated N-terminus.; Evidence={ECO:0000305};
 CC       Sequence=CAH10615.1; Type=Frameshift; Evidence={ECO:0000305};
-CC       Sequence=CAH56189.1; Type=Erroneous initiation; Note=Translation N-terminally extended.; Evidence={ECO:0000305};
+CC       Sequence=CAH56189.1; Type=Erroneous initiation; Note=Truncated N-terminus.; Evidence={ECO:0000305};
 CC   -!- WEB RESOURCE: Name=Atlas of Genetics and Cytogenetics in Oncology and
 CC       Haematology;
 CC       URL="http://atlasgeneticsoncology.org/Genes/ALO17ID480.html";
@@ -490,22 +490,24 @@ DR   CCDS; CCDS58606.1; -. [Q63HN8-3]
 DR   RefSeq; NP_001243000.2; NM_001256071.2.
 DR   RefSeq; NP_066005.2; NM_020954.3. [Q63HN8-5]
 DR   SMR; Q63HN8; -.
-DR   BioGrid; 121705; 45.
-DR   IntAct; Q63HN8; 18.
+DR   BioGrid; 121705; 50.
+DR   IntAct; Q63HN8; 43.
 DR   MINT; Q63HN8; -.
 DR   STRING; 9606.ENSP00000464087; -.
 DR   iPTMnet; Q63HN8; -.
+DR   MetOSite; Q63HN8; -.
 DR   PhosphoSitePlus; Q63HN8; -.
 DR   SwissPalm; Q63HN8; -.
 DR   BioMuta; RNF213; -.
 DR   DMDM; 380865458; -.
 DR   EPD; Q63HN8; -.
 DR   jPOST; Q63HN8; -.
+DR   MassIVE; Q63HN8; -.
 DR   MaxQB; Q63HN8; -.
 DR   PaxDb; Q63HN8; -.
 DR   PeptideAtlas; Q63HN8; -.
 DR   PRIDE; Q63HN8; -.
-DR   ProteomicsDB; 65884; -.
+DR   ProteomicsDB; 65884; -. [Q63HN8-3]
 DR   ProteomicsDB; 65885; -. [Q63HN8-4]
 DR   ProteomicsDB; 65886; -. [Q63HN8-5]
 DR   ProteomicsDB; 65887; -. [Q63HN8-6]
@@ -516,36 +518,34 @@ DR   KEGG; hsa:57674; -.
 DR   UCSC; uc002jyf.5; human. [Q63HN8-3]
 DR   CTD; 57674; -.
 DR   DisGeNET; 57674; -.
-DR   EuPathDB; HostDB:ENSG00000173821.19; -.
 DR   GeneCards; RNF213; -.
 DR   HGNC; HGNC:14539; RNF213.
-DR   HPA; HPA003347; -.
-DR   HPA; HPA026790; -.
+DR   HPA; ENSG00000173821; Low tissue specificity.
 DR   MalaCards; RNF213; -.
 DR   MIM; 607151; phenotype.
 DR   MIM; 613768; gene.
 DR   neXtProt; NX_Q63HN8; -.
 DR   OpenTargets; ENSG00000173821; -.
 DR   Orphanet; 2573; Moyamoya disease.
-DR   PharmGKB; PA134898812; -.
 DR   PharmGKB; PA162401681; -.
 DR   eggNOG; ENOG410IE7S; Eukaryota.
 DR   eggNOG; ENOG410Z1EV; LUCA.
 DR   GeneTree; ENSGT00630000089884; -.
-DR   HOGENOM; HOG000154163; -.
+DR   HOGENOM; CLU_011233_0_0_1; -.
 DR   InParanoid; Q63HN8; -.
 DR   KO; K22754; -.
-DR   OrthoDB; 840at2759; -.
 DR   TreeFam; TF343131; -.
+DR   Reactome; R-HSA-9635465; Suppression of apoptosis.
 DR   Reactome; R-HSA-983168; Antigen processing: Ubiquitination & Proteasome degradation.
 DR   UniPathway; UPA00143; -.
 DR   ChiTaRS; RNF213; human.
 DR   GeneWiki; RNF213; -.
 DR   GenomeRNAi; 57674; -.
+DR   Pharos; Q63HN8; Tbio.
 DR   PRO; PR:Q63HN8; -.
 DR   Proteomes; UP000005640; Chromosome 17.
-DR   Bgee; ENSG00000173821; Expressed in 193 organ(s), highest expression level in adult mammalian kidney.
-DR   ExpressionAtlas; Q63HN8; baseline and differential.
+DR   RNAct; Q63HN8; protein.
+DR   Bgee; ENSG00000173821; Expressed in adult mammalian kidney and 192 other tissues.
 DR   Genevisible; Q63HN8; HS.
 DR   GO; GO:0005737; C:cytoplasm; IDA:UniProtKB.
 DR   GO; GO:0005829; C:cytosol; IDA:HPA.
@@ -569,7 +569,7 @@ DR   InterPro; IPR031248; RNF213.
 DR   InterPro; IPR018957; Znf_C3HC4_RING-type.
 DR   InterPro; IPR001841; Znf_RING.
 DR   InterPro; IPR013083; Znf_RING/FYVE/PHD.
-DR   PANTHER; PTHR22605; PTHR22605; 1.
+DR   PANTHER; PTHR22605; PTHR22605; 2.
 DR   Pfam; PF00097; zf-C3HC4; 1.
 DR   SMART; SM00382; AAA; 2.
 DR   SMART; SM00184; RING; 1.
@@ -577,9 +577,9 @@ DR   SUPFAM; SSF52540; SSF52540; 2.
 DR   PROSITE; PS50089; ZF_RING_2; 1.
 PE   1: Evidence at protein level;
 KW   Alternative splicing; Angiogenesis; Chromosomal rearrangement; Coiled coil;
-KW   Complete proteome; Cytoplasm; Disease mutation; Hydrolase; Isopeptide bond;
-KW   Metal-binding; Phosphoprotein; Proto-oncogene; Reference proteome;
-KW   Transferase; Ubl conjugation; Ubl conjugation pathway; Zinc; Zinc-finger.
+KW   Cytoplasm; Disease mutation; Hydrolase; Isopeptide bond; Metal-binding;
+KW   Phosphoprotein; Proto-oncogene; Reference proteome; Transferase;
+KW   Ubl conjugation; Ubl conjugation pathway; Zinc; Zinc-finger.
 FT   CHAIN           1..5207
 FT                   /note="E3 ubiquitin-protein ligase RNF213"
 FT                   /id="PRO_0000415917"

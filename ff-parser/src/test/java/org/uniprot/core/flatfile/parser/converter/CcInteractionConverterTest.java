@@ -1,6 +1,8 @@
 package org.uniprot.core.flatfile.parser.converter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -13,8 +15,8 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.Interaction;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.InteractionObject;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
-import org.uniprot.core.uniprotkb.comment.InteractionType;
 
 class CcInteractionConverterTest {
     private final CcLineConverter converter = new CcLineConverter(null, null);
@@ -23,10 +25,10 @@ class CcInteractionConverterTest {
     void testInteraction() {
         /*
         CC   -!- INTERACTION:
-              CC       Q9W1K5-1:CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;
-              CC       Self; NbExp=1; IntAct=EBI-123485, EBI-123485;
-              CC       Q8C1S0:2410018M14Rik (xeno); NbExp=1; IntAct=EBI-394562, EBI-398761;
-             CC       localization (By similarity).
+              CC       PRO_0000033156; PRO_0000000092 [P05067]: APP; NbExp=4; IntAct=EBI-20824092, EBI-821758;
+              CC       D3ZAR1; PRO_0000017322 [P98158]: Lrp2; NbExp=3; IntAct=EBI-9250714, EBI-9251342;
+              CC       P12345; P84198-1: VIM; Xeno; NbExp=4; IntAct=EBI-356498, EBI-457639;
+
         */
         CcLineObject ccLineO = new CcLineObject();
         CC cc1 = new CC();
@@ -35,25 +37,31 @@ class CcInteractionConverterTest {
         Interaction ia = new Interaction();
         cc1.setObject(ia);
         InteractionObject iao1 = new InteractionObject();
-        iao1.setSpAc("Q9W1K5-1");
-        iao1.setGene("CG11299");
-        iao1.setNbexp(1);
-        iao1.setFirstId("EBI-133844");
-        iao1.setSecondId("EBI-212772");
+        iao1.setFirstInteractant("PRO_0000033156");
+        iao1.setSecondInteractant("PRO_0000000092");
+        iao1.setSecondInteractantParent("P05067");
+        iao1.setGene("APP");
+        iao1.setNbexp(4);
+        iao1.setFirstId("EBI-20824092");
+        iao1.setSecondId("EBI-821758");
 
         InteractionObject iao2 = new InteractionObject();
-        iao2.setSelf(true);
-
-        iao2.setNbexp(1);
-        iao2.setFirstId("EBI-123485");
-        iao2.setSecondId("EBI-123484");
+        iao2.setFirstInteractant("D3ZAR1");
+        iao2.setSecondInteractant("PRO_0000017322");
+        iao2.setSecondInteractantParent("P98158");
+        iao2.setGene("Lrp2");
+        iao2.setNbexp(3);
+        iao2.setFirstId("EBI-9250714");
+        iao2.setSecondId("EBI-9251342");
 
         InteractionObject iao3 = new InteractionObject();
-        iao3.setSpAc("Q8C1S0");
-        iao3.setGene("CG112992");
-        iao3.setNbexp(1);
-        iao3.setFirstId("EBI-133844");
-        iao3.setSecondId("EBI-212775");
+        iao3.setFirstInteractant("P12345");
+        iao3.setSecondInteractant("P84198-1");
+        iao3.setXeno(true);
+        iao3.setGene("VIM");
+        iao3.setNbexp(4);
+        iao3.setFirstId("EBI-356498");
+        iao3.setSecondId("EBI-457639");
         iao3.setXeno(true);
 
         ia.getInteractions().add(iao1);
@@ -72,22 +80,37 @@ class CcInteractionConverterTest {
         org.uniprot.core.uniprotkb.comment.Interaction inter1 = interactions.get(0);
         org.uniprot.core.uniprotkb.comment.Interaction inter2 = interactions.get(1);
         org.uniprot.core.uniprotkb.comment.Interaction inter3 = interactions.get(2);
-        assertEquals("EBI-133844", inter1.getFirstInteractor().getValue());
-        assertEquals("EBI-212772", inter1.getSecondInteractor().getValue());
-        assertEquals("Q9W1K5-1", inter1.getUniProtkbAccession().getValue());
-        assertEquals("CG11299", inter1.getGeneName());
-        assertEquals(1, inter1.getNumberOfExperiments());
-        assertEquals(InteractionType.BINARY, inter1.getType());
-        assertEquals("EBI-123485", inter2.getFirstInteractor().getValue());
-        assertEquals("EBI-123484", inter2.getSecondInteractor().getValue());
-        assertEquals(InteractionType.SELF, inter2.getType());
-        assertEquals(1, inter1.getNumberOfExperiments());
+        Interactant interactor11 = inter1.getInteractantOne();
+        Interactant interactor12 = inter1.getInteractantTwo();
+        Interactant interactor21 = inter2.getInteractantOne();
+        Interactant interactor22 = inter2.getInteractantTwo();
+        Interactant interactor31 = inter3.getInteractantOne();
+        Interactant interactor32 = inter3.getInteractantTwo();
+        assertEquals(4, inter1.getNumberOfExperiments());
+        assertFalse(inter1.isOrganismsDiffer());
+        verifyInteractor(interactor11, "PRO_0000033156", null, null, "EBI-20824092");
+        verifyInteractor(interactor12, "PRO_0000000092", "P05067", "APP", "EBI-821758");
 
-        assertEquals("EBI-133844", inter3.getFirstInteractor().getValue());
-        assertEquals("EBI-212775", inter3.getSecondInteractor().getValue());
-        assertEquals("Q8C1S0", inter3.getUniProtkbAccession().getValue());
-        assertEquals("CG112992", inter3.getGeneName());
-        assertEquals(1, inter3.getNumberOfExperiments());
-        assertEquals(InteractionType.XENO, inter3.getType());
+        assertEquals(3, inter2.getNumberOfExperiments());
+        assertFalse(inter2.isOrganismsDiffer());
+        verifyInteractor(interactor21, null, "D3ZAR1", null, "EBI-9250714");
+        verifyInteractor(interactor22, "PRO_0000017322", "P98158", "Lrp2", "EBI-9251342");
+
+        assertEquals(4, inter3.getNumberOfExperiments());
+        assertTrue(inter3.isOrganismsDiffer());
+        verifyInteractor(interactor31, null, "P12345", null, "EBI-356498");
+        verifyInteractor(interactor32, null, "P84198-1", "VIM", "EBI-457639");
+    }
+
+    private void verifyInteractor(
+            Interactant interactor, String chainId, String acc, String gene, String intActId) {
+        assertEquals(chainId, interactor.getChainId());
+        if (acc == null) {
+            assertNull(interactor.getUniProtKBAccession());
+        } else {
+            assertEquals(acc, interactor.getUniProtKBAccession().getValue());
+        }
+        assertEquals(gene, interactor.getGeneName());
+        assertEquals(intActId, interactor.getIntActId());
     }
 }

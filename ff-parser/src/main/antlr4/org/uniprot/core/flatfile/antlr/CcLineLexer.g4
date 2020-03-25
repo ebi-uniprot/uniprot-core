@@ -178,11 +178,9 @@ CC_BP_TEMPERATURE_DEPENDENCE: 'Temperature dependence:' -> pushMode( CC_NOTE_LEV
 CC_BP_NM : 'nm';
 CC_BP_DIGIT: '~'?[1-9][0-9]*;
 
-
-
 /*
 CC   -!- INTERACTION:
-CC       {{SP_Ac:identifier[ (xeno)]}|Self}; NbExp=n; IntAct=IntAct_Protein_Ac, IntAct_Protein_Ac;
+CC       (<Accession>|<IsoId>|<ProductId>); (<Accession>|<IsoId>|<ProductId> \[<Accession>\])(: <Gene>)? NbExp=n; IntAct=IntAct_Protein_Ac, IntAct_Protein_Ac;
 */
 mode CC_INTERACTION;
 
@@ -191,19 +189,22 @@ CC_IR_TOPIC_START  : '-!- '                   -> popMode, type(CC_TOPIC_START) ;
 
 CC_IR_HEADER_1 : 'CC       '                  ->  type (CC_HEADER_1) ;
 CC_IR_SELF: 'Self';
+CC_IR_XENO: 'Xeno';
 CC_IR_NBEXP: 'NbExp=';
 CC_IR_INTACT: 'IntAct=';
 CC_IR_SPACE : ' '                            -> type (SPACE);
 CC_IR_NEW_LINE: '\n'                             -> type (NEW_LINE);
 CC_IR_INTEGER: [1-9][0-9]*                             -> type (INTEGER);
 CC_IR_SEMICOLON : ';'                               -> type (SEMICOLON);
-CC_IR_COLON : ':'                               -> type (COLON), pushMode(CC_INTERACTION_GENE_NAME);
+CC_IR_LEFT_SQ : '['                               -> type (LEFT_SQ);
+CC_IR_RIGHT_SQ : ']'                               -> type (RIGHT_SQ);
+CC_IR_COLON : ': '                               -> type (COLON_SPACE), pushMode(CC_INTERACTION_GENE_NAME);
 CC_IR_COMA : ','                               -> type (COMA);
-CC_IR_AC: [A-Za-z0-9][-\.A-Za-z0-9]*;
+CC_IR_AC: [A-Za-z0-9][-\.A-Za-z0-9_]*;
 
 
 mode CC_INTERACTION_GENE_NAME;
-CC_IR_XENO: '(xeno)';
+
 CC_IR_GENENAME:  CC_IR_GEN_LL ((CC_IR_GEN_LL|CC_IR_GEN_COMA)* CC_IR_GEN_LL)?;
 fragment CC_IR_GEN_LL :  ~[ ;] ;
 fragment CC_IR_GEN_COMA :  ';';
@@ -211,6 +212,7 @@ fragment CC_IR_GEN_COMA :  ';';
 CC_IR_G_SPACE: ' '                    -> type(SPACE);
 CC_IR_G_DASH: '-'                     -> type (DASH);
 CC_IR_G_SEMICOLON: ';'                -> popMode, type(SEMICOLON);
+
 
 
 mode CC_SUBCELLULAR_LOCATION;

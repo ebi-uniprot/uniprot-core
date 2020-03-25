@@ -2,7 +2,6 @@ package org.uniprot.core.util;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.ByteArrayInputStream;
 import java.util.*;
 
 import org.junit.jupiter.api.Nested;
@@ -428,23 +427,6 @@ class UtilsTest {
                         () -> assertTrue(Utils.notNull(m)),
                         () -> assertTrue(Utils.notNull(i)),
                         () -> assertTrue(Utils.notNull(p)));
-            }
-        }
-
-        @Nested
-        class loadPropertyInput {
-            @Test
-            void canReadEveryThingFromInputStream() {
-                String file = "abc";
-                assertEquals(
-                        "abc", Utils.loadPropertyInput(new ByteArrayInputStream(file.getBytes())));
-            }
-
-            @Test
-            void nothingToRead_returnEmpty() {
-                String file = "";
-                assertEquals(
-                        "", Utils.loadPropertyInput(new ByteArrayInputStream(file.getBytes())));
             }
         }
     }

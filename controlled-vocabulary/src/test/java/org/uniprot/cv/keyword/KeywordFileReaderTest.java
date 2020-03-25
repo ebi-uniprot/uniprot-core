@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
@@ -19,10 +18,9 @@ class KeywordFileReaderTest {
 
     private final KeywordFileReader parser = new KeywordFileReader();
 
-    @Disabled
     @Test
     void testParseDefaultFile() {
-        List<KeywordEntry> keywords = parser.parse(KeywordCache.FTP_LOCATION);
+        List<KeywordEntry> keywords = parser.parse("keyword/keywlist.txt");
         assertFalse(keywords.isEmpty());
     }
 
@@ -61,17 +59,17 @@ class KeywordFileReaderTest {
         final List<String> input =
                 Arrays.asList(
                         "_______________________________",
-                        "ID   2Fe-2S.",
-                        "AC   KW-0001",
+                        "ID   test-keyword.",
+                        "AC   KW-0000",
                         "DE   Protein which contains at least one 2Fe-2S iron-sulfur cluster: 2 iron",
                         "DE   atoms complexed to 2 inorganic sulfides and 4 sulfur atoms of",
                         "DE   cysteines from the protein.",
                         "SY   [2Fe-2S] cluster; [Fe2S2] cluster; 2 iron, 2 sulfur cluster binding;",
                         "SY   Di-mu-sulfido-diiron; Fe2/S2 (inorganic) cluster; Fe2S2.",
                         "GO   GO:0051537; 2 iron, 2 sulfur cluster binding",
-                        "HI   Ligand: Iron; Iron-sulfur; 2Fe-2S.",
-                        "HI   Ligand: Metal-binding; Iron-sulfur; 2Fe-2S.",
-                        "HI   Ligand: Metal-binding; 2Fe-2S.",
+                        "HI   Ligand: Iron; Iron-sulfur; test-keyword.",
+                        "HI   Ligand: Metal-binding; Iron-sulfur; test-keyword.",
+                        "HI   Ligand: Metal-binding; test-keyword.",
                         "CA   Ligand.",
                         "//");
 
@@ -105,27 +103,27 @@ class KeywordFileReaderTest {
         final List<String> input =
                 Arrays.asList(
                         "_______________________________",
-                        "ID   2Fe-2S.",
-                        "AC   KW-0001",
-                        "HI   Ligand: Iron; Iron-sulfur; 2Fe-2S.",
-                        "HI   Ligand: Metal-binding; Iron-sulfur; 2Fe-2S.",
-                        "HI   Ligand: Metal-binding; 2Fe-2S.",
+                        "ID   name.",
+                        "AC   accession",
+                        "HI   Ligand: Iron; Iron-sulfur; name.",
+                        "HI   Ligand: chd2; chd1; name.",
+                        "HI   Ligand: chd2; name.",
                         "CA   Ligand.",
                         "//",
                         "IC   Ligand.",
                         "AC   KW-9993",
                         "//",
-                        "ID   Iron-sulfur.",
+                        "ID   chd1.",
                         "AC   KW-0411",
                         "//",
-                        "ID   Metal-binding.",
+                        "ID   chd2.",
                         "AC   KW-0479",
                         "//");
         final List<KeywordEntry> retList = parser.parseLines(input);
         WrongKeywordEntry wrongKeywordEntry = new WrongKeywordEntry();
         final KeywordEntry kw =
                 retList.stream()
-                        .filter(k -> k.getKeyword().getName().equals("2Fe-2S"))
+                        .filter(k -> k.getKeyword().getName().equals("name"))
                         .findFirst()
                         .orElse(wrongKeywordEntry);
         assertNotEquals(kw, wrongKeywordEntry);

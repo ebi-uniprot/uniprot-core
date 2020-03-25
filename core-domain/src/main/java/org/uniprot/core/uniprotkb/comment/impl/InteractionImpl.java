@@ -2,133 +2,63 @@ package org.uniprot.core.uniprotkb.comment.impl;
 
 import java.util.Objects;
 
-import org.uniprot.core.impl.ValueImpl;
-import org.uniprot.core.uniprotkb.UniProtKBAccession;
+import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.uniprotkb.comment.Interaction;
-import org.uniprot.core.uniprotkb.comment.InteractionType;
-import org.uniprot.core.uniprotkb.comment.Interactor;
-import org.uniprot.core.util.Utils;
 
 public class InteractionImpl implements Interaction {
     private static final long serialVersionUID = -1102213995267310387L;
-    private InteractionType type;
-    private UniProtKBAccession uniProtkbAccession;
-    private String geneName;
+    private Interactant interactantOne;
+    private Interactant interactantTwo;
     private int numberOfExperiments;
-    private Interactor firstInteractor;
-    private Interactor secondInteractor;
+    private boolean organismDiffer;
 
-    // no arg constructor for JSON deserialization
     InteractionImpl() {}
 
     InteractionImpl(
-            InteractionType type,
-            UniProtKBAccession uniProtkbAccession,
-            String geneName,
+            Interactant interactantOne,
+            Interactant interactantTwo,
             int numberOfExperiments,
-            Interactor firstInteractor,
-            Interactor secondInteractor) {
-        this.type = type;
-        this.uniProtkbAccession = uniProtkbAccession;
-        this.geneName = geneName;
+            boolean organismDiffer) {
+        super();
+        this.interactantOne = interactantOne;
+        this.interactantTwo = interactantTwo;
         this.numberOfExperiments = numberOfExperiments;
-        this.firstInteractor = firstInteractor;
-        this.secondInteractor = secondInteractor;
+        this.organismDiffer = organismDiffer;
     }
 
     @Override
-    public InteractionType getType() {
-        return type;
+    public Interactant getInteractantOne() {
+        return this.interactantOne;
     }
 
     @Override
-    public UniProtKBAccession getUniProtkbAccession() {
-        return uniProtkbAccession;
-    }
-
-    @Override
-    public String getGeneName() {
-        return geneName;
+    public Interactant getInteractantTwo() {
+        return interactantTwo;
     }
 
     @Override
     public int getNumberOfExperiments() {
-        return numberOfExperiments;
+        return this.numberOfExperiments;
     }
 
     @Override
-    public Interactor getFirstInteractor() {
-        return firstInteractor;
+    public boolean isOrganismsDiffer() {
+        return this.organismDiffer;
     }
 
     @Override
-    public Interactor getSecondInteractor() {
-        return secondInteractor;
-    }
-
-    @Override
-    public boolean hasUniProtAccession() {
-        return this.uniProtkbAccession != null
-                && Utils.notNullNotEmpty(this.uniProtkbAccession.getValue());
-    }
-
-    @Override
-    public boolean hasGeneName() {
-        return Utils.notNullNotEmpty(this.geneName);
-    }
-
-    @Override
-    public boolean hasNumberOfExperiments() {
-        return this.numberOfExperiments > 0;
-    }
-
-    @Override
-    public boolean hasFirstInteractor() {
-        return this.firstInteractor != null
-                && Utils.notNullNotEmpty(this.firstInteractor.getValue());
-    }
-
-    @Override
-    public boolean hasSecondInteractor() {
-        return this.secondInteractor != null
-                && Utils.notNullNotEmpty(this.secondInteractor.getValue());
+    public int hashCode() {
+        return Objects.hash(interactantOne, interactantTwo, numberOfExperiments, organismDiffer);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        InteractionImpl that = (InteractionImpl) o;
-        return numberOfExperiments == that.numberOfExperiments
-                && type == that.type
-                && Objects.equals(uniProtkbAccession, that.uniProtkbAccession)
-                && Objects.equals(geneName, that.geneName)
-                && Objects.equals(firstInteractor, that.firstInteractor)
-                && Objects.equals(secondInteractor, that.secondInteractor);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(
-                type,
-                uniProtkbAccession,
-                geneName,
-                numberOfExperiments,
-                firstInteractor,
-                secondInteractor);
-    }
-
-    public static class InteractorImpl extends ValueImpl implements Interactor {
-        /** */
-        private static final long serialVersionUID = 1L;
-
-        // no arg constructor for JSON deserialization
-        InteractorImpl() {
-            super(null);
-        }
-
-        public InteractorImpl(String value) {
-            super(value);
-        }
+        InteractionImpl interaction = (InteractionImpl) o;
+        return Objects.equals(interactantOne, interaction.interactantOne)
+                && Objects.equals(interactantTwo, interaction.interactantTwo)
+                && Objects.equals(numberOfExperiments, interaction.numberOfExperiments)
+                && Objects.equals(organismDiffer, interaction.organismDiffer);
     }
 }

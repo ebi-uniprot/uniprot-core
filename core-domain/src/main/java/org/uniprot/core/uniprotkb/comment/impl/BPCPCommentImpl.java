@@ -112,69 +112,30 @@ public class BPCPCommentImpl extends CommentHasMoleculeImpl implements BPCPComme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        // if (commentsCounter>0)
-        sb.append("\n");
-        sb.append("CC   -!- ");
         sb.append(getCommentType().toDisplayName());
         sb.append(":");
-        if (getAbsorption() != null) {
-            sb.append(getAbsorption());
+        
+        if (hasAbsorption()) {
+        	sb.append("\nAbsorption:\n")
+             .append(getAbsorption().toString());
         }
 
-        if (getKineticParameters() != null) {
-            sb.append("\nCC       Kinetic parameters:");
-
-            if (null != getKineticParameters().getMichaelisConstants()) {
-                List<MichaelisConstant> michaelisConstants =
-                        getKineticParameters().getMichaelisConstants();
-                System.err.println("michaelisConstants.size() = " + michaelisConstants.size());
-                for (MichaelisConstant michaelisConstant : michaelisConstants) {
-                    StringBuilder temp = sb;
-                    temp.append("\nCC         KM=");
-                    temp.append(michaelisConstant.getConstant());
-                    temp.append(" ");
-                    temp.append(michaelisConstant.getUnit().toDisplayNameString());
-                    temp.append(" for ");
-                    temp.append(michaelisConstant.getSubstrate());
-                    temp.append(";");
-                    sb.append("\n");
-                }
-            }
-
-            if (null != getKineticParameters().getMaximumVelocities()
-                    && !getKineticParameters().getMaximumVelocities().isEmpty()) {
-                List<MaximumVelocity> maximumVelocities =
-                        getKineticParameters().getMaximumVelocities();
-                for (MaximumVelocity maximumVelocity : maximumVelocities) {
-                    sb.append(
-                            "CC         Vmax="
-                                    + maximumVelocity.getVelocity()
-                                    + " "
-                                    + maximumVelocity.getUnit()
-                                    + " "
-                                    + maximumVelocity.getEnzyme()
-                                    + ";");
-                    sb.append("\n");
-                }
-            }
+        if (this.hasKineticParameters()) {
+        	sb.append("\nKinetic parameters:\n")
+            .append(getKineticParameters().toString());
         }
-        if (getPhDependence() != null) {
-            sb.append("\nCC       pH dependence:\nCC         ");
-            sb.append(getPhDependence().toString());
-            sb.append(";");
+        if (this.hasPhDependence()) {
+        	sb.append("\npH dependence:\n")
+            .append(getPhDependence().toString());
         }
-        if (getRedoxPotential() != null) {
-            sb.append("\nCC       Redox potential:\nCC         ");
-            sb.append(getRedoxPotential().toString());
-            sb.append(";");
+        if (this.hasRedoxPotential()) {
+        	sb.append("\nRedox potential:\n")
+            .append(getRedoxPotential().toString());
         }
-        if (getTemperatureDependence() != null) {
-            sb.append("\nCC       Temperature dependence:\n");
-            sb.append("CC         " + getTemperatureDependence().toString() + ";");
+        if (this.hasTemperatureDependence()) {
+         	sb.append("\nTemperature dependence:\n")
+            .append(getTemperatureDependence().toString());
         }
-
-        // commentsCounter++;
-
         return sb.toString();
     }
 
