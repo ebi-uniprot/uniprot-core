@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import org.uniprot.core.flatfile.parser.impl.cc.CCSequenceCautionCommentLineBuilder;
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
+import org.uniprot.core.uniprotkb.comment.SequenceCautionType;
 import org.uniprot.core.util.Utils;
 
 public class SequenceCautionMap implements NamedValueMap {
@@ -33,6 +34,18 @@ public class SequenceCautionMap implements NamedValueMap {
                             .map(this::sequenceCautionToString)
                             .collect(Collectors.joining("  "));
             sequenceCautionMap.put("cc_sequence_caution", "SEQUENCE CAUTION:  " + sequenceCautions);
+
+            String sc_epred =
+                    scComments.stream()
+                            .filter(
+                                    seq ->
+                                            seq.getSequenceCautionType()
+                                                    .equals(
+                                                            SequenceCautionType
+                                                                    .ERRONEOUS_PREDICTION))
+                            .map(this::sequenceCautionToString)
+                            .collect(Collectors.joining("  "));
+            sequenceCautionMap.put("sc_epred", sc_epred);
         }
         return sequenceCautionMap;
     }

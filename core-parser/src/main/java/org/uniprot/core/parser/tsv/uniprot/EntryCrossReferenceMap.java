@@ -24,7 +24,7 @@ public class EntryCrossReferenceMap implements NamedValueMap {
     }
 
     public static boolean contains(List<String> fields) {
-        return fields.stream().anyMatch(val -> val.startsWith(DR))
+        return fields.stream().anyMatch(val -> val.startsWith(DR) || val.equalsIgnoreCase("3d"))
                 || EntryGoCrossReferenceMap.contains(fields);
     }
 

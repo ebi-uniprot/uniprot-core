@@ -3,19 +3,27 @@ package org.uniprot.core.json.parser.uniprot;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.taxonomy.TaxonomyLineageTest;
 import org.uniprot.core.json.parser.uniprot.comment.*;
 import org.uniprot.core.uniprotkb.*;
 import org.uniprot.core.uniprotkb.comment.Comment;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.impl.FreeTextCommentImpl;
+import org.uniprot.core.uniprotkb.feature.Feature;
+import org.uniprot.core.uniprotkb.feature.FeatureType;
 import org.uniprot.core.uniprotkb.impl.EntryInactiveReasonBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBIdBuilder;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
+import org.uniprot.cv.xdb.UniProtDatabaseTypes;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -58,6 +66,40 @@ public class UniProtKBEntryIT {
         } catch (Exception e) {
             fail(e.getMessage());
         }
+    }
+
+    public static UniProtKBEntry getCompleteColumnsUniProtEntry() {
+        List<UniProtKBCrossReference> xrefs =
+                UniProtDatabaseTypes.INSTANCE.getAllDbTypes().stream()
+                        .map(UniProtDatabaseDetail::getName)
+                        .map(UniProtKBCrossReferenceTest::getUniProtDBCrossReference)
+                        .collect(Collectors.toList());
+
+        xrefs.add(UniProtKBCrossReferenceTest.getUniProtDBGOCrossReferences("C", "IDA"));
+        xrefs.add(UniProtKBCrossReferenceTest.getUniProtDBGOCrossReferences("F", "IDA"));
+        xrefs.add(UniProtKBCrossReferenceTest.getUniProtDBGOCrossReferences("P", "IDA"));
+
+        List<Feature> features =
+                Arrays.stream(FeatureType.values())
+                        .map(FeatureTest::getFeature)
+                        .collect(Collectors.toList());
+
+        List<Comment> freeTextComments =
+                Arrays.stream(CommentType.values())
+                        .filter(FreeTextCommentImpl::isFreeTextCommentType)
+                        .map(FreeTextCommentTest::getFreeTextComment)
+                        .collect(Collectors.toList());
+
+        UniProtKBEntry completeEntry = UniProtKBEntryIT.getCompleteUniProtEntry();
+        List<Comment> allComments = completeEntry.getComments();
+        allComments.addAll(freeTextComments);
+
+        return UniProtKBEntryBuilder.from(completeEntry)
+                .primaryAccession("P00001")
+                .uniProtCrossReferencesSet(xrefs)
+                .featuresSet(features)
+                .commentsSet(allComments)
+                .build();
     }
 
     public static UniProtKBEntry getCompleteUniProtEntry() {

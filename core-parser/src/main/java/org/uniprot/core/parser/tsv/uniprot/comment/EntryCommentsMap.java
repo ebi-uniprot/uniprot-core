@@ -21,7 +21,7 @@ public class EntryCommentsMap implements NamedValueMap {
                     "cc_sequence_caution",
                     "cc_catalytic_activity",
                     "cc_cofactor",
-                    "cc_enzyme_regulation",
+                    "cc_activity_regulation",
                     "cc_function",
                     "cc_pathway",
                     "cc_miscellaneous",
@@ -47,7 +47,8 @@ public class EntryCommentsMap implements NamedValueMap {
                     "redox_potential",
                     "temp_dependence",
                     "error_gmodel_pred",
-                    "protein_families");
+                    "protein_families",
+                    "sc_epred");
 
     private final List<Comment> comments;
     private static final Pattern PATTERN_FAMILY =

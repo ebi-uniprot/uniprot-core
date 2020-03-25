@@ -9,6 +9,7 @@ import org.uniprot.core.flatfile.parser.impl.cc.CCFreeTextCommentLineBuilder;
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.FreeTextComment;
+import org.uniprot.core.util.Utils;
 
 public class FreeTextMap implements NamedValueMap {
 
@@ -29,7 +30,7 @@ public class FreeTextMap implements NamedValueMap {
     private Map<String, String> getTextComments(
             CommentType type, List<FreeTextComment> txtComments) {
         Map<String, String> txtCommentMap = new HashMap<>();
-        if ((txtComments != null && !txtComments.isEmpty())) {
+        if (Utils.notNullNotEmpty(txtComments)) {
             String value =
                     txtComments.stream()
                             .filter(FreeTextComment::hasTexts)
