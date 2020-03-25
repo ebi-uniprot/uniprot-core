@@ -51,8 +51,8 @@ class DiseaseEntryImplTest {
     void testCreateDisease() {
         DiseaseEntry disease = createDisease();
 
-        assertEquals(id, disease.getId());
-        assertEquals(acc, disease.getAccession());
+        assertEquals(id, disease.getName());
+        assertEquals(acc, disease.getId());
         assertEquals(def, disease.getDefinition());
         Assertions.assertIterableEquals(altNames, disease.getAlternativeNames());
         Assertions.assertIterableEquals(xrefs, disease.getCrossReferences());
@@ -97,10 +97,7 @@ class DiseaseEntryImplTest {
     }
 
     private KeywordId getKeyword(int i) {
-        return new KeywordIdBuilder()
-                .id("id" + i + this.uuid)
-                .accession("acc" + i + this.uuid)
-                .build();
+        return new KeywordIdBuilder().name("id" + i + this.uuid).id("acc" + i + this.uuid).build();
     }
 
     private DiseaseCrossReference getXRef(int randomiser) {

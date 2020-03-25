@@ -135,8 +135,8 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         KEFRBuilder retObj = new KEFRBuilder();
         KeywordId keyword =
                 new KeywordIdBuilder()
-                        .id(trimSpacesAndRemoveLastDot(identifier))
-                        .accession(entry.ac)
+                        .name(trimSpacesAndRemoveLastDot(identifier))
+                        .id(entry.ac)
                         .build();
         retObj.keyword(keyword);
         // definition

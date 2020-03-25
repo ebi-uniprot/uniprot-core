@@ -7,7 +7,7 @@ import org.uniprot.core.cv.xdb.CrossRefEntry;
 
 public class CrossRefEntryBuilder implements Builder<CrossRefEntry> {
     private String name;
-    private String accession;
+    private String id;
     private String abbrev;
     private String pubMedId;
     private String doiId;
@@ -22,7 +22,7 @@ public class CrossRefEntryBuilder implements Builder<CrossRefEntry> {
     public @Nonnull CrossRefEntry build() {
         return new CrossRefEntryImpl(
                 this.name,
-                this.accession,
+                this.id,
                 this.abbrev,
                 this.pubMedId,
                 this.doiId,
@@ -37,7 +37,7 @@ public class CrossRefEntryBuilder implements Builder<CrossRefEntry> {
     public static @Nonnull CrossRefEntryBuilder from(@Nonnull CrossRefEntry instance) {
         return new CrossRefEntryBuilder()
                 .name(instance.getName())
-                .accession(instance.getAccession())
+                .id(instance.getId())
                 .abbrev(instance.getAbbrev())
                 .pubMedId(instance.getPubMedId())
                 .doiId(instance.getDoiId())
@@ -54,8 +54,8 @@ public class CrossRefEntryBuilder implements Builder<CrossRefEntry> {
         return this;
     }
 
-    public @Nonnull CrossRefEntryBuilder accession(String accession) {
-        this.accession = accession;
+    public @Nonnull CrossRefEntryBuilder id(String id) {
+        this.id = id;
         return this;
     }
 

@@ -23,9 +23,9 @@ public class DiseaseEntryMap implements NamedValueMap {
     @Override
     public Map<String, String> attributeValues() {
         Map<String, String> map = new HashMap<>();
-        map.put("id", this.diseaseEntry.getId());
+        map.put("name", this.diseaseEntry.getName());
         map.put("acronym", this.diseaseEntry.getAcronym());
-        map.put("accession", this.diseaseEntry.getAccession());
+        map.put("id", this.diseaseEntry.getId());
         map.put("definition", this.diseaseEntry.getDefinition());
         map.put("alternative_names", getAlternativeNames(this.diseaseEntry.getAlternativeNames()));
         map.put("cross_references", getCrossReferences(this.diseaseEntry.getCrossReferences()));

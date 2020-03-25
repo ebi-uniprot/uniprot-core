@@ -17,8 +17,8 @@ class CrossRefEntryBuilderTest {
     @Test
     void canSet_accession() {
         String accession = "accession";
-        CrossRefEntry obj = new CrossRefEntryBuilder().accession(accession).build();
-        assertEquals(accession, obj.getAccession());
+        CrossRefEntry obj = new CrossRefEntryBuilder().id(accession).build();
+        assertEquals(accession, obj.getId());
     }
 
     @Test

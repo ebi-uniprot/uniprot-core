@@ -10,8 +10,8 @@ import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.pathway.PathwayEntry;
 
 public class PathwayEntryImpl implements PathwayEntry {
-    private String accession;
     private String id;
+    private String name;
     private String pathwayClass;
     private String definition;
     private List<String> synonyms;
@@ -27,16 +27,16 @@ public class PathwayEntryImpl implements PathwayEntry {
     }
 
     PathwayEntryImpl(
-            String accession,
             String id,
+            String name,
             String pathwayClass,
             String definition,
             List<String> synonyms,
             List<PathwayEntry> isAParents,
             List<PathwayEntry> partOfParents,
             List<DiseaseCrossReference> crossReferences) {
-        this.accession = accession;
         this.id = id;
+        this.name = name;
         this.pathwayClass = pathwayClass;
         this.definition = definition;
         this.synonyms = unmodifiableList(synonyms);
@@ -45,12 +45,12 @@ public class PathwayEntryImpl implements PathwayEntry {
         this.crossReferences = unmodifiableList(crossReferences);
     }
 
-    public String getAccession() {
-        return accession;
-    }
-
     public String getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getPathwayClass() {
@@ -82,8 +82,8 @@ public class PathwayEntryImpl implements PathwayEntry {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PathwayEntryImpl that = (PathwayEntryImpl) o;
-        return Objects.equals(accession, that.accession)
-                && Objects.equals(id, that.id)
+        return Objects.equals(id, that.id)
+                && Objects.equals(name, that.name)
                 && Objects.equals(pathwayClass, that.pathwayClass)
                 && Objects.equals(definition, that.definition)
                 && Objects.equals(synonyms, that.synonyms)
@@ -95,8 +95,8 @@ public class PathwayEntryImpl implements PathwayEntry {
     @Override
     public int hashCode() {
         return Objects.hash(
-                accession,
                 id,
+                name,
                 pathwayClass,
                 definition,
                 synonyms,

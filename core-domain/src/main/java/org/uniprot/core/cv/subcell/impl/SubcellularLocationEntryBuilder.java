@@ -16,8 +16,8 @@ import org.uniprot.core.cv.subcell.SubcellLocationCategory;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 
 public class SubcellularLocationEntryBuilder implements Builder<SubcellularLocationEntry> {
+    private String name;
     private String id;
-    private String accession;
     private String definition;
     private String content;
     private KeywordId keyword;
@@ -31,13 +31,13 @@ public class SubcellularLocationEntryBuilder implements Builder<SubcellularLocat
     private List<SubcellularLocationEntry> isA = new ArrayList<>();
     private List<SubcellularLocationEntry> partOf = new ArrayList<>();
 
-    public @Nonnull SubcellularLocationEntryBuilder id(String id) {
-        this.id = id;
+    public @Nonnull SubcellularLocationEntryBuilder name(String name) {
+        this.name = name;
         return this;
     }
 
-    public @Nonnull SubcellularLocationEntryBuilder accession(String accession) {
-        this.accession = accession;
+    public @Nonnull SubcellularLocationEntryBuilder id(String id) {
+        this.id = id;
         return this;
     }
 
@@ -134,8 +134,8 @@ public class SubcellularLocationEntryBuilder implements Builder<SubcellularLocat
 
     public @Nonnull SubcellularLocationEntry build() {
         return new SubcellularLocationEntryImpl(
+                name,
                 id,
-                accession,
                 definition,
                 content,
                 keyword,
@@ -153,8 +153,8 @@ public class SubcellularLocationEntryBuilder implements Builder<SubcellularLocat
     public static @Nonnull SubcellularLocationEntryBuilder from(
             @Nonnull SubcellularLocationEntry instance) {
         return new SubcellularLocationEntryBuilder()
+                .name(instance.getName())
                 .id(instance.getId())
-                .accession(instance.getAccession())
                 .definition(instance.getDefinition())
                 .content(instance.getContent())
                 .keyword(instance.getKeyword().orElse(null))

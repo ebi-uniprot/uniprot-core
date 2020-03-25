@@ -23,7 +23,7 @@ class PathwayCacheIT {
     void testNoParent() {
         String acc = "UPA00611";
         Optional<PathwayEntry> opVal =
-                pathways.stream().filter(val -> val.getAccession().equals(acc)).findFirst();
+                pathways.stream().filter(val -> val.getId().equals(acc)).findFirst();
         assertTrue(opVal.isPresent());
         List<PathwayEntry> hi =
                 opVal.map(PathwayEntry::getIsAParents).orElse(Collections.emptyList());
@@ -37,7 +37,7 @@ class PathwayCacheIT {
     void testMultiXrefWithHi() {
         String acc = "UPA00056";
         Optional<PathwayEntry> opVal =
-                pathways.stream().filter(val -> val.getAccession().equals(acc)).findFirst();
+                pathways.stream().filter(val -> val.getId().equals(acc)).findFirst();
         List<PathwayEntry> hi =
                 opVal.map(PathwayEntry::getIsAParents).orElse(Collections.emptyList());
         List<PathwayEntry> hp =
@@ -51,7 +51,7 @@ class PathwayCacheIT {
     void testWithHP() {
         String acc = "UPA00056";
         Optional<PathwayEntry> opVal =
-                pathways.stream().filter(val -> val.getAccession().equals(acc)).findFirst();
+                pathways.stream().filter(val -> val.getId().equals(acc)).findFirst();
         assertTrue(opVal.isPresent());
         List<PathwayEntry> hi =
                 opVal.map(PathwayEntry::getIsAParents).orElse(Collections.emptyList());

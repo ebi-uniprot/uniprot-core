@@ -13,8 +13,8 @@ import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.pathway.PathwayEntry;
 
 public class PathwayEntryBuilder implements Builder<PathwayEntry> {
-    private String accession;
     private String id;
+    private String name;
     private String pathwayClass;
     private String definition;
     private List<String> synonyms = new ArrayList<>();
@@ -22,13 +22,13 @@ public class PathwayEntryBuilder implements Builder<PathwayEntry> {
     private List<PathwayEntry> partOfParents = new ArrayList<>();
     private List<DiseaseCrossReference> crossReferences = new ArrayList<>();
 
-    public @Nonnull PathwayEntryBuilder accession(String accession) {
-        this.accession = accession;
+    public @Nonnull PathwayEntryBuilder id(String id) {
+        this.id = id;
         return this;
     }
 
-    public @Nonnull PathwayEntryBuilder id(String id) {
-        this.id = id;
+    public @Nonnull PathwayEntryBuilder name(String name) {
+        this.name = name;
         return this;
     }
 
@@ -85,8 +85,8 @@ public class PathwayEntryBuilder implements Builder<PathwayEntry> {
 
     public @Nonnull PathwayEntry build() {
         return new PathwayEntryImpl(
-                accession,
                 id,
+                name,
                 pathwayClass,
                 definition,
                 synonyms,
@@ -97,8 +97,8 @@ public class PathwayEntryBuilder implements Builder<PathwayEntry> {
 
     public static @Nonnull PathwayEntryBuilder from(@Nonnull PathwayEntry instance) {
         return new PathwayEntryBuilder()
+                .name(instance.getName())
                 .id(instance.getId())
-                .accession(instance.getAccession())
                 .pathwayClass(instance.getPathwayClass())
                 .definition(instance.getDefinition())
                 .synonymsSet(instance.getSynonyms())

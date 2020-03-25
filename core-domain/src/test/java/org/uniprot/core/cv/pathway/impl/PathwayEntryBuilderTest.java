@@ -14,17 +14,17 @@ class PathwayEntryBuilderTest {
     @Test
     void canSetId() {
         String id = "id";
-        PathwayEntry obj = new PathwayEntryBuilder().id(id).build();
+        PathwayEntry obj = new PathwayEntryBuilder().name(id).build();
 
-        assertEquals(id, obj.getId());
+        assertEquals(id, obj.getName());
     }
 
     @Test
     void canSetAccession() {
         String accession = "accession";
-        PathwayEntry obj = new PathwayEntryBuilder().accession(accession).build();
+        PathwayEntry obj = new PathwayEntryBuilder().id(accession).build();
 
-        assertEquals(accession, obj.getAccession());
+        assertEquals(accession, obj.getId());
     }
 
     @Test

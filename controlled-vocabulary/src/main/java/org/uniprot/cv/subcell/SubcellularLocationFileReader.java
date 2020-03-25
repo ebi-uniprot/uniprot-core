@@ -47,7 +47,7 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
                 .collect(
                         Collectors.toMap(
                                 SubcellularLocationEntry::getContent,
-                                SubcellularLocationEntry::getAccession));
+                                SubcellularLocationEntry::getId));
     }
 
     private List<SubcellularFileEntry> convertLinesIntoInMemoryObjectList(List<String> lines) {
@@ -151,17 +151,17 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
      */
     private SubcellularLocationEntry parseSubcellularFileEntry(SubcellularFileEntry entry) {
         SubcellularLocationEntryBuilder retObj = new SubcellularLocationEntryBuilder();
-        retObj.accession(entry.ac);
+        retObj.id(entry.ac);
         retObj.content(trimSpacesAndRemoveLastDot(entry.sl));
 
         if (entry.id != null) {
-            retObj.id(trimSpacesAndRemoveLastDot(entry.id));
+            retObj.name(trimSpacesAndRemoveLastDot(entry.id));
             retObj.category(SubcellLocationCategory.LOCATION);
         } else if (entry.it != null) {
-            retObj.id(trimSpacesAndRemoveLastDot(entry.it));
+            retObj.name(trimSpacesAndRemoveLastDot(entry.it));
             retObj.category(SubcellLocationCategory.TOPOLOGY);
         } else {
-            retObj.id(trimSpacesAndRemoveLastDot(entry.io));
+            retObj.name(trimSpacesAndRemoveLastDot(entry.io));
             retObj.category(SubcellLocationCategory.ORIENTATION);
         }
         // definition
@@ -171,7 +171,7 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
         // Keyword is a single string will null by default
         if ((entry.kw != null) && !entry.kw.isEmpty())
             retObj.keyword(
-                    new KeywordIdBuilder().id(retObj.build().getId()).accession(entry.kw).build());
+                    new KeywordIdBuilder().name(retObj.build().getName()).id(entry.kw).build());
 
         // Links
         retObj.linksSet(entry.ww);
@@ -246,7 +246,7 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
     private SubcellularLocationEntry findByIdentifier(
             List<SubcellularLocationEntry> list, String id) {
         return list.stream()
-                .filter(s -> s.getId().equals(trimSpacesAndRemoveLastDot(id)))
+                .filter(s -> s.getName().equals(trimSpacesAndRemoveLastDot(id)))
                 .findFirst()
                 .orElse(null);
     }

@@ -36,7 +36,7 @@ public final class DiseaseFileReader extends AbstractFileReader<DiseaseEntry> {
     public Map<String, String> parseFileToAccessionMap(String filename) {
         List<DiseaseEntry> diseaseList = parse(filename);
         return diseaseList.stream()
-                .collect(Collectors.toMap(DiseaseEntry::getId, DiseaseEntry::getAccession));
+                .collect(Collectors.toMap(DiseaseEntry::getName, DiseaseEntry::getId));
     }
 
     public Iterator<DiseaseEntry> getDiseaseIterator(String fileName) {
@@ -63,8 +63,8 @@ public final class DiseaseFileReader extends AbstractFileReader<DiseaseEntry> {
                 entry.kw.stream().map(this::parseKeyword).collect(Collectors.toList());
 
         return new DiseaseEntryBuilder()
-                .id(id)
-                .accession(accession)
+                .name(id)
+                .id(accession)
                 .acronym(acronym)
                 .definition(definition)
                 .alternativeNamesSet(synonyms)
@@ -76,8 +76,8 @@ public final class DiseaseFileReader extends AbstractFileReader<DiseaseEntry> {
     private KeywordId parseKeyword(String kw) {
         final String[] tokens = kw.split(COLON);
         return new KeywordIdBuilder()
-                .id(trimSpacesAndRemoveLastDot(tokens[1]))
-                .accession(tokens[0])
+                .name(trimSpacesAndRemoveLastDot(tokens[1]))
+                .id(tokens[0])
                 .build();
     }
 

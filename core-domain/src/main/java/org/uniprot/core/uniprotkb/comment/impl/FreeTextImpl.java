@@ -47,9 +47,9 @@ public class FreeTextImpl implements FreeText {
     public int hashCode() {
         return Objects.hash(texts);
     }
+
     @Override
     public String toString() {
-    	return texts.stream().map(val ->val.toString())
-    	.collect(Collectors.joining(". ")) + ";";
+        return texts.stream().map(val -> val.toString()).collect(Collectors.joining(". ")) + ";";
     }
 }

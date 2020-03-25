@@ -49,6 +49,6 @@ public class KeywordImplTest {
     }
 
     private KeywordId createKeyword(String id, String accession) {
-        return new KeywordIdBuilder().id(id).accession(accession).build();
+        return new KeywordIdBuilder().name(id).id(accession).build();
     }
 }

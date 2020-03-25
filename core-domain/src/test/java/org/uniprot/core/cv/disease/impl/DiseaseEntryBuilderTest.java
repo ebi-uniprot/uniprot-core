@@ -17,17 +17,17 @@ class DiseaseEntryBuilderTest {
     @Test
     void canCreateWithId() {
         String id = "id";
-        DiseaseEntry disease = new DiseaseEntryBuilder().id(id).build();
+        DiseaseEntry disease = new DiseaseEntryBuilder().name(id).build();
         assertNotNull(disease);
-        assertEquals(id, disease.getId());
+        assertEquals(id, disease.getName());
     }
 
     @Test
     void canCreateWithAccession() {
         String accession = "uniprot";
-        DiseaseEntry disease = new DiseaseEntryBuilder().accession(accession).build();
+        DiseaseEntry disease = new DiseaseEntryBuilder().id(accession).build();
         assertNotNull(disease);
-        assertEquals(accession, disease.getAccession());
+        assertEquals(accession, disease.getId());
     }
 
     @Test
@@ -152,6 +152,6 @@ class DiseaseEntryBuilderTest {
     }
 
     private KeywordId kw(String id, String accession) {
-        return new KeywordIdBuilder().id(id).accession(accession).build();
+        return new KeywordIdBuilder().name(id).id(accession).build();
     }
 }
