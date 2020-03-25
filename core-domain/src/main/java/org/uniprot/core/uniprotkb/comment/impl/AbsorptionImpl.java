@@ -79,23 +79,25 @@ public class AbsorptionImpl implements Absorption {
     public int hashCode() {
         return Objects.hash(max, approximate, note, evidences);
     }
+
     @Override
     public String toString() {
-    	 StringBuilder sb = new StringBuilder();
-    	 sb.append("Abs(max)=");
-         if (isApproximate()) {
-             sb.append("~");
-         }
-         sb.append(getMax());
-
-         sb.append(" nm;");
-        if(hasNote()) {
-        	sb.append("note=");
-        	sb.append(
-        	note.getTexts().stream().map(val ->val.getValue())
-        	.collect(Collectors.joining(". ")))
-        	.append(";");
+        StringBuilder sb = new StringBuilder();
+        sb.append("Abs(max)=");
+        if (isApproximate()) {
+            sb.append("~");
         }
-      return sb.toString();
+        sb.append(getMax());
+
+        sb.append(" nm;");
+        if (hasNote()) {
+            sb.append("note=");
+            sb.append(
+                            note.getTexts().stream()
+                                    .map(val -> val.getValue())
+                                    .collect(Collectors.joining(". ")))
+                    .append(";");
+        }
+        return sb.toString();
     }
 }

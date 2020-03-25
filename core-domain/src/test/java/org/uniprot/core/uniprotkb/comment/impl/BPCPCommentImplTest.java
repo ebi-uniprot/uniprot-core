@@ -47,20 +47,21 @@ class BPCPCommentImplTest {
         assertEquals(phDependence, comment.getPhDependence());
         assertEquals(redoxPotential, comment.getRedoxPotential());
         assertEquals(temperatureDependence, comment.getTemperatureDependence());
-        String toString ="BIOPHYSICOCHEMICAL PROPERTIES:\n" + 
-            "Absorption:\n" + 
-            "Abs(max)=32 nm;note=value 1. value2;\n" + 
-            "Kinetic parameters:\n" + 
-            "KM=2.13 MG_ML_2 for some value;\n" + 
-            "Vmax=1.0 unit1 enzyme1;\n" + 
-            "Vmax=1.32 unit2 enzyme2;\n" + 
-            "note=value 1. value2;\n" + 
-            "pH dependence:\n" + 
-            "value1. value2;\n" + 
-            "Redox potential:\n" + 
-            "value1. value2;\n" + 
-            "Temperature dependence:\n" + 
-            "value1. value2;";
+        String toString =
+                "BIOPHYSICOCHEMICAL PROPERTIES:\n"
+                        + "Absorption:\n"
+                        + "Abs(max)=32 nm;note=value 1. value2;\n"
+                        + "Kinetic parameters:\n"
+                        + "KM=2.13 MG_ML_2 for some value;\n"
+                        + "Vmax=1.0 unit1 enzyme1;\n"
+                        + "Vmax=1.32 unit2 enzyme2;\n"
+                        + "note=value 1. value2;\n"
+                        + "pH dependence:\n"
+                        + "value1. value2;\n"
+                        + "Redox potential:\n"
+                        + "value1. value2;\n"
+                        + "Temperature dependence:\n"
+                        + "value1. value2;";
         assertEquals(toString, comment.toString());
     }
 
@@ -175,6 +176,4 @@ class BPCPCommentImplTest {
         assertTrue(impl.hasRedoxPotential());
         assertTrue(impl.hasTemperatureDependence());
     }
-
-   
 }
