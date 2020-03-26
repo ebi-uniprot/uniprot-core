@@ -35,7 +35,7 @@ public class SequenceCautionMap implements NamedValueMap {
                             .collect(Collectors.joining("  "));
             sequenceCautionMap.put("cc_sequence_caution", "SEQUENCE CAUTION:  " + sequenceCautions);
 
-            String sc_epred =
+            String error_gmodel_pred =
                     scComments.stream()
                             .filter(
                                     seq ->
@@ -45,7 +45,7 @@ public class SequenceCautionMap implements NamedValueMap {
                                                                     .ERRONEOUS_PREDICTION))
                             .map(this::sequenceCautionToString)
                             .collect(Collectors.joining("  "));
-            sequenceCautionMap.put("sc_epred", sc_epred);
+            sequenceCautionMap.put("error_gmodel_pred", error_gmodel_pred);
         }
         return sequenceCautionMap;
     }

@@ -1,16 +1,13 @@
 package org.uniprot.core.parser.tsv.uniref;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefMember;
+import org.uniprot.core.uniref.UniRefMemberIdType;
+import org.uniprot.core.util.Utils;
 
 /**
  * @author jluo
@@ -29,10 +26,12 @@ public class UniRefEntryValueMapper implements EntityValueMapper<UniRefEntry> {
                             "count",
                             "created",
                             "length",
-                            "sequence"));
+                            "sequence",
+                            "identity",
+                            "types"));
     private static final String ORGANISM = "organism";
     private static final String ORGANISM_ID = "organism_id";
-    private static final String MEMBER = "member";
+    private static final String MEMBER = "members";
 
     @Override
     public Map<String, String> mapEntity(UniRefEntry entry, List<String> fields) {
@@ -69,7 +68,22 @@ public class UniRefEntryValueMapper implements EntityValueMapper<UniRefEntry> {
                 UNIREF_FIELDS.get(6),
                 Integer.toString(entry.getRepresentativeMember().getSequenceLength()));
         map.put(UNIREF_FIELDS.get(7), entry.getRepresentativeMember().getSequence().getValue());
+
+        map.put(UNIREF_FIELDS.get(8), entry.getEntryType().getIdentity());
+        map.put(UNIREF_FIELDS.get(9), getTypes(entry));
         return map;
+    }
+
+    private String getTypes(UniRefEntry entry) {
+        Set<String> types = new HashSet<>();
+        if(Utils.notNullNotEmpty(entry.getMembers())) {
+            entry.getMembers().stream()
+                    .map(UniRefMember::getMemberIdType)
+                    .map(UniRefMemberIdType::toDisplayName)
+                    .forEach(types::add);
+        }
+        types.add(entry.getRepresentativeMember().getMemberIdType().toDisplayName());
+        return String.join(", ", types);
     }
 
     static String getOrganisms(UniRefEntry entry) {

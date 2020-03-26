@@ -29,7 +29,7 @@ import org.uniprot.core.uniref.impl.UniRefMemberBuilder;
  * @author jluo
  * @date: 22 Aug 2019
  */
-class UniRefEntryMapTest {
+class UniRefEntryValueMapperTest {
 
     @Test
     void testGetData() {
@@ -43,7 +43,9 @@ class UniRefEntryMapTest {
                         "count",
                         "created",
                         "length",
-                        "sequence");
+                        "sequence",
+                        "identity",
+                        "types");
         Map<String, String> entryMap = new UniRefEntryValueMapper().mapEntity(entry, fields);
 
         assertEquals("UniRef50_P03923", entryMap.get("id"));
@@ -56,6 +58,8 @@ class UniRefEntryMapTest {
         assertEquals(
                 "MVSWGRFICLVVVTMATLSLARPSFSLVEDDFSAGSADFAFWERDGDSDGFDSHSDJHETRHJREH",
                 entryMap.get("sequence"));
+        assertEquals("1.0", entryMap.get("identity"));
+        assertEquals("UniProtKB ID, UniParc ID", entryMap.get("types"));
     }
 
     @Test
@@ -151,7 +155,7 @@ class UniRefEntryMapTest {
         String pName = "some protein name";
         String upi = "UPI0000083A08";
 
-        UniRefMemberIdType type = UniRefMemberIdType.UNIPROTKB;
+        UniRefMemberIdType type = UniRefMemberIdType.UNIPARC;
         UniRefMember member =
                 new UniRefMemberBuilder()
                         .memberIdType(type)

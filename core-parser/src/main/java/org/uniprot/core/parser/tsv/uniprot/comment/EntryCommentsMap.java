@@ -47,8 +47,7 @@ public class EntryCommentsMap implements NamedValueMap {
                     "redox_potential",
                     "temp_dependence",
                     "error_gmodel_pred",
-                    "protein_families",
-                    "sc_epred");
+                    "protein_families");
 
     private final List<Comment> comments;
     private static final Pattern PATTERN_FAMILY =
@@ -141,8 +140,7 @@ public class EntryCommentsMap implements NamedValueMap {
                         .map(val -> convertToProteinFamily(val.getValue()))
                         .filter(val -> val != null && !val.isEmpty())
                         .collect(Collectors.joining("; "));
-        String field = "protein_families";
-        map.put(field, value);
+        map.put("protein_families", value);
     }
 
     private String convertToProteinFamily(String text) {

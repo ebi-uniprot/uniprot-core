@@ -15,7 +15,10 @@ import org.uniprot.core.json.parser.uniprot.comment.*;
 import org.uniprot.core.uniprotkb.*;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.FreeTextComment;
+import org.uniprot.core.uniprotkb.comment.impl.FreeTextCommentBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.FreeTextCommentImpl;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
 import org.uniprot.core.uniprotkb.feature.Feature;
 import org.uniprot.core.uniprotkb.feature.FeatureType;
 import org.uniprot.core.uniprotkb.impl.EntryInactiveReasonBuilder;
@@ -90,9 +93,17 @@ public class UniProtKBEntryIT {
                         .map(FreeTextCommentTest::getFreeTextComment)
                         .collect(Collectors.toList());
 
+        FreeTextComment similarityFamily = new FreeTextCommentBuilder()
+                .commentType(CommentType.SIMILARITY)
+                .textsAdd(new EvidencedValueBuilder().value("Belongs to the NSMF family").build())
+                .build();
+        freeTextComments.add(similarityFamily);
+
         UniProtKBEntry completeEntry = UniProtKBEntryIT.getCompleteUniProtEntry();
         List<Comment> allComments = completeEntry.getComments();
         allComments.addAll(freeTextComments);
+
+
 
         return UniProtKBEntryBuilder.from(completeEntry)
                 .primaryAccession("P00001")

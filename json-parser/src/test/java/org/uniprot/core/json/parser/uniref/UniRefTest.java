@@ -18,10 +18,7 @@ import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
-import org.uniprot.core.uniref.impl.RepresentativeMemberBuilder;
-import org.uniprot.core.uniref.impl.UniRefEntryBuilder;
-import org.uniprot.core.uniref.impl.UniRefEntryIdBuilder;
-import org.uniprot.core.uniref.impl.UniRefMemberBuilder;
+import org.uniprot.core.uniref.impl.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -29,13 +26,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author jluo
  * @date: 14 Aug 2019
  */
-class UniRefTest {
+public class UniRefTest {
     @Test
     void testUniRefMember() {
         UniRefMember member = createMember();
         ValidateJson.verifyJsonRoundTripParser(
                 UniRefEntryJsonConfig.getInstance().getFullObjectMapper(), member);
-
+        ValidateJson.verifyEmptyFields(member);
         try {
             ObjectMapper mapper = UniRefEntryJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(member);
@@ -45,7 +42,7 @@ class UniRefTest {
         }
     }
 
-    private UniRefMember createMember() {
+    private static UniRefMember createMember() {
         String memberId = "P12345_HUMAN";
         int length = 312;
         String pName = "some protein name";
@@ -65,6 +62,8 @@ class UniRefTest {
                         .uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
                         .uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
                         .uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())
+                        .overlapRegion(new OverlapRegionBuilder().start(10).end(20).build())
+                        .isSeed(true)
                         .build();
         return member;
     }
@@ -74,7 +73,7 @@ class UniRefTest {
         RepresentativeMember member = createReprestativeMember();
         ValidateJson.verifyJsonRoundTripParser(
                 UniRefEntryJsonConfig.getInstance().getFullObjectMapper(), member);
-
+        ValidateJson.verifyEmptyFields(member);
         try {
             ObjectMapper mapper = UniRefEntryJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(member);
@@ -84,7 +83,7 @@ class UniRefTest {
         }
     }
 
-    private RepresentativeMember createReprestativeMember() {
+    private static RepresentativeMember createReprestativeMember() {
         String seq = "MVSWGRFICLVVVTMATLSLARPSFSLVEDDFSAGSADFAFWERDGDSDGFDSHSDJHETRHJREH";
         Sequence sequence = new SequenceBuilder(seq).build();
         String memberId = "P12345_HUMAN";
@@ -108,6 +107,7 @@ class UniRefTest {
                         .uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
                         .uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
                         .uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())
+                        .overlapRegion(new OverlapRegionBuilder().start(10).end(20).build())
                         .isSeed(true)
                         .sequence(sequence)
                         .build();
@@ -116,38 +116,7 @@ class UniRefTest {
 
     @Test
     void testUniRefEntry() {
-        String id = "UniRef50_P03923";
-        UniRefType type = UniRefType.UniRef100;
-
-        UniRefEntryId entryId = new UniRefEntryIdBuilder(id).build();
-
-        UniRefEntry entry =
-                new UniRefEntryBuilder()
-                        .id(entryId)
-                        .name("Some UniRef Name")
-                        .updated(LocalDate.now())
-                        .entryType(type)
-                        .commonTaxonId(9606l)
-                        .commonTaxon("Homo sapiens")
-                        .representativeMember(createReprestativeMember())
-                        .membersAdd(createMember())
-                        .goTermsAdd(
-                                new GeneOntologyEntryBuilder()
-                                        .aspect(GoAspect.COMPONENT)
-                                        .id("GO:0044444")
-                                        .build())
-                        .goTermsAdd(
-                                new GeneOntologyEntryBuilder()
-                                        .aspect(GoAspect.FUNCTION)
-                                        .id("GO:0044459")
-                                        .build())
-                        .goTermsAdd(
-                                new GeneOntologyEntryBuilder()
-                                        .aspect(GoAspect.PROCESS)
-                                        .id("GO:0032459")
-                                        .build())
-                        .memberCount(2)
-                        .build();
+        UniRefEntry entry = getCompleteUniRefEntry();
         ValidateJson.verifyJsonRoundTripParser(
                 UniRefEntryJsonConfig.getInstance().getFullObjectMapper(), entry);
 
@@ -158,5 +127,38 @@ class UniRefTest {
         } catch (Exception e) {
             fail(e.getMessage());
         }
+    }
+
+    public static UniRefEntry getCompleteUniRefEntry() {
+        String id = "UniRef50_P03923";
+        UniRefType type = UniRefType.UniRef100;
+
+        UniRefEntryId entryId = new UniRefEntryIdBuilder(id).build();
+        return new UniRefEntryBuilder()
+                .id(entryId)
+                .name("Some UniRef Name")
+                .updated(LocalDate.now())
+                .entryType(type)
+                .commonTaxonId(9606L)
+                .commonTaxon("Homo sapiens")
+                .representativeMember(createReprestativeMember())
+                .membersAdd(createMember())
+                .goTermsAdd(
+                        new GeneOntologyEntryBuilder()
+                                .aspect(GoAspect.COMPONENT)
+                                .id("GO:0044444")
+                                .build())
+                .goTermsAdd(
+                        new GeneOntologyEntryBuilder()
+                                .aspect(GoAspect.FUNCTION)
+                                .id("GO:0044459")
+                                .build())
+                .goTermsAdd(
+                        new GeneOntologyEntryBuilder()
+                                .aspect(GoAspect.PROCESS)
+                                .id("GO:0032459")
+                                .build())
+                .memberCount(2)
+                .build();
     }
 }
