@@ -1654,6 +1654,18 @@
 		"uriLink": "https://web.expasy.org/cgi-bin/abcd/search_abcd.pl?input=%id"
 	},
 	{
+		"name": "Antibodypedia",
+		"displayName": "Antibodypedia",
+		"category": "PAM",
+		"uriLink": "https://www.antibodypedia.com/protein/%id",
+		"attributes": [		
+			{	"name": "antibodies",
+				"xmlTag": "antibodies"			
+			}
+		]
+	},
+	
+	{
 		"name": "RNAct",
 		"displayName": "RNAct",
 		"category": "OTHER",
