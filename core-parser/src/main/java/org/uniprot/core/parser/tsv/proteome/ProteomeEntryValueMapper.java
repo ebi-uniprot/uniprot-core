@@ -17,11 +17,10 @@ import org.uniprot.core.proteome.ProteomeEntry;
  * @author jluo
  * @date: 1 May 2019
  */
-public class ProteomeEntryMapper implements EntityValueMapper<ProteomeEntry> {
+public class ProteomeEntryValueMapper implements EntityValueMapper<ProteomeEntry> {
 
     public static final List<String> PROTEOME_FIELDS =
-            Collections.unmodifiableList(
-                    Arrays.asList("upid", "genome_assembly_id", "protein_count"));
+            Collections.unmodifiableList(Arrays.asList("upid", "genome_assembly", "protein_count"));
 
     @Override
     public Map<String, String> mapEntity(ProteomeEntry entry, List<String> fields) {

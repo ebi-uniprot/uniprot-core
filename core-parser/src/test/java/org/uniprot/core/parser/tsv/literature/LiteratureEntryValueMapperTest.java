@@ -32,9 +32,9 @@ class LiteratureEntryValueMapperTest {
                         .statistics(createCompleteLiteratureStatistics())
                         .build();
         Map<String, String> mappedEntries =
-                new LiteratureEntryMapper().mapEntity(entry, Collections.emptyList());
+                new LiteratureEntryValueMapper().mapEntity(entry, Collections.emptyList());
         assertThat(mappedEntries, notNullValue());
-        assertEquals(11, mappedEntries.size());
+        assertEquals(14, mappedEntries.size());
         assertEquals("mapped:30; reviewed:10; annotated:20", mappedEntries.get("statistics"));
         mappedEntries.remove("statistics");
 
@@ -46,9 +46,9 @@ class LiteratureEntryValueMapperTest {
         LiteratureEntry entry = createCompleteLiteratureEntry();
 
         Map<String, String> mappedEntries =
-                new LiteratureEntryMapper().mapEntity(entry, Collections.emptyList());
+                new LiteratureEntryValueMapper().mapEntity(entry, Collections.emptyList());
 
-        assertEquals(11, mappedEntries.size());
+        assertEquals(14, mappedEntries.size());
         assertEquals("100", mappedEntries.get("id"));
         assertEquals("doi Id", mappedEntries.get("doi"));
         assertEquals("title", mappedEntries.get("title"));
@@ -61,6 +61,11 @@ class LiteratureEntryValueMapperTest {
         assertEquals("21-06-2019", mappedEntries.get("publication"));
         assertEquals("authoring group", mappedEntries.get("authoring_group"));
         assertEquals("literature Abstract", mappedEntries.get("lit_abstract"));
+
+        assertEquals("first Page", mappedEntries.get("first_page"));
+        assertEquals("last Page", mappedEntries.get("last_page"));
+        assertEquals("volume", mappedEntries.get("volume"));
+
         assertEquals("mapped:30; reviewed:10; annotated:20", mappedEntries.get("statistics"));
     }
 

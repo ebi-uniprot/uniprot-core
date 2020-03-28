@@ -1,9 +1,6 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.parser.tsv.NamedValueMap;
@@ -16,6 +13,9 @@ import org.uniprot.core.uniparc.UniParcEntry;
 public class UniParcEntryValueMapper implements EntityValueMapper<UniParcEntry> {
 
     private static final List<String> UNIPARC_FIELDS = Collections.singletonList("upi");
+
+    // TODO: FIX IT!!!
+    public static final List<String> UNSUPORTED_FIELDS = Collections.singletonList("matched");
 
     @Override
     public Map<String, String> mapEntity(UniParcEntry entry, List<String> fields) {
@@ -35,6 +35,9 @@ public class UniParcEntryValueMapper implements EntityValueMapper<UniParcEntry> 
         if (UniParcCrossReferenceMap.contains(fields)) {
             addData(map, new UniParcCrossReferenceMap(entry.getUniParcCrossReferences()));
         }
+        if (containsUnsuported(fields)) {
+            map.put(UNSUPORTED_FIELDS.get(0), "TODO: UNSUPORTED FIELD");
+        }
         return map;
     }
 
@@ -44,6 +47,10 @@ public class UniParcEntryValueMapper implements EntityValueMapper<UniParcEntry> 
 
     private static boolean contains(List<String> fields) {
         return fields.stream().anyMatch(UNIPARC_FIELDS::contains);
+    }
+
+    private static boolean containsUnsuported(List<String> fields) {
+        return fields.stream().anyMatch(UNSUPORTED_FIELDS::contains);
     }
 
     private Map<String, String> getSimpleAttributeValues(UniParcEntry entry) {

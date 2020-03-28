@@ -17,10 +17,16 @@ public class UniParcCrossReferenceMap implements NamedValueMap {
     private static final String DELIMITER = "; ";
     private static final String DELIMITER2 = ";";
 
-    public static final List<String> FIELDS =
-            Collections.unmodifiableList(
-                    Arrays.asList(
-                            "gene", "protein", "proteome", "accession", "first_seen", "last_seen"));
+    public static final List<String> FIELDS;
+
+    static {
+        List<String> fields = new ArrayList<>();
+        fields.addAll(
+                Arrays.asList(
+                        "gene", "protein", "proteome", "accession", "first_seen", "last_seen"));
+        Arrays.stream(UniParcDatabase.values()).map(UniParcDatabase::getName).forEach(fields::add);
+        FIELDS = Collections.unmodifiableList(fields);
+    }
 
     private final List<UniParcCrossReference> uniParcCrossReferences;
 
@@ -44,7 +50,18 @@ public class UniParcCrossReferenceMap implements NamedValueMap {
         map.put(FIELDS.get(3), accessions);
         map.put(FIELDS.get(4), firstSeen.map(LocalDate::toString).orElse(""));
         map.put(FIELDS.get(5), lastSeen.map(LocalDate::toString).orElse(""));
+        map.putAll(getDatabasesMap());
+
         return map;
+    }
+
+    private Map<String, String> getDatabasesMap() {
+        Map<String, String> result = new HashMap<>();
+        uniParcCrossReferences.forEach(
+                xref -> {
+                    result.put(xref.getDatabase().getName(), xref.getId());
+                });
+        return result;
     }
 
     public static boolean contains(List<String> fields) {

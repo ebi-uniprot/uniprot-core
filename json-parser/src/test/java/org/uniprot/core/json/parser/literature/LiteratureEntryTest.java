@@ -7,7 +7,7 @@ import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.literature.impl.LiteratureEntryBuilder;
 
 /** @author lgonzales */
-class LiteratureEntryTest {
+public class LiteratureEntryTest {
 
     @Test
     void testSimpleLiteratureEntry() {
@@ -26,7 +26,7 @@ class LiteratureEntryTest {
         ValidateJson.verifyEmptyFields(literatureEntry);
     }
 
-    static LiteratureEntry getCompleteLiteratureEntry() {
+    public static LiteratureEntry getCompleteLiteratureEntry() {
         return new LiteratureEntryBuilder()
                 .citation(LiteratureTest.getCompleteLiterature())
                 .statistics(LiteratureStatisticsTest.getCompleteLiteratureStatistics())

@@ -33,20 +33,20 @@ class ProteomeEntryValueMapperTest {
     @Test
     void testGetDataSimple() {
         ProteomeEntry entry = create();
-        List<String> fields = Arrays.asList("upid", "genome_assembly_id", "protein_count");
-        Map<String, String> entryMap = new ProteomeEntryMapper().mapEntity(entry, fields);
+        List<String> fields = Arrays.asList("upid", "genome_assembly", "protein_count");
+        Map<String, String> entryMap = new ProteomeEntryValueMapper().mapEntity(entry, fields);
 
         assertEquals(fields.size(), entryMap.size());
         verify("UP000005640", "upid", entryMap);
         verify("204", "protein_count", entryMap);
-        verify("", "genome_assembly_id", entryMap);
+        verify("", "genome_assembly", entryMap);
     }
 
     @Test
     void testGetDataLineage() {
         ProteomeEntry entry = create();
         List<String> fields = Arrays.asList("upid", "lineage");
-        Map<String, String> entryMap = new ProteomeEntryMapper().mapEntity(entry, fields);
+        Map<String, String> entryMap = new ProteomeEntryValueMapper().mapEntity(entry, fields);
 
         assertEquals(4, entryMap.size());
         verify("UP000005640", "upid", entryMap);
@@ -56,19 +56,19 @@ class ProteomeEntryValueMapperTest {
     @Test
     void testGetDataComponent() {
         ProteomeEntry entry = create();
-        List<String> fields = Arrays.asList("upid", "proteome_components");
-        Map<String, String> entryMap = new ProteomeEntryMapper().mapEntity(entry, fields);
+        List<String> fields = Arrays.asList("upid", "components");
+        Map<String, String> entryMap = new ProteomeEntryValueMapper().mapEntity(entry, fields);
 
         assertEquals(4, entryMap.size());
         verify("UP000005640", "upid", entryMap);
-        verify("someName1; someName2", "proteome_components", entryMap);
+        verify("someName1; someName2", "components", entryMap);
     }
 
     @Test
     void testGetDataOrganism() {
         ProteomeEntry entry = create();
         List<String> fields = Arrays.asList("upid", "organism", "organism_id", "taxon_mnemonic");
-        Map<String, String> entryMap = new ProteomeEntryMapper().mapEntity(entry, fields);
+        Map<String, String> entryMap = new ProteomeEntryValueMapper().mapEntity(entry, fields);
 
         assertEquals(6, entryMap.size());
         verify("UP000005640", "upid", entryMap);

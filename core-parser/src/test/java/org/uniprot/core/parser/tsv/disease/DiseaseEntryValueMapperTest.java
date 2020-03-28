@@ -32,7 +32,7 @@ class DiseaseEntryValueMapperTest {
         DiseaseEntry diseaseEntry = builder.build();
 
         Map<String, String> mappedEntries =
-                new DiseaseEntryMapper().mapEntity(diseaseEntry, Collections.emptyList());
+                new DiseaseEntryValueMapper().mapEntity(diseaseEntry, Collections.emptyList());
 
         assertThat(mappedEntries, notNullValue());
         assertEquals(9, mappedEntries.size());
@@ -42,9 +42,9 @@ class DiseaseEntryValueMapperTest {
         assertEquals(def, mappedEntries.get("definition"));
         assertEquals(String.valueOf(revCount), mappedEntries.get("reviewed_protein_count"));
         assertEquals(String.valueOf(unrevCount), mappedEntries.get("unreviewed_protein_count"));
-        assertEquals(DiseaseEntryMapper.EMPTY_STRING, mappedEntries.get("alternative_names"));
-        assertEquals(DiseaseEntryMapper.EMPTY_STRING, mappedEntries.get("cross_references"));
-        assertEquals(DiseaseEntryMapper.EMPTY_STRING, mappedEntries.get("keywords"));
+        assertEquals(DiseaseEntryValueMapper.EMPTY_STRING, mappedEntries.get("alternative_names"));
+        assertEquals(DiseaseEntryValueMapper.EMPTY_STRING, mappedEntries.get("cross_references"));
+        assertEquals(DiseaseEntryValueMapper.EMPTY_STRING, mappedEntries.get("keywords"));
     }
 
     @Test
@@ -72,7 +72,7 @@ class DiseaseEntryValueMapperTest {
         DiseaseEntry entry = builder.build();
 
         Map<String, String> mappedEntries =
-                new DiseaseEntryMapper().mapEntity(entry, Collections.emptyList());
+                new DiseaseEntryValueMapper().mapEntity(entry, Collections.emptyList());
 
         assertThat(mappedEntries, notNullValue());
         assertEquals(9, mappedEntries.size());

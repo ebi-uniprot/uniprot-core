@@ -15,18 +15,17 @@ import org.uniprot.core.citation.impl.SubmissionBuilder;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.proteome.*;
-import org.uniprot.core.proteome.impl.ComponentBuilder;
-import org.uniprot.core.proteome.impl.ProteomeEntryBuilder;
-import org.uniprot.core.proteome.impl.ProteomeIdBuilder;
-import org.uniprot.core.proteome.impl.RedundantProteomeBuilder;
+import org.uniprot.core.proteome.impl.*;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
+import org.uniprot.core.taxonomy.TaxonomyRank;
 import org.uniprot.core.taxonomy.impl.TaxonomyLineageBuilder;
+import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-class ProteomeTest {
+public class ProteomeTest {
     @Test
     void testComponent() {
         List<CrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
@@ -76,6 +75,14 @@ class ProteomeTest {
 
     @Test
     void testProteome() {
+        ProteomeEntry proteome = getCompleteProteomeEntry();
+
+        ValidateJson.verifyJsonRoundTripParser(
+                ProteomeJsonConfig.getInstance().getFullObjectMapper(), proteome);
+        ValidateJson.verifyEmptyFields(proteome);
+    }
+
+    public static ProteomeEntry getCompleteProteomeEntry() {
         String id = "UP000005640";
         String description = "about some proteome";
         LocalDate modified = LocalDate.of(2015, 11, 5);
@@ -90,7 +97,7 @@ class ProteomeTest {
                         .build();
         CrossReference<ProteomeDatabase> xref2 =
                 new CrossReferenceBuilder<ProteomeDatabase>()
-                        .database(ProteomeDatabase.GENOME_ANNOTATION)
+                        .database(ProteomeDatabase.GENOME_ASSEMBLY)
                         .id("ADFDA121")
                         .build();
         xrefs.add(xref1);
@@ -100,24 +107,69 @@ class ProteomeTest {
                         .taxonId(9606)
                         .scientificName("Homo sapiens")
                         .commonName("Human")
-                        .build();
-        ProteomeEntry proteome =
-                new ProteomeEntryBuilder()
-                        .proteomeId(proteomeId)
-                        .description(description)
-                        .taxonomy(taxonomy)
-                        .modified(modified)
-                        .proteomeType(ProteomeType.REDUNDANT)
-                        .redundantTo(redId)
-                        .strain("some Strain")
-                        .proteomeCrossReferencesSet(xrefs)
-                        .citationsSet(getCitations())
-                        .superkingdom(Superkingdom.EUKARYOTA)
-                        .panproteome(new ProteomeIdBuilder("UP000005649").build())
+                        .mnemonic("HUMAN")
+                        .synonymsAdd("synonym")
                         .build();
 
-        ValidateJson.verifyJsonRoundTripParser(
-                ProteomeJsonConfig.getInstance().getFullObjectMapper(), proteome);
+        TaxonomyLineage taxonomyLineage =
+                new TaxonomyLineageBuilder()
+                        .taxonId(9606)
+                        .scientificName("Homo sapiens")
+                        .commonName("Human")
+                        .synonymsAdd("synonym")
+                        .hidden(true)
+                        .rank(TaxonomyRank.FAMILY)
+                        .build();
+
+        Component component =
+                new ComponentBuilder()
+                        .description("description")
+                        .name("name")
+                        .proteinCount(18)
+                        .type(ComponentType.PRIMARY)
+                        .proteomeCrossReferencesAdd(xref2)
+                        .build();
+        Protein protein =
+                new ProteinBuilder()
+                        .accession("P12345")
+                        .geneNameType(GeneNameType.MOD)
+                        .geneName("name")
+                        .entryType(UniProtKBEntryType.TREMBL)
+                        .sequenceLength(20L)
+                        .build();
+
+        CanonicalProtein canonicalProtein =
+                new CanonicalProteinBuilder()
+                        .canonicalProtein(protein)
+                        .relatedProteinsAdd(protein)
+                        .build();
+
+        return new ProteomeEntryBuilder()
+                .proteomeId(proteomeId)
+                .description(description)
+                .taxonomy(taxonomy)
+                .modified(modified)
+                .proteomeType(ProteomeType.REDUNDANT)
+                .redundantTo(redId)
+                .strain("some Strain")
+                .proteomeCrossReferencesSet(xrefs)
+                .citationsSet(getCitations())
+                .superkingdom(Superkingdom.EUKARYOTA)
+                .panproteome(new ProteomeIdBuilder("UP000005649").build())
+                .redundantProteomesAdd(
+                        new RedundantProteomeBuilder()
+                                .proteomeId("UP000005648")
+                                .similarity(10F)
+                                .build())
+                .redundantTo(new ProteomeIdBuilder("UP000005650").build())
+                .componentsAdd(component)
+                .isolate("isolate value")
+                .annotationScore(20)
+                .geneCount(28)
+                .taxonLineagesAdd(taxonomyLineage)
+                .canonicalProteinsAdd(canonicalProtein)
+                .sourceDb("source db")
+                .build();
     }
 
     @Test
@@ -220,7 +272,7 @@ class ProteomeTest {
         }
     }
 
-    private List<Citation> getCitations() {
+    private static List<Citation> getCitations() {
 
         JournalArticle citation1 = getJournalArticle();
         Submission citation2 = getSubmission();
@@ -231,7 +283,7 @@ class ProteomeTest {
         return citations;
     }
 
-    private JournalArticle getJournalArticle() {
+    private static JournalArticle getJournalArticle() {
         CrossReference<CitationDatabase> xref =
                 new CrossReferenceBuilder<CitationDatabase>()
                         .database(CitationDatabase.PUBMED)
@@ -250,7 +302,7 @@ class ProteomeTest {
                 .build();
     }
 
-    private Submission getSubmission() {
+    private static Submission getSubmission() {
         CrossReference<CitationDatabase> xref =
                 new CrossReferenceBuilder<CitationDatabase>()
                         .database(CitationDatabase.PUBMED)

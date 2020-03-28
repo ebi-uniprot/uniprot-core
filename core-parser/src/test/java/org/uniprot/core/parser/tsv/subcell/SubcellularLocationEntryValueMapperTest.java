@@ -27,7 +27,7 @@ class SubcellularLocationEntryValueMapperTest {
         SubcellularLocationEntry entry =
                 new SubcellularLocationEntryBuilder().accession("SL-0001").build();
         Map<String, String> mappedEntries =
-                new SubcellularLocationEntryMapper().mapEntity(entry, Collections.emptyList());
+                new SubcellularLocationEntryValueMapper().mapEntity(entry, Collections.emptyList());
         assertThat(mappedEntries, notNullValue());
         assertEquals(14, mappedEntries.size());
         assertEquals("SL-0001", mappedEntries.get("accession"));
@@ -41,7 +41,7 @@ class SubcellularLocationEntryValueMapperTest {
         SubcellularLocationEntry entry = createSubcellularLocationEntry(true);
 
         Map<String, String> mappedEntries =
-                new SubcellularLocationEntryMapper().mapEntity(entry, Collections.emptyList());
+                new SubcellularLocationEntryValueMapper().mapEntity(entry, Collections.emptyList());
 
         assertEquals(14, mappedEntries.size());
         assertEquals("noteValue", mappedEntries.get("note"));

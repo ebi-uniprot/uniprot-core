@@ -15,7 +15,7 @@ import org.uniprot.core.util.Utils;
  * @author lgonzales
  * @since 2019-07-04
  */
-public class LiteratureEntryMapper implements EntityValueMapper<LiteratureEntry> {
+public class LiteratureEntryValueMapper implements EntityValueMapper<LiteratureEntry> {
 
     @Override
     public Map<String, String> mapEntity(LiteratureEntry entry, List<String> fields) {
@@ -30,10 +30,37 @@ public class LiteratureEntryMapper implements EntityValueMapper<LiteratureEntry>
         map.put("author_and_group", getAuthorsAndAuthoringGroups(literature));
         map.put("journal", getJournal(literature));
         map.put("publication", getPublication(literature));
+        map.put("first_page", getFirstPage(literature));
+        map.put("last_page", getLastPage(literature));
+        map.put("volume", getVolume(literature));
         map.put("reference", getReference(literature));
         map.put("statistics", getStatistics(entry));
 
         return map;
+    }
+
+    private String getLastPage(Literature literature) {
+        String result = "";
+        if (Utils.notNull(literature)) {
+            result = Utils.emptyOrString(literature.getLastPage());
+        }
+        return result;
+    }
+
+    private String getFirstPage(Literature literature) {
+        String result = "";
+        if (Utils.notNull(literature)) {
+            result = Utils.emptyOrString(literature.getFirstPage());
+        }
+        return result;
+    }
+
+    private String getVolume(Literature literature) {
+        String result = "";
+        if (Utils.notNull(literature)) {
+            result = Utils.emptyOrString(literature.getVolume());
+        }
+        return result;
     }
 
     private String getAbstract(Literature literature) {

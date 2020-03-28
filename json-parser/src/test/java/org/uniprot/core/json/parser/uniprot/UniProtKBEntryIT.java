@@ -93,17 +93,19 @@ public class UniProtKBEntryIT {
                         .map(FreeTextCommentTest::getFreeTextComment)
                         .collect(Collectors.toList());
 
-        FreeTextComment similarityFamily = new FreeTextCommentBuilder()
-                .commentType(CommentType.SIMILARITY)
-                .textsAdd(new EvidencedValueBuilder().value("Belongs to the NSMF family").build())
-                .build();
+        FreeTextComment similarityFamily =
+                new FreeTextCommentBuilder()
+                        .commentType(CommentType.SIMILARITY)
+                        .textsAdd(
+                                new EvidencedValueBuilder()
+                                        .value("Belongs to the NSMF family")
+                                        .build())
+                        .build();
         freeTextComments.add(similarityFamily);
 
         UniProtKBEntry completeEntry = UniProtKBEntryIT.getCompleteUniProtEntry();
         List<Comment> allComments = completeEntry.getComments();
         allComments.addAll(freeTextComments);
-
-
 
         return UniProtKBEntryBuilder.from(completeEntry)
                 .primaryAccession("P00001")

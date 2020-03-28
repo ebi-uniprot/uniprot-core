@@ -16,6 +16,7 @@ import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.impl.KeywordEntryBuilder;
 import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
 import org.uniprot.core.impl.StatisticsBuilder;
+import org.uniprot.core.util.Utils;
 
 class KeywordEntryValueMapperTest {
 
@@ -23,15 +24,17 @@ class KeywordEntryValueMapperTest {
     void checkSimpleEntryAttributeValues() {
         KeywordEntry entry = new KeywordEntryBuilder().keyword(getKeyword()).build();
         Map<String, String> mappedEntries =
-                new KeywordEntryMapper().mapEntity(entry, Collections.emptyList());
+                new KeywordEntryValueMapper().mapEntity(entry, Collections.emptyList());
         assertThat(mappedEntries, notNullValue());
-        assertEquals(9, mappedEntries.size());
+        assertEquals(10, mappedEntries.size());
         assertEquals("KW-9993", mappedEntries.get("id"));
         mappedEntries.remove("id");
         assertEquals("Ligand", mappedEntries.get("name"));
         mappedEntries.remove("name");
+        assertEquals("KW-9993 Ligand", mappedEntries.get("keyword"));
+        mappedEntries.remove("keyword");
         Optional<String> result =
-                mappedEntries.values().stream().filter(val -> !val.isEmpty()).findAny();
+                mappedEntries.values().stream().filter(Utils::notNullNotEmpty).findAny();
         assertFalse(result.isPresent());
     }
 
@@ -39,11 +42,12 @@ class KeywordEntryValueMapperTest {
     void checkCompleteEntryAttributeValues() {
         KeywordEntry entry = getKeywordEntry(true);
         Map<String, String> mappedEntries =
-                new KeywordEntryMapper().mapEntity(entry, Collections.emptyList());
+                new KeywordEntryValueMapper().mapEntity(entry, Collections.emptyList());
 
-        assertEquals(10, mappedEntries.size());
+        assertEquals(11, mappedEntries.size());
         assertEquals("KW-9993", mappedEntries.get("id"));
         assertEquals("Ligand", mappedEntries.get("name"));
+        assertEquals("KW-9993 Ligand", mappedEntries.get("keyword"));
         assertEquals("Definition value", mappedEntries.get("description"));
         assertEquals("Ligand", mappedEntries.get("category"));
         assertEquals("synonym", mappedEntries.get("synonym"));

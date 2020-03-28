@@ -8,7 +8,7 @@ import org.uniprot.core.impl.StatisticsBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
 /** @author lgonzales */
-class KeywordEntryTest {
+public class KeywordEntryTest {
 
     @Test
     void testSimpleKeywordEntry() {
@@ -24,7 +24,7 @@ class KeywordEntryTest {
                 KeywordJsonConfig.getInstance().getFullObjectMapper(), keywordEntry);
     }
 
-    static KeywordEntry getCompleteKeywordEntry(boolean hierarchy) {
+    public static KeywordEntry getCompleteKeywordEntry(boolean hierarchy) {
         Statistics statistics =
                 new StatisticsBuilder().reviewedProteinCount(10).unreviewedProteinCount(20).build();
         KeywordEntry keywordEntry =

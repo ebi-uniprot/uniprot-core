@@ -14,7 +14,8 @@ import org.uniprot.core.util.Utils;
  * @author lgonzales
  * @since 2019-07-22
  */
-public class SubcellularLocationEntryMapper implements EntityValueMapper<SubcellularLocationEntry> {
+public class SubcellularLocationEntryValueMapper
+        implements EntityValueMapper<SubcellularLocationEntry> {
 
     @Override
     public Map<String, String> mapEntity(SubcellularLocationEntry entry, List<String> fieldNames) {

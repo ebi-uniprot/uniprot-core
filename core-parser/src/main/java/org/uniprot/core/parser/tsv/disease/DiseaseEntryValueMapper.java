@@ -11,7 +11,7 @@ import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.util.Utils;
 
-public class DiseaseEntryMapper implements EntityValueMapper<DiseaseEntry> {
+public class DiseaseEntryValueMapper implements EntityValueMapper<DiseaseEntry> {
     static final String EMPTY_STRING = "";
 
     @Override

@@ -12,7 +12,7 @@ import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.util.Utils;
 
-public class KeywordEntryMapper implements EntityValueMapper<KeywordEntry> {
+public class KeywordEntryValueMapper implements EntityValueMapper<KeywordEntry> {
 
     @Override
     public Map<String, String> mapEntity(KeywordEntry keywordEntry, List<String> fields) {
@@ -20,6 +20,9 @@ public class KeywordEntryMapper implements EntityValueMapper<KeywordEntry> {
         if (Utils.notNull(keywordEntry.getKeyword())) {
             map.put("id", keywordEntry.getKeyword().getId());
             map.put("name", keywordEntry.getKeyword().getName());
+            map.put(
+                    "keyword",
+                    keywordEntry.getKeyword().getId() + " " + keywordEntry.getKeyword().getName());
         }
         map.put("description", getOrDefaultEmpty(keywordEntry.getDefinition()));
         if (Utils.notNull(keywordEntry.getCategory())) {

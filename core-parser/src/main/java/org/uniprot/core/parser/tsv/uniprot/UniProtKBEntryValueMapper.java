@@ -24,7 +24,7 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
         return fields.stream().anyMatch(DEFAULT_FIELDS::contains);
     }
 
-    public static boolean containsUnsuported(List<String> fields) {
+    private static boolean containsUnsuported(List<String> fields) {
         return fields.stream().anyMatch(UNSUPORTED_FIELDS::contains);
     }
 

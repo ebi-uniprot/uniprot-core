@@ -76,7 +76,7 @@ public class UniRefEntryValueMapper implements EntityValueMapper<UniRefEntry> {
 
     private String getTypes(UniRefEntry entry) {
         Set<String> types = new HashSet<>();
-        if(Utils.notNullNotEmpty(entry.getMembers())) {
+        if (Utils.notNullNotEmpty(entry.getMembers())) {
             entry.getMembers().stream()
                     .map(UniRefMember::getMemberIdType)
                     .map(UniRefMemberIdType::toDisplayName)
