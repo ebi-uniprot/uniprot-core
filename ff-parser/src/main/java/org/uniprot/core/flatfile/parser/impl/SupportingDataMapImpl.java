@@ -76,7 +76,7 @@ public class SupportingDataMapImpl implements SupportingDataMap {
 
     private void loadDiseaseMap(String diseaseFile) {
         if (Utils.notNullNotEmpty(diseaseFile)) {
-            diseaseMap.putAll(new DiseaseFileReader().parseFileToAccessionMap(diseaseFile));
+            diseaseMap.putAll(new DiseaseFileReader().parseFileToNameIdMap(diseaseFile));
             LOGGER.info("Loaded " + diseaseMap.size() + " disease Map");
         } else {
             LOGGER.warn("diseaseFile path must not be null or empty");

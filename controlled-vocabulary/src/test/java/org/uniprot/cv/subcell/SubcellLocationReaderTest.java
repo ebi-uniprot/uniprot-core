@@ -29,8 +29,8 @@ class SubcellLocationReaderTest {
 
         assertEquals(1, retList.size(), "Size shoud be exactly 1");
         SubcellularLocationEntry retObj = retList.get(0);
-        assertEquals("Cell tip", retObj.getName(), "Identifier check");
-        assertEquals("SL-0456", retObj.getId(), "Accession test");
+        assertEquals("Cell tip", retObj.getName(), "name check");
+        assertEquals("SL-0456", retObj.getId(), "id test");
         assertEquals(
                 "The region at either end of the longest axis of a cylindrical or elongated cell, where polarized growth may occur.",
                 retObj.getDefinition(),
