@@ -123,6 +123,7 @@ public class UniProtKBEntryIT {
         comments.add(CofactorCommentTest.getCofactorComment());
         comments.add(DiseaseCommentTest.getDiseaseComment());
         comments.add(FreeTextCommentTest.getFreeTextComment());
+        comments.add(FreeTextCommentTest.getFreeTextComment2());
         comments.add(InteractionCommentTest.getInteractionComment());
         comments.add(MassSpectrometryCommentTest.getMassSpectrometryComment());
         comments.add(RnaEditingCommentTest.getRnaEditingComment());

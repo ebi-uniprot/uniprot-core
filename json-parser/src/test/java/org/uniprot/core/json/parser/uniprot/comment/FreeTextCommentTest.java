@@ -61,4 +61,13 @@ public class FreeTextCommentTest {
                                 "value", "ECO:0000256|PIRNR:PIRNR001360"))
                 .build();
     }
+    public static FreeTextComment getFreeTextComment2() {
+        return new FreeTextCommentBuilder()
+                .commentType(CommentType.DISRUPTION_PHENOTYPE)
+                .molecule("Isoform 4 dfs")
+                .textsSet(
+                        CreateUtils.createEvidencedValueList(
+                                "value", "ECO:0000256|PIRNR:PIRNR001365"))
+                .build();
+    }
 }
