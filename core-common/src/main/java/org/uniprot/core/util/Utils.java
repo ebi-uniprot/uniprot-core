@@ -148,8 +148,8 @@ public class Utils {
         if (Objects.isNull(value)) throw new IllegalArgumentException("null not allowed");
     }
 
-    public static void putIfValueNotNull(String key, Object value, Map<String, Object> map) {
-        if (Objects.nonNull(value)) {
+    public static void putIfNameAndValueNotNull(String key, Object value, Map<String, Object> map) {
+        if (Objects.nonNull(value) && notNullNotEmpty(key)) {
             map.put(key, value);
         }
     }
