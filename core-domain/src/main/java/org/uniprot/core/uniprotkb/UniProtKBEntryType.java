@@ -5,8 +5,8 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.util.EnumDisplay;
 
 public enum UniProtKBEntryType implements EnumDisplay<UniProtKBEntryType> {
-    SWISSPROT("Swiss-Prot"),
-    TREMBL("TrEMBL"),
+    SWISSPROT("UniProtKB reviewed (Swiss-Prot)"),
+    TREMBL("UniProtKB unreviewed (TrEMBL)"),
     INACTIVE("Inactive"),
     UNKNOWN("UNKNOWN");
 
