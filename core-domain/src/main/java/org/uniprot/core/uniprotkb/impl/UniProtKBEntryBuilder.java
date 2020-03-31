@@ -1,12 +1,5 @@
 package org.uniprot.core.uniprotkb.impl;
 
-import static org.uniprot.core.util.Utils.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.Builder;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.gene.Gene;
@@ -19,7 +12,18 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 
+import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import static org.uniprot.core.util.Utils.*;
+
 public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
+    public static final String COUNT_BY_COMMENT_TYPE_ATTRIB = "countByCommentType";
+    public static final String COUNT_BY_FEATURE_TYPE_ATTRIB = "countByFeatureType";
 
     private UniProtKBAccession primaryAccession;
     private UniProtKBEntryType entryType;
@@ -41,7 +45,8 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
     private Sequence sequence = null;
     private InternalSection internalSection = null;
     private EntryInactiveReason inactiveReason;
-    private List<TaxonomyLineage> lineages = new ArrayList<>();
+    private List<TaxonomyLineage> lineages;
+    private Map<String, Object> extraAttributes = new LinkedHashMap<>();
 
     public UniProtKBEntryBuilder(
             String primaryAccession, String uniProtId, UniProtKBEntryType type) {
@@ -174,21 +179,39 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
 
     public @Nonnull UniProtKBEntryBuilder commentsAdd(Comment comment) {
         addOrIgnoreNull(comment, this.comments);
+        putIfValueNotNull(
+                COUNT_BY_COMMENT_TYPE_ATTRIB,
+                createCountByCommentTypeMap(this.comments),
+                this.extraAttributes);
         return this;
     }
 
     public @Nonnull UniProtKBEntryBuilder commentsSet(List<Comment> comments) {
         this.comments = modifiableList(comments);
+        this.extraAttributes.remove(COUNT_BY_COMMENT_TYPE_ATTRIB);
+        putIfValueNotNull(
+                COUNT_BY_COMMENT_TYPE_ATTRIB,
+                createCountByCommentTypeMap(this.comments),
+                this.extraAttributes);
         return this;
     }
 
     public @Nonnull UniProtKBEntryBuilder featuresAdd(Feature feature) {
         addOrIgnoreNull(feature, this.features);
+        putIfValueNotNull(
+                COUNT_BY_FEATURE_TYPE_ATTRIB,
+                createCountByFeatureTypeMap(this.features),
+                this.extraAttributes);
         return this;
     }
 
     public @Nonnull UniProtKBEntryBuilder featuresSet(List<Feature> features) {
         this.features = modifiableList(features);
+        this.extraAttributes.remove(COUNT_BY_FEATURE_TYPE_ATTRIB);
+        putIfValueNotNull(
+                COUNT_BY_FEATURE_TYPE_ATTRIB,
+                createCountByFeatureTypeMap(this.features),
+                this.extraAttributes);
         return this;
     }
 
@@ -254,6 +277,11 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
         return this;
     }
 
+    public @Nonnull UniProtKBEntryBuilder extraAttributesAdd(String name, Object value) {
+        putIfValueNotNull(name, value, this.extraAttributes);
+        return this;
+    }
+
     @Override
     public @Nonnull UniProtKBEntry build() {
         return new UniProtKBEntryImpl(
@@ -277,7 +305,8 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
                 sequence,
                 internalSection,
                 lineages,
-                inactiveReason);
+                inactiveReason,
+                extraAttributes);
     }
 
     public static @Nonnull UniProtKBEntryBuilder from(@Nonnull UniProtKBEntry instance) {
@@ -305,5 +334,37 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
                 .lineagesSet(instance.getLineages());
         builder.inactiveReason = instance.getInactiveReason();
         return builder;
+    }
+
+    private Map<String, Integer> createCountByCommentTypeMap(List<Comment> comments) {
+        Map<String, Integer> countByCommentType = null;
+        if (notNullNotEmpty(comments)) {
+            countByCommentType =
+                    comments.stream()
+                            .filter(comment -> comment.getCommentType() != null)
+                            .collect(
+                                    Collectors.groupingBy(
+                                            comment -> comment.getCommentType().toDisplayName(),
+                                            LinkedHashMap::new,
+                                            Collectors.summingInt(comment -> 1)));
+        }
+
+        return countByCommentType;
+    }
+
+    private Map<String, Integer> createCountByFeatureTypeMap(List<Feature> features) {
+        Map<String, Integer> countByFeatureType = null;
+        if (notNullNotEmpty(features)) {
+            countByFeatureType =
+                    features.stream()
+                            .filter(feature -> feature.getType() != null)
+                            .collect(
+                                    Collectors.groupingBy(
+                                            feature -> feature.getType().toDisplayName(),
+                                            LinkedHashMap::new,
+                                            Collectors.summingInt(feature -> 1)));
+        }
+
+        return countByFeatureType;
     }
 }

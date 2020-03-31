@@ -147,4 +147,10 @@ public class Utils {
     public static <T> void nullThrowIllegalArgument(@Nullable T value) {
         if (Objects.isNull(value)) throw new IllegalArgumentException("null not allowed");
     }
+
+    public static void putIfValueNotNull(String key, Object value, Map<String, Object> map) {
+        if (Objects.nonNull(value)) {
+            map.put(key, value);
+        }
+    }
 }

@@ -34,7 +34,10 @@ class UniProtKBEntryImplTest {
     private UniProtKBEntry minEntry =
             new UniProtKBEntryBuilder("acc", "id", UniProtKBEntryType.SWISSPROT).build();
     private List<Comment> comments =
-            asList(new BPCPCommentBuilder().build(), new DiseaseCommentBuilder().build());
+            asList(
+                    new BPCPCommentBuilder().build(),
+                    new DiseaseCommentBuilder().build(),
+                    new BPCPCommentBuilder().build());
     private List<Feature> features =
             asList(
                     new FeatureBuilder().build(),
@@ -2644,7 +2647,8 @@ class UniProtKBEntryImplTest {
                         new SequenceBuilder("seq").build(),
                         null,
                         Collections.emptyList(),
-                        null);
+                        null,
+                        Collections.emptyMap());
         UniProtKBEntry obj = UniProtKBEntryBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
