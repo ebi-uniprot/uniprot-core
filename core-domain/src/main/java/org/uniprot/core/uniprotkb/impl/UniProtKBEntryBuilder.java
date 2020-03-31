@@ -1,5 +1,15 @@
 package org.uniprot.core.uniprotkb.impl;
 
+import static org.uniprot.core.util.Utils.*;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.gene.Gene;
@@ -11,15 +21,6 @@ import org.uniprot.core.uniprotkb.feature.Feature;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
-
-import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import static org.uniprot.core.util.Utils.*;
 
 public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
     public static final String COUNT_BY_COMMENT_TYPE_ATTRIB = "countByCommentType";
@@ -179,7 +180,7 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
 
     public @Nonnull UniProtKBEntryBuilder commentsAdd(Comment comment) {
         addOrIgnoreNull(comment, this.comments);
-        putIfValueNotNull(
+        putIfNameAndValueNotNull(
                 COUNT_BY_COMMENT_TYPE_ATTRIB,
                 createCountByCommentTypeMap(this.comments),
                 this.extraAttributes);
@@ -189,7 +190,7 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
     public @Nonnull UniProtKBEntryBuilder commentsSet(List<Comment> comments) {
         this.comments = modifiableList(comments);
         this.extraAttributes.remove(COUNT_BY_COMMENT_TYPE_ATTRIB);
-        putIfValueNotNull(
+        putIfNameAndValueNotNull(
                 COUNT_BY_COMMENT_TYPE_ATTRIB,
                 createCountByCommentTypeMap(this.comments),
                 this.extraAttributes);
@@ -198,7 +199,7 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
 
     public @Nonnull UniProtKBEntryBuilder featuresAdd(Feature feature) {
         addOrIgnoreNull(feature, this.features);
-        putIfValueNotNull(
+        putIfNameAndValueNotNull(
                 COUNT_BY_FEATURE_TYPE_ATTRIB,
                 createCountByFeatureTypeMap(this.features),
                 this.extraAttributes);
@@ -208,7 +209,7 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
     public @Nonnull UniProtKBEntryBuilder featuresSet(List<Feature> features) {
         this.features = modifiableList(features);
         this.extraAttributes.remove(COUNT_BY_FEATURE_TYPE_ATTRIB);
-        putIfValueNotNull(
+        putIfNameAndValueNotNull(
                 COUNT_BY_FEATURE_TYPE_ATTRIB,
                 createCountByFeatureTypeMap(this.features),
                 this.extraAttributes);
@@ -278,7 +279,7 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
     }
 
     public @Nonnull UniProtKBEntryBuilder extraAttributesAdd(String name, Object value) {
-        putIfValueNotNull(name, value, this.extraAttributes);
+        putIfNameAndValueNotNull(name, value, this.extraAttributes);
         return this;
     }
 
