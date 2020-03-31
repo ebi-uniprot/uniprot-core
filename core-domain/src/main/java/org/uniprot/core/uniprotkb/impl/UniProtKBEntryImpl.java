@@ -3,12 +3,7 @@ package org.uniprot.core.uniprotkb.impl;
 import static org.uniprot.core.util.Utils.notNull;
 import static org.uniprot.core.util.Utils.nullOrEmpty;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.Sequence;
@@ -16,27 +11,8 @@ import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.gene.Gene;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.uniprotkb.*;
-import org.uniprot.core.uniprotkb.comment.APIsoform;
-import org.uniprot.core.uniprotkb.comment.AlternativeProductsComment;
-import org.uniprot.core.uniprotkb.comment.BPCPComment;
-import org.uniprot.core.uniprotkb.comment.CatalyticActivityComment;
-import org.uniprot.core.uniprotkb.comment.CofactorComment;
-import org.uniprot.core.uniprotkb.comment.Comment;
-import org.uniprot.core.uniprotkb.comment.CommentType;
-import org.uniprot.core.uniprotkb.comment.DiseaseComment;
-import org.uniprot.core.uniprotkb.comment.FreeText;
-import org.uniprot.core.uniprotkb.comment.FreeTextComment;
-import org.uniprot.core.uniprotkb.comment.MassSpectrometryComment;
-import org.uniprot.core.uniprotkb.comment.Note;
-import org.uniprot.core.uniprotkb.comment.RnaEditingComment;
-import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
-import org.uniprot.core.uniprotkb.comment.SubcellularLocation;
-import org.uniprot.core.uniprotkb.comment.SubcellularLocationComment;
-import org.uniprot.core.uniprotkb.description.ProteinAltName;
-import org.uniprot.core.uniprotkb.description.ProteinDescription;
-import org.uniprot.core.uniprotkb.description.ProteinRecName;
-import org.uniprot.core.uniprotkb.description.ProteinSection;
-import org.uniprot.core.uniprotkb.description.ProteinSubName;
+import org.uniprot.core.uniprotkb.comment.*;
+import org.uniprot.core.uniprotkb.description.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.HasEvidences;
 import org.uniprot.core.uniprotkb.feature.Feature;
@@ -74,6 +50,7 @@ public class UniProtKBEntryImpl implements UniProtKBEntry {
     private InternalSection internalSection;
     private EntryInactiveReason inactiveReason;
     private List<TaxonomyLineage> lineages;
+    private Map<String, Object> extraAttributes;
 
     // no arg constructor for JSON deserialization
     UniProtKBEntryImpl() {
@@ -87,6 +64,7 @@ public class UniProtKBEntryImpl implements UniProtKBEntry {
         geneLocations = Collections.emptyList();
         keywords = Collections.emptyList();
         lineages = Collections.emptyList();
+        extraAttributes = Collections.emptyMap();
     }
 
     UniProtKBEntryImpl(
@@ -110,7 +88,8 @@ public class UniProtKBEntryImpl implements UniProtKBEntry {
             Sequence sequence,
             InternalSection internalSection,
             List<TaxonomyLineage> lineages,
-            EntryInactiveReason inactiveReason) {
+            EntryInactiveReason inactiveReason,
+            Map<String, Object> extraAttributes) {
         if (Objects.isNull(entryType)) {
             throw new IllegalArgumentException("entryType is Mandatory for uniprot entry.");
         } else if (Objects.isNull(primaryAccession) || nullOrEmpty(primaryAccession.getValue())) {
@@ -144,6 +123,7 @@ public class UniProtKBEntryImpl implements UniProtKBEntry {
         this.internalSection = internalSection;
         this.lineages = Utils.unmodifiableList(lineages);
         this.inactiveReason = inactiveReason;
+        this.extraAttributes = extraAttributes;
     }
 
     @Override
@@ -386,7 +366,8 @@ public class UniProtKBEntryImpl implements UniProtKBEntry {
                 && Objects.equals(uniProtKBCrossReferences, that.uniProtKBCrossReferences)
                 && Objects.equals(sequence, that.sequence)
                 && Objects.equals(internalSection, that.internalSection)
-                && Objects.equals(inactiveReason, that.inactiveReason);
+                && Objects.equals(inactiveReason, that.inactiveReason)
+                && Objects.equals(extraAttributes, that.extraAttributes);
     }
 
     @Override
@@ -411,7 +392,8 @@ public class UniProtKBEntryImpl implements UniProtKBEntry {
                 uniProtKBCrossReferences,
                 sequence,
                 internalSection,
-                inactiveReason);
+                inactiveReason,
+                extraAttributes);
     }
 
     @Override
@@ -441,6 +423,11 @@ public class UniProtKBEntryImpl implements UniProtKBEntry {
             this.getGeneLocations().forEach(val -> updateHasEvidence(evidences, val));
         }
         return new ArrayList<>(evidences);
+    }
+
+    @Override
+    public Map<String, Object> getExtraAttributes() {
+        return this.extraAttributes;
     }
 
     private void updateReferenceEvidences(Set<Evidence> evidences, UniProtKBReference ref) {
