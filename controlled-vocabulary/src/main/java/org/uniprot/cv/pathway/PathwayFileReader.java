@@ -46,8 +46,8 @@ public class PathwayFileReader extends AbstractFileReader<PathwayEntry> {
 
     private PathwayEntry parsePathwayFileEntry(PathwayFileEntry entry) {
         PathwayEntryBuilder retObj = new PathwayEntryBuilder();
-        retObj.accession(entry.ac);
-        retObj.id(trimSpacesAndRemoveLastDot(entry.id));
+        retObj.id(entry.ac);
+        retObj.name(trimSpacesAndRemoveLastDot(entry.id));
         retObj.pathwayClass(entry.cl);
         // definition
         String def = String.join(" ", entry.de);
@@ -160,7 +160,7 @@ public class PathwayFileReader extends AbstractFileReader<PathwayEntry> {
     }
 
     private PathwayEntry findByIdentifier(List<PathwayEntry> list, String ac) {
-        return list.stream().filter(s -> s.getAccession().equals(ac)).findFirst().orElse(null);
+        return list.stream().filter(s -> s.getId().equals(ac)).findFirst().orElse(null);
     }
 
     private String trimSpacesAndRemoveLastDot(String str) {

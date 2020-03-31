@@ -7,7 +7,7 @@ import org.uniprot.core.cv.xdb.CrossRefEntry;
 public class CrossRefEntryImpl implements CrossRefEntry {
 
     private String name;
-    private String accession;
+    private String id;
     private String abbrev;
     private String pubMedId;
     private String doiId;
@@ -25,7 +25,7 @@ public class CrossRefEntryImpl implements CrossRefEntry {
 
     public CrossRefEntryImpl(
             String name,
-            String accession,
+            String id,
             String abbrev,
             String pubMedId,
             String doiId,
@@ -36,7 +36,7 @@ public class CrossRefEntryImpl implements CrossRefEntry {
             Long reviewedProteinCount,
             Long unreviewedProteinCount) {
         this.name = name;
-        this.accession = accession;
+        this.id = id;
         this.abbrev = abbrev;
         this.pubMedId = pubMedId;
         this.doiId = doiId;
@@ -54,8 +54,8 @@ public class CrossRefEntryImpl implements CrossRefEntry {
     }
 
     @Override
-    public String getAccession() {
-        return this.accession;
+    public String getId() {
+        return this.id;
     }
 
     @Override
@@ -109,7 +109,7 @@ public class CrossRefEntryImpl implements CrossRefEntry {
         if (o == null || getClass() != o.getClass()) return false;
         CrossRefEntryImpl that = (CrossRefEntryImpl) o;
         return Objects.equals(this.name, that.name)
-                && Objects.equals(this.accession, that.accession)
+                && Objects.equals(this.id, that.id)
                 && Objects.equals(this.abbrev, that.abbrev)
                 && Objects.equals(this.pubMedId, that.pubMedId)
                 && Objects.equals(this.doiId, that.doiId)
@@ -125,7 +125,7 @@ public class CrossRefEntryImpl implements CrossRefEntry {
     public int hashCode() {
         return Objects.hash(
                 this.name,
-                this.accession,
+                this.id,
                 this.abbrev,
                 this.pubMedId,
                 this.doiId,

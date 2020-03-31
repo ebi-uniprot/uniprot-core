@@ -21,13 +21,13 @@ class UniPathwayFileReaderTest {
         String id = "611.743";
         String text = "Alcohol metabolism; butanol biosynthesis";
         Optional<UniPathway> opUP =
-                unipathwayList.stream().filter(val -> val.getAccession().equals(id)).findFirst();
+                unipathwayList.stream().filter(val -> val.getId().equals(id)).findFirst();
         assertTrue(opUP.isPresent());
         String name = opUP.map(val -> val.getName()).orElse("");
         assertEquals(text, name);
         String id2 = "411";
 
-        opUP = unipathwayList.stream().filter(val -> val.getAccession().equals(id2)).findFirst();
+        opUP = unipathwayList.stream().filter(val -> val.getId().equals(id2)).findFirst();
 
         assertTrue(opUP.isPresent());
         List<UniPathway> result =

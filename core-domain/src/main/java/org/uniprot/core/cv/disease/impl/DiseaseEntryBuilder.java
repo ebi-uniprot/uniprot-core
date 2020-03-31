@@ -11,8 +11,8 @@ import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.util.Utils;
 
 public class DiseaseEntryBuilder implements Builder<DiseaseEntry> {
+    private String name;
     private String id;
-    private String accession;
     private String acronym;
     private String definition;
     private List<String> alternativeNames;
@@ -24,8 +24,8 @@ public class DiseaseEntryBuilder implements Builder<DiseaseEntry> {
     @Override
     public @Nonnull DiseaseEntry build() {
         return new DiseaseEntryImpl(
+                this.name,
                 this.id,
-                this.accession,
                 this.acronym,
                 this.definition,
                 this.alternativeNames,
@@ -37,8 +37,8 @@ public class DiseaseEntryBuilder implements Builder<DiseaseEntry> {
 
     public static @Nonnull DiseaseEntryBuilder from(@Nonnull DiseaseEntry instance) {
         DiseaseEntryBuilder builder = new DiseaseEntryBuilder();
-        builder.id(instance.getId())
-                .accession(instance.getAccession())
+        builder.name(instance.getName())
+                .id(instance.getId())
                 .acronym(instance.getAcronym())
                 .definition(instance.getDefinition())
                 .alternativeNamesSet(instance.getAlternativeNames())
@@ -49,13 +49,13 @@ public class DiseaseEntryBuilder implements Builder<DiseaseEntry> {
         return builder;
     }
 
-    public @Nonnull DiseaseEntryBuilder id(String id) {
-        this.id = id;
+    public @Nonnull DiseaseEntryBuilder name(String name) {
+        this.name = name;
         return this;
     }
 
-    public @Nonnull DiseaseEntryBuilder accession(String accession) {
-        this.accession = accession;
+    public @Nonnull DiseaseEntryBuilder id(String id) {
+        this.id = id;
         return this;
     }
 

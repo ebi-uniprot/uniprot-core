@@ -26,7 +26,7 @@ public class CcLineTransformer implements LineTransformer<Comment> {
                 new SubcellularLocationFileReader()
                         .parseFileToAccessionMap(subcellularLocationFile);
         Map<String, String> diseaseMap =
-                new DiseaseFileReader().parseFileToAccessionMap(diseaseFile);
+                new DiseaseFileReader().parseFileToNameIdMap(diseaseFile);
         converter = new CcLineConverter(diseaseMap, subcellularLocationMap);
     }
 

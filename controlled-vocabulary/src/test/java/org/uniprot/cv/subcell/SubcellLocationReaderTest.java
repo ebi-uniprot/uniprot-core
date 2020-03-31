@@ -29,8 +29,8 @@ class SubcellLocationReaderTest {
 
         assertEquals(1, retList.size(), "Size shoud be exactly 1");
         SubcellularLocationEntry retObj = retList.get(0);
-        assertEquals("Cell tip", retObj.getId(), "Identifier check");
-        assertEquals("SL-0456", retObj.getAccession(), "Accession test");
+        assertEquals("Cell tip", retObj.getName(), "name check");
+        assertEquals("SL-0456", retObj.getId(), "id test");
         assertEquals(
                 "The region at either end of the longest axis of a cylindrical or elongated cell, where polarized growth may occur.",
                 retObj.getDefinition(),
@@ -154,13 +154,10 @@ class SubcellLocationReaderTest {
         assertEquals(1, retList.get(0).getIsA().size(), "Is a Hierarchy of parent size");
         assertEquals(2, retList.get(0).getPartOf().size(), "Part of Hierarchy of parent size");
 
-        assertEquals(
-                "SL-0162",
-                retList.get(0).getIsA().get(0).getAccession(),
-                "Is a Hierarchy of parent");
+        assertEquals("SL-0162", retList.get(0).getIsA().get(0).getId(), "Is a Hierarchy of parent");
         assertEquals(
                 "Endomembrane system",
-                retList.get(0).getPartOf().get(1).getId(),
+                retList.get(0).getPartOf().get(1).getName(),
                 "Part of Hierarchy of parent");
     }
 }

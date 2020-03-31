@@ -24,6 +24,6 @@ class KeywordTest {
     }
 
     static KeywordId getCompleteKeyword() {
-        return new KeywordIdBuilder().id("idValue").accession("accessionValue").build();
+        return new KeywordIdBuilder().name("idValue").id("accessionValue").build();
     }
 }

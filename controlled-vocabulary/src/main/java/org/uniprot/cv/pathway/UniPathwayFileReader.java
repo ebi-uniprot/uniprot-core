@@ -33,8 +33,7 @@ public class UniPathwayFileReader extends AbstractFileReader<UniPathway> {
 
     private void updateRelationship(List<UniPathway> pathways) {
         Map<String, UniPathway> pathwayIdMap =
-                pathways.stream()
-                        .collect(Collectors.toMap(UniPathway::getAccession, Function.identity()));
+                pathways.stream().collect(Collectors.toMap(UniPathway::getId, Function.identity()));
         for (UniPathway pathway : pathways) {
             UniPathway parent = getParent(pathway, pathwayIdMap);
             if (parent != null) {
@@ -47,7 +46,7 @@ public class UniPathwayFileReader extends AbstractFileReader<UniPathway> {
     }
 
     private UniPathway getParent(UniPathway pathway, Map<String, UniPathway> pathwayIdMap) {
-        String id = pathway.getAccession();
+        String id = pathway.getId();
         int index = id.lastIndexOf(".");
         if (index == -1) {
             return null;
@@ -66,7 +65,7 @@ public class UniPathwayFileReader extends AbstractFileReader<UniPathway> {
 
     private UniPathway cleanParentChildren(UniPathway parent) {
         if (parent != null) {
-            UniPathway newEntry = new UniPathway(parent.getAccession(), parent.getName());
+            UniPathway newEntry = new UniPathway(parent.getId(), parent.getName());
             newEntry.setParent(cleanParentChildren(parent.getParent()));
             return newEntry;
         } else {
@@ -78,7 +77,7 @@ public class UniPathwayFileReader extends AbstractFileReader<UniPathway> {
         List<UniPathway> result = new ArrayList<>();
         if (Utils.notNullNotEmpty(children)) {
             for (UniPathway child : children) {
-                UniPathway newEntry = new UniPathway(child.getAccession(), child.getName());
+                UniPathway newEntry = new UniPathway(child.getId(), child.getName());
                 newEntry.setChildren(cleanChildrenParent(child.getChildren()));
                 result.add(newEntry);
             }

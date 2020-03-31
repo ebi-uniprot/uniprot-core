@@ -38,8 +38,8 @@ class DiseaseFileReaderTest {
                 "DiseaseEntry parse result",
                 () -> assertNotNull(retList),
                 () -> assertEquals(1, retList.size(), "should have one object return"),
-                () -> assertEquals("Roberts syndrome", retList.get(0).getId()),
-                () -> assertEquals("DI-02272", retList.get(0).getAccession()),
+                () -> assertEquals("Roberts syndrome", retList.get(0).getName()),
+                () -> assertEquals("DI-02272", retList.get(0).getId()),
                 () -> assertEquals("RBS", retList.get(0).getAcronym()),
                 () ->
                         assertEquals(
@@ -84,8 +84,9 @@ class DiseaseFileReaderTest {
                 () -> assertEquals(1, retList.size(), "should have one object return"),
                 () ->
                         assertEquals(
-                                "Unilateral palmoplantar verrucous nevus", retList.get(0).getId()),
-                () -> assertEquals("DI-01111", retList.get(0).getAccession()),
+                                "Unilateral palmoplantar verrucous nevus",
+                                retList.get(0).getName()),
+                () -> assertEquals("DI-01111", retList.get(0).getId()),
                 () -> assertEquals("UPVN", retList.get(0).getAcronym()),
                 () ->
                         assertEquals(
@@ -150,8 +151,8 @@ class DiseaseFileReaderTest {
         final List<DiseaseEntry> retList = reader.parseLines(input);
         final DiseaseEntry di = retList.get(0);
         assertNotNull(di);
+        assertNotNull(di.getName());
         assertNotNull(di.getId());
-        assertNotNull(di.getAccession());
         assertNotNull(di.getAcronym());
         assertNotNull(di.getDefinition());
         assertEquals(5, di.getAlternativeNames().size());

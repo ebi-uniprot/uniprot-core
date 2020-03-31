@@ -15,8 +15,8 @@ import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 
 public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
     private static final long serialVersionUID = 8881869836509747529L;
+    private String name;
     private String id;
-    private String accession;
     private String definition;
     private String content;
     private KeywordId keyword;
@@ -33,8 +33,8 @@ public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
     SubcellularLocationEntryImpl() {}
 
     SubcellularLocationEntryImpl(
+            String name,
             String id,
-            String accession,
             String definition,
             String content,
             KeywordId keyword,
@@ -47,8 +47,8 @@ public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
             List<String> links,
             List<SubcellularLocationEntry> isA,
             List<SubcellularLocationEntry> partOf) {
+        this.name = name;
         this.id = id;
-        this.accession = accession;
         this.definition = definition;
         this.content = content;
         this.keyword = keyword;
@@ -69,13 +69,13 @@ public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
     }
 
     @Override
-    public String getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
     @Override
-    public String getAccession() {
-        return accession;
+    public String getId() {
+        return id;
     }
 
     @Override
@@ -139,8 +139,8 @@ public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
         if (o == null || getClass() != o.getClass()) return false;
         SubcellularLocationEntry that = (SubcellularLocationEntry) o;
         return getCategory() == that.getCategory()
+                && Objects.equals(getName(), that.getName())
                 && Objects.equals(getId(), that.getId())
-                && Objects.equals(getAccession(), that.getAccession())
                 && Objects.equals(getDefinition(), that.getDefinition())
                 && Objects.equals(getContent(), that.getContent())
                 && Objects.equals(getSynonyms(), that.getSynonyms())
@@ -158,8 +158,8 @@ public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
     public int hashCode() {
         return Objects.hash(
                 getCategory(),
+                getName(),
                 getId(),
-                getAccession(),
                 getDefinition(),
                 getContent(),
                 getSynonyms(),

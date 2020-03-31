@@ -25,7 +25,7 @@ class SubcellularLocationRepoImplTest {
         String id = "Acrosome";
         SubcellularLocationEntry location = this.service.getById(id);
         assertNotNull(location);
-        assertThat(location.getAccession(), is("SL-0007"));
+        assertThat(location.getId(), is("SL-0007"));
     }
 
     @Test

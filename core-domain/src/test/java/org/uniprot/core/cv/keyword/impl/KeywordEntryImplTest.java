@@ -36,7 +36,7 @@ class KeywordEntryImplTest {
     @BeforeEach
     void setUp() {
         this.random = UUID.randomUUID().toString();
-        this.keyword = createKeyword("id-" + this.random, "acc-" + this.random);
+        this.keyword = createKeyword("name-" + this.random, "id-" + this.random);
         this.definition = "definition-" + this.random;
         this.synonyms =
                 IntStream.range(0, 5)
@@ -135,8 +135,8 @@ class KeywordEntryImplTest {
                 this.statistics);
     }
 
-    public static KeywordId createKeyword(String id, String accession) {
-        return new KeywordIdBuilder().id(id).accession(accession).build();
+    public static KeywordId createKeyword(String name, String id) {
+        return new KeywordIdBuilder().name(name).id(id).build();
     }
 
     private static GeneOntologyEntry go(String id, String term) {

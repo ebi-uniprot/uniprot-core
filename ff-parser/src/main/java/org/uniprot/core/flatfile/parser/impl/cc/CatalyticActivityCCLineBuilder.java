@@ -57,7 +57,7 @@ public class CatalyticActivityCCLineBuilder extends CCLineBuilderAbstr<Catalytic
         //	List<String> words = new ArrayList<>();
         if (!xrefs.isEmpty()) {
             //	words =xrefs.stream().map(val ->
-            // val.getId()).filter(val->val.contains("-")).collect(Collectors.toList());
+            // val.getName()).filter(val->val.contains("-")).collect(Collectors.toList());
             sb.append(FFLineConstant.SPACE)
                     .append(XREF)
                     .append(
