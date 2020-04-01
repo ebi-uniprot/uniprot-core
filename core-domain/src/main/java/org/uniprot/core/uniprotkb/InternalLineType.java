@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-public enum InternalLineType implements EnumDisplay<InternalLineType> {
+public enum InternalLineType implements EnumDisplay {
     CL(1),
     // Chromosomal location of a gene.
     CP(2),
@@ -75,8 +75,15 @@ public enum InternalLineType implements EnumDisplay<InternalLineType> {
         return position;
     }
 
-    @Override
-    public @Nonnull String toDisplayName() {
+    public @Nonnull String getDisplayName() {
         return name();
+    }
+
+    public @Nonnull String getName() {
+        return String.valueOf(position);
+    }
+
+    public static @Nonnull InternalLineType typeOf(int position) {
+        return EnumDisplay.typeOf(String.valueOf(position), InternalLineType.class);
     }
 }

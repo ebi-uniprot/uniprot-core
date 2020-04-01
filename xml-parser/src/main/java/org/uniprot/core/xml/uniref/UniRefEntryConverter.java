@@ -84,7 +84,7 @@ public class UniRefEntryConverter implements Converter<Entry, UniRefEntry> {
             } else if (property.getType().equals(PROPERTY_MEMBER_COUNT)) {
                 builder.memberCount(Integer.parseInt(property.getValue()));
             } else {
-                System.out.println("property.getType() = " + property.getType() + " not supported");
+                System.out.println("property.typeOf() = " + property.getType() + " not supported");
             }
         }
     }
@@ -138,7 +138,7 @@ public class UniRefEntryConverter implements Converter<Entry, UniRefEntry> {
             case PROCESS:
                 return createProperty(PROPERTY_GO_PROCESS, goTerm.getId());
         }
-        return createProperty(goTerm.getAspect().toDisplayName(), goTerm.getId());
+        return createProperty(goTerm.getAspect().getDisplayName(), goTerm.getId());
     }
 
     private PropertyType createProperty(String type, String value) {

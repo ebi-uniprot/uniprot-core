@@ -118,7 +118,7 @@ public class CcLineFormater implements LineFormater {
     private boolean isFirstLineComment(String token) {
         if (token.startsWith(CC_LINE_FIRST_PREFIX)) return true;
         for (CommentType type : CommentType.values()) {
-            if (token.startsWith(type.toDisplayName() + ":")) {
+            if (token.startsWith(type.getDisplayName() + ":")) {
                 return true;
             }
         }

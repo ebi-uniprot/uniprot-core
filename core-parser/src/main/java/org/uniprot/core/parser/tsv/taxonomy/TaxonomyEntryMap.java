@@ -83,7 +83,7 @@ public class TaxonomyEntryMap implements NamedValueMap {
 
     private String getRank() {
         if (taxonomyEntry.getRank() != null) {
-            return taxonomyEntry.getRank().toDisplayName();
+            return taxonomyEntry.getRank().getDisplayName();
         } else {
             return "";
         }

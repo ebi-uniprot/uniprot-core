@@ -4,33 +4,23 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-public enum UniProtKBEntryType implements EnumDisplay<UniProtKBEntryType> {
+public enum UniProtKBEntryType implements EnumDisplay {
     SWISSPROT("Swiss-Prot"),
     TREMBL("TrEMBL"),
     INACTIVE("Inactive"),
     UNKNOWN("UNKNOWN");
 
-    private String value;
+    private String name;
 
     UniProtKBEntryType(String type) {
-        this.value = type;
+        this.name = type;
     }
 
-    public @Nonnull static UniProtKBEntryType typeOf(@Nonnull String value) {
-        for (UniProtKBEntryType entryType : UniProtKBEntryType.values()) {
-            if (entryType.getValue().equalsIgnoreCase(value)) {
-                return entryType;
-            }
-        }
-        return UniProtKBEntryType.UNKNOWN;
+    public @Nonnull String getName() {
+        return name;
     }
 
-    public @Nonnull String getValue() {
-        return value;
-    }
-
-    @Override
-    public @Nonnull String toDisplayName() {
-        return value;
+    public static @Nonnull UniProtKBEntryType typeOf(@Nonnull String name) {
+        return EnumDisplay.typeOf(name, UniProtKBEntryType.UNKNOWN);
     }
 }

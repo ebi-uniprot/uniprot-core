@@ -141,4 +141,8 @@ public class Utils {
         if (nullOrEmpty(str)) return str;
         return Character.toLowerCase(str.charAt(0)) + str.substring(1);
     }
+
+    public static <T> void nullThrowIllegalArgument(@Nullable T value) {
+        if (Objects.isNull(value)) throw new IllegalArgumentException("null not allowed");
+    }
 }

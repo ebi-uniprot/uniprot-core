@@ -36,11 +36,11 @@ class FeatureTypeTest {
 
     @Test
     void valueAndDisplayNameAreEqual() {
-        assertEquals(FeatureType.CHAIN.toDisplayName(), FeatureType.CHAIN.getValue());
+        assertEquals(FeatureType.CHAIN.getDisplayName(), FeatureType.CHAIN.getValue());
     }
 
     @Test
     void nameAndDisplayNameAreNotEqual() {
-        assertNotEquals(FeatureType.CHAIN.toDisplayName(), FeatureType.CHAIN.getName());
+        assertNotEquals(FeatureType.CHAIN.getDisplayName(), FeatureType.CHAIN.getName());
     }
 }

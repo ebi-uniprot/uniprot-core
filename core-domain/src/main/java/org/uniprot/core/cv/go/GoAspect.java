@@ -4,18 +4,21 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-public enum GoAspect implements EnumDisplay<GoAspect> {
+public enum GoAspect implements EnumDisplay {
     FUNCTION("GO Molecular Function"),
     PROCESS("GO Biological Process"),
     COMPONENT("GO Cellular Component");
-    private final String displayName;
+    private final String name;
 
-    GoAspect(String displayName) {
-        this.displayName = displayName;
+    GoAspect(String name) {
+        this.name = name;
     }
 
-    @Override
-    public @Nonnull String toDisplayName() {
-        return this.displayName;
+    public @Nonnull String getName() {
+        return name;
+    }
+
+    public static @Nonnull GoAspect typeOf(@Nonnull String displayName) {
+        return EnumDisplay.typeOf(displayName, GoAspect.class);
     }
 }

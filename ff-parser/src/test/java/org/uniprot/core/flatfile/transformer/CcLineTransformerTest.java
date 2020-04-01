@@ -750,7 +750,7 @@ class CcLineTransformerTest {
         assertEquals(disease.getDescription(), diseaseDescription);
 
         assertEquals(
-                disease.getDiseaseCrossReference().getDatabase().toDisplayName(),
+                disease.getDiseaseCrossReference().getDatabase().getDisplayName(),
                 diseaseReferenceType);
         assertEquals(disease.getDiseaseCrossReference().getId(), diseaseReferenceId);
 

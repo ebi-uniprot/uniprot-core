@@ -12,7 +12,7 @@ class UniProtKBDatabaseCategoryTest {
     @ParameterizedTest
     @EnumSource(UniProtDatabaseCategory.class)
     void getDisplay_toDisplay_areSame(UniProtDatabaseCategory category) {
-        assertSame(category.getDisplayName(), category.toDisplayName());
+        assertSame(category.getDisplayName(), category.getDisplayName());
     }
 
     @ParameterizedTest
@@ -43,8 +43,18 @@ class UniProtKBDatabaseCategoryTest {
                 UniProtDatabaseCategory.typeOf("FMD"));
     }
 
+    @Test
+    void matchIsCaseInsencetive() {
+        assertEquals(
+                UniProtDatabaseCategory.ORGANISM_SPECIFIC_DATABASES,
+                UniProtDatabaseCategory.typeOf("org"));
+
+        assertEquals(
+                UniProtDatabaseCategory.SEQUENCE_DATABASES, UniProtDatabaseCategory.typeOf("sEq"));
+    }
+
     @ParameterizedTest
-    @ValueSource(strings = {"org", "Seq", "FMd", "FMG", "not exist"})
+    @ValueSource(strings = {"  ", "", "FMG", "not exist"})
     void typeOfName_existMatch(String val) {
         assertThrows(IllegalArgumentException.class, () -> UniProtDatabaseCategory.typeOf(val));
     }

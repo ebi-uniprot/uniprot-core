@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-public enum ProteomeType implements EnumDisplay<ProteomeType> {
+public enum ProteomeType implements EnumDisplay {
     NORMAL("Complete proteome"),
     REFERENCE("Reference proteome"),
     REPRESENTATIVE("Representative proteome"),
@@ -21,8 +21,7 @@ public enum ProteomeType implements EnumDisplay<ProteomeType> {
         return name;
     }
 
-    @Override
-    public @Nonnull String toDisplayName() {
-        return getName();
+    public static @Nonnull ProteomeType typeOf(@Nonnull String name) {
+        return EnumDisplay.typeOf(name, ProteomeType.class);
     }
 }

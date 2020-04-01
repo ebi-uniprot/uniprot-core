@@ -9,6 +9,6 @@ class TaxonomyInactiveReasonTypeTest {
     void name_toDisplayName_areSame() {
         assertSame(
                 TaxonomyInactiveReasonType.MERGED.name(),
-                TaxonomyInactiveReasonType.MERGED.toDisplayName());
+                TaxonomyInactiveReasonType.MERGED.getDisplayName());
     }
 }

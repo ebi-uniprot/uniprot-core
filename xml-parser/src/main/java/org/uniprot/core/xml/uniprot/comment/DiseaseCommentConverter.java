@@ -90,7 +90,7 @@ public class DiseaseCommentConverter implements CommentConverter<DiseaseComment>
         CommentType xmlComment = xmlUniprotFactory.createCommentType();
 
         // comment type
-        xmlComment.setType(comment.getCommentType().toDisplayName().toLowerCase());
+        xmlComment.setType(comment.getCommentType().getDisplayName().toLowerCase());
 
         if (!Strings.isNullOrEmpty(comment.getMolecule())) {
             MoleculeType mol = xmlUniprotFactory.createMoleculeType();

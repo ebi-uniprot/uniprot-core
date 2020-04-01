@@ -54,7 +54,7 @@ class KeywordEntryImplTest {
         long rev = ThreadLocalRandom.current().nextLong(100000);
         long unrev = ThreadLocalRandom.current().nextLong(100000);
         this.statistics = KeywordStatisticsImplTest.createKeywordStatistics(rev, unrev);
-        this.category = createKeyword("idc-" + this.random, "cat-acc-" + this.random);
+        this.category = KeywordCategory.DOMAIN;
     }
 
     @Test
@@ -70,7 +70,7 @@ class KeywordEntryImplTest {
         assertNotNull(keywordEntry.getChildren());
         assertTrue(keywordEntry.getChildren().isEmpty());
         assertArrayEquals(this.sites.toArray(), keywordEntry.getSites().toArray());
-        assertEquals(KeywordCategory.fromId(this.category.getId()), keywordEntry.getCategory());
+        assertEquals(KeywordCategory.typeOf(this.category.getName()), keywordEntry.getCategory());
         assertEquals(this.statistics, keywordEntry.getStatistics());
     }
 

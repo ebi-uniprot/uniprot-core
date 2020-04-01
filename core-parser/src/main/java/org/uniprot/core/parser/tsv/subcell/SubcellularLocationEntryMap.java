@@ -101,7 +101,7 @@ public class SubcellularLocationEntryMap implements NamedValueMap {
 
     private String getCategory() {
         if (entry.getCategory() != null) {
-            return Utils.emptyOrString(entry.getCategory().toDisplayName());
+            return Utils.emptyOrString(entry.getCategory().getDisplayName());
         } else {
             return "";
         }

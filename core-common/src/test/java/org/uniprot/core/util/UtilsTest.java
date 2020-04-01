@@ -584,5 +584,29 @@ class UtilsTest {
                         });
             }
         }
+
+        @Nested
+        class nullValueThrowIllegalArgument {
+
+            @Test
+            void nullTest() {
+                assertThrows(
+                        IllegalArgumentException.class, () -> Utils.nullThrowIllegalArgument(null));
+            }
+
+            @Test
+            void nullTestMsg() {
+                Throwable exception =
+                        assertThrows(
+                                IllegalArgumentException.class,
+                                () -> Utils.nullThrowIllegalArgument(null));
+                assertEquals("null not allowed", exception.getMessage());
+            }
+
+            @Test
+            void nonNullTest() {
+                assertDoesNotThrow(() -> Utils.nullThrowIllegalArgument(""));
+            }
+        }
     }
 }

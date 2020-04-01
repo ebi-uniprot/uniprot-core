@@ -10,6 +10,6 @@ class PositionModifierTest {
     @ParameterizedTest
     @EnumSource(PositionModifier.class)
     void toDisplayName_returnSameConst(PositionModifier enm) {
-        assertEquals(enm.toString(), enm.toDisplayName());
+        assertEquals(enm.toString(), enm.getDisplayName());
     }
 }

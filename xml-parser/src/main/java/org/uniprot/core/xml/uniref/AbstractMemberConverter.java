@@ -47,7 +47,7 @@ public abstract class AbstractMemberConverter<T extends UniRefMember>
     protected void updateMemberToXml(MemberType memberType, T uniObj) {
         DbReferenceType xref = jaxbFactory.createDbReferenceType();
         memberType.setDbReference(xref);
-        xref.setType(uniObj.getMemberIdType().toDisplayName());
+        xref.setType(uniObj.getMemberIdType().getDisplayName());
         xref.setId(uniObj.getMemberId());
 
         if (!Strings.isNullOrEmpty(uniObj.getOrganismName())) {

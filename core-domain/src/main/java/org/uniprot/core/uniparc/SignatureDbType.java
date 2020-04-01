@@ -4,11 +4,7 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/**
- * @author jluo
- * @date: 21 May 2019
- */
-public enum SignatureDbType implements EnumDisplay<SignatureDbType> {
+public enum SignatureDbType implements EnumDisplay {
     CDD("CDD"),
     GENE3D("Gene3D"),
     HAMAP("HAMAP"),
@@ -29,17 +25,11 @@ public enum SignatureDbType implements EnumDisplay<SignatureDbType> {
         this.name = name;
     }
 
-    @Override
-    public @Nonnull String toDisplayName() {
+    public @Nonnull String getName() {
         return name;
     }
 
-    public static @Nonnull SignatureDbType typeOf(@Nonnull String value) {
-        for (SignatureDbType type : SignatureDbType.values()) {
-            if (type.toDisplayName().equalsIgnoreCase(value)) {
-                return type;
-            }
-        }
-        throw new IllegalArgumentException("The SignatureDbType: " + value + " doesn't exist");
+    public static @Nonnull SignatureDbType typeOf(@Nonnull String name) {
+        return EnumDisplay.typeOf(name, SignatureDbType.class);
     }
 }

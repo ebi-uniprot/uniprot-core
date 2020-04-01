@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-public enum GeneNameType implements EnumDisplay<GeneNameType> {
+public enum GeneNameType implements EnumDisplay {
     MOD("MOD"),
     ENSEMBL("Ensembl"),
     OLN("OLN"),
@@ -22,15 +22,7 @@ public enum GeneNameType implements EnumDisplay<GeneNameType> {
         return name;
     }
 
-    @Override
-    public @Nonnull String toDisplayName() {
-        return getName();
-    }
-
-    public static @Nonnull GeneNameType fromValue(@Nonnull String type) {
-        for (GeneNameType gnType : GeneNameType.values()) {
-            if (gnType.getName().equalsIgnoreCase(type)) return gnType;
-        }
-        return GeneNameType.MISSING;
+    public static @Nonnull GeneNameType typeOf(@Nonnull String name) {
+        return EnumDisplay.typeOf(name, GeneNameType.MISSING);
     }
 }

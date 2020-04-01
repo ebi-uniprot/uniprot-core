@@ -40,9 +40,9 @@ class ReferenceCommentTypeTest {
     }
 
     @Test
-    void getValue_displayName_areSame() {
+    void getName_displayName_areSame() {
         assertSame(
-                ReferenceCommentType.TRANSPOSON.getValue(),
-                ReferenceCommentType.TRANSPOSON.toDisplayName());
+                ReferenceCommentType.TRANSPOSON.getName(),
+                ReferenceCommentType.TRANSPOSON.getDisplayName());
     }
 }

@@ -49,6 +49,6 @@ class PhysiologicalDirectionTypeTest {
 
     @Test
     void displayNameWillReturnName() {
-        assertEquals("right-to-left", PhysiologicalDirectionType.RIGHT_TO_LEFT.toDisplayName());
+        assertEquals("right-to-left", PhysiologicalDirectionType.RIGHT_TO_LEFT.getDisplayName());
     }
 }

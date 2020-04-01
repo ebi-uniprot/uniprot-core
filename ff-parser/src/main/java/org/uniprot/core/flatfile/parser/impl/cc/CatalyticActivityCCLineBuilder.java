@@ -32,7 +32,9 @@ public class CatalyticActivityCCLineBuilder extends CCLineBuilderAbstr<Catalytic
 
     private String convertReactionReference(CrossReference<ReactionDatabase> rs) {
         StringBuilder sb = new StringBuilder();
-        sb.append(rs.getDatabase().toDisplayName()).append(FFLineConstant.COLON).append(rs.getId());
+        sb.append(rs.getDatabase().getDisplayName())
+                .append(FFLineConstant.COLON)
+                .append(rs.getId());
 
         return sb.toString();
     }
@@ -98,7 +100,7 @@ public class CatalyticActivityCCLineBuilder extends CCLineBuilderAbstr<Catalytic
             StringBuilder sb2 = new StringBuilder();
             if (includeFFMarkings) sb2.append(this.linePrefix);
             sb2.append(PHYSIO_DIRECTION)
-                    .append(direction.getDirectionType().toDisplayName())
+                    .append(direction.getDirectionType().getDisplayName())
                     .append(FFLineConstant.SEPARATOR_SEMICOLON);
 
             sb2.append(XREF)

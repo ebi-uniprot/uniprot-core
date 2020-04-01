@@ -4,13 +4,12 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-public enum SubmissionDatabase implements EnumDisplay<SubmissionDatabase> {
+public enum SubmissionDatabase implements EnumDisplay {
     PDB("PDB data bank"),
     PIR("PIR data bank"),
     SWISS_PROT("Swiss-Prot"),
     UNIPROTKB("UniProtKB"),
-    EMBL_GENBANK_DDBJ("EMBL/GenBank/DDBJ databases"),
-    UNKNOWN("Unknown");
+    EMBL_GENBANK_DDBJ("EMBL/GenBank/DDBJ databases");
 
     private String name;
 
@@ -18,22 +17,11 @@ public enum SubmissionDatabase implements EnumDisplay<SubmissionDatabase> {
         this.name = name;
     }
 
-    public static @Nonnull SubmissionDatabase typeOf(@Nonnull String name) {
-        for (SubmissionDatabase submissionDatabase : SubmissionDatabase.values()) {
-            if (submissionDatabase.getName().equalsIgnoreCase(name)) {
-                return submissionDatabase;
-            }
-        }
-        throw new IllegalArgumentException(
-                "the feature with the description " + name + " doesn't exist");
-    }
-
     public @Nonnull String getName() {
         return name;
     }
 
-    @Override
-    public @Nonnull String toDisplayName() {
-        return getName();
+    public static @Nonnull SubmissionDatabase typeOf(@Nonnull String name) {
+        return EnumDisplay.typeOf(name, SubmissionDatabase.class);
     }
 }

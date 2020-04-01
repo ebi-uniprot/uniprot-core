@@ -165,6 +165,6 @@ class InternalLineTypeTest {
     @ParameterizedTest
     @EnumSource(InternalLineType.class)
     void displayNameIs_enumName(InternalLineType enm) {
-        assertEquals(enm.toString(), enm.toDisplayName());
+        assertEquals(enm.toString(), enm.getDisplayName());
     }
 }
