@@ -23,8 +23,19 @@ import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 
 public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
-    public static final String COUNT_BY_COMMENT_TYPE_ATTRIB = "countByCommentType";
-    public static final String COUNT_BY_FEATURE_TYPE_ATTRIB = "countByFeatureType";
+    public enum ExtraAttributeName {
+        COUNT_BY_COMMENT_TYPE_ATTRIB("countByCommentType"),
+        COUNT_BY_FEATURE_TYPE_ATTRIB("countByFeatureType");
+        private String displayName;
+
+        ExtraAttributeName(String displayName) {
+            this.displayName = displayName;
+        }
+
+        public String getDisplayName() {
+            return this.displayName;
+        }
+    }
 
     private UniProtKBAccession primaryAccession;
     private UniProtKBEntryType entryType;
@@ -46,7 +57,7 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
     private Sequence sequence = null;
     private InternalSection internalSection = null;
     private EntryInactiveReason inactiveReason;
-    private List<TaxonomyLineage> lineages;
+    private List<TaxonomyLineage> lineages = new ArrayList<>();
     private Map<String, Object> extraAttributes = new LinkedHashMap<>();
 
     public UniProtKBEntryBuilder(
@@ -180,39 +191,21 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
 
     public @Nonnull UniProtKBEntryBuilder commentsAdd(Comment comment) {
         addOrIgnoreNull(comment, this.comments);
-        putIfNameAndValueNotNull(
-                COUNT_BY_COMMENT_TYPE_ATTRIB,
-                createCountByCommentTypeMap(this.comments),
-                this.extraAttributes);
         return this;
     }
 
     public @Nonnull UniProtKBEntryBuilder commentsSet(List<Comment> comments) {
         this.comments = modifiableList(comments);
-        this.extraAttributes.remove(COUNT_BY_COMMENT_TYPE_ATTRIB);
-        putIfNameAndValueNotNull(
-                COUNT_BY_COMMENT_TYPE_ATTRIB,
-                createCountByCommentTypeMap(this.comments),
-                this.extraAttributes);
         return this;
     }
 
     public @Nonnull UniProtKBEntryBuilder featuresAdd(Feature feature) {
         addOrIgnoreNull(feature, this.features);
-        putIfNameAndValueNotNull(
-                COUNT_BY_FEATURE_TYPE_ATTRIB,
-                createCountByFeatureTypeMap(this.features),
-                this.extraAttributes);
         return this;
     }
 
     public @Nonnull UniProtKBEntryBuilder featuresSet(List<Feature> features) {
         this.features = modifiableList(features);
-        this.extraAttributes.remove(COUNT_BY_FEATURE_TYPE_ATTRIB);
-        putIfNameAndValueNotNull(
-                COUNT_BY_FEATURE_TYPE_ATTRIB,
-                createCountByFeatureTypeMap(this.features),
-                this.extraAttributes);
         return this;
     }
 
@@ -278,13 +271,17 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
         return this;
     }
 
-    public @Nonnull UniProtKBEntryBuilder extraAttributesAdd(String name, Object value) {
-        putIfNameAndValueNotNull(name, value, this.extraAttributes);
+    public @Nonnull UniProtKBEntryBuilder extraAttributesAdd(
+            ExtraAttributeName name, Object value) {
+        putOrIgnoreNull(name.getDisplayName(), value, this.extraAttributes);
         return this;
     }
 
     @Override
     public @Nonnull UniProtKBEntry build() {
+
+        populateExtraAttributes();
+
         return new UniProtKBEntryImpl(
                 entryType,
                 primaryAccession,
@@ -335,6 +332,22 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
                 .lineagesSet(instance.getLineages());
         builder.inactiveReason = instance.getInactiveReason();
         return builder;
+    }
+
+    private void populateExtraAttributes() {
+        // count by comment type
+        Map<String, Integer> countByCommentType = createCountByCommentTypeMap(comments);
+        putOrIgnoreNull(
+                ExtraAttributeName.COUNT_BY_COMMENT_TYPE_ATTRIB.getDisplayName(),
+                countByCommentType,
+                this.extraAttributes);
+
+        // count by feature type
+        Map<String, Integer> countByFeatureType = createCountByFeatureTypeMap(features);
+        putOrIgnoreNull(
+                ExtraAttributeName.COUNT_BY_FEATURE_TYPE_ATTRIB.getDisplayName(),
+                countByFeatureType,
+                this.extraAttributes);
     }
 
     private Map<String, Integer> createCountByCommentTypeMap(List<Comment> comments) {

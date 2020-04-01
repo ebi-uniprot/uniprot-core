@@ -393,6 +393,109 @@ class UtilsTest {
                         () -> assertFalse(Utils.nullOrEmpty(Collections.unmodifiableMap(map))));
             }
         }
+
+        @Nested
+        class test_putOrIgnoreNull {
+            @Test
+            void whenAKeyIsAdded() {
+                String key = "key";
+                Object value = "value";
+                Map<String, Object> map = new HashMap<>();
+                Utils.putOrIgnoreNull(key, value, map);
+                assertEquals(1, map.size());
+                assertTrue(map.containsKey(key));
+                assertEquals(value, map.get(key));
+            }
+
+            @Test
+            void whenMoreThanOneKeysAdded() {
+                String key1 = "key1";
+                Object value1 = "value1";
+                String key2 = "key2";
+                Object value2 = "value2";
+                Map<String, Object> map = new HashMap<>();
+                Utils.putOrIgnoreNull(key1, value1, map);
+                Utils.putOrIgnoreNull(key2, value2, map);
+                assertEquals(2, map.size());
+                assertTrue(map.containsKey(key1));
+                assertEquals(value1, map.get(key1));
+                assertTrue(map.containsKey(key2));
+                assertEquals(value2, map.get(key2));
+            }
+
+            @Test
+            void whenSameKeyIsAddedTwice() {
+                String key1 = "key1";
+                String key2 = "key2";
+                String value2 = "value2";
+                Object oldVal = "oldvalue";
+                Object latVal = "latestvalue";
+                Map<String, Object> map = new HashMap<>();
+                Utils.putOrIgnoreNull(key1, oldVal, map);
+                Utils.putOrIgnoreNull(key2, value2, map);
+                Utils.putOrIgnoreNull(key1, latVal, map);
+                assertEquals(2, map.size());
+                assertTrue(map.containsKey(key1));
+                assertEquals(latVal, map.get(key1));
+                assertTrue(map.containsKey(key2));
+                assertEquals(value2, map.get(key2));
+            }
+
+            @Test
+            void whenKeyIsNull() {
+                String key = null;
+                Object value = "value";
+                Map<String, Object> map = new HashMap<>();
+                Utils.putOrIgnoreNull(key, value, map);
+                assertTrue(map.isEmpty());
+            }
+
+            @Test
+            void whenKeyIsEmpty() {
+                String key = "";
+                Object value = "value";
+                Map<String, Object> map = new HashMap<>();
+                Utils.putOrIgnoreNull(key, value, map);
+                assertTrue(map.isEmpty());
+            }
+
+            @Test
+            void whenValueIsNull() {
+                String key = "key";
+                Object value = null;
+                Map<String, Object> map = new HashMap<>();
+                Utils.putOrIgnoreNull(key, value, map);
+                assertTrue(map.isEmpty());
+            }
+
+            @Test
+            void whenValueIsEmpty() {
+                String key = "key";
+                Object value = "";
+                Map<String, Object> map = new HashMap<>();
+                Utils.putOrIgnoreNull(key, value, map);
+                assertEquals(1, map.size());
+                assertTrue(map.get(key).toString().isEmpty());
+            }
+
+            @Test
+            void whenKeyAndValueAreNull() {
+                String key = null;
+                Object value = null;
+                Map<String, Object> map = new HashMap<>();
+                Utils.putOrIgnoreNull(key, value, map);
+                assertTrue(map.isEmpty());
+            }
+
+            @Test
+            void whenMapIsNull() {
+                String key = "key";
+                Object value = "value";
+                Map<String, Object> map = null;
+                Utils.putOrIgnoreNull(key, value, map);
+                assertNull(map);
+            }
+        }
     }
 
     @Nested
