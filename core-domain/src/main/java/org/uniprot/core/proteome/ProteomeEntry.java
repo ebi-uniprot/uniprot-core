@@ -49,4 +49,5 @@ public interface ProteomeEntry extends Serializable {
     List<CanonicalProtein> getCanonicalProteins();
 
     String getSourceDb();
+    ProteomeCompletenessReport getProteomeCompletenessReport();
 }
