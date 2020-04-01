@@ -17,6 +17,7 @@ import org.uniprot.core.taxonomy.impl.TaxonomyLineageBuilder;
 import org.uniprot.core.uniprotkb.*;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.impl.CofactorCommentBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.DiseaseCommentBuilder;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilder;
@@ -644,6 +645,29 @@ class UniProtKBEntryBuilderTest {
             assertFalse(obj.hasComments());
             assertTrue(obj.getExtraAttributes().isEmpty());
         }
+
+        @Test
+        void canAddMoreThanOneComment() {
+            Comment comment2 = new DiseaseCommentBuilder().build();
+            Comment comment3 = new CofactorCommentBuilder().build();
+            UniProtKBEntry obj = UniProtKBEntryBuilder.from(minEntry).commentsAdd(comment).commentsAdd(comment3).commentsAdd(comment2).build();
+            assertNotNull(obj.getComments());
+            assertFalse(obj.getComments().isEmpty());
+            assertTrue(obj.hasComments());
+            assertEquals(1, obj.getExtraAttributes().size());
+            Map<String, Object> countByType =
+                    (Map<String, Object>)
+                            obj.getExtraAttributes()
+                                    .get(
+                                            UniProtKBEntryBuilder.ExtraAttributeName
+                                                    .COUNT_BY_COMMENT_TYPE_ATTRIB
+                                                    .getDisplayName());
+            assertEquals(2, countByType.size());
+            assertTrue(countByType.containsKey(CommentType.DISEASE.toDisplayName()));
+            assertEquals(2, countByType.get(CommentType.DISEASE.toDisplayName()));
+            assertTrue(countByType.containsKey(CommentType.COFACTOR.toDisplayName()));
+            assertEquals(1, countByType.get(CommentType.COFACTOR.toDisplayName()));
+        }
     }
 
     @Nested
@@ -718,6 +742,29 @@ class UniProtKBEntryBuilderTest {
             assertNotNull(obj.getFeatures());
             assertTrue(obj.getFeatures().isEmpty());
             assertFalse(obj.hasFeatures());
+        }
+
+        @Test
+        void canAddMoreThanOneFeature() {
+            Feature feature2 = new FeatureBuilder().type(FeatureType.CHAIN).build();
+            Feature feature3 = new FeatureBuilder().type(FeatureType.VARIANT).build();
+            UniProtKBEntry obj = UniProtKBEntryBuilder.from(minEntry).featuresAdd(feature).featuresAdd(feature3).featuresAdd(feature2).build();
+            assertNotNull(obj.getComments());
+            assertFalse(obj.getFeatures().isEmpty());
+            assertTrue(obj.hasFeatures());
+            assertEquals(1, obj.getExtraAttributes().size());
+            Map<String, Object> countByType =
+                    (Map<String, Object>)
+                            obj.getExtraAttributes()
+                                    .get(
+                                            UniProtKBEntryBuilder.ExtraAttributeName
+                                                    .COUNT_BY_FEATURE_TYPE_ATTRIB
+                                                    .getDisplayName());
+            assertEquals(2, countByType.size());
+            assertTrue(countByType.containsKey(FeatureType.CHAIN.toDisplayName()));
+            assertEquals(2, countByType.get(FeatureType.CHAIN.toDisplayName()));
+            assertTrue(countByType.containsKey(FeatureType.VARIANT.toDisplayName()));
+            assertEquals(1, countByType.get(FeatureType.VARIANT.toDisplayName()));
         }
     }
 
