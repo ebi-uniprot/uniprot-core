@@ -652,6 +652,29 @@ class UniProtKBEntryValueMapperTest {
         verify(keywordid, "keywordid", result);
     }
 
+    @Test
+    void testExtraAttributeCommentCount() {
+        List<String> fields = Arrays.asList("comment_count");
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        String expectedCommentCount = "ALTERNATIVE PRODUCTS (1); FUNCTION (4); INTERACTION (1); " +
+                "SIMILARITY (1); SUBCELLULAR LOCATION (1); SUBUNIT (1); TISSUE SPECIFICITY (1)";
+
+        verify(expectedCommentCount, "comment_count", result);
+    }
+
+    @Test
+    void testExtraAttributeFeatureCount() {
+        List<String> fields = Arrays.asList("feature_count");
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        String expectedCommentCount = "Post-translationally modified residue (6); Sequence variation (2); " +
+                "chain (1); glycosylation site (2); helix (11); intramembrane region (2); metal ion-binding site (5); " +
+                "sequence conflict (8); splice variant (2); strand (2); topological domain (11); transmembrane region (8)";
+
+        verify(expectedCommentCount, "feature_count", result);
+    }
+
     private void verify(String expected, String fieldName, Map<String, String> result) {
         assertEquals(expected, result.get(fieldName));
     }
