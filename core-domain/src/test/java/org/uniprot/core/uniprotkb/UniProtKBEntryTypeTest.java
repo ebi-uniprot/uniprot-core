@@ -14,7 +14,9 @@ class UniProtKBEntryTypeTest {
 
         @Test
         void canConvertLowerCase() {
-            assertEquals(UniProtKBEntryType.TREMBL, UniProtKBEntryType.typeOf("trembl"));
+            assertEquals(
+                    UniProtKBEntryType.TREMBL,
+                    UniProtKBEntryType.typeOf("uniprotkb unreviewed (trembl)"));
         }
 
         @Test

@@ -27,6 +27,6 @@ class UniprotKBEntryEnumTest {
         ValidateJson.verifyJsonRoundTripParser(entryType);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(entryType);
-        assertEquals("Swiss-Prot", jsonNode.asText());
+        assertEquals("UniProtKB reviewed (Swiss-Prot)", jsonNode.asText());
     }
 }
