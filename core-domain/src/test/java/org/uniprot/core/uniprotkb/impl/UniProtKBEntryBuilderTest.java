@@ -650,7 +650,12 @@ class UniProtKBEntryBuilderTest {
         void canAddMoreThanOneComment() {
             Comment comment2 = new DiseaseCommentBuilder().build();
             Comment comment3 = new CofactorCommentBuilder().build();
-            UniProtKBEntry obj = UniProtKBEntryBuilder.from(minEntry).commentsAdd(comment).commentsAdd(comment3).commentsAdd(comment2).build();
+            UniProtKBEntry obj =
+                    UniProtKBEntryBuilder.from(minEntry)
+                            .commentsAdd(comment)
+                            .commentsAdd(comment3)
+                            .commentsAdd(comment2)
+                            .build();
             assertNotNull(obj.getComments());
             assertFalse(obj.getComments().isEmpty());
             assertTrue(obj.hasComments());
@@ -748,7 +753,12 @@ class UniProtKBEntryBuilderTest {
         void canAddMoreThanOneFeature() {
             Feature feature2 = new FeatureBuilder().type(FeatureType.CHAIN).build();
             Feature feature3 = new FeatureBuilder().type(FeatureType.VARIANT).build();
-            UniProtKBEntry obj = UniProtKBEntryBuilder.from(minEntry).featuresAdd(feature).featuresAdd(feature3).featuresAdd(feature2).build();
+            UniProtKBEntry obj =
+                    UniProtKBEntryBuilder.from(minEntry)
+                            .featuresAdd(feature)
+                            .featuresAdd(feature3)
+                            .featuresAdd(feature2)
+                            .build();
             assertNotNull(obj.getComments());
             assertFalse(obj.getFeatures().isEmpty());
             assertTrue(obj.hasFeatures());

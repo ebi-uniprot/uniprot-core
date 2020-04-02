@@ -2,10 +2,7 @@ package org.uniprot.core.uniprotkb.impl;
 
 import static org.uniprot.core.util.Utils.*;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
@@ -24,16 +21,30 @@ import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 
 public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
     public enum ExtraAttributeName {
-        COUNT_BY_COMMENT_TYPE_ATTRIB("countByCommentType"),
-        COUNT_BY_FEATURE_TYPE_ATTRIB("countByFeatureType");
+        COUNT_BY_COMMENT_TYPE_ATTRIB("countByCommentType", "comment_count"),
+        COUNT_BY_FEATURE_TYPE_ATTRIB("countByFeatureType", "feature_count");
         private String displayName;
+        private String fieldName;
 
-        ExtraAttributeName(String displayName) {
+        ExtraAttributeName(String displayName, String fieldName) {
             this.displayName = displayName;
+            this.fieldName = fieldName;
         }
 
         public String getDisplayName() {
             return this.displayName;
+        }
+
+        public String getFieldName() {
+            return this.fieldName;
+        }
+
+        public static boolean contains(List<String> fieldNames) {
+            Set<String> names =
+                    Arrays.stream(values())
+                            .map(ExtraAttributeName::getFieldName)
+                            .collect(Collectors.toSet());
+            return fieldNames.stream().anyMatch(names::contains);
         }
     }
 

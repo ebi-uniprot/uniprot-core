@@ -1,13 +1,15 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
+import static java.util.stream.Collectors.toMap;
+
 import java.util.*;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.parser.tsv.uniprot.comment.EntryCommentsMap;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
+import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
 
 public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEntry> {
 
@@ -24,8 +26,8 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
         return fields.stream().anyMatch(DEFAULT_FIELDS::contains);
     }
 
-    private static boolean containsUnsuported(List<String> fields) {
-        return fields.stream().anyMatch(UNSUPORTED_FIELDS::contains);
+    private static boolean containsUnsupported(List<String> fields) {
+        return fields.stream().anyMatch(UNSUPPORTED_FIELDS::contains);
     }
 
     public Map<String, String> mapEntity(UniProtKBEntry entry, List<String> fields) {
@@ -85,18 +87,32 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
         if (contains(fields)) {
             map.putAll(getSimpleFields(entry));
         }
-        if (containsUnsuported(fields)) {
-            map.putAll(getUnsuportedFields());
+        if (containsUnsupported(fields)) {
+            map.putAll(getUnsupportedFields());
         }
         if (fields.contains(FIELD_FEATURE)) {
             map.put(FIELD_FEATURE, getFeatures(entry));
         }
+
+        if (UniProtKBEntryBuilder.ExtraAttributeName.contains(fields)) {
+            Map<String, String> extraAttribsMap =
+                    Arrays.stream(UniProtKBEntryBuilder.ExtraAttributeName.values())
+                            .filter(ean -> fields.contains(ean.getFieldName()))
+                            .collect(
+                                    toMap(
+                                            UniProtKBEntryBuilder.ExtraAttributeName::getFieldName,
+                                            ean ->
+                                                    EntryMapUtil.convertToTSVString(
+                                                            ean.getDisplayName(),
+                                                            entry.getExtraAttributes())));
+
+            map.putAll(extraAttribsMap);
+        }
         return map;
     }
 
-    private Map<String, String> getUnsuportedFields() {
-        return UNSUPORTED_FIELDS.stream()
-                .collect(Collectors.toMap(Function.identity(), Function.identity()));
+    private Map<String, String> getUnsupportedFields() {
+        return UNSUPPORTED_FIELDS.stream().collect(toMap(Function.identity(), Function.identity()));
     }
 
     private void addData(Map<String, String> map, NamedValueMap dl) {
