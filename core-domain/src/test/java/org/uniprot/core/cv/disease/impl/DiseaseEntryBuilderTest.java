@@ -15,19 +15,19 @@ import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
 class DiseaseEntryBuilderTest {
 
     @Test
-    void canCreateWithId() {
-        String id = "id";
-        DiseaseEntry disease = new DiseaseEntryBuilder().id(id).build();
+    void canCreateWithName() {
+        String name = "name";
+        DiseaseEntry disease = new DiseaseEntryBuilder().name(name).build();
         assertNotNull(disease);
-        assertEquals(id, disease.getId());
+        assertEquals(name, disease.getName());
     }
 
     @Test
-    void canCreateWithAccession() {
-        String accession = "uniprot";
-        DiseaseEntry disease = new DiseaseEntryBuilder().accession(accession).build();
+    void canCreateWithId() {
+        String id = "uniprot";
+        DiseaseEntry disease = new DiseaseEntryBuilder().id(id).build();
         assertNotNull(disease);
-        assertEquals(accession, disease.getAccession());
+        assertEquals(id, disease.getId());
     }
 
     @Test
@@ -133,8 +133,8 @@ class DiseaseEntryBuilderTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         DiseaseEntry impl =
                 new DiseaseEntryImpl(
+                        "name",
                         "id",
-                        "acc",
                         "acr",
                         "def",
                         singletonList("al name"),
@@ -152,6 +152,6 @@ class DiseaseEntryBuilderTest {
     }
 
     private KeywordId kw(String id, String accession) {
-        return new KeywordIdBuilder().id(id).accession(accession).build();
+        return new KeywordIdBuilder().name(id).id(accession).build();
     }
 }

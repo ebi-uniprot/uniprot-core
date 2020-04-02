@@ -107,7 +107,7 @@ public class EntryMap implements NamedValueMap {
         // map.put("score", entry.getAnnotationScore() + ""); TODO: Check with Jie about the
         // annotation score field
         if (entry.getProteinExistence() != null) {
-            map.put("protein_existence", entry.getProteinExistence().getValue());
+            map.put("protein_existence", entry.getProteinExistence().getName());
         }
         return map;
     }

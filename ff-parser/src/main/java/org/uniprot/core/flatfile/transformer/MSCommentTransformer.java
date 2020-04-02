@@ -69,7 +69,7 @@ public class MSCommentTransformer implements CommentTransformer<MassSpectrometry
                     if (token.startsWith("Method")) {
                         String method = token.substring(indexEq + 1, token.length());
                         if (method.length() > 0) {
-                            builder.method(MassSpectrometryMethod.toType(method));
+                            builder.method(MassSpectrometryMethod.typeOf(method));
                         }
                         continue;
                     }

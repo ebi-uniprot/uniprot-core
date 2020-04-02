@@ -5,33 +5,22 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.Database;
 import org.uniprot.core.util.EnumDisplay;
 
-public enum CitationDatabase implements Database, EnumDisplay<CitationDatabase> {
+public enum CitationDatabase implements Database, EnumDisplay {
     PUBMED("PubMed"),
     DOI("DOI"),
     AGRICOLA("AGRICOLA");
 
-    private String value;
+    private String name;
 
-    CitationDatabase(String type) {
-        this.value = type;
-    }
-
-    public static @Nonnull CitationDatabase typeOf(@Nonnull String value) {
-        for (CitationDatabase citXrefType : CitationDatabase.values()) {
-            if (citXrefType.getName().equalsIgnoreCase(value)) {
-                return citXrefType;
-            }
-        }
-        throw new IllegalArgumentException(
-                "the citation cross-reference type " + value + " doesn't exist");
+    CitationDatabase(String name) {
+        this.name = name;
     }
 
     public @Nonnull String getName() {
-        return value;
+        return name;
     }
 
-    @Override
-    public @Nonnull String toDisplayName() {
-        return getName();
+    public static @Nonnull CitationDatabase typeOf(@Nonnull String name) {
+        return EnumDisplay.typeOf(name, CitationDatabase.class);
     }
 }

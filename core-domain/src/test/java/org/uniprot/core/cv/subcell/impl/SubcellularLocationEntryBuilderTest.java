@@ -21,18 +21,17 @@ class SubcellularLocationEntryBuilderTest {
     @Test
     void canSetId() {
         String id = "id";
-        SubcellularLocationEntry obj = new SubcellularLocationEntryBuilder().id(id).build();
+        SubcellularLocationEntry obj = new SubcellularLocationEntryBuilder().name(id).build();
 
-        assertEquals(id, obj.getId());
+        assertEquals(id, obj.getName());
     }
 
     @Test
     void canSetAccession() {
         String accession = "accession";
-        SubcellularLocationEntry obj =
-                new SubcellularLocationEntryBuilder().accession(accession).build();
+        SubcellularLocationEntry obj = new SubcellularLocationEntryBuilder().id(accession).build();
 
-        assertEquals(accession, obj.getAccession());
+        assertEquals(accession, obj.getId());
     }
 
     @Test
@@ -55,7 +54,7 @@ class SubcellularLocationEntryBuilderTest {
 
     @Test
     void canSetKeyword() {
-        KeywordId keyword = new KeywordIdBuilder().id("PTM").accession("KW-9991").build();
+        KeywordId keyword = new KeywordIdBuilder().name("PTM").id("KW-9991").build();
         SubcellularLocationEntry obj =
                 new SubcellularLocationEntryBuilder().keyword(keyword).build();
 

@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 class ReactionDatabaseTest {
     @Test
     void getName_displayName_areSame() {
-        assertSame(ReactionDatabase.CHEBI.getName(), ReactionDatabase.CHEBI.toDisplayName());
+        assertSame(ReactionDatabase.CHEBI.getName(), ReactionDatabase.CHEBI.getDisplayName());
     }
 
     @Nested
@@ -33,13 +33,13 @@ class ReactionDatabaseTest {
 
         @ParameterizedTest
         @ValueSource(strings = {"uniprotkbid", "UNIPARCID", "", "abc", "  "})
-        void willBeUnknown(String val) {
-            assertEquals(ReactionDatabase.UNKNOWN, ReactionDatabase.typeOf(val));
+        void willThrowException(String val) {
+            assertThrows(IllegalArgumentException.class, () -> ReactionDatabase.typeOf(val));
         }
 
         @Test
-        void willBeUnknown_null() {
-            assertEquals(ReactionDatabase.UNKNOWN, ReactionDatabase.typeOf(null));
+        void willThrowException_null() {
+            assertThrows(IllegalArgumentException.class, () -> ReactionDatabase.typeOf(null));
         }
     }
 }

@@ -46,8 +46,8 @@ public class CommentTransformerHelper {
     }
 
     public static String trimCommentHeader(String annotation, CommentType type) {
-        if (annotation.startsWith(type.toDisplayName())) {
-            annotation = annotation.substring(type.toDisplayName().length() + 1).trim();
+        if (annotation.startsWith(type.getDisplayName())) {
+            annotation = annotation.substring(type.getDisplayName().length() + 1).trim();
             if (annotation.startsWith("\n")) annotation = annotation.substring(1);
         }
         return annotation;

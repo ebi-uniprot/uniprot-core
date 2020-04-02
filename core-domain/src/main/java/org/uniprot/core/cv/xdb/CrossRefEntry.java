@@ -3,7 +3,12 @@ package org.uniprot.core.cv.xdb;
 import java.io.Serializable;
 
 public interface CrossRefEntry extends Serializable {
-    String getAccession();
+    /**
+     * Uniprot accession as an id to identify CrossRef uniquely
+     *
+     * @return accession
+     */
+    String getId();
 
     String getName();
 

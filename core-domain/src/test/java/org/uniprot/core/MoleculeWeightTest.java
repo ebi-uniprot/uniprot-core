@@ -145,7 +145,7 @@ class MoleculeWeightTest {
     @ParameterizedTest
     @EnumSource(MoleculeWeight.class)
     void displayName(MoleculeWeight enm) {
-        assertEquals(enm.toString(), enm.toDisplayName());
+        assertEquals(enm.toString(), enm.getDisplayName());
     }
 
     @Test

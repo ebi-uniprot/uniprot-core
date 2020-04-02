@@ -1,31 +1,29 @@
 package org.uniprot.core.uniprotkb.comment;
 
+import static org.uniprot.core.util.Utils.notNullNotEmpty;
+
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/** Created by IntelliJ IDEA. User: spatient Date: 03-Feb-2009 Time: 17:21:39 */
-public enum RnaEditingLocationType implements EnumDisplay<RnaEditingLocationType> {
+public enum RnaEditingLocationType implements EnumDisplay {
     Not_applicable,
     Undetermined,
     Unknown,
     Known;
 
-    public static @Nonnull RnaEditingLocationType getType(@Nonnull String locationType) {
+    public @Nonnull String getName() {
+        return name();
+    }
+
+    public static @Nonnull RnaEditingLocationType typeOf(@Nonnull String locationType) {
         for (RnaEditingLocationType type : RnaEditingLocationType.values()) {
-            if (type.name().equals(locationType)) {
+            if (type.getName().equalsIgnoreCase(locationType)) {
                 return type;
-            } else if (locationType != null
-                    && locationType.length() > 0
-                    && Character.isDigit(locationType.charAt(0))) {
+            } else if (notNullNotEmpty(locationType) && Character.isDigit(locationType.charAt(0))) {
                 return Known;
             }
         }
         return Unknown;
-    }
-
-    @Override
-    public @Nonnull String toDisplayName() {
-        return name();
     }
 }

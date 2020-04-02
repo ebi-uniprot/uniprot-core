@@ -6,24 +6,24 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.cv.keyword.KeywordId;
 
 public class KeywordIdBuilder implements Builder<KeywordId> {
+    private String name;
     private String id;
-    private String accession;
+
+    public @Nonnull KeywordIdBuilder name(String name) {
+        this.name = name;
+        return this;
+    }
 
     public @Nonnull KeywordIdBuilder id(String id) {
         this.id = id;
         return this;
     }
 
-    public @Nonnull KeywordIdBuilder accession(String accession) {
-        this.accession = accession;
-        return this;
-    }
-
     public @Nonnull KeywordId build() {
-        return new KeywordIdImpl(id, accession);
+        return new KeywordIdImpl(name, id);
     }
 
     public static @Nonnull KeywordIdBuilder from(@Nonnull KeywordId instance) {
-        return new KeywordIdBuilder().id(instance.getName()).accession(instance.getId());
+        return new KeywordIdBuilder().name(instance.getName()).id(instance.getId());
     }
 }

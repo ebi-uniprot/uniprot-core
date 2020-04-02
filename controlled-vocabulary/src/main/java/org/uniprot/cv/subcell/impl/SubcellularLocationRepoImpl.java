@@ -20,7 +20,7 @@ public class SubcellularLocationRepoImpl implements SubcellularLocationRepo {
                 subcellularLocations.stream()
                         .collect(
                                 Collectors.toMap(
-                                        SubcellularLocationEntry::getId, Function.identity()));
+                                        SubcellularLocationEntry::getName, Function.identity()));
     }
 
     @Override

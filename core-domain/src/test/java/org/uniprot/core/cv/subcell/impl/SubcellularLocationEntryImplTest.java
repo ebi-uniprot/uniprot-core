@@ -26,7 +26,7 @@ class SubcellularLocationEntryImplTest {
                         "accession",
                         "definition",
                         "content",
-                        new KeywordIdBuilder().id("kid").build(),
+                        new KeywordIdBuilder().name("kid").build(),
                         "note",
                         new StatisticsBuilder().build(),
                         SubcellLocationCategory.ORIENTATION,

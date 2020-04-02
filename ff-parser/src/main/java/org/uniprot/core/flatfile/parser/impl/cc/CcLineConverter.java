@@ -327,7 +327,7 @@ public class CcLineConverter extends EvidenceCollector
         return new MichaelisConstantBuilder()
                 .evidencesSet(parseEvidenceLines(kmEvStr.getEvidences()))
                 .constant(value)
-                .unit(MichaelisConstantUnit.convert(unit))
+                .unit(MichaelisConstantUnit.typeOf(unit))
                 .substrate(kmStr)
                 .build();
     }
@@ -498,7 +498,7 @@ public class CcLineConverter extends EvidenceCollector
 
         Float mass = cObj.getMass();
         Float massError = cObj.getMassError();
-        builder.method(MassSpectrometryMethod.toType(cObj.getMethod()))
+        builder.method(MassSpectrometryMethod.typeOf(cObj.getMethod()))
                 .molWeight(mass)
                 .molWeightError(massError);
 

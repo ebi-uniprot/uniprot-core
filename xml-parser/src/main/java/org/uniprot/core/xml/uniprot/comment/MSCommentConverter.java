@@ -38,7 +38,7 @@ public class MSCommentConverter implements CommentConverter<MassSpectrometryComm
         }
 
         if (xmlObj.getMethod() != null)
-            builder.method(MassSpectrometryMethod.toType(xmlObj.getMethod()));
+            builder.method(MassSpectrometryMethod.typeOf(xmlObj.getMethod()));
 
         if (xmlObj.getError() != null) builder.molWeightError(Float.parseFloat(xmlObj.getError()));
 
@@ -61,7 +61,7 @@ public class MSCommentConverter implements CommentConverter<MassSpectrometryComm
     public CommentType toXml(MassSpectrometryComment uniObj) {
         if (uniObj == null) return null;
         CommentType commentXML = xmlUniprotFactory.createCommentType();
-        commentXML.setType(uniObj.getCommentType().toDisplayName().toLowerCase());
+        commentXML.setType(uniObj.getCommentType().getDisplayName().toLowerCase());
 
         if (!Strings.isNullOrEmpty(uniObj.getMolecule())) {
             MoleculeType mol = xmlUniprotFactory.createMoleculeType();
@@ -70,7 +70,7 @@ public class MSCommentConverter implements CommentConverter<MassSpectrometryComm
         }
 
         // Method
-        if (uniObj.getMethod() != null) commentXML.setMethod(uniObj.getMethod().getValue());
+        if (uniObj.getMethod() != null) commentXML.setMethod(uniObj.getMethod().getName());
 
         // Mass
         if ((uniObj.getMolWeight() != null) && (uniObj.getMolWeight() > 0))

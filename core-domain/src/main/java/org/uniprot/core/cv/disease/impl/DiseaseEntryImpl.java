@@ -13,9 +13,9 @@ import org.uniprot.core.cv.keyword.KeywordId;
 public class DiseaseEntryImpl implements DiseaseEntry {
 
     private static final long serialVersionUID = 3059038050252487022L;
-    private String id;
+    private String name;
 
-    private final String accession;
+    private final String id;
 
     private String acronym;
     private String definition;
@@ -27,15 +27,15 @@ public class DiseaseEntryImpl implements DiseaseEntry {
 
     DiseaseEntryImpl() {
         // do nothing.. just to satisfy the objectmapper
-        this.accession = null;
+        this.id = null;
         this.alternativeNames = Collections.emptyList();
         this.crossReferences = Collections.emptyList();
         this.keywords = Collections.emptyList();
     }
 
     DiseaseEntryImpl(
+            String name,
             String id,
-            String accession,
             String acronym,
             String definition,
             List<String> alternativeNames,
@@ -45,8 +45,8 @@ public class DiseaseEntryImpl implements DiseaseEntry {
             Long unreviewedProteinCount) {
 
         super();
+        this.name = name;
         this.id = id;
-        this.accession = accession;
         this.acronym = acronym;
         this.definition = definition;
         this.alternativeNames = unmodifiableList(alternativeNames);
@@ -56,8 +56,8 @@ public class DiseaseEntryImpl implements DiseaseEntry {
         this.unreviewedProteinCount = unreviewedProteinCount;
     }
 
-    public String getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
     public String getAcronym() {
@@ -80,8 +80,8 @@ public class DiseaseEntryImpl implements DiseaseEntry {
         return keywords;
     }
 
-    public String getAccession() {
-        return accession;
+    public String getId() {
+        return id;
     }
 
     @Override
@@ -99,8 +99,8 @@ public class DiseaseEntryImpl implements DiseaseEntry {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DiseaseEntryImpl disease = (DiseaseEntryImpl) o;
-        return Objects.equals(id, disease.id)
-                && Objects.equals(accession, disease.accession)
+        return Objects.equals(name, disease.name)
+                && Objects.equals(id, disease.id)
                 && Objects.equals(acronym, disease.acronym)
                 && Objects.equals(definition, disease.definition)
                 && Objects.equals(alternativeNames, disease.alternativeNames)
@@ -113,8 +113,8 @@ public class DiseaseEntryImpl implements DiseaseEntry {
     @Override
     public int hashCode() {
         return Objects.hash(
+                name,
                 id,
-                accession,
                 acronym,
                 definition,
                 alternativeNames,

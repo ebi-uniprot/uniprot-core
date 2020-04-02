@@ -7,6 +7,6 @@ import org.junit.jupiter.api.Test;
 class FlagTypeTest {
     @Test
     void getValueAndToDisplay_areSame() {
-        assertSame(FlagType.FRAGMENT.getValue(), FlagType.FRAGMENT.toDisplayName());
+        assertSame(FlagType.FRAGMENT.getName(), FlagType.FRAGMENT.getDisplayName());
     }
 }

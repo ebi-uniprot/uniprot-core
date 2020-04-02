@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 class GeneNameTypeTest {
     @Test
     void getName_toDisplayName_areSame() {
-        assertSame(GeneNameType.ENSEMBL.getName(), GeneNameType.ENSEMBL.toDisplayName());
+        assertSame(GeneNameType.ENSEMBL.getName(), GeneNameType.ENSEMBL.getDisplayName());
     }
 
     @Nested
@@ -18,28 +18,28 @@ class GeneNameTypeTest {
 
         @Test
         void canConvertLowerCase() {
-            assertEquals(GeneNameType.ORF, GeneNameType.fromValue("orf"));
+            assertEquals(GeneNameType.ORF, GeneNameType.typeOf("orf"));
         }
 
         @Test
         void canConvertUpperCase() {
-            assertEquals(GeneNameType.MOD, GeneNameType.fromValue("MOD"));
+            assertEquals(GeneNameType.MOD, GeneNameType.typeOf("MOD"));
         }
 
         @Test
         void canConvertMixCase() {
-            assertEquals(GeneNameType.GENE_NAME, GeneNameType.fromValue("genE Name"));
+            assertEquals(GeneNameType.GENE_NAME, GeneNameType.typeOf("genE Name"));
         }
 
         @ParameterizedTest
         @ValueSource(strings = {"uniprot", "UNIPARCID", "", "abc", "  ", "SwissProt"})
         void forOthersWillReturnUnknown(String val) {
-            assertEquals(GeneNameType.MISSING, GeneNameType.fromValue(val));
+            assertEquals(GeneNameType.MISSING, GeneNameType.typeOf(val));
         }
 
         @Test
         void forNullWillReturnUnknown() {
-            assertEquals(GeneNameType.MISSING, GeneNameType.fromValue(null));
+            assertEquals(GeneNameType.MISSING, GeneNameType.typeOf(null));
         }
     }
 }

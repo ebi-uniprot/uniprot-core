@@ -20,8 +20,8 @@ import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
 
 class DiseaseEntryImplTest {
     private String uuid;
+    private String name;
     private String id;
-    private String acc;
     private String acronym;
     private String def;
     private List<String> altNames;
@@ -33,8 +33,8 @@ class DiseaseEntryImplTest {
     @BeforeEach
     void setUp() {
         this.uuid = UUID.randomUUID().toString();
-        this.id = "id-" + this.uuid;
-        this.acc = "acc" + this.uuid;
+        this.name = "name-" + this.uuid;
+        this.id = "id" + this.uuid;
         this.acronym = "acronym" + this.uuid;
         this.def = "def" + this.uuid;
         this.altNames =
@@ -51,8 +51,8 @@ class DiseaseEntryImplTest {
     void testCreateDisease() {
         DiseaseEntry disease = createDisease();
 
+        assertEquals(name, disease.getName());
         assertEquals(id, disease.getId());
-        assertEquals(acc, disease.getAccession());
         assertEquals(def, disease.getDefinition());
         Assertions.assertIterableEquals(altNames, disease.getAlternativeNames());
         Assertions.assertIterableEquals(xrefs, disease.getCrossReferences());
@@ -85,8 +85,8 @@ class DiseaseEntryImplTest {
 
     private DiseaseEntry createDisease() {
         return new DiseaseEntryImpl(
+                this.name,
                 this.id,
-                this.acc,
                 this.acronym,
                 this.def,
                 this.altNames,
@@ -97,10 +97,7 @@ class DiseaseEntryImplTest {
     }
 
     private KeywordId getKeyword(int i) {
-        return new KeywordIdBuilder()
-                .id("id" + i + this.uuid)
-                .accession("acc" + i + this.uuid)
-                .build();
+        return new KeywordIdBuilder().name("name" + i + this.uuid).id("id" + i + this.uuid).build();
     }
 
     private DiseaseCrossReference getXRef(int randomiser) {

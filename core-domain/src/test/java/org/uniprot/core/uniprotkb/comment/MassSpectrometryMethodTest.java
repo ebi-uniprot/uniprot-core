@@ -12,8 +12,8 @@ class MassSpectrometryMethodTest {
     @Test
     void getValue_displayName_areSame() {
         assertSame(
-                MassSpectrometryMethod.ELECTROSPRAY.getValue(),
-                MassSpectrometryMethod.ELECTROSPRAY.toDisplayName());
+                MassSpectrometryMethod.ELECTROSPRAY.getName(),
+                MassSpectrometryMethod.ELECTROSPRAY.getDisplayName());
     }
 
     @Nested
@@ -21,28 +21,28 @@ class MassSpectrometryMethodTest {
 
         @Test
         void canConvertLowerCase() {
-            assertEquals(MassSpectrometryMethod.FAB, MassSpectrometryMethod.toType("fab"));
+            assertEquals(MassSpectrometryMethod.FAB, MassSpectrometryMethod.typeOf("fab"));
         }
 
         @Test
         void canConvertUpperCase() {
-            assertEquals(MassSpectrometryMethod.LSI, MassSpectrometryMethod.toType("LSI"));
+            assertEquals(MassSpectrometryMethod.LSI, MassSpectrometryMethod.typeOf("LSI"));
         }
 
         @Test
         void canConvertMixCase() {
-            assertEquals(MassSpectrometryMethod.SELDI, MassSpectrometryMethod.toType("sEldI"));
+            assertEquals(MassSpectrometryMethod.SELDI, MassSpectrometryMethod.typeOf("sEldI"));
         }
 
         @ParameterizedTest
         @ValueSource(strings = {"uniprotkbid", "UNIPARCID", "", "abc", "  "})
-        void willBeUnknown(String val) {
-            assertEquals(MassSpectrometryMethod.UNKNOWN, MassSpectrometryMethod.toType(val));
+        void willThrowException(String val) {
+            assertThrows(IllegalArgumentException.class, () -> MassSpectrometryMethod.typeOf(val));
         }
 
         @Test
-        void willBeUnknown_null() {
-            assertEquals(MassSpectrometryMethod.UNKNOWN, MassSpectrometryMethod.toType(null));
+        void willThrowException_null() {
+            assertThrows(IllegalArgumentException.class, () -> MassSpectrometryMethod.typeOf(null));
         }
     }
 }

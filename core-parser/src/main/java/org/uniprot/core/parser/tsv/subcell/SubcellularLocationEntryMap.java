@@ -23,8 +23,8 @@ public class SubcellularLocationEntryMap implements NamedValueMap {
     @Override
     public Map<String, String> attributeValues() {
         Map<String, String> map = new HashMap<>();
+        map.put("name", Utils.emptyOrString(entry.getName()));
         map.put("id", Utils.emptyOrString(entry.getId()));
-        map.put("accession", Utils.emptyOrString(entry.getAccession()));
         map.put("definition", Utils.emptyOrString(entry.getDefinition()));
         map.put("category", getCategory());
         map.put("keyword", getKeyword());
@@ -58,9 +58,9 @@ public class SubcellularLocationEntryMap implements NamedValueMap {
             return entry.getPartOf().stream()
                     .map(
                             mapped ->
-                                    mapped.getAccession()
+                                    mapped.getId()
                                             + "; "
-                                            + mapped.getId()
+                                            + mapped.getName()
                                             + "; "
                                             + mapped.getCategory())
                     .collect(Collectors.joining(", "));
@@ -74,9 +74,9 @@ public class SubcellularLocationEntryMap implements NamedValueMap {
             return entry.getIsA().stream()
                     .map(
                             mapped ->
-                                    mapped.getAccession()
+                                    mapped.getId()
                                             + "; "
-                                            + mapped.getId()
+                                            + mapped.getName()
                                             + "; "
                                             + mapped.getCategory())
                     .collect(Collectors.joining(", "));
@@ -101,7 +101,7 @@ public class SubcellularLocationEntryMap implements NamedValueMap {
 
     private String getCategory() {
         if (entry.getCategory() != null) {
-            return Utils.emptyOrString(entry.getCategory().toDisplayName());
+            return Utils.emptyOrString(entry.getCategory().getDisplayName());
         } else {
             return "";
         }

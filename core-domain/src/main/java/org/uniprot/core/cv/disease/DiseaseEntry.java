@@ -6,9 +6,19 @@ import java.util.List;
 import org.uniprot.core.cv.keyword.KeywordId;
 
 public interface DiseaseEntry extends Serializable {
-    String getId();
+    /**
+     * Unique can be use as an identifier
+     *
+     * @return Unique name of disease e-g 3M syndrome 1
+     */
+    String getName();
 
-    String getAccession();
+    /**
+     * Uniprot accession as an id to identify disease uniquely
+     *
+     * @return Uniprot accession e-g DI-00011
+     */
+    String getId();
 
     String getAcronym();
 

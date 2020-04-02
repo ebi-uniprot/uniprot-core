@@ -49,7 +49,7 @@ public class KeywordEntryImpl implements KeywordEntry {
         this.geneOntologies = unmodifiableList(geneOntologies);
         this.parents = unmodifiableSet(parents);
         this.sites = unmodifiableList(sites);
-        if (Utils.notNull(category)) this.category = KeywordCategory.fromId(category.getId());
+        if (Utils.notNull(category)) this.category = KeywordCategory.typeOf(category.getName());
         this.children = unmodifiableList(children);
         this.statistics = statistics;
     }

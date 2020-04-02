@@ -36,7 +36,7 @@ class KeywordEntryImplTest {
     @BeforeEach
     void setUp() {
         this.random = UUID.randomUUID().toString();
-        this.keyword = createKeyword("id-" + this.random, "acc-" + this.random);
+        this.keyword = createKeyword("name-" + this.random, "id-" + this.random);
         this.definition = "definition-" + this.random;
         this.synonyms =
                 IntStream.range(0, 5)
@@ -54,7 +54,7 @@ class KeywordEntryImplTest {
         long rev = ThreadLocalRandom.current().nextLong(100000);
         long unrev = ThreadLocalRandom.current().nextLong(100000);
         this.statistics = KeywordStatisticsImplTest.createKeywordStatistics(rev, unrev);
-        this.category = createKeyword("idc-" + this.random, "cat-acc-" + this.random);
+        this.category = KeywordCategory.DOMAIN;
     }
 
     @Test
@@ -70,7 +70,7 @@ class KeywordEntryImplTest {
         assertNotNull(keywordEntry.getChildren());
         assertTrue(keywordEntry.getChildren().isEmpty());
         assertArrayEquals(this.sites.toArray(), keywordEntry.getSites().toArray());
-        assertEquals(KeywordCategory.fromId(this.category.getId()), keywordEntry.getCategory());
+        assertEquals(KeywordCategory.typeOf(this.category.getName()), keywordEntry.getCategory());
         assertEquals(this.statistics, keywordEntry.getStatistics());
     }
 
@@ -135,8 +135,8 @@ class KeywordEntryImplTest {
                 this.statistics);
     }
 
-    public static KeywordId createKeyword(String id, String accession) {
-        return new KeywordIdBuilder().id(id).accession(accession).build();
+    public static KeywordId createKeyword(String name, String id) {
+        return new KeywordIdBuilder().name(name).id(id).build();
     }
 
     private static GeneOntologyEntry go(String id, String term) {

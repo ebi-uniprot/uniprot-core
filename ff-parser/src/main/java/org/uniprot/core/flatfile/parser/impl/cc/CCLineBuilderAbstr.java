@@ -70,7 +70,7 @@ public abstract class CCLineBuilderAbstr<T extends Comment> extends FFLineBuilde
     }
 
     protected StringBuilder addCommentTypeName(Comment comment, StringBuilder sb) {
-        sb.append(comment.getCommentType().toDisplayName());
+        sb.append(comment.getCommentType().getDisplayName());
         sb.append(": ");
         return sb;
     }
@@ -78,7 +78,7 @@ public abstract class CCLineBuilderAbstr<T extends Comment> extends FFLineBuilde
     protected String buildStart(Comment comment, boolean includeFlatFileMarkings) {
         StringBuilder start = new StringBuilder();
         addFlatFileMarkingsIfRequired(includeFlatFileMarkings, start);
-        start.append(comment.getCommentType().toDisplayName());
+        start.append(comment.getCommentType().getDisplayName());
         start.append(":");
 
         return start.toString();
@@ -179,7 +179,7 @@ public abstract class CCLineBuilderAbstr<T extends Comment> extends FFLineBuilde
         StringBuilder start = new StringBuilder();
         if (includeCommentType) {
             addFlatFileMarkingsIfRequired(includeFlatFileMarkings, start);
-            start.append(comment.getCommentType().toDisplayName());
+            start.append(comment.getCommentType().getDisplayName());
             start.append(":");
         }
         if (comment instanceof HasMolecule) {

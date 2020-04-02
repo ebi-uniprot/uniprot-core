@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-public enum CitationType implements EnumDisplay<CitationType> {
+public enum CitationType implements EnumDisplay {
     JOURNAL_ARTICLE("journal article"),
     BOOK("book"),
     ELECTRONIC_ARTICLE("online journal article"),
@@ -12,42 +12,29 @@ public enum CitationType implements EnumDisplay<CitationType> {
     SUBMISSION("submission", "Unpublished/no plans to publish"),
     THESIS("thesis"),
     LITERATURE("UniProt indexed literatures"),
-    UNPUBLISHED("unpublished observations"),
-    UNKNOWN("default as unknown");
+    UNPUBLISHED("unpublished observations");
 
-    private String value;
-    private String displayName;
+    private String name;
+    private String description;
 
-    CitationType(String value, String displayName) {
-        this.value = value;
-        this.displayName = displayName;
+    CitationType(String name, String description) {
+        this.name = name;
+        this.description = description;
     }
 
-    CitationType(String type) {
-        this(type, type);
+    CitationType(String value) {
+        this(value, value);
+    }
+
+    public @Nonnull String getDescription() {
+        return description;
+    }
+
+    public @Nonnull String getName() {
+        return name;
     }
 
     public static @Nonnull CitationType typeOf(@Nonnull String value) {
-        for (CitationType citationType : CitationType.values()) {
-
-            if (citationType.getValue().equalsIgnoreCase(value)) {
-                return citationType;
-            }
-        }
-        throw new IllegalArgumentException(
-                "The citation with the description " + value + " doesn't exist");
-    }
-
-    public @Nonnull String getValue() {
-        return value;
-    }
-
-    public @Nonnull String getDisplayName() {
-        return displayName;
-    }
-
-    @Override
-    public @Nonnull String toDisplayName() {
-        return value;
+        return EnumDisplay.typeOf(value, CitationType.class);
     }
 }

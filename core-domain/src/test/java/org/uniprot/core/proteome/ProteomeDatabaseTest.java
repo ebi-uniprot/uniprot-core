@@ -12,7 +12,7 @@ class ProteomeDatabaseTest {
     void getName_toDisplayName_areSame() {
         assertSame(
                 ProteomeDatabase.GENOME_ASSEMBLY.getName(),
-                ProteomeDatabase.GENOME_ASSEMBLY.toDisplayName());
+                ProteomeDatabase.GENOME_ASSEMBLY.getDisplayName());
     }
 
     @Nested
@@ -22,30 +22,29 @@ class ProteomeDatabaseTest {
         void canConvertLowerCase() {
             assertEquals(
                     ProteomeDatabase.GENOME_ANNOTATION,
-                    ProteomeDatabase.fromValue("genomeannotation"));
+                    ProteomeDatabase.typeOf("genomeannotation"));
         }
 
         @Test
         void canConvertUpperCase() {
             assertEquals(
-                    ProteomeDatabase.GENOME_ACCESSION,
-                    ProteomeDatabase.fromValue("GENOMEACCESSION"));
+                    ProteomeDatabase.GENOME_ACCESSION, ProteomeDatabase.typeOf("GENOMEACCESSION"));
         }
 
         @Test
         void canConvertMixCase() {
-            assertEquals(ProteomeDatabase.ASSEMBLY_ID, ProteomeDatabase.fromValue("AssEmBLYId"));
+            assertEquals(ProteomeDatabase.ASSEMBLY_ID, ProteomeDatabase.typeOf("AssEmBLYId"));
         }
 
         @ParameterizedTest
         @ValueSource(strings = {"uniprot", "UNIPARCID", "", "abc", "  ", "SwissProt"})
-        void forOthersWillReturnUnknown(String val) {
-            assertEquals(ProteomeDatabase.UNKNOWN, ProteomeDatabase.fromValue(val));
+        void forOthersWillThrowException(String val) {
+            assertThrows(IllegalArgumentException.class, () -> ProteomeDatabase.typeOf(val));
         }
 
         @Test
-        void forNullWillReturnUnknown() {
-            assertEquals(ProteomeDatabase.UNKNOWN, ProteomeDatabase.fromValue(null));
+        void forNullWillThrowException() {
+            assertThrows(IllegalArgumentException.class, () -> ProteomeDatabase.typeOf(null));
         }
     }
 }
