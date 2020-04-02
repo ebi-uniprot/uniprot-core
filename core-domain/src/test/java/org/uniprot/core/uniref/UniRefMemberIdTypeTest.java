@@ -15,7 +15,7 @@ class UniRefMemberIdTypeTest {
     @ParameterizedTest
     @EnumSource(UniRefMemberIdType.class)
     void displayName(UniRefMemberIdType enm) {
-        assertTrue(Arrays.asList("UniProtKB ID", "UniParc ID").contains(enm.toDisplayName()));
+        assertTrue(Arrays.asList("UniProtKB ID", "UniParc ID").contains(enm.getDisplayName()));
     }
 
     @Nested

@@ -163,7 +163,7 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
                 val = val.replace(",", "");
                 km.append(val);
                 km.append(SPACE);
-                km.append(michaelisConstant.getUnit().toDisplayNameString());
+                km.append(michaelisConstant.getUnit().getDisplayName());
                 km.append(FOR);
                 if (!Strings.isNullOrEmpty(michaelisConstant.getSubstrate()))
                     km.append(michaelisConstant.getSubstrate());

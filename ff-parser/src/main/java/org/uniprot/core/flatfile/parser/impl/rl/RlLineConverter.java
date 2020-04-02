@@ -107,7 +107,7 @@ public class RlLineConverter
 
     private SubmissionBuilder convert(RlLineObject.Submission submission) {
         SubmissionBuilder builder = new SubmissionBuilder();
-        SubmissionDatabase sdb = SubmissionDatabase.UNKNOWN;
+        SubmissionDatabase sdb;
         switch (submission.getDb()) {
             case EMBL:
                 sdb = SubmissionDatabase.EMBL_GENBANK_DDBJ;

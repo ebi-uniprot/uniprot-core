@@ -32,7 +32,7 @@ public class FeatureTest {
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(feature);
         assertNotNull(jsonNode.get("type"));
-        assertEquals(FeatureType.CHAIN.toDisplayName(), jsonNode.get("type").asText());
+        assertEquals(FeatureType.CHAIN.getDisplayName(), jsonNode.get("type").asText());
     }
 
     @Test
@@ -81,7 +81,7 @@ public class FeatureTest {
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(feature);
         assertNotNull(jsonNode.get("type"));
-        assertEquals(FeatureType.CHAIN.toDisplayName(), jsonNode.get("type").asText());
+        assertEquals(FeatureType.CHAIN.getDisplayName(), jsonNode.get("type").asText());
 
         assertNotNull(jsonNode.get("location"));
 

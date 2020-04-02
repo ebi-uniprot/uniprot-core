@@ -58,9 +58,9 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         KeywordId kcategory = keyword.getCategory();
         KeywordCategory category;
         if (kcategory != null) {
-            category = KeywordCategory.fromValue(kcategory.getName());
+            category = KeywordCategory.typeOf(kcategory.getName());
         } else {
-            category = KeywordCategory.fromValue(keyword.getKeyword().getName());
+            category = KeywordCategory.typeOf(keyword.getKeyword().getName());
         }
 
         return new PairImpl<>(accession, category);

@@ -9,13 +9,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class MichaelisConstantUnitTest {
     @Test
-    void getName_displayName_displayNameString_allAreSame() {
+    void getName_displayName_getCompareOn_allAreSame() {
         assertSame(
                 MichaelisConstantUnit.MICRO_MOL.getName(),
-                MichaelisConstantUnit.MICRO_MOL.toDisplayName());
+                MichaelisConstantUnit.MICRO_MOL.getDisplayName());
         assertSame(
                 MichaelisConstantUnit.MICRO_MOL.getName(),
-                MichaelisConstantUnit.MICRO_MOL.toDisplayNameString());
+                MichaelisConstantUnit.MICRO_MOL.getCompareOn());
     }
 
     @Nested
@@ -23,24 +23,24 @@ class MichaelisConstantUnitTest {
 
         @Test
         void canConvertExactCase() {
-            assertEquals(MichaelisConstantUnit.MILLI_MOL, MichaelisConstantUnit.convert("mM"));
+            assertEquals(MichaelisConstantUnit.MILLI_MOL, MichaelisConstantUnit.typeOf("mM"));
         }
 
         @ParameterizedTest
         @ValueSource(strings = {"m", "MM", "Mg/ML"})
         void willThrowException_caseSensitive(String val) {
-            assertThrows(RuntimeException.class, () -> MichaelisConstantUnit.convert(val));
+            assertThrows(RuntimeException.class, () -> MichaelisConstantUnit.typeOf(val));
         }
 
         @ParameterizedTest
         @ValueSource(strings = {"uniprotkbid", "UNIPARCID", "", "abc", "  "})
         void willThrowException(String val) {
-            assertThrows(RuntimeException.class, () -> MichaelisConstantUnit.convert(val));
+            assertThrows(RuntimeException.class, () -> MichaelisConstantUnit.typeOf(val));
         }
 
         @Test
         void willThrowException_null() {
-            assertThrows(RuntimeException.class, () -> MichaelisConstantUnit.convert(null));
+            assertThrows(RuntimeException.class, () -> MichaelisConstantUnit.typeOf(null));
         }
     }
 }

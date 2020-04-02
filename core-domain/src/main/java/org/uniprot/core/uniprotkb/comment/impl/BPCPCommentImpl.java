@@ -112,7 +112,7 @@ public class BPCPCommentImpl extends CommentHasMoleculeImpl implements BPCPComme
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(getCommentType().toDisplayName());
+        sb.append(getCommentType().getDisplayName());
         sb.append(":");
 
         if (hasAbsorption()) {

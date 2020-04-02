@@ -10,11 +10,11 @@ class SubcellLocationCategoryTest {
     @ParameterizedTest
     @EnumSource(SubcellLocationCategory.class)
     void categoryAndDisplayAreSame(SubcellLocationCategory category) {
-        assertSame(category.getCategory(), category.toDisplayName());
+        assertSame(category.getName(), category.getDisplayName());
     }
 
     @Test
     void location_is_CellularComponent() {
-        assertEquals("Cellular component", SubcellLocationCategory.LOCATION.getCategory());
+        assertEquals("Cellular component", SubcellLocationCategory.LOCATION.getName());
     }
 }

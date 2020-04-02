@@ -51,7 +51,7 @@ public class CofactorConverter implements Converter<CofactorType, Cofactor> {
         CofactorType xmlCofactor = xmlUniprotFactory.createCofactorType();
         xmlCofactor.setName(cofactor.getName());
         DbReferenceType dbref = xmlUniprotFactory.createDbReferenceType();
-        dbref.setType(cofactor.getCofactorCrossReference().getDatabase().toDisplayName());
+        dbref.setType(cofactor.getCofactorCrossReference().getDatabase().getDisplayName());
         dbref.setId(cofactor.getCofactorCrossReference().getId());
         xmlCofactor.setDbReference(dbref);
         List<Evidence> evidenceIds = cofactor.getEvidences();

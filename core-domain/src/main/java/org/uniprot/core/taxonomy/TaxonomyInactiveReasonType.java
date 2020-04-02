@@ -4,12 +4,15 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-public enum TaxonomyInactiveReasonType implements EnumDisplay<TaxonomyInactiveReasonType> {
+public enum TaxonomyInactiveReasonType implements EnumDisplay {
     DELETED,
     MERGED;
 
-    @Override
-    public @Nonnull String toDisplayName() {
+    public @Nonnull String getName() {
         return this.name();
+    }
+
+    public static @Nonnull TaxonomyInactiveReasonType typeOf(@Nonnull String name) {
+        return EnumDisplay.typeOf(name, TaxonomyInactiveReasonType.class);
     }
 }

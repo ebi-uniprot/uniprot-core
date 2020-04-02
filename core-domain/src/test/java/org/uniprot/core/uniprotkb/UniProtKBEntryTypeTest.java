@@ -37,7 +37,7 @@ class UniProtKBEntryTypeTest {
     @Test
     void getValue_displayName_areSame() {
         assertSame(
-                UniProtKBEntryType.SWISSPROT.getValue(),
-                UniProtKBEntryType.SWISSPROT.toDisplayName());
+                UniProtKBEntryType.SWISSPROT.getName(),
+                UniProtKBEntryType.SWISSPROT.getDisplayName());
     }
 }

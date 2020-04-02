@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-public enum FeatureType implements EnumDisplay<FeatureType> {
+public enum FeatureType implements EnumDisplay {
     /**
      * Enumerates all features types in UniProt. Important!!! The order which is here must the order
      * existing in the file cc_ord which is placed in /ebi/sp/misc1/pc/sprot/various/ft_ord
@@ -101,7 +101,11 @@ public enum FeatureType implements EnumDisplay<FeatureType> {
     }
 
     @Override
-    public @Nonnull String toDisplayName() {
+    public @Nonnull String getDisplayName() {
         return displayName;
+    }
+
+    public @Nonnull String getCompareOn() {
+        return value;
     }
 }

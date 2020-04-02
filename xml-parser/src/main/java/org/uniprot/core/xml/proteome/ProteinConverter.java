@@ -27,7 +27,7 @@ public class ProteinConverter implements Converter<GeneType, Protein> {
                 .accession(xmlObj.getAccession())
                 .geneName(xmlObj.getGeneName())
                 .entryType(fromXml(xmlObj.getEntryType()))
-                .geneNameType(GeneNameType.fromValue(xmlObj.getGeneNameType().value()))
+                .geneNameType(GeneNameType.typeOf(xmlObj.getGeneNameType().value()))
                 .sequenceLength(xmlObj.getLength());
 
         return proteinBuilder.build();

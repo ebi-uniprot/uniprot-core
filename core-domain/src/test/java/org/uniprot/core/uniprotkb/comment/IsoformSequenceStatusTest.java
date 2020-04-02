@@ -12,8 +12,8 @@ class IsoformSequenceStatusTest {
     @Test
     void getValue_displayName_areNotSame() {
         assertNotSame(
-                IsoformSequenceStatus.DISPLAYED.getValue(),
-                IsoformSequenceStatus.DISPLAYED.toDisplayName());
+                IsoformSequenceStatus.DISPLAYED.getName(),
+                IsoformSequenceStatus.DISPLAYED.getDisplayName());
     }
 
     @Nested

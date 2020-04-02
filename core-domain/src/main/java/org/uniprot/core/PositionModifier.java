@@ -4,14 +4,17 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-public enum PositionModifier implements EnumDisplay<PositionModifier> {
+public enum PositionModifier implements EnumDisplay {
     EXACT,
     OUTSIDE,
     UNKNOWN,
     UNSURE;
 
-    @Override
-    public @Nonnull String toDisplayName() {
-        return this.name();
+    public @Nonnull String getName() {
+        return name();
+    }
+
+    public static @Nonnull PositionModifier typeOf(@Nonnull String name) {
+        return EnumDisplay.typeOf(name, PositionModifier.class);
     }
 }

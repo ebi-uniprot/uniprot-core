@@ -12,7 +12,7 @@ class UniRefTypeTest {
     @ParameterizedTest
     @EnumSource(UniRefType.class)
     void displayName(UniRefType enm) {
-        assertEquals(enm.toString(), enm.toDisplayName());
+        assertEquals(enm.toString(), enm.getDisplayName());
     }
 
     @Nested

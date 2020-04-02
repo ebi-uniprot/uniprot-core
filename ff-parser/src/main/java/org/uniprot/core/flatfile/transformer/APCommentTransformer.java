@@ -145,12 +145,12 @@ public class APCommentTransformer implements CommentTransformer<AlternativeProdu
 
     private void addSequenceInfoToIsoform(APIsoformBuilder isoformBuilder, String token) {
         String label = token.substring(SEQUENCE.length()).trim();
-        if (label.equalsIgnoreCase(IsoformSequenceStatus.DISPLAYED.getValue())) {
+        if (label.equalsIgnoreCase(IsoformSequenceStatus.DISPLAYED.getName())) {
             isoformBuilder.sequenceStatus(IsoformSequenceStatus.DISPLAYED);
 
-        } else if (label.equalsIgnoreCase(IsoformSequenceStatus.NOT_DESCRIBED.getValue())) {
+        } else if (label.equalsIgnoreCase(IsoformSequenceStatus.NOT_DESCRIBED.getName())) {
             isoformBuilder.sequenceStatus(IsoformSequenceStatus.NOT_DESCRIBED);
-        } else if (label.equalsIgnoreCase(IsoformSequenceStatus.EXTERNAL.getValue())) {
+        } else if (label.equalsIgnoreCase(IsoformSequenceStatus.EXTERNAL.getName())) {
             isoformBuilder.sequenceStatus(IsoformSequenceStatus.EXTERNAL);
 
         } else {

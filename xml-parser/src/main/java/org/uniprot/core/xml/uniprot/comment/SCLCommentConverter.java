@@ -58,7 +58,7 @@ public class SCLCommentConverter implements CommentConverter<SubcellularLocation
     public CommentType toXml(SubcellularLocationComment uniObj) {
         if (uniObj == null) return null;
         CommentType commentXML = xmlUniprotFactory.createCommentType();
-        commentXML.setType(uniObj.getCommentType().toDisplayName().toLowerCase());
+        commentXML.setType(uniObj.getCommentType().getDisplayName().toLowerCase());
         if (!Strings.isNullOrEmpty(uniObj.getMolecule())) {
             MoleculeType mol = xmlUniprotFactory.createMoleculeType();
             mol.setValue(uniObj.getMolecule());

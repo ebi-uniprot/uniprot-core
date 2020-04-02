@@ -23,8 +23,8 @@ public class SimpleAnnotationIntrospector extends AnnotationIntrospector {
         return Arrays.stream(enumValues)
                 .map(
                         en -> {
-                            EnumDisplay<?> jsonEnum = (EnumDisplay<?>) en;
-                            return jsonEnum.toDisplayName();
+                            EnumDisplay jsonEnum = (EnumDisplay) en;
+                            return jsonEnum.getDisplayName();
                         })
                 .toArray(String[]::new);
     }

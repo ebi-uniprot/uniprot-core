@@ -4,11 +4,7 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/**
- * @author jluo
- * @date: 11 Jun 2019
- */
-public enum ComponentType implements EnumDisplay<ComponentType> {
+public enum ComponentType implements EnumDisplay {
     PRIMARY("Primary"),
     CON("CON"),
     SEGMENTED_GENOME("Segmented genome"),
@@ -16,6 +12,7 @@ public enum ComponentType implements EnumDisplay<ComponentType> {
     GCA("GCA"),
     GCF("GCF"),
     UNPLACED("Unplaced");
+
     private final String name;
 
     ComponentType(String name) {
@@ -26,15 +23,7 @@ public enum ComponentType implements EnumDisplay<ComponentType> {
         return name;
     }
 
-    @Override
-    public @Nonnull String toDisplayName() {
-        return name;
-    }
-
-    public static @Nonnull ComponentType fromValue(@Nonnull String type) {
-        for (ComponentType gnType : ComponentType.values()) {
-            if (gnType.getName().equalsIgnoreCase(type)) return gnType;
-        }
-        return ComponentType.UNPLACED;
+    public static @Nonnull ComponentType typeOf(@Nonnull String name) {
+        return EnumDisplay.typeOf(name, ComponentType.UNPLACED);
     }
 }

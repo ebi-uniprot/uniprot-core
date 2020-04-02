@@ -1,24 +1,25 @@
 package org.uniprot.core.cv.subcell;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.util.EnumDisplay;
 
-public enum SubcellLocationCategory implements EnumDisplay<SubcellLocationCategory> {
+public enum SubcellLocationCategory implements EnumDisplay {
     LOCATION("Cellular component"),
     TOPOLOGY("Topology"),
     ORIENTATION("Orientation");
 
-    String category;
+    String name;
 
-    SubcellLocationCategory(String category) {
-        this.category = category;
+    SubcellLocationCategory(String name) {
+        this.name = name;
     }
 
-    @Override
-    public String toDisplayName() {
-        return this.category;
+    public @Nonnull String getName() {
+        return this.name;
     }
 
-    public String getCategory() {
-        return this.category;
+    public static @Nonnull SubcellLocationCategory typeOf(@Nonnull String category) {
+        return EnumDisplay.typeOf(category, SubcellLocationCategory.class);
     }
 }

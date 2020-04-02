@@ -52,7 +52,7 @@ public class UniParcDBCrossReferenceConverter
         DbReferenceType xmlObj = xmlFactory.createDbReferenceType();
         xmlObj.setActive(uniObj.isActive() ? "Y" : "N");
         xmlObj.setId(uniObj.getId());
-        xmlObj.setType(uniObj.getDatabase().toDisplayName());
+        xmlObj.setType(uniObj.getDatabase().getDisplayName());
         xmlObj.setVersionI(uniObj.getVersionI());
         if (uniObj.getVersion() != null) xmlObj.setVersion(uniObj.getVersion());
         xmlObj.setCreated(XmlConverterHelper.dateToXml(uniObj.getCreated()));

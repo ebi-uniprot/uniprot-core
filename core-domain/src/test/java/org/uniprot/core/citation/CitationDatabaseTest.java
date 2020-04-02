@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 class CitationDatabaseTest {
     @Test
     void getName_toDisplayName_areSame() {
-        assertSame(CitationDatabase.AGRICOLA.getName(), CitationDatabase.AGRICOLA.toDisplayName());
+        assertSame(CitationDatabase.AGRICOLA.getName(), CitationDatabase.AGRICOLA.getDisplayName());
     }
 
     @Nested

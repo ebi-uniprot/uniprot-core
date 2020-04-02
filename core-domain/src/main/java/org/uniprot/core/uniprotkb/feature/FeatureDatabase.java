@@ -5,7 +5,7 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.Database;
 import org.uniprot.core.util.EnumDisplay;
 
-public enum FeatureDatabase implements Database, EnumDisplay<FeatureDatabase> {
+public enum FeatureDatabase implements Database, EnumDisplay {
     DBSNP("dbSNP");
     private final String name;
 
@@ -13,21 +13,11 @@ public enum FeatureDatabase implements Database, EnumDisplay<FeatureDatabase> {
         this.name = name;
     }
 
-    public @Nonnull static FeatureDatabase typeOf(@Nonnull String type) {
-        for (FeatureDatabase featuretype : FeatureDatabase.values()) {
-            if (type.equalsIgnoreCase(featuretype.getName())) return featuretype;
-        }
-        throw new IllegalArgumentException(
-                type + " is not valid Feature cross reference database type");
-    }
-
-    @Override
     public @Nonnull String getName() {
         return name;
     }
 
-    @Override
-    public @Nonnull String toDisplayName() {
-        return name;
+    public static @Nonnull FeatureDatabase typeOf(@Nonnull String name) {
+        return EnumDisplay.typeOf(name, FeatureDatabase.class);
     }
 }

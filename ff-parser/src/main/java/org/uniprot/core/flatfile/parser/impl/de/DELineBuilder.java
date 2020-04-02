@@ -102,7 +102,7 @@ public class DELineBuilder extends FFLineBuilderAbstr<ProteinDescription>
             } else if (flagType == FlagType.FRAGMENTS_PRECURSOR) {
                 sb.append("Precursor; Fragments;");
             } else {
-                sb.append(flagType.getValue()).append(SEMICOLON);
+                sb.append(flagType.getName()).append(SEMICOLON);
             }
             deLines.add(sb.toString());
         }

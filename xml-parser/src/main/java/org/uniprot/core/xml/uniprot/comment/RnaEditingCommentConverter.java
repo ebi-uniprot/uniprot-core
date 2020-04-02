@@ -49,7 +49,7 @@ public class RnaEditingCommentConverter implements CommentConverter<RnaEditingCo
                             .collect(Collectors.toList()));
         }
         if (xmlObj.getLocationType() != null) {
-            builder.locationType(RnaEditingLocationType.getType(xmlObj.getLocationType()));
+            builder.locationType(RnaEditingLocationType.typeOf(xmlObj.getLocationType()));
         }
 
         // Note
