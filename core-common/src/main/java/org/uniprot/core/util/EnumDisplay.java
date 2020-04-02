@@ -23,6 +23,8 @@ public interface EnumDisplay {
      * overridden, though it typically isn't necessary or desirable. An enum type should override
      * this method when a more "programmer-friendly" string form exists.
      *
+     * <p>Note this method will be use to create json object value for enum type
+     *
      * @return the name of this enum constant
      */
     default @Nonnull String getDisplayName() {
