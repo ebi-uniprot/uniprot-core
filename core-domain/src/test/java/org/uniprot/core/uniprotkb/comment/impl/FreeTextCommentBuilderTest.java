@@ -30,13 +30,6 @@ class FreeTextCommentBuilderTest {
     }
 
     @Test
-    void testBuildCatalyticActivityComment() {
-        List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
-        FreeTextComment comment = buildFreeTextComment(CommentType.CATALYTIC_ACTIVITY, texts);
-        assertEquals(CommentType.CATALYTIC_ACTIVITY, comment.getCommentType());
-    }
-
-    @Test
     void testBuildCautionComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.CAUTION, texts);

@@ -1,26 +1,23 @@
 package org.uniprot.core.parser.tsv.taxonomy;
 
+import static org.uniprot.core.parser.tsv.TSVUtil.*;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
+import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.taxonomy.TaxonomyEntry;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyStrain;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.util.Utils;
 
-public class TaxonomyEntryMap implements NamedValueMap {
-
-    private final TaxonomyEntry taxonomyEntry;
-
-    public TaxonomyEntryMap(TaxonomyEntry taxonomyEntry) {
-        this.taxonomyEntry = taxonomyEntry;
-    }
+public class TaxonomyEntryValueMapper implements EntityValueMapper<TaxonomyEntry> {
 
     @Override
-    public Map<String, String> attributeValues() {
+    public Map<String, String> mapEntity(TaxonomyEntry taxonomyEntry, List<String> fieldNames) {
         Map<String, String> map = new HashMap<>();
         map.put("id", String.valueOf(taxonomyEntry.getTaxonId()));
         map.put("parent", String.valueOf(taxonomyEntry.getParentId()));
@@ -29,17 +26,17 @@ public class TaxonomyEntryMap implements NamedValueMap {
         map.put("common_name", getOrDefaultEmpty(taxonomyEntry.getCommonName()));
         map.put("synonym", getOrDefaultEmpty(taxonomyEntry.getSynonyms()));
         map.put("other_names", getOrDefaultEmpty(taxonomyEntry.getOtherNames()));
-        map.put("link", getOrDefaultEmpty(taxonomyEntry.getLinks()));
-        map.put("rank", getRank());
-        map.put("reviewed", getReviewed());
-        map.put("lineage", getLineage());
-        map.put("strain", getStrains());
-        map.put("host", getHosts());
-        map.put("statistics", getStatistics());
+        map.put("links", getOrDefaultEmpty(taxonomyEntry.getLinks()));
+        map.put("rank", getRank(taxonomyEntry));
+        map.put("reviewed", getReviewed(taxonomyEntry));
+        map.put("lineage", getLineage(taxonomyEntry));
+        map.put("strain", getStrains(taxonomyEntry));
+        map.put("host", getHosts(taxonomyEntry));
+        map.put("statistics", getStatistics(taxonomyEntry));
         return map;
     }
 
-    private String getReviewed() {
+    private String getReviewed(TaxonomyEntry taxonomyEntry) {
         if (taxonomyEntry.hasStatistics()
                 && taxonomyEntry.getStatistics().hasReviewedProteinCount()) {
             return "reviewed";
@@ -51,7 +48,7 @@ public class TaxonomyEntryMap implements NamedValueMap {
         }
     }
 
-    private String getHosts() {
+    private String getHosts(TaxonomyEntry taxonomyEntry) {
         if (Utils.notNullNotEmpty(taxonomyEntry.getHosts())) {
             return taxonomyEntry.getHosts().stream()
                     .map(Taxonomy::getScientificName)
@@ -61,7 +58,7 @@ public class TaxonomyEntryMap implements NamedValueMap {
         }
     }
 
-    private String getStrains() {
+    private String getStrains(TaxonomyEntry taxonomyEntry) {
         if (Utils.notNullNotEmpty(taxonomyEntry.getStrains())) {
             return taxonomyEntry.getStrains().stream()
                     .map(TaxonomyStrain::getName)
@@ -71,7 +68,7 @@ public class TaxonomyEntryMap implements NamedValueMap {
         }
     }
 
-    private String getLineage() {
+    private String getLineage(TaxonomyEntry taxonomyEntry) {
         if (Utils.notNullNotEmpty(taxonomyEntry.getLineages())) {
             return taxonomyEntry.getLineages().stream()
                     .map(TaxonomyLineage::getScientificName)
@@ -81,7 +78,7 @@ public class TaxonomyEntryMap implements NamedValueMap {
         }
     }
 
-    private String getRank() {
+    private String getRank(TaxonomyEntry taxonomyEntry) {
         if (taxonomyEntry.getRank() != null) {
             return taxonomyEntry.getRank().getDisplayName();
         } else {
@@ -89,7 +86,7 @@ public class TaxonomyEntryMap implements NamedValueMap {
         }
     }
 
-    private String getStatistics() {
+    private String getStatistics(TaxonomyEntry taxonomyEntry) {
         if (taxonomyEntry.getStatistics() != null) {
             return "reviewed:"
                     + taxonomyEntry.getStatistics().getReviewedProteinCount()

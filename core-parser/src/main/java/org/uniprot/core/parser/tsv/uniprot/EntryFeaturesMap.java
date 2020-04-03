@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.flatfile.parser.impl.ft.FeatureLineBuilderFactory;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
+import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.feature.Feature;
 import org.uniprot.core.uniprotkb.feature.FeatureDescription;
 import org.uniprot.core.uniprotkb.feature.FeatureType;
@@ -23,7 +24,7 @@ public class EntryFeaturesMap implements NamedValueMap {
             Arrays.asList(
                     "ft_var_seq",
                     "ft_variant",
-                    "ft_non_con",
+                    "ft_non_cons",
                     "ft_non_std",
                     "ft_non_ter",
                     "ft_conflict",
@@ -37,11 +38,11 @@ public class EntryFeaturesMap implements NamedValueMap {
                     "ft_site",
                     "ft_mutagen",
                     "ft_intramem",
-                    "ft_top_dom",
+                    "ft_topo_dom",
                     "ft_transmem",
                     "ft_chain",
                     "ft_crosslnk",
-                    "ft_disulfide",
+                    "ft_disulfid",
                     "ft_carbohyd",
                     "ft_init_met",
                     "ft_lipid",

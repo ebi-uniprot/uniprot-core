@@ -2,6 +2,7 @@ package org.uniprot.core.parser.tsv.uniprot;
 
 import java.util.*;
 
+import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 
 public class EntryTypeMap implements NamedValueMap {

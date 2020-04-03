@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.CitationDatabase;
+import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.UniProtKBReference;
 
 public class EntryReferenceMap implements NamedValueMap {

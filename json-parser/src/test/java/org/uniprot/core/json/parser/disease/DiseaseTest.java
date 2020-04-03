@@ -12,7 +12,7 @@ import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
-class DiseaseTest {
+public class DiseaseTest {
     @Test
     void testCrossReference() {
         List<String> props = Arrays.asList("prop1", "prop2", "prop3");
@@ -39,13 +39,20 @@ class DiseaseTest {
 
     @Test
     void testDisease() {
-        String id = "Sample DiseaseEntry";
-        String accession = "DI-12345";
-        String acronym = "SAMPLE-DIS";
+        DiseaseEntry disease = getDiseaseEntry();
+
+        ValidateJson.verifyJsonRoundTripParser(
+                DiseaseJsonConfig.getInstance().getFullObjectMapper(), disease);
+    }
+
+    public static DiseaseEntry getDiseaseEntry() {
         String def = "This is sample definition.";
         List<String> altNames = Arrays.asList("name1", "name2", "name3");
         Long reviwedProteinCount = 100L;
         Long unreviwedProteinCount = 200L;
+        String id = "Sample DiseaseEntry";
+        String accession = "DI-12345";
+        String acronym = "SAMPLE-DIS";
 
         // cross ref
         List<String> props = Arrays.asList("prop1", "prop2", "prop3");
@@ -70,10 +77,7 @@ class DiseaseTest {
                 .reviewedProteinCount(reviwedProteinCount)
                 .unreviewedProteinCount(unreviwedProteinCount);
 
-        DiseaseEntry disease = builder.build();
-
-        ValidateJson.verifyJsonRoundTripParser(
-                DiseaseJsonConfig.getInstance().getFullObjectMapper(), disease);
+        return builder.build();
     }
 
     @Test

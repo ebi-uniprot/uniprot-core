@@ -100,10 +100,10 @@ public class FeatureTest {
         assertEquals("EXACT", end.get("modifier").asText());
 
         assertNotNull(jsonNode.get("description"));
-        assertEquals("description value", jsonNode.get("description").asText());
+        assertEquals("description value CHAIN", jsonNode.get("description").asText());
 
         assertNotNull(jsonNode.get("featureId"));
-        assertEquals("id value", jsonNode.get("featureId").asText());
+        assertEquals("id value CHAIN", jsonNode.get("featureId").asText());
 
         assertNotNull(jsonNode.get("alternativeSequence"));
         JsonNode alternativeSequence = jsonNode.get("alternativeSequence");
@@ -129,6 +129,10 @@ public class FeatureTest {
     }
 
     public static Feature getFeature() {
+        return getFeature(FeatureType.CHAIN);
+    }
+
+    public static Feature getFeature(FeatureType featureType) {
         AlternativeSequence alternativeSequence =
                 new AlternativeSequenceBuilder()
                         .original("original value")
@@ -146,12 +150,12 @@ public class FeatureTest {
                         "sequence 1", 2, 8, PositionModifier.EXACT, PositionModifier.EXACT);
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730");
         return new FeatureBuilder()
-                .type(FeatureType.CHAIN)
+                .type(featureType)
                 .alternativeSequence(alternativeSequence)
                 .featureCrossReference(xrefs)
-                .description("description value")
+                .description("description value " + featureType)
                 .evidencesSet(evidences)
-                .featureId("id value")
+                .featureId("id value " + featureType)
                 .location(location)
                 .build();
     }

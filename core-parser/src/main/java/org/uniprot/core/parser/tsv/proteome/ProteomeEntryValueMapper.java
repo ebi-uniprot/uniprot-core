@@ -1,6 +1,5 @@
 package org.uniprot.core.parser.tsv.proteome;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -8,7 +7,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.parser.tsv.EntityValueMapper;
+import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.proteome.ProteomeDatabase;
 import org.uniprot.core.proteome.ProteomeEntry;
 
@@ -16,23 +17,16 @@ import org.uniprot.core.proteome.ProteomeEntry;
  * @author jluo
  * @date: 1 May 2019
  */
-public class ProteomeEntryMap implements NamedValueMap {
-    private final ProteomeEntry entry;
-    private final List<String> fields;
-    public static final List<String> PROTEOME_FIELDS =
-            Collections.unmodifiableList(
-                    Arrays.asList("upid", "genome_assembly_id", "protein_count"));
+public class ProteomeEntryValueMapper implements EntityValueMapper<ProteomeEntry> {
 
-    public ProteomeEntryMap(ProteomeEntry entry, List<String> fields) {
-        this.entry = entry;
-        this.fields = Collections.unmodifiableList(fields);
-    }
+    public static final List<String> PROTEOME_FIELDS =
+            Collections.unmodifiableList(Arrays.asList("upid", "genome_assembly", "protein_count"));
 
     @Override
-    public Map<String, String> attributeValues() {
+    public Map<String, String> mapEntity(ProteomeEntry entry, List<String> fields) {
         Map<String, String> map = new HashMap<>();
         if (contains(fields)) {
-            map.putAll(getSimpleAttributeValues());
+            map.putAll(getSimpleAttributeValues(entry));
         }
         if (ProteomeTaxonomyMap.contains(fields)) {
             addData(map, new ProteomeTaxonomyMap(entry.getTaxonomy()));
@@ -46,23 +40,14 @@ public class ProteomeEntryMap implements NamedValueMap {
         return map;
     }
 
-    public List<String> getData() {
-        List<String> result = new ArrayList<>();
-        Map<String, String> mapped = attributeValues();
-        for (String field : fields) {
-            result.add(mapped.getOrDefault(field, ""));
-        }
-        return result;
-    }
-
     private void addData(Map<String, String> map, NamedValueMap dl) {
         map.putAll(dl.attributeValues());
     }
 
-    private Map<String, String> getSimpleAttributeValues() {
+    private Map<String, String> getSimpleAttributeValues(ProteomeEntry entry) {
         Map<String, String> map = new HashMap<>();
         map.put(PROTEOME_FIELDS.get(0), entry.getId().getValue());
-        map.put(PROTEOME_FIELDS.get(1), getGenomeAssemblyId());
+        map.put(PROTEOME_FIELDS.get(1), getGenomeAssemblyId(entry));
         map.put(PROTEOME_FIELDS.get(2), "" + entry.getProteinCount());
 
         return map;
@@ -72,11 +57,10 @@ public class ProteomeEntryMap implements NamedValueMap {
         return fields.stream().anyMatch(PROTEOME_FIELDS::contains);
     }
 
-    private String getGenomeAssemblyId() {
-
+    private String getGenomeAssemblyId(ProteomeEntry entry) {
         return entry.getProteomeCrossReferences().stream()
                 .filter(val -> val.getDatabase() == ProteomeDatabase.GENOME_ASSEMBLY)
-                .map(val -> val.getId())
+                .map(CrossReference::getId)
                 .collect(Collectors.joining(", "));
     }
 }

@@ -1,43 +1,43 @@
 package org.uniprot.core.parser.tsv.keyword;
 
+import static org.uniprot.core.parser.tsv.TSVUtil.*;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
+import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.util.Utils;
 
-public class KeywordEntryMap implements NamedValueMap {
-
-    private final KeywordEntry keywordEntry;
-
-    public KeywordEntryMap(KeywordEntry keywordEntry) {
-        this.keywordEntry = keywordEntry;
-    }
+public class KeywordEntryValueMapper implements EntityValueMapper<KeywordEntry> {
 
     @Override
-    public Map<String, String> attributeValues() {
+    public Map<String, String> mapEntity(KeywordEntry keywordEntry, List<String> fields) {
         Map<String, String> map = new HashMap<>();
         if (Utils.notNull(keywordEntry.getKeyword())) {
             map.put("id", keywordEntry.getKeyword().getId());
             map.put("name", keywordEntry.getKeyword().getName());
+            map.put(
+                    "keyword",
+                    keywordEntry.getKeyword().getId() + " " + keywordEntry.getKeyword().getName());
         }
         map.put("description", getOrDefaultEmpty(keywordEntry.getDefinition()));
         if (Utils.notNull(keywordEntry.getCategory())) {
             map.put("category", getOrDefaultEmpty(keywordEntry.getCategory().getName()));
         }
         map.put("synonym", getOrDefaultEmpty(keywordEntry.getSynonyms()));
-        map.put("gene_ontology", getGeneOntology());
+        map.put("gene_ontology", getGeneOntology(keywordEntry));
         map.put("sites", getOrDefaultEmpty(keywordEntry.getSites()));
-        map.put("children", getChildren());
-        map.put("parent", getParent());
-        map.put("statistics", getStatistics());
+        map.put("children", getChildren(keywordEntry));
+        map.put("parent", getParent(keywordEntry));
+        map.put("statistics", getStatistics(keywordEntry));
         return map;
     }
 
-    private String getGeneOntology() {
+    private String getGeneOntology(KeywordEntry keywordEntry) {
         String result = "";
         if (Utils.notNullNotEmpty(keywordEntry.getGeneOntologies())) {
             result =
@@ -48,7 +48,7 @@ public class KeywordEntryMap implements NamedValueMap {
         return result;
     }
 
-    private String getChildren() {
+    private String getChildren(KeywordEntry keywordEntry) {
         return keywordEntry.getChildren().stream()
                 .flatMap(this::getAllChildrenLevel)
                 .map(entry -> entry.getKeyword().getName())
@@ -64,7 +64,7 @@ public class KeywordEntryMap implements NamedValueMap {
         return result;
     }
 
-    private String getParent() {
+    private String getParent(KeywordEntry keywordEntry) {
         return keywordEntry.getParents().stream()
                 .flatMap(this::getAllParentLevel)
                 .map(entry -> entry.getKeyword().getName())
@@ -80,7 +80,7 @@ public class KeywordEntryMap implements NamedValueMap {
         return result;
     }
 
-    private String getStatistics() {
+    private String getStatistics(KeywordEntry keywordEntry) {
         String result = "";
         if (keywordEntry.getStatistics() != null) {
             result =

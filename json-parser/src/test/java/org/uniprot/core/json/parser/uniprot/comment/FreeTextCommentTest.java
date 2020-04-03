@@ -49,8 +49,12 @@ public class FreeTextCommentTest {
     }
 
     public static FreeTextComment getFreeTextComment() {
+        return getFreeTextComment(CommentType.DISRUPTION_PHENOTYPE);
+    }
+
+    public static FreeTextComment getFreeTextComment(CommentType commentType) {
         return new FreeTextCommentBuilder()
-                .commentType(CommentType.DISRUPTION_PHENOTYPE)
+                .commentType(commentType)
                 .molecule("Isoform 4")
                 .textsSet(
                         CreateUtils.createEvidencedValueList(

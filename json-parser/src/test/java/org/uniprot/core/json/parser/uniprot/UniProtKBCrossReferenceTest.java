@@ -45,7 +45,7 @@ public class UniProtKBCrossReferenceTest {
         assertEquals("Ensembl", jsonNode.get("database").asText());
 
         assertNotNull(jsonNode.get("id"));
-        assertEquals("id value", jsonNode.get("id").asText());
+        assertEquals("idEnsembl", jsonNode.get("id").asText());
 
         assertNotNull(jsonNode.get("isoformId"));
         assertEquals("Q9NXB0-1", jsonNode.get("isoformId").asText());
@@ -56,7 +56,7 @@ public class UniProtKBCrossReferenceTest {
                 jsonNode.get("evidences").get(0), "ECO:0000269", "PubMed", "11389730");
 
         assertNotNull(jsonNode.get("properties"));
-        assertEquals(1, jsonNode.get("properties").size());
+        assertEquals(2, jsonNode.get("properties").size());
 
         JsonNode property = jsonNode.get("properties").get(0);
         assertNotNull(property.get("key"));
@@ -67,12 +67,33 @@ public class UniProtKBCrossReferenceTest {
     }
 
     public static UniProtKBCrossReference getUniProtDBCrossReference() {
-        Property property = new Property("ProteinId", "description value");
+        return getUniProtDBCrossReference("Ensembl");
+    }
+
+    public static UniProtKBCrossReference getUniProtDBGOCrossReferences(
+            String termType, String evidenceType) {
+        Property property = new Property("GoTerm", termType + ":nucleus");
+        Property property2 = new Property("GoEvidenceType", evidenceType + ":UniProtKB");
         return new UniProtCrossReferenceBuilder()
-                .id("id value")
+                .id("GO:0000123")
                 .isoformId("Q9NXB0-1")
                 .propertiesAdd(property)
-                .database(new UniProtKBDatabaseImpl("Ensembl"))
+                .propertiesAdd(property2)
+                .database(new UniProtKBDatabaseImpl("GO"))
+                .evidencesAdd(CreateUtils.createEvidence("ECO:0000269|PubMed:11389730"))
+                .build();
+    }
+
+    public static UniProtKBCrossReference getUniProtDBCrossReference(String databaseName) {
+        Property property = new Property("ProteinId", "description value");
+        Property property2 = new Property("Method", "Model");
+
+        return new UniProtCrossReferenceBuilder()
+                .id("id" + databaseName)
+                .isoformId("Q9NXB0-1")
+                .propertiesAdd(property)
+                .propertiesAdd(property2)
+                .database(new UniProtKBDatabaseImpl(databaseName))
                 .evidencesAdd(CreateUtils.createEvidence("ECO:0000269|PubMed:11389730"))
                 .build();
     }

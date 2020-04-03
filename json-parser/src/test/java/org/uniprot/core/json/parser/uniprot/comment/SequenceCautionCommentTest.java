@@ -43,7 +43,8 @@ public class SequenceCautionCommentTest {
         assertEquals("Isoform 2", jsonNode.get("molecule").asText());
 
         assertNotNull(jsonNode.get("sequenceCautionType"));
-        assertEquals("Erroneous initiation", jsonNode.get("sequenceCautionType").asText());
+        assertEquals(
+                "Erroneous gene model prediction", jsonNode.get("sequenceCautionType").asText());
 
         assertNotNull(jsonNode.get("sequence"));
         assertEquals("sequence", jsonNode.get("sequence").asText());
@@ -60,7 +61,7 @@ public class SequenceCautionCommentTest {
     public static SequenceCautionComment getSequenceCautionComment() {
         return new SequenceCautionCommentBuilder()
                 .molecule("Isoform 2")
-                .sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
+                .sequenceCautionType(SequenceCautionType.ERRONEOUS_PREDICTION)
                 .sequence("sequence")
                 .note("Text note")
                 .evidencesSet(CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361"))

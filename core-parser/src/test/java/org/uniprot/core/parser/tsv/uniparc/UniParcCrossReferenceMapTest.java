@@ -25,20 +25,24 @@ class UniParcCrossReferenceMapTest {
         List<UniParcCrossReference> xrefs = create();
         UniParcCrossReferenceMap xrefMap = new UniParcCrossReferenceMap(xrefs);
         Map<String, String> result = xrefMap.attributeValues();
-        assertEquals(6, result.size());
+        assertEquals(8, result.size());
         assertEquals(";", result.get("gene"));
         assertEquals("some pname;some pname2", result.get("protein"));
         assertEquals("P12345; P12347.2 (obsolete)", result.get("accession"));
         assertEquals("UP00000564:chromosome 1", result.get("proteome"));
         assertEquals("2015-01-11", result.get("first_seen"));
         assertEquals("2018-02-07", result.get("last_seen"));
+        assertEquals("P12345", result.get("UniProtKB/Swiss-Prot"));
+        assertEquals("P12347", result.get("UniProtKB/TrEMBL"));
     }
 
     @Test
     void testFields() {
-        List<String> fields =
+        List<String> fields = new ArrayList<>();
+        fields.addAll(
                 Arrays.asList(
-                        "gene", "protein", "proteome", "accession", "first_seen", "last_seen");
+                        "gene", "protein", "proteome", "accession", "first_seen", "last_seen"));
+        Arrays.stream(UniParcDatabase.values()).map(UniParcDatabase::getName).forEach(fields::add);
         assertEquals(UniParcCrossReferenceMap.FIELDS, fields);
     }
 

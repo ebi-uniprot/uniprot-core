@@ -5,9 +5,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import java.util.Collections;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
@@ -18,33 +16,38 @@ import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.impl.KeywordEntryBuilder;
 import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
 import org.uniprot.core.impl.StatisticsBuilder;
+import org.uniprot.core.util.Utils;
 
-class KeywordEntryMapTest {
+class KeywordEntryValueMapperTest {
 
     @Test
     void checkSimpleEntryAttributeValues() {
         KeywordEntry entry = new KeywordEntryBuilder().keyword(getKeyword()).build();
-        Map<String, String> mappedEntries = new KeywordEntryMap(entry).attributeValues();
+        Map<String, String> mappedEntries =
+                new KeywordEntryValueMapper().mapEntity(entry, Collections.emptyList());
         assertThat(mappedEntries, notNullValue());
-        assertEquals(9, mappedEntries.size());
+        assertEquals(10, mappedEntries.size());
         assertEquals("KW-9993", mappedEntries.get("id"));
         mappedEntries.remove("id");
         assertEquals("Ligand", mappedEntries.get("name"));
         mappedEntries.remove("name");
+        assertEquals("KW-9993 Ligand", mappedEntries.get("keyword"));
+        mappedEntries.remove("keyword");
         Optional<String> result =
-                mappedEntries.values().stream().filter(val -> !val.isEmpty()).findAny();
+                mappedEntries.values().stream().filter(Utils::notNullNotEmpty).findAny();
         assertFalse(result.isPresent());
     }
 
     @Test
     void checkCompleteEntryAttributeValues() {
         KeywordEntry entry = getKeywordEntry(true);
+        Map<String, String> mappedEntries =
+                new KeywordEntryValueMapper().mapEntity(entry, Collections.emptyList());
 
-        Map<String, String> mappedEntries = new KeywordEntryMap(entry).attributeValues();
-
-        assertEquals(10, mappedEntries.size());
+        assertEquals(11, mappedEntries.size());
         assertEquals("KW-9993", mappedEntries.get("id"));
         assertEquals("Ligand", mappedEntries.get("name"));
+        assertEquals("KW-9993 Ligand", mappedEntries.get("keyword"));
         assertEquals("Definition value", mappedEntries.get("description"));
         assertEquals("Ligand", mappedEntries.get("category"));
         assertEquals("synonym", mappedEntries.get("synonym"));
