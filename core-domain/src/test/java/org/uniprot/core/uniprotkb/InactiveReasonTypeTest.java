@@ -10,6 +10,6 @@ class InactiveReasonTypeTest {
     @ParameterizedTest
     @EnumSource(InactiveReasonType.class)
     void displayNameIs_enumName(InactiveReasonType enm) {
-        assertEquals(enm.toString(), enm.toDisplayName());
+        assertEquals(enm.toString(), enm.getDisplayName());
     }
 }

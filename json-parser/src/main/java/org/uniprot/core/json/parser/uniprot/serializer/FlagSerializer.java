@@ -19,6 +19,6 @@ public class FlagSerializer extends StdSerializer<FlagImpl> {
     public void serialize(
             FlagImpl flag, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
             throws IOException {
-        jsonGenerator.writeString(flag.getType().toDisplayName());
+        jsonGenerator.writeString(flag.getType().getDisplayName());
     }
 }

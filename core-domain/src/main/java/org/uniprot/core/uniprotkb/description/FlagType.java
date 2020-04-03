@@ -9,25 +9,24 @@ import org.uniprot.core.util.EnumDisplay;
  *
  * <p>current valid flags are Precursor, Fragment, Fragments
  */
-public enum FlagType implements EnumDisplay<FlagType> {
+public enum FlagType implements EnumDisplay {
     PRECURSOR("Precursor"),
     FRAGMENT("Fragment"),
     FRAGMENTS("Fragments"),
     FRAGMENT_PRECURSOR("Fragment,Precursor"),
     FRAGMENTS_PRECURSOR("Fragments,Precursor");
 
-    private String value;
+    private String name;
 
-    FlagType(String value) {
-        this.value = value;
+    FlagType(String name) {
+        this.name = name;
     }
 
-    public @Nonnull String getValue() {
-        return value;
+    public @Nonnull String getName() {
+        return name;
     }
 
-    @Override
-    public @Nonnull String toDisplayName() {
-        return value;
+    public static @Nonnull FlagType typeOf(@Nonnull String name) {
+        return EnumDisplay.typeOf(name, FlagType.class);
     }
 }

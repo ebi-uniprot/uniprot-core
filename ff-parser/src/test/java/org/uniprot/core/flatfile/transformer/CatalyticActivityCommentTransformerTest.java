@@ -295,7 +295,7 @@ class CatalyticActivityCommentTransformerTest {
 
     private void verifyPhysiologicalDirection(
             PhysiologicalReaction pd, String name, String xref, String evidences) {
-        assertEquals(name, pd.getDirectionType().toDisplayName());
+        assertEquals(name, pd.getDirectionType().getDisplayName());
         assertEquals(xref, xrefToString(pd.getReactionCrossReference()));
     }
 

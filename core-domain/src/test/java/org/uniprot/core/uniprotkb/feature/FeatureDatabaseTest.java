@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 class FeatureDatabaseTest {
     @Test
     void nameAndDisplayNameAreSame() {
-        assertSame(FeatureDatabase.DBSNP.getName(), FeatureDatabase.DBSNP.toDisplayName());
+        assertSame(FeatureDatabase.DBSNP.getName(), FeatureDatabase.DBSNP.getDisplayName());
     }
 
     @Test

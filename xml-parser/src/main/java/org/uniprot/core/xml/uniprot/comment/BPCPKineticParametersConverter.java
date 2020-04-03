@@ -92,7 +92,7 @@ public class BPCPKineticParametersConverter implements Converter<Kinetics, Kinet
         String unitString = xmlValueString.substring(pos1 + 1, pos2);
         String substrate = xmlValueString.substring(pos3 + 1);
         double constant = Double.parseDouble(constantString);
-        MichaelisConstantUnit unit = MichaelisConstantUnit.convert(unitString);
+        MichaelisConstantUnit unit = MichaelisConstantUnit.typeOf(unitString);
         List<Evidence> evidences = evRefMapper.parseEvidenceIds(evStringType.getEvidence());
 
         return new MichaelisConstantBuilder()
@@ -114,7 +114,7 @@ public class BPCPKineticParametersConverter implements Converter<Kinetics, Kinet
 
         sb.append(numericalValue);
         sb.append(' ');
-        sb.append(mc.getUnit().toDisplayNameString()).append(" for ");
+        sb.append(mc.getUnit().getDisplayName()).append(" for ");
         sb.append(mc.getSubstrate());
         kmkinetics.setValue(sb.toString());
 

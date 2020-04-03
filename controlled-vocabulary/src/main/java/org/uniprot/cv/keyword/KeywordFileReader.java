@@ -58,9 +58,9 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         KeywordId kcategory = keyword.getCategory();
         KeywordCategory category;
         if (kcategory != null) {
-            category = KeywordCategory.fromValue(kcategory.getName());
+            category = KeywordCategory.typeOf(kcategory.getName());
         } else {
-            category = KeywordCategory.fromValue(keyword.getKeyword().getName());
+            category = KeywordCategory.typeOf(keyword.getKeyword().getName());
         }
 
         return new PairImpl<>(accession, category);
@@ -135,8 +135,8 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         KEFRBuilder retObj = new KEFRBuilder();
         KeywordId keyword =
                 new KeywordIdBuilder()
-                        .id(trimSpacesAndRemoveLastDot(identifier))
-                        .accession(entry.ac)
+                        .name(trimSpacesAndRemoveLastDot(identifier))
+                        .id(entry.ac)
                         .build();
         retObj.keyword(keyword);
         // definition

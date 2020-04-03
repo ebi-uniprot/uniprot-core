@@ -5,13 +5,12 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.Database;
 import org.uniprot.core.util.EnumDisplay;
 
-public enum ProteomeDatabase implements Database, EnumDisplay<ProteomeDatabase> {
+public enum ProteomeDatabase implements Database, EnumDisplay {
     GENOME_ASSEMBLY("GenomeAssembly"),
     GENOME_ANNOTATION("GenomeAnnotation"),
     GENOME_ACCESSION("GenomeAccession"),
     ASSEMBLY_ID("AssemblyId"),
-    BIOSAMPLE("Biosample"),
-    UNKNOWN("Unknown");
+    BIOSAMPLE("Biosample");
 
     private final String name;
 
@@ -24,15 +23,7 @@ public enum ProteomeDatabase implements Database, EnumDisplay<ProteomeDatabase> 
         return name;
     }
 
-    @Override
-    public @Nonnull String toDisplayName() {
-        return getName();
-    }
-
-    public static @Nonnull ProteomeDatabase fromValue(@Nonnull String type) {
-        for (ProteomeDatabase gnType : ProteomeDatabase.values()) {
-            if (gnType.getName().equalsIgnoreCase(type)) return gnType;
-        }
-        return ProteomeDatabase.UNKNOWN;
+    public static @Nonnull ProteomeDatabase typeOf(@Nonnull String name) {
+        return EnumDisplay.typeOf(name, ProteomeDatabase.class);
     }
 }

@@ -18,7 +18,7 @@ public class UniPathwayRepoImpl implements UniPathwayRepo {
         List<UniPathway> pathwayList = UniPathwayCache.INSTANCE.get(filename);
         pathwayIdMap =
                 pathwayList.stream()
-                        .collect(Collectors.toMap(UniPathway::getAccession, Function.identity()));
+                        .collect(Collectors.toMap(UniPathway::getId, Function.identity()));
         pathwayNameMap =
                 pathwayList.stream()
                         .collect(Collectors.toMap(UniPathway::getName, Function.identity()));

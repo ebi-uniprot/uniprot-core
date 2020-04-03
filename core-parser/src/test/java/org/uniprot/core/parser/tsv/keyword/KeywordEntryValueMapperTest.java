@@ -94,7 +94,7 @@ class KeywordEntryValueMapperTest {
     }
 
     private KeywordId getKeyword() {
-        return new KeywordIdBuilder().id("Ligand").accession("KW-9993").build();
+        return new KeywordIdBuilder().name("Ligand").id("KW-9993").build();
     }
 
     private KeywordEntry getKeywordEntryParent() {

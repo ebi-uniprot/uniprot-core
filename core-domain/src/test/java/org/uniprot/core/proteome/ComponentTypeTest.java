@@ -12,7 +12,7 @@ class ComponentTypeTest {
     void getName_toDisplayName_areSame() {
         assertSame(
                 ComponentType.SEGMENTED_GENOME.getName(),
-                ComponentType.SEGMENTED_GENOME.toDisplayName());
+                ComponentType.SEGMENTED_GENOME.getDisplayName());
     }
 
     @Nested
@@ -20,28 +20,28 @@ class ComponentTypeTest {
 
         @Test
         void canConvertLowerCase() {
-            assertEquals(ComponentType.WGS, ComponentType.fromValue("wgs"));
+            assertEquals(ComponentType.WGS, ComponentType.typeOf("wgs"));
         }
 
         @Test
         void canConvertUpperCase() {
-            assertEquals(ComponentType.CON, ComponentType.fromValue("CON"));
+            assertEquals(ComponentType.CON, ComponentType.typeOf("CON"));
         }
 
         @Test
         void canConvertMixCase() {
-            assertEquals(ComponentType.UNPLACED, ComponentType.fromValue("UNplaCED"));
+            assertEquals(ComponentType.UNPLACED, ComponentType.typeOf("UNplaCED"));
         }
 
         @ParameterizedTest
         @ValueSource(strings = {"uniprot", "UNIPARCID", "", "abc", "  ", "SwissProt"})
         void forOthersWillReturnUnknown(String val) {
-            assertEquals(ComponentType.UNPLACED, ComponentType.fromValue(val));
+            assertEquals(ComponentType.UNPLACED, ComponentType.typeOf(val));
         }
 
         @Test
         void forNullWillReturnUnknown() {
-            assertEquals(ComponentType.UNPLACED, ComponentType.fromValue(null));
+            assertEquals(ComponentType.UNPLACED, ComponentType.typeOf(null));
         }
     }
 }

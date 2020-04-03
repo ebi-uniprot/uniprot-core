@@ -25,13 +25,13 @@ class SubcellularLocationEntryValueMapperTest {
     @Test
     void checkSimpleEntryAttributeValues() {
         SubcellularLocationEntry entry =
-                new SubcellularLocationEntryBuilder().accession("SL-0001").build();
+                new SubcellularLocationEntryBuilder().id("SL-0001").build();
         Map<String, String> mappedEntries =
                 new SubcellularLocationEntryValueMapper().mapEntity(entry, Collections.emptyList());
         assertThat(mappedEntries, notNullValue());
         assertEquals(14, mappedEntries.size());
-        assertEquals("SL-0001", mappedEntries.get("accession"));
-        mappedEntries.remove("accession");
+        assertEquals("SL-0001", mappedEntries.get("id"));
+        mappedEntries.remove("id");
 
         mappedEntries.values().forEach(value -> assertEquals("", value));
     }
@@ -48,11 +48,11 @@ class SubcellularLocationEntryValueMapperTest {
         assertEquals("referenceValue", mappedEntries.get("references"));
         assertEquals("synonymValue", mappedEntries.get("synonyms"));
         assertEquals("goIdValue:goTermValue", mappedEntries.get("gene_ontologies"));
-        assertEquals("SL-0001", mappedEntries.get("accession"));
+        assertEquals("SL-0001", mappedEntries.get("id"));
         assertEquals("content value", mappedEntries.get("content"));
         assertEquals("definition value", mappedEntries.get("definition"));
         assertEquals("linkValue", mappedEntries.get("links"));
-        assertEquals("idValue", mappedEntries.get("id"));
+        assertEquals("idValue", mappedEntries.get("name"));
         assertEquals("Cellular component", mappedEntries.get("category"));
         assertEquals("keywordAccessionValue", mappedEntries.get("keyword"));
         assertEquals("SL-0001; idValue; LOCATION", mappedEntries.get("is_a"));
@@ -64,17 +64,14 @@ class SubcellularLocationEntryValueMapperTest {
         Statistics statistics =
                 new StatisticsBuilder().reviewedProteinCount(10).unreviewedProteinCount(20).build();
         SubcellularLocationEntryBuilder entry = new SubcellularLocationEntryBuilder();
-        entry.accession("SL-0001");
+        entry.id("SL-0001");
         entry.content("content value");
         entry.definition("definition value");
         entry.geneOntologiesAdd(
                 new GeneOntologyEntryBuilder().id("goIdValue").name("goTermValue").build());
-        entry.id("idValue");
+        entry.name("idValue");
         entry.keyword(
-                new KeywordIdBuilder()
-                        .id("keywordIdValue")
-                        .accession("keywordAccessionValue")
-                        .build());
+                new KeywordIdBuilder().name("keywordIdValue").id("keywordAccessionValue").build());
         entry.linksAdd("linkValue");
         entry.note("noteValue");
         entry.referencesAdd("referenceValue");

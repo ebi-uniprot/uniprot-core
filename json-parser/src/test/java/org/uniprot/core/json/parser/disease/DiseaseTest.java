@@ -32,7 +32,7 @@ public class DiseaseTest {
     void testKeyword() {
         String id = "Sample Keyword";
         String accession = "KW-1234";
-        KeywordId keyword = new KeywordIdBuilder().id(id).accession(accession).build();
+        KeywordId keyword = new KeywordIdBuilder().name(id).id(accession).build();
         ValidateJson.verifyJsonRoundTripParser(
                 DiseaseJsonConfig.getInstance().getFullObjectMapper(), keyword);
     }
@@ -68,10 +68,10 @@ public class DiseaseTest {
         // keyword
         String kId = "Sample Keyword";
         String kwAC = "KW-1234";
-        KeywordId keyword = new KeywordIdBuilder().id(kId).accession(kwAC).build();
+        KeywordId keyword = new KeywordIdBuilder().name(kId).id(kwAC).build();
 
         DiseaseEntryBuilder builder = new DiseaseEntryBuilder();
-        builder.id(id).accession(accession).acronym(acronym).definition(def);
+        builder.name(id).id(accession).acronym(acronym).definition(def);
         builder.alternativeNamesSet(altNames).crossReferencesAdd(cr);
         builder.keywordsAdd(keyword)
                 .reviewedProteinCount(reviwedProteinCount)
@@ -99,7 +99,7 @@ public class DiseaseTest {
                         .build();
 
         DiseaseEntryBuilder builder = new DiseaseEntryBuilder();
-        builder.id(id).accession(accession).acronym(acronym).definition(def);
+        builder.name(id).id(accession).acronym(acronym).definition(def);
         builder.crossReferencesAdd(cr);
 
         DiseaseEntry disease = builder.build();
@@ -112,7 +112,7 @@ public class DiseaseTest {
     void testDiseaseWithJustId() {
         String id = "Sample DiseaseEntry";
         DiseaseEntryBuilder builder = new DiseaseEntryBuilder();
-        builder.id(id);
+        builder.name(id);
         DiseaseEntry disease = builder.build();
         ValidateJson.verifyJsonRoundTripParser(
                 DiseaseJsonConfig.getInstance().getFullObjectMapper(), disease);

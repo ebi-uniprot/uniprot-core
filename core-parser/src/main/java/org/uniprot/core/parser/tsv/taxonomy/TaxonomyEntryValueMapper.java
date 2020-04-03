@@ -80,7 +80,7 @@ public class TaxonomyEntryValueMapper implements EntityValueMapper<TaxonomyEntry
 
     private String getRank(TaxonomyEntry taxonomyEntry) {
         if (taxonomyEntry.getRank() != null) {
-            return taxonomyEntry.getRank().toDisplayName();
+            return taxonomyEntry.getRank().getDisplayName();
         } else {
             return "";
         }

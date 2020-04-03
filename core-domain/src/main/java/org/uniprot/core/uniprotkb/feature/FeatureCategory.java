@@ -2,7 +2,9 @@ package org.uniprot.core.uniprotkb.feature;
 
 import javax.annotation.Nonnull;
 
-public enum FeatureCategory {
+import org.uniprot.core.util.EnumDisplay;
+
+public enum FeatureCategory implements EnumDisplay {
     MOLECULE_PROCESSING("Molecule processing"),
     REGIONS("Regions"),
     SITES("Sites"),
@@ -10,6 +12,7 @@ public enum FeatureCategory {
     NATURAL_VARIATIONS("Natural variations"),
     EXPERIMENTAL_INFO("Experimental info"),
     SECONDARY_STRUCTURE("Secondary structure");
+
     private final String name;
 
     FeatureCategory(String name) {
@@ -18,5 +21,9 @@ public enum FeatureCategory {
 
     public @Nonnull String getName() {
         return name;
+    }
+
+    public static @Nonnull FeatureCategory typeOf(@Nonnull String name) {
+        return EnumDisplay.typeOf(name, FeatureCategory.class);
     }
 }

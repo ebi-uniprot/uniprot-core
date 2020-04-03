@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-public enum GeneEncodingType implements EnumDisplay<GeneEncodingType> {
+public enum GeneEncodingType implements EnumDisplay {
     UNKNOWN("unknown"),
     HYDROGENOSOME("Hydrogenosome"),
     MITOCHONDRION("Mitochondrion"),
@@ -23,21 +23,11 @@ public enum GeneEncodingType implements EnumDisplay<GeneEncodingType> {
         this.name = name;
     }
 
-    public @Nonnull static GeneEncodingType typeOf(@Nonnull String name) {
-        for (GeneEncodingType geneEncodingType : GeneEncodingType.values()) {
-            if (geneEncodingType.getName().equalsIgnoreCase(name)) {
-                return geneEncodingType;
-            }
-        }
-        return GeneEncodingType.UNKNOWN;
-    }
-
     public @Nonnull String getName() {
         return this.name;
     }
 
-    @Override
-    public @Nonnull String toDisplayName() {
-        return name;
+    public static @Nonnull GeneEncodingType typeOf(@Nonnull String name) {
+        return EnumDisplay.typeOf(name, GeneEncodingType.UNKNOWN);
     }
 }

@@ -41,7 +41,7 @@ class UniParcDatabaseTest {
 
     @Test
     void getName_toDisplayName_areSame() {
-        assertSame(UniParcDatabase.VEGA.getName(), UniParcDatabase.VEGA.toDisplayName());
+        assertSame(UniParcDatabase.VEGA.getName(), UniParcDatabase.VEGA.getDisplayName());
     }
 
     @Test

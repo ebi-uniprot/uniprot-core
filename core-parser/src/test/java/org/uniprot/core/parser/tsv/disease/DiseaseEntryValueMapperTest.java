@@ -21,14 +21,14 @@ class DiseaseEntryValueMapperTest {
 
     @Test
     void checkSimpleMapEntity() {
-        String accession = "DI-1234";
+        String id = "DI-1234";
         String acronym = "ACRONYM";
-        String id = "DiseaseEntry Id";
+        String name = "DiseaseEntry Id";
         String def = "DiseaseEntry definition. sample";
         long revCount = 10L;
         long unrevCount = 20L;
         DiseaseEntryBuilder builder =
-                getSimpleDiseaseEntry(accession, acronym, id, def, revCount, unrevCount);
+                getSimpleDiseaseEntry(id, acronym, name, def, revCount, unrevCount);
         DiseaseEntry diseaseEntry = builder.build();
 
         Map<String, String> mappedEntries =
@@ -36,9 +36,9 @@ class DiseaseEntryValueMapperTest {
 
         assertThat(mappedEntries, notNullValue());
         assertEquals(9, mappedEntries.size());
-        assertEquals(accession, mappedEntries.get("accession"));
-        assertEquals(acronym, mappedEntries.get("acronym"));
         assertEquals(id, mappedEntries.get("id"));
+        assertEquals(acronym, mappedEntries.get("acronym"));
+        assertEquals(name, mappedEntries.get("name"));
         assertEquals(def, mappedEntries.get("definition"));
         assertEquals(String.valueOf(revCount), mappedEntries.get("reviewed_protein_count"));
         assertEquals(String.valueOf(unrevCount), mappedEntries.get("unreviewed_protein_count"));
@@ -49,15 +49,15 @@ class DiseaseEntryValueMapperTest {
 
     @Test
     void checkCompleteEntryAttributeValues() {
-        String accession = "DI-1234";
+        String id = "DI-1234";
         String acronym = "ACRONYM";
-        String id = "DiseaseEntry Id";
+        String name = "DiseaseEntry Id";
         String def = "DiseaseEntry definition. sample";
         long revCount = 10L;
         long unrevCount = 20L;
 
         DiseaseEntryBuilder builder =
-                getSimpleDiseaseEntry(accession, acronym, id, def, revCount, unrevCount);
+                getSimpleDiseaseEntry(id, acronym, name, def, revCount, unrevCount);
         List<String> alternativeNames = Arrays.asList("ALT1", "ALT2", "ALT3");
         List<DiseaseCrossReference> xrefs =
                 Arrays.asList(
@@ -76,9 +76,9 @@ class DiseaseEntryValueMapperTest {
 
         assertThat(mappedEntries, notNullValue());
         assertEquals(9, mappedEntries.size());
-        assertEquals(accession, mappedEntries.get("accession"));
-        assertEquals(acronym, mappedEntries.get("acronym"));
         assertEquals(id, mappedEntries.get("id"));
+        assertEquals(acronym, mappedEntries.get("acronym"));
+        assertEquals(name, mappedEntries.get("name"));
         assertEquals(def, mappedEntries.get("definition"));
         assertEquals(String.valueOf(revCount), mappedEntries.get("reviewed_protein_count"));
         assertEquals(String.valueOf(unrevCount), mappedEntries.get("unreviewed_protein_count"));
@@ -97,13 +97,13 @@ class DiseaseEntryValueMapperTest {
             long revCount,
             long unrevCount) {
         DiseaseEntryBuilder builder = new DiseaseEntryBuilder();
-        builder.accession(accession).acronym(acronym).id(id);
+        builder.id(accession).acronym(acronym).name(id);
         builder.definition(def);
         builder.reviewedProteinCount(revCount).unreviewedProteinCount(unrevCount);
         return builder;
     }
 
     private KeywordId kw(String id, String accession) {
-        return new KeywordIdBuilder().id(id).accession(accession).build();
+        return new KeywordIdBuilder().name(id).id(accession).build();
     }
 }

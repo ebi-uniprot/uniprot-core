@@ -7,6 +7,6 @@ import org.junit.jupiter.api.Test;
 class ProteomeTypeTest {
     @Test
     void getName_toDisplayName_areSame() {
-        assertSame(ProteomeType.REDUNDANT.getName(), ProteomeType.REDUNDANT.toDisplayName());
+        assertSame(ProteomeType.REDUNDANT.getName(), ProteomeType.REDUNDANT.getDisplayName());
     }
 }

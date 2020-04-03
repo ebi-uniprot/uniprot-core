@@ -12,7 +12,7 @@ class SequenceCautionTypeTest {
     void displayNameReturnValue() {
         assertEquals(
                 "Erroneous gene model prediction",
-                SequenceCautionType.ERRONEOUS_PREDICTION.toDisplayName());
+                SequenceCautionType.ERRONEOUS_PREDICTION.getDisplayName());
     }
 
     @Nested

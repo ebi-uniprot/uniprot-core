@@ -1,8 +1,10 @@
 package org.uniprot.core.cv.xdb;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.util.EnumDisplay;
 
-public enum UniProtDatabaseCategory implements EnumDisplay<UniProtDatabaseCategory> {
+public enum UniProtDatabaseCategory implements EnumDisplay {
     SEQUENCE_DATABASES("SEQ", "Sequence databases"),
     D3_STRUCTURE_DATABASES("3DS", "3D structure databases"),
     PROTEIN_PROTEIN_INTERACTION_DATABASES("PPI", "Protein-protein interaction databases"),
@@ -20,10 +22,9 @@ public enum UniProtDatabaseCategory implements EnumDisplay<UniProtDatabaseCatego
     OTHER("OTHER", "Other"),
     GENE_EXPRESSION_DATABASES("GEP", "Gene expression databases"),
     FAMILY_AND_DOMAIN_DATABASES("FMD", "Family and domain databases"),
+
     GENE_ONTOLOGY_DATABASES("OTG", "Ontologies", false),
-
     PROTEOMES_DATABASES("PRM", "Proteomes databases", false),
-
     UNKNOWN("UNK", "Unknown", false);
 
     private final String name;
@@ -40,29 +41,19 @@ public enum UniProtDatabaseCategory implements EnumDisplay<UniProtDatabaseCatego
         this.searchable = searchable;
     }
 
-    public static UniProtDatabaseCategory typeOf(String value) {
-        for (UniProtDatabaseCategory type : UniProtDatabaseCategory.values()) {
-            if (type.getName().equals(value)) {
-                return type;
-            }
-        }
-        throw new IllegalArgumentException("the database category " + value + " doesn't exist");
-    }
-
-    public String getName() {
+    public @Nonnull String getName() {
         return name;
-    }
-
-    public String getDisplayName() {
-        return this.displayName;
     }
 
     public boolean isSearchable() {
         return searchable;
     }
 
-    @Override
-    public String toDisplayName() {
+    public @Nonnull String getDisplayName() {
         return this.displayName;
+    }
+
+    public static @Nonnull UniProtDatabaseCategory typeOf(@Nonnull String name) {
+        return EnumDisplay.typeOf(name, UniProtDatabaseCategory.class);
     }
 }

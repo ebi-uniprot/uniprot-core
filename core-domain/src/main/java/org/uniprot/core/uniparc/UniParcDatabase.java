@@ -5,11 +5,7 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.Database;
 import org.uniprot.core.util.EnumDisplay;
 
-/**
- * @author jluo
- * @date: 21 May 2019
- */
-public enum UniParcDatabase implements Database, EnumDisplay<UniParcDatabase> {
+public enum UniParcDatabase implements Database, EnumDisplay {
     EG_BACTERIA("EnsemblBacteria", true),
     EG_FUNGI("EnsemblFungi", true),
     EG_METAZOA("EnsemblMetazoa", true),
@@ -56,6 +52,7 @@ public enum UniParcDatabase implements Database, EnumDisplay<UniParcDatabase> {
     VEGA("VEGA", true),
     WORMBASE("WormBase", true),
     WORMBASE_PARASITE("WBParaSite", true);
+
     private final String displayName;
     private final boolean alive;
 
@@ -64,26 +61,15 @@ public enum UniParcDatabase implements Database, EnumDisplay<UniParcDatabase> {
         this.alive = alive;
     }
 
-    @Override
-    public @Nonnull String toDisplayName() {
-        return displayName;
-    }
-
-    @Override
     public @Nonnull String getName() {
         return displayName;
     }
 
-    public @Nonnull boolean isAlive() {
+    public boolean isAlive() {
         return alive;
     }
 
-    public static @Nonnull UniParcDatabase typeOf(@Nonnull String value) {
-        for (UniParcDatabase type : UniParcDatabase.values()) {
-            if (type.toDisplayName().equalsIgnoreCase(value)) {
-                return type;
-            }
-        }
-        throw new IllegalArgumentException("The UniParcDatabase: " + value + " doesn't exist");
+    public static @Nonnull UniParcDatabase typeOf(@Nonnull String displayName) {
+        return EnumDisplay.typeOf(displayName, UniParcDatabase.class);
     }
 }

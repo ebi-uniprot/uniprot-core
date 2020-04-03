@@ -14,7 +14,9 @@ class UniProtKBEntryTypeTest {
 
         @Test
         void canConvertLowerCase() {
-            assertEquals(UniProtKBEntryType.TREMBL, UniProtKBEntryType.typeOf("trembl"));
+            assertEquals(
+                    UniProtKBEntryType.TREMBL,
+                    UniProtKBEntryType.typeOf("uniprotkb unreviewed (trembl)"));
         }
 
         @Test
@@ -37,7 +39,7 @@ class UniProtKBEntryTypeTest {
     @Test
     void getValue_displayName_areSame() {
         assertSame(
-                UniProtKBEntryType.SWISSPROT.getValue(),
-                UniProtKBEntryType.SWISSPROT.toDisplayName());
+                UniProtKBEntryType.SWISSPROT.getName(),
+                UniProtKBEntryType.SWISSPROT.getDisplayName());
     }
 }

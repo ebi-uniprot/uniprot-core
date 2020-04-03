@@ -95,7 +95,7 @@ public class APCommentConverter implements CommentConverter<AlternativeProductsC
         if (uniObj == APEventType.ALTERNATIVE_PROMOTER_USAGE) {
             eventXML.setType(ALTERNATIVE_PROMOTER);
         } else {
-            eventXML.setType(uniObj.toDisplayName().toLowerCase());
+            eventXML.setType(uniObj.getDisplayName().toLowerCase());
         }
 
         return eventXML;

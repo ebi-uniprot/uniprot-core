@@ -251,13 +251,15 @@ class UtilsTest {
             @Test
             void addingNotNullValueInNullList_NPE() {
                 List<String> l = null;
-                assertThrows(NullPointerException.class, () -> Utils.addOrIgnoreNull("test", l));
+                boolean listChanged = Utils.addOrIgnoreNull("test", l);
+                assertFalse(listChanged);
             }
 
             @Test
             void nonNulValue() {
                 List<String> l = new ArrayList<>();
-                Utils.addOrIgnoreNull("abc", l);
+                boolean listChanged = Utils.addOrIgnoreNull("abc", l);
+                assertTrue(listChanged);
                 assertNotNull(l);
                 assertEquals(1, l.size());
                 assertEquals("abc", l.get(0));
@@ -532,13 +534,15 @@ class UtilsTest {
             @Test
             void addingNotNullValueInNullSet_NPE() {
                 Set<String> s = null;
-                assertThrows(NullPointerException.class, () -> Utils.addOrIgnoreNull("test", s));
+                boolean setChanged = Utils.addOrIgnoreNull("test", s);
+                assertFalse(setChanged);
             }
 
             @Test
             void nonNulValue() {
                 Set<String> s = new HashSet<>();
-                Utils.addOrIgnoreNull("abc", s);
+                boolean setChanged = Utils.addOrIgnoreNull("abc", s);
+                assertTrue(setChanged);
                 assertNotNull(s);
                 assertEquals(1, s.size());
             }
@@ -582,6 +586,30 @@ class UtilsTest {
                             retSet.add("1");
                             assertEquals(3, retSet.size());
                         });
+            }
+        }
+
+        @Nested
+        class nullValueThrowIllegalArgument {
+
+            @Test
+            void nullTest() {
+                assertThrows(
+                        IllegalArgumentException.class, () -> Utils.nullThrowIllegalArgument(null));
+            }
+
+            @Test
+            void nullTestMsg() {
+                Throwable exception =
+                        assertThrows(
+                                IllegalArgumentException.class,
+                                () -> Utils.nullThrowIllegalArgument(null));
+                assertEquals("null not allowed", exception.getMessage());
+            }
+
+            @Test
+            void nonNullTest() {
+                assertDoesNotThrow(() -> Utils.nullThrowIllegalArgument(""));
             }
         }
     }

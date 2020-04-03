@@ -109,11 +109,11 @@ public class APIsoformConverter implements Converter<IsoformType, APIsoform> {
         // IsoformSequence
         if (isoform.getSequenceIds().isEmpty()) {
             IsoformType.Sequence sequenceXML = xmlUniprotFactory.createIsoformTypeSequence();
-            sequenceXML.setType(isoform.getIsoformSequenceStatus().getValue());
+            sequenceXML.setType(isoform.getIsoformSequenceStatus().getName());
             isoformType.setSequence(sequenceXML);
         } else {
             IsoformType.Sequence sequenceXML = xmlUniprotFactory.createIsoformTypeSequence();
-            sequenceXML.setType(isoform.getIsoformSequenceStatus().getValue());
+            sequenceXML.setType(isoform.getIsoformSequenceStatus().getName());
             sequenceXML.setRef(isoform.getSequenceIds().stream().collect(Collectors.joining(" ")));
             isoformType.setSequence(sequenceXML);
         }

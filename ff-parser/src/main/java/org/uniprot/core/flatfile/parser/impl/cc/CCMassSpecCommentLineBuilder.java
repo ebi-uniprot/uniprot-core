@@ -39,7 +39,7 @@ public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectro
             addFlatFileMarkingsIfRequired(includeFlatFileMarkings, sb);
         }
         if (includeCommentType) {
-            sb.append(comment.getCommentType().toDisplayName());
+            sb.append(comment.getCommentType().getDisplayName());
             sb.append(": ");
         }
         addMolecule(comment, sb, true);
@@ -55,7 +55,7 @@ public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectro
         //		if(comment.getNote().isPresent()) {
         sb.append(SEPARATOR_SEMICOLON);
         sb.append(METHOD);
-        sb.append(comment.getMethod().getValue());
+        sb.append(comment.getMethod().getName());
         sb.append(SEMICOLON);
         //	}
         if (!Strings.isNullOrEmpty(comment.getNote())) {

@@ -33,10 +33,10 @@ public final class DiseaseFileReader extends AbstractFileReader<DiseaseEntry> {
                 .collect(Collectors.toList());
     }
 
-    public Map<String, String> parseFileToAccessionMap(String filename) {
+    public Map<String, String> parseFileToNameIdMap(String filename) {
         List<DiseaseEntry> diseaseList = parse(filename);
         return diseaseList.stream()
-                .collect(Collectors.toMap(DiseaseEntry::getId, DiseaseEntry::getAccession));
+                .collect(Collectors.toMap(DiseaseEntry::getName, DiseaseEntry::getId));
     }
 
     public Iterator<DiseaseEntry> getDiseaseIterator(String fileName) {
@@ -46,8 +46,8 @@ public final class DiseaseFileReader extends AbstractFileReader<DiseaseEntry> {
     }
 
     private DiseaseEntry parseDiseaseFileEntry(DiseaseFileEntry entry) {
-        String id = trimSpacesAndRemoveLastDot(entry.id);
-        String accession = entry.ac;
+        String name = trimSpacesAndRemoveLastDot(entry.id);
+        String id = entry.ac;
         String acronym = trimSpacesAndRemoveLastDot(entry.ar);
         String definition = String.join(" ", entry.de);
         List<String> synonyms =
@@ -63,8 +63,8 @@ public final class DiseaseFileReader extends AbstractFileReader<DiseaseEntry> {
                 entry.kw.stream().map(this::parseKeyword).collect(Collectors.toList());
 
         return new DiseaseEntryBuilder()
+                .name(name)
                 .id(id)
-                .accession(accession)
                 .acronym(acronym)
                 .definition(definition)
                 .alternativeNamesSet(synonyms)
@@ -76,8 +76,8 @@ public final class DiseaseFileReader extends AbstractFileReader<DiseaseEntry> {
     private KeywordId parseKeyword(String kw) {
         final String[] tokens = kw.split(COLON);
         return new KeywordIdBuilder()
-                .id(trimSpacesAndRemoveLastDot(tokens[1]))
-                .accession(tokens[0])
+                .name(trimSpacesAndRemoveLastDot(tokens[1]))
+                .id(tokens[0])
                 .build();
     }
 

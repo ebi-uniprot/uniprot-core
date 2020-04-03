@@ -9,7 +9,7 @@ class CofactorDatabaseTest {
     @Test
     void nameAndDisplayNameAreSame() {
         CofactorDatabase cofactorDatabase = CofactorDatabase.CHEBI;
-        assertEquals(cofactorDatabase.getName(), cofactorDatabase.toDisplayName());
+        assertEquals(cofactorDatabase.getName(), cofactorDatabase.getDisplayName());
     }
 
     @Test

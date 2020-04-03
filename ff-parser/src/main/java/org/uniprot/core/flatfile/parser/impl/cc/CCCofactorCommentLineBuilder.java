@@ -50,7 +50,7 @@ public class CCCofactorCommentLineBuilder extends CCLineBuilderAbstr<CofactorCom
             sb.append(NAME).append(cofactor.getName()).append(SEPARATOR_SEMICOLON);
             CrossReference<CofactorDatabase> coRef = cofactor.getCofactorCrossReference();
             sb.append(XREF)
-                    .append(coRef.getDatabase().toDisplayName())
+                    .append(coRef.getDatabase().getDisplayName())
                     .append(":")
                     .append(coRef.getId())
                     .append(SEMICOLON);

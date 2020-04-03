@@ -9,18 +9,18 @@ import java.util.Objects;
 // Should be deleted with TRM-23729
 public class UniPathway implements Comparable<UniPathway>, Serializable {
     private static final long serialVersionUID = 7579189176261471604L;
-    private final String accession;
+    private final String id;
     private final String name;
     private UniPathway parent;
     private List<UniPathway> children = new ArrayList<>();
 
-    public UniPathway(String accession, String name) {
-        this.accession = accession;
+    public UniPathway(String id, String name) {
+        this.id = id;
         this.name = name;
     }
 
-    public String getAccession() {
-        return accession;
+    public String getId() {
+        return id;
     }
 
     public String getName() {
@@ -50,7 +50,7 @@ public class UniPathway implements Comparable<UniPathway>, Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.name, this.accession);
+        return Objects.hash(this.name, this.id);
     }
 
     @Override
@@ -65,7 +65,6 @@ public class UniPathway implements Comparable<UniPathway>, Serializable {
             return false;
         }
         UniPathway other = (UniPathway) obj;
-        return Objects.equals(this.accession, other.accession)
-                && Objects.equals(this.name, other.name);
+        return Objects.equals(this.id, other.id) && Objects.equals(this.name, other.name);
     }
 }

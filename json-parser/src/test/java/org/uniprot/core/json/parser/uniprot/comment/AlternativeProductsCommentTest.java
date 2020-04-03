@@ -82,7 +82,7 @@ public class AlternativeProductsCommentTest {
 
         assertNotNull(isoforms.get("isoformSequenceStatus"));
         assertEquals(
-                IsoformSequenceStatus.DESCRIBED.toDisplayName(),
+                IsoformSequenceStatus.DESCRIBED.getDisplayName(),
                 isoforms.get("isoformSequenceStatus").asText());
 
         assertNotNull(jsonNode.get("note"));

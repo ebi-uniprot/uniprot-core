@@ -191,7 +191,7 @@ public class BPCPCommentTransformer implements CommentTransformer<BPCPComment> {
         String commentStr = commentRestline.toString().trim();
         return new MichaelisConstantBuilder()
                 .constant(value)
-                .unit(MichaelisConstantUnit.convert(unit))
+                .unit(MichaelisConstantUnit.typeOf(unit))
                 .substrate(commentStr)
                 .evidencesSet(evidences)
                 .build();

@@ -11,9 +11,19 @@ import org.uniprot.core.cv.keyword.KeywordId;
 public interface SubcellularLocationEntry extends Serializable {
     SubcellLocationCategory getCategory();
 
-    String getId();
+    /**
+     * Unique can be use as an identifier
+     *
+     * @return Unique name of subcellular location
+     */
+    String getName();
 
-    String getAccession();
+    /**
+     * Uniprot accession as an id to identify CrossRef uniquely
+     *
+     * @return accession
+     */
+    String getId();
 
     String getDefinition();
 

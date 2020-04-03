@@ -38,12 +38,12 @@ public class SubcellularLocationEntryTest {
         Statistics statistics =
                 new StatisticsBuilder().reviewedProteinCount(10).unreviewedProteinCount(20).build();
         SubcellularLocationEntryBuilder entry = new SubcellularLocationEntryBuilder();
-        entry.accession("accession");
+        entry.id("accession");
         entry.content("content");
         entry.definition("definition");
         entry.geneOntologiesAdd(new GoTermBuilder().id("goId").name("goTerm").build());
-        entry.id("id");
-        entry.keyword(new KeywordIdBuilder().id("keywordId").accession("keywordAccession").build());
+        entry.name("id");
+        entry.keyword(new KeywordIdBuilder().name("keywordId").id("keywordAccession").build());
         entry.linksAdd("link");
         entry.note("note");
         entry.referencesAdd("synonym");

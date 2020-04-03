@@ -20,8 +20,8 @@ public class SubcellularLocationEntryValueMapper
     @Override
     public Map<String, String> mapEntity(SubcellularLocationEntry entry, List<String> fieldNames) {
         Map<String, String> map = new HashMap<>();
+        map.put("name", Utils.emptyOrString(entry.getName()));
         map.put("id", Utils.emptyOrString(entry.getId()));
-        map.put("accession", Utils.emptyOrString(entry.getAccession()));
         map.put("definition", Utils.emptyOrString(entry.getDefinition()));
         map.put("category", getCategory(entry));
         map.put("keyword", getKeyword(entry));
@@ -55,9 +55,9 @@ public class SubcellularLocationEntryValueMapper
             return entry.getPartOf().stream()
                     .map(
                             mapped ->
-                                    mapped.getAccession()
+                                    mapped.getId()
                                             + "; "
-                                            + mapped.getId()
+                                            + mapped.getName()
                                             + "; "
                                             + mapped.getCategory())
                     .collect(Collectors.joining(", "));
@@ -71,9 +71,9 @@ public class SubcellularLocationEntryValueMapper
             return entry.getIsA().stream()
                     .map(
                             mapped ->
-                                    mapped.getAccession()
+                                    mapped.getId()
                                             + "; "
-                                            + mapped.getId()
+                                            + mapped.getName()
                                             + "; "
                                             + mapped.getCategory())
                     .collect(Collectors.joining(", "));
@@ -98,7 +98,7 @@ public class SubcellularLocationEntryValueMapper
 
     private String getCategory(SubcellularLocationEntry entry) {
         if (entry.getCategory() != null) {
-            return Utils.emptyOrString(entry.getCategory().toDisplayName());
+            return Utils.emptyOrString(entry.getCategory().getDisplayName());
         } else {
             return "";
         }

@@ -110,7 +110,7 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
         map.put("score", entry.getAnnotationScore() + "");
 
         if (entry.getProteinExistence() != null) {
-            map.put("protein_existence", entry.getProteinExistence().getValue());
+            map.put("protein_existence", entry.getProteinExistence().getName());
         }
         return map;
     }

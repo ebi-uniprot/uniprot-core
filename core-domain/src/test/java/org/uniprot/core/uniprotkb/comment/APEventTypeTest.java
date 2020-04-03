@@ -8,7 +8,7 @@ class APEventTypeTest {
     @Test
     void nameAndDisplayNameAreSame() {
         APEventType alternativeInitiation = APEventType.ALTERNATIVE_INITIATION;
-        assertEquals(alternativeInitiation.getName(), alternativeInitiation.toDisplayName());
+        assertEquals(alternativeInitiation.getName(), alternativeInitiation.getDisplayName());
     }
 
     @Test

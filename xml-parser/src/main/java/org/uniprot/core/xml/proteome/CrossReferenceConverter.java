@@ -58,7 +58,7 @@ public class CrossReferenceConverter
     private ProteomeDatabase fromXml(String type) {
         if (GC_SET_ACC.equals(type)) {
             return ProteomeDatabase.GENOME_ASSEMBLY;
-        } else return ProteomeDatabase.fromValue(type);
+        } else return ProteomeDatabase.typeOf(type);
     }
 
     private Property fromXmlProperty(PropertyType property) {

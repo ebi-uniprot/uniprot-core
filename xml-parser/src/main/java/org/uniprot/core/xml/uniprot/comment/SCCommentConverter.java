@@ -67,7 +67,7 @@ public class SCCommentConverter implements CommentConverter<SequenceCautionComme
     public CommentType toXml(SequenceCautionComment uniObj) {
         if (uniObj == null) return null;
         CommentType commentXML = xmlUniprotFactory.createCommentType();
-        commentXML.setType(uniObj.getCommentType().toDisplayName().toLowerCase());
+        commentXML.setType(uniObj.getCommentType().getDisplayName().toLowerCase());
 
         if (!Strings.isNullOrEmpty(uniObj.getMolecule())) {
             MoleculeType mol = xmlUniprotFactory.createMoleculeType();
@@ -84,7 +84,7 @@ public class SCCommentConverter implements CommentConverter<SequenceCautionComme
             // set display name to lower case to match enumerated values from uniprot.xsd
             commentXML
                     .getConflict()
-                    .setType(uniObj.getSequenceCautionType().toDisplayName().toLowerCase());
+                    .setType(uniObj.getSequenceCautionType().getDisplayName().toLowerCase());
         }
         if (!Strings.isNullOrEmpty(uniObj.getNote())) {
             EvidencedStringType text = xmlUniprotFactory.createEvidencedStringType();

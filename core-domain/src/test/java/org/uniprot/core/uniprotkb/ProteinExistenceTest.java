@@ -40,12 +40,12 @@ class ProteinExistenceTest {
     @Test
     void getValue_displayName_areNotSame() {
         assertNotEquals(
-                ProteinExistence.TRANSCRIPT_LEVEL.getValue(),
-                ProteinExistence.TRANSCRIPT_LEVEL.toDisplayName());
+                ProteinExistence.TRANSCRIPT_LEVEL.getName(),
+                ProteinExistence.TRANSCRIPT_LEVEL.getDisplayName());
     }
 
     @Test
     void getValue_toString_areSame() {
-        assertSame(ProteinExistence.HOMOLOGY.getValue(), ProteinExistence.HOMOLOGY.toString());
+        assertSame(ProteinExistence.HOMOLOGY.getName(), ProteinExistence.HOMOLOGY.toString());
     }
 }

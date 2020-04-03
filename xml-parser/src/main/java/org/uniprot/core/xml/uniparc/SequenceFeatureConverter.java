@@ -50,7 +50,7 @@ public class SequenceFeatureConverter implements Converter<SeqFeatureType, Seque
     @Override
     public SeqFeatureType toXml(SequenceFeature uniObj) {
         SeqFeatureType xmlObj = xmlFactory.createSeqFeatureType();
-        xmlObj.setDatabase(uniObj.getSignatureDbType().toDisplayName());
+        xmlObj.setDatabase(uniObj.getSignatureDbType().getDisplayName());
         xmlObj.setId(uniObj.getSignatureDbId());
         xmlObj.setIpr(interproGroupConverter.toXml(uniObj.getInterProDomain()));
 

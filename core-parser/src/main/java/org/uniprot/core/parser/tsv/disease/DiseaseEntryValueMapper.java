@@ -17,14 +17,16 @@ public class DiseaseEntryValueMapper implements EntityValueMapper<DiseaseEntry> 
     @Override
     public Map<String, String> mapEntity(DiseaseEntry diseaseEntry, List<String> fields) {
         Map<String, String> map = new HashMap<>();
-        map.put("id", diseaseEntry.getId());
+        map.put("name", diseaseEntry.getName());
         map.put("acronym", diseaseEntry.getAcronym());
-        map.put("accession", diseaseEntry.getAccession());
+        map.put("id", diseaseEntry.getId());
         map.put("definition", diseaseEntry.getDefinition());
         map.put("alternative_names", getAlternativeNames(diseaseEntry.getAlternativeNames()));
         map.put("cross_references", getCrossReferences(diseaseEntry.getCrossReferences()));
         map.put("keywords", getKewords(diseaseEntry.getKeywords()));
-        map.put("reviewed_protein_count", String.valueOf(diseaseEntry.getReviewedProteinCount()));
+        map.put(
+                "reviewed_protein_count",
+                String.valueOf(this.diseaseEntry.getReviewedProteinCount()));
         map.put(
                 "unreviewed_protein_count",
                 String.valueOf(diseaseEntry.getUnreviewedProteinCount()));
