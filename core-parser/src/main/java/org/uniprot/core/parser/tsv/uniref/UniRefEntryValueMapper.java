@@ -79,10 +79,10 @@ public class UniRefEntryValueMapper implements EntityValueMapper<UniRefEntry> {
         if (Utils.notNullNotEmpty(entry.getMembers())) {
             entry.getMembers().stream()
                     .map(UniRefMember::getMemberIdType)
-                    .map(UniRefMemberIdType::toDisplayName)
+                    .map(UniRefMemberIdType::getDisplayName)
                     .forEach(types::add);
         }
-        types.add(entry.getRepresentativeMember().getMemberIdType().toDisplayName());
+        types.add(entry.getRepresentativeMember().getMemberIdType().getDisplayName());
         return String.join(", ", types);
     }
 
