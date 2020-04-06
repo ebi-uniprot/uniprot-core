@@ -43,9 +43,9 @@ class FreeTextImplTest {
         texts.add(new EvidencedValueBuilder().value("value2").build());
         FreeTextImpl freeText = new FreeTextImpl(texts);
         assertEquals(texts, freeText.getTexts());
-        String toString = "value 1 {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}. value2;";
+        String toString =
+                "value 1 {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}. value2;";
         assertEquals(toString, freeText.toString());
-        
     }
 
     @Test

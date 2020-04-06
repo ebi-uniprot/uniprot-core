@@ -450,7 +450,12 @@
 		"category": "PTM",
 		"uriLink": "http://www.unicarbkb.org/proteinsummary/%id/annotated"
 	},
-	
+	{
+		"name": "MetOSite",
+		"displayName": "MetOSite",
+		"category": "PTM",
+		"uriLink": "https://metosite.uma.es/scan/%id"
+	},
 	{
 		"name": "BioMuta",
 		"displayName": "BioMuta",
