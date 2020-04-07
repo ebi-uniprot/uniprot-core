@@ -24,6 +24,6 @@ public enum ComponentType implements EnumDisplay {
     }
 
     public static @Nonnull ComponentType typeOf(@Nonnull String name) {
-        return EnumDisplay.typeOf(name, ComponentType.UNPLACED);
+        return EnumDisplay.typeOf(name, ComponentType.class, ComponentType.UNPLACED);
     }
 }

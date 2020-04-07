@@ -34,6 +34,6 @@ public enum KeywordCategory implements EnumDisplay, KeywordId {
     }
 
     public static @Nonnull KeywordCategory typeOf(@Nonnull String name) {
-        return EnumDisplay.typeOf(name, KeywordCategory.UNKNOWN);
+        return EnumDisplay.typeOf(name, KeywordCategory.class, KeywordCategory.UNKNOWN);
     }
 }
