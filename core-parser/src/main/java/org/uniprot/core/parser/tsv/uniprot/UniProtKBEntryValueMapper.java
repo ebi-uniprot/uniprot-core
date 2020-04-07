@@ -11,14 +11,14 @@ import org.uniprot.core.uniprotkb.UniProtKBEntry;
 
 public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEntry> {
 
-    public static final List<String> DEFAULT_FIELDS =
+    private static final List<String> DEFAULT_FIELDS =
             Arrays.asList("accession", "id", "score", "protein_existence");
 
     // TODO: FIX IT!!!
-    public static final List<String> UNSUPORTED_FIELDS =
+    private static final List<String> UNSUPORTED_FIELDS =
             Arrays.asList("matched_text", "tools", "uniparc_id", "mapped_pm_id");
 
-    public static final String FIELD_FEATURE = "feature";
+    private static final String FIELD_FEATURE = "feature";
 
     public static boolean contains(List<String> fields) {
         return fields.stream().anyMatch(DEFAULT_FIELDS::contains);
