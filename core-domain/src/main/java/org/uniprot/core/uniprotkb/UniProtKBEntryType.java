@@ -21,6 +21,6 @@ public enum UniProtKBEntryType implements EnumDisplay {
     }
 
     public static @Nonnull UniProtKBEntryType typeOf(@Nonnull String name) {
-        return EnumDisplay.typeOf(name, UniProtKBEntryType.UNKNOWN);
+        return EnumDisplay.typeOf(name, UniProtKBEntryType.class, UniProtKBEntryType.UNKNOWN);
     }
 }

@@ -28,6 +28,6 @@ public enum GeneEncodingType implements EnumDisplay {
     }
 
     public static @Nonnull GeneEncodingType typeOf(@Nonnull String name) {
-        return EnumDisplay.typeOf(name, GeneEncodingType.UNKNOWN);
+        return EnumDisplay.typeOf(name, GeneEncodingType.class, GeneEncodingType.UNKNOWN);
     }
 }

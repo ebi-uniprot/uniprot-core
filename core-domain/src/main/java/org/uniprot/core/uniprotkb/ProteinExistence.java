@@ -33,6 +33,6 @@ public enum ProteinExistence implements EnumDisplay {
     }
 
     public static @Nonnull ProteinExistence typeOf(@Nonnull String name) {
-        return EnumDisplay.typeOf(name, ProteinExistence.UNKNOWN);
+        return EnumDisplay.typeOf(name, ProteinExistence.class, ProteinExistence.UNKNOWN);
     }
 }
