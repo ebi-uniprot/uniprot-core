@@ -8,7 +8,7 @@ import java.util.List;
  * SAM - Sequence Analysis Method
  */
 public interface SAMFeatureSet extends Serializable {
-    ConditionSet getConditionSet();
+    List<Condition> getConditions();
     List<Annotation> getAnnotations();
     SAMTrigger getSAMTrigger();
 }
