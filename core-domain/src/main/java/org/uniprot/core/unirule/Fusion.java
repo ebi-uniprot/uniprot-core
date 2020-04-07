@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 /** @author sahmad */
-public interface ConditionSet extends Serializable {
-    List<Condition> getConditions();
+public interface Fusion extends Serializable {
+    List<String> getCters();
+
+    List<String> getNters();
 }
