@@ -580,8 +580,8 @@ class UniProtKBEntryBuilderTest {
                                                     .COUNT_BY_COMMENT_TYPE_ATTRIB
                                                     .getDisplayName());
             assertEquals(1, countByType.size());
-            assertTrue(countByType.containsKey(CommentType.DISEASE.toDisplayName()));
-            assertEquals(1, countByType.get(CommentType.DISEASE.toDisplayName()));
+            assertTrue(countByType.containsKey(CommentType.DISEASE.getDisplayName()));
+            assertEquals(1, countByType.get(CommentType.DISEASE.getDisplayName()));
         }
 
         @Test
@@ -668,10 +668,10 @@ class UniProtKBEntryBuilderTest {
                                                     .COUNT_BY_COMMENT_TYPE_ATTRIB
                                                     .getDisplayName());
             assertEquals(2, countByType.size());
-            assertTrue(countByType.containsKey(CommentType.DISEASE.toDisplayName()));
-            assertEquals(2, countByType.get(CommentType.DISEASE.toDisplayName()));
-            assertTrue(countByType.containsKey(CommentType.COFACTOR.toDisplayName()));
-            assertEquals(1, countByType.get(CommentType.COFACTOR.toDisplayName()));
+            assertTrue(countByType.containsKey(CommentType.DISEASE.getDisplayName()));
+            assertEquals(2, countByType.get(CommentType.DISEASE.getDisplayName()));
+            assertTrue(countByType.containsKey(CommentType.COFACTOR.getDisplayName()));
+            assertEquals(1, countByType.get(CommentType.COFACTOR.getDisplayName()));
         }
     }
 
@@ -701,8 +701,8 @@ class UniProtKBEntryBuilderTest {
                                                     .COUNT_BY_FEATURE_TYPE_ATTRIB
                                                     .getDisplayName());
             assertEquals(1, countByType.size());
-            assertTrue(countByType.containsKey(FeatureType.CHAIN.toDisplayName()));
-            assertEquals(1, countByType.get(FeatureType.CHAIN.toDisplayName()));
+            assertTrue(countByType.containsKey(FeatureType.CHAIN.getDisplayName()));
+            assertEquals(1, countByType.get(FeatureType.CHAIN.getDisplayName()));
         }
 
         @Test
@@ -771,10 +771,10 @@ class UniProtKBEntryBuilderTest {
                                                     .COUNT_BY_FEATURE_TYPE_ATTRIB
                                                     .getDisplayName());
             assertEquals(2, countByType.size());
-            assertTrue(countByType.containsKey(FeatureType.CHAIN.toDisplayName()));
-            assertEquals(2, countByType.get(FeatureType.CHAIN.toDisplayName()));
-            assertTrue(countByType.containsKey(FeatureType.VARIANT.toDisplayName()));
-            assertEquals(1, countByType.get(FeatureType.VARIANT.toDisplayName()));
+            assertTrue(countByType.containsKey(FeatureType.CHAIN.getDisplayName()));
+            assertEquals(2, countByType.get(FeatureType.CHAIN.getDisplayName()));
+            assertTrue(countByType.containsKey(FeatureType.VARIANT.getDisplayName()));
+            assertEquals(1, countByType.get(FeatureType.VARIANT.getDisplayName()));
         }
     }
 

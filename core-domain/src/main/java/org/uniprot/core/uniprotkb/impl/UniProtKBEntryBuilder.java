@@ -369,7 +369,7 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
                             .filter(comment -> comment.getCommentType() != null)
                             .collect(
                                     Collectors.groupingBy(
-                                            comment -> comment.getCommentType().toDisplayName(),
+                                            comment -> comment.getCommentType().getDisplayName(),
                                             LinkedHashMap::new,
                                             Collectors.summingInt(comment -> 1)));
         }
@@ -385,7 +385,7 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
                             .filter(feature -> feature.getType() != null)
                             .collect(
                                     Collectors.groupingBy(
-                                            feature -> feature.getType().toDisplayName(),
+                                            feature -> feature.getType().getDisplayName(),
                                             LinkedHashMap::new,
                                             Collectors.summingInt(feature -> 1)));
         }
