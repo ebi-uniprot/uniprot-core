@@ -2,7 +2,10 @@ package org.uniprot.core.uniprotkb.impl;
 
 import static org.uniprot.core.util.Utils.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
@@ -20,33 +23,8 @@ import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 
 public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
-    public enum ExtraAttributeName {
-        COUNT_BY_COMMENT_TYPE_ATTRIB("countByCommentType", "comment_count"),
-        COUNT_BY_FEATURE_TYPE_ATTRIB("countByFeatureType", "feature_count");
-        private String displayName;
-        private String fieldName;
-
-        ExtraAttributeName(String displayName, String fieldName) {
-            this.displayName = displayName;
-            this.fieldName = fieldName;
-        }
-
-        public String getDisplayName() {
-            return this.displayName;
-        }
-
-        public String getFieldName() {
-            return this.fieldName;
-        }
-
-        public static boolean contains(List<String> fieldNames) {
-            Set<String> names =
-                    Arrays.stream(values())
-                            .map(ExtraAttributeName::getFieldName)
-                            .collect(Collectors.toSet());
-            return fieldNames.stream().anyMatch(names::contains);
-        }
-    }
+    public static final String COUNT_BY_COMMENT_TYPE_ATTRIB = "countByCommentType";
+    public static final String COUNT_BY_FEATURE_TYPE_ATTRIB = "countByFeatureType";
 
     private UniProtKBAccession primaryAccession;
     private UniProtKBEntryType entryType;
@@ -282,9 +260,8 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
         return this;
     }
 
-    public @Nonnull UniProtKBEntryBuilder extraAttributesAdd(
-            ExtraAttributeName name, Object value) {
-        putOrIgnoreNull(name.getDisplayName(), value, this.extraAttributes);
+    public @Nonnull UniProtKBEntryBuilder extraAttributesAdd(String name, Object value) {
+        putOrIgnoreNull(name, value, this.extraAttributes);
         return this;
     }
 
@@ -348,17 +325,11 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
     private void populateExtraAttributes() {
         // count by comment type
         Map<String, Integer> countByCommentType = createCountByCommentTypeMap(comments);
-        putOrIgnoreNull(
-                ExtraAttributeName.COUNT_BY_COMMENT_TYPE_ATTRIB.getDisplayName(),
-                countByCommentType,
-                this.extraAttributes);
+        putOrIgnoreNull(COUNT_BY_COMMENT_TYPE_ATTRIB, countByCommentType, this.extraAttributes);
 
         // count by feature type
         Map<String, Integer> countByFeatureType = createCountByFeatureTypeMap(features);
-        putOrIgnoreNull(
-                ExtraAttributeName.COUNT_BY_FEATURE_TYPE_ATTRIB.getDisplayName(),
-                countByFeatureType,
-                this.extraAttributes);
+        putOrIgnoreNull(COUNT_BY_FEATURE_TYPE_ATTRIB, countByFeatureType, this.extraAttributes);
     }
 
     private Map<String, Integer> createCountByCommentTypeMap(List<Comment> comments) {

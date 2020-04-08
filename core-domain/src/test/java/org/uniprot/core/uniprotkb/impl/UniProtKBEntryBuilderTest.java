@@ -146,8 +146,7 @@ class UniProtKBEntryBuilderTest {
 
     @Test
     void cannotAddExtraAttributeWithNullValue() {
-        UniProtKBEntryBuilder.ExtraAttributeName attrib1 =
-                UniProtKBEntryBuilder.ExtraAttributeName.COUNT_BY_COMMENT_TYPE_ATTRIB;
+        String attrib1 = "Attrib1";
         UniProtKBEntry entry =
                 UniProtKBEntryBuilder.from(minEntry).extraAttributesAdd(attrib1, null).build();
         assertNotNull(entry);
@@ -156,22 +155,20 @@ class UniProtKBEntryBuilderTest {
 
     @Test
     void canAddExtraAttribute() {
-        UniProtKBEntryBuilder.ExtraAttributeName attrib1 =
-                UniProtKBEntryBuilder.ExtraAttributeName.COUNT_BY_COMMENT_TYPE_ATTRIB;
+        String attrib1 = "Attrib1";
         UniProtKBEntry entry =
                 UniProtKBEntryBuilder.from(minEntry).extraAttributesAdd(attrib1, "value1").build();
         assertNotNull(entry);
         assertEquals(1, entry.getExtraAttributes().size());
-        assertTrue(entry.getExtraAttributes().containsKey(attrib1.getDisplayName()));
-        assertEquals("value1", entry.getExtraAttributes().get(attrib1.getDisplayName()));
+        assertTrue(entry.getExtraAttributes().containsKey(attrib1));
+        assertEquals("value1", entry.getExtraAttributes().get(attrib1));
     }
 
     @Test
     void canAddExtraAttributes() {
-        UniProtKBEntryBuilder.ExtraAttributeName attrib1 =
-                UniProtKBEntryBuilder.ExtraAttributeName.COUNT_BY_COMMENT_TYPE_ATTRIB;
-        UniProtKBEntryBuilder.ExtraAttributeName attrib2 =
-                UniProtKBEntryBuilder.ExtraAttributeName.COUNT_BY_FEATURE_TYPE_ATTRIB;
+        String attrib1 = "Attrib1";
+        String attrib2 = "Attrib2";
+
         UniProtKBEntry entry =
                 UniProtKBEntryBuilder.from(minEntry)
                         .extraAttributesAdd(attrib1, "value1")
@@ -179,16 +176,15 @@ class UniProtKBEntryBuilderTest {
                         .build();
         assertNotNull(entry);
         assertEquals(2, entry.getExtraAttributes().size());
-        assertTrue(entry.getExtraAttributes().containsKey(attrib1.getDisplayName()));
-        assertEquals("value1", entry.getExtraAttributes().get(attrib1.getDisplayName()));
-        assertTrue(entry.getExtraAttributes().containsKey(attrib2.getDisplayName()));
-        assertEquals("value2", entry.getExtraAttributes().get(attrib2.getDisplayName()));
+        assertTrue(entry.getExtraAttributes().containsKey(attrib1));
+        assertEquals("value1", entry.getExtraAttributes().get(attrib1));
+        assertTrue(entry.getExtraAttributes().containsKey(attrib2));
+        assertEquals("value2", entry.getExtraAttributes().get(attrib2));
     }
 
     @Test
     void canOverwriteExtraAttributeValue() {
-        UniProtKBEntryBuilder.ExtraAttributeName attrib1 =
-                UniProtKBEntryBuilder.ExtraAttributeName.COUNT_BY_COMMENT_TYPE_ATTRIB;
+        String attrib1 = "Attrib1";
         UniProtKBEntry entry =
                 UniProtKBEntryBuilder.from(minEntry)
                         .extraAttributesAdd(attrib1, "oldValue")
@@ -196,14 +192,13 @@ class UniProtKBEntryBuilderTest {
                         .build();
         assertNotNull(entry);
         assertEquals(1, entry.getExtraAttributes().size());
-        assertTrue(entry.getExtraAttributes().containsKey(attrib1.getDisplayName()));
-        assertEquals("latestValue", entry.getExtraAttributes().get(attrib1.getDisplayName()));
+        assertTrue(entry.getExtraAttributes().containsKey(attrib1));
+        assertEquals("latestValue", entry.getExtraAttributes().get(attrib1));
     }
 
     @Test
     void canAddExtraAttributesOnCommentTypeCount() {
-        UniProtKBEntryBuilder.ExtraAttributeName commentAttrib =
-                UniProtKBEntryBuilder.ExtraAttributeName.COUNT_BY_FEATURE_TYPE_ATTRIB;
+        String commentAttrib = UniProtKBEntryBuilder.COUNT_BY_FEATURE_TYPE_ATTRIB;
         Comment comment = new DiseaseCommentBuilder().build();
         UniProtKBEntry entry =
                 UniProtKBEntryBuilder.from(minEntry)
@@ -214,12 +209,9 @@ class UniProtKBEntryBuilderTest {
         assertEquals(2, entry.getExtraAttributes().size());
         assertTrue(
                 entry.getExtraAttributes()
-                        .containsKey(
-                                UniProtKBEntryBuilder.ExtraAttributeName
-                                        .COUNT_BY_COMMENT_TYPE_ATTRIB
-                                        .getDisplayName()));
-        assertTrue(entry.getExtraAttributes().containsKey(commentAttrib.getDisplayName()));
-        assertEquals("value1", entry.getExtraAttributes().get(commentAttrib.getDisplayName()));
+                        .containsKey(UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB));
+        assertTrue(entry.getExtraAttributes().containsKey(commentAttrib));
+        assertEquals("value1", entry.getExtraAttributes().get(commentAttrib));
     }
 
     @Nested
@@ -568,17 +560,11 @@ class UniProtKBEntryBuilderTest {
             assertTrue(
                     obj.getExtraAttributes()
                             .keySet()
-                            .contains(
-                                    UniProtKBEntryBuilder.ExtraAttributeName
-                                            .COUNT_BY_COMMENT_TYPE_ATTRIB
-                                            .getDisplayName()));
+                            .contains(UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB));
             Map<String, Object> countByType =
                     (Map<String, Object>)
                             obj.getExtraAttributes()
-                                    .get(
-                                            UniProtKBEntryBuilder.ExtraAttributeName
-                                                    .COUNT_BY_COMMENT_TYPE_ATTRIB
-                                                    .getDisplayName());
+                                    .get(UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB);
             assertEquals(1, countByType.size());
             assertTrue(countByType.containsKey(CommentType.DISEASE.getDisplayName()));
             assertEquals(1, countByType.get(CommentType.DISEASE.getDisplayName()));
@@ -607,10 +593,7 @@ class UniProtKBEntryBuilderTest {
             assertTrue(
                     obj.getExtraAttributes()
                             .keySet()
-                            .contains(
-                                    UniProtKBEntryBuilder.ExtraAttributeName
-                                            .COUNT_BY_COMMENT_TYPE_ATTRIB
-                                            .getDisplayName()));
+                            .contains(UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB));
         }
 
         @Test
@@ -626,10 +609,7 @@ class UniProtKBEntryBuilderTest {
             assertTrue(
                     obj.getExtraAttributes()
                             .keySet()
-                            .contains(
-                                    UniProtKBEntryBuilder.ExtraAttributeName
-                                            .COUNT_BY_COMMENT_TYPE_ATTRIB
-                                            .getDisplayName()));
+                            .contains(UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB));
         }
 
         @Test
@@ -663,10 +643,7 @@ class UniProtKBEntryBuilderTest {
             Map<String, Object> countByType =
                     (Map<String, Object>)
                             obj.getExtraAttributes()
-                                    .get(
-                                            UniProtKBEntryBuilder.ExtraAttributeName
-                                                    .COUNT_BY_COMMENT_TYPE_ATTRIB
-                                                    .getDisplayName());
+                                    .get(UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB);
             assertEquals(2, countByType.size());
             assertTrue(countByType.containsKey(CommentType.DISEASE.getDisplayName()));
             assertEquals(2, countByType.get(CommentType.DISEASE.getDisplayName()));
@@ -689,17 +666,11 @@ class UniProtKBEntryBuilderTest {
             assertTrue(
                     obj.getExtraAttributes()
                             .keySet()
-                            .contains(
-                                    UniProtKBEntryBuilder.ExtraAttributeName
-                                            .COUNT_BY_FEATURE_TYPE_ATTRIB
-                                            .getDisplayName()));
+                            .contains(UniProtKBEntryBuilder.COUNT_BY_FEATURE_TYPE_ATTRIB));
             Map<String, Object> countByType =
                     (Map<String, Object>)
                             obj.getExtraAttributes()
-                                    .get(
-                                            UniProtKBEntryBuilder.ExtraAttributeName
-                                                    .COUNT_BY_FEATURE_TYPE_ATTRIB
-                                                    .getDisplayName());
+                                    .get(UniProtKBEntryBuilder.COUNT_BY_FEATURE_TYPE_ATTRIB);
             assertEquals(1, countByType.size());
             assertTrue(countByType.containsKey(FeatureType.CHAIN.getDisplayName()));
             assertEquals(1, countByType.get(FeatureType.CHAIN.getDisplayName()));
@@ -766,10 +737,7 @@ class UniProtKBEntryBuilderTest {
             Map<String, Object> countByType =
                     (Map<String, Object>)
                             obj.getExtraAttributes()
-                                    .get(
-                                            UniProtKBEntryBuilder.ExtraAttributeName
-                                                    .COUNT_BY_FEATURE_TYPE_ATTRIB
-                                                    .getDisplayName());
+                                    .get(UniProtKBEntryBuilder.COUNT_BY_FEATURE_TYPE_ATTRIB);
             assertEquals(2, countByType.size());
             assertTrue(countByType.containsKey(FeatureType.CHAIN.getDisplayName()));
             assertEquals(2, countByType.get(FeatureType.CHAIN.getDisplayName()));
