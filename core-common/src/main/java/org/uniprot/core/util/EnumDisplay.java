@@ -10,9 +10,9 @@ import javax.annotation.Nullable;
 public interface EnumDisplay {
 
     /**
-     * Returns readable name of the enum
+     * Returns core value(most of the time human readable value) of the enum
      *
-     * @return the name of the enum
+     * @return the core value of the enum
      */
     @Nonnull
     String getName();
@@ -41,10 +41,10 @@ public interface EnumDisplay {
     }
 
     /**
-     * Returns the Enum constant by its name. String value of name is trimmed and case is ignored
+     * Returns the Enum constant by passed name. String value of name is trimmed and case is ignored
      * while finding the corresponding enum constant.
      *
-     * @param name string value of the enum to be returned.
+     * @param name string core value of the enum to be returned.
      * @param enumClass the Class object of the enum type
      * @return Enum constant for the given name and enum type
      * @throws IllegalArgumentException if either name or enumClass is null. or name doesn't have
@@ -61,14 +61,15 @@ public interface EnumDisplay {
 
         return Arrays.stream(enumClass.getEnumConstants())
                 .filter(constant -> constant.getCompareOn().equalsIgnoreCase(name.trim()))
-                .findAny()
+                .findFirst()
                 .orElseThrow(() -> exception);
     }
 
     /**
-     * Returns the Enum constant by its name or given defaultValue in case of no match.
+     * Returns the Enum constant by passed name (core value) or given defaultValue in case of no
+     * match.
      *
-     * @param name string value of the enum to be returned.
+     * @param name string core value of the enum to be returned.
      * @param enumClass the Class object of the enum type
      * @param defaultValue the default enum constant in case of no enum constant by given name and
      *     type
