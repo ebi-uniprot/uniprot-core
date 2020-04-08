@@ -17,7 +17,7 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
             Arrays.asList("accession", "id", "score", "protein_existence");
 
     // TODO: FIX IT!!!
-    private static final List<String> UNSUPORTED_FIELDS =
+    private static final List<String> UNSUPPORTED_FIELDS =
             Arrays.asList("matched_text", "tools", "uniparc_id", "mapped_pm_id");
 
     private static final String FIELD_FEATURE = "feature";
