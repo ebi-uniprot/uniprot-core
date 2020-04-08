@@ -430,6 +430,16 @@ public class UniProtKBEntryImpl implements UniProtKBEntry {
         return this.extraAttributes;
     }
 
+    @Override
+    public Object getExtraAttributeValue(String attributeName) {
+        Object value = null;
+        if (notNull(this.extraAttributes)) {
+            value = this.extraAttributes.get(attributeName);
+        }
+
+        return value;
+    }
+
     private void updateReferenceEvidences(Set<Evidence> evidences, UniProtKBReference ref) {
         updateHasEvidence(evidences, ref);
         if (ref != null) {
