@@ -79,6 +79,8 @@ public interface UniProtKBEntry extends Serializable {
 
     Map<String, Object> getExtraAttributes();
 
+    Object getExtraAttributeValue(String attributeName);
+
     boolean isActive();
 
     boolean hasSecondaryAccessions();

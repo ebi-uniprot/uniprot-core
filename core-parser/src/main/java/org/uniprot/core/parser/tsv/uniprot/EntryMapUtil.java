@@ -51,6 +51,14 @@ public class EntryMapUtil {
         }
     }
 
+    public static String convertToTSVString(Object extraAttributeValue) {
+        if (extraAttributeValue instanceof Map) {
+            return convertMapToTSVString((Map<String, Integer>) extraAttributeValue);
+        } else {
+            return extraAttributeValue == null ? EMPTY_STRING : extraAttributeValue.toString();
+        }
+    }
+
     private static String toTSVKeyValue(Map.Entry<String, Integer> entry) {
         StringBuilder builder = new StringBuilder();
         builder.append(entry.getKey());
@@ -58,15 +66,5 @@ public class EntryMapUtil {
         builder.append(entry.getValue());
         builder.append(CLOSE_BRACKET);
         return builder.toString();
-    }
-
-    public static String convertToTSVString(
-            String extraAttribName, Map<String, Object> extraAttributes) {
-        Object attribValue = extraAttributes.getOrDefault(extraAttribName, new Object());
-        if (attribValue instanceof Map) {
-            return convertMapToTSVString((Map<String, Integer>) attribValue);
-        } else {
-            return attribValue.toString();
-        }
     }
 }

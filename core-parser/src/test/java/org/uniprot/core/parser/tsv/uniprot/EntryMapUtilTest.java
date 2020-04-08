@@ -32,4 +32,16 @@ public class EntryMapUtilTest {
         String tsvString = EntryMapUtil.convertMapToTSVString(map);
         Assertions.assertTrue(tsvString.isEmpty());
     }
+
+    @Test
+    void testConvertNullObjectToTSVString() {
+        String tsvString = EntryMapUtil.convertToTSVString(null);
+        Assertions.assertTrue(tsvString.isEmpty());
+    }
+
+    @Test
+    void testConvertObjectToTSVString() {
+        String tsvString = EntryMapUtil.convertToTSVString(new Object());
+        Assertions.assertFalse(tsvString.isEmpty());
+    }
 }

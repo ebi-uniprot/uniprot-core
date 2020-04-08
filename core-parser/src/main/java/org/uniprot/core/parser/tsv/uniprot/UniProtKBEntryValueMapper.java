@@ -95,17 +95,7 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
         }
 
         if (UniProtKBEntryBuilder.ExtraAttributeName.contains(fields)) {
-            Map<String, String> extraAttribsMap =
-                    Arrays.stream(UniProtKBEntryBuilder.ExtraAttributeName.values())
-                            .filter(ean -> fields.contains(ean.getFieldName()))
-                            .collect(
-                                    toMap(
-                                            UniProtKBEntryBuilder.ExtraAttributeName::getFieldName,
-                                            ean ->
-                                                    EntryMapUtil.convertToTSVString(
-                                                            ean.getDisplayName(),
-                                                            entry.getExtraAttributes())));
-
+            Map<String, String> extraAttribsMap = getExtraAttributeMap(entry, fields);
             map.putAll(extraAttribsMap);
         }
         return map;
@@ -139,5 +129,19 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
         if (!listFeatures.isEmpty()) {
             return String.join("; ", listFeatures);
         } else return "";
+    }
+
+    private Map<String, String> getExtraAttributeMap(UniProtKBEntry entry, List<String> fields) {
+        Map<String, String> extraAttributeMap =
+                Arrays.stream(UniProtKBEntryBuilder.ExtraAttributeName.values())
+                        .filter(ean -> fields.contains(ean.getFieldName()))
+                        .collect(
+                                toMap(
+                                        UniProtKBEntryBuilder.ExtraAttributeName::getFieldName,
+                                        ean ->
+                                                EntryMapUtil.convertToTSVString(
+                                                        entry.getExtraAttributeValue(
+                                                                ean.getDisplayName()))));
+        return extraAttributeMap;
     }
 }
