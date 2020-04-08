@@ -4,6 +4,7 @@ import static java.util.stream.Collectors.toMap;
 
 import java.util.*;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.parser.tsv.NamedValueMap;
@@ -12,6 +13,35 @@ import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
 
 public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEntry> {
+    public enum ExtraAttributeKeyField {
+        COUNT_BY_COMMENT_TYPE_ATTRIB(
+                UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB, "comment_count"),
+        COUNT_BY_FEATURE_TYPE_ATTRIB(
+                UniProtKBEntryBuilder.COUNT_BY_FEATURE_TYPE_ATTRIB, "feature_count");
+        private String mapKey;
+        private String fieldName;
+
+        ExtraAttributeKeyField(String mapKey, String fieldName) {
+            this.mapKey = mapKey;
+            this.fieldName = fieldName;
+        }
+
+        public String getMapKey() {
+            return this.mapKey;
+        }
+
+        public String getFieldName() {
+            return this.fieldName;
+        }
+
+        public static boolean contains(List<String> fieldNames) {
+            Set<String> names =
+                    Arrays.stream(values())
+                            .map(ExtraAttributeKeyField::getFieldName)
+                            .collect(Collectors.toSet());
+            return fieldNames.stream().anyMatch(names::contains);
+        }
+    }
 
     private static final List<String> DEFAULT_FIELDS =
             Arrays.asList("accession", "id", "score", "protein_existence");
@@ -94,7 +124,7 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
             map.put(FIELD_FEATURE, getFeatures(entry));
         }
 
-        if (UniProtKBEntryBuilder.ExtraAttributeName.contains(fields)) {
+        if (ExtraAttributeKeyField.contains(fields)) {
             Map<String, String> extraAttribsMap = getExtraAttributeMap(entry, fields);
             map.putAll(extraAttribsMap);
         }
@@ -133,15 +163,15 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
 
     private Map<String, String> getExtraAttributeMap(UniProtKBEntry entry, List<String> fields) {
         Map<String, String> extraAttributeMap =
-                Arrays.stream(UniProtKBEntryBuilder.ExtraAttributeName.values())
+                Arrays.stream(ExtraAttributeKeyField.values())
                         .filter(ean -> fields.contains(ean.getFieldName()))
                         .collect(
                                 toMap(
-                                        UniProtKBEntryBuilder.ExtraAttributeName::getFieldName,
+                                        ExtraAttributeKeyField::getFieldName,
                                         ean ->
                                                 EntryMapUtil.convertToTSVString(
                                                         entry.getExtraAttributeValue(
-                                                                ean.getDisplayName()))));
+                                                                ean.getMapKey()))));
         return extraAttributeMap;
     }
 }
