@@ -2,11 +2,11 @@ package org.uniprot.core.unirule;
 
 import java.io.Serializable;
 
+import org.uniprot.core.Range;
+
 /** @author sahmad */
 public interface PositionalFeature extends Serializable {
-    String getStart();
-
-    String getEnd();
+    Range getPosition();
 
     String getPattern();
 

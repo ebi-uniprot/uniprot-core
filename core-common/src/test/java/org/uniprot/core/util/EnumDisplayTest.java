@@ -1,10 +1,10 @@
 package org.uniprot.core.util;
 
+import javax.annotation.Nonnull;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import javax.annotation.Nonnull;
 
 public class EnumDisplayTest {
     enum FakeEnumDisplay implements EnumDisplay {
@@ -53,17 +53,22 @@ public class EnumDisplayTest {
 
         @Test
         void testTypeOfWithNullName() {
-            Assertions.assertThrows(IllegalArgumentException.class, () -> EnumDisplay.typeOf(null, FakeEnumDisplay.class));
+            Assertions.assertThrows(
+                    IllegalArgumentException.class,
+                    () -> EnumDisplay.typeOf(null, FakeEnumDisplay.class));
         }
 
         @Test
         void testTypeOfWithNullEnumClass() {
-            Assertions.assertThrows(IllegalArgumentException.class, () -> EnumDisplay.typeOf("enum1", null));
+            Assertions.assertThrows(
+                    IllegalArgumentException.class, () -> EnumDisplay.typeOf("enum1", null));
         }
 
         @Test
         void testTypeOfWithNonMatchingName() {
-            Assertions.assertThrows(IllegalArgumentException.class, () -> EnumDisplay.typeOf("random ", FakeEnumDisplay.class));
+            Assertions.assertThrows(
+                    IllegalArgumentException.class,
+                    () -> EnumDisplay.typeOf("random ", FakeEnumDisplay.class));
         }
     }
 
@@ -71,19 +76,22 @@ public class EnumDisplayTest {
     class typeOfWithDefault {
         @Test
         void testTypeOf() {
-            FakeEnumDisplay enumConst = EnumDisplay.typeOf("enum1", FakeEnumDisplay.class, FakeEnumDisplay.ENUM_3);
+            FakeEnumDisplay enumConst =
+                    EnumDisplay.typeOf("enum1", FakeEnumDisplay.class, FakeEnumDisplay.ENUM_3);
             Assertions.assertEquals(enumConst, FakeEnumDisplay.ENUM_1);
         }
 
         @Test
         void testTypeOfWithNonMatchingName() {
-            FakeEnumDisplay enumConst = EnumDisplay.typeOf("random", FakeEnumDisplay.class, FakeEnumDisplay.ENUM_3);
+            FakeEnumDisplay enumConst =
+                    EnumDisplay.typeOf("random", FakeEnumDisplay.class, FakeEnumDisplay.ENUM_3);
             Assertions.assertEquals(enumConst, FakeEnumDisplay.ENUM_3);
         }
 
         @Test
         void testTypeOfWithNullName() {
-            FakeEnumDisplay enumConst = EnumDisplay.typeOf(null, FakeEnumDisplay.class, FakeEnumDisplay.ENUM_1);
+            FakeEnumDisplay enumConst =
+                    EnumDisplay.typeOf(null, FakeEnumDisplay.class, FakeEnumDisplay.ENUM_1);
             Assertions.assertEquals(enumConst, FakeEnumDisplay.ENUM_1);
         }
 
