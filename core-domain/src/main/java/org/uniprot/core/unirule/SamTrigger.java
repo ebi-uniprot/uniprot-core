@@ -5,8 +5,8 @@ import java.io.Serializable;
 import org.uniprot.core.Range;
 
 /** @author sahmad */
-public interface SAMTrigger extends Serializable {
-    SAMTriggerType getSAMTriggerType();
+public interface SamTrigger extends Serializable {
+    SamTriggerType getSamTriggerType();
 
     Range getExpectedHits();
 }

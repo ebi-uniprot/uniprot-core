@@ -6,25 +6,25 @@ import java.util.List;
 
 /** @author sahmad */
 public interface UniRuleEntry extends Serializable {
-    UniRuleEntryId getId();
+    UniRuleId getUniRuleId();
 
     Information getInformation();
 
     RuleStatus getRuleStatus();
 
-    UniRule getMainRule();
+    Rule getMainRule();
 
-    List<CaseUniRule> getOtherRules();
+    List<CaseRule> getOtherRules();
 
-    List<SAMFeatureSet> getSamFeatureSets();
+    List<SamFeatureSet> getSamFeatureSets();
 
     List<PositionFeatureSet> getPositionFeatureSets();
 
-    String getCreator();
+    String getCreatedBy();
 
     String getModifiedBy();
 
-    Date getCreated();
+    Date getCreatedDate();
 
-    Date getModified();
+    Date getModifiedDate();
 }

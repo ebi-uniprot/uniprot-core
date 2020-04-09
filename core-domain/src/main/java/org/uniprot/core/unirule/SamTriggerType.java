@@ -5,14 +5,14 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.util.EnumDisplay;
 
 /** @author sahmad */
-public enum SAMTriggerType implements EnumDisplay {
+public enum SamTriggerType implements EnumDisplay {
     TRANSMEMBRANE("transmembrane"),
     SIGNAL("signal"),
     COILED_COIL("coiledCoil");
 
     String name;
 
-    SAMTriggerType(String name) {
+    SamTriggerType(String name) {
         this.name = name;
     }
 
@@ -22,7 +22,7 @@ public enum SAMTriggerType implements EnumDisplay {
         return name;
     }
 
-    public static @Nonnull SAMTriggerType typeOf(@Nonnull String name) {
-        return EnumDisplay.typeOf(name, SAMTriggerType.class);
+    public static @Nonnull SamTriggerType typeOf(@Nonnull String name) {
+        return EnumDisplay.typeOf(name, SamTriggerType.class);
     }
 }
