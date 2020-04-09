@@ -27,7 +27,7 @@ class EntryFeaturesMapTest {
         EntryFeaturesMap dl = new EntryFeaturesMap(features);
         Map<String, String> result = dl.attributeValues();
         assertEquals(4, result.size());
-        verify("rs1064793108 rs1064793121", "dr_dbsnp", result);
+        verify("rs1064793108 rs1064793121", "cross_ref_dbsnp", result);
         verify("DOMAIN 23 /note=\"some domain\"", "ft_domain", result);
         verify("HELIX 7..10 /evidence=\"ECO:0000244|PDB:2LO1\"", "ft_helix", result);
         String variantExp =

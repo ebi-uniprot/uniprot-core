@@ -61,7 +61,7 @@ public class EntryFeaturesMap implements NamedValueMap {
                     "ft_region",
                     "ft_repeat",
                     "ft_zn_fing",
-                    "dr_dbsnp");
+                    "cross_ref_dbsnp");
 
     private static final Pattern DBSNP_PATTERN = Pattern.compile("(.+)dbSNP(\\:)(rs(\\d+))(.*)");
     private static final Map<String, String> FEATURETYPE_2_NAME = new HashMap<>();
@@ -142,7 +142,7 @@ public class EntryFeaturesMap implements NamedValueMap {
                     if (featureType.equals(FeatureType.VARIANT)) {
                         String dbSnps = variantTodbSnp(features);
                         if (dbSnps != null && !dbSnps.isEmpty()) {
-                            map.put("dr_dbsnp", dbSnps);
+                            map.put("cross_ref_dbsnp", dbSnps);
                         }
                     }
                 });
