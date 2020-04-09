@@ -16,7 +16,7 @@ public interface Annotation extends Serializable {
 
     Gene getGene();
 
-    UniProtKBCrossReference getDBReference();
+    UniProtKBCrossReference getDbReference();
 
     ProteinDescription getProteinDescription();
 }

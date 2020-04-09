@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /** @author sahmad */
-public interface UniRule extends Serializable {
+public interface Rule extends Serializable {
     List<ConditionSet> getConditionSets();
 
     List<Annotation> getAnnotations();
