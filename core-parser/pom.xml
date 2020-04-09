@@ -9,7 +9,6 @@
 		<relativePath>../</relativePath>
 	</parent>
 
-	<version>${project.parent.version}</version>
 	<artifactId>core-parser</artifactId>
 
 	<dependencies>
