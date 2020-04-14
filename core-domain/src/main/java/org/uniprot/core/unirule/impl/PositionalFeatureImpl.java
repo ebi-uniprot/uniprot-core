@@ -18,6 +18,8 @@ public class PositionalFeatureImpl implements PositionalFeature {
 
     private String type;
 
+    PositionalFeatureImpl() {}
+
     public PositionalFeatureImpl(
             Range position, String pattern, boolean inGroup, String value, String type) {
         this.position = position;

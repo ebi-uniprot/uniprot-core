@@ -1,5 +1,6 @@
 package org.uniprot.core.unirule.impl;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,6 +17,12 @@ public class RuleImpl implements Rule {
     private List<Annotation> annotations;
 
     private List<RuleException> ruleExceptions;
+
+    RuleImpl() {
+        this.conditionSets = Collections.emptyList();
+        this.annotations = Collections.emptyList();
+        this.ruleExceptions = Collections.emptyList();
+    }
 
     public RuleImpl(
             List<ConditionSet> conditionSets,

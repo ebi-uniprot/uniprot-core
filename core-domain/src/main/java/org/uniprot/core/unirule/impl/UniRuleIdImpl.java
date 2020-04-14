@@ -12,6 +12,10 @@ public class UniRuleIdImpl extends ValueImpl implements UniRuleId {
             Pattern.compile(UNIRULE_ID_REGEX, Pattern.CASE_INSENSITIVE);
     private static final long serialVersionUID = 5722538162124643748L;
 
+    UniRuleIdImpl() {
+        super(null);
+    }
+
     public UniRuleIdImpl(String value) {
         super(value);
     }

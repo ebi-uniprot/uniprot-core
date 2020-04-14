@@ -1,5 +1,6 @@
 package org.uniprot.core.unirule.impl;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -22,6 +23,12 @@ public class UniRuleEntryImpl implements UniRuleEntry {
     private Date createdDate;
     private Date modifiedDate;
 
+    UniRuleEntryImpl() {
+        this.otherRules = Collections.emptyList();
+        this.samFeatureSets = Collections.emptyList();
+        this.positionFeatureSets = Collections.emptyList();
+    }
+
     public UniRuleEntryImpl(
             UniRuleId uniRuleId,
             Information information,
@@ -34,6 +41,11 @@ public class UniRuleEntryImpl implements UniRuleEntry {
             String modifiedBy,
             Date createdDate,
             Date modifiedDate) {
+        if (Objects.isNull(uniRuleId)) {
+            throw new IllegalArgumentException("id is a mandatory param for UniRule entry.");
+        } else if (Objects.isNull(ruleStatus)) {
+            throw new IllegalArgumentException("status is a mandatory param for UniRule entry.");
+        }
         this.uniRuleId = uniRuleId;
         this.information = information;
         this.ruleStatus = ruleStatus;

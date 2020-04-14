@@ -1,5 +1,6 @@
 package org.uniprot.core.unirule.impl;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,6 +18,11 @@ public class SamFeatureSetImpl implements SamFeatureSet {
     private List<Annotation> annotations;
 
     private SamTrigger samTrigger;
+
+    SamFeatureSetImpl() {
+        this.conditions = Collections.emptyList();
+        this.annotations = Collections.emptyList();
+    }
 
     public SamFeatureSetImpl(
             List<Condition> conditions, List<Annotation> annotations, SamTrigger samTrigger) {

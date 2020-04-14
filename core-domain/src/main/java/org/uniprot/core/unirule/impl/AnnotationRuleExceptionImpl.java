@@ -9,6 +9,10 @@ public class AnnotationRuleExceptionImpl extends AbstractRuleException<Annotatio
 
     private static final long serialVersionUID = 5912068124839425973L;
 
+    AnnotationRuleExceptionImpl() {
+        super();
+    }
+
     public AnnotationRuleExceptionImpl(
             String note,
             String category,

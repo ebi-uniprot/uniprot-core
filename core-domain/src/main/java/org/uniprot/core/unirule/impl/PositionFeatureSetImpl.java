@@ -1,5 +1,6 @@
 package org.uniprot.core.unirule.impl;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -23,6 +24,13 @@ public class PositionFeatureSetImpl implements PositionFeatureSet {
     private String alignmentSignature;
 
     private String tag;
+
+    PositionFeatureSetImpl() {
+        this.conditions = Collections.emptyList();
+        this.annotations = Collections.emptyList();
+        this.positionalFeatures = Collections.emptyList();
+        this.ruleExceptions = Collections.emptyList();
+    }
 
     public PositionFeatureSetImpl(
             List<Condition> conditions,
