@@ -10,6 +10,10 @@ public class ConditionValueImpl extends ValueImpl implements ConditionValue {
     private static final long serialVersionUID = -4583284310650267652L;
     private String cvId;
 
+    ConditionValueImpl() {
+        super(null);
+    }
+
     public ConditionValueImpl(String value, String cvId) {
         super(value);
         this.cvId = cvId;

@@ -12,6 +12,8 @@ public class SamTriggerImpl implements SamTrigger {
     private SamTriggerType samTriggerType;
     private Range expectedHits;
 
+    SamTriggerImpl() {}
+
     public SamTriggerImpl(SamTriggerType samTriggerType, Range expectedHits) {
         this.samTriggerType = samTriggerType;
         this.expectedHits = expectedHits;

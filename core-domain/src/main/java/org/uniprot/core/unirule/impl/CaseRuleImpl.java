@@ -13,6 +13,10 @@ public class CaseRuleImpl extends RuleImpl implements CaseRule {
     private static final long serialVersionUID = 70596874547936434L;
     private boolean overallStatsExempted;
 
+    CaseRuleImpl() {
+        super();
+    }
+
     public CaseRuleImpl(
             List<ConditionSet> conditionSets,
             List<Annotation> annotations,

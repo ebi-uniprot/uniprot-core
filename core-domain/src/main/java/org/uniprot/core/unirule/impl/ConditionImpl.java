@@ -1,5 +1,6 @@
 package org.uniprot.core.unirule.impl;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,8 +17,16 @@ public class ConditionImpl implements Condition {
     private boolean isNegative;
     private Range range;
 
+    ConditionImpl() {
+        this.conditionValues = Collections.emptyList();
+    }
+
     public ConditionImpl(
             List<ConditionValue> conditionValues, String type, boolean isNegative, Range range) {
+        if (Utils.nullOrEmpty(type)) {
+            throw new IllegalArgumentException(
+                    "type is a mandatory param for UniRule condition entry.");
+        }
         this.conditionValues = Utils.unmodifiableList(conditionValues);
         this.type = type;
         this.isNegative = isNegative;

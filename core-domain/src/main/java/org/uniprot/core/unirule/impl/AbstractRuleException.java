@@ -1,5 +1,6 @@
 package org.uniprot.core.unirule.impl;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,6 +15,10 @@ public class AbstractRuleException<T> implements RuleException<T> {
     private String category;
     private T annotation;
     private List<UniProtKBAccession> accessions;
+
+    public AbstractRuleException() {
+        this.accessions = Collections.emptyList();
+    }
 
     public AbstractRuleException(
             String note, String category, T annotation, List<UniProtKBAccession> accessions) {

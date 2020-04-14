@@ -1,5 +1,6 @@
 package org.uniprot.core.unirule.impl;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,6 +25,15 @@ public class InformationImpl implements Information {
     private List<String> duplicates;
     private List<String> plasmaIds;
     private String internal;
+
+    InformationImpl() {
+        this.uniProtIds = Collections.emptyList();
+        this.names = Collections.emptyList();
+        this.related = Collections.emptyList();
+        this.uniProtAccessions = Collections.emptyList();
+        this.duplicates = Collections.emptyList();
+        this.plasmaIds = Collections.emptyList();
+    }
 
     public InformationImpl(
             String version,

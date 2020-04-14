@@ -1,5 +1,6 @@
 package org.uniprot.core.unirule.impl;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,6 +11,11 @@ public class FusionImpl implements Fusion {
     private static final long serialVersionUID = -3391845343665369638L;
     private List<String> cters;
     private List<String> nters;
+
+    FusionImpl() {
+        this.cters = Collections.emptyList();
+        this.nters = Collections.emptyList();
+    }
 
     public FusionImpl(List<String> cters, List<String> nters) {
         this.cters = cters;

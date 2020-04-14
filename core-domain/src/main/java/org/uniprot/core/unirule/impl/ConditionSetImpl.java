@@ -1,5 +1,6 @@
 package org.uniprot.core.unirule.impl;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,6 +12,10 @@ public class ConditionSetImpl implements ConditionSet {
 
     private static final long serialVersionUID = -5929730192863024936L;
     private List<Condition> conditions;
+
+    ConditionSetImpl() {
+        this.conditions = Collections.emptyList();
+    }
 
     public ConditionSetImpl(List<Condition> conditions) {
         this.conditions = Utils.unmodifiableList(conditions);
