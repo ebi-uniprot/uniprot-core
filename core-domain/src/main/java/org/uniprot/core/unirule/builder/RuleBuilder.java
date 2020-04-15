@@ -12,12 +12,12 @@ import org.uniprot.core.unirule.Rule;
 import org.uniprot.core.unirule.RuleException;
 import org.uniprot.core.unirule.impl.RuleImpl;
 
-public class RuleBuilder extends AbstractRuleBuilder<Rule> {
+public class RuleBuilder<T> extends AbstractRuleBuilder<Rule<T>, T> {
 
     public RuleBuilder(
             List<ConditionSet> conditionSets,
             List<Annotation> annotations,
-            List<RuleException> ruleExceptions) {
+            List<RuleException<T>> ruleExceptions) {
         super(conditionSets, annotations, ruleExceptions);
     }
 

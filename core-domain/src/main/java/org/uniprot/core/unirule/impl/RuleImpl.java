@@ -10,13 +10,13 @@ import org.uniprot.core.unirule.Rule;
 import org.uniprot.core.unirule.RuleException;
 import org.uniprot.core.util.Utils;
 
-public class RuleImpl implements Rule {
+public class RuleImpl<R> implements Rule<R> {
     private static final long serialVersionUID = 5713754535369572219L;
     private List<ConditionSet> conditionSets;
 
     private List<Annotation> annotations;
 
-    private List<RuleException> ruleExceptions;
+    private List<RuleException<R>> ruleExceptions;
 
     RuleImpl() {
         this.conditionSets = Collections.emptyList();
@@ -27,7 +27,7 @@ public class RuleImpl implements Rule {
     public RuleImpl(
             List<ConditionSet> conditionSets,
             List<Annotation> annotations,
-            List<RuleException> ruleExceptions) {
+            List<RuleException<R>> ruleExceptions) {
         this.conditionSets = Utils.unmodifiableList(conditionSets);
         this.annotations = Utils.unmodifiableList(annotations);
         this.ruleExceptions = Utils.unmodifiableList(ruleExceptions);
@@ -44,7 +44,7 @@ public class RuleImpl implements Rule {
     }
 
     @Override
-    public List<RuleException> getRuleExceptions() {
+    public List<RuleException<R>> getRuleExceptions() {
         return ruleExceptions;
     }
 

@@ -11,7 +11,7 @@ import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.unirule.*;
 import org.uniprot.core.unirule.impl.PositionFeatureSetImpl;
 
-public class PositionFeatureSetBuilder implements Builder<PositionFeatureSet> {
+public class PositionFeatureSetBuilder<T> implements Builder<PositionFeatureSet> {
 
     private List<Condition> conditions;
 
@@ -19,7 +19,7 @@ public class PositionFeatureSetBuilder implements Builder<PositionFeatureSet> {
 
     private List<PositionalFeature> positionalFeatures;
 
-    private List<RuleException> ruleExceptions;
+    private List<RuleException<T>> ruleExceptions;
 
     private UniProtKBAccession uniProtKBAccession;
 
@@ -63,7 +63,7 @@ public class PositionFeatureSetBuilder implements Builder<PositionFeatureSet> {
         return this;
     }
 
-    public PositionFeatureSetBuilder ruleExceptionsSet(List<RuleException> ruleExceptions) {
+    public PositionFeatureSetBuilder ruleExceptionsSet(List<RuleException<T>> ruleExceptions) {
         this.ruleExceptions = modifiableList(ruleExceptions);
         return this;
     }

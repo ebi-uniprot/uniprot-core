@@ -6,14 +6,14 @@ import java.util.List;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
 /** @author sahmad */
-public interface PositionFeatureSet extends Serializable {
+public interface PositionFeatureSet<T> extends Serializable {
     List<Condition> getConditions();
 
     List<Annotation> getAnnotations();
 
     List<PositionalFeature> getPositionalFeatures();
 
-    List<RuleException> getRuleExceptions();
+    List<RuleException<T>> getRuleExceptions();
 
     UniProtKBAccession getUniProtKBAccession();
 

@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.List;
 
 /** @author sahmad */
-public interface Rule extends Serializable {
+public interface Rule<R> extends Serializable {
     List<ConditionSet> getConditionSets();
 
     List<Annotation> getAnnotations();
 
-    List<RuleException> getRuleExceptions();
+    List<RuleException<R>> getRuleExceptions();
 }

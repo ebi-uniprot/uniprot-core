@@ -6,16 +6,19 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
-import org.uniprot.core.unirule.*;
+import org.uniprot.core.unirule.Annotation;
+import org.uniprot.core.unirule.CaseRule;
+import org.uniprot.core.unirule.ConditionSet;
+import org.uniprot.core.unirule.RuleException;
 import org.uniprot.core.unirule.impl.CaseRuleImpl;
 
-public class CaseRuleBuilder extends AbstractRuleBuilder<CaseRule> {
+public class CaseRuleBuilder<R> extends AbstractRuleBuilder<CaseRule<R>, R> {
     private boolean overallStatsExempted;
 
     public CaseRuleBuilder(
             List<ConditionSet> conditionSets,
             List<Annotation> annotations,
-            List<RuleException> ruleExceptions) {
+            List<RuleException<R>> ruleExceptions) {
         super(conditionSets, annotations, ruleExceptions);
     }
 

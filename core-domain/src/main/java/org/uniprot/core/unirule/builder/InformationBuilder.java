@@ -141,6 +141,7 @@ public class InformationBuilder implements Builder<Information> {
                 .dataClass(instance.getDataClass())
                 .namesSet(instance.getNames())
                 .fusion(instance.getFusion())
+                .relatedSet(instance.getRelated())
                 .uniProtAccessionsSet(instance.getUniProtAccessions())
                 .duplicatesSet(instance.getDuplicates())
                 .plasmaIdsSet(instance.getPlasmaIds())

@@ -8,7 +8,7 @@ import org.uniprot.core.unirule.CaseRule;
 import org.uniprot.core.unirule.ConditionSet;
 import org.uniprot.core.unirule.RuleException;
 
-public class CaseRuleImpl extends RuleImpl implements CaseRule {
+public class CaseRuleImpl<R> extends RuleImpl<R> implements CaseRule<R> {
 
     private static final long serialVersionUID = 70596874547936434L;
     private boolean overallStatsExempted;
@@ -20,7 +20,7 @@ public class CaseRuleImpl extends RuleImpl implements CaseRule {
     public CaseRuleImpl(
             List<ConditionSet> conditionSets,
             List<Annotation> annotations,
-            List<RuleException> ruleExceptions,
+            List<RuleException<R>> ruleExceptions,
             boolean overallStatsExempted) {
         super(conditionSets, annotations, ruleExceptions);
         this.overallStatsExempted = overallStatsExempted;
