@@ -50,4 +50,6 @@ public interface ProteomeEntry extends Serializable {
 
     String getSourceDb();
     ProteomeCompletenessReport getProteomeCompletenessReport();
+    
+    GenomeAssembly getGenomeAssembly();
 }
