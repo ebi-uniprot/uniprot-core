@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 class CVSystemPropertiesTest {
     @Test
     void whenPropertyNotSetReturnNull_getGafEcoLocation() {
+        System.clearProperty(GAF_ECO_LOCATION);
         assertNull(CVSystemProperties.getGafEcoLocation());
     }
 
@@ -31,6 +32,7 @@ class CVSystemPropertiesTest {
 
     @Test
     void whenPropertyNotSetReturnNull_getDrOrdLocation() {
+        System.clearProperty(DR_ORD_LOCATION);
         assertNull(CVSystemProperties.getDrOrdLocation());
     }
 
@@ -54,6 +56,7 @@ class CVSystemPropertiesTest {
 
     @Test
     void whenPropertyNotSetReturnNull_getDrDatabaseTypesLocation() {
+        System.clearProperty(DR_DATABASE_TYPES_LOCATION);
         assertNull(CVSystemProperties.getDrDatabaseTypesLocation());
     }
 
@@ -77,6 +80,7 @@ class CVSystemPropertiesTest {
 
     @Test
     void whenPropertyNotSetReturnNull_getDatabaseTypesLocation() {
+        System.clearProperty(DATABASE_TYPES_LOCATION);
         assertNull(CVSystemProperties.getDatabaseTypesLocation());
     }
 

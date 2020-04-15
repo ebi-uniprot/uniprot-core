@@ -5,6 +5,7 @@ variables:
   SONAR_HOST_URL: "http://wwwint.ebi.ac.uk/uniprot/sonar"
   MAVEN_SETTINGS: "maven-settings.xml"
   URL_MAVEN_SETTINGS: "https://gitlab.ebi.ac.uk/api/v4/projects/${CONFIG_PROJECT_ID}/repository/files/${MAVEN_SETTINGS}/raw?ref=master&private_token=${GITLAB_USER_API_TOKEN}"
+  UNIPROT_RESOURCES: "-Dcv.db.types.location=ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/complete/docs/dbxref.txt"
 
 image: maven:3.3.9-jdk-8
 cache:
@@ -20,7 +21,7 @@ deploy:jdk8:
     - if [ ! -f ${MAVEN_SETTINGS} ];
         then echo "CI settings missing";
       fi
-    - 'mvn $MAVEN_CLI_OPTS -P jenkins clean deploy -s ${MAVEN_SETTINGS} sonar:sonar -Dsonar.qualitygate.wait=true ${SONAR_PROPS}'
+    - 'mvn $MAVEN_CLI_OPTS $UNIPROT_RESOURCES -P jenkins clean deploy -s ${MAVEN_SETTINGS} sonar:sonar -Dsonar.qualitygate.wait=true ${SONAR_PROPS}'
   after_script:
     - 'pwd'
     - 'ls -al'
