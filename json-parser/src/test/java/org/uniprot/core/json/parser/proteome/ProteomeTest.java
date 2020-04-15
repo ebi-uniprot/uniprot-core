@@ -15,10 +15,7 @@ import org.uniprot.core.citation.impl.SubmissionBuilder;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.proteome.*;
-import org.uniprot.core.proteome.impl.ComponentBuilder;
-import org.uniprot.core.proteome.impl.ProteomeEntryBuilder;
-import org.uniprot.core.proteome.impl.ProteomeIdBuilder;
-import org.uniprot.core.proteome.impl.RedundantProteomeBuilder;
+import org.uniprot.core.proteome.impl.*;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.impl.TaxonomyLineageBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
@@ -206,6 +203,7 @@ class ProteomeTest {
                         .superkingdom(Superkingdom.EUKARYOTA)
                         //	.components(components)
                         .redundantProteomesSet(redundantProteomes)
+                        .proteomeCompletenessReport(createProteomeCompletenessReport())
                         .build();
 
         ValidateJson.verifyJsonRoundTripParser(
@@ -263,6 +261,35 @@ class ProteomeTest {
                 .authorsAdd("author Leo")
                 .title("Leo book tittle")
                 .citationCrossReferencesSet(Collections.singletonList(xref))
+                .build();
+    }
+
+    private ProteomeCompletenessReport createProteomeCompletenessReport() {
+        return new ProteomeCompletenessReportBuilder()
+                .buscoReport(createBuscoReport())
+                .cpdReport(createCPDReport())
+                .build();
+    }
+
+    private CPDReport createCPDReport() {
+        return new CPDReportBuilder()
+                .proteomeCount(15)
+                .stdCdss(13d)
+                .averageCdss(8)
+                .confidence(10)
+                .status(CPDStatus.STANDARD)
+                .build();
+    }
+
+    private BuscoReport createBuscoReport() {
+        return new BuscoReportBuilder()
+                .total(103)
+                .complete(80)
+                .completeDuplicated(12)
+                .completeSingle(8)
+                .fragmented(18)
+                .missing(20)
+                .lineageDb("lineageDb value")
                 .build();
     }
 }
