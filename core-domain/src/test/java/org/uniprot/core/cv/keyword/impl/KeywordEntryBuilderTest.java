@@ -13,7 +13,7 @@ import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.impl.StatisticsBuilder;
 
-class KeywordEntryBuilderTest {
+public class KeywordEntryBuilderTest {
     private GoTerm goTerm = new GoTermBuilder().id("id").name("name").build();
 
     @Test

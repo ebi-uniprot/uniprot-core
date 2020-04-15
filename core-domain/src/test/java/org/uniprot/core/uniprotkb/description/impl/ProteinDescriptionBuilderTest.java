@@ -4,11 +4,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.description.*;
 
-class ProteinDescriptionBuilderTest {
+public class ProteinDescriptionBuilderTest {
 
     private ProteinAltName altName = new ProteinAltNameBuilder().build();
     private Name name = new NameBuilder().value("name").build();
@@ -238,5 +239,31 @@ class ProteinDescriptionBuilderTest {
         ProteinDescription obj2 = new ProteinDescriptionBuilder().build();
         assertTrue(obj.equals(obj2) && obj2.equals(obj));
         assertEquals(obj.hashCode(), obj2.hashCode());
+    }
+
+    public static ProteinDescription createObject() {
+        ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
+        int rIndex = ThreadLocalRandom.current().nextInt(0, FlagType.values().length);
+        FlagType flagType = FlagType.values()[rIndex];
+        builder.flag(flagType);
+        ProteinRecName recommendedName = ProteinRecNameBuilderTest.createObject();
+        builder.recommendedName(recommendedName);
+        List<ProteinSection> contains = ProteinSectionBuilderTest.createObjects(3);
+        builder.containsSet(contains);
+        List<ProteinSection> includes = ProteinSectionBuilderTest.createObjects(2);
+        builder.includesSet(includes);
+        List<ProteinSubName> submissionNames = ProteinSubNameBuilderTest.createObjects(5);
+        builder.submissionNamesSet(submissionNames);
+        List<Name> innNames = NameBuilderTest.createObjects(2);
+        builder.innNamesSet(innNames);
+        List<Name> cdAntigenNames = NameBuilderTest.createObjects(3);
+        builder.cdAntigenNamesSet(cdAntigenNames);
+        Name biotechName = NameBuilderTest.createObject();
+        builder.biotechName(biotechName);
+        Name allergenName = NameBuilderTest.createObject();
+        builder.allergenName(allergenName);
+        List<ProteinAltName> alternativeNames = ProteinAltNameBuilderTest.createObjects(2);
+        builder.alternativeNamesSet(alternativeNames);
+        return builder.build();
     }
 }

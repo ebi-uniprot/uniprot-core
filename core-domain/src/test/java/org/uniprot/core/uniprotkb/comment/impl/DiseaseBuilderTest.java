@@ -4,14 +4,19 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.*;
 
 import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
+import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceBuilderTest;
 import org.uniprot.core.uniprotkb.comment.Disease;
 import org.uniprot.core.uniprotkb.comment.DiseaseDatabase;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilderTest;
 
-class DiseaseBuilderTest {
+public class DiseaseBuilderTest {
     @Test
     void testNewInstance() {
         DiseaseBuilder builder1 = new DiseaseBuilder();
@@ -126,5 +131,28 @@ class DiseaseBuilderTest {
         Disease obj2 = new DiseaseBuilder().build();
         assertTrue(obj.equals(obj2) && obj2.equals(obj));
         assertEquals(obj.hashCode(), obj2.hashCode());
+    }
+
+    public static Disease createObject() {
+        DiseaseBuilder builder = new DiseaseBuilder();
+        String random = UUID.randomUUID().toString();
+        String dId = "dId" + random;
+        String dAc = "DI-12345";
+        String acronym = "ac-" + random;
+        String desc = "Desc-" + random;
+        builder.diseaseId(dId);
+        builder.diseaseAc(dAc);
+        List<Evidence> evidences = EvidenceBuilderTest.createObjects(3);
+        builder.evidencesSet(evidences);
+        builder.acronym(acronym);
+        builder.description(desc);
+        CrossReference<DiseaseDatabase> diseaseCrossReference =
+                DiseaseCrossReferenceBuilderTest.createObject();
+        builder.diseaseCrossReference(diseaseCrossReference);
+        return builder.build();
+    }
+
+    public static List<Disease> createObjects(int count) {
+        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
     }
 }

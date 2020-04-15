@@ -2,10 +2,14 @@ package org.uniprot.core.uniprotkb.description.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.description.EC;
+import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.description.ProteinRecName;
 
-class ProteinRecNameBuilderTest {
+public class ProteinRecNameBuilderTest {
 
     @Test
     void canAddSingleShortName() {
@@ -54,5 +58,16 @@ class ProteinRecNameBuilderTest {
         ProteinRecName obj2 = new ProteinRecNameBuilder().build();
         assertTrue(obj.equals(obj2) && obj2.equals(obj));
         assertEquals(obj.hashCode(), obj2.hashCode());
+    }
+
+    public static ProteinRecName createObject() {
+        ProteinRecNameBuilder builder = new ProteinRecNameBuilder();
+        Name fullName = NameBuilderTest.createObject();
+        builder.fullName(fullName);
+        List<Name> shortNames = NameBuilderTest.createObjects(3);
+        builder.shortNamesSet(shortNames);
+        List<EC> ecNumbers = ECBuilderTest.createObjects(3);
+        builder.ecNumbersSet(ecNumbers);
+        return builder.build();
     }
 }

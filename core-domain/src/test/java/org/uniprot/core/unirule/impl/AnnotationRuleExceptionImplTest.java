@@ -2,15 +2,17 @@ package org.uniprot.core.unirule.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
-import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilderTest;
 import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.RuleException;
-import org.uniprot.core.unirule.builder.AnnotationBuilder;
+import org.uniprot.core.unirule.builder.AnnotationBuilderTest;
 
 public class AnnotationRuleExceptionImplTest {
     @Test
@@ -25,12 +27,15 @@ public class AnnotationRuleExceptionImplTest {
 
     @Test
     void testCreateObject() {
-        String note = "sample note";
-        String category = "sample category";
-        String accessionValue = "P12345";
-        Annotation annotation = new AnnotationBuilder().build();
-        UniProtKBAccession accession = new UniProtKBAccessionBuilder(accessionValue).build();
-        List<UniProtKBAccession> accessionList = Arrays.asList(accession);
+        createObject();
+    }
+
+    public static RuleException<Annotation> createObject() {
+        String random = UUID.randomUUID().toString();
+        String note = "sample note" + random;
+        String category = "sample category" + random;
+        Annotation annotation = AnnotationBuilderTest.createObject();
+        List<UniProtKBAccession> accessionList = UniProtKBAccessionBuilderTest.createObjects(3);
         RuleException<Annotation> ruleException =
                 new AnnotationRuleExceptionImpl(note, category, annotation, accessionList);
         assertNotNull(ruleException);
@@ -38,5 +43,11 @@ public class AnnotationRuleExceptionImplTest {
         assertEquals(category, ruleException.getCategory());
         assertEquals(annotation, ruleException.getAnnotation());
         assertEquals(accessionList, ruleException.getAccessions());
+
+        return ruleException;
+    }
+
+    public static List<RuleException<Annotation>> createObjects(int count) {
+        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
     }
 }

@@ -4,10 +4,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.description.ProteinAltName;
+import org.uniprot.core.uniprotkb.description.ProteinRecName;
 import org.uniprot.core.uniprotkb.description.ProteinSection;
 
 class ProteinSectionBuilderTest {
@@ -153,5 +156,26 @@ class ProteinSectionBuilderTest {
         ProteinSection obj2 = new ProteinSectionBuilder().build();
         assertTrue(obj.equals(obj2) && obj2.equals(obj));
         assertEquals(obj.hashCode(), obj2.hashCode());
+    }
+
+    public static ProteinSection createObject() {
+        ProteinSectionBuilder builder = new ProteinSectionBuilder();
+        ProteinRecName recommendedName = ProteinRecNameBuilderTest.createObject();
+        builder.recommendedName(recommendedName);
+        List<ProteinAltName> alternativeNames = ProteinAltNameBuilderTest.createObjects(3);
+        builder.alternativeNamesSet(alternativeNames);
+        Name allergenName = NameBuilderTest.createObject();
+        builder.allergenName(allergenName);
+        Name biotechName = NameBuilderTest.createObject();
+        builder.biotechName(biotechName);
+        List<Name> cdAntigenNames = NameBuilderTest.createObjects(2);
+        builder.cdAntigenNamesSet(cdAntigenNames);
+        List<Name> innNames = NameBuilderTest.createObjects(5);
+        builder.innNamesSet(innNames);
+        return builder.build();
+    }
+
+    public static List<ProteinSection> createObjects(int count) {
+        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
     }
 }
