@@ -1,16 +1,46 @@
 package org.uniprot.core.unirule.builder;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.unirule.Fusion;
 
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import org.uniprot.core.unirule.Fusion;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class FusionBuilderTest {
+
+    @Test
+    void testCreateObjectUpdateNtersList(){
+        Fusion fusion = createObject();
+        String name = "extra1";
+        FusionBuilder builder = FusionBuilder.from(fusion);
+        // add another  value
+        builder.ntersAdd(name);
+        Fusion updatedFusion = builder.build();
+
+        assertNotNull(updatedFusion);
+        assertEquals(fusion.getCters(), updatedFusion.getCters());
+        assertEquals(fusion.getNters().size() + 1, updatedFusion.getNters().size());
+    }
+
+    @Test
+    void testCreateObjectUpdateCtersList(){
+        Fusion fusion = createObject();
+        String name = "extra2";
+        FusionBuilder builder = FusionBuilder.from(fusion);
+        // add another  value
+        builder.ctersAdd(name);
+        Fusion updatedFusion = builder.build();
+
+        assertNotNull(updatedFusion);
+        assertEquals(fusion.getNters(), updatedFusion.getNters());
+        assertEquals(fusion.getCters().size() + 1, updatedFusion.getCters().size());
+    }
+
     public static Fusion createObject() {
         String random = UUID.randomUUID().toString();
         List<String> nters =

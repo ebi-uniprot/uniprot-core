@@ -94,7 +94,9 @@ public class BuilderCommonTest {
                 Arguments.of(SamFeatureSetBuilderTest.class),
                 Arguments.of(SamTriggerBuilderTest.class),
                 Arguments.of(UniRuleEntryBuilderTest.class),
-                Arguments.of(UniRuleIdBuilderTest.class));
+                Arguments.of(UniRuleIdBuilderTest.class),
+                Arguments.of(CaseRuleBuilderTest.class)
+                );
     }
 
     static Stream<Arguments> provideTypeBuilderTestClass() {
@@ -132,7 +134,8 @@ public class BuilderCommonTest {
                         UniRuleEntry.class,
                         UniRuleEntryBuilder.class,
                         UniRuleEntryBuilderTest.class),
-                Arguments.of(UniRuleId.class, UniRuleIdBuilder.class, UniRuleIdBuilderTest.class));
+                Arguments.of(UniRuleId.class, UniRuleIdBuilder.class, UniRuleIdBuilderTest.class),
+                Arguments.of(CaseRule.class, CaseRuleBuilder.class, CaseRuleBuilderTest.class));
     }
 
     static Stream<Arguments> provideBuilderObjectClass() {

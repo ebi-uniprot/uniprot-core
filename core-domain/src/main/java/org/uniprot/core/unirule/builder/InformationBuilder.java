@@ -44,8 +44,13 @@ public class InformationBuilder implements Builder<Information> {
         return this;
     }
 
-    public InformationBuilder uniProtIds(List<UniProtKBId> uniProtIds) {
-        this.uniProtIds = uniProtIds;
+    public InformationBuilder uniProtIdsAdd(UniProtKBId uniProtId) {
+        addOrIgnoreNull(uniProtId, this.uniProtIds);
+        return this;
+    }
+
+    public InformationBuilder uniProtIdsSet(List<UniProtKBId> uniProtIds) {
+        this.uniProtIds = modifiableList(uniProtIds);
         return this;
     }
 
@@ -137,7 +142,7 @@ public class InformationBuilder implements Builder<Information> {
         builder.version(instance.getVersion())
                 .comment(instance.getComment())
                 .oldRuleNum(instance.getOldRuleNum())
-                .uniProtIds(instance.getUniProtIds())
+                .uniProtIdsSet(instance.getUniProtIds())
                 .dataClass(instance.getDataClass())
                 .namesSet(instance.getNames())
                 .fusion(instance.getFusion())
