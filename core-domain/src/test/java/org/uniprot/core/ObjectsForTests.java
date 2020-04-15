@@ -607,10 +607,10 @@ public class ObjectsForTests {
     }
 
     public static ProteomeCompletenessReport createProteomeCompletenessReport() {
-          return new ProteomeCompletenessReportBuilder()
-                  .buscoReport(createBuscoReport())
-                  .cpdReport(createCPDReport())
-                  .build();
+        return new ProteomeCompletenessReportBuilder()
+                .buscoReport(createBuscoReport())
+                .cpdReport(createCPDReport())
+                .build();
     }
 
     public static CPDReport createCPDReport() {

@@ -1,10 +1,10 @@
 package org.uniprot.core.proteome.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.proteome.CPDReport;
 import org.uniprot.core.proteome.CPDStatus;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author lgonzales
@@ -18,27 +18,27 @@ public class CPDReportBuilder implements Builder<CPDReport> {
     private int confidence;
     private CPDStatus status;
 
-    public @Nonnull CPDReportBuilder proteomeCount(int proteomeCount){
+    public @Nonnull CPDReportBuilder proteomeCount(int proteomeCount) {
         this.proteomeCount = proteomeCount;
         return this;
     }
 
-    public @Nonnull CPDReportBuilder stdCdss(double stdCdss){
+    public @Nonnull CPDReportBuilder stdCdss(double stdCdss) {
         this.stdCdss = stdCdss;
         return this;
     }
 
-    public @Nonnull CPDReportBuilder averageCdss(int averageCdss){
+    public @Nonnull CPDReportBuilder averageCdss(int averageCdss) {
         this.averageCdss = averageCdss;
         return this;
     }
 
-    public @Nonnull CPDReportBuilder confidence(int confidence){
+    public @Nonnull CPDReportBuilder confidence(int confidence) {
         this.confidence = confidence;
         return this;
     }
 
-    public @Nonnull CPDReportBuilder status(CPDStatus status){
+    public @Nonnull CPDReportBuilder status(CPDStatus status) {
         this.status = status;
         return this;
     }
@@ -57,5 +57,4 @@ public class CPDReportBuilder implements Builder<CPDReport> {
                 .stdCdss(instance.getStdCdss())
                 .proteomeCount(instance.getProteomeCount());
     }
-
 }

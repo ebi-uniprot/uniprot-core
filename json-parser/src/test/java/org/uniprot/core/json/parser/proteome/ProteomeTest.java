@@ -169,6 +169,7 @@ public class ProteomeTest {
                 .taxonLineagesAdd(taxonomyLineage)
                 .canonicalProteinsAdd(canonicalProtein)
                 .sourceDb("source db")
+                .proteomeCompletenessReport(createProteomeCompletenessReport())
                 .build();
     }
 
@@ -319,14 +320,14 @@ public class ProteomeTest {
                 .build();
     }
 
-    private ProteomeCompletenessReport createProteomeCompletenessReport() {
+    private static ProteomeCompletenessReport createProteomeCompletenessReport() {
         return new ProteomeCompletenessReportBuilder()
                 .buscoReport(createBuscoReport())
                 .cpdReport(createCPDReport())
                 .build();
     }
 
-    private CPDReport createCPDReport() {
+    private static CPDReport createCPDReport() {
         return new CPDReportBuilder()
                 .proteomeCount(15)
                 .stdCdss(13d)
@@ -336,7 +337,7 @@ public class ProteomeTest {
                 .build();
     }
 
-    private BuscoReport createBuscoReport() {
+    private static BuscoReport createBuscoReport() {
         return new BuscoReportBuilder()
                 .total(103)
                 .complete(80)

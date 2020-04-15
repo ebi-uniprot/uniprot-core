@@ -1,11 +1,10 @@
 package org.uniprot.core.proteome.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.ObjectsForTests;
-import org.uniprot.core.proteome.BuscoReport;
 import org.uniprot.core.proteome.CPDReport;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author lgonzales
@@ -21,10 +20,9 @@ class CPDReportImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        CPDReport report= ObjectsForTests.createCPDReport();
+        CPDReport report = ObjectsForTests.createCPDReport();
         CPDReport reportFrom = CPDReportBuilder.from(report).build();
         assertTrue(report.equals(reportFrom) && reportFrom.equals(report));
         assertEquals(report.hashCode(), reportFrom.hashCode());
     }
-
 }

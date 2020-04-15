@@ -1,10 +1,10 @@
 package org.uniprot.core.proteome.impl;
 
+import java.util.Objects;
+
 import org.uniprot.core.proteome.BuscoReport;
 import org.uniprot.core.proteome.CPDReport;
 import org.uniprot.core.proteome.ProteomeCompletenessReport;
-
-import java.util.Objects;
 
 /**
  * @author lgonzales
@@ -18,8 +18,7 @@ public class ProteomeCompletenessReportImpl implements ProteomeCompletenessRepor
     private CPDReport cpdReport;
 
     // no arg constructor for JSON deserialization
-    ProteomeCompletenessReportImpl(){
-    }
+    ProteomeCompletenessReportImpl() {}
 
     ProteomeCompletenessReportImpl(BuscoReport buscoReport, CPDReport cpdReport) {
         this.buscoReport = buscoReport;
@@ -40,8 +39,8 @@ public class ProteomeCompletenessReportImpl implements ProteomeCompletenessRepor
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProteomeCompletenessReportImpl that = (ProteomeCompletenessReportImpl) o;
-        return Objects.equals(getBuscoReport(), that.getBuscoReport()) &&
-                Objects.equals(cpdReport, that.cpdReport);
+        return Objects.equals(getBuscoReport(), that.getBuscoReport())
+                && Objects.equals(cpdReport, that.cpdReport);
     }
 
     @Override

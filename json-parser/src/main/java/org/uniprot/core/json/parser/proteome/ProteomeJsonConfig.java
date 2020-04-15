@@ -99,7 +99,8 @@ public class ProteomeJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(CanonicalProtein.class, CanonicalProteinImpl.class);
         mod.addAbstractTypeMapping(UniProtKBAccession.class, UniProtKBAccessionImpl.class);
 
-        mod.addAbstractTypeMapping(ProteomeCompletenessReport.class, ProteomeCompletenessReportImpl.class);
+        mod.addAbstractTypeMapping(
+                ProteomeCompletenessReport.class, ProteomeCompletenessReportImpl.class);
         mod.addAbstractTypeMapping(BuscoReport.class, BuscoReportImpl.class);
         mod.addAbstractTypeMapping(CPDReport.class, CPDReportImpl.class);
 

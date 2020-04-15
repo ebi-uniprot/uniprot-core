@@ -1,8 +1,8 @@
 package org.uniprot.core.proteome.impl;
 
-import org.uniprot.core.proteome.BuscoReport;
-
 import java.util.Objects;
+
+import org.uniprot.core.proteome.BuscoReport;
 
 /**
  * @author lgonzales
@@ -21,11 +21,16 @@ public class BuscoReportImpl implements BuscoReport {
     private String lineageDb;
 
     // no arg constructor for JSON deserialization
-    BuscoReportImpl(){
+    BuscoReportImpl() {}
 
-    }
-
-    BuscoReportImpl(int complete, int completeSingle, int completeDuplicated, int fragmented, int missing, int total, String lineageDb) {
+    BuscoReportImpl(
+            int complete,
+            int completeSingle,
+            int completeDuplicated,
+            int fragmented,
+            int missing,
+            int total,
+            String lineageDb) {
         this.complete = complete;
         this.completeSingle = completeSingle;
         this.completeDuplicated = completeDuplicated;
@@ -75,17 +80,24 @@ public class BuscoReportImpl implements BuscoReport {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BuscoReportImpl that = (BuscoReportImpl) o;
-        return getComplete() == that.getComplete() &&
-                getCompleteSingle() == that.getCompleteSingle() &&
-                getCompleteDuplicated() == that.getCompleteDuplicated() &&
-                getFragmented() == that.getFragmented() &&
-                getMissing() == that.getMissing() &&
-                getTotal() == that.getTotal() &&
-                Objects.equals(getLineageDb(), that.getLineageDb());
+        return getComplete() == that.getComplete()
+                && getCompleteSingle() == that.getCompleteSingle()
+                && getCompleteDuplicated() == that.getCompleteDuplicated()
+                && getFragmented() == that.getFragmented()
+                && getMissing() == that.getMissing()
+                && getTotal() == that.getTotal()
+                && Objects.equals(getLineageDb(), that.getLineageDb());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getComplete(), getCompleteSingle(), getCompleteDuplicated(), getFragmented(), getMissing(), getTotal(), getLineageDb());
+        return Objects.hash(
+                getComplete(),
+                getCompleteSingle(),
+                getCompleteDuplicated(),
+                getFragmented(),
+                getMissing(),
+                getTotal(),
+                getLineageDb());
     }
 }

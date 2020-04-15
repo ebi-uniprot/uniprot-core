@@ -220,7 +220,8 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
         return this;
     }
 
-    public @Nonnull ProteomeEntryBuilder proteomeCompletenessReport(ProteomeCompletenessReport proteomeCompletenessReport){
+    public @Nonnull ProteomeEntryBuilder proteomeCompletenessReport(
+            ProteomeCompletenessReport proteomeCompletenessReport) {
         this.proteomeCompletenessReport = proteomeCompletenessReport;
         return this;
     }

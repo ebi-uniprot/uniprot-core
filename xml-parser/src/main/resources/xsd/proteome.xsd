@@ -12,6 +12,7 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+
 	<xs:element name="proteome">
 		<xs:complexType>
 			<xs:annotation>
@@ -28,6 +29,8 @@
 					minOccurs="0" />
 				<xs:element name="strain" type="xs:string" minOccurs="0" />
 				<xs:element name="isolate" type="xs:string" minOccurs="0" />
+				<xs:element name="genomeAssembly"
+					type="genomeAssemblyType" minOccurs="0" maxOccurs="1" />
 				<xs:element name="dbReference" type="dbReferenceType"
 					minOccurs="0" maxOccurs="unbounded" />
 				<xs:element name="component" type="componentType"
@@ -42,6 +45,10 @@
 					minOccurs="0" />
 				<xs:element name="annotationScore"
 					type="annotationScoreType" minOccurs="0" maxOccurs="1" />
+				<xs:element name="excluded" type="exclusionType"
+					minOccurs="0" maxOccurs="1" />
+				<xs:element name="scores" type="scoreType" minOccurs="0"
+					maxOccurs="unbounded" />
 			</xs:sequence>
 			<xs:attribute name="upid" type="upidType" />
 			<xs:attribute name="modified" type="xs:date" />
@@ -51,6 +58,18 @@
 			<xs:attribute name="superregnum" type="superregnumType" />
 		</xs:complexType>
 	</xs:element>
+	<xs:complexType name="genomeAssemblyType">
+		<xs:sequence>
+			<xs:element name="genomeAssemblySource" type="xs:string" />
+			<xs:sequence minOccurs="0" maxOccurs="1">
+				<xs:element name="genomeAssembly" type="xs:string" />
+				<xs:element name="genomeAssemblyUrl" type="xs:string"
+					minOccurs="0" />
+				<xs:element name="genomeRepresentation" type="xs:string" />
+			</xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+
 	<xs:simpleType name="superregnumType">
 		<xs:annotation>
 			<xs:documentation>
@@ -87,6 +106,7 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+
 	<xs:complexType name="geneType">
 		<xs:annotation>
 			<xs:documentation>
@@ -182,7 +202,6 @@
 		<xs:attribute name="upid" type="upidType" />
 		<xs:attribute name="similarity" type="xs:float" />
 	</xs:complexType>
-
 
 	<xs:complexType name="componentType">
 		<xs:annotation>
@@ -333,6 +352,25 @@
 		<xs:attribute name="normalizedAnnotationScore"
 			type="xs:int" use="required" />
 	</xs:complexType>
+	<xs:complexType name="exclusionType">
+		<xs:sequence>
+			<xs:element name="exclusionReason" type="xs:string"
+				minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
 
+	<xs:complexType name="scoreType">
+		<xs:sequence>
+			<xs:element name="property" type="scorePropertyType"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="scorePropertyType">
+		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attribute name="value" type="xs:string"
+			use="required" />
+	</xs:complexType>
 
 </xs:schema>

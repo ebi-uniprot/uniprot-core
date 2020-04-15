@@ -3,22 +3,17 @@ package org.uniprot.core.proteome;
 import java.io.Serializable;
 
 /**
- *
  * @author jluo
  * @date: 1 Apr 2020
- *
-*/
-
+ */
 public interface CPDReport extends Serializable {
-	int getProteomeCount();
+    int getProteomeCount();
 
-	double getStdCdss();
+    double getStdCdss();
 
-	int getAverageCdss();
+    int getAverageCdss();
 
-	int getConfidence();
+    int getConfidence();
 
-	CPDStatus getStatus();
-
+    CPDStatus getStatus();
 }
-

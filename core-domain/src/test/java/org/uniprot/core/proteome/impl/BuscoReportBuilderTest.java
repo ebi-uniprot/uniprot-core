@@ -1,12 +1,10 @@
 package org.uniprot.core.proteome.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.ObjectsForTests;
 import org.uniprot.core.proteome.BuscoReport;
-import org.uniprot.core.proteome.CanonicalProtein;
-import org.uniprot.core.proteome.Protein;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author lgonzales
@@ -24,7 +22,8 @@ class BuscoReportBuilderTest {
     @Test
     void testCompleteDuplicated() {
         int completeDuplicated = 11;
-        BuscoReport report = new BuscoReportBuilder().completeDuplicated(completeDuplicated).build();
+        BuscoReport report =
+                new BuscoReportBuilder().completeDuplicated(completeDuplicated).build();
         assertEquals(completeDuplicated, report.getCompleteDuplicated());
     }
 
@@ -65,7 +64,7 @@ class BuscoReportBuilderTest {
 
     @Test
     void testFrom() {
-        BuscoReport report= ObjectsForTests.createBuscoReport();
+        BuscoReport report = ObjectsForTests.createBuscoReport();
         BuscoReport newReport = BuscoReportBuilder.from(report).build();
         assertEquals(report, newReport);
     }

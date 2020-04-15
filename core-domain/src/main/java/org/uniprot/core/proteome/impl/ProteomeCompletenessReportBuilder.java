@@ -1,11 +1,11 @@
 package org.uniprot.core.proteome.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.proteome.BuscoReport;
 import org.uniprot.core.proteome.CPDReport;
 import org.uniprot.core.proteome.ProteomeCompletenessReport;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author lgonzales
@@ -16,12 +16,12 @@ public class ProteomeCompletenessReportBuilder implements Builder<ProteomeComple
     private BuscoReport buscoReport;
     private CPDReport cpdReport;
 
-    public @Nonnull ProteomeCompletenessReportBuilder buscoReport(BuscoReport buscoReport){
+    public @Nonnull ProteomeCompletenessReportBuilder buscoReport(BuscoReport buscoReport) {
         this.buscoReport = buscoReport;
         return this;
     }
 
-    public @Nonnull ProteomeCompletenessReportBuilder cpdReport(CPDReport cpdReport){
+    public @Nonnull ProteomeCompletenessReportBuilder cpdReport(CPDReport cpdReport) {
         this.cpdReport = cpdReport;
         return this;
     }
@@ -32,8 +32,8 @@ public class ProteomeCompletenessReportBuilder implements Builder<ProteomeComple
         return new ProteomeCompletenessReportImpl(buscoReport, cpdReport);
     }
 
-    public static @Nonnull
-    ProteomeCompletenessReportBuilder from(@Nonnull ProteomeCompletenessReport instance) {
+    public static @Nonnull ProteomeCompletenessReportBuilder from(
+            @Nonnull ProteomeCompletenessReport instance) {
         return new ProteomeCompletenessReportBuilder()
                 .cpdReport(instance.getCPDReport())
                 .buscoReport(instance.getBuscoReport());

@@ -1,9 +1,9 @@
 package org.uniprot.core.proteome.impl;
 
+import java.util.Objects;
+
 import org.uniprot.core.proteome.CPDReport;
 import org.uniprot.core.proteome.CPDStatus;
-
-import java.util.Objects;
 
 /**
  * @author lgonzales
@@ -20,10 +20,10 @@ public class CPDReportImpl implements CPDReport {
     private CPDStatus status;
 
     // no arg constructor for JSON deserialization
-    CPDReportImpl(){
-    }
+    CPDReportImpl() {}
 
-    CPDReportImpl(int proteomeCount, double stdCdss, int averageCdss, int confidence, CPDStatus status) {
+    CPDReportImpl(
+            int proteomeCount, double stdCdss, int averageCdss, int confidence, CPDStatus status) {
         this.proteomeCount = proteomeCount;
         this.stdCdss = stdCdss;
         this.averageCdss = averageCdss;
@@ -61,15 +61,16 @@ public class CPDReportImpl implements CPDReport {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CPDReportImpl cpdReport = (CPDReportImpl) o;
-        return getProteomeCount() == cpdReport.getProteomeCount() &&
-                Double.compare(cpdReport.getStdCdss(), getStdCdss()) == 0 &&
-                getAverageCdss() == cpdReport.getAverageCdss() &&
-                getConfidence() == cpdReport.getConfidence() &&
-                getStatus() == cpdReport.getStatus();
+        return getProteomeCount() == cpdReport.getProteomeCount()
+                && Double.compare(cpdReport.getStdCdss(), getStdCdss()) == 0
+                && getAverageCdss() == cpdReport.getAverageCdss()
+                && getConfidence() == cpdReport.getConfidence()
+                && getStatus() == cpdReport.getStatus();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getProteomeCount(), getStdCdss(), getAverageCdss(), getConfidence(), getStatus());
+        return Objects.hash(
+                getProteomeCount(), getStdCdss(), getAverageCdss(), getConfidence(), getStatus());
     }
 }

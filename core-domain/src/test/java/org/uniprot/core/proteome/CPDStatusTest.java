@@ -1,11 +1,11 @@
 package org.uniprot.core.proteome;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author lgonzales
@@ -14,8 +14,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class CPDStatusTest {
 
     @Test
+    void getName_toDisplayName_areSame() {
+        assertSame(CPDStatus.STANDARD.getName(), CPDStatus.STANDARD.getDisplayName());
+    }
+
+    @Test
     void testToDisplayName() {
-        assertSame("Standard", CPDStatus.STANDARD.toDisplayName());
+        assertSame("Standard", CPDStatus.STANDARD.getDisplayName());
     }
 
     @Test
