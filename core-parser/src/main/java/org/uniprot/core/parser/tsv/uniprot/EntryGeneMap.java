@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.Value;
 import org.uniprot.core.gene.Gene;
+import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
 public class EntryGeneMap implements NamedValueMap {

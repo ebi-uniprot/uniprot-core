@@ -39,10 +39,6 @@ public class RLLineBuilder implements RLine<Citation> {
                 return thesis(citation, includeFFMarkup);
             case UNPUBLISHED:
                 return unpublished_observations(citation, includeFFMarkup);
-            case UNKNOWN:
-                throw new IllegalArgumentException(
-                        "You specified that you wanted to write an unknown citation type."
-                                + "The RLLine does not know how to deal with this!");
         }
         return new ArrayList<>();
     }

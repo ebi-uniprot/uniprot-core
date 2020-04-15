@@ -1,49 +1,69 @@
 package org.uniprot.core.parser.tsv.literature;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Literature;
 import org.uniprot.core.literature.LiteratureEntry;
-import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
+import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.util.Utils;
 
 /**
  * @author lgonzales
  * @since 2019-07-04
  */
-public class LiteratureEntryMap implements NamedValueMap {
-
-    private final LiteratureEntry literatureEntry;
-    private final Literature literature;
-
-    public LiteratureEntryMap(LiteratureEntry literatureEntry) {
-        this.literatureEntry = literatureEntry;
-        this.literature = (Literature) literatureEntry.getCitation();
-    }
+public class LiteratureEntryValueMapper implements EntityValueMapper<LiteratureEntry> {
 
     @Override
-    public Map<String, String> attributeValues() {
-
+    public Map<String, String> mapEntity(LiteratureEntry entry, List<String> fields) {
+        Literature literature = (Literature) entry.getCitation();
         Map<String, String> map = new HashMap<>();
-        map.put("id", getPubmedId());
-        map.put("doi", getDoiId());
-        map.put("title", getTittle());
-        map.put("lit_abstract", getAbstract());
-        map.put("author", getAuthors());
-        map.put("authoring_group", getAuthoringGroup());
-        map.put("author_and_group", getAuthorsAndAuthoringGroups());
-        map.put("journal", getJournal());
-        map.put("publication", getPublication());
-        map.put("reference", getReference());
-        map.put("statistics", getStatistics());
+        map.put("id", getPubmedId(literature));
+        map.put("doi", getDoiId(literature));
+        map.put("title", getTittle(literature));
+        map.put("lit_abstract", getAbstract(literature));
+        map.put("author", getAuthors(literature));
+        map.put("authoring_group", getAuthoringGroup(literature));
+        map.put("author_and_group", getAuthorsAndAuthoringGroups(literature));
+        map.put("journal", getJournal(literature));
+        map.put("publication", getPublication(literature));
+        map.put("first_page", getFirstPage(literature));
+        map.put("last_page", getLastPage(literature));
+        map.put("volume", getVolume(literature));
+        map.put("reference", getReference(literature));
+        map.put("statistics", getStatistics(entry));
 
         return map;
     }
 
-    private String getAbstract() {
+    private String getLastPage(Literature literature) {
+        String result = "";
+        if (Utils.notNull(literature)) {
+            result = Utils.emptyOrString(literature.getLastPage());
+        }
+        return result;
+    }
+
+    private String getFirstPage(Literature literature) {
+        String result = "";
+        if (Utils.notNull(literature)) {
+            result = Utils.emptyOrString(literature.getFirstPage());
+        }
+        return result;
+    }
+
+    private String getVolume(Literature literature) {
+        String result = "";
+        if (Utils.notNull(literature)) {
+            result = Utils.emptyOrString(literature.getVolume());
+        }
+        return result;
+    }
+
+    private String getAbstract(Literature literature) {
         String result = "";
         if (Utils.notNull(literature)) {
             result = Utils.emptyOrString(literature.getLiteratureAbstract());
@@ -51,7 +71,7 @@ public class LiteratureEntryMap implements NamedValueMap {
         return result;
     }
 
-    private String getTittle() {
+    private String getTittle(Literature literature) {
         String result = "";
         if (Utils.notNull(literature)) {
             result = Utils.emptyOrString(literature.getTitle());
@@ -59,7 +79,7 @@ public class LiteratureEntryMap implements NamedValueMap {
         return result;
     }
 
-    private String getDoiId() {
+    private String getDoiId(Literature literature) {
         String result = "";
         if (Utils.notNull(literature)) {
             result = Utils.emptyOrString(literature.getDoiId());
@@ -67,7 +87,7 @@ public class LiteratureEntryMap implements NamedValueMap {
         return result;
     }
 
-    private String getPubmedId() {
+    private String getPubmedId(Literature literature) {
         String result = "";
         if (Utils.notNull(literature)) {
             result = String.valueOf(literature.getPubmedId());
@@ -75,7 +95,7 @@ public class LiteratureEntryMap implements NamedValueMap {
         return result;
     }
 
-    private String getPublication() {
+    private String getPublication(Literature literature) {
         String result = "";
         if (Utils.notNull(literature) && literature.hasPublicationDate()) {
             result = literature.getPublicationDate().getValue();
@@ -83,7 +103,7 @@ public class LiteratureEntryMap implements NamedValueMap {
         return result;
     }
 
-    private String getJournal() {
+    private String getJournal(Literature literature) {
         String result = "";
         if (Utils.notNull(literature) && literature.hasJournal()) {
             result = literature.getJournal().getName();
@@ -91,15 +111,15 @@ public class LiteratureEntryMap implements NamedValueMap {
         return result;
     }
 
-    private String getAuthorsAndAuthoringGroups() {
-        String result = getAuthoringGroup();
+    private String getAuthorsAndAuthoringGroups(Literature literature) {
+        String result = getAuthoringGroup(literature);
         if (Utils.notNullNotEmpty(result)) {
-            result += "; " + getAuthors();
+            result += "; " + getAuthors(literature);
         }
         return result;
     }
 
-    private String getAuthors() {
+    private String getAuthors(Literature literature) {
         String result = "";
         if (Utils.notNull(literature)) {
             result =
@@ -110,7 +130,7 @@ public class LiteratureEntryMap implements NamedValueMap {
         return result;
     }
 
-    private String getAuthoringGroup() {
+    private String getAuthoringGroup(Literature literature) {
         String result = "";
         if (Utils.notNull(literature)) {
             result = String.join(", ", literature.getAuthoringGroups());
@@ -118,7 +138,7 @@ public class LiteratureEntryMap implements NamedValueMap {
         return result;
     }
 
-    private String getReference() {
+    private String getReference(Literature literature) {
         StringBuilder result = new StringBuilder();
         if (Utils.notNull(literature)) {
             if (literature.hasJournal()) {
@@ -144,7 +164,7 @@ public class LiteratureEntryMap implements NamedValueMap {
         return result.toString();
     }
 
-    private String getStatistics() {
+    private String getStatistics(LiteratureEntry literatureEntry) {
         StringBuilder result = new StringBuilder();
         if (literatureEntry.hasStatistics()) {
             result.append("mapped:")

@@ -9,7 +9,7 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-public enum EvidenceCode implements EnumDisplay<EvidenceCode> {
+public enum EvidenceCode implements EnumDisplay {
     ECO_0000269(
             "ECO:0000269",
             "Experimental",
@@ -107,24 +107,8 @@ public enum EvidenceCode implements EnumDisplay<EvidenceCode> {
         this.categories = categories;
     }
 
-    public @Nonnull static EvidenceCode typeOf(@Nonnull String code) {
-        for (EvidenceCode eCode : EvidenceCode.values()) {
-            if (code.equals(eCode.getCode())) return eCode;
-        }
-        throw new IllegalArgumentException(code + " is not valid Evidence code");
-    }
-
     public @Nonnull String getCode() {
         return code;
-    }
-
-    @Override
-    public @Nonnull String toDisplayName() {
-        return getCode();
-    }
-
-    public @Nonnull String getName() {
-        return name;
     }
 
     public @Nonnull String getSource() {
@@ -142,6 +126,22 @@ public enum EvidenceCode implements EnumDisplay<EvidenceCode> {
     public enum Category {
         EXPERIMENTAL,
         MANUAL,
-        AUTOMATIC
+        AUTOMATIC;
+    }
+
+    public @Nonnull String getName() {
+        return name;
+    }
+
+    public @Nonnull String getDisplayName() {
+        return getCode();
+    }
+
+    public @Nonnull String getCompareOn() {
+        return getCode();
+    }
+
+    public static @Nonnull EvidenceCode typeOf(@Nonnull String code) {
+        return EnumDisplay.typeOf(code, EvidenceCode.class);
     }
 }

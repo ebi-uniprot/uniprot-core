@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-public enum TaxonomyRank implements EnumDisplay<TaxonomyRank> {
+public enum TaxonomyRank implements EnumDisplay {
     FORMA("forma"),
     VARIETAS("varietas"),
     SUBSPECIES("subspecies"),
@@ -47,17 +47,7 @@ public enum TaxonomyRank implements EnumDisplay<TaxonomyRank> {
         return name;
     }
 
-    @Override
-    public @Nonnull String toDisplayName() {
-        return name;
-    }
-
-    public static TaxonomyRank typeOf(String value) {
-        for (TaxonomyRank taxonomyRank : TaxonomyRank.values()) {
-            if (taxonomyRank.toDisplayName().trim().equalsIgnoreCase(value.trim())) {
-                return taxonomyRank;
-            }
-        }
-        throw new IllegalArgumentException("The taxonomy rank: " + value + " doesn't exist");
+    public static @Nonnull TaxonomyRank typeOf(@Nonnull String name) {
+        return EnumDisplay.typeOf(name, TaxonomyRank.class);
     }
 }

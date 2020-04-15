@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-public enum MoleculeWeight implements EnumDisplay<MoleculeWeight> {
+public enum MoleculeWeight implements EnumDisplay {
     A(710788),
     B(1146532),
     C(1031388),
@@ -66,7 +66,11 @@ public enum MoleculeWeight implements EnumDisplay<MoleculeWeight> {
     }
 
     @Override
-    public @Nonnull String toDisplayName() {
+    public @Nonnull String getDisplayName() {
         return this.name();
+    }
+
+    public @Nonnull String getName() {
+        return String.valueOf(weight);
     }
 }

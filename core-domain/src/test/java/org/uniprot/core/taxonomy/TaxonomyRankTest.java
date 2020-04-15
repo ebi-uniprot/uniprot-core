@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 class TaxonomyRankTest {
     @Test
     void getName_toDisplayName_areSame() {
-        assertSame(TaxonomyRank.SUPERORDER.getName(), TaxonomyRank.SUPERORDER.toDisplayName());
+        assertSame(TaxonomyRank.SUPERORDER.getName(), TaxonomyRank.SUPERORDER.getDisplayName());
     }
 
     @Test

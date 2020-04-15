@@ -10,7 +10,7 @@ import org.uniprot.core.taxonomy.impl.TaxonomyEntryBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 
-class TaxonomyEntryTest {
+public class TaxonomyEntryTest {
 
     @Test
     void testSimpleTaxonomyEntry() {
@@ -29,7 +29,7 @@ class TaxonomyEntryTest {
         ValidateJson.verifyEmptyFields(taxonomyEntry);
     }
 
-    private TaxonomyEntry getCompleteTaxonomyEntry() {
+    public static TaxonomyEntry getCompleteTaxonomyEntry() {
         TaxonomyEntryBuilder builder = new TaxonomyEntryBuilder();
         builder.taxonId(9606L);
         builder.scientificName("scientificName");
@@ -52,7 +52,7 @@ class TaxonomyEntryTest {
         return builder.build();
     }
 
-    private Taxonomy getCompleteTaxonomy() {
+    private static Taxonomy getCompleteTaxonomy() {
         return new TaxonomyBuilder()
                 .taxonId(9606)
                 .scientificName("Homo sapiens")

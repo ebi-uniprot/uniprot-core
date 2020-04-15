@@ -450,7 +450,12 @@
 		"category": "PTM",
 		"uriLink": "http://www.unicarbkb.org/proteinsummary/%id/annotated"
 	},
-	
+	{
+		"name": "MetOSite",
+		"displayName": "MetOSite",
+		"category": "PTM",
+		"uriLink": "https://metosite.uma.es/scan/%id"
+	},
 	{
 		"name": "BioMuta",
 		"displayName": "BioMuta",
@@ -1127,6 +1132,12 @@
 				"xmlTag":"gene designation"			
 			}
 		]
+	},
+	{
+		"name": "PHI-base",
+		"displayName": "PHI-base",
+		"category": "ORG",
+		"uriLink": "http://www.phi-base.org/searchFacet.htm?queryTerm=%id"
 	},
 	{
 		"name": "HUGE",

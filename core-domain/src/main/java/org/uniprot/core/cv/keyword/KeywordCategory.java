@@ -1,8 +1,10 @@
 package org.uniprot.core.cv.keyword;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.util.EnumDisplay;
 
-public enum KeywordCategory implements EnumDisplay<KeywordCategory>, KeywordId {
+public enum KeywordCategory implements EnumDisplay, KeywordId {
     BIOLOGICAL_PROCESS("Biological process", "KW-9999"),
     CELLULAR_COMPONENT("Cellular component", "KW-9998"),
     CODING_SEQUENCE_DIVERSITY("Coding sequence diversity", "KW-9997"),
@@ -23,30 +25,15 @@ public enum KeywordCategory implements EnumDisplay<KeywordCategory>, KeywordId {
         this.id = id;
     }
 
-    public String getName() {
+    public @Nonnull String getName() {
         return name;
     }
 
-    public String getId() {
+    public @Nonnull String getId() {
         return id;
     }
 
-    public static KeywordCategory fromValue(String name) {
-        for (KeywordCategory cat : KeywordCategory.values()) {
-            if (cat.getName().equalsIgnoreCase(name)) return cat;
-        }
-        return KeywordCategory.UNKNOWN;
-    }
-
-    public static KeywordCategory fromId(String id) {
-        for (KeywordCategory cat : KeywordCategory.values()) {
-            if (cat.getId().equalsIgnoreCase(id)) return cat;
-        }
-        return KeywordCategory.UNKNOWN;
-    }
-
-    @Override
-    public String toDisplayName() {
-        return getName();
+    public static @Nonnull KeywordCategory typeOf(@Nonnull String name) {
+        return EnumDisplay.typeOf(name, KeywordCategory.UNKNOWN);
     }
 }

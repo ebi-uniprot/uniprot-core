@@ -52,7 +52,7 @@ public class CatalyticActivityCommentConverter
     @Override
     public CommentType toXml(CatalyticActivityComment uniObj) {
         CommentType commentType = xmlUniprotFactory.createCommentType();
-        commentType.setType(uniObj.getCommentType().toDisplayName().toLowerCase());
+        commentType.setType(uniObj.getCommentType().getDisplayName().toLowerCase());
         if (!Strings.isNullOrEmpty(uniObj.getMolecule())) {
             MoleculeType mol = xmlUniprotFactory.createMoleculeType();
             mol.setValue(uniObj.getMolecule());

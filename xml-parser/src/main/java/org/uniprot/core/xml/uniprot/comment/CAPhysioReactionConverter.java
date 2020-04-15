@@ -50,7 +50,7 @@ public class CAPhysioReactionConverter
     public PhysiologicalReactionType toXml(PhysiologicalReaction uniObj) {
         PhysiologicalReactionType physioReactionType =
                 xmlUniprotFactory.createPhysiologicalReactionType();
-        physioReactionType.setDirection(uniObj.getDirectionType().toDisplayName());
+        physioReactionType.setDirection(uniObj.getDirectionType().getDisplayName());
         physioReactionType.setDbReference(refConverter.toXml(uniObj.getReactionCrossReference()));
         List<Evidence> evidenceIds = uniObj.getEvidences();
         if ((evidenceIds != null) && !evidenceIds.isEmpty()) {

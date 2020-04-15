@@ -52,7 +52,7 @@ public class ComponentConverter implements Converter<ComponentType, Component> {
         }
         builder.proteomeCrossReferencesSet(xrefs).proteinCount(xmlObj.getCount());
 
-        builder.type(org.uniprot.core.proteome.ComponentType.fromValue(xmlObj.getType().value()));
+        builder.type(org.uniprot.core.proteome.ComponentType.typeOf(xmlObj.getType().value()));
 
         return builder.build();
     }

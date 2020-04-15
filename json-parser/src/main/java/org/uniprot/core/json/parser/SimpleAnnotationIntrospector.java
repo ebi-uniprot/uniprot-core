@@ -8,7 +8,9 @@ import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.AnnotationIntrospector;
 import com.fasterxml.jackson.databind.cfg.PackageVersion;
+import com.fasterxml.jackson.databind.introspect.Annotated;
 import com.fasterxml.jackson.databind.util.ClassUtil;
+import com.github.bohnman.squiggly.filter.SquigglyPropertyFilter;
 
 public class SimpleAnnotationIntrospector extends AnnotationIntrospector {
 
@@ -23,13 +25,17 @@ public class SimpleAnnotationIntrospector extends AnnotationIntrospector {
         return Arrays.stream(enumValues)
                 .map(
                         en -> {
-                            EnumDisplay<?> jsonEnum = (EnumDisplay<?>) en;
-                            return jsonEnum.toDisplayName();
+                            EnumDisplay jsonEnum = (EnumDisplay) en;
+                            return jsonEnum.getDisplayName();
                         })
                 .toArray(String[]::new);
     }
 
     public Enum<?> findDefaultEnumValue(Class<Enum<?>> enumCls) {
         return ClassUtil.findFirstAnnotatedEnumValue(enumCls, JsonEnumDefaultValue.class);
+    }
+
+    public Object findFilterId(Annotated ann) {
+        return SquigglyPropertyFilter.FILTER_ID;
     }
 }

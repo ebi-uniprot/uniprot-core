@@ -18,7 +18,7 @@ import org.uniprot.core.util.EnumDisplay;
  * PHARMACEUTICAL: Text. CC -!- MISCELLANEOUS: Text. CC -!- SIMILARITY: Text. CC -!- CAUTION: Text.
  * CC -!- SEQUENCE CAUTION: Text. CC -!- WEB RESOURCE: Text.
  */
-public enum CommentType implements EnumDisplay<CommentType> {
+public enum CommentType implements EnumDisplay {
     FUNCTION("FUNCTION", "function"),
     CATALYTIC_ACTIVITY("CATALYTIC ACTIVITY", "catalytic activity"),
     COFACTOR("COFACTOR", "cofactor"),
@@ -50,34 +50,16 @@ public enum CommentType implements EnumDisplay<CommentType> {
     WEBRESOURCE("WEB RESOURCE", "online information"),
     UNKNOWN("UNKOWN", "unknown");
 
+    private String name;
     private final String xmlDisplayValue;
-    private String value;
 
-    CommentType(String value, String xmlDisplayValue) {
-        this.value = value;
+    CommentType(String name, String xmlDisplayValue) {
+        this.name = name;
         this.xmlDisplayValue = xmlDisplayValue;
     }
 
-    public static @Nonnull CommentType typeOf(@Nonnull String value) {
-        if (value != null)
-            for (CommentType commentType : CommentType.values()) {
-                if (commentType.toDisplayName().trim().equalsIgnoreCase(value.trim())) {
-                    return commentType;
-                }
-            }
-
-        throw new IllegalArgumentException("The comment type: " + value + " doesn't exist");
-    }
-
-    /**
-     * Returns the name of this enum constant, as contained in the declaration. This method may be
-     * overridden, though it typically isn't necessary or desirable. An enum type should override
-     * this method when a more "programmer-friendly" string form exists.
-     *
-     * @return the name of this enum constant
-     */
-    public @Nonnull String toDisplayName() {
-        return value;
+    public @Nonnull String getName() {
+        return name;
     }
 
     /**
@@ -87,5 +69,9 @@ public enum CommentType implements EnumDisplay<CommentType> {
      */
     public @Nonnull String toXmlDisplayName() {
         return xmlDisplayValue;
+    }
+
+    public static @Nonnull CommentType typeOf(@Nonnull String name) {
+        return EnumDisplay.typeOf(name, CommentType.class);
     }
 }

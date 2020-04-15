@@ -12,7 +12,7 @@ class SubmissionDatabaseTest {
     void getName_toDisplayName_areSame() {
         assertSame(
                 SubmissionDatabase.EMBL_GENBANK_DDBJ.getName(),
-                SubmissionDatabase.EMBL_GENBANK_DDBJ.toDisplayName());
+                SubmissionDatabase.EMBL_GENBANK_DDBJ.getDisplayName());
     }
 
     @Nested

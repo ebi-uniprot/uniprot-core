@@ -187,7 +187,7 @@ public class CCAPCommentLineBuilder extends CCLineBuilderAbstr<AlternativeProduc
                         (i == (alternativeProductsIsoform.getSequenceIds().size() - 1)));
             }
         } else {
-            String status = alternativeProductsIsoform.getIsoformSequenceStatus().getValue();
+            String status = alternativeProductsIsoform.getIsoformSequenceStatus().getName();
             status = status.substring(0, 1).toUpperCase() + status.substring(1);
             isoform.append(status);
             isoform.append(SEMICOLON);

@@ -7,12 +7,12 @@
 	<parent>
 		<groupId>org.uniprot</groupId>
 		<artifactId>core-parent</artifactId>
-		<version>0.1-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 		<relativePath>../</relativePath>
 	</parent>
 
 	<artifactId>xml-parser</artifactId>
-	<version>${project.parent.version}</version>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jaxb.version>2.3.0</jaxb.version>
@@ -26,6 +26,7 @@
 		<uniref-xsd-pojo-package>org.uniprot.core.xml.jaxb.uniref</uniref-xsd-pojo-package>
 		<uniparc-xsd-pojo-package>org.uniprot.core.xml.jaxb.uniparc</uniparc-xsd-pojo-package>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.uniprot</groupId>

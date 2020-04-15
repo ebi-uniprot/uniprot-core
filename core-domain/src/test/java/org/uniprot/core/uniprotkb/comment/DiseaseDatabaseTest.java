@@ -47,6 +47,6 @@ class DiseaseDatabaseTest {
 
     @Test
     void getName_displayName_areSame() {
-        assertSame(DiseaseDatabase.MIM.getName(), DiseaseDatabase.MIM.toDisplayName());
+        assertSame(DiseaseDatabase.MIM.getName(), DiseaseDatabase.MIM.getDisplayName());
     }
 }

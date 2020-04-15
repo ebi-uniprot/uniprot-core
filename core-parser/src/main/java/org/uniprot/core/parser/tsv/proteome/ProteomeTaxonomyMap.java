@@ -2,8 +2,8 @@ package org.uniprot.core.parser.tsv.proteome;
 
 import java.util.*;
 
+import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.parser.tsv.uniprot.EntryMapUtil;
-import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 
 /**

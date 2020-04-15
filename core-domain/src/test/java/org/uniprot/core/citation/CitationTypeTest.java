@@ -12,14 +12,14 @@ class CitationTypeTest {
 
     @ParameterizedTest
     @EnumSource(CitationType.class)
-    void getValue_toDisplayName_areSame(CitationType CT) {
-        assertSame(CT.getValue(), CT.toDisplayName());
+    void getName_getCompareOn_areSame(CitationType CT) {
+        assertSame(CT.getName(), CT.getCompareOn());
     }
 
     @Test
-    void forSUBMISSION_toDisplayName_getDisplayName_notEqual() {
+    void forSUBMISSION_getDescription_getDisplayName_notEqual() {
         assertNotEquals(
-                CitationType.SUBMISSION.toDisplayName(), CitationType.SUBMISSION.getDisplayName());
+                CitationType.SUBMISSION.getDescription(), CitationType.SUBMISSION.getDisplayName());
     }
 
     @Nested

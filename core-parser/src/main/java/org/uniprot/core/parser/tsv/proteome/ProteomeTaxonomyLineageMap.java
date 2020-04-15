@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
+import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 
 /**

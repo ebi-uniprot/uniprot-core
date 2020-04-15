@@ -17,7 +17,7 @@ class EvidenceCodeTest {
 
     @Test
     void displayNameAndCodeIsSame() {
-        assertSame(EvidenceCode.ECO_0000250.getCode(), EvidenceCode.ECO_0000250.toDisplayName());
+        assertSame(EvidenceCode.ECO_0000250.getCode(), EvidenceCode.ECO_0000250.getDisplayName());
     }
 
     @Test

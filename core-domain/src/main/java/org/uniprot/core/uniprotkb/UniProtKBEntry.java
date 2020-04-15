@@ -2,6 +2,7 @@ package org.uniprot.core.uniprotkb;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import org.uniprot.core.Sequence;
 import org.uniprot.core.citation.CitationType;
@@ -75,6 +76,10 @@ public interface UniProtKBEntry extends Serializable {
     Boolean isFragment();
 
     EntryInactiveReason getInactiveReason();
+
+    Map<String, Object> getExtraAttributes();
+
+    Object getExtraAttributeValue(String attributeName);
 
     boolean isActive();
 

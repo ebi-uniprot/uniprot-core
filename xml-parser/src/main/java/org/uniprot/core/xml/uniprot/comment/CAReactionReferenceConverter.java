@@ -31,7 +31,7 @@ public class CAReactionReferenceConverter
     @Override
     public DbReferenceType toXml(CrossReference<ReactionDatabase> uniObj) {
         DbReferenceType dbref = xmlUniprotFactory.createDbReferenceType();
-        dbref.setType(uniObj.getDatabase().toDisplayName());
+        dbref.setType(uniObj.getDatabase().getDisplayName());
         dbref.setId(uniObj.getId());
         return dbref;
     }

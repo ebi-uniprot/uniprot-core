@@ -12,7 +12,7 @@ class KeywordCategoryTest {
     @ParameterizedTest
     @EnumSource(KeywordCategory.class)
     void nameAndDisplayNameAreSame(KeywordCategory category) {
-        assertSame(category.getName(), category.toDisplayName());
+        assertSame(category.getName(), category.getDisplayName());
     }
 
     @ParameterizedTest
@@ -24,11 +24,11 @@ class KeywordCategoryTest {
     @ParameterizedTest
     @ValueSource(strings = {"BIOLOGICAL PROCESS", "diseaseEntry", "ptm"})
     void caseWillIgnoreWhileConvertingFromNameString(String val) {
-        assertNotEquals(KeywordCategory.UNKNOWN, KeywordCategory.fromValue(val));
+        assertNotEquals(KeywordCategory.UNKNOWN, KeywordCategory.typeOf(val));
     }
 
     @Test
     void nullNameWillConsiderUnknown() {
-        assertEquals(KeywordCategory.UNKNOWN, KeywordCategory.fromValue(null));
+        assertEquals(KeywordCategory.UNKNOWN, KeywordCategory.typeOf(null));
     }
 }

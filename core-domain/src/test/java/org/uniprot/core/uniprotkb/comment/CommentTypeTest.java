@@ -51,6 +51,6 @@ class CommentTypeTest {
     void toXmlDisplayName_displayName_areNotSame() {
         assertNotSame(
                 CommentType.PHARMACEUTICAL.toXmlDisplayName(),
-                CommentType.PHARMACEUTICAL.toDisplayName());
+                CommentType.PHARMACEUTICAL.getDisplayName());
     }
 }

@@ -33,6 +33,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     private ProteomeCompletenessReport proteomeCompletenessReport;
 
     private int geneCount;
+    private int proteinCount;
     List<TaxonomyLineage> taxonLineage;
     private List<CanonicalProtein> canonicalProteins;
     private String sourceDb;
@@ -86,6 +87,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
         this.annotationScore = annotationScore;
         this.superkingdom = superkingdom;
         this.geneCount = geneCount;
+        this.proteinCount = components.stream().mapToInt(Component::getProteinCount).sum();
         this.taxonLineage = Utils.unmodifiableList(taxonLineage);
         this.canonicalProteins = Utils.unmodifiableList(canonicalProteins);
         this.sourceDb = sourceDb;
@@ -169,7 +171,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
 
     @Override
     public int getProteinCount() {
-        return components.stream().mapToInt(Component::getProteinCount).sum();
+        return proteinCount;
     }
 
     @Override

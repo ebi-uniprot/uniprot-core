@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Collections;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ import org.uniprot.core.literature.impl.LiteratureStatisticsBuilder;
  * @author lgonzales
  * @since 2019-07-08
  */
-class LiteratureEntryMapTest {
+class LiteratureEntryValueMapperTest {
 
     @Test
     void checkSimpleEntryAttributeValues() {
@@ -30,9 +31,10 @@ class LiteratureEntryMapTest {
                 new LiteratureEntryBuilder()
                         .statistics(createCompleteLiteratureStatistics())
                         .build();
-        Map<String, String> mappedEntries = new LiteratureEntryMap(entry).attributeValues();
+        Map<String, String> mappedEntries =
+                new LiteratureEntryValueMapper().mapEntity(entry, Collections.emptyList());
         assertThat(mappedEntries, notNullValue());
-        assertEquals(11, mappedEntries.size());
+        assertEquals(14, mappedEntries.size());
         assertEquals("mapped:30; reviewed:10; annotated:20", mappedEntries.get("statistics"));
         mappedEntries.remove("statistics");
 
@@ -43,9 +45,10 @@ class LiteratureEntryMapTest {
     void checkCompleteEntryAttributeValues() {
         LiteratureEntry entry = createCompleteLiteratureEntry();
 
-        Map<String, String> mappedEntries = new LiteratureEntryMap(entry).attributeValues();
+        Map<String, String> mappedEntries =
+                new LiteratureEntryValueMapper().mapEntity(entry, Collections.emptyList());
 
-        assertEquals(11, mappedEntries.size());
+        assertEquals(14, mappedEntries.size());
         assertEquals("100", mappedEntries.get("id"));
         assertEquals("doi Id", mappedEntries.get("doi"));
         assertEquals("title", mappedEntries.get("title"));
@@ -58,6 +61,11 @@ class LiteratureEntryMapTest {
         assertEquals("21-06-2019", mappedEntries.get("publication"));
         assertEquals("authoring group", mappedEntries.get("authoring_group"));
         assertEquals("literature Abstract", mappedEntries.get("lit_abstract"));
+
+        assertEquals("first Page", mappedEntries.get("first_page"));
+        assertEquals("last Page", mappedEntries.get("last_page"));
+        assertEquals("volume", mappedEntries.get("volume"));
+
         assertEquals("mapped:30; reviewed:10; annotated:20", mappedEntries.get("statistics"));
     }
 

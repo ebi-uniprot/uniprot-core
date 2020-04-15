@@ -38,6 +38,6 @@ class GeneEncodingTypeTest {
     void getName_displayName_areSame() {
         assertSame(
                 GeneEncodingType.NON_PHOTOSYNTHETIC_PLASTID.getName(),
-                GeneEncodingType.NON_PHOTOSYNTHETIC_PLASTID.toDisplayName());
+                GeneEncodingType.NON_PHOTOSYNTHETIC_PLASTID.getDisplayName());
     }
 }

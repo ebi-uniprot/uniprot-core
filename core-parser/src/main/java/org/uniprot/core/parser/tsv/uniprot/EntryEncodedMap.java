@@ -3,13 +3,14 @@ package org.uniprot.core.parser.tsv.uniprot;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.GeneLocation;
 
 public class EntryEncodedMap implements NamedValueMap {
-    public static final List<String> FIELDS = Arrays.asList(new String[] {"organelle"});
+    static final List<String> FIELDS = Arrays.asList(new String[] {"organelle"});
     private final List<GeneLocation> geneLocations;
 
-    public EntryEncodedMap(List<GeneLocation> geneLocations) {
+    EntryEncodedMap(List<GeneLocation> geneLocations) {
         if (geneLocations == null) {
             this.geneLocations = Collections.emptyList();
         } else {

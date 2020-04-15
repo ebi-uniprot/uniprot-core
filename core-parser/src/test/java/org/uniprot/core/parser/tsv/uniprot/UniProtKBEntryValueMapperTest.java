@@ -9,6 +9,7 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -17,7 +18,7 @@ import org.uniprot.core.flatfile.parser.impl.DefaultUniProtParser;
 import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 
-class EntryMapTest {
+class UniProtKBEntryValueMapperTest {
     private static UniProtKBEntry entryQ15758;
     private static UniProtKBEntry entryP03431;
     private static UniProtKBEntry entryQ84MC7;
@@ -25,24 +26,25 @@ class EntryMapTest {
 
     @BeforeAll
     static void setup() throws Exception {
-        URL url = EntryMapTest.class.getResource("/uniprot/keywlist.txt");
+        URL url = UniProtKBEntryValueMapperTest.class.getResource("/uniprot/keywlist.txt");
         UniProtParser parser =
                 new DefaultUniProtParser(
                         new SupportingDataMapImpl(url.getPath(), "", "", ""), true);
 
-        InputStream is = EntryMapTest.class.getResourceAsStream("/uniprot/Q15758.dat");
+        InputStream is =
+                UniProtKBEntryValueMapperTest.class.getResourceAsStream("/uniprot/Q15758.dat");
         entryQ15758 = parser.parse(inputStreamToString(is));
         is.close();
 
-        is = EntryMapTest.class.getResourceAsStream("/uniprot/P03431.dat");
+        is = UniProtKBEntryValueMapperTest.class.getResourceAsStream("/uniprot/P03431.dat");
         entryP03431 = parser.parse(inputStreamToString(is));
         is.close();
 
-        is = EntryMapTest.class.getResourceAsStream("/uniprot/Q84MC7.dat");
+        is = UniProtKBEntryValueMapperTest.class.getResourceAsStream("/uniprot/Q84MC7.dat");
         entryQ84MC7 = parser.parse(inputStreamToString(is));
         is.close();
 
-        is = EntryMapTest.class.getResourceAsStream("/uniprot/Q70KY3.dat");
+        is = UniProtKBEntryValueMapperTest.class.getResourceAsStream("/uniprot/Q70KY3.dat");
         entryQ70KY3 = parser.parse(inputStreamToString(is));
         is.close();
     }
@@ -66,33 +68,30 @@ class EntryMapTest {
     @Test
     void testIdAccession() {
         List<String> fields = Arrays.asList("accession", "id");
-        EntryMap dl = new EntryMap(entryQ15758, fields);
-        List<String> result = dl.getData();
-        assertEquals(2, result.size());
-        verify("Q15758", 0, result);
-        verify("AAAT_HUMAN", 1, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("Q15758", "accession", result);
+        verify("AAAT_HUMAN", "id", result);
     }
 
     @Test
     void testInfo() {
         List<String> fields = Arrays.asList("reviewed", "version", "protein_existence");
-        EntryMap dl = new EntryMap(entryQ15758, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("reviewed", 0, result);
-        verify("195", 1, result);
-        verify("Evidence at protein level", 2, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("reviewed", "reviewed", result);
+        verify("195", "version", result);
+        verify("Evidence at protein level", "protein_existence", result);
     }
 
     @Test
     void testSequence() {
         List<String> fields = Arrays.asList("length", "mass", "sequence_version", "sequence");
-        EntryMap dl = new EntryMap(entryQ15758, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("541", 0, result);
-        verify("56598", 1, result);
-        verify("2", 2, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("541", "length", result);
+        verify("56598", "mass", result);
+        verify("2", "sequence_version", result);
         String seq =
                 "MVADPPRDSKGLAAAEPTANGGLALASIEDQGAAAGGYCGSRDQVRRCLRANLLVLLTVV"
                         + "AVVAGVALGLGVSGAGGALALGPERLSAFVFPGELLLRLLRMIILPLVVCSLIGGAASLD"
@@ -104,88 +103,82 @@ class EntryMapTest {
                         + "ATASSVGAAGIPAGGVLTLAIILEAVNLPVDHISLILAVDWLVDRSCTVLNVEGDALGAG"
                         + "LLQNYVDRTESRSTEPELIQVKSELPLDPLPVPTEEGNPLLKHYRGPAGDATVASEKESV"
                         + "M";
-        verify(seq, 3, result);
+        verify(seq, "sequence", result);
     }
 
     @Test
     void testDefault() {
         List<String> fields =
                 Arrays.asList("accession", "id", "protein_name", "gene_names", "organism");
-        EntryMap dl = new EntryMap(entryQ15758, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("Q15758", 0, result);
-        verify("AAAT_HUMAN", 1, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("Q15758", "accession", result);
+        verify("AAAT_HUMAN", "id", result);
         String proteinName =
                 "Neutral amino acid transporter B(0), ATB(0) (Baboon M7 virus receptor)"
                         + " (RD114/simian type D retrovirus receptor)"
                         + " (Sodium-dependent neutral amino acid transporter type 2) (Solute carrier family 1 member 5)";
-        verify(proteinName, 2, result);
-        verify("SLC1A5 ASCT2 M7V1 RDR RDRC", 3, result);
-        verify("Homo sapiens (Human)", 4, result);
+        verify(proteinName, "protein_name", result);
+        verify("SLC1A5 ASCT2 M7V1 RDR RDRC", "gene_names", result);
+        verify("Homo sapiens (Human)", "organism", result);
     }
 
     @Test
     void testECnumber() {
         List<String> fields = Arrays.asList("accession", "protein_name", "ec");
-        EntryMap dl = new EntryMap(entryP03431, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
+
         String proteinName =
                 "RNA-directed RNA polymerase catalytic subunit, EC 2.7.7.48 (Polymerase basic protein 1, PB1)"
                         + " (RNA-directed RNA polymerase subunit P1)";
-        verify("P03431", 0, result);
-        verify(proteinName, 1, result);
-        verify("2.7.7.48", 2, result);
+        verify("P03431", "accession", result);
+        verify(proteinName, "protein_name", result);
+        verify("2.7.7.48", "ec", result);
     }
 
     @Test
     void testGene() {
         List<String> fields =
                 Arrays.asList("gene_names", "gene_primary", "gene_synonym", "gene_oln", "gene_orf");
-        EntryMap dl = new EntryMap(entryQ15758, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("SLC1A5 ASCT2 M7V1 RDR RDRC", 0, result);
-        verify("SLC1A5", 1, result);
-        verify("ASCT2 M7V1 RDR RDRC", 2, result);
-        verify("", 3, result);
-        verify("", 4, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("SLC1A5 ASCT2 M7V1 RDR RDRC", "gene_names", result);
+        verify("SLC1A5", "gene_primary", result);
+        verify("ASCT2 M7V1 RDR RDRC", "gene_synonym", result);
+        verify("", "gene_oln", result);
+        verify("", "gene_orf", result);
     }
 
     @Test
     void testOrganism() {
         List<String> fields = Arrays.asList("organism", "organism_id", "tax_id");
-        EntryMap dl = new EntryMap(entryQ15758, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("Homo sapiens (Human)", 0, result);
-        verify("9606", 1, result);
-        verify("9606", 2, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("Homo sapiens (Human)", "organism", result);
+        verify("9606", "organism_id", result);
+        verify("9606", "tax_id", result);
     }
 
     @Test
     void testOrganismHost() {
         List<String> fields =
                 Arrays.asList("accession", "organism", "organism_host", "lineage", "tl:all");
-        EntryMap dl = new EntryMap(entryP03431, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("P03431", 0, result);
-        verify("Influenza A virus (strain A/Puerto Rico/8/1934 H1N1)", 1, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
+
+        verify("P03431", "accession", result);
+        verify("Influenza A virus (strain A/Puerto Rico/8/1934 H1N1)", "organism", result);
         verify(
                 "Aves (birds) [TaxID: 8782]; Homo sapiens (Human) [TaxID: 9606]; Sus scrofa (Pig) [TaxID: 9823]",
-                2,
+                "organism_host",
                 result);
     }
 
     @Test
     void testAlterProduct() {
         List<String> fields = Arrays.asList("accession", "cc_alternative_products");
-        EntryMap dl = new EntryMap(entryQ15758, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("Q15758", 0, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("Q15758", "accession", result);
 
         String altProd =
                 "ALTERNATIVE PRODUCTS:  Event=Alternative splicing, Alternative initiation; "
@@ -193,7 +186,7 @@ class EntryMapTest {
                         + "Isoforms start at multiple alternative CUG and GUG codons. {ECO:0000269|PubMed:11350958}; Name=1; "
                         + "IsoId=Q15758-1; Sequence=Displayed; Name=2; IsoId=Q15758-2; Sequence=VSP_046354; Name=3; "
                         + "IsoId=Q15758-3; Sequence=VSP_046851;";
-        verify(altProd, 1, result);
+        verify(altProd, "cc_alternative_products", result);
     }
 
     @Test
@@ -201,10 +194,9 @@ class EntryMapTest {
         List<String> fields =
                 Arrays.asList(
                         "accession", "cc_function", "cc_domain", "cc_subunit", "cc_interaction");
-        EntryMap dl = new EntryMap(entryQ15758, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("Q15758", 0, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("Q15758", "accession", result);
         String cfunction =
                 "FUNCTION: Sodium-dependent amino acids transporter that has a broad substrate specificity, "
                         + "with a preference for zwitterionic amino acids. It accepts as substrates all neutral amino acids, "
@@ -219,17 +211,17 @@ class EntryMapTest {
                         + "Acts as a cell surface receptor for Baboon M7 endogenous virus. {ECO:0000269|PubMed:10196349}.; "
                         + "FUNCTION: (Microbial infection) Acts as a cell surface receptor for type D simian retroviruses. "
                         + "{ECO:0000269|PubMed:10196349}.";
-        String cfomain = "";
+
         String csubunit =
                 "SUBUNIT: Homotrimer (Probable) (PubMed:29872227). Interacts with ERVH48-1/suppressyn; "
                         + "may negatively regulate syncytialization (PubMed:23492904). "
                         + "{ECO:0000269|PubMed:23492904, ECO:0000269|PubMed:29872227, ECO:0000305|PubMed:28424515}.";
 
         String cinteraction = "Q99942";
-        verify(cfunction, 1, result);
-        verify(cfomain, 2, result);
-        verify(csubunit, 3, result);
-        verify(cinteraction, 4, result);
+        verify(cfunction, "cc_function", result);
+        verify(null, "cc_domain", result);
+        verify(csubunit, "cc_subunit", result);
+        verify(cinteraction, "cc_interaction", result);
     }
 
     @Test
@@ -241,10 +233,9 @@ class EntryMapTest {
                         "cc_subcellular_location",
                         "cc_ptm",
                         "cc_similarity");
-        EntryMap dl = new EntryMap(entryP03431, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("P03431", 0, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
+
+        verify("P03431", "accession", result);
         String interaction = "Q14318; P03466; P03433; P03428; Q99959";
         String subcell =
                 "SUBCELLULAR LOCATION: Host nucleus {ECO:0000255|HAMAP-Rule:MF_04065, ECO:0000269|PubMed:19906916}. "
@@ -253,39 +244,37 @@ class EntryMapTest {
                 "PTM: Phosphorylated by host PRKCA. {ECO:0000255|HAMAP-Rule:MF_04065, ECO:0000269|PubMed:19264651}.";
         String similarity =
                 "SIMILARITY: Belongs to the influenza viruses polymerase PB1 family. {ECO:0000255|HAMAP-Rule:MF_04065}.";
-        verify(interaction, 1, result);
-        verify(subcell, 2, result);
-        verify(ptm, 3, result);
-        verify(similarity, 4, result);
+        verify(interaction, "cc_interaction", result);
+        verify(subcell, "cc_subcellular_location", result);
+        verify(ptm, "cc_ptm", result);
+        verify(similarity, "cc_similarity", result);
     }
 
     @Test
     void testProteinFamily() {
         List<String> fields = Arrays.asList("accession", "protein_families", "cc_similarity");
-        EntryMap dl = new EntryMap(entryP03431, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("P03431", 0, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
+
+        verify("P03431", "accession", result);
         String proteinFamily = "Influenza viruses polymerase PB1 family";
         String similarity =
                 "SIMILARITY: Belongs to the influenza viruses polymerase PB1 family. {ECO:0000255|HAMAP-Rule:MF_04065}.";
-        verify(proteinFamily, 1, result);
-        verify(similarity, 2, result);
+        verify(proteinFamily, "protein_families", result);
+        verify(similarity, "cc_similarity", result);
     }
 
     @Test
     void testSequenceCaution() {
         List<String> fields =
                 Arrays.asList("accession", "cc_sequence_caution", "error_gmodel_pred");
-        EntryMap dl = new EntryMap(entryQ84MC7, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("Q84MC7", 0, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ84MC7, fields);
+
+        verify("Q84MC7", "accession", result);
         String seqCaution =
                 "SEQUENCE CAUTION:  Sequence=AAF97339.1; Type=Erroneous initiation; Note=Truncated N-terminus.; "
                         + "Evidence={ECO:0000305};  Sequence=AAM65514.1; Type=Erroneous initiation; Note=Truncated N-terminus.; "
                         + "Evidence={ECO:0000305};";
-        verify(seqCaution, 1, result);
+        verify(seqCaution, "cc_sequence_caution", result);
     }
 
     @Test
@@ -298,10 +287,9 @@ class EntryMapTest {
                         "ph_dependence",
                         "redox_potential",
                         "temp_dependence");
-        EntryMap dl = new EntryMap(entryQ70KY3, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("Q70KY3", 0, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ70KY3, fields);
+
+        verify("Q70KY3", "accession", result);
         String absorption =
                 "BIOPHYSICOCHEMICAL PROPERTIES:  Absorption: Abs(max)=280 nm {ECO:0000269|PubMed:12111146, "
                         + "ECO:0000269|PubMed:12118243}; Note=Exhibits a shoulder at 360 nm, "
@@ -330,11 +318,11 @@ class EntryMapTest {
         String tempDep =
                 "BIOPHYSICOCHEMICAL PROPERTIES:  Temperature dependence: Optimum temperature is 60-70 degrees "
                         + "Celsius. {ECO:0000269|PubMed:12111146, ECO:0000269|PubMed:12118243};";
-        verify(absorption, 1, result);
-        verify("", 2, result);
-        verify(phDep, 3, result);
-        verify("", 4, result);
-        verify(tempDep, 5, result);
+        verify(absorption, "absorption", result);
+        verify(null, "kinetics", result);
+        verify(phDep, "ph_dependence", result);
+        verify(null, "redox_potential", result);
+        verify(tempDep, "temp_dependence", result);
     }
 
     @Test
@@ -351,10 +339,9 @@ class EntryMapTest {
                         "ft_variant",
                         "ft_conflict",
                         "ft_domain");
-        EntryMap dl = new EntryMap(entryQ15758, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("Q15758", 0, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("Q15758", "accession", result);
 
         String chain =
                 "CHAIN 1..541 /note=\"Neutral amino acid transporter B(0)\" /id=\"PRO_0000202082\"";
@@ -406,55 +393,51 @@ class EntryMapTest {
                         + " CONFLICT 460 /note=\"D -> G (in Ref. 2; AAD09812)\" /evidence=\"ECO:0000305\";"
                         + " CONFLICT 463 /note=\"V -> A (in Ref. 2; AAD09812)\" /evidence=\"ECO:0000305\";"
                         + " CONFLICT 508 /note=\"D -> G (in Ref. 2; AAD09812)\" /evidence=\"ECO:0000305\"";
-        String domain = "";
 
-        verify(chain, 1, result);
-        verify(topo_dom, 2, result);
-        verify(transmem, 3, result);
-        verify(modRes, 4, result);
-        verify(carbohyd, 5, result);
-        verify(varSeq, 6, result);
-        verify(variant, 7, result);
-        verify(conflict, 8, result);
-        verify(domain, 9, result);
+        verify(chain, "ft_chain", result);
+        verify(topo_dom, "ft_topo_dom", result);
+        verify(transmem, "ft_transmem", result);
+        verify(modRes, "ft_mod_res", result);
+        verify(carbohyd, "ft_carbohyd", result);
+        verify(varSeq, "ft_var_seq", result);
+        verify(variant, "ft_variant", result);
+        verify(conflict, "ft_conflict", result);
+        verify(null, "ft_domain", result);
     }
 
     @Test
     void testNumberOfFeatures() {
         List<String> fields = Arrays.asList("accession", "feature");
-        EntryMap dl = new EntryMap(entryQ15758, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("Q15758", 0, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("Q15758", "accession", result);
         String numOfFeature =
                 "Alternative sequence (2); Beta strand (2); Chain (1); Glycosylation (2);"
                         + " Helix (11); Intramembrane (2); Metal binding (5);"
                         + " Modified residue (6); Natural variant (2); Sequence conflict (8);"
                         + " Topological domain (11); Transmembrane (8)";
-        verify(numOfFeature, 1, result);
+        verify(numOfFeature, "feature", result);
     }
 
     @Test
     void testReferences() {
         List<String> fields = Arrays.asList("accession", "pm_id");
-        EntryMap dl = new EntryMap(entryQ15758, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("Q15758", 0, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("Q15758", "accession", result);
         String pmids =
                 "8702519; 10051606; 10196349; 14702039; 15057824; 15489334; 11350958;"
                         + " 10708449; 17081983; 17081065; 18669648; 19413330; 19349973; 19690332;"
                         + " 20068231; 21269460; 21406692; 22814378; 23186163; 25944712; 28424515; 29872227";
-        verify(pmids, 1, result);
+        verify(pmids, "pm_id", result);
     }
 
     @Test
     void testGOTerm() {
         List<String> fields = Arrays.asList("accession", "go", "go_c", "go_f", "go_p", "go_id");
-        EntryMap dl = new EntryMap(entryQ15758, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("Q15758", 0, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("Q15758", "accession", result);
         String go =
                 "extracellular exosome [GO:0070062];"
                         + " integral component of membrane [GO:0016021];"
@@ -507,31 +490,30 @@ class EntryMapTest {
                 "GO:0001618; GO:0005886; GO:0005887; GO:0006865; GO:0006868; GO:0010585; "
                         + "GO:0015171; GO:0015175; GO:0015186; GO:0015194; GO:0015293; GO:0015804; GO:0016020; "
                         + "GO:0016021; GO:0038023; GO:0042470; GO:0046872; GO:0070062; GO:0070207; GO:1903803";
-        verify(go, 1, result);
-        verify(go_c, 2, result);
-        verify(go_f, 3, result);
-        verify(go_p, 4, result);
-        verify(go_id, 5, result);
+        verify(go, "go", result);
+        verify(go_c, "go_c", result);
+        verify(go_f, "go_f", result);
+        verify(go_p, "go_p", result);
+        verify(go_id, "go_id", result);
     }
 
     @Test
     void testXRefs1() {
         List<String> fields =
                 Arrays.asList("accession", "dr_embl", "dr_ccds", "dr_refseq", "dr_smr");
-        EntryMap dl = new EntryMap(entryQ15758, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("Q15758", 0, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("Q15758", "accession", result);
         String embl =
                 "U53347;AF102826;AF105423;GQ919058;AK292690;AK299137;AK301661;AK316546;AC008622;CH471126;BC000062;AF334818;";
         String ccds = "CCDS12692.1 [Q15758-1];CCDS46125.1 [Q15758-2];CCDS46126.1 [Q15758-3];";
         String refseq =
                 "NP_001138616.1 [Q15758-3];NP_001138617.1 [Q15758-2];NP_005619.1 [Q15758-1];";
         String smr = "Q15758;";
-        verify(embl, 1, result);
-        verify(ccds, 2, result);
-        verify(refseq, 3, result);
-        verify(smr, 4, result);
+        verify(embl, "dr_embl", result);
+        verify(ccds, "dr_ccds", result);
+        verify(refseq, "dr_refseq", result);
+        verify(smr, "dr_smr", result);
     }
 
     @Test
@@ -539,20 +521,19 @@ class EntryMapTest {
         List<String> fields =
                 Arrays.asList(
                         "accession", "dr_smr", "dr_biogrid", "dr_intact", "dr_mint", "dr_string");
-        EntryMap dl = new EntryMap(entryQ15758, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("Q15758", 0, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("Q15758", "accession", result);
         String smr = "Q15758;";
         String biogrid = "112401;";
         String intact = "Q15758;";
         String mint = "Q15758;";
         String string = "9606.ENSP00000444408;";
-        verify(smr, 1, result);
-        verify(biogrid, 2, result);
-        verify(intact, 3, result);
-        verify(mint, 4, result);
-        verify(string, 5, result);
+        verify(smr, "dr_smr", result);
+        verify(biogrid, "dr_biogrid", result);
+        verify(intact, "dr_intact", result);
+        verify(mint, "dr_mint", result);
+        verify(string, "dr_string", result);
     }
 
     @Test
@@ -565,20 +546,19 @@ class EntryMapTest {
                         "dr_tcdb",
                         "dr_dmdm",
                         "dr_maxqb");
-        EntryMap dl = new EntryMap(entryQ15758, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("Q15758", 0, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("Q15758", "accession", result);
         String drugbank = "DB00174;DB13146;DB00130;";
         String guidetopharmacology = "874;";
         String tcdb = "2.A.23.3.3;";
         String dmdm = "21542389;";
         String maxqb = "Q15758;";
-        verify(drugbank, 1, result);
-        verify(guidetopharmacology, 2, result);
-        verify(tcdb, 3, result);
-        verify(dmdm, 4, result);
-        verify(maxqb, 5, result);
+        verify(drugbank, "dr_drugbank", result);
+        verify(guidetopharmacology, "dr_guidetopharmacology", result);
+        verify(tcdb, "dr_tcdb", result);
+        verify(dmdm, "dr_dmdm", result);
+        verify(maxqb, "dr_maxqb", result);
     }
 
     @Test
@@ -591,20 +571,19 @@ class EntryMapTest {
                         "dr_tcdb",
                         "dr_dmdm",
                         "dr_maxqb");
-        EntryMap dl = new EntryMap(entryQ15758, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("Q15758", 0, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("Q15758", "accession", result);
         String drugbank = "DB00174;DB13146;DB00130;";
         String guidetopharmacology = "874;";
         String tcdb = "2.A.23.3.3;";
         String dmdm = "21542389;";
         String maxqb = "Q15758;";
-        verify(drugbank, 1, result);
-        verify(guidetopharmacology, 2, result);
-        verify(tcdb, 3, result);
-        verify(dmdm, 4, result);
-        verify(maxqb, 5, result);
+        verify(drugbank, "dr_drugbank", result);
+        verify(guidetopharmacology, "dr_guidetopharmacology", result);
+        verify(tcdb, "dr_tcdb", result);
+        verify(dmdm, "dr_dmdm", result);
+        verify(maxqb, "dr_maxqb", result);
     }
 
     @Test
@@ -617,54 +596,50 @@ class EntryMapTest {
                         "dr_interpro",
                         "dr_prosite",
                         "dr_pfam");
-        EntryMap dl = new EntryMap(entryQ15758, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("Q15758", 0, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("Q15758", "accession", result);
         String ensembl =
                 "ENST00000412532 [Q15758-3];ENST00000434726 [Q15758-2];ENST00000542575 [Q15758-1];";
         String reactome = "R-HSA-352230;";
         String interpro = "IPR001991;IPR018107;IPR036458;";
         String prosite = "PS00713;PS00714;";
         String pfam = "PF00375;";
-        verify(ensembl, 1, result);
-        verify(reactome, 2, result);
-        verify(interpro, 3, result);
-        verify(prosite, 4, result);
-        verify(pfam, 5, result);
+        verify(ensembl, "dr_ensembl", result);
+        verify(reactome, "dr_reactome", result);
+        verify(interpro, "dr_interpro", result);
+        verify(prosite, "dr_prosite", result);
+        verify(pfam, "dr_pfam", result);
     }
 
     @Test
     void testProteome() {
         List<String> fields = Arrays.asList("accession", "dr_proteomes");
-        EntryMap dl = new EntryMap(entryP03431, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("P03431", 0, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
+
+        verify("P03431", "accession", result);
         String proteome = "UP000009255: Genome; UP000116373: Genome; UP000170967: Genome";
-        verify(proteome, 1, result);
+        verify(proteome, "dr_proteomes", result);
     }
 
     @Test
     void testPdb() {
         List<String> fields = Arrays.asList("accession", "dr_pdb", "3d");
-        EntryMap dl = new EntryMap(entryP03431, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("P03431", 0, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
+
+        verify("P03431", "accession", result);
         String pdb = "2ZNL;2ZTT;3A1G;";
         String d3d = "X-ray crystallography (3)";
-        verify(pdb, 1, result);
-        verify(d3d, 2, result);
+        verify(pdb, "dr_pdb", result);
+        verify(d3d, "3d", result);
     }
 
     @Test
     void testkeyword() {
         List<String> fields = Arrays.asList("accession", "keyword", "keywordid");
-        EntryMap dl = new EntryMap(entryP03431, fields);
-        List<String> result = dl.getData();
-        assertEquals(fields.size(), result.size());
-        verify("P03431", 0, result);
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
+
+        verify("P03431", "accession", result);
         String keyword =
                 "3D-structure;Eukaryotic host gene expression shutoff by virus;"
                         + "Eukaryotic host transcription shutoff by virus;Host cytoplasm;"
@@ -673,11 +648,36 @@ class EntryMapTest {
                         + "Phosphoprotein;Reference proteome;RNA-directed RNA polymerase;Transferase;Viral RNA replication;Viral transcription";
         String keywordid =
                 "KW-0002; KW-1262; KW-1191; KW-1035; KW-1190; KW-1048; KW-0945; KW-1104; KW-0547; KW-0548; KW-0597; KW-1185; KW-0696; KW-0808; KW-0693; KW-1195";
-        verify(keyword, 1, result);
-        verify(keywordid, 2, result);
+        verify(keyword, "keyword", result);
+        verify(keywordid, "keywordid", result);
     }
 
-    private void verify(String expected, int pos, List<String> result) {
-        assertEquals(expected, result.get(pos));
+    @Test
+    void testExtraAttributeCommentCount() {
+        List<String> fields = Arrays.asList("comment_count");
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        String expectedCommentCount =
+                "ALTERNATIVE PRODUCTS (1); FUNCTION (4); INTERACTION (1); "
+                        + "SIMILARITY (1); SUBCELLULAR LOCATION (1); SUBUNIT (1); TISSUE SPECIFICITY (1)";
+
+        verify(expectedCommentCount, "comment_count", result);
+    }
+
+    @Test
+    void testExtraAttributeFeatureCount() {
+        List<String> fields = Arrays.asList("feature_count");
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        String expectedCommentCount =
+                "Post-translationally modified residue (6); Sequence variation (2); "
+                        + "chain (1); glycosylation site (2); helix (11); intramembrane region (2); metal ion-binding site (5); "
+                        + "sequence conflict (8); splice variant (2); strand (2); topological domain (11); transmembrane region (8)";
+
+        verify(expectedCommentCount, "feature_count", result);
+    }
+
+    private void verify(String expected, String fieldName, Map<String, String> result) {
+        assertEquals(expected, result.get(fieldName));
     }
 }

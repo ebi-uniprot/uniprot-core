@@ -47,20 +47,20 @@ class ProteomeComponentMapTest {
         ProteomeComponentMap componentMap = new ProteomeComponentMap(components);
         Map<String, String> result = componentMap.attributeValues();
         assertEquals(1, result.size());
-        assertEquals("someName1; someName2", result.get("proteome_components"));
+        assertEquals("someName1; someName2", result.get("components"));
     }
 
     @Test
     void testContains() {
         List<String> fields = Arrays.asList("upid", "organism");
         assertFalse(ProteomeComponentMap.contains(fields));
-        fields = Arrays.asList("upid", "proteome_components");
+        fields = Arrays.asList("upid", "components");
         assertTrue(ProteomeComponentMap.contains(fields));
     }
 
     @Test
     void testFields() {
-        List<String> fields = Arrays.asList("proteome_components");
+        List<String> fields = Arrays.asList("components");
         assertEquals(ProteomeComponentMap.FIELDS, fields);
     }
 }

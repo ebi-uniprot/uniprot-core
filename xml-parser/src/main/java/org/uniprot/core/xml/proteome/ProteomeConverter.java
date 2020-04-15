@@ -87,7 +87,7 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
                 .geneCount(canonicalProteins.size())
                 .redundantProteomesSet(redundantProteomes)
                 .proteomeCrossReferencesSet(xrefs)
-                .superkingdom(Superkingdom.fromValue(xmlObj.getSuperregnum().value()))
+                .superkingdom(Superkingdom.typeOf(xmlObj.getSuperregnum().value()))
                 .citationsSet(citations);
 
         if (xmlObj.getAnnotationScore() != null) {

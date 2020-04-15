@@ -1,47 +1,44 @@
 package org.uniprot.core.parser.tsv.subcell;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
-import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
+import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.util.Utils;
 
 /**
  * @author lgonzales
  * @since 2019-07-22
  */
-public class SubcellularLocationEntryMap implements NamedValueMap {
-
-    private final SubcellularLocationEntry entry;
-
-    public SubcellularLocationEntryMap(SubcellularLocationEntry entry) {
-        this.entry = entry;
-    }
+public class SubcellularLocationEntryValueMapper
+        implements EntityValueMapper<SubcellularLocationEntry> {
 
     @Override
-    public Map<String, String> attributeValues() {
+    public Map<String, String> mapEntity(SubcellularLocationEntry entry, List<String> fieldNames) {
         Map<String, String> map = new HashMap<>();
         map.put("name", Utils.emptyOrString(entry.getName()));
         map.put("id", Utils.emptyOrString(entry.getId()));
         map.put("definition", Utils.emptyOrString(entry.getDefinition()));
-        map.put("category", getCategory());
-        map.put("keyword", getKeyword());
+        map.put("category", getCategory(entry));
+        map.put("keyword", getKeyword(entry));
         map.put("synonyms", String.join(", ", entry.getSynonyms()));
         map.put("content", Utils.emptyOrString(entry.getContent()));
-        map.put("gene_ontologies", getGeneOntologies());
+        map.put("gene_ontologies", getGeneOntologies(entry));
         map.put("note", Utils.emptyOrString(entry.getNote()));
         map.put("references", String.join(", ", entry.getReferences()));
         map.put("links", String.join(", ", entry.getLinks()));
-        map.put("is_a", getIsA());
-        map.put("part_of", getPartOf());
-        map.put("statistics", getStatistics());
+        map.put("is_a", getIsA(entry));
+        map.put("part_of", getPartOf(entry));
+        map.put("statistics", getStatistics(entry));
 
         return map;
     }
 
-    private String getStatistics() {
+    private String getStatistics(SubcellularLocationEntry entry) {
         StringBuilder result = new StringBuilder();
         if (Utils.notNull(entry.getStatistics())) {
             result.append("reviewed:")
@@ -53,7 +50,7 @@ public class SubcellularLocationEntryMap implements NamedValueMap {
         return result.toString();
     }
 
-    private String getPartOf() {
+    private String getPartOf(SubcellularLocationEntry entry) {
         if (Utils.notNullNotEmpty(entry.getPartOf())) {
             return entry.getPartOf().stream()
                     .map(
@@ -69,7 +66,7 @@ public class SubcellularLocationEntryMap implements NamedValueMap {
         }
     }
 
-    private String getIsA() {
+    private String getIsA(SubcellularLocationEntry entry) {
         if (Utils.notNullNotEmpty(entry.getIsA())) {
             return entry.getIsA().stream()
                     .map(
@@ -85,7 +82,7 @@ public class SubcellularLocationEntryMap implements NamedValueMap {
         }
     }
 
-    private String getGeneOntologies() {
+    private String getGeneOntologies(SubcellularLocationEntry entry) {
         if (Utils.notNullNotEmpty(entry.getGeneOntologies())) {
             return entry.getGeneOntologies().stream()
                     .map(mapped -> mapped.getId() + ":" + mapped.getName())
@@ -95,13 +92,13 @@ public class SubcellularLocationEntryMap implements NamedValueMap {
         }
     }
 
-    private String getKeyword() {
-        return entry.getKeyword().map(val -> val.getId()).orElse("");
+    private String getKeyword(SubcellularLocationEntry entry) {
+        return entry.getKeyword().map(KeywordId::getId).orElse("");
     }
 
-    private String getCategory() {
+    private String getCategory(SubcellularLocationEntry entry) {
         if (entry.getCategory() != null) {
-            return Utils.emptyOrString(entry.getCategory().toDisplayName());
+            return Utils.emptyOrString(entry.getCategory().getDisplayName());
         } else {
             return "";
         }

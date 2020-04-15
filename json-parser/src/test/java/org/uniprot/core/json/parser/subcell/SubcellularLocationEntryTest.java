@@ -14,7 +14,7 @@ import org.uniprot.core.json.parser.ValidateJson;
  * @author lgonzales
  * @since 2019-07-11
  */
-class SubcellularLocationEntryTest {
+public class SubcellularLocationEntryTest {
 
     @Test
     void testSimpleSubcellularLocationEntry() {
@@ -34,7 +34,7 @@ class SubcellularLocationEntryTest {
                 subcellularLocationEntry);
     }
 
-    private SubcellularLocationEntry getCompleteSubcellularLocationEntry(boolean hasChild) {
+    public static SubcellularLocationEntry getCompleteSubcellularLocationEntry(boolean hasChild) {
         Statistics statistics =
                 new StatisticsBuilder().reviewedProteinCount(10).unreviewedProteinCount(20).build();
         SubcellularLocationEntryBuilder entry = new SubcellularLocationEntryBuilder();

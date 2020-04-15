@@ -1,10 +1,12 @@
 package org.uniprot.core.uniprotkb.comment;
 
+import static org.uniprot.core.util.Utils.nullThrowIllegalArgument;
+
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-public enum MichaelisConstantUnit implements EnumDisplay<MichaelisConstantUnit> {
+public enum MichaelisConstantUnit implements EnumDisplay {
     MOL("M"),
     MILLI_MOL("mM"),
     MICRO_MOL("uM"),
@@ -18,25 +20,17 @@ public enum MichaelisConstantUnit implements EnumDisplay<MichaelisConstantUnit> 
         this.name = name;
     }
 
-    public static @Nonnull MichaelisConstantUnit convert(@Nonnull String unit) {
-        for (MichaelisConstantUnit value : MichaelisConstantUnit.values()) {
-            if (value.name.equals(unit)) {
-                return value;
-            }
-        }
-        throw new RuntimeException("unknown Michaelis Constant Unit: " + unit);
-    }
-
     public @Nonnull String getName() {
         return name;
     }
 
-    @Override
-    public @Nonnull String toDisplayName() {
-        return getName();
-    }
+    public static @Nonnull MichaelisConstantUnit typeOf(@Nonnull String name) {
+        nullThrowIllegalArgument(name);
 
-    public @Nonnull String toDisplayNameString() {
-        return name;
+        for (MichaelisConstantUnit constant : MichaelisConstantUnit.values()) {
+            if (constant.getCompareOn().equals(name.trim())) return constant;
+        }
+        throw new IllegalArgumentException(
+                "The MichaelisConstantUnit with " + name + " doesn't exist");
     }
 }

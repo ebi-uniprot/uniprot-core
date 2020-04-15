@@ -26,7 +26,7 @@ public class CCWebResourceCommentLineBuilder extends CCLineBuilderAbstr<WebResou
         StringBuilder sb = new StringBuilder();
         if (includeFlatFileMarkings) addFlatFileMarkingsIfRequired(includeFlatFileMarkings, sb);
         if (includeCommentType) {
-            sb.append(comment.getCommentType().toDisplayName());
+            sb.append(comment.getCommentType().getDisplayName());
             sb.append(": ");
         }
         addMolecule(comment, sb, true);

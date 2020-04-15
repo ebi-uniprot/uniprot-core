@@ -49,12 +49,26 @@ public class FreeTextCommentTest {
     }
 
     public static FreeTextComment getFreeTextComment() {
+        return getFreeTextComment(CommentType.DISRUPTION_PHENOTYPE);
+    }
+
+    public static FreeTextComment getFreeTextComment(CommentType commentType) {
         return new FreeTextCommentBuilder()
-                .commentType(CommentType.DISRUPTION_PHENOTYPE)
+                .commentType(commentType)
                 .molecule("Isoform 4")
                 .textsSet(
                         CreateUtils.createEvidencedValueList(
                                 "value", "ECO:0000256|PIRNR:PIRNR001360"))
+                .build();
+    }
+
+    public static FreeTextComment getFreeTextComment2() {
+        return new FreeTextCommentBuilder()
+                .commentType(CommentType.DISRUPTION_PHENOTYPE)
+                .molecule("Isoform 4 dfs")
+                .textsSet(
+                        CreateUtils.createEvidencedValueList(
+                                "value", "ECO:0000256|PIRNR:PIRNR001365"))
                 .build();
     }
 }

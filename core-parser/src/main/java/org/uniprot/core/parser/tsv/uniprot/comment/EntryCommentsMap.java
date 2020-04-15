@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
+import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.FreeTextComment;
@@ -21,7 +21,7 @@ public class EntryCommentsMap implements NamedValueMap {
                     "cc_sequence_caution",
                     "cc_catalytic_activity",
                     "cc_cofactor",
-                    "cc_enzyme_regulation",
+                    "cc_activity_regulation",
                     "cc_function",
                     "cc_pathway",
                     "cc_miscellaneous",
@@ -140,8 +140,7 @@ public class EntryCommentsMap implements NamedValueMap {
                         .map(val -> convertToProteinFamily(val.getValue()))
                         .filter(val -> val != null && !val.isEmpty())
                         .collect(Collectors.joining("; "));
-        String field = "protein_families";
-        map.put(field, value);
+        map.put("protein_families", value);
     }
 
     private String convertToProteinFamily(String text) {

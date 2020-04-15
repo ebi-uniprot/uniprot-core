@@ -13,7 +13,6 @@ public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment
             EnumSet.of(
                     CommentType.ALLERGEN,
                     CommentType.BIOTECHNOLOGY,
-                    CommentType.CATALYTIC_ACTIVITY,
                     CommentType.CAUTION,
                     CommentType.DEVELOPMENTAL_STAGE,
                     CommentType.DISRUPTION_PHENOTYPE,

@@ -3,7 +3,10 @@ package org.uniprot.core.uniprotkb.impl;
 import static org.uniprot.core.util.Utils.*;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
 
@@ -20,6 +23,8 @@ import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 
 public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
+    public static final String COUNT_BY_COMMENT_TYPE_ATTRIB = "countByCommentType";
+    public static final String COUNT_BY_FEATURE_TYPE_ATTRIB = "countByFeatureType";
 
     private UniProtKBAccession primaryAccession;
     private UniProtKBEntryType entryType;
@@ -41,7 +46,8 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
     private Sequence sequence = null;
     private InternalSection internalSection = null;
     private EntryInactiveReason inactiveReason;
-    private List<TaxonomyLineage> lineages;
+    private List<TaxonomyLineage> lineages = new ArrayList<>();
+    private Map<String, Object> extraAttributes = new LinkedHashMap<>();
 
     public UniProtKBEntryBuilder(
             String primaryAccession, String uniProtId, UniProtKBEntryType type) {
@@ -254,8 +260,16 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
         return this;
     }
 
+    public @Nonnull UniProtKBEntryBuilder extraAttributesAdd(String name, Object value) {
+        putOrIgnoreNull(name, value, this.extraAttributes);
+        return this;
+    }
+
     @Override
     public @Nonnull UniProtKBEntry build() {
+
+        populateExtraAttributes();
+
         return new UniProtKBEntryImpl(
                 entryType,
                 primaryAccession,
@@ -277,7 +291,8 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
                 sequence,
                 internalSection,
                 lineages,
-                inactiveReason);
+                inactiveReason,
+                extraAttributes);
     }
 
     public static @Nonnull UniProtKBEntryBuilder from(@Nonnull UniProtKBEntry instance) {
@@ -305,5 +320,47 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
                 .lineagesSet(instance.getLineages());
         builder.inactiveReason = instance.getInactiveReason();
         return builder;
+    }
+
+    private void populateExtraAttributes() {
+        // count by comment type
+        Map<String, Integer> countByCommentType = createCountByCommentTypeMap(comments);
+        putOrIgnoreNull(COUNT_BY_COMMENT_TYPE_ATTRIB, countByCommentType, this.extraAttributes);
+
+        // count by feature type
+        Map<String, Integer> countByFeatureType = createCountByFeatureTypeMap(features);
+        putOrIgnoreNull(COUNT_BY_FEATURE_TYPE_ATTRIB, countByFeatureType, this.extraAttributes);
+    }
+
+    private Map<String, Integer> createCountByCommentTypeMap(List<Comment> comments) {
+        Map<String, Integer> countByCommentType = null;
+        if (notNullNotEmpty(comments)) {
+            countByCommentType =
+                    comments.stream()
+                            .filter(comment -> comment.getCommentType() != null)
+                            .collect(
+                                    Collectors.groupingBy(
+                                            comment -> comment.getCommentType().getDisplayName(),
+                                            LinkedHashMap::new,
+                                            Collectors.summingInt(comment -> 1)));
+        }
+
+        return countByCommentType;
+    }
+
+    private Map<String, Integer> createCountByFeatureTypeMap(List<Feature> features) {
+        Map<String, Integer> countByFeatureType = null;
+        if (notNullNotEmpty(features)) {
+            countByFeatureType =
+                    features.stream()
+                            .filter(feature -> feature.getType() != null)
+                            .collect(
+                                    Collectors.groupingBy(
+                                            feature -> feature.getType().getDisplayName(),
+                                            LinkedHashMap::new,
+                                            Collectors.summingInt(feature -> 1)));
+        }
+
+        return countByFeatureType;
     }
 }

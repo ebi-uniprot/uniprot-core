@@ -48,7 +48,7 @@ public class CCSequenceCautionCommentLineBuilder
         if (comment.getSequenceCautionType() != null) {
             if (needSpace) sb.append(SPACE);
             sb.append("Type=")
-                    .append(comment.getSequenceCautionType().toDisplayName())
+                    .append(comment.getSequenceCautionType().getDisplayName())
                     .append(SEMICOLON);
             needSpace = true;
         }

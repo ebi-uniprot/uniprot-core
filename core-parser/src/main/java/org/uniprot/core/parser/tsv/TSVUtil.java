@@ -1,14 +1,16 @@
-package org.uniprot.core.parser.tsv.uniprot;
+package org.uniprot.core.parser.tsv;
 
 import java.util.List;
-import java.util.Map;
 
 import org.uniprot.core.util.Utils;
 
-public interface NamedValueMap {
-    Map<String, String> attributeValues();
+/**
+ * @author lgonzales
+ * @since 2020-03-22
+ */
+public class TSVUtil {
 
-    default String getOrDefaultEmpty(String input) {
+    public static String getOrDefaultEmpty(String input) {
         if (Utils.notNullNotEmpty(input)) {
             return input;
         } else {
@@ -16,7 +18,7 @@ public interface NamedValueMap {
         }
     }
 
-    default String getOrDefaultEmpty(List<String> input) {
+    public static String getOrDefaultEmpty(List<String> input) {
         if (Utils.notNullNotEmpty(input)) {
             return String.join(", ", input);
         } else {

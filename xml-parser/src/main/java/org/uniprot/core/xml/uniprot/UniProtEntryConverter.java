@@ -265,9 +265,9 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtKBEntry> {
     }
 
     private void updateMetaDataToXml(Entry xmlEntry, UniProtKBEntry entry) {
-        xmlEntry.setDataset(entry.getEntryType().getValue());
+        xmlEntry.setDataset(entry.getEntryType().getName());
         ProteinExistenceType pet = xmlUniprotFactory.createProteinExistenceType();
-        pet.setType(entry.getProteinExistence().getValue().toLowerCase());
+        pet.setType(entry.getProteinExistence().getName().toLowerCase());
         xmlEntry.setProteinExistence(pet);
         xmlEntry.getName().add(entry.getUniProtkbId().getValue());
         xmlEntry.getAccession().add(entry.getPrimaryAccession().getValue());

@@ -62,16 +62,18 @@ public class Utils {
     }
 
     /**
-     * Add value in list or ignore if value is null
+     * Add value in list or ignore if value or target list is null
      *
-     * @param value value or null when you want to add in list
-     * @param target list to add value, should be notNull and modifiable
+     * @param value value or null that you want to add in list
+     * @param target list to add value, should be modifiable
      * @param <T> Type of value and list should be same
+     * @return true if collection changed
      */
-    public static <T> void addOrIgnoreNull(@Nullable T value, @Nonnull Collection<T> target) {
-        if (value != null) {
-            target.add(value);
+    public static <T> boolean addOrIgnoreNull(@Nullable T value, @Nullable Collection<T> target) {
+        if (notNull(target) && notNull(value)) {
+            return target.add(value);
         }
+        return false;
     }
 
     /**
@@ -140,5 +142,15 @@ public class Utils {
     public @Nullable static String lowerFirstChar(@Nullable String str) {
         if (nullOrEmpty(str)) return str;
         return Character.toLowerCase(str.charAt(0)) + str.substring(1);
+    }
+
+    public static <T> void nullThrowIllegalArgument(@Nullable T value) {
+        if (Objects.isNull(value)) throw new IllegalArgumentException("null not allowed");
+    }
+
+    public static void putOrIgnoreNull(String key, Object value, Map<String, Object> map) {
+        if (Objects.nonNull(map) && Objects.nonNull(value) && notNullNotEmpty(key)) {
+            map.put(key, value);
+        }
     }
 }

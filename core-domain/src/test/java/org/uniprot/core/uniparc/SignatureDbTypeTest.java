@@ -41,6 +41,6 @@ class SignatureDbTypeTest {
 
     @Test
     void toDisplayName_willReturnName() {
-        assertEquals("Pfam", SignatureDbType.PFAM.toDisplayName());
+        assertEquals("Pfam", SignatureDbType.PFAM.getDisplayName());
     }
 }
