@@ -367,4 +367,11 @@ class ProteomeEntryBuilderTest {
         ProteomeEntry entry = new ProteomeEntryBuilder().taxonLineagesAdd(taxonomyLineage).build();
         assertFalse(entry.getTaxonLineages().isEmpty());
     }
+
+    @Test
+    void canAddProteomeCompletenessReport() {
+        ProteomeCompletenessReport report = new ProteomeCompletenessReportBuilder().build();
+        ProteomeEntry entry = new ProteomeEntryBuilder().proteomeCompletenessReport(report).build();
+        assertEquals(report, entry.getProteomeCompletenessReport());
+    }
 }

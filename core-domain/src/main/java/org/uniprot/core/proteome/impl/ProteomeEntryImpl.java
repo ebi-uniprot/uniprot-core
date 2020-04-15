@@ -30,6 +30,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     private ProteomeId panproteome;
     private int annotationScore;
     private Superkingdom superkingdom;
+    private ProteomeCompletenessReport proteomeCompletenessReport;
 
     private int geneCount;
     List<TaxonomyLineage> taxonLineage;
@@ -65,7 +66,8 @@ public class ProteomeEntryImpl implements ProteomeEntry {
             int geneCount,
             List<TaxonomyLineage> taxonLineage,
             List<CanonicalProtein> canonicalProteins,
-            String sourceDb) {
+            String sourceDb,
+            ProteomeCompletenessReport proteomeCompletenessReport) {
         super();
         this.id = id;
         this.taxonomy = taxonomy;
@@ -87,6 +89,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
         this.taxonLineage = Utils.unmodifiableList(taxonLineage);
         this.canonicalProteins = Utils.unmodifiableList(canonicalProteins);
         this.sourceDb = sourceDb;
+        this.proteomeCompletenessReport = proteomeCompletenessReport;
     }
 
     @Override
@@ -190,6 +193,11 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     }
 
     @Override
+    public ProteomeCompletenessReport getProteomeCompletenessReport() {
+        return proteomeCompletenessReport;
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(
                 components,
@@ -206,7 +214,8 @@ public class ProteomeEntryImpl implements ProteomeEntry {
                 superkingdom,
                 taxonomy,
                 proteomeType,
-                sourceDb);
+                sourceDb,
+                proteomeCompletenessReport);
     }
 
     @Override
@@ -229,6 +238,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
                 && Objects.equals(superkingdom, other.superkingdom)
                 && Objects.equals(taxonomy, other.taxonomy)
                 && Objects.equals(proteomeType, other.proteomeType)
-                && Objects.equals(sourceDb, other.sourceDb);
+                && Objects.equals(sourceDb, other.sourceDb)
+                && Objects.equals(proteomeCompletenessReport, other.proteomeCompletenessReport);
     }
 }
