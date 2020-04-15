@@ -1,14 +1,6 @@
 package org.uniprot.core.unirule.builder;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.UniProtKBId;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilderTest;
@@ -17,7 +9,80 @@ import org.uniprot.core.unirule.DataClassType;
 import org.uniprot.core.unirule.Fusion;
 import org.uniprot.core.unirule.Information;
 
+import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 public class InformationBuilderTest {
+
+    @Test
+    void testCreateObjectUpdateUniProtIdsList(){
+        Information information = createObject();
+        // add couple of uniProtIds
+        InformationBuilder builder = InformationBuilder.from(information);
+        UniProtKBId up1 = UniProtKBIdBuilderTest.createObject();
+        UniProtKBId up2 = UniProtKBIdBuilderTest.createObject();
+        builder.uniProtIdsAdd(up1).uniProtIdsAdd(up2);
+        Information updatedInformation = builder.build();
+        assertNotNull(updatedInformation);
+        assertEquals(information.getUniProtIds().size() + 2, updatedInformation.getUniProtIds().size());
+    }
+
+    @Test
+    void testCreateObjectUpdateUniProtAccessionsList(){
+        Information information = createObject();
+        // add couple of accession
+        InformationBuilder builder = InformationBuilder.from(information);
+        UniProtKBAccession acc1 = UniProtKBAccessionBuilderTest.createObject();
+        UniProtKBAccession acc2 = UniProtKBAccessionBuilderTest.createObject();
+        builder.uniProtAccessionsAdd(acc1).uniProtAccessionsAdd(acc2);
+        Information updatedInformation = builder.build();
+        assertNotNull(updatedInformation);
+        assertEquals(information.getUniProtAccessions().size() + 2, updatedInformation.getUniProtAccessions().size());
+    }
+
+    @Test
+    void testCreateObjectUpdateRelatedList(){
+        Information information = createObject();
+        // add a related
+        InformationBuilder builder = InformationBuilder.from(information);
+        String rel1 = "new related";
+        builder.relatedAdd(rel1);
+        Information updatedInformation = builder.build();
+        assertNotNull(updatedInformation);
+        assertEquals(information.getRelated().size() + 1, updatedInformation.getRelated().size());
+    }
+
+    @Test
+    void testCreateObjectUpdateDuplicatesList(){
+        Information information = createObject();
+        // add in duplicates list
+        InformationBuilder builder = InformationBuilder.from(information);
+        String dup = "new duplicate";
+        builder.duplicatesAdd(dup);
+        Information updatedInformation = builder.build();
+        assertNotNull(updatedInformation);
+        assertEquals(information.getDuplicates().size() + 1, updatedInformation.getDuplicates().size());
+    }
+
+    @Test
+    void testCreateObjectUpdatePlasmaIdsList(){
+        Information information = createObject();
+        // add couple of uniProtIds
+        InformationBuilder builder = InformationBuilder.from(information);
+        String p1 = "plasma1";
+        String p2 = "plasma2";
+        builder.plasmaIdsAdd(p1).plasmaIdsAdd(p2);
+        Information updatedInformation = builder.build();
+        assertNotNull(updatedInformation);
+        assertEquals(information.getPlasmaIds().size() + 2, updatedInformation.getPlasmaIds().size());
+    }
+
     public static Information createObject() {
         String random = UUID.randomUUID().toString();
         String version = "version-" + random;
@@ -48,7 +113,7 @@ public class InformationBuilderTest {
 
         InformationBuilder builder = new InformationBuilder();
         builder.version(version).comment(comment).oldRuleNum(oldRuleNum);
-        builder.uniProtIds(uniProtIds).dataClass(dataClass).namesSet(names);
+        builder.uniProtIdsSet(uniProtIds).dataClass(dataClass).namesSet(names);
         builder.fusion(fusion).uniProtAccessionsSet(uniProtAccessions).relatedSet(related);
         builder.duplicatesSet(duplicates).plasmaIdsSet(plasmaIds).internal(internal);
         Information information = builder.build();

@@ -35,6 +35,23 @@ public class ConditionBuilderTest {
         assertFalse(condition.isNegative());
     }
 
+    @Test
+    void testCreateObjectUpdateList(){
+        Condition condition = createObject();
+
+        ConditionBuilder builder = ConditionBuilder.from(condition);
+        ConditionValue conditionValue = ConditionValueBuilderTest.createObject();
+        // add another condition value
+        builder.conditionValuesAdd(conditionValue);
+        Condition updatedCondition = builder.build();
+
+        assertNotNull(updatedCondition);
+        assertEquals(condition.getType(), updatedCondition.getType());
+        assertEquals(condition.getRange(), updatedCondition.getRange());
+        assertEquals(condition.isNegative(), updatedCondition.isNegative());
+        assertEquals(condition.getConditionValues().size() + 1, updatedCondition.getConditionValues().size());
+    }
+
     public static Condition createObject() {
         String random = UUID.randomUUID().toString();
         String type = "type-" + random;
