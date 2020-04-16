@@ -1,8 +1,8 @@
-package org.uniprot.core.unirule.builder;
+package org.uniprot.core.unirule.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.unirule.*;
+import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -10,12 +10,32 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.unirule.*;
 
 public class UniRuleEntryBuilderTest {
 
     @Test
-    void testCreateObjectOverwriteOtherRulesList(){
+    void testCreateObjectWithNullMandatoryParamRuleIdAndStatus() {
+        UniRuleEntryBuilder builder = new UniRuleEntryBuilder(null, null);
+        assertThrows(IllegalArgumentException.class, builder::build);
+    }
+
+    @Test
+    void testCreateObjectWithNullMandatoryParamRuleId() {
+        UniRuleEntryBuilder builder = new UniRuleEntryBuilder(null, RuleStatus.APPLY);
+        assertThrows(IllegalArgumentException.class, builder::build);
+    }
+
+    @Test
+    void testCreateObjectWithNullMandatoryParamRuleStatus() {
+        UniRuleEntryBuilder builder =
+                new UniRuleEntryBuilder(UniRuleIdBuilderTest.createObject(), null);
+        assertThrows(IllegalArgumentException.class, builder::build);
+    }
+
+    @Test
+    void testCreateObjectOverwriteOtherRulesList() {
         UniRuleEntry uniRuleEntry = createObject();
         assertEquals(2, uniRuleEntry.getOtherRules().size());
         UniRuleEntryBuilder builder = UniRuleEntryBuilder.from(uniRuleEntry);
@@ -29,7 +49,7 @@ public class UniRuleEntryBuilderTest {
     }
 
     @Test
-    void testCreateObjectUpdateOtherRulesList(){
+    void testCreateObjectUpdateOtherRulesList() {
         UniRuleEntry uniRuleEntry = createObject();
         UniRuleEntryBuilder builder = UniRuleEntryBuilder.from(uniRuleEntry);
         // add couple of case rules
@@ -38,11 +58,13 @@ public class UniRuleEntryBuilderTest {
         builder.otherRulesAdd(rule1).otherRulesAdd(rule2);
         UniRuleEntry updatedUniProtEntry = builder.build();
         assertNotNull(updatedUniProtEntry);
-        assertEquals(uniRuleEntry.getOtherRules().size() + 2, updatedUniProtEntry.getOtherRules().size());
+        assertEquals(
+                uniRuleEntry.getOtherRules().size() + 2,
+                updatedUniProtEntry.getOtherRules().size());
     }
 
     @Test
-    void testCreateObjectUpdateSamFeatureSetsList(){
+    void testCreateObjectUpdateSamFeatureSetsList() {
         UniRuleEntry uniRuleEntry = createObject();
         UniRuleEntryBuilder builder = UniRuleEntryBuilder.from(uniRuleEntry);
         //  add samfeature set
@@ -50,11 +72,13 @@ public class UniRuleEntryBuilderTest {
         builder.samFeatureSetsAdd(fs1);
         UniRuleEntry updatedUniProtEntry = builder.build();
         assertNotNull(updatedUniProtEntry);
-        assertEquals(uniRuleEntry.getSamFeatureSets().size() + 1, updatedUniProtEntry.getSamFeatureSets().size());
+        assertEquals(
+                uniRuleEntry.getSamFeatureSets().size() + 1,
+                updatedUniProtEntry.getSamFeatureSets().size());
     }
 
     @Test
-    void testCreateObjectOverwriteNullSamFeatureSetsList(){
+    void testCreateObjectOverwriteNullSamFeatureSetsList() {
         UniRuleEntry uniRuleEntry = createObject();
         assertFalse(uniRuleEntry.getSamFeatureSets().isEmpty());
         UniRuleEntryBuilder builder = UniRuleEntryBuilder.from(uniRuleEntry);
@@ -66,7 +90,7 @@ public class UniRuleEntryBuilderTest {
     }
 
     @Test
-    void testCreateObjectUpdatePositionFeatureSetsList(){
+    void testCreateObjectUpdatePositionFeatureSetsList() {
         UniRuleEntry uniRuleEntry = createObject();
         UniRuleEntryBuilder builder = UniRuleEntryBuilder.from(uniRuleEntry);
         // add couple of position feature set
@@ -75,18 +99,60 @@ public class UniRuleEntryBuilderTest {
         builder.positionFeatureSetsAdd(pfs1).positionFeatureSetsAdd(pfs2);
         UniRuleEntry updatedUniProtEntry = builder.build();
         assertNotNull(updatedUniProtEntry);
-        assertEquals(uniRuleEntry.getPositionFeatureSets().size() + 2, updatedUniProtEntry.getPositionFeatureSets().size());
+        assertEquals(
+                uniRuleEntry.getPositionFeatureSets().size() + 2,
+                updatedUniProtEntry.getPositionFeatureSets().size());
     }
 
     @Test
-    void testCreateObjectUpdateNullValuePositionFeatureSetsList(){
+    void testCreateObjectUpdateNullValuePositionFeatureSetsList() {
         UniRuleEntry uniRuleEntry = createObject();
         UniRuleEntryBuilder builder = UniRuleEntryBuilder.from(uniRuleEntry);
         // try to add null position feature set. should do nothing
         builder.positionFeatureSetsAdd(null);
         UniRuleEntry updatedUniProtEntry = builder.build();
         assertNotNull(updatedUniProtEntry);
-        assertEquals(uniRuleEntry.getPositionFeatureSets(), updatedUniProtEntry.getPositionFeatureSets());
+        assertEquals(
+                uniRuleEntry.getPositionFeatureSets(),
+                updatedUniProtEntry.getPositionFeatureSets());
+    }
+
+    /*
+    private List<CaseRule> otherRules;
+    private List<SamFeatureSet> samFeatureSets;
+    private List<PositionFeatureSet> positionFeatureSets;
+     */
+    @Test
+    void testCreateObjectWithOneOtherRule() {
+        UniRuleEntryBuilder builder =
+                new UniRuleEntryBuilder(UniRuleIdBuilderTest.createObject(), RuleStatus.APPLY);
+        CaseRule<Annotation> caseRule = CaseRuleBuilderTest.createObject();
+        builder.otherRulesAdd(caseRule);
+        UniRuleEntry uniRuleEntry = builder.build();
+        assertNotNull(uniRuleEntry);
+        assertEquals(Arrays.asList(caseRule), uniRuleEntry.getOtherRules());
+    }
+
+    @Test
+    void testCreateObjectWithSamFeature() {
+        UniRuleEntryBuilder builder =
+                new UniRuleEntryBuilder(UniRuleIdBuilderTest.createObject(), RuleStatus.APPLY);
+        SamFeatureSet samFeature = SamFeatureSetBuilderTest.createObject();
+        builder.samFeatureSetsAdd(samFeature);
+        UniRuleEntry uniRuleEntry = builder.build();
+        assertNotNull(uniRuleEntry);
+        assertEquals(Arrays.asList(samFeature), uniRuleEntry.getSamFeatureSets());
+    }
+
+    @Test
+    void testCreateObjectWithOnePositionFeature() {
+        UniRuleEntryBuilder builder =
+                new UniRuleEntryBuilder(UniRuleIdBuilderTest.createObject(), RuleStatus.APPLY);
+        PositionFeatureSet positionFeature = PositionFeatureSetBuilderTest.createObject();
+        builder.positionFeatureSetsAdd(positionFeature);
+        UniRuleEntry uniRuleEntry = builder.build();
+        assertNotNull(uniRuleEntry);
+        assertEquals(Arrays.asList(positionFeature), uniRuleEntry.getPositionFeatureSets());
     }
 
     public static UniRuleEntry createObject() {
@@ -105,9 +171,8 @@ public class UniRuleEntryBuilderTest {
         Date createdDate = new Date();
         Date modifiedDate = new Date();
 
-        UniRuleEntryBuilder builder = new UniRuleEntryBuilder();
-        builder.uniRuleId(uniRuleId).information(information);
-        builder.ruleStatus(ruleStatus).mainRule(mainRule);
+        UniRuleEntryBuilder builder = new UniRuleEntryBuilder(uniRuleId, ruleStatus);
+        builder.mainRule(mainRule).information(information);
         builder.otherRulesSet(otherRules).samFeatureSetsSet(samFeatureSets);
         builder.positionFeatureSetsSet(positionFeatureSets);
         builder.createdBy(createdBy).modifiedBy(modifiedBy);

@@ -20,7 +20,7 @@ public class PositionalFeatureImpl implements PositionalFeature {
 
     PositionalFeatureImpl() {}
 
-    public PositionalFeatureImpl(
+    PositionalFeatureImpl(
             Range position, String pattern, boolean inGroup, String value, String type) {
         this.position = position;
         this.pattern = pattern;

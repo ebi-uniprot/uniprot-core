@@ -32,7 +32,7 @@ public class PositionFeatureSetImpl<T> implements PositionFeatureSet {
         this.ruleExceptions = Collections.emptyList();
     }
 
-    public PositionFeatureSetImpl(
+    PositionFeatureSetImpl(
             List<Condition> conditions,
             List<Annotation> annotations,
             List<PositionalFeature> positionalFeatures,

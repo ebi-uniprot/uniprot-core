@@ -17,7 +17,7 @@ public class CaseRuleImpl<R> extends RuleImpl<R> implements CaseRule<R> {
         super();
     }
 
-    public CaseRuleImpl(
+    CaseRuleImpl(
             List<ConditionSet> conditionSets,
             List<Annotation> annotations,
             List<RuleException<R>> ruleExceptions,

@@ -1,7 +1,8 @@
-package org.uniprot.core.unirule.builder;
+package org.uniprot.core.unirule.impl;
 
 import static org.uniprot.core.util.Utils.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
@@ -9,17 +10,16 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.unirule.*;
-import org.uniprot.core.unirule.impl.PositionFeatureSetImpl;
 
 public class PositionFeatureSetBuilder<T> implements Builder<PositionFeatureSet> {
 
-    private List<Condition> conditions;
+    private List<Condition> conditions = new ArrayList<>();
 
-    private List<Annotation> annotations;
+    private List<Annotation> annotations = new ArrayList<>();
 
-    private List<PositionalFeature> positionalFeatures;
+    private List<PositionalFeature> positionalFeatures = new ArrayList<>();
 
-    private List<RuleException<T>> ruleExceptions;
+    private List<RuleException<T>> ruleExceptions = new ArrayList<>();
 
     private UniProtKBAccession uniProtKBAccession;
 
@@ -27,58 +27,61 @@ public class PositionFeatureSetBuilder<T> implements Builder<PositionFeatureSet>
 
     private String tag;
 
-    public PositionFeatureSetBuilder conditionsAdd(Condition condition) {
+    public @Nonnull PositionFeatureSetBuilder conditionsAdd(Condition condition) {
         addOrIgnoreNull(condition, this.conditions);
         return this;
     }
 
-    public PositionFeatureSetBuilder conditionsSet(List<Condition> conditions) {
+    public @Nonnull PositionFeatureSetBuilder conditionsSet(List<Condition> conditions) {
         this.conditions = modifiableList(conditions);
         return this;
     }
 
-    public PositionFeatureSetBuilder annotationsAdd(Annotation annotation) {
+    public @Nonnull PositionFeatureSetBuilder annotationsAdd(Annotation annotation) {
         addOrIgnoreNull(annotation, this.annotations);
         return this;
     }
 
-    public PositionFeatureSetBuilder annotationsSet(List<Annotation> annotations) {
+    public @Nonnull PositionFeatureSetBuilder annotationsSet(List<Annotation> annotations) {
         this.annotations = modifiableList(annotations);
         return this;
     }
 
-    public PositionFeatureSetBuilder positionalFeaturesAdd(PositionalFeature positionalFeature) {
+    public @Nonnull PositionFeatureSetBuilder positionalFeaturesAdd(
+            PositionalFeature positionalFeature) {
         addOrIgnoreNull(positionalFeature, this.positionalFeatures);
         return this;
     }
 
-    public PositionFeatureSetBuilder positionalFeaturesSet(
+    public @Nonnull PositionFeatureSetBuilder positionalFeaturesSet(
             List<PositionalFeature> positionalFeatures) {
         this.positionalFeatures = modifiableList(positionalFeatures);
         return this;
     }
 
-    public PositionFeatureSetBuilder ruleExceptionsAdd(RuleException ruleException) {
+    public @Nonnull PositionFeatureSetBuilder ruleExceptionsAdd(RuleException ruleException) {
         addOrIgnoreNull(ruleException, this.ruleExceptions);
         return this;
     }
 
-    public PositionFeatureSetBuilder ruleExceptionsSet(List<RuleException<T>> ruleExceptions) {
+    public @Nonnull PositionFeatureSetBuilder ruleExceptionsSet(
+            List<RuleException<T>> ruleExceptions) {
         this.ruleExceptions = modifiableList(ruleExceptions);
         return this;
     }
 
-    public PositionFeatureSetBuilder uniProtKBAccession(UniProtKBAccession uniProtKBAccession) {
+    public @Nonnull PositionFeatureSetBuilder uniProtKBAccession(
+            UniProtKBAccession uniProtKBAccession) {
         this.uniProtKBAccession = uniProtKBAccession;
         return this;
     }
 
-    public PositionFeatureSetBuilder alignmentSignature(String alignmentSignature) {
+    public @Nonnull PositionFeatureSetBuilder alignmentSignature(String alignmentSignature) {
         this.alignmentSignature = alignmentSignature;
         return this;
     }
 
-    public PositionFeatureSetBuilder tag(String tag) {
+    public @Nonnull PositionFeatureSetBuilder tag(String tag) {
         this.tag = tag;
         return this;
     }

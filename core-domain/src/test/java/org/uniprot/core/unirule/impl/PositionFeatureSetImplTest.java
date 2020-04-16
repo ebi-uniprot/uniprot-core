@@ -9,9 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.unirule.*;
-import org.uniprot.core.unirule.builder.AnnotationBuilder;
-import org.uniprot.core.unirule.builder.ConditionBuilder;
-import org.uniprot.core.unirule.builder.PositionalFeatureBuilder;
 
 public class PositionFeatureSetImplTest {
     @Test
@@ -29,9 +26,9 @@ public class PositionFeatureSetImplTest {
 
     @Test
     void testCreateObject() {
-        Condition condition1 = new ConditionBuilder().type("type1").build();
-        Condition condition2 = new ConditionBuilder().type("type2").build();
-        Condition condition3 = new ConditionBuilder().type("type3").build();
+        Condition condition1 = new ConditionBuilder("type1").build();
+        Condition condition2 = new ConditionBuilder("type2").build();
+        Condition condition3 = new ConditionBuilder("type3").build();
         List<Condition> conditions = Arrays.asList(condition1, condition2, condition3);
 
         Annotation annotation1 = new AnnotationBuilder().build();

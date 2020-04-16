@@ -24,7 +24,7 @@ public class RuleImpl<R> implements Rule<R> {
         this.ruleExceptions = Collections.emptyList();
     }
 
-    public RuleImpl(
+    RuleImpl(
             List<ConditionSet> conditionSets,
             List<Annotation> annotations,
             List<RuleException<R>> ruleExceptions) {

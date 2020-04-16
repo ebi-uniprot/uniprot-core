@@ -16,7 +16,7 @@ public class UniRuleIdImpl extends ValueImpl implements UniRuleId {
         super(null);
     }
 
-    public UniRuleIdImpl(String value) {
+    UniRuleIdImpl(String value) {
         super(value);
     }
 

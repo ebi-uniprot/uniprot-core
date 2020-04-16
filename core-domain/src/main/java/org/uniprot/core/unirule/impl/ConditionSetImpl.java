@@ -17,7 +17,7 @@ public class ConditionSetImpl implements ConditionSet {
         this.conditions = Collections.emptyList();
     }
 
-    public ConditionSetImpl(List<Condition> conditions) {
+    ConditionSetImpl(List<Condition> conditions) {
         this.conditions = Utils.unmodifiableList(conditions);
     }
 

@@ -1,4 +1,14 @@
-package org.uniprot.core.unirule.builder;
+package org.uniprot.core.unirule.impl;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
@@ -9,19 +19,10 @@ import org.uniprot.core.unirule.DataClassType;
 import org.uniprot.core.unirule.Fusion;
 import org.uniprot.core.unirule.Information;
 
-import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 public class InformationBuilderTest {
 
     @Test
-    void testCreateObjectUpdateUniProtIdsList(){
+    void testCreateObjectUpdateUniProtIdsList() {
         Information information = createObject();
         // add couple of uniProtIds
         InformationBuilder builder = InformationBuilder.from(information);
@@ -30,11 +31,12 @@ public class InformationBuilderTest {
         builder.uniProtIdsAdd(up1).uniProtIdsAdd(up2);
         Information updatedInformation = builder.build();
         assertNotNull(updatedInformation);
-        assertEquals(information.getUniProtIds().size() + 2, updatedInformation.getUniProtIds().size());
+        assertEquals(
+                information.getUniProtIds().size() + 2, updatedInformation.getUniProtIds().size());
     }
 
     @Test
-    void testCreateObjectUpdateUniProtAccessionsList(){
+    void testCreateObjectUpdateUniProtAccessionsList() {
         Information information = createObject();
         // add couple of accession
         InformationBuilder builder = InformationBuilder.from(information);
@@ -43,11 +45,13 @@ public class InformationBuilderTest {
         builder.uniProtAccessionsAdd(acc1).uniProtAccessionsAdd(acc2);
         Information updatedInformation = builder.build();
         assertNotNull(updatedInformation);
-        assertEquals(information.getUniProtAccessions().size() + 2, updatedInformation.getUniProtAccessions().size());
+        assertEquals(
+                information.getUniProtAccessions().size() + 2,
+                updatedInformation.getUniProtAccessions().size());
     }
 
     @Test
-    void testCreateObjectUpdateRelatedList(){
+    void testCreateObjectUpdateRelatedList() {
         Information information = createObject();
         // add a related
         InformationBuilder builder = InformationBuilder.from(information);
@@ -59,7 +63,7 @@ public class InformationBuilderTest {
     }
 
     @Test
-    void testCreateObjectUpdateDuplicatesList(){
+    void testCreateObjectUpdateDuplicatesList() {
         Information information = createObject();
         // add in duplicates list
         InformationBuilder builder = InformationBuilder.from(information);
@@ -67,11 +71,12 @@ public class InformationBuilderTest {
         builder.duplicatesAdd(dup);
         Information updatedInformation = builder.build();
         assertNotNull(updatedInformation);
-        assertEquals(information.getDuplicates().size() + 1, updatedInformation.getDuplicates().size());
+        assertEquals(
+                information.getDuplicates().size() + 1, updatedInformation.getDuplicates().size());
     }
 
     @Test
-    void testCreateObjectUpdatePlasmaIdsList(){
+    void testCreateObjectUpdatePlasmaIdsList() {
         Information information = createObject();
         // add couple of uniProtIds
         InformationBuilder builder = InformationBuilder.from(information);
@@ -80,7 +85,68 @@ public class InformationBuilderTest {
         builder.plasmaIdsAdd(p1).plasmaIdsAdd(p2);
         Information updatedInformation = builder.build();
         assertNotNull(updatedInformation);
-        assertEquals(information.getPlasmaIds().size() + 2, updatedInformation.getPlasmaIds().size());
+        assertEquals(
+                information.getPlasmaIds().size() + 2, updatedInformation.getPlasmaIds().size());
+    }
+
+    @Test
+    void testAddOneUniProtKBId() {
+        InformationBuilder builder = new InformationBuilder();
+        UniProtKBId uniProtKBId = UniProtKBIdBuilderTest.createObject();
+        builder.uniProtIdsAdd(uniProtKBId);
+        Information information = builder.build();
+        assertNotNull(information);
+        assertEquals(Arrays.asList(uniProtKBId), information.getUniProtIds());
+    }
+
+    @Test
+    void testAddOneName() {
+        InformationBuilder builder = new InformationBuilder();
+        String name = "sample name";
+        builder.namesAdd(name);
+        Information information = builder.build();
+        assertNotNull(information);
+        assertEquals(Arrays.asList(name), information.getNames());
+    }
+
+    @Test
+    void testAddOneUniProtKBAccession() {
+        InformationBuilder builder = new InformationBuilder();
+        UniProtKBAccession uniProtKBAccession = UniProtKBAccessionBuilderTest.createObject();
+        builder.uniProtAccessionsAdd(uniProtKBAccession);
+        Information information = builder.build();
+        assertNotNull(information);
+        assertEquals(Arrays.asList(uniProtKBAccession), information.getUniProtAccessions());
+    }
+
+    @Test
+    void testAddOneRelated() {
+        InformationBuilder builder = new InformationBuilder();
+        String related = "sample related";
+        builder.relatedAdd(related);
+        Information information = builder.build();
+        assertNotNull(information);
+        assertEquals(Arrays.asList(related), information.getRelated());
+    }
+
+    @Test
+    void testAddOneDuplicates() {
+        InformationBuilder builder = new InformationBuilder();
+        String duplicateItem = "sample dup item";
+        builder.duplicatesAdd(duplicateItem);
+        Information information = builder.build();
+        assertNotNull(information);
+        assertEquals(Arrays.asList(duplicateItem), information.getDuplicates());
+    }
+
+    @Test
+    void testAddOnePlasmaIds() {
+        InformationBuilder builder = new InformationBuilder();
+        String plasmaId = "sample pId";
+        builder.plasmaIdsAdd(plasmaId);
+        Information information = builder.build();
+        assertNotNull(information);
+        assertEquals(Arrays.asList(plasmaId), information.getPlasmaIds());
     }
 
     public static Information createObject() {

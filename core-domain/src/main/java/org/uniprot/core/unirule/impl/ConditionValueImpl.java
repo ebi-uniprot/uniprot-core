@@ -14,7 +14,7 @@ public class ConditionValueImpl extends ValueImpl implements ConditionValue {
         super(null);
     }
 
-    public ConditionValueImpl(String value, String cvId) {
+    ConditionValueImpl(String value, String cvId) {
         super(value);
         this.cvId = cvId;
     }

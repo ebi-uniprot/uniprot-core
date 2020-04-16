@@ -1,4 +1,4 @@
-package org.uniprot.core.unirule.builder;
+package org.uniprot.core.unirule.impl;
 
 import static org.uniprot.core.util.Utils.nullThrowIllegalArgument;
 
@@ -6,11 +6,10 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.impl.AbstractValueBuilder;
 import org.uniprot.core.unirule.UniRuleId;
-import org.uniprot.core.unirule.impl.UniRuleIdImpl;
 
 public class UniRuleIdBuilder extends AbstractValueBuilder<UniRuleId> {
 
-    public UniRuleIdBuilder(String value) {
+    public @Nonnull UniRuleIdBuilder(String value) {
         super(value);
     }
 

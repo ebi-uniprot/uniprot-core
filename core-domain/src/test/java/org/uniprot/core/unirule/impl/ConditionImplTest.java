@@ -10,7 +10,6 @@ import org.uniprot.core.Range;
 import org.uniprot.core.uniprotkb.feature.FeatureLocation;
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.ConditionValue;
-import org.uniprot.core.unirule.builder.ConditionValueBuilder;
 
 public class ConditionImplTest {
 

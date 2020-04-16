@@ -1,4 +1,4 @@
-package org.uniprot.core.unirule.builder;
+package org.uniprot.core.unirule.impl;
 
 import static org.uniprot.core.util.Utils.nullThrowIllegalArgument;
 
@@ -10,19 +10,18 @@ import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.CaseRule;
 import org.uniprot.core.unirule.ConditionSet;
 import org.uniprot.core.unirule.RuleException;
-import org.uniprot.core.unirule.impl.CaseRuleImpl;
 
 public class CaseRuleBuilder<R> extends AbstractRuleBuilder<CaseRule<R>, R> {
     private boolean overallStatsExempted;
 
-    public CaseRuleBuilder(
+    public @Nonnull CaseRuleBuilder(
             List<ConditionSet> conditionSets,
             List<Annotation> annotations,
             List<RuleException<R>> ruleExceptions) {
         super(conditionSets, annotations, ruleExceptions);
     }
 
-    public CaseRuleBuilder overallStatsExempted(boolean overallStatsExempted) {
+    public @Nonnull CaseRuleBuilder overallStatsExempted(boolean overallStatsExempted) {
         this.overallStatsExempted = overallStatsExempted;
         return this;
     }

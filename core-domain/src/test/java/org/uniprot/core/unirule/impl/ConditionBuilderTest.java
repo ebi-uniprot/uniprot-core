@@ -1,7 +1,8 @@
-package org.uniprot.core.unirule.builder;
+package org.uniprot.core.unirule.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
@@ -17,16 +18,15 @@ import org.uniprot.core.unirule.ConditionValue;
 public class ConditionBuilderTest {
 
     @Test
-    void testTryToCreateEmptyObject() {
-        ConditionBuilder builder = new ConditionBuilder();
+    void testCreateObjectWithNullMandatoryParamType() {
+        ConditionBuilder builder = new ConditionBuilder(null);
         assertThrows(IllegalArgumentException.class, builder::build);
     }
 
     @Test
     void testCreateSkinnyObject() {
         String type = "sample type";
-        ConditionBuilder builder = new ConditionBuilder();
-        builder.type(type);
+        ConditionBuilder builder = new ConditionBuilder(type);
         Condition condition = builder.build();
         assertNotNull(condition);
         assertEquals(type, condition.getType());
@@ -36,7 +36,7 @@ public class ConditionBuilderTest {
     }
 
     @Test
-    void testCreateObjectUpdateList(){
+    void testCreateObjectUpdateList() {
         Condition condition = createObject();
 
         ConditionBuilder builder = ConditionBuilder.from(condition);
@@ -49,7 +49,21 @@ public class ConditionBuilderTest {
         assertEquals(condition.getType(), updatedCondition.getType());
         assertEquals(condition.getRange(), updatedCondition.getRange());
         assertEquals(condition.isNegative(), updatedCondition.isNegative());
-        assertEquals(condition.getConditionValues().size() + 1, updatedCondition.getConditionValues().size());
+        assertEquals(
+                condition.getConditionValues().size() + 1,
+                updatedCondition.getConditionValues().size());
+    }
+
+    @Test
+    void testCreateSkinnyObjectWithOneItemInList() {
+        String type = "sample type";
+        ConditionValue conditionValue = ConditionValueBuilderTest.createObject();
+        ConditionBuilder builder = new ConditionBuilder(type);
+        builder.conditionValuesAdd(conditionValue);
+        Condition condition = builder.build();
+        assertNotNull(condition);
+        assertEquals(type, condition.getType());
+        assertEquals(Arrays.asList(conditionValue), condition.getConditionValues());
     }
 
     public static Condition createObject() {
@@ -60,7 +74,7 @@ public class ConditionBuilderTest {
         Range range = new FeatureLocation(start, end);
         boolean negative = start % 2 == 0;
         List<ConditionValue> conditionValues = ConditionValueBuilderTest.createObjects(5);
-        ConditionBuilder builder = new ConditionBuilder();
+        ConditionBuilder builder = new ConditionBuilder(type);
         builder.type(type).range(range).negative(negative);
         builder.conditionValuesSet(conditionValues);
         Condition condition = builder.build();

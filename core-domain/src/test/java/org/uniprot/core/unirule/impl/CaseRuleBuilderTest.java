@@ -1,4 +1,4 @@
-package org.uniprot.core.unirule.builder;
+package org.uniprot.core.unirule.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -12,7 +12,6 @@ import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.CaseRule;
 import org.uniprot.core.unirule.ConditionSet;
 import org.uniprot.core.unirule.RuleException;
-import org.uniprot.core.unirule.impl.AnnotationRuleExceptionImplTest;
 
 public class CaseRuleBuilderTest {
 

@@ -1,20 +1,19 @@
-package org.uniprot.core.unirule.builder;
+package org.uniprot.core.unirule.impl;
 
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.impl.AbstractValueBuilder;
 import org.uniprot.core.unirule.ConditionValue;
-import org.uniprot.core.unirule.impl.ConditionValueImpl;
 
 public class ConditionValueBuilder extends AbstractValueBuilder<ConditionValue> {
 
     private String cvId;
 
-    public ConditionValueBuilder(String value) {
+    public @Nonnull ConditionValueBuilder(String value) {
         super(value);
     }
 
-    public ConditionValueBuilder cvId(String cvId) {
+    public @Nonnull ConditionValueBuilder cvId(String cvId) {
         this.cvId = cvId;
         return this;
     }

@@ -29,7 +29,7 @@ public class UniRuleEntryImpl implements UniRuleEntry {
         this.positionFeatureSets = Collections.emptyList();
     }
 
-    public UniRuleEntryImpl(
+    UniRuleEntryImpl(
             UniRuleId uniRuleId,
             Information information,
             RuleStatus ruleStatus,
@@ -55,8 +55,8 @@ public class UniRuleEntryImpl implements UniRuleEntry {
         this.positionFeatureSets = Utils.unmodifiableList(positionFeatureSets);
         this.createdBy = createdBy;
         this.modifiedBy = modifiedBy;
-        this.createdDate = Utils.notNull(createdDate) ? createdDate : new Date();
-        this.modifiedDate = Utils.notNull(modifiedDate) ? modifiedDate : new Date();
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
     }
 
     @Override

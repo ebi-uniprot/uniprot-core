@@ -1,36 +1,36 @@
-package org.uniprot.core.unirule.builder;
+package org.uniprot.core.unirule.impl;
 
 import static org.uniprot.core.util.Utils.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.unirule.Fusion;
-import org.uniprot.core.unirule.impl.FusionImpl;
 
 public class FusionBuilder implements Builder<Fusion> {
 
-    private List<String> cters;
-    private List<String> nters;
+    private List<String> cters = new ArrayList<>();
+    private List<String> nters = new ArrayList<>();
 
-    public FusionBuilder ctersAdd(String cter) {
+    public @Nonnull FusionBuilder ctersAdd(String cter) {
         addOrIgnoreNull(cter, this.cters);
         return this;
     }
 
-    public FusionBuilder ctersSet(List<String> cters) {
+    public @Nonnull FusionBuilder ctersSet(List<String> cters) {
         this.cters = modifiableList(cters);
         return this;
     }
 
-    public FusionBuilder ntersAdd(String nter) {
+    public @Nonnull FusionBuilder ntersAdd(String nter) {
         addOrIgnoreNull(nter, this.nters);
         return this;
     }
 
-    public FusionBuilder ntersSet(List<String> nters) {
+    public @Nonnull FusionBuilder ntersSet(List<String> nters) {
         this.nters = modifiableList(nters);
         return this;
     }

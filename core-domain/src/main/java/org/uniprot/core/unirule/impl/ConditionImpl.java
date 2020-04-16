@@ -21,7 +21,7 @@ public class ConditionImpl implements Condition {
         this.conditionValues = Collections.emptyList();
     }
 
-    public ConditionImpl(
+    ConditionImpl(
             List<ConditionValue> conditionValues, String type, boolean isNegative, Range range) {
         if (Utils.nullOrEmpty(type)) {
             throw new IllegalArgumentException(
