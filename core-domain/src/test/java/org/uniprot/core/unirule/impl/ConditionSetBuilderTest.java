@@ -1,20 +1,21 @@
-package org.uniprot.core.unirule.builder;
+package org.uniprot.core.unirule.impl;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.ConditionSet;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 public class ConditionSetBuilderTest {
 
     @Test
-    void testCreateObjectUpdateList(){
+    void testCreateObjectUpdateList() {
         ConditionSet conditionSet = createObject();
         ConditionSetBuilder builder = ConditionSetBuilder.from(conditionSet);
         Condition condition = ConditionBuilderTest.createObject();
@@ -23,9 +24,20 @@ public class ConditionSetBuilderTest {
         ConditionSet updatedConditionSet = builder.build();
 
         assertNotNull(updatedConditionSet);
-        assertEquals(conditionSet.getConditions().size() + 1, updatedConditionSet.getConditions().size());
+        assertEquals(
+                conditionSet.getConditions().size() + 1,
+                updatedConditionSet.getConditions().size());
     }
 
+    @Test
+    void testCreateObjectWithOneItemInList() {
+        ConditionSetBuilder builder = new ConditionSetBuilder();
+        Condition condition = ConditionBuilderTest.createObject();
+        builder.conditionsAdd(condition);
+        ConditionSet conditionSet = builder.build();
+        assertNotNull(conditionSet);
+        assertEquals(Arrays.asList(condition), conditionSet.getConditions());
+    }
 
     public static ConditionSet createObject() {
         List<Condition> conditions = ConditionBuilderTest.createObjects(3);

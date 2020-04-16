@@ -12,7 +12,6 @@ import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilderTest;
 import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.RuleException;
-import org.uniprot.core.unirule.builder.AnnotationBuilderTest;
 
 public class AnnotationRuleExceptionImplTest {
     @Test

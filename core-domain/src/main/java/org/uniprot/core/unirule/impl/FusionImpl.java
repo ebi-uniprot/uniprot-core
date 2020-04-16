@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import org.uniprot.core.unirule.Fusion;
+import org.uniprot.core.util.Utils;
 
 public class FusionImpl implements Fusion {
 
@@ -17,9 +18,9 @@ public class FusionImpl implements Fusion {
         this.nters = Collections.emptyList();
     }
 
-    public FusionImpl(List<String> cters, List<String> nters) {
-        this.cters = cters;
-        this.nters = nters;
+    FusionImpl(List<String> cters, List<String> nters) {
+        this.cters = Utils.unmodifiableList(cters);
+        this.nters = Utils.unmodifiableList(nters);
     }
 
     @Override

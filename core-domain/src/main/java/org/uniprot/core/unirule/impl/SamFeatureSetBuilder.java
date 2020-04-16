@@ -1,7 +1,8 @@
-package org.uniprot.core.unirule.builder;
+package org.uniprot.core.unirule.impl;
 
 import static org.uniprot.core.util.Utils.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
@@ -11,37 +12,36 @@ import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.SamFeatureSet;
 import org.uniprot.core.unirule.SamTrigger;
-import org.uniprot.core.unirule.impl.SamFeatureSetImpl;
 
 public class SamFeatureSetBuilder implements Builder<SamFeatureSet> {
 
-    private List<Condition> conditions;
+    private List<Condition> conditions = new ArrayList<>();
 
-    private List<Annotation> annotations;
+    private List<Annotation> annotations = new ArrayList<>();
 
     private SamTrigger samTrigger;
 
-    public SamFeatureSetBuilder conditionsAdd(Condition condition) {
+    public @Nonnull SamFeatureSetBuilder conditionsAdd(Condition condition) {
         addOrIgnoreNull(condition, this.conditions);
         return this;
     }
 
-    public SamFeatureSetBuilder conditionsSet(List<Condition> conditions) {
+    public @Nonnull SamFeatureSetBuilder conditionsSet(List<Condition> conditions) {
         this.conditions = modifiableList(conditions);
         return this;
     }
 
-    public SamFeatureSetBuilder annotationsAdd(Annotation annotation) {
+    public @Nonnull SamFeatureSetBuilder annotationsAdd(Annotation annotation) {
         addOrIgnoreNull(annotation, this.annotations);
         return this;
     }
 
-    public SamFeatureSetBuilder annotationsSet(List<Annotation> annotations) {
+    public @Nonnull SamFeatureSetBuilder annotationsSet(List<Annotation> annotations) {
         this.annotations = modifiableList(annotations);
         return this;
     }
 
-    public SamFeatureSetBuilder samTrigger(SamTrigger samTrigger) {
+    public @Nonnull SamFeatureSetBuilder samTrigger(SamTrigger samTrigger) {
         this.samTrigger = samTrigger;
         return this;
     }

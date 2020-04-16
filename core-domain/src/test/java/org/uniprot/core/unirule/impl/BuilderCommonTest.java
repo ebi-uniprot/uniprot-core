@@ -1,4 +1,4 @@
-package org.uniprot.core.unirule.builder;
+package org.uniprot.core.unirule.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,9 +18,10 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.uniprot.core.Builder;
 import org.uniprot.core.unirule.*;
-import org.uniprot.core.unirule.impl.*;
 
+/** @author sahmad */
 public class BuilderCommonTest {
+
     @DisplayName("Test skinny object creation")
     @ParameterizedTest(name = "[{index}] of type ''{1}''  by ''{0}''")
     @MethodSource("provideBuilderObjectClass")
@@ -57,7 +58,8 @@ public class BuilderCommonTest {
     @MethodSource("provideTestClassWithCreateObjectMethod")
     void testCreateFullObject(Class testClass) throws Exception {
         Method createObjectMethod = testClass.getMethod("createObject");
-        createObjectMethod.invoke(null);
+        Object object = createObjectMethod.invoke(null);
+        assertNotNull(object);
     }
 
     @DisplayName("Test object creation by from method")
@@ -78,6 +80,47 @@ public class BuilderCommonTest {
         Object objectByBuilder = builderObject.build();
         assertEquals(object, objectByBuilder);
         assertEquals(object.hashCode(), objectByBuilder.hashCode());
+        assertNotSame(object, objectByBuilder);
+    }
+
+    @DisplayName("Test add null object to list")
+    @ParameterizedTest(name = "[{index}] fields of  ''{0}''")
+    @MethodSource("provideBuilderObjectClass")
+    void testAddNullToList(
+            Class<? extends Builder> builderClass, Class<? extends Serializable> objectClass)
+            throws Exception {
+        // get no-arg builder constructor
+        Constructor<? extends Builder> noArgConstructor = builderClass.getConstructor();
+
+        for (Method method : builderClass.getDeclaredMethods()) {
+            if (method.getName().endsWith("Add")) {
+                // instantiate the builder class
+                Builder builder = noArgConstructor.newInstance();
+                Object arg = null;
+                // call the <fieldName>Add method of builder class with null value
+                builder = (Builder) method.invoke(builder, arg);
+                Object object = builder.build(); // create the object
+                assertNotNull(object, "object is null for type " + objectClass.getName());
+                // get the builder's field name of type list
+                String fieldName = method.getName().substring(0, method.getName().indexOf("Add"));
+                String getMethodName = fieldToGetter(fieldName);
+                Method getMethod = objectClass.getDeclaredMethod(getMethodName);
+                assertNotNull(getMethod, getMethodName + " doesn't exist");
+                Object list = getMethod.invoke(object);
+                assertTrue(list instanceof List, fieldName + " is not type of List");
+                assertNotNull(list, fieldName + " is null");
+                assertTrue(((List) list).isEmpty(), fieldName + " is not empty");
+                // try to add item to immutable list it should throw UnsupportedOperationException
+                assertThrows(
+                        UnsupportedOperationException.class,
+                        () -> ((List) list).add(new Object()),
+                        fieldName + " is not immutable");
+            }
+        }
+    }
+
+    private String fieldToGetter(String fieldName) {
+        return "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
     }
 
     static Stream<Arguments> provideTestClassWithCreateObjectMethod() {
@@ -95,8 +138,7 @@ public class BuilderCommonTest {
                 Arguments.of(SamTriggerBuilderTest.class),
                 Arguments.of(UniRuleEntryBuilderTest.class),
                 Arguments.of(UniRuleIdBuilderTest.class),
-                Arguments.of(CaseRuleBuilderTest.class)
-                );
+                Arguments.of(CaseRuleBuilderTest.class));
     }
 
     static Stream<Arguments> provideTypeBuilderTestClass() {

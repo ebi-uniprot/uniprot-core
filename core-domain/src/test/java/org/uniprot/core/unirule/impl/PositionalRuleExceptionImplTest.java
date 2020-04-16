@@ -14,8 +14,6 @@ import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilderTest;
 import org.uniprot.core.unirule.PositionalFeature;
 import org.uniprot.core.unirule.RuleException;
-import org.uniprot.core.unirule.builder.PositionalFeatureBuilder;
-import org.uniprot.core.unirule.builder.PositionalFeatureBuilderTest;
 
 public class PositionalRuleExceptionImplTest {
     @Test

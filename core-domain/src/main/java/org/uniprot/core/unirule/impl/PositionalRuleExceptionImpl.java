@@ -13,7 +13,7 @@ public class PositionalRuleExceptionImpl extends AbstractRuleException<Positiona
         super();
     }
 
-    public PositionalRuleExceptionImpl(
+    PositionalRuleExceptionImpl(
             String note,
             String category,
             PositionalFeature positionalFeature,

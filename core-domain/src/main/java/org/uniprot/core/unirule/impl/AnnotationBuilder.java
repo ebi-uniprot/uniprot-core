@@ -1,4 +1,4 @@
-package org.uniprot.core.unirule.builder;
+package org.uniprot.core.unirule.impl;
 
 import javax.annotation.Nonnull;
 
@@ -9,7 +9,6 @@ import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.unirule.Annotation;
-import org.uniprot.core.unirule.impl.AnnotationImpl;
 import org.uniprot.core.util.Utils;
 
 public class AnnotationBuilder implements Builder<Annotation> {
@@ -24,27 +23,27 @@ public class AnnotationBuilder implements Builder<Annotation> {
 
     private ProteinDescription proteinDescription;
 
-    public AnnotationBuilder comment(Comment comment) {
+    public @Nonnull AnnotationBuilder comment(Comment comment) {
         this.comment = comment;
         return this;
     }
 
-    public AnnotationBuilder keyword(Keyword keyword) {
+    public @Nonnull AnnotationBuilder keyword(Keyword keyword) {
         this.keyword = keyword;
         return this;
     }
 
-    public AnnotationBuilder gene(Gene gene) {
+    public @Nonnull AnnotationBuilder gene(Gene gene) {
         this.gene = gene;
         return this;
     }
 
-    public AnnotationBuilder dbReference(UniProtKBCrossReference dbReference) {
+    public @Nonnull AnnotationBuilder dbReference(UniProtKBCrossReference dbReference) {
         this.dbReference = dbReference;
         return this;
     }
 
-    public AnnotationBuilder proteinDescription(ProteinDescription proteinDescription) {
+    public @Nonnull AnnotationBuilder proteinDescription(ProteinDescription proteinDescription) {
         this.proteinDescription = proteinDescription;
         return this;
     }

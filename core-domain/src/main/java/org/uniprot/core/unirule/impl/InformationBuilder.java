@@ -1,8 +1,9 @@
-package org.uniprot.core.unirule.builder;
+package org.uniprot.core.unirule.impl;
 
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
@@ -13,108 +14,108 @@ import org.uniprot.core.uniprotkb.UniProtKBId;
 import org.uniprot.core.unirule.DataClassType;
 import org.uniprot.core.unirule.Fusion;
 import org.uniprot.core.unirule.Information;
-import org.uniprot.core.unirule.impl.InformationImpl;
 
 public class InformationBuilder implements Builder<Information> {
     private String version;
     private String comment;
     private String oldRuleNum;
-    private List<UniProtKBId> uniProtIds;
+    private List<UniProtKBId> uniProtIds = new ArrayList<>();
     private DataClassType dataClass;
-    private List<String> names;
+    private List<String> names = new ArrayList<>();
     private Fusion fusion;
-    private List<String> related;
-    private List<UniProtKBAccession> uniProtAccessions;
-    private List<String> duplicates;
-    private List<String> plasmaIds;
+    private List<String> related = new ArrayList<>();
+    private List<UniProtKBAccession> uniProtAccessions = new ArrayList<>();
+    private List<String> duplicates = new ArrayList<>();
+    private List<String> plasmaIds = new ArrayList<>();
     private String internal;
 
-    public InformationBuilder version(String version) {
+    public @Nonnull InformationBuilder version(String version) {
         this.version = version;
         return this;
     }
 
-    public InformationBuilder comment(String comment) {
+    public @Nonnull InformationBuilder comment(String comment) {
         this.comment = comment;
         return this;
     }
 
-    public InformationBuilder oldRuleNum(String oldRuleNum) {
+    public @Nonnull InformationBuilder oldRuleNum(String oldRuleNum) {
         this.oldRuleNum = oldRuleNum;
         return this;
     }
 
-    public InformationBuilder uniProtIdsAdd(UniProtKBId uniProtId) {
+    public @Nonnull InformationBuilder uniProtIdsAdd(UniProtKBId uniProtId) {
         addOrIgnoreNull(uniProtId, this.uniProtIds);
         return this;
     }
 
-    public InformationBuilder uniProtIdsSet(List<UniProtKBId> uniProtIds) {
+    public @Nonnull InformationBuilder uniProtIdsSet(List<UniProtKBId> uniProtIds) {
         this.uniProtIds = modifiableList(uniProtIds);
         return this;
     }
 
-    public InformationBuilder dataClass(DataClassType dataClass) {
+    public @Nonnull InformationBuilder dataClass(DataClassType dataClass) {
         this.dataClass = dataClass;
         return this;
     }
 
-    public InformationBuilder namesAdd(String name) {
+    public @Nonnull InformationBuilder namesAdd(String name) {
         addOrIgnoreNull(name, this.names);
         return this;
     }
 
-    public InformationBuilder namesSet(List<String> names) {
+    public @Nonnull InformationBuilder namesSet(List<String> names) {
         this.names = modifiableList(names);
         return this;
     }
 
-    public InformationBuilder fusion(Fusion fusion) {
+    public @Nonnull InformationBuilder fusion(Fusion fusion) {
         this.fusion = fusion;
         return this;
     }
 
-    public InformationBuilder relatedAdd(String related) {
+    public @Nonnull InformationBuilder relatedAdd(String related) {
         addOrIgnoreNull(related, this.related);
         return this;
     }
 
-    public InformationBuilder relatedSet(List<String> related) {
+    public @Nonnull InformationBuilder relatedSet(List<String> related) {
         this.related = modifiableList(related);
         return this;
     }
 
-    public InformationBuilder uniProtAccessionsAdd(UniProtKBAccession uniProtAccession) {
+    public @Nonnull InformationBuilder uniProtAccessionsAdd(UniProtKBAccession uniProtAccession) {
         addOrIgnoreNull(uniProtAccession, this.uniProtAccessions);
         return this;
     }
 
-    public InformationBuilder uniProtAccessionsSet(List<UniProtKBAccession> uniProtAccessions) {
+    public @Nonnull InformationBuilder uniProtAccessionsSet(
+            List<UniProtKBAccession> uniProtAccessions) {
         this.uniProtAccessions = modifiableList(uniProtAccessions);
         return this;
     }
 
-    public InformationBuilder duplicatesAdd(String duplicate) {
+    public @Nonnull InformationBuilder duplicatesAdd(String duplicate) {
         addOrIgnoreNull(duplicate, this.duplicates);
         return this;
     }
 
-    public InformationBuilder duplicatesSet(List<String> duplicates) {
+    public @Nonnull InformationBuilder duplicatesSet(List<String> duplicates) {
         this.duplicates = modifiableList(duplicates);
         return this;
     }
 
-    public InformationBuilder plasmaIdsAdd(String plasmaId) {
+    public @Nonnull InformationBuilder plasmaIdsAdd(String plasmaId) {
         addOrIgnoreNull(plasmaId, this.plasmaIds);
         return this;
     }
 
-    public InformationBuilder plasmaIdsSet(List<String> plasmaIds) {
+    public @Nonnull InformationBuilder plasmaIdsSet(List<String> plasmaIds) {
         this.plasmaIds = modifiableList(plasmaIds);
         return this;
     }
 
-    public InformationBuilder internal(String internal) {
+    public @Nonnull InformationBuilder internal(String internal) {
         this.internal = internal;
         return this;
     }

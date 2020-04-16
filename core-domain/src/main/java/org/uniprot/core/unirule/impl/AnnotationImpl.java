@@ -24,7 +24,7 @@ public class AnnotationImpl implements Annotation {
 
     AnnotationImpl() {}
 
-    public AnnotationImpl(
+    AnnotationImpl(
             Comment comment,
             Keyword keyword,
             Gene gene,

@@ -35,7 +35,7 @@ public class InformationImpl implements Information {
         this.plasmaIds = Collections.emptyList();
     }
 
-    public InformationImpl(
+    InformationImpl(
             String version,
             String comment,
             String oldRuleNum,

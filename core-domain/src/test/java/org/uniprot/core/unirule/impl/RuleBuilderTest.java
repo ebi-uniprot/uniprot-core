@@ -1,4 +1,4 @@
-package org.uniprot.core.unirule.builder;
+package org.uniprot.core.unirule.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.uniprot.core.unirule.*;
-import org.uniprot.core.unirule.impl.PositionalRuleExceptionImplTest;
 
 public class RuleBuilderTest {
 

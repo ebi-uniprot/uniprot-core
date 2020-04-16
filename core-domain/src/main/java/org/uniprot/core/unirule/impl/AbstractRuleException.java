@@ -16,11 +16,11 @@ public class AbstractRuleException<T> implements RuleException<T> {
     private T annotation;
     private List<UniProtKBAccession> accessions;
 
-    public AbstractRuleException() {
+    AbstractRuleException() {
         this.accessions = Collections.emptyList();
     }
 
-    public AbstractRuleException(
+    AbstractRuleException(
             String note, String category, T annotation, List<UniProtKBAccession> accessions) {
         this.note = note;
         this.category = category;

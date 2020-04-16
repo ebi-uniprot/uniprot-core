@@ -24,7 +24,7 @@ public class SamFeatureSetImpl implements SamFeatureSet {
         this.annotations = Collections.emptyList();
     }
 
-    public SamFeatureSetImpl(
+    SamFeatureSetImpl(
             List<Condition> conditions, List<Annotation> annotations, SamTrigger samTrigger) {
         this.conditions = Utils.unmodifiableList(conditions);
         this.annotations = Utils.unmodifiableList(annotations);

@@ -13,7 +13,6 @@ import org.uniprot.core.uniprotkb.impl.UniProtKBIdBuilder;
 import org.uniprot.core.unirule.DataClassType;
 import org.uniprot.core.unirule.Fusion;
 import org.uniprot.core.unirule.Information;
-import org.uniprot.core.unirule.builder.FusionBuilder;
 
 public class InformationImplTest {
     @Test

@@ -1,20 +1,21 @@
-package org.uniprot.core.unirule.builder;
+package org.uniprot.core.unirule.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.unirule.Fusion;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.unirule.Fusion;
 
 public class FusionBuilderTest {
 
     @Test
-    void testCreateObjectUpdateNtersList(){
+    void testCreateObjectUpdateNtersList() {
         Fusion fusion = createObject();
         String name = "extra1";
         FusionBuilder builder = FusionBuilder.from(fusion);
@@ -28,7 +29,7 @@ public class FusionBuilderTest {
     }
 
     @Test
-    void testCreateObjectUpdateCtersList(){
+    void testCreateObjectUpdateCtersList() {
         Fusion fusion = createObject();
         String name = "extra2";
         FusionBuilder builder = FusionBuilder.from(fusion);
@@ -39,6 +40,26 @@ public class FusionBuilderTest {
         assertNotNull(updatedFusion);
         assertEquals(fusion.getNters(), updatedFusion.getNters());
         assertEquals(fusion.getCters().size() + 1, updatedFusion.getCters().size());
+    }
+
+    @Test
+    void testCreateObjectWithOneNter() {
+        FusionBuilder builder = new FusionBuilder();
+        String nter = "sample nter";
+        builder.ntersAdd(nter);
+        Fusion fusion = builder.build();
+        assertNotNull(fusion);
+        assertEquals(Arrays.asList(nter), fusion.getNters());
+    }
+
+    @Test
+    void testCreateObjectWithOneCter() {
+        FusionBuilder builder = new FusionBuilder();
+        String cter = "sample cter";
+        builder.ctersAdd(cter);
+        Fusion fusion = builder.build();
+        assertNotNull(fusion);
+        assertEquals(Arrays.asList(cter), fusion.getCters());
     }
 
     public static Fusion createObject() {

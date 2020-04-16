@@ -1,4 +1,4 @@
-package org.uniprot.core.unirule.builder;
+package org.uniprot.core.unirule.impl;
 
 import static org.uniprot.core.util.Utils.nullThrowIllegalArgument;
 
@@ -7,7 +7,6 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.Builder;
 import org.uniprot.core.Range;
 import org.uniprot.core.unirule.PositionalFeature;
-import org.uniprot.core.unirule.impl.PositionalFeatureImpl;
 
 public class PositionalFeatureBuilder implements Builder<PositionalFeature> {
     private Range position;
@@ -20,27 +19,27 @@ public class PositionalFeatureBuilder implements Builder<PositionalFeature> {
 
     private String type;
 
-    public PositionalFeatureBuilder position(Range position) {
+    public @Nonnull PositionalFeatureBuilder position(Range position) {
         this.position = position;
         return this;
     }
 
-    public PositionalFeatureBuilder pattern(String pattern) {
+    public @Nonnull PositionalFeatureBuilder pattern(String pattern) {
         this.pattern = pattern;
         return this;
     }
 
-    public PositionalFeatureBuilder inGroup(boolean inGroup) {
+    public @Nonnull PositionalFeatureBuilder inGroup(boolean inGroup) {
         this.inGroup = inGroup;
         return this;
     }
 
-    public PositionalFeatureBuilder value(String value) {
+    public @Nonnull PositionalFeatureBuilder value(String value) {
         this.value = value;
         return this;
     }
 
-    public PositionalFeatureBuilder type(String type) {
+    public @Nonnull PositionalFeatureBuilder type(String type) {
         this.type = type;
         return this;
     }

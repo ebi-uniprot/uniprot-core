@@ -1,4 +1,4 @@
-package org.uniprot.core.unirule.builder;
+package org.uniprot.core.unirule.impl;
 
 import static org.uniprot.core.util.Utils.nullThrowIllegalArgument;
 
@@ -8,18 +8,17 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.Range;
 import org.uniprot.core.unirule.SamTrigger;
 import org.uniprot.core.unirule.SamTriggerType;
-import org.uniprot.core.unirule.impl.SamTriggerImpl;
 
 public class SamTriggerBuilder implements Builder<SamTrigger> {
     private SamTriggerType samTriggerType;
     private Range expectedHits;
 
-    public SamTriggerBuilder samTriggerType(SamTriggerType samTriggerType) {
+    public @Nonnull SamTriggerBuilder samTriggerType(SamTriggerType samTriggerType) {
         this.samTriggerType = samTriggerType;
         return this;
     }
 
-    public SamTriggerBuilder expectedHits(Range expectedHits) {
+    public @Nonnull SamTriggerBuilder expectedHits(Range expectedHits) {
         this.expectedHits = expectedHits;
         return this;
     }
