@@ -18,7 +18,7 @@ public class ConditionBuilder implements Builder<Condition> {
     private boolean isNegative;
     private Range range;
 
-    public ConditionBuilder(String type){
+    public ConditionBuilder(String type) {
         this.type = type;
     }
 

@@ -2,6 +2,7 @@ package org.uniprot.core.unirule.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -50,16 +51,28 @@ public class UniRuleEntryImplTest {
         Annotation annotation = new AnnotationBuilder().build();
         UniProtKBAccession accession = new UniProtKBAccessionBuilder(accessionValue).build();
         List<UniProtKBAccession> accessionList = Arrays.asList(accession);
-        RuleException<Annotation> ruleException1 =
-                new AnnotationRuleExceptionImpl(note, category, annotation, accessionList);
 
         PositionalFeature positionalFeature = new PositionalFeatureBuilder().build();
         RuleException<PositionalFeature> ruleException2 =
                 new PositionalRuleExceptionImpl(note, category, positionalFeature, accessionList);
-        List<RuleException> ruleExceptions = Arrays.asList(ruleException1, ruleException2);
+        List<RuleException<PositionalFeature>> ruleExceptions = new ArrayList<>();
+        ruleExceptions.add(ruleException2);
 
-        Rule mainRule = new RuleBuilder(conditionSets, annotations, ruleExceptions).build();
-        CaseRule caseRule = new CaseRuleBuilder(conditionSets, annotations, ruleExceptions).build();
+        Rule mainRule =
+                new RuleBuilder<PositionalFeature>()
+                        .conditionSetsSet(conditionSets)
+                        .annotationsSet(annotations)
+                        .ruleExceptionsSet(ruleExceptions)
+                        .build();
+
+        CaseRuleBuilder<PositionalFeature> caseRuleBuilder = new CaseRuleBuilder<>();
+        caseRuleBuilder
+                .conditionSetsSet(conditionSets)
+                .annotationsSet(annotations)
+                .ruleExceptionsSet(ruleExceptions);
+
+        CaseRule caseRule = caseRuleBuilder.build();
+
         List<CaseRule> otherRules = Arrays.asList(caseRule);
         SamFeatureSet samFeatureSet1 = new SamFeatureSetBuilder().build();
         SamFeatureSet samFeatureSet2 = new SamFeatureSetBuilder().build();

@@ -2,24 +2,12 @@ package org.uniprot.core.unirule.impl;
 
 import static org.uniprot.core.util.Utils.nullThrowIllegalArgument;
 
-import java.util.List;
-
 import javax.annotation.Nonnull;
 
-import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.CaseRule;
-import org.uniprot.core.unirule.ConditionSet;
-import org.uniprot.core.unirule.RuleException;
 
-public class CaseRuleBuilder<R> extends AbstractRuleBuilder<CaseRule<R>, R> {
+public class CaseRuleBuilder<R> extends AbstractRuleBuilder<CaseRuleBuilder<R>, CaseRule<R>, R> {
     private boolean overallStatsExempted;
-
-    public @Nonnull CaseRuleBuilder(
-            List<ConditionSet> conditionSets,
-            List<Annotation> annotations,
-            List<RuleException<R>> ruleExceptions) {
-        super(conditionSets, annotations, ruleExceptions);
-    }
 
     public @Nonnull CaseRuleBuilder overallStatsExempted(boolean overallStatsExempted) {
         this.overallStatsExempted = overallStatsExempted;
@@ -34,12 +22,17 @@ public class CaseRuleBuilder<R> extends AbstractRuleBuilder<CaseRule<R>, R> {
 
     public static @Nonnull CaseRuleBuilder from(@Nonnull CaseRule instance) {
         nullThrowIllegalArgument(instance);
-        CaseRuleBuilder builder =
-                new CaseRuleBuilder(
-                        instance.getConditionSets(),
-                        instance.getAnnotations(),
-                        instance.getRuleExceptions());
+        CaseRuleBuilder builder = new CaseRuleBuilder();
+        builder.conditionSetsSet(instance.getConditionSets());
+        builder.annotationsSet(instance.getAnnotations());
+        builder.ruleExceptionsSet(instance.getRuleExceptions());
         builder.overallStatsExempted(instance.isOverallStatsExempted());
         return builder;
+    }
+
+    @Nonnull
+    @Override
+    protected CaseRuleBuilder<R> getThis() {
+        return this;
     }
 }

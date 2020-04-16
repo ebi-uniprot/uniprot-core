@@ -22,6 +22,15 @@ import org.uniprot.core.unirule.*;
 /** @author sahmad */
 public class BuilderCommonTest {
 
+    /**
+     * Test creation of object via Builder's no-arg constructor. To test a new builder just add the
+     * following line in method {@link #provideBuilderObjectClass} <code>
+     * Arguments.of(ExampleBuilder.class, ExampleImpl.class)</code>
+     *
+     * @param builderClass Builder's Class
+     * @param objectClass XYZImpl class
+     * @throws Exception
+     */
     @DisplayName("Test skinny object creation")
     @ParameterizedTest(name = "[{index}] of type ''{1}''  by ''{0}''")
     @MethodSource("provideBuilderObjectClass")
@@ -53,6 +62,15 @@ public class BuilderCommonTest {
         }
     }
 
+    /**
+     * Test creation of object with all the attributes set.
+     *
+     * @param testClass The Class of the class with the helper method
+     *     <p>createObject where full object is being created. e.g. see {@link
+     *     InformationBuilderTest#createObject} Add the class with method createObject in {@link
+     *     #provideTestClassWithCreateObjectMethod}
+     * @throws Exception
+     */
     @DisplayName("Test full object creation")
     @ParameterizedTest(name = "[{index}] in ''{0}''")
     @MethodSource("provideTestClassWithCreateObjectMethod")
@@ -62,6 +80,17 @@ public class BuilderCommonTest {
         assertNotNull(object);
     }
 
+    /**
+     * Test object creation via constructor and from method of a Builder class e.g. {@link
+     * UniRuleEntryBuilder#from}
+     *
+     * @param interfaceType The Class of the interface which is implemented by the class returned by
+     *     {@link Builder#build()} method
+     * @param builderClass The Class of the builder class
+     * @param testClass The test Class where createObject is implemented See {@link
+     *     #provideTypeBuilderTestClass} to test new Builder class
+     * @throws Exception
+     */
     @DisplayName("Test object creation by from method")
     @ParameterizedTest(name = "[{index}] of type ''{0}''")
     @MethodSource("provideTypeBuilderTestClass")
@@ -83,6 +112,15 @@ public class BuilderCommonTest {
         assertNotSame(object, objectByBuilder);
     }
 
+    /**
+     * Test adding null object in a list field of a builder class. Make sure the you follow Java
+     * Bean naming convention in model class and our conventions in builder class(<listNames>Add)
+     *
+     * @param builderClass The builder Class where the list field is defined
+     * @param objectClass The corresponding object Class for which builder is creating object See
+     *     {@link #provideBuilderObjectClass} to test new Builder class
+     * @throws Exception
+     */
     @DisplayName("Test add null object to list")
     @ParameterizedTest(name = "[{index}] fields of  ''{0}''")
     @MethodSource("provideBuilderObjectClass")
@@ -92,7 +130,7 @@ public class BuilderCommonTest {
         // get no-arg builder constructor
         Constructor<? extends Builder> noArgConstructor = builderClass.getConstructor();
 
-        for (Method method : builderClass.getDeclaredMethods()) {
+        for (Method method : builderClass.getMethods()) {
             if (method.getName().endsWith("Add")) {
                 // instantiate the builder class
                 Builder builder = noArgConstructor.newInstance();
@@ -104,7 +142,7 @@ public class BuilderCommonTest {
                 // get the builder's field name of type list
                 String fieldName = method.getName().substring(0, method.getName().indexOf("Add"));
                 String getMethodName = fieldToGetter(fieldName);
-                Method getMethod = objectClass.getDeclaredMethod(getMethodName);
+                Method getMethod = objectClass.getMethod(getMethodName);
                 assertNotNull(getMethod, getMethodName + " doesn't exist");
                 Object list = getMethod.invoke(object);
                 assertTrue(list instanceof List, fieldName + " is not type of List");
@@ -189,6 +227,8 @@ public class BuilderCommonTest {
                 Arguments.of(PositionalFeatureBuilder.class, PositionalFeatureImpl.class),
                 Arguments.of(PositionFeatureSetBuilder.class, PositionFeatureSetImpl.class),
                 Arguments.of(SamFeatureSetBuilder.class, SamFeatureSetImpl.class),
-                Arguments.of(SamTriggerBuilder.class, SamTriggerImpl.class));
+                Arguments.of(SamTriggerBuilder.class, SamTriggerImpl.class),
+                Arguments.of(RuleBuilder.class, RuleImpl.class),
+                Arguments.of(CaseRuleBuilder.class, CaseRuleImpl.class));
     }
 }
