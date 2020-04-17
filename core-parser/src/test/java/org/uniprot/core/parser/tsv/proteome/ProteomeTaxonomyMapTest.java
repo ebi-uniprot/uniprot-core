@@ -25,7 +25,7 @@ class ProteomeTaxonomyMapTest {
         assertEquals(3, result.size());
         assertEquals("Homo sapiens", result.get("organism"));
         assertEquals("9606", result.get("organism_id"));
-        assertNull(result.get("taxon_mnemonic"));
+        assertNull(result.get("mnemonic"));
     }
 
     @Test
@@ -36,7 +36,7 @@ class ProteomeTaxonomyMapTest {
 
     @Test
     void testFields() {
-        List<String> fields = Arrays.asList("organism", "organism_id", "taxon_mnemonic");
+        List<String> fields = Arrays.asList("organism", "organism_id", "mnemonic");
         assertEquals(ProteomeTaxonomyMap.FIELDS, fields);
     }
 }
