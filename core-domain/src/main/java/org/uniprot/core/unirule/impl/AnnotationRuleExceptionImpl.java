@@ -20,4 +20,14 @@ public class AnnotationRuleExceptionImpl extends AbstractRuleException<Annotatio
             List<UniProtKBAccession> accessions) {
         super(note, category, annotation, accessions);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

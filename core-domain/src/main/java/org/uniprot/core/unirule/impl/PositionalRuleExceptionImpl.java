@@ -20,4 +20,14 @@ public class PositionalRuleExceptionImpl extends AbstractRuleException<Positiona
             List<UniProtKBAccession> accessions) {
         super(note, category, positionalFeature, accessions);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

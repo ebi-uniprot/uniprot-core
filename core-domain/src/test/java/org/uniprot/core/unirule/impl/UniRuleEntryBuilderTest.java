@@ -35,6 +35,41 @@ public class UniRuleEntryBuilderTest {
     }
 
     @Test
+    void testCreateObjectUpdateMandatoryParamRuleStatus() {
+        UniRuleEntry entry = createObject();
+        assertNotNull(entry);
+        UniRuleEntryBuilder builder = UniRuleEntryBuilder.from(entry);
+        // update status
+        RuleStatus rs1 = RuleStatus.APPLY;
+        builder.ruleStatus(rs1);
+        UniRuleEntry updatedEntry = builder.build();
+        assertNotNull(updatedEntry);
+        assertEquals(rs1, updatedEntry.getRuleStatus());
+
+        builder = UniRuleEntryBuilder.from(updatedEntry);
+        // update status again if there is collision in selection
+        RuleStatus rs2 = RuleStatus.TEST;
+        builder.ruleStatus(rs2);
+        updatedEntry = builder.build();
+        assertNotNull(updatedEntry);
+        assertEquals(rs2, updatedEntry.getRuleStatus());
+    }
+
+    @Test
+    void testCreateObjectUpdateMandatoryParamRuleId() {
+        UniRuleEntry entry = createObject();
+        assertNotNull(entry);
+        UniRuleEntryBuilder builder = UniRuleEntryBuilder.from(entry);
+        // update rule id
+        UniRuleId rId = UniRuleIdBuilderTest.createObject();
+        builder.uniRuleId(rId);
+        UniRuleEntry updatedEntry = builder.build();
+        assertNotNull(updatedEntry);
+        assertEquals(rId, updatedEntry.getUniRuleId());
+        assertNotEquals(entry.getUniRuleId(), updatedEntry.getUniRuleId());
+    }
+
+    @Test
     void testCreateObjectOverwriteOtherRulesList() {
         UniRuleEntry uniRuleEntry = createObject();
         assertEquals(2, uniRuleEntry.getOtherRules().size());
