@@ -1,6 +1,6 @@
 package org.uniprot.core.json.parser.proteome;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,6 +23,7 @@ import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ProteomeTest {
@@ -80,6 +81,17 @@ public class ProteomeTest {
         ValidateJson.verifyJsonRoundTripParser(
                 ProteomeJsonConfig.getInstance().getFullObjectMapper(), proteome);
         ValidateJson.verifyEmptyFields(proteome);
+    }
+
+    @Test
+    void testIfCanWriteExtraBuscoScore() throws JsonProcessingException {
+        ObjectMapper mapper = ProteomeJsonConfig.getInstance().getSimpleObjectMapper();
+        BuscoReport buscoReport = createBuscoReport();
+
+        String jsonValue = mapper.writeValueAsString(buscoReport);
+
+        assertNotNull(jsonValue);
+        assertTrue(jsonValue.contains("\"score\":95"));
     }
 
     public static ProteomeEntry getCompleteProteomeEntry() {

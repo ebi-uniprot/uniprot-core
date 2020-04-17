@@ -142,6 +142,7 @@ public class ProteomeJsonConfig extends JsonConfig {
         simpleMod.addSerializer(JournalImpl.class, new JournalSerializer());
 
         simpleMod.addSerializer(ProteomeIdImpl.class, new ProteomeIdSerializer());
+        simpleMod.addSerializer(BuscoReportImpl.class, new BuscoReportSerializer());
 
         prettyObjMapper.registerModule(simpleMod);
         return prettyObjMapper;
