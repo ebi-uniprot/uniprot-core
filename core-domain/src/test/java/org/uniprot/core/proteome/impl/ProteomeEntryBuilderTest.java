@@ -374,4 +374,11 @@ class ProteomeEntryBuilderTest {
         ProteomeEntry entry = new ProteomeEntryBuilder().proteomeCompletenessReport(report).build();
         assertEquals(report, entry.getProteomeCompletenessReport());
     }
+
+    @Test
+    void canAddGenomeAssembly() {
+        GenomeAssembly genomeAssembly = new GenomeAssemblyBuilder().build();
+        ProteomeEntry entry = new ProteomeEntryBuilder().genomeAssembly(genomeAssembly).build();
+        assertEquals(genomeAssembly, entry.getGenomeAssembly());
+    }
 }

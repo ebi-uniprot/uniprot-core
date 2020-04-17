@@ -35,6 +35,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
     private List<CanonicalProtein> canonicalProteins = new ArrayList<>();
     private String sourceDb;
     private ProteomeCompletenessReport proteomeCompletenessReport;
+    private GenomeAssembly genomeAssembly;
 
     @Override
     public @Nonnull ProteomeEntry build() {
@@ -58,7 +59,8 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 taxonLineages,
                 canonicalProteins,
                 sourceDb,
-                proteomeCompletenessReport);
+                proteomeCompletenessReport,
+                genomeAssembly);
     }
 
     public static @Nonnull ProteomeEntryBuilder from(@Nonnull ProteomeEntry instance) {
@@ -82,7 +84,8 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 .geneCount(instance.getGeneCount())
                 .taxonLineagesSet(instance.getTaxonLineages())
                 .sourceDb(instance.getSourceDb())
-                .proteomeCompletenessReport(instance.getProteomeCompletenessReport());
+                .proteomeCompletenessReport(instance.getProteomeCompletenessReport())
+                .genomeAssembly(instance.getGenomeAssembly());
     }
 
     public @Nonnull ProteomeEntryBuilder proteomeId(ProteomeId id) {
@@ -223,6 +226,11 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
     public @Nonnull ProteomeEntryBuilder proteomeCompletenessReport(
             ProteomeCompletenessReport proteomeCompletenessReport) {
         this.proteomeCompletenessReport = proteomeCompletenessReport;
+        return this;
+    }
+
+    public @Nonnull ProteomeEntryBuilder genomeAssembly(GenomeAssembly genomeAssembly) {
+        this.genomeAssembly = genomeAssembly;
         return this;
     }
 }

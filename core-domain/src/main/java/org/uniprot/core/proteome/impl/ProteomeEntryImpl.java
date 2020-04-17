@@ -31,10 +31,11 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     private int annotationScore;
     private Superkingdom superkingdom;
     private ProteomeCompletenessReport proteomeCompletenessReport;
+    private GenomeAssembly genomeAssembly;
 
     private int geneCount;
     private int proteinCount;
-    List<TaxonomyLineage> taxonLineage;
+    private List<TaxonomyLineage> taxonLineage;
     private List<CanonicalProtein> canonicalProteins;
     private String sourceDb;
 
@@ -68,7 +69,8 @@ public class ProteomeEntryImpl implements ProteomeEntry {
             List<TaxonomyLineage> taxonLineage,
             List<CanonicalProtein> canonicalProteins,
             String sourceDb,
-            ProteomeCompletenessReport proteomeCompletenessReport) {
+            ProteomeCompletenessReport proteomeCompletenessReport,
+            GenomeAssembly genomeAssembly) {
         super();
         this.id = id;
         this.taxonomy = taxonomy;
@@ -92,6 +94,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
         this.canonicalProteins = Utils.unmodifiableList(canonicalProteins);
         this.sourceDb = sourceDb;
         this.proteomeCompletenessReport = proteomeCompletenessReport;
+        this.genomeAssembly = genomeAssembly;
     }
 
     @Override
@@ -200,6 +203,11 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     }
 
     @Override
+    public GenomeAssembly getGenomeAssembly() {
+        return genomeAssembly;
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(
                 components,
@@ -217,7 +225,8 @@ public class ProteomeEntryImpl implements ProteomeEntry {
                 taxonomy,
                 proteomeType,
                 sourceDb,
-                proteomeCompletenessReport);
+                proteomeCompletenessReport,
+                genomeAssembly);
     }
 
     @Override
@@ -241,6 +250,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
                 && Objects.equals(taxonomy, other.taxonomy)
                 && Objects.equals(proteomeType, other.proteomeType)
                 && Objects.equals(sourceDb, other.sourceDb)
-                && Objects.equals(proteomeCompletenessReport, other.proteomeCompletenessReport);
+                && Objects.equals(proteomeCompletenessReport, other.proteomeCompletenessReport)
+                && Objects.equals(genomeAssembly, other.genomeAssembly);
     }
 }

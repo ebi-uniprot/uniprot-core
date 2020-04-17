@@ -22,6 +22,14 @@ public interface BuscoReport extends Serializable {
 
     String getLineageDb();
 
+    default int getScore() {
+        int result = 0;
+        if (getTotal() > 0) {
+            result = (getComplete() + getFragmented()) * 100 / getTotal();
+        }
+        return result;
+    }
+
     /**
      * for data: 3775(C) 1639(CS) 2136(CD) 64(F) 111(M) 3950(T)
      *

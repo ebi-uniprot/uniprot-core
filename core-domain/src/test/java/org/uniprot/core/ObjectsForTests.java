@@ -603,6 +603,7 @@ public class ObjectsForTests {
                 .canonicalProteinsAdd(canonicalProtein)
                 .sourceDb("db")
                 .proteomeCompletenessReport(createProteomeCompletenessReport())
+                .genomeAssembly(createGenomeAssembly())
                 .build();
     }
 
@@ -620,6 +621,15 @@ public class ObjectsForTests {
                 .averageCdss(8)
                 .confidence(10)
                 .status(CPDStatus.STANDARD)
+                .build();
+    }
+
+    public static GenomeAssembly createGenomeAssembly() {
+        return new GenomeAssemblyBuilder()
+                .assemblyId("id value")
+                .genomeAssemblyUrl("url value")
+                .level(GenomeAssemblyLevel.FULL)
+                .source(GenomeAssemblySource.ENSEMBLBACTERIA)
                 .build();
     }
 

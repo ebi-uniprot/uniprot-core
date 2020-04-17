@@ -29,16 +29,38 @@ class BuscoReportImplTest {
 
     @Test
     void testCalculateSummary() {
-        BuscoReport report =
-                new BuscoReportBuilder()
-                        .complete(3775)
-                        .completeSingle(1639)
-                        .completeDuplicated(2136)
-                        .fragmented(64)
-                        .missing(111)
-                        .total(3950)
-                        .build();
+        BuscoReport report = getBuscoReport();
         assertNotNull(report.calculateSummary());
         assertEquals("C:95.6%[S:41.5%,D:54.1%],F:1.6%,M:2.8%,n:3950", report.calculateSummary());
+    }
+
+    @Test
+    void testCalculateSummaryZeroTotal() {
+        BuscoReport report = new BuscoReportBuilder().build();
+        assertNotNull(report.calculateSummary());
+        assertEquals("n:0", report.calculateSummary());
+    }
+
+    @Test
+    void testScore() {
+        BuscoReport report = getBuscoReport();
+        assertEquals(97, report.getScore());
+    }
+
+    @Test
+    void testScoreZeroTotal() {
+        BuscoReport report = new BuscoReportBuilder().build();
+        assertEquals(0, report.getScore());
+    }
+
+    private BuscoReport getBuscoReport() {
+        return new BuscoReportBuilder()
+                .complete(3775)
+                .completeSingle(1639)
+                .completeDuplicated(2136)
+                .fragmented(64)
+                .missing(111)
+                .total(3950)
+                .build();
     }
 }

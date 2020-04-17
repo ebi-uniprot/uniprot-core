@@ -170,6 +170,16 @@ public class ProteomeTest {
                 .canonicalProteinsAdd(canonicalProtein)
                 .sourceDb("source db")
                 .proteomeCompletenessReport(createProteomeCompletenessReport())
+                .genomeAssembly(createGenomeAssembly())
+                .build();
+    }
+
+    private static GenomeAssembly createGenomeAssembly() {
+        return new GenomeAssemblyBuilder()
+                .assemblyId("id value")
+                .genomeAssemblyUrl("url value")
+                .source(GenomeAssemblySource.ENSEMBLMETAZOA)
+                .level(GenomeAssemblyLevel.FULL)
                 .build();
     }
 
