@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
-import org.uniprot.core.uniprotkb.feature.FeatureLocation;
 import org.uniprot.core.unirule.PositionalFeature;
 
 public class PositionalFeatureImplTest {
@@ -22,7 +21,7 @@ public class PositionalFeatureImplTest {
     @Test
     void testCreateObject() {
         String pattern = "sample pattern";
-        Range range = new FeatureLocation(1, 2);
+        Range range = new Range(1, 2);
         String type = "sample type";
         String value = "sample valaue";
         boolean inGroup = true;

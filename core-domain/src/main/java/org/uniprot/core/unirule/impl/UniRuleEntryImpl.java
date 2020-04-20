@@ -1,7 +1,7 @@
 package org.uniprot.core.unirule.impl;
 
+import java.time.LocalDate;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,8 +20,8 @@ public class UniRuleEntryImpl implements UniRuleEntry {
     private List<PositionFeatureSet> positionFeatureSets;
     private String createdBy;
     private String modifiedBy;
-    private Date createdDate;
-    private Date modifiedDate;
+    private LocalDate createdDate;
+    private LocalDate modifiedDate;
 
     UniRuleEntryImpl() {
         this.otherRules = Collections.emptyList();
@@ -39,8 +39,8 @@ public class UniRuleEntryImpl implements UniRuleEntry {
             List<PositionFeatureSet> positionFeatureSets,
             String createdBy,
             String modifiedBy,
-            Date createdDate,
-            Date modifiedDate) {
+            LocalDate createdDate,
+            LocalDate modifiedDate) {
         if (Objects.isNull(uniRuleId)) {
             throw new IllegalArgumentException("id is a mandatory param for UniRule entry.");
         } else if (Objects.isNull(ruleStatus)) {
@@ -105,12 +105,12 @@ public class UniRuleEntryImpl implements UniRuleEntry {
     }
 
     @Override
-    public Date getCreatedDate() {
+    public LocalDate getCreatedDate() {
         return this.createdDate;
     }
 
     @Override
-    public Date getModifiedDate() {
+    public LocalDate getModifiedDate() {
         return this.modifiedDate;
     }
 

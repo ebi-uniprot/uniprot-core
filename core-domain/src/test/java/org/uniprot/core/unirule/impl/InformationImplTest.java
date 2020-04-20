@@ -7,9 +7,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
-import org.uniprot.core.uniprotkb.UniProtKBId;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
-import org.uniprot.core.uniprotkb.impl.UniProtKBIdBuilder;
 import org.uniprot.core.unirule.DataClassType;
 import org.uniprot.core.unirule.Fusion;
 import org.uniprot.core.unirule.Information;
@@ -38,9 +36,9 @@ public class InformationImplTest {
         String version = "version";
         String comment = "sample comment";
         String oldRuleNum = "rule num";
-        UniProtKBId uniProtKBId1 = new UniProtKBIdBuilder("upkid1").build();
-        UniProtKBId uniProtKBId2 = new UniProtKBIdBuilder("upkid2").build();
-        List<UniProtKBId> uniProtIds = Arrays.asList(uniProtKBId1, uniProtKBId2);
+        String uniProtKBId1 = "upkid1";
+        String uniProtKBId2 = "upkid2";
+        List<String> uniProtIds = Arrays.asList(uniProtKBId1, uniProtKBId2);
         UniProtKBAccession accession1 = new UniProtKBAccessionBuilder("P12345").build();
         UniProtKBAccession accession2 = new UniProtKBAccessionBuilder("Q12345").build();
         List<UniProtKBAccession> accessions = Arrays.asList(accession1, accession2);

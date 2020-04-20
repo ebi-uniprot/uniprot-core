@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
-import org.uniprot.core.uniprotkb.feature.FeatureLocation;
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.ConditionValue;
 
@@ -27,7 +26,7 @@ public class ConditionImplTest {
     void testCreateObject() {
         String type = "sample type";
         boolean isNegative = true;
-        Range range = new FeatureLocation(1, 2);
+        Range range = new Range(1, 2);
         String value1 = "sample value1";
         String value2 = "sample value2";
         ConditionValue cv1 = new ConditionValueBuilder(value1).build();
@@ -45,7 +44,7 @@ public class ConditionImplTest {
     @Test
     void testCreateObjectWithoutMandatoryParam() {
         boolean isNegative = true;
-        Range range = new FeatureLocation(1, 2);
+        Range range = new Range(1, 2);
         String value1 = "sample value1";
         String value2 = "sample value2";
         ConditionValue cv1 = new ConditionValueBuilder(value1).build();
