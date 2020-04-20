@@ -3,6 +3,9 @@ package org.uniprot.core.uniprotkb.description.impl;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.description.EC;
@@ -74,5 +77,18 @@ class ProteinSubNameBuilderTest {
         ProteinSubName obj2 = new ProteinSubNameBuilder().build();
         assertTrue(obj.equals(obj2) && obj2.equals(obj));
         assertEquals(obj.hashCode(), obj2.hashCode());
+    }
+
+    public static ProteinSubName createObject() {
+        ProteinSubNameBuilder builder = new ProteinSubNameBuilder();
+        Name fullName = NameBuilderTest.createObject();
+        builder.fullName(fullName);
+        List<EC> ecNumbers = ECBuilderTest.createObjects(3);
+        builder.ecNumbersSet(ecNumbers);
+        return builder.build();
+    }
+
+    public static List<ProteinSubName> createObjects(int count) {
+        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
     }
 }

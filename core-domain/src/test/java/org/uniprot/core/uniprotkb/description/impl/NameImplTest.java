@@ -6,7 +6,7 @@ import static org.uniprot.core.ObjectsForTests.createEvidences;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.description.Name;
 
-class NameImplTest {
+public class NameImplTest {
     @Test
     void needDefaultConstructorForJsonDeserialization() {
         Name obj = new NameImpl();

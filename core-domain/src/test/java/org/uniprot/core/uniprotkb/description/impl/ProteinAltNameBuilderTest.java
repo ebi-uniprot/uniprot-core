@@ -2,10 +2,16 @@ package org.uniprot.core.uniprotkb.description.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.description.EC;
+import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.description.ProteinAltName;
 
-class ProteinAltNameBuilderTest {
+public class ProteinAltNameBuilderTest {
     @Test
     void canAddSingleSortName() {
         ProteinAltName altName =
@@ -45,5 +51,20 @@ class ProteinAltNameBuilderTest {
         ProteinAltName obj2 = new ProteinAltNameBuilder().build();
         assertTrue(obj.equals(obj2) && obj2.equals(obj));
         assertEquals(obj.hashCode(), obj2.hashCode());
+    }
+
+    public static ProteinAltName createObject() {
+        ProteinAltNameBuilder builder = new ProteinAltNameBuilder();
+        Name fullName = NameBuilderTest.createObject();
+        List<Name> shortNames = NameBuilderTest.createObjects(3);
+        List<EC> ecNumbers = ECBuilderTest.createObjects(3);
+        builder.fullName(fullName);
+        builder.shortNamesSet(shortNames);
+        builder.ecNumbersSet(ecNumbers);
+        return builder.build();
+    }
+
+    public static List<ProteinAltName> createObjects(int count) {
+        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
     }
 }

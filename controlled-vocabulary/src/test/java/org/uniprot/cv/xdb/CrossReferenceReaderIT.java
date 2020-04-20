@@ -2,10 +2,12 @@ package org.uniprot.cv.xdb;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.uniprot.cv.common.CVSystemProperties.getDatabaseTypesLocation;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
@@ -25,8 +27,11 @@ class CrossReferenceReaderIT {
     @Test
     void testReadAll() throws IOException {
         int count = 0;
-        try (CrossReferenceReader reader =
-                new CrossReferenceReader(CrossReferenceValidator.DBREF_FTP)) {
+        String ftpUrl =
+                Optional.ofNullable(getDatabaseTypesLocation())
+                        .orElse(CrossReferenceValidator.DBREF_FTP);
+        System.out.println("FTP location found: " + ftpUrl);
+        try (CrossReferenceReader reader = new CrossReferenceReader(ftpUrl)) {
             DBXRef dbxRef;
             while ((dbxRef = reader.read()) != null) {
                 verifyDBXRef(dbxRef);

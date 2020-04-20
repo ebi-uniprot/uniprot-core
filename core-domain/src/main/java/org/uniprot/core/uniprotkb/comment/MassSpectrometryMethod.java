@@ -25,6 +25,7 @@ public enum MassSpectrometryMethod implements EnumDisplay {
     }
 
     public static @Nonnull MassSpectrometryMethod typeOf(@Nonnull String name) {
-        return EnumDisplay.typeOf(name, MassSpectrometryMethod.UNKNOWN);
+        return EnumDisplay.typeOf(
+                name, MassSpectrometryMethod.class, MassSpectrometryMethod.UNKNOWN);
     }
 }
