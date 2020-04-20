@@ -2,8 +2,8 @@ package org.uniprot.core.unirule.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
@@ -203,8 +203,8 @@ public class UniRuleEntryBuilderTest {
                 PositionFeatureSetBuilderTest.createObjects(1);
         String createdBy = "createdBy" + random;
         String modifiedBy = "modifiedBy" + random;
-        Date createdDate = new Date();
-        Date modifiedDate = new Date();
+        LocalDate createdDate = LocalDate.now();
+        LocalDate modifiedDate = LocalDate.now();
 
         UniRuleEntryBuilder builder = new UniRuleEntryBuilder(uniRuleId, ruleStatus);
         builder.mainRule(mainRule).information(information);

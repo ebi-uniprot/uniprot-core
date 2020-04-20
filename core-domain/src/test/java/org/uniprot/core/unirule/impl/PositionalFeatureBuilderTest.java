@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.uniprot.core.Range;
-import org.uniprot.core.uniprotkb.feature.FeatureLocation;
 import org.uniprot.core.unirule.PositionalFeature;
 
 public class PositionalFeatureBuilderTest {
@@ -21,7 +20,7 @@ public class PositionalFeatureBuilderTest {
         String value = "value-" + random;
         int start = ThreadLocalRandom.current().nextInt();
         int end = ThreadLocalRandom.current().nextInt(start + 1, Integer.MAX_VALUE);
-        Range position = new FeatureLocation(start, end);
+        Range position = new Range(start, end);
         boolean inGroup = start % 2 == 0;
         PositionalFeatureBuilder builder = new PositionalFeatureBuilder();
         builder.type(type).pattern(pattern).value(value);

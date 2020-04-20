@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
-import org.uniprot.core.uniprotkb.feature.FeatureLocation;
 import org.uniprot.core.unirule.SamTrigger;
 import org.uniprot.core.unirule.SamTriggerType;
 
@@ -19,7 +18,7 @@ public class SamTriggerImplTest {
 
     @Test
     void testCreateObject() {
-        Range expectedHits = new FeatureLocation(1, 2);
+        Range expectedHits = new Range(1, 2);
         SamTriggerType samTriggerType = SamTriggerType.COILED_COIL;
         SamTrigger samTrigger = new SamTriggerImpl(samTriggerType, expectedHits);
         assertNotNull(samTrigger);

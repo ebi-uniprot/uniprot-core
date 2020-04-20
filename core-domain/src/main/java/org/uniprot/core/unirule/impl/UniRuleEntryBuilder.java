@@ -2,8 +2,8 @@ package org.uniprot.core.unirule.impl;
 
 import static org.uniprot.core.util.Utils.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Nonnull;
@@ -21,8 +21,8 @@ public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
     private List<PositionFeatureSet> positionFeatureSets = new ArrayList<>();
     private String createdBy;
     private String modifiedBy;
-    private Date createdDate;
-    private Date modifiedDate;
+    private LocalDate createdDate;
+    private LocalDate modifiedDate;
 
     public UniRuleEntryBuilder(UniRuleId uniRuleId, RuleStatus ruleStatus) {
         this.uniRuleId = uniRuleId;
@@ -91,12 +91,12 @@ public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
         return this;
     }
 
-    public @Nonnull UniRuleEntryBuilder createdDate(Date createdDate) {
+    public @Nonnull UniRuleEntryBuilder createdDate(LocalDate createdDate) {
         this.createdDate = createdDate;
         return this;
     }
 
-    public @Nonnull UniRuleEntryBuilder modifiedDate(Date modifiedDate) {
+    public @Nonnull UniRuleEntryBuilder modifiedDate(LocalDate modifiedDate) {
         this.modifiedDate = modifiedDate;
         return this;
     }
