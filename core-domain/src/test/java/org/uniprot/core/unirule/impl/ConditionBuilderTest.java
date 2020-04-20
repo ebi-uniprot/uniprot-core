@@ -11,7 +11,6 @@ import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
-import org.uniprot.core.uniprotkb.feature.FeatureLocation;
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.ConditionValue;
 
@@ -71,7 +70,7 @@ public class ConditionBuilderTest {
         String type = "type-" + random;
         int start = ThreadLocalRandom.current().nextInt();
         int end = ThreadLocalRandom.current().nextInt(start + 1, Integer.MAX_VALUE);
-        Range range = new FeatureLocation(start, end);
+        Range range = new Range(start, end);
         boolean negative = start % 2 == 0;
         List<ConditionValue> conditionValues = ConditionValueBuilderTest.createObjects(5);
         ConditionBuilder builder = new ConditionBuilder(type);

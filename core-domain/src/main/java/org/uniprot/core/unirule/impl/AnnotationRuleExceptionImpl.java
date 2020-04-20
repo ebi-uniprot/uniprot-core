@@ -13,7 +13,7 @@ public class AnnotationRuleExceptionImpl extends AbstractRuleException<Annotatio
         super();
     }
 
-    AnnotationRuleExceptionImpl(
+    public AnnotationRuleExceptionImpl(
             String note,
             String category,
             Annotation annotation,

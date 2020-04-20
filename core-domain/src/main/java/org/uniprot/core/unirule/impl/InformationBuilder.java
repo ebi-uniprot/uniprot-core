@@ -10,7 +10,6 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
-import org.uniprot.core.uniprotkb.UniProtKBId;
 import org.uniprot.core.unirule.DataClassType;
 import org.uniprot.core.unirule.Fusion;
 import org.uniprot.core.unirule.Information;
@@ -19,7 +18,7 @@ public class InformationBuilder implements Builder<Information> {
     private String version;
     private String comment;
     private String oldRuleNum;
-    private List<UniProtKBId> uniProtIds = new ArrayList<>();
+    private List<String> uniProtIds = new ArrayList<>();
     private DataClassType dataClass;
     private List<String> names = new ArrayList<>();
     private Fusion fusion;
@@ -44,12 +43,12 @@ public class InformationBuilder implements Builder<Information> {
         return this;
     }
 
-    public @Nonnull InformationBuilder uniProtIdsAdd(UniProtKBId uniProtId) {
+    public @Nonnull InformationBuilder uniProtIdsAdd(String uniProtId) {
         addOrIgnoreNull(uniProtId, this.uniProtIds);
         return this;
     }
 
-    public @Nonnull InformationBuilder uniProtIdsSet(List<UniProtKBId> uniProtIds) {
+    public @Nonnull InformationBuilder uniProtIdsSet(List<String> uniProtIds) {
         this.uniProtIds = modifiableList(uniProtIds);
         return this;
     }

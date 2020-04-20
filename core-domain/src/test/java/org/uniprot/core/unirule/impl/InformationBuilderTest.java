@@ -12,9 +12,7 @@ import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
-import org.uniprot.core.uniprotkb.UniProtKBId;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilderTest;
-import org.uniprot.core.uniprotkb.impl.UniProtKBIdBuilderTest;
 import org.uniprot.core.unirule.DataClassType;
 import org.uniprot.core.unirule.Fusion;
 import org.uniprot.core.unirule.Information;
@@ -26,8 +24,8 @@ public class InformationBuilderTest {
         Information information = createObject();
         // add couple of uniProtIds
         InformationBuilder builder = InformationBuilder.from(information);
-        UniProtKBId up1 = UniProtKBIdBuilderTest.createObject();
-        UniProtKBId up2 = UniProtKBIdBuilderTest.createObject();
+        String up1 = "upkbid1";
+        String up2 = "upkibid2";
         builder.uniProtIdsAdd(up1).uniProtIdsAdd(up2);
         Information updatedInformation = builder.build();
         assertNotNull(updatedInformation);
@@ -92,7 +90,7 @@ public class InformationBuilderTest {
     @Test
     void testAddOneUniProtKBId() {
         InformationBuilder builder = new InformationBuilder();
-        UniProtKBId uniProtKBId = UniProtKBIdBuilderTest.createObject();
+        String uniProtKBId = "upkbid1";
         builder.uniProtIdsAdd(uniProtKBId);
         Information information = builder.build();
         assertNotNull(information);
@@ -155,7 +153,10 @@ public class InformationBuilderTest {
         String comment = "comment-" + random;
         String oldRuleNum = "oldRuleNum-" + random;
         String internal = "internal-" + random;
-        List<UniProtKBId> uniProtIds = UniProtKBIdBuilderTest.createObjects(5);
+        List<String> uniProtIds =
+                IntStream.range(0, 5)
+                        .mapToObj(i -> i + "upi" + random)
+                        .collect(Collectors.toList());
         int rIndex = ThreadLocalRandom.current().nextInt(0, DataClassType.values().length);
         DataClassType dataClass = DataClassType.values()[rIndex];
         List<String> names =

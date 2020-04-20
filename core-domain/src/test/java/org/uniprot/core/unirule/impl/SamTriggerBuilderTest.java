@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.uniprot.core.Range;
-import org.uniprot.core.uniprotkb.feature.FeatureLocation;
 import org.uniprot.core.unirule.SamTrigger;
 import org.uniprot.core.unirule.SamTriggerType;
 
@@ -18,7 +17,7 @@ public class SamTriggerBuilderTest {
         int rIndex = ThreadLocalRandom.current().nextInt(0, SamTriggerType.values().length);
         int start = ThreadLocalRandom.current().nextInt();
         int end = ThreadLocalRandom.current().nextInt(start + 1, Integer.MAX_VALUE);
-        Range expectedHits = new FeatureLocation(start, end);
+        Range expectedHits = new Range(start, end);
         SamTriggerType samTriggerType = SamTriggerType.values()[rIndex];
         SamTriggerBuilder builder = new SamTriggerBuilder();
         builder.expectedHits(expectedHits).samTriggerType(samTriggerType);
