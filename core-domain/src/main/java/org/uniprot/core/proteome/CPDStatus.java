@@ -27,11 +27,7 @@ public enum CPDStatus implements EnumDisplay {
     }
 
     public static @Nonnull CPDStatus fromValue(@Nonnull String type) {
-        try {
-            return EnumDisplay.typeOf(type, CPDStatus.class);
-        } catch (IllegalArgumentException iae) {
-            return CPDStatus.UNKNOWN;
-        }
+        return EnumDisplay.typeOf(type, CPDStatus.class, CPDStatus.UNKNOWN);
     }
 
     @Nonnull
