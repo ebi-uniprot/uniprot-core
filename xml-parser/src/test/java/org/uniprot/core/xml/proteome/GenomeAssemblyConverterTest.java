@@ -16,7 +16,7 @@ import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
  */
 class GenomeAssemblyConverterTest {
     private final ObjectFactory xmlFactory = new ObjectFactory();
-    GenomeAssemblyConverter converter = new GenomeAssemblyConverter();
+    private final GenomeAssemblyConverter converter = new GenomeAssemblyConverter();
 
     @Test
     void testFromXmlNull() {

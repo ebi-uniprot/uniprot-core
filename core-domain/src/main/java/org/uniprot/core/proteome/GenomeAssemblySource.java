@@ -31,10 +31,6 @@ public enum GenomeAssemblySource implements EnumDisplay {
     }
 
     public static @Nonnull GenomeAssemblySource fromValue(@Nonnull String sourceValue) {
-        for (GenomeAssemblySource source : GenomeAssemblySource.values()) {
-            if (source.getDisplayName().equalsIgnoreCase(sourceValue)) return source;
-        }
-        throw new IllegalArgumentException(
-                "The GenomeAssemblySource with " + sourceValue + " doesn't exist");
+        return EnumDisplay.typeOf(sourceValue, GenomeAssemblySource.class);
     }
 }

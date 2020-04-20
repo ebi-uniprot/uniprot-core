@@ -27,10 +27,11 @@ public enum CPDStatus implements EnumDisplay {
     }
 
     public static @Nonnull CPDStatus fromValue(@Nonnull String type) {
-        for (CPDStatus status : CPDStatus.values()) {
-            if (status.getDisplayName().equalsIgnoreCase(type)) return status;
+        try {
+            return EnumDisplay.typeOf(type, CPDStatus.class);
+        } catch (IllegalArgumentException iae) {
+            return CPDStatus.UNKNOWN;
         }
-        return CPDStatus.UNKNOWN;
     }
 
     @Nonnull

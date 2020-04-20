@@ -24,10 +24,6 @@ public enum GenomeAssemblyLevel implements EnumDisplay {
     }
 
     public static @Nonnull GenomeAssemblyLevel fromValue(@Nonnull String levelValue) {
-        for (GenomeAssemblyLevel level : GenomeAssemblyLevel.values()) {
-            if (level.getDisplayName().equalsIgnoreCase(levelValue)) return level;
-        }
-        throw new IllegalArgumentException(
-                "The GenomeAssemblyLevel with " + levelValue + " doesn't exist");
+        return EnumDisplay.typeOf(levelValue, GenomeAssemblyLevel.class);
     }
 }

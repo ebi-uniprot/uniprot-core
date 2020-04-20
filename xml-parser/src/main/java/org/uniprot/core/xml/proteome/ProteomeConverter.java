@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.proteome;
 
+import static org.uniprot.core.util.Utils.*;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,12 +15,9 @@ import org.uniprot.core.proteome.impl.ProteomeEntryBuilder;
 import org.uniprot.core.proteome.impl.ProteomeIdBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
-import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.*;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
-
-import com.google.common.base.Strings;
 
 public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
 
@@ -93,14 +92,14 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
                 .genomeAssembly(genomeAssemblyConverter.fromXml(xmlObj.getGenomeAssembly()))
                 .proteomeCompletenessReport(getCompletenessReport(xmlObj.getScores()));
 
-        if (xmlObj.getAnnotationScore() != null) {
+        if (notNull(xmlObj.getAnnotationScore())) {
             builder.annotationScore(xmlObj.getAnnotationScore().getNormalizedAnnotationScore());
         }
 
-        if (!Strings.isNullOrEmpty(xmlObj.getRedundantTo())) {
+        if (notNullNotEmpty(xmlObj.getRedundantTo())) {
             builder.redundantTo(proteomeId(xmlObj.getRedundantTo()));
         }
-        if (!Strings.isNullOrEmpty(xmlObj.getPanproteome())) {
+        if (notNullNotEmpty(xmlObj.getPanproteome())) {
             builder.panproteome(proteomeId(xmlObj.getPanproteome()));
         }
 
@@ -109,7 +108,7 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
 
     private ProteomeCompletenessReport getCompletenessReport(List<ScoreType> scores) {
         ProteomeCompletenessReport result = null;
-        if (Utils.notNullNotEmpty(scores)) {
+        if (notNullNotEmpty(scores)) {
             ProteomeCompletenessReportBuilder builder = new ProteomeCompletenessReportBuilder();
             Optional<BuscoReport> buscoReport =
                     scores.stream()
@@ -175,26 +174,26 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
                 .filter(Objects::nonNull)
                 .forEach(val -> xmlObj.getReference().add(val));
 
-        if ((uniObj.getRedundantTo() != null)
-                && !Strings.isNullOrEmpty(uniObj.getRedundantTo().getValue())) {
+        if ((notNull(uniObj.getRedundantTo()))
+                && notNullNotEmpty(uniObj.getRedundantTo().getValue())) {
             xmlObj.setRedundantTo(uniObj.getRedundantTo().getValue());
         }
 
         AnnotationScoreType annotationScore = xmlFactory.createAnnotationScoreType();
         annotationScore.setNormalizedAnnotationScore(uniObj.getAnnotationScore());
         xmlObj.setAnnotationScore(annotationScore);
-        if (Utils.notNull(uniObj.getPanproteome())) {
+        if (notNull(uniObj.getPanproteome())) {
             xmlObj.setPanproteome(uniObj.getPanproteome().getValue());
         }
-        if (Utils.notNull(uniObj.getGenomeAssembly())) {
+        if (notNull(uniObj.getGenomeAssembly())) {
             xmlObj.setGenomeAssembly(genomeAssemblyConverter.toXml(uniObj.getGenomeAssembly()));
         }
-        if (Utils.notNull(uniObj.getProteomeCompletenessReport())) {
+        if (notNull(uniObj.getProteomeCompletenessReport())) {
             ProteomeCompletenessReport reports = uniObj.getProteomeCompletenessReport();
-            if (Utils.notNull(reports.getBuscoReport())) {
+            if (notNull(reports.getBuscoReport())) {
                 xmlObj.getScores().add(scoreBuscoConverter.toXml(reports.getBuscoReport()));
             }
-            if (Utils.notNull(reports.getCPDReport())) {
+            if (notNull(reports.getCPDReport())) {
                 xmlObj.getScores().add(scoreCPDConverter.toXml(reports.getCPDReport()));
             }
         }

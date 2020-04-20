@@ -14,12 +14,14 @@ import org.uniprot.core.util.Utils;
 public class GenomeAssemblyImpl implements GenomeAssembly {
 
     private static final long serialVersionUID = 4581433599122268512L;
-    private String assemblyId;
-    private String genomeAssemblyUrl;
-    private GenomeAssemblyLevel level;
-    private GenomeAssemblySource source;
+    private final String assemblyId;
+    private final String genomeAssemblyUrl;
+    private final GenomeAssemblyLevel level;
+    private final GenomeAssemblySource source;
 
-    GenomeAssemblyImpl() {}
+    GenomeAssemblyImpl() {
+        this(null, null, null, null);
+    }
 
     GenomeAssemblyImpl(
             String assemblyId,

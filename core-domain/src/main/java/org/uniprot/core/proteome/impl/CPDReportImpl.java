@@ -13,14 +13,16 @@ public class CPDReportImpl implements CPDReport {
 
     private static final long serialVersionUID = 5918492529895632495L;
 
-    private int proteomeCount;
-    private double stdCdss;
-    private int averageCdss;
-    private int confidence;
-    private CPDStatus status;
+    private final int proteomeCount;
+    private final double stdCdss;
+    private final int averageCdss;
+    private final int confidence;
+    private final CPDStatus status;
 
     // no arg constructor for JSON deserialization
-    CPDReportImpl() {}
+    CPDReportImpl() {
+        this(0, 0d, 0, 0, null);
+    }
 
     CPDReportImpl(
             int proteomeCount, double stdCdss, int averageCdss, int confidence, CPDStatus status) {

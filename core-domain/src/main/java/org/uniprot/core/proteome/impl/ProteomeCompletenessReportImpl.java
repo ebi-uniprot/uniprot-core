@@ -14,11 +14,13 @@ public class ProteomeCompletenessReportImpl implements ProteomeCompletenessRepor
 
     private static final long serialVersionUID = -7923662394693441279L;
 
-    private BuscoReport buscoReport;
-    private CPDReport cpdReport;
+    private final BuscoReport buscoReport;
+    private final CPDReport cpdReport;
 
     // no arg constructor for JSON deserialization
-    ProteomeCompletenessReportImpl() {}
+    ProteomeCompletenessReportImpl() {
+        this(null, null);
+    }
 
     ProteomeCompletenessReportImpl(BuscoReport buscoReport, CPDReport cpdReport) {
         this.buscoReport = buscoReport;

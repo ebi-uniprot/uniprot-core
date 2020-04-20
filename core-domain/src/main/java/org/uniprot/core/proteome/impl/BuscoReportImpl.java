@@ -13,16 +13,18 @@ public class BuscoReportImpl implements BuscoReport {
 
     private static final long serialVersionUID = -4682876141794045279L;
 
-    private int complete;
-    private int completeSingle;
-    private int completeDuplicated;
-    private int fragmented;
-    private int missing;
-    private int total;
-    private String lineageDb;
+    private final int complete;
+    private final int completeSingle;
+    private final int completeDuplicated;
+    private final int fragmented;
+    private final int missing;
+    private final int total;
+    private final String lineageDb;
 
     // no arg constructor for JSON deserialization
-    BuscoReportImpl() {}
+    BuscoReportImpl() {
+        this(0, 0, 0, 0, 0, 0, null);
+    }
 
     BuscoReportImpl(
             int complete,
