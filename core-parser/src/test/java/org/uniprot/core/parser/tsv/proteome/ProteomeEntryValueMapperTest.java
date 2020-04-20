@@ -8,17 +8,8 @@ import java.util.*;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
-import org.uniprot.core.proteome.Component;
-import org.uniprot.core.proteome.ProteomeDatabase;
-import org.uniprot.core.proteome.ProteomeEntry;
-import org.uniprot.core.proteome.ProteomeId;
-import org.uniprot.core.proteome.ProteomeType;
-import org.uniprot.core.proteome.RedundantProteome;
-import org.uniprot.core.proteome.Superkingdom;
-import org.uniprot.core.proteome.impl.ComponentBuilder;
-import org.uniprot.core.proteome.impl.ProteomeEntryBuilder;
-import org.uniprot.core.proteome.impl.ProteomeIdBuilder;
-import org.uniprot.core.proteome.impl.RedundantProteomeBuilder;
+import org.uniprot.core.proteome.*;
+import org.uniprot.core.proteome.impl.*;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.impl.TaxonomyLineageBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
@@ -33,13 +24,16 @@ class ProteomeEntryValueMapperTest {
     @Test
     void testGetDataSimple() {
         ProteomeEntry entry = create();
-        List<String> fields = Arrays.asList("upid", "genome_assembly", "protein_count");
+        List<String> fields =
+                Arrays.asList("upid", "genome_assembly", "protein_count", "busco", "cpd");
         Map<String, String> entryMap = new ProteomeEntryValueMapper().mapEntity(entry, fields);
 
         assertEquals(fields.size(), entryMap.size());
         verify("UP000005640", "upid", entryMap);
         verify("204", "protein_count", entryMap);
-        verify("", "genome_assembly", entryMap);
+        verify("assembly id", "genome_assembly", entryMap);
+        verify("C:130.0%[S:140.0%,D:150.0%],F:110.0%,M:120.0%,n:100", "busco", entryMap);
+        verify("Close to Standard", "cpd", entryMap);
     }
 
     @Test
@@ -48,7 +42,7 @@ class ProteomeEntryValueMapperTest {
         List<String> fields = Arrays.asList("upid", "lineage");
         Map<String, String> entryMap = new ProteomeEntryValueMapper().mapEntity(entry, fields);
 
-        assertEquals(4, entryMap.size());
+        assertEquals(6, entryMap.size());
         verify("UP000005640", "upid", entryMap);
         verify("Hominidae, Homo", "lineage", entryMap);
     }
@@ -59,7 +53,7 @@ class ProteomeEntryValueMapperTest {
         List<String> fields = Arrays.asList("upid", "components");
         Map<String, String> entryMap = new ProteomeEntryValueMapper().mapEntity(entry, fields);
 
-        assertEquals(4, entryMap.size());
+        assertEquals(6, entryMap.size());
         verify("UP000005640", "upid", entryMap);
         verify("someName1; someName2", "components", entryMap);
     }
@@ -67,14 +61,14 @@ class ProteomeEntryValueMapperTest {
     @Test
     void testGetDataOrganism() {
         ProteomeEntry entry = create();
-        List<String> fields = Arrays.asList("upid", "organism", "organism_id", "taxon_mnemonic");
+        List<String> fields = Arrays.asList("upid", "organism", "organism_id", "mnemonic");
         Map<String, String> entryMap = new ProteomeEntryValueMapper().mapEntity(entry, fields);
 
-        assertEquals(6, entryMap.size());
+        assertEquals(8, entryMap.size());
         verify("UP000005640", "upid", entryMap);
         verify("Homo sapiens (Human)", "organism", entryMap);
         verify("9606", "organism_id", entryMap);
-        verify(null, "taxon_mnemonic", entryMap);
+        verify("mnemonic value", "mnemonic", entryMap);
     }
 
     private void verify(String expected, String field, Map<String, String> result) {
@@ -137,6 +131,7 @@ class ProteomeEntryValueMapperTest {
                         .taxonId(9606)
                         .scientificName("Homo sapiens")
                         .commonName("Human")
+                        .mnemonic("mnemonic value")
                         .build();
         TaxonomyLineage taxon1 =
                 new TaxonomyLineageBuilder().taxonId(9604).scientificName("Hominidae").build();
@@ -158,7 +153,45 @@ class ProteomeEntryValueMapperTest {
                         .superkingdom(Superkingdom.EUKARYOTA)
                         .componentsSet(components)
                         .redundantProteomesSet(redundantProteomes)
+                        .genomeAssembly(createGenomyAssembly())
+                        .proteomeCompletenessReport(createCompletenessReport())
                         .build();
         return proteome;
+    }
+
+    private GenomeAssembly createGenomyAssembly() {
+        return new GenomeAssemblyBuilder()
+                .assemblyId("assembly id")
+                .genomeAssemblyUrl("assembly url")
+                .source(GenomeAssemblySource.ENSEMBL)
+                .level(GenomeAssemblyLevel.PARTIAL)
+                .build();
+    }
+
+    private ProteomeCompletenessReport createCompletenessReport() {
+        BuscoReport buscoReport =
+                new BuscoReportBuilder()
+                        .total(100)
+                        .fragmented(110)
+                        .missing(120)
+                        .complete(130)
+                        .completeSingle(140)
+                        .completeDuplicated(150)
+                        .lineageDb("lineage value")
+                        .build();
+
+        CPDReport cpdReport =
+                new CPDReportBuilder()
+                        .averageCdss(100)
+                        .confidence(110)
+                        .proteomeCount(120)
+                        .status(CPDStatus.CLOSE_TO_STANDARD)
+                        .stdCdss(12.3d)
+                        .build();
+
+        return new ProteomeCompletenessReportBuilder()
+                .buscoReport(buscoReport)
+                .cpdReport(cpdReport)
+                .build();
     }
 }

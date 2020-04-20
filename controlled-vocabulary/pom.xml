@@ -8,10 +8,10 @@
 		<groupId>org.uniprot</groupId>
 		<artifactId>core-parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../</relativePath>
 	</parent>
 
 	<artifactId>controlled-vocabulary</artifactId>
-	<version>${project.parent.version}</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

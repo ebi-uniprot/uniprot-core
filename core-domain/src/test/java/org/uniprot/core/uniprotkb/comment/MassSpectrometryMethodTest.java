@@ -36,13 +36,18 @@ class MassSpectrometryMethodTest {
 
         @ParameterizedTest
         @ValueSource(strings = {"uniprotkbid", "UNIPARCID", "", "abc", "  "})
-        void willThrowException(String val) {
-            assertThrows(IllegalArgumentException.class, () -> MassSpectrometryMethod.typeOf(val));
+        void whileConvertingFromFlatFile_anythingElse_willBeUnknown(String val) {
+            assertEquals(MassSpectrometryMethod.UNKNOWN, MassSpectrometryMethod.typeOf(val));
         }
 
         @Test
-        void willThrowException_null() {
-            assertThrows(IllegalArgumentException.class, () -> MassSpectrometryMethod.typeOf(null));
+        void whileConvertingFromFlatFile_null_willBeUnknown() {
+            assertEquals(MassSpectrometryMethod.UNKNOWN, MassSpectrometryMethod.typeOf(null));
+        }
+
+        @Test
+        void flatFileCanConvertFromAPI() {
+            assertEquals(MassSpectrometryMethod.API, MassSpectrometryMethod.typeOf("API"));
         }
     }
 }

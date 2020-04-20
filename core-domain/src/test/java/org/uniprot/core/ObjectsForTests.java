@@ -602,6 +602,46 @@ public class ObjectsForTests {
                 .taxonLineagesAdd(getCompleteTaxonomyLineage())
                 .canonicalProteinsAdd(canonicalProtein)
                 .sourceDb("db")
+                .proteomeCompletenessReport(createProteomeCompletenessReport())
+                .genomeAssembly(createGenomeAssembly())
+                .build();
+    }
+
+    public static ProteomeCompletenessReport createProteomeCompletenessReport() {
+        return new ProteomeCompletenessReportBuilder()
+                .buscoReport(createBuscoReport())
+                .cpdReport(createCPDReport())
+                .build();
+    }
+
+    public static CPDReport createCPDReport() {
+        return new CPDReportBuilder()
+                .proteomeCount(15)
+                .stdCdss(13d)
+                .averageCdss(8)
+                .confidence(10)
+                .status(CPDStatus.STANDARD)
+                .build();
+    }
+
+    public static GenomeAssembly createGenomeAssembly() {
+        return new GenomeAssemblyBuilder()
+                .assemblyId("id value")
+                .genomeAssemblyUrl("url value")
+                .level(GenomeAssemblyLevel.FULL)
+                .source(GenomeAssemblySource.ENSEMBLBACTERIA)
+                .build();
+    }
+
+    public static BuscoReport createBuscoReport() {
+        return new BuscoReportBuilder()
+                .total(103)
+                .complete(80)
+                .completeDuplicated(12)
+                .completeSingle(8)
+                .fragmented(18)
+                .missing(20)
+                .lineageDb("lineageDb value")
                 .build();
     }
 

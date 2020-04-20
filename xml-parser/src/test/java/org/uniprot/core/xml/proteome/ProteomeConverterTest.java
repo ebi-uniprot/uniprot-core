@@ -15,6 +15,7 @@ import org.uniprot.core.citation.impl.SubmissionBuilder;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.proteome.*;
 import org.uniprot.core.proteome.impl.ComponentBuilder;
+import org.uniprot.core.proteome.impl.ProteomeCompletenessReportBuilder;
 import org.uniprot.core.proteome.impl.ProteomeEntryBuilder;
 import org.uniprot.core.proteome.impl.ProteomeIdBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
@@ -38,8 +39,8 @@ class ProteomeConverterTest {
         Taxonomy taxonomy =
                 new TaxonomyBuilder().taxonId(9606).scientificName("Homo sapiens").build();
         LocalDate modified = LocalDate.of(2015, 11, 5);
-        //	String reId = "UP000005641";
-        //	ProteomeId redId = new ProteomeIdBuilder (reId).build();
+        String reId = "UP000005641";
+        ProteomeId redId = new ProteomeIdBuilder(reId).build();
         List<CrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
         CrossReference<ProteomeDatabase> xref1 =
                 new CrossReferenceBuilder<ProteomeDatabase>()
@@ -73,20 +74,29 @@ class ProteomeConverterTest {
         List<Citation> citations = new ArrayList<>();
         citations.add(createJournal());
         citations.add(createSubmission());
+
+        ProteomeCompletenessReport report =
+                new ProteomeCompletenessReportBuilder()
+                        .buscoReport(ScoreBuscoConverterTest.createBuscoReport())
+                        .cpdReport(ScoreCPDConverterTest.createCPDReport())
+                        .build();
+
         ProteomeEntryBuilder builder =
                 new ProteomeEntryBuilder()
                         .proteomeId(proteomeId)
                         .description(description)
                         .taxonomy(taxonomy)
                         .modified(modified)
-                        .proteomeType(ProteomeType.NORMAL)
-                        //	.redundantTo(redId)
+                        .proteomeType(ProteomeType.REFERENCE)
+                        .redundantTo(redId)
+                        .panproteome(redId)
                         .proteomeCrossReferencesSet(xrefs)
                         .componentsSet(components)
                         .superkingdom(Superkingdom.EUKARYOTA)
                         .citationsSet(citations)
-                        .annotationScore(15);
-
+                        .annotationScore(15)
+                        .genomeAssembly(GenomeAssemblyConverterTest.createGenomeAssembly())
+                        .proteomeCompletenessReport(report);
         return builder.build();
     }
 

@@ -23,6 +23,6 @@ public enum GeneNameType implements EnumDisplay {
     }
 
     public static @Nonnull GeneNameType typeOf(@Nonnull String name) {
-        return EnumDisplay.typeOf(name, GeneNameType.MISSING);
+        return EnumDisplay.typeOf(name, GeneNameType.class, GeneNameType.MISSING);
     }
 }

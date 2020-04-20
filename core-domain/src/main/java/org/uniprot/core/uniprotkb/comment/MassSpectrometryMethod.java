@@ -10,7 +10,9 @@ public enum MassSpectrometryMethod implements EnumDisplay {
     LSI("LSI"),
     MALDI("MALDI"),
     PLASMA_DESORPTION("Plasma desorption"),
-    SELDI("SELDI");
+    SELDI("SELDI"),
+    API("API"),
+    UNKNOWN("Unknown");
 
     private String name;
 
@@ -23,6 +25,7 @@ public enum MassSpectrometryMethod implements EnumDisplay {
     }
 
     public static @Nonnull MassSpectrometryMethod typeOf(@Nonnull String name) {
-        return EnumDisplay.typeOf(name, MassSpectrometryMethod.class);
+        return EnumDisplay.typeOf(
+                name, MassSpectrometryMethod.class, MassSpectrometryMethod.UNKNOWN);
     }
 }

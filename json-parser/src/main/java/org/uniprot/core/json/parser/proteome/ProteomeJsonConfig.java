@@ -37,18 +37,8 @@ import org.uniprot.core.json.parser.serializer.LocalDateSerializer;
 import org.uniprot.core.json.parser.serializer.LocatorSerializer;
 import org.uniprot.core.json.parser.serializer.PublicationDateSerializer;
 import org.uniprot.core.json.parser.uniprot.serializer.UniProtKBAccessionSerializer;
-import org.uniprot.core.proteome.CanonicalProtein;
-import org.uniprot.core.proteome.Component;
-import org.uniprot.core.proteome.Protein;
-import org.uniprot.core.proteome.ProteomeEntry;
-import org.uniprot.core.proteome.ProteomeId;
-import org.uniprot.core.proteome.RedundantProteome;
-import org.uniprot.core.proteome.impl.CanonicalProteinImpl;
-import org.uniprot.core.proteome.impl.ComponentImpl;
-import org.uniprot.core.proteome.impl.ProteinImpl;
-import org.uniprot.core.proteome.impl.ProteomeEntryImpl;
-import org.uniprot.core.proteome.impl.ProteomeIdImpl;
-import org.uniprot.core.proteome.impl.RedundantProteomeImpl;
+import org.uniprot.core.proteome.*;
+import org.uniprot.core.proteome.impl.*;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.impl.TaxonomyLineageImpl;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
@@ -61,7 +51,7 @@ import com.fasterxml.jackson.databind.jsontype.NamedType;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
 public class ProteomeJsonConfig extends JsonConfig {
-    private static ProteomeJsonConfig INSTANCE;
+    private static ProteomeJsonConfig instance;
 
     private final ObjectMapper objectMapper;
     private final ObjectMapper prettyMapper;
@@ -72,10 +62,10 @@ public class ProteomeJsonConfig extends JsonConfig {
     }
 
     public static synchronized ProteomeJsonConfig getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new ProteomeJsonConfig();
+        if (instance == null) {
+            instance = new ProteomeJsonConfig();
         }
-        return INSTANCE;
+        return instance;
     }
 
     @Override
@@ -108,6 +98,12 @@ public class ProteomeJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Protein.class, ProteinImpl.class);
         mod.addAbstractTypeMapping(CanonicalProtein.class, CanonicalProteinImpl.class);
         mod.addAbstractTypeMapping(UniProtKBAccession.class, UniProtKBAccessionImpl.class);
+
+        mod.addAbstractTypeMapping(
+                ProteomeCompletenessReport.class, ProteomeCompletenessReportImpl.class);
+        mod.addAbstractTypeMapping(BuscoReport.class, BuscoReportImpl.class);
+        mod.addAbstractTypeMapping(CPDReport.class, CPDReportImpl.class);
+        mod.addAbstractTypeMapping(GenomeAssembly.class, GenomeAssemblyImpl.class);
 
         mod.addAbstractTypeMapping(PublicationDate.class, PublicationDateImpl.class);
         mod.addAbstractTypeMapping(Locator.class, ElectronicArticleImpl.LocatorImpl.class);
@@ -146,6 +142,7 @@ public class ProteomeJsonConfig extends JsonConfig {
         simpleMod.addSerializer(JournalImpl.class, new JournalSerializer());
 
         simpleMod.addSerializer(ProteomeIdImpl.class, new ProteomeIdSerializer());
+        simpleMod.addSerializer(BuscoReportImpl.class, new BuscoReportSerializer());
 
         prettyObjMapper.registerModule(simpleMod);
         return prettyObjMapper;

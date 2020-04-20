@@ -2,11 +2,17 @@ package org.uniprot.core.uniprotkb.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.uniprotkb.Keyword;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilderTest;
 
-class KeywordBuilderTest {
+public class KeywordBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         Keyword obj = new KeywordBuilder().build();
@@ -32,5 +38,17 @@ class KeywordBuilderTest {
     void canSetCategoryFromBuilder() {
         Keyword keyword = new KeywordBuilder().category(KeywordCategory.UNKNOWN).build();
         assertEquals(KeywordCategory.UNKNOWN, keyword.getCategory());
+    }
+
+    public static Keyword createObject() {
+        KeywordBuilder builder = new KeywordBuilder();
+        String random = UUID.randomUUID().toString();
+        String id = "id-" + random;
+        String name = "name-" + random;
+        int rIndex = ThreadLocalRandom.current().nextInt(0, KeywordCategory.values().length);
+        KeywordCategory kc = KeywordCategory.values()[rIndex];
+        List<Evidence> evidences = EvidenceBuilderTest.createObjects(3);
+        builder.id(id).name(name).category(kc).evidencesSet(evidences);
+        return builder.build();
     }
 }

@@ -3,13 +3,15 @@ package org.uniprot.core.uniprotkb.impl;
 import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.gene.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
 
-class GeneBuilderTest {
+public class GeneBuilderTest {
 
     private static final String DB_ID_1 = "PDB Id";
     private static final String DB_NAME_1 = "PDB";
@@ -78,7 +80,7 @@ class GeneBuilderTest {
     }
 
     @Test
-    void testFullGeneBuilderCreationUsingAddMethoIsAsExpected() {
+    void testFullGeneBuilderCreationUsingAddMethodIsAsExpected() {
 
         GeneBuilder builder =
                 new GeneBuilder()
@@ -132,5 +134,18 @@ class GeneBuilderTest {
     void toStringEmpty() {
         Gene obj = new GeneBuilder().build();
         assertEquals("", obj.toString());
+    }
+
+    public static Gene createObject() {
+        GeneBuilder builder = new GeneBuilder();
+        GeneName geneName = GeneNameBuilderTest.createObject();
+        List<GeneNameSynonym> synonyms = GeneNameSynonymBuilderTest.createObjects(3);
+        List<OrderedLocusName> orderedLocusNames = OrderedLocusNameBuilderTest.createObjects(3);
+        List<ORFName> orfNames = ORFNameBuilderTest.createObjects(4);
+        return builder.geneName(geneName)
+                .synonymsSet(synonyms)
+                .orderedLocusNamesSet(orderedLocusNames)
+                .orfNamesSet(orfNames)
+                .build();
     }
 }

@@ -12,8 +12,7 @@ import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
  */
 public class ProteomeTaxonomyMap implements NamedValueMap {
     public static final List<String> FIELDS =
-            Collections.unmodifiableList(
-                    Arrays.asList("organism", "organism_id", "taxon_mnemonic"));
+            Collections.unmodifiableList(Arrays.asList("organism", "organism_id", "mnemonic"));
 
     private final Taxonomy taxonomy;
 

@@ -5,13 +5,12 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-import org.uniprot.core.CrossReference;
 import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.parser.tsv.NamedValueMap;
-import org.uniprot.core.proteome.ProteomeDatabase;
+import org.uniprot.core.proteome.ProteomeCompletenessReport;
 import org.uniprot.core.proteome.ProteomeEntry;
+import org.uniprot.core.util.Utils;
 
 /**
  * @author jluo
@@ -20,7 +19,8 @@ import org.uniprot.core.proteome.ProteomeEntry;
 public class ProteomeEntryValueMapper implements EntityValueMapper<ProteomeEntry> {
 
     public static final List<String> PROTEOME_FIELDS =
-            Collections.unmodifiableList(Arrays.asList("upid", "genome_assembly", "protein_count"));
+            Collections.unmodifiableList(
+                    Arrays.asList("upid", "genome_assembly", "protein_count", "busco", "cpd"));
 
     @Override
     public Map<String, String> mapEntity(ProteomeEntry entry, List<String> fields) {
@@ -49,8 +49,32 @@ public class ProteomeEntryValueMapper implements EntityValueMapper<ProteomeEntry
         map.put(PROTEOME_FIELDS.get(0), entry.getId().getValue());
         map.put(PROTEOME_FIELDS.get(1), getGenomeAssemblyId(entry));
         map.put(PROTEOME_FIELDS.get(2), "" + entry.getProteinCount());
+        map.put(PROTEOME_FIELDS.get(3), "" + getBuscoReport(entry));
+        map.put(PROTEOME_FIELDS.get(4), "" + getCPDReport(entry));
 
         return map;
+    }
+
+    private String getCPDReport(ProteomeEntry entry) {
+        String result = "";
+        if (Utils.notNull(entry.getProteomeCompletenessReport())) {
+            ProteomeCompletenessReport report = entry.getProteomeCompletenessReport();
+            if (Utils.notNull(report.getCPDReport())) {
+                result = report.getCPDReport().getStatus().getDisplayName();
+            }
+        }
+        return result;
+    }
+
+    private String getBuscoReport(ProteomeEntry entry) {
+        String result = "";
+        if (Utils.notNull(entry.getProteomeCompletenessReport())) {
+            ProteomeCompletenessReport report = entry.getProteomeCompletenessReport();
+            if (Utils.notNull(report.getBuscoReport())) {
+                result = report.getBuscoReport().calculateSummary();
+            }
+        }
+        return result;
     }
 
     private static boolean contains(List<String> fields) {
@@ -58,9 +82,10 @@ public class ProteomeEntryValueMapper implements EntityValueMapper<ProteomeEntry
     }
 
     private String getGenomeAssemblyId(ProteomeEntry entry) {
-        return entry.getProteomeCrossReferences().stream()
-                .filter(val -> val.getDatabase() == ProteomeDatabase.GENOME_ASSEMBLY)
-                .map(CrossReference::getId)
-                .collect(Collectors.joining(", "));
+        String result = "";
+        if (Utils.notNull(entry.getGenomeAssembly())) {
+            result = entry.getGenomeAssembly().getAssemblyId();
+        }
+        return result;
     }
 }

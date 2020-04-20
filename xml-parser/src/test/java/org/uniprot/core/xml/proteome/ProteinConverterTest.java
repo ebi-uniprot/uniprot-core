@@ -22,13 +22,13 @@ class ProteinConverterTest {
         gene.setEntryType(EntryType.SWISS_PROT);
         gene.setGeneName("gen1");
         gene.setGeneNameType(GeneNameType.MOD);
-        gene.setLength(123l);
+        gene.setLength(123L);
         Protein protein = converter.fromXml(gene);
         assertEquals("P12345", protein.getAccession().getValue());
         assertEquals(UniProtKBEntryType.SWISSPROT, protein.getEntryType());
         assertEquals("gen1", protein.getGeneName());
         assertEquals(org.uniprot.core.proteome.GeneNameType.MOD, protein.getGeneNameType());
-        assertEquals(123l, protein.getSequenceLength());
+        assertEquals(123L, protein.getSequenceLength());
     }
 
     @Test

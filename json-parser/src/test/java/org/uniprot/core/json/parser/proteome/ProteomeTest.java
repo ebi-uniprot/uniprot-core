@@ -1,6 +1,6 @@
 package org.uniprot.core.json.parser.proteome;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,6 +23,7 @@ import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ProteomeTest {
@@ -80,6 +81,17 @@ public class ProteomeTest {
         ValidateJson.verifyJsonRoundTripParser(
                 ProteomeJsonConfig.getInstance().getFullObjectMapper(), proteome);
         ValidateJson.verifyEmptyFields(proteome);
+    }
+
+    @Test
+    void testIfCanWriteExtraBuscoScore() throws JsonProcessingException {
+        ObjectMapper mapper = ProteomeJsonConfig.getInstance().getSimpleObjectMapper();
+        BuscoReport buscoReport = createBuscoReport();
+
+        String jsonValue = mapper.writeValueAsString(buscoReport);
+
+        assertNotNull(jsonValue);
+        assertTrue(jsonValue.contains("\"score\":95"));
     }
 
     public static ProteomeEntry getCompleteProteomeEntry() {
@@ -169,6 +181,17 @@ public class ProteomeTest {
                 .taxonLineagesAdd(taxonomyLineage)
                 .canonicalProteinsAdd(canonicalProtein)
                 .sourceDb("source db")
+                .proteomeCompletenessReport(createProteomeCompletenessReport())
+                .genomeAssembly(createGenomeAssembly())
+                .build();
+    }
+
+    private static GenomeAssembly createGenomeAssembly() {
+        return new GenomeAssemblyBuilder()
+                .assemblyId("id value")
+                .genomeAssemblyUrl("url value")
+                .source(GenomeAssemblySource.ENSEMBLMETAZOA)
+                .level(GenomeAssemblyLevel.FULL)
                 .build();
     }
 
@@ -258,6 +281,7 @@ public class ProteomeTest {
                         .superkingdom(Superkingdom.EUKARYOTA)
                         //	.components(components)
                         .redundantProteomesSet(redundantProteomes)
+                        .proteomeCompletenessReport(createProteomeCompletenessReport())
                         .build();
 
         ValidateJson.verifyJsonRoundTripParser(
@@ -315,6 +339,35 @@ public class ProteomeTest {
                 .authorsAdd("author Leo")
                 .title("Leo book tittle")
                 .citationCrossReferencesSet(Collections.singletonList(xref))
+                .build();
+    }
+
+    private static ProteomeCompletenessReport createProteomeCompletenessReport() {
+        return new ProteomeCompletenessReportBuilder()
+                .buscoReport(createBuscoReport())
+                .cpdReport(createCPDReport())
+                .build();
+    }
+
+    private static CPDReport createCPDReport() {
+        return new CPDReportBuilder()
+                .proteomeCount(15)
+                .stdCdss(13d)
+                .averageCdss(8)
+                .confidence(10)
+                .status(CPDStatus.STANDARD)
+                .build();
+    }
+
+    private static BuscoReport createBuscoReport() {
+        return new BuscoReportBuilder()
+                .total(103)
+                .complete(80)
+                .completeDuplicated(12)
+                .completeSingle(8)
+                .fragmented(18)
+                .missing(20)
+                .lineageDb("lineageDb value")
                 .build();
     }
 }

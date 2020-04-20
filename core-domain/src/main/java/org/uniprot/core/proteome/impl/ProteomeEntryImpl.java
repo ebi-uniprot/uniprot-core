@@ -30,10 +30,12 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     private ProteomeId panproteome;
     private int annotationScore;
     private Superkingdom superkingdom;
+    private ProteomeCompletenessReport proteomeCompletenessReport;
+    private GenomeAssembly genomeAssembly;
 
     private int geneCount;
     private int proteinCount;
-    List<TaxonomyLineage> taxonLineage;
+    private List<TaxonomyLineage> taxonLineage;
     private List<CanonicalProtein> canonicalProteins;
     private String sourceDb;
 
@@ -66,7 +68,9 @@ public class ProteomeEntryImpl implements ProteomeEntry {
             int geneCount,
             List<TaxonomyLineage> taxonLineage,
             List<CanonicalProtein> canonicalProteins,
-            String sourceDb) {
+            String sourceDb,
+            ProteomeCompletenessReport proteomeCompletenessReport,
+            GenomeAssembly genomeAssembly) {
         super();
         this.id = id;
         this.taxonomy = taxonomy;
@@ -89,6 +93,8 @@ public class ProteomeEntryImpl implements ProteomeEntry {
         this.taxonLineage = Utils.unmodifiableList(taxonLineage);
         this.canonicalProteins = Utils.unmodifiableList(canonicalProteins);
         this.sourceDb = sourceDb;
+        this.proteomeCompletenessReport = proteomeCompletenessReport;
+        this.genomeAssembly = genomeAssembly;
     }
 
     @Override
@@ -192,6 +198,16 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     }
 
     @Override
+    public ProteomeCompletenessReport getProteomeCompletenessReport() {
+        return proteomeCompletenessReport;
+    }
+
+    @Override
+    public GenomeAssembly getGenomeAssembly() {
+        return genomeAssembly;
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(
                 components,
@@ -208,7 +224,9 @@ public class ProteomeEntryImpl implements ProteomeEntry {
                 superkingdom,
                 taxonomy,
                 proteomeType,
-                sourceDb);
+                sourceDb,
+                proteomeCompletenessReport,
+                genomeAssembly);
     }
 
     @Override
@@ -231,6 +249,8 @@ public class ProteomeEntryImpl implements ProteomeEntry {
                 && Objects.equals(superkingdom, other.superkingdom)
                 && Objects.equals(taxonomy, other.taxonomy)
                 && Objects.equals(proteomeType, other.proteomeType)
-                && Objects.equals(sourceDb, other.sourceDb);
+                && Objects.equals(sourceDb, other.sourceDb)
+                && Objects.equals(proteomeCompletenessReport, other.proteomeCompletenessReport)
+                && Objects.equals(genomeAssembly, other.genomeAssembly);
     }
 }
