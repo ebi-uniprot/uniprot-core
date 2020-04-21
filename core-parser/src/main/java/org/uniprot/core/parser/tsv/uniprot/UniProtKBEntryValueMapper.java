@@ -81,9 +81,6 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
         if (EntryFeaturesMap.contains(fields)) {
             addData(map, new EntryFeaturesMap(entry.getFeatures()));
         }
-        if (EntryFeaturesMap.contains(fields)) {
-            addData(map, new EntryFeaturesMap(entry.getFeatures()));
-        }
         if (EntryGeneMap.contains(fields)) {
             addData(map, new EntryGeneMap(entry.getGenes()));
         }
@@ -98,12 +95,9 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
         if (EntryOrganismMap.contains(fields)) {
             addData(map, new EntryOrganismMap(entry.getOrganism()));
         }
-        if (EntryOrganismMap.contains(fields)) {
-            addData(map, new EntryOrganismMap(entry.getOrganism()));
-        }
 
-        if (EntryOrganismHostMap.contains(fields)) {
-            addData(map, new EntryOrganismHostMap(entry.getOrganismHosts()));
+        if (EntryVirusHostMap.contains(fields)) {
+            addData(map, new EntryVirusHostMap(entry.getOrganismHosts()));
         }
         if (EntryProteinMap.contains(fields)) {
             addData(map, new EntryProteinMap(entry.getProteinDescription()));
@@ -117,6 +111,11 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
         if (contains(fields)) {
             map.putAll(getSimpleFields(entry));
         }
+        mapAdditionalFields(entry, fields, map);
+        return map;
+    }
+
+    private void mapAdditionalFields(UniProtKBEntry entry, List<String> fields, Map<String, String> map) {
         if (containsUnsupported(fields)) {
             map.putAll(getUnsupportedFields());
         }
@@ -128,7 +127,6 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
             Map<String, String> extraAttribsMap = getExtraAttributeMap(entry, fields);
             map.putAll(extraAttribsMap);
         }
-        return map;
     }
 
     private Map<String, String> getUnsupportedFields() {
@@ -169,7 +167,6 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
                                 ExtraAttributeKeyField::getFieldName,
                                 ean ->
                                         EntryMapUtil.convertToTSVString(
-                                                entry.getExtraAttributeValue(
-                                                        ean.getMapKey()))));
+                                                entry.getExtraAttributeValue(ean.getMapKey()))));
     }
 }

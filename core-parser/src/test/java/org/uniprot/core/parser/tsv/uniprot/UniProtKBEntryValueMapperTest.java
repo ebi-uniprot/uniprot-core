@@ -159,16 +159,15 @@ class UniProtKBEntryValueMapperTest {
     }
 
     @Test
-    void testOrganismHost() {
-        List<String> fields =
-                Arrays.asList("accession", "organism_name", "organism_host", "lineage");
+    void testVirusHosts() {
+        List<String> fields = Arrays.asList("accession", "organism_name", "virus_hosts", "lineage");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
 
         verify("P03431", "accession", result);
         verify("Influenza A virus (strain A/Puerto Rico/8/1934 H1N1)", "organism_name", result);
         verify(
                 "Aves (birds) [TaxID: 8782]; Homo sapiens (Human) [TaxID: 9606]; Sus scrofa (Pig) [TaxID: 9823]",
-                "organism_host",
+                "virus_hosts",
                 result);
     }
 

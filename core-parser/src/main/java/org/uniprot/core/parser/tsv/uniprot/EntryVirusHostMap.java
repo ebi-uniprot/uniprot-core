@@ -6,11 +6,11 @@ import java.util.stream.Collectors;
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 
-public class EntryOrganismHostMap implements NamedValueMap {
-    public static final List<String> FIELDS = Arrays.asList("organism_host");
+public class EntryVirusHostMap implements NamedValueMap {
+    protected static final List<String> FIELDS = Collections.singletonList("virus_hosts");
     private final List<OrganismHost> organismHost;
 
-    public EntryOrganismHostMap(List<OrganismHost> organismHost) {
+    public EntryVirusHostMap(List<OrganismHost> organismHost) {
         if (organismHost == null) {
             this.organismHost = Collections.emptyList();
         } else {
