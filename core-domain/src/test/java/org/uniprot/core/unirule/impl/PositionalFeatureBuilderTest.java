@@ -21,7 +21,7 @@ public class PositionalFeatureBuilderTest {
         int start = ThreadLocalRandom.current().nextInt();
         int end = ThreadLocalRandom.current().nextInt(start + 1, Integer.MAX_VALUE);
         Range position = new Range(start, end);
-        boolean inGroup = start % 2 == 0;
+        boolean inGroup = true;
         PositionalFeatureBuilder builder = new PositionalFeatureBuilder();
         builder.type(type).pattern(pattern).value(value);
         builder.position(position).inGroup(inGroup);
