@@ -71,7 +71,7 @@ public class ConditionBuilderTest {
         int start = ThreadLocalRandom.current().nextInt();
         int end = ThreadLocalRandom.current().nextInt(start + 1, Integer.MAX_VALUE);
         Range range = new Range(start, end);
-        boolean negative = start % 2 == 0;
+        boolean negative = true;
         List<ConditionValue> conditionValues = ConditionValueBuilderTest.createObjects(5);
         ConditionBuilder builder = new ConditionBuilder(type);
         builder.type(type).range(range).negative(negative);
