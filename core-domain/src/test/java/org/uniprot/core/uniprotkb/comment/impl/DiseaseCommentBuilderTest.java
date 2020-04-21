@@ -1,6 +1,5 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import static java.util.Collections.emptyList;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.*;
 
@@ -96,7 +95,8 @@ public class DiseaseCommentBuilderTest {
         List<EvidencedValue> evidencedValues = new ArrayList<>();
         evidencedValues.add(
                 new EvidencedValueBuilder("value 1", EvidenceBuilderTest.createObjects(3)).build());
-        evidencedValues.add(new EvidencedValueBuilder("value2", emptyList()).build());
+        evidencedValues.add(
+                new EvidencedValueBuilder("value2", EvidenceBuilderTest.createObjects(2)).build());
         Note note = new NoteBuilder(evidencedValues).build();
         builder.note(note);
         return builder.build();

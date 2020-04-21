@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -103,7 +102,7 @@ public class CaseRuleBuilderTest {
         CaseRuleBuilder<Annotation> builder = new CaseRuleBuilder<>();
         builder.conditionSetsSet(conditionSets).annotationsSet(annotations);
         builder.ruleExceptionsSet(ruleExceptions);
-        boolean exempted = ThreadLocalRandom.current().nextBoolean();
+        boolean exempted = true;
         builder.overallStatsExempted(exempted);
         CaseRule rule = builder.build();
         assertNotNull(rule);
