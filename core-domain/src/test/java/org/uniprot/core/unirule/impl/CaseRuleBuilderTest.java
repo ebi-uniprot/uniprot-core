@@ -2,6 +2,7 @@ package org.uniprot.core.unirule.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,8 +17,22 @@ import org.uniprot.core.unirule.RuleException;
 public class CaseRuleBuilderTest {
 
     @Test
+    void testCreateObjectWithNullMandatoryParam() {
+        CaseRuleBuilder builder = new CaseRuleBuilder((ConditionSet) null);
+        assertThrows(IllegalArgumentException.class, builder::build);
+    }
+
+    @Test
+    void testCreateObjectWithNullMandatoryParamList() {
+        CaseRuleBuilder builder = new CaseRuleBuilder((List<ConditionSet>) null);
+        assertThrows(IllegalArgumentException.class, builder::build);
+    }
+
+    @Test
     void testSetStatsExempted() {
-        CaseRuleBuilder builder = new CaseRuleBuilder();
+        List<ConditionSet> conditionSetList = new ArrayList<>();
+        conditionSetList.add(ConditionSetBuilderTest.createObject());
+        CaseRuleBuilder builder = new CaseRuleBuilder(conditionSetList);
         builder.overallStatsExempted(true);
         CaseRule object = builder.build();
         assertNotNull(object);
@@ -63,18 +78,23 @@ public class CaseRuleBuilderTest {
 
     @Test
     void testAddConditionSetList() {
-        CaseRuleBuilder builder = new CaseRuleBuilder();
+        List<ConditionSet> conditionSetList = new ArrayList<>();
+        conditionSetList.add(ConditionSetBuilderTest.createObject());
+        CaseRuleBuilder builder = new CaseRuleBuilder(conditionSetList);
         // add one item to the empty list
         ConditionSet conditionSet = ConditionSetBuilderTest.createObject();
         builder.conditionSetsAdd(conditionSet);
         CaseRule object = builder.build();
         assertNotNull(object);
-        assertEquals(Arrays.asList(conditionSet), object.getConditionSets());
+        conditionSetList.add(conditionSet);
+        assertEquals(conditionSetList, object.getConditionSets());
     }
 
     @Test
     void testAddAnnotationList() {
-        CaseRuleBuilder builder = new CaseRuleBuilder();
+        List<ConditionSet> conditionSetList = new ArrayList<>();
+        conditionSetList.add(ConditionSetBuilderTest.createObject());
+        CaseRuleBuilder builder = new CaseRuleBuilder(conditionSetList);
         // add one item to the empty list
         Annotation annotation = AnnotationBuilderTest.createObject();
         builder.annotationsAdd(annotation);
@@ -85,7 +105,9 @@ public class CaseRuleBuilderTest {
 
     @Test
     void testAddRuleExceptionList() {
-        CaseRuleBuilder builder = new CaseRuleBuilder();
+        List<ConditionSet> conditionSetList = new ArrayList<>();
+        conditionSetList.add(ConditionSetBuilderTest.createObject());
+        CaseRuleBuilder builder = new CaseRuleBuilder(conditionSetList);
         // add one item to the empty list
         RuleException<Annotation> ruleException = AnnotationRuleExceptionImplTest.createObject();
         builder.ruleExceptionsAdd(ruleException);
@@ -99,8 +121,8 @@ public class CaseRuleBuilderTest {
         List<Annotation> annotations = AnnotationBuilderTest.createObjects(3);
         List<RuleException<Annotation>> ruleExceptions =
                 AnnotationRuleExceptionImplTest.createObjects(3);
-        CaseRuleBuilder<Annotation> builder = new CaseRuleBuilder<>();
-        builder.conditionSetsSet(conditionSets).annotationsSet(annotations);
+        CaseRuleBuilder<Annotation> builder = new CaseRuleBuilder<>(conditionSets);
+        builder.annotationsSet(annotations);
         builder.ruleExceptionsSet(ruleExceptions);
         boolean exempted = true;
         builder.overallStatsExempted(exempted);

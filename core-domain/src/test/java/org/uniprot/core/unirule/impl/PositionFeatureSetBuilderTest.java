@@ -68,7 +68,8 @@ public class PositionFeatureSetBuilderTest {
 
     @Test
     void testCreateObjectWithCondition() {
-        PositionFeatureSetBuilder builder = new PositionFeatureSetBuilder();
+        PositionalFeature positionalFeature = PositionalFeatureBuilderTest.createObject();
+        PositionFeatureSetBuilder builder = new PositionFeatureSetBuilder(positionalFeature);
         Condition condition = ConditionBuilderTest.createObject();
         builder.conditionsAdd(condition);
         PositionFeatureSet positionFeatureSet = builder.build();
@@ -78,7 +79,8 @@ public class PositionFeatureSetBuilderTest {
 
     @Test
     void testCreateObjectWithOneAnnotation() {
-        PositionFeatureSetBuilder builder = new PositionFeatureSetBuilder();
+        PositionalFeature positionalFeature = PositionalFeatureBuilderTest.createObject();
+        PositionFeatureSetBuilder builder = new PositionFeatureSetBuilder(positionalFeature);
         Annotation annotation = AnnotationBuilderTest.createObject();
         builder.annotationsAdd(annotation);
         PositionFeatureSet positionFeatureSet = builder.build();
@@ -88,9 +90,8 @@ public class PositionFeatureSetBuilderTest {
 
     @Test
     void testCreateObjectWithOnePositionalFeature() {
-        PositionFeatureSetBuilder builder = new PositionFeatureSetBuilder();
         PositionalFeature positionFeature = PositionalFeatureBuilderTest.createObject();
-        builder.positionalFeaturesAdd(positionFeature);
+        PositionFeatureSetBuilder builder = new PositionFeatureSetBuilder(positionFeature);
         PositionFeatureSet positionFeatureSet = builder.build();
         assertNotNull(positionFeatureSet);
         assertEquals(Arrays.asList(positionFeature), positionFeatureSet.getPositionalFeatures());
@@ -98,7 +99,8 @@ public class PositionFeatureSetBuilderTest {
 
     @Test
     void testCreateObjectWithOneRuleException() {
-        PositionFeatureSetBuilder builder = new PositionFeatureSetBuilder();
+        PositionalFeature positionalFeature = PositionalFeatureBuilderTest.createObject();
+        PositionFeatureSetBuilder builder = new PositionFeatureSetBuilder(positionalFeature);
         RuleException<PositionalFeature> ruleExc = PositionalRuleExceptionImplTest.createObject();
         builder.ruleExceptionsAdd(ruleExc);
         PositionFeatureSet positionFeatureSet = builder.build();
@@ -117,10 +119,11 @@ public class PositionFeatureSetBuilderTest {
                 AnnotationRuleExceptionImplTest.createObjects(3);
         UniProtKBAccession uniProtKBAccession = UniProtKBAccessionBuilderTest.createObject();
 
-        PositionFeatureSetBuilder<Annotation> builder = new PositionFeatureSetBuilder<>();
+        PositionFeatureSetBuilder<Annotation> builder =
+                new PositionFeatureSetBuilder<>(positionalFeatures);
         builder.alignmentSignature(alignmentSignature).tag(tag);
         builder.conditionsSet(conditions).annotationsSet(annotations);
-        builder.ruleExceptionsSet(ruleExceptions).positionalFeaturesSet(positionalFeatures);
+        builder.ruleExceptionsSet(ruleExceptions);
         builder.uniProtKBAccession(uniProtKBAccession);
 
         PositionFeatureSet positionFeatureSet = builder.build();

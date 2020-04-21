@@ -45,6 +45,11 @@ public class UniRuleEntryImpl implements UniRuleEntry {
             throw new IllegalArgumentException("id is a mandatory param for UniRule entry.");
         } else if (Objects.isNull(ruleStatus)) {
             throw new IllegalArgumentException("status is a mandatory param for UniRule entry.");
+        } else if (Objects.isNull(information)) {
+            throw new IllegalArgumentException(
+                    "information is a mandatory param for UniRule entry.");
+        } else if (Objects.isNull(mainRule)) {
+            throw new IllegalArgumentException("mainRule is a mandatory param for UniRule entry.");
         }
         this.uniRuleId = uniRuleId;
         this.information = information;

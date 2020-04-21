@@ -40,6 +40,11 @@ public class PositionFeatureSetImpl<T> implements PositionFeatureSet {
             UniProtKBAccession uniProtKBAccession,
             String alignmentSignature,
             String tag) {
+
+        if (Utils.nullOrEmpty(positionalFeatures)) {
+            throw new IllegalArgumentException(
+                    "positionalFeatures is a mandatory param for PositionFeatureSet entry.");
+        }
         this.conditions = Utils.unmodifiableList(conditions);
         this.annotations = Utils.unmodifiableList(annotations);
         this.positionalFeatures = Utils.unmodifiableList(positionalFeatures);

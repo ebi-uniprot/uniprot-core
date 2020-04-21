@@ -1,7 +1,6 @@
 package org.uniprot.core.unirule.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,6 +14,13 @@ import org.uniprot.core.unirule.SamFeatureSet;
 import org.uniprot.core.unirule.SamTrigger;
 
 public class SamFeatureSetBuilderTest {
+
+    @Test
+    void testCreateObjectWithNullMandatoryParam() {
+        SamFeatureSetBuilder builder = new SamFeatureSetBuilder(null);
+        assertThrows(IllegalArgumentException.class, builder::build);
+    }
+
     @Test
     void testCreateObjectUpdateConditionsList() {
         SamFeatureSet samFeatureSet = createObject();
@@ -45,7 +51,8 @@ public class SamFeatureSetBuilderTest {
     void testCreateObjectWithOneCondition() {
         // add a new condition
         Condition condition = ConditionBuilderTest.createObject();
-        SamFeatureSetBuilder builder = new SamFeatureSetBuilder();
+        SamFeatureSetBuilder builder =
+                new SamFeatureSetBuilder(SamTriggerBuilderTest.createObject());
         builder.conditionsAdd(condition);
         SamFeatureSet samFeatureSet = builder.build();
         assertNotNull(samFeatureSet);
@@ -55,7 +62,8 @@ public class SamFeatureSetBuilderTest {
     @Test
     void testCreateObjectWithAnnotation() {
         Annotation annotation = AnnotationBuilderTest.createObject();
-        SamFeatureSetBuilder builder = new SamFeatureSetBuilder();
+        SamFeatureSetBuilder builder =
+                new SamFeatureSetBuilder(SamTriggerBuilderTest.createObject());
         builder.annotationsAdd(annotation);
         SamFeatureSet samFeatureSet = builder.build();
         assertNotNull(samFeatureSet);
@@ -66,9 +74,8 @@ public class SamFeatureSetBuilderTest {
         List<Condition> conditions = ConditionBuilderTest.createObjects(4);
         List<Annotation> annotations = AnnotationBuilderTest.createObjects(3);
         SamTrigger samTrigger = SamTriggerBuilderTest.createObject();
-        SamFeatureSetBuilder builder = new SamFeatureSetBuilder();
+        SamFeatureSetBuilder builder = new SamFeatureSetBuilder(samTrigger);
         builder.conditionsSet(conditions).annotationsSet(annotations);
-        builder.samTrigger(samTrigger);
 
         SamFeatureSet samFeatureSet = builder.build();
         assertNotNull(samFeatureSet);

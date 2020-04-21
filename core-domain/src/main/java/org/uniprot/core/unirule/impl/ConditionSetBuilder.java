@@ -13,7 +13,16 @@ import org.uniprot.core.unirule.ConditionSet;
 
 public class ConditionSetBuilder implements Builder<ConditionSet> {
 
-    private List<Condition> conditions = new ArrayList<>();
+    private List<Condition> conditions;
+
+    public ConditionSetBuilder(Condition condition) {
+        this.conditions = new ArrayList<>();
+        addOrIgnoreNull(condition, this.conditions);
+    }
+
+    public ConditionSetBuilder(List<Condition> conditions) {
+        this.conditions = modifiableList(conditions);
+    }
 
     public @Nonnull ConditionSetBuilder conditionsAdd(Condition condition) {
         addOrIgnoreNull(condition, this.conditions);
@@ -33,6 +42,6 @@ public class ConditionSetBuilder implements Builder<ConditionSet> {
 
     public static @Nonnull ConditionSetBuilder from(@Nonnull ConditionSet instance) {
         nullThrowIllegalArgument(instance);
-        return new ConditionSetBuilder().conditionsSet(instance.getConditions());
+        return new ConditionSetBuilder(instance.getConditions());
     }
 }
