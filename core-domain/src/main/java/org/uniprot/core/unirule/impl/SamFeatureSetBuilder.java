@@ -21,6 +21,10 @@ public class SamFeatureSetBuilder implements Builder<SamFeatureSet> {
 
     private SamTrigger samTrigger;
 
+    public SamFeatureSetBuilder(SamTrigger samTrigger) {
+        this.samTrigger = samTrigger;
+    }
+
     public @Nonnull SamFeatureSetBuilder conditionsAdd(Condition condition) {
         addOrIgnoreNull(condition, this.conditions);
         return this;
@@ -54,10 +58,8 @@ public class SamFeatureSetBuilder implements Builder<SamFeatureSet> {
 
     public static @Nonnull SamFeatureSetBuilder from(@Nonnull SamFeatureSet instance) {
         nullThrowIllegalArgument(instance);
-        SamFeatureSetBuilder builder = new SamFeatureSetBuilder();
-        builder.conditionsSet(instance.getConditions())
-                .annotationsSet(instance.getAnnotations())
-                .samTrigger(instance.getSamTrigger());
+        SamFeatureSetBuilder builder = new SamFeatureSetBuilder(instance.getSamTrigger());
+        builder.conditionsSet(instance.getConditions()).annotationsSet(instance.getAnnotations());
         return builder;
     }
 }
