@@ -33,13 +33,13 @@ public class UniRuleEntryImplTest {
     @Test
     void testCreateObject() {
         UniRuleId uniRuleId = new UniRuleIdBuilder("UR123456789").build();
-        Information information = new InformationBuilder().build();
+        Information information = new InformationBuilder("version").build();
         RuleStatus ruleStatus = RuleStatus.APPLY;
         Condition condition1 = new ConditionBuilder("type1").build();
         Condition condition2 = new ConditionBuilder("type2").build();
         Condition condition3 = new ConditionBuilder("type3").build();
         List<Condition> conditions = Arrays.asList(condition1, condition2, condition3);
-        ConditionSet conditionSet = new ConditionSetBuilder().conditionsSet(conditions).build();
+        ConditionSet conditionSet = new ConditionSetBuilder(conditions).build();
         List<ConditionSet> conditionSets = Arrays.asList(conditionSet);
 
         Annotation annotation1 = new AnnotationBuilder().build();
@@ -58,26 +58,26 @@ public class UniRuleEntryImplTest {
         ruleExceptions.add(ruleException2);
 
         Rule mainRule =
-                new RuleBuilder<PositionalFeature>()
-                        .conditionSetsSet(conditionSets)
+                new RuleBuilder<PositionalFeature>(conditionSets)
                         .annotationsSet(annotations)
                         .ruleExceptionsSet(ruleExceptions)
                         .build();
 
-        CaseRuleBuilder<PositionalFeature> caseRuleBuilder = new CaseRuleBuilder<>();
-        caseRuleBuilder
-                .conditionSetsSet(conditionSets)
-                .annotationsSet(annotations)
-                .ruleExceptionsSet(ruleExceptions);
+        CaseRuleBuilder<PositionalFeature> caseRuleBuilder = new CaseRuleBuilder<>(conditionSets);
+        caseRuleBuilder.annotationsSet(annotations).ruleExceptionsSet(ruleExceptions);
 
         CaseRule caseRule = caseRuleBuilder.build();
 
         List<CaseRule> otherRules = Arrays.asList(caseRule);
-        SamFeatureSet samFeatureSet1 = new SamFeatureSetBuilder().build();
-        SamFeatureSet samFeatureSet2 = new SamFeatureSetBuilder().build();
+        SamFeatureSet samFeatureSet1 =
+                new SamFeatureSetBuilder(SamTriggerBuilderTest.createObject()).build();
+        SamFeatureSet samFeatureSet2 =
+                new SamFeatureSetBuilder(SamTriggerBuilderTest.createObject()).build();
         List<SamFeatureSet> samFeatureSets = Arrays.asList(samFeatureSet1, samFeatureSet2);
-        PositionFeatureSet positionFeatureSet1 = new PositionFeatureSetBuilder().tag("t1").build();
-        PositionFeatureSet positionFeatureSet2 = new PositionFeatureSetBuilder().tag("t2").build();
+        PositionalFeature pf1 = PositionalFeatureBuilderTest.createObject();
+        PositionalFeature pf2 = PositionalFeatureBuilderTest.createObject();
+        PositionFeatureSet positionFeatureSet1 = new PositionFeatureSetBuilder(pf1).build();
+        PositionFeatureSet positionFeatureSet2 = new PositionFeatureSetBuilder(pf2).build();
         List<PositionFeatureSet> positionFeatureSets =
                 Arrays.asList(positionFeatureSet1, positionFeatureSet2);
         String createdBy = "sample author1";

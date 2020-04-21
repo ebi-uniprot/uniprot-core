@@ -17,9 +17,18 @@ import org.uniprot.core.unirule.RuleException;
 public abstract class AbstractRuleBuilder<S extends AbstractRuleBuilder, T extends Rule<R>, R>
         implements Builder<T> {
 
-    protected List<ConditionSet> conditionSets = new ArrayList<>();
+    protected List<ConditionSet> conditionSets;
     protected List<Annotation> annotations = new ArrayList<>();
     protected List<RuleException<R>> ruleExceptions = new ArrayList<>();
+
+    public AbstractRuleBuilder(ConditionSet conditionSet) {
+        this.conditionSets = new ArrayList<>();
+        addOrIgnoreNull(conditionSet, this.conditionSets);
+    }
+
+    public AbstractRuleBuilder(List<ConditionSet> conditionSets) {
+        this.conditionSets = modifiableList(conditionSets);
+    }
 
     public @Nonnull S conditionSetsAdd(ConditionSet conditionSet) {
         addOrIgnoreNull(conditionSet, this.conditionSets);

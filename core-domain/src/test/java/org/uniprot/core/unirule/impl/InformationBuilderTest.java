@@ -89,7 +89,7 @@ public class InformationBuilderTest {
 
     @Test
     void testAddOneUniProtKBId() {
-        InformationBuilder builder = new InformationBuilder();
+        InformationBuilder builder = new InformationBuilder("version");
         String uniProtKBId = "upkbid1";
         builder.uniProtIdsAdd(uniProtKBId);
         Information information = builder.build();
@@ -99,7 +99,7 @@ public class InformationBuilderTest {
 
     @Test
     void testAddOneName() {
-        InformationBuilder builder = new InformationBuilder();
+        InformationBuilder builder = new InformationBuilder("version");
         String name = "sample name";
         builder.namesAdd(name);
         Information information = builder.build();
@@ -109,7 +109,7 @@ public class InformationBuilderTest {
 
     @Test
     void testAddOneUniProtKBAccession() {
-        InformationBuilder builder = new InformationBuilder();
+        InformationBuilder builder = new InformationBuilder("version");
         UniProtKBAccession uniProtKBAccession = UniProtKBAccessionBuilderTest.createObject();
         builder.uniProtAccessionsAdd(uniProtKBAccession);
         Information information = builder.build();
@@ -119,7 +119,7 @@ public class InformationBuilderTest {
 
     @Test
     void testAddOneRelated() {
-        InformationBuilder builder = new InformationBuilder();
+        InformationBuilder builder = new InformationBuilder("version");
         String related = "sample related";
         builder.relatedAdd(related);
         Information information = builder.build();
@@ -129,7 +129,7 @@ public class InformationBuilderTest {
 
     @Test
     void testAddOneDuplicates() {
-        InformationBuilder builder = new InformationBuilder();
+        InformationBuilder builder = new InformationBuilder("version");
         String duplicateItem = "sample dup item";
         builder.duplicatesAdd(duplicateItem);
         Information information = builder.build();
@@ -139,7 +139,7 @@ public class InformationBuilderTest {
 
     @Test
     void testAddOnePlasmaIds() {
-        InformationBuilder builder = new InformationBuilder();
+        InformationBuilder builder = new InformationBuilder("version");
         String plasmaId = "sample pId";
         builder.plasmaIdsAdd(plasmaId);
         Information information = builder.build();
@@ -179,8 +179,8 @@ public class InformationBuilderTest {
         List<UniProtKBAccession> uniProtAccessions =
                 UniProtKBAccessionBuilderTest.createObjects(listSize);
 
-        InformationBuilder builder = new InformationBuilder();
-        builder.version(version).comment(comment).oldRuleNum(oldRuleNum);
+        InformationBuilder builder = new InformationBuilder(version);
+        builder.comment(comment).oldRuleNum(oldRuleNum);
         builder.uniProtIdsSet(uniProtIds).dataClass(dataClass).namesSet(names);
         builder.fusion(fusion).uniProtAccessionsSet(uniProtAccessions).relatedSet(related);
         builder.duplicatesSet(duplicates).plasmaIdsSet(plasmaIds).internal(internal);

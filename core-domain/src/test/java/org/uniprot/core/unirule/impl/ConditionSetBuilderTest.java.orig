@@ -43,9 +43,16 @@ public class ConditionSetBuilderTest {
         assertEquals(conditionList, conditionSet.getConditions());
     }
 
+<<<<<<< HEAD
     public static ConditionSet createObject(int listSize) {
         List<Condition> conditions = ConditionBuilderTest.createObjects(listSize);
+        ConditionSetBuilder builder = new ConditionSetBuilder();
+        builder.conditionsSet(conditions);
+=======
+    public static ConditionSet createObject() {
+        List<Condition> conditions = ConditionBuilderTest.createObjects(3);
         ConditionSetBuilder builder = new ConditionSetBuilder(conditions);
+>>>>>>> add few converters and make few fields mandatory based on schema
         ConditionSet conditionSet = builder.build();
         assertNotNull(conditionSet);
         assertEquals(conditions, conditionSet.getConditions());

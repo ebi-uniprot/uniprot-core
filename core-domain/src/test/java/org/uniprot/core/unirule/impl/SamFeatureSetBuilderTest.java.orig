@@ -71,11 +71,19 @@ public class SamFeatureSetBuilderTest {
         assertEquals(Arrays.asList(annotation), samFeatureSet.getAnnotations());
     }
 
+<<<<<<< HEAD
     public static SamFeatureSet createObject(int listSize) {
         List<Condition> conditions = ConditionBuilderTest.createObjects(listSize);
         List<Annotation> annotations = AnnotationBuilderTest.createObjects(listSize);
         SamTrigger samTrigger = SamTriggerBuilderTest.createObject(listSize);
+        SamFeatureSetBuilder builder = new SamFeatureSetBuilder();
+=======
+    public static SamFeatureSet createObject() {
+        List<Condition> conditions = ConditionBuilderTest.createObjects(4);
+        List<Annotation> annotations = AnnotationBuilderTest.createObjects(3);
+        SamTrigger samTrigger = SamTriggerBuilderTest.createObject();
         SamFeatureSetBuilder builder = new SamFeatureSetBuilder(samTrigger);
+>>>>>>> add few converters and make few fields mandatory based on schema
         builder.conditionsSet(conditions).annotationsSet(annotations);
 
         SamFeatureSet samFeatureSet = builder.build();
