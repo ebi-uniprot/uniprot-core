@@ -37,3 +37,8 @@ deploy:jdk8:
     - 'mvn versions:revert'
   only:
     - master
+
+downstream:uniprot-store:
+  stage: .post
+  trigger: uniprot/deployment/uniprot-store-mirror
+  when: on_success
