@@ -10,8 +10,13 @@ import org.uniprot.core.uniprotkb.EntryAudit;
 
 public class EntryAuditMap implements NamedValueMap {
 
-    public static final List<String> FIELDS =
-            Arrays.asList("sequence_version", "date_seq_mod", "version", "date_create", "date_mod");
+    protected static final List<String> FIELDS =
+            Arrays.asList(
+                    "sequence_version",
+                    "date_sequence_modified",
+                    "version",
+                    "date_created",
+                    "date_modified");
 
     private final EntryAudit entryAudit;
 
