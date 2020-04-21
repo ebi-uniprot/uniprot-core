@@ -121,9 +121,15 @@ public class CaseRuleBuilderTest {
         List<ConditionSet> conditionSets = ConditionSetBuilderTest.createObjects(listSize);
         List<Annotation> annotations = AnnotationBuilderTest.createObjects(listSize);
         List<RuleException<Annotation>> ruleExceptions =
+<<<<<<< HEAD
                 AnnotationRuleExceptionImplTest.createObjects(listSize);
         CaseRuleBuilder<Annotation> builder = new CaseRuleBuilder<>();
         builder.conditionSetsSet(conditionSets).annotationsSet(annotations);
+=======
+                AnnotationRuleExceptionImplTest.createObjects(3);
+        CaseRuleBuilder<Annotation> builder = new CaseRuleBuilder<>(conditionSets);
+        builder.annotationsSet(annotations);
+>>>>>>> add few converters and make few fields mandatory based on schema
         builder.ruleExceptionsSet(ruleExceptions);
         boolean exempted = true;
         builder.overallStatsExempted(exempted);

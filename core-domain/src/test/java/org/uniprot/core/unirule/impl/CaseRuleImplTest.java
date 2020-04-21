@@ -27,7 +27,7 @@ public class CaseRuleImplTest {
         Condition condition2 = new ConditionBuilder("type2").build();
         Condition condition3 = new ConditionBuilder("type3").build();
         List<Condition> conditions = Arrays.asList(condition1, condition2, condition3);
-        ConditionSet conditionSet = new ConditionSetBuilder().conditionsSet(conditions).build();
+        ConditionSet conditionSet = new ConditionSetBuilder(conditions).build();
         List<ConditionSet> conditionSets = Arrays.asList(conditionSet);
 
         Annotation annotation1 = new AnnotationBuilder().build();

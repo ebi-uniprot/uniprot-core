@@ -28,6 +28,10 @@ public class InformationBuilder implements Builder<Information> {
     private List<String> plasmaIds = new ArrayList<>();
     private String internal;
 
+    public InformationBuilder(String version) {
+        this.version = version;
+    }
+
     public @Nonnull InformationBuilder version(String version) {
         this.version = version;
         return this;
@@ -138,9 +142,8 @@ public class InformationBuilder implements Builder<Information> {
     }
 
     public static @Nonnull InformationBuilder from(@Nonnull Information instance) {
-        InformationBuilder builder = new InformationBuilder();
-        builder.version(instance.getVersion())
-                .comment(instance.getComment())
+        InformationBuilder builder = new InformationBuilder(instance.getVersion());
+        builder.comment(instance.getComment())
                 .oldRuleNum(instance.getOldRuleNum())
                 .uniProtIdsSet(instance.getUniProtIds())
                 .dataClass(instance.getDataClass())

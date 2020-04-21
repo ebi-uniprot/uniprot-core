@@ -16,21 +16,52 @@ import org.uniprot.core.unirule.*;
 public class UniRuleEntryBuilderTest {
 
     @Test
-    void testCreateObjectWithNullMandatoryParamRuleIdAndStatus() {
-        UniRuleEntryBuilder builder = new UniRuleEntryBuilder(null, null);
+    void testCreateObjectWithNullMandatoryParams() {
+        UniRuleEntryBuilder builder = new UniRuleEntryBuilder(null, null, null, null);
         assertThrows(IllegalArgumentException.class, builder::build);
     }
 
     @Test
     void testCreateObjectWithNullMandatoryParamRuleId() {
-        UniRuleEntryBuilder builder = new UniRuleEntryBuilder(null, RuleStatus.APPLY);
+        UniRuleEntryBuilder builder =
+                new UniRuleEntryBuilder(
+                        null,
+                        RuleStatus.APPLY,
+                        InformationBuilderTest.createObject(),
+                        RuleBuilderTest.createObject());
         assertThrows(IllegalArgumentException.class, builder::build);
     }
 
     @Test
     void testCreateObjectWithNullMandatoryParamRuleStatus() {
         UniRuleEntryBuilder builder =
-                new UniRuleEntryBuilder(UniRuleIdBuilderTest.createObject(), null);
+                new UniRuleEntryBuilder(
+                        UniRuleIdBuilderTest.createObject(),
+                        null,
+                        InformationBuilderTest.createObject(),
+                        RuleBuilderTest.createObject());
+        assertThrows(IllegalArgumentException.class, builder::build);
+    }
+
+    @Test
+    void testCreateObjectWithNullMandatoryParamInformation() {
+        UniRuleEntryBuilder builder =
+                new UniRuleEntryBuilder(
+                        UniRuleIdBuilderTest.createObject(),
+                        RuleStatus.APPLY,
+                        null,
+                        RuleBuilderTest.createObject());
+        assertThrows(IllegalArgumentException.class, builder::build);
+    }
+
+    @Test
+    void testCreateObjectWithNullMandatoryParamMainRule() {
+        UniRuleEntryBuilder builder =
+                new UniRuleEntryBuilder(
+                        UniRuleIdBuilderTest.createObject(),
+                        RuleStatus.APPLY,
+                        InformationBuilderTest.createObject(),
+                        null);
         assertThrows(IllegalArgumentException.class, builder::build);
     }
 
@@ -154,8 +185,14 @@ public class UniRuleEntryBuilderTest {
 
     @Test
     void testCreateObjectWithOneOtherRule() {
+        Information information = InformationBuilderTest.createObject();
+        Rule mainRule = RuleBuilderTest.createObject();
         UniRuleEntryBuilder builder =
-                new UniRuleEntryBuilder(UniRuleIdBuilderTest.createObject(), RuleStatus.APPLY);
+                new UniRuleEntryBuilder(
+                        UniRuleIdBuilderTest.createObject(),
+                        RuleStatus.APPLY,
+                        information,
+                        mainRule);
         CaseRule<Annotation> caseRule = CaseRuleBuilderTest.createObject();
         builder.otherRulesAdd(caseRule);
         UniRuleEntry uniRuleEntry = builder.build();
@@ -165,8 +202,14 @@ public class UniRuleEntryBuilderTest {
 
     @Test
     void testCreateObjectWithSamFeature() {
+        Information information = InformationBuilderTest.createObject();
+        Rule mainRule = RuleBuilderTest.createObject();
         UniRuleEntryBuilder builder =
-                new UniRuleEntryBuilder(UniRuleIdBuilderTest.createObject(), RuleStatus.APPLY);
+                new UniRuleEntryBuilder(
+                        UniRuleIdBuilderTest.createObject(),
+                        RuleStatus.APPLY,
+                        information,
+                        mainRule);
         SamFeatureSet samFeature = SamFeatureSetBuilderTest.createObject();
         builder.samFeatureSetsAdd(samFeature);
         UniRuleEntry uniRuleEntry = builder.build();
@@ -176,8 +219,14 @@ public class UniRuleEntryBuilderTest {
 
     @Test
     void testCreateObjectWithOnePositionFeature() {
+        Information information = InformationBuilderTest.createObject();
+        Rule mainRule = RuleBuilderTest.createObject();
         UniRuleEntryBuilder builder =
-                new UniRuleEntryBuilder(UniRuleIdBuilderTest.createObject(), RuleStatus.APPLY);
+                new UniRuleEntryBuilder(
+                        UniRuleIdBuilderTest.createObject(),
+                        RuleStatus.APPLY,
+                        information,
+                        mainRule);
         PositionFeatureSet positionFeature = PositionFeatureSetBuilderTest.createObject();
         builder.positionFeatureSetsAdd(positionFeature);
         UniRuleEntry uniRuleEntry = builder.build();
@@ -201,8 +250,8 @@ public class UniRuleEntryBuilderTest {
         LocalDate createdDate = LocalDate.now();
         LocalDate modifiedDate = LocalDate.now();
 
-        UniRuleEntryBuilder builder = new UniRuleEntryBuilder(uniRuleId, ruleStatus);
-        builder.mainRule(mainRule).information(information);
+        UniRuleEntryBuilder builder =
+                new UniRuleEntryBuilder(uniRuleId, ruleStatus, information, mainRule);
         builder.otherRulesSet(otherRules).samFeatureSetsSet(samFeatureSets);
         builder.positionFeatureSetsSet(positionFeatureSets);
         builder.createdBy(createdBy).modifiedBy(modifiedBy);

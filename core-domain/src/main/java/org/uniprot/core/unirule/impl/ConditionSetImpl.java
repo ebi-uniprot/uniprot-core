@@ -18,6 +18,10 @@ public class ConditionSetImpl implements ConditionSet {
     }
 
     ConditionSetImpl(List<Condition> conditions) {
+        if (Utils.nullOrEmpty(conditions)) {
+            throw new IllegalArgumentException(
+                    "conditions is a mandatory param for ConditionSet entry.");
+        }
         this.conditions = Utils.unmodifiableList(conditions);
     }
 

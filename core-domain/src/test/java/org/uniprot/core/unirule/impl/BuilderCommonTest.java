@@ -221,14 +221,9 @@ public class BuilderCommonTest {
     static Stream<Arguments> provideBuilderObjectClass() {
         return Stream.of(
                 Arguments.of(AnnotationBuilder.class, AnnotationImpl.class),
-                Arguments.of(ConditionSetBuilder.class, ConditionSetImpl.class),
                 Arguments.of(FusionBuilder.class, FusionImpl.class),
-                Arguments.of(InformationBuilder.class, InformationImpl.class),
                 Arguments.of(PositionalFeatureBuilder.class, PositionalFeatureImpl.class),
-                Arguments.of(PositionFeatureSetBuilder.class, PositionFeatureSetImpl.class),
-                Arguments.of(SamFeatureSetBuilder.class, SamFeatureSetImpl.class),
                 Arguments.of(SamTriggerBuilder.class, SamTriggerImpl.class),
-                Arguments.of(RuleBuilder.class, RuleImpl.class),
-                Arguments.of(CaseRuleBuilder.class, CaseRuleImpl.class));
+                Arguments.of(SamTriggerBuilder.class, SamTriggerImpl.class));
     }
 }
