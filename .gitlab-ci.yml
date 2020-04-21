@@ -40,5 +40,5 @@ deploy:jdk8:
 
 downstream:uniprot-store:
   stage: .post
-  trigger: uniprot/deployment/uniprot-store-mirror
+  trigger: uniprot/deployment/mirror-uniprot-store
   when: on_success
