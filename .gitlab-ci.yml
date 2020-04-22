@@ -17,7 +17,7 @@ cache:
     - .m2/repository
     - .sonar/cache
 
-deploy:jdk8:
+core:deploy:
   stage: deploy
   before_script:
     - 'wget --no-cache --no-cookies -O ${MAVEN_SETTINGS} "${URL_MAVEN_SETTINGS}"'
@@ -38,7 +38,7 @@ deploy:jdk8:
   only:
     - master
 
-downstream:uniprot-store:
+store:downstream:
   stage: .post
   trigger: uniprot/deployment/mirror-uniprot-store
   when: on_success
