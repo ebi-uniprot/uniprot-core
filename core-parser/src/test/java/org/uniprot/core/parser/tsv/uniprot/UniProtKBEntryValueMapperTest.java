@@ -632,14 +632,14 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testPdb() {
-        List<String> fields = Arrays.asList("accession", "cross_ref_pdb", "3d");
+        List<String> fields = Arrays.asList("accession", "cross_ref_pdb", "structure_3d");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
 
         verify("P03431", "accession", result);
         String pdb = "2ZNL;2ZTT;3A1G;";
         String d3d = "X-ray crystallography (3)";
         verify(pdb, "cross_ref_pdb", result);
-        verify(d3d, "3d", result);
+        verify(d3d, "structure_3d", result);
     }
 
     @Test

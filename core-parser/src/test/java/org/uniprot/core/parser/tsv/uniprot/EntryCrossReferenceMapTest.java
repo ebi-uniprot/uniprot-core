@@ -112,7 +112,7 @@ class EntryCrossReferenceMapTest {
         verify("2LO1;2M6Y;5TKG;", "cross_ref_pdb", result);
         verify("P31689;", "cross_ref_smr", result);
         String pdb3d = "NMR spectroscopy (2); X-ray crystallography (1)";
-        verify(pdb3d, "3d", result);
+        verify(pdb3d, "structure_3d", result);
     }
 
     @Test

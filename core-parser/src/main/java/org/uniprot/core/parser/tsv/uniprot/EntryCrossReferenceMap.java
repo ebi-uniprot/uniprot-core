@@ -25,7 +25,10 @@ public class EntryCrossReferenceMap implements NamedValueMap {
 
     public static boolean contains(List<String> fields) {
         return fields.stream()
-                        .anyMatch(val -> val.startsWith(CROSS_REF) || val.equalsIgnoreCase("3d"))
+                        .anyMatch(
+                                val ->
+                                        val.startsWith(CROSS_REF)
+                                                || val.equalsIgnoreCase("structure_3d"))
                 || EntryGoCrossReferenceMap.contains(fields);
     }
 
@@ -66,7 +69,7 @@ public class EntryCrossReferenceMap implements NamedValueMap {
                             .map(EntryCrossReferenceMap::dbXrefToString)
                             .collect(Collectors.joining(";", "", ";")));
             if (type.equalsIgnoreCase("PDB")) {
-                map.put("3d", pdbXrefTo3DString(xrefs));
+                map.put("structure_3d", pdbXrefTo3DString(xrefs));
             }
         }
     }

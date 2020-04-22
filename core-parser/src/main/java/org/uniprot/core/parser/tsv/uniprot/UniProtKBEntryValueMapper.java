@@ -115,7 +115,8 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
         return map;
     }
 
-    private void mapAdditionalFields(UniProtKBEntry entry, List<String> fields, Map<String, String> map) {
+    private void mapAdditionalFields(
+            UniProtKBEntry entry, List<String> fields, Map<String, String> map) {
         if (containsUnsupported(fields)) {
             map.putAll(getUnsupportedFields());
         }
