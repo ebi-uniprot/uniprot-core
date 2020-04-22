@@ -8,7 +8,7 @@ import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.unirule.RuleException;
 import org.uniprot.core.util.Utils;
 
-public class AbstractRuleException<T> implements RuleException<T> {
+public abstract class AbstractRuleException<T> implements RuleException<T> {
 
     private static final long serialVersionUID = 1653869814974844099L;
     private String note;
@@ -22,6 +22,10 @@ public class AbstractRuleException<T> implements RuleException<T> {
 
     AbstractRuleException(
             String note, String category, T annotation, List<UniProtKBAccession> accessions) {
+        if (Utils.nullOrEmpty(category)) {
+            throw new IllegalArgumentException(
+                    "category is a mandatory param for RuleException entry");
+        }
         this.note = note;
         this.category = category;
         this.annotation = annotation;

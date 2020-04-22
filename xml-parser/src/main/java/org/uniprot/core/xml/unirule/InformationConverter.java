@@ -19,6 +19,7 @@ import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
 public class InformationConverter implements Converter<InformationType, Information> {
     private final ObjectFactory objectFactory;
     private final FusionConverter fusionConverter;
+    private final MultiValueConverter multiValueConverter;
 
     public InformationConverter() {
         this(new ObjectFactory());
@@ -27,18 +28,19 @@ public class InformationConverter implements Converter<InformationType, Informat
     public InformationConverter(ObjectFactory objectFactory) {
         this.objectFactory = objectFactory;
         this.fusionConverter = new FusionConverter(objectFactory);
+        this.multiValueConverter = new MultiValueConverter(objectFactory);
     }
 
     @Override
     public Information fromXml(InformationType xmlObj) {
         InformationBuilder builder = new InformationBuilder(xmlObj.getVersion());
-        List<String> uniProtIds = extractValues(xmlObj.getUniprotId());
-        List<String> names = extractValues(xmlObj.getName());
-        List<String> related = extractValues(xmlObj.getRelated());
-        List<String> duplicates = extractValues(xmlObj.getDuplicate());
-        List<String> plasmaIds = extractValues(xmlObj.getPlasmid());
+        List<String> uniProtIds = this.multiValueConverter.fromXml(xmlObj.getUniprotId());
+        List<String> names = this.multiValueConverter.fromXml(xmlObj.getName());
+        List<String> related = this.multiValueConverter.fromXml(xmlObj.getRelated());
+        List<String> duplicates = this.multiValueConverter.fromXml(xmlObj.getDuplicate());
+        List<String> plasmaIds = this.multiValueConverter.fromXml(xmlObj.getPlasmid());
         Fusion fusion = this.fusionConverter.fromXml(xmlObj.getFusion());
-        List<String> accessions = extractValues(xmlObj.getTemplate());
+        List<String> accessions = this.multiValueConverter.fromXml(xmlObj.getTemplate());
         List<UniProtKBAccession> uniProtKBAccessions =
                 Objects.nonNull(accessions)
                         ? accessions.stream()
@@ -68,28 +70,28 @@ public class InformationConverter implements Converter<InformationType, Informat
         informationType.setComment(uniObj.getComment());
         informationType.setOldRuleNum(uniObj.getOldRuleNum());
         // uniprotId
-        MultiValueType uniProtId = createMultiValueType(uniObj.getUniProtIds());
+        MultiValueType uniProtId = this.multiValueConverter.toXml(uniObj.getUniProtIds());
         informationType.setUniprotId(uniProtId);
         // data class
         informationType.setDataClass(uniObj.getDataClass().getName());
 
         // name
-        MultiValueType name = createMultiValueType(uniObj.getNames());
+        MultiValueType name = this.multiValueConverter.toXml(uniObj.getNames());
         informationType.setName(name);
         // fusion
         FusionType fusionType = this.fusionConverter.toXml(uniObj.getFusion());
         informationType.setFusion(fusionType);
         // related
-        MultiValueType related = createMultiValueType(uniObj.getRelated());
+        MultiValueType related = this.multiValueConverter.toXml(uniObj.getRelated());
         informationType.setRelated(related);
         // duplicates
-        MultiValueType duplicate = createMultiValueType(uniObj.getDuplicates());
+        MultiValueType duplicate = this.multiValueConverter.toXml(uniObj.getDuplicates());
         informationType.setDuplicate(duplicate);
         // plasmaIds
-        MultiValueType plasmaIds = createMultiValueType(uniObj.getPlasmaIds());
+        MultiValueType plasmaIds = this.multiValueConverter.toXml(uniObj.getPlasmaIds());
         informationType.setPlasmid(plasmaIds);
         // template
-        MultiValueType template = createMultiValueType(null);
+        MultiValueType template = this.multiValueConverter.toXml(null);
         List<String> multiValueValues = template.getValue();
         if (Objects.nonNull(uniObj.getUniProtAccessions())) {
             multiValueValues.addAll(
@@ -101,21 +103,6 @@ public class InformationConverter implements Converter<InformationType, Informat
 
         informationType.setInternal(uniObj.getInternal());
 
-        return null;
-    }
-
-    private List<String> extractValues(MultiValueType multiValueType) {
-        return Objects.nonNull(multiValueType)
-                ? multiValueType.getValue().stream().collect(Collectors.toList())
-                : null;
-    }
-
-    private MultiValueType createMultiValueType(List<String> values) {
-        MultiValueType multiValueType = this.objectFactory.createMultiValueType();
-        List<String> multiValueValues = multiValueType.getValue();
-        if (Objects.nonNull(values)) {
-            multiValueValues.addAll(values);
-        }
-        return multiValueType;
+        return informationType;
     }
 }

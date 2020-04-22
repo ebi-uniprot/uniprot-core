@@ -176,7 +176,9 @@ public class BuilderCommonTest {
                 Arguments.of(SamTriggerBuilderTest.class),
                 Arguments.of(UniRuleEntryBuilderTest.class),
                 Arguments.of(UniRuleIdBuilderTest.class),
-                Arguments.of(CaseRuleBuilderTest.class));
+                Arguments.of(CaseRuleBuilderTest.class),
+                Arguments.of(AnnotationRuleExceptionBuilderTest.class),
+                Arguments.of(PositionalRuleExceptionBuilderTest.class));
     }
 
     static Stream<Arguments> provideTypeBuilderTestClass() {
@@ -222,7 +224,6 @@ public class BuilderCommonTest {
         return Stream.of(
                 Arguments.of(AnnotationBuilder.class, AnnotationImpl.class),
                 Arguments.of(FusionBuilder.class, FusionImpl.class),
-                Arguments.of(PositionalFeatureBuilder.class, PositionalFeatureImpl.class),
                 Arguments.of(SamTriggerBuilder.class, SamTriggerImpl.class),
                 Arguments.of(SamTriggerBuilder.class, SamTriggerImpl.class));
     }

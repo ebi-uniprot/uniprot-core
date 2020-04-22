@@ -19,6 +19,10 @@ public class PositionalFeatureBuilder implements Builder<PositionalFeature> {
 
     private String type;
 
+    public PositionalFeatureBuilder(Range position) {
+        this.position = position;
+    }
+
     public @Nonnull PositionalFeatureBuilder position(Range position) {
         this.position = position;
         return this;
@@ -52,9 +56,8 @@ public class PositionalFeatureBuilder implements Builder<PositionalFeature> {
 
     public static @Nonnull PositionalFeatureBuilder from(@Nonnull PositionalFeature instance) {
         nullThrowIllegalArgument(instance);
-        PositionalFeatureBuilder builder = new PositionalFeatureBuilder();
-        builder.position(instance.getPosition())
-                .pattern(instance.getPattern())
+        PositionalFeatureBuilder builder = new PositionalFeatureBuilder(instance.getPosition());
+        builder.pattern(instance.getPattern())
                 .inGroup(instance.isInGroup())
                 .value(instance.getValue())
                 .type(instance.getType());

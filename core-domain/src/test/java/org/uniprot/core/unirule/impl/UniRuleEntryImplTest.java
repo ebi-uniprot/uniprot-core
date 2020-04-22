@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.Range;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.unirule.*;
@@ -50,8 +51,8 @@ public class UniRuleEntryImplTest {
         String accessionValue = "P12345";
         UniProtKBAccession accession = new UniProtKBAccessionBuilder(accessionValue).build();
         List<UniProtKBAccession> accessionList = Arrays.asList(accession);
-
-        PositionalFeature positionalFeature = new PositionalFeatureBuilder().build();
+        Range position = new Range(1, 2);
+        PositionalFeature positionalFeature = new PositionalFeatureBuilder(position).build();
         RuleException<PositionalFeature> ruleException2 =
                 new PositionalRuleExceptionImpl(note, category, positionalFeature, accessionList);
         List<RuleException<PositionalFeature>> ruleExceptions = new ArrayList<>();
