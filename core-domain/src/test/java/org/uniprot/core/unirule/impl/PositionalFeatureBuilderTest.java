@@ -22,9 +22,9 @@ public class PositionalFeatureBuilderTest {
         int end = ThreadLocalRandom.current().nextInt(start + 1, Integer.MAX_VALUE);
         Range position = new Range(start, end);
         boolean inGroup = true;
-        PositionalFeatureBuilder builder = new PositionalFeatureBuilder();
+        PositionalFeatureBuilder builder = new PositionalFeatureBuilder(position);
         builder.type(type).pattern(pattern).value(value);
-        builder.position(position).inGroup(inGroup);
+        builder.inGroup(inGroup);
         PositionalFeature positionFeature = builder.build();
         assertNotNull(positionFeature);
         assertEquals(type, positionFeature.getType());

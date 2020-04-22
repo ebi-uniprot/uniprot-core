@@ -22,6 +22,12 @@ public class PositionalFeatureImpl implements PositionalFeature {
 
     PositionalFeatureImpl(
             Range position, String pattern, boolean inGroup, String value, String type) {
+
+        if (Objects.isNull(position)) {
+            throw new IllegalArgumentException(
+                    "position is mandatory param for PositionalFeature entry");
+        }
+
         this.position = position;
         this.pattern = pattern;
         this.inGroup = inGroup;

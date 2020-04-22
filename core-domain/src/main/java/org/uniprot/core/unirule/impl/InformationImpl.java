@@ -47,6 +47,10 @@ public class InformationImpl implements Information {
             List<String> duplicates,
             List<String> plasmaIds,
             String internal) {
+
+        if (Utils.nullOrEmpty(version)) {
+            throw new IllegalArgumentException("version is mandatory param for Information entry");
+        }
         this.version = version;
         this.comment = comment;
         this.oldRuleNum = oldRuleNum;
