@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.Range;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilderTest;
@@ -31,7 +32,8 @@ public class PositionalRuleExceptionImplTest {
         String note = "sample note";
         String category = "sample category";
         String accessionValue = "P12345";
-        PositionalFeature positionalFeature = new PositionalFeatureBuilder().build();
+        Range position = new Range(1, 2);
+        PositionalFeature positionalFeature = new PositionalFeatureBuilder(position).build();
         UniProtKBAccession accession = new UniProtKBAccessionBuilder(accessionValue).build();
         List<UniProtKBAccession> accessionList = Arrays.asList(accession);
         RuleException<PositionalFeature> ruleException =
