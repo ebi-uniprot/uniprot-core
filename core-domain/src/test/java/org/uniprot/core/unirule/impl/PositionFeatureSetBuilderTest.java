@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -106,16 +107,18 @@ public class PositionFeatureSetBuilderTest {
         assertEquals(Arrays.asList(ruleExc), positionFeatureSet.getRuleExceptions());
     }
 
-    public static PositionFeatureSet createObject() {
+    public static PositionFeatureSet createObject(int listSize) {
         String random = UUID.randomUUID().toString();
         String alignmentSignature = "alignmentSignature-" + random;
         String tag = "tag-" + random;
-        List<Condition> conditions = ConditionBuilderTest.createObjects(2);
-        List<Annotation> annotations = AnnotationBuilderTest.createObjects(3);
-        List<PositionalFeature> positionalFeatures = PositionalFeatureBuilderTest.createObjects(1);
+        List<Condition> conditions = ConditionBuilderTest.createObjects(listSize);
+        List<Annotation> annotations = AnnotationBuilderTest.createObjects(listSize);
+        List<PositionalFeature> positionalFeatures =
+                PositionalFeatureBuilderTest.createObjects(listSize);
         List<RuleException<Annotation>> ruleExceptions =
-                AnnotationRuleExceptionImplTest.createObjects(3);
-        UniProtKBAccession uniProtKBAccession = UniProtKBAccessionBuilderTest.createObject();
+                AnnotationRuleExceptionImplTest.createObjects(listSize);
+        UniProtKBAccession uniProtKBAccession =
+                UniProtKBAccessionBuilderTest.createObject(listSize);
 
         PositionFeatureSetBuilder<Annotation> builder = new PositionFeatureSetBuilder<>();
         builder.alignmentSignature(alignmentSignature).tag(tag);
@@ -136,7 +139,14 @@ public class PositionFeatureSetBuilderTest {
         return positionFeatureSet;
     }
 
+    public static PositionFeatureSet createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<PositionFeatureSet> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

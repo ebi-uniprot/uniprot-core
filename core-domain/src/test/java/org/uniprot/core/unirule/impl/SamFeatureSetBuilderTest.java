@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -62,10 +63,10 @@ public class SamFeatureSetBuilderTest {
         assertEquals(Arrays.asList(annotation), samFeatureSet.getAnnotations());
     }
 
-    public static SamFeatureSet createObject() {
-        List<Condition> conditions = ConditionBuilderTest.createObjects(4);
-        List<Annotation> annotations = AnnotationBuilderTest.createObjects(3);
-        SamTrigger samTrigger = SamTriggerBuilderTest.createObject();
+    public static SamFeatureSet createObject(int listSize) {
+        List<Condition> conditions = ConditionBuilderTest.createObjects(listSize);
+        List<Annotation> annotations = AnnotationBuilderTest.createObjects(listSize);
+        SamTrigger samTrigger = SamTriggerBuilderTest.createObject(listSize);
         SamFeatureSetBuilder builder = new SamFeatureSetBuilder();
         builder.conditionsSet(conditions).annotationsSet(annotations);
         builder.samTrigger(samTrigger);
@@ -79,7 +80,14 @@ public class SamFeatureSetBuilderTest {
         return samFeatureSet;
     }
 
+    public static SamFeatureSet createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<SamFeatureSet> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

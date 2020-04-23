@@ -2,6 +2,7 @@ package org.uniprot.core.uniprotkb.description.impl;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -11,17 +12,24 @@ import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilderTest;
 
 // TODO: lgonzales
 class NameBuilderTest {
-    public static Name createObject() {
+    public static Name createObject(int listSize) {
         String random = UUID.randomUUID().toString();
         String value = "Value - " + random;
         NameBuilder builder = new NameBuilder();
         builder.value(value);
-        List<Evidence> evidences = EvidenceBuilderTest.createObjects(3);
+        List<Evidence> evidences = EvidenceBuilderTest.createObjects(listSize);
         builder.evidencesSet(evidences);
         return builder.build();
     }
 
+    public static Name createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<Name> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

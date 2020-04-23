@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -94,11 +95,11 @@ public class CaseRuleBuilderTest {
         assertEquals(Arrays.asList(ruleException), object.getRuleExceptions());
     }
 
-    public static CaseRule createObject() {
-        List<ConditionSet> conditionSets = ConditionSetBuilderTest.createObjects(2);
-        List<Annotation> annotations = AnnotationBuilderTest.createObjects(3);
+    public static CaseRule createObject(int listSize) {
+        List<ConditionSet> conditionSets = ConditionSetBuilderTest.createObjects(listSize);
+        List<Annotation> annotations = AnnotationBuilderTest.createObjects(listSize);
         List<RuleException<Annotation>> ruleExceptions =
-                AnnotationRuleExceptionImplTest.createObjects(3);
+                AnnotationRuleExceptionImplTest.createObjects(listSize);
         CaseRuleBuilder<Annotation> builder = new CaseRuleBuilder<>();
         builder.conditionSetsSet(conditionSets).annotationsSet(annotations);
         builder.ruleExceptionsSet(ruleExceptions);
@@ -113,7 +114,14 @@ public class CaseRuleBuilderTest {
         return rule;
     }
 
+    public static CaseRule createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<CaseRule> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

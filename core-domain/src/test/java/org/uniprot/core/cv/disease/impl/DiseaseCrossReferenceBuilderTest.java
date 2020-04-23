@@ -1,9 +1,11 @@
 package org.uniprot.core.cv.disease.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -24,7 +26,7 @@ public class DiseaseCrossReferenceBuilderTest {
         assertEquals(property, reference.getProperties().get(0));
     }
 
-    public static CrossReference<DiseaseDatabase> createObject() {
+    public static CrossReference<DiseaseDatabase> createObject(int listSize) {
         CrossReferenceBuilder<DiseaseDatabase> builder = new CrossReferenceBuilder<>();
         String random = UUID.randomUUID().toString();
         String id = "id-" + random;
@@ -33,7 +35,14 @@ public class DiseaseCrossReferenceBuilderTest {
         return builder.build();
     }
 
+    public static CrossReference<DiseaseDatabase> createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<CrossReference<DiseaseDatabase>> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

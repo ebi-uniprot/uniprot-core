@@ -13,7 +13,7 @@ import org.uniprot.core.Range;
 import org.uniprot.core.unirule.PositionalFeature;
 
 public class PositionalFeatureBuilderTest {
-    public static PositionalFeature createObject() {
+    public static PositionalFeature createObject(int listSize) {
         String random = UUID.randomUUID().toString();
         String pattern = "pattern-" + random;
         String type = "type-" + random;
@@ -35,7 +35,14 @@ public class PositionalFeatureBuilderTest {
         return positionFeature;
     }
 
+    public static PositionalFeature createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<PositionalFeature> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

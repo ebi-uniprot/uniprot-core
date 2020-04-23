@@ -10,6 +10,10 @@ import org.uniprot.core.impl.ECNumberImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.json.parser.deserializer.LocalDateDeserializer;
 import org.uniprot.core.json.parser.serializer.LocalDateSerializer;
+import org.uniprot.core.json.parser.uniprot.serializer.ECNumberSerializer;
+import org.uniprot.core.json.parser.uniprot.serializer.EvidenceSerializer;
+import org.uniprot.core.json.parser.uniprot.serializer.UniProtDatabaseSerializer;
+import org.uniprot.core.json.parser.uniprot.serializer.UniProtKBAccessionSerializer;
 import org.uniprot.core.uniprotkb.Keyword;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.comment.*;
@@ -141,6 +145,10 @@ public class UniRuleJsonConfig extends JsonConfig {
         SimpleModule simpleMod = new SimpleModule();
         simpleMod.addSerializer(LocalDate.class, new LocalDateSerializer());
         simpleMod.addSerializer(UniRuleIdImpl.class, new UniRuleIdImplSerializer());
+        simpleMod.addSerializer(UniProtKBAccessionImpl.class, new UniProtKBAccessionSerializer());
+        simpleMod.addSerializer(EvidenceImpl.class, new EvidenceSerializer());
+        simpleMod.addSerializer(ECNumberImpl.class, new ECNumberSerializer());
+        simpleMod.addSerializer(UniProtKBDatabase.class, new UniProtDatabaseSerializer());
         prettyObjMapper.registerModule(simpleMod);
         return prettyObjMapper;
     }

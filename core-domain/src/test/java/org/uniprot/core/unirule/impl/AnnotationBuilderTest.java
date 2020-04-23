@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -21,12 +22,14 @@ import org.uniprot.core.unirule.Annotation;
 
 public class AnnotationBuilderTest {
 
-    public static Annotation createObject() {
-        ProteinDescription proteinDescription = ProteinDescriptionBuilderTest.createObject();
-        Comment comment = DiseaseCommentBuilderTest.createObject();
-        Keyword keyword = KeywordBuilderTest.createObject();
-        UniProtKBCrossReference crossReference = UniProtKBCrossReferenceBuilderTest.createObject();
-        Gene gene = GeneBuilderTest.createObject();
+    public static Annotation createObject(int listSize) {
+        ProteinDescription proteinDescription =
+                ProteinDescriptionBuilderTest.createObject(listSize);
+        Comment comment = DiseaseCommentBuilderTest.createObject(listSize);
+        Keyword keyword = KeywordBuilderTest.createObject(listSize);
+        UniProtKBCrossReference crossReference =
+                UniProtKBCrossReferenceBuilderTest.createObject(listSize);
+        Gene gene = GeneBuilderTest.createObject(listSize);
         AnnotationBuilder builder = new AnnotationBuilder();
         builder.proteinDescription(proteinDescription);
         builder.dbReference(crossReference).gene(gene);
@@ -41,7 +44,14 @@ public class AnnotationBuilderTest {
         return annotation;
     }
 
+    public static Annotation createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<Annotation> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

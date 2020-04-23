@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -158,24 +159,31 @@ class ProteinSectionBuilderTest {
         assertEquals(obj.hashCode(), obj2.hashCode());
     }
 
-    public static ProteinSection createObject() {
+    public static ProteinSection createObject(int listSize) {
         ProteinSectionBuilder builder = new ProteinSectionBuilder();
-        ProteinRecName recommendedName = ProteinRecNameBuilderTest.createObject();
+        ProteinRecName recommendedName = ProteinRecNameBuilderTest.createObject(listSize);
         builder.recommendedName(recommendedName);
-        List<ProteinAltName> alternativeNames = ProteinAltNameBuilderTest.createObjects(3);
+        List<ProteinAltName> alternativeNames = ProteinAltNameBuilderTest.createObjects(listSize);
         builder.alternativeNamesSet(alternativeNames);
-        Name allergenName = NameBuilderTest.createObject();
+        Name allergenName = NameBuilderTest.createObject(listSize);
         builder.allergenName(allergenName);
-        Name biotechName = NameBuilderTest.createObject();
+        Name biotechName = NameBuilderTest.createObject(listSize);
         builder.biotechName(biotechName);
-        List<Name> cdAntigenNames = NameBuilderTest.createObjects(2);
+        List<Name> cdAntigenNames = NameBuilderTest.createObjects(listSize);
         builder.cdAntigenNamesSet(cdAntigenNames);
-        List<Name> innNames = NameBuilderTest.createObjects(5);
+        List<Name> innNames = NameBuilderTest.createObjects(listSize);
         builder.innNamesSet(innNames);
         return builder.build();
     }
 
+    public static ProteinSection createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<ProteinSection> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

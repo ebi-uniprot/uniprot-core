@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -43,12 +44,13 @@ public class PositionalRuleExceptionImplTest {
         assertEquals(accessionList, ruleException.getAccessions());
     }
 
-    public static RuleException<PositionalFeature> createObject() {
+    public static RuleException<PositionalFeature> createObject(int listSize) {
         String random = UUID.randomUUID().toString();
         String note = "sample note" + random;
         String category = "sample category" + random;
-        PositionalFeature positionalFeature = PositionalFeatureBuilderTest.createObject();
-        List<UniProtKBAccession> accessionList = UniProtKBAccessionBuilderTest.createObjects(3);
+        PositionalFeature positionalFeature = PositionalFeatureBuilderTest.createObject(listSize);
+        List<UniProtKBAccession> accessionList =
+                UniProtKBAccessionBuilderTest.createObjects(listSize);
         RuleException<PositionalFeature> ruleException =
                 new PositionalRuleExceptionImpl(note, category, positionalFeature, accessionList);
         assertNotNull(ruleException);
@@ -60,7 +62,14 @@ public class PositionalRuleExceptionImplTest {
         return ruleException;
     }
 
+    public static RuleException<PositionalFeature> createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<RuleException<PositionalFeature>> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

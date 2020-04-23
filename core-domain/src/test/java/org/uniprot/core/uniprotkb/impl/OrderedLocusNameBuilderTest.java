@@ -2,6 +2,7 @@ package org.uniprot.core.uniprotkb.impl;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -23,16 +24,23 @@ public class OrderedLocusNameBuilderTest extends AbstractEvidencedValueBuilderTe
         verifyEvidencedValue(orfName);
     }
 
-    public static OrderedLocusName createObject() {
+    public static OrderedLocusName createObject(int listSize) {
         OrderedLocusNameBuilder builder = new OrderedLocusNameBuilder();
         String random = UUID.randomUUID().toString();
         String value = "value-" + random;
-        List<Evidence> evidences = EvidenceBuilderTest.createObjects(4);
+        List<Evidence> evidences = EvidenceBuilderTest.createObjects(listSize);
         builder.value(value).evidencesSet(evidences);
         return builder.build();
     }
 
+    public static OrderedLocusName createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<OrderedLocusName> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

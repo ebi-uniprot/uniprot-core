@@ -72,7 +72,7 @@ public class UniRuleEntryBuilderTest {
     @Test
     void testCreateObjectOverwriteOtherRulesList() {
         UniRuleEntry uniRuleEntry = createObject();
-        assertEquals(2, uniRuleEntry.getOtherRules().size());
+        assertFalse(uniRuleEntry.getOtherRules().isEmpty());
         UniRuleEntryBuilder builder = UniRuleEntryBuilder.from(uniRuleEntry);
         // overwrite  rules
         List<CaseRule> rules = CaseRuleBuilderTest.createObjects(1);
@@ -152,11 +152,6 @@ public class UniRuleEntryBuilderTest {
                 updatedUniProtEntry.getPositionFeatureSets());
     }
 
-    /*
-    private List<CaseRule> otherRules;
-    private List<SamFeatureSet> samFeatureSets;
-    private List<PositionFeatureSet> positionFeatureSets;
-     */
     @Test
     void testCreateObjectWithOneOtherRule() {
         UniRuleEntryBuilder builder =
@@ -190,17 +185,17 @@ public class UniRuleEntryBuilderTest {
         assertEquals(Arrays.asList(positionFeature), uniRuleEntry.getPositionFeatureSets());
     }
 
-    public static UniRuleEntry createObject() {
+    public static UniRuleEntry createObject(int listSize) {
         String random = UUID.randomUUID().toString();
-        UniRuleId uniRuleId = UniRuleIdBuilderTest.createObject();
-        Information information = InformationBuilderTest.createObject();
+        UniRuleId uniRuleId = UniRuleIdBuilderTest.createObject(listSize);
+        Information information = InformationBuilderTest.createObject(listSize);
         int rIndex = ThreadLocalRandom.current().nextInt(0, RuleStatus.values().length);
         RuleStatus ruleStatus = RuleStatus.values()[rIndex];
-        Rule mainRule = RuleBuilderTest.createObject();
-        List<CaseRule> otherRules = CaseRuleBuilderTest.createObjects(2);
-        List<SamFeatureSet> samFeatureSets = SamFeatureSetBuilderTest.createObjects(3);
+        Rule mainRule = RuleBuilderTest.createObject(listSize);
+        List<CaseRule> otherRules = CaseRuleBuilderTest.createObjects(listSize);
+        List<SamFeatureSet> samFeatureSets = SamFeatureSetBuilderTest.createObjects(listSize);
         List<PositionFeatureSet> positionFeatureSets =
-                PositionFeatureSetBuilderTest.createObjects(1);
+                PositionFeatureSetBuilderTest.createObjects(listSize);
         String createdBy = "createdBy" + random;
         String modifiedBy = "modifiedBy" + random;
         LocalDate createdDate = LocalDate.now();
@@ -229,7 +224,14 @@ public class UniRuleEntryBuilderTest {
         return uniRuleEntry;
     }
 
+    public static UniRuleEntry createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<UniRuleEntry> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

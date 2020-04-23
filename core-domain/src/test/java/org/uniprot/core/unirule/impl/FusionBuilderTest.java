@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -62,14 +63,14 @@ public class FusionBuilderTest {
         assertEquals(Arrays.asList(cter), fusion.getCters());
     }
 
-    public static Fusion createObject() {
+    public static Fusion createObject(int listSize) {
         String random = UUID.randomUUID().toString();
         List<String> nters =
-                IntStream.range(0, 3)
+                IntStream.range(0, listSize)
                         .mapToObj(i -> i + "nter-" + random)
                         .collect(Collectors.toList());
         List<String> cters =
-                IntStream.range(0, 5)
+                IntStream.range(0, listSize)
                         .mapToObj(i -> i + "cter-" + random)
                         .collect(Collectors.toList());
         FusionBuilder builder = new FusionBuilder();
@@ -82,7 +83,14 @@ public class FusionBuilderTest {
         return fusion;
     }
 
+    public static Fusion createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<Fusion> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }
