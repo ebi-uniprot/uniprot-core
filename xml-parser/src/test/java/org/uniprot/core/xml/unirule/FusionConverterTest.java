@@ -140,7 +140,6 @@ public class FusionConverterTest {
     }
 
     static public void main(String... args) {
-        System.out.println("Hello world -2");
-        System.out.println("Another hello world");
+        System.out.println("Hello world from somewhere");
     }
 }
