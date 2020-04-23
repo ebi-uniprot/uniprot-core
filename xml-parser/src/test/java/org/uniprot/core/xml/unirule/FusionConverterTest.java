@@ -139,7 +139,7 @@ public class FusionConverterTest {
         return IntStream.range(0, count).mapToObj(i -> createObject(count)).collect(Collectors.toList());
     }
 
-    static public void main(String... args) {
-        System.out.println("Hello world from somewhere");
+    public static void main(String[] args) {
+        System.out.println("Hello World-2");
     }
 }
