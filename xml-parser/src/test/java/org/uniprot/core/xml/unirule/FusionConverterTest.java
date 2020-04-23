@@ -138,4 +138,8 @@ public class FusionConverterTest {
     public static List<FusionType> createObjects(int count) {
         return IntStream.range(0, count).mapToObj(i -> createObject(count)).collect(Collectors.toList());
     }
+
+    public static void main(String[] args) {
+        System.out.println("Hello world -2");
+    }
 }
