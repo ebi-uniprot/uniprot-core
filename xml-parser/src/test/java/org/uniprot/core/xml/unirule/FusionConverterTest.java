@@ -141,5 +141,6 @@ public class FusionConverterTest {
 
     public static void main(String[] args) {
         System.out.println("Hello World-2");
+        System.out.println("This should result in merge conflict");
     }
 }
