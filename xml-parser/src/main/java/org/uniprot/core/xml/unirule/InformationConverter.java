@@ -1,5 +1,6 @@
 package org.uniprot.core.xml.unirule;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -91,7 +92,7 @@ public class InformationConverter implements Converter<InformationType, Informat
         MultiValueType plasmaIds = this.multiValueConverter.toXml(uniObj.getPlasmaIds());
         informationType.setPlasmid(plasmaIds);
         // template
-        MultiValueType template = this.multiValueConverter.toXml(null);
+        MultiValueType template = this.multiValueConverter.toXml(new ArrayList<>());
         List<String> multiValueValues = template.getValue();
         if (Objects.nonNull(uniObj.getUniProtAccessions())) {
             multiValueValues.addAll(
