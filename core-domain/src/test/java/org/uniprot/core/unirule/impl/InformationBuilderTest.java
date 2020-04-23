@@ -147,36 +147,37 @@ public class InformationBuilderTest {
         assertEquals(Arrays.asList(plasmaId), information.getPlasmaIds());
     }
 
-    public static Information createObject() {
+    public static Information createObject(int listSize) {
         String random = UUID.randomUUID().toString();
         String version = "version-" + random;
         String comment = "comment-" + random;
         String oldRuleNum = "oldRuleNum-" + random;
         String internal = "internal-" + random;
         List<String> uniProtIds =
-                IntStream.range(0, 5)
+                IntStream.range(0, listSize)
                         .mapToObj(i -> i + "upi" + random)
                         .collect(Collectors.toList());
         int rIndex = ThreadLocalRandom.current().nextInt(0, DataClassType.values().length);
         DataClassType dataClass = DataClassType.values()[rIndex];
         List<String> names =
-                IntStream.range(0, 5)
+                IntStream.range(0, listSize)
                         .mapToObj(i -> i + "-name-" + random)
                         .collect(Collectors.toList());
-        Fusion fusion = FusionBuilderTest.createObject();
+        Fusion fusion = FusionBuilderTest.createObject(listSize);
         List<String> related =
-                IntStream.range(0, 3)
+                IntStream.range(0, listSize)
                         .mapToObj(i -> i + "-related-" + random)
                         .collect(Collectors.toList());
         List<String> duplicates =
-                IntStream.range(0, 5)
+                IntStream.range(0, listSize)
                         .mapToObj(i -> i + "-duplicates-" + random)
                         .collect(Collectors.toList());
         List<String> plasmaIds =
-                IntStream.range(0, 7)
+                IntStream.range(0, listSize)
                         .mapToObj(i -> i + "-plasmaIds-" + random)
                         .collect(Collectors.toList());
-        List<UniProtKBAccession> uniProtAccessions = UniProtKBAccessionBuilderTest.createObjects(3);
+        List<UniProtKBAccession> uniProtAccessions =
+                UniProtKBAccessionBuilderTest.createObjects(listSize);
 
         InformationBuilder builder = new InformationBuilder();
         builder.version(version).comment(comment).oldRuleNum(oldRuleNum);
@@ -202,7 +203,14 @@ public class InformationBuilderTest {
         return information;
     }
 
+    public static Information createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<Information> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

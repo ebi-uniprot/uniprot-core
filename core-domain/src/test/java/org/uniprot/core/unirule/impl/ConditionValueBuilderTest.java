@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -21,7 +22,7 @@ public class ConditionValueBuilderTest {
         assertNull(conditionValue.getCvId());
     }
 
-    public static ConditionValue createObject() {
+    public static ConditionValue createObject(int listSize) {
         String random = UUID.randomUUID().toString();
         String cvId = "cvId" + random;
         String value = "value" + random;
@@ -34,7 +35,14 @@ public class ConditionValueBuilderTest {
         return conditionValue;
     }
 
+    public static ConditionValue createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<ConditionValue> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

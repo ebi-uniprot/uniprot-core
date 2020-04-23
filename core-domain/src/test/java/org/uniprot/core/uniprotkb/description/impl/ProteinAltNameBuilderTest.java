@@ -3,6 +3,7 @@ package org.uniprot.core.uniprotkb.description.impl;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -53,18 +54,25 @@ public class ProteinAltNameBuilderTest {
         assertEquals(obj.hashCode(), obj2.hashCode());
     }
 
-    public static ProteinAltName createObject() {
+    public static ProteinAltName createObject(int listSize) {
         ProteinAltNameBuilder builder = new ProteinAltNameBuilder();
-        Name fullName = NameBuilderTest.createObject();
-        List<Name> shortNames = NameBuilderTest.createObjects(3);
-        List<EC> ecNumbers = ECBuilderTest.createObjects(3);
+        Name fullName = NameBuilderTest.createObject(listSize);
+        List<Name> shortNames = NameBuilderTest.createObjects(listSize);
+        List<EC> ecNumbers = ECBuilderTest.createObjects(listSize);
         builder.fullName(fullName);
         builder.shortNamesSet(shortNames);
         builder.ecNumbersSet(ecNumbers);
         return builder.build();
     }
 
+    public static ProteinAltName createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<ProteinAltName> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

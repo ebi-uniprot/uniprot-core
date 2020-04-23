@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -27,7 +28,7 @@ public class UniProtKBAccessionBuilderTest {
         assertEquals(obj.hashCode(), obj2.hashCode());
     }
 
-    public static UniProtKBAccession createObject() {
+    public static UniProtKBAccession createObject(int listSize) {
         String random = UUID.randomUUID().toString();
         String kbId = "accession-" + random;
         UniProtKBAccession obj = new UniProtKBAccessionBuilder(kbId).build();
@@ -36,7 +37,14 @@ public class UniProtKBAccessionBuilderTest {
         return obj;
     }
 
+    public static UniProtKBAccession createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<UniProtKBAccession> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

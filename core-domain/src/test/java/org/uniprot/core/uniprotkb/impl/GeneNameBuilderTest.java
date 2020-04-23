@@ -2,6 +2,9 @@ package org.uniprot.core.uniprotkb.impl;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.gene.GeneName;
@@ -20,12 +23,23 @@ public class GeneNameBuilderTest extends AbstractEvidencedValueBuilderTest {
         verifyEvidencedValue(orfName);
     }
 
-    public static GeneName createObject() {
+    public static GeneName createObject(int listSize) {
         GeneNameBuilder builder = new GeneNameBuilder();
         String random = UUID.randomUUID().toString();
         String name = "value-" + random;
-        List<Evidence> evidences = EvidenceBuilderTest.createObjects(4);
+        List<Evidence> evidences = EvidenceBuilderTest.createObjects(listSize);
         builder.value(name).evidencesSet(evidences);
         return builder.build();
+    }
+
+    public static GeneName createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
+    public static List<GeneName> createObjects(int count) {
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

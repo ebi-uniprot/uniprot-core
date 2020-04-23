@@ -13,7 +13,7 @@ import org.uniprot.core.unirule.SamTrigger;
 import org.uniprot.core.unirule.SamTriggerType;
 
 public class SamTriggerBuilderTest {
-    public static SamTrigger createObject() {
+    public static SamTrigger createObject(int listSize) {
         int rIndex = ThreadLocalRandom.current().nextInt(0, SamTriggerType.values().length);
         int start = ThreadLocalRandom.current().nextInt();
         int end = ThreadLocalRandom.current().nextInt(start + 1, Integer.MAX_VALUE);
@@ -28,7 +28,14 @@ public class SamTriggerBuilderTest {
         return samTrigger;
     }
 
+    public static SamTrigger createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<SamTrigger> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

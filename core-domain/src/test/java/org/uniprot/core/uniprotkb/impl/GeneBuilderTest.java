@@ -4,6 +4,9 @@ import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.gene.*;
@@ -136,16 +139,28 @@ public class GeneBuilderTest {
         assertEquals("", obj.toString());
     }
 
-    public static Gene createObject() {
+    public static Gene createObject(int listSize) {
         GeneBuilder builder = new GeneBuilder();
-        GeneName geneName = GeneNameBuilderTest.createObject();
-        List<GeneNameSynonym> synonyms = GeneNameSynonymBuilderTest.createObjects(3);
-        List<OrderedLocusName> orderedLocusNames = OrderedLocusNameBuilderTest.createObjects(3);
-        List<ORFName> orfNames = ORFNameBuilderTest.createObjects(4);
+        GeneName geneName = GeneNameBuilderTest.createObject(listSize);
+        List<GeneNameSynonym> synonyms = GeneNameSynonymBuilderTest.createObjects(listSize);
+        List<OrderedLocusName> orderedLocusNames =
+                OrderedLocusNameBuilderTest.createObjects(listSize);
+        List<ORFName> orfNames = ORFNameBuilderTest.createObjects(listSize);
         return builder.geneName(geneName)
                 .synonymsSet(synonyms)
                 .orderedLocusNamesSet(orderedLocusNames)
                 .orfNamesSet(orfNames)
                 .build();
+    }
+
+    public static Gene createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
+    public static List<Gene> createObjects(int count) {
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

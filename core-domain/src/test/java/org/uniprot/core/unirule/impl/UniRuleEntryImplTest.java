@@ -48,7 +48,6 @@ public class UniRuleEntryImplTest {
         String note = "sample note";
         String category = "sample category";
         String accessionValue = "P12345";
-        Annotation annotation = new AnnotationBuilder().build();
         UniProtKBAccession accession = new UniProtKBAccessionBuilder(accessionValue).build();
         List<UniProtKBAccession> accessionList = Arrays.asList(accession);
 
