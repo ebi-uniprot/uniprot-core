@@ -89,6 +89,7 @@ public class InformationConverterTest {
     }
 
     public static void main(String[] args) {
+        System.out.println("This message should not be merged");
         System.out.println("Hello World-1");
     }
 }
