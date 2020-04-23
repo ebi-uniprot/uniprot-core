@@ -88,7 +88,8 @@ public class InformationConverterTest {
         return objectFactory;
     }
 
-    static public void main(String... args) {
-        System.out.println("Hello World from sky");
+    public static void main(String[] args) {
+        System.out.println("Hello This World-1");
+        System.out.println("This is another message");
     }
 }
