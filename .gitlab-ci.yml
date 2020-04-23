@@ -1,8 +1,7 @@
 variables:
   MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true -Djava.awt.headless=true"
   MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
-  SONAR_PROPS: "-Dsonar.projectKey=uniprot-core -Dsonar.organization=ebi-uniprot -Dsonar.projectVersion=${UNIPROT_BUILD_VERSION} -Dsonar.exclusions=****/module-info.java,**/test/java/**/*.java"
-  #SONAR_HOST_URL: "http://wwwint.ebi.ac.uk/uniprot/sonar"
+  SONAR_PROPS: "-Dsonar.projectKey=uniprot-core -Dsonar.organization=ebi-uniprot"
   SONAR_HOST_URL: "https://sonarcloud.io"
   MAVEN_SETTINGS: "maven-settings.xml"
   URL_MAVEN_SETTINGS: "https://gitlab.ebi.ac.uk/api/v4/projects/${CONFIG_PROJECT_ID}/repository/files/${MAVEN_SETTINGS}/raw?ref=master&private_token=${GITLAB_USER_API_TOKEN}"
@@ -21,7 +20,6 @@ core:deploy:
   stage: deploy
   before_script:
     - 'wget --no-cache --no-cookies -O ${MAVEN_SETTINGS} "${URL_MAVEN_SETTINGS}"'
-    - 'mvn versions:set -DnewVersion=${UNIPROT_BUILD_VERSION}'
   script:
     - if [ ! -f ${MAVEN_SETTINGS} ];
         then echo "CI settings missing";
@@ -34,7 +32,6 @@ core:deploy:
     - 'ls -al */*/'
     - 'ls -al */*/*/'
     - 'rm ${MAVEN_SETTINGS}'
-    - 'mvn versions:revert'
   only:
     - master
 
