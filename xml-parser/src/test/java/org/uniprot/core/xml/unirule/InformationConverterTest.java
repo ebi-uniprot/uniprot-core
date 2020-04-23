@@ -89,7 +89,6 @@ public class InformationConverterTest {
     }
 
     public static void main(String[] args) {
-        System.out.println("Hello This World-1");
-        System.out.println("This is another message");
+        System.out.println("Hello World-1");
     }
 }

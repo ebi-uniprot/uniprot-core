@@ -140,7 +140,6 @@ public class FusionConverterTest {
     }
 
     public static void main(String[] args) {
-        System.out.println("This is another message");
-        System.out.println("Hello that world-2");
+        System.out.println("Hello World-2");
     }
 }
