@@ -21,14 +21,15 @@ public class MultiValueConverter implements Converter<MultiValueType, List<Strin
 
     @Override
     public List<String> fromXml(MultiValueType xmlObj) {
-        return xmlObj.getValue();
+        return Objects.nonNull(xmlObj) ? xmlObj.getValue() : null;
     }
 
     @Override
     public MultiValueType toXml(List<String> uniObj) {
-        MultiValueType multiValueType = this.objectFactory.createMultiValueType();
-        List<String> multiValueValues = multiValueType.getValue();
+        MultiValueType multiValueType = null;
         if (Objects.nonNull(uniObj)) {
+            multiValueType = this.objectFactory.createMultiValueType();
+            List<String> multiValueValues = multiValueType.getValue();
             multiValueValues.addAll(uniObj);
         }
         return multiValueType;

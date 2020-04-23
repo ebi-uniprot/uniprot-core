@@ -10,6 +10,7 @@ import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -26,6 +27,12 @@ public class FusionConverterTest {
     }
 
     @Test
+    void testNullObjectToXml() {
+        FusionType xmlObject = fusionConverter.toXml(null);
+        assertNull(xmlObject);
+    }
+
+    @Test
     void testObjectToXml() {
         Fusion fusion = FusionBuilderTest.createObject();
         FusionType xmlObject = fusionConverter.toXml(fusion);
@@ -35,7 +42,7 @@ public class FusionConverterTest {
     }
 
     @Test
-    void testObjectToXmlWithoutCter(){
+    void testObjectToXmlWithoutCter() {
         FusionBuilder builder = FusionBuilder.from(FusionBuilderTest.createObject());
         builder.ctersSet(null);
         Fusion fusion = builder.build();
@@ -46,7 +53,7 @@ public class FusionConverterTest {
     }
 
     @Test
-    void testObjectToXmlWithoutNter(){
+    void testObjectToXmlWithoutNter() {
         FusionBuilder builder = FusionBuilder.from(FusionBuilderTest.createObject());
         builder.ntersSet(null);
         Fusion fusion = builder.build();
@@ -57,7 +64,7 @@ public class FusionConverterTest {
     }
 
     @Test
-    void testFromXmlToObject(){
+    void testFromXmlToObject() {
         FusionType fusionType = createObject();
         Fusion fusion = fusionConverter.fromXml(fusionType);
         assertNotNull(fusion);
@@ -66,7 +73,14 @@ public class FusionConverterTest {
     }
 
     @Test
-    void testFromEmptyXmlToObject(){
+    void testFromNullXmlToObject() {
+        Fusion fusion = fusionConverter.fromXml(null);
+        assertNull(fusion);
+    }
+
+
+    @Test
+    void testFromEmptyXmlToObject() {
         FusionType fusionType = objectFactory.createFusionType();
         Fusion fusion = fusionConverter.fromXml(fusionType);
         assertNotNull(fusion);
@@ -75,7 +89,7 @@ public class FusionConverterTest {
     }
 
     @Test
-    void testRoundTripXml(){
+    void testRoundTripXml() {
         FusionType fusionType = createObject();
         // convert xml to object
         Fusion fusion = fusionConverter.fromXml(fusionType);
@@ -87,7 +101,7 @@ public class FusionConverterTest {
     }
 
     @Test
-    void testRoundTripObject(){
+    void testRoundTripObject() {
         Fusion fusion = FusionBuilderTest.createObject();
         assertNotNull(fusion);
         // convert object to xml
@@ -98,15 +112,15 @@ public class FusionConverterTest {
         assertEquals(fusion, object);
     }
 
-    public static FusionType createObject(){
+    public static FusionType createObject(int listSize) {
         FusionType fusionType = objectFactory.createFusionType();
         String random = UUID.randomUUID().toString();
         List<String> nter =
-                IntStream.range(0, 2)
+                IntStream.range(0, listSize)
                         .mapToObj(i -> i + "nter-" + random)
                         .collect(Collectors.toList());
         List<String> cter =
-                IntStream.range(0, 2)
+                IntStream.range(0, listSize)
                         .mapToObj(i -> i + "cter-" + random)
                         .collect(Collectors.toList());
 
@@ -116,7 +130,12 @@ public class FusionConverterTest {
         return fusionType;
     }
 
-    public static List<FusionType> createObjects(int count){
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+    public static FusionType createObject(){
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
+    public static List<FusionType> createObjects(int count) {
+        return IntStream.range(0, count).mapToObj(i -> createObject(count)).collect(Collectors.toList());
     }
 }
