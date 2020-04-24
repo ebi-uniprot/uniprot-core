@@ -139,9 +139,4 @@ public class FusionConverterTest {
                 .mapToObj(i -> createObject(count))
                 .collect(Collectors.toList());
     }
-
-    public static void main(String[] args) {
-        System.out.println("Hello World-2");
-        System.out.println("This should result in merge conflict");
-    }
 }
