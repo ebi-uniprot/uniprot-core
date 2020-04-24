@@ -22,6 +22,8 @@ public class PositionalFeatureConverter
 
     @Override
     public PositionalFeature fromXml(PositionalFeatureType xmlObj) {
+        if (Objects.isNull(xmlObj)) return null;
+
         RangeType xmlPosition = xmlObj.getPositionalCondition().getPosition();
         Range position =
                 new Range(

@@ -1,19 +1,16 @@
 package org.uniprot.core.xml.unirule;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.ConditionSet;
 import org.uniprot.core.unirule.Rule;
 import org.uniprot.core.unirule.RuleException;
 import org.uniprot.core.unirule.impl.RuleBuilder;
 import org.uniprot.core.xml.Converter;
-import org.uniprot.core.xml.jaxb.unirule.AnnotationsType;
-import org.uniprot.core.xml.jaxb.unirule.MainType;
-import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
-import org.uniprot.core.xml.jaxb.unirule.RuleExceptionsType;
+import org.uniprot.core.xml.jaxb.unirule.*;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class MainTypeConverter implements Converter<MainType, Rule> {
 
@@ -35,13 +32,12 @@ public class MainTypeConverter implements Converter<MainType, Rule> {
 
     @Override
     public Rule fromXml(MainType xmlObj) {
-        List<ConditionSet> conditionSets = null;
-        if (Objects.nonNull(xmlObj.getConditionSets())) {
-            conditionSets =
-                    xmlObj.getConditionSets().getConditionSet().stream()
-                            .map(this.conditionSetConverter::fromXml)
-                            .collect(Collectors.toList());
-        }
+        if (Objects.isNull(xmlObj)) return null;
+
+        List<ConditionSet> conditionSets =
+                xmlObj.getConditionSets().getConditionSet().stream()
+                        .map(this.conditionSetConverter::fromXml)
+                        .collect(Collectors.toList());
 
         List<Annotation> annotations = null;
         if (Objects.nonNull(xmlObj.getAnnotations())) {
@@ -53,11 +49,13 @@ public class MainTypeConverter implements Converter<MainType, Rule> {
         List<RuleException> ruleExceptions = null;
 
         if (Objects.nonNull(xmlObj.getRuleExceptions())) {
+            List<RuleExceptionType> ruleExceptionsTypes = xmlObj.getRuleExceptions().getRuleException();
             ruleExceptions =
-                    xmlObj.getRuleExceptions().getRuleException().stream()
+                    ruleExceptionsTypes.stream()
                             .map(this.ruleExceptionConverter::fromXml)
                             .collect(Collectors.toList());
         }
+
         RuleBuilder ruleBuilder = new RuleBuilder<>(conditionSets);
         ruleBuilder.annotationsSet(annotations);
         ruleBuilder.ruleExceptionsSet(ruleExceptions);
