@@ -1,16 +1,40 @@
 package org.uniprot.core.xml.unirule;
 
+import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.ConditionSet;
+import org.uniprot.core.unirule.impl.ConditionSetBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.ConditionSetType;
 import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 public class ConditionSetConverter implements Converter<ConditionSetType, ConditionSet> {
-    public ConditionSetConverter(ObjectFactory objectFactory) {}
+    private final ObjectFactory objectFactory;
+    private final ConditionConverter conditionConverter;
+
+    public ConditionSetConverter(){
+        this(new ObjectFactory());
+    }
+
+    public ConditionSetConverter(ObjectFactory objectFactory) {
+        this.objectFactory = new ObjectFactory();
+        this.conditionConverter = new ConditionConverter(objectFactory);
+    }
 
     @Override
     public ConditionSet fromXml(ConditionSetType xmlObj) {
-        return null;
+        if (Objects.isNull(xmlObj)) return null;
+
+        List<Condition> conditions = xmlObj.getCondition()
+                .stream()
+                .map(this.conditionConverter::fromXml)
+                .collect(Collectors.toList());
+
+        ConditionSetBuilder builder = new ConditionSetBuilder(conditions);
+        return builder.build();
     }
 
     @Override
