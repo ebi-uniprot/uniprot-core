@@ -1,12 +1,6 @@
 package org.uniprot.core.xml.unirule;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.unirule.Fusion;
-import org.uniprot.core.unirule.impl.FusionBuilder;
-import org.uniprot.core.unirule.impl.FusionBuilderTest;
-import org.uniprot.core.xml.jaxb.unirule.FusionType;
-import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -14,7 +8,13 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.unirule.Fusion;
+import org.uniprot.core.unirule.impl.FusionBuilder;
+import org.uniprot.core.unirule.impl.FusionBuilderTest;
+import org.uniprot.core.xml.jaxb.unirule.FusionType;
+import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
 
 public class FusionConverterTest {
     private static ObjectFactory objectFactory;
@@ -78,7 +78,6 @@ public class FusionConverterTest {
         assertNull(fusion);
     }
 
-
     @Test
     void testFromEmptyXmlToObject() {
         FusionType fusionType = objectFactory.createFusionType();
@@ -130,13 +129,15 @@ public class FusionConverterTest {
         return fusionType;
     }
 
-    public static FusionType createObject(){
+    public static FusionType createObject() {
         int listSize = ThreadLocalRandom.current().nextInt(1, 5);
         return createObject(listSize);
     }
 
     public static List<FusionType> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject(count)).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 
     public static void main(String[] args) {
