@@ -29,7 +29,7 @@ public class UniRuleIdImplSerializerTest {
     void testWriteJson() throws JsonProcessingException {
         String json = this.objectMapper.writeValueAsString(this.entry);
         Assertions.assertNotNull(json);
-        Assertions.assertEquals(this.entry.getValue(), json.replaceAll("\\\"", ""));
+        Assertions.assertEquals(this.entry.getValue(), json.replaceAll("\"", ""));
     }
 
     @Test
@@ -38,7 +38,7 @@ public class UniRuleIdImplSerializerTest {
         UniRuleId entry = builder.build();
         String json = this.objectMapper.writeValueAsString(entry);
         Assertions.assertNotNull(json);
-        Assertions.assertEquals("null", json.replaceAll("\\\"", ""));
+        Assertions.assertEquals("null", json.replaceAll("\"", ""));
     }
 
     @Test
@@ -47,6 +47,6 @@ public class UniRuleIdImplSerializerTest {
         UniRuleId entry = builder.build();
         String json = this.objectMapper.writeValueAsString(entry);
         Assertions.assertNotNull(json);
-        Assertions.assertEquals(entry.getValue(), json.replaceAll("\\\"", ""));
+        Assertions.assertEquals(entry.getValue(), json.replaceAll("\"", ""));
     }
 }
