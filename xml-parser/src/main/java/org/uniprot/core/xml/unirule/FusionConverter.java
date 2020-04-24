@@ -1,12 +1,12 @@
 package org.uniprot.core.xml.unirule;
 
+import java.util.Objects;
+
 import org.uniprot.core.unirule.Fusion;
 import org.uniprot.core.unirule.impl.FusionBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.FusionType;
 import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
-
-import java.util.Objects;
 
 public class FusionConverter implements Converter<FusionType, Fusion> {
 
@@ -23,7 +23,7 @@ public class FusionConverter implements Converter<FusionType, Fusion> {
     @Override
     public Fusion fromXml(FusionType xmlObj) {
         Fusion fusion = null;
-        if(Objects.nonNull(xmlObj)) {
+        if (Objects.nonNull(xmlObj)) {
             FusionBuilder builder = new FusionBuilder();
             builder.ctersSet(xmlObj.getCter()).ntersSet(xmlObj.getNter());
             fusion = builder.build();
@@ -35,7 +35,7 @@ public class FusionConverter implements Converter<FusionType, Fusion> {
     @Override
     public FusionType toXml(Fusion uniObj) {
         FusionType fusionType = null;
-        if(Objects.nonNull(uniObj)) {
+        if (Objects.nonNull(uniObj)) {
             fusionType = this.objectFactory.createFusionType();
             fusionType.getCter().addAll(uniObj.getCters());
             fusionType.getNter().addAll(uniObj.getNters());
