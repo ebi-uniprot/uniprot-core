@@ -21,7 +21,9 @@ public class MultiValueConverter implements Converter<MultiValueType, List<Strin
 
     @Override
     public List<String> fromXml(MultiValueType xmlObj) {
-        return Objects.nonNull(xmlObj) ? xmlObj.getValue() : null;
+        if (Objects.isNull(xmlObj)) return null;
+
+        return xmlObj.getValue();
     }
 
     @Override

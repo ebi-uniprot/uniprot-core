@@ -23,6 +23,7 @@ public class RuleExceptionConverter implements Converter<RuleExceptionType, Rule
     private final ObjectFactory objectFactory;
     private final AnnotationConverter annotationConverter;
     private final PositionalFeatureConverter positionalFeatureConverter;
+    private final UniProtKBAccessionConverter accessionConverter;
 
     public RuleExceptionConverter() {
         this(new ObjectFactory());
@@ -32,15 +33,17 @@ public class RuleExceptionConverter implements Converter<RuleExceptionType, Rule
         this.objectFactory = objectFactory;
         this.annotationConverter = new AnnotationConverter(objectFactory);
         this.positionalFeatureConverter = new PositionalFeatureConverter(objectFactory);
+        this.accessionConverter = new UniProtKBAccessionConverter(objectFactory);
     }
 
     @Override
     public RuleException fromXml(RuleExceptionType xmlObj) {
+        if (Objects.isNull(xmlObj)) return null;
+
         String category = xmlObj.getCategory();
         List<UniProtKBAccession> uniProtKBAccessionList =
                 xmlObj.getAccession().stream()
-                        .map(UniProtKBAccessionBuilder::new)
-                        .map(UniProtKBAccessionBuilder::build)
+                        .map(this.accessionConverter::fromXml)
                         .collect(Collectors.toList());
         if (Objects.nonNull(xmlObj.getAnnotation())) {
             AnnotationRuleExceptionBuilder builder = new AnnotationRuleExceptionBuilder(category);
