@@ -27,6 +27,8 @@ public class UniProtKBAccessionConverter implements Converter<String, UniProtKBA
 
     @Override
     public String toXml(UniProtKBAccession uniObj) {
-        return null;
+        if (Objects.isNull(uniObj)) return null;
+
+        return uniObj.getValue();
     }
 }
