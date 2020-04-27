@@ -15,6 +15,8 @@ public class CommonConverterTest {
 
     void testObjectToXml() {
         // create object using builder test class create object method
+
+        // create converter object using no-arg constructor
         // call toXml method
         // get xml type
         // check xmltype object is not null
@@ -58,13 +60,20 @@ public class CommonConverterTest {
                 Arguments.of(AnnotationConverter.class),
                 Arguments.of(CaseTypeConverter.class),
                 Arguments.of(CommentConverter.class),
+                Arguments.of(ConditionConverter.class),
+                Arguments.of(ConditionSetConverter.class),
+                Arguments.of(ConditionValueConverter.class),
+                Arguments.of(FtagConditionConverter.class),
                 Arguments.of(FusionConverter.class),
                 Arguments.of(InformationConverter.class),
                 Arguments.of(MainTypeConverter.class),
                 Arguments.of(MultiValueConverter.class),
                 Arguments.of(PositionalFeatureConverter.class),
                 Arguments.of(PositionalFeatureSetConverter.class),
+                Arguments.of(ProteinConverter.class),
+                Arguments.of(RangeConverter.class),
                 Arguments.of(RuleExceptionConverter.class),
+                Arguments.of(RuleStatusConverter.class),
                 Arguments.of(SamFeatureSetConverter.class),
                 Arguments.of(SamTriggerConverter.class),
                 Arguments.of(UniProtKBAccessionConverter.class),

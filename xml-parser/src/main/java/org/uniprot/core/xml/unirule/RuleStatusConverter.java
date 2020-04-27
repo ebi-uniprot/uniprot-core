@@ -27,6 +27,7 @@ public class RuleStatusConverter implements Converter<RuleStatusType, RuleStatus
 
     @Override
     public RuleStatusType toXml(RuleStatus uniObj) {
+        if (Objects.isNull(uniObj)) return null;
         return RuleStatusType.fromValue(uniObj.name());
     }
 }

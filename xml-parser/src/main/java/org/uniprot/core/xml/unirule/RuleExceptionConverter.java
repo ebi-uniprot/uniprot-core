@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.Value;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.PositionalFeature;
@@ -68,7 +67,9 @@ public class RuleExceptionConverter implements Converter<RuleExceptionType, Rule
         String category = uniObj.getCategory();
         List<UniProtKBAccession> uniProtKBAccessions = uniObj.getAccessions();
         List<String> accessions =
-                uniProtKBAccessions.stream().map(Value::getValue).collect(Collectors.toList());
+                uniProtKBAccessions.stream()
+                        .map(this.accessionConverter::toXml)
+                        .collect(Collectors.toList());
         // get Annotation or positional feature
         if (uniObj instanceof AnnotationRuleExceptionImpl) { // annotation
             Annotation annotation = (Annotation) uniObj.getAnnotation();
