@@ -1,10 +1,6 @@
 package org.uniprot.core.unirule.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.Range;
-import org.uniprot.core.unirule.Condition;
-import org.uniprot.core.unirule.ConditionValue;
-import org.uniprot.core.unirule.FtagConditionValue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +9,11 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.Range;
+import org.uniprot.core.unirule.Condition;
+import org.uniprot.core.unirule.ConditionValue;
+import org.uniprot.core.unirule.FtagConditionValue;
 
 public class ConditionBuilderTest {
 

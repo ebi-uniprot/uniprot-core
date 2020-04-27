@@ -122,8 +122,8 @@ public class CaseRuleBuilderTest {
         List<Annotation> annotations = AnnotationBuilderTest.createObjects(listSize);
         List<RuleException<Annotation>> ruleExceptions =
                 AnnotationRuleExceptionImplTest.createObjects(listSize);
-        CaseRuleBuilder<Annotation> builder = new CaseRuleBuilder<>();
-        builder.conditionSetsSet(conditionSets).annotationsSet(annotations);
+        CaseRuleBuilder<Annotation> builder = new CaseRuleBuilder<>(conditionSets);
+        builder.annotationsSet(annotations);
         builder.ruleExceptionsSet(ruleExceptions);
         boolean exempted = true;
         builder.overallStatsExempted(exempted);
