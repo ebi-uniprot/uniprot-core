@@ -2,11 +2,8 @@ package org.uniprot.core.xml.uniprot;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeConstants;
@@ -14,10 +11,6 @@ import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import com.google.common.base.Strings;
-import org.uniprot.core.uniprotkb.comment.Comment;
-import org.uniprot.core.xml.jaxb.uniprot.Entry;
-import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
-import org.uniprot.core.xml.uniprot.comment.CommentConverterFactory;
 
 /**
  * Utility methods for comments for the text information value.
@@ -50,6 +43,7 @@ public final class XmlConverterHelper {
     }
 
     public static XMLGregorianCalendar dateToXml(LocalDate date) {
+        if (Objects.isNull(date)) return null;
         try {
             GregorianCalendar gcal =
                     GregorianCalendar.from(date.atStartOfDay(ZoneId.systemDefault()));
@@ -64,7 +58,7 @@ public final class XmlConverterHelper {
     }
 
     public static LocalDate dateFromXml(XMLGregorianCalendar xmlDate) {
-        if(Objects.isNull(xmlDate)) return null;
+        if (Objects.isNull(xmlDate)) return null;
         return xmlDate.toGregorianCalendar().toZonedDateTime().toLocalDate();
     }
 }

@@ -28,12 +28,10 @@ public class MultiValueConverter implements Converter<MultiValueType, List<Strin
 
     @Override
     public MultiValueType toXml(List<String> uniObj) {
-        MultiValueType multiValueType = null;
-        if (Objects.nonNull(uniObj)) {
-            multiValueType = this.objectFactory.createMultiValueType();
-            List<String> multiValueValues = multiValueType.getValue();
-            multiValueValues.addAll(uniObj);
-        }
+        if (Objects.isNull(uniObj)) return null;
+        MultiValueType multiValueType = this.objectFactory.createMultiValueType();
+        List<String> multiValueValues = multiValueType.getValue();
+        multiValueValues.addAll(uniObj);
         return multiValueType;
     }
 }

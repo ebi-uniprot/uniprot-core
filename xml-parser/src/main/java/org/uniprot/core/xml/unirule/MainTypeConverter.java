@@ -1,5 +1,9 @@
 package org.uniprot.core.xml.unirule;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.ConditionSet;
 import org.uniprot.core.unirule.Rule;
@@ -7,10 +11,6 @@ import org.uniprot.core.unirule.RuleException;
 import org.uniprot.core.unirule.impl.RuleBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.*;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class MainTypeConverter implements Converter<MainType, Rule> {
 
@@ -49,7 +49,8 @@ public class MainTypeConverter implements Converter<MainType, Rule> {
         List<RuleException> ruleExceptions = null;
 
         if (Objects.nonNull(xmlObj.getRuleExceptions())) {
-            List<RuleExceptionType> ruleExceptionsTypes = xmlObj.getRuleExceptions().getRuleException();
+            List<RuleExceptionType> ruleExceptionsTypes =
+                    xmlObj.getRuleExceptions().getRuleException();
             ruleExceptions =
                     ruleExceptionsTypes.stream()
                             .map(this.ruleExceptionConverter::fromXml)
@@ -65,16 +66,17 @@ public class MainTypeConverter implements Converter<MainType, Rule> {
 
     @Override
     public MainType toXml(Rule uniObj) {
-        MainType mainType = this.objectFactory.createMainType();
+        if (Objects.isNull(uniObj)) return null;
 
+        MainType mainType = this.objectFactory.createMainType();
         AnnotationsType annotationsType = this.objectFactory.createAnnotationsType();
         List<Annotation> annotations = uniObj.getAnnotations();
-        annotationsType
-                .getAnnotation()
-                .addAll(
-                        annotations.stream()
-                                .map(this.annotationConverter::toXml)
-                                .collect(Collectors.toList()));
+        List<AnnotationType> annotationTypes =
+                annotations.stream()
+                        .filter(annotation -> annotation instanceof Annotation)
+                        .map(this.annotationConverter::toXml)
+                        .collect(Collectors.toList());
+        annotationsType.getAnnotation().addAll(annotationTypes);
         mainType.setAnnotations(annotationsType);
 
         MainType.ConditionSets conditionsSet = this.objectFactory.createMainTypeConditionSets();

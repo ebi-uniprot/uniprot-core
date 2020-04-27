@@ -1,11 +1,11 @@
 package org.uniprot.core.xml.unirule;
 
+import java.util.Objects;
+
 import org.uniprot.core.unirule.RuleStatus;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
 import org.uniprot.core.xml.jaxb.unirule.RuleStatusType;
-
-import java.util.Objects;
 
 public class RuleStatusConverter implements Converter<RuleStatusType, RuleStatus> {
     private final ObjectFactory objectFactory;
@@ -20,7 +20,7 @@ public class RuleStatusConverter implements Converter<RuleStatusType, RuleStatus
 
     @Override
     public RuleStatus fromXml(RuleStatusType xmlObj) {
-        if(Objects.isNull(xmlObj)) return null;
+        if (Objects.isNull(xmlObj)) return null;
 
         return RuleStatus.typeOf(xmlObj.name());
     }
