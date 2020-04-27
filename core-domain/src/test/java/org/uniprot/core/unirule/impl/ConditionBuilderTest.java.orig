@@ -1,10 +1,6 @@
 package org.uniprot.core.unirule.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.Range;
-import org.uniprot.core.unirule.Condition;
-import org.uniprot.core.unirule.ConditionValue;
-import org.uniprot.core.unirule.FtagConditionValue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +9,11 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.Range;
+import org.uniprot.core.unirule.Condition;
+import org.uniprot.core.unirule.ConditionValue;
+import org.uniprot.core.unirule.FtagConditionValue;
 
 public class ConditionBuilderTest {
 
@@ -68,6 +68,9 @@ public class ConditionBuilderTest {
         assertEquals(Arrays.asList(conditionValue), condition.getConditionValues());
     }
 
+<<<<<<< HEAD
+    public static Condition createObject(int listSize) {
+=======
     @Test
     void testCreateObjectUpdateTag() {
         Condition condition = createObject();
@@ -85,15 +88,20 @@ public class ConditionBuilderTest {
         assertEquals(condition.getConditionValues(), updatedCondition.getConditionValues());
     }
 
-    public static Condition createObject(int listSize) {
+    public static Condition createObject() {
+>>>>>>> add more converters
         String random = UUID.randomUUID().toString();
         String type = "type-" + random;
         int start = ThreadLocalRandom.current().nextInt();
         int end = ThreadLocalRandom.current().nextInt(start + 1, Integer.MAX_VALUE);
         Range range = new Range(start, end);
         boolean negative = true;
+<<<<<<< HEAD
         List<ConditionValue> conditionValues = ConditionValueBuilderTest.createObjects(listSize);
+=======
+        List<ConditionValue> conditionValues = ConditionValueBuilderTest.createObjects(5);
         FtagConditionValue tag = FtagConditionValueBuilderTest.createObject();
+>>>>>>> add more converters
         ConditionBuilder builder = new ConditionBuilder(type);
         builder.type(type).range(range).negative(negative);
         builder.conditionValuesSet(conditionValues);

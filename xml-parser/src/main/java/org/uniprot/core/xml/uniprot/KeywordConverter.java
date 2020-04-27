@@ -39,6 +39,7 @@ public class KeywordConverter implements Converter<KeywordType, Keyword> {
 
     @Override
     public KeywordType toXml(Keyword uniObj) {
+        if (Objects.isNull(uniObj)) return null;
         KeywordType xmlKeyword = xmlUniprotFactory.createKeywordType();
         String value = uniObj.getName();
         xmlKeyword.setValue(value);

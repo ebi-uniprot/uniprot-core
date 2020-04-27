@@ -1,17 +1,15 @@
 package org.uniprot.core.xml.unirule;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.unirule.*;
 import org.uniprot.core.unirule.impl.UniRuleEntryBuilder;
 import org.uniprot.core.unirule.impl.UniRuleIdBuilder;
 import org.uniprot.core.xml.Converter;
-import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
-import org.uniprot.core.xml.jaxb.unirule.UniRuleType;
+import org.uniprot.core.xml.jaxb.unirule.*;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
-
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class UniRuleEntryConverter implements Converter<UniRuleType, UniRuleEntry> {
     private final ObjectFactory objectFactory;
@@ -45,7 +43,8 @@ public class UniRuleEntryConverter implements Converter<UniRuleType, UniRuleEntr
         Information information = this.informationConverter.fromXml(xmlObj.getInformation());
         Rule rule = this.mainTypeConverter.fromXml(xmlObj.getMain());
 
-        UniRuleEntryBuilder builder = new UniRuleEntryBuilder(uniRuleId, ruleStatus, information, rule);
+        UniRuleEntryBuilder builder =
+                new UniRuleEntryBuilder(uniRuleId, ruleStatus, information, rule);
 
         if (Objects.nonNull(xmlObj.getCases())) {
             List<CaseRule> caseRules =
@@ -76,7 +75,40 @@ public class UniRuleEntryConverter implements Converter<UniRuleType, UniRuleEntr
     }
 
     @Override
-    public UniRuleType toXml(UniRuleEntry uniRuleEntry) {
-        return null;
+    public UniRuleType toXml(UniRuleEntry uniObj) {
+        if (Objects.isNull(uniObj)) return null;
+
+        UniRuleType xmlObj = this.objectFactory.createUniRuleType();
+        InformationType informationType = this.informationConverter.toXml(uniObj.getInformation());
+        xmlObj.setInformation(informationType);
+        MainType mainType = this.mainTypeConverter.toXml(uniObj.getMainRule());
+        xmlObj.setMain(mainType);
+        List<CaseType> caseTypes =
+                uniObj.getOtherRules().stream()
+                        .map(this.caseTypeConverter::toXml)
+                        .collect(Collectors.toList());
+        CasesType cases = this.objectFactory.createCasesType();
+        cases.getCase().addAll(caseTypes);
+        xmlObj.setCases(cases);
+        List<SamFeatureSetType> samFeatureSetTypes =
+                uniObj.getSamFeatureSets().stream()
+                        .map(this.samFeatureSetConverter::toXml)
+                        .collect(Collectors.toList());
+        xmlObj.getSamFeatureSet().addAll(samFeatureSetTypes);
+
+        List<PositionalFeatureSetType> positionalFeatureSetTypes =
+                uniObj.getPositionFeatureSets().stream()
+                        .map(this.positionalFeatureSetConverter::toXml)
+                        .collect(Collectors.toList());
+        xmlObj.getPositionalFeatureSet().addAll(positionalFeatureSetTypes);
+
+        xmlObj.setStatus(this.ruleStatusConverter.toXml(uniObj.getRuleStatus()));
+        xmlObj.setId(uniObj.getUniRuleId().getValue());
+        xmlObj.setCreator(uniObj.getCreatedBy());
+        xmlObj.setModifiedBy(uniObj.getModifiedBy());
+        xmlObj.setCreated(XmlConverterHelper.dateToXml(uniObj.getCreatedDate()));
+        xmlObj.setModified(XmlConverterHelper.dateToXml(uniObj.getModifiedDate()));
+
+        return xmlObj;
     }
 }
