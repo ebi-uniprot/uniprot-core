@@ -41,6 +41,8 @@ public class PositionalFeatureConverter
 
     @Override
     public PositionalFeatureType toXml(PositionalFeature uniObj) {
+        if (Objects.isNull(uniObj)) return null;
+
         PositionalFeatureType positionalFeatureType =
                 this.objectFactory.createPositionalFeatureType();
         PositionalConditionType positionalConditionType =

@@ -22,24 +22,20 @@ public class FusionConverter implements Converter<FusionType, Fusion> {
 
     @Override
     public Fusion fromXml(FusionType xmlObj) {
-        Fusion fusion = null;
-        if (Objects.nonNull(xmlObj)) {
-            FusionBuilder builder = new FusionBuilder();
-            builder.ctersSet(xmlObj.getCter()).ntersSet(xmlObj.getNter());
-            fusion = builder.build();
-        }
+        if (Objects.isNull(xmlObj)) return null;
+        FusionBuilder builder = new FusionBuilder();
+        builder.ctersSet(xmlObj.getCter()).ntersSet(xmlObj.getNter());
+        Fusion fusion = builder.build();
 
         return fusion;
     }
 
     @Override
     public FusionType toXml(Fusion uniObj) {
-        FusionType fusionType = null;
-        if (Objects.nonNull(uniObj)) {
-            fusionType = this.objectFactory.createFusionType();
-            fusionType.getCter().addAll(uniObj.getCters());
-            fusionType.getNter().addAll(uniObj.getNters());
-        }
+        if (Objects.isNull(uniObj)) return null;
+        FusionType fusionType = this.objectFactory.createFusionType();
+        fusionType.getCter().addAll(uniObj.getCters());
+        fusionType.getNter().addAll(uniObj.getNters());
         return fusionType;
     }
 }

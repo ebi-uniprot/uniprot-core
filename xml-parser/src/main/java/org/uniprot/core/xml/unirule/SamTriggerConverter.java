@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.unirule;
 
+import java.util.Objects;
+
 import org.uniprot.core.Range;
 import org.uniprot.core.unirule.SamTrigger;
 import org.uniprot.core.unirule.impl.SamTriggerBuilder;
@@ -8,12 +10,11 @@ import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
 import org.uniprot.core.xml.jaxb.unirule.RangeType;
 import org.uniprot.core.xml.jaxb.unirule.SamTriggerType;
 
-import java.util.Objects;
-
 public class SamTriggerConverter implements Converter<SamTriggerType, SamTrigger> {
 
     private final ObjectFactory objectFactory;
-    public SamTriggerConverter(){
+
+    public SamTriggerConverter() {
         this(new ObjectFactory());
     }
 
@@ -26,11 +27,11 @@ public class SamTriggerConverter implements Converter<SamTriggerType, SamTrigger
         if (Objects.isNull(xmlObj)) return null;
 
         SamTriggerBuilder builder = new SamTriggerBuilder();
-        if(Objects.nonNull(xmlObj.getTransmembrane())){
+        if (Objects.nonNull(xmlObj.getTransmembrane())) {
             builder.expectedHits(fromXml(xmlObj.getTransmembrane().getExpectedHits()));
-        } else if(Objects.nonNull(xmlObj.getSignal())){
+        } else if (Objects.nonNull(xmlObj.getSignal())) {
             builder.expectedHits(fromXml(xmlObj.getSignal().getExpectedHits()));
-        } else if(Objects.nonNull(xmlObj.getCoiledCoil())){
+        } else if (Objects.nonNull(xmlObj.getCoiledCoil())) {
             builder.expectedHits(fromXml(xmlObj.getCoiledCoil().getExpectedHits()));
         }
         return builder.build();
@@ -41,9 +42,11 @@ public class SamTriggerConverter implements Converter<SamTriggerType, SamTrigger
         return null;
     }
 
-    private Range fromXml(RangeType rangeType){
-        Range range = new Range(Integer.parseInt(rangeType.getStart()),
-                Integer.parseInt(rangeType.getEnd()));
+    private Range fromXml(RangeType rangeType) {
+        Range range =
+                new Range(
+                        Integer.parseInt(rangeType.getStart()),
+                        Integer.parseInt(rangeType.getEnd()));
         return range;
     }
 }

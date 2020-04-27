@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.Value;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
-import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.PositionalFeature;
 import org.uniprot.core.unirule.RuleException;
@@ -63,6 +62,8 @@ public class RuleExceptionConverter implements Converter<RuleExceptionType, Rule
 
     @Override
     public RuleExceptionType toXml(RuleException uniObj) {
+        if (Objects.isNull(uniObj)) return null;
+
         RuleExceptionType ruleExceptionType = this.objectFactory.createRuleExceptionType();
         String category = uniObj.getCategory();
         List<UniProtKBAccession> uniProtKBAccessions = uniObj.getAccessions();

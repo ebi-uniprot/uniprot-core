@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.ConditionValue;
+import org.uniprot.core.unirule.FtagConditionValue;
 
 public class ConditionImplTest {
 
@@ -32,13 +33,15 @@ public class ConditionImplTest {
         ConditionValue cv1 = new ConditionValueBuilder(value1).build();
         ConditionValue cv2 = new ConditionValueBuilder(value2).build();
         List<ConditionValue> cvs = Arrays.asList(cv1, cv2);
+        FtagConditionValue tag = new FtagConditionValueImpl("value", "pattern");
 
-        Condition condition = new ConditionImpl(cvs, type, isNegative, range);
+        Condition condition = new ConditionImpl(cvs, type, isNegative, range, tag);
         assertNotNull(condition);
         assertEquals(type, condition.getType());
         assertEquals(isNegative, condition.isNegative());
         assertEquals(range, condition.getRange());
         assertEquals(cvs, condition.getConditionValues());
+        assertEquals(tag, condition.getTag());
     }
 
     @Test
@@ -50,9 +53,10 @@ public class ConditionImplTest {
         ConditionValue cv1 = new ConditionValueBuilder(value1).build();
         ConditionValue cv2 = new ConditionValueBuilder(value2).build();
         List<ConditionValue> cvs = Arrays.asList(cv1, cv2);
+        FtagConditionValue tag = new FtagConditionValueImpl("value", "pattern");
 
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new ConditionImpl(cvs, null, isNegative, range));
+                () -> new ConditionImpl(cvs, null, isNegative, range, tag));
     }
 }

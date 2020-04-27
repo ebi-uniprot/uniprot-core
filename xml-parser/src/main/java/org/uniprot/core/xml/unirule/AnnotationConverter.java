@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.unirule;
 
+import java.util.Objects;
+
 import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.impl.AnnotationBuilder;
 import org.uniprot.core.xml.Converter;
@@ -10,8 +12,6 @@ import org.uniprot.core.xml.uniprot.GeneConverter;
 import org.uniprot.core.xml.uniprot.KeywordConverter;
 import org.uniprot.core.xml.uniprot.UniProtCrossReferenceConverter;
 
-import java.util.Objects;
-
 public class AnnotationConverter implements Converter<AnnotationType, Annotation> {
     private final ObjectFactory objectFactory;
     private final KeywordConverter keywordConverter;
@@ -19,6 +19,7 @@ public class AnnotationConverter implements Converter<AnnotationType, Annotation
     private final GeneConverter geneConverter;
     private final UniProtCrossReferenceConverter crossReferenceConverter;
     private final CommentConverter commentConverter;
+    private final ProteinConverter proteinConverter;
 
     public AnnotationConverter() {
         this(new ObjectFactory());
@@ -31,6 +32,7 @@ public class AnnotationConverter implements Converter<AnnotationType, Annotation
         this.keywordConverter = new KeywordConverter(this.evRefMapper);
         this.geneConverter = new GeneConverter(this.evRefMapper);
         this.crossReferenceConverter = new UniProtCrossReferenceConverter();
+        this.proteinConverter = new ProteinConverter(objectFactory);
     }
 
     @Override
@@ -42,7 +44,6 @@ public class AnnotationConverter implements Converter<AnnotationType, Annotation
         if (Objects.nonNull(xmlObj.getComment())) {
             builder.comment(this.commentConverter.fromXml(xmlObj.getComment()));
         }
-
 
         if (Objects.nonNull(xmlObj.getKeyword())) {
             builder.keyword(this.keywordConverter.fromXml(xmlObj.getKeyword()));
@@ -56,11 +57,34 @@ public class AnnotationConverter implements Converter<AnnotationType, Annotation
             builder.dbReference(this.crossReferenceConverter.fromXml(xmlObj.getDbReference()));
         }
 
+        if (Objects.nonNull(xmlObj.getProtein())) {
+            builder.proteinDescription(this.proteinConverter.fromXml(xmlObj.getProtein()));
+        }
+
         return builder.build();
     }
 
     @Override
     public AnnotationType toXml(Annotation uniObj) {
-        return null;
+        if (Objects.isNull(uniObj)) return null;
+
+        AnnotationType annotationType = this.objectFactory.createAnnotationType();
+        if (Objects.nonNull(uniObj.getComment())) {
+            annotationType.setComment(this.commentConverter.toXml(uniObj.getComment()));
+        }
+        if (Objects.nonNull(uniObj.getKeyword())) {
+            annotationType.setKeyword(this.keywordConverter.toXml(uniObj.getKeyword()));
+        }
+
+        if (Objects.nonNull(uniObj.getProteinDescription())) {
+            annotationType.setProtein(this.proteinConverter.toXml(uniObj.getProteinDescription()));
+        }
+
+        if (Objects.nonNull(uniObj.getDbReference())) {
+            annotationType.setDbReference(
+                    this.crossReferenceConverter.toXml(uniObj.getDbReference()));
+        }
+
+        return annotationType;
     }
 }

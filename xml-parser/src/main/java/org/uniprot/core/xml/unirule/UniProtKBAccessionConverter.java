@@ -1,21 +1,21 @@
 package org.uniprot.core.xml.unirule;
 
+import java.util.Objects;
+
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
 
-import java.util.Objects;
-
 public class UniProtKBAccessionConverter implements Converter<String, UniProtKBAccession> {
 
     private final ObjectFactory objectFactory;
 
-    public UniProtKBAccessionConverter(){
+    public UniProtKBAccessionConverter() {
         this(new ObjectFactory());
     }
 
-    public UniProtKBAccessionConverter(ObjectFactory objectFactory){
+    public UniProtKBAccessionConverter(ObjectFactory objectFactory) {
         this.objectFactory = new ObjectFactory();
     }
 
