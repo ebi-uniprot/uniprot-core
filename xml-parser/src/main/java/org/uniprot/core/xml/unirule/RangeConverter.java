@@ -22,8 +22,10 @@ public class RangeConverter implements Converter<RangeType, Range> {
     @Override
     public Range fromXml(RangeType xmlObj) {
         if (Objects.isNull(xmlObj)) return null;
-        Range range =
-                new Range(Integer.parseInt(xmlObj.getStart()), Integer.parseInt(xmlObj.getEnd()));
+
+        Integer start = parseIntOrNull(xmlObj.getStart());
+        Integer end = parseIntOrNull(xmlObj.getEnd());
+        Range range = new Range(start, end);
         return range;
     }
 
@@ -31,8 +33,25 @@ public class RangeConverter implements Converter<RangeType, Range> {
     public RangeType toXml(Range uniObj) {
         if (Objects.isNull(uniObj)) return null;
         RangeType rangeType = this.objectFactory.createRangeType();
-        rangeType.setStart(String.valueOf(uniObj.getStart().getValue()));
-        rangeType.setEnd(String.valueOf(uniObj.getEnd().getValue()));
+
+        if (Objects.nonNull(uniObj.getStart())) {
+            rangeType.setStart(String.valueOf(uniObj.getStart().getValue()));
+        }
+
+        if (Objects.nonNull(uniObj.getEnd())) {
+            rangeType.setEnd(String.valueOf(uniObj.getEnd().getValue()));
+        }
+
         return rangeType;
+    }
+
+    Integer parseIntOrNull(String value) {
+        Integer integralVal = null;
+        try {
+            integralVal = Integer.parseInt(value);
+        } catch (NumberFormatException nfe) {
+            // do nothing
+        }
+        return integralVal;
     }
 }

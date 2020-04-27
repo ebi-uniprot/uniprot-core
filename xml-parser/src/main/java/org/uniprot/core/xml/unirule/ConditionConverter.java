@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.unirule.Condition;
+import org.uniprot.core.unirule.impl.ConditionBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.ConditionType;
 import org.uniprot.core.xml.jaxb.unirule.ConditionValue;
@@ -15,6 +16,7 @@ public class ConditionConverter implements Converter<ConditionType, Condition> {
     private final ObjectFactory objectFactory;
     private final ConditionValueConverter conditionValueConverter;
     private final RangeConverter rangeConverter;
+    private final FtagConditionConverter ftagConditionConverter;
 
     public ConditionConverter() {
         this(new ObjectFactory());
@@ -24,16 +26,30 @@ public class ConditionConverter implements Converter<ConditionType, Condition> {
         this.objectFactory = objectFactory;
         this.conditionValueConverter = new ConditionValueConverter(objectFactory);
         this.rangeConverter = new RangeConverter(objectFactory);
+        this.ftagConditionConverter = new FtagConditionConverter(objectFactory);
     }
 
     @Override
     public Condition fromXml(ConditionType xmlObj) {
-        return null;
+        if (Objects.isNull(xmlObj)) return null;
+
+        ConditionBuilder builder = new ConditionBuilder(xmlObj.getType());
+        List<org.uniprot.core.unirule.ConditionValue> conditionValues =
+                xmlObj.getValue().stream()
+                        .map(this.conditionValueConverter::fromXml)
+                        .collect(Collectors.toList());
+        builder.conditionValuesSet(conditionValues);
+        builder.tag(this.ftagConditionConverter.fromXml(xmlObj.getTag()));
+        builder.negative(xmlObj.isNegative());
+        builder.range(this.rangeConverter.fromXml(xmlObj.getRange()));
+
+        return builder.build();
     }
 
     @Override
     public ConditionType toXml(Condition uniObj) {
         if (Objects.isNull(uniObj)) return null;
+
         ConditionType conditionType = this.objectFactory.createConditionType();
         List<ConditionValue> conditionValues =
                 uniObj.getConditionValues().stream()
@@ -41,9 +57,9 @@ public class ConditionConverter implements Converter<ConditionType, Condition> {
                         .collect(Collectors.toList());
         conditionType.getValue().addAll(conditionValues);
         conditionType.setRange(this.rangeConverter.toXml(uniObj.getRange()));
-
-        //        uniObj.getTag()FIXME
-
-        return null;
+        conditionType.setTag(this.ftagConditionConverter.toXml(uniObj.getTag()));
+        conditionType.setType(uniObj.getType());
+        conditionType.setNegative(uniObj.isNegative());
+        return conditionType;
     }
 }
