@@ -5,7 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-class RangeTest {
+import java.util.concurrent.ThreadLocalRandom;
+
+public class RangeTest {
 
     @Test
     void testRangeTT() {
@@ -115,5 +117,12 @@ class RangeTest {
     private void verify(Range range, Position start, Position end) {
         assertEquals(start, range.getStart());
         assertEquals(end, range.getEnd());
+    }
+
+    public static Range createObject(){
+        int start = ThreadLocalRandom.current().nextInt();
+        int end = ThreadLocalRandom.current().nextInt(start + 1, Integer.MAX_VALUE);
+        Range range = new Range(start, end);
+        return range;
     }
 }
