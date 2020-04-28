@@ -81,7 +81,7 @@ public class RuleExceptionConverter implements Converter<RuleExceptionType, Rule
                     this.positionalFeatureConverter.toXml(positionalFeature);
             ruleExceptionType.setPositionalFeature(positionalFeatureType);
         }
-
+        ruleExceptionType.setNote(uniObj.getNote());
         ruleExceptionType.setCategory(category);
         List<String> xmlAccessions = ruleExceptionType.getAccession();
         xmlAccessions.addAll(accessions);
