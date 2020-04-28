@@ -2,17 +2,23 @@ package org.uniprot.core.xml.uniprot;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
+import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.PropertyType;
 import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 
 import com.google.common.base.Strings;
 
-class UniProtKBCrossReferenceConverterTest {
+public class UniProtKBCrossReferenceConverterTest extends AbstractConverterTest {
     private final UniProtCrossReferenceConverter converter = new UniProtCrossReferenceConverter();
 
     @Test
@@ -163,5 +169,29 @@ class UniProtKBCrossReferenceConverterTest {
                 .propertiesAdd(uniProtkbDatabase.getUniProtDatabaseAttribute(1), thirdAttribute)
                 .propertiesAdd(uniProtkbDatabase.getUniProtDatabaseAttribute(2), fourthAttribute)
                 .build();
+    }
+
+    private static DbReferenceType createObject(int listSize) {
+        DbReferenceType dbReferenceType = uniProtObjectFactory.createDbReferenceType();
+        dbReferenceType.setMolecule(createMoleculeType());
+        String type = "type-" + random;
+        String id = "id-" + random;
+        List<Integer> evidences = createListOfInt(listSize);
+        dbReferenceType.setType(type);
+        dbReferenceType.setId(id);
+        dbReferenceType.getEvidence().addAll(evidences);
+        dbReferenceType.getProperty().addAll(createListOfPropertyType(listSize));
+        return dbReferenceType;
+    }
+
+    public static DbReferenceType createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
+    public static List<DbReferenceType> createObjects(int count) {
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

@@ -6,6 +6,8 @@ import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocation;
@@ -13,11 +15,14 @@ import org.uniprot.core.uniprotkb.comment.SubcellularLocationValue;
 import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationValueBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.xml.AbstractConverterTest;
+import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
 import org.uniprot.core.xml.jaxb.uniprot.SubcellularLocationType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
+import org.uniprot.core.xml.uniprot.EvidencedStringTypeConverterTest;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
-class SubcellularLocationConverterTest {
+public class SubcellularLocationConverterTest extends AbstractConverterTest {
 
     @Test
     void test() {
@@ -68,5 +73,26 @@ class SubcellularLocationConverterTest {
             evidences.add(parseEvidenceLine(ev));
         }
         return evidences;
+    }
+
+    public static SubcellularLocationType createObject(int listSize) {
+        SubcellularLocationType subcellularLocationType =
+                uniProtObjectFactory.createSubcellularLocationType();
+        List<EvidencedStringType> location =
+                EvidencedStringTypeConverterTest.createObjects(listSize);
+        List<EvidencedStringType> topology =
+                EvidencedStringTypeConverterTest.createObjects(listSize);
+        List<EvidencedStringType> orientation =
+                EvidencedStringTypeConverterTest.createObjects(listSize);
+        subcellularLocationType.getLocation().addAll(location);
+        subcellularLocationType.getTopology().addAll(topology);
+        subcellularLocationType.getOrientation().addAll(orientation);
+        return subcellularLocationType;
+    }
+
+    public static List<SubcellularLocationType> createObjects(int count) {
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }
