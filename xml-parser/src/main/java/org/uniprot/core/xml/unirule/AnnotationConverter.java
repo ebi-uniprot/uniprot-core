@@ -85,7 +85,7 @@ public class AnnotationConverter implements Converter<AnnotationType, Annotation
                     this.crossReferenceConverter.toXml(uniObj.getDbReference()));
         }
 
-        if(Objects.nonNull(uniObj.getGene())){
+        if (Objects.nonNull(uniObj.getGene())) {
             annotationType.setGene(this.geneConverter.toXml(uniObj.getGene()));
         }
 

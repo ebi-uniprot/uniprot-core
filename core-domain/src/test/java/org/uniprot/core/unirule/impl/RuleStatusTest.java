@@ -1,8 +1,8 @@
 package org.uniprot.core.unirule.impl;
 
-import org.uniprot.core.unirule.RuleStatus;
-
 import java.util.concurrent.ThreadLocalRandom;
+
+import org.uniprot.core.unirule.RuleStatus;
 
 public class RuleStatusTest {
 
