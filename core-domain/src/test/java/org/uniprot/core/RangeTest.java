@@ -2,10 +2,10 @@ package org.uniprot.core;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import java.util.concurrent.ThreadLocalRandom;
 
 public class RangeTest {
 
@@ -119,7 +119,7 @@ public class RangeTest {
         assertEquals(end, range.getEnd());
     }
 
-    public static Range createObject(){
+    public static Range createObject() {
         int start = ThreadLocalRandom.current().nextInt();
         int end = ThreadLocalRandom.current().nextInt(start + 1, Integer.MAX_VALUE);
         Range range = new Range(start, end);

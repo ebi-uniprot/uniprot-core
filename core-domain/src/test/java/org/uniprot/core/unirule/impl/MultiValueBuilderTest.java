@@ -10,8 +10,9 @@ public class MultiValueBuilderTest {
 
     public static List<String> createObject(int listSize) {
         String random = UUID.randomUUID().toString();
-        return IntStream.range(0, listSize).mapToObj(i -> i + "val-" + random).collect(Collectors.toList());
-
+        return IntStream.range(0, listSize)
+                .mapToObj(i -> i + "val-" + random)
+                .collect(Collectors.toList());
     }
 
     public static List<String> createObject() {

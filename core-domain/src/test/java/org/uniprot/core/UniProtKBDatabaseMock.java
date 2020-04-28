@@ -17,8 +17,7 @@ public class UniProtKBDatabaseMock implements UniProtKBDatabase {
     }
 
     public @Nonnull UniProtDatabaseDetail getUniProtDatabaseDetail() {
-        return new UniProtDatabaseDetail("dummy", "dummyName", null,
-                null, null, false, null);
+        return new UniProtDatabaseDetail("dummy", "dummyName", null, null, null, false, null);
     }
 
     public @Nullable UniProtDatabaseAttribute getUniProtDatabaseAttribute(int position) {
