@@ -75,9 +75,9 @@ public enum UniProtCrossReferenceDisplayOrder
 
         private static List<UniProtDatabaseDetail> initValues(
                 Map<String, DatabaseDisplayOrder> databaseType2DefsNoCase) {
-        	  List<UniProtDatabaseDetail> values =  
-        			  new CopyOnWriteArrayList<>(UniProtDatabaseTypes.INSTANCE.getAllDbTypes());       	
-        	  values.sort(new CrossReferenceDbOrder(databaseType2DefsNoCase));        
+            List<UniProtDatabaseDetail> values =
+                    new CopyOnWriteArrayList<>(UniProtDatabaseTypes.INSTANCE.getAllDbTypes());
+            values.sort(new CrossReferenceDbOrder(databaseType2DefsNoCase));
             return values;
         }
     }
@@ -93,8 +93,8 @@ public enum UniProtCrossReferenceDisplayOrder
         public int compare(UniProtDatabaseDetail o1, UniProtDatabaseDetail o2) {
             DatabaseDisplayOrder dbOrder1 = getXRefDBDef(o1);
             DatabaseDisplayOrder dbOrder2 = getXRefDBDef(o2);
-            if((dbOrder1 == null) && (dbOrder2 == null)){
-            	return 0;
+            if ((dbOrder1 == null) && (dbOrder2 == null)) {
+                return 0;
             } else if (dbOrder1 == null) {
                 return 1;
             } else if (dbOrder2 == null) {
