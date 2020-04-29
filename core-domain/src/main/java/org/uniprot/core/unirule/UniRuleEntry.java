@@ -1,7 +1,7 @@
 package org.uniprot.core.unirule;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 /** @author sahmad */
@@ -24,7 +24,7 @@ public interface UniRuleEntry extends Serializable {
 
     String getModifiedBy();
 
-    Date getCreatedDate();
+    LocalDate getCreatedDate();
 
-    Date getModifiedDate();
+    LocalDate getModifiedDate();
 }

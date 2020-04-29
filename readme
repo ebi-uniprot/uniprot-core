@@ -1,1 +1,2 @@
-parent of uniprot core modules: domain, flatfile, xml, util
+# Parent uniport
+contain core modules for uniprot: common, domain, parsers, flatfile, xml, util

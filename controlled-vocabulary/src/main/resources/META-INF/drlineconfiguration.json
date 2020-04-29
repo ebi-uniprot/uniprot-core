@@ -179,8 +179,8 @@
 	
 	
 	{
-		"name": "BioGrid",
-		"displayName": "BioGrid",
+		"name": "BioGRID",
+		"displayName": "BioGRID",
 		"category": "PPI",
 		"uriLink": "https://thebiogrid.org/%id",
 		"attributes": [
@@ -350,8 +350,8 @@
 		"uriLink": "http://www.moonlightingproteins.org/proteins/?q=%id"
 	},
 	{
-		"name": "mycoCLAP",
-		"displayName": "mycoCLAP",
+		"name": "CLAE",
+		"displayName": "CLAE",
 		"category": "PFAM",
 		"uriLink": "https://mycoclap.fungalgenomics.ca/mycoCLAP/clap/GeneView/%id"
 	},
@@ -399,6 +399,12 @@
 	},	
 	
 	{
+		"name": "IDEAL",
+		"displayName": "IDEAL",
+		"category": "PFAM",
+		"uriLink": "http://idp1.force.cs.is.nagoya-u.ac.jp/IDEAL/ideal.php?id=%id"
+	},	
+	{
 		"name": "GPCRDB",
 		"displayName": "GPCRDB",
 		"category": "PFAM",
@@ -406,7 +412,6 @@
 		"linkedReason": "CC:SIMILARITY: Belongs to the G-protein coupled receptor",
 		"uriLink": "https://gpcrdb.org/protein/%uniprotId/"
 	},	
-	
 	
 	{
 		"name": "CarbonylDB",
@@ -1680,6 +1685,22 @@
 		"name": "RNAct",
 		"displayName": "RNAct",
 		"category": "OTHER",
-		"uriLink": "https://rnact.crg.eu/protein?query=%id"
+		"uriLink": "https://rnact.crg.eu/protein?query=%id",
+		"attributes": [		
+			{	"name": "moleculeType",
+				"xmlTag": "moleculeType"			
+			}
+		]
+	},
+	{
+		"name": "BioGRID-ORCS",
+		"displayName": "BioGRID-ORCS",
+		"category": "OTHER",
+		"uriLink": "ttps://orcs.thebiogrid.org/Gene/%id",
+		"attributes": [		
+			{	"name": "hits",
+				"xmlTag": "hits"			
+			}
+		]
 	}
 ]

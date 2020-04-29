@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Objects;
 
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
-import org.uniprot.core.uniprotkb.UniProtKBId;
 import org.uniprot.core.unirule.DataClassType;
 import org.uniprot.core.unirule.Fusion;
 import org.uniprot.core.unirule.Information;
@@ -16,7 +15,7 @@ public class InformationImpl implements Information {
     private String version;
     private String comment;
     private String oldRuleNum;
-    private List<UniProtKBId> uniProtIds;
+    private List<String> uniProtIds;
     private DataClassType dataClass;
     private List<String> names;
     private Fusion fusion;
@@ -39,7 +38,7 @@ public class InformationImpl implements Information {
             String version,
             String comment,
             String oldRuleNum,
-            List<UniProtKBId> uniProtIds,
+            List<String> uniProtIds,
             DataClassType dataClass,
             List<String> names,
             Fusion fusion,
@@ -78,7 +77,7 @@ public class InformationImpl implements Information {
     }
 
     @Override
-    public List<UniProtKBId> getUniProtIds() {
+    public List<String> getUniProtIds() {
         return this.uniProtIds;
     }
 

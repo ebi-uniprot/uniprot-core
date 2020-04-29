@@ -2,9 +2,9 @@ package org.uniprot.core.unirule.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -48,7 +48,6 @@ public class UniRuleEntryImplTest {
         String note = "sample note";
         String category = "sample category";
         String accessionValue = "P12345";
-        Annotation annotation = new AnnotationBuilder().build();
         UniProtKBAccession accession = new UniProtKBAccessionBuilder(accessionValue).build();
         List<UniProtKBAccession> accessionList = Arrays.asList(accession);
 
@@ -83,8 +82,8 @@ public class UniRuleEntryImplTest {
                 Arrays.asList(positionFeatureSet1, positionFeatureSet2);
         String createdBy = "sample author1";
         String modifiedBy = "sample author2";
-        Date createdDate = new Date();
-        Date modifiedDate = new Date();
+        LocalDate createdDate = LocalDate.now();
+        LocalDate modifiedDate = LocalDate.now();
 
         UniRuleEntry uniRuleEntry =
                 new UniRuleEntryImpl(

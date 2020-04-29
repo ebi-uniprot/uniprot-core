@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.KeywordCategory;
@@ -40,15 +42,26 @@ public class KeywordBuilderTest {
         assertEquals(KeywordCategory.UNKNOWN, keyword.getCategory());
     }
 
-    public static Keyword createObject() {
+    public static Keyword createObject(int listSize) {
         KeywordBuilder builder = new KeywordBuilder();
         String random = UUID.randomUUID().toString();
         String id = "id-" + random;
         String name = "name-" + random;
         int rIndex = ThreadLocalRandom.current().nextInt(0, KeywordCategory.values().length);
         KeywordCategory kc = KeywordCategory.values()[rIndex];
-        List<Evidence> evidences = EvidenceBuilderTest.createObjects(3);
+        List<Evidence> evidences = EvidenceBuilderTest.createObjects(listSize);
         builder.id(id).name(name).category(kc).evidencesSet(evidences);
         return builder.build();
+    }
+
+    public static Keyword createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
+    public static List<Keyword> createObjects(int count) {
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

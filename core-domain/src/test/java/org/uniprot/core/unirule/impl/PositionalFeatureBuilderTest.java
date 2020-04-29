@@ -10,19 +10,18 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.uniprot.core.Range;
-import org.uniprot.core.uniprotkb.feature.FeatureLocation;
 import org.uniprot.core.unirule.PositionalFeature;
 
 public class PositionalFeatureBuilderTest {
-    public static PositionalFeature createObject() {
+    public static PositionalFeature createObject(int listSize) {
         String random = UUID.randomUUID().toString();
         String pattern = "pattern-" + random;
         String type = "type-" + random;
         String value = "value-" + random;
         int start = ThreadLocalRandom.current().nextInt();
         int end = ThreadLocalRandom.current().nextInt(start + 1, Integer.MAX_VALUE);
-        Range position = new FeatureLocation(start, end);
-        boolean inGroup = start % 2 == 0;
+        Range position = new Range(start, end);
+        boolean inGroup = true;
         PositionalFeatureBuilder builder = new PositionalFeatureBuilder();
         builder.type(type).pattern(pattern).value(value);
         builder.position(position).inGroup(inGroup);
@@ -36,7 +35,14 @@ public class PositionalFeatureBuilderTest {
         return positionFeature;
     }
 
+    public static PositionalFeature createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<PositionalFeature> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

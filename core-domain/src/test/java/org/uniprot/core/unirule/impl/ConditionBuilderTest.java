@@ -11,7 +11,6 @@ import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
-import org.uniprot.core.uniprotkb.feature.FeatureLocation;
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.ConditionValue;
 
@@ -66,14 +65,14 @@ public class ConditionBuilderTest {
         assertEquals(Arrays.asList(conditionValue), condition.getConditionValues());
     }
 
-    public static Condition createObject() {
+    public static Condition createObject(int listSize) {
         String random = UUID.randomUUID().toString();
         String type = "type-" + random;
         int start = ThreadLocalRandom.current().nextInt();
         int end = ThreadLocalRandom.current().nextInt(start + 1, Integer.MAX_VALUE);
-        Range range = new FeatureLocation(start, end);
-        boolean negative = start % 2 == 0;
-        List<ConditionValue> conditionValues = ConditionValueBuilderTest.createObjects(5);
+        Range range = new Range(start, end);
+        boolean negative = true;
+        List<ConditionValue> conditionValues = ConditionValueBuilderTest.createObjects(listSize);
         ConditionBuilder builder = new ConditionBuilder(type);
         builder.type(type).range(range).negative(negative);
         builder.conditionValuesSet(conditionValues);
@@ -86,7 +85,14 @@ public class ConditionBuilderTest {
         return condition;
     }
 
+    public static Condition createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<Condition> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

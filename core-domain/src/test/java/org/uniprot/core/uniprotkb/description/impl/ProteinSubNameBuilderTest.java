@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -79,16 +80,23 @@ class ProteinSubNameBuilderTest {
         assertEquals(obj.hashCode(), obj2.hashCode());
     }
 
-    public static ProteinSubName createObject() {
+    public static ProteinSubName createObject(int listSize) {
         ProteinSubNameBuilder builder = new ProteinSubNameBuilder();
-        Name fullName = NameBuilderTest.createObject();
+        Name fullName = NameBuilderTest.createObject(listSize);
         builder.fullName(fullName);
-        List<EC> ecNumbers = ECBuilderTest.createObjects(3);
+        List<EC> ecNumbers = ECBuilderTest.createObjects(listSize);
         builder.ecNumbersSet(ecNumbers);
         return builder.build();
     }
 
+    public static ProteinSubName createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<ProteinSubName> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

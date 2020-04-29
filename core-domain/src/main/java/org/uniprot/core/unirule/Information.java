@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
-import org.uniprot.core.uniprotkb.UniProtKBId;
 
 /** @author sahmad */
 public interface Information extends Serializable {
@@ -14,7 +13,7 @@ public interface Information extends Serializable {
 
     String getOldRuleNum();
 
-    List<UniProtKBId> getUniProtIds();
+    List<String> getUniProtIds();
 
     DataClassType getDataClass();
 

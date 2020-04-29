@@ -5,6 +5,7 @@ import static org.uniprot.core.ObjectsForTests.*;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -133,7 +134,7 @@ public class DiseaseBuilderTest {
         assertEquals(obj.hashCode(), obj2.hashCode());
     }
 
-    public static Disease createObject() {
+    public static Disease createObject(int listSize) {
         DiseaseBuilder builder = new DiseaseBuilder();
         String random = UUID.randomUUID().toString();
         String dId = "dId" + random;
@@ -142,17 +143,24 @@ public class DiseaseBuilderTest {
         String desc = "Desc-" + random;
         builder.diseaseId(dId);
         builder.diseaseAc(dAc);
-        List<Evidence> evidences = EvidenceBuilderTest.createObjects(3);
+        List<Evidence> evidences = EvidenceBuilderTest.createObjects(listSize);
         builder.evidencesSet(evidences);
         builder.acronym(acronym);
         builder.description(desc);
         CrossReference<DiseaseDatabase> diseaseCrossReference =
-                DiseaseCrossReferenceBuilderTest.createObject();
+                DiseaseCrossReferenceBuilderTest.createObject(listSize);
         builder.diseaseCrossReference(diseaseCrossReference);
         return builder.build();
     }
 
+    public static Disease createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<Disease> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }

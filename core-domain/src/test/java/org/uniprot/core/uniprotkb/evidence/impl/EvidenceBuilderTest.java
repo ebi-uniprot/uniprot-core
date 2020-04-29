@@ -28,7 +28,7 @@ public class EvidenceBuilderTest {
         assertEquals(obj.hashCode(), obj2.hashCode());
     }
 
-    public static Evidence createObject() {
+    public static Evidence createObject(int listSize) {
         int length = EvidenceCode.values().length;
         int randomIndex = ThreadLocalRandom.current().nextInt(0, length);
         EvidenceCode code = EvidenceCode.values()[randomIndex];
@@ -42,7 +42,14 @@ public class EvidenceBuilderTest {
         return builder.build();
     }
 
+    public static Evidence createObject() {
+        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
+        return createObject(listSize);
+    }
+
     public static List<Evidence> createObjects(int count) {
-        return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
+        return IntStream.range(0, count)
+                .mapToObj(i -> createObject(count))
+                .collect(Collectors.toList());
     }
 }
