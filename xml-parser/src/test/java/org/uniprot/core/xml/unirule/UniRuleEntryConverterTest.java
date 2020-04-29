@@ -16,6 +16,8 @@ public class UniRuleEntryConverterTest extends AbstractConverterTest {
 
     public static UniRuleType createObject() {
         UniRuleType uniRuleType = objectCreator.createLoremIpsumObject(UniRuleType.class);
+        uniRuleType.setMain(MainTypeConverterTest.createObject());
+        uniRuleType.setInformation(InformationConverterTest.createObject());
         // fill list types
         List<CaseType> caseTypes = CaseTypeConverterTest.createObjects();
         CasesType casesType = uniRuleObjectFactory.createCasesType();
@@ -25,7 +27,7 @@ public class UniRuleEntryConverterTest extends AbstractConverterTest {
         List<SamFeatureSetType> samFeatureSets = SamFeatureSetConverterTest.createObjects();
         uniRuleType.getSamFeatureSet().addAll(samFeatureSets);
 
-        List<PositionalFeatureSetType> positionalFeatureSets = PositionalFeatureSetConverterTest.createObjects();
+            List<PositionalFeatureSetType> positionalFeatureSets = PositionalFeatureSetConverterTest.createObjects();
         uniRuleType.getPositionalFeatureSet().addAll(positionalFeatureSets);
         return uniRuleType;
     }

@@ -14,6 +14,7 @@ public class PositionalFeatureSetConverterTest extends AbstractConverterTest {
         // fill the list type
         List<PositionalFeatureType> positionalFeatureTypes = PositionalFeatureConverterTest.createObjects();
         positionalFeatureSetType.getPositionalFeature().addAll(positionalFeatureTypes);
+        positionalFeatureSetType.getAnnotations().getAnnotation().addAll(AnnotationConverterTest.createObjects());
         return positionalFeatureSetType;
     }
 
