@@ -1,21 +1,19 @@
-// package org.uniprot.core.xml.unirule;
+//package org.uniprot.core.xml.unirule;
 //
-// import org.uniprot.core.uniprotkb.xdb.impl.UniProtKBCrossReferenceBuilderTest;
-// import org.uniprot.core.unirule.impl.MultiValueBuilderTest;
-// import org.uniprot.core.xml.AbstractConverterTest;
-// import org.uniprot.core.xml.jaxb.uniprot.*;
-// import org.uniprot.core.xml.uniprot.EvidencedStringTypeConverterTest;
-// import org.uniprot.core.xml.uniprot.UniProtKBCrossReferenceConverterTest;
-// import org.uniprot.core.xml.uniprot.comment.SubcellularLocationConverterTest;
+//import org.uniprot.core.xml.AbstractConverterTest;
+//import org.uniprot.core.xml.jaxb.uniprot.*;
+//import org.uniprot.core.xml.uniprot.EvidencedStringTypeConverterTest;
+//import org.uniprot.core.xml.uniprot.UniProtKBCrossReferenceConverterTest;
+//import org.uniprot.core.xml.uniprot.comment.SubcellularLocationConverterTest;
 //
-// import java.util.Arrays;
-// import java.util.List;
-// import java.util.UUID;
-// import java.util.concurrent.ThreadLocalRandom;
-// import java.util.stream.Collectors;
-// import java.util.stream.IntStream;
+//import java.util.Arrays;
+//import java.util.List;
+//import java.util.UUID;
+//import java.util.concurrent.ThreadLocalRandom;
+//import java.util.stream.Collectors;
+//import java.util.stream.IntStream;
 //
-// public class CommentConverterTest  extends AbstractConverterTest {
+//public class CommentConverterTest extends AbstractConverterTest {
 //
 //    public static CommentType createObject(int listSize) {
 //        CommentType commentType = uniProtObjectFactory.createCommentType();
@@ -38,18 +36,18 @@
 //        commentType.setKinetics(kinetics);
 //        // phDepend
 //        CommentType.PhDependence phDependence =
-// uniProtObjectFactory.createCommentTypePhDependence();
+//                uniProtObjectFactory.createCommentTypePhDependence();
 //        phDependence.getText().addAll(text);
 //        commentType.setPhDependence(phDependence);
 //        // redoxPotential
 //        CommentType.RedoxPotential redoxPotential =
-// uniProtObjectFactory.createCommentTypeRedoxPotential();
+//                uniProtObjectFactory.createCommentTypeRedoxPotential();
 //        redoxPotential.getText().addAll(text);
 //        commentType.setRedoxPotential(redoxPotential);
 //
 //        // temperatureDependence
 //        CommentType.TemperatureDependence temperatureDependence =
-// uniProtObjectFactory.createCommentTypeTemperatureDependence();
+//                uniProtObjectFactory.createCommentTypeTemperatureDependence();
 //        temperatureDependence.getText().addAll(text);
 //        commentType.setTemperatureDependence(temperatureDependence);
 //        // reaction
@@ -58,27 +56,28 @@
 //        reaction.setText(reactionText);
 //        reaction.getEvidence().addAll(createListOfInt(listSize));
 //
-// reaction.getDbReference().addAll(UniProtKBCrossReferenceConverterTest.createObjects(listSize));
+//        reaction.getDbReference().addAll(UniProtKBCrossReferenceConverterTest.createObjects(listSize));
 //        commentType.setReaction(reaction);
 //        //physiologicalReaction
 //        List<PhysiologicalReactionType> physiologicalReaction =
-// createPhysiologicalReactionTypes(listSize);
+//                createPhysiologicalReactionTypes(listSize);
 //        List<CofactorType> cofactor = createCofactorTypes(listSize);
 //        List<SubcellularLocationType> subcellularLocation =
-// SubcellularLocationConverterTest.createObjects(listSize);
+//                SubcellularLocationConverterTest.createObjects(listSize);
 //
 //        CommentType.Conflict conflict = createConflict();
-//        List<CommentType.Link> link = Arrays.asList(uniProtObjectFactory.createCommentTypeLink());
+//        List<CommentType.Link> link = createListOfLinks(listSize);
+//
 //        List<EventType> event = Arrays.asList(uniProtObjectFactory.createEventType());
 //        List<IsoformType> isoform = Arrays.asList(uniProtObjectFactory.createIsoformType());
 //        List<InteractantType> interactant =
-// Arrays.asList(uniProtObjectFactory.createInteractantType());
+//                Arrays.asList(uniProtObjectFactory.createInteractantType());
 //        Boolean organismsDiffer = ThreadLocalRandom.current().nextBoolean();
 //        Integer experiments = ThreadLocalRandom.current().nextInt();
 //        CommentType.Disease disease = uniProtObjectFactory.createCommentTypeDisease();
 //        List<LocationType> location = Arrays.asList(uniProtObjectFactory.createLocationType());
 //        List<EvidencedStringType> text =
-// Arrays.asList(uniProtObjectFactory.createEvidencedStringType());
+//                Arrays.asList(uniProtObjectFactory.createEvidencedStringType());
 //        String type = "type-" + random;
 //        String locationType = "localtionType-" + random;
 //        String name = "name-" + random;
@@ -86,7 +85,7 @@
 //        String error = "error-" + random;
 //        String method = "method-" + random;
 //        List<Integer> evidence = IntStream.range(0, listSize).mapToObj(i ->
-// ThreadLocalRandom.current().nextInt()).collect(Collectors.toList());
+//                ThreadLocalRandom.current().nextInt()).collect(Collectors.toList());
 //        return commentType;
 //    }
 //
@@ -100,4 +99,4 @@
 //                .mapToObj(i -> createObject(count))
 //                .collect(Collectors.toList());
 //    }
-// }
+//}

@@ -1,30 +1,27 @@
 package org.uniprot.core.xml.unirule;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
+import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.unirule.MultiValueType;
-import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
 
-public class MultiValueConverterTest {
-    private static ObjectFactory objectFactory;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MultiValueConverterTest extends AbstractConverterTest {
     private static MultiValueConverter converter;
-    private static String random;
 
     @BeforeAll
     static void setUp() {
-        objectFactory = getObjectFactory();
-        converter = new MultiValueConverter(objectFactory);
+        converter = new MultiValueConverter(uniRuleObjectFactory);
         random = UUID.randomUUID().toString().substring(0, 4);
     }
 
@@ -68,34 +65,12 @@ public class MultiValueConverterTest {
         assertTrue(xmlType.getValue().isEmpty());
     }
 
-    public static MultiValueType createObject(int listSize) {
-        MultiValueType multiValueType = getObjectFactory().createMultiValueType();
-        String random = UUID.randomUUID().toString().substring(0, 4);
-        List<String> values =
-                IntStream.range(0, listSize)
-                        .mapToObj(i -> i + "-val-" + random)
-                        .collect(Collectors.toList());
-
-        multiValueType.getValue().addAll(values);
-
+    public static MultiValueType createObject() {
+        MultiValueType multiValueType = objectCreator.createLoremIpsumObject(MultiValueType.class);
+        multiValueType.getValue().addAll(objectCreator.createLoremIpsumObject(StringList.class));
         return multiValueType;
     }
 
-    public static MultiValueType createObject() {
-        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
-        return createObject(listSize);
-    }
-
-    public static List<MultiValueType> createObjects(int count) {
-        return IntStream.range(0, count)
-                .mapToObj(i -> createObject(count))
-                .collect(Collectors.toList());
-    }
-
-    private static ObjectFactory getObjectFactory() {
-        if (objectFactory == null) {
-            objectFactory = new ObjectFactory();
-        }
-        return objectFactory;
+    public static class StringList extends ArrayList<String> {
     }
 }

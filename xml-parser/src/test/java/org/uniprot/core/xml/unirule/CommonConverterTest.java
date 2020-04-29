@@ -1,6 +1,19 @@
 package org.uniprot.core.xml.unirule;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.uniprot.core.RangeTest;
+import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilderTest;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilderTest;
+import org.uniprot.core.unirule.Condition;
+import org.uniprot.core.unirule.UniRuleEntry;
+import org.uniprot.core.unirule.impl.*;
+import org.uniprot.core.xml.AbstractConverterTest;
+import org.uniprot.core.xml.Converter;
+import org.uniprot.core.xml.jaxb.unirule.*;
 
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
@@ -12,17 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-import org.jvnet.jaxb2_commons.lang.Equals2;
-import org.uniprot.core.RangeTest;
-import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilderTest;
-import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilderTest;
-import org.uniprot.core.unirule.impl.*;
-import org.uniprot.core.xml.Converter;
-import org.uniprot.core.xml.jaxb.unirule.AnnotationType;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CommonConverterTest {
     private static List<String> skippedJaxbFields = new ArrayList<>();
@@ -63,32 +66,25 @@ public class CommonConverterTest {
         Converter converter = noArgConstructor.newInstance();
         Object xmlObject = converter.toXml(uniObj);
         assertNotNull(xmlObject);
-        // call each getter and check value is not null
-        for (PropertyDescriptor pd :
-                Introspector.getBeanInfo(xmlObject.getClass()).getPropertyDescriptors()) {
-            if (canSkip(pd)) {
-                Object fieldVal = pd.getReadMethod().invoke(xmlObject);
-                assertNotNull(
-                        fieldVal, xmlObject.getClass() + " field `" + pd.getName() + "` is null");
-                if (fieldVal instanceof Collection) {
-                    assertFalse(((List) fieldVal).isEmpty(), pd.getName() + " is empty");
-                } else if (fieldVal instanceof Map) {
-                    assertFalse(((Map) fieldVal).isEmpty(), pd.getName() + " is empty");
-                }
-            }
-        }
+       verifyBean(xmlObject);
     }
 
     @DisplayName("Test convert xmlObject to uniObject")
     @ParameterizedTest(name = "[{index}] using converter ''{1}''")
-    @MethodSource("provideConverterAndXMLClass")
+    @MethodSource("provideConverterXMLAndTestClass")
     void testFromXmlToObject(
-            Class<? extends Converter> converterClass, Class<? extends Equals2> xmlClass) {
-        // create xmlType using converter test class create object method
-        // call fromXml method
-        // get uniObject type
-        // check uniObject object is not null
-        // call each getter and check value is not null
+            Class<? extends Converter> converterClass, Class<? extends Equals2> xmlClass,
+            Class<? extends AbstractConverterTest> converterTestClass) throws Exception{
+        // create xmlType using converter test class createObject method
+        Method createObjectMethod = converterTestClass.getMethod("createObject");
+        Object xmlObject = createObjectMethod.invoke(null);
+        assertNotNull(xmlObject);
+        // create converter object using no-arg constructor and call toXml method
+        Constructor<? extends Converter> noArgConstructor = converterClass.getConstructor();
+        Converter converter = noArgConstructor.newInstance();
+        Object uniObject = converter.fromXml(xmlObject);
+        assertNotNull(uniObject);
+        verifyBean(uniObject);
     }
 
     @DisplayName("Test convert null uniObj to xmlObject")
@@ -113,6 +109,21 @@ public class CommonConverterTest {
         Converter converter = noArgConstructor.newInstance();
         Object uniObj = converter.fromXml(null);
         assertNull(uniObj);
+    }
+
+    private static void verifyBean(Object xmlObject) throws Exception{
+        for (PropertyDescriptor pd :
+                Introspector.getBeanInfo(xmlObject.getClass()).getPropertyDescriptors()) {
+            if (pd.getReadMethod() != null && !"class".equals(pd.getName())) {
+                Object fieldVal = pd.getReadMethod().invoke(xmlObject);
+                assertNotNull(fieldVal, xmlObject.getClass() + " field `" + pd.getName() + "` is null");
+                if (fieldVal instanceof Collection) {
+                    assertFalse(((List) fieldVal).isEmpty(), xmlObject.getClass() + " field `" + pd.getName() + " is empty");
+                } else if (fieldVal instanceof Map) {
+                    assertFalse(((Map) fieldVal).isEmpty(), pd.getName() + " is empty");
+                }
+            }
+        }
     }
 
     static Stream<Arguments> provideConverterClass() {
@@ -171,8 +182,23 @@ public class CommonConverterTest {
                 Arguments.of(UniRuleEntryBuilderTest.class, UniRuleEntryConverter.class));
     }
 
-    static Stream<Arguments> provideConverterAndXMLClass() {
-        return Stream.of(Arguments.of(AnnotationConverter.class, AnnotationType.class));
+    static Stream<Arguments> provideConverterXMLAndTestClass() {
+        return Stream.of(
+                Arguments.of(AnnotationConverter.class, AnnotationType.class, AnnotationConverterTest.class),
+                Arguments.of(CaseTypeConverter.class, CaseType.class, CaseTypeConverterTest.class),
+                Arguments.of(ConditionConverter.class, Condition.class, ConditionConverterTest.class),
+                Arguments.of(ConditionSetConverter.class, ConditionSetType.class, ConditionSetConverterTest.class),
+                Arguments.of(ConditionValueConverter.class, ConditionValue.class, ConditionValueConverterTest.class),
+                Arguments.of(FusionConverter.class, FusionType.class, FusionConverterTest.class),
+                Arguments.of(InformationConverter.class, InformationType.class, InformationConverterTest.class),
+                Arguments.of(MainTypeConverter.class, MainType.class, MainTypeConverterTest.class),
+                Arguments.of(MultiValueConverter.class, MultiValueType.class, MultiValueConverterTest.class),
+                Arguments.of(PositionalFeatureConverter.class, PositionalFeatureType.class, PositionalFeatureConverterTest.class),
+                Arguments.of(PositionalFeatureSetConverter.class, PositionalFeatureSetType.class, PositionalFeatureSetConverterTest.class),
+                Arguments.of(RuleExceptionConverter.class, RuleExceptionType.class, RuleExceptionConverterTest.class),
+                Arguments.of(SamFeatureSetConverter.class, SamFeatureSetType.class, SamFeatureSetConverterTest.class),
+                Arguments.of(UniRuleEntryConverter.class, UniRuleEntry.class, UniRuleEntryConverterTest.class)
+        );
     }
 
     private boolean canSkip(PropertyDescriptor pd) {
