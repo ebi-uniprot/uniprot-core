@@ -419,7 +419,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testReferences() {
-        List<String> fields = Arrays.asList("accession", "pm_id");
+        List<String> fields = Arrays.asList("accession", "lit_pubmed_id");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
@@ -427,7 +427,7 @@ class UniProtKBEntryValueMapperTest {
                 "8702519; 10051606; 10196349; 14702039; 15057824; 15489334; 11350958;"
                         + " 10708449; 17081983; 17081065; 18669648; 19413330; 19349973; 19690332;"
                         + " 20068231; 21269460; 21406692; 22814378; 23186163; 25944712; 28424515; 29872227";
-        verify(pmids, "pm_id", result);
+        verify(pmids, "lit_pubmed_id", result);
     }
 
     @Test

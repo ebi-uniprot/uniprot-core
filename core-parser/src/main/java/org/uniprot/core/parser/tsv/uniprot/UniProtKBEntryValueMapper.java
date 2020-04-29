@@ -48,7 +48,7 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
 
     // TODO: FIX IT!!!
     private static final List<String> UNSUPPORTED_FIELDS =
-            Arrays.asList("matched_text", "tools", "uniparc_id", "mapped_pm_id");
+            Arrays.asList("matched_text", "tools", "uniparc_id", "mapped_pubmed_id");
 
     private static final String FIELD_FEATURE = "feature";
 
