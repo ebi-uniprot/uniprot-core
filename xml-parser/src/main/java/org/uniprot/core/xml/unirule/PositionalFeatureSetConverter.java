@@ -71,7 +71,7 @@ public class PositionalFeatureSetConverter
         builder.alignmentSignature(xmlObj.getAlignmentSignature());
         builder.tag(xmlObj.getTag());
 
-        return null;
+        return builder.build();
     }
 
     @Override
