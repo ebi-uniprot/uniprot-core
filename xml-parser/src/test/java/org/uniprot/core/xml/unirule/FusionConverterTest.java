@@ -1,29 +1,24 @@
 package org.uniprot.core.xml.unirule;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.unirule.Fusion;
 import org.uniprot.core.unirule.impl.FusionBuilder;
 import org.uniprot.core.unirule.impl.FusionBuilderTest;
+import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.unirule.FusionType;
 import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
 
-public class FusionConverterTest {
-    private static ObjectFactory objectFactory;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class FusionConverterTest extends AbstractConverterTest {
     private static FusionConverter fusionConverter;
 
     @BeforeAll
     static void setUp() {
-        objectFactory = new ObjectFactory();
-        fusionConverter = new FusionConverter(objectFactory);
+        fusionConverter = new FusionConverter(uniRuleObjectFactory);
     }
 
     @Test
@@ -80,7 +75,7 @@ public class FusionConverterTest {
 
     @Test
     void testFromEmptyXmlToObject() {
-        FusionType fusionType = objectFactory.createFusionType();
+        FusionType fusionType = objectCreator.createLoremIpsumObject(FusionType.class);
         Fusion fusion = fusionConverter.fromXml(fusionType);
         assertNotNull(fusion);
         assertTrue(fusionType.getNter().isEmpty());
@@ -111,32 +106,13 @@ public class FusionConverterTest {
         assertEquals(fusion, object);
     }
 
-    public static FusionType createObject(int listSize) {
-        FusionType fusionType = objectFactory.createFusionType();
-        String random = UUID.randomUUID().toString();
-        List<String> nter =
-                IntStream.range(0, listSize)
-                        .mapToObj(i -> i + "nter-" + random)
-                        .collect(Collectors.toList());
-        List<String> cter =
-                IntStream.range(0, listSize)
-                        .mapToObj(i -> i + "cter-" + random)
-                        .collect(Collectors.toList());
-
-        fusionType.getNter().addAll(nter);
-        fusionType.getCter().addAll(cter);
-
-        return fusionType;
-    }
-
     public static FusionType createObject() {
-        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
-        return createObject(listSize);
-    }
-
-    public static List<FusionType> createObjects(int count) {
-        return IntStream.range(0, count)
-                .mapToObj(i -> createObject(count))
-                .collect(Collectors.toList());
+        FusionType fusionType = objectCreator.createLoremIpsumObject(FusionType.class);
+        // fill list types
+        List<String> nter = objectCreator.createLoremIpsumObject(MultiValueConverterTest.StringList.class);
+        fusionType.getNter().addAll(nter);
+        List<String> cter = objectCreator.createLoremIpsumObject(MultiValueConverterTest.StringList.class);
+        fusionType.getCter().addAll(cter);
+        return fusionType;
     }
 }
