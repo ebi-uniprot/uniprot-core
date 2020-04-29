@@ -11,6 +11,7 @@ import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.unirule.DataClassType;
 import org.uniprot.core.unirule.Information;
 import org.uniprot.core.unirule.impl.InformationBuilderTest;
 import org.uniprot.core.xml.AbstractConverterTest;
@@ -56,13 +57,23 @@ public class InformationConverterTest extends AbstractConverterTest {
         information.setDuplicate(duplicate);
         MultiValueType plasmid = MultiValueConverterTest.createObject();
         information.setPlasmid(plasmid);
+        // update enum string
+        updateEnums(information);
         return information;
     }
 
     public static List<InformationType> createObjects() {
-        return objectCreator.createLoremIpsumObject(InformationTypeList.class);
+        InformationTypeList informationTypes = objectCreator.createLoremIpsumObject(InformationTypeList.class);
+        informationTypes.forEach(informationType -> updateEnums(informationType));
+        return informationTypes;
     }
 
     public static class InformationTypeList extends ArrayList<InformationType>{}
+
+    private static void updateEnums(InformationType informationType){
+        String dataClass = ThreadLocalRandom.current().nextBoolean() ? DataClassType.PROTEIN.getDisplayName() :
+                DataClassType.DOMAIN.getDisplayName();
+        informationType.setDataClass(dataClass);
+    }
 
 }

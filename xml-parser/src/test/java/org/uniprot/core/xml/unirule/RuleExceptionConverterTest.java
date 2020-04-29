@@ -12,6 +12,7 @@ public class RuleExceptionConverterTest extends AbstractConverterTest {
 
     public static RuleExceptionType createObject() {
         RuleExceptionType ruleExceptionType = objectCreator.createLoremIpsumObject(RuleExceptionType.class);
+        ruleExceptionType.setAnnotation(AnnotationConverterTest.createObject());
         // fill list type
         List<String> accessions = objectCreator.createLoremIpsumObject(MultiValueConverterTest.StringList.class);
         ruleExceptionType.getAccession().addAll(accessions);

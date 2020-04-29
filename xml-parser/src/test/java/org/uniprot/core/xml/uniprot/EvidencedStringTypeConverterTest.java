@@ -1,32 +1,27 @@
 package org.uniprot.core.xml.uniprot;
 
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EvidencedStringTypeConverterTest extends AbstractConverterTest {
 
-    public static EvidencedStringType createObject(int listSize) {
-        EvidencedStringType evidencedStringType = uniProtObjectFactory.createEvidencedStringType();
-        String value = "value-" + random;
-        List<Integer> evidences = createListOfInt(listSize);
-        evidencedStringType.setValue(value);
-        evidencedStringType.getEvidence().addAll(evidences);
+    public static EvidencedStringType createObject() {
+        EvidencedStringType evidencedStringType = objectCreator.createLoremIpsumObject(EvidencedStringType.class);
+        // fill list
+        evidencedStringType.getEvidence().addAll(objectCreator.createLoremIpsumObject(IntegerList.class));
         return evidencedStringType;
     }
 
-    public static EvidencedStringType createObject() {
-        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
-        return createObject(listSize);
+    public static List<EvidencedStringType> createObjects() {
+        List<EvidencedStringType> objects = objectCreator.createLoremIpsumObject(EvidencedStringTypeList.class);
+        objects.forEach(obj -> obj.getEvidence().addAll(objectCreator.createLoremIpsumObject(IntegerList.class)));
+        return objects;
     }
 
-    public static List<EvidencedStringType> createObjects(int count) {
-        return IntStream.range(0, count)
-                .mapToObj(i -> createObject(count))
-                .collect(Collectors.toList());
-    }
+    public static class EvidencedStringTypeList extends ArrayList<EvidencedStringType>{}
+
+    public static class IntegerList extends ArrayList<Integer>{}
 }
