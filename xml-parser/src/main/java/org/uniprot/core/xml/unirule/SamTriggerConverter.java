@@ -29,11 +29,14 @@ public class SamTriggerConverter implements Converter<SamTriggerType, SamTrigger
         if (Objects.nonNull(xmlObj.getTransmembrane())) {
             builder.expectedHits(
                     this.rangeConverter.fromXml(xmlObj.getTransmembrane().getExpectedHits()));
+            builder.samTriggerType(org.uniprot.core.unirule.SamTriggerType.TRANSMEMBRANE);
         } else if (Objects.nonNull(xmlObj.getSignal())) {
             builder.expectedHits(this.rangeConverter.fromXml(xmlObj.getSignal().getExpectedHits()));
+            builder.samTriggerType(org.uniprot.core.unirule.SamTriggerType.SIGNAL);
         } else if (Objects.nonNull(xmlObj.getCoiledCoil())) {
             builder.expectedHits(
                     this.rangeConverter.fromXml(xmlObj.getCoiledCoil().getExpectedHits()));
+            builder.samTriggerType(org.uniprot.core.unirule.SamTriggerType.COILED_COIL);
         }
         return builder.build();
     }

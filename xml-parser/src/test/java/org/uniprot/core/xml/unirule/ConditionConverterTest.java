@@ -1,11 +1,11 @@
 package org.uniprot.core.xml.unirule;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.unirule.ConditionType;
 import org.uniprot.core.xml.jaxb.unirule.ConditionValue;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ConditionConverterTest extends AbstractConverterTest {
     public static ConditionType createObject() {
@@ -16,11 +16,9 @@ public class ConditionConverterTest extends AbstractConverterTest {
         return conditionType;
     }
 
-
     public static List<ConditionType> createObjects() {
         return objectCreator.createLoremIpsumObject(ConditionTypeList.class);
     }
 
-    public static class ConditionTypeList extends ArrayList<ConditionType> {
-    }
+    public static class ConditionTypeList extends ArrayList<ConditionType> {}
 }
