@@ -78,12 +78,9 @@ public class SubcellularLocationConverterTest extends AbstractConverterTest {
     public static SubcellularLocationType createObject(int listSize) {
         SubcellularLocationType subcellularLocationType =
                 uniProtObjectFactory.createSubcellularLocationType();
-        List<EvidencedStringType> location =
-                EvidencedStringTypeConverterTest.createObjects(listSize);
-        List<EvidencedStringType> topology =
-                EvidencedStringTypeConverterTest.createObjects(listSize);
-        List<EvidencedStringType> orientation =
-                EvidencedStringTypeConverterTest.createObjects(listSize);
+        List<EvidencedStringType> location = EvidencedStringTypeConverterTest.createObjects();
+        List<EvidencedStringType> topology = EvidencedStringTypeConverterTest.createObjects();
+        List<EvidencedStringType> orientation = EvidencedStringTypeConverterTest.createObjects();
         subcellularLocationType.getLocation().addAll(location);
         subcellularLocationType.getTopology().addAll(topology);
         subcellularLocationType.getOrientation().addAll(orientation);

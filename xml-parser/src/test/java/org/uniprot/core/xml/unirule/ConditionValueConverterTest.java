@@ -1,14 +1,14 @@
 package org.uniprot.core.xml.unirule;
 
-import org.uniprot.core.xml.AbstractConverterTest;
-import org.uniprot.core.xml.jaxb.unirule.ConditionValue;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import org.uniprot.core.xml.AbstractConverterTest;
+import org.uniprot.core.xml.jaxb.unirule.ConditionValue;
+
 public class ConditionValueConverterTest extends AbstractConverterTest {
 
-    public static ConditionValue createObject(){
+    public static ConditionValue createObject() {
         return objectCreator.createLoremIpsumObject(ConditionValue.class);
     }
 
@@ -16,7 +16,5 @@ public class ConditionValueConverterTest extends AbstractConverterTest {
         return objectCreator.createLoremIpsumObject(ConditionValueList.class);
     }
 
-
-    public static class ConditionValueList extends ArrayList<ConditionValue> {
-    }
+    public static class ConditionValueList extends ArrayList<ConditionValue> {}
 }

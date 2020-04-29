@@ -4,10 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.unirule.Annotation;
-import org.uniprot.core.unirule.CaseRule;
-import org.uniprot.core.unirule.ConditionSet;
-import org.uniprot.core.unirule.RuleException;
+import org.uniprot.core.unirule.*;
 import org.uniprot.core.unirule.impl.CaseRuleBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.*;
@@ -35,11 +32,11 @@ public class CaseTypeConverter implements Converter<CaseType, CaseRule> {
     @Override
     public CaseRule fromXml(CaseType xmlObj) {
         if (Objects.isNull(xmlObj)) return null;
-
-        CaseRuleBuilder<Annotation> builder =
-                new CaseRuleBuilder<Annotation>(
-                        this.mainTypeConverter.fromXml(xmlObj).getConditionSets());
+        Rule<Annotation> mainRule = this.mainTypeConverter.fromXml(xmlObj);
+        CaseRuleBuilder<Annotation> builder = new CaseRuleBuilder<>(mainRule.getConditionSets());
         builder.overallStatsExempted(xmlObj.isOverallStatsExempted());
+        builder.annotationsSet(mainRule.getAnnotations());
+        builder.ruleExceptionsSet(mainRule.getRuleExceptions());
         return builder.build();
     }
 

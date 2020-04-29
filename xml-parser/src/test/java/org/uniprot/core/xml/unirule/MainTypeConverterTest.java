@@ -1,10 +1,10 @@
 package org.uniprot.core.xml.unirule;
 
-import org.uniprot.core.xml.AbstractConverterTest;
-import org.uniprot.core.xml.jaxb.unirule.*;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.xml.AbstractConverterTest;
+import org.uniprot.core.xml.jaxb.unirule.*;
 
 public class MainTypeConverterTest extends AbstractConverterTest {
     public static MainType createObject() {
@@ -32,6 +32,5 @@ public class MainTypeConverterTest extends AbstractConverterTest {
         return objectCreator.createLoremIpsumObject(MainTypeList.class);
     }
 
-    public static class MainTypeList extends ArrayList<MainType> {
-    }
+    public static class MainTypeList extends ArrayList<MainType> {}
 }
