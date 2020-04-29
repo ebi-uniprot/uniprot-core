@@ -1,46 +1,28 @@
-// package org.uniprot.core.xml.unirule;
-//
-// import org.uniprot.core.unirule.Annotation;
-// import org.uniprot.core.unirule.Condition;
-// import org.uniprot.core.unirule.SamFeatureSet;
-// import org.uniprot.core.unirule.impl.SamFeatureSetBuilder;
-// import org.uniprot.core.xml.Converter;
-// import org.uniprot.core.xml.jaxb.unirule.*;
-//
-// import java.util.List;
-// import java.util.Objects;
-// import java.util.UUID;
-// import java.util.concurrent.ThreadLocalRandom;
-// import java.util.stream.Collectors;
-// import java.util.stream.IntStream;
-//
-// public class SamFeatureSetConverterTest{
-//    public static FusionType createObject(int listSize) {
-//        FusionType fusionType = objectFactory.createFusionType();
-//        String random = UUID.randomUUID().toString();
-//        List<String> nter =
-//                IntStream.range(0, listSize)
-//                        .mapToObj(i -> i + "nter-" + random)
-//                        .collect(Collectors.toList());
-//        List<String> cter =
-//                IntStream.range(0, listSize)
-//                        .mapToObj(i -> i + "cter-" + random)
-//                        .collect(Collectors.toList());
-//
-//        fusionType.getNter().addAll(nter);
-//        fusionType.getCter().addAll(cter);
-//
-//        return fusionType;
-//    }
-//
-//    public static FusionType createObject() {
-//        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
-//        return createObject(listSize);
-//    }
-//
-//    public static List<FusionType> createObjects(int count) {
-//        return IntStream.range(0, count)
-//                .mapToObj(i -> createObject(count))
-//                .collect(Collectors.toList());
-//    }
-// }
+ package org.uniprot.core.xml.unirule;
+
+ import org.uniprot.core.xml.AbstractConverterTest;
+ import org.uniprot.core.xml.jaxb.unirule.AnnotationType;
+ import org.uniprot.core.xml.jaxb.unirule.AnnotationsType;
+ import org.uniprot.core.xml.jaxb.unirule.SamFeatureSetType;
+
+ import java.util.ArrayList;
+ import java.util.List;
+
+ public class SamFeatureSetConverterTest extends AbstractConverterTest {
+
+
+     public static SamFeatureSetType createObject(){
+         SamFeatureSetType samFeatureSetType = objectCreator.createLoremIpsumObject(SamFeatureSetType.class);
+         List<AnnotationType> annotationTypes = AnnotationConverterTest.createObjects();
+         AnnotationsType annotationsType = uniRuleObjectFactory.createAnnotationsType();
+         annotationsType.getAnnotation().addAll(annotationTypes);
+         samFeatureSetType.setAnnotations(annotationsType);
+         return samFeatureSetType;
+     }
+
+     public static List<SamFeatureSetType> createObjects() {
+         return objectCreator.createLoremIpsumObject(SamFeatureSetTypeList.class);
+     }
+
+     public static class SamFeatureSetTypeList extends ArrayList<SamFeatureSetType> {}
+ }
