@@ -9,7 +9,7 @@ import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.util.Utils;
 
 public class EntryCrossReferenceMap implements NamedValueMap {
-    private static final String CROSS_REF = "cross_ref_";
+    private static final String CROSS_REF = "xref_";
     private final List<UniProtKBCrossReference> dbReferences;
     private static final Map<String, String> D3MethodMAP = new HashMap<>();
 

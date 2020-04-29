@@ -498,12 +498,7 @@ class UniProtKBEntryValueMapperTest {
     @Test
     void testXRefs1() {
         List<String> fields =
-                Arrays.asList(
-                        "accession",
-                        "cross_ref_embl",
-                        "cross_ref_ccds",
-                        "cross_ref_refseq",
-                        "cross_ref_smr");
+                Arrays.asList("accession", "xref_embl", "xref_ccds", "xref_refseq", "xref_smr");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
@@ -513,10 +508,10 @@ class UniProtKBEntryValueMapperTest {
         String refseq =
                 "NP_001138616.1 [Q15758-3];NP_001138617.1 [Q15758-2];NP_005619.1 [Q15758-1];";
         String smr = "Q15758;";
-        verify(embl, "cross_ref_embl", result);
-        verify(ccds, "cross_ref_ccds", result);
-        verify(refseq, "cross_ref_refseq", result);
-        verify(smr, "cross_ref_smr", result);
+        verify(embl, "xref_embl", result);
+        verify(ccds, "xref_ccds", result);
+        verify(refseq, "xref_refseq", result);
+        verify(smr, "xref_smr", result);
     }
 
     @Test
@@ -524,11 +519,11 @@ class UniProtKBEntryValueMapperTest {
         List<String> fields =
                 Arrays.asList(
                         "accession",
-                        "cross_ref_smr",
-                        "cross_ref_biogrid",
-                        "cross_ref_intact",
-                        "cross_ref_mint",
-                        "cross_ref_string");
+                        "xref_smr",
+                        "xref_biogrid",
+                        "xref_intact",
+                        "xref_mint",
+                        "xref_string");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
@@ -537,11 +532,11 @@ class UniProtKBEntryValueMapperTest {
         String intact = "Q15758;";
         String mint = "Q15758;";
         String string = "9606.ENSP00000444408;";
-        verify(smr, "cross_ref_smr", result);
-        verify(biogrid, "cross_ref_biogrid", result);
-        verify(intact, "cross_ref_intact", result);
-        verify(mint, "cross_ref_mint", result);
-        verify(string, "cross_ref_string", result);
+        verify(smr, "xref_smr", result);
+        verify(biogrid, "xref_biogrid", result);
+        verify(intact, "xref_intact", result);
+        verify(mint, "xref_mint", result);
+        verify(string, "xref_string", result);
     }
 
     @Test
@@ -549,11 +544,11 @@ class UniProtKBEntryValueMapperTest {
         List<String> fields =
                 Arrays.asList(
                         "accession",
-                        "cross_ref_drugbank",
-                        "cross_ref_guidetopharmacology",
-                        "cross_ref_tcdb",
-                        "cross_ref_dmdm",
-                        "cross_ref_maxqb");
+                        "xref_drugbank",
+                        "xref_guidetopharmacology",
+                        "xref_tcdb",
+                        "xref_dmdm",
+                        "xref_maxqb");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
@@ -562,11 +557,11 @@ class UniProtKBEntryValueMapperTest {
         String tcdb = "2.A.23.3.3;";
         String dmdm = "21542389;";
         String maxqb = "Q15758;";
-        verify(drugbank, "cross_ref_drugbank", result);
-        verify(guidetopharmacology, "cross_ref_guidetopharmacology", result);
-        verify(tcdb, "cross_ref_tcdb", result);
-        verify(dmdm, "cross_ref_dmdm", result);
-        verify(maxqb, "cross_ref_maxqb", result);
+        verify(drugbank, "xref_drugbank", result);
+        verify(guidetopharmacology, "xref_guidetopharmacology", result);
+        verify(tcdb, "xref_tcdb", result);
+        verify(dmdm, "xref_dmdm", result);
+        verify(maxqb, "xref_maxqb", result);
     }
 
     @Test
@@ -574,11 +569,11 @@ class UniProtKBEntryValueMapperTest {
         List<String> fields =
                 Arrays.asList(
                         "accession",
-                        "cross_ref_drugbank",
-                        "cross_ref_guidetopharmacology",
-                        "cross_ref_tcdb",
-                        "cross_ref_dmdm",
-                        "cross_ref_maxqb");
+                        "xref_drugbank",
+                        "xref_guidetopharmacology",
+                        "xref_tcdb",
+                        "xref_dmdm",
+                        "xref_maxqb");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
@@ -587,11 +582,11 @@ class UniProtKBEntryValueMapperTest {
         String tcdb = "2.A.23.3.3;";
         String dmdm = "21542389;";
         String maxqb = "Q15758;";
-        verify(drugbank, "cross_ref_drugbank", result);
-        verify(guidetopharmacology, "cross_ref_guidetopharmacology", result);
-        verify(tcdb, "cross_ref_tcdb", result);
-        verify(dmdm, "cross_ref_dmdm", result);
-        verify(maxqb, "cross_ref_maxqb", result);
+        verify(drugbank, "xref_drugbank", result);
+        verify(guidetopharmacology, "xref_guidetopharmacology", result);
+        verify(tcdb, "xref_tcdb", result);
+        verify(dmdm, "xref_dmdm", result);
+        verify(maxqb, "xref_maxqb", result);
     }
 
     @Test
@@ -599,11 +594,11 @@ class UniProtKBEntryValueMapperTest {
         List<String> fields =
                 Arrays.asList(
                         "accession",
-                        "cross_ref_ensembl",
-                        "cross_ref_reactome",
-                        "cross_ref_interpro",
-                        "cross_ref_prosite",
-                        "cross_ref_pfam");
+                        "xref_ensembl",
+                        "xref_reactome",
+                        "xref_interpro",
+                        "xref_prosite",
+                        "xref_pfam");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
@@ -613,32 +608,32 @@ class UniProtKBEntryValueMapperTest {
         String interpro = "IPR001991;IPR018107;IPR036458;";
         String prosite = "PS00713;PS00714;";
         String pfam = "PF00375;";
-        verify(ensembl, "cross_ref_ensembl", result);
-        verify(reactome, "cross_ref_reactome", result);
-        verify(interpro, "cross_ref_interpro", result);
-        verify(prosite, "cross_ref_prosite", result);
-        verify(pfam, "cross_ref_pfam", result);
+        verify(ensembl, "xref_ensembl", result);
+        verify(reactome, "xref_reactome", result);
+        verify(interpro, "xref_interpro", result);
+        verify(prosite, "xref_prosite", result);
+        verify(pfam, "xref_pfam", result);
     }
 
     @Test
     void testProteome() {
-        List<String> fields = Arrays.asList("accession", "cross_ref_proteomes");
+        List<String> fields = Arrays.asList("accession", "xref_proteomes");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
 
         verify("P03431", "accession", result);
         String proteome = "UP000009255: Genome; UP000116373: Genome; UP000170967: Genome";
-        verify(proteome, "cross_ref_proteomes", result);
+        verify(proteome, "xref_proteomes", result);
     }
 
     @Test
     void testPdb() {
-        List<String> fields = Arrays.asList("accession", "cross_ref_pdb", "structure_3d");
+        List<String> fields = Arrays.asList("accession", "xref_pdb", "structure_3d");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
 
         verify("P03431", "accession", result);
         String pdb = "2ZNL;2ZTT;3A1G;";
         String d3d = "X-ray crystallography (3)";
-        verify(pdb, "cross_ref_pdb", result);
+        verify(pdb, "xref_pdb", result);
         verify(d3d, "structure_3d", result);
     }
 

@@ -44,7 +44,7 @@ class EntryCrossReferenceMapTest {
         EntryCrossReferenceMap dl = new EntryCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(1, result.size());
-        verify("AY189288;AK022746;", "cross_ref_embl", result);
+        verify("AY189288;AK022746;", "xref_embl", result);
     }
 
     @Test
@@ -87,8 +87,8 @@ class EntryCrossReferenceMapTest {
         EntryCrossReferenceMap dl = new EntryCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(2, result.size());
-        verify("AY189288;AK022746;", "cross_ref_embl", result);
-        verify("ENST00000330899 [P31689-1];ENST00000439351;", "cross_ref_ensembl", result);
+        verify("AY189288;AK022746;", "xref_embl", result);
+        verify("ENST00000330899 [P31689-1];ENST00000439351;", "xref_ensembl", result);
     }
 
     @Test
@@ -109,8 +109,8 @@ class EntryCrossReferenceMapTest {
         EntryCrossReferenceMap dl = new EntryCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(3, result.size());
-        verify("2LO1;2M6Y;5TKG;", "cross_ref_pdb", result);
-        verify("P31689;", "cross_ref_smr", result);
+        verify("2LO1;2M6Y;5TKG;", "xref_pdb", result);
+        verify("P31689;", "xref_smr", result);
         String pdb3d = "NMR spectroscopy (2); X-ray crystallography (1)";
         verify(pdb3d, "structure_3d", result);
     }
@@ -132,8 +132,8 @@ class EntryCrossReferenceMapTest {
         EntryCrossReferenceMap dl = new EntryCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(2, result.size());
-        verify("P31689;", "cross_ref_intact", result);
-        verify("9606.ENSP00000369127;", "cross_ref_string", result);
+        verify("P31689;", "xref_intact", result);
+        verify("9606.ENSP00000369127;", "xref_string", result);
     }
 
     @Test
@@ -159,8 +159,8 @@ class EntryCrossReferenceMapTest {
         EntryCrossReferenceMap dl = new EntryCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(2, result.size());
-        verify("CHEMBL2189122;", "cross_ref_chembl", result);
-        verify("SLP:000000475;", "cross_ref_swisslipids", result);
+        verify("CHEMBL2189122;", "xref_chembl", result);
+        verify("SLP:000000475;", "xref_swisslipids", result);
     }
 
     @Test
