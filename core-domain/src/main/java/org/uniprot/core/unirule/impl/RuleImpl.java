@@ -30,7 +30,7 @@ public class RuleImpl<R> implements Rule<R> {
             List<RuleException<R>> ruleExceptions) {
         if (Utils.nullOrEmpty(conditionSets)) {
             throw new IllegalArgumentException(
-                    "conditionSets is a mandatory param for Rule entry.");
+                    "conditionSets is a mandatory parameter for a Rule entry.");
         }
         this.conditionSets = Utils.unmodifiableList(conditionSets);
         this.annotations = Utils.unmodifiableList(annotations);

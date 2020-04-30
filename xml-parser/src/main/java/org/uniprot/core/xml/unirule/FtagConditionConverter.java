@@ -2,13 +2,14 @@ package org.uniprot.core.xml.unirule;
 
 import java.util.Objects;
 
-import org.uniprot.core.unirule.impl.FtagConditionValueBuilder;
+import org.uniprot.core.unirule.FeatureTagConditionValue;
+import org.uniprot.core.unirule.impl.FeatureTagConditionValueBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.FtagConditionValue;
 import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
 
 public class FtagConditionConverter
-        implements Converter<FtagConditionValue, org.uniprot.core.unirule.FtagConditionValue> {
+        implements Converter<FtagConditionValue, FeatureTagConditionValue> {
 
     private final ObjectFactory objectFactory;
 
@@ -21,15 +22,16 @@ public class FtagConditionConverter
     }
 
     @Override
-    public org.uniprot.core.unirule.FtagConditionValue fromXml(FtagConditionValue xmlObj) {
+    public FeatureTagConditionValue fromXml(FtagConditionValue xmlObj) {
         if (Objects.isNull(xmlObj)) return null;
-        FtagConditionValueBuilder builder = new FtagConditionValueBuilder(xmlObj.getValue());
+        FeatureTagConditionValueBuilder builder =
+                new FeatureTagConditionValueBuilder(xmlObj.getValue());
         builder.pattern(xmlObj.getPattern());
         return builder.build();
     }
 
     @Override
-    public FtagConditionValue toXml(org.uniprot.core.unirule.FtagConditionValue uniObj) {
+    public FtagConditionValue toXml(FeatureTagConditionValue uniObj) {
         if (Objects.isNull(uniObj)) return null;
         FtagConditionValue ftagConditionValue = objectFactory.createFtagConditionValue();
         ftagConditionValue.setValue(uniObj.getValue());
