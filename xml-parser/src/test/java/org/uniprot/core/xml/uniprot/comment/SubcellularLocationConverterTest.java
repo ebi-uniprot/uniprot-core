@@ -6,8 +6,6 @@ import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocation;
@@ -75,7 +73,7 @@ public class SubcellularLocationConverterTest extends AbstractConverterTest {
         return evidences;
     }
 
-    public static SubcellularLocationType createObject(int listSize) {
+    public static SubcellularLocationType createObject() {
         SubcellularLocationType subcellularLocationType =
                 uniProtObjectFactory.createSubcellularLocationType();
         List<EvidencedStringType> location = EvidencedStringTypeConverterTest.createObjects();
@@ -85,11 +83,5 @@ public class SubcellularLocationConverterTest extends AbstractConverterTest {
         subcellularLocationType.getTopology().addAll(topology);
         subcellularLocationType.getOrientation().addAll(orientation);
         return subcellularLocationType;
-    }
-
-    public static List<SubcellularLocationType> createObjects(int count) {
-        return IntStream.range(0, count)
-                .mapToObj(i -> createObject(count))
-                .collect(Collectors.toList());
     }
 }
