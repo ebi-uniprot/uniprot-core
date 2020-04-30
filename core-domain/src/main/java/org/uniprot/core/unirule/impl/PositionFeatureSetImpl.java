@@ -43,7 +43,7 @@ public class PositionFeatureSetImpl<T> implements PositionFeatureSet {
 
         if (Utils.nullOrEmpty(positionalFeatures)) {
             throw new IllegalArgumentException(
-                    "positionalFeatures is a mandatory param for PositionFeatureSet entry.");
+                    "positionalFeatures is a mandatory parameter for a PositionFeatureSet entry.");
         }
         this.conditions = Utils.unmodifiableList(conditions);
         this.annotations = Utils.unmodifiableList(annotations);

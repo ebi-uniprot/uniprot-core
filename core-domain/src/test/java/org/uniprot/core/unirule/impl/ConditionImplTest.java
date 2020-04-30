@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.ConditionValue;
-import org.uniprot.core.unirule.FtagConditionValue;
+import org.uniprot.core.unirule.FeatureTagConditionValue;
 
 public class ConditionImplTest {
 
@@ -33,7 +33,7 @@ public class ConditionImplTest {
         ConditionValue cv1 = new ConditionValueBuilder(value1).build();
         ConditionValue cv2 = new ConditionValueBuilder(value2).build();
         List<ConditionValue> cvs = Arrays.asList(cv1, cv2);
-        FtagConditionValue tag = new FtagConditionValueImpl("value", "pattern");
+        FeatureTagConditionValue tag = new FeatureTagConditionValueImpl("value", "pattern");
 
         Condition condition = new ConditionImpl(cvs, type, isNegative, range, tag);
         assertNotNull(condition);
@@ -53,7 +53,7 @@ public class ConditionImplTest {
         ConditionValue cv1 = new ConditionValueBuilder(value1).build();
         ConditionValue cv2 = new ConditionValueBuilder(value2).build();
         List<ConditionValue> cvs = Arrays.asList(cv1, cv2);
-        FtagConditionValue tag = new FtagConditionValueImpl("value", "pattern");
+        FeatureTagConditionValue tag = new FeatureTagConditionValueImpl("value", "pattern");
 
         assertThrows(
                 IllegalArgumentException.class,

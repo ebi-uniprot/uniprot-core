@@ -49,7 +49,8 @@ public class InformationImpl implements Information {
             String internal) {
 
         if (Utils.nullOrEmpty(version)) {
-            throw new IllegalArgumentException("version is mandatory param for Information entry");
+            throw new IllegalArgumentException(
+                    "version is mandatory parameter for an Information entry");
         }
         this.version = version;
         this.comment = comment;

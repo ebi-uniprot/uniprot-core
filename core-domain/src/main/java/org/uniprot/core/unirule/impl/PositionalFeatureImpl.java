@@ -25,7 +25,7 @@ public class PositionalFeatureImpl implements PositionalFeature {
 
         if (Objects.isNull(position)) {
             throw new IllegalArgumentException(
-                    "position is mandatory param for PositionalFeature entry");
+                    "position is mandatory parameter for a PositionalFeature entry");
         }
 
         this.position = position;
