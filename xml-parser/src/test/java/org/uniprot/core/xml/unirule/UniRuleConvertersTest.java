@@ -33,12 +33,24 @@ import org.uniprot.core.xml.jaxb.uniprot.*;
 import org.uniprot.core.xml.jaxb.unirule.*;
 
 public class UniRuleConvertersTest extends AbstractConverterTest {
+    /**
+     * This parametrized test method tests conversion of uniObj to xmlObject. To test conversion
+     * from a new uniObj type to xmlObj see {@link #provideBuilderTestAndConverterClass()} to add
+     * new Arguments
+     *
+     * @param builderTestClass Builder's test Class where method
+     *     <p>createObject is defined See sample BuilderTest
+     *     <p>createObject method in {@link PositionalFeatureBuilderTest#createObject()}
+     * @param converterClass Converter's Class where
+     *     <p>toXml is defined.
+     * @throws Exception Mostly Reflection related
+     */
     @DisplayName("Test convert uniObject to xmlObject")
     @ParameterizedTest(name = "[{index}] using converter ''{1}''")
     @MethodSource("provideBuilderTestAndConverterClass")
     void testObjectToXml(Class builderTestClass, Class<? extends Converter> converterClass)
             throws Exception {
-        // create object using builder test class createObject method
+        // create uni object using builder test class' createObject method
         Method createObjectMethod = builderTestClass.getMethod("createObject");
         Object uniObj = createObjectMethod.invoke(null);
         assertNotNull(uniObj);
@@ -51,6 +63,18 @@ public class UniRuleConvertersTest extends AbstractConverterTest {
         verifyBean(xmlObject);
     }
 
+    /**
+     * This parametrized test method tests conversion of xmlObject to uniObject. To test conversion
+     * from a new xmlObj type to uniObj see {@link #provideConverterXMLAndTestClass()} to add new
+     * Arguments
+     *
+     * @param converterClass The converter's Class where fromXml method is defined
+     * @param converterTestClass The convertertest Class where the method
+     *     <p>createObject is defined See sample ConverterTest's
+     *     <p>createObject method in {@link InformationConverterTest#createObject()}
+     * @param xmlClass The jaxb generated XML class's Class which is being converted to uniObj
+     * @throws Exception
+     */
     @DisplayName("Test convert xmlObject to uniObject")
     @ParameterizedTest(name = "[{index}] using converter ''{0}''")
     @MethodSource("provideConverterXMLAndTestClass")
@@ -78,6 +102,12 @@ public class UniRuleConvertersTest extends AbstractConverterTest {
         verifyBean(uniObject);
     }
 
+    /**
+     * This method tests to convert null uniObj to xmlObject. The code should handle gracefully.
+     *
+     * @param converterClass The converter's Class where toXml method is defined
+     * @throws Exception
+     */
     @DisplayName("Test convert null uniObj to xmlObject")
     @ParameterizedTest(name = "[{index}] using converter ''{0}''")
     @MethodSource("provideConverterClass")
@@ -90,6 +120,12 @@ public class UniRuleConvertersTest extends AbstractConverterTest {
         assertNull(xmlObject);
     }
 
+    /**
+     * This method tests to convert null xmlObject to uniObj. The code should handle gracefully.
+     *
+     * @param converterClass The converter's Class where fromXml method is defined
+     * @throws Exception
+     */
     @DisplayName("Test convert null xmlObj to uniObj")
     @ParameterizedTest(name = "[{index}] using converter ''{0}''")
     @MethodSource("provideConverterClass")
