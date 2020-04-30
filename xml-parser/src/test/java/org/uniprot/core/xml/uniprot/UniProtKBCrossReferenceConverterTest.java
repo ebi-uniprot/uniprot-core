@@ -2,10 +2,8 @@ package org.uniprot.core.xml.uniprot;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
@@ -171,27 +169,27 @@ public class UniProtKBCrossReferenceConverterTest extends AbstractConverterTest 
                 .build();
     }
 
-    private static DbReferenceType createObject(int listSize) {
-        DbReferenceType dbReferenceType = uniProtObjectFactory.createDbReferenceType();
-        dbReferenceType.setMolecule(createMoleculeType());
-        String type = "type-" + random;
-        String id = "id-" + random;
-        List<Integer> evidences = createListOfInt(listSize);
-        dbReferenceType.setType(type);
-        dbReferenceType.setId(id);
-        dbReferenceType.getEvidence().addAll(evidences);
-        dbReferenceType.getProperty().addAll(createListOfPropertyType(listSize));
+    private static DbReferenceType createObject() {
+        DbReferenceType dbReferenceType =
+                objectCreator.createLoremIpsumObject(DbReferenceType.class);
+        update(dbReferenceType);
         return dbReferenceType;
     }
 
-    public static DbReferenceType createObject() {
-        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
-        return createObject(listSize);
+    public static List<DbReferenceType> createObjects(int count) {
+        List<DbReferenceType> objects =
+                objectCreator.createLoremIpsumObject(DbReferenceTypeList.class);
+        objects.forEach(object -> update(object));
+        return objects;
     }
 
-    public static List<DbReferenceType> createObjects(int count) {
-        return IntStream.range(0, count)
-                .mapToObj(i -> createObject(count))
-                .collect(Collectors.toList());
+    public static class DbReferenceTypeList extends ArrayList<DbReferenceType> {}
+
+    private static void update(DbReferenceType dbReferenceType) {
+        List<Integer> evidences =
+                objectCreator.createLoremIpsumObject(
+                        EvidencedStringTypeConverterTest.IntegerList.class);
+        dbReferenceType.getEvidence().addAll(evidences);
+        dbReferenceType.getProperty().addAll(PropertyTypeTest.createObjects());
     }
 }
