@@ -15,7 +15,7 @@ class EntryOrganismMapTest {
     @Test
     void testFields() {
         List<String> fields = EntryOrganismMap.FIELDS;
-        List<String> expected = Arrays.asList("organism", "organism_id", "tax_id");
+        List<String> expected = Arrays.asList("organism_name", "organism_id");
         assertEquals(expected, fields);
     }
 
@@ -29,10 +29,9 @@ class EntryOrganismMapTest {
                         .build();
         EntryOrganismMap dl = new EntryOrganismMap(organism);
         Map<String, String> result = dl.attributeValues();
-        assertEquals(3, result.size());
-        verify("organism", "Homo sapiens (Human)", result);
+        assertEquals(2, result.size());
+        verify("organism_name", "Homo sapiens (Human)", result);
         verify("organism_id", "9606", result);
-        verify("tax_id", "9606", result);
     }
 
     private void verify(String field, String expected, Map<String, String> result) {

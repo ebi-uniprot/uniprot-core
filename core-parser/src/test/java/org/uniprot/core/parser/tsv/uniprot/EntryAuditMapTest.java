@@ -18,7 +18,11 @@ class EntryAuditMapTest {
         List<String> fields = EntryAuditMap.FIELDS;
         List<String> expected =
                 Arrays.asList(
-                        "sequence_version", "date_seq_mod", "version", "date_create", "date_mod");
+                        "sequence_version",
+                        "date_sequence_modified",
+                        "version",
+                        "date_created",
+                        "date_modified");
         assertEquals(expected, fields);
     }
 
@@ -29,10 +33,10 @@ class EntryAuditMapTest {
         Map<String, String> result = dl.attributeValues();
         assertEquals(5, result.size());
         verify("sequence_version", "0", result);
-        verify("date_seq_mod", "", result);
+        verify("date_sequence_modified", "", result);
         verify("version", "0", result);
-        verify("date_create", "", result);
-        verify("date_mod", "", result);
+        verify("date_created", "", result);
+        verify("date_modified", "", result);
     }
 
     private void verify(String field, String expected, Map<String, String> result) {
@@ -53,9 +57,9 @@ class EntryAuditMapTest {
         Map<String, String> result = dl.attributeValues();
         assertEquals(5, result.size());
         verify("sequence_version", "5", result);
-        verify("date_seq_mod", "2018-01-25", result);
+        verify("date_sequence_modified", "2018-01-25", result);
         verify("version", "10", result);
-        verify("date_create", "2000-01-25", result);
-        verify("date_mod", "2019-01-25", result);
+        verify("date_created", "2000-01-25", result);
+        verify("date_modified", "2019-01-25", result);
     }
 }

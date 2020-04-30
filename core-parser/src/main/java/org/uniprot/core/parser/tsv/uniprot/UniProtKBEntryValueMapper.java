@@ -18,8 +18,8 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
                 UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB, "comment_count"),
         COUNT_BY_FEATURE_TYPE_ATTRIB(
                 UniProtKBEntryBuilder.COUNT_BY_FEATURE_TYPE_ATTRIB, "feature_count");
-        private String mapKey;
-        private String fieldName;
+        private final String mapKey;
+        private final String fieldName;
 
         ExtraAttributeKeyField(String mapKey, String fieldName) {
             this.mapKey = mapKey;
@@ -44,11 +44,11 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
     }
 
     private static final List<String> DEFAULT_FIELDS =
-            Arrays.asList("accession", "id", "score", "protein_existence");
+            Arrays.asList("accession", "id", "annotation_score", "protein_existence");
 
     // TODO: FIX IT!!!
     private static final List<String> UNSUPPORTED_FIELDS =
-            Arrays.asList("matched_text", "tools", "uniparc_id", "mapped_pm_id");
+            Arrays.asList("matched_text", "tools", "uniparc_id", "mapped_pubmed_id");
 
     private static final String FIELD_FEATURE = "feature";
 
@@ -81,9 +81,6 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
         if (EntryFeaturesMap.contains(fields)) {
             addData(map, new EntryFeaturesMap(entry.getFeatures()));
         }
-        if (EntryFeaturesMap.contains(fields)) {
-            addData(map, new EntryFeaturesMap(entry.getFeatures()));
-        }
         if (EntryGeneMap.contains(fields)) {
             addData(map, new EntryGeneMap(entry.getGenes()));
         }
@@ -98,12 +95,9 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
         if (EntryOrganismMap.contains(fields)) {
             addData(map, new EntryOrganismMap(entry.getOrganism()));
         }
-        if (EntryOrganismMap.contains(fields)) {
-            addData(map, new EntryOrganismMap(entry.getOrganism()));
-        }
 
-        if (EntryOrganismHostMap.contains(fields)) {
-            addData(map, new EntryOrganismHostMap(entry.getOrganismHosts()));
+        if (EntryVirusHostMap.contains(fields)) {
+            addData(map, new EntryVirusHostMap(entry.getOrganismHosts()));
         }
         if (EntryProteinMap.contains(fields)) {
             addData(map, new EntryProteinMap(entry.getProteinDescription()));
@@ -117,6 +111,12 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
         if (contains(fields)) {
             map.putAll(getSimpleFields(entry));
         }
+        mapAdditionalFields(entry, fields, map);
+        return map;
+    }
+
+    private void mapAdditionalFields(
+            UniProtKBEntry entry, List<String> fields, Map<String, String> map) {
         if (containsUnsupported(fields)) {
             map.putAll(getUnsupportedFields());
         }
@@ -128,7 +128,6 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
             Map<String, String> extraAttribsMap = getExtraAttributeMap(entry, fields);
             map.putAll(extraAttribsMap);
         }
-        return map;
     }
 
     private Map<String, String> getUnsupportedFields() {
@@ -143,7 +142,7 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
         Map<String, String> map = new HashMap<>();
         map.put("accession", entry.getPrimaryAccession().getValue());
         map.put("id", entry.getUniProtkbId().getValue());
-        map.put("score", entry.getAnnotationScore() + "");
+        map.put("annotation_score", entry.getAnnotationScore() + "");
 
         if (entry.getProteinExistence() != null) {
             map.put("protein_existence", entry.getProteinExistence().getName());
@@ -162,16 +161,13 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
     }
 
     private Map<String, String> getExtraAttributeMap(UniProtKBEntry entry, List<String> fields) {
-        Map<String, String> extraAttributeMap =
-                Arrays.stream(ExtraAttributeKeyField.values())
-                        .filter(ean -> fields.contains(ean.getFieldName()))
-                        .collect(
-                                toMap(
-                                        ExtraAttributeKeyField::getFieldName,
-                                        ean ->
-                                                EntryMapUtil.convertToTSVString(
-                                                        entry.getExtraAttributeValue(
-                                                                ean.getMapKey()))));
-        return extraAttributeMap;
+        return Arrays.stream(ExtraAttributeKeyField.values())
+                .filter(ean -> fields.contains(ean.getFieldName()))
+                .collect(
+                        toMap(
+                                ExtraAttributeKeyField::getFieldName,
+                                ean ->
+                                        EntryMapUtil.convertToTSVString(
+                                                entry.getExtraAttributeValue(ean.getMapKey()))));
     }
 }

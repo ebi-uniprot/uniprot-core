@@ -9,7 +9,7 @@ import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.UniProtKBReference;
 
 public class EntryReferenceMap implements NamedValueMap {
-    public static final List<String> FIELDS = Arrays.asList("pm_id");
+    static final List<String> FIELDS = Arrays.asList("lit_pubmed_id");
     private final List<UniProtKBReference> references;
 
     public EntryReferenceMap(List<UniProtKBReference> references) {

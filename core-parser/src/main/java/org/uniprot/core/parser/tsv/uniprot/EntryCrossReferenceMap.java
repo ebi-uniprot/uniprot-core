@@ -9,7 +9,7 @@ import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.util.Utils;
 
 public class EntryCrossReferenceMap implements NamedValueMap {
-    private static final String DR = "dr_";
+    private static final String CROSS_REF = "xref_";
     private final List<UniProtKBCrossReference> dbReferences;
     private static final Map<String, String> D3MethodMAP = new HashMap<>();
 
@@ -24,7 +24,11 @@ public class EntryCrossReferenceMap implements NamedValueMap {
     }
 
     public static boolean contains(List<String> fields) {
-        return fields.stream().anyMatch(val -> val.startsWith(DR) || val.equalsIgnoreCase("3d"))
+        return fields.stream()
+                        .anyMatch(
+                                val ->
+                                        val.startsWith(CROSS_REF)
+                                                || val.equalsIgnoreCase("structure_3d"))
                 || EntryGoCrossReferenceMap.contains(fields);
     }
 
@@ -54,18 +58,18 @@ public class EntryCrossReferenceMap implements NamedValueMap {
             goMap.forEach(map::put);
         } else if (type.equalsIgnoreCase("PROTEOMES")) {
             map.put(
-                    DR + type.toLowerCase(),
+                    CROSS_REF + type.toLowerCase(),
                     xrefs.stream()
                             .map(EntryCrossReferenceMap::proteomeXrefToString)
                             .collect(Collectors.joining("; ")));
         } else {
             map.put(
-                    DR + type.toLowerCase(),
+                    CROSS_REF + type.toLowerCase(),
                     xrefs.stream()
                             .map(EntryCrossReferenceMap::dbXrefToString)
                             .collect(Collectors.joining(";", "", ";")));
             if (type.equalsIgnoreCase("PDB")) {
-                map.put("3d", pdbXrefTo3DString(xrefs));
+                map.put("structure_3d", pdbXrefTo3DString(xrefs));
             }
         }
     }

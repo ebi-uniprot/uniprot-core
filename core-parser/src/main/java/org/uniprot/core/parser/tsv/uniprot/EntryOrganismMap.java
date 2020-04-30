@@ -9,7 +9,7 @@ import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 
 public class EntryOrganismMap implements NamedValueMap {
-    public static final List<String> FIELDS = Arrays.asList("organism", "organism_id", "tax_id");
+    public static final List<String> FIELDS = Arrays.asList("organism_name", "organism_id");
     private final Organism organism;
 
     public EntryOrganismMap(Organism organism) {
@@ -21,7 +21,6 @@ public class EntryOrganismMap implements NamedValueMap {
         Map<String, String> map = new HashMap<>();
         map.put(FIELDS.get(0), EntryMapUtil.convertOrganism(organism));
         map.put(FIELDS.get(1), "" + organism.getTaxonId());
-        map.put(FIELDS.get(2), "" + organism.getTaxonId());
 
         return map;
     }
