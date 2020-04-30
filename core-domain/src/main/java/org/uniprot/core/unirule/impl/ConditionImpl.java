@@ -7,7 +7,7 @@ import java.util.Objects;
 import org.uniprot.core.Range;
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.ConditionValue;
-import org.uniprot.core.unirule.FtagConditionValue;
+import org.uniprot.core.unirule.FeatureTagConditionValue;
 import org.uniprot.core.util.Utils;
 
 public class ConditionImpl implements Condition {
@@ -17,7 +17,7 @@ public class ConditionImpl implements Condition {
     private String type;
     private boolean isNegative;
     private Range range;
-    private FtagConditionValue tag;
+    private FeatureTagConditionValue tag;
 
     ConditionImpl() {
         this.conditionValues = Collections.emptyList();
@@ -28,10 +28,10 @@ public class ConditionImpl implements Condition {
             String type,
             boolean isNegative,
             Range range,
-            FtagConditionValue tag) {
+            FeatureTagConditionValue tag) {
         if (Utils.nullOrEmpty(type)) {
             throw new IllegalArgumentException(
-                    "type is a mandatory param for UniRule condition entry.");
+                    "type is a mandatory parameter for a UniRule condition entry.");
         }
         this.conditionValues = Utils.unmodifiableList(conditionValues);
         this.type = type;
@@ -61,7 +61,7 @@ public class ConditionImpl implements Condition {
     }
 
     @Override
-    public FtagConditionValue getTag() {
+    public FeatureTagConditionValue getTag() {
         return tag;
     }
 

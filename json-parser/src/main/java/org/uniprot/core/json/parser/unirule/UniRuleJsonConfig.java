@@ -137,7 +137,8 @@ public class UniRuleJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(SamTrigger.class, SamTriggerImpl.class);
         mod.addAbstractTypeMapping(PositionFeatureSet.class, PositionFeatureSetImpl.class);
 
-        mod.addAbstractTypeMapping(FtagConditionValue.class, FtagConditionValueImpl.class);
+        mod.addAbstractTypeMapping(
+                FeatureTagConditionValue.class, FeatureTagConditionValueImpl.class);
         objMapper.registerModule(mod);
         return objMapper;
     }

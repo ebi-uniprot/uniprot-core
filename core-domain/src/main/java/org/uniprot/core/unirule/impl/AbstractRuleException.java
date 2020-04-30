@@ -24,7 +24,7 @@ public abstract class AbstractRuleException<T> implements RuleException<T> {
             String note, String category, T annotation, List<UniProtKBAccession> accessions) {
         if (Utils.nullOrEmpty(category)) {
             throw new IllegalArgumentException(
-                    "category is a mandatory param for RuleException entry");
+                    "category is a mandatory parameter for a RuleException entry");
         }
         this.note = note;
         this.category = category;

@@ -9,29 +9,29 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import org.uniprot.core.unirule.FtagConditionValue;
+import org.uniprot.core.unirule.FeatureTagConditionValue;
 
-public class FtagConditionValueBuilderTest {
+public class FeatureTagConditionValueBuilderTest {
 
-    public static FtagConditionValue createObject(int listSize) {
+    public static FeatureTagConditionValue createObject(int listSize) {
         String random = UUID.randomUUID().toString();
         String value = "value-" + random;
         String pattern = "pattern-" + random;
-        FtagConditionValueBuilder builder = new FtagConditionValueBuilder(value);
+        FeatureTagConditionValueBuilder builder = new FeatureTagConditionValueBuilder(value);
         builder.pattern(pattern);
-        FtagConditionValue tag = builder.build();
+        FeatureTagConditionValue tag = builder.build();
         assertNotNull(tag);
         assertEquals(value, tag.getValue());
         assertEquals(pattern, tag.getPattern());
         return tag;
     }
 
-    public static FtagConditionValue createObject() {
+    public static FeatureTagConditionValue createObject() {
         int listSize = ThreadLocalRandom.current().nextInt(1, 5);
         return createObject(listSize);
     }
 
-    public static List<FtagConditionValue> createObjects(int count) {
+    public static List<FeatureTagConditionValue> createObjects(int count) {
         return IntStream.range(0, count)
                 .mapToObj(i -> createObject(count))
                 .collect(Collectors.toList());

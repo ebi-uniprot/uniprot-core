@@ -20,7 +20,7 @@ public class ConditionSetImpl implements ConditionSet {
     ConditionSetImpl(List<Condition> conditions) {
         if (Utils.nullOrEmpty(conditions)) {
             throw new IllegalArgumentException(
-                    "conditions is a mandatory param for ConditionSet entry.");
+                    "conditions is a mandatory parameter for a ConditionSet entry.");
         }
         this.conditions = Utils.unmodifiableList(conditions);
     }

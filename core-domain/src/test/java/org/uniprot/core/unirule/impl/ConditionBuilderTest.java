@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.ConditionValue;
-import org.uniprot.core.unirule.FtagConditionValue;
+import org.uniprot.core.unirule.FeatureTagConditionValue;
 
 public class ConditionBuilderTest {
 
@@ -93,7 +93,7 @@ public class ConditionBuilderTest {
         Range range = new Range(start, end);
         boolean negative = true;
         List<ConditionValue> conditionValues = ConditionValueBuilderTest.createObjects(listSize);
-        FtagConditionValue tag = FtagConditionValueBuilderTest.createObject();
+        FeatureTagConditionValue tag = FeatureTagConditionValueBuilderTest.createObject();
         ConditionBuilder builder = new ConditionBuilder(type);
         builder.type(type).range(range).negative(negative);
         builder.conditionValuesSet(conditionValues);

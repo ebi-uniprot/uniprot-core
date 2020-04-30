@@ -32,6 +32,13 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.*;
 import org.uniprot.core.xml.jaxb.unirule.*;
 
+/**
+ * @author sahmad The test has been written using reflection because all the tests for converter
+ *     would be doing the same things: 1. create uniObject of a type and call Convert's toXml method
+ *     to convert to xml and verify the fields are correctly set. 2. create xmlObject of a xml type
+ *     and call Convert's fromXml method to convert to uniObj and verify the fields are correctly
+ *     set.
+ */
 public class UniRuleConvertersTest extends AbstractConverterTest {
     /**
      * This parametrized test method tests conversion of uniObj to xmlObject. To test conversion
@@ -260,7 +267,8 @@ public class UniRuleConvertersTest extends AbstractConverterTest {
                 Arguments.of(ConditionBuilderTest.class, ConditionConverter.class),
                 Arguments.of(ConditionSetBuilderTest.class, ConditionSetConverter.class),
                 Arguments.of(ConditionValueBuilderTest.class, ConditionValueConverter.class),
-                Arguments.of(FtagConditionValueBuilderTest.class, FtagConditionConverter.class),
+                Arguments.of(
+                        FeatureTagConditionValueBuilderTest.class, FtagConditionConverter.class),
                 Arguments.of(FusionBuilderTest.class, FusionConverter.class),
                 Arguments.of(InformationBuilderTest.class, InformationConverter.class),
                 Arguments.of(RuleBuilderTest.class, MainTypeConverter.class),

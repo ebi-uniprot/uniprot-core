@@ -42,14 +42,16 @@ public class UniRuleEntryImpl implements UniRuleEntry {
             LocalDate createdDate,
             LocalDate modifiedDate) {
         if (Objects.isNull(uniRuleId)) {
-            throw new IllegalArgumentException("id is a mandatory param for UniRule entry.");
+            throw new IllegalArgumentException("id is a mandatory parameter for a UniRule entry.");
         } else if (Objects.isNull(ruleStatus)) {
-            throw new IllegalArgumentException("status is a mandatory param for UniRule entry.");
+            throw new IllegalArgumentException(
+                    "status is a mandatory parameter for a UniRule entry.");
         } else if (Objects.isNull(information)) {
             throw new IllegalArgumentException(
-                    "information is a mandatory param for UniRule entry.");
+                    "information is a mandatory parameter for a UniRule entry.");
         } else if (Objects.isNull(mainRule)) {
-            throw new IllegalArgumentException("mainRule is a mandatory param for UniRule entry.");
+            throw new IllegalArgumentException(
+                    "mainRule is a mandatory parameter for a UniRule entry.");
         }
         this.uniRuleId = uniRuleId;
         this.information = information;

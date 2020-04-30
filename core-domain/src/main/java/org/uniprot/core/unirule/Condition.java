@@ -15,5 +15,5 @@ public interface Condition extends Serializable {
 
     Range getRange();
 
-    FtagConditionValue getTag();
+    FeatureTagConditionValue getTag();
 }

@@ -29,7 +29,7 @@ public class SamFeatureSetImpl implements SamFeatureSet {
 
         if (Objects.isNull(samTrigger)) {
             throw new IllegalArgumentException(
-                    "samTrigger is a mandatory param for SamFeatureSet entry.");
+                    "samTrigger is a mandatory parameter for a SamFeatureSet entry.");
         }
 
         this.conditions = Utils.unmodifiableList(conditions);
