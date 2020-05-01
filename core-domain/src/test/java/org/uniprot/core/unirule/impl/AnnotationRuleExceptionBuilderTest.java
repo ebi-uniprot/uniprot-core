@@ -20,19 +20,19 @@ public class AnnotationRuleExceptionBuilderTest {
     @ParameterizedTest
     @NullAndEmptySource
     void testCreateObjectWithNullMandatoryParam(String category) {
-        AnnotationRuleExceptionBuilder builder = new AnnotationRuleExceptionBuilder(category);
+        RuleExceptionBuilder builder = new RuleExceptionBuilder(category);
         assertThrows(IllegalArgumentException.class, builder::build);
     }
 
     @Test
     void testUpdateNote() {
-        RuleException<Annotation> ruleException = createObject();
+        RuleException ruleException = createObject();
         String oldNote = ruleException.getNote();
-        AnnotationRuleExceptionBuilder builder = AnnotationRuleExceptionBuilder.from(ruleException);
+        RuleExceptionBuilder builder = RuleExceptionBuilder.from(ruleException);
         assertNotNull(builder);
         String newNote = "new Note";
         builder.note(newNote);
-        AnnotationRuleExceptionImpl updatedRuleException = builder.build();
+        RuleException updatedRuleException = builder.build();
         assertNotNull(updatedRuleException);
         assertNotEquals(oldNote, updatedRuleException.getNote());
         assertEquals(newNote, updatedRuleException.getNote());
@@ -43,13 +43,13 @@ public class AnnotationRuleExceptionBuilderTest {
 
     @Test
     void testUpdateCategory() {
-        RuleException<Annotation> ruleException = createObject();
+        RuleException ruleException = createObject();
         String oldCat = ruleException.getCategory();
-        AnnotationRuleExceptionBuilder builder = AnnotationRuleExceptionBuilder.from(ruleException);
+        RuleExceptionBuilder builder = RuleExceptionBuilder.from(ruleException);
         assertNotNull(builder);
         String newCat = "new Cat";
         builder.category(newCat);
-        AnnotationRuleExceptionImpl updatedRuleException = builder.build();
+        RuleException updatedRuleException = builder.build();
         assertNotNull(updatedRuleException);
         assertNotEquals(oldCat, updatedRuleException.getCategory());
         assertEquals(newCat, updatedRuleException.getCategory());
@@ -60,12 +60,12 @@ public class AnnotationRuleExceptionBuilderTest {
 
     @Test
     void testUpdateAnnotation() {
-        RuleException<Annotation> ruleException = createObject();
-        AnnotationRuleExceptionBuilder builder = AnnotationRuleExceptionBuilder.from(ruleException);
+        RuleException ruleException = createObject();
+        RuleExceptionBuilder builder = RuleExceptionBuilder.from(ruleException);
         assertNotNull(builder);
         Annotation newAnn = AnnotationBuilderTest.createObject();
         builder.annotation(newAnn);
-        AnnotationRuleExceptionImpl updatedRuleException = builder.build();
+        RuleException updatedRuleException = builder.build();
         assertNotNull(updatedRuleException);
         assertEquals(ruleException.getCategory(), updatedRuleException.getCategory());
         assertEquals(ruleException.getNote(), updatedRuleException.getNote());
@@ -75,13 +75,13 @@ public class AnnotationRuleExceptionBuilderTest {
 
     @Test
     void testAppendAccession() {
-        RuleException<Annotation> ruleException = createObject();
+        RuleException ruleException = createObject();
         List<UniProtKBAccession> oldAccessions = ruleException.getAccessions();
-        AnnotationRuleExceptionBuilder builder = AnnotationRuleExceptionBuilder.from(ruleException);
+        RuleExceptionBuilder builder = RuleExceptionBuilder.from(ruleException);
         assertNotNull(builder);
         UniProtKBAccession newAcc = UniProtKBAccessionBuilderTest.createObject();
         builder.accessionsAdd(newAcc);
-        AnnotationRuleExceptionImpl updatedRuleException = builder.build();
+        RuleException updatedRuleException = builder.build();
         assertNotNull(updatedRuleException);
         assertEquals(ruleException.getCategory(), updatedRuleException.getCategory());
         assertEquals(ruleException.getNote(), updatedRuleException.getNote());
@@ -92,12 +92,12 @@ public class AnnotationRuleExceptionBuilderTest {
 
     @Test
     void testSetAccessions() {
-        RuleException<Annotation> ruleException = createObject();
-        AnnotationRuleExceptionBuilder builder = AnnotationRuleExceptionBuilder.from(ruleException);
+        RuleException ruleException = createObject();
+        RuleExceptionBuilder builder = RuleExceptionBuilder.from(ruleException);
         assertNotNull(builder);
         List<UniProtKBAccession> newAccessions = UniProtKBAccessionBuilderTest.createObjects(4);
         builder.accessionsSet(newAccessions);
-        AnnotationRuleExceptionImpl updatedRuleException = builder.build();
+        RuleException updatedRuleException = builder.build();
         assertNotNull(updatedRuleException);
         assertEquals(ruleException.getCategory(), updatedRuleException.getCategory());
         assertEquals(ruleException.getNote(), updatedRuleException.getNote());
@@ -105,15 +105,15 @@ public class AnnotationRuleExceptionBuilderTest {
         assertEquals(newAccessions, updatedRuleException.getAccessions());
     }
 
-    public static RuleException<Annotation> createObject() {
+    public static RuleException createObject() {
         String random = UUID.randomUUID().toString();
         String note = "note-" + random;
         String cat = "cat-" + random;
         Annotation annotation = AnnotationBuilderTest.createObject();
         List<UniProtKBAccession> accessions = UniProtKBAccessionBuilderTest.createObjects(3);
-        AnnotationRuleExceptionBuilder builder = new AnnotationRuleExceptionBuilder(cat);
+        RuleExceptionBuilder builder = new RuleExceptionBuilder(cat);
         builder.note(note).annotation(annotation).accessionsSet(accessions);
-        RuleException<Annotation> ruleException = builder.build();
+        RuleException ruleException = builder.build();
         assertNotNull(ruleException);
         assertEquals(cat, ruleException.getCategory());
         assertEquals(note, ruleException.getNote());
@@ -122,7 +122,7 @@ public class AnnotationRuleExceptionBuilderTest {
         return ruleException;
     }
 
-    public static List<RuleException<Annotation>> createObjects(int count) {
+    public static List<RuleException> createObjects(int count) {
         return IntStream.range(0, count).mapToObj(i -> createObject()).collect(Collectors.toList());
     }
 }

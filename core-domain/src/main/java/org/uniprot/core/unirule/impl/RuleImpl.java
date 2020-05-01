@@ -10,13 +10,13 @@ import org.uniprot.core.unirule.Rule;
 import org.uniprot.core.unirule.RuleException;
 import org.uniprot.core.util.Utils;
 
-public class RuleImpl<R> implements Rule<R> {
+public class RuleImpl implements Rule {
     private static final long serialVersionUID = 5713754535369572219L;
     private List<ConditionSet> conditionSets;
 
     private List<Annotation> annotations;
 
-    private List<RuleException<R>> ruleExceptions;
+    private List<RuleException> ruleExceptions;
 
     RuleImpl() {
         this.conditionSets = Collections.emptyList();
@@ -27,7 +27,7 @@ public class RuleImpl<R> implements Rule<R> {
     RuleImpl(
             List<ConditionSet> conditionSets,
             List<Annotation> annotations,
-            List<RuleException<R>> ruleExceptions) {
+            List<RuleException> ruleExceptions) {
         if (Utils.nullOrEmpty(conditionSets)) {
             throw new IllegalArgumentException(
                     "conditionSets is a mandatory parameter for a Rule entry.");
@@ -48,7 +48,7 @@ public class RuleImpl<R> implements Rule<R> {
     }
 
     @Override
-    public List<RuleException<R>> getRuleExceptions() {
+    public List<RuleException> getRuleExceptions() {
         return ruleExceptions;
     }
 

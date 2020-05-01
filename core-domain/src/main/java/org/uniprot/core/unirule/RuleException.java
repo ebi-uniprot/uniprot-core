@@ -6,12 +6,12 @@ import java.util.List;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
 /** @author sahmad */
-public interface RuleException<T> extends Serializable {
+public interface RuleException extends Serializable {
     String getNote();
 
     String getCategory();
 
-    T getAnnotation(); // either Annotation or PositionalFeature
+    RuleExceptionAnnotation getAnnotation(); // either Annotation or PositionalFeature
 
     List<UniProtKBAccession> getAccessions();
 }

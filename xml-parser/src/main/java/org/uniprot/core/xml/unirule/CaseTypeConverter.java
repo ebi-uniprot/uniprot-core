@@ -32,8 +32,8 @@ public class CaseTypeConverter implements Converter<CaseType, CaseRule> {
     @Override
     public CaseRule fromXml(CaseType xmlObj) {
         if (Objects.isNull(xmlObj)) return null;
-        Rule<Annotation> mainRule = this.mainTypeConverter.fromXml(xmlObj);
-        CaseRuleBuilder<Annotation> builder = new CaseRuleBuilder<>(mainRule.getConditionSets());
+        Rule mainRule = this.mainTypeConverter.fromXml(xmlObj);
+        CaseRuleBuilder builder = new CaseRuleBuilder(mainRule.getConditionSets());
         builder.overallStatsExempted(xmlObj.isOverallStatsExempted());
         builder.annotationsSet(mainRule.getAnnotations());
         builder.ruleExceptionsSet(mainRule.getRuleExceptions());

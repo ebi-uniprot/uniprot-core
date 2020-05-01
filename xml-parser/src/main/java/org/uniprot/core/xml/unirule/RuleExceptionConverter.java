@@ -8,9 +8,8 @@ import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.PositionalFeature;
 import org.uniprot.core.unirule.RuleException;
-import org.uniprot.core.unirule.impl.AnnotationRuleExceptionBuilder;
-import org.uniprot.core.unirule.impl.AnnotationRuleExceptionImpl;
-import org.uniprot.core.unirule.impl.PositionalRuleExceptionBuilder;
+import org.uniprot.core.unirule.impl.AnnotationImpl;
+import org.uniprot.core.unirule.impl.RuleExceptionBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.AnnotationType;
 import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
@@ -38,25 +37,21 @@ public class RuleExceptionConverter implements Converter<RuleExceptionType, Rule
     public RuleException fromXml(RuleExceptionType xmlObj) {
         if (Objects.isNull(xmlObj)) return null;
 
-        String category = xmlObj.getCategory();
+        RuleExceptionBuilder builder = new RuleExceptionBuilder(xmlObj.getCategory());
+
         List<UniProtKBAccession> uniProtKBAccessionList =
                 xmlObj.getAccession().stream()
                         .map(this.accessionConverter::fromXml)
                         .collect(Collectors.toList());
         if (Objects.nonNull(xmlObj.getAnnotation())) {
-            AnnotationRuleExceptionBuilder builder = new AnnotationRuleExceptionBuilder(category);
             builder.annotation(this.annotationConverter.fromXml(xmlObj.getAnnotation()));
-            builder.accessionsSet(uniProtKBAccessionList);
-            builder.note(xmlObj.getNote());
-            return builder.build();
         } else {
-            PositionalRuleExceptionBuilder builder = new PositionalRuleExceptionBuilder(category);
             builder.annotation(
                     this.positionalFeatureConverter.fromXml(xmlObj.getPositionalFeature()));
-            builder.accessionsSet(uniProtKBAccessionList);
-            builder.note(xmlObj.getNote());
-            return builder.build();
         }
+        builder.accessionsSet(uniProtKBAccessionList);
+        builder.note(xmlObj.getNote());
+        return builder.build();
     }
 
     @Override
@@ -71,7 +66,7 @@ public class RuleExceptionConverter implements Converter<RuleExceptionType, Rule
                         .map(this.accessionConverter::toXml)
                         .collect(Collectors.toList());
         // get Annotation or positional feature
-        if (uniObj instanceof AnnotationRuleExceptionImpl) { // annotation
+        if (uniObj.getAnnotation() instanceof AnnotationImpl) { // annotation
             Annotation annotation = (Annotation) uniObj.getAnnotation();
             AnnotationType annotationType = this.annotationConverter.toXml(annotation);
             ruleExceptionType.setAnnotation(annotationType);

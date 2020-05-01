@@ -9,7 +9,7 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.unirule.CaseRule;
 import org.uniprot.core.unirule.ConditionSet;
 
-public class CaseRuleBuilder<R> extends AbstractRuleBuilder<CaseRuleBuilder<R>, CaseRule<R>, R> {
+public class CaseRuleBuilder extends AbstractRuleBuilder<CaseRuleBuilder, CaseRule> {
     private boolean overallStatsExempted;
 
     public CaseRuleBuilder(ConditionSet conditionSet) {
@@ -42,7 +42,7 @@ public class CaseRuleBuilder<R> extends AbstractRuleBuilder<CaseRuleBuilder<R>, 
 
     @Nonnull
     @Override
-    protected CaseRuleBuilder<R> getThis() {
+    protected CaseRuleBuilder getThis() {
         return this;
     }
 }

@@ -82,6 +82,7 @@ public class UniRuleJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Condition.class, ConditionImpl.class);
         mod.addAbstractTypeMapping(ConditionValue.class, ConditionValueImpl.class);
         mod.addAbstractTypeMapping(Annotation.class, AnnotationImpl.class);
+        mod.addAbstractTypeMapping(RuleException.class, RuleExceptionImpl.class);
 
         // comment
         mod.addAbstractTypeMapping(
@@ -130,12 +131,12 @@ public class UniRuleJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Flag.class, FlagImpl.class);
 
         mod.addAbstractTypeMapping(PositionalFeature.class, PositionalFeatureImpl.class);
-        mod.registerSubtypes(new NamedType(AnnotationRuleExceptionImpl.class, "annotation"));
-        mod.registerSubtypes(new NamedType(PositionalRuleExceptionImpl.class, "positional"));
         mod.addAbstractTypeMapping(CaseRule.class, CaseRuleImpl.class);
         mod.addAbstractTypeMapping(SamFeatureSet.class, SamFeatureSetImpl.class);
         mod.addAbstractTypeMapping(SamTrigger.class, SamTriggerImpl.class);
         mod.addAbstractTypeMapping(PositionFeatureSet.class, PositionFeatureSetImpl.class);
+        mod.registerSubtypes(new NamedType(AnnotationImpl.class, "annotation"));
+        mod.registerSubtypes(new NamedType(PositionalFeatureImpl.class, "positional"));
 
         mod.addAbstractTypeMapping(
                 FeatureTagConditionValue.class, FeatureTagConditionValueImpl.class);

@@ -9,7 +9,7 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.unirule.ConditionSet;
 import org.uniprot.core.unirule.Rule;
 
-public class RuleBuilder<R> extends AbstractRuleBuilder<RuleBuilder<R>, Rule<R>, R> {
+public class RuleBuilder extends AbstractRuleBuilder<RuleBuilder, Rule> {
 
     public RuleBuilder(ConditionSet conditionSet) {
         super(conditionSet);
@@ -34,7 +34,7 @@ public class RuleBuilder<R> extends AbstractRuleBuilder<RuleBuilder<R>, Rule<R>,
     }
 
     @Override
-    protected @Nonnull RuleBuilder<R> getThis() {
+    protected @Nonnull RuleBuilder getThis() {
         return this;
     }
 }

@@ -47,12 +47,12 @@ public class PositionFeatureSetImplTest {
         Annotation annotation = new AnnotationBuilder().build();
         UniProtKBAccession accession = new UniProtKBAccessionBuilder(accessionValue).build();
         List<UniProtKBAccession> accessionList = Arrays.asList(accession);
-        RuleException<Annotation> ruleException1 =
-                new AnnotationRuleExceptionImpl(note, category, annotation, accessionList);
+        RuleException ruleException1 =
+                new RuleExceptionImpl(note, category, annotation, accessionList);
         Range position1 = new Range(1, 2);
         PositionalFeature positionalFeature = new PositionalFeatureBuilder(position1).build();
-        RuleException<PositionalFeature> ruleException2 =
-                new PositionalRuleExceptionImpl(note, category, positionalFeature, accessionList);
+        RuleException ruleException2 =
+                new RuleExceptionImpl(note, category, positionalFeature, accessionList);
         List<RuleException> ruleExceptions = Arrays.asList(ruleException1, ruleException2);
 
         UniProtKBAccession uniProtKBAccession = new UniProtKBAccessionBuilder("P12345").build();

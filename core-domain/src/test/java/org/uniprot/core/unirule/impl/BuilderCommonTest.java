@@ -55,7 +55,7 @@ public class BuilderCommonTest {
                     assertTrue(((Map) fieldVal).isEmpty(), pd.getName() + " is not empty");
                 } else if (fieldVal instanceof Boolean) {
                     assertFalse((Boolean) fieldVal, pd.getName() + " is not false");
-                } else {
+                } else if (!(fieldVal instanceof RuleExceptionAnnotationType)) {
                     assertNull(fieldVal, pd.getName() + " is not null");
                 }
             }

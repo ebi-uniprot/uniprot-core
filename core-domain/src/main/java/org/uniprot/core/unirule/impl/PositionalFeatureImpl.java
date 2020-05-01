@@ -5,7 +5,8 @@ import java.util.Objects;
 import org.uniprot.core.Range;
 import org.uniprot.core.unirule.PositionalFeature;
 
-public class PositionalFeatureImpl implements PositionalFeature {
+public class PositionalFeatureImpl extends RuleExceptionAnnotationImpl
+        implements PositionalFeature {
 
     private static final long serialVersionUID = -7323690314197824278L;
     private Range position;
@@ -18,10 +19,13 @@ public class PositionalFeatureImpl implements PositionalFeature {
 
     private String type;
 
-    PositionalFeatureImpl() {}
+    PositionalFeatureImpl() {
+        super(RuleExceptionAnnotationType.POSITIONAL_FEATURE);
+    }
 
     PositionalFeatureImpl(
             Range position, String pattern, boolean inGroup, String value, String type) {
+        super(RuleExceptionAnnotationType.POSITIONAL_FEATURE);
 
         if (Objects.isNull(position)) {
             throw new IllegalArgumentException(
@@ -63,7 +67,8 @@ public class PositionalFeatureImpl implements PositionalFeature {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof PositionalFeatureImpl)) return false;
+        if (!super.equals(o)) return false;
         PositionalFeatureImpl that = (PositionalFeatureImpl) o;
         return inGroup == that.inGroup
                 && Objects.equals(position, that.position)
@@ -74,6 +79,6 @@ public class PositionalFeatureImpl implements PositionalFeature {
 
     @Override
     public int hashCode() {
-        return Objects.hash(position, pattern, inGroup, value, type);
+        return Objects.hash(super.hashCode(), position, pattern, inGroup, value, type);
     }
 }
