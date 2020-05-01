@@ -14,12 +14,12 @@ import org.uniprot.core.unirule.ConditionSet;
 import org.uniprot.core.unirule.Rule;
 import org.uniprot.core.unirule.RuleException;
 
-public abstract class AbstractRuleBuilder<S extends AbstractRuleBuilder, T extends Rule<R>, R>
+public abstract class AbstractRuleBuilder<S extends AbstractRuleBuilder, T extends Rule>
         implements Builder<T> {
 
     protected List<ConditionSet> conditionSets;
     protected List<Annotation> annotations = new ArrayList<>();
-    protected List<RuleException<R>> ruleExceptions = new ArrayList<>();
+    protected List<RuleException> ruleExceptions = new ArrayList<>();
 
     public AbstractRuleBuilder(ConditionSet conditionSet) {
         this.conditionSets = new ArrayList<>();
@@ -50,12 +50,12 @@ public abstract class AbstractRuleBuilder<S extends AbstractRuleBuilder, T exten
         return getThis();
     }
 
-    public @Nonnull S ruleExceptionsAdd(RuleException<R> ruleExeption) {
+    public @Nonnull S ruleExceptionsAdd(RuleException ruleExeption) {
         addOrIgnoreNull(ruleExeption, this.ruleExceptions);
         return getThis();
     }
 
-    public @Nonnull S ruleExceptionsSet(List<RuleException<R>> ruleExceptions) {
+    public @Nonnull S ruleExceptionsSet(List<RuleException> ruleExceptions) {
         this.ruleExceptions = modifiableList(ruleExceptions);
         return getThis();
     }

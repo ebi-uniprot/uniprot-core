@@ -4,11 +4,11 @@ import static org.uniprot.core.util.Utils.nullThrowIllegalArgument;
 
 import javax.annotation.Nonnull;
 
-import org.uniprot.core.Builder;
 import org.uniprot.core.Range;
 import org.uniprot.core.unirule.PositionalFeature;
+import org.uniprot.core.unirule.RuleExceptionAnnotationBuilder;
 
-public class PositionalFeatureBuilder implements Builder<PositionalFeature> {
+public class PositionalFeatureBuilder implements RuleExceptionAnnotationBuilder<PositionalFeature> {
     private Range position;
 
     private String pattern;

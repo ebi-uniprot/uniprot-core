@@ -2,16 +2,16 @@ package org.uniprot.core.unirule.impl;
 
 import javax.annotation.Nonnull;
 
-import org.uniprot.core.Builder;
 import org.uniprot.core.gene.Gene;
 import org.uniprot.core.uniprotkb.Keyword;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.unirule.Annotation;
+import org.uniprot.core.unirule.RuleExceptionAnnotationBuilder;
 import org.uniprot.core.util.Utils;
 
-public class AnnotationBuilder implements Builder<Annotation> {
+public class AnnotationBuilder implements RuleExceptionAnnotationBuilder<Annotation> {
 
     private Comment comment;
 

@@ -69,7 +69,7 @@ public class CaseRuleBuilderTest {
         CaseRule object = createObject();
         CaseRuleBuilder builder = CaseRuleBuilder.from(object);
         // append one item to the list
-        RuleException<Annotation> ruleException = AnnotationRuleExceptionImplTest.createObject();
+        RuleException ruleException = AnnotationRuleExceptionImplTest.createObject();
         builder.ruleExceptionsAdd(ruleException);
         CaseRule updatedObject = builder.build();
         assertNotNull(updatedObject);
@@ -110,7 +110,7 @@ public class CaseRuleBuilderTest {
         conditionSetList.add(ConditionSetBuilderTest.createObject());
         CaseRuleBuilder builder = new CaseRuleBuilder(conditionSetList);
         // add one item to the empty list
-        RuleException<Annotation> ruleException = AnnotationRuleExceptionImplTest.createObject();
+        RuleException ruleException = AnnotationRuleExceptionImplTest.createObject();
         builder.ruleExceptionsAdd(ruleException);
         CaseRule object = builder.build();
         assertNotNull(object);
@@ -120,9 +120,9 @@ public class CaseRuleBuilderTest {
     public static CaseRule createObject(int listSize) {
         List<ConditionSet> conditionSets = ConditionSetBuilderTest.createObjects(listSize);
         List<Annotation> annotations = AnnotationBuilderTest.createObjects(listSize);
-        List<RuleException<Annotation>> ruleExceptions =
+        List<RuleException> ruleExceptions =
                 AnnotationRuleExceptionImplTest.createObjects(listSize);
-        CaseRuleBuilder<Annotation> builder = new CaseRuleBuilder<>(conditionSets);
+        CaseRuleBuilder builder = new CaseRuleBuilder(conditionSets);
         builder.annotationsSet(annotations);
         builder.ruleExceptionsSet(ruleExceptions);
         boolean exempted = true;

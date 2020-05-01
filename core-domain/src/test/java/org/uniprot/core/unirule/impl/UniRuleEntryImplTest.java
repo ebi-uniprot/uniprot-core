@@ -53,18 +53,18 @@ public class UniRuleEntryImplTest {
         List<UniProtKBAccession> accessionList = Arrays.asList(accession);
         Range position = new Range(1, 2);
         PositionalFeature positionalFeature = new PositionalFeatureBuilder(position).build();
-        RuleException<PositionalFeature> ruleException2 =
-                new PositionalRuleExceptionImpl(note, category, positionalFeature, accessionList);
-        List<RuleException<PositionalFeature>> ruleExceptions = new ArrayList<>();
+        RuleException ruleException2 =
+                new RuleExceptionImpl(note, category, positionalFeature, accessionList);
+        List<RuleException> ruleExceptions = new ArrayList<>();
         ruleExceptions.add(ruleException2);
 
         Rule mainRule =
-                new RuleBuilder<PositionalFeature>(conditionSets)
+                new RuleBuilder(conditionSets)
                         .annotationsSet(annotations)
                         .ruleExceptionsSet(ruleExceptions)
                         .build();
 
-        CaseRuleBuilder<PositionalFeature> caseRuleBuilder = new CaseRuleBuilder<>(conditionSets);
+        CaseRuleBuilder caseRuleBuilder = new CaseRuleBuilder(conditionSets);
         caseRuleBuilder.annotationsSet(annotations).ruleExceptionsSet(ruleExceptions);
 
         CaseRule caseRule = caseRuleBuilder.build();

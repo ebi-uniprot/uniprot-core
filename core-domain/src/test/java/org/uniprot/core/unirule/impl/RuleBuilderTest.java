@@ -55,7 +55,7 @@ public class RuleBuilderTest {
         Rule object = createObject();
         RuleBuilder builder = RuleBuilder.from(object);
         // append one item to the list
-        RuleException<Annotation> ruleException = AnnotationRuleExceptionImplTest.createObject();
+        RuleException ruleException = AnnotationRuleExceptionImplTest.createObject();
         builder.ruleExceptionsAdd(ruleException);
         Rule updatedObject = builder.build();
         assertNotNull(updatedObject);
@@ -96,19 +96,31 @@ public class RuleBuilderTest {
         csList.add(ConditionSetBuilderTest.createObject());
         RuleBuilder builder = new RuleBuilder(csList);
         // add one item to the empty list
-        RuleException<Annotation> ruleException = AnnotationRuleExceptionImplTest.createObject();
+        RuleException ruleException = AnnotationRuleExceptionImplTest.createObject();
         builder.ruleExceptionsAdd(ruleException);
         Rule object = builder.build();
         assertNotNull(object);
         assertEquals(Arrays.asList(ruleException), object.getRuleExceptions());
     }
 
+    @Test
+    void testSetConditionSetList() {
+        List<ConditionSet> csList = new ArrayList<>();
+        csList.add(ConditionSetBuilderTest.createObject());
+        RuleBuilder builder = new RuleBuilder(csList);
+        List<ConditionSet> conditionSets = ConditionSetBuilderTest.createObjects(2);
+        builder.conditionSetsSet(conditionSets);
+        Rule object = builder.build();
+        assertNotNull(object);
+        assertEquals(conditionSets, object.getConditionSets());
+    }
+
     public static Rule createObject(int listSize) {
         List<ConditionSet> conditionSets = ConditionSetBuilderTest.createObjects(listSize);
         List<Annotation> annotations = AnnotationBuilderTest.createObjects(listSize);
-        List<RuleException<PositionalFeature>> ruleExceptions =
+        List<RuleException> ruleExceptions =
                 PositionalRuleExceptionImplTest.createObjects(listSize);
-        RuleBuilder<PositionalFeature> builder = new RuleBuilder<>(conditionSets);
+        RuleBuilder builder = new RuleBuilder(conditionSets);
         builder.annotationsSet(annotations);
         builder.ruleExceptionsSet(ruleExceptions);
         Rule rule = builder.build();

@@ -71,6 +71,17 @@ public class SamFeatureSetBuilderTest {
         assertEquals(Arrays.asList(annotation), samFeatureSet.getAnnotations());
     }
 
+    @Test
+    void testUpdateSameTrigger() {
+        SamFeatureSetBuilder builder =
+                new SamFeatureSetBuilder(SamTriggerBuilderTest.createObject());
+        SamTrigger st = SamTriggerBuilderTest.createObject();
+        builder.samTrigger(st);
+        SamFeatureSet samFeatureSet = builder.build();
+        assertNotNull(samFeatureSet);
+        assertEquals(st, samFeatureSet.getSamTrigger());
+    }
+
     public static SamFeatureSet createObject(int listSize) {
         List<Condition> conditions = ConditionBuilderTest.createObjects(listSize);
         List<Annotation> annotations = AnnotationBuilderTest.createObjects(listSize);

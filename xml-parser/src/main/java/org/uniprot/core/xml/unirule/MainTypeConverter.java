@@ -57,7 +57,7 @@ public class MainTypeConverter implements Converter<MainType, Rule> {
                             .collect(Collectors.toList());
         }
 
-        RuleBuilder ruleBuilder = new RuleBuilder<>(conditionSets);
+        RuleBuilder ruleBuilder = new RuleBuilder(conditionSets);
         ruleBuilder.annotationsSet(annotations);
         ruleBuilder.ruleExceptionsSet(ruleExceptions);
 
@@ -73,7 +73,6 @@ public class MainTypeConverter implements Converter<MainType, Rule> {
         List<Annotation> annotations = uniObj.getAnnotations();
         List<AnnotationType> annotationTypes =
                 annotations.stream()
-                        .filter(annotation -> annotation instanceof Annotation)
                         .map(this.annotationConverter::toXml)
                         .collect(Collectors.toList());
         annotationsType.getAnnotation().addAll(annotationTypes);

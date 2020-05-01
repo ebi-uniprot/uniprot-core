@@ -9,10 +9,24 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
 import org.uniprot.core.unirule.PositionalFeature;
 
 public class PositionalFeatureBuilderTest {
+
+    @Test
+    void testCreateUpdateObject() {
+        PositionalFeature pf = createObject();
+        assertNotNull(pf);
+        PositionalFeatureBuilder builder = PositionalFeatureBuilder.from(pf);
+        Range newPos = new Range(0, 1);
+        builder.position(newPos);
+        PositionalFeature newPf = builder.build();
+        assertNotNull(newPf);
+        assertEquals(newPos, newPf.getPosition());
+    }
+
     public static PositionalFeature createObject(int listSize) {
         String random = UUID.randomUUID().toString();
         String pattern = "pattern-" + random;

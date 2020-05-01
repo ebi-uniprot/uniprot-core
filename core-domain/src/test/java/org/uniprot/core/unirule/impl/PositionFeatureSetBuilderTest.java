@@ -102,7 +102,7 @@ public class PositionFeatureSetBuilderTest {
     void testCreateObjectWithOneRuleException() {
         PositionalFeature positionalFeature = PositionalFeatureBuilderTest.createObject();
         PositionFeatureSetBuilder builder = new PositionFeatureSetBuilder(positionalFeature);
-        RuleException<PositionalFeature> ruleExc = PositionalRuleExceptionImplTest.createObject();
+        RuleException ruleExc = PositionalRuleExceptionImplTest.createObject();
         builder.ruleExceptionsAdd(ruleExc);
         PositionFeatureSet positionFeatureSet = builder.build();
         assertNotNull(positionFeatureSet);
@@ -117,13 +117,12 @@ public class PositionFeatureSetBuilderTest {
         List<Annotation> annotations = AnnotationBuilderTest.createObjects(listSize);
         List<PositionalFeature> positionalFeatures =
                 PositionalFeatureBuilderTest.createObjects(listSize);
-        List<RuleException<Annotation>> ruleExceptions =
+        List<RuleException> ruleExceptions =
                 AnnotationRuleExceptionImplTest.createObjects(listSize);
         UniProtKBAccession uniProtKBAccession =
                 UniProtKBAccessionBuilderTest.createObject(listSize);
 
-        PositionFeatureSetBuilder<Annotation> builder =
-                new PositionFeatureSetBuilder<>(positionalFeatures);
+        PositionFeatureSetBuilder builder = new PositionFeatureSetBuilder(positionalFeatures);
         builder.alignmentSignature(alignmentSignature).tag(tag);
         builder.conditionsSet(conditions).annotationsSet(annotations);
         builder.ruleExceptionsSet(ruleExceptions);

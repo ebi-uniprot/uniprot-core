@@ -9,7 +9,7 @@ import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.unirule.Annotation;
 
-public class AnnotationImpl implements Annotation {
+public class AnnotationImpl extends RuleExceptionAnnotationImpl implements Annotation {
 
     private static final long serialVersionUID = -6246517843536310659L;
     private Comment comment;
@@ -22,7 +22,9 @@ public class AnnotationImpl implements Annotation {
 
     private ProteinDescription proteinDescription;
 
-    AnnotationImpl() {}
+    AnnotationImpl() {
+        super(RuleExceptionAnnotationType.ANNOTATION);
+    }
 
     AnnotationImpl(
             Comment comment,
@@ -30,6 +32,7 @@ public class AnnotationImpl implements Annotation {
             Gene gene,
             UniProtKBCrossReference dbReference,
             ProteinDescription proteinDescription) {
+        super(RuleExceptionAnnotationType.ANNOTATION);
         this.comment = comment;
         this.keyword = keyword;
         this.gene = gene;
@@ -64,7 +67,8 @@ public class AnnotationImpl implements Annotation {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof AnnotationImpl)) return false;
+        if (!super.equals(o)) return false;
         AnnotationImpl that = (AnnotationImpl) o;
         return Objects.equals(comment, that.comment)
                 && Objects.equals(keyword, that.keyword)
@@ -75,6 +79,7 @@ public class AnnotationImpl implements Annotation {
 
     @Override
     public int hashCode() {
-        return Objects.hash(comment, keyword, gene, dbReference, proteinDescription);
+        return Objects.hash(
+                super.hashCode(), comment, keyword, gene, dbReference, proteinDescription);
     }
 }

@@ -193,7 +193,7 @@ public class UniRuleEntryBuilderTest {
                         RuleStatus.APPLY,
                         information,
                         mainRule);
-        CaseRule<Annotation> caseRule = CaseRuleBuilderTest.createObject();
+        CaseRule caseRule = CaseRuleBuilderTest.createObject();
         builder.otherRulesAdd(caseRule);
         UniRuleEntry uniRuleEntry = builder.build();
         assertNotNull(uniRuleEntry);
@@ -232,6 +232,34 @@ public class UniRuleEntryBuilderTest {
         UniRuleEntry uniRuleEntry = builder.build();
         assertNotNull(uniRuleEntry);
         assertEquals(Arrays.asList(positionFeature), uniRuleEntry.getPositionFeatureSets());
+    }
+
+    @Test
+    void testCreateObjectUpdateMainRule() {
+        UniRuleEntry entry = createObject();
+        assertNotNull(entry);
+        UniRuleEntryBuilder builder = UniRuleEntryBuilder.from(entry);
+        // update main rule
+        Rule rule = RuleBuilderTest.createObject();
+        builder.mainRule(rule);
+        UniRuleEntry updatedEntry = builder.build();
+        assertNotNull(updatedEntry);
+        assertEquals(rule, updatedEntry.getMainRule());
+        assertNotSame(entry.getMainRule(), updatedEntry.getMainRule());
+    }
+
+    @Test
+    void testCreateObjectUpdateInformation() {
+        UniRuleEntry entry = createObject();
+        assertNotNull(entry);
+        UniRuleEntryBuilder builder = UniRuleEntryBuilder.from(entry);
+        // update information
+        Information info = InformationBuilderTest.createObject();
+        builder.information(info);
+        UniRuleEntry updatedEntry = builder.build();
+        assertNotNull(updatedEntry);
+        assertEquals(info, updatedEntry.getInformation());
+        assertNotSame(entry.getInformation(), updatedEntry.getInformation());
     }
 
     public static UniRuleEntry createObject(int listSize) {
