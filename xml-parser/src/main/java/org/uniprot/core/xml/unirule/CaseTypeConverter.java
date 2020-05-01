@@ -1,15 +1,17 @@
 package org.uniprot.core.xml.unirule;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.unirule.*;
 import org.uniprot.core.unirule.impl.CaseRuleBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.*;
 
-public class CaseTypeConverter implements Converter<CaseType, CaseRule> {
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+import static org.uniprot.core.xml.unirule.UniRuleConverterHelper.findRuleExceptionAnnotationType;
+
+public class CaseTypeConverter implements Converter<CaseType, CaseRule<? extends RuleExceptionAnnotationType>> {
 
     private final ObjectFactory objectFactory;
     private final MainTypeConverter mainTypeConverter;
@@ -30,18 +32,29 @@ public class CaseTypeConverter implements Converter<CaseType, CaseRule> {
     }
 
     @Override
-    public CaseRule fromXml(CaseType xmlObj) {
+    public CaseRule<? extends RuleExceptionAnnotationType> fromXml(CaseType xmlObj) {
         if (Objects.isNull(xmlObj)) return null;
-        Rule<Annotation> mainRule = this.mainTypeConverter.fromXml(xmlObj);
-        CaseRuleBuilder<Annotation> builder = new CaseRuleBuilder<>(mainRule.getConditionSets());
-        builder.overallStatsExempted(xmlObj.isOverallStatsExempted());
-        builder.annotationsSet(mainRule.getAnnotations());
-        builder.ruleExceptionsSet(mainRule.getRuleExceptions());
-        return builder.build();
+        // derive the type of annotation set in ruleexception, either annotation or positional feature
+        UniRuleConverterHelper.REAnnotationEnumType reAnnotationEnumType = findRuleExceptionAnnotationType(xmlObj.getRuleExceptions());
+        if (reAnnotationEnumType == UniRuleConverterHelper.REAnnotationEnumType.ANNOTATION) {
+            Rule<Annotation> mainRule = (Rule<Annotation>) this.mainTypeConverter.fromXml(xmlObj);
+            CaseRuleBuilder<Annotation> builder = new CaseRuleBuilder<>(mainRule.getConditionSets());
+            builder.overallStatsExempted(xmlObj.isOverallStatsExempted());
+            builder.annotationsSet(mainRule.getAnnotations());
+            builder.ruleExceptionsSet(mainRule.getRuleExceptions());
+            return builder.build();
+        } else {
+            Rule<PositionalFeature> mainRule = (Rule<PositionalFeature>) this.mainTypeConverter.fromXml(xmlObj);
+            CaseRuleBuilder<PositionalFeature> builder = new CaseRuleBuilder<>(mainRule.getConditionSets());
+            builder.overallStatsExempted(xmlObj.isOverallStatsExempted());
+            builder.annotationsSet(mainRule.getAnnotations());
+            builder.ruleExceptionsSet(mainRule.getRuleExceptions());
+            return builder.build();
+        }
     }
 
     @Override
-    public CaseType toXml(CaseRule uniObj) {
+    public CaseType toXml(CaseRule<? extends RuleExceptionAnnotationType> uniObj) {
         if (Objects.isNull(uniObj)) return null;
 
         CaseType caseType = this.objectFactory.createCaseType();
@@ -67,7 +80,7 @@ public class CaseTypeConverter implements Converter<CaseType, CaseRule> {
         mainTypeConditionSets.getConditionSet().addAll(conditionSetTypes);
         caseType.setConditionSets(mainTypeConditionSets);
 
-        List<RuleException> ruleExceptions = uniObj.getRuleExceptions();
+        List<? extends RuleException<? extends RuleExceptionAnnotationType>> ruleExceptions = uniObj.getRuleExceptions();
         List<RuleExceptionType> ruleExceptionTypes =
                 ruleExceptions.stream()
                         .map(this.ruleExceptionConverter::toXml)

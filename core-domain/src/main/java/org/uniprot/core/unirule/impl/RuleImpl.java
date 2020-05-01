@@ -4,13 +4,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import org.uniprot.core.unirule.Annotation;
-import org.uniprot.core.unirule.ConditionSet;
-import org.uniprot.core.unirule.Rule;
-import org.uniprot.core.unirule.RuleException;
+import org.uniprot.core.unirule.*;
 import org.uniprot.core.util.Utils;
 
-public class RuleImpl<R> implements Rule<R> {
+public class RuleImpl<R extends RuleExceptionAnnotationType> implements Rule<R> {
     private static final long serialVersionUID = 5713754535369572219L;
     private List<ConditionSet> conditionSets;
 

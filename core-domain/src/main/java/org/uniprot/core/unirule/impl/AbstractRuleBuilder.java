@@ -9,12 +9,9 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.unirule.Annotation;
-import org.uniprot.core.unirule.ConditionSet;
-import org.uniprot.core.unirule.Rule;
-import org.uniprot.core.unirule.RuleException;
+import org.uniprot.core.unirule.*;
 
-public abstract class AbstractRuleBuilder<S extends AbstractRuleBuilder, T extends Rule<R>, R>
+public abstract class AbstractRuleBuilder<S extends AbstractRuleBuilder, T extends Rule<R>, R extends RuleExceptionAnnotationType>
         implements Builder<T> {
 
     protected List<ConditionSet> conditionSets;
@@ -50,8 +47,8 @@ public abstract class AbstractRuleBuilder<S extends AbstractRuleBuilder, T exten
         return getThis();
     }
 
-    public @Nonnull S ruleExceptionsAdd(RuleException<R> ruleExeption) {
-        addOrIgnoreNull(ruleExeption, this.ruleExceptions);
+    public @Nonnull S ruleExceptionsAdd(RuleException<R> ruleException) {
+        addOrIgnoreNull(ruleException, this.ruleExceptions);
         return getThis();
     }
 

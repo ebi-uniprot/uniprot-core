@@ -1,16 +1,18 @@
 package org.uniprot.core.xml.unirule;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.unirule.*;
 import org.uniprot.core.unirule.impl.PositionFeatureSetBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.*;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+import static org.uniprot.core.xml.unirule.UniRuleConverterHelper.findRuleExceptionAnnotationType;
+
 public class PositionalFeatureSetConverter
-        implements Converter<PositionalFeatureSetType, PositionFeatureSet> {
+        implements Converter<PositionalFeatureSetType, PositionFeatureSet<? extends RuleExceptionAnnotationType>> {
 
     private final ObjectFactory objectFactory;
     private final PositionalFeatureConverter positionalFeatureConverter;
@@ -33,7 +35,7 @@ public class PositionalFeatureSetConverter
     }
 
     @Override
-    public PositionFeatureSet fromXml(PositionalFeatureSetType xmlObj) {
+    public PositionFeatureSet<? extends RuleExceptionAnnotationType> fromXml(PositionalFeatureSetType xmlObj) {
         if (Objects.isNull(xmlObj)) return null;
 
         List<PositionalFeature> positionalFeatures =
@@ -41,41 +43,44 @@ public class PositionalFeatureSetConverter
                         .map(this.positionalFeatureConverter::fromXml)
                         .collect(Collectors.toList());
 
-        PositionFeatureSetBuilder builder = new PositionFeatureSetBuilder(positionalFeatures);
+        // derive the type of annotation set in ruleexception, either annotation or positional feature
+        UniRuleConverterHelper.REAnnotationEnumType reAnnotationEnumType = findRuleExceptionAnnotationType(xmlObj.getRuleExceptions());
+        List<RuleException<Annotation>> annotationRuleExceptions = null;
+        List<RuleException<PositionalFeature>> positionalFeatureRuleExceptions = null;
 
-        if (Objects.nonNull(xmlObj.getConditionSet())) {
-            List<Condition> conditions =
-                    xmlObj.getConditionSet().getCondition().stream()
-                            .map(this.conditionConverter::fromXml)
-                            .collect(Collectors.toList());
-            builder.conditionsSet(conditions);
+        if (Objects.nonNull(xmlObj.getRuleExceptions())) {// set either Annotation
+            List<RuleExceptionType> ruleExceptionsTypes =
+                    xmlObj.getRuleExceptions().getRuleException();
+            if (reAnnotationEnumType == UniRuleConverterHelper.REAnnotationEnumType.ANNOTATION) {
+                annotationRuleExceptions = ruleExceptionsTypes.stream()
+                        .map(this.ruleExceptionConverter::fromXml)
+                        .map(re -> (RuleException<Annotation>) re)
+                        .collect(Collectors.toList());
+
+            } else {// or PositionalFeature
+                positionalFeatureRuleExceptions = ruleExceptionsTypes.stream()
+                        .map(this.ruleExceptionConverter::fromXml)
+                        .map(re -> (RuleException<PositionalFeature>) re)
+                        .collect(Collectors.toList());
+            }
         }
-
-        if (Objects.nonNull(xmlObj.getAnnotations())) {
-            List<Annotation> annotations =
-                    xmlObj.getAnnotations().getAnnotation().stream()
-                            .map(this.annotationConverter::fromXml)
-                            .collect(Collectors.toList());
-            builder.annotationsSet(annotations);
+        if (reAnnotationEnumType == UniRuleConverterHelper.REAnnotationEnumType.ANNOTATION) {
+            PositionFeatureSetBuilder<Annotation> builder = new PositionFeatureSetBuilder<>(positionalFeatures);
+            builder.ruleExceptionsSet(annotationRuleExceptions);
+            populateBuilder(xmlObj, builder);
+            return builder.build();
+        } else {
+            PositionFeatureSetBuilder<PositionalFeature> builder = new PositionFeatureSetBuilder<>(positionalFeatures);
+            builder.uniProtKBAccession(this.accessionConverter.fromXml(xmlObj.getTemplate()));
+            builder.ruleExceptionsSet(positionalFeatureRuleExceptions);
+            populateBuilder(xmlObj, builder);
+            return builder.build();
         }
-
-        if (Objects.nonNull(xmlObj.getRuleExceptions())) {
-            List<RuleException> ruleExceptions =
-                    xmlObj.getRuleExceptions().getRuleException().stream()
-                            .map(this.ruleExceptionConverter::fromXml)
-                            .collect(Collectors.toList());
-            builder.ruleExceptionsSet(ruleExceptions);
-        }
-
-        builder.uniProtKBAccession(this.accessionConverter.fromXml(xmlObj.getTemplate()));
-        builder.alignmentSignature(xmlObj.getAlignmentSignature());
-        builder.tag(xmlObj.getTag());
-
-        return builder.build();
     }
 
+
     @Override
-    public PositionalFeatureSetType toXml(PositionFeatureSet uniObj) {
+    public PositionalFeatureSetType toXml(PositionFeatureSet<? extends RuleExceptionAnnotationType> uniObj) {
         if (Objects.isNull(uniObj)) return null;
 
         PositionalFeatureSetType positionalFeatureSetType =
@@ -111,7 +116,7 @@ public class PositionalFeatureSetConverter
         positionalFeatureSetType.getPositionalFeature().addAll(positionalFeatureTypes);
 
         RuleExceptionsType ruleExceptionsType = this.objectFactory.createRuleExceptionsType();
-        List<RuleException> ruleExceptions = uniObj.getRuleExceptions();
+        List<? extends RuleException<? extends RuleExceptionAnnotationType>> ruleExceptions = uniObj.getRuleExceptions();
         ruleExceptionsType
                 .getRuleException()
                 .addAll(
@@ -122,4 +127,38 @@ public class PositionalFeatureSetConverter
 
         return positionalFeatureSetType;
     }
+
+    private void populateBuilder(PositionalFeatureSetType xmlObj, PositionFeatureSetBuilder<? extends RuleExceptionAnnotationType> builder) {
+        builder.uniProtKBAccession(this.accessionConverter.fromXml(xmlObj.getTemplate()));
+        builder.alignmentSignature(xmlObj.getAlignmentSignature());
+        builder.tag(xmlObj.getTag());
+        builder.annotationsSet(getAnnotations(xmlObj));
+        builder.conditionsSet(getConditions(xmlObj));
+    }
+
+
+    private List<Annotation> getAnnotations(PositionalFeatureSetType xmlObj) {
+        List<Annotation> annotations = null;
+        if (Objects.nonNull(xmlObj.getAnnotations())) {
+            annotations =
+                    xmlObj.getAnnotations().getAnnotation().stream()
+                            .map(this.annotationConverter::fromXml)
+                            .collect(Collectors.toList());
+        }
+        return annotations;
+    }
+
+    private List<Condition> getConditions(PositionalFeatureSetType xmlObj) {
+        List<Condition> conditions = null;
+        if (Objects.nonNull(xmlObj.getConditionSet())) {
+            conditions =
+                    xmlObj.getConditionSet().getCondition().stream()
+                            .map(this.conditionConverter::fromXml)
+                            .collect(Collectors.toList());
+        }
+
+        return conditions;
+    }
+
+
 }

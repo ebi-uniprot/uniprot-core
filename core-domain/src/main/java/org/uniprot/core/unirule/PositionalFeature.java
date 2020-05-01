@@ -1,11 +1,9 @@
 package org.uniprot.core.unirule;
 
-import java.io.Serializable;
-
 import org.uniprot.core.Range;
 
 /** @author sahmad */
-public interface PositionalFeature extends Serializable {
+public interface PositionalFeature extends RuleExceptionAnnotationType {
     Range getPosition();
 
     String getPattern();

@@ -11,7 +11,7 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.unirule.*;
 
-public class PositionFeatureSetBuilder<T> implements Builder<PositionFeatureSet> {
+public class PositionFeatureSetBuilder<T extends RuleExceptionAnnotationType> implements Builder<PositionFeatureSet> {
 
     private List<Condition> conditions = new ArrayList<>();
 
@@ -36,50 +36,50 @@ public class PositionFeatureSetBuilder<T> implements Builder<PositionFeatureSet>
         this.positionalFeatures = modifiableList(positionalFeatures);
     }
 
-    public @Nonnull PositionFeatureSetBuilder conditionsAdd(Condition condition) {
+    public @Nonnull PositionFeatureSetBuilder<T> conditionsAdd(Condition condition) {
         addOrIgnoreNull(condition, this.conditions);
         return this;
     }
 
-    public @Nonnull PositionFeatureSetBuilder conditionsSet(List<Condition> conditions) {
+    public @Nonnull PositionFeatureSetBuilder<T> conditionsSet(List<Condition> conditions) {
         this.conditions = modifiableList(conditions);
         return this;
     }
 
-    public @Nonnull PositionFeatureSetBuilder annotationsAdd(Annotation annotation) {
+    public @Nonnull PositionFeatureSetBuilder<T> annotationsAdd(Annotation annotation) {
         addOrIgnoreNull(annotation, this.annotations);
         return this;
     }
 
-    public @Nonnull PositionFeatureSetBuilder annotationsSet(List<Annotation> annotations) {
+    public @Nonnull PositionFeatureSetBuilder<T> annotationsSet(List<Annotation> annotations) {
         this.annotations = modifiableList(annotations);
         return this;
     }
 
-    public @Nonnull PositionFeatureSetBuilder positionalFeaturesAdd(
+    public @Nonnull PositionFeatureSetBuilder<T> positionalFeaturesAdd(
             PositionalFeature positionalFeature) {
         addOrIgnoreNull(positionalFeature, this.positionalFeatures);
         return this;
     }
 
-    public @Nonnull PositionFeatureSetBuilder positionalFeaturesSet(
+    public @Nonnull PositionFeatureSetBuilder<T> positionalFeaturesSet(
             List<PositionalFeature> positionalFeatures) {
         this.positionalFeatures = modifiableList(positionalFeatures);
         return this;
     }
 
-    public @Nonnull PositionFeatureSetBuilder ruleExceptionsAdd(RuleException ruleException) {
+    public @Nonnull PositionFeatureSetBuilder<T> ruleExceptionsAdd(RuleException ruleException) {
         addOrIgnoreNull(ruleException, this.ruleExceptions);
         return this;
     }
 
-    public @Nonnull PositionFeatureSetBuilder ruleExceptionsSet(
+    public @Nonnull PositionFeatureSetBuilder<T> ruleExceptionsSet(
             List<RuleException<T>> ruleExceptions) {
         this.ruleExceptions = modifiableList(ruleExceptions);
         return this;
     }
 
-    public @Nonnull PositionFeatureSetBuilder uniProtKBAccession(
+    public @Nonnull PositionFeatureSetBuilder<T> uniProtKBAccession(
             UniProtKBAccession uniProtKBAccession) {
         this.uniProtKBAccession = uniProtKBAccession;
         return this;

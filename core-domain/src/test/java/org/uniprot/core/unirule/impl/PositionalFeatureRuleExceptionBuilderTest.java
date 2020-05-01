@@ -15,12 +15,12 @@ import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilderTest;
 import org.uniprot.core.unirule.PositionalFeature;
 import org.uniprot.core.unirule.RuleException;
 
-public class PositionalRuleExceptionBuilderTest {
+public class PositionalFeatureRuleExceptionBuilderTest {
 
     @ParameterizedTest
     @NullAndEmptySource
     void testCreateObjectWithNullMandatoryParam(String category) {
-        PositionalRuleExceptionBuilder builder = new PositionalRuleExceptionBuilder(category);
+        RuleExceptionBuilder<PositionalFeature>builder = new RuleExceptionBuilder<>(category);
         assertThrows(IllegalArgumentException.class, builder::build);
     }
 
@@ -28,11 +28,11 @@ public class PositionalRuleExceptionBuilderTest {
     void testUpdateNote() {
         RuleException<PositionalFeature> ruleException = createObject();
         String oldNote = ruleException.getNote();
-        PositionalRuleExceptionBuilder builder = PositionalRuleExceptionBuilder.from(ruleException);
+        RuleExceptionBuilder<PositionalFeature>builder = RuleExceptionBuilder.from(ruleException);
         assertNotNull(builder);
         String newNote = "new Note";
         builder.note(newNote);
-        PositionalRuleExceptionImpl updatedRuleException = builder.build();
+        RuleException<PositionalFeature> updatedRuleException = builder.build();
         assertNotNull(updatedRuleException);
         assertNotEquals(oldNote, updatedRuleException.getNote());
         assertEquals(newNote, updatedRuleException.getNote());
@@ -45,11 +45,11 @@ public class PositionalRuleExceptionBuilderTest {
     void testUpdateCategory() {
         RuleException<PositionalFeature> ruleException = createObject();
         String oldCat = ruleException.getCategory();
-        PositionalRuleExceptionBuilder builder = PositionalRuleExceptionBuilder.from(ruleException);
+        RuleExceptionBuilder<PositionalFeature>builder = RuleExceptionBuilder.from(ruleException);
         assertNotNull(builder);
         String newCat = "new Cat";
         builder.category(newCat);
-        PositionalRuleExceptionImpl updatedRuleException = builder.build();
+        RuleException<PositionalFeature> updatedRuleException = builder.build();
         assertNotNull(updatedRuleException);
         assertNotEquals(oldCat, updatedRuleException.getCategory());
         assertEquals(newCat, updatedRuleException.getCategory());
@@ -61,11 +61,11 @@ public class PositionalRuleExceptionBuilderTest {
     @Test
     void testUpdateAnnotation() {
         RuleException<PositionalFeature> ruleException = createObject();
-        PositionalRuleExceptionBuilder builder = PositionalRuleExceptionBuilder.from(ruleException);
+        RuleExceptionBuilder<PositionalFeature>builder = RuleExceptionBuilder.from(ruleException);
         assertNotNull(builder);
         PositionalFeature newAnn = PositionalFeatureBuilderTest.createObject();
         builder.annotation(newAnn);
-        PositionalRuleExceptionImpl updatedRuleException = builder.build();
+        RuleException<PositionalFeature> updatedRuleException = builder.build();
         assertNotNull(updatedRuleException);
         assertEquals(ruleException.getCategory(), updatedRuleException.getCategory());
         assertEquals(ruleException.getNote(), updatedRuleException.getNote());
@@ -77,11 +77,11 @@ public class PositionalRuleExceptionBuilderTest {
     void testAppendAccession() {
         RuleException<PositionalFeature> ruleException = createObject();
         List<UniProtKBAccession> oldAccessions = ruleException.getAccessions();
-        PositionalRuleExceptionBuilder builder = PositionalRuleExceptionBuilder.from(ruleException);
+        RuleExceptionBuilder<PositionalFeature>builder = RuleExceptionBuilder.from(ruleException);
         assertNotNull(builder);
         UniProtKBAccession newAcc = UniProtKBAccessionBuilderTest.createObject();
         builder.accessionsAdd(newAcc);
-        PositionalRuleExceptionImpl updatedRuleException = builder.build();
+        RuleException<PositionalFeature> updatedRuleException = builder.build();
         assertNotNull(updatedRuleException);
         assertEquals(ruleException.getCategory(), updatedRuleException.getCategory());
         assertEquals(ruleException.getNote(), updatedRuleException.getNote());
@@ -93,11 +93,11 @@ public class PositionalRuleExceptionBuilderTest {
     @Test
     void testSetAccessions() {
         RuleException<PositionalFeature> ruleException = createObject();
-        PositionalRuleExceptionBuilder builder = PositionalRuleExceptionBuilder.from(ruleException);
+        RuleExceptionBuilder<PositionalFeature>builder = RuleExceptionBuilder.from(ruleException);
         assertNotNull(builder);
         List<UniProtKBAccession> newAccessions = UniProtKBAccessionBuilderTest.createObjects(4);
         builder.accessionsSet(newAccessions);
-        PositionalRuleExceptionImpl updatedRuleException = builder.build();
+        RuleException<PositionalFeature> updatedRuleException = builder.build();
         assertNotNull(updatedRuleException);
         assertEquals(ruleException.getCategory(), updatedRuleException.getCategory());
         assertEquals(ruleException.getNote(), updatedRuleException.getNote());
@@ -111,7 +111,7 @@ public class PositionalRuleExceptionBuilderTest {
         String cat = "cat-" + random;
         PositionalFeature positionalFeature = PositionalFeatureBuilderTest.createObject();
         List<UniProtKBAccession> accessions = UniProtKBAccessionBuilderTest.createObjects(3);
-        PositionalRuleExceptionBuilder builder = new PositionalRuleExceptionBuilder(cat);
+        RuleExceptionBuilder<PositionalFeature>builder = new RuleExceptionBuilder(cat);
         builder.note(note).annotation(positionalFeature).accessionsSet(accessions);
         RuleException<PositionalFeature> ruleException = builder.build();
         assertNotNull(ruleException);

@@ -281,7 +281,7 @@ public class UniRuleConvertersTest extends AbstractConverterTest {
                 Arguments.of(
                         AnnotationRuleExceptionBuilderTest.class, RuleExceptionConverter.class),
                 Arguments.of(
-                        PositionalRuleExceptionBuilderTest.class, RuleExceptionConverter.class),
+                        PositionalFeatureRuleExceptionBuilderTest.class, RuleExceptionConverter.class),
                 Arguments.of(RuleStatusTest.class, RuleStatusConverter.class),
                 Arguments.of(SamFeatureSetBuilderTest.class, SamFeatureSetConverter.class),
                 Arguments.of(SamTriggerBuilderTest.class, SamTriggerConverter.class),

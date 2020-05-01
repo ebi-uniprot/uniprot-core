@@ -1,6 +1,7 @@
 package org.uniprot.core.unirule.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.unirule.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,8 +10,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.unirule.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RuleBuilderTest {
 
@@ -107,7 +107,7 @@ public class RuleBuilderTest {
         List<ConditionSet> conditionSets = ConditionSetBuilderTest.createObjects(listSize);
         List<Annotation> annotations = AnnotationBuilderTest.createObjects(listSize);
         List<RuleException<PositionalFeature>> ruleExceptions =
-                PositionalRuleExceptionImplTest.createObjects(listSize);
+                PositionalFeatureRuleExceptionImplTest.createObjects(listSize);
         RuleBuilder<PositionalFeature> builder = new RuleBuilder<>(conditionSets);
         builder.annotationsSet(annotations);
         builder.ruleExceptionsSet(ruleExceptions);

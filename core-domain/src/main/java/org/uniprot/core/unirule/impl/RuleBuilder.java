@@ -6,10 +6,11 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
+import org.uniprot.core.unirule.RuleExceptionAnnotationType;
 import org.uniprot.core.unirule.ConditionSet;
 import org.uniprot.core.unirule.Rule;
 
-public class RuleBuilder<R> extends AbstractRuleBuilder<RuleBuilder<R>, Rule<R>, R> {
+public class RuleBuilder<R extends RuleExceptionAnnotationType> extends AbstractRuleBuilder<RuleBuilder<R>, Rule<R>, R> {
 
     public RuleBuilder(ConditionSet conditionSet) {
         super(conditionSet);
@@ -21,7 +22,7 @@ public class RuleBuilder<R> extends AbstractRuleBuilder<RuleBuilder<R>, Rule<R>,
 
     @Nonnull
     @Override
-    public Rule build() {
+    public Rule<R> build() {
         return new RuleImpl(conditionSets, annotations, ruleExceptions);
     }
 

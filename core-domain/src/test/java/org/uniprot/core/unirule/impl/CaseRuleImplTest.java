@@ -1,15 +1,15 @@
 package org.uniprot.core.unirule.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.unirule.*;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CaseRuleImplTest {
     @Test
@@ -42,11 +42,11 @@ public class CaseRuleImplTest {
         UniProtKBAccession accession = new UniProtKBAccessionBuilder(accessionValue).build();
         List<UniProtKBAccession> accessionList = Arrays.asList(accession);
         RuleException<Annotation> ruleException1 =
-                new AnnotationRuleExceptionImpl(note, category, annotation, accessionList);
+                new RuleExceptionImpl<>(note, category, annotation, accessionList);
         Range position1 = new Range(1, 2);
         PositionalFeature positionalFeature = new PositionalFeatureBuilder(position1).build();
         RuleException<PositionalFeature> ruleException2 =
-                new PositionalRuleExceptionImpl(note, category, positionalFeature, accessionList);
+                new RuleExceptionImpl<>(note, category, positionalFeature, accessionList);
         List<RuleException> ruleExceptions = Arrays.asList(ruleException1, ruleException2);
         boolean isOverallStatsExempted = true;
         CaseRule rule =

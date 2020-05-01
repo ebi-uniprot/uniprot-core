@@ -178,7 +178,7 @@ public class BuilderCommonTest {
                 Arguments.of(UniRuleIdBuilderTest.class),
                 Arguments.of(CaseRuleBuilderTest.class),
                 Arguments.of(AnnotationRuleExceptionBuilderTest.class),
-                Arguments.of(PositionalRuleExceptionBuilderTest.class));
+                Arguments.of(PositionalFeatureRuleExceptionBuilderTest.class));
     }
 
     static Stream<Arguments> provideTypeBuilderTestClass() {

@@ -9,15 +9,15 @@ import org.uniprot.core.unirule.*;
 import org.uniprot.core.util.Utils;
 
 /** @author sahmad */
-public class UniRuleEntryImpl implements UniRuleEntry {
+public class UniRuleEntryImpl<R extends RuleExceptionAnnotationType> implements UniRuleEntry<R> {
     private static final long serialVersionUID = -4460157798001059237L;
     private UniRuleId uniRuleId;
     private Information information;
     private RuleStatus ruleStatus;
-    private Rule mainRule;
-    private List<CaseRule> otherRules;
+    private Rule<R> mainRule;
+    private List<CaseRule<R>> otherRules;
     private List<SamFeatureSet> samFeatureSets;
-    private List<PositionFeatureSet> positionFeatureSets;
+    private List<PositionFeatureSet<R>> positionFeatureSets;
     private String createdBy;
     private String modifiedBy;
     private LocalDate createdDate;
@@ -33,10 +33,10 @@ public class UniRuleEntryImpl implements UniRuleEntry {
             UniRuleId uniRuleId,
             Information information,
             RuleStatus ruleStatus,
-            Rule mainRule,
-            List<CaseRule> otherRules,
+            Rule<R> mainRule,
+            List<CaseRule<R>> otherRules,
             List<SamFeatureSet> samFeatureSets,
-            List<PositionFeatureSet> positionFeatureSets,
+            List<PositionFeatureSet<R>> positionFeatureSets,
             String createdBy,
             String modifiedBy,
             LocalDate createdDate,
@@ -87,7 +87,7 @@ public class UniRuleEntryImpl implements UniRuleEntry {
     }
 
     @Override
-    public List<CaseRule> getOtherRules() {
+    public List<CaseRule<R>> getOtherRules() {
         return this.otherRules;
     }
 
@@ -97,7 +97,7 @@ public class UniRuleEntryImpl implements UniRuleEntry {
     }
 
     @Override
-    public List<PositionFeatureSet> getPositionFeatureSets() {
+    public List<PositionFeatureSet<R>> getPositionFeatureSets() {
         return this.positionFeatureSets;
     }
 

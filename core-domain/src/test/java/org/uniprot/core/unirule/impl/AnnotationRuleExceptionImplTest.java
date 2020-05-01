@@ -1,6 +1,10 @@
 package org.uniprot.core.unirule.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilderTest;
+import org.uniprot.core.unirule.Annotation;
+import org.uniprot.core.unirule.RuleException;
 
 import java.util.List;
 import java.util.UUID;
@@ -8,16 +12,12 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.UniProtKBAccession;
-import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilderTest;
-import org.uniprot.core.unirule.Annotation;
-import org.uniprot.core.unirule.RuleException;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AnnotationRuleExceptionImplTest {
     @Test
     void testCreateObjectByNoArgConstructor() {
-        RuleException<Annotation> ruleException = new AnnotationRuleExceptionImpl();
+        RuleException<Annotation> ruleException = new RuleExceptionImpl<>();
         assertNotNull(ruleException);
         assertTrue(ruleException.getAccessions().isEmpty());
         assertNull(ruleException.getCategory());
@@ -38,7 +38,7 @@ public class AnnotationRuleExceptionImplTest {
         List<UniProtKBAccession> accessionList =
                 UniProtKBAccessionBuilderTest.createObjects(listSize);
         RuleException<Annotation> ruleException =
-                new AnnotationRuleExceptionImpl(note, category, annotation, accessionList);
+                new RuleExceptionImpl<>(note, category, annotation, accessionList);
         assertNotNull(ruleException);
         assertEquals(note, ruleException.getNote());
         assertEquals(category, ruleException.getCategory());

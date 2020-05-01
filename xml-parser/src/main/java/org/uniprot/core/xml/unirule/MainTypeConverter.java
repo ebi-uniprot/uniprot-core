@@ -4,15 +4,14 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.unirule.Annotation;
-import org.uniprot.core.unirule.ConditionSet;
-import org.uniprot.core.unirule.Rule;
-import org.uniprot.core.unirule.RuleException;
+import org.uniprot.core.unirule.*;
 import org.uniprot.core.unirule.impl.RuleBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.*;
 
-public class MainTypeConverter implements Converter<MainType, Rule> {
+import static org.uniprot.core.xml.unirule.UniRuleConverterHelper.*;
+
+public class MainTypeConverter implements Converter<MainType, Rule<? extends RuleExceptionAnnotationType>> {
 
     private final ObjectFactory objectFactory;
     private final ConditionSetConverter conditionSetConverter;
@@ -31,7 +30,7 @@ public class MainTypeConverter implements Converter<MainType, Rule> {
     }
 
     @Override
-    public Rule fromXml(MainType xmlObj) {
+    public Rule<? extends RuleExceptionAnnotationType> fromXml(MainType xmlObj) {
         if (Objects.isNull(xmlObj)) return null;
 
         List<ConditionSet> conditionSets =
@@ -46,26 +45,47 @@ public class MainTypeConverter implements Converter<MainType, Rule> {
                             .map(this.annotationConverter::fromXml)
                             .collect(Collectors.toList());
         }
-        List<RuleException> ruleExceptions = null;
 
         if (Objects.nonNull(xmlObj.getRuleExceptions())) {
+
+        }
+        // derive the type of annotation set in ruleexception, either annotation or positional feature
+        REAnnotationEnumType reAnnotationEnumType = findRuleExceptionAnnotationType(xmlObj.getRuleExceptions());
+        List<RuleException<Annotation>> annotationRuleExceptions = null;
+        List<RuleException<PositionalFeature>> positionalFeatureRuleExceptions = null;
+
+        if (Objects.nonNull(xmlObj.getRuleExceptions())) {// set either Annotation
             List<RuleExceptionType> ruleExceptionsTypes =
                     xmlObj.getRuleExceptions().getRuleException();
-            ruleExceptions =
-                    ruleExceptionsTypes.stream()
-                            .map(this.ruleExceptionConverter::fromXml)
-                            .collect(Collectors.toList());
+            if (reAnnotationEnumType == REAnnotationEnumType.ANNOTATION) {
+                annotationRuleExceptions = ruleExceptionsTypes.stream()
+                        .map(this.ruleExceptionConverter::fromXml)
+                        .map(re -> (RuleException<Annotation>) re)
+                        .collect(Collectors.toList());
+
+            } else {// or PositionalFeature
+                positionalFeatureRuleExceptions = ruleExceptionsTypes.stream()
+                        .map(this.ruleExceptionConverter::fromXml)
+                        .map(re -> (RuleException<PositionalFeature>) re)
+                        .collect(Collectors.toList());
+            }
         }
 
-        RuleBuilder ruleBuilder = new RuleBuilder<>(conditionSets);
-        ruleBuilder.annotationsSet(annotations);
-        ruleBuilder.ruleExceptionsSet(ruleExceptions);
-
-        return ruleBuilder.build();
+        if (reAnnotationEnumType == REAnnotationEnumType.ANNOTATION) {
+            RuleBuilder<Annotation> ruleBuilder = new RuleBuilder<>(conditionSets);
+            ruleBuilder.annotationsSet(annotations);
+            ruleBuilder.ruleExceptionsSet(annotationRuleExceptions);
+            return ruleBuilder.build();
+        } else {
+            RuleBuilder<PositionalFeature> ruleBuilder = new RuleBuilder<>(conditionSets);
+            ruleBuilder.annotationsSet(annotations);
+            ruleBuilder.ruleExceptionsSet(positionalFeatureRuleExceptions);
+            return ruleBuilder.build();
+        }
     }
 
     @Override
-    public MainType toXml(Rule uniObj) {
+    public MainType toXml(Rule<? extends RuleExceptionAnnotationType> uniObj) {
         if (Objects.isNull(uniObj)) return null;
 
         MainType mainType = this.objectFactory.createMainType();
@@ -90,7 +110,7 @@ public class MainTypeConverter implements Converter<MainType, Rule> {
         mainType.setConditionSets(conditionsSet);
 
         RuleExceptionsType ruleExceptionsType = this.objectFactory.createRuleExceptionsType();
-        List<RuleException> ruleExceptions = uniObj.getRuleExceptions();
+        List<? extends RuleException<? extends RuleExceptionAnnotationType>> ruleExceptions = uniObj.getRuleExceptions();
         ruleExceptionsType
                 .getRuleException()
                 .addAll(

@@ -8,7 +8,7 @@ import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.unirule.*;
 import org.uniprot.core.util.Utils;
 
-public class PositionFeatureSetImpl<T> implements PositionFeatureSet {
+public class PositionFeatureSetImpl<T extends RuleExceptionAnnotationType> implements PositionFeatureSet {
 
     private static final long serialVersionUID = -30144214793146371L;
     private List<Condition> conditions;

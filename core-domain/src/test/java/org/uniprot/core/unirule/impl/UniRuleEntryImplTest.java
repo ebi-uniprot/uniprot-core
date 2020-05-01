@@ -16,7 +16,7 @@ import org.uniprot.core.unirule.*;
 public class UniRuleEntryImplTest {
     @Test
     void testCreateObjectByNoArgConstructor() {
-        UniRuleEntry uniRuleEntry = new UniRuleEntryImpl();
+        UniRuleEntry<Annotation> uniRuleEntry = new UniRuleEntryImpl();
         assertNotNull(uniRuleEntry);
         assertTrue(uniRuleEntry.getOtherRules().isEmpty());
         assertTrue(uniRuleEntry.getSamFeatureSets().isEmpty());
@@ -54,11 +54,11 @@ public class UniRuleEntryImplTest {
         Range position = new Range(1, 2);
         PositionalFeature positionalFeature = new PositionalFeatureBuilder(position).build();
         RuleException<PositionalFeature> ruleException2 =
-                new PositionalRuleExceptionImpl(note, category, positionalFeature, accessionList);
+                new RuleExceptionImpl<>(note, category, positionalFeature, accessionList);
         List<RuleException<PositionalFeature>> ruleExceptions = new ArrayList<>();
         ruleExceptions.add(ruleException2);
 
-        Rule mainRule =
+        Rule<PositionalFeature> mainRule =
                 new RuleBuilder<PositionalFeature>(conditionSets)
                         .annotationsSet(annotations)
                         .ruleExceptionsSet(ruleExceptions)

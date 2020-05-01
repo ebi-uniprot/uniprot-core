@@ -3,12 +3,9 @@ package org.uniprot.core.unirule.impl;
 import java.util.List;
 import java.util.Objects;
 
-import org.uniprot.core.unirule.Annotation;
-import org.uniprot.core.unirule.CaseRule;
-import org.uniprot.core.unirule.ConditionSet;
-import org.uniprot.core.unirule.RuleException;
+import org.uniprot.core.unirule.*;
 
-public class CaseRuleImpl<R> extends RuleImpl<R> implements CaseRule<R> {
+public class CaseRuleImpl<R extends RuleExceptionAnnotationType> extends RuleImpl<R> implements CaseRule<R> {
 
     private static final long serialVersionUID = 70596874547936434L;
     private boolean overallStatsExempted;

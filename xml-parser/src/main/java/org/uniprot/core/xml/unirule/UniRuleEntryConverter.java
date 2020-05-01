@@ -11,7 +11,7 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.*;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
 
-public class UniRuleEntryConverter implements Converter<UniRuleType, UniRuleEntry> {
+public class UniRuleEntryConverter implements Converter<UniRuleType, UniRuleEntry<? extends RuleExceptionAnnotationType>> {
     private final ObjectFactory objectFactory;
     private final InformationConverter informationConverter;
     private final RuleStatusConverter ruleStatusConverter;
@@ -35,7 +35,7 @@ public class UniRuleEntryConverter implements Converter<UniRuleType, UniRuleEntr
     }
 
     @Override
-    public UniRuleEntry fromXml(UniRuleType xmlObj) {
+    public UniRuleEntry<? extends RuleExceptionAnnotationType> fromXml(UniRuleType xmlObj) {
         if (Objects.isNull(xmlObj)) return null;
 
         UniRuleId uniRuleId = new UniRuleIdBuilder(xmlObj.getId()).build();
@@ -75,7 +75,7 @@ public class UniRuleEntryConverter implements Converter<UniRuleType, UniRuleEntr
     }
 
     @Override
-    public UniRuleType toXml(UniRuleEntry uniObj) {
+    public UniRuleType toXml(UniRuleEntry<? extends RuleExceptionAnnotationType> uniObj) {
         if (Objects.isNull(uniObj)) return null;
 
         UniRuleType xmlObj = this.objectFactory.createUniRuleType();

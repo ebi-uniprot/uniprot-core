@@ -1,14 +1,15 @@
 package org.uniprot.core.unirule.impl;
 
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
+import org.uniprot.core.unirule.RuleExceptionAnnotationType;
+import org.uniprot.core.unirule.RuleException;
+import org.uniprot.core.util.Utils;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import org.uniprot.core.uniprotkb.UniProtKBAccession;
-import org.uniprot.core.unirule.RuleException;
-import org.uniprot.core.util.Utils;
-
-public abstract class AbstractRuleException<T> implements RuleException<T> {
+public class RuleExceptionImpl<T extends RuleExceptionAnnotationType> implements RuleException<T> {
 
     private static final long serialVersionUID = 1653869814974844099L;
     private String note;
@@ -16,11 +17,11 @@ public abstract class AbstractRuleException<T> implements RuleException<T> {
     private T annotation;
     private List<UniProtKBAccession> accessions;
 
-    AbstractRuleException() {
+    RuleExceptionImpl() {
         this.accessions = Collections.emptyList();
     }
 
-    AbstractRuleException(
+    RuleExceptionImpl(
             String note, String category, T annotation, List<UniProtKBAccession> accessions) {
         if (Utils.nullOrEmpty(category)) {
             throw new IllegalArgumentException(
@@ -56,7 +57,7 @@ public abstract class AbstractRuleException<T> implements RuleException<T> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AbstractRuleException<?> that = (AbstractRuleException<?>) o;
+        RuleExceptionImpl<?> that = (RuleExceptionImpl<?>) o;
         return Objects.equals(note, that.note)
                 && Objects.equals(category, that.category)
                 && Objects.equals(annotation, that.annotation)

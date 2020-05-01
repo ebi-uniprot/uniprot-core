@@ -59,7 +59,7 @@ public class PositionFeatureSetBuilderTest {
     void testCreateObjectRuleExceptionList() {
         PositionFeatureSet positionFeatureSet = createObject();
         PositionFeatureSetBuilder builder = PositionFeatureSetBuilder.from(positionFeatureSet);
-        builder.ruleExceptionsAdd(PositionalRuleExceptionImplTest.createObject());
+        builder.ruleExceptionsAdd(PositionalFeatureRuleExceptionImplTest.createObject());
         PositionFeatureSet updatedPositionFeatureSet = builder.build();
         assertNotNull(updatedPositionFeatureSet);
         assertEquals(
@@ -102,7 +102,7 @@ public class PositionFeatureSetBuilderTest {
     void testCreateObjectWithOneRuleException() {
         PositionalFeature positionalFeature = PositionalFeatureBuilderTest.createObject();
         PositionFeatureSetBuilder builder = new PositionFeatureSetBuilder(positionalFeature);
-        RuleException<PositionalFeature> ruleExc = PositionalRuleExceptionImplTest.createObject();
+        RuleException<PositionalFeature> ruleExc = PositionalFeatureRuleExceptionImplTest.createObject();
         builder.ruleExceptionsAdd(ruleExc);
         PositionFeatureSet positionFeatureSet = builder.build();
         assertNotNull(positionFeatureSet);
