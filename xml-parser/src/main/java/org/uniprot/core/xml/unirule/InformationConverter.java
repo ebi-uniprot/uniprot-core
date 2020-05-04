@@ -10,6 +10,7 @@ import org.uniprot.core.unirule.DataClassType;
 import org.uniprot.core.unirule.Fusion;
 import org.uniprot.core.unirule.Information;
 import org.uniprot.core.unirule.impl.InformationBuilder;
+import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.FusionType;
 import org.uniprot.core.xml.jaxb.unirule.InformationType;
@@ -46,7 +47,7 @@ public class InformationConverter implements Converter<InformationType, Informat
         Fusion fusion = this.fusionConverter.fromXml(xmlObj.getFusion());
         List<String> accessions = this.multiValueConverter.fromXml(xmlObj.getTemplate());
         List<UniProtKBAccession> uniProtKBAccessions = null;
-        if (Objects.nonNull(accessions)) {
+        if (Utils.notNullNotEmpty(accessions)) {
             uniProtKBAccessions =
                     accessions.stream()
                             .map(UniProtKBAccessionBuilder::new)
@@ -57,7 +58,6 @@ public class InformationConverter implements Converter<InformationType, Informat
         builder.comment(xmlObj.getComment())
                 .oldRuleNum(xmlObj.getOldRuleNum())
                 .uniProtIdsSet(uniProtIds)
-                .dataClass(DataClassType.typeOf(xmlObj.getDataClass()))
                 .namesSet(names)
                 .fusion(fusion)
                 .relatedSet(related)
@@ -65,6 +65,11 @@ public class InformationConverter implements Converter<InformationType, Informat
                 .duplicatesSet(duplicates)
                 .plasmaIdsSet(plasmaIds)
                 .internal(xmlObj.getInternal());
+
+        if (Objects.nonNull(xmlObj.getDataClass())) {
+            builder.dataClass(DataClassType.typeOf(xmlObj.getDataClass()));
+        }
+
         return builder.build();
     }
 

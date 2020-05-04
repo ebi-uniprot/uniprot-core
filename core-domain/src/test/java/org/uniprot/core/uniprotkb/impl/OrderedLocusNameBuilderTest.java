@@ -1,5 +1,6 @@
 package org.uniprot.core.uniprotkb.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
@@ -10,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.gene.OrderedLocusName;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.impl.AbstractEvidencedValueBuilderTest;
-import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilderTest;
 
 public class OrderedLocusNameBuilderTest extends AbstractEvidencedValueBuilderTest {
 
@@ -28,7 +28,7 @@ public class OrderedLocusNameBuilderTest extends AbstractEvidencedValueBuilderTe
         OrderedLocusNameBuilder builder = new OrderedLocusNameBuilder();
         String random = UUID.randomUUID().toString();
         String value = "value-" + random;
-        List<Evidence> evidences = EvidenceBuilderTest.createObjects(listSize);
+        List<Evidence> evidences = new ArrayList<>();
         builder.value(value).evidencesSet(evidences);
         return builder.build();
     }

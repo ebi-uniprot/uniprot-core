@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.impl.ConditionBuilder;
+import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.ConditionType;
 import org.uniprot.core.xml.jaxb.unirule.ConditionValue;
@@ -51,11 +52,13 @@ public class ConditionConverter implements Converter<ConditionType, Condition> {
         if (Objects.isNull(uniObj)) return null;
 
         ConditionType conditionType = this.objectFactory.createConditionType();
-        List<ConditionValue> conditionValues =
-                uniObj.getConditionValues().stream()
-                        .map(this.conditionValueConverter::toXml)
-                        .collect(Collectors.toList());
-        conditionType.getValue().addAll(conditionValues);
+        if (Utils.notNullNotEmpty(uniObj.getConditionValues())) {
+            List<ConditionValue> conditionValues =
+                    uniObj.getConditionValues().stream()
+                            .map(this.conditionValueConverter::toXml)
+                            .collect(Collectors.toList());
+            conditionType.getValue().addAll(conditionValues);
+        }
         conditionType.setRange(this.rangeConverter.toXml(uniObj.getRange()));
         conditionType.setTag(this.ftagConditionConverter.toXml(uniObj.getTag()));
         conditionType.setType(uniObj.getType());

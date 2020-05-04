@@ -1,13 +1,48 @@
 package org.uniprot.core.xml.unirule;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.unirule.PositionFeatureSet;
+import org.uniprot.core.unirule.PositionalFeature;
+import org.uniprot.core.unirule.impl.PositionFeatureSetBuilder;
 import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.unirule.PositionalFeatureSetType;
 import org.uniprot.core.xml.jaxb.unirule.PositionalFeatureType;
 
 public class PositionalFeatureSetConverterTest extends AbstractConverterTest {
+    @BeforeAll
+    static void setUp() {
+        converter = new PositionalFeatureSetConverter();
+    }
+
+    @Test
+    void testConvertSkinnyUniObj() {
+        PositionFeatureSet uniObj = createSkinnyUniObject();
+        PositionalFeatureSetType xmlObj = (PositionalFeatureSetType) converter.toXml(uniObj);
+        assertNotNull(xmlObj);
+        assertNotNull(xmlObj.getPositionalFeature());
+        assertEquals(1, xmlObj.getPositionalFeature().size());
+        assertNull(xmlObj.getConditionSet());
+        assertNull(xmlObj.getAnnotations());
+        assertNull(xmlObj.getRuleExceptions());
+        assertNull(xmlObj.getTemplate());
+        assertNull(xmlObj.getAlignmentSignature());
+        assertNull(xmlObj.getTag());
+        // convert back to uniObj- test round trip
+        PositionFeatureSet updatedUniObj = (PositionFeatureSet) converter.fromXml(xmlObj);
+        assertEquals(uniObj, updatedUniObj);
+    }
+
+    private PositionFeatureSet createSkinnyUniObject() {
+        PositionalFeature pf = PositionalFeatureConverterTest.createSkinnyUniObject();
+        PositionFeatureSetBuilder builder = new PositionFeatureSetBuilder(pf);
+        return builder.build();
+    }
 
     public static PositionalFeatureSetType createObject() {
         PositionalFeatureSetType positionalFeatureSetType =

@@ -16,7 +16,7 @@ public class UniProtKBAccessionConverter implements Converter<String, UniProtKBA
     }
 
     public UniProtKBAccessionConverter(ObjectFactory objectFactory) {
-        this.objectFactory = new ObjectFactory();
+        this.objectFactory = objectFactory;
     }
 
     @Override

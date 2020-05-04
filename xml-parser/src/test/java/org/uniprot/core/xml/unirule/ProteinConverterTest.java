@@ -1,16 +1,51 @@
 package org.uniprot.core.xml.unirule;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.description.ProteinDescription;
+import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilder;
 import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.unirule.ProteinType;
 import org.uniprot.core.xml.uniprot.EvidencedStringTypeConverterTest;
 
 public class ProteinConverterTest extends AbstractConverterTest {
+
+    @BeforeAll
+    static void setUp() {
+        converter = new ProteinConverter();
+    }
+
+    @Test
+    void testConvertSkinnyUniObj() {
+        ProteinDescription uniObj = createSkinnyUniObject();
+        ProteinType xmlObj = (ProteinType) converter.toXml(uniObj);
+        assertNotNull(xmlObj);
+        assertNull(xmlObj.getRecommendedName());
+        assertTrue(xmlObj.getAlternativeName().isEmpty());
+        assertNull(xmlObj.getAllergenName());
+        assertNull(xmlObj.getBiotechName());
+        assertTrue(xmlObj.getCdAntigenName().isEmpty());
+        assertTrue(xmlObj.getInnName().isEmpty());
+        assertNull(xmlObj.getFlag());
+        assertTrue(xmlObj.getDomain().isEmpty());
+        assertTrue(xmlObj.getCdAntigenName().isEmpty());
+        // convert back to uniObj- test round trip
+        ProteinDescription updatedUniObj = (ProteinDescription) converter.fromXml(xmlObj);
+        assertEquals(uniObj, updatedUniObj);
+    }
+
+    private ProteinDescription createSkinnyUniObject() {
+        ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
+        return builder.build();
+    }
 
     public static class AlternativeNameList extends ArrayList<ProteinType.AlternativeName> {}
 

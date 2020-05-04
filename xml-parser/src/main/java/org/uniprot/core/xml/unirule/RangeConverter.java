@@ -16,7 +16,7 @@ public class RangeConverter implements Converter<RangeType, Range> {
     }
 
     public RangeConverter(ObjectFactory objectFactory) {
-        this.objectFactory = new ObjectFactory();
+        this.objectFactory = objectFactory;
     }
 
     @Override

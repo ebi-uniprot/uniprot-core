@@ -3,6 +3,7 @@ package org.uniprot.core.unirule.impl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
@@ -11,8 +12,9 @@ import java.util.stream.IntStream;
 import org.uniprot.core.gene.Gene;
 import org.uniprot.core.uniprotkb.Keyword;
 import org.uniprot.core.uniprotkb.comment.Comment;
-import org.uniprot.core.uniprotkb.comment.impl.DiseaseCommentBuilderTest;
+import org.uniprot.core.uniprotkb.comment.impl.FreeTextCommentBuilderTest;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
+import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilder;
 import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilderTest;
 import org.uniprot.core.uniprotkb.impl.GeneBuilderTest;
 import org.uniprot.core.uniprotkb.impl.KeywordBuilderTest;
@@ -25,7 +27,12 @@ public class AnnotationBuilderTest {
     public static Annotation createObject(int listSize) {
         ProteinDescription proteinDescription =
                 ProteinDescriptionBuilderTest.createObject(listSize);
-        Comment comment = DiseaseCommentBuilderTest.createObject(listSize);
+        // remove submissionsName because UniRule's ProteinType doesnt have this field
+        proteinDescription =
+                ProteinDescriptionBuilder.from(proteinDescription)
+                        .submissionNamesSet(new ArrayList<>())
+                        .build();
+        Comment comment = FreeTextCommentBuilderTest.createObject(listSize);
         Keyword keyword = KeywordBuilderTest.createObject(listSize);
         UniProtKBCrossReference crossReference =
                 UniProtKBCrossReferenceBuilderTest.createObject(listSize);

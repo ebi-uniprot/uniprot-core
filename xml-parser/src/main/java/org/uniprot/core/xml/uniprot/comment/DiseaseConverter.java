@@ -36,7 +36,7 @@ public class DiseaseConverter implements Converter<CommentType.Disease, Disease>
                     new CrossReferenceBuilder<DiseaseDatabase>()
                             .database(type)
                             .id(xmlDisease.getDbReference().getId())
-                            .build();
+                            .build(); // FIXME why no propertytype being set? FIle ticket
             builder.diseaseCrossReference(reference);
         }
         return builder.build();

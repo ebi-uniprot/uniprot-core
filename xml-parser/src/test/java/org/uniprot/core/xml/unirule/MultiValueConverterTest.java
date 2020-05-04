@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.unirule;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.ArrayList;
 
 import org.uniprot.core.xml.AbstractConverterTest;
