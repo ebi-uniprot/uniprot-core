@@ -10,7 +10,10 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.unirule.*;
+import org.uniprot.core.unirule.Annotation;
+import org.uniprot.core.unirule.ConditionSet;
+import org.uniprot.core.unirule.Rule;
+import org.uniprot.core.unirule.RuleException;
 
 public class RuleBuilderTest {
 
@@ -119,7 +122,7 @@ public class RuleBuilderTest {
         List<ConditionSet> conditionSets = ConditionSetBuilderTest.createObjects(listSize);
         List<Annotation> annotations = AnnotationBuilderTest.createObjects(listSize);
         List<RuleException> ruleExceptions =
-                PositionalRuleExceptionImplTest.createObjects(listSize);
+                AnnotationRuleExceptionImplTest.createObjects(listSize);
         RuleBuilder builder = new RuleBuilder(conditionSets);
         builder.annotationsSet(annotations);
         builder.ruleExceptionsSet(ruleExceptions);

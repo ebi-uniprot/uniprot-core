@@ -47,24 +47,27 @@ public class SamTriggerConverter implements Converter<SamTriggerType, SamTrigger
 
         SamTriggerType samTriggerType = this.objectFactory.createSamTriggerType();
         RangeType expectedHits = this.rangeConverter.toXml(uniObj.getExpectedHits());
-
-        if (org.uniprot.core.unirule.SamTriggerType.TRANSMEMBRANE.equals(
-                uniObj.getSamTriggerType())) {
-            SamTransmembraneConditionType transmembrane =
-                    this.objectFactory.createSamTransmembraneConditionType();
-            transmembrane.setExpectedHits(expectedHits);
-            samTriggerType.setTransmembrane(transmembrane);
-        } else if (org.uniprot.core.unirule.SamTriggerType.SIGNAL.equals(
-                uniObj.getSamTriggerType())) {
-            SamSignalConditionType signal = this.objectFactory.createSamSignalConditionType();
-            signal.setExpectedHits(expectedHits);
-            samTriggerType.setSignal(signal);
-        } else if (org.uniprot.core.unirule.SamTriggerType.COILED_COIL.equals(
-                uniObj.getSamTriggerType())) {
-            SamCoiledCoilConditionType coiledCoil =
-                    this.objectFactory.createSamCoiledCoilConditionType();
-            coiledCoil.setExpectedHits(expectedHits);
-            samTriggerType.setCoiledCoil(coiledCoil);
+        if (Objects.nonNull(uniObj.getSamTriggerType())) {
+            switch (uniObj.getSamTriggerType()) {
+                case TRANSMEMBRANE:
+                    SamTransmembraneConditionType transmembrane =
+                            this.objectFactory.createSamTransmembraneConditionType();
+                    transmembrane.setExpectedHits(expectedHits);
+                    samTriggerType.setTransmembrane(transmembrane);
+                    break;
+                case SIGNAL:
+                    SamSignalConditionType signal =
+                            this.objectFactory.createSamSignalConditionType();
+                    signal.setExpectedHits(expectedHits);
+                    samTriggerType.setSignal(signal);
+                    break;
+                case COILED_COIL:
+                    SamCoiledCoilConditionType coiledCoil =
+                            this.objectFactory.createSamCoiledCoilConditionType();
+                    coiledCoil.setExpectedHits(expectedHits);
+                    samTriggerType.setCoiledCoil(coiledCoil);
+                    break;
+            }
         }
         return samTriggerType;
     }

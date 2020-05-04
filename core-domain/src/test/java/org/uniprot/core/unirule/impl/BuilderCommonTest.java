@@ -224,7 +224,6 @@ public class BuilderCommonTest {
         return Stream.of(
                 Arguments.of(AnnotationBuilder.class, AnnotationImpl.class),
                 Arguments.of(FusionBuilder.class, FusionImpl.class),
-                Arguments.of(SamTriggerBuilder.class, SamTriggerImpl.class),
                 Arguments.of(SamTriggerBuilder.class, SamTriggerImpl.class));
     }
 }

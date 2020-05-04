@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.unirule.*;
 import org.uniprot.core.unirule.impl.PositionFeatureSetBuilder;
+import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.*;
 
@@ -86,22 +87,26 @@ public class PositionalFeatureSetConverter
                 this.accessionConverter.toXml(uniObj.getUniProtKBAccession()));
 
         List<Condition> conditions = uniObj.getConditions();
-        List<ConditionType> conditionTypes =
-                conditions.stream()
-                        .map(this.conditionConverter::toXml)
-                        .collect(Collectors.toList());
-        ConditionSetType conditionSetType = this.objectFactory.createConditionSetType();
-        conditionSetType.getCondition().addAll(conditionTypes);
-        positionalFeatureSetType.setConditionSet(conditionSetType);
+        if (Utils.notNullNotEmpty(conditions)) {
+            List<ConditionType> conditionTypes =
+                    conditions.stream()
+                            .map(this.conditionConverter::toXml)
+                            .collect(Collectors.toList());
+            ConditionSetType conditionSetType = this.objectFactory.createConditionSetType();
+            conditionSetType.getCondition().addAll(conditionTypes);
+            positionalFeatureSetType.setConditionSet(conditionSetType);
+        }
 
         List<Annotation> annotations = uniObj.getAnnotations();
-        List<AnnotationType> annotationTypes =
-                annotations.stream()
-                        .map(this.annotationConverter::toXml)
-                        .collect(Collectors.toList());
-        AnnotationsType annotationsType = this.objectFactory.createAnnotationsType();
-        annotationsType.getAnnotation().addAll(annotationTypes);
-        positionalFeatureSetType.setAnnotations(annotationsType);
+        if (Utils.notNullNotEmpty(annotations)) {
+            List<AnnotationType> annotationTypes =
+                    annotations.stream()
+                            .map(this.annotationConverter::toXml)
+                            .collect(Collectors.toList());
+            AnnotationsType annotationsType = this.objectFactory.createAnnotationsType();
+            annotationsType.getAnnotation().addAll(annotationTypes);
+            positionalFeatureSetType.setAnnotations(annotationsType);
+        }
 
         List<PositionalFeature> positionalFeatures = uniObj.getPositionalFeatures();
         List<PositionalFeatureType> positionalFeatureTypes =
@@ -110,15 +115,17 @@ public class PositionalFeatureSetConverter
                         .collect(Collectors.toList());
         positionalFeatureSetType.getPositionalFeature().addAll(positionalFeatureTypes);
 
-        RuleExceptionsType ruleExceptionsType = this.objectFactory.createRuleExceptionsType();
         List<RuleException> ruleExceptions = uniObj.getRuleExceptions();
-        ruleExceptionsType
-                .getRuleException()
-                .addAll(
-                        ruleExceptions.stream()
-                                .map(this.ruleExceptionConverter::toXml)
-                                .collect(Collectors.toList()));
-        positionalFeatureSetType.setRuleExceptions(ruleExceptionsType);
+        if (Utils.notNullNotEmpty(ruleExceptions)) {
+            RuleExceptionsType ruleExceptionsType = this.objectFactory.createRuleExceptionsType();
+            ruleExceptionsType
+                    .getRuleException()
+                    .addAll(
+                            ruleExceptions.stream()
+                                    .map(this.ruleExceptionConverter::toXml)
+                                    .collect(Collectors.toList()));
+            positionalFeatureSetType.setRuleExceptions(ruleExceptionsType);
+        }
 
         return positionalFeatureSetType;
     }

@@ -49,8 +49,12 @@ public class PositionalFeatureConverter
                 this.objectFactory.createPositionalConditionType();
         positionalConditionType.setPattern(uniObj.getPattern());
         RangeType position = this.objectFactory.createRangeType();
-        position.setStart(String.valueOf(uniObj.getPosition().getStart()));
-        position.setEnd(String.valueOf(uniObj.getPosition().getEnd()));
+        if (Objects.nonNull(uniObj.getPosition().getStart())) {
+            position.setStart(String.valueOf(uniObj.getPosition().getStart().getValue()));
+        }
+        if (Objects.nonNull(uniObj.getPosition().getEnd())) {
+            position.setEnd(String.valueOf(uniObj.getPosition().getEnd().getValue()));
+        }
         positionalConditionType.setPosition(position);
         positionalFeatureType.setPositionalCondition(positionalConditionType);
         PositionalAnnotationType positionalAnnotationType =

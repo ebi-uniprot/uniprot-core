@@ -9,6 +9,7 @@ import org.uniprot.core.unirule.ConditionSet;
 import org.uniprot.core.unirule.Rule;
 import org.uniprot.core.unirule.RuleException;
 import org.uniprot.core.unirule.impl.RuleBuilder;
+import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.*;
 
@@ -71,12 +72,15 @@ public class MainTypeConverter implements Converter<MainType, Rule> {
         MainType mainType = this.objectFactory.createMainType();
         AnnotationsType annotationsType = this.objectFactory.createAnnotationsType();
         List<Annotation> annotations = uniObj.getAnnotations();
-        List<AnnotationType> annotationTypes =
-                annotations.stream()
-                        .map(this.annotationConverter::toXml)
-                        .collect(Collectors.toList());
-        annotationsType.getAnnotation().addAll(annotationTypes);
-        mainType.setAnnotations(annotationsType);
+
+        if (Utils.notNullNotEmpty(annotations)) {
+            List<AnnotationType> annotationTypes =
+                    annotations.stream()
+                            .map(this.annotationConverter::toXml)
+                            .collect(Collectors.toList());
+            annotationsType.getAnnotation().addAll(annotationTypes);
+            mainType.setAnnotations(annotationsType);
+        }
 
         MainType.ConditionSets conditionsSet = this.objectFactory.createMainTypeConditionSets();
         List<ConditionSet> conditionSets = uniObj.getConditionSets();
@@ -88,15 +92,17 @@ public class MainTypeConverter implements Converter<MainType, Rule> {
                                 .collect(Collectors.toList()));
         mainType.setConditionSets(conditionsSet);
 
-        RuleExceptionsType ruleExceptionsType = this.objectFactory.createRuleExceptionsType();
         List<RuleException> ruleExceptions = uniObj.getRuleExceptions();
-        ruleExceptionsType
-                .getRuleException()
-                .addAll(
-                        ruleExceptions.stream()
-                                .map(this.ruleExceptionConverter::toXml)
-                                .collect(Collectors.toList()));
-        mainType.setRuleExceptions(ruleExceptionsType);
+        if (Utils.notNullNotEmpty(ruleExceptions)) {
+            RuleExceptionsType ruleExceptionsType = this.objectFactory.createRuleExceptionsType();
+            ruleExceptionsType
+                    .getRuleException()
+                    .addAll(
+                            ruleExceptions.stream()
+                                    .map(this.ruleExceptionConverter::toXml)
+                                    .collect(Collectors.toList()));
+            mainType.setRuleExceptions(ruleExceptionsType);
+        }
         return mainType;
     }
 }

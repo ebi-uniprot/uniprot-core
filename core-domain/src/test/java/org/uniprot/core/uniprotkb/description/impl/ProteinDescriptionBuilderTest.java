@@ -2,6 +2,7 @@ package org.uniprot.core.uniprotkb.description.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -252,7 +253,7 @@ public class ProteinDescriptionBuilderTest {
         builder.containsSet(contains);
         List<ProteinSection> includes = ProteinSectionBuilderTest.createObjects(listSize);
         builder.includesSet(includes);
-        List<ProteinSubName> submissionNames = ProteinSubNameBuilderTest.createObjects(listSize);
+        List<ProteinSubName> submissionNames = new ArrayList<>();
         builder.submissionNamesSet(submissionNames);
         List<Name> innNames = NameBuilderTest.createObjects(listSize);
         builder.innNamesSet(innNames);

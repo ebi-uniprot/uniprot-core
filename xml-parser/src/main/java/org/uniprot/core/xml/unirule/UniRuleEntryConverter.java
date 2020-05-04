@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.uniprot.core.unirule.*;
 import org.uniprot.core.unirule.impl.UniRuleEntryBuilder;
 import org.uniprot.core.unirule.impl.UniRuleIdBuilder;
+import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.*;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
@@ -83,24 +84,31 @@ public class UniRuleEntryConverter implements Converter<UniRuleType, UniRuleEntr
         xmlObj.setInformation(informationType);
         MainType mainType = this.mainTypeConverter.toXml(uniObj.getMainRule());
         xmlObj.setMain(mainType);
-        List<CaseType> caseTypes =
-                uniObj.getOtherRules().stream()
-                        .map(this.caseTypeConverter::toXml)
-                        .collect(Collectors.toList());
-        CasesType cases = this.objectFactory.createCasesType();
-        cases.getCase().addAll(caseTypes);
-        xmlObj.setCases(cases);
-        List<SamFeatureSetType> samFeatureSetTypes =
-                uniObj.getSamFeatureSets().stream()
-                        .map(this.samFeatureSetConverter::toXml)
-                        .collect(Collectors.toList());
-        xmlObj.getSamFeatureSet().addAll(samFeatureSetTypes);
+        if (Utils.notNullNotEmpty(uniObj.getOtherRules())) {
+            List<CaseType> caseTypes =
+                    uniObj.getOtherRules().stream()
+                            .map(this.caseTypeConverter::toXml)
+                            .collect(Collectors.toList());
+            CasesType cases = this.objectFactory.createCasesType();
+            cases.getCase().addAll(caseTypes);
+            xmlObj.setCases(cases);
+        }
 
-        List<PositionalFeatureSetType> positionalFeatureSetTypes =
-                uniObj.getPositionFeatureSets().stream()
-                        .map(this.positionalFeatureSetConverter::toXml)
-                        .collect(Collectors.toList());
-        xmlObj.getPositionalFeatureSet().addAll(positionalFeatureSetTypes);
+        if (Utils.notNullNotEmpty(uniObj.getPositionFeatureSets())) {
+            List<SamFeatureSetType> samFeatureSetTypes =
+                    uniObj.getSamFeatureSets().stream()
+                            .map(this.samFeatureSetConverter::toXml)
+                            .collect(Collectors.toList());
+            xmlObj.getSamFeatureSet().addAll(samFeatureSetTypes);
+        }
+
+        if (Utils.notNullNotEmpty(uniObj.getPositionFeatureSets())) {
+            List<PositionalFeatureSetType> positionalFeatureSetTypes =
+                    uniObj.getPositionFeatureSets().stream()
+                            .map(this.positionalFeatureSetConverter::toXml)
+                            .collect(Collectors.toList());
+            xmlObj.getPositionalFeatureSet().addAll(positionalFeatureSetTypes);
+        }
 
         xmlObj.setStatus(this.ruleStatusConverter.toXml(uniObj.getRuleStatus()));
         xmlObj.setId(uniObj.getUniRuleId().getValue());

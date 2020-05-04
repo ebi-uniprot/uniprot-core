@@ -50,8 +50,8 @@ public abstract class AbstractRuleBuilder<S extends AbstractRuleBuilder, T exten
         return getThis();
     }
 
-    public @Nonnull S ruleExceptionsAdd(RuleException ruleExeption) {
-        addOrIgnoreNull(ruleExeption, this.ruleExceptions);
+    public @Nonnull S ruleExceptionsAdd(RuleException ruleException) {
+        addOrIgnoreNull(ruleException, this.ruleExceptions);
         return getThis();
     }
 

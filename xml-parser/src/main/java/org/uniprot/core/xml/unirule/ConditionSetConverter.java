@@ -21,7 +21,7 @@ public class ConditionSetConverter implements Converter<ConditionSetType, Condit
     }
 
     public ConditionSetConverter(ObjectFactory objectFactory) {
-        this.objectFactory = new ObjectFactory();
+        this.objectFactory = objectFactory;
         this.conditionConverter = new ConditionConverter(objectFactory);
     }
 

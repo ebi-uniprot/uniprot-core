@@ -8,6 +8,7 @@ import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.SamFeatureSet;
 import org.uniprot.core.unirule.impl.SamFeatureSetBuilder;
+import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.*;
 
@@ -62,22 +63,26 @@ public class SamFeatureSetConverter implements Converter<SamFeatureSetType, SamF
         samFeatureSetType.setSamTrigger(this.samTriggerConverter.toXml(uniObj.getSamTrigger()));
 
         List<Condition> conditions = uniObj.getConditions();
-        List<ConditionType> conditionTypes =
-                conditions.stream()
-                        .map(this.conditionConverter::toXml)
-                        .collect(Collectors.toList());
-        ConditionSetType conditionSetType = this.objectFactory.createConditionSetType();
-        conditionSetType.getCondition().addAll(conditionTypes);
-        samFeatureSetType.setConditionSet(conditionSetType);
+        if (Utils.notNullNotEmpty(conditions)) {
+            List<ConditionType> conditionTypes =
+                    conditions.stream()
+                            .map(this.conditionConverter::toXml)
+                            .collect(Collectors.toList());
+            ConditionSetType conditionSetType = this.objectFactory.createConditionSetType();
+            conditionSetType.getCondition().addAll(conditionTypes);
+            samFeatureSetType.setConditionSet(conditionSetType);
+        }
 
         List<Annotation> annotations = uniObj.getAnnotations();
-        List<AnnotationType> annotationTypes =
-                annotations.stream()
-                        .map(this.annotationConverter::toXml)
-                        .collect(Collectors.toList());
-        AnnotationsType annotationsType = this.objectFactory.createAnnotationsType();
-        annotationsType.getAnnotation().addAll(annotationTypes);
-        samFeatureSetType.setAnnotations(annotationsType);
+        if (Utils.notNullNotEmpty(annotations)) {
+            List<AnnotationType> annotationTypes =
+                    annotations.stream()
+                            .map(this.annotationConverter::toXml)
+                            .collect(Collectors.toList());
+            AnnotationsType annotationsType = this.objectFactory.createAnnotationsType();
+            annotationsType.getAnnotation().addAll(annotationTypes);
+            samFeatureSetType.setAnnotations(annotationsType);
+        }
 
         return samFeatureSetType;
     }

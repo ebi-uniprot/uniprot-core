@@ -3,6 +3,7 @@ package org.uniprot.core.xml.unirule;
 import java.util.List;
 import java.util.Objects;
 
+import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.MultiValueType;
 import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
@@ -28,7 +29,7 @@ public class MultiValueConverter implements Converter<MultiValueType, List<Strin
 
     @Override
     public MultiValueType toXml(List<String> uniObj) {
-        if (Objects.isNull(uniObj)) return null;
+        if (Utils.nullOrEmpty(uniObj)) return null;
         MultiValueType multiValueType = this.objectFactory.createMultiValueType();
         List<String> multiValueValues = multiValueType.getValue();
         multiValueValues.addAll(uniObj);

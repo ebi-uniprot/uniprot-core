@@ -15,6 +15,7 @@ public abstract class AbstractConverterTest {
     protected static org.uniprot.core.xml.jaxb.uniprot.ObjectFactory uniProtObjectFactory;
     protected static LoremIpsumObjectCreator objectCreator;
     protected static ClassBindings classBindings;
+    protected static Converter converter;
 
     static {
         classBindings = new ClassBindings();

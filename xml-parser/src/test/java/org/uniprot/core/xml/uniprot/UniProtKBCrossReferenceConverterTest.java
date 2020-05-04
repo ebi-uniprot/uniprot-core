@@ -169,14 +169,14 @@ public class UniProtKBCrossReferenceConverterTest extends AbstractConverterTest 
                 .build();
     }
 
-    private static DbReferenceType createObject() {
+    public static DbReferenceType createObject() {
         DbReferenceType dbReferenceType =
                 objectCreator.createLoremIpsumObject(DbReferenceType.class);
         update(dbReferenceType);
         return dbReferenceType;
     }
 
-    public static List<DbReferenceType> createObjects(int count) {
+    public static List<DbReferenceType> createObjects() {
         List<DbReferenceType> objects =
                 objectCreator.createLoremIpsumObject(DbReferenceTypeList.class);
         objects.forEach(object -> update(object));

@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.unirule.*;
 import org.uniprot.core.unirule.impl.CaseRuleBuilder;
+import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.*;
 
@@ -48,14 +49,16 @@ public class CaseTypeConverter implements Converter<CaseType, CaseRule> {
         caseType.setOverallStatsExempted(uniObj.isOverallStatsExempted());
 
         List<Annotation> annotations = uniObj.getAnnotations();
-        AnnotationsType annotationsType = this.objectFactory.createAnnotationsType();
-        annotationsType
-                .getAnnotation()
-                .addAll(
-                        annotations.stream()
-                                .map(this.annotationConverter::toXml)
-                                .collect(Collectors.toList()));
-        caseType.setAnnotations(annotationsType);
+        if (Utils.notNullNotEmpty(annotations)) {
+            AnnotationsType annotationsType = this.objectFactory.createAnnotationsType();
+            annotationsType
+                    .getAnnotation()
+                    .addAll(
+                            annotations.stream()
+                                    .map(this.annotationConverter::toXml)
+                                    .collect(Collectors.toList()));
+            caseType.setAnnotations(annotationsType);
+        }
 
         List<ConditionSet> conditionSets = uniObj.getConditionSets();
         List<ConditionSetType> conditionSetTypes =
@@ -68,13 +71,15 @@ public class CaseTypeConverter implements Converter<CaseType, CaseRule> {
         caseType.setConditionSets(mainTypeConditionSets);
 
         List<RuleException> ruleExceptions = uniObj.getRuleExceptions();
-        List<RuleExceptionType> ruleExceptionTypes =
-                ruleExceptions.stream()
-                        .map(this.ruleExceptionConverter::toXml)
-                        .collect(Collectors.toList());
-        RuleExceptionsType ruleExceptionsType = this.objectFactory.createRuleExceptionsType();
-        ruleExceptionsType.getRuleException().addAll(ruleExceptionTypes);
-        caseType.setRuleExceptions(ruleExceptionsType);
+        if (Utils.notNullNotEmpty(ruleExceptions)) {
+            List<RuleExceptionType> ruleExceptionTypes =
+                    ruleExceptions.stream()
+                            .map(this.ruleExceptionConverter::toXml)
+                            .collect(Collectors.toList());
+            RuleExceptionsType ruleExceptionsType = this.objectFactory.createRuleExceptionsType();
+            ruleExceptionsType.getRuleException().addAll(ruleExceptionTypes);
+            caseType.setRuleExceptions(ruleExceptionsType);
+        }
 
         return caseType;
     }

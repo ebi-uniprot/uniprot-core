@@ -1,12 +1,44 @@
 package org.uniprot.core.xml.unirule;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.unirule.ConditionSet;
+import org.uniprot.core.unirule.Rule;
+import org.uniprot.core.unirule.impl.ConditionSetBuilderTest;
+import org.uniprot.core.unirule.impl.RuleBuilder;
 import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.unirule.*;
 
 public class MainTypeConverterTest extends AbstractConverterTest {
+    @BeforeAll
+    static void setUp() {
+        converter = new MainTypeConverter();
+    }
+
+    @Test
+    void testConvertSkinnyUniObj() {
+        Rule uniObj = createSkinnyUniObject();
+        MainType xmlObj = (MainType) converter.toXml(uniObj);
+        assertNotNull(xmlObj);
+        assertNotNull(xmlObj.getConditionSets());
+        assertNull(xmlObj.getAnnotations());
+        assertNull(xmlObj.getRuleExceptions());
+        // convert back to uniObj- test round trip
+        Rule updatedUniObj = (Rule) converter.fromXml(xmlObj);
+        assertEquals(uniObj, updatedUniObj);
+    }
+
+    public static Rule createSkinnyUniObject() {
+        List<ConditionSet> conditionSets = ConditionSetBuilderTest.createObjects(2);
+        RuleBuilder builder = new RuleBuilder(conditionSets);
+        return builder.build();
+    }
+
     public static MainType createObject() {
         MainType mainType = objectCreator.createLoremIpsumObject(MainType.class);
         // fill list types

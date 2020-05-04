@@ -1,15 +1,56 @@
 package org.uniprot.core.xml.unirule;
 
-import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.unirule.*;
+import org.uniprot.core.unirule.impl.UniRuleEntryBuilder;
+import org.uniprot.core.unirule.impl.UniRuleIdBuilder;
 import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.unirule.*;
 
 public class UniRuleEntryConverterTest extends AbstractConverterTest {
-    public static class PositionalFeatureSetTypeList extends ArrayList<PositionalFeatureSetType> {}
+
+    @BeforeAll
+    static void setUp() {
+        converter = new UniRuleEntryConverter();
+    }
+
+    @Test
+    void testConvertSkinnyUniObj() {
+        UniRuleEntry uniObj = createSkinnyUniObject();
+        UniRuleType xmlObj = (UniRuleType) converter.toXml(uniObj);
+        assertNotNull(xmlObj);
+        assertNotNull(xmlObj.getInformation());
+        assertNotNull(xmlObj.getMain());
+        assertNotNull(xmlObj.getStatus());
+        assertNotNull(xmlObj.getId());
+        assertNull(xmlObj.getCases());
+        assertTrue(xmlObj.getSamFeatureSet().isEmpty());
+        assertTrue(xmlObj.getPositionalFeatureSet().isEmpty());
+        assertNull(xmlObj.getCreated());
+        assertNull(xmlObj.getModified());
+        assertNull(xmlObj.getCreator());
+        assertNull(xmlObj.getModifiedBy());
+        // convert back to uniObj- test round trip
+        UniRuleEntry updatedUniObj = (UniRuleEntry) converter.fromXml(xmlObj);
+        assertEquals(uniObj, updatedUniObj);
+    }
+
+    private UniRuleEntry createSkinnyUniObject() {
+        // UniRuleId uniRuleId, RuleStatus ruleStatus, Information information, Rule mainRule)
+        RuleStatus ruleStatus = RuleStatus.APPLY;
+        Information info = InformationConverterTest.createSkinnyUniObject();
+        Rule rule = MainTypeConverterTest.createSkinnyUniObject();
+        UniRuleId uniRuleid = new UniRuleIdBuilder("uid").build();
+        UniRuleEntryBuilder builder = new UniRuleEntryBuilder(uniRuleid, ruleStatus, info, rule);
+        return builder.build();
+    }
 
     public static UniRuleType createObject() {
         UniRuleType uniRuleType = objectCreator.createLoremIpsumObject(UniRuleType.class);

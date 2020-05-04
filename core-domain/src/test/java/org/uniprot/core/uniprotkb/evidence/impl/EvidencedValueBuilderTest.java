@@ -2,6 +2,7 @@ package org.uniprot.core.uniprotkb.evidence.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
@@ -15,7 +16,7 @@ public class EvidencedValueBuilderTest {
     public static EvidencedValue createObject(int listSize) {
         String random = UUID.randomUUID().toString();
         String value = "value-" + random;
-        List<Evidence> evidences = EvidenceBuilderTest.createObjects(listSize);
+        List<Evidence> evidences = new ArrayList<>();
         EvidencedValueBuilder builder = new EvidencedValueBuilder();
         builder.value(value);
         builder.evidencesSet(evidences);
