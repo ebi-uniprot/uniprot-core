@@ -1,7 +1,7 @@
 variables:
   MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true -Djava.awt.headless=true"
   MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
-  SONAR_PROPS: "-Dsonar.projectKey=uniprot-core -Dsonar.organization=ebi-uniprot -Dsonar.qualitygate.timeout=1800 -Dsonar.qualitygate.wait=true"
+  SONAR_PROPS: "-Dsonar.organization=ebi-uniprot -Dsonar.qualitygate.timeout=1800 -Dsonar.qualitygate.wait=true"
   SONAR_HOST_URL: "https://sonarcloud.io"
   MAVEN_SETTINGS: "maven-settings.xml"
   URL_MAVEN_SETTINGS: "https://gitlab.ebi.ac.uk/api/v4/projects/${CONFIG_PROJECT_ID}/repository/files/${MAVEN_SETTINGS}/raw?ref=master&private_token=${GITLAB_USER_API_TOKEN}"
@@ -46,7 +46,7 @@ core:compile:
     paths:
       - .m2/repository
 
-core:unit:
+core:UT:
   stage: test
   script:
     - 'mvn $MAVEN_CLI_OPTS $UNIPROT_RESOURCES -P coverage -Dtest="! *IT" -DfailIfNoTests=false install'
@@ -88,9 +88,9 @@ core:IT:
 
 core:sonar:
   stage: quality
-  script: mvn $MAVEN_CLI_OPTS -Dsonar.coverage.jacoco.xmlReportPaths=$(find "$(pwd)" -path '*jacoco-*.xml' | sed 's/.*/&/' | tr '\n' ',') sonar:sonar ${SONAR_PROPS}
+  script: mvn $MAVEN_CLI_OPTS -Dsonar.coverage.jacoco.xmlReportPaths=$(find "$(pwd)" -path '*jacoco-*.xml' | sed 's/.*/&/' | tr '\n' ',') sonar:sonar ${SONAR_PROPS} -Dsonar.projectKey=uniprot-core
   dependencies:
-    - core:unit
+    - core:UT
     - core:IT
   artifacts:
     when: always
