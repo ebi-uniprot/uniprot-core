@@ -1,7 +1,7 @@
 variables:
   MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true -Djava.awt.headless=true"
   MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
-  SONAR_PROPS: "-Dsonar.projectKey=uniprot-core -Dsonar.organization=ebi-uniprot"
+  SONAR_PROPS: "-Dsonar.projectKey=uniprot-core -Dsonar.organization=ebi-uniprot -Dsonar.qualitygate.timeout=1800 -Dsonar.qualitygate.wait=true"
   SONAR_HOST_URL: "https://sonarcloud.io"
   MAVEN_SETTINGS: "maven-settings.xml"
   URL_MAVEN_SETTINGS: "https://gitlab.ebi.ac.uk/api/v4/projects/${CONFIG_PROJECT_ID}/repository/files/${MAVEN_SETTINGS}/raw?ref=master&private_token=${GITLAB_USER_API_TOKEN}"
@@ -19,9 +19,9 @@ cache:
 stages:
   - build
   - test
-  - quilty
+  - quality
   - deploy
-  - .post
+  - bridge
 
 core:settings:
   stage: build
@@ -46,24 +46,52 @@ core:compile:
     paths:
       - .m2/repository
 
-core:test:
+core:unit:
   stage: test
-  script: mvn $MAVEN_CLI_OPTS $UNIPROT_RESOURCES -P coverage install
+  script:
+    - 'mvn $MAVEN_CLI_OPTS $UNIPROT_RESOURCES -P coverage -Dtest="! *IT" -DfailIfNoTests=false install'
+    - 'mkdir -p ./uTest_reports'
+    - 'find "$(pwd)" -path "*jacoco.xml" | while IFS= read -r item; do NAME="${item##*/}"; cp "$item" "./uTest_reports/${NAME%.*}-$((i++)).${NAME##*.}"; done'
+    - 'find "$(pwd)" -path "*jacoco.xml" -delete'
+  dependencies:
+    - core:compile
   artifacts:
     when: always
     expire_in: 2 days
     paths:
       - .m2/repository
       - ./*/target
+      - ./uTest_reports
+    reports:
+      junit:
+        - ./*/target/surefire-reports/TEST-*.xml
+
+core:IT:
+  stage: test
+  script:
+    - 'mvn $MAVEN_CLI_OPTS $UNIPROT_RESOURCES -P coverage -Dtest="*IT" -DfailIfNoTests=false install'
+    - 'mkdir -p ./iTest_reports'
+    - 'find "$(pwd)" -path "*jacoco.xml" | while IFS= read -r item; do NAME="${item##*/}"; cp "$item" "./iTest_reports/${NAME%.*}-$((i++)).${NAME##*.}"; done'
+    - 'find "$(pwd)" -path "*jacoco.xml" -delete'
+  dependencies:
+    - core:compile
+  artifacts:
+    when: always
+    expire_in: 2 days
+    paths:
+      - .m2/repository
+      - ./*/target
+      - ./iTest_reports
     reports:
       junit:
         - ./*/target/surefire-reports/TEST-*.xml
 
 core:sonar:
-  stage: quilty
-  script: mvn $MAVEN_CLI_OPTS sonar:sonar -Dsonar.qualitygate.wait=true ${SONAR_PROPS}
+  stage: quality
+  script: mvn $MAVEN_CLI_OPTS -Dsonar.coverage.jacoco.xmlReportPaths=$(find "$(pwd)" -path '*jacoco-*.xml' | sed 's/.*/&/' | tr '\n' ',') sonar:sonar ${SONAR_PROPS}
   dependencies:
-    - core:test
+    - core:unit
+    - core:IT
   artifacts:
     when: always
     expire_in: 2 days
@@ -89,7 +117,7 @@ after_script:
   - 'ls -al */*/*/'
 
 store:downstream:
-  stage: .post
+  stage: bridge
   trigger: uniprot/deployment/mirror-uniprot-store
   when: on_success
   only:
