@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.gene.OrderedLocusName;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.impl.AbstractEvidencedValueBuilderTest;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilderTest;
 
 public class OrderedLocusNameBuilderTest extends AbstractEvidencedValueBuilderTest {
 
@@ -24,13 +25,18 @@ public class OrderedLocusNameBuilderTest extends AbstractEvidencedValueBuilderTe
         verifyEvidencedValue(orfName);
     }
 
-    public static OrderedLocusName createObject(int listSize) {
+    public static OrderedLocusName createObject(int listSize, boolean includeEvidences) {
         OrderedLocusNameBuilder builder = new OrderedLocusNameBuilder();
         String random = UUID.randomUUID().toString();
         String value = "value-" + random;
-        List<Evidence> evidences = new ArrayList<>();
+        List<Evidence> evidences =
+                includeEvidences ? EvidenceBuilderTest.createObjects(listSize) : new ArrayList<>();
         builder.value(value).evidencesSet(evidences);
         return builder.build();
+    }
+
+    public static OrderedLocusName createObject(int listSize) {
+        return createObject(listSize, false);
     }
 
     public static OrderedLocusName createObject() {
@@ -39,8 +45,12 @@ public class OrderedLocusNameBuilderTest extends AbstractEvidencedValueBuilderTe
     }
 
     public static List<OrderedLocusName> createObjects(int count) {
+        return createObjects(count, false);
+    }
+
+    public static List<OrderedLocusName> createObjects(int count, boolean includeEvidences) {
         return IntStream.range(0, count)
-                .mapToObj(i -> createObject(count))
+                .mapToObj(i -> createObject(count, includeEvidences))
                 .collect(Collectors.toList());
     }
 }

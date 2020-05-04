@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.gene.GeneName;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.impl.AbstractEvidencedValueBuilderTest;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilderTest;
 
 public class GeneNameBuilderTest extends AbstractEvidencedValueBuilderTest {
     @Test
@@ -23,13 +24,18 @@ public class GeneNameBuilderTest extends AbstractEvidencedValueBuilderTest {
         verifyEvidencedValue(orfName);
     }
 
-    public static GeneName createObject(int listSize) {
+    public static GeneName createObject(int listSize, boolean includeEvidences) {
         GeneNameBuilder builder = new GeneNameBuilder();
         String random = UUID.randomUUID().toString();
         String name = "value-" + random;
-        List<Evidence> evidences = new ArrayList<>();
+        List<Evidence> evidences =
+                includeEvidences ? EvidenceBuilderTest.createObjects(listSize) : new ArrayList<>();
         builder.value(name).evidencesSet(evidences);
         return builder.build();
+    }
+
+    public static GeneName createObject(int listSize) {
+        return createObject(listSize, false);
     }
 
     public static GeneName createObject() {

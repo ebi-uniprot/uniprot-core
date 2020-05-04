@@ -242,30 +242,41 @@ public class ProteinDescriptionBuilderTest {
         assertEquals(obj.hashCode(), obj2.hashCode());
     }
 
-    public static ProteinDescription createObject(int listSize) {
+    public static ProteinDescription createObject(int listSize, boolean includeAll) {
         ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
         int rIndex = ThreadLocalRandom.current().nextInt(0, FlagType.values().length);
         FlagType flagType = FlagType.values()[rIndex];
         builder.flag(flagType);
-        ProteinRecName recommendedName = ProteinRecNameBuilderTest.createObject(listSize);
+        ProteinRecName recommendedName =
+                ProteinRecNameBuilderTest.createObject(listSize, includeAll);
         builder.recommendedName(recommendedName);
-        List<ProteinSection> contains = ProteinSectionBuilderTest.createObjects(listSize);
+        List<ProteinSection> contains =
+                ProteinSectionBuilderTest.createObjects(listSize, includeAll);
         builder.containsSet(contains);
-        List<ProteinSection> includes = ProteinSectionBuilderTest.createObjects(listSize);
+        List<ProteinSection> includes =
+                ProteinSectionBuilderTest.createObjects(listSize, includeAll);
         builder.includesSet(includes);
-        List<ProteinSubName> submissionNames = new ArrayList<>();
+        List<ProteinSubName> submissionNames =
+                includeAll
+                        ? ProteinSubNameBuilderTest.createObjects(listSize, includeAll)
+                        : new ArrayList<>();
         builder.submissionNamesSet(submissionNames);
-        List<Name> innNames = NameBuilderTest.createObjects(listSize);
+        List<Name> innNames = NameBuilderTest.createObjects(listSize, includeAll);
         builder.innNamesSet(innNames);
-        List<Name> cdAntigenNames = NameBuilderTest.createObjects(listSize);
+        List<Name> cdAntigenNames = NameBuilderTest.createObjects(listSize, includeAll);
         builder.cdAntigenNamesSet(cdAntigenNames);
-        Name biotechName = NameBuilderTest.createObject(listSize);
+        Name biotechName = NameBuilderTest.createObject(listSize, includeAll);
         builder.biotechName(biotechName);
-        Name allergenName = NameBuilderTest.createObject(listSize);
+        Name allergenName = NameBuilderTest.createObject(listSize, includeAll);
         builder.allergenName(allergenName);
-        List<ProteinAltName> alternativeNames = ProteinAltNameBuilderTest.createObjects(listSize);
+        List<ProteinAltName> alternativeNames =
+                ProteinAltNameBuilderTest.createObjects(listSize, includeAll);
         builder.alternativeNamesSet(alternativeNames);
         return builder.build();
+    }
+
+    public static ProteinDescription createObject(int listSize) {
+        return createObject(listSize, false);
     }
 
     public static ProteinDescription createObject() {

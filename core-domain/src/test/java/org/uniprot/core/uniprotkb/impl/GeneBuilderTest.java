@@ -139,18 +139,23 @@ public class GeneBuilderTest {
         assertEquals("", obj.toString());
     }
 
-    public static Gene createObject(int listSize) {
+    public static Gene createObject(int listSize, boolean includeEvidences) {
         GeneBuilder builder = new GeneBuilder();
-        GeneName geneName = GeneNameBuilderTest.createObject(listSize);
-        List<GeneNameSynonym> synonyms = GeneNameSynonymBuilderTest.createObjects(listSize);
+        GeneName geneName = GeneNameBuilderTest.createObject(listSize, includeEvidences);
+        List<GeneNameSynonym> synonyms =
+                GeneNameSynonymBuilderTest.createObjects(listSize, includeEvidences);
         List<OrderedLocusName> orderedLocusNames =
-                OrderedLocusNameBuilderTest.createObjects(listSize);
-        List<ORFName> orfNames = ORFNameBuilderTest.createObjects(listSize);
+                OrderedLocusNameBuilderTest.createObjects(listSize, includeEvidences);
+        List<ORFName> orfNames = ORFNameBuilderTest.createObjects(listSize, includeEvidences);
         return builder.geneName(geneName)
                 .synonymsSet(synonyms)
                 .orderedLocusNamesSet(orderedLocusNames)
                 .orfNamesSet(orfNames)
                 .build();
+    }
+
+    public static Gene createObject(int listSize) {
+        return createObject(listSize, false);
     }
 
     public static Gene createObject() {

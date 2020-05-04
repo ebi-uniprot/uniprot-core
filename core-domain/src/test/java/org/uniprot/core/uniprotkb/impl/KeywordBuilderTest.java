@@ -1,9 +1,6 @@
 package org.uniprot.core.uniprotkb.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.keyword.KeywordCategory;
-import org.uniprot.core.uniprotkb.Keyword;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +9,11 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.keyword.KeywordCategory;
+import org.uniprot.core.uniprotkb.Keyword;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilderTest;
 
 public class KeywordBuilderTest {
     @Test
@@ -42,16 +43,20 @@ public class KeywordBuilderTest {
         assertEquals(KeywordCategory.UNKNOWN, keyword.getCategory());
     }
 
-    public static Keyword createObject(int listSize) {
+    public static Keyword createObject(int listSize, boolean includeEvidences) {
         KeywordBuilder builder = new KeywordBuilder();
         String random = UUID.randomUUID().toString();
         String id = "id-" + random;
         String name = "name-" + random;
         KeywordCategory kc = KeywordCategory.UNKNOWN;
         List<Evidence> evidences =
-                new ArrayList<>(); // EvidenceBuilderTest.createObjects(listSize);
+                includeEvidences ? EvidenceBuilderTest.createObjects(listSize) : new ArrayList<>();
         builder.id(id).name(name).category(kc).evidencesSet(evidences);
         return builder.build();
+    }
+
+    public static Keyword createObject(int listSize) {
+        return createObject(listSize, false);
     }
 
     public static Keyword createObject() {

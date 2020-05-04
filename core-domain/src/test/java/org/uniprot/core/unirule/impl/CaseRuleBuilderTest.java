@@ -117,11 +117,12 @@ public class CaseRuleBuilderTest {
         assertEquals(Arrays.asList(ruleException), object.getRuleExceptions());
     }
 
-    public static CaseRule createObject(int listSize) {
+    public static CaseRule createObject(int listSize, boolean includeEvidences) {
         List<ConditionSet> conditionSets = ConditionSetBuilderTest.createObjects(listSize);
-        List<Annotation> annotations = AnnotationBuilderTest.createObjects(listSize);
+        List<Annotation> annotations =
+                AnnotationBuilderTest.createObjects(listSize, includeEvidences);
         List<RuleException> ruleExceptions =
-                AnnotationRuleExceptionImplTest.createObjects(listSize);
+                AnnotationRuleExceptionImplTest.createObjects(listSize, includeEvidences);
         CaseRuleBuilder builder = new CaseRuleBuilder(conditionSets);
         builder.annotationsSet(annotations);
         builder.ruleExceptionsSet(ruleExceptions);
@@ -136,14 +137,22 @@ public class CaseRuleBuilderTest {
         return rule;
     }
 
+    public static CaseRule createObject(int listSize) {
+        return createObject(listSize, false);
+    }
+
     public static CaseRule createObject() {
         int listSize = ThreadLocalRandom.current().nextInt(1, 5);
         return createObject(listSize);
     }
 
     public static List<CaseRule> createObjects(int count) {
+        return createObjects(count, false);
+    }
+
+    public static List<CaseRule> createObjects(int count, boolean includeEvidences) {
         return IntStream.range(0, count)
-                .mapToObj(i -> createObject(count))
+                .mapToObj(i -> createObject(count, includeEvidences))
                 .collect(Collectors.toList());
     }
 }

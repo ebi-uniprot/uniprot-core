@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.UniProtKBDatabaseMock;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilderTest;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 
@@ -62,17 +63,22 @@ public class UniProtKBCrossReferenceBuilderTest {
         assertNotNull(builder);
     }
 
-    public static UniProtKBCrossReference createObject(int listSize) {
+    public static UniProtKBCrossReference createObject(int listSize, boolean includeEvidences) {
         UniProtCrossReferenceBuilder builder = new UniProtCrossReferenceBuilder();
         UniProtKBDatabase database = new UniProtKBDatabaseMock("EMBL");
         String random = UUID.randomUUID().toString();
         String id = "id" + random;
         String isoformId = "isoform" + random;
-        List<Evidence> evidences = new ArrayList<>();
+        List<Evidence> evidences =
+                includeEvidences ? EvidenceBuilderTest.createObjects(listSize) : new ArrayList<>();
         builder.database(database).id(id).isoformId(isoformId);
         builder.propertiesAdd("prop1" + random, "value" + random);
         builder.evidencesSet(evidences);
         return builder.build();
+    }
+
+    public static UniProtKBCrossReference createObject(int listSize) {
+        return createObject(listSize, false);
     }
 
     public static UniProtKBCrossReference createObject() {
