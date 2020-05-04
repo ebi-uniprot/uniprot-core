@@ -1,6 +1,9 @@
 package org.uniprot.core.uniprotkb.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.keyword.KeywordCategory;
+import org.uniprot.core.uniprotkb.Keyword;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.keyword.KeywordCategory;
-import org.uniprot.core.uniprotkb.Keyword;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class KeywordBuilderTest {
     @Test
@@ -47,9 +47,6 @@ public class KeywordBuilderTest {
         String random = UUID.randomUUID().toString();
         String id = "id-" + random;
         String name = "name-" + random;
-        //        int rIndex = ThreadLocalRandom.current().nextInt(0,
-        // KeywordCategory.values().length);
-        //        KeywordCategory kc = KeywordCategory.values()[rIndex];
         KeywordCategory kc = KeywordCategory.UNKNOWN;
         List<Evidence> evidences =
                 new ArrayList<>(); // EvidenceBuilderTest.createObjects(listSize);
