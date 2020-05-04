@@ -32,7 +32,7 @@ public class KeywordConverter implements Converter<KeywordType, Keyword> {
         return new KeywordBuilder()
                 .id(xmlObj.getId())
                 .name(keywordValue)
-                .category(KeywordCategory.UNKNOWN) // FIXME
+                .category(KeywordCategory.UNKNOWN)
                 .evidencesSet(evidences)
                 .build();
     }
