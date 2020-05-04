@@ -262,17 +262,18 @@ public class UniRuleEntryBuilderTest {
         assertNotSame(entry.getInformation(), updatedEntry.getInformation());
     }
 
-    public static UniRuleEntry createObject(int listSize) {
+    public static UniRuleEntry createObject(int listSize, boolean includeEvidences) {
         String random = UUID.randomUUID().toString();
         UniRuleId uniRuleId = UniRuleIdBuilderTest.createObject(listSize);
         Information information = InformationBuilderTest.createObject(listSize);
         int rIndex = ThreadLocalRandom.current().nextInt(0, RuleStatus.values().length);
         RuleStatus ruleStatus = RuleStatus.values()[rIndex];
-        Rule mainRule = RuleBuilderTest.createObject(listSize);
-        List<CaseRule> otherRules = CaseRuleBuilderTest.createObjects(listSize);
-        List<SamFeatureSet> samFeatureSets = SamFeatureSetBuilderTest.createObjects(listSize);
+        Rule mainRule = RuleBuilderTest.createObject(listSize, includeEvidences);
+        List<CaseRule> otherRules = CaseRuleBuilderTest.createObjects(listSize, includeEvidences);
+        List<SamFeatureSet> samFeatureSets =
+                SamFeatureSetBuilderTest.createObjects(listSize, includeEvidences);
         List<PositionFeatureSet> positionFeatureSets =
-                PositionFeatureSetBuilderTest.createObjects(listSize);
+                PositionFeatureSetBuilderTest.createObjects(listSize, includeEvidences);
         String createdBy = "createdBy" + random;
         String modifiedBy = "modifiedBy" + random;
         LocalDate createdDate = LocalDate.now();
@@ -299,6 +300,10 @@ public class UniRuleEntryBuilderTest {
         assertEquals(createdDate, uniRuleEntry.getCreatedDate());
         assertEquals(modifiedDate, uniRuleEntry.getModifiedDate());
         return uniRuleEntry;
+    }
+
+    public static UniRuleEntry createObject(int listSize) {
+        return createObject(listSize, false);
     }
 
     public static UniRuleEntry createObject() {

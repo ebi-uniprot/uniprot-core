@@ -109,16 +109,17 @@ public class PositionFeatureSetBuilderTest {
         assertEquals(Arrays.asList(ruleExc), positionFeatureSet.getRuleExceptions());
     }
 
-    public static PositionFeatureSet createObject(int listSize) {
+    public static PositionFeatureSet createObject(int listSize, boolean includeEvidences) {
         String random = UUID.randomUUID().toString();
         String alignmentSignature = "alignmentSignature-" + random;
         String tag = "tag-" + random;
         List<Condition> conditions = ConditionBuilderTest.createObjects(listSize);
-        List<Annotation> annotations = AnnotationBuilderTest.createObjects(listSize);
+        List<Annotation> annotations =
+                AnnotationBuilderTest.createObjects(listSize, includeEvidences);
         List<PositionalFeature> positionalFeatures =
                 PositionalFeatureBuilderTest.createObjects(listSize);
         List<RuleException> ruleExceptions =
-                AnnotationRuleExceptionImplTest.createObjects(listSize);
+                AnnotationRuleExceptionImplTest.createObjects(listSize, includeEvidences);
         UniProtKBAccession uniProtKBAccession =
                 UniProtKBAccessionBuilderTest.createObject(listSize);
 
@@ -141,14 +142,22 @@ public class PositionFeatureSetBuilderTest {
         return positionFeatureSet;
     }
 
+    public static PositionFeatureSet createObject(int listSize) {
+        return createObject(listSize, false);
+    }
+
     public static PositionFeatureSet createObject() {
         int listSize = ThreadLocalRandom.current().nextInt(1, 5);
         return createObject(listSize);
     }
 
     public static List<PositionFeatureSet> createObjects(int count) {
+        return createObjects(count, false);
+    }
+
+    public static List<PositionFeatureSet> createObjects(int count, boolean includeEvidences) {
         return IntStream.range(0, count)
-                .mapToObj(i -> createObject(count))
+                .mapToObj(i -> createObject(count, includeEvidences))
                 .collect(Collectors.toList());
     }
 }

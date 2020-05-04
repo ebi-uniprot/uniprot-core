@@ -196,15 +196,20 @@ public class FreeTextCommentBuilderTest {
         assertEquals(obj.hashCode(), obj2.hashCode());
     }
 
-    public static Comment createObject(int listSize) {
+    public static Comment createObject(int listSize, boolean includeEvidences) {
         FreeTextCommentBuilder builder = new FreeTextCommentBuilder();
         builder.commentType(CommentType.DOMAIN);
         String random = UUID.randomUUID().toString();
         String molecule = "mol-" + random;
         builder.molecule(molecule);
-        List<EvidencedValue> evidencedValues = EvidencedValueBuilderTest.createObjects(listSize);
+        List<EvidencedValue> evidencedValues =
+                EvidencedValueBuilderTest.createObjects(listSize, includeEvidences);
         builder.textsSet(evidencedValues);
         return builder.build();
+    }
+
+    public static Comment createObject(int listSize) {
+        return createObject(listSize, false);
     }
 
     public static Comment createObject() {

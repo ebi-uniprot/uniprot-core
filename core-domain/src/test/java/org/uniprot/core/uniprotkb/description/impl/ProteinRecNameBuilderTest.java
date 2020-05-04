@@ -61,15 +61,19 @@ public class ProteinRecNameBuilderTest {
         assertEquals(obj.hashCode(), obj2.hashCode());
     }
 
-    public static ProteinRecName createObject(int listSize) {
+    public static ProteinRecName createObject(int listSize, boolean includeEvidences) {
         ProteinRecNameBuilder builder = new ProteinRecNameBuilder();
-        Name fullName = NameBuilderTest.createObject(listSize);
+        Name fullName = NameBuilderTest.createObject(listSize, includeEvidences);
         builder.fullName(fullName);
-        List<Name> shortNames = NameBuilderTest.createObjects(listSize);
+        List<Name> shortNames = NameBuilderTest.createObjects(listSize, includeEvidences);
         builder.shortNamesSet(shortNames);
-        List<EC> ecNumbers = ECBuilderTest.createObjects(listSize);
+        List<EC> ecNumbers = ECBuilderTest.createObjects(listSize, includeEvidences);
         builder.ecNumbersSet(ecNumbers);
         return builder.build();
+    }
+
+    public static ProteinRecName createObject(int listSize) {
+        return createObject(listSize, false);
     }
 
     public static ProteinRecName createObject() {

@@ -82,9 +82,10 @@ public class SamFeatureSetBuilderTest {
         assertEquals(st, samFeatureSet.getSamTrigger());
     }
 
-    public static SamFeatureSet createObject(int listSize) {
+    public static SamFeatureSet createObject(int listSize, boolean includeEvidences) {
         List<Condition> conditions = ConditionBuilderTest.createObjects(listSize);
-        List<Annotation> annotations = AnnotationBuilderTest.createObjects(listSize);
+        List<Annotation> annotations =
+                AnnotationBuilderTest.createObjects(listSize, includeEvidences);
         SamTrigger samTrigger = SamTriggerBuilderTest.createObject(listSize);
         SamFeatureSetBuilder builder = new SamFeatureSetBuilder(samTrigger);
         builder.conditionsSet(conditions).annotationsSet(annotations);
@@ -98,14 +99,22 @@ public class SamFeatureSetBuilderTest {
         return samFeatureSet;
     }
 
+    public static SamFeatureSet createObject(int listSize) {
+        return createObject(listSize, false);
+    }
+
     public static SamFeatureSet createObject() {
         int listSize = ThreadLocalRandom.current().nextInt(1, 5);
         return createObject(listSize);
     }
 
     public static List<SamFeatureSet> createObjects(int count) {
+        return createObjects(count, false);
+    }
+
+    public static List<SamFeatureSet> createObjects(int count, boolean includeEvidences) {
         return IntStream.range(0, count)
-                .mapToObj(i -> createObject(count))
+                .mapToObj(i -> createObject(count, includeEvidences))
                 .collect(Collectors.toList());
     }
 }

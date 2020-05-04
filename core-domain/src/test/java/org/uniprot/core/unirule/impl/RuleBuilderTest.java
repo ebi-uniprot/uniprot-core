@@ -118,11 +118,12 @@ public class RuleBuilderTest {
         assertEquals(conditionSets, object.getConditionSets());
     }
 
-    public static Rule createObject(int listSize) {
+    public static Rule createObject(int listSize, boolean includeEvidences) {
         List<ConditionSet> conditionSets = ConditionSetBuilderTest.createObjects(listSize);
-        List<Annotation> annotations = AnnotationBuilderTest.createObjects(listSize);
+        List<Annotation> annotations =
+                AnnotationBuilderTest.createObjects(listSize, includeEvidences);
         List<RuleException> ruleExceptions =
-                AnnotationRuleExceptionImplTest.createObjects(listSize);
+                AnnotationRuleExceptionImplTest.createObjects(listSize, includeEvidences);
         RuleBuilder builder = new RuleBuilder(conditionSets);
         builder.annotationsSet(annotations);
         builder.ruleExceptionsSet(ruleExceptions);
@@ -132,6 +133,10 @@ public class RuleBuilderTest {
         assertEquals(annotations, rule.getAnnotations());
         assertEquals(ruleExceptions, rule.getRuleExceptions());
         return rule;
+    }
+
+    public static Rule createObject(int listSize) {
+        return createObject(listSize, false);
     }
 
     public static Rule createObject() {

@@ -16,6 +16,7 @@ import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceBuilderTest;
 import org.uniprot.core.uniprotkb.comment.Disease;
 import org.uniprot.core.uniprotkb.comment.DiseaseDatabase;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilderTest;
 
 public class DiseaseBuilderTest {
     @Test
@@ -134,7 +135,7 @@ public class DiseaseBuilderTest {
         assertEquals(obj.hashCode(), obj2.hashCode());
     }
 
-    public static Disease createObject(int listSize) {
+    public static Disease createObject(int listSize, boolean includeEvidences) {
         DiseaseBuilder builder = new DiseaseBuilder();
         String random = UUID.randomUUID().toString();
         String dId = "dId" + random;
@@ -143,7 +144,8 @@ public class DiseaseBuilderTest {
         String desc = "Desc-" + random;
         builder.diseaseId(dId);
         builder.diseaseAc(dAc);
-        List<Evidence> evidences = new ArrayList<>();
+        List<Evidence> evidences =
+                includeEvidences ? EvidenceBuilderTest.createObjects(listSize) : new ArrayList<>();
         builder.evidencesSet(evidences);
         builder.acronym(acronym);
         builder.description(desc);
@@ -151,6 +153,10 @@ public class DiseaseBuilderTest {
                 DiseaseCrossReferenceBuilderTest.createObject(listSize);
         builder.diseaseCrossReference(diseaseCrossReference);
         return builder.build();
+    }
+
+    public static Disease createObject(int listSize) {
+        return createObject(listSize, false);
     }
 
     public static Disease createObject() {

@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.unirule.UniRuleEntry;
@@ -17,7 +16,7 @@ public class UniRuleJsonConfigTest {
 
     @BeforeEach
     void setUp() {
-        this.entry = UniRuleEntryBuilderTest.createObject(1);
+        this.entry = UniRuleEntryBuilderTest.createObject(1, true);
     }
 
     @Test
@@ -26,7 +25,6 @@ public class UniRuleJsonConfigTest {
                 UniRuleJsonConfig.getInstance().getFullObjectMapper(), this.entry);
     }
 
-    @Disabled
     @Test
     void testNoUnsetField() {
         ValidateJson.verifyEmptyFields(this.entry);
