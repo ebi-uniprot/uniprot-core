@@ -8,7 +8,8 @@ import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.PositionalFeature;
 import org.uniprot.core.unirule.RuleException;
-import org.uniprot.core.unirule.impl.AnnotationImpl;
+import org.uniprot.core.unirule.RuleExceptionAnnotation;
+import org.uniprot.core.unirule.impl.RuleExceptionAnnotationType;
 import org.uniprot.core.unirule.impl.RuleExceptionBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.AnnotationType;
@@ -66,7 +67,7 @@ public class RuleExceptionConverter implements Converter<RuleExceptionType, Rule
                         .map(this.accessionConverter::toXml)
                         .collect(Collectors.toList());
         // get Annotation or positional feature
-        if (uniObj.getAnnotation() instanceof AnnotationImpl) { // annotation
+        if (isAnnotationType(uniObj.getAnnotation())) { // annotation
             Annotation annotation = (Annotation) uniObj.getAnnotation();
             AnnotationType annotationType = this.annotationConverter.toXml(annotation);
             ruleExceptionType.setAnnotation(annotationType);
@@ -82,5 +83,11 @@ public class RuleExceptionConverter implements Converter<RuleExceptionType, Rule
         xmlAccessions.addAll(accessions);
 
         return ruleExceptionType;
+    }
+
+    private boolean isAnnotationType(RuleExceptionAnnotation ruleExceptionAnnotation) {
+        return Objects.nonNull(ruleExceptionAnnotation)
+                && ruleExceptionAnnotation.getAnnotationType()
+                        == RuleExceptionAnnotationType.ANNOTATION;
     }
 }
