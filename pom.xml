@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-<groupId>org.uniprot</groupId>
+	<groupId>org.uniprot</groupId>
 	<artifactId>core-parent</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0.1-SNAPSHOT</version>
@@ -289,7 +289,8 @@
 			<id>format</id>
 			<build>
 				<plugins>
-					<!-- Auto-format code when built for consistency amongst developers' contributions -->
+					<!-- Auto-format code when built for consistency amongst developers' 
+						contributions -->
 					<plugin>
 						<groupId>com.diffplug.spotless</groupId>
 						<artifactId>spotless-maven-plugin</artifactId>

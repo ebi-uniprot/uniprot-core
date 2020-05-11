@@ -1,14 +1,14 @@
 package org.uniprot.core.flatfile.parser.impl.de;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.uniprot.core.flatfile.antlr.DeLineParser;
 import org.uniprot.core.flatfile.antlr.DeLineParserBaseListener;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA. User: wudong Date: 08/08/13 Time: 12:26 To change this template use

@@ -2,14 +2,14 @@ package org.uniprot.core.unirule.impl;
 
 import static org.uniprot.core.util.Utils.*;
 
-import org.uniprot.core.Builder;
-import org.uniprot.core.unirule.Condition;
-import org.uniprot.core.unirule.ConditionSet;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.Builder;
+import org.uniprot.core.unirule.Condition;
+import org.uniprot.core.unirule.ConditionSet;
 
 public class ConditionSetBuilder implements Builder<ConditionSet> {
 

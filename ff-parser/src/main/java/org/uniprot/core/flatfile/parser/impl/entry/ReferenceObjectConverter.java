@@ -1,5 +1,8 @@
 package org.uniprot.core.flatfile.parser.impl.entry;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.impl.AbstractCitationBuilder;
@@ -17,9 +20,6 @@ import org.uniprot.core.flatfile.parser.impl.rx.RxLineConverter;
 import org.uniprot.core.uniprotkb.ReferenceComment;
 import org.uniprot.core.uniprotkb.UniProtKBReference;
 import org.uniprot.core.uniprotkb.impl.UniProtKBReferenceBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ReferenceObjectConverter extends EvidenceCollector
         implements Converter<EntryObject.ReferenceObject, UniProtKBReference> {

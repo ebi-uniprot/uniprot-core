@@ -2,8 +2,8 @@ package org.uniprot.core.json.parser.uniprot;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -28,8 +28,8 @@ import org.uniprot.core.uniprotkb.impl.UniProtKBIdBuilder;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.cv.xdb.UniProtDatabaseTypes;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /** @author lgonzales */
 public class UniProtKBEntryIT {

@@ -1,5 +1,11 @@
 package org.uniprot.core.flatfile.transformer;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.comment.Cofactor;
@@ -10,12 +16,6 @@ import org.uniprot.core.uniprotkb.comment.impl.CofactorBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.CofactorCommentBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.NoteBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class CofactorCommentTransformer implements CommentTransformer<CofactorComment> {
 

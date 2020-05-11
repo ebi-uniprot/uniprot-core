@@ -1,12 +1,14 @@
 package org.uniprot.cv.ec;
 
+import static java.util.Collections.emptyList;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.*;
 
-import static java.util.Collections.emptyList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -14,9 +16,6 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.ec.ECEntry;
 import org.uniprot.core.cv.ec.impl.ECEntryBuilder;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created 18/03/19

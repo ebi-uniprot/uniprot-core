@@ -3,13 +3,13 @@ package org.uniprot.core.cv.disease.impl;
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableList;
 
-import org.uniprot.core.Builder;
-import org.uniprot.core.cv.disease.DiseaseCrossReference;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.Builder;
+import org.uniprot.core.cv.disease.DiseaseCrossReference;
 
 public class DiseaseCrossReferenceBuilder implements Builder<DiseaseCrossReference> {
 

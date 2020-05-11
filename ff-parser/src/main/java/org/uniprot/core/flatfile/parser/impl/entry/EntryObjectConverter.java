@@ -1,5 +1,8 @@
 package org.uniprot.core.flatfile.parser.impl.entry;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.flatfile.parser.Converter;
@@ -32,9 +35,6 @@ import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
-
-import java.util.*;
-import java.util.stream.Collectors;
 
 public class EntryObjectConverter implements Converter<EntryObject, UniProtKBEntry> {
 

@@ -1,6 +1,7 @@
 package org.uniprot.core.flatfile.parser.impl.ft;
 
-import com.google.common.base.Strings;
+import java.util.*;
+import java.util.regex.Matcher;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.PositionModifier;
@@ -16,8 +17,7 @@ import org.uniprot.core.uniprotkb.feature.FeatureType;
 import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.FeatureBuilder;
 
-import java.util.*;
-import java.util.regex.Matcher;
+import com.google.common.base.Strings;
 
 public class FtLineConverter extends EvidenceCollector
         implements Converter<FtLineObject, List<Feature>> {

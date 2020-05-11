@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.proteome;
 
+import java.util.List;
+
 import org.uniprot.core.proteome.BuscoReport;
 import org.uniprot.core.proteome.impl.BuscoReportBuilder;
 import org.uniprot.core.util.Utils;
@@ -7,8 +9,6 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 import org.uniprot.core.xml.jaxb.proteome.ScorePropertyType;
 import org.uniprot.core.xml.jaxb.proteome.ScoreType;
-
-import java.util.List;
 
 /**
  * @author lgonzales

@@ -2,13 +2,13 @@ package org.uniprot.core.uniprotkb.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.UniProtKBId;
-
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.UniProtKBId;
 
 public class UniProtKBIdBuilderTest {
 

@@ -1,9 +1,9 @@
 package org.uniprot.core.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.Sequence;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 25/01/19

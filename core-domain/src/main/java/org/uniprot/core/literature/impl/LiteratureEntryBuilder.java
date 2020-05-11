@@ -1,11 +1,11 @@
 package org.uniprot.core.literature.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.literature.LiteratureStatistics;
-
-import javax.annotation.Nonnull;
 
 /** @author lgonzales */
 public class LiteratureEntryBuilder implements Builder<LiteratureEntry> {

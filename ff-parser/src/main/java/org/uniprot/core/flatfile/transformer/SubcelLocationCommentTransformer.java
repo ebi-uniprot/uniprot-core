@@ -1,5 +1,8 @@
 package org.uniprot.core.flatfile.transformer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocation;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocationComment;
@@ -9,9 +12,6 @@ import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationCommentBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationValueBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SubcelLocationCommentTransformer
         implements CommentTransformer<SubcellularLocationComment> {

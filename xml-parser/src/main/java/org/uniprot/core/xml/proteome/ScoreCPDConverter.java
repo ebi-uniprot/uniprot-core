@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.proteome;
 
+import java.util.List;
+
 import org.uniprot.core.proteome.CPDReport;
 import org.uniprot.core.proteome.CPDStatus;
 import org.uniprot.core.proteome.impl.CPDReportBuilder;
@@ -8,8 +10,6 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 import org.uniprot.core.xml.jaxb.proteome.ScorePropertyType;
 import org.uniprot.core.xml.jaxb.proteome.ScoreType;
-
-import java.util.List;
 
 /**
  * @author lgonzales

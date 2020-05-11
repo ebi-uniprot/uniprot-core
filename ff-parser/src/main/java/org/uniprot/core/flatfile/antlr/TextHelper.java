@@ -1,13 +1,13 @@
 package org.uniprot.core.flatfile.antlr;
 
-import com.google.common.base.Preconditions;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.base.Preconditions;
 
 /** User: wudong, Date: 02/10/13, Time: 16:21 */
 public class TextHelper {

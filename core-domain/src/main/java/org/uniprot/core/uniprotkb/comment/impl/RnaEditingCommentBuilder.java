@@ -3,15 +3,15 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableList;
 
-import org.uniprot.core.uniprotkb.comment.Note;
-import org.uniprot.core.uniprotkb.comment.RnaEdPosition;
-import org.uniprot.core.uniprotkb.comment.RnaEditingComment;
-import org.uniprot.core.uniprotkb.comment.RnaEditingLocationType;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.uniprotkb.comment.Note;
+import org.uniprot.core.uniprotkb.comment.RnaEdPosition;
+import org.uniprot.core.uniprotkb.comment.RnaEditingComment;
+import org.uniprot.core.uniprotkb.comment.RnaEditingLocationType;
 
 public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditingComment> {
     private String molecule;

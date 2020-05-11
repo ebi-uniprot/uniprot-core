@@ -3,6 +3,10 @@ package org.uniprot.core.flatfile.antlr;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
@@ -12,21 +16,17 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.EvidencedString;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.FreeText;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 class CcLineTextCommentParserTest {
     @Test
     void test1() {
         String lines =
                 "CC   -!- FUNCTION: This enzyme is necessary for target cell lysis in cell-\n"
-                    + "CC       mediated immune responses. It cleaves after Lys or Arg, or may"
-                    + " be\n"
-                    + "CC       involved in apoptosis.\n"
-                    + "CC   -!- CAUTION: Exons 1a and 1b of the sequence reported in\n"
-                    + "CC       PubMed:17180578 are of human origin, however exon 2 shows strong\n"
-                    + "CC       similarity to the rat sequence.\n";
+                        + "CC       mediated immune responses. It cleaves after Lys or Arg, or may"
+                        + " be\n"
+                        + "CC       involved in apoptosis.\n"
+                        + "CC   -!- CAUTION: Exons 1a and 1b of the sequence reported in\n"
+                        + "CC       PubMed:17180578 are of human origin, however exon 2 shows strong\n"
+                        + "CC       similarity to the rat sequence.\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -197,8 +197,8 @@ class CcLineTextCommentParserTest {
     void testWithEvidence2() {
         String lines =
                 "CC   -!- FUNCTION: Transfers the 4'-phosphopantetheine moiety from coenzyme\n"
-                    + "CC       A to a Ser of acyl-carrier protein. {ECO:0000006|PubMed:20858735,"
-                    + " ECO:0000006}.\n";
+                        + "CC       A to a Ser of acyl-carrier protein. {ECO:0000006|PubMed:20858735,"
+                        + " ECO:0000006}.\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -273,13 +273,13 @@ class CcLineTextCommentParserTest {
 
         String lines =
                 "CC   -!- ACTIVITY REGULATION: Hydrolysis of proteins to small peptides in\n"
-                    + "CC       the presence of ATP and magnesium. Alpha-casein is the usual"
-                    + " test\n"
-                    + "CC       substrate. In the absence of ATP, only oligopeptides shorter"
-                    + " than\n"
-                    + "CC       five residues are hydrolyzed (such as succinyl-Leu-Tyr-|-NHMec;\n"
-                    + "CC       and Leu-Tyr-Leu-|-Tyr-Trp, in which cleavage of the -Tyr-|-Leu-\n"
-                    + "CC       and -Tyr-|-Trp bonds also occurs).\n";
+                        + "CC       the presence of ATP and magnesium. Alpha-casein is the usual"
+                        + " test\n"
+                        + "CC       substrate. In the absence of ATP, only oligopeptides shorter"
+                        + " than\n"
+                        + "CC       five residues are hydrolyzed (such as succinyl-Leu-Tyr-|-NHMec;\n"
+                        + "CC       and Leu-Tyr-Leu-|-Tyr-Trp, in which cleavage of the -Tyr-|-Leu-\n"
+                        + "CC       and -Tyr-|-Trp bonds also occurs).\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -408,10 +408,10 @@ class CcLineTextCommentParserTest {
     void testCcWithHeader() {
         String ccLineString =
                 "FUNCTION: This enzyme is necessary for target cell lysis in cell-mediated immune"
-                    + " responses. It cleaves after Lys or Arg. May be involved in apoptosis.\n"
-                    + "CAUTION: Exons 1a and 1b of the sequence reported in PubMed:17180578 are of"
-                    + " human origin, however exon 2 shows strong similarity to the rat"
-                    + " sequence.\n";
+                        + " responses. It cleaves after Lys or Arg. May be involved in apoptosis.\n"
+                        + "CAUTION: Exons 1a and 1b of the sequence reported in PubMed:17180578 are of"
+                        + " human origin, however exon 2 shows strong similarity to the rat"
+                        + " sequence.\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineFormater formater = new CcLineFormater();

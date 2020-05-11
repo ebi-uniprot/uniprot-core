@@ -1,13 +1,13 @@
 package org.uniprot.core.xml;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import org.bbottema.loremipsumobjects.ClassBindings;
 import org.bbottema.loremipsumobjects.LoremIpsumObjectCreator;
 import org.bbottema.loremipsumobjects.typefactories.MethodBasedFactory;
 import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
-
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 public abstract class AbstractConverterTest {
 

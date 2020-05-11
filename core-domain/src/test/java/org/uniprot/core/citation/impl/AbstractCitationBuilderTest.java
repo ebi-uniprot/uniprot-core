@@ -1,10 +1,14 @@
 package org.uniprot.core.citation.impl;
 
+import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.core.Is.is;
 
-import static java.util.Arrays.asList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.annotation.Nonnull;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
@@ -13,11 +17,6 @@ import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.impl.CrossReferenceBuilder;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.annotation.Nonnull;
 
 class AbstractCitationBuilderTest {
     static final CitationType CITATION_TYPE = CitationType.UNPUBLISHED;

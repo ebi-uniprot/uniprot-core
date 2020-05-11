@@ -3,6 +3,9 @@ package org.uniprot.core.flatfile.parser.converter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.og.OgLineConverter;
 import org.uniprot.core.flatfile.parser.impl.og.OgLineObject;
@@ -10,9 +13,6 @@ import org.uniprot.core.flatfile.parser.impl.og.OgLineObject.OgEnum;
 import org.uniprot.core.uniprotkb.GeneEncodingType;
 import org.uniprot.core.uniprotkb.GeneLocation;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-
-import java.util.ArrayList;
-import java.util.List;
 
 class OgLineConverterTest {
     private final OgLineConverter converter = new OgLineConverter();

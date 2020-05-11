@@ -1,12 +1,12 @@
 package org.uniprot.core.unirule.impl;
 
-import org.uniprot.core.unirule.Condition;
-import org.uniprot.core.unirule.ConditionSet;
-import org.uniprot.core.util.Utils;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.unirule.Condition;
+import org.uniprot.core.unirule.ConditionSet;
+import org.uniprot.core.util.Utils;
 
 public class ConditionSetImpl implements ConditionSet {
 

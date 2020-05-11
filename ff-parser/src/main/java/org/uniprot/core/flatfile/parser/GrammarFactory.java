@@ -1,5 +1,7 @@
 package org.uniprot.core.flatfile.parser;
 
+import java.io.Serializable;
+
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Lexer;
@@ -62,8 +64,6 @@ import org.uniprot.core.flatfile.antlr.SsLineLexer;
 import org.uniprot.core.flatfile.antlr.SsLineParser;
 import org.uniprot.core.flatfile.antlr.UniprotLexer;
 import org.uniprot.core.flatfile.antlr.UniprotParser;
-
-import java.io.Serializable;
 
 /**
  * Created with IntelliJ IDEA. User: wudong Date: 08/08/13 Time: 15:34 To change this template use

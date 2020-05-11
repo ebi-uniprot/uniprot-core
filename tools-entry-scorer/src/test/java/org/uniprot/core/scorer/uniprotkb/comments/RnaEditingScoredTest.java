@@ -24,10 +24,10 @@ class RnaEditingScoredTest extends CommentScoreTestBase {
     void shouldSpScore90() throws Exception {
         String line =
                 "CC   -!- RNA EDITING: Modified_positions=Undetermined; Note=Partially\n"
-                    + "CC       edited. RNA editing at this position consists of an insertion of\n"
-                    + "CC       one guanine nucleotide (By similarity). The sequence displayed\n"
-                    + "CC       here is the P protein, derived from the unedited RNA. The edited\n"
-                    + "CC       RNA gives rise to the V protein.;";
+                        + "CC       edited. RNA editing at this position consists of an insertion of\n"
+                        + "CC       one guanine nucleotide (By similarity). The sequence displayed\n"
+                        + "CC       here is the P protein, derived from the unedited RNA. The edited\n"
+                        + "CC       RNA gives rise to the V protein.;";
         verify(CommentType.RNA_EDITING, line, 9.0, true);
     }
 

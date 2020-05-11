@@ -43,11 +43,11 @@ class CcLineBioPhyChemPCommentParserTest {
     void testSmallVmaxValue() {
         String lines =
                 "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                    + "CC       Kinetic parameters:\n"
-                    + "CC         KM=0.3913 uM for FAM fluorophore-coupled RNA substrate and a\n"
-                    + "CC         quencher-coupled DNA primer {ECO:0000269|PubMed:26779609};\n"
-                    + "CC         Vmax=0.000197 umol/sec/ug enzyme"
-                    + " {ECO:0000269|PubMed:26779609};\n";
+                        + "CC       Kinetic parameters:\n"
+                        + "CC         KM=0.3913 uM for FAM fluorophore-coupled RNA substrate and a\n"
+                        + "CC         quencher-coupled DNA primer {ECO:0000269|PubMed:26779609};\n"
+                        + "CC         Vmax=0.000197 umol/sec/ug enzyme"
+                        + " {ECO:0000269|PubMed:26779609};\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -102,15 +102,15 @@ class CcLineBioPhyChemPCommentParserTest {
     void testTwoTempDependences() {
         String lines =
                 "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                    + "CC       Kinetic parameters:\n"
-                    + "CC         KM=71 uM for ATP;\n"
-                    + "CC         KM=98 uM for ADP;\n"
-                    + "CC         KM=1.5 mM for acetate;\n"
-                    + "CC         KM=0.47 mM for acetyl phosphate;\n"
-                    + "CC       Temperature dependence:\n"
-                    + "CC         Optimum temperature is 65 degrees Celsius. Protected from\n"
-                    + "CC         thermal inactivation by ATP. {ECO:0000269|PubMed:10433555};\n"
-                    + "CC         2 thermal inactivation by ATP. {ECO:0000269|PubMed:10433556};\n";
+                        + "CC       Kinetic parameters:\n"
+                        + "CC         KM=71 uM for ATP;\n"
+                        + "CC         KM=98 uM for ADP;\n"
+                        + "CC         KM=1.5 mM for acetate;\n"
+                        + "CC         KM=0.47 mM for acetyl phosphate;\n"
+                        + "CC       Temperature dependence:\n"
+                        + "CC         Optimum temperature is 65 degrees Celsius. Protected from\n"
+                        + "CC         thermal inactivation by ATP. {ECO:0000269|PubMed:10433555};\n"
+                        + "CC         2 thermal inactivation by ATP. {ECO:0000269|PubMed:10433556};\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -215,21 +215,21 @@ class CcLineBioPhyChemPCommentParserTest {
     void testBPWithEvidences() {
         String lines =
                 "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                    + "CC       Absorption:\n"
-                    + "CC         Abs(max)=465 nm {ECO:0000313|EMBL:BAG16761.1};\n"
-                    + "CC         Note=The above maximum is for the oxidized form. Shows a"
-                    + " maximal\n"
-                    + "CC         peak at 330 nm in the reduced form. These absorption peaks are\n"
-                    + "CC         for the tryptophylquinone cofactor. {ECO:0000303|Ref.6,\n"
-                    + "CC         ECO:0000269|PubMed:10433554};\n"
-                    + "CC       Kinetic parameters:\n"
-                    + "CC         KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};\n"
-                    + "CC         KM=688 uM for pyridoxal {ECO:0000313|EMBL:BAG16761.1,\n"
-                    + "CC         ECO:0000269|PubMed:10433554};\n"
-                    + "CC         Vmax=17 umol/min/mg enzyme {ECO:0000313|PDB:3OW2};\n"
-                    + "CC         Note=The enzyme is substrate inhibited at high substrate\n"
-                    + "CC         concentrations (Ki=1.08 mM for tyramine).\n"
-                    + "CC         {ECO:0000256|HAMAP-Rule:MF_00205};\n";
+                        + "CC       Absorption:\n"
+                        + "CC         Abs(max)=465 nm {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "CC         Note=The above maximum is for the oxidized form. Shows a"
+                        + " maximal\n"
+                        + "CC         peak at 330 nm in the reduced form. These absorption peaks are\n"
+                        + "CC         for the tryptophylquinone cofactor. {ECO:0000303|Ref.6,\n"
+                        + "CC         ECO:0000269|PubMed:10433554};\n"
+                        + "CC       Kinetic parameters:\n"
+                        + "CC         KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "CC         KM=688 uM for pyridoxal {ECO:0000313|EMBL:BAG16761.1,\n"
+                        + "CC         ECO:0000269|PubMed:10433554};\n"
+                        + "CC         Vmax=17 umol/min/mg enzyme {ECO:0000313|PDB:3OW2};\n"
+                        + "CC         Note=The enzyme is substrate inhibited at high substrate\n"
+                        + "CC         concentrations (Ki=1.08 mM for tyramine).\n"
+                        + "CC         {ECO:0000256|HAMAP-Rule:MF_00205};\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -275,13 +275,13 @@ class CcLineBioPhyChemPCommentParserTest {
     void testBPWithEvidences2() {
         String lines =
                 "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                    + "CC       pH dependence:\n"
-                    + "CC         Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1};\n"
-                    + "CC       Redox potential:\n"
-                    + "CC         E(0) is -448 mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2};\n"
-                    + "CC       Temperature dependence:\n"
-                    + "CC         Highly active at low temperatures, even at 0 degree Celsius.\n"
-                    + "CC         Thermolabile. {ECO:0000256|HAMAP-Rule:MF_00205};\n";
+                        + "CC       pH dependence:\n"
+                        + "CC         Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "CC       Redox potential:\n"
+                        + "CC         E(0) is -448 mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2};\n"
+                        + "CC       Temperature dependence:\n"
+                        + "CC         Highly active at low temperatures, even at 0 degree Celsius.\n"
+                        + "CC         Thermolabile. {ECO:0000256|HAMAP-Rule:MF_00205};\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -309,15 +309,15 @@ class CcLineBioPhyChemPCommentParserTest {
     void testBPSpecialChars() {
         String lines =
                 "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                    + "CC       Kinetic parameters:\n"
-                    + "CC         KM=19.7 uM for peptide substrate"
-                    + " DABCYL-ARSGAKASGC(farnesyl)LVS-\n"
-                    + "CC         EDANS where EDANS is 5-[(2-aminoethyl)amino]naphthalene-1-\n"
-                    + "CC         sulphonic acid fluorophore and DABCYL is 4-{[4-\n"
-                    + "CC         (dimethylamino)phenyl]azo}benzoic acid quencher.\n"
-                    + "CC         {ECO:0000269|PubMed:24291792};\n"
-                    + "CC         Note=kcat is 0.175 s(-1) for peptide substrate DABCYL-\n"
-                    + "CC         ARSGAKASGC(farnesyl)LVS-EDANS. {ECO:0000269|PubMed:24291792};\n";
+                        + "CC       Kinetic parameters:\n"
+                        + "CC         KM=19.7 uM for peptide substrate"
+                        + " DABCYL-ARSGAKASGC(farnesyl)LVS-\n"
+                        + "CC         EDANS where EDANS is 5-[(2-aminoethyl)amino]naphthalene-1-\n"
+                        + "CC         sulphonic acid fluorophore and DABCYL is 4-{[4-\n"
+                        + "CC         (dimethylamino)phenyl]azo}benzoic acid quencher.\n"
+                        + "CC         {ECO:0000269|PubMed:24291792};\n"
+                        + "CC         Note=kcat is 0.175 s(-1) for peptide substrate DABCYL-\n"
+                        + "CC         ARSGAKASGC(farnesyl)LVS-EDANS. {ECO:0000269|PubMed:24291792};\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -327,8 +327,8 @@ class CcLineBioPhyChemPCommentParserTest {
         BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.getObject();
         assertEquals(
                 "19.7 uM for peptide substrate DABCYL-ARSGAKASGC(farnesyl)LVS-EDANS where EDANS is"
-                    + " 5-[(2-aminoethyl)amino]naphthalene-1-sulphonic acid fluorophore and DABCYL"
-                    + " is 4-{[4-(dimethylamino)phenyl]azo}benzoic acid quencher.",
+                        + " 5-[(2-aminoethyl)amino]naphthalene-1-sulphonic acid fluorophore and DABCYL"
+                        + " is 4-{[4-(dimethylamino)phenyl]azo}benzoic acid quencher.",
                 bp.getKms().get(0).getValue());
     }
 
@@ -336,20 +336,20 @@ class CcLineBioPhyChemPCommentParserTest {
     void testNoHeaderWithEvidence() {
         String ccLineStringEvidence =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "Absorption:\n"
-                     + "  Abs(max)=~465 nm {ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "  Note=The above maximum is for the oxidized form. Shows a maximal peak at"
-                     + " 330 nm in the reduced form. {ECO:0000269|PubMed:10433554}. These"
-                     + " absorption peaks are for the tryptophylquinone cofactor."
-                     + " {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};\n"
-                     + "Kinetic parameters:\n"
-                     + "  KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "  KM=688 uM for pyridoxal {ECO:0000269|PubMed:10433554,"
-                     + " ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "  Vmax=17 umol/min/mg enzyme {ECO:0000313|PDB:3OW2};\n"
-                     + "  Note=The enzyme is substrate inhibited at high substrate concentrations"
-                     + " (Ki=1.08 mM for tyramine). {ECO:0000256|HAMAP-Rule:MF_00205}. Another"
-                     + " note is very very long. {ECO:0000256|HAMAP-Rule:MF_00205};");
+                        + "Absorption:\n"
+                        + "  Abs(max)=~465 nm {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "  Note=The above maximum is for the oxidized form. Shows a maximal peak at"
+                        + " 330 nm in the reduced form. {ECO:0000269|PubMed:10433554}. These"
+                        + " absorption peaks are for the tryptophylquinone cofactor."
+                        + " {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};\n"
+                        + "Kinetic parameters:\n"
+                        + "  KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "  KM=688 uM for pyridoxal {ECO:0000269|PubMed:10433554,"
+                        + " ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "  Vmax=17 umol/min/mg enzyme {ECO:0000313|PDB:3OW2};\n"
+                        + "  Note=The enzyme is substrate inhibited at high substrate concentrations"
+                        + " (Ki=1.08 mM for tyramine). {ECO:0000256|HAMAP-Rule:MF_00205}. Another"
+                        + " note is very very long. {ECO:0000256|HAMAP-Rule:MF_00205};");
         CcLineFormater formater = new CcLineFormater();
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();

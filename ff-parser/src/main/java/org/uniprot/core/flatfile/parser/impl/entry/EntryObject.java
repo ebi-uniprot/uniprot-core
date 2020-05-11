@@ -1,5 +1,8 @@
 package org.uniprot.core.flatfile.parser.impl.entry;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.uniprot.core.flatfile.parser.impl.ac.AcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject;
@@ -25,9 +28,6 @@ import org.uniprot.core.flatfile.parser.impl.rt.RtLineObject;
 import org.uniprot.core.flatfile.parser.impl.rx.RxLineObject;
 import org.uniprot.core.flatfile.parser.impl.sq.SqLineObject;
 import org.uniprot.core.flatfile.parser.impl.ss.SsLineObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /** User: wudong, Date: 16/09/13, Time: 10:46 */
 public class EntryObject {

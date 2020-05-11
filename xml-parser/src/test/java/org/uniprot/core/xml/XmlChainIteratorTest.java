@@ -2,16 +2,16 @@ package org.uniprot.core.xml;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.xml.jaxb.proteome.Proteome;
-import org.uniprot.core.xml.jaxb.uniref.Entry;
-import org.uniprot.core.xml.writer.DefaultXmlWriter;
-
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.xml.jaxb.proteome.Proteome;
+import org.uniprot.core.xml.jaxb.uniref.Entry;
+import org.uniprot.core.xml.writer.DefaultXmlWriter;
 
 /**
  * @author jluo

@@ -1,9 +1,9 @@
 package org.uniprot.core.unirule.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.impl.AbstractValueBuilder;
 import org.uniprot.core.unirule.ConditionValue;
-
-import javax.annotation.Nonnull;
 
 public class ConditionValueBuilder extends AbstractValueBuilder<ConditionValue> {
 

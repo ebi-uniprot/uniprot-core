@@ -2,10 +2,10 @@ package org.uniprot.core.uniprotkb.description.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.description.ProteinSubName;
-
-import java.util.Collections;
 
 class ProteinSubNameImplTest {
     @Test

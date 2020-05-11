@@ -2,12 +2,12 @@ package org.uniprot.core.flatfile.transformer;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineTransformer;
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
-
-import java.util.List;
 
 class CcLineTransformerTest {
     private CcLineTransformer transformer = new CcLineTransformer();
@@ -16,27 +16,27 @@ class CcLineTransformerTest {
     void testAPComment() {
         String ccLineString =
                 "ALTERNATIVE PRODUCTS:\n"
-                    + "Event=Alternative splicing; Named isoforms=6;\n"
-                    + "Comment=Additional isoforms seem to exist.;\n"
-                    + "Name=1; Synonyms=A;\n"
-                    + "IsoId=Q9V8R9-1; Sequence=Displayed;\n"
-                    + "Note=Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is"
-                    + " in conflict in positions: 33:I->T. No experimental confirmation"
-                    + " available.;\n"
-                    + "Name=2;\n"
-                    + "IsoId=Q9V8R9-2; Sequence=VSP_000476, VSP_000477, VSP_000479, VSP_000480,"
-                    + " VSP_000481;\n"
-                    + "Name=Bim-alpha3; Synonyms=BCL2-like 11 transcript variant 10, Bim-AD,"
-                    + " BimAD;\n"
-                    + "IsoId=Q9V8R9-3; Sequence=VSP_000475, VSP_000478, VSP_000479;\n"
-                    + "Name=4; Synonyms=B;\n"
-                    + "IsoId=Q9V8R9-4; Sequence=VSP_000476, VSP_000477, VSP_000479;\n"
-                    + "Name=5;\n"
-                    + "IsoId=Q9V8R9-5; Sequence=VSP_000474, VSP_000478;\n"
-                    + "Note=No experimental confirmation available.;\n"
-                    + "Name=6; Synonyms=D;\n"
-                    + "IsoId=Q9V8R9-6; Sequence=Described;\n"
-                    + "Note=No experimental confirmation available.;";
+                        + "Event=Alternative splicing; Named isoforms=6;\n"
+                        + "Comment=Additional isoforms seem to exist.;\n"
+                        + "Name=1; Synonyms=A;\n"
+                        + "IsoId=Q9V8R9-1; Sequence=Displayed;\n"
+                        + "Note=Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is"
+                        + " in conflict in positions: 33:I->T. No experimental confirmation"
+                        + " available.;\n"
+                        + "Name=2;\n"
+                        + "IsoId=Q9V8R9-2; Sequence=VSP_000476, VSP_000477, VSP_000479, VSP_000480,"
+                        + " VSP_000481;\n"
+                        + "Name=Bim-alpha3; Synonyms=BCL2-like 11 transcript variant 10, Bim-AD,"
+                        + " BimAD;\n"
+                        + "IsoId=Q9V8R9-3; Sequence=VSP_000475, VSP_000478, VSP_000479;\n"
+                        + "Name=4; Synonyms=B;\n"
+                        + "IsoId=Q9V8R9-4; Sequence=VSP_000476, VSP_000477, VSP_000479;\n"
+                        + "Name=5;\n"
+                        + "IsoId=Q9V8R9-5; Sequence=VSP_000474, VSP_000478;\n"
+                        + "Note=No experimental confirmation available.;\n"
+                        + "Name=6; Synonyms=D;\n"
+                        + "IsoId=Q9V8R9-6; Sequence=Described;\n"
+                        + "Note=No experimental confirmation available.;";
 
         List<Comment> comments = transformer.transformNoHeader(ccLineString);
         assertEquals(1, comments.size());
@@ -70,33 +70,33 @@ class CcLineTransformerTest {
     void testAPCommentWithEvidence() {
         String ccLineStringEvidence =
                 "ALTERNATIVE PRODUCTS:\n"
-                    + "Event=Alternative splicing; Named isoforms=6;\n"
-                    + "Comment=Additional isoforms seem to exist. {ECO:0000269|PubMed:10433554,"
-                    + " ECO:0000303|Ref.6}; Another additional isoforms also seem to exist."
-                    + " {ECO:0000269|PubMed:10433554};\n"
-                    + "Name=1 {ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}; Synonyms=A"
-                    + " {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
-                    + "IsoId=Q9V8R9-1; Sequence=Displayed;\n"
-                    + "Note=Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is"
-                    + " in conflict in positions: 33:I->T. No experimental confirmation available."
-                    + " {ECO:0000313|PDB:3OW2};\n"
-                    + "Name=2;\n"
-                    + "IsoId=Q9V8R9-2; Sequence=VSP_000476, VSP_000477, VSP_000479, VSP_000480,"
-                    + " VSP_000481;\n"
-                    + "Name=Bim-alpha3 {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};"
-                    + " Synonyms=BCL2-like 11 transcript variant 10 {ECO:0000313|EMBL:BAG16761.1},"
-                    + " Bim-AD, BimAD {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
-                    + "IsoId=Q9V8R9-3; Sequence=VSP_000475, VSP_000478, VSP_000479;\n"
-                    + "Name=4; Synonyms=B;\n"
-                    + "IsoId=Q9V8R9-4; Sequence=VSP_000476, VSP_000477, VSP_000479;\n"
-                    + "Name=5;\n"
-                    + "IsoId=Q9V8R9-5; Sequence=VSP_000474, VSP_000478;\n"
-                    + "Note=No experimental confirmation available. {ECO:0000269|PubMed:10433554,"
-                    + " ECO:0000313|EMBL:BAG16761.1}; Another no experimental confirmation also"
-                    + " available. {ECO:0000269|PubMed:1043355, ECO:0000313|EMBL:BAG16761.1};\n"
-                    + "Name=6; Synonyms=D;\n"
-                    + "IsoId=Q9V8R9-6; Sequence=Described;\n"
-                    + "Note=No experimental confirmation.;";
+                        + "Event=Alternative splicing; Named isoforms=6;\n"
+                        + "Comment=Additional isoforms seem to exist. {ECO:0000269|PubMed:10433554,"
+                        + " ECO:0000303|Ref.6}; Another additional isoforms also seem to exist."
+                        + " {ECO:0000269|PubMed:10433554};\n"
+                        + "Name=1 {ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}; Synonyms=A"
+                        + " {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
+                        + "IsoId=Q9V8R9-1; Sequence=Displayed;\n"
+                        + "Note=Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is"
+                        + " in conflict in positions: 33:I->T. No experimental confirmation available."
+                        + " {ECO:0000313|PDB:3OW2};\n"
+                        + "Name=2;\n"
+                        + "IsoId=Q9V8R9-2; Sequence=VSP_000476, VSP_000477, VSP_000479, VSP_000480,"
+                        + " VSP_000481;\n"
+                        + "Name=Bim-alpha3 {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};"
+                        + " Synonyms=BCL2-like 11 transcript variant 10 {ECO:0000313|EMBL:BAG16761.1},"
+                        + " Bim-AD, BimAD {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
+                        + "IsoId=Q9V8R9-3; Sequence=VSP_000475, VSP_000478, VSP_000479;\n"
+                        + "Name=4; Synonyms=B;\n"
+                        + "IsoId=Q9V8R9-4; Sequence=VSP_000476, VSP_000477, VSP_000479;\n"
+                        + "Name=5;\n"
+                        + "IsoId=Q9V8R9-5; Sequence=VSP_000474, VSP_000478;\n"
+                        + "Note=No experimental confirmation available. {ECO:0000269|PubMed:10433554,"
+                        + " ECO:0000313|EMBL:BAG16761.1}; Another no experimental confirmation also"
+                        + " available. {ECO:0000269|PubMed:1043355, ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "Name=6; Synonyms=D;\n"
+                        + "IsoId=Q9V8R9-6; Sequence=Described;\n"
+                        + "Note=No experimental confirmation.;";
         List<Comment> comments = transformer.transformNoHeader(ccLineStringEvidence);
         assertEquals(1, comments.size());
         assertTrue(comments.get(0) instanceof AlternativeProductsComment);
@@ -163,34 +163,34 @@ class CcLineTransformerTest {
     void tesAPCommenttWithEvidenceFormated() {
         String ccLineStringEvidence =
                 "ALTERNATIVE PRODUCTS:\n"
-                    + "Event=Alternative splicing; Named isoforms=6;\n"
-                    + "  Comment=Additional isoforms seem to exist. {ECO:0000269|PubMed:10433554,"
-                    + " ECO:0000303|Ref.6}; Another additional isoforms also seem to exist."
-                    + " {ECO:0000269|PubMed:10433554};\n"
-                    + "Name=1 {ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}; Synonyms=A"
-                    + " {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
-                    + "  IsoId=Q9V8R9-1; Sequence=Displayed;\n"
-                    + "  Note=Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is"
-                    + " in conflict in positions: 33:I->T. No experimental confirmation available."
-                    + " {ECO:0000313|PDB:3OW2};\n"
-                    + "Name=2;\n"
-                    + "  IsoId=Q9V8R9-2; Sequence=VSP_000476, VSP_000477, VSP_000479, VSP_000480,"
-                    + " VSP_000481;\n"
-                    + "Name=Bim-alpha3 {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};"
-                    + " Synonyms=BCL2-like 11 transcript variant 10 {ECO:0000313|EMBL:BAG16761.1},"
-                    + " Bim-AD, BimAD {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
-                    + "  IsoId=Q9V8R9-3; Sequence=VSP_000475, VSP_000478, VSP_000479;\n"
-                    + "Name=4; Synonyms=B;\n"
-                    + "  IsoId=Q9V8R9-4; Sequence=VSP_000476, VSP_000477, VSP_000479;\n"
-                    + "Name=5;\n"
-                    + "  IsoId=Q9V8R9-5; Sequence=VSP_000474, VSP_000478;\n"
-                    + "  Note=No experimental confirmation available."
-                    + " {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1}; Another no"
-                    + " experimental confirmation also available. {ECO:0000269|PubMed:1043355,"
-                    + " ECO:0000313|EMBL:BAG16761.1};\n"
-                    + "Name=6; Synonyms=D;\n"
-                    + "  IsoId=Q9V8R9-6; Sequence=Described;\n"
-                    + "  Note=No experimental confirmation.;";
+                        + "Event=Alternative splicing; Named isoforms=6;\n"
+                        + "  Comment=Additional isoforms seem to exist. {ECO:0000269|PubMed:10433554,"
+                        + " ECO:0000303|Ref.6}; Another additional isoforms also seem to exist."
+                        + " {ECO:0000269|PubMed:10433554};\n"
+                        + "Name=1 {ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}; Synonyms=A"
+                        + " {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
+                        + "  IsoId=Q9V8R9-1; Sequence=Displayed;\n"
+                        + "  Note=Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is"
+                        + " in conflict in positions: 33:I->T. No experimental confirmation available."
+                        + " {ECO:0000313|PDB:3OW2};\n"
+                        + "Name=2;\n"
+                        + "  IsoId=Q9V8R9-2; Sequence=VSP_000476, VSP_000477, VSP_000479, VSP_000480,"
+                        + " VSP_000481;\n"
+                        + "Name=Bim-alpha3 {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};"
+                        + " Synonyms=BCL2-like 11 transcript variant 10 {ECO:0000313|EMBL:BAG16761.1},"
+                        + " Bim-AD, BimAD {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
+                        + "  IsoId=Q9V8R9-3; Sequence=VSP_000475, VSP_000478, VSP_000479;\n"
+                        + "Name=4; Synonyms=B;\n"
+                        + "  IsoId=Q9V8R9-4; Sequence=VSP_000476, VSP_000477, VSP_000479;\n"
+                        + "Name=5;\n"
+                        + "  IsoId=Q9V8R9-5; Sequence=VSP_000474, VSP_000478;\n"
+                        + "  Note=No experimental confirmation available."
+                        + " {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1}; Another no"
+                        + " experimental confirmation also available. {ECO:0000269|PubMed:1043355,"
+                        + " ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "Name=6; Synonyms=D;\n"
+                        + "  IsoId=Q9V8R9-6; Sequence=Described;\n"
+                        + "  Note=No experimental confirmation.;";
         List<Comment> comments = transformer.transformNoHeader(ccLineStringEvidence);
         assertEquals(1, comments.size());
         assertTrue(comments.get(0) instanceof AlternativeProductsComment);
@@ -302,15 +302,15 @@ class CcLineTransformerTest {
     void testBPCPComment2() {
         String ccLineStringEvidence =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "pH dependence:\n"
-                     + "Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1}. Optimum pH is 3-5."
-                     + " {ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "Redox potential:\n"
-                     + "E(0) is -448 mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2}. E(0) is -234"
-                     + " mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2};\n"
-                     + "Temperature dependence:\n"
-                     + "Highly active at low temperatures, even at 0 degree Celsius. Thermolabile."
-                     + " {ECO:0000256|HAMAP-Rule:MF_00205}. Another active at low temperatures.;");
+                        + "pH dependence:\n"
+                        + "Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1}. Optimum pH is 3-5."
+                        + " {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "Redox potential:\n"
+                        + "E(0) is -448 mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2}. E(0) is -234"
+                        + " mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2};\n"
+                        + "Temperature dependence:\n"
+                        + "Highly active at low temperatures, even at 0 degree Celsius. Thermolabile."
+                        + " {ECO:0000256|HAMAP-Rule:MF_00205}. Another active at low temperatures.;");
         List<Comment> comments = transformer.transformNoHeader(ccLineStringEvidence);
         assertEquals(1, comments.size());
         assertTrue(comments.get(0) instanceof BPCPComment);
@@ -353,16 +353,16 @@ class CcLineTransformerTest {
     void testBPCPComment3() {
         String ccLineString =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "Absorption:\n"
-                     + "  Abs(max)=465 nm;\n"
-                     + "  Note=The above maximum is for the oxidized form. Shows a maximal peak at"
-                     + " 330 nm in the reduced form.;\n"
-                     + "Kinetic parameters:\n"
-                     + "  KM=5.4 uM for tyramine;\n"
-                     + "  KM=688 uM for pyridoxal;\n"
-                     + "  Vmax=17 umol/min/mg enzyme;\n"
-                     + "  Note=The enzyme is substrate inhibited at high substrate concentrations"
-                     + " (Ki=1.08 mM for tyramine).. Another note is very very long.;");
+                        + "Absorption:\n"
+                        + "  Abs(max)=465 nm;\n"
+                        + "  Note=The above maximum is for the oxidized form. Shows a maximal peak at"
+                        + " 330 nm in the reduced form.;\n"
+                        + "Kinetic parameters:\n"
+                        + "  KM=5.4 uM for tyramine;\n"
+                        + "  KM=688 uM for pyridoxal;\n"
+                        + "  Vmax=17 umol/min/mg enzyme;\n"
+                        + "  Note=The enzyme is substrate inhibited at high substrate concentrations"
+                        + " (Ki=1.08 mM for tyramine).. Another note is very very long.;");
 
         List<Comment> comments = transformer.transformNoHeader(ccLineString);
         assertEquals(1, comments.size());
@@ -416,20 +416,20 @@ class CcLineTransformerTest {
     void testBPCPComment4() {
         String ccLineStringEvidence =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "Absorption:\n"
-                     + "  Abs(max)=~465 nm {ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "  Note=The above maximum is for the oxidized form. Shows a maximal peak at"
-                     + " 330 nm in the reduced form. {ECO:0000269|PubMed:10433554}. These"
-                     + " absorption peaks are for the tryptophylquinone cofactor."
-                     + " {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};\n"
-                     + "Kinetic parameters:\n"
-                     + "  KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "  KM=688 uM for pyridoxal {ECO:0000269|PubMed:10433554,"
-                     + " ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "  Vmax=17 umol/min/mg enzyme {ECO:0000313|PDB:3OW2};\n"
-                     + "  Note=The enzyme is substrate inhibited at high substrate concentrations"
-                     + " (Ki=1.08 mM for tyramine). {ECO:0000256|HAMAP-Rule:MF_00205}. Another"
-                     + " note is very very long. {ECO:0000256|HAMAP-Rule:MF_00205};");
+                        + "Absorption:\n"
+                        + "  Abs(max)=~465 nm {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "  Note=The above maximum is for the oxidized form. Shows a maximal peak at"
+                        + " 330 nm in the reduced form. {ECO:0000269|PubMed:10433554}. These"
+                        + " absorption peaks are for the tryptophylquinone cofactor."
+                        + " {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};\n"
+                        + "Kinetic parameters:\n"
+                        + "  KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "  KM=688 uM for pyridoxal {ECO:0000269|PubMed:10433554,"
+                        + " ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "  Vmax=17 umol/min/mg enzyme {ECO:0000313|PDB:3OW2};\n"
+                        + "  Note=The enzyme is substrate inhibited at high substrate concentrations"
+                        + " (Ki=1.08 mM for tyramine). {ECO:0000256|HAMAP-Rule:MF_00205}. Another"
+                        + " note is very very long. {ECO:0000256|HAMAP-Rule:MF_00205};");
 
         List<Comment> comments = transformer.transformNoHeader(ccLineStringEvidence);
         assertEquals(1, comments.size());
@@ -491,13 +491,13 @@ class CcLineTransformerTest {
     void testCofactorEvidence1() {
         String ccLineStringEvidence =
                 "COFACTOR:\n"
-                    + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
-                    + " Evidence={ECO:0000255|HAMAP-Rule:MF_00086};\n"
-                    + "Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
-                    + " Evidence={ECO:0000255|HAMAP-Rule:MF_00089, ECO:0000269|PubMed:16683189};\n"
-                    + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt). A second"
-                    + " loosely associated metal ion is visible in the crystal structure."
-                    + " {ECO:0000255|HAMAP-Rule:MF_00082};";
+                        + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00086};\n"
+                        + "Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00089, ECO:0000269|PubMed:16683189};\n"
+                        + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt). A second"
+                        + " loosely associated metal ion is visible in the crystal structure."
+                        + " {ECO:0000255|HAMAP-Rule:MF_00082};";
         List<Comment> comments = transformer.transformNoHeader(ccLineStringEvidence);
         assertEquals(1, comments.size());
         assertTrue(comments.get(0) instanceof CofactorComment);
@@ -533,16 +533,16 @@ class CcLineTransformerTest {
     void testConfactorEvidence2() {
         String ccLineStringEvidence =
                 "COFACTOR: [Serine protease NS3]:\n"
-                    + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:16683188,"
-                    + " ECO:0000269|PubMed:16683189};\n"
-                    + "Name=A very looooooooooooong cofactor name with 1 evidence tag;"
-                    + " Xref=ChEBI:CHEBI:12345; Evidence={ECO:0000269|PubMed:16683188};\n"
-                    + "Name=A very very looooooooooooong cofactor name with X evidence tags;"
-                    + " Xref=ChEBI:CHEBI:54321; Evidence={ECO:0000269|PubMed:16683188,"
-                    + " ECO:0000269|PubMed:16683189};\n"
-                    + "Note=Binds 2 divalent ions per subunit. {ECO:0000269|PubMed:16683188,"
-                    + " ECO:0000255|HAMAP-Rule:MF_00086}. Another note."
-                    + " {ECO:0000269|PubMed:16683189};";
+                        + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:16683188,"
+                        + " ECO:0000269|PubMed:16683189};\n"
+                        + "Name=A very looooooooooooong cofactor name with 1 evidence tag;"
+                        + " Xref=ChEBI:CHEBI:12345; Evidence={ECO:0000269|PubMed:16683188};\n"
+                        + "Name=A very very looooooooooooong cofactor name with X evidence tags;"
+                        + " Xref=ChEBI:CHEBI:54321; Evidence={ECO:0000269|PubMed:16683188,"
+                        + " ECO:0000269|PubMed:16683189};\n"
+                        + "Note=Binds 2 divalent ions per subunit. {ECO:0000269|PubMed:16683188,"
+                        + " ECO:0000255|HAMAP-Rule:MF_00086}. Another note."
+                        + " {ECO:0000269|PubMed:16683189};";
         List<Comment> comments = transformer.transformNoHeader(ccLineStringEvidence);
         assertEquals(1, comments.size());
         assertTrue(comments.get(0) instanceof CofactorComment);
@@ -663,11 +663,11 @@ class CcLineTransformerTest {
 
         String description =
                 "A complex disease characterized by malignant lesions arising from the inner wall"
-                    + " of the large intestine (the colon) and the rectum. Genetic alterations are"
-                    + " often associated with progression from premalignant lesion (adenoma) to"
-                    + " invasive adenocarcinoma. Risk factors for cancer of the colon and rectum"
-                    + " include colon polyps, long-standing ulcerative colitis, and genetic family"
-                    + " history.";
+                        + " of the large intestine (the colon) and the rectum. Genetic alterations are"
+                        + " often associated with progression from premalignant lesion (adenoma) to"
+                        + " invasive adenocarcinoma. Risk factors for cancer of the colon and rectum"
+                        + " include colon polyps, long-standing ulcerative colitis, and genetic family"
+                        + " history.";
         String note =
                 "The gene represented in this "
                         + "entry is involved in disease pathogenesis. Another note";
@@ -708,11 +708,11 @@ class CcLineTransformerTest {
         assertNotNull(comment);
         String description =
                 "A complex disease characterized by malignant lesions arising from the inner wall"
-                    + " of the large intestine (the colon) and the rectum. Genetic alterations are"
-                    + " often associated with progression from premalignant lesion (adenoma) to"
-                    + " invasive adenocarcinoma. Risk factors for cancer of the colon and rectum"
-                    + " include colon polyps, long-standing ulcerative colitis, and genetic family"
-                    + " history.";
+                        + " of the large intestine (the colon) and the rectum. Genetic alterations are"
+                        + " often associated with progression from premalignant lesion (adenoma) to"
+                        + " invasive adenocarcinoma. Risk factors for cancer of the colon and rectum"
+                        + " include colon polyps, long-standing ulcerative colitis, and genetic family"
+                        + " history.";
         String note1 =
                 "The gene represented in this " + "entry is involved in disease pathogenesis";
         String note2 = "Another note";
@@ -744,19 +744,19 @@ class CcLineTransformerTest {
     void testFailed() {
         String val =
                 "DISEASE: Juvenile polyposis/hereditary hemorrhagic telangiectasia syndrome"
-                    + " (JP/HHT) [MIM:175050]: JP/HHT syndrome phenotype consists of the"
-                    + " coexistence of juvenile polyposis (JIP) and hereditary hemorrhagic"
-                    + " telangiectasia (HHT) [MIM:187300] in a single individual. JIP and HHT are"
-                    + " autosomal dominant disorders with distinct and non-overlapping clinical"
-                    + " features. The former, an inherited gastrointestinal malignancy"
-                    + " predisposition, is caused by mutations in SMAD4 or BMPR1A, and the latter"
-                    + " is a vascular malformation disorder caused by mutations in ENG or ACVRL1."
-                    + " All four genes encode proteins involved in the"
-                    + " transforming-growth-factor-signaling pathway. Although there are reports"
-                    + " of patients and families with phenotypes of both disorders combined, the"
-                    + " genetic etiology of this association is unknown."
-                    + " {ECO:0000269|PubMed:15031030}. Note=The disease is caused by mutations"
-                    + " affecting the gene represented in this entry.";
+                        + " (JP/HHT) [MIM:175050]: JP/HHT syndrome phenotype consists of the"
+                        + " coexistence of juvenile polyposis (JIP) and hereditary hemorrhagic"
+                        + " telangiectasia (HHT) [MIM:187300] in a single individual. JIP and HHT are"
+                        + " autosomal dominant disorders with distinct and non-overlapping clinical"
+                        + " features. The former, an inherited gastrointestinal malignancy"
+                        + " predisposition, is caused by mutations in SMAD4 or BMPR1A, and the latter"
+                        + " is a vascular malformation disorder caused by mutations in ENG or ACVRL1."
+                        + " All four genes encode proteins involved in the"
+                        + " transforming-growth-factor-signaling pathway. Although there are reports"
+                        + " of patients and families with phenotypes of both disorders combined, the"
+                        + " genetic etiology of this association is unknown."
+                        + " {ECO:0000269|PubMed:15031030}. Note=The disease is caused by mutations"
+                        + " affecting the gene represented in this entry.";
         List<Comment> comments = transformer.transformNoHeader(val);
         assertEquals(1, comments.size());
         assertTrue(comments.get(0) instanceof DiseaseComment);
@@ -769,15 +769,15 @@ class CcLineTransformerTest {
         String diseaseReferenceId = "175050";
         String diseaseDescription =
                 "JP/HHT syndrome phenotype consists of the coexistence of juvenile polyposis (JIP)"
-                    + " and hereditary hemorrhagic telangiectasia (HHT) [MIM:187300] in a single"
-                    + " individual. JIP and HHT are autosomal dominant disorders with distinct and"
-                    + " non-overlapping clinical features. The former, an inherited"
-                    + " gastrointestinal malignancy predisposition, is caused by mutations in"
-                    + " SMAD4 or BMPR1A, and the latter is a vascular malformation disorder caused"
-                    + " by mutations in ENG or ACVRL1. All four genes encode proteins involved in"
-                    + " the transforming-growth-factor-signaling pathway. Although there are"
-                    + " reports of patients and families with phenotypes of both disorders"
-                    + " combined, the genetic etiology of this association is unknown.";
+                        + " and hereditary hemorrhagic telangiectasia (HHT) [MIM:187300] in a single"
+                        + " individual. JIP and HHT are autosomal dominant disorders with distinct and"
+                        + " non-overlapping clinical features. The former, an inherited"
+                        + " gastrointestinal malignancy predisposition, is caused by mutations in"
+                        + " SMAD4 or BMPR1A, and the latter is a vascular malformation disorder caused"
+                        + " by mutations in ENG or ACVRL1. All four genes encode proteins involved in"
+                        + " the transforming-growth-factor-signaling pathway. Although there are"
+                        + " reports of patients and families with phenotypes of both disorders"
+                        + " combined, the genetic etiology of this association is unknown.";
         String diseaseNote =
                 "The disease is caused by mutations affecting the gene represented in this entry";
         assertEquals(disease.getDiseaseId(), diseaseId);

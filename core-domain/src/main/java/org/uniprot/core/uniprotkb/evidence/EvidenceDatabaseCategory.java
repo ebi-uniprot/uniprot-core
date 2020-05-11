@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprotkb.evidence;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum EvidenceDatabaseCategory implements EnumDisplay {
     I,

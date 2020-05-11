@@ -1,11 +1,11 @@
 package org.uniprot.core.json.parser.crossref;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-
 import org.uniprot.core.cv.xdb.CrossRefEntry;
 import org.uniprot.core.cv.xdb.impl.CrossRefEntryImpl;
 import org.uniprot.core.json.parser.JsonConfig;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 public class CrossRefJsonConfig extends JsonConfig {
     private static CrossRefJsonConfig INSTANCE;

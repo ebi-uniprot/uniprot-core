@@ -1,9 +1,9 @@
 package org.uniprot.core.flatfile.parser.impl;
 
-import org.uniprot.core.flatfile.parser.EntryReader;
-
 import java.io.*;
 import java.util.zip.GZIPInputStream;
+
+import org.uniprot.core.flatfile.parser.EntryReader;
 
 public class EntryBufferedReader implements EntryReader {
     private BufferedReader reader;

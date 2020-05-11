@@ -2,12 +2,12 @@ package org.uniprot.core.flatfile.parser.impl.cc;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.uniprotkb.comment.FreeTextComment;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CCFreeTextCommentLineBuilder extends CCLineBuilderAbstr<FreeTextComment> {
 

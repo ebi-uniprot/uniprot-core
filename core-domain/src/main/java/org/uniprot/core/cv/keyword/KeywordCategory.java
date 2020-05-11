@@ -1,8 +1,8 @@
 package org.uniprot.core.cv.keyword;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum KeywordCategory implements EnumDisplay, KeywordId {
     BIOLOGICAL_PROCESS("Biological process", "KW-9999"),

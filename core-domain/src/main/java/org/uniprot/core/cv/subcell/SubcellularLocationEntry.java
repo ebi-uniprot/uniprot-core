@@ -1,12 +1,12 @@
 package org.uniprot.core.cv.subcell;
 
-import org.uniprot.core.Statistics;
-import org.uniprot.core.cv.go.GoTerm;
-import org.uniprot.core.cv.keyword.KeywordId;
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
+
+import org.uniprot.core.Statistics;
+import org.uniprot.core.cv.go.GoTerm;
+import org.uniprot.core.cv.keyword.KeywordId;
 
 public interface SubcellularLocationEntry extends Serializable {
     SubcellLocationCategory getCategory();

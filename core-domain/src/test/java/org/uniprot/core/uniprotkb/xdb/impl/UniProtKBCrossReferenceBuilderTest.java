@@ -2,14 +2,6 @@ package org.uniprot.core.uniprotkb.xdb.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.UniProtKBDatabaseMock;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
-import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilderTest;
-import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
-import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,6 +9,14 @@ import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.UniProtKBDatabaseMock;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilderTest;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 
 public class UniProtKBCrossReferenceBuilderTest {
 

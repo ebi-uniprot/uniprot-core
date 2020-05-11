@@ -2,16 +2,16 @@ package org.uniprot.core.flatfile.parser.impl.oh;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.STOP;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class OHLineBuilder extends FFLineBuilderAbstr<List<OrganismHost>>
         implements FFLineBuilder<List<OrganismHost>> {

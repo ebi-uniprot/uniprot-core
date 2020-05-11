@@ -1,17 +1,17 @@
 package org.uniprot.core.uniprotkb.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.gene.GeneName;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.uniprotkb.evidence.impl.AbstractEvidencedValueBuilderTest;
-import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilderTest;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.gene.GeneName;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.impl.AbstractEvidencedValueBuilderTest;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilderTest;
 
 public class GeneNameBuilderTest extends AbstractEvidencedValueBuilderTest {
     @Test

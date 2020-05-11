@@ -1,5 +1,8 @@
 package org.uniprot.core.xml.uniprot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.uniprot.core.gene.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.HasEvidences;
@@ -8,9 +11,6 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.GeneNameType;
 import org.uniprot.core.xml.jaxb.uniprot.GeneType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class GeneConverter implements Converter<GeneType, Gene> {
     private final EvidenceIndexMapper evRefMapper;

@@ -2,13 +2,13 @@ package org.uniprot.core.flatfile.writer.impl;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.DEFAUT_LINESPACE;
 
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.uniprotkb.evidence.HasEvidences;
-
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 public abstract class FFLineBuilderAbstr<T> implements FFLineBuilder<T> {
     protected abstract FFLine buildLine(T f, boolean showEvidence);

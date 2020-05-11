@@ -1,6 +1,6 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import com.google.common.base.Strings;
+import java.util.List;
 
 import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
 import org.uniprot.core.uniprotkb.comment.SequenceCautionType;
@@ -12,7 +12,7 @@ import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 
-import java.util.List;
+import com.google.common.base.Strings;
 
 public class SCCommentConverter implements CommentConverter<SequenceCautionComment> {
 

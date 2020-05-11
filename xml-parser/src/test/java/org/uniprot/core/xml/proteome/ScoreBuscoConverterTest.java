@@ -2,15 +2,15 @@ package org.uniprot.core.xml.proteome;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.BuscoReport;
 import org.uniprot.core.proteome.impl.BuscoReportBuilder;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 import org.uniprot.core.xml.jaxb.proteome.ScorePropertyType;
 import org.uniprot.core.xml.jaxb.proteome.ScoreType;
-
-import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * @author lgonzales

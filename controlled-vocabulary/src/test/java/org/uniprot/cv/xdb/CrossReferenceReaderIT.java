@@ -4,16 +4,16 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.uniprot.cv.common.CVSystemProperties.getDatabaseTypesLocation;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.cv.xdb.validator.CrossReferenceReader;
-import org.uniprot.cv.xdb.validator.CrossReferenceValidator;
-import org.uniprot.cv.xdb.validator.DBXRef;
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.cv.xdb.validator.CrossReferenceReader;
+import org.uniprot.cv.xdb.validator.CrossReferenceValidator;
+import org.uniprot.cv.xdb.validator.DBXRef;
 
 class CrossReferenceReaderIT {
     private static Set<String> ACCESSION_WITHOUT_REF =

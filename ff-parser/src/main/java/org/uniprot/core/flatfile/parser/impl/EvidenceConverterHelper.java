@@ -1,9 +1,9 @@
 package org.uniprot.core.flatfile.parser.impl;
 
-import org.uniprot.core.uniprotkb.evidence.Evidence;
-
 import java.util.List;
 import java.util.Map;
+
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 public class EvidenceConverterHelper {
     private static EvidenceInfoConverter evConverter = new EvidenceInfoConverter();

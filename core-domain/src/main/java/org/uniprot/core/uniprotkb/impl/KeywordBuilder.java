@@ -1,10 +1,10 @@
 package org.uniprot.core.uniprotkb.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.uniprotkb.Keyword;
 import org.uniprot.core.uniprotkb.evidence.impl.AbstractHasEvidencesBuilder;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 23/01/19

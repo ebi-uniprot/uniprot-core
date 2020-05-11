@@ -1,13 +1,13 @@
 package org.uniprot.core.xml.uniprot.comment;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionCommentBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class InteractionCommentConverter
         implements Converter<List<CommentType>, InteractionComment> {

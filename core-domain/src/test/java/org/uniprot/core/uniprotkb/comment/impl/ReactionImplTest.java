@@ -3,6 +3,9 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
@@ -11,9 +14,6 @@ import org.uniprot.core.impl.ECNumberBuilder;
 import org.uniprot.core.uniprotkb.comment.Reaction;
 import org.uniprot.core.uniprotkb.comment.ReactionDatabase;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-
-import java.util.Arrays;
-import java.util.List;
 
 class ReactionImplTest {
 

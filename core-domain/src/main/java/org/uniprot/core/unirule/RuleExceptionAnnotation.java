@@ -1,8 +1,8 @@
 package org.uniprot.core.unirule;
 
-import org.uniprot.core.unirule.impl.RuleExceptionAnnotationType;
-
 import java.io.Serializable;
+
+import org.uniprot.core.unirule.impl.RuleExceptionAnnotationType;
 
 public interface RuleExceptionAnnotation extends Serializable {
     RuleExceptionAnnotationType getAnnotationType();

@@ -2,16 +2,16 @@ package org.uniprot.core.unirule.impl;
 
 import static org.uniprot.core.util.Utils.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.SamFeatureSet;
 import org.uniprot.core.unirule.SamTrigger;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
 
 public class SamFeatureSetBuilder implements Builder<SamFeatureSet> {
 

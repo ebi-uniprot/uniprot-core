@@ -1,15 +1,15 @@
 package org.uniprot.core.parser.tsv.uniprot.comment;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.flatfile.parser.impl.cc.CCSequenceCautionCommentLineBuilder;
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
 import org.uniprot.core.uniprotkb.comment.SequenceCautionType;
 import org.uniprot.core.util.Utils;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class SequenceCautionMap implements NamedValueMap {
 

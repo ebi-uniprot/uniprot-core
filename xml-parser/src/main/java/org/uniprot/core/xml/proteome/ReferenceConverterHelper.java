@@ -1,6 +1,8 @@
 package org.uniprot.core.xml.proteome;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Citation;
@@ -13,9 +15,7 @@ import org.uniprot.core.xml.jaxb.proteome.PersonType;
 import org.uniprot.core.xml.jaxb.proteome.ReferenceType;
 import org.uniprot.core.xml.uniprot.citation.PublicationDateConverter;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.google.common.base.Strings;
 
 public class ReferenceConverterHelper {
     private static final PublicationDateConverter dateConverter = new PublicationDateConverter();

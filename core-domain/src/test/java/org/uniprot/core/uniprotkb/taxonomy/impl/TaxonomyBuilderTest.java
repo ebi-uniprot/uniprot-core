@@ -3,10 +3,10 @@ package org.uniprot.core.uniprotkb.taxonomy.impl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
-
-import java.util.Collections;
 
 class TaxonomyBuilderTest {
 

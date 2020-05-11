@@ -1,13 +1,13 @@
 package org.uniprot.core.flatfile.parser.impl.rn;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
 import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 public class RnLineConverter extends EvidenceCollector
         implements Converter<RnLineObject, List<Evidence>> {

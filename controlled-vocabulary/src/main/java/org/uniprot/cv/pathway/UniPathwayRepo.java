@@ -1,8 +1,8 @@
 package org.uniprot.cv.pathway;
 
-import org.uniprot.core.cv.pathway.UniPathway;
-
 import java.util.List;
+
+import org.uniprot.core.cv.pathway.UniPathway;
 
 public interface UniPathwayRepo {
     UniPathway getById(String id);

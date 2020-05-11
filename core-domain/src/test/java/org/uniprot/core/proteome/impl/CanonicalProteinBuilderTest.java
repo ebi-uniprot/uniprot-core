@@ -2,12 +2,12 @@ package org.uniprot.core.proteome.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.CanonicalProtein;
 import org.uniprot.core.proteome.Protein;
-
-import java.util.ArrayList;
-import java.util.List;
 
 class CanonicalProteinBuilderTest {
 

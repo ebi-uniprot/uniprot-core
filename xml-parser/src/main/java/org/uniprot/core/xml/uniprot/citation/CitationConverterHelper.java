@@ -1,6 +1,9 @@
 package org.uniprot.core.xml.uniprot.citation;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Author;
@@ -11,10 +14,7 @@ import org.uniprot.core.citation.impl.AuthorBuilder;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 public class CitationConverterHelper {
     private static final PublicationDateConverter dateConverter = new PublicationDateConverter();

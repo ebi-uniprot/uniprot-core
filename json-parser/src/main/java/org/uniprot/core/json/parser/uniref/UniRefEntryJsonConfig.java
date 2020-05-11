@@ -1,7 +1,6 @@
 package org.uniprot.core.json.parser.uniref;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
+import java.time.LocalDate;
 
 import org.uniprot.core.Sequence;
 import org.uniprot.core.Value;
@@ -29,7 +28,8 @@ import org.uniprot.core.uniref.impl.UniRefEntryIdImpl;
 import org.uniprot.core.uniref.impl.UniRefEntryImpl;
 import org.uniprot.core.uniref.impl.UniRefMemberImpl;
 
-import java.time.LocalDate;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 /**
  * @author jluo

@@ -1,12 +1,12 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import org.uniprot.core.uniprotkb.comment.*;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.util.Utils;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.uniprotkb.comment.*;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.util.Utils;
 
 public class RnaEditingCommentImpl extends CommentHasMoleculeImpl implements RnaEditingComment {
     private static final long serialVersionUID = -5382803114400917004L;

@@ -2,9 +2,9 @@ package org.uniprot.cv.evidence;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.Optional;
+
+import org.junit.jupiter.api.Test;
 
 class GOEvidencesTest {
     private static final String WRONG = "WRONG";

@@ -2,15 +2,15 @@ package org.uniprot.core.parser.tsv.keyword;
 
 import static org.uniprot.core.parser.tsv.TSVUtil.*;
 
-import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.parser.tsv.EntityValueMapper;
-import org.uniprot.core.util.Utils;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import org.uniprot.core.cv.keyword.KeywordEntry;
+import org.uniprot.core.parser.tsv.EntityValueMapper;
+import org.uniprot.core.util.Utils;
 
 public class KeywordEntryValueMapper implements EntityValueMapper<KeywordEntry> {
 

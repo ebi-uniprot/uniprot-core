@@ -2,13 +2,13 @@ package org.uniprot.core.cv.disease.impl;
 
 import static org.uniprot.core.util.Utils.unmodifiableList;
 
-import org.uniprot.core.cv.disease.DiseaseCrossReference;
-import org.uniprot.core.cv.disease.DiseaseEntry;
-import org.uniprot.core.cv.keyword.KeywordId;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.cv.disease.DiseaseCrossReference;
+import org.uniprot.core.cv.disease.DiseaseEntry;
+import org.uniprot.core.cv.keyword.KeywordId;
 
 public class DiseaseEntryImpl implements DiseaseEntry {
 

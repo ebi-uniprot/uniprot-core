@@ -3,16 +3,16 @@ package org.uniprot.cv.xdb;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.cv.common.CVSystemProperties.DR_ORD_LOCATION;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.List;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.cv.Reloader;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.List;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class UniProtKBCrossReferenceDisplayOrderPropertyLocationTest {

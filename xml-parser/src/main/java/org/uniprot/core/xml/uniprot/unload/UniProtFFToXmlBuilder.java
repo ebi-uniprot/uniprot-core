@@ -1,17 +1,5 @@
 package org.uniprot.core.xml.uniprot.unload;
 
-import com.codahale.metrics.Timer;
-import com.sun.xml.bind.marshaller.DataWriter;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.uniprot.core.flatfile.parser.impl.EntryBufferedReader2;
-import org.uniprot.core.xml.DefaultXmlFileMerger;
-import org.uniprot.core.xml.XmlBuildStats;
-import org.uniprot.core.xml.XmlBuilder;
-import org.uniprot.core.xml.XmlFileMerger;
-import org.uniprot.core.xml.jaxb.uniprot.Entry;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -29,6 +17,18 @@ import java.util.stream.IntStream;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.uniprot.core.flatfile.parser.impl.EntryBufferedReader2;
+import org.uniprot.core.xml.DefaultXmlFileMerger;
+import org.uniprot.core.xml.XmlBuildStats;
+import org.uniprot.core.xml.XmlBuilder;
+import org.uniprot.core.xml.XmlFileMerger;
+import org.uniprot.core.xml.jaxb.uniprot.Entry;
+
+import com.codahale.metrics.Timer;
+import com.sun.xml.bind.marshaller.DataWriter;
 
 public class UniProtFFToXmlBuilder implements XmlBuilder {
     private static final Logger LOGGER = LoggerFactory.getLogger(UniProtFFToXmlBuilder.class);

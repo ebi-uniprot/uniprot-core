@@ -2,11 +2,11 @@ package org.uniprot.core.cv.pathway.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.pathway.PathwayEntry;
-
 import java.util.Arrays;
 import java.util.Collections;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.pathway.PathwayEntry;
 
 class PathwayEntryImplTest {
     @Test

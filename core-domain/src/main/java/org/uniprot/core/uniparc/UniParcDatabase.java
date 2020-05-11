@@ -1,9 +1,9 @@
 package org.uniprot.core.uniparc;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Database;
 import org.uniprot.core.util.EnumDisplay;
-
-import javax.annotation.Nonnull;
 
 public enum UniParcDatabase implements Database, EnumDisplay {
     EG_BACTERIA("EnsemblBacteria", true),

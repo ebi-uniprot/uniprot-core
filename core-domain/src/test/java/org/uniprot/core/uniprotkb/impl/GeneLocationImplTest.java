@@ -3,12 +3,12 @@ package org.uniprot.core.uniprotkb.impl;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.GeneEncodingType;
 import org.uniprot.core.uniprotkb.GeneLocation;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-
-import java.util.List;
 
 class GeneLocationImplTest {
 

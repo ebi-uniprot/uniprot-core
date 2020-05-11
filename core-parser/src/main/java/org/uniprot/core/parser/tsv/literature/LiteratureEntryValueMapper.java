@@ -1,15 +1,15 @@
 package org.uniprot.core.parser.tsv.literature;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Literature;
 import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.util.Utils;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * @author lgonzales

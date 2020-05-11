@@ -1,9 +1,9 @@
 package org.uniprot.core.cv.go.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.cv.go.GoTerm;
-
-import javax.annotation.Nonnull;
 
 public class GoTermBuilder implements Builder<GoTerm> {
     protected String id;

@@ -1,13 +1,13 @@
 package org.uniprot.core.parser.tsv.proteome;
 
-import org.uniprot.core.parser.tsv.NamedValueMap;
-import org.uniprot.core.taxonomy.TaxonomyLineage;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.parser.tsv.NamedValueMap;
+import org.uniprot.core.taxonomy.TaxonomyLineage;
 
 /**
  * @author jluo

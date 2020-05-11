@@ -1,5 +1,8 @@
 package org.uniprot.cv.keyword;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.go.GoTerm;
@@ -12,9 +15,6 @@ import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
 import org.uniprot.cv.common.AbstractFileReader;
-
-import java.util.*;
-import java.util.stream.Collectors;
 
 public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
     private static final String WW_LINE = "WW";

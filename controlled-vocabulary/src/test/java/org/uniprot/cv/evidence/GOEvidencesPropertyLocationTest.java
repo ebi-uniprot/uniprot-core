@@ -3,16 +3,16 @@ package org.uniprot.cv.evidence;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.cv.common.CVSystemProperties.GAF_ECO_LOCATION;
 
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.TestInstance.Lifecycle;
-import org.uniprot.cv.Reloader;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Optional;
+
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.uniprot.cv.Reloader;
 
 @TestInstance(Lifecycle.PER_CLASS)
 class GOEvidencesPropertyLocationTest {

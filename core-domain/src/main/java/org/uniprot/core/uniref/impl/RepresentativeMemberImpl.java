@@ -1,5 +1,8 @@
 package org.uniprot.core.uniref.impl;
 
+import java.util.List;
+import java.util.Objects;
+
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
@@ -7,9 +10,6 @@ import org.uniprot.core.uniref.OverlapRegion;
 import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefMemberIdType;
-
-import java.util.List;
-import java.util.Objects;
 
 /**
  * @author jluo

@@ -2,12 +2,12 @@ package org.uniprot.cv.pathway;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.pathway.UniPathway;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.pathway.UniPathway;
 
 class UniPathwayFileReaderTest {
     private final UniPathwayFileReader reader = new UniPathwayFileReader();

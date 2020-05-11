@@ -1,5 +1,7 @@
 package org.uniprot.core.unirule.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.gene.Gene;
 import org.uniprot.core.uniprotkb.Keyword;
 import org.uniprot.core.uniprotkb.comment.Comment;
@@ -8,8 +10,6 @@ import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.RuleExceptionAnnotationBuilder;
 import org.uniprot.core.util.Utils;
-
-import javax.annotation.Nonnull;
 
 public class AnnotationBuilder implements RuleExceptionAnnotationBuilder<Annotation> {
 

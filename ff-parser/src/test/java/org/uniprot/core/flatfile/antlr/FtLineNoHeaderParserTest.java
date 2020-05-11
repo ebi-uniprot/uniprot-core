@@ -2,15 +2,15 @@ package org.uniprot.core.flatfile.antlr;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineFormater;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject.FTType;
-
-import java.util.Arrays;
-import java.util.List;
 
 class FtLineNoHeaderParserTest {
     @Test

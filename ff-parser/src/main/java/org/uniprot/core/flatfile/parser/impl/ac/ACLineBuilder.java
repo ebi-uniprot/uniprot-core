@@ -3,6 +3,8 @@ package org.uniprot.core.flatfile.parser.impl.ac;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEMICOLON;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEPARATOR_SEMICOLON;
 
+import java.util.List;
+
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
@@ -10,8 +12,6 @@ import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
-
-import java.util.List;
 
 public class ACLineBuilder extends FFLineBuilderAbstr<List<UniProtKBAccession>>
         implements FFLineBuilder<List<UniProtKBAccession>> {

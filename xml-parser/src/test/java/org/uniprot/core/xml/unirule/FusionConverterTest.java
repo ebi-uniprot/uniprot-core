@@ -2,14 +2,14 @@ package org.uniprot.core.xml.unirule;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.unirule.Fusion;
 import org.uniprot.core.unirule.impl.FusionBuilder;
 import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.unirule.FusionType;
-
-import java.util.List;
 
 public class FusionConverterTest extends AbstractConverterTest {
 

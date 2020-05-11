@@ -2,20 +2,20 @@ package org.uniprot.core.flatfile.parser.integration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.google.common.io.CharSource;
-import com.google.common.io.Resources;
-
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniProtEntryIterator;
-import org.uniprot.core.flatfile.parser.UniProtParserHelper;
-import org.uniprot.core.uniprotkb.UniProtKBEntry;
-
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.TreeSet;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.flatfile.parser.UniProtEntryIterator;
+import org.uniprot.core.flatfile.parser.UniProtParserHelper;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
+
+import com.google.common.io.CharSource;
+import com.google.common.io.Resources;
 
 class UniProtParserIT {
     @Test

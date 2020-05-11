@@ -1,12 +1,12 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import org.uniprot.core.uniprotkb.comment.MaximumVelocity;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.util.Utils;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.uniprotkb.comment.MaximumVelocity;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.util.Utils;
 
 public class MaximumVelocityImpl implements MaximumVelocity {
     private static final long serialVersionUID = -5733295713214255112L;

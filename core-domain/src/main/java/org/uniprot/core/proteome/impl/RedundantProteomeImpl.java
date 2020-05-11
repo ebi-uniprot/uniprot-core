@@ -1,9 +1,9 @@
 package org.uniprot.core.proteome.impl;
 
+import java.util.Objects;
+
 import org.uniprot.core.proteome.ProteomeId;
 import org.uniprot.core.proteome.RedundantProteome;
-
-import java.util.Objects;
 
 public class RedundantProteomeImpl implements RedundantProteome {
 

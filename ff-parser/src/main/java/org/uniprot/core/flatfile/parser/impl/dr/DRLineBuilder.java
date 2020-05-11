@@ -3,7 +3,9 @@ package org.uniprot.core.flatfile.parser.impl.dr;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEMICOLON;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SPACE;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.Property;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
@@ -16,9 +18,7 @@ import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 import org.uniprot.cv.xdb.UniProtCrossReferenceDisplayOrder;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 public class DRLineBuilder extends FFLineBuilderAbstr<List<UniProtKBCrossReference>>
         implements FFLineBuilder<List<UniProtKBCrossReference>> {

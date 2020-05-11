@@ -3,6 +3,9 @@ package org.uniprot.core.flatfile.parser.impl.ss;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEPARATOR_SEMICOLON;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.STOP;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
@@ -10,9 +13,6 @@ import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceLine;
 import org.uniprot.cv.evidence.EvidenceHelper;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SSEvidenceLineBuilder extends FFLineBuilderAbstr<List<EvidenceLine>> {
     private static final String REFERENCE = "Reference";

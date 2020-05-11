@@ -1,12 +1,12 @@
 package org.uniprot.core.literature.impl;
 
+import java.util.List;
+import java.util.Objects;
+
 import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.literature.LiteratureMappedReference;
 import org.uniprot.core.literature.LiteratureStoreEntry;
 import org.uniprot.core.util.Utils;
-
-import java.util.List;
-import java.util.Objects;
 
 /**
  * @author lgonzales

@@ -3,11 +3,11 @@ package org.uniprot.core.flatfile.parser.impl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
-
 import java.util.Arrays;
 import java.util.Collections;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
 
 class OrganismNameLineParserTest {
 

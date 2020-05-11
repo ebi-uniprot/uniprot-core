@@ -3,7 +3,7 @@ package org.uniprot.core.json.parser.uniprot;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
@@ -17,7 +17,7 @@ import org.uniprot.core.uniprotkb.impl.InternalLineBuilder;
 import org.uniprot.core.uniprotkb.impl.InternalSectionBuilder;
 import org.uniprot.core.uniprotkb.impl.SourceLineBuilder;
 
-import java.time.LocalDate;
+import com.fasterxml.jackson.databind.JsonNode;
 
 /** @author lgonzales */
 public class InternalSectionTest {

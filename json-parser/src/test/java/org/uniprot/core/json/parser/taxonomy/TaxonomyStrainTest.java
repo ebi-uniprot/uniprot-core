@@ -1,11 +1,11 @@
 package org.uniprot.core.json.parser.taxonomy;
 
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.taxonomy.TaxonomyStrain;
 import org.uniprot.core.taxonomy.impl.TaxonomyStrainBuilder;
-
-import java.util.Collections;
 
 class TaxonomyStrainTest {
 

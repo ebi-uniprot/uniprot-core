@@ -1,10 +1,10 @@
 package org.uniprot.core.uniprotkb.taxonomy.impl;
 
-import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
-import org.uniprot.core.util.Utils;
-
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
+import org.uniprot.core.util.Utils;
 
 public class TaxonomyImpl extends AbstractOrganismNameImpl implements Taxonomy {
 

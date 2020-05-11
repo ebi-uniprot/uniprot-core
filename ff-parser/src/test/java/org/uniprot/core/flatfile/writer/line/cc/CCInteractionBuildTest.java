@@ -1,5 +1,8 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
@@ -7,17 +10,14 @@ import org.uniprot.core.uniprotkb.comment.impl.InteractantBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionCommentBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
-
 class CCInteractionBuildTest extends CCBuildTestAbstr {
     @Test
     void testINTERACTION1() {
         String ccLine =
                 ("CC   -!- INTERACTION:\n"
-                     + "CC       P12345; Q9W158: CG4612; NbExp=1; IntAct=EBI-123485, EBI-89895;\n"
-                     + "CC       P12345-2; PRO_0000037566 [P27958]; Xeno; NbExp=1;"
-                     + " IntAct=EBI-123485, EBI-126770;");
+                        + "CC       P12345; Q9W158: CG4612; NbExp=1; IntAct=EBI-123485, EBI-89895;\n"
+                        + "CC       P12345-2; PRO_0000037566 [P27958]; Xeno; NbExp=1;"
+                        + " IntAct=EBI-123485, EBI-126770;");
         String ccLineString =
                 ("INTERACTION:\n"
                         + "P12345; Q9W158: CG4612; NbExp=1; IntAct=EBI-123485, EBI-89895;\n"
@@ -94,10 +94,10 @@ class CCInteractionBuildTest extends CCBuildTestAbstr {
                         + " EBI-8034418;");
         String ccLineString =
                 ("INTERACTION:\n"
-                     + "PRO_0000037566; Q9W1K5-1: CG11299; NbExp=1; IntAct=EBI-133844,"
-                     + " EBI-212772;\n"
-                     + "P12345-1; O96017: CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n"
-                     + "P12345-2; Q6ZWQ9: Myl12a; Xeno; NbExp=3; IntAct=EBI-372428, EBI-8034418;");
+                        + "PRO_0000037566; Q9W1K5-1: CG11299; NbExp=1; IntAct=EBI-133844,"
+                        + " EBI-212772;\n"
+                        + "P12345-1; O96017: CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n"
+                        + "P12345-2; Q6ZWQ9: Myl12a; Xeno; NbExp=3; IntAct=EBI-372428, EBI-8034418;");
 
         InteractionCommentBuilder builder = new InteractionCommentBuilder();
         List<Interaction> interactions = new ArrayList<>();

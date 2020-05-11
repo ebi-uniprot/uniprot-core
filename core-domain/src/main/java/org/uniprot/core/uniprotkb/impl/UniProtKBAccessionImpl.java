@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprotkb.impl;
 
+import java.util.regex.Pattern;
+
 import org.uniprot.core.impl.ValueImpl;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
-
-import java.util.regex.Pattern;
 
 public class UniProtKBAccessionImpl extends ValueImpl implements UniProtKBAccession {
     private static final long serialVersionUID = 5516352352872264537L;

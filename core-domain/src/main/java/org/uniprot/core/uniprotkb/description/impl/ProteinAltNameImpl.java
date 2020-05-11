@@ -1,12 +1,12 @@
 package org.uniprot.core.uniprotkb.description.impl;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.description.ProteinAltName;
 import org.uniprot.core.util.Utils;
-
-import java.util.Collections;
-import java.util.List;
 
 public class ProteinAltNameImpl implements ProteinAltName {
 

@@ -1,16 +1,16 @@
 package org.uniprot.core.parser.tsv.proteome;
 
-import org.uniprot.core.parser.tsv.EntityValueMapper;
-import org.uniprot.core.parser.tsv.NamedValueMap;
-import org.uniprot.core.proteome.ProteomeCompletenessReport;
-import org.uniprot.core.proteome.ProteomeEntry;
-import org.uniprot.core.util.Utils;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.uniprot.core.parser.tsv.EntityValueMapper;
+import org.uniprot.core.parser.tsv.NamedValueMap;
+import org.uniprot.core.proteome.ProteomeCompletenessReport;
+import org.uniprot.core.proteome.ProteomeEntry;
+import org.uniprot.core.util.Utils;
 
 /**
  * @author jluo

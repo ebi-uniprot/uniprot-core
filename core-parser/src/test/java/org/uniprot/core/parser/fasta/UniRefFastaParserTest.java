@@ -2,6 +2,8 @@ package org.uniprot.core.parser.fasta;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.cv.go.GoAspect;
@@ -19,8 +21,6 @@ import org.uniprot.core.uniref.impl.RepresentativeMemberBuilder;
 import org.uniprot.core.uniref.impl.UniRefEntryBuilder;
 import org.uniprot.core.uniref.impl.UniRefEntryIdBuilder;
 import org.uniprot.core.uniref.impl.UniRefMemberBuilder;
-
-import java.time.LocalDate;
 
 /**
  * @author jluo

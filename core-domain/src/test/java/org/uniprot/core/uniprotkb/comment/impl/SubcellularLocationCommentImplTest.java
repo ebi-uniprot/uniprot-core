@@ -3,10 +3,10 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createNote;
 
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocationComment;
-
-import java.util.Collections;
 
 class SubcellularLocationCommentImplTest {
     @Test

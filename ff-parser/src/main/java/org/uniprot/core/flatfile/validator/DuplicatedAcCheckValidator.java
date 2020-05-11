@@ -1,9 +1,9 @@
 package org.uniprot.core.flatfile.validator;
 
-import org.uniprot.core.flatfile.parser.impl.ac.AcLineObject;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+
+import org.uniprot.core.flatfile.parser.impl.ac.AcLineObject;
 
 /** Species code in Id line should be in speclist.txt */
 public class DuplicatedAcCheckValidator

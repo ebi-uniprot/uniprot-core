@@ -1,5 +1,11 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.CommentType;
@@ -7,37 +13,31 @@ import org.uniprot.core.uniprotkb.comment.FreeTextComment;
 import org.uniprot.core.uniprotkb.comment.impl.FreeTextCommentBuilder;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testPTMWithEvidence4() {
         String ccLine =
                 ("CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n"
-                     + "CC       Cleavage either by alpha-secretase, beta-secretase or"
-                     + " theta-secretase\n"
-                     + "CC       leads to generation and extracellular release of soluble APP"
-                     + " peptides,\n"
-                     + "CC       S-APP-alpha and S-APP-beta, and the retention of corresponding\n"
-                     + "CC       membrane-anchored C-terminal fragments, C80, C83 and C99."
-                     + " Subsequent\n"
-                     + "CC       processing of C80 and C83 by gamma-secretase yields P3 peptides."
-                     + " This\n"
-                     + "CC       is the major secretory pathway and is non-amyloidogenic."
-                     + " Alternatively,\n"
-                     + "CC       presenilin/nicastrin-mediated gamma-secretase processing of C99\n"
-                     + "CC       releases the amyloid beta proteins, amyloid-beta 40 (Abeta40)"
-                     + " and\n"
-                     + "CC       amyloid-beta 42 (Abeta42), major components of amyloid plaques,"
-                     + " and the\n"
-                     + "CC       cytotoxic C-terminal fragments, gamma-CTF(50), gamma-CTF(57) and"
-                     + " gamma-\n"
-                     + "CC       CTF(59). {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                     + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
+                        + "CC       Cleavage either by alpha-secretase, beta-secretase or"
+                        + " theta-secretase\n"
+                        + "CC       leads to generation and extracellular release of soluble APP"
+                        + " peptides,\n"
+                        + "CC       S-APP-alpha and S-APP-beta, and the retention of corresponding\n"
+                        + "CC       membrane-anchored C-terminal fragments, C80, C83 and C99."
+                        + " Subsequent\n"
+                        + "CC       processing of C80 and C83 by gamma-secretase yields P3 peptides."
+                        + " This\n"
+                        + "CC       is the major secretory pathway and is non-amyloidogenic."
+                        + " Alternatively,\n"
+                        + "CC       presenilin/nicastrin-mediated gamma-secretase processing of C99\n"
+                        + "CC       releases the amyloid beta proteins, amyloid-beta 40 (Abeta40)"
+                        + " and\n"
+                        + "CC       amyloid-beta 42 (Abeta42), major components of amyloid plaques,"
+                        + " and the\n"
+                        + "CC       cytotoxic C-terminal fragments, gamma-CTF(50), gamma-CTF(57) and"
+                        + " gamma-\n"
+                        + "CC       CTF(59). {ECO:0000256|HAMAP-Rule:MF_00205,\n"
+                        + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
         String text1 =
                 "Proteolytically processed under normal cellular conditions. "
                         + "Cleavage either by alpha-secretase, beta-secretase or theta-"
@@ -78,29 +78,29 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     void testPTMWithEvidence2() {
         String ccLine =
                 ("CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n"
-                     + "CC       Cleavage either by alpha-secretase, beta-secretase or"
-                     + " theta-secretase\n"
-                     + "CC       leads to generation and extracellular release of soluble APP"
-                     + " peptides,\n"
-                     + "CC       S-APP-alpha and S-APP-beta, and the retention of corresponding\n"
-                     + "CC       membrane-anchored C-terminal fragments, C80, C83 and C99."
-                     + " Subsequent\n"
-                     + "CC       processing of C80 and C83 by gamma-secretase yields P3"
-                     + " peptides.\n"
-                     + "CC       {ECO:0000313|Ensembl:ENSP00000409133}. This is the major"
-                     + " secretory\n"
-                     + "CC       pathway and is non-amyloidogenic."
-                     + " {ECO:0000256|HAMAP-Rule:MF_00205}.\n"
-                     + "CC       Alternatively, presenilin/nicastrin-mediated gamma-secretase"
-                     + " processing\n"
-                     + "CC       of C99 releases the amyloid beta proteins, amyloid-beta 40"
-                     + " (Abeta40)\n"
-                     + "CC       and amyloid-beta 42 (Abeta42), major components of amyloid"
-                     + " plaques, and\n"
-                     + "CC       the cytotoxic C-terminal fragments, gamma-CTF(50), gamma-CTF(57)"
-                     + " and\n"
-                     + "CC       gamma-CTF(59). {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                     + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
+                        + "CC       Cleavage either by alpha-secretase, beta-secretase or"
+                        + " theta-secretase\n"
+                        + "CC       leads to generation and extracellular release of soluble APP"
+                        + " peptides,\n"
+                        + "CC       S-APP-alpha and S-APP-beta, and the retention of corresponding\n"
+                        + "CC       membrane-anchored C-terminal fragments, C80, C83 and C99."
+                        + " Subsequent\n"
+                        + "CC       processing of C80 and C83 by gamma-secretase yields P3"
+                        + " peptides.\n"
+                        + "CC       {ECO:0000313|Ensembl:ENSP00000409133}. This is the major"
+                        + " secretory\n"
+                        + "CC       pathway and is non-amyloidogenic."
+                        + " {ECO:0000256|HAMAP-Rule:MF_00205}.\n"
+                        + "CC       Alternatively, presenilin/nicastrin-mediated gamma-secretase"
+                        + " processing\n"
+                        + "CC       of C99 releases the amyloid beta proteins, amyloid-beta 40"
+                        + " (Abeta40)\n"
+                        + "CC       and amyloid-beta 42 (Abeta42), major components of amyloid"
+                        + " plaques, and\n"
+                        + "CC       the cytotoxic C-terminal fragments, gamma-CTF(50), gamma-CTF(57)"
+                        + " and\n"
+                        + "CC       gamma-CTF(59). {ECO:0000256|HAMAP-Rule:MF_00205,\n"
+                        + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
         String text1 =
                 "Proteolytically processed under normal cellular conditions. "
                         + "Cleavage either by alpha-secretase, beta-secretase or theta-"
@@ -143,28 +143,28 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     void testPTMWithEvidence3() {
         String ccLine =
                 ("CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n"
-                     + "CC       Cleavage either by alpha-secretase, beta-secretase or"
-                     + " theta-secretase\n"
-                     + "CC       leads to generation and extracellular release of soluble APP"
-                     + " peptides,\n"
-                     + "CC       S-APP-alpha and S-APP-beta, and the retention of corresponding\n"
-                     + "CC       membrane-anchored C-terminal fragments, C80, C83 and C99.\n"
-                     + "CC       {ECO:0000256|HAMAP-Rule:MF_00205,"
-                     + " ECO:0000313|Ensembl:ENSP00000409133}.\n"
-                     + "CC       Subsequent processing of C80 and C83 by gamma-secretase yields"
-                     + " P3\n"
-                     + "CC       peptides. {ECO:0000313|Ensembl:ENSP00000409133}. This is the"
-                     + " major\n"
-                     + "CC       secretory pathway and is non-amyloidogenic. {ECO:0000256|HAMAP-\n"
-                     + "CC       Rule:MF_00205}. Alternatively, presenilin/nicastrin-mediated"
-                     + " gamma-\n"
-                     + "CC       secretase processing of C99 releases the amyloid beta proteins,\n"
-                     + "CC       amyloid-beta 40 (Abeta40) and amyloid-beta 42 (Abeta42), major\n"
-                     + "CC       components of amyloid plaques, and the cytotoxic C-terminal"
-                     + " fragments,\n"
-                     + "CC       gamma-CTF(50), gamma-CTF(57) and gamma-CTF(59)."
-                     + " {ECO:0000256|HAMAP-\n"
-                     + "CC       Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133}.");
+                        + "CC       Cleavage either by alpha-secretase, beta-secretase or"
+                        + " theta-secretase\n"
+                        + "CC       leads to generation and extracellular release of soluble APP"
+                        + " peptides,\n"
+                        + "CC       S-APP-alpha and S-APP-beta, and the retention of corresponding\n"
+                        + "CC       membrane-anchored C-terminal fragments, C80, C83 and C99.\n"
+                        + "CC       {ECO:0000256|HAMAP-Rule:MF_00205,"
+                        + " ECO:0000313|Ensembl:ENSP00000409133}.\n"
+                        + "CC       Subsequent processing of C80 and C83 by gamma-secretase yields"
+                        + " P3\n"
+                        + "CC       peptides. {ECO:0000313|Ensembl:ENSP00000409133}. This is the"
+                        + " major\n"
+                        + "CC       secretory pathway and is non-amyloidogenic. {ECO:0000256|HAMAP-\n"
+                        + "CC       Rule:MF_00205}. Alternatively, presenilin/nicastrin-mediated"
+                        + " gamma-\n"
+                        + "CC       secretase processing of C99 releases the amyloid beta proteins,\n"
+                        + "CC       amyloid-beta 40 (Abeta40) and amyloid-beta 42 (Abeta42), major\n"
+                        + "CC       components of amyloid plaques, and the cytotoxic C-terminal"
+                        + " fragments,\n"
+                        + "CC       gamma-CTF(50), gamma-CTF(57) and gamma-CTF(59)."
+                        + " {ECO:0000256|HAMAP-\n"
+                        + "CC       Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133}.");
         String text1 =
                 "Proteolytically processed under normal cellular conditions. "
                         + "Cleavage either by alpha-secretase, beta-secretase or theta-"
@@ -567,10 +567,10 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     void testPAHRMA() {
         String ccLine =
                 ("CC   -!- PHARMACEUTICAL: Available under the names Avonex (Biogen), Betaseron\n"
-                     + "CC       (Berlex) and Rebif (Serono). Used in the treatment of multiple\n"
-                     + "CC       sclerosis (MS). Betaseron is a slightly modified form of IFNB1"
-                     + " with two\n"
-                     + "CC       residue substitutions.");
+                        + "CC       (Berlex) and Rebif (Serono). Used in the treatment of multiple\n"
+                        + "CC       sclerosis (MS). Betaseron is a slightly modified form of IFNB1"
+                        + " with two\n"
+                        + "CC       residue substitutions.");
         String text =
                 "Available under the names Avonex (Biogen), "
                         + "Betaseron (Berlex) and Rebif (Serono). Used in the treatment of "
@@ -587,11 +587,11 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     void testPAHRMAWithEvidence() {
         String ccLine =
                 ("CC   -!- PHARMACEUTICAL: Available under the names Avonex (Biogen), Betaseron\n"
-                     + "CC       (Berlex) and Rebif (Serono). Used in the treatment of multiple\n"
-                     + "CC       sclerosis (MS). Betaseron is a slightly modified form of IFNB1"
-                     + " with two\n"
-                     + "CC       residue substitutions. {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                     + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
+                        + "CC       (Berlex) and Rebif (Serono). Used in the treatment of multiple\n"
+                        + "CC       sclerosis (MS). Betaseron is a slightly modified form of IFNB1"
+                        + " with two\n"
+                        + "CC       residue substitutions. {ECO:0000256|HAMAP-Rule:MF_00205,\n"
+                        + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
         String text =
                 "Available under the names Avonex (Biogen), "
                         + "Betaseron (Berlex) and Rebif (Serono). Used in the treatment of "
@@ -608,25 +608,25 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     void testPTM() {
         String ccLine =
                 ("CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n"
-                     + "CC       Cleavage either by alpha-secretase, beta-secretase or"
-                     + " theta-secretase\n"
-                     + "CC       leads to generation and extracellular release of soluble APP"
-                     + " peptides,\n"
-                     + "CC       S-APP-alpha and S-APP-beta, and the retention of corresponding\n"
-                     + "CC       membrane-anchored C-terminal fragments, C80, C83 and C99."
-                     + " Subsequent\n"
-                     + "CC       processing of C80 and C83 by gamma-secretase yields P3 peptides."
-                     + " This\n"
-                     + "CC       is the major secretory pathway and is non-amyloidogenic."
-                     + " Alternatively,\n"
-                     + "CC       presenilin/nicastrin-mediated gamma-secretase processing of C99\n"
-                     + "CC       releases the amyloid beta proteins, amyloid-beta 40 (Abeta40)"
-                     + " and\n"
-                     + "CC       amyloid-beta 42 (Abeta42), major components of amyloid plaques,"
-                     + " and the\n"
-                     + "CC       cytotoxic C-terminal fragments, gamma-CTF(50), gamma-CTF(57) and"
-                     + " gamma-\n"
-                     + "CC       CTF(59).");
+                        + "CC       Cleavage either by alpha-secretase, beta-secretase or"
+                        + " theta-secretase\n"
+                        + "CC       leads to generation and extracellular release of soluble APP"
+                        + " peptides,\n"
+                        + "CC       S-APP-alpha and S-APP-beta, and the retention of corresponding\n"
+                        + "CC       membrane-anchored C-terminal fragments, C80, C83 and C99."
+                        + " Subsequent\n"
+                        + "CC       processing of C80 and C83 by gamma-secretase yields P3 peptides."
+                        + " This\n"
+                        + "CC       is the major secretory pathway and is non-amyloidogenic."
+                        + " Alternatively,\n"
+                        + "CC       presenilin/nicastrin-mediated gamma-secretase processing of C99\n"
+                        + "CC       releases the amyloid beta proteins, amyloid-beta 40 (Abeta40)"
+                        + " and\n"
+                        + "CC       amyloid-beta 42 (Abeta42), major components of amyloid plaques,"
+                        + " and the\n"
+                        + "CC       cytotoxic C-terminal fragments, gamma-CTF(50), gamma-CTF(57) and"
+                        + " gamma-\n"
+                        + "CC       CTF(59).");
         String text =
                 "Proteolytically processed under normal cellular conditions. "
                         + "Cleavage either by alpha-secretase, beta-secretase or theta-"
@@ -651,26 +651,26 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     void testPTMWithEvidence() {
         String ccLine =
                 ("CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n"
-                     + "CC       Cleavage either by alpha-secretase, beta-secretase or"
-                     + " theta-secretase\n"
-                     + "CC       leads to generation and extracellular release of soluble APP"
-                     + " peptides,\n"
-                     + "CC       S-APP-alpha and S-APP-beta, and the retention of corresponding\n"
-                     + "CC       membrane-anchored C-terminal fragments, C80, C83 and C99."
-                     + " Subsequent\n"
-                     + "CC       processing of C80 and C83 by gamma-secretase yields P3 peptides."
-                     + " This\n"
-                     + "CC       is the major secretory pathway and is non-amyloidogenic."
-                     + " Alternatively,\n"
-                     + "CC       presenilin/nicastrin-mediated gamma-secretase processing of C99\n"
-                     + "CC       releases the amyloid beta proteins, amyloid-beta 40 (Abeta40)"
-                     + " and\n"
-                     + "CC       amyloid-beta 42 (Abeta42), major components of amyloid plaques,"
-                     + " and the\n"
-                     + "CC       cytotoxic C-terminal fragments, gamma-CTF(50), gamma-CTF(57) and"
-                     + " gamma-\n"
-                     + "CC       CTF(59). {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                     + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
+                        + "CC       Cleavage either by alpha-secretase, beta-secretase or"
+                        + " theta-secretase\n"
+                        + "CC       leads to generation and extracellular release of soluble APP"
+                        + " peptides,\n"
+                        + "CC       S-APP-alpha and S-APP-beta, and the retention of corresponding\n"
+                        + "CC       membrane-anchored C-terminal fragments, C80, C83 and C99."
+                        + " Subsequent\n"
+                        + "CC       processing of C80 and C83 by gamma-secretase yields P3 peptides."
+                        + " This\n"
+                        + "CC       is the major secretory pathway and is non-amyloidogenic."
+                        + " Alternatively,\n"
+                        + "CC       presenilin/nicastrin-mediated gamma-secretase processing of C99\n"
+                        + "CC       releases the amyloid beta proteins, amyloid-beta 40 (Abeta40)"
+                        + " and\n"
+                        + "CC       amyloid-beta 42 (Abeta42), major components of amyloid plaques,"
+                        + " and the\n"
+                        + "CC       cytotoxic C-terminal fragments, gamma-CTF(50), gamma-CTF(57) and"
+                        + " gamma-\n"
+                        + "CC       CTF(59). {ECO:0000256|HAMAP-Rule:MF_00205,\n"
+                        + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
         String text =
                 "Proteolytically processed under normal cellular conditions. "
                         + "Cleavage either by alpha-secretase, beta-secretase or theta-"
@@ -843,10 +843,10 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     void test2() throws Exception {
         String ccLine =
                 ("CC   -!- FUNCTION: Stimulates the proliferation of early hematopoietic cells.\n"
-                     + "CC       Synergizes well with a number of other colony stimulating factors"
-                     + " and\n"
-                     + "CC       interleukins. {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                     + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
+                        + "CC       Synergizes well with a number of other colony stimulating factors"
+                        + " and\n"
+                        + "CC       interleukins. {ECO:0000256|HAMAP-Rule:MF_00205,\n"
+                        + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
 
         String text =
                 "Stimulates the proliferation of early hematopoietic "
@@ -863,13 +863,13 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     void testFunctionWithEvidence2() {
         String ccLine =
                 ("CC   -!- FUNCTION: Bifunctional enzyme that catalyzes the first two steps in\n"
-                     + "CC       lysine degradation. The N-terminal and the C-terminal contain"
-                     + " lysine-\n"
-                     + "CC       oxoglutarate reductase and saccharopine dehydrogenase activity,\n"
-                     + "CC       respectively. Negatively regulates free Lys accumulation in seeds"
-                     + " (By\n"
-                     + "CC       similarity). {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                     + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
+                        + "CC       lysine degradation. The N-terminal and the C-terminal contain"
+                        + " lysine-\n"
+                        + "CC       oxoglutarate reductase and saccharopine dehydrogenase activity,\n"
+                        + "CC       respectively. Negatively regulates free Lys accumulation in seeds"
+                        + " (By\n"
+                        + "CC       similarity). {ECO:0000256|HAMAP-Rule:MF_00205,\n"
+                        + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
         String text =
                 "Bifunctional enzyme that catalyzes the first two steps "
                         + "in lysine degradation. The N-terminal and the C-terminal contain "

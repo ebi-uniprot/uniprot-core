@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.uniprot.comment;
 
+import java.util.List;
+
 import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionBuilder;
@@ -7,8 +9,6 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.InteractantType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
-
-import java.util.List;
 
 public class InteractionConverter implements Converter<CommentType, Interaction> {
     private static final String INTERACTION = "interaction";

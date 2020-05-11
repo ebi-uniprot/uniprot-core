@@ -1,10 +1,10 @@
 package org.uniprot.cv.chebi;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.chebi.ChebiEntry;
-
-import java.util.List;
 
 class ChebiCacheTest {
     private static final String DEFAULT_DATA_FILE = "chebi/chebi.obo";

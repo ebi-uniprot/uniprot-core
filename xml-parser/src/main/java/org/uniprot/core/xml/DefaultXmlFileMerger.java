@@ -1,10 +1,5 @@
 package org.uniprot.core.xml;
 
-import org.apache.commons.compress.utils.IOUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.uniprot.core.xml.uniprot.unload.UniProtFFToXmlBuilder;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
@@ -15,6 +10,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+
+import org.apache.commons.compress.utils.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.uniprot.core.xml.uniprot.unload.UniProtFFToXmlBuilder;
 
 public class DefaultXmlFileMerger implements XmlFileMerger {
     private final String header;

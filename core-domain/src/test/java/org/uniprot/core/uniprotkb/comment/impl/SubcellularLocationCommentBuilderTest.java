@@ -4,12 +4,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidenceValuesWithoutEvidences;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-
-import java.util.ArrayList;
-import java.util.List;
 
 class SubcellularLocationCommentBuilderTest {
 

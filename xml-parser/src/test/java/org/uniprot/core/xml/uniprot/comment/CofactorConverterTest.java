@@ -3,6 +3,11 @@ package org.uniprot.core.xml.uniprot.comment;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
@@ -16,11 +21,6 @@ import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 class CofactorConverterTest {
     CofactorConverter converter;

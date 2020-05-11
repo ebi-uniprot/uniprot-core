@@ -2,10 +2,10 @@ package org.uniprot.cv.xdb;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
-
-import java.util.List;
 
 class UniProtKBCrossReferenceDisplayOrderTest {
 

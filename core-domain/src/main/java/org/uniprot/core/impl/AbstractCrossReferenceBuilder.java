@@ -2,15 +2,15 @@ package org.uniprot.core.impl;
 
 import static org.uniprot.core.util.Utils.*;
 
-import org.uniprot.core.Builder;
-import org.uniprot.core.CrossReference;
-import org.uniprot.core.Database;
-import org.uniprot.core.Property;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.Builder;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.Database;
+import org.uniprot.core.Property;
 
 /**
  * Created 10/01/19

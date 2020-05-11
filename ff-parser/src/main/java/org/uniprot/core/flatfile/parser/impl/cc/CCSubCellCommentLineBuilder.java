@@ -2,14 +2,14 @@ package org.uniprot.core.flatfile.parser.impl.cc;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.*;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.base.Strings;
 
 /**
  * @author jieluo CC -!- SUBCELLULAR LOCATION: Golgi apparatus, trans-Golgi network |CC membrane;

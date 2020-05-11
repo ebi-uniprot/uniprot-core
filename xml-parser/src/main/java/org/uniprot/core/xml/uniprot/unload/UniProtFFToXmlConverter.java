@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.uniprot.unload;
 
+import java.util.function.Function;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.flatfile.parser.UniProtParser;
@@ -8,8 +10,6 @@ import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.xml.jaxb.uniprot.Entry;
 import org.uniprot.core.xml.uniprot.UniProtEntryConverter;
-
-import java.util.function.Function;
 
 public class UniProtFFToXmlConverter implements Function<String, Entry> {
     private static final Logger LOGGER = LoggerFactory.getLogger(UniProtFFToXmlConverter.class);

@@ -1,12 +1,12 @@
 package org.uniprot.cv.taxonomy;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.NoSuchElementException;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class FileNodeIteratorTest {
     private static final String FIELD_SEPARATOR = "\t";
@@ -49,8 +49,7 @@ public class FileNodeIteratorTest {
         File taxonomyFile = new File(url.toURI());
         FileNodeIterator iterator =
                 new FileNodeIterator(taxonomyFile, FIELD_SEPARATOR, NULL_PLACEHOLDER);
-        while (iterator.hasNext() && iterator.next() != null)
-            ;
+        while (iterator.hasNext() && iterator.next() != null) ;
 
         // try to call next
         NoSuchElementException thrown =

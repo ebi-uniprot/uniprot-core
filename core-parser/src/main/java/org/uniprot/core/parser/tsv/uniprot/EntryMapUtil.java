@@ -1,11 +1,11 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
-import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
-import org.uniprot.core.util.Utils;
-
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
+import org.uniprot.core.util.Utils;
 
 public class EntryMapUtil {
     private static final String EMPTY_STRING = "";

@@ -1,19 +1,18 @@
 package org.uniprot.core.citation.impl;
 
+import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.core.Is.is;
 
-import static java.util.Arrays.asList;
+import java.util.stream.Collectors;
+
+import javax.annotation.Nonnull;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Value;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.citation.JournalArticle;
-
-import java.util.stream.Collectors;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author lgonzales

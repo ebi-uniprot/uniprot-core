@@ -1,13 +1,13 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
+import java.util.List;
+import java.util.Objects;
+
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprotkb.comment.Disease;
 import org.uniprot.core.uniprotkb.comment.DiseaseDatabase;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.util.Utils;
-
-import java.util.List;
-import java.util.Objects;
 
 public class DiseaseImpl implements Disease {
     private static final String DEFAULT_ACCESSION = "DI-00000";

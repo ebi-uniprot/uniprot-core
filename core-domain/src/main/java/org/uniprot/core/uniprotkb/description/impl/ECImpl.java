@@ -2,13 +2,13 @@ package org.uniprot.core.uniprotkb.description.impl;
 
 import static org.uniprot.core.util.Utils.unmodifiableList;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.impl.ECNumberImpl;
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.util.Utils;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class ECImpl extends ECNumberImpl implements EC {
     private static final long serialVersionUID = -5418175231477354719L;

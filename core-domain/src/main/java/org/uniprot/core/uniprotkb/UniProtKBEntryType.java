@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprotkb;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum UniProtKBEntryType implements EnumDisplay {
     SWISSPROT("UniProtKB reviewed (Swiss-Prot)"),

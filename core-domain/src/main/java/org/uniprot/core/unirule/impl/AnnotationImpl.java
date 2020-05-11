@@ -1,13 +1,13 @@
 package org.uniprot.core.unirule.impl;
 
+import java.util.Objects;
+
 import org.uniprot.core.gene.Gene;
 import org.uniprot.core.uniprotkb.Keyword;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.unirule.Annotation;
-
-import java.util.Objects;
 
 public class AnnotationImpl extends RuleExceptionAnnotationImpl implements Annotation {
 

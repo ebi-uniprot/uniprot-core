@@ -1,11 +1,11 @@
 package org.uniprot.core.taxonomy.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
 import org.uniprot.core.uniprotkb.taxonomy.impl.AbstractOrganismNameBuilder;
-
-import javax.annotation.Nonnull;
 
 public class TaxonomyLineageBuilder
         extends AbstractOrganismNameBuilder<TaxonomyLineageBuilder, TaxonomyLineage>

@@ -1,5 +1,8 @@
 package org.uniprot.core.flatfile.transformer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineUtils;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.FreeTextComment;
@@ -7,9 +10,6 @@ import org.uniprot.core.uniprotkb.comment.impl.FreeTextCommentBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class FreeTextCommentTranslator implements CommentTransformer<FreeTextComment> {
     private static final String EVIDENCE_PREFIX = "{ECO";

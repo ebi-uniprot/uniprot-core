@@ -2,14 +2,14 @@ package org.uniprot.core.flatfile.antlr;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.gn.GnLineObject;
 import org.uniprot.core.flatfile.parser.impl.gn.GnLineObject.GnNameType;
-
-import java.util.Arrays;
-import java.util.List;
 
 class GnLineParserTest {
     @Test
@@ -153,8 +153,8 @@ class GnLineParserTest {
     void testWithEvidenceMore() {
         String gnLines =
                 "GN   Name=GeneA {ECO:0000006|PubMed:20858735}; Synonyms=Syn1"
-                    + " {ECO:0000006|PubMed:20858735,\n"
-                    + "GN   ECO:0000005|PubMed:208587235}, Syn2 {ECO:0000005|PubMed:208587235};\n";
+                        + " {ECO:0000006|PubMed:20858735,\n"
+                        + "GN   ECO:0000005|PubMed:208587235}, Syn2 {ECO:0000005|PubMed:208587235};\n";
         UniprotKBLineParser<GnLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createGnLineParser();
         GnLineObject obj = parser.parse(gnLines);
@@ -356,12 +356,12 @@ class GnLineParserTest {
     void testMultiGene2() {
         String gnLines =
                 "GN   Name=GF14A {ECO:0000313|EMBL:BAG16761.1, ECO:0000269|PubMed:10433554,\n"
-                    + "GN   ECO:0000313|PDB:3OW2};\n"
-                    + "GN   OrderedLocusNames=Os08g0480800 {ECO:0000303|Ref.6,\n"
-                    + "GN   ECO:0000269|PubMed:10433554, ECO:0000313|PDB:3OW2}, LOC_Os08g37490\n"
-                    + "GN   {ECO:0000313|EMBL:BAG16761.1};\n"
-                    + "GN   ORFNames=OJ1113_A10.40 {ECO:0000313|PDB:3OW2,\n"
-                    + "GN   ECO:0000256|HAMAP-Rule:MF_00205}, OSJNBb0092C08.10;\n";
+                        + "GN   ECO:0000313|PDB:3OW2};\n"
+                        + "GN   OrderedLocusNames=Os08g0480800 {ECO:0000303|Ref.6,\n"
+                        + "GN   ECO:0000269|PubMed:10433554, ECO:0000313|PDB:3OW2}, LOC_Os08g37490\n"
+                        + "GN   {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "GN   ORFNames=OJ1113_A10.40 {ECO:0000313|PDB:3OW2,\n"
+                        + "GN   ECO:0000256|HAMAP-Rule:MF_00205}, OSJNBb0092C08.10;\n";
         UniprotKBLineParser<GnLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createGnLineParser();
         GnLineObject obj = parser.parse(gnLines);

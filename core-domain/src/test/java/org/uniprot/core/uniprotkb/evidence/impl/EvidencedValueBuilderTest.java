@@ -2,15 +2,15 @@ package org.uniprot.core.uniprotkb.evidence.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
 public class EvidencedValueBuilderTest {
     public static EvidencedValue createObject(int listSize, boolean includeEvidence) {

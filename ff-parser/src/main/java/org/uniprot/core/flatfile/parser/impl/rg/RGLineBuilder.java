@@ -2,11 +2,11 @@ package org.uniprot.core.flatfile.parser.impl.rg;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.*;
 
-import org.uniprot.core.flatfile.writer.LineType;
-import org.uniprot.core.flatfile.writer.impl.RLine;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.flatfile.writer.LineType;
+import org.uniprot.core.flatfile.writer.impl.RLine;
 
 public class RGLineBuilder implements RLine<List<String>> {
     private final LineType lineType = LineType.RG;

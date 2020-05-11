@@ -3,14 +3,14 @@ package org.uniprot.core.cv.pathway.impl;
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableList;
 
-import org.uniprot.core.Builder;
-import org.uniprot.core.cv.disease.DiseaseCrossReference;
-import org.uniprot.core.cv.pathway.PathwayEntry;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.Builder;
+import org.uniprot.core.cv.disease.DiseaseCrossReference;
+import org.uniprot.core.cv.pathway.PathwayEntry;
 
 public class PathwayEntryBuilder implements Builder<PathwayEntry> {
     private String id;

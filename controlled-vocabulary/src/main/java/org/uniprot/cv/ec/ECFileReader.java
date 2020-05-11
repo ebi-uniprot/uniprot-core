@@ -1,14 +1,14 @@
 package org.uniprot.cv.ec;
 
-import org.uniprot.core.cv.ec.ECEntry;
-import org.uniprot.core.cv.ec.impl.ECEntryBuilder;
-import org.uniprot.cv.common.AbstractFileReader;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.uniprot.core.cv.ec.ECEntry;
+import org.uniprot.core.cv.ec.impl.ECEntryBuilder;
+import org.uniprot.cv.common.AbstractFileReader;
 
 public class ECFileReader extends AbstractFileReader<ECEntry> {
     private static final Pattern ENZYME_CLASS_PATTERN =

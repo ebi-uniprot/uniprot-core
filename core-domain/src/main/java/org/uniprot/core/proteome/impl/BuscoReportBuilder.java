@@ -1,9 +1,9 @@
 package org.uniprot.core.proteome.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.proteome.BuscoReport;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author lgonzales

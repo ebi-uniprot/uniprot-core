@@ -3,14 +3,14 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableList;
 
-import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
-import org.uniprot.core.uniprotkb.comment.SequenceCautionType;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
+import org.uniprot.core.uniprotkb.comment.SequenceCautionType;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 public final class SequenceCautionCommentBuilder implements CommentBuilder<SequenceCautionComment> {
     private String molecule;

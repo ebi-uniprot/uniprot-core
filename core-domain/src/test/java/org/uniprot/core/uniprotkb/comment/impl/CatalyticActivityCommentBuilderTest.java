@@ -4,11 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createPhyReaction;
 import static org.uniprot.core.ObjectsForTests.createPhyReactions;
 
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.CatalyticActivityComment;
 import org.uniprot.core.uniprotkb.comment.Reaction;
-
-import java.util.Collections;
 
 class CatalyticActivityCommentBuilderTest {
 

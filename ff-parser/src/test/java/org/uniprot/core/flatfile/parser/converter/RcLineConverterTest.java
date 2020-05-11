@@ -2,15 +2,15 @@ package org.uniprot.core.flatfile.parser.converter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.rc.RcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.rc.RcLineObject;
 import org.uniprot.core.uniprotkb.ReferenceComment;
 import org.uniprot.core.uniprotkb.ReferenceCommentType;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-
-import java.util.ArrayList;
-import java.util.List;
 
 class RcLineConverterTest {
     @Test

@@ -1,9 +1,9 @@
 package org.uniprot.core.literature.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.literature.LiteratureStatistics;
-
-import javax.annotation.Nonnull;
 
 /** @author lgonzales */
 public class LiteratureStatisticsBuilder implements Builder<LiteratureStatistics> {

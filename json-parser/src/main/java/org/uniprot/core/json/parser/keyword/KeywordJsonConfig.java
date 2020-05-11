@@ -1,8 +1,5 @@
 package org.uniprot.core.json.parser.keyword;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.go.GoTerm;
 import org.uniprot.core.cv.go.impl.GoTermImpl;
@@ -12,6 +9,9 @@ import org.uniprot.core.cv.keyword.impl.KeywordEntryImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordIdImpl;
 import org.uniprot.core.impl.StatisticsImpl;
 import org.uniprot.core.json.parser.JsonConfig;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 /** @author lgonzales */
 public class KeywordJsonConfig extends JsonConfig {

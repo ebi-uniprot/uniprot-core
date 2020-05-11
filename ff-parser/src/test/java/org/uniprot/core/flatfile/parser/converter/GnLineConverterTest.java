@@ -3,6 +3,9 @@ package org.uniprot.core.flatfile.parser.converter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.gn.GnLineConverter;
 import org.uniprot.core.flatfile.parser.impl.gn.GnLineObject;
@@ -12,9 +15,6 @@ import org.uniprot.core.gene.GeneNameSynonym;
 import org.uniprot.core.gene.ORFName;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
-
-import java.util.ArrayList;
-import java.util.List;
 
 class GnLineConverterTest {
     private final GnLineConverter converter = new GnLineConverter();

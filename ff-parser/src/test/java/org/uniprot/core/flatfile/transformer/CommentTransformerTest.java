@@ -108,15 +108,15 @@ class CommentTransformerTest {
     void testDisease() {
         String tString =
                 "DISEASE: Breast-ovarian cancer, familial, 1 (BROVCA1) [MIM:604370]: A condition"
-                    + " associated with familial predisposition to cancer of the breast and"
-                    + " ovaries. Characteristic features in affected families are an early age of"
-                    + " onset of breast cancer (often before age 50), increased chance of"
-                    + " bilateral cancers (cancer that develop in both breasts, or both ovaries,"
-                    + " independently), frequent occurrence of breast cancer among men, increased"
-                    + " incidence of tumors of other specific organs, such as the prostate."
-                    + " Note=DiseaseEntry susceptibility is associated with variations affecting"
-                    + " the gene represented in this entry. Mutations in BRCA1 are thought to be"
-                    + " responsible for more than 80% of inherited breast-ovarian cancer.";
+                        + " associated with familial predisposition to cancer of the breast and"
+                        + " ovaries. Characteristic features in affected families are an early age of"
+                        + " onset of breast cancer (often before age 50), increased chance of"
+                        + " bilateral cancers (cancer that develop in both breasts, or both ovaries,"
+                        + " independently), frequent occurrence of breast cancer among men, increased"
+                        + " incidence of tumors of other specific organs, such as the prostate."
+                        + " Note=DiseaseEntry susceptibility is associated with variations affecting"
+                        + " the gene represented in this entry. Mutations in BRCA1 are thought to be"
+                        + " responsible for more than 80% of inherited breast-ovarian cancer.";
         testComment(tString, CommentType.DISEASE);
     }
 

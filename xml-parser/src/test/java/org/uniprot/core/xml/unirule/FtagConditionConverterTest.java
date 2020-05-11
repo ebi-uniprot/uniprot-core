@@ -2,15 +2,15 @@ package org.uniprot.core.xml.unirule;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.unirule.FeatureTagConditionValue;
 import org.uniprot.core.unirule.impl.FeatureTagConditionValueBuilder;
 import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.unirule.FtagConditionValue;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class FtagConditionConverterTest extends AbstractConverterTest {
 

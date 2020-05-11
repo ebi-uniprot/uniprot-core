@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.uniprot.core.ObjectsForTests.createEvidence;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
@@ -16,8 +18,6 @@ import org.uniprot.core.uniprotkb.feature.FeatureDatabase;
 import org.uniprot.core.uniprotkb.feature.FeatureId;
 import org.uniprot.core.uniprotkb.feature.FeatureLocation;
 import org.uniprot.core.uniprotkb.feature.FeatureType;
-
-import java.util.Collections;
 
 class FeatureBuilderTest {
 

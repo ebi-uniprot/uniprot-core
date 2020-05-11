@@ -1,15 +1,15 @@
 package org.uniprot.core.literature.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.literature.LiteratureMappedReference;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.util.Utils;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
 
 /** @author lgonzales */
 public class LiteratureMappedReferenceBuilder implements Builder<LiteratureMappedReference> {

@@ -1,13 +1,13 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import com.google.common.base.Strings;
-
 import org.uniprot.core.uniprotkb.comment.BPCPComment;
 import org.uniprot.core.uniprotkb.comment.impl.BPCPCommentBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
+
+import com.google.common.base.Strings;
 
 public class BPCPCommentConverter implements CommentConverter<BPCPComment> {
 

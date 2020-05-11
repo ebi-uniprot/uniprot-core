@@ -1,10 +1,10 @@
 package org.uniprot.core.uniprotkb.comment;
 
+import java.util.List;
+
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
 import org.uniprot.core.uniprotkb.evidence.HasEvidences;
-
-import java.util.List;
 
 public interface Reaction extends HasEvidences {
     String getName();

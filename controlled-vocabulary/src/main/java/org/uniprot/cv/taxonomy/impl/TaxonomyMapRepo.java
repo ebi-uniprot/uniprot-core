@@ -1,15 +1,15 @@
 package org.uniprot.cv.taxonomy.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.cv.taxonomy.TaxonMappingException;
 import org.uniprot.cv.taxonomy.TaxonomicNode;
 import org.uniprot.cv.taxonomy.TaxonomyRepo;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
 
 /**
  * A taxonomy service that stores the various taxonomy nodes in a map The node can be fetched by the

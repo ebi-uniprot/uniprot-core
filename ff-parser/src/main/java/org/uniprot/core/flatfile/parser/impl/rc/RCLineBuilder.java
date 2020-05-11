@@ -2,16 +2,16 @@ package org.uniprot.core.flatfile.parser.impl.rc;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.LineBuilder;
 import org.uniprot.core.flatfile.writer.impl.LineBuilderHelper;
 import org.uniprot.core.flatfile.writer.impl.RLine;
 import org.uniprot.core.uniprotkb.ReferenceComment;
 import org.uniprot.core.uniprotkb.ReferenceCommentType;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class RCLineBuilder implements RLine<List<ReferenceComment>> {
     private final LineType lineType = LineType.RC;

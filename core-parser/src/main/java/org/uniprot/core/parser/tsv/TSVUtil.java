@@ -1,8 +1,8 @@
 package org.uniprot.core.parser.tsv;
 
-import org.uniprot.core.util.Utils;
-
 import java.util.List;
+
+import org.uniprot.core.util.Utils;
 
 /**
  * @author lgonzales

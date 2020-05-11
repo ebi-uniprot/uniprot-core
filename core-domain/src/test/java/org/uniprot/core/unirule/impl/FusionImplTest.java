@@ -2,11 +2,11 @@ package org.uniprot.core.unirule.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.unirule.Fusion;
-
 import java.util.Arrays;
 import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.unirule.Fusion;
 
 public class FusionImplTest {
 

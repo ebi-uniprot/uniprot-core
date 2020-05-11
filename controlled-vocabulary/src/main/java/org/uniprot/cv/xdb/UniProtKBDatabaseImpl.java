@@ -1,13 +1,13 @@
 package org.uniprot.cv.xdb;
 
-import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
-import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
-import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
-
 import java.util.List;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
+import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 
 public final class UniProtKBDatabaseImpl implements UniProtKBDatabase {
     private static final long serialVersionUID = 201534956573963997L;

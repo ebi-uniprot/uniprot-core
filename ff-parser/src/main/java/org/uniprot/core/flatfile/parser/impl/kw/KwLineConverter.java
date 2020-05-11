@@ -1,5 +1,9 @@
 package org.uniprot.core.flatfile.parser.impl.kw;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.exception.ParseKeywordException;
@@ -10,10 +14,6 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.impl.KeywordBuilder;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 public class KwLineConverter extends EvidenceCollector
         implements Converter<KwLineObject, List<Keyword>> {

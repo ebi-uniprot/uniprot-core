@@ -2,6 +2,9 @@ package org.uniprot.core.xml.unirule;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.unirule.PositionFeatureSet;
@@ -10,9 +13,6 @@ import org.uniprot.core.unirule.impl.PositionFeatureSetBuilder;
 import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.unirule.PositionalFeatureSetType;
 import org.uniprot.core.xml.jaxb.unirule.PositionalFeatureType;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class PositionalFeatureSetConverterTest extends AbstractConverterTest {
     @BeforeAll

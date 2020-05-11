@@ -2,12 +2,12 @@ package org.uniprot.core.unirule.impl;
 
 import static org.uniprot.core.util.Utils.nullThrowIllegalArgument;
 
-import org.uniprot.core.unirule.CaseRule;
-import org.uniprot.core.unirule.ConditionSet;
-
 import java.util.List;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.unirule.CaseRule;
+import org.uniprot.core.unirule.ConditionSet;
 
 public class CaseRuleBuilder extends AbstractRuleBuilder<CaseRuleBuilder, CaseRule> {
     private boolean overallStatsExempted;

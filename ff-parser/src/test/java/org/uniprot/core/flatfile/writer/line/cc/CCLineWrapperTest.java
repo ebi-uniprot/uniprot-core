@@ -1,13 +1,13 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.FreeTextComment;
 import org.uniprot.core.uniprotkb.comment.impl.FreeTextCommentBuilder;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
-
-import java.util.ArrayList;
-import java.util.List;
 
 class CCLineWrapperTest extends CCBuildTestAbstr {
     @Test
@@ -40,10 +40,10 @@ class CCLineWrapperTest extends CCBuildTestAbstr {
     void testDash() {
         String text =
                 "Non-catalytic subunit of the queuine tRNA-ribosyltransferase (TGT) that catalyzes"
-                    + " the base-exchange of a guanine (G) residue with queuine (Q) at position 34"
-                    + " (anticodon wobble position) in tRNAs with GU(N) anticodons (tRNA-Asp,"
-                    + " -Asn, -His and -Tyr), resulting in the hypermodified nucleoside queuosine"
-                    + " (7-(((4,5-cis-dihydroxy-2-cyclopenten-1-yl)amino)methyl)-7-deazaguanosine)";
+                        + " the base-exchange of a guanine (G) residue with queuine (Q) at position 34"
+                        + " (anticodon wobble position) in tRNAs with GU(N) anticodons (tRNA-Asp,"
+                        + " -Asn, -His and -Tyr), resulting in the hypermodified nucleoside queuosine"
+                        + " (7-(((4,5-cis-dihydroxy-2-cyclopenten-1-yl)amino)methyl)-7-deazaguanosine)";
         String evi = "ECO:0000256|HAMAP-Rule:MF_03043";
         List<String> evs = new ArrayList<>();
         evs.add(evi);
@@ -67,10 +67,10 @@ class CCLineWrapperTest extends CCBuildTestAbstr {
     void testDashSpace1() {
         String text =
                 "Responsible, at least in part, for anchoring of the major outer membrane"
-                    + " lipoprotein (Lpp, also known as the Braun lipoprotein) to the"
-                    + " peptidoglycan via a meso-diaminopimelyl-L-Lys- bond on the terminal"
-                    + " residue of Lpp. Can be oxidized in vivo, its reduction depends"
-                    + " preferentially on DsbG, although DsbC is able to partially replace DsbG.";
+                        + " lipoprotein (Lpp, also known as the Braun lipoprotein) to the"
+                        + " peptidoglycan via a meso-diaminopimelyl-L-Lys- bond on the terminal"
+                        + " residue of Lpp. Can be oxidized in vivo, its reduction depends"
+                        + " preferentially on DsbG, although DsbC is able to partially replace DsbG.";
         String evi = "ECO:0000269|PubMed:18456808";
         List<String> evs = new ArrayList<>();
         evs.add(evi);
@@ -103,9 +103,9 @@ class CCLineWrapperTest extends CCBuildTestAbstr {
 
         String expected =
                 "CC   -!- ACTIVITY REGULATION: Release of protein hormones and neuropeptides"
-                    + " from\n"
-                    + "CC       their precursors, generally by hydrolysis of -Lys-Arg-|- bonds.\n"
-                    + "CC       {ECO:0000269|PubMed:18456808}.";
+                        + " from\n"
+                        + "CC       their precursors, generally by hydrolysis of -Lys-Arg-|- bonds.\n"
+                        + "CC       {ECO:0000269|PubMed:18456808}.";
         doTest(expected, comment);
     }
 
@@ -129,20 +129,20 @@ class CCLineWrapperTest extends CCBuildTestAbstr {
     void testMultiDash3() {
         String text =
                 "Hydrolysis of proteins to small peptides in the presence of ATP and magnesium."
-                    + " Alpha-casein is the usual test substrate. In the absence of ATP, only"
-                    + " oligopeptides shorter than five residues are hydrolyzed (such as"
-                    + " succinyl-Leu-Tyr-|-NHMec; and Leu-Tyr-Leu-|-Tyr-Trp, in which cleavage of"
-                    + " the -Tyr-|-Leu- and -Tyr-|-Trp bonds also occurs).";
+                        + " Alpha-casein is the usual test substrate. In the absence of ATP, only"
+                        + " oligopeptides shorter than five residues are hydrolyzed (such as"
+                        + " succinyl-Leu-Tyr-|-NHMec; and Leu-Tyr-Leu-|-Tyr-Trp, in which cleavage of"
+                        + " the -Tyr-|-Leu- and -Tyr-|-Trp bonds also occurs).";
         String expected =
                 "CC   -!- ACTIVITY REGULATION: Hydrolysis of proteins to small peptides in the\n"
-                    + "CC       presence of ATP and magnesium. Alpha-casein is the usual test\n"
-                    + "CC       substrate. In the absence of ATP, only oligopeptides shorter than"
-                    + " five\n"
-                    + "CC       residues are hydrolyzed (such as succinyl-Leu-Tyr-|-NHMec; and"
-                    + " Leu-Tyr-\n"
-                    + "CC       Leu-|-Tyr-Trp, in which cleavage of the -Tyr-|-Leu- and"
-                    + " -Tyr-|-Trp\n"
-                    + "CC       bonds also occurs). {ECO:0000255|HAMAP-Rule:MF_00444}.";
+                        + "CC       presence of ATP and magnesium. Alpha-casein is the usual test\n"
+                        + "CC       substrate. In the absence of ATP, only oligopeptides shorter than"
+                        + " five\n"
+                        + "CC       residues are hydrolyzed (such as succinyl-Leu-Tyr-|-NHMec; and"
+                        + " Leu-Tyr-\n"
+                        + "CC       Leu-|-Tyr-Trp, in which cleavage of the -Tyr-|-Leu- and"
+                        + " -Tyr-|-Trp\n"
+                        + "CC       bonds also occurs). {ECO:0000255|HAMAP-Rule:MF_00444}.";
 
         String evi = "ECO:0000255|HAMAP-Rule:MF_00444";
         List<String> evs = new ArrayList<>();

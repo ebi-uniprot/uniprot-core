@@ -1,8 +1,8 @@
 package org.uniprot.core.citation.impl;
 
-import org.uniprot.core.citation.Unpublished;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.citation.Unpublished;
 
 public final class UnpublishedBuilder
         extends AbstractCitationBuilder<UnpublishedBuilder, Unpublished> {

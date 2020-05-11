@@ -2,16 +2,16 @@ package org.uniprot.core.flatfile.antlr;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject.FlagType;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject.NameBlock;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 class DeLineParserTest {
     @Test
@@ -269,23 +269,23 @@ class DeLineParserTest {
     void testWithContainInclude() {
         String deLines =
                 "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n"
-                    + "DE   Includes:\n"
-                    + "DE     RecName: Full=Glutamate N-acetyltransferase;\n"
-                    + "DE              EC=2.3.1.35;\n"
-                    + "DE     AltName: Full=Ornithine acetyltransferase;\n"
-                    + "DE              Short=OATase;\n"
-                    + "DE     AltName: Full=Ornithine transacetylase;\n"
-                    + "DE   Includes:\n"
-                    + "DE     RecName: Full=Amino-acid acetyltransferase;\n"
-                    + "DE              EC=2.3.1.-;\n"
-                    + "DE     AltName: Full=N-acetylglutamate synthase;\n"
-                    + "DE              Short=AGS;\n"
-                    + "DE   Contains:\n"
-                    + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha"
-                    + " chain;\n"
-                    + "DE   Contains:\n"
-                    + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta"
-                    + " chain;\n";
+                        + "DE   Includes:\n"
+                        + "DE     RecName: Full=Glutamate N-acetyltransferase;\n"
+                        + "DE              EC=2.3.1.35;\n"
+                        + "DE     AltName: Full=Ornithine acetyltransferase;\n"
+                        + "DE              Short=OATase;\n"
+                        + "DE     AltName: Full=Ornithine transacetylase;\n"
+                        + "DE   Includes:\n"
+                        + "DE     RecName: Full=Amino-acid acetyltransferase;\n"
+                        + "DE              EC=2.3.1.-;\n"
+                        + "DE     AltName: Full=N-acetylglutamate synthase;\n"
+                        + "DE              Short=AGS;\n"
+                        + "DE   Contains:\n"
+                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha"
+                        + " chain;\n"
+                        + "DE   Contains:\n"
+                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta"
+                        + " chain;\n";
         UniprotKBLineParser<DeLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
@@ -524,8 +524,8 @@ class DeLineParserTest {
     void testWithCurlyBracket() {
         String deLines =
                 "DE   RecName:"
-                    + " Full=(4-*{*4-[2-(gamma-L-glutamylamino)ethyl]phenoxymethyl*}*furan-2-yl)methanamine"
-                    + " synthase {ECO:12345|Ref.1};\n";
+                        + " Full=(4-*{*4-[2-(gamma-L-glutamylamino)ethyl]phenoxymethyl*}*furan-2-yl)methanamine"
+                        + " synthase {ECO:12345|Ref.1};\n";
         UniprotKBLineParser<DeLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);

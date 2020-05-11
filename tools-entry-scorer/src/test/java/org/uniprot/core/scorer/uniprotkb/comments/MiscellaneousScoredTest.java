@@ -15,7 +15,7 @@ class MiscellaneousScoredTest extends CommentScoreTestBase {
                     + "CC       medium. {ECO:0000256|HAMAP-Rule:MF_01146}.";
     private static String NON_SCORE_TEXT_2 =
             "CC   -!- MISCELLANEOUS: The sequence shown here is derived from an\n"
-                + "CC       EMBL/GenBank/DDBJ third party annotation (TPA) entry (By similarity).";
+                    + "CC       EMBL/GenBank/DDBJ third party annotation (TPA) entry (By similarity).";
 
     @Test
     void shouldScore0() throws Exception {

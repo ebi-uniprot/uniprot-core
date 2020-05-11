@@ -1,14 +1,14 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+
 import org.uniprot.core.impl.ValueImpl;
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueImpl;
 import org.uniprot.core.util.Utils;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
 
 public class APIsoformImpl implements APIsoform {
     private static final long serialVersionUID = -6908166238877018418L;

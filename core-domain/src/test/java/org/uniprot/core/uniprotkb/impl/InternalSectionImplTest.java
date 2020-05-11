@@ -2,6 +2,12 @@ package org.uniprot.core.uniprotkb.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.InternalLine;
 import org.uniprot.core.uniprotkb.InternalLineType;
@@ -9,12 +15,6 @@ import org.uniprot.core.uniprotkb.InternalSection;
 import org.uniprot.core.uniprotkb.SourceLine;
 import org.uniprot.core.uniprotkb.evidence.EvidenceLine;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceLineBuilder;
-
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 class InternalSectionImplTest {
 

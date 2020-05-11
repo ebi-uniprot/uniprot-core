@@ -3,7 +3,7 @@ package org.uniprot.core.json.parser.uniprot;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.gene.*;
@@ -11,7 +11,7 @@ import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.impl.*;
 
-import java.util.List;
+import com.fasterxml.jackson.databind.JsonNode;
 
 /** @author lgonzales */
 public class GeneTest {

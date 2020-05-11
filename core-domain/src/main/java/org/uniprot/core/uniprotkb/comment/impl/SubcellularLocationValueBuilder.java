@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprotkb.comment.SubcellularLocationValue;
 import org.uniprot.core.uniprotkb.evidence.impl.AbstractEvidencedValueBuilder;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 15/01/19

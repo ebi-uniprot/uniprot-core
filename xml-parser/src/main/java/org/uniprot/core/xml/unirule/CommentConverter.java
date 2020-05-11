@@ -1,13 +1,13 @@
 package org.uniprot.core.xml.unirule;
 
+import java.util.Objects;
+
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.comment.CommentConverterFactory;
-
-import java.util.Objects;
 
 public class CommentConverter implements Converter<CommentType, Comment> {
     private final EvidenceIndexMapper evidenceIndexMapper;

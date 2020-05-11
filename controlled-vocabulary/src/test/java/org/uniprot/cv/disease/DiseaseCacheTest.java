@@ -1,10 +1,10 @@
 package org.uniprot.cv.disease;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.disease.DiseaseEntry;
-
-import java.util.List;
 
 class DiseaseCacheTest {
 

@@ -2,10 +2,10 @@ package org.uniprot.core.taxonomy.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.taxonomy.TaxonomyStrain;
-
-import java.util.Collections;
 
 class TaxonomyStrainImplTest {
     @Test

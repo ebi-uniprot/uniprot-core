@@ -3,8 +3,6 @@ package org.uniprot.core.json.parser.uniprot;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.json.parser.ValidateJson;
@@ -12,6 +10,8 @@ import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
 import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
+
+import com.fasterxml.jackson.databind.JsonNode;
 
 /** @author lgonzales */
 public class UniProtKBCrossReferenceTest {

@@ -2,9 +2,9 @@ package org.uniprot.core.uniprotkb.comment;
 
 import static org.uniprot.core.util.Utils.notNullNotEmpty;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum RnaEditingLocationType implements EnumDisplay {
     Not_applicable,

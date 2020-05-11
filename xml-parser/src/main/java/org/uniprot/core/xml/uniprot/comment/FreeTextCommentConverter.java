@@ -1,6 +1,7 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import com.google.common.base.Strings;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprotkb.comment.FreeTextComment;
 import org.uniprot.core.uniprotkb.comment.impl.FreeTextCommentBuilder;
@@ -11,8 +12,7 @@ import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.EvidencedValueConverter;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 public class FreeTextCommentConverter implements CommentConverter<FreeTextComment> {
     private final ObjectFactory xmlUniprotFactory;

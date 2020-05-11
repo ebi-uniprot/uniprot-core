@@ -1,15 +1,15 @@
 package org.uniprot.cv.taxonomy.impl;
 
+import java.io.File;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.Optional;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.cv.taxonomy.FileNodeIterable;
 import org.uniprot.cv.taxonomy.TaxonomicNode;
-
-import java.io.File;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.Optional;
 
 public class TaxonomyMapRepoTest {
 

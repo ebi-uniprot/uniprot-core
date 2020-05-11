@@ -1,17 +1,16 @@
 package org.uniprot.core.cv.disease.impl;
 
+import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.*;
 
-import static java.util.Collections.singletonList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
-
-import java.util.Arrays;
-import java.util.List;
 
 class DiseaseEntryBuilderTest {
 

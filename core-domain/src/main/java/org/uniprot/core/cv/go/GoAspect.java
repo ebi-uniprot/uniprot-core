@@ -1,8 +1,8 @@
 package org.uniprot.core.cv.go;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum GoAspect implements EnumDisplay {
     FUNCTION("GO Molecular Function"),

@@ -1,5 +1,10 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.Note;
 import org.uniprot.core.uniprotkb.comment.RnaEdPosition;
@@ -7,11 +12,6 @@ import org.uniprot.core.uniprotkb.comment.RnaEditingComment;
 import org.uniprot.core.uniprotkb.comment.RnaEditingLocationType;
 import org.uniprot.core.uniprotkb.comment.impl.RnaEditingCommentBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.RnaEditingPositionBuilder;
-
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 class CCRNAEditingBuildTest extends CCBuildTestAbstr {
     @Test
@@ -52,18 +52,18 @@ class CCRNAEditingBuildTest extends CCBuildTestAbstr {
     void testRNAEDITING3() {
         String ccLine =
                 ("CC   -!- RNA EDITING: Modified_positions=156 {ECO:0000313|EMBL:BAG16761.1},"
-                     + " 158\n"
-                     + "CC       {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6}, 160\n"
-                     + "CC       {ECO:0000303|Ref.6}; Note=Partially edited. RNA editing"
-                     + " generates\n"
-                     + "CC       receptor isoforms that differ in their ability to interact with"
-                     + " the\n"
-                     + "CC       phospholipase C signaling cascade in a transfected cell line,\n"
-                     + "CC       suggesting that this RNA processing event may contribute to the\n"
-                     + "CC       modulation of serotonergic neurotransmission in the central"
-                     + " nervous\n"
-                     + "CC       system. {ECO:0000256|HAMAP-Rule:MF_00205,"
-                     + " ECO:0000313|PDB:3OW2};");
+                        + " 158\n"
+                        + "CC       {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6}, 160\n"
+                        + "CC       {ECO:0000303|Ref.6}; Note=Partially edited. RNA editing"
+                        + " generates\n"
+                        + "CC       receptor isoforms that differ in their ability to interact with"
+                        + " the\n"
+                        + "CC       phospholipase C signaling cascade in a transfected cell line,\n"
+                        + "CC       suggesting that this RNA processing event may contribute to the\n"
+                        + "CC       modulation of serotonergic neurotransmission in the central"
+                        + " nervous\n"
+                        + "CC       system. {ECO:0000256|HAMAP-Rule:MF_00205,"
+                        + " ECO:0000313|PDB:3OW2};");
         String ccLineString =
                 ("RNA EDITING: Modified_positions=156, "
                         + "158, 160; Note=Partially edited. RNA editing generates "
@@ -135,19 +135,19 @@ class CCRNAEditingBuildTest extends CCBuildTestAbstr {
     void testRNAEDITING4() {
         String ccLine =
                 ("CC   -!- RNA EDITING: Modified_positions=156 {ECO:0000313|EMBL:BAG16761.1},"
-                     + " 158\n"
-                     + "CC       {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6}, 160\n"
-                     + "CC       {ECO:0000303|Ref.6}; Note=Partial edited. {ECO:0000313|PDB:3OW2}."
-                     + " RNA\n"
-                     + "CC       editing generates receptor isoforms that differ in the"
-                     + " phospholipase C\n"
-                     + "CC       signaling cascade in a transfected cell line, suggesting that"
-                     + " this RNA\n"
-                     + "CC       processing event may contribute to the modulation of"
-                     + " serotonergic\n"
-                     + "CC       neurotransmission in the central nervous system."
-                     + " {ECO:0000256|HAMAP-\n"
-                     + "CC       Rule:MF_00205, ECO:0000313|PDB:3OW2};");
+                        + " 158\n"
+                        + "CC       {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6}, 160\n"
+                        + "CC       {ECO:0000303|Ref.6}; Note=Partial edited. {ECO:0000313|PDB:3OW2}."
+                        + " RNA\n"
+                        + "CC       editing generates receptor isoforms that differ in the"
+                        + " phospholipase C\n"
+                        + "CC       signaling cascade in a transfected cell line, suggesting that"
+                        + " this RNA\n"
+                        + "CC       processing event may contribute to the modulation of"
+                        + " serotonergic\n"
+                        + "CC       neurotransmission in the central nervous system."
+                        + " {ECO:0000256|HAMAP-\n"
+                        + "CC       Rule:MF_00205, ECO:0000313|PDB:3OW2};");
         String ccLineString =
                 ("RNA EDITING: Modified_positions=156, "
                         + "158, 160; Note=Partial edited.. RNA editing generates "

@@ -2,13 +2,13 @@ package org.uniprot.core.flatfile.parser.impl.ra;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.RLine;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class RALineBuilder implements RLine<List<Author>> {
     private final LineType lineType = LineType.RA;

@@ -1,14 +1,14 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import org.uniprot.core.uniprotkb.comment.Absorption;
-import org.uniprot.core.uniprotkb.comment.Note;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.util.Utils;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprotkb.comment.Absorption;
+import org.uniprot.core.uniprotkb.comment.Note;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.util.Utils;
 
 public class AbsorptionImpl implements Absorption {
     private static final long serialVersionUID = -7439273402053104732L;

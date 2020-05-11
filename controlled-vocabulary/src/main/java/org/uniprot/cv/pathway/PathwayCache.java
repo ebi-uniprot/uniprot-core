@@ -1,12 +1,12 @@
 package org.uniprot.cv.pathway;
 
-import org.uniprot.core.cv.pathway.PathwayEntry;
-import org.uniprot.cv.common.AbstractFileReader;
-import org.uniprot.cv.common.BaseCache;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.uniprot.core.cv.pathway.PathwayEntry;
+import org.uniprot.cv.common.AbstractFileReader;
+import org.uniprot.cv.common.BaseCache;
 
 public enum PathwayCache implements BaseCache<PathwayEntry> {
     INSTANCE;

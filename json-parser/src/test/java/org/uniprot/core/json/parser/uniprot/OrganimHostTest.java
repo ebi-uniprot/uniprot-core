@@ -3,14 +3,14 @@ package org.uniprot.core.json.parser.uniprot;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismHostBuilder;
 
-import java.util.Collections;
+import com.fasterxml.jackson.databind.JsonNode;
 
 public class OrganimHostTest {
 

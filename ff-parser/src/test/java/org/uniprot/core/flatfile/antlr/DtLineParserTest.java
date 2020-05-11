@@ -3,12 +3,12 @@ package org.uniprot.core.flatfile.antlr;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.format.DateTimeFormatter;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.dt.DtLineObject;
-
-import java.time.format.DateTimeFormatter;
 
 class DtLineParserTest {
     @Test

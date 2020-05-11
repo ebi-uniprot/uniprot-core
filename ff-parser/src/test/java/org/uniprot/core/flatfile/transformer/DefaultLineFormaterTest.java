@@ -45,8 +45,8 @@ class DefaultLineFormaterTest {
     void testGene() {
         String expected =
                 "GN   Name=GeneA {ECO:0000006|PubMed:20858735}; Synonyms=Syn1"
-                    + " {ECO:0000006|PubMed:20858735,\n"
-                    + "GN   ECO:0000005|PubMed:208587235}, Syn2 {ECO:0000005|PubMed:208587235};\n";
+                        + " {ECO:0000006|PubMed:20858735,\n"
+                        + "GN   ECO:0000005|PubMed:208587235}, Syn2 {ECO:0000005|PubMed:208587235};\n";
         String lines =
                 "Name=GeneA {ECO:0000006|PubMed:20858735}; Synonyms=Syn1"
                         + " {ECO:0000006|PubMed:20858735,\n"

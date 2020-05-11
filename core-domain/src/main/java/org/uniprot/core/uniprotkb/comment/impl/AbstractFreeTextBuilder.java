@@ -1,13 +1,13 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import org.uniprot.core.Builder;
-import org.uniprot.core.uniprotkb.comment.FreeText;
-import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.Builder;
+import org.uniprot.core.uniprotkb.comment.FreeText;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
 /**
  * Created 16/01/19

@@ -1,8 +1,8 @@
 package org.uniprot.core.citation.impl;
 
-import org.uniprot.core.citation.JournalArticle;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.citation.JournalArticle;
 
 public final class JournalArticleBuilder
         extends AbstractJournalArticleBuilder<JournalArticleBuilder, JournalArticle> {

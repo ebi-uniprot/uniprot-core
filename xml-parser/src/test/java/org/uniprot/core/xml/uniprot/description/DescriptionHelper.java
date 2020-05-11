@@ -2,6 +2,9 @@ package org.uniprot.core.xml.uniprot.description;
 
 import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.description.ProteinAltName;
@@ -15,9 +18,6 @@ import org.uniprot.core.uniprotkb.description.impl.ProteinRecNameBuilder;
 import org.uniprot.core.uniprotkb.description.impl.ProteinSectionBuilder;
 import org.uniprot.core.uniprotkb.description.impl.ProteinSubNameBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created 30/01/19

@@ -1,6 +1,8 @@
 package org.uniprot.core.xml.uniparc;
 
-import com.google.common.base.Strings;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcEntry;
@@ -14,9 +16,7 @@ import org.uniprot.core.xml.jaxb.uniparc.ObjectFactory;
 import org.uniprot.cv.taxonomy.TaxonomicNode;
 import org.uniprot.cv.taxonomy.TaxonomyRepo;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 /**
  * @author jluo

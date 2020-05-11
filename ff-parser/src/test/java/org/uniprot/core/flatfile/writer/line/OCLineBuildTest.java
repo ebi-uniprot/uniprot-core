@@ -2,12 +2,12 @@ package org.uniprot.core.flatfile.writer.line;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.oc.OCLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
-
-import java.util.ArrayList;
-import java.util.List;
 
 class OCLineBuildTest {
     private OCLineBuilder builder = new OCLineBuilder();

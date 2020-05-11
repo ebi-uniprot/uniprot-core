@@ -1,5 +1,8 @@
 package org.uniprot.core.xml.uniprot.comment;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.comment.impl.KineticParametersBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.MaximumVelocityBuilder;
@@ -12,9 +15,6 @@ import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.EvidencedValueConverter;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class BPCPKineticParametersConverter implements Converter<Kinetics, KineticParameters> {
     private final ObjectFactory xmlUniprotFactory;

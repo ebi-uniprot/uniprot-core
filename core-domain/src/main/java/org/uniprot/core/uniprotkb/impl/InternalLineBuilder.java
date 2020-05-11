@@ -1,10 +1,10 @@
 package org.uniprot.core.uniprotkb.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.impl.AbstractValueBuilder;
 import org.uniprot.core.uniprotkb.InternalLine;
 import org.uniprot.core.uniprotkb.InternalLineType;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 24/01/19

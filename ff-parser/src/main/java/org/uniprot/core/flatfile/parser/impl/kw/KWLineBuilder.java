@@ -2,6 +2,9 @@ package org.uniprot.core.flatfile.parser.impl.kw;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
@@ -9,9 +12,6 @@ import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.uniprotkb.Keyword;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class KWLineBuilder extends FFLineBuilderAbstr<List<Keyword>>
         implements FFLineBuilder<List<Keyword>> {

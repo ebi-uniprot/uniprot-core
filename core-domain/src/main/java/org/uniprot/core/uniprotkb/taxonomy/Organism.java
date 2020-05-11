@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprotkb.taxonomy;
 
-import org.uniprot.core.uniprotkb.evidence.HasEvidences;
-
 import java.io.Serializable;
 import java.util.List;
+
+import org.uniprot.core.uniprotkb.evidence.HasEvidences;
 
 public interface Organism extends OrganismName, HasEvidences, Serializable {
 

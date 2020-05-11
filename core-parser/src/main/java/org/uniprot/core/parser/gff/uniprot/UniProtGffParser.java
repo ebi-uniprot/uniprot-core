@@ -3,6 +3,12 @@ package org.uniprot.core.parser.gff.uniprot;
 import static org.uniprot.core.uniprotkb.feature.FeatureType.*;
 import static org.uniprot.core.util.Utils.nullOrEmpty;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.flatfile.parser.impl.ft.FTLineBuilderHelper;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
@@ -10,12 +16,6 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.feature.Feature;
 import org.uniprot.core.uniprotkb.feature.FeatureType;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 /** @author gqi */
 public class UniProtGffParser {

@@ -3,14 +3,14 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableList;
 
-import org.uniprot.core.uniprotkb.comment.Note;
-import org.uniprot.core.uniprotkb.comment.SubcellularLocation;
-import org.uniprot.core.uniprotkb.comment.SubcellularLocationComment;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.uniprotkb.comment.Note;
+import org.uniprot.core.uniprotkb.comment.SubcellularLocation;
+import org.uniprot.core.uniprotkb.comment.SubcellularLocationComment;
 
 public final class SubcellularLocationCommentBuilder
         implements CommentBuilder<SubcellularLocationComment> {

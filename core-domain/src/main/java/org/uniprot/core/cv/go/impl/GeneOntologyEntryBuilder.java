@@ -3,14 +3,14 @@ package org.uniprot.core.cv.go.impl;
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableSet;
 
-import org.uniprot.core.Builder;
-import org.uniprot.core.cv.go.GeneOntologyEntry;
-import org.uniprot.core.cv.go.GoAspect;
-
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.Builder;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.go.GoAspect;
 
 public class GeneOntologyEntryBuilder implements Builder<GeneOntologyEntry> {
     private String id;

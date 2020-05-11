@@ -2,6 +2,11 @@ package org.uniprot.core.flatfile.parser.converter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
@@ -13,11 +18,6 @@ import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.DiseaseComment;
 import org.uniprot.core.uniprotkb.comment.DiseaseDatabase;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 
 class CcDiseaseConverterTest {
     private final CcLineConverter converter =

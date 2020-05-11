@@ -167,8 +167,8 @@ class FeatureTranslatorTest {
     void testMutagen() {
         String testString =
                 "MUTAGEN 9\n"
-                    + "/note=\"K->R: Does not affect E-cadherin/CDH1 repression; when associated"
-                    + " with R-16\"";
+                        + "/note=\"K->R: Does not affect E-cadherin/CDH1 repression; when associated"
+                        + " with R-16\"";
 
         Feature feature = transformer.transform(testString);
         assertNotNull(feature);

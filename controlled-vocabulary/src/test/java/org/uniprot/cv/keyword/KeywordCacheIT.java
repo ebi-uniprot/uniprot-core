@@ -3,14 +3,14 @@ package org.uniprot.cv.keyword;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.keyword.KeywordEntry;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.keyword.KeywordEntry;
 
 class KeywordCacheIT {
     private static List<KeywordEntry> keywords;

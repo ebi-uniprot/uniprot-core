@@ -2,6 +2,16 @@ package org.uniprot.core.flatfile.parser.impl;
 
 import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.keyword.KeywordCategory;
@@ -12,16 +22,6 @@ import org.uniprot.core.util.Utils;
 import org.uniprot.cv.disease.DiseaseFileReader;
 import org.uniprot.cv.keyword.KeywordFileReader;
 import org.uniprot.cv.subcell.SubcellularLocationFileReader;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * This class contains all the external supporting data map required to parse from flat file to

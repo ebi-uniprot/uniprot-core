@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
+import java.util.Objects;
+
 import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.uniprotkb.comment.Interaction;
-
-import java.util.Objects;
 
 public class InteractionImpl implements Interaction {
     private static final long serialVersionUID = -1102213995267310387L;

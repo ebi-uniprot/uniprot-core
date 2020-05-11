@@ -2,13 +2,13 @@ package org.uniprot.core.proteome.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.CanonicalProtein;
 import org.uniprot.core.proteome.GeneNameType;
 import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
-
-import java.util.Collections;
 
 class CanonicalProteinImplTest {
     @Test

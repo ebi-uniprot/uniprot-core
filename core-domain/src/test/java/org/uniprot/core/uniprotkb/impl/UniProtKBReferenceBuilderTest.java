@@ -2,6 +2,9 @@ package org.uniprot.core.uniprotkb.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.ElectronicArticle;
 import org.uniprot.core.citation.impl.ElectronicArticleBuilder;
@@ -9,9 +12,6 @@ import org.uniprot.core.uniprotkb.ReferenceComment;
 import org.uniprot.core.uniprotkb.UniProtKBReference;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
-
-import java.util.Collections;
-import java.util.List;
 
 class UniProtKBReferenceBuilderTest {
 

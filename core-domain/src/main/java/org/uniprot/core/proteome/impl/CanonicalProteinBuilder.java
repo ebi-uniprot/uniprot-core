@@ -1,14 +1,14 @@
 package org.uniprot.core.proteome.impl;
 
-import org.uniprot.core.Builder;
-import org.uniprot.core.proteome.CanonicalProtein;
-import org.uniprot.core.proteome.Protein;
-import org.uniprot.core.util.Utils;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.Builder;
+import org.uniprot.core.proteome.CanonicalProtein;
+import org.uniprot.core.proteome.Protein;
+import org.uniprot.core.util.Utils;
 
 public class CanonicalProteinBuilder implements Builder<CanonicalProtein> {
     private Protein canonicalProtein;

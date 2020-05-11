@@ -1,11 +1,11 @@
 package org.uniprot.cv.taxonomy;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class FileNodeIterableTest {
 

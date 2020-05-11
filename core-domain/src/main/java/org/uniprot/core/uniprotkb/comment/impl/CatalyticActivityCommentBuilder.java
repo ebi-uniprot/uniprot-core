@@ -3,14 +3,14 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableList;
 
-import org.uniprot.core.uniprotkb.comment.CatalyticActivityComment;
-import org.uniprot.core.uniprotkb.comment.PhysiologicalReaction;
-import org.uniprot.core.uniprotkb.comment.Reaction;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.uniprotkb.comment.CatalyticActivityComment;
+import org.uniprot.core.uniprotkb.comment.PhysiologicalReaction;
+import org.uniprot.core.uniprotkb.comment.Reaction;
 
 public class CatalyticActivityCommentBuilder implements CommentBuilder<CatalyticActivityComment> {
     private String molecule;

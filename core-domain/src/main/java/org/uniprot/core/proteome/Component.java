@@ -1,9 +1,9 @@
 package org.uniprot.core.proteome;
 
-import org.uniprot.core.CrossReference;
-
 import java.io.Serializable;
 import java.util.List;
+
+import org.uniprot.core.CrossReference;
 
 public interface Component extends Serializable {
     String getName();

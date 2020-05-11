@@ -1,9 +1,9 @@
 package org.uniprot.core.flatfile.parser.impl.rg;
 
-import org.uniprot.core.flatfile.parser.Converter;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.flatfile.parser.Converter;
 
 public class RgLineConverter implements Converter<RgLineObject, List<String>> {
     @Override

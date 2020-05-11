@@ -1,6 +1,9 @@
 package org.uniprot.core.scorer.uniprotkb;
 
-import com.google.common.base.Strings;
+import java.io.*;
+import java.time.Duration;
+import java.time.LocalTime;
+import java.util.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,10 +11,7 @@ import org.uniprot.core.flatfile.parser.impl.DefaultUniProtEntryIterator;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 
-import java.io.*;
-import java.time.Duration;
-import java.time.LocalTime;
-import java.util.*;
+import com.google.common.base.Strings;
 
 /** based on https://swissprot.isb-sib.ch/wiki/display/sdu/Annotation+Scores+Before+Evidences */
 public class UniProtEntryScorer {

@@ -2,14 +2,14 @@ package org.uniprot.core.flatfile.writer.line;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ac.ACLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
 
 class ACLineBuildTest {
     private ACLineBuilder builder = new ACLineBuilder();

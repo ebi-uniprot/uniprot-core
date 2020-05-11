@@ -2,12 +2,12 @@ package org.uniprot.core.cv.pathway.impl;
 
 import static org.uniprot.core.util.Utils.unmodifiableList;
 
-import org.uniprot.core.cv.disease.DiseaseCrossReference;
-import org.uniprot.core.cv.pathway.PathwayEntry;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.cv.disease.DiseaseCrossReference;
+import org.uniprot.core.cv.pathway.PathwayEntry;
 
 public class PathwayEntryImpl implements PathwayEntry {
     private String id;

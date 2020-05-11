@@ -2,15 +2,15 @@ package org.uniprot.core.flatfile.parser.converter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.*;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocationComment;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 class CcSubCellLocationConverterTest {
     private final CcLineConverter converter = new CcLineConverter(new HashMap<>(), new HashMap<>());

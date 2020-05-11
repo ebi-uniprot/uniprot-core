@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprotkb.comment;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum PhysiologicalDirectionType implements EnumDisplay {
     LEFT_TO_RIGHT("left-to-right"),

@@ -2,10 +2,10 @@ package org.uniprot.core.flatfile.writer.line.rlines;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.rt.RTLineBuilder;
-
-import java.util.List;
 
 class RTLineBuilderTest {
     private final RTLineBuilder builder = new RTLineBuilder();

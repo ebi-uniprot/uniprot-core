@@ -2,7 +2,14 @@ package org.uniprot.core.flatfile.transformer;
 
 import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
-import com.google.common.base.Strings;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.StringTokenizer;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.Position;
 import org.uniprot.core.PositionModifier;
@@ -16,14 +23,7 @@ import org.uniprot.core.uniprotkb.feature.impl.FeatureBuilder;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.StringTokenizer;
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 /**
  * @author jluo

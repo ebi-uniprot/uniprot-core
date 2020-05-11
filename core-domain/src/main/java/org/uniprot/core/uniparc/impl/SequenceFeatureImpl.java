@@ -1,14 +1,14 @@
 package org.uniprot.core.uniparc.impl;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+
 import org.uniprot.core.Location;
 import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.SignatureDbType;
 import org.uniprot.core.util.Utils;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * @author jluo

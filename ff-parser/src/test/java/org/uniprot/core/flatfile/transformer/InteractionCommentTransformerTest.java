@@ -53,9 +53,9 @@ class InteractionCommentTransformerTest {
 
         String ccLineString =
                 ("INTERACTION:\n"
-                     + "P12345; Q9W1K5-1: CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n"
-                     + "PRO_0000037566; O96017: CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n"
-                     + "P12345; Q6ZWQ9: Myl12a; Xeno; NbExp=3; IntAct=EBI-372428, EBI-8034418;");
+                        + "P12345; Q9W1K5-1: CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n"
+                        + "PRO_0000037566; O96017: CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n"
+                        + "P12345; Q6ZWQ9: Myl12a; Xeno; NbExp=3; IntAct=EBI-372428, EBI-8034418;");
 
         InteractionComment comment = transformer.transform(CommentType.INTERACTION, ccLineString);
         assertNotNull(comment);

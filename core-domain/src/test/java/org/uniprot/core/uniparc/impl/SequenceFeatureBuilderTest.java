@@ -2,14 +2,14 @@ package org.uniprot.core.uniparc.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Location;
 import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.SignatureDbType;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * @author jluo

@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.uniprot.description;
 
+import java.util.List;
+
 import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.description.impl.NameBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
@@ -7,8 +9,6 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
-
-import java.util.List;
 
 public class NameConverter implements Converter<EvidencedStringType, Name> {
     private final EvidenceIndexMapper evRefMapper;

@@ -2,14 +2,14 @@ package org.uniprot.core.flatfile.parser.impl.cc;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.uniprotkb.comment.APEventType;
 import org.uniprot.core.uniprotkb.comment.APIsoform;
 import org.uniprot.core.uniprotkb.comment.AlternativeProductsComment;
 import org.uniprot.core.uniprotkb.comment.Note;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author jieluo CC -!- ALTERNATIVE PRODUCTS: |CC Event=Alternative splicing; Named isoforms=3; |CC

@@ -1,8 +1,8 @@
 package org.uniprot.core.flatfile.parser.impl.ac;
 
-import org.uniprot.core.uniprotkb.UniProtKBAccession;
-
 import java.util.List;
+
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
 public class UniProtKBAcLineObject {
 

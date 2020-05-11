@@ -1,11 +1,11 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
+import java.util.Objects;
+
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.Disease;
 import org.uniprot.core.uniprotkb.comment.DiseaseComment;
 import org.uniprot.core.uniprotkb.comment.Note;
-
-import java.util.Objects;
 
 public class DiseaseCommentImpl extends CommentHasMoleculeImpl implements DiseaseComment {
     private static final long serialVersionUID = 1934540834096516974L;

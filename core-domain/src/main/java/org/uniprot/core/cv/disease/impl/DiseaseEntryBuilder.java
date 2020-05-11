@@ -1,14 +1,14 @@
 package org.uniprot.core.cv.disease.impl;
 
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.util.Utils;
-
-import java.util.List;
-
-import javax.annotation.Nonnull;
 
 public class DiseaseEntryBuilder implements Builder<DiseaseEntry> {
     private String name;

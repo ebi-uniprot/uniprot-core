@@ -2,8 +2,6 @@ package org.uniprot.core.json.parser.proteome;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.proteome.CanonicalProtein;
@@ -12,6 +10,8 @@ import org.uniprot.core.proteome.Protein;
 import org.uniprot.core.proteome.impl.CanonicalProteinBuilder;
 import org.uniprot.core.proteome.impl.ProteinBuilder;
 import org.uniprot.core.uniprotkb.UniProtKBEntryType;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 class ProteinTest {
     @Test

@@ -1,12 +1,12 @@
 package org.uniprot.core.xml.uniprot.unload;
 
-import com.codahale.metrics.Counter;
-import com.codahale.metrics.Slf4jReporter;
-import com.codahale.metrics.Timer;
+import java.util.concurrent.TimeUnit;
 
 import org.uniprot.core.xml.XmlBuildStats;
 
-import java.util.concurrent.TimeUnit;
+import com.codahale.metrics.Counter;
+import com.codahale.metrics.Slf4jReporter;
+import com.codahale.metrics.Timer;
 
 public class UniProtXmlBuildStats implements XmlBuildStats {
     private static final String REPORT_TITLE = "UniProt XML Build Report";

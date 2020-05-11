@@ -1,8 +1,8 @@
 package org.uniprot.core.citation.impl;
 
-import org.uniprot.core.citation.Literature;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.citation.Literature;
 
 /**
  * @author lgonzales

@@ -3,18 +3,18 @@ package org.uniprot.core.citation.impl;
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableList;
 
-import org.uniprot.core.CrossReference;
-import org.uniprot.core.citation.Author;
-import org.uniprot.core.citation.Citation;
-import org.uniprot.core.citation.CitationDatabase;
-import org.uniprot.core.citation.PublicationDate;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.citation.Author;
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.citation.CitationDatabase;
+import org.uniprot.core.citation.PublicationDate;
 
 public abstract class AbstractCitationBuilder<
                 B extends AbstractCitationBuilder<B, T>, T extends Citation>

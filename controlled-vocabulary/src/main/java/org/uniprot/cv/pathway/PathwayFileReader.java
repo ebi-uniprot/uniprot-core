@@ -1,5 +1,9 @@
 package org.uniprot.cv.pathway;
 
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
@@ -7,10 +11,6 @@ import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceBuilder;
 import org.uniprot.core.cv.pathway.PathwayEntry;
 import org.uniprot.core.cv.pathway.impl.PathwayEntryBuilder;
 import org.uniprot.cv.common.AbstractFileReader;
-
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class PathwayFileReader extends AbstractFileReader<PathwayEntry> {
     private static final String ID_LINE = "ID";

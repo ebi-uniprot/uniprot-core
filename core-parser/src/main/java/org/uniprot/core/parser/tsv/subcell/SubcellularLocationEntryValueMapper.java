@@ -1,14 +1,14 @@
 package org.uniprot.core.parser.tsv.subcell;
 
-import org.uniprot.core.cv.keyword.KeywordId;
-import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
-import org.uniprot.core.parser.tsv.EntityValueMapper;
-import org.uniprot.core.util.Utils;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.cv.keyword.KeywordId;
+import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
+import org.uniprot.core.parser.tsv.EntityValueMapper;
+import org.uniprot.core.util.Utils;
 
 /**
  * @author lgonzales

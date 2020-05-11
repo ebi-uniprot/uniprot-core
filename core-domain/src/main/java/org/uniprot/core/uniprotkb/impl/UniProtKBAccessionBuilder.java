@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprotkb.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.impl.AbstractValueBuilder;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 24/01/19

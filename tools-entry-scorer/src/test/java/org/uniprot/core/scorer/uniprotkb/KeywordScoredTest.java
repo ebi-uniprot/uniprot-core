@@ -2,6 +2,9 @@ package org.uniprot.core.scorer.uniprotkb;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
@@ -10,9 +13,6 @@ import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.kw.KwLineConverter;
 import org.uniprot.core.flatfile.parser.impl.kw.KwLineObject;
 import org.uniprot.core.uniprotkb.Keyword;
-
-import java.util.HashMap;
-import java.util.List;
 
 /** Tests if the KW line is parsed correctly for SwissProt and TrEMBL entries. */
 class KeywordScoredTest {

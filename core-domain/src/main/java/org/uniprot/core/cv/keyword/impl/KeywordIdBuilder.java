@@ -1,9 +1,9 @@
 package org.uniprot.core.cv.keyword.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.cv.keyword.KeywordId;
-
-import javax.annotation.Nonnull;
 
 public class KeywordIdBuilder implements Builder<KeywordId> {
     private String name;

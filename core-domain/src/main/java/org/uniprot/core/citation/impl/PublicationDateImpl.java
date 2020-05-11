@@ -1,9 +1,9 @@
 package org.uniprot.core.citation.impl;
 
+import java.util.Objects;
+
 import org.uniprot.core.citation.PublicationDate;
 import org.uniprot.core.util.Utils;
-
-import java.util.Objects;
 
 public class PublicationDateImpl implements PublicationDate {
     private static final long serialVersionUID = 3232437573866835411L;

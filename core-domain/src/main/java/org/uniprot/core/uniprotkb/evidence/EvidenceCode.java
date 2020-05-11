@@ -1,13 +1,13 @@
 package org.uniprot.core.uniprotkb.evidence;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum EvidenceCode implements EnumDisplay {
     ECO_0000269(

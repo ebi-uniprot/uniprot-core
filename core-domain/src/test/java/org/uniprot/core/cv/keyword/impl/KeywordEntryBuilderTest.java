@@ -2,6 +2,9 @@ package org.uniprot.core.cv.keyword.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.go.GoTerm;
@@ -9,9 +12,6 @@ import org.uniprot.core.cv.go.impl.GoTermBuilder;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.impl.StatisticsBuilder;
-
-import java.util.Arrays;
-import java.util.Collections;
 
 public class KeywordEntryBuilderTest {
     private GoTerm goTerm = new GoTermBuilder().id("id").name("name").build();

@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprotkb.description;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 /**
  * Contains a list of acceptable flag descriptors found within a DE line

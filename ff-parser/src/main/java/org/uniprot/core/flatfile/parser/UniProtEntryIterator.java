@@ -1,8 +1,8 @@
 package org.uniprot.core.flatfile.parser;
 
-import org.uniprot.core.uniprotkb.UniProtKBEntry;
-
 import java.util.Iterator;
+
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
 
 public interface UniProtEntryIterator extends Iterator<UniProtKBEntry> {
     void setInput(

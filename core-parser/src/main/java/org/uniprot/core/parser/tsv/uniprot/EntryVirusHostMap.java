@@ -1,10 +1,10 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
-import org.uniprot.core.parser.tsv.NamedValueMap;
-import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
-
 import java.util.*;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.parser.tsv.NamedValueMap;
+import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 
 public class EntryVirusHostMap implements NamedValueMap {
     protected static final List<String> FIELDS = Collections.singletonList("virus_hosts");

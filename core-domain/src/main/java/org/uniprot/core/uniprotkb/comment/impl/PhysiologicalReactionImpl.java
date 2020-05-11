@@ -1,15 +1,15 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprotkb.comment.PhysiologicalDirectionType;
 import org.uniprot.core.uniprotkb.comment.PhysiologicalReaction;
 import org.uniprot.core.uniprotkb.comment.ReactionDatabase;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.util.Utils;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
 
 public class PhysiologicalReactionImpl implements PhysiologicalReaction {
     private static final long serialVersionUID = -3913438195830117987L;

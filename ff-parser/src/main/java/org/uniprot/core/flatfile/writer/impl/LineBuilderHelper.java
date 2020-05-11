@@ -1,11 +1,11 @@
 package org.uniprot.core.flatfile.writer.impl;
 
-import org.uniprot.core.uniprotkb.evidence.Evidence;
-
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 public class LineBuilderHelper {
     //	static final private EvidenceIdComparator comparator =new EvidenceIdComparator();

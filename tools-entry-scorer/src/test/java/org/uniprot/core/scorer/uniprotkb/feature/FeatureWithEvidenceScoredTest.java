@@ -1,8 +1,9 @@
 package org.uniprot.core.scorer.uniprotkb.feature;
 
+import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static java.util.Collections.singletonList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
@@ -14,16 +15,14 @@ import org.uniprot.core.scorer.uniprotkb.features.FeatureScored;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprotkb.feature.Feature;
 
-import java.util.List;
-
 class FeatureWithEvidenceScoredTest {
     @Test
     void shouldModResScore3() {
         String ftLine =
                 "FT   MOD_RES         117\n"
-                    + "FT                   /note=\"2-(S-cysteinyl)pyruvic acid O-phosphothioketal"
-                    + " (By similarity)\"\n"
-                    + "FT                   /evidence=\"ECO:0000256|HAMAP-Rule:MF_00111\"\n";
+                        + "FT                   /note=\"2-(S-cysteinyl)pyruvic acid O-phosphothioketal"
+                        + " (By similarity)\"\n"
+                        + "FT                   /evidence=\"ECO:0000256|HAMAP-Rule:MF_00111\"\n";
 
         Feature feature = createFeature(ftLine);
         verify(feature, 3.0, singletonList(new EvidenceDatabase("HAMAP-Rule")));
@@ -33,9 +32,9 @@ class FeatureWithEvidenceScoredTest {
     void shouldModResScore0() {
         String ftLine =
                 "FT   MOD_RES         117\n"
-                    + "FT                   /note=\"2-(S-cysteinyl)pyruvic acid O-phosphothioketal"
-                    + " (By similarity)\"\n"
-                    + "FT                   /evidence=\"ECO:0000256|HAMAP-Rule:MF_00111\"\n";
+                        + "FT                   /note=\"2-(S-cysteinyl)pyruvic acid O-phosphothioketal"
+                        + " (By similarity)\"\n"
+                        + "FT                   /evidence=\"ECO:0000256|HAMAP-Rule:MF_00111\"\n";
 
         Feature feature = createFeature(ftLine);
         verify(feature, 0.0, singletonList(new EvidenceDatabase("RuleBase")));

@@ -1,10 +1,10 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocation;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocationValue;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 15/01/19

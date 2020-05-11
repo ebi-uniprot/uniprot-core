@@ -1,10 +1,10 @@
 package org.uniprot.core.uniprotkb.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprotkb.GeneEncodingType;
 import org.uniprot.core.uniprotkb.GeneLocation;
 import org.uniprot.core.uniprotkb.evidence.impl.AbstractEvidencedValueBuilder;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 23/01/19

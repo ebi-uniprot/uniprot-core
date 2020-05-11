@@ -55,14 +55,14 @@ class MultiCommentScoredTest extends CommentScoreTestBase {
     void shouldScore140() throws Exception {
         String line =
                 "CC   -!- FUNCTION: Envelope protein E binding to host cell surface receptor\n"
-                    + "CC       is followed by virus internalization through clathrin-mediated\n"
-                    + "CC       endocytosis. Envelope protein E is subsequently involved in\n"
-                    + "CC       membrane fusion between virion and host late endosomes.\n"
-                    + "CC       Synthesized as an homodimer with prM which acts as a chaperone"
-                    + " for\n"
-                    + "CC       envelope protein E. After cleavage of prM, envelope protein E\n"
-                    + "CC       dissociate from small envelope protein M and homodimerizes."
-                    + " {ECO:0000256|PubMed:16629414}.\n"
+                        + "CC       is followed by virus internalization through clathrin-mediated\n"
+                        + "CC       endocytosis. Envelope protein E is subsequently involved in\n"
+                        + "CC       membrane fusion between virion and host late endosomes.\n"
+                        + "CC       Synthesized as an homodimer with prM which acts as a chaperone"
+                        + " for\n"
+                        + "CC       envelope protein E. After cleavage of prM, envelope protein E\n"
+                        + "CC       dissociate from small envelope protein M and homodimerizes."
+                        + " {ECO:0000256|PubMed:16629414}.\n"
                         +
                         //        "CC   -!- CATALYTIC ACTIVITY: ATP + H(2)O = ADP + phosphate.\n" +
                         //        "CC   -!- CATALYTIC ACTIVITY: NTP + H(2)O = NDP + phosphate.\n" +

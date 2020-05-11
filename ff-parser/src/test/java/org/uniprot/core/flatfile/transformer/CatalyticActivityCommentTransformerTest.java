@@ -2,7 +2,8 @@ package org.uniprot.core.flatfile.transformer;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.google.common.base.Strings;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -13,8 +14,7 @@ import org.uniprot.core.uniprotkb.comment.Reaction;
 import org.uniprot.core.uniprotkb.comment.ReactionDatabase;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 class CatalyticActivityCommentTransformerTest {
     private static CatalyticActivityCommentTransformer transformer;
@@ -274,9 +274,9 @@ class CatalyticActivityCommentTransformerTest {
     void caBasedOnEnzymeWithSemicolon() {
         String ccLine =
                 "CATALYTIC ACTIVITY:\n"
-                    + "Reaction=Endonucleolytic cleavage of DNA to give random double-stranded"
-                    + " fragments with terminal 5'-phosphates; ATP is simultaneously hydrolyzed;"
-                    + " EC=1.1.1.271; Evidence={ECO:0000256|RuleBase:RU364115};";
+                        + "Reaction=Endonucleolytic cleavage of DNA to give random double-stranded"
+                        + " fragments with terminal 5'-phosphates; ATP is simultaneously hydrolyzed;"
+                        + " EC=1.1.1.271; Evidence={ECO:0000256|RuleBase:RU364115};";
         CatalyticActivityComment comment = transformer.transform(ccLine);
         assertNotNull(comment);
         verifyReaction(

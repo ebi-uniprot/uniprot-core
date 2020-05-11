@@ -1,11 +1,11 @@
 package org.uniprot.core.xml.unirule;
 
+import java.util.Objects;
+
 import org.uniprot.core.unirule.impl.ConditionValueBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.ConditionValue;
 import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
-
-import java.util.Objects;
 
 public class ConditionValueConverter
         implements Converter<ConditionValue, org.uniprot.core.unirule.ConditionValue> {

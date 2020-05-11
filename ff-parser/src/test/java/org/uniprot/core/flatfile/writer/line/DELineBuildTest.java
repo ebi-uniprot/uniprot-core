@@ -2,6 +2,12 @@ package org.uniprot.core.flatfile.writer.line;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.de.DELineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
@@ -9,12 +15,6 @@ import org.uniprot.core.uniprotkb.description.*;
 import org.uniprot.core.uniprotkb.description.impl.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.cv.evidence.EvidenceHelper;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 class DELineBuildTest {
     private DELineBuilder builder = new DELineBuilder();
@@ -340,23 +340,23 @@ class DELineBuildTest {
     void testIncludeAndContain() {
         String deLine =
                 "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n"
-                    + "DE   Includes:\n"
-                    + "DE     RecName: Full=Glutamate N-acetyltransferase;\n"
-                    + "DE              EC=2.3.1.35;\n"
-                    + "DE     AltName: Full=Ornithine acetyltransferase;\n"
-                    + "DE              Short=OATase;\n"
-                    + "DE     AltName: Full=Ornithine transacetylase;\n"
-                    + "DE   Includes:\n"
-                    + "DE     RecName: Full=Amino-acid acetyltransferase;\n"
-                    + "DE              EC=2.3.1.1;\n"
-                    + "DE     AltName: Full=N-acetylglutamate synthase;\n"
-                    + "DE              Short=AGS;\n"
-                    + "DE   Contains:\n"
-                    + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha"
-                    + " chain;\n"
-                    + "DE   Contains:\n"
-                    + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta"
-                    + " chain;";
+                        + "DE   Includes:\n"
+                        + "DE     RecName: Full=Glutamate N-acetyltransferase;\n"
+                        + "DE              EC=2.3.1.35;\n"
+                        + "DE     AltName: Full=Ornithine acetyltransferase;\n"
+                        + "DE              Short=OATase;\n"
+                        + "DE     AltName: Full=Ornithine transacetylase;\n"
+                        + "DE   Includes:\n"
+                        + "DE     RecName: Full=Amino-acid acetyltransferase;\n"
+                        + "DE              EC=2.3.1.1;\n"
+                        + "DE     AltName: Full=N-acetylglutamate synthase;\n"
+                        + "DE              Short=AGS;\n"
+                        + "DE   Contains:\n"
+                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha"
+                        + " chain;\n"
+                        + "DE   Contains:\n"
+                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta"
+                        + " chain;";
 
         Name recFullName =
                 createName(
@@ -470,28 +470,28 @@ class DELineBuildTest {
     void testIncludeAndContainWithEvidenceEvidence() {
         String deLine =
                 "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ"
-                    + " {ECO:0000313|EMBL:BAG16761.1};\n"
-                    + "DE   Includes:\n"
-                    + "DE     RecName: Full=Glutamate N-acetyltransferase"
-                    + " {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};\n"
-                    + "DE              EC=2.3.1.35 {ECO:0000269|PubMed:10433554};\n"
-                    + "DE     AltName: Full=Ornithine acetyltransferase;\n"
-                    + "DE              Short=OATase;\n"
-                    + "DE     AltName: Full=Ornithine transacetylase {ECO:0000303|Ref.6,"
-                    + " ECO:0000313|PDB:3OW2};\n"
-                    + "DE   Includes:\n"
-                    + "DE     RecName: Full=Amino-acid acetyltransferase"
-                    + " {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000303|Ref.6};\n"
-                    + "DE              EC=2.3.1.1 {ECO:0000256|HAMAP-Rule:MF_00205};\n"
-                    + "DE     AltName: Full=N-acetylglutamate synthase {ECO:0000303|Ref.6,"
-                    + " ECO:0000313|PDB:3OW2};\n"
-                    + "DE              Short=AGS;\n"
-                    + "DE   Contains:\n"
-                    + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha"
-                    + " chain {ECO:0000313|EMBL:BAG16761.1};\n"
-                    + "DE   Contains:\n"
-                    + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta"
-                    + " chain {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};";
+                        + " {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "DE   Includes:\n"
+                        + "DE     RecName: Full=Glutamate N-acetyltransferase"
+                        + " {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "DE              EC=2.3.1.35 {ECO:0000269|PubMed:10433554};\n"
+                        + "DE     AltName: Full=Ornithine acetyltransferase;\n"
+                        + "DE              Short=OATase;\n"
+                        + "DE     AltName: Full=Ornithine transacetylase {ECO:0000303|Ref.6,"
+                        + " ECO:0000313|PDB:3OW2};\n"
+                        + "DE   Includes:\n"
+                        + "DE     RecName: Full=Amino-acid acetyltransferase"
+                        + " {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000303|Ref.6};\n"
+                        + "DE              EC=2.3.1.1 {ECO:0000256|HAMAP-Rule:MF_00205};\n"
+                        + "DE     AltName: Full=N-acetylglutamate synthase {ECO:0000303|Ref.6,"
+                        + " ECO:0000313|PDB:3OW2};\n"
+                        + "DE              Short=AGS;\n"
+                        + "DE   Contains:\n"
+                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha"
+                        + " chain {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "DE   Contains:\n"
+                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta"
+                        + " chain {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};";
 
         Name recFullName =
                 createName(

@@ -2,6 +2,11 @@ package org.uniprot.core.flatfile.writer.line;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.og.OGLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
@@ -10,11 +15,6 @@ import org.uniprot.core.uniprotkb.GeneLocation;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.impl.GeneLocationBuilder;
 import org.uniprot.cv.evidence.EvidenceHelper;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 class OGLineBuildTest {
     private OGLineBuilder builder = new OGLineBuilder();
@@ -205,13 +205,13 @@ class OGLineBuildTest {
     void testOrganPlasmidsWithEvidence() {
         String ogLine =
                 "OG   Plastid; Chloroplast {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                    + "OG   ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6,\n"
-                    + "OG   ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}.\n"
-                    + "OG   Plasmid IncFII R100 (NR1) {ECO:0000269|PubMed:10433554,\n"
-                    + "OG   ECO:0000313|EMBL:BAG16761.1}, Plasmid IncW R388 {ECO:0000303|Ref.6},"
-                    + " and\n"
-                    + "OG   Plasmid pLMO20 {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                    + "OG   ECO:0000313|EMBL:BAG16761.1}.";
+                        + "OG   ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6,\n"
+                        + "OG   ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}.\n"
+                        + "OG   Plasmid IncFII R100 (NR1) {ECO:0000269|PubMed:10433554,\n"
+                        + "OG   ECO:0000313|EMBL:BAG16761.1}, Plasmid IncW R388 {ECO:0000303|Ref.6},"
+                        + " and\n"
+                        + "OG   Plasmid pLMO20 {ECO:0000256|HAMAP-Rule:MF_00205,\n"
+                        + "OG   ECO:0000313|EMBL:BAG16761.1}.";
 
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
         String ev2 = "ECO:0000269|PubMed:10433554";
@@ -249,10 +249,10 @@ class OGLineBuildTest {
     void testOGPlasmidsWithEvidence() {
         String ogLine =
                 "OG   Plasmid R1 (R7268) {ECO:0000313|EMBL:BAG16761.1},\n"
-                    + "OG   Plasmid IncF::IncFIA::IncFIB::IncI1-ly {ECO:0000269|PubMed:10433554,\n"
-                    + "OG   ECO:0000313|EMBL:BAG16761.1}, Plasmid p013.1IncR {ECO:0000303|Ref.6,\n"
-                    + "OG   ECO:0000313|PDB:3OW2}, Plasmid pUD16 {ECO:0000313|PDB:3OW2}, and\n"
-                    + "OG   Plasmid IncF::IncL/M {ECO:0000256|HAMAP-Rule:MF_00205}.";
+                        + "OG   Plasmid IncF::IncFIA::IncFIB::IncI1-ly {ECO:0000269|PubMed:10433554,\n"
+                        + "OG   ECO:0000313|EMBL:BAG16761.1}, Plasmid p013.1IncR {ECO:0000303|Ref.6,\n"
+                        + "OG   ECO:0000313|PDB:3OW2}, Plasmid pUD16 {ECO:0000313|PDB:3OW2}, and\n"
+                        + "OG   Plasmid IncF::IncL/M {ECO:0000256|HAMAP-Rule:MF_00205}.";
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
         String ev2 = "ECO:0000269|PubMed:10433554";
         String ev3 = "ECO:0000303|Ref.6";

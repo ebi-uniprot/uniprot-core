@@ -2,6 +2,10 @@ package org.uniprot.core.xml.uniprot.description;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.description.impl.ECBuilder;
@@ -12,10 +16,6 @@ import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 class ECConverterTest {
 

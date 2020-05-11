@@ -1,5 +1,9 @@
 package org.uniprot.core.xml.uniprot.comment;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+
 import org.uniprot.core.uniprotkb.comment.SubcellularLocation;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocationValue;
 import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationBuilder;
@@ -11,10 +15,6 @@ import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.SubcellularLocationType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
 
 public class SubcellularLocationConverter
         implements Converter<SubcellularLocationType, SubcellularLocation> {

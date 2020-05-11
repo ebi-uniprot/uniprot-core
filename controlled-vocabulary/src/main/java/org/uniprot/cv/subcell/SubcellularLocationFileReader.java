@@ -1,5 +1,11 @@
 package org.uniprot.cv.subcell;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
@@ -10,12 +16,6 @@ import org.uniprot.core.cv.subcell.SubcellLocationCategory;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryBuilder;
 import org.uniprot.cv.common.AbstractFileReader;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class SubcellularLocationFileReader extends AbstractFileReader<SubcellularLocationEntry> {
     private static final String HP_LINE = "HP";

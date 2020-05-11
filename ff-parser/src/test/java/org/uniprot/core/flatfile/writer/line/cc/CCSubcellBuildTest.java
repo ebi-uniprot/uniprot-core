@@ -1,6 +1,9 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
-import com.google.common.base.Strings;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.Note;
@@ -11,10 +14,7 @@ import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationCommentBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationValueBuilder;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import com.google.common.base.Strings;
 
 class CCSubcellBuildTest extends CCBuildTestAbstr {
     @Test
@@ -258,9 +258,9 @@ class CCSubcellBuildTest extends CCBuildTestAbstr {
         String molecule = "Spike protein S2";
         String note =
                 "Accumulates in the endoplasmic reticulum-Golgi intermediate compartment, where it"
-                    + " participates in virus particle assembly. Some S oligomers may be"
-                    + " transported to the plasma membrane, where they may mediate cell fusion (By"
-                    + " similarity)";
+                        + " participates in virus particle assembly. Some S oligomers may be"
+                        + " transported to the plasma membrane, where they may mediate cell fusion (By"
+                        + " similarity)";
 
         List<String> evs = new ArrayList<>();
 
@@ -361,9 +361,9 @@ class CCSubcellBuildTest extends CCBuildTestAbstr {
         String molecule = "Spike protein S2";
         String note =
                 "Accumulates in the endoplasmic reticulum-Golgi intermediate compartment, where it"
-                    + " participates in virus particle assembly. Some S oligomers may be"
-                    + " transported to the plasma membrane, where they may mediate cell fusion (By"
-                    + " similarity)";
+                        + " participates in virus particle assembly. Some S oligomers may be"
+                        + " transported to the plasma membrane, where they may mediate cell fusion (By"
+                        + " similarity)";
 
         List<String> evs = new ArrayList<>();
         evs.add(ev5);
@@ -429,9 +429,9 @@ class CCSubcellBuildTest extends CCBuildTestAbstr {
 
         String ccLineStringEvidence =
                 "SUBCELLULAR LOCATION: Mitochondrion intermembrane space"
-                    + " {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1}. Note=Loosely"
-                    + " associated with the inner membrane. {ECO:0000303|Ref.6,"
-                    + " ECO:0000313|PDB:3OW2}. Another note. {ECO:0000303|Ref.6}.";
+                        + " {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1}. Note=Loosely"
+                        + " associated with the inner membrane. {ECO:0000303|Ref.6,"
+                        + " ECO:0000313|PDB:3OW2}. Another note. {ECO:0000303|Ref.6}.";
         String ccLineString =
                 "SUBCELLULAR LOCATION: Mitochondrion intermembrane space. "
                         + "Note=Loosely associated with the inner membrane. Another note.";

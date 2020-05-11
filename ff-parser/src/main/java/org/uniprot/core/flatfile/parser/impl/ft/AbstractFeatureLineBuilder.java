@@ -4,6 +4,10 @@ import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.DASH;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.LINE_LENGTH;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEPARATOR;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
@@ -11,10 +15,6 @@ import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.uniprotkb.feature.Feature;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public abstract class AbstractFeatureLineBuilder extends FFLineBuilderAbstr<Feature>
         implements FFLineBuilder<Feature> {

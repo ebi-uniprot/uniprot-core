@@ -1,9 +1,5 @@
 package org.uniprot.core.json.parser.unirule;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,6 +7,10 @@ import org.uniprot.core.unirule.UniRuleId;
 import org.uniprot.core.unirule.impl.UniRuleIdBuilder;
 import org.uniprot.core.unirule.impl.UniRuleIdBuilderTest;
 import org.uniprot.core.unirule.impl.UniRuleIdImpl;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 public class UniRuleIdImplSerializerTest {
     private ObjectMapper objectMapper;

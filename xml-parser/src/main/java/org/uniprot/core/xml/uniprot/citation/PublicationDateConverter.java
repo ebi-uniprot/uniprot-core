@@ -1,6 +1,8 @@
 package org.uniprot.core.xml.uniprot.citation;
 
-import com.google.common.base.Strings;
+import java.text.ParseException;
+import java.util.Date;
+import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,9 +10,7 @@ import org.uniprot.core.citation.PublicationDate;
 import org.uniprot.core.citation.impl.PublicationDateBuilder;
 import org.uniprot.core.xml.Converter;
 
-import java.text.ParseException;
-import java.util.Date;
-import java.util.regex.Pattern;
+import com.google.common.base.Strings;
 
 public class PublicationDateConverter implements Converter<String, PublicationDate> {
     private static final Logger logger = LoggerFactory.getLogger(PublicationDateConverter.class);

@@ -2,10 +2,10 @@ package org.uniprot.core.flatfile.parser.converter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.regex.Matcher;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineConverterUtil;
-
-import java.util.regex.Matcher;
 
 class FtLineConverterUtilTest {
     @Test
@@ -99,12 +99,12 @@ class FtLineConverterUtilTest {
     void testVarSeq4() {
         String original =
                 "MVADPPRDSKGLAAAEPTANGGLALASIEDQGAAAGGYCGSRDQVRRCLRANLLVLLTVVAVVAGVALGLGVSGAGGALALGPERLSAFVFPGELLL"
-                    + "RLLRMIILPLVVCSLIGGAASLDPGALGRLGAW"
-                    + "ALLFFLVTTLLASALGVGLALALQPGAASAAINASVGAAGSAENAPSKEVLDSFLDLARNIFPSNLVSAAFRS";
+                        + "RLLRMIILPLVVCSLIGGAASLDPGALGRLGAW"
+                        + "ALLFFLVTTLLASALGVGLALALQPGAASAAINASVGAAGSAENAPSKEVLDSFLDLARNIFPSNLVSAAFRS";
         String val =
                 "MVADPPRDSKGLAAAEPTANGGLALASIEDQGAAAGGYCGSRDQVRRCLRANLLVLLTVVAVVAGVALGLGVSGAGGALALGPERLSAFVFPGELLL"
-                    + "RLLRMIILPLVVCSLIGGAASLDPGALGRLGAWALLFFLVTTLLASALGVGLALALQPGAASAAINASVGAAGSAENAPSKEVLDSFLDLARNIFPSNLVSAAFRS->"
-                    + " M (in isoform 2)";
+                        + "RLLRMIILPLVVCSLIGGAASLDPGALGRLGAWALLFFLVTTLLASALGVGLALALQPGAASAAINASVGAAGSAENAPSKEVLDSFLDLARNIFPSNLVSAAFRS->"
+                        + " M (in isoform 2)";
 
         Matcher matcher = FtLineConverterUtil.VAR_SEQ_DESC_PATTERN.matcher(val);
         assertTrue(matcher.matches());
@@ -121,8 +121,8 @@ class FtLineConverterUtilTest {
         String original = "APLVPIFSFGENDLFDQIPNSSGSWLRYIQNRLQKIMGISLPLFHGRGVFQYSFGLIPYRRPITTVV";
         String val =
                 "APLVPIFSFGENDLFDQIPNSSGSWLRYIQNRLQKIMGISLPLFHGRGVFQYSFGLIPYRRPITTVV ->"
-                    + " YQASGKSTLGS VGNWQGFYFGGKMAETNADSILVEIFSPFTIKIIFWCLMPKYLEKFPQRRLSDLRN (in"
-                    + " isoform 3)";
+                        + " YQASGKSTLGS VGNWQGFYFGGKMAETNADSILVEIFSPFTIKIIFWCLMPKYLEKFPQRRLSDLRN (in"
+                        + " isoform 3)";
         String val1 =
                 "APLVPIFSFGENDLFDQIPNSSGSWLRYIQNRLQKIMGISLPLFHGRGVFQYSFGLIPYRRPITTVV ->"
                         + " YQASGKSTLGS VGNWQGFYFGGKMAETNADSILVEIFSPFTIKIIFWCLMPKYLEKFPQRRLSDLRN";

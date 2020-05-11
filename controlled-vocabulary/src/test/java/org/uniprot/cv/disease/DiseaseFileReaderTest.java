@@ -2,13 +2,13 @@ package org.uniprot.cv.disease;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.disease.DiseaseEntry;
-
-import java.util.Arrays;
-import java.util.List;
 
 class DiseaseFileReaderTest {
     private static final DiseaseFileReader reader = new DiseaseFileReader();

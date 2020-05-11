@@ -1,6 +1,6 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import com.google.common.base.Strings;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprotkb.comment.Note;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocationComment;
@@ -12,7 +12,7 @@ import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.EvidencedValueConverter;
 
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 public class SCLCommentConverter implements CommentConverter<SubcellularLocationComment> {
     private final ObjectFactory xmlUniprotFactory;

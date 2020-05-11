@@ -1,15 +1,15 @@
 package org.uniprot.core.xml.uniprot.description;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.uniprotkb.description.ProteinSection;
 import org.uniprot.core.uniprotkb.description.impl.ProteinSectionBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.ProteinType.Domain;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class DomainConverter
         implements Converter<Domain, ProteinSection>, ToXmlDbReferences<ProteinSection> {

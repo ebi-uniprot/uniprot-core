@@ -1,12 +1,12 @@
 package org.uniprot.core.xml.unirule;
 
+import java.util.Objects;
+
 import org.uniprot.core.Range;
 import org.uniprot.core.unirule.PositionalFeature;
 import org.uniprot.core.unirule.impl.PositionalFeatureBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.*;
-
-import java.util.Objects;
 
 public class PositionalFeatureConverter
         implements Converter<PositionalFeatureType, PositionalFeature> {

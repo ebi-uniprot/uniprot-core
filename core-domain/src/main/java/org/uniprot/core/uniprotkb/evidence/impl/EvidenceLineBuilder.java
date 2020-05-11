@@ -1,11 +1,11 @@
 package org.uniprot.core.uniprotkb.evidence.impl;
 
-import org.uniprot.core.Builder;
-import org.uniprot.core.uniprotkb.evidence.EvidenceLine;
-
 import java.time.LocalDate;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.Builder;
+import org.uniprot.core.uniprotkb.evidence.EvidenceLine;
 
 /**
  * Created 25/01/19

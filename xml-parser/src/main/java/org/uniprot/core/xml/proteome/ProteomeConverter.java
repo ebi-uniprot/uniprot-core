@@ -2,6 +2,11 @@ package org.uniprot.core.xml.proteome;
 
 import static org.uniprot.core.util.Utils.*;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.proteome.*;
@@ -13,11 +18,6 @@ import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.*;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
 

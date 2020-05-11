@@ -1,16 +1,16 @@
 package org.uniprot.core.uniprotkb.impl;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.uniprotkb.ReferenceComment;
 import org.uniprot.core.uniprotkb.ReferenceCommentType;
 import org.uniprot.core.uniprotkb.UniProtKBReference;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.util.Utils;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class UniProtKBReferenceImpl implements UniProtKBReference {
     private static final long serialVersionUID = 4132545544902388006L;

@@ -1,16 +1,16 @@
 package org.uniprot.core.flatfile.parser.impl;
 
-import com.google.common.base.Preconditions;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.uniprot.core.flatfile.parser.EntryReader;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.uniprot.core.flatfile.parser.EntryReader;
+
+import com.google.common.base.Preconditions;
 
 /**
  * Reading Entry using memory mapped file..

@@ -2,15 +2,15 @@ package org.uniprot.core.flatfile.parser.impl.rx;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.RLine;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 public class RXLineBuilder implements RLine<Citation> {
     private final LineType lineType = LineType.RX;

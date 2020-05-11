@@ -3,6 +3,8 @@ package org.uniprot.core.flatfile.transformer;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprotkb.comment.CommentType;
@@ -10,8 +12,6 @@ import org.uniprot.core.uniprotkb.comment.Disease;
 import org.uniprot.core.uniprotkb.comment.DiseaseComment;
 import org.uniprot.core.uniprotkb.comment.DiseaseDatabase;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-
-import java.util.List;
 
 class DiseaseCommentTransformerTest {
     private final DiseaseCommentTransformer transformer = new DiseaseCommentTransformer();
@@ -31,11 +31,11 @@ class DiseaseCommentTransformerTest {
         DiseaseComment comment = transformer.transform(CommentType.DISEASE, ccLineString);
         String description =
                 "A complex disease characterized by malignant lesions arising from the inner wall"
-                    + " of the large intestine (the colon) and the rectum. Genetic alterations are"
-                    + " often associated with progression from premalignant lesion (adenoma) to"
-                    + " invasive adenocarcinoma. Risk factors for cancer of the colon and rectum"
-                    + " include colon polyps, long-standing ulcerative colitis, and genetic family"
-                    + " history.";
+                        + " of the large intestine (the colon) and the rectum. Genetic alterations are"
+                        + " often associated with progression from premalignant lesion (adenoma) to"
+                        + " invasive adenocarcinoma. Risk factors for cancer of the colon and rectum"
+                        + " include colon polyps, long-standing ulcerative colitis, and genetic family"
+                        + " history.";
         String note =
                 "The gene represented in this "
                         + "entry is involved in disease pathogenesis. Another note";
@@ -72,11 +72,11 @@ class DiseaseCommentTransformerTest {
         DiseaseComment comment = transformer.transform(CommentType.DISEASE, ccLineStringEvidence);
         String description =
                 "A complex disease characterized by malignant lesions arising from the inner wall"
-                    + " of the large intestine (the colon) and the rectum. Genetic alterations are"
-                    + " often associated with progression from premalignant lesion (adenoma) to"
-                    + " invasive adenocarcinoma. Risk factors for cancer of the colon and rectum"
-                    + " include colon polyps, long-standing ulcerative colitis, and genetic family"
-                    + " history.";
+                        + " of the large intestine (the colon) and the rectum. Genetic alterations are"
+                        + " often associated with progression from premalignant lesion (adenoma) to"
+                        + " invasive adenocarcinoma. Risk factors for cancer of the colon and rectum"
+                        + " include colon polyps, long-standing ulcerative colitis, and genetic family"
+                        + " history.";
         String note1 =
                 "The gene represented in this " + "entry is involved in disease pathogenesis";
         String note2 = "Another note";
@@ -333,19 +333,19 @@ class DiseaseCommentTransformerTest {
     void testFailed() {
         String val =
                 "DISEASE: Juvenile polyposis/hereditary hemorrhagic telangiectasia syndrome"
-                    + " (JP/HHT) [MIM:175050]: JP/HHT syndrome phenotype consists of the"
-                    + " coexistence of juvenile polyposis (JIP) and hereditary hemorrhagic"
-                    + " telangiectasia (HHT) [MIM:187300] in a single individual. JIP and HHT are"
-                    + " autosomal dominant disorders with distinct and non-overlapping clinical"
-                    + " features. The former, an inherited gastrointestinal malignancy"
-                    + " predisposition, is caused by mutations in SMAD4 or BMPR1A, and the latter"
-                    + " is a vascular malformation disorder caused by mutations in ENG or ACVRL1."
-                    + " All four genes encode proteins involved in the"
-                    + " transforming-growth-factor-signaling pathway. Although there are reports"
-                    + " of patients and families with phenotypes of both disorders combined, the"
-                    + " genetic etiology of this association is unknown."
-                    + " {ECO:0000269|PubMed:15031030}. Note=The disease is caused by mutations"
-                    + " affecting the gene represented in this entry.";
+                        + " (JP/HHT) [MIM:175050]: JP/HHT syndrome phenotype consists of the"
+                        + " coexistence of juvenile polyposis (JIP) and hereditary hemorrhagic"
+                        + " telangiectasia (HHT) [MIM:187300] in a single individual. JIP and HHT are"
+                        + " autosomal dominant disorders with distinct and non-overlapping clinical"
+                        + " features. The former, an inherited gastrointestinal malignancy"
+                        + " predisposition, is caused by mutations in SMAD4 or BMPR1A, and the latter"
+                        + " is a vascular malformation disorder caused by mutations in ENG or ACVRL1."
+                        + " All four genes encode proteins involved in the"
+                        + " transforming-growth-factor-signaling pathway. Although there are reports"
+                        + " of patients and families with phenotypes of both disorders combined, the"
+                        + " genetic etiology of this association is unknown."
+                        + " {ECO:0000269|PubMed:15031030}. Note=The disease is caused by mutations"
+                        + " affecting the gene represented in this entry.";
         DiseaseComment comment = transformer.transform(CommentType.DISEASE, val);
         Disease disease = comment.getDisease();
         String diseaseId = "Juvenile polyposis/hereditary hemorrhagic telangiectasia syndrome";
@@ -354,15 +354,15 @@ class DiseaseCommentTransformerTest {
         String diseaseReferenceId = "175050";
         String diseaseDescription =
                 "JP/HHT syndrome phenotype consists of the coexistence of juvenile polyposis (JIP)"
-                    + " and hereditary hemorrhagic telangiectasia (HHT) [MIM:187300] in a single"
-                    + " individual. JIP and HHT are autosomal dominant disorders with distinct and"
-                    + " non-overlapping clinical features. The former, an inherited"
-                    + " gastrointestinal malignancy predisposition, is caused by mutations in"
-                    + " SMAD4 or BMPR1A, and the latter is a vascular malformation disorder caused"
-                    + " by mutations in ENG or ACVRL1. All four genes encode proteins involved in"
-                    + " the transforming-growth-factor-signaling pathway. Although there are"
-                    + " reports of patients and families with phenotypes of both disorders"
-                    + " combined, the genetic etiology of this association is unknown.";
+                        + " and hereditary hemorrhagic telangiectasia (HHT) [MIM:187300] in a single"
+                        + " individual. JIP and HHT are autosomal dominant disorders with distinct and"
+                        + " non-overlapping clinical features. The former, an inherited"
+                        + " gastrointestinal malignancy predisposition, is caused by mutations in"
+                        + " SMAD4 or BMPR1A, and the latter is a vascular malformation disorder caused"
+                        + " by mutations in ENG or ACVRL1. All four genes encode proteins involved in"
+                        + " the transforming-growth-factor-signaling pathway. Although there are"
+                        + " reports of patients and families with phenotypes of both disorders"
+                        + " combined, the genetic etiology of this association is unknown.";
         String diseaseNote =
                 "The disease is caused by mutations affecting the gene represented in this entry";
         assertEquals(disease.getDiseaseId(), diseaseId);

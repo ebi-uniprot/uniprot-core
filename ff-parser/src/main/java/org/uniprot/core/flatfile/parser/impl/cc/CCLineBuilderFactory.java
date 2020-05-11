@@ -1,12 +1,12 @@
 package org.uniprot.core.flatfile.parser.impl.cc;
 
+import java.util.EnumMap;
+import java.util.Map;
+
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.FreeTextComment;
-
-import java.util.EnumMap;
-import java.util.Map;
 
 public class CCLineBuilderFactory {
     private static Map<CommentType, FFLineBuilder<? extends Comment>> commentBuilders =
@@ -27,8 +27,7 @@ public class CCLineBuilderFactory {
         commentBuilders.put(CommentType.WEBRESOURCE, new CCWebResourceCommentLineBuilder());
         commentBuilders.put(CommentType.COFACTOR, new CCCofactorCommentLineBuilder());
         commentBuilders.put(CommentType.CATALYTIC_ACTIVITY, new CatalyticActivityCCLineBuilder());
-    }
-    ;
+    };
 
     private static final FFLineBuilder<FreeTextComment> defaultBuilder =
             new CCFreeTextCommentLineBuilder();

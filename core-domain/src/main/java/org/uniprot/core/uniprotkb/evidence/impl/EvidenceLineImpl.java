@@ -2,10 +2,10 @@ package org.uniprot.core.uniprotkb.evidence.impl;
 
 import static org.uniprot.core.util.Utils.emptyOrString;
 
-import org.uniprot.core.uniprotkb.evidence.EvidenceLine;
-
 import java.time.LocalDate;
 import java.util.Objects;
+
+import org.uniprot.core.uniprotkb.evidence.EvidenceLine;
 
 public class EvidenceLineImpl implements EvidenceLine {
     private String evidence;

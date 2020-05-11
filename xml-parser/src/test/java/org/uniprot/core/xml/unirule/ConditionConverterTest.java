@@ -2,6 +2,9 @@ package org.uniprot.core.xml.unirule;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.unirule.Condition;
@@ -11,9 +14,6 @@ import org.uniprot.core.unirule.impl.ConditionSetBuilderTest;
 import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.unirule.ConditionType;
 import org.uniprot.core.xml.jaxb.unirule.ConditionValue;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ConditionConverterTest extends AbstractConverterTest {
     @BeforeAll

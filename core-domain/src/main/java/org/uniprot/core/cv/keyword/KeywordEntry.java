@@ -1,11 +1,11 @@
 package org.uniprot.core.cv.keyword;
 
-import org.uniprot.core.Statistics;
-import org.uniprot.core.cv.go.GoTerm;
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
+
+import org.uniprot.core.Statistics;
+import org.uniprot.core.cv.go.GoTerm;
 
 /**
  * Graphical representation of keywords according to old uniprot website Reverse of flat text file

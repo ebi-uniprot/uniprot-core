@@ -1,21 +1,21 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.MassSpectrometryComment;
 import org.uniprot.core.uniprotkb.comment.MassSpectrometryMethod;
 import org.uniprot.core.uniprotkb.comment.impl.MassSpectrometryCommentBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.base.Strings;
 
 class CCMassSpectromBuildTest extends CCBuildTestAbstr {
     @Test
     void testMASSSPEC() {
         String ccLine =
                 "CC   -!- MASS SPECTROMETRY: Mass=2189.4; Method=Electrospray;\n"
-                    + "CC       Note=Monophosphorylated; Evidence={ECO:0000303|PubMed:16629414};";
+                        + "CC       Note=Monophosphorylated; Evidence={ECO:0000303|PubMed:16629414};";
 
         String ccLineString =
                 "MASS SPECTROMETRY: Mass=2189.4; Method=Electrospray; Note=Monophosphorylated;"
@@ -143,7 +143,7 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
     void test6() {
         String ccLine =
                 "CC   -!- MASS SPECTROMETRY: [P04653-1]: Mass=871.3; Method=Electrospray;\n"
-                    + "CC       Note=Monophosphorylated; Evidence={ECO:0000303|PubMed:16629414};";
+                        + "CC       Note=Monophosphorylated; Evidence={ECO:0000303|PubMed:16629414};";
         String ccLineString =
                 "MASS SPECTROMETRY: [P04653-1]: Mass=871.3; Method=Electrospray;"
                         + " Note=Monophosphorylated; Evidence={ECO:0000303|PubMed:16629414};";

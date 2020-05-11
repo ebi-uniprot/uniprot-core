@@ -2,17 +2,17 @@ package org.uniprot.cv.xdb;
 
 import static org.uniprot.cv.common.CVSystemProperties.getDrDatabaseTypesLocation;
 
-import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
-import org.uniprot.core.cv.xdb.UniProtDatabaseCategory;
-import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
-import org.uniprot.core.util.property.Property;
-import org.uniprot.cv.common.AbstractFileReader;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
+import org.uniprot.core.cv.xdb.UniProtDatabaseCategory;
+import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
+import org.uniprot.core.util.property.Property;
+import org.uniprot.cv.common.AbstractFileReader;
 
 public enum UniProtDatabaseTypes {
     INSTANCE;

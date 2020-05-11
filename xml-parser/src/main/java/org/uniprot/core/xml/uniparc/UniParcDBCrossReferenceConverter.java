@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.uniparc;
 
+import java.util.stream.Collectors;
+
 import org.uniprot.core.Property;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
@@ -9,8 +11,6 @@ import org.uniprot.core.xml.jaxb.uniparc.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniparc.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniparc.PropertyType;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
-
-import java.util.stream.Collectors;
 
 /**
  * @author jluo

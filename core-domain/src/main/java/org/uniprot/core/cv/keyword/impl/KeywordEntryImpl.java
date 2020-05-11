@@ -3,14 +3,14 @@ package org.uniprot.core.cv.keyword.impl;
 import static org.uniprot.core.util.Utils.unmodifiableList;
 import static org.uniprot.core.util.Utils.unmodifiableSet;
 
+import java.util.*;
+
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.go.GoTerm;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.util.Utils;
-
-import java.util.*;
 
 public class KeywordEntryImpl implements KeywordEntry {
 

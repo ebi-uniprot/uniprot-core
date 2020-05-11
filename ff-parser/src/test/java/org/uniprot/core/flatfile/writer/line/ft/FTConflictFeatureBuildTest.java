@@ -1,20 +1,20 @@
 package org.uniprot.core.flatfile.writer.line.ft;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.uniprotkb.feature.Feature;
 import org.uniprot.core.uniprotkb.feature.FeatureLocation;
 import org.uniprot.core.uniprotkb.feature.FeatureType;
 
-import java.util.ArrayList;
-import java.util.List;
-
 class FTConflictFeatureBuildTest extends FTBuildTestAbstr {
     @Test
     void testTwoReports() {
         String ftLine =
                 "FT   CONFLICT        1\n"
-                    + "FT                   /note=\"A -> Q (in Ref. 1; BAA37160/BAA37165 and 2)\"";
+                        + "FT                   /note=\"A -> Q (in Ref. 1; BAA37160/BAA37165 and 2)\"";
         String ftLineString =
                 "CONFLICT 1\n" + "/note=\"A -> Q (in Ref. 1; BAA37160/BAA37165 and 2)\"";
 

@@ -1,13 +1,13 @@
 package org.uniprot.core.flatfile.writer.line.ft;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.uniprotkb.feature.Feature;
 import org.uniprot.core.uniprotkb.feature.FeatureLocation;
 import org.uniprot.core.uniprotkb.feature.FeatureType;
-
-import java.util.ArrayList;
-import java.util.List;
 
 class FTVariantFeatureBuildTest extends FTBuildTestAbstr {
     @Test
@@ -49,11 +49,11 @@ class FTVariantFeatureBuildTest extends FTBuildTestAbstr {
     void testVariantEvidence() {
         String ftLine =
                 "FT   VARIANT         221\n"
-                    + "FT                   /note=\"G -> E,D (in a breast cancer sample; somatic\n"
-                    + "FT                   mutation; dbSNP:rs35514614)\"\n"
-                    + "FT                   /evidence=\"ECO:0000269|PubMed:10433554,\n"
-                    + "FT                   ECO:0000313|EMBL:BAG16761.1\"\n"
-                    + "FT                   /id=\"VAR_038685\"";
+                        + "FT                   /note=\"G -> E,D (in a breast cancer sample; somatic\n"
+                        + "FT                   mutation; dbSNP:rs35514614)\"\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:10433554,\n"
+                        + "FT                   ECO:0000313|EMBL:BAG16761.1\"\n"
+                        + "FT                   /id=\"VAR_038685\"";
         String ftLineString =
                 "VARIANT 221\n"
                         + "/note=\"G -> E,D (in a breast cancer sample; somatic mutation;"

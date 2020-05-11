@@ -1,8 +1,8 @@
 package org.uniprot.core.cv.ec.impl;
 
-import org.uniprot.core.cv.ec.ECEntry;
-
 import java.util.Objects;
+
+import org.uniprot.core.cv.ec.ECEntry;
 
 /**
  * Created 15/03/19

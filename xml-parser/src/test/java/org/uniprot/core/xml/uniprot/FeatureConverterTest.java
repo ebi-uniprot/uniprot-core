@@ -4,7 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.uniprot.core.xml.uniprot.EvidenceHelper.createEvidences;
 
-import com.google.common.base.Strings;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
@@ -17,9 +19,7 @@ import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.FeatureBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.FeatureIdBuilder;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import com.google.common.base.Strings;
 
 class FeatureConverterTest {
 

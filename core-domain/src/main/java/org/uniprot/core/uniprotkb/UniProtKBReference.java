@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprotkb;
 
+import java.util.List;
+
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.uniprotkb.evidence.HasEvidences;
-
-import java.util.List;
 
 public interface UniProtKBReference extends HasEvidences {
     Citation getCitation();

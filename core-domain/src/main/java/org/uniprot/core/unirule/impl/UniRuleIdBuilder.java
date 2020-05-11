@@ -2,10 +2,10 @@ package org.uniprot.core.unirule.impl;
 
 import static org.uniprot.core.util.Utils.nullThrowIllegalArgument;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.impl.AbstractValueBuilder;
 import org.uniprot.core.unirule.UniRuleId;
-
-import javax.annotation.Nonnull;
 
 public class UniRuleIdBuilder extends AbstractValueBuilder<UniRuleId> {
 

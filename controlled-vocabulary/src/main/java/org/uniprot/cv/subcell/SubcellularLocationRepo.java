@@ -1,8 +1,8 @@
 package org.uniprot.cv.subcell;
 
-import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
-
 import java.util.List;
+
+import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 
 public interface SubcellularLocationRepo {
     List<SubcellularLocationEntry> getAll();

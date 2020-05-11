@@ -2,17 +2,17 @@ package org.uniprot.core.flatfile.transformer;
 
 import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.FreeTextComment;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
-
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
 
 public class CommentTransformerHelper {
     private static final CommentTransformer<FreeTextComment> DEAFULT_BUILDER =

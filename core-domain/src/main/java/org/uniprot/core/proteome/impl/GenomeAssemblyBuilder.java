@@ -1,11 +1,11 @@
 package org.uniprot.core.proteome.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.proteome.GenomeAssembly;
 import org.uniprot.core.proteome.GenomeAssemblyLevel;
 import org.uniprot.core.proteome.GenomeAssemblySource;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author lgonzales

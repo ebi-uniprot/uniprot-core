@@ -1,9 +1,9 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
+import java.util.*;
+
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.UniProtKBEntryType;
-
-import java.util.*;
 
 public class EntryTypeMap implements NamedValueMap {
     public static final List<String> FIELDS = Collections.singletonList("reviewed");

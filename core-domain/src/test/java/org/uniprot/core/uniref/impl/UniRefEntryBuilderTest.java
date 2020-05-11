@@ -2,6 +2,10 @@ package org.uniprot.core.uniref.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
@@ -14,10 +18,6 @@ import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
-
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * @author jluo

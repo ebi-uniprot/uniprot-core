@@ -1,10 +1,10 @@
 package org.uniprot.core.uniref;
 
-import org.uniprot.core.uniparc.UniParcId;
-import org.uniprot.core.uniprotkb.UniProtKBAccession;
-
 import java.io.Serializable;
 import java.util.List;
+
+import org.uniprot.core.uniparc.UniParcId;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
 /**
  * @author jluo

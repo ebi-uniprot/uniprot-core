@@ -1,9 +1,9 @@
 package org.uniprot.core.literature;
 
-import org.uniprot.core.util.Utils;
-
 import java.io.Serializable;
 import java.util.List;
+
+import org.uniprot.core.util.Utils;
 
 /**
  * @author lgonzales

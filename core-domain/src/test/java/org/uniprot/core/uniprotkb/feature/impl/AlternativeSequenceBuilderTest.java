@@ -2,10 +2,10 @@ package org.uniprot.core.uniprotkb.feature.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
-
-import java.util.Arrays;
 
 class AlternativeSequenceBuilderTest {
 

@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.proteome;
 
+import java.util.stream.Collectors;
+
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.JournalArticle;
@@ -10,8 +12,6 @@ import org.uniprot.core.xml.jaxb.proteome.DbReferenceType;
 import org.uniprot.core.xml.jaxb.proteome.JournalType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 import org.uniprot.core.xml.jaxb.proteome.ReferenceType;
-
-import java.util.stream.Collectors;
 
 public class JournalArticleConverter implements Converter<ReferenceType, JournalArticle> {
     private final ObjectFactory xmlFactory;

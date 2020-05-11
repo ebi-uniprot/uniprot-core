@@ -2,15 +2,15 @@ package org.uniprot.core.citation.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.citation.Author;
-import org.uniprot.core.citation.Book;
-import org.uniprot.core.citation.CitationType;
-
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.citation.Author;
+import org.uniprot.core.citation.Book;
+import org.uniprot.core.citation.CitationType;
 
 class BookBuilderTest extends AbstractCitationBuilderTest {
 

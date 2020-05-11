@@ -1,13 +1,13 @@
 package org.uniprot.core.unirule.impl;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.unirule.RuleException;
 import org.uniprot.core.unirule.RuleExceptionAnnotation;
 import org.uniprot.core.util.Utils;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
 
 public class RuleExceptionImpl implements RuleException {
 

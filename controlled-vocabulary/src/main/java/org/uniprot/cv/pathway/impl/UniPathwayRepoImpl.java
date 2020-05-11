@@ -1,14 +1,14 @@
 package org.uniprot.cv.pathway.impl;
 
-import org.uniprot.core.cv.pathway.UniPathway;
-import org.uniprot.cv.pathway.UniPathwayCache;
-import org.uniprot.cv.pathway.UniPathwayRepo;
-
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.cv.pathway.UniPathway;
+import org.uniprot.cv.pathway.UniPathwayCache;
+import org.uniprot.cv.pathway.UniPathwayRepo;
 
 public class UniPathwayRepoImpl implements UniPathwayRepo {
     private final Map<String, UniPathway> pathwayIdMap;

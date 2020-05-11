@@ -1,8 +1,8 @@
 package org.uniprot.core.uniparc;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum SignatureDbType implements EnumDisplay {
     CDD("CDD"),

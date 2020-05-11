@@ -3,15 +3,15 @@ package org.uniprot.core.xml.uniprot;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.core.xml.uniprot.EvidenceHelper.createEvidences;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.uniprotkb.Keyword;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.impl.KeywordBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.KeywordType;
-
-import java.util.Arrays;
-import java.util.List;
 
 class KeywordConverterTest {
     @Test

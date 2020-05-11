@@ -2,13 +2,13 @@ package org.uniprot.core.flatfile.parser.impl.rl;
 
 // import org.antlr.v4.runtime.misc.NotNull;
 
-import org.uniprot.core.flatfile.antlr.RlLineParser;
-import org.uniprot.core.flatfile.antlr.RlLineParserBaseListener;
-import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
-
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
+
+import org.uniprot.core.flatfile.antlr.RlLineParser;
+import org.uniprot.core.flatfile.antlr.RlLineParserBaseListener;
+import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 
 /**
  * Created with IntelliJ IDEA. User: wudong Date: 08/08/13 Time: 12:26 To change this template use

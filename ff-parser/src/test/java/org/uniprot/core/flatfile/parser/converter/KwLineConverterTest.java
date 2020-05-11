@@ -3,15 +3,15 @@ package org.uniprot.core.flatfile.parser.converter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.kw.KwLineConverter;
 import org.uniprot.core.flatfile.parser.impl.kw.KwLineObject;
 import org.uniprot.core.uniprotkb.Keyword;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 class KwLineConverterTest {
     private final KwLineConverter converter = new KwLineConverter(new HashMap<>(), true);

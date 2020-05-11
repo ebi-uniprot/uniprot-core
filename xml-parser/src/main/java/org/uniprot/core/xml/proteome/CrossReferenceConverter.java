@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.proteome;
 
+import java.util.stream.Collectors;
+
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Property;
 import org.uniprot.core.impl.CrossReferenceBuilder;
@@ -8,8 +10,6 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.DbReferenceType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 import org.uniprot.core.xml.jaxb.proteome.PropertyType;
-
-import java.util.stream.Collectors;
 
 public class CrossReferenceConverter
         implements Converter<DbReferenceType, CrossReference<ProteomeDatabase>> {

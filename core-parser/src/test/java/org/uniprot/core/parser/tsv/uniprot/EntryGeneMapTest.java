@@ -3,12 +3,12 @@ package org.uniprot.core.parser.tsv.uniprot;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.gene.*;
 import org.uniprot.core.uniprotkb.impl.*;
-
-import java.util.*;
-import java.util.stream.Collectors;
 
 class EntryGeneMapTest {
     @Test

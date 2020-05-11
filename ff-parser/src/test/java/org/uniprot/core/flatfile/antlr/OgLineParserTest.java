@@ -2,15 +2,15 @@ package org.uniprot.core.flatfile.antlr;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.og.OgLineObject;
 import org.uniprot.core.flatfile.parser.impl.og.OgLineObject.OgEnum;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 class OgLineParserTest {
     @Test
@@ -162,10 +162,10 @@ class OgLineParserTest {
     void testWithMultiOgsEvidence2() {
         String ogLines =
                 "OG   Plasmid R1 (R7268) {ECO:0000313|EMBL:BAG16761.1},\n"
-                    + "OG   Plasmid IncF::IncFIA::IncFIB::IncI1-ly {ECO:0000313|EMBL:BAG16761.1,\n"
-                    + "OG   ECO:0000269|PubMed:10433554}, Plasmid p013.1IncR {ECO:0000303|Ref.6,\n"
-                    + "OG   ECO:0000313|PDB:3OW2}, Plasmid pUD16 {ECO:0000313|PDB:3OW2}, and\n"
-                    + "OG   Plasmid IncF::IncL/M {ECO:0000256|HAMAP-Rule:MF_00205}.\n";
+                        + "OG   Plasmid IncF::IncFIA::IncFIB::IncI1-ly {ECO:0000313|EMBL:BAG16761.1,\n"
+                        + "OG   ECO:0000269|PubMed:10433554}, Plasmid p013.1IncR {ECO:0000303|Ref.6,\n"
+                        + "OG   ECO:0000313|PDB:3OW2}, Plasmid pUD16 {ECO:0000313|PDB:3OW2}, and\n"
+                        + "OG   Plasmid IncF::IncL/M {ECO:0000256|HAMAP-Rule:MF_00205}.\n";
         UniprotKBLineParser<OgLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createOgLineParser();
         OgLineObject obj = parser.parse(ogLines);
@@ -204,13 +204,13 @@ class OgLineParserTest {
     void testBigOg() {
         String ogLines =
                 "OG   Plastid; Chloroplast {ECO:0000313|EMBL:BAG16761.1,\n"
-                    + "OG   ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6,"
-                    + " ECO:0000313|PDB:3OW2,\n"
-                    + "OG   ECO:0000256|HAMAP-Rule:MF_00205}.\n"
-                    + "OG   Plasmid IncFII R100 (NR1) {ECO:0000313|EMBL:BAG16761.1,\n"
-                    + "OG   ECO:0000269|PubMed:10433554}, Plasmid IncW R388 {ECO:0000303|Ref.6},\n"
-                    + "OG   and Plasmid pLMO20 {ECO:0000313|EMBL:BAG16761.1,\n"
-                    + "OG   ECO:0000256|HAMAP-Rule:MF_00205}.\n";
+                        + "OG   ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6,"
+                        + " ECO:0000313|PDB:3OW2,\n"
+                        + "OG   ECO:0000256|HAMAP-Rule:MF_00205}.\n"
+                        + "OG   Plasmid IncFII R100 (NR1) {ECO:0000313|EMBL:BAG16761.1,\n"
+                        + "OG   ECO:0000269|PubMed:10433554}, Plasmid IncW R388 {ECO:0000303|Ref.6},\n"
+                        + "OG   and Plasmid pLMO20 {ECO:0000313|EMBL:BAG16761.1,\n"
+                        + "OG   ECO:0000256|HAMAP-Rule:MF_00205}.\n";
         UniprotKBLineParser<OgLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createOgLineParser();
         OgLineObject obj = parser.parse(ogLines);

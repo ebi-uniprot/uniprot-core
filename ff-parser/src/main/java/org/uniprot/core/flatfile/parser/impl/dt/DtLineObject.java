@@ -1,9 +1,9 @@
 package org.uniprot.core.flatfile.parser.impl.dt;
 
+import java.time.LocalDate;
+
 import org.uniprot.core.flatfile.validator.DtDateCheck;
 import org.uniprot.core.flatfile.validator.DtVersionCheck;
-
-import java.time.LocalDate;
 
 /**
  * Created with IntelliJ IDEA. User: wudong Date: 12/08/13 Time: 13:27 To change this template use

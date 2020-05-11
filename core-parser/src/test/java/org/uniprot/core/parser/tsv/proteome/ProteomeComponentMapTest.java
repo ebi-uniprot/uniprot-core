@@ -4,16 +4,16 @@ import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.Component;
 import org.uniprot.core.proteome.ProteomeEntry;
 import org.uniprot.core.proteome.impl.ComponentBuilder;
 import org.uniprot.core.proteome.impl.ProteomeEntryBuilder;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author jluo

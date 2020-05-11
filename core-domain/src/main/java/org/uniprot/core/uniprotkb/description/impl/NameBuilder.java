@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprotkb.description.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.evidence.impl.AbstractEvidencedValueBuilder;
-
-import javax.annotation.Nonnull;
 
 public class NameBuilder extends AbstractEvidencedValueBuilder<NameBuilder, Name> {
 

@@ -1,12 +1,12 @@
 package org.uniprot.core.unirule.impl;
 
-import org.uniprot.core.unirule.*;
-import org.uniprot.core.util.Utils;
-
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.unirule.*;
+import org.uniprot.core.util.Utils;
 
 /** @author sahmad */
 public class UniRuleEntryImpl implements UniRuleEntry {

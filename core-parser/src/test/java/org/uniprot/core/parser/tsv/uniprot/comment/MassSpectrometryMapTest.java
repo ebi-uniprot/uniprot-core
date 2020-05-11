@@ -3,13 +3,13 @@ package org.uniprot.core.parser.tsv.uniprot.comment;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.List;
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.MassSpectrometryComment;
-
-import java.util.List;
-import java.util.Map;
 
 class MassSpectrometryMapTest {
 

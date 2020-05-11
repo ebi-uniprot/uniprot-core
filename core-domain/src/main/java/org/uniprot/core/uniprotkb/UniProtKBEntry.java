@@ -1,5 +1,9 @@
 package org.uniprot.core.uniprotkb;
 
+import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
+
 import org.uniprot.core.Sequence;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.gene.Gene;
@@ -14,10 +18,6 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
-
-import java.io.Serializable;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author jieluo

@@ -2,12 +2,12 @@ package org.uniprot.cv.subcell;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
-
-import java.util.Arrays;
-import java.util.List;
 
 class SubcellLocationReaderTest {
 

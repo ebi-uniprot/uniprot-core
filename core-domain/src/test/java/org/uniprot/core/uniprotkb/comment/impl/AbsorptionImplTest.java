@@ -4,12 +4,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 import static org.uniprot.core.ObjectsForTests.createNote;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.Absorption;
 import org.uniprot.core.uniprotkb.comment.Note;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-
-import java.util.List;
 
 class AbsorptionImplTest {
     @Test

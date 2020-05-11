@@ -2,9 +2,9 @@ package org.uniprot.core.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
-
 import java.math.BigDecimal;
+
+import org.junit.jupiter.api.Test;
 
 class Crc64Test {
 

@@ -1,9 +1,9 @@
 package org.uniprot.core.taxonomy.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.taxonomy.TaxonomyStatistics;
-
-import javax.annotation.Nonnull;
 
 public class TaxonomyStatisticsBuilder implements Builder<TaxonomyStatistics> {
 

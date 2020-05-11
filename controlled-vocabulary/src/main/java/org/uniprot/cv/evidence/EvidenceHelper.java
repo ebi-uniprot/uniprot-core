@@ -1,16 +1,16 @@
 package org.uniprot.cv.evidence;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 22/01/19

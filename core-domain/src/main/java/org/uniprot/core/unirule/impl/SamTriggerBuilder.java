@@ -2,12 +2,12 @@ package org.uniprot.core.unirule.impl;
 
 import static org.uniprot.core.util.Utils.nullThrowIllegalArgument;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.Range;
 import org.uniprot.core.unirule.SamTrigger;
 import org.uniprot.core.unirule.SamTriggerType;
-
-import javax.annotation.Nonnull;
 
 public class SamTriggerBuilder implements Builder<SamTrigger> {
     private SamTriggerType samTriggerType;

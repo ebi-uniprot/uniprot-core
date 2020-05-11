@@ -2,14 +2,14 @@ package org.uniprot.core.parser.tsv.uniprot;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.EntryAudit;
-import org.uniprot.core.uniprotkb.impl.EntryAuditBuilder;
-
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.EntryAudit;
+import org.uniprot.core.uniprotkb.impl.EntryAuditBuilder;
 
 class EntryAuditMapTest {
 

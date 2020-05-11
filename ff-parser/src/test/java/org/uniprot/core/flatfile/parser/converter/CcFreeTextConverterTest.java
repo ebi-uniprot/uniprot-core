@@ -3,6 +3,9 @@ package org.uniprot.core.flatfile.parser.converter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
@@ -12,9 +15,6 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.FreeText;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.FreeTextComment;
-
-import java.util.ArrayList;
-import java.util.List;
 
 class CcFreeTextConverterTest {
     private final CcLineConverter converter = new CcLineConverter(null, null);

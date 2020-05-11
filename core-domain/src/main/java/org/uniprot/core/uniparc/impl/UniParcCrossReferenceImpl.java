@@ -1,14 +1,14 @@
 package org.uniprot.core.uniparc.impl;
 
-import org.uniprot.core.Property;
-import org.uniprot.core.impl.CrossReferenceImpl;
-import org.uniprot.core.uniparc.UniParcCrossReference;
-import org.uniprot.core.uniparc.UniParcDatabase;
-
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.Property;
+import org.uniprot.core.impl.CrossReferenceImpl;
+import org.uniprot.core.uniparc.UniParcCrossReference;
+import org.uniprot.core.uniparc.UniParcDatabase;
 
 /**
  * @author jluo

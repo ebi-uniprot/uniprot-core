@@ -1,8 +1,8 @@
 package org.uniprot.core.impl;
 
-import org.uniprot.core.Statistics;
-
 import java.util.Objects;
+
+import org.uniprot.core.Statistics;
 
 public class StatisticsImpl implements Statistics {
     private static final long serialVersionUID = 1767966627449407612L;

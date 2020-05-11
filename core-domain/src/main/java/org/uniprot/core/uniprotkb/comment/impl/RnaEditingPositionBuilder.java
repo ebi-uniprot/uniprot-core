@@ -3,14 +3,14 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableList;
 
-import org.uniprot.core.Builder;
-import org.uniprot.core.uniprotkb.comment.RnaEdPosition;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.Builder;
+import org.uniprot.core.uniprotkb.comment.RnaEdPosition;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 /**
  * Created 16/01/19

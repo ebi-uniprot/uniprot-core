@@ -2,13 +2,13 @@ package org.uniprot.core.uniprotkb.xdb.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.UniProtKBDatabaseMock;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
-
-import java.util.List;
 
 class UniProtKBCrossReferenceImplTest {
 

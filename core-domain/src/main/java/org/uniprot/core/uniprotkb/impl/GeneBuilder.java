@@ -3,13 +3,13 @@ package org.uniprot.core.uniprotkb.impl;
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableList;
 
-import org.uniprot.core.Builder;
-import org.uniprot.core.gene.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.Builder;
+import org.uniprot.core.gene.*;
 
 /** @author lgonzales */
 public class GeneBuilder implements Builder<Gene> {

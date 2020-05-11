@@ -2,14 +2,14 @@ package org.uniprot.core.flatfile.writer.line.rlines;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.impl.AuthorBuilder;
 import org.uniprot.core.flatfile.parser.impl.ra.RALineBuilder;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 class RALineBuilderTest {
     private final RALineBuilder builder = new RALineBuilder();

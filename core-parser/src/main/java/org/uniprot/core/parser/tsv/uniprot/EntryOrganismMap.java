@@ -1,12 +1,12 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
-import org.uniprot.core.parser.tsv.NamedValueMap;
-import org.uniprot.core.uniprotkb.taxonomy.Organism;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.uniprot.core.parser.tsv.NamedValueMap;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 
 public class EntryOrganismMap implements NamedValueMap {
     public static final List<String> FIELDS = Arrays.asList("organism_name", "organism_id");

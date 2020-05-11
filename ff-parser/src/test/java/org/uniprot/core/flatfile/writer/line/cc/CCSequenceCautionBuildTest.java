@@ -2,15 +2,15 @@ package org.uniprot.core.flatfile.writer.line.cc;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CCSequenceCautionCommentLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
 import org.uniprot.core.uniprotkb.comment.SequenceCautionType;
 import org.uniprot.core.uniprotkb.comment.impl.SequenceCautionCommentBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
 
 class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
     private CCSequenceCautionCommentLineBuilder builder = new CCSequenceCautionCommentLineBuilder();
@@ -19,7 +19,7 @@ class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
     void testSequenceCauction() {
         String ccLine =
                 ("CC   -!- SEQUENCE CAUTION:\n"
-                     + "CC       Sequence=CAA57511.1; Type=Frameshift; Note=The predicted gene.;");
+                        + "CC       Sequence=CAA57511.1; Type=Frameshift; Note=The predicted gene.;");
         String ccLineString =
                 ("SEQUENCE CAUTION:\n"
                         + "Sequence=CAA57511.1; Type=Frameshift; Note=The predicted gene.;");

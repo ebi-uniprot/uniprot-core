@@ -1,10 +1,10 @@
 package org.uniprot.core.flatfile.parser.impl;
 
-import org.antlr.v4.runtime.tree.TerminalNode;
-
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.antlr.v4.runtime.tree.TerminalNode;
 
 /** Keep the evidence Info for the LineObject. */
 public class EvidenceInfo {

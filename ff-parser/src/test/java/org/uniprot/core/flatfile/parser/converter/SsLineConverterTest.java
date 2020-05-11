@@ -3,15 +3,15 @@ package org.uniprot.core.flatfile.parser.converter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ss.SsLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ss.SsLineObject;
 import org.uniprot.core.uniprotkb.InternalSection;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceLine;
-
-import java.time.LocalDate;
-import java.util.List;
 
 class SsLineConverterTest {
     private SsLineConverter converter = new SsLineConverter();

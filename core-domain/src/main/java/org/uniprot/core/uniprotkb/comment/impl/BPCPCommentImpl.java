@@ -1,11 +1,11 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import org.uniprot.core.uniprotkb.comment.*;
-import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.uniprotkb.comment.*;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
 public class BPCPCommentImpl extends CommentHasMoleculeImpl implements BPCPComment {
     private static final long serialVersionUID = -8649046279103961092L;

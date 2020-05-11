@@ -1,9 +1,5 @@
 package org.uniprot.core.json.parser.literature;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.jsontype.NamedType;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.citation.impl.*;
@@ -23,6 +19,10 @@ import org.uniprot.core.literature.impl.LiteratureStatisticsImpl;
 import org.uniprot.core.literature.impl.LiteratureStoreEntryImpl;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionImpl;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.NamedType;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 public class LiteratureJsonConfig extends JsonConfig {
     private static LiteratureJsonConfig INSTANCE;

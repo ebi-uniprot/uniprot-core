@@ -2,6 +2,8 @@ package org.uniprot.core.xml.uniprot.citation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationDatabase;
@@ -10,8 +12,6 @@ import org.uniprot.core.citation.impl.JournalArticleBuilder;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CitationType;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-
-import java.util.Arrays;
 
 class JournalArticleConverterTest {
 

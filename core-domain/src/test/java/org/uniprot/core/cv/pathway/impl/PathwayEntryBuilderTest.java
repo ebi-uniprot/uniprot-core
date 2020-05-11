@@ -2,12 +2,12 @@ package org.uniprot.core.cv.pathway.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceBuilder;
 import org.uniprot.core.cv.pathway.PathwayEntry;
-
-import java.util.Arrays;
-import java.util.Collections;
 
 class PathwayEntryBuilderTest {
 

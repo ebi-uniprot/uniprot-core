@@ -1,5 +1,9 @@
 package org.uniprot.core.xml.unirule;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.PositionalFeature;
@@ -12,10 +16,6 @@ import org.uniprot.core.xml.jaxb.unirule.AnnotationType;
 import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
 import org.uniprot.core.xml.jaxb.unirule.PositionalFeatureType;
 import org.uniprot.core.xml.jaxb.unirule.RuleExceptionType;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class RuleExceptionConverter implements Converter<RuleExceptionType, RuleException> {
     private final ObjectFactory objectFactory;

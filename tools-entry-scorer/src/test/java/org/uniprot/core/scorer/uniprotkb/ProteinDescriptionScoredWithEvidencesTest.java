@@ -1,9 +1,10 @@
 package org.uniprot.core.scorer.uniprotkb;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
@@ -13,8 +14,6 @@ import org.uniprot.core.flatfile.parser.impl.de.DeLineConverter;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
-
-import java.util.List;
 
 class ProteinDescriptionScoredWithEvidencesTest {
     @Test

@@ -3,16 +3,16 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableList;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprotkb.comment.Disease;
 import org.uniprot.core.uniprotkb.comment.DiseaseDatabase;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
 
 public final class DiseaseBuilder implements Builder<Disease> {
     private String diseaseId;

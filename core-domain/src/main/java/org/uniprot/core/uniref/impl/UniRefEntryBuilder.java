@@ -1,5 +1,11 @@
 package org.uniprot.core.uniref.impl;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.uniref.RepresentativeMember;
@@ -8,12 +14,6 @@ import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.UniRefType;
 import org.uniprot.core.util.Utils;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author jluo

@@ -3,10 +3,10 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.*;
 
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.*;
-
-import java.util.Collections;
 
 class BPCPCommentImplTest {
     MaximumVelocity mv = new MaximumVelocityImpl(3.4, "unit", "enzyme", createEvidences());

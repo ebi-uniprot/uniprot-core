@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprotkb.taxonomy.impl;
 
-import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
-
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 
 /** @author lgonzales */
 public class OrganismHostImpl extends AbstractOrganismNameImpl implements OrganismHost {

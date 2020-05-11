@@ -1,9 +1,9 @@
 package org.uniprot.core.unirule.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.impl.AbstractValueBuilder;
 import org.uniprot.core.unirule.FeatureTagConditionValue;
-
-import javax.annotation.Nonnull;
 
 public class FeatureTagConditionValueBuilder
         extends AbstractValueBuilder<FeatureTagConditionValue> {

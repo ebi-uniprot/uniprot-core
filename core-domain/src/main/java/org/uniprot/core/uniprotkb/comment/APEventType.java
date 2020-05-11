@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprotkb.comment;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum APEventType implements EnumDisplay {
     ALTERNATIVE_PROMOTER_USAGE("Alternative promoter usage"),

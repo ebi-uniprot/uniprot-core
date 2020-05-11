@@ -3,14 +3,14 @@ package org.uniprot.core.flatfile.parser.impl.oc;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEPARATOR_SEMICOLON;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.STOP;
 
+import java.util.List;
+
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
-
-import java.util.List;
 
 public class OCLineBuilder extends FFLineBuilderAbstr<List<String>>
         implements FFLineBuilder<List<String>> {

@@ -1,27 +1,27 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
-import com.google.common.base.Strings;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.comment.impl.*;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
     @Test
     void test1WithEvidence() {
         String ccLine =
                 ("CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "CC       pH dependence:\n"
-                     + "CC         Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "CC       Redox potential:\n"
-                     + "CC         E(0) is -448 mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2};\n"
-                     + "CC       Temperature dependence:\n"
-                     + "CC         Highly active at low temperatures, even at 0 degree Celsius.\n"
-                     + "CC         Thermolabile. {ECO:0000256|HAMAP-Rule:MF_00205};");
+                        + "CC       pH dependence:\n"
+                        + "CC         Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "CC       Redox potential:\n"
+                        + "CC         E(0) is -448 mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2};\n"
+                        + "CC       Temperature dependence:\n"
+                        + "CC         Highly active at low temperatures, even at 0 degree Celsius.\n"
+                        + "CC         Thermolabile. {ECO:0000256|HAMAP-Rule:MF_00205};");
 
         String ccLineString =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
@@ -34,13 +34,13 @@ class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
                         + " Thermolabile.;");
         String ccLineStringEvidence =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "pH dependence:\n"
-                     + "Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "Redox potential:\n"
-                     + "E(0) is -448 mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2};\n"
-                     + "Temperature dependence:\n"
-                     + "Highly active at low temperatures, even at 0 degree Celsius. Thermolabile."
-                     + " {ECO:0000256|HAMAP-Rule:MF_00205};");
+                        + "pH dependence:\n"
+                        + "Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "Redox potential:\n"
+                        + "E(0) is -448 mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2};\n"
+                        + "Temperature dependence:\n"
+                        + "Highly active at low temperatures, even at 0 degree Celsius. Thermolabile."
+                        + " {ECO:0000256|HAMAP-Rule:MF_00205};");
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
         String ev3 = "ECO:0000303|Ref.6";
         String ev4 = "ECO:0000313|PDB:3OW2";
@@ -76,13 +76,13 @@ class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
     void test1WithoutEvidence() {
         String ccLine =
                 ("CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "CC       pH dependence:\n"
-                     + "CC         Optimum pH is 8-10.;\n"
-                     + "CC       Redox potential:\n"
-                     + "CC         E(0) is -448 mV.;\n"
-                     + "CC       Temperature dependence:\n"
-                     + "CC         Highly active at low temperatures, even at 0 degree Celsius.\n"
-                     + "CC         Thermolabile.;");
+                        + "CC       pH dependence:\n"
+                        + "CC         Optimum pH is 8-10.;\n"
+                        + "CC       Redox potential:\n"
+                        + "CC         E(0) is -448 mV.;\n"
+                        + "CC       Temperature dependence:\n"
+                        + "CC         Highly active at low temperatures, even at 0 degree Celsius.\n"
+                        + "CC         Thermolabile.;");
 
         String ccLineString =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
@@ -330,19 +330,19 @@ class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
     void test3WithEvidence() {
         String ccLine =
                 ("CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "CC       pH dependence:\n"
-                     + "CC         Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1}. Optimum pH"
-                     + " is 3-5.\n"
-                     + "CC         {ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "CC       Redox potential:\n"
-                     + "CC         E(0) is -448 mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2}."
-                     + " E(0) is\n"
-                     + "CC         -234 mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2};\n"
-                     + "CC       Temperature dependence:\n"
-                     + "CC         Highly active at low temperatures, even at 0 degree Celsius.\n"
-                     + "CC         Thermolabile. {ECO:0000256|HAMAP-Rule:MF_00205}. Another active"
-                     + " at\n"
-                     + "CC         low temperatures.;");
+                        + "CC       pH dependence:\n"
+                        + "CC         Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1}. Optimum pH"
+                        + " is 3-5.\n"
+                        + "CC         {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "CC       Redox potential:\n"
+                        + "CC         E(0) is -448 mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2}."
+                        + " E(0) is\n"
+                        + "CC         -234 mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2};\n"
+                        + "CC       Temperature dependence:\n"
+                        + "CC         Highly active at low temperatures, even at 0 degree Celsius.\n"
+                        + "CC         Thermolabile. {ECO:0000256|HAMAP-Rule:MF_00205}. Another active"
+                        + " at\n"
+                        + "CC         low temperatures.;");
 
         String ccLineString =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
@@ -355,15 +355,15 @@ class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
                         + " Thermolabile.. Another active at low temperatures.;");
         String ccLineStringEvidence =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "pH dependence:\n"
-                     + "Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1}. Optimum pH is 3-5."
-                     + " {ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "Redox potential:\n"
-                     + "E(0) is -448 mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2}. E(0) is -234"
-                     + " mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2};\n"
-                     + "Temperature dependence:\n"
-                     + "Highly active at low temperatures, even at 0 degree Celsius. Thermolabile."
-                     + " {ECO:0000256|HAMAP-Rule:MF_00205}. Another active at low temperatures.;");
+                        + "pH dependence:\n"
+                        + "Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1}. Optimum pH is 3-5."
+                        + " {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "Redox potential:\n"
+                        + "E(0) is -448 mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2}. E(0) is -234"
+                        + " mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2};\n"
+                        + "Temperature dependence:\n"
+                        + "Highly active at low temperatures, even at 0 degree Celsius. Thermolabile."
+                        + " {ECO:0000256|HAMAP-Rule:MF_00205}. Another active at low temperatures.;");
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
         String ev3 = "ECO:0000303|Ref.6";
         String ev4 = "ECO:0000313|PDB:3OW2";

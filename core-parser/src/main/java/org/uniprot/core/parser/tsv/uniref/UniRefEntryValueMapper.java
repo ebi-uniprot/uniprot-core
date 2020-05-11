@@ -1,13 +1,13 @@
 package org.uniprot.core.parser.tsv.uniref;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.util.Utils;
-
-import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * @author jluo

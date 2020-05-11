@@ -2,6 +2,9 @@ package org.uniprot.core.flatfile.parser.converter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.BiophysicochemicalProperties;
@@ -9,9 +12,6 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.EvidencedString;
 import org.uniprot.core.uniprotkb.comment.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 class CcBPCPConverterTest {
     private final CcLineConverter converter = new CcLineConverter(null, null);

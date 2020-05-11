@@ -3,13 +3,13 @@ package org.uniprot.core.flatfile.transformer;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
 public class CommentTransformerHelperTest {
 
@@ -80,9 +80,9 @@ public class CommentTransformerHelperTest {
     void testParseEvidencedValuesNoEv1() {
         String value =
                 "Remains fully active after heating at 50 degrees Celsius and pH 4.0 for 10 min."
-                    + " Retains 65% of its activity after heating at 55 degrees Celsius for 10"
-                    + " min.. The half-life value for loss of activity at 60 degrees Celsius and"
-                    + " pH 4.0 is 3.5 min.;";
+                        + " Retains 65% of its activity after heating at 55 degrees Celsius for 10"
+                        + " min.. The half-life value for loss of activity at 60 degrees Celsius and"
+                        + " pH 4.0 is 3.5 min.;";
         List<EvidencedValue> evValues = CommentTransformerHelper.parseEvidencedValues(value, true);
         String note1 =
                 "Remains fully active after heating at 50 degrees Celsius and pH 4.0 for 10 min."
@@ -102,9 +102,9 @@ public class CommentTransformerHelperTest {
     void testParseEvidencedValuesNoEv2() {
         String value =
                 "Remains fully active after heating at 50 degrees Celsius and pH 4.0 for 10 min."
-                    + " Retains 65% of its activity after heating at 55 degrees Celsius for 10"
-                    + " min.. The half-life value for loss of activity at 60 degrees Celsius and"
-                    + " pH 4.0 is 3.5 min.;";
+                        + " Retains 65% of its activity after heating at 55 degrees Celsius for 10"
+                        + " min.. The half-life value for loss of activity at 60 degrees Celsius and"
+                        + " pH 4.0 is 3.5 min.;";
         List<EvidencedValue> evValues = CommentTransformerHelper.parseEvidencedValues(value, false);
         String note1 =
                 "Remains fully active after heating at 50 degrees Celsius and pH 4.0 for 10 min."

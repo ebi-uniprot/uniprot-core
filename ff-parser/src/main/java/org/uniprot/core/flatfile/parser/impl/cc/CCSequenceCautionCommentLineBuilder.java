@@ -2,13 +2,13 @@ package org.uniprot.core.flatfile.parser.impl.cc;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.*;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.uniprot.core.flatfile.writer.impl.LineBuilderHelper;
 import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.base.Strings;
 
 /**
  * "CC -!- SEQUENCE CAUTION:\n" + "CC Sequence=CAA57511.1; Type=Frameshift; Positions=421, 589, 591;

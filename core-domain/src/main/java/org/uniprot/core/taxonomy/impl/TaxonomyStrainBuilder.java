@@ -1,13 +1,13 @@
 package org.uniprot.core.taxonomy.impl;
 
-import org.uniprot.core.Builder;
-import org.uniprot.core.taxonomy.TaxonomyStrain;
-import org.uniprot.core.util.Utils;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.Builder;
+import org.uniprot.core.taxonomy.TaxonomyStrain;
+import org.uniprot.core.util.Utils;
 
 public class TaxonomyStrainBuilder implements Builder<TaxonomyStrain> {
 

@@ -1,9 +1,9 @@
 package org.uniprot.core.literature.impl;
 
+import java.util.Objects;
+
 import org.uniprot.core.impl.StatisticsImpl;
 import org.uniprot.core.literature.LiteratureStatistics;
-
-import java.util.Objects;
 
 /** @author lgonzales */
 public class LiteratureStatisticsImpl extends StatisticsImpl implements LiteratureStatistics {

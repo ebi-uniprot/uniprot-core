@@ -1,10 +1,10 @@
 package org.uniprot.core.util;
 
+import javax.annotation.Nonnull;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import javax.annotation.Nonnull;
 
 public class EnumDisplayTest {
     enum FakeEnumDisplay implements EnumDisplay {

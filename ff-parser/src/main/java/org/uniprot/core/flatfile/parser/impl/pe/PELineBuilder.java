@@ -2,14 +2,14 @@ package org.uniprot.core.flatfile.parser.impl.pe;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEMICOLON;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.uniprotkb.ProteinExistence;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class PELineBuilder extends FFLineBuilderAbstr<ProteinExistence> {
     public PELineBuilder() {

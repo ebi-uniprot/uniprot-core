@@ -3,16 +3,16 @@ package org.uniprot.core.xml.uniprot;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.gene.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.impl.*;
 import org.uniprot.core.xml.jaxb.uniprot.GeneNameType;
 import org.uniprot.core.xml.jaxb.uniprot.GeneType;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 class GeneConverterTest {
 

@@ -2,7 +2,7 @@ package org.uniprot.core.json.parser.uniprot.comment;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
@@ -12,7 +12,7 @@ import org.uniprot.core.uniprotkb.comment.impl.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
-import java.util.List;
+import com.fasterxml.jackson.databind.JsonNode;
 
 /** @author lgonzales */
 public class BPCPCommentTest {

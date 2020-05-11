@@ -2,13 +2,13 @@ package org.uniprot.core.uniprotkb.description.impl;
 
 import static org.uniprot.core.util.Utils.unmodifiableList;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.description.ProteinRecName;
 import org.uniprot.core.util.Utils;
-
-import java.util.Collections;
-import java.util.List;
 
 public class ProteinRecNameImpl implements ProteinRecName {
 

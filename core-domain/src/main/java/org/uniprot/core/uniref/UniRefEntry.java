@@ -1,10 +1,10 @@
 package org.uniprot.core.uniref;
 
-import org.uniprot.core.cv.go.GeneOntologyEntry;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
+
+import org.uniprot.core.cv.go.GeneOntologyEntry;
 
 /**
  * @author jluo

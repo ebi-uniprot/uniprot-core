@@ -2,14 +2,14 @@ package org.uniprot.core.cv.subcell.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
 import org.uniprot.core.cv.subcell.SubcellLocationCategory;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 import org.uniprot.core.impl.StatisticsBuilder;
-
-import java.util.Arrays;
-import java.util.Collections;
 
 class SubcellularLocationEntryImplTest {
     @Test

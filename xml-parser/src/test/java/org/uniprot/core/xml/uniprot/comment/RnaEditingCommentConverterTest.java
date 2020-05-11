@@ -3,6 +3,9 @@ package org.uniprot.core.xml.uniprot.comment;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.core.xml.uniprot.EvidenceHelper.evidencesFromLines;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.RnaEdPosition;
 import org.uniprot.core.uniprotkb.comment.RnaEditingComment;
@@ -15,9 +18,6 @@ import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.LocationType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-
-import java.util.Arrays;
-import java.util.Collections;
 
 class RnaEditingCommentConverterTest {
 

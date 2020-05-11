@@ -2,16 +2,16 @@ package org.uniprot.core.flatfile.writer.line;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.time.LocalDate;
+import java.util.AbstractMap;
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.dt.DTLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprotkb.EntryAudit;
 import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.impl.EntryAuditBuilder;
-
-import java.time.LocalDate;
-import java.util.AbstractMap;
-import java.util.Map;
 
 class DTLineBuildTest {
     private DTLineBuilder builder = new DTLineBuilder();

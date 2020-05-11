@@ -1,5 +1,9 @@
 package org.uniprot.core.xml.unirule;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.impl.ConditionBuilder;
 import org.uniprot.core.util.Utils;
@@ -7,10 +11,6 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.ConditionType;
 import org.uniprot.core.xml.jaxb.unirule.ConditionValue;
 import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class ConditionConverter implements Converter<ConditionType, Condition> {
 

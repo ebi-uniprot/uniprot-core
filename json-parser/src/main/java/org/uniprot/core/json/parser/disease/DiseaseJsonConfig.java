@@ -1,8 +1,5 @@
 package org.uniprot.core.json.parser.disease;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceImpl;
@@ -10,6 +7,9 @@ import org.uniprot.core.cv.disease.impl.DiseaseEntryImpl;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.impl.KeywordIdImpl;
 import org.uniprot.core.json.parser.JsonConfig;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 public class DiseaseJsonConfig extends JsonConfig {
     private static DiseaseJsonConfig INSTANCE;

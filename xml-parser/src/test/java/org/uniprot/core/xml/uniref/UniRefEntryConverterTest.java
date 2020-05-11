@@ -2,15 +2,15 @@ package org.uniprot.core.xml.uniref;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniref.UniRefEntry;
-import org.uniprot.core.xml.XmlChainIterator;
-import org.uniprot.core.xml.jaxb.uniref.Entry;
-
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniref.UniRefEntry;
+import org.uniprot.core.xml.XmlChainIterator;
+import org.uniprot.core.xml.jaxb.uniref.Entry;
 
 /**
  * @author jluo

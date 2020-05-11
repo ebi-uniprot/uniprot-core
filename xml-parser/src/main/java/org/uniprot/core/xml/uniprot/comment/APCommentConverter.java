@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.uniprot.comment;
 
+import java.util.stream.Collectors;
+
 import org.uniprot.core.uniprotkb.comment.APEventType;
 import org.uniprot.core.uniprotkb.comment.AlternativeProductsComment;
 import org.uniprot.core.uniprotkb.comment.Note;
@@ -10,8 +12,6 @@ import org.uniprot.core.xml.jaxb.uniprot.EventType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.EvidencedValueConverter;
-
-import java.util.stream.Collectors;
 
 public class APCommentConverter implements CommentConverter<AlternativeProductsComment> {
     private static final String ALTERNATIVE_PROMOTER = "alternative promoter";

@@ -1,11 +1,11 @@
 package org.uniprot.core.flatfile.antlr;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.misc.Interval;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Individual LineLexers can use the superClass option use this class as their super class, thus

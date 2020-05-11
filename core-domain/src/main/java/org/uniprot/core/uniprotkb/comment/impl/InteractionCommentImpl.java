@@ -1,13 +1,13 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
 import org.uniprot.core.util.Utils;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
 
 public class InteractionCommentImpl extends CommentImpl implements InteractionComment {
     private static final long serialVersionUID = 460447737850135638L;

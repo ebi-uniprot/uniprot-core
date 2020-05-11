@@ -1,16 +1,16 @@
 package org.uniprot.core.proteome.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.proteome.Component;
 import org.uniprot.core.proteome.ComponentType;
 import org.uniprot.core.proteome.ProteomeDatabase;
 import org.uniprot.core.util.Utils;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
 
 public class ComponentBuilder implements Builder<Component> {
     private String name;

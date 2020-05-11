@@ -3,14 +3,14 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableList;
 
-import org.uniprot.core.uniprotkb.comment.MassSpectrometryComment;
-import org.uniprot.core.uniprotkb.comment.MassSpectrometryMethod;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.uniprotkb.comment.MassSpectrometryComment;
+import org.uniprot.core.uniprotkb.comment.MassSpectrometryMethod;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 public final class MassSpectrometryCommentBuilder
         implements CommentBuilder<MassSpectrometryComment> {

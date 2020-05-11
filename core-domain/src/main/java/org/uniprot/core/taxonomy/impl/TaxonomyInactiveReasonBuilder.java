@@ -1,10 +1,10 @@
 package org.uniprot.core.taxonomy.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.taxonomy.TaxonomyInactiveReason;
 import org.uniprot.core.taxonomy.TaxonomyInactiveReasonType;
-
-import javax.annotation.Nonnull;
 
 /** @author lgonzales */
 public class TaxonomyInactiveReasonBuilder implements Builder<TaxonomyInactiveReason> {

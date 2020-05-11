@@ -1,14 +1,14 @@
 package org.uniprot.core.impl;
 
-import org.uniprot.core.CrossReference;
-import org.uniprot.core.Database;
-import org.uniprot.core.Property;
-import org.uniprot.core.util.Utils;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.Database;
+import org.uniprot.core.Property;
+import org.uniprot.core.util.Utils;
 
 public class CrossReferenceImpl<T extends Database> implements CrossReference<T> {
     private static final long serialVersionUID = 4318477387676269483L;

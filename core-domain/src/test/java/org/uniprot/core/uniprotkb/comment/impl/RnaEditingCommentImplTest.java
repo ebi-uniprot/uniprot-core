@@ -4,12 +4,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 import static org.uniprot.core.ObjectsForTests.createNote;
 
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.RnaEdPosition;
 import org.uniprot.core.uniprotkb.comment.RnaEditingComment;
 import org.uniprot.core.uniprotkb.comment.RnaEditingLocationType;
-
-import java.util.Collections;
 
 class RnaEditingCommentImplTest {
     @Test

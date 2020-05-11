@@ -2,9 +2,6 @@ package org.uniprot.cv.common;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-import org.slf4j.Logger;
-import org.uniprot.cv.FileReader;
-
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
@@ -13,6 +10,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+
+import org.slf4j.Logger;
+import org.uniprot.cv.FileReader;
 
 public abstract class AbstractFileReader<T> implements FileReader<T> {
     private static final Logger LOGGER = getLogger(AbstractFileReader.class);

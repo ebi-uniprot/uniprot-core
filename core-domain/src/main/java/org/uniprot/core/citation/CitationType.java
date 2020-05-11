@@ -1,8 +1,8 @@
 package org.uniprot.core.citation;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum CitationType implements EnumDisplay {
     JOURNAL_ARTICLE("journal article"),

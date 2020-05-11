@@ -2,10 +2,10 @@ package org.uniprot.core.cv.xdb;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.UUID;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.UUID;
 
 class UniProtKBDatabaseAttributeTest {
     private String name;

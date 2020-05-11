@@ -1,11 +1,11 @@
 package org.uniprot.core.uniprotkb.impl;
 
-import org.uniprot.core.Builder;
-import org.uniprot.core.uniprotkb.EntryAudit;
-
 import java.time.LocalDate;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.Builder;
+import org.uniprot.core.uniprotkb.EntryAudit;
 
 /**
  * Created 22/01/19

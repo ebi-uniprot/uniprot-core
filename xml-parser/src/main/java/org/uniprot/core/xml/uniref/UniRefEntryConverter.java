@@ -1,6 +1,6 @@
 package org.uniprot.core.xml.uniref;
 
-import com.google.common.base.Strings;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.cv.go.GoAspect;
@@ -14,7 +14,7 @@ import org.uniprot.core.xml.jaxb.uniref.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniref.PropertyType;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
 
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 /**
  * @author jluo

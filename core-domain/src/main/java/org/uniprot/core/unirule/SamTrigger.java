@@ -1,8 +1,8 @@
 package org.uniprot.core.unirule;
 
-import org.uniprot.core.Range;
-
 import java.io.Serializable;
+
+import org.uniprot.core.Range;
 
 /** @author sahmad */
 public interface SamTrigger extends Serializable {

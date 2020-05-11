@@ -2,12 +2,12 @@ package org.uniprot.core.parser.tsv.uniprot;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.description.*;
 import org.uniprot.core.uniprotkb.description.impl.*;
-
-import java.util.*;
-import java.util.stream.Collectors;
 
 class EntryProteinMapTest {
 
@@ -248,9 +248,9 @@ class EntryProteinMapTest {
         assertNotNull(value);
         String expected =
                 "some full name, short1, short2, EC 1.1.2.3, EC 1.2.22.2 [Cleaved into: some"
-                    + " contains1, sh1, sh2, EC 1.1.22.3, EC 1.2.34.2 (new Altname1, EC 1.1.22.3,"
-                    + " EC 1.2.34.2) (new Altname 2, short11, short12); some contains 2, sh1, sh2,"
-                    + " EC 1.1.22.3, EC 1.2.34.2 ]";
+                        + " contains1, sh1, sh2, EC 1.1.22.3, EC 1.2.34.2 (new Altname1, EC 1.1.22.3,"
+                        + " EC 1.2.34.2) (new Altname 2, short11, short12); some contains 2, sh1, sh2,"
+                        + " EC 1.1.22.3, EC 1.2.34.2 ]";
         assertEquals(expected, value);
         String ec = result.get(EntryProteinMap.FIELDS.get(1));
         assertEquals("1.1.2.3; 1.1.22.3; 1.2.22.2; 1.2.34.2", ec);
@@ -282,11 +282,11 @@ class EntryProteinMapTest {
         assertNotNull(value);
         String expected =
                 "some full name, short1, short2, EC 1.1.2.3, EC 1.2.22.2 [Cleaved into: some"
-                    + " contains1, sh1, sh2, EC 1.1.22.3, EC 1.2.34.2 (new Altname1, EC 1.1.22.3,"
-                    + " EC 1.2.34.2) (new Altname 2, short11, short12); some contains 2, sh1, sh2,"
-                    + " EC 1.1.22.3, EC 1.2.34.2 ] [Includes: some domain1, sh1, sh2, EC 1.1.22.3,"
-                    + " EC 1.2.34.2; some domain 2, sh1, sh2, EC 1.1.22.3, EC 1.2.34.2 (new"
-                    + " Altname1, EC 1.1.22.3, EC 1.2.34.2) (new Altname 2, short11, short12) ]";
+                        + " contains1, sh1, sh2, EC 1.1.22.3, EC 1.2.34.2 (new Altname1, EC 1.1.22.3,"
+                        + " EC 1.2.34.2) (new Altname 2, short11, short12); some contains 2, sh1, sh2,"
+                        + " EC 1.1.22.3, EC 1.2.34.2 ] [Includes: some domain1, sh1, sh2, EC 1.1.22.3,"
+                        + " EC 1.2.34.2; some domain 2, sh1, sh2, EC 1.1.22.3, EC 1.2.34.2 (new"
+                        + " Altname1, EC 1.1.22.3, EC 1.2.34.2) (new Altname 2, short11, short12) ]";
         assertEquals(expected, value);
         String ec = result.get(EntryProteinMap.FIELDS.get(1));
         assertEquals("1.1.2.3; 1.1.22.3; 1.2.22.2; 1.2.34.2", ec);

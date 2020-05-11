@@ -2,11 +2,11 @@ package org.uniprot.core.flatfile.parser.impl;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-import org.slf4j.Logger;
-import org.uniprot.core.uniprotkb.UniProtKBEntry;
-
 import java.io.FileNotFoundException;
 import java.util.Arrays;
+
+import org.slf4j.Logger;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
 
 /**
  * Created 28/02/19

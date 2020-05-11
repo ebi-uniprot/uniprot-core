@@ -2,7 +2,11 @@ package org.uniprot.core.flatfile.transformer;
 
 import static java.util.Arrays.stream;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
@@ -15,11 +19,7 @@ import org.uniprot.core.uniprotkb.comment.impl.ReactionBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 public class CatalyticActivityCommentTransformer
         implements CommentTransformer<CatalyticActivityComment> {

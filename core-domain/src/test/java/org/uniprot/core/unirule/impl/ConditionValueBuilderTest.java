@@ -2,14 +2,14 @@ package org.uniprot.core.unirule.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.unirule.ConditionValue;
-
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.unirule.ConditionValue;
 
 public class ConditionValueBuilderTest {
 

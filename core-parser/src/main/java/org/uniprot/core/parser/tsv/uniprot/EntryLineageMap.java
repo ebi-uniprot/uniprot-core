@@ -2,11 +2,11 @@ package org.uniprot.core.parser.tsv.uniprot;
 
 import static org.uniprot.core.util.Utils.*;
 
-import org.uniprot.core.parser.tsv.NamedValueMap;
-import org.uniprot.core.taxonomy.TaxonomyLineage;
-
 import java.util.*;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.parser.tsv.NamedValueMap;
+import org.uniprot.core.taxonomy.TaxonomyLineage;
 
 public class EntryLineageMap implements NamedValueMap {
     private final List<TaxonomyLineage> lineage;

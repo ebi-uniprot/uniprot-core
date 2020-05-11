@@ -1,14 +1,14 @@
 package org.uniprot.core.cv.disease;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceBuilder;
-
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceBuilder;
 
 public class CrossReferenceTest {
     private String random;

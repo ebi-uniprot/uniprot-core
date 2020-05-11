@@ -2,6 +2,10 @@ package org.uniprot.core.flatfile.writer.line.rlines;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.rc.RCLineBuilder;
 import org.uniprot.core.uniprotkb.ReferenceComment;
@@ -9,10 +13,6 @@ import org.uniprot.core.uniprotkb.ReferenceCommentType;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.impl.ReferenceCommentBuilder;
 import org.uniprot.cv.evidence.EvidenceHelper;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 class RCLineBuilderTest {
 

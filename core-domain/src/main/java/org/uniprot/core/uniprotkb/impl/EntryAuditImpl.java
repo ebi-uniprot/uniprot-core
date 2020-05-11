@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprotkb.impl;
 
-import org.uniprot.core.uniprotkb.EntryAudit;
-
 import java.time.LocalDate;
+
+import org.uniprot.core.uniprotkb.EntryAudit;
 
 public final class EntryAuditImpl implements EntryAudit {
     private static final long serialVersionUID = -232879461828356252L;

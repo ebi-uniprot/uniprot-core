@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import org.uniprot.core.uniprotkb.comment.WebResourceComment;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.uniprotkb.comment.WebResourceComment;
 
 public final class WebResourceCommentBuilder implements CommentBuilder<WebResourceComment> {
     private String molecule;

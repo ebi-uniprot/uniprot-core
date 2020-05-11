@@ -1,10 +1,15 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
+import static java.util.Collections.emptyList;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidenceValuesWithoutEvidences;
 import static org.uniprot.core.ObjectsForTests.evidenceValues;
 
-import static java.util.Collections.emptyList;
+import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.Comment;
@@ -13,12 +18,6 @@ import org.uniprot.core.uniprotkb.comment.FreeTextComment;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilderTest;
-
-import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class FreeTextCommentBuilderTest {
     @Test

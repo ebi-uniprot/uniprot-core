@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.uniprot.comment;
 
+import java.util.List;
+
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprotkb.comment.PhysiologicalDirectionType;
 import org.uniprot.core.uniprotkb.comment.PhysiologicalReaction;
@@ -10,8 +12,6 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.PhysiologicalReactionType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
-
-import java.util.List;
 
 public class CAPhysioReactionConverter
         implements Converter<PhysiologicalReactionType, PhysiologicalReaction> {

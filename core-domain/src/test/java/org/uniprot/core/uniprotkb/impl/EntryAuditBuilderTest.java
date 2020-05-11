@@ -2,10 +2,10 @@ package org.uniprot.core.uniprotkb.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.EntryAudit;
-
-import java.time.LocalDate;
 
 class EntryAuditBuilderTest {
 

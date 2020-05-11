@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
+import java.util.Objects;
+
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
-
-import java.util.Objects;
 
 public abstract class CommentImpl implements Comment {
     private static final long serialVersionUID = 4940248496275660209L;

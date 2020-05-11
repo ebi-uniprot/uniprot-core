@@ -1,10 +1,10 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
-import org.uniprot.core.parser.tsv.NamedValueMap;
-import org.uniprot.core.uniprotkb.description.*;
-
 import java.util.*;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.parser.tsv.NamedValueMap;
+import org.uniprot.core.uniprotkb.description.*;
 
 public class EntryProteinMap implements NamedValueMap {
     private static final String EC2 = "EC";

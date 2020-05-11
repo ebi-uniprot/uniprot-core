@@ -2,6 +2,9 @@ package org.uniprot.core.xml.uniprot.comment;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.uniprotkb.comment.Interaction;
@@ -10,9 +13,6 @@ import org.uniprot.core.uniprotkb.comment.impl.InteractantBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionCommentBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
-
-import java.util.ArrayList;
-import java.util.List;
 
 class InteractionCommentConverterTest {
 

@@ -3,7 +3,11 @@ package org.uniprot.core.flatfile.writer.line.cc;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
@@ -20,11 +24,7 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 abstract class CCBuildTestAbstr {
     CCLineBuilder builder = new CCLineBuilder();

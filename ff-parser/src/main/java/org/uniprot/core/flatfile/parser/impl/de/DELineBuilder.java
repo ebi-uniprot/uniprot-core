@@ -3,6 +3,9 @@ package org.uniprot.core.flatfile.parser.impl.de;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.EQUAL_SIGN;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEMICOLON;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
@@ -10,9 +13,6 @@ import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.uniprotkb.description.*;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class DELineBuilder extends FFLineBuilderAbstr<ProteinDescription>
         implements FFLineBuilder<ProteinDescription> {

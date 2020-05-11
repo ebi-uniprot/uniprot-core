@@ -1,9 +1,9 @@
 package org.uniprot.core.proteome.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.impl.AbstractValueBuilder;
 import org.uniprot.core.proteome.ProteomeId;
-
-import javax.annotation.Nonnull;
 
 public class ProteomeIdBuilder extends AbstractValueBuilder<ProteomeId> {
     public ProteomeIdBuilder(String value) {

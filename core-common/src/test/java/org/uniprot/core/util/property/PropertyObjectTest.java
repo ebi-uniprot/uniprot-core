@@ -2,12 +2,12 @@ package org.uniprot.core.util.property;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.*;
 import java.util.regex.Pattern;
+
+import org.junit.jupiter.api.Test;
 
 class PropertyObjectTest {
 
@@ -237,13 +237,13 @@ class PropertyObjectTest {
     void jsonObjectValues() {
         String str =
                 "{\"trueKey\":true,\"falseKey\":false,\"trueStrKey\":\"true\",\"falseStrKey\":\"false\",\"stringKey\":\"hello"
-                    + " world!\",\"intKey\":42,"
-                    + "\"intStrKey\":\"43\",\"longKey\":1234567890123456789,"
-                    + "\"longStrKey\":\"987654321098765432\",\"doubleKey\":-23.45e7,"
-                    + "\"doubleStrKey\":\"00001.000\","
-                    + "\"BigDecimalStrKey\":\"19007199254740993.35481234487103587486413587843213584\","
-                    + "\"negZeroKey\":-0.0,\"negZeroStrKey\":\"-0.0\",\"arrayKey\":[0,1,2],"
-                    + "\"objectKey\":{\"myKey\":\"myVal\"}}";
+                        + " world!\",\"intKey\":42,"
+                        + "\"intStrKey\":\"43\",\"longKey\":1234567890123456789,"
+                        + "\"longStrKey\":\"987654321098765432\",\"doubleKey\":-23.45e7,"
+                        + "\"doubleStrKey\":\"00001.000\","
+                        + "\"BigDecimalStrKey\":\"19007199254740993.35481234487103587486413587843213584\","
+                        + "\"negZeroKey\":-0.0,\"negZeroStrKey\":\"-0.0\",\"arrayKey\":[0,1,2],"
+                        + "\"objectKey\":{\"myKey\":\"myVal\"}}";
         PropertyObject jsonObject = new PropertyObject(str);
         assertEquals(
                 "hello world!", jsonObject.getString("stringKey"), "stringKey should be string");

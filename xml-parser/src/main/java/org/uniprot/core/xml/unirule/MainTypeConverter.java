@@ -1,5 +1,9 @@
 package org.uniprot.core.xml.unirule;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.ConditionSet;
 import org.uniprot.core.unirule.Rule;
@@ -8,10 +12,6 @@ import org.uniprot.core.unirule.impl.RuleBuilder;
 import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.*;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class MainTypeConverter implements Converter<MainType, Rule> {
 

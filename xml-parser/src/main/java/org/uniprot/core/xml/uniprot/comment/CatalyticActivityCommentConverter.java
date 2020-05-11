@@ -1,6 +1,7 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import com.google.common.base.Strings;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprotkb.comment.CatalyticActivityComment;
 import org.uniprot.core.uniprotkb.comment.PhysiologicalReaction;
@@ -11,8 +12,7 @@ import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 public class CatalyticActivityCommentConverter
         implements CommentConverter<CatalyticActivityComment> {

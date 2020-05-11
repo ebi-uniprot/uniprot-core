@@ -1,5 +1,9 @@
 package org.uniprot.core.json.parser;
 
+import java.util.Arrays;
+
+import org.uniprot.core.util.EnumDisplay;
+
 import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.AnnotationIntrospector;
@@ -7,10 +11,6 @@ import com.fasterxml.jackson.databind.cfg.PackageVersion;
 import com.fasterxml.jackson.databind.introspect.Annotated;
 import com.fasterxml.jackson.databind.util.ClassUtil;
 import com.github.bohnman.squiggly.filter.SquigglyPropertyFilter;
-
-import org.uniprot.core.util.EnumDisplay;
-
-import java.util.Arrays;
 
 public class SimpleAnnotationIntrospector extends AnnotationIntrospector {
 

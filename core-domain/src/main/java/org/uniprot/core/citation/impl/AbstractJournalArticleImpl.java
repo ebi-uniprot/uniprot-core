@@ -1,11 +1,11 @@
 package org.uniprot.core.citation.impl;
 
+import java.util.List;
+import java.util.Objects;
+
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.util.Utils;
-
-import java.util.List;
-import java.util.Objects;
 
 /**
  * @author lgonzales

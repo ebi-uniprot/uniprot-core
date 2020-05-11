@@ -1,12 +1,12 @@
 package org.uniprot.core.uniparc.impl;
 
-import org.uniprot.core.impl.AbstractCrossReferenceBuilder;
-import org.uniprot.core.uniparc.UniParcCrossReference;
-import org.uniprot.core.uniparc.UniParcDatabase;
-
 import java.time.LocalDate;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.impl.AbstractCrossReferenceBuilder;
+import org.uniprot.core.uniparc.UniParcCrossReference;
+import org.uniprot.core.uniparc.UniParcDatabase;
 
 /**
  * @author jluo

@@ -16,8 +16,7 @@ class DiseaseCommentImplTest {
                     .evidencesSet(createEvidences())
                     .description("some description")
                     .diseaseCrossReference(crossReference(DiseaseDatabase.MIM, "3124"))
-                    .build();
-    ;
+                    .build();;
 
     @Test
     void testDiseaseCommentImpl() {

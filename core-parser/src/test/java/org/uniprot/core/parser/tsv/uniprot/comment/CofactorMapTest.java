@@ -3,13 +3,13 @@ package org.uniprot.core.parser.tsv.uniprot.comment;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.List;
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.comment.CofactorComment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
-
-import java.util.List;
-import java.util.Map;
 
 class CofactorMapTest {
 
@@ -42,14 +42,14 @@ class CofactorMapTest {
         String value = mappedCofactor.get("cc_cofactor");
         String expectedValue =
                 "COFACTOR: Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
-                    + " Evidence={ECO:0000255|PROSITE-ProRule:PRU00405}; Note=The RT polymerase"
-                    + " active site binds 2 magnesium ions."
-                    + " {ECO:0000255|PROSITE-ProRule:PRU00405}; COFACTOR: Name=Mg(2+);"
-                    + " Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000305}; Note=Binds 1 magnesium"
-                    + " ions for ribonuclease H (RNase H) activity. {ECO:0000269|PubMed:16912289};"
-                    + " COFACTOR: Name=Mg(2+); Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000305};"
-                    + " Note=Magnesium ions are required for integrase activity. Binds at least 1,"
-                    + " maybe 2 magnesium ions. {ECO:0000305};";
+                        + " Evidence={ECO:0000255|PROSITE-ProRule:PRU00405}; Note=The RT polymerase"
+                        + " active site binds 2 magnesium ions."
+                        + " {ECO:0000255|PROSITE-ProRule:PRU00405}; COFACTOR: Name=Mg(2+);"
+                        + " Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000305}; Note=Binds 1 magnesium"
+                        + " ions for ribonuclease H (RNase H) activity. {ECO:0000269|PubMed:16912289};"
+                        + " COFACTOR: Name=Mg(2+); Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000305};"
+                        + " Note=Magnesium ions are required for integrase activity. Binds at least 1,"
+                        + " maybe 2 magnesium ions. {ECO:0000305};";
         assertEquals(expectedValue, value);
     }
 

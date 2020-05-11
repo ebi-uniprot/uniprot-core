@@ -2,6 +2,11 @@ package org.uniprot.core.xml.proteome;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
@@ -15,11 +20,6 @@ import org.uniprot.core.proteome.impl.ProteomeEntryBuilder;
 import org.uniprot.core.proteome.impl.ProteomeIdBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 class ProteomeConverterTest {
 

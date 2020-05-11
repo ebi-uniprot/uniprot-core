@@ -1,8 +1,8 @@
 package org.uniprot.core.uniparc;
 
-import org.uniprot.core.CrossReference;
-
 import java.time.LocalDate;
+
+import org.uniprot.core.CrossReference;
 
 /**
  * @author jluo

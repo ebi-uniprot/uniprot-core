@@ -1,5 +1,9 @@
 package org.uniprot.core.json.parser.proteome;
 
+import java.io.IOException;
+
+import org.uniprot.core.proteome.impl.BuscoReportImpl;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.BeanDescription;
 import com.fasterxml.jackson.databind.JavaType;
@@ -7,10 +11,6 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.BeanSerializerFactory;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-
-import org.uniprot.core.proteome.impl.BuscoReportImpl;
-
-import java.io.IOException;
 
 /**
  * @author lgonzales

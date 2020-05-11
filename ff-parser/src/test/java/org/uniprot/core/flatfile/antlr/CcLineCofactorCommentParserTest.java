@@ -2,6 +2,8 @@ package org.uniprot.core.flatfile.antlr;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
@@ -10,8 +12,6 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CofactorItem;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.StructuredCofactor;
-
-import java.util.List;
 
 class CcLineCofactorCommentParserTest {
     @Test
@@ -156,8 +156,8 @@ class CcLineCofactorCommentParserTest {
     void testTwoNoteOnly2() {
         String lines =
                 "CC   -!- COFACTOR:\n"
-                    + "CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt).;\n"
-                    + "CC       Binds 3 divalent ions per subunit (magnesium or cobalt).;\n";
+                        + "CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt).;\n"
+                        + "CC       Binds 3 divalent ions per subunit (magnesium or cobalt).;\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -209,16 +209,16 @@ class CcLineCofactorCommentParserTest {
 
         String ccLineStringEvidence =
                 "COFACTOR: [Serine protease NS3]:\n"
-                    + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:16683188,"
-                    + " ECO:0000269|PubMed:16683189};\n"
-                    + "Name=A very looooooooooooong cofactor name with 1 evidence tag;"
-                    + " Xref=ChEBI:CHEBI:12345; Evidence={ECO:0000269|PubMed:16683188};\n"
-                    + "Name=A very very looooooooooooong cofactor name with X evidence tags;"
-                    + " Xref=ChEBI:CHEBI:54321; Evidence={ECO:0000269|PubMed:16683188,"
-                    + " ECO:0000269|PubMed:16683189};\n"
-                    + "Note=Binds 2 divalent ions per subunit. {ECO:0000269|PubMed:16683188,"
-                    + " ECO:0000255|HAMAP-Rule:MF_00086}. Another note."
-                    + " {ECO:0000269|PubMed:16683189};";
+                        + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:16683188,"
+                        + " ECO:0000269|PubMed:16683189};\n"
+                        + "Name=A very looooooooooooong cofactor name with 1 evidence tag;"
+                        + " Xref=ChEBI:CHEBI:12345; Evidence={ECO:0000269|PubMed:16683188};\n"
+                        + "Name=A very very looooooooooooong cofactor name with X evidence tags;"
+                        + " Xref=ChEBI:CHEBI:54321; Evidence={ECO:0000269|PubMed:16683188,"
+                        + " ECO:0000269|PubMed:16683189};\n"
+                        + "Note=Binds 2 divalent ions per subunit. {ECO:0000269|PubMed:16683188,"
+                        + " ECO:0000255|HAMAP-Rule:MF_00086}. Another note."
+                        + " {ECO:0000269|PubMed:16683189};";
         CcLineFormater formater = new CcLineFormater();
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
@@ -263,13 +263,13 @@ class CcLineCofactorCommentParserTest {
 
         String ccLineStringEvidence =
                 "COFACTOR:\n"
-                    + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
-                    + " Evidence={ECO:0000255|HAMAP-Rule:MF_00086};\n"
-                    + "Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
-                    + " Evidence={ECO:0000255|HAMAP-Rule:MF_00089, ECO:0000269|PubMed:16683189};\n"
-                    + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt). A second"
-                    + " loosely associated metal ion is visible in the crystal structure."
-                    + " {ECO:0000255|HAMAP-Rule:MF_00082};";
+                        + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00086};\n"
+                        + "Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00089, ECO:0000269|PubMed:16683189};\n"
+                        + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt). A second"
+                        + " loosely associated metal ion is visible in the crystal structure."
+                        + " {ECO:0000255|HAMAP-Rule:MF_00082};";
         CcLineFormater formater = new CcLineFormater();
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();

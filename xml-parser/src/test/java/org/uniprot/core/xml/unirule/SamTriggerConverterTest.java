@@ -2,6 +2,11 @@ package org.uniprot.core.xml.unirule;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.unirule.SamTrigger;
@@ -11,11 +16,6 @@ import org.uniprot.core.xml.jaxb.unirule.SamCoiledCoilConditionType;
 import org.uniprot.core.xml.jaxb.unirule.SamSignalConditionType;
 import org.uniprot.core.xml.jaxb.unirule.SamTransmembraneConditionType;
 import org.uniprot.core.xml.jaxb.unirule.SamTriggerType;
-
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class SamTriggerConverterTest extends AbstractConverterTest {
     @BeforeAll

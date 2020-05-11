@@ -2,6 +2,11 @@ package org.uniprot.core.flatfile.transformer;
 
 import static java.util.Arrays.asList;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.comment.impl.APIsoformBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.AlternativeProductsCommentBuilder;
@@ -9,11 +14,6 @@ import org.uniprot.core.uniprotkb.comment.impl.IsoformNameBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.NoteBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class APCommentTransformer implements CommentTransformer<AlternativeProductsComment> {
     /**

@@ -1,5 +1,10 @@
 package org.uniprot.core.flatfile.transformer;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.comment.*;
@@ -7,11 +12,6 @@ import org.uniprot.core.uniprotkb.comment.impl.DiseaseBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.DiseaseCommentBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.NoteBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComment> {
     private static final CommentType COMMENT_TYPE = CommentType.DISEASE;

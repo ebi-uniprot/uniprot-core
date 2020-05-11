@@ -1,6 +1,6 @@
 package org.uniprot.core.xml.uniref;
 
-import com.google.common.base.Strings;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +18,7 @@ import org.uniprot.core.xml.jaxb.uniref.MemberType;
 import org.uniprot.core.xml.jaxb.uniref.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniref.PropertyType;
 
-import java.util.List;
+import com.google.common.base.Strings;
 
 /**
  * @author jluo

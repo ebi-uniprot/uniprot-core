@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprotkb.comment;
 
-import org.uniprot.core.util.Utils;
-
 import java.util.List;
+
+import org.uniprot.core.util.Utils;
 
 public interface InteractionComment extends Comment {
     List<Interaction> getInteractions();

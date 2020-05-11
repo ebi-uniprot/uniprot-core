@@ -2,6 +2,9 @@ package org.uniprot.core.flatfile.antlr;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
@@ -9,9 +12,6 @@ import org.uniprot.core.flatfile.parser.impl.ft.FtLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject.FTType;
 import org.uniprot.core.uniprotkb.feature.Feature;
-
-import java.util.Arrays;
-import java.util.List;
 
 class FtLineParserTest {
     @Test
@@ -212,7 +212,7 @@ class FtLineParserTest {
     void testWithPotential() {
         String ftLines =
                 "FT   CARBOHYD        61\n"
-                    + "FT                   /note=\"N-linked (GlcNAc...); by host (Potential)\"\n";
+                        + "FT                   /note=\"N-linked (GlcNAc...); by host (Potential)\"\n";
         UniprotKBLineParser<FtLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
