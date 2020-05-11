@@ -1,6 +1,6 @@
 name: Code Format on push master and pull
 
-on: [master, pull_request]
+on: [push, pull_request]
 
 jobs:
 
