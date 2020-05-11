@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.ConditionValue;
+import org.uniprot.core.unirule.FeatureTagConditionValue;
 
 public class ConditionBuilderTest {
 
@@ -32,6 +33,7 @@ public class ConditionBuilderTest {
         assertNull(condition.getRange());
         assertTrue(condition.getConditionValues().isEmpty());
         assertFalse(condition.isNegative());
+        assertNull(condition.getTag());
     }
 
     @Test
@@ -45,6 +47,7 @@ public class ConditionBuilderTest {
         Condition updatedCondition = builder.build();
 
         assertNotNull(updatedCondition);
+        assertNotNull(updatedCondition.getTag());
         assertEquals(condition.getType(), updatedCondition.getType());
         assertEquals(condition.getRange(), updatedCondition.getRange());
         assertEquals(condition.isNegative(), updatedCondition.isNegative());
@@ -65,6 +68,23 @@ public class ConditionBuilderTest {
         assertEquals(Arrays.asList(conditionValue), condition.getConditionValues());
     }
 
+    @Test
+    void testCreateObjectUpdateTag() {
+        Condition condition = createObject();
+        assertNotNull(condition.getTag());
+
+        ConditionBuilder builder = ConditionBuilder.from(condition);
+        builder.tag(null);
+        Condition updatedCondition = builder.build();
+
+        assertNotNull(updatedCondition);
+        assertNull(updatedCondition.getTag());
+        assertEquals(condition.getType(), updatedCondition.getType());
+        assertEquals(condition.getRange(), updatedCondition.getRange());
+        assertEquals(condition.isNegative(), updatedCondition.isNegative());
+        assertEquals(condition.getConditionValues(), updatedCondition.getConditionValues());
+    }
+
     public static Condition createObject(int listSize) {
         String random = UUID.randomUUID().toString();
         String type = "type-" + random;
@@ -73,15 +93,18 @@ public class ConditionBuilderTest {
         Range range = new Range(start, end);
         boolean negative = true;
         List<ConditionValue> conditionValues = ConditionValueBuilderTest.createObjects(listSize);
+        FeatureTagConditionValue tag = FeatureTagConditionValueBuilderTest.createObject();
         ConditionBuilder builder = new ConditionBuilder(type);
         builder.type(type).range(range).negative(negative);
         builder.conditionValuesSet(conditionValues);
+        builder.tag(tag);
         Condition condition = builder.build();
         assertNotNull(condition);
         assertEquals(type, condition.getType());
         assertEquals(range, condition.getRange());
         assertEquals(negative, condition.isNegative());
         assertEquals(conditionValues, condition.getConditionValues());
+        assertEquals(tag, condition.getTag());
         return condition;
     }
 

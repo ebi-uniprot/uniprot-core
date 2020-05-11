@@ -32,7 +32,8 @@ class CcLineWebRCommentParserTest {
         String lines =
                 "CC   -!- WEB RESOURCE: Name=Functional Glycomics Gateway - GTase;\n"
                         + "CC       Note=Beta1,4-N-acetylgalactosaminyltransferase III.;\n"
-                        + "CC       URL=\"http://www.functionalglycomics.org/glycomics/search/jsp/landing.jsp?query=gt_mou_507\";\n";
+                        + "CC      "
+                        + " URL=\"http://www.functionalglycomics.org/glycomics/search/jsp/landing.jsp?query=gt_mou_507\";\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);

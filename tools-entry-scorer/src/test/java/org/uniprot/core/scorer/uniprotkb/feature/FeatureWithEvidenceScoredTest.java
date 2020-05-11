@@ -20,7 +20,8 @@ class FeatureWithEvidenceScoredTest {
     void shouldModResScore3() {
         String ftLine =
                 "FT   MOD_RES         117\n"
-                        + "FT                   /note=\"2-(S-cysteinyl)pyruvic acid O-phosphothioketal (By similarity)\"\n"
+                        + "FT                   /note=\"2-(S-cysteinyl)pyruvic acid O-phosphothioketal"
+                        + " (By similarity)\"\n"
                         + "FT                   /evidence=\"ECO:0000256|HAMAP-Rule:MF_00111\"\n";
 
         UniProtKBFeature feature = createFeature(ftLine);
@@ -31,7 +32,8 @@ class FeatureWithEvidenceScoredTest {
     void shouldModResScore0() {
         String ftLine =
                 "FT   MOD_RES         117\n"
-                        + "FT                   /note=\"2-(S-cysteinyl)pyruvic acid O-phosphothioketal (By similarity)\"\n"
+                        + "FT                   /note=\"2-(S-cysteinyl)pyruvic acid O-phosphothioketal"
+                        + " (By similarity)\"\n"
                         + "FT                   /evidence=\"ECO:0000256|HAMAP-Rule:MF_00111\"\n";
 
         UniProtKBFeature feature = createFeature(ftLine);

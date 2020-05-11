@@ -14,4 +14,6 @@ public interface Condition extends Serializable {
     boolean isNegative();
 
     Range getRange();
+
+    FeatureTagConditionValue getTag();
 }

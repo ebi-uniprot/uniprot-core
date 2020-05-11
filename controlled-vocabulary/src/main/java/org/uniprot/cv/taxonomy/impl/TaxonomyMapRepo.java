@@ -111,7 +111,8 @@ public class TaxonomyMapRepo implements TaxonomyRepo {
                                 .orElseThrow(
                                         () ->
                                                 new TaxonMappingException(
-                                                        "Taxonomy repo is pointing to a parent that does not exist: "
+                                                        "Taxonomy repo is pointing to a parent"
+                                                                + " that does not exist: "
                                                                 + parentTaxID));
             }
 

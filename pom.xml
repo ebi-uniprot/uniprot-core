@@ -169,48 +169,6 @@
 					</includes>
 				</configuration>
 			</plugin>
-
-			<!-- Auto-format code when built for consistency amongst developers' contributions -->
-			<plugin>
-				<groupId>com.diffplug.spotless</groupId>
-				<artifactId>spotless-maven-plugin</artifactId>
-				<version>${spotless.version}</version>
-				<configuration>
-					<java>
-						<googleJavaFormat>
-							<version>1.7</version>
-							<!-- Optional, available versions: GOOGLE, AOSP https://github.com/google/google-java-format/blob/master/core/src/main/java/com/google/googlejavaformat/java/JavaFormatterOptions.java -->
-							<style>AOSP</style>
-						</googleJavaFormat>
-						<removeUnusedImports />
-						<importOrder>
-							<order>java,javax,org,com</order>
-						</importOrder>
-					</java>
-					<formats>
-						<format>
-							<includes>
-								<include>pom.xml</include>
-								<include>src/main/**/*.xml</include>
-								<include>src/main/**/*.xsd</include>
-							</includes>
-							<eclipseWtp>
-								<type>XML</type>
-							</eclipseWtp>
-						</format>
-					</formats>
-				</configuration>
-				<executions>
-					<execution>
-						<!-- Reformats as soon as possible -->
-						<id>spotless-apply</id>
-						<phase>compile</phase>
-						<goals>
-							<goal>apply</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
 
@@ -320,6 +278,55 @@
 								<id>report</id>
 								<goals>
 									<goal>report</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>format</id>
+			<build>
+				<plugins>
+					<!-- Auto-format code when built for consistency amongst developers' 
+						contributions -->
+					<plugin>
+						<groupId>com.diffplug.spotless</groupId>
+						<artifactId>spotless-maven-plugin</artifactId>
+						<version>${spotless.version}</version>
+						<configuration>
+							<java>
+								<googleJavaFormat>
+									<version>1.7</version>
+									<!-- Optional, available versions: GOOGLE, AOSP https://github.com/google/google-java-format/blob/master/core/src/main/java/com/google/googlejavaformat/java/JavaFormatterOptions.java -->
+									<style>AOSP</style>
+								</googleJavaFormat>
+								<removeUnusedImports />
+								<importOrder>
+									<order>java,javax,org,com</order>
+								</importOrder>
+							</java>
+							<formats>
+								<format>
+									<includes>
+										<include>pom.xml</include>
+										<include>src/main/**/*.xml</include>
+										<include>src/main/**/*.xsd</include>
+									</includes>
+									<eclipseWtp>
+										<type>XML</type>
+									</eclipseWtp>
+								</format>
+							</formats>
+						</configuration>
+						<executions>
+							<execution>
+								<!-- Reformats as soon as possible -->
+								<id>spotless-apply</id>
+								<phase>compile</phase>
+								<goals>
+									<goal>apply</goal>
 								</goals>
 							</execution>
 						</executions>

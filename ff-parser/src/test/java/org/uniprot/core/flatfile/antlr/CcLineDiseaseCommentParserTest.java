@@ -16,10 +16,13 @@ class CcLineDiseaseCommentParserTest {
         String lines =
                 "CC   -!- DISEASE: Acyl-CoA dehydrogenase family, member 9, deficiency\n"
                         + "CC       (ACAD9 deficiency) [MIM:611126]: A metabolic disorder with\n"
-                        + "CC       variable manifestations that include dilated cardiomyopathy, liver\n"
-                        + "CC       failure, muscle weakness, neurologic dysfunction, hypoglycemia and\n"
+                        + "CC       variable manifestations that include dilated cardiomyopathy,"
+                        + " liver\n"
+                        + "CC       failure, muscle weakness, neurologic dysfunction, hypoglycemia"
+                        + " and\n"
                         + "CC       Reye-like episodes (brain edema and vomiting that may rapidly\n"
-                        + "CC       progress to seizures, coma and death). Note=The disease is caused\n"
+                        + "CC       progress to seizures, coma and death). Note=The disease is"
+                        + " caused\n"
                         + "CC       by mutations affecting the gene represented in this entry.\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
@@ -44,7 +47,8 @@ class CcLineDiseaseCommentParserTest {
     void testWithEvidence() {
         String lines =
                 "CC   -!- DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease\n"
-                        + "CC       characterized by malignant lesions arising from the inner wall of\n"
+                        + "CC       characterized by malignant lesions arising from the inner wall"
+                        + " of\n"
                         + "CC       the large intestine (the colon) and the rectum. Genetic\n"
                         + "CC       alterations are often associated with progression from\n"
                         + "CC       premalignant lesion (adenoma) to invasive adenocarcinoma. Risk\n"
@@ -156,15 +160,20 @@ class CcLineDiseaseCommentParserTest {
     @Test
     void testNoHeader4() {
         String ccLineStringEvidence =
-                "DISEASE: Juvenile polyposis/hereditary hemorrhagic telangiectasia syndrome (JP/HHT) [MIM:175050]:"
-                        + " JP/HHT syndrome phenotype consists of the coexistence of juvenile polyposis (JIP) and hereditary"
-                        + " hemorrhagic telangiectasia (HHT) [MIM:187300] in a single individual. JIP and HHT are autosomal"
-                        + " dominant disorders with distinct and non-overlapping clinical features. The former, an inherited"
-                        + " gastrointestinal malignancy predisposition, is caused by mutations in SMAD4 or BMPR1A, and the latter"
-                        + " is a vascular malformation disorder caused by mutations in ENG or ACVRL1. All four genes encode proteins"
-                        + " involved in the transforming-growth-factor-signaling pathway. Although there are reports of patients and"
-                        + " families with phenotypes of both disorders combined, the genetic etiology of this association is unknown. {ECO:0000269|PubMed:15031030}."
-                        + " Note=The disease is caused by mutations affecting the gene represented in this entry.";
+                "DISEASE: Juvenile polyposis/hereditary hemorrhagic telangiectasia syndrome"
+                        + " (JP/HHT) [MIM:175050]: JP/HHT syndrome phenotype consists of the"
+                        + " coexistence of juvenile polyposis (JIP) and hereditary hemorrhagic"
+                        + " telangiectasia (HHT) [MIM:187300] in a single individual. JIP and HHT are"
+                        + " autosomal dominant disorders with distinct and non-overlapping clinical"
+                        + " features. The former, an inherited gastrointestinal malignancy"
+                        + " predisposition, is caused by mutations in SMAD4 or BMPR1A, and the latter"
+                        + " is a vascular malformation disorder caused by mutations in ENG or ACVRL1."
+                        + " All four genes encode proteins involved in the"
+                        + " transforming-growth-factor-signaling pathway. Although there are reports"
+                        + " of patients and families with phenotypes of both disorders combined, the"
+                        + " genetic etiology of this association is unknown."
+                        + " {ECO:0000269|PubMed:15031030}. Note=The disease is caused by mutations"
+                        + " affecting the gene represented in this entry.";
 
         CcLineFormater formater = new CcLineFormater();
         UniprotKBLineParser<CcLineObject> parser =

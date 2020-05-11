@@ -199,10 +199,12 @@ public class UniProtEntryScorer {
             throw new IllegalStateException("You can only start a new UniProtKBEntry Scorer");
         if (withTaxId)
             writer.write(
-                    "accession, taxonomy, description, gene, comment, xref, goxref, keyword , feature, citation, total");
+                    "accession, taxonomy, description, gene, comment, xref, goxref, keyword ,"
+                            + " feature, citation, total");
         else
             writer.write(
-                    "accession, description, gene, comment, xref, goxref, keyword , feature, citation, total");
+                    "accession, description, gene, comment, xref, goxref, keyword , feature,"
+                            + " citation, total");
         writer.newLine();
         itState = state.STARTED;
         return this;

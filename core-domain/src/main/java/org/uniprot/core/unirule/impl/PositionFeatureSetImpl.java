@@ -8,7 +8,7 @@ import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.unirule.*;
 import org.uniprot.core.util.Utils;
 
-public class PositionFeatureSetImpl<T> implements PositionFeatureSet {
+public class PositionFeatureSetImpl implements PositionFeatureSet {
 
     private static final long serialVersionUID = -30144214793146371L;
     private List<Condition> conditions;
@@ -17,7 +17,7 @@ public class PositionFeatureSetImpl<T> implements PositionFeatureSet {
 
     private List<PositionalFeature> positionalFeatures;
 
-    private List<RuleException<T>> ruleExceptions;
+    private List<RuleException> ruleExceptions;
 
     private UniProtKBAccession uniProtKBAccession;
 
@@ -36,10 +36,15 @@ public class PositionFeatureSetImpl<T> implements PositionFeatureSet {
             List<Condition> conditions,
             List<Annotation> annotations,
             List<PositionalFeature> positionalFeatures,
-            List<RuleException<T>> ruleExceptions,
+            List<RuleException> ruleExceptions,
             UniProtKBAccession uniProtKBAccession,
             String alignmentSignature,
             String tag) {
+
+        if (Utils.nullOrEmpty(positionalFeatures)) {
+            throw new IllegalArgumentException(
+                    "positionalFeatures is a mandatory parameter for a PositionFeatureSet entry.");
+        }
         this.conditions = Utils.unmodifiableList(conditions);
         this.annotations = Utils.unmodifiableList(annotations);
         this.positionalFeatures = Utils.unmodifiableList(positionalFeatures);
@@ -65,7 +70,7 @@ public class PositionFeatureSetImpl<T> implements PositionFeatureSet {
     }
 
     @Override
-    public List<RuleException<T>> getRuleExceptions() {
+    public List<RuleException> getRuleExceptions() {
         return ruleExceptions;
     }
 

@@ -75,7 +75,8 @@ class OHLineBuildTest {
                         + "OH   NCBI_TaxID=9913; Bos taurus (Bovine).\n"
                         + "OH   NCBI_TaxID=10090; Mus musculus (Mouse).\n"
                         + "OH   NCBI_TaxID=29092; Microtus agrestis (Short-tailed field vole).\n"
-                        + "OH   NCBI_TaxID=447135; Myodes glareolus (Bank vole) (Clethrionomys glareolus).";
+                        + "OH   NCBI_TaxID=447135; Myodes glareolus (Bank vole) (Clethrionomys"
+                        + " glareolus).";
         List<OrganismHost> hosts = new ArrayList<>();
 
         hosts.add(createHost("Homo sapiens (Human)", 9606l));

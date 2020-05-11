@@ -1,6 +1,7 @@
 package org.uniprot.core.xml.uniprot;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.uniprotkb.Keyword;
@@ -25,6 +26,7 @@ public class KeywordConverter implements Converter<KeywordType, Keyword> {
 
     @Override
     public Keyword fromXml(KeywordType xmlObj) {
+        if (Objects.isNull(xmlObj)) return null;
         String keywordValue = xmlObj.getValue();
         List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
         return new KeywordBuilder()
@@ -37,6 +39,7 @@ public class KeywordConverter implements Converter<KeywordType, Keyword> {
 
     @Override
     public KeywordType toXml(Keyword uniObj) {
+        if (Objects.isNull(uniObj)) return null;
         KeywordType xmlKeyword = xmlUniprotFactory.createKeywordType();
         String value = uniObj.getName();
         xmlKeyword.setValue(value);

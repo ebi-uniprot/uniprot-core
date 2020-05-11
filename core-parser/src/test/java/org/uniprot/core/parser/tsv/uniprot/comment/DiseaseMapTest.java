@@ -18,8 +18,10 @@ class DiseaseMapTest {
         String diseaseLine =
                 "CC   -!- DISEASE: Note=Lysosomal acid phosphatase has been shown to be\n"
                         + "CC       deficient in cultured fibroblasts from patients manifesting\n"
-                        + "CC       intermittent vomiting, hypotonia, lethargy, opisthotonos, terminal\n"
-                        + "CC       bleeding and death in early infancy. {ECO:0000269|PubMed:5410815}.";
+                        + "CC       intermittent vomiting, hypotonia, lethargy, opisthotonos,"
+                        + " terminal\n"
+                        + "CC       bleeding and death in early infancy."
+                        + " {ECO:0000269|PubMed:5410815}.";
 
         UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(diseaseLine);
 
@@ -30,9 +32,10 @@ class DiseaseMapTest {
         assertNotNull(mappedDisease);
         String value = mappedDisease.get("cc_disease");
         String expectedValue =
-                "DISEASE: Note=Lysosomal acid phosphatase has been shown to be deficient in "
-                        + "cultured fibroblasts from patients manifesting intermittent vomiting, hypotonia, lethargy, "
-                        + "opisthotonos, terminal bleeding and death in early infancy. {ECO:0000269|PubMed:5410815}.";
+                "DISEASE: Note=Lysosomal acid phosphatase has been shown to be deficient in"
+                        + " cultured fibroblasts from patients manifesting intermittent vomiting,"
+                        + " hypotonia, lethargy, opisthotonos, terminal bleeding and death in early"
+                        + " infancy. {ECO:0000269|PubMed:5410815}.";
         assertEquals(expectedValue, value);
     }
 
@@ -45,13 +48,17 @@ class DiseaseMapTest {
                         + "CC       regulation of sodium phosphate cotransport in the proximal\n"
                         + "CC       tubules. Clinical manifestations include skeletal deformities,\n"
                         + "CC       growth failure, craniosynostosis, paravertebral calcifications,\n"
-                        + "CC       pseudofractures in lower extremities, and muscular hypotonia with\n"
-                        + "CC       onset in early childhood. X-linked hypophosphatemic rickets is the\n"
+                        + "CC       pseudofractures in lower extremities, and muscular hypotonia"
+                        + " with\n"
+                        + "CC       onset in early childhood. X-linked hypophosphatemic rickets is"
+                        + " the\n"
                         + "CC       most common form of hypophosphatemia with an incidence of 1 in\n"
-                        + "CC       20000. {ECO:0000269|PubMed:10439971, ECO:0000269|PubMed:10737991,\n"
+                        + "CC       20000. {ECO:0000269|PubMed:10439971,"
+                        + " ECO:0000269|PubMed:10737991,\n"
                         + "CC       ECO:0000269|PubMed:11004247, ECO:0000269|PubMed:9097956,\n"
                         + "CC       ECO:0000269|PubMed:9106524, ECO:0000269|PubMed:9199930,\n"
-                        + "CC       ECO:0000269|PubMed:9768646, ECO:0000269|PubMed:9768674}. Note=The\n"
+                        + "CC       ECO:0000269|PubMed:9768646, ECO:0000269|PubMed:9768674}."
+                        + " Note=The\n"
                         + "CC       disease is caused by mutations affecting the gene represented in\n"
                         + "CC       this entry.";
 
@@ -64,16 +71,19 @@ class DiseaseMapTest {
         assertNotNull(mappedDisease);
         String value = mappedDisease.get("cc_disease");
         String expectedValue =
-                "DISEASE: Hypophosphatemic rickets, X-linked dominant (XLHR) [MIM:307800]: "
-                        + "A disorder characterized by impaired phosphate uptake in the kidney, which is likely to be caused by "
-                        + "abnormal regulation of sodium phosphate cotransport in the proximal tubules. Clinical "
-                        + "manifestations include skeletal deformities, growth failure, craniosynostosis, paravertebral "
-                        + "calcifications, pseudofractures in lower extremities, and muscular hypotonia with onset in early "
-                        + "childhood. X-linked hypophosphatemic rickets is the most common form of hypophosphatemia with "
-                        + "an incidence of 1 in 20000. {ECO:0000269|PubMed:10439971, ECO:0000269|PubMed:10737991, "
-                        + "ECO:0000269|PubMed:11004247, ECO:0000269|PubMed:9097956, ECO:0000269|PubMed:9106524, "
-                        + "ECO:0000269|PubMed:9199930, ECO:0000269|PubMed:9768646, ECO:0000269|PubMed:9768674}. "
-                        + "Note=The disease is caused by mutations affecting the gene represented in this entry.";
+                "DISEASE: Hypophosphatemic rickets, X-linked dominant (XLHR) [MIM:307800]: A"
+                        + " disorder characterized by impaired phosphate uptake in the kidney, which"
+                        + " is likely to be caused by abnormal regulation of sodium phosphate"
+                        + " cotransport in the proximal tubules. Clinical manifestations include"
+                        + " skeletal deformities, growth failure, craniosynostosis, paravertebral"
+                        + " calcifications, pseudofractures in lower extremities, and muscular"
+                        + " hypotonia with onset in early childhood. X-linked hypophosphatemic rickets"
+                        + " is the most common form of hypophosphatemia with an incidence of 1 in"
+                        + " 20000. {ECO:0000269|PubMed:10439971, ECO:0000269|PubMed:10737991,"
+                        + " ECO:0000269|PubMed:11004247, ECO:0000269|PubMed:9097956,"
+                        + " ECO:0000269|PubMed:9106524, ECO:0000269|PubMed:9199930,"
+                        + " ECO:0000269|PubMed:9768646, ECO:0000269|PubMed:9768674}. Note=The disease"
+                        + " is caused by mutations affecting the gene represented in this entry.";
         assertEquals(expectedValue, value);
     }
 
@@ -101,13 +111,15 @@ class DiseaseMapTest {
         assertNotNull(mappedDisease);
         String value = mappedDisease.get("cc_disease");
         String expectedValue =
-                "DISEASE: Note=Phosphoribosyl pyrophosphate synthetase I deficiency is a rare condition "
-                        + "caused by mutations in PRPS1 that lead to variable disease phenotypes including optic atrophy, "
-                        + "retinitis pigmentosa, ataxia, peripheral neuropathy and hearing loss. {ECO:0000269|PubMed:25491489}.; "
-                        + "DISEASE: Phosphoribosylpyrophosphate synthetase superactivity (PRPS1 superactivity) [MIM:300661]: "
-                        + "Familial disorder characterized by excessive purine production, gout and uric acid urolithiasis. "
-                        + "{ECO:0000269|PubMed:7593598, ECO:0000269|Ref.12}. "
-                        + "Note=The disease is caused by mutations affecting the gene represented in this entry.";
+                "DISEASE: Note=Phosphoribosyl pyrophosphate synthetase I deficiency is a rare"
+                        + " condition caused by mutations in PRPS1 that lead to variable disease"
+                        + " phenotypes including optic atrophy, retinitis pigmentosa, ataxia,"
+                        + " peripheral neuropathy and hearing loss. {ECO:0000269|PubMed:25491489}.;"
+                        + " DISEASE: Phosphoribosylpyrophosphate synthetase superactivity (PRPS1"
+                        + " superactivity) [MIM:300661]: Familial disorder characterized by excessive"
+                        + " purine production, gout and uric acid urolithiasis."
+                        + " {ECO:0000269|PubMed:7593598, ECO:0000269|Ref.12}. Note=The disease is"
+                        + " caused by mutations affecting the gene represented in this entry.";
         assertEquals(expectedValue, value);
     }
 }

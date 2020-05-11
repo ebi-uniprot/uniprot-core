@@ -13,11 +13,14 @@ import org.uniprot.core.uniprotkb.comment.SubcellularLocationValue;
 import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationValueBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.xml.AbstractConverterTest;
+import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
 import org.uniprot.core.xml.jaxb.uniprot.SubcellularLocationType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
+import org.uniprot.core.xml.uniprot.EvidencedStringTypeConverterTest;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
-class SubcellularLocationConverterTest {
+public class SubcellularLocationConverterTest extends AbstractConverterTest {
 
     @Test
     void test() {
@@ -68,5 +71,17 @@ class SubcellularLocationConverterTest {
             evidences.add(parseEvidenceLine(ev));
         }
         return evidences;
+    }
+
+    public static SubcellularLocationType createObject() {
+        SubcellularLocationType subcellularLocationType =
+                uniProtObjectFactory.createSubcellularLocationType();
+        List<EvidencedStringType> location = EvidencedStringTypeConverterTest.createObjects();
+        List<EvidencedStringType> topology = EvidencedStringTypeConverterTest.createObjects();
+        List<EvidencedStringType> orientation = EvidencedStringTypeConverterTest.createObjects();
+        subcellularLocationType.getLocation().addAll(location);
+        subcellularLocationType.getTopology().addAll(topology);
+        subcellularLocationType.getOrientation().addAll(orientation);
+        return subcellularLocationType;
     }
 }

@@ -91,7 +91,8 @@ class RLLineBuilderTest {
         lines = builder.buildLine(citation, false, true);
         assertEquals(1, lines.size());
         expected =
-                "(In) Magnusson S., Ottesen M., Foltmann B., Dano K., Neurath H. (eds.); CONSERVATION GENETICS, pp.205-227, Birkhaeuser Verlag, Basel (1994).";
+                "(In) Magnusson S., Ottesen M., Foltmann B., Dano K., Neurath H. (eds.);"
+                        + " CONSERVATION GENETICS, pp.205-227, Birkhaeuser Verlag, Basel (1994).";
         assertEquals(expected, lines.get(0));
     }
 }

@@ -40,8 +40,9 @@ class RtLineParserTest {
                 new DefaultUniprotKBLineParserFactory().createRtLineParser();
         RtLineObject obj = parser.parse(rtLines);
         assertEquals(
-                "New insulin-like proteins with atypical disulfide bond pattern"
-                        + " characterized in Caenorhabditis elegans by comparative sequence analysis and homology modeling?",
+                "New insulin-like proteins with atypical disulfide bond pattern characterized in"
+                        + " Caenorhabditis elegans by comparative sequence analysis and homology"
+                        + " modeling?",
                 obj.title);
     }
 
@@ -82,7 +83,8 @@ class RtLineParserTest {
                 new DefaultUniprotKBLineParserFactory().createRtLineParser();
         RtLineObject obj = parser.parse(rtLines);
         assertEquals(
-                "The success of acinetobacter species; genetic, metabolic and virulence attributes.",
+                "The success of acinetobacter species; genetic, metabolic and virulence"
+                        + " attributes.",
                 obj.title);
     }
 
@@ -95,7 +97,8 @@ class RtLineParserTest {
                 new DefaultUniprotKBLineParserFactory().createRtLineParser();
         RtLineObject obj = parser.parse(rtLines);
         assertEquals(
-                "The success of acinetobacter species; genetic. metabolic and virulence attributes.",
+                "The success of acinetobacter species; genetic. metabolic and virulence"
+                        + " attributes.",
                 obj.title);
     }
 
@@ -108,7 +111,8 @@ class RtLineParserTest {
                 new DefaultUniprotKBLineParserFactory().createRtLineParser();
         RtLineObject obj = parser.parse(rtLines);
         assertEquals(
-                "The success of \"acinetobacter\" species; genetic. metabolic and virulence attributes.",
+                "The success of \"acinetobacter\" species; genetic. metabolic and virulence"
+                        + " attributes.",
                 obj.title);
     }
 
@@ -121,7 +125,8 @@ class RtLineParserTest {
                 new DefaultUniprotKBLineParserFactory().createRtLineParser();
         RtLineObject obj = parser.parse(rtLines);
         assertEquals(
-                "The success of \"acinetobacter\" species; genetic. metabolic and virulence \"attributes\".",
+                "The success of \"acinetobacter\" species; genetic. metabolic and virulence"
+                        + " \"attributes\".",
                 obj.title);
     }
 

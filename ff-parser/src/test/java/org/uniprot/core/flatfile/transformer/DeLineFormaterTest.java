@@ -72,9 +72,11 @@ class DeLineFormaterTest {
                         + "DE     AltName: Full=N-acetylglutamate synthase;\n"
                         + "DE              Short=AGS;\n"
                         + "DE   Contains:\n"
-                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha chain;\n"
+                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha"
+                        + " chain;\n"
                         + "DE   Contains:\n"
-                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta chain;\n";
+                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta"
+                        + " chain;\n";
         String lines =
                 "RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n"
                         + "Includes:\n"
@@ -89,9 +91,11 @@ class DeLineFormaterTest {
                         + "AltName: Full=N-acetylglutamate synthase;\n"
                         + "Short=AGS;\n"
                         + "Contains:\n"
-                        + "RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha chain;\n"
+                        + "RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha"
+                        + " chain;\n"
                         + "Contains:\n"
-                        + "RecName: Full=Arginine biosynthesis bifunctional protein argJ beta chain;\n";
+                        + "RecName: Full=Arginine biosynthesis bifunctional protein argJ beta"
+                        + " chain;\n";
         DeLineFormater formater = new DeLineFormater();
         String formated = formater.format(lines);
         assertEquals(expected, formated);

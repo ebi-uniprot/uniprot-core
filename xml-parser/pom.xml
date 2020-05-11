@@ -107,6 +107,19 @@
 			<artifactId>junit-jupiter-params</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.uniprot</groupId>
+			<artifactId>core-domain</artifactId>
+			<version>${project.parent.version}</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.bbottema</groupId>
+			<artifactId>lorem-ipsum-objects</artifactId>
+			<version>4.1.0</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

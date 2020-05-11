@@ -36,7 +36,8 @@ class CcLineAPCommentParserTest {
         assertEquals("Alternative splicing", ap.getEvents().get(0));
         assertEquals("3", ap.getNamedIsoforms());
         assertEquals(
-                "Additional isoforms seem to exist. Experimental confirmation may be lacking for some isoforms.",
+                "Additional isoforms seem to exist. Experimental confirmation may be lacking for"
+                        + " some isoforms.",
                 ap.getComment().get(0).getValue());
         assertEquals(3, ap.getNames().size());
         assertEquals("1", ap.getNames().get(0).getName().getValue());
@@ -168,7 +169,8 @@ class CcLineAPCommentParserTest {
         String lines =
                 "CC   -!- ALTERNATIVE PRODUCTS:\n"
                         + "CC       Event=Alternative splicing; Named isoforms=15;\n"
-                        + "CC       Name=1; Synonyms=FLIP-L, CLARP1, MRIT alpha-1, CASH alpha, I-FLICE\n"
+                        + "CC       Name=1; Synonyms=FLIP-L, CLARP1, MRIT alpha-1, CASH alpha,"
+                        + " I-FLICE\n"
                         + "CC       1, FLAME-1 gamma, Usurpin alpha;\n"
                         + "CC         IsoId=O15519-1; Sequence=Displayed;\n";
         UniprotKBLineParser<CcLineObject> parser =
@@ -205,7 +207,8 @@ class CcLineAPCommentParserTest {
                         + "CC         Note=Does not exhibit APOBEC1 complementation activity.;\n"
                         + "CC       Name=6 {ECO:0000313|EMBL:BAG16761.1};\n"
                         + "CC         IsoId=Q9NQ94-6; Sequence=VSP_051928;\n"
-                        + "CC         Note=Minor isoform found in 2-3% of cDNA clones. {ECO:0000313|EMBL:BAG16761.1};\n";
+                        + "CC         Note=Minor isoform found in 2-3% of cDNA clones."
+                        + " {ECO:0000313|EMBL:BAG16761.1};\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -239,7 +242,8 @@ class CcLineAPCommentParserTest {
                         + "CC         IsoId=Q9V8R9-2; Sequence=VSP_000476, VSP_000477, VSP_000479,\n"
                         + "CC                                  VSP_000480, VSP_000481;\n"
                         + "CC       Name=Bim-alpha3 {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                        + "CC       ECO:0000313|PDB:3OW2}; Synonyms=BCL2-like 11 transcript variant 10\n"
+                        + "CC       ECO:0000313|PDB:3OW2}; Synonyms=BCL2-like 11 transcript variant"
+                        + " 10\n"
                         + "CC       {ECO:0000313|EMBL:BAG16761.1}, Bim-AD\n"
                         + "CC       {ECO:0000256|HAMAP-Rule:MF_00205}, BimAD {ECO:0000313|PDB:3OW2};\n"
                         + "CC         IsoId=Q9V8R9-3; Sequence=VSP_000475, VSP_000478, VSP_000479;\n"
@@ -281,7 +285,8 @@ class CcLineAPCommentParserTest {
                 "ECO:0000313|PDB:3OW2",
                 ap.getNames().get(0).getSynNames().get(0).getEvidences().get(1));
         assertEquals(
-                "Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is in conflict in positions: 33:I->T. No experimental confirmation available.",
+                "Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is in conflict"
+                        + " in positions: 33:I->T. No experimental confirmation available.",
                 ap.getNames().get(0).getNote().get(0).getValue());
         assertEquals(
                 "ECO:0000313|PDB:3OW2",
@@ -325,23 +330,29 @@ class CcLineAPCommentParserTest {
         String ccLineStringEvidence =
                 "ALTERNATIVE PRODUCTS:\n"
                         + "Event=Alternative splicing; Named isoforms=6;\n"
-                        + "Comment=Additional isoforms seem to exist. {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};"
-                        + " Another additional isoforms also seem to exist. {ECO:0000269|PubMed:10433554};\n"
-                        + "Name=1 {ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}; Synonyms=A {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
+                        + "Comment=Additional isoforms seem to exist. {ECO:0000269|PubMed:10433554,"
+                        + " ECO:0000303|Ref.6}; Another additional isoforms also seem to exist."
+                        + " {ECO:0000269|PubMed:10433554};\n"
+                        + "Name=1 {ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}; Synonyms=A"
+                        + " {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
                         + "  IsoId=Q9V8R9-1; Sequence=Displayed;\n"
-                        + "  Note=Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is in conflict in positions: 33:I->T."
-                        + " No experimental confirmation available. {ECO:0000313|PDB:3OW2};\n"
+                        + "  Note=Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is"
+                        + " in conflict in positions: 33:I->T. No experimental confirmation available."
+                        + " {ECO:0000313|PDB:3OW2};\n"
                         + "Name=2;\n"
-                        + "  IsoId=Q9V8R9-2; Sequence=VSP_000476, VSP_000477, VSP_000479, VSP_000480, VSP_000481;\n"
-                        + "Name=Bim-alpha3 {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2}; Synonyms=BCL2-like 11 transcript"
-                        + " variant 10 {ECO:0000313|EMBL:BAG16761.1}, Bim-AD, BimAD {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
+                        + "  IsoId=Q9V8R9-2; Sequence=VSP_000476, VSP_000477, VSP_000479, VSP_000480,"
+                        + " VSP_000481;\n"
+                        + "Name=Bim-alpha3 {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};"
+                        + " Synonyms=BCL2-like 11 transcript variant 10 {ECO:0000313|EMBL:BAG16761.1},"
+                        + " Bim-AD, BimAD {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
                         + "  IsoId=Q9V8R9-3; Sequence=VSP_000475, VSP_000478, VSP_000479;\n"
                         + "Name=4; Synonyms=B;\n"
                         + "  IsoId=Q9V8R9-4; Sequence=VSP_000476, VSP_000477, VSP_000479;\n"
                         + "Name=5;\n"
                         + "  IsoId=Q9V8R9-5; Sequence=VSP_000474, VSP_000478;\n"
-                        + "  Note=No experimental confirmation available. {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};"
-                        + " Another no experimental confirmation also available. {ECO:0000269|PubMed:1043355,"
+                        + "  Note=No experimental confirmation available."
+                        + " {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1}; Another no"
+                        + " experimental confirmation also available. {ECO:0000269|PubMed:1043355,"
                         + " ECO:0000313|EMBL:BAG16761.1};\n"
                         + "Name=6; Synonyms=D;\n"
                         + "  IsoId=Q9V8R9-6; Sequence=Described;\n"
@@ -364,10 +375,13 @@ class CcLineAPCommentParserTest {
                         + "Name=1; Synonyms=A;\n"
                         + "IsoId=Q9V8R9-1; Sequence=Displayed;\n"
                         + "Note=Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is"
-                        + " in conflict in positions: 33:I->T. No experimental confirmation available.;\n"
+                        + " in conflict in positions: 33:I->T. No experimental confirmation"
+                        + " available.;\n"
                         + "Name=2;\n"
-                        + "IsoId=Q9V8R9-2; Sequence=VSP_000476, VSP_000477, VSP_000479, VSP_000480, VSP_000481;\n"
-                        + "Name=Bim-alpha3; Synonyms=BCL2-like 11 transcript variant 10, Bim-AD, BimAD;\n"
+                        + "IsoId=Q9V8R9-2; Sequence=VSP_000476, VSP_000477, VSP_000479, VSP_000480,"
+                        + " VSP_000481;\n"
+                        + "Name=Bim-alpha3; Synonyms=BCL2-like 11 transcript variant 10, Bim-AD,"
+                        + " BimAD;\n"
                         + "IsoId=Q9V8R9-3; Sequence=VSP_000475, VSP_000478, VSP_000479;\n"
                         + "Name=4; Synonyms=B;\n"
                         + "IsoId=Q9V8R9-4; Sequence=VSP_000476, VSP_000477, VSP_000479;\n"
@@ -390,23 +404,29 @@ class CcLineAPCommentParserTest {
         String ccLineStringEvidence =
                 "ALTERNATIVE PRODUCTS:\n"
                         + "Event=Alternative splicing; Named isoforms=6;\n"
-                        + "Comment=Additional isoforms seem to exist. {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};"
-                        + " Another additional isoforms also seem to exist. {ECO:0000269|PubMed:10433554};\n"
-                        + "Name=1 {ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}; Synonyms=A {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
+                        + "Comment=Additional isoforms seem to exist. {ECO:0000269|PubMed:10433554,"
+                        + " ECO:0000303|Ref.6}; Another additional isoforms also seem to exist."
+                        + " {ECO:0000269|PubMed:10433554};\n"
+                        + "Name=1 {ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}; Synonyms=A"
+                        + " {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
                         + "IsoId=Q9V8R9-1; Sequence=Displayed;\n"
-                        + "Note=Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is in conflict in positions: 33:I->T."
-                        + " No experimental confirmation available. {ECO:0000313|PDB:3OW2};\n"
+                        + "Note=Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is"
+                        + " in conflict in positions: 33:I->T. No experimental confirmation available."
+                        + " {ECO:0000313|PDB:3OW2};\n"
                         + "Name=2;\n"
-                        + "IsoId=Q9V8R9-2; Sequence=VSP_000476, VSP_000477, VSP_000479, VSP_000480, VSP_000481;\n"
-                        + "Name=Bim-alpha3 {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2}; Synonyms=BCL2-like 11 transcript"
-                        + " variant 10 {ECO:0000313|EMBL:BAG16761.1}, Bim-AD, BimAD {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
+                        + "IsoId=Q9V8R9-2; Sequence=VSP_000476, VSP_000477, VSP_000479, VSP_000480,"
+                        + " VSP_000481;\n"
+                        + "Name=Bim-alpha3 {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};"
+                        + " Synonyms=BCL2-like 11 transcript variant 10 {ECO:0000313|EMBL:BAG16761.1},"
+                        + " Bim-AD, BimAD {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
                         + "IsoId=Q9V8R9-3; Sequence=VSP_000475, VSP_000478, VSP_000479;\n"
                         + "Name=4; Synonyms=B;\n"
                         + "IsoId=Q9V8R9-4; Sequence=VSP_000476, VSP_000477, VSP_000479;\n"
                         + "Name=5;\n"
                         + "IsoId=Q9V8R9-5; Sequence=VSP_000474, VSP_000478;\n"
-                        + "Note=No experimental confirmation available. {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};"
-                        + " Another no experimental confirmation also available. {ECO:0000269|PubMed:1043355, ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "Note=No experimental confirmation available. {ECO:0000269|PubMed:10433554,"
+                        + " ECO:0000313|EMBL:BAG16761.1}; Another no experimental confirmation also"
+                        + " available. {ECO:0000269|PubMed:1043355, ECO:0000313|EMBL:BAG16761.1};\n"
                         + "Name=6; Synonyms=D;\n"
                         + "IsoId=Q9V8R9-6; Sequence=Described;\n"
                         + "Note=No experimental confirmation.;";
@@ -423,24 +443,30 @@ class CcLineAPCommentParserTest {
         String ccLineStringEvidence =
                 "ALTERNATIVE PRODUCTS:\n"
                         + "Event=Alternative splicing; Named isoforms=6;\n"
-                        + "Comment=Additional isoforms seem to exist. {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};"
-                        + " Another additional isoforms also seem to exist. {ECO:0000269|PubMed:10433554};\n"
-                        + "Name=1 {ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}; Synonyms=A {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
+                        + "Comment=Additional isoforms seem to exist. {ECO:0000269|PubMed:10433554,"
+                        + " ECO:0000303|Ref.6}; Another additional isoforms also seem to exist."
+                        + " {ECO:0000269|PubMed:10433554};\n"
+                        + "Name=1 {ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}; Synonyms=A"
+                        + " {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
                         + "IsoId=Q9V8R9-1; Sequence=Displayed;\n"
-                        + "Note=Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is in conflict in positions: 33:I->T."
-                        + " No experimental confirmation available. {ECO:0000313|PDB:3OW2};\n"
+                        + "Note=Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is"
+                        + " in conflict in positions: 33:I->T. No experimental confirmation available."
+                        + " {ECO:0000313|PDB:3OW2};\n"
                         + "Name=2;\n"
-                        + "IsoId=Q9V8R9-2; Sequence=VSP_000476, VSP_000477, VSP_000479, VSP_000480, VSP_000481;\n"
-                        + "Name=Bim-alpha3 {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2}; Synonyms=BCL2-like 11 transcript"
-                        + " variant 10 {ECO:0000313|EMBL:BAG16761.1}, Bim-AD, BimAD {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
+                        + "IsoId=Q9V8R9-2; Sequence=VSP_000476, VSP_000477, VSP_000479, VSP_000480,"
+                        + " VSP_000481;\n"
+                        + "Name=Bim-alpha3 {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};"
+                        + " Synonyms=BCL2-like 11 transcript variant 10 {ECO:0000313|EMBL:BAG16761.1},"
+                        + " Bim-AD, BimAD {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n"
                         + "IsoId=Q9V8R9-3; Sequence=VSP_000475, VSP_000478, VSP_000479;\n"
                         + "Name=4; Synonyms=B;\n"
                         + "IsoId=Q9V8R9-4; Sequence=VSP_000476, VSP_000477,\n"
                         + "VSP_000479;\n"
                         + "Name=5;\n"
                         + "IsoId=Q9V8R9-5; Sequence=VSP_000474, VSP_000478;\n"
-                        + "Note=No experimental confirmation available. {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};"
-                        + " Another no experimental confirmation also available. {ECO:0000269|PubMed:1043355, ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "Note=No experimental confirmation available. {ECO:0000269|PubMed:10433554,"
+                        + " ECO:0000313|EMBL:BAG16761.1}; Another no experimental confirmation also"
+                        + " available. {ECO:0000269|PubMed:1043355, ECO:0000313|EMBL:BAG16761.1};\n"
                         + "Name=6; Synonyms=D;\n"
                         + "IsoId=Q9V8R9-6; Sequence=Described;\n"
                         + "Note=No experimental confirmation.;";
@@ -514,7 +540,8 @@ class CcLineAPCommentParserTest {
                 "ECO:0000313|PDB:3OW2",
                 ap.getNames().get(0).getSynNames().get(0).getEvidences().get(1));
         assertEquals(
-                "Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is in conflict in positions: 33:I->T. No experimental confirmation available.",
+                "Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is in conflict"
+                        + " in positions: 33:I->T. No experimental confirmation available.",
                 ap.getNames().get(0).getNote().get(0).getValue());
         assertEquals(
                 "ECO:0000313|PDB:3OW2",

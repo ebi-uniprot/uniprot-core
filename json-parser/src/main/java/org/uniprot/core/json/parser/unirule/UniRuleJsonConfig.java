@@ -82,6 +82,7 @@ public class UniRuleJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Condition.class, ConditionImpl.class);
         mod.addAbstractTypeMapping(ConditionValue.class, ConditionValueImpl.class);
         mod.addAbstractTypeMapping(Annotation.class, AnnotationImpl.class);
+        mod.addAbstractTypeMapping(RuleException.class, RuleExceptionImpl.class);
 
         // comment
         mod.addAbstractTypeMapping(
@@ -103,6 +104,20 @@ public class UniRuleJsonConfig extends JsonConfig {
                 SubcellularLocationComment.class, SubcellularLocationCommentImpl.class);
         mod.addAbstractTypeMapping(Note.class, NoteImpl.class);
         mod.addAbstractTypeMapping(SubcellularLocation.class, SubcellularLocationImpl.class);
+        mod.registerSubtypes(new NamedType(AlternativeProductsCommentImpl.class, "AP"));
+        mod.registerSubtypes(new NamedType(BPCPCommentImpl.class, "BPCP"));
+        mod.registerSubtypes(
+                new NamedType(CatalyticActivityCommentImpl.class, "CatalyticActivity"));
+        mod.registerSubtypes(new NamedType(CofactorCommentImpl.class, "Cofactor"));
+        mod.registerSubtypes(new NamedType(DiseaseCommentImpl.class, "DiseaseEntry"));
+        mod.registerSubtypes(new NamedType(FreeTextCommentImpl.class, "FreeText"));
+        mod.registerSubtypes(new NamedType(InteractionCommentImpl.class, "Interaction"));
+        mod.registerSubtypes(new NamedType(MassSpectrometryCommentImpl.class, "MassSpectrometry"));
+        mod.registerSubtypes(new NamedType(RnaEditingCommentImpl.class, "RnaEditing"));
+        mod.registerSubtypes(new NamedType(SequenceCautionCommentImpl.class, "SequenceCaution"));
+        mod.registerSubtypes(
+                new NamedType(SubcellularLocationCommentImpl.class, "SubcellularLocation"));
+        mod.registerSubtypes(new NamedType(WebResourceCommentImpl.class, "WebResource"));
 
         mod.addAbstractTypeMapping(Keyword.class, KeywordImpl.class);
 
@@ -130,12 +145,15 @@ public class UniRuleJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Flag.class, FlagImpl.class);
 
         mod.addAbstractTypeMapping(PositionalFeature.class, PositionalFeatureImpl.class);
-        mod.registerSubtypes(new NamedType(AnnotationRuleExceptionImpl.class, "annotation"));
-        mod.registerSubtypes(new NamedType(PositionalRuleExceptionImpl.class, "positional"));
         mod.addAbstractTypeMapping(CaseRule.class, CaseRuleImpl.class);
         mod.addAbstractTypeMapping(SamFeatureSet.class, SamFeatureSetImpl.class);
         mod.addAbstractTypeMapping(SamTrigger.class, SamTriggerImpl.class);
         mod.addAbstractTypeMapping(PositionFeatureSet.class, PositionFeatureSetImpl.class);
+        mod.registerSubtypes(new NamedType(AnnotationImpl.class, "annotation"));
+        mod.registerSubtypes(new NamedType(PositionalFeatureImpl.class, "positional"));
+
+        mod.addAbstractTypeMapping(
+                FeatureTagConditionValue.class, FeatureTagConditionValueImpl.class);
         objMapper.registerModule(mod);
         return objMapper;
     }

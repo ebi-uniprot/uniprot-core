@@ -2,6 +2,7 @@ package org.uniprot.core.uniprotkb.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
@@ -42,16 +43,20 @@ public class KeywordBuilderTest {
         assertEquals(KeywordCategory.UNKNOWN, keyword.getCategory());
     }
 
-    public static Keyword createObject(int listSize) {
+    public static Keyword createObject(int listSize, boolean includeEvidences) {
         KeywordBuilder builder = new KeywordBuilder();
         String random = UUID.randomUUID().toString();
         String id = "id-" + random;
         String name = "name-" + random;
-        int rIndex = ThreadLocalRandom.current().nextInt(0, KeywordCategory.values().length);
-        KeywordCategory kc = KeywordCategory.values()[rIndex];
-        List<Evidence> evidences = EvidenceBuilderTest.createObjects(listSize);
+        KeywordCategory kc = KeywordCategory.UNKNOWN;
+        List<Evidence> evidences =
+                includeEvidences ? EvidenceBuilderTest.createObjects(listSize) : new ArrayList<>();
         builder.id(id).name(name).category(kc).evidencesSet(evidences);
         return builder.build();
+    }
+
+    public static Keyword createObject(int listSize) {
+        return createObject(listSize, false);
     }
 
     public static Keyword createObject() {

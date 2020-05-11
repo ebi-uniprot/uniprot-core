@@ -11,21 +11,30 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.unirule.*;
 
-public class PositionFeatureSetBuilder<T> implements Builder<PositionFeatureSet> {
+public class PositionFeatureSetBuilder implements Builder<PositionFeatureSet> {
 
     private List<Condition> conditions = new ArrayList<>();
 
     private List<Annotation> annotations = new ArrayList<>();
 
-    private List<PositionalFeature> positionalFeatures = new ArrayList<>();
+    private List<PositionalFeature> positionalFeatures;
 
-    private List<RuleException<T>> ruleExceptions = new ArrayList<>();
+    private List<RuleException> ruleExceptions = new ArrayList<>();
 
     private UniProtKBAccession uniProtKBAccession;
 
     private String alignmentSignature;
 
     private String tag;
+
+    public PositionFeatureSetBuilder(PositionalFeature positionalFeature) {
+        this.positionalFeatures = new ArrayList<>();
+        addOrIgnoreNull(positionalFeature, this.positionalFeatures);
+    }
+
+    public PositionFeatureSetBuilder(List<PositionalFeature> positionalFeatures) {
+        this.positionalFeatures = modifiableList(positionalFeatures);
+    }
 
     public @Nonnull PositionFeatureSetBuilder conditionsAdd(Condition condition) {
         addOrIgnoreNull(condition, this.conditions);
@@ -65,7 +74,7 @@ public class PositionFeatureSetBuilder<T> implements Builder<PositionFeatureSet>
     }
 
     public @Nonnull PositionFeatureSetBuilder ruleExceptionsSet(
-            List<RuleException<T>> ruleExceptions) {
+            List<RuleException> ruleExceptions) {
         this.ruleExceptions = modifiableList(ruleExceptions);
         return this;
     }
@@ -101,10 +110,10 @@ public class PositionFeatureSetBuilder<T> implements Builder<PositionFeatureSet>
 
     public static @Nonnull PositionFeatureSetBuilder from(@Nonnull PositionFeatureSet instance) {
         nullThrowIllegalArgument(instance);
-        PositionFeatureSetBuilder builder = new PositionFeatureSetBuilder();
+        PositionFeatureSetBuilder builder =
+                new PositionFeatureSetBuilder(instance.getPositionalFeatures());
         builder.conditionsSet(instance.getConditions())
                 .annotationsSet(instance.getAnnotations())
-                .positionalFeaturesSet(instance.getPositionalFeatures())
                 .ruleExceptionsSet(instance.getRuleExceptions())
                 .uniProtKBAccession(instance.getUniProtKBAccession())
                 .alignmentSignature(instance.getAlignmentSignature())

@@ -11,12 +11,14 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.Range;
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.ConditionValue;
+import org.uniprot.core.unirule.FeatureTagConditionValue;
 
 public class ConditionBuilder implements Builder<Condition> {
     private List<ConditionValue> conditionValues = new ArrayList<>();
     private String type;
     private boolean isNegative;
     private Range range;
+    private FeatureTagConditionValue tag;
 
     public ConditionBuilder(String type) {
         this.type = type;
@@ -47,10 +49,15 @@ public class ConditionBuilder implements Builder<Condition> {
         return this;
     }
 
+    public @Nonnull ConditionBuilder tag(FeatureTagConditionValue tag) {
+        this.tag = tag;
+        return this;
+    }
+
     @Nonnull
     @Override
     public Condition build() {
-        return new ConditionImpl(conditionValues, type, isNegative, range);
+        return new ConditionImpl(conditionValues, type, isNegative, range, tag);
     }
 
     public static @Nonnull ConditionBuilder from(@Nonnull Condition instance) {
@@ -58,7 +65,8 @@ public class ConditionBuilder implements Builder<Condition> {
         ConditionBuilder builder = new ConditionBuilder(instance.getType());
         builder.conditionValuesSet(instance.getConditionValues())
                 .negative(instance.isNegative())
-                .range(instance.getRange());
+                .range(instance.getRange())
+                .tag(instance.getTag());
 
         return builder;
     }

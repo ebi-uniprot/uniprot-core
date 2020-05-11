@@ -81,7 +81,8 @@ class FtLineConverterUtilTest {
     @Test
     void testVarSeq3() {
         String val =
-                "GEARPARAQKPAQL -> V (in isoform SV1, isoform 2, isoform SV5, isoform 8, isoform SV10 and isoform SV11)";
+                "GEARPARAQKPAQL -> V (in isoform SV1, isoform 2, isoform SV5, isoform 8, isoform"
+                        + " SV10 and isoform SV11)";
         Matcher matcher = FtLineConverterUtil.VAR_SEQ_DESC_PATTERN.matcher(val);
         assertTrue(matcher.matches());
         String original = matcher.group(3).replaceAll(" ", "");
@@ -102,8 +103,8 @@ class FtLineConverterUtilTest {
                         + "ALLFFLVTTLLASALGVGLALALQPGAASAAINASVGAAGSAENAPSKEVLDSFLDLARNIFPSNLVSAAFRS";
         String val =
                 "MVADPPRDSKGLAAAEPTANGGLALASIEDQGAAAGGYCGSRDQVRRCLRANLLVLLTVVAVVAGVALGLGVSGAGGALALGPERLSAFVFPGELLL"
-                        + "RLLRMIILPLVVCSLIGGAASLDPGALGRLGAW"
-                        + "ALLFFLVTTLLASALGVGLALALQPGAASAAINASVGAAGSAENAPSKEVLDSFLDLARNIFPSNLVSAAFRS-> M (in isoform 2)";
+                        + "RLLRMIILPLVVCSLIGGAASLDPGALGRLGAWALLFFLVTTLLASALGVGLALALQPGAASAAINASVGAAGSAENAPSKEVLDSFLDLARNIFPSNLVSAAFRS->"
+                        + " M (in isoform 2)";
 
         Matcher matcher = FtLineConverterUtil.VAR_SEQ_DESC_PATTERN.matcher(val);
         assertTrue(matcher.matches());
@@ -119,11 +120,12 @@ class FtLineConverterUtilTest {
     void testVarSeq5() {
         String original = "APLVPIFSFGENDLFDQIPNSSGSWLRYIQNRLQKIMGISLPLFHGRGVFQYSFGLIPYRRPITTVV";
         String val =
-                "APLVPIFSFGENDLFDQIPNSSGSWLRYIQNRLQKIMGISLPLFHGRGVFQYSFGLIPYRRPITTVV"
-                        + " -> YQASGKSTLGS VGNWQGFYFGGKMAETNADSILVEIFSPFTIKIIFWCLMPKYLEKFPQRRLSDLRN (in isoform 3)";
+                "APLVPIFSFGENDLFDQIPNSSGSWLRYIQNRLQKIMGISLPLFHGRGVFQYSFGLIPYRRPITTVV ->"
+                        + " YQASGKSTLGS VGNWQGFYFGGKMAETNADSILVEIFSPFTIKIIFWCLMPKYLEKFPQRRLSDLRN (in"
+                        + " isoform 3)";
         String val1 =
-                "APLVPIFSFGENDLFDQIPNSSGSWLRYIQNRLQKIMGISLPLFHGRGVFQYSFGLIPYRRPITTVV"
-                        + " -> YQASGKSTLGS VGNWQGFYFGGKMAETNADSILVEIFSPFTIKIIFWCLMPKYLEKFPQRRLSDLRN";
+                "APLVPIFSFGENDLFDQIPNSSGSWLRYIQNRLQKIMGISLPLFHGRGVFQYSFGLIPYRRPITTVV ->"
+                        + " YQASGKSTLGS VGNWQGFYFGGKMAETNADSILVEIFSPFTIKIIFWCLMPKYLEKFPQRRLSDLRN";
         String other = "YQASGKSTLGSVGNWQGFYFGGKMAETNADSILVEIFSPFTIKIIFWCLMPKYLEKFPQRRLSDLRN";
         Matcher matcher = FtLineConverterUtil.VAR_SEQ_DESC_PATTERN.matcher(val);
         assertTrue(matcher.matches());

@@ -71,7 +71,8 @@ class DRLineBuildTest {
                         + "DR   GO; GO:0016021; C:integral to membrane; IEA:UniProtKB-KW.\n"
                         + "DR   GO; GO:0000026; F:alpha-1,2-mannosyltransferase activity; IDA:SGD.\n"
                         + "DR   GO; GO:0005515; F:protein binding; IPI:IntAct.\n"
-                        + "DR   GO; GO:0006490; P:oligosaccharide-lipid intermediate metabolic process; IDA:SGD.\n"
+                        + "DR   GO; GO:0006490; P:oligosaccharide-lipid intermediate metabolic"
+                        + " process; IDA:SGD.\n"
                         + "DR   InterPro; IPR001296; Glyco_trans_1.\n"
                         + "DR   Pfam; PF00534; Glycos_transf_1; 1.";
         // "DR CYGD; YNL048w; -.\n" +

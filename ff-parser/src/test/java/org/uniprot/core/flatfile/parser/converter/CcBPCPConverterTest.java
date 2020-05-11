@@ -25,7 +25,8 @@ class CcBPCPConverterTest {
         wr.getKms()
                 .add(
                         new EvidencedString(
-                                "0.3913 uM for FAM fluorophore-coupled RNA substrate and a quencher-coupled DNA primer",
+                                "0.3913 uM for FAM fluorophore-coupled RNA substrate and a"
+                                        + " quencher-coupled DNA primer",
                                 new ArrayList<String>()));
         wr.getVmaxs()
                 .add(new EvidencedString("0.000197 umol/sec/ug enzyme", new ArrayList<String>()));
@@ -108,7 +109,8 @@ class CcBPCPConverterTest {
         assertEquals("ADP", mc3.getSubstrate());
         assertEquals("Optimum pH is 7.75", wcomment.getPhDependence().getTexts().get(0).getValue());
         assertEquals(
-                "Optimum temperature is 65 degrees Celsius. Protected from thermal inactivation by ATP",
+                "Optimum temperature is 65 degrees Celsius. Protected from thermal inactivation by"
+                        + " ATP",
                 wcomment.getTemperatureDependence().getTexts().get(0).getValue());
     }
 
@@ -171,7 +173,8 @@ class CcBPCPConverterTest {
         assertEquals(MichaelisConstantUnit.MILLI_MOL, mc3.getUnit());
         assertEquals("acetate", mc3.getSubstrate());
         assertEquals(
-                "Optimum temperature is 65 degrees Celsius. Protected from thermal inactivation by ATP",
+                "Optimum temperature is 65 degrees Celsius. Protected from thermal inactivation by"
+                        + " ATP",
                 wcomment.getTemperatureDependence().getTexts().get(0).getValue());
         Absorption ab = wcomment.getAbsorption();
         assertEquals(3, ab.getMax());

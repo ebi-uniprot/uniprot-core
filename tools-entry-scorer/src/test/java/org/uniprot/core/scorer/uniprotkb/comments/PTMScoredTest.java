@@ -33,7 +33,8 @@ class PTMScoredTest extends CommentScoreTestBase {
     @Test
     void shouldWithEv3Score20() {
         String line =
-                "CC   -!- PTM: Ubiquitinated (Probable). Degraded by the proteasome. {ECO:0000256}.";
+                "CC   -!- PTM: Ubiquitinated (Probable). Degraded by the proteasome."
+                        + " {ECO:0000256}.";
         verify(CommentType.PTM, line, 2.0, false);
     }
 

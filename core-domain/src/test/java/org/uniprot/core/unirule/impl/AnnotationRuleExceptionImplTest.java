@@ -17,7 +17,7 @@ import org.uniprot.core.unirule.RuleException;
 public class AnnotationRuleExceptionImplTest {
     @Test
     void testCreateObjectByNoArgConstructor() {
-        RuleException<Annotation> ruleException = new AnnotationRuleExceptionImpl();
+        RuleException ruleException = new RuleExceptionImpl();
         assertNotNull(ruleException);
         assertTrue(ruleException.getAccessions().isEmpty());
         assertNull(ruleException.getCategory());
@@ -30,15 +30,15 @@ public class AnnotationRuleExceptionImplTest {
         createObject();
     }
 
-    public static RuleException<Annotation> createObject(int listSize) {
+    public static RuleException createObject(int listSize, boolean includeEvidences) {
         String random = UUID.randomUUID().toString();
         String note = "sample note" + random;
         String category = "sample category" + random;
-        Annotation annotation = AnnotationBuilderTest.createObject(listSize);
+        Annotation annotation = AnnotationBuilderTest.createObject(listSize, includeEvidences);
         List<UniProtKBAccession> accessionList =
                 UniProtKBAccessionBuilderTest.createObjects(listSize);
-        RuleException<Annotation> ruleException =
-                new AnnotationRuleExceptionImpl(note, category, annotation, accessionList);
+        RuleException ruleException =
+                new RuleExceptionImpl(note, category, annotation, accessionList);
         assertNotNull(ruleException);
         assertEquals(note, ruleException.getNote());
         assertEquals(category, ruleException.getCategory());
@@ -48,14 +48,22 @@ public class AnnotationRuleExceptionImplTest {
         return ruleException;
     }
 
-    public static RuleException<Annotation> createObject() {
+    public static RuleException createObject(int listSize) {
+        return createObject(listSize, false);
+    }
+
+    public static RuleException createObject() {
         int listSize = ThreadLocalRandom.current().nextInt(1, 5);
         return createObject(listSize);
     }
 
-    public static List<RuleException<Annotation>> createObjects(int count) {
+    public static List<RuleException> createObjects(int count) {
+        return createObjects(count, false);
+    }
+
+    public static List<RuleException> createObjects(int count, boolean includeEvidences) {
         return IntStream.range(0, count)
-                .mapToObj(i -> createObject(count))
+                .mapToObj(i -> createObject(count, includeEvidences))
                 .collect(Collectors.toList());
     }
 }

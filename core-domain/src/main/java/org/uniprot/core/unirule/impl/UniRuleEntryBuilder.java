@@ -24,9 +24,12 @@ public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
     private LocalDate createdDate;
     private LocalDate modifiedDate;
 
-    public UniRuleEntryBuilder(UniRuleId uniRuleId, RuleStatus ruleStatus) {
+    public UniRuleEntryBuilder(
+            UniRuleId uniRuleId, RuleStatus ruleStatus, Information information, Rule mainRule) {
         this.uniRuleId = uniRuleId;
         this.ruleStatus = ruleStatus;
+        this.information = information;
+        this.mainRule = mainRule;
     }
 
     public @Nonnull UniRuleEntryBuilder uniRuleId(UniRuleId uniRuleId) {
@@ -120,11 +123,15 @@ public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
 
     public static @Nonnull UniRuleEntryBuilder from(@Nonnull UniRuleEntry instance) {
         nullThrowIllegalArgument(instance);
+        UniRuleId uniRuleId = instance.getUniRuleId();
+        RuleStatus ruleStatus = instance.getRuleStatus();
+        Information information = instance.getInformation();
+        Rule mainRule = instance.getMainRule();
+
         UniRuleEntryBuilder builder =
-                new UniRuleEntryBuilder(instance.getUniRuleId(), instance.getRuleStatus());
-        builder.information(instance.getInformation())
-                .mainRule(instance.getMainRule())
-                .otherRulesSet(instance.getOtherRules())
+                new UniRuleEntryBuilder(uniRuleId, ruleStatus, information, mainRule);
+
+        builder.otherRulesSet(instance.getOtherRules())
                 .samFeatureSetsSet(instance.getSamFeatureSets())
                 .positionFeatureSetsSet(instance.getPositionFeatureSets())
                 .createdBy(instance.getCreatedBy())

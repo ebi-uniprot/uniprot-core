@@ -19,7 +19,8 @@ class ToxicDoseScoredTest extends CommentScoreTestBase {
     @Test
     void shouldWithEvScore90() {
         String line =
-                "CC   -!- TOXIC DOSE: LD(50) is 1.2 mg/kg by intravenous injection. {ECO:0000256|HAMAP-Rule:MF_01146}.";
+                "CC   -!- TOXIC DOSE: LD(50) is 1.2 mg/kg by intravenous injection."
+                        + " {ECO:0000256|HAMAP-Rule:MF_01146}.";
         verify(CommentType.TOXIC_DOSE, line, 9.0, false);
     }
 }

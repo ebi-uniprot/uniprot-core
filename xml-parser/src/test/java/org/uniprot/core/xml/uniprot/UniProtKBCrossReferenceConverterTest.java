@@ -2,17 +2,21 @@ package org.uniprot.core.xml.uniprot;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
+import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.PropertyType;
 import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 
 import com.google.common.base.Strings;
 
-class UniProtKBCrossReferenceConverterTest {
+public class UniProtKBCrossReferenceConverterTest extends AbstractConverterTest {
     private final UniProtCrossReferenceConverter converter = new UniProtCrossReferenceConverter();
 
     @Test
@@ -163,5 +167,29 @@ class UniProtKBCrossReferenceConverterTest {
                 .propertiesAdd(uniProtkbDatabase.getUniProtDatabaseAttribute(1), thirdAttribute)
                 .propertiesAdd(uniProtkbDatabase.getUniProtDatabaseAttribute(2), fourthAttribute)
                 .build();
+    }
+
+    public static DbReferenceType createObject() {
+        DbReferenceType dbReferenceType =
+                objectCreator.createLoremIpsumObject(DbReferenceType.class);
+        update(dbReferenceType);
+        return dbReferenceType;
+    }
+
+    public static List<DbReferenceType> createObjects() {
+        List<DbReferenceType> objects =
+                objectCreator.createLoremIpsumObject(DbReferenceTypeList.class);
+        objects.forEach(object -> update(object));
+        return objects;
+    }
+
+    public static class DbReferenceTypeList extends ArrayList<DbReferenceType> {}
+
+    private static void update(DbReferenceType dbReferenceType) {
+        List<Integer> evidences =
+                objectCreator.createLoremIpsumObject(
+                        EvidencedStringTypeConverterTest.IntegerList.class);
+        dbReferenceType.getEvidence().addAll(evidences);
+        dbReferenceType.getProperty().addAll(PropertyTypeTest.createObjects());
     }
 }

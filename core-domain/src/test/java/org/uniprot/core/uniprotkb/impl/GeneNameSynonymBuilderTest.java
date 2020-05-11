@@ -1,5 +1,6 @@
 package org.uniprot.core.uniprotkb.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
@@ -24,13 +25,18 @@ class GeneNameSynonymBuilderTest extends AbstractEvidencedValueBuilderTest {
         verifyEvidencedValue(orfName);
     }
 
-    public static GeneNameSynonym createObject(int listSize) {
+    public static GeneNameSynonym createObject(int listSize, boolean includeEvidences) {
         GeneNameSynonymBuilder builder = new GeneNameSynonymBuilder();
         String random = UUID.randomUUID().toString();
         String value = "value-" + random;
-        List<Evidence> evidences = EvidenceBuilderTest.createObjects(listSize);
+        List<Evidence> evidences =
+                includeEvidences ? EvidenceBuilderTest.createObjects(listSize) : new ArrayList<>();
         builder.value(value).evidencesSet(evidences);
         return builder.build();
+    }
+
+    public static GeneNameSynonym createObject(int listSize) {
+        return createObject(listSize, false);
     }
 
     public static GeneNameSynonym createObject() {
@@ -39,8 +45,12 @@ class GeneNameSynonymBuilderTest extends AbstractEvidencedValueBuilderTest {
     }
 
     public static List<GeneNameSynonym> createObjects(int count) {
+        return createObjects(count, false);
+    }
+
+    public static List<GeneNameSynonym> createObjects(int count, boolean includeEvidences) {
         return IntStream.range(0, count)
-                .mapToObj(i -> createObject(count))
+                .mapToObj(i -> createObject(count, includeEvidences))
                 .collect(Collectors.toList());
     }
 }

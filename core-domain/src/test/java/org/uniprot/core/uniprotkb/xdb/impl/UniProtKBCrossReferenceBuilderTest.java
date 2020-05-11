@@ -2,6 +2,7 @@ package org.uniprot.core.uniprotkb.xdb.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
@@ -62,17 +63,22 @@ public class UniProtKBCrossReferenceBuilderTest {
         assertNotNull(builder);
     }
 
-    public static UniProtKBCrossReference createObject(int listSize) {
+    public static UniProtKBCrossReference createObject(int listSize, boolean includeEvidences) {
         UniProtCrossReferenceBuilder builder = new UniProtCrossReferenceBuilder();
         UniProtKBDatabase database = new UniProtKBDatabaseMock("EMBL");
         String random = UUID.randomUUID().toString();
         String id = "id" + random;
         String isoformId = "isoform" + random;
-        List<Evidence> evidences = EvidenceBuilderTest.createObjects(listSize);
+        List<Evidence> evidences =
+                includeEvidences ? EvidenceBuilderTest.createObjects(listSize) : new ArrayList<>();
         builder.database(database).id(id).isoformId(isoformId);
         builder.propertiesAdd("prop1" + random, "value" + random);
         builder.evidencesSet(evidences);
         return builder.build();
+    }
+
+    public static UniProtKBCrossReference createObject(int listSize) {
+        return createObject(listSize, false);
     }
 
     public static UniProtKBCrossReference createObject() {

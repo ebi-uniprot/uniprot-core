@@ -54,15 +54,19 @@ public class ProteinAltNameBuilderTest {
         assertEquals(obj.hashCode(), obj2.hashCode());
     }
 
-    public static ProteinAltName createObject(int listSize) {
+    public static ProteinAltName createObject(int listSize, boolean includeEvidences) {
         ProteinAltNameBuilder builder = new ProteinAltNameBuilder();
-        Name fullName = NameBuilderTest.createObject(listSize);
-        List<Name> shortNames = NameBuilderTest.createObjects(listSize);
-        List<EC> ecNumbers = ECBuilderTest.createObjects(listSize);
+        Name fullName = NameBuilderTest.createObject(listSize, includeEvidences);
+        List<Name> shortNames = NameBuilderTest.createObjects(listSize, includeEvidences);
+        List<EC> ecNumbers = ECBuilderTest.createObjects(listSize, includeEvidences);
         builder.fullName(fullName);
         builder.shortNamesSet(shortNames);
         builder.ecNumbersSet(ecNumbers);
         return builder.build();
+    }
+
+    public static ProteinAltName createObject(int listSize) {
+        return createObject(listSize, false);
     }
 
     public static ProteinAltName createObject() {
@@ -71,8 +75,12 @@ public class ProteinAltNameBuilderTest {
     }
 
     public static List<ProteinAltName> createObjects(int count) {
+        return createObjects(count, false);
+    }
+
+    public static List<ProteinAltName> createObjects(int count, boolean includeEvidences) {
         return IntStream.range(0, count)
-                .mapToObj(i -> createObject(count))
+                .mapToObj(i -> createObject(count, includeEvidences))
                 .collect(Collectors.toList());
     }
 }

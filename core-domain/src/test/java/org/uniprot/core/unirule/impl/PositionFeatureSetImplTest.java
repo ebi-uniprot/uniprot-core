@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.Range;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.unirule.*;
@@ -34,10 +35,10 @@ public class PositionFeatureSetImplTest {
         Annotation annotation1 = new AnnotationBuilder().build();
         Annotation annotation2 = new AnnotationBuilder().build();
         List<Annotation> annotations = Arrays.asList(annotation1, annotation2);
-
-        PositionalFeature feature1 = new PositionalFeatureBuilder().value("f1").build();
-        PositionalFeature feature2 = new PositionalFeatureBuilder().value("f2").build();
-        PositionalFeature feature3 = new PositionalFeatureBuilder().value("f3").build();
+        Range position = new Range(1, 2);
+        PositionalFeature feature1 = new PositionalFeatureBuilder(position).value("f1").build();
+        PositionalFeature feature2 = new PositionalFeatureBuilder(position).value("f2").build();
+        PositionalFeature feature3 = new PositionalFeatureBuilder(position).value("f3").build();
         List<PositionalFeature> positionalFeatures = Arrays.asList(feature1, feature2, feature3);
 
         String note = "sample note";
@@ -46,12 +47,12 @@ public class PositionFeatureSetImplTest {
         Annotation annotation = new AnnotationBuilder().build();
         UniProtKBAccession accession = new UniProtKBAccessionBuilder(accessionValue).build();
         List<UniProtKBAccession> accessionList = Arrays.asList(accession);
-        RuleException<Annotation> ruleException1 =
-                new AnnotationRuleExceptionImpl(note, category, annotation, accessionList);
-
-        PositionalFeature positionalFeature = new PositionalFeatureBuilder().build();
-        RuleException<PositionalFeature> ruleException2 =
-                new PositionalRuleExceptionImpl(note, category, positionalFeature, accessionList);
+        RuleException ruleException1 =
+                new RuleExceptionImpl(note, category, annotation, accessionList);
+        Range position1 = new Range(1, 2);
+        PositionalFeature positionalFeature = new PositionalFeatureBuilder(position1).build();
+        RuleException ruleException2 =
+                new RuleExceptionImpl(note, category, positionalFeature, accessionList);
         List<RuleException> ruleExceptions = Arrays.asList(ruleException1, ruleException2);
 
         UniProtKBAccession uniProtKBAccession = new UniProtKBAccessionBuilder("P12345").build();

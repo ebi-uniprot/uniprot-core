@@ -79,7 +79,8 @@ class EMBLScoredTest extends AbstractDBXTest {
                         + "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n"
                         + "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n"
                         + "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n"
-                        + "DR   EMBL; AK057020; BAB71346.1; JOINED; mRNA.{ECO:0000312|EMBL:AAD42944.1}";
+                        + "DR   EMBL; AK057020; BAB71346.1; JOINED;"
+                        + " mRNA.{ECO:0000312|EMBL:AAD42944.1}";
         testDBXrefScore(line, 3.1);
     }
 
@@ -94,7 +95,8 @@ class EMBLScoredTest extends AbstractDBXTest {
                         + "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n"
                         + "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n"
                         + "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n"
-                        + "DR   EMBL; AK057020; BAB71346.1; JOINED; mRNA.{ECO:0000312|EMBL:AAD42944.1}";
+                        + "DR   EMBL; AK057020; BAB71346.1; JOINED;"
+                        + " mRNA.{ECO:0000312|EMBL:AAD42944.1}";
         testDBXrefScore(line, 3.1);
     }
 
@@ -108,7 +110,8 @@ class EMBLScoredTest extends AbstractDBXTest {
                         + "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n"
                         + "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n"
                         + "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n"
-                        + "DR   EMBL; AK057020; BAB71346.1; JOINED; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n"
+                        + "DR   EMBL; AK057020; BAB71346.1; JOINED;"
+                        + " mRNA.{ECO:0000312|EMBL:AAD42944.1}\n"
                         + "DR   EMBL; AJ243418; -; NOT_ANNOTATED_CDS; mRNA.";
         testDBXrefScore(line, 4.1);
     }

@@ -236,24 +236,14 @@ class PropertyObjectTest {
     @Test
     void jsonObjectValues() {
         String str =
-                "{"
-                        + "\"trueKey\":true,"
-                        + "\"falseKey\":false,"
-                        + "\"trueStrKey\":\"true\","
-                        + "\"falseStrKey\":\"false\","
-                        + "\"stringKey\":\"hello world!\","
-                        + "\"intKey\":42,"
-                        + "\"intStrKey\":\"43\","
-                        + "\"longKey\":1234567890123456789,"
-                        + "\"longStrKey\":\"987654321098765432\","
-                        + "\"doubleKey\":-23.45e7,"
+                "{\"trueKey\":true,\"falseKey\":false,\"trueStrKey\":\"true\",\"falseStrKey\":\"false\",\"stringKey\":\"hello"
+                        + " world!\",\"intKey\":42,"
+                        + "\"intStrKey\":\"43\",\"longKey\":1234567890123456789,"
+                        + "\"longStrKey\":\"987654321098765432\",\"doubleKey\":-23.45e7,"
                         + "\"doubleStrKey\":\"00001.000\","
                         + "\"BigDecimalStrKey\":\"19007199254740993.35481234487103587486413587843213584\","
-                        + "\"negZeroKey\":-0.0,"
-                        + "\"negZeroStrKey\":\"-0.0\","
-                        + "\"arrayKey\":[0,1,2],"
-                        + "\"objectKey\":{\"myKey\":\"myVal\"}"
-                        + "}";
+                        + "\"negZeroKey\":-0.0,\"negZeroStrKey\":\"-0.0\",\"arrayKey\":[0,1,2],"
+                        + "\"objectKey\":{\"myKey\":\"myVal\"}}";
         PropertyObject jsonObject = new PropertyObject(str);
         assertEquals(
                 "hello world!", jsonObject.getString("stringKey"), "stringKey should be string");
@@ -572,7 +562,9 @@ class PropertyObjectTest {
             } catch (PropertyException ex) {
                 assertTrue(
                         i == '\0' || i == '\n' || i == '\r',
-                        "Only \\0 (U+0000), \\n (U+000A), and \\r (U+000D) should cause an error. Instead "
+                        "Only \\0 (U+0000), \\n"
+                                + " (U+000A), and \\r"
+                                + " (U+000D) should cause an error. Instead "
                                 + charString
                                 + "("
                                 + i

@@ -41,7 +41,8 @@ class BioPhyScoredTest extends CommentScoreTestBase {
                         + "  Remains fully active after heating at 50 degrees Celsius and pH\n"
                         + "  4.0 for 10 min. Retains 65% of its activity after heating at 55\n"
                         + "  degrees Celsius for 10 min. The half-life value for loss of\n"
-                        + "  activity at 60 degrees Celsius and pH 4.0 is 3.5 min. {ECO:0000313|EMBL:EOP66756.1};";
+                        + "  activity at 60 degrees Celsius and pH 4.0 is 3.5 min."
+                        + " {ECO:0000313|EMBL:EOP66756.1};";
         verify(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, line, 22.0);
     }
 
@@ -90,7 +91,8 @@ class BioPhyScoredTest extends CommentScoreTestBase {
                         + "  KM=88.3 uM for Boc-Gln-Gly-Arg-MCA;\n"
                         + "  Vmax=12.8 nmol/sec/mg enzyme with Z-Arg-Arg-MCA as\n"
                         + "  substrate;\n"
-                        + "  Note=The highest catalytic efficiency is observed for Boc-Leu-Lys-Arg-MCA.;\n"
+                        + "  Note=The highest catalytic efficiency is observed for"
+                        + " Boc-Leu-Lys-Arg-MCA.;\n"
                         + "pH dependence:\n"
                         + "  Optimum pH is 4.0. Inactive below pH 3.0 and above pH 6.5. The\n"
                         + "  half-life (t1/2) values for activity loss at 30 degrees Celsius\n"

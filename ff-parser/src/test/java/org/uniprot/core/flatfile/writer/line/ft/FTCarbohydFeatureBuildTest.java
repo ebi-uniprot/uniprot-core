@@ -31,7 +31,8 @@ class FTCarbohydFeatureBuildTest extends FTBuildTestAbstr {
         String ftLine =
                 "FT   CARBOHYD        61\n"
                         + "FT                   /note=\"N-linked (GlcNAc...); by host (Potential)\"\n"
-                        + "FT                   /evidence=\"ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6\"";
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:10433554,"
+                        + " ECO:0000303|Ref.6\"";
         String ftLineString =
                 "CARBOHYD 61\n" + "/note=\"N-linked (GlcNAc...); by host (Potential)\"";
         String ftLineStringEv =

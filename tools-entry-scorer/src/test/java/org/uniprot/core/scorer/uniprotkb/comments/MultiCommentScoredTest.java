@@ -23,7 +23,8 @@ class MultiCommentScoredTest extends CommentScoreTestBase {
                         "CC       is followed by virus internalization through clathrin-mediated\n"
                         + "CC       endocytosis. Envelope protein E is subsequently involved in\n"
                         + "CC       membrane fusion between virion and host late endosomes.\n"
-                        + "CC       Synthesized as an homodimer with prM which acts as a chaperone for\n"
+                        + "CC       Synthesized as an homodimer with prM which acts as a chaperone"
+                        + " for\n"
                         + "CC       envelope protein E. After cleavage of prM, envelope protein E\n"
                         + "CC       dissociate from small envelope protein M and homodimerizes.\n"
                         + "CC       {ECO:0000256|HAMAP-Rule:MF_01146}.\n"
@@ -41,7 +42,8 @@ class MultiCommentScoredTest extends CommentScoreTestBase {
                         + "CC         Evidence={ECO:0000255|HAMAP-Rule:MF_00957};\n"
                         + "CC   -!- SUBCELLULAR LOCATION: Virion membrane; Multi-pass membrane\n"
                         + // 2.0    but should be 4.0
-                        "CC       protein. Host endoplasmic reticulum membrane; Multi-pass membrane2\n"
+                        "CC       protein. Host endoplasmic reticulum membrane; Multi-pass"
+                        + " membrane2\n"
                         + "CC       protein {ECO:0000256|HAMAP-Rule:MF_01146}.\n"
                         + "CC   -!- SIMILARITY: Contains 1 RdRp catalytic domain.\n"
                         + "CC   -!- SIMILARITY: Contains 1 helicase ATP-binding domain.\n"
@@ -56,22 +58,29 @@ class MultiCommentScoredTest extends CommentScoreTestBase {
                         + "CC       is followed by virus internalization through clathrin-mediated\n"
                         + "CC       endocytosis. Envelope protein E is subsequently involved in\n"
                         + "CC       membrane fusion between virion and host late endosomes.\n"
-                        + "CC       Synthesized as an homodimer with prM which acts as a chaperone for\n"
+                        + "CC       Synthesized as an homodimer with prM which acts as a chaperone"
+                        + " for\n"
                         + "CC       envelope protein E. After cleavage of prM, envelope protein E\n"
-                        + "CC       dissociate from small envelope protein M and homodimerizes. {ECO:0000256|PubMed:16629414}.\n"
+                        + "CC       dissociate from small envelope protein M and homodimerizes."
+                        + " {ECO:0000256|PubMed:16629414}.\n"
                         +
                         //        "CC   -!- CATALYTIC ACTIVITY: ATP + H(2)O = ADP + phosphate.\n" +
                         //        "CC   -!- CATALYTIC ACTIVITY: NTP + H(2)O = NDP + phosphate.\n" +
                         //        "CC   -!- CATALYTIC ACTIVITY: Nucleoside triphosphate + RNA(n) =
                         // diphosphate\n" +
                         //         "CC       + RNA(n+1).\n" +
-                        "CC   -!- SUBCELLULAR LOCATION: [Envelope protein E]: Virion membrane {ECO:0000256|HAMAP-Rule:MF_01146}; Multi-\n"
-                        + "CC       pass membrane protein {ECO:0000256|HAMAP-Rule:MF_01146}. Host endoplasmic reticulum membrane\n"
+                        "CC   -!- SUBCELLULAR LOCATION: [Envelope protein E]: Virion membrane"
+                        + " {ECO:0000256|HAMAP-Rule:MF_01146}; Multi-\n"
+                        + "CC       pass membrane protein {ECO:0000256|HAMAP-Rule:MF_01146}. Host"
+                        + " endoplasmic reticulum membrane\n"
                         + "CC       {ECO:0000256|HAMAP-Rule:MF_01146}; Multi-\n"
                         + "CC       pass membrane protein {ECO:0000256|PubMed:16629414}.\n"
-                        + "CC   -!- SIMILARITY: Contains 1 RdRp catalytic domain. {ECO:0000256|PubMed:16629414}.\n"
-                        + "CC   -!- SIMILARITY: Contains 1 helicase ATP-binding domain. {ECO:0000256|PubMed:16629414}.\n"
-                        + "CC   -!- SIMILARITY: Contains 1 helicase C-terminal domain. {ECO:0000256|PubMed:16629414}.";
+                        + "CC   -!- SIMILARITY: Contains 1 RdRp catalytic domain."
+                        + " {ECO:0000256|PubMed:16629414}.\n"
+                        + "CC   -!- SIMILARITY: Contains 1 helicase ATP-binding domain."
+                        + " {ECO:0000256|PubMed:16629414}.\n"
+                        + "CC   -!- SIMILARITY: Contains 1 helicase C-terminal domain."
+                        + " {ECO:0000256|PubMed:16629414}.";
         verifyMulti(line, 5.0, true);
     }
 }

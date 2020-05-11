@@ -17,7 +17,7 @@ public class UniProtKBDatabaseMock implements UniProtKBDatabase {
     }
 
     public @Nonnull UniProtDatabaseDetail getUniProtDatabaseDetail() {
-        throw new RuntimeException("No implementation defined in mock class");
+        return new UniProtDatabaseDetail("dummy", "dummyName", null, null, null, false, null);
     }
 
     public @Nullable UniProtDatabaseAttribute getUniProtDatabaseAttribute(int position) {

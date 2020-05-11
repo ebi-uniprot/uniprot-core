@@ -159,21 +159,27 @@ class ProteinSectionBuilderTest {
         assertEquals(obj.hashCode(), obj2.hashCode());
     }
 
-    public static ProteinSection createObject(int listSize) {
+    public static ProteinSection createObject(int listSize, boolean includeEvidences) {
         ProteinSectionBuilder builder = new ProteinSectionBuilder();
-        ProteinRecName recommendedName = ProteinRecNameBuilderTest.createObject(listSize);
+        ProteinRecName recommendedName =
+                ProteinRecNameBuilderTest.createObject(listSize, includeEvidences);
         builder.recommendedName(recommendedName);
-        List<ProteinAltName> alternativeNames = ProteinAltNameBuilderTest.createObjects(listSize);
+        List<ProteinAltName> alternativeNames =
+                ProteinAltNameBuilderTest.createObjects(listSize, includeEvidences);
         builder.alternativeNamesSet(alternativeNames);
-        Name allergenName = NameBuilderTest.createObject(listSize);
+        Name allergenName = NameBuilderTest.createObject(listSize, includeEvidences);
         builder.allergenName(allergenName);
-        Name biotechName = NameBuilderTest.createObject(listSize);
+        Name biotechName = NameBuilderTest.createObject(listSize, includeEvidences);
         builder.biotechName(biotechName);
-        List<Name> cdAntigenNames = NameBuilderTest.createObjects(listSize);
+        List<Name> cdAntigenNames = NameBuilderTest.createObjects(listSize, includeEvidences);
         builder.cdAntigenNamesSet(cdAntigenNames);
-        List<Name> innNames = NameBuilderTest.createObjects(listSize);
+        List<Name> innNames = NameBuilderTest.createObjects(listSize, includeEvidences);
         builder.innNamesSet(innNames);
         return builder.build();
+    }
+
+    public static ProteinSection createObject(int listSize) {
+        return createObject(listSize, false);
     }
 
     public static ProteinSection createObject() {
@@ -182,8 +188,12 @@ class ProteinSectionBuilderTest {
     }
 
     public static List<ProteinSection> createObjects(int count) {
+        return createObjects(count, false);
+    }
+
+    public static List<ProteinSection> createObjects(int count, boolean includeEvidences) {
         return IntStream.range(0, count)
-                .mapToObj(i -> createObject(count))
+                .mapToObj(i -> createObject(count, includeEvidences))
                 .collect(Collectors.toList());
     }
 }

@@ -70,7 +70,9 @@ class FtLineTransformerTest {
     @Test
     void testMutagen() {
         String lines =
-                "MUTAGEN 9\n/note=\"K->R: Does not affect E-cadherin/CDH1 repression; when associated with R-16\"\n";
+                "MUTAGEN 9\n"
+                        + "/note=\"K->R: Does not affect E-cadherin/CDH1 repression; when associated"
+                        + " with R-16\"\n";
 
         List<UniProtKBFeature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());

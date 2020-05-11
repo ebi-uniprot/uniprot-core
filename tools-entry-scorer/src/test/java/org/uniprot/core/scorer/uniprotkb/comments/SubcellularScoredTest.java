@@ -26,13 +26,18 @@ class SubcellularScoredTest extends CommentScoreTestBase {
     @Test
     void shouldScore20() {
         String line =
-                "CC   -!- SUBCELLULAR LOCATION: [Spike protein S2]: Virion membrane {ECO:0000256|HAMAP-Rule:MF_01146}; Single-\n"
-                        + "CC       pass type I membrane protein {ECO:0000256|HAMAP-Rule:MF_01146}. Host endoplasmic\n"
-                        + "CC       reticulum-Golgi intermediate compartment membrane {ECO:0000256|HAMAP-Rule:MF_01146}; Single-pass\n"
-                        + "CC       type I membrane protein) {ECO:0000256|HAMAP-Rule:MF_01146}. Note=Accumulates in the\n"
+                "CC   -!- SUBCELLULAR LOCATION: [Spike protein S2]: Virion membrane"
+                        + " {ECO:0000256|HAMAP-Rule:MF_01146}; Single-\n"
+                        + "CC       pass type I membrane protein {ECO:0000256|HAMAP-Rule:MF_01146}."
+                        + " Host endoplasmic\n"
+                        + "CC       reticulum-Golgi intermediate compartment membrane"
+                        + " {ECO:0000256|HAMAP-Rule:MF_01146}; Single-pass\n"
+                        + "CC       type I membrane protein) {ECO:0000256|HAMAP-Rule:MF_01146}."
+                        + " Note=Accumulates in the\n"
                         + "CC       endoplasmic reticulum-Golgi intermediate compartment, where it\n"
                         + "CC       participates in virus particle assembly. Some S oligomers may be\n"
-                        + "CC       transported to the plasma membrane, where they may mediate cell -\n"
+                        + "CC       transported to the plasma membrane, where they may mediate cell"
+                        + " -\n"
                         + "CC       cell fusion. {ECO:0000256|HAMAP-Rule:MF_01146}.";
         verify(CommentType.SUBCELLULAR_LOCATION, line, 2.0, false);
     }

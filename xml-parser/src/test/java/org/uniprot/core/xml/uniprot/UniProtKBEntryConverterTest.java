@@ -47,7 +47,7 @@ import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.Entry;
 import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 
-class UniProtKBEntryConverterTest {
+public class UniProtKBEntryConverterTest {
 
     @Test
     void test() {
@@ -496,5 +496,27 @@ class UniProtKBEntryConverterTest {
         evidences.add(parseEvidenceLine("ECO:0000255|PROSITE-ProRule:PRU10028"));
         evidences.add(parseEvidenceLine("ECO:0000256|PIRNR:PIRNR001361"));
         return evidences;
+    }
+
+    public static UniProtKBCrossReference createUniProtKBCrossReference() {
+        // DR   Ensembl; ENST00000393119; ENSP00000376827; ENSG00000011143. [Q9NXB0-1]
+        String type = "Ensembl";
+        String id = "ENST00000393119";
+        String description = "ENSP00000376827";
+        String thirdAttr = "ENSG00000011143";
+        String fourthAttr = null;
+        String isoform = "Q9NXB0-1";
+        UniProtKBDatabase uniProtkbDatabase = new UniProtKBDatabaseImpl(type);
+        UniProtKBCrossReference xref =
+                new UniProtCrossReferenceBuilder()
+                        .database(uniProtkbDatabase)
+                        .id(id)
+                        .isoformId(isoform)
+                        .propertiesAdd(
+                                uniProtkbDatabase.getUniProtDatabaseAttribute(0), description)
+                        .propertiesAdd(uniProtkbDatabase.getUniProtDatabaseAttribute(1), thirdAttr)
+                        .propertiesAdd(uniProtkbDatabase.getUniProtDatabaseAttribute(2), fourthAttr)
+                        .build();
+        return xref;
     }
 }

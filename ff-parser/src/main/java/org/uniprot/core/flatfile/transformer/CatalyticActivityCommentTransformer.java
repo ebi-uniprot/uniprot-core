@@ -25,10 +25,14 @@ public class CatalyticActivityCommentTransformer
         implements CommentTransformer<CatalyticActivityComment> {
     private static final CommentType COMMENT_TYPE = CommentType.CATALYTIC_ACTIVITY;
     private static final String CATALYTIC_ACTIVITY_REGEX =
-            "^([\\w/-]+(\\s[\\w/-]+)*:)?"
-                    + "(\\s*(Reaction=(.+?));( (Xref=([^;]+));)?( EC=(([0-9]|\\.|n)+);)?( Evidence=\\{([^;]+)\\};)?)"
-                    + "(([ \\t\\r\\n\\f]+)(PhysiologicalDirection=([^;]+)); (Xref=([^;]+));( Evidence=\\{([^;]+)\\};)?)?"
-                    + "(([ \\t\\r\\n\\f]+)(PhysiologicalDirection=([^;]+)); (Xref=([^;]+));( Evidence=\\{([^;]+)\\};)?)?";
+            "^([\\w/-]+(\\s[\\w/-]+)*:)?(\\s*(Reaction=(.+?));( (Xref=([^;]+));)?("
+                    + " EC=(([0-9]|\\.|n)+);)?( Evidence=\\{([^;]+)\\};)?)(([ \\t\\r"
+                    + "\\n"
+                    + "\\f]+)(PhysiologicalDirection=([^;]+)); (Xref=([^;]+));("
+                    + " Evidence=\\{([^;]+)\\};)?)?(([ \\t\\r"
+                    + "\\n"
+                    + "\\f]+)(PhysiologicalDirection=([^;]+)); (Xref=([^;]+));("
+                    + " Evidence=\\{([^;]+)\\};)?)?";
 
     public static final Pattern ATALYTIC_ACTIVITY_PATTERN =
             Pattern.compile(CATALYTIC_ACTIVITY_REGEX);

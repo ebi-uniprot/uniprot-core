@@ -161,7 +161,8 @@ class EntryGeneMapTest {
         dl = new EntryGeneMap(genes);
         result = dl.getGeneName();
         expected =
-                "name11 syn1 syn2 oln1 oln2 orf1 orf2; name12 syn3 syn4; orf3 orf4; name14 oln3 oln4";
+                "name11 syn1 syn2 oln1 oln2 orf1 orf2; name12 syn3 syn4; orf3 orf4; name14 oln3"
+                        + " oln4";
         assertEquals(expected, result);
     }
 

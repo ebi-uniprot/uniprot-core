@@ -3,6 +3,7 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
@@ -134,7 +135,7 @@ public class DiseaseBuilderTest {
         assertEquals(obj.hashCode(), obj2.hashCode());
     }
 
-    public static Disease createObject(int listSize) {
+    public static Disease createObject(int listSize, boolean includeEvidences) {
         DiseaseBuilder builder = new DiseaseBuilder();
         String random = UUID.randomUUID().toString();
         String dId = "dId" + random;
@@ -143,7 +144,8 @@ public class DiseaseBuilderTest {
         String desc = "Desc-" + random;
         builder.diseaseId(dId);
         builder.diseaseAc(dAc);
-        List<Evidence> evidences = EvidenceBuilderTest.createObjects(listSize);
+        List<Evidence> evidences =
+                includeEvidences ? EvidenceBuilderTest.createObjects(listSize) : new ArrayList<>();
         builder.evidencesSet(evidences);
         builder.acronym(acronym);
         builder.description(desc);
@@ -151,6 +153,10 @@ public class DiseaseBuilderTest {
                 DiseaseCrossReferenceBuilderTest.createObject(listSize);
         builder.diseaseCrossReference(diseaseCrossReference);
         return builder.build();
+    }
+
+    public static Disease createObject(int listSize) {
+        return createObject(listSize, false);
     }
 
     public static Disease createObject() {

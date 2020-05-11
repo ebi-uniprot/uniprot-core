@@ -18,7 +18,8 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
                         + "CC       Note=Monophosphorylated; Evidence={ECO:0000303|PubMed:16629414};";
 
         String ccLineString =
-                "MASS SPECTROMETRY: Mass=2189.4; Method=Electrospray; Note=Monophosphorylated; Evidence={ECO:0000303|PubMed:16629414};";
+                "MASS SPECTROMETRY: Mass=2189.4; Method=Electrospray; Note=Monophosphorylated;"
+                        + " Evidence={ECO:0000303|PubMed:16629414};";
         String ev1 = "ECO:0000303|PubMed:16629414";
 
         List<String> evidences = new ArrayList<>();
@@ -46,8 +47,9 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
                         + "CC       Method=Electrospray; Note=Allele D, with 6 phosphate groups;\n"
                         + "CC       Evidence={ECO:0000303|PubMed:16629414};";
         String ccLineString =
-                "MASS SPECTROMETRY: [P04653-1]: Mass=22629; Mass_error=1.6; Method=Electrospray; Note=Allele D, with "
-                        + "6 phosphate groups; Evidence={ECO:0000303|PubMed:16629414};";
+                "MASS SPECTROMETRY: [P04653-1]: Mass=22629; Mass_error=1.6; Method=Electrospray;"
+                        + " Note=Allele D, with 6 phosphate groups;"
+                        + " Evidence={ECO:0000303|PubMed:16629414};";
         String ev1 = "ECO:0000303|PubMed:16629414";
         List<String> evidences = new ArrayList<>();
         evidences.add(ev1);
@@ -111,7 +113,8 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
                 "CC   -!- MASS SPECTROMETRY: Mass=3260; Method=MALDI;\n"
                         + "CC       Evidence={ECO:0000303|PubMed:16629414};";
         String ccLineString =
-                "MASS SPECTROMETRY: Mass=3260; Method=MALDI; Evidence={ECO:0000303|PubMed:16629414};";
+                "MASS SPECTROMETRY: Mass=3260; Method=MALDI;"
+                        + " Evidence={ECO:0000303|PubMed:16629414};";
         String ccLineStringEvidence =
                 "MASS SPECTROMETRY: Mass=3260; Method=MALDI; "
                         + "Evidence={ECO:0000303|PubMed:16629414};";

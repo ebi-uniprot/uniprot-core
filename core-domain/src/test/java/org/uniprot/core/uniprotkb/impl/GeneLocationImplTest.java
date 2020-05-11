@@ -19,7 +19,8 @@ class GeneLocationImplTest {
         List<Evidence> evidences = createEvidences();
         GeneLocation geneLocation = new GeneLocationImpl(type, val, evidences);
         String expected =
-                "Plastid; Apicoplast {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
+                "Plastid; Apicoplast {ECO:0000255|PROSITE-ProRule:PRU10028,"
+                        + " ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, geneLocation.getDisplayed(""));
     }
 
@@ -30,7 +31,8 @@ class GeneLocationImplTest {
         List<Evidence> evidences = createEvidences();
         GeneLocation geneLocation = new GeneLocationImpl(type, val, evidences);
         String expected =
-                "Mitochondrion {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
+                "Mitochondrion {ECO:0000255|PROSITE-ProRule:PRU10028,"
+                        + " ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, geneLocation.getDisplayed(""));
     }
 
@@ -41,7 +43,8 @@ class GeneLocationImplTest {
         List<Evidence> evidences = createEvidences();
         GeneLocation geneLocation = new GeneLocationImpl(type, val, evidences);
         String expected =
-                "Hydrogenosome {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
+                "Hydrogenosome {ECO:0000255|PROSITE-ProRule:PRU10028,"
+                        + " ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, geneLocation.getDisplayed(""));
     }
 
@@ -63,7 +66,8 @@ class GeneLocationImplTest {
         List<Evidence> evidences = createEvidences();
         GeneLocation geneLocation = new GeneLocationImpl(type, val, evidences);
         String expected =
-                "Plasmid some value {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
+                "Plasmid some value {ECO:0000255|PROSITE-ProRule:PRU10028,"
+                        + " ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, geneLocation.getDisplayed(""));
     }
 

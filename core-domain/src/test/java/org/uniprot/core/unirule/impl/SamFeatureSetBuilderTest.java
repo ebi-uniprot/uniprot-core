@@ -1,7 +1,6 @@
 package org.uniprot.core.unirule.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +15,13 @@ import org.uniprot.core.unirule.SamFeatureSet;
 import org.uniprot.core.unirule.SamTrigger;
 
 public class SamFeatureSetBuilderTest {
+
+    @Test
+    void testCreateObjectWithNullMandatoryParam() {
+        SamFeatureSetBuilder builder = new SamFeatureSetBuilder(null);
+        assertThrows(IllegalArgumentException.class, builder::build);
+    }
+
     @Test
     void testCreateObjectUpdateConditionsList() {
         SamFeatureSet samFeatureSet = createObject();
@@ -46,7 +52,8 @@ public class SamFeatureSetBuilderTest {
     void testCreateObjectWithOneCondition() {
         // add a new condition
         Condition condition = ConditionBuilderTest.createObject();
-        SamFeatureSetBuilder builder = new SamFeatureSetBuilder();
+        SamFeatureSetBuilder builder =
+                new SamFeatureSetBuilder(SamTriggerBuilderTest.createObject());
         builder.conditionsAdd(condition);
         SamFeatureSet samFeatureSet = builder.build();
         assertNotNull(samFeatureSet);
@@ -56,20 +63,32 @@ public class SamFeatureSetBuilderTest {
     @Test
     void testCreateObjectWithAnnotation() {
         Annotation annotation = AnnotationBuilderTest.createObject();
-        SamFeatureSetBuilder builder = new SamFeatureSetBuilder();
+        SamFeatureSetBuilder builder =
+                new SamFeatureSetBuilder(SamTriggerBuilderTest.createObject());
         builder.annotationsAdd(annotation);
         SamFeatureSet samFeatureSet = builder.build();
         assertNotNull(samFeatureSet);
         assertEquals(Arrays.asList(annotation), samFeatureSet.getAnnotations());
     }
 
-    public static SamFeatureSet createObject(int listSize) {
+    @Test
+    void testUpdateSameTrigger() {
+        SamFeatureSetBuilder builder =
+                new SamFeatureSetBuilder(SamTriggerBuilderTest.createObject());
+        SamTrigger st = SamTriggerBuilderTest.createObject();
+        builder.samTrigger(st);
+        SamFeatureSet samFeatureSet = builder.build();
+        assertNotNull(samFeatureSet);
+        assertEquals(st, samFeatureSet.getSamTrigger());
+    }
+
+    public static SamFeatureSet createObject(int listSize, boolean includeEvidences) {
         List<Condition> conditions = ConditionBuilderTest.createObjects(listSize);
-        List<Annotation> annotations = AnnotationBuilderTest.createObjects(listSize);
+        List<Annotation> annotations =
+                AnnotationBuilderTest.createObjects(listSize, includeEvidences);
         SamTrigger samTrigger = SamTriggerBuilderTest.createObject(listSize);
-        SamFeatureSetBuilder builder = new SamFeatureSetBuilder();
+        SamFeatureSetBuilder builder = new SamFeatureSetBuilder(samTrigger);
         builder.conditionsSet(conditions).annotationsSet(annotations);
-        builder.samTrigger(samTrigger);
 
         SamFeatureSet samFeatureSet = builder.build();
         assertNotNull(samFeatureSet);
@@ -80,14 +99,22 @@ public class SamFeatureSetBuilderTest {
         return samFeatureSet;
     }
 
+    public static SamFeatureSet createObject(int listSize) {
+        return createObject(listSize, false);
+    }
+
     public static SamFeatureSet createObject() {
         int listSize = ThreadLocalRandom.current().nextInt(1, 5);
         return createObject(listSize);
     }
 
     public static List<SamFeatureSet> createObjects(int count) {
+        return createObjects(count, false);
+    }
+
+    public static List<SamFeatureSet> createObjects(int count, boolean includeEvidences) {
         return IntStream.range(0, count)
-                .mapToObj(i -> createObject(count))
+                .mapToObj(i -> createObject(count, includeEvidences))
                 .collect(Collectors.toList());
     }
 }

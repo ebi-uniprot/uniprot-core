@@ -132,7 +132,8 @@ class DELineBuildTest {
                 createProteinDescription(recName, altNames, null, null);
 
         String deLine =
-                "DE   RecName: Full=14-3-3-like protein GF14 iota {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};\n"
+                "DE   RecName: Full=14-3-3-like protein GF14 iota {ECO:0000269|PubMed:10433554,"
+                        + " ECO:0000313|EMBL:BAG16761.1};\n"
                         + "DE            Short=ADAM 10 {ECO:0000269|PubMed:10433554};\n"
                         + "DE            EC=2.3.1.35 {ECO:0000303|Ref.6};\n"
                         + "DE   AltName: Full=General regulatory factor 12 {ECO:0000313|PDB:3OW2};";
@@ -247,8 +248,10 @@ class DELineBuildTest {
                         .build();
 
         String deLine =
-                "DE   RecName: Full=Granulocyte colony-stimulating factor {ECO:0000303|Ref.6, ECO:0000313|EMBL:BAG16761.1};\n"
-                        + "DE            Short=G-CSF {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};\n"
+                "DE   RecName: Full=Granulocyte colony-stimulating factor {ECO:0000303|Ref.6,"
+                        + " ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "DE            Short=G-CSF {ECO:0000269|PubMed:10433554,"
+                        + " ECO:0000313|EMBL:BAG16761.1};\n"
                         + "DE   AltName: Full=Pluripoietin {ECO:0000256|HAMAP-Rule:MF_00205};\n"
                         + "DE   AltName: CD_antigen=CD156c;\n"
                         + "DE   AltName: INN=Lenograstim {ECO:0000313|PDB:3OW2};\n"
@@ -323,9 +326,11 @@ class DELineBuildTest {
                 createProteinDescription(null, null, submissionNames, FlagType.FRAGMENT);
         String deLine =
                 "DE   SubName: Full=Expressed protein {ECO:0000313|EMBL:BAG16761.1};\n"
-                        + "DE   SubName: Full=cDNA clone:001-021-F08, full insert sequence {ECO:0000313|EMBL:BAG16761.2};\n"
+                        + "DE   SubName: Full=cDNA clone:001-021-F08, full insert sequence"
+                        + " {ECO:0000313|EMBL:BAG16761.2};\n"
                         + "DE            EC=2.3.1.35 {ECO:0000269|PubMed:10433554};\n"
-                        + "DE   SubName: Full=cDNA clone:006-308-H01, full insert sequence {ECO:0000313|PDB:3OW2};\n"
+                        + "DE   SubName: Full=cDNA clone:006-308-H01, full insert sequence"
+                        + " {ECO:0000313|PDB:3OW2};\n"
                         + "DE   Flags: Fragment;";
 
         doTest(deLine, proteinDescription);
@@ -347,9 +352,11 @@ class DELineBuildTest {
                         + "DE     AltName: Full=N-acetylglutamate synthase;\n"
                         + "DE              Short=AGS;\n"
                         + "DE   Contains:\n"
-                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha chain;\n"
+                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha"
+                        + " chain;\n"
                         + "DE   Contains:\n"
-                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta chain;";
+                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta"
+                        + " chain;";
 
         Name recFullName =
                 createName(
@@ -462,22 +469,29 @@ class DELineBuildTest {
     @Test
     void testIncludeAndContainWithEvidenceEvidence() {
         String deLine =
-                "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ {ECO:0000313|EMBL:BAG16761.1};\n"
+                "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ"
+                        + " {ECO:0000313|EMBL:BAG16761.1};\n"
                         + "DE   Includes:\n"
-                        + "DE     RecName: Full=Glutamate N-acetyltransferase {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "DE     RecName: Full=Glutamate N-acetyltransferase"
+                        + " {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};\n"
                         + "DE              EC=2.3.1.35 {ECO:0000269|PubMed:10433554};\n"
                         + "DE     AltName: Full=Ornithine acetyltransferase;\n"
                         + "DE              Short=OATase;\n"
-                        + "DE     AltName: Full=Ornithine transacetylase {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2};\n"
+                        + "DE     AltName: Full=Ornithine transacetylase {ECO:0000303|Ref.6,"
+                        + " ECO:0000313|PDB:3OW2};\n"
                         + "DE   Includes:\n"
-                        + "DE     RecName: Full=Amino-acid acetyltransferase {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000303|Ref.6};\n"
+                        + "DE     RecName: Full=Amino-acid acetyltransferase"
+                        + " {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000303|Ref.6};\n"
                         + "DE              EC=2.3.1.1 {ECO:0000256|HAMAP-Rule:MF_00205};\n"
-                        + "DE     AltName: Full=N-acetylglutamate synthase {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2};\n"
+                        + "DE     AltName: Full=N-acetylglutamate synthase {ECO:0000303|Ref.6,"
+                        + " ECO:0000313|PDB:3OW2};\n"
                         + "DE              Short=AGS;\n"
                         + "DE   Contains:\n"
-                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha chain {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha"
+                        + " chain {ECO:0000313|EMBL:BAG16761.1};\n"
                         + "DE   Contains:\n"
-                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta chain {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};";
+                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta"
+                        + " chain {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};";
 
         Name recFullName =
                 createName(

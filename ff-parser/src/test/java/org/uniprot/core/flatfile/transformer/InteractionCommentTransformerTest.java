@@ -16,7 +16,8 @@ class InteractionCommentTransformerTest {
         String ccLineString =
                 ("INTERACTION:\n"
                         + "P12345; Q9W158: CG4612; NbExp=1; IntAct=EBI-123485, EBI-89895;\n"
-                        + "P12345; PRO_0000037566 [P27958]; Xeno; NbExp=2; IntAct=EBI-123485, EBI-126770;");
+                        + "P12345; PRO_0000037566 [P27958]; Xeno; NbExp=2; IntAct=EBI-123485,"
+                        + " EBI-126770;");
         InteractionComment comment = transformer.transform(CommentType.INTERACTION, ccLineString);
         assertNotNull(comment);
         assertEquals(2, comment.getInteractions().size());

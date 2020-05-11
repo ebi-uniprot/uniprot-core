@@ -17,7 +17,8 @@ class CcLineSubCellCommentParserTest {
     void test1() {
         String lines =
                 "CC   -!- SUBCELLULAR LOCATION: Cytoplasm. Endoplasmic reticulum membrane;\n"
-                        + "CC       Peripheral membrane protein. Golgi apparatus membrane; Peripheral\n"
+                        + "CC       Peripheral membrane protein. Golgi apparatus membrane;"
+                        + " Peripheral\n"
                         + "CC       membrane protein.\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
@@ -91,7 +92,8 @@ class CcLineSubCellCommentParserTest {
         String lines =
                 "CC   -!- SUBCELLULAR LOCATION: Cell membrane; Peripheral membrane protein\n"
                         + "CC       (By similarity). Secreted (By similarity). Note=The last 22 C-\n"
-                        + "CC       terminal amino acids may participate in cell membrane attachment.\n";
+                        + "CC       terminal amino acids may participate in cell membrane"
+                        + " attachment.\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -157,8 +159,8 @@ class CcLineSubCellCommentParserTest {
         assertTrue(cc.getObject() instanceof SubcullarLocation);
         SubcullarLocation sl = (SubcullarLocation) cc.getObject();
         assertEquals(
-                "Predominantly found in the trans-Golgi network (TGN). "
-                        + "Not redistributed to the plasma membrane in response to elevated copper levels",
+                "Predominantly found in the trans-Golgi network (TGN). Not redistributed to the"
+                        + " plasma membrane in response to elevated copper levels",
                 sl.getNote().get(0).getValue());
         assertEquals(1, sl.getLocations().size());
 
@@ -179,8 +181,10 @@ class CcLineSubCellCommentParserTest {
                         + "CC       Endosome. Note=Interaction with SNX27 mediates recruitment to\n"
                         + "CC       early endosomes, while interaction with SLC9A3R1 and EZR might\n"
                         + "CC       target the protein to specialized subcellular regions, such as\n"
-                        + "CC       microvilli (By similarity). Interacts (via C-terminus) with GRK5;\n"
-                        + "CC       this interaction is promoted by 5-HT (serotonin) (By similarity).\n";
+                        + "CC       microvilli (By similarity). Interacts (via C-terminus) with"
+                        + " GRK5;\n"
+                        + "CC       this interaction is promoted by 5-HT (serotonin) (By"
+                        + " similarity).\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -236,7 +240,8 @@ class CcLineSubCellCommentParserTest {
                 "CC   -!- SUBCELLULAR LOCATION: Cytoplasm. Cell junction, tight junction.\n"
                         + "CC       Golgi apparatus. Cytoplasm, cytoskeleton, spindle. Cell\n"
                         + "CC       projection, ruffle membrane. Note=Localizes to the tips of\n"
-                        + "CC       cortical microtubules of the mitotic spindle during cell division,\n"
+                        + "CC       cortical microtubules of the mitotic spindle during cell"
+                        + " division,\n"
                         + "CC       and is further released upon microtubule depolymerization.\n"
                         + "CC       Recruited into membrane ruffles induced by S.flexneri at tight\n"
                         + "CC       junctions of polarized epithelial cells.\n";
@@ -383,13 +388,15 @@ class CcLineSubCellCommentParserTest {
     void testMultiComments() {
         String lines =
                 "CC   -!- SUBCELLULAR LOCATION: Mitochondrion inner membrane\n"
-                        + "CC       {ECO:0000313|EMBL:BAG16761.1, ECO:0000269|PubMed:10433554}; Multi-\n"
+                        + "CC       {ECO:0000313|EMBL:BAG16761.1, ECO:0000269|PubMed:10433554};"
+                        + " Multi-\n"
                         + "CC       pass membrane protein (By similarity) {ECO:0000303|Ref.6}.\n"
                         + "CC   -!- SUBCELLULAR LOCATION: Mitochondrion intermembrane space.\n"
                         + "CC       Note=Loosely associated with the inner membrane.\n"
                         + "CC   -!- SUBCELLULAR LOCATION: Mitochondrion inner membrane; Multi-pass\n"
                         + "CC       membrane protein (By similarity).\n"
-                        + "CC   -!- SUBCELLULAR LOCATION: [Spike protein S2]: Virion membrane; Single-\n"
+                        + "CC   -!- SUBCELLULAR LOCATION: [Spike protein S2]: Virion membrane;"
+                        + " Single-\n"
                         + "CC       pass type I membrane sdssds protein (By similarity). Host\n"
                         + "CC       endoplasmic reticulum-Golgi intermediate compartment membrane;\n"
                         + "CC       Type I me (By similarity); Another top. Note=Accumulates in the\n"
@@ -401,15 +408,19 @@ class CcLineSubCellCommentParserTest {
                         + "CC       membrane protein (By similarity). {ECO:0000313|EMBL:BAG16761.1,\n"
                         + "CC       ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6}.\n"
                         + "CC   -!- SUBCELLULAR LOCATION: [Spike protein S2]: Virion membrane\n"
-                        + "CC       {ECO:0000313|EMBL:BAG16761.1}; Single-pass type I membrane sdssds\n"
+                        + "CC       {ECO:0000313|EMBL:BAG16761.1}; Single-pass type I membrane"
+                        + " sdssds\n"
                         + "CC       protein (By similarity) {ECO:0000269|PubMed:10433554}. Host\n"
                         + "CC       endoplasmic reticulum-Golgi intermediate compartment membrane\n"
                         + "CC       {ECO:0000303|Ref.6}; Type I me (By similarity)\n"
-                        + "CC       {ECO:0000313|PDB:3OW2}; Another top {ECO:0000313|EMBL:BAG16761.1}.\n"
+                        + "CC       {ECO:0000313|PDB:3OW2}; Another top"
+                        + " {ECO:0000313|EMBL:BAG16761.1}.\n"
                         + "CC       Note=Accumulates in the endoplasmic reticulum-Golgi intermediate\n"
                         + "CC       compartment, where it participates in virus particle assembly.\n"
-                        + "CC       Some S oligomers may be transported to the plasma membrane, where\n"
-                        + "CC       they may mediate cell fusion (By similarity). {ECO:0000256|HAMAP-Rule:MF_00205}.\n"
+                        + "CC       Some S oligomers may be transported to the plasma membrane,"
+                        + " where\n"
+                        + "CC       they may mediate cell fusion (By similarity)."
+                        + " {ECO:0000256|HAMAP-Rule:MF_00205}.\n"
                         + "CC   -!- SUBCELLULAR LOCATION: Mitochondrion intermembrane space\n"
                         + "CC       {ECO:0000313|EMBL:BAG16761.1, ECO:0000269|PubMed:10433554}.\n"
                         + "CC       Note=Loosely associated with the inner membrane.\n"

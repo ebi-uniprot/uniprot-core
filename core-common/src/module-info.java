@@ -1,3 +1,1 @@
-module uniprot.common {
-
-}
+module uniprot.common {}

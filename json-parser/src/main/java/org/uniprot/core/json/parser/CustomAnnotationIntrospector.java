@@ -2,7 +2,7 @@ package org.uniprot.core.json.parser;
 
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.uniprotkb.comment.Comment;
-import org.uniprot.core.unirule.RuleException;
+import org.uniprot.core.unirule.RuleExceptionAnnotation;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.JavaType;
@@ -19,7 +19,7 @@ public class CustomAnnotationIntrospector extends SimpleAnnotationIntrospector {
             MapperConfig<?> config, AnnotatedClass ac, JavaType baseType) {
         if (baseType.isTypeOrSubTypeOf(Comment.class)
                 || baseType.isTypeOrSubTypeOf(Citation.class)
-                || baseType.isTypeOrSubTypeOf(RuleException.class)) {
+                || baseType.isTypeOrSubTypeOf(RuleExceptionAnnotation.class)) {
             StdTypeResolverBuilder typeResolverBuilder = new StdTypeResolverBuilder();
             typeResolverBuilder.init(JsonTypeInfo.Id.NAME, null);
             typeResolverBuilder.typeProperty("type");

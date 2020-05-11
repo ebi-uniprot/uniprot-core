@@ -46,7 +46,8 @@ class RALineBuilderTest {
         List<String> lines = builder.buildLine(authors, false, true);
         assertEquals(1, lines.size());
         String expected =
-                "Tan W.G., Barkman T.J., Gregory Chinchar V., Essani K., Arctander P., Fjeldsaa J., Gjeldsaa J.;";
+                "Tan W.G., Barkman T.J., Gregory Chinchar V., Essani K., Arctander P., Fjeldsaa"
+                        + " J., Gjeldsaa J.;";
         assertEquals(expected, lines.get(0));
     }
 

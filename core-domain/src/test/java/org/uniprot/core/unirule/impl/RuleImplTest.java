@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.Range;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.unirule.*;
@@ -26,7 +27,7 @@ public class RuleImplTest {
         Condition condition2 = new ConditionBuilder("type2").build();
         Condition condition3 = new ConditionBuilder("type3").build();
         List<Condition> conditions = Arrays.asList(condition1, condition2, condition3);
-        ConditionSet conditionSet = new ConditionSetBuilder().conditionsSet(conditions).build();
+        ConditionSet conditionSet = new ConditionSetBuilder(conditions).build();
         List<ConditionSet> conditionSets = Arrays.asList(conditionSet);
 
         Annotation annotation1 = new AnnotationBuilder().build();
@@ -39,12 +40,12 @@ public class RuleImplTest {
         Annotation annotation = new AnnotationBuilder().build();
         UniProtKBAccession accession = new UniProtKBAccessionBuilder(accessionValue).build();
         List<UniProtKBAccession> accessionList = Arrays.asList(accession);
-        RuleException<Annotation> ruleException1 =
-                new AnnotationRuleExceptionImpl(note, category, annotation, accessionList);
-
-        PositionalFeature positionalFeature = new PositionalFeatureBuilder().build();
-        RuleException<PositionalFeature> ruleException2 =
-                new PositionalRuleExceptionImpl(note, category, positionalFeature, accessionList);
+        RuleException ruleException1 =
+                new RuleExceptionImpl(note, category, annotation, accessionList);
+        Range position1 = new Range(1, 2);
+        PositionalFeature positionalFeature = new PositionalFeatureBuilder(position1).build();
+        RuleException ruleException2 =
+                new RuleExceptionImpl(note, category, positionalFeature, accessionList);
         List<RuleException> ruleExceptions = Arrays.asList(ruleException1, ruleException2);
 
         Rule rule = new RuleImpl(conditionSets, annotations, ruleExceptions);

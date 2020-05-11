@@ -52,7 +52,8 @@ public class EntryCommentsMap implements NamedValueMap {
     private final List<Comment> comments;
     private static final Pattern PATTERN_FAMILY =
             Pattern.compile(
-                    "(?:In the .+? section; )?[Bb]elongs to the (.+?family)\\.(?: (.+?family)\\.)?(?: (.+?family)\\.)?(?: Highly divergent\\.)?");
+                    "(?:In the .+? section; )?[Bb]elongs to the (.+?family)\\.(?:"
+                            + " (.+?family)\\.)?(?: (.+?family)\\.)?(?: Highly divergent\\.)?");
 
     public EntryCommentsMap(List<Comment> comments) {
         if (comments == null) {

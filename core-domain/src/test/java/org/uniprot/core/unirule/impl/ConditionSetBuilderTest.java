@@ -3,6 +3,7 @@ package org.uniprot.core.unirule.impl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -16,6 +17,15 @@ import org.uniprot.core.unirule.ConditionSet;
 public class ConditionSetBuilderTest {
 
     @Test
+    void testCreateObjectWithSingleCondition() {
+        Condition condition = ConditionBuilderTest.createObject();
+        ConditionSetBuilder builder = new ConditionSetBuilder(condition);
+        ConditionSet obj = builder.build();
+        assertNotNull(obj);
+        assertEquals(Arrays.asList(condition), obj.getConditions());
+    }
+
+    @Test
     void testCreateObjectUpdateList() {
         ConditionSet conditionSet = createObject();
         ConditionSetBuilder builder = ConditionSetBuilder.from(conditionSet);
@@ -23,7 +33,6 @@ public class ConditionSetBuilderTest {
         // add another condition value
         builder.conditionsAdd(condition);
         ConditionSet updatedConditionSet = builder.build();
-
         assertNotNull(updatedConditionSet);
         assertEquals(
                 conditionSet.getConditions().size() + 1,
@@ -32,18 +41,31 @@ public class ConditionSetBuilderTest {
 
     @Test
     void testCreateObjectWithOneItemInList() {
-        ConditionSetBuilder builder = new ConditionSetBuilder();
+        List<Condition> conditionList = new ArrayList<>();
+        conditionList.add(ConditionBuilderTest.createObject());
+        ConditionSetBuilder builder = new ConditionSetBuilder(conditionList);
         Condition condition = ConditionBuilderTest.createObject();
         builder.conditionsAdd(condition);
         ConditionSet conditionSet = builder.build();
         assertNotNull(conditionSet);
-        assertEquals(Arrays.asList(condition), conditionSet.getConditions());
+        conditionList.add(condition);
+        assertEquals(conditionList, conditionSet.getConditions());
+    }
+
+    @Test
+    void testCreateObjectSetList() {
+        ConditionSet conditionSet = createObject();
+        ConditionSetBuilder builder = ConditionSetBuilder.from(conditionSet);
+        List<Condition> conditions = ConditionBuilderTest.createObjects(2);
+        builder.conditionsSet(conditions);
+        ConditionSet updatedConditionSet = builder.build();
+        assertNotNull(updatedConditionSet);
+        assertEquals(conditions, updatedConditionSet.getConditions());
     }
 
     public static ConditionSet createObject(int listSize) {
         List<Condition> conditions = ConditionBuilderTest.createObjects(listSize);
-        ConditionSetBuilder builder = new ConditionSetBuilder();
-        builder.conditionsSet(conditions);
+        ConditionSetBuilder builder = new ConditionSetBuilder(conditions);
         ConditionSet conditionSet = builder.build();
         assertNotNull(conditionSet);
         assertEquals(conditions, conditionSet.getConditions());

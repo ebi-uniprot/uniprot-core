@@ -13,7 +13,8 @@ class DevelopmentalStageTest extends CommentScoreTestBase {
     @Test
     void shouldWithEvScore30() throws Exception {
         String line =
-                "CC   -!- DEVELOPMENTAL STAGE: Expressed in spores. {ECO:0000256|HAMAP-Rule:MF_01146}.";
+                "CC   -!- DEVELOPMENTAL STAGE: Expressed in spores."
+                        + " {ECO:0000256|HAMAP-Rule:MF_01146}.";
         verify(CommentType.DEVELOPMENTAL_STAGE, line, 3.0);
     }
 }

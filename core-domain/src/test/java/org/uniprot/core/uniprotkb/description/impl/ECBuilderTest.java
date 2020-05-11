@@ -1,5 +1,6 @@
 package org.uniprot.core.uniprotkb.description.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
@@ -13,12 +14,13 @@ import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilderTest;
 // TODO: lgonzales
 public class ECBuilderTest {
 
-    public static EC createObject(int listSize) {
+    public static EC createObject(int listSize, boolean includeEvidences) {
         ECBuilder builder = new ECBuilder();
         String random = UUID.randomUUID().toString();
         String value = "value-" + random;
         builder.value(value);
-        List<Evidence> evidences = EvidenceBuilderTest.createObjects(listSize);
+        List<Evidence> evidences =
+                includeEvidences ? EvidenceBuilderTest.createObjects(listSize) : new ArrayList<>();
         builder.evidencesSet(evidences);
         return builder.build();
     }
@@ -28,9 +30,17 @@ public class ECBuilderTest {
         return createObject(listSize);
     }
 
+    public static EC createObject(int listSize) {
+        return createObject(listSize, false);
+    }
+
     public static List<EC> createObjects(int count) {
+        return createObjects(count, false);
+    }
+
+    public static List<EC> createObjects(int count, boolean includeEvidences) {
         return IntStream.range(0, count)
-                .mapToObj(i -> createObject(count))
+                .mapToObj(i -> createObject(count, includeEvidences))
                 .collect(Collectors.toList());
     }
 }

@@ -121,7 +121,8 @@ class FtLineConverterTest {
         ft.setLocationStart("33");
         ft.setLocationEnd("83");
         ft.setFtText(
-                "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)");
+                "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP"
+                        + " (in isoform 2)");
         ft.setFtId("VSP_004370");
         fobj.getFts().add(ft);
         List<UniProtKBFeature> features = converter.convert(fobj);
@@ -151,7 +152,8 @@ class FtLineConverterTest {
         ft.setLocationStart("33");
         ft.setLocationEnd("83");
         ft.setFtText(
-                "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP(in isoform 2)");
+                "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP(in"
+                        + " isoform 2)");
         ft.setFtId("VSP_004370");
         fobj.getFts().add(ft);
         List<UniProtKBFeature> features = converter.convert(fobj);

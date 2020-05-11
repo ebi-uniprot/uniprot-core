@@ -18,8 +18,10 @@ class CcLineCofactorCommentParserTest {
     void test() {
         String lines =
                 "CC   -!- COFACTOR: [Isoform 1]:\n"
-                        + "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000255|HAMAP-Rule:MF_00087};\n"
-                        + "CC       Name=Co(2+); Xref=ChEBI:CHEBI:48828; Evidence={ECO:0000255|HAMAP-Rule:MF_00088};\n"
+                        + "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00087};\n"
+                        + "CC       Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00088};\n"
                         + "CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt).\n"
                         + "CC       {ECO:0000255|HAMAP-Rule:MF_00086};\n";
         UniprotKBLineParser<CcLineObject> parser =
@@ -57,11 +59,15 @@ class CcLineCofactorCommentParserTest {
                         + "CC       Name=Zn(2+); Xref=ChEBI:CHEBI:29105;\n"
                         + "CC         Evidence={ECO:0000269|PubMed:16683188,\n"
                         + "CC         ECO:0000269|PubMed:16683189};\n"
-                        + "CC       Name=A very very looooooooooooong cofactor name with 1 evidence tag;\n"
-                        + "CC         Xref=ChEBI:CHEBI:12345; Evidence={ECO:0000269|PubMed:16683188};\n"
-                        + "CC       Name=A very very looooooooooooong cofactor name with X evidence tags;\n"
+                        + "CC       Name=A very very looooooooooooong cofactor name with 1 evidence"
+                        + " tag;\n"
+                        + "CC         Xref=ChEBI:CHEBI:12345;"
+                        + " Evidence={ECO:0000269|PubMed:16683188};\n"
+                        + "CC       Name=A very very looooooooooooong cofactor name with X evidence"
+                        + " tags;\n"
                         + "CC         Xref=ChEBI:CHEBI:54321;\n"
-                        + "CC         Evidence={ECO:0000269|PubMed:16683188, ECO:0000269|PubMed:16683189};\n"
+                        + "CC         Evidence={ECO:0000269|PubMed:16683188,"
+                        + " ECO:0000269|PubMed:16683189};\n"
                         + "CC       Note=Binds 2 divalent ions per subunit.\n"
                         + "CC       {ECO:0000255|HAMAP-Rule:MF_00086};\n";
         UniprotKBLineParser<CcLineObject> parser =
@@ -140,7 +146,8 @@ class CcLineCofactorCommentParserTest {
         assertEquals(0, cofactors.size());
         assertEquals(1, ms.getNote().size());
         assertEquals(
-                "Binds 2 divalent ions per subunit (magnesium or cobalt). Binds 3 divalent ions per subunit (magnesium or cobalt).",
+                "Binds 2 divalent ions per subunit (magnesium or cobalt). Binds 3 divalent ions"
+                        + " per subunit (magnesium or cobalt).",
                 ms.getNote().get(0).getValue());
         assertEquals(0, ms.getNote().get(0).getEvidences().size());
     }
@@ -174,7 +181,8 @@ class CcLineCofactorCommentParserTest {
     void testTwoNoteOnlyWithEvidence() {
         String lines =
                 "CC   -!- COFACTOR:\n"
-                        + "CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt). {ECO:0000255|HAMAP-Rule:MF_00086};\n"
+                        + "CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt)."
+                        + " {ECO:0000255|HAMAP-Rule:MF_00086};\n"
                         + "CC       Binds 3 divalent ions per subunit (magnesium or cobalt).;\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
@@ -203,12 +211,14 @@ class CcLineCofactorCommentParserTest {
                 "COFACTOR: [Serine protease NS3]:\n"
                         + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:16683188,"
                         + " ECO:0000269|PubMed:16683189};\n"
-                        + "Name=A very looooooooooooong cofactor name with 1 evidence tag; "
-                        + "Xref=ChEBI:CHEBI:12345; Evidence={ECO:0000269|PubMed:16683188};\n"
-                        + "Name=A very very looooooooooooong cofactor name with X evidence tags; "
-                        + "Xref=ChEBI:CHEBI:54321; Evidence={ECO:0000269|PubMed:16683188, ECO:0000269|PubMed:16683189};\n"
-                        + "Note=Binds 2 divalent ions per subunit. {ECO:0000269|PubMed:16683188, "
-                        + "ECO:0000255|HAMAP-Rule:MF_00086}. Another note. {ECO:0000269|PubMed:16683189};";
+                        + "Name=A very looooooooooooong cofactor name with 1 evidence tag;"
+                        + " Xref=ChEBI:CHEBI:12345; Evidence={ECO:0000269|PubMed:16683188};\n"
+                        + "Name=A very very looooooooooooong cofactor name with X evidence tags;"
+                        + " Xref=ChEBI:CHEBI:54321; Evidence={ECO:0000269|PubMed:16683188,"
+                        + " ECO:0000269|PubMed:16683189};\n"
+                        + "Note=Binds 2 divalent ions per subunit. {ECO:0000269|PubMed:16683188,"
+                        + " ECO:0000255|HAMAP-Rule:MF_00086}. Another note."
+                        + " {ECO:0000269|PubMed:16683189};";
         CcLineFormater formater = new CcLineFormater();
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
@@ -222,7 +232,8 @@ class CcLineCofactorCommentParserTest {
 
         String ccLineStringEvidence =
                 "COFACTOR: [Serine protease NS3]:\n"
-                        + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:9060645};\n"
+                        + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105;"
+                        + " Evidence={ECO:0000269|PubMed:9060645};\n"
                         + "Note=Binds 1 zinc ion. {ECO:0000269|PubMed:9060645};";
         CcLineFormater formater = new CcLineFormater();
         UniprotKBLineParser<CcLineObject> parser =
@@ -252,10 +263,13 @@ class CcLineCofactorCommentParserTest {
 
         String ccLineStringEvidence =
                 "COFACTOR:\n"
-                        + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000255|HAMAP-Rule:MF_00086};\n"
-                        + "Name=Co(2+); Xref=ChEBI:CHEBI:48828; Evidence={ECO:0000255|HAMAP-Rule:MF_00089, ECO:0000269|PubMed:16683189};\n"
-                        + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt). "
-                        + "A second loosely associated metal ion is visible in the crystal structure. {ECO:0000255|HAMAP-Rule:MF_00082};";
+                        + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00086};\n"
+                        + "Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00089, ECO:0000269|PubMed:16683189};\n"
+                        + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt). A second"
+                        + " loosely associated metal ion is visible in the crystal structure."
+                        + " {ECO:0000255|HAMAP-Rule:MF_00082};";
         CcLineFormater formater = new CcLineFormater();
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();

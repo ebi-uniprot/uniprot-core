@@ -26,6 +26,12 @@ public class SamFeatureSetImpl implements SamFeatureSet {
 
     SamFeatureSetImpl(
             List<Condition> conditions, List<Annotation> annotations, SamTrigger samTrigger) {
+
+        if (Objects.isNull(samTrigger)) {
+            throw new IllegalArgumentException(
+                    "samTrigger is a mandatory parameter for a SamFeatureSet entry.");
+        }
+
         this.conditions = Utils.unmodifiableList(conditions);
         this.annotations = Utils.unmodifiableList(annotations);
         this.samTrigger = samTrigger;

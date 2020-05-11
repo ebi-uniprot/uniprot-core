@@ -43,7 +43,8 @@ class CcLineFormaterTest {
                         + "CC         IsoId=Q9V8R9-2; Sequence=VSP_000476, VSP_000477, VSP_000479,\n"
                         + "CC         VSP_000480, VSP_000481;\n"
                         + "CC       Name=Bim-alpha3 {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                        + "CC       ECO:0000313|PDB:3OW2}; Synonyms=BCL2-like 11 transcript variant 10\n"
+                        + "CC       ECO:0000313|PDB:3OW2}; Synonyms=BCL2-like 11 transcript variant"
+                        + " 10\n"
                         + "CC       {ECO:0000313|EMBL:BAG16761.1}, Bim-AD\n"
                         + "CC       {ECO:0000256|HAMAP-Rule:MF_00205}, BimAD {ECO:0000313|PDB:3OW2};\n"
                         + "CC         IsoId=Q9V8R9-3; Sequence=VSP_000475, VSP_000478, VSP_000479;\n"
@@ -93,7 +94,8 @@ class CcLineFormaterTest {
                 "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
                         + "CC       Absorption:\n"
                         + "CC         Abs(max)=465 nm {ECO:0000313|EMBL:BAG16761.1};\n"
-                        + "CC         Note=The above maximum is for the oxidized form. Shows a maximal\n"
+                        + "CC         Note=The above maximum is for the oxidized form. Shows a"
+                        + " maximal\n"
                         + "CC         peak at 330 nm in the reduced form. These absorption peaks are\n"
                         + "CC         for the tryptophylquinone cofactor. {ECO:0000303|Ref.6,\n"
                         + "CC         ECO:0000269|PubMed:10433554};\n"
@@ -152,14 +154,18 @@ class CcLineFormaterTest {
     void testCofactor() {
         String expected =
                 "CC   -!- COFACTOR: Isoform 1:\n"
-                        + "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000255|HAMAP-Rule:MF_00087};\n"
-                        + "CC       Name=Co(2+); Xref=ChEBI:CHEBI:48828; Evidence={ECO:0000255|HAMAP-Rule:MF_00088};\n"
+                        + "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00087};\n"
+                        + "CC       Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00088};\n"
                         + "CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt).\n"
                         + "CC       {ECO:0000255|HAMAP-Rule:MF_00086};\n";
         String lines =
                 "COFACTOR: Isoform 1:\n"
-                        + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000255|HAMAP-Rule:MF_00087};\n"
-                        + "Name=Co(2+); Xref=ChEBI:CHEBI:48828; Evidence={ECO:0000255|HAMAP-Rule:MF_00088};\n"
+                        + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00087};\n"
+                        + "Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00088};\n"
                         + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt).\n"
                         + "{ECO:0000255|HAMAP-Rule:MF_00086};\n";
         verify(expected, lines);
@@ -179,14 +185,18 @@ class CcLineFormaterTest {
     @Test
     void testRnaEditing() {
         String expected =
-                "CC   -!- RNA EDITING: Modified_positions=59 {ECO:0000313|EMBL:BAG16761.1}, 78, 94, 98, 102, 121; Note=The\n"
+                "CC   -!- RNA EDITING: Modified_positions=59 {ECO:0000313|EMBL:BAG16761.1}, 78,"
+                        + " 94, 98, 102, 121; Note=The\n"
                         + "CC       nonsense codon at position 59 is modified to a sense codon. The\n"
-                        + "CC       stop codon at position 121 is created by RNA editing. {ECO:0000313|PDB:3OW2,\n"
+                        + "CC       stop codon at position 121 is created by RNA editing."
+                        + " {ECO:0000313|PDB:3OW2,\n"
                         + "CC       ECO:0000256|HAMAP-Rule:MF_00205};\n";
         String lines =
-                "RNA EDITING: Modified_positions=59 {ECO:0000313|EMBL:BAG16761.1}, 78, 94, 98, 102, 121; Note=The\n"
+                "RNA EDITING: Modified_positions=59 {ECO:0000313|EMBL:BAG16761.1}, 78, 94, 98,"
+                        + " 102, 121; Note=The\n"
                         + "nonsense codon at position 59 is modified to a sense codon. The\n"
-                        + "stop codon at position 121 is created by RNA editing. {ECO:0000313|PDB:3OW2,\n"
+                        + "stop codon at position 121 is created by RNA editing."
+                        + " {ECO:0000313|PDB:3OW2,\n"
                         + "ECO:0000256|HAMAP-Rule:MF_00205};\n";
         verify(expected, lines);
     }
@@ -196,11 +206,13 @@ class CcLineFormaterTest {
         String expected =
                 "CC   -!- SEQUENCE CAUTION:\n"
                         + "CC       Sequence=CAI12537.1; Type=Erroneous gene model prediction;\n"
-                        + "CC       Sequence=CAI39742.1; Type=Erroneous gene model prediction; Positions=388, 399;\n";
+                        + "CC       Sequence=CAI39742.1; Type=Erroneous gene model prediction;"
+                        + " Positions=388, 399;\n";
         String lines =
                 "SEQUENCE CAUTION:\n"
                         + "Sequence=CAI12537.1; Type=Erroneous gene model prediction;\n"
-                        + "Sequence=CAI39742.1; Type=Erroneous gene model prediction; Positions=388, 399;\n";
+                        + "Sequence=CAI39742.1; Type=Erroneous gene model prediction; Positions=388,"
+                        + " 399;\n";
         verify(expected, lines);
     }
 
@@ -235,7 +247,8 @@ class CcLineFormaterTest {
         String expected =
                 "CC   -!- WEB RESOURCE: Name=Functional Glycomics Gateway - GTase;\n"
                         + "CC       Note=Beta1,4-N-acetylgalactosaminyltransferase III.;\n"
-                        + "CC       URL=\"http://www.functionalglycomics.org/glycomics/search/jsp/landing.jsp?query=gt_mou_507\";\n";
+                        + "CC      "
+                        + " URL=\"http://www.functionalglycomics.org/glycomics/search/jsp/landing.jsp?query=gt_mou_507\";\n";
         String lines =
                 "WEB RESOURCE: Name=Functional Glycomics Gateway - GTase;\n"
                         + "Note=Beta1,4-N-acetylgalactosaminyltransferase III.;\n"

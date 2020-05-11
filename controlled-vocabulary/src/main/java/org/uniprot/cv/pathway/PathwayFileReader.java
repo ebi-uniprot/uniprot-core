@@ -28,7 +28,8 @@ public class PathwayFileReader extends AbstractFileReader<PathwayEntry> {
             Collections.unmodifiableList(
                     Arrays.asList(
                             "This controlled vocabulary is provided by the UniPathway project",
-                            "(http://www.grenoble.prabi.fr/obiwarehouse/unipathway), a collaborative",
+                            "(http://www.grenoble.prabi.fr/obiwarehouse/unipathway), a"
+                                    + " collaborative",
                             "effort involving the SIB (http://www.isb-sib.ch/) and the INRIA",
                             "(http://www.inrialpes.fr/)"));
 

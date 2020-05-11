@@ -37,13 +37,17 @@ class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
     void testSequenceCauctionWithEvidence() {
         String ccLine =
                 ("CC   -!- SEQUENCE CAUTION:\n"
-                        + "CC       Sequence=CAA57511.1; Type=Frameshift; Note=The predicted gene.; Evidence={ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133};");
+                        + "CC       Sequence=CAA57511.1; Type=Frameshift; Note=The predicted gene.;"
+                        + " Evidence={ECO:0000256|HAMAP-Rule:MF_00205,"
+                        + " ECO:0000313|Ensembl:ENSP00000409133};");
         String ccLineString =
                 ("SEQUENCE CAUTION:\n"
                         + "Sequence=CAA57511.1; Type=Frameshift; Note=The predicted gene.;");
         String ccLineStringEvidence =
                 ("SEQUENCE CAUTION:\n"
-                        + "Sequence=CAA57511.1; Type=Frameshift; Note=The predicted gene.; Evidence={ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133};");
+                        + "Sequence=CAA57511.1; Type=Frameshift; Note=The predicted gene.;"
+                        + " Evidence={ECO:0000256|HAMAP-Rule:MF_00205,"
+                        + " ECO:0000313|Ensembl:ENSP00000409133};");
 
         String sequence = "CAA57511.1";
         String note = "The predicted gene.";
@@ -62,7 +66,8 @@ class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
     void testSequenceCauction2() {
         String ccLine =
                 ("CC   -!- SEQUENCE CAUTION:\n"
-                        + "CC       Sequence=CAA57511.1; Type=Erroneous gene model prediction; Note=The predicted gene.;");
+                        + "CC       Sequence=CAA57511.1; Type=Erroneous gene model prediction;"
+                        + " Note=The predicted gene.;");
         String sequence = "CAA57511.1";
         String note = "The predicted gene.";
         List<String> evs = new ArrayList<>();
@@ -76,13 +81,16 @@ class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
     void testSequenceCauction2WithEvidence() {
         String ccLine =
                 ("CC   -!- SEQUENCE CAUTION:\n"
-                        + "CC       Sequence=CAA57511.1; Type=Erroneous gene model prediction; Note=The predicted gene.; Evidence={ECO:0000256|HAMAP-Rule:MF_00205};");
+                        + "CC       Sequence=CAA57511.1; Type=Erroneous gene model prediction;"
+                        + " Note=The predicted gene.; Evidence={ECO:0000256|HAMAP-Rule:MF_00205};");
         String ccLineStringEvidence =
                 ("SEQUENCE CAUTION:\n"
-                        + "Sequence=CAA57511.1; Type=Erroneous gene model prediction; Note=The predicted gene.; Evidence={ECO:0000256|HAMAP-Rule:MF_00205};");
+                        + "Sequence=CAA57511.1; Type=Erroneous gene model prediction; Note=The"
+                        + " predicted gene.; Evidence={ECO:0000256|HAMAP-Rule:MF_00205};");
         String ccLineString =
                 ("SEQUENCE CAUTION:\n"
-                        + "Sequence=CAA57511.1; Type=Erroneous gene model prediction; Note=The predicted gene.;");
+                        + "Sequence=CAA57511.1; Type=Erroneous gene model prediction; Note=The"
+                        + " predicted gene.;");
 
         String sequence = "CAA57511.1";
         String note = "The predicted gene.";

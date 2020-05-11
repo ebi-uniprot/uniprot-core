@@ -89,7 +89,8 @@ class FeatureScoredTest {
     void shouldCrosslinkScore9() throws Exception {
         String line =
                 "FT   CROSSLNK        83\n"
-                        + "FT                   /note=\"Glycyl lysine isopeptide (Gly-Lys) (with M-243)\"\n";
+                        + "FT                   /note=\"Glycyl lysine isopeptide (Gly-Lys) (with"
+                        + " M-243)\"\n";
         testFeatureScore(line, 9.0);
     }
 

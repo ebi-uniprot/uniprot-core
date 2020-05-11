@@ -19,9 +19,11 @@ class InteractionMapTest {
                 "CC   -!- INTERACTION:\n"
                         + "CC       P12345; P03259; Xeno; NbExp=2; IntAct=EBI-475687, EBI-6947456;\n"
                         + "CC       P12345; P49711: CTCF; NbExp=2; IntAct=EBI-475687, EBI-932887;\n"
-                        + "CC       P12345; Q8JSK4: E1A; Xeno; NbExp=2; IntAct=EBI-475687, EBI-7453955;\n"
+                        + "CC       P12345; Q8JSK4: E1A; Xeno; NbExp=2; IntAct=EBI-475687,"
+                        + " EBI-7453955;\n"
                         + "CC       P12345; Q9UJU5: FOXD3; NbExp=2; IntAct=EBI-475687, EBI-475674;\n"
-                        + "CC       P12345; P63158: Hmgb1; Xeno; NbExp=3; IntAct=EBI-475687, EBI-6665811;\n"
+                        + "CC       P12345; P63158: Hmgb1; Xeno; NbExp=3; IntAct=EBI-475687,"
+                        + " EBI-6665811;\n"
                         + "CC       P12345; O95983: MBD3; NbExp=3; IntAct=EBI-475687, EBI-1783068;\n"
                         + "CC       P12345; O00308: WWP2; NbExp=4; IntAct=EBI-475687, EBI-743923;";
 

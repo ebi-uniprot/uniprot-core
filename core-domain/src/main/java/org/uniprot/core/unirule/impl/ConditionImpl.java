@@ -7,6 +7,7 @@ import java.util.Objects;
 import org.uniprot.core.Range;
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.ConditionValue;
+import org.uniprot.core.unirule.FeatureTagConditionValue;
 import org.uniprot.core.util.Utils;
 
 public class ConditionImpl implements Condition {
@@ -16,21 +17,27 @@ public class ConditionImpl implements Condition {
     private String type;
     private boolean isNegative;
     private Range range;
+    private FeatureTagConditionValue tag;
 
     ConditionImpl() {
         this.conditionValues = Collections.emptyList();
     }
 
     ConditionImpl(
-            List<ConditionValue> conditionValues, String type, boolean isNegative, Range range) {
+            List<ConditionValue> conditionValues,
+            String type,
+            boolean isNegative,
+            Range range,
+            FeatureTagConditionValue tag) {
         if (Utils.nullOrEmpty(type)) {
             throw new IllegalArgumentException(
-                    "type is a mandatory param for UniRule condition entry.");
+                    "type is a mandatory parameter for a UniRule condition entry.");
         }
         this.conditionValues = Utils.unmodifiableList(conditionValues);
         this.type = type;
         this.isNegative = isNegative;
         this.range = range;
+        this.tag = tag;
     }
 
     @Override
@@ -54,6 +61,11 @@ public class ConditionImpl implements Condition {
     }
 
     @Override
+    public FeatureTagConditionValue getTag() {
+        return tag;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -61,11 +73,12 @@ public class ConditionImpl implements Condition {
         return isNegative == condition.isNegative
                 && Objects.equals(conditionValues, condition.conditionValues)
                 && Objects.equals(type, condition.type)
-                && Objects.equals(range, condition.range);
+                && Objects.equals(range, condition.range)
+                && Objects.equals(tag, condition.tag);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(conditionValues, type, isNegative, range);
+        return Objects.hash(conditionValues, type, isNegative, range, tag);
     }
 }

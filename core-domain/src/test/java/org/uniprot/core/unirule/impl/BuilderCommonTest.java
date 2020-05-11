@@ -55,7 +55,7 @@ public class BuilderCommonTest {
                     assertTrue(((Map) fieldVal).isEmpty(), pd.getName() + " is not empty");
                 } else if (fieldVal instanceof Boolean) {
                     assertFalse((Boolean) fieldVal, pd.getName() + " is not false");
-                } else {
+                } else if (!(fieldVal instanceof RuleExceptionAnnotationType)) {
                     assertNull(fieldVal, pd.getName() + " is not null");
                 }
             }
@@ -176,7 +176,9 @@ public class BuilderCommonTest {
                 Arguments.of(SamTriggerBuilderTest.class),
                 Arguments.of(UniRuleEntryBuilderTest.class),
                 Arguments.of(UniRuleIdBuilderTest.class),
-                Arguments.of(CaseRuleBuilderTest.class));
+                Arguments.of(CaseRuleBuilderTest.class),
+                Arguments.of(AnnotationRuleExceptionBuilderTest.class),
+                Arguments.of(PositionalRuleExceptionBuilderTest.class));
     }
 
     static Stream<Arguments> provideTypeBuilderTestClass() {
@@ -221,14 +223,7 @@ public class BuilderCommonTest {
     static Stream<Arguments> provideBuilderObjectClass() {
         return Stream.of(
                 Arguments.of(AnnotationBuilder.class, AnnotationImpl.class),
-                Arguments.of(ConditionSetBuilder.class, ConditionSetImpl.class),
                 Arguments.of(FusionBuilder.class, FusionImpl.class),
-                Arguments.of(InformationBuilder.class, InformationImpl.class),
-                Arguments.of(PositionalFeatureBuilder.class, PositionalFeatureImpl.class),
-                Arguments.of(PositionFeatureSetBuilder.class, PositionFeatureSetImpl.class),
-                Arguments.of(SamFeatureSetBuilder.class, SamFeatureSetImpl.class),
-                Arguments.of(SamTriggerBuilder.class, SamTriggerImpl.class),
-                Arguments.of(RuleBuilder.class, RuleImpl.class),
-                Arguments.of(CaseRuleBuilder.class, CaseRuleImpl.class));
+                Arguments.of(SamTriggerBuilder.class, SamTriggerImpl.class));
     }
 }

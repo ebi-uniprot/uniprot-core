@@ -30,9 +30,11 @@ class FeatureConverterTest {
         FeatureConverter converter = new FeatureConverter(evRefMapper);
         AlternativeSequence altSeq = createAlternativeSequence("T", Arrays.asList("I"));
         String description =
-                "in CSTNU; reduces catalytic activity and affinity for pyridoxal phosphate; dbSNP:rs28941785";
+                "in CSTNU; reduces catalytic activity and affinity for pyridoxal phosphate;"
+                        + " dbSNP:rs28941785";
         String description2 =
-                "In CSTNU; reduces catalytic activity and affinity for pyridoxal phosphate; dbSNP:rs28941785.";
+                "In CSTNU; reduces catalytic activity and affinity for pyridoxal phosphate;"
+                        + " dbSNP:rs28941785.";
         String ftid = "VAR_015450";
 
         UniProtKBFeature feature =
@@ -58,10 +60,12 @@ class FeatureConverterTest {
         FeatureConverter converter = new FeatureConverter(evRefMapper);
         AlternativeSequence altSeq = createAlternativeSequence("T", Arrays.asList("I"));
         String description =
-                "in CSTNU; reduces catalytic activity and affinity for pyridoxal phosphate; dbSNP:rs28941785";
+                "in CSTNU; reduces catalytic activity and affinity for pyridoxal phosphate;"
+                        + " dbSNP:rs28941785";
         String ftid = "VAR_015450";
         String description2 =
-                "In CSTNU; reduces catalytic activity and affinity for pyridoxal phosphate; dbSNP:rs28941785.";
+                "In CSTNU; reduces catalytic activity and affinity for pyridoxal phosphate;"
+                        + " dbSNP:rs28941785.";
         UniProtKBFeature feature =
                 createFeature(
                         UniprotKBFeatureType.VARIANT,
@@ -101,9 +105,11 @@ class FeatureConverterTest {
         FeatureConverter converter = new FeatureConverter(evRefMapper);
         AlternativeSequence altSeq = createAlternativeSequence("T", Arrays.asList("I"));
         String description =
-                "in CSTNU; reduces catalytic activity and affinity for pyridoxal phosphate; dbSNP:rs28941785";
+                "in CSTNU; reduces catalytic activity and affinity for pyridoxal phosphate;"
+                        + " dbSNP:rs28941785";
         String description2 =
-                "In CSTNU; reduces catalytic activity and affinity for pyridoxal phosphate; dbSNP:rs28941785.";
+                "In CSTNU; reduces catalytic activity and affinity for pyridoxal phosphate;"
+                        + " dbSNP:rs28941785.";
         String ftid = null;
 
         UniProtKBFeature feature =
@@ -365,7 +371,8 @@ class FeatureConverterTest {
         parseDescription("in Ref. 4; BAC42427 and 5; AAO64895");
         parseDescription("Missing (in Ref. 2; DAA06033, 3; CAM19021 and 4; AAI00306)");
         parseDescription(
-                "Missing (in Ref. 1; AAZ04665 and 2; BAC33489/BAE29479/BAE29537/BAE41744/BAE34065)");
+                "Missing (in Ref. 1; AAZ04665 and 2;"
+                        + " BAC33489/BAE29479/BAE29537/BAE41744/BAE34065)");
         parseDescription("In Ref. 1; BAB69494/BAB69495, 3; BAC32031 and 4; AAI16724");
         parseDescription("in Ref. 1");
         parseDescription("in Ref. 1 and 3");

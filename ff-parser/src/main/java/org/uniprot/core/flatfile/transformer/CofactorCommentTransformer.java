@@ -30,7 +30,8 @@ public class CofactorCommentTransformer implements CommentTransformer<CofactorCo
     private static final String COFACTOR_XREF = "Xref=";
 
     private static final String COFACTOR_REGEX =
-            "^(\\[[\\w/-]+(\\s[\\w/-]+)*\\]:)?(\\s*Name=(\\S+( \\S+)*); Xref=\\w+:\\S+;?( Evidence=\\{.+:.+\\};)?)*(\\s*Note=.+\\.?)?";
+            "^(\\[[\\w/-]+(\\s[\\w/-]+)*\\]:)?(\\s*Name=(\\S+( \\S+)*); Xref=\\w+:\\S+;?("
+                    + " Evidence=\\{.+:.+\\};)?)*(\\s*Note=.+\\.?)?";
     private static final Pattern COFACTOR_PATTERN = Pattern.compile(COFACTOR_REGEX);
 
     private static String extractCofactorMolecule(String molecule) {

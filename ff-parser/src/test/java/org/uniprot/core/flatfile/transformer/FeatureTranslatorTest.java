@@ -133,7 +133,8 @@ class FeatureTranslatorTest {
     @Test
     void testConflict3() {
         String testString =
-                "CONFLICT 124..127\n/note=\"GLTA -> ESHP (in Ref. 1; AAA98633, 3; AA432 and 4; AB321)\"";
+                "CONFLICT 124..127\n"
+                        + "/note=\"GLTA -> ESHP (in Ref. 1; AAA98633, 3; AA432 and 4; AB321)\"";
 
         UniProtKBFeature feature = transformer.transform(testString);
         assertNotNull(feature);
@@ -165,7 +166,9 @@ class FeatureTranslatorTest {
     @Test
     void testMutagen() {
         String testString =
-                "MUTAGEN 9\n/note=\"K->R: Does not affect E-cadherin/CDH1 repression; when associated with R-16\"";
+                "MUTAGEN 9\n"
+                        + "/note=\"K->R: Does not affect E-cadherin/CDH1 repression; when associated"
+                        + " with R-16\"";
 
         UniProtKBFeature feature = transformer.transform(testString);
         assertNotNull(feature);
