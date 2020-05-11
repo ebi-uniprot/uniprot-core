@@ -2,11 +2,14 @@ name: Code Format on push master and pull request using spotless
 
 on:
   - pull_request
+    branches:
+      - master
   - push
+    branches:
+      - master
 
 jobs:
   formatting:
-    if: false == true
     runs-on: ubuntu-latest
 
     steps:
