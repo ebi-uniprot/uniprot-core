@@ -13,10 +13,6 @@ jobs:
         with:
           java-version: "11"
       - uses: axel-op/googlejavaformat-action@v3.0.0
-        files:
-          - '**/*.java'
-          - 'pom.xml'
-          - 'src/main/**/*.xml'
-          - 'src/main/**/*.xsd'
         with:
           args: "--aosp --replace"
+          files: "*"
