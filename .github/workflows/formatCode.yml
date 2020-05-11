@@ -1,0 +1,36 @@
+name: Code Format on push master and pull request
+
+on:
+  - pull_request
+  - push
+
+jobs:
+  formatting:
+    # Check if the PR is not from a fork - will not work - github limitation
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+          ref: ${{ github.head_ref }}
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+
+    - name: Format code with Maven plugin
+      run: mvn -P format compile
+
+    - name: Check for modified files
+      id: git-check
+      run: echo ::set-output name=modified::$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)
+      
+    - name: Push changes
+      if: steps.git-check.outputs.modified == 'true'
+      run: |
+        git config --global user.name 'automated changes'
+        git config --global user.email 'uniprot@ebi.ac.uk'
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        git commit -am "code format with spotless automatic"
+        git push
