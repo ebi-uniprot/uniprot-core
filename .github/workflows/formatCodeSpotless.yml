@@ -2,8 +2,6 @@ name: Code Format on push master and pull request using spotless
 
 on:
   pull_request:
-    branches:
-      - maste
   push:
     branches:
       - master
