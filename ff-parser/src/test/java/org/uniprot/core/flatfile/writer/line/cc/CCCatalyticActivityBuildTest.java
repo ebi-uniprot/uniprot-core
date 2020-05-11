@@ -49,16 +49,16 @@ class CCCatalyticActivityBuildTest extends CCBuildTestAbstr {
     void testWithSinglePD() {
         String ccLine =
                 "CC   -!- CATALYTIC ACTIVITY:\n"
-                    + "CC       Reaction=GDP-beta-L-fucose + NADP(+) ="
-                    + " GDP-4-dehydro-alpha-D-rhamnose +\n"
-                    + "CC         H(+); Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273,"
-                    + " ChEBI:CHEBI:58349,\n"
-                    + "CC         ChEBI:CHEBI:57964, ChEBI:CHEBI:57783;"
-                    + " Evidence={ECO:0000255|HAMAP-\n"
-                    + "CC         Rule:MF_00956, ECO:0000269|PubMed:10480878,\n"
-                    + "CC         ECO:0000269|PubMed:11021971, ECO:0000269|PubMed:9473059};\n"
-                    + "CC       PhysiologicalDirection=left-to-right; Xref=Rhea:RHEA:18886;\n"
-                    + "CC         Evidence={ECO:0000255|HAMAP-Rule:MF_00956};";
+                        + "CC       Reaction=GDP-beta-L-fucose + NADP(+) ="
+                        + " GDP-4-dehydro-alpha-D-rhamnose +\n"
+                        + "CC         H(+); Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273,"
+                        + " ChEBI:CHEBI:58349,\n"
+                        + "CC         ChEBI:CHEBI:57964, ChEBI:CHEBI:57783;"
+                        + " Evidence={ECO:0000255|HAMAP-\n"
+                        + "CC         Rule:MF_00956, ECO:0000269|PubMed:10480878,\n"
+                        + "CC         ECO:0000269|PubMed:11021971, ECO:0000269|PubMed:9473059};\n"
+                        + "CC       PhysiologicalDirection=left-to-right; Xref=Rhea:RHEA:18886;\n"
+                        + "CC         Evidence={ECO:0000255|HAMAP-Rule:MF_00956};";
         CatalyticActivityComment comment = convert(ccLine + "\n");
         doTest(ccLine, comment);
     }
@@ -67,18 +67,18 @@ class CCCatalyticActivityBuildTest extends CCBuildTestAbstr {
     void testWithMultiPD() {
         String ccLine =
                 "CC   -!- CATALYTIC ACTIVITY:\n"
-                    + "CC       Reaction=GDP-beta-L-fucose + NADP(+) ="
-                    + " GDP-4-dehydro-alpha-D-rhamnose +\n"
-                    + "CC         H(+); Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273,"
-                    + " ChEBI:CHEBI:58349,\n"
-                    + "CC         ChEBI:CHEBI:57964, ChEBI:CHEBI:57783; EC=1.1.1.271;\n"
-                    + "CC         Evidence={ECO:0000255|HAMAP-Rule:MF_00956,\n"
-                    + "CC         ECO:0000269|PubMed:10480878, ECO:0000269|PubMed:11021971,\n"
-                    + "CC         ECO:0000269|PubMed:9473059};\n"
-                    + "CC       PhysiologicalDirection=left-to-right; Xref=Rhea:RHEA:18886;\n"
-                    + "CC         Evidence={ECO:0000255|HAMAP-Rule:MF_00956};\n"
-                    + "CC       PhysiologicalDirection=right-to-left; Xref=Rhea:RHEA:18898;\n"
-                    + "CC         Evidence={ECO:0000255|HAMAP-Rule:MF_00957};";
+                        + "CC       Reaction=GDP-beta-L-fucose + NADP(+) ="
+                        + " GDP-4-dehydro-alpha-D-rhamnose +\n"
+                        + "CC         H(+); Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273,"
+                        + " ChEBI:CHEBI:58349,\n"
+                        + "CC         ChEBI:CHEBI:57964, ChEBI:CHEBI:57783; EC=1.1.1.271;\n"
+                        + "CC         Evidence={ECO:0000255|HAMAP-Rule:MF_00956,\n"
+                        + "CC         ECO:0000269|PubMed:10480878, ECO:0000269|PubMed:11021971,\n"
+                        + "CC         ECO:0000269|PubMed:9473059};\n"
+                        + "CC       PhysiologicalDirection=left-to-right; Xref=Rhea:RHEA:18886;\n"
+                        + "CC         Evidence={ECO:0000255|HAMAP-Rule:MF_00956};\n"
+                        + "CC       PhysiologicalDirection=right-to-left; Xref=Rhea:RHEA:18898;\n"
+                        + "CC         Evidence={ECO:0000255|HAMAP-Rule:MF_00957};";
         CatalyticActivityComment comment = convert(ccLine + "\n");
         doTest(ccLine, comment);
     }
@@ -87,10 +87,10 @@ class CCCatalyticActivityBuildTest extends CCBuildTestAbstr {
     void testCaBasedOnEnzyme() {
         String ccLine =
                 "CC   -!- CATALYTIC ACTIVITY:\n"
-                    + "CC       Reaction=GDP-beta-L-fucose + NADP(+) ="
-                    + " GDP-4-dehydro-alpha-D-rhamnose;\n"
-                    + "CC         EC=1.1.1.271; Evidence={ECO:0000269|PubMed:10480878,\n"
-                    + "CC         ECO:0000269|PubMed:11021971, ECO:0000269|PubMed:9473059};";
+                        + "CC       Reaction=GDP-beta-L-fucose + NADP(+) ="
+                        + " GDP-4-dehydro-alpha-D-rhamnose;\n"
+                        + "CC         EC=1.1.1.271; Evidence={ECO:0000269|PubMed:10480878,\n"
+                        + "CC         ECO:0000269|PubMed:11021971, ECO:0000269|PubMed:9473059};";
         CatalyticActivityComment comment = convert(ccLine + "\n");
         doTest(ccLine, comment);
     }
@@ -99,12 +99,12 @@ class CCCatalyticActivityBuildTest extends CCBuildTestAbstr {
     void testLineWrap() {
         String ccLine =
                 "CC   -!- CATALYTIC ACTIVITY:\n"
-                    + "CC       Reaction=H2O + L-arginyl-[protein] = L-citrullyl-[protein] +"
-                    + " NH4(+);\n"
-                    + "CC         Xref=Rhea:RHEA:18089, Rhea:RHEA-COMP:10532,"
-                    + " Rhea:RHEA-COMP:10588,\n"
-                    + "CC         ChEBI:CHEBI:15377, ChEBI:CHEBI:28938; EC=3.5.3.15;\n"
-                    + "CC         Evidence={ECO:0000269|PubMed:27866708};";
+                        + "CC       Reaction=H2O + L-arginyl-[protein] = L-citrullyl-[protein] +"
+                        + " NH4(+);\n"
+                        + "CC         Xref=Rhea:RHEA:18089, Rhea:RHEA-COMP:10532,"
+                        + " Rhea:RHEA-COMP:10588,\n"
+                        + "CC         ChEBI:CHEBI:15377, ChEBI:CHEBI:28938; EC=3.5.3.15;\n"
+                        + "CC         Evidence={ECO:0000269|PubMed:27866708};";
         CatalyticActivityComment comment = convert(ccLine + "\n");
         doTest(ccLine, comment);
     }

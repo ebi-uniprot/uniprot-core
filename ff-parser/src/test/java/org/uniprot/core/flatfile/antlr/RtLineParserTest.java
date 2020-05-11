@@ -41,8 +41,8 @@ class RtLineParserTest {
         RtLineObject obj = parser.parse(rtLines);
         assertEquals(
                 "New insulin-like proteins with atypical disulfide bond pattern characterized in"
-                    + " Caenorhabditis elegans by comparative sequence analysis and homology"
-                    + " modeling?",
+                        + " Caenorhabditis elegans by comparative sequence analysis and homology"
+                        + " modeling?",
                 obj.title);
     }
 
@@ -84,7 +84,7 @@ class RtLineParserTest {
         RtLineObject obj = parser.parse(rtLines);
         assertEquals(
                 "The success of acinetobacter species; genetic, metabolic and virulence"
-                    + " attributes.",
+                        + " attributes.",
                 obj.title);
     }
 
@@ -98,7 +98,7 @@ class RtLineParserTest {
         RtLineObject obj = parser.parse(rtLines);
         assertEquals(
                 "The success of acinetobacter species; genetic. metabolic and virulence"
-                    + " attributes.",
+                        + " attributes.",
                 obj.title);
     }
 
@@ -112,7 +112,7 @@ class RtLineParserTest {
         RtLineObject obj = parser.parse(rtLines);
         assertEquals(
                 "The success of \"acinetobacter\" species; genetic. metabolic and virulence"
-                    + " attributes.",
+                        + " attributes.",
                 obj.title);
     }
 
@@ -126,7 +126,7 @@ class RtLineParserTest {
         RtLineObject obj = parser.parse(rtLines);
         assertEquals(
                 "The success of \"acinetobacter\" species; genetic. metabolic and virulence"
-                    + " \"attributes\".",
+                        + " \"attributes\".",
                 obj.title);
     }
 

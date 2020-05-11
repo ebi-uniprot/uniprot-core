@@ -134,7 +134,7 @@ class FeatureTranslatorTest {
     void testConflict3() {
         String testString =
                 "CONFLICT 124..127\n"
-                    + "/note=\"GLTA -> ESHP (in Ref. 1; AAA98633, 3; AA432 and 4; AB321)\"";
+                        + "/note=\"GLTA -> ESHP (in Ref. 1; AAA98633, 3; AA432 and 4; AB321)\"";
 
         Feature feature = transformer.transform(testString);
         assertNotNull(feature);

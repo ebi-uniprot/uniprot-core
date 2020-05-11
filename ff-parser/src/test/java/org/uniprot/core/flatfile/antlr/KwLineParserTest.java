@@ -51,9 +51,9 @@ class KwLineParserTest {
     void testEvidences() {
         String kwLines =
                 "KW   Activator {ECO:00000001}; Complete proteome {ECO:00000001};\n"
-                    + "KW   Reference proteome; Transcription {ECO:0000006|PubMed:20858735,"
-                    + " ECO:0000006};\n"
-                    + "KW   Transcription regulation.\n";
+                        + "KW   Reference proteome; Transcription {ECO:0000006|PubMed:20858735,"
+                        + " ECO:0000006};\n"
+                        + "KW   Transcription regulation.\n";
         UniprotKBLineParser<KwLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createKwLineParser();
         KwLineObject obj = parser.parse(kwLines);

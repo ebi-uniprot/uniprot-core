@@ -59,8 +59,8 @@ class CcLineInteractionCommentParserTest {
     void test2() {
         String lines =
                 "CC   -!- INTERACTION:\n"
-                    + "CC       P17980; Q9W1K5-1: CG11299; NbExp=1; IntAct=EBI-133844,"
-                    + " EBI-212772;\n";
+                        + "CC       P17980; Q9W1K5-1: CG11299; NbExp=1; IntAct=EBI-133844,"
+                        + " EBI-212772;\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -112,8 +112,8 @@ class CcLineInteractionCommentParserTest {
     void testWithParent() {
         String lines =
                 "CC   -!- INTERACTION:\n"
-                    + "CC       D3ZAR1; PRO_0000017322 [P98158]: Lrp2; NbExp=3;"
-                    + " IntAct=EBI-9250714, EBI-9251342;\n";
+                        + "CC       D3ZAR1; PRO_0000017322 [P98158]: Lrp2; NbExp=3;"
+                        + " IntAct=EBI-9250714, EBI-9251342;\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -139,8 +139,8 @@ class CcLineInteractionCommentParserTest {
     void testChainIdWithParent() {
         String lines =
                 "CC   -!- INTERACTION:\n"
-                    + "CC       PRO_0000033156; PRO_0000000092 [P05067]: APP; NbExp=4;"
-                    + " IntAct=EBI-20824092, EBI-821758;\n";
+                        + "CC       PRO_0000033156; PRO_0000000092 [P05067]: APP; NbExp=4;"
+                        + " IntAct=EBI-20824092, EBI-821758;\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -166,8 +166,8 @@ class CcLineInteractionCommentParserTest {
     void test5() {
         String lines =
                 "CC   -!- INTERACTION:\n"
-                    + "CC       P12345; P84198-1: VIM; Xeno; NbExp=4; IntAct=EBI-356498,"
-                    + " EBI-457639;\n";
+                        + "CC       P12345; P84198-1: VIM; Xeno; NbExp=4; IntAct=EBI-356498,"
+                        + " EBI-457639;\n";
         ;
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
@@ -382,8 +382,8 @@ class CcLineInteractionCommentParserTest {
     void test10() {
         String lines =
                 "CC   -!- INTERACTION:\n"
-                    + "CC       P12345; Q9V3G9: EG:BACR37P7.5; NbExp=1; IntAct=EBI-175067,"
-                    + " EBI-162998;\n";
+                        + "CC       P12345; Q9V3G9: EG:BACR37P7.5; NbExp=1; IntAct=EBI-175067,"
+                        + " EBI-162998;\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -409,8 +409,8 @@ class CcLineInteractionCommentParserTest {
     void test11() {
         String lines =
                 "CC   -!- INTERACTION:\n"
-                    + "CC       P12345; Q9SZI2: NAP1;1; NbExp=4; IntAct=EBI-6913662,"
-                    + " EBI-4424361;\n";
+                        + "CC       P12345; Q9SZI2: NAP1;1; NbExp=4; IntAct=EBI-6913662,"
+                        + " EBI-4424361;\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -436,8 +436,8 @@ class CcLineInteractionCommentParserTest {
     void test12() {
         String lines =
                 "CC   -!- INTERACTION:\n"
-                    + "CC       P12345; A1Z199: BCR/ABL fusion; NbExp=2; IntAct=EBI-491549,"
-                    + " EBI-7286259;\n";
+                        + "CC       P12345; A1Z199: BCR/ABL fusion; NbExp=2; IntAct=EBI-491549,"
+                        + " EBI-7286259;\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);

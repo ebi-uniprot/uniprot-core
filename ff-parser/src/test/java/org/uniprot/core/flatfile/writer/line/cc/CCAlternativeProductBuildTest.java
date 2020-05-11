@@ -89,7 +89,7 @@ class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
         synonyms.put("A", isoEv);
         String note =
                 "Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is in conflict"
-                    + " in positions: 33:I->T. No experimental confirmation available.";
+                        + " in positions: 33:I->T. No experimental confirmation available.";
         List<String> noteEvidences = new ArrayList<>();
         List<String> isoIds = Arrays.asList(new String[] {"Q9V8R9-1"});
         List<String> seqIds = new ArrayList<>();
@@ -355,7 +355,7 @@ class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
         synonyms.put("A", isoEv);
         String note =
                 "Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is in conflict"
-                    + " in positions: 33:I->T. No experimental confirmation available.";
+                        + " in positions: 33:I->T. No experimental confirmation available.";
         List<String> noteEvidences = new ArrayList<>();
         noteEvidences.add(ev4);
         List<String> isoIds = Arrays.asList(new String[] {"Q9V8R9-1"});

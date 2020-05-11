@@ -112,9 +112,9 @@ class DiseaseCommentTransformerTest {
         String diseaseReferenceId = "601386";
         String diseaseDescription =
                 "A form of non-syndromic sensorineural hearing loss. Sensorineural deafness"
-                    + " results from damage to the neural receptors of the inner ear, the nerve"
-                    + " pathways to the brain, or the area of the brain that receives sound"
-                    + " information";
+                        + " results from damage to the neural receptors of the inner ear, the nerve"
+                        + " pathways to the brain, or the area of the brain that receives sound"
+                        + " information";
         String diseaseNote =
                 "The disease is caused by mutations affecting the gene represented in this entry";
 

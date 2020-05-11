@@ -236,8 +236,8 @@ class PropertyObjectTest {
     @Test
     void jsonObjectValues() {
         String str =
-                "{\"trueKey\":true,\"falseKey\":false,\"trueStrKey\":\"true\","
-                    + "\"falseStrKey\":\"false\",\"stringKey\":\"hello world!\",\"intKey\":42,"
+                "{\"trueKey\":true,\"falseKey\":false,\"trueStrKey\":\"true\",\"falseStrKey\":\"false\",\"stringKey\":\"hello"
+                    + " world!\",\"intKey\":42,"
                     + "\"intStrKey\":\"43\",\"longKey\":1234567890123456789,"
                     + "\"longStrKey\":\"987654321098765432\",\"doubleKey\":-23.45e7,"
                     + "\"doubleStrKey\":\"00001.000\","
@@ -563,8 +563,8 @@ class PropertyObjectTest {
                 assertTrue(
                         i == '\0' || i == '\n' || i == '\r',
                         "Only \\0 (U+0000), \\n"
-                            + " (U+000A), and \\r"
-                            + " (U+000D) should cause an error. Instead "
+                                + " (U+000A), and \\r"
+                                + " (U+000D) should cause an error. Instead "
                                 + charString
                                 + "("
                                 + i

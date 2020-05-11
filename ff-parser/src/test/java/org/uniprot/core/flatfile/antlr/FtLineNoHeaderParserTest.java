@@ -149,14 +149,14 @@ class FtLineNoHeaderParserTest {
     void testMultiFt() {
         String ftLines =
                 "VAR_SEQ 33..83\n"
-                    + "/note=\"TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG ->"
-                    + " SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)\"\n"
-                    + "/id=\"VSP_004370\"\n"
-                    + "MUTAGEN 119\n"
-                    + "/note=\"C->R,E,A: Loss of cADPr hydrolase and ADP-ribosyl cyclase"
-                    + " activity\"\n"
-                    + "HELIX 33..83\n"
-                    + "TURN 3..33";
+                        + "/note=\"TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG ->"
+                        + " SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)\"\n"
+                        + "/id=\"VSP_004370\"\n"
+                        + "MUTAGEN 119\n"
+                        + "/note=\"C->R,E,A: Loss of cADPr hydrolase and ADP-ribosyl cyclase"
+                        + " activity\"\n"
+                        + "HELIX 33..83\n"
+                        + "TURN 3..33";
 
         UniprotKBLineParser<FtLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
@@ -171,7 +171,7 @@ class FtLineNoHeaderParserTest {
                 "33",
                 "83",
                 "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP"
-                    + " (in isoform 2)",
+                        + " (in isoform 2)",
                 "VSP_004370");
         verify(
                 obj.getFts().get(1),

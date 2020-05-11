@@ -104,8 +104,8 @@ class ReactionImplTest {
         Reaction impl = new ReactionImpl("name", references, ecNumber, createEvidences());
         assertEquals(
                 "Reaction=name; Xref=Rhea:RHEA:123, Rhea:RHEA:323, ChEBI:ChEBI:3243; EC=1.2.4.5;"
-                    + " Evidence={ECO:0000255|PROSITE-ProRule:PRU10028,"
-                    + " ECO:0000256|PIRNR:PIRNR001361};",
+                        + " Evidence={ECO:0000255|PROSITE-ProRule:PRU10028,"
+                        + " ECO:0000256|PIRNR:PIRNR001361};",
                 impl.toString());
     }
 

@@ -79,23 +79,23 @@ class DeLineFormaterTest {
                     + " chain;\n";
         String lines =
                 "RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n"
-                    + "Includes:\n"
-                    + "RecName: Full=Glutamate N-acetyltransferase;\n"
-                    + "EC=2.3.1.35;\n"
-                    + "AltName: Full=Ornithine acetyltransferase;\n"
-                    + "Short=OATase;\n"
-                    + "AltName: Full=Ornithine transacetylase;\n"
-                    + "Includes:\n"
-                    + "RecName: Full=Amino-acid acetyltransferase;\n"
-                    + "EC=2.3.1.-;\n"
-                    + "AltName: Full=N-acetylglutamate synthase;\n"
-                    + "Short=AGS;\n"
-                    + "Contains:\n"
-                    + "RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha"
-                    + " chain;\n"
-                    + "Contains:\n"
-                    + "RecName: Full=Arginine biosynthesis bifunctional protein argJ beta"
-                    + " chain;\n";
+                        + "Includes:\n"
+                        + "RecName: Full=Glutamate N-acetyltransferase;\n"
+                        + "EC=2.3.1.35;\n"
+                        + "AltName: Full=Ornithine acetyltransferase;\n"
+                        + "Short=OATase;\n"
+                        + "AltName: Full=Ornithine transacetylase;\n"
+                        + "Includes:\n"
+                        + "RecName: Full=Amino-acid acetyltransferase;\n"
+                        + "EC=2.3.1.-;\n"
+                        + "AltName: Full=N-acetylglutamate synthase;\n"
+                        + "Short=AGS;\n"
+                        + "Contains:\n"
+                        + "RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha"
+                        + " chain;\n"
+                        + "Contains:\n"
+                        + "RecName: Full=Arginine biosynthesis bifunctional protein argJ beta"
+                        + " chain;\n";
         DeLineFormater formater = new DeLineFormater();
         String formated = formater.format(lines);
         assertEquals(expected, formated);

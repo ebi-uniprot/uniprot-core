@@ -58,7 +58,7 @@ class BPCPCommentTransformerTest {
         assertEquals(2, absorption.getNote().getTexts().size());
         String val1 =
                 "The above maximum is for the oxidized form. Shows a maximal peak at 330 nm in the"
-                    + " reduced form.";
+                        + " reduced form.";
         String val2 = "These absorption peaks are for the tryptophylquinone cofactor.";
         assertEquals(val1, absorption.getNote().getTexts().get(0).getValue());
         assertEquals(0, absorption.getNote().getTexts().get(0).getEvidences().size());
@@ -85,7 +85,7 @@ class BPCPCommentTransformerTest {
         assertEquals(2, absorption.getNote().getTexts().size());
         String val1 =
                 "The above maximum is for the oxidized form. Shows a maximal peak at 330 nm in the"
-                    + " reduced form.";
+                        + " reduced form.";
         String val2 = "These absorption peaks are for the tryptophylquinone cofactor.";
         assertEquals(val1, absorption.getNote().getTexts().get(0).getValue());
         assertEquals(1, absorption.getNote().getTexts().get(0).getEvidences().size());
@@ -156,7 +156,7 @@ class BPCPCommentTransformerTest {
         lines.add("Vmax=17 umol/min/mg enzyme;");
         lines.add(
                 "Note=The enzyme is substrate inhibited at high substrate concentrations (Ki=1.08"
-                    + " mM for tyramine).. Another note is very very long.;");
+                        + " mM for tyramine).. Another note is very very long.;");
         KineticParameters kp = transformer.buildKineticParameters(lines);
         assertNotNull(kp);
         assertEquals(2, kp.getMichaelisConstants().size());
@@ -189,7 +189,7 @@ class BPCPCommentTransformerTest {
         lines.add("KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};");
         lines.add(
                 "KM=688 uM for pyridoxal {ECO:0000269|PubMed:10433554,"
-                    + " ECO:0000313|EMBL:BAG16761.1};");
+                        + " ECO:0000313|EMBL:BAG16761.1};");
         lines.add("Vmax=17 umol/min/mg enzyme {ECO:0000313|PDB:3OW2};");
         lines.add(
                 "Note=The enzyme is substrate inhibited at high substrate concentrations (Ki=1.08"
@@ -315,13 +315,13 @@ class BPCPCommentTransformerTest {
     void testBPCPComment1() {
         String ccLineString =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "pH dependence:\n"
-                     + "Optimum pH is 8-10.. Optimum pH is 3-5.;\n"
-                     + "Redox potential:\n"
-                     + "E(0) is -448 mV.. E(0) is -234 mV.;\n"
-                     + "Temperature dependence:\n"
-                     + "Highly active at low temperatures, even at 0 degree Celsius."
-                     + " Thermolabile.. Another active at low temperatures.;");
+                        + "pH dependence:\n"
+                        + "Optimum pH is 8-10.. Optimum pH is 3-5.;\n"
+                        + "Redox potential:\n"
+                        + "E(0) is -448 mV.. E(0) is -234 mV.;\n"
+                        + "Temperature dependence:\n"
+                        + "Highly active at low temperatures, even at 0 degree Celsius."
+                        + " Thermolabile.. Another active at low temperatures.;");
         BPCPComment comment =
                 transformer.transform(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, ccLineString);
         assertNotNull(comment);
@@ -430,7 +430,7 @@ class BPCPCommentTransformerTest {
         assertEquals(1, absorption.getNote().getTexts().size());
         String val1 =
                 "The above maximum is for the oxidized form. Shows a maximal peak at 330 nm in the"
-                    + " reduced form.";
+                        + " reduced form.";
         assertEquals(val1, absorption.getNote().getTexts().get(0).getValue());
         assertEquals(0, absorption.getNote().getTexts().get(0).getEvidences().size());
 
@@ -451,7 +451,7 @@ class BPCPCommentTransformerTest {
         assertEquals(2, kp.getNote().getTexts().size());
         assertEquals(
                 "The enzyme is substrate inhibited at high substrate concentrations (Ki=1.08 mM"
-                    + " for tyramine).",
+                        + " for tyramine).",
                 kp.getNote().getTexts().get(0).getValue());
         assertEquals("Another note is very very long.", kp.getNote().getTexts().get(1).getValue());
     }
@@ -490,7 +490,7 @@ class BPCPCommentTransformerTest {
         assertEquals(2, absorption.getNote().getTexts().size());
         String val1 =
                 "The above maximum is for the oxidized form. Shows a maximal peak at 330 nm in the"
-                    + " reduced form.";
+                        + " reduced form.";
         String val2 = "These absorption peaks are for the tryptophylquinone cofactor.";
         assertEquals(val1, absorption.getNote().getTexts().get(0).getValue());
         assertEquals(1, absorption.getNote().getTexts().get(0).getEvidences().size());

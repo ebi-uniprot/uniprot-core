@@ -38,10 +38,10 @@ class CatalyticActivityMapTest {
         String value = mappedCatalyticActivity.get("cc_catalytic_activity");
         String expectedValue =
                 "CATALYTIC ACTIVITY: Reaction=a ribonucleoside 5'-triphosphate + RNA(n) ="
-                    + " diphosphate + RNA(n+1); Xref=Rhea:RHEA:21248, Rhea:RHEA-COMP:11128,"
-                    + " Rhea:RHEA-COMP:11129, ChEBI:CHEBI:33019, ChEBI:CHEBI:61557,"
-                    + " ChEBI:CHEBI:83400; EC=2.7.7.48; "
-                    + "Evidence={ECO:0000255|PROSITE-ProRule:PRU00539};";
+                        + " diphosphate + RNA(n+1); Xref=Rhea:RHEA:21248, Rhea:RHEA-COMP:11128,"
+                        + " Rhea:RHEA-COMP:11129, ChEBI:CHEBI:33019, ChEBI:CHEBI:61557,"
+                        + " ChEBI:CHEBI:83400; EC=2.7.7.48; "
+                        + "Evidence={ECO:0000255|PROSITE-ProRule:PRU00539};";
         assertEquals(expectedValue, value);
     }
 

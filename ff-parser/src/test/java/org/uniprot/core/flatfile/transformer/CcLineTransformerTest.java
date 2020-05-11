@@ -257,13 +257,13 @@ class CcLineTransformerTest {
     void testBPCPComment1() {
         String ccLineString =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "pH dependence:\n"
-                     + "Optimum pH is 8-10.. Optimum pH is 3-5.;\n"
-                     + "Redox potential:\n"
-                     + "E(0) is -448 mV.. E(0) is -234 mV.;\n"
-                     + "Temperature dependence:\n"
-                     + "Highly active at low temperatures, even at 0 degree Celsius."
-                     + " Thermolabile.. Another active at low temperatures.;");
+                        + "pH dependence:\n"
+                        + "Optimum pH is 8-10.. Optimum pH is 3-5.;\n"
+                        + "Redox potential:\n"
+                        + "E(0) is -448 mV.. E(0) is -234 mV.;\n"
+                        + "Temperature dependence:\n"
+                        + "Highly active at low temperatures, even at 0 degree Celsius."
+                        + " Thermolabile.. Another active at low temperatures.;");
         List<Comment> comments = transformer.transformNoHeader(ccLineString);
         assertEquals(1, comments.size());
         assertTrue(comments.get(0) instanceof BPCPComment);
@@ -380,7 +380,7 @@ class CcLineTransformerTest {
         assertEquals(1, absorption.getNote().getTexts().size());
         String val1 =
                 "The above maximum is for the oxidized form. Shows a maximal peak at 330 nm in the"
-                    + " reduced form.";
+                        + " reduced form.";
         //	String val2 = "These absorption peaks are for the tryptophylquinone cofactor.";
         assertEquals(val1, absorption.getNote().getTexts().get(0).getValue());
         assertEquals(0, absorption.getNote().getTexts().get(0).getEvidences().size());
@@ -404,7 +404,7 @@ class CcLineTransformerTest {
         assertEquals(2, kp.getNote().getTexts().size());
         assertEquals(
                 "The enzyme is substrate inhibited at high substrate concentrations (Ki=1.08 mM"
-                    + " for tyramine).",
+                        + " for tyramine).",
                 kp.getNote().getTexts().get(0).getValue());
         assertEquals("Another note is very very long.", kp.getNote().getTexts().get(1).getValue());
         //		BioPhysicoChemicalPropertiesComment comment2 =   CommentHelper.translateToComment(
@@ -447,7 +447,7 @@ class CcLineTransformerTest {
         assertEquals(2, absorption.getNote().getTexts().size());
         String val1 =
                 "The above maximum is for the oxidized form. Shows a maximal peak at 330 nm in the"
-                    + " reduced form.";
+                        + " reduced form.";
         String val2 = "These absorption peaks are for the tryptophylquinone cofactor.";
         assertEquals(val1, absorption.getNote().getTexts().get(0).getValue());
         assertEquals(1, absorption.getNote().getTexts().get(0).getEvidences().size());
@@ -523,7 +523,7 @@ class CcLineTransformerTest {
         EvidencedValue note1 = note.getTexts().get(0);
         assertEquals(
                 "Binds 2 divalent ions per subunit (magnesium or cobalt). A second loosely"
-                    + " associated metal ion is visible in the crystal structure.",
+                        + " associated metal ion is visible in the crystal structure.",
                 note1.getValue());
         assertEquals(1, note1.getEvidences().size());
         assertEquals("ECO:0000255|HAMAP-Rule:MF_00082", note1.getEvidences().get(0).getValue());
@@ -582,9 +582,9 @@ class CcLineTransformerTest {
     void testCofactor3() {
         String ccLineStringEvidence =
                 "COFACTOR: [Serine protease NS3]:\n"
-                    + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105;"
-                    + " Evidence={ECO:0000269|PubMed:9060645};\n"
-                    + "Note=Binds 1 zinc ion. {ECO:0000269|PubMed:9060645};";
+                        + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105;"
+                        + " Evidence={ECO:0000269|PubMed:9060645};\n"
+                        + "Note=Binds 1 zinc ion. {ECO:0000269|PubMed:9060645};";
 
         List<Comment> comments = transformer.transformNoHeader(ccLineStringEvidence);
         assertEquals(1, comments.size());
@@ -796,9 +796,9 @@ class CcLineTransformerTest {
     void testRnaEditing() {
         String ccLineString =
                 "RNA EDITING: Modified_positions=46 {ECO:0000269|PubMed:12527781,"
-                    + " ECO:0000269|PubMed:12711687}, 1052 {ECO:0000269|PubMed:12527781,"
-                    + " ECO:0000269|PubMed:12711687}; Note=The nonsense codons at positions 46,"
-                    + " 421, 973, 984 and 1048 are modified to sense codons.;";
+                        + " ECO:0000269|PubMed:12711687}, 1052 {ECO:0000269|PubMed:12527781,"
+                        + " ECO:0000269|PubMed:12711687}; Note=The nonsense codons at positions 46,"
+                        + " 421, 973, 984 and 1048 are modified to sense codons.;";
         List<Comment> comments = transformer.transformNoHeader(ccLineString);
         assertEquals(1, comments.size());
         assertTrue(comments.get(0) instanceof RnaEditingComment);
@@ -811,7 +811,7 @@ class CcLineTransformerTest {
         assertEquals(1, comment.getNote().getTexts().size());
         assertEquals(
                 "The nonsense codons at positions 46, 421, 973, 984 and 1048 are modified to sense"
-                    + " codons",
+                        + " codons",
                 comment.getNote().getTexts().get(0).getValue());
         assertTrue(comment.getNote() != null);
     }
@@ -820,7 +820,7 @@ class CcLineTransformerTest {
     void testMassSpec() {
         String ccLineString =
                 "MASS SPECTROMETRY: Mass=8320; Mass_error=3; Method=Electrospray; Range=1-72;"
-                    + " Evidence={ECO:0000269|PubMed:8735961};";
+                        + " Evidence={ECO:0000269|PubMed:8735961};";
         List<Comment> comments = transformer.transformNoHeader(ccLineString);
         assertEquals(1, comments.size());
         assertTrue(comments.get(0) instanceof MassSpectrometryComment);

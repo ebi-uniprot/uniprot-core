@@ -10,14 +10,14 @@ class DefaultLineFormaterTest {
     void testkeyword() {
         String expected =
                 "KW   Activator {ECO:00000001}; Complete proteome {ECO:00000001};\n"
-                    + "KW   Reference proteome; Transcription {ECO:0000006|PubMed:20858735,"
-                    + " ECO:0000006};\n"
-                    + "KW   Transcription regulation.\n";
+                        + "KW   Reference proteome; Transcription {ECO:0000006|PubMed:20858735,"
+                        + " ECO:0000006};\n"
+                        + "KW   Transcription regulation.\n";
         String lines =
                 "Activator {ECO:00000001}; Complete proteome {ECO:00000001};\n"
-                    + "Reference proteome; Transcription {ECO:0000006|PubMed:20858735,"
-                    + " ECO:0000006};\n"
-                    + "Transcription regulation.\n";
+                        + "Reference proteome; Transcription {ECO:0000006|PubMed:20858735,"
+                        + " ECO:0000006};\n"
+                        + "Transcription regulation.\n";
         verify(expected, lines, "KW   ");
     }
 
@@ -49,8 +49,8 @@ class DefaultLineFormaterTest {
                     + "GN   ECO:0000005|PubMed:208587235}, Syn2 {ECO:0000005|PubMed:208587235};\n";
         String lines =
                 "Name=GeneA {ECO:0000006|PubMed:20858735}; Synonyms=Syn1"
-                    + " {ECO:0000006|PubMed:20858735,\n"
-                    + "ECO:0000005|PubMed:208587235}, Syn2 {ECO:0000005|PubMed:208587235};\n";
+                        + " {ECO:0000006|PubMed:20858735,\n"
+                        + "ECO:0000005|PubMed:208587235}, Syn2 {ECO:0000005|PubMed:208587235};\n";
         verify(expected, lines, "GN   ");
     }
 

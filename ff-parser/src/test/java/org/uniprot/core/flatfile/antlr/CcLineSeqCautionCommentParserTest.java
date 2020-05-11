@@ -146,16 +146,16 @@ class CcLineSeqCautionCommentParserTest {
                 "AAA85813.1",
                 SequenceCautionObject.SequenceCautionType.FRAMESHIFT,
                 "Frameshift correction allows the C-terminal sequence to be compatible with the"
-                    + " results of mass spectrometry and X-ray crystallography");
+                        + " results of mass spectrometry and X-ray crystallography");
     }
 
     @Test
     void test5() {
         String lines =
                 "CC   -!- SEQUENCE CAUTION:\n"
-                    + "CC       Sequence=CAA57511.1; Type=Frameshift; Note=The predicted gene.;"
-                    + " Evidence={ECO:0000256|HAMAP-Rule:MF_00205,"
-                    + " ECO:0000313|Ensembl:ENSP00000409133};\n";
+                        + "CC       Sequence=CAA57511.1; Type=Frameshift; Note=The predicted gene.;"
+                        + " Evidence={ECO:0000256|HAMAP-Rule:MF_00205,"
+                        + " ECO:0000313|Ensembl:ENSP00000409133};\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -187,9 +187,9 @@ class CcLineSeqCautionCommentParserTest {
     void testNoHeader() {
         String ccLineString =
                 "SEQUENCE CAUTION:\n"
-                    + "Sequence=CAA57511.1; Type=Frameshift; Note=The predicted gene.;"
-                    + " Evidence={ECO:0000256|HAMAP-Rule:MF_00205,"
-                    + " ECO:0000313|Ensembl:ENSP00000409133};\n";
+                        + "Sequence=CAA57511.1; Type=Frameshift; Note=The predicted gene.;"
+                        + " Evidence={ECO:0000256|HAMAP-Rule:MF_00205,"
+                        + " ECO:0000313|Ensembl:ENSP00000409133};\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineFormater formater = new CcLineFormater();

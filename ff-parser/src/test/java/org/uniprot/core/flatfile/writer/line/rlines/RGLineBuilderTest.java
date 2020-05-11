@@ -33,7 +33,7 @@ class RGLineBuilderTest {
         assertEquals(1, lines.size());
         String expected =
                 "European Union Chromosome 3 Arabidopsis Sequencing Consortium; Institute for"
-                    + " Genomic Research; Kazusa DNA Research Institute;";
+                        + " Genomic Research; Kazusa DNA Research Institute;";
         assertEquals(expected, lines.get(0));
     }
 

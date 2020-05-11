@@ -32,8 +32,8 @@ class FreeTextCommentConverterTest {
 
         String text1 =
                 "Epithelial ion channel that plays an important role in the regulation of"
-                    + " epithelial ion and water transport and fluid homeostasis. Mediates the"
-                    + " transport of chloride ions across he cell membrane (By similarity)";
+                        + " epithelial ion and water transport and fluid homeostasis. Mediates the"
+                        + " transport of chloride ions across he cell membrane (By similarity)";
         String text2 = "Second comment";
         List<EvidencedValue> texts = new ArrayList<>();
         texts.add(new EvidencedValueBuilder(text1, evids).build());
@@ -65,8 +65,8 @@ class FreeTextCommentConverterTest {
 
         String text1 =
                 "Epithelial ion channel that plays an important role in the regulation of"
-                    + " epithelial ion and water transport and fluid homeostasis. Mediates the"
-                    + " transport of chloride ions across he cell membrane (By similarity)";
+                        + " epithelial ion and water transport and fluid homeostasis. Mediates the"
+                        + " transport of chloride ions across he cell membrane (By similarity)";
         String text2 = "Second comment";
         List<EvidencedValue> texts = new ArrayList<>();
         texts.add(new EvidencedValueBuilder(text1, evids).build());

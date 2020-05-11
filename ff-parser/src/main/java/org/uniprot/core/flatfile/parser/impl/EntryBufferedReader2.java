@@ -134,7 +134,7 @@ public class EntryBufferedReader2 implements EntryReader {
             Preconditions.checkState(
                     b1,
                     "Please if the file is truncated, i.e., not having a proper entry ending in"
-                        + " the end of the file.");
+                            + " the end of the file.");
         }
 
         final byte[] bytes = new byte[(int) (entryEndPosition - entryStartPosition)];

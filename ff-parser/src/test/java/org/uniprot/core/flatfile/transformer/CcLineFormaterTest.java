@@ -154,20 +154,20 @@ class CcLineFormaterTest {
     void testCofactor() {
         String expected =
                 "CC   -!- COFACTOR: Isoform 1:\n"
-                    + "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
-                    + " Evidence={ECO:0000255|HAMAP-Rule:MF_00087};\n"
-                    + "CC       Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
-                    + " Evidence={ECO:0000255|HAMAP-Rule:MF_00088};\n"
-                    + "CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt).\n"
-                    + "CC       {ECO:0000255|HAMAP-Rule:MF_00086};\n";
+                        + "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00087};\n"
+                        + "CC       Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00088};\n"
+                        + "CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt).\n"
+                        + "CC       {ECO:0000255|HAMAP-Rule:MF_00086};\n";
         String lines =
                 "COFACTOR: Isoform 1:\n"
-                    + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
-                    + " Evidence={ECO:0000255|HAMAP-Rule:MF_00087};\n"
-                    + "Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
-                    + " Evidence={ECO:0000255|HAMAP-Rule:MF_00088};\n"
-                    + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt).\n"
-                    + "{ECO:0000255|HAMAP-Rule:MF_00086};\n";
+                        + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00087};\n"
+                        + "Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00088};\n"
+                        + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt).\n"
+                        + "{ECO:0000255|HAMAP-Rule:MF_00086};\n";
         verify(expected, lines);
     }
 
@@ -193,11 +193,11 @@ class CcLineFormaterTest {
                     + "CC       ECO:0000256|HAMAP-Rule:MF_00205};\n";
         String lines =
                 "RNA EDITING: Modified_positions=59 {ECO:0000313|EMBL:BAG16761.1}, 78, 94, 98,"
-                    + " 102, 121; Note=The\n"
-                    + "nonsense codon at position 59 is modified to a sense codon. The\n"
-                    + "stop codon at position 121 is created by RNA editing."
-                    + " {ECO:0000313|PDB:3OW2,\n"
-                    + "ECO:0000256|HAMAP-Rule:MF_00205};\n";
+                        + " 102, 121; Note=The\n"
+                        + "nonsense codon at position 59 is modified to a sense codon. The\n"
+                        + "stop codon at position 121 is created by RNA editing."
+                        + " {ECO:0000313|PDB:3OW2,\n"
+                        + "ECO:0000256|HAMAP-Rule:MF_00205};\n";
         verify(expected, lines);
     }
 
@@ -205,9 +205,9 @@ class CcLineFormaterTest {
     void testSeqCaution() {
         String expected =
                 "CC   -!- SEQUENCE CAUTION:\n"
-                    + "CC       Sequence=CAI12537.1; Type=Erroneous gene model prediction;\n"
-                    + "CC       Sequence=CAI39742.1; Type=Erroneous gene model prediction;"
-                    + " Positions=388, 399;\n";
+                        + "CC       Sequence=CAI12537.1; Type=Erroneous gene model prediction;\n"
+                        + "CC       Sequence=CAI39742.1; Type=Erroneous gene model prediction;"
+                        + " Positions=388, 399;\n";
         String lines =
                 "SEQUENCE CAUTION:\n"
                     + "Sequence=CAI12537.1; Type=Erroneous gene model prediction;\n"

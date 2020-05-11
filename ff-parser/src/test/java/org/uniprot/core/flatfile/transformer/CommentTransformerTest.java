@@ -41,7 +41,7 @@ class CommentTransformerTest {
     void testTextOnly3Ev() {
         String tString =
                 "PPIases accelerate the folding of proteins (By similarity)."
-                    + " {ECO:0000269|PubMed:10051606}.";
+                        + " {ECO:0000269|PubMed:10051606}.";
         FreeTextComment comment = CommentTransformerHelper.transform(tString, CommentType.FUNCTION);
         assertEquals(1, comment.getTexts().size());
         EvidencedValue text = comment.getTexts().get(0);
@@ -62,11 +62,11 @@ class CommentTransformerTest {
     void testSubcellularLocationWithEvidence() {
         String tString =
                 "SUBCELLULAR LOCATION: Mitochondrion outer membrane {ECO:0000269|PubMed:2250705};"
-                    + " Single-pass membrane protein {ECO:0000269|PubMed:2250705}. Nucleus"
-                    + " membrane {ECO:0000269|PubMed:2250705}; Single-pass membrane protein"
-                    + " {ECO:0000269|PubMed:2250705}. Endoplasmic reticulum membrane"
-                    + " {ECO:0000269|PubMed:2250705}; Single-pass membrane protein"
-                    + " {ECO:0000269|PubMed:2250705}.";
+                        + " Single-pass membrane protein {ECO:0000269|PubMed:2250705}. Nucleus"
+                        + " membrane {ECO:0000269|PubMed:2250705}; Single-pass membrane protein"
+                        + " {ECO:0000269|PubMed:2250705}. Endoplasmic reticulum membrane"
+                        + " {ECO:0000269|PubMed:2250705}; Single-pass membrane protein"
+                        + " {ECO:0000269|PubMed:2250705}.";
         testComment(tString, CommentType.SUBCELLULAR_LOCATION, true);
     }
 

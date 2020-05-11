@@ -33,7 +33,7 @@ class SubcellLocationReaderTest {
         assertEquals("SL-0456", retObj.getId(), "id test");
         assertEquals(
                 "The region at either end of the longest axis of a cylindrical or elongated cell,"
-                    + " where polarized growth may occur.",
+                        + " where polarized growth may occur.",
                 retObj.getDefinition(),
                 "Definition match");
         assertEquals("Cell tip", retObj.getContent(), "Content of subc. loc. lines match");
@@ -65,23 +65,23 @@ class SubcellLocationReaderTest {
                         "",
                         " This document lists the UniProtKB controlled vocabulary used for the",
                         " subcellular locations (including the membrane topologies and"
-                            + " orientations",
+                                + " orientations",
                         " terms) in the SUBCELLULAR LOCATION lines.",
                         "",
                         " It provides definitions of the terms as well as other relevant"
-                            + " information",
+                                + " information",
                         " in the following format:",
                         "",
                         "  ---------  -------------------------------  "
-                            + " ----------------------------",
+                                + " ----------------------------",
                         "  Line code  Content                           Occurrence in an entry",
                         "  ---------  -------------------------------  "
-                            + " ----------------------------",
+                                + " ----------------------------",
                         "  ID         Identifier (location)             Once; starts an entry",
                         "  IT         Identifier (topology)             Once; starts a 'topology'"
-                            + " entry",
+                                + " entry",
                         "  IO         Identifier (orientation)          Once; starts an"
-                            + " 'orientation' entry",
+                                + " 'orientation' entry",
                         "  AC         Accession (SL-xxxx)               Once",
                         "  DE         Definition                        Once or more",
                         "  SY         Synonyms                          Optional; Once or more",
@@ -111,7 +111,7 @@ class SubcellLocationReaderTest {
                         "ID   Endomembrane system.",
                         "AC   SL-0147",
                         "DE   A collection of membranous structures involved in transport within"
-                            + " the",
+                                + " the",
                         "DE   cell. The main components of the endomembrane system are endoplasmic",
                         "DE   reticulum, Golgi apparatus, vesicles and cell membrane and nuclear",
                         "DE   envelope. The endomembrane system does not include the membranes of",
@@ -127,9 +127,9 @@ class SubcellLocationReaderTest {
                         "DE   The acidocalcisome is an electron-dense acidic organelle which",
                         "DE   contains a matrix of pyrophosphate and polyphosphates with bound",
                         "DE   calcium and other cations. Its limiting membrane possesses a number"
-                            + " of",
+                                + " of",
                         "DE   pumps and exchangers for the uptake and release of these elements."
-                            + " The",
+                                + " The",
                         "DE   acidocalcisome does not belong to the endocytic pathway and may",
                         "DE   represent a branch of the secretory pathway in trypanosomatids and",
                         "DE   apicomplexan parasites. The acidocalcisome is possibly involved in",
@@ -148,7 +148,7 @@ class SubcellLocationReaderTest {
                         "DE   phospholipids, integral membrane proteins, peripheral proteins,",
                         "DE   glycoproteins, glycolipids, etc. The relative amounts of these",
                         "DE   components as well as the types of lipids are non-randomly"
-                            + " distributed",
+                                + " distributed",
                         "DE   from membrane to membrane as well as between the two leaflets of a",
                         "DE   membrane.",
                         "SL   Membrane.",

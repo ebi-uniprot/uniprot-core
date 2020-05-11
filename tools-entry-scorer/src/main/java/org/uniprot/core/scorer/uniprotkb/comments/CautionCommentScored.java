@@ -15,11 +15,11 @@ public class CautionCommentScored extends CommentScoredAbstr {
 
     private static final String PROBLEM_CAUTION =
             "The sequence shown here is derived from an EMBL/GenBank/DDBJ whole genome shotgun"
-                + " (WGS) entry which is preliminary data";
+                    + " (WGS) entry which is preliminary data";
 
     private static final String ANOTHER_PROBLEM_CAUTION =
             "The sequence shown here is derived from an Ensembl automatic analysis pipeline and"
-                + " should be considered as preliminary data";
+                    + " should be considered as preliminary data";
 
     private final FreeTextComment comment;
 

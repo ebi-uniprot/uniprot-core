@@ -8,8 +8,8 @@ class CCLineBuildTest extends CCBuildTestAbstr {
     void testSIMILARITY3() {
         String ccLine =
                 ("CC   -!- SIMILARITY: Belongs to the MHC class I family.\n"
-                     + "CC   -!- SIMILARITY: Contains 1 Ig-like C1-type (immunoglobulin-like)"
-                     + " domain.");
+                        + "CC   -!- SIMILARITY: Contains 1 Ig-like C1-type (immunoglobulin-like)"
+                        + " domain.");
         doTest(ccLine);
     }
 

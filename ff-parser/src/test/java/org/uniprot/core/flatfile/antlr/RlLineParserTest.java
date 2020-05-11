@@ -277,7 +277,7 @@ class RlLineParserTest {
                 (RlLineObject.Thesis) obj.getReference(),
                 "Suranaree Univercity of Technology",
                 "111 Suranaree Ave. Suranaree Univercity of Technology, Thailand, Nakhon"
-                    + " Ratchasima, Thailand",
+                        + " Ratchasima, Thailand",
                 2010);
     }
 
@@ -307,8 +307,8 @@ class RlLineParserTest {
     void testBook() {
         String rgLines =
                 "RL   (In) Boyer P.D. (eds.);\n"
-                    + "RL   The enzymes (3rd ed.), pp.11:397-547, Academic Press, New York"
-                    + " (1975).\n";
+                        + "RL   The enzymes (3rd ed.), pp.11:397-547, Academic Press, New York"
+                        + " (1975).\n";
         UniprotKBLineParser<RlLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
@@ -440,9 +440,9 @@ class RlLineParserTest {
     void testVolumeContainDot() {
         String rgLines =
                 "RL   (In) Biggins J. (eds.);\n"
-                    + "RL   Progress in photosynthesis research, pp.II.1:13-16, Martinus"
-                    + " Nijhoff,\n"
-                    + "RL   The Hague (1987).\n";
+                        + "RL   Progress in photosynthesis research, pp.II.1:13-16, Martinus"
+                        + " Nijhoff,\n"
+                        + "RL   The Hague (1987).\n";
         UniprotKBLineParser<RlLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
@@ -510,9 +510,9 @@ class RlLineParserTest {
     void testBookTitle2() {
         String rgLines =
                 "RL   (In) Goffinet B., Hollowell V., Magill R. (eds.);\n"
-                    + "RL   MOLECULAR SYSTEMATICS OF BRYOPHYTES - MONOGRAPHS IN SYSTEMATIC"
-                    + " BOTANY,\n"
-                    + "RL   pp.61-86, Missouri Botanical Garden Press, USA (2004).\n";
+                        + "RL   MOLECULAR SYSTEMATICS OF BRYOPHYTES - MONOGRAPHS IN SYSTEMATIC"
+                        + " BOTANY,\n"
+                        + "RL   pp.61-86, Missouri Botanical Garden Press, USA (2004).\n";
         UniprotKBLineParser<RlLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
@@ -545,7 +545,7 @@ class RlLineParserTest {
                 (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {"Unknown A."}),
                 "PROCEEDINGS OF III CONGRESSO NACIONAL DE SAUDE PUBLICA VETERINARIA E I ENCONTRO"
-                    + " INTERNACIONAL DE SAUDE PUBLICA VETERINARIA",
+                        + " INTERNACIONAL DE SAUDE PUBLICA VETERINARIA",
                 "0",
                 "0",
                 null,
@@ -634,7 +634,7 @@ class RlLineParserTest {
                 (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {}),
                 "Proceedings of Plant Biology '2000: The annual meeting of the American Society of"
-                    + " Plant Physiologists",
+                        + " Plant Physiologists",
                 "0",
                 "0",
                 "abstract#272",
@@ -681,7 +681,7 @@ class RlLineParserTest {
                 (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {"Rossiter A.", "Kawanabe H."}),
                 "ADVANCES IN ECOLOGICAL RESEARCH 31: BIOLOGY OF ANCIENT LAKES; BIODIVERSITY,"
-                    + " ECOLOGY AND EVOLUTION",
+                        + " ECOLOGY AND EVOLUTION",
                 "275",
                 "302",
                 null,

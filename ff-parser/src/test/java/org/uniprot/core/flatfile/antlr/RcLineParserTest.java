@@ -100,11 +100,11 @@ class RcLineParserTest {
     void testMultiLinesWithEvidence() {
         String rcLines =
                 "RC   PLASMID=pSd11_G1246 {ECO:0000313|EMBL:BAG16761.1,\n"
-                    + "RC   ECO:0000269|PubMed:10433554}, pSd12_G1263\n"
-                    + "RC   {ECO:0000269|PubMed:10433554}, pSd13_G1271 {ECO:0000313|PDB:3OW2,\n"
-                    + "RC   ECO:0000256|HAMAP-Rule:MF_00205}, pSd4_G1190 {ECO:0000303|Ref.6},"
-                    + " and\n"
-                    + "RC   pSd5_G1213 {ECO:0000256|HAMAP-Rule:MF_00205};\n";
+                        + "RC   ECO:0000269|PubMed:10433554}, pSd12_G1263\n"
+                        + "RC   {ECO:0000269|PubMed:10433554}, pSd13_G1271 {ECO:0000313|PDB:3OW2,\n"
+                        + "RC   ECO:0000256|HAMAP-Rule:MF_00205}, pSd4_G1190 {ECO:0000303|Ref.6},"
+                        + " and\n"
+                        + "RC   pSd5_G1213 {ECO:0000256|HAMAP-Rule:MF_00205};\n";
         UniprotKBLineParser<RcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createRcLineParser();
         RcLineObject obj = parser.parse(rcLines);
@@ -230,7 +230,7 @@ class RcLineParserTest {
                 RcTokenEnum.STRAIN,
                 Arrays.asList(
                         "ATCC 15692 / DSM 22644 / CIP 104116 / JCM 14847 / LMG 12228 / 1C / PRS"
-                            + " 101 / PAO1"),
+                                + " 101 / PAO1"),
                 null);
     }
 }

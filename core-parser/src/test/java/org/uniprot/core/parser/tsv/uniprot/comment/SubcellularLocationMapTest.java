@@ -34,9 +34,9 @@ class SubcellularLocationMapTest {
         String value = mappedCelularLocation.get("cc_subcellular_location");
         String expectedValue =
                 "SUBCELLULAR LOCATION: [Capsid protein C]: Virion {ECO:0000250|UniProtKB:P17763}."
-                    + " Host nucleus {ECO:0000250|UniProtKB:P17763}. Host cytoplasm, host"
-                    + " perinuclear region {ECO:0000250|UniProtKB:P17763}. Host cytoplasm"
-                    + " {ECO:0000250|UniProtKB:P17763}.";
+                        + " Host nucleus {ECO:0000250|UniProtKB:P17763}. Host cytoplasm, host"
+                        + " perinuclear region {ECO:0000250|UniProtKB:P17763}. Host cytoplasm"
+                        + " {ECO:0000250|UniProtKB:P17763}.";
         assertEquals(expectedValue, value);
     }
 

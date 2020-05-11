@@ -14,15 +14,15 @@ class FTVariantFeatureBuildTest extends FTBuildTestAbstr {
     void testVariant() {
         String ftLine =
                 "FT   VARIANT         221\n"
-                    + "FT                   /note=\"G -> E (in a breast cancer sample; somatic"
-                    + " mutation;\n"
-                    + "FT                   dbSNP:rs35514614)\"\n"
-                    + "FT                   /id=\"VAR_038685\"";
+                        + "FT                   /note=\"G -> E (in a breast cancer sample; somatic"
+                        + " mutation;\n"
+                        + "FT                   dbSNP:rs35514614)\"\n"
+                        + "FT                   /id=\"VAR_038685\"";
         String ftLineString =
                 "VARIANT 221\n"
-                    + "/note=\"G -> E (in a breast cancer sample; somatic mutation;"
-                    + " dbSNP:rs35514614)\"\n"
-                    + "/id=\"VAR_038685\"";
+                        + "/note=\"G -> E (in a breast cancer sample; somatic mutation;"
+                        + " dbSNP:rs35514614)\"\n"
+                        + "/id=\"VAR_038685\"";
 
         String originalSequence = "G";
         List<String> alternativeSequences = new ArrayList<>();
@@ -56,15 +56,15 @@ class FTVariantFeatureBuildTest extends FTBuildTestAbstr {
                     + "FT                   /id=\"VAR_038685\"";
         String ftLineString =
                 "VARIANT 221\n"
-                    + "/note=\"G -> E,D (in a breast cancer sample; somatic mutation;"
-                    + " dbSNP:rs35514614)\"\n"
-                    + "/id=\"VAR_038685\"";
+                        + "/note=\"G -> E,D (in a breast cancer sample; somatic mutation;"
+                        + " dbSNP:rs35514614)\"\n"
+                        + "/id=\"VAR_038685\"";
         String ftLineStringEv =
                 "VARIANT 221\n"
-                    + "/note=\"G -> E,D (in a breast cancer sample; somatic mutation;"
-                    + " dbSNP:rs35514614)\"\n"
-                    + "/evidence=\"ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1\"\n"
-                    + "/id=\"VAR_038685\"";
+                        + "/note=\"G -> E,D (in a breast cancer sample; somatic mutation;"
+                        + " dbSNP:rs35514614)\"\n"
+                        + "/evidence=\"ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1\"\n"
+                        + "/id=\"VAR_038685\"";
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
         String ev2 = "ECO:0000269|PubMed:10433554";
 

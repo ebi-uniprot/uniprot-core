@@ -25,13 +25,13 @@ class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 
         String ccLineString =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "pH dependence:\n"
-                     + "Optimum pH is 8-10.;\n"
-                     + "Redox potential:\n"
-                     + "E(0) is -448 mV.;\n"
-                     + "Temperature dependence:\n"
-                     + "Highly active at low temperatures, even at 0 degree Celsius."
-                     + " Thermolabile.;");
+                        + "pH dependence:\n"
+                        + "Optimum pH is 8-10.;\n"
+                        + "Redox potential:\n"
+                        + "E(0) is -448 mV.;\n"
+                        + "Temperature dependence:\n"
+                        + "Highly active at low temperatures, even at 0 degree Celsius."
+                        + " Thermolabile.;");
         String ccLineStringEvidence =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
                      + "pH dependence:\n"
@@ -86,13 +86,13 @@ class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 
         String ccLineString =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "pH dependence:\n"
-                     + "Optimum pH is 8-10.;\n"
-                     + "Redox potential:\n"
-                     + "E(0) is -448 mV.;\n"
-                     + "Temperature dependence:\n"
-                     + "Highly active at low temperatures, even at 0 degree Celsius."
-                     + " Thermolabile.;");
+                        + "pH dependence:\n"
+                        + "Optimum pH is 8-10.;\n"
+                        + "Redox potential:\n"
+                        + "E(0) is -448 mV.;\n"
+                        + "Temperature dependence:\n"
+                        + "Highly active at low temperatures, even at 0 degree Celsius."
+                        + " Thermolabile.;");
 
         BPCPCommentBuilder builder = new BPCPCommentBuilder();
         String phValue = "Optimum pH is 8-10.";
@@ -123,33 +123,33 @@ class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
     void test2WithoutEvidence() {
         String ccLine =
                 ("CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "CC       Absorption:\n"
-                     + "CC         Abs(max)=465 nm;\n"
-                     + "CC         Note=The above maximum is for the oxidized form. Shows a"
-                     + " maximal peak\n"
-                     + "CC         at 330 nm in the reduced form. These absorption peaks are for"
-                     + " the\n"
-                     + "CC         tryptophylquinone cofactor.;\n"
-                     + "CC       Kinetic parameters:\n"
-                     + "CC         KM=5.4 uM for tyramine;\n"
-                     + "CC         KM=688 uM for pyridoxal;\n"
-                     + "CC         Vmax=17 umol/min/mg enzyme;\n"
-                     + "CC         Note=The enzyme is substrate inhibited at high substrate\n"
-                     + "CC         concentrations (Ki=1.08 mM for tyramine).;");
+                        + "CC       Absorption:\n"
+                        + "CC         Abs(max)=465 nm;\n"
+                        + "CC         Note=The above maximum is for the oxidized form. Shows a"
+                        + " maximal peak\n"
+                        + "CC         at 330 nm in the reduced form. These absorption peaks are for"
+                        + " the\n"
+                        + "CC         tryptophylquinone cofactor.;\n"
+                        + "CC       Kinetic parameters:\n"
+                        + "CC         KM=5.4 uM for tyramine;\n"
+                        + "CC         KM=688 uM for pyridoxal;\n"
+                        + "CC         Vmax=17 umol/min/mg enzyme;\n"
+                        + "CC         Note=The enzyme is substrate inhibited at high substrate\n"
+                        + "CC         concentrations (Ki=1.08 mM for tyramine).;");
 
         String ccLineString =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "Absorption:\n"
-                     + "Abs(max)=465 nm;\n"
-                     + "Note=The above maximum is for the oxidized form. Shows a maximal peak at"
-                     + " 330 nm in the reduced form. These absorption peaks are for the"
-                     + " tryptophylquinone cofactor.;\n"
-                     + "Kinetic parameters:\n"
-                     + "KM=5.4 uM for tyramine;\n"
-                     + "KM=688 uM for pyridoxal;\n"
-                     + "Vmax=17 umol/min/mg enzyme;\n"
-                     + "Note=The enzyme is substrate inhibited at high substrate concentrations"
-                     + " (Ki=1.08 mM for tyramine).;");
+                        + "Absorption:\n"
+                        + "Abs(max)=465 nm;\n"
+                        + "Note=The above maximum is for the oxidized form. Shows a maximal peak at"
+                        + " 330 nm in the reduced form. These absorption peaks are for the"
+                        + " tryptophylquinone cofactor.;\n"
+                        + "Kinetic parameters:\n"
+                        + "KM=5.4 uM for tyramine;\n"
+                        + "KM=688 uM for pyridoxal;\n"
+                        + "Vmax=17 umol/min/mg enzyme;\n"
+                        + "Note=The enzyme is substrate inhibited at high substrate concentrations"
+                        + " (Ki=1.08 mM for tyramine).;");
         //		String ev1 ="ECO:0000313|EMBL:BAG16761.1";
         //		String ev2= "ECO:0000269|PubMed:10433554";
         //		String ev3 ="ECO:0000303|Ref.6";
@@ -214,51 +214,51 @@ class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
     void test2WithEvidence() {
         String ccLine =
                 ("CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "CC       Absorption:\n"
-                     + "CC         Abs(max)=465 nm {ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "CC         Note=The above maximum is for the oxidized form. Shows a"
-                     + " maximal peak\n"
-                     + "CC         at 330 nm in the reduced form. These absorption peaks are for"
-                     + " the\n"
-                     + "CC         tryptophylquinone cofactor. {ECO:0000269|PubMed:10433554,\n"
-                     + "CC         ECO:0000303|Ref.6};\n"
-                     + "CC       Kinetic parameters:\n"
-                     + "CC         KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "CC         KM=688 uM for pyridoxal {ECO:0000269|PubMed:10433554,\n"
-                     + "CC         ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "CC         Vmax=17 umol/min/mg enzyme {ECO:0000313|PDB:3OW2};\n"
-                     + "CC         Note=The enzyme is substrate inhibited at high substrate\n"
-                     + "CC         concentrations (Ki=1.08 mM for tyramine).\n"
-                     + "CC         {ECO:0000256|HAMAP-Rule:MF_00205};");
+                        + "CC       Absorption:\n"
+                        + "CC         Abs(max)=465 nm {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "CC         Note=The above maximum is for the oxidized form. Shows a"
+                        + " maximal peak\n"
+                        + "CC         at 330 nm in the reduced form. These absorption peaks are for"
+                        + " the\n"
+                        + "CC         tryptophylquinone cofactor. {ECO:0000269|PubMed:10433554,\n"
+                        + "CC         ECO:0000303|Ref.6};\n"
+                        + "CC       Kinetic parameters:\n"
+                        + "CC         KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "CC         KM=688 uM for pyridoxal {ECO:0000269|PubMed:10433554,\n"
+                        + "CC         ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "CC         Vmax=17 umol/min/mg enzyme {ECO:0000313|PDB:3OW2};\n"
+                        + "CC         Note=The enzyme is substrate inhibited at high substrate\n"
+                        + "CC         concentrations (Ki=1.08 mM for tyramine).\n"
+                        + "CC         {ECO:0000256|HAMAP-Rule:MF_00205};");
 
         String ccLineString =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "Absorption:\n"
-                     + "Abs(max)=465 nm;\n"
-                     + "Note=The above maximum is for the oxidized form. Shows a maximal peak at"
-                     + " 330 nm in the reduced form. These absorption peaks are for the"
-                     + " tryptophylquinone cofactor.;\n"
-                     + "Kinetic parameters:\n"
-                     + "KM=5.4 uM for tyramine;\n"
-                     + "KM=688 uM for pyridoxal;\n"
-                     + "Vmax=17 umol/min/mg enzyme;\n"
-                     + "Note=The enzyme is substrate inhibited at high substrate concentrations"
-                     + " (Ki=1.08 mM for tyramine).;");
+                        + "Absorption:\n"
+                        + "Abs(max)=465 nm;\n"
+                        + "Note=The above maximum is for the oxidized form. Shows a maximal peak at"
+                        + " 330 nm in the reduced form. These absorption peaks are for the"
+                        + " tryptophylquinone cofactor.;\n"
+                        + "Kinetic parameters:\n"
+                        + "KM=5.4 uM for tyramine;\n"
+                        + "KM=688 uM for pyridoxal;\n"
+                        + "Vmax=17 umol/min/mg enzyme;\n"
+                        + "Note=The enzyme is substrate inhibited at high substrate concentrations"
+                        + " (Ki=1.08 mM for tyramine).;");
         String ccLineStringEvidence =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "Absorption:\n"
-                     + "Abs(max)=465 nm {ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "Note=The above maximum is for the oxidized form. Shows a maximal peak at"
-                     + " 330 nm in the reduced form. These absorption peaks are for the"
-                     + " tryptophylquinone cofactor. {ECO:0000269|PubMed:10433554,"
-                     + " ECO:0000303|Ref.6};\n"
-                     + "Kinetic parameters:\n"
-                     + "KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "KM=688 uM for pyridoxal {ECO:0000269|PubMed:10433554,"
-                     + " ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "Vmax=17 umol/min/mg enzyme {ECO:0000313|PDB:3OW2};\n"
-                     + "Note=The enzyme is substrate inhibited at high substrate concentrations"
-                     + " (Ki=1.08 mM for tyramine). {ECO:0000256|HAMAP-Rule:MF_00205};");
+                        + "Absorption:\n"
+                        + "Abs(max)=465 nm {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "Note=The above maximum is for the oxidized form. Shows a maximal peak at"
+                        + " 330 nm in the reduced form. These absorption peaks are for the"
+                        + " tryptophylquinone cofactor. {ECO:0000269|PubMed:10433554,"
+                        + " ECO:0000303|Ref.6};\n"
+                        + "Kinetic parameters:\n"
+                        + "KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "KM=688 uM for pyridoxal {ECO:0000269|PubMed:10433554,"
+                        + " ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "Vmax=17 umol/min/mg enzyme {ECO:0000313|PDB:3OW2};\n"
+                        + "Note=The enzyme is substrate inhibited at high substrate concentrations"
+                        + " (Ki=1.08 mM for tyramine). {ECO:0000256|HAMAP-Rule:MF_00205};");
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
         String ev2 = "ECO:0000269|PubMed:10433554";
         String ev3 = "ECO:0000303|Ref.6";
@@ -346,13 +346,13 @@ class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 
         String ccLineString =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "pH dependence:\n"
-                     + "Optimum pH is 8-10.. Optimum pH is 3-5.;\n"
-                     + "Redox potential:\n"
-                     + "E(0) is -448 mV.. E(0) is -234 mV.;\n"
-                     + "Temperature dependence:\n"
-                     + "Highly active at low temperatures, even at 0 degree Celsius."
-                     + " Thermolabile.. Another active at low temperatures.;");
+                        + "pH dependence:\n"
+                        + "Optimum pH is 8-10.. Optimum pH is 3-5.;\n"
+                        + "Redox potential:\n"
+                        + "E(0) is -448 mV.. E(0) is -234 mV.;\n"
+                        + "Temperature dependence:\n"
+                        + "Highly active at low temperatures, even at 0 degree Celsius."
+                        + " Thermolabile.. Another active at low temperatures.;");
         String ccLineStringEvidence =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
                      + "pH dependence:\n"
@@ -414,54 +414,54 @@ class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
     void test4WithEvidence() {
         String ccLine =
                 ("CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "CC       Absorption:\n"
-                     + "CC         Abs(max)=465 nm {ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "CC         Note=The above maximum is for the oxidized form. Shows a"
-                     + " maximal peak\n"
-                     + "CC         at 330 nm in the reduced form. {ECO:0000269|PubMed:10433554}."
-                     + " These\n"
-                     + "CC         absorption peaks are for the tryptophylquinone cofactor.\n"
-                     + "CC         {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};\n"
-                     + "CC       Kinetic parameters:\n"
-                     + "CC         KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "CC         KM=688 uM for pyridoxal {ECO:0000269|PubMed:10433554,\n"
-                     + "CC         ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "CC         Vmax=17 umol/min/mg enzyme {ECO:0000313|PDB:3OW2};\n"
-                     + "CC         Note=The enzyme is substrate inhibited at high substrate\n"
-                     + "CC         concentrations (Ki=1.08 mM for tyramine).\n"
-                     + "CC         {ECO:0000256|HAMAP-Rule:MF_00205}. Another note is very very"
-                     + " long.\n"
-                     + "CC         {ECO:0000256|HAMAP-Rule:MF_00205};");
+                        + "CC       Absorption:\n"
+                        + "CC         Abs(max)=465 nm {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "CC         Note=The above maximum is for the oxidized form. Shows a"
+                        + " maximal peak\n"
+                        + "CC         at 330 nm in the reduced form. {ECO:0000269|PubMed:10433554}."
+                        + " These\n"
+                        + "CC         absorption peaks are for the tryptophylquinone cofactor.\n"
+                        + "CC         {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};\n"
+                        + "CC       Kinetic parameters:\n"
+                        + "CC         KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "CC         KM=688 uM for pyridoxal {ECO:0000269|PubMed:10433554,\n"
+                        + "CC         ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "CC         Vmax=17 umol/min/mg enzyme {ECO:0000313|PDB:3OW2};\n"
+                        + "CC         Note=The enzyme is substrate inhibited at high substrate\n"
+                        + "CC         concentrations (Ki=1.08 mM for tyramine).\n"
+                        + "CC         {ECO:0000256|HAMAP-Rule:MF_00205}. Another note is very very"
+                        + " long.\n"
+                        + "CC         {ECO:0000256|HAMAP-Rule:MF_00205};");
 
         String ccLineString =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "Absorption:\n"
-                     + "Abs(max)=465 nm;\n"
-                     + "Note=The above maximum is for the oxidized form. Shows a maximal peak at"
-                     + " 330 nm in the reduced form.. These absorption peaks are for the"
-                     + " tryptophylquinone cofactor.;\n"
-                     + "Kinetic parameters:\n"
-                     + "KM=5.4 uM for tyramine;\n"
-                     + "KM=688 uM for pyridoxal;\n"
-                     + "Vmax=17 umol/min/mg enzyme;\n"
-                     + "Note=The enzyme is substrate inhibited at high substrate concentrations"
-                     + " (Ki=1.08 mM for tyramine).. Another note is very very long.;");
+                        + "Absorption:\n"
+                        + "Abs(max)=465 nm;\n"
+                        + "Note=The above maximum is for the oxidized form. Shows a maximal peak at"
+                        + " 330 nm in the reduced form.. These absorption peaks are for the"
+                        + " tryptophylquinone cofactor.;\n"
+                        + "Kinetic parameters:\n"
+                        + "KM=5.4 uM for tyramine;\n"
+                        + "KM=688 uM for pyridoxal;\n"
+                        + "Vmax=17 umol/min/mg enzyme;\n"
+                        + "Note=The enzyme is substrate inhibited at high substrate concentrations"
+                        + " (Ki=1.08 mM for tyramine).. Another note is very very long.;");
         String ccLineStringEvidence =
                 ("BIOPHYSICOCHEMICAL PROPERTIES:\n"
-                     + "Absorption:\n"
-                     + "Abs(max)=465 nm {ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "Note=The above maximum is for the oxidized form. Shows a maximal peak at"
-                     + " 330 nm in the reduced form. {ECO:0000269|PubMed:10433554}. These"
-                     + " absorption peaks are for the tryptophylquinone cofactor."
-                     + " {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};\n"
-                     + "Kinetic parameters:\n"
-                     + "KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "KM=688 uM for pyridoxal {ECO:0000269|PubMed:10433554,"
-                     + " ECO:0000313|EMBL:BAG16761.1};\n"
-                     + "Vmax=17 umol/min/mg enzyme {ECO:0000313|PDB:3OW2};\n"
-                     + "Note=The enzyme is substrate inhibited at high substrate concentrations"
-                     + " (Ki=1.08 mM for tyramine). {ECO:0000256|HAMAP-Rule:MF_00205}. Another"
-                     + " note is very very long. {ECO:0000256|HAMAP-Rule:MF_00205};");
+                        + "Absorption:\n"
+                        + "Abs(max)=465 nm {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "Note=The above maximum is for the oxidized form. Shows a maximal peak at"
+                        + " 330 nm in the reduced form. {ECO:0000269|PubMed:10433554}. These"
+                        + " absorption peaks are for the tryptophylquinone cofactor."
+                        + " {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};\n"
+                        + "Kinetic parameters:\n"
+                        + "KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "KM=688 uM for pyridoxal {ECO:0000269|PubMed:10433554,"
+                        + " ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "Vmax=17 umol/min/mg enzyme {ECO:0000313|PDB:3OW2};\n"
+                        + "Note=The enzyme is substrate inhibited at high substrate concentrations"
+                        + " (Ki=1.08 mM for tyramine). {ECO:0000256|HAMAP-Rule:MF_00205}. Another"
+                        + " note is very very long. {ECO:0000256|HAMAP-Rule:MF_00205};");
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
         String ev2 = "ECO:0000269|PubMed:10433554";
         String ev3 = "ECO:0000303|Ref.6";

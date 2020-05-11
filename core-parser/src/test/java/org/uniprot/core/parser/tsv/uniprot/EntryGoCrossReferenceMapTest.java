@@ -61,7 +61,7 @@ class EntryGoCrossReferenceMapTest {
         verify(go_p, "go_p", result);
         String go_id =
                 "GO:0005783; GO:0005788; GO:0006457; GO:0016020; GO:0032781; GO:0036498;"
-                    + " GO:0051082";
+                        + " GO:0051082";
 
         verify(go_id, "go_id", result);
     }
@@ -97,7 +97,7 @@ class EntryGoCrossReferenceMapTest {
         verify(go_p, "go_p", result);
         String go_id =
                 "GO:0005783; GO:0005788; GO:0006457; GO:0016020; GO:0032781; GO:0036498;"
-                    + " GO:0051082";
+                        + " GO:0051082";
 
         verify(go_id, "go_id", result);
     }

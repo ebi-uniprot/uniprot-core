@@ -111,7 +111,7 @@ class DrLineParserTest {
     void testWithSemicolon() {
         String dfLines =
                 "DR   Orphanet; 102724; Acute myeloid leukemia with t(8;21)(q22;q22)"
-                    + " translocation.\n";
+                        + " translocation.\n";
         UniprotKBLineParser<DrLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createDrLineParser();
         DrLineObject obj = parser.parse(dfLines);
@@ -169,7 +169,7 @@ class DrLineParserTest {
     void testWithCurlyBracket() {
         String dfLines =
                 "DR   GO; GO:0033942; F:4-alpha-D-{(1->4)-alpha-D-glucano}trehalose"
-                    + " trehalohydrolase activity; IEA:UniProtKB-EC.\n";
+                        + " trehalohydrolase activity; IEA:UniProtKB-EC.\n";
         UniprotKBLineParser<DrLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createDrLineParser();
         DrLineObject obj = parser.parse(dfLines);

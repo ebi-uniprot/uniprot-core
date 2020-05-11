@@ -14,7 +14,7 @@ public class ECFileReader extends AbstractFileReader<ECEntry> {
     private static final Pattern ENZYME_CLASS_PATTERN =
             Pattern.compile(
                     "^([1-9-][0-9]*\\.) ?([1-9-][0-9]*\\.) ?([1-9-][0-9]*\\.) ?([1-9-][0-9]*) ?"
-                        + " +(.*)\\.$");
+                            + " +(.*)\\.$");
     private static final Pattern TERMINATING_DOTS = Pattern.compile("^(.*?)\\.*$");
     private final ECDatFileReader datFileReader;
     private final ECClassFileReader classFileReader;

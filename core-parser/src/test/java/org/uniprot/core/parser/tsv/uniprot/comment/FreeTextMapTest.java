@@ -51,8 +51,8 @@ class FreeTextMapTest {
         String value = mappedFreeText.get("cc_similarity");
         String expectedValue =
                 "SIMILARITY: In the N-terminal section; belongs to the PMEI family."
-                    + " {ECO:0000305}.; SIMILARITY: In the C-terminal section; belongs to the"
-                    + " pectinesterase family. {ECO:0000305}.";
+                        + " {ECO:0000305}.; SIMILARITY: In the C-terminal section; belongs to the"
+                        + " pectinesterase family. {ECO:0000305}.";
         assertEquals(expectedValue, value);
     }
 }

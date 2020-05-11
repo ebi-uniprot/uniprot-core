@@ -56,7 +56,7 @@ class BPCPMapTest {
         String absorption = mappedBPCP.get("absorption");
         String absorptionExpected =
                 "BIOPHYSICOCHEMICAL PROPERTIES:  Absorption: Abs(max)=~550 nm"
-                    + " {ECO:0000269|PubMed:10510276};";
+                        + " {ECO:0000269|PubMed:10510276};";
         assertEquals(absorptionExpected, absorption);
     }
 
@@ -137,15 +137,15 @@ class BPCPMapTest {
         String kinetic = mappedBPCP.get("kinetics");
         String kineticExpected =
                 "BIOPHYSICOCHEMICAL PROPERTIES:  Kinetic parameters: KM=0.14 mg/ml for poly-GlcA"
-                    + " {ECO:0000269|PubMed:24257754}; KM=0.26 mg/ml for poly-ManA"
-                    + " {ECO:0000269|PubMed:24257754}; KM=0.55 mg/ml for hyaluronan"
-                    + " {ECO:0000269|PubMed:24257754}; KM=0.17 mM for poly-GlcA (at pH 7)"
-                    + " {ECO:0000269|PubMed:24808176}; KM=0.35 mM for poly-ManA (at pH 9)"
-                    + " {ECO:0000269|PubMed:24808176}; Note=Vmax for poly-GlcA is about 10-fold"
-                    + " greater versus poly-ManA or HA (PubMed:24257754). kcat is 31.9 sec(-1)"
-                    + " with poly-GlcA as substrate (at pH 7) (PubMed:24808176). kcat is 3.3"
-                    + " sec(-1) with poly-ManA as substrate (at pH 9) (PubMed:24808176)."
-                    + " {ECO:0000269|PubMed:24257754, ECO:0000269|PubMed:24808176};";
+                        + " {ECO:0000269|PubMed:24257754}; KM=0.26 mg/ml for poly-ManA"
+                        + " {ECO:0000269|PubMed:24257754}; KM=0.55 mg/ml for hyaluronan"
+                        + " {ECO:0000269|PubMed:24257754}; KM=0.17 mM for poly-GlcA (at pH 7)"
+                        + " {ECO:0000269|PubMed:24808176}; KM=0.35 mM for poly-ManA (at pH 9)"
+                        + " {ECO:0000269|PubMed:24808176}; Note=Vmax for poly-GlcA is about 10-fold"
+                        + " greater versus poly-ManA or HA (PubMed:24257754). kcat is 31.9 sec(-1)"
+                        + " with poly-GlcA as substrate (at pH 7) (PubMed:24808176). kcat is 3.3"
+                        + " sec(-1) with poly-ManA as substrate (at pH 9) (PubMed:24808176)."
+                        + " {ECO:0000269|PubMed:24257754, ECO:0000269|PubMed:24808176};";
         assertEquals(kineticExpected, kinetic);
     }
 
@@ -213,9 +213,9 @@ class BPCPMapTest {
         String tempDependence = mappedBPCP.get("temp_dependence");
         String tempDependenceExpected =
                 "BIOPHYSICOCHEMICAL PROPERTIES:  Temperature dependence: Optimum temperature is 37"
-                    + " degrees Celsius for gelatinase activity. Temperatures above 50 degrees"
-                    + " Celsius inhibit gelatinase activity. {ECO:0000269|PubMed:2172980,"
-                    + " ECO:0000269|PubMed:9065413};";
+                        + " degrees Celsius for gelatinase activity. Temperatures above 50 degrees"
+                        + " Celsius inhibit gelatinase activity. {ECO:0000269|PubMed:2172980,"
+                        + " ECO:0000269|PubMed:9065413};";
         assertEquals(tempDependenceExpected, tempDependence);
     }
 
@@ -261,7 +261,7 @@ class BPCPMapTest {
         String redoxPotential = mappedBPCP.get("redox_potential");
         String redoxPotentialExpected =
                 "BIOPHYSICOCHEMICAL PROPERTIES:  Redox potential: E is 0 +/- 10 mV for 2Fe-2S at"
-                    + " pH 7.5.;";
+                        + " pH 7.5.;";
         assertEquals(redoxPotentialExpected, redoxPotential);
     }
 
@@ -287,8 +287,8 @@ class BPCPMapTest {
         String redoxPotential = mappedBPCP.get("redox_potential");
         String redoxPotentialExpected =
                 "BIOPHYSICOCHEMICAL PROPERTIES:  Redox potential: E(0) is -432 for heme 2 at pH"
-                    + " 7.0. This transition depends on pH by approximately -45 mV/pH unit."
-                    + " {ECO:0000269|PubMed:10940005, ECO:0000269|PubMed:17547421};";
+                        + " 7.0. This transition depends on pH by approximately -45 mV/pH unit."
+                        + " {ECO:0000269|PubMed:10940005, ECO:0000269|PubMed:17547421};";
         assertEquals(redoxPotentialExpected, redoxPotential);
     }
 }

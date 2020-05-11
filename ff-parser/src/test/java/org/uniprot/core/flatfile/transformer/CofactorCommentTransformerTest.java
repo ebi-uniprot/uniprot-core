@@ -204,7 +204,7 @@ class CofactorCommentTransformerTest {
         EvidencedValue note1 = note.getTexts().get(0);
         assertEquals(
                 "Binds 2 divalent ions per subunit (magnesium or cobalt). A second loosely"
-                    + " associated metal ion is visible in the crystal structure",
+                        + " associated metal ion is visible in the crystal structure",
                 note1.getValue());
         assertEquals(1, note1.getEvidences().size());
         assertEquals("ECO:0000255|HAMAP-Rule:MF_00082", note1.getEvidences().get(0).getValue());
@@ -260,9 +260,9 @@ class CofactorCommentTransformerTest {
     void testFailed() {
         String ccLineStringEvidence =
                 "COFACTOR: [Serine protease NS3]:\n"
-                    + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105;"
-                    + " Evidence={ECO:0000269|PubMed:9060645};\n"
-                    + "Note=Binds 1 zinc ion. {ECO:0000269|PubMed:9060645};";
+                        + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105;"
+                        + " Evidence={ECO:0000269|PubMed:9060645};\n"
+                        + "Note=Binds 1 zinc ion. {ECO:0000269|PubMed:9060645};";
 
         CofactorComment comment = transformer.transform(CommentType.COFACTOR, ccLineStringEvidence);
         assertNotNull(comment);

@@ -23,7 +23,7 @@ public class MiscellaneousCommentScored extends CommentScoredAbstr {
     static {
         IGNORED.add(
                 "The sequence shown here is derived from an EMBL/GenBank/DDBJ third party"
-                    + " annotation (TPA) entry");
+                        + " annotation (TPA) entry");
     }
 
     public MiscellaneousCommentScored(

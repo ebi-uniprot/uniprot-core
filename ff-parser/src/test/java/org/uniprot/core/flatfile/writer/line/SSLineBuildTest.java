@@ -46,10 +46,10 @@ class SSLineBuildTest {
     void testInternalLines() {
         String ssLines =
                 "**SO UPD; 37856; 05-DEC-2008.\n"
-                    + "**ZB LYG, 07-FEB-2006; LIB, 17-MAR-2006; LYG, 04-MAY-2006; ISC,"
-                    + " 14-DEC-2006;\n"
-                    + "**ZB ALG/LYG, 08-JAN-2007; LYG, 09-JAN-2007; MCB, 09-JAN-2007; RUE,"
-                    + " 05-JUN-2007;";
+                        + "**ZB LYG, 07-FEB-2006; LIB, 17-MAR-2006; LYG, 04-MAY-2006; ISC,"
+                        + " 14-DEC-2006;\n"
+                        + "**ZB ALG/LYG, 08-JAN-2007; LYG, 09-JAN-2007; MCB, 09-JAN-2007; RUE,"
+                        + " 05-JUN-2007;";
         List<InternalLine> internalLines = new ArrayList<>();
         internalLines.add(createInternalLine(InternalLineType.SO, "UPD; 37856; 05-DEC-2008."));
         internalLines.add(
@@ -60,7 +60,7 @@ class SSLineBuildTest {
                 createInternalLine(
                         InternalLineType.ZB,
                         "ALG/LYG, 08-JAN-2007; LYG, 09-JAN-2007; MCB, 09-JAN-2007; RUE,"
-                            + " 05-JUN-2007;"));
+                                + " 05-JUN-2007;"));
         SSInternalLineBuilder builder = new SSInternalLineBuilder();
         FFLine ffLine = builder.build(internalLines);
 

@@ -29,7 +29,7 @@ public class PathwayFileReader extends AbstractFileReader<PathwayEntry> {
                     Arrays.asList(
                             "This controlled vocabulary is provided by the UniPathway project",
                             "(http://www.grenoble.prabi.fr/obiwarehouse/unipathway), a"
-                                + " collaborative",
+                                    + " collaborative",
                             "effort involving the SIB (http://www.isb-sib.ch/) and the INRIA",
                             "(http://www.inrialpes.fr/)"));
 

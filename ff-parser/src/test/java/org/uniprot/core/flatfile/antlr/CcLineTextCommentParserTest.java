@@ -122,7 +122,7 @@ class CcLineTextCommentParserTest {
         verify(
                 texts.getTexts().get(0),
                 "May play a cri{tical role in virion formation. Essential fo}r {virus} replication"
-                    + " in vitro",
+                        + " in vitro",
                 Arrays.asList(new String[] {"ECO:0000313|PDB:3OW2"}));
     }
 
@@ -145,7 +145,7 @@ class CcLineTextCommentParserTest {
         verify(
                 texts.getTexts().get(0),
                 "May play a cri{tical role in virion formation. Essential fo}r {virus} replication"
-                    + " in vitro",
+                        + " in vitro",
                 Arrays.asList(new String[] {"ECO:0000313|PDB:3OW2"}));
     }
 
@@ -167,7 +167,7 @@ class CcLineTextCommentParserTest {
         verify(
                 texts.getTexts().get(0),
                 "Amino-acid biosynthesis; L-arginine biosynthesis; L-arginine from L-ornithine and"
-                    + " carbamoyl phosphate: step 2/3",
+                        + " carbamoyl phosphate: step 2/3",
                 Arrays.asList(new String[] {}));
     }
 
@@ -189,7 +189,7 @@ class CcLineTextCommentParserTest {
         verify(
                 texts.getTexts().get(0),
                 "Transfers the 4'-phosphopantetheine moiety from coenzyme A to a Ser of"
-                    + " acyl-carrier protein (By similarity)",
+                        + " acyl-carrier protein (By similarity)",
                 Arrays.asList(new String[] {}));
     }
 
@@ -212,7 +212,7 @@ class CcLineTextCommentParserTest {
         verify(
                 texts.getTexts().get(0),
                 "Transfers the 4'-phosphopantetheine moiety from coenzyme A to a Ser of"
-                    + " acyl-carrier protein",
+                        + " acyl-carrier protein",
                 Arrays.asList(new String[] {"ECO:0000006|PubMed:20858735", "ECO:0000006"}));
     }
 
@@ -220,23 +220,23 @@ class CcLineTextCommentParserTest {
     void testBigComments() {
         String lines =
                 "CC   -!- FUNCTION: Has immunoglobulin-binding and hemagglutination\n"
-                    + "CC       properties, and can bind to mannose. Essential for virulence."
-                    + " May\n"
-                    + "CC       be involved in LPS biosynthesis or polysaccharide transport.\n"
-                    + "CC   -!- SUBCELLULAR LOCATION: Cell membrane; Single-pass membrane"
-                    + " protein\n"
-                    + "CC       (Potential).\n"
-                    + "CC   -!- DISRUPTION PHENOTYPE: Rough phenotype, with an aberrant"
-                    + " O-antigen\n"
-                    + "CC       profile. Mutants exhibit a reduced ability to colonize mouse\n"
-                    + "CC       spleens but are still capable of producing a persistent"
-                    + " infection,\n"
-                    + "CC       albeit with a low bacterial burden.\n"
-                    + "CC   -!- MISCELLANEOUS: Strongly immunoreactive, inducing both humoral"
-                    + " and\n"
-                    + "CC       cellular immune responses in hosts during the course of"
-                    + " infection.\n"
-                    + "CC   -!- SIMILARITY: Belongs to the BA14k family.\n";
+                        + "CC       properties, and can bind to mannose. Essential for virulence."
+                        + " May\n"
+                        + "CC       be involved in LPS biosynthesis or polysaccharide transport.\n"
+                        + "CC   -!- SUBCELLULAR LOCATION: Cell membrane; Single-pass membrane"
+                        + " protein\n"
+                        + "CC       (Potential).\n"
+                        + "CC   -!- DISRUPTION PHENOTYPE: Rough phenotype, with an aberrant"
+                        + " O-antigen\n"
+                        + "CC       profile. Mutants exhibit a reduced ability to colonize mouse\n"
+                        + "CC       spleens but are still capable of producing a persistent"
+                        + " infection,\n"
+                        + "CC       albeit with a low bacterial burden.\n"
+                        + "CC   -!- MISCELLANEOUS: Strongly immunoreactive, inducing both humoral"
+                        + " and\n"
+                        + "CC       cellular immune responses in hosts during the course of"
+                        + " infection.\n"
+                        + "CC   -!- SIMILARITY: Belongs to the BA14k family.\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -264,7 +264,7 @@ class CcLineTextCommentParserTest {
         verify(
                 texts.getTexts().get(0),
                 "5-carboxyamino-1-(5-phospho-D-ribosyl)imidazole ="
-                    + " 5-amino-1-(5-phospho-D-ribosyl)imidazole-4-carboxylate",
+                        + " 5-amino-1-(5-phospho-D-ribosyl)imidazole-4-carboxylate",
                 Arrays.asList(new String[] {"ECO:0000256|PIRNR:PIRNR001338"}));
     }
 
@@ -327,8 +327,8 @@ class CcLineTextCommentParserTest {
     void testNoHeaderWithEvidence() {
         String ccLineString =
                 "FUNCTION: Transfers the 4'-phosphopantetheine moiety from coenzyme\n"
-                    + "A to a Ser of acyl-carrier protein. {ECO:0000006|PubMed:20858735,"
-                    + " ECO:0000006}.\n";
+                        + "A to a Ser of acyl-carrier protein. {ECO:0000006|PubMed:20858735,"
+                        + " ECO:0000006}.\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineFormater formater = new CcLineFormater();
@@ -344,7 +344,7 @@ class CcLineTextCommentParserTest {
         verify(
                 texts.getTexts().get(0),
                 "Transfers the 4'-phosphopantetheine moiety from coenzyme A to a Ser of"
-                    + " acyl-carrier protein",
+                        + " acyl-carrier protein",
                 Arrays.asList(new String[] {"ECO:0000006|PubMed:20858735", "ECO:0000006"}));
     }
 

@@ -17,20 +17,20 @@ class CofactorMapTest {
     void testCofactorMapping() {
         String cofactorLine =
                 "CC   -!- COFACTOR:\n"
-                    + "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420;\n"
-                    + "CC         Evidence={ECO:0000255|PROSITE-ProRule:PRU00405};\n"
-                    + "CC       Note=The RT polymerase active site binds 2 magnesium ions.\n"
-                    + "CC       {ECO:0000255|PROSITE-ProRule:PRU00405};\n"
-                    + "CC   -!- COFACTOR:\n"
-                    + "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000305};\n"
-                    + "CC       Note=Binds 1 magnesium ions for ribonuclease H (RNase H)"
-                    + " activity.\n"
-                    + "CC       {ECO:0000269|PubMed:16912289};\n"
-                    + "CC   -!- COFACTOR:\n"
-                    + "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000305};\n"
-                    + "CC       Note=Magnesium ions are required for integrase activity. Binds"
-                    + " at\n"
-                    + "CC       least 1, maybe 2 magnesium ions. {ECO:0000305};";
+                        + "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420;\n"
+                        + "CC         Evidence={ECO:0000255|PROSITE-ProRule:PRU00405};\n"
+                        + "CC       Note=The RT polymerase active site binds 2 magnesium ions.\n"
+                        + "CC       {ECO:0000255|PROSITE-ProRule:PRU00405};\n"
+                        + "CC   -!- COFACTOR:\n"
+                        + "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000305};\n"
+                        + "CC       Note=Binds 1 magnesium ions for ribonuclease H (RNase H)"
+                        + " activity.\n"
+                        + "CC       {ECO:0000269|PubMed:16912289};\n"
+                        + "CC   -!- COFACTOR:\n"
+                        + "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000305};\n"
+                        + "CC       Note=Magnesium ions are required for integrase activity. Binds"
+                        + " at\n"
+                        + "CC       least 1, maybe 2 magnesium ions. {ECO:0000305};";
 
         UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(cofactorLine);
 
@@ -72,8 +72,8 @@ class CofactorMapTest {
         System.out.println(value);
         String expectedValue =
                 "COFACTOR: [Serine protease NS3]: Name=Zn(2+); Xref=ChEBI:CHEBI:29105;"
-                    + " Evidence={ECO:0000269|PubMed:9060645}; Note=Binds 1 zinc ion."
-                    + " {ECO:0000269|PubMed:9060645};";
+                        + " Evidence={ECO:0000269|PubMed:9060645}; Note=Binds 1 zinc ion."
+                        + " {ECO:0000269|PubMed:9060645};";
         assertEquals(expectedValue, value);
     }
 }

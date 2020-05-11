@@ -66,11 +66,11 @@ class FtLineParserTest {
     void testVarSeqMultiLineText() {
         String ftLines =
                 "FT   VAR_SEQ         33..83\n"
-                    + "FT                   /note=\"TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL\n"
-                    + "FT                   DGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform"
-                    + " 2)\"\n"
-                    + "FT                   /evidence=\"ECO:0000269|PubMed:17344846\"\n"
-                    + "FT                   /id=\"VSP_004370\"\n";
+                        + "FT                   /note=\"TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL\n"
+                        + "FT                   DGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform"
+                        + " 2)\"\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:17344846\"\n"
+                        + "FT                   /id=\"VSP_004370\"\n";
         UniprotKBLineParser<FtLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
@@ -81,7 +81,7 @@ class FtLineParserTest {
                 "33",
                 "83",
                 "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP"
-                    + " (in isoform 2)",
+                        + " (in isoform 2)",
                 "VSP_004370");
     }
 
@@ -103,7 +103,7 @@ class FtLineParserTest {
                 "33",
                 "83",
                 "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL-> SECLTYGKQPLTSFHPFTSQMPP (in isoform"
-                    + " 2)",
+                        + " 2)",
                 "VSP_004370");
     }
 
@@ -111,12 +111,12 @@ class FtLineParserTest {
     void testVarSeq() {
         String ftLines =
                 "FT   VAR_SEQ         1..31\n"
-                    + "FT                   /note=\"MLTCNKAGSRMVVDAANSNGPFQPVVLLHIR -> MPNKNK\n"
-                    + "FT                   KEKESPKAGKSGKSSKEGQDTVESEQISVRKNSLVAVPSTV\n"
-                    + "FT                   SAKIKVPVSQPIVKKDKRQNSSRFSASNNRELQKLPSLK (in isoform"
-                    + " 4)\"\n"
-                    + "FT                   /evidence=\"ECO:0000303|PubMed:14702039\"\n"
-                    + "FT                   /id=\"VSP_043645\"\n";
+                        + "FT                   /note=\"MLTCNKAGSRMVVDAANSNGPFQPVVLLHIR -> MPNKNK\n"
+                        + "FT                   KEKESPKAGKSGKSSKEGQDTVESEQISVRKNSLVAVPSTV\n"
+                        + "FT                   SAKIKVPVSQPIVKKDKRQNSSRFSASNNRELQKLPSLK (in isoform"
+                        + " 4)\"\n"
+                        + "FT                   /evidence=\"ECO:0000303|PubMed:14702039\"\n"
+                        + "FT                   /id=\"VSP_043645\"\n";
 
         UniprotKBLineParser<FtLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
@@ -176,15 +176,15 @@ class FtLineParserTest {
     void testMultiFt() {
         String ftLines =
                 "FT   VAR_SEQ         33..83\n"
-                    + "FT                   /note=\"TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL\n"
-                    + "FT                   DGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform"
-                    + " 2)\"\n"
-                    + "FT                   /id=\"VSP_004370\"\n"
-                    + "FT   MUTAGEN         119\n"
-                    + "FT                   /note=\"C->R,E,A: Loss of cADPr hydrolase and\n"
-                    + "FT                   ADP-ribosyl cyclase activity\"\n"
-                    + "FT   HELIX           33..83\n"
-                    + "FT   TURN            3..33\n";
+                        + "FT                   /note=\"TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL\n"
+                        + "FT                   DGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform"
+                        + " 2)\"\n"
+                        + "FT                   /id=\"VSP_004370\"\n"
+                        + "FT   MUTAGEN         119\n"
+                        + "FT                   /note=\"C->R,E,A: Loss of cADPr hydrolase and\n"
+                        + "FT                   ADP-ribosyl cyclase activity\"\n"
+                        + "FT   HELIX           33..83\n"
+                        + "FT   TURN            3..33\n";
         UniprotKBLineParser<FtLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
@@ -195,7 +195,7 @@ class FtLineParserTest {
                 "33",
                 "83",
                 "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP"
-                    + " (in isoform 2)",
+                        + " (in isoform 2)",
                 "VSP_004370");
         verify(
                 obj.getFts().get(1),
@@ -254,9 +254,9 @@ class FtLineParserTest {
     void testWithEvidence() {
         String ftLines =
                 "FT   METAL           186\n"
-                    + "FT                   /note=\"Calcium; via carbonyl oxygen\"\n"
-                    + "FT                   /evidence=\"ECO:0000006|PubMed:20858735,"
-                    + " ECO:0000006|PubMed:23640942\"\n";
+                        + "FT                   /note=\"Calcium; via carbonyl oxygen\"\n"
+                        + "FT                   /evidence=\"ECO:0000006|PubMed:20858735,"
+                        + " ECO:0000006|PubMed:23640942\"\n";
 
         UniprotKBLineParser<FtLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
@@ -298,11 +298,11 @@ class FtLineParserTest {
     void testWithEvidence3() {
         String ftLines =
                 "FT   REGION          237..240\n"
-                    + "FT                   /note=\"Sulfate 1 binding\"\n"
-                    + "FT   REGION          275..277\n"
-                    + "FT                   /note=\"Phosphate 2 binding\"\n"
-                    + "FT                   /evidence=\"ECO:0000006|PubMed:20858735,"
-                    + " ECO:0000006\"\n";
+                        + "FT                   /note=\"Sulfate 1 binding\"\n"
+                        + "FT   REGION          275..277\n"
+                        + "FT                   /note=\"Phosphate 2 binding\"\n"
+                        + "FT                   /evidence=\"ECO:0000006|PubMed:20858735,"
+                        + " ECO:0000006\"\n";
 
         UniprotKBLineParser<FtLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
@@ -339,8 +339,8 @@ class FtLineParserTest {
     void testConflictFeature() {
         String ftLine =
                 "FT   CONFLICT        1\n"
-                    + "FT                   /note=\"A -> Q (in Ref. 1; BAA37160/BAA37165 and"
-                    + " 2)\"\n";
+                        + "FT                   /note=\"A -> Q (in Ref. 1; BAA37160/BAA37165 and"
+                        + " 2)\"\n";
 
         UniprotKBLineParser<FtLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
@@ -426,10 +426,10 @@ class FtLineParserTest {
     void testVariantWithMulti2() {
         String ftLine =
                 "FT   VARIANT         157..224\n"
-                    + "FT                   /note=\"EGKGLSLPLDSFSVRLHQDGQVSIELPDSHSPCYIKTYEVD\n"
-                    + "FT                   PGYKMAVCAAHPDFPEDITMVSYEELL -> GRQRLIASA\n"
-                    + "FT                   (in strain 168 and its derivatives, non"
-                    + " surfactin-producing strains)\"\n";
+                        + "FT                   /note=\"EGKGLSLPLDSFSVRLHQDGQVSIELPDSHSPCYIKTYEVD\n"
+                        + "FT                   PGYKMAVCAAHPDFPEDITMVSYEELL -> GRQRLIASA\n"
+                        + "FT                   (in strain 168 and its derivatives, non"
+                        + " surfactin-producing strains)\"\n";
 
         UniprotKBLineParser<FtLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
@@ -442,7 +442,7 @@ class FtLineParserTest {
                 "157",
                 "224",
                 "EGKGLSLPLDSFSVRLHQDGQVSIELPDSHSPCYIKTYEVDPGYKMAVCAAHPDFPEDITMVSYEELL -> GRQRLIASA"
-                    + " (in strain 168 and its derivatives, non surfactin-producing strains)",
+                        + " (in strain 168 and its derivatives, non surfactin-producing strains)",
                 null);
     }
 
@@ -470,71 +470,71 @@ class FtLineParserTest {
     void testMultiFeatures() {
         String ftLines =
                 "FT   SIGNAL          1..22\n"
-                    + "FT                   /evidence=\"ECO:0000255\"\n"
-                    + "FT   PROPEP          23..36\n"
-                    + "FT                   /evidence=\"ECO:0000269|PubMed:3758080\"\n"
-                    + "FT                   /id=\"PRO_0000032105\"\n"
-                    + "FT   CHAIN           37..64\n"
-                    + "FT                   /note=\"2S sulfur-rich seed storage protein small"
-                    + " chain 1\"\n"
-                    + "FT                   /id=\"PRO_0000032106\"\n"
-                    + "FT   PROPEP          65..69\n"
-                    + "FT                   /evidence=\"ECO:0000269|PubMed:3758080\"\n"
-                    + "FT                   /id=\"PRO_0000032107\"\n"
-                    + "FT   CHAIN           70..142\n"
-                    + "FT                   /note=\"2S sulfur-rich seed storage protein large"
-                    + " chain 1B\"\n"
-                    + "FT                   /id=\"PRO_0000032108\"\n"
-                    + "FT   PROPEP          143..146\n"
-                    + "FT                   /id=\"PRO_0000032109\"\n"
-                    + "FT   MOD_RES         37\n"
-                    + "FT                   /note=\"Pyrrolidone carboxylic acid\"\n"
-                    + "FT                   /evidence=\"ECO:0000269|PubMed:3758080\"\n"
-                    + "FT   DISULFID        40..92\n"
-                    + "FT                   /note=\"Interchain (between small and large"
-                    + " chains)\"\n"
-                    + "FT                   /evidence=\"ECO:0000269|PubMed:12421566\"\n"
-                    + "FT   DISULFID        53..81\n"
-                    + "FT                   /note=\"Interchain (between small and large"
-                    + " chains)\"\n"
-                    + "FT                   /evidence=\"ECO:0000269|PubMed:12421566\"\n"
-                    + "FT   DISULFID        82..130\n"
-                    + "FT                   /evidence=\"ECO:0000269|PubMed:12421566\"\n"
-                    + "FT   DISULFID        94..137\n"
-                    + "FT                   /evidence=\"ECO:0000269|PubMed:12421566\"\n"
-                    + "FT   VARIANT         91\n"
-                    + "FT                   /note=\"S -> E (in variant 1A)\"\n"
-                    + "FT   CONFLICT        38..39\n"
-                    + "FT                   /note=\"EE -> QQ (in Ref. 5; AA sequence)\"\n"
-                    + "FT                   /evidence=\"ECO:0000305\"\n"
-                    + "FT   CONFLICT        102..103\n"
-                    + "FT                   /note=\"MR -> RM (in Ref. 4; BAA96554)\"\n"
-                    + "FT                   /evidence=\"ECO:0000305\"\n"
-                    + "FT   CONFLICT        107\n"
-                    + "FT                   /note=\"E -> K (in Ref. 4; BAA96554)\"\n"
-                    + "FT                   /evidence=\"ECO:0000305\"\n"
-                    + "FT   CONFLICT        122\n"
-                    + "FT                   /note=\"L -> M (in Ref. 5; AA sequence)\"\n"
-                    + "FT                   /evidence=\"ECO:0000305\"\n"
-                    + "FT   CONFLICT        126\n"
-                    + "FT                   /note=\"I -> L (in Ref. 5; AA sequence)\"\n"
-                    + "FT                   /evidence=\"ECO:0000305\"\n"
-                    + "FT   HELIX           37..46\n"
-                    + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
-                    + "FT   HELIX           49..62\n"
-                    + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
-                    + "FT   TURN            63..66\n"
-                    + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
-                    + "FT   STRAND          71..73\n"
-                    + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
-                    + "FT   HELIX           76..87\n"
-                    + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
-                    + "FT   HELIX           90..108\n"
-                    + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
-                    + "FT   HELIX           114..130\n"
-                    + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
-                    + "FT   TURN            138..141\n"
-                    + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n";
+                        + "FT                   /evidence=\"ECO:0000255\"\n"
+                        + "FT   PROPEP          23..36\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:3758080\"\n"
+                        + "FT                   /id=\"PRO_0000032105\"\n"
+                        + "FT   CHAIN           37..64\n"
+                        + "FT                   /note=\"2S sulfur-rich seed storage protein small"
+                        + " chain 1\"\n"
+                        + "FT                   /id=\"PRO_0000032106\"\n"
+                        + "FT   PROPEP          65..69\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:3758080\"\n"
+                        + "FT                   /id=\"PRO_0000032107\"\n"
+                        + "FT   CHAIN           70..142\n"
+                        + "FT                   /note=\"2S sulfur-rich seed storage protein large"
+                        + " chain 1B\"\n"
+                        + "FT                   /id=\"PRO_0000032108\"\n"
+                        + "FT   PROPEP          143..146\n"
+                        + "FT                   /id=\"PRO_0000032109\"\n"
+                        + "FT   MOD_RES         37\n"
+                        + "FT                   /note=\"Pyrrolidone carboxylic acid\"\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:3758080\"\n"
+                        + "FT   DISULFID        40..92\n"
+                        + "FT                   /note=\"Interchain (between small and large"
+                        + " chains)\"\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:12421566\"\n"
+                        + "FT   DISULFID        53..81\n"
+                        + "FT                   /note=\"Interchain (between small and large"
+                        + " chains)\"\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:12421566\"\n"
+                        + "FT   DISULFID        82..130\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:12421566\"\n"
+                        + "FT   DISULFID        94..137\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:12421566\"\n"
+                        + "FT   VARIANT         91\n"
+                        + "FT                   /note=\"S -> E (in variant 1A)\"\n"
+                        + "FT   CONFLICT        38..39\n"
+                        + "FT                   /note=\"EE -> QQ (in Ref. 5; AA sequence)\"\n"
+                        + "FT                   /evidence=\"ECO:0000305\"\n"
+                        + "FT   CONFLICT        102..103\n"
+                        + "FT                   /note=\"MR -> RM (in Ref. 4; BAA96554)\"\n"
+                        + "FT                   /evidence=\"ECO:0000305\"\n"
+                        + "FT   CONFLICT        107\n"
+                        + "FT                   /note=\"E -> K (in Ref. 4; BAA96554)\"\n"
+                        + "FT                   /evidence=\"ECO:0000305\"\n"
+                        + "FT   CONFLICT        122\n"
+                        + "FT                   /note=\"L -> M (in Ref. 5; AA sequence)\"\n"
+                        + "FT                   /evidence=\"ECO:0000305\"\n"
+                        + "FT   CONFLICT        126\n"
+                        + "FT                   /note=\"I -> L (in Ref. 5; AA sequence)\"\n"
+                        + "FT                   /evidence=\"ECO:0000305\"\n"
+                        + "FT   HELIX           37..46\n"
+                        + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
+                        + "FT   HELIX           49..62\n"
+                        + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
+                        + "FT   TURN            63..66\n"
+                        + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
+                        + "FT   STRAND          71..73\n"
+                        + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
+                        + "FT   HELIX           76..87\n"
+                        + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
+                        + "FT   HELIX           90..108\n"
+                        + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
+                        + "FT   HELIX           114..130\n"
+                        + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
+                        + "FT   TURN            138..141\n"
+                        + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n";
         UniprotKBLineParser<FtLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);

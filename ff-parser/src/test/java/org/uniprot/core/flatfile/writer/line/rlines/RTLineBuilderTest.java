@@ -14,7 +14,7 @@ class RTLineBuilderTest {
     void test1() {
         String title =
                 "Comparative genomic analyses of frog virus 3, type species of the genus Ranavirus"
-                    + " (family Iridoviridae).";
+                        + " (family Iridoviridae).";
         List<String> lines = builder.buildLine(title, true, true);
         assertEquals(2, lines.size());
         String expected = "RT   Ranavirus (family Iridoviridae).\";";
@@ -25,12 +25,12 @@ class RTLineBuilderTest {
     void test2() {
         String title =
                 "Comparative genomic analyses of frog virus 3, type species of the genus Ranavirus"
-                    + " (family Iridoviridae).";
+                        + " (family Iridoviridae).";
         List<String> lines = builder.buildLine(title, false, true);
         assertEquals(1, lines.size());
         String expected =
                 "\"Comparative genomic analyses of frog virus 3, type species of the genus"
-                    + " Ranavirus (family Iridoviridae).\";";
+                        + " Ranavirus (family Iridoviridae).\";";
         assertEquals(expected, lines.get(0));
     }
 
@@ -38,8 +38,8 @@ class RTLineBuilderTest {
     void testLineWrapDash() {
         String title =
                 "Characterization and organization of the genes encoding the A-, B- and C-chains"
-                    + " of human complement subcomponent C1q. The complete derived amino acid"
-                    + " sequence of human C1q.";
+                        + " of human complement subcomponent C1q. The complete derived amino acid"
+                        + " sequence of human C1q.";
         List<String> lines = builder.buildLine(title, true, true);
         assertEquals(
                 "RT   \"Characterization and organization of the genes encoding the A-, B- and C-",

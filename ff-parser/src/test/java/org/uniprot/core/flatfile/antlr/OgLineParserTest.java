@@ -100,16 +100,16 @@ class OgLineParserTest {
     void testWithMultiOgsEvidence() {
         String ogLines =
                 "OG   Hydrogenosome {ECO:0000001}.\n"
-                    + "OG   Mitochondrion {ECO:0000001}.\n"
-                    + "OG   Nucleomorph {ECO:0000002|PubMed:1234213}.\n"
-                    + "OG   Plasmid R6-5 {ECO:0000001, ECO:0000002|PubMed:1234213}.\n"
-                    + "OG   Plastid {ECO:0000001}.\n"
-                    + "OG   Plastid; Apicoplast {ECO:0000001}.\n"
-                    + "OG   Plastid; Chloroplast {ECO:0000001}.\n"
-                    + "OG   Plastid; Organellar chromatophore {ECO:0000001}.\n"
-                    + "OG   Plastid; Cyanelle {ECO:0000001}.\n"
-                    + "OG   Plastid; Non-photosynthetic plastid {ECO:0000002|PubMed:1234213,"
-                    + " ECO:0000003|PubMed:3321222}.\n";
+                        + "OG   Mitochondrion {ECO:0000001}.\n"
+                        + "OG   Nucleomorph {ECO:0000002|PubMed:1234213}.\n"
+                        + "OG   Plasmid R6-5 {ECO:0000001, ECO:0000002|PubMed:1234213}.\n"
+                        + "OG   Plastid {ECO:0000001}.\n"
+                        + "OG   Plastid; Apicoplast {ECO:0000001}.\n"
+                        + "OG   Plastid; Chloroplast {ECO:0000001}.\n"
+                        + "OG   Plastid; Organellar chromatophore {ECO:0000001}.\n"
+                        + "OG   Plastid; Cyanelle {ECO:0000001}.\n"
+                        + "OG   Plastid; Non-photosynthetic plastid {ECO:0000002|PubMed:1234213,"
+                        + " ECO:0000003|PubMed:3321222}.\n";
         UniprotKBLineParser<OgLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createOgLineParser();
         OgLineObject obj = parser.parse(ogLines);
@@ -221,9 +221,9 @@ class OgLineParserTest {
     void testBigOg2() {
         String ogLines =
                 "OG   Plastid; Chloroplast {ECO:0000313|EMBL:BAG16761.1,\n"
-                    + "OG   ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6,"
-                    + " ECO:0000313|PDB:3OW2,\n"
-                    + "OG   ECO:0000256|HAMAP-Rule:MF_00205}.\n";
+                        + "OG   ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6,"
+                        + " ECO:0000313|PDB:3OW2,\n"
+                        + "OG   ECO:0000256|HAMAP-Rule:MF_00205}.\n";
         UniprotKBLineParser<OgLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createOgLineParser();
         OgLineObject obj = parser.parse(ogLines);

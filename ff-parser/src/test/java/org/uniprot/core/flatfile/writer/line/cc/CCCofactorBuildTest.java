@@ -20,33 +20,33 @@ class CCCofactorBuildTest extends CCBuildTestAbstr {
     void test1() {
         String ccLine =
                 "CC   -!- COFACTOR:\n"
-                    + "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
-                    + " Evidence={ECO:0000255|HAMAP-\n"
-                    + "CC         Rule:MF_00086};\n"
-                    + "CC       Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
-                    + " Evidence={ECO:0000255|HAMAP-\n"
-                    + "CC         Rule:MF_00089};\n"
-                    + "CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt). A"
-                    + " second\n"
-                    + "CC       loosely associated metal ion is visible in the crystal"
-                    + " structure.\n"
-                    + "CC       {ECO:0000255|HAMAP-Rule:MF_00082};";
+                        + "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
+                        + " Evidence={ECO:0000255|HAMAP-\n"
+                        + "CC         Rule:MF_00086};\n"
+                        + "CC       Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
+                        + " Evidence={ECO:0000255|HAMAP-\n"
+                        + "CC         Rule:MF_00089};\n"
+                        + "CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt). A"
+                        + " second\n"
+                        + "CC       loosely associated metal ion is visible in the crystal"
+                        + " structure.\n"
+                        + "CC       {ECO:0000255|HAMAP-Rule:MF_00082};";
 
         String ccLineString =
                 "COFACTOR:\n"
-                    + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420;\n"
-                    + "Name=Co(2+); Xref=ChEBI:CHEBI:48828;\n"
-                    + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt). A second"
-                    + " loosely associated metal ion is visible in the crystal structure.;";
+                        + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420;\n"
+                        + "Name=Co(2+); Xref=ChEBI:CHEBI:48828;\n"
+                        + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt). A second"
+                        + " loosely associated metal ion is visible in the crystal structure.;";
         String ccLineStringEvidence =
                 "COFACTOR:\n"
-                    + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
-                    + " Evidence={ECO:0000255|HAMAP-Rule:MF_00086};\n"
-                    + "Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
-                    + " Evidence={ECO:0000255|HAMAP-Rule:MF_00089};\n"
-                    + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt). A second"
-                    + " loosely associated metal ion is visible in the crystal structure."
-                    + " {ECO:0000255|HAMAP-Rule:MF_00082};";
+                        + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00086};\n"
+                        + "Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00089};\n"
+                        + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt). A second"
+                        + " loosely associated metal ion is visible in the crystal structure."
+                        + " {ECO:0000255|HAMAP-Rule:MF_00082};";
 
         CofactorCommentBuilder builder = new CofactorCommentBuilder();
 
@@ -60,7 +60,7 @@ class CCCofactorBuildTest extends CCBuildTestAbstr {
         builder.cofactorsSet(cofactors);
         String noteValue =
                 "Binds 2 divalent ions per subunit (magnesium or cobalt). A second loosely"
-                    + " associated metal ion is visible in the crystal structure";
+                        + " associated metal ion is visible in the crystal structure";
         List<String> evs3 = new ArrayList<>();
         evs3.add("ECO:0000255|HAMAP-Rule:MF_00082");
         Note commentNote = buildNote(noteValue, evs3);
@@ -128,12 +128,12 @@ class CCCofactorBuildTest extends CCBuildTestAbstr {
                     + "Note=Binds 2 divalent ions per subunit. {ECO:0000255|HAMAP-Rule:MF_00086};";
         String ccLineString =
                 "COFACTOR: [Serine protease NS3]:\n"
-                    + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105;\n"
-                    + "Name=A very looooooooooooong cofactor name with 1 evidence tag;"
-                    + " Xref=ChEBI:CHEBI:12345;\n"
-                    + "Name=A very very looooooooooooong cofactor name with X evidence tags;"
-                    + " Xref=ChEBI:CHEBI:54321;\n"
-                    + "Note=Binds 2 divalent ions per subunit.;";
+                        + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105;\n"
+                        + "Name=A very looooooooooooong cofactor name with 1 evidence tag;"
+                        + " Xref=ChEBI:CHEBI:12345;\n"
+                        + "Name=A very very looooooooooooong cofactor name with X evidence tags;"
+                        + " Xref=ChEBI:CHEBI:54321;\n"
+                        + "Note=Binds 2 divalent ions per subunit.;";
 
         CofactorCommentBuilder builder = new CofactorCommentBuilder();
         builder.molecule("Serine protease NS3");
@@ -179,32 +179,32 @@ class CCCofactorBuildTest extends CCBuildTestAbstr {
     void test4() {
         String ccLine =
                 "CC   -!- COFACTOR:\n"
-                    + "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
-                    + " Evidence={ECO:0000255|HAMAP-\n"
-                    + "CC         Rule:MF_00086};\n"
-                    + "CC       Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
-                    + " Evidence={ECO:0000255|HAMAP-\n"
-                    + "CC         Rule:MF_00089};\n"
-                    + "CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt).\n"
-                    + "CC       {ECO:0000255|HAMAP-Rule:MF_00082}. Another note."
-                    + " {ECO:0000255|HAMAP-\n"
-                    + "CC       Rule:MF_00083};";
+                        + "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
+                        + " Evidence={ECO:0000255|HAMAP-\n"
+                        + "CC         Rule:MF_00086};\n"
+                        + "CC       Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
+                        + " Evidence={ECO:0000255|HAMAP-\n"
+                        + "CC         Rule:MF_00089};\n"
+                        + "CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt).\n"
+                        + "CC       {ECO:0000255|HAMAP-Rule:MF_00082}. Another note."
+                        + " {ECO:0000255|HAMAP-\n"
+                        + "CC       Rule:MF_00083};";
 
         String ccLineString =
                 "COFACTOR:\n"
-                    + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420;\n"
-                    + "Name=Co(2+); Xref=ChEBI:CHEBI:48828;\n"
-                    + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt).. Another"
-                    + " note.;";
+                        + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420;\n"
+                        + "Name=Co(2+); Xref=ChEBI:CHEBI:48828;\n"
+                        + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt).. Another"
+                        + " note.;";
         String ccLineStringEvidence =
                 "COFACTOR:\n"
-                    + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
-                    + " Evidence={ECO:0000255|HAMAP-Rule:MF_00086};\n"
-                    + "Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
-                    + " Evidence={ECO:0000255|HAMAP-Rule:MF_00089};\n"
-                    + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt)."
-                    + " {ECO:0000255|HAMAP-Rule:MF_00082}. Another note."
-                    + " {ECO:0000255|HAMAP-Rule:MF_00083};";
+                        + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00086};\n"
+                        + "Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
+                        + " Evidence={ECO:0000255|HAMAP-Rule:MF_00089};\n"
+                        + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt)."
+                        + " {ECO:0000255|HAMAP-Rule:MF_00082}. Another note."
+                        + " {ECO:0000255|HAMAP-Rule:MF_00083};";
 
         CofactorCommentBuilder builder = new CofactorCommentBuilder();
 

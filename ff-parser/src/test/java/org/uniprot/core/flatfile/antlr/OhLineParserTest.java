@@ -28,7 +28,7 @@ class OhLineParserTest {
     void test2() {
         String ohLines =
                 "OH   NCBI_TaxID=3662; Cucurbita moschata (Winter crookneck squash) (Cucurbita"
-                    + " pepo var. moschata).\n";
+                        + " pepo var. moschata).\n";
         UniprotKBLineParser<OhLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createOhLineParser();
         OhLineObject obj = parser.parse(ohLines);
@@ -44,8 +44,8 @@ class OhLineParserTest {
     void test3() {
         String ohLines =
                 "OH   NCBI_TaxID=3662; Cucurbita moschata (Winter crookneck squash) (Cucurbita"
-                    + " pepo var. moschata).\n"
-                    + "OH   NCBI_TaxID=9598; Pan troglodytes (Chimpanzee).\n";
+                        + " pepo var. moschata).\n"
+                        + "OH   NCBI_TaxID=9598; Pan troglodytes (Chimpanzee).\n";
         UniprotKBLineParser<OhLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createOhLineParser();
         OhLineObject obj = parser.parse(ohLines);

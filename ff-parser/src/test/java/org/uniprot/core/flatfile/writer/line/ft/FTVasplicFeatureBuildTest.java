@@ -15,9 +15,9 @@ class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 
         String ftLine =
                 "FT   VAR_SEQ         167..229\n"
-                    + "FT                   /note=\"Missing (in isoform Alpha and isoform"
-                    + " Beta)\"\n"
-                    + "FT                   /id=\"VSP_005610\"";
+                        + "FT                   /note=\"Missing (in isoform Alpha and isoform"
+                        + " Beta)\"\n"
+                        + "FT                   /id=\"VSP_005610\"";
         String ftLineString =
                 "VAR_SEQ 167..229\n"
                         + "/note=\"Missing (in isoform Alpha and isoform Beta)\"\n"
@@ -49,11 +49,11 @@ class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 
         String ftLine =
                 "FT   VAR_SEQ         167..229\n"
-                    + "FT                   /note=\"Missing (in isoform Alpha and isoform"
-                    + " Beta)\"\n"
-                    + "FT                   /evidence=\"ECO:0000269|PubMed:10433554,\n"
-                    + "FT                   ECO:0000313|EMBL:BAG16761.1\"\n"
-                    + "FT                   /id=\"VSP_005610\"";
+                        + "FT                   /note=\"Missing (in isoform Alpha and isoform"
+                        + " Beta)\"\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:10433554,\n"
+                        + "FT                   ECO:0000313|EMBL:BAG16761.1\"\n"
+                        + "FT                   /id=\"VSP_005610\"";
         String ftLineStringEv =
                 "VAR_SEQ 167..229\n"
                         + "/note=\"Missing (in isoform Alpha and isoform Beta)\"\n"
@@ -211,16 +211,16 @@ class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
     void testVarsplic3() {
         String ftLine =
                 "FT   VAR_SEQ         103..222\n"
-                    + "FT                  "
-                    + " /note=\"GTQLLLEACVQASVPVFIYTSSIEVAGPNSYKEIIQNGHEEEPLENTWPTPY\n"
-                    + "FT                  "
-                    + " PYSKKLAEKAVLAANGWNLKNGDTLYTCALRPTYIYGEGGPFLSASINEALNNNGILSS\n"
-                    + "FT                   VGK ->"
-                    + " FSTVNELQNKIKLTVLEGDILDEPFLKRACQDVSVVIHTACIIDVFGVTHRQ\n"
-                    + "FT                  "
-                    + " SIMNVNVKGRVAWGGDKARWGNEDQKEGQEGKRSLSIEHLLCSGPSDFADHYQLGELKA\n"
-                    + "FT                   AIFSFIDEKTRTEQ (in isoform 2)\"\n"
-                    + "FT                   /id=\"VSP_037399\"";
+                        + "FT                  "
+                        + " /note=\"GTQLLLEACVQASVPVFIYTSSIEVAGPNSYKEIIQNGHEEEPLENTWPTPY\n"
+                        + "FT                  "
+                        + " PYSKKLAEKAVLAANGWNLKNGDTLYTCALRPTYIYGEGGPFLSASINEALNNNGILSS\n"
+                        + "FT                   VGK ->"
+                        + " FSTVNELQNKIKLTVLEGDILDEPFLKRACQDVSVVIHTACIIDVFGVTHRQ\n"
+                        + "FT                  "
+                        + " SIMNVNVKGRVAWGGDKARWGNEDQKEGQEGKRSLSIEHLLCSGPSDFADHYQLGELKA\n"
+                        + "FT                   AIFSFIDEKTRTEQ (in isoform 2)\"\n"
+                        + "FT                   /id=\"VSP_037399\"";
         String ftLineString =
                 "VAR_SEQ 103..222\n"
                     + "/note=\"GTQLLLEACVQASVPVFIYTSSIEVAGPNSYKEIIQNGHEEEPLENTWPTPYPYSKKLAEKAVLAANGWNLKNGDTLYTCALRPTYIYGEGGPFLSASINEALNNNGILSSVGK"
@@ -262,18 +262,18 @@ class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
     void testVarsplic3Evidence() {
         String ftLine =
                 "FT   VAR_SEQ         103..222\n"
-                    + "FT                  "
-                    + " /note=\"GTQLLLEACVQASVPVFIYTSSIEVAGPNSYKEIIQNGHEEEPLENTWPTPY\n"
-                    + "FT                  "
-                    + " PYSKKLAEKAVLAANGWNLKNGDTLYTCALRPTYIYGEGGPFLSASINEALNNNGILSS\n"
-                    + "FT                   VGK ->"
-                    + " FSTVNELQNKIKLTVLEGDILDEPFLKRACQDVSVVIHTACIIDVFGVTHRQ\n"
-                    + "FT                  "
-                    + " SIMNVNVKGRVAWGGDKARWGNEDQKEGQEGKRSLSIEHLLCSGPSDFADHYQLGELKA\n"
-                    + "FT                   AIFSFIDEKTRTEQ (in isoform 2)\"\n"
-                    + "FT                   /evidence=\"ECO:0000269|PubMed:10433554,\n"
-                    + "FT                   ECO:0000313|EMBL:BAG16761.1\"\n"
-                    + "FT                   /id=\"VSP_037399\"";
+                        + "FT                  "
+                        + " /note=\"GTQLLLEACVQASVPVFIYTSSIEVAGPNSYKEIIQNGHEEEPLENTWPTPY\n"
+                        + "FT                  "
+                        + " PYSKKLAEKAVLAANGWNLKNGDTLYTCALRPTYIYGEGGPFLSASINEALNNNGILSS\n"
+                        + "FT                   VGK ->"
+                        + " FSTVNELQNKIKLTVLEGDILDEPFLKRACQDVSVVIHTACIIDVFGVTHRQ\n"
+                        + "FT                  "
+                        + " SIMNVNVKGRVAWGGDKARWGNEDQKEGQEGKRSLSIEHLLCSGPSDFADHYQLGELKA\n"
+                        + "FT                   AIFSFIDEKTRTEQ (in isoform 2)\"\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:10433554,\n"
+                        + "FT                   ECO:0000313|EMBL:BAG16761.1\"\n"
+                        + "FT                   /id=\"VSP_037399\"";
         String ftLineString =
                 "VAR_SEQ 103..222\n"
                     + "/note=\"GTQLLLEACVQASVPVFIYTSSIEVAGPNSYKEIIQNGHEEEPLENTWPTPYPYSKKLAEKAVLAANGWNLKNGDTLYTCALRPTYIYGEGGPFLSASINEALNNNGILSSVGK"

@@ -15,15 +15,15 @@ class CcLineDiseaseCommentParserTest {
     void test() {
         String lines =
                 "CC   -!- DISEASE: Acyl-CoA dehydrogenase family, member 9, deficiency\n"
-                    + "CC       (ACAD9 deficiency) [MIM:611126]: A metabolic disorder with\n"
-                    + "CC       variable manifestations that include dilated cardiomyopathy,"
-                    + " liver\n"
-                    + "CC       failure, muscle weakness, neurologic dysfunction, hypoglycemia"
-                    + " and\n"
-                    + "CC       Reye-like episodes (brain edema and vomiting that may rapidly\n"
-                    + "CC       progress to seizures, coma and death). Note=The disease is"
-                    + " caused\n"
-                    + "CC       by mutations affecting the gene represented in this entry.\n";
+                        + "CC       (ACAD9 deficiency) [MIM:611126]: A metabolic disorder with\n"
+                        + "CC       variable manifestations that include dilated cardiomyopathy,"
+                        + " liver\n"
+                        + "CC       failure, muscle weakness, neurologic dysfunction, hypoglycemia"
+                        + " and\n"
+                        + "CC       Reye-like episodes (brain edema and vomiting that may rapidly\n"
+                        + "CC       progress to seizures, coma and death). Note=The disease is"
+                        + " caused\n"
+                        + "CC       by mutations affecting the gene represented in this entry.\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);

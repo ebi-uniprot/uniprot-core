@@ -209,10 +209,10 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     void testAllergen() throws Exception {
         String ccLine =
                 ("CC   -!- ALLERGEN: Causes an allergic reaction in human. Binds to IgE."
-                     + " Partially\n"
-                     + "CC       heat-labile allergen that may cause both respiratory and"
-                     + " food-allergy\n"
-                     + "CC       symptoms in patients with the bird-egg syndrome.");
+                        + " Partially\n"
+                        + "CC       heat-labile allergen that may cause both respiratory and"
+                        + " food-allergy\n"
+                        + "CC       symptoms in patients with the bird-egg syndrome.");
         String text =
                 "Causes an allergic reaction in human. Binds to IgE. "
                         + "Partially heat-labile allergen that may cause both respiratory and "
@@ -231,12 +231,12 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     void testAllergenWithEvidence() throws Exception {
         String ccLine =
                 ("CC   -!- ALLERGEN: Causes an allergic reaction in human. Binds to IgE."
-                     + " Partially\n"
-                     + "CC       heat-labile allergen that may cause both respiratory and"
-                     + " food-allergy\n"
-                     + "CC       symptoms in patients with the bird-egg syndrome."
-                     + " {ECO:0000256|HAMAP-\n"
-                     + "CC       Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133}.");
+                        + " Partially\n"
+                        + "CC       heat-labile allergen that may cause both respiratory and"
+                        + " food-allergy\n"
+                        + "CC       symptoms in patients with the bird-egg syndrome."
+                        + " {ECO:0000256|HAMAP-\n"
+                        + "CC       Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133}.");
         String text =
                 "Causes an allergic reaction in human. Binds to IgE. "
                         + "Partially heat-labile allergen that may cause both respiratory and "
@@ -259,11 +259,11 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     void testBIOTECHNOLOGY() {
         String ccLine =
                 ("CC   -!- BIOTECHNOLOGY: The effect of PG can be neutralized by introducing an\n"
-                     + "CC       antisense PG gene by genetic manipulation. The Flavr Savr"
-                     + " tomato\n"
-                     + "CC       produced by Calgene (Monsanto) in such a manner has a longer"
-                     + " shelf life\n"
-                     + "CC       due to delayed ripening (Probable).");
+                        + "CC       antisense PG gene by genetic manipulation. The Flavr Savr"
+                        + " tomato\n"
+                        + "CC       produced by Calgene (Monsanto) in such a manner has a longer"
+                        + " shelf life\n"
+                        + "CC       due to delayed ripening (Probable).");
         String text =
                 "The effect of PG can be neutralized by introducing "
                         + "an antisense PG gene by genetic manipulation. The Flavr Savr "
@@ -285,12 +285,12 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     void testBIOTECHNOLOGYWithEvidence() {
         String ccLine =
                 ("CC   -!- BIOTECHNOLOGY: The effect of PG can be neutralized by introducing an\n"
-                     + "CC       antisense PG gene by genetic manipulation. The Flavr Savr"
-                     + " tomato\n"
-                     + "CC       produced by Calgene (Monsanto) in such a manner has a longer"
-                     + " shelf life\n"
-                     + "CC       due to delayed ripening (Probable).\n"
-                     + "CC       {ECO:0000313|Ensembl:ENSP00000409133}.");
+                        + "CC       antisense PG gene by genetic manipulation. The Flavr Savr"
+                        + " tomato\n"
+                        + "CC       produced by Calgene (Monsanto) in such a manner has a longer"
+                        + " shelf life\n"
+                        + "CC       due to delayed ripening (Probable).\n"
+                        + "CC       {ECO:0000313|Ensembl:ENSP00000409133}.");
         String text =
                 "The effect of PG can be neutralized by introducing "
                         + "an antisense PG gene by genetic manipulation. The Flavr Savr "
@@ -413,8 +413,8 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     void testDOMAIN() {
         String ccLine =
                 ("CC   -!- DOMAIN: The B chain is composed of two domains, each domain consists"
-                     + " of\n"
-                     + "CC       3 homologous subdomains (alpha, beta, gamma).");
+                        + " of\n"
+                        + "CC       3 homologous subdomains (alpha, beta, gamma).");
         String text =
                 "The B chain is composed of two domains, each domain "
                         + "consists of 3 homologous subdomains (alpha, beta, gamma).";
@@ -429,10 +429,10 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     void testDOMAINWithEvidence() {
         String ccLine =
                 ("CC   -!- DOMAIN: The B chain is composed of two domains, each domain consists"
-                     + " of\n"
-                     + "CC       3 homologous subdomains (alpha, beta, gamma)."
-                     + " {ECO:0000256|HAMAP-\n"
-                     + "CC       Rule:MF_00205}.");
+                        + " of\n"
+                        + "CC       3 homologous subdomains (alpha, beta, gamma)."
+                        + " {ECO:0000256|HAMAP-\n"
+                        + "CC       Rule:MF_00205}.");
         String text =
                 "The B chain is composed of two domains, each domain "
                         + "consists of 3 homologous subdomains (alpha, beta, gamma).";
@@ -464,10 +464,10 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     void testEnxymeRegulationWithEvidence() {
         String ccLine =
                 ("CC   -!- ACTIVITY REGULATION: The activity of this enzyme is controlled by\n"
-                     + "CC       adenylation under conditions of abundant glutamine. The fully\n"
-                     + "CC       adenylated enzyme complex is inactive (By similarity).\n"
-                     + "CC       {ECO:0000256|HAMAP-Rule:MF_00205,"
-                     + " ECO:0000313|Ensembl:ENSP00000409133}.");
+                        + "CC       adenylation under conditions of abundant glutamine. The fully\n"
+                        + "CC       adenylated enzyme complex is inactive (By similarity).\n"
+                        + "CC       {ECO:0000256|HAMAP-Rule:MF_00205,"
+                        + " ECO:0000313|Ensembl:ENSP00000409133}.");
         String text =
                 "The activity of this enzyme is controlled by "
                         + "adenylation under conditions of abundant glutamine. The fully "
@@ -782,8 +782,8 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     void testToxicWithEvidence() {
         String ccLine =
                 ("CC   -!- TOXIC DOSE: PD(50) is 1.72 mg/kg by injection in blowfly larvae.\n"
-                     + "CC       {ECO:0000256|HAMAP-Rule:MF_00205,"
-                     + " ECO:0000313|Ensembl:ENSP00000409133}.");
+                        + "CC       {ECO:0000256|HAMAP-Rule:MF_00205,"
+                        + " ECO:0000313|Ensembl:ENSP00000409133}.");
         String text = "PD(50) is 1.72 mg/kg by injection in blowfly larvae";
         List<String> evs = new ArrayList<>();
         evs.add("ECO:0000256|HAMAP-Rule:MF_00205");
@@ -796,12 +796,12 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     void testFunctionWithNoEvidence() {
         String ccLine =
                 ("CC   -!- FUNCTION: Bifunctional enzyme that catalyzes the first two steps in\n"
-                     + "CC       lysine degradation. The N-terminal and the C-terminal contain"
-                     + " lysine-\n"
-                     + "CC       oxoglutarate reductase and saccharopine dehydrogenase "
-                     + " activity,\n"
-                     + "CC       respectively. Negatively regulates free Lys accumulation in"
-                     + " seeds.");
+                        + "CC       lysine degradation. The N-terminal and the C-terminal contain"
+                        + " lysine-\n"
+                        + "CC       oxoglutarate reductase and saccharopine dehydrogenase "
+                        + " activity,\n"
+                        + "CC       respectively. Negatively regulates free Lys accumulation in"
+                        + " seeds.");
         String text =
                 "Bifunctional enzyme that catalyzes the first two steps "
                         + "in lysine degradation. The N-terminal and the C-terminal contain "
@@ -819,13 +819,13 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     void testFunctionWithEvidence() {
         String ccLine =
                 ("CC   -!- FUNCTION: Bifunctional enzyme that catalyzes the first two steps in\n"
-                     + "CC       lysine degradation. The N-terminal and the C-terminal contain"
-                     + " lysine-\n"
-                     + "CC       oxoglutarate reductase and saccharopine dehydrogenase "
-                     + " activity,\n"
-                     + "CC       respectively. Negatively regulates free Lys accumulation in"
-                     + " seeds.\n"
-                     + "CC       {ECO:0000256|HAMAP-Rule:MF_00205}.");
+                        + "CC       lysine degradation. The N-terminal and the C-terminal contain"
+                        + " lysine-\n"
+                        + "CC       oxoglutarate reductase and saccharopine dehydrogenase "
+                        + " activity,\n"
+                        + "CC       respectively. Negatively regulates free Lys accumulation in"
+                        + " seeds.\n"
+                        + "CC       {ECO:0000256|HAMAP-Rule:MF_00205}.");
         String text =
                 "Bifunctional enzyme that catalyzes the first two steps "
                         + "in lysine degradation. The N-terminal and the C-terminal contain "

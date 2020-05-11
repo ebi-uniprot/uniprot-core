@@ -17,11 +17,11 @@ class DiseaseMapTest {
     void testNoteOnlyDiseaseMapping() {
         String diseaseLine =
                 "CC   -!- DISEASE: Note=Lysosomal acid phosphatase has been shown to be\n"
-                    + "CC       deficient in cultured fibroblasts from patients manifesting\n"
-                    + "CC       intermittent vomiting, hypotonia, lethargy, opisthotonos,"
-                    + " terminal\n"
-                    + "CC       bleeding and death in early infancy."
-                    + " {ECO:0000269|PubMed:5410815}.";
+                        + "CC       deficient in cultured fibroblasts from patients manifesting\n"
+                        + "CC       intermittent vomiting, hypotonia, lethargy, opisthotonos,"
+                        + " terminal\n"
+                        + "CC       bleeding and death in early infancy."
+                        + " {ECO:0000269|PubMed:5410815}.";
 
         UniProtKBEntry entry = CommentTestUtil.createUniProtEntryFromCommentLine(diseaseLine);
 
@@ -33,9 +33,9 @@ class DiseaseMapTest {
         String value = mappedDisease.get("cc_disease");
         String expectedValue =
                 "DISEASE: Note=Lysosomal acid phosphatase has been shown to be deficient in"
-                    + " cultured fibroblasts from patients manifesting intermittent vomiting,"
-                    + " hypotonia, lethargy, opisthotonos, terminal bleeding and death in early"
-                    + " infancy. {ECO:0000269|PubMed:5410815}.";
+                        + " cultured fibroblasts from patients manifesting intermittent vomiting,"
+                        + " hypotonia, lethargy, opisthotonos, terminal bleeding and death in early"
+                        + " infancy. {ECO:0000269|PubMed:5410815}.";
         assertEquals(expectedValue, value);
     }
 

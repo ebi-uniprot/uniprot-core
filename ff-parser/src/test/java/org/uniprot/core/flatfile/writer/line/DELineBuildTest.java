@@ -133,10 +133,10 @@ class DELineBuildTest {
 
         String deLine =
                 "DE   RecName: Full=14-3-3-like protein GF14 iota {ECO:0000269|PubMed:10433554,"
-                    + " ECO:0000313|EMBL:BAG16761.1};\n"
-                    + "DE            Short=ADAM 10 {ECO:0000269|PubMed:10433554};\n"
-                    + "DE            EC=2.3.1.35 {ECO:0000303|Ref.6};\n"
-                    + "DE   AltName: Full=General regulatory factor 12 {ECO:0000313|PDB:3OW2};";
+                        + " ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "DE            Short=ADAM 10 {ECO:0000269|PubMed:10433554};\n"
+                        + "DE            EC=2.3.1.35 {ECO:0000303|Ref.6};\n"
+                        + "DE   AltName: Full=General regulatory factor 12 {ECO:0000313|PDB:3OW2};";
 
         doTest(deLine, proteinDescription);
     }
@@ -249,13 +249,13 @@ class DELineBuildTest {
 
         String deLine =
                 "DE   RecName: Full=Granulocyte colony-stimulating factor {ECO:0000303|Ref.6,"
-                    + " ECO:0000313|EMBL:BAG16761.1};\n"
-                    + "DE            Short=G-CSF {ECO:0000269|PubMed:10433554,"
-                    + " ECO:0000313|EMBL:BAG16761.1};\n"
-                    + "DE   AltName: Full=Pluripoietin {ECO:0000256|HAMAP-Rule:MF_00205};\n"
-                    + "DE   AltName: CD_antigen=CD156c;\n"
-                    + "DE   AltName: INN=Lenograstim {ECO:0000313|PDB:3OW2};\n"
-                    + "DE   Flags: Precursor; Fragment;";
+                        + " ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "DE            Short=G-CSF {ECO:0000269|PubMed:10433554,"
+                        + " ECO:0000313|EMBL:BAG16761.1};\n"
+                        + "DE   AltName: Full=Pluripoietin {ECO:0000256|HAMAP-Rule:MF_00205};\n"
+                        + "DE   AltName: CD_antigen=CD156c;\n"
+                        + "DE   AltName: INN=Lenograstim {ECO:0000313|PDB:3OW2};\n"
+                        + "DE   Flags: Precursor; Fragment;";
 
         doTest(deLine, proteinDescription);
     }
@@ -326,12 +326,12 @@ class DELineBuildTest {
                 createProteinDescription(null, null, submissionNames, FlagType.FRAGMENT);
         String deLine =
                 "DE   SubName: Full=Expressed protein {ECO:0000313|EMBL:BAG16761.1};\n"
-                    + "DE   SubName: Full=cDNA clone:001-021-F08, full insert sequence"
-                    + " {ECO:0000313|EMBL:BAG16761.2};\n"
-                    + "DE            EC=2.3.1.35 {ECO:0000269|PubMed:10433554};\n"
-                    + "DE   SubName: Full=cDNA clone:006-308-H01, full insert sequence"
-                    + " {ECO:0000313|PDB:3OW2};\n"
-                    + "DE   Flags: Fragment;";
+                        + "DE   SubName: Full=cDNA clone:001-021-F08, full insert sequence"
+                        + " {ECO:0000313|EMBL:BAG16761.2};\n"
+                        + "DE            EC=2.3.1.35 {ECO:0000269|PubMed:10433554};\n"
+                        + "DE   SubName: Full=cDNA clone:006-308-H01, full insert sequence"
+                        + " {ECO:0000313|PDB:3OW2};\n"
+                        + "DE   Flags: Fragment;";
 
         doTest(deLine, proteinDescription);
     }

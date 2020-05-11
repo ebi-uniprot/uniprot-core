@@ -39,16 +39,16 @@ class RLineBuildTest {
     void testJournalArticle() {
         String rlines =
                 "RN   [1]\n"
-                    + "RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].\n"
-                    + "RC   PLASMID=pSd11_G1246, pSd12_G1263, pSd13_G1271, pSd2_G1252,"
-                    + " pSd3_G1281,\n"
-                    + "RC   pSd4_G1190, and pSd5_G1213;\n"
-                    + "RX   PubMed=15165820; DOI=10.1016/j.virol.2004.02.019;\n"
-                    + "RA   Tan W.G., Barkman T.J., Gregory Chinchar V., Essani K.;\n"
-                    + "RT   \"Comparative genomic analyses of frog virus 3, type species of the"
-                    + " genus\n"
-                    + "RT   Ranavirus (family Iridoviridae).\";\n"
-                    + "RL   Virology 323:70-84(2004).";
+                        + "RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].\n"
+                        + "RC   PLASMID=pSd11_G1246, pSd12_G1263, pSd13_G1271, pSd2_G1252,"
+                        + " pSd3_G1281,\n"
+                        + "RC   pSd4_G1190, and pSd5_G1213;\n"
+                        + "RX   PubMed=15165820; DOI=10.1016/j.virol.2004.02.019;\n"
+                        + "RA   Tan W.G., Barkman T.J., Gregory Chinchar V., Essani K.;\n"
+                        + "RT   \"Comparative genomic analyses of frog virus 3, type species of the"
+                        + " genus\n"
+                        + "RT   Ranavirus (family Iridoviridae).\";\n"
+                        + "RL   Virology 323:70-84(2004).";
 
         JournalArticleBuilder jaBuilder = new JournalArticleBuilder();
         List<String> authors =
@@ -60,7 +60,7 @@ class RLineBuildTest {
 
         String title =
                 "Comparative genomic analyses of frog virus 3, type species of the genus Ranavirus"
-                    + " (family Iridoviridae).";
+                        + " (family Iridoviridae).";
         jaBuilder.title(title);
         jaBuilder.citationCrossReferencesSet(
                 buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", null));
@@ -138,7 +138,7 @@ class RLineBuildTest {
 
         String title =
                 "Comparative genomic analyses of frog virus 3, type species of the genus Ranavirus"
-                    + " (family Iridoviridae).";
+                        + " (family Iridoviridae).";
         jaBuilder.title(title);
         jaBuilder.citationCrossReferencesSet(
                 buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", null));
@@ -193,15 +193,15 @@ class RLineBuildTest {
     void testSubmission() {
         String rlines =
                 "RN   [2]\n"
-                    + "RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].\n"
-                    + "RC   STRAIN=439-80 / Serotype O:9, and pSd11_G1246;\n"
-                    + "RC   PLASMID=pYV, and pSd2_G1252;\n"
-                    + "RC   TRANSPOSON=Tn2502, pSd4_G1190, and pSd5_G1213;\n"
-                    + "RA   Tan W.G.H., Barkman T.J., Chinchar V.G.;\n"
-                    + "RT   \"Emergence of plasmid-mediated quinolone resistance in Escherichia"
-                    + " coli in\n"
-                    + "RT   Europe.\";\n"
-                    + "RL   Submitted (FEB-2004) to the EMBL/GenBank/DDBJ databases.";
+                        + "RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].\n"
+                        + "RC   STRAIN=439-80 / Serotype O:9, and pSd11_G1246;\n"
+                        + "RC   PLASMID=pYV, and pSd2_G1252;\n"
+                        + "RC   TRANSPOSON=Tn2502, pSd4_G1190, and pSd5_G1213;\n"
+                        + "RA   Tan W.G.H., Barkman T.J., Chinchar V.G.;\n"
+                        + "RT   \"Emergence of plasmid-mediated quinolone resistance in Escherichia"
+                        + " coli in\n"
+                        + "RT   Europe.\";\n"
+                        + "RL   Submitted (FEB-2004) to the EMBL/GenBank/DDBJ databases.";
         SubmissionBuilder smBuilder = new SubmissionBuilder();
         List<String> authors =
                 new ArrayList<>(
@@ -339,7 +339,7 @@ class RLineBuildTest {
                                 }));
         String title =
                 "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of"
-                    + " speciation using DNA sequence data.";
+                        + " speciation using DNA sequence data.";
         bkBuilder.authorsSet(authors);
         bkBuilder.editorsSet(editors);
         bkBuilder.title(title);
@@ -389,7 +389,7 @@ class RLineBuildTest {
                                 }));
         String title =
                 "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of"
-                    + " speciation using DNA sequence data.";
+                        + " speciation using DNA sequence data.";
         bkBuilder.authorsSet(authors);
         bkBuilder.editorsSet(editors);
         bkBuilder.title(title);
@@ -429,7 +429,7 @@ class RLineBuildTest {
         List<String> editors = Arrays.asList(new String[] {});
         String title =
                 "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of"
-                    + " speciation using DNA sequence data.";
+                        + " speciation using DNA sequence data.";
         String bookTitle =
                 "Proceedings of the 9th international conference on Arabidopsis research";
         bkBuilder.authorsSet(authors);
@@ -471,7 +471,7 @@ class RLineBuildTest {
 
         String title =
                 "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of"
-                    + " speciation using DNA sequence data.";
+                        + " speciation using DNA sequence data.";
         thBuilder.authorsSet(authors);
 
         thBuilder.title(title);
@@ -508,7 +508,7 @@ class RLineBuildTest {
         paBuilder.authorsSet(authors);
         String title =
                 "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of"
-                    + " speciation using DNA sequence data.";
+                        + " speciation using DNA sequence data.";
         paBuilder.patentNumber("WO0149833");
 
         paBuilder.title(title);
@@ -542,7 +542,7 @@ class RLineBuildTest {
         eaBuilder.authorsSet(authors);
         String title =
                 "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of"
-                    + " speciation using DNA sequence data.";
+                        + " speciation using DNA sequence data.";
 
         eaBuilder.title(title);
         String locator = "PGR99-114";
@@ -576,7 +576,7 @@ class RLineBuildTest {
         uoBuilder.authorsSet(authors);
         String title =
                 "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of"
-                    + " speciation using DNA sequence data.";
+                        + " speciation using DNA sequence data.";
 
         uoBuilder.title(title);
 

@@ -17,9 +17,9 @@ class CcLineSubCellCommentParserTest {
     void test1() {
         String lines =
                 "CC   -!- SUBCELLULAR LOCATION: Cytoplasm. Endoplasmic reticulum membrane;\n"
-                    + "CC       Peripheral membrane protein. Golgi apparatus membrane;"
-                    + " Peripheral\n"
-                    + "CC       membrane protein.\n";
+                        + "CC       Peripheral membrane protein. Golgi apparatus membrane;"
+                        + " Peripheral\n"
+                        + "CC       membrane protein.\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -160,7 +160,7 @@ class CcLineSubCellCommentParserTest {
         SubcullarLocation sl = (SubcullarLocation) cc.getObject();
         assertEquals(
                 "Predominantly found in the trans-Golgi network (TGN). Not redistributed to the"
-                    + " plasma membrane in response to elevated copper levels",
+                        + " plasma membrane in response to elevated copper levels",
                 sl.getNote().get(0).getValue());
         assertEquals(1, sl.getLocations().size());
 

@@ -178,15 +178,15 @@ class GNLineBuildTest {
     void test2GenesWithEvidence() {
         String gnLine =
                 "GN   Name=Jon99Cii {ECO:0000313|EMBL:BAG16761.1};\n"
-                    + "GN   Synonyms=SER1 {ECO:0000313|EMBL:BAG16761.1}, SER5"
-                    + " {ECO:0000303|Ref.6},\n"
-                    + "GN   Ser99Da {ECO:0000269|PubMed:10433554};\n"
-                    + "GN   ORFNames=At1g22300 {ECO:0000313|EMBL:BAG16761.1}, CG7877\n"
-                    + "GN   {ECO:0000313|EMBL:BAG16761.1}, M117.2 {ECO:0000313|PDB:3OW2};\n"
-                    + "GN   and\n"
-                    + "GN   Name=Jon99Ciii;\n"
-                    + "GN   Synonyms=SER2, SER5 {ECO:0000256|HAMAP-Rule:MF_00205}, Ser99Db;\n"
-                    + "GN   ORFNames=CG15519 {ECO:0000303|Ref.6};";
+                        + "GN   Synonyms=SER1 {ECO:0000313|EMBL:BAG16761.1}, SER5"
+                        + " {ECO:0000303|Ref.6},\n"
+                        + "GN   Ser99Da {ECO:0000269|PubMed:10433554};\n"
+                        + "GN   ORFNames=At1g22300 {ECO:0000313|EMBL:BAG16761.1}, CG7877\n"
+                        + "GN   {ECO:0000313|EMBL:BAG16761.1}, M117.2 {ECO:0000313|PDB:3OW2};\n"
+                        + "GN   and\n"
+                        + "GN   Name=Jon99Ciii;\n"
+                        + "GN   Synonyms=SER2, SER5 {ECO:0000256|HAMAP-Rule:MF_00205}, Ser99Db;\n"
+                        + "GN   ORFNames=CG15519 {ECO:0000303|Ref.6};";
         List<Gene> genes = new ArrayList<>();
         GeneName geneName =
                 new GeneNameBuilder(

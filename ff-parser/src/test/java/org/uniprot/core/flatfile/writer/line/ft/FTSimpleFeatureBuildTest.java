@@ -32,10 +32,10 @@ class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
     void test2() {
         String ftLine =
                 "FT   CHAIN           61..386\n"
-                    + "FT                   /note=\"Serine/threonine-protein phosphatase 2A 56"
-                    + " kDa\n"
-                    + "FT                   regulatory subunit gamma isoform\"\n"
-                    + "FT                   /id=\"PRO_0000071458\"";
+                        + "FT                   /note=\"Serine/threonine-protein phosphatase 2A 56"
+                        + " kDa\n"
+                        + "FT                   regulatory subunit gamma isoform\"\n"
+                        + "FT                   /id=\"PRO_0000071458\"";
         String ftLineString =
                 "CHAIN 61..386\n"
                     + "/note=\"Serine/threonine-protein phosphatase 2A 56 kDa regulatory subunit"
@@ -99,11 +99,11 @@ class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
     void test2Ev() {
         String ftLine =
                 "FT   CHAIN           61..386\n"
-                    + "FT                   /note=\"Serine/threonine-protein phosphatase 2A 56"
-                    + " kDa\n"
-                    + "FT                   regulatory subunit gamma isoform\"\n"
-                    + "FT                   /evidence=\"ECO:0000256|HAMAP-Rule:MF_00205\"\n"
-                    + "FT                   /id=\"PRO_0000071458\"";
+                        + "FT                   /note=\"Serine/threonine-protein phosphatase 2A 56"
+                        + " kDa\n"
+                        + "FT                   regulatory subunit gamma isoform\"\n"
+                        + "FT                   /evidence=\"ECO:0000256|HAMAP-Rule:MF_00205\"\n"
+                        + "FT                   /id=\"PRO_0000071458\"";
         String ftLineString =
                 "CHAIN 61..386\n"
                     + "/note=\"Serine/threonine-protein phosphatase 2A 56 kDa regulatory subunit"

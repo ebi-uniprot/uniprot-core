@@ -200,11 +200,11 @@ public class UniProtEntryScorer {
         if (withTaxId)
             writer.write(
                     "accession, taxonomy, description, gene, comment, xref, goxref, keyword ,"
-                        + " feature, citation, total");
+                            + " feature, citation, total");
         else
             writer.write(
                     "accession, description, gene, comment, xref, goxref, keyword , feature,"
-                        + " citation, total");
+                            + " citation, total");
         writer.newLine();
         itState = state.STARTED;
         return this;

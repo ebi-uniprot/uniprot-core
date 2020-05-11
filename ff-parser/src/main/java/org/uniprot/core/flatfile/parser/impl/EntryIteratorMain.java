@@ -22,7 +22,7 @@ public class EntryIteratorMain {
         if (args.length != 9) {
             LOGGER.error(
                     "Provide the correct arguments: FILE THREAD_NUM ENTRY_QUEUE_SIZE FF_QUEUE_SIZE"
-                        + " COUNT KEYWORD_FILE DISEASE_FILE GO_FILE SUBCELLULAR_LOCATION_FILE");
+                            + " COUNT KEYWORD_FILE DISEASE_FILE GO_FILE SUBCELLULAR_LOCATION_FILE");
             System.exit(1);
         }
         String file = args[0];

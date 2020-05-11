@@ -37,7 +37,7 @@ class CcLineAPCommentParserTest {
         assertEquals("3", ap.getNamedIsoforms());
         assertEquals(
                 "Additional isoforms seem to exist. Experimental confirmation may be lacking for"
-                    + " some isoforms.",
+                        + " some isoforms.",
                 ap.getComment().get(0).getValue());
         assertEquals(3, ap.getNames().size());
         assertEquals("1", ap.getNames().get(0).getName().getValue());
@@ -168,11 +168,11 @@ class CcLineAPCommentParserTest {
     void testParserSynonyms2() {
         String lines =
                 "CC   -!- ALTERNATIVE PRODUCTS:\n"
-                    + "CC       Event=Alternative splicing; Named isoforms=15;\n"
-                    + "CC       Name=1; Synonyms=FLIP-L, CLARP1, MRIT alpha-1, CASH alpha,"
-                    + " I-FLICE\n"
-                    + "CC       1, FLAME-1 gamma, Usurpin alpha;\n"
-                    + "CC         IsoId=O15519-1; Sequence=Displayed;\n";
+                        + "CC       Event=Alternative splicing; Named isoforms=15;\n"
+                        + "CC       Name=1; Synonyms=FLIP-L, CLARP1, MRIT alpha-1, CASH alpha,"
+                        + " I-FLICE\n"
+                        + "CC       1, FLAME-1 gamma, Usurpin alpha;\n"
+                        + "CC         IsoId=O15519-1; Sequence=Displayed;\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);
@@ -286,7 +286,7 @@ class CcLineAPCommentParserTest {
                 ap.getNames().get(0).getSynNames().get(0).getEvidences().get(1));
         assertEquals(
                 "Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is in conflict"
-                    + " in positions: 33:I->T. No experimental confirmation available.",
+                        + " in positions: 33:I->T. No experimental confirmation available.",
                 ap.getNames().get(0).getNote().get(0).getValue());
         assertEquals(
                 "ECO:0000313|PDB:3OW2",
@@ -541,7 +541,7 @@ class CcLineAPCommentParserTest {
                 ap.getNames().get(0).getSynNames().get(0).getEvidences().get(1));
         assertEquals(
                 "Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is in conflict"
-                    + " in positions: 33:I->T. No experimental confirmation available.",
+                        + " in positions: 33:I->T. No experimental confirmation available.",
                 ap.getNames().get(0).getNote().get(0).getValue());
         assertEquals(
                 "ECO:0000313|PDB:3OW2",

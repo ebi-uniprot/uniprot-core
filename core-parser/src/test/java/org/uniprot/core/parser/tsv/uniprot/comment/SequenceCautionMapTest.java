@@ -33,8 +33,8 @@ class SequenceCautionMapTest {
         System.out.println(value);
         String expectedValue =
                 "SEQUENCE CAUTION:  Sequence=BAB43866.1; Type=Miscellaneous discrepancy;"
-                    + " Note=Chimeric cDNA. It is a chimera between Dox-A3 and PPO2.;"
-                    + " Evidence={ECO:0000305};";
+                        + " Note=Chimeric cDNA. It is a chimera between Dox-A3 and PPO2.;"
+                        + " Evidence={ECO:0000305};";
         assertEquals(expectedValue, value);
     }
 

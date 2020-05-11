@@ -82,7 +82,7 @@ class FtLineConverterUtilTest {
     void testVarSeq3() {
         String val =
                 "GEARPARAQKPAQL -> V (in isoform SV1, isoform 2, isoform SV5, isoform 8, isoform"
-                    + " SV10 and isoform SV11)";
+                        + " SV10 and isoform SV11)";
         Matcher matcher = FtLineConverterUtil.VAR_SEQ_DESC_PATTERN.matcher(val);
         assertTrue(matcher.matches());
         String original = matcher.group(3).replaceAll(" ", "");
@@ -125,7 +125,7 @@ class FtLineConverterUtilTest {
                     + " isoform 3)";
         String val1 =
                 "APLVPIFSFGENDLFDQIPNSSGSWLRYIQNRLQKIMGISLPLFHGRGVFQYSFGLIPYRRPITTVV ->"
-                    + " YQASGKSTLGS VGNWQGFYFGGKMAETNADSILVEIFSPFTIKIIFWCLMPKYLEKFPQRRLSDLRN";
+                        + " YQASGKSTLGS VGNWQGFYFGGKMAETNADSILVEIFSPFTIKIIFWCLMPKYLEKFPQRRLSDLRN";
         String other = "YQASGKSTLGSVGNWQGFYFGGKMAETNADSILVEIFSPFTIKIIFWCLMPKYLEKFPQRRLSDLRN";
         Matcher matcher = FtLineConverterUtil.VAR_SEQ_DESC_PATTERN.matcher(val);
         assertTrue(matcher.matches());

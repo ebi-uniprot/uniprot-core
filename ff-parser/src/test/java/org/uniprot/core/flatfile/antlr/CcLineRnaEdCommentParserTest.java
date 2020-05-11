@@ -152,9 +152,9 @@ class CcLineRnaEdCommentParserTest {
     void testNoHeader2() {
         String ccLineString =
                 "RNA EDITING: Modified_positions=46 {ECO:0000269|PubMed:12527781,"
-                    + " ECO:0000269|PubMed:12711687}, 1052 {ECO:0000269|PubMed:12527781,"
-                    + " ECO:0000269|PubMed:12711687}; Note=The nonsense codons at positions 46,"
-                    + " 421, 973, 984 and 1048 are modified to sense codons.;";
+                        + " ECO:0000269|PubMed:12711687}, 1052 {ECO:0000269|PubMed:12527781,"
+                        + " ECO:0000269|PubMed:12711687}; Note=The nonsense codons at positions 46,"
+                        + " 421, 973, 984 and 1048 are modified to sense codons.;";
 
         CcLineFormater formater = new CcLineFormater();
         UniprotKBLineParser<CcLineObject> parser =

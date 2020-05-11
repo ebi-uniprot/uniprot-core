@@ -159,13 +159,13 @@ class CCRNAEditingBuildTest extends CCBuildTestAbstr {
 
         String ccLineStringEvidence =
                 ("RNA EDITING: Modified_positions=156 {ECO:0000313|EMBL:BAG16761.1}, 158"
-                     + " {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6}, 160"
-                     + " {ECO:0000303|Ref.6}; Note=Partial edited. {ECO:0000313|PDB:3OW2}. RNA"
-                     + " editing generates receptor isoforms that differ in the phospholipase C"
-                     + " signaling cascade in a transfected cell line, suggesting that this RNA"
-                     + " processing event may contribute to the modulation of serotonergic"
-                     + " neurotransmission in the central nervous system."
-                     + " {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};");
+                        + " {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6}, 160"
+                        + " {ECO:0000303|Ref.6}; Note=Partial edited. {ECO:0000313|PDB:3OW2}. RNA"
+                        + " editing generates receptor isoforms that differ in the phospholipase C"
+                        + " signaling cascade in a transfected cell line, suggesting that this RNA"
+                        + " processing event may contribute to the modulation of serotonergic"
+                        + " neurotransmission in the central nervous system."
+                        + " {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};");
 
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
         String ev2 = "ECO:0000269|PubMed:10433554";

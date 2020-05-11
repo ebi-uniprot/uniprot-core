@@ -34,7 +34,7 @@ class KeywordFileReaderTest {
                         "IC   Domain.",
                         "AC   KW-9994",
                         "DE   Keywords assigned to proteins because they have at least one"
-                            + " specimen",
+                                + " specimen",
                         "DE   of a specific domain.",
                         "//");
 
@@ -48,7 +48,7 @@ class KeywordFileReaderTest {
                 () ->
                         assertEquals(
                                 "Keywords assigned to proteins because they have at least one"
-                                    + " specimen of a specific domain.",
+                                        + " specimen of a specific domain.",
                                 retList.get(0).getDefinition()),
                 () -> assertNotNull(retList.get(0).getParents()),
                 () -> assertTrue(retList.get(0).getParents().isEmpty()));
@@ -64,7 +64,7 @@ class KeywordFileReaderTest {
                         "ID   test-keyword.",
                         "AC   KW-0000",
                         "DE   Protein which contains at least one 2Fe-2S iron-sulfur cluster: 2"
-                            + " iron",
+                                + " iron",
                         "DE   atoms complexed to 2 inorganic sulfides and 4 sulfur atoms of",
                         "DE   cysteines from the protein.",
                         "SY   [2Fe-2S] cluster; [Fe2S2] cluster; 2 iron, 2 sulfur cluster binding;",

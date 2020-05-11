@@ -16,10 +16,10 @@ public class CommentTransformerHelperTest {
     public void testSemiComma() {
         String value =
                 "A chromosomal aberration involving BCL2 has been found in chronic lymphatic"
-                    + " leukemia. Translocation t(14;18)(q32;q21) with immunoglobulin gene"
-                    + " regions. BCL2 mutations found in non-Hodgkin lymphomas carrying the"
-                    + " chromosomal translocation could be attributed to the Ig somatic"
-                    + " hypermutation mechanism resulting in nucleotide transitions.";
+                        + " leukemia. Translocation t(14;18)(q32;q21) with immunoglobulin gene"
+                        + " regions. BCL2 mutations found in non-Hodgkin lymphomas carrying the"
+                        + " chromosomal translocation could be attributed to the Ig somatic"
+                        + " hypermutation mechanism resulting in nucleotide transitions.";
         List<EvidencedValue> evValues = CommentTransformerHelper.parseEvidencedValues(value, true);
         for (EvidencedValue ev : evValues) {
             System.out.println(ev.getValue());
@@ -30,18 +30,18 @@ public class CommentTransformerHelperTest {
     void testParseEvidencedValues1() {
         String value =
                 "Remains fully active after heating at 50 degrees Celsius and pH 4.0 for 10 min."
-                    + " Retains 65% of its activity after heating at 55 degrees Celsius for 10"
-                    + " min. {ECO:0000269|PubMed:10433555}. The half-life value for loss of"
-                    + " activity at 60 degrees Celsius and pH 4.0 is 3.5 min."
-                    + " {ECO:0000269|PubMed:10433554, ECO:0000269|PubMed:104335};";
+                        + " Retains 65% of its activity after heating at 55 degrees Celsius for 10"
+                        + " min. {ECO:0000269|PubMed:10433555}. The half-life value for loss of"
+                        + " activity at 60 degrees Celsius and pH 4.0 is 3.5 min."
+                        + " {ECO:0000269|PubMed:10433554, ECO:0000269|PubMed:104335};";
         List<EvidencedValue> evValues = CommentTransformerHelper.parseEvidencedValues(value, true);
         String note1 =
                 "Remains fully active after heating at 50 degrees Celsius and pH 4.0 for 10 min."
-                    + " Retains 65% of its activity after heating at 55 degrees Celsius for 10"
-                    + " min";
+                        + " Retains 65% of its activity after heating at 55 degrees Celsius for 10"
+                        + " min";
         String note2 =
                 "The half-life value for loss of activity at 60 degrees Celsius and pH 4.0 is 3.5"
-                    + " min";
+                        + " min";
         assertEquals(2, evValues.size());
         List<String> evs = new ArrayList<>(Arrays.asList("ECO:0000269|PubMed:10433555"));
         verify(evValues.get(0), note1, evs);
@@ -55,18 +55,18 @@ public class CommentTransformerHelperTest {
     void testParseEvidencedValues2() {
         String value =
                 "Remains fully active after heating at 50 degrees Celsius and pH 4.0 for 10 min."
-                    + " Retains 65% of its activity after heating at 55 degrees Celsius for 10"
-                    + " min. {ECO:0000269|PubMed:10433555}. The half-life value for loss of"
-                    + " activity at 60 degrees Celsius and pH 4.0 is 3.5 min."
-                    + " {ECO:0000269|PubMed:10433554, ECO:0000269|PubMed:104335};";
+                        + " Retains 65% of its activity after heating at 55 degrees Celsius for 10"
+                        + " min. {ECO:0000269|PubMed:10433555}. The half-life value for loss of"
+                        + " activity at 60 degrees Celsius and pH 4.0 is 3.5 min."
+                        + " {ECO:0000269|PubMed:10433554, ECO:0000269|PubMed:104335};";
         List<EvidencedValue> evValues = CommentTransformerHelper.parseEvidencedValues(value, false);
         String note1 =
                 "Remains fully active after heating at 50 degrees Celsius and pH 4.0 for 10 min."
-                    + " Retains 65% of its activity after heating at 55 degrees Celsius for 10"
-                    + " min.";
+                        + " Retains 65% of its activity after heating at 55 degrees Celsius for 10"
+                        + " min.";
         String note2 =
                 "The half-life value for loss of activity at 60 degrees Celsius and pH 4.0 is 3.5"
-                    + " min.";
+                        + " min.";
         assertEquals(2, evValues.size());
         List<String> evs = new ArrayList<>(Arrays.asList("ECO:0000269|PubMed:10433555"));
         verify(evValues.get(0), note1, evs);
@@ -86,11 +86,11 @@ public class CommentTransformerHelperTest {
         List<EvidencedValue> evValues = CommentTransformerHelper.parseEvidencedValues(value, true);
         String note1 =
                 "Remains fully active after heating at 50 degrees Celsius and pH 4.0 for 10 min."
-                    + " Retains 65% of its activity after heating at 55 degrees Celsius for 10"
-                    + " min";
+                        + " Retains 65% of its activity after heating at 55 degrees Celsius for 10"
+                        + " min";
         String note2 =
                 "The half-life value for loss of activity at 60 degrees Celsius and pH 4.0 is 3.5"
-                    + " min";
+                        + " min";
         assertEquals(2, evValues.size());
         List<String> evs = new ArrayList<>();
         verify(evValues.get(0), note1, evs);
@@ -108,11 +108,11 @@ public class CommentTransformerHelperTest {
         List<EvidencedValue> evValues = CommentTransformerHelper.parseEvidencedValues(value, false);
         String note1 =
                 "Remains fully active after heating at 50 degrees Celsius and pH 4.0 for 10 min."
-                    + " Retains 65% of its activity after heating at 55 degrees Celsius for 10"
-                    + " min.";
+                        + " Retains 65% of its activity after heating at 55 degrees Celsius for 10"
+                        + " min.";
         String note2 =
                 "The half-life value for loss of activity at 60 degrees Celsius and pH 4.0 is 3.5"
-                    + " min.";
+                        + " min.";
         assertEquals(2, evValues.size());
         List<String> evs = new ArrayList<>();
         verify(evValues.get(0), note1, evs);
@@ -124,10 +124,10 @@ public class CommentTransformerHelperTest {
     void testParseEvidenceValue1() {
         String value =
                 "The half-life value for loss of activity at 60 degrees Celsius and pH 4.0 is 3.5"
-                    + " min. {ECO:0000269|PubMed:10433554, ECO:0000269|PubMed:104335};";
+                        + " min. {ECO:0000269|PubMed:10433554, ECO:0000269|PubMed:104335};";
         String str =
                 "The half-life value for loss of activity at 60 degrees Celsius and pH 4.0 is 3.5"
-                    + " min.";
+                        + " min.";
         EvidencedValue evValue = CommentTransformerHelper.parseEvidencedValue(value, false);
         List<String> evs =
                 new ArrayList<>(
@@ -139,10 +139,10 @@ public class CommentTransformerHelperTest {
     void testParseEvidenceValue2() {
         String value =
                 "The half-life value for loss of activity at 60 degrees Celsius and pH 4.0 is 3.5"
-                    + " min. {ECO:0000269|PubMed:10433554, ECO:0000269|PubMed:104335};";
+                        + " min. {ECO:0000269|PubMed:10433554, ECO:0000269|PubMed:104335};";
         String str =
                 "The half-life value for loss of activity at 60 degrees Celsius and pH 4.0 is 3.5"
-                    + " min";
+                        + " min";
         EvidencedValue evValue = CommentTransformerHelper.parseEvidencedValue(value, true);
         List<String> evs =
                 new ArrayList<>(
@@ -157,7 +157,7 @@ public class CommentTransformerHelperTest {
                         + " degrees Celsius and pH 4.0 is 3.5 min.;";
         String str =
                 "The half-life value for loss of activity at 60 degrees Celsius and pH 4.0 is 3.5"
-                    + " min.";
+                        + " min.";
         EvidencedValue evValue = CommentTransformerHelper.parseEvidencedValue(value, false);
         List<String> evs = new ArrayList<>();
         verify(evValue, str, evs);
@@ -170,7 +170,7 @@ public class CommentTransformerHelperTest {
                         + " degrees Celsius and pH 4.0 is 3.5 min.;";
         String str =
                 "The half-life value for loss of activity at 60 degrees Celsius and pH 4.0 is 3.5"
-                    + " min";
+                        + " min";
         EvidencedValue evValue = CommentTransformerHelper.parseEvidencedValue(value, true);
         List<String> evs = new ArrayList<>();
         verify(evValue, str, evs);
@@ -180,12 +180,12 @@ public class CommentTransformerHelperTest {
     void testStripEvidence() {
         String value =
                 "The half-life value for loss of activity at 60 degrees Celsius and pH 4.0 is 3.5"
-                    + " min. {ECO:0000269|PubMed:10433554, ECO:0000269|PubMed:104335};";
+                        + " min. {ECO:0000269|PubMed:10433554, ECO:0000269|PubMed:104335};";
         List<Evidence> evIds = new ArrayList<>();
         String annot = CommentTransformerHelper.stripEvidences(value, evIds);
         String note2 =
                 "The half-life value for loss of activity at 60 degrees Celsius and pH 4.0 is 3.5"
-                    + " min.";
+                        + " min.";
         assertEquals(annot, note2);
         List<String> evs =
                 new ArrayList<>(
@@ -202,7 +202,7 @@ public class CommentTransformerHelperTest {
         String annot = CommentTransformerHelper.stripEvidences(value, evIds);
         String note2 =
                 "The half-life value for loss of activity at 60 degrees Celsius and pH 4.0 is 3.5"
-                    + " min.";
+                        + " min.";
         assertEquals(annot, note2);
         assertEquals(0, evIds.size());
     }
@@ -211,13 +211,13 @@ public class CommentTransformerHelperTest {
     void testParseNoteString() {
         String note =
                 "The above maximum is for the oxidized form. Shows a maximal peak at 330 nm in the"
-                    + " reduced form.. These absorption peaks are for the tryptophylquinone"
-                    + " cofactor.;";
+                        + " reduced form.. These absorption peaks are for the tryptophylquinone"
+                        + " cofactor.;";
         List<EvidencedValue> evValues = CommentTransformerHelper.parseEvidencedValues(note, false);
         assertEquals(2, evValues.size());
         String val1 =
                 "The above maximum is for the oxidized form. Shows a maximal peak at 330 nm in the"
-                    + " reduced form.";
+                        + " reduced form.";
         assertEquals(val1, evValues.get(0).getValue());
         assertEquals(0, evValues.get(0).getEvidences().size());
         String val2 = "These absorption peaks are for the tryptophylquinone cofactor.";
@@ -236,7 +236,7 @@ public class CommentTransformerHelperTest {
         assertEquals(2, evValues.size());
         String val1 =
                 "The above maximum is for the oxidized form. Shows a maximal peak at 330 nm in the"
-                    + " reduced form.";
+                        + " reduced form.";
         assertEquals(val1, evValues.get(0).getValue());
         assertEquals(1, evValues.get(0).getEvidences().size());
         assertEquals(

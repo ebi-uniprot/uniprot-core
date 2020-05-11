@@ -122,7 +122,7 @@ class FtLineConverterTest {
         ft.setLocationEnd("83");
         ft.setFtText(
                 "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP"
-                    + " (in isoform 2)");
+                        + " (in isoform 2)");
         ft.setFtId("VSP_004370");
         fobj.getFts().add(ft);
         List<Feature> features = converter.convert(fobj);
@@ -153,7 +153,7 @@ class FtLineConverterTest {
         ft.setLocationEnd("83");
         ft.setFtText(
                 "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP(in"
-                    + " isoform 2)");
+                        + " isoform 2)");
         ft.setFtId("VSP_004370");
         fobj.getFts().add(ft);
         List<Feature> features = converter.convert(fobj);
