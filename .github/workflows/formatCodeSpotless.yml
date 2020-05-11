@@ -1,10 +1,10 @@
 name: Code Format on push master and pull request using spotless
 
 on:
-  - pull_request
+  pull_request:
     branches:
-      - master
-  - push
+      - maste
+  push:
     branches:
       - master
 
