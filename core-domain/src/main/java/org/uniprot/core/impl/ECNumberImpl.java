@@ -1,9 +1,9 @@
 package org.uniprot.core.impl;
 
-import java.util.regex.Pattern;
-
 import org.uniprot.core.ECNumber;
 import org.uniprot.core.util.Utils;
+
+import java.util.regex.Pattern;
 
 public class ECNumberImpl implements ECNumber {
     private static final Pattern EC_PATTERN = Pattern.compile("\\d{1,2}(\\.(\\-|n?\\d{1,3})){3}");

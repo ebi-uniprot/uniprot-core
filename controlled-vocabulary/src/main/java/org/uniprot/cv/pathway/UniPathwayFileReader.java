@@ -1,14 +1,14 @@
 package org.uniprot.cv.pathway;
 
+import org.uniprot.core.cv.pathway.UniPathway;
+import org.uniprot.core.util.Utils;
+import org.uniprot.cv.common.AbstractFileReader;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-
-import org.uniprot.core.cv.pathway.UniPathway;
-import org.uniprot.core.util.Utils;
-import org.uniprot.cv.common.AbstractFileReader;
 
 public class UniPathwayFileReader extends AbstractFileReader<UniPathway> {
 

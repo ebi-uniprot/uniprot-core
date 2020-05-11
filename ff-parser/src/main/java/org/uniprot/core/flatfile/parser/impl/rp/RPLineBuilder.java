@@ -2,14 +2,14 @@ package org.uniprot.core.flatfile.parser.impl.rp;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.*;
 
+import org.uniprot.core.flatfile.writer.LineType;
+import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
+import org.uniprot.core.flatfile.writer.impl.RLine;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.uniprot.core.flatfile.writer.LineType;
-import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
-import org.uniprot.core.flatfile.writer.impl.RLine;
 
 public class RPLineBuilder implements RLine<List<String>> {
     private static final Pattern RP_BAD_COLON_POSITION_SEPARATION = Pattern.compile(";(\\d+)-");

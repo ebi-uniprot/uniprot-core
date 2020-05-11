@@ -2,14 +2,14 @@ package org.uniprot.core.flatfile.parser.converter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.exception.DatabaseTypeNotExistException;
 import org.uniprot.core.flatfile.parser.impl.dr.DrLineConverter;
 import org.uniprot.core.flatfile.parser.impl.dr.DrLineObject;
 import org.uniprot.core.flatfile.parser.impl.dr.UniProtDrObjects;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
+
+import java.util.List;
 
 class DrLineConverterTest {
     private final DrLineConverter converter = new DrLineConverter();

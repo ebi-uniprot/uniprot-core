@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprotkb.comment;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.util.EnumDisplay;
+
+import javax.annotation.Nonnull;
 
 /**
  * Enumerates all comment types in UniProt. Important!!! The order which is here must the order

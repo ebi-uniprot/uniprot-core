@@ -1,11 +1,11 @@
 package org.uniprot.core.flatfile.parser.impl.cc;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /** @author jieluo */
 public class CCInteractionCommentLineBuilder extends CCLineBuilderAbstr<InteractionComment> {

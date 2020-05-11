@@ -2,10 +2,6 @@ package org.uniprot.core.scorer.uniprotkb.comments;
 
 import static org.uniprot.core.scorer.uniprotkb.Consensus.PRESENCE;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-
 import org.uniprot.core.scorer.uniprotkb.Consensus;
 import org.uniprot.core.scorer.uniprotkb.ScoreStatus;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
@@ -14,6 +10,10 @@ import org.uniprot.core.uniprotkb.comment.FreeTextComment;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 
 public abstract class CommentScoredAbstr implements CommentScored {
     private boolean isSP = false;

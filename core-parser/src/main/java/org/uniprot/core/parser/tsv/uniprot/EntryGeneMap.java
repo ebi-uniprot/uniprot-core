@@ -1,12 +1,12 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.Value;
 import org.uniprot.core.gene.Gene;
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class EntryGeneMap implements NamedValueMap {
     private static final String SPACE = " ";

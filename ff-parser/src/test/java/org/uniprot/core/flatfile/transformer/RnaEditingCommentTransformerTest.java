@@ -29,9 +29,10 @@ class RnaEditingCommentTransformerTest {
     @Test
     void testQ85BW1() {
         String val =
-                "RNA EDITING: Modified_positions=46 {ECO:0000269|PubMed:12527781, ECO:0000269|PubMed:12711687}"
-                        + ", 1052 {ECO:0000269|PubMed:12527781, ECO:0000269|PubMed:12711687};"
-                        + " Note=The nonsense codons at positions 46, 421, 973, 984 and 1048 are modified to sense codons.;";
+                "RNA EDITING: Modified_positions=46 {ECO:0000269|PubMed:12527781,"
+                    + " ECO:0000269|PubMed:12711687}, 1052 {ECO:0000269|PubMed:12527781,"
+                    + " ECO:0000269|PubMed:12711687}; Note=The nonsense codons at positions 46,"
+                    + " 421, 973, 984 and 1048 are modified to sense codons.;";
         RnaEditingComment comment = transformer.transform(val);
         assertNotNull(comment);
         assertEquals(2, comment.getPositions().size());
@@ -39,7 +40,8 @@ class RnaEditingCommentTransformerTest {
         assertEquals(2, comment.getPositions().get(0).getEvidences().size());
         assertEquals(1, comment.getNote().getTexts().size());
         assertEquals(
-                "The nonsense codons at positions 46, 421, 973, 984 and 1048 are modified to sense codons",
+                "The nonsense codons at positions 46, 421, 973, 984 and 1048 are modified to sense"
+                    + " codons",
                 comment.getNote().getTexts().get(0).getValue());
         assertEquals(0, comment.getNote().getTexts().get(0).getEvidences().size());
     }

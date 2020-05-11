@@ -1,13 +1,13 @@
 package org.uniprot.core.flatfile.parser.impl.ss;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.uniprotkb.InternalSection;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SSLineBuilder extends FFLineBuilderAbstr<InternalSection> {
     private static final String INTERNAL_SECTION =

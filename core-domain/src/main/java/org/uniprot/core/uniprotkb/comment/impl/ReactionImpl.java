@@ -1,16 +1,16 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
 import org.uniprot.core.uniprotkb.comment.Reaction;
 import org.uniprot.core.uniprotkb.comment.ReactionDatabase;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.util.Utils;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class ReactionImpl implements Reaction {
     private static final long serialVersionUID = 7533995250813372108L;

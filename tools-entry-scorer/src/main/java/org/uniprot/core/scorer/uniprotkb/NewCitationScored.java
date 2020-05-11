@@ -1,10 +1,10 @@
 package org.uniprot.core.scorer.uniprotkb;
 
-import java.util.List;
-import java.util.regex.Pattern;
-
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
+
+import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 02-Mar-2010 Time: 16:14:37 To change this template

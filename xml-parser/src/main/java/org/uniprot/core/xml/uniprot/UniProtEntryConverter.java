@@ -1,13 +1,5 @@
 package org.uniprot.core.xml.uniprot;
 
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.uniprotkb.*;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.comment.Comment;
@@ -27,6 +19,14 @@ import org.uniprot.core.xml.jaxb.uniprot.SequenceType;
 import org.uniprot.core.xml.uniprot.citation.ReferenceConverter;
 import org.uniprot.core.xml.uniprot.comment.CommentConverterFactory;
 import org.uniprot.core.xml.uniprot.description.ProteinDescriptionConverter;
+
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class UniProtEntryConverter implements Converter<Entry, UniProtKBEntry> {
     private static final String INTERACTION = "interaction";

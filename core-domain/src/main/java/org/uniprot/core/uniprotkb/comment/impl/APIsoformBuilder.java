@@ -3,15 +3,15 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableList;
 
+import org.uniprot.core.Builder;
+import org.uniprot.core.Value;
+import org.uniprot.core.uniprotkb.comment.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
-
-import org.uniprot.core.Builder;
-import org.uniprot.core.Value;
-import org.uniprot.core.uniprotkb.comment.*;
 
 /**
  * Created 15/01/19

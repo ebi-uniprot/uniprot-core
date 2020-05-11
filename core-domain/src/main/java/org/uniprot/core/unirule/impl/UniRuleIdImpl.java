@@ -1,9 +1,9 @@
 package org.uniprot.core.unirule.impl;
 
-import java.util.regex.Pattern;
-
 import org.uniprot.core.impl.ValueImpl;
 import org.uniprot.core.unirule.UniRuleId;
+
+import java.util.regex.Pattern;
 
 public class UniRuleIdImpl extends ValueImpl implements UniRuleId {
 

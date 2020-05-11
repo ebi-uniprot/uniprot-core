@@ -1,9 +1,6 @@
 package org.uniprot.core.scorer.uniprotkb;
 
-import java.io.*;
-import java.time.Duration;
-import java.time.LocalTime;
-import java.util.*;
+import com.google.common.base.Strings;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +8,10 @@ import org.uniprot.core.flatfile.parser.impl.DefaultUniProtEntryIterator;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 
-import com.google.common.base.Strings;
+import java.io.*;
+import java.time.Duration;
+import java.time.LocalTime;
+import java.util.*;
 
 /** based on https://swissprot.isb-sib.ch/wiki/display/sdu/Annotation+Scores+Before+Evidences */
 public class UniProtEntryScorer {
@@ -199,10 +199,12 @@ public class UniProtEntryScorer {
             throw new IllegalStateException("You can only start a new UniProtKBEntry Scorer");
         if (withTaxId)
             writer.write(
-                    "accession, taxonomy, description, gene, comment, xref, goxref, keyword , feature, citation, total");
+                    "accession, taxonomy, description, gene, comment, xref, goxref, keyword ,"
+                        + " feature, citation, total");
         else
             writer.write(
-                    "accession, description, gene, comment, xref, goxref, keyword , feature, citation, total");
+                    "accession, description, gene, comment, xref, goxref, keyword , feature,"
+                        + " citation, total");
         writer.newLine();
         itState = state.STARTED;
         return this;

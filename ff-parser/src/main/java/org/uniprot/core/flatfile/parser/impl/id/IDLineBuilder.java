@@ -3,14 +3,14 @@ package org.uniprot.core.flatfile.parser.impl.id;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEMICOLON;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.STOP;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class IDLineBuilder extends FFLineBuilderAbstr<IdLineObject>
         implements FFLineBuilder<IdLineObject> {

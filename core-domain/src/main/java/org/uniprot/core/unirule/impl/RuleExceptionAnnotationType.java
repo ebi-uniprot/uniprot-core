@@ -1,8 +1,8 @@
 package org.uniprot.core.unirule.impl;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.util.EnumDisplay;
+
+import javax.annotation.Nonnull;
 
 public enum RuleExceptionAnnotationType implements EnumDisplay {
     ANNOTATION,

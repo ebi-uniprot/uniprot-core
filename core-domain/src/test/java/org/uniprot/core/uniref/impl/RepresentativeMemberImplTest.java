@@ -2,12 +2,12 @@ package org.uniprot.core.uniref.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Collections;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
 import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefMemberIdType;
+
+import java.util.Collections;
 
 class RepresentativeMemberImplTest {
     @Test

@@ -1,9 +1,5 @@
 package org.uniprot.core.xml.unirule;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.unirule.*;
 import org.uniprot.core.unirule.impl.UniRuleEntryBuilder;
 import org.uniprot.core.unirule.impl.UniRuleIdBuilder;
@@ -11,6 +7,10 @@ import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.*;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class UniRuleEntryConverter implements Converter<UniRuleType, UniRuleEntry> {
     private final ObjectFactory objectFactory;

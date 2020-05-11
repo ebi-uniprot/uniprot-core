@@ -1,9 +1,9 @@
 package org.uniprot.core.flatfile.antlr;
 
-import java.io.Serializable;
-
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.TokenStream;
+
+import java.io.Serializable;
 
 /**
  * @author jluo

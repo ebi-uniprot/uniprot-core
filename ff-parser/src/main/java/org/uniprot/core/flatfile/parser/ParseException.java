@@ -30,7 +30,8 @@ public class ParseException extends RuntimeException {
     public String getDetailedMessage() {
         String errorMessage =
                 String.format(
-                        "Parsing Error while parsing the input String parsing error message is: \n %s \n",
+                        "Parsing Error while parsing the input String parsing error message is: \n"
+                            + " %s \n",
                         super.getMessage());
 
         if (!Strings.isNullOrEmpty(originalString)) {
@@ -45,7 +46,8 @@ public class ParseException extends RuntimeException {
 
             errorMessage +=
                     String.format(
-                            "Error happen on [%d:%d] of the original string. The error line is: \n %s",
+                            "Error happen on [%d:%d] of the original string. The error line is: \n"
+                                + " %s",
                             currentLineNumber, currentCharPosition, display);
         }
         return errorMessage;

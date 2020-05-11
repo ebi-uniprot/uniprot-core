@@ -1,10 +1,10 @@
 package org.uniprot.core.literature.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.citation.*;
 import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.literature.LiteratureStatistics;
+
+import java.util.Objects;
 
 /** @author lgonzales */
 public class LiteratureEntryImpl implements LiteratureEntry {

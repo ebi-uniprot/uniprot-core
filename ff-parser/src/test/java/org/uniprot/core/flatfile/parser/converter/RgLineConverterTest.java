@@ -2,11 +2,11 @@ package org.uniprot.core.flatfile.parser.converter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.rg.RgLineConverter;
 import org.uniprot.core.flatfile.parser.impl.rg.RgLineObject;
+
+import java.util.List;
 
 class RgLineConverterTest {
     @Test

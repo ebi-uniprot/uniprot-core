@@ -1,6 +1,8 @@
 package org.uniprot.core.json.parser.unirule;
 
-import java.time.LocalDate;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.NamedType;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
@@ -34,9 +36,7 @@ import org.uniprot.core.unirule.*;
 import org.uniprot.core.unirule.impl.*;
 import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.jsontype.NamedType;
-import com.fasterxml.jackson.databind.module.SimpleModule;
+import java.time.LocalDate;
 
 public class UniRuleJsonConfig extends JsonConfig {
 

@@ -2,10 +2,10 @@ package org.uniprot.core.citation.impl;
 
 import static java.util.Collections.emptyList;
 
-import java.util.List;
-
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
+
+import java.util.List;
 
 public class JournalArticleImpl extends AbstractJournalArticleImpl implements JournalArticle {
     private static final long serialVersionUID = -1925700851366460680L;

@@ -2,15 +2,15 @@ package org.uniprot.core.parser.tsv.uniprot;
 
 import static java.util.stream.Collectors.toMap;
 
-import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.parser.tsv.uniprot.comment.EntryCommentsMap;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
+
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEntry> {
     public enum ExtraAttributeKeyField {

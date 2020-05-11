@@ -1,16 +1,16 @@
 package org.uniprot.core.uniprotkb.xdb.impl;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.Property;
 import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 import org.uniprot.core.util.Utils;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class UniProtKBCrossReferenceImpl extends CrossReferenceImpl<UniProtKBDatabase>
         implements UniProtKBCrossReference {

@@ -1,9 +1,9 @@
 package org.uniprot.core.proteome.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.proteome.BuscoReport;
 import org.uniprot.core.util.Utils;
+
+import java.util.Objects;
 
 /**
  * @author lgonzales

@@ -2,11 +2,7 @@ package org.uniprot.core.flatfile.parser.impl.cc;
 
 import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLines;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
@@ -31,7 +27,11 @@ import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.util.Utils;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CcLineConverter extends EvidenceCollector
         implements Converter<CcLineObject, List<Comment>> {

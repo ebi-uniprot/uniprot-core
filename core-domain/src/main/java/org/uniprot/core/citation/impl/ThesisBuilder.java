@@ -1,8 +1,8 @@
 package org.uniprot.core.citation.impl;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.citation.Thesis;
+
+import javax.annotation.Nonnull;
 
 public final class ThesisBuilder extends AbstractCitationBuilder<ThesisBuilder, Thesis> {
     private String institute;

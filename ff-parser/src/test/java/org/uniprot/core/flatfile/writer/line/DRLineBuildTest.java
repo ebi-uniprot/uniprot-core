@@ -2,10 +2,6 @@ package org.uniprot.core.flatfile.writer.line;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.dr.DRLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
@@ -14,6 +10,10 @@ import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
 import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 class DRLineBuildTest {
     private DRLineBuilder builder = new DRLineBuilder();
@@ -68,12 +68,13 @@ class DRLineBuildTest {
                         // "DR Genevestigator; P53954; -.\n" +
                         // "DR GermOnline; YNL048W; Saccharomyces cerevisiae.\n" +
                         "DR   GO; GO:0005789; C:endoplasmic reticulum membrane; IDA:SGD.\n"
-                        + "DR   GO; GO:0016021; C:integral to membrane; IEA:UniProtKB-KW.\n"
-                        + "DR   GO; GO:0000026; F:alpha-1,2-mannosyltransferase activity; IDA:SGD.\n"
-                        + "DR   GO; GO:0005515; F:protein binding; IPI:IntAct.\n"
-                        + "DR   GO; GO:0006490; P:oligosaccharide-lipid intermediate metabolic process; IDA:SGD.\n"
-                        + "DR   InterPro; IPR001296; Glyco_trans_1.\n"
-                        + "DR   Pfam; PF00534; Glycos_transf_1; 1.";
+                      + "DR   GO; GO:0016021; C:integral to membrane; IEA:UniProtKB-KW.\n"
+                      + "DR   GO; GO:0000026; F:alpha-1,2-mannosyltransferase activity; IDA:SGD.\n"
+                      + "DR   GO; GO:0005515; F:protein binding; IPI:IntAct.\n"
+                      + "DR   GO; GO:0006490; P:oligosaccharide-lipid intermediate metabolic"
+                      + " process; IDA:SGD.\n"
+                      + "DR   InterPro; IPR001296; Glyco_trans_1.\n"
+                      + "DR   Pfam; PF00534; Glycos_transf_1; 1.";
         // "DR CYGD; YNL048w; -.\n" +
         //			"DR   NMPDR; fig|4932.3.peg.5426; -.";
         List<UniProtKBCrossReference> xrefs = new ArrayList<>();

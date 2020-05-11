@@ -1,11 +1,11 @@
 package org.uniprot.core.uniprotkb.impl;
 
-import java.util.Collections;
-import java.util.List;
-
 import org.uniprot.core.uniprotkb.EntryInactiveReason;
 import org.uniprot.core.uniprotkb.InactiveReasonType;
 import org.uniprot.core.util.Utils;
+
+import java.util.Collections;
+import java.util.List;
 
 public class EntryInactiveReasonImpl implements EntryInactiveReason {
     private static final long serialVersionUID = 1358481260367130982L;

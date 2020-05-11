@@ -1,5 +1,12 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
+import org.uniprot.core.flatfile.parser.impl.ft.FeatureLineBuilderFactory;
+import org.uniprot.core.flatfile.writer.FFLineBuilder;
+import org.uniprot.core.parser.tsv.NamedValueMap;
+import org.uniprot.core.uniprotkb.feature.Feature;
+import org.uniprot.core.uniprotkb.feature.FeatureDescription;
+import org.uniprot.core.uniprotkb.feature.FeatureType;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -11,13 +18,6 @@ import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-
-import org.uniprot.core.flatfile.parser.impl.ft.FeatureLineBuilderFactory;
-import org.uniprot.core.flatfile.writer.FFLineBuilder;
-import org.uniprot.core.parser.tsv.NamedValueMap;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureDescription;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
 
 public class EntryFeaturesMap implements NamedValueMap {
     public static final List<String> FIELDS =

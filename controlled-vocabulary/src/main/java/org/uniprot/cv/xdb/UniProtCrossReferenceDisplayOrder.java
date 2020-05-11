@@ -1,15 +1,15 @@
 package org.uniprot.cv.xdb;
 
+import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
+import org.uniprot.cv.common.AbstractFileReader;
+import org.uniprot.cv.common.CVSystemProperties;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
-
-import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
-import org.uniprot.cv.common.AbstractFileReader;
-import org.uniprot.cv.common.CVSystemProperties;
 
 /** @author jieluo */
 public enum UniProtCrossReferenceDisplayOrder

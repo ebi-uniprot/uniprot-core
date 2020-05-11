@@ -2,8 +2,6 @@ package org.uniprot.core.xml.proteome;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Arrays;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationDatabase;
@@ -16,6 +14,8 @@ import org.uniprot.core.xml.jaxb.proteome.NameListType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 import org.uniprot.core.xml.jaxb.proteome.PersonType;
 import org.uniprot.core.xml.jaxb.proteome.ReferenceType;
+
+import java.util.Arrays;
 
 class JournalArticleConverterTest {
     private ObjectFactory xmlFactory = new ObjectFactory();

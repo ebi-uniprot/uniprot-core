@@ -1,13 +1,13 @@
 package org.uniprot.core.uniprotkb.impl;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-
 import org.uniprot.core.uniprotkb.ReferenceComment;
 import org.uniprot.core.uniprotkb.ReferenceCommentType;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueImpl;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 
 public class ReferenceCommentImpl extends EvidencedValueImpl implements ReferenceComment {
     private static final long serialVersionUID = 6546262222329573992L;

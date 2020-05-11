@@ -3,14 +3,6 @@ package org.uniprot.core.xml.unirule;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import java.beans.Introspector;
-import java.beans.PropertyDescriptor;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.unirule.*;
 import org.uniprot.core.unirule.impl.*;
 import org.uniprot.core.util.Utils;
@@ -19,6 +11,14 @@ import org.uniprot.core.xml.jaxb.uniprot.*;
 import org.uniprot.core.xml.jaxb.unirule.RuleExceptionType;
 import org.uniprot.core.xml.jaxb.unirule.SamTriggerType;
 import org.uniprot.core.xml.uniprot.UniProtKBEntryConverterTest;
+
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public abstract class AbstractUniRuleConvertersTest extends AbstractConverterTest {
 

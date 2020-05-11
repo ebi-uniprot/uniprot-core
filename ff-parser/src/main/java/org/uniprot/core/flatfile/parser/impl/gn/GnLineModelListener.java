@@ -1,8 +1,5 @@
 package org.uniprot.core.flatfile.parser.impl.gn;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.uniprot.core.flatfile.antlr.GnLineParser;
@@ -10,6 +7,9 @@ import org.uniprot.core.flatfile.antlr.GnLineParserBaseListener;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 import org.uniprot.core.flatfile.parser.impl.HasEvidenceInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA. User: wudong Date: 08/08/13 Time: 12:26 To change this template use

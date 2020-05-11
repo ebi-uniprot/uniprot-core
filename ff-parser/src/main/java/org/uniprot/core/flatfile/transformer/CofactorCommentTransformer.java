@@ -1,11 +1,5 @@
 package org.uniprot.core.flatfile.transformer;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.comment.Cofactor;
@@ -16,6 +10,12 @@ import org.uniprot.core.uniprotkb.comment.impl.CofactorBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.CofactorCommentBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.NoteBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CofactorCommentTransformer implements CommentTransformer<CofactorComment> {
 
@@ -30,7 +30,8 @@ public class CofactorCommentTransformer implements CommentTransformer<CofactorCo
     private static final String COFACTOR_XREF = "Xref=";
 
     private static final String COFACTOR_REGEX =
-            "^(\\[[\\w/-]+(\\s[\\w/-]+)*\\]:)?(\\s*Name=(\\S+( \\S+)*); Xref=\\w+:\\S+;?( Evidence=\\{.+:.+\\};)?)*(\\s*Note=.+\\.?)?";
+            "^(\\[[\\w/-]+(\\s[\\w/-]+)*\\]:)?(\\s*Name=(\\S+( \\S+)*); Xref=\\w+:\\S+;?("
+                + " Evidence=\\{.+:.+\\};)?)*(\\s*Note=.+\\.?)?";
     private static final Pattern COFACTOR_PATTERN = Pattern.compile(COFACTOR_REGEX);
 
     private static String extractCofactorMolecule(String molecule) {

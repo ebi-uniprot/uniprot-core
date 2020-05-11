@@ -1,11 +1,5 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.uniprotkb.comment.APIsoform;
 import org.uniprot.core.uniprotkb.comment.IsoformName;
 import org.uniprot.core.uniprotkb.comment.IsoformSequenceStatus;
@@ -19,6 +13,12 @@ import org.uniprot.core.xml.jaxb.uniprot.IsoformType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.EvidencedValueConverter;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class APIsoformConverter implements Converter<IsoformType, APIsoform> {
 

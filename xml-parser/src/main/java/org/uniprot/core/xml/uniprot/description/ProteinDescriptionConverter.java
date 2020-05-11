@@ -1,10 +1,5 @@
 package org.uniprot.core.xml.uniprot.description;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilder;
 import org.uniprot.core.xml.Converter;
@@ -12,6 +7,11 @@ import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.ProteinType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ProteinDescriptionConverter
         implements Converter<ProteinType, ProteinDescription>,

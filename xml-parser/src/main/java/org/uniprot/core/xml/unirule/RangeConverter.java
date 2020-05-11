@@ -1,11 +1,11 @@
 package org.uniprot.core.xml.unirule;
 
-import java.util.Objects;
-
 import org.uniprot.core.Range;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
 import org.uniprot.core.xml.jaxb.unirule.RangeType;
+
+import java.util.Objects;
 
 public class RangeConverter implements Converter<RangeType, Range> {
 

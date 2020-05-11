@@ -1,11 +1,11 @@
 package org.uniprot.core.xml.unirule;
 
-import java.util.Objects;
-
 import org.uniprot.core.unirule.SamTrigger;
 import org.uniprot.core.unirule.impl.SamTriggerBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.*;
+
+import java.util.Objects;
 
 public class SamTriggerConverter implements Converter<SamTriggerType, SamTrigger> {
 

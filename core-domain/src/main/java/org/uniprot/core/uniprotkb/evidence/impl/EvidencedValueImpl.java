@@ -1,12 +1,12 @@
 package org.uniprot.core.uniprotkb.evidence.impl;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.util.Utils;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class EvidencedValueImpl extends HasEvidencesImpl implements EvidencedValue {
     private String value;

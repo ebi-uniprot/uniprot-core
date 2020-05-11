@@ -1,11 +1,11 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author jluo

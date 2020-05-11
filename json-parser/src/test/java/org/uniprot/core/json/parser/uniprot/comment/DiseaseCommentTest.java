@@ -3,6 +3,8 @@ package org.uniprot.core.json.parser.uniprot.comment;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
@@ -15,8 +17,6 @@ import org.uniprot.core.uniprotkb.comment.Note;
 import org.uniprot.core.uniprotkb.comment.impl.DiseaseBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.DiseaseCommentBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.NoteBuilder;
-
-import com.fasterxml.jackson.databind.JsonNode;
 
 /** @author lgonzales */
 public class DiseaseCommentTest {

@@ -1,12 +1,12 @@
 package org.uniprot.cv.evidence;
 
+import org.uniprot.cv.common.AbstractFileReader;
+import org.uniprot.cv.common.CVSystemProperties;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
-import org.uniprot.cv.common.AbstractFileReader;
-import org.uniprot.cv.common.CVSystemProperties;
 
 public enum GOEvidences {
     INSTANCE;

@@ -1,10 +1,10 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import java.util.regex.Pattern;
-
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
+
+import java.util.regex.Pattern;
 
 public class SCConflictConverter implements Converter<CommentType.Conflict, String> {
     private static final Pattern TARGET_A = Pattern.compile("[A-Z]{1}\\d{5}");

@@ -3,7 +3,7 @@ package org.uniprot.core.json.parser.uniprot;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.util.List;
+import com.fasterxml.jackson.databind.JsonNode;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
@@ -19,7 +19,7 @@ import org.uniprot.core.uniprotkb.feature.FeatureType;
 import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.FeatureBuilder;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import java.util.List;
 
 /** @author lgonzales */
 public class FeatureTest {

@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.uniprot;
 
+import com.google.common.base.Strings;
+
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.GregorianCalendar;
@@ -9,8 +11,6 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeConstants;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
-
-import com.google.common.base.Strings;
 
 /**
  * Utility methods for comments for the text information value.

@@ -1,9 +1,9 @@
 package org.uniprot.core.uniref.impl;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniref.OverlapRegion;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author jluo

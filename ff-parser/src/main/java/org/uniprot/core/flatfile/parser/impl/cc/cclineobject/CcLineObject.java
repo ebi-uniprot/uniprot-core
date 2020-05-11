@@ -1,10 +1,10 @@
 package org.uniprot.core.flatfile.parser.impl.cc.cclineobject;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 import org.uniprot.core.flatfile.parser.impl.HasEvidenceInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /** User: wudong, Date: 03/09/13, Time: 16:35 */
 public class CcLineObject implements HasEvidenceInfo {

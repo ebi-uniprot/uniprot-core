@@ -1,14 +1,14 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprotkb.comment.Cofactor;
 import org.uniprot.core.uniprotkb.comment.CofactorDatabase;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.util.Utils;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 
 public class CofactorImpl implements Cofactor {
     private static final long serialVersionUID = -1446627008409869566L;

@@ -2,12 +2,12 @@ package org.uniprot.core.util.property;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.*;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.io.*;
 
 class PropertyTokenerTest {
     private static final String KEY_VALUE = "{\"key\":\"value\"}";

@@ -2,11 +2,11 @@ package org.uniprot.core.uniprotkb.taxonomy.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
+
+import java.util.Arrays;
+import java.util.List;
 
 class OrganismHostImplTest {
 

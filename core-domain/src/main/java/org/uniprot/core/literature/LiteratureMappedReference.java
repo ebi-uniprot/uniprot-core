@@ -1,10 +1,10 @@
 package org.uniprot.core.literature;
 
-import java.io.Serializable;
-import java.util.List;
-
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.util.Utils;
+
+import java.io.Serializable;
+import java.util.List;
 
 /** @author lgonzales */
 public interface LiteratureMappedReference extends Serializable {

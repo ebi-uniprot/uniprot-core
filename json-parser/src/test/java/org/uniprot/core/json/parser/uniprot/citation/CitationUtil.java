@@ -3,8 +3,7 @@ package org.uniprot.core.json.parser.uniprot.citation;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.databind.JsonNode;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Citation;
@@ -12,7 +11,8 @@ import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.impl.AbstractCitationBuilder;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import java.util.ArrayList;
+import java.util.List;
 
 /** @author lgonzales */
 class CitationUtil {

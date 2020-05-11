@@ -1,7 +1,6 @@
 package org.uniprot.core.xml.uniprot;
 
-import java.util.List;
-import java.util.Optional;
+import com.google.common.base.Strings;
 
 import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
@@ -16,7 +15,8 @@ import org.uniprot.cv.evidence.GOEvidences;
 import org.uniprot.cv.xdb.UniProtDatabaseTypes;
 import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 
-import com.google.common.base.Strings;
+import java.util.List;
+import java.util.Optional;
 
 public class UniProtCrossReferenceConverter
         implements Converter<DbReferenceType, UniProtKBCrossReference> {

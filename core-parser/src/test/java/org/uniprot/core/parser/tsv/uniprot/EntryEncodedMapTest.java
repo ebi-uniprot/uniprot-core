@@ -2,12 +2,12 @@ package org.uniprot.core.parser.tsv.uniprot;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.*;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.GeneEncodingType;
 import org.uniprot.core.uniprotkb.GeneLocation;
 import org.uniprot.core.uniprotkb.impl.GeneLocationBuilder;
+
+import java.util.*;
 
 class EntryEncodedMapTest {
     @Test

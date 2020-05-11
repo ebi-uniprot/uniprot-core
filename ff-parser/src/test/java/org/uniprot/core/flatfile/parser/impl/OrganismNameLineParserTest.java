@@ -3,11 +3,11 @@ package org.uniprot.core.flatfile.parser.impl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.Arrays;
-import java.util.Collections;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 class OrganismNameLineParserTest {
 
@@ -79,7 +79,8 @@ class OrganismNameLineParserTest {
     @Test
     void testStrain() {
         String str =
-                "Magnaporthe oryzae (strain 70-15 / ATCC MYA-4617 / FGSC 8958) (Rice blast fungus) (Pyricularia oryzae)";
+                "Magnaporthe oryzae (strain 70-15 / ATCC MYA-4617 / FGSC 8958) (Rice blast fungus)"
+                    + " (Pyricularia oryzae)";
         OrganismName organism = OrganismNameLineParser.createFromOrganismLine(str);
 
         assertEquals(
@@ -92,7 +93,8 @@ class OrganismNameLineParserTest {
     @Test
     void testStrainWithBrakect2() {
         String str =
-                "Synechococcus sp. (strain JA-2-3B'a(2-13)) (Cyanobacteria bacterium Yellowstone B-Prime)";
+                "Synechococcus sp. (strain JA-2-3B'a(2-13)) (Cyanobacteria bacterium Yellowstone"
+                    + " B-Prime)";
         OrganismName organism = OrganismNameLineParser.createFromOrganismLine(str);
         assertEquals("Synechococcus sp. (strain JA-2-3B'a(2-13))", organism.getScientificName());
         assertEquals("Cyanobacteria bacterium Yellowstone B-Prime", organism.getCommonName());

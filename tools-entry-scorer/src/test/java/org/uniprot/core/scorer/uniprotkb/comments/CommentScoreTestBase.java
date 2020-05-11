@@ -2,8 +2,6 @@ package org.uniprot.core.scorer.uniprotkb.comments;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.List;
-
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineTransformer;
 import org.uniprot.core.scorer.uniprotkb.UniProtEntryScored;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
@@ -12,6 +10,8 @@ import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
+
+import java.util.List;
 
 class CommentScoreTestBase {
     private CcLineTransformer ccLineTransformer = new CcLineTransformer("", "");

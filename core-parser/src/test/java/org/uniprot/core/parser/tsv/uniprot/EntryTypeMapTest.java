@@ -2,12 +2,12 @@ package org.uniprot.core.parser.tsv.uniprot;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.UniProtKBEntryType;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 
 class EntryTypeMapTest {
     @Test

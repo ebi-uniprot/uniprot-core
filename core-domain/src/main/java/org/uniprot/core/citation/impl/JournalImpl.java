@@ -1,8 +1,8 @@
 package org.uniprot.core.citation.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.citation.Journal;
+
+import java.util.Objects;
 
 public class JournalImpl implements Journal {
     private static final long serialVersionUID = 5877235340272317134L;

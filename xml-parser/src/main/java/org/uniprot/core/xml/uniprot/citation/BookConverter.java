@@ -1,7 +1,6 @@
 package org.uniprot.core.xml.uniprot.citation;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Book;
@@ -12,7 +11,8 @@ import org.uniprot.core.xml.jaxb.uniprot.NameListType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.PersonType;
 
-import com.google.common.base.Strings;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class BookConverter implements Converter<CitationType, Book> {
 

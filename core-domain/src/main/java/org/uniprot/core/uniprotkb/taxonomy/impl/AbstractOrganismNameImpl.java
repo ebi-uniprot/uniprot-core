@@ -3,11 +3,11 @@ package org.uniprot.core.uniprotkb.taxonomy.impl;
 import static org.uniprot.core.util.Utils.emptyOrString;
 import static org.uniprot.core.util.Utils.unmodifiableList;
 
-import java.util.List;
-import java.util.Objects;
-
 import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
 import org.uniprot.core.util.Utils;
+
+import java.util.List;
+import java.util.Objects;
 
 /** @author lgonzales */
 public abstract class AbstractOrganismNameImpl implements OrganismName {

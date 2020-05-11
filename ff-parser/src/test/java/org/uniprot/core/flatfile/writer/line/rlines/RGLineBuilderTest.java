@@ -2,11 +2,11 @@ package org.uniprot.core.flatfile.writer.line.rlines;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.rg.RGLineBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 class RGLineBuilderTest {
     private final RGLineBuilder builder = new RGLineBuilder();
@@ -32,7 +32,8 @@ class RGLineBuilderTest {
         }
         assertEquals(1, lines.size());
         String expected =
-                "European Union Chromosome 3 Arabidopsis Sequencing Consortium; Institute for Genomic Research; Kazusa DNA Research Institute;";
+                "European Union Chromosome 3 Arabidopsis Sequencing Consortium; Institute for"
+                    + " Genomic Research; Kazusa DNA Research Institute;";
         assertEquals(expected, lines.get(0));
     }
 

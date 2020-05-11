@@ -3,16 +3,16 @@ package org.uniprot.core.uniprotkb.impl;
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableList;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprotkb.InternalLine;
 import org.uniprot.core.uniprotkb.InternalSection;
 import org.uniprot.core.uniprotkb.SourceLine;
 import org.uniprot.core.uniprotkb.evidence.EvidenceLine;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created 24/01/19

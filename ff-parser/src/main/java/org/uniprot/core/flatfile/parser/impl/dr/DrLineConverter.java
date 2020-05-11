@@ -1,9 +1,5 @@
 package org.uniprot.core.flatfile.parser.impl.dr;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.exception.DatabaseTypeNotExistException;
 import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
@@ -15,6 +11,10 @@ import org.uniprot.core.uniprotkb.impl.InternalLineBuilder;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
 import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class DrLineConverter extends EvidenceCollector
         implements Converter<DrLineObject, UniProtDrObjects> {

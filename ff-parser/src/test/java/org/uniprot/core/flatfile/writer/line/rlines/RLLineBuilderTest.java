@@ -2,10 +2,6 @@ package org.uniprot.core.flatfile.writer.line.rlines;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Book;
 import org.uniprot.core.citation.JournalArticle;
@@ -15,6 +11,10 @@ import org.uniprot.core.citation.impl.BookBuilder;
 import org.uniprot.core.citation.impl.JournalArticleBuilder;
 import org.uniprot.core.citation.impl.SubmissionBuilder;
 import org.uniprot.core.flatfile.parser.impl.rl.RLLineBuilder;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 class RLLineBuilderTest {
     private final RLLineBuilder builder = new RLLineBuilder();
@@ -91,7 +91,8 @@ class RLLineBuilderTest {
         lines = builder.buildLine(citation, false, true);
         assertEquals(1, lines.size());
         expected =
-                "(In) Magnusson S., Ottesen M., Foltmann B., Dano K., Neurath H. (eds.); CONSERVATION GENETICS, pp.205-227, Birkhaeuser Verlag, Basel (1994).";
+                "(In) Magnusson S., Ottesen M., Foltmann B., Dano K., Neurath H. (eds.);"
+                    + " CONSERVATION GENETICS, pp.205-227, Birkhaeuser Verlag, Basel (1994).";
         assertEquals(expected, lines.get(0));
     }
 }

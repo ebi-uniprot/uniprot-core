@@ -1,14 +1,14 @@
 package org.uniprot.core.flatfile.transformer;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
-
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.MassSpectrometryComment;
 import org.uniprot.core.uniprotkb.comment.MassSpectrometryMethod;
 import org.uniprot.core.uniprotkb.comment.impl.MassSpectrometryCommentBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
 public class MSCommentTransformer implements CommentTransformer<MassSpectrometryComment> {
 

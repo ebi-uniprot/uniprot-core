@@ -1,10 +1,10 @@
 package org.uniprot.core.taxonomy.impl;
 
-import java.util.List;
-import java.util.Objects;
-
 import org.uniprot.core.taxonomy.TaxonomyStrain;
 import org.uniprot.core.util.Utils;
+
+import java.util.List;
+import java.util.Objects;
 
 /** @author lgonzales */
 public class TaxonomyStrainImpl implements TaxonomyStrain {

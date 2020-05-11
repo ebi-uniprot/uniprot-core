@@ -2,11 +2,11 @@ package org.uniprot.core.taxonomy.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Collections;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.taxonomy.TaxonomyEntry;
 import org.uniprot.core.taxonomy.TaxonomyRank;
+
+import java.util.Collections;
 
 class TaxonomyEntryImplTest {
 

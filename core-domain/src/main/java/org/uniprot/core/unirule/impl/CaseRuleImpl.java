@@ -1,12 +1,12 @@
 package org.uniprot.core.unirule.impl;
 
-import java.util.List;
-import java.util.Objects;
-
 import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.CaseRule;
 import org.uniprot.core.unirule.ConditionSet;
 import org.uniprot.core.unirule.RuleException;
+
+import java.util.List;
+import java.util.Objects;
 
 public class CaseRuleImpl extends RuleImpl implements CaseRule {
 

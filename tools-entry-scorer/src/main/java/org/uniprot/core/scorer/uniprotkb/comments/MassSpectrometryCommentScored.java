@@ -1,11 +1,11 @@
 package org.uniprot.core.scorer.uniprotkb.comments;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprotkb.comment.MassSpectrometryComment;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 15:46:26 To change this template

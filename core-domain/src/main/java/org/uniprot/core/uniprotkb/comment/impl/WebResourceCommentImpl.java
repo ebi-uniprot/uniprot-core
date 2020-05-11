@@ -2,11 +2,11 @@ package org.uniprot.core.uniprotkb.comment.impl;
 
 import static org.uniprot.core.util.Utils.emptyOrString;
 
-import java.util.Objects;
-
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.WebResourceComment;
 import org.uniprot.core.util.Utils;
+
+import java.util.Objects;
 
 public class WebResourceCommentImpl extends CommentHasMoleculeImpl implements WebResourceComment {
     private static final long serialVersionUID = -2748929647045369784L;

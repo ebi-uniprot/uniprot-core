@@ -1,16 +1,17 @@
 package org.uniprot.cv.chebi;
 
-import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.core.Is.is;
 
-import java.util.List;
+import static java.util.Arrays.asList;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.chebi.ChebiEntry;
+
+import java.util.List;
 
 /**
  * Created 06/06/19

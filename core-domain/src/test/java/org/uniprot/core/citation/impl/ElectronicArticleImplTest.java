@@ -2,15 +2,15 @@ package org.uniprot.core.citation.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Arrays;
-import java.util.Collections;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.ElectronicArticle;
 import org.uniprot.core.citation.Locator;
 import org.uniprot.core.impl.CrossReferenceBuilder;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 class ElectronicArticleImplTest {
 

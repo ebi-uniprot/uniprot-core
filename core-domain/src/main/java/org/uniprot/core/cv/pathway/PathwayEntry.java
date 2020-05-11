@@ -1,8 +1,8 @@
 package org.uniprot.core.cv.pathway;
 
-import java.util.List;
-
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
+
+import java.util.List;
 
 public interface PathwayEntry {
 

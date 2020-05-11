@@ -1,12 +1,9 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.core.xml.uniprot.EvidenceHelper.createEvidences;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import static java.util.Arrays.asList;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.APIsoform;
@@ -18,6 +15,10 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.xml.jaxb.uniprot.IsoformType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 class APIsoformConverterTest {
 

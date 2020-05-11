@@ -1,12 +1,12 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.Property;
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.util.Utils;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class EntryGoCrossReferenceMap implements NamedValueMap {
     private final List<UniProtKBCrossReference> dbReferences;

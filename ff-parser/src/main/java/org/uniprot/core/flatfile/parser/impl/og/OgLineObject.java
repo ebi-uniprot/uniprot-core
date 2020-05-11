@@ -1,10 +1,10 @@
 package org.uniprot.core.flatfile.parser.impl.og;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 import org.uniprot.core.flatfile.parser.impl.HasEvidenceInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA. User: wudong Date: 08/08/13 Time: 11:50 To change this template use

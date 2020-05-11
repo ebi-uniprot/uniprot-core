@@ -1,12 +1,12 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
+import org.uniprot.core.Sequence;
+import org.uniprot.core.parser.tsv.NamedValueMap;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.uniprot.core.Sequence;
-import org.uniprot.core.parser.tsv.NamedValueMap;
 
 /**
  * @author jluo

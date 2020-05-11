@@ -3,9 +3,6 @@ package org.uniprot.core.xml.uniprot.comment;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.FreeTextComment;
 import org.uniprot.core.uniprotkb.comment.impl.FreeTextCommentBuilder;
@@ -15,6 +12,9 @@ import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 class FreeTextCommentConverterTest {
 
@@ -31,9 +31,9 @@ class FreeTextCommentConverterTest {
         evids2.add(evidence3);
 
         String text1 =
-                "Epithelial ion channel that plays an important role in the regulation of epithelial ion "
-                        + "and water transport and fluid homeostasis. Mediates the transport of chloride ions across "
-                        + "he cell membrane (By similarity)";
+                "Epithelial ion channel that plays an important role in the regulation of"
+                    + " epithelial ion and water transport and fluid homeostasis. Mediates the"
+                    + " transport of chloride ions across he cell membrane (By similarity)";
         String text2 = "Second comment";
         List<EvidencedValue> texts = new ArrayList<>();
         texts.add(new EvidencedValueBuilder(text1, evids).build());
@@ -64,9 +64,9 @@ class FreeTextCommentConverterTest {
         evids2.add(evidence3);
 
         String text1 =
-                "Epithelial ion channel that plays an important role in the regulation of epithelial ion "
-                        + "and water transport and fluid homeostasis. Mediates the transport of chloride ions across "
-                        + "he cell membrane (By similarity)";
+                "Epithelial ion channel that plays an important role in the regulation of"
+                    + " epithelial ion and water transport and fluid homeostasis. Mediates the"
+                    + " transport of chloride ions across he cell membrane (By similarity)";
         String text2 = "Second comment";
         List<EvidencedValue> texts = new ArrayList<>();
         texts.add(new EvidencedValueBuilder(text1, evids).build());

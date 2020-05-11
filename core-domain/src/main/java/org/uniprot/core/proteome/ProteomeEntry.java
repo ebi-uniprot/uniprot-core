@@ -1,13 +1,13 @@
 package org.uniprot.core.proteome;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.List;
-
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.List;
 
 public interface ProteomeEntry extends Serializable {
     ProteomeId getId();

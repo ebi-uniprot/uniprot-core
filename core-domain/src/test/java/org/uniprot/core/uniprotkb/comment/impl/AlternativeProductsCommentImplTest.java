@@ -1,18 +1,19 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 import static org.uniprot.core.ObjectsForTests.createNote;
 import static org.uniprot.core.ObjectsForTests.createSynonyms;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import static java.util.Arrays.asList;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 class AlternativeProductsCommentImplTest {
     List<APIsoform> createIsoforms() {

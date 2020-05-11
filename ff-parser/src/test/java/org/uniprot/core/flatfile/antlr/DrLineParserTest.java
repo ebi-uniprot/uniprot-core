@@ -43,14 +43,15 @@ class DrLineParserTest {
     void testMultiDRs() {
         String dfLines =
                 "DR   EMBL; AY548484; AAT09660.1; -; Genomic_DNA.\n"
-                        + "DR   RefSeq; YP_031579.1; NC_005946.1.\n"
-                        + "DR   ProteinModelPortal; Q6GZX4; -.\n"
-                        + "DR   GeneID; 2947773; -.\n"
-                        + "DR   ProtClustDB; CLSP2511514; -.\n"
-                        + "DR   GO; GO:0006355; P:regulation of transcription, DNA-dependent; IEA:UniProtKB-KW.\n"
-                        + "DR   GO; GO:0046782; P:regulation of viral transcription; IEA:InterPro.\n"
-                        + "DR   InterPro; IPR007031; Poxvirus_VLTF3.\n"
-                        + "DR   Pfam; PF04947; Pox_VLTF3; 1.\n";
+                    + "DR   RefSeq; YP_031579.1; NC_005946.1.\n"
+                    + "DR   ProteinModelPortal; Q6GZX4; -.\n"
+                    + "DR   GeneID; 2947773; -.\n"
+                    + "DR   ProtClustDB; CLSP2511514; -.\n"
+                    + "DR   GO; GO:0006355; P:regulation of transcription, DNA-dependent;"
+                    + " IEA:UniProtKB-KW.\n"
+                    + "DR   GO; GO:0046782; P:regulation of viral transcription; IEA:InterPro.\n"
+                    + "DR   InterPro; IPR007031; Poxvirus_VLTF3.\n"
+                    + "DR   Pfam; PF04947; Pox_VLTF3; 1.\n";
         UniprotKBLineParser<DrLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createDrLineParser();
         DrLineObject obj = parser.parse(dfLines);
@@ -109,7 +110,8 @@ class DrLineParserTest {
     @Test
     void testWithSemicolon() {
         String dfLines =
-                "DR   Orphanet; 102724; Acute myeloid leukemia with t(8;21)(q22;q22) translocation.\n";
+                "DR   Orphanet; 102724; Acute myeloid leukemia with t(8;21)(q22;q22)"
+                    + " translocation.\n";
         UniprotKBLineParser<DrLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createDrLineParser();
         DrLineObject obj = parser.parse(dfLines);
@@ -166,7 +168,8 @@ class DrLineParserTest {
     @Test
     void testWithCurlyBracket() {
         String dfLines =
-                "DR   GO; GO:0033942; F:4-alpha-D-{(1->4)-alpha-D-glucano}trehalose trehalohydrolase activity; IEA:UniProtKB-EC.\n";
+                "DR   GO; GO:0033942; F:4-alpha-D-{(1->4)-alpha-D-glucano}trehalose"
+                    + " trehalohydrolase activity; IEA:UniProtKB-EC.\n";
         UniprotKBLineParser<DrLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createDrLineParser();
         DrLineObject obj = parser.parse(dfLines);
@@ -202,9 +205,9 @@ class DrLineParserTest {
     void testWithIsoforms() {
         String dfLines =
                 "DR   PRIDE; P19802; -.\n"
-                        + "DR   PRIDE; P19803; -. [P19802-2]\n"
-                        + "DR   PROSITE; PS00157; RUBISCO_LARGE; 1. [P21235-2]\n"
-                        + "DR   PROSITE; PS00158; RUBISCO_LARGE; 1. [P21235-3]{ECO:19841122|Ref.1}\n";
+                    + "DR   PRIDE; P19803; -. [P19802-2]\n"
+                    + "DR   PROSITE; PS00157; RUBISCO_LARGE; 1. [P21235-2]\n"
+                    + "DR   PROSITE; PS00158; RUBISCO_LARGE; 1. [P21235-3]{ECO:19841122|Ref.1}\n";
         UniprotKBLineParser<DrLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createDrLineParser();
         DrLineObject obj = parser.parse(dfLines);

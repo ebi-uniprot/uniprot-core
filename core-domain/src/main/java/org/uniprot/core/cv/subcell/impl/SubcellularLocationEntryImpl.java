@@ -2,16 +2,16 @@ package org.uniprot.core.cv.subcell.impl;
 
 import static org.uniprot.core.util.Utils.unmodifiableList;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.go.GoTerm;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.subcell.SubcellLocationCategory;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
     private static final long serialVersionUID = 8881869836509747529L;

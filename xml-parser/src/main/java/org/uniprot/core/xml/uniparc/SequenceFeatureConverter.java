@@ -1,7 +1,5 @@
 package org.uniprot.core.xml.uniparc;
 
-import java.util.stream.Collectors;
-
 import org.uniprot.core.Location;
 import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
@@ -13,6 +11,8 @@ import org.uniprot.core.xml.jaxb.uniparc.LocationType;
 import org.uniprot.core.xml.jaxb.uniparc.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniparc.SeqFeatureGroupType;
 import org.uniprot.core.xml.jaxb.uniparc.SeqFeatureType;
+
+import java.util.stream.Collectors;
 
 /**
  * @author jluo

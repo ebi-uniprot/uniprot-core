@@ -1,9 +1,9 @@
 package org.uniprot.core.uniref.impl;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.impl.AbstractValueBuilder;
 import org.uniprot.core.uniref.UniRefEntryId;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author jluo

@@ -1,12 +1,12 @@
 package org.uniprot.core.xml.unirule;
 
-import java.util.Objects;
-
 import org.uniprot.core.unirule.FeatureTagConditionValue;
 import org.uniprot.core.unirule.impl.FeatureTagConditionValueBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.FtagConditionValue;
 import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
+
+import java.util.Objects;
 
 public class FtagConditionConverter
         implements Converter<FtagConditionValue, FeatureTagConditionValue> {

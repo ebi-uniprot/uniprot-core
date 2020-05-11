@@ -2,7 +2,7 @@ package org.uniprot.core.json.parser.uniref;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
-import java.time.LocalDate;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
@@ -20,7 +20,7 @@ import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
 import org.uniprot.core.uniref.impl.*;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.time.LocalDate;
 
 /**
  * @author jluo

@@ -1,14 +1,14 @@
 package org.uniprot.core.xml.unirule;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.unirule.*;
 import org.uniprot.core.unirule.impl.CaseRuleBuilder;
 import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.*;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class CaseTypeConverter implements Converter<CaseType, CaseRule> {
 

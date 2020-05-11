@@ -1,5 +1,12 @@
 package org.uniprot.core.flatfile.parser.impl;
 
+import com.google.common.util.concurrent.Uninterruptibles;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.uniprot.core.flatfile.parser.*;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,13 +18,6 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.uniprot.core.flatfile.parser.*;
-import org.uniprot.core.uniprotkb.UniProtKBEntry;
-
-import com.google.common.util.concurrent.Uninterruptibles;
 
 /** Created by wudong on 15/04/2014. */
 public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
@@ -208,7 +208,8 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
                     // report every 10 minitues
                     if (TimeUnit.NANOSECONDS.toMinutes(l - checkPoint) > 5) {
                         logger.debug(
-                                "The total number of flat file entry has been scanned : {}. Using time:  {} minutes",
+                                "The total number of flat file entry has been scanned : {}. Using"
+                                    + " time:  {} minutes",
                                 counter,
                                 TimeUnit.NANOSECONDS.toMinutes(System.nanoTime() - startTime));
                         checkPoint = l;
@@ -291,7 +292,8 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
                         // report every 10 minitues
                         if (TimeUnit.NANOSECONDS.toMinutes(l - checkPoint) > 5) {
                             logger.debug(
-                                    "Number of FF has been parsed by this worker : {}. Using time:  {} minutes",
+                                    "Number of FF has been parsed by this worker : {}. Using time:"
+                                        + "  {} minutes",
                                     counter,
                                     TimeUnit.NANOSECONDS.toMinutes(System.nanoTime() - startTime));
                             checkPoint = l;

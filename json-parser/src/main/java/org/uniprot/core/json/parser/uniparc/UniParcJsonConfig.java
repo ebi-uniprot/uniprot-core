@@ -1,6 +1,7 @@
 package org.uniprot.core.json.parser.uniparc;
 
-import java.time.LocalDate;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Database;
@@ -23,8 +24,7 @@ import org.uniprot.core.uniparc.impl.UniParcCrossReferenceImpl;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyImpl;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
+import java.time.LocalDate;
 
 /**
  * @author jluo

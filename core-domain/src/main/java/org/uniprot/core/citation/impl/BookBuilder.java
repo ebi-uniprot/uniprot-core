@@ -1,14 +1,14 @@
 package org.uniprot.core.citation.impl;
 
+import org.uniprot.core.citation.Author;
+import org.uniprot.core.citation.Book;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
-
-import org.uniprot.core.citation.Author;
-import org.uniprot.core.citation.Book;
 
 public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book> {
     private String bookName;

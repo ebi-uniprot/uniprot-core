@@ -1,13 +1,13 @@
 package org.uniprot.core.parser.tsv.uniprot.comment;
 
+import org.uniprot.core.flatfile.parser.impl.cc.CCDiseaseCommentLineBuilder;
+import org.uniprot.core.parser.tsv.NamedValueMap;
+import org.uniprot.core.uniprotkb.comment.DiseaseComment;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import org.uniprot.core.flatfile.parser.impl.cc.CCDiseaseCommentLineBuilder;
-import org.uniprot.core.parser.tsv.NamedValueMap;
-import org.uniprot.core.uniprotkb.comment.DiseaseComment;
 
 public class DiseaseMap implements NamedValueMap {
 

@@ -1,14 +1,14 @@
 package org.uniprot.core.uniprotkb.feature.impl;
 
+import org.uniprot.core.uniprotkb.feature.FeatureId;
+import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.util.Utils;
+
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
-
-import org.uniprot.core.uniprotkb.feature.FeatureId;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
-import org.uniprot.core.util.Utils;
 
 public class FeatureIdImpl implements FeatureId {
 

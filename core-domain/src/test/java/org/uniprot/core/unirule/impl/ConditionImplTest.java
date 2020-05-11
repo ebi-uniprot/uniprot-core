@@ -2,14 +2,14 @@ package org.uniprot.core.unirule.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.ConditionValue;
 import org.uniprot.core.unirule.FeatureTagConditionValue;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class ConditionImplTest {
 

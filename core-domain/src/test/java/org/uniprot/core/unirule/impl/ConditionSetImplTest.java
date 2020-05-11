@@ -2,12 +2,12 @@ package org.uniprot.core.unirule.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.ConditionSet;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class ConditionSetImplTest {
     @Test

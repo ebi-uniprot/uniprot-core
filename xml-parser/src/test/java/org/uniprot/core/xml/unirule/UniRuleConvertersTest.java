@@ -2,9 +2,6 @@ package org.uniprot.core.xml.unirule;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -16,6 +13,9 @@ import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.*;
 import org.uniprot.core.xml.jaxb.unirule.*;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 
 /**
  * @author sahmad The test has been written using reflection because all the tests for converter

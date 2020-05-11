@@ -1,8 +1,8 @@
 package org.uniprot.core.uniparc.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.uniparc.InterProGroup;
+
+import java.util.Objects;
 
 /**
  * @author jluo

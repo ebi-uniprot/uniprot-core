@@ -1,8 +1,5 @@
 package org.uniprot.core.xml.uniprot;
 
-import java.util.List;
-import java.util.Objects;
-
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.uniprotkb.Keyword;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
@@ -10,6 +7,9 @@ import org.uniprot.core.uniprotkb.impl.KeywordBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.KeywordType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
+
+import java.util.List;
+import java.util.Objects;
 
 public class KeywordConverter implements Converter<KeywordType, Keyword> {
     private final EvidenceIndexMapper evRefMapper;

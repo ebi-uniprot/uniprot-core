@@ -1,10 +1,10 @@
 package org.uniprot.core.uniprotkb.description.impl;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprotkb.description.Flag;
 import org.uniprot.core.uniprotkb.description.FlagType;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created 29/01/19

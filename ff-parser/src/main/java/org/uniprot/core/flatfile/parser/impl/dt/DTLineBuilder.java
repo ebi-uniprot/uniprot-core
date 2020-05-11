@@ -2,11 +2,6 @@ package org.uniprot.core.flatfile.parser.impl.dt;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.*;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
@@ -14,6 +9,11 @@ import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.uniprotkb.EntryAudit;
 import org.uniprot.core.uniprotkb.UniProtKBEntryType;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class DTLineBuilder extends FFLineBuilderAbstr<Map.Entry<EntryAudit, UniProtKBEntryType>>
         implements FFLineBuilder<Map.Entry<EntryAudit, UniProtKBEntryType>> {

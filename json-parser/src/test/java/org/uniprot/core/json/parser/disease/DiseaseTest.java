@@ -1,8 +1,5 @@
 package org.uniprot.core.json.parser.disease;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
@@ -11,6 +8,9 @@ import org.uniprot.core.cv.disease.impl.DiseaseEntryBuilder;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class DiseaseTest {
     @Test

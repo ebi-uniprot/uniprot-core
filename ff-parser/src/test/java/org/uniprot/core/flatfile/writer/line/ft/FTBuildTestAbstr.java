@@ -2,9 +2,6 @@ package org.uniprot.core.flatfile.writer.line.ft;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.flatfile.parser.impl.ft.FeatureLineBuilderFactory;
 import org.uniprot.core.flatfile.writer.FFLine;
@@ -17,6 +14,9 @@ import org.uniprot.core.uniprotkb.feature.FeatureType;
 import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.FeatureBuilder;
 import org.uniprot.cv.evidence.EvidenceHelper;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 class FTBuildTestAbstr {
     void doTest(String ftLine, Feature feature) {

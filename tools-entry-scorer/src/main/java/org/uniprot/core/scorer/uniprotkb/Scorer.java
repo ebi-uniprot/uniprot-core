@@ -1,13 +1,13 @@
 package org.uniprot.core.scorer.uniprotkb;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 08-Mar-2010 Time: 14:29:39 To change this template

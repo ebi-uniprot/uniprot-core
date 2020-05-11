@@ -1,15 +1,15 @@
 package org.uniprot.core.parser.tsv.uniprot.comment;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.flatfile.parser.impl.cc.CCBioPhyChemCommentLineBuilder;
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.comment.Absorption;
 import org.uniprot.core.uniprotkb.comment.BPCPComment;
 import org.uniprot.core.uniprotkb.comment.KineticParameters;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class BPCPMap implements NamedValueMap {
 
@@ -109,7 +109,8 @@ public class BPCPMap implements NamedValueMap {
                 .map(BPCPComment::getTemperatureDependence)
                 .map(
                         temperatureDependence ->
-                                lineBuilder.buildTempLine(temperatureDependence, false, true)
+                                lineBuilder
+                                        .buildTempLine(temperatureDependence, false, true)
                                         .stream()
                                         .collect(Collectors.joining(" ")))
                 .collect(Collectors.joining(" "));

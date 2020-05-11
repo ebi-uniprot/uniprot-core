@@ -1,6 +1,6 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import java.util.List;
+import com.google.common.base.Strings;
 
 import org.uniprot.core.uniprotkb.comment.WebResourceComment;
 import org.uniprot.core.uniprotkb.comment.impl.WebResourceCommentBuilder;
@@ -9,7 +9,7 @@ import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
 import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 
-import com.google.common.base.Strings;
+import java.util.List;
 
 public class WRCommentConverter implements CommentConverter<WebResourceComment> {
     private final ObjectFactory xmlUniprotFactory;

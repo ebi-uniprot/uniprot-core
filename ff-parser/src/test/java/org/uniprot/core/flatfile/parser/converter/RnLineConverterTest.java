@@ -2,13 +2,13 @@ package org.uniprot.core.flatfile.parser.converter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.rn.RnLineConverter;
 import org.uniprot.core.flatfile.parser.impl.rn.RnLineObject;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
+
+import java.util.ArrayList;
+import java.util.List;
 
 class RnLineConverterTest {
     @Test

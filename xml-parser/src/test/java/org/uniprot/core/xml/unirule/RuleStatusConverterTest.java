@@ -1,11 +1,11 @@
 package org.uniprot.core.xml.unirule;
 
+import org.uniprot.core.xml.jaxb.unirule.RuleStatusType;
+
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
-import org.uniprot.core.xml.jaxb.unirule.RuleStatusType;
 
 public class RuleStatusConverterTest {
     public static RuleStatusType createObject() {

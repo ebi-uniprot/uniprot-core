@@ -1,12 +1,12 @@
 package org.uniprot.core.scorer.uniprotkb.xdb;
 
-import java.util.List;
-
 import org.uniprot.core.scorer.uniprotkb.Consensus;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
+
+import java.util.List;
 
 public class HamapScored implements HasScore {
     private List<UniProtKBCrossReference> uniProtKBCrossReferences;

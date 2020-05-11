@@ -2,14 +2,14 @@ package org.uniprot.core.flatfile.parser.impl.cc;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.base.Strings;
 
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.evidence.HasEvidences;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author jieluo """CC -!- BIOPHYSICOCHEMICAL PROPERTIES: |CC Kinetic parameters: |CC KM=71 uM for

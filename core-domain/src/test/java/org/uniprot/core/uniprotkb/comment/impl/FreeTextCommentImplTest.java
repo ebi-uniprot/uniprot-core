@@ -4,12 +4,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidenceValuesWithEvidences;
 import static org.uniprot.core.ObjectsForTests.createEvidenceValuesWithoutEvidences;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.FreeTextComment;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+
+import java.util.List;
 
 class FreeTextCommentImplTest {
     @Test

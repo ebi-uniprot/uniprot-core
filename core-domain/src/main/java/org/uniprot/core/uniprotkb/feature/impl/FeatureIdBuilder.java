@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprotkb.feature.impl;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.impl.AbstractValueBuilder;
 import org.uniprot.core.uniprotkb.feature.FeatureId;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created 30/01/19

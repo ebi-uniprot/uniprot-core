@@ -4,10 +4,7 @@ import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.DASH;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.LINE_LENGTH;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEPARATOR;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
@@ -19,7 +16,10 @@ import org.uniprot.core.uniprotkb.feature.FeatureId;
 import org.uniprot.core.uniprotkb.feature.FeatureLocation;
 import org.uniprot.core.uniprotkb.feature.FeatureType;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class FTLineBuilderHelper {
     private static final String OR_TWO_SPACES = " or ";
@@ -197,8 +197,10 @@ public class FTLineBuilderHelper {
             }
             String joiner = getJoiner(featureWithAlternativeSequence);
             sb.append(
-                    featureWithAlternativeSequence.getAlternativeSequence()
-                            .getAlternativeSequences().stream()
+                    featureWithAlternativeSequence
+                            .getAlternativeSequence()
+                            .getAlternativeSequences()
+                            .stream()
                             .collect(Collectors.joining(joiner)));
         } else {
             sb.append(MISSING);

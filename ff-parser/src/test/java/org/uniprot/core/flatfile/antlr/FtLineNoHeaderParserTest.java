@@ -2,15 +2,15 @@ package org.uniprot.core.flatfile.antlr;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineFormater;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject.FTType;
+
+import java.util.Arrays;
+import java.util.List;
 
 class FtLineNoHeaderParserTest {
     @Test
@@ -148,11 +148,15 @@ class FtLineNoHeaderParserTest {
     @Test
     void testMultiFt() {
         String ftLines =
-                "VAR_SEQ 33..83\n/note=\"TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)\"\n"
-                        + "/id=\"VSP_004370\"\n"
-                        + "MUTAGEN 119\n/note=\"C->R,E,A: Loss of cADPr hydrolase and ADP-ribosyl cyclase activity\"\n"
-                        + "HELIX 33..83\n"
-                        + "TURN 3..33";
+                "VAR_SEQ 33..83\n"
+                    + "/note=\"TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG ->"
+                    + " SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)\"\n"
+                    + "/id=\"VSP_004370\"\n"
+                    + "MUTAGEN 119\n"
+                    + "/note=\"C->R,E,A: Loss of cADPr hydrolase and ADP-ribosyl cyclase"
+                    + " activity\"\n"
+                    + "HELIX 33..83\n"
+                    + "TURN 3..33";
 
         UniprotKBLineParser<FtLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
@@ -166,7 +170,8 @@ class FtLineNoHeaderParserTest {
                 FTType.VAR_SEQ,
                 "33",
                 "83",
-                "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)",
+                "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP"
+                    + " (in isoform 2)",
                 "VSP_004370");
         verify(
                 obj.getFts().get(1),

@@ -1,7 +1,5 @@
 package org.uniprot.core.flatfile.writer.impl;
 
-import java.util.*;
-
 import org.uniprot.core.flatfile.parser.impl.ac.ACLineBuilder;
 import org.uniprot.core.flatfile.parser.impl.cc.CCLineBuilder;
 import org.uniprot.core.flatfile.parser.impl.de.DELineBuilder;
@@ -26,6 +24,8 @@ import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.uniprotkb.*;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
+
+import java.util.*;
 
 public class UniProtFlatfileWriter implements FlatfileWriter<UniProtKBEntry> {
 

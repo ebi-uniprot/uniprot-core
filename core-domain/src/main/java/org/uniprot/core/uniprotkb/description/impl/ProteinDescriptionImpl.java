@@ -1,10 +1,10 @@
 package org.uniprot.core.uniprotkb.description.impl;
 
-import java.util.Collections;
-import java.util.List;
-
 import org.uniprot.core.uniprotkb.description.*;
 import org.uniprot.core.util.Utils;
+
+import java.util.Collections;
+import java.util.List;
 
 public class ProteinDescriptionImpl implements ProteinDescription {
 

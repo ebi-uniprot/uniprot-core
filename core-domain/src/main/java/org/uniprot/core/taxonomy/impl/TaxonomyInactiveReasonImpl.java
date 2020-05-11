@@ -1,9 +1,9 @@
 package org.uniprot.core.taxonomy.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.taxonomy.TaxonomyInactiveReason;
 import org.uniprot.core.taxonomy.TaxonomyInactiveReasonType;
+
+import java.util.Objects;
 
 /** @author lgonzales */
 public class TaxonomyInactiveReasonImpl implements TaxonomyInactiveReason {

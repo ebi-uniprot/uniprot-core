@@ -1,11 +1,11 @@
 package org.uniprot.core.scorer.uniprotkb.comments;
 
-import java.util.List;
-
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprotkb.comment.FreeTextComment;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 15:03:04 To change this template
@@ -14,10 +14,12 @@ import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 public class CautionCommentScored extends CommentScoredAbstr {
 
     private static final String PROBLEM_CAUTION =
-            "The sequence shown here is derived from an EMBL/GenBank/DDBJ whole genome shotgun (WGS) entry which is preliminary data";
+            "The sequence shown here is derived from an EMBL/GenBank/DDBJ whole genome shotgun"
+                + " (WGS) entry which is preliminary data";
 
     private static final String ANOTHER_PROBLEM_CAUTION =
-            "The sequence shown here is derived from an Ensembl automatic analysis pipeline and should be considered as preliminary data";
+            "The sequence shown here is derived from an Ensembl automatic analysis pipeline and"
+                + " should be considered as preliminary data";
 
     private final FreeTextComment comment;
 

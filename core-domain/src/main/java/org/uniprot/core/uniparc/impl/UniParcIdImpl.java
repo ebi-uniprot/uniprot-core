@@ -1,9 +1,9 @@
 package org.uniprot.core.uniparc.impl;
 
-import java.util.regex.Pattern;
-
 import org.uniprot.core.impl.ValueImpl;
 import org.uniprot.core.uniparc.UniParcId;
+
+import java.util.regex.Pattern;
 
 /**
  * @author jluo

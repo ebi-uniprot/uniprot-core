@@ -2,13 +2,13 @@ package org.uniprot.core.uniprotkb.evidence.impl;
 
 import static org.uniprot.core.util.Utils.notNull;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.Builder;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created 16/01/19

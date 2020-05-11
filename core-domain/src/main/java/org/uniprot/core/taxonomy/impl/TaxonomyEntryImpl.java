@@ -1,12 +1,12 @@
 package org.uniprot.core.taxonomy.impl;
 
-import java.util.List;
-import java.util.Objects;
-
 import org.uniprot.core.taxonomy.*;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyImpl;
 import org.uniprot.core.util.Utils;
+
+import java.util.List;
+import java.util.Objects;
 
 /** @author lgonzales */
 public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {

@@ -3,9 +3,6 @@ package org.uniprot.core.xml.unirule;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.unirule.SamFeatureSet;
@@ -15,6 +12,9 @@ import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.unirule.AnnotationType;
 import org.uniprot.core.xml.jaxb.unirule.AnnotationsType;
 import org.uniprot.core.xml.jaxb.unirule.SamFeatureSetType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SamFeatureSetConverterTest extends AbstractConverterTest {
 

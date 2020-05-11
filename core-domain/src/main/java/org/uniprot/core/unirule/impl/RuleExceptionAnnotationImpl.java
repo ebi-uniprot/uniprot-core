@@ -1,8 +1,8 @@
 package org.uniprot.core.unirule.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.unirule.RuleExceptionAnnotation;
+
+import java.util.Objects;
 
 public abstract class RuleExceptionAnnotationImpl implements RuleExceptionAnnotation {
     private static final long serialVersionUID = -5031928797270495795L;

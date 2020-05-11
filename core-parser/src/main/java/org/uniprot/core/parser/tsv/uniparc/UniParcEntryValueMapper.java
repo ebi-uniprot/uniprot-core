@@ -1,10 +1,10 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
-import java.util.*;
-
 import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniparc.UniParcEntry;
+
+import java.util.*;
 
 /**
  * @author jluo

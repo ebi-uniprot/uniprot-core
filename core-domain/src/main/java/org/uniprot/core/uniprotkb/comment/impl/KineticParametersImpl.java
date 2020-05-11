@@ -1,15 +1,15 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.uniprotkb.comment.KineticParameters;
 import org.uniprot.core.uniprotkb.comment.MaximumVelocity;
 import org.uniprot.core.uniprotkb.comment.MichaelisConstant;
 import org.uniprot.core.uniprotkb.comment.Note;
 import org.uniprot.core.util.Utils;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class KineticParametersImpl implements KineticParameters {
     private static final long serialVersionUID = 6933033384155525116L;

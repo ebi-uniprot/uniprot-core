@@ -29,8 +29,9 @@ class ProteinDescriptionScoredTest {
     @Test
     void shouldSubnameScore0() {
         String description =
-                "DE   SubName: Full=Putative uncharacterized protein {ECO:0000269|PubMed:10433554};\n"
-                        + "DE   Flags: Precursor {ECO:0000269|PubMed:10433554};\n";
+                "DE   SubName: Full=Putative uncharacterized protein"
+                    + " {ECO:0000269|PubMed:10433554};\n"
+                    + "DE   Flags: Precursor {ECO:0000269|PubMed:10433554};\n";
 
         testDescription(description, 0.0, Consensus.COMPLEX);
     }
@@ -38,17 +39,18 @@ class ProteinDescriptionScoredTest {
     @Test
     void shouldSubnameScore3() {
         String description =
-                "DE   SubName: Full=Glutamate synthase large chain. {ECO:0000269|PubMed:10433554};\n"
-                        + "DE            EC=1.4.1.13 {ECO:0000269|PubMed:10433554};\n";
+                "DE   SubName: Full=Glutamate synthase large chain."
+                    + " {ECO:0000269|PubMed:10433554};\n"
+                    + "DE            EC=1.4.1.13 {ECO:0000269|PubMed:10433554};\n";
         testDescription(description, 3.0, Consensus.COMPLEX);
     }
 
     @Test
     void shouldSubName2Score3() {
         String description =
-                "DE   SubName: Full=Catalytic activity: beta-D-glucuronoside + H2O = D-glucuronate + "
-                        + "alcohol. {ECO:0000269|PubMed:10433554};\n"
-                        + "DE            EC=3.2.1.31 {ECO:0000269|PubMed:10433554};\n";
+                "DE   SubName: Full=Catalytic activity: beta-D-glucuronoside + H2O = D-glucuronate"
+                    + " + alcohol. {ECO:0000269|PubMed:10433554};\n"
+                    + "DE            EC=3.2.1.31 {ECO:0000269|PubMed:10433554};\n";
 
         testDescription(description, 3.0, Consensus.COMPLEX);
     }
@@ -146,19 +148,20 @@ class ProteinDescriptionScoredTest {
 
         String description =
                 "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n"
-                        + "DE   Includes:\n"
-                        + "DE     RecName: Full=Glutamate N-acetyltransferase;\n"
-                        + "DE              EC=2.3.1.35;\n"
-                        + "DE     AltName: Full=Ornithine acetyltransferase;\n"
-                        + "DE              Short=OATase;\n"
-                        + "DE     AltName: Full=Ornithine transacetylase;\n"
-                        + "DE   Includes:\n"
-                        + "DE     RecName: Full=Amino-acid acetyltransferase;\n"
-                        + "DE              EC=2.3.1.1;\n"
-                        + "DE     AltName: Full=N-acetylglutamate synthase;\n"
-                        + "DE              Short=AGS;\n"
-                        + "DE   Contains:\n"
-                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha chain;\n";
+                    + "DE   Includes:\n"
+                    + "DE     RecName: Full=Glutamate N-acetyltransferase;\n"
+                    + "DE              EC=2.3.1.35;\n"
+                    + "DE     AltName: Full=Ornithine acetyltransferase;\n"
+                    + "DE              Short=OATase;\n"
+                    + "DE     AltName: Full=Ornithine transacetylase;\n"
+                    + "DE   Includes:\n"
+                    + "DE     RecName: Full=Amino-acid acetyltransferase;\n"
+                    + "DE              EC=2.3.1.1;\n"
+                    + "DE     AltName: Full=N-acetylglutamate synthase;\n"
+                    + "DE              Short=AGS;\n"
+                    + "DE   Contains:\n"
+                    + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha"
+                    + " chain;\n";
         testDescription(description, 11.0, Consensus.COMPLEX);
     }
 
@@ -179,10 +182,12 @@ class ProteinDescriptionScoredTest {
 
         String description =
                 "DE   Includes:\n"
-                        + "DE     RecName: Full=Phosphoribosylaminoimidazolecarboxamide formyltransferase;\n"
-                        + "DE              EC=2.1.2.3;\n"
-                        + "DE     AltName: Full=5-aminoimidazole-4-carboxamide ribonucleotide formyltransferase;\n"
-                        + "DE     AltName: Full=AICAR transformylase;\n";
+                    + "DE     RecName: Full=Phosphoribosylaminoimidazolecarboxamide"
+                    + " formyltransferase;\n"
+                    + "DE              EC=2.1.2.3;\n"
+                    + "DE     AltName: Full=5-aminoimidazole-4-carboxamide ribonucleotide"
+                    + " formyltransferase;\n"
+                    + "DE     AltName: Full=AICAR transformylase;\n";
         testDescription(description, 3.0, Consensus.COMPLEX);
     }
 
@@ -191,21 +196,23 @@ class ProteinDescriptionScoredTest {
 
         String description =
                 "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n"
-                        + "DE   Includes:\n"
-                        + "DE     RecName: Full=Glutamate N-acetyltransferase;\n"
-                        + "DE              EC=2.3.1.35;\n"
-                        + "DE     AltName: Full=Ornithine acetyltransferase;\n"
-                        + "DE              Short=OATase;\n"
-                        + "DE     AltName: Full=Ornithine transacetylase;\n"
-                        + "DE   Includes:\n"
-                        + "DE     RecName: Full=Amino-acid acetyltransferase;\n"
-                        + "DE              EC=2.3.1.1;\n"
-                        + "DE     AltName: Full=N-acetylglutamate synthase;\n"
-                        + "DE              Short=AGS;\n"
-                        + "DE   Contains:\n"
-                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha chain;\n"
-                        + "DE   Contains:\n"
-                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta chain;\n";
+                    + "DE   Includes:\n"
+                    + "DE     RecName: Full=Glutamate N-acetyltransferase;\n"
+                    + "DE              EC=2.3.1.35;\n"
+                    + "DE     AltName: Full=Ornithine acetyltransferase;\n"
+                    + "DE              Short=OATase;\n"
+                    + "DE     AltName: Full=Ornithine transacetylase;\n"
+                    + "DE   Includes:\n"
+                    + "DE     RecName: Full=Amino-acid acetyltransferase;\n"
+                    + "DE              EC=2.3.1.1;\n"
+                    + "DE     AltName: Full=N-acetylglutamate synthase;\n"
+                    + "DE              Short=AGS;\n"
+                    + "DE   Contains:\n"
+                    + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha"
+                    + " chain;\n"
+                    + "DE   Contains:\n"
+                    + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta"
+                    + " chain;\n";
 
         testDescription(description, 11.0, Consensus.COMPLEX);
     }
@@ -225,21 +232,22 @@ class ProteinDescriptionScoredTest {
     void shouldDeWithECScore17() {
         String description =
                 "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n"
-                        + "DE   Includes:\n"
-                        + "DE     RecName: Full=Glutamate N-acetyltransferase;\n"
-                        + "DE              EC=2.3.1.35;\n"
-                        + "DE     AltName: Full=Ornithine acetyltransferase;\n"
-                        + "DE              Short=OATase;\n"
-                        + "DE     AltName: Full=Ornithine transacetylase;\n"
-                        + "DE              EC=2.3.1.1;\n"
-                        + "DE   Includes:\n"
-                        + "DE     RecName: Full=Amino-acid acetyltransferase;\n"
-                        + "DE              EC=2.3.1.4;\n"
-                        + "DE     AltName: Full=N-acetylglutamate synthase;\n"
-                        + "DE              Short=AGS;\n"
-                        + "DE   Contains:\n"
-                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha chain;\n"
-                        + "DE              EC=2.3.1.56;\n";
+                    + "DE   Includes:\n"
+                    + "DE     RecName: Full=Glutamate N-acetyltransferase;\n"
+                    + "DE              EC=2.3.1.35;\n"
+                    + "DE     AltName: Full=Ornithine acetyltransferase;\n"
+                    + "DE              Short=OATase;\n"
+                    + "DE     AltName: Full=Ornithine transacetylase;\n"
+                    + "DE              EC=2.3.1.1;\n"
+                    + "DE   Includes:\n"
+                    + "DE     RecName: Full=Amino-acid acetyltransferase;\n"
+                    + "DE              EC=2.3.1.4;\n"
+                    + "DE     AltName: Full=N-acetylglutamate synthase;\n"
+                    + "DE              Short=AGS;\n"
+                    + "DE   Contains:\n"
+                    + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha"
+                    + " chain;\n"
+                    + "DE              EC=2.3.1.56;\n";
 
         testDescription(description, 17.0, Consensus.COMPLEX);
     }
@@ -262,21 +270,23 @@ class ProteinDescriptionScoredTest {
 
         String description =
                 "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n"
-                        + "DE   Includes:\n"
-                        + "DE     RecName: Full=Glutamate N-acetyltransferase;\n"
-                        + "DE              EC=2.3.1.35;\n"
-                        + "DE     AltName: Full=Ornithine acetyltransferase;\n"
-                        + "DE              Short=OATase;\n"
-                        + "DE     AltName: Full=Ornithine transacetylase;\n"
-                        + "DE   Includes:\n"
-                        + "DE     RecName: Full=Amino-acid acetyltransferase;\n"
-                        + "DE              EC=2.3.1.1;\n"
-                        + "DE     AltName: Full=N-acetylglutamate synthase;\n"
-                        + "DE              Short=AGS;\n"
-                        + "DE   Contains:\n"
-                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha chain;\n"
-                        + "DE   Contains:\n"
-                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta chain;\n";
+                    + "DE   Includes:\n"
+                    + "DE     RecName: Full=Glutamate N-acetyltransferase;\n"
+                    + "DE              EC=2.3.1.35;\n"
+                    + "DE     AltName: Full=Ornithine acetyltransferase;\n"
+                    + "DE              Short=OATase;\n"
+                    + "DE     AltName: Full=Ornithine transacetylase;\n"
+                    + "DE   Includes:\n"
+                    + "DE     RecName: Full=Amino-acid acetyltransferase;\n"
+                    + "DE              EC=2.3.1.1;\n"
+                    + "DE     AltName: Full=N-acetylglutamate synthase;\n"
+                    + "DE              Short=AGS;\n"
+                    + "DE   Contains:\n"
+                    + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha"
+                    + " chain;\n"
+                    + "DE   Contains:\n"
+                    + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta"
+                    + " chain;\n";
 
         testDescription(description, 11.0, Consensus.COMPLEX);
     }
@@ -316,9 +326,10 @@ class ProteinDescriptionScoredTest {
     void shouldRecNameScore5() {
 
         String description =
-                "DE   RecName: Full=9.5 days embryo parthenogenote cDNA, RIKEN full-length enriched"
-                        + " library, clone:B130014N10 product:LIM homeobox transcription factor 1 alpha, full insert sequence;\n"
-                        + "DE            Short=LIM homeobox transcription factor 1 alpha;\n";
+                "DE   RecName: Full=9.5 days embryo parthenogenote cDNA, RIKEN full-length"
+                    + " enriched library, clone:B130014N10 product:LIM homeobox transcription"
+                    + " factor 1 alpha, full insert sequence;\n"
+                    + "DE            Short=LIM homeobox transcription factor 1 alpha;\n";
         testDescription(description, 5.0, Consensus.COMPLEX);
     }
 

@@ -1,10 +1,10 @@
 package org.uniprot.core.xml.uniprot;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.uniprot.PropertyType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PropertyTypeTest extends AbstractConverterTest {
 

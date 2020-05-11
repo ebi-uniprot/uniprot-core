@@ -1,10 +1,10 @@
 package org.uniprot.core.unirule.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.Range;
 import org.uniprot.core.unirule.SamTrigger;
 import org.uniprot.core.unirule.SamTriggerType;
+
+import java.util.Objects;
 
 public class SamTriggerImpl implements SamTrigger {
 

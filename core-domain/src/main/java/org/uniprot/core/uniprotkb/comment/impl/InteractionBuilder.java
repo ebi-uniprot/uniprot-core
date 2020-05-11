@@ -1,10 +1,10 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.uniprotkb.comment.Interaction;
+
+import javax.annotation.Nonnull;
 
 public final class InteractionBuilder implements Builder<Interaction> {
 

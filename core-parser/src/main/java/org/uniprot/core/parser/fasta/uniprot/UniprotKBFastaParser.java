@@ -1,7 +1,5 @@
 package org.uniprot.core.parser.fasta.uniprot;
 
-import java.util.List;
-
 import org.uniprot.core.gene.Gene;
 import org.uniprot.core.uniprotkb.ProteinExistence;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
@@ -10,6 +8,8 @@ import org.uniprot.core.uniprotkb.description.Flag;
 import org.uniprot.core.uniprotkb.description.FlagType;
 import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
+
+import java.util.List;
 
 public class UniprotKBFastaParser {
     private final String header;

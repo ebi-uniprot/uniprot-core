@@ -1,9 +1,8 @@
 package org.uniprot.core.citation.impl;
 
-import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Collections;
+import static java.util.Arrays.asList;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
@@ -11,6 +10,8 @@ import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.Submission;
 import org.uniprot.core.citation.SubmissionDatabase;
 import org.uniprot.core.impl.CrossReferenceBuilder;
+
+import java.util.Collections;
 
 class SubmissionImplTest {
     @Test

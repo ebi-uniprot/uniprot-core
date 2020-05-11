@@ -2,9 +2,6 @@ package org.uniprot.core.flatfile.parser.impl.os;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEPARATOR;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
@@ -13,8 +10,11 @@ import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 
-public class OSLineBuilder extends FFLineBuilderAbstr<Organism>
-        implements FFLineBuilder<Organism> {;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class OSLineBuilder extends FFLineBuilderAbstr<Organism> implements FFLineBuilder<Organism> {
+    ;
 
     public OSLineBuilder() {
         super(LineType.OS);

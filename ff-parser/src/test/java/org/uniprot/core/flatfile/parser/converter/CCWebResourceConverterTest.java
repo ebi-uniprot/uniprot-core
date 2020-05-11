@@ -2,8 +2,6 @@ package org.uniprot.core.flatfile.parser.converter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
@@ -12,6 +10,8 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.WebResource;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.WebResourceComment;
+
+import java.util.List;
 
 class CCWebResourceConverterTest {
     private final CcLineConverter converter = new CcLineConverter(null, null);

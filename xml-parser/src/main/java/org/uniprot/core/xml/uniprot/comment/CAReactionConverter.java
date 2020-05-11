@@ -1,9 +1,5 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
 import org.uniprot.core.impl.ECNumberBuilder;
@@ -16,6 +12,10 @@ import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.ReactionType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class CAReactionConverter implements Converter<ReactionType, Reaction> {
     private static final String EC = "EC";

@@ -1,8 +1,8 @@
 package org.uniprot.core.taxonomy;
 
-import java.io.Serializable;
-
 import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
+
+import java.io.Serializable;
 
 /** @author lgonzales */
 public interface TaxonomyLineage extends OrganismName, Serializable {

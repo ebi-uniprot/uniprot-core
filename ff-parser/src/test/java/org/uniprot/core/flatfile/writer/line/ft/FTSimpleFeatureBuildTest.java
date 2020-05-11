@@ -1,19 +1,20 @@
 package org.uniprot.core.flatfile.writer.line.ft;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.feature.Feature;
 import org.uniprot.core.uniprotkb.feature.FeatureType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
     @Test
     void test1() {
         String ftLine =
                 "FT   ACT_SITE        1691..1871\n"
-                        + "FT                   /note=\"VWFA 3; main binding site for collagens type I and\n"
-                        + "FT                   III\"";
+                    + "FT                   /note=\"VWFA 3; main binding site for collagens type I"
+                    + " and\n"
+                    + "FT                   III\"";
         String ftLineString =
                 "ACT_SITE 1691..1871\n"
                         + "/note=\"VWFA 3; main binding site for collagens type I and III\"";
@@ -31,13 +32,15 @@ class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
     void test2() {
         String ftLine =
                 "FT   CHAIN           61..386\n"
-                        + "FT                   /note=\"Serine/threonine-protein phosphatase 2A 56 kDa\n"
-                        + "FT                   regulatory subunit gamma isoform\"\n"
-                        + "FT                   /id=\"PRO_0000071458\"";
+                    + "FT                   /note=\"Serine/threonine-protein phosphatase 2A 56"
+                    + " kDa\n"
+                    + "FT                   regulatory subunit gamma isoform\"\n"
+                    + "FT                   /id=\"PRO_0000071458\"";
         String ftLineString =
                 "CHAIN 61..386\n"
-                        + "/note=\"Serine/threonine-protein phosphatase 2A 56 kDa regulatory subunit gamma isoform\"\n"
-                        + "/id=\"PRO_0000071458\"";
+                    + "/note=\"Serine/threonine-protein phosphatase 2A 56 kDa regulatory subunit"
+                    + " gamma isoform\"\n"
+                    + "/id=\"PRO_0000071458\"";
         String description4 =
                 "Serine/threonine-protein phosphatase 2A 56 kDa regulatory subunit gamma isoform";
         List<String> evs4 = new ArrayList<>();
@@ -65,9 +68,11 @@ class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
     void test1Ev() {
         String ftLine =
                 "FT   ACT_SITE        1691..1871\n"
-                        + "FT                   /note=\"VWFA 3; main binding site for collagens type I and\n"
-                        + "FT                   III\"\n"
-                        + "FT                   /evidence=\"ECO:0000303|Ref.6, ECO:0000313|EMBL:BAG16761.1\"";
+                    + "FT                   /note=\"VWFA 3; main binding site for collagens type I"
+                    + " and\n"
+                    + "FT                   III\"\n"
+                    + "FT                   /evidence=\"ECO:0000303|Ref.6,"
+                    + " ECO:0000313|EMBL:BAG16761.1\"";
         String ftLineString =
                 "ACT_SITE 1691..1871\n"
                         + "/note=\"VWFA 3; main binding site for collagens type I and III\"";
@@ -94,19 +99,22 @@ class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
     void test2Ev() {
         String ftLine =
                 "FT   CHAIN           61..386\n"
-                        + "FT                   /note=\"Serine/threonine-protein phosphatase 2A 56 kDa\n"
-                        + "FT                   regulatory subunit gamma isoform\"\n"
-                        + "FT                   /evidence=\"ECO:0000256|HAMAP-Rule:MF_00205\"\n"
-                        + "FT                   /id=\"PRO_0000071458\"";
+                    + "FT                   /note=\"Serine/threonine-protein phosphatase 2A 56"
+                    + " kDa\n"
+                    + "FT                   regulatory subunit gamma isoform\"\n"
+                    + "FT                   /evidence=\"ECO:0000256|HAMAP-Rule:MF_00205\"\n"
+                    + "FT                   /id=\"PRO_0000071458\"";
         String ftLineString =
                 "CHAIN 61..386\n"
-                        + "/note=\"Serine/threonine-protein phosphatase 2A 56 kDa regulatory subunit gamma isoform\"\n"
-                        + "/id=\"PRO_0000071458\"";
+                    + "/note=\"Serine/threonine-protein phosphatase 2A 56 kDa regulatory subunit"
+                    + " gamma isoform\"\n"
+                    + "/id=\"PRO_0000071458\"";
         String ftLineStringEv =
                 "CHAIN 61..386\n"
-                        + "/note=\"Serine/threonine-protein phosphatase 2A 56 kDa regulatory subunit gamma isoform\"\n"
-                        + "/evidence=\"ECO:0000256|HAMAP-Rule:MF_00205\"\n"
-                        + "/id=\"PRO_0000071458\"";
+                    + "/note=\"Serine/threonine-protein phosphatase 2A 56 kDa regulatory subunit"
+                    + " gamma isoform\"\n"
+                    + "/evidence=\"ECO:0000256|HAMAP-Rule:MF_00205\"\n"
+                    + "/id=\"PRO_0000071458\"";
         String description4 =
                 "Serine/threonine-protein phosphatase 2A 56 kDa regulatory subunit gamma isoform";
         List<String> evs4 = new ArrayList<>();

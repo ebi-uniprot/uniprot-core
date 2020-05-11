@@ -2,8 +2,7 @@ package org.uniprot.core.flatfile.transformer;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,8 @@ import org.uniprot.core.uniprotkb.comment.Reaction;
 import org.uniprot.core.uniprotkb.comment.ReactionDatabase;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 
-import com.google.common.base.Strings;
+import java.util.List;
+import java.util.stream.Collectors;
 
 class CatalyticActivityCommentTransformerTest {
     private static CatalyticActivityCommentTransformer transformer;
@@ -44,9 +44,11 @@ class CatalyticActivityCommentTransformerTest {
         verifyReaction(
                 comment.getReaction(),
                 "GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-rhamnose + H(+) + NADPH",
-                "Rhea:RHEA:18885, ChEBI:CHEBI:57273, ChEBI:CHEBI:58349, ChEBI:CHEBI:57964, ChEBI:CHEBI:57783",
+                "Rhea:RHEA:18885, ChEBI:CHEBI:57273, ChEBI:CHEBI:58349, ChEBI:CHEBI:57964,"
+                    + " ChEBI:CHEBI:57783",
                 "1.1.1.271",
-                "ECO:0000255|HAMAP-Rule:MF_00956, ECO:0000269|PubMed:10480878, ECO:0000269|PubMed:11021971, ECO:0000269|PubMed:9473059");
+                "ECO:0000255|HAMAP-Rule:MF_00956, ECO:0000269|PubMed:10480878,"
+                    + " ECO:0000269|PubMed:11021971, ECO:0000269|PubMed:9473059");
         List<PhysiologicalReaction> pds = comment.getPhysiologicalReactions();
         assertEquals(2, pds.size());
         verifyPhysiologicalDirection(
@@ -75,9 +77,11 @@ class CatalyticActivityCommentTransformerTest {
         verifyReaction(
                 comment.getReaction(),
                 "GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-rhamnose + H(+) + NADPH",
-                "Rhea:RHEA:18885, ChEBI:CHEBI:57273, ChEBI:CHEBI:58349, ChEBI:CHEBI:57964, ChEBI:CHEBI:57783",
+                "Rhea:RHEA:18885, ChEBI:CHEBI:57273, ChEBI:CHEBI:58349, ChEBI:CHEBI:57964,"
+                    + " ChEBI:CHEBI:57783",
                 "1.1.1.271",
-                "ECO:0000255|HAMAP-Rule:MF_00956, ECO:0000269|PubMed:10480878, ECO:0000269|PubMed:11021971, ECO:0000269|PubMed:9473059");
+                "ECO:0000255|HAMAP-Rule:MF_00956, ECO:0000269|PubMed:10480878,"
+                    + " ECO:0000269|PubMed:11021971, ECO:0000269|PubMed:9473059");
         List<PhysiologicalReaction> pds = comment.getPhysiologicalReactions();
         assertEquals(2, pds.size());
         verifyPhysiologicalDirection(
@@ -105,9 +109,11 @@ class CatalyticActivityCommentTransformerTest {
         verifyReaction(
                 comment.getReaction(),
                 "GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-rhamnose + H(+) + NADPH",
-                "Rhea:RHEA:18885, ChEBI:CHEBI:57273, ChEBI:CHEBI:58349, ChEBI:CHEBI:57964, ChEBI:CHEBI:57783",
+                "Rhea:RHEA:18885, ChEBI:CHEBI:57273, ChEBI:CHEBI:58349, ChEBI:CHEBI:57964,"
+                    + " ChEBI:CHEBI:57783",
                 null,
-                "ECO:0000255|HAMAP-Rule:MF_00956, ECO:0000269|PubMed:10480878, ECO:0000269|PubMed:11021971, ECO:0000269|PubMed:9473059");
+                "ECO:0000255|HAMAP-Rule:MF_00956, ECO:0000269|PubMed:10480878,"
+                    + " ECO:0000269|PubMed:11021971, ECO:0000269|PubMed:9473059");
         List<PhysiologicalReaction> pds = comment.getPhysiologicalReactions();
         assertEquals(2, pds.size());
         verifyPhysiologicalDirection(
@@ -132,7 +138,8 @@ class CatalyticActivityCommentTransformerTest {
         verifyReaction(
                 comment.getReaction(),
                 "GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-rhamnose + H(+) + NADPH",
-                "Rhea:RHEA:18885, ChEBI:CHEBI:57273, ChEBI:CHEBI:58349, ChEBI:CHEBI:57964, ChEBI:CHEBI:57783",
+                "Rhea:RHEA:18885, ChEBI:CHEBI:57273, ChEBI:CHEBI:58349, ChEBI:CHEBI:57964,"
+                    + " ChEBI:CHEBI:57783",
                 "1.1.1.271",
                 "");
         List<PhysiologicalReaction> pds = comment.getPhysiologicalReactions();
@@ -157,7 +164,8 @@ class CatalyticActivityCommentTransformerTest {
         verifyReaction(
                 comment.getReaction(),
                 "GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-rhamnose + H(+) + NADPH",
-                "Rhea:RHEA:18885, ChEBI:CHEBI:57273, ChEBI:CHEBI:58349, ChEBI:CHEBI:57964, ChEBI:CHEBI:57783",
+                "Rhea:RHEA:18885, ChEBI:CHEBI:57273, ChEBI:CHEBI:58349, ChEBI:CHEBI:57964,"
+                    + " ChEBI:CHEBI:57783",
                 "1.1.1.271",
                 "");
         List<PhysiologicalReaction> pds = comment.getPhysiologicalReactions();
@@ -185,9 +193,11 @@ class CatalyticActivityCommentTransformerTest {
         verifyReaction(
                 comment.getReaction(),
                 "GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-rhamnose + H(+) + NADPH",
-                "Rhea:RHEA:18885, ChEBI:CHEBI:57273, ChEBI:CHEBI:58349, ChEBI:CHEBI:57964, ChEBI:CHEBI:57783",
+                "Rhea:RHEA:18885, ChEBI:CHEBI:57273, ChEBI:CHEBI:58349, ChEBI:CHEBI:57964,"
+                    + " ChEBI:CHEBI:57783",
                 "1.1.1.271",
-                "ECO:0000255|HAMAP-Rule:MF_00956, ECO:0000269|PubMed:10480878, ECO:0000269|PubMed:11021971, ECO:0000269|PubMed:9473059");
+                "ECO:0000255|HAMAP-Rule:MF_00956, ECO:0000269|PubMed:10480878,"
+                    + " ECO:0000269|PubMed:11021971, ECO:0000269|PubMed:9473059");
         List<PhysiologicalReaction> pds = comment.getPhysiologicalReactions();
         assertEquals(2, pds.size());
         verifyPhysiologicalDirection(
@@ -226,9 +236,9 @@ class CatalyticActivityCommentTransformerTest {
     void caBasedOnEnzyme() {
         String ccLine =
                 "CATALYTIC ACTIVITY:\n"
-                        + "Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-"
-                        + "rhamnose + H(+) + NADPH; EC=1.1.1.271; Evidence={ECO:0000255|HAMAP-Rule:MF_00956,"
-                        + " ECO:0000269|PubMed:10480878};";
+                    + "Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-rhamnose +"
+                    + " H(+) + NADPH; EC=1.1.1.271; Evidence={ECO:0000255|HAMAP-Rule:MF_00956,"
+                    + " ECO:0000269|PubMed:10480878};";
         CatalyticActivityComment comment = transformer.transform(ccLine);
         assertNotNull(comment);
         verifyReaction(
@@ -245,9 +255,9 @@ class CatalyticActivityCommentTransformerTest {
     void caBasedOnEnzymen2() {
         String ccLine =
                 "CATALYTIC ACTIVITY:\n"
-                        + "Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-"
-                        + "rhamnose + H(+) + NADPH; EC=1.1.1.n271; Evidence={ECO:0000255|HAMAP-Rule:MF_00956,"
-                        + " ECO:0000269|PubMed:10480878};";
+                    + "Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-rhamnose +"
+                    + " H(+) + NADPH; EC=1.1.1.n271; Evidence={ECO:0000255|HAMAP-Rule:MF_00956,"
+                    + " ECO:0000269|PubMed:10480878};";
         CatalyticActivityComment comment = transformer.transform(ccLine);
         assertNotNull(comment);
         verifyReaction(
@@ -264,13 +274,15 @@ class CatalyticActivityCommentTransformerTest {
     void caBasedOnEnzymeWithSemicolon() {
         String ccLine =
                 "CATALYTIC ACTIVITY:\n"
-                        + "Reaction=Endonucleolytic cleavage of DNA to give random double-stranded fragments with terminal "
-                        + "5'-phosphates; ATP is simultaneously hydrolyzed; EC=1.1.1.271; Evidence={ECO:0000256|RuleBase:RU364115};";
+                    + "Reaction=Endonucleolytic cleavage of DNA to give random double-stranded"
+                    + " fragments with terminal 5'-phosphates; ATP is simultaneously hydrolyzed;"
+                    + " EC=1.1.1.271; Evidence={ECO:0000256|RuleBase:RU364115};";
         CatalyticActivityComment comment = transformer.transform(ccLine);
         assertNotNull(comment);
         verifyReaction(
                 comment.getReaction(),
-                "Endonucleolytic cleavage of DNA to give random double-stranded fragments with terminal 5'-phosphates; ATP is simultaneously hydrolyzed",
+                "Endonucleolytic cleavage of DNA to give random double-stranded fragments with"
+                    + " terminal 5'-phosphates; ATP is simultaneously hydrolyzed",
                 "",
                 "1.1.1.271",
                 "ECO:0000256|RuleBase:RU364115");

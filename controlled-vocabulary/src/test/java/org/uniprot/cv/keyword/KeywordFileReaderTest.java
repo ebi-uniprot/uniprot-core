@@ -2,10 +2,6 @@ package org.uniprot.cv.keyword;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
@@ -13,6 +9,10 @@ import org.uniprot.core.cv.go.GoTerm;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
 class KeywordFileReaderTest {
 
@@ -33,7 +33,8 @@ class KeywordFileReaderTest {
                         "_______________________________",
                         "IC   Domain.",
                         "AC   KW-9994",
-                        "DE   Keywords assigned to proteins because they have at least one specimen",
+                        "DE   Keywords assigned to proteins because they have at least one"
+                            + " specimen",
                         "DE   of a specific domain.",
                         "//");
 
@@ -46,7 +47,8 @@ class KeywordFileReaderTest {
                 () -> assertEquals("KW-9994", retList.get(0).getKeyword().getId()),
                 () ->
                         assertEquals(
-                                "Keywords assigned to proteins because they have at least one specimen of a specific domain.",
+                                "Keywords assigned to proteins because they have at least one"
+                                    + " specimen of a specific domain.",
                                 retList.get(0).getDefinition()),
                 () -> assertNotNull(retList.get(0).getParents()),
                 () -> assertTrue(retList.get(0).getParents().isEmpty()));
@@ -61,7 +63,8 @@ class KeywordFileReaderTest {
                         "_______________________________",
                         "ID   test-keyword.",
                         "AC   KW-0000",
-                        "DE   Protein which contains at least one 2Fe-2S iron-sulfur cluster: 2 iron",
+                        "DE   Protein which contains at least one 2Fe-2S iron-sulfur cluster: 2"
+                            + " iron",
                         "DE   atoms complexed to 2 inorganic sulfides and 4 sulfur atoms of",
                         "DE   cysteines from the protein.",
                         "SY   [2Fe-2S] cluster; [Fe2S2] cluster; 2 iron, 2 sulfur cluster binding;",

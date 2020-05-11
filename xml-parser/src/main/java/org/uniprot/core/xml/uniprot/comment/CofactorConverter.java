@@ -1,7 +1,5 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import java.util.List;
-
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.comment.Cofactor;
@@ -13,6 +11,8 @@ import org.uniprot.core.xml.jaxb.uniprot.CofactorType;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
+
+import java.util.List;
 
 public class CofactorConverter implements Converter<CofactorType, Cofactor> {
     private final ObjectFactory xmlUniprotFactory;

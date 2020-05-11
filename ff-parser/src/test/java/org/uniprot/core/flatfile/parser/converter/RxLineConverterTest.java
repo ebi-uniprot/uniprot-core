@@ -2,8 +2,6 @@ package org.uniprot.core.flatfile.parser.converter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Citation;
@@ -12,6 +10,8 @@ import org.uniprot.core.citation.impl.BookBuilder;
 import org.uniprot.core.flatfile.parser.impl.rx.RxLineConverter;
 import org.uniprot.core.flatfile.parser.impl.rx.RxLineObject;
 import org.uniprot.core.impl.CrossReferenceBuilder;
+
+import java.util.List;
 
 class RxLineConverterTest {
     @Test

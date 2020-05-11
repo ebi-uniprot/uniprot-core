@@ -2,16 +2,16 @@ package org.uniprot.core.flatfile.antlr;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject.FlagType;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject.NameBlock;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 class DeLineParserTest {
     @Test
@@ -92,17 +92,22 @@ class DeLineParserTest {
     void testWithEvidence() {
         String deLines =
                 "DE   RecName: Full=Annexin A5 {ECO:0000256|PIRNR:PIRNR038994};\n"
-                        + "DE            Short=Annexin-5 {ECO:0000256|PIRNR:PIRNR038994, ECO:0000256|PIRNR:PIRNR038995};\n"
-                        + "DE   AltName: Full=Annexin V {ECO:0000256|PIRNR:PIRNR038994};\n"
-                        + "DE   AltName: Full=Lipocortin V {ECO:0000256|PIRNR:PIRNR038994};\n"
-                        + "DE   AltName: Full=Placental anticoagulant protein I {ECO:0000256|PIRNR:PIRNR038994};\n"
-                        + "DE            Short=PAP-I {ECO:0000256|PIRNR:PIRNR038994};\n"
-                        + "DE   AltName: Full=PP4 {ECO:0000256|PIRNR:PIRNR038994};\n"
-                        + "DE   AltName: Full=Thromboplastin inhibitor {ECO:0000256|PIRNR:PIRNR038995};\n"
-                        + "DE   AltName: Full=Vascular anticoagulant-alpha {ECO:0000256|PIRNR:PIRNR038995};\n"
-                        + "DE            Short=VAC-alpha {ECO:0000256|PIRNR:PIRNR038994};\n"
-                        + "DE   AltName: Full=Anchorin CII {ECO:0000256|PIRNR:PIRNR038996};\n"
-                        + "DE   Flags: Precursor {ECO:0000256|PIRNR:PIRNR038994, ECO:0000256|PIRNR:PIRNR038995, ECO:0000256|PIRNR:PIRNR038998};\n";
+                    + "DE            Short=Annexin-5 {ECO:0000256|PIRNR:PIRNR038994,"
+                    + " ECO:0000256|PIRNR:PIRNR038995};\n"
+                    + "DE   AltName: Full=Annexin V {ECO:0000256|PIRNR:PIRNR038994};\n"
+                    + "DE   AltName: Full=Lipocortin V {ECO:0000256|PIRNR:PIRNR038994};\n"
+                    + "DE   AltName: Full=Placental anticoagulant protein I"
+                    + " {ECO:0000256|PIRNR:PIRNR038994};\n"
+                    + "DE            Short=PAP-I {ECO:0000256|PIRNR:PIRNR038994};\n"
+                    + "DE   AltName: Full=PP4 {ECO:0000256|PIRNR:PIRNR038994};\n"
+                    + "DE   AltName: Full=Thromboplastin inhibitor"
+                    + " {ECO:0000256|PIRNR:PIRNR038995};\n"
+                    + "DE   AltName: Full=Vascular anticoagulant-alpha"
+                    + " {ECO:0000256|PIRNR:PIRNR038995};\n"
+                    + "DE            Short=VAC-alpha {ECO:0000256|PIRNR:PIRNR038994};\n"
+                    + "DE   AltName: Full=Anchorin CII {ECO:0000256|PIRNR:PIRNR038996};\n"
+                    + "DE   Flags: Precursor {ECO:0000256|PIRNR:PIRNR038994,"
+                    + " ECO:0000256|PIRNR:PIRNR038995, ECO:0000256|PIRNR:PIRNR038998};\n";
         UniprotKBLineParser<DeLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
@@ -189,9 +194,12 @@ class DeLineParserTest {
     @Test
     void testWithNewEvidence() {
         String deLines =
-                "DE   RecName: Full=Annexin A5 {ECO:0000006|PubMed:20858735, ECO:0000006|PubMed:23640942};\n"
-                        + "DE            Short=Annexin-5 {ECO:0000006|PubMed:20858735, ECO:0000006|PubMed:23640943};\n"
-                        + "DE   Flags: Precursor {ECO:0000006|PubMed:20858735, ECO:0000006|PubMed:23640942, ECO:0000001};\n";
+                "DE   RecName: Full=Annexin A5 {ECO:0000006|PubMed:20858735,"
+                    + " ECO:0000006|PubMed:23640942};\n"
+                    + "DE            Short=Annexin-5 {ECO:0000006|PubMed:20858735,"
+                    + " ECO:0000006|PubMed:23640943};\n"
+                    + "DE   Flags: Precursor {ECO:0000006|PubMed:20858735,"
+                    + " ECO:0000006|PubMed:23640942, ECO:0000001};\n";
         UniprotKBLineParser<DeLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
@@ -261,21 +269,23 @@ class DeLineParserTest {
     void testWithContainInclude() {
         String deLines =
                 "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n"
-                        + "DE   Includes:\n"
-                        + "DE     RecName: Full=Glutamate N-acetyltransferase;\n"
-                        + "DE              EC=2.3.1.35;\n"
-                        + "DE     AltName: Full=Ornithine acetyltransferase;\n"
-                        + "DE              Short=OATase;\n"
-                        + "DE     AltName: Full=Ornithine transacetylase;\n"
-                        + "DE   Includes:\n"
-                        + "DE     RecName: Full=Amino-acid acetyltransferase;\n"
-                        + "DE              EC=2.3.1.-;\n"
-                        + "DE     AltName: Full=N-acetylglutamate synthase;\n"
-                        + "DE              Short=AGS;\n"
-                        + "DE   Contains:\n"
-                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha chain;\n"
-                        + "DE   Contains:\n"
-                        + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta chain;\n";
+                    + "DE   Includes:\n"
+                    + "DE     RecName: Full=Glutamate N-acetyltransferase;\n"
+                    + "DE              EC=2.3.1.35;\n"
+                    + "DE     AltName: Full=Ornithine acetyltransferase;\n"
+                    + "DE              Short=OATase;\n"
+                    + "DE     AltName: Full=Ornithine transacetylase;\n"
+                    + "DE   Includes:\n"
+                    + "DE     RecName: Full=Amino-acid acetyltransferase;\n"
+                    + "DE              EC=2.3.1.-;\n"
+                    + "DE     AltName: Full=N-acetylglutamate synthase;\n"
+                    + "DE              Short=AGS;\n"
+                    + "DE   Contains:\n"
+                    + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha"
+                    + " chain;\n"
+                    + "DE   Contains:\n"
+                    + "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta"
+                    + " chain;\n";
         UniprotKBLineParser<DeLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
@@ -405,8 +415,9 @@ class DeLineParserTest {
     @Test
     void testNamewithSemiColonEcEvidence() {
         String deLines =
-                "DE   SubName: Full=Cryptic phospho-beta-glucosidase; cryptic {ECO:0000313|EMBL:CSQ00014.1};\n"
-                        + "DE            EC=3.2.1.86 {ECO:0000313|EMBL:CSQ00014.1};\n";
+                "DE   SubName: Full=Cryptic phospho-beta-glucosidase; cryptic"
+                    + " {ECO:0000313|EMBL:CSQ00014.1};\n"
+                    + "DE            EC=3.2.1.86 {ECO:0000313|EMBL:CSQ00014.1};\n";
         UniprotKBLineParser<DeLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
@@ -456,13 +467,16 @@ class DeLineParserTest {
     @Test
     void testWithContainIncludeEvidence() {
         String deLines =
-                "DE   RecName: Full=Some name {ECO:12345|Ref.1, ECO:0000256|HAMAP-Rule:MF_00205};\n"
-                        + "DE            Short=SN {ECO:12345|Ref.2, ECO:0000256|HAMAP-Rule:MF_00206};\n"
-                        + "DE            EC=3.4.21.10 {ECO:12345|Ref.3, ECO:0000256|HAMAP-Rule:MF_00205};\n"
-                        + "DE   Contains:\n"
-                        + "DE     RecName: Full=Chain A {ECO:12345|Ref.1};\n"
-                        + "DE   Contains:\n"
-                        + "DE     RecName: Full=Chain B {ECO:12345|Ref.2};\n";
+                "DE   RecName: Full=Some name {ECO:12345|Ref.1,"
+                    + " ECO:0000256|HAMAP-Rule:MF_00205};\n"
+                    + "DE            Short=SN {ECO:12345|Ref.2,"
+                    + " ECO:0000256|HAMAP-Rule:MF_00206};\n"
+                    + "DE            EC=3.4.21.10 {ECO:12345|Ref.3,"
+                    + " ECO:0000256|HAMAP-Rule:MF_00205};\n"
+                    + "DE   Contains:\n"
+                    + "DE     RecName: Full=Chain A {ECO:12345|Ref.1};\n"
+                    + "DE   Contains:\n"
+                    + "DE     RecName: Full=Chain B {ECO:12345|Ref.2};\n";
         UniprotKBLineParser<DeLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
@@ -509,19 +523,23 @@ class DeLineParserTest {
     @Test
     void testWithCurlyBracket() {
         String deLines =
-                "DE   RecName: Full=(4-*{*4-[2-(gamma-L-glutamylamino)ethyl]phenoxymethyl*}*furan-2-yl)methanamine synthase {ECO:12345|Ref.1};\n";
+                "DE   RecName:"
+                    + " Full=(4-*{*4-[2-(gamma-L-glutamylamino)ethyl]phenoxymethyl*}*furan-2-yl)methanamine"
+                    + " synthase {ECO:12345|Ref.1};\n";
         UniprotKBLineParser<DeLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createDeLineParser();
         DeLineObject obj = parser.parse(deLines);
 
         verify(
                 obj.getRecName(),
-                "(4-*{*4-[2-(gamma-L-glutamylamino)ethyl]phenoxymethyl*}*furan-2-yl)methanamine synthase",
+                "(4-*{*4-[2-(gamma-L-glutamylamino)ethyl]phenoxymethyl*}*furan-2-yl)methanamine"
+                    + " synthase",
                 Arrays.asList(new String[] {}),
                 Arrays.asList(new String[] {}));
         verifyEvidences(
                 obj,
-                "(4-*{*4-[2-(gamma-L-glutamylamino)ethyl]phenoxymethyl*}*furan-2-yl)methanamine synthase",
+                "(4-*{*4-[2-(gamma-L-glutamylamino)ethyl]phenoxymethyl*}*furan-2-yl)methanamine"
+                    + " synthase",
                 Arrays.asList(new String[] {"ECO:12345|Ref.1"}));
     }
 }

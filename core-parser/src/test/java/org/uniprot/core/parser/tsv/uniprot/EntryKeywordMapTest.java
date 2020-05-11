@@ -3,11 +3,11 @@ package org.uniprot.core.parser.tsv.uniprot;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.*;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.Keyword;
 import org.uniprot.core.uniprotkb.impl.KeywordBuilder;
+
+import java.util.*;
 
 class EntryKeywordMapTest {
     @Test

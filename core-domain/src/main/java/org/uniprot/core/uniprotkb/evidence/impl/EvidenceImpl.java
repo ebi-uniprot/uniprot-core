@@ -1,12 +1,12 @@
 package org.uniprot.core.uniprotkb.evidence.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
+
+import java.util.Objects;
 
 public class EvidenceImpl implements Evidence {
     private static final long serialVersionUID = 6892404810238028657L;

@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.uniprotkb.comment.*;
+
+import javax.annotation.Nonnull;
 
 public final class BPCPCommentBuilder implements CommentBuilder<BPCPComment> {
     private String molecule;

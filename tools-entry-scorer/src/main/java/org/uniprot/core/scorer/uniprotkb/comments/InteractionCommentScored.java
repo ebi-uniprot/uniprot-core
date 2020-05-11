@@ -1,9 +1,9 @@
 package org.uniprot.core.scorer.uniprotkb.comments;
 
-import java.util.List;
-
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 15:43:07 To change this template

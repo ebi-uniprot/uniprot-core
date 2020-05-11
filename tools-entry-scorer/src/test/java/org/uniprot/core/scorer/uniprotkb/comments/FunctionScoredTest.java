@@ -24,7 +24,7 @@ class FunctionScoredTest extends CommentScoreTestBase {
     void shouldWithEvScore30() {
         String line =
                 "CC   -!- FUNCTION: ATP-dependent 5'-3' DNA helicase involved in nucleotide\n"
-                        + "CC       excision repair (NER) of DNA. {ECO:0000256|HAMAP-Rule:MF_01146}.";
+                    + "CC       excision repair (NER) of DNA. {ECO:0000256|HAMAP-Rule:MF_01146}.";
         verify(CommentType.FUNCTION, line, 3.0, false);
     }
 }

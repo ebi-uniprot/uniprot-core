@@ -2,14 +2,14 @@ package org.uniprot.cv.xdb.validator;
 
 import static org.uniprot.cv.common.CVSystemProperties.getDatabaseTypesLocation;
 
-import java.io.IOException;
-import java.util.*;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
+
+import java.io.IOException;
+import java.util.*;
 
 public class CrossReferenceValidator {
     private static final String EXPLICIT = "Explicit";

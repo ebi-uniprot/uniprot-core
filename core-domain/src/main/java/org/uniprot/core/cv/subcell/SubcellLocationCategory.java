@@ -1,8 +1,8 @@
 package org.uniprot.core.cv.subcell;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.util.EnumDisplay;
+
+import javax.annotation.Nonnull;
 
 public enum SubcellLocationCategory implements EnumDisplay {
     LOCATION("Cellular component"),

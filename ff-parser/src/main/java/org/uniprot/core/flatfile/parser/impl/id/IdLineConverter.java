@@ -1,12 +1,12 @@
 package org.uniprot.core.flatfile.parser.impl.id;
 
-import java.util.AbstractMap;
-import java.util.Map;
-
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.UniProtKBId;
 import org.uniprot.core.uniprotkb.impl.UniProtKBIdBuilder;
+
+import java.util.AbstractMap;
+import java.util.Map;
 
 public class IdLineConverter
         implements Converter<IdLineObject, Map.Entry<UniProtKBId, UniProtKBEntryType>> {

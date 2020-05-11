@@ -1,7 +1,5 @@
 package org.uniprot.core.flatfile.parser;
 
-import java.io.Serializable;
-
 import org.uniprot.core.flatfile.parser.impl.ac.AcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject;
@@ -28,6 +26,8 @@ import org.uniprot.core.flatfile.parser.impl.rt.RtLineObject;
 import org.uniprot.core.flatfile.parser.impl.rx.RxLineObject;
 import org.uniprot.core.flatfile.parser.impl.sq.SqLineObject;
 import org.uniprot.core.flatfile.parser.impl.ss.SsLineObject;
+
+import java.io.Serializable;
 
 /** User: wudong, Date: 19/08/13, Time: 15:49 */
 public interface UniprotKBLineParserFactory extends Serializable {

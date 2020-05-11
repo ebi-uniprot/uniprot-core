@@ -1,12 +1,12 @@
 package org.uniprot.cv.disease;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.cv.common.AbstractFileReader;
 import org.uniprot.cv.common.BaseCache;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public enum DiseaseCache implements BaseCache<DiseaseEntry> {
     INSTANCE;

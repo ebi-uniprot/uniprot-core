@@ -3,10 +3,6 @@ package org.uniprot.core.scorer.uniprotkb.features;
 import static org.uniprot.core.scorer.uniprotkb.Consensus.NUMBER;
 import static org.uniprot.core.scorer.uniprotkb.Consensus.PRESENCE;
 
-import java.util.Collection;
-import java.util.EnumMap;
-import java.util.List;
-
 import org.uniprot.core.scorer.uniprotkb.Consensus;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.ScoreStatus;
@@ -15,6 +11,10 @@ import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprotkb.feature.Feature;
 import org.uniprot.core.uniprotkb.feature.FeatureType;
+
+import java.util.Collection;
+import java.util.EnumMap;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 02-Mar-2010 Time: 12:10:54 To change this template

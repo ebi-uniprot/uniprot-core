@@ -1,11 +1,11 @@
 package org.uniprot.core.proteome.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.proteome.GeneNameType;
 import org.uniprot.core.proteome.Protein;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.UniProtKBEntryType;
+
+import java.util.Objects;
 
 public class ProteinImpl implements Protein {
 

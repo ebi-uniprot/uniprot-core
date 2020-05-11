@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprotkb.evidence;
 
-import java.io.Serializable;
-
 import org.uniprot.core.util.Utils;
+
+import java.io.Serializable;
 
 public class EvidenceDatabaseDetail implements Serializable {
     private static final long serialVersionUID = 4511309637271346914L;

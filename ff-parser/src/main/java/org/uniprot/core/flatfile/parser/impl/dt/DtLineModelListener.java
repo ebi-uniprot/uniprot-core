@@ -1,14 +1,14 @@
 package org.uniprot.core.flatfile.parser.impl.dt;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.util.Locale;
-
 import org.antlr.v4.runtime.misc.NotNull;
 import org.uniprot.core.flatfile.antlr.DtLineParser;
 import org.uniprot.core.flatfile.antlr.DtLineParserBaseListener;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.util.Locale;
 
 /**
  * Created with IntelliJ IDEA. User: wudong Date: 08/08/13 Time: 12:26 To change this template use

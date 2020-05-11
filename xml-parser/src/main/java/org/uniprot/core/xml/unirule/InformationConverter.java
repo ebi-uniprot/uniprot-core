@@ -1,9 +1,5 @@
 package org.uniprot.core.xml.unirule;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.unirule.DataClassType;
@@ -16,6 +12,10 @@ import org.uniprot.core.xml.jaxb.unirule.FusionType;
 import org.uniprot.core.xml.jaxb.unirule.InformationType;
 import org.uniprot.core.xml.jaxb.unirule.MultiValueType;
 import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class InformationConverter implements Converter<InformationType, Information> {
     private final ObjectFactory objectFactory;

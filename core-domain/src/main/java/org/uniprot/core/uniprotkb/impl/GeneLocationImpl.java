@@ -1,13 +1,13 @@
 package org.uniprot.core.uniprotkb.impl;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.uniprotkb.GeneEncodingType;
 import org.uniprot.core.uniprotkb.GeneLocation;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueImpl;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class GeneLocationImpl extends EvidencedValueImpl implements GeneLocation {
     private static final long serialVersionUID = -3156758801647353702L;

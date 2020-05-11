@@ -2,8 +2,7 @@ package org.uniprot.core.xml.uniprot;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.base.Strings;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
@@ -14,7 +13,8 @@ import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.PropertyType;
 import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UniProtKBCrossReferenceConverterTest extends AbstractConverterTest {
     private final UniProtCrossReferenceConverter converter = new UniProtCrossReferenceConverter();

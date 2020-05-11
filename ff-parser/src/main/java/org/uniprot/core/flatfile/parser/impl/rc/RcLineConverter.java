@@ -1,9 +1,5 @@
 package org.uniprot.core.flatfile.parser.impl.rc;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
 import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
@@ -11,6 +7,10 @@ import org.uniprot.core.uniprotkb.ReferenceComment;
 import org.uniprot.core.uniprotkb.ReferenceCommentType;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.impl.ReferenceCommentBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class RcLineConverter extends EvidenceCollector
         implements Converter<RcLineObject, List<ReferenceComment>> {

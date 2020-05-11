@@ -4,6 +4,15 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.slf4j.LoggerFactory.getLogger;
 
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
+import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
+import org.uniprot.core.flatfile.parser.impl.entry.EntryObject;
+import org.uniprot.core.flatfile.parser.impl.entry.EntryObjectConverter;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -13,15 +22,6 @@ import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
-import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
-import org.uniprot.core.flatfile.parser.impl.entry.EntryObject;
-import org.uniprot.core.flatfile.parser.impl.entry.EntryObjectConverter;
-import org.uniprot.core.uniprotkb.UniProtKBEntry;
 
 /**
  * Created 05/02/19

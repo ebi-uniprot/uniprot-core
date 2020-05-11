@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprotkb.comment;
 
-import java.io.Serializable;
-
 import org.uniprot.core.util.Utils;
+
+import java.io.Serializable;
 
 public interface Interaction extends Serializable {
     Interactant getInteractantOne();

@@ -1,11 +1,11 @@
 package org.uniprot.core.proteome.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.proteome.GenomeAssembly;
 import org.uniprot.core.proteome.GenomeAssemblyLevel;
 import org.uniprot.core.proteome.GenomeAssemblySource;
 import org.uniprot.core.util.Utils;
+
+import java.util.Objects;
 
 /**
  * @author lgonzales

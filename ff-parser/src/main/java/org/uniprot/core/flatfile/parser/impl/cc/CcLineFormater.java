@@ -1,12 +1,12 @@
 package org.uniprot.core.flatfile.parser.impl.cc;
 
+import org.uniprot.core.flatfile.parser.LineFormater;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+
 import java.util.AbstractMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import org.uniprot.core.flatfile.parser.LineFormater;
-import org.uniprot.core.uniprotkb.comment.CommentType;
 
 public class CcLineFormater implements LineFormater {
 

@@ -1,11 +1,11 @@
 package org.uniprot.core.flatfile.parser.impl.ft;
 
-import java.util.EnumMap;
-import java.util.Map;
-
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.uniprotkb.feature.Feature;
 import org.uniprot.core.uniprotkb.feature.FeatureType;
+
+import java.util.EnumMap;
+import java.util.Map;
 
 public class FeatureLineBuilderFactory {
     private static Map<FeatureType, FFLineBuilder<Feature>> featureBuilders =
@@ -17,7 +17,8 @@ public class FeatureLineBuilderFactory {
         featureBuilders.put(FeatureType.MUTAGEN, new MutagenFeatureLineBuilder());
         featureBuilders.put(FeatureType.VARIANT, new VariantFeatureLineBuilder());
         featureBuilders.put(FeatureType.VAR_SEQ, new VarSeqFeatureBuilder());
-    };
+    }
+    ;
 
     private static final FFLineBuilder<Feature> defaultBuilder = new SimpleFeatureLineBuilder();
 

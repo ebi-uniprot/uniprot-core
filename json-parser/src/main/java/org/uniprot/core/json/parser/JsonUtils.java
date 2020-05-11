@@ -1,12 +1,12 @@
 package org.uniprot.core.json.parser;
 
-import java.io.IOException;
-
-import org.uniprot.core.json.parser.uniprot.UniprotKBJsonConfig;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kjetland.jackson.jsonSchema.JsonSchemaGenerator;
+
+import org.uniprot.core.json.parser.uniprot.UniprotKBJsonConfig;
+
+import java.io.IOException;
 
 /** @author lgonzales */
 public class JsonUtils {

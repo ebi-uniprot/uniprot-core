@@ -1,20 +1,21 @@
 package org.uniprot.core.uniprotkb.evidence.impl;
 
-import static java.util.Collections.singletonList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.isEmptyString;
 import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.util.List;
-
-import javax.annotation.Nonnull;
+import static java.util.Collections.singletonList;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+
+import java.util.List;
+
+import javax.annotation.Nonnull;
 
 public class AbstractEvidencedValueBuilderTest {
     private static final String DB_ID_1 = "PIR_ID";

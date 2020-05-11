@@ -1,9 +1,9 @@
 package org.uniprot.core.uniparc.impl;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.impl.AbstractValueBuilder;
 import org.uniprot.core.uniparc.UniParcId;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author jluo

@@ -1,11 +1,11 @@
 package org.uniprot.core.literature.impl;
 
-import java.util.List;
-import java.util.Objects;
-
 import org.uniprot.core.literature.LiteratureMappedReference;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.util.Utils;
+
+import java.util.List;
+import java.util.Objects;
 
 /** @author lgonzales */
 public class LiteratureMappedReferenceImpl implements LiteratureMappedReference {

@@ -3,14 +3,14 @@ package org.uniprot.core.flatfile.antlr;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.rl.RlLineObject;
 import org.uniprot.core.flatfile.parser.impl.rl.RlLineObject.SubmissionDB;
+
+import java.util.Arrays;
+import java.util.List;
 
 class RlLineParserTest {
     @Test
@@ -276,7 +276,8 @@ class RlLineParserTest {
         verify(
                 (RlLineObject.Thesis) obj.getReference(),
                 "Suranaree Univercity of Technology",
-                "111 Suranaree Ave. Suranaree Univercity of Technology, Thailand, Nakhon Ratchasima, Thailand",
+                "111 Suranaree Ave. Suranaree Univercity of Technology, Thailand, Nakhon"
+                    + " Ratchasima, Thailand",
                 2010);
     }
 
@@ -306,7 +307,8 @@ class RlLineParserTest {
     void testBook() {
         String rgLines =
                 "RL   (In) Boyer P.D. (eds.);\n"
-                        + "RL   The enzymes (3rd ed.), pp.11:397-547, Academic Press, New York (1975).\n";
+                    + "RL   The enzymes (3rd ed.), pp.11:397-547, Academic Press, New York"
+                    + " (1975).\n";
         UniprotKBLineParser<RlLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
@@ -327,8 +329,8 @@ class RlLineParserTest {
     void testBook2() {
         String rgLines =
                 "RL   (In) Rich D.H., Gross E. (eds.);\n"
-                        + "RL   Proceedings of the 7th American peptide symposium, pp.69-72, Pierce\n"
-                        + "RL   Chemical Co., Rockford Il. (1981).\n";
+                    + "RL   Proceedings of the 7th American peptide symposium, pp.69-72, Pierce\n"
+                    + "RL   Chemical Co., Rockford Il. (1981).\n";
         UniprotKBLineParser<RlLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
@@ -369,8 +371,8 @@ class RlLineParserTest {
     void testBookTitleWithSpot() {
         String rgLines =
                 "RL   (In) Kueck U. (eds.);\n"
-                        + "RL   The Mycota II, Genetics and Biotechnology (2nd edition), pp.95-112,\n"
-                        + "RL   Springer-Verlag, Berlin-Heidelberg (2004).\n";
+                    + "RL   The Mycota II, Genetics and Biotechnology (2nd edition), pp.95-112,\n"
+                    + "RL   Springer-Verlag, Berlin-Heidelberg (2004).\n";
         UniprotKBLineParser<RlLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
@@ -391,8 +393,8 @@ class RlLineParserTest {
     void testBookMultilineEditor() {
         String rgLines =
                 "RL   (In) Cummings D.J., Brost P., Dawid I.B., Weissman S.M., Fox C.F.\n"
-                        + "RL   (eds.);\n"
-                        + "RL   Extrachromosomal DNA, pp.339-355, Academic Press, New York (1979).\n";
+                    + "RL   (eds.);\n"
+                    + "RL   Extrachromosomal DNA, pp.339-355, Academic Press, New York (1979).\n";
         UniprotKBLineParser<RlLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
@@ -438,8 +440,9 @@ class RlLineParserTest {
     void testVolumeContainDot() {
         String rgLines =
                 "RL   (In) Biggins J. (eds.);\n"
-                        + "RL   Progress in photosynthesis research, pp.II.1:13-16, Martinus Nijhoff,\n"
-                        + "RL   The Hague (1987).\n";
+                    + "RL   Progress in photosynthesis research, pp.II.1:13-16, Martinus"
+                    + " Nijhoff,\n"
+                    + "RL   The Hague (1987).\n";
         UniprotKBLineParser<RlLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
@@ -460,7 +463,8 @@ class RlLineParserTest {
     void testVolumeContainDot2() {
         String rgLines =
                 "RL   (In) Biggins J. (eds.);\n"
-                        + "RL   Progress in photosynthesis research, pp.II.1:13-16, Martinus Nijhoff (1987).\n";
+                    + "RL   Progress in photosynthesis research, pp.II.1:13-16, Martinus Nijhoff"
+                    + " (1987).\n";
         UniprotKBLineParser<RlLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
@@ -481,8 +485,8 @@ class RlLineParserTest {
     void testBookTitle() {
         String rgLines =
                 "RL   (In) Barnett A.A., Veiga L.M., Ferrari S.F., Norconk M.A. (eds.);\n"
-                        + "RL   EVOLUTIONARY BIOLOGY AND CONSERVATION OF TITIS, SAKIS AND UACARIS,\n"
-                        + "RL   pp.0-0, Cambridge University Press, Cambridge, UK (2009).\n";
+                    + "RL   EVOLUTIONARY BIOLOGY AND CONSERVATION OF TITIS, SAKIS AND UACARIS,\n"
+                    + "RL   pp.0-0, Cambridge University Press, Cambridge, UK (2009).\n";
         UniprotKBLineParser<RlLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
@@ -506,8 +510,9 @@ class RlLineParserTest {
     void testBookTitle2() {
         String rgLines =
                 "RL   (In) Goffinet B., Hollowell V., Magill R. (eds.);\n"
-                        + "RL   MOLECULAR SYSTEMATICS OF BRYOPHYTES - MONOGRAPHS IN SYSTEMATIC BOTANY,\n"
-                        + "RL   pp.61-86, Missouri Botanical Garden Press, USA (2004).\n";
+                    + "RL   MOLECULAR SYSTEMATICS OF BRYOPHYTES - MONOGRAPHS IN SYSTEMATIC"
+                    + " BOTANY,\n"
+                    + "RL   pp.61-86, Missouri Botanical Garden Press, USA (2004).\n";
         UniprotKBLineParser<RlLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
@@ -528,9 +533,10 @@ class RlLineParserTest {
     void testBookStrange() {
         String rgLines =
                 "RL   (In) Unknown A. (eds.);\n"
-                        + "RL   PROCEEDINGS OF III CONGRESSO NACIONAL DE SAUDE PUBLICA VETERINARIA E I\n"
-                        + "RL   ENCONTRO INTERNACIONAL DE SAUDE PUBLICA VETERINARIA, pp.0-0, Brazil\n"
-                        + "RL   (2009).\n";
+                    + "RL   PROCEEDINGS OF III CONGRESSO NACIONAL DE SAUDE PUBLICA VETERINARIA E"
+                    + " I\n"
+                    + "RL   ENCONTRO INTERNACIONAL DE SAUDE PUBLICA VETERINARIA, pp.0-0, Brazil\n"
+                    + "RL   (2009).\n";
         UniprotKBLineParser<RlLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
@@ -538,7 +544,8 @@ class RlLineParserTest {
         verify(
                 (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {"Unknown A."}),
-                "PROCEEDINGS OF III CONGRESSO NACIONAL DE SAUDE PUBLICA VETERINARIA E I ENCONTRO INTERNACIONAL DE SAUDE PUBLICA VETERINARIA",
+                "PROCEEDINGS OF III CONGRESSO NACIONAL DE SAUDE PUBLICA VETERINARIA E I ENCONTRO"
+                    + " INTERNACIONAL DE SAUDE PUBLICA VETERINARIA",
                 "0",
                 "0",
                 null,
@@ -551,8 +558,8 @@ class RlLineParserTest {
     void testBookStrange2() {
         String rgLines =
                 "RL   (In) Klenk, H.-D. (eds.);\n"
-                        + "RL   XIIth International Congress of Virology, pp.9-0, EDK. Medical and\n"
-                        + "RL   Scientific International Pubulisher, 75014 Paris, France (2002).\n";
+                    + "RL   XIIth International Congress of Virology, pp.9-0, EDK. Medical and\n"
+                    + "RL   Scientific International Pubulisher, 75014 Paris, France (2002).\n";
         UniprotKBLineParser<RlLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
@@ -573,9 +580,9 @@ class RlLineParserTest {
     void testBookStrange3() {
         String rgLines =
                 "RL   (In) Unknown A. (eds.);\n"
-                        + "RL   Abstract, pp.8-0, European Symposium on Drosophila\n"
-                        + "RL   Neurobiology(Neurofly-2000) Alicante, Spain:23rd to 27th September\n"
-                        + "RL   2000:1-1; CSIC (2000).\n";
+                    + "RL   Abstract, pp.8-0, European Symposium on Drosophila\n"
+                    + "RL   Neurobiology(Neurofly-2000) Alicante, Spain:23rd to 27th September\n"
+                    + "RL   2000:1-1; CSIC (2000).\n";
         UniprotKBLineParser<RlLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createRlLineParser();
         RlLineObject obj = parser.parse(rgLines);
@@ -626,7 +633,8 @@ class RlLineParserTest {
         verify(
                 (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {}),
-                "Proceedings of Plant Biology '2000: The annual meeting of the American Society of Plant Physiologists",
+                "Proceedings of Plant Biology '2000: The annual meeting of the American Society of"
+                    + " Plant Physiologists",
                 "0",
                 "0",
                 "abstract#272",
@@ -672,7 +680,8 @@ class RlLineParserTest {
         verify(
                 (RlLineObject.Book) obj.getReference(),
                 Arrays.asList(new String[] {"Rossiter A.", "Kawanabe H."}),
-                "ADVANCES IN ECOLOGICAL RESEARCH 31: BIOLOGY OF ANCIENT LAKES; BIODIVERSITY, ECOLOGY AND EVOLUTION",
+                "ADVANCES IN ECOLOGICAL RESEARCH 31: BIOLOGY OF ANCIENT LAKES; BIODIVERSITY,"
+                    + " ECOLOGY AND EVOLUTION",
                 "275",
                 "302",
                 null,

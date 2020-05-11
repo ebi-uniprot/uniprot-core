@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidence;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 
-import java.util.Collections;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.MaximumVelocity;
+
+import java.util.Collections;
 
 class MaximumVelocityBuilderTest {
     @Test

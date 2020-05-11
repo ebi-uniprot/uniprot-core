@@ -1,13 +1,13 @@
 package org.uniprot.core.flatfile.parser.impl.kw;
 
-import java.util.List;
-
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.uniprot.core.flatfile.antlr.KwLineParser;
 import org.uniprot.core.flatfile.antlr.KwLineParserBaseListener;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA. User: wudong Date: 08/08/13 Time: 12:26 To change this template use

@@ -2,9 +2,6 @@ package org.uniprot.core.xml.unirule;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.unirule.CaseRule;
@@ -14,6 +11,9 @@ import org.uniprot.core.unirule.impl.ConditionSetBuilderTest;
 import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.unirule.CaseType;
 import org.uniprot.core.xml.jaxb.unirule.MainType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CaseTypeConverterTest extends AbstractConverterTest {
     @BeforeAll

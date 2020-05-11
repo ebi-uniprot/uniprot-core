@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprotkb.comment;
 
-import java.util.List;
-
 import org.uniprot.core.uniprotkb.evidence.Evidence;
+
+import java.util.List;
 
 public interface MassSpectrometryComment extends Comment, HasMolecule {
 

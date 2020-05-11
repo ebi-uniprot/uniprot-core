@@ -2,12 +2,12 @@ package org.uniprot.core.uniparc.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.time.LocalDate;
-import java.util.Collections;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
+
+import java.time.LocalDate;
+import java.util.Collections;
 
 class UniParcCrossReferenceImplTest {
     @Test

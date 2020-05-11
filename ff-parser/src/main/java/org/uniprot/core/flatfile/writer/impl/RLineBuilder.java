@@ -2,9 +2,6 @@ package org.uniprot.core.flatfile.writer.impl;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.DEFAUT_LINESPACE;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.uniprot.core.flatfile.parser.impl.ra.RALineBuilder;
 import org.uniprot.core.flatfile.parser.impl.rc.RCLineBuilder;
 import org.uniprot.core.flatfile.parser.impl.rg.RGLineBuilder;
@@ -17,6 +14,9 @@ import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.uniprotkb.UniProtKBReference;
 import org.uniprot.core.uniprotkb.evidence.HasEvidences;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RLineBuilder extends FFLineBuilderAbstr<UniProtKBReference>
         implements FFLineBuilder<UniProtKBReference> {

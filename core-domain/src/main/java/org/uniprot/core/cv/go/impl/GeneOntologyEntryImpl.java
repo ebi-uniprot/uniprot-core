@@ -2,12 +2,12 @@ package org.uniprot.core.cv.go.impl;
 
 import static org.uniprot.core.util.Utils.unmodifiableSet;
 
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.go.GoAspect;
+
 import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
-
-import org.uniprot.core.cv.go.GeneOntologyEntry;
-import org.uniprot.core.cv.go.GoAspect;
 
 public class GeneOntologyEntryImpl extends GoTermImpl implements GeneOntologyEntry {
     private static final long serialVersionUID = -5760727679729608097L;

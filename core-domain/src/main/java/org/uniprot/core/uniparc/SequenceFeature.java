@@ -1,9 +1,9 @@
 package org.uniprot.core.uniparc;
 
+import org.uniprot.core.Location;
+
 import java.io.Serializable;
 import java.util.List;
-
-import org.uniprot.core.Location;
 
 /**
  * @author jluo

@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprotkb.feature;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.util.EnumDisplay;
+
+import javax.annotation.Nonnull;
 
 public enum FeatureType implements EnumDisplay {
     /**

@@ -1,12 +1,12 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
+import org.uniprot.core.parser.tsv.NamedValueMap;
+import org.uniprot.core.uniprotkb.EntryAudit;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.uniprot.core.parser.tsv.NamedValueMap;
-import org.uniprot.core.uniprotkb.EntryAudit;
 
 public class EntryAuditMap implements NamedValueMap {
 

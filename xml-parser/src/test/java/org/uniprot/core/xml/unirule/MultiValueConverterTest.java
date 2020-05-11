@@ -2,10 +2,10 @@ package org.uniprot.core.xml.unirule;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-
 import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.unirule.MultiValueType;
+
+import java.util.ArrayList;
 
 public class MultiValueConverterTest extends AbstractConverterTest {
     public static MultiValueType createObject() {

@@ -2,13 +2,13 @@ package org.uniprot.core.uniprotkb.description.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.description.ProteinRecName;
+
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class ProteinRecNameBuilderTest {
 

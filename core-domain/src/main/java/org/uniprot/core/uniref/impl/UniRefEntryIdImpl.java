@@ -1,9 +1,9 @@
 package org.uniprot.core.uniref.impl;
 
-import java.util.regex.Pattern;
-
 import org.uniprot.core.impl.ValueImpl;
 import org.uniprot.core.uniref.UniRefEntryId;
+
+import java.util.regex.Pattern;
 
 /**
  * @author jluo

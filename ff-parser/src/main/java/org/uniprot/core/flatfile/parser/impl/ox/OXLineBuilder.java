@@ -1,14 +1,14 @@
 package org.uniprot.core.flatfile.parser.impl.ox;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OXLineBuilder extends FFLineBuilderAbstr<Organism> implements FFLineBuilder<Organism> {
     private static final String NAME = "NCBI_TaxID=";

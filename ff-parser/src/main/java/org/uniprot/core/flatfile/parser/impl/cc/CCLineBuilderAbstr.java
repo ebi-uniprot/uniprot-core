@@ -2,8 +2,7 @@ package org.uniprot.core.flatfile.parser.impl.cc;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.base.Strings;
 
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.LineType;
@@ -18,7 +17,8 @@ import org.uniprot.core.uniprotkb.comment.Note;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.evidence.HasEvidences;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class CCLineBuilderAbstr<T extends Comment> extends FFLineBuilderAbstr<T>
         implements CommentLineBuilder<T> {

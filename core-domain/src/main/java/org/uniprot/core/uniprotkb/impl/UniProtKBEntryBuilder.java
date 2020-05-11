@@ -2,14 +2,6 @@ package org.uniprot.core.uniprotkb.impl;
 
 import static org.uniprot.core.util.Utils.*;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.Builder;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.gene.Gene;
@@ -21,6 +13,14 @@ import org.uniprot.core.uniprotkb.feature.Feature;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import javax.annotation.Nonnull;
 
 public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
     public static final String COUNT_BY_COMMENT_TYPE_ATTRIB = "countByCommentType";

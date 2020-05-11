@@ -3,13 +3,13 @@ package org.uniprot.core.flatfile.antlr;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.rp.RpLineObject;
+
+import java.util.Arrays;
+import java.util.List;
 
 class RpLineParserTest {
     @Test
@@ -54,8 +54,8 @@ class RpLineParserTest {
     void testMulti() {
         String rgLines =
                 "RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORMS A AND C), FUNCTION, INTERACTION\n"
-                        + "RP   WITH PKC-3, SUBCELLULAR LOCATION, TISSUE SPECIFICITY, DEVELOPMENTAL\n"
-                        + "RP   STAGE, AND MUTAGENESIS OF PHE-175 AND PHE-221.\n";
+                    + "RP   WITH PKC-3, SUBCELLULAR LOCATION, TISSUE SPECIFICITY, DEVELOPMENTAL\n"
+                    + "RP   STAGE, AND MUTAGENESIS OF PHE-175 AND PHE-221.\n";
         UniprotKBLineParser<RpLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createRpLineParser();
         RpLineObject obj = parser.parse(rgLines);

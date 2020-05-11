@@ -2,11 +2,11 @@ package org.uniprot.core.uniprotkb.evidence.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.time.LocalDate;
-import java.time.Month;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.evidence.EvidenceLine;
+
+import java.time.LocalDate;
+import java.time.Month;
 
 class EvidenceLineImplTest {
     private EvidenceLine impl =

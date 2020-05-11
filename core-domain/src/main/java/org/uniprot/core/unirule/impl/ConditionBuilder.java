@@ -2,16 +2,16 @@ package org.uniprot.core.unirule.impl;
 
 import static org.uniprot.core.util.Utils.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.Builder;
 import org.uniprot.core.Range;
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.ConditionValue;
 import org.uniprot.core.unirule.FeatureTagConditionValue;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
 
 public class ConditionBuilder implements Builder<Condition> {
     private List<ConditionValue> conditionValues = new ArrayList<>();

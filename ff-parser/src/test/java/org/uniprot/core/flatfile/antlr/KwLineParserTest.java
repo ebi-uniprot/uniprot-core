@@ -2,13 +2,13 @@ package org.uniprot.core.flatfile.antlr;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.kw.KwLineObject;
+
+import java.util.Arrays;
+import java.util.List;
 
 class KwLineParserTest {
     @Test
@@ -51,8 +51,9 @@ class KwLineParserTest {
     void testEvidences() {
         String kwLines =
                 "KW   Activator {ECO:00000001}; Complete proteome {ECO:00000001};\n"
-                        + "KW   Reference proteome; Transcription {ECO:0000006|PubMed:20858735, ECO:0000006};\n"
-                        + "KW   Transcription regulation.\n";
+                    + "KW   Reference proteome; Transcription {ECO:0000006|PubMed:20858735,"
+                    + " ECO:0000006};\n"
+                    + "KW   Transcription regulation.\n";
         UniprotKBLineParser<KwLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createKwLineParser();
         KwLineObject obj = parser.parse(kwLines);
@@ -116,17 +117,17 @@ class KwLineParserTest {
     void testLongKw() {
         String kwLines =
                 "KW   Disulfide bond {ECO:0000256|SAAS:SAAS000777_004_000331};\n"
-                        + "KW   Fusion of virus membrane with host membrane\n"
-                        + "KW   {ECO:0000256|SAAS:SAAS000777_004_001688};\n"
-                        + "KW   Host-virus interaction {ECO:0000256|SAAS:SAAS000777_004_000688};\n"
-                        + "KW   Viral attachment to host cell\n"
-                        + "KW   {ECO:0000256|SAAS:SAAS000777_004_000923};\n"
-                        + "KW   Viral envelope protein {ECO:0000313|EMBL:AAY20056.1};\n"
-                        + "KW   Viral penetration into host cytoplasm\n"
-                        + "KW   {ECO:0000256|SAAS:SAAS000777_004_001402}; Virion;\n"
-                        + "KW   Virus entry into host cell {ECO:0000256|SAAS:SAAS000777_004_000842};\n"
-                        + "KW   Complete proteome; Metal-binding; Repeat; Virus reference strain;\n"
-                        + "KW   Zinc-finger.\n";
+                    + "KW   Fusion of virus membrane with host membrane\n"
+                    + "KW   {ECO:0000256|SAAS:SAAS000777_004_001688};\n"
+                    + "KW   Host-virus interaction {ECO:0000256|SAAS:SAAS000777_004_000688};\n"
+                    + "KW   Viral attachment to host cell\n"
+                    + "KW   {ECO:0000256|SAAS:SAAS000777_004_000923};\n"
+                    + "KW   Viral envelope protein {ECO:0000313|EMBL:AAY20056.1};\n"
+                    + "KW   Viral penetration into host cytoplasm\n"
+                    + "KW   {ECO:0000256|SAAS:SAAS000777_004_001402}; Virion;\n"
+                    + "KW   Virus entry into host cell {ECO:0000256|SAAS:SAAS000777_004_000842};\n"
+                    + "KW   Complete proteome; Metal-binding; Repeat; Virus reference strain;\n"
+                    + "KW   Zinc-finger.\n";
         UniprotKBLineParser<KwLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createKwLineParser();
         KwLineObject obj = parser.parse(kwLines);

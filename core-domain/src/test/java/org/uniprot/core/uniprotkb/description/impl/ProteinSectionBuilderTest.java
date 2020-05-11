@@ -2,17 +2,17 @@ package org.uniprot.core.uniprotkb.description.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.description.ProteinAltName;
 import org.uniprot.core.uniprotkb.description.ProteinRecName;
 import org.uniprot.core.uniprotkb.description.ProteinSection;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 class ProteinSectionBuilderTest {
     private ProteinAltName altName = new ProteinAltNameBuilder().build();

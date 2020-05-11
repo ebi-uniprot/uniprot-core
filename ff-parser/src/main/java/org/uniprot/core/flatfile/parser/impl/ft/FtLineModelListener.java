@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.impl.ft;
 
-import java.util.List;
+import com.google.common.base.Strings;
 
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.uniprot.core.flatfile.antlr.FtLineParser;
@@ -8,7 +8,7 @@ import org.uniprot.core.flatfile.antlr.FtLineParserBaseListener;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 
-import com.google.common.base.Strings;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA. User: wudong Date: 08/08/13 Time: 12:26 To change this template use

@@ -1,13 +1,13 @@
 package org.uniprot.core.xml.uniprot;
 
-import java.util.Optional;
-
 import org.uniprot.core.uniprotkb.description.Flag;
 import org.uniprot.core.uniprotkb.description.FlagType;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilder;
 import org.uniprot.core.xml.Updater;
 import org.uniprot.core.xml.jaxb.uniprot.SequenceType;
+
+import java.util.Optional;
 
 public class FlagUpdater implements Updater<SequenceType, ProteinDescription> {
 

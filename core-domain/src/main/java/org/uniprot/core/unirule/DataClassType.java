@@ -1,8 +1,8 @@
 package org.uniprot.core.unirule;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.util.EnumDisplay;
+
+import javax.annotation.Nonnull;
 
 /** @author sahmad */
 public enum DataClassType implements EnumDisplay {

@@ -1,13 +1,13 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-
 import org.uniprot.core.uniprotkb.comment.SubcellularLocation;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocationValue;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueImpl;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 
 public class SubcellularLocationImpl implements SubcellularLocation {
     private static final long serialVersionUID = -1217106303846658373L;

@@ -2,15 +2,15 @@ package org.uniprot.core.uniprotkb.comment.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
+
+import java.util.Arrays;
+import java.util.List;
 
 class InteractionCommentImplTest {
     private List<Interaction> interactions;

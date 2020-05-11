@@ -2,9 +2,9 @@ package org.uniprot.core.uniprotkb.comment;
 
 import static org.uniprot.core.util.Utils.nullThrowIllegalArgument;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.util.EnumDisplay;
+
+import javax.annotation.Nonnull;
 
 public enum MichaelisConstantUnit implements EnumDisplay {
     MOL("M"),

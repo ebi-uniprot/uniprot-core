@@ -1,12 +1,12 @@
 package org.uniprot.core.xml.unirule;
 
-import java.util.List;
-import java.util.Objects;
-
 import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.MultiValueType;
 import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
+
+import java.util.List;
+import java.util.Objects;
 
 public class MultiValueConverter implements Converter<MultiValueType, List<String>> {
 

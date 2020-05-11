@@ -1,13 +1,13 @@
 package org.uniprot.core.scorer.uniprotkb;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprotkb.evidence.HasEvidences;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 
 public class ScoreUtil {
     public static ScoreStatus getScoreStatus(Collection<ScoreStatus> types) {

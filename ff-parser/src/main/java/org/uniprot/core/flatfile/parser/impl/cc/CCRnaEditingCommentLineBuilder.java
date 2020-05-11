@@ -2,12 +2,12 @@ package org.uniprot.core.flatfile.parser.impl.cc;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.uniprotkb.comment.RnaEdPosition;
 import org.uniprot.core.uniprotkb.comment.RnaEditingComment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author jieluo "CC -!- RNA EDITING: Modified_positions=59, 78, 94, 98, 102, 121; Note=The |CC

@@ -7,13 +7,13 @@ import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEPARATOR_SEM
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEPS;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SPACE;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.base.Strings;
 
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.uniprotkb.comment.MassSpectrometryComment;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author jieluo CC -!- MASS SPECTROMETRY: Mass=514.2; Method=Electrospray; Range=51-54, |CC 71-74,

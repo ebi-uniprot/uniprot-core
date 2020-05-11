@@ -3,9 +3,6 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
@@ -14,6 +11,9 @@ import org.uniprot.core.impl.ECNumberBuilder;
 import org.uniprot.core.uniprotkb.comment.Reaction;
 import org.uniprot.core.uniprotkb.comment.ReactionDatabase;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
+
+import java.util.Arrays;
+import java.util.List;
 
 class ReactionImplTest {
 
@@ -103,7 +103,9 @@ class ReactionImplTest {
     void toString_test() {
         Reaction impl = new ReactionImpl("name", references, ecNumber, createEvidences());
         assertEquals(
-                "Reaction=name; Xref=Rhea:RHEA:123, Rhea:RHEA:323, ChEBI:ChEBI:3243; EC=1.2.4.5; Evidence={ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361};",
+                "Reaction=name; Xref=Rhea:RHEA:123, Rhea:RHEA:323, ChEBI:ChEBI:3243; EC=1.2.4.5;"
+                    + " Evidence={ECO:0000255|PROSITE-ProRule:PRU10028,"
+                    + " ECO:0000256|PIRNR:PIRNR001361};",
                 impl.toString());
     }
 

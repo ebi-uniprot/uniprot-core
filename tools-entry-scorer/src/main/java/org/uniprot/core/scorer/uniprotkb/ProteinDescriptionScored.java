@@ -1,16 +1,9 @@
 package org.uniprot.core.scorer.uniprotkb;
 
-import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
 import static org.uniprot.core.util.Utils.emptyOrList;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.description.Name;
@@ -21,6 +14,14 @@ import org.uniprot.core.uniprotkb.description.ProteinSubName;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprotkb.evidence.HasEvidences;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 13:34:03 To change this template

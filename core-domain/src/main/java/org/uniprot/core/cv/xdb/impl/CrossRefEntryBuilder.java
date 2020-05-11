@@ -1,9 +1,9 @@
 package org.uniprot.core.cv.xdb.impl;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.Builder;
 import org.uniprot.core.cv.xdb.CrossRefEntry;
+
+import javax.annotation.Nonnull;
 
 public class CrossRefEntryBuilder implements Builder<CrossRefEntry> {
     private String name;

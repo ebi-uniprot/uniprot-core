@@ -2,11 +2,11 @@ package org.uniprot.core.literature.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Collections;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.literature.LiteratureMappedReference;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
+
+import java.util.Collections;
 
 class LiteratureMappedReferenceImplTest {
 

@@ -2,9 +2,8 @@ package org.uniprot.core.flatfile.parser.integration;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.io.IOException;
-import java.net.URL;
-import java.nio.charset.Charset;
+import com.google.common.io.CharSource;
+import com.google.common.io.Resources;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
@@ -14,8 +13,9 @@ import org.uniprot.core.flatfile.parser.impl.entry.EntryObject;
 import org.uniprot.core.flatfile.parser.impl.entry.EntryObjectConverter;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 
-import com.google.common.io.CharSource;
-import com.google.common.io.Resources;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.charset.Charset;
 
 class EntryConverterIT {
     @Test

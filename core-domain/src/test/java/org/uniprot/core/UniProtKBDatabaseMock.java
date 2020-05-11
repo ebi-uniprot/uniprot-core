@@ -1,13 +1,13 @@
 package org.uniprot.core;
 
+import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
+import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
+
 import java.util.Objects;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
-import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
-import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
-import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 
 public class UniProtKBDatabaseMock implements UniProtKBDatabase {
     private String name;

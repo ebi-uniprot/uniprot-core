@@ -2,10 +2,10 @@ package org.uniprot.core.citation.impl;
 
 import static java.util.Collections.emptyList;
 
-import java.util.List;
-
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
+
+import java.util.List;
 
 public class SubmissionImpl extends AbstractCitationImpl implements Submission {
     private static final long serialVersionUID = 7406371948424303592L;

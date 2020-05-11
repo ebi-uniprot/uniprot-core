@@ -2,12 +2,12 @@ package org.uniprot.core.scorer.uniprotkb;
 
 import static org.uniprot.core.util.Utils.nullOrEmpty;
 
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.Parameter;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.beust.jcommander.JCommander;
-import com.beust.jcommander.Parameter;
 
 public class ScoreConfigureImpl implements ScoreConfigure {
     @Parameter(names = "-e", description = "a list of evidence types")

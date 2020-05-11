@@ -1,6 +1,6 @@
 package org.uniprot.core.xml.uniprot;
 
-import java.math.BigInteger;
+import com.google.common.base.Strings;
 
 import org.uniprot.core.Position;
 import org.uniprot.core.PositionModifier;
@@ -11,7 +11,7 @@ import org.uniprot.core.xml.jaxb.uniprot.LocationType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.PositionType;
 
-import com.google.common.base.Strings;
+import java.math.BigInteger;
 
 public class FeatureLocationConverter implements Converter<LocationType, FeatureLocation> {
     private static final String GREATER_THAN = "greater than";

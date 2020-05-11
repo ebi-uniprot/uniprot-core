@@ -1,10 +1,10 @@
 package org.uniprot.core.citation;
 
+import org.uniprot.core.CrossReference;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
-
-import org.uniprot.core.CrossReference;
 
 /**
  * The basic type containing the common values that are present in each and every Citation

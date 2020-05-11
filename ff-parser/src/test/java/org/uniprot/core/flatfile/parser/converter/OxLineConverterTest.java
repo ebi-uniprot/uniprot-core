@@ -2,14 +2,14 @@ package org.uniprot.core.flatfile.parser.converter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ox.OxLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ox.OxLineObject;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
+
+import java.util.ArrayList;
+import java.util.List;
 
 class OxLineConverterTest {
     @Test

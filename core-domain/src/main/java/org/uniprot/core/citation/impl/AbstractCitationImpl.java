@@ -1,12 +1,12 @@
 package org.uniprot.core.citation.impl;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.util.Utils;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 public abstract class AbstractCitationImpl implements Citation {
     private static final long serialVersionUID = -2752460607884626559L;

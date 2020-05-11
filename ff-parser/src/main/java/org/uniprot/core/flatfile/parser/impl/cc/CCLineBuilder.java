@@ -1,7 +1,6 @@
 package org.uniprot.core.flatfile.parser.impl.cc;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.base.Objects;
 
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
@@ -13,7 +12,8 @@ import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.HasMolecule;
 import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
 
-import com.google.common.base.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CCLineBuilder extends FFLineBuilderAbstr<List<Comment>>
         implements FFLineBuilder<List<Comment>> {

@@ -1,8 +1,8 @@
 package org.uniprot.core.cv.xdb;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.util.EnumDisplay;
+
+import javax.annotation.Nonnull;
 
 public enum UniProtDatabaseCategory implements EnumDisplay {
     SEQUENCE_DATABASES("SEQ", "Sequence databases"),

@@ -1,10 +1,10 @@
 package org.uniprot.core.uniparc;
 
-import java.io.Serializable;
-import java.util.List;
-
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
+
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author jluo

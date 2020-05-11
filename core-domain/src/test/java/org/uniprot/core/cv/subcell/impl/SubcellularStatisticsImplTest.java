@@ -1,12 +1,12 @@
 package org.uniprot.core.cv.subcell.impl;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.impl.StatisticsBuilder;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class SubcellularStatisticsImplTest {
 

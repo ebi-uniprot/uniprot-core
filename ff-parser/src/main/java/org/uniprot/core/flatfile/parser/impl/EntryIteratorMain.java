@@ -2,11 +2,11 @@ package org.uniprot.core.flatfile.parser.impl;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-import java.io.FileNotFoundException;
-import java.util.Arrays;
-
 import org.slf4j.Logger;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
+
+import java.io.FileNotFoundException;
+import java.util.Arrays;
 
 /**
  * Created 28/02/19
@@ -21,7 +21,8 @@ public class EntryIteratorMain {
         LOGGER.info("received arguments: " + Arrays.toString(args));
         if (args.length != 9) {
             LOGGER.error(
-                    "Provide the correct arguments: FILE THREAD_NUM ENTRY_QUEUE_SIZE FF_QUEUE_SIZE COUNT KEYWORD_FILE DISEASE_FILE GO_FILE SUBCELLULAR_LOCATION_FILE");
+                    "Provide the correct arguments: FILE THREAD_NUM ENTRY_QUEUE_SIZE FF_QUEUE_SIZE"
+                        + " COUNT KEYWORD_FILE DISEASE_FILE GO_FILE SUBCELLULAR_LOCATION_FILE");
             System.exit(1);
         }
         String file = args[0];

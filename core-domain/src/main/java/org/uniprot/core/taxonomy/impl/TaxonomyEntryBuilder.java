@@ -1,15 +1,15 @@
 package org.uniprot.core.taxonomy.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.Builder;
 import org.uniprot.core.taxonomy.*;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.AbstractOrganismNameBuilder;
 import org.uniprot.core.util.Utils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
 
 public class TaxonomyEntryBuilder
         extends AbstractOrganismNameBuilder<TaxonomyEntryBuilder, TaxonomyEntry>

@@ -1,10 +1,10 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.uniprotkb.comment.Disease;
 import org.uniprot.core.uniprotkb.comment.DiseaseComment;
 import org.uniprot.core.uniprotkb.comment.Note;
+
+import javax.annotation.Nonnull;
 
 public class DiseaseCommentBuilder implements CommentBuilder<DiseaseComment> {
     private String molecule;

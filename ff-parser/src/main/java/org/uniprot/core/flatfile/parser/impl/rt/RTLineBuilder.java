@@ -2,14 +2,14 @@ package org.uniprot.core.flatfile.parser.impl.rt;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.base.Strings;
 
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.RLine;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RTLineBuilder implements RLine<String> {
     private final LineType lineType = LineType.RT;

@@ -1,12 +1,12 @@
 package org.uniprot.core.xml.unirule;
 
-import java.util.Objects;
-
 import org.uniprot.core.unirule.Fusion;
 import org.uniprot.core.unirule.impl.FusionBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.FusionType;
 import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
+
+import java.util.Objects;
 
 public class FusionConverter implements Converter<FusionType, Fusion> {
 

@@ -1,9 +1,9 @@
 package org.uniprot.core.taxonomy.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.impl.StatisticsImpl;
 import org.uniprot.core.taxonomy.TaxonomyStatistics;
+
+import java.util.Objects;
 
 public class TaxonomyStatisticsImpl extends StatisticsImpl implements TaxonomyStatistics {
 

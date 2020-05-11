@@ -2,12 +2,12 @@ package org.uniprot.core.unirule.impl;
 
 import static org.uniprot.core.util.Utils.nullThrowIllegalArgument;
 
+import org.uniprot.core.unirule.ConditionSet;
+import org.uniprot.core.unirule.Rule;
+
 import java.util.List;
 
 import javax.annotation.Nonnull;
-
-import org.uniprot.core.unirule.ConditionSet;
-import org.uniprot.core.unirule.Rule;
 
 public class RuleBuilder extends AbstractRuleBuilder<RuleBuilder, Rule> {
 

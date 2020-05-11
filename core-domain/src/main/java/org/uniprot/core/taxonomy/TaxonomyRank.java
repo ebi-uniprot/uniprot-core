@@ -1,8 +1,8 @@
 package org.uniprot.core.taxonomy;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.util.EnumDisplay;
+
+import javax.annotation.Nonnull;
 
 public enum TaxonomyRank implements EnumDisplay {
     FORMA("forma"),

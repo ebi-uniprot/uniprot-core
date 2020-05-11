@@ -1,6 +1,6 @@
 package org.uniprot.core.xml.uniprot;
 
-import java.util.List;
+import com.google.common.base.Strings;
 
 import org.uniprot.core.uniprotkb.GeneEncodingType;
 import org.uniprot.core.uniprotkb.GeneLocation;
@@ -11,7 +11,7 @@ import org.uniprot.core.xml.jaxb.uniprot.GeneLocationType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.StatusType;
 
-import com.google.common.base.Strings;
+import java.util.List;
 
 public class OrganelleConverter implements Converter<GeneLocationType, GeneLocation> {
     private final EvidenceIndexMapper evRefMapper;

@@ -1,11 +1,11 @@
 package org.uniprot.core;
 
+import org.uniprot.core.util.Pair;
+
 import java.io.Serializable;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
-import org.uniprot.core.util.Pair;
 
 public final class Property implements Pair<String, String>, Comparable<Property>, Serializable {
     private static final long serialVersionUID = 2383267527069888292L;

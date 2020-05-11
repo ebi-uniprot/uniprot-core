@@ -1,10 +1,5 @@
 package org.uniprot.core.uniparc.impl;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.Property;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniparc.SequenceFeature;
@@ -14,6 +9,11 @@ import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 import org.uniprot.core.util.Utils;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * @author jluo

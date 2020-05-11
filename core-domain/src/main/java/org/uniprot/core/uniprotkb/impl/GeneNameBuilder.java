@@ -2,13 +2,13 @@ package org.uniprot.core.uniprotkb.impl;
 
 import static org.uniprot.core.util.Utils.modifiableList;
 
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.gene.GeneName;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.impl.AbstractEvidencedValueBuilder;
+
+import java.util.List;
+
+import javax.annotation.Nonnull;
 
 public class GeneNameBuilder extends AbstractEvidencedValueBuilder<GeneNameBuilder, GeneName> {
 

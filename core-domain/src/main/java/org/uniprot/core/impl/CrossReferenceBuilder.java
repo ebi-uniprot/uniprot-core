@@ -1,9 +1,9 @@
 package org.uniprot.core.impl;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Database;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created 10/01/19

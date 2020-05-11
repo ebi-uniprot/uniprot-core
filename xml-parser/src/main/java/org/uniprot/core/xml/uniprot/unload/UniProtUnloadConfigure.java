@@ -1,11 +1,11 @@
 package org.uniprot.core.xml.uniprot.unload;
 
-import java.util.List;
-
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.converters.CommaParameterSplitter;
 import com.google.common.base.Strings;
+
+import java.util.List;
 
 public class UniProtUnloadConfigure {
     @Parameter(

@@ -1,8 +1,8 @@
 package org.uniprot.core.cv.go.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.cv.go.GoTerm;
+
+import java.util.Objects;
 
 public class GoTermImpl implements GoTerm {
     private final String goId;

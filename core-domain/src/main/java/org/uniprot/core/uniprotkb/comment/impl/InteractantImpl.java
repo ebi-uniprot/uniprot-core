@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.comment.Interactant;
+
+import java.util.Objects;
 
 /**
  * @author jluo

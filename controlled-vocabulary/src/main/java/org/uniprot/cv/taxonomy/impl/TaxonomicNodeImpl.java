@@ -1,8 +1,8 @@
 package org.uniprot.cv.taxonomy.impl;
 
-import java.util.Objects;
-
 import org.uniprot.cv.taxonomy.TaxonomicNode;
+
+import java.util.Objects;
 
 /**
  * Concrete implementation of a TaxonomicNode.

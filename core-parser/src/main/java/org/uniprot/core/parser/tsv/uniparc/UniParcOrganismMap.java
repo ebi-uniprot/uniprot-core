@@ -1,16 +1,16 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.parser.tsv.uniprot.EntryMapUtil;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 
-import com.google.common.base.Strings;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author jluo

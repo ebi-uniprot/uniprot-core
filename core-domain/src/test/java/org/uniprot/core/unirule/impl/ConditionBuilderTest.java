@@ -2,18 +2,18 @@ package org.uniprot.core.unirule.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.Range;
+import org.uniprot.core.unirule.Condition;
+import org.uniprot.core.unirule.ConditionValue;
+import org.uniprot.core.unirule.FeatureTagConditionValue;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.Range;
-import org.uniprot.core.unirule.Condition;
-import org.uniprot.core.unirule.ConditionValue;
-import org.uniprot.core.unirule.FeatureTagConditionValue;
 
 public class ConditionBuilderTest {
 

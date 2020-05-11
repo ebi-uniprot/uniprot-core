@@ -1,8 +1,5 @@
 package org.uniprot.core.uniprotkb.feature.impl;
 
-import java.util.Collections;
-import java.util.List;
-
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
@@ -14,6 +11,9 @@ import org.uniprot.core.uniprotkb.feature.FeatureId;
 import org.uniprot.core.uniprotkb.feature.FeatureLocation;
 import org.uniprot.core.uniprotkb.feature.FeatureType;
 import org.uniprot.core.util.Utils;
+
+import java.util.Collections;
+import java.util.List;
 
 public class FeatureImpl implements Feature {
     private static final long serialVersionUID = -5308576363211194641L;

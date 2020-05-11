@@ -1,14 +1,14 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
 import org.uniprot.core.uniprotkb.comment.SequenceCautionType;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.util.Utils;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 
 public class SequenceCautionCommentImpl extends CommentHasMoleculeImpl
         implements SequenceCautionComment {

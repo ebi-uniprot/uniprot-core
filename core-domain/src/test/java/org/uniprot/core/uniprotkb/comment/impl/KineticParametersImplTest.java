@@ -1,15 +1,16 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 import static org.uniprot.core.ObjectsForTests.createNote;
 
-import java.util.ArrayList;
-import java.util.List;
+import static java.util.Collections.singletonList;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 class KineticParametersImplTest {
     @Test

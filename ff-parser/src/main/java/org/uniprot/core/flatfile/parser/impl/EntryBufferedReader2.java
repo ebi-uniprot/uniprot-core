@@ -1,16 +1,16 @@
 package org.uniprot.core.flatfile.parser.impl;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
+import com.google.common.base.Preconditions;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.flatfile.parser.EntryReader;
 
-import com.google.common.base.Preconditions;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 
 /**
  * Reading Entry using memory mapped file..
@@ -133,7 +133,8 @@ public class EntryBufferedReader2 implements EntryReader {
             final boolean b1 = seekingEntryEndInBuffer(buffer);
             Preconditions.checkState(
                     b1,
-                    "Please if the file is truncated, i.e., not having a proper entry ending in the end of the file.");
+                    "Please if the file is truncated, i.e., not having a proper entry ending in"
+                        + " the end of the file.");
         }
 
         final byte[] bytes = new byte[(int) (entryEndPosition - entryStartPosition)];

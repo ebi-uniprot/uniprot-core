@@ -1,9 +1,5 @@
 package org.uniprot.cv.pathway;
 
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
@@ -11,6 +7,10 @@ import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceBuilder;
 import org.uniprot.core.cv.pathway.PathwayEntry;
 import org.uniprot.core.cv.pathway.impl.PathwayEntryBuilder;
 import org.uniprot.cv.common.AbstractFileReader;
+
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class PathwayFileReader extends AbstractFileReader<PathwayEntry> {
     private static final String ID_LINE = "ID";
@@ -28,7 +28,8 @@ public class PathwayFileReader extends AbstractFileReader<PathwayEntry> {
             Collections.unmodifiableList(
                     Arrays.asList(
                             "This controlled vocabulary is provided by the UniPathway project",
-                            "(http://www.grenoble.prabi.fr/obiwarehouse/unipathway), a collaborative",
+                            "(http://www.grenoble.prabi.fr/obiwarehouse/unipathway), a"
+                                + " collaborative",
                             "effort involving the SIB (http://www.isb-sib.ch/) and the INRIA",
                             "(http://www.inrialpes.fr/)"));
 

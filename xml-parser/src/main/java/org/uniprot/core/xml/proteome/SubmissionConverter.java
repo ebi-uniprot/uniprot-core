@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.proteome;
 
+import com.google.common.base.Strings;
+
 import org.uniprot.core.citation.Submission;
 import org.uniprot.core.citation.SubmissionDatabase;
 import org.uniprot.core.citation.impl.SubmissionBuilder;
@@ -7,8 +9,6 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 import org.uniprot.core.xml.jaxb.proteome.ReferenceType;
 import org.uniprot.core.xml.jaxb.proteome.SubmissionType;
-
-import com.google.common.base.Strings;
 
 public class SubmissionConverter implements Converter<ReferenceType, Submission> {
     private final ObjectFactory xmlFactory;

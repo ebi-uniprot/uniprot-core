@@ -1,15 +1,15 @@
 package org.uniprot.core.parser.tsv.uniprot.comment;
 
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.FreeTextComment;
 import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
+
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class EntryCommentsMap implements NamedValueMap {
     public static final List<String> FIELDS =
@@ -52,7 +52,8 @@ public class EntryCommentsMap implements NamedValueMap {
     private final List<Comment> comments;
     private static final Pattern PATTERN_FAMILY =
             Pattern.compile(
-                    "(?:In the .+? section; )?[Bb]elongs to the (.+?family)\\.(?: (.+?family)\\.)?(?: (.+?family)\\.)?(?: Highly divergent\\.)?");
+                    "(?:In the .+? section; )?[Bb]elongs to the (.+?family)\\.(?:"
+                        + " (.+?family)\\.)?(?: (.+?family)\\.)?(?: Highly divergent\\.)?");
 
     public EntryCommentsMap(List<Comment> comments) {
         if (comments == null) {

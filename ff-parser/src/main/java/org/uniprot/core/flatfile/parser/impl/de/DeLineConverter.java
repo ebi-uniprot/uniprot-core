@@ -1,8 +1,6 @@
 package org.uniprot.core.flatfile.parser.impl.de;
 
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
@@ -24,7 +22,9 @@ import org.uniprot.core.uniprotkb.description.impl.ProteinSectionBuilder;
 import org.uniprot.core.uniprotkb.description.impl.ProteinSubNameBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 
-import com.google.common.base.Strings;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class DeLineConverter extends EvidenceCollector
         implements Converter<DeLineObject, ProteinDescription> {

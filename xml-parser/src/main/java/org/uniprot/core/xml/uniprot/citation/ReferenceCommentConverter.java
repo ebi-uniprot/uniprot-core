@@ -1,6 +1,6 @@
 package org.uniprot.core.xml.uniprot.citation;
 
-import java.util.*;
+import com.google.common.base.Strings;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +13,7 @@ import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.SourceDataType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 
-import com.google.common.base.Strings;
+import java.util.*;
 
 public class ReferenceCommentConverter
         implements Converter<SourceDataType, List<ReferenceComment>> {

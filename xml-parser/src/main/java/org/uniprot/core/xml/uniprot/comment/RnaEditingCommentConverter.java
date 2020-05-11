@@ -1,6 +1,6 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 import org.uniprot.core.uniprotkb.comment.Note;
 import org.uniprot.core.uniprotkb.comment.RnaEditingComment;
@@ -13,7 +13,7 @@ import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.EvidencedValueConverter;
 
-import com.google.common.base.Strings;
+import java.util.stream.Collectors;
 
 public class RnaEditingCommentConverter implements CommentConverter<RnaEditingComment> {
 

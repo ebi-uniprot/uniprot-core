@@ -2,9 +2,6 @@ package org.uniprot.core.xml.unirule;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.CommentType;
@@ -12,6 +9,9 @@ import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.impl.AnnotationBuilder;
 import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.unirule.AnnotationType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AnnotationConverterTest extends AbstractConverterTest {
 

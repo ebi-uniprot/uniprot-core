@@ -1,16 +1,17 @@
 package org.uniprot.core.xml.uniprot;
 
-import static java.util.Collections.emptyList;
 import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
-import java.util.ArrayList;
-import java.util.List;
+import static java.util.Collections.emptyList;
 
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created 16/01/19

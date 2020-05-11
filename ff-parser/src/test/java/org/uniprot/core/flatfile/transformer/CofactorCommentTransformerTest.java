@@ -7,13 +7,13 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+
+import java.util.List;
 
 class CofactorCommentTransformerTest {
     private final CofactorCommentTransformer transformer = new CofactorCommentTransformer();
@@ -175,10 +175,13 @@ class CofactorCommentTransformerTest {
     void testEvidence1() {
         String ccLineStringEvidence =
                 "COFACTOR:\n"
-                        + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000255|HAMAP-Rule:MF_00086};\n"
-                        + "Name=Co(2+); Xref=ChEBI:CHEBI:48828; Evidence={ECO:0000255|HAMAP-Rule:MF_00089, ECO:0000269|PubMed:16683189};\n"
-                        + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt). "
-                        + "A second loosely associated metal ion is visible in the crystal structure. {ECO:0000255|HAMAP-Rule:MF_00082};";
+                    + "Name=Mg(2+); Xref=ChEBI:CHEBI:18420;"
+                    + " Evidence={ECO:0000255|HAMAP-Rule:MF_00086};\n"
+                    + "Name=Co(2+); Xref=ChEBI:CHEBI:48828;"
+                    + " Evidence={ECO:0000255|HAMAP-Rule:MF_00089, ECO:0000269|PubMed:16683189};\n"
+                    + "Note=Binds 2 divalent ions per subunit (magnesium or cobalt). A second"
+                    + " loosely associated metal ion is visible in the crystal structure."
+                    + " {ECO:0000255|HAMAP-Rule:MF_00082};";
         CofactorComment comment = transformer.transform(CommentType.COFACTOR, ccLineStringEvidence);
         assertNotNull(comment);
         assertNull(comment.getMolecule());
@@ -200,8 +203,8 @@ class CofactorCommentTransformerTest {
         assertEquals(1, note.getTexts().size());
         EvidencedValue note1 = note.getTexts().get(0);
         assertEquals(
-                "Binds 2 divalent ions per subunit (magnesium or cobalt). "
-                        + "A second loosely associated metal ion is visible in the crystal structure",
+                "Binds 2 divalent ions per subunit (magnesium or cobalt). A second loosely"
+                    + " associated metal ion is visible in the crystal structure",
                 note1.getValue());
         assertEquals(1, note1.getEvidences().size());
         assertEquals("ECO:0000255|HAMAP-Rule:MF_00082", note1.getEvidences().get(0).getValue());
@@ -211,14 +214,16 @@ class CofactorCommentTransformerTest {
     void testEvidence2() {
         String ccLineStringEvidence =
                 "COFACTOR: [Serine protease NS3]:\n"
-                        + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:16683188,"
-                        + " ECO:0000269|PubMed:16683189};\n"
-                        + "Name=A very looooooooooooong cofactor name with 1 evidence tag; "
-                        + "Xref=ChEBI:CHEBI:12345; Evidence={ECO:0000269|PubMed:16683188};\n"
-                        + "Name=A very very looooooooooooong cofactor name with X evidence tags; "
-                        + "Xref=ChEBI:CHEBI:54321; Evidence={ECO:0000269|PubMed:16683188, ECO:0000269|PubMed:16683189};\n"
-                        + "Note=Binds 2 divalent ions per subunit. {ECO:0000269|PubMed:16683188, "
-                        + "ECO:0000255|HAMAP-Rule:MF_00086}. Another note. {ECO:0000269|PubMed:16683189};";
+                    + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:16683188,"
+                    + " ECO:0000269|PubMed:16683189};\n"
+                    + "Name=A very looooooooooooong cofactor name with 1 evidence tag;"
+                    + " Xref=ChEBI:CHEBI:12345; Evidence={ECO:0000269|PubMed:16683188};\n"
+                    + "Name=A very very looooooooooooong cofactor name with X evidence tags;"
+                    + " Xref=ChEBI:CHEBI:54321; Evidence={ECO:0000269|PubMed:16683188,"
+                    + " ECO:0000269|PubMed:16683189};\n"
+                    + "Note=Binds 2 divalent ions per subunit. {ECO:0000269|PubMed:16683188,"
+                    + " ECO:0000255|HAMAP-Rule:MF_00086}. Another note."
+                    + " {ECO:0000269|PubMed:16683189};";
         CofactorComment comment = transformer.transform(CommentType.COFACTOR, ccLineStringEvidence);
         assertNotNull(comment);
         assertEquals("Serine protease NS3", comment.getMolecule());
@@ -255,8 +260,9 @@ class CofactorCommentTransformerTest {
     void testFailed() {
         String ccLineStringEvidence =
                 "COFACTOR: [Serine protease NS3]:\n"
-                        + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:9060645};\n"
-                        + "Note=Binds 1 zinc ion. {ECO:0000269|PubMed:9060645};";
+                    + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105;"
+                    + " Evidence={ECO:0000269|PubMed:9060645};\n"
+                    + "Note=Binds 1 zinc ion. {ECO:0000269|PubMed:9060645};";
 
         CofactorComment comment = transformer.transform(CommentType.COFACTOR, ccLineStringEvidence);
         assertNotNull(comment);

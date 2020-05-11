@@ -2,10 +2,10 @@ package org.uniprot.core;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class RangeTest {
 

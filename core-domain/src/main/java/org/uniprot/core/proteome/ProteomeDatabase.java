@@ -1,9 +1,9 @@
 package org.uniprot.core.proteome;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.Database;
 import org.uniprot.core.util.EnumDisplay;
+
+import javax.annotation.Nonnull;
 
 public enum ProteomeDatabase implements Database, EnumDisplay {
     GENOME_ASSEMBLY("GenomeAssembly"),

@@ -1,13 +1,13 @@
 package org.uniprot.core.json.parser.taxonomy;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+
 import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.taxonomy.*;
 import org.uniprot.core.taxonomy.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyImpl;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 
 public class TaxonomyJsonConfig extends JsonConfig {
     private static TaxonomyJsonConfig INSTANCE;

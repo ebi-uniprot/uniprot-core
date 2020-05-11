@@ -1,13 +1,13 @@
 package org.uniprot.core.flatfile.writer.line.ft;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.uniprotkb.feature.Feature;
 import org.uniprot.core.uniprotkb.feature.FeatureLocation;
 import org.uniprot.core.uniprotkb.feature.FeatureType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 class FTMutagenFeatureBuildTest extends FTBuildTestAbstr {
     @Test

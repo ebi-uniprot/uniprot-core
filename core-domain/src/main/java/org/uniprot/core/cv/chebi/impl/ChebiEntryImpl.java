@@ -1,8 +1,8 @@
 package org.uniprot.core.cv.chebi.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.cv.chebi.ChebiEntry;
+
+import java.util.Objects;
 
 /**
  * Created 15/03/19

@@ -2,17 +2,17 @@ package org.uniprot.core.parser.tsv.taxonomy;
 
 import static org.uniprot.core.parser.tsv.TSVUtil.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.taxonomy.TaxonomyEntry;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyStrain;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.util.Utils;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class TaxonomyEntryValueMapper implements EntityValueMapper<TaxonomyEntry> {
 

@@ -1,13 +1,13 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
-import java.util.List;
-import java.util.Objects;
-
 import org.uniprot.core.uniprotkb.comment.Cofactor;
 import org.uniprot.core.uniprotkb.comment.CofactorComment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.Note;
 import org.uniprot.core.util.Utils;
+
+import java.util.List;
+import java.util.Objects;
 
 public class CofactorCommentImpl extends CommentHasMoleculeImpl implements CofactorComment {
     private static final long serialVersionUID = -2902168556405341703L;

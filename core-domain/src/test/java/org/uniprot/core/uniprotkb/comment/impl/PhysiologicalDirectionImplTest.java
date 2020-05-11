@@ -3,13 +3,13 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.comment.PhysiologicalDirectionType;
 import org.uniprot.core.uniprotkb.comment.ReactionDatabase;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
+
+import java.util.List;
 
 class PhysiologicalDirectionImplTest {
 

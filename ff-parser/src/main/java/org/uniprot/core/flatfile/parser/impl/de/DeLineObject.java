@@ -1,10 +1,10 @@
 package org.uniprot.core.flatfile.parser.impl.de;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 import org.uniprot.core.flatfile.parser.impl.HasEvidenceInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /** User: wudong, Date: 29/08/13, Time: 11:48 */
 public class DeLineObject implements HasEvidenceInfo {

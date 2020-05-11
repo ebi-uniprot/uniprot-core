@@ -1,12 +1,12 @@
 package org.uniprot.core.json.parser.uniparc;
 
-import java.io.IOException;
-
-import org.uniprot.core.uniparc.impl.UniParcIdImpl;
-
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+
+import org.uniprot.core.uniparc.impl.UniParcIdImpl;
+
+import java.io.IOException;
 
 /**
  * @author jluo

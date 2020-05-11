@@ -2,11 +2,11 @@ package org.uniprot.core.uniprotkb.taxonomy.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Collections;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
+
+import java.util.Collections;
 
 class OrganismBuilderTest {
 

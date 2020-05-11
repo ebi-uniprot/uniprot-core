@@ -1,12 +1,12 @@
 package org.uniprot.core.flatfile.parser.impl.rx;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.impl.CrossReferenceBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RxLineConverter
         implements Converter<RxLineObject, List<CrossReference<CitationDatabase>>> {

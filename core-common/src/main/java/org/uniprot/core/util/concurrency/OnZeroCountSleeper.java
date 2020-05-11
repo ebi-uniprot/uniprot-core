@@ -1,10 +1,10 @@
 package org.uniprot.core.util.concurrency;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicInteger;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * This class represents an instance that behaves similarly to a {@link CountDownLatch}, which is

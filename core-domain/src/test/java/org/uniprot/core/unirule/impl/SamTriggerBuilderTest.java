@@ -3,14 +3,14 @@ package org.uniprot.core.unirule.impl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import org.uniprot.core.Range;
+import org.uniprot.core.unirule.SamTrigger;
+import org.uniprot.core.unirule.SamTriggerType;
+
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
-import org.uniprot.core.Range;
-import org.uniprot.core.unirule.SamTrigger;
-import org.uniprot.core.unirule.SamTriggerType;
 
 public class SamTriggerBuilderTest {
     public static SamTrigger createObject(int listSize) {

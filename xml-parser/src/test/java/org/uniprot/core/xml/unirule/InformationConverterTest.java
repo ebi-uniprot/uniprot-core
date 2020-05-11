@@ -2,10 +2,6 @@ package org.uniprot.core.xml.unirule;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.unirule.DataClassType;
@@ -14,6 +10,10 @@ import org.uniprot.core.unirule.impl.InformationBuilder;
 import org.uniprot.core.xml.AbstractConverterTest;
 import org.uniprot.core.xml.jaxb.unirule.InformationType;
 import org.uniprot.core.xml.jaxb.unirule.MultiValueType;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class InformationConverterTest extends AbstractConverterTest {
 

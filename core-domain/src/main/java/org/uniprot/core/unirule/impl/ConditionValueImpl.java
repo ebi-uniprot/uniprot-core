@@ -1,9 +1,9 @@
 package org.uniprot.core.unirule.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.impl.ValueImpl;
 import org.uniprot.core.unirule.ConditionValue;
+
+import java.util.Objects;
 
 public class ConditionValueImpl extends ValueImpl implements ConditionValue {
 

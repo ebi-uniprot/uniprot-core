@@ -1,9 +1,9 @@
 package org.uniprot.core.taxonomy;
 
+import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
+
 import java.io.Serializable;
 import java.util.List;
-
-import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 
 /** @author lgonzales */
 public interface TaxonomyEntry extends Taxonomy, Serializable {

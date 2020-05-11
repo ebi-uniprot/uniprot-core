@@ -1,9 +1,9 @@
 package org.uniprot.core.proteome.impl;
 
-import java.util.regex.Pattern;
-
 import org.uniprot.core.impl.ValueImpl;
 import org.uniprot.core.proteome.ProteomeId;
+
+import java.util.regex.Pattern;
 
 public class ProteomeIdImpl extends ValueImpl implements ProteomeId {
 

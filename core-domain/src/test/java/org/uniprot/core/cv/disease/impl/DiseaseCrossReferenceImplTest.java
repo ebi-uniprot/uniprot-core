@@ -2,10 +2,10 @@ package org.uniprot.core.cv.disease.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Collections;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
+
+import java.util.Collections;
 
 class DiseaseCrossReferenceImplTest {
     @Test

@@ -2,8 +2,6 @@ package org.uniprot.core.parser.fasta;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.time.LocalDate;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.cv.go.GoAspect;
@@ -22,6 +20,8 @@ import org.uniprot.core.uniref.impl.UniRefEntryBuilder;
 import org.uniprot.core.uniref.impl.UniRefEntryIdBuilder;
 import org.uniprot.core.uniref.impl.UniRefMemberBuilder;
 
+import java.time.LocalDate;
+
 /**
  * @author jluo
  * @date: 22 Aug 2019
@@ -33,9 +33,10 @@ class UniRefFastaParserTest {
         UniRefEntry entry = createEntry();
         String fasta = UniRefFastaParser.toFasta(entry);
         String expected =
-                ">UniRef50_P03923 AMP-binding enzyme family protein n=2 Tax=Homo sapiens TaxID=9606 RepID=P12345_HUMAN\n"
-                        + "MVSWGRFICLVVVTMATLSLARPSFSLVEDDFSAGSADFAFWERDGDSDGFDSHSDJHET\n"
-                        + "RHJREH";
+                ">UniRef50_P03923 AMP-binding enzyme family protein n=2 Tax=Homo sapiens"
+                    + " TaxID=9606 RepID=P12345_HUMAN\n"
+                    + "MVSWGRFICLVVVTMATLSLARPSFSLVEDDFSAGSADFAFWERDGDSDGFDSHSDJHET\n"
+                    + "RHJREH";
         assertEquals(expected, fasta);
     }
 

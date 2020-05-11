@@ -1,13 +1,13 @@
 package org.uniprot.core.proteome.impl;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.Builder;
 import org.uniprot.core.proteome.GeneNameType;
 import org.uniprot.core.proteome.Protein;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
+
+import javax.annotation.Nonnull;
 
 public class ProteinBuilder implements Builder<Protein> {
     private UniProtKBAccession accession;

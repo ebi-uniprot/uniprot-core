@@ -2,13 +2,13 @@ package org.uniprot.core.uniprotkb.description.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.description.*;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.description.*;
 
 public class ProteinDescriptionBuilderTest {
 

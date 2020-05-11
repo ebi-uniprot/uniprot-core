@@ -1,11 +1,11 @@
 package org.uniprot.core.flatfile.parser.impl.ft;
 
-import java.util.List;
-
 import org.uniprot.core.flatfile.parser.LineTransformer;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.uniprotkb.feature.Feature;
+
+import java.util.List;
 
 public class FtLineTransformer implements LineTransformer<Feature> {
     private final UniprotKBLineParser<FtLineObject> parser =

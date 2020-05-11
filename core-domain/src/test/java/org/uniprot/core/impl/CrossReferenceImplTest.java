@@ -1,14 +1,15 @@
 package org.uniprot.core.impl;
 
-import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Collections;
-import java.util.List;
+import static java.util.Arrays.asList;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Property;
+
+import java.util.Collections;
+import java.util.List;
 
 class CrossReferenceImplTest {
 

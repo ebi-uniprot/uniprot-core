@@ -3,14 +3,14 @@ package org.uniprot.core.uniprotkb.comment.impl;
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableList;
 
+import org.uniprot.core.uniprotkb.comment.Cofactor;
+import org.uniprot.core.uniprotkb.comment.CofactorComment;
+import org.uniprot.core.uniprotkb.comment.Note;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
-
-import org.uniprot.core.uniprotkb.comment.Cofactor;
-import org.uniprot.core.uniprotkb.comment.CofactorComment;
-import org.uniprot.core.uniprotkb.comment.Note;
 
 public final class CofactorCommentBuilder implements CommentBuilder<CofactorComment> {
     private String molecule;

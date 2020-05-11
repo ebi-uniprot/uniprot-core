@@ -1,18 +1,18 @@
 package org.uniprot.core.flatfile.writer.line.ft;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.feature.Feature;
 import org.uniprot.core.uniprotkb.feature.FeatureType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 class FTCarbohydFeatureBuildTest extends FTBuildTestAbstr {
     @Test
     void testCARBOHYD() {
         String ftLine =
                 "FT   CARBOHYD        61\n"
-                        + "FT                   /note=\"N-linked (GlcNAc...); by host (Potential)\"";
+                    + "FT                   /note=\"N-linked (GlcNAc...); by host (Potential)\"";
         String ftLineString =
                 "CARBOHYD 61\n" + "/note=\"N-linked (GlcNAc...); by host (Potential)\"";
 
@@ -29,8 +29,9 @@ class FTCarbohydFeatureBuildTest extends FTBuildTestAbstr {
     void testCARBOHYDEvidence() {
         String ftLine =
                 "FT   CARBOHYD        61\n"
-                        + "FT                   /note=\"N-linked (GlcNAc...); by host (Potential)\"\n"
-                        + "FT                   /evidence=\"ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6\"";
+                    + "FT                   /note=\"N-linked (GlcNAc...); by host (Potential)\"\n"
+                    + "FT                   /evidence=\"ECO:0000269|PubMed:10433554,"
+                    + " ECO:0000303|Ref.6\"";
         String ftLineString =
                 "CARBOHYD 61\n" + "/note=\"N-linked (GlcNAc...); by host (Potential)\"";
         String ftLineStringEv =

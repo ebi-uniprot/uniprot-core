@@ -46,7 +46,8 @@ class OSLineBuildTest {
         FFLine ffLine =
                 builder.build(
                         createOrganism(
-                                "Methylobacterium extorquens (Methylobacterium dichloromethanicum) (Protomonas extorquens)"));
+                                "Methylobacterium extorquens (Methylobacterium dichloromethanicum)"
+                                    + " (Protomonas extorquens)"));
 
         String resultString = ffLine.toString();
         System.out.println(osLine);

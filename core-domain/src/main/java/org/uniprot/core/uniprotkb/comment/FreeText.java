@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprotkb.comment;
 
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+
 import java.io.Serializable;
 import java.util.List;
-
-import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
 /**
  * @author jieluo

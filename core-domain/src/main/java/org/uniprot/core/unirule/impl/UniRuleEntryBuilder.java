@@ -2,14 +2,14 @@ package org.uniprot.core.unirule.impl;
 
 import static org.uniprot.core.util.Utils.*;
 
+import org.uniprot.core.Builder;
+import org.uniprot.core.unirule.*;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
-
-import org.uniprot.core.Builder;
-import org.uniprot.core.unirule.*;
 
 public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
     private UniRuleId uniRuleId;

@@ -1,13 +1,13 @@
 package org.uniprot.core.flatfile.transformer;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.comment.impl.NoteBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.RnaEditingCommentBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.RnaEditingPositionBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RnaEditingCommentTransformer implements CommentTransformer<RnaEditingComment> {
     private static final String UNKNOWN = "Unknown";

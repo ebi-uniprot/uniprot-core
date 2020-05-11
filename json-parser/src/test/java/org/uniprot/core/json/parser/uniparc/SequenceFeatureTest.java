@@ -2,6 +2,8 @@ package org.uniprot.core.json.parser.uniparc;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Location;
 import org.uniprot.core.json.parser.ValidateJson;
@@ -10,8 +12,6 @@ import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.SignatureDbType;
 import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
 import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * @author jluo

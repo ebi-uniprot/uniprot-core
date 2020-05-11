@@ -1,11 +1,11 @@
 package org.uniprot.core.scorer.uniprotkb.dbx;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.xdb.EmblScored;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
+
+import java.util.List;
 
 class EMBLScoredTest extends AbstractDBXTest {
     @Test
@@ -73,13 +73,14 @@ class EMBLScoredTest extends AbstractDBXTest {
     void shouldEmbl2Score31() {
         String line =
                 "DR   EMBL; M63397; AAA51662.1; -; Genomic_DNA.\n"
-                        + "DR   EMBL; M63395; AAA51662.1; JOINED; Genomic_DNA.\n"
-                        + "DR   EMBL; M63396; AAA51662.1; JOINED; Genomic_DNA.\n"
-                        + "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n"
-                        + "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n"
-                        + "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n"
-                        + "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n"
-                        + "DR   EMBL; AK057020; BAB71346.1; JOINED; mRNA.{ECO:0000312|EMBL:AAD42944.1}";
+                    + "DR   EMBL; M63395; AAA51662.1; JOINED; Genomic_DNA.\n"
+                    + "DR   EMBL; M63396; AAA51662.1; JOINED; Genomic_DNA.\n"
+                    + "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n"
+                    + "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n"
+                    + "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n"
+                    + "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n"
+                    + "DR   EMBL; AK057020; BAB71346.1; JOINED;"
+                    + " mRNA.{ECO:0000312|EMBL:AAD42944.1}";
         testDBXrefScore(line, 3.1);
     }
 
@@ -87,14 +88,15 @@ class EMBLScoredTest extends AbstractDBXTest {
     void shouldEmblScore31() {
         String line =
                 "DR   EMBL; M63397; AAA51662.1; -; Genomic_DNA.\n"
-                        + "DR   EMBL; M63395; AAA51662.1; JOINED; Genomic_DNA.\n"
-                        + "DR   EMBL; M63396; AAA51662.1; JOINED; Genomic_DNA.\n"
-                        + "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n"
-                        + "DR   EMBL; AF377743; AAK60255.1; ALT_INIT; Genomic_DNA.\n"
-                        + "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n"
-                        + "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n"
-                        + "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n"
-                        + "DR   EMBL; AK057020; BAB71346.1; JOINED; mRNA.{ECO:0000312|EMBL:AAD42944.1}";
+                    + "DR   EMBL; M63395; AAA51662.1; JOINED; Genomic_DNA.\n"
+                    + "DR   EMBL; M63396; AAA51662.1; JOINED; Genomic_DNA.\n"
+                    + "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n"
+                    + "DR   EMBL; AF377743; AAK60255.1; ALT_INIT; Genomic_DNA.\n"
+                    + "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n"
+                    + "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n"
+                    + "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n"
+                    + "DR   EMBL; AK057020; BAB71346.1; JOINED;"
+                    + " mRNA.{ECO:0000312|EMBL:AAD42944.1}";
         testDBXrefScore(line, 3.1);
     }
 
@@ -102,14 +104,15 @@ class EMBLScoredTest extends AbstractDBXTest {
     void shouldEmblScored41() {
         String line =
                 "DR   EMBL; M63397; AAA51662.1; -; Genomic_DNA.\n"
-                        + "DR   EMBL; M63395; AAA51662.1; JOINED; Genomic_DNA.\n"
-                        + "DR   EMBL; M63396; AAA51662.1; JOINED; Genomic_DNA.\n"
-                        + "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n"
-                        + "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n"
-                        + "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n"
-                        + "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n"
-                        + "DR   EMBL; AK057020; BAB71346.1; JOINED; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n"
-                        + "DR   EMBL; AJ243418; -; NOT_ANNOTATED_CDS; mRNA.";
+                    + "DR   EMBL; M63395; AAA51662.1; JOINED; Genomic_DNA.\n"
+                    + "DR   EMBL; M63396; AAA51662.1; JOINED; Genomic_DNA.\n"
+                    + "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n"
+                    + "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n"
+                    + "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n"
+                    + "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n"
+                    + "DR   EMBL; AK057020; BAB71346.1; JOINED;"
+                    + " mRNA.{ECO:0000312|EMBL:AAD42944.1}\n"
+                    + "DR   EMBL; AJ243418; -; NOT_ANNOTATED_CDS; mRNA.";
         testDBXrefScore(line, 4.1);
     }
 

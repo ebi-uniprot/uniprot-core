@@ -3,12 +3,12 @@ package org.uniprot.core.uniprotkb.evidence.impl;
 import static org.uniprot.core.util.Utils.notNullNotEmpty;
 import static org.uniprot.core.util.Utils.unmodifiableList;
 
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.HasEvidences;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-
-import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.uniprotkb.evidence.HasEvidences;
 
 public class HasEvidencesImpl implements HasEvidences {
     private List<Evidence> evidences;

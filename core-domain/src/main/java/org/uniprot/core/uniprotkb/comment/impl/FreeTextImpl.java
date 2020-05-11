@@ -1,13 +1,13 @@
 package org.uniprot.core.uniprotkb.comment.impl;
 
+import org.uniprot.core.uniprotkb.comment.FreeText;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+import org.uniprot.core.util.Utils;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-
-import org.uniprot.core.uniprotkb.comment.FreeText;
-import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
-import org.uniprot.core.util.Utils;
 
 public class FreeTextImpl implements FreeText {
     private static final long serialVersionUID = -4309930597833279389L;

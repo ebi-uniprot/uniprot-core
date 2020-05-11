@@ -3,13 +3,13 @@ package org.uniprot.cv.pathway;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.pathway.PathwayEntry;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
 class PathwayCacheIT {
     private static List<PathwayEntry> pathways;

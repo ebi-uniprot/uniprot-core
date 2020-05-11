@@ -8,8 +8,9 @@ class DisruptionPhenotypeScoredTest extends CommentScoreTestBase {
     void shouldSpScore90() {
         String line =
                 "CC   -!- DISRUPTION PHENOTYPE: Cells are sensitive to replication stress\n"
-                        + "CC       hydroxyurea (HU) and also exhibits weak sensitivity to ultraviolet\n"
-                        + "CC       (UV) and methylmethane sulfonate (MMS).";
+                    + "CC       hydroxyurea (HU) and also exhibits weak sensitivity to"
+                    + " ultraviolet\n"
+                    + "CC       (UV) and methylmethane sulfonate (MMS).";
         verify(CommentType.DISRUPTION_PHENOTYPE, line, 9.0, true);
     }
 
@@ -17,8 +18,9 @@ class DisruptionPhenotypeScoredTest extends CommentScoreTestBase {
     void shouldScore90() {
         String line =
                 "CC   -!- DISRUPTION PHENOTYPE: Cells are sensitive to replication stress\n"
-                        + "CC       hydroxyurea (HU) and also exhibits weak sensitivity to ultraviolet\n"
-                        + "CC       (UV) and methylmethane sulfonate (MMS).";
+                    + "CC       hydroxyurea (HU) and also exhibits weak sensitivity to"
+                    + " ultraviolet\n"
+                    + "CC       (UV) and methylmethane sulfonate (MMS).";
         verify(CommentType.DISRUPTION_PHENOTYPE, line, 9.0, false);
     }
 
@@ -26,8 +28,10 @@ class DisruptionPhenotypeScoredTest extends CommentScoreTestBase {
     void shouldWithEvScore90() {
         String line =
                 "CC   -!- DISRUPTION PHENOTYPE: Cells are sensitive to replication stress\n"
-                        + "CC       hydroxyurea (HU) and also exhibits weak sensitivity to ultraviolet\n"
-                        + "CC       (UV) and methylmethane sulfonate (MMS). {ECO:0000256|HAMAP-Rule:MF_01146}.";
+                    + "CC       hydroxyurea (HU) and also exhibits weak sensitivity to"
+                    + " ultraviolet\n"
+                    + "CC       (UV) and methylmethane sulfonate (MMS)."
+                    + " {ECO:0000256|HAMAP-Rule:MF_01146}.";
         verify(CommentType.DISRUPTION_PHENOTYPE, line, 9.0, false);
     }
 }

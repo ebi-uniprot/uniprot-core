@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprotkb.evidence.impl;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created 14/01/19

@@ -2,14 +2,14 @@ package org.uniprot.core.flatfile.parser.impl.sq;
 
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SPACE;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.uniprot.core.Sequence;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SQLineBuilder extends FFLineBuilderAbstr<Sequence> {
 

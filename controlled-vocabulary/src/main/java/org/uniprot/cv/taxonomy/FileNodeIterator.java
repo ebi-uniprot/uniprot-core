@@ -1,15 +1,15 @@
 package org.uniprot.cv.taxonomy;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.uniprot.cv.taxonomy.impl.TaxonomicNodeImpl;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.uniprot.cv.taxonomy.impl.TaxonomicNodeImpl;
 
 public class FileNodeIterator implements Iterator<TaxonomicNode> {
     private final Logger logger = LoggerFactory.getLogger(getClass());

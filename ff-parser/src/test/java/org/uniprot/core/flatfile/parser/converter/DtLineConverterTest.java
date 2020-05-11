@@ -2,14 +2,14 @@ package org.uniprot.core.flatfile.parser.converter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.dt.DtLineConverter;
 import org.uniprot.core.flatfile.parser.impl.dt.DtLineObject;
 import org.uniprot.core.uniprotkb.EntryAudit;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 
 class DtLineConverterTest {
     private DtLineConverter converter = new DtLineConverter();

@@ -3,14 +3,14 @@ package org.uniprot.core.uniprotkb.evidence.impl;
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableList;
 
+import org.uniprot.core.Builder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.HasEvidences;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
-
-import org.uniprot.core.Builder;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.uniprotkb.evidence.HasEvidences;
 
 public abstract class AbstractHasEvidencesBuilder<
                 B extends AbstractHasEvidencesBuilder<B, E>, E extends HasEvidences>

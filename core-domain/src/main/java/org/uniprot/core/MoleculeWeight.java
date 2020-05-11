@@ -1,8 +1,8 @@
 package org.uniprot.core;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.util.EnumDisplay;
+
+import javax.annotation.Nonnull;
 
 public enum MoleculeWeight implements EnumDisplay {
     A(710788),

@@ -1,9 +1,5 @@
 package org.uniprot.core.flatfile.transformer;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
-
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.Interaction;
@@ -12,6 +8,10 @@ import org.uniprot.core.uniprotkb.comment.impl.InteractantBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.InteractionCommentBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
 public class InteractionCommentTransformer implements CommentTransformer<InteractionComment> {
     private static final CommentType COMMENT_TYPE = CommentType.INTERACTION;

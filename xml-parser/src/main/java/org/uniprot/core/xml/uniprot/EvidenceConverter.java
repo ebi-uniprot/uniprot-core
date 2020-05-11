@@ -1,7 +1,5 @@
 package org.uniprot.core.xml.uniprot;
 
-import java.math.BigInteger;
-
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
@@ -13,6 +11,8 @@ import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.EvidenceType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.SourceType;
+
+import java.math.BigInteger;
 
 public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
     private final ObjectFactory xmlUniprotFactory;

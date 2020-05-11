@@ -1,13 +1,13 @@
 package org.uniprot.core.uniprotkb.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.gene.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueImpl;
 import org.uniprot.core.util.Utils;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class GeneImpl implements Gene {
     private static final long serialVersionUID = 6903566846628575244L;

@@ -1,10 +1,10 @@
 package org.uniprot.core.scorer.uniprotkb;
 
-import java.util.List;
-
 import org.uniprot.core.gene.Gene;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprotkb.evidence.HasEvidences;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 13:37:49 To change this template

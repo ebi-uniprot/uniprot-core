@@ -1,6 +1,8 @@
 package org.uniprot.core.json.parser.uniprot.serializer;
 
-import java.io.IOException;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 import org.uniprot.core.impl.ECNumberImpl;
 import org.uniprot.core.uniprotkb.description.EC;
@@ -8,9 +10,7 @@ import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueImpl;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+import java.io.IOException;
 
 /** @author lgonzales */
 public class ECNumberSerializer extends StdSerializer<ECNumberImpl> {

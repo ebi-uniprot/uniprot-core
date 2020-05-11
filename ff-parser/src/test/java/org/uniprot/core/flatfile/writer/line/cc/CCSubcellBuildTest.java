@@ -1,9 +1,6 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import com.google.common.base.Strings;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.Note;
@@ -14,7 +11,10 @@ import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationCommentBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationValueBuilder;
 
-import com.google.common.base.Strings;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 class CCSubcellBuildTest extends CCBuildTestAbstr {
     @Test
@@ -60,9 +60,10 @@ class CCSubcellBuildTest extends CCBuildTestAbstr {
     void test1Evidences() {
         String ccLine =
                 "CC   -!- SUBCELLULAR LOCATION: Mitochondrion intermembrane space\n"
-                        + "CC       {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1}.\n"
-                        + "CC       Note=Loosely associated with the inner membrane. {ECO:0000303|Ref.6,\n"
-                        + "CC       ECO:0000313|PDB:3OW2}.";
+                    + "CC       {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1}.\n"
+                    + "CC       Note=Loosely associated with the inner membrane."
+                    + " {ECO:0000303|Ref.6,\n"
+                    + "CC       ECO:0000313|PDB:3OW2}.";
 
         String ccLineStringEvidence =
                 "SUBCELLULAR LOCATION: Mitochondrion intermembrane space "
@@ -151,8 +152,9 @@ class CCSubcellBuildTest extends CCBuildTestAbstr {
     void test2Evidence() {
         String ccLine =
                 "CC   -!- SUBCELLULAR LOCATION: Mitochondrion inner membrane\n"
-                        + "CC       {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1}; Multi-pass\n"
-                        + "CC       membrane protein (By similarity) {ECO:0000303|Ref.6}.";
+                    + "CC       {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};"
+                    + " Multi-pass\n"
+                    + "CC       membrane protein (By similarity) {ECO:0000303|Ref.6}.";
         String ccLineStringEvidence =
                 "SUBCELLULAR LOCATION: Mitochondrion inner membrane "
                         + "{ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1}; Multi-"
@@ -239,19 +241,26 @@ class CCSubcellBuildTest extends CCBuildTestAbstr {
     @Test
     void test3() {
         String ccLine =
-                ("CC   -!- SUBCELLULAR LOCATION: [Spike protein S2]: Virion membrane; Single-pass\n"
-                        + "CC       type I membrane sdssds protein (By similarity). Host endoplasmic\n"
-                        + "CC       reticulum-Golgi intermediate compartment membrane; Type I me (By\n"
-                        + "CC       similarity); Another top. Note=Accumulates in the endoplasmic\n"
-                        + "CC       reticulum-Golgi intermediate compartment, where it participates in\n"
-                        + "CC       virus particle assembly. Some S oligomers may be transported to the\n"
-                        + "CC       plasma membrane, where they may mediate cell fusion (By similarity).");
+                ("CC   -!- SUBCELLULAR LOCATION: [Spike protein S2]: Virion membrane;"
+                     + " Single-pass\n"
+                     + "CC       type I membrane sdssds protein (By similarity). Host"
+                     + " endoplasmic\n"
+                     + "CC       reticulum-Golgi intermediate compartment membrane; Type I me"
+                     + " (By\n"
+                     + "CC       similarity); Another top. Note=Accumulates in the endoplasmic\n"
+                     + "CC       reticulum-Golgi intermediate compartment, where it participates"
+                     + " in\n"
+                     + "CC       virus particle assembly. Some S oligomers may be transported to"
+                     + " the\n"
+                     + "CC       plasma membrane, where they may mediate cell fusion (By"
+                     + " similarity).");
 
         String molecule = "Spike protein S2";
         String note =
-                "Accumulates in the endoplasmic reticulum-Golgi intermediate compartment, where it "
-                        + "participates in virus particle assembly. Some S oligomers may be "
-                        + "transported to the plasma membrane, where they may mediate cell fusion (By similarity)";
+                "Accumulates in the endoplasmic reticulum-Golgi intermediate compartment, where it"
+                    + " participates in virus particle assembly. Some S oligomers may be"
+                    + " transported to the plasma membrane, where they may mediate cell fusion (By"
+                    + " similarity)";
 
         List<String> evs = new ArrayList<>();
 
@@ -301,15 +310,22 @@ class CCSubcellBuildTest extends CCBuildTestAbstr {
     void test3Evidence() {
         String ccLine =
                 "CC   -!- SUBCELLULAR LOCATION: [Spike protein S2]: Virion membrane\n"
-                        + "CC       {ECO:0000313|EMBL:BAG16761.1}; Single-pass type I membrane sdssds\n"
-                        + "CC       protein (By similarity) {ECO:0000269|PubMed:10433554}. Host endoplasmic\n"
-                        + "CC       reticulum-Golgi intermediate compartment membrane {ECO:0000303|Ref.6};\n"
-                        + "CC       Type I me (By similarity) {ECO:0000313|PDB:3OW2}; Another top\n"
-                        + "CC       {ECO:0000313|EMBL:BAG16761.1}. Note=Accumulates in the endoplasmic\n"
-                        + "CC       reticulum-Golgi intermediate compartment, where it participates in\n"
-                        + "CC       virus particle assembly. Some S oligomers may be transported to the\n"
-                        + "CC       plasma membrane, where they may mediate cell fusion (By similarity).\n"
-                        + "CC       {ECO:0000256|HAMAP-Rule:MF_00205}.";
+                    + "CC       {ECO:0000313|EMBL:BAG16761.1}; Single-pass type I membrane"
+                    + " sdssds\n"
+                    + "CC       protein (By similarity) {ECO:0000269|PubMed:10433554}. Host"
+                    + " endoplasmic\n"
+                    + "CC       reticulum-Golgi intermediate compartment membrane"
+                    + " {ECO:0000303|Ref.6};\n"
+                    + "CC       Type I me (By similarity) {ECO:0000313|PDB:3OW2}; Another top\n"
+                    + "CC       {ECO:0000313|EMBL:BAG16761.1}. Note=Accumulates in the"
+                    + " endoplasmic\n"
+                    + "CC       reticulum-Golgi intermediate compartment, where it participates"
+                    + " in\n"
+                    + "CC       virus particle assembly. Some S oligomers may be transported to"
+                    + " the\n"
+                    + "CC       plasma membrane, where they may mediate cell fusion (By"
+                    + " similarity).\n"
+                    + "CC       {ECO:0000256|HAMAP-Rule:MF_00205}.";
 
         String ccLineStringEvidence =
                 "SUBCELLULAR LOCATION: [Spike protein S2]: Virion membrane "
@@ -344,9 +360,10 @@ class CCSubcellBuildTest extends CCBuildTestAbstr {
 
         String molecule = "Spike protein S2";
         String note =
-                "Accumulates in the endoplasmic reticulum-Golgi intermediate compartment, where it "
-                        + "participates in virus particle assembly. Some S oligomers may be "
-                        + "transported to the plasma membrane, where they may mediate cell fusion (By similarity)";
+                "Accumulates in the endoplasmic reticulum-Golgi intermediate compartment, where it"
+                    + " participates in virus particle assembly. Some S oligomers may be"
+                    + " transported to the plasma membrane, where they may mediate cell fusion (By"
+                    + " similarity)";
 
         List<String> evs = new ArrayList<>();
         evs.add(ev5);
@@ -405,15 +422,16 @@ class CCSubcellBuildTest extends CCBuildTestAbstr {
     void test1Evidences3() {
         String ccLine =
                 "CC   -!- SUBCELLULAR LOCATION: Mitochondrion intermembrane space\n"
-                        + "CC       {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1}.\n"
-                        + "CC       Note=Loosely associated with the inner membrane. {ECO:0000303|Ref.6,\n"
-                        + "CC       ECO:0000313|PDB:3OW2}. Another note. {ECO:0000303|Ref.6}.";
+                    + "CC       {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1}.\n"
+                    + "CC       Note=Loosely associated with the inner membrane."
+                    + " {ECO:0000303|Ref.6,\n"
+                    + "CC       ECO:0000313|PDB:3OW2}. Another note. {ECO:0000303|Ref.6}.";
 
         String ccLineStringEvidence =
-                "SUBCELLULAR LOCATION: Mitochondrion intermembrane space "
-                        + "{ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1}. "
-                        + "Note=Loosely associated with the inner membrane. "
-                        + "{ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2}. Another note. {ECO:0000303|Ref.6}.";
+                "SUBCELLULAR LOCATION: Mitochondrion intermembrane space"
+                    + " {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1}. Note=Loosely"
+                    + " associated with the inner membrane. {ECO:0000303|Ref.6,"
+                    + " ECO:0000313|PDB:3OW2}. Another note. {ECO:0000303|Ref.6}.";
         String ccLineString =
                 "SUBCELLULAR LOCATION: Mitochondrion intermembrane space. "
                         + "Note=Loosely associated with the inner membrane. Another note.";

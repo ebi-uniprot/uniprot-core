@@ -1,11 +1,11 @@
 package org.uniprot.core.scorer.uniprotkb.dbx;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.xdb.GoScored;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
+
+import java.util.List;
 
 class GoScoredTest extends AbstractDBXTest {
     @Test

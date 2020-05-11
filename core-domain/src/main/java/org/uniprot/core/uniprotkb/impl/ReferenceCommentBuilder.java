@@ -1,10 +1,10 @@
 package org.uniprot.core.uniprotkb.impl;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.uniprotkb.ReferenceComment;
 import org.uniprot.core.uniprotkb.ReferenceCommentType;
 import org.uniprot.core.uniprotkb.evidence.impl.AbstractEvidencedValueBuilder;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created 18/01/19

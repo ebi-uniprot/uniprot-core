@@ -2,12 +2,6 @@ package org.uniprot.core.flatfile.writer.line;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.flatfile.parser.impl.kw.KWLineBuilder;
@@ -16,6 +10,12 @@ import org.uniprot.core.uniprotkb.Keyword;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.impl.KeywordBuilder;
 import org.uniprot.cv.evidence.EvidenceHelper;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 class KWLineBuildTest {
     KWLineBuilder builder = new KWLineBuilder();
@@ -39,11 +39,11 @@ class KWLineBuildTest {
     void test1Evidence() {
         String kwLine =
                 "KW   Complete proteome {ECO:0000269|PubMed:10433554,\n"
-                        + "KW   ECO:0000313|EMBL:BAG16761.1}; Metal-binding;\n"
-                        + "KW   Repeat {ECO:0000303|Ref.6, ECO:0000313|EMBL:BAG16761.1};\n"
-                        + "KW   Virus reference strain {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                        + "KW   ECO:0000303|Ref.6};\n"
-                        + "KW   Zinc-finger {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2}.";
+                    + "KW   ECO:0000313|EMBL:BAG16761.1}; Metal-binding;\n"
+                    + "KW   Repeat {ECO:0000303|Ref.6, ECO:0000313|EMBL:BAG16761.1};\n"
+                    + "KW   Virus reference strain {ECO:0000256|HAMAP-Rule:MF_00205,\n"
+                    + "KW   ECO:0000303|Ref.6};\n"
+                    + "KW   Zinc-finger {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2}.";
         List<Keyword> keywords = new ArrayList<>();
         keywords.add(
                 createKeyword(
@@ -183,14 +183,15 @@ class KWLineBuildTest {
     void testEvidence2() {
         String kwLine =
                 "KW   Disulfide bond {ECO:0000256|SAAS:SAAS000777_004_000331};\n"
-                        + "KW   Fusion of virus membrane with host membrane\n"
-                        + "KW   {ECO:0000256|SAAS:SAAS000777_004_001688};\n"
-                        + "KW   Host-virus interaction {ECO:0000256|SAAS:SAAS000777_004_000688};\n"
-                        + "KW   Viral attachment to host cell {ECO:0000256|SAAS:SAAS000777_004_000923};\n"
-                        + "KW   Viral envelope protein {ECO:0000313|EMBL:AAY20056.1};\n"
-                        + "KW   Viral penetration into host cytoplasm\n"
-                        + "KW   {ECO:0000256|SAAS:SAAS000777_004_001402}; Virion;\n"
-                        + "KW   Virus entry into host cell {ECO:0000256|SAAS:SAAS000777_004_000842}.";
+                    + "KW   Fusion of virus membrane with host membrane\n"
+                    + "KW   {ECO:0000256|SAAS:SAAS000777_004_001688};\n"
+                    + "KW   Host-virus interaction {ECO:0000256|SAAS:SAAS000777_004_000688};\n"
+                    + "KW   Viral attachment to host cell"
+                    + " {ECO:0000256|SAAS:SAAS000777_004_000923};\n"
+                    + "KW   Viral envelope protein {ECO:0000313|EMBL:AAY20056.1};\n"
+                    + "KW   Viral penetration into host cytoplasm\n"
+                    + "KW   {ECO:0000256|SAAS:SAAS000777_004_001402}; Virion;\n"
+                    + "KW   Virus entry into host cell {ECO:0000256|SAAS:SAAS000777_004_000842}.";
 
         List<Keyword> keywords = new ArrayList<>();
         keywords.add(

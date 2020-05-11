@@ -1,5 +1,8 @@
 package org.uniprot.core.xml.writer;
 
+import org.uniprot.core.xml.XmlWriter;
+import org.uniprot.core.xml.XmlWriterException;
+
 import java.io.IOException;
 import java.io.Writer;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -7,9 +10,6 @@ import java.util.stream.Stream;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
-
-import org.uniprot.core.xml.XmlWriter;
-import org.uniprot.core.xml.XmlWriterException;
 
 /**
  * @author jluo

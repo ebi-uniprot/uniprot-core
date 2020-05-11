@@ -2,10 +2,6 @@ package org.uniprot.core.scorer.uniprotkb.feature;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParserFactory;
@@ -18,6 +14,10 @@ import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.features.FeatureScored;
 import org.uniprot.core.uniprotkb.feature.Feature;
 import org.uniprot.core.uniprotkb.feature.FeatureType;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 class FeatureScoredTest {
 
@@ -89,7 +89,8 @@ class FeatureScoredTest {
     void shouldCrosslinkScore9() throws Exception {
         String line =
                 "FT   CROSSLNK        83\n"
-                        + "FT                   /note=\"Glycyl lysine isopeptide (Gly-Lys) (with M-243)\"\n";
+                    + "FT                   /note=\"Glycyl lysine isopeptide (Gly-Lys) (with"
+                    + " M-243)\"\n";
         testFeatureScore(line, 9.0);
     }
 

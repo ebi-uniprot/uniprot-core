@@ -1,13 +1,13 @@
 package org.uniprot.core.flatfile.parser.impl.oh;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.impl.OrganismNameLineParser;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismHostBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OhLineConverter implements Converter<OhLineObject, List<OrganismHost>> {
 

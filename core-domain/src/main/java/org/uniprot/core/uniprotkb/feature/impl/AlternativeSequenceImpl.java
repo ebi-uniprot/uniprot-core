@@ -1,10 +1,10 @@
 package org.uniprot.core.uniprotkb.feature.impl;
 
-import java.util.Collections;
-import java.util.List;
-
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.util.Utils;
+
+import java.util.Collections;
+import java.util.List;
 
 public class AlternativeSequenceImpl implements AlternativeSequence {
     private static final long serialVersionUID = 804707478075935286L;

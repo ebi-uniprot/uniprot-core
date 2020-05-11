@@ -2,13 +2,13 @@ package org.uniprot.core.flatfile.parser.converter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Map;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.id.IdLineConverter;
 import org.uniprot.core.flatfile.parser.impl.id.IdLineObject;
 import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.UniProtKBId;
+
+import java.util.Map;
 
 class IdLineConverterTest {
     private IdLineConverter converter = new IdLineConverter();

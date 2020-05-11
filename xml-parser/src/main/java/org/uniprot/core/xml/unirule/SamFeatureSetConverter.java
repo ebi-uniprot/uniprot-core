@@ -1,9 +1,5 @@
 package org.uniprot.core.xml.unirule;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.SamFeatureSet;
@@ -11,6 +7,10 @@ import org.uniprot.core.unirule.impl.SamFeatureSetBuilder;
 import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.*;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class SamFeatureSetConverter implements Converter<SamFeatureSetType, SamFeatureSet> {
 

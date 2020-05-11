@@ -6,10 +6,6 @@ import static org.uniprot.core.xml.uniprot.description.DescriptionHelper.createE
 import static org.uniprot.core.xml.uniprot.description.DescriptionHelper.createName;
 import static org.uniprot.core.xml.uniprot.description.DescriptionHelper.createProteinAltName;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.description.Name;
@@ -18,6 +14,10 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.xml.jaxb.uniprot.ProteinType.AlternativeName;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 class AltNameConverterTest {
     @Test

@@ -1,12 +1,12 @@
 package org.uniprot.cv.taxonomy.impl;
 
-import java.util.UUID;
-import java.util.concurrent.ThreadLocalRandom;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.cv.taxonomy.TaxonomicNode;
+
+import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class TaxonomicNodeImplTest {
     private String random;

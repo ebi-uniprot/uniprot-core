@@ -2,13 +2,13 @@ package org.uniprot.core.parser.tsv.uniprot;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismHostBuilder;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author lgonzales

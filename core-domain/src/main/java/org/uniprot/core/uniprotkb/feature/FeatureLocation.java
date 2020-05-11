@@ -1,10 +1,10 @@
 package org.uniprot.core.uniprotkb.feature;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.Range;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * @author jluo

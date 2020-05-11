@@ -1,13 +1,13 @@
 package org.uniprot.core.uniprotkb.impl;
 
-import java.util.Collections;
-import java.util.List;
-
 import org.uniprot.core.uniprotkb.InternalLine;
 import org.uniprot.core.uniprotkb.InternalSection;
 import org.uniprot.core.uniprotkb.SourceLine;
 import org.uniprot.core.uniprotkb.evidence.EvidenceLine;
 import org.uniprot.core.util.Utils;
+
+import java.util.Collections;
+import java.util.List;
 
 public class InternalSectionImpl implements InternalSection {
     private static final long serialVersionUID = 3250758805630819227L;

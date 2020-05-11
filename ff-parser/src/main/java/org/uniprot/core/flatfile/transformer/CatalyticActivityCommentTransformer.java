@@ -2,11 +2,7 @@ package org.uniprot.core.flatfile.transformer;
 
 import static java.util.Arrays.stream;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
+import com.google.common.base.Strings;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
@@ -19,16 +15,24 @@ import org.uniprot.core.uniprotkb.comment.impl.ReactionBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class CatalyticActivityCommentTransformer
         implements CommentTransformer<CatalyticActivityComment> {
     private static final CommentType COMMENT_TYPE = CommentType.CATALYTIC_ACTIVITY;
     private static final String CATALYTIC_ACTIVITY_REGEX =
-            "^([\\w/-]+(\\s[\\w/-]+)*:)?"
-                    + "(\\s*(Reaction=(.+?));( (Xref=([^;]+));)?( EC=(([0-9]|\\.|n)+);)?( Evidence=\\{([^;]+)\\};)?)"
-                    + "(([ \\t\\r\\n\\f]+)(PhysiologicalDirection=([^;]+)); (Xref=([^;]+));( Evidence=\\{([^;]+)\\};)?)?"
-                    + "(([ \\t\\r\\n\\f]+)(PhysiologicalDirection=([^;]+)); (Xref=([^;]+));( Evidence=\\{([^;]+)\\};)?)?";
+            "^([\\w/-]+(\\s[\\w/-]+)*:)?(\\s*(Reaction=(.+?));( (Xref=([^;]+));)?("
+                + " EC=(([0-9]|\\.|n)+);)?( Evidence=\\{([^;]+)\\};)?)(([ \\t\\r"
+                + "\\n"
+                + "\\f]+)(PhysiologicalDirection=([^;]+)); (Xref=([^;]+));("
+                + " Evidence=\\{([^;]+)\\};)?)?(([ \\t\\r"
+                + "\\n"
+                + "\\f]+)(PhysiologicalDirection=([^;]+)); (Xref=([^;]+));("
+                + " Evidence=\\{([^;]+)\\};)?)?";
 
     public static final Pattern ATALYTIC_ACTIVITY_PATTERN =
             Pattern.compile(CATALYTIC_ACTIVITY_REGEX);

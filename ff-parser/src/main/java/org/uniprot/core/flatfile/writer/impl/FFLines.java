@@ -1,9 +1,9 @@
 package org.uniprot.core.flatfile.writer.impl;
 
+import org.uniprot.core.flatfile.writer.FFLine;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import org.uniprot.core.flatfile.writer.FFLine;
 
 public class FFLines {
     public static FFLine create(List<String> lls) {

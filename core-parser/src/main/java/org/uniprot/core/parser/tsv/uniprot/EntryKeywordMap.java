@@ -1,10 +1,10 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.Keyword;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class EntryKeywordMap implements NamedValueMap {
     private final List<Keyword> keywords;

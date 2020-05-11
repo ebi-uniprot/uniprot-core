@@ -1,9 +1,9 @@
 package org.uniprot.core.citation.impl;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.impl.AbstractValueBuilder;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created 24/01/19

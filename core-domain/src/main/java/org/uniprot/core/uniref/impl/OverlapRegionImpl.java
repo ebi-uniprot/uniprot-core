@@ -1,8 +1,8 @@
 package org.uniprot.core.uniref.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.uniref.OverlapRegion;
+
+import java.util.Objects;
 
 /**
  * @author jluo

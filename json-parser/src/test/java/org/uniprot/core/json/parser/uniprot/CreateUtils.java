@@ -1,13 +1,13 @@
 package org.uniprot.core.json.parser.uniprot;
 
-import java.util.Collections;
-import java.util.List;
-
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
+
+import java.util.Collections;
+import java.util.List;
 
 /** @author lgonzales */
 public class CreateUtils {

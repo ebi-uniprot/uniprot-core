@@ -1,9 +1,9 @@
 package org.uniprot.core.flatfile.writer.impl;
 
+import org.uniprot.core.flatfile.writer.LineType;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import org.uniprot.core.flatfile.writer.LineType;
 
 public class LineBuilder {
     private final String prefix;

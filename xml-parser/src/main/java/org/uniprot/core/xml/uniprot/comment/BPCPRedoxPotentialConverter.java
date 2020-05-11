@@ -1,7 +1,5 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import java.util.stream.Collectors;
-
 import org.uniprot.core.uniprotkb.comment.RedoxPotential;
 import org.uniprot.core.uniprotkb.comment.impl.RedoxPotentialBuilder;
 import org.uniprot.core.xml.Converter;
@@ -9,6 +7,8 @@ import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.EvidencedValueConverter;
+
+import java.util.stream.Collectors;
 
 public class BPCPRedoxPotentialConverter
         implements Converter<CommentType.RedoxPotential, RedoxPotential> {

@@ -154,7 +154,8 @@ class CcLineMSCommentParserTest {
     void testMultiEvidences() {
         String lines =
                 "CC   -!- MASS SPECTROMETRY: Mass=3979.9; Method=Electrospray;\n"
-                        + "CC       Evidence={ECO:0000006|PubMed:16629414, ECO:0000006|PubMed:16629415};\n";
+                    + "CC       Evidence={ECO:0000006|PubMed:16629414,"
+                    + " ECO:0000006|PubMed:16629415};\n";
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(lines);

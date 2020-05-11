@@ -1,8 +1,6 @@
 package org.uniprot.core.xml.proteome;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import com.google.common.base.Strings;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
@@ -14,7 +12,9 @@ import org.uniprot.core.xml.jaxb.proteome.ComponentType;
 import org.uniprot.core.xml.jaxb.proteome.ComponentTypeType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class ComponentConverter implements Converter<ComponentType, Component> {
     private final ObjectFactory xmlFactory;

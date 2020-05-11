@@ -3,16 +3,16 @@ package org.uniprot.core.parser.tsv.uniprot;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
 import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 class EntryGoCrossReferenceMapTest {
 
@@ -60,7 +60,8 @@ class EntryGoCrossReferenceMapTest {
 
         verify(go_p, "go_p", result);
         String go_id =
-                "GO:0005783; GO:0005788; GO:0006457; GO:0016020; GO:0032781; GO:0036498; GO:0051082";
+                "GO:0005783; GO:0005788; GO:0006457; GO:0016020; GO:0032781; GO:0036498;"
+                    + " GO:0051082";
 
         verify(go_id, "go_id", result);
     }
@@ -95,7 +96,8 @@ class EntryGoCrossReferenceMapTest {
 
         verify(go_p, "go_p", result);
         String go_id =
-                "GO:0005783; GO:0005788; GO:0006457; GO:0016020; GO:0032781; GO:0036498; GO:0051082";
+                "GO:0005783; GO:0005788; GO:0006457; GO:0016020; GO:0032781; GO:0036498;"
+                    + " GO:0051082";
 
         verify(go_id, "go_id", result);
     }

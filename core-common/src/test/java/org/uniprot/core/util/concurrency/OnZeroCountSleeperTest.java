@@ -1,17 +1,18 @@
 package org.uniprot.core.util.concurrency;
 
-import static java.util.stream.Collectors.toList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.slf4j.LoggerFactory.getLogger;
 
-import java.util.List;
-import java.util.stream.Stream;
+import static java.util.stream.Collectors.toList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
+
+import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * Created 13/07/19

@@ -1,9 +1,9 @@
 package org.uniprot.core.proteome.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.proteome.CPDReport;
 import org.uniprot.core.proteome.CPDStatus;
+
+import java.util.Objects;
 
 /**
  * @author lgonzales

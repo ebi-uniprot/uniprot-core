@@ -1,11 +1,11 @@
 package org.uniprot.core.flatfile.parser.impl.ac;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AcLineConverter implements Converter<AcLineObject, UniProtKBAcLineObject> {
 

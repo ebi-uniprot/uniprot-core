@@ -2,13 +2,13 @@ package org.uniprot.core.uniprotkb.impl;
 
 import static org.uniprot.core.util.Utils.modifiableList;
 
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.gene.GeneNameSynonym;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.impl.AbstractEvidencedValueBuilder;
+
+import java.util.List;
+
+import javax.annotation.Nonnull;
 
 /** @author lgonzales */
 public class GeneNameSynonymBuilder

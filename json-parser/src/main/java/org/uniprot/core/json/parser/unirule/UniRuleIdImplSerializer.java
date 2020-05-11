@@ -1,12 +1,12 @@
 package org.uniprot.core.json.parser.unirule;
 
-import java.io.IOException;
-
-import org.uniprot.core.unirule.impl.UniRuleIdImpl;
-
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+
+import org.uniprot.core.unirule.impl.UniRuleIdImpl;
+
+import java.io.IOException;
 
 /** @author sahmad */
 public class UniRuleIdImplSerializer extends StdSerializer<UniRuleIdImpl> {

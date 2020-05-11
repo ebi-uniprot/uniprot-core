@@ -1,14 +1,12 @@
 package org.uniprot.cv.ec;
 
-import static java.util.Collections.emptyList;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Arrays;
-import java.util.List;
+import static java.util.Collections.emptyList;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -16,6 +14,9 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.ec.ECEntry;
 import org.uniprot.core.cv.ec.impl.ECEntryBuilder;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created 18/03/19
@@ -131,10 +132,13 @@ class ECFileReaderTest {
                         "CA   (1) A primary alcohol + NAD(+) = an aldehyde + NADH.",
                         "CA   (2) A secondary alcohol + NAD(+) = a ketone + NADH.",
                         "CF   Zn(2+) or Fe cation.",
-                        "CC   -!- Acts on primary or secondary alcohols or hemi-acetals with very broad",
-                        "CC       specificity; however the enzyme oxidizes methanol much more poorly",
+                        "CC   -!- Acts on primary or secondary alcohols or hemi-acetals with very"
+                            + " broad",
+                        "CC       specificity; however the enzyme oxidizes methanol much more"
+                            + " poorly",
                         "CC       than ethanol.",
-                        "CC   -!- The animal, but not the yeast, enzyme acts also on cyclic secondary",
+                        "CC   -!- The animal, but not the yeast, enzyme acts also on cyclic"
+                            + " secondary",
                         "CC       alcohols.",
                         "PR   PROSITE; PDOC00058;",
                         "PR   PROSITE; PDOC00059;",
@@ -146,7 +150,8 @@ class ECFileReaderTest {
                         "AN   Aldehyde reductase (NADPH).",
                         "CA   An alcohol + NADP(+) = an aldehyde + NADPH.",
                         "CF   Zn(2+).",
-                        "CC   -!- Some members of this group oxidize only primary alcohols; others act",
+                        "CC   -!- Some members of this group oxidize only primary alcohols; others"
+                            + " act",
                         "CC       also on secondary alcohols.",
                         "CC   -!- May be identical with EC 1.1.1.19, EC 1.1.1.33 and EC 1.1.1.55.",
                         "CC   -!- Re-specific with respect to NADPH.",

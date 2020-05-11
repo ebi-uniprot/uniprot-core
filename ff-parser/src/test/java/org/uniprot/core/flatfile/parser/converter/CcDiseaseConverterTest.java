@@ -2,11 +2,6 @@ package org.uniprot.core.flatfile.parser.converter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
@@ -18,6 +13,11 @@ import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.DiseaseComment;
 import org.uniprot.core.uniprotkb.comment.DiseaseDatabase;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 class CcDiseaseConverterTest {
     private final CcLineConverter converter =
@@ -47,9 +47,13 @@ class CcDiseaseConverterTest {
         disease.setMim("610253");
 
         disease.setDescription(
-                "A syndrome characterized by severe mental retardation, hypotonia, brachy(micro)cephaly, and facial dysmorphisms. Additionally, congenital heart defects, urogenital defects, epilepsy and behavioral problems are frequently observed.");
+                "A syndrome characterized by severe mental retardation, hypotonia,"
+                    + " brachy(micro)cephaly, and facial dysmorphisms. Additionally, congenital"
+                    + " heart defects, urogenital defects, epilepsy and behavioral problems are"
+                    + " frequently observed.");
         String disNote =
-                "The disease is caused by mutations affecting the gene represented in this entry (PubMed:16826528)";
+                "The disease is caused by mutations affecting the gene represented in this entry"
+                    + " (PubMed:16826528)";
         disease.getNote().add(new EvidencedString(disNote, new ArrayList<>()));
 
         ccLineO.getCcs().add(cc1);
@@ -72,7 +76,8 @@ class CcDiseaseConverterTest {
         assertEquals(DiseaseDatabase.MIM, diseaseRef.getDatabase());
         assertEquals("610253", diseaseRef.getId());
         assertEquals(
-                "The disease is caused by mutations affecting the gene represented in this entry (PubMed:16826528)",
+                "The disease is caused by mutations affecting the gene represented in this entry"
+                    + " (PubMed:16826528)",
                 diseaseComment.getNote().getTexts().get(0).getValue());
         assertEquals(0, diseaseComment.getNote().getTexts().get(0).getEvidences().size());
     }
@@ -90,9 +95,13 @@ class CcDiseaseConverterTest {
         disease.setMim("610253");
 
         disease.setDescription(
-                "A syndrome characterized by severe mental retardation, hypotonia, brachy(micro)cephaly, and facial dysmorphisms. Additionally, congenital heart defects, urogenital defects, epilepsy and behavioral problems are frequently observed.");
+                "A syndrome characterized by severe mental retardation, hypotonia,"
+                    + " brachy(micro)cephaly, and facial dysmorphisms. Additionally, congenital"
+                    + " heart defects, urogenital defects, epilepsy and behavioral problems are"
+                    + " frequently observed.");
         String disNote =
-                "The disease is caused by mutations affecting the gene represented in this entry (PubMed:16826528)";
+                "The disease is caused by mutations affecting the gene represented in this entry"
+                    + " (PubMed:16826528)";
         disease.getNote()
                 .add(new EvidencedString(disNote, Arrays.asList("ECO:0000269|PubMed:20433554")));
         ccLineO.getEvidenceInfo()
@@ -124,7 +133,8 @@ class CcDiseaseConverterTest {
         assertEquals(DiseaseDatabase.MIM, diseaseRef.getDatabase());
         assertEquals("610253", diseaseRef.getId());
         assertEquals(
-                "The disease is caused by mutations affecting the gene represented in this entry (PubMed:16826528)",
+                "The disease is caused by mutations affecting the gene represented in this entry"
+                    + " (PubMed:16826528)",
                 diseaseComment.getNote().getTexts().get(0).getValue());
         assertEquals(1, diseaseComment.getNote().getTexts().get(0).getEvidences().size());
         assertEquals(

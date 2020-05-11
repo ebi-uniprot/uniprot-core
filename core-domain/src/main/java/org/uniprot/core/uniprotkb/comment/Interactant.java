@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprotkb.comment;
 
-import java.io.Serializable;
-
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.util.Utils;
+
+import java.io.Serializable;
 
 public interface Interactant extends Serializable {
     UniProtKBAccession getUniProtKBAccession();

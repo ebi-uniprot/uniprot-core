@@ -1,7 +1,5 @@
 package org.uniprot.core.xml.unirule;
 
-import java.util.Objects;
-
 import org.uniprot.core.unirule.Annotation;
 import org.uniprot.core.unirule.impl.AnnotationBuilder;
 import org.uniprot.core.xml.Converter;
@@ -11,6 +9,8 @@ import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.GeneConverter;
 import org.uniprot.core.xml.uniprot.KeywordConverter;
 import org.uniprot.core.xml.uniprot.UniProtCrossReferenceConverter;
+
+import java.util.Objects;
 
 public class AnnotationConverter implements Converter<AnnotationType, Annotation> {
     private final ObjectFactory objectFactory;

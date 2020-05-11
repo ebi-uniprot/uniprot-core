@@ -1,7 +1,6 @@
 package org.uniprot.core.xml.uniprot;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.base.Strings;
 
 import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
 import org.uniprot.core.uniprotkb.taxonomy.impl.AbstractOrganismNameBuilder;
@@ -9,7 +8,8 @@ import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.OrganismNameType;
 
-import com.google.common.base.Strings;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class OrganismConverterUtil {
     public static final String CIENTIFICNAME_XMLTAG = "scientific";

@@ -2,13 +2,13 @@ package org.uniprot.core.uniprotkb.evidence.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 class EvidenceImplTest {
     Evidence impl = new EvidenceImpl(EvidenceCode.ECO_0000256, "EnsemblPlants", "id");

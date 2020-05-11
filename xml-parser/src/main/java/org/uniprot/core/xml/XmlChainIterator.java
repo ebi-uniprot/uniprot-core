@@ -1,5 +1,8 @@
 package org.uniprot.core.xml;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,9 +14,6 @@ import java.util.zip.GZIPInputStream;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.stream.XMLStreamException;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class XmlChainIterator<T, R> implements Iterator<R> {
     private static final Logger logger = LoggerFactory.getLogger(XmlChainIterator.class);

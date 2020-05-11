@@ -4,14 +4,14 @@ import static org.uniprot.core.uniprotkb.comment.impl.FreeTextCommentImpl.isFree
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableList;
 
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.FreeTextComment;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
-
-import org.uniprot.core.uniprotkb.comment.CommentType;
-import org.uniprot.core.uniprotkb.comment.FreeTextComment;
-import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
 public class FreeTextCommentBuilder implements CommentBuilder<FreeTextComment> {
     private CommentType commentType;

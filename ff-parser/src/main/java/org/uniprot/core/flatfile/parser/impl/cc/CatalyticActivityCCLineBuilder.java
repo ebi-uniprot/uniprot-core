@@ -3,10 +3,6 @@ package org.uniprot.core.flatfile.parser.impl.cc;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEMICOLON;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEPARATOR_COMA;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.flatfile.writer.impl.FFLineConstant;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
@@ -14,6 +10,10 @@ import org.uniprot.core.uniprotkb.comment.CatalyticActivityComment;
 import org.uniprot.core.uniprotkb.comment.PhysiologicalReaction;
 import org.uniprot.core.uniprotkb.comment.Reaction;
 import org.uniprot.core.uniprotkb.comment.ReactionDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CatalyticActivityCCLineBuilder extends CCLineBuilderAbstr<CatalyticActivityComment> {
     private static final String EVIDENCE = "Evidence=";

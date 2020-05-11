@@ -2,12 +2,12 @@ package org.uniprot.core.flatfile.parser.converter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.oh.OhLineConverter;
 import org.uniprot.core.flatfile.parser.impl.oh.OhLineObject;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
+
+import java.util.List;
 
 class OhLineConverterTest {
     @Test

@@ -2,18 +2,18 @@ package org.uniprot.core.unirule.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.unirule.Annotation;
+import org.uniprot.core.unirule.ConditionSet;
+import org.uniprot.core.unirule.Rule;
+import org.uniprot.core.unirule.RuleException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.unirule.Annotation;
-import org.uniprot.core.unirule.ConditionSet;
-import org.uniprot.core.unirule.Rule;
-import org.uniprot.core.unirule.RuleException;
 
 public class RuleBuilderTest {
 

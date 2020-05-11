@@ -1,7 +1,5 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import java.util.stream.Collectors;
-
 import org.uniprot.core.uniprotkb.comment.TemperatureDependence;
 import org.uniprot.core.uniprotkb.comment.impl.TemperatureDependenceBuilder;
 import org.uniprot.core.xml.Converter;
@@ -9,6 +7,8 @@ import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.EvidencedValueConverter;
+
+import java.util.stream.Collectors;
 
 public class BPCPTempDependenceConverter
         implements Converter<CommentType.TemperatureDependence, TemperatureDependence> {
