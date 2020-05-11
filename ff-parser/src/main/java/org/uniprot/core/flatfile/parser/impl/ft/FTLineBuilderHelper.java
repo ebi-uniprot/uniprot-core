@@ -10,14 +10,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.PositionModifier;
+import org.uniprot.core.feature.FeatureDescription;
+import org.uniprot.core.feature.FeatureLocation;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.LineBuilderHelper;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureDescription;
-import org.uniprot.core.uniprotkb.feature.FeatureId;
-import org.uniprot.core.uniprotkb.feature.FeatureLocation;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeatureId;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
 import com.google.common.base.Strings;
 
@@ -45,7 +45,7 @@ public class FTLineBuilderHelper {
     public static final String DOUBLE_QUOTE = "\"";
     public static final String EVIDENCE_PREFIX = "/evidence=\"";
 
-    public static StringBuilder getDescriptionString(Feature feature) {
+    public static StringBuilder getDescriptionString(UniProtKBFeature feature) {
         StringBuilder sb = new StringBuilder();
         FeatureDescription description = feature.getDescription();
         if ((description != null) && !Strings.isNullOrEmpty(description.getValue())) {
@@ -55,7 +55,7 @@ public class FTLineBuilderHelper {
     }
 
     public static List<String> buildNote(
-            Feature feature, StringBuilder extra, boolean includeFFMarkup) {
+            UniProtKBFeature feature, StringBuilder extra, boolean includeFFMarkup) {
         String extraString = replaceDoubleQuoteWithDoubleDoubleQuote(extra.toString());
         //    StringBuilder note =
         //        new StringBuilder();
@@ -81,7 +81,7 @@ public class FTLineBuilderHelper {
         }
     }
 
-    public static List<String> buildNote(Feature feature, boolean includeFFMarkup) {
+    public static List<String> buildNote(UniProtKBFeature feature, boolean includeFFMarkup) {
         StringBuilder note = buildExtra(feature);
         return buildNote(feature, note, includeFFMarkup);
     }
@@ -95,7 +95,7 @@ public class FTLineBuilderHelper {
         return sb;
     }
 
-    public static StringBuilder buildFeatureId(FeatureId ftId, boolean includeFFMarkup) {
+    public static StringBuilder buildFeatureId(UniProtKBFeatureId ftId, boolean includeFFMarkup) {
         StringBuilder sb = new StringBuilder();
         if ((ftId != null) && !Strings.isNullOrEmpty(ftId.getValue())) {
             if (includeFFMarkup) sb.append(FT_LINE_PREFIX_2);
@@ -106,13 +106,14 @@ public class FTLineBuilderHelper {
         return sb;
     }
 
-    public static StringBuilder buildExtra(Feature feature) {
+    public static StringBuilder buildExtra(UniProtKBFeature feature) {
         StringBuilder sb = new StringBuilder();
         sb.append(getDescriptionString(feature));
         return sb;
     }
 
-    public static StringBuilder buildFeatureHeader(Feature feature, boolean includeFFMarkup) {
+    public static StringBuilder buildFeatureHeader(
+            UniProtKBFeature feature, boolean includeFFMarkup) {
         StringBuilder sb = new StringBuilder();
         if (includeFFMarkup) sb.append(FT_LINE_PREFIX);
         sb.append(feature.getType());
@@ -174,7 +175,7 @@ public class FTLineBuilderHelper {
 
     public static List<String> addAlternativeSequence(
             StringBuilder sb,
-            Feature featureWithAlternativeSequence,
+            UniProtKBFeature featureWithAlternativeSequence,
             boolean includeFFMarkings,
             String extra) {
 
@@ -184,13 +185,13 @@ public class FTLineBuilderHelper {
     }
 
     private static List<String> addAlternativeSequenceNoFFMarking(
-            StringBuilder sb, Feature featureWithAlternativeSequence, String extra) {
+            StringBuilder sb, UniProtKBFeature featureWithAlternativeSequence, String extra) {
         List<String> lines = new ArrayList<>();
         if (hasAlternativeSequence(featureWithAlternativeSequence)) {
             String originalSequence =
                     featureWithAlternativeSequence.getAlternativeSequence().getOriginalSequence();
             sb.append(originalSequence);
-            if (featureWithAlternativeSequence.getType() == FeatureType.MUTAGEN) {
+            if (featureWithAlternativeSequence.getType() == UniprotKBFeatureType.MUTAGEN) {
                 sb.append(ARROW);
             } else {
                 sb.append(ARROW_TWO_SPACES);
@@ -211,15 +212,15 @@ public class FTLineBuilderHelper {
         return lines;
     }
 
-    private static String getJoiner(Feature featureWithAlternativeSequence) {
-        if (featureWithAlternativeSequence.getType() == FeatureType.CONFLICT) {
+    private static String getJoiner(UniProtKBFeature featureWithAlternativeSequence) {
+        if (featureWithAlternativeSequence.getType() == UniprotKBFeatureType.CONFLICT) {
             return OR_TWO_SPACES;
         } else {
             return COMMA;
         }
     }
 
-    private static boolean hasAlternativeSequence(Feature featureWithAlternativeSequence) {
+    private static boolean hasAlternativeSequence(UniProtKBFeature featureWithAlternativeSequence) {
         return featureWithAlternativeSequence.getAlternativeSequence().getOriginalSequence() != null
                 && !featureWithAlternativeSequence
                         .getAlternativeSequence()
@@ -232,7 +233,7 @@ public class FTLineBuilderHelper {
     }
 
     private static List<String> addAlternativeSequence(
-            StringBuilder sb, Feature featureWithAlternativeSequence, String extra) {
+            StringBuilder sb, UniProtKBFeature featureWithAlternativeSequence, String extra) {
         List<String> lines = new ArrayList<>();
         sb = wrapAdd(lines, sb, SEPARATOR, FTLineBuilderHelper.FT_LINE_PREFIX_2, LINE_LENGTH);
         if (hasAlternativeSequence(featureWithAlternativeSequence)) {
@@ -272,13 +273,13 @@ public class FTLineBuilderHelper {
     }
 
     private static StringBuilder addOriginalSequence(
-            StringBuilder sb, Feature featureWithAlternativeSequence, List<String> lines) {
+            StringBuilder sb, UniProtKBFeature featureWithAlternativeSequence, List<String> lines) {
         String originalSequence =
                 featureWithAlternativeSequence.getAlternativeSequence().getOriginalSequence();
         sb.append(originalSequence);
         sb = wrapAdd(lines, sb, "", FTLineBuilderHelper.FT_LINE_PREFIX_2, LINE_LENGTH);
 
-        if (featureWithAlternativeSequence.getType() == FeatureType.MUTAGEN) {
+        if (featureWithAlternativeSequence.getType() == UniprotKBFeatureType.MUTAGEN) {
             if (isLongerLineLength(sb, ARROW)) {
                 sb = addToLines(sb, lines);
             }
@@ -302,8 +303,8 @@ public class FTLineBuilderHelper {
     }
 
     private static void addJoinForAlternativeSequence(
-            StringBuilder sb, Feature featureWithAlternativeSequence, List<String> lines) {
-        if (featureWithAlternativeSequence.getType() == FeatureType.CONFLICT) {
+            StringBuilder sb, UniProtKBFeature featureWithAlternativeSequence, List<String> lines) {
+        if (featureWithAlternativeSequence.getType() == UniprotKBFeatureType.CONFLICT) {
             if (isLongerLineLength(sb, OR_RIGHT_SPACE)) {
                 sb = addToLines(sb, lines);
                 sb = new StringBuilder(OR_RIGHT_SPACE);

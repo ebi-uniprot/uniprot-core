@@ -19,8 +19,8 @@ import org.uniprot.core.uniprotkb.comment.FreeTextComment;
 import org.uniprot.core.uniprotkb.comment.impl.FreeTextCommentBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.FreeTextCommentImpl;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 import org.uniprot.core.uniprotkb.impl.EntryInactiveReasonBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
@@ -65,7 +65,7 @@ public class UniProtKBEntryIT {
         try {
             ObjectMapper mapper = UniprotKBJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
-            System.out.println(json);
+            logger.debug(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }
@@ -82,8 +82,8 @@ public class UniProtKBEntryIT {
         xrefs.add(UniProtKBCrossReferenceTest.getUniProtDBGOCrossReferences("F", "IDA"));
         xrefs.add(UniProtKBCrossReferenceTest.getUniProtDBGOCrossReferences("P", "IDA"));
 
-        List<Feature> features =
-                Arrays.stream(FeatureType.values())
+        List<UniProtKBFeature> features =
+                Arrays.stream(UniprotKBFeatureType.values())
                         .map(FeatureTest::getFeature)
                         .collect(Collectors.toList());
 

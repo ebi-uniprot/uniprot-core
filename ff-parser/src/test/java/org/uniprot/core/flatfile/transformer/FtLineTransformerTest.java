@@ -7,8 +7,8 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineTransformer;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
 class FtLineTransformerTest {
     private FtLineTransformer transformer = new FtLineTransformer();
@@ -17,13 +17,13 @@ class FtLineTransformerTest {
     void testChain() {
         String lines = "CHAIN ?..121\n/note=\"Potential\"\n" + "/id=\"PRO_5001267722\"\n";
 
-        List<Feature> features = transformer.transformNoHeader(lines);
+        List<UniProtKBFeature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
-        Feature feature = features.get(0);
+        UniProtKBFeature feature = features.get(0);
 
         assertEquals(PositionModifier.UNKNOWN, feature.getLocation().getStart().getModifier());
         assertEquals(121, feature.getLocation().getEnd().getValue().intValue());
-        assertEquals(FeatureType.CHAIN, feature.getType());
+        assertEquals(UniprotKBFeatureType.CHAIN, feature.getType());
         assertEquals("Potential", feature.getDescription().getValue());
         assertEquals("PRO_5001267722", feature.getFeatureId().getValue());
     }
@@ -32,15 +32,15 @@ class FtLineTransformerTest {
     void testSignal() {
         String lines = "SIGNAL <1..33\n/note=\"some description\"\n";
 
-        List<Feature> features = transformer.transformNoHeader(lines);
+        List<UniProtKBFeature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
-        Feature feature = features.get(0);
+        UniProtKBFeature feature = features.get(0);
 
         assertEquals(1, feature.getLocation().getStart().getValue().intValue());
         assertEquals(PositionModifier.OUTSIDE, feature.getLocation().getStart().getModifier());
         assertEquals(33, feature.getLocation().getEnd().getValue().intValue());
         assertEquals(PositionModifier.EXACT, feature.getLocation().getEnd().getModifier());
-        assertEquals(FeatureType.SIGNAL, feature.getType());
+        assertEquals(UniprotKBFeatureType.SIGNAL, feature.getType());
         assertEquals("some description", feature.getDescription().getValue());
     }
 
@@ -48,15 +48,15 @@ class FtLineTransformerTest {
     void testConflict() {
         String lines = "CONFLICT 124..127\n/note=\"GLTA -> ESHP (in Ref. 1; AAA98633)\"\n";
 
-        List<Feature> features = transformer.transformNoHeader(lines);
+        List<UniProtKBFeature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
-        Feature feature = features.get(0);
+        UniProtKBFeature feature = features.get(0);
 
         assertEquals(124, feature.getLocation().getStart().getValue().intValue());
         assertEquals(PositionModifier.EXACT, feature.getLocation().getStart().getModifier());
         assertEquals(127, feature.getLocation().getEnd().getValue().intValue());
         assertEquals(PositionModifier.EXACT, feature.getLocation().getEnd().getModifier());
-        assertEquals(FeatureType.CONFLICT, feature.getType());
+        assertEquals(UniprotKBFeatureType.CONFLICT, feature.getType());
 
         assertEquals("GLTA", feature.getAlternativeSequence().getOriginalSequence());
         assertEquals(1, feature.getAlternativeSequence().getAlternativeSequences().size());
@@ -72,16 +72,16 @@ class FtLineTransformerTest {
         String lines =
                 "MUTAGEN 9\n/note=\"K->R: Does not affect E-cadherin/CDH1 repression; when associated with R-16\"\n";
 
-        List<Feature> features = transformer.transformNoHeader(lines);
+        List<UniProtKBFeature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
-        Feature feature = features.get(0);
-        assertEquals(FeatureType.MUTAGEN, feature.getType());
+        UniProtKBFeature feature = features.get(0);
+        assertEquals(UniprotKBFeatureType.MUTAGEN, feature.getType());
 
         assertEquals(9, feature.getLocation().getStart().getValue().intValue());
         assertEquals(PositionModifier.EXACT, feature.getLocation().getStart().getModifier());
         assertEquals(9, feature.getLocation().getEnd().getValue().intValue());
         assertEquals(PositionModifier.EXACT, feature.getLocation().getEnd().getModifier());
-        assertEquals(FeatureType.MUTAGEN, feature.getType());
+        assertEquals(UniprotKBFeatureType.MUTAGEN, feature.getType());
 
         assertEquals("K", feature.getAlternativeSequence().getOriginalSequence());
         assertEquals(1, feature.getAlternativeSequence().getAlternativeSequences().size());
@@ -100,16 +100,16 @@ class FtLineTransformerTest {
                 "VARIANT 421\n/note=\"C -> R (in GS; dbSNP:rs28936387)\"\n"
                         + "/id=\"VAR_007115\"\n";
 
-        List<Feature> features = transformer.transformNoHeader(lines);
+        List<UniProtKBFeature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
-        Feature feature = features.get(0);
+        UniProtKBFeature feature = features.get(0);
 
-        assertEquals(FeatureType.VARIANT, feature.getType());
+        assertEquals(UniprotKBFeatureType.VARIANT, feature.getType());
         assertEquals(421, feature.getLocation().getStart().getValue().intValue());
         assertEquals(PositionModifier.EXACT, feature.getLocation().getStart().getModifier());
         assertEquals(421, feature.getLocation().getEnd().getValue().intValue());
         assertEquals(PositionModifier.EXACT, feature.getLocation().getEnd().getModifier());
-        assertEquals(FeatureType.VARIANT, feature.getType());
+        assertEquals(UniprotKBFeatureType.VARIANT, feature.getType());
 
         assertEquals("C", feature.getAlternativeSequence().getOriginalSequence());
         assertEquals(1, feature.getAlternativeSequence().getAlternativeSequences().size());
@@ -126,15 +126,15 @@ class FtLineTransformerTest {
     void testVariant2() {
         String lines = "VARIANT 561\n/note=\"Missing (in GS)\"\n" + "/id=\"VAR_007118\"\n";
 
-        List<Feature> features = transformer.transformNoHeader(lines);
+        List<UniProtKBFeature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
-        Feature feature = features.get(0);
-        assertEquals(FeatureType.VARIANT, feature.getType());
+        UniProtKBFeature feature = features.get(0);
+        assertEquals(UniprotKBFeatureType.VARIANT, feature.getType());
         assertEquals(561, feature.getLocation().getStart().getValue().intValue());
         assertEquals(PositionModifier.EXACT, feature.getLocation().getStart().getModifier());
         assertEquals(561, feature.getLocation().getEnd().getValue().intValue());
         assertEquals(PositionModifier.EXACT, feature.getLocation().getEnd().getModifier());
-        assertEquals(FeatureType.VARIANT, feature.getType());
+        assertEquals(UniprotKBFeatureType.VARIANT, feature.getType());
         // assertEquals("C", cFeature.getOriginalSequence().getValue());
         assertEquals(0, feature.getAlternativeSequence().getAlternativeSequences().size());
         //	assertEquals("R", cFeature.getAlternativeSequences().get(0).getValue());
@@ -153,16 +153,16 @@ class FtLineTransformerTest {
                         + " isoform 2A and isoform 3A)\"\n"
                         + "/id=\"VSP_005049\"\n";
 
-        List<Feature> features = transformer.transformNoHeader(lines);
+        List<UniProtKBFeature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
-        Feature feature = features.get(0);
-        assertEquals(FeatureType.VAR_SEQ, feature.getType());
+        UniProtKBFeature feature = features.get(0);
+        assertEquals(UniprotKBFeatureType.VAR_SEQ, feature.getType());
 
         assertEquals(239, feature.getLocation().getStart().getValue().intValue());
         assertEquals(PositionModifier.EXACT, feature.getLocation().getStart().getModifier());
         assertEquals(239, feature.getLocation().getEnd().getValue().intValue());
         assertEquals(PositionModifier.EXACT, feature.getLocation().getEnd().getModifier());
-        assertEquals(FeatureType.VAR_SEQ, feature.getType());
+        assertEquals(UniprotKBFeatureType.VAR_SEQ, feature.getType());
         assertEquals("E", feature.getAlternativeSequence().getOriginalSequence());
         assertEquals(1, feature.getAlternativeSequence().getAlternativeSequences().size());
         assertEquals(
@@ -186,16 +186,16 @@ class FtLineTransformerTest {
         String lines =
                 "VAR_SEQ 1..242\n/note=\"Missing (in isoform PLEC-1H)\"\n" + "/id=\"VSP_005040\"\n";
 
-        List<Feature> features = transformer.transformNoHeader(lines);
+        List<UniProtKBFeature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
-        Feature feature = features.get(0);
-        assertEquals(FeatureType.VAR_SEQ, feature.getType());
+        UniProtKBFeature feature = features.get(0);
+        assertEquals(UniprotKBFeatureType.VAR_SEQ, feature.getType());
 
         assertEquals(1, feature.getLocation().getStart().getValue().intValue());
         assertEquals(PositionModifier.EXACT, feature.getLocation().getStart().getModifier());
         assertEquals(242, feature.getLocation().getEnd().getValue().intValue());
         assertEquals(PositionModifier.EXACT, feature.getLocation().getEnd().getModifier());
-        assertEquals(FeatureType.VAR_SEQ, feature.getType());
+        assertEquals(UniprotKBFeatureType.VAR_SEQ, feature.getType());
 
         // assertEquals("E", cFeature.getOriginalSequence().getValue());
         assertEquals(0, feature.getAlternativeSequence().getAlternativeSequences().size());
@@ -213,16 +213,16 @@ class FtLineTransformerTest {
     void testCarbohyd() {
         String lines = "CARBOHYD 196\n/note=\"N-linked (GlcNAc...); by host\"\n";
 
-        List<Feature> features = transformer.transformNoHeader(lines);
+        List<UniProtKBFeature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
-        Feature feature = features.get(0);
-        assertEquals(FeatureType.CARBOHYD, feature.getType());
+        UniProtKBFeature feature = features.get(0);
+        assertEquals(UniprotKBFeatureType.CARBOHYD, feature.getType());
 
         assertEquals(196, feature.getLocation().getStart().getValue().intValue());
         assertEquals(PositionModifier.EXACT, feature.getLocation().getStart().getModifier());
         assertEquals(196, feature.getLocation().getEnd().getValue().intValue());
         assertEquals(PositionModifier.EXACT, feature.getLocation().getEnd().getModifier());
-        assertEquals(FeatureType.CARBOHYD, feature.getType());
+        assertEquals(UniprotKBFeatureType.CARBOHYD, feature.getType());
         //	assertEquals(CarbohydLinkType.NITROGEN, feature.getCarbohydLinkType());
         //	assertEquals("(GlcNAc...)", feature.getLinkedSugar().getValue());
         assertEquals("N-linked (GlcNAc...); by host", feature.getDescription().getValue());
@@ -231,16 +231,16 @@ class FtLineTransformerTest {
     @Test
     void testCarbohyd2() {
         String lines = "CARBOHYD 7\n/note=\"O-linked (GalNAc...)\"\n";
-        List<Feature> features = transformer.transformNoHeader(lines);
+        List<UniProtKBFeature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
-        Feature feature = features.get(0);
-        assertEquals(FeatureType.CARBOHYD, feature.getType());
+        UniProtKBFeature feature = features.get(0);
+        assertEquals(UniprotKBFeatureType.CARBOHYD, feature.getType());
 
         assertEquals(7, feature.getLocation().getStart().getValue().intValue());
         assertEquals(PositionModifier.EXACT, feature.getLocation().getStart().getModifier());
         assertEquals(7, feature.getLocation().getEnd().getValue().intValue());
         assertEquals(PositionModifier.EXACT, feature.getLocation().getEnd().getModifier());
-        assertEquals(FeatureType.CARBOHYD, feature.getType());
+        assertEquals(UniprotKBFeatureType.CARBOHYD, feature.getType());
 
         //		assertEquals(CarbohydLinkType.OXYGEN, feature.getCarbohydLinkType());
         //		assertEquals("(GalNAc...)", feature.getLinkedSugar().getValue());

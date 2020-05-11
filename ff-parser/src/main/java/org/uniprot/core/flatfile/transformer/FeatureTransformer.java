@@ -13,13 +13,13 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.Position;
 import org.uniprot.core.PositionModifier;
-import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
-import org.uniprot.core.uniprotkb.feature.AlternativeSequenceHelper;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureLocation;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
-import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
-import org.uniprot.core.uniprotkb.feature.impl.FeatureBuilder;
+import org.uniprot.core.feature.AlternativeSequence;
+import org.uniprot.core.feature.FeatureLocation;
+import org.uniprot.core.feature.impl.AlternativeSequenceBuilder;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBAlternativeSequenceHelper;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
+import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
 
@@ -41,11 +41,11 @@ public class FeatureTransformer {
     private static final String LINE_END = "\n";
     private static final String IN_REF = "in Ref. ";
 
-    public Feature transform(String annotation) {
+    public UniProtKBFeature transform(String annotation) {
         int index = annotation.indexOf(SPACE);
         String type = annotation.substring(0, index);
         annotation = annotation.substring(index + 1).trim();
-        return transform(FeatureType.typeOf(type), annotation);
+        return transform(UniprotKBFeatureType.typeOf(type), annotation);
     }
 
     private Map.Entry<String, String> extractToken(String annotation, String tokenKey) {
@@ -64,7 +64,7 @@ public class FeatureTransformer {
         return new AbstractMap.SimpleEntry<>(annotation, token);
     }
 
-    public Feature transform(FeatureType featureType, String annotation) {
+    public UniProtKBFeature transform(UniprotKBFeatureType featureType, String annotation) {
         if (annotation.startsWith(featureType.name())) {
             annotation = annotation.substring(featureType.name().length() + 1).trim();
         }
@@ -72,7 +72,7 @@ public class FeatureTransformer {
         annotation = entry.getKey();
         String ftid = entry.getValue();
 
-        FeatureBuilder builder = new FeatureBuilder();
+        UniProtKBFeatureBuilder builder = new UniProtKBFeatureBuilder();
         builder.type(featureType);
 
         if (!Strings.isNullOrEmpty(ftid)) {
@@ -94,7 +94,7 @@ public class FeatureTransformer {
         String note = entry.getValue();
         if (!Strings.isNullOrEmpty(note)) {
             String text = note.trim();
-            if (!AlternativeSequenceHelper.hasAlternativeSequence(featureType)) {
+            if (!UniprotKBAlternativeSequenceHelper.hasAlternativeSequence(featureType)) {
                 builder.description(text);
             } else {
                 Pair<String, AlternativeSequence> result =
@@ -121,9 +121,9 @@ public class FeatureTransformer {
     }
 
     private Pair<String, AlternativeSequence> updateFeatureDescription(
-            FeatureType type, String text) {
+            UniprotKBFeatureType type, String text) {
         String description = "";
-        if (type == FeatureType.CONFLICT) {
+        if (type == UniprotKBFeatureType.CONFLICT) {
             int index = text.indexOf(BRACKET_LEFT);
             if (index == -1) {
                 text = text.substring(0, text.length() - 1);
@@ -147,7 +147,7 @@ public class FeatureTransformer {
                 }
                 text = text.substring(0, index).trim();
             }
-        } else if (type == FeatureType.MUTAGEN) {
+        } else if (type == UniprotKBFeatureType.MUTAGEN) {
             int index = text.indexOf(": ");
             if (index == -1) {
                 text = text.substring(0, text.length() - 1);
@@ -159,7 +159,7 @@ public class FeatureTransformer {
             } else reportString = text.substring(index + 2, text.length());
             text = text.substring(0, index).trim();
             description = reportString;
-        } else if (type == FeatureType.VARIANT) {
+        } else if (type == UniprotKBFeatureType.VARIANT) {
             int index = text.indexOf(BRACKET_LEFT);
             if (index == -1) {
                 text = text.substring(0, text.length());
@@ -170,7 +170,7 @@ public class FeatureTransformer {
                 reportString = reportString.replaceAll(LINE_END, " ");
                 text = text.substring(0, index);
             }
-        } else if (type == FeatureType.VAR_SEQ) {
+        } else if (type == UniprotKBFeatureType.VAR_SEQ) {
             int index = text.indexOf(BRACKET_LEFT);
             if (index == -1) {
                 text = text.substring(0, text.length());

@@ -23,9 +23,9 @@ import org.uniprot.core.uniprotkb.comment.impl.*;
 import org.uniprot.core.uniprotkb.description.impl.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
-import org.uniprot.core.uniprotkb.feature.impl.FeatureBuilder;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
+import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
@@ -38,11 +38,11 @@ class UniProtKBEntryImplTest {
                     new BPCPCommentBuilder().build(),
                     new DiseaseCommentBuilder().build(),
                     new BPCPCommentBuilder().build());
-    private List<Feature> features =
+    private List<UniProtKBFeature> features =
             asList(
-                    new FeatureBuilder().build(),
-                    new FeatureBuilder().type(FeatureType.CHAIN).build(),
-                    new FeatureBuilder().type(FeatureType.VARIANT).build());
+                    new UniProtKBFeatureBuilder().build(),
+                    new UniProtKBFeatureBuilder().type(UniprotKBFeatureType.CHAIN).build(),
+                    new UniProtKBFeatureBuilder().type(UniprotKBFeatureType.VARIANT).build());
     private List<UniProtKBReference> references =
             asList(
                     new UniProtKBReferenceImpl(),
@@ -89,7 +89,7 @@ class UniProtKBEntryImplTest {
     @Test
     void canFilterByFeatureType() {
         UniProtKBEntry entry = UniProtKBEntryBuilder.from(minEntry).featuresSet(features).build();
-        List<Feature> comments = entry.getFeaturesByType(FeatureType.CHAIN);
+        List<UniProtKBFeature> comments = entry.getFeaturesByType(UniprotKBFeatureType.CHAIN);
 
         assertFalse(comments.isEmpty());
         assertEquals(1, comments.size());
@@ -112,7 +112,10 @@ class UniProtKBEntryImplTest {
         UniProtKBEntry entry =
                 UniProtKBEntryBuilder.from(minEntry)
                         .featuresSet(features)
-                        .featuresAdd(new FeatureBuilder().type(FeatureType.NON_TER).build())
+                        .featuresAdd(
+                                new UniProtKBFeatureBuilder()
+                                        .type(UniprotKBFeatureType.NON_TER)
+                                        .build())
                         .build();
         assertTrue(entry.isFragment());
     }
@@ -1325,7 +1328,10 @@ class UniProtKBEntryImplTest {
     void canGatherEvidencesFrom_Features() {
         List<Evidence> evidences =
                 UniProtKBEntryBuilder.from(minEntry)
-                        .featuresAdd(new FeatureBuilder().evidencesAdd(createEvidence()).build())
+                        .featuresAdd(
+                                new UniProtKBFeatureBuilder()
+                                        .evidencesAdd(createEvidence())
+                                        .build())
                         .build()
                         .gatherEvidences();
         assertEquals(1, evidences.size());

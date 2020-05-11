@@ -23,8 +23,8 @@ import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.cv.xdb.UniProtCrossReferenceDisplayOrder;
 
@@ -146,9 +146,9 @@ public class UniProtEntryScored implements HasScore {
         double oldscore = 0;
         double localScore = 0;
         boolean isSP = (entry.getEntryType() == UniProtKBEntryType.SWISSPROT);
-        for (FeatureType type : FeatureType.values()) {
+        for (UniprotKBFeatureType type : UniprotKBFeatureType.values()) {
             List<HasScore> scoredList = new ArrayList<>();
-            for (Feature feature :
+            for (UniProtKBFeature feature :
                     entry.getFeatures().stream()
                             .filter(f -> f.getType().equals(type))
                             .collect(Collectors.toList())) {

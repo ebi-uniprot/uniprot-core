@@ -12,8 +12,8 @@ import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
@@ -51,9 +51,9 @@ public interface UniProtKBEntry extends Serializable {
 
     <T extends Comment> List<T> getCommentsByType(CommentType type);
 
-    List<Feature> getFeatures();
+    List<UniProtKBFeature> getFeatures();
 
-    List<Feature> getFeaturesByType(FeatureType type);
+    List<UniProtKBFeature> getFeaturesByType(UniprotKBFeatureType type);
 
     List<GeneLocation> getGeneLocations();
 

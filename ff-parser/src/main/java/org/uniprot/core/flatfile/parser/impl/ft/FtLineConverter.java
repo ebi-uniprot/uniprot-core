@@ -5,22 +5,22 @@ import java.util.regex.Matcher;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.PositionModifier;
+import org.uniprot.core.feature.AlternativeSequence;
+import org.uniprot.core.feature.FeatureLocation;
+import org.uniprot.core.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
 import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureDatabase;
-import org.uniprot.core.uniprotkb.feature.FeatureLocation;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
-import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
-import org.uniprot.core.uniprotkb.feature.impl.FeatureBuilder;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureDatabase;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
+import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
 
 import com.google.common.base.Strings;
 
 public class FtLineConverter extends EvidenceCollector
-        implements Converter<FtLineObject, List<Feature>> {
+        implements Converter<FtLineObject, List<UniProtKBFeature>> {
     /** */
     private static final long serialVersionUID = -5497576148432940559L;
 
@@ -29,25 +29,25 @@ public class FtLineConverter extends EvidenceCollector
     private static final String ISOFORM_REGEX = ", isoform | and isoform ";
 
     @Override
-    public List<Feature> convert(FtLineObject f) {
-        List<Feature> features = new ArrayList<>();
+    public List<UniProtKBFeature> convert(FtLineObject f) {
+        List<UniProtKBFeature> features = new ArrayList<>();
         Map<Object, List<Evidence>> evidenceMap =
                 EvidenceConverterHelper.convert(f.getEvidenceInfo());
         this.addAll(evidenceMap.values());
         for (FtLineObject.FT ft : f.getFts()) {
-            FeatureType featureType = convert(ft.getType());
+            UniprotKBFeatureType featureType = convert(ft.getType());
 
             FeatureLocation location =
                     convertFeatureLocation(
                             ft.getSequence(), ft.getLocationStart(), ft.getLocationEnd());
-            Feature feature = convertFeature(featureType, location, ft, evidenceMap);
+            UniProtKBFeature feature = convertFeature(featureType, location, ft, evidenceMap);
             features.add(feature);
         }
         return features;
     }
 
-    private Feature convertFeature(
-            FeatureType type,
+    private UniProtKBFeature convertFeature(
+            UniprotKBFeatureType type,
             FeatureLocation location,
             FtLineObject.FT ft,
             Map<Object, List<Evidence>> evidenceMap) {
@@ -68,12 +68,12 @@ public class FtLineConverter extends EvidenceCollector
         }
     }
 
-    private Feature convertCarbohydFeature(
-            FeatureType type,
+    private UniProtKBFeature convertCarbohydFeature(
+            UniprotKBFeatureType type,
             FeatureLocation location,
             FtLineObject.FT ft,
             List<Evidence> evidences) {
-        return new FeatureBuilder()
+        return new UniProtKBFeatureBuilder()
                 .type(type)
                 .location(location)
                 .featureId(ft.getFtId())
@@ -82,8 +82,8 @@ public class FtLineConverter extends EvidenceCollector
                 .build();
     }
 
-    private Feature convertVarSeqFeature(
-            FeatureType type,
+    private UniProtKBFeature convertVarSeqFeature(
+            UniprotKBFeatureType type,
             FeatureLocation location,
             FtLineObject.FT ft,
             List<Evidence> evidences) {
@@ -120,7 +120,7 @@ public class FtLineConverter extends EvidenceCollector
                         .build();
         //	factory.createReport(isoforms));
 
-        return new FeatureBuilder()
+        return new UniProtKBFeatureBuilder()
                 .type(type)
                 .location(location)
                 .description(description)
@@ -175,8 +175,8 @@ public class FtLineConverter extends EvidenceCollector
         return true;
     }
 
-    private Feature convertVariantFeature(
-            FeatureType type,
+    private UniProtKBFeature convertVariantFeature(
+            UniprotKBFeatureType type,
             FeatureLocation location,
             FtLineObject.FT ft,
             List<Evidence> evidences) {
@@ -201,8 +201,8 @@ public class FtLineConverter extends EvidenceCollector
                         .alternativeSequencesSet(alternativeSequences)
                         .build();
         //		factory.createReport(reports));
-        CrossReference<FeatureDatabase> dbXref = null;
-        return new FeatureBuilder()
+        CrossReference<UniprotKBFeatureDatabase> dbXref = null;
+        return new UniProtKBFeatureBuilder()
                 .type(type)
                 .location(location)
                 .description(description)
@@ -213,8 +213,8 @@ public class FtLineConverter extends EvidenceCollector
                 .build();
     }
 
-    private Feature convertConflictFeature(
-            FeatureType type,
+    private UniProtKBFeature convertConflictFeature(
+            UniprotKBFeatureType type,
             FeatureLocation location,
             FtLineObject.FT ft,
             List<Evidence> evidences) {
@@ -244,7 +244,7 @@ public class FtLineConverter extends EvidenceCollector
         ;
         //	factory.createReport(reports));
 
-        return new FeatureBuilder()
+        return new UniProtKBFeatureBuilder()
                 .type(type)
                 .location(location)
                 .evidencesSet(evidences)
@@ -253,8 +253,8 @@ public class FtLineConverter extends EvidenceCollector
                 .build();
     }
 
-    private Feature convertMutagenFeature(
-            FeatureType type,
+    private UniProtKBFeature convertMutagenFeature(
+            UniprotKBFeatureType type,
             FeatureLocation location,
             FtLineObject.FT ft,
             List<Evidence> evidences) {
@@ -281,7 +281,7 @@ public class FtLineConverter extends EvidenceCollector
                         .alternativeSequencesSet(alternativeSequences)
                         .build();
         //	factory.createReport(reports));
-        return new FeatureBuilder()
+        return new UniProtKBFeatureBuilder()
                 .type(type)
                 .location(location)
                 //                .featureId(ft.ftId)
@@ -291,13 +291,13 @@ public class FtLineConverter extends EvidenceCollector
                 .build();
     }
 
-    private Feature convertSimpleFeature(
-            FeatureType type,
+    private UniProtKBFeature convertSimpleFeature(
+            UniprotKBFeatureType type,
             FeatureLocation location,
             FtLineObject.FT ft,
             List<Evidence> evidences) {
-        FeatureBuilder featureBuilder =
-                new FeatureBuilder()
+        UniProtKBFeatureBuilder featureBuilder =
+                new UniProtKBFeatureBuilder()
                         .type(type)
                         .location(location)
                         .evidencesSet(evidences)
@@ -361,125 +361,125 @@ public class FtLineConverter extends EvidenceCollector
         return new AbstractMap.SimpleEntry<>(startModifier, start);
     }
 
-    private FeatureType convert(FtLineObject.FTType type) {
-        FeatureType ftype = FeatureType.ACT_SITE;
+    private UniprotKBFeatureType convert(FtLineObject.FTType type) {
+        UniprotKBFeatureType ftype = UniprotKBFeatureType.ACT_SITE;
         switch (type) {
             case INIT_MET:
-                ftype = FeatureType.INIT_MET;
+                ftype = UniprotKBFeatureType.INIT_MET;
                 break;
             case SIGNAL:
-                ftype = FeatureType.SIGNAL;
+                ftype = UniprotKBFeatureType.SIGNAL;
                 break;
             case PROPEP:
-                ftype = FeatureType.PROPEP;
+                ftype = UniprotKBFeatureType.PROPEP;
                 break;
             case TRANSIT:
-                ftype = FeatureType.TRANSIT;
+                ftype = UniprotKBFeatureType.TRANSIT;
                 break;
             case CHAIN:
-                ftype = FeatureType.CHAIN;
+                ftype = UniprotKBFeatureType.CHAIN;
                 break;
             case PEPTIDE:
-                ftype = FeatureType.PEPTIDE;
+                ftype = UniprotKBFeatureType.PEPTIDE;
                 break;
             case TOPO_DOM:
-                ftype = FeatureType.TOPO_DOM;
+                ftype = UniprotKBFeatureType.TOPO_DOM;
                 break;
             case TRANSMEM:
-                ftype = FeatureType.TRANSMEM;
+                ftype = UniprotKBFeatureType.TRANSMEM;
                 break;
             case INTRAMEM:
-                ftype = FeatureType.INTRAMEM;
+                ftype = UniprotKBFeatureType.INTRAMEM;
                 break;
             case DOMAIN:
-                ftype = FeatureType.DOMAIN;
+                ftype = UniprotKBFeatureType.DOMAIN;
                 break;
             case REPEAT:
-                ftype = FeatureType.REPEAT;
+                ftype = UniprotKBFeatureType.REPEAT;
                 break;
             case CA_BIND:
-                ftype = FeatureType.CA_BIND;
+                ftype = UniprotKBFeatureType.CA_BIND;
                 break;
             case ZN_FING:
-                ftype = FeatureType.ZN_FING;
+                ftype = UniprotKBFeatureType.ZN_FING;
                 break;
             case DNA_BIND:
-                ftype = FeatureType.DNA_BIND;
+                ftype = UniprotKBFeatureType.DNA_BIND;
                 break;
             case NP_BIND:
-                ftype = FeatureType.NP_BIND;
+                ftype = UniprotKBFeatureType.NP_BIND;
                 break;
             case REGION:
-                ftype = FeatureType.REGION;
+                ftype = UniprotKBFeatureType.REGION;
                 break;
             case COILED:
-                ftype = FeatureType.COILED;
+                ftype = UniprotKBFeatureType.COILED;
                 break;
             case MOTIF:
-                ftype = FeatureType.MOTIF;
+                ftype = UniprotKBFeatureType.MOTIF;
                 break;
             case COMPBIAS:
-                ftype = FeatureType.COMPBIAS;
+                ftype = UniprotKBFeatureType.COMPBIAS;
                 break;
             case ACT_SITE:
-                ftype = FeatureType.ACT_SITE;
+                ftype = UniprotKBFeatureType.ACT_SITE;
                 break;
             case METAL:
-                ftype = FeatureType.METAL;
+                ftype = UniprotKBFeatureType.METAL;
                 break;
             case BINDING:
-                ftype = FeatureType.BINDING;
+                ftype = UniprotKBFeatureType.BINDING;
                 break;
             case SITE:
-                ftype = FeatureType.SITE;
+                ftype = UniprotKBFeatureType.SITE;
                 break;
             case NON_STD:
-                ftype = FeatureType.NON_STD;
+                ftype = UniprotKBFeatureType.NON_STD;
                 break;
             case MOD_RES:
-                ftype = FeatureType.MOD_RES;
+                ftype = UniprotKBFeatureType.MOD_RES;
                 break;
             case LIPID:
-                ftype = FeatureType.LIPID;
+                ftype = UniprotKBFeatureType.LIPID;
                 break;
             case CARBOHYD:
-                ftype = FeatureType.CARBOHYD;
+                ftype = UniprotKBFeatureType.CARBOHYD;
                 break;
             case DISULFID:
-                ftype = FeatureType.DISULFID;
+                ftype = UniprotKBFeatureType.DISULFID;
                 break;
             case CROSSLNK:
-                ftype = FeatureType.CROSSLNK;
+                ftype = UniprotKBFeatureType.CROSSLNK;
                 break;
             case VAR_SEQ:
-                ftype = FeatureType.VAR_SEQ;
+                ftype = UniprotKBFeatureType.VAR_SEQ;
                 break;
             case VARIANT:
-                ftype = FeatureType.VARIANT;
+                ftype = UniprotKBFeatureType.VARIANT;
                 break;
             case MUTAGEN:
-                ftype = FeatureType.MUTAGEN;
+                ftype = UniprotKBFeatureType.MUTAGEN;
                 break;
             case UNSURE:
-                ftype = FeatureType.UNSURE;
+                ftype = UniprotKBFeatureType.UNSURE;
                 break;
             case CONFLICT:
-                ftype = FeatureType.CONFLICT;
+                ftype = UniprotKBFeatureType.CONFLICT;
                 break;
             case NON_CONS:
-                ftype = FeatureType.NON_CONS;
+                ftype = UniprotKBFeatureType.NON_CONS;
                 break;
             case NON_TER:
-                ftype = FeatureType.NON_TER;
+                ftype = UniprotKBFeatureType.NON_TER;
                 break;
             case HELIX:
-                ftype = FeatureType.HELIX;
+                ftype = UniprotKBFeatureType.HELIX;
                 break;
             case STRAND:
-                ftype = FeatureType.STRAND;
+                ftype = UniprotKBFeatureType.STRAND;
                 break;
             case TURN:
-                ftype = FeatureType.TURN;
+                ftype = UniprotKBFeatureType.TURN;
                 break;
         }
         return ftype;

@@ -16,8 +16,8 @@ import org.uniprot.core.flatfile.parser.impl.ft.FtLineTransformer;
 import org.uniprot.core.scorer.uniprotkb.Consensus;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.features.FeatureScored;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
 class FeatureScoredTest {
 
@@ -250,12 +250,12 @@ class FeatureScoredTest {
         UniprotKBLineParser<FtLineObject> parser = parserFactory.createFtLineParser();
         FtLineObject obj = parser.parse(featureLines);
         FtLineConverter converter = new FtLineConverter();
-        List<Feature> features = converter.convert(obj);
+        List<UniProtKBFeature> features = converter.convert(obj);
 
         double score = 0;
-        for (FeatureType type : FeatureType.values()) {
+        for (UniprotKBFeatureType type : UniprotKBFeatureType.values()) {
             List<HasScore> scoredList = new ArrayList<>();
-            for (Feature feature :
+            for (UniProtKBFeature feature :
                     features.stream()
                             .filter(f -> f.getType().equals(type))
                             .collect(Collectors.toList())) {

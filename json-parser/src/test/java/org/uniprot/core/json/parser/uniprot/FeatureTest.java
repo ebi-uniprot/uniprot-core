@@ -8,16 +8,16 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.PositionModifier;
+import org.uniprot.core.feature.AlternativeSequence;
+import org.uniprot.core.feature.FeatureLocation;
+import org.uniprot.core.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureDatabase;
-import org.uniprot.core.uniprotkb.feature.FeatureLocation;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
-import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
-import org.uniprot.core.uniprotkb.feature.impl.FeatureBuilder;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureDatabase;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
+import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -26,19 +26,24 @@ public class FeatureTest {
 
     @Test
     void testFeatureSimple() {
-        Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).build();
+        UniProtKBFeature feature =
+                new UniProtKBFeatureBuilder().type(UniprotKBFeatureType.CHAIN).build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(feature);
         assertNotNull(jsonNode.get("type"));
-        assertEquals(FeatureType.CHAIN.getDisplayName(), jsonNode.get("type").asText());
+        assertEquals(UniprotKBFeatureType.CHAIN.getDisplayName(), jsonNode.get("type").asText());
     }
 
     @Test
     void testFeatureExact() {
         FeatureLocation location = new FeatureLocation(2, 8);
-        Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).location(location).build();
+        UniProtKBFeature feature =
+                new UniProtKBFeatureBuilder()
+                        .type(UniprotKBFeatureType.CHAIN)
+                        .location(location)
+                        .build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
     }
@@ -48,7 +53,11 @@ public class FeatureTest {
         FeatureLocation location =
                 new FeatureLocation(
                         "seq1", 2, 8, PositionModifier.OUTSIDE, PositionModifier.OUTSIDE);
-        Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).location(location).build();
+        UniProtKBFeature feature =
+                new UniProtKBFeatureBuilder()
+                        .type(UniprotKBFeatureType.CHAIN)
+                        .location(location)
+                        .build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
     }
@@ -57,7 +66,11 @@ public class FeatureTest {
     void testFeatureUnsure() {
         FeatureLocation location =
                 new FeatureLocation(2, 8, PositionModifier.UNSURE, PositionModifier.UNSURE);
-        Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).location(location).build();
+        UniProtKBFeature feature =
+                new UniProtKBFeatureBuilder()
+                        .type(UniprotKBFeatureType.CHAIN)
+                        .location(location)
+                        .build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
     }
@@ -67,21 +80,25 @@ public class FeatureTest {
         FeatureLocation location =
                 new FeatureLocation(
                         "seqId", -1, -1, PositionModifier.UNKNOWN, PositionModifier.UNKNOWN);
-        Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).location(location).build();
+        UniProtKBFeature feature =
+                new UniProtKBFeatureBuilder()
+                        .type(UniprotKBFeatureType.CHAIN)
+                        .location(location)
+                        .build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
     }
 
     @Test
     void testFeatureComplete() {
-        Feature feature = getFeature();
+        UniProtKBFeature feature = getFeature();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
         ValidateJson.verifyEmptyFields(feature);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(feature);
         assertNotNull(jsonNode.get("type"));
-        assertEquals(FeatureType.CHAIN.getDisplayName(), jsonNode.get("type").asText());
+        assertEquals(UniprotKBFeatureType.CHAIN.getDisplayName(), jsonNode.get("type").asText());
 
         assertNotNull(jsonNode.get("location"));
 
@@ -128,20 +145,20 @@ public class FeatureTest {
                 jsonNode.get("evidences").get(0), "ECO:0000269", "PubMed", "11389730");
     }
 
-    public static Feature getFeature() {
-        return getFeature(FeatureType.CHAIN);
+    public static UniProtKBFeature getFeature() {
+        return getFeature(UniprotKBFeatureType.CHAIN);
     }
 
-    public static Feature getFeature(FeatureType featureType) {
+    public static UniProtKBFeature getFeature(UniprotKBFeatureType featureType) {
         AlternativeSequence alternativeSequence =
                 new AlternativeSequenceBuilder()
                         .original("original value")
                         .alternativeSequencesAdd("alternative value")
                         .build();
 
-        CrossReference<FeatureDatabase> xrefs =
-                new CrossReferenceBuilder<FeatureDatabase>()
-                        .database(FeatureDatabase.DBSNP)
+        CrossReference<UniprotKBFeatureDatabase> xrefs =
+                new CrossReferenceBuilder<UniprotKBFeatureDatabase>()
+                        .database(UniprotKBFeatureDatabase.DBSNP)
                         .id("db id")
                         .build();
 
@@ -149,7 +166,7 @@ public class FeatureTest {
                 new FeatureLocation(
                         "sequence 1", 2, 8, PositionModifier.EXACT, PositionModifier.EXACT);
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730");
-        return new FeatureBuilder()
+        return new UniProtKBFeatureBuilder()
                 .type(featureType)
                 .alternativeSequence(alternativeSequence)
                 .featureCrossReference(xrefs)

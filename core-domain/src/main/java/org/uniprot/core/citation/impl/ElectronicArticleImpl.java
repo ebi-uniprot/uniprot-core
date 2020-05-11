@@ -7,7 +7,6 @@ import java.util.Objects;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
-import org.uniprot.core.util.Utils;
 
 public class ElectronicArticleImpl extends AbstractCitationImpl implements ElectronicArticle {
     private static final long serialVersionUID = -8389378286532442748L;
@@ -92,11 +91,6 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
         @Override
         public String getValue() {
             return value;
-        }
-
-        @Override
-        public boolean hasValue() {
-            return Utils.notNullNotEmpty(this.value);
         }
 
         @Override

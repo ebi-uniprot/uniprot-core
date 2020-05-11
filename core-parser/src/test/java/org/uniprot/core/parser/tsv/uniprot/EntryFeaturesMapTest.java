@@ -8,22 +8,22 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.feature.AlternativeSequence;
+import org.uniprot.core.feature.FeatureLocation;
+import org.uniprot.core.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
-import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureLocation;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
-import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
-import org.uniprot.core.uniprotkb.feature.impl.FeatureBuilder;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
+import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
 
 class EntryFeaturesMapTest {
 
     @Test
     void testGetData() {
 
-        List<Feature> features = createTestFeatures();
+        List<UniProtKBFeature> features = createTestFeatures();
         EntryFeaturesMap dl = new EntryFeaturesMap(features);
         Map<String, String> result = dl.attributeValues();
         assertEquals(4, result.size());
@@ -40,28 +40,28 @@ class EntryFeaturesMapTest {
 
     @Test
     void testGetFeatures() {
-        List<Feature> features = createTestFeatures();
+        List<UniProtKBFeature> features = createTestFeatures();
         List<String> featureList = EntryFeaturesMap.getFeatures(features);
         List<String> expected = Arrays.asList("Domain (1)", "Helix (1)", "Natural variant (2)");
         assertEquals(expected, featureList);
     }
 
-    List<Feature> createTestFeatures() {
-        List<Feature> features = new ArrayList<>();
+    List<UniProtKBFeature> createTestFeatures() {
+        List<UniProtKBFeature> features = new ArrayList<>();
         List<Evidence> evidences = new ArrayList<>();
         evidences.add(createEvidence("ECO:0000269", "PubMed", "6142052"));
         evidences.add(createEvidence("ECO:0000269", "PubMed", "12345"));
         features.add(
                 createFeature(
-                        FeatureType.VARIANT,
+                        UniprotKBFeatureType.VARIANT,
                         new FeatureLocation(23, 23),
                         "in SCN1; dbSNP:rs1064793108",
                         "VAR_064512",
                         null,
                         createAlternativeSequence("A", "G")));
-        Feature feature =
+        UniProtKBFeature feature =
                 createFeature(
-                        FeatureType.VARIANT,
+                        UniprotKBFeatureType.VARIANT,
                         new FeatureLocation(27, 27),
                         "in another; dbSNP:rs1064793121",
                         "VAR_064556",
@@ -70,7 +70,7 @@ class EntryFeaturesMapTest {
         features.add(feature);
         features.add(
                 createFeature(
-                        FeatureType.DOMAIN,
+                        UniprotKBFeatureType.DOMAIN,
                         new FeatureLocation(23, 23),
                         "some domain",
                         null,
@@ -79,9 +79,14 @@ class EntryFeaturesMapTest {
 
         List<Evidence> evidences2 = new ArrayList<>();
         evidences2.add(createEvidence("ECO:0000244", "PDB", "2LO1"));
-        Feature feature2 =
+        UniProtKBFeature feature2 =
                 createFeature(
-                        FeatureType.HELIX, new FeatureLocation(7, 10), "", null, evidences2, null);
+                        UniprotKBFeatureType.HELIX,
+                        new FeatureLocation(7, 10),
+                        "",
+                        null,
+                        evidences2,
+                        null);
         features.add(feature2);
 
         return features;
@@ -94,9 +99,9 @@ class EntryFeaturesMapTest {
 
     @Test
     void testFeatureWithFtIdToString() {
-        Feature feature =
+        UniProtKBFeature feature =
                 createFeature(
-                        FeatureType.VARIANT,
+                        UniprotKBFeatureType.VARIANT,
                         new FeatureLocation(23, 23),
                         "in SCN1; dbSNP:rs1064793108",
                         "VAR_064512",
@@ -114,9 +119,9 @@ class EntryFeaturesMapTest {
         evidences.add(createEvidence("ECO:0000269", "PubMed", "12345"));
         evidences.add(createEvidence("ECO:0000269", "PubMed", "6142052"));
 
-        Feature feature =
+        UniProtKBFeature feature =
                 createFeature(
-                        FeatureType.VARIANT,
+                        UniprotKBFeatureType.VARIANT,
                         new FeatureLocation(23, 23),
                         "in SCN1; dbSNP:rs1064793108",
                         "VAR_064512",
@@ -131,9 +136,9 @@ class EntryFeaturesMapTest {
 
     @Test
     void testFeatureToString() {
-        Feature feature =
+        UniProtKBFeature feature =
                 createFeature(
-                        FeatureType.DOMAIN,
+                        UniprotKBFeatureType.DOMAIN,
                         new FeatureLocation(23, 23),
                         "some domain",
                         null,
@@ -149,9 +154,9 @@ class EntryFeaturesMapTest {
         List<Evidence> evidences = new ArrayList<>();
         evidences.add(createEvidence("ECO:0000269", "PubMed", "6142052"));
         evidences.add(createEvidence("ECO:0000269", "PubMed", "12345"));
-        Feature feature =
+        UniProtKBFeature feature =
                 createFeature(
-                        FeatureType.DOMAIN,
+                        UniprotKBFeatureType.DOMAIN,
                         new FeatureLocation(23, 23),
                         "some domain",
                         null,
@@ -168,9 +173,14 @@ class EntryFeaturesMapTest {
     void testFeatureNoDescWithEvidenceToString() {
         List<Evidence> evidences = new ArrayList<>();
         evidences.add(createEvidence("ECO:0000244", "PDB", "2LO1"));
-        Feature feature =
+        UniProtKBFeature feature =
                 createFeature(
-                        FeatureType.HELIX, new FeatureLocation(7, 10), "", null, evidences, null);
+                        UniprotKBFeatureType.HELIX,
+                        new FeatureLocation(7, 10),
+                        "",
+                        null,
+                        evidences,
+                        null);
         String result = EntryFeaturesMap.featureToString(feature);
         String expected = "HELIX 7..10 /evidence=\"ECO:0000244|PDB:2LO1\"";
         assertEquals(result, expected);
@@ -183,14 +193,14 @@ class EntryFeaturesMapTest {
                 .build();
     }
 
-    private Feature createFeature(
-            FeatureType type,
+    private UniProtKBFeature createFeature(
+            UniprotKBFeatureType type,
             FeatureLocation range,
             String description,
             String ftid,
             List<Evidence> evidences,
             AlternativeSequence alternativeSequence) {
-        return new FeatureBuilder()
+        return new UniProtKBFeatureBuilder()
                 .type(type)
                 .description(description)
                 .featureId(ftid)

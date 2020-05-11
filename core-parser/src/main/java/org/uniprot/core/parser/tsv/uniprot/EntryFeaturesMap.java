@@ -1,23 +1,16 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.feature.FeatureDescription;
 import org.uniprot.core.flatfile.parser.impl.ft.FeatureLineBuilderFactory;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.parser.tsv.NamedValueMap;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureDescription;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
 public class EntryFeaturesMap implements NamedValueMap {
     public static final List<String> FIELDS =
@@ -112,9 +105,9 @@ public class EntryFeaturesMap implements NamedValueMap {
         FEATURETYPE_2_NAME.put("INTRAMEM", "Intramembrane");
     }
 
-    private final List<Feature> features;
+    private final List<UniProtKBFeature> features;
 
-    public EntryFeaturesMap(List<Feature> features) {
+    public EntryFeaturesMap(List<UniProtKBFeature> features) {
         if (features == null) {
             this.features = Collections.emptyList();
         } else this.features = Collections.unmodifiableList(features);
@@ -127,20 +120,21 @@ public class EntryFeaturesMap implements NamedValueMap {
         }
 
         Map<String, String> map = new HashMap<>();
-        Map<FeatureType, List<Feature>> featureMap = new HashMap<>();
-        for (Feature feature : features) {
+        EnumMap<UniprotKBFeatureType, List<UniProtKBFeature>> featureMap =
+                new EnumMap<>(UniprotKBFeatureType.class);
+        for (UniProtKBFeature feature : features) {
             featureMap.computeIfAbsent(feature.getType(), k -> new ArrayList<>()).add(feature);
         }
         featureMap.forEach(
-                (featureType, features) -> {
+                (featureType, mapFeatures) -> {
                     String key = "ft_" + featureType.name().toLowerCase();
                     String value =
-                            features.stream()
+                            mapFeatures.stream()
                                     .map(EntryFeaturesMap::featureToString)
                                     .collect(Collectors.joining("; "));
                     map.put(key, value);
-                    if (featureType.equals(FeatureType.VARIANT)) {
-                        String dbSnps = variantTodbSnp(features);
+                    if (featureType.equals(UniprotKBFeatureType.VARIANT)) {
+                        String dbSnps = variantTodbSnp(mapFeatures);
                         if (dbSnps != null && !dbSnps.isEmpty()) {
                             map.put("xref_dbsnp", dbSnps);
                         }
@@ -150,9 +144,9 @@ public class EntryFeaturesMap implements NamedValueMap {
         return map;
     }
 
-    private String variantTodbSnp(List<Feature> features) {
+    private String variantTodbSnp(List<UniProtKBFeature> features) {
         return features.stream()
-                .map(Feature::getDescription)
+                .map(UniProtKBFeature::getDescription)
                 .map(this::getDbsnpFromFeatureDescription)
                 .filter(val -> val != null && !val.isEmpty())
                 .collect(Collectors.joining(" "));
@@ -167,7 +161,7 @@ public class EntryFeaturesMap implements NamedValueMap {
         }
     }
 
-    public static List<String> getFeatures(List<Feature> features) {
+    public static List<String> getFeatures(List<UniProtKBFeature> features) {
         if (features == null) {
             return Collections.emptyList();
         }
@@ -184,8 +178,8 @@ public class EntryFeaturesMap implements NamedValueMap {
                 .collect(Collectors.toList());
     }
 
-    public static String featureToString(Feature feature) {
-        FFLineBuilder<Feature> fbuilder = FeatureLineBuilderFactory.create(feature);
+    public static String featureToString(UniProtKBFeature feature) {
+        FFLineBuilder<UniProtKBFeature> fbuilder = FeatureLineBuilderFactory.create(feature);
         return fbuilder.buildStringWithEvidence(feature).replaceAll("\n", " ");
     }
 

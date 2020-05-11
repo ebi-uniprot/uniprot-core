@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
 class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
     @Test
@@ -20,7 +20,8 @@ class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
         String description = "VWFA 3; main binding site for collagens type I and III";
         List<String> evs = new ArrayList<>();
 
-        Feature feature = createFeature(FeatureType.ACT_SITE, 1691, 1871, description, null, evs);
+        UniProtKBFeature feature =
+                createFeature(UniprotKBFeatureType.ACT_SITE, 1691, 1871, description, null, evs);
 
         doTest(ftLine, feature);
 
@@ -42,8 +43,9 @@ class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
                 "Serine/threonine-protein phosphatase 2A 56 kDa regulatory subunit gamma isoform";
         List<String> evs4 = new ArrayList<>();
 
-        Feature feature =
-                createFeature(FeatureType.CHAIN, 61, 386, description4, "PRO_0000071458", evs4);
+        UniProtKBFeature feature =
+                createFeature(
+                        UniprotKBFeatureType.CHAIN, 61, 386, description4, "PRO_0000071458", evs4);
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);
     }
@@ -56,7 +58,8 @@ class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
         String ftLineString = "BINDING 79..197\n" + "/note=\"Response regulatory (By similarity)\"";
         String description2 = "Response regulatory (By similarity)";
         List<String> evs2 = new ArrayList<>();
-        Feature feature = createFeature(FeatureType.BINDING, 79, 197, description2, null, evs2);
+        UniProtKBFeature feature =
+                createFeature(UniprotKBFeatureType.BINDING, 79, 197, description2, null, evs2);
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);
     }
@@ -82,7 +85,8 @@ class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
         List<String> evs = new ArrayList<>();
         evs.add(ev3);
         evs.add(ev1);
-        Feature feature = createFeature(FeatureType.ACT_SITE, 1691, 1871, description, null, evs);
+        UniProtKBFeature feature =
+                createFeature(UniprotKBFeatureType.ACT_SITE, 1691, 1871, description, null, evs);
 
         doTest(ftLine, feature);
 
@@ -111,8 +115,9 @@ class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
                 "Serine/threonine-protein phosphatase 2A 56 kDa regulatory subunit gamma isoform";
         List<String> evs4 = new ArrayList<>();
         evs4.add("ECO:0000256|HAMAP-Rule:MF_00205");
-        Feature feature =
-                createFeature(FeatureType.CHAIN, 61, 386, description4, "PRO_0000071458", evs4);
+        UniProtKBFeature feature =
+                createFeature(
+                        UniprotKBFeatureType.CHAIN, 61, 386, description4, "PRO_0000071458", evs4);
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);
         doTestStringEv(ftLineStringEv, feature);
@@ -134,7 +139,8 @@ class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
         List<String> evs2 = new ArrayList<>();
         evs2.add("ECO:0000269|PubMed:10433554");
         evs2.add("ECO:0000313|PDB:3OW2");
-        Feature feature = createFeature(FeatureType.BINDING, 79, 197, description2, null, evs2);
+        UniProtKBFeature feature =
+                createFeature(UniprotKBFeatureType.BINDING, 79, 197, description2, null, evs2);
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);
         doTestStringEv(ftLineStringEv, feature);
