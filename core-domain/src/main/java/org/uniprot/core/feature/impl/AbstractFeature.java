@@ -14,7 +14,6 @@ public abstract class AbstractFeature<T extends FeatureDatabase, F extends Featu
     private final F type;
     private final FeatureLocation location;
     private final FeatureDescription description;
-    private final AlternativeSequence alternativeSequence;
     private final CrossReference<T> featureCrossReference;
     private final List<Evidence> evidences;
 
@@ -22,14 +21,12 @@ public abstract class AbstractFeature<T extends FeatureDatabase, F extends Featu
             F type,
             FeatureLocation location,
             FeatureDescription description,
-            AlternativeSequence alternativeSequence,
             CrossReference<T> featureCrossReference,
             List<Evidence> evidences) {
 
         this.type = type;
         this.location = location;
         this.description = description;
-        this.alternativeSequence = alternativeSequence;
         this.featureCrossReference = featureCrossReference;
         this.evidences = Utils.unmodifiableList(evidences);
     }
@@ -50,11 +47,6 @@ public abstract class AbstractFeature<T extends FeatureDatabase, F extends Featu
     }
 
     @Override
-    public AlternativeSequence getAlternativeSequence() {
-        return alternativeSequence;
-    }
-
-    @Override
     public CrossReference<T> getFeatureCrossReference() {
         return featureCrossReference;
     }
@@ -72,7 +64,6 @@ public abstract class AbstractFeature<T extends FeatureDatabase, F extends Featu
         return Objects.equals(getType(), that.getType())
                 && Objects.equals(getLocation(), that.getLocation())
                 && Objects.equals(getDescription(), that.getDescription())
-                && Objects.equals(getAlternativeSequence(), that.getAlternativeSequence())
                 && Objects.equals(getFeatureCrossReference(), that.getFeatureCrossReference())
                 && Objects.equals(getEvidences(), that.getEvidences());
     }
@@ -83,7 +74,6 @@ public abstract class AbstractFeature<T extends FeatureDatabase, F extends Featu
                 getType(),
                 getLocation(),
                 getDescription(),
-                getAlternativeSequence(),
                 getFeatureCrossReference(),
                 getEvidences());
     }

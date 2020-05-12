@@ -7,11 +7,10 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.feature.FeatureLocation;
-import org.uniprot.core.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.feature.impl.FeatureDescriptionBuilder;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
-import org.uniprot.core.uniprotkb.feature.UniProtKBFeatureId;
+import org.uniprot.core.uniprotkb.feature.FeatureId;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureDatabase;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
@@ -39,7 +38,7 @@ class UniProtKBFeatureFeatureImplTest {
     @Test
     void testWithFeatureId() {
         FeatureLocation location = new FeatureLocation(32, 96);
-        UniProtKBFeatureId featureId = new UniProtKBFeatureIdImpl("PRO_324");
+        FeatureId featureId = new FeatureIdImpl("PRO_324");
         UniProtKBFeature feature =
                 new UniProtKBFeatureBuilder()
                         .type(UniprotKBFeatureType.CHAIN)
@@ -78,7 +77,7 @@ class UniProtKBFeatureFeatureImplTest {
                         UniprotKBFeatureType.ZN_FING,
                         new FeatureLocation(1, 2),
                         new FeatureDescriptionBuilder("abc").build(),
-                        new UniProtKBFeatureIdBuilder("1").build(),
+                        new FeatureIdBuilder("1").build(),
                         new AlternativeSequenceBuilder().build(),
                         xrefs,
                         createEvidences());

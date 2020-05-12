@@ -28,7 +28,6 @@ public abstract class AbstractFeatureBuilder<
     protected F type;
     protected FeatureLocation location;
     protected FeatureDescription description;
-    protected AlternativeSequence alternativeSequence;
     protected CrossReference<D> featureCrossReference;
     protected List<Evidence> evidences = new ArrayList<>();
 
@@ -49,11 +48,6 @@ public abstract class AbstractFeatureBuilder<
 
     public @Nonnull B description(FeatureDescription description) {
         this.description = description;
-        return getThis();
-    }
-
-    public @Nonnull B alternativeSequence(AlternativeSequence alternativeSequence) {
-        this.alternativeSequence = alternativeSequence;
         return getThis();
     }
 
@@ -83,7 +77,6 @@ public abstract class AbstractFeatureBuilder<
         return builder.type(instance.getType())
                 .location(instance.getLocation())
                 .description(instance.getDescription())
-                .alternativeSequence(instance.getAlternativeSequence())
                 .featureCrossReference(instance.getFeatureCrossReference())
                 .evidencesSet(instance.getEvidences());
     }

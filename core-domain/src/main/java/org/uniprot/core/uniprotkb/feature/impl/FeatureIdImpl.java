@@ -3,11 +3,11 @@ package org.uniprot.core.uniprotkb.feature.impl;
 import java.util.*;
 import java.util.regex.Pattern;
 
-import org.uniprot.core.uniprotkb.feature.UniProtKBFeatureId;
+import org.uniprot.core.uniprotkb.feature.FeatureId;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 import org.uniprot.core.util.Utils;
 
-public class UniProtKBFeatureIdImpl implements UniProtKBFeatureId {
+public class FeatureIdImpl implements FeatureId {
 
     private static final Map<UniprotKBFeatureType, List<Pattern>> FEATUREID_REGEX_MAP =
             new EnumMap<>(UniprotKBFeatureType.class);
@@ -35,11 +35,11 @@ public class UniProtKBFeatureIdImpl implements UniProtKBFeatureId {
     private final String value;
 
     // no arg constructor for JSON deserialization
-    UniProtKBFeatureIdImpl() {
+    FeatureIdImpl() {
         this.value = "";
     }
 
-    UniProtKBFeatureIdImpl(String value) {
+    FeatureIdImpl(String value) {
         this.value = Utils.emptyOrString(value);
     }
 
@@ -73,7 +73,7 @@ public class UniProtKBFeatureIdImpl implements UniProtKBFeatureId {
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
-        UniProtKBFeatureIdImpl other = (UniProtKBFeatureIdImpl) obj;
+        FeatureIdImpl other = (FeatureIdImpl) obj;
         return value.equals(other.value);
     }
 }

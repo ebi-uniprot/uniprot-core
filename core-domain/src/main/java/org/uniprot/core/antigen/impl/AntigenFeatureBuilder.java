@@ -15,10 +15,16 @@ public class AntigenFeatureBuilder
         extends AbstractFeatureBuilder<
                 AntigenFeatureBuilder, AntigenFeature, AntigenDatabase, AntigenFeatureType> {
 
+    private String antigenSequence;
     private int matchScore;
 
     public @Nonnull AntigenFeatureBuilder matchScore(int matchScore) {
         this.matchScore = matchScore;
+        return getThis();
+    }
+
+    public @Nonnull AntigenFeatureBuilder antigenSequence(String antigenSequence) {
+        this.antigenSequence = antigenSequence;
         return getThis();
     }
 
@@ -35,14 +41,16 @@ public class AntigenFeatureBuilder
                 type,
                 location,
                 description,
-                alternativeSequence,
                 featureCrossReference,
                 evidences,
+                antigenSequence,
                 matchScore);
     }
 
     public static @Nonnull AntigenFeatureBuilder from(@Nonnull AntigenFeature instance) {
         AntigenFeatureBuilder builder = new AntigenFeatureBuilder();
-        return AbstractFeatureBuilder.from(builder, instance).matchScore(instance.getMatchScore());
+        return AbstractFeatureBuilder.from(builder, instance)
+                .antigenSequence(instance.getAntigenSequence())
+                .matchScore(instance.getMatchScore());
     }
 }

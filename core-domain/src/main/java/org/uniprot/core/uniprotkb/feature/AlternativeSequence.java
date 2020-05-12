@@ -1,4 +1,4 @@
-package org.uniprot.core.feature;
+package org.uniprot.core.uniprotkb.feature;
 
 import java.io.Serializable;
 import java.util.List;

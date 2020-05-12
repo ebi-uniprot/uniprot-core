@@ -3,10 +3,7 @@ package org.uniprot.core.uniprotkb.feature.impl;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.feature.impl.AbstractFeatureBuilder;
-import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
-import org.uniprot.core.uniprotkb.feature.UniProtKBFeatureId;
-import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureDatabase;
-import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
+import org.uniprot.core.uniprotkb.feature.*;
 
 /**
  * Created 22/01/19
@@ -20,7 +17,8 @@ public class UniProtKBFeatureBuilder
                 UniprotKBFeatureDatabase,
                 UniprotKBFeatureType> {
 
-    private UniProtKBFeatureId featureId;
+    private AlternativeSequence alternativeSequence;
+    private FeatureId featureId;
 
     @Override
     public @Nonnull UniProtKBFeature build() {
@@ -34,19 +32,26 @@ public class UniProtKBFeatureBuilder
                 evidences);
     }
 
-    public @Nonnull UniProtKBFeatureBuilder featureId(UniProtKBFeatureId featureId) {
+    public @Nonnull UniProtKBFeatureBuilder featureId(FeatureId featureId) {
         this.featureId = featureId;
         return getThis();
     }
 
     public @Nonnull UniProtKBFeatureBuilder featureId(String featureId) {
-        this.featureId = new UniProtKBFeatureIdImpl(featureId);
+        this.featureId = new FeatureIdImpl(featureId);
+        return this;
+    }
+
+    public @Nonnull UniProtKBFeatureBuilder alternativeSequence(AlternativeSequence alternativeSequence) {
+        this.alternativeSequence = alternativeSequence;
         return this;
     }
 
     public static @Nonnull UniProtKBFeatureBuilder from(@Nonnull UniProtKBFeature instance) {
         UniProtKBFeatureBuilder builder = new UniProtKBFeatureBuilder();
-        return AbstractFeatureBuilder.from(builder, instance).featureId(instance.getFeatureId());
+        return AbstractFeatureBuilder.from(builder, instance)
+                .alternativeSequence(instance.getAlternativeSequence())
+                .featureId(instance.getFeatureId());
     }
 
     @Nonnull

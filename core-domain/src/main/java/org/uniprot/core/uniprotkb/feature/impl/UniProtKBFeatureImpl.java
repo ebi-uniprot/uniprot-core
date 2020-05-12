@@ -14,7 +14,8 @@ public class UniProtKBFeatureImpl
         implements UniProtKBFeature {
 
     private static final long serialVersionUID = -5308576363211194641L;
-    private final UniProtKBFeatureId featureId;
+    private final FeatureId featureId;
+    private final AlternativeSequence alternativeSequence;
 
     // no arg constructor for JSON deserialization
     UniProtKBFeatureImpl() {
@@ -25,28 +26,34 @@ public class UniProtKBFeatureImpl
             UniprotKBFeatureType type,
             FeatureLocation location,
             FeatureDescription description,
-            UniProtKBFeatureId featureId,
+            FeatureId featureId,
             AlternativeSequence alternativeSequence,
             CrossReference<UniprotKBFeatureDatabase> featureCrossReference,
             List<Evidence> evidences) {
-        super(type, location, description, alternativeSequence, featureCrossReference, evidences);
+        super(type, location, description, featureCrossReference, evidences);
         this.featureId = featureId;
+        this.alternativeSequence = alternativeSequence;
     }
 
     @Override
-    public UniProtKBFeatureId getFeatureId() {
+    public FeatureId getFeatureId() {
         return featureId;
     }
 
     @Override
+    public AlternativeSequence getAlternativeSequence() {
+        return alternativeSequence;
+    }
+
+    @Override
     public boolean hasAlternativeSequence() {
-        return super.hasAlternativeSequence()
+        return Utils.notNull(this.alternativeSequence)
                 && UniprotKBAlternativeSequenceHelper.hasAlternativeSequence(getType());
     }
 
     @Override
     public boolean hasFeatureId() {
-        return Utils.notNull(this.featureId) && UniProtKBFeatureIdImpl.hasFeatureId(getType());
+        return Utils.notNull(this.featureId) && FeatureIdImpl.hasFeatureId(getType());
     }
 
     @Override

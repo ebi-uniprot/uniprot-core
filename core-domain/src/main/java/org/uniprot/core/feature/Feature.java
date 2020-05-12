@@ -16,8 +16,6 @@ public interface Feature<T extends FeatureDatabase, F extends FeatureType> exten
 
     FeatureDescription getDescription();
 
-    AlternativeSequence getAlternativeSequence();
-
     CrossReference<T> getFeatureCrossReference();
 
     default boolean hasLocation() {
@@ -26,10 +24,6 @@ public interface Feature<T extends FeatureDatabase, F extends FeatureType> exten
 
     default boolean hasDescription() {
         return Utils.notNull(getDescription());
-    }
-
-    default boolean hasAlternativeSequence() {
-        return Utils.notNull(getAlternativeSequence());
     }
 
     default boolean hasFeatureCrossReference() {

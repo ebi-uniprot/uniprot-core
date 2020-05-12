@@ -13,9 +13,9 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.Position;
 import org.uniprot.core.PositionModifier;
-import org.uniprot.core.feature.AlternativeSequence;
+import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.feature.FeatureLocation;
-import org.uniprot.core.feature.impl.AlternativeSequenceBuilder;
+import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBAlternativeSequenceHelper;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;

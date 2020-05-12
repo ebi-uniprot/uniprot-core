@@ -4,7 +4,11 @@ import org.uniprot.core.feature.Feature;
 
 public interface UniProtKBFeature extends Feature<UniprotKBFeatureDatabase, UniprotKBFeatureType> {
 
-    UniProtKBFeatureId getFeatureId();
+    FeatureId getFeatureId();
+
+    AlternativeSequence getAlternativeSequence();
 
     boolean hasFeatureId();
+
+    boolean hasAlternativeSequence();
 }

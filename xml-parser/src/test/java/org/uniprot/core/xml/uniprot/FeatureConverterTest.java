@@ -9,15 +9,15 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.feature.AlternativeSequence;
+import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.feature.FeatureLocation;
-import org.uniprot.core.feature.impl.AlternativeSequenceBuilder;
+import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
-import org.uniprot.core.uniprotkb.feature.UniProtKBFeatureId;
+import org.uniprot.core.uniprotkb.feature.FeatureId;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
-import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureIdBuilder;
+import org.uniprot.core.uniprotkb.feature.impl.FeatureIdBuilder;
 
 import com.google.common.base.Strings;
 
@@ -462,9 +462,9 @@ class FeatureConverterTest {
             String ftid,
             AlternativeSequence altSeq,
             List<Evidence> evidences) {
-        UniProtKBFeatureId featureId = null;
+        FeatureId featureId = null;
         if (!Strings.isNullOrEmpty(ftid)) {
-            featureId = new UniProtKBFeatureIdBuilder(ftid).build();
+            featureId = new FeatureIdBuilder(ftid).build();
         }
         return new UniProtKBFeatureBuilder()
                 .type(type)

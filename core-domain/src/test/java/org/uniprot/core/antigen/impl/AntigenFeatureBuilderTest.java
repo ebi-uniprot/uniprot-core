@@ -3,6 +3,7 @@ package org.uniprot.core.antigen.impl;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.antigen.AntigenEntry;
 import org.uniprot.core.antigen.AntigenFeature;
 
 /**
@@ -17,6 +18,14 @@ class AntigenFeatureBuilderTest {
         assertNotNull(obj);
         assertEquals(10, obj.getMatchScore());
         assertTrue(obj.hasMatchScore());
+    }
+
+    @Test
+    void canSetAntigenSequence() {
+        String antigenSequence = "AAAAA";
+        AntigenFeature feature = new AntigenFeatureBuilder().antigenSequence(antigenSequence).build();
+        assertEquals(antigenSequence, feature.getAntigenSequence());
+        assertTrue(feature.hasAntigenSequence());
     }
 
     @Test

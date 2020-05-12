@@ -10,7 +10,7 @@ import org.uniprot.core.util.EnumDisplay;
  * @since 06/05/2020
  */
 public enum AntigenDatabase implements FeatureDatabase {
-    HPA("HPA");
+    ENSEMBL("Ensembl");
     private final String name;
 
     AntigenDatabase(String name) {

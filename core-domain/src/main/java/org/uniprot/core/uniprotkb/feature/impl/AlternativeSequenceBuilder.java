@@ -1,4 +1,4 @@
-package org.uniprot.core.feature.impl;
+package org.uniprot.core.uniprotkb.feature.impl;
 
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableList;
@@ -9,7 +9,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.feature.AlternativeSequence;
+import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 
 /**
  * Created 22/01/19

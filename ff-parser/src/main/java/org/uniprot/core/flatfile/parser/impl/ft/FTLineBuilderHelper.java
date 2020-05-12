@@ -16,7 +16,7 @@ import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.LineBuilderHelper;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
-import org.uniprot.core.uniprotkb.feature.UniProtKBFeatureId;
+import org.uniprot.core.uniprotkb.feature.FeatureId;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
 import com.google.common.base.Strings;
@@ -95,7 +95,7 @@ public class FTLineBuilderHelper {
         return sb;
     }
 
-    public static StringBuilder buildFeatureId(UniProtKBFeatureId ftId, boolean includeFFMarkup) {
+    public static StringBuilder buildFeatureId(FeatureId ftId, boolean includeFFMarkup) {
         StringBuilder sb = new StringBuilder();
         if ((ftId != null) && !Strings.isNullOrEmpty(ftId.getValue())) {
             if (includeFFMarkup) sb.append(FT_LINE_PREFIX_2);

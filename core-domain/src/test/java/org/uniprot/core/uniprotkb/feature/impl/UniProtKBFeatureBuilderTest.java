@@ -5,22 +5,22 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.feature.AlternativeSequence;
-import org.uniprot.core.feature.impl.AlternativeSequenceBuilder;
+import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
-import org.uniprot.core.uniprotkb.feature.UniProtKBFeatureId;
+import org.uniprot.core.uniprotkb.feature.FeatureId;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
 class UniProtKBFeatureBuilderTest {
 
     @Test
-    void hasAlternativeSequence() {
+    void canSetAlternativeSequence() {
         AlternativeSequence org = new AlternativeSequenceBuilder().original("org").build();
         UniProtKBFeature obj =
                 new UniProtKBFeatureBuilder()
                         .type(UniprotKBFeatureType.VARIANT)
                         .alternativeSequence(org)
                         .build();
+        assertEquals(org, obj.getAlternativeSequence());
         assertTrue(obj.hasAlternativeSequence());
     }
 
@@ -32,7 +32,7 @@ class UniProtKBFeatureBuilderTest {
 
     @Test
     void canSetFeatureId() {
-        UniProtKBFeatureId id = new UniProtKBFeatureIdBuilder("id").build();
+        FeatureId id = new FeatureIdBuilder("id").build();
         UniProtKBFeature obj = new UniProtKBFeatureBuilder().featureId(id).build();
         assertEquals(id, obj.getFeatureId());
     }

@@ -12,6 +12,11 @@ class AntigenDatabaseTest {
 
     @Test
     void canUseTypeOf() {
-        assertEquals(AntigenDatabase.HPA, AntigenDatabase.typeOf("HPA"));
+        assertEquals(AntigenDatabase.ENSEMBL, AntigenDatabase.typeOf("ENSEMBL"));
+    }
+
+    @Test
+    void canUseTypeOfEnsembl() {
+        assertEquals(AntigenDatabase.ENSEMBL, AntigenDatabase.typeOf("Ensembl"));
     }
 }

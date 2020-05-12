@@ -93,6 +93,13 @@ public enum EvidenceDatabaseTypes {
                         "HGNC",
                         "I",
                         "https://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=%value"));
+        typeMap.put(
+                "HPA",
+                evd(
+                        "HPA",
+                        "HPA",
+                        "I",
+                        "https://www.proteinatlas.org/search/%value"));
         typeMap.put("MGI", evd("MGI", "MGI", "I", "http://www.informatics.jax.org/marker/%value"));
         typeMap.put(
                 "MaxQB",

@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.feature.*;
 import org.uniprot.core.impl.CrossReferenceBuilder;
+import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
+import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 
 /**
  * @author lgonzales
@@ -39,13 +41,6 @@ class AbstractFeatureBuilderTest {
         TestableFeature obj = new TestableFeatureBuilder().description("des").build();
         assertEquals("des", obj.getDescription().getValue());
         assertTrue(obj.hasDescription());
-    }
-
-    @Test
-    void canSetAlternativeSequence() {
-        AlternativeSequence org = new AlternativeSequenceBuilder().original("org").build();
-        TestableFeature obj = new TestableFeatureBuilder().alternativeSequence(org).build();
-        assertEquals(org, obj.getAlternativeSequence());
     }
 
     @Test
@@ -143,7 +138,6 @@ class AbstractFeatureBuilderTest {
                     builder.type,
                     builder.location,
                     builder.description,
-                    builder.alternativeSequence,
                     builder.featureCrossReference,
                     builder.evidences);
         }

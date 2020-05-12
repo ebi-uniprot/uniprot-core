@@ -15,9 +15,9 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.cv.keyword.KeywordCategory;
-import org.uniprot.core.feature.AlternativeSequence;
+import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.feature.FeatureLocation;
-import org.uniprot.core.feature.impl.AlternativeSequenceBuilder;
+import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.gene.*;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.impl.SequenceBuilder;
@@ -33,7 +33,7 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
-import org.uniprot.core.uniprotkb.feature.UniProtKBFeatureId;
+import org.uniprot.core.uniprotkb.feature.FeatureId;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 import org.uniprot.core.uniprotkb.feature.impl.*;
 import org.uniprot.core.uniprotkb.impl.*;
@@ -260,7 +260,7 @@ public class UniProtKBEntryConverterTest {
                         .original("RS")
                         .alternativeSequencesSet(Arrays.asList("DB", "AA"))
                         .build();
-        UniProtKBFeatureId featureId = new UniProtKBFeatureIdBuilder("VSP_112").build();
+        FeatureId featureId = new FeatureIdBuilder("VSP_112").build();
         return new UniProtKBFeatureBuilder()
                 .type(UniprotKBFeatureType.VAR_SEQ)
                 .location(location)

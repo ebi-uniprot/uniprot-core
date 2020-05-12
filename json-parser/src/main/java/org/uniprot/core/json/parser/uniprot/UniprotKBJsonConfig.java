@@ -5,10 +5,10 @@ import java.time.LocalDate;
 import org.uniprot.core.*;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.citation.impl.*;
-import org.uniprot.core.feature.AlternativeSequence;
+import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.feature.FeatureDescription;
 import org.uniprot.core.feature.FeatureType;
-import org.uniprot.core.feature.impl.AlternativeSequenceImpl;
+import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceImpl;
 import org.uniprot.core.feature.impl.FeatureDescriptionImpl;
 import org.uniprot.core.gene.*;
 import org.uniprot.core.impl.*;
@@ -30,9 +30,9 @@ import org.uniprot.core.uniprotkb.evidence.impl.EvidenceImpl;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceLineImpl;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueImpl;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
-import org.uniprot.core.uniprotkb.feature.UniProtKBFeatureId;
+import org.uniprot.core.uniprotkb.feature.FeatureId;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
-import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureIdImpl;
+import org.uniprot.core.uniprotkb.feature.impl.FeatureIdImpl;
 import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureImpl;
 import org.uniprot.core.uniprotkb.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
@@ -186,7 +186,7 @@ public class UniprotKBJsonConfig extends JsonConfig {
 
         mod.addAbstractTypeMapping(AlternativeSequence.class, AlternativeSequenceImpl.class);
 
-        mod.addAbstractTypeMapping(UniProtKBFeatureId.class, UniProtKBFeatureIdImpl.class);
+        mod.addAbstractTypeMapping(FeatureId.class, FeatureIdImpl.class);
         mod.addAbstractTypeMapping(FeatureType.class, UniprotKBFeatureType.class);
         mod.addAbstractTypeMapping(FeatureDescription.class, FeatureDescriptionImpl.class);
         mod.addAbstractTypeMapping(UniProtKBFeature.class, UniProtKBFeatureImpl.class);
@@ -242,7 +242,7 @@ public class UniprotKBJsonConfig extends JsonConfig {
         simpleMod.addSerializer(JournalImpl.class, new JournalSerializer());
         simpleMod.addSerializer(UniProtKBDatabase.class, new UniProtDatabaseSerializer());
         simpleMod.addSerializer(FeatureDescriptionImpl.class, new FeatureDescriptionSerializer());
-        simpleMod.addSerializer(UniProtKBFeatureIdImpl.class, new FeatureIdSerializer());
+        simpleMod.addSerializer(FeatureIdImpl.class, new FeatureIdSerializer());
 
         prettyObjMapper.registerModule(simpleMod);
         return prettyObjMapper;
