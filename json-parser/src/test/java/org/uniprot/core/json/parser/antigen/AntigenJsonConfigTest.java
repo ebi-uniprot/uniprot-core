@@ -1,6 +1,7 @@
 package org.uniprot.core.json.parser.antigen;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,9 +13,7 @@ import org.uniprot.core.antigen.AntigenFeature;
 import org.uniprot.core.antigen.AntigenFeatureType;
 import org.uniprot.core.antigen.impl.AntigenEntryBuilder;
 import org.uniprot.core.antigen.impl.AntigenFeatureBuilder;
-import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.feature.FeatureLocation;
-import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
@@ -24,7 +23,7 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * @author lgonzales
@@ -76,21 +75,24 @@ class AntigenJsonConfigTest {
     }
 
     private AntigenFeature getCompleteAntigenFeature() {
-        FeatureLocation location = new FeatureLocation(
-                "AAAAA", 2, 8, PositionModifier.OUTSIDE, PositionModifier.OUTSIDE);
+        FeatureLocation location =
+                new FeatureLocation(
+                        "AAAAA", 2, 8, PositionModifier.OUTSIDE, PositionModifier.OUTSIDE);
 
-        CrossReference<AntigenDatabase> crossReference = new CrossReferenceBuilder<AntigenDatabase>()
-                .database(AntigenDatabase.ENSEMBL)
-                .id("ENST00000346997")
-                .propertiesAdd("GeneId", "ENSP00000263451")
-                .propertiesAdd("ProteinId", "ENSG00000066468")
-                .build();
+        CrossReference<AntigenDatabase> crossReference =
+                new CrossReferenceBuilder<AntigenDatabase>()
+                        .database(AntigenDatabase.ENSEMBL)
+                        .id("ENST00000346997")
+                        .propertiesAdd("GeneId", "ENSP00000263451")
+                        .propertiesAdd("ProteinId", "ENSG00000066468")
+                        .build();
 
-        Evidence evidence = new EvidenceBuilder()
-                .databaseName("HPA")
-                .databaseId("HPA12345")
-                .evidenceCode(EvidenceCode.ECO_0000255)
-                .build();
+        Evidence evidence =
+                new EvidenceBuilder()
+                        .databaseName("HPA")
+                        .databaseId("HPA12345")
+                        .evidenceCode(EvidenceCode.ECO_0000255)
+                        .build();
 
         return new AntigenFeatureBuilder()
                 .type(AntigenFeatureType.ANTIGEN)
@@ -102,5 +104,4 @@ class AntigenJsonConfigTest {
                 .antigenSequence("AAAAA")
                 .build();
     }
-
 }

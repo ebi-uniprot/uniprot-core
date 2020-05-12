@@ -25,7 +25,7 @@ public class AntigenFeatureImpl extends AbstractFeature<AntigenDatabase, Antigen
 
     // no arg constructor for JSON deserialization
     AntigenFeatureImpl() {
-        this(null, null, null, null, null,null,  0);
+        this(null, null, null, null, null, null, 0);
     }
 
     AntigenFeatureImpl(
@@ -57,8 +57,8 @@ public class AntigenFeatureImpl extends AbstractFeature<AntigenDatabase, Antigen
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         AntigenFeatureImpl that = (AntigenFeatureImpl) o;
-        return getMatchScore() == that.getMatchScore() &&
-                Objects.equals(getAntigenSequence(), that.getAntigenSequence());
+        return getMatchScore() == that.getMatchScore()
+                && Objects.equals(getAntigenSequence(), that.getAntigenSequence());
     }
 
     @Override

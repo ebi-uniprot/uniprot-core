@@ -6,15 +6,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.PositionModifier;
-import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.feature.FeatureLocation;
-import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.flatfile.parser.impl.ft.FeatureLineBuilderFactory;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
+import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
 import org.uniprot.cv.evidence.EvidenceHelper;
 

@@ -5,16 +5,16 @@ import java.util.regex.Matcher;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.PositionModifier;
-import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.feature.FeatureLocation;
-import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
 import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureDatabase;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
+import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
 
 import com.google.common.base.Strings;

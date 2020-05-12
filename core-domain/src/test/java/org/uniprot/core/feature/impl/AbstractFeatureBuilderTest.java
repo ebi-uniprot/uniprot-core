@@ -12,8 +12,6 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.feature.*;
 import org.uniprot.core.impl.CrossReferenceBuilder;
-import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
-import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 
 /**
  * @author lgonzales

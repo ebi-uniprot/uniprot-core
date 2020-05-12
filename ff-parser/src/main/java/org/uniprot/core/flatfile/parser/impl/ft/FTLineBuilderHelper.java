@@ -15,8 +15,8 @@ import org.uniprot.core.feature.FeatureLocation;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.LineBuilderHelper;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.FeatureId;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
 import com.google.common.base.Strings;

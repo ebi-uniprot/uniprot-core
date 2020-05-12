@@ -12,8 +12,7 @@ import org.uniprot.core.uniprotkb.feature.FeatureId;
  */
 public class FeatureIdBuilder extends AbstractValueBuilder<FeatureId> {
     @Override
-    public @Nonnull
-    FeatureId build() {
+    public @Nonnull FeatureId build() {
         return new FeatureIdImpl(value);
     }
 
@@ -21,8 +20,7 @@ public class FeatureIdBuilder extends AbstractValueBuilder<FeatureId> {
         super(value);
     }
 
-    public static @Nonnull
-    FeatureIdBuilder from(@Nonnull FeatureId instance) {
+    public static @Nonnull FeatureIdBuilder from(@Nonnull FeatureId instance) {
         return new FeatureIdBuilder(instance.getValue());
     }
 }
