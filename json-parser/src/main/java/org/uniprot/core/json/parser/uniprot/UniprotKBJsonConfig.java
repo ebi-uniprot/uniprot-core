@@ -33,6 +33,10 @@ import org.uniprot.core.uniprotkb.feature.impl.FeatureDescriptionImpl;
 import org.uniprot.core.uniprotkb.feature.impl.FeatureIdImpl;
 import org.uniprot.core.uniprotkb.feature.impl.FeatureImpl;
 import org.uniprot.core.uniprotkb.impl.*;
+import org.uniprot.core.uniprotkb.interaction.InteractionEntry;
+import org.uniprot.core.uniprotkb.interaction.InteractionMatrix;
+import org.uniprot.core.uniprotkb.interaction.impl.InteractionEntryImpl;
+import org.uniprot.core.uniprotkb.interaction.impl.InteractionMatrixImpl;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismHostImpl;
@@ -190,6 +194,9 @@ public class UniprotKBJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(UniProtKBDatabase.class, UniProtKBDatabaseImpl.class);
 
         mod.addAbstractTypeMapping(Database.class, DefaultDatabase.class);
+        
+        mod.addAbstractTypeMapping(InteractionEntry.class, InteractionEntryImpl.class);
+        mod.addAbstractTypeMapping(InteractionMatrix.class, InteractionMatrixImpl.class);
 
         mod.registerSubtypes(new NamedType(AlternativeProductsCommentImpl.class, "AP"));
         mod.registerSubtypes(new NamedType(BPCPCommentImpl.class, "BPCP"));
