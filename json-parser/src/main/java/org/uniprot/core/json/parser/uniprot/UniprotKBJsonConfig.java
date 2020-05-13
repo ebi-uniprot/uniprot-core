@@ -1,7 +1,8 @@
 package org.uniprot.core.json.parser.uniprot;
 
-import java.time.LocalDate;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.NamedType;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.uniprot.core.*;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.citation.impl.*;
@@ -33,10 +34,6 @@ import org.uniprot.core.uniprotkb.feature.impl.FeatureDescriptionImpl;
 import org.uniprot.core.uniprotkb.feature.impl.FeatureIdImpl;
 import org.uniprot.core.uniprotkb.feature.impl.FeatureImpl;
 import org.uniprot.core.uniprotkb.impl.*;
-import org.uniprot.core.uniprotkb.interaction.InteractionEntry;
-import org.uniprot.core.uniprotkb.interaction.InteractionMatrix;
-import org.uniprot.core.uniprotkb.interaction.impl.InteractionEntryImpl;
-import org.uniprot.core.uniprotkb.interaction.impl.InteractionMatrixImpl;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismHostImpl;
@@ -46,9 +43,7 @@ import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtKBCrossReferenceImpl;
 import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.jsontype.NamedType;
-import com.fasterxml.jackson.databind.module.SimpleModule;
+import java.time.LocalDate;
 
 /** @author lgonzales */
 public class UniprotKBJsonConfig extends JsonConfig {
@@ -57,6 +52,7 @@ public class UniprotKBJsonConfig extends JsonConfig {
 
     private final ObjectMapper objectMapper;
     private final ObjectMapper prettyMapper;
+    private SimpleModule prettyWriterModule;
 
     private UniprotKBJsonConfig() {
         this.objectMapper = initObjectMapper();
@@ -78,6 +74,10 @@ public class UniprotKBJsonConfig extends JsonConfig {
     @Override
     public ObjectMapper getFullObjectMapper() {
         return this.objectMapper;
+    }
+
+    public SimpleModule getPrettyWriterModule() {
+        return prettyWriterModule;
     }
 
     private ObjectMapper initObjectMapper() {
@@ -194,9 +194,6 @@ public class UniprotKBJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(UniProtKBDatabase.class, UniProtKBDatabaseImpl.class);
 
         mod.addAbstractTypeMapping(Database.class, DefaultDatabase.class);
-        
-        mod.addAbstractTypeMapping(InteractionEntry.class, InteractionEntryImpl.class);
-        mod.addAbstractTypeMapping(InteractionMatrix.class, InteractionMatrixImpl.class);
 
         mod.registerSubtypes(new NamedType(AlternativeProductsCommentImpl.class, "AP"));
         mod.registerSubtypes(new NamedType(BPCPCommentImpl.class, "BPCP"));
@@ -232,23 +229,31 @@ public class UniprotKBJsonConfig extends JsonConfig {
     private ObjectMapper initPrettyObjectMapper() {
         ObjectMapper prettyObjMapper = getDefaultSimpleObjectMapper();
 
-        SimpleModule simpleMod = new SimpleModule();
-        simpleMod.addSerializer(LocalDate.class, new LocalDateSerializer());
-        simpleMod.addSerializer(UniProtKBAccessionImpl.class, new UniProtKBAccessionSerializer());
-        simpleMod.addSerializer(UniProtKBIdImpl.class, new UniProtIdSerializer());
-        simpleMod.addSerializer(AuthorImpl.class, new AuthorSerializer());
-        simpleMod.addSerializer(APIsoformImpl.IsoformIdImpl.class, new IsoformIdImplSerializer());
-        simpleMod.addSerializer(EvidenceImpl.class, new EvidenceSerializer());
-        simpleMod.addSerializer(ECNumberImpl.class, new ECNumberSerializer());
-        simpleMod.addSerializer(FlagImpl.class, new FlagSerializer());
-        simpleMod.addSerializer(PublicationDateImpl.class, new PublicationDateSerializer());
-        simpleMod.addSerializer(ElectronicArticleImpl.LocatorImpl.class, new LocatorSerializer());
-        simpleMod.addSerializer(JournalImpl.class, new JournalSerializer());
-        simpleMod.addSerializer(UniProtKBDatabase.class, new UniProtDatabaseSerializer());
-        simpleMod.addSerializer(FeatureDescriptionImpl.class, new FeatureDescriptionSerializer());
-        simpleMod.addSerializer(FeatureIdImpl.class, new FeatureIdSerializer());
-
-        prettyObjMapper.registerModule(simpleMod);
+        initPrettyModule();
+        prettyObjMapper.registerModule(prettyWriterModule);
         return prettyObjMapper;
+    }
+
+    private void initPrettyModule() {
+        prettyWriterModule = new SimpleModule();
+        prettyWriterModule.addSerializer(LocalDate.class, new LocalDateSerializer());
+        prettyWriterModule.addSerializer(
+                UniProtKBAccessionImpl.class, new UniProtKBAccessionSerializer());
+        prettyWriterModule.addSerializer(UniProtKBIdImpl.class, new UniProtIdSerializer());
+        prettyWriterModule.addSerializer(AuthorImpl.class, new AuthorSerializer());
+        prettyWriterModule.addSerializer(
+                APIsoformImpl.IsoformIdImpl.class, new IsoformIdImplSerializer());
+        prettyWriterModule.addSerializer(EvidenceImpl.class, new EvidenceSerializer());
+        prettyWriterModule.addSerializer(ECNumberImpl.class, new ECNumberSerializer());
+        prettyWriterModule.addSerializer(FlagImpl.class, new FlagSerializer());
+        prettyWriterModule.addSerializer(
+                PublicationDateImpl.class, new PublicationDateSerializer());
+        prettyWriterModule.addSerializer(
+                ElectronicArticleImpl.LocatorImpl.class, new LocatorSerializer());
+        prettyWriterModule.addSerializer(JournalImpl.class, new JournalSerializer());
+        prettyWriterModule.addSerializer(UniProtKBDatabase.class, new UniProtDatabaseSerializer());
+        prettyWriterModule.addSerializer(
+                FeatureDescriptionImpl.class, new FeatureDescriptionSerializer());
+        prettyWriterModule.addSerializer(FeatureIdImpl.class, new FeatureIdSerializer());
     }
 }
