@@ -50,6 +50,7 @@ public abstract class AbstractUniRuleConvertersTest extends AbstractConverterTes
             builder.mainRule(rule).otherRulesSet(caseRules);
             builder.samFeatureSetsSet(samFeatureSets);
             builder.positionFeatureSetsSet(positionFeatureSets);
+            builder.proteinsAnnotatedCount(null);
             updatedUniObj = builder.build();
         }
 

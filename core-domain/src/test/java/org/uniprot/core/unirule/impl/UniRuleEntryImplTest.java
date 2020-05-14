@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
@@ -85,6 +86,7 @@ public class UniRuleEntryImplTest {
         String modifiedBy = "sample author2";
         LocalDate createdDate = LocalDate.now();
         LocalDate modifiedDate = LocalDate.now();
+        Long proteinsAnnotatedCount = ThreadLocalRandom.current().nextLong();
 
         UniRuleEntry uniRuleEntry =
                 new UniRuleEntryImpl(
@@ -95,6 +97,7 @@ public class UniRuleEntryImplTest {
                         otherRules,
                         samFeatureSets,
                         positionFeatureSets,
+                        proteinsAnnotatedCount,
                         createdBy,
                         modifiedBy,
                         createdDate,
@@ -107,6 +110,7 @@ public class UniRuleEntryImplTest {
         assertEquals(otherRules, uniRuleEntry.getOtherRules());
         assertEquals(samFeatureSets, uniRuleEntry.getSamFeatureSets());
         assertEquals(positionFeatureSets, uniRuleEntry.getPositionFeatureSets());
+        assertEquals(proteinsAnnotatedCount, uniRuleEntry.getProteinsAnnotatedCount());
         assertEquals(createdBy, uniRuleEntry.getCreatedBy());
         assertEquals(modifiedBy, uniRuleEntry.getModifiedBy());
         assertEquals(createdDate, uniRuleEntry.getCreatedDate());

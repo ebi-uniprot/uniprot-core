@@ -74,62 +74,49 @@ public class UniRuleConvertersTestHelper {
         return Stream.of(
                 Arguments.of(
                         AnnotationConverter.class,
-                        AnnotationConverterTest.class,
-                        AnnotationType.class),
-                Arguments.of(CaseTypeConverter.class, CaseTypeConverterTest.class, CaseType.class),
-                Arguments.of(CommentConverter.class, CommentConverterTest.class, CommentType.class),
+                        AnnotationConverterTest.class),
+                Arguments.of(CaseTypeConverter.class, CaseTypeConverterTest.class),
+                Arguments.of(CommentConverter.class, CommentConverterTest.class),
                 Arguments.of(
-                        ConditionConverter.class, ConditionConverterTest.class, Condition.class),
+                        ConditionConverter.class, ConditionConverterTest.class),
                 Arguments.of(
                         ConditionSetConverter.class,
-                        ConditionSetConverterTest.class,
-                        ConditionSetType.class),
+                        ConditionSetConverterTest.class),
                 Arguments.of(
                         ConditionValueConverter.class,
-                        ConditionValueConverterTest.class,
-                        ConditionValue.class),
-                Arguments.of(FusionConverter.class, FusionConverterTest.class, FusionType.class),
+                        ConditionValueConverterTest.class),
+                Arguments.of(FusionConverter.class, FusionConverterTest.class),
                 Arguments.of(
                         FtagConditionConverter.class,
-                        FtagConditionConverterTest.class,
-                        FtagConditionValue.class),
+                        FtagConditionConverterTest.class),
                 Arguments.of(
                         InformationConverter.class,
-                        InformationConverterTest.class,
-                        InformationType.class),
-                Arguments.of(MainTypeConverter.class, MainTypeConverterTest.class, MainType.class),
+                        InformationConverterTest.class),
+                Arguments.of(MainTypeConverter.class, MainTypeConverterTest.class),
                 Arguments.of(
                         MultiValueConverter.class,
-                        MultiValueConverterTest.class,
-                        MultiValueType.class),
+                        MultiValueConverterTest.class),
                 Arguments.of(
                         PositionalFeatureConverter.class,
-                        PositionalFeatureConverterTest.class,
-                        PositionalFeatureType.class),
+                        PositionalFeatureConverterTest.class),
                 Arguments.of(
                         PositionalFeatureSetConverter.class,
-                        PositionalFeatureSetConverterTest.class,
-                        PositionalFeatureSetType.class),
-                Arguments.of(RangeConverter.class, RangeConverterTest.class, RangeType.class),
+                        PositionalFeatureSetConverterTest.class),
+                Arguments.of(RangeConverter.class, RangeConverterTest.class),
                 Arguments.of(
                         RuleExceptionConverter.class,
-                        RuleExceptionConverterTest.class,
-                        RuleExceptionType.class),
+                        RuleExceptionConverterTest.class),
                 Arguments.of(
                         RuleStatusConverter.class,
-                        RuleStatusConverterTest.class,
-                        RuleStatusType.class),
+                        RuleStatusConverterTest.class),
                 Arguments.of(
                         SamFeatureSetConverter.class,
-                        SamFeatureSetConverterTest.class,
-                        SamFeatureSetType.class),
+                        SamFeatureSetConverterTest.class),
                 Arguments.of(
                         SamTriggerConverter.class,
-                        SamTriggerConverterTest.class,
-                        SamTriggerType.class),
+                        SamTriggerConverterTest.class),
                 Arguments.of(
                         UniRuleEntryConverter.class,
-                        UniRuleEntryConverterTest.class,
-                        UniRuleEntry.class));
+                        UniRuleEntryConverterTest.class));
     }
 }

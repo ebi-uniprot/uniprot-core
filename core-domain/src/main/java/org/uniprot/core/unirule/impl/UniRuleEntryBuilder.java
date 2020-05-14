@@ -19,6 +19,7 @@ public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
     private List<CaseRule> otherRules = new ArrayList<>();
     private List<SamFeatureSet> samFeatureSets = new ArrayList<>();
     private List<PositionFeatureSet> positionFeatureSets = new ArrayList<>();
+    private Long proteinsAnnotatedCount;
     private String createdBy;
     private String modifiedBy;
     private LocalDate createdDate;
@@ -84,6 +85,11 @@ public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
         return this;
     }
 
+    public @Nonnull UniRuleEntryBuilder proteinsAnnotatedCount(Long proteinsAnnotatedCount){
+        this.proteinsAnnotatedCount = proteinsAnnotatedCount;
+        return this;
+    }
+
     public @Nonnull UniRuleEntryBuilder createdBy(String createdBy) {
         this.createdBy = createdBy;
         return this;
@@ -115,6 +121,7 @@ public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
                 otherRules,
                 samFeatureSets,
                 positionFeatureSets,
+                proteinsAnnotatedCount,
                 createdBy,
                 modifiedBy,
                 createdDate,
@@ -134,6 +141,7 @@ public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
         builder.otherRulesSet(instance.getOtherRules())
                 .samFeatureSetsSet(instance.getSamFeatureSets())
                 .positionFeatureSetsSet(instance.getPositionFeatureSets())
+                .proteinsAnnotatedCount(instance.getProteinsAnnotatedCount())
                 .createdBy(instance.getCreatedBy())
                 .modifiedBy(instance.getModifiedBy())
                 .createdDate(instance.getCreatedDate())
