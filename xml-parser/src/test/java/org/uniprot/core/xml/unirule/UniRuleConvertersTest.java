@@ -9,7 +9,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.jvnet.jaxb2_commons.lang.Equals2;
 import org.uniprot.core.uniprotkb.comment.impl.*;
 import org.uniprot.core.unirule.*;
 import org.uniprot.core.unirule.impl.*;
@@ -98,11 +97,13 @@ public class UniRuleConvertersTest extends AbstractUniRuleConvertersTest {
                     DiseaseCommentBuilder.from((DiseaseCommentImpl) uniObject)
                             .note(new NoteBuilder(null).build())
                             .build();
-        } else if(uniObject instanceof UniRuleEntry){
+        } else if (uniObject instanceof UniRuleEntry) {
             // append computed field
             long proteinCount = ThreadLocalRandom.current().nextLong();
-            uniObject = UniRuleEntryBuilder.from((UniRuleEntry) uniObject)
-                    .proteinsAnnotatedCount(proteinCount).build();
+            uniObject =
+                    UniRuleEntryBuilder.from((UniRuleEntry) uniObject)
+                            .proteinsAnnotatedCount(proteinCount)
+                            .build();
         }
         verifyBean(uniObject);
     }

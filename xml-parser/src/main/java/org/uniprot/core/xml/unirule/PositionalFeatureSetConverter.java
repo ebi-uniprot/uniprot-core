@@ -45,7 +45,7 @@ public class PositionalFeatureSetConverter
 
         positionalFeatures.removeAll(Collections.singleton(null));
 
-        if(positionalFeatures.isEmpty()) return null;
+        if (positionalFeatures.isEmpty()) return null;
 
         PositionFeatureSetBuilder builder = new PositionFeatureSetBuilder(positionalFeatures);
 

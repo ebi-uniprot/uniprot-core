@@ -67,7 +67,7 @@ public class UniRuleEntryConverter implements Converter<UniRuleType, UniRuleEntr
                         .map(this.positionalFeatureSetConverter::fromXml)
                         .collect(Collectors.toList());
         positionFeatureSets.removeAll(Collections.singleton(null));
-        if(!positionFeatureSets.isEmpty()) {
+        if (!positionFeatureSets.isEmpty()) {
             builder.positionFeatureSetsSet(positionFeatureSets);
         }
         builder.createdBy(xmlObj.getCreator());

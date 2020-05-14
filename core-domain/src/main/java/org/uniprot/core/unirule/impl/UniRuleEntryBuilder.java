@@ -85,7 +85,7 @@ public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
         return this;
     }
 
-    public @Nonnull UniRuleEntryBuilder proteinsAnnotatedCount(Long proteinsAnnotatedCount){
+    public @Nonnull UniRuleEntryBuilder proteinsAnnotatedCount(Long proteinsAnnotatedCount) {
         this.proteinsAnnotatedCount = proteinsAnnotatedCount;
         return this;
     }

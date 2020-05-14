@@ -25,7 +25,8 @@ public class PositionalFeatureConverter
         if (Objects.isNull(xmlObj)) return null;
         RangeType xmlPosition = xmlObj.getPositionalCondition().getPosition();
 
-        if(!isStringIntParsable(xmlPosition.getStart()) || !isStringIntParsable(xmlPosition.getEnd())) return null;
+        if (!isStringIntParsable(xmlPosition.getStart())
+                || !isStringIntParsable(xmlPosition.getEnd())) return null;
 
         Range position =
                 new Range(
@@ -68,10 +69,10 @@ public class PositionalFeatureConverter
         return positionalFeatureType;
     }
 
-    private boolean isStringIntParsable(String value){
+    private boolean isStringIntParsable(String value) {
         try {
             Integer.parseInt(value);
-        } catch (NumberFormatException nfe){
+        } catch (NumberFormatException nfe) {
             return false;
         }
         return true;
