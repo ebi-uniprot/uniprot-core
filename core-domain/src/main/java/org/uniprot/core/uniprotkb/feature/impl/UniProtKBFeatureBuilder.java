@@ -42,7 +42,8 @@ public class UniProtKBFeatureBuilder
         return this;
     }
 
-    public @Nonnull UniProtKBFeatureBuilder alternativeSequence(AlternativeSequence alternativeSequence) {
+    public @Nonnull UniProtKBFeatureBuilder alternativeSequence(
+            AlternativeSequence alternativeSequence) {
         this.alternativeSequence = alternativeSequence;
         return this;
     }

@@ -8,15 +8,15 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.PositionModifier;
-import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.feature.FeatureLocation;
-import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureDatabase;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
+import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;

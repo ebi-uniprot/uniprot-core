@@ -1,16 +1,12 @@
 package org.uniprot.core.json.parser.antigen;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.antigen.AntigenEntry;
 import org.uniprot.core.antigen.AntigenFeature;
 import org.uniprot.core.antigen.impl.AntigenEntryImpl;
 import org.uniprot.core.antigen.impl.AntigenFeatureImpl;
-import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.feature.FeatureDescription;
-import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceImpl;
 import org.uniprot.core.feature.impl.FeatureDescriptionImpl;
 import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.impl.SequenceImpl;
@@ -23,10 +19,15 @@ import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.UniProtKBId;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceImpl;
+import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
+import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceImpl;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionImpl;
 import org.uniprot.core.uniprotkb.impl.UniProtKBIdImpl;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismImpl;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 /**
  * @author lgonzales

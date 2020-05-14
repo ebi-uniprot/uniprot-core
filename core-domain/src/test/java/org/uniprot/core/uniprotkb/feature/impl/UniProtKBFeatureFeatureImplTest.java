@@ -9,8 +9,8 @@ import org.uniprot.core.PositionModifier;
 import org.uniprot.core.feature.FeatureLocation;
 import org.uniprot.core.feature.impl.FeatureDescriptionBuilder;
 import org.uniprot.core.impl.CrossReferenceBuilder;
-import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.FeatureId;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureDatabase;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
