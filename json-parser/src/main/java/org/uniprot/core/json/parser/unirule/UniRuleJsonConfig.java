@@ -85,6 +85,11 @@ public class UniRuleJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(RuleException.class, RuleExceptionImpl.class);
 
         // comment
+        mod.addAbstractTypeMapping(Reaction.class, ReactionImpl.class);
+        mod.addAbstractTypeMapping(Cofactor.class, CofactorImpl.class);
+        mod.addAbstractTypeMapping(
+                SubcellularLocationValue.class,
+                SubcellularLocationImpl.SubcellularLocationValueImpl.class);
         mod.addAbstractTypeMapping(
                 AlternativeProductsComment.class, AlternativeProductsCommentImpl.class);
         mod.addAbstractTypeMapping(SequenceCautionComment.class, SequenceCautionCommentImpl.class);

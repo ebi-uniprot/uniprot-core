@@ -262,6 +262,19 @@ public class UniRuleEntryBuilderTest {
         assertNotSame(entry.getInformation(), updatedEntry.getInformation());
     }
 
+    @Test
+    void testCreateObjectUpdateProteinCount() {
+        UniRuleEntry entry = createObject();
+        assertNotNull(entry);
+        UniRuleEntryBuilder builder = UniRuleEntryBuilder.from(entry);
+        // update protein count
+        Long proteinCount = 12L;
+        builder.proteinsAnnotatedCount(proteinCount);
+        UniRuleEntry updatedEntry = builder.build();
+        assertNotNull(updatedEntry);
+        assertEquals(proteinCount, updatedEntry.getProteinsAnnotatedCount());
+    }
+
     public static UniRuleEntry createObject(int listSize, boolean includeEvidences) {
         String random = UUID.randomUUID().toString();
         UniRuleId uniRuleId = UniRuleIdBuilderTest.createObject(listSize);
@@ -274,6 +287,7 @@ public class UniRuleEntryBuilderTest {
                 SamFeatureSetBuilderTest.createObjects(listSize, includeEvidences);
         List<PositionFeatureSet> positionFeatureSets =
                 PositionFeatureSetBuilderTest.createObjects(listSize, includeEvidences);
+        Long proteinCount = ThreadLocalRandom.current().nextLong();
         String createdBy = "createdBy" + random;
         String modifiedBy = "modifiedBy" + random;
         LocalDate createdDate = LocalDate.now();
@@ -283,6 +297,7 @@ public class UniRuleEntryBuilderTest {
                 new UniRuleEntryBuilder(uniRuleId, ruleStatus, information, mainRule);
         builder.otherRulesSet(otherRules).samFeatureSetsSet(samFeatureSets);
         builder.positionFeatureSetsSet(positionFeatureSets);
+        builder.proteinsAnnotatedCount(proteinCount);
         builder.createdBy(createdBy).modifiedBy(modifiedBy);
         builder.createdDate(createdDate).modifiedDate(modifiedDate);
 
@@ -295,6 +310,7 @@ public class UniRuleEntryBuilderTest {
         assertEquals(otherRules, uniRuleEntry.getOtherRules());
         assertEquals(samFeatureSets, uniRuleEntry.getSamFeatureSets());
         assertEquals(positionFeatureSets, uniRuleEntry.getPositionFeatureSets());
+        assertEquals(proteinCount, uniRuleEntry.getProteinsAnnotatedCount());
         assertEquals(createdBy, uniRuleEntry.getCreatedBy());
         assertEquals(modifiedBy, uniRuleEntry.getModifiedBy());
         assertEquals(createdDate, uniRuleEntry.getCreatedDate());

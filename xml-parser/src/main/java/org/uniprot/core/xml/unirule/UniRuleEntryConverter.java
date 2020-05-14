@@ -1,5 +1,6 @@
 package org.uniprot.core.xml.unirule;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -65,8 +66,10 @@ public class UniRuleEntryConverter implements Converter<UniRuleType, UniRuleEntr
                 xmlObj.getPositionalFeatureSet().stream()
                         .map(this.positionalFeatureSetConverter::fromXml)
                         .collect(Collectors.toList());
-
-        builder.positionFeatureSetsSet(positionFeatureSets);
+        positionFeatureSets.removeAll(Collections.singleton(null));
+        if(!positionFeatureSets.isEmpty()) {
+            builder.positionFeatureSetsSet(positionFeatureSets);
+        }
         builder.createdBy(xmlObj.getCreator());
         builder.modifiedBy(xmlObj.getModifiedBy());
         builder.createdDate(XmlConverterHelper.dateFromXml(xmlObj.getCreated()));

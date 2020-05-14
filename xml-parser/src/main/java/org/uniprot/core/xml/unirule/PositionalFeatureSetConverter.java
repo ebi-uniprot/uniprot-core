@@ -1,5 +1,6 @@
 package org.uniprot.core.xml.unirule;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -41,6 +42,10 @@ public class PositionalFeatureSetConverter
                 xmlObj.getPositionalFeature().stream()
                         .map(this.positionalFeatureConverter::fromXml)
                         .collect(Collectors.toList());
+
+        positionalFeatures.removeAll(Collections.singleton(null));
+
+        if(positionalFeatures.isEmpty()) return null;
 
         PositionFeatureSetBuilder builder = new PositionFeatureSetBuilder(positionalFeatures);
 

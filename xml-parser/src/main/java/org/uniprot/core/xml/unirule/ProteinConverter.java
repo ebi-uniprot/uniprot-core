@@ -7,7 +7,9 @@ import java.util.stream.Collectors;
 import org.uniprot.core.uniprotkb.description.FlagType;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilder;
+import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
+import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
 import org.uniprot.core.xml.jaxb.unirule.ObjectFactory;
 import org.uniprot.core.xml.jaxb.unirule.ProteinType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
@@ -212,10 +214,18 @@ public class ProteinConverter implements Converter<ProteinType, ProteinDescripti
 
     private org.uniprot.core.xml.jaxb.uniprot.ProteinType.RecommendedName toUniProtType(
             ProteinType.RecommendedName recommendedName) {
-        if (Objects.isNull(recommendedName)) return null;
+        if (Objects.isNull(recommendedName) ) return null;
         org.uniprot.core.xml.jaxb.uniprot.ProteinType.RecommendedName uniProtRecName =
                 this.uniProtObjectFactory.createProteinTypeRecommendedName();
-        uniProtRecName.setFullName(recommendedName.getFullName());
+        // full name is mandatory in UniProt's ProteinType.RecommendedName but not in UniRule's
+        // ProteinType.RecommendedName. Set empty if missing to satisfy the condition.
+        if(Objects.isNull(recommendedName.getFullName())){
+            EvidencedStringType evidenceType = this.uniProtObjectFactory.createEvidencedStringType();
+            evidenceType.setValue("");
+            uniProtRecName.setFullName(evidenceType);
+        } else {
+            uniProtRecName.setFullName(recommendedName.getFullName());
+        }
         uniProtRecName.getShortName().addAll(recommendedName.getShortName());
         uniProtRecName.getEcNumber().addAll(recommendedName.getEcNumber());
 

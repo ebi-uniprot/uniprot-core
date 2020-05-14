@@ -18,6 +18,7 @@ public class UniRuleEntryImpl implements UniRuleEntry {
     private List<CaseRule> otherRules;
     private List<SamFeatureSet> samFeatureSets;
     private List<PositionFeatureSet> positionFeatureSets;
+    private Long proteinsAnnotatedCount;
     private String createdBy;
     private String modifiedBy;
     private LocalDate createdDate;
@@ -37,6 +38,7 @@ public class UniRuleEntryImpl implements UniRuleEntry {
             List<CaseRule> otherRules,
             List<SamFeatureSet> samFeatureSets,
             List<PositionFeatureSet> positionFeatureSets,
+            Long proteinsAnnotatedCount,
             String createdBy,
             String modifiedBy,
             LocalDate createdDate,
@@ -60,6 +62,7 @@ public class UniRuleEntryImpl implements UniRuleEntry {
         this.otherRules = Utils.unmodifiableList(otherRules);
         this.samFeatureSets = Utils.unmodifiableList(samFeatureSets);
         this.positionFeatureSets = Utils.unmodifiableList(positionFeatureSets);
+        this.proteinsAnnotatedCount = proteinsAnnotatedCount;
         this.createdBy = createdBy;
         this.modifiedBy = modifiedBy;
         this.createdDate = createdDate;
@@ -102,6 +105,11 @@ public class UniRuleEntryImpl implements UniRuleEntry {
     }
 
     @Override
+    public Long getProteinsAnnotatedCount() {
+        return proteinsAnnotatedCount;
+    }
+
+    @Override
     public String getCreatedBy() {
         return this.createdBy;
     }
@@ -140,6 +148,7 @@ public class UniRuleEntryImpl implements UniRuleEntry {
                 && Objects.equals(this.otherRules, that.otherRules)
                 && Objects.equals(this.samFeatureSets, that.samFeatureSets)
                 && Objects.equals(this.positionFeatureSets, that.positionFeatureSets)
+                && Objects.equals(this.proteinsAnnotatedCount, that.proteinsAnnotatedCount)
                 && Objects.equals(this.createdBy, that.createdBy)
                 && Objects.equals(this.modifiedBy, that.modifiedBy)
                 && Objects.equals(this.createdDate, that.createdDate)
@@ -156,6 +165,7 @@ public class UniRuleEntryImpl implements UniRuleEntry {
                 this.otherRules,
                 this.samFeatureSets,
                 this.positionFeatureSets,
+                this.proteinsAnnotatedCount,
                 this.createdBy,
                 this.modifiedBy,
                 this.createdDate,
