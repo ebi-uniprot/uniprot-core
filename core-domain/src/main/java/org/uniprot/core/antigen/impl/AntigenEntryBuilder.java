@@ -28,43 +28,43 @@ public class AntigenEntryBuilder implements Builder<AntigenEntry> {
     private Sequence sequence;
     private List<AntigenFeature> features = new ArrayList<>();
 
-    public AntigenEntryBuilder primaryAccession(UniProtKBAccession primaryAccession) {
+    public @Nonnull AntigenEntryBuilder primaryAccession(UniProtKBAccession primaryAccession) {
         this.primaryAccession = primaryAccession;
         return this;
     }
 
-    public AntigenEntryBuilder primaryAccession(String primaryAccession) {
+    public @Nonnull AntigenEntryBuilder primaryAccession(String primaryAccession) {
         this.primaryAccession =
                 new UniProtKBAccessionBuilder(Utils.emptyOrString(primaryAccession)).build();
         return this;
     }
 
-    public AntigenEntryBuilder uniProtkbId(UniProtKBId uniProtkbId) {
+    public @Nonnull AntigenEntryBuilder uniProtkbId(UniProtKBId uniProtkbId) {
         this.uniProtkbId = uniProtkbId;
         return this;
     }
 
-    public AntigenEntryBuilder uniProtkbId(String uniProtkbId) {
+    public @Nonnull AntigenEntryBuilder uniProtkbId(String uniProtkbId) {
         this.uniProtkbId = new UniProtKBIdBuilder(Utils.emptyOrString(uniProtkbId)).build();
         return this;
     }
 
-    public AntigenEntryBuilder organism(Organism organism) {
+    public @Nonnull AntigenEntryBuilder organism(Organism organism) {
         this.organism = organism;
         return this;
     }
 
-    public AntigenEntryBuilder sequence(Sequence sequence) {
+    public @Nonnull AntigenEntryBuilder sequence(Sequence sequence) {
         this.sequence = sequence;
         return this;
     }
 
-    public AntigenEntryBuilder featuresAdd(AntigenFeature feature) {
+    public @Nonnull AntigenEntryBuilder featuresAdd(AntigenFeature feature) {
         Utils.addOrIgnoreNull(feature, this.features);
         return this;
     }
 
-    public AntigenEntryBuilder featuresSet(List<AntigenFeature> features) {
+    public @Nonnull AntigenEntryBuilder featuresSet(List<AntigenFeature> features) {
         this.features = Utils.modifiableList(features);
         return this;
     }
