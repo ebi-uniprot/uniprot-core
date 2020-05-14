@@ -36,7 +36,7 @@ public class UniRuleJsonConfigTest {
             ObjectMapper mapper = UniRuleJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(this.entry);
             assertNotNull(json);
-            System.out.println(json); // uncomment the code to generate the sample json
+//            System.out.println(json); // uncomment the code to generate the sample json
             //             of UniRule model.
         } catch (Exception e) {
             fail(e.getMessage());
