@@ -27,13 +27,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
  *
  * @author Edd
  */
-class InteractionMatrixBuilderTest {
+class InteractionMatrixItemBuilderTest {
 
-    private InteractionMatrixBuilder builder;
+    private InteractionMatrixItemBuilder builder;
 
     @BeforeEach
     void setUp() {
-        builder = new InteractionMatrixBuilder();
+        builder = new InteractionMatrixItemBuilder();
     }
 
     @Test

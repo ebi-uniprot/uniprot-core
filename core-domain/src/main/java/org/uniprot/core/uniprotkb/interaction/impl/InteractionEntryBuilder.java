@@ -2,7 +2,7 @@ package org.uniprot.core.uniprotkb.interaction.impl;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprotkb.interaction.InteractionEntry;
-import org.uniprot.core.uniprotkb.interaction.InteractionMatrix;
+import org.uniprot.core.uniprotkb.interaction.InteractionMatrixItem;
 import org.uniprot.core.util.Utils;
 
 import javax.annotation.Nonnull;
@@ -15,14 +15,14 @@ import java.util.List;
  * @author Edd
  */
 public class InteractionEntryBuilder implements Builder<InteractionEntry> {
-    private List<InteractionMatrix> interactionMatrix = new ArrayList<>();
+    private List<InteractionMatrixItem> interactionMatrix = new ArrayList<>();
 
-    public @Nonnull InteractionEntryBuilder interactionsAdd(InteractionMatrix interactionMatrix) {
-        Utils.addOrIgnoreNull(interactionMatrix, this.interactionMatrix);
+    public @Nonnull InteractionEntryBuilder interactionsAdd(InteractionMatrixItem interactionMatrixItem) {
+        Utils.addOrIgnoreNull(interactionMatrixItem, this.interactionMatrix);
         return this;
     }
 
-    public @Nonnull InteractionEntryBuilder interactionsSet(List<InteractionMatrix> interactions) {
+    public @Nonnull InteractionEntryBuilder interactionsSet(List<InteractionMatrixItem> interactions) {
         this.interactionMatrix = Utils.modifiableList(interactions);
         return this;
     }

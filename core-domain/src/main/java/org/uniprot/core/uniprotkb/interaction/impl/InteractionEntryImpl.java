@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprotkb.interaction.impl;
 
 import org.uniprot.core.uniprotkb.interaction.InteractionEntry;
-import org.uniprot.core.uniprotkb.interaction.InteractionMatrix;
+import org.uniprot.core.uniprotkb.interaction.InteractionMatrixItem;
 
 import java.util.List;
 import java.util.Objects;
@@ -14,19 +14,19 @@ import java.util.Objects;
 public class InteractionEntryImpl implements InteractionEntry {
     private static final long serialVersionUID = 1386997110427466524L;
 
-    private final List<InteractionMatrix> interactionMatrix;
+    private final List<InteractionMatrixItem> interactionMatrix;
 
     // no arg constructor for JSON deserialization
     InteractionEntryImpl() {
         this(null);
     }
 
-    InteractionEntryImpl(List<InteractionMatrix> interactionMatrix) {
+    InteractionEntryImpl(List<InteractionMatrixItem> interactionMatrix) {
         this.interactionMatrix = interactionMatrix;
     }
 
     @Override
-    public List<InteractionMatrix> getInteractionMatrix() {
+    public List<InteractionMatrixItem> getInteractionMatrix() {
         return interactionMatrix;
     }
 

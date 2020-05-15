@@ -1,7 +1,5 @@
 package org.uniprot.core.uniprotkb.interaction;
 
-import org.uniprot.core.util.Utils;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -11,5 +9,5 @@ import java.util.List;
  * @author Edd
  */
 public interface InteractionEntry extends Serializable {
-    List<InteractionMatrix> getInteractionMatrix();
+    List<InteractionMatrixItem> getInteractionMatrix();
 }

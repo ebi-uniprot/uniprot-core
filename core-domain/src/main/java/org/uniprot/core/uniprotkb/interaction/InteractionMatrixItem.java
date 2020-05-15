@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author Edd
  */
-public interface InteractionMatrix extends Serializable {
+public interface InteractionMatrixItem extends Serializable {
     UniProtKBAccession getPrimaryAccession();
 
     UniProtKBId getUniProtKBId();

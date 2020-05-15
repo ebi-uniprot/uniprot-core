@@ -2,7 +2,7 @@ package org.uniprot.core.uniprotkb.interaction.impl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.interaction.InteractionMatrix;
+import org.uniprot.core.uniprotkb.interaction.InteractionMatrixItem;
 
 import java.util.List;
 
@@ -26,14 +26,14 @@ class InteractionEntryBuilderTest {
 
     @Test
     void canAddInteractionMatrix() {
-        InteractionMatrix matrix = new InteractionMatrixBuilder().build();
+        InteractionMatrixItem matrix = new InteractionMatrixItemBuilder().build();
         builder.interactionsAdd(matrix);
         assertThat(builder.build().getInteractionMatrix(), is(singletonList(matrix)));
     }
 
     @Test
     void canSetInteractionMatrix() {
-        List<InteractionMatrix> matrices = singletonList(new InteractionMatrixBuilder().build());
+        List<InteractionMatrixItem> matrices = singletonList(new InteractionMatrixItemBuilder().build());
         builder.interactionsSet(matrices);
         assertThat(builder.build().getInteractionMatrix(), is(matrices));
     }

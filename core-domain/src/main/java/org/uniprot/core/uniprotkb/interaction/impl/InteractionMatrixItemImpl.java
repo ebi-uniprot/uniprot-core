@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprotkb.interaction.impl;
 
-import org.uniprot.core.uniprotkb.interaction.InteractionMatrix;
+import org.uniprot.core.uniprotkb.interaction.InteractionMatrixItem;
 import org.uniprot.core.uniprotkb.ProteinExistence;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.UniProtKBId;
@@ -17,7 +17,7 @@ import java.util.Objects;
  *
  * @author Edd
  */
-public class InteractionMatrixImpl implements InteractionMatrix {
+public class InteractionMatrixItemImpl implements InteractionMatrixItem {
     private static final long serialVersionUID = -1742579668649931897L;
     private final UniProtKBAccession uniProtKBAccession;
     private final UniProtKBId uniProtKBId;
@@ -28,11 +28,11 @@ public class InteractionMatrixImpl implements InteractionMatrix {
     private final List<SubcellularLocationComment> subcellularLocations;
 
     // no arg constructor for JSON deserialization
-    InteractionMatrixImpl() {
+    InteractionMatrixItemImpl() {
         this(null, null, null, null, null, null, null);
     }
 
-    InteractionMatrixImpl(
+    InteractionMatrixItemImpl(
             UniProtKBAccession uniProtKBAccession,
             UniProtKBId uniProtKBId,
             Organism organism,
@@ -88,7 +88,7 @@ public class InteractionMatrixImpl implements InteractionMatrix {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        InteractionMatrixImpl that = (InteractionMatrixImpl) o;
+        InteractionMatrixItemImpl that = (InteractionMatrixItemImpl) o;
         return Objects.equals(uniProtKBAccession, that.uniProtKBAccession)
                 && Objects.equals(uniProtKBId, that.uniProtKBId)
                 && Objects.equals(organism, that.organism)
