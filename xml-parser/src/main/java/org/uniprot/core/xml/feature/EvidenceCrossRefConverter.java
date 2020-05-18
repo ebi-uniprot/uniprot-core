@@ -4,7 +4,6 @@ package org.uniprot.core.xml.feature;
  * @author lgonzales
  * @since 16/05/2020
  */
-
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Property;
 import org.uniprot.core.impl.CrossReferenceBuilder;
@@ -30,15 +29,15 @@ public class EvidenceCrossRefConverter
     @Override
     public CrossReference<EvidenceDatabase> fromXml(DbReferenceType xmlObj) {
         CrossReferenceBuilder<EvidenceDatabase> builder = new CrossReferenceBuilder<>();
-        if(Utils.notNullNotEmpty(xmlObj.getId())){
+        if (Utils.notNullNotEmpty(xmlObj.getId())) {
             builder.id(xmlObj.getId());
         }
 
-        if(Utils.notNullNotEmpty(xmlObj.getType())){
+        if (Utils.notNullNotEmpty(xmlObj.getType())) {
             builder.database(new EvidenceDatabase(xmlObj.getType()));
         }
 
-        if(Utils.notNullNotEmpty(xmlObj.getProperty())){
+        if (Utils.notNullNotEmpty(xmlObj.getProperty())) {
             xmlObj.getProperty().stream()
                     .map(this::convertProperty)
                     .forEach(builder::propertiesAdd);
@@ -49,13 +48,13 @@ public class EvidenceCrossRefConverter
     @Override
     public DbReferenceType toXml(CrossReference<EvidenceDatabase> uniObj) {
         DbReferenceType dbRef = xmlFactory.createDbReferenceType();
-        if(uniObj.hasId()) {
+        if (uniObj.hasId()) {
             dbRef.setId(uniObj.getId());
         }
-        if(uniObj.hasDatabase()) {
+        if (uniObj.hasDatabase()) {
             dbRef.setType(uniObj.getDatabase().getName());
         }
-        if(uniObj.hasProperties()){
+        if (uniObj.hasProperties()) {
             uniObj.getProperties().stream()
                     .map(this::convertyPropertyType)
                     .forEach(dbRef.getProperty()::add);

@@ -24,25 +24,25 @@ public interface AntigenEntry {
 
     List<AntigenFeature> getFeatures();
 
-    default boolean hasPrimaryAccession(){
-        return Utils.notNull(getPrimaryAccession()) &&
-                Utils.notNullNotEmpty(getPrimaryAccession().getValue());
+    default boolean hasPrimaryAccession() {
+        return Utils.notNull(getPrimaryAccession())
+                && Utils.notNullNotEmpty(getPrimaryAccession().getValue());
     }
 
-    default boolean hasUniProtkbId(){
-        return Utils.notNull(getUniProtkbId()) &&
-                Utils.notNullNotEmpty(getUniProtkbId().getValue());
+    default boolean hasUniProtkbId() {
+        return Utils.notNull(getUniProtkbId())
+                && Utils.notNullNotEmpty(getUniProtkbId().getValue());
     }
 
-    default boolean hasOrganism(){
+    default boolean hasOrganism() {
         return Utils.notNull(getOrganism());
     }
 
-    default boolean hasSequence(){
+    default boolean hasSequence() {
         return Utils.notNull(getSequence());
     }
 
-    default boolean hasFeatures(){
+    default boolean hasFeatures() {
         return Utils.notNullNotEmpty(getFeatures());
     }
 }

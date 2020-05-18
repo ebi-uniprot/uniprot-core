@@ -1,6 +1,8 @@
 package org.uniprot.core.xml.feature;
 
-import com.google.common.base.Strings;
+import java.math.BigInteger;
+import java.util.Objects;
+
 import org.uniprot.core.Position;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.Range;
@@ -11,8 +13,7 @@ import org.uniprot.core.xml.jaxb.feature.LocationType;
 import org.uniprot.core.xml.jaxb.feature.ObjectFactory;
 import org.uniprot.core.xml.jaxb.feature.PositionType;
 
-import java.math.BigInteger;
-import java.util.Objects;
+import com.google.common.base.Strings;
 
 public class FeatureLocationConverter implements Converter<LocationType, FeatureLocation> {
     private static final String GREATER_THAN = "greater than";
@@ -83,7 +84,7 @@ public class FeatureLocationConverter implements Converter<LocationType, Feature
 
     private PositionType toXml(Position position, String outsideString) {
         PositionType positionType = xmlUniprotFactory.createPositionType();
-        if(Utils.notNull(position.getValue())) {
+        if (Utils.notNull(position.getValue())) {
             switch (position.getModifier()) {
                 case UNKNOWN:
                     positionType.setStatus(UNKNOWN);
@@ -105,7 +106,7 @@ public class FeatureLocationConverter implements Converter<LocationType, Feature
 
     private void setExactPosition(LocationType locationType, Range location) {
         PositionType positionType = xmlUniprotFactory.createPositionType();
-        if(Utils.notNull(location.getStart().getValue())) {
+        if (Utils.notNull(location.getStart().getValue())) {
             positionType.setPosition(BigInteger.valueOf(location.getStart().getValue()));
         }
         locationType.setPosition(positionType);
@@ -113,7 +114,7 @@ public class FeatureLocationConverter implements Converter<LocationType, Feature
 
     private void setUnsurePosition(LocationType locationType, Range location) {
         PositionType positionType = xmlUniprotFactory.createPositionType();
-        if(Utils.notNull(location.getStart().getValue())) {
+        if (Utils.notNull(location.getStart().getValue())) {
             positionType.setPosition(BigInteger.valueOf(location.getStart().getValue()));
         }
         positionType.setStatus(UNCERTAIN);
@@ -133,7 +134,8 @@ public class FeatureLocationConverter implements Converter<LocationType, Feature
         if (modifier == PositionModifier.UNKNOWN) return isModifierSame;
         else {
             if (!isModifierSame) return isModifierSame;
-            else return Objects.equals(location.getStart().getValue(), location.getEnd().getValue());
+            else
+                return Objects.equals(location.getStart().getValue(), location.getEnd().getValue());
         }
     }
 }

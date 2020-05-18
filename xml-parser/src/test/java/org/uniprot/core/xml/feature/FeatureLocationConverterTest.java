@@ -1,16 +1,11 @@
 package org.uniprot.core.xml.feature;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.PositionModifier;
-import org.uniprot.core.Range;
 import org.uniprot.core.feature.FeatureLocation;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
-import org.uniprot.core.xml.jaxb.feature.EvidenceType;
 import org.uniprot.core.xml.jaxb.feature.LocationType;
-import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author lgonzales
@@ -72,8 +67,7 @@ public class FeatureLocationConverterTest {
     void testExactNotSame() {
         FeatureLocationConverter converter = new FeatureLocationConverter();
         FeatureLocation location =
-                new FeatureLocation(
-                        "id", 10, 230, PositionModifier.EXACT, PositionModifier.EXACT);
+                new FeatureLocation("id", 10, 230, PositionModifier.EXACT, PositionModifier.EXACT);
         LocationType xml = converter.toXml(location);
         FeatureLocation converted = converter.fromXml(xml);
         assertEquals(location, converted);
@@ -94,8 +88,7 @@ public class FeatureLocationConverterTest {
     void testUnSureNotSame() {
         FeatureLocationConverter converter = new FeatureLocationConverter();
         FeatureLocation location =
-                new FeatureLocation(
-                        "", 10, 230, PositionModifier.UNSURE, PositionModifier.UNSURE);
+                new FeatureLocation("", 10, 230, PositionModifier.UNSURE, PositionModifier.UNSURE);
         LocationType xml = converter.toXml(location);
         FeatureLocation converted = converter.fromXml(xml);
         assertEquals(location, converted);
@@ -105,8 +98,7 @@ public class FeatureLocationConverterTest {
     void testExactOutsideNotSame() {
         FeatureLocationConverter converter = new FeatureLocationConverter();
         FeatureLocation location =
-                new FeatureLocation(
-                        "", 10, 230, PositionModifier.EXACT, PositionModifier.OUTSIDE);
+                new FeatureLocation("", 10, 230, PositionModifier.EXACT, PositionModifier.OUTSIDE);
         LocationType xml = converter.toXml(location);
         FeatureLocation converted = converter.fromXml(xml);
         assertEquals(location, converted);
@@ -138,17 +130,14 @@ public class FeatureLocationConverterTest {
     void testUnknowExactNotSame() {
         FeatureLocationConverter converter = new FeatureLocationConverter();
         FeatureLocation location =
-                new FeatureLocation(
-                        "", 10, 230, PositionModifier.UNKNOWN, PositionModifier.EXACT);
+                new FeatureLocation("", 10, 230, PositionModifier.UNKNOWN, PositionModifier.EXACT);
         LocationType xml = converter.toXml(location);
         FeatureLocation converted = converter.fromXml(xml);
         assertEquals(location, converted);
     }
 
-
-
-    public static FeatureLocation createFeatureLocation(){
-        return  new FeatureLocation(
-                        "AAAAA", 2, 8, PositionModifier.OUTSIDE, PositionModifier.OUTSIDE);
+    public static FeatureLocation createFeatureLocation() {
+        return new FeatureLocation(
+                "AAAAA", 2, 8, PositionModifier.OUTSIDE, PositionModifier.OUTSIDE);
     }
 }
