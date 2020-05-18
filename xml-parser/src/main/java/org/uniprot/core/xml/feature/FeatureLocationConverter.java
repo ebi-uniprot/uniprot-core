@@ -12,17 +12,15 @@ import org.uniprot.core.xml.jaxb.feature.ObjectFactory;
 import org.uniprot.core.xml.jaxb.feature.PositionType;
 
 import java.math.BigInteger;
-import java.util.Objects;
+
+import static org.uniprot.core.xml.utils.FeatureUtils.*;
 
 public class FeatureLocationConverter implements Converter<LocationType, FeatureLocation> {
-    private static final String GREATER_THAN = "greater than";
-    private static final String LESS_THAN = "less than";
-    private static final String UNKNOWN = "unknown";
-    private static final String UNCERTAIN = "uncertain";
+
     private final ObjectFactory xmlUniprotFactory;
 
     public FeatureLocationConverter() {
-        this(new ObjectFactory());
+        this.xmlUniprotFactory = new ObjectFactory();
     }
 
     public FeatureLocationConverter(ObjectFactory xmlUniprotFactory) {
@@ -46,22 +44,6 @@ public class FeatureLocationConverter implements Converter<LocationType, Feature
                 sequence, start.getValue(), end.getValue(), start.getModifier(), end.getModifier());
     }
 
-    private Position fromXml(PositionType position, String outsideString) {
-        PositionModifier modifier = PositionModifier.EXACT;
-        String status = position.getStatus();
-        if (Utils.notNullNotEmpty(status)) {
-            if (status.equals(UNKNOWN)) {
-                modifier = PositionModifier.UNKNOWN;
-                return new Position(-1, modifier);
-            } else if (status.equals(UNCERTAIN)) {
-                modifier = PositionModifier.UNSURE;
-            } else if (status.equals(outsideString)) {
-                modifier = PositionModifier.OUTSIDE;
-            }
-        }
-        return new Position(position.getPosition().intValue(), modifier);
-    }
-
     @Override
     public LocationType toXml(FeatureLocation location) {
         LocationType locationType = xmlUniprotFactory.createLocationType();
@@ -81,6 +63,10 @@ public class FeatureLocationConverter implements Converter<LocationType, Feature
         return locationType;
     }
 
+    private Position fromXml(PositionType position, String outsideString) {
+        return positionfromXml(position.getPosition(), position.getStatus(), outsideString);
+    }
+
     private PositionType toXml(Position position, String outsideString) {
         PositionType positionType = xmlUniprotFactory.createPositionType();
         if(Utils.notNull(position.getValue())) {
@@ -88,12 +74,12 @@ public class FeatureLocationConverter implements Converter<LocationType, Feature
                 case UNKNOWN:
                     positionType.setStatus(UNKNOWN);
                     break;
-                case UNSURE:
-                    positionType.setStatus(UNCERTAIN);
-                    positionType.setPosition(BigInteger.valueOf(position.getValue()));
-                    break;
                 case OUTSIDE:
                     positionType.setStatus(outsideString);
+                    positionType.setPosition(BigInteger.valueOf(position.getValue()));
+                    break;
+                case UNSURE:
+                    positionType.setStatus(UNCERTAIN);
                     positionType.setPosition(BigInteger.valueOf(position.getValue()));
                     break;
                 default:
@@ -101,6 +87,15 @@ public class FeatureLocationConverter implements Converter<LocationType, Feature
             }
         }
         return positionType;
+    }
+
+    private void setUnsurePosition(LocationType locationType, Range location) {
+        PositionType positionType = xmlUniprotFactory.createPositionType();
+        positionType.setStatus(UNCERTAIN);
+        if(Utils.notNull(location.getStart().getValue())) {
+            positionType.setPosition(BigInteger.valueOf(location.getStart().getValue()));
+        }
+        locationType.setPosition(positionType);
     }
 
     private void setExactPosition(LocationType locationType, Range location) {
@@ -111,29 +106,11 @@ public class FeatureLocationConverter implements Converter<LocationType, Feature
         locationType.setPosition(positionType);
     }
 
-    private void setUnsurePosition(LocationType locationType, Range location) {
-        PositionType positionType = xmlUniprotFactory.createPositionType();
-        if(Utils.notNull(location.getStart().getValue())) {
-            positionType.setPosition(BigInteger.valueOf(location.getStart().getValue()));
-        }
-        positionType.setStatus(UNCERTAIN);
-        locationType.setPosition(positionType);
-    }
-
     private void setUnknownPosition(LocationType locationType) {
         PositionType positionType = xmlUniprotFactory.createPositionType();
-        positionType.setStatus(UNKNOWN);
         locationType.setPosition(positionType);
+        positionType.setStatus(UNKNOWN);
     }
 
-    private boolean locationIsSame(Range location, PositionModifier modifier) {
-        boolean isModifierSame =
-                (location.getStart().getModifier() == modifier)
-                        && (location.getEnd().getModifier() == modifier);
-        if (modifier == PositionModifier.UNKNOWN) return isModifierSame;
-        else {
-            if (!isModifierSame) return isModifierSame;
-            else return Objects.equals(location.getStart().getValue(), location.getEnd().getValue());
-        }
-    }
+
 }

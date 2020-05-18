@@ -12,12 +12,11 @@ import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.PositionType;
 
 import com.google.common.base.Strings;
+import org.uniprot.core.xml.utils.FeatureUtils;
+
+import static org.uniprot.core.xml.utils.FeatureUtils.*;
 
 public class FeatureLocationConverter implements Converter<LocationType, FeatureLocation> {
-    private static final String GREATER_THAN = "greater than";
-    private static final String LESS_THAN = "less than";
-    private static final String UNKNOWN = "unknown";
-    private static final String UNCERTAIN = "uncertain";
     private final ObjectFactory xmlUniprotFactory;
 
     public FeatureLocationConverter() {
@@ -46,19 +45,7 @@ public class FeatureLocationConverter implements Converter<LocationType, Feature
     }
 
     private Position fromXml(PositionType position, String outsideString) {
-        PositionModifier modifier = PositionModifier.EXACT;
-        String status = position.getStatus();
-        if (Strings.isNullOrEmpty(status)) {
-
-        } else if (status.equals(UNKNOWN)) {
-            modifier = PositionModifier.UNKNOWN;
-            return new Position(-1, modifier);
-        } else if (status.equals(UNCERTAIN)) {
-            modifier = PositionModifier.UNSURE;
-        } else if (status.equals(outsideString)) {
-            modifier = PositionModifier.OUTSIDE;
-        }
-        return new Position(position.getPosition().intValue(), modifier);
+        return FeatureUtils.positionfromXml(position.getPosition(), position.getStatus(), outsideString);
     }
 
     @Override
