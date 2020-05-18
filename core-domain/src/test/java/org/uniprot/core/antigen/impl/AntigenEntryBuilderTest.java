@@ -29,6 +29,7 @@ class AntigenEntryBuilderTest {
         AntigenEntry entry = new AntigenEntryBuilder().primaryAccession(primaryAccession).build();
         assertNotNull(entry.getPrimaryAccession());
         assertEquals(primaryAccession, entry.getPrimaryAccession().getValue());
+        assertTrue(entry.hasPrimaryAccession());
     }
 
     @Test
@@ -36,6 +37,7 @@ class AntigenEntryBuilderTest {
         UniProtKBAccession primaryAccession = new UniProtKBAccessionBuilder("P21802").build();
         AntigenEntry entry = new AntigenEntryBuilder().primaryAccession(primaryAccession).build();
         assertEquals(primaryAccession, entry.getPrimaryAccession());
+        assertTrue(entry.hasPrimaryAccession());
     }
 
     @Test
@@ -44,6 +46,7 @@ class AntigenEntryBuilderTest {
         AntigenEntry entry = new AntigenEntryBuilder().uniProtkbId(uniProtkbId).build();
         assertNotNull(entry.getUniProtkbId());
         assertEquals(uniProtkbId, entry.getUniProtkbId().getValue());
+        assertTrue(entry.hasUniProtkbId());
     }
 
     @Test
@@ -51,6 +54,7 @@ class AntigenEntryBuilderTest {
         UniProtKBId uniProtkbId = new UniProtKBIdBuilder("ID VALUE").build();
         AntigenEntry entry = new AntigenEntryBuilder().uniProtkbId(uniProtkbId).build();
         assertEquals(uniProtkbId, entry.getUniProtkbId());
+        assertTrue(entry.hasUniProtkbId());
     }
 
     @Test
@@ -58,6 +62,7 @@ class AntigenEntryBuilderTest {
         Organism organism = new OrganismBuilder().taxonId(10L).build();
         AntigenEntry entry = new AntigenEntryBuilder().organism(organism).build();
         assertEquals(organism, entry.getOrganism());
+        assertTrue(entry.hasOrganism());
     }
 
     @Test
@@ -65,6 +70,7 @@ class AntigenEntryBuilderTest {
         Sequence sequence = new SequenceBuilder("SEQUENCE VALUE").build();
         AntigenEntry entry = new AntigenEntryBuilder().sequence(sequence).build();
         assertEquals(sequence, entry.getSequence());
+        assertTrue(entry.hasSequence());
     }
 
     @Test
@@ -74,6 +80,7 @@ class AntigenEntryBuilderTest {
         AntigenEntry entry = new AntigenEntryBuilder().featuresAdd(feature).build();
         assertNotNull(entry.getFeatures());
         assertTrue(entry.getFeatures().contains(feature));
+        assertTrue(entry.hasFeatures());
     }
 
     @Test
@@ -83,6 +90,7 @@ class AntigenEntryBuilderTest {
         List<AntigenFeature> features = Collections.singletonList(feature);
         AntigenEntry entry = new AntigenEntryBuilder().featuresSet(features).build();
         assertEquals(features, entry.getFeatures());
+        assertTrue(entry.hasFeatures());
     }
 
     @Test
