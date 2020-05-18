@@ -1,13 +1,12 @@
 package org.uniprot.core.xml.utils;
 
+import java.math.BigInteger;
+import java.util.Objects;
+
 import org.uniprot.core.Position;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.Range;
 import org.uniprot.core.util.Utils;
-
-
-import java.math.BigInteger;
-import java.util.Objects;
 
 /**
  * @author lgonzales
@@ -20,18 +19,16 @@ public class FeatureUtils {
     public static final String UNKNOWN = "unknown";
     public static final String UNCERTAIN = "uncertain";
 
-    private FeatureUtils(){
-
-    }
+    private FeatureUtils() {}
 
     public static boolean locationIsSame(Range location, PositionModifier modifier) {
         boolean isModifierSame =
-                (location.getStart().getModifier() == modifier) &&
-                        (location.getEnd().getModifier() == modifier);
-        if (modifier == PositionModifier.UNKNOWN){
+                (location.getStart().getModifier() == modifier)
+                        && (location.getEnd().getModifier() == modifier);
+        if (modifier == PositionModifier.UNKNOWN) {
             return isModifierSame;
         } else {
-            if (!isModifierSame){
+            if (!isModifierSame) {
                 return isModifierSame;
             } else {
                 return Objects.equals(location.getStart().getValue(), location.getEnd().getValue());
@@ -39,7 +36,8 @@ public class FeatureUtils {
         }
     }
 
-    public static Position positionfromXml(BigInteger position, String status, String outsideString) {
+    public static Position positionfromXml(
+            BigInteger position, String status, String outsideString) {
         PositionModifier modifier = PositionModifier.EXACT;
         if (Utils.notNullNotEmpty(status)) {
             if (status.equals(UNKNOWN)) {

@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.uniprot;
 
+import static org.uniprot.core.xml.utils.FeatureUtils.*;
+
 import java.math.BigInteger;
 
 import org.uniprot.core.Position;
@@ -10,11 +12,9 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.LocationType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.PositionType;
-
-import com.google.common.base.Strings;
 import org.uniprot.core.xml.utils.FeatureUtils;
 
-import static org.uniprot.core.xml.utils.FeatureUtils.*;
+import com.google.common.base.Strings;
 
 public class FeatureLocationConverter implements Converter<LocationType, FeatureLocation> {
     private final ObjectFactory xmlUniprotFactory;
@@ -45,7 +45,8 @@ public class FeatureLocationConverter implements Converter<LocationType, Feature
     }
 
     private Position fromXml(PositionType position, String outsideString) {
-        return FeatureUtils.positionfromXml(position.getPosition(), position.getStatus(), outsideString);
+        return FeatureUtils.positionfromXml(
+                position.getPosition(), position.getStatus(), outsideString);
     }
 
     @Override

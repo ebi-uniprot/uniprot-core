@@ -1,7 +1,8 @@
 package org.uniprot.core.xml.feature;
 
+import static org.uniprot.core.xml.utils.FeatureUtils.*;
+
 import java.math.BigInteger;
-import java.util.Objects;
 
 import org.uniprot.core.Position;
 import org.uniprot.core.PositionModifier;
@@ -14,7 +15,6 @@ import org.uniprot.core.xml.jaxb.feature.ObjectFactory;
 import org.uniprot.core.xml.jaxb.feature.PositionType;
 
 import com.google.common.base.Strings;
-import static org.uniprot.core.xml.utils.FeatureUtils.*;
 
 public class FeatureLocationConverter implements Converter<LocationType, FeatureLocation> {
 
@@ -112,6 +112,4 @@ public class FeatureLocationConverter implements Converter<LocationType, Feature
         locationType.setPosition(positionType);
         positionType.setStatus(UNKNOWN);
     }
-
-
 }
