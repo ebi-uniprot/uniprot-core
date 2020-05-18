@@ -1,5 +1,8 @@
 package org.uniprot.core.xml.feature.antigen;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.antigen.AntigenEntry;
 import org.uniprot.core.antigen.AntigenFeature;
 import org.uniprot.core.antigen.impl.AntigenEntryBuilder;
@@ -11,9 +14,6 @@ import org.uniprot.core.xml.feature.FeatureSequenceConverter;
 import org.uniprot.core.xml.jaxb.feature.EntryFeature;
 import org.uniprot.core.xml.jaxb.feature.FeatureType;
 import org.uniprot.core.xml.jaxb.feature.ObjectFactory;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author lgonzales
@@ -38,13 +38,13 @@ public class AntigenEntryConverter implements Converter<EntryFeature, AntigenEnt
     @Override
     public AntigenEntry fromXml(EntryFeature xmlObj) {
         AntigenEntryBuilder builder = new AntigenEntryBuilder();
-        if(Utils.notNullNotEmpty(xmlObj.getAccession())){
+        if (Utils.notNullNotEmpty(xmlObj.getAccession())) {
             builder.primaryAccession(xmlObj.getAccession());
         }
-        if(Utils.notNullNotEmpty(xmlObj.getName())){
+        if (Utils.notNullNotEmpty(xmlObj.getName())) {
             builder.uniProtkbId(xmlObj.getName());
         }
-        if(Utils.notNull(xmlObj.getTaxid()) || Utils.notNullNotEmpty(xmlObj.getOrganismName())) {
+        if (Utils.notNull(xmlObj.getTaxid()) || Utils.notNullNotEmpty(xmlObj.getOrganismName())) {
             OrganismBuilder organismBuilder = new OrganismBuilder();
             if (Utils.notNull(xmlObj.getTaxid())) {
                 organismBuilder.taxonId(xmlObj.getTaxid());
@@ -55,14 +55,15 @@ public class AntigenEntryConverter implements Converter<EntryFeature, AntigenEnt
             builder.organism(organismBuilder.build());
         }
 
-        if(Utils.notNull(xmlObj.getSequence())){
+        if (Utils.notNull(xmlObj.getSequence())) {
             builder.sequence(sequenceConverter.fromXml(xmlObj.getSequence()));
         }
 
-        if(Utils.notNull(xmlObj.getFeature())){
-            List<AntigenFeature> features = xmlObj.getFeature().stream()
-                    .map(antigenFeatureConverter::fromXml)
-                    .collect(Collectors.toList());
+        if (Utils.notNull(xmlObj.getFeature())) {
+            List<AntigenFeature> features =
+                    xmlObj.getFeature().stream()
+                            .map(antigenFeatureConverter::fromXml)
+                            .collect(Collectors.toList());
             builder.featuresSet(features);
         }
 
@@ -72,34 +73,34 @@ public class AntigenEntryConverter implements Converter<EntryFeature, AntigenEnt
     @Override
     public EntryFeature toXml(AntigenEntry antigenObj) {
         EntryFeature xmlObj = xmlFactory.createEntryFeature();
-        if(antigenObj.hasPrimaryAccession()) {
+        if (antigenObj.hasPrimaryAccession()) {
             xmlObj.setAccession(antigenObj.getPrimaryAccession().getValue());
         }
 
-        if(antigenObj.hasUniProtkbId()) {
+        if (antigenObj.hasUniProtkbId()) {
             xmlObj.setName(antigenObj.getUniProtkbId().getValue());
         }
 
-        if(antigenObj.hasOrganism()) {
+        if (antigenObj.hasOrganism()) {
             Organism organism = antigenObj.getOrganism();
             xmlObj.setTaxid((int) organism.getTaxonId());
-            if(organism.hasScientificName()){
+            if (organism.hasScientificName()) {
                 xmlObj.setOrganismName(organism.getScientificName());
             }
         }
 
-        if(antigenObj.hasSequence()){
+        if (antigenObj.hasSequence()) {
             xmlObj.setSequence(sequenceConverter.toXml(antigenObj.getSequence()));
         }
 
-        if(antigenObj.hasFeatures()){
-            List<FeatureType> features = antigenObj.getFeatures().stream()
-                    .map(antigenFeatureConverter::toXml)
-                    .collect(Collectors.toList());
+        if (antigenObj.hasFeatures()) {
+            List<FeatureType> features =
+                    antigenObj.getFeatures().stream()
+                            .map(antigenFeatureConverter::toXml)
+                            .collect(Collectors.toList());
             xmlObj.getFeature().addAll(features);
         }
 
         return xmlObj;
     }
-
 }

@@ -14,7 +14,7 @@ import org.uniprot.core.xml.jaxb.feature.ObjectFactory;
  * @author lgonzales
  * @since 15/05/2020
  */
-public class FeatureEvidenceConverter  implements Converter<EvidenceType, Evidence> {
+public class FeatureEvidenceConverter implements Converter<EvidenceType, Evidence> {
 
     private final ObjectFactory objectFactory;
     private final EvidenceCrossRefConverter evidenceCrossRefConverter;
@@ -22,6 +22,7 @@ public class FeatureEvidenceConverter  implements Converter<EvidenceType, Eviden
     public FeatureEvidenceConverter() {
         this(new ObjectFactory());
     }
+
     public FeatureEvidenceConverter(ObjectFactory objectFactory) {
         this.objectFactory = objectFactory;
         this.evidenceCrossRefConverter = new EvidenceCrossRefConverter(objectFactory);
@@ -30,15 +31,16 @@ public class FeatureEvidenceConverter  implements Converter<EvidenceType, Eviden
     @Override
     public Evidence fromXml(EvidenceType xmlObj) {
         EvidenceBuilder builder = new EvidenceBuilder();
-        if(Utils.notNull(xmlObj.getCode())){
+        if (Utils.notNull(xmlObj.getCode())) {
             builder.evidenceCode(EvidenceCode.typeOf(xmlObj.getCode()));
         }
-        if(Utils.notNull(xmlObj.getDbReference())){
-            CrossReference<EvidenceDatabase> crossReference = evidenceCrossRefConverter.fromXml(xmlObj.getDbReference());
-            if(crossReference.hasId()) {
+        if (Utils.notNull(xmlObj.getDbReference())) {
+            CrossReference<EvidenceDatabase> crossReference =
+                    evidenceCrossRefConverter.fromXml(xmlObj.getDbReference());
+            if (crossReference.hasId()) {
                 builder.databaseId(crossReference.getId());
             }
-            if(crossReference.hasDatabase()) {
+            if (crossReference.hasDatabase()) {
                 builder.databaseName(crossReference.getDatabase().getName());
             }
         }
@@ -48,13 +50,13 @@ public class FeatureEvidenceConverter  implements Converter<EvidenceType, Eviden
     @Override
     public EvidenceType toXml(Evidence uniObj) {
         EvidenceType evidenceType = objectFactory.createEvidenceType();
-        if(Utils.notNull(uniObj.getEvidenceCode())){
+        if (Utils.notNull(uniObj.getEvidenceCode())) {
             evidenceType.setCode(uniObj.getEvidenceCode().getDisplayName());
         }
-        if(Utils.notNull(uniObj.getEvidenceCrossReference())){
-            evidenceType.setDbReference(evidenceCrossRefConverter.toXml(uniObj.getEvidenceCrossReference()));
+        if (Utils.notNull(uniObj.getEvidenceCrossReference())) {
+            evidenceType.setDbReference(
+                    evidenceCrossRefConverter.toXml(uniObj.getEvidenceCrossReference()));
         }
         return evidenceType;
     }
-
 }

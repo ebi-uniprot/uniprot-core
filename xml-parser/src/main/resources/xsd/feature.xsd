@@ -156,8 +156,10 @@
 		<xs:annotation>
 			<xs:documentation>Describes a sequence location as either a range
 				with a begin and end or as a position. The
-				'sequence' attribute is only used when the location is not on the canonical
-				sequence displayed in the
+				'sequence' attribute is
+				only used when the location is not on the canonical
+				sequence
+				displayed in the
 				current entry.
 			</xs:documentation>
 		</xs:annotation>
@@ -297,7 +299,8 @@
 			<xs:documentation>Peptide from certain data sources with its
 				sequence
 				and mapped positions on protein sequence, and it can be
-				unique or non-unique
+				unique or
+				non-unique
 				to the UniProt entry.
 			</xs:documentation>
 		</xs:annotation>

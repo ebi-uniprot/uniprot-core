@@ -1,23 +1,14 @@
 package org.uniprot.core.xml.feature.antigen;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.CrossReference;
-import org.uniprot.core.PositionModifier;
-import org.uniprot.core.antigen.AntigenDatabase;
 import org.uniprot.core.antigen.AntigenFeature;
 import org.uniprot.core.antigen.AntigenFeatureType;
 import org.uniprot.core.antigen.impl.AntigenFeatureBuilder;
-import org.uniprot.core.feature.FeatureLocation;
-import org.uniprot.core.impl.CrossReferenceBuilder;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
-import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
 import org.uniprot.core.xml.feature.FeatureEvidenceConverterTest;
 import org.uniprot.core.xml.feature.FeatureLocationConverterTest;
-import org.uniprot.core.xml.jaxb.feature.EntryFeature;
 import org.uniprot.core.xml.jaxb.feature.FeatureType;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author lgonzales

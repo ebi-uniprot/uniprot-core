@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.feature.antigen;
 
+import java.util.stream.Collectors;
+
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Property;
 import org.uniprot.core.antigen.AntigenDatabase;
@@ -9,8 +11,6 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.feature.DbReferenceType;
 import org.uniprot.core.xml.jaxb.feature.ObjectFactory;
 import org.uniprot.core.xml.jaxb.feature.PropertyType;
-
-import java.util.stream.Collectors;
 
 public class CrossReferenceConverter
         implements Converter<DbReferenceType, CrossReference<AntigenDatabase>> {
@@ -27,13 +27,13 @@ public class CrossReferenceConverter
     @Override
     public CrossReference<AntigenDatabase> fromXml(DbReferenceType xmlObj) {
         CrossReferenceBuilder<AntigenDatabase> builder = new CrossReferenceBuilder<>();
-        if(Utils.notNullNotEmpty(xmlObj.getType())) {
+        if (Utils.notNullNotEmpty(xmlObj.getType())) {
             builder.database(AntigenDatabase.typeOf(xmlObj.getType()));
         }
-        if(Utils.notNullNotEmpty(xmlObj.getId())) {
+        if (Utils.notNullNotEmpty(xmlObj.getId())) {
             builder.id(xmlObj.getId());
         }
-        if(Utils.notNullNotEmpty(xmlObj.getProperty())) {
+        if (Utils.notNullNotEmpty(xmlObj.getProperty())) {
             builder.propertiesSet(
                     xmlObj.getProperty().stream()
                             .map(this::fromXmlProperty)
@@ -46,13 +46,13 @@ public class CrossReferenceConverter
     @Override
     public DbReferenceType toXml(CrossReference<AntigenDatabase> uniObj) {
         DbReferenceType xmlObj = xmlFactory.createDbReferenceType();
-        if(uniObj.hasDatabase()) {
+        if (uniObj.hasDatabase()) {
             xmlObj.setType(uniObj.getDatabase().getDisplayName());
         }
-        if(uniObj.hasId()) {
+        if (uniObj.hasId()) {
             xmlObj.setId(uniObj.getId());
         }
-        if(uniObj.hasProperties()) {
+        if (uniObj.hasProperties()) {
             uniObj.getProperties().stream()
                     .map(this::toXmlProperty)
                     .forEach(val -> xmlObj.getProperty().add(val));

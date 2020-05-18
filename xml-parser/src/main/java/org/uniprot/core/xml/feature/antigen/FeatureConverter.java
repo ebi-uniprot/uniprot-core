@@ -1,5 +1,8 @@
 package org.uniprot.core.xml.feature.antigen;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.antigen.AntigenDatabase;
 import org.uniprot.core.antigen.AntigenFeature;
@@ -11,9 +14,6 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.feature.FeatureEvidenceConverter;
 import org.uniprot.core.xml.feature.FeatureLocationConverter;
 import org.uniprot.core.xml.jaxb.feature.*;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class FeatureConverter implements Converter<FeatureType, AntigenFeature> {
 
@@ -36,11 +36,11 @@ public class FeatureConverter implements Converter<FeatureType, AntigenFeature> 
     @Override
     public AntigenFeature fromXml(FeatureType xmlObj) {
         AntigenFeatureBuilder builder = new AntigenFeatureBuilder();
-        if(Utils.notNull(xmlObj.getType())){
+        if (Utils.notNull(xmlObj.getType())) {
             builder.type(AntigenFeatureType.typeOf(xmlObj.getType()));
         }
 
-        if(Utils.notNull(xmlObj.getLocation())) {
+        if (Utils.notNull(xmlObj.getLocation())) {
             builder.location(locationConverter.fromXml(xmlObj.getLocation()));
         }
 
@@ -49,20 +49,22 @@ public class FeatureConverter implements Converter<FeatureType, AntigenFeature> 
             builder.matchScore(Integer.parseInt(matchScore));
         }
 
-        if(Utils.notNullNotEmpty(xmlObj.getXrefs())){
-            CrossReference<AntigenDatabase> features = crossReferenceConverter.fromXml(xmlObj.getXrefs().get(0));
+        if (Utils.notNullNotEmpty(xmlObj.getXrefs())) {
+            CrossReference<AntigenDatabase> features =
+                    crossReferenceConverter.fromXml(xmlObj.getXrefs().get(0));
             builder.featureCrossReference(features);
         }
 
         if (Utils.notNullNotEmpty(xmlObj.getEvidence())) {
-            List<Evidence> evidences = xmlObj.getEvidence().stream()
-                    .map(evidenceConverter::fromXml)
-                    .collect(Collectors.toList());
+            List<Evidence> evidences =
+                    xmlObj.getEvidence().stream()
+                            .map(evidenceConverter::fromXml)
+                            .collect(Collectors.toList());
             builder.evidencesSet(evidences);
         }
 
-        if(Utils.notNull(xmlObj.getPeptide()) &&
-                Utils.notNullNotEmpty(xmlObj.getPeptide().getPeptideSequence())){
+        if (Utils.notNull(xmlObj.getPeptide())
+                && Utils.notNullNotEmpty(xmlObj.getPeptide().getPeptideSequence())) {
             builder.antigenSequence(xmlObj.getPeptide().getPeptideSequence());
         }
 
@@ -77,7 +79,7 @@ public class FeatureConverter implements Converter<FeatureType, AntigenFeature> 
         if (Utils.notNull(uniObj.getType())) {
             xmlFeature.setType(uniObj.getType().getValue());
         }
-        if(uniObj.hasLocation()) {
+        if (uniObj.hasLocation()) {
             xmlFeature.setLocation(locationConverter.toXml(uniObj.getLocation()));
         }
 
@@ -85,25 +87,26 @@ public class FeatureConverter implements Converter<FeatureType, AntigenFeature> 
             xmlFeature.setDescription(uniObj.getMatchScore() + "%");
         }
 
-        if(uniObj.hasFeatureCrossReference()){
-            DbReferenceType crossReference = crossReferenceConverter.toXml(uniObj.getFeatureCrossReference());
+        if (uniObj.hasFeatureCrossReference()) {
+            DbReferenceType crossReference =
+                    crossReferenceConverter.toXml(uniObj.getFeatureCrossReference());
             xmlFeature.getXrefs().add(crossReference);
         }
 
         // feature xml evidence tags set
         if (uniObj.hasEvidences()) {
-            List<EvidenceType> features = uniObj.getEvidences().stream()
-                    .map(evidenceConverter::toXml)
-                    .collect(Collectors.toList());
+            List<EvidenceType> features =
+                    uniObj.getEvidences().stream()
+                            .map(evidenceConverter::toXml)
+                            .collect(Collectors.toList());
             xmlFeature.getEvidence().addAll(features);
         }
 
-        if(uniObj.hasAntigenSequence()){
+        if (uniObj.hasAntigenSequence()) {
             PeptideType peptideType = xmlFactory.createPeptideType();
             peptideType.setPeptideSequence(uniObj.getAntigenSequence());
             xmlFeature.setPeptide(peptideType);
         }
         return xmlFeature;
     }
-
 }

@@ -1,12 +1,12 @@
 package org.uniprot.core.xml.feature;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 import org.uniprot.core.xml.jaxb.feature.DbReferenceType;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author lgonzales
@@ -17,7 +17,8 @@ class EvidenceCrossRefConverterTest {
     @Test
     void testConvertSimple() {
         EvidenceCrossRefConverter converter = new EvidenceCrossRefConverter();
-        CrossReference<EvidenceDatabase> crossReference = new CrossReferenceBuilder<EvidenceDatabase>().build();
+        CrossReference<EvidenceDatabase> crossReference =
+                new CrossReferenceBuilder<EvidenceDatabase>().build();
         DbReferenceType xml = converter.toXml(crossReference);
         CrossReference<EvidenceDatabase> converted = converter.fromXml(xml);
         assertEquals(crossReference, converted);
@@ -39,6 +40,4 @@ class EvidenceCrossRefConverterTest {
                 .database(new EvidenceDatabase("HPA"))
                 .build();
     }
-
-
 }

@@ -1,13 +1,11 @@
 package org.uniprot.core.xml.feature;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
-import org.uniprot.core.feature.FeatureLocation;
 import org.uniprot.core.impl.SequenceBuilder;
-import org.uniprot.core.xml.jaxb.feature.LocationType;
 import org.uniprot.core.xml.jaxb.feature.SequenceType;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author lgonzales
