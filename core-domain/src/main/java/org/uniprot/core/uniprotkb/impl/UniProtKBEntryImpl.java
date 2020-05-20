@@ -15,8 +15,8 @@ import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.description.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.HasEvidences;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
@@ -39,7 +39,7 @@ public class UniProtKBEntryImpl implements UniProtKBEntry {
     private ProteinDescription proteinDescription;
     private List<Gene> genes;
     private List<Comment> comments;
-    private List<Feature> features;
+    private List<UniProtKBFeature> features;
     private List<GeneLocation> geneLocations;
 
     private List<Keyword> keywords;
@@ -80,7 +80,7 @@ public class UniProtKBEntryImpl implements UniProtKBEntry {
             ProteinDescription proteinDescription,
             List<Gene> genes,
             List<Comment> comments,
-            List<Feature> features,
+            List<UniProtKBFeature> features,
             List<GeneLocation> geneLocations,
             List<Keyword> keywords,
             List<UniProtKBReference> references,
@@ -197,11 +197,11 @@ public class UniProtKBEntryImpl implements UniProtKBEntry {
     }
 
     @Override
-    public List<Feature> getFeatures() {
+    public List<UniProtKBFeature> getFeatures() {
         return features;
     }
 
-    public List<Feature> getFeaturesByType(FeatureType type) {
+    public List<UniProtKBFeature> getFeaturesByType(UniprotKBFeatureType type) {
         return features.stream()
                 .filter(feature -> notNull(feature.getType()))
                 .filter(feature -> feature.getType().equals(type))
@@ -264,7 +264,7 @@ public class UniProtKBEntryImpl implements UniProtKBEntry {
 
     @Override
     public Boolean isFragment() {
-        return !getFeaturesByType(FeatureType.NON_TER).isEmpty();
+        return !getFeaturesByType(UniprotKBFeatureType.NON_TER).isEmpty();
     }
 
     @Override

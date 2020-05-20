@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.feature.FeatureLocation;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureLocation;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
 class FTVariantFeatureBuildTest extends FTBuildTestAbstr {
     @Test
@@ -38,8 +38,14 @@ class FTVariantFeatureBuildTest extends FTBuildTestAbstr {
         String description = "in a breast cancer sample; somatic mutation; dbSNP:rs35514614";
         AlternativeSequence altSeq =
                 createAlternativeSequence(originalSequence, alternativeSequences);
-        Feature feature =
-                createFeature(FeatureType.VARIANT, location, description, featureId, altSeq, evs);
+        UniProtKBFeature feature =
+                createFeature(
+                        UniprotKBFeatureType.VARIANT,
+                        location,
+                        description,
+                        featureId,
+                        altSeq,
+                        evs);
 
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);
@@ -84,8 +90,14 @@ class FTVariantFeatureBuildTest extends FTBuildTestAbstr {
         String description = "in a breast cancer sample; somatic mutation; dbSNP:rs35514614";
         AlternativeSequence altSeq =
                 createAlternativeSequence(originalSequence, alternativeSequences);
-        Feature feature =
-                createFeature(FeatureType.VARIANT, location, description, featureId, altSeq, evs);
+        UniProtKBFeature feature =
+                createFeature(
+                        UniprotKBFeatureType.VARIANT,
+                        location,
+                        description,
+                        featureId,
+                        altSeq,
+                        evs);
 
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);

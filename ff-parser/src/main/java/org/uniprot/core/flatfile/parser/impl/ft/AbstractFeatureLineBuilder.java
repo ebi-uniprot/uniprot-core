@@ -14,33 +14,34 @@ import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
-import org.uniprot.core.uniprotkb.feature.Feature;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 
-public abstract class AbstractFeatureLineBuilder extends FFLineBuilderAbstr<Feature>
-        implements FFLineBuilder<Feature> {
+public abstract class AbstractFeatureLineBuilder extends FFLineBuilderAbstr<UniProtKBFeature>
+        implements FFLineBuilder<UniProtKBFeature> {
     public AbstractFeatureLineBuilder() {
         super(LineType.FT);
     }
 
     @Override
-    public String buildString(Feature f) {
+    public String buildString(UniProtKBFeature f) {
         List<String> lines = buildLines(f, false, false);
         return FFLines.create(lines).toString();
     }
 
     @Override
-    public String buildStringWithEvidence(Feature f) {
+    public String buildStringWithEvidence(UniProtKBFeature f) {
         List<String> lines = buildLines(f, false, true);
         return FFLines.create(lines).toString();
     }
 
     @Override
-    protected FFLine buildLine(Feature f, boolean showEvidence) {
+    protected FFLine buildLine(UniProtKBFeature f, boolean showEvidence) {
         List<String> lines = buildLines(f, true, showEvidence);
         return FFLines.create(lines);
     }
 
-    protected List<String> buildLines(Feature f, boolean includeFFMarkings, boolean addEvidence) {
+    protected List<String> buildLines(
+            UniProtKBFeature f, boolean includeFFMarkings, boolean addEvidence) {
         List<String> lines = new ArrayList<>();
         lines.addAll(buildFtHeaderLines(f, includeFFMarkings));
         lines.addAll(buildFtNoteLines(f, includeFFMarkings));
@@ -51,18 +52,18 @@ public abstract class AbstractFeatureLineBuilder extends FFLineBuilderAbstr<Feat
         return lines;
     }
 
-    protected List<String> buildFtHeaderLines(Feature f, boolean includeFFMarkings) {
+    protected List<String> buildFtHeaderLines(UniProtKBFeature f, boolean includeFFMarkings) {
         StringBuilder sb = FTLineBuilderHelper.buildFeatureHeader(f, includeFFMarkings);
         List<String> lists = new ArrayList<>();
         lists.add(sb.toString());
         return lists;
     }
 
-    protected List<String> buildFtNoteLines(Feature f, boolean includeFFMarkings) {
+    protected List<String> buildFtNoteLines(UniProtKBFeature f, boolean includeFFMarkings) {
         return FTLineBuilderHelper.buildNote(f, getDescription(f), includeFFMarkings);
     }
 
-    protected List<String> buildFtEvidenceLines(Feature f, boolean includeFFMarkings) {
+    protected List<String> buildFtEvidenceLines(UniProtKBFeature f, boolean includeFFMarkings) {
         StringBuilder sb = FTLineBuilderHelper.buildEvidences(f.getEvidences(), includeFFMarkings);
         if (sb.length() == 0) {
             return Collections.emptyList();
@@ -78,7 +79,7 @@ public abstract class AbstractFeatureLineBuilder extends FFLineBuilderAbstr<Feat
         }
     }
 
-    protected List<String> buildFtIdLines(Feature f, boolean includeFFMarkings) {
+    protected List<String> buildFtIdLines(UniProtKBFeature f, boolean includeFFMarkings) {
         if (f.hasFeatureId()) {
             StringBuilder featureId =
                     FTLineBuilderHelper.buildFeatureId(f.getFeatureId(), includeFFMarkings);
@@ -92,7 +93,7 @@ public abstract class AbstractFeatureLineBuilder extends FFLineBuilderAbstr<Feat
         }
     }
 
-    protected StringBuilder getDescription(Feature f) {
+    protected StringBuilder getDescription(UniProtKBFeature f) {
         return FTLineBuilderHelper.getDescriptionString(f);
     }
 }

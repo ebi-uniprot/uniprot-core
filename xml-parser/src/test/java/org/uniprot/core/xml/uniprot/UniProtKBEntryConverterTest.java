@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.cv.keyword.KeywordCategory;
+import org.uniprot.core.feature.FeatureLocation;
 import org.uniprot.core.gene.*;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.impl.SequenceBuilder;
@@ -30,11 +31,11 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
-import org.uniprot.core.uniprotkb.feature.Feature;
 import org.uniprot.core.uniprotkb.feature.FeatureId;
-import org.uniprot.core.uniprotkb.feature.FeatureLocation;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 import org.uniprot.core.uniprotkb.feature.impl.*;
+import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprotkb.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
@@ -220,24 +221,24 @@ public class UniProtKBEntryConverterTest {
         return gene;
     }
 
-    private List<Feature> createFeatures() {
-        List<Feature> features = new ArrayList<>();
+    private List<UniProtKBFeature> createFeatures() {
+        List<UniProtKBFeature> features = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
-        Feature featureLocation12 =
-                new FeatureBuilder()
-                        .type(FeatureType.TURN)
+        UniProtKBFeature featureLocation12 =
+                new UniProtKBFeatureBuilder()
+                        .type(UniprotKBFeatureType.TURN)
                         .location(new FeatureLocation(12, 12))
                         .description("some desc1")
                         .evidencesSet(evidences)
                         .build();
-        Feature featureLocation20 =
-                FeatureBuilder.from(featureLocation12)
+        UniProtKBFeature featureLocation20 =
+                UniProtKBFeatureBuilder.from(featureLocation12)
                         .location(new FeatureLocation(20, 23))
                         .description("some desc2")
                         .build();
-        Feature featureLocation200 =
-                new FeatureBuilder()
-                        .type(FeatureType.CHAIN)
+        UniProtKBFeature featureLocation200 =
+                new UniProtKBFeatureBuilder()
+                        .type(UniprotKBFeatureType.CHAIN)
                         .location(new FeatureLocation(200, 230))
                         .description("some desc3")
                         .featureId("PRO_123")
@@ -252,7 +253,7 @@ public class UniProtKBEntryConverterTest {
         return features;
     }
 
-    private Feature createVarSeqFeature() {
+    private UniProtKBFeature createVarSeqFeature() {
         FeatureLocation location = new FeatureLocation(65, 86);
         AlternativeSequence as =
                 new AlternativeSequenceBuilder()
@@ -260,8 +261,8 @@ public class UniProtKBEntryConverterTest {
                         .alternativeSequencesSet(Arrays.asList("DB", "AA"))
                         .build();
         FeatureId featureId = new FeatureIdBuilder("VSP_112").build();
-        return new FeatureBuilder()
-                .type(FeatureType.VAR_SEQ)
+        return new UniProtKBFeatureBuilder()
+                .type(UniprotKBFeatureType.VAR_SEQ)
                 .location(location)
                 .description("some description")
                 .featureId(featureId)

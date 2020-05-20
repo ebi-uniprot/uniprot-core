@@ -41,4 +41,10 @@ class FeatureCategoryTest {
     void SECONDARY_STRUCTURE() {
         assertEquals("Secondary structure", FeatureCategory.SECONDARY_STRUCTURE.getName());
     }
+
+    @Test
+    void canUseTypeOf() {
+        assertEquals(
+                FeatureCategory.SECONDARY_STRUCTURE, FeatureCategory.typeOf("Secondary structure"));
+    }
 }

@@ -13,7 +13,7 @@ import org.uniprot.core.flatfile.parser.impl.ft.FtLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject;
 import org.uniprot.core.scorer.uniprotkb.features.FeatureScored;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
-import org.uniprot.core.uniprotkb.feature.Feature;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 
 class FeatureWithEvidenceScoredTest {
     @Test
@@ -24,7 +24,7 @@ class FeatureWithEvidenceScoredTest {
                         + " (By similarity)\"\n"
                         + "FT                   /evidence=\"ECO:0000256|HAMAP-Rule:MF_00111\"\n";
 
-        Feature feature = createFeature(ftLine);
+        UniProtKBFeature feature = createFeature(ftLine);
         verify(feature, 3.0, singletonList(new EvidenceDatabase("HAMAP-Rule")));
     }
 
@@ -36,7 +36,7 @@ class FeatureWithEvidenceScoredTest {
                         + " (By similarity)\"\n"
                         + "FT                   /evidence=\"ECO:0000256|HAMAP-Rule:MF_00111\"\n";
 
-        Feature feature = createFeature(ftLine);
+        UniProtKBFeature feature = createFeature(ftLine);
         verify(feature, 0.0, singletonList(new EvidenceDatabase("RuleBase")));
     }
 
@@ -47,7 +47,7 @@ class FeatureWithEvidenceScoredTest {
                         + "FT                   /note=\"Helical\"\n"
                         + "FT                   /evidence=\"ECO:0000256|SAM:Phobius\"\n";
 
-        Feature feature = createFeature(ftLine);
+        UniProtKBFeature feature = createFeature(ftLine);
         verify(feature, 3.0, singletonList(new EvidenceDatabase("SAM")));
     }
 
@@ -58,7 +58,7 @@ class FeatureWithEvidenceScoredTest {
                         + "FT                   /note=\"Helical\"\n"
                         + "FT                   /evidence=\"ECO:0000256|SAM:Phobius\"\n";
 
-        Feature feature = createFeature(ftLine);
+        UniProtKBFeature feature = createFeature(ftLine);
         verify(feature, 0.0, singletonList(new EvidenceDatabase("HAMAP-Rule")));
     }
 
@@ -69,7 +69,7 @@ class FeatureWithEvidenceScoredTest {
                         + "FT                   /note=\"SPX\"\n"
                         + "FT                   /evidence=\"ECO:0000259|PROSITE:PS51382\"\n";
 
-        Feature feature = createFeature(ftLine);
+        UniProtKBFeature feature = createFeature(ftLine);
         verify(feature, 0.0, singletonList(new EvidenceDatabase("PROSITE")));
     }
 
@@ -80,21 +80,22 @@ class FeatureWithEvidenceScoredTest {
                         + "FT                   /note=\"SPX\"\n"
                         + "FT                   /evidence=\"ECO:0000259|PROSITE:PS51382\"\n";
 
-        Feature feature = createFeature(ftLine);
+        UniProtKBFeature feature = createFeature(ftLine);
         verify(feature, 0.0, singletonList(new EvidenceDatabase("SAM")));
     }
 
-    private void verify(Feature feature, double expectedScore, List<EvidenceDatabase> types) {
+    private void verify(
+            UniProtKBFeature feature, double expectedScore, List<EvidenceDatabase> types) {
         FeatureScored scored = new FeatureScored(feature, types);
         assertEquals(expectedScore, scored.score(), 0.00001);
     }
 
-    private Feature createFeature(String ftLine) {
+    private UniProtKBFeature createFeature(String ftLine) {
         UniprotKBLineParserFactory parserFactory = new DefaultUniprotKBLineParserFactory();
         UniprotKBLineParser<FtLineObject> parser = parserFactory.createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
         FtLineConverter converter = new FtLineConverter();
-        List<Feature> features = converter.convert(obj);
+        List<UniProtKBFeature> features = converter.convert(obj);
         return features.get(0);
     }
 }

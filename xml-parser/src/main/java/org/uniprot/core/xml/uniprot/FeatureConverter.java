@@ -4,22 +4,21 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.uniprot.core.feature.FeatureLocation;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.feature.*;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
-import org.uniprot.core.uniprotkb.feature.AlternativeSequenceHelper;
-import org.uniprot.core.uniprotkb.feature.Feature;
 import org.uniprot.core.uniprotkb.feature.FeatureId;
-import org.uniprot.core.uniprotkb.feature.FeatureLocation;
 import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
-import org.uniprot.core.uniprotkb.feature.impl.FeatureBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.FeatureIdBuilder;
+import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.FeatureType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 
 import com.google.common.base.Strings;
 
-public class FeatureConverter implements Converter<FeatureType, Feature> {
+public class FeatureConverter implements Converter<FeatureType, UniProtKBFeature> {
 
     private static final String STOP = ".";
     private final EvidenceIndexMapper evRefMapper;
@@ -37,15 +36,14 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
     }
 
     @Override
-    public Feature fromXml(FeatureType xmlObj) {
-        org.uniprot.core.uniprotkb.feature.FeatureType type =
-                org.uniprot.core.uniprotkb.feature.FeatureType.typeOf(xmlObj.getType());
+    public UniProtKBFeature fromXml(FeatureType xmlObj) {
+        UniprotKBFeatureType type = UniprotKBFeatureType.typeOf(xmlObj.getType());
         String description = "";
         if (xmlObj.getDescription() != null) {
             description = xmlObj.getDescription();
-            if (AlternativeSequenceHelper.hasAlternativeSequence(type)) {
+            if (UniprotKBAlternativeSequenceHelper.hasAlternativeSequence(type)) {
                 description = XmlConverterHelper.removeIfPostfix(description, STOP);
-                if (type != org.uniprot.core.uniprotkb.feature.FeatureType.MUTAGEN)
+                if (type != UniprotKBFeatureType.MUTAGEN)
                     description = XmlConverterHelper.lowercaseFirstLetter(description);
             }
         }
@@ -64,7 +62,7 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
                             .original(xmlObj.getOriginal())
                             .alternativeSequencesSet(xmlObj.getVariation())
                             .build();
-        } else if (AlternativeSequenceHelper.hasAlternativeSequence(type)) {
+        } else if (UniprotKBAlternativeSequenceHelper.hasAlternativeSequence(type)) {
             altSeq =
                     new AlternativeSequenceBuilder()
                             .original("")
@@ -72,7 +70,7 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
                             .build();
         }
 
-        return new FeatureBuilder()
+        return new UniProtKBFeatureBuilder()
                 .type(type)
                 .location(location)
                 .featureId(featureId)
@@ -83,7 +81,7 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
     }
 
     @Override
-    public FeatureType toXml(Feature uniObj) {
+    public FeatureType toXml(UniProtKBFeature uniObj) {
         FeatureType xmlFeature = xmlUniprotFactory.createFeatureType();
 
         // feature type
@@ -97,10 +95,10 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
         }
         if ((uniObj.getDescription() != null) && !uniObj.getDescription().getValue().isEmpty()) {
             String val = uniObj.getDescription().getValue();
-            if (AlternativeSequenceHelper.hasAlternativeSequence(uniObj.getType())) {
+            if (UniprotKBAlternativeSequenceHelper.hasAlternativeSequence(uniObj.getType())) {
                 val = XmlConverterHelper.addIfNoPostfix(val, STOP);
 
-                if (uniObj.getType() != org.uniprot.core.uniprotkb.feature.FeatureType.MUTAGEN)
+                if (uniObj.getType() != UniprotKBFeatureType.MUTAGEN)
                     val = XmlConverterHelper.uppercaseFirstLetter(val);
             }
             xmlFeature.setDescription(val);
@@ -121,8 +119,8 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
         return xmlFeature;
     }
 
-    private void updateConflictFeature(FeatureType featureType, Feature feature) {
-        if (feature.getType() != org.uniprot.core.uniprotkb.feature.FeatureType.CONFLICT) {
+    private void updateConflictFeature(FeatureType featureType, UniProtKBFeature feature) {
+        if (feature.getType() != UniprotKBFeatureType.CONFLICT) {
             return;
         }
         if ((feature.getDescription() == null)

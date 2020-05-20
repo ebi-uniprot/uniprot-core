@@ -13,8 +13,8 @@ import org.uniprot.core.scorer.uniprotkb.ScoreStatus;
 import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 02-Mar-2010 Time: 12:10:54 To change this template
@@ -22,107 +22,116 @@ import org.uniprot.core.uniprotkb.feature.FeatureType;
  */
 public class FeatureScored implements HasScore {
 
-    private EnumMap<FeatureType, FeatureScoredInfo> featureMap = new EnumMap<>(FeatureType.class);
+    private EnumMap<UniprotKBFeatureType, FeatureScoredInfo> featureMap =
+            new EnumMap<>(UniprotKBFeatureType.class);
 
     {
         featureMap.put(
-                FeatureType.TRANSMEM,
+                UniprotKBFeatureType.TRANSMEM,
                 new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000255));
         featureMap.put(
-                FeatureType.INTRAMEM,
+                UniprotKBFeatureType.INTRAMEM,
                 new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000305));
         featureMap.put(
-                FeatureType.NP_BIND,
+                UniprotKBFeatureType.NP_BIND,
                 new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000255));
         featureMap.put(
-                FeatureType.TOPO_DOM,
+                UniprotKBFeatureType.TOPO_DOM,
                 new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000305));
         featureMap.put(
-                FeatureType.SIGNAL,
+                UniprotKBFeatureType.SIGNAL,
                 new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000255));
         featureMap.put(
-                FeatureType.ACT_SITE,
+                UniprotKBFeatureType.ACT_SITE,
                 new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000269));
         featureMap.put(
-                FeatureType.BINDING,
+                UniprotKBFeatureType.BINDING,
                 new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000269));
         featureMap.put(
-                FeatureType.LIPID, new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000255));
-        featureMap.put(
-                FeatureType.METAL, new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000269));
-        featureMap.put(
-                FeatureType.SITE, new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000269));
-        featureMap.put(
-                FeatureType.TRANSIT,
+                UniprotKBFeatureType.LIPID,
                 new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000255));
         featureMap.put(
-                FeatureType.CA_BIND,
+                UniprotKBFeatureType.METAL,
+                new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000269));
+        featureMap.put(
+                UniprotKBFeatureType.SITE,
+                new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000269));
+        featureMap.put(
+                UniprotKBFeatureType.TRANSIT,
                 new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000255));
         featureMap.put(
-                FeatureType.REGION,
+                UniprotKBFeatureType.CA_BIND,
+                new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000255));
+        featureMap.put(
+                UniprotKBFeatureType.REGION,
                 new FeatureScoredInfo(6, 2, PRESENCE, EvidenceCode.ECO_0000269));
         featureMap.put(
-                FeatureType.DNA_BIND,
+                UniprotKBFeatureType.DNA_BIND,
                 new FeatureScoredInfo(3, 3, PRESENCE, EvidenceCode.ECO_0000255));
         featureMap.put(
-                FeatureType.ZN_FING,
+                UniprotKBFeatureType.ZN_FING,
                 new FeatureScoredInfo(3, 3, PRESENCE, EvidenceCode.ECO_0000255));
         featureMap.put(
-                FeatureType.NON_STD,
+                UniprotKBFeatureType.NON_STD,
                 new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000305));
         featureMap.put(
-                FeatureType.VARIANT, new FeatureScoredInfo(2, 0, NUMBER, EvidenceCode.ECO_0000269));
+                UniprotKBFeatureType.VARIANT,
+                new FeatureScoredInfo(2, 0, NUMBER, EvidenceCode.ECO_0000269));
         featureMap.put(
-                FeatureType.MUTAGEN, new FeatureScoredInfo(3, 3, NUMBER, EvidenceCode.ECO_0000269));
+                UniprotKBFeatureType.MUTAGEN,
+                new FeatureScoredInfo(3, 3, NUMBER, EvidenceCode.ECO_0000269));
         featureMap.put(
-                FeatureType.CARBOHYD,
+                UniprotKBFeatureType.CARBOHYD,
                 new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000269));
         featureMap.put(
-                FeatureType.DISULFID,
+                UniprotKBFeatureType.DISULFID,
                 new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000269));
         featureMap.put(
-                FeatureType.CROSSLNK,
+                UniprotKBFeatureType.CROSSLNK,
                 new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000269));
         featureMap.put(
-                FeatureType.PROPEP,
+                UniprotKBFeatureType.PROPEP,
                 new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000305));
         featureMap.put(
-                FeatureType.INIT_MET,
+                UniprotKBFeatureType.INIT_MET,
                 new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000269));
         featureMap.put(
-                FeatureType.MOD_RES,
+                UniprotKBFeatureType.MOD_RES,
                 new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000269));
         featureMap.put(
-                FeatureType.MOTIF, new FeatureScoredInfo(3, 1, PRESENCE, EvidenceCode.ECO_0000255));
+                UniprotKBFeatureType.MOTIF,
+                new FeatureScoredInfo(3, 1, PRESENCE, EvidenceCode.ECO_0000255));
         featureMap.put(
-                FeatureType.PEPTIDE, new FeatureScoredInfo(3, 1, NUMBER, EvidenceCode.ECO_0000305));
+                UniprotKBFeatureType.PEPTIDE,
+                new FeatureScoredInfo(3, 1, NUMBER, EvidenceCode.ECO_0000305));
         featureMap.put(
-                FeatureType.REPEAT,
+                UniprotKBFeatureType.REPEAT,
                 new FeatureScoredInfo(3, 3, PRESENCE, EvidenceCode.ECO_0000255));
         featureMap.put(
-                FeatureType.DOMAIN,
+                UniprotKBFeatureType.DOMAIN,
                 new FeatureScoredInfo(3, 3, PRESENCE, EvidenceCode.ECO_0000255));
         featureMap.put(
-                FeatureType.COILED,
+                UniprotKBFeatureType.COILED,
                 new FeatureScoredInfo(9, 3, PRESENCE, EvidenceCode.ECO_0000255));
         featureMap.put(
-                FeatureType.COMPBIAS,
+                UniprotKBFeatureType.COMPBIAS,
                 new FeatureScoredInfo(3, 3, PRESENCE, EvidenceCode.ECO_0000255));
         featureMap.put(
-                FeatureType.CHAIN, new FeatureScoredInfo(3, 1, NUMBER, EvidenceCode.ECO_0000305));
+                UniprotKBFeatureType.CHAIN,
+                new FeatureScoredInfo(3, 1, NUMBER, EvidenceCode.ECO_0000305));
     }
 
-    private final Feature feature;
+    private final UniProtKBFeature feature;
     private boolean isSP = false;
 
     private final List<EvidenceDatabase> evidenceDatabases;
 
-    public FeatureScored(Feature copy, List<EvidenceDatabase> evidenceDatabases) {
+    public FeatureScored(UniProtKBFeature copy, List<EvidenceDatabase> evidenceDatabases) {
         feature = copy;
         this.evidenceDatabases = evidenceDatabases;
     }
 
-    public FeatureScored(Feature copy) {
+    public FeatureScored(UniProtKBFeature copy) {
         this(copy, null);
     }
 
@@ -135,11 +144,11 @@ public class FeatureScored implements HasScore {
         double score = 0;
         if (ScoreUtil.hasEvidence(feature.getEvidences(), evidenceDatabases)) {
 
-            if (feature.getType() == FeatureType.COMPBIAS) {
+            if (feature.getType() == UniprotKBFeatureType.COMPBIAS) {
                 return 3.0;
-            } else if (feature.getType() == FeatureType.VARIANT) {
+            } else if (feature.getType() == UniprotKBFeatureType.VARIANT) {
                 return 2.0;
-            } else if (feature.getType() == FeatureType.MUTAGEN) {
+            } else if (feature.getType() == UniprotKBFeatureType.MUTAGEN) {
                 return 3.0;
             }
             FeatureScoredInfo info = featureMap.get(feature.getType());

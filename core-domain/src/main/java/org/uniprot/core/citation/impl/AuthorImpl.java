@@ -1,7 +1,6 @@
 package org.uniprot.core.citation.impl;
 
 import org.uniprot.core.citation.Author;
-import org.uniprot.core.util.Utils;
 
 public class AuthorImpl implements Author {
     private static final long serialVersionUID = -3113315529380049309L;
@@ -19,11 +18,6 @@ public class AuthorImpl implements Author {
     @Override
     public String getValue() {
         return value;
-    }
-
-    @Override
-    public boolean hasValue() {
-        return Utils.notNullNotEmpty(this.value);
     }
 
     @Override

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
 class FTCarbohydFeatureBuildTest extends FTBuildTestAbstr {
     @Test
@@ -19,7 +19,8 @@ class FTCarbohydFeatureBuildTest extends FTBuildTestAbstr {
         String description = "N-linked (GlcNAc...); by host (Potential)";
         String featureId = "";
         List<String> evs = new ArrayList<>();
-        Feature feature = createFeature(FeatureType.CARBOHYD, 61, 61, description, featureId, evs);
+        UniProtKBFeature feature =
+                createFeature(UniprotKBFeatureType.CARBOHYD, 61, 61, description, featureId, evs);
 
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);
@@ -48,7 +49,8 @@ class FTCarbohydFeatureBuildTest extends FTBuildTestAbstr {
         List<String> evs = new ArrayList<>();
         evs.add(ev3);
         evs.add(ev2);
-        Feature feature = createFeature(FeatureType.CARBOHYD, 61, 61, description, featureId, evs);
+        UniProtKBFeature feature =
+                createFeature(UniprotKBFeatureType.CARBOHYD, 61, 61, description, featureId, evs);
 
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);

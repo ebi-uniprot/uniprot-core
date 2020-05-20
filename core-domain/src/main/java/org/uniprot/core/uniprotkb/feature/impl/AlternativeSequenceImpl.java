@@ -8,8 +8,8 @@ import org.uniprot.core.util.Utils;
 
 public class AlternativeSequenceImpl implements AlternativeSequence {
     private static final long serialVersionUID = 804707478075935286L;
-    private String originalSequence;
-    private List<String> alternativeSequences;
+    private final String originalSequence;
+    private final List<String> alternativeSequences;
 
     // no arg constructor for JSON deserialization
     AlternativeSequenceImpl() {

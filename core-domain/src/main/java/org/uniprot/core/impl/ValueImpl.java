@@ -1,7 +1,6 @@
 package org.uniprot.core.impl;
 
 import org.uniprot.core.Value;
-import org.uniprot.core.util.Utils;
 
 public class ValueImpl implements Value {
     private static final long serialVersionUID = 1046531902098372084L;
@@ -17,11 +16,6 @@ public class ValueImpl implements Value {
     @Override
     public String getValue() {
         return value;
-    }
-
-    @Override
-    public boolean hasValue() {
-        return Utils.notNullNotEmpty(this.value);
     }
 
     @Override

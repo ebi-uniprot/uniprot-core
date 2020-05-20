@@ -21,9 +21,9 @@ import org.uniprot.core.uniprotkb.comment.impl.CofactorCommentBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.DiseaseCommentBuilder;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilder;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
-import org.uniprot.core.uniprotkb.feature.impl.FeatureBuilder;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
+import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
@@ -654,7 +654,8 @@ class UniProtKBEntryBuilderTest {
 
     @Nested
     class features {
-        private Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).build();
+        private UniProtKBFeature feature =
+                new UniProtKBFeatureBuilder().type(UniprotKBFeatureType.CHAIN).build();
 
         @Test
         void canAddSingle() {
@@ -672,8 +673,8 @@ class UniProtKBEntryBuilderTest {
                             obj.getExtraAttributes()
                                     .get(UniProtKBEntryBuilder.COUNT_BY_FEATURE_TYPE_ATTRIB);
             assertEquals(1, countByType.size());
-            assertTrue(countByType.containsKey(FeatureType.CHAIN.getDisplayName()));
-            assertEquals(1, countByType.get(FeatureType.CHAIN.getDisplayName()));
+            assertTrue(countByType.containsKey(UniprotKBFeatureType.CHAIN.getDisplayName()));
+            assertEquals(1, countByType.get(UniprotKBFeatureType.CHAIN.getDisplayName()));
         }
 
         @Test
@@ -709,7 +710,7 @@ class UniProtKBEntryBuilderTest {
 
         @Test
         void previousAddedWillBeIgnoreUponSet() {
-            List<Feature> list = null;
+            List<UniProtKBFeature> list = null;
             UniProtKBEntry obj =
                     UniProtKBEntryBuilder.from(minEntry)
                             .featuresAdd(feature)
@@ -722,8 +723,10 @@ class UniProtKBEntryBuilderTest {
 
         @Test
         void canAddMoreThanOneFeature() {
-            Feature feature2 = new FeatureBuilder().type(FeatureType.CHAIN).build();
-            Feature feature3 = new FeatureBuilder().type(FeatureType.VARIANT).build();
+            UniProtKBFeature feature2 =
+                    new UniProtKBFeatureBuilder().type(UniprotKBFeatureType.CHAIN).build();
+            UniProtKBFeature feature3 =
+                    new UniProtKBFeatureBuilder().type(UniprotKBFeatureType.VARIANT).build();
             UniProtKBEntry obj =
                     UniProtKBEntryBuilder.from(minEntry)
                             .featuresAdd(feature)
@@ -739,10 +742,10 @@ class UniProtKBEntryBuilderTest {
                             obj.getExtraAttributes()
                                     .get(UniProtKBEntryBuilder.COUNT_BY_FEATURE_TYPE_ATTRIB);
             assertEquals(2, countByType.size());
-            assertTrue(countByType.containsKey(FeatureType.CHAIN.getDisplayName()));
-            assertEquals(2, countByType.get(FeatureType.CHAIN.getDisplayName()));
-            assertTrue(countByType.containsKey(FeatureType.VARIANT.getDisplayName()));
-            assertEquals(1, countByType.get(FeatureType.VARIANT.getDisplayName()));
+            assertTrue(countByType.containsKey(UniprotKBFeatureType.CHAIN.getDisplayName()));
+            assertEquals(2, countByType.get(UniprotKBFeatureType.CHAIN.getDisplayName()));
+            assertTrue(countByType.containsKey(UniprotKBFeatureType.VARIANT.getDisplayName()));
+            assertEquals(1, countByType.get(UniprotKBFeatureType.VARIANT.getDisplayName()));
         }
     }
 
