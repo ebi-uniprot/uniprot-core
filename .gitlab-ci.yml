@@ -102,7 +102,7 @@ core:sonar:
 
 core:deploy:
   stage: deploy
-  script: mvn $MAVEN_CLI_OPTS -Dmaven.test.skip=true deploy -s ${MAVEN_SETTINGS}
+  script: mvn $MAVEN_CLI_OPTS -DskipTests deploy -s ${MAVEN_SETTINGS}
   dependencies:
     - core:settings
     - core:sonar
