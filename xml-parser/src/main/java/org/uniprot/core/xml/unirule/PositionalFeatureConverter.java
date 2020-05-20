@@ -23,8 +23,11 @@ public class PositionalFeatureConverter
     @Override
     public PositionalFeature fromXml(PositionalFeatureType xmlObj) {
         if (Objects.isNull(xmlObj)) return null;
-
         RangeType xmlPosition = xmlObj.getPositionalCondition().getPosition();
+
+        if (!isStringIntParsable(xmlPosition.getStart())
+                || !isStringIntParsable(xmlPosition.getEnd())) return null;
+
         Range position =
                 new Range(
                         Integer.parseInt(xmlPosition.getStart()),
@@ -64,5 +67,14 @@ public class PositionalFeatureConverter
         positionalFeatureType.setPositionalAnnotation(positionalAnnotationType);
         positionalFeatureType.setInGroup(uniObj.isInGroup());
         return positionalFeatureType;
+    }
+
+    private boolean isStringIntParsable(String value) {
+        try {
+            Integer.parseInt(value);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
     }
 }
