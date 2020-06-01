@@ -462,6 +462,12 @@
 		"uriLink": "https://metosite.uma.es/scan/%id"
 	},
 	{
+		"name": "GlyGen",
+		"displayName": "GlyGen",
+		"category": "PTM",
+		"uriLink": "https://glygen.org/protein/%id"
+	},
+	{
 		"name": "BioMuta",
 		"displayName": "BioMuta",
 		"category": "PMD",
