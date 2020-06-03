@@ -302,7 +302,7 @@ class UniProtKBDatabaseTypesTest {
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PROTEIN_FAMILY_GROUP_DATABASES),
                 14);
-        verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PTM_DATABASES), 8);
+        verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PTM_DATABASES), 9);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(
                         POLYMORPHISM_AND_MUTATION_DATABASES),
@@ -324,7 +324,7 @@ class UniProtKBDatabaseTypesTest {
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PHYLOGENOMIC_DATABASES), 9);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(ENZYME_AND_PATHWAY_DATABASES),
-                9);
+                10);
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(OTHER), 10);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(GENE_EXPRESSION_DATABASES), 5);
