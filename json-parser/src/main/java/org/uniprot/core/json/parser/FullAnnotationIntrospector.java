@@ -4,15 +4,29 @@ import org.uniprot.core.citation.Citation;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.unirule.RuleExceptionAnnotation;
 
+import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.databind.AnnotationIntrospector;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.cfg.MapperConfig;
+import com.fasterxml.jackson.databind.cfg.PackageVersion;
 import com.fasterxml.jackson.databind.introspect.AnnotatedClass;
 import com.fasterxml.jackson.databind.jsontype.TypeResolverBuilder;
 import com.fasterxml.jackson.databind.jsontype.impl.StdTypeResolverBuilder;
+import com.fasterxml.jackson.databind.util.ClassUtil;
 
-public class CustomAnnotationIntrospector extends SimpleAnnotationIntrospector {
-    private static final long serialVersionUID = 3724944589060382231L;
+class FullAnnotationIntrospector extends AnnotationIntrospector {
+
+    @Override
+    public Version version() {
+        return PackageVersion.VERSION;
+    }
+
+    @Override
+    public Enum<?> findDefaultEnumValue(Class<Enum<?>> enumCls) {
+        return ClassUtil.findFirstAnnotatedEnumValue(enumCls, JsonEnumDefaultValue.class);
+    }
 
     @Override
     public TypeResolverBuilder<?> findTypeResolver(

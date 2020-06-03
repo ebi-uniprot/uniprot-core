@@ -21,7 +21,7 @@ public abstract class JsonConfig {
     // common setting applicable to fullobject mapper
     public ObjectMapper getDefaultFullObjectMapper() {
         ObjectMapper objMapper = getDefaultObjectMapper();
-        objMapper.setAnnotationIntrospector(new CustomAnnotationIntrospector());
+        objMapper.setAnnotationIntrospector(new FullAnnotationIntrospector());
         return objMapper;
     }
 
