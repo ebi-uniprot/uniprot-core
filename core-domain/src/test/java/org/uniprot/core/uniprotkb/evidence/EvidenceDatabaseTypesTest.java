@@ -1,7 +1,8 @@
 package org.uniprot.core.uniprotkb.evidence;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -16,6 +17,14 @@ class EvidenceDatabaseTypesTest {
         String name = "EMBL";
         EvidenceDatabaseDetail emblEvidence = EvidenceDatabaseTypes.INSTANCE.getType(name);
         assertNotNull(emblEvidence);
+    }
+
+    @Test
+    void testGetAllEvidenceDatabases() {
+        List<EvidenceDatabaseDetail> evidenceDatabases =
+                EvidenceDatabaseTypes.INSTANCE.getAllEvidenceDatabases();
+        assertNotNull(evidenceDatabases);
+        assertEquals(49, evidenceDatabases.size());
     }
 
     @Test
