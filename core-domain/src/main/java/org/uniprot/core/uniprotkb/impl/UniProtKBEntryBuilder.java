@@ -25,6 +25,7 @@ import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
     public static final String COUNT_BY_COMMENT_TYPE_ATTRIB = "countByCommentType";
     public static final String COUNT_BY_FEATURE_TYPE_ATTRIB = "countByFeatureType";
+    public static final String UNIPARC_ID_ATTRIB = "uniParcId";
 
     private UniProtKBAccession primaryAccession;
     private UniProtKBEntryType entryType;
