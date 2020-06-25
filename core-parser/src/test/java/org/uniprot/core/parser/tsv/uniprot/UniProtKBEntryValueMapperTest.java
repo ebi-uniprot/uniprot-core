@@ -17,6 +17,7 @@ import org.uniprot.core.flatfile.parser.UniProtParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniProtParser;
 import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
+import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
 
 class UniProtKBEntryValueMapperTest {
     private static UniProtKBEntry entryQ15758;
@@ -38,6 +39,11 @@ class UniProtKBEntryValueMapperTest {
 
         is = UniProtKBEntryValueMapperTest.class.getResourceAsStream("/uniprot/P03431.dat");
         entryP03431 = parser.parse(inputStreamToString(is));
+        // UniParc is aggregated after convertion, so I am adding manually
+        entryP03431 =
+                UniProtKBEntryBuilder.from(entryP03431)
+                        .extraAttributesAdd(UniProtKBEntryBuilder.UNIPARC_ID_ATTRIB, "UP1234567890")
+                        .build();
         is.close();
 
         is = UniProtKBEntryValueMapperTest.class.getResourceAsStream("/uniprot/Q84MC7.dat");
@@ -712,6 +718,14 @@ class UniProtKBEntryValueMapperTest {
                         + " (2); topological domain (11); transmembrane region (8)";
 
         verify(expectedCommentCount, "feature_count", result);
+    }
+
+    @Test
+    void testExtraAttributeUniParcId() {
+        List<String> fields = Arrays.asList("uniparc_id");
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
+
+        verify("UP1234567890", "uniparc_id", result);
     }
 
     private void verify(String expected, String fieldName, Map<String, String> result) {
