@@ -31,11 +31,13 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
     private final List<String> members;
     private final Set<Long> organismIds;
     private int memberCount;
+    private Set<String> organisms;
 
     // no arg constructor for JSON deserialization
     UniRefEntryLightImpl() {
         members = Collections.emptyList();
         organismIds = Collections.emptySet();
+        organisms = Collections.emptySet();
     }
 
     UniRefEntryLightImpl(
@@ -49,6 +51,7 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
             List<String> members,
             boolean hasMemberUniParcIds,
             Set<Long> organismIds,
+            Set<String> organisms,
             int memberCount) {
         this.id = id;
         this.name = name;
@@ -60,6 +63,7 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
         this.members = Utils.unmodifiableList(members);
         this.hasMemberUniParcIds = hasMemberUniParcIds;
         this.organismIds = Utils.unmodifiableSet(organismIds);
+        this.organisms = organisms;
         if (memberCount == 0) {
             this.memberCount = this.members.size() + 1;
         } else {
@@ -113,6 +117,11 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
     }
 
     @Override
+    public Set<String> getOrganisms() {
+        return organisms;
+    }
+
+    @Override
     public Set<Long> getOrganismIds() {
         return organismIds;
     }
@@ -137,12 +146,13 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
                 Objects.equals(commonTaxon, that.commonTaxon) &&
                 Objects.equals(representativeSequence, that.representativeSequence) &&
                 Objects.equals(members, that.members) &&
-                Objects.equals(organismIds, that.organismIds);
+                Objects.equals(organismIds, that.organismIds) &&
+                Objects.equals(organisms, that.organisms);
     }
 
     @Override
     public int hashCode() {
         return Objects
-                .hash(id, name, updated, entryType, commonTaxonId, commonTaxon, representativeSequence, hasMemberUniParcIds, members, organismIds, memberCount);
+                .hash(id, name, updated, entryType, commonTaxonId, commonTaxon, representativeSequence, hasMemberUniParcIds, members, organismIds, memberCount, organisms);
     }
 }

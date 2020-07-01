@@ -9,7 +9,7 @@ import org.uniprot.core.util.Utils;
 import javax.annotation.Nonnull;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -30,7 +30,8 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
     private String representativeSequence;
     private List<String> members = new ArrayList<>();
     private boolean hasMemberUniParcIds;
-    private Set<Long> organismIds = new HashSet<>();
+    private Set<Long> organismIds = new LinkedHashSet<>();
+    private Set<String> organisms = new LinkedHashSet<>();
     private int memberCount;
 
     @Override
@@ -46,6 +47,7 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
                 members,
                 hasMemberUniParcIds,
                 organismIds,
+                organisms,
                 memberCount);
     }
 
@@ -115,12 +117,22 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
     }
 
     public @Nonnull UniRefEntryLightBuilder organismIdsSet(Set<Long> ids) {
-        this.organismIds = Utils.unmodifiableSet(ids);
+        this.organismIds = Utils.modifiableSet(ids);
         return this;
     }
 
     public @Nonnull UniRefEntryLightBuilder organismIdsAdd(Long id) {
         Utils.addOrIgnoreNull(id, this.organismIds);
+        return this;
+    }
+
+    public @Nonnull UniRefEntryLightBuilder organismsSet(Set<String> ids) {
+        this.organisms = Utils.modifiableSet(ids);
+        return this;
+    }
+
+    public @Nonnull UniRefEntryLightBuilder organismsAdd(String id) {
+        Utils.addOrIgnoreNull(id, this.organisms);
         return this;
     }
 

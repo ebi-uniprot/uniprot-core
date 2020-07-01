@@ -33,6 +33,8 @@ public interface UniRefEntryLight extends Serializable {
 
     int getMemberCount();
 
+    Set<String> getOrganisms();
+
     Set<Long> getOrganismIds();
 
     String getRepresentativeSequence();

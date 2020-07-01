@@ -114,8 +114,29 @@ class UniRefEntryLightBuilderTest {
                 new UniRefEntryLightBuilder().organismIdsSet(new HashSet<>(asList(1L, 2L)));
 
         entryLightBuilder.organismIdsAdd(3L);
+        entryLightBuilder.organismIdsAdd(4L);
+        entryLightBuilder.organismIdsAdd(5L);
 
-        assertThat(entryLightBuilder.build().getOrganismIds(), contains(1L, 2L, 3L));
+        assertThat(entryLightBuilder.build().getOrganismIds(), contains(1L, 2L, 3L, 4L, 5L));
+    }
+
+    @Test
+    void canSetOrganisms() {
+        Set<String> value = new HashSet<>(asList("1", "2"));
+        UniRefEntryLight entryLight = new UniRefEntryLightBuilder().organismsSet(value).build();
+        assertThat(entryLight.getOrganisms(), is(value));
+    }
+
+    @Test
+    void canAddOrganisms() {
+        UniRefEntryLightBuilder entryLightBuilder =
+                new UniRefEntryLightBuilder().organismsSet(new HashSet<>(asList("1", "2")));
+
+        entryLightBuilder.organismsAdd("3");
+        entryLightBuilder.organismsAdd("4");
+        entryLightBuilder.organismsAdd("5");
+
+        assertThat(entryLightBuilder.build().getOrganisms(), contains("1", "2", "3", "4", "5"));
     }
 
     @Test
