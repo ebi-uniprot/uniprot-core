@@ -3,6 +3,7 @@ package org.uniprot.core.uniref;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Represents a "light-weight" {@link UniRefEntry}, containing less detailed information when
@@ -32,7 +33,7 @@ public interface UniRefEntryLight extends Serializable {
 
     int getMemberCount();
 
-    List<Long> getOrganismIds();
+    Set<Long> getOrganismIds();
 
     String getRepresentativeSequence();
 }

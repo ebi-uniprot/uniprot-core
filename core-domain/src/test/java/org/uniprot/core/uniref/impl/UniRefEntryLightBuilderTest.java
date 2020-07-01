@@ -5,7 +5,9 @@ import org.uniprot.core.uniref.UniRefEntryLight;
 import org.uniprot.core.uniref.UniRefType;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
@@ -101,7 +103,7 @@ class UniRefEntryLightBuilderTest {
 
     @Test
     void canSetOrganismIds() {
-        List<Long> value = asList(1L, 2L);
+        Set<Long> value = new HashSet<>(asList(1L, 2L));
         UniRefEntryLight entryLight = new UniRefEntryLightBuilder().organismIdsSet(value).build();
         assertThat(entryLight.getOrganismIds(), is(value));
     }
@@ -109,7 +111,7 @@ class UniRefEntryLightBuilderTest {
     @Test
     void canAddOrganismIds() {
         UniRefEntryLightBuilder entryLightBuilder =
-                new UniRefEntryLightBuilder().organismIdsSet(asList(1L, 2L));
+                new UniRefEntryLightBuilder().organismIdsSet(new HashSet<>(asList(1L, 2L)));
 
         entryLightBuilder.organismIdsAdd(3L);
 

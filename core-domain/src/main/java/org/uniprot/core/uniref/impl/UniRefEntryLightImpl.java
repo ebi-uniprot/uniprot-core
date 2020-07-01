@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Implementation of {@link UniRefEntryLight} objects.
@@ -28,13 +29,13 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
     private String representativeSequence;
     private boolean hasMemberUniParcIds;
     private final List<String> members;
-    private final List<Long> organismIds;
+    private final Set<Long> organismIds;
     private int memberCount;
 
     // no arg constructor for JSON deserialization
     UniRefEntryLightImpl() {
         members = Collections.emptyList();
-        organismIds = Collections.emptyList();
+        organismIds = Collections.emptySet();
     }
 
     UniRefEntryLightImpl(
@@ -47,7 +48,7 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
             String representativeSequence,
             List<String> members,
             boolean hasMemberUniParcIds,
-            List<Long> organismIds,
+            Set<Long> organismIds,
             int memberCount) {
         this.id = id;
         this.name = name;
@@ -58,7 +59,7 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
         this.representativeSequence = representativeSequence;
         this.members = Utils.unmodifiableList(members);
         this.hasMemberUniParcIds = hasMemberUniParcIds;
-        this.organismIds = Utils.unmodifiableList(organismIds);
+        this.organismIds = Utils.unmodifiableSet(organismIds);
         if (memberCount == 0) {
             this.memberCount = this.members.size() + 1;
         } else {
@@ -112,7 +113,7 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
     }
 
     @Override
-    public List<Long> getOrganismIds() {
+    public Set<Long> getOrganismIds() {
         return organismIds;
     }
 

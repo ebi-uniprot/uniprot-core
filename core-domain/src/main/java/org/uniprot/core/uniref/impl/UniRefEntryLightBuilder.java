@@ -9,7 +9,9 @@ import org.uniprot.core.util.Utils;
 import javax.annotation.Nonnull;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Builder for {@link UniRefEntryLight} objects.
@@ -28,7 +30,7 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
     private String representativeSequence;
     private List<String> members = new ArrayList<>();
     private boolean hasMemberUniParcIds;
-    private List<Long> organismIds = new ArrayList<>();
+    private Set<Long> organismIds = new HashSet<>();
     private int memberCount;
 
     @Override
@@ -112,8 +114,8 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
         return this;
     }
 
-    public @Nonnull UniRefEntryLightBuilder organismIdsSet(List<Long> ids) {
-        this.organismIds = Utils.modifiableList(ids);
+    public @Nonnull UniRefEntryLightBuilder organismIdsSet(Set<Long> ids) {
+        this.organismIds = Utils.unmodifiableSet(ids);
         return this;
     }
 
