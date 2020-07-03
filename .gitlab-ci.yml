@@ -8,7 +8,7 @@ variables:
   UNIPROT_RESOURCES: "-Dcv.db.types.location=ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/complete/docs/dbxref.txt"
   GIT_DEPTH: 0 # Tells git to fetch all the branches of the project, required by the analysis task
   SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"
-  JACOCO_AGGREGATE_REPORT: "jacoco-aggregate-report-core/target/site/jacoco-aggregate/jacoco.xml"
+  JACOCO_AGGREGATE_REPORT: "jacoco-aggregate-report/target/site/jacoco-aggregate/jacoco.xml"
 
 image: maven:3.3.9-jdk-8
 cache:
