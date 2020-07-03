@@ -201,7 +201,7 @@
 		<module>controlled-vocabulary</module>
 		<module>json-parser</module>
 		<module>tools-entry-scorer</module>
-		<module>jacoco-aggregate-report-core</module>
+		<module>jacoco-aggregate-report</module>
 	</modules>
 
 	<profiles>
