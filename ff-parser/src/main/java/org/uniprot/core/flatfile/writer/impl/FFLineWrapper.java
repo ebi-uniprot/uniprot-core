@@ -8,6 +8,7 @@ public class FFLineWrapper {
     private static final String DASH = "-";
 
     public static StringBuilder wrap(StringBuilder wrapThis, String separator, String linePrefix) {
+
         String[] seps = {separator};
         return wrap(wrapThis, seps, linePrefix);
     }
@@ -356,43 +357,42 @@ public class FFLineWrapper {
     private static String getDigitMap(String val, int index) {
         int nextIndex = -1;
 
-        int printableChars = 126 - 32;
-        int[] charToPosition = new int[printableChars];
-        Arrays.fill(charToPosition, -1);
+        int commaPos = -1;
+        int semiColonPos = -1;
+        int fullStopPos = -1;
+        int spacePos = -1;
+
         for (int i = 0; i < val.length() && i < FFLineConstant.LINE_LENGTH; i++) {
-            if (charToPosition[val.charAt(i) - 32] == -1) {
-                charToPosition[val.charAt(i) - 32] = index + i;
+            char currentChar = val.charAt(i);
+            if (currentChar == ',' && commaPos == -1) {
+                commaPos = index + i;
+            } else if (currentChar == ';' && semiColonPos == -1) {
+                semiColonPos = index + i;
+            } else if (currentChar == '.' && fullStopPos == -1) {
+                fullStopPos = index + i;
+            } else if (currentChar == ' ' && spacePos == -1) {
+                spacePos = index + i;
             }
         }
 
-        //        Map<Character, Integer> characterPositions = new HashMap<>();
-
-        //        for (int i = 0; i < val.length() && i < FFLineConstant.LINE_LENGTH; i++) {
-        //            if (!characterPositions.containsKey(val.charAt(i))) {
-        //                characterPositions.put(val.charAt(i), index + i);
-        //            }
-        //        }
-        if (charToPosition[' ' - 32] != -1) {
-            nextIndex = charToPosition[' ' - 32];
+        if (spacePos != -1) {
+            nextIndex = spacePos;
         }
-        if (charToPosition[',' - 32] != -1) {
-            int nextIndex2 = charToPosition[',' - 32];
+        if (commaPos != -1) {
             if (nextIndex == -1) {
-                nextIndex = nextIndex2;
-            } else nextIndex = Math.min(nextIndex, nextIndex2);
+                nextIndex = commaPos;
+            } else nextIndex = Math.min(nextIndex, commaPos);
         }
 
-        if (charToPosition[';' - 32] != -1) {
-            int nextIndex2 = charToPosition[';' - 32];
+        if (semiColonPos != -1) {
             if (nextIndex == -1) {
-                nextIndex = nextIndex2;
-            } else nextIndex = Math.min(nextIndex, nextIndex2);
+                nextIndex = semiColonPos;
+            } else nextIndex = Math.min(nextIndex, semiColonPos);
         }
-        if (charToPosition['.' - 32] != -1) {
-            int nextIndex2 = charToPosition['.' - 32];
+        if (fullStopPos != -1) {
             if (nextIndex == -1) {
-                nextIndex = nextIndex2;
-            } else nextIndex = Math.min(nextIndex, nextIndex2);
+                nextIndex = fullStopPos;
+            } else nextIndex = Math.min(nextIndex, fullStopPos);
         }
         if (nextIndex == -1) return null;
 
