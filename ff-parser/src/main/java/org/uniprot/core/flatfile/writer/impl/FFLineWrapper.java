@@ -357,39 +357,46 @@ public class FFLineWrapper {
     private static String getDigitMap(String val, int index) {
         int nextIndex = -1;
 
-        int commaPos = -1;
-        int semiColonPos = -1;
-        int fullStopPos = -1;
-        int spacePos = -1;
+        int commaPos = Integer.MAX_VALUE;
+        int semiColonPos = Integer.MAX_VALUE;
+        int fullStopPos = Integer.MAX_VALUE;
+        int spacePos = Integer.MAX_VALUE;
 
-        for (int i = 0; i < val.length() && i < FFLineConstant.LINE_LENGTH; i++) {
-            char currentChar = val.charAt(i);
-            if (currentChar == ',' && commaPos == -1) {
-                commaPos = index + i;
-            } else if (currentChar == ';' && semiColonPos == -1) {
-                semiColonPos = index + i;
-            } else if (currentChar == '.' && fullStopPos == -1) {
-                fullStopPos = index + i;
-            } else if (currentChar == ' ' && spacePos == -1) {
-                spacePos = index + i;
+        int charFinds = 0;
+        for (int i = index; i < val.length() && i < FFLineConstant.LINE_LENGTH; i++) {
+            if (charFinds < 4) {
+                char currentChar = val.charAt(i);
+                if (currentChar == ',' && commaPos == Integer.MAX_VALUE) {
+                    commaPos = i;
+                    charFinds++;
+                } else if (currentChar == ';' && semiColonPos == Integer.MAX_VALUE) {
+                    semiColonPos = i;
+                    charFinds++;
+                } else if (currentChar == '.' && fullStopPos == Integer.MAX_VALUE) {
+                    fullStopPos = i;
+                    charFinds++;
+                } else if (currentChar == ' ' && spacePos == Integer.MAX_VALUE) {
+                    spacePos = i;
+                    charFinds++;
+                }
             }
         }
 
-        if (spacePos != -1) {
+        if (spacePos != Integer.MAX_VALUE) {
             nextIndex = spacePos;
         }
-        if (commaPos != -1) {
+        if (commaPos != Integer.MAX_VALUE) {
             if (nextIndex == -1) {
                 nextIndex = commaPos;
             } else nextIndex = Math.min(nextIndex, commaPos);
         }
 
-        if (semiColonPos != -1) {
+        if (semiColonPos != Integer.MAX_VALUE) {
             if (nextIndex == -1) {
                 nextIndex = semiColonPos;
             } else nextIndex = Math.min(nextIndex, semiColonPos);
         }
-        if (fullStopPos != -1) {
+        if (fullStopPos != Integer.MAX_VALUE) {
             if (nextIndex == -1) {
                 nextIndex = fullStopPos;
             } else nextIndex = Math.min(nextIndex, fullStopPos);
