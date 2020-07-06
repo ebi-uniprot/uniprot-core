@@ -1,8 +1,8 @@
 package org.uniprot.core.flatfile.writer.impl;
 
-import java.util.*;
-
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.LINE_LENGTH;
+
+import java.util.*;
 
 public class FFLineWrapper {
     private static final String[] NOT_WRAPPED = {"->", "-->", "- ", "EC ", "TC ", "ECO:"};
@@ -125,8 +125,7 @@ public class FFLineWrapper {
         for (String token : tokens) {
             count++;
             if (wrapping
-                    && ((line.length() + token.length() + separator.length())
-                            >= LINE_LENGTH)) {
+                    && ((line.length() + token.length() + separator.length()) >= LINE_LENGTH)) {
                 lines.add(line.toString());
                 line = new StringBuilder(linePrefix);
             } else if (count != 1) line.append(space);
