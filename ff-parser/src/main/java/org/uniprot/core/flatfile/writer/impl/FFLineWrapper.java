@@ -2,6 +2,8 @@ package org.uniprot.core.flatfile.writer.impl;
 
 import java.util.*;
 
+import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.LINE_LENGTH;
+
 public class FFLineWrapper {
     private static final String[] NOT_WRAPPED = {"->", "-->", "- ", "EC ", "TC ", "ECO:"};
     //	private final static String[] DASHS ={"->", "-->", "- "};
@@ -15,7 +17,7 @@ public class FFLineWrapper {
 
     public static StringBuilder wrap(
             StringBuilder wrapThis, String[] separators, String linePrefix) {
-        return wrap(wrapThis, separators, linePrefix, FFLineConstant.LINE_LENGTH);
+        return wrap(wrapThis, separators, linePrefix, LINE_LENGTH);
     }
 
     public static StringBuilder wrap(
@@ -36,7 +38,7 @@ public class FFLineWrapper {
     }
 
     public static List<String> buildLines(String wrapThis, String separator, String linePrefix) {
-        return buildLines(wrapThis, separator, linePrefix, FFLineConstant.LINE_LENGTH);
+        return buildLines(wrapThis, separator, linePrefix, LINE_LENGTH);
     }
 
     public static List<String> buildLines(
@@ -124,7 +126,7 @@ public class FFLineWrapper {
             count++;
             if (wrapping
                     && ((line.length() + token.length() + separator.length())
-                            >= FFLineConstant.LINE_LENGTH)) {
+                            >= LINE_LENGTH)) {
                 lines.add(line.toString());
                 line = new StringBuilder(linePrefix);
             } else if (count != 1) line.append(space);
@@ -363,7 +365,11 @@ public class FFLineWrapper {
         int spacePos = Integer.MAX_VALUE;
 
         int charFinds = 0;
-        for (int i = index; i < val.length() && i < FFLineConstant.LINE_LENGTH; i++) {
+        int endOfLine = val.length();
+        if (endOfLine > LINE_LENGTH) {
+            endOfLine = LINE_LENGTH;
+        }
+        for (int i = index; i < endOfLine; i++) {
             if (charFinds < 4) {
                 char currentChar = val.charAt(i);
                 if (currentChar == ',' && commaPos == Integer.MAX_VALUE) {
