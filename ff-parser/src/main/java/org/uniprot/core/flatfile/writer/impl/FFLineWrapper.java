@@ -321,41 +321,6 @@ public class FFLineWrapper {
         return false;
     }
 
-    private static String getDigit(String val, int index) {
-        int nextIndex = -1;
-
-        if (val.indexOf(' ', index) != -1) {
-            nextIndex = val.indexOf(' ', index);
-        }
-        if (val.indexOf(',', index) != -1) {
-            int nextIndex2 = val.indexOf(',', index);
-            if (nextIndex == -1) {
-                nextIndex = nextIndex2;
-            } else nextIndex = Math.min(nextIndex, nextIndex2);
-        }
-
-        if (val.indexOf(';', index) != -1) {
-            int nextIndex2 = val.indexOf(';', index);
-            if (nextIndex == -1) {
-                nextIndex = nextIndex2;
-            } else nextIndex = Math.min(nextIndex, nextIndex2);
-        }
-        if (val.indexOf('.', index) != -1) {
-            int nextIndex2 = val.indexOf('.', index);
-            if (nextIndex == -1) {
-                nextIndex = nextIndex2;
-            } else nextIndex = Math.min(nextIndex, nextIndex2);
-        }
-        if (nextIndex == -1) return null;
-
-        String sub = val.substring(index + 1, nextIndex);
-        for (int i = 0; i < sub.length(); i++) {
-            char c = sub.charAt(i);
-            if (!Character.isDigit(c)) return null;
-        }
-        return sub;
-    }
-
     private static String getDigitMap(String val, int index) {
         int nextIndex = -1;
 
