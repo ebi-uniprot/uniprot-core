@@ -356,31 +356,40 @@ public class FFLineWrapper {
     private static String getDigitMap(String val, int index) {
         int nextIndex = -1;
 
-        Map<Character, Integer> characterPositions = new HashMap<>();
-
+        int printableChars = 126 - 32;
+        int[] charToPosition = new int[printableChars];
+        Arrays.fill(charToPosition, -1);
         for (int i = 0; i < val.length() && i < FFLineConstant.LINE_LENGTH; i++) {
-            if (!characterPositions.containsKey(val.charAt(i))) {
-                characterPositions.put(val.charAt(i), index + i);
+            if (charToPosition[val.charAt(i) - 32] == -1) {
+                charToPosition[val.charAt(i) - 32] = index + i;
             }
         }
-        if (characterPositions.containsKey(' ')) {
-            nextIndex = characterPositions.get(' ');
+
+        //        Map<Character, Integer> characterPositions = new HashMap<>();
+
+        //        for (int i = 0; i < val.length() && i < FFLineConstant.LINE_LENGTH; i++) {
+        //            if (!characterPositions.containsKey(val.charAt(i))) {
+        //                characterPositions.put(val.charAt(i), index + i);
+        //            }
+        //        }
+        if (charToPosition[' ' - 32] != -1) {
+            nextIndex = charToPosition[' ' - 32];
         }
-        if (characterPositions.containsKey(',')) {
-            int nextIndex2 = characterPositions.get(',');
+        if (charToPosition[',' - 32] != -1) {
+            int nextIndex2 = charToPosition[',' - 32];
             if (nextIndex == -1) {
                 nextIndex = nextIndex2;
             } else nextIndex = Math.min(nextIndex, nextIndex2);
         }
 
-        if (characterPositions.containsKey(';')) {
-            int nextIndex2 = characterPositions.get(';');
+        if (charToPosition[';' - 32] != -1) {
+            int nextIndex2 = charToPosition[';' - 32];
             if (nextIndex == -1) {
                 nextIndex = nextIndex2;
             } else nextIndex = Math.min(nextIndex, nextIndex2);
         }
-        if (characterPositions.containsKey('.')) {
-            int nextIndex2 = characterPositions.get('.');
+        if (charToPosition['.' - 32] != -1) {
+            int nextIndex2 = charToPosition['.' - 32];
             if (nextIndex == -1) {
                 nextIndex = nextIndex2;
             } else nextIndex = Math.min(nextIndex, nextIndex2);
