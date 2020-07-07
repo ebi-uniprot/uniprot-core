@@ -9,29 +9,6 @@ public class FFLineWrapper {
     //	private final static String[] DASHS ={"->", "-->", "- "};
     private static final String DASH = "-";
 
-    public static StringBuilder wrap(StringBuilder wrapThis, String separator, String linePrefix) {
-
-        String[] seps = {separator};
-        return wrap(wrapThis, seps, linePrefix);
-    }
-
-    public static StringBuilder wrap(
-            StringBuilder wrapThis, String[] separators, String linePrefix) {
-        return wrap(wrapThis, separators, linePrefix, LINE_LENGTH);
-    }
-
-    public static StringBuilder wrap(
-            StringBuilder wrapThis, String[] separators, String linePrefix, int lineLength) {
-        StringBuilder sb = new StringBuilder();
-        boolean isFirst = true;
-        for (String line : buildLines(wrapThis.toString(), separators, linePrefix, lineLength)) {
-            if (!isFirst) sb.append('\n');
-            sb.append(line);
-            isFirst = false;
-        }
-        return sb;
-    }
-
     public static List<String> buildLines(
             StringBuilder wrapThis, String separator, String linePrefix) {
         return buildLines(wrapThis.toString(), separator, linePrefix);
