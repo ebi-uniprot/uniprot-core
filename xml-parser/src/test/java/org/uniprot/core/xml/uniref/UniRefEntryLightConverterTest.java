@@ -1,7 +1,6 @@
 package org.uniprot.core.xml.uniref;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefEntryLight;
 import org.uniprot.core.uniref.UniRefType;
 import org.uniprot.core.xml.XmlChainIterator;
@@ -61,6 +60,14 @@ class UniRefEntryLightConverterTest {
         assertNotNull(entry.getId());
         assertEquals("UniRef50_Q95604", entry.getId().getValue());
         assertFalse(chainingIterators.hasNext());
+    }
+
+    @Test
+    void testInvalidId() throws Exception {
+        Entry xmlEntry = new Entry();
+        xmlEntry.setId("INVALID");
+        UniRefEntryLightConverter converter = new UniRefEntryLightConverter();
+        assertThrows(IllegalArgumentException.class, () ->converter.fromXml(xmlEntry));
     }
 
     @Test
