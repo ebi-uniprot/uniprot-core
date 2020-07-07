@@ -129,9 +129,34 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
         return this;
     }
 
-    public @Nonnull UniRefEntryLightBuilder organismsAdd(String id) {
-        Utils.addOrIgnoreNull(id, this.organisms);
+    public @Nonnull UniRefEntryLightBuilder organismsAdd(String organism) {
+        if (Utils.notNullNotEmpty(organism)) {
+            //Add this logic do avoid duplicated organism names because
+            //UniParc organisms do not contains common name in brackets.
+            Optional<String> found = this.organisms.stream()
+                    .map(this::cleanOrganism)
+                    .filter(value -> value.equalsIgnoreCase(cleanOrganism(organism)))
+                    .findFirst();
+            if(found.isPresent()){
+                String foundOrganism = found.get();
+                if(foundOrganism.length() < organism.length()){
+                    this.organisms.remove(foundOrganism);
+                    this.organisms.add(organism);
+                }
+            } else {
+                this.organisms.add(organism);
+            }
+        }
         return this;
+    }
+
+    private String cleanOrganism(String value) {
+        int bracketIndex = value.indexOf('(');
+        if(bracketIndex >= 0){
+            return value.substring(0, bracketIndex).trim();
+        } else {
+            return value;
+        }
     }
 
     public @Nonnull UniRefEntryLightBuilder memberIdTypesSet(Set<UniRefMemberIdType> types) {

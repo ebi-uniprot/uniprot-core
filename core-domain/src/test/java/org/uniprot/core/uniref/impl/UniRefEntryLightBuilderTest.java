@@ -128,6 +128,18 @@ class UniRefEntryLightBuilderTest {
     }
 
     @Test
+    void doNotAddDuplicatedOrganisms() {
+        UniRefEntryLightBuilder entryLightBuilder =
+                new UniRefEntryLightBuilder().organismsSet(new HashSet<>(asList("1 (common)", "2")));
+
+        entryLightBuilder.organismsAdd("1");
+        entryLightBuilder.organismsAdd("2 (common)");
+        entryLightBuilder.organismsAdd("3");
+
+        assertThat(entryLightBuilder.build().getOrganisms(), containsInAnyOrder("1 (common)", "2 (common)", "3"));
+    }
+
+    @Test
     void canSetMemberCount() {
         int value = 100000;
         UniRefEntryLight entryLight = new UniRefEntryLightBuilder().memberCount(value).build();
