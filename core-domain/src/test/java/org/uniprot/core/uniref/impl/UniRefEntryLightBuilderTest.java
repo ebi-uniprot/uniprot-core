@@ -2,6 +2,7 @@ package org.uniprot.core.uniref.impl;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniref.UniRefEntryLight;
+import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
 
 import java.time.LocalDate;
@@ -13,6 +14,7 @@ import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 
 /**
  * Created 29/06/2020
@@ -88,20 +90,6 @@ class UniRefEntryLightBuilderTest {
     }
 
     @Test
-    void canSetHasMemberUniParcIds() {
-        boolean value = true;
-        UniRefEntryLight entryLight =
-                new UniRefEntryLightBuilder().hasMemberUniParcIds(value).build();
-        assertThat(entryLight.hasMemberUniParcIDs(), is(value));
-    }
-
-    @Test
-    void notSettingHasMemberUniParcIdsMeansFalse() {
-        UniRefEntryLight entryLight = new UniRefEntryLightBuilder().build();
-        assertThat(entryLight.hasMemberUniParcIDs(), is(false));
-    }
-
-    @Test
     void canSetOrganismIds() {
         Set<Long> value = new HashSet<>(asList(1L, 2L));
         UniRefEntryLight entryLight = new UniRefEntryLightBuilder().organismIdsSet(value).build();
@@ -144,5 +132,37 @@ class UniRefEntryLightBuilderTest {
         int value = 100000;
         UniRefEntryLight entryLight = new UniRefEntryLightBuilder().memberCount(value).build();
         assertThat(entryLight.getMemberCount(), is(value));
+    }
+
+    @Test
+    void canSetMemberIdTypes() {
+        Set<UniRefMemberIdType> value =
+                new HashSet<>(
+                        asList(
+                                UniRefMemberIdType.UNIPROTKB_SWISSPROT,
+                                UniRefMemberIdType.UNIPROTKB_TREMBL));
+        UniRefEntryLight entryLight = new UniRefEntryLightBuilder().memberIdTypesSet(value).build();
+        assertThat(entryLight.getMemberIdTypes(), is(value));
+    }
+
+    @Test
+    void canAddMemberIdTypes() {
+        UniRefEntryLightBuilder entryLightBuilder =
+                new UniRefEntryLightBuilder()
+                        .memberIdTypesSet(
+                                new HashSet<>(
+                                        asList(
+                                                UniRefMemberIdType.UNIPROTKB_SWISSPROT,
+                                                UniRefMemberIdType.UNIPROTKB_TREMBL)));
+
+        entryLightBuilder.memberIdTypesAdd(UniRefMemberIdType.UNIPARC);
+        entryLightBuilder.memberIdTypesAdd(UniRefMemberIdType.UNIPARC);
+
+        assertThat(
+                entryLightBuilder.build().getMemberIdTypes(),
+                containsInAnyOrder(
+                        UniRefMemberIdType.UNIPROTKB_SWISSPROT,
+                        UniRefMemberIdType.UNIPROTKB_TREMBL,
+                        UniRefMemberIdType.UNIPARC));
     }
 }

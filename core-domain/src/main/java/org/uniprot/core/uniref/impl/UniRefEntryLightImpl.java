@@ -2,6 +2,7 @@ package org.uniprot.core.uniref.impl;
 
 import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefEntryLight;
+import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
 import org.uniprot.core.util.Utils;
 
@@ -27,17 +28,18 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
     private long commonTaxonId;
     private String commonTaxon;
     private String representativeSequence;
-    private boolean hasMemberUniParcIds;
     private final List<String> members;
     private final Set<Long> organismIds;
     private int memberCount;
-    private Set<String> organisms;
+    private final Set<String> organisms;
+    private final Set<UniRefMemberIdType> memberIdTypes;
 
     // no arg constructor for JSON deserialization
     UniRefEntryLightImpl() {
         members = Collections.emptyList();
         organismIds = Collections.emptySet();
         organisms = Collections.emptySet();
+        memberIdTypes = Collections.emptySet();
     }
 
     UniRefEntryLightImpl(
@@ -49,10 +51,10 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
             String commonTaxon,
             String representativeSequence,
             List<String> members,
-            boolean hasMemberUniParcIds,
             Set<Long> organismIds,
             Set<String> organisms,
-            int memberCount) {
+            int memberCount,
+            Set<UniRefMemberIdType> memberIdTypes) {
         this.id = id;
         this.name = name;
         this.updated = updated;
@@ -61,9 +63,9 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
         this.commonTaxon = commonTaxon;
         this.representativeSequence = representativeSequence;
         this.members = Utils.unmodifiableList(members);
-        this.hasMemberUniParcIds = hasMemberUniParcIds;
         this.organismIds = Utils.unmodifiableSet(organismIds);
         this.organisms = organisms;
+        this.memberIdTypes = memberIdTypes;
         if (memberCount == 0) {
             this.memberCount = this.members.size() + 1;
         } else {
@@ -107,11 +109,6 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
     }
 
     @Override
-    public boolean hasMemberUniParcIDs() {
-        return hasMemberUniParcIds;
-    }
-
-    @Override
     public int getMemberCount() {
         return memberCount;
     }
@@ -132,12 +129,16 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
     }
 
     @Override
+    public Set<UniRefMemberIdType> getMemberIdTypes() {
+        return memberIdTypes;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UniRefEntryLightImpl that = (UniRefEntryLightImpl) o;
         return commonTaxonId == that.commonTaxonId &&
-                hasMemberUniParcIds == that.hasMemberUniParcIds &&
                 memberCount == that.memberCount &&
                 Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
@@ -147,12 +148,13 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
                 Objects.equals(representativeSequence, that.representativeSequence) &&
                 Objects.equals(members, that.members) &&
                 Objects.equals(organismIds, that.organismIds) &&
-                Objects.equals(organisms, that.organisms);
+                Objects.equals(organisms, that.organisms) &&
+                Objects.equals(memberIdTypes, that.memberIdTypes);
     }
 
     @Override
     public int hashCode() {
         return Objects
-                .hash(id, name, updated, entryType, commonTaxonId, commonTaxon, representativeSequence, hasMemberUniParcIds, members, organismIds, memberCount, organisms);
+                .hash(id, name, updated, entryType, commonTaxonId, commonTaxon, representativeSequence, members, organismIds, memberCount, organisms, memberIdTypes);
     }
 }

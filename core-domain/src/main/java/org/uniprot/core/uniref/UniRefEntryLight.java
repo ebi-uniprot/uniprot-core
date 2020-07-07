@@ -29,8 +29,6 @@ public interface UniRefEntryLight extends Serializable {
 
     List<String> getMembers();
 
-    boolean hasMemberUniParcIDs();
-
     int getMemberCount();
 
     Set<String> getOrganisms();
@@ -38,4 +36,6 @@ public interface UniRefEntryLight extends Serializable {
     Set<Long> getOrganismIds();
 
     String getRepresentativeSequence();
+
+    Set<UniRefMemberIdType> getMemberIdTypes();
 }

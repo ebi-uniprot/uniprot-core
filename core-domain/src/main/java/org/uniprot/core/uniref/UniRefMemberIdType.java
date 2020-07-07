@@ -6,6 +6,8 @@ import org.uniprot.core.util.EnumDisplay;
 
 public enum UniRefMemberIdType implements EnumDisplay {
     UNIPROTKB("UniProtKB ID"),
+    UNIPROTKB_SWISSPROT("reviewed"),
+    UNIPROTKB_TREMBL("unreviewed"),
     UNIPARC("UniParc ID");
 
     private String displayName;
