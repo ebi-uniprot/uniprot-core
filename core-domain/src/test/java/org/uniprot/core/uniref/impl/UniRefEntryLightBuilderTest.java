@@ -13,6 +13,7 @@ import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 
 /**
  * Created 29/06/2020
@@ -137,6 +138,18 @@ class UniRefEntryLightBuilderTest {
         entryLightBuilder.organismsAdd("5");
 
         assertThat(entryLightBuilder.build().getOrganisms(), contains("1", "2", "3", "4", "5"));
+    }
+
+    @Test
+    void doNotAddDuplicatedOrganisms() {
+        UniRefEntryLightBuilder entryLightBuilder =
+                new UniRefEntryLightBuilder().organismsSet(new HashSet<>(asList("1 (common)", "2")));
+
+        entryLightBuilder.organismsAdd("1");
+        entryLightBuilder.organismsAdd("2 (common)");
+        entryLightBuilder.organismsAdd("3");
+
+        assertThat(entryLightBuilder.build().getOrganisms(), containsInAnyOrder("1 (common)", "2 (common)", "3"));
     }
 
     @Test
