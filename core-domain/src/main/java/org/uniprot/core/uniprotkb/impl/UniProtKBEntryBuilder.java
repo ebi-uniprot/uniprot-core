@@ -17,7 +17,7 @@ import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.uniprotkb.*;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
-import org.uniprot.core.uniprotkb.feature.Feature;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
@@ -38,7 +38,7 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
     private ProteinDescription proteinDescription = null;
     private List<Gene> genes = new ArrayList<>();
     private List<Comment> comments = new ArrayList<>();
-    private List<Feature> features = new ArrayList<>();
+    private List<UniProtKBFeature> features = new ArrayList<>();
     private List<GeneLocation> geneLocations = new ArrayList<>();
     private List<Keyword> keywords = new ArrayList<>();
     private List<UniProtKBReference> references = new ArrayList<>();
@@ -188,12 +188,12 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
         return this;
     }
 
-    public @Nonnull UniProtKBEntryBuilder featuresAdd(Feature feature) {
+    public @Nonnull UniProtKBEntryBuilder featuresAdd(UniProtKBFeature feature) {
         addOrIgnoreNull(feature, this.features);
         return this;
     }
 
-    public @Nonnull UniProtKBEntryBuilder featuresSet(List<Feature> features) {
+    public @Nonnull UniProtKBEntryBuilder featuresSet(List<UniProtKBFeature> features) {
         this.features = modifiableList(features);
         return this;
     }
@@ -348,7 +348,7 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
         return countByCommentType;
     }
 
-    private Map<String, Integer> createCountByFeatureTypeMap(List<Feature> features) {
+    private Map<String, Integer> createCountByFeatureTypeMap(List<UniProtKBFeature> features) {
         Map<String, Integer> countByFeatureType = null;
         if (notNullNotEmpty(features)) {
             countByFeatureType =

@@ -20,6 +20,8 @@ public interface UniRuleEntry extends Serializable {
 
     List<PositionFeatureSet> getPositionFeatureSets();
 
+    Long getProteinsAnnotatedCount();
+
     String getCreatedBy();
 
     String getModifiedBy();

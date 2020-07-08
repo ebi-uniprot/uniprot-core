@@ -429,7 +429,19 @@
 		"name": "GlyConnect",
 		"displayName": "GlyConnect",
 		"category": "PTM",
-		"uriLink": "https://glyconnect.expasy.org/browser/proteins/%id"
+		"uriLink": "https://glyconnect.expasy.org/browser/proteins/%id",
+		"attributes": [			
+			{
+				"name": "glycosylation",
+				"xmlTag":"glycosylation"		
+			}
+		]
+	},
+	{
+		"name": "GlyGen",
+		"displayName": "GlyGen",
+		"category": "PTM",
+		"uriLink": "https://www.glygen.org/glycoprotein_detail.html?uniprot_canonical_ac=%id"
 	},
 	{
 		"name": "iPTMnet",
@@ -1648,8 +1660,8 @@
 	{
 		"name": "PathwayCommons",
 		"displayName": "PathwayCommons",
-		"category": "UNK",
-		"uriLink": "http://www.pathwaycommons.org/search?type=Pathway&q=%id"
+		"category": "EAP",
+		"uriLink": "https://apps.pathwaycommons.org/search?q=%id"
 	},
 	{
 		"name": "Pharos",

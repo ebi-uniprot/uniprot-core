@@ -1,13 +1,15 @@
 package org.uniprot.core.uniprotkb.evidence;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Nonnull;
 
 public enum EvidenceDatabaseTypes {
     INSTANCE;
-    private Map<String, EvidenceDatabaseDetail> typeMap = new HashMap<>();
+    private final Map<String, EvidenceDatabaseDetail> typeMap = new HashMap<>();
 
     EvidenceDatabaseTypes() {
         init();
@@ -19,6 +21,10 @@ public enum EvidenceDatabaseTypes {
             throw new IllegalArgumentException(typeName + " does not exist in Evidence type list");
         }
         return type;
+    }
+
+    public List<EvidenceDatabaseDetail> getAllEvidenceDatabases() {
+        return new ArrayList<>(typeMap.values());
     }
 
     private void init() {
@@ -93,6 +99,7 @@ public enum EvidenceDatabaseTypes {
                         "HGNC",
                         "I",
                         "https://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=%value"));
+        typeMap.put("HPA", evd("HPA", "HPA", "I", "https://www.proteinatlas.org/search/%value"));
         typeMap.put("MGI", evd("MGI", "MGI", "I", "http://www.informatics.jax.org/marker/%value"));
         typeMap.put(
                 "MaxQB",

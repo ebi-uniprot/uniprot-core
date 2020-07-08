@@ -4,11 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.jvnet.jaxb2_commons.lang.Equals2;
 import org.uniprot.core.uniprotkb.comment.impl.*;
 import org.uniprot.core.unirule.*;
 import org.uniprot.core.unirule.impl.*;
@@ -72,7 +72,6 @@ public class UniRuleConvertersTest extends AbstractUniRuleConvertersTest {
      * @param converterTestClass The convertertest Class where the method
      *     <p>createObject is defined See sample ConverterTest's
      *     <p>createObject method in {@link InformationConverterTest#createObject()}
-     * @param xmlClass The jaxb generated XML class's Class which is being converted to uniObj
      * @throws Exception
      */
     @DisplayName("Test convert xmlObject to uniObject")
@@ -81,8 +80,7 @@ public class UniRuleConvertersTest extends AbstractUniRuleConvertersTest {
             "org.uniprot.core.xml.unirule.UniRuleConvertersTestHelper#provideConverterXMLAndTestClass")
     void testFromXmlToObject(
             Class<? extends Converter> converterClass,
-            Class<? extends AbstractConverterTest> converterTestClass,
-            Class<? extends Equals2> xmlClass)
+            Class<? extends AbstractConverterTest> converterTestClass)
             throws Exception {
         // create xmlType using converter test class createObject method
         Method createObjectMethod = converterTestClass.getMethod("createObject");
@@ -93,11 +91,18 @@ public class UniRuleConvertersTest extends AbstractUniRuleConvertersTest {
         Converter converter = noArgConstructor.newInstance();
         Object uniObject = converter.fromXml(xmlObject);
         assertNotNull(uniObject);
-        // populate diseasecomment note. parent interface doesnt have note field
+        // populate disease comment note. parent interface doesnt have note field
         if (uniObject instanceof DiseaseCommentImpl) {
             uniObject =
                     DiseaseCommentBuilder.from((DiseaseCommentImpl) uniObject)
                             .note(new NoteBuilder(null).build())
+                            .build();
+        } else if (uniObject instanceof UniRuleEntry) {
+            // append computed field
+            long proteinCount = ThreadLocalRandom.current().nextLong();
+            uniObject =
+                    UniRuleEntryBuilder.from((UniRuleEntry) uniObject)
+                            .proteinsAnnotatedCount(proteinCount)
                             .build();
         }
         verifyBean(uniObject);

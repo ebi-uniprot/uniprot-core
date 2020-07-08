@@ -2,8 +2,12 @@ package org.uniprot.core;
 
 import java.io.Serializable;
 
+import org.uniprot.core.util.Utils;
+
 public interface Value extends Serializable {
     String getValue();
 
-    boolean hasValue();
+    default boolean hasValue() {
+        return Utils.notNullNotEmpty(getValue());
+    }
 }

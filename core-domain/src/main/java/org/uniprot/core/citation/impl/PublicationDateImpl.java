@@ -3,7 +3,6 @@ package org.uniprot.core.citation.impl;
 import java.util.Objects;
 
 import org.uniprot.core.citation.PublicationDate;
-import org.uniprot.core.util.Utils;
 
 public class PublicationDateImpl implements PublicationDate {
     private static final long serialVersionUID = 3232437573866835411L;
@@ -19,11 +18,6 @@ public class PublicationDateImpl implements PublicationDate {
     @Override
     public String getValue() {
         return value;
-    }
-
-    @Override
-    public boolean hasValue() {
-        return Utils.notNullNotEmpty(this.value);
     }
 
     @Override

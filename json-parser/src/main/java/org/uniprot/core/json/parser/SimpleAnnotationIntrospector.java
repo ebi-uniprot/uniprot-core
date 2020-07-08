@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.introspect.Annotated;
 import com.fasterxml.jackson.databind.util.ClassUtil;
 import com.github.bohnman.squiggly.filter.SquigglyPropertyFilter;
 
-public class SimpleAnnotationIntrospector extends AnnotationIntrospector {
+class SimpleAnnotationIntrospector extends AnnotationIntrospector {
 
     private static final long serialVersionUID = 7321338666065917109L;
 
@@ -21,6 +21,7 @@ public class SimpleAnnotationIntrospector extends AnnotationIntrospector {
         return PackageVersion.VERSION;
     }
 
+    @Override
     public String[] findEnumValues(Class<?> enumType, Enum<?>[] enumValues, String[] names) {
         return Arrays.stream(enumValues)
                 .map(
@@ -31,10 +32,12 @@ public class SimpleAnnotationIntrospector extends AnnotationIntrospector {
                 .toArray(String[]::new);
     }
 
+    @Override
     public Enum<?> findDefaultEnumValue(Class<Enum<?>> enumCls) {
         return ClassUtil.findFirstAnnotatedEnumValue(enumCls, JsonEnumDefaultValue.class);
     }
 
+    @Override
     public Object findFilterId(Annotated ann) {
         return SquigglyPropertyFilter.FILTER_ID;
     }

@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.feature.FeatureLocation;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureLocation;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
 class FTConflictFeatureBuildTest extends FTBuildTestAbstr {
     @Test
@@ -29,8 +29,9 @@ class FTConflictFeatureBuildTest extends FTBuildTestAbstr {
         List<String> evs = new ArrayList<>();
         AlternativeSequence altSeq =
                 createAlternativeSequence(originalSequence, alternativeSequences);
-        Feature feature =
-                createFeature(FeatureType.CONFLICT, location, description, "", altSeq, evs);
+        UniProtKBFeature feature =
+                createFeature(
+                        UniprotKBFeatureType.CONFLICT, location, description, "", altSeq, evs);
 
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);
@@ -72,8 +73,9 @@ class FTConflictFeatureBuildTest extends FTBuildTestAbstr {
 
         AlternativeSequence altSeq =
                 createAlternativeSequence(originalSequence, alternativeSequences);
-        Feature feature =
-                createFeature(FeatureType.CONFLICT, location, description, "", altSeq, evs);
+        UniProtKBFeature feature =
+                createFeature(
+                        UniprotKBFeatureType.CONFLICT, location, description, "", altSeq, evs);
 
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);
@@ -104,8 +106,9 @@ class FTConflictFeatureBuildTest extends FTBuildTestAbstr {
         String description = "in Ref. 1; BAA37160/BAA37165, 2; ABO40479 and 6; AAH63566";
         AlternativeSequence altSeq =
                 createAlternativeSequence(originalSequence, alternativeSequences);
-        Feature feature =
-                createFeature(FeatureType.CONFLICT, location, description, "", altSeq, evs);
+        UniProtKBFeature feature =
+                createFeature(
+                        UniprotKBFeatureType.CONFLICT, location, description, "", altSeq, evs);
 
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);

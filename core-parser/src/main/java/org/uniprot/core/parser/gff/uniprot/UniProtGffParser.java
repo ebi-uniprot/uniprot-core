@@ -1,6 +1,6 @@
 package org.uniprot.core.parser.gff.uniprot;
 
-import static org.uniprot.core.uniprotkb.feature.FeatureType.*;
+import static org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType.*;
 import static org.uniprot.core.util.Utils.nullOrEmpty;
 
 import java.util.List;
@@ -14,8 +14,8 @@ import org.uniprot.core.flatfile.parser.impl.ft.FTLineBuilderHelper;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
 /** @author gqi */
 public class UniProtGffParser {
@@ -45,7 +45,7 @@ public class UniProtGffParser {
                 + "\t";
     }
 
-    private static String convert(Feature feature, UniProtKBEntry entry) {
+    private static String convert(UniProtKBFeature feature, UniProtKBEntry entry) {
         String accession = entry.getPrimaryAccession().getValue(); // 1: seqid
         String type = FeatureLabel.getLabelFromName(feature.getType().getName()); // 3: type
         int start = feature.getLocation().getStart().getValue(); // 4: start
@@ -70,7 +70,7 @@ public class UniProtGffParser {
     }
 
     private static void gatherEvidenceAttributes(
-            Feature feature, StringBuilder xrefs, StringBuilder attributes) {
+            UniProtKBFeature feature, StringBuilder xrefs, StringBuilder attributes) {
         List<Evidence> evidences = feature.getEvidences();
 
         // Do we need remove duplicate evidence code, or just repeat e.g. Q8WWI5
@@ -115,8 +115,8 @@ public class UniProtGffParser {
         }
     }
 
-    private static void gatherVariantDbXref(Feature feature, StringBuilder dbxrefDbSNP) {
-        FeatureType featureType = feature.getType();
+    private static void gatherVariantDbXref(UniProtKBFeature feature, StringBuilder dbxrefDbSNP) {
+        UniprotKBFeatureType featureType = feature.getType();
         if (featureType.equals(VARIANT)) {
             String r = feature.getDescription().getValue();
             Pattern pattern = Pattern.compile("(dbSNP:\\w+)");
@@ -155,7 +155,7 @@ public class UniProtGffParser {
                 + entry.getSequence().getLength();
     }
 
-    private static String getFeatureAttributes(Feature feature) {
+    private static String getFeatureAttributes(UniProtKBFeature feature) {
         StringBuilder attributesBuilder = new StringBuilder();
         String descriptionValue = capitaliseFirstLetter(feature.getDescription().getValue());
 
@@ -199,9 +199,9 @@ public class UniProtGffParser {
         return attributesBuilder.toString();
     }
 
-    private static String createNote(Feature feature, String descriptionValue) {
+    private static String createNote(UniProtKBFeature feature, String descriptionValue) {
         StringBuilder note = new StringBuilder();
-        FeatureType featureType = feature.getType();
+        UniprotKBFeatureType featureType = feature.getType();
         if (!nullOrEmpty(descriptionValue)) {
             if (featureType.equals(VARIANT)) {
                 updateNoteForVariant(descriptionValue, note);
@@ -265,7 +265,7 @@ public class UniProtGffParser {
                 .replaceAll(",", "%2C");
     }
 
-    private static boolean isPrintable(Feature feature) {
+    private static boolean isPrintable(UniProtKBFeature feature) {
         return feature.getLocation().getStart().getValue() != -1
                 && feature.getLocation().getEnd().getValue() != -1;
     }

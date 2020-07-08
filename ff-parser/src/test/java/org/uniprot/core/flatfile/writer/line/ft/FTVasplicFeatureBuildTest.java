@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.feature.FeatureLocation;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureLocation;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
 class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
     @Test
@@ -37,8 +37,14 @@ class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
         List<String> evs = new ArrayList<>();
         AlternativeSequence altSeq =
                 createAlternativeSequence(originalSequence, alternativeSequences);
-        Feature feature =
-                createFeature(FeatureType.VAR_SEQ, location, description, featureId, altSeq, evs);
+        UniProtKBFeature feature =
+                createFeature(
+                        UniprotKBFeatureType.VAR_SEQ,
+                        location,
+                        description,
+                        featureId,
+                        altSeq,
+                        evs);
 
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);
@@ -83,8 +89,14 @@ class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
         String description = "in isoform Alpha and isoform Beta";
         AlternativeSequence altSeq =
                 createAlternativeSequence(originalSequence, alternativeSequences);
-        Feature feature =
-                createFeature(FeatureType.VAR_SEQ, location, description, featureId, altSeq, evs);
+        UniProtKBFeature feature =
+                createFeature(
+                        UniprotKBFeatureType.VAR_SEQ,
+                        location,
+                        description,
+                        featureId,
+                        altSeq,
+                        evs);
 
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);
@@ -120,8 +132,14 @@ class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
         String description = "in isoform Long";
         AlternativeSequence altSeq =
                 createAlternativeSequence(originalSequence, alternativeSequences);
-        Feature feature =
-                createFeature(FeatureType.VAR_SEQ, location, description, featureId, altSeq, evs);
+        UniProtKBFeature feature =
+                createFeature(
+                        UniprotKBFeatureType.VAR_SEQ,
+                        location,
+                        description,
+                        featureId,
+                        altSeq,
+                        evs);
 
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);
@@ -155,8 +173,14 @@ class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
         String description = "in isoform Long";
         AlternativeSequence altSeq =
                 createAlternativeSequence(originalSequence, alternativeSequences);
-        Feature feature =
-                createFeature(FeatureType.VAR_SEQ, location, description, featureId, altSeq, evs);
+        UniProtKBFeature feature =
+                createFeature(
+                        UniprotKBFeatureType.VAR_SEQ,
+                        location,
+                        description,
+                        featureId,
+                        altSeq,
+                        evs);
 
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);
@@ -199,8 +223,14 @@ class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
         String description = "in isoform Long";
         AlternativeSequence altSeq =
                 createAlternativeSequence(originalSequence, alternativeSequences);
-        Feature feature =
-                createFeature(FeatureType.VAR_SEQ, location, description, featureId, altSeq, evs);
+        UniProtKBFeature feature =
+                createFeature(
+                        UniprotKBFeatureType.VAR_SEQ,
+                        location,
+                        description,
+                        featureId,
+                        altSeq,
+                        evs);
 
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);
@@ -251,8 +281,14 @@ class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
         String description = "in isoform 2";
         AlternativeSequence altSeq =
                 createAlternativeSequence(originalSequence, alternativeSequences);
-        Feature feature =
-                createFeature(FeatureType.VAR_SEQ, location, description, featureId, altSeq, evs);
+        UniProtKBFeature feature =
+                createFeature(
+                        UniprotKBFeatureType.VAR_SEQ,
+                        location,
+                        description,
+                        featureId,
+                        altSeq,
+                        evs);
 
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);
@@ -314,8 +350,14 @@ class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
         String description = "in isoform 2";
         AlternativeSequence altSeq =
                 createAlternativeSequence(originalSequence, alternativeSequences);
-        Feature feature =
-                createFeature(FeatureType.VAR_SEQ, location, description, featureId, altSeq, evs);
+        UniProtKBFeature feature =
+                createFeature(
+                        UniprotKBFeatureType.VAR_SEQ,
+                        location,
+                        description,
+                        featureId,
+                        altSeq,
+                        evs);
 
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);

@@ -18,7 +18,7 @@ public class CrossReferenceValidator {
 
     private static Map<String, DBXRef> ABB_DBXREF = new HashMap<>();
     public static final String DBREF_FTP =
-            "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/docs/dbxref.txt";
+            "ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/complete/docs/dbxref.txt";
 
     static {
         try (CrossReferenceReader reader =

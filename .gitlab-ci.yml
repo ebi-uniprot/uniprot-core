@@ -8,6 +8,7 @@ variables:
   UNIPROT_RESOURCES: "-Dcv.db.types.location=ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/complete/docs/dbxref.txt"
   GIT_DEPTH: 0 # Tells git to fetch all the branches of the project, required by the analysis task
   SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"
+  JACOCO_AGGREGATE_REPORT: "jacoco-aggregate-report/target/site/jacoco-aggregate/jacoco.xml"
 
 image: maven:3.3.9-jdk-8
 cache:
@@ -46,13 +47,12 @@ core:compile:
     paths:
       - .m2/repository
 
-core:UT:
+core:test:
   stage: test
   script:
-    - 'mvn $MAVEN_CLI_OPTS $UNIPROT_RESOURCES -P coverage -Dtest="! *IT" -DfailIfNoTests=false install'
-    - 'mkdir -p ./uTest_reports'
-    - 'find "$(pwd)" -path "*jacoco.xml" | while IFS= read -r item; do NAME="${item##*/}"; cp "$item" "./uTest_reports/${NAME%.*}-$((i++)).${NAME##*.}"; done'
-    - 'find "$(pwd)" -path "*jacoco.xml" -delete'
+    - 'mvn $MAVEN_CLI_OPTS $UNIPROT_RESOURCES install'
+    - 'mkdir -p ./jacoco-report'
+    - 'cp $JACOCO_AGGREGATE_REPORT ./jacoco-report/'
   dependencies:
     - core:compile
   artifacts:
@@ -61,37 +61,16 @@ core:UT:
     paths:
       - .m2/repository
       - ./*/target
-      - ./uTest_reports
-    reports:
-      junit:
-        - ./*/target/surefire-reports/TEST-*.xml
-
-core:IT:
-  stage: test
-  script:
-    - 'mvn $MAVEN_CLI_OPTS $UNIPROT_RESOURCES -P coverage -Dtest="*IT" -DfailIfNoTests=false install'
-    - 'mkdir -p ./iTest_reports'
-    - 'find "$(pwd)" -path "*jacoco.xml" | while IFS= read -r item; do NAME="${item##*/}"; cp "$item" "./iTest_reports/${NAME%.*}-$((i++)).${NAME##*.}"; done'
-    - 'find "$(pwd)" -path "*jacoco.xml" -delete'
-  dependencies:
-    - core:compile
-  artifacts:
-    when: always
-    expire_in: 2 days
-    paths:
-      - .m2/repository
-      - ./*/target
-      - ./iTest_reports
+      - ./jacoco-report
     reports:
       junit:
         - ./*/target/surefire-reports/TEST-*.xml
 
 core:sonar:
   stage: quality
-  script: mvn $MAVEN_CLI_OPTS -Dsonar.coverage.jacoco.xmlReportPaths=$(find "$(pwd)" -path '*jacoco-*.xml' | sed 's/.*/&/' | tr '\n' ',') sonar:sonar ${SONAR_PROPS} -Dsonar.projectKey=uniprot-core
+  script: mvn $MAVEN_CLI_OPTS -Dsonar.coverage.jacoco.xmlReportPaths=$(pwd)/jacoco-report/jacoco.xml sonar:sonar ${SONAR_PROPS} -Dsonar.projectKey=uniprot-core
   dependencies:
-    - core:UT
-    - core:IT
+    - core:test
   artifacts:
     when: always
     expire_in: 2 days
@@ -102,7 +81,7 @@ core:sonar:
 
 core:deploy:
   stage: deploy
-  script: mvn $MAVEN_CLI_OPTS -Dmaven.test.skip=true deploy -s ${MAVEN_SETTINGS}
+  script: mvn $MAVEN_CLI_OPTS -DskipTests deploy -s ${MAVEN_SETTINGS}
   dependencies:
     - core:settings
     - core:sonar

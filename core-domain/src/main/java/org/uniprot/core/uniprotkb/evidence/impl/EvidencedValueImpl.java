@@ -27,11 +27,6 @@ public class EvidencedValueImpl extends HasEvidencesImpl implements EvidencedVal
     }
 
     @Override
-    public boolean hasValue() {
-        return Utils.notNullNotEmpty(this.value);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

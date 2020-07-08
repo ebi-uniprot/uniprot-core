@@ -11,7 +11,7 @@ import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject.FTType;
-import org.uniprot.core.uniprotkb.feature.Feature;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 
 class FtLineParserTest {
     @Test
@@ -129,9 +129,9 @@ class FtLineParserTest {
         System.out.println(desc);
         // verify(obj.getFts().get(0), FTType.VAR_SEQ, "1", "31",  desc, "VSP_043645");
         FtLineConverter converter = new FtLineConverter();
-        List<Feature> features = converter.convert(obj);
+        List<UniProtKBFeature> features = converter.convert(obj);
         assertEquals(1, features.size());
-        Feature feature = features.get(0);
+        UniProtKBFeature feature = features.get(0);
         assertEquals(
                 "MLTCNKAGSRMVVDAANSNGPFQPVVLLHIR",
                 feature.getAlternativeSequence().getOriginalSequence());
@@ -161,9 +161,9 @@ class FtLineParserTest {
         System.out.println(desc);
         // verify(obj.getFts().get(0), FTType.VAR_SEQ, "1", "31",  desc, "VSP_043645");
         FtLineConverter converter = new FtLineConverter();
-        List<Feature> features = converter.convert(obj);
+        List<UniProtKBFeature> features = converter.convert(obj);
         assertEquals(1, features.size());
-        Feature feature = features.get(0);
+        UniProtKBFeature feature = features.get(0);
         assertEquals("M", feature.getAlternativeSequence().getOriginalSequence());
 
         assertEquals(

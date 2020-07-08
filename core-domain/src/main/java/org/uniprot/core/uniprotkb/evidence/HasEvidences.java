@@ -3,6 +3,8 @@ package org.uniprot.core.uniprotkb.evidence;
 import java.io.Serializable;
 import java.util.List;
 
+import org.uniprot.core.util.Utils;
+
 /**
  * @author jieluo
  * @date 18 Jan 2017
@@ -11,5 +13,7 @@ import java.util.List;
 public interface HasEvidences extends Serializable {
     List<Evidence> getEvidences();
 
-    boolean hasEvidences();
+    default boolean hasEvidences() {
+        return Utils.notNullNotEmpty(getEvidences());
+    }
 }

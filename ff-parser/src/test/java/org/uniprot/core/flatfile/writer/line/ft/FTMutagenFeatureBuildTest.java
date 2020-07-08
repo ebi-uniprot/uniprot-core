@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.feature.FeatureLocation;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
-import org.uniprot.core.uniprotkb.feature.Feature;
-import org.uniprot.core.uniprotkb.feature.FeatureLocation;
-import org.uniprot.core.uniprotkb.feature.FeatureType;
+import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
+import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
 class FTMutagenFeatureBuildTest extends FTBuildTestAbstr {
     @Test
@@ -28,8 +28,8 @@ class FTMutagenFeatureBuildTest extends FTBuildTestAbstr {
         String description = "Less than 1% residual activity";
         AlternativeSequence altSeq =
                 createAlternativeSequence(originalSequence, alternativeSequences);
-        Feature feature =
-                createFeature(FeatureType.MUTAGEN, location, description, "", altSeq, evs);
+        UniProtKBFeature feature =
+                createFeature(UniprotKBFeatureType.MUTAGEN, location, description, "", altSeq, evs);
 
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);
@@ -64,8 +64,8 @@ class FTMutagenFeatureBuildTest extends FTBuildTestAbstr {
         String description = "Less than 1% residual activity";
         AlternativeSequence altSeq =
                 createAlternativeSequence(originalSequence, alternativeSequences);
-        Feature feature =
-                createFeature(FeatureType.MUTAGEN, location, description, "", altSeq, evs);
+        UniProtKBFeature feature =
+                createFeature(UniprotKBFeatureType.MUTAGEN, location, description, "", altSeq, evs);
 
         doTest(ftLine, feature);
         doTestString(ftLineString, feature);
