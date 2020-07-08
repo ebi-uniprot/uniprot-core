@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniref.UniRefEntryLight;
+import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
 import org.uniprot.core.uniref.impl.UniRefEntryLightBuilder;
 
@@ -52,7 +53,7 @@ class UniRefEntryLightJsonConfigTest {
                 .membersAdd("P12345")
                 .organismsAdd("Human")
                 .organismIdsAdd(9606L)
-                .hasMemberUniParcIds(true)
+                .memberIdTypesAdd(UniRefMemberIdType.UNIPARC)
                 .representativeSequence("AAAAA")
                 .updated(LocalDate.now())
                 .commonTaxon("Rat")

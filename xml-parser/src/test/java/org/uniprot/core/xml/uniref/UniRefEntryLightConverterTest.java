@@ -46,7 +46,7 @@ class UniRefEntryLightConverterTest {
         assertEquals(UniRefType.UniRef50, entry.getEntryType());
         assertEquals("Muroidea", entry.getCommonTaxon());
         assertEquals(337687, entry.getCommonTaxonId());
-        assertTrue(entry.hasMemberUniParcIDs());
+        //assertTrue(entry.hasMemberUniParcIDs());
         assertTrue(entry.getMembers().contains("Q8R2B4"));
         assertTrue(entry.getMembers().contains("UPI0000DBE4A9"));
 

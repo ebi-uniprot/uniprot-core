@@ -1,6 +1,7 @@
 package org.uniprot.core.xml.uniref;
 
 import org.uniprot.core.uniref.UniRefEntryLight;
+import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
 import org.uniprot.core.uniref.impl.UniRefEntryLightBuilder;
 import org.uniprot.core.xml.Converter;
@@ -40,16 +41,14 @@ public class UniRefEntryLightConverter  implements Converter<Entry, UniRefEntryL
     }
 
     private void updateMemberValuesFromXml(UniRefEntryLightBuilder builder, List<MemberType> members) {
-        boolean hasUniParc = false;
         for (MemberType memberType : members) {
             DbReferenceType dbReference = memberType.getDbReference();
             if(dbReference.getType().equalsIgnoreCase(PROPERTY_UNIPARC_ID)){
                 builder.membersAdd(dbReference.getId());
-                hasUniParc = true;
+                builder.memberIdTypesAdd(UniRefMemberIdType.UNIPARC);
             }
-            updateMemberPropertiesFromXml(builder, dbReference.getProperty());
+            updateMemberPropertiesFromXml(builder, dbReference.getProperty(), dbReference.getId());
         }
-        builder.hasMemberUniParcIds(hasUniParc);
     }
 
     private UniRefType getTypeFromId(String id) {
@@ -78,7 +77,7 @@ public class UniRefEntryLightConverter  implements Converter<Entry, UniRefEntryL
         }
     }
 
-    private void updateMemberPropertiesFromXml(UniRefEntryLightBuilder builder, List<PropertyType> properties) {
+    private void updateMemberPropertiesFromXml(UniRefEntryLightBuilder builder, List<PropertyType> properties, String id) {
         String accession = null;
         for (PropertyType property : properties) {
             switch (property.getType()) {
@@ -99,6 +98,7 @@ public class UniRefEntryLightConverter  implements Converter<Entry, UniRefEntryL
         }
         if(accession != null){
             builder.membersAdd(accession);
+            builder.memberIdTypesAdd(UniRefMemberIdType.UNIPROTKB);//TODO add util method
         }
     }
 
