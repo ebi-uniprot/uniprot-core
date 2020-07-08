@@ -3,10 +3,7 @@ package org.uniprot.core.parser.tsv.uniref;
 import org.uniprot.core.uniref.UniRefEntryLight;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -67,8 +64,9 @@ public class UniRefEntryLightValueMapper extends AbstractUniRefEntryMapper<UniRe
         return String.join(DELIMITER, entry.getMembers());
     }
 
-    private String getTypes(Set<UniRefMemberIdType> memberIdTypes) {
+    String getTypes(Set<UniRefMemberIdType> memberIdTypes) {
         return memberIdTypes.stream()
+                .sorted(Comparator.comparing(UniRefMemberIdType::getDisplayOrder))
                 .map(UniRefMemberIdType::getName)
                 .collect(Collectors.joining(DELIMITER));
     }
