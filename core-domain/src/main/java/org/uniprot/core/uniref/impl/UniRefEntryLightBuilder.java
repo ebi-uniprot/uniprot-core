@@ -1,10 +1,7 @@
 package org.uniprot.core.uniref.impl;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.uniref.UniRefEntryId;
-import org.uniprot.core.uniref.UniRefEntryLight;
-import org.uniprot.core.uniref.UniRefMemberIdType;
-import org.uniprot.core.uniref.UniRefType;
+import org.uniprot.core.uniref.*;
 import org.uniprot.core.util.Utils;
 
 import javax.annotation.Nonnull;
@@ -131,32 +128,9 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
 
     public @Nonnull UniRefEntryLightBuilder organismsAdd(String organism) {
         if (Utils.notNullNotEmpty(organism)) {
-            //Add this logic do avoid duplicated organism names because
-            //UniParc organisms do not contains common name in brackets.
-            Optional<String> found = this.organisms.stream()
-                    .map(this::cleanOrganism)
-                    .filter(value -> value.equalsIgnoreCase(cleanOrganism(organism)))
-                    .findFirst();
-            if(found.isPresent()){
-                String foundOrganism = found.get();
-                if(foundOrganism.length() < organism.length()){
-                    this.organisms.remove(foundOrganism);
-                    this.organisms.add(organism);
-                }
-            } else {
-                this.organisms.add(organism);
-            }
+            UniRefUtils.addOrganism(organism, this.organisms);
         }
         return this;
-    }
-
-    private String cleanOrganism(String value) {
-        int bracketIndex = value.indexOf('(');
-        if(bracketIndex >= 0){
-            return value.substring(0, bracketIndex).trim();
-        } else {
-            return value;
-        }
     }
 
     public @Nonnull UniRefEntryLightBuilder memberIdTypesSet(Set<UniRefMemberIdType> types) {

@@ -11,6 +11,8 @@ import org.uniprot.core.xml.uniprot.XmlConverterHelper;
 import java.util.Collections;
 import java.util.List;
 
+import static org.uniprot.core.uniref.UniRefUtils.*;
+
 /**
  * @author lgonzales
  * @since 06/07/2020
@@ -98,7 +100,7 @@ public class UniRefEntryLightConverter  implements Converter<Entry, UniRefEntryL
         }
         if(accession != null){
             builder.membersAdd(accession);
-            builder.memberIdTypesAdd(UniRefMemberIdType.UNIPROTKB);//TODO add util method
+            builder.memberIdTypesAdd(getUniProtKBIdType(id, accession));
         }
     }
 
