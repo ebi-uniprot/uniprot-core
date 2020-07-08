@@ -63,7 +63,7 @@ class UniRefEntryValueMapperTest {
                 "MVSWGRFICLVVVTMATLSLARPSFSLVEDDFSAGSADFAFWERDGDSDGFDSHSDJHETRHJREH",
                 entryMap.get("sequence"));
         assertEquals("1.0", entryMap.get("identity"));
-        assertEquals("UniProtKB ID, UniParc ID", entryMap.get("types"));
+        assertEquals("UniProtKB ID, UniParc", entryMap.get("types"));
     }
 
     @Test

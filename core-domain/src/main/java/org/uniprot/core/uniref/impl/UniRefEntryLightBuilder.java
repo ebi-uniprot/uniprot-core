@@ -57,6 +57,7 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
                 .representativeSequence(instance.getRepresentativeSequence())
                 .membersSet(instance.getMembers())
                 .organismIdsSet(instance.getOrganismIds())
+                .organismsSet(instance.getOrganisms())
                 .memberCount(instance.getMemberCount())
                 .memberIdTypesSet(instance.getMemberIdTypes());
     }

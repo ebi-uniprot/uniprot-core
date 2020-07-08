@@ -24,6 +24,11 @@ class UniRefMemberIdTypeTest {
                         .contains(enm.getDisplayName()));
     }
 
+    @Test
+    void testDisplayOrder(){
+        assertEquals(0, UniRefMemberIdType.UNIPROTKB_SWISSPROT.getDisplayOrder());
+    }
+
     @Nested
     class typeOf {
         @Test

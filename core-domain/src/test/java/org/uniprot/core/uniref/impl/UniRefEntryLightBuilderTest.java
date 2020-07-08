@@ -177,4 +177,26 @@ class UniRefEntryLightBuilderTest {
                         UniRefMemberIdType.UNIPROTKB_TREMBL,
                         UniRefMemberIdType.UNIPARC));
     }
+
+    @Test
+    void testFrom() {
+        UniRefEntryLight entry = new UniRefEntryLightBuilder()
+                .id("UniRef50_P12345")
+                .name("the name")
+                .membersAdd("P12345")
+                .organismsAdd("Human")
+                .organismIdsAdd(9606L)
+                .memberIdTypesAdd(UniRefMemberIdType.UNIPARC)
+                .representativeSequence("AAAAA")
+                .updated(LocalDate.now())
+                .commonTaxon("Rat")
+                .commonTaxonId(10116L)
+                .entryType(UniRefType.UniRef50)
+                .memberCount(5)
+                .build();
+        UniRefEntryLight fromEntry = UniRefEntryLightBuilder.from(entry).build();
+        assertThat(entry, is(fromEntry));
+        assertThat(entry.equals(fromEntry), is(true));
+        assertThat(entry.hashCode(), is(fromEntry.hashCode()));
+    }
 }
