@@ -13,6 +13,7 @@ import org.uniprot.core.uniprotkb.comment.impl.InteractionBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.SubcellularLocationCommentBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBIdBuilder;
+import org.uniprot.core.uniprotkb.interaction.InteractionMatrixItem;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
@@ -112,5 +113,15 @@ class InteractionMatrixItemBuilderTest {
                         .build()
                         .getSubcellularLocations(),
                 is(subcellularLocations));
+    }
+
+    @Test
+    void fromWorksAsExpected() {
+        UniProtKBAccession accession = new UniProtKBAccessionBuilder("value").build();
+        InteractionMatrixItem matrixItem = builder.uniProtKBAccession(accession).build();
+
+        InteractionMatrixItem fromMatrixItem = InteractionMatrixItemBuilder.from(matrixItem).build();
+
+        assertThat(fromMatrixItem, is(matrixItem));
     }
 }
