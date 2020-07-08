@@ -3,6 +3,7 @@ package org.uniprot.core.uniref.impl;
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefEntryLight;
+import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
 import org.uniprot.core.util.Utils;
 
@@ -26,9 +27,9 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
     private String commonTaxon;
     private String representativeSequence;
     private List<String> members = new ArrayList<>();
-    private boolean hasMemberUniParcIds;
     private Set<Long> organismIds = new LinkedHashSet<>();
     private Set<String> organisms = new LinkedHashSet<>();
+    private Set<UniRefMemberIdType> memberIdTypes = new HashSet<>();
     private int memberCount;
 
     @Override
@@ -42,10 +43,10 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
                 commonTaxon,
                 representativeSequence,
                 members,
-                hasMemberUniParcIds,
                 organismIds,
                 organisms,
-                memberCount);
+                memberCount,
+                memberIdTypes);
     }
 
     public static @Nonnull UniRefEntryLightBuilder from(@Nonnull UniRefEntryLight instance) {
@@ -59,8 +60,8 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
                 .representativeSequence(instance.getRepresentativeSequence())
                 .membersSet(instance.getMembers())
                 .organismIdsSet(instance.getOrganismIds())
-                .hasMemberUniParcIds(instance.hasMemberUniParcIDs())
-                .memberCount(instance.getMemberCount());
+                .memberCount(instance.getMemberCount())
+                .memberIdTypesSet(instance.getMemberIdTypes());
     }
 
     public @Nonnull UniRefEntryLightBuilder id(UniRefEntryId id) {
@@ -158,13 +159,18 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
         }
     }
 
-    public @Nonnull UniRefEntryLightBuilder memberCount(int memberCount) {
-        this.memberCount = memberCount;
+    public @Nonnull UniRefEntryLightBuilder memberIdTypesSet(Set<UniRefMemberIdType> types) {
+        this.memberIdTypes = Utils.modifiableSet(types);
         return this;
     }
 
-    public @Nonnull UniRefEntryLightBuilder hasMemberUniParcIds(boolean hasMemberUniParcIds) {
-        this.hasMemberUniParcIds = hasMemberUniParcIds;
+    public @Nonnull UniRefEntryLightBuilder memberIdTypesAdd(UniRefMemberIdType type) {
+        Utils.addOrIgnoreNull(type, this.memberIdTypes);
+        return this;
+    }
+
+    public @Nonnull UniRefEntryLightBuilder memberCount(int memberCount) {
+        this.memberCount = memberCount;
         return this;
     }
 }
