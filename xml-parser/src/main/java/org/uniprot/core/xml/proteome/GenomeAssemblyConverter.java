@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.proteome;
 
+import java.util.Objects;
+
 import org.uniprot.core.proteome.GenomeAssembly;
 import org.uniprot.core.proteome.GenomeAssemblyLevel;
 import org.uniprot.core.proteome.GenomeAssemblySource;
@@ -8,8 +10,6 @@ import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.GenomeAssemblyType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
-
-import java.util.Objects;
 
 /**
  * @author lgonzales
@@ -39,7 +39,7 @@ public class GenomeAssemblyConverter implements Converter<GenomeAssemblyType, Ge
                                     GenomeAssemblySource.fromValue(
                                             xmlObj.getGenomeAssemblySource()));
 
-            if(Objects.nonNull(xmlObj.getGenomeRepresentation())){
+            if (Objects.nonNull(xmlObj.getGenomeRepresentation())) {
                 builder.level(GenomeAssemblyLevel.fromValue(xmlObj.getGenomeRepresentation()));
             }
 
