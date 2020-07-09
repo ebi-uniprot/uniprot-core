@@ -37,5 +37,9 @@ public interface UniRefEntryLight extends Serializable {
 
     String getRepresentativeSequence();
 
+    String getRepresentativeId();
+
+    String getRepresentativeProteinName();
+
     Set<UniRefMemberIdType> getMemberIdTypes();
 }

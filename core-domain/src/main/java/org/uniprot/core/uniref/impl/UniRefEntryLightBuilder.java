@@ -22,6 +22,8 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
     private UniRefType entryType;
     private long commonTaxonId;
     private String commonTaxon;
+    private String representativeId;
+    private String representativeProteinName;
     private String representativeSequence;
     private List<String> members = new ArrayList<>();
     private Set<Long> organismIds = new LinkedHashSet<>();
@@ -38,6 +40,8 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
                 entryType,
                 commonTaxonId,
                 commonTaxon,
+                representativeId,
+                representativeProteinName,
                 representativeSequence,
                 members,
                 organismIds,
@@ -54,6 +58,8 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
                 .entryType(instance.getEntryType())
                 .commonTaxonId(instance.getCommonTaxonId())
                 .commonTaxon(instance.getCommonTaxon())
+                .representativeId(instance.getRepresentativeId())
+                .representativeProteinName(instance.getRepresentativeProteinName())
                 .representativeSequence(instance.getRepresentativeSequence())
                 .membersSet(instance.getMembers())
                 .organismIdsSet(instance.getOrganismIds())
@@ -94,6 +100,16 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
 
     public @Nonnull UniRefEntryLightBuilder commonTaxon(String commonTaxon) {
         this.commonTaxon = commonTaxon;
+        return this;
+    }
+
+    public @Nonnull UniRefEntryLightBuilder representativeId(String id) {
+        this.representativeId = id;
+        return this;
+    }
+
+    public @Nonnull UniRefEntryLightBuilder representativeProteinName(String representativeProteinName) {
+        this.representativeProteinName = representativeProteinName;
         return this;
     }
 
