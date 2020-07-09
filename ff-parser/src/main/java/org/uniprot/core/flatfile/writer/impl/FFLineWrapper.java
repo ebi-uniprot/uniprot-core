@@ -1,5 +1,7 @@
 package org.uniprot.core.flatfile.writer.impl;
 
+import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.LINE_LENGTH;
+
 import java.util.*;
 
 public class FFLineWrapper {
@@ -7,35 +9,13 @@ public class FFLineWrapper {
     //	private final static String[] DASHS ={"->", "-->", "- "};
     private static final String DASH = "-";
 
-    public static StringBuilder wrap(StringBuilder wrapThis, String separator, String linePrefix) {
-        String[] seps = {separator};
-        return wrap(wrapThis, seps, linePrefix);
-    }
-
-    public static StringBuilder wrap(
-            StringBuilder wrapThis, String[] separators, String linePrefix) {
-        return wrap(wrapThis, separators, linePrefix, FFLineConstant.LINE_LENGTH);
-    }
-
-    public static StringBuilder wrap(
-            StringBuilder wrapThis, String[] separators, String linePrefix, int lineLength) {
-        StringBuilder sb = new StringBuilder();
-        boolean isFirst = true;
-        for (String line : buildLines(wrapThis.toString(), separators, linePrefix, lineLength)) {
-            if (!isFirst) sb.append('\n');
-            sb.append(line);
-            isFirst = false;
-        }
-        return sb;
-    }
-
     public static List<String> buildLines(
             StringBuilder wrapThis, String separator, String linePrefix) {
         return buildLines(wrapThis.toString(), separator, linePrefix);
     }
 
     public static List<String> buildLines(String wrapThis, String separator, String linePrefix) {
-        return buildLines(wrapThis, separator, linePrefix, FFLineConstant.LINE_LENGTH);
+        return buildLines(wrapThis, separator, linePrefix, LINE_LENGTH);
     }
 
     public static List<String> buildLines(
@@ -122,8 +102,7 @@ public class FFLineWrapper {
         for (String token : tokens) {
             count++;
             if (wrapping
-                    && ((line.length() + token.length() + separator.length())
-                            >= FFLineConstant.LINE_LENGTH)) {
+                    && ((line.length() + token.length() + separator.length()) >= LINE_LENGTH)) {
                 lines.add(line.toString());
                 line = new StringBuilder(linePrefix);
             } else if (count != 1) line.append(space);
@@ -142,7 +121,7 @@ public class FFLineWrapper {
         int index = 0;
         String sep = "";
         //	Set<Integer> notWrapped = getNotWrapped(str, startPoint);
-        Map<String, List<Integer>> notWrappedMap = getNotWrappedMap(str, startPoint);
+        Map<String, Set<Integer>> notWrappedMap = getNotWrappedMap(str, startPoint);
         for (String separator : separators) {
             int sepLength = ("a" + separator).trim().length() - 1;
             if (fromLast) {
@@ -185,7 +164,7 @@ public class FFLineWrapper {
             int lineLength,
             int startPoint,
             boolean last,
-            Map<String, List<Integer>> notWrapped) {
+            Map<String, Set<Integer>> notWrapped) {
         boolean isSpace = sep.equals(" ");
         if (last) {
             int end = lineLength;
@@ -209,15 +188,14 @@ public class FFLineWrapper {
                 index2 = str.indexOf(sep, start);
                 if (index2 == -1) return index2;
             }
-            ;
             return index2;
         }
     }
 
     private static boolean isContain(
-            int val, Map<String, List<Integer>> notWrapped, boolean isSpace) {
+            int val, Map<String, Set<Integer>> notWrapped, boolean isSpace) {
         if (notWrapped.isEmpty()) return false;
-        for (Map.Entry<String, List<Integer>> entry : notWrapped.entrySet()) {
+        for (Map.Entry<String, Set<Integer>> entry : notWrapped.entrySet()) {
             int len = entry.getKey().length();
             for (int index : entry.getValue()) {
                 if (val == index) return true;
@@ -228,13 +206,13 @@ public class FFLineWrapper {
         return false;
     }
 
-    private static Map<String, List<Integer>> getNotWrappedMap(String val, int start) {
-        Map<String, List<Integer>> notWrapped = new TreeMap<>();
+    private static Map<String, Set<Integer>> getNotWrappedMap(String val, int start) {
+        Map<String, Set<Integer>> notWrapped = new TreeMap<>();
 
         int start1 = start;
         for (String s : NOT_WRAPPED) {
             int index = 0;
-            List<Integer> indices = new ArrayList<>();
+            LinkedHashSet<Integer> indices = new LinkedHashSet<>();
             do {
 
                 index = val.indexOf(s, start1);
@@ -253,15 +231,17 @@ public class FFLineWrapper {
     }
 
     private static void addDashSpecial(
-            Map<String, List<Integer>> notWrapped, String val, int start) {
+            Map<String, Set<Integer>> notWrapped, String val, int start) {
         int start1 = start;
         int length = val.length();
         int index = 0;
+        boolean notWrappedIsEmpty = notWrapped.isEmpty();
         do {
             index = val.indexOf(DASH, start1);
             if ((index == -1) || (index == (length - 1))) break;
-            String found = isInNotWrapped(notWrapped, index);
-            String digit = getDigit(val, index);
+            String found = notWrappedIsEmpty ? null : isInNotWrapped(notWrapped, index);
+
+            String digit = getDigitMap(val, index);
 
             if (found != null) {
                 start1 += found.length();
@@ -270,29 +250,32 @@ public class FFLineWrapper {
                 String dashSp = DASH + digit;
                 start1 = index;
                 start1 += digit.length();
-                List<Integer> found2 = notWrapped.get(dashSp);
+                Set<Integer> found2 = notWrapped.get(dashSp);
                 if (found2 == null) {
-                    found2 = new ArrayList<>();
+                    found2 = new LinkedHashSet<>();
                     notWrapped.put(dashSp, found2);
+                    notWrappedIsEmpty = false;
                 }
                 found2.add(index);
 
             } else if (isSpaceBeforeDash(val, index)) {
                 String dashSp = " " + DASH;
                 start1 += 1;
-                List<Integer> found2 = notWrapped.get(dashSp);
+                Set<Integer> found2 = notWrapped.get(dashSp);
                 if (found2 == null) {
-                    found2 = new ArrayList<>();
+                    found2 = new LinkedHashSet<>();
                     notWrapped.put(dashSp, found2);
+                    notWrappedIsEmpty = false;
                 }
                 found2.add(index);
             } else if (isSpecialCharacter(val.charAt(index + 1))) {
                 String dashSp = DASH + val.charAt(index + 1);
                 start1 += 2;
-                List<Integer> found2 = notWrapped.get(dashSp);
+                Set<Integer> found2 = notWrapped.get(dashSp);
                 if (found2 == null) {
-                    found2 = new ArrayList<>();
+                    found2 = new LinkedHashSet<>();
                     notWrapped.put(dashSp, found2);
+                    notWrappedIsEmpty = false;
                 }
                 found2.add(index);
             } else {
@@ -314,29 +297,56 @@ public class FFLineWrapper {
         return false;
     }
 
-    private static String getDigit(String val, int index) {
+    private static String getDigitMap(String val, int index) {
         int nextIndex = -1;
-        if (val.indexOf(' ', index) != -1) {
-            nextIndex = val.indexOf(' ', index);
+
+        int commaPos = Integer.MAX_VALUE;
+        int semiColonPos = Integer.MAX_VALUE;
+        int fullStopPos = Integer.MAX_VALUE;
+        int spacePos = Integer.MAX_VALUE;
+
+        int charFinds = 0;
+        int endOfLine = val.length();
+        if (endOfLine > LINE_LENGTH) {
+            endOfLine = LINE_LENGTH;
         }
-        if (val.indexOf(',', index) != -1) {
-            int nextIndex2 = val.indexOf(',', index);
-            if (nextIndex == -1) {
-                nextIndex = nextIndex2;
-            } else nextIndex = Math.min(nextIndex, nextIndex2);
+        for (int i = index; i < endOfLine; i++) {
+            if (charFinds < 4) {
+                char currentChar = val.charAt(i);
+                if (currentChar == ',' && commaPos == Integer.MAX_VALUE) {
+                    commaPos = i;
+                    charFinds++;
+                } else if (currentChar == ';' && semiColonPos == Integer.MAX_VALUE) {
+                    semiColonPos = i;
+                    charFinds++;
+                } else if (currentChar == '.' && fullStopPos == Integer.MAX_VALUE) {
+                    fullStopPos = i;
+                    charFinds++;
+                } else if (currentChar == ' ' && spacePos == Integer.MAX_VALUE) {
+                    spacePos = i;
+                    charFinds++;
+                }
+            }
         }
 
-        if (val.indexOf(';', index) != -1) {
-            int nextIndex2 = val.indexOf(';', index);
-            if (nextIndex == -1) {
-                nextIndex = nextIndex2;
-            } else nextIndex = Math.min(nextIndex, nextIndex2);
+        if (spacePos != Integer.MAX_VALUE) {
+            nextIndex = spacePos;
         }
-        if (val.indexOf('.', index) != -1) {
-            int nextIndex2 = val.indexOf('.', index);
+        if (commaPos != Integer.MAX_VALUE) {
             if (nextIndex == -1) {
-                nextIndex = nextIndex2;
-            } else nextIndex = Math.min(nextIndex, nextIndex2);
+                nextIndex = commaPos;
+            } else nextIndex = Math.min(nextIndex, commaPos);
+        }
+
+        if (semiColonPos != Integer.MAX_VALUE) {
+            if (nextIndex == -1) {
+                nextIndex = semiColonPos;
+            } else nextIndex = Math.min(nextIndex, semiColonPos);
+        }
+        if (fullStopPos != Integer.MAX_VALUE) {
+            if (nextIndex == -1) {
+                nextIndex = fullStopPos;
+            } else nextIndex = Math.min(nextIndex, fullStopPos);
         }
         if (nextIndex == -1) return null;
 
@@ -348,10 +358,11 @@ public class FFLineWrapper {
         return sub;
     }
 
-    private static String isInNotWrapped(Map<String, List<Integer>> notWrapped, int index) {
-        for (Map.Entry<String, List<Integer>> entry : notWrapped.entrySet()) {
-            if (entry.getValue().stream().anyMatch(val -> val.intValue() == index))
+    private static String isInNotWrapped(Map<String, Set<Integer>> notWrapped, int index) {
+        for (Map.Entry<String, Set<Integer>> entry : notWrapped.entrySet()) {
+            if (entry.getValue().contains(index)) {
                 return entry.getKey();
+            }
         }
         return null;
     }

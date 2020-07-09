@@ -49,6 +49,17 @@ class GenomeAssemblyConverterTest {
         assertEquals("partial", result.getGenomeRepresentation());
     }
 
+    @Test
+    void testToXmlWithoutGenomeRepresentation() {
+        GenomeAssembly genomeAssembly = createGenomeAssemblyWithoutGenomeAssembly();
+        GenomeAssemblyType result = converter.toXml(genomeAssembly);
+        assertNotNull(result);
+        assertEquals("id value", result.getGenomeAssembly());
+        assertEquals("url value", result.getGenomeAssemblyUrl());
+        assertEquals("Ensembl", result.getGenomeAssemblySource());
+        assertNull(result.getGenomeRepresentation());
+    }
+
     static GenomeAssemblyType getGenomeAssemblyType(ObjectFactory xmlFactory) {
         GenomeAssemblyType genomeAssemblyType = xmlFactory.createGenomeAssemblyType();
         genomeAssemblyType.setGenomeRepresentation("full");
@@ -63,6 +74,14 @@ class GenomeAssemblyConverterTest {
                 .assemblyId("id value")
                 .genomeAssemblyUrl("url value")
                 .level(GenomeAssemblyLevel.PARTIAL)
+                .source(GenomeAssemblySource.ENSEMBL)
+                .build();
+    }
+
+    static GenomeAssembly createGenomeAssemblyWithoutGenomeAssembly() {
+        return new GenomeAssemblyBuilder()
+                .assemblyId("id value")
+                .genomeAssemblyUrl("url value")
                 .source(GenomeAssemblySource.ENSEMBL)
                 .build();
     }
