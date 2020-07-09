@@ -1,5 +1,6 @@
 package org.uniprot.core.uniref.impl;
 
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniref.UniRefEntryLight;
 import org.uniprot.core.uniref.UniRefMemberIdType;
@@ -15,6 +16,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.uniprot.core.uniref.impl.UniRefEntryLightImpl.NAME_PREFIX;
 
 /**
  * Created 29/06/2020
@@ -27,13 +29,6 @@ class UniRefEntryLightBuilderTest {
         String value = "id";
         UniRefEntryLight entryLight = new UniRefEntryLightBuilder().id(value).build();
         assertThat(entryLight.getId().getValue(), is(value));
-    }
-
-    @Test
-    void canSetName() {
-        String value = "name";
-        UniRefEntryLight entryLight = new UniRefEntryLightBuilder().name(value).build();
-        assertThat(entryLight.getName(), is(value));
     }
 
     @Test
@@ -85,6 +80,14 @@ class UniRefEntryLightBuilderTest {
         UniRefEntryLight entryLight =
                 new UniRefEntryLightBuilder().representativeSequence(value).build();
         assertThat(entryLight.getRepresentativeSequence(), is(value));
+    }
+
+    @Test
+    void nameIsDerivedFromProteinName() {
+        String proteinName = "value";
+        UniRefEntryLight entryLight =
+                new UniRefEntryLightBuilder().representativeProteinName(proteinName).build();
+        assertThat(entryLight.getName(), Matchers.is(NAME_PREFIX + proteinName));
     }
 
     @Test
@@ -201,7 +204,6 @@ class UniRefEntryLightBuilderTest {
         UniRefEntryLight entry =
                 new UniRefEntryLightBuilder()
                         .id("UniRef50_P12345")
-                        .name("the name")
                         .membersAdd("P12345")
                         .organismsAdd("Human")
                         .organismIdsAdd(9606L)

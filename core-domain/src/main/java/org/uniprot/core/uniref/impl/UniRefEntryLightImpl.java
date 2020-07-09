@@ -21,8 +21,8 @@ import java.util.Set;
  */
 public class UniRefEntryLightImpl implements UniRefEntryLight {
     private static final long serialVersionUID = 6240419671874348249L;
+    static final String NAME_PREFIX = "Cluster: ";
     private UniRefEntryId id;
-    private String name;
     private LocalDate updated;
     private UniRefType entryType;
     private long commonTaxonId;
@@ -46,7 +46,6 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
 
     UniRefEntryLightImpl(
             UniRefEntryId id,
-            String name,
             LocalDate updated,
             UniRefType entryType,
             long commonTaxonId,
@@ -60,7 +59,6 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
             int memberCount,
             Set<UniRefMemberIdType> memberIdTypes) {
         this.id = id;
-        this.name = name;
         this.updated = updated;
         this.entryType = entryType;
         this.commonTaxonId = commonTaxonId;
@@ -85,8 +83,46 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UniRefEntryLightImpl that = (UniRefEntryLightImpl) o;
+        return commonTaxonId == that.commonTaxonId
+                && memberCount == that.memberCount
+                && Objects.equals(id, that.id)
+                && Objects.equals(updated, that.updated)
+                && entryType == that.entryType
+                && Objects.equals(commonTaxon, that.commonTaxon)
+                && Objects.equals(representativeSequence, that.representativeSequence)
+                && Objects.equals(members, that.members)
+                && Objects.equals(organismIds, that.organismIds)
+                && Objects.equals(organisms, that.organisms)
+                && Objects.equals(memberIdTypes, that.memberIdTypes)
+                && Objects.equals(representativeId, that.representativeId)
+                && Objects.equals(representativeProteinName, that.representativeProteinName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                id,
+                updated,
+                entryType,
+                commonTaxonId,
+                commonTaxon,
+                representativeSequence,
+                members,
+                organismIds,
+                memberCount,
+                organisms,
+                memberIdTypes,
+                representativeId,
+                representativeProteinName);
+    }
+
+    @Override
     public String getName() {
-        return name;
+        return NAME_PREFIX + representativeProteinName;
     }
 
     @Override
@@ -147,32 +183,5 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
     @Override
     public Set<UniRefMemberIdType> getMemberIdTypes() {
         return memberIdTypes;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UniRefEntryLightImpl that = (UniRefEntryLightImpl) o;
-        return commonTaxonId == that.commonTaxonId &&
-                memberCount == that.memberCount &&
-                Objects.equals(id, that.id) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(updated, that.updated) &&
-                entryType == that.entryType &&
-                Objects.equals(commonTaxon, that.commonTaxon) &&
-                Objects.equals(representativeSequence, that.representativeSequence) &&
-                Objects.equals(members, that.members) &&
-                Objects.equals(organismIds, that.organismIds) &&
-                Objects.equals(organisms, that.organisms) &&
-                Objects.equals(memberIdTypes, that.memberIdTypes) &&
-                Objects.equals(representativeId, that.representativeId) &&
-                Objects.equals(representativeProteinName, that.representativeProteinName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects
-                .hash(id, name, updated, entryType, commonTaxonId, commonTaxon, representativeSequence, members, organismIds, memberCount, organisms, memberIdTypes, representativeId, representativeProteinName);
     }
 }

@@ -79,7 +79,6 @@ class UniRefFastaParserTest {
         UniRefEntry entry = createEntry();
         return new UniRefEntryLightBuilder()
                 .id("UniRef50_P03923")
-                .name("name")
                 .representativeProteinName("protein")
                 .representativeId("representativeId")
                 .representativeSequence(entry.getRepresentativeMember().getSequence().getValue())

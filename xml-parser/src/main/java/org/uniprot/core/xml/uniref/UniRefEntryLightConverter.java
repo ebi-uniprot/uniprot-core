@@ -5,19 +5,22 @@ import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
 import org.uniprot.core.uniref.impl.UniRefEntryLightBuilder;
 import org.uniprot.core.xml.Converter;
-import org.uniprot.core.xml.jaxb.uniref.*;
+import org.uniprot.core.xml.jaxb.uniref.DbReferenceType;
+import org.uniprot.core.xml.jaxb.uniref.Entry;
+import org.uniprot.core.xml.jaxb.uniref.MemberType;
+import org.uniprot.core.xml.jaxb.uniref.PropertyType;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
 
 import java.util.Collections;
 import java.util.List;
 
-import static org.uniprot.core.uniref.UniRefUtils.*;
+import static org.uniprot.core.uniref.UniRefUtils.getUniProtKBIdType;
 
 /**
  * @author lgonzales
  * @since 06/07/2020
  */
-public class UniRefEntryLightConverter  implements Converter<Entry, UniRefEntryLight> {
+public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLight> {
     public static final String PROPERTY_MEMBER_COUNT = "member count";
     public static final String PROPERTY_COMMON_TAXON = "common taxon";
     public static final String PROPERTY_COMMON_TAXON_ID = "common taxon ID";
@@ -25,27 +28,29 @@ public class UniRefEntryLightConverter  implements Converter<Entry, UniRefEntryL
     public static final String PROPERTY_SOURCE_ORGANISM = "source organism";
     public static final String PROPERTY_ORGANISM_ID = "NCBI taxonomy";
     private static final String PROPERTY_UNIPROT_ACCESSION = "UniProtKB accession";
+    private static final String NAME_PREFIX = "Cluster: ";
 
     @Override
     public UniRefEntryLight fromXml(Entry xmlObj) {
         UniRefEntryLightBuilder builder = new UniRefEntryLightBuilder();
         builder.id(xmlObj.getId())
                 .entryType(getTypeFromId(xmlObj.getId()))
-                .name(xmlObj.getName())
                 .updated(XmlConverterHelper.dateFromXml(xmlObj.getUpdated()))
                 .representativeSequence(xmlObj.getRepresentativeMember().getSequence().getValue());
 
-        updateMemberValuesFromXml(builder, Collections.singletonList(xmlObj.getRepresentativeMember()));
-
+        updateMemberValuesFromXml(
+                builder, Collections.singletonList(xmlObj.getRepresentativeMember()));
+        updateProteinName(builder, xmlObj);
         updateCommonPropertiesFromXml(builder, xmlObj);
         updateMemberValuesFromXml(builder, xmlObj.getMember());
         return builder.build();
     }
 
-    private void updateMemberValuesFromXml(UniRefEntryLightBuilder builder, List<MemberType> members) {
+    private void updateMemberValuesFromXml(
+            UniRefEntryLightBuilder builder, List<MemberType> members) {
         for (MemberType memberType : members) {
             DbReferenceType dbReference = memberType.getDbReference();
-            if(dbReference.getType().equalsIgnoreCase(PROPERTY_UNIPARC_ID)){
+            if (dbReference.getType().equalsIgnoreCase(PROPERTY_UNIPARC_ID)) {
                 builder.membersAdd(dbReference.getId());
                 builder.memberIdTypesAdd(UniRefMemberIdType.UNIPARC);
             }
@@ -59,6 +64,10 @@ public class UniRefEntryLightConverter  implements Converter<Entry, UniRefEntryL
         }
         String val = id.substring(0, id.indexOf('_'));
         return UniRefType.valueOf(val);
+    }
+
+    private void updateProteinName(UniRefEntryLightBuilder builder, Entry jaxbEntry) {
+        builder.representativeProteinName(jaxbEntry.getName().substring(NAME_PREFIX.length()));
     }
 
     private void updateCommonPropertiesFromXml(UniRefEntryLightBuilder builder, Entry jaxbEntry) {
@@ -79,7 +88,8 @@ public class UniRefEntryLightConverter  implements Converter<Entry, UniRefEntryL
         }
     }
 
-    private void updateMemberPropertiesFromXml(UniRefEntryLightBuilder builder, List<PropertyType> properties, String id) {
+    private void updateMemberPropertiesFromXml(
+            UniRefEntryLightBuilder builder, List<PropertyType> properties, String id) {
         String accession = null;
         for (PropertyType property : properties) {
             switch (property.getType()) {
@@ -90,7 +100,7 @@ public class UniRefEntryLightConverter  implements Converter<Entry, UniRefEntryL
                     builder.organismIdsAdd(Long.parseLong(property.getValue()));
                     break;
                 case PROPERTY_UNIPROT_ACCESSION:
-                    if(accession == null){ //get first accession from xml as member.
+                    if (accession == null) { // get first accession from xml as member.
                         accession = property.getValue();
                     }
                     break;
@@ -98,7 +108,7 @@ public class UniRefEntryLightConverter  implements Converter<Entry, UniRefEntryL
                     break;
             }
         }
-        if(accession != null){
+        if (accession != null) {
             builder.membersAdd(accession);
             builder.memberIdTypesAdd(getUniProtKBIdType(id, accession));
         }

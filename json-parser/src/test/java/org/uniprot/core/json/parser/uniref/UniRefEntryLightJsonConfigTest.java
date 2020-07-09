@@ -49,7 +49,6 @@ class UniRefEntryLightJsonConfigTest {
     public static UniRefEntryLight getCompleteUniRefEntryLight() {
         return new UniRefEntryLightBuilder()
                 .id("UniRef50_P12345")
-                .name("the name")
                 .membersAdd("P12345")
                 .organismsAdd("Human")
                 .organismIdsAdd(9606L)

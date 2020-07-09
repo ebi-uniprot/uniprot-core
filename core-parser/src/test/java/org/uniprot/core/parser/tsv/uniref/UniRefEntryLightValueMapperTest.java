@@ -146,17 +146,17 @@ class UniRefEntryLightValueMapperTest {
 
         String id = "UniRef50_P03923";
         UniRefType type = UniRefType.UniRef100;
-        String name = "Cluster: AMP-binding enzyme family protein";
+        String name = "AMP-binding enzyme family protein";
         UniRefEntryId entryId = new UniRefEntryIdBuilder(id).build();
         LocalDate created = LocalDate.of(2018, 6, 21);
 
         return new UniRefEntryLightBuilder()
                 .id(entryId)
-                .name(name)
                 .updated(created)
                 .entryType(type)
                 .commonTaxonId(9605L)
                 .commonTaxon("Homo")
+                .representativeProteinName(name)
                 .organismsSet(new HashSet<>(asList("organism 1", "organism 2")))
                 .organismIdsSet(new HashSet<>(asList(1L, 2L)))
                 .representativeSequence(SEQUENCE)
