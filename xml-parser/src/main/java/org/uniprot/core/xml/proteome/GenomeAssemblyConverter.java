@@ -9,6 +9,8 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.GenomeAssemblyType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 
+import java.util.Objects;
+
 /**
  * @author lgonzales
  * @since 15/04/2020
@@ -29,15 +31,19 @@ public class GenomeAssemblyConverter implements Converter<GenomeAssemblyType, Ge
     public GenomeAssembly fromXml(GenomeAssemblyType xmlObj) {
         GenomeAssembly result = null;
         if (Utils.notNull(xmlObj)) {
-            result =
+            GenomeAssemblyBuilder builder =
                     new GenomeAssemblyBuilder()
                             .assemblyId(xmlObj.getGenomeAssembly())
                             .genomeAssemblyUrl(xmlObj.getGenomeAssemblyUrl())
                             .source(
                                     GenomeAssemblySource.fromValue(
-                                            xmlObj.getGenomeAssemblySource()))
-                            .level(GenomeAssemblyLevel.fromValue(xmlObj.getGenomeRepresentation()))
-                            .build();
+                                            xmlObj.getGenomeAssemblySource()));
+
+            if(Objects.nonNull(xmlObj.getGenomeRepresentation())){
+                builder.level(GenomeAssemblyLevel.fromValue(xmlObj.getGenomeRepresentation()));
+            }
+
+            result = builder.build();
         }
         return result;
     }
