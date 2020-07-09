@@ -1,16 +1,16 @@
 package org.uniprot.core.uniprotkb.interaction.impl;
 
-import org.uniprot.core.uniprotkb.interaction.InteractionMatrixItem;
+import java.util.List;
+import java.util.Objects;
+
 import org.uniprot.core.uniprotkb.ProteinExistence;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.UniProtKBId;
 import org.uniprot.core.uniprotkb.comment.DiseaseComment;
 import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocationComment;
+import org.uniprot.core.uniprotkb.interaction.InteractionMatrixItem;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
-
-import java.util.List;
-import java.util.Objects;
 
 /**
  * Created 11/05/2020

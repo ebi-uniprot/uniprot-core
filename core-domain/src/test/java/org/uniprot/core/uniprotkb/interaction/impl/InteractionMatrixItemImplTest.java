@@ -1,10 +1,10 @@
 package org.uniprot.core.uniprotkb.interaction.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.interaction.InteractionMatrixItem;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.interaction.InteractionMatrixItem;
 
 /**
  * Created 08/07/2020

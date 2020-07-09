@@ -1,5 +1,10 @@
 package org.uniprot.core.uniprotkb.interaction.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprotkb.ProteinExistence;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
@@ -10,10 +15,6 @@ import org.uniprot.core.uniprotkb.comment.SubcellularLocationComment;
 import org.uniprot.core.uniprotkb.interaction.InteractionMatrixItem;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.util.Utils;
-
-import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created 11/05/2020
@@ -29,57 +30,49 @@ public class InteractionMatrixItemBuilder implements Builder<InteractionMatrixIt
     private List<DiseaseComment> diseases = new ArrayList<>();
     private List<SubcellularLocationComment> subcellularLocations = new ArrayList<>();
 
-    public @Nonnull
-    InteractionMatrixItemBuilder uniProtKBAccession(
+    public @Nonnull InteractionMatrixItemBuilder uniProtKBAccession(
             UniProtKBAccession uniProtKBAccession) {
         this.uniProtKBAccession = uniProtKBAccession;
         return this;
     }
 
-    public @Nonnull
-    InteractionMatrixItemBuilder uniProtKBId(UniProtKBId uniProtKBId) {
+    public @Nonnull InteractionMatrixItemBuilder uniProtKBId(UniProtKBId uniProtKBId) {
         this.uniProtKBId = uniProtKBId;
         return this;
     }
 
-    public @Nonnull
-    InteractionMatrixItemBuilder organism(Organism organism) {
+    public @Nonnull InteractionMatrixItemBuilder organism(Organism organism) {
         this.organism = organism;
         return this;
     }
 
-    public @Nonnull
-    InteractionMatrixItemBuilder proteinExistence(ProteinExistence proteinExistence) {
+    public @Nonnull InteractionMatrixItemBuilder proteinExistence(
+            ProteinExistence proteinExistence) {
         this.proteinExistence = proteinExistence;
         return this;
     }
 
-    public @Nonnull
-    InteractionMatrixItemBuilder interactionsAdd(Interaction interaction) {
+    public @Nonnull InteractionMatrixItemBuilder interactionsAdd(Interaction interaction) {
         Utils.addOrIgnoreNull(interaction, this.interactions);
         return this;
     }
 
-    public @Nonnull
-    InteractionMatrixItemBuilder interactionsSet(List<Interaction> interactions) {
+    public @Nonnull InteractionMatrixItemBuilder interactionsSet(List<Interaction> interactions) {
         this.interactions = Utils.modifiableList(interactions);
         return this;
     }
 
-    public @Nonnull
-    InteractionMatrixItemBuilder diseasesAdd(DiseaseComment disease) {
+    public @Nonnull InteractionMatrixItemBuilder diseasesAdd(DiseaseComment disease) {
         Utils.addOrIgnoreNull(disease, this.diseases);
         return this;
     }
 
-    public @Nonnull
-    InteractionMatrixItemBuilder diseasesSet(List<DiseaseComment> diseases) {
+    public @Nonnull InteractionMatrixItemBuilder diseasesSet(List<DiseaseComment> diseases) {
         this.diseases = Utils.modifiableList(diseases);
         return this;
     }
 
-    public @Nonnull
-    InteractionMatrixItemBuilder subcellularLocationsAdd(
+    public @Nonnull InteractionMatrixItemBuilder subcellularLocationsAdd(
             SubcellularLocationComment subcellularLocation) {
         Utils.addOrIgnoreNull(subcellularLocation, this.subcellularLocations);
         return this;
@@ -104,8 +97,8 @@ public class InteractionMatrixItemBuilder implements Builder<InteractionMatrixIt
                 subcellularLocations);
     }
 
-    public static @Nonnull
-    InteractionMatrixItemBuilder from(@Nonnull InteractionMatrixItem instance) {
+    public static @Nonnull InteractionMatrixItemBuilder from(
+            @Nonnull InteractionMatrixItem instance) {
         return new InteractionMatrixItemBuilder()
                 .uniProtKBAccession(instance.getPrimaryAccession())
                 .uniProtKBId(instance.getUniProtKBId())

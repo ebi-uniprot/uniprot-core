@@ -1,5 +1,11 @@
 package org.uniprot.core.uniprotkb.interaction.impl;
 
+import static java.util.Collections.singletonList;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.ProteinExistence;
@@ -16,12 +22,6 @@ import org.uniprot.core.uniprotkb.impl.UniProtKBIdBuilder;
 import org.uniprot.core.uniprotkb.interaction.InteractionMatrixItem;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
-
-import java.util.List;
-
-import static java.util.Collections.singletonList;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Created 12/05/2020
@@ -120,7 +120,8 @@ class InteractionMatrixItemBuilderTest {
         UniProtKBAccession accession = new UniProtKBAccessionBuilder("value").build();
         InteractionMatrixItem matrixItem = builder.uniProtKBAccession(accession).build();
 
-        InteractionMatrixItem fromMatrixItem = InteractionMatrixItemBuilder.from(matrixItem).build();
+        InteractionMatrixItem fromMatrixItem =
+                InteractionMatrixItemBuilder.from(matrixItem).build();
 
         assertThat(fromMatrixItem, is(matrixItem));
     }

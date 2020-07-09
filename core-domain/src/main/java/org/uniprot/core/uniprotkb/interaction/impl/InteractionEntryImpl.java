@@ -1,10 +1,10 @@
 package org.uniprot.core.uniprotkb.interaction.impl;
 
-import org.uniprot.core.uniprotkb.interaction.InteractionEntry;
-import org.uniprot.core.uniprotkb.interaction.InteractionMatrixItem;
-
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.uniprotkb.interaction.InteractionEntry;
+import org.uniprot.core.uniprotkb.interaction.InteractionMatrixItem;
 
 /**
  * Created 11/05/2020

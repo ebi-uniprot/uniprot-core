@@ -1,8 +1,7 @@
 package org.uniprot.core.json.parser.uniprot;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.jsontype.NamedType;
-import com.fasterxml.jackson.databind.module.SimpleModule;
+import java.time.LocalDate;
+
 import org.uniprot.core.*;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.citation.impl.*;
@@ -45,7 +44,9 @@ import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtKBCrossReferenceImpl;
 import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 
-import java.time.LocalDate;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.NamedType;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 /** @author lgonzales */
 public class UniprotKBJsonConfig extends JsonConfig {
