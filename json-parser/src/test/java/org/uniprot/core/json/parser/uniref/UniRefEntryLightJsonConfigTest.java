@@ -1,7 +1,6 @@
 package org.uniprot.core.json.parser.uniref;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniref.UniRefEntryLight;
@@ -11,7 +10,8 @@ import org.uniprot.core.uniref.impl.UniRefEntryLightBuilder;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * @author lgonzales
@@ -36,11 +36,11 @@ class UniRefEntryLightJsonConfigTest {
     void testSimpleObjectSerialization() {
         try {
             UniRefEntryLight entry = getCompleteUniRefEntryLight();
-            ObjectMapper mapper =  UniRefEntryLightJsonConfig.getInstance().getSimpleObjectMapper();
+            ObjectMapper mapper = UniRefEntryLightJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
-            //uncomment the code to generate samplejson for UniRefEntryLight model.
+            // uncomment the code to generate samplejson for UniRefEntryLight model.
             assertNotNull(json);
-            //System.out.println(json);
+            // System.out.println(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }
@@ -54,6 +54,8 @@ class UniRefEntryLightJsonConfigTest {
                 .organismsAdd("Human")
                 .organismIdsAdd(9606L)
                 .memberIdTypesAdd(UniRefMemberIdType.UNIPARC)
+                .representativeId("id")
+                .representativeProteinName("protein")
                 .representativeSequence("AAAAA")
                 .updated(LocalDate.now())
                 .commonTaxon("Rat")

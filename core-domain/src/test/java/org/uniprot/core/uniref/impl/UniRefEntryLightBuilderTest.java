@@ -65,6 +65,21 @@ class UniRefEntryLightBuilderTest {
     }
 
     @Test
+    void canSetRepresentativeId() {
+        String value = "id";
+        UniRefEntryLight entryLight = new UniRefEntryLightBuilder().representativeId(value).build();
+        assertThat(entryLight.getRepresentativeId(), is(value));
+    }
+
+    @Test
+    void canSetRepresentativeProteinName() {
+        String value = "name";
+        UniRefEntryLight entryLight =
+                new UniRefEntryLightBuilder().representativeProteinName(value).build();
+        assertThat(entryLight.getRepresentativeProteinName(), is(value));
+    }
+
+    @Test
     void canSetRepresentativeSequence() {
         String value = "AAAA";
         UniRefEntryLight entryLight =
@@ -130,13 +145,16 @@ class UniRefEntryLightBuilderTest {
     @Test
     void doNotAddDuplicatedOrganisms() {
         UniRefEntryLightBuilder entryLightBuilder =
-                new UniRefEntryLightBuilder().organismsSet(new HashSet<>(asList("1 (common)", "2")));
+                new UniRefEntryLightBuilder()
+                        .organismsSet(new HashSet<>(asList("1 (common)", "2")));
 
         entryLightBuilder.organismsAdd("1");
         entryLightBuilder.organismsAdd("2 (common)");
         entryLightBuilder.organismsAdd("3");
 
-        assertThat(entryLightBuilder.build().getOrganisms(), containsInAnyOrder("1 (common)", "2 (common)", "3"));
+        assertThat(
+                entryLightBuilder.build().getOrganisms(),
+                containsInAnyOrder("1 (common)", "2 (common)", "3"));
     }
 
     @Test
@@ -180,20 +198,21 @@ class UniRefEntryLightBuilderTest {
 
     @Test
     void testFrom() {
-        UniRefEntryLight entry = new UniRefEntryLightBuilder()
-                .id("UniRef50_P12345")
-                .name("the name")
-                .membersAdd("P12345")
-                .organismsAdd("Human")
-                .organismIdsAdd(9606L)
-                .memberIdTypesAdd(UniRefMemberIdType.UNIPARC)
-                .representativeSequence("AAAAA")
-                .updated(LocalDate.now())
-                .commonTaxon("Rat")
-                .commonTaxonId(10116L)
-                .entryType(UniRefType.UniRef50)
-                .memberCount(5)
-                .build();
+        UniRefEntryLight entry =
+                new UniRefEntryLightBuilder()
+                        .id("UniRef50_P12345")
+                        .name("the name")
+                        .membersAdd("P12345")
+                        .organismsAdd("Human")
+                        .organismIdsAdd(9606L)
+                        .memberIdTypesAdd(UniRefMemberIdType.UNIPARC)
+                        .representativeSequence("AAAAA")
+                        .updated(LocalDate.now())
+                        .commonTaxon("Rat")
+                        .commonTaxonId(10116L)
+                        .entryType(UniRefType.UniRef50)
+                        .memberCount(5)
+                        .build();
         UniRefEntryLight fromEntry = UniRefEntryLightBuilder.from(entry).build();
         assertThat(entry, is(fromEntry));
         assertThat(entry.equals(fromEntry), is(true));

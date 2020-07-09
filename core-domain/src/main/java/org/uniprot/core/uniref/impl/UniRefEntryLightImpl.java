@@ -33,6 +33,8 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
     private int memberCount;
     private final Set<String> organisms;
     private final Set<UniRefMemberIdType> memberIdTypes;
+    private String representativeId;
+    private String representativeProteinName;
 
     // no arg constructor for JSON deserialization
     UniRefEntryLightImpl() {
@@ -49,6 +51,8 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
             UniRefType entryType,
             long commonTaxonId,
             String commonTaxon,
+            String representativeId,
+            String representativeProteinName,
             String representativeSequence,
             List<String> members,
             Set<Long> organismIds,
@@ -61,6 +65,8 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
         this.entryType = entryType;
         this.commonTaxonId = commonTaxonId;
         this.commonTaxon = commonTaxon;
+        this.representativeId = representativeId;
+        this.representativeProteinName = representativeProteinName;
         this.representativeSequence = representativeSequence;
         this.members = Utils.unmodifiableList(members);
         this.organismIds = Utils.unmodifiableSet(organismIds);
@@ -129,6 +135,16 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
     }
 
     @Override
+    public String getRepresentativeId() {
+        return representativeId;
+    }
+
+    @Override
+    public String getRepresentativeProteinName() {
+        return representativeProteinName;
+    }
+
+    @Override
     public Set<UniRefMemberIdType> getMemberIdTypes() {
         return memberIdTypes;
     }
@@ -149,12 +165,14 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
                 Objects.equals(members, that.members) &&
                 Objects.equals(organismIds, that.organismIds) &&
                 Objects.equals(organisms, that.organisms) &&
-                Objects.equals(memberIdTypes, that.memberIdTypes);
+                Objects.equals(memberIdTypes, that.memberIdTypes) &&
+                Objects.equals(representativeId, that.representativeId) &&
+                Objects.equals(representativeProteinName, that.representativeProteinName);
     }
 
     @Override
     public int hashCode() {
         return Objects
-                .hash(id, name, updated, entryType, commonTaxonId, commonTaxon, representativeSequence, members, organismIds, memberCount, organisms, memberIdTypes);
+                .hash(id, name, updated, entryType, commonTaxonId, commonTaxon, representativeSequence, members, organismIds, memberCount, organisms, memberIdTypes, representativeId, representativeProteinName);
     }
 }
