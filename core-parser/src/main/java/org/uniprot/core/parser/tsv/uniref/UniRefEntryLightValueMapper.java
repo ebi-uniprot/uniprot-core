@@ -40,8 +40,8 @@ public class UniRefEntryLightValueMapper extends AbstractUniRefEntryMapper<UniRe
         map.put(UNIREF_FIELDS.get(3), Long.toString(entry.getCommonTaxonId()));
         map.put(UNIREF_FIELDS.get(4), Integer.toString(entry.getMemberCount()));
         map.put(UNIREF_FIELDS.get(5), entry.getUpdated().toString());
-        map.put(UNIREF_FIELDS.get(6), Integer.toString(entry.getRepresentativeSequence().length()));
-        map.put(UNIREF_FIELDS.get(7), entry.getRepresentativeSequence());
+        map.put(UNIREF_FIELDS.get(6), Integer.toString(entry.getSequenceLength()));
+        map.put(UNIREF_FIELDS.get(7), entry.getSequence());
         map.put(UNIREF_FIELDS.get(8), entry.getEntryType().getIdentity());
         map.put(UNIREF_FIELDS.get(9), getTypes(entry.getMemberIdTypes()));
         return map;

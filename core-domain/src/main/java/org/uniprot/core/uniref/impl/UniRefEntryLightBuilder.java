@@ -17,13 +17,13 @@ import java.util.*;
  */
 public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
     private UniRefEntryId id;
+    private String name;
     private LocalDate updated;
     private UniRefType entryType;
     private long commonTaxonId;
     private String commonTaxon;
     private String representativeId;
-    private String representativeProteinName;
-    private String representativeSequence;
+    private String sequence;
     private List<String> members = new ArrayList<>();
     private Set<Long> organismIds = new LinkedHashSet<>();
     private Set<String> organisms = new LinkedHashSet<>();
@@ -34,13 +34,13 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
     public @Nonnull UniRefEntryLight build() {
         return new UniRefEntryLightImpl(
                 id,
+                name,
                 updated,
                 entryType,
                 commonTaxonId,
                 commonTaxon,
                 representativeId,
-                representativeProteinName,
-                representativeSequence,
+                sequence,
                 members,
                 organismIds,
                 organisms,
@@ -51,13 +51,13 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
     public static @Nonnull UniRefEntryLightBuilder from(@Nonnull UniRefEntryLight instance) {
         return new UniRefEntryLightBuilder()
                 .id(instance.getId())
+                .name(instance.getName())
                 .updated(instance.getUpdated())
                 .entryType(instance.getEntryType())
                 .commonTaxonId(instance.getCommonTaxonId())
                 .commonTaxon(instance.getCommonTaxon())
                 .representativeId(instance.getRepresentativeId())
-                .representativeProteinName(instance.getRepresentativeProteinName())
-                .representativeSequence(instance.getRepresentativeSequence())
+                .sequence(instance.getSequence())
                 .membersSet(instance.getMembers())
                 .organismIdsSet(instance.getOrganismIds())
                 .organismsSet(instance.getOrganisms())
@@ -72,6 +72,11 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
 
     public @Nonnull UniRefEntryLightBuilder id(String id) {
         this.id = new UniRefEntryIdBuilder(id).build();
+        return this;
+    }
+
+    public @Nonnull UniRefEntryLightBuilder name(String name) {
+        this.name = name;
         return this;
     }
 
@@ -100,13 +105,8 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
         return this;
     }
 
-    public @Nonnull UniRefEntryLightBuilder representativeProteinName(String representativeProteinName) {
-        this.representativeProteinName = representativeProteinName;
-        return this;
-    }
-
-    public @Nonnull UniRefEntryLightBuilder representativeSequence(String representativeSequence) {
-        this.representativeSequence = representativeSequence;
+    public @Nonnull UniRefEntryLightBuilder sequence(String sequence) {
+        this.sequence = sequence;
         return this;
     }
 

@@ -1,6 +1,5 @@
 package org.uniprot.core.uniref.impl;
 
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniref.UniRefEntryLight;
 import org.uniprot.core.uniref.UniRefMemberIdType;
@@ -67,27 +66,19 @@ class UniRefEntryLightBuilderTest {
     }
 
     @Test
-    void canSetRepresentativeProteinName() {
-        String value = "name";
-        UniRefEntryLight entryLight =
-                new UniRefEntryLightBuilder().representativeProteinName(value).build();
-        assertThat(entryLight.getRepresentativeProteinName(), is(value));
+    void settingNameSetsNameAndProteinName() {
+        String value = NAME_PREFIX + "name";
+        UniRefEntryLight entryLight = new UniRefEntryLightBuilder().name(value).build();
+        assertThat(entryLight.getName(), is(value));
+        assertThat(entryLight.getRepresentativeProteinName(), is(value.substring(NAME_PREFIX.length())));
     }
 
     @Test
-    void canSetRepresentativeSequence() {
+    void settingSequenceSetsSequenceAndSequenceLength() {
         String value = "AAAA";
-        UniRefEntryLight entryLight =
-                new UniRefEntryLightBuilder().representativeSequence(value).build();
-        assertThat(entryLight.getRepresentativeSequence(), is(value));
-    }
-
-    @Test
-    void nameIsDerivedFromProteinName() {
-        String proteinName = "value";
-        UniRefEntryLight entryLight =
-                new UniRefEntryLightBuilder().representativeProteinName(proteinName).build();
-        assertThat(entryLight.getName(), Matchers.is(NAME_PREFIX + proteinName));
+        UniRefEntryLight entryLight = new UniRefEntryLightBuilder().sequence(value).build();
+        assertThat(entryLight.getSequence(), is(value));
+        assertThat(entryLight.getSequenceLength(), is(value.length()));
     }
 
     @Test
@@ -208,7 +199,7 @@ class UniRefEntryLightBuilderTest {
                         .organismsAdd("Human")
                         .organismIdsAdd(9606L)
                         .memberIdTypesAdd(UniRefMemberIdType.UNIPARC)
-                        .representativeSequence("AAAAA")
+                        .sequence("AAAAA")
                         .updated(LocalDate.now())
                         .commonTaxon("Rat")
                         .commonTaxonId(10116L)

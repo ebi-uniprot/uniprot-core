@@ -12,7 +12,7 @@ public class UniRefFastaParser {
         StringBuilder sb = new StringBuilder();
         sb.append(getHeader(entry)).append("\n");
         int columnCounter = 0;
-        String sequence = entry.getRepresentativeSequence();
+        String sequence = entry.getSequence();
         for (char c : sequence.toCharArray()) {
             if (columnCounter % 60 == 0 && columnCounter > 0) {
                 sb.append("\n");

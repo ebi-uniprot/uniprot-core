@@ -28,19 +28,18 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
     public static final String PROPERTY_SOURCE_ORGANISM = "source organism";
     public static final String PROPERTY_ORGANISM_ID = "NCBI taxonomy";
     private static final String PROPERTY_UNIPROT_ACCESSION = "UniProtKB accession";
-    private static final String NAME_PREFIX = "Cluster: ";
 
     @Override
     public UniRefEntryLight fromXml(Entry xmlObj) {
         UniRefEntryLightBuilder builder = new UniRefEntryLightBuilder();
         builder.id(xmlObj.getId())
                 .entryType(getTypeFromId(xmlObj.getId()))
+                .name(xmlObj.getName())
                 .updated(XmlConverterHelper.dateFromXml(xmlObj.getUpdated()))
-                .representativeSequence(xmlObj.getRepresentativeMember().getSequence().getValue());
+                .sequence(xmlObj.getRepresentativeMember().getSequence().getValue());
 
         updateMemberValuesFromXml(
                 builder, Collections.singletonList(xmlObj.getRepresentativeMember()));
-        updateProteinName(builder, xmlObj);
         updateCommonPropertiesFromXml(builder, xmlObj);
         updateMemberValuesFromXml(builder, xmlObj.getMember());
         return builder.build();
@@ -64,10 +63,6 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
         }
         String val = id.substring(0, id.indexOf('_'));
         return UniRefType.valueOf(val);
-    }
-
-    private void updateProteinName(UniRefEntryLightBuilder builder, Entry jaxbEntry) {
-        builder.representativeProteinName(jaxbEntry.getName().substring(NAME_PREFIX.length()));
     }
 
     private void updateCommonPropertiesFromXml(UniRefEntryLightBuilder builder, Entry jaxbEntry) {
