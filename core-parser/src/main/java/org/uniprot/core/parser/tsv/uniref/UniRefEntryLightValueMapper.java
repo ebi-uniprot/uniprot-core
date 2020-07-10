@@ -3,7 +3,10 @@ package org.uniprot.core.parser.tsv.uniref;
 import org.uniprot.core.uniref.UniRefEntryLight;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -12,25 +15,6 @@ import java.util.stream.Collectors;
  * @author Edd
  */
 public class UniRefEntryLightValueMapper extends AbstractUniRefEntryMapper<UniRefEntryLight> {
-    @Override
-    public Map<String, String> mapEntity(UniRefEntryLight entry, List<String> fields) {
-        Map<String, String> map = new HashMap<>();
-        if (contains(fields)) {
-            map.putAll(getSimpleAttributeValues(entry));
-        }
-        if (fields.contains(ORGANISM)) {
-            map.put(ORGANISM, getOrganisms(entry));
-        }
-        if (fields.contains(ORGANISM_ID)) {
-            map.put(ORGANISM_ID, getOrganismTaxId(entry));
-        }
-        if (fields.contains(MEMBER)) {
-            map.put(MEMBER, getMembers(entry));
-        }
-
-        return map;
-    }
-
     @Override
     Map<String, String> getSimpleAttributeValues(UniRefEntryLight entry) {
         Map<String, String> map = new HashMap<>();

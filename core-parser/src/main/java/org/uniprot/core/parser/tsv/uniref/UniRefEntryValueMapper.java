@@ -14,25 +14,6 @@ import java.util.stream.Collectors;
  */
 public class UniRefEntryValueMapper extends AbstractUniRefEntryMapper<UniRefEntry> {
     @Override
-    public Map<String, String> mapEntity(UniRefEntry entry, List<String> fields) {
-        Map<String, String> map = new HashMap<>();
-        if (contains(fields)) {
-            map.putAll(getSimpleAttributeValues(entry));
-        }
-        if (fields.contains(ORGANISM)) {
-            map.put(ORGANISM, getOrganisms(entry));
-        }
-        if (fields.contains(ORGANISM_ID)) {
-            map.put(ORGANISM_ID, getOrganismTaxId(entry));
-        }
-        if (fields.contains(MEMBER)) {
-            map.put(MEMBER, getMembers(entry));
-        }
-
-        return map;
-    }
-
-    @Override
     Map<String, String> getSimpleAttributeValues(UniRefEntry entry) {
         Map<String, String> map = new HashMap<>();
         map.put(UNIREF_FIELDS.get(0), entry.getId().getValue());
