@@ -1,12 +1,13 @@
 package org.uniprot.core.uniref.impl;
 
+import java.time.LocalDate;
+import java.util.*;
+
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniref.*;
 import org.uniprot.core.util.Utils;
-
-import javax.annotation.Nonnull;
-import java.time.LocalDate;
-import java.util.*;
 
 /**
  * Builder for {@link UniRefEntryLight} objects.

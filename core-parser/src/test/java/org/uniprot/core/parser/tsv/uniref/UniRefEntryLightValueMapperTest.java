@@ -1,13 +1,11 @@
 package org.uniprot.core.parser.tsv.uniref;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniref.UniRefEntryId;
-import org.uniprot.core.uniref.UniRefEntryLight;
-import org.uniprot.core.uniref.UniRefMemberIdType;
-import org.uniprot.core.uniref.UniRefType;
-import org.uniprot.core.uniref.impl.UniRefEntryIdBuilder;
-import org.uniprot.core.uniref.impl.UniRefEntryLightBuilder;
+import static java.util.Arrays.asList;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.uniprot.core.parser.tsv.uniref.AbstractUniRefEntryMapper.DELIMITER;
+import static org.uniprot.core.uniref.UniRefMemberIdType.*;
 
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -16,12 +14,14 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.util.Arrays.asList;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.uniprot.core.parser.tsv.uniref.AbstractUniRefEntryMapper.DELIMITER;
-import static org.uniprot.core.uniref.UniRefMemberIdType.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniref.UniRefEntryId;
+import org.uniprot.core.uniref.UniRefEntryLight;
+import org.uniprot.core.uniref.UniRefMemberIdType;
+import org.uniprot.core.uniref.UniRefType;
+import org.uniprot.core.uniref.impl.UniRefEntryIdBuilder;
+import org.uniprot.core.uniref.impl.UniRefEntryLightBuilder;
 
 /**
  * Created 07/07/2020
@@ -33,8 +33,7 @@ class UniRefEntryLightValueMapperTest {
     private UniRefEntryLightValueMapper mapper;
     private static final String SEQUENCE = "GGGGGGGGGGGGGGGG";
     private static final int MEMBER_COUNT = 5;
-    private static final UniRefEntryLight ENTRY = createEntry();
-    ;
+    private static final UniRefEntryLight ENTRY = createEntry();;
 
     @BeforeEach
     void setUp() {

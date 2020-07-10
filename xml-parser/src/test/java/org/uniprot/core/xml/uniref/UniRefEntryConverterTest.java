@@ -54,7 +54,6 @@ class UniRefEntryConverterTest {
         Entry xmlEntry = new Entry();
         xmlEntry.setId("INVALID");
         UniRefEntryConverter converter = new UniRefEntryConverter();
-        assertThrows(IllegalArgumentException.class, () ->converter.fromXml(xmlEntry));
+        assertThrows(IllegalArgumentException.class, () -> converter.fromXml(xmlEntry));
     }
-
 }

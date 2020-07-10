@@ -9,8 +9,7 @@ import java.util.Set;
  */
 public class UniRefUtils {
 
-    private UniRefUtils(){
-    }
+    private UniRefUtils() {}
 
     public static UniRefMemberIdType getUniProtKBIdType(String memberId, String accession) {
         UniRefMemberIdType type = UniRefMemberIdType.UNIPROTKB_SWISSPROT;
@@ -21,16 +20,17 @@ public class UniRefUtils {
         return type;
     }
 
-    public static void addOrganism(String organismValue, Set<String> organismTarget){
-        //Add this logic do avoid duplicated organism names because
-        //UniParc organisms do not contains common name in brackets.
-        Optional<String> found = organismTarget.stream()
-                .map(UniRefUtils::cleanOrganism)
-                .filter(value -> value.equalsIgnoreCase(cleanOrganism(organismValue)))
-                .findFirst();
-        if(found.isPresent()){
+    public static void addOrganism(String organismValue, Set<String> organismTarget) {
+        // Add this logic do avoid duplicated organism names because
+        // UniParc organisms do not contains common name in brackets.
+        Optional<String> found =
+                organismTarget.stream()
+                        .map(UniRefUtils::cleanOrganism)
+                        .filter(value -> value.equalsIgnoreCase(cleanOrganism(organismValue)))
+                        .findFirst();
+        if (found.isPresent()) {
             String foundOrganism = found.get();
-            if(foundOrganism.length() < organismValue.length()){
+            if (foundOrganism.length() < organismValue.length()) {
                 organismTarget.remove(foundOrganism);
                 organismTarget.add(organismValue);
             }
@@ -41,12 +41,10 @@ public class UniRefUtils {
 
     public static String cleanOrganism(String value) {
         int bracketIndex = value.indexOf('(');
-        if(bracketIndex >= 0){
+        if (bracketIndex >= 0) {
             return value.substring(0, bracketIndex).trim();
         } else {
             return value;
         }
     }
-
-
 }

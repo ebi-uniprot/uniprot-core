@@ -36,7 +36,7 @@ public interface UniRefEntryLight extends Serializable {
     Set<Long> getOrganismIds();
 
     String getSequence();
-    
+
     int getSequenceLength();
 
     String getRepresentativeId();

@@ -18,7 +18,7 @@ class UniRefTypeTest {
     }
 
     @Test
-    void testGetName(){
+    void testGetName() {
         assertEquals("1.0", UniRefType.UniRef100.getName());
     }
 

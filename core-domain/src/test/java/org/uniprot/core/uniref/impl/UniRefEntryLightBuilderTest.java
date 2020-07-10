@@ -1,21 +1,21 @@
 package org.uniprot.core.uniref.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniref.UniRefEntryLight;
-import org.uniprot.core.uniref.UniRefMemberIdType;
-import org.uniprot.core.uniref.UniRefType;
-
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.uniprot.core.uniref.impl.UniRefEntryLightImpl.NAME_PREFIX;
+
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniref.UniRefEntryLight;
+import org.uniprot.core.uniref.UniRefMemberIdType;
+import org.uniprot.core.uniref.UniRefType;
 
 /**
  * Created 29/06/2020
@@ -70,7 +70,9 @@ class UniRefEntryLightBuilderTest {
         String value = NAME_PREFIX + "name";
         UniRefEntryLight entryLight = new UniRefEntryLightBuilder().name(value).build();
         assertThat(entryLight.getName(), is(value));
-        assertThat(entryLight.getRepresentativeProteinName(), is(value.substring(NAME_PREFIX.length())));
+        assertThat(
+                entryLight.getRepresentativeProteinName(),
+                is(value.substring(NAME_PREFIX.length())));
     }
 
     @Test

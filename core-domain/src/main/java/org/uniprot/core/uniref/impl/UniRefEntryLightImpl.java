@@ -1,16 +1,16 @@
 package org.uniprot.core.uniref.impl;
 
-import org.uniprot.core.uniref.UniRefEntryId;
-import org.uniprot.core.uniref.UniRefEntryLight;
-import org.uniprot.core.uniref.UniRefMemberIdType;
-import org.uniprot.core.uniref.UniRefType;
-import org.uniprot.core.util.Utils;
-
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+
+import org.uniprot.core.uniref.UniRefEntryId;
+import org.uniprot.core.uniref.UniRefEntryLight;
+import org.uniprot.core.uniref.UniRefMemberIdType;
+import org.uniprot.core.uniref.UniRefType;
+import org.uniprot.core.util.Utils;
 
 /**
  * Implementation of {@link UniRefEntryLight} objects.

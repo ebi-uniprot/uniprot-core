@@ -1,18 +1,18 @@
 package org.uniprot.core.xml.uniref;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniref.UniRefEntryLight;
-import org.uniprot.core.uniref.UniRefType;
-import org.uniprot.core.xml.XmlChainIterator;
-import org.uniprot.core.xml.jaxb.uniref.Entry;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.xml.uniref.UniRefEntryConverterTest.*;
 
 import java.io.InputStream;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.xml.uniref.UniRefEntryConverterTest.*;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniref.UniRefEntryLight;
+import org.uniprot.core.uniref.UniRefType;
+import org.uniprot.core.xml.XmlChainIterator;
+import org.uniprot.core.xml.jaxb.uniref.Entry;
 
 /**
  * @author lgonzales
@@ -46,7 +46,7 @@ class UniRefEntryLightConverterTest {
         assertEquals(UniRefType.UniRef50, entry.getEntryType());
         assertEquals("Muroidea", entry.getCommonTaxon());
         assertEquals(337687, entry.getCommonTaxonId());
-        //assertTrue(entry.hasMemberUniParcIDs());
+        // assertTrue(entry.hasMemberUniParcIDs());
         assertTrue(entry.getMembers().contains("Q8R2B4"));
         assertTrue(entry.getMembers().contains("UPI0000DBE4A9"));
 
@@ -67,12 +67,12 @@ class UniRefEntryLightConverterTest {
         Entry xmlEntry = new Entry();
         xmlEntry.setId("INVALID");
         UniRefEntryLightConverter converter = new UniRefEntryLightConverter();
-        assertThrows(IllegalArgumentException.class, () ->converter.fromXml(xmlEntry));
+        assertThrows(IllegalArgumentException.class, () -> converter.fromXml(xmlEntry));
     }
 
     @Test
     void testToXml() {
         UniRefEntryLightConverter converter = new UniRefEntryLightConverter();
-        assertThrows(UnsupportedOperationException.class, () ->converter.toXml(null));
+        assertThrows(UnsupportedOperationException.class, () -> converter.toXml(null));
     }
 }

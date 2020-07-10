@@ -1,11 +1,12 @@
 package org.uniprot.core.uniref;
 
-import org.uniprot.core.util.EnumDisplay;
-import org.uniprot.core.util.Utils;
-
-import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.HashMap;
+
+import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
+import org.uniprot.core.util.Utils;
 
 public enum UniRefMemberIdType implements EnumDisplay {
     UNIPROTKB_SWISSPROT("Reviewed (Swiss-Prot)", null, 0),

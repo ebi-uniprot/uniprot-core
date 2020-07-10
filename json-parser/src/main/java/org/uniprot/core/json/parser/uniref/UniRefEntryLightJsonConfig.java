@@ -1,7 +1,7 @@
 package org.uniprot.core.json.parser.uniref;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
+import java.time.LocalDate;
+
 import org.uniprot.core.Value;
 import org.uniprot.core.impl.ValueImpl;
 import org.uniprot.core.json.parser.JsonConfig;
@@ -10,13 +10,14 @@ import org.uniprot.core.json.parser.serializer.LocalDateSerializer;
 import org.uniprot.core.uniref.*;
 import org.uniprot.core.uniref.impl.*;
 
-import java.time.LocalDate;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 /**
  * @author lgonzales
  * @since 07/07/2020
  */
-public class UniRefEntryLightJsonConfig  extends JsonConfig {
+public class UniRefEntryLightJsonConfig extends JsonConfig {
 
     private static UniRefEntryLightJsonConfig instance;
 

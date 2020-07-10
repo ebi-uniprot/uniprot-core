@@ -1,8 +1,8 @@
 package org.uniprot.core.parser.tsv.uniref;
 
-import org.uniprot.core.parser.tsv.EntityValueMapper;
-
 import java.util.*;
+
+import org.uniprot.core.parser.tsv.EntityValueMapper;
 
 /**
  * Created 07/07/2020
