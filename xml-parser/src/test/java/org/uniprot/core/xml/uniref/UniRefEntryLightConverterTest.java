@@ -1,18 +1,18 @@
 package org.uniprot.core.xml.uniref;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniref.UniRefEntryLight;
-import org.uniprot.core.uniref.UniRefType;
-import org.uniprot.core.xml.XmlChainIterator;
-import org.uniprot.core.xml.jaxb.uniref.Entry;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.xml.uniref.UniRefEntryConverterTest.UNIREF_ROOT_ELEMENT;
 
 import java.io.InputStream;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.xml.uniref.UniRefEntryConverterTest.UNIREF_ROOT_ELEMENT;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniref.UniRefEntryLight;
+import org.uniprot.core.uniref.UniRefType;
+import org.uniprot.core.xml.XmlChainIterator;
+import org.uniprot.core.xml.jaxb.uniref.Entry;
 
 /**
  * @author lgonzales

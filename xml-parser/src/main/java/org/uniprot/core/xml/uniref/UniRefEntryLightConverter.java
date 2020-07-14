@@ -1,5 +1,10 @@
 package org.uniprot.core.xml.uniref;
 
+import static org.uniprot.core.uniref.UniRefUtils.getUniProtKBIdType;
+
+import java.util.Collections;
+import java.util.List;
+
 import org.uniprot.core.uniref.UniRefEntryLight;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
@@ -10,11 +15,6 @@ import org.uniprot.core.xml.jaxb.uniref.Entry;
 import org.uniprot.core.xml.jaxb.uniref.MemberType;
 import org.uniprot.core.xml.jaxb.uniref.PropertyType;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
-
-import java.util.Collections;
-import java.util.List;
-
-import static org.uniprot.core.uniref.UniRefUtils.getUniProtKBIdType;
 
 /**
  * @author lgonzales
