@@ -1,7 +1,7 @@
 package org.uniprot.core.xml.uniref;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.xml.uniref.UniRefEntryConverterTest.*;
+import static org.uniprot.core.xml.uniref.UniRefEntryConverterTest.UNIREF_ROOT_ELEMENT;
 
 import java.io.InputStream;
 import java.util.Collections;
@@ -40,8 +40,10 @@ class UniRefEntryLightConverterTest {
         UniRefEntryLight entry = converter.fromXml(xmlEntry);
         assertNotNull(entry);
         assertNotNull(entry.getId());
+        assertEquals("Q9EPS7_MOUSE", entry.getRepresentativeId());
         assertEquals("UniRef50_Q9EPS7", entry.getId().getValue());
         assertEquals("Cluster: Pheromone receptor V3R6", entry.getName());
+        assertEquals("Pheromone receptor V3R6", entry.getRepresentativeProteinName());
         assertEquals("2014-11-26", entry.getUpdated().toString());
         assertEquals(UniRefType.UniRef50, entry.getEntryType());
         assertEquals("Muroidea", entry.getCommonTaxon());

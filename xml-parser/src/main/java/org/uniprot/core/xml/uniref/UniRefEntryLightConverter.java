@@ -36,7 +36,8 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
                 .entryType(getTypeFromId(xmlObj.getId()))
                 .name(xmlObj.getName())
                 .updated(XmlConverterHelper.dateFromXml(xmlObj.getUpdated()))
-                .sequence(xmlObj.getRepresentativeMember().getSequence().getValue());
+                .sequence(xmlObj.getRepresentativeMember().getSequence().getValue())
+                .representativeId(xmlObj.getRepresentativeMember().getDbReference().getId());
 
         updateMemberValuesFromXml(
                 builder, Collections.singletonList(xmlObj.getRepresentativeMember()));
