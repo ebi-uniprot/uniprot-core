@@ -32,6 +32,7 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
     private String sequence;
     private int sequenceLength;
     private int memberCount;
+    private int organismCount;
     private String representativeId;
 
     // no arg constructor for JSON deserialization
@@ -55,6 +56,7 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
             LinkedHashSet<Long> organismIds,
             LinkedHashSet<String> organisms,
             int memberCount,
+            int organismCount,
             Set<UniRefMemberIdType> memberIdTypes) {
         this.id = id;
         this.name = name;
@@ -75,6 +77,11 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
             this.memberCount = this.members.size() + 1;
         } else {
             this.memberCount = memberCount;
+        }
+        if (organismCount == 0) {
+            this.organismCount = organismIds.size();
+        } else {
+            this.organismCount = organismCount;
         }
     }
 
@@ -126,6 +133,11 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
     @Override
     public LinkedHashSet<Long> getOrganismIds() {
         return organismIds;
+    }
+
+    @Override
+    public int getOrganismCount() {
+        return organismCount;
     }
 
     @Override

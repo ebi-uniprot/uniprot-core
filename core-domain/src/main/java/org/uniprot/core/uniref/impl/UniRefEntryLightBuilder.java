@@ -30,6 +30,7 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
     private LinkedHashSet<String> organisms = new LinkedHashSet<>();
     private Set<UniRefMemberIdType> memberIdTypes = new HashSet<>();
     private int memberCount;
+    private int organismCount;
 
     @Override
     public @Nonnull UniRefEntryLight build() {
@@ -46,6 +47,7 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
                 organismIds,
                 organisms,
                 memberCount,
+                organismCount,
                 memberIdTypes);
     }
 
@@ -63,6 +65,7 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
                 .organismIdsSet(instance.getOrganismIds())
                 .organismsSet(instance.getOrganisms())
                 .memberCount(instance.getMemberCount())
+                .organismCount(instance.getOrganismCount())
                 .memberIdTypesSet(instance.getMemberIdTypes());
     }
 
@@ -155,6 +158,11 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
 
     public @Nonnull UniRefEntryLightBuilder memberCount(int memberCount) {
         this.memberCount = memberCount;
+        return this;
+    }
+
+    public @Nonnull UniRefEntryLightBuilder organismCount(int organismCount) {
+        this.organismCount = organismCount;
         return this;
     }
 }

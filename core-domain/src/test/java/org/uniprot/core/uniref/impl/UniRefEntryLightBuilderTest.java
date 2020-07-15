@@ -162,6 +162,13 @@ class UniRefEntryLightBuilderTest {
     }
 
     @Test
+    void canSetOrganismCount() {
+        int value = 100000;
+        UniRefEntryLight entryLight = new UniRefEntryLightBuilder().organismCount(value).build();
+        assertThat(entryLight.getOrganismCount(), is(value));
+    }
+
+    @Test
     void canSetMemberIdTypes() {
         Set<UniRefMemberIdType> value =
                 new HashSet<>(
