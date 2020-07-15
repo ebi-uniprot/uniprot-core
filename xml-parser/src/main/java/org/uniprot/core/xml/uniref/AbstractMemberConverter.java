@@ -26,7 +26,7 @@ import com.google.common.base.Strings;
  */
 public abstract class AbstractMemberConverter<T extends UniRefMember>
         implements Converter<MemberType, T> {
-    private static Logger logger = LoggerFactory.getLogger(AbstractMemberConverter.class);
+    private static final Logger logger = LoggerFactory.getLogger(AbstractMemberConverter.class);
     public static final String PROPERTY_PROTEIN_NAME = "protein name";
     public static final String PROPERTY_NCBI_TAXONOMY = "NCBI taxonomy";
     public static final String PROPERTY_SOURCE_ORGANISM = "source organism";
@@ -125,38 +125,51 @@ public abstract class AbstractMemberConverter<T extends UniRefMember>
 
         List<PropertyType> properties = xmlObj.getDbReference().getProperty();
         for (PropertyType property : properties) {
-            if (property.getType().equals(PROPERTY_NCBI_TAXONOMY)) {
-                builder.organismTaxId(Long.parseLong(property.getValue()));
-            } else if (property.getType().equals(PROPERTY_PROTEIN_NAME)) {
-                builder.proteinName(property.getValue());
-            } else if (property.getType().equals(PROPERTY_SOURCE_ORGANISM)) {
-                builder.organismName(property.getValue());
-            } else if (property.getType().equals(PROPERTY_SOURCE_UNIPARC)) {
-                builder.uniparcId(new UniParcIdBuilder(property.getValue()).build());
-            } else if (property.getType().equals(PROPERTY_SOURCE_LENGTH)) {
-                builder.sequenceLength(Integer.parseInt(property.getValue()));
-            } else if (property.getType().equals(PROPERTY_SOURCE_OVERLAP)) {
-                String strOverlap = property.getValue();
-                String strStart = strOverlap.substring(0, strOverlap.indexOf('-'));
-                String strEnd =
-                        strOverlap.substring(strOverlap.indexOf('-') + 1, strOverlap.length());
-                builder.overlapRegion(
-                        new OverlapRegionBuilder()
-                                .start(Integer.parseInt(strStart))
-                                .end(Integer.parseInt(strEnd))
-                                .build());
-            } else if (property.getType().equals(PROPERTY_SOURCE_UNIREF100)) {
-                builder.uniref100Id(new UniRefEntryIdBuilder(property.getValue()).build());
-            } else if (property.getType().equals(PROPERTY_SOURCE_UNIREF90)) {
-                builder.uniref90Id(new UniRefEntryIdBuilder(property.getValue()).build());
-            } else if (property.getType().equals(PROPERTY_SOURCE_UNIREF50)) {
-                builder.uniref50Id(new UniRefEntryIdBuilder(property.getValue()).build());
-            } else if (property.getType().equals(PROPERTY_SOURCE_UNIPROT)) {
-                builder.accessionsAdd(new UniProtKBAccessionBuilder(property.getValue()).build());
-            } else if (property.getType().equals(PROPERTY_IS_SEED)) {
-                builder.isSeed(Boolean.parseBoolean(property.getValue()));
-            } else {
-                logger.error("XML member property: " + property.getType() + " is not supported");
+            switch (property.getType()) {
+                case PROPERTY_NCBI_TAXONOMY:
+                    builder.organismTaxId(Long.parseLong(property.getValue()));
+                    break;
+                case PROPERTY_PROTEIN_NAME:
+                    builder.proteinName(property.getValue());
+                    break;
+                case PROPERTY_SOURCE_ORGANISM:
+                    builder.organismName(property.getValue());
+                    break;
+                case PROPERTY_SOURCE_UNIPARC:
+                    builder.uniparcId(new UniParcIdBuilder(property.getValue()).build());
+                    break;
+                case PROPERTY_SOURCE_LENGTH:
+                    builder.sequenceLength(Integer.parseInt(property.getValue()));
+                    break;
+                case PROPERTY_SOURCE_OVERLAP:
+                    String strOverlap = property.getValue();
+                    String strStart = strOverlap.substring(0, strOverlap.indexOf('-'));
+                    String strEnd =
+                            strOverlap.substring(strOverlap.indexOf('-') + 1, strOverlap.length());
+                    builder.overlapRegion(
+                            new OverlapRegionBuilder()
+                                    .start(Integer.parseInt(strStart))
+                                    .end(Integer.parseInt(strEnd))
+                                    .build());
+                    break;
+                case PROPERTY_SOURCE_UNIREF100:
+                    builder.uniref100Id(new UniRefEntryIdBuilder(property.getValue()).build());
+                    break;
+                case PROPERTY_SOURCE_UNIREF90:
+                    builder.uniref90Id(new UniRefEntryIdBuilder(property.getValue()).build());
+                    break;
+                case PROPERTY_SOURCE_UNIREF50:
+                    builder.uniref50Id(new UniRefEntryIdBuilder(property.getValue()).build());
+                    break;
+                case PROPERTY_SOURCE_UNIPROT:
+                    builder.accessionsAdd(new UniProtKBAccessionBuilder(property.getValue()).build());
+                    break;
+                case PROPERTY_IS_SEED:
+                    builder.isSeed(Boolean.parseBoolean(property.getValue()));
+                    break;
+                default:
+                    logger.error("XML member property: " + property.getType() + " is not supported");
+                    break;
             }
         }
     }
