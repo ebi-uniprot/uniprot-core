@@ -25,21 +25,18 @@ public class UniRefUtils {
         // UniParc organisms do not contains common name in brackets.
         Optional<String> found =
                 organismTarget.stream()
-                        .map(UniRefUtils::cleanOrganism)
-                        .filter(value -> value.equalsIgnoreCase(cleanOrganism(organismValue)))
+                        .map(UniRefUtils::getOrganismWithoutCommonName)
+                        .filter(
+                                value ->
+                                        value.equalsIgnoreCase(
+                                                getOrganismWithoutCommonName(organismValue)))
                         .findFirst();
-        if (found.isPresent()) {
-            String foundOrganism = found.get();
-            if (foundOrganism.length() < organismValue.length()) {
-                organismTarget.remove(foundOrganism);
-                organismTarget.add(organismValue);
-            }
-        } else {
+        if (!found.isPresent()) {
             organismTarget.add(organismValue);
         }
     }
 
-    public static String cleanOrganism(String value) {
+    public static String getOrganismWithoutCommonName(String value) {
         int bracketIndex = value.indexOf('(');
         if (bracketIndex >= 0) {
             return value.substring(0, bracketIndex).trim();

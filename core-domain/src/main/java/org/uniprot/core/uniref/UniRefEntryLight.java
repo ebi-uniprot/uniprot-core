@@ -2,6 +2,7 @@ package org.uniprot.core.uniref;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -31,9 +32,9 @@ public interface UniRefEntryLight extends Serializable {
 
     int getMemberCount();
 
-    Set<String> getOrganisms();
+    LinkedHashSet<String> getOrganisms();
 
-    Set<Long> getOrganismIds();
+    LinkedHashSet<Long> getOrganismIds();
 
     String getSequence();
 

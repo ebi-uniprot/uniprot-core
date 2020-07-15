@@ -8,7 +8,7 @@ import static org.uniprot.core.parser.tsv.uniref.AbstractUniRefEntryMapper.DELIM
 import static org.uniprot.core.uniref.UniRefMemberIdType.*;
 
 import java.time.LocalDate;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -156,8 +156,8 @@ class UniRefEntryLightValueMapperTest {
                 .commonTaxonId(9605L)
                 .commonTaxon("Homo")
                 .name(name)
-                .organismsSet(new HashSet<>(asList("organism 1", "organism 2")))
-                .organismIdsSet(new HashSet<>(asList(1L, 2L)))
+                .organismsSet(new LinkedHashSet<>(asList("organism 1", "organism 2")))
+                .organismIdsSet(new LinkedHashSet<>(asList(1L, 2L)))
                 .sequence(SEQUENCE)
                 .memberCount(MEMBER_COUNT)
                 .membersSet(asList("P1", "P2", "P3", "P4", "P5"))

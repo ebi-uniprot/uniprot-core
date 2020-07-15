@@ -27,6 +27,29 @@ class UniRefEntryLightJsonConfigTest {
                 UniRefEntryLightJsonConfig.getInstance().getFullObjectMapper(), entry);
     }
 
+    /* We need to keep the insert order and not duplicated values for organismId and organismName
+       This is why we need to use LinkedHashSet in the UniRefEntryLight interface...
+       When we use Set in the interface, Jackson will assume that it can be a HashSet
+       during deserialization and we will loose the order
+    */
+    @Test
+    void testFullUniRuleEntryJsonRoundTripOrganismOrder() {
+        UniRefEntryLight entry =
+                new UniRefEntryLightBuilder()
+                        .organismIdsAdd(10L)
+                        .organismIdsAdd(30L)
+                        .organismIdsAdd(12L)
+                        .organismIdsAdd(11L)
+                        .organismsAdd("First organism")
+                        .organismsAdd("Second organism")
+                        .organismsAdd("Third organism")
+                        .organismsAdd("Other organism")
+                        .organismsAdd("Last organism")
+                        .build();
+        ValidateJson.verifyJsonRoundTripParser(
+                UniRefEntryLightJsonConfig.getInstance().getFullObjectMapper(), entry);
+    }
+
     @Test
     void testNoUnsetField() {
         UniRefEntryLight entry = getCompleteUniRefEntryLight();

@@ -9,6 +9,7 @@ import static org.uniprot.core.uniref.impl.UniRefEntryLightImpl.NAME_PREFIX;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -102,7 +103,7 @@ class UniRefEntryLightBuilderTest {
 
     @Test
     void canSetOrganismIds() {
-        Set<Long> value = new HashSet<>(asList(1L, 2L));
+        LinkedHashSet<Long> value = new LinkedHashSet<>(asList(1L, 2L));
         UniRefEntryLight entryLight = new UniRefEntryLightBuilder().organismIdsSet(value).build();
         assertThat(entryLight.getOrganismIds(), is(value));
     }
@@ -110,7 +111,7 @@ class UniRefEntryLightBuilderTest {
     @Test
     void canAddOrganismIds() {
         UniRefEntryLightBuilder entryLightBuilder =
-                new UniRefEntryLightBuilder().organismIdsSet(new HashSet<>(asList(1L, 2L)));
+                new UniRefEntryLightBuilder().organismIdsSet(new LinkedHashSet<>(asList(1L, 2L)));
 
         entryLightBuilder.organismIdsAdd(3L);
         entryLightBuilder.organismIdsAdd(4L);
@@ -121,7 +122,7 @@ class UniRefEntryLightBuilderTest {
 
     @Test
     void canSetOrganisms() {
-        Set<String> value = new HashSet<>(asList("1", "2"));
+        LinkedHashSet<String> value = new LinkedHashSet<>(asList("1", "2"));
         UniRefEntryLight entryLight = new UniRefEntryLightBuilder().organismsSet(value).build();
         assertThat(entryLight.getOrganisms(), is(value));
     }
@@ -129,7 +130,7 @@ class UniRefEntryLightBuilderTest {
     @Test
     void canAddOrganisms() {
         UniRefEntryLightBuilder entryLightBuilder =
-                new UniRefEntryLightBuilder().organismsSet(new HashSet<>(asList("1", "2")));
+                new UniRefEntryLightBuilder().organismsSet(new LinkedHashSet<>(asList("1", "2")));
 
         entryLightBuilder.organismsAdd("3");
         entryLightBuilder.organismsAdd("4");
@@ -142,7 +143,7 @@ class UniRefEntryLightBuilderTest {
     void doNotAddDuplicatedOrganisms() {
         UniRefEntryLightBuilder entryLightBuilder =
                 new UniRefEntryLightBuilder()
-                        .organismsSet(new HashSet<>(asList("1 (common)", "2")));
+                        .organismsSet(new LinkedHashSet<>(asList("1 (common)", "2")));
 
         entryLightBuilder.organismsAdd("1");
         entryLightBuilder.organismsAdd("2 (common)");

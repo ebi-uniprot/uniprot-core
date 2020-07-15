@@ -46,17 +46,19 @@ class UniRefUtilsTest {
     }
 
     @Test
-    void replaceOrganismWithMostDetailedOne() {
+    void ignoreOrganismWithCommonWhenAfter() {
         Set<String> target = new HashSet<>();
         target.add("scientific");
+        target.add("scientific other");
         UniRefUtils.addOrganism("scientific (common)", target);
-        assertEquals(1, target.size());
-        assertTrue(target.contains("scientific (common)"));
+        assertEquals(2, target.size());
+        assertTrue(target.contains("scientific"));
+        assertTrue(target.contains("scientific other"));
     }
 
     @Test
     void cleanOrganismWithBrackets() {
-        String cleanedOrganism = UniRefUtils.cleanOrganism("scientific (common)");
+        String cleanedOrganism = UniRefUtils.getOrganismWithoutCommonName("scientific (common)");
         assertNotNull(cleanedOrganism);
         assertEquals("scientific", cleanedOrganism);
     }
@@ -64,7 +66,7 @@ class UniRefUtilsTest {
     @Test
     void cleanOrganismWithoutBrackets() {
         String organism = "scientific only";
-        String cleanedOrganism = UniRefUtils.cleanOrganism(organism);
+        String cleanedOrganism = UniRefUtils.getOrganismWithoutCommonName(organism);
         assertNotNull(cleanedOrganism);
         assertEquals(organism, cleanedOrganism);
     }

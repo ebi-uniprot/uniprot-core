@@ -4,7 +4,7 @@ import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
@@ -82,8 +82,8 @@ class UniRefFastaParserTest {
                 .name("Cluster: protein")
                 .representativeId("representativeId")
                 .sequence(entry.getRepresentativeMember().getSequence().getValue())
-                .organismsSet(new HashSet<>(asList("organism1", "organism2")))
-                .organismIdsSet(new HashSet<>(asList(1L, 2L)))
+                .organismsSet(new LinkedHashSet<>(asList("organism1", "organism2")))
+                .organismIdsSet(new LinkedHashSet<>(asList(1L, 2L)))
                 .commonTaxonId(8L)
                 .commonTaxon("tax")
                 .memberCount(3)

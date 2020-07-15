@@ -26,8 +26,8 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
     private String representativeId;
     private String sequence;
     private List<String> members = new ArrayList<>();
-    private Set<Long> organismIds = new LinkedHashSet<>();
-    private Set<String> organisms = new LinkedHashSet<>();
+    private LinkedHashSet<Long> organismIds = new LinkedHashSet<>();
+    private LinkedHashSet<String> organisms = new LinkedHashSet<>();
     private Set<UniRefMemberIdType> memberIdTypes = new HashSet<>();
     private int memberCount;
 
@@ -121,8 +121,8 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
         return this;
     }
 
-    public @Nonnull UniRefEntryLightBuilder organismIdsSet(Set<Long> ids) {
-        this.organismIds = Utils.modifiableSet(ids);
+    public @Nonnull UniRefEntryLightBuilder organismIdsSet(LinkedHashSet<Long> ids) {
+        this.organismIds = ids;
         return this;
     }
 
@@ -131,8 +131,8 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
         return this;
     }
 
-    public @Nonnull UniRefEntryLightBuilder organismsSet(Set<String> ids) {
-        this.organisms = Utils.modifiableSet(ids);
+    public @Nonnull UniRefEntryLightBuilder organismsSet(LinkedHashSet<String> ids) {
+        this.organisms = ids;
         return this;
     }
 

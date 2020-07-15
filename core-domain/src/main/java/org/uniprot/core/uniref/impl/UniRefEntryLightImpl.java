@@ -1,10 +1,7 @@
 package org.uniprot.core.uniref.impl;
 
 import java.time.LocalDate;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefEntryLight;
@@ -23,8 +20,8 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
     static final String NAME_PREFIX = "Cluster: ";
     private static final long serialVersionUID = 6240419671874348249L;
     private final List<String> members;
-    private final Set<Long> organismIds;
-    private final Set<String> organisms;
+    private final LinkedHashSet<Long> organismIds;
+    private final LinkedHashSet<String> organisms;
     private final Set<UniRefMemberIdType> memberIdTypes;
     private UniRefEntryId id;
     private String name;
@@ -40,8 +37,8 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
     // no arg constructor for JSON deserialization
     UniRefEntryLightImpl() {
         members = Collections.emptyList();
-        organismIds = Collections.emptySet();
-        organisms = Collections.emptySet();
+        organismIds = new LinkedHashSet<>();
+        organisms = new LinkedHashSet<>();
         memberIdTypes = Collections.emptySet();
     }
 
@@ -55,8 +52,8 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
             String representativeId,
             String representativeSequence,
             List<String> members,
-            Set<Long> organismIds,
-            Set<String> organisms,
+            LinkedHashSet<Long> organismIds,
+            LinkedHashSet<String> organisms,
             int memberCount,
             Set<UniRefMemberIdType> memberIdTypes) {
         this.id = id;
@@ -71,7 +68,7 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
             this.sequenceLength = representativeSequence.length();
         }
         this.members = Utils.unmodifiableList(members);
-        this.organismIds = Utils.unmodifiableSet(organismIds);
+        this.organismIds = organismIds;
         this.organisms = organisms;
         this.memberIdTypes = memberIdTypes;
         if (memberCount == 0) {
@@ -122,12 +119,12 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
     }
 
     @Override
-    public Set<String> getOrganisms() {
+    public LinkedHashSet<String> getOrganisms() {
         return organisms;
     }
 
     @Override
-    public Set<Long> getOrganismIds() {
+    public LinkedHashSet<Long> getOrganismIds() {
         return organismIds;
     }
 

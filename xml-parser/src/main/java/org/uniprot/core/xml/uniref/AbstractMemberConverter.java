@@ -162,13 +162,15 @@ public abstract class AbstractMemberConverter<T extends UniRefMember>
                     builder.uniref50Id(new UniRefEntryIdBuilder(property.getValue()).build());
                     break;
                 case PROPERTY_SOURCE_UNIPROT:
-                    builder.accessionsAdd(new UniProtKBAccessionBuilder(property.getValue()).build());
+                    builder.accessionsAdd(
+                            new UniProtKBAccessionBuilder(property.getValue()).build());
                     break;
                 case PROPERTY_IS_SEED:
                     builder.isSeed(Boolean.parseBoolean(property.getValue()));
                     break;
                 default:
-                    logger.error("XML member property: " + property.getType() + " is not supported");
+                    logger.error(
+                            "XML member property: " + property.getType() + " is not supported");
                     break;
             }
         }
