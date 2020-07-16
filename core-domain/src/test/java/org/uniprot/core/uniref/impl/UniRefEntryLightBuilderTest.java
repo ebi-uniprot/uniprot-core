@@ -151,7 +151,7 @@ class UniRefEntryLightBuilderTest {
 
         assertThat(
                 entryLightBuilder.build().getOrganisms(),
-                containsInAnyOrder("1 (common)", "2 (common)", "3"));
+                contains("1 (common)", "2", "3"));
     }
 
     @Test
