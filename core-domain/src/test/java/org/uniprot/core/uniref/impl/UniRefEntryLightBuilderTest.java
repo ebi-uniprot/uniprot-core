@@ -149,9 +149,7 @@ class UniRefEntryLightBuilderTest {
         entryLightBuilder.organismsAdd("2 (common)");
         entryLightBuilder.organismsAdd("3");
 
-        assertThat(
-                entryLightBuilder.build().getOrganisms(),
-                contains("1 (common)", "2", "3"));
+        assertThat(entryLightBuilder.build().getOrganisms(), contains("1 (common)", "2", "3"));
     }
 
     @Test
