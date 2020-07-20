@@ -7,9 +7,8 @@ import javax.annotation.Nullable;
 
 public class Utils {
 
-    private Utils(){
+    private Utils() {}
 
-    }
     /**
      * Convert null to empty string or return actual
      *
@@ -60,8 +59,7 @@ public class Utils {
      * @return non null LinkedHashSet
      */
     @Nonnull
-    public static <T> LinkedHashSet<T> modifiableLinkedHashSet(
-            @Nullable LinkedHashSet<T> source) {
+    public static <T> LinkedHashSet<T> modifiableLinkedHashSet(@Nullable LinkedHashSet<T> source) {
         if (source != null) {
             return new LinkedHashSet<>(source);
         } else {
