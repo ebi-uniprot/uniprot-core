@@ -121,7 +121,7 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
                     }
                     break;
                 case PROPERTY_IS_SEED:
-                    if(Boolean.parseBoolean(property.getValue())){
+                    if (Boolean.parseBoolean(property.getValue())) {
                         builder.seedId(id);
                     }
                     break;
