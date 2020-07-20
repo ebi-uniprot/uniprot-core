@@ -1,12 +1,13 @@
 package org.uniprot.core.parser.tsv.uniref;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.cv.go.GoAspect;
@@ -14,12 +15,7 @@ import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
-import org.uniprot.core.uniref.RepresentativeMember;
-import org.uniprot.core.uniref.UniRefEntry;
-import org.uniprot.core.uniref.UniRefEntryId;
-import org.uniprot.core.uniref.UniRefMember;
-import org.uniprot.core.uniref.UniRefMemberIdType;
-import org.uniprot.core.uniref.UniRefType;
+import org.uniprot.core.uniref.*;
 import org.uniprot.core.uniref.impl.RepresentativeMemberBuilder;
 import org.uniprot.core.uniref.impl.UniRefEntryBuilder;
 import org.uniprot.core.uniref.impl.UniRefEntryIdBuilder;
@@ -31,8 +27,16 @@ import org.uniprot.core.uniref.impl.UniRefMemberBuilder;
  */
 class UniRefEntryValueMapperTest {
 
+    private UniRefEntryValueMapper mapper;
+
+    @BeforeEach
+    void setUp() {
+        mapper = new UniRefEntryValueMapper();
+    }
+
     @Test
     void testGetData() {
+
         UniRefEntry entry = createEntry();
         List<String> fields =
                 Arrays.asList(
@@ -46,7 +50,7 @@ class UniRefEntryValueMapperTest {
                         "sequence",
                         "identity",
                         "types");
-        Map<String, String> entryMap = new UniRefEntryValueMapper().mapEntity(entry, fields);
+        Map<String, String> entryMap = mapper.mapEntity(entry, fields);
 
         assertEquals("UniRef50_P03923", entryMap.get("id"));
         assertEquals("Cluster: AMP-binding enzyme family protein", entryMap.get("name"));
@@ -59,20 +63,20 @@ class UniRefEntryValueMapperTest {
                 "MVSWGRFICLVVVTMATLSLARPSFSLVEDDFSAGSADFAFWERDGDSDGFDSHSDJHETRHJREH",
                 entryMap.get("sequence"));
         assertEquals("1.0", entryMap.get("identity"));
-        assertEquals("UniProtKB ID, UniParc ID", entryMap.get("types"));
+        assertEquals("UniProtKB ID, UniParc", entryMap.get("types"));
     }
 
     @Test
     void testGetOrganism() {
         UniRefEntry entry = createEntry();
-        String organsms = UniRefEntryValueMapper.getOrganisms(entry);
+        String organsms = mapper.getOrganisms(entry);
         assertEquals("Homo sapiens; Streptomyces sp. NWU49", organsms);
     }
 
     @Test
     void testGetOrganismIDs() {
         UniRefEntry entry = createEntry();
-        String organsmTaxID = UniRefEntryValueMapper.getOrganismTaxId(entry);
+        String organsmTaxID = mapper.getOrganismTaxId(entry);
         assertEquals("9606; 2201153", organsmTaxID);
     }
 
@@ -81,7 +85,7 @@ class UniRefEntryValueMapperTest {
         UniRefEntry entry = createEntry();
         UniRefEntry entry2 = UniRefEntryBuilder.from(entry).membersAdd(createMember2()).build();
 
-        String members = UniRefEntryValueMapper.getMembers(entry2);
+        String members = mapper.getMembers(entry2);
         assertEquals("P12345_HUMAN; P12347_HUMAN; UPI0000E5B23D", members);
     }
 
