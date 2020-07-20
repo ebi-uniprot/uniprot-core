@@ -3,6 +3,8 @@ package org.uniprot.core.json.parser.uniref;
 import java.time.LocalDate;
 
 import org.uniprot.core.Value;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.go.impl.GeneOntologyEntryImpl;
 import org.uniprot.core.impl.ValueImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.json.parser.deserializer.LocalDateDeserializer;
@@ -55,6 +57,7 @@ public class UniRefEntryLightJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(UniRefEntryLight.class, UniRefEntryLightImpl.class);
         mod.addAbstractTypeMapping(Value.class, ValueImpl.class);
         mod.addAbstractTypeMapping(UniRefEntryId.class, UniRefEntryIdImpl.class);
+        mod.addAbstractTypeMapping(GeneOntologyEntry.class, GeneOntologyEntryImpl.class);
         objMapper.registerModule(mod);
 
         return objMapper;

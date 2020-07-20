@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
 import org.uniprot.core.uniref.UniRefEntryLight;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
@@ -64,6 +66,13 @@ class UniRefEntryLightBuilderTest {
         String value = "id";
         UniRefEntryLight entryLight = new UniRefEntryLightBuilder().representativeId(value).build();
         assertThat(entryLight.getRepresentativeId(), is(value));
+    }
+
+    @Test
+    void canSetSeedId() {
+        String value = "seedId";
+        UniRefEntryLight entryLight = new UniRefEntryLightBuilder().seedId(value).build();
+        assertThat(entryLight.getSeedId(), is(value));
     }
 
     @Test
@@ -149,9 +158,7 @@ class UniRefEntryLightBuilderTest {
         entryLightBuilder.organismsAdd("2 (common)");
         entryLightBuilder.organismsAdd("3");
 
-        assertThat(
-                entryLightBuilder.build().getOrganisms(),
-                contains("1 (common)", "2", "3"));
+        assertThat(entryLightBuilder.build().getOrganisms(), contains("1 (common)", "2", "3"));
     }
 
     @Test
@@ -201,10 +208,33 @@ class UniRefEntryLightBuilderTest {
     }
 
     @Test
+    void canSetGoTerms() {
+        GeneOntologyEntry entry1 = new GeneOntologyEntryBuilder().id("id1").build();
+        GeneOntologyEntry entry2 = new GeneOntologyEntryBuilder().id("id2").build();
+        List<GeneOntologyEntry> value = asList(entry1, entry2);
+        UniRefEntryLight entryLight = new UniRefEntryLightBuilder().goTermsSet(value).build();
+        assertThat(entryLight.getGoTerms(), is(value));
+    }
+
+    @Test
+    void canAddGoTerms() {
+        GeneOntologyEntry entry1 = new GeneOntologyEntryBuilder().id("id1").build();
+        GeneOntologyEntry entry2 = new GeneOntologyEntryBuilder().id("id2").build();
+        UniRefEntryLightBuilder entryLightBuilder =
+                new UniRefEntryLightBuilder().goTermsSet(asList(entry1, entry2));
+
+        GeneOntologyEntry entry3 = new GeneOntologyEntryBuilder().id("id3").build();
+        entryLightBuilder.goTermsAdd(entry3);
+
+        assertThat(entryLightBuilder.build().getGoTerms(), contains(entry1, entry2, entry3));
+    }
+
+    @Test
     void testFrom() {
         UniRefEntryLight entry =
                 new UniRefEntryLightBuilder()
                         .id("UniRef50_P12345")
+                        .name("Cluster name")
                         .membersAdd("P12345")
                         .organismsAdd("Human")
                         .organismIdsAdd(9606L)
@@ -215,6 +245,9 @@ class UniRefEntryLightBuilderTest {
                         .commonTaxonId(10116L)
                         .entryType(UniRefType.UniRef50)
                         .memberCount(5)
+                        .representativeId("P12345")
+                        .seedId("P12345")
+                        .goTermsAdd(new GeneOntologyEntryBuilder().id("GoId").build())
                         .build();
         UniRefEntryLight fromEntry = UniRefEntryLightBuilder.from(entry).build();
         assertThat(entry, is(fromEntry));

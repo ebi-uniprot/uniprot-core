@@ -65,7 +65,7 @@ class UniRefEntryLightConverterTest {
     }
 
     @Test
-    void testInvalidId() throws Exception {
+    void testFromXmlInvalidId() throws Exception {
         Entry xmlEntry = new Entry();
         xmlEntry.setId("INVALID");
         UniRefEntryLightConverter converter = new UniRefEntryLightConverter();

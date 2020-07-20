@@ -6,6 +6,7 @@ import java.util.*;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.uniref.*;
 import org.uniprot.core.util.Utils;
 
@@ -29,6 +30,8 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
     private LinkedHashSet<Long> organismIds = new LinkedHashSet<>();
     private LinkedHashSet<String> organisms = new LinkedHashSet<>();
     private Set<UniRefMemberIdType> memberIdTypes = new HashSet<>();
+    private List<GeneOntologyEntry> goTerms = new ArrayList<>();
+    private String seedId;
     private int memberCount;
     private int organismCount;
 
@@ -48,7 +51,9 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
                 organisms,
                 memberCount,
                 organismCount,
-                memberIdTypes);
+                memberIdTypes,
+                goTerms,
+                seedId);
     }
 
     public static @Nonnull UniRefEntryLightBuilder from(@Nonnull UniRefEntryLight instance) {
@@ -66,7 +71,9 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
                 .organismsSet(instance.getOrganisms())
                 .memberCount(instance.getMemberCount())
                 .organismCount(instance.getOrganismCount())
-                .memberIdTypesSet(instance.getMemberIdTypes());
+                .memberIdTypesSet(instance.getMemberIdTypes())
+                .goTermsSet(instance.getGoTerms())
+                .seedId(instance.getSeedId());
     }
 
     public @Nonnull UniRefEntryLightBuilder id(UniRefEntryId id) {
@@ -163,6 +170,21 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
 
     public @Nonnull UniRefEntryLightBuilder organismCount(int organismCount) {
         this.organismCount = organismCount;
+        return this;
+    }
+
+    public @Nonnull UniRefEntryLightBuilder goTermsSet(List<GeneOntologyEntry> goTerms) {
+        this.goTerms = Utils.modifiableList(goTerms);
+        return this;
+    }
+
+    public @Nonnull UniRefEntryLightBuilder goTermsAdd(GeneOntologyEntry goTerms) {
+        Utils.addOrIgnoreNull(goTerms, this.goTerms);
+        return this;
+    }
+
+    public @Nonnull UniRefEntryLightBuilder seedId(String seedId) {
+        this.seedId = seedId;
         return this;
     }
 }

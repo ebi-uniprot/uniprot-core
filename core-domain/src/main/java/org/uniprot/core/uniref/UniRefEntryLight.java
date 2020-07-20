@@ -6,6 +6,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+
 /**
  * Represents a "light-weight" {@link UniRefEntry}, containing less detailed information when
  * compared to {@link UniRefEntry}, but enough to capture the main characteristics of a UniRef
@@ -28,6 +30,8 @@ public interface UniRefEntryLight extends Serializable {
 
     String getCommonTaxon();
 
+    List<GeneOntologyEntry> getGoTerms();
+
     List<String> getMembers();
 
     int getMemberCount();
@@ -43,6 +47,8 @@ public interface UniRefEntryLight extends Serializable {
     int getSequenceLength();
 
     String getRepresentativeId();
+
+    String getSeedId();
 
     String getRepresentativeProteinName();
 

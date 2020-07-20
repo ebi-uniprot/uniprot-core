@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.go.GoAspect;
+import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniref.UniRefEntryLight;
 import org.uniprot.core.uniref.UniRefMemberIdType;
@@ -53,7 +55,7 @@ class UniRefEntryLightJsonConfigTest {
     @Test
     void testNoUnsetField() {
         UniRefEntryLight entry = getCompleteUniRefEntryLight();
-        ValidateJson.verifyEmptyFields(entry);
+        ValidateJson.verifyEmptyFields(entry, "ancestors");
     }
 
     @Test
@@ -85,6 +87,13 @@ class UniRefEntryLightJsonConfigTest {
                 .commonTaxonId(10116L)
                 .entryType(UniRefType.UniRef50)
                 .memberCount(5)
+                .seedId("P12345")
+                .goTermsAdd(
+                        new GeneOntologyEntryBuilder()
+                                .id("GO1")
+                                .name("goName")
+                                .aspect(GoAspect.COMPONENT)
+                                .build())
                 .build();
     }
 }

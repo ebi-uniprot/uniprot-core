@@ -5,6 +5,9 @@ import static org.uniprot.core.uniref.UniRefUtils.getUniProtKBIdType;
 import java.util.Collections;
 import java.util.List;
 
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.go.GoAspect;
+import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
 import org.uniprot.core.uniref.UniRefEntryLight;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
@@ -28,6 +31,9 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
     public static final String PROPERTY_SOURCE_ORGANISM = "source organism";
     public static final String PROPERTY_ORGANISM_ID = "NCBI taxonomy";
     private static final String PROPERTY_UNIPROT_ACCESSION = "UniProtKB accession";
+    private static final String PROPERTY_GO_FUNCTION = "GO Molecular Function";
+    private static final String PROPERTY_GO_COMPONENT = "GO Cellular Component";
+    private static final String PROPERTY_GO_PROCESS = "GO Biological Process";
 
     @Override
     public UniRefEntryLight fromXml(Entry xmlObj) {
@@ -78,10 +84,23 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
                 case PROPERTY_MEMBER_COUNT:
                     builder.memberCount(Integer.parseInt(property.getValue()));
                     break;
+                case PROPERTY_GO_FUNCTION:
+                    builder.goTermsAdd(createGoTerm(GoAspect.FUNCTION, property.getValue()));
+                    break;
+                case PROPERTY_GO_COMPONENT:
+                    builder.goTermsAdd(createGoTerm(GoAspect.COMPONENT, property.getValue()));
+                    break;
+                case PROPERTY_GO_PROCESS:
+                    builder.goTermsAdd(createGoTerm(GoAspect.PROCESS, property.getValue()));
+                    break;
                 default:
                     break;
             }
         }
+    }
+
+    private GeneOntologyEntry createGoTerm(GoAspect aspect, String id) {
+        return new GeneOntologyEntryBuilder().aspect(aspect).id(id).build();
     }
 
     private void updateMemberPropertiesFromXml(
