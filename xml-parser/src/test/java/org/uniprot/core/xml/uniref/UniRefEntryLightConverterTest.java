@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.function.Function;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.go.GoAspect;
 import org.uniprot.core.uniref.UniRefEntryLight;
 import org.uniprot.core.uniref.UniRefType;
 import org.uniprot.core.xml.XmlChainIterator;
@@ -48,7 +50,13 @@ class UniRefEntryLightConverterTest {
         assertEquals(UniRefType.UniRef50, entry.getEntryType());
         assertEquals("Muroidea", entry.getCommonTaxon());
         assertEquals(337687, entry.getCommonTaxonId());
-        // assertTrue(entry.hasMemberUniParcIDs());
+        assertEquals("F6MB03_MOUSE", entry.getSeedId());
+
+        assertEquals(3, entry.getGoTerms().size());
+        GeneOntologyEntry goTerm = entry.getGoTerms().get(0);
+        assertEquals(GoAspect.FUNCTION, goTerm.getAspect());
+        assertEquals("GO:0048306", goTerm.getId());
+
         assertTrue(entry.getMembers().contains("Q8R2B4"));
         assertTrue(entry.getMembers().contains("UPI0000DBE4A9"));
 

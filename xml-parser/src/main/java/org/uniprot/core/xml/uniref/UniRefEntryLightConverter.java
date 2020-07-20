@@ -34,6 +34,7 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
     private static final String PROPERTY_GO_FUNCTION = "GO Molecular Function";
     private static final String PROPERTY_GO_COMPONENT = "GO Cellular Component";
     private static final String PROPERTY_GO_PROCESS = "GO Biological Process";
+    private static final String PROPERTY_IS_SEED = "isSeed";
 
     @Override
     public UniRefEntryLight fromXml(Entry xmlObj) {
@@ -117,6 +118,11 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
                 case PROPERTY_UNIPROT_ACCESSION:
                     if (accession == null) { // get first accession from xml as member.
                         accession = property.getValue();
+                    }
+                    break;
+                case PROPERTY_IS_SEED:
+                    if(Boolean.parseBoolean(property.getValue())){
+                        builder.seedId(id);
                     }
                     break;
                 default:
