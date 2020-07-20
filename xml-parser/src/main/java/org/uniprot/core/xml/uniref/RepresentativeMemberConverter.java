@@ -31,14 +31,6 @@ public class RepresentativeMemberConverter extends AbstractMemberConverter<Repre
 
     private Sequence convertFromXml(MemberType.Sequence sequence) {
         String seqString = sequence.getValue();
-        //		StringBuilder realSequence = new StringBuilder();
-        //		for (int iii = 0; iii < seqString.length(); iii++) {
-        //			char c = seqString.charAt(iii);
-        //			if (c == '\t' || c == '\n' || c == ' ') {
-        //				continue;
-        //			}
-        //			realSequence.append(c);
-        //		}
         return new SequenceBuilder(seqString).build();
     }
 
@@ -53,14 +45,6 @@ public class RepresentativeMemberConverter extends AbstractMemberConverter<Repre
     private MemberType.Sequence convertToXmlBind(Sequence sequence) {
         MemberType.Sequence result = jaxbFactory.createMemberTypeSequence();
         String rawSequence = sequence.getValue();
-        //		StringBuilder sequenceBuffer = new StringBuilder();
-        //		for (int iii = 0; iii < rawSequence.length(); iii++) {
-        //			if (iii % 60 == 0) {
-        //				sequenceBuffer.append("\n                ");
-        //			}
-        //			sequenceBuffer.append(rawSequence.charAt(iii));
-        //		}
-        //		sequenceBuffer.append("\n            ");
         result.setValue(rawSequence);
         result.setChecksum(sequence.getCrc64());
         result.setLength(sequence.getLength());

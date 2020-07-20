@@ -7,6 +7,9 @@
         <property type="member count" value="64"/>
         <property type="common taxon" value="Muroidea"/>
         <property type="common taxon ID" value="337687"/>
+        <property type="GO Molecular Function" value="GO:0048306"/>
+        <property type="GO Biological Process" value="GO:0048168"/>
+        <property type="GO Cellular Component" value="GO:0005737"/>
         <representativeMember>
             <dbReference type="UniProtKB ID" id="Q9EPS7_MOUSE">
                 <property type="UniProtKB accession" value="Q9EPS7"/>

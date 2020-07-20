@@ -2,6 +2,8 @@ package org.uniprot.core.xml.uniref;
 
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.cv.go.GoAspect;
 import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
@@ -21,6 +23,7 @@ import com.google.common.base.Strings;
  * @date: 13 Aug 2019
  */
 public class UniRefEntryConverter implements Converter<Entry, UniRefEntry> {
+    private static final Logger logger = LoggerFactory.getLogger(UniRefEntryConverter.class);
     public static final String PROPERTY_MEMBER_COUNT = "member count";
     public static final String PROPERTY_COMMON_TAXON = "common taxon";
     public static final String PROPERTY_COMMON_TAXON_ID = "common taxon ID";
@@ -71,20 +74,28 @@ public class UniRefEntryConverter implements Converter<Entry, UniRefEntry> {
 
     private void updatePropertFromXml(UniRefEntryBuilder builder, Entry jaxbEntry) {
         for (PropertyType property : jaxbEntry.getProperty()) {
-            if (property.getType().equals(PROPERTY_COMMON_TAXON)) {
-                builder.commonTaxon(property.getValue());
-            } else if (property.getType().equals(PROPERTY_COMMON_TAXON_ID)) {
-                builder.commonTaxonId(Long.parseLong(property.getValue()));
-            } else if (property.getType().equals(PROPERTY_GO_FUNCTION)) {
-                builder.goTermsAdd(createGoTerm(GoAspect.FUNCTION, property.getValue()));
-            } else if (property.getType().equals(PROPERTY_GO_COMPONENT)) {
-                builder.goTermsAdd(createGoTerm(GoAspect.COMPONENT, property.getValue()));
-            } else if (property.getType().equals(PROPERTY_GO_PROCESS)) {
-                builder.goTermsAdd(createGoTerm(GoAspect.PROCESS, property.getValue()));
-            } else if (property.getType().equals(PROPERTY_MEMBER_COUNT)) {
-                builder.memberCount(Integer.parseInt(property.getValue()));
-            } else {
-                System.out.println("property.typeOf() = " + property.getType() + " not supported");
+            switch (property.getType()) {
+                case PROPERTY_COMMON_TAXON:
+                    builder.commonTaxon(property.getValue());
+                    break;
+                case PROPERTY_COMMON_TAXON_ID:
+                    builder.commonTaxonId(Long.parseLong(property.getValue()));
+                    break;
+                case PROPERTY_GO_FUNCTION:
+                    builder.goTermsAdd(createGoTerm(GoAspect.FUNCTION, property.getValue()));
+                    break;
+                case PROPERTY_GO_COMPONENT:
+                    builder.goTermsAdd(createGoTerm(GoAspect.COMPONENT, property.getValue()));
+                    break;
+                case PROPERTY_GO_PROCESS:
+                    builder.goTermsAdd(createGoTerm(GoAspect.PROCESS, property.getValue()));
+                    break;
+                case PROPERTY_MEMBER_COUNT:
+                    builder.memberCount(Integer.parseInt(property.getValue()));
+                    break;
+                default:
+                    logger.warn("property.typeOf() = " + property.getType() + " not supported");
+                    break;
             }
         }
     }
