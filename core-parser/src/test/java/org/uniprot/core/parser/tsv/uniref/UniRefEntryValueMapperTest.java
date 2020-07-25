@@ -67,6 +67,43 @@ class UniRefEntryValueMapperTest {
     }
 
     @Test
+    void testNoCommonNumbers() {
+        UniRefEntry entry =
+                new UniRefEntryBuilder()
+                        .id("UniRef50_P03923")
+                        .updated(LocalDate.now())
+                        .entryType(UniRefType.UniRef50)
+                        .representativeMember(createReprestativeMember())
+                        .build();
+
+        List<String> fields =
+                Arrays.asList(
+                        "id",
+                        "name",
+                        "common_taxon",
+                        "common_taxonid",
+                        "count",
+                        "created",
+                        "length",
+                        "sequence",
+                        "identity",
+                        "types");
+
+        Map<String, String> entryMap = mapper.mapEntity(entry, fields);
+
+        assertEquals("UniRef50_P03923", entryMap.get("id"));
+        assertEquals("", entryMap.get("name"));
+        assertEquals("", entryMap.get("common_taxon"));
+        assertEquals("", entryMap.get("common_taxonid"));
+        assertEquals("", entryMap.get("count"));
+        assertEquals(
+                "MVSWGRFICLVVVTMATLSLARPSFSLVEDDFSAGSADFAFWERDGDSDGFDSHSDJHETRHJREH",
+                entryMap.get("sequence"));
+        assertEquals("0.5", entryMap.get("identity"));
+        assertEquals("UniProtKB ID", entryMap.get("types"));
+    }
+
+    @Test
     void testGetOrganism() {
         UniRefEntry entry = createEntry();
         String organsms = mapper.getOrganisms(entry);
@@ -95,33 +132,32 @@ class UniRefEntryValueMapperTest {
         String name = "Cluster: AMP-binding enzyme family protein";
         UniRefEntryId entryId = new UniRefEntryIdBuilder(id).build();
         LocalDate created = LocalDate.of(2018, 6, 21);
-        UniRefEntry entry =
-                new UniRefEntryBuilder()
-                        .id(entryId)
-                        .name(name)
-                        .updated(created)
-                        .entryType(type)
-                        .commonTaxonId(9605l)
-                        .commonTaxon("Homo")
-                        .representativeMember(createReprestativeMember())
-                        .membersAdd(createMember())
-                        .goTermsAdd(
-                                new GeneOntologyEntryBuilder()
-                                        .aspect(GoAspect.COMPONENT)
-                                        .id("GO:0044444")
-                                        .build())
-                        .goTermsAdd(
-                                new GeneOntologyEntryBuilder()
-                                        .aspect(GoAspect.FUNCTION)
-                                        .id("GO:0044459")
-                                        .build())
-                        .goTermsAdd(
-                                new GeneOntologyEntryBuilder()
-                                        .aspect(GoAspect.PROCESS)
-                                        .id("GO:0032459")
-                                        .build())
-                        .build();
-        return entry;
+        return new UniRefEntryBuilder()
+                .id(entryId)
+                .name(name)
+                .updated(created)
+                .entryType(type)
+                .commonTaxonId(9605L)
+                .commonTaxon("Homo")
+                .representativeMember(createReprestativeMember())
+                .memberCount(2)
+                .membersAdd(createMember())
+                .goTermsAdd(
+                        new GeneOntologyEntryBuilder()
+                                .aspect(GoAspect.COMPONENT)
+                                .id("GO:0044444")
+                                .build())
+                .goTermsAdd(
+                        new GeneOntologyEntryBuilder()
+                                .aspect(GoAspect.FUNCTION)
+                                .id("GO:0044459")
+                                .build())
+                .goTermsAdd(
+                        new GeneOntologyEntryBuilder()
+                                .aspect(GoAspect.PROCESS)
+                                .id("GO:0032459")
+                                .build())
+                .build();
     }
 
     private RepresentativeMember createReprestativeMember() {
@@ -134,23 +170,21 @@ class UniRefEntryValueMapperTest {
 
         UniRefMemberIdType type = UniRefMemberIdType.UNIPROTKB;
 
-        RepresentativeMember member =
-                new RepresentativeMemberBuilder()
-                        .memberIdType(type)
-                        .memberId(memberId)
-                        .organismName("Homo sapiens")
-                        .organismTaxId(9606)
-                        .sequenceLength(length)
-                        .proteinName(pName)
-                        .uniparcId(new UniParcIdBuilder(upi).build())
-                        .accessionsAdd(new UniProtKBAccessionBuilder("P12345").build())
-                        .uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
-                        .uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
-                        .uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())
-                        .isSeed(true)
-                        .sequence(sequence)
-                        .build();
-        return member;
+        return new RepresentativeMemberBuilder()
+                .memberIdType(type)
+                .memberId(memberId)
+                .organismName("Homo sapiens")
+                .organismTaxId(9606)
+                .sequenceLength(length)
+                .proteinName(pName)
+                .uniparcId(new UniParcIdBuilder(upi).build())
+                .accessionsAdd(new UniProtKBAccessionBuilder("P12345").build())
+                .uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
+                .uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
+                .uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())
+                .isSeed(true)
+                .sequence(sequence)
+                .build();
     }
 
     private UniRefMember createMember() {
@@ -160,21 +194,19 @@ class UniRefEntryValueMapperTest {
         String upi = "UPI0000083A08";
 
         UniRefMemberIdType type = UniRefMemberIdType.UNIPARC;
-        UniRefMember member =
-                new UniRefMemberBuilder()
-                        .memberIdType(type)
-                        .memberId(memberId)
-                        .organismName("Streptomyces sp. NWU49")
-                        .organismTaxId(2201153)
-                        .sequenceLength(length)
-                        .proteinName(pName)
-                        .uniparcId(new UniParcIdBuilder(upi).build())
-                        .accessionsAdd(new UniProtKBAccessionBuilder("P12347").build())
-                        .uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
-                        .uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
-                        .uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())
-                        .build();
-        return member;
+        return new UniRefMemberBuilder()
+                .memberIdType(type)
+                .memberId(memberId)
+                .organismName("Streptomyces sp. NWU49")
+                .organismTaxId(2201153)
+                .sequenceLength(length)
+                .proteinName(pName)
+                .uniparcId(new UniParcIdBuilder(upi).build())
+                .accessionsAdd(new UniProtKBAccessionBuilder("P12347").build())
+                .uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
+                .uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
+                .uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())
+                .build();
     }
 
     private UniRefMember createMember2() {
@@ -184,19 +216,17 @@ class UniRefEntryValueMapperTest {
         String upi = "UPI0000083A08";
 
         UniRefMemberIdType type = UniRefMemberIdType.UNIPARC;
-        UniRefMember member =
-                new UniRefMemberBuilder()
-                        .memberIdType(type)
-                        .memberId(memberId)
-                        .organismName("Streptomyces sp. NWU49")
-                        .organismTaxId(2201153)
-                        .sequenceLength(length)
-                        .proteinName(pName)
-                        .uniparcId(new UniParcIdBuilder(upi).build())
-                        .uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
-                        .uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
-                        .uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())
-                        .build();
-        return member;
+        return new UniRefMemberBuilder()
+                .memberIdType(type)
+                .memberId(memberId)
+                .organismName("Streptomyces sp. NWU49")
+                .organismTaxId(2201153)
+                .sequenceLength(length)
+                .proteinName(pName)
+                .uniparcId(new UniParcIdBuilder(upi).build())
+                .uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
+                .uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
+                .uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())
+                .build();
     }
 }
