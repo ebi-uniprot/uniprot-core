@@ -78,7 +78,7 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
         this.organisms = Utils.modifiableLinkedHashSet(organisms);
         this.memberIdTypes = Utils.unmodifiableSet(memberIdTypes);
         if (memberCount == 0) {
-            this.memberCount = this.members.size() + 1;
+            this.memberCount = this.members.size();
         } else {
             this.memberCount = memberCount;
         }

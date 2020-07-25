@@ -17,10 +17,18 @@ public class UniRefEntryValueMapper extends AbstractUniRefEntryMapper<UniRefEntr
     Map<String, String> getSimpleAttributeValues(UniRefEntry entry) {
         Map<String, String> map = new HashMap<>();
         map.put(UNIREF_FIELDS.get(0), entry.getId().getValue());
-        map.put(UNIREF_FIELDS.get(1), entry.getName());
-        map.put(UNIREF_FIELDS.get(2), entry.getCommonTaxon());
-        map.put(UNIREF_FIELDS.get(3), Long.toString(entry.getCommonTaxonId()));
-        map.put(UNIREF_FIELDS.get(4), Integer.toString(entry.getMemberCount()));
+        map.put(UNIREF_FIELDS.get(1), Utils.emptyOrString(entry.getName()));
+        map.put(UNIREF_FIELDS.get(2), Utils.emptyOrString(entry.getCommonTaxon()));
+        if (entry.getCommonTaxonId() != null) {
+            map.put(UNIREF_FIELDS.get(3), entry.getCommonTaxonId().toString());
+        } else {
+            map.put(UNIREF_FIELDS.get(3), "");
+        }
+        if (entry.getMemberCount() != null) {
+            map.put(UNIREF_FIELDS.get(4), entry.getMemberCount().toString());
+        } else {
+            map.put(UNIREF_FIELDS.get(4), "");
+        }
         map.put(UNIREF_FIELDS.get(5), entry.getUpdated().toString());
         map.put(
                 UNIREF_FIELDS.get(6),

@@ -1,7 +1,6 @@
 package org.uniprot.core.uniref.impl;
 
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,30 +19,29 @@ import org.uniprot.core.util.Utils;
 public class UniRefEntryImpl implements UniRefEntry {
 
     private static final long serialVersionUID = -3900697447474386293L;
-    private UniRefEntryId id;
-    private String name;
-    private int memberCount;
-    private LocalDate updated;
-    private UniRefType entryType;
-    private long commonTaxonId;
-    private String commonTaxon;
-    private List<GeneOntologyEntry> goTerms;
-    private RepresentativeMember representativeMember;
-    private List<UniRefMember> members;
+    private final UniRefEntryId id;
+    private final String name;
+    private final Integer memberCount;
+    private final LocalDate updated;
+    private final UniRefType entryType;
+    private final Long commonTaxonId;
+    private final String commonTaxon;
+    private final List<GeneOntologyEntry> goTerms;
+    private final RepresentativeMember representativeMember;
+    private final List<UniRefMember> members;
 
     // no arg constructor for JSON deserialization
     UniRefEntryImpl() {
-        goTerms = Collections.emptyList();
-        members = Collections.emptyList();
+        this(null, null, null, null, null, null, null, null, null, null);
     }
 
     UniRefEntryImpl(
             UniRefEntryId id,
             String name,
-            int memberCount,
+            Integer memberCount,
             LocalDate updated,
             UniRefType entryType,
-            long commonTaxonId,
+            Long commonTaxonId,
             String commonTaxon,
             List<GeneOntologyEntry> goTerms,
             RepresentativeMember representativeMember,
@@ -57,11 +55,7 @@ public class UniRefEntryImpl implements UniRefEntry {
         this.goTerms = Utils.unmodifiableList(goTerms);
         this.representativeMember = representativeMember;
         this.members = Utils.unmodifiableList(members);
-        if (memberCount == 0) {
-            this.memberCount = this.members.size() + 1;
-        } else {
-            this.memberCount = memberCount;
-        }
+        this.memberCount = memberCount;
     }
 
     @Override
@@ -85,7 +79,7 @@ public class UniRefEntryImpl implements UniRefEntry {
     }
 
     @Override
-    public long getCommonTaxonId() {
+    public Long getCommonTaxonId() {
         return commonTaxonId;
     }
 
@@ -143,7 +137,7 @@ public class UniRefEntryImpl implements UniRefEntry {
     }
 
     @Override
-    public int getMemberCount() {
+    public Integer getMemberCount() {
         return memberCount;
     }
 }
