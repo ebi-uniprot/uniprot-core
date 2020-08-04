@@ -127,7 +127,7 @@ public abstract class AbstractUniRefMemberBuilder<
 
     protected abstract @Nonnull B getThis();
 
-    public UniRefMemberIdType getMemberIdType(){
+    public UniRefMemberIdType getMemberIdType() {
         return getThis().memberIdType;
     }
 }
