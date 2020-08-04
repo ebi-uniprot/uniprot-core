@@ -186,4 +186,11 @@ class RepresentativeMemberBuilderTest {
         assertEquals(impl.getOverlapRegion(), obj.getOverlapRegion());
         assertEquals(impl.getOrganismTaxId(), obj.getOrganismTaxId());
     }
+
+    @Test
+    void testGetMemberIdType() {
+        UniRefMemberIdType type = UniRefMemberIdType.UNIPARC;
+        RepresentativeMemberBuilder builder = new RepresentativeMemberBuilder().memberIdType(type);
+        assertEquals(type, builder.getMemberIdType());
+    }
 }
