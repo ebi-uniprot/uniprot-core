@@ -152,4 +152,11 @@ class UniRefMemberBuilderTest {
         assertTrue(m1.equals(m2) && m2.equals(m1));
         assertTrue(m1.hashCode() == m2.hashCode());
     }
+
+    @Test
+    void testGetMemberIdType() {
+        UniRefMemberIdType type = UniRefMemberIdType.UNIPARC;
+        UniRefMemberBuilder builder = new UniRefMemberBuilder().memberIdType(type);
+        assertEquals(type, builder.getMemberIdType());
+    }
 }
