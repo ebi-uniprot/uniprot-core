@@ -6,7 +6,6 @@ import java.util.Objects;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.proteome.Component;
-import org.uniprot.core.proteome.ComponentType;
 import org.uniprot.core.proteome.ProteomeDatabase;
 import org.uniprot.core.util.Utils;
 
@@ -15,7 +14,6 @@ public class ComponentImpl implements Component {
     private String name;
     private String description;
     private int proteinCount;
-    private ComponentType type;
 
     private List<CrossReference<ProteomeDatabase>> proteomeCrossReferences;
 
@@ -27,12 +25,10 @@ public class ComponentImpl implements Component {
             String name,
             String description,
             int proteinCount,
-            ComponentType type,
             List<CrossReference<ProteomeDatabase>> proteomeCrossReferences) {
         this.name = name;
         this.description = description;
         this.proteinCount = proteinCount;
-        this.type = type;
         this.proteomeCrossReferences = Utils.unmodifiableList(proteomeCrossReferences);
     }
 
@@ -56,14 +52,11 @@ public class ComponentImpl implements Component {
         return proteinCount;
     }
 
-    @Override
-    public ComponentType getType() {
-        return type;
-    }
+
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, proteinCount, proteomeCrossReferences, type);
+        return Objects.hash(name, description, proteinCount, proteomeCrossReferences);
     }
 
     @Override
@@ -75,7 +68,6 @@ public class ComponentImpl implements Component {
         return Objects.equals(name, other.name)
                 && Objects.equals(description, other.description)
                 && Objects.equals(proteinCount, other.proteinCount)
-                && Objects.equals(type, other.type)
                 && Objects.equals(proteomeCrossReferences, other.proteomeCrossReferences);
     }
 }

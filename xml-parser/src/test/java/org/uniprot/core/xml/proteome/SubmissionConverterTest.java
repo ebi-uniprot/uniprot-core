@@ -12,7 +12,7 @@ import org.uniprot.core.xml.jaxb.proteome.NameListType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 import org.uniprot.core.xml.jaxb.proteome.PersonType;
 import org.uniprot.core.xml.jaxb.proteome.ReferenceType;
-import org.uniprot.core.xml.jaxb.proteome.SubmissionType;
+import org.uniprot.core.xml.jaxb.proteome.CitationType;
 
 class SubmissionConverterTest {
     private ObjectFactory xmlFactory = new ObjectFactory();
@@ -22,7 +22,9 @@ class SubmissionConverterTest {
     @Test
     void testFromXml() {
         ReferenceType reference = xmlFactory.createReferenceType();
-        reference.setDate("JUL-2018");
+        CitationType xmlSubmission = xmlFactory.createCitationType();
+        xmlSubmission.setType("submission");
+        		xmlSubmission.setDate("JUL-2018");
         NameListType nameList = xmlFactory.createNameListType();
         ConsortiumType consortium = xmlFactory.createConsortiumType();
         consortium.setName("Some consortium");
@@ -35,11 +37,11 @@ class SubmissionConverterTest {
         p2.setName("James");
         nameList.getConsortiumOrPerson().add(p2);
 
-        reference.setAuthorList(nameList);
-        SubmissionType xmlSubmission = xmlFactory.createSubmissionType();
+        xmlSubmission.setAuthorList(nameList);
+       
         xmlSubmission.setDb("EMBL/GenBank/DDBJ databases");
         xmlSubmission.setTitle("Some titles.");
-        reference.setSubmission(xmlSubmission);
+        reference.setCitation(xmlSubmission);
         Submission submission = converter.fromXml(reference);
         assertEquals("Some consortium", submission.getAuthoringGroups().get(0));
         assertEquals(2, submission.getAuthors().size());

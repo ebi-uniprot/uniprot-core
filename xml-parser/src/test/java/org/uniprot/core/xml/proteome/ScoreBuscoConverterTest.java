@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.BuscoReport;
 import org.uniprot.core.proteome.impl.BuscoReportBuilder;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
-import org.uniprot.core.xml.jaxb.proteome.ScorePropertyType;
+import org.uniprot.core.xml.jaxb.proteome.PropertyType;
 import org.uniprot.core.xml.jaxb.proteome.ScoreType;
 
 /**
@@ -31,8 +31,8 @@ class ScoreBuscoConverterTest {
     void testFromXmlWrongPropNameThrowError() {
         ScoreType scoreType = xmlFactory.createScoreType();
         scoreType.setName(ScoreBuscoConverter.NAME);
-        ScorePropertyConverter propertyConverter = new ScorePropertyConverter();
-        ScorePropertyType property = propertyConverter.createProperty("WRONG", "10");
+        PropertyConverter propertyConverter = new PropertyConverter();
+        PropertyType property = propertyConverter.createProperty("WRONG", "10");
         scoreType.getProperty().add(property);
         assertThrows(IllegalArgumentException.class, () -> converter.fromXml(scoreType));
     }
@@ -64,7 +64,7 @@ class ScoreBuscoConverterTest {
                 result.getProperty().stream()
                         .collect(
                                 Collectors.toMap(
-                                        ScorePropertyType::getName, ScorePropertyType::getValue));
+                                		PropertyType::getName, PropertyType::getValue));
 
         assertEquals("100", propMap.get(ScoreBuscoConverter.PROPERTY_TOTAL));
         assertEquals("110", propMap.get(ScoreBuscoConverter.PROPERTY_FRAGMENTED));
@@ -91,8 +91,8 @@ class ScoreBuscoConverterTest {
     static ScoreType getBuscoScoreType(ObjectFactory xmlFactory) {
         ScoreType scoreType = xmlFactory.createScoreType();
         scoreType.setName(ScoreBuscoConverter.NAME);
-        ScorePropertyConverter propertyConverter = new ScorePropertyConverter();
-        ScorePropertyType property =
+        PropertyConverter propertyConverter = new PropertyConverter();
+        PropertyType property =
                 propertyConverter.createProperty(ScoreBuscoConverter.PROPERTY_TOTAL, "10");
         scoreType.getProperty().add(property);
         property = propertyConverter.createProperty(ScoreBuscoConverter.PROPERTY_MISSING, "11");

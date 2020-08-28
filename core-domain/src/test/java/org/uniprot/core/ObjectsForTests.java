@@ -563,7 +563,6 @@ public class ObjectsForTests {
                         "name",
                         "desc",
                         5,
-                        ComponentType.SEGMENTED_GENOME,
                         proteomeXReferenceTypes());
         JournalArticleBuilder builder = new JournalArticleBuilder();
         RedundantProteome rp =

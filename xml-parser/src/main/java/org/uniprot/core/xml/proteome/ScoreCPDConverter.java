@@ -8,7 +8,7 @@ import org.uniprot.core.proteome.impl.CPDReportBuilder;
 import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
-import org.uniprot.core.xml.jaxb.proteome.ScorePropertyType;
+import org.uniprot.core.xml.jaxb.proteome.PropertyType;
 import org.uniprot.core.xml.jaxb.proteome.ScoreType;
 
 /**
@@ -23,7 +23,7 @@ public class ScoreCPDConverter implements Converter<ScoreType, CPDReport> {
     static final String PROPERTY_CONFIDENCE = "confidence";
     static final String PROPERTY_PROTEOME_COUNT = "proteomeCount";
     static final String PROPERTY_STD_CDSS = "stdCdss";
-    private final ScorePropertyConverter propertyConverter;
+    private final PropertyConverter propertyConverter;
     private final ObjectFactory xmlFactory;
 
     public ScoreCPDConverter() {
@@ -32,7 +32,7 @@ public class ScoreCPDConverter implements Converter<ScoreType, CPDReport> {
 
     public ScoreCPDConverter(ObjectFactory xmlFactory) {
         this.xmlFactory = xmlFactory;
-        this.propertyConverter = new ScorePropertyConverter(xmlFactory);
+        this.propertyConverter = new PropertyConverter(xmlFactory);
     }
 
     @Override
@@ -40,8 +40,8 @@ public class ScoreCPDConverter implements Converter<ScoreType, CPDReport> {
         CPDReport result = null;
         if (Utils.notNull(xmlObj)) {
             CPDReportBuilder builder = new CPDReportBuilder();
-            List<ScorePropertyType> properties = xmlObj.getProperty();
-            for (ScorePropertyType property : properties) {
+            List<PropertyType> properties = xmlObj.getProperty();
+            for (PropertyType property : properties) {
                 switch (property.getName()) {
                     case PROPERTY_AVERAGE_CDS:
                         builder.averageCdss(Integer.parseInt(property.getValue()));

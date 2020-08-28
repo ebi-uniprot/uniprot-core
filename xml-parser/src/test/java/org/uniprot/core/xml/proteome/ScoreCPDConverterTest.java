@@ -10,7 +10,7 @@ import org.uniprot.core.proteome.CPDReport;
 import org.uniprot.core.proteome.CPDStatus;
 import org.uniprot.core.proteome.impl.CPDReportBuilder;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
-import org.uniprot.core.xml.jaxb.proteome.ScorePropertyType;
+import org.uniprot.core.xml.jaxb.proteome.PropertyType;
 import org.uniprot.core.xml.jaxb.proteome.ScoreType;
 
 /**
@@ -32,8 +32,8 @@ class ScoreCPDConverterTest {
     void testFromXmlWrongPropNameThrowError() {
         ScoreType scoreType = xmlFactory.createScoreType();
         scoreType.setName(ScoreCPDConverter.NAME);
-        ScorePropertyConverter propertyConverter = new ScorePropertyConverter();
-        ScorePropertyType property = propertyConverter.createProperty("WRONG", "10");
+        PropertyConverter propertyConverter = new PropertyConverter();
+        PropertyType property = propertyConverter.createProperty("WRONG", "10");
         scoreType.getProperty().add(property);
         assertThrows(IllegalArgumentException.class, () -> converter.fromXml(scoreType));
     }
@@ -63,7 +63,7 @@ class ScoreCPDConverterTest {
                 result.getProperty().stream()
                         .collect(
                                 Collectors.toMap(
-                                        ScorePropertyType::getName, ScorePropertyType::getValue));
+                                		PropertyType::getName, PropertyType::getValue));
 
         assertEquals("100", propMap.get(ScoreCPDConverter.PROPERTY_AVERAGE_CDS));
         assertEquals("110", propMap.get(ScoreCPDConverter.PROPERTY_CONFIDENCE));
@@ -77,8 +77,8 @@ class ScoreCPDConverterTest {
     static ScoreType getCPDScoreType(ObjectFactory xmlFactory) {
         ScoreType scoreType = xmlFactory.createScoreType();
         scoreType.setName(ScoreCPDConverter.NAME);
-        ScorePropertyConverter propertyConverter = new ScorePropertyConverter();
-        ScorePropertyType property =
+        PropertyConverter propertyConverter = new PropertyConverter();
+        PropertyType property =
                 propertyConverter.createProperty(ScoreCPDConverter.PROPERTY_AVERAGE_CDS, "10");
         scoreType.getProperty().add(property);
         property = propertyConverter.createProperty(ScoreCPDConverter.PROPERTY_CONFIDENCE, "11");

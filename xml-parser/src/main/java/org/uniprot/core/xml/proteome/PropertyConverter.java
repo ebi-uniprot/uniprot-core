@@ -1,34 +1,34 @@
 package org.uniprot.core.xml.proteome;
 
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
-import org.uniprot.core.xml.jaxb.proteome.ScorePropertyType;
+import org.uniprot.core.xml.jaxb.proteome.PropertyType;
 
 /**
  * @author lgonzales
  * @since 16/04/2020
  */
-class ScorePropertyConverter {
+class PropertyConverter {
 
     private final ObjectFactory xmlFactory;
 
-    ScorePropertyConverter() {
+    PropertyConverter() {
         this(new ObjectFactory());
     }
 
-    ScorePropertyConverter(ObjectFactory xmlFactory) {
+    PropertyConverter(ObjectFactory xmlFactory) {
         this.xmlFactory = xmlFactory;
     }
 
-    ScorePropertyType createProperty(String name, int value) {
+    PropertyType createProperty(String name, int value) {
         return createProperty(name, String.valueOf(value));
     }
 
-    ScorePropertyType createProperty(String name, double value) {
+    PropertyType createProperty(String name, double value) {
         return createProperty(name, String.valueOf(value));
     }
 
-    ScorePropertyType createProperty(String name, String value) {
-        ScorePropertyType property = xmlFactory.createScorePropertyType();
+    PropertyType createProperty(String name, String value) {
+        PropertyType property = xmlFactory.createPropertyType();
         property.setName(name);
         property.setValue(value);
         return property;

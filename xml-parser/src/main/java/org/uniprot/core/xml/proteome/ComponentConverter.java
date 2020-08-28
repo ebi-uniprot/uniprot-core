@@ -11,7 +11,6 @@ import org.uniprot.core.proteome.ProteomeDatabase;
 import org.uniprot.core.proteome.impl.ComponentBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.ComponentType;
-import org.uniprot.core.xml.jaxb.proteome.ComponentTypeType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 
 import com.google.common.base.Strings;
@@ -52,8 +51,6 @@ public class ComponentConverter implements Converter<ComponentType, Component> {
         }
         builder.proteomeCrossReferencesSet(xrefs).proteinCount(xmlObj.getCount());
 
-        builder.type(org.uniprot.core.proteome.ComponentType.typeOf(xmlObj.getType().value()));
-
         return builder.build();
     }
 
@@ -74,12 +71,6 @@ public class ComponentConverter implements Converter<ComponentType, Component> {
                 .map(val -> val.getId())
                 .forEach(val -> xmlObj.getGenomeAccession().add(val));
         xmlObj.setCount(uniObj.getProteinCount());
-        if (uniObj.getType() != null) {
-            ComponentTypeType type = ComponentTypeType.fromValue(uniObj.getType().getName());
-            xmlObj.setType(type);
-        } else {
-            xmlObj.setType(ComponentTypeType.UNPLACED);
-        }
         return xmlObj;
     }
 }

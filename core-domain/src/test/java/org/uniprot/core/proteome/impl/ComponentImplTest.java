@@ -5,7 +5,6 @@ import static org.uniprot.core.ObjectsForTests.proteomeXReferenceTypes;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.Component;
-import org.uniprot.core.proteome.ComponentType;
 
 class ComponentImplTest {
 
@@ -19,7 +18,7 @@ class ComponentImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         Component impl =
                 new ComponentImpl(
-                        "name", "des", 20, ComponentType.PRIMARY, proteomeXReferenceTypes());
+                        "name", "des", 20, proteomeXReferenceTypes());
         Component obj = ComponentBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());

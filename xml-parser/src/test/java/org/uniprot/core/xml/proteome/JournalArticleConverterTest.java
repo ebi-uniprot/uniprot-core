@@ -11,7 +11,7 @@ import org.uniprot.core.citation.JournalArticle;
 import org.uniprot.core.citation.impl.JournalArticleBuilder;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.xml.jaxb.proteome.ConsortiumType;
-import org.uniprot.core.xml.jaxb.proteome.JournalType;
+import org.uniprot.core.xml.jaxb.proteome.CitationType;
 import org.uniprot.core.xml.jaxb.proteome.NameListType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 import org.uniprot.core.xml.jaxb.proteome.PersonType;
@@ -25,9 +25,10 @@ class JournalArticleConverterTest {
     @Test
     void testFromXml() {
         ReferenceType reference = xmlFactory.createReferenceType();
-        reference.setDate("2018");
+        CitationType journal = xmlFactory.createCitationType();
         NameListType nameList = xmlFactory.createNameListType();
         ConsortiumType consortium = xmlFactory.createConsortiumType();
+        journal.setType("journal article");
         consortium.setName("Some consortium");
         nameList.getConsortiumOrPerson().add(consortium);
 
@@ -38,14 +39,16 @@ class JournalArticleConverterTest {
         p2.setName("James");
         nameList.getConsortiumOrPerson().add(p2);
 
-        reference.setAuthorList(nameList);
-        JournalType journal = xmlFactory.createJournalType();
+        journal.setAuthorList(nameList);
+     
+        journal.setDate("2018");
+        
         journal.setFirst("25");
         journal.setLast("50");
         journal.setVolume("21");
         journal.setName("Nature");
         journal.setTitle("Some Protein related to Variation");
-        reference.setJournal(journal);
+        reference.setCitation(journal);
         JournalArticle journalArticle = converter.fromXml(reference);
         assertEquals("Nature", journalArticle.getJournal().getName());
         assertEquals("50", journalArticle.getLastPage());

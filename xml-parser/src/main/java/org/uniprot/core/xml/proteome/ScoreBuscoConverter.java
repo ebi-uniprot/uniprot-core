@@ -7,7 +7,7 @@ import org.uniprot.core.proteome.impl.BuscoReportBuilder;
 import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
-import org.uniprot.core.xml.jaxb.proteome.ScorePropertyType;
+import org.uniprot.core.xml.jaxb.proteome.PropertyType;
 import org.uniprot.core.xml.jaxb.proteome.ScoreType;
 
 /**
@@ -25,7 +25,7 @@ public class ScoreBuscoConverter implements Converter<ScoreType, BuscoReport> {
     static final String PROPERTY_MISSING = "missing";
     static final String PROPERTY_SCORE = "score";
     static final String PROPERTY_LINEAGE = "lineage";
-    final ScorePropertyConverter propertyConverter;
+    final PropertyConverter propertyConverter;
 
     private final ObjectFactory xmlFactory;
 
@@ -35,16 +35,16 @@ public class ScoreBuscoConverter implements Converter<ScoreType, BuscoReport> {
 
     public ScoreBuscoConverter(ObjectFactory xmlFactory) {
         this.xmlFactory = xmlFactory;
-        this.propertyConverter = new ScorePropertyConverter(xmlFactory);
+        this.propertyConverter = new PropertyConverter(xmlFactory);
     }
 
     @Override
     public BuscoReport fromXml(ScoreType xmlObj) {
         BuscoReport result = null;
         if (Utils.notNull(xmlObj)) {
-            List<ScorePropertyType> properties = xmlObj.getProperty();
+            List<PropertyType> properties = xmlObj.getProperty();
             BuscoReportBuilder builder = new BuscoReportBuilder();
-            for (ScorePropertyType property : properties) {
+            for (PropertyType property : properties) {
                 switch (property.getName()) {
                     case PROPERTY_COMPLETED:
                         builder.complete(Integer.parseInt(property.getValue()));

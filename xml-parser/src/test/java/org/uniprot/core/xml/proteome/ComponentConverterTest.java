@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.Component;
 import org.uniprot.core.proteome.impl.ComponentBuilder;
 import org.uniprot.core.xml.jaxb.proteome.ComponentType;
-import org.uniprot.core.xml.jaxb.proteome.ComponentTypeType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 
 class ComponentConverterTest {
@@ -18,12 +17,11 @@ class ComponentConverterTest {
         ComponentType xmlObj = xmlFactory.createComponentType();
         xmlObj.setName("component name");
         xmlObj.setDescription("component description");
-        xmlObj.setType(ComponentTypeType.CON);
+
         Component component = converter.fromXml(xmlObj);
         assertEquals("component name", component.getName());
         assertEquals("component description", component.getDescription());
         assertEquals(0, component.getProteomeCrossReferences().size());
-        assertEquals(org.uniprot.core.proteome.ComponentType.CON, component.getType());
     }
 
     @Test
@@ -32,7 +30,6 @@ class ComponentConverterTest {
                 new ComponentBuilder()
                         .name("some name")
                         .description("some description")
-                        .type(org.uniprot.core.proteome.ComponentType.PRIMARY)
                         .build();
         ComponentType xmlObj = converter.toXml(component);
         Component converted = converter.fromXml(xmlObj);

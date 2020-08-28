@@ -3,19 +3,19 @@ package org.uniprot.core.xml.proteome;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.xml.jaxb.proteome.ScorePropertyType;
+import org.uniprot.core.xml.jaxb.proteome.PropertyType;
 
 /**
  * @author lgonzales
  * @since 16/04/2020
  */
-class ScorePropertyConverterTest {
+class PropertyConverterTest {
 
-    ScorePropertyConverter propertyConverter = new ScorePropertyConverter();
+    PropertyConverter propertyConverter = new PropertyConverter();
 
     @Test
     void createPropertyStringValue() {
-        ScorePropertyType property = propertyConverter.createProperty("name", "value");
+    	PropertyType property = propertyConverter.createProperty("name", "value");
         assertNotNull(property);
         assertEquals("name", property.getName());
         assertEquals("value", property.getValue());
@@ -23,7 +23,7 @@ class ScorePropertyConverterTest {
 
     @Test
     void testCreatePropertyIntValue() {
-        ScorePropertyType property = propertyConverter.createProperty("name", 10);
+    	PropertyType property = propertyConverter.createProperty("name", 10);
         assertNotNull(property);
         assertEquals("name", property.getName());
         assertEquals("10", property.getValue());
@@ -31,7 +31,7 @@ class ScorePropertyConverterTest {
 
     @Test
     void testCreatePropertyDoubleValue() {
-        ScorePropertyType property = propertyConverter.createProperty("name", 15.5d);
+    	PropertyType property = propertyConverter.createProperty("name", 15.5d);
         assertNotNull(property);
         assertEquals("name", property.getName());
         assertEquals("15.5", property.getValue());

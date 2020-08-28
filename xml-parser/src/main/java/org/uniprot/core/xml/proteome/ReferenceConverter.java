@@ -8,7 +8,9 @@ import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 import org.uniprot.core.xml.jaxb.proteome.ReferenceType;
 
 public class ReferenceConverter implements Converter<ReferenceType, Citation> {
-    private final JournalArticleConverter journalArticleConverter;
+    public static final String JOURNAL_ARTICLE = "journal article";
+    public static final String SUBMISSION = "submission";
+	private final JournalArticleConverter journalArticleConverter;
     private final SubmissionConverter submissionConverter;
 
     public ReferenceConverter() {
@@ -22,8 +24,10 @@ public class ReferenceConverter implements Converter<ReferenceType, Citation> {
 
     @Override
     public Citation fromXml(ReferenceType xmlObj) {
-        if (xmlObj.getJournal() != null) return journalArticleConverter.fromXml(xmlObj);
-        else if (xmlObj.getSubmission() != null) return submissionConverter.fromXml(xmlObj);
+    	if(xmlObj.getCitation().getType().equalsIgnoreCase(JOURNAL_ARTICLE))
+    		return journalArticleConverter.fromXml(xmlObj);
+    	else if(xmlObj.getCitation().getType().equalsIgnoreCase(SUBMISSION))
+        	return submissionConverter.fromXml(xmlObj);
         else return null;
     }
 

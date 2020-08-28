@@ -8,7 +8,6 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.Builder;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.proteome.Component;
-import org.uniprot.core.proteome.ComponentType;
 import org.uniprot.core.proteome.ProteomeDatabase;
 import org.uniprot.core.util.Utils;
 
@@ -16,7 +15,6 @@ public class ComponentBuilder implements Builder<Component> {
     private String name;
     private String description;
     private int proteinCount;
-    private ComponentType type;
     private List<CrossReference<ProteomeDatabase>> proteomeCrossReferences = new ArrayList<>();
 
     public @Nonnull ComponentBuilder name(String name) {
@@ -46,14 +44,11 @@ public class ComponentBuilder implements Builder<Component> {
         return this;
     }
 
-    public @Nonnull ComponentBuilder type(ComponentType type) {
-        this.type = type;
-        return this;
-    }
+
 
     @Override
     public @Nonnull Component build() {
-        return new ComponentImpl(name, description, proteinCount, type, proteomeCrossReferences);
+        return new ComponentImpl(name, description, proteinCount, proteomeCrossReferences);
     }
 
     public static @Nonnull ComponentBuilder from(@Nonnull Component instance) {
@@ -61,7 +56,6 @@ public class ComponentBuilder implements Builder<Component> {
                 .name(instance.getName())
                 .description(instance.getDescription())
                 .proteinCount(instance.getProteinCount())
-                .type(instance.getType())
                 .proteomeCrossReferencesSet(instance.getProteomeCrossReferences());
     }
 }

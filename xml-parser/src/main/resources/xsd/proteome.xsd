@@ -1,376 +1,315 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	elementFormDefault="qualified">
-	<xs:element name="proteomes">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xs:element name="proteomes">
 		<xs:complexType>
-			<xs:annotation>
-				<xs:documentation>Describes a collection of proteome entries.</xs:documentation>
-			</xs:annotation>
+			 <xs:annotation>
+                       <xs:documentation>Describes a collection of proteome entries.</xs:documentation>
+      	     </xs:annotation>
 			<xs:sequence>
-				<xs:element ref="proteome" minOccurs="1"
-					maxOccurs="unbounded" />
-			</xs:sequence>
+			    <xs:element ref="proteome" minOccurs="1" maxOccurs="unbounded" />
+	         </xs:sequence>
 		</xs:complexType>
 	</xs:element>
-
-	<xs:element name="proteome">
-		<xs:complexType>
-			<xs:annotation>
-				<xs:documentation>Describes proteome type.</xs:documentation>
-			</xs:annotation>
+	
+   <xs:element name="proteome">
+     <xs:complexType> 
+        <xs:annotation>
+            <xs:documentation>Describes proteome type.</xs:documentation>
+        </xs:annotation>
 			<xs:sequence>
 				<xs:element name="name" type="xs:string" />
-				<xs:element name="description" type="xs:string"
-					minOccurs="0" />
-				<xs:element name="isReferenceProteome" type="xs:boolean" />
-				<xs:element name="isRepresentativeProteome"
-					type="xs:boolean" />
-				<xs:element name="redundantTo" type="upidType"
-					minOccurs="0" />
-				<xs:element name="strain" type="xs:string" minOccurs="0" />
-				<xs:element name="isolate" type="xs:string" minOccurs="0" />
-				<xs:element name="genomeAssembly"
-					type="genomeAssemblyType" minOccurs="0" maxOccurs="1" />
-				<xs:element name="dbReference" type="dbReferenceType"
-					minOccurs="0" maxOccurs="unbounded" />
-				<xs:element name="component" type="componentType"
-					maxOccurs="unbounded" />
-				<xs:element name="reference" type="referenceType"
-					minOccurs="0" maxOccurs="unbounded" />
-				<xs:element name="redundantProteome"
-					type="redundantProteomeType" minOccurs="0" maxOccurs="unbounded" />
-				<xs:element ref="canonicalGene" minOccurs="0"
-					maxOccurs="unbounded" />
-				<xs:element name="panproteome" type="xs:string"
-					minOccurs="0" />
-				<xs:element name="annotationScore"
-					type="annotationScoreType" minOccurs="0" maxOccurs="1" />
-				<xs:element name="excluded" type="exclusionType"
-					minOccurs="0" maxOccurs="1" />
-				<xs:element name="scores" type="scoreType" minOccurs="0"
-					maxOccurs="unbounded" />
+			    <xs:element name="description" type="xs:string" minOccurs="0" />			     
+			    <xs:element name="isReferenceProteome" type="xs:boolean" />
+			    <xs:element name="isRepresentativeProteome" type="xs:boolean" />				    
+			    <xs:element name="redundantTo" type="upidType" minOccurs="0"/>
+			    <xs:element name="strain" type="xs:string" minOccurs="0" />		
+			    <xs:element name="isolate" type="xs:string" minOccurs="0" />	
+			     <xs:element name="genomeAssembly" type="genomeAssemblyType" minOccurs="0" maxOccurs="1"/>     
+			    <xs:element name="dbReference" type="dbReferenceType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="component" type="componentType" maxOccurs="unbounded"/>
+				<xs:element name="reference" type="referenceType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="redundantProteome" type="redundantProteomeType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="canonicalGene" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="panproteome" type="xs:string" minOccurs="0"/>
+				<xs:element name="annotationScore" type="annotationScoreType" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="excluded" type="exclusionType" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="scores" type="scoreType" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="upid" type="upidType" />
 			<xs:attribute name="modified" type="xs:date" />
 			<xs:attribute name="taxonomy" type="xs:long" />
 			<xs:attribute name="source" type="xs:string" />
-			<xs:attribute name="sourceTaxonomy" type="xs:long" />
 			<xs:attribute name="superregnum" type="superregnumType" />
-		</xs:complexType>
-	</xs:element>
-	<xs:complexType name="genomeAssemblyType">
-		<xs:sequence>
-			<xs:element name="genomeAssemblySource" type="xs:string" />
-			<xs:sequence minOccurs="0" maxOccurs="1">
-				<xs:element name="genomeAssembly" type="xs:string" />
-				<xs:element name="genomeAssemblyUrl" type="xs:string"
-					minOccurs="0" />
-				<xs:element name="genomeRepresentation" type="xs:string" />
-			</xs:sequence>
-		</xs:sequence>
-	</xs:complexType>
+      </xs:complexType>
+    </xs:element>
+   <xs:complexType name="genomeAssemblyType">
+    <xs:sequence>
+        <xs:element name="genomeAssemblySource" type="xs:string"/>
+    	<xs:sequence minOccurs="0" maxOccurs="1">
+           <xs:element name="genomeAssembly" type="xs:string"/>
+           <xs:element name="genomeAssemblyUrl" type="xs:string" minOccurs="0"/>
+           <xs:element name="genomeRepresentation" type="xs:string" /> 
+        </xs:sequence>
+       </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="annotationScoreType">
+         <xs:attribute name="normalizedAnnotationScore" type="xs:int" use="required"/>
+    </xs:complexType>
+    
+     <xs:simpleType name="superregnumType">
+       <xs:annotation>
+          <xs:documentation>
+             Enumeration for superregnum name.
+          </xs:documentation>
+       </xs:annotation>
+       <xs:restriction base="xs:string">
+            <xs:enumeration value="eukaryota"/>
+            <xs:enumeration value="bacteria"/>
+            <xs:enumeration value="viruses"/>
+            <xs:enumeration value="archaea"/>
+       </xs:restriction>
+    </xs:simpleType>
+      
+    <xs:simpleType name="upidType">
+        <xs:annotation>
+             <xs:documentation>Describes UPID identifier.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+             <xs:pattern value="UP[0-9]{9}"/>
+        </xs:restriction>
+    </xs:simpleType>
 
-	<xs:simpleType name="superregnumType">
-		<xs:annotation>
-			<xs:documentation>
-				Enumeration for superregnum name.
-			</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="eukaryota" />
-			<xs:enumeration value="bacteria" />
-			<xs:enumeration value="viruses" />
-			<xs:enumeration value="archaea" />
-		</xs:restriction>
-	</xs:simpleType>
+    <xs:element name="canonicalGene">
+       <xs:complexType>
+            <xs:annotation>
+                <xs:documentation>Describes canonical gene in genecentric model.</xs:documentation>
+            </xs:annotation>
+            <xs:sequence>
+                <xs:element name="gene" type="geneType" />
+                <xs:element name="relatedGene" type="geneType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:complexType name="geneType">
+       <xs:annotation>
+          <xs:documentation>
+             Describes protein in genecentric data 
+          </xs:documentation>
+       </xs:annotation>
+        <xs:attribute name="accession" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>Uniprot accession.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="entryType" type="entryType" />
+        <xs:attribute name="length" type="xs:long" />
+        <xs:attribute name="geneName" type="xs:string" />
+        <xs:attribute name="geneNameType" type="geneNameType" />
+    </xs:complexType>
+    
+    <xs:simpleType name="entryType">
+       <xs:annotation>
+          <xs:documentation>
+             Enumeration for entryType. 0-SwissProt, 1-Trembl.
+          </xs:documentation>
+       </xs:annotation>
+       <xs:restriction base="xs:string">
+            <xs:enumeration value="Swiss-Prot"/>
+            <xs:enumeration value="TrEMBL"/>
+       </xs:restriction>
+    </xs:simpleType> 
 
+     <xs:simpleType name="geneNameType">
+       <xs:annotation>
+          <xs:documentation>
+             Describes the origin of gene name for genecentric model.
+          </xs:documentation>
+       </xs:annotation>
+       <xs:restriction base="xs:string">
+          <xs:enumeration value="MOD" />
+          <xs:enumeration value="Ensembl" />
+          <xs:enumeration value="OLN" />
+          <xs:enumeration value="ORF" />
+          <xs:enumeration value="Gene name" />
+          <xs:enumeration value="Missing" />
+       </xs:restriction>
+    </xs:simpleType>   
 
-	<xs:simpleType name="upidType">
-		<xs:annotation>
-			<xs:documentation>Describes UPID identifier.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:pattern value="UP[0-9]{9}" />
-		</xs:restriction>
-	</xs:simpleType>
-
-	<xs:element name="canonicalGene">
-		<xs:complexType>
-			<xs:annotation>
-				<xs:documentation>Describes canonical gene in genecentric model.</xs:documentation>
-			</xs:annotation>
-			<xs:sequence>
-				<xs:element name="gene" type="geneType" />
-				<xs:element name="relatedGene" type="geneType"
-					minOccurs="0" maxOccurs="unbounded" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
-	<xs:complexType name="geneType">
-		<xs:annotation>
-			<xs:documentation>
-				Describes protein in genecentric data
-			</xs:documentation>
-		</xs:annotation>
-		<xs:attribute name="accession" type="xs:string">
-			<xs:annotation>
-				<xs:documentation>Uniprot accession.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="entryType" type="entryType" />
-		<xs:attribute name="length" type="xs:long" />
-		<xs:attribute name="geneName" type="xs:string" />
-		<xs:attribute name="geneNameType" type="geneNameType" />
-	</xs:complexType>
-
-	<xs:simpleType name="componentTypeType">
-		<xs:annotation>
-			<xs:documentation>
-				Enumeration for componentTypeType.
-			</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="Primary" />
-			<xs:enumeration value="CON" />
-			<xs:enumeration value="Segmented genome" />
-			<xs:enumeration value="WGS" />
-			<xs:enumeration value="GCA" />
-			<xs:enumeration value="GCF" />
-			<xs:enumeration value="Unplaced" />
-		</xs:restriction>
-	</xs:simpleType>
-
-	<xs:simpleType name="entryType">
-		<xs:annotation>
-			<xs:documentation>
-				Enumeration for entryType. 0-SwissProt, 1-Trembl.
-			</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="Swiss-Prot" />
-			<xs:enumeration value="TrEMBL" />
-		</xs:restriction>
-	</xs:simpleType>
-
-	<xs:simpleType name="geneNameType">
-		<xs:annotation>
-			<xs:documentation>
-				Describes the origin of gene name for genecentric
-				model.
-			</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="MOD" />
-			<xs:enumeration value="Ensembl" />
-			<xs:enumeration value="OLN" />
-			<xs:enumeration value="ORF" />
-			<xs:enumeration value="Gene name" />
-			<xs:enumeration value="Missing" />
-		</xs:restriction>
-	</xs:simpleType>
-
-	<xs:complexType name="referenceType">
-		<xs:annotation>
-			<xs:documentation>Describes different types of references.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:choice>
-				<xs:element name="submission" type="submissionType" />
-				<xs:element name="journal" type="journalType" />
-			</xs:choice>
-			<xs:element name="authorList" type="nameListType">
-				<xs:annotation>
-					<xs:documentation>Describes the authors of a publication.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-		<xs:attribute name="date" use="optional">
-			<xs:simpleType>
-				<xs:union memberTypes="xs:date xs:gYearMonth xs:gYear" />
-			</xs:simpleType>
-		</xs:attribute>
-	</xs:complexType>
-
-	<xs:complexType name="redundantProteomeType">
-		<xs:annotation>
-			<xs:documentation>
-				Describes redundant proteome
-			</xs:documentation>
-		</xs:annotation>
-
-		<xs:attribute name="upid" type="upidType" />
-		<xs:attribute name="similarity" type="xs:float" />
-	</xs:complexType>
-
+    <xs:complexType name="redundantProteomeType">
+        <xs:annotation>
+           <xs:documentation>
+              Describes redundant proteome
+           </xs:documentation>
+        </xs:annotation>  
+        <xs:attribute name="upid" type="upidType"/>
+        <xs:attribute name="similarity" type="xs:float"/>
+    </xs:complexType>
+	
 	<xs:complexType name="componentType">
-		<xs:annotation>
-			<xs:documentation>
-				Describes proteome component
-			</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="description" type="xs:string"
-				minOccurs="0" />
-			<xs:element name="biosampleId" type="xs:string"
-				minOccurs="0" />
-			<xs:element name="genomeAccession" type="xs:string"
-				maxOccurs="unbounded" />
-			<xs:element name="protein" type="proteinType"
-				minOccurs="0" maxOccurs="unbounded" />
-		</xs:sequence>
-		<xs:attribute name="name" type="xs:string" />
-		<xs:attribute name="count" type="xs:int" use="required" />
-		<xs:attribute name="type" type="componentTypeType"
-			use="required" />
-	</xs:complexType>
+	      <xs:annotation>
+             <xs:documentation>
+                Describes proteome component
+             </xs:documentation>
+          </xs:annotation>      
+     	  <xs:sequence>
+     	    <xs:element name="description" type="xs:string" minOccurs="0" />
+     	    <xs:element name="biosampleId" type="xs:string" minOccurs="0" />
+	        <xs:element name="genomeAccession" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+	        <xs:element name="protein" type="proteinType" minOccurs="0" maxOccurs="unbounded"/>
+     	  </xs:sequence>
+    	 <xs:attribute name="name" type="xs:string"/>
+    	 <xs:attribute name="count" type="xs:int" use="required"/>
+     </xs:complexType>
+    
+   <xs:complexType name="proteinType">
+       <xs:annotation>
+          <xs:documentation>
+             Describes protein in proteome component
+          </xs:documentation>
+       </xs:annotation>
+        <xs:attribute name="accession" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>Uniprot accession.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="entryType" type="entryType" />
+    </xs:complexType>
+    
+  	  <!-- Reference definition begins -->
+    <xs:complexType name="referenceType">
+        <xs:annotation>
+            <xs:documentation>Describes different types of citations.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="citation" type="citationType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- Reference definition ends -->
+	  
+    <!-- Citation definition begins -->
+    <xs:complexType name="citationType">
+        <xs:annotation>
+            <xs:documentation>Describes different types of citations.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="title" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Describes the title of a citation.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="authorList" type="nameListType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Describes the authors of a citation.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+              <xs:element name="dbReference" type="dbReferenceType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Describes cross-references to bibliography databases (MEDLINE, PubMed, AGRICOLA) or other online resources (DOI).
+                    Equivalent to the flat file RX-line.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+                     
+        </xs:sequence>
+        <xs:attribute name="type" use="required">
+            <xs:annotation>
+                <xs:documentation>Describes the type of a citation.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="journal article"/>
+                    <xs:enumeration value="submission"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="date" use="optional">
+            <xs:simpleType>
+                <xs:union memberTypes="xs:date xs:gYearMonth xs:gYear"/>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="name" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>Describes the name of an (online) journal or book.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="volume" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>Describes the volume of a journal or book.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="first" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>Describes the first page of an article.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="last" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>Describes the last page of an article.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="db" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>Describes the database name of submissions.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>        
+    </xs:complexType>
+    
+    <xs:complexType name="consortiumType">
+        <xs:annotation>
+            <xs:documentation>Describes the authors of a citation when these are represented by a consortium.</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="personType">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="nameListType">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="consortium" type="consortiumType"/>
+            <xs:element name="person" type="personType"/>
+        </xs:choice>
+    </xs:complexType>
+    <!-- Citation definition ends -->
 
-	<xs:complexType name="proteinType">
-		<xs:annotation>
-			<xs:documentation>
-				Describes protein in proteome component
-			</xs:documentation>
-		</xs:annotation>
-		<xs:attribute name="accession" type="xs:string">
-			<xs:annotation>
-				<xs:documentation>Uniprot accession.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="entryType" type="entryType" />
-	</xs:complexType>
+    <!-- Database cross-reference definition begins -->
+    <xs:complexType name="dbReferenceType">
+        <xs:annotation>
+            <xs:documentation>Describes a database cross-reference.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="type" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>Describes the name of the database.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="id" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>Describes a unique database identifier.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
 
-	<xs:complexType name="submissionType">
-		<xs:annotation>
-			<xs:documentation>Describes the submission type of publication.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="title" type="xs:string">
-				<xs:annotation>
-					<xs:documentation>Describes the title of a citation.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-		<xs:attribute name="db" type="xs:string">
-			<xs:annotation>
-				<xs:documentation>Describes the database name of submissions.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-	</xs:complexType>
+    <xs:complexType name="propertyType">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="value" type="xs:string" use="required"/>
+    </xs:complexType>
 
-	<xs:complexType name="journalType">
-		<xs:annotation>
-			<xs:documentation>Describes the journal type of publication.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="title" type="xs:string" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Describes the title of a citation.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="dbReference" type="dbReferenceType"
-				minOccurs="0" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation>Describes cross-references to bibliography
-						databases (MEDLINE, PubMed, AGRICOLA) or other online resources
-						(DOI).
-						Equivalent to the flat file RX-line.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-		<xs:attribute name="name" type="xs:string" use="optional">
-			<xs:annotation>
-				<xs:documentation>Describes the name of an (online) journal or book.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="volume" type="xs:string"
-			use="optional">
-			<xs:annotation>
-				<xs:documentation>Describes the volume of a journal or book.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="first" type="xs:string"
-			use="optional">
-			<xs:annotation>
-				<xs:documentation>Describes the first page of an article.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="last" type="xs:string" use="optional">
-			<xs:annotation>
-				<xs:documentation>Describes the last page of an article.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-	</xs:complexType>
-
-	<xs:complexType name="consortiumType">
-		<xs:annotation>
-			<xs:documentation>Describes the authors of a citation when these are
-				represented by a consortium.</xs:documentation>
-		</xs:annotation>
-		<xs:attribute name="name" type="xs:string" />
-	</xs:complexType>
-
-	<xs:complexType name="personType">
-		<xs:attribute name="name" type="xs:string" />
-	</xs:complexType>
-
-	<xs:complexType name="nameListType">
-		<xs:choice maxOccurs="unbounded">
-			<xs:element name="consortium" type="consortiumType" />
-			<xs:element name="person" type="personType" />
-		</xs:choice>
-	</xs:complexType>
-	<!-- Citation definition ends -->
-
-	<!-- Database cross-reference definition begins -->
-	<xs:complexType name="dbReferenceType">
-		<xs:annotation>
-			<xs:documentation>Describes a database cross-reference.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="property" type="propertyType"
-				minOccurs="0" maxOccurs="unbounded" />
-		</xs:sequence>
-		<xs:attribute name="type" type="xs:string">
-			<xs:annotation>
-				<xs:documentation>Describes the name of the database.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="id" type="xs:string">
-			<xs:annotation>
-				<xs:documentation>Describes a unique database identifier.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-	</xs:complexType>
-
-	<xs:complexType name="propertyType">
-		<xs:attribute name="type" type="xs:string" use="required" />
-		<xs:attribute name="value" type="xs:string"
-			use="required" />
-	</xs:complexType>
-
-	<xs:complexType name="annotationScoreType">
-		<xs:attribute name="normalizedAnnotationScore"
-			type="xs:int" use="required" />
-	</xs:complexType>
-	<xs:complexType name="exclusionType">
-		<xs:sequence>
-			<xs:element name="exclusionReason" type="xs:string"
-				minOccurs="1" maxOccurs="unbounded" />
-		</xs:sequence>
-	</xs:complexType>
-
-	<xs:complexType name="scoreType">
-		<xs:sequence>
-			<xs:element name="property" type="scorePropertyType"
-				minOccurs="0" maxOccurs="unbounded" />
-		</xs:sequence>
-		<xs:attribute name="name" type="xs:string" use="required" />
-	</xs:complexType>
-
-	<xs:complexType name="scorePropertyType">
-		<xs:attribute name="name" type="xs:string" use="required" />
-		<xs:attribute name="value" type="xs:string"
-			use="required" />
-	</xs:complexType>
-
+   <xs:complexType name="exclusionType">
+          <xs:sequence>
+              <xs:element name="exclusionReason" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+          </xs:sequence>
+   </xs:complexType>
+   
+     <xs:complexType name="scoreType">
+          <xs:sequence>
+              <xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+          <xs:attribute name="name" type="xs:string" use="required"/>
+     </xs:complexType>
+     
 </xs:schema>

@@ -62,12 +62,12 @@ public class CrossReferenceConverter
     }
 
     private Property fromXmlProperty(PropertyType property) {
-        return new Property(property.getType(), property.getValue());
+        return new Property(property.getName(), property.getValue());
     }
 
     private PropertyType toXmlProperty(Property property) {
         PropertyType ptype = xmlFactory.createPropertyType();
-        ptype.setType(property.getKey());
+        ptype.setName(property.getKey());
         ptype.setValue(property.getValue());
         return ptype;
     }

@@ -59,14 +59,13 @@ class ProteomeConverterTest {
                 new ComponentBuilder()
                         .name("someName1")
                         .description("some description")
-                        .type(org.uniprot.core.proteome.ComponentType.UNPLACED)
+                       
                         .build();
 
         Component component2 =
                 new ComponentBuilder()
                         .name("someName2")
                         .description("some description 2")
-                        .type(org.uniprot.core.proteome.ComponentType.SEGMENTED_GENOME)
                         .build();
 
         components.add(component1);
