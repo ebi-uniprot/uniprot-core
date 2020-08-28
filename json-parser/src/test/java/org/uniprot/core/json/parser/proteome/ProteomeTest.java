@@ -48,7 +48,6 @@ public class ProteomeTest {
                         .description("some description")
                         .proteinCount(102)
                         .proteomeCrossReferencesSet(xrefs)
-                        .type(ComponentType.PRIMARY)
                         .build();
         ValidateJson.verifyJsonRoundTripParser(
                 ProteomeJsonConfig.getInstance().getFullObjectMapper(), component);
@@ -138,7 +137,6 @@ public class ProteomeTest {
                         .description("description")
                         .name("name")
                         .proteinCount(18)
-                        .type(ComponentType.PRIMARY)
                         .proteomeCrossReferencesAdd(xref2)
                         .build();
         Protein protein =
