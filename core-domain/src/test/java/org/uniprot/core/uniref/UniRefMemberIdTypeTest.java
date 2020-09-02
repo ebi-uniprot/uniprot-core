@@ -19,14 +19,19 @@ class UniRefMemberIdTypeTest {
                 Arrays.asList(
                                 "UniProtKB ID",
                                 "UniParc",
-                                "Reviewed (Swiss-Prot)",
-                                "Unreviewed (TrEMBL)")
+                                "Reviewed (UniProtKB/Swiss-Prot)",
+                                "Unreviewed (UniProtKB/TrEMBL)")
                         .contains(enm.getDisplayName()));
     }
 
     @Test
     void testDisplayOrder() {
         assertEquals(0, UniRefMemberIdType.UNIPROTKB_SWISSPROT.getDisplayOrder());
+    }
+
+    @Test
+    void testXmlName() {
+        assertEquals("UniParc ID", UniRefMemberIdType.UNIPARC.getXmlName());
     }
 
     @Nested

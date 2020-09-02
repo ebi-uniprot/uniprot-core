@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.uniref;
 
+import static org.uniprot.core.uniref.UniRefUtils.getUniProtKBIdType;
+
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -47,7 +49,12 @@ public abstract class AbstractMemberConverter<T extends UniRefMember>
     protected void updateMemberToXml(MemberType memberType, T uniObj) {
         DbReferenceType xref = jaxbFactory.createDbReferenceType();
         memberType.setDbReference(xref);
-        xref.setType(uniObj.getMemberIdType().getDisplayName());
+        if (uniObj.getMemberIdType().equals(UniRefMemberIdType.UNIPROTKB_TREMBL)
+                || uniObj.getMemberIdType().equals(UniRefMemberIdType.UNIPROTKB_SWISSPROT)) {
+            xref.setType(UniRefMemberIdType.UNIPROTKB.getXmlName());
+        } else {
+            xref.setType(uniObj.getMemberIdType().getXmlName());
+        }
         xref.setId(uniObj.getMemberId());
 
         if (!Strings.isNullOrEmpty(uniObj.getOrganismName())) {
@@ -120,8 +127,9 @@ public abstract class AbstractMemberConverter<T extends UniRefMember>
     protected void updateMemberFromXml(
             AbstractUniRefMemberBuilder<? extends AbstractUniRefMemberBuilder<?, T>, T> builder,
             MemberType xmlObj) {
-        builder.memberIdType(UniRefMemberIdType.typeOf(xmlObj.getDbReference().getType()))
-                .memberId(xmlObj.getDbReference().getId());
+        String memberId = xmlObj.getDbReference().getId();
+        builder.memberId(memberId);
+        String accession = null;
 
         List<PropertyType> properties = xmlObj.getDbReference().getProperty();
         for (PropertyType property : properties) {
@@ -162,6 +170,9 @@ public abstract class AbstractMemberConverter<T extends UniRefMember>
                     builder.uniref50Id(new UniRefEntryIdBuilder(property.getValue()).build());
                     break;
                 case PROPERTY_SOURCE_UNIPROT:
+                    if (accession == null) {
+                        accession = property.getValue();
+                    }
                     builder.accessionsAdd(
                             new UniProtKBAccessionBuilder(property.getValue()).build());
                     break;
@@ -174,5 +185,12 @@ public abstract class AbstractMemberConverter<T extends UniRefMember>
                     break;
             }
         }
+
+        UniRefMemberIdType memberType =
+                UniRefMemberIdType.typeOf(xmlObj.getDbReference().getType());
+        if (memberType.equals(UniRefMemberIdType.UNIPROTKB)) {
+            memberType = getUniProtKBIdType(memberId, accession);
+        }
+        builder.memberIdType(memberType);
     }
 }

@@ -57,8 +57,8 @@ class UniRefEntryLightConverterTest {
         assertEquals(GoAspect.FUNCTION, goTerm.getAspect());
         assertEquals("GO:0048306", goTerm.getId());
 
-        assertTrue(entry.getMembers().contains("Q8R2B4"));
-        assertTrue(entry.getMembers().contains("UPI0000DBE4A9"));
+        assertTrue(entry.getMembers().contains("Q8R2B4,1"));
+        assertTrue(entry.getMembers().contains("UPI0000DBE4A9,3"));
 
         assertEquals(entry.getMemberCount(), entry.getMembers().size());
         assertTrue(chainingIterators.hasNext());

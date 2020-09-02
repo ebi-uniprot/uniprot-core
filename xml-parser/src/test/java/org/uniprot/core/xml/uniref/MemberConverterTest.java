@@ -19,18 +19,18 @@ class MemberConverterTest {
 
     @Test
     void testToXml() {
-        String memberId = "P12345_HUMAN";
+        String memberId = "CDC7_HUMAN";
         int length = 312;
         String pName = "some protein name";
         String upi = "UPI0000083A08";
 
-        UniRefMemberIdType type = UniRefMemberIdType.UNIPROTKB;
+        UniRefMemberIdType type = UniRefMemberIdType.UNIPROTKB_SWISSPROT;
         UniRefMember member =
                 new UniRefMemberBuilder()
                         .memberIdType(type)
                         .memberId(memberId)
                         .organismName("Homo sapiens")
-                        .organismTaxId(9606l)
+                        .organismTaxId(9606L)
                         .sequenceLength(length)
                         .proteinName(pName)
                         .uniparcId(new UniParcIdBuilder(upi).build())
