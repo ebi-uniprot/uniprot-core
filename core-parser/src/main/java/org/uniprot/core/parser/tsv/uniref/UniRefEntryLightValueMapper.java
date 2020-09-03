@@ -50,7 +50,7 @@ public class UniRefEntryLightValueMapper extends AbstractUniRefEntryMapper<UniRe
 
     String getTypes(Set<UniRefMemberIdType> memberIdTypes) {
         return memberIdTypes.stream()
-                .sorted(Comparator.comparing(UniRefMemberIdType::getDisplayOrder))
+                .sorted(Comparator.comparing(UniRefMemberIdType::getMemberIdTypeId))
                 .map(UniRefMemberIdType::getName)
                 .collect(Collectors.joining(DELIMITER));
     }

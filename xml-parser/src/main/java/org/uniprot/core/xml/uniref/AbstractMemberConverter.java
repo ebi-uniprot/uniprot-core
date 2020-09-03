@@ -49,11 +49,10 @@ public abstract class AbstractMemberConverter<T extends UniRefMember>
     protected void updateMemberToXml(MemberType memberType, T uniObj) {
         DbReferenceType xref = jaxbFactory.createDbReferenceType();
         memberType.setDbReference(xref);
-        if (uniObj.getMemberIdType().equals(UniRefMemberIdType.UNIPROTKB_TREMBL)
-                || uniObj.getMemberIdType().equals(UniRefMemberIdType.UNIPROTKB_SWISSPROT)) {
-            xref.setType(UniRefMemberIdType.UNIPROTKB.getXmlName());
-        } else {
+        if (uniObj.getMemberIdType().equals(UniRefMemberIdType.UNIPARC)) {
             xref.setType(uniObj.getMemberIdType().getXmlName());
+        } else {
+            xref.setType(UniRefMemberIdType.UNIPROTKB.getXmlName());
         }
         xref.setId(uniObj.getMemberId());
 

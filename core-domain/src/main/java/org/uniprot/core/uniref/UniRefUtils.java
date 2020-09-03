@@ -11,6 +11,15 @@ public class UniRefUtils {
 
     private UniRefUtils() {}
 
+    /**
+     * memberId (UniProtKB id field) has the following format TREMBL: "$accession_$organism"
+     * SWISSPROT: "$gene_$organism" This method uses the logic above to identify if memberId is
+     * TREMBL or SWISSPROT
+     *
+     * @param memberId UniProtKB id field
+     * @param accession UniProtKB accession
+     * @return UniRefMemberIdType for the memberId and accession provided
+     */
     public static UniRefMemberIdType getUniProtKBIdType(String memberId, String accession) {
         UniRefMemberIdType type = UniRefMemberIdType.UNIPROTKB_SWISSPROT;
         if (memberId.startsWith(accession + "_")) {

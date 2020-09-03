@@ -9,8 +9,8 @@ import org.uniprot.core.util.EnumDisplay;
 import org.uniprot.core.util.Utils;
 
 public enum UniRefMemberIdType implements EnumDisplay {
-    UNIPROTKB_SWISSPROT("Reviewed (UniProtKB/Swiss-Prot)", null, 0),
-    UNIPROTKB_TREMBL("Unreviewed (UniProtKB/TrEMBL)", null, 1),
+    UNIPROTKB_SWISSPROT("UniProtKB Reviewed (Swiss-Prot)", null, 0),
+    UNIPROTKB_TREMBL("UniProtKB Unreviewed (TrEMBL)", null, 1),
 
     // represents either Swiss-Prot or TrEMBL entities
     UNIPROTKB("UniProtKB ID", "UniProtKB ID", 2),
@@ -48,7 +48,7 @@ public enum UniRefMemberIdType implements EnumDisplay {
         return xmlName;
     }
 
-    public int getDisplayOrder() {
+    public int getMemberIdTypeId() {
         return displayOrder;
     }
 
@@ -73,7 +73,7 @@ public enum UniRefMemberIdType implements EnumDisplay {
         }
     }
 
-    public static @Nonnull UniRefMemberIdType fromDisplayOrder(@Nonnull String order) {
+    public static @Nonnull UniRefMemberIdType fromMemberTypeId(@Nonnull String order) {
         RuntimeException ex =
                 new IllegalArgumentException(
                         "The "
@@ -82,7 +82,7 @@ public enum UniRefMemberIdType implements EnumDisplay {
                                 + order
                                 + "' doesn't exist");
         return Arrays.stream(UniRefMemberIdType.values())
-                .filter(idType -> idType.getDisplayOrder() == Integer.parseInt(order))
+                .filter(idType -> idType.getMemberIdTypeId() == Integer.parseInt(order))
                 .findFirst()
                 .orElseThrow(() -> ex);
     }
