@@ -31,12 +31,14 @@ class UniRefMemberIdTypeTest {
 
     @Test
     void testFromMemberTypeId() {
-        assertEquals(UniRefMemberIdType.UNIPROTKB_SWISSPROT, UniRefMemberIdType.fromMemberTypeId("0"));
+        assertEquals(
+                UniRefMemberIdType.UNIPROTKB_SWISSPROT, UniRefMemberIdType.fromMemberTypeId("0"));
     }
 
     @Test
     void testFromInvalidMemberTypeIdWillThrowException() {
-        assertThrows(IllegalArgumentException.class,() -> UniRefMemberIdType.fromMemberTypeId("5"));
+        assertThrows(
+                IllegalArgumentException.class, () -> UniRefMemberIdType.fromMemberTypeId("5"));
     }
 
     @Test
