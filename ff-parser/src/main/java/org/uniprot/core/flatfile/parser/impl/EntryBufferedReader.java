@@ -6,13 +6,14 @@ import java.util.zip.GZIPInputStream;
 import org.uniprot.core.flatfile.parser.EntryReader;
 
 public class EntryBufferedReader implements EntryReader {
-    private BufferedReader reader;
+    private final BufferedReader reader;
     /** Where to split entries */
     public static final String ENTRY_END_TOKEN = "//";
 
     private boolean available = true;
 
-    public EntryBufferedReader(String fileName) throws FileNotFoundException, IOException {
+    @SuppressWarnings("squid:S2095")
+    public EntryBufferedReader(String fileName) throws IOException {
         InputStream is = new FileInputStream(fileName);
 
         if (fileName.endsWith(".gz")) {
@@ -22,7 +23,7 @@ public class EntryBufferedReader implements EntryReader {
     }
 
     public String next() throws IOException {
-        StringBuffer newFileEntry = new StringBuffer();
+        StringBuilder newFileEntry = new StringBuilder();
         String newLine = null;
         if (available) {
             do {
