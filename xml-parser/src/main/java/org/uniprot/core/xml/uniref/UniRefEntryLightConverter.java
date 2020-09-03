@@ -57,9 +57,12 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
             UniRefEntryLightBuilder builder, List<MemberType> members) {
         for (MemberType memberType : members) {
             DbReferenceType dbReference = memberType.getDbReference();
-            if (dbReference.getType().equalsIgnoreCase(PROPERTY_UNIPARC_ID)) {
-                builder.membersAdd(dbReference.getId());
-                builder.memberIdTypesAdd(UniRefMemberIdType.UNIPARC);
+            if (dbReference.getType().equalsIgnoreCase(UniRefMemberIdType.UNIPARC.getXmlName())) {
+                UniRefMemberIdType idType = UniRefMemberIdType.UNIPARC;
+                // We save members as "DatabaseId,UniRefMemberIdType", this way, we can apply facet
+                // filter at UniRefEntryFacetConfig.java
+                builder.membersAdd(dbReference.getId() + "," + idType.getMemberIdTypeId());
+                builder.memberIdTypesAdd(idType);
             }
             updateMemberPropertiesFromXml(builder, dbReference.getProperty(), dbReference.getId());
         }
@@ -130,8 +133,9 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
             }
         }
         if (accession != null) {
-            builder.membersAdd(accession);
-            builder.memberIdTypesAdd(getUniProtKBIdType(id, accession));
+            UniRefMemberIdType idType = getUniProtKBIdType(id, accession);
+            builder.membersAdd(accession + "," + idType.getMemberIdTypeId());
+            builder.memberIdTypesAdd(idType);
         }
     }
 
