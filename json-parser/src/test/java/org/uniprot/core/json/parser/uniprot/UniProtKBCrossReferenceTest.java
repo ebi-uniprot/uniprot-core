@@ -14,7 +14,7 @@ import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 import com.fasterxml.jackson.databind.JsonNode;
 
 /** @author lgonzales */
-public class UniProtKBCrossReferenceTest {
+class UniProtKBCrossReferenceTest {
 
     @Test
     void testUniProtDBCrossReferenceSimple() {
@@ -86,7 +86,7 @@ public class UniProtKBCrossReferenceTest {
 
     public static UniProtKBCrossReference getUniProtDBCrossReference(String databaseName) {
         Property property = new Property("ProteinId", "description value");
-        Property property2 = new Property("Method", "Model");
+        Property property2 = new Property("GeneId", "Model");
 
         return new UniProtCrossReferenceBuilder()
                 .id("id" + databaseName)
