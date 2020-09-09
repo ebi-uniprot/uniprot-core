@@ -31,7 +31,7 @@ public class ValidateJson {
 
     public static <T> void verifyJsonRoundTripParser(ObjectMapper mapper, T obj) {
         try {
-            String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
+            byte[] json = mapper.writerWithDefaultPrettyPrinter().writeValueAsBytes(obj);
             //            logger.debug(json);
             T converted = mapper.readValue(json, (Class<T>) obj.getClass());
             assertEquals(obj, converted);

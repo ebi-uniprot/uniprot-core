@@ -13,7 +13,7 @@
 	<artifactId>json-parser</artifactId>
 
 	<properties>
-		<jackson.version>2.9.8</jackson.version>
+		<jackson.version>2.11.0</jackson.version>
 		<mbknor-jackson-jsonschema.version>1.0.31</mbknor-jackson-jsonschema.version>
 	</properties>
 
@@ -31,6 +31,11 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-smile</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
 		<dependency>

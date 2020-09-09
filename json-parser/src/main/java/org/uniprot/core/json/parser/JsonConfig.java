@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ser.PropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import com.fasterxml.jackson.dataformat.smile.SmileFactory;
 import com.github.bohnman.squiggly.filter.SquigglyPropertyFilter;
 import com.github.bohnman.squiggly.filter.SquigglyPropertyFilterMixin;
 
@@ -20,20 +21,21 @@ public abstract class JsonConfig {
 
     // common setting applicable to fullobject mapper
     public ObjectMapper getDefaultFullObjectMapper() {
-        ObjectMapper objMapper = getDefaultObjectMapper();
+        ObjectMapper objMapper = new ObjectMapper(new SmileFactory());
+       setDefaultObjectMapperConfig(objMapper);
         objMapper.setAnnotationIntrospector(new FullAnnotationIntrospector());
         return objMapper;
     }
 
     // common setting applicable to skinny object mapper
     public ObjectMapper getDefaultSimpleObjectMapper() {
-        ObjectMapper objMapper = getDefaultObjectMapper();
+        ObjectMapper objMapper = new ObjectMapper();
+        setDefaultObjectMapperConfig(objMapper);
         objMapper.setAnnotationIntrospector(new SimpleAnnotationIntrospector());
         return objMapper;
     }
 
-    private ObjectMapper getDefaultObjectMapper() {
-        ObjectMapper objMapper = new ObjectMapper();
+    private void setDefaultObjectMapperConfig(ObjectMapper objMapper) {
         objMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
         objMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         objMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
@@ -44,6 +46,5 @@ public abstract class JsonConfig {
         SimpleFilterProvider filterProvider =
                 new SimpleFilterProvider().addFilter(SquigglyPropertyFilter.FILTER_ID, filter);
         objMapper.setFilterProvider(filterProvider);
-        return objMapper;
     }
 }
