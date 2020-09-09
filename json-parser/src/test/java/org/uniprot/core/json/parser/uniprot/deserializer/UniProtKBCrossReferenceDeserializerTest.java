@@ -1,8 +1,8 @@
 package org.uniprot.core.json.parser.uniprot.deserializer;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * @author lgonzales
