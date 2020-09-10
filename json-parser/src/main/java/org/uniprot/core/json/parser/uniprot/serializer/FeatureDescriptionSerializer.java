@@ -11,6 +11,8 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 /** @author lgonzales */
 public class FeatureDescriptionSerializer extends StdSerializer<FeatureDescriptionImpl> {
 
+    private static final long serialVersionUID = -8431015151675026394L;
+
     public FeatureDescriptionSerializer() {
         super(FeatureDescriptionImpl.class);
     }

@@ -14,6 +14,8 @@ import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.json.parser.deserializer.LocalDateDeserializer;
 import org.uniprot.core.json.parser.serializer.*;
 import org.uniprot.core.json.parser.uniprot.deserializer.EvidenceDeserializer;
+import org.uniprot.core.json.parser.uniprot.deserializer.UniProtIdDeserializer;
+import org.uniprot.core.json.parser.uniprot.deserializer.UniProtKBAccessionDeserializer;
 import org.uniprot.core.json.parser.uniprot.deserializer.UniProtKBCrossReferenceDeserializer;
 import org.uniprot.core.json.parser.uniprot.serializer.*;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
@@ -94,6 +96,12 @@ public class UniprotKBJsonConfig extends JsonConfig {
 
         mod.addSerializer(EvidenceImpl.class, new EvidenceSerializer());
         mod.addDeserializer(EvidenceImpl.class, new EvidenceDeserializer());
+
+        mod.addSerializer(UniProtKBIdImpl.class, new UniProtIdSerializer());
+        mod.addDeserializer(UniProtKBIdImpl.class, new UniProtIdDeserializer());
+
+        mod.addSerializer(UniProtKBAccessionImpl.class, new UniProtKBAccessionSerializer());
+        mod.addDeserializer(UniProtKBAccessionImpl.class, new UniProtKBAccessionDeserializer());
 
         mod.addSerializer(
                 UniProtKBCrossReferenceImpl.class, new UniProtKBCrossReferenceSerializer());
