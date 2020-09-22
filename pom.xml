@@ -11,6 +11,7 @@
 	<name>UniProt Core Aggregator</name>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<surefire-version>2.22.2</surefire-version>
 		<failsafe-version>2.22.2</failsafe-version>
 		<mockito-version>3.0.0</mockito-version>
@@ -38,6 +39,7 @@
 		<!-- Integration test report path -->
 		<jacoco.out.it.file>jacoco-it.exec</jacoco.out.it.file>
 		<jacoco.itReportPath>${jacoco.outputDir}/${jacoco.out.it.file}</jacoco.itReportPath>
+		<jacoco.version>0.8.5</jacoco.version>
 	</properties>
 
 	<dependencyManagement>
@@ -169,6 +171,25 @@
 					</includes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -181,6 +202,7 @@
 		<module>controlled-vocabulary</module>
 		<module>json-parser</module>
 		<module>tools-entry-scorer</module>
+		<module>jacoco-aggregate-report</module>
 	</modules>
 
 	<profiles>
@@ -253,32 +275,6 @@
 									<propertyName>jacoco.agent.it.arg</propertyName>
 									<append>true</append>
 								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>coverage</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.jacoco</groupId>
-						<artifactId>jacoco-maven-plugin</artifactId>
-						<version>0.8.4</version>
-						<executions>
-							<execution>
-								<id>prepare-agent</id>
-								<goals>
-									<goal>prepare-agent</goal>
-								</goals>
-							</execution>
-							<execution>
-								<id>report</id>
-								<goals>
-									<goal>report</goal>
-								</goals>
 							</execution>
 						</executions>
 					</plugin>

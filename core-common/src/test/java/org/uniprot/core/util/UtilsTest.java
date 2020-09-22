@@ -336,6 +336,38 @@ class UtilsTest {
                         });
             }
         }
+
+        @Nested
+        class modifiableLinkedHashSet {
+            @Test
+            void whenNull_returnsEmptyLinkedHashSet() {
+                assertAll(
+                        () -> assertNotNull(Utils.modifiableLinkedHashSet((null))),
+                        () -> assertTrue(Utils.modifiableLinkedHashSet((null)).isEmpty()));
+            }
+
+            @Test
+            void canAddElementsInEmptyLinkedHashSet() {
+                LinkedHashSet<String> nullList = null;
+                LinkedHashSet<String> list = Utils.modifiableLinkedHashSet(nullList);
+                list.add("a");
+                assertAll(
+                        () -> assertTrue(list.contains("a")),
+                        () -> assertFalse(list.isEmpty()),
+                        () -> assertNotSame(nullList, list));
+            }
+
+            @Test
+            void canAddElementsInLinkedHashSet() {
+                LinkedHashSet<String> initialList = new LinkedHashSet<>();
+                initialList.add("a");
+                LinkedHashSet<String> list = Utils.modifiableLinkedHashSet(initialList);
+                assertAll(
+                        () -> assertFalse(list.isEmpty()),
+                        () -> assertTrue(list.contains("a")),
+                        () -> assertEquals(initialList, list));
+            }
+        }
     }
 
     @Nested

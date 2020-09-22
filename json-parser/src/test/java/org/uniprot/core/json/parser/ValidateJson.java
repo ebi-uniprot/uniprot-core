@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.json.parser.uniprot.UniprotKBJsonConfig;
 import org.uniprot.core.uniprotkb.impl.UniProtKBEntryImpl;
+import org.uniprot.core.util.Utils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -64,46 +65,67 @@ public class ValidateJson {
      * @param <T> The object that must be checked
      */
     public static <T> void verifyEmptyFields(T obj) {
-        verifyEmptyFields(obj, null);
+        verifyEmptyFields(obj, null, null);
     }
 
-    private static <T> void verifyEmptyFields(T obj, String propertyName) {
+    /**
+     * This test fail if there is an null or empty field left.
+     *
+     * @param obj The object that must be checked
+     * @param <T> The object that must be checked
+     */
+    public static <T> void verifyEmptyFields(T obj, String ignoreField) {
+        verifyEmptyFields(obj, null, ignoreField);
+    }
+
+    private static <T> void verifyEmptyFields(T obj, String propertyName, String ignoredField) {
         try {
             if (obj == null) {
-                fail(propertyName + " can not be null in the complete test");
+                checkAndFail(propertyName, ignoredField, " can not be null in the complete test");
             } else {
                 if (obj instanceof String) {
                     if (((String) obj).isEmpty()) {
-                        fail(propertyName + " can not be empty in the complete test");
+                        checkAndFail(
+                                propertyName,
+                                ignoredField,
+                                " can not be empty in the complete test");
                     }
                 } else if (obj instanceof Number) {
                     if (((Number) obj).intValue() == 0) {
-                        fail(propertyName + " can not be zero");
+                        checkAndFail(propertyName, ignoredField, " can not be zero");
                     }
                 } else if (obj instanceof Boolean) {
                     if (!((Boolean) obj)) {
-                        fail(propertyName + " must be true");
+                        checkAndFail(propertyName, ignoredField, " must be true");
                     }
                 } else if (obj instanceof Collection) {
                     if (((Collection) obj).isEmpty()) {
-                        fail(propertyName + " must not be empty");
+                        checkAndFail(propertyName, ignoredField, " must not be empty");
                     } else {
-                        ((Collection) obj).forEach(item -> verifyEmptyFields(item, propertyName));
+                        ((Collection) obj)
+                                .forEach(
+                                        item ->
+                                                verifyEmptyFields(
+                                                        item, propertyName, ignoredField));
                     }
                 } else if (obj instanceof Map) {
                     if (((Map) obj).isEmpty()) {
-                        fail(propertyName + " must not be empty");
+                        checkAndFail(propertyName, ignoredField, " must not be empty");
                     } else {
                         ((Map<String, Object>) obj)
                                 .entrySet()
                                 .forEach(
-                                        entry -> verifyEmptyFields(entry.getValue(), propertyName));
+                                        entry ->
+                                                verifyEmptyFields(
+                                                        entry.getValue(),
+                                                        propertyName,
+                                                        ignoredField));
                     }
                 } else if (!(obj instanceof Enum)) {
                     for (Field field : getInheritedPrivateFields(obj.getClass())) {
                         if (!Modifier.isStatic(field.getModifiers()) && isJsonField(field, obj)) {
                             field.setAccessible(true);
-                            verifyEmptyFields(field.get(obj), field.getName());
+                            verifyEmptyFields(field.get(obj), field.getName(), ignoredField);
                         }
                     }
                 }
@@ -115,6 +137,15 @@ public class ValidateJson {
             } else {
                 fail("Error: not expected null object: " + e.getMessage());
             }
+        }
+    }
+
+    private static void checkAndFail(String propertyName, String ignoredField, String message) {
+        if (ignoredField == null
+                || (Utils.notNullNotEmpty(ignoredField) && !propertyName.equals(ignoredField))) {
+            fail(propertyName + message);
+        } else {
+            logger.warn("property ignored: " + ignoredField);
         }
     }
 

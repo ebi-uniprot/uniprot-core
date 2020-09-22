@@ -3,7 +3,6 @@ package org.uniprot.core.parser.tsv.uniref;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.UniRefMemberIdType;
@@ -13,56 +12,23 @@ import org.uniprot.core.util.Utils;
  * @author jluo
  * @date: 22 Aug 2019
  */
-public class UniRefEntryValueMapper implements EntityValueMapper<UniRefEntry> {
-
-    private static final String DELIMITER = "; ";
-    private static final List<String> UNIREF_FIELDS =
-            Collections.unmodifiableList(
-                    Arrays.asList(
-                            "id",
-                            "name",
-                            "common_taxon",
-                            "common_taxonid",
-                            "count",
-                            "created",
-                            "length",
-                            "sequence",
-                            "identity",
-                            "types"));
-    private static final String ORGANISM = "organism";
-    private static final String ORGANISM_ID = "organism_id";
-    private static final String MEMBER = "members";
-
+public class UniRefEntryValueMapper extends AbstractUniRefEntryMapper<UniRefEntry> {
     @Override
-    public Map<String, String> mapEntity(UniRefEntry entry, List<String> fields) {
-        Map<String, String> map = new HashMap<>();
-        if (contains(fields)) {
-            map.putAll(getSimpleAttributeValues(entry));
-        }
-        if (fields.contains(ORGANISM)) {
-            map.put(ORGANISM, getOrganisms(entry));
-        }
-        if (fields.contains(ORGANISM_ID)) {
-            map.put(ORGANISM_ID, getOrganismTaxId(entry));
-        }
-        if (fields.contains(MEMBER)) {
-            map.put(MEMBER, getMembers(entry));
-        }
-
-        return map;
-    }
-
-    private static boolean contains(List<String> fields) {
-        return fields.stream().anyMatch(UNIREF_FIELDS::contains);
-    }
-
-    private Map<String, String> getSimpleAttributeValues(UniRefEntry entry) {
+    Map<String, String> getSimpleAttributeValues(UniRefEntry entry) {
         Map<String, String> map = new HashMap<>();
         map.put(UNIREF_FIELDS.get(0), entry.getId().getValue());
-        map.put(UNIREF_FIELDS.get(1), entry.getName());
-        map.put(UNIREF_FIELDS.get(2), entry.getCommonTaxon());
-        map.put(UNIREF_FIELDS.get(3), Long.toString(entry.getCommonTaxonId()));
-        map.put(UNIREF_FIELDS.get(4), Integer.toString(entry.getMemberCount()));
+        map.put(UNIREF_FIELDS.get(1), Utils.emptyOrString(entry.getName()));
+        map.put(UNIREF_FIELDS.get(2), Utils.emptyOrString(entry.getCommonTaxon()));
+        if (entry.getCommonTaxonId() != null) {
+            map.put(UNIREF_FIELDS.get(3), entry.getCommonTaxonId().toString());
+        } else {
+            map.put(UNIREF_FIELDS.get(3), "");
+        }
+        if (entry.getMemberCount() != null) {
+            map.put(UNIREF_FIELDS.get(4), entry.getMemberCount().toString());
+        } else {
+            map.put(UNIREF_FIELDS.get(4), "");
+        }
         map.put(UNIREF_FIELDS.get(5), entry.getUpdated().toString());
         map.put(
                 UNIREF_FIELDS.get(6),
@@ -74,19 +40,8 @@ public class UniRefEntryValueMapper implements EntityValueMapper<UniRefEntry> {
         return map;
     }
 
-    private String getTypes(UniRefEntry entry) {
-        Set<String> types = new HashSet<>();
-        if (Utils.notNullNotEmpty(entry.getMembers())) {
-            entry.getMembers().stream()
-                    .map(UniRefMember::getMemberIdType)
-                    .map(UniRefMemberIdType::getDisplayName)
-                    .forEach(types::add);
-        }
-        types.add(entry.getRepresentativeMember().getMemberIdType().getDisplayName());
-        return String.join(", ", types);
-    }
-
-    static String getOrganisms(UniRefEntry entry) {
+    @Override
+    String getOrganisms(UniRefEntry entry) {
         List<String> organisms = new ArrayList<>();
         organisms.add(entry.getRepresentativeMember().getOrganismName());
         entry.getMembers().stream()
@@ -100,7 +55,8 @@ public class UniRefEntryValueMapper implements EntityValueMapper<UniRefEntry> {
         return String.join(DELIMITER, organisms);
     }
 
-    static String getOrganismTaxId(UniRefEntry entry) {
+    @Override
+    String getOrganismTaxId(UniRefEntry entry) {
         List<Long> taxIds = new ArrayList<>();
         taxIds.add(entry.getRepresentativeMember().getOrganismTaxId());
         entry.getMembers().stream()
@@ -114,14 +70,27 @@ public class UniRefEntryValueMapper implements EntityValueMapper<UniRefEntry> {
         return taxIds.stream().map(Object::toString).collect(Collectors.joining(DELIMITER));
     }
 
-    static String getMembers(UniRefEntry entry) {
+    @Override
+    String getMembers(UniRefEntry entry) {
         List<String> members = new ArrayList<>();
         members.add(getMember(entry.getRepresentativeMember()));
-        entry.getMembers().stream().map(UniRefEntryValueMapper::getMember).forEach(members::add);
+        entry.getMembers().stream().map(this::getMember).forEach(members::add);
         return String.join(DELIMITER, members);
     }
 
-    private static String getMember(UniRefMember member) {
+    private String getMember(UniRefMember member) {
         return member.getMemberId();
+    }
+
+    private String getTypes(UniRefEntry entry) {
+        Set<String> types = new HashSet<>();
+        if (Utils.notNullNotEmpty(entry.getMembers())) {
+            entry.getMembers().stream()
+                    .map(UniRefMember::getMemberIdType)
+                    .map(UniRefMemberIdType::getDisplayName)
+                    .forEach(types::add);
+        }
+        types.add(entry.getRepresentativeMember().getMemberIdType().getDisplayName());
+        return String.join(", ", types);
     }
 }

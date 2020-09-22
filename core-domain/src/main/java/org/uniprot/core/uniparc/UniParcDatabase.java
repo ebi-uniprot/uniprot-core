@@ -21,7 +21,7 @@ public enum UniParcDatabase implements Database, EnumDisplay {
     ENSEMBL_VERTEBRATE("Ensembl", true),
     EPO("EPO", true),
     FLYBASE("FlyBase", true),
-    H_INV("H-InvDB", true),
+    H_INV("H-InvDB", false),
     IPI("IPI", false),
 
     JPO("JPO", true),

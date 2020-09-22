@@ -19,7 +19,7 @@ public interface UniRefEntry extends Serializable {
 
     UniRefType getEntryType();
 
-    long getCommonTaxonId();
+    Long getCommonTaxonId();
 
     String getCommonTaxon();
 
@@ -29,5 +29,5 @@ public interface UniRefEntry extends Serializable {
 
     List<UniRefMember> getMembers();
 
-    int getMemberCount();
+    Integer getMemberCount();
 }

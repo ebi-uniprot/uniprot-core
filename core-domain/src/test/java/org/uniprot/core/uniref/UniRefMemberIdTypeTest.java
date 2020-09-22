@@ -15,7 +15,35 @@ class UniRefMemberIdTypeTest {
     @ParameterizedTest
     @EnumSource(UniRefMemberIdType.class)
     void displayName(UniRefMemberIdType enm) {
-        assertTrue(Arrays.asList("UniProtKB ID", "UniParc ID").contains(enm.getDisplayName()));
+        assertTrue(
+                Arrays.asList(
+                                "UniProtKB ID",
+                                "UniParc",
+                                "UniProtKB Reviewed (Swiss-Prot)",
+                                "UniProtKB Unreviewed (TrEMBL)")
+                        .contains(enm.getDisplayName()));
+    }
+
+    @Test
+    void testGetMemberIdTypeId() {
+        assertEquals(0, UniRefMemberIdType.UNIPROTKB_SWISSPROT.getMemberIdTypeId());
+    }
+
+    @Test
+    void testFromMemberTypeId() {
+        assertEquals(
+                UniRefMemberIdType.UNIPROTKB_SWISSPROT, UniRefMemberIdType.fromMemberTypeId("0"));
+    }
+
+    @Test
+    void testFromInvalidMemberTypeIdWillThrowException() {
+        assertThrows(
+                IllegalArgumentException.class, () -> UniRefMemberIdType.fromMemberTypeId("5"));
+    }
+
+    @Test
+    void testXmlName() {
+        assertEquals("UniParc ID", UniRefMemberIdType.UNIPARC.getXmlName());
     }
 
     @Nested

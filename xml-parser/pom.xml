@@ -15,7 +15,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jaxb.version>2.3.0</jaxb.version>
+		<jaxb.version>2.3.1</jaxb.version>
 		<jvnet.jaxb2.version>1.11.1</jvnet.jaxb2.version>
 		<dropwizard.metrics.version>3.2.6</dropwizard.metrics.version>
 		<jcommander.version>1.47</jcommander.version>
@@ -57,19 +57,14 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-impl</artifactId>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
 			<version>${jaxb.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.activation</groupId>
-			<artifactId>activation</artifactId>
-			<version>1.1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.jaxb</groupId>
-			<artifactId>jaxb-runtime</artifactId>
-			<version>${jaxb.version}</version><!--$NO-MVN-MAN-VER$ -->
+			<artifactId>javax.activation-api</artifactId>
+			<version>1.2.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.beust</groupId>

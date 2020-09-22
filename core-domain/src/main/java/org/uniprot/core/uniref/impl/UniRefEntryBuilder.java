@@ -22,10 +22,10 @@ import org.uniprot.core.util.Utils;
 public class UniRefEntryBuilder implements Builder<UniRefEntry> {
     private UniRefEntryId id;
     private String name;
-    private int memberCount;
+    private Integer memberCount;
     private LocalDate updated;
     private UniRefType entryType;
-    private long commonTaxonId;
+    private Long commonTaxonId;
     private String commonTaxon;
     private List<GeneOntologyEntry> goTerms = new ArrayList<>();
     private RepresentativeMember representativeMember;
@@ -84,7 +84,7 @@ public class UniRefEntryBuilder implements Builder<UniRefEntry> {
         return this;
     }
 
-    public @Nonnull UniRefEntryBuilder commonTaxonId(long commonTaxonId) {
+    public @Nonnull UniRefEntryBuilder commonTaxonId(Long commonTaxonId) {
         this.commonTaxonId = commonTaxonId;
         return this;
     }
@@ -120,7 +120,7 @@ public class UniRefEntryBuilder implements Builder<UniRefEntry> {
         return this;
     }
 
-    public @Nonnull UniRefEntryBuilder memberCount(int memberCount) {
+    public @Nonnull UniRefEntryBuilder memberCount(Integer memberCount) {
         this.memberCount = memberCount;
         return this;
     }

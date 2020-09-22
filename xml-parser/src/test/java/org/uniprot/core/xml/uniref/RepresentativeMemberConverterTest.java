@@ -28,7 +28,7 @@ class RepresentativeMemberConverterTest {
         String pName = "some protein name";
         String upi = "UPI0000083A08";
 
-        UniRefMemberIdType type = UniRefMemberIdType.UNIPROTKB;
+        UniRefMemberIdType type = UniRefMemberIdType.UNIPARC;
 
         RepresentativeMember member =
                 new RepresentativeMemberBuilder()
