@@ -320,6 +320,7 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
                 .annotationScore(instance.getAnnotationScore())
                 .lineagesSet(instance.getLineages());
         builder.inactiveReason = instance.getInactiveReason();
+        builder.extraAttributes = instance.getExtraAttributes();
         return builder;
     }
 
