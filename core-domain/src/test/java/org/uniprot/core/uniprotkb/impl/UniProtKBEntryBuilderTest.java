@@ -83,8 +83,8 @@ class UniProtKBEntryBuilderTest {
     @Test
     void entryTypeCanBeChangeFromBuilder_butCannotBeNull() {
         UniProtKBEntryBuilder builder = UniProtKBEntryBuilder.from(minEntry).entryType(null);
-        IllegalArgumentException error = assertThrows(
-                IllegalArgumentException.class, builder::build);
+        IllegalArgumentException error =
+                assertThrows(IllegalArgumentException.class, builder::build);
         assertNotNull(error);
         assertEquals("entryType is Mandatory for uniprot entry.", error.getMessage());
     }
@@ -261,8 +261,8 @@ class UniProtKBEntryBuilderTest {
         @Test
         void nullStringAccessionNotAllowed() {
             UniProtKBEntryBuilder builder = new UniProtKBEntryBuilder(null, "id", reason);
-            IllegalArgumentException error = assertThrows(
-                    IllegalArgumentException.class, builder::build);
+            IllegalArgumentException error =
+                    assertThrows(IllegalArgumentException.class, builder::build);
             assertNotNull(error);
             assertEquals("primaryAccession is Mandatory for uniprot entry.", error.getMessage());
         }
@@ -317,16 +317,15 @@ class UniProtKBEntryBuilderTest {
                                     reason)
                             .build();
 
-            UniProtKBEntryBuilder inactSwissBuilder = UniProtKBEntryBuilder.from(inactive)
-                    .entryType(UniProtKBEntryType.SWISSPROT);
-            IllegalArgumentException error = assertThrows(
-                    IllegalArgumentException.class, inactSwissBuilder::build);
+            UniProtKBEntryBuilder inactSwissBuilder =
+                    UniProtKBEntryBuilder.from(inactive).entryType(UniProtKBEntryType.SWISSPROT);
+            IllegalArgumentException error =
+                    assertThrows(IllegalArgumentException.class, inactSwissBuilder::build);
             assertNotNull(error);
             assertEquals("Inactive entry must have type INACTIVE", error.getMessage());
 
-
-            UniProtKBEntryBuilder inactTremblBuilder = UniProtKBEntryBuilder.from(inactive)
-                    .entryType(UniProtKBEntryType.TREMBL);
+            UniProtKBEntryBuilder inactTremblBuilder =
+                    UniProtKBEntryBuilder.from(inactive).entryType(UniProtKBEntryType.TREMBL);
             error = assertThrows(IllegalArgumentException.class, inactTremblBuilder::build);
             assertNotNull(error);
             assertEquals("Inactive entry must have type INACTIVE", error.getMessage());
@@ -360,18 +359,22 @@ class UniProtKBEntryBuilderTest {
 
         @Test
         void nullStringAccessionNotAllowed() {
-            UniProtKBEntryBuilder builder = new UniProtKBEntryBuilder(null, "id", UniProtKBEntryType.SWISSPROT);
+            UniProtKBEntryBuilder builder =
+                    new UniProtKBEntryBuilder(null, "id", UniProtKBEntryType.SWISSPROT);
 
-            IllegalArgumentException error = assertThrows(IllegalArgumentException.class, builder::build);
+            IllegalArgumentException error =
+                    assertThrows(IllegalArgumentException.class, builder::build);
             assertNotNull(error);
             assertEquals("primaryAccession is Mandatory for uniprot entry.", error.getMessage());
         }
 
         @Test
         void nullStringUniprotIdNotAllowed() {
-            UniProtKBEntryBuilder builder = new UniProtKBEntryBuilder("acc", null, UniProtKBEntryType.TREMBL);
+            UniProtKBEntryBuilder builder =
+                    new UniProtKBEntryBuilder("acc", null, UniProtKBEntryType.TREMBL);
 
-            IllegalArgumentException error = assertThrows(IllegalArgumentException.class, builder::build);
+            IllegalArgumentException error =
+                    assertThrows(IllegalArgumentException.class, builder::build);
             assertNotNull(error);
             assertEquals("uniProtkbId is Mandatory for uniprot entry.", error.getMessage());
         }
@@ -385,10 +388,11 @@ class UniProtKBEntryBuilderTest {
 
         @Test
         void typeCannotBeInactive() {
-            UniProtKBEntryBuilder builder = UniProtKBEntryBuilder.from(minEntry).entryType(UniProtKBEntryType.INACTIVE);
+            UniProtKBEntryBuilder builder =
+                    UniProtKBEntryBuilder.from(minEntry).entryType(UniProtKBEntryType.INACTIVE);
 
-            IllegalArgumentException error = assertThrows(
-                    IllegalArgumentException.class, builder::build);
+            IllegalArgumentException error =
+                    assertThrows(IllegalArgumentException.class, builder::build);
             assertNotNull(error);
             assertEquals("Active entry must NOT have type INACTIVE", error.getMessage());
         }
@@ -937,7 +941,8 @@ class UniProtKBEntryBuilderTest {
 
     @Nested
     class databaseCrossReferences {
-        private final UniProtKBCrossReference reference = new UniProtCrossReferenceBuilder().build();
+        private final UniProtKBCrossReference reference =
+                new UniProtCrossReferenceBuilder().build();
 
         @Test
         void canAddSingle() {
