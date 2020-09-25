@@ -135,7 +135,6 @@ DR   eggNOG; COG5049; LUCA.
 DR   GeneTree; ENSGT00670000098098; -.
 DR   HOGENOM; CLU_006038_1_2_1; -.
 DR   InParanoid; Q9U299; -.
-DR   KO; K12619; -.
 DR   OMA; GEHFDSN; -.
 DR   OrthoDB; 685597at2759; -.
 DR   PhylomeDB; Q9U299; -.

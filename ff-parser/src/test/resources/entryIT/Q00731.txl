@@ -235,7 +235,6 @@ DR   eggNOG; ENOG410ZWYU; LUCA.
 DR   GeneTree; ENSGT00940000157284; -.
 DR   HOGENOM; HOG000230896; -.
 DR   InParanoid; Q00731; -.
-DR   KO; K05448; -.
 DR   OrthoDB; 1364454at2759; -.
 DR   PhylomeDB; Q00731; -.
 DR   Reactome; R-MMU-114608; Platelet degranulation.

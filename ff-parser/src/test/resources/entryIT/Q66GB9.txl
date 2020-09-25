@@ -40,7 +40,6 @@ DR   KEGG; ypo:BZ17_2532; -.
 DR   KEGG; yps:YPTB0063; -.
 DR   PATRIC; fig|273123.14.peg.2657; -.
 DR   HOGENOM; HOG000218192; -.
-DR   KO; K03071; -.
 DR   OMA; CPNVLFP; -.
 DR   Proteomes; UP000001011; Chromosome.
 DR   GO; GO:0005737; C:cytoplasm; IEA:UniProtKB-SubCell.

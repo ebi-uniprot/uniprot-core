@@ -149,7 +149,6 @@ DR   MINT; P03431; -.
 DR   PRIDE; P03431; -.
 DR   GeneID; 956534; -.
 DR   KEGG; vg:956534; -.
-DR   KO; K19389; -.
 DR   Reactome; R-HSA-168255; Influenza Life Cycle.
 DR   Reactome; R-HSA-168271; Transport of Ribonucleoproteins into the Host Nucleus.
 DR   Reactome; R-HSA-168275; Entry of Influenza Virion into Host Cell via Endocytosis.

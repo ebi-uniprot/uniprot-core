@@ -83,7 +83,6 @@ DR   CTD; 7529; -.
 DR   eggNOG; KOG0841; Eukaryota.
 DR   eggNOG; COG5040; LUCA.
 DR   InParanoid; A4K2U9; -.
-DR   KO; K16197; -.
 DR   OrthoDB; 1176818at2759; -.
 DR   Proteomes; UP000001595; Unplaced.
 DR   GO; GO:0042470; C:melanosome; IEA:UniProtKB-SubCell.
