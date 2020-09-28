@@ -293,7 +293,7 @@ class UniProtKBDatabaseTypesTest {
     void testDatabaseFieldSize() {
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(SEQUENCE_DATABASES), 6);
         verifyGroupSize(
-                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(D3_STRUCTURE_DATABASES),11);
+                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(D3_STRUCTURE_DATABASES), 11);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(
                         PROTEIN_PROTEIN_INTERACTION_DATABASES),
