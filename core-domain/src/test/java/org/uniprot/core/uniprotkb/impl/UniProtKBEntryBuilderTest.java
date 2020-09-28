@@ -32,7 +32,7 @@ import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
 
 class UniProtKBEntryBuilderTest {
-    private UniProtKBEntry minEntry =
+    private final UniProtKBEntry minEntry =
             new UniProtKBEntryBuilder("acc", "id", UniProtKBEntryType.TREMBL).build();
 
     @Test
@@ -82,9 +82,11 @@ class UniProtKBEntryBuilderTest {
 
     @Test
     void entryTypeCanBeChangeFromBuilder_butCannotBeNull() {
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> UniProtKBEntryBuilder.from(minEntry).entryType(null).build());
+        UniProtKBEntryBuilder builder = UniProtKBEntryBuilder.from(minEntry).entryType(null);
+        IllegalArgumentException error =
+                assertThrows(IllegalArgumentException.class, builder::build);
+        assertNotNull(error);
+        assertEquals("entryType is Mandatory for uniprot entry.", error.getMessage());
     }
 
     @Test
@@ -165,6 +167,17 @@ class UniProtKBEntryBuilderTest {
     }
 
     @Test
+    void canAddExtraAttributeAndRetrieveItBackUsingFrom() {
+        String attrib1 = "Attrib1";
+        UniProtKBEntry entry =
+                UniProtKBEntryBuilder.from(minEntry).extraAttributesAdd(attrib1, "value1").build();
+        assertNotNull(entry);
+
+        UniProtKBEntry otherEntry = UniProtKBEntryBuilder.from(entry).build();
+        assertEquals(entry, otherEntry);
+    }
+
+    @Test
     void canAddExtraAttributes() {
         String attrib1 = "Attrib1";
         String attrib2 = "Attrib2";
@@ -216,7 +229,7 @@ class UniProtKBEntryBuilderTest {
 
     @Nested
     class InactiveEntry {
-        private EntryInactiveReason reason =
+        private final EntryInactiveReason reason =
                 new EntryInactiveReasonBuilder().type(InactiveReasonType.DELETED).build();
 
         @Test
@@ -247,9 +260,11 @@ class UniProtKBEntryBuilderTest {
 
         @Test
         void nullStringAccessionNotAllowed() {
-            assertThrows(
-                    IllegalArgumentException.class,
-                    () -> new UniProtKBEntryBuilder(null, "id", reason).build());
+            UniProtKBEntryBuilder builder = new UniProtKBEntryBuilder(null, "id", reason);
+            IllegalArgumentException error =
+                    assertThrows(IllegalArgumentException.class, builder::build);
+            assertNotNull(error);
+            assertEquals("primaryAccession is Mandatory for uniprot entry.", error.getMessage());
         }
 
         @Test
@@ -302,18 +317,18 @@ class UniProtKBEntryBuilderTest {
                                     reason)
                             .build();
 
-            assertThrows(
-                    IllegalArgumentException.class,
-                    () ->
-                            UniProtKBEntryBuilder.from(inactive)
-                                    .entryType(UniProtKBEntryType.SWISSPROT)
-                                    .build());
-            assertThrows(
-                    IllegalArgumentException.class,
-                    () ->
-                            UniProtKBEntryBuilder.from(inactive)
-                                    .entryType(UniProtKBEntryType.TREMBL)
-                                    .build());
+            UniProtKBEntryBuilder inactSwissBuilder =
+                    UniProtKBEntryBuilder.from(inactive).entryType(UniProtKBEntryType.SWISSPROT);
+            IllegalArgumentException error =
+                    assertThrows(IllegalArgumentException.class, inactSwissBuilder::build);
+            assertNotNull(error);
+            assertEquals("Inactive entry must have type INACTIVE", error.getMessage());
+
+            UniProtKBEntryBuilder inactTremblBuilder =
+                    UniProtKBEntryBuilder.from(inactive).entryType(UniProtKBEntryType.TREMBL);
+            error = assertThrows(IllegalArgumentException.class, inactTremblBuilder::build);
+            assertNotNull(error);
+            assertEquals("Inactive entry must have type INACTIVE", error.getMessage());
         }
     }
 
@@ -344,20 +359,24 @@ class UniProtKBEntryBuilderTest {
 
         @Test
         void nullStringAccessionNotAllowed() {
-            assertThrows(
-                    IllegalArgumentException.class,
-                    () ->
-                            new UniProtKBEntryBuilder(null, "id", UniProtKBEntryType.SWISSPROT)
-                                    .build());
+            UniProtKBEntryBuilder builder =
+                    new UniProtKBEntryBuilder(null, "id", UniProtKBEntryType.SWISSPROT);
+
+            IllegalArgumentException error =
+                    assertThrows(IllegalArgumentException.class, builder::build);
+            assertNotNull(error);
+            assertEquals("primaryAccession is Mandatory for uniprot entry.", error.getMessage());
         }
 
         @Test
         void nullStringUniprotIdNotAllowed() {
-            assertThrows(
-                    IllegalArgumentException.class,
-                    () ->
-                            new UniProtKBEntryBuilder("acc", null, UniProtKBEntryType.TREMBL)
-                                    .build());
+            UniProtKBEntryBuilder builder =
+                    new UniProtKBEntryBuilder("acc", null, UniProtKBEntryType.TREMBL);
+
+            IllegalArgumentException error =
+                    assertThrows(IllegalArgumentException.class, builder::build);
+            assertNotNull(error);
+            assertEquals("uniProtkbId is Mandatory for uniprot entry.", error.getMessage());
         }
 
         @Test
@@ -369,18 +388,19 @@ class UniProtKBEntryBuilderTest {
 
         @Test
         void typeCannotBeInactive() {
-            assertThrows(
-                    IllegalArgumentException.class,
-                    () ->
-                            UniProtKBEntryBuilder.from(minEntry)
-                                    .entryType(UniProtKBEntryType.INACTIVE)
-                                    .build());
+            UniProtKBEntryBuilder builder =
+                    UniProtKBEntryBuilder.from(minEntry).entryType(UniProtKBEntryType.INACTIVE);
+
+            IllegalArgumentException error =
+                    assertThrows(IllegalArgumentException.class, builder::build);
+            assertNotNull(error);
+            assertEquals("Active entry must NOT have type INACTIVE", error.getMessage());
         }
     }
 
     @Nested
     class secondaryAccessions {
-        private UniProtKBAccession acc = new UniProtKBAccessionBuilder("abc").build();
+        private final UniProtKBAccession acc = new UniProtKBAccessionBuilder("abc").build();
 
         @Test
         void canAddSingle() {
@@ -438,7 +458,7 @@ class UniProtKBEntryBuilderTest {
 
     @Nested
     class organismHost {
-        private OrganismHost host = new OrganismHostBuilder().build();
+        private final OrganismHost host = new OrganismHostBuilder().build();
 
         @Test
         void canAddSingle() {
@@ -496,7 +516,7 @@ class UniProtKBEntryBuilderTest {
 
     @Nested
     class genes {
-        private Gene gene = new GeneBuilder().build();
+        private final Gene gene = new GeneBuilder().build();
 
         @Test
         void canAddSingle() {
@@ -548,7 +568,7 @@ class UniProtKBEntryBuilderTest {
 
     @Nested
     class comments {
-        private Comment comment = new DiseaseCommentBuilder().build();
+        private final Comment comment = new DiseaseCommentBuilder().build();
 
         @Test
         void canAddSingle() {
@@ -559,8 +579,7 @@ class UniProtKBEntryBuilderTest {
             assertEquals(1, obj.getExtraAttributes().size());
             assertTrue(
                     obj.getExtraAttributes()
-                            .keySet()
-                            .contains(UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB));
+                            .containsKey(UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB));
             Map<String, Object> countByType =
                     (Map<String, Object>)
                             obj.getExtraAttributes()
@@ -592,8 +611,7 @@ class UniProtKBEntryBuilderTest {
             assertEquals(1, obj.getExtraAttributes().size());
             assertTrue(
                     obj.getExtraAttributes()
-                            .keySet()
-                            .contains(UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB));
+                            .containsKey(UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB));
         }
 
         @Test
@@ -608,8 +626,7 @@ class UniProtKBEntryBuilderTest {
             assertEquals(1, obj.getExtraAttributes().size());
             assertTrue(
                     obj.getExtraAttributes()
-                            .keySet()
-                            .contains(UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB));
+                            .containsKey(UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB));
         }
 
         @Test
@@ -654,7 +671,7 @@ class UniProtKBEntryBuilderTest {
 
     @Nested
     class features {
-        private UniProtKBFeature feature =
+        private final UniProtKBFeature feature =
                 new UniProtKBFeatureBuilder().type(UniprotKBFeatureType.CHAIN).build();
 
         @Test
@@ -666,8 +683,7 @@ class UniProtKBEntryBuilderTest {
             assertEquals(1, obj.getExtraAttributes().size());
             assertTrue(
                     obj.getExtraAttributes()
-                            .keySet()
-                            .contains(UniProtKBEntryBuilder.COUNT_BY_FEATURE_TYPE_ATTRIB));
+                            .containsKey(UniProtKBEntryBuilder.COUNT_BY_FEATURE_TYPE_ATTRIB));
             Map<String, Object> countByType =
                     (Map<String, Object>)
                             obj.getExtraAttributes()
@@ -751,7 +767,7 @@ class UniProtKBEntryBuilderTest {
 
     @Nested
     class geneLocations {
-        private GeneLocation location = new GeneLocationBuilder().build();
+        private final GeneLocation location = new GeneLocationBuilder().build();
 
         @Test
         void canAddSingle() {
@@ -810,7 +826,7 @@ class UniProtKBEntryBuilderTest {
 
     @Nested
     class keywords {
-        private Keyword keyword = new KeywordBuilder().build();
+        private final Keyword keyword = new KeywordBuilder().build();
 
         @Test
         void canAddSingle() {
@@ -867,7 +883,7 @@ class UniProtKBEntryBuilderTest {
 
     @Nested
     class references {
-        private UniProtKBReference reference = new UniProtKBReferenceBuilder().build();
+        private final UniProtKBReference reference = new UniProtKBReferenceBuilder().build();
 
         @Test
         void canAddSingle() {
@@ -925,7 +941,8 @@ class UniProtKBEntryBuilderTest {
 
     @Nested
     class databaseCrossReferences {
-        private UniProtKBCrossReference reference = new UniProtCrossReferenceBuilder().build();
+        private final UniProtKBCrossReference reference =
+                new UniProtCrossReferenceBuilder().build();
 
         @Test
         void canAddSingle() {
@@ -986,7 +1003,7 @@ class UniProtKBEntryBuilderTest {
 
     @Nested
     class lineages {
-        private TaxonomyLineage lineage = new TaxonomyLineageBuilder().build();
+        private final TaxonomyLineage lineage = new TaxonomyLineageBuilder().build();
 
         @Test
         void canAddSingle() {

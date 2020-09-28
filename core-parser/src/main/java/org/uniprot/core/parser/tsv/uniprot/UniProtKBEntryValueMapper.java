@@ -1,9 +1,9 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
 import static java.util.stream.Collectors.toMap;
+import static org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder.*;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.parser.tsv.EntityValueMapper;
@@ -17,7 +17,8 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
         COUNT_BY_COMMENT_TYPE_ATTRIB(
                 UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB, "comment_count"),
         COUNT_BY_FEATURE_TYPE_ATTRIB(
-                UniProtKBEntryBuilder.COUNT_BY_FEATURE_TYPE_ATTRIB, "feature_count");
+                UniProtKBEntryBuilder.COUNT_BY_FEATURE_TYPE_ATTRIB, "feature_count"),
+        UNIPARC_ID_ATTRIB(UniProtKBEntryBuilder.UNIPARC_ID_ATTRIB, "uniparc_id");
         private final String mapKey;
         private final String fieldName;
 
@@ -46,18 +47,10 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
     private static final List<String> DEFAULT_FIELDS =
             Arrays.asList("accession", "id", "annotation_score", "protein_existence");
 
-    // TODO: FIX IT!!!
-    private static final List<String> UNSUPPORTED_FIELDS =
-            Arrays.asList("matched_text", "tools", "uniparc_id", "mapped_pubmed_id");
-
     private static final String FIELD_FEATURE = "feature";
 
     public static boolean contains(List<String> fields) {
         return fields.stream().anyMatch(DEFAULT_FIELDS::contains);
-    }
-
-    private static boolean containsUnsupported(List<String> fields) {
-        return fields.stream().anyMatch(UNSUPPORTED_FIELDS::contains);
     }
 
     public Map<String, String> mapEntity(UniProtKBEntry entry, List<String> fields) {
@@ -117,9 +110,6 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
 
     private void mapAdditionalFields(
             UniProtKBEntry entry, List<String> fields, Map<String, String> map) {
-        if (containsUnsupported(fields)) {
-            map.putAll(getUnsupportedFields());
-        }
         if (fields.contains(FIELD_FEATURE)) {
             map.put(FIELD_FEATURE, getFeatures(entry));
         }
@@ -128,10 +118,6 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
             Map<String, String> extraAttribsMap = getExtraAttributeMap(entry, fields);
             map.putAll(extraAttribsMap);
         }
-    }
-
-    private Map<String, String> getUnsupportedFields() {
-        return UNSUPPORTED_FIELDS.stream().collect(toMap(Function.identity(), Function.identity()));
     }
 
     private void addData(Map<String, String> map, NamedValueMap dl) {

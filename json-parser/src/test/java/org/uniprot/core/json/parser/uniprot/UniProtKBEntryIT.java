@@ -112,6 +112,7 @@ public class UniProtKBEntryIT {
                 .uniProtCrossReferencesSet(xrefs)
                 .featuresSet(features)
                 .commentsSet(allComments)
+                .extraAttributesAdd(UniProtKBEntryBuilder.UNIPARC_ID_ATTRIB, "UP1234567890")
                 .build();
     }
 
