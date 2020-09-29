@@ -135,7 +135,6 @@ DR   eggNOG; KOG0196; Eukaryota.
 DR   eggNOG; COG0515; LUCA.
 DR   HOGENOM; HOG000233856; -.
 DR   InParanoid; P54757; -.
-DR   KO; K05106; -.
 DR   OrthoDB; 933071at2759; -.
 DR   PhylomeDB; P54757; -.
 DR   BRENDA; 2.7.10.1; 5301.

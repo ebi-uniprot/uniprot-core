@@ -65,7 +65,6 @@ DR   GeneID; 373595; -.
 DR   KEGG; xla:373595; -.
 DR   CTD; 373595; -.
 DR   Xenbase; XB-GENE-1011454; nrg1.
-DR   KO; K05455; -.
 DR   GO; GO:0005576; C:extracellular region; IEA:UniProtKB-SubCell.
 DR   GO; GO:0016021; C:integral component of membrane; IEA:UniProtKB-KW.
 DR   GO; GO:0005886; C:plasma membrane; IEA:UniProtKB-SubCell.

@@ -78,7 +78,6 @@ DR   PDBsum; 2VOU; -.
 DR   SMR; Q93NG3; -.
 DR   GeneID; 15879626; -.
 DR   KEGG; ag:AAK64255; -.
-DR   KO; K19189; -.
 DR   BioCyc; MetaCyc:MONOMER-1001; -.
 DR   BRENDA; 1.14.13.10; 449.
 DR   SABIO-RK; Q93NG3; -.
