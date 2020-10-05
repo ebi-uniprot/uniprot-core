@@ -1,8 +1,5 @@
 package org.uniprot.core.flatfile.tool.ca;
 
-
-
-import com.google.common.collect.Lists;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,40 +7,40 @@ import java.io.InputStreamReader;
 import java.util.*;
 import java.util.stream.Collectors;
 
-//import static uk.ac.ebi.kraken.datamining.cv.CatalyticActivityUtils.RHEA_PREFIX;
+import com.google.common.collect.Lists;
+
+// import static uk.ac.ebi.kraken.datamining.cv.CatalyticActivityUtils.RHEA_PREFIX;
 
 /**
- * Created by Hermann Zellner on 27/09/18.
- * Provides the controlled vocabulary for Structured Catalytic Activity comment
+ * Created by Hermann Zellner on 27/09/18. Provides the controlled vocabulary for Structured
+ * Catalytic Activity comment
  */
 public class CatalyticActivityFileRepository implements CatalyticActivityRepository {
 
-    private final Map<String,CatalyticActivity> rheaToCa = new TreeMap<>();
-    private Map<String,CatalyticActivity> oldTextToEcs;
+    private final Map<String, CatalyticActivity> rheaToCa = new TreeMap<>();
+    private Map<String, CatalyticActivity> oldTextToEcs;
 
-    private final static String SPLITTER = "\t";
-    private final static String SUB_SPLITTER = ",";
-	private static final String RHEA_PREFIX = "RHEA:";
+    private static final String SPLITTER = "\t";
+    private static final String SUB_SPLITTER = ",";
+    private static final String RHEA_PREFIX = "RHEA:";
 
-    private final static String CV_HEADER =
-            "Rhea Id\tEC numbers\tEquation\tParticipants Ids\tLeftToRight reaction Id\tRightToLeft reaction Id\t" +
-                    "EC reaction mapping status";
+    private static final String CV_HEADER =
+            "Rhea Id\tEC numbers\tEquation\tParticipants Ids\tLeftToRight reaction Id\tRightToLeft reaction Id\t"
+                    + "EC reaction mapping status";
 
     /**
-     * @param rheaStream
-     * Controlled vocabulary (CV) for catalytic activity comment splitted by line break. Each line contains either
-     * data related to one Rhea entry or an old catalytic activity text, which currently cannot be mapped to Rhea and
-     * an EC number.
+     * @param rheaStream Controlled vocabulary (CV) for catalytic activity comment splitted by line
+     *     break. Each line contains either data related to one Rhea entry or an old catalytic
+     *     activity text, which currently cannot be mapped to Rhea and an EC number.
      */
     public CatalyticActivityFileRepository(InputStream rheaStream) {
         oldTextToEcs = new HashMap<>();
         readRheaMapping(rheaStream);
     }
 
-
-
     /**
      * Retrieves RheaData for a Rhea-ID (e.g. RHEA:10000)
+     *
      * @param rheaId
      * @return RheaData for rheaId
      */
@@ -54,6 +51,7 @@ public class CatalyticActivityFileRepository implements CatalyticActivityReposit
 
     /**
      * Retrieves RheaData for a valid Catalytic Activity Text, which is not mapped to Rhea
+     *
      * @param text
      * @return RheaData
      */
@@ -62,13 +60,12 @@ public class CatalyticActivityFileRepository implements CatalyticActivityReposit
         return oldTextToEcs.getOrDefault(text, oldTextToEcs.get(modifyOldText(text)));
     }
 
-    
     private String modifyOldText(String text) {
         return text;
     }
 
     private void readRheaMapping(InputStream rheaStream) {
-        try(BufferedReader reader = new BufferedReader(new InputStreamReader(rheaStream))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(rheaStream))) {
             String line = reader.readLine();
             checkHeaderCv(line);
 
@@ -79,8 +76,7 @@ public class CatalyticActivityFileRepository implements CatalyticActivityReposit
                 CatalyticActivity data = extractMapping(splittedLine);
                 if (data.getRheaUn() == null) {
                     addToRheaData(oldTextToEcs, data.getText(), data);
-                }
-                else {
+                } else {
                     addToRheaData(rheaToCa, data.getRheaUn(), data);
                 }
             }
@@ -89,7 +85,8 @@ public class CatalyticActivityFileRepository implements CatalyticActivityReposit
         }
     }
 
-    private void addToRheaData(Map<String, CatalyticActivity> map, String key, CatalyticActivity data) {
+    private void addToRheaData(
+            Map<String, CatalyticActivity> map, String key, CatalyticActivity data) {
         if (map.containsKey(key)) {
             data = mergeRheaMapping(map.get(key), data);
         }
@@ -106,12 +103,15 @@ public class CatalyticActivityFileRepository implements CatalyticActivityReposit
     private void verifyFormat(String[] splittedLine) {
         if (splittedLine.length < 4 || splittedLine.length > 7) {
             throw new CatalyticActivityMappingException(
-                    String.format("Malformed line. Expected between 4 and 6 columns splitted by TAB but found %d. " +
-                            "Line elements are %s - %s", splittedLine.length, splittedLine[0], splittedLine[1]));
+                    String.format(
+                            "Malformed line. Expected between 4 and 6 columns splitted by TAB but found %d. "
+                                    + "Line elements are %s - %s",
+                            splittedLine.length, splittedLine[0], splittedLine[1]));
         }
 
         if (splittedLine[2].length() == 0) {
-            throw new CatalyticActivityMappingException("Empty text for Catalytic Activity Comment");
+            throw new CatalyticActivityMappingException(
+                    "Empty text for Catalytic Activity Comment");
         }
 
         verifyRheaId(splittedLine[0]);
@@ -143,12 +143,18 @@ public class CatalyticActivityFileRepository implements CatalyticActivityReposit
 
     private CatalyticActivity mergeRheaMapping(
             CatalyticActivity rheaData1, CatalyticActivity rheaData2) {
-        if (rheaData1.getRheaUn() != null || rheaData2.getRheaUn() != null || rheaData1.getRheaLr() != null ||
-                rheaData2.getRheaLr() != null || rheaData1.getRheaRl() != null || rheaData2.getRheaRl() != null) {
-            throw new CatalyticActivityMappingException("Expected to merge RheaData only for Free-Text comments!");
+        if (rheaData1.getRheaUn() != null
+                || rheaData2.getRheaUn() != null
+                || rheaData1.getRheaLr() != null
+                || rheaData2.getRheaLr() != null
+                || rheaData1.getRheaRl() != null
+                || rheaData2.getRheaRl() != null) {
+            throw new CatalyticActivityMappingException(
+                    "Expected to merge RheaData only for Free-Text comments!");
         }
         if (!rheaData2.getReactantIds().isEmpty() || !rheaData1.getReactantIds().isEmpty()) {
-            throw new CatalyticActivityMappingException("Free-Text comments are not expected to map to Reactant-IDs");
+            throw new CatalyticActivityMappingException(
+                    "Free-Text comments are not expected to map to Reactant-IDs");
         }
 
         List<String> reactants = new ArrayList<>(rheaData1.getReactantIds());
@@ -156,20 +162,22 @@ public class CatalyticActivityFileRepository implements CatalyticActivityReposit
         List<String> ecs = new ArrayList<>(rheaData1.getEcs());
         ecs.addAll(rheaData2.getEcs());
 
-        return new CatalyticActivity(null, rheaData1.getText(), rheaData2.getReactantIds(), ecs, null, null);
+        return new CatalyticActivity(
+                null, rheaData1.getText(), rheaData2.getReactantIds(), ecs, null, null);
     }
 
     private void verifyRheaId(String s) {
         if (!s.isEmpty() && !parsableAsInteger(s)) {
-            throw new CatalyticActivityMappingException(String.format("RheaId column is not an Integer: %s", s));
+            throw new CatalyticActivityMappingException(
+                    String.format("RheaId column is not an Integer: %s", s));
         }
     }
 
     private boolean parsableAsInteger(String s) {
-        try{
+        try {
             Integer.valueOf(s);
             return true;
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             return false;
         }
     }
@@ -180,9 +188,9 @@ public class CatalyticActivityFileRepository implements CatalyticActivityReposit
             rheaId = splittedString[pos];
             try {
                 Integer.parseInt(rheaId);
-            } catch(NumberFormatException e) {
-                throw new CatalyticActivityMappingException(String.format("Expected integer as Rhea-ID but got %s.",
-                        rheaId));
+            } catch (NumberFormatException e) {
+                throw new CatalyticActivityMappingException(
+                        String.format("Expected integer as Rhea-ID but got %s.", rheaId));
             }
         }
 
@@ -191,10 +199,11 @@ public class CatalyticActivityFileRepository implements CatalyticActivityReposit
 
     private List<String> extractMultipleString(String values) {
 
-        List<String> splitted = Arrays.stream(values.split(SUB_SPLITTER))
-                .map(String::trim)
-                .filter(s -> !s.isEmpty())
-                .collect(Collectors.toList());
+        List<String> splitted =
+                Arrays.stream(values.split(SUB_SPLITTER))
+                        .map(String::trim)
+                        .filter(s -> !s.isEmpty())
+                        .collect(Collectors.toList());
 
         List<String> result = Lists.newArrayList();
         result.addAll(splitted);
