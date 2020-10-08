@@ -36,6 +36,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
     private String sourceDb;
     private ProteomeCompletenessReport proteomeCompletenessReport;
     private GenomeAssembly genomeAssembly;
+    private List<ExclusionReason> exclusionReasons = new ArrayList<>();
 
     @Override
     public @Nonnull ProteomeEntry build() {
@@ -60,7 +61,8 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 canonicalProteins,
                 sourceDb,
                 proteomeCompletenessReport,
-                genomeAssembly);
+                genomeAssembly,
+                exclusionReasons);
     }
 
     public static @Nonnull ProteomeEntryBuilder from(@Nonnull ProteomeEntry instance) {
@@ -85,7 +87,8 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 .taxonLineagesSet(instance.getTaxonLineages())
                 .sourceDb(instance.getSourceDb())
                 .proteomeCompletenessReport(instance.getProteomeCompletenessReport())
-                .genomeAssembly(instance.getGenomeAssembly());
+                .genomeAssembly(instance.getGenomeAssembly())
+                .exclusionReasonsSet(instance.getExclusionReasons());
     }
 
     public @Nonnull ProteomeEntryBuilder proteomeId(ProteomeId id) {
@@ -231,6 +234,17 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
 
     public @Nonnull ProteomeEntryBuilder genomeAssembly(GenomeAssembly genomeAssembly) {
         this.genomeAssembly = genomeAssembly;
+        return this;
+    }
+
+    public @Nonnull ProteomeEntryBuilder exclusionReasonsSet(
+            List<ExclusionReason> exclusionReasons) {
+        this.exclusionReasons = Utils.modifiableList(exclusionReasons);
+        return this;
+    }
+
+    public @Nonnull ProteomeEntryBuilder exclusionReasonsAdd(ExclusionReason exclusionReason) {
+        Utils.addOrIgnoreNull(exclusionReason, exclusionReasons);
         return this;
     }
 }

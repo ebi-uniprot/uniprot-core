@@ -1,6 +1,7 @@
 package org.uniprot.core.xml.proteome;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.Arrays;
 
@@ -21,6 +22,16 @@ class JournalArticleConverterTest {
     private ObjectFactory xmlFactory = new ObjectFactory();
     JournalArticleConverter converter = new JournalArticleConverter();
     ReferenceConverter referenceConverter = new ReferenceConverter();
+
+    @Test
+    void fromXmlEmptyReference() {
+        ReferenceConverter converter = new ReferenceConverter();
+        ObjectFactory xmlFactory = new ObjectFactory();
+
+        ReferenceType referenceType = xmlFactory.createReferenceType();
+        Citation result = converter.fromXml(referenceType);
+        assertNull(result);
+    }
 
     @Test
     void testFromXml() {
@@ -53,6 +64,12 @@ class JournalArticleConverterTest {
         assertEquals("21", journalArticle.getVolume());
         Citation converted = referenceConverter.fromXml(reference);
         assertEquals(journalArticle, converted);
+    }
+
+    @Test
+    void testToXmlNullCitation() {
+        ReferenceType converted = referenceConverter.toXml(null);
+        assertNull(converted);
     }
 
     @Test

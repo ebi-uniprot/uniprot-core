@@ -38,6 +38,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     private List<TaxonomyLineage> taxonLineage;
     private List<CanonicalProtein> canonicalProteins;
     private String sourceDb;
+    private List<ExclusionReason> exclusionReasons;
 
     // no arg constructor for JSON deserialization
     ProteomeEntryImpl() {
@@ -47,6 +48,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
         redundantProteomes = Collections.emptyList();
         taxonLineage = Collections.emptyList();
         canonicalProteins = Collections.emptyList();
+        exclusionReasons = Collections.emptyList();
     }
 
     ProteomeEntryImpl(
@@ -70,7 +72,8 @@ public class ProteomeEntryImpl implements ProteomeEntry {
             List<CanonicalProtein> canonicalProteins,
             String sourceDb,
             ProteomeCompletenessReport proteomeCompletenessReport,
-            GenomeAssembly genomeAssembly) {
+            GenomeAssembly genomeAssembly,
+            List<ExclusionReason> exclusionReasons) {
         super();
         this.id = id;
         this.taxonomy = taxonomy;
@@ -95,6 +98,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
         this.sourceDb = sourceDb;
         this.proteomeCompletenessReport = proteomeCompletenessReport;
         this.genomeAssembly = genomeAssembly;
+        this.exclusionReasons = Utils.unmodifiableList(exclusionReasons);
     }
 
     @Override
@@ -205,6 +209,11 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     @Override
     public GenomeAssembly getGenomeAssembly() {
         return genomeAssembly;
+    }
+
+    @Override
+    public List<ExclusionReason> getExclusionReasons() {
+        return exclusionReasons;
     }
 
     @Override

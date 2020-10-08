@@ -3,14 +3,17 @@ package org.uniprot.core.xml.proteome;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.proteome.Component;
+import org.uniprot.core.proteome.ProteomeDatabase;
 import org.uniprot.core.proteome.impl.ComponentBuilder;
 import org.uniprot.core.xml.jaxb.proteome.ComponentType;
 import org.uniprot.core.xml.jaxb.proteome.ComponentTypeType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 
 class ComponentConverterTest {
-    private ObjectFactory xmlFactory = new ObjectFactory();
+    private final ObjectFactory xmlFactory = new ObjectFactory();
     ComponentConverter converter = new ComponentConverter();
 
     @Test
@@ -28,14 +31,44 @@ class ComponentConverterTest {
 
     @Test
     void testToXml() {
+        CrossReference<ProteomeDatabase> bioSample =
+                new CrossReferenceBuilder<ProteomeDatabase>()
+                        .database(ProteomeDatabase.BIOSAMPLE)
+                        .id("bio Value")
+                        .build();
+
+        CrossReference<ProteomeDatabase> genomeAccession =
+                new CrossReferenceBuilder<ProteomeDatabase>()
+                        .database(ProteomeDatabase.GENOME_ACCESSION)
+                        .id("genome Value")
+                        .build();
+
         Component component =
                 new ComponentBuilder()
                         .name("some name")
                         .description("some description")
                         .type(org.uniprot.core.proteome.ComponentType.PRIMARY)
+                        .proteinCount(10)
+                        .proteomeCrossReferencesAdd(genomeAccession)
+                        .proteomeCrossReferencesAdd(bioSample)
                         .build();
         ComponentType xmlObj = converter.toXml(component);
         Component converted = converter.fromXml(xmlObj);
         assertEquals(component, converted);
+    }
+
+    @Test
+    void testEmptyComponent() {
+        Component component = new ComponentBuilder().build();
+        ComponentType xmlObj = converter.toXml(component);
+        assertEquals(ComponentTypeType.UNPLACED, xmlObj.getType());
+        assertNull(xmlObj.getDescription());
+        assertNull(xmlObj.getName());
+        assertNull(xmlObj.getBiosampleId());
+        assertNotNull(xmlObj.getGenomeAccession());
+        assertEquals(0, xmlObj.getGenomeAccession().size());
+        assertNotNull(xmlObj.getProtein());
+        assertEquals(0, xmlObj.getProtein().size());
+        assertEquals(0, xmlObj.getCount());
     }
 }
