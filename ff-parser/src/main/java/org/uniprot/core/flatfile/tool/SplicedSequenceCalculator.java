@@ -13,10 +13,8 @@ import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 import org.uniprot.core.util.Utils;
 
 public class SplicedSequenceCalculator {
-	
-	private SplicedSequenceCalculator() {
-		
-	}
+
+    private SplicedSequenceCalculator() {}
 
     public static String getSplicedSequenceByName(UniProtKBEntry entry, String isoformName) {
         List<AlternativeProductsComment> apComments =

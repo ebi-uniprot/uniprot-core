@@ -7,8 +7,8 @@ import java.io.InputStreamReader;
 import java.util.*;
 import java.util.stream.Collectors;
 
-
 import org.uniprot.core.util.Utils;
+
 import com.google.common.collect.Lists;
 
 /**
@@ -28,7 +28,6 @@ public class CatalyticActivityFileRepository implements CatalyticActivityReposit
             "Rhea Id\tEC numbers\tEquation\tParticipants Ids\tLeftToRight reaction Id\tRightToLeft reaction Id\t"
                     + "EC reaction mapping status";
 
-
     public CatalyticActivityFileRepository(InputStream rheaStream) {
         oldTextToEcs = new HashMap<>();
         readRheaMapping(rheaStream);
@@ -38,6 +37,7 @@ public class CatalyticActivityFileRepository implements CatalyticActivityReposit
     public CatalyticActivity getByRheaId(String rheaId) {
         return rheaToCa.get(rheaId);
     }
+
     @Override
     public CatalyticActivity getByOldText(String text) {
         return oldTextToEcs.getOrDefault(text, oldTextToEcs.get(modifyOldText(text)));
@@ -127,13 +127,14 @@ public class CatalyticActivityFileRepository implements CatalyticActivityReposit
     private CatalyticActivity mergeRheaMapping(
             CatalyticActivity rheaData1, CatalyticActivity rheaData2) {
 
-        if (Utils.notNull(rheaData1.getRheaUn()) 
-        		|| Utils.notNull(rheaData2.getRheaUn())
-        		|| Utils.notNull(rheaData1.getRheaLr())
-        		|| Utils.notNull(rheaData2.getRheaLr()) 
-        		|| Utils.notNull(rheaData1.getRheaRl())
-        		|| Utils.notNull(rheaData2.getRheaRl())) {
-            throw new CatalyticActivityMappingException("Expected to merge RheaData only for Free-Text comments!");
+        if (Utils.notNull(rheaData1.getRheaUn())
+                || Utils.notNull(rheaData2.getRheaUn())
+                || Utils.notNull(rheaData1.getRheaLr())
+                || Utils.notNull(rheaData2.getRheaLr())
+                || Utils.notNull(rheaData1.getRheaRl())
+                || Utils.notNull(rheaData2.getRheaRl())) {
+            throw new CatalyticActivityMappingException(
+                    "Expected to merge RheaData only for Free-Text comments!");
         }
         if (!rheaData2.getReactantIds().isEmpty() || !rheaData1.getReactantIds().isEmpty()) {
             throw new CatalyticActivityMappingException(
