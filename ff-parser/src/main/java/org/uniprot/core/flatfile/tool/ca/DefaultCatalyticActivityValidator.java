@@ -2,6 +2,7 @@ package org.uniprot.core.flatfile.tool.ca;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -31,7 +32,7 @@ public class DefaultCatalyticActivityValidator implements CatalyticActivityValid
 		Reaction reaction = comment.getReaction();
 		if (reaction.getReactionCrossReferences().isEmpty()) {
 			CatalyticActivity ca = repository.getByOldText(reaction.getName());
-			if (ca == null) {
+			if (Objects.isNull(ca)) {
 				return Optional.empty();
 			} else {
 				ECNumber ec = reaction.getEcNumber();
@@ -57,7 +58,8 @@ public class DefaultCatalyticActivityValidator implements CatalyticActivityValid
 		builder.reaction(transformReaction(reaction, ca, rheaRef.get()));
 
 		List<PhysiologicalReaction> physioReactions = comment.getPhysiologicalReactions().stream()
-				.map(val -> transformPhysiologicalReaction(ca, val)).filter(val -> val != null)
+				.map(val -> transformPhysiologicalReaction(ca, val))
+				.filter(Objects::nonNull)
 				.collect(Collectors.toList());
 		builder.physiologicalReactionsSet(physioReactions);
 
@@ -69,13 +71,11 @@ public class DefaultCatalyticActivityValidator implements CatalyticActivityValid
 		builder.name(ca.getText());
 		List<CrossReference<ReactionDatabase>> xrefs = new ArrayList<>();
 		xrefs.add(createReactRef(rhea.getDatabase(), rhea.getId()));
-		ca.getReactantIds().stream().map(this::parseReactantId).forEach(val -> xrefs.add(val));
+		ca.getReactantIds().stream().map(this::parseReactantId).forEach( xrefs::add);
 		builder.reactionCrossReferencesSet(xrefs);
 
-		if (Utils.notNull(reaction.getEcNumber())) {
-			if (ca.getEcs().contains(reaction.getEcNumber().getValue())) {
-				builder.ecNumber(reaction.getEcNumber().getValue());
-			}
+		if (Utils.notNull(reaction.getEcNumber()) && ca.getEcs().contains(reaction.getEcNumber().getValue())) {
+			builder.ecNumber(reaction.getEcNumber().getValue());
 		}
 		builder.evidencesSet(reaction.getEvidences());
 		return builder.build();
@@ -84,28 +84,20 @@ public class DefaultCatalyticActivityValidator implements CatalyticActivityValid
 	private PhysiologicalReaction transformPhysiologicalReaction(CatalyticActivity ca,
 			PhysiologicalReaction physioReaction) {
 		CrossReference<ReactionDatabase> xref = physioReaction.getReactionCrossReference();
-		if ((xref == null) || !xref.getDatabase().equals(ReactionDatabase.RHEA)) {
+		if ((xref == null) || ReactionDatabase.RHEA != xref.getDatabase()) {
 			return null;
 		}
 		PhysiologicalDirectionType type = physioReaction.getDirectionType();
-		if (type == PhysiologicalDirectionType.LEFT_TO_RIGHT) {
-			if (xref.getId().equals(ca.getRheaLr()))
+		if ((type == PhysiologicalDirectionType.LEFT_TO_RIGHT) && (xref.getId().equals(ca.getRheaLr()))) {
+			return copy(physioReaction);
+		} else if ((type == PhysiologicalDirectionType.RIGHT_TO_LEFT) && (xref.getId().equals(ca.getRheaRl()))) {
 				return copy(physioReaction);
-		} else if (type == PhysiologicalDirectionType.RIGHT_TO_LEFT) {
-			if (xref.getId().equals(ca.getRheaRl()))
-				return copy(physioReaction);
-		}
-		return null;
-
+		}else
+			return null;
 	}
 
 	private PhysiologicalReaction copy(PhysiologicalReaction data) {
-		PhysiologicalReactionBuilder builder = new PhysiologicalReactionBuilder();
-		builder.directionType(data.getDirectionType());
-		builder.evidencesSet(data.getEvidences());
-		builder.reactionCrossReference(createReactRef(data.getReactionCrossReference().getDatabase(),
-				data.getReactionCrossReference().getId()));
-		return builder.build();
+		return PhysiologicalReactionBuilder.from(data).build();		
 	}
 
 	private CrossReference<ReactionDatabase> parseReactantId(String reactantId) {
