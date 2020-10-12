@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Created by Hermann Zellner on 28/08/18.
- * Contains the mapping for one Rhea entry or one old catalytic activity reaction text without mapping to Rhea
+ * Created by Hermann Zellner on 28/08/18. Contains the mapping for one Rhea entry or one old
+ * catalytic activity reaction text without mapping to Rhea
  */
 public final class CatalyticActivity implements Serializable {
 
@@ -20,15 +20,21 @@ public final class CatalyticActivity implements Serializable {
     private final String rheaRl;
 
     /**
-     *
-     * @param rheaUn Rhea-ID in the format e.g. RHEA:10000, null in case of old catalytic activity reaction text
+     * @param rheaUn Rhea-ID in the format e.g. RHEA:10000, null in case of old catalytic activity
+     *     reaction text
      * @param text Catalytic Activity reaction text
-     * @param reactantIds Valid Reactants for this Rhea-ID, null in case of old catalytic activity reaction text
+     * @param reactantIds Valid Reactants for this Rhea-ID, null in case of old catalytic activity
+     *     reaction text
      * @param ecs Valid EC numbers for this Rhea entry or old catalytic activity reaction text
      * @param rheaLr Valid Rhea-ID for physiological left-to-right reaction
      * @param rheaRl Valid Rhea-ID for physiological right-to-left reaction
      */
-    public CatalyticActivity(String rheaUn, String text, List<String> reactantIds, List<String> ecs, String rheaLr,
+    public CatalyticActivity(
+            String rheaUn,
+            String text,
+            List<String> reactantIds,
+            List<String> ecs,
+            String rheaLr,
             String rheaRl) {
         this.rheaUn = rheaUn;
         this.text = text;
@@ -40,6 +46,7 @@ public final class CatalyticActivity implements Serializable {
 
     /**
      * The Rhea-ID of these Rhea data in the format e.g. RHEA:10000
+     *
      * @return
      */
     public String getRheaUn() {
@@ -48,6 +55,7 @@ public final class CatalyticActivity implements Serializable {
 
     /**
      * The Rhea reaction text
+     *
      * @return
      */
     public String getText() {
@@ -56,6 +64,7 @@ public final class CatalyticActivity implements Serializable {
 
     /**
      * The Rhea-ID of the physiological left-to-right-reaction in the format e.g. RHEA:10000
+     *
      * @return
      */
     public String getRheaLr() {
@@ -64,6 +73,7 @@ public final class CatalyticActivity implements Serializable {
 
     /**
      * The Rhea-ID of the physiological right-to-left-reaction in the format e.g. RHEA:10000
+     *
      * @return
      */
     public String getRheaRl() {
@@ -72,6 +82,7 @@ public final class CatalyticActivity implements Serializable {
 
     /**
      * The Set of valid EC numbers for this Rhea entry as String, e.g. "1.1.1.1"
+     *
      * @return
      */
     public List<String> getEcs() {
@@ -93,16 +104,15 @@ public final class CatalyticActivity implements Serializable {
 
         CatalyticActivity rheaData = (CatalyticActivity) o;
         return Objects.equals(rheaUn, rheaData.rheaUn)
-        		&& Objects.equals(text, rheaData.text)
-        		&& Objects.equals(ecs, rheaData.ecs)
-        		&& Objects.equals(reactantIds, rheaData.reactantIds)
-        		&& Objects.equals(rheaLr, rheaData.rheaLr)
-        		&& Objects.equals(rheaRl, rheaData.rheaRl);
-
+                && Objects.equals(text, rheaData.text)
+                && Objects.equals(ecs, rheaData.ecs)
+                && Objects.equals(reactantIds, rheaData.reactantIds)
+                && Objects.equals(rheaLr, rheaData.rheaLr)
+                && Objects.equals(rheaRl, rheaData.rheaRl);
     }
 
     @Override
     public int hashCode() {
-    	 return Objects.hash(rheaUn, text, ecs, reactantIds, rheaLr, rheaRl);
+        return Objects.hash(rheaUn, text, ecs, reactantIds, rheaLr, rheaRl);
     }
 }
