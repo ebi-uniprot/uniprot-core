@@ -1,9 +1,12 @@
 package org.uniprot.core.flatfile.tool.ca;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.io.InputStream;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -50,4 +53,46 @@ class CatalyticActivityFileRepositoryTest {
         CatalyticActivity catalyticActivity = repository.getByOldText(text);
         assertNull(catalyticActivity);
     }
+    
+    @Test
+    void testInvalidHeader() {
+    	 InputStream is =
+                 ClassLoader.getSystemClassLoader()
+                         .getResourceAsStream("catalyticactivity/invalid_header.tsv");
+    	 Assertions.assertThrows(CatalyticActivityMappingException.class, () -> {
+    		 new CatalyticActivityFileRepository(is);
+    		  });
+    	 
+    }
+    @Test
+    void testFewerColumns() {
+    	 InputStream is =
+                 ClassLoader.getSystemClassLoader()
+                         .getResourceAsStream("catalyticactivity/fewer_column.tsv");
+    	 Assertions.assertThrows(CatalyticActivityMappingException.class, () -> {
+    		 new CatalyticActivityFileRepository(is);
+    		  });
+    	 
+    }
+    @Test
+    void testMoreColumns() {
+    	 InputStream is =
+                 ClassLoader.getSystemClassLoader()
+                         .getResourceAsStream("catalyticactivity/more_column.tsv");
+    	 Assertions.assertThrows(CatalyticActivityMappingException.class, () -> {
+    		 new CatalyticActivityFileRepository(is);
+    		  });
+    	 
+    }
+    @Test
+    void testEmptyText() {
+    	 InputStream is =
+                 ClassLoader.getSystemClassLoader()
+                         .getResourceAsStream("catalyticactivity/invalidText.tsv");
+    	 Assertions.assertThrows(CatalyticActivityMappingException.class, () -> {
+    		 new CatalyticActivityFileRepository(is);
+    		  });
+    	 
+    }
 }
+

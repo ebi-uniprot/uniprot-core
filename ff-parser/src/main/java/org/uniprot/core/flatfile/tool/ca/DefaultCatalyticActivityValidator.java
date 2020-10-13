@@ -95,15 +95,11 @@ public class DefaultCatalyticActivityValidator implements CatalyticActivityValid
         PhysiologicalDirectionType type = physioReaction.getDirectionType();
         if ((type == PhysiologicalDirectionType.LEFT_TO_RIGHT)
                 && (xref.getId().equals(ca.getRheaLr()))) {
-            return copy(physioReaction);
+            return PhysiologicalReactionBuilder.from(physioReaction).build();
         } else if ((type == PhysiologicalDirectionType.RIGHT_TO_LEFT)
                 && (xref.getId().equals(ca.getRheaRl()))) {
-            return copy(physioReaction);
+            return PhysiologicalReactionBuilder.from(physioReaction).build();
         } else return null;
-    }
-
-    private PhysiologicalReaction copy(PhysiologicalReaction data) {
-        return PhysiologicalReactionBuilder.from(data).build();
     }
 
     private CrossReference<ReactionDatabase> parseReactantId(String reactantId) {
