@@ -83,7 +83,7 @@ public class CatalyticActivityFileRepository implements CatalyticActivityReposit
         }
     }
 
-	private void verifyFormat(String[] splittedLine) {
+    private void verifyFormat(String[] splittedLine) {
         if (splittedLine.length < 4 || splittedLine.length > 7) {
             throw new CatalyticActivityMappingException(
                     String.format(

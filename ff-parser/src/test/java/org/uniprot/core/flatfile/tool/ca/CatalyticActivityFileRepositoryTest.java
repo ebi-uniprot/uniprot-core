@@ -53,46 +53,52 @@ class CatalyticActivityFileRepositoryTest {
         CatalyticActivity catalyticActivity = repository.getByOldText(text);
         assertNull(catalyticActivity);
     }
-    
+
     @Test
     void testInvalidHeader() {
-    	 InputStream is =
-                 ClassLoader.getSystemClassLoader()
-                         .getResourceAsStream("catalyticactivity/invalid_header.tsv");
-    	 Assertions.assertThrows(CatalyticActivityMappingException.class, () -> {
-    		 new CatalyticActivityFileRepository(is);
-    		  });
-    	 
+        InputStream is =
+                ClassLoader.getSystemClassLoader()
+                        .getResourceAsStream("catalyticactivity/invalid_header.tsv");
+        Assertions.assertThrows(
+                CatalyticActivityMappingException.class,
+                () -> {
+                    new CatalyticActivityFileRepository(is);
+                });
     }
+
     @Test
     void testFewerColumns() {
-    	 InputStream is =
-                 ClassLoader.getSystemClassLoader()
-                         .getResourceAsStream("catalyticactivity/fewer_column.tsv");
-    	 Assertions.assertThrows(CatalyticActivityMappingException.class, () -> {
-    		 new CatalyticActivityFileRepository(is);
-    		  });
-    	 
+        InputStream is =
+                ClassLoader.getSystemClassLoader()
+                        .getResourceAsStream("catalyticactivity/fewer_column.tsv");
+        Assertions.assertThrows(
+                CatalyticActivityMappingException.class,
+                () -> {
+                    new CatalyticActivityFileRepository(is);
+                });
     }
+
     @Test
     void testMoreColumns() {
-    	 InputStream is =
-                 ClassLoader.getSystemClassLoader()
-                         .getResourceAsStream("catalyticactivity/more_column.tsv");
-    	 Assertions.assertThrows(CatalyticActivityMappingException.class, () -> {
-    		 new CatalyticActivityFileRepository(is);
-    		  });
-    	 
+        InputStream is =
+                ClassLoader.getSystemClassLoader()
+                        .getResourceAsStream("catalyticactivity/more_column.tsv");
+        Assertions.assertThrows(
+                CatalyticActivityMappingException.class,
+                () -> {
+                    new CatalyticActivityFileRepository(is);
+                });
     }
+
     @Test
     void testEmptyText() {
-    	 InputStream is =
-                 ClassLoader.getSystemClassLoader()
-                         .getResourceAsStream("catalyticactivity/invalidText.tsv");
-    	 Assertions.assertThrows(CatalyticActivityMappingException.class, () -> {
-    		 new CatalyticActivityFileRepository(is);
-    		  });
-    	 
+        InputStream is =
+                ClassLoader.getSystemClassLoader()
+                        .getResourceAsStream("catalyticactivity/invalidText.tsv");
+        Assertions.assertThrows(
+                CatalyticActivityMappingException.class,
+                () -> {
+                    new CatalyticActivityFileRepository(is);
+                });
     }
 }
-
