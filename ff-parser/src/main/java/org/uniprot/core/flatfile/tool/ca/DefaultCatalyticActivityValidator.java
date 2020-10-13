@@ -27,75 +27,84 @@ public class DefaultCatalyticActivityValidator implements CatalyticActivityValid
         this.repository = repository;
     }
 
-	@Override
-	public Optional<CatalyticActivityComment> validateAndConvert(CatalyticActivityComment comment) {
-		Reaction reaction = comment.getReaction();
-		if (reaction.getReactionCrossReferences().isEmpty()) {
-			CatalyticActivity ca = repository.getByOldText(reaction.getName());
-			if (Objects.isNull(ca)) {
-				return Optional.empty();
-			} else {
-				ECNumber ec = reaction.getEcNumber();
-				if (!Utils.notNull(ec) || ca.getEcs().contains(ec.getValue())) {
-					return Optional.ofNullable(comment);
-				} else {
-					return Optional.empty();
-				}
-			}
-		}
-		Optional<CrossReference<ReactionDatabase>> rheaRef = reaction.getReactionCrossReferences().stream()
-				.filter(val -> (val.getDatabase().equals(ReactionDatabase.RHEA)) && val.getId().startsWith(RHEA_PREFIX))
-				.findFirst();
-		if (!rheaRef.isPresent()) {
-			return Optional.empty();
-		}
-		CatalyticActivity ca = repository.getByRheaId(rheaRef.get().getId());
-		if (ca == null) {
-			return Optional.empty();
-		}
+    @Override
+    public Optional<CatalyticActivityComment> validateAndConvert(CatalyticActivityComment comment) {
+        Reaction reaction = comment.getReaction();
+        if (reaction.getReactionCrossReferences().isEmpty()) {
+            CatalyticActivity ca = repository.getByOldText(reaction.getName());
+            if (Objects.isNull(ca)) {
+                return Optional.empty();
+            } else {
+                ECNumber ec = reaction.getEcNumber();
+                if (!Utils.notNull(ec) || ca.getEcs().contains(ec.getValue())) {
+                    return Optional.ofNullable(comment);
+                } else {
+                    return Optional.empty();
+                }
+            }
+        }
+        Optional<CrossReference<ReactionDatabase>> rheaRef =
+                reaction.getReactionCrossReferences().stream()
+                        .filter(
+                                val ->
+                                        (val.getDatabase().equals(ReactionDatabase.RHEA))
+                                                && val.getId().startsWith(RHEA_PREFIX))
+                        .findFirst();
+        if (!rheaRef.isPresent()) {
+            return Optional.empty();
+        }
+        CatalyticActivity ca = repository.getByRheaId(rheaRef.get().getId());
+        if (ca == null) {
+            return Optional.empty();
+        }
         CatalyticActivityCommentBuilder builder = new CatalyticActivityCommentBuilder();
         builder.reaction(transformReaction(reaction, ca, rheaRef.get()));
 
-		List<PhysiologicalReaction> physioReactions = comment.getPhysiologicalReactions().stream()
-				.map(val -> transformPhysiologicalReaction(ca, val))
-				.filter(Objects::nonNull)
-				.collect(Collectors.toList());
-		builder.physiologicalReactionsSet(physioReactions);
+        List<PhysiologicalReaction> physioReactions =
+                comment.getPhysiologicalReactions().stream()
+                        .map(val -> transformPhysiologicalReaction(ca, val))
+                        .filter(Objects::nonNull)
+                        .collect(Collectors.toList());
+        builder.physiologicalReactionsSet(physioReactions);
 
         return Optional.ofNullable(builder.build());
     }
 
-	private Reaction transformReaction(Reaction reaction, CatalyticActivity ca, CrossReference<ReactionDatabase> rhea) {
-		ReactionBuilder builder = new ReactionBuilder();
-		builder.name(ca.getText());
-		List<CrossReference<ReactionDatabase>> xrefs = new ArrayList<>();
-		xrefs.add(createReactRef(rhea.getDatabase(), rhea.getId()));
-		ca.getReactantIds().stream().map(this::parseReactantId).forEach( xrefs::add);
-		builder.reactionCrossReferencesSet(xrefs);
-		if (Utils.notNull(reaction.getEcNumber()) && ca.getEcs().contains(reaction.getEcNumber().getValue())) {
-			builder.ecNumber(reaction.getEcNumber().getValue());
-		}
-		builder.evidencesSet(reaction.getEvidences());
-		return builder.build();
-	}
-	private PhysiologicalReaction transformPhysiologicalReaction(CatalyticActivity ca,
-			PhysiologicalReaction physioReaction) {
-		CrossReference<ReactionDatabase> xref = physioReaction.getReactionCrossReference();
-		if ((xref == null) || ReactionDatabase.RHEA != xref.getDatabase()) {
-			return null;
-		}
-		PhysiologicalDirectionType type = physioReaction.getDirectionType();
-		if ((type == PhysiologicalDirectionType.LEFT_TO_RIGHT) && (xref.getId().equals(ca.getRheaLr()))) {
-			return copy(physioReaction);
-		} else if ((type == PhysiologicalDirectionType.RIGHT_TO_LEFT) && (xref.getId().equals(ca.getRheaRl()))) {
-				return copy(physioReaction);
-		}else
-			return null;
-	}
+    private Reaction transformReaction(
+            Reaction reaction, CatalyticActivity ca, CrossReference<ReactionDatabase> rhea) {
+        ReactionBuilder builder = new ReactionBuilder();
+        builder.name(ca.getText());
+        List<CrossReference<ReactionDatabase>> xrefs = new ArrayList<>();
+        xrefs.add(createReactRef(rhea.getDatabase(), rhea.getId()));
+        ca.getReactantIds().stream().map(this::parseReactantId).forEach(xrefs::add);
+        builder.reactionCrossReferencesSet(xrefs);
+        if (Utils.notNull(reaction.getEcNumber())
+                && ca.getEcs().contains(reaction.getEcNumber().getValue())) {
+            builder.ecNumber(reaction.getEcNumber().getValue());
+        }
+        builder.evidencesSet(reaction.getEvidences());
+        return builder.build();
+    }
 
-	private PhysiologicalReaction copy(PhysiologicalReaction data) {
-		return PhysiologicalReactionBuilder.from(data).build();		
-	}
+    private PhysiologicalReaction transformPhysiologicalReaction(
+            CatalyticActivity ca, PhysiologicalReaction physioReaction) {
+        CrossReference<ReactionDatabase> xref = physioReaction.getReactionCrossReference();
+        if ((xref == null) || ReactionDatabase.RHEA != xref.getDatabase()) {
+            return null;
+        }
+        PhysiologicalDirectionType type = physioReaction.getDirectionType();
+        if ((type == PhysiologicalDirectionType.LEFT_TO_RIGHT)
+                && (xref.getId().equals(ca.getRheaLr()))) {
+            return copy(physioReaction);
+        } else if ((type == PhysiologicalDirectionType.RIGHT_TO_LEFT)
+                && (xref.getId().equals(ca.getRheaRl()))) {
+            return copy(physioReaction);
+        } else return null;
+    }
+
+    private PhysiologicalReaction copy(PhysiologicalReaction data) {
+        return PhysiologicalReactionBuilder.from(data).build();
+    }
 
     private CrossReference<ReactionDatabase> parseReactantId(String reactantId) {
         int index = reactantId.indexOf(':');
