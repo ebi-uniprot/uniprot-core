@@ -155,9 +155,10 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
             xmlObj.setName(uniObj.getTaxonomy().getScientificName());
         }
         ProteomeType type = uniObj.getProteomeType();
-        if (type == ProteomeType.REFERENCE) {
+        if (type == ProteomeType.REFERENCE || type == ProteomeType.REFERENCE_AND_REPRESENTATIVE) {
             xmlObj.setIsReferenceProteome(true);
-        } else if (type == ProteomeType.REPRESENTATIVE) {
+        }
+        if (type == ProteomeType.REPRESENTATIVE || type == ProteomeType.REFERENCE_AND_REPRESENTATIVE) {
             xmlObj.setIsRepresentativeProteome(true);
         }
         xmlObj.setModified(XmlConverterHelper.dateToXml(uniObj.getModified()));
@@ -242,10 +243,12 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
                 && (t.getExcluded().getExclusionReason() != null)
                 && (!t.getExcluded().getExclusionReason().isEmpty())) {
             return ProteomeType.EXCLUDED;
-        } else if (t.isIsRepresentativeProteome()) {
-            return ProteomeType.REPRESENTATIVE;
+        } else if (t.isIsRepresentativeProteome() && (t.isIsReferenceProteome())) {
+            return ProteomeType.REFERENCE_AND_REPRESENTATIVE;
         } else if (t.isIsReferenceProteome()) {
             return ProteomeType.REFERENCE;
+        } else if (t.isIsRepresentativeProteome()) {
+            return ProteomeType.REPRESENTATIVE;
         } else if ((t.getRedundantTo() != null) && (!t.getRedundantTo().isEmpty())) {
             return ProteomeType.REDUNDANT;
         } else {

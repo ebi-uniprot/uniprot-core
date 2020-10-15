@@ -72,6 +72,19 @@ class ProteomeConverterTest {
     }
 
     @Test
+    void testRepresentativeAndReferenceProteome() {
+        ProteomeConverter converter = new ProteomeConverter();
+        ProteomeEntry proteome =
+                new ProteomeEntryBuilder()
+                        .proteomeId("UP1234567890")
+                        .proteomeType(ProteomeType.REFERENCE_AND_REPRESENTATIVE)
+                        .build();
+        Proteome xml = converter.toXml(proteome);
+        ProteomeEntry converted = converter.fromXml(xml);
+        assertEquals(proteome, converted);
+    }
+
+    @Test
     void testNormalProteome() {
         ProteomeConverter converter = new ProteomeConverter();
         ProteomeEntry proteome =
