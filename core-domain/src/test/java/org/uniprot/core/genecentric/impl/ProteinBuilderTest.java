@@ -1,5 +1,7 @@
 package org.uniprot.core.genecentric.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.genecentric.Protein;
@@ -14,8 +16,6 @@ import org.uniprot.core.uniprotkb.impl.UniProtKBIdBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  * @author lgonzales
  * @since 16/10/2020
@@ -29,7 +29,7 @@ class ProteinBuilderTest {
         assertNotNull(entry.getEntryType());
         assertEquals(type, entry.getEntryType());
     }
-    
+
     @Test
     void canSetAccessionString() {
         String accession = "P21802";
@@ -131,27 +131,27 @@ class ProteinBuilderTest {
 
     @Test
     void fromEmptyProtein() {
-        Protein protein = new ProteinBuilder()
-                .build();
+        Protein protein = new ProteinBuilder().build();
         Protein proteinFrom = ProteinBuilder.from(protein).build();
         assertEquals(protein, proteinFrom);
     }
 
     @Test
     void fromCompleteProtein() {
-        Protein protein = new ProteinBuilder()
-                .accession("P21802")
-                .entryType(UniProtKBEntryType.TREMBL)
-                .proteomeId("UPID")
-                .flagType(FlagType.PRECURSOR)
-                .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
-                .geneName("Gene Name")
-                .organism(new OrganismBuilder().taxonId(123L).build())
-                .proteinName("protein Name")
-                .sequence("AAAAA")
-                .sequenceVersion(2)
-                .uniProtkbId("P21802_ID")
-                .build();
+        Protein protein =
+                new ProteinBuilder()
+                        .accession("P21802")
+                        .entryType(UniProtKBEntryType.TREMBL)
+                        .proteomeId("UPID")
+                        .flagType(FlagType.PRECURSOR)
+                        .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
+                        .geneName("Gene Name")
+                        .organism(new OrganismBuilder().taxonId(123L).build())
+                        .proteinName("protein Name")
+                        .sequence("AAAAA")
+                        .sequenceVersion(2)
+                        .uniProtkbId("P21802_ID")
+                        .build();
         Protein proteinFrom = ProteinBuilder.from(protein).build();
         assertEquals(protein, proteinFrom);
         assertTrue(protein.equals(proteinFrom) && proteinFrom.equals(protein));

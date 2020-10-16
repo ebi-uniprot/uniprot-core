@@ -1,5 +1,7 @@
 package org.uniprot.core.genecentric.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.genecentric.Protein;
@@ -13,8 +15,6 @@ import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBIdBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.util.Utils;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author lgonzales
@@ -55,8 +55,7 @@ public class ProteinBuilder implements Builder<Protein> {
     }
 
     public @Nonnull ProteinBuilder accession(String accession) {
-        this.accession =
-                new UniProtKBAccessionBuilder(Utils.emptyOrString(accession)).build();
+        this.accession = new UniProtKBAccessionBuilder(Utils.emptyOrString(accession)).build();
         return this;
     }
 
@@ -80,27 +79,27 @@ public class ProteinBuilder implements Builder<Protein> {
         return this;
     }
 
-    public @Nonnull ProteinBuilder geneName(String geneName){
+    public @Nonnull ProteinBuilder geneName(String geneName) {
         this.geneName = geneName;
         return this;
     }
 
-    public @Nonnull ProteinBuilder proteinExistence(ProteinExistence proteinExistence){
+    public @Nonnull ProteinBuilder proteinExistence(ProteinExistence proteinExistence) {
         this.proteinExistence = proteinExistence;
         return this;
     }
 
-    public @Nonnull ProteinBuilder flagType(FlagType flagType){
+    public @Nonnull ProteinBuilder flagType(FlagType flagType) {
         this.flagType = flagType;
         return this;
     }
 
-    public @Nonnull ProteinBuilder proteomeId(String proteomeId){
+    public @Nonnull ProteinBuilder proteomeId(String proteomeId) {
         this.proteomeId = proteomeId;
         return this;
     }
 
-    public @Nonnull ProteinBuilder sequence(String sequence){
+    public @Nonnull ProteinBuilder sequence(String sequence) {
         this.sequence = new SequenceBuilder(Utils.emptyOrString(sequence)).build();
         return this;
     }
@@ -110,7 +109,7 @@ public class ProteinBuilder implements Builder<Protein> {
         return this;
     }
 
-    public @Nonnull ProteinBuilder sequenceVersion(int sequenceVersion){
+    public @Nonnull ProteinBuilder sequenceVersion(int sequenceVersion) {
         this.sequenceVersion = sequenceVersion;
         return this;
     }
@@ -133,7 +132,17 @@ public class ProteinBuilder implements Builder<Protein> {
     @Nonnull
     @Override
     public Protein build() {
-        return new ProteinImpl(entryType, accession, uniProtkbId, proteinName, organism,
-                geneName, proteinExistence, flagType, proteomeId, sequence, sequenceVersion);
+        return new ProteinImpl(
+                entryType,
+                accession,
+                uniProtkbId,
+                proteinName,
+                organism,
+                geneName,
+                proteinExistence,
+                flagType,
+                proteomeId,
+                sequence,
+                sequenceVersion);
     }
 }

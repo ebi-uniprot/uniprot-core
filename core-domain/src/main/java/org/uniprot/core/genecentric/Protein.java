@@ -1,5 +1,7 @@
 package org.uniprot.core.genecentric;
 
+import java.io.Serializable;
+
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniprotkb.ProteinExistence;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
@@ -7,8 +9,6 @@ import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.UniProtKBId;
 import org.uniprot.core.uniprotkb.description.FlagType;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
-
-import java.io.Serializable;
 
 /**
  * @author lgonzales
@@ -37,5 +37,4 @@ public interface Protein extends Serializable {
     Sequence getSequence();
 
     int getSequenceVersion();
-
 }

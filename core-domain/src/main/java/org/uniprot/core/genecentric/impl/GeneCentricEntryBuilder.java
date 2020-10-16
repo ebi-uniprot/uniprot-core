@@ -1,25 +1,25 @@
 package org.uniprot.core.genecentric.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.genecentric.GeneCentricEntry;
 import org.uniprot.core.genecentric.Protein;
 import org.uniprot.core.util.Utils;
 
-import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author lgonzales
  * @since 15/10/2020
  */
-public class GeneCentricEntryBuilder  implements Builder<GeneCentricEntry> {
+public class GeneCentricEntryBuilder implements Builder<GeneCentricEntry> {
 
     private Protein canonicalProtein;
     private List<Protein> relatedProteins = new ArrayList<>();
 
-    public @Nonnull
-    GeneCentricEntryBuilder canonicalProtein(Protein canonicalProtein) {
+    public @Nonnull GeneCentricEntryBuilder canonicalProtein(Protein canonicalProtein) {
         this.canonicalProtein = canonicalProtein;
         return this;
     }
@@ -43,6 +43,6 @@ public class GeneCentricEntryBuilder  implements Builder<GeneCentricEntry> {
     @Nonnull
     @Override
     public GeneCentricEntry build() {
-        return new GeneCentricEntryImpl(canonicalProtein,relatedProteins);
+        return new GeneCentricEntryImpl(canonicalProtein, relatedProteins);
     }
 }

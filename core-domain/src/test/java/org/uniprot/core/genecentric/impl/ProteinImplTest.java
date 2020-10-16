@@ -1,9 +1,9 @@
 package org.uniprot.core.genecentric.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.genecentric.Protein;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author lgonzales
@@ -16,5 +16,4 @@ class ProteinImplTest {
         Protein obj = new ProteinImpl();
         assertNotNull(obj);
     }
-
 }

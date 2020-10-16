@@ -158,7 +158,8 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
         if (type == ProteomeType.REFERENCE || type == ProteomeType.REFERENCE_AND_REPRESENTATIVE) {
             xmlObj.setIsReferenceProteome(true);
         }
-        if (type == ProteomeType.REPRESENTATIVE || type == ProteomeType.REFERENCE_AND_REPRESENTATIVE) {
+        if (type == ProteomeType.REPRESENTATIVE
+                || type == ProteomeType.REFERENCE_AND_REPRESENTATIVE) {
             xmlObj.setIsRepresentativeProteome(true);
         }
         xmlObj.setModified(XmlConverterHelper.dateToXml(uniObj.getModified()));

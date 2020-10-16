@@ -1,5 +1,7 @@
 package org.uniprot.core.genecentric.impl;
 
+import java.util.Objects;
+
 import org.uniprot.core.Sequence;
 import org.uniprot.core.genecentric.Protein;
 import org.uniprot.core.uniprotkb.ProteinExistence;
@@ -8,8 +10,6 @@ import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.UniProtKBId;
 import org.uniprot.core.uniprotkb.description.FlagType;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
-
-import java.util.Objects;
 
 /**
  * @author lgonzales
@@ -41,21 +41,22 @@ public class ProteinImpl implements Protein {
 
     private final int sequenceVersion;
 
-    ProteinImpl(){
+    ProteinImpl() {
         this(null, null, null, null, null, null, null, null, null, null, 0);
     }
 
-    public ProteinImpl(UniProtKBEntryType entryType,
-                       UniProtKBAccession accession,
-                       UniProtKBId uniProtkbId,
-                       String proteinName,
-                       Organism organism,
-                       String geneName,
-                       ProteinExistence proteinExistence,
-                       FlagType flagType,
-                       String proteomeId,
-                       Sequence sequence,
-                       int sequenceVersion) {
+    public ProteinImpl(
+            UniProtKBEntryType entryType,
+            UniProtKBAccession accession,
+            UniProtKBId uniProtkbId,
+            String proteinName,
+            Organism organism,
+            String geneName,
+            ProteinExistence proteinExistence,
+            FlagType flagType,
+            String proteomeId,
+            Sequence sequence,
+            int sequenceVersion) {
         this.entryType = entryType;
         this.accession = accession;
         this.uniProtkbId = uniProtkbId;
@@ -118,21 +119,32 @@ public class ProteinImpl implements Protein {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProteinImpl protein = (ProteinImpl) o;
-        return getSequenceVersion() == protein.getSequenceVersion() &&
-                getEntryType() == protein.getEntryType() &&
-                Objects.equals(getAccession(), protein.getAccession()) &&
-                Objects.equals(getUniProtkbId(), protein.getUniProtkbId()) &&
-                Objects.equals(getProteinName(), protein.getProteinName()) &&
-                Objects.equals(getOrganism(), protein.getOrganism()) &&
-                Objects.equals(getGeneName(), protein.getGeneName()) &&
-                getProteinExistence() == protein.getProteinExistence() &&
-                getFlagType() == protein.getFlagType() &&
-                Objects.equals(getProteomeId(), protein.getProteomeId()) &&
-                Objects.equals(getSequence(), protein.getSequence());
+        return getSequenceVersion() == protein.getSequenceVersion()
+                && getEntryType() == protein.getEntryType()
+                && Objects.equals(getAccession(), protein.getAccession())
+                && Objects.equals(getUniProtkbId(), protein.getUniProtkbId())
+                && Objects.equals(getProteinName(), protein.getProteinName())
+                && Objects.equals(getOrganism(), protein.getOrganism())
+                && Objects.equals(getGeneName(), protein.getGeneName())
+                && getProteinExistence() == protein.getProteinExistence()
+                && getFlagType() == protein.getFlagType()
+                && Objects.equals(getProteomeId(), protein.getProteomeId())
+                && Objects.equals(getSequence(), protein.getSequence());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getEntryType(), getAccession(), getUniProtkbId(), getProteinName(), getOrganism(), getGeneName(), getProteinExistence(), getFlagType(), getProteomeId(), getSequence(), getSequenceVersion());
+        return Objects.hash(
+                getEntryType(),
+                getAccession(),
+                getUniProtkbId(),
+                getProteinName(),
+                getOrganism(),
+                getGeneName(),
+                getProteinExistence(),
+                getFlagType(),
+                getProteomeId(),
+                getSequence(),
+                getSequenceVersion());
     }
 }
