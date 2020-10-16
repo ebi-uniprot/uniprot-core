@@ -1,0 +1,953 @@
+ID   MECOM_HUMAN             Reviewed;        1230 AA.
+AC   Q03112; A1L4F3; A8KA00; B7Z8W7; B7ZLQ3; B7ZLQ4; C9JAK0; D3DNP7; E7EQ57;
+AC   Q13465; Q13466; Q16122; Q5HYI1; Q6FH90; Q6MZS6; Q8NEI5; Q99917;
+DT   01-JUN-1994, integrated into UniProtKB/Swiss-Prot.
+DT   28-MAR-2018, sequence version 3.
+DT   26-FEB-2020, entry version 194.
+DE   RecName: Full=Histone-lysine N-methyltransferase MECOM {ECO:0000305};
+DE            EC=2.1.1.- {ECO:0000250|UniProtKB:P14404};
+DE   AltName: Full=Ecotropic virus integration site 1 protein homolog;
+DE            Short=EVI-1;
+DE   AltName: Full=MDS1 and EVI1 complex locus protein {ECO:0000305};
+DE   AltName: Full=Myelodysplasia syndrome 1 protein;
+DE   AltName: Full=Myelodysplasia syndrome-associated protein 1;
+GN   Name=MECOM {ECO:0000312|HGNC:HGNC:3498};
+GN   Synonyms=EVI1 {ECO:0000303|PubMed:8643684}, MDS1
+GN   {ECO:0000303|PubMed:8643684}, PRDM3 {ECO:0000303|PubMed:22939622};
+OS   Homo sapiens (Human).
+OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi; Mammalia;
+OC   Eutheria; Euarchontoglires; Primates; Haplorrhini; Catarrhini; Hominidae;
+OC   Homo.
+OX   NCBI_TaxID=9606;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM 1), AND ALTERNATIVE SPLICING.
+RX   PubMed=2115646;
+RA   Morishita K., Parganas E., Douglass E.C., Ihle J.N.;
+RT   "Unique expression of the human Evi-1 gene in an endometrial carcinoma cell
+RT   line: sequence of cDNAs and structure of alternatively spliced
+RT   transcripts.";
+RL   Oncogene 5:963-971(1990).
+RN   [2]
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM 9), NUCLEOTIDE SEQUENCE [MRNA] OF
+RP   14-127 (ISOFORMS 2/7/8), AND CHROMOSOMAL TRANSLOCATION WITH AML1.
+RC   TISSUE=Kidney, and Pancreas;
+RX   PubMed=8643684; DOI=10.1073/pnas.93.4.1642;
+RA   Fears S., Mathieu C., Zeleznik-Le N., Huang S., Rowley J.D., Nucifora G.;
+RT   "Intergenic splicing of MDS1 and EVI1 occurs in normal tissues as well as
+RT   in myeloid leukemia and produces a new member of the PR domain family.";
+RL   Proc. Natl. Acad. Sci. U.S.A. 93:1642-1647(1996).
+RN   [3]
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM 2).
+RX   PubMed=11050005;
+RA   Mochizuki N., Shimizu S., Nagasawa T., Tanaka H., Taniwaki M., Yokota J.,
+RA   Morishita K.;
+RT   "A novel gene, MEL1, mapped to 1p36.3 is highly homologous to the MDS1/EVI1
+RT   gene and is transcriptionally activated in t(1;3)(p36;q21)-positive
+RT   leukemia cells.";
+RL   Blood 96:3209-3214(2000).
+RN   [4]
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORMS 1 AND 8).
+RC   TISSUE=Trachea;
+RX   PubMed=14702039; DOI=10.1038/ng1285;
+RA   Ota T., Suzuki Y., Nishikawa T., Otsuki T., Sugiyama T., Irie R.,
+RA   Wakamatsu A., Hayashi K., Sato H., Nagai K., Kimura K., Makita H.,
+RA   Sekine M., Obayashi M., Nishi T., Shibahara T., Tanaka T., Ishii S.,
+RA   Yamamoto J., Saito K., Kawai Y., Isono Y., Nakamura Y., Nagahari K.,
+RA   Murakami K., Yasuda T., Iwayanagi T., Wagatsuma M., Shiratori A., Sudo H.,
+RA   Hosoiri T., Kaku Y., Kodaira H., Kondo H., Sugawara M., Takahashi M.,
+RA   Kanda K., Yokoi T., Furuya T., Kikkawa E., Omura Y., Abe K., Kamihara K.,
+RA   Katsuta N., Sato K., Tanikawa M., Yamazaki M., Ninomiya K., Ishibashi T.,
+RA   Yamashita H., Murakawa K., Fujimori K., Tanai H., Kimata M., Watanabe M.,
+RA   Hiraoka S., Chiba Y., Ishida S., Ono Y., Takiguchi S., Watanabe S.,
+RA   Yosida M., Hotuta T., Kusano J., Kanehori K., Takahashi-Fujii A., Hara H.,
+RA   Tanase T., Nomura Y., Togiya S., Komai F., Hara R., Takeuchi K., Arita M.,
+RA   Imose N., Musashino K., Yuuki H., Oshima A., Sasaki N., Aotsuka S.,
+RA   Yoshikawa Y., Matsunawa H., Ichihara T., Shiohata N., Sano S., Moriya S.,
+RA   Momiyama H., Satoh N., Takami S., Terashima Y., Suzuki O., Nakagawa S.,
+RA   Senoh A., Mizoguchi H., Goto Y., Shimizu F., Wakebe H., Hishigaki H.,
+RA   Watanabe T., Sugiyama A., Takemoto M., Kawakami B., Yamazaki M.,
+RA   Watanabe K., Kumagai A., Itakura S., Fukuzumi Y., Fujimori Y., Komiyama M.,
+RA   Tashiro H., Tanigami A., Fujiwara T., Ono T., Yamada K., Fujii Y.,
+RA   Ozaki K., Hirao M., Ohmori Y., Kawabata A., Hikiji T., Kobatake N.,
+RA   Inagaki H., Ikema Y., Okamoto S., Okitani R., Kawakami T., Noguchi S.,
+RA   Itoh T., Shigeta K., Senba T., Matsumura K., Nakajima Y., Mizuno T.,
+RA   Morinaga M., Sasaki M., Togashi T., Oyama M., Hata H., Watanabe M.,
+RA   Komatsu T., Mizushima-Sugano J., Satoh T., Shirai Y., Takahashi Y.,
+RA   Nakagawa K., Okumura K., Nagase T., Nomura N., Kikuchi H., Masuho Y.,
+RA   Yamashita R., Nakai K., Yada T., Nakamura Y., Ohara O., Isogai T.,
+RA   Sugano S.;
+RT   "Complete sequencing and characterization of 21,243 full-length human
+RT   cDNAs.";
+RL   Nat. Genet. 36:40-45(2004).
+RN   [5]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (ISOFORM 9).
+RA   Ebert L., Schick M., Neubert P., Schatten R., Henze S., Korn B.;
+RT   "Cloning of human full open reading frames in Gateway(TM) system entry
+RT   vector (pDONR201).";
+RL   Submitted (JUN-2004) to the EMBL/GenBank/DDBJ databases.
+RN   [6]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
+RA   Mural R.J., Istrail S., Sutton G.G., Florea L., Halpern A.L., Mobarry C.M.,
+RA   Lippert R., Walenz B., Shatkay H., Dew I., Miller J.R., Flanigan M.J.,
+RA   Edwards N.J., Bolanos R., Fasulo D., Halldorsson B.V., Hannenhalli S.,
+RA   Turner R., Yooseph S., Lu F., Nusskern D.R., Shue B.C., Zheng X.H.,
+RA   Zhong F., Delcher A.L., Huson D.H., Kravitz S.A., Mouchard L., Reinert K.,
+RA   Remington K.A., Clark A.G., Waterman M.S., Eichler E.E., Adams M.D.,
+RA   Hunkapiller M.W., Myers E.W., Venter J.C.;
+RL   Submitted (SEP-2005) to the EMBL/GenBank/DDBJ databases.
+RN   [7]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (ISOFORM 5).
+RC   TISSUE=Adipose tissue, and Fetal kidney;
+RX   PubMed=17974005; DOI=10.1186/1471-2164-8-399;
+RA   Bechtel S., Rosenfelder H., Duda A., Schmidt C.P., Ernst U.,
+RA   Wellenreuther R., Mehrle A., Schuster C., Bahr A., Blocker H., Heubner D.,
+RA   Hoerlein A., Michel G., Wedler H., Kohrer K., Ottenwalder B., Poustka A.,
+RA   Wiemann S., Schupp I.;
+RT   "The full-ORF clone resource of the German cDNA consortium.";
+RL   BMC Genomics 8:399-399(2007).
+RN   [8]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
+RX   PubMed=16641997; DOI=10.1038/nature04728;
+RA   Muzny D.M., Scherer S.E., Kaul R., Wang J., Yu J., Sudbrak R., Buhay C.J.,
+RA   Chen R., Cree A., Ding Y., Dugan-Rocha S., Gill R., Gunaratne P.,
+RA   Harris R.A., Hawes A.C., Hernandez J., Hodgson A.V., Hume J., Jackson A.,
+RA   Khan Z.M., Kovar-Smith C., Lewis L.R., Lozado R.J., Metzker M.L.,
+RA   Milosavljevic A., Miner G.R., Morgan M.B., Nazareth L.V., Scott G.,
+RA   Sodergren E., Song X.Z., Steffen D., Wei S., Wheeler D.A., Wright M.W.,
+RA   Worley K.C., Yuan Y., Zhang Z., Adams C.Q., Ansari-Lari M.A., Ayele M.,
+RA   Brown M.J., Chen G., Chen Z., Clendenning J., Clerc-Blankenburg K.P.,
+RA   Chen R., Chen Z., Davis C., Delgado O., Dinh H.H., Dong W., Draper H.,
+RA   Ernst S., Fu G., Gonzalez-Garay M.L., Garcia D.K., Gillett W., Gu J.,
+RA   Hao B., Haugen E., Havlak P., He X., Hennig S., Hu S., Huang W.,
+RA   Jackson L.R., Jacob L.S., Kelly S.H., Kube M., Levy R., Li Z., Liu B.,
+RA   Liu J., Liu W., Lu J., Maheshwari M., Nguyen B.V., Okwuonu G.O.,
+RA   Palmeiri A., Pasternak S., Perez L.M., Phelps K.A., Plopper F.J., Qiang B.,
+RA   Raymond C., Rodriguez R., Saenphimmachak C., Santibanez J., Shen H.,
+RA   Shen Y., Subramanian S., Tabor P.E., Verduzco D., Waldron L., Wang J.,
+RA   Wang J., Wang Q., Williams G.A., Wong G.K., Yao Z., Zhang J., Zhang X.,
+RA   Zhao G., Zhou J., Zhou Y., Nelson D., Lehrach H., Reinhardt R.,
+RA   Naylor S.L., Yang H., Olson M., Weinstock G., Gibbs R.A.;
+RT   "The DNA sequence, annotation and analysis of human chromosome 3.";
+RL   Nature 440:1194-1198(2006).
+RN   [9]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (ISOFORMS 4 AND 6), NUCLEOTIDE
+RP   SEQUENCE [LARGE SCALE MRNA] (ISOFORM 9), AND NUCLEOTIDE SEQUENCE [LARGE
+RP   SCALE MRNA] OF 704-1230 (ISOFORM 7).
+RC   TISSUE=Lung;
+RX   PubMed=15489334; DOI=10.1101/gr.2596504;
+RG   The MGC Project Team;
+RA   Gerhard D.S., Wagner L., Feingold E.A., Shenmen C.M., Grouse L.H.,
+RA   Schuler G., Klein S.L., Old S., Rasooly R., Good P., Guyer M., Peck A.M.,
+RA   Derge J.G., Lipman D., Collins F.S., Jang W., Sherry S., Feolo M.,
+RA   Misquitta L., Lee E., Rotmistrovsky K., Greenhut S.F., Schaefer C.F.,
+RA   Buetow K., Bonner T.I., Haussler D., Kent J., Kiekhaus M., Furey T.,
+RA   Brent M., Prange C., Schreiber K., Shapiro N., Bhat N.K., Hopkins R.F.,
+RA   Hsie F., Driscoll T., Soares M.B., Casavant T.L., Scheetz T.E.,
+RA   Brown-stein M.J., Usdin T.B., Toshiyuki S., Carninci P., Piao Y.,
+RA   Dudekula D.B., Ko M.S., Kawakami K., Suzuki Y., Sugano S., Gruber C.E.,
+RA   Smith M.R., Simmons B., Moore T., Waterman R., Johnson S.L., Ruan Y.,
+RA   Wei C.L., Mathavan S., Gunaratne P.H., Wu J., Garcia A.M., Hulyk S.W.,
+RA   Fuh E., Yuan Y., Sneed A., Kowis C., Hodgson A., Muzny D.M., McPherson J.,
+RA   Gibbs R.A., Fahey J., Helton E., Ketteman M., Madan A., Rodrigues S.,
+RA   Sanchez A., Whiting M., Madari A., Young A.C., Wetherby K.D., Granite S.J.,
+RA   Kwong P.N., Brinkley C.P., Pearson R.L., Bouffard G.G., Blakesly R.W.,
+RA   Green E.D., Dickson M.C., Rodriguez A.C., Grimwood J., Schmutz J.,
+RA   Myers R.M., Butterfield Y.S., Griffith M., Griffith O.L., Krzywinski M.I.,
+RA   Liao N., Morin R., Morrin R., Palmquist D., Petrescu A.S., Skalska U.,
+RA   Smailus D.E., Stott J.M., Schnerch A., Schein J.E., Jones S.J., Holt R.A.,
+RA   Baross A., Marra M.A., Clifton S., Makowski K.A., Bosak S., Malek J.;
+RT   "The status, quality, and expansion of the NIH full-length cDNA project:
+RT   the Mammalian Gene Collection (MGC).";
+RL   Genome Res. 14:2121-2127(2004).
+RN   [10]
+RP   NUCLEOTIDE SEQUENCE [MRNA] OF 13-1230 (ISOFORM 7), AND CHROMOSOMAL
+RP   TRANSLOCATION WITH RUNX1 IN CHRONIC MYELOCYTIC LEUKEMIA.
+RX   PubMed=8313895;
+RA   Mitani K., Ogawa S., Tanaka T., Miyoshi H., Kurokawa M., Mano H.,
+RA   Yazaki Y., Ohki M., Hirai H.;
+RT   "Generation of the AML1-EVI-1 fusion gene in the t(3;21)(q26;q22) causes
+RT   blastic crisis in chronic myelocytic leukemia.";
+RL   EMBO J. 13:504-510(1994).
+RN   [11]
+RP   NUCLEOTIDE SEQUENCE [MRNA] OF 1149-1191.
+RX   PubMed=8700545;
+RA   Ogawa S., Kurokawa M., Tanaka T., Mitani K., Inazawa J., Hangaishi A.,
+RA   Tanaka K., Matsuo Y., Minowada J., Tsubota T., Yazaki Y., Hirai H.;
+RT   "Structurally altered Evi-1 protein generated in the 3q21q26 syndrome.";
+RL   Oncogene 13:183-191(1996).
+RN   [12]
+RP   FUNCTION, ALTERNATIVE SPLICING (ISOFORMS 1 AND 2), HOMOOLIGOMERIZATION,
+RP   INTERACTION WITH CTBP1 AND SMAD3, AND SUBCELLULAR LOCATION.
+RX   PubMed=15897867; DOI=10.1038/sj.onc.1208754;
+RA   Nitta E., Izutsu K., Yamaguchi Y., Imai Y., Ogawa S., Chiba S.,
+RA   Kurokawa M., Hirai H.;
+RT   "Oligomerization of Evi-1 regulated by the PR domain contributes to
+RT   recruitment of corepressor CtBP.";
+RL   Oncogene 24:6165-6173(2005).
+RN   [13]
+RP   FUNCTION IN TGF-BETA SIGNALING, INTERACTION WITH SMAD3 AND SMAD4, AND
+RP   SUBCELLULAR LOCATION.
+RX   PubMed=9665135; DOI=10.1038/27945;
+RA   Kurokawa M., Mitani K., Irie K., Matsuyama T., Takahashi T., Chiba S.,
+RA   Yazaki Y., Matsumoto K., Hirai H.;
+RT   "The oncoprotein Evi-1 represses TGF-beta signalling by inhibiting Smad3.";
+RL   Nature 394:92-96(1998).
+RN   [14]
+RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Cervix carcinoma;
+RX   PubMed=17081983; DOI=10.1016/j.cell.2006.09.026;
+RA   Olsen J.V., Blagoev B., Gnad F., Macek B., Kumar C., Mortensen P., Mann M.;
+RT   "Global, in vivo, and site-specific phosphorylation dynamics in signaling
+RT   networks.";
+RL   Cell 127:635-648(2006).
+RN   [15]
+RP   FUNCTION, AND INTERACTION WITH MAPK8 AND MAPK9.
+RX   PubMed=10856240; DOI=10.1093/emboj/19.12.2958;
+RA   Kurokawa M., Mitani K., Yamagata T., Takahashi T., Izutsu K., Ogawa S.,
+RA   Moriguchi T., Nishida E., Yazaki Y., Hirai H.;
+RT   "The evi-1 oncoprotein inhibits c-Jun N-terminal kinase and prevents
+RT   stress-induced cell death.";
+RL   EMBO J. 19:2958-2968(2000).
+RN   [16]
+RP   FUNCTION IN APOPTOSIS.
+RX   PubMed=16462766; DOI=10.1038/sj.onc.1209403;
+RA   Liu Y., Chen L., Ko T.C., Fields A.P., Thompson E.A.;
+RT   "Evi1 is a survival factor which conveys resistance to both TGFbeta- and
+RT   taxol-mediated cell death via PI3K/AKT.";
+RL   Oncogene 25:3565-3575(2006).
+RN   [17]
+RP   FUNCTION, ACETYLATION, INTERACTION WITH CREBBP; CTBP1; KAT2B AND HISTONE
+RP   DEACETYLASES, SUBCELLULAR LOCATION, AND MUTAGENESIS OF 743-ASP-LEU-744 AND
+RP   774-ASP-LEU-775.
+RX   PubMed=11568182; DOI=10.1074/jbc.M106733200;
+RA   Chakraborty S., Senyuk V., Sitailo S., Chi Y., Nucifora G.;
+RT   "Interaction of EVI1 with cAMP-responsive element-binding protein-binding
+RT   protein (CBP) and p300/CBP-associated factor (P/CAF) results in reversible
+RT   acetylation of EVI1 and in co-localization in nuclear speckles.";
+RL   J. Biol. Chem. 276:44936-44943(2001).
+RN   [18]
+RP   FUNCTION.
+RX   PubMed=19767769; DOI=10.1038/onc.2009.288;
+RA   Shimabe M., Goyama S., Watanabe-Okochi N., Yoshimi A., Ichikawa M.,
+RA   Imai Y., Kurokawa M.;
+RT   "Pbx1 is a downstream target of Evi-1 in hematopoietic stem/progenitors and
+RT   leukemic cells.";
+RL   Oncogene 28:4364-4374(2009).
+RN   [19]
+RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Cervix carcinoma;
+RX   PubMed=18220336; DOI=10.1021/pr0705441;
+RA   Cantin G.T., Yi W., Lu B., Park S.K., Xu T., Lee J.D., Yates J.R.;
+RT   "Combining protein-based IMAC, peptide-based IMAC, and MudPIT for efficient
+RT   phosphoproteomic analysis.";
+RL   J. Proteome Res. 7:1346-1351(2008).
+RN   [20]
+RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-1039, AND IDENTIFICATION BY
+RP   MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Cervix carcinoma;
+RX   PubMed=20068231; DOI=10.1126/scisignal.2000475;
+RA   Olsen J.V., Vermeulen M., Santamaria A., Kumar C., Miller M.L.,
+RA   Jensen L.J., Gnad F., Cox J., Jensen T.S., Nigg E.A., Brunak S., Mann M.;
+RT   "Quantitative phosphoproteomics reveals widespread full phosphorylation
+RT   site occupancy during mitosis.";
+RL   Sci. Signal. 3:RA3-RA3(2010).
+RN   [21]
+RP   IDENTIFICATION BY MASS SPECTROMETRY, AND SUBCELLULAR LOCATION.
+RX   PubMed=22939622; DOI=10.1016/j.cell.2012.06.048;
+RA   Pinheiro I., Margueron R., Shukeir N., Eisold M., Fritzsch C.,
+RA   Richter F.M., Mittler G., Genoud C., Goyama S., Kurokawa M., Son J.,
+RA   Reinberg D., Lachner M., Jenuwein T.;
+RT   "Prdm3 and Prdm16 are H3K9me1 methyltransferases required for mammalian
+RT   heterochromatin integrity.";
+RL   Cell 150:948-960(2012).
+RN   [22]
+RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-624; SER-726; SER-1037 AND
+RP   SER-1039, AND IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Cervix carcinoma, and Erythroleukemia;
+RX   PubMed=23186163;
+RA   Zhou H., Di Palma S., Preisinger C., Peng M., Polat A.N., Heck A.J.,
+RA   Mohammed S.;
+RT   "Toward a comprehensive characterization of a human cancer cell
+RT   phosphoproteome.";
+RL   J. Proteome Res. 12:260-271(2013).
+RN   [23]
+RP   SUMOYLATION [LARGE SCALE ANALYSIS] AT LYS-190; LYS-555; LYS-685; LYS-721;
+RP   LYS-735; LYS-752; LYS-787; LYS-1127; LYS-1132 AND LYS-1152, AND
+RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RX   PubMed=25218447;
+RA   Hendriks I.A., D'Souza R.C., Yang B., Verlaan-de Vries M., Mann M.,
+RA   Vertegaal A.C.;
+RT   "Uncovering global SUMOylation signaling networks in a site-specific
+RT   manner.";
+RL   Nat. Struct. Mol. Biol. 21:927-936(2014).
+RN   [24]
+RP   SUMOYLATION [LARGE SCALE ANALYSIS] AT LYS-190; LYS-555; LYS-685; LYS-721;
+RP   LYS-877; LYS-1053; LYS-1132 AND LYS-1152, AND IDENTIFICATION BY MASS
+RP   SPECTROMETRY [LARGE SCALE ANALYSIS].
+RX   PubMed=25772364; DOI=10.1016/j.celrep.2015.02.033;
+RA   Hendriks I.A., Treffers L.W., Verlaan-de Vries M., Olsen J.V.,
+RA   Vertegaal A.C.;
+RT   "SUMO-2 orchestrates chromatin modifiers in response to DNA damage.";
+RL   Cell Rep. 10:1778-1791(2015).
+RN   [25]
+RP   INVOLVEMENT IN RUSAT2, VARIANTS RUSAT2 TRP-929; ARG-930 AND ALA-935, AND
+RP   CHARACTERIZATION OF VARIANTS RUSAT2 TRP-929; ARG-930 AND ALA-935.
+RX   PubMed=26581901; DOI=10.1016/j.ajhg.2015.10.010;
+RA   Niihori T., Ouchi-Uchiyama M., Sasahara Y., Kaneko T., Hashii Y., Irie M.,
+RA   Sato A., Saito-Nanjo Y., Funayama R., Nagashima T., Inoue S., Nakayama K.,
+RA   Ozono K., Kure S., Matsubara Y., Imaizumi M., Aoki Y.;
+RT   "Mutations in MECOM, encoding oncoprotein EVI1, cause radioulnar synostosis
+RT   with amegakaryocytic thrombocytopenia.";
+RL   Am. J. Hum. Genet. 97:848-854(2015).
+RN   [26]
+RP   SUMOYLATION [LARGE SCALE ANALYSIS] AT LYS-99; LYS-190; LYS-249; LYS-292;
+RP   LYS-367; LYS-374; LYS-430; LYS-523; LYS-543; LYS-547; LYS-555; LYS-622;
+RP   LYS-635; LYS-663; LYS-685; LYS-721; LYS-731; LYS-732; LYS-735; LYS-749;
+RP   LYS-752; LYS-760; LYS-787; LYS-800; LYS-801; LYS-835; LYS-844; LYS-846;
+RP   LYS-877; LYS-1018; LYS-1053; LYS-1056; LYS-1120; LYS-1127; LYS-1132;
+RP   LYS-1149; LYS-1152; LYS-1176 AND LYS-1184, SUMOYLATION [LARGE SCALE
+RP   ANALYSIS] AT LYS-658 (ISOFORM 1), SUMOYLATION [LARGE SCALE ANALYSIS] AT
+RP   LYS-846 (ISOFORMS 2 AND 8), SUMOYLATION [LARGE SCALE ANALYSIS] AT LYS-202
+RP   AND LYS-723 (ISOFORM 4), SUMOYLATION [LARGE SCALE ANALYSIS] AT LYS-138
+RP   (ISOFORM 6), AND IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE
+RP   ANALYSIS].
+RX   PubMed=28112733;
+RA   Hendriks I.A., Lyon D., Young C., Jensen L.J., Vertegaal A.C.,
+RA   Nielsen M.L.;
+RT   "Site-specific mapping of the human SUMO proteome reveals co-modification
+RT   with phosphorylation.";
+RL   Nat. Struct. Mol. Biol. 24:325-336(2017).
+CC   -!- FUNCTION: [Isoform 1]: Functions as a transcriptional regulator binding
+CC       to DNA sequences in the promoter region of target genes and regulating
+CC       positively or negatively their expression. Oncogene which plays a role
+CC       in development, cell proliferation and differentiation. May also play a
+CC       role in apoptosis through regulation of the JNK and TGF-beta signaling.
+CC       Involved in hematopoiesis. {ECO:0000269|PubMed:10856240,
+CC       ECO:0000269|PubMed:11568182, ECO:0000269|PubMed:15897867,
+CC       ECO:0000269|PubMed:16462766, ECO:0000269|PubMed:19767769,
+CC       ECO:0000269|PubMed:9665135}.
+CC   -!- FUNCTION: [Isoform 7]: Displays histone methyltransferase activity and
+CC       monomethylates 'Lys-9' of histone H3 (H3K9me1) in vitro. Probably
+CC       catalyzes the monomethylation of free histone H3 in the cytoplasm which
+CC       is then transported to the nucleus and incorporated into nucleosomes
+CC       where SUV39H methyltransferases use it as a substrate to catalyze
+CC       histone H3 'Lys-9' trimethylation. Likely to be one of the primary
+CC       histone methyltransferases along with PRDM16 that direct cytoplasmic
+CC       H3K9me1 methylation. {ECO:0000250|UniProtKB:P14404}.
+CC   -!- CATALYTIC ACTIVITY:
+CC       Reaction=L-lysyl(9)-[histone H3] + S-adenosyl-L-methionine = H(+) +
+CC         N(6)-methyl-L-lysyl(9)-[histone H3] + S-adenosyl-L-homocysteine;
+CC         Xref=Rhea:RHEA:60280, Rhea:RHEA-COMP:15542, Rhea:RHEA-COMP:15546,
+CC         ChEBI:CHEBI:15378, ChEBI:CHEBI:29969, ChEBI:CHEBI:57856,
+CC         ChEBI:CHEBI:59789, ChEBI:CHEBI:61929;
+CC         Evidence={ECO:0000250|UniProtKB:P14404};
+CC   -!- SUBUNIT: [Isoform 1]: Homooligomer. Interacts with SUV39H1 (via SET
+CC       domain); enhances MECOM transcriptional repression activity (By
+CC       similarity). Interacts with CTBP1. Interacts with SMAD3 (via MH2
+CC       domain); the interaction is direct. Interacts with SMAD4; through
+CC       interaction with SMAD3. Interacts with CREBBP, KAT2B and histone
+CC       deacetylases. Interacts with MAPK8 and MAPK9; inhibits JNK signaling
+CC       (PubMed:10856240, PubMed:11568182, PubMed:15897867, PubMed:9665135).
+CC       {ECO:0000250|UniProtKB:P14404, ECO:0000269|PubMed:10856240,
+CC       ECO:0000269|PubMed:11568182, ECO:0000269|PubMed:15897867,
+CC       ECO:0000269|PubMed:9665135}.
+CC   -!- SUBCELLULAR LOCATION: Nucleus {ECO:0000269|PubMed:11568182,
+CC       ECO:0000269|PubMed:15897867, ECO:0000269|PubMed:9665135}. Nucleus
+CC       speckle {ECO:0000269|PubMed:11568182}. Cytoplasm
+CC       {ECO:0000269|PubMed:22939622}.
+CC   -!- ALTERNATIVE PRODUCTS:
+CC       Event=Alternative promoter usage, Alternative splicing; Named isoforms=8;
+CC       Name=7;
+CC         IsoId=Q03112-7; Sequence=Displayed;
+CC       Name=1; Synonyms=Long, Evi-1a;
+CC         IsoId=Q03112-1; Sequence=VSP_059479, VSP_059484;
+CC       Name=2; Synonyms=Evi-1c, Mds1/Evi1;
+CC         IsoId=Q03112-3; Sequence=VSP_059484;
+CC       Name=4;
+CC         IsoId=Q03112-4; Sequence=VSP_059480, VSP_059483, VSP_059484;
+CC       Name=5;
+CC         IsoId=Q03112-5; Sequence=VSP_059479;
+CC       Name=6;
+CC         IsoId=Q03112-6; Sequence=VSP_059479, VSP_059483;
+CC       Name=8;
+CC         IsoId=Q03112-8; Sequence=VSP_059484, VSP_059485, VSP_059486;
+CC       Name=9; Synonyms=MDS1;
+CC         IsoId=Q03112-9; Sequence=VSP_059481, VSP_059482;
+CC   -!- DOMAIN: Both zinc finger regions are required for the transcriptional
+CC       activation of PBX1.
+CC   -!- PTM: Phosphorylated. {ECO:0000250}.
+CC   -!- PTM: May be acetylated by CREBBP and KAT2B.
+CC       {ECO:0000269|PubMed:11568182}.
+CC   -!- DISEASE: Note=A chromosomal aberration involving EVI1 is a cause of
+CC       chronic myelogenous leukemia (CML). Translocation t(3;21)(q26;q22) with
+CC       RUNX1/AML1. {ECO:0000269|PubMed:8313895}.
+CC   -!- DISEASE: Radioulnar synostosis with amegakaryocytic thrombocytopenia 2
+CC       (RUSAT2) [MIM:616738]: An autosomal dominant disease characterized by
+CC       proximal fusion of the radius and ulna resulting in extremely limited
+CC       pronation and supination of the forearm, and congenital
+CC       thrombocytopenia that progresses to pancytopenia.
+CC       {ECO:0000269|PubMed:26581901}. Note=The disease is caused by mutations
+CC       affecting the gene represented in this entry.
+CC   -!- DISEASE: Note=A chromosomal aberration involving MDS1 is found in a
+CC       form of acute myeloid leukemia (AML). Translocation t(3;21) with AML1.
+CC       {ECO:0000269|PubMed:8643684}.
+CC   -!- MISCELLANEOUS: [Isoform 2]: Produced by alternative promoter usage.
+CC       Unable to form homooligomers, to interact with CTBP1 and SMAD3 and to
+CC       repress TGF-beta signaling. {ECO:0000244|PubMed:28112733,
+CC       ECO:0000269|PubMed:15897867}.
+CC   -!- MISCELLANEOUS: [Isoform 9]: Produced by alternative promoter usage.
+CC       {ECO:0000305}.
+CC   -!- SEQUENCE CAUTION:
+CC       Sequence=AAB29907.1; Type=Erroneous initiation; Note=Extended N-terminus.; Evidence={ECO:0000305};
+CC       Sequence=AAB29907.1; Type=Miscellaneous discrepancy; Note=Chimeric cDNA that is the result of a chromosomal aberration involving EVI1 and RUNX1.; Evidence={ECO:0000305};
+CC       Sequence=AAI30521.1; Type=Erroneous initiation; Note=Truncated N-terminus.; Evidence={ECO:0000305};
+CC   -!- WEB RESOURCE: Name=Atlas of Genetics and Cytogenetics in Oncology and
+CC       Haematology;
+CC       URL="http://atlasgeneticsoncology.org/Genes/EVI103q26ID19.html";
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; X54989; CAA38735.1; -; mRNA.
+DR   EMBL; U43292; AAB05839.1; -; mRNA.
+DR   EMBL; U43293; AAB05840.1; -; mRNA.
+DR   EMBL; AK292865; BAF85554.1; -; mRNA.
+DR   EMBL; AK304098; BAH14103.1; -; mRNA.
+DR   EMBL; CR541866; CAG46664.1; -; mRNA.
+DR   EMBL; CR541886; CAG46684.1; -; mRNA.
+DR   EMBL; BX640908; CAE45952.1; -; mRNA.
+DR   EMBL; BX647613; CAI46086.1; -; mRNA.
+DR   EMBL; AC007849; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; AC024099; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; AC069220; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; AC074033; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; AC078985; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; KF457717; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; CH471052; EAW78549.1; -; Genomic_DNA.
+DR   EMBL; CH471052; EAW78553.1; -; Genomic_DNA.
+DR   EMBL; CH471052; EAW78556.1; -; Genomic_DNA.
+DR   EMBL; CH471052; EAW78557.1; -; Genomic_DNA.
+DR   EMBL; BC031019; AAH31019.1; -; mRNA.
+DR   EMBL; BC069498; AAH69498.1; -; mRNA.
+DR   EMBL; BC130520; AAI30521.1; ALT_INIT; mRNA.
+DR   EMBL; BC143951; AAI43952.1; -; mRNA.
+DR   EMBL; BC143952; AAI43953.1; -; mRNA.
+DR   EMBL; S69002; AAB29907.1; ALT_SEQ; mRNA.
+DR   EMBL; S82592; AAB37456.1; -; mRNA.
+DR   CCDS; CCDS3205.1; -. [Q03112-1]
+DR   CCDS; CCDS54669.1; -. [Q03112-5]
+DR   CCDS; CCDS54670.1; -. [Q03112-4]
+DR   PIR; A60191; A60191.
+DR   PIR; S41705; S41705.
+DR   RefSeq; NP_001098547.3; NM_001105077.3. [Q03112-4]
+DR   RefSeq; NP_001098548.2; NM_001105078.3. [Q03112-1]
+DR   RefSeq; NP_001157471.1; NM_001163999.1. [Q03112-6]
+DR   RefSeq; NP_001157472.1; NM_001164000.1. [Q03112-5]
+DR   RefSeq; NP_001192123.1; NM_001205194.1. [Q03112-1]
+DR   RefSeq; NP_004982.2; NM_004991.3. [Q03112-3]
+DR   RefSeq; NP_005232.2; NM_005241.3. [Q03112-1]
+DR   RefSeq; XP_005247272.1; XM_005247215.3.
+DR   RefSeq; XP_005247276.1; XM_005247219.2.
+DR   RefSeq; XP_005247277.1; XM_005247220.2.
+DR   RefSeq; XP_005247278.1; XM_005247221.2.
+DR   RefSeq; XP_005247280.1; XM_005247223.2.
+DR   RefSeq; XP_016861363.1; XM_017005874.1. [Q03112-4]
+DR   RefSeq; XP_016861364.1; XM_017005875.1.
+DR   RefSeq; XP_016861365.1; XM_017005876.1.
+DR   PDB; 6BW3; X-ray; 2.20 A; B/D=1-12.
+DR   PDBsum; 6BW3; -.
+DR   SMR; Q03112; -.
+DR   BioGrid; 108423; 55.
+DR   DIP; DIP-38639N; -.
+DR   ELM; Q03112; -.
+DR   IntAct; Q03112; 20.
+DR   MINT; Q03112; -.
+DR   STRING; 9606.ENSP00000264674; -.
+DR   iPTMnet; Q03112; -.
+DR   PhosphoSitePlus; Q03112; -.
+DR   BioMuta; MECOM; -.
+DR   DMDM; 145559472; -.
+DR   jPOST; Q03112; -.
+DR   MassIVE; Q03112; -.
+DR   MaxQB; Q03112; -.
+DR   PaxDb; Q03112; -.
+DR   PeptideAtlas; Q03112; -.
+DR   PRIDE; Q03112; -.
+DR   ProteomicsDB; 17508; -.
+DR   ProteomicsDB; 58186; -. [Q03112-1]
+DR   ProteomicsDB; 58187; -. [Q03112-3]
+DR   ProteomicsDB; 58188; -. [Q03112-4]
+DR   ProteomicsDB; 58189; -. [Q03112-5]
+DR   ProteomicsDB; 58190; -. [Q03112-6]
+DR   ProteomicsDB; 59462; -.
+DR   DNASU; 2122; -.
+DR   Ensembl; ENST00000264674; ENSP00000264674; ENSG00000085276. [Q03112-4]
+DR   Ensembl; ENST00000464456; ENSP00000419770; ENSG00000085276. [Q03112-5]
+DR   Ensembl; ENST00000468789; ENSP00000419995; ENSG00000085276. [Q03112-1]
+DR   Ensembl; ENST00000494292; ENSP00000417899; ENSG00000085276. [Q03112-7]
+DR   Ensembl; ENST00000628990; ENSP00000486104; ENSG00000085276. [Q03112-1]
+DR   Ensembl; ENST00000651503; ENSP00000498411; ENSG00000085276. [Q03112-3]
+DR   GeneID; 2122; -.
+DR   KEGG; hsa:2122; -.
+DR   UCSC; uc003ffi.3; human. [Q03112-7]
+DR   CTD; 2122; -.
+DR   DisGeNET; 2122; -.
+DR   GeneCards; MECOM; -.
+DR   HGNC; HGNC:3498; MECOM.
+DR   HPA; HPA046537; -.
+DR   MalaCards; MECOM; -.
+DR   MIM; 165215; gene.
+DR   MIM; 600049; gene.
+DR   MIM; 616738; phenotype.
+DR   neXtProt; NX_Q03112; -.
+DR   OpenTargets; ENSG00000085276; -.
+DR   Orphanet; 402020; Acute myeloid leukemia with inv(3)(q21q26.2) or t(3;3)(q21;q26.2).
+DR   Orphanet; 52688; Myelodysplastic syndrome.
+DR   Orphanet; 71289; Radio-ulnar synostosis-amegakaryocytic thrombocytopenia syndrome.
+DR   PharmGKB; PA27912; -.
+DR   eggNOG; KOG1721; Eukaryota.
+DR   eggNOG; COG5048; LUCA.
+DR   GeneTree; ENSGT00940000157208; -.
+DR   InParanoid; Q03112; -.
+DR   KO; K04462; -.
+DR   OMA; PNMWHSM; -.
+DR   OrthoDB; 406002at2759; -.
+DR   PhylomeDB; Q03112; -.
+DR   TreeFam; TF315309; -.
+DR   Reactome; R-HSA-3214841; PKMTs methylate histone lysines.
+DR   Reactome; R-HSA-8943724; Regulation of PTEN gene transcription.
+DR   SignaLink; Q03112; -.
+DR   SIGNOR; Q03112; -.
+DR   ChiTaRS; MECOM; human.
+DR   GeneWiki; MECOM; -.
+DR   GenomeRNAi; 2122; -.
+DR   Pharos; Q03112; Tbio.
+DR   PRO; PR:Q03112; -.
+DR   Proteomes; UP000005640; Chromosome 3.
+DR   RNAct; Q03112; protein.
+DR   Bgee; ENSG00000085276; Expressed in endometrium and 220 other tissues.
+DR   ExpressionAtlas; Q03112; baseline and differential.
+DR   Genevisible; Q03112; HS.
+DR   GO; GO:0005829; C:cytosol; TAS:Reactome.
+DR   GO; GO:0016607; C:nuclear speck; IDA:UniProtKB.
+DR   GO; GO:0005654; C:nucleoplasm; TAS:Reactome.
+DR   GO; GO:0005634; C:nucleus; IDA:UniProtKB.
+DR   GO; GO:0003677; F:DNA binding; ISS:UniProtKB.
+DR   GO; GO:0003700; F:DNA-binding transcription factor activity; IDA:UniProtKB.
+DR   GO; GO:0046974; F:histone methyltransferase activity (H3-K9 specific); ISS:UniProtKB.
+DR   GO; GO:0046872; F:metal ion binding; IEA:UniProtKB-KW.
+DR   GO; GO:0042803; F:protein homodimerization activity; IDA:UniProtKB.
+DR   GO; GO:0006915; P:apoptotic process; IEA:UniProtKB-KW.
+DR   GO; GO:0030154; P:cell differentiation; IEA:UniProtKB-KW.
+DR   GO; GO:0071425; P:hematopoietic stem cell proliferation; ISS:UniProtKB.
+DR   GO; GO:0070828; P:heterochromatin organization; ISS:UniProtKB.
+DR   GO; GO:0046329; P:negative regulation of JNK cascade; IMP:UniProtKB.
+DR   GO; GO:0043069; P:negative regulation of programmed cell death; IMP:UniProtKB.
+DR   GO; GO:0045892; P:negative regulation of transcription, DNA-templated; IDA:UniProtKB.
+DR   GO; GO:0045893; P:positive regulation of transcription, DNA-templated; IDA:UniProtKB.
+DR   GO; GO:0051726; P:regulation of cell cycle; IDA:UniProtKB.
+DR   InterPro; IPR001214; SET_dom.
+DR   InterPro; IPR036236; Znf_C2H2_sf.
+DR   InterPro; IPR013087; Znf_C2H2_type.
+DR   Pfam; PF00096; zf-C2H2; 8.
+DR   SMART; SM00317; SET; 1.
+DR   SMART; SM00355; ZnF_C2H2; 10.
+DR   SUPFAM; SSF57667; SSF57667; 5.
+DR   PROSITE; PS50280; SET; 1.
+DR   PROSITE; PS00028; ZINC_FINGER_C2H2_1; 8.
+DR   PROSITE; PS50157; ZINC_FINGER_C2H2_2; 10.
+PE   1: Evidence at protein level;
+KW   3D-structure; Acetylation; Alternative promoter usage;
+KW   Alternative splicing; Apoptosis; Chromosomal rearrangement; Cytoplasm;
+KW   Developmental protein; Differentiation; Disease mutation; DNA-binding;
+KW   Isopeptide bond; Metal-binding; Methyltransferase; Nucleus; Phosphoprotein;
+KW   Polymorphism; Proto-oncogene; Reference proteome; Repeat; Transcription;
+KW   Transcription regulation; Transferase; Ubl conjugation; Zinc; Zinc-finger.
+FT   CHAIN           1..1230
+FT                   /note="Histone-lysine N-methyltransferase MECOM"
+FT                   /id="PRO_0000047273"
+FT   DOMAIN          78..190
+FT                   /note="SET"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00190"
+FT   ZN_FING         209..236
+FT                   /note="C2H2-type 1"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00042"
+FT   ZN_FING         263..285
+FT                   /note="C2H2-type 2"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00042"
+FT   ZN_FING         291..313
+FT                   /note="C2H2-type 3"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00042"
+FT   ZN_FING         319..342
+FT                   /note="C2H2-type 4"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00042"
+FT   ZN_FING         348..370
+FT                   /note="C2H2-type 5"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00042"
+FT   ZN_FING         376..398
+FT                   /note="C2H2-type 6"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00042"
+FT   ZN_FING         405..427
+FT                   /note="C2H2-type 7; atypical"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00042"
+FT   ZN_FING         912..934
+FT                   /note="C2H2-type 8"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00042"
+FT   ZN_FING         940..963
+FT                   /note="C2H2-type 9"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00042"
+FT   ZN_FING         969..991
+FT                   /note="C2H2-type 10"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00042"
+FT   REGION          189..440
+FT                   /note="Interaction with MAPK9, SMAD3 and probably SUV39H1"
+FT                   /evidence="ECO:0000269|PubMed:10856240"
+FT   MOTIF           609..622
+FT                   /note="Nuclear localization signal"
+FT                   /evidence="ECO:0000255"
+FT   MOTIF           741..745
+FT                   /note="CTBP-binding motif 1"
+FT                   /evidence="ECO:0000250"
+FT   MOTIF           772..776
+FT                   /note="CTBP-binding motif 2"
+FT                   /evidence="ECO:0000250"
+FT   COMPBIAS        1065..1116
+FT                   /note="Asp/Glu-rich (acidic)"
+FT   MOD_RES         624
+FT                   /note="Phosphoserine"
+FT                   /evidence="ECO:0000244|PubMed:23186163"
+FT   MOD_RES         726
+FT                   /note="Phosphoserine"
+FT                   /evidence="ECO:0000244|PubMed:23186163"
+FT   MOD_RES         740
+FT                   /note="Phosphoserine"
+FT                   /evidence="ECO:0000250|UniProtKB:P14404"
+FT   MOD_RES         1037
+FT                   /note="Phosphoserine"
+FT                   /evidence="ECO:0000244|PubMed:23186163"
+FT   MOD_RES         1039
+FT                   /note="Phosphoserine"
+FT                   /evidence="ECO:0000244|PubMed:20068231,
+FT                   ECO:0000244|PubMed:23186163"
+FT   CROSSLNK        99
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        190
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:25218447,
+FT                   ECO:0000244|PubMed:25772364, ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        249
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        292
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        367
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        374
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        430
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        523
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        543
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        547
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        555
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:25218447,
+FT                   ECO:0000244|PubMed:25772364, ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        622
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        635
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        663
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        685
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:25218447,
+FT                   ECO:0000244|PubMed:25772364, ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        721
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:25218447,
+FT                   ECO:0000244|PubMed:25772364, ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        731
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        732
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        735
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:25218447,
+FT                   ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        749
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        752
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:25218447,
+FT                   ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        760
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        787
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:25218447,
+FT                   ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        800
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        801
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        835
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        844
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        846
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        877
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:25772364,
+FT                   ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        1018
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        1053
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:25772364,
+FT                   ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        1056
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        1120
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        1127
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:25218447,
+FT                   ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        1132
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:25218447,
+FT                   ECO:0000244|PubMed:25772364, ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        1149
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        1152
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:25218447,
+FT                   ECO:0000244|PubMed:25772364, ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        1176
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        1184
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        Q03112-1:658
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        Q03112-3:846
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        Q03112-4:202
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        Q03112-4:723
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        Q03112-6:138
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   CROSSLNK        Q03112-8:846
+FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
+FT                   G-Cter in SUMO2)"
+FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT   VAR_SEQ         1..188
+FT                   /note="Missing (in isoform 1, isoform 5 and isoform 6)"
+FT                   /id="VSP_059479"
+FT   VAR_SEQ         1..125
+FT                   /note="MRSKGRARKLATNNECVYGNYPEIPLEEMPDADGVASTPSLNIQEPCSPATS
+FT                   SEAFTPKEGSPYKAPIYIPDDIPIPAEFELRESNMPGAGLGIWTKRKIEVGEKFGPYVG
+FT                   EQRSNLKDPSYGWE -> M (in isoform 4)"
+FT                   /id="VSP_059480"
+FT   VAR_SEQ         126..169
+FT                   /note="ILDEFYNVKFCIDASQPDVGSWLKYIRFAGCYDQHNLVACQIND -> VHLP
+FT                   RSRRVSVHSWLYLGKRSSDVGIAFSQADVYMPGLQCAFLS (in isoform 9)"
+FT                   /id="VSP_059481"
+FT   VAR_SEQ         170..1230
+FT                   /note="Missing (in isoform 9)"
+FT                   /id="VSP_059482"
+FT   VAR_SEQ         326
+FT                   /note="K -> KQ (in isoform 4 and isoform 6)"
+FT                   /id="VSP_059483"
+FT   VAR_SEQ         859
+FT                   /note="Q -> QFQLPDQRTW (in isoform 1, isoform 4, isoform 8
+FT                   and isoform 2)"
+FT                   /id="VSP_059484"
+FT   VAR_SEQ         939..945
+FT                   /note="PYRCKYC -> LKNKDLQ (in isoform 8)"
+FT                   /id="VSP_059485"
+FT   VAR_SEQ         946..1230
+FT                   /note="Missing (in isoform 8)"
+FT                   /id="VSP_059486"
+FT   VARIANT         120
+FT                   /note="P -> S (in dbSNP:rs7622799)"
+FT                   /id="VAR_051183"
+FT   VARIANT         295
+FT                   /note="Q -> R (in dbSNP:rs34896995)"
+FT                   /id="VAR_061928"
+FT   VARIANT         929
+FT                   /note="R -> W (in RUSAT2; alters transcriptional
+FT                   regulation; dbSNP:rs864309724)"
+FT                   /evidence="ECO:0000269|PubMed:26581901"
+FT                   /id="VAR_076308"
+FT   VARIANT         930
+FT                   /note="H -> R (in RUSAT2; alters transcriptional
+FT                   regulation; dbSNP:rs864309723)"
+FT                   /evidence="ECO:0000269|PubMed:26581901"
+FT                   /id="VAR_076309"
+FT   VARIANT         935
+FT                   /note="T -> A (in RUSAT2; alters transcriptional
+FT                   regulation; dbSNP:rs864309722)"
+FT                   /evidence="ECO:0000269|PubMed:26581901"
+FT                   /id="VAR_076310"
+FT   MUTAGEN         743..744
+FT                   /note="DL->AS: Partial loss of interaction with CTBP1. Loss
+FT                   of interaction with CTBP1; when associated with 586-A-S-
+FT                   775"
+FT                   /evidence="ECO:0000269|PubMed:11568182"
+FT   MUTAGEN         774..775
+FT                   /note="DL->AS: Partial loss of interaction with CTBP1. Loss
+FT                   of interaction with CTBP1; when associated with 555-A-S-
+FT                   744"
+FT                   /evidence="ECO:0000269|PubMed:11568182"
+FT   CONFLICT        126..127
+FT                   /note="IL -> VR (in Ref. 2; AAB05840)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        208
+FT                   /note="Q -> R (in Ref. 6; CAE45952)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        363
+FT                   /note="L -> P (in Ref. 6; CAE45952)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        489
+FT                   /note="F -> S (in Ref. 4; BAF85554)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        491
+FT                   /note="F -> V (in Ref. 1; CAA38735)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        631
+FT                   /note="S -> P (in Ref. 6; CAI46086)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        731
+FT                   /note="K -> R (in Ref. 6; CAE45952)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        909
+FT                   /note="K -> R (in Ref. 4; BAF85554)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        920
+FT                   /note="I -> V (in Ref. 6; CAI46086)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        975
+FT                   /note="D -> Y (in Ref. 1; CAA38735)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        1054
+FT                   /note="D -> E (in Ref. 1; CAA38735)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        1060
+FT                   /note="T -> P (in Ref. 1; CAA38735)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        1085
+FT                   /note="N -> Y (in Ref. 1; CAA38735)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        1171
+FT                   /note="V -> A (in Ref. 4; BAF85554)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        1187..1191
+FT                   /note="AYAMM -> VQIFP (in Ref. 11; AAB37456)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        1192
+FT                   /note="L -> P (in Ref. 6; CAE45952)"
+FT                   /evidence="ECO:0000305"
+SQ   SEQUENCE   1230 AA;  138136 MW;  49E9B7CBCD422042 CRC64;
+     MRSKGRARKL ATNNECVYGN YPEIPLEEMP DADGVASTPS LNIQEPCSPA TSSEAFTPKE
+     GSPYKAPIYI PDDIPIPAEF ELRESNMPGA GLGIWTKRKI EVGEKFGPYV GEQRSNLKDP
+     SYGWEILDEF YNVKFCIDAS QPDVGSWLKY IRFAGCYDQH NLVACQINDQ IFYRVVADIA
+     PGEELLLFMK SEDYPHETMA PDIHEERQYR CEDCDQLFES KAELADHQKF PCSTPHSAFS
+     MVEEDFQQKL ESENDLQEIH TIQECKECDQ VFPDLQSLEK HMLSHTEERE YKCDQCPKAF
+     NWKSNLIRHQ MSHDSGKHYE CENCAKVFTD PSNLQRHIRS QHVGARAHAC PECGKTFATS
+     SGLKQHKHIH SSVKPFICEV CHKSYTQFSN LCRHKRMHAD CRTQIKCKDC GQMFSTTSSL
+     NKHRRFCEGK NHFAAGGFFG QGISLPGTPA MDKTSMVNMS HANPGLADYF GANRHPAGLT
+     FPTAPGFSFS FPGLFPSGLY HRPPLIPASS PVKGLSSTEQ TNKSQSPLMT HPQILPATQD
+     ILKALSKHPS VGDNKPVELQ PERSSEERPF EKISDQSESS DLDDVSTPSG SDLETTSGSD
+     LESDIESDKE KFKENGKMFK DKVSPLQNLA SINNKKEYSN HSIFSPSLEE QTAVSGAVND
+     SIKAIASIAE KYFGSTGLVG LQDKKVGALP YPSMFPLPFF PAFSQSMYPF PDRDLRSLPL
+     KMEPQSPGEV KKLQKGSSES PFDLTTKRKD EKPLTPVPSK PPVTPATSQD QPLDLSMGSR
+     SRASGTKLTE PRKNHVFGGK KGSNVESRPA SDGSLQHARP TPFFMDPIYR VEKRKLTDPL
+     EALKEKYLRP SPGFLFHPQM SAIENMAEKL ESFSALKPEA SELLQSVPSM FNFRAPPNAL
+     PENLLRKGKE RYTCRYCGKI FPRSANLTRH LRTHTGEQPY RCKYCDRSFS ISSNLQRHVR
+     NIHNKEKPFK CHLCDRCFGQ QTNLDRHLKK HENGNMSGTA TSSPHSELES TGAILDDKED
+     AYFTEIRNFI GNSNHGSQSP RNVEERMNGS HFKDEKALVT SQNSDLLDDE EVEDEVLLDE
+     EDEDNDITGK TGKEPVTSNL HEGNPEDDYE ETSALEMSCK TSPVRYKEEE YKSGLSALDH
+     IRHFTDSLKM RKMEDNQYSE AELSSFSTSH VPEELKQPLH RKSKSQAYAM MLSLSDKESL
+     HSTSHSSSNV WHSMARAAAE SSAIQSISHV
+//
