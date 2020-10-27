@@ -66,7 +66,7 @@ class UniProtKBFastaParserReader {
         } else {
             builder.flagType(FlagType.PRECURSOR);
         }
-        builder.proteinName(proteinName);
+        builder.proteinName(proteinName.trim());
     }
 
     private static Organism parseOrganism(String line) {
