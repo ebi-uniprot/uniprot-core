@@ -9,6 +9,8 @@ import java.util.List;
  */
 public interface GeneCentricEntry extends Serializable {
 
+    String getProteomeId();
+
     Protein getCanonicalProtein();
 
     List<Protein> getRelatedProteins();

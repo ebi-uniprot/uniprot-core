@@ -16,6 +16,14 @@ import org.uniprot.core.genecentric.Protein;
 class GeneCentricEntryBuilderTest {
 
     @Test
+    void canSetProteomeId() {
+        String proteomeId = "Proteome Id VALUE";
+        GeneCentricEntry entry = new GeneCentricEntryBuilder().proteomeId(proteomeId).build();
+        assertNotNull(entry.getProteomeId());
+        assertEquals(proteomeId, entry.getProteomeId());
+    }
+
+    @Test
     void canonicalProtein() {
         Protein canonicalProtein = new ProteinBuilder().build();
         GeneCentricEntry entry =
@@ -43,11 +51,12 @@ class GeneCentricEntryBuilderTest {
 
     @Test
     void from() {
-        Protein canonicalProtein = new ProteinBuilder().accession("1").build();
-        Protein relatedProtein = new ProteinBuilder().accession("2").build();
+        Protein canonicalProtein = new ProteinBuilder().id("1").build();
+        Protein relatedProtein = new ProteinBuilder().id("2").build();
 
         GeneCentricEntry entry =
                 new GeneCentricEntryBuilder()
+                        .proteomeId("proteome Id value")
                         .canonicalProtein(canonicalProtein)
                         .relatedProteinsAdd(relatedProtein)
                         .build();

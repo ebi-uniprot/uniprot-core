@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import org.uniprot.core.genecentric.GeneCentricEntry;
 import org.uniprot.core.genecentric.Protein;
+import org.uniprot.core.util.Utils;
 
 /**
  * @author lgonzales
@@ -13,16 +14,25 @@ import org.uniprot.core.genecentric.Protein;
 public class GeneCentricEntryImpl implements GeneCentricEntry {
 
     private static final long serialVersionUID = 1643302978804066975L;
+
+    private final String proteomeId;
     private final Protein canonicalProtein;
     private final List<Protein> relatedProteins;
 
     GeneCentricEntryImpl() {
-        this(null, null);
+        this(null, null, null);
     }
 
-    public GeneCentricEntryImpl(Protein canonicalProtein, List<Protein> relatedProteins) {
+    public GeneCentricEntryImpl(
+            String proteomeId, Protein canonicalProtein, List<Protein> relatedProteins) {
+        this.proteomeId = proteomeId;
         this.canonicalProtein = canonicalProtein;
-        this.relatedProteins = relatedProteins;
+        this.relatedProteins = Utils.unmodifiableList(relatedProteins);
+    }
+
+    @Override
+    public String getProteomeId() {
+        return proteomeId;
     }
 
     @Override
@@ -41,11 +51,12 @@ public class GeneCentricEntryImpl implements GeneCentricEntry {
         if (o == null || getClass() != o.getClass()) return false;
         GeneCentricEntryImpl that = (GeneCentricEntryImpl) o;
         return Objects.equals(getCanonicalProtein(), that.getCanonicalProtein())
+                && Objects.equals(getProteomeId(), that.getProteomeId())
                 && Objects.equals(getRelatedProteins(), that.getRelatedProteins());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCanonicalProtein(), getRelatedProteins());
+        return Objects.hash(getProteomeId(), getCanonicalProtein(), getRelatedProteins());
     }
 }

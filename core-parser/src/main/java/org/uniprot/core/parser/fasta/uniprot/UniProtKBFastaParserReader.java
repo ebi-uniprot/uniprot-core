@@ -1,64 +1,66 @@
-package org.uniprot.core.parser.fasta;
+package org.uniprot.core.parser.fasta.uniprot;
 
-import org.uniprot.core.genecentric.Protein;
-import org.uniprot.core.genecentric.impl.ProteinBuilder;
+import static java.util.Arrays.copyOfRange;
+
+import org.uniprot.core.fasta.UniProtKBFasta;
+import org.uniprot.core.fasta.impl.UniProtKBFastaBuilder;
 import org.uniprot.core.uniprotkb.ProteinExistence;
 import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.description.FlagType;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
-import static java.util.Arrays.copyOfRange;
-
 /**
  * @author lgonzales
  * @since 17/10/2020
  */
-public class GeneCentricFastaReader {
+class UniProtKBFastaParserReader {
 
-    private GeneCentricFastaReader(){
+    private UniProtKBFastaParserReader() {}
 
-    }
-
-    public static Protein parse(String fastaInput){
-        ProteinBuilder builder = new ProteinBuilder();
+    static UniProtKBFasta parse(String fastaInput) {
+        UniProtKBFastaBuilder builder = new UniProtKBFastaBuilder();
         String[] lines = fastaInput.split("\n");
 
         parseFastaHeader(builder, lines[0]);
-        parseSequence(builder, copyOfRange(lines,1,lines.length));
+        parseSequence(builder, copyOfRange(lines, 1, lines.length));
 
         return builder.build();
     }
 
-    private static void parseFastaHeader(ProteinBuilder builder, String line) {
+    // >sp|P21802|FGFR2_HUMAN Fibroblast growth factor receptor 2 OS=Homo sapiens OX=9606 GN=FGFR2
+    // PE=1 SV=1
+    private static void parseFastaHeader(UniProtKBFastaBuilder builder, String line) {
         int spaceIndex = line.indexOf(" ");
-        int geneIndex = line.indexOf(" GN=");
-        int proteinExistenceIndex = line.indexOf(" PE=");
-        int sequenceVersionIndex = line.indexOf(" SV=");
+        int geneIndex = line.indexOf(" GN=", spaceIndex);
+        int proteinExistenceIndex = line.indexOf(" PE=", spaceIndex);
+        int sequenceVersionIndex = line.indexOf(" SV=", proteinExistenceIndex);
 
         String[] proteinIds = line.substring(0, spaceIndex).split("\\|");
         builder.entryType(parseEntryType(proteinIds[0]));
-        builder.accession(proteinIds[1]);
+        builder.id(proteinIds[1]);
         builder.uniProtkbId(proteinIds[2]);
 
         parseProteinName(builder, line);
 
         builder.organism(parseOrganism(line));
 
-        builder.geneName(line.substring(geneIndex + 4, proteinExistenceIndex));
+        if (geneIndex >= 0) {
+            builder.geneName(line.substring(geneIndex + 4, proteinExistenceIndex));
+        }
 
-        String proteinExistence = line.substring(proteinExistenceIndex +4, sequenceVersionIndex);
+        String proteinExistence = line.substring(proteinExistenceIndex + 4, sequenceVersionIndex);
         builder.proteinExistence(parseProteinExistence(proteinExistence));
 
-        String sequenceVersion = line.substring(sequenceVersionIndex+4);
+        String sequenceVersion = line.substring(sequenceVersionIndex + 4);
         builder.sequenceVersion(Integer.parseInt(sequenceVersion));
     }
 
-    private static void parseProteinName(ProteinBuilder builder, String line) {
-        int organismNameIndex = line.indexOf(" OS=");
+    private static void parseProteinName(UniProtKBFastaBuilder builder, String line) {
         int spaceIndex = line.indexOf(" ");
+        int organismNameIndex = line.indexOf(" OS=", spaceIndex);
         String proteinName = line.substring(spaceIndex + 1, organismNameIndex);
-        if(proteinName.endsWith("(Fragment)")){
+        if (proteinName.endsWith("(Fragment)")) {
             builder.flagType(FlagType.FRAGMENT);
             proteinName = proteinName.substring(0, proteinName.length() - 10);
         } else {
@@ -68,20 +70,23 @@ public class GeneCentricFastaReader {
     }
 
     private static Organism parseOrganism(String line) {
-        int organismIdIndex = line.indexOf(" OX=");
         int organismNameIndex = line.indexOf(" OS=");
-        int geneIndex = line.indexOf(" GN=");
+        int organismIdIndex = line.indexOf(" OX=", organismNameIndex);
+        int indexAfterOX = line.indexOf(" GN=", organismIdIndex);
+        if (indexAfterOX < 0) {
+            indexAfterOX = line.indexOf(" PE=", organismIdIndex);
+        }
 
         OrganismBuilder organismBuilder = new OrganismBuilder();
         organismBuilder.scientificName(line.substring(organismNameIndex + 4, organismIdIndex));
-        String taxId = line.substring(organismIdIndex + 4, geneIndex);
+        String taxId = line.substring(organismIdIndex + 4, indexAfterOX);
         organismBuilder.taxonId(Long.parseLong(taxId));
         return organismBuilder.build();
     }
 
     private static ProteinExistence parseProteinExistence(String proteinExistence) {
         ProteinExistence result;
-        switch (proteinExistence){
+        switch (proteinExistence) {
             case "1":
                 result = ProteinExistence.PROTEIN_LEVEL;
                 break;
@@ -106,15 +111,15 @@ public class GeneCentricFastaReader {
 
     private static UniProtKBEntryType parseEntryType(String entryType) {
         UniProtKBEntryType result = UniProtKBEntryType.UNKNOWN;
-        if(entryType.equals(">tr") || entryType.equals("tr")){
+        if (entryType.equals(">tr") || entryType.equals("tr")) {
             result = UniProtKBEntryType.TREMBL;
-        } else if(entryType.equals(">sp") || entryType.equals("sp")){
+        } else if (entryType.equals(">sp") || entryType.equals("sp")) {
             result = UniProtKBEntryType.SWISSPROT;
         }
         return result;
     }
 
-    private static void parseSequence(ProteinBuilder builder, String[] sequenceLines) {
+    private static void parseSequence(UniProtKBFastaBuilder builder, String[] sequenceLines) {
         String sequence = String.join("", sequenceLines);
         builder.sequence(sequence);
     }

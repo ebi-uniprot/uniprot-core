@@ -1,12 +1,12 @@
-package org.uniprot.core.genecentric.impl;
+package org.uniprot.core.fasta.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.fasta.UniProtKBFasta;
-import org.uniprot.core.fasta.impl.UniProtKBFastaBuilder;
 import org.uniprot.core.genecentric.Protein;
+import org.uniprot.core.genecentric.impl.ProteinBuilder;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniprotkb.ProteinExistence;
 import org.uniprot.core.uniprotkb.UniProtKBEntryType;
@@ -18,30 +18,30 @@ import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
 /**
  * @author lgonzales
- * @since 16/10/2020
+ * @since 22/10/2020
  */
-class ProteinBuilderTest {
+class UniProtKBFastaBuilderTest {
 
     @Test
     void canSetEntryTypeString() {
         UniProtKBEntryType type = UniProtKBEntryType.TREMBL;
-        Protein entry = new ProteinBuilder().entryType(type).build();
+        UniProtKBFasta entry = new UniProtKBFastaBuilder().entryType(type).build();
         assertNotNull(entry.getEntryType());
         assertEquals(type, entry.getEntryType());
     }
 
     @Test
-    void canSetAccessionString() {
-        String accession = "P21802";
-        Protein entry = new ProteinBuilder().id(accession).build();
+    void canSetId() {
+        String id = "P21802";
+        UniProtKBFasta entry = new UniProtKBFastaBuilder().id(id).build();
         assertNotNull(entry.getId());
-        assertEquals(accession, entry.getId());
+        assertEquals(id, entry.getId());
     }
 
     @Test
     void canSetUniProtkbIdString() {
         String uniProtkbId = "ID VALUE";
-        Protein entry = new ProteinBuilder().uniProtkbId(uniProtkbId).build();
+        UniProtKBFasta entry = new UniProtKBFastaBuilder().uniProtkbId(uniProtkbId).build();
         assertNotNull(entry.getUniProtkbId());
         assertEquals(uniProtkbId, entry.getUniProtkbId().getValue());
     }
@@ -49,14 +49,14 @@ class ProteinBuilderTest {
     @Test
     void canSetUniProtkbId() {
         UniProtKBId uniProtkbId = new UniProtKBIdBuilder("ID VALUE").build();
-        Protein entry = new ProteinBuilder().uniProtkbId(uniProtkbId).build();
+        UniProtKBFasta entry = new UniProtKBFastaBuilder().uniProtkbId(uniProtkbId).build();
         assertEquals(uniProtkbId, entry.getUniProtkbId());
     }
 
     @Test
     void canSetProteinName() {
         String proteinName = "Protein Name VALUE";
-        Protein entry = new ProteinBuilder().proteinName(proteinName).build();
+        UniProtKBFasta entry = new UniProtKBFastaBuilder().proteinName(proteinName).build();
         assertNotNull(entry.getProteinName());
         assertEquals(proteinName, entry.getProteinName());
     }
@@ -64,14 +64,14 @@ class ProteinBuilderTest {
     @Test
     void canSetOrganism() {
         Organism organism = new OrganismBuilder().taxonId(10L).build();
-        Protein entry = new ProteinBuilder().organism(organism).build();
+        UniProtKBFasta entry = new UniProtKBFastaBuilder().organism(organism).build();
         assertEquals(organism, entry.getOrganism());
     }
 
     @Test
     void canSetGeneName() {
         String geneName = "Gene Name VALUE";
-        Protein entry = new ProteinBuilder().geneName(geneName).build();
+        UniProtKBFasta entry = new UniProtKBFastaBuilder().geneName(geneName).build();
         assertNotNull(entry.getGeneName());
         assertEquals(geneName, entry.getGeneName());
     }
@@ -79,7 +79,8 @@ class ProteinBuilderTest {
     @Test
     void canSetProteinExistence() {
         ProteinExistence proteinExistence = ProteinExistence.PROTEIN_LEVEL;
-        Protein entry = new ProteinBuilder().proteinExistence(proteinExistence).build();
+        UniProtKBFasta entry =
+                new UniProtKBFastaBuilder().proteinExistence(proteinExistence).build();
         assertNotNull(entry.getProteinExistence());
         assertEquals(proteinExistence, entry.getProteinExistence());
     }
@@ -87,7 +88,7 @@ class ProteinBuilderTest {
     @Test
     void canSetFlagType() {
         FlagType flagType = FlagType.FRAGMENT;
-        Protein entry = new ProteinBuilder().flagType(flagType).build();
+        UniProtKBFasta entry = new UniProtKBFastaBuilder().flagType(flagType).build();
         assertNotNull(entry.getFlagType());
         assertEquals(flagType, entry.getFlagType());
     }
@@ -95,14 +96,14 @@ class ProteinBuilderTest {
     @Test
     void canSetSequence() {
         Sequence sequence = new SequenceBuilder("SEQUENCE VALUE").build();
-        Protein entry = new ProteinBuilder().sequence(sequence).build();
+        UniProtKBFasta entry = new UniProtKBFastaBuilder().sequence(sequence).build();
         assertEquals(sequence, entry.getSequence());
     }
 
     @Test
     void canSetsequenceString() {
         String sequence = "SEQUENCE VALUE";
-        Protein entry = new ProteinBuilder().sequence(sequence).build();
+        UniProtKBFasta entry = new UniProtKBFastaBuilder().sequence(sequence).build();
         assertNotNull(entry.getSequence());
         assertEquals(sequence, entry.getSequence().getValue());
     }
@@ -110,28 +111,37 @@ class ProteinBuilderTest {
     @Test
     void canSetsequenceVersion() {
         int sequenceVersion = 2;
-        Protein entry = new ProteinBuilder().sequenceVersion(sequenceVersion).build();
+        UniProtKBFasta entry = new UniProtKBFastaBuilder().sequenceVersion(sequenceVersion).build();
         assertEquals(sequenceVersion, entry.getSequenceVersion());
     }
 
     @Test
-    void fromEmptyProtein() {
-        Protein protein = new ProteinBuilder().build();
-        Protein proteinFrom = ProteinBuilder.from(protein).build();
+    void fromEmptyUniprotKBFasta() {
+        UniProtKBFasta protein = new UniProtKBFastaBuilder().build();
+        UniProtKBFasta proteinFrom = UniProtKBFastaBuilder.from(protein).build();
         assertEquals(protein, proteinFrom);
     }
 
     @Test
-    void fromCompleteProtein() {
-        Protein protein = getProtein();
-        Protein proteinFrom = ProteinBuilder.from(protein).build();
-        assertEquals(protein, proteinFrom);
-        assertTrue(protein.equals(proteinFrom) && proteinFrom.equals(protein));
-        assertEquals(protein.hashCode(), proteinFrom.hashCode());
+    void fromCompleteUniprotKBFasta() {
+        UniProtKBFasta proteinFasta = getUniProtKBFasta();
+        UniProtKBFasta proteinFastaFrom = UniProtKBFastaBuilder.from(proteinFasta).build();
+        assertEquals(proteinFasta, proteinFastaFrom);
+        assertTrue(proteinFasta.equals(proteinFastaFrom) && proteinFastaFrom.equals(proteinFasta));
+        assertEquals(proteinFasta.hashCode(), proteinFastaFrom.hashCode());
     }
 
-    private Protein getProtein() {
-        return new ProteinBuilder()
+    @Test
+    void fromProteinFastaToProtein() {
+        UniProtKBFasta proteinFasta = getUniProtKBFasta();
+        Protein protein = ProteinBuilder.from(proteinFasta).build();
+
+        UniProtKBFasta proteinFastaFrom = UniProtKBFastaBuilder.from(protein).build();
+        assertTrue(proteinFasta.equals(proteinFastaFrom) && proteinFastaFrom.equals(proteinFasta));
+    }
+
+    private UniProtKBFasta getUniProtKBFasta() {
+        return new UniProtKBFastaBuilder()
                 .id("P21802")
                 .entryType(UniProtKBEntryType.TREMBL)
                 .flagType(FlagType.PRECURSOR)
@@ -143,14 +153,5 @@ class ProteinBuilderTest {
                 .sequenceVersion(2)
                 .uniProtkbId("P21802_ID")
                 .build();
-    }
-
-    @Test
-    void fromProteinFastaToProtein() {
-        Protein protein = getProtein();
-        UniProtKBFasta proteinFasta = UniProtKBFastaBuilder.from(protein).build();
-
-        Protein proteinFrom = ProteinBuilder.from(proteinFasta).build();
-        assertTrue(protein.equals(proteinFrom) && proteinFrom.equals(protein));
     }
 }

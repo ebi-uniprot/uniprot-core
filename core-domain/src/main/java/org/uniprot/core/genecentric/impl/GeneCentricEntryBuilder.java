@@ -16,8 +16,14 @@ import org.uniprot.core.util.Utils;
  */
 public class GeneCentricEntryBuilder implements Builder<GeneCentricEntry> {
 
+    private String proteomeId;
     private Protein canonicalProtein;
     private List<Protein> relatedProteins = new ArrayList<>();
+
+    public @Nonnull GeneCentricEntryBuilder proteomeId(String proteomeId) {
+        this.proteomeId = proteomeId;
+        return this;
+    }
 
     public @Nonnull GeneCentricEntryBuilder canonicalProtein(Protein canonicalProtein) {
         this.canonicalProtein = canonicalProtein;
@@ -36,6 +42,7 @@ public class GeneCentricEntryBuilder implements Builder<GeneCentricEntry> {
 
     public static @Nonnull GeneCentricEntryBuilder from(@Nonnull GeneCentricEntry instance) {
         return new GeneCentricEntryBuilder()
+                .proteomeId(instance.getProteomeId())
                 .canonicalProtein(instance.getCanonicalProtein())
                 .relatedProteinsSet(instance.getRelatedProteins());
     }
@@ -43,6 +50,6 @@ public class GeneCentricEntryBuilder implements Builder<GeneCentricEntry> {
     @Nonnull
     @Override
     public GeneCentricEntry build() {
-        return new GeneCentricEntryImpl(canonicalProtein, relatedProteins);
+        return new GeneCentricEntryImpl(proteomeId, canonicalProtein, relatedProteins);
     }
 }
