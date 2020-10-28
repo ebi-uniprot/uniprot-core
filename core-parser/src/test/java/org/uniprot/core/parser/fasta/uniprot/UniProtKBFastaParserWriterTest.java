@@ -7,13 +7,8 @@ import org.uniprot.core.fasta.UniProtKBFasta;
 import org.uniprot.core.fasta.impl.UniProtKBFastaBuilder;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniprotkb.ProteinExistence;
-import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.description.FlagType;
-import org.uniprot.core.uniprotkb.description.impl.NameBuilder;
-import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilder;
-import org.uniprot.core.uniprotkb.description.impl.ProteinRecNameBuilder;
-import org.uniprot.core.uniprotkb.description.impl.ProteinSubNameBuilder;
 import org.uniprot.core.uniprotkb.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
@@ -32,7 +27,7 @@ class UniProtKBFastaParserWriterTest {
                         .entryType(UniProtKBEntryType.TREMBL)
                         .sequence(
                                 new SequenceBuilder(
-                                        "AAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBB")
+                                                "AAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBB")
                                         .build())
                         .geneName("Gene Name Value")
                         .proteinName("Protein Name Value")
@@ -51,7 +46,9 @@ class UniProtKBFastaParserWriterTest {
         assertTrue(fastaValue.contains(" Protein Name Value (Fragment) "));
         assertTrue(fastaValue.contains(" OS=Organism Name Value OX=9606 "));
         assertTrue(fastaValue.contains("GN=Gene Name Value PE=5 SV=2\n"));
-        assertTrue(fastaValue.contains("AAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBB\nAAAAAAAAAABBBBBBBBBB"));
+        assertTrue(
+                fastaValue.contains(
+                        "AAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBB\nAAAAAAAAAABBBBBBBBBB"));
     }
 
     @Test
