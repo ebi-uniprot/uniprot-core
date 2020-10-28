@@ -12,11 +12,9 @@ import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.description.FlagType;
 import org.uniprot.core.uniprotkb.description.impl.NameBuilder;
 import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilder;
+import org.uniprot.core.uniprotkb.description.impl.ProteinRecNameBuilder;
 import org.uniprot.core.uniprotkb.description.impl.ProteinSubNameBuilder;
-import org.uniprot.core.uniprotkb.impl.EntryAuditBuilder;
-import org.uniprot.core.uniprotkb.impl.GeneBuilder;
-import org.uniprot.core.uniprotkb.impl.ORFNameBuilder;
-import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
+import org.uniprot.core.uniprotkb.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
 /**
@@ -88,6 +86,46 @@ class UniProtKBFastaParserTest {
         assertTrue(fastaValue.contains(" Sub Name Value (Fragment) "));
         assertTrue(fastaValue.contains(" OS=Organism Name Value OX=9606 "));
         assertTrue(fastaValue.contains("GN=Orf Name Value PE=5 SV=2\n"));
+        assertTrue(fastaValue.contains("AAAAAAAAAABBBBBBBBBBAAAAAAAAAA"));
+    }
+
+    @Test
+    void canParseToFastaWithOlnGene() {
+        UniProtKBEntry entry =
+                new UniProtKBEntryBuilder("P12345", "P12345_PROT", UniProtKBEntryType.TREMBL)
+                        .sequence(new SequenceBuilder("AAAAAAAAAABBBBBBBBBBAAAAAAAAAA").build())
+                        .genesAdd(
+                                new GeneBuilder()
+                                        .orderedLocusNamesAdd(
+                                                new OrderedLocusNameBuilder()
+                                                        .value("Oln Name Value")
+                                                        .build())
+                                        .build())
+                        .proteinDescription(
+                                new ProteinDescriptionBuilder()
+                                        .flag(FlagType.FRAGMENTS_PRECURSOR)
+                                        .recommendedName(
+                                                new ProteinRecNameBuilder()
+                                                        .fullName(
+                                                                new NameBuilder()
+                                                                        .value("Rec Name Value")
+                                                                        .build())
+                                                        .build())
+                                        .build())
+                        .organism(
+                                new OrganismBuilder()
+                                        .taxonId(9606L)
+                                        .scientificName("Organism Name Value")
+                                        .build())
+                        .entryAudit(new EntryAuditBuilder().sequenceVersion(2).build())
+                        .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
+                        .build();
+        String fastaValue = UniProtKBFastaParser.toFasta(entry);
+        assertNotNull(fastaValue);
+        assertTrue(fastaValue.contains(">tr|P12345|P12345_PROT"));
+        assertTrue(fastaValue.contains(" Rec Name Value (Fragment) "));
+        assertTrue(fastaValue.contains(" OS=Organism Name Value OX=9606 "));
+        assertTrue(fastaValue.contains("GN=Oln Name Value PE=1 SV=2\n"));
         assertTrue(fastaValue.contains("AAAAAAAAAABBBBBBBBBBAAAAAAAAAA"));
     }
 

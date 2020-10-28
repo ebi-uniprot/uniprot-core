@@ -15,7 +15,7 @@ import org.uniprot.core.uniprotkb.description.FlagType;
 class UniProtKBFastaParserReaderTest {
 
     @Test
-    void parse() {
+    void parseEntry() {
         String fastaInput =
                 ">tr|Q9HI14|Q9HI14_HALSA Isoform of O51971, Transcription initiation factor IID OS=Halobacterium salinarum OX=64091 GN=tbpA PE=1 SV=3\n"
                         + "MDLEGADYDPEQFPGLVYRLDEPSVVALLFGSGKLVITGGKHPVDAEHAVDTIDSRLEDL\nGLLDGYGDRAK";
@@ -74,13 +74,14 @@ class UniProtKBFastaParserReaderTest {
     @Test
     void parseWithoutGene() {
         String fastaInput =
-                ">tr|Q9HI14|Q9HI14_HALSA Isoform of O51971, Transcription initiation factor IID OS=Halobacterium salinarum OX=64091 PE=1 SV=3\n"
+                ">tr|Q9HI14|Q9HI14_HALSA Isoform of O51971, Transcription initiation factor IID OS=Halobacterium salinarum OX=64091 PE=5 SV=3\n"
                         + "MDLEGADYDPEQFPGLVYRLDEPSVVALLFGSGKLVITGGKHPVDAEHAVDTIDSRLEDL\nGLLDGYGDRAK";
         UniProtKBFasta result = UniProtKBFastaParserReader.parse(fastaInput);
         assertNotNull(result);
         assertNotNull(result.getId());
         assertEquals("Q9HI14", result.getId());
         assertNull(result.getGeneName());
+        assertEquals(ProteinExistence.UNCERTAIN, result.getProteinExistence());
         assertEquals(
                 "MDLEGADYDPEQFPGLVYRLDEPSVVALLFGSGKLVITGGKHPVDAEHAVDTIDSRLEDLGLLDGYGDRAK",
                 result.getSequence().getValue());
