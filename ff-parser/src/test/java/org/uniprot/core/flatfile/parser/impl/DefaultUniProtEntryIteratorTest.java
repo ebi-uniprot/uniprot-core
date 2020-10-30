@@ -1,5 +1,6 @@
 package org.uniprot.core.flatfile.parser.impl;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 
@@ -15,9 +16,16 @@ import static org.hamcrest.Matchers.*;
  * @author Edd
  */
 class DefaultUniProtEntryIteratorTest {
+    private DefaultUniProtEntryIterator entryIterator;
+
+    @BeforeEach
+    void setUp() {
+        entryIterator = new DefaultUniProtEntryIterator(2, 1, 2);
+        entryIterator.setIgnoreWrong(true);
+    }
+
     @Test
     void canParseGoodFile() {
-        DefaultUniProtEntryIterator entryIterator = new DefaultUniProtEntryIterator(2, 10, 10);
         entryIterator.setIgnoreWrong(true);
         entryIterator.setInput("src/test/resources/entryIT/A0A0A0MSM0.dat", null, null, null, null);
         List<String> accessions = new ArrayList<>();
@@ -31,8 +39,6 @@ class DefaultUniProtEntryIteratorTest {
 
     @Test
     void canParseGoodGZFile() {
-        DefaultUniProtEntryIterator entryIterator = new DefaultUniProtEntryIterator(2, 10, 10);
-        entryIterator.setIgnoreWrong(true);
         entryIterator.setInput(
                 "src/test/resources/entryIT/A8EZU1_D6RDV7.dat.gz", null, null, null, null);
         List<String> accessions = new ArrayList<>();
@@ -46,12 +52,6 @@ class DefaultUniProtEntryIteratorTest {
 
     @Test
     void parseErrorForAllEntriesDoesNotCauseHanging() {
-        // TODO: 30/10/2020 problem with iterator. hasNext() returns true, but then next() returns
-        // false. Maybe logic of hasNext() needs to change to make sure hasNext() returns true only
-        // if next exists
-
-        DefaultUniProtEntryIterator entryIterator = new DefaultUniProtEntryIterator(2, 10, 10);
-        entryIterator.setIgnoreWrong(true);
         entryIterator.setInput(
                 "src/test/resources/entryIT/ERROR_ERROR.dat", null, null, null, null);
         while (entryIterator.hasNext()) {
@@ -64,8 +64,6 @@ class DefaultUniProtEntryIteratorTest {
 
     @Test
     void parseErrorInOnlyOneEntryDoesNotCauseHanging() {
-        DefaultUniProtEntryIterator entryIterator = new DefaultUniProtEntryIterator(2, 10, 10);
-        entryIterator.setIgnoreWrong(true);
         entryIterator.setInput(
                 "src/test/resources/entryIT/A8EZU1_ERROR_D6RDV7.dat", null, null, null, null);
         List<String> accessions = new ArrayList<>();
