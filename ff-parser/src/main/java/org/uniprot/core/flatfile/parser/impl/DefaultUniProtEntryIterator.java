@@ -1,5 +1,11 @@
 package org.uniprot.core.flatfile.parser.impl;
 
+import com.google.common.util.concurrent.Uninterruptibles;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.uniprot.core.flatfile.parser.*;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,13 +17,6 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.uniprot.core.flatfile.parser.*;
-import org.uniprot.core.uniprotkb.UniProtKBEntry;
-
-import com.google.common.util.concurrent.Uninterruptibles;
 
 /** Created by wudong on 15/04/2014. */
 public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
@@ -65,11 +64,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
                 new SupportingDataMapImpl(
                         keywordFile, diseaseFile, accessionGoPubmedFile, subcellularLocationFile);
         logger.info("finished loading SupportingDataMap");
-        try {
-            setInput2(fileName);
-        } catch (FileNotFoundException e) {
-            throw new UniProtParserException(e);
-        }
+        initialiseFlatFileReading(fileName);
     }
 
     public boolean hasNext() {
@@ -97,7 +92,8 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 
     public UniProtKBEntry next() {
         try {
-            UniProtKBEntry poll = this.entriesQueue.take();
+            // get head of queue, but only wait up to 10 seconds before failing
+            UniProtKBEntry poll = this.entriesQueue.poll(10, TimeUnit.SECONDS);
 
             if (poll != null) {
                 entryCounter.getAndDecrement();
@@ -139,43 +135,45 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
         }
     }
 
-    private void setInput2(String fileName) throws FileNotFoundException {
-        EntryReader entryBufferReader2 = createEntryReader(fileName);
+    private void initialiseFlatFileReading(String fileName) {
+        try (EntryReader entryReader = createEntryReader(fileName)) {
+            Thread splitter = new Thread(new EntryStringEmitter(entryReader));
+            splitter.setName("Entry Scanner Thread");
 
-        Thread splitter = new Thread(new EntryStringEmitter(entryBufferReader2));
-        splitter.setName("Entry Scanner Thread");
+            // using the best effort to scan the file.
+            splitter.setPriority(Thread.MAX_PRIORITY);
 
-        // using the best effort to scan the file.
-        splitter.setPriority(Thread.MAX_PRIORITY);
+            splitter.start();
 
-        splitter.start();
+            int threadCount = Runtime.getRuntime().availableProcessors();
+            logger.debug("Available cores in the machine {}", threadCount);
 
-        int threadCount = Runtime.getRuntime().availableProcessors();
-        logger.debug("Available cores in the machine {}", threadCount);
-
-        if (this.numberOfThreads != 0) {
-            threadCount = this.numberOfThreads;
-        }
-
-        logger.info("Using threads {}", threadCount);
-
-        this.parsingJobCountDownLatch = new CountDownLatch(threadCount);
-
-        for (int i = 0; i < threadCount; i++) {
-            ParsingTask parsingTask =
-                    new ParsingTask(ffQueue, entriesQueue, this.parsingJobCountDownLatch);
-            parsingTask.setName("Parsing Worker No. " + (i + 1));
-            this.workers.add(parsingTask);
-            parsingTask.start();
-        }
-
-        // wait until the entryCounter > 1, so hasNext won't return false.
-        while (entryCounter.get() == 0) {
-            try {
-                Thread.sleep(1);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
+            if (this.numberOfThreads != 0) {
+                threadCount = this.numberOfThreads;
             }
+
+            logger.info("Using threads {}", threadCount);
+
+            this.parsingJobCountDownLatch = new CountDownLatch(threadCount);
+
+            for (int i = 0; i < threadCount; i++) {
+                ParsingTask parsingTask =
+                        new ParsingTask(ffQueue, entriesQueue, this.parsingJobCountDownLatch);
+                parsingTask.setName("Parsing Worker No. " + (i + 1));
+                this.workers.add(parsingTask);
+                parsingTask.start();
+            }
+
+            // wait until the entryCounter > 1, so hasNext won't return false.
+            while (entryCounter.get() == 0) {
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        } catch (Exception e) {
+            throw new UniProtParserException(e);
         }
     }
 
