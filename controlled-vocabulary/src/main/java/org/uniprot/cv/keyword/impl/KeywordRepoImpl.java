@@ -24,8 +24,11 @@ public class KeywordRepoImpl implements KeywordRepo {
                 keywords.stream()
                         .filter(val -> (val.getParents() == null) || val.getParents().isEmpty())
                         .collect(Collectors.toList());
-        idNameMap = keywords.stream()
-                .collect(Collectors.toMap(kw -> kw.getKeyword().getName(), Function.identity()));
+        idNameMap =
+                keywords.stream()
+                        .collect(
+                                Collectors.toMap(
+                                        kw -> kw.getKeyword().getName(), Function.identity()));
     }
 
     @Override
