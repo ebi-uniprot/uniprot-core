@@ -8,6 +8,10 @@ import org.uniprot.core.uniref.UniRefEntryLight;
  * @date: 22 Aug 2019
  */
 public class UniRefFastaParser {
+
+    private UniRefFastaParser(){
+    }
+
     public static String toFasta(UniRefEntryLight entry) {
         StringBuilder sb = new StringBuilder();
         sb.append(getHeader(entry)).append("\n");
@@ -53,8 +57,12 @@ public class UniRefFastaParser {
                     .append(" TaxID=")
                     .append(entry.getCommonTaxonId());
         }
-        sb.append(" RepID=").append(entry.getRepresentativeId());
+        sb.append(" RepID=").append(getRepresentativeId(entry));
         return sb.toString();
+    }
+
+    private static String getRepresentativeId(UniRefEntryLight entry) {
+        return entry.getRepresentativeId().split(",")[0];
     }
 
     private static String getHeader(UniRefEntry entry) {

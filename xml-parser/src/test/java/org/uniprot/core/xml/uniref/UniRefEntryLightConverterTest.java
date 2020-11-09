@@ -23,7 +23,7 @@ import org.uniprot.core.xml.jaxb.uniref.Entry;
 class UniRefEntryLightConverterTest {
 
     @Test
-    void testFromXml() throws Exception {
+    void testFromXml() {
         UniRefEntryLightConverter converter = new UniRefEntryLightConverter();
         String file = "/uniref/50_Q9EPS7_Q95604.xml";
         InputStream is = UniRefEntryLightConverterTest.class.getResourceAsStream(file);
@@ -42,7 +42,7 @@ class UniRefEntryLightConverterTest {
         UniRefEntryLight entry = converter.fromXml(xmlEntry);
         assertNotNull(entry);
         assertNotNull(entry.getId());
-        assertEquals("Q9EPS7_MOUSE", entry.getRepresentativeId());
+        assertEquals("Q9EPS7_MOUSE,Q9EPS7", entry.getRepresentativeId());
         assertEquals("UniRef50_Q9EPS7", entry.getId().getValue());
         assertEquals("Cluster: Pheromone receptor V3R6", entry.getName());
         assertEquals("Pheromone receptor V3R6", entry.getRepresentativeProteinName());
@@ -50,7 +50,7 @@ class UniRefEntryLightConverterTest {
         assertEquals(UniRefType.UniRef50, entry.getEntryType());
         assertEquals("Muroidea", entry.getCommonTaxon());
         assertEquals(337687, entry.getCommonTaxonId());
-        assertEquals("F6MB03_MOUSE", entry.getSeedId());
+        assertEquals("F6MB03_MOUSE,F6MB03", entry.getSeedId());
 
         assertEquals(3, entry.getGoTerms().size());
         GeneOntologyEntry goTerm = entry.getGoTerms().get(0);
@@ -73,7 +73,45 @@ class UniRefEntryLightConverterTest {
     }
 
     @Test
-    void testFromXmlInvalidId() throws Exception {
+    void testFromXmlWithUniParcRepresentativeAndSeed() {
+        UniRefEntryLightConverter converter = new UniRefEntryLightConverter();
+        String file = "/uniref/UniRef100_UPI0009BFC4AC.xml";
+        InputStream is = UniRefEntryLightConverterTest.class.getResourceAsStream(file);
+
+        assertNotNull(is);
+
+        List<InputStream> iss = Collections.singletonList(is);
+
+        XmlChainIterator<Entry, Entry> chainingIterators =
+                new XmlChainIterator<>(
+                        iss.iterator(), Entry.class, UNIREF_ROOT_ELEMENT, Function.identity());
+        assertNotNull(chainingIterators);
+        assertTrue(chainingIterators.hasNext());
+        Entry xmlEntry = chainingIterators.next();
+        assertNotNull(xmlEntry);
+        UniRefEntryLight entry = converter.fromXml(xmlEntry);
+        assertNotNull(entry);
+        assertNotNull(entry.getId());
+        assertEquals("UniRef100_UPI0009BFC4AC", entry.getId().getValue());
+        assertEquals("UPI0009BFC4AC", entry.getRepresentativeId());
+        assertEquals("Cluster: NAD-dependent epimerase/dehydratase family protein", entry.getName());
+        assertEquals("NAD-dependent epimerase/dehydratase family protein", entry.getRepresentativeProteinName());
+        assertEquals("2018-09-12", entry.getUpdated().toString());
+        assertEquals(UniRefType.UniRef100, entry.getEntryType());
+        assertEquals("Streptomyces viridosporus", entry.getCommonTaxon());
+        assertEquals(67581, entry.getCommonTaxonId());
+        assertEquals("UPI0009BFC4AC", entry.getSeedId());
+
+        assertTrue(entry.getGoTerms().isEmpty());
+
+        assertTrue(entry.getMembers().contains("UPI0009BFC4AC,3"));
+
+        assertEquals(entry.getMemberCount(), entry.getMembers().size());
+        assertFalse(chainingIterators.hasNext());
+    }
+
+    @Test
+    void testFromXmlInvalidId() {
         Entry xmlEntry = new Entry();
         xmlEntry.setId("INVALID");
         UniRefEntryLightConverter converter = new UniRefEntryLightConverter();
