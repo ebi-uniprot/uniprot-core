@@ -1,18 +1,18 @@
 package org.uniprot.cv.keyword;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.cv.keyword.impl.KeywordRepoImpl;
-
-import java.util.Collection;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.collection.IsEmptyCollection.empty;
 import static org.hamcrest.core.IsNull.notNullValue;
+
+import java.util.Collection;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.keyword.KeywordEntry;
+import org.uniprot.cv.keyword.impl.KeywordRepoImpl;
 
 /**
  * Created 09/11/2020
