@@ -94,8 +94,11 @@ class UniRefEntryLightConverterTest {
         assertNotNull(entry.getId());
         assertEquals("UniRef100_UPI0009BFC4AC", entry.getId().getValue());
         assertEquals("UPI0009BFC4AC", entry.getRepresentativeId());
-        assertEquals("Cluster: NAD-dependent epimerase/dehydratase family protein", entry.getName());
-        assertEquals("NAD-dependent epimerase/dehydratase family protein", entry.getRepresentativeProteinName());
+        assertEquals(
+                "Cluster: NAD-dependent epimerase/dehydratase family protein", entry.getName());
+        assertEquals(
+                "NAD-dependent epimerase/dehydratase family protein",
+                entry.getRepresentativeProteinName());
         assertEquals("2018-09-12", entry.getUpdated().toString());
         assertEquals(UniRefType.UniRef100, entry.getEntryType());
         assertEquals("Streptomyces viridosporus", entry.getCommonTaxon());

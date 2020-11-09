@@ -1,5 +1,7 @@
 package org.uniprot.core.json.parser.uniref;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
@@ -12,8 +14,6 @@ import org.uniprot.core.uniref.UniRefType;
 import org.uniprot.core.uniref.impl.UniRefEntryLightBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author lgonzales

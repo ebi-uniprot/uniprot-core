@@ -9,8 +9,7 @@ import org.uniprot.core.uniref.UniRefEntryLight;
  */
 public class UniRefFastaParser {
 
-    private UniRefFastaParser(){
-    }
+    private UniRefFastaParser() {}
 
     public static String toFasta(UniRefEntryLight entry) {
         StringBuilder sb = new StringBuilder();

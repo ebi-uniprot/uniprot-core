@@ -1,5 +1,11 @@
 package org.uniprot.core.json.parser.uniref.serialiser;
 
+import java.io.IOException;
+
+import org.uniprot.core.uniref.UniRefEntryLight;
+import org.uniprot.core.uniref.impl.UniRefEntryLightBuilder;
+import org.uniprot.core.uniref.impl.UniRefEntryLightImpl;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.BeanDescription;
 import com.fasterxml.jackson.databind.JavaType;
@@ -7,11 +13,6 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.BeanSerializerFactory;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import org.uniprot.core.uniref.UniRefEntryLight;
-import org.uniprot.core.uniref.impl.UniRefEntryLightBuilder;
-import org.uniprot.core.uniref.impl.UniRefEntryLightImpl;
-
-import java.io.IOException;
 
 /**
  * @author lgonzales
@@ -26,29 +27,32 @@ public class UniRefEntryLightSerialiser extends StdSerializer<UniRefEntryLightIm
     }
 
     @Override
-    public void serialize(UniRefEntryLightImpl value, JsonGenerator jgen, SerializerProvider provider) throws IOException {
-        value = (UniRefEntryLightImpl) UniRefEntryLightBuilder.from(value)
-                .representativeId(getRepresentativeId(value))
-                .seedId(getSeedId(value))
-                .build();
+    public void serialize(
+            UniRefEntryLightImpl value, JsonGenerator jgen, SerializerProvider provider)
+            throws IOException {
+        value =
+                (UniRefEntryLightImpl)
+                        UniRefEntryLightBuilder.from(value)
+                                .representativeId(getRepresentativeId(value))
+                                .seedId(getSeedId(value))
+                                .build();
 
         jgen.writeStartObject();
         JavaType javaType = provider.constructType(UniRefEntryLightImpl.class);
         BeanDescription beanDesc = provider.getConfig().introspect(javaType);
-        JsonSerializer<Object> serializer = BeanSerializerFactory.instance.findBeanSerializer(provider,
-                javaType,
-                beanDesc);
+        JsonSerializer<Object> serializer =
+                BeanSerializerFactory.instance.findBeanSerializer(provider, javaType, beanDesc);
         serializer.unwrappingSerializer(null).serialize(value, jgen, provider);
         jgen.writeEndObject();
     }
 
     private String getSeedId(UniRefEntryLight entry) {
         String[] splitSeedId = entry.getSeedId().split(",");
-        return splitSeedId[splitSeedId.length -1];
+        return splitSeedId[splitSeedId.length - 1];
     }
 
     private String getRepresentativeId(UniRefEntryLight entry) {
         String[] splitRepId = entry.getRepresentativeId().split(",");
-        return splitRepId[splitRepId.length -1];
+        return splitRepId[splitRepId.length - 1];
     }
 }

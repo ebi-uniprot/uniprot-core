@@ -56,13 +56,15 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
 
     private String getRepresentativeId(MemberType memberType) {
         String representativeId = memberType.getDbReference().getId();
-        Optional<String> accession = memberType.getDbReference().getProperty()
-                .stream()
-                .filter(propertyType -> propertyType.getType().equals(PROPERTY_UNIPROT_ACCESSION))
-                .map(PropertyType::getValue)
-                .findFirst();
-        if(accession.isPresent()){
-            representativeId += ","+accession.get();
+        Optional<String> accession =
+                memberType.getDbReference().getProperty().stream()
+                        .filter(
+                                propertyType ->
+                                        propertyType.getType().equals(PROPERTY_UNIPROT_ACCESSION))
+                        .map(PropertyType::getValue)
+                        .findFirst();
+        if (accession.isPresent()) {
+            representativeId += "," + accession.get();
         }
         return representativeId;
     }
@@ -152,9 +154,9 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
             builder.membersAdd(accession + "," + idType.getMemberIdTypeId());
             builder.memberIdTypesAdd(idType);
         }
-        if(seedId != null){
-            if(accession != null){
-                seedId += ","+accession;
+        if (seedId != null) {
+            if (accession != null) {
+                seedId += "," + accession;
             }
             builder.seedId(seedId);
         }
