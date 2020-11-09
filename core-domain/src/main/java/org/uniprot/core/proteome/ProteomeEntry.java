@@ -53,4 +53,6 @@ public interface ProteomeEntry extends Serializable {
     ProteomeCompletenessReport getProteomeCompletenessReport();
 
     GenomeAssembly getGenomeAssembly();
+
+    List<ExclusionReason> getExclusionReasons();
 }

@@ -183,6 +183,7 @@ public class ProteomeTest {
                 .sourceDb("source db")
                 .proteomeCompletenessReport(createProteomeCompletenessReport())
                 .genomeAssembly(createGenomeAssembly())
+                .exclusionReasonsAdd(ExclusionReason.MIXED_CULTURE)
                 .build();
     }
 

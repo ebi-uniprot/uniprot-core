@@ -48,7 +48,7 @@ class CrossReferenceReaderIT {
         assertNotNull(dbxRef.getName(), "Name is null");
 
         if (!ACCESSION_WITHOUT_REF.contains(dbxRef.getAccession())) {
-            assertNotNull(dbxRef.getRef(), "Ref is null");
+            assertNotNull(dbxRef.getRef(), "Ref is null for " + dbxRef.getName());
         }
         assertNotNull(dbxRef.getLinkType(), "LinkTp is null");
         assertNotNull(dbxRef.getServer(), "Server is null");
