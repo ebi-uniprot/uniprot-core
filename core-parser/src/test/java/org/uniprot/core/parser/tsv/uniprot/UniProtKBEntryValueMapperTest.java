@@ -1,12 +1,6 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.UniProtParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniProtParser;
-import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
-import org.uniprot.core.uniprotkb.UniProtKBEntry;
-import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -17,7 +11,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.flatfile.parser.UniProtParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniProtParser;
+import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
+import org.uniprot.core.uniprotkb.UniProtKBEntry;
+import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
 
 class UniProtKBEntryValueMapperTest {
     private static UniProtKBEntry entryQ15758;
