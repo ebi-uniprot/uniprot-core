@@ -8,8 +8,9 @@ public enum ProteomeType implements EnumDisplay {
     NORMAL("Complete proteome"),
     REFERENCE("Reference proteome"),
     REPRESENTATIVE("Representative proteome"),
+    REFERENCE_AND_REPRESENTATIVE("Reference and representative proteome"),
     REDUNDANT("Redundant proteome"),
-    IN_COMPLETE("Incomplete proteome");
+    EXCLUDED("Excluded");
 
     private final String name;
 

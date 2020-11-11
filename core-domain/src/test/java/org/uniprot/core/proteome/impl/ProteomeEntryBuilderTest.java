@@ -381,4 +381,28 @@ class ProteomeEntryBuilderTest {
         ProteomeEntry entry = new ProteomeEntryBuilder().genomeAssembly(genomeAssembly).build();
         assertEquals(genomeAssembly, entry.getGenomeAssembly());
     }
+
+    @Test
+    void addExclusionReason() {
+        ProteomeEntry proteome =
+                new ProteomeEntryBuilder()
+                        .exclusionReasonsAdd(ExclusionReason.METAGENOME)
+                        .exclusionReasonsAdd(ExclusionReason.MIXED_CULTURE)
+                        .build();
+        assertEquals(2, proteome.getExclusionReasons().size());
+        assertThat(proteome.getExclusionReasons(), hasItem(ExclusionReason.METAGENOME));
+        assertThat(proteome.getExclusionReasons(), hasItem(ExclusionReason.MIXED_CULTURE));
+    }
+
+    @Test
+    void ExclusionReasons() {
+        List<ExclusionReason> reasons = new ArrayList<>();
+        reasons.add(ExclusionReason.METAGENOME);
+        reasons.add(ExclusionReason.MIXED_CULTURE);
+
+        ProteomeEntry proteome = new ProteomeEntryBuilder().exclusionReasonsSet(reasons).build();
+        assertEquals(2, proteome.getExclusionReasons().size());
+        assertThat(proteome.getExclusionReasons(), hasItem(ExclusionReason.METAGENOME));
+        assertThat(proteome.getExclusionReasons(), hasItem(ExclusionReason.MIXED_CULTURE));
+    }
 }

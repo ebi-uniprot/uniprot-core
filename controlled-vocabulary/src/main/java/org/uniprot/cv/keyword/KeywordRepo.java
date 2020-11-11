@@ -11,4 +11,6 @@ public interface KeywordRepo {
     Collection<KeywordEntry> getAll();
 
     List<KeywordEntry> getAllCategories();
+
+    KeywordEntry getByName(String name);
 }

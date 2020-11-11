@@ -259,5 +259,6 @@ public class UniprotKBJsonConfig extends JsonConfig {
         prettyWriterModule.addSerializer(
                 FeatureDescriptionImpl.class, new FeatureDescriptionSerializer());
         prettyWriterModule.addSerializer(FeatureIdImpl.class, new FeatureIdSerializer());
+        prettyWriterModule.addSerializer(Position.class, new PositionSerializer());
     }
 }

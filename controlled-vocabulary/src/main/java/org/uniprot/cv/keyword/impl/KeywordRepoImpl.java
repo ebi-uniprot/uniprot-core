@@ -11,8 +11,9 @@ import org.uniprot.cv.keyword.KeywordCache;
 import org.uniprot.cv.keyword.KeywordRepo;
 
 public class KeywordRepoImpl implements KeywordRepo {
-    private Map<String, KeywordEntry> keywordAccessionMap;
-    private List<KeywordEntry> categories;
+    private final Map<String, KeywordEntry> keywordAccessionMap;
+    private final Map<String, KeywordEntry> idNameMap;
+    private final List<KeywordEntry> categories;
 
     public KeywordRepoImpl(String filename) {
         List<KeywordEntry> keywords = KeywordCache.INSTANCE.get(filename);
@@ -23,6 +24,11 @@ public class KeywordRepoImpl implements KeywordRepo {
                 keywords.stream()
                         .filter(val -> (val.getParents() == null) || val.getParents().isEmpty())
                         .collect(Collectors.toList());
+        idNameMap =
+                keywords.stream()
+                        .collect(
+                                Collectors.toMap(
+                                        kw -> kw.getKeyword().getName(), Function.identity()));
     }
 
     @Override
@@ -38,5 +44,10 @@ public class KeywordRepoImpl implements KeywordRepo {
     @Override
     public List<KeywordEntry> getAllCategories() {
         return categories;
+    }
+
+    @Override
+    public KeywordEntry getByName(String name) {
+        return idNameMap.get(name);
     }
 }

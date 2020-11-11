@@ -10,7 +10,7 @@ import org.uniprot.core.xml.jaxb.proteome.DbReferenceType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 
 class CrossReferenceConverterTest {
-    private ObjectFactory xmlFactory = new ObjectFactory();
+    private final ObjectFactory xmlFactory = new ObjectFactory();
     CrossReferenceConverter converter = new CrossReferenceConverter();
 
     @Test
@@ -26,11 +26,14 @@ class CrossReferenceConverterTest {
 
     @Test
     void testToXml() {
-        CrossReferenceBuilder<ProteomeDatabase> builder =
-                new CrossReferenceBuilder<ProteomeDatabase>();
+        CrossReferenceBuilder<ProteomeDatabase> builder = new CrossReferenceBuilder<>();
 
         CrossReference<ProteomeDatabase> xref =
-                builder.database(ProteomeDatabase.GENOME_ASSEMBLY).id("AGA21341.1").build();
+                builder.database(ProteomeDatabase.GENOME_ASSEMBLY)
+                        .id("AGA21341.1")
+                        .propertiesAdd("propKey", "propValue")
+                        .propertiesAdd("propKey2", "propValue2")
+                        .build();
         DbReferenceType xml = converter.toXml(xref);
 
         CrossReference<ProteomeDatabase> converted = converter.fromXml(xml);
