@@ -712,10 +712,7 @@ class UniProtKBEntryValueMapperTest {
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         String expectedCommentCount =
-                "Post-translationally modified residue (6); Sequence variation (2); chain (1);"
-                        + " glycosylation site (2); helix (11); intramembrane region (2); metal"
-                        + " ion-binding site (5); sequence conflict (8); splice variant (2); strand"
-                        + " (2); topological domain (11); transmembrane region (8)";
+                "Alternative sequence (2); Beta strand (2); Chain (1); Glycosylation (2); Helix (11); Intramembrane (2); Metal binding (5); Modified residue (6); Natural variant (2); Sequence conflict (8); Topological domain (11); Transmembrane (8)";
 
         verify(expectedCommentCount, "feature_count", result);
     }
