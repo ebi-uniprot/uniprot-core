@@ -5,12 +5,11 @@ import org.uniprot.core.citation.SubmissionDatabase;
 import org.uniprot.core.citation.impl.SubmissionBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
-import org.uniprot.core.xml.jaxb.proteome.ReferenceType;
-import org.uniprot.core.xml.jaxb.proteome.SubmissionType;
+import org.uniprot.core.xml.jaxb.proteome.CitationType;
 
 import com.google.common.base.Strings;
 
-public class SubmissionConverter implements Converter<ReferenceType, Submission> {
+public class SubmissionConverter implements Converter<CitationType, Submission> {
     private final ObjectFactory xmlFactory;
 
     public SubmissionConverter() {
@@ -22,26 +21,24 @@ public class SubmissionConverter implements Converter<ReferenceType, Submission>
     }
 
     @Override
-    public Submission fromXml(ReferenceType xmlObj) {
+    public Submission fromXml(CitationType xmlObj) {
         SubmissionBuilder builder = new SubmissionBuilder();
         ReferenceConverterHelper.updateFromXmlCitaiton(xmlObj, builder);
-        SubmissionType xmlSubmission = xmlObj.getSubmission();
-        builder.submittedToDatabase(SubmissionDatabase.typeOf(xmlSubmission.getDb()))
-                .title(xmlSubmission.getTitle());
+        builder.submittedToDatabase(SubmissionDatabase.typeOf(xmlObj.getDb()))
+                .title(xmlObj.getTitle());
         return builder.build();
     }
 
     @Override
-    public ReferenceType toXml(Submission uniObj) {
-        ReferenceType xmlCitation = xmlFactory.createReferenceType();
+    public CitationType toXml(Submission uniObj) {
+        CitationType xmlCitation = xmlFactory.createCitationType();
+        xmlCitation.setType(org.uniprot.core.citation.CitationType.SUBMISSION.getDisplayName());
         ReferenceConverterHelper.updateToXmlCitatation(xmlFactory, xmlCitation, uniObj);
-        SubmissionType xmlSubmission = xmlFactory.createSubmissionType();
-        xmlSubmission.setDb(uniObj.getSubmissionDatabase().getName());
+        xmlCitation.setDb(uniObj.getSubmissionDatabase().getName());
 
         if (!Strings.isNullOrEmpty(uniObj.getTitle())) {
-            xmlSubmission.setTitle(uniObj.getTitle());
+            xmlCitation.setTitle(uniObj.getTitle());
         }
-        xmlCitation.setSubmission(xmlSubmission);
         return xmlCitation;
     }
 }

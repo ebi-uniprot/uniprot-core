@@ -1,38 +1,36 @@
 package org.uniprot.core.proteome.impl;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.proteome.Component;
-import org.uniprot.core.proteome.ComponentType;
+import org.uniprot.core.proteome.GenomeAnnotation;
 import org.uniprot.core.proteome.ProteomeDatabase;
 import org.uniprot.core.util.Utils;
 
 public class ComponentImpl implements Component {
     private static final long serialVersionUID = -5592878122341180241L;
-    private String name;
-    private String description;
-    private int proteinCount;
-    private ComponentType type;
-
-    private List<CrossReference<ProteomeDatabase>> proteomeCrossReferences;
+    private final String name;
+    private final String description;
+    private final Integer proteinCount;
+    private final GenomeAnnotation genomeAnnotation;
+    private final List<CrossReference<ProteomeDatabase>> proteomeCrossReferences;
 
     ComponentImpl() {
-        proteomeCrossReferences = Collections.emptyList();
+        this(null, null,  null, null, null);
     }
 
     public ComponentImpl(
             String name,
             String description,
-            int proteinCount,
-            ComponentType type,
+            Integer proteinCount,
+            GenomeAnnotation genomeAnnotation,
             List<CrossReference<ProteomeDatabase>> proteomeCrossReferences) {
         this.name = name;
         this.description = description;
         this.proteinCount = proteinCount;
-        this.type = type;
+        this.genomeAnnotation = genomeAnnotation;
         this.proteomeCrossReferences = Utils.unmodifiableList(proteomeCrossReferences);
     }
 
@@ -52,18 +50,18 @@ public class ComponentImpl implements Component {
     }
 
     @Override
-    public int getProteinCount() {
+    public Integer getProteinCount() {
         return proteinCount;
     }
 
     @Override
-    public ComponentType getType() {
-        return type;
+    public GenomeAnnotation getGenomeAnnotation() {
+        return genomeAnnotation;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, proteinCount, proteomeCrossReferences, type);
+        return Objects.hash(name, description, proteinCount, proteomeCrossReferences, genomeAnnotation);
     }
 
     @Override
@@ -75,7 +73,7 @@ public class ComponentImpl implements Component {
         return Objects.equals(name, other.name)
                 && Objects.equals(description, other.description)
                 && Objects.equals(proteinCount, other.proteinCount)
-                && Objects.equals(type, other.type)
+                && Objects.equals(genomeAnnotation, other.genomeAnnotation)
                 && Objects.equals(proteomeCrossReferences, other.proteomeCrossReferences);
     }
 }

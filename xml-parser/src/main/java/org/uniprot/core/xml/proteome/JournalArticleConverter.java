@@ -8,12 +8,11 @@ import org.uniprot.core.citation.JournalArticle;
 import org.uniprot.core.citation.impl.JournalArticleBuilder;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.xml.Converter;
+import org.uniprot.core.xml.jaxb.proteome.CitationType;
 import org.uniprot.core.xml.jaxb.proteome.DbReferenceType;
-import org.uniprot.core.xml.jaxb.proteome.JournalType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
-import org.uniprot.core.xml.jaxb.proteome.ReferenceType;
 
-public class JournalArticleConverter implements Converter<ReferenceType, JournalArticle> {
+public class JournalArticleConverter implements Converter<CitationType, JournalArticle> {
     private final ObjectFactory xmlFactory;
 
     public JournalArticleConverter() {
@@ -25,10 +24,9 @@ public class JournalArticleConverter implements Converter<ReferenceType, Journal
     }
 
     @Override
-    public JournalArticle fromXml(ReferenceType xmlObj) {
+    public JournalArticle fromXml(CitationType journal) {
         JournalArticleBuilder builder = new JournalArticleBuilder();
-        ReferenceConverterHelper.updateFromXmlCitaiton(xmlObj, builder);
-        JournalType journal = xmlObj.getJournal();
+        ReferenceConverterHelper.updateFromXmlCitaiton(journal, builder);
         builder.title(journal.getTitle())
                 .firstPage(journal.getFirst())
                 .lastPage(journal.getLast())
@@ -42,10 +40,10 @@ public class JournalArticleConverter implements Converter<ReferenceType, Journal
     }
 
     @Override
-    public ReferenceType toXml(JournalArticle uniObj) {
-        ReferenceType xmlCitation = xmlFactory.createReferenceType();
-        ReferenceConverterHelper.updateToXmlCitatation(xmlFactory, xmlCitation, uniObj);
-        JournalType xmlJournal = xmlFactory.createJournalType();
+    public CitationType toXml(JournalArticle uniObj) {
+        CitationType xmlJournal = xmlFactory.createCitationType();
+        xmlJournal.setType(org.uniprot.core.citation.CitationType.JOURNAL_ARTICLE.getDisplayName());
+        ReferenceConverterHelper.updateToXmlCitatation(xmlFactory, xmlJournal, uniObj);
         xmlJournal.setFirst(uniObj.getFirstPage());
         xmlJournal.setLast(uniObj.getLastPage());
         xmlJournal.setTitle(uniObj.getTitle());
@@ -54,8 +52,7 @@ public class JournalArticleConverter implements Converter<ReferenceType, Journal
         uniObj.getCitationCrossReferences().stream()
                 .map(this::toXml)
                 .forEach(val -> xmlJournal.getDbReference().add(val));
-        xmlCitation.setJournal(xmlJournal);
-        return xmlCitation;
+        return xmlJournal;
     }
 
     private CrossReference<CitationDatabase> fromXml(DbReferenceType xmlRef) {

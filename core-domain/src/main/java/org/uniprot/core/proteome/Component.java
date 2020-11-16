@@ -12,7 +12,8 @@ public interface Component extends Serializable {
 
     List<CrossReference<ProteomeDatabase>> getProteomeCrossReferences();
 
-    int getProteinCount();
+    Integer getProteinCount();
 
-    ComponentType getType();
+    GenomeAnnotation getGenomeAnnotation();
+
 }

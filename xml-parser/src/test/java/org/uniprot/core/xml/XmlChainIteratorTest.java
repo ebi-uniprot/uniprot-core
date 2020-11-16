@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.function.Function;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.xml.jaxb.proteome.Proteome;
+import org.uniprot.core.xml.jaxb.proteome.ProteomeType;
 import org.uniprot.core.xml.jaxb.uniref.Entry;
 import org.uniprot.core.xml.writer.DefaultXmlWriter;
 
@@ -30,12 +30,12 @@ class XmlChainIteratorTest {
 
         List<InputStream> iss = Arrays.asList(is);
 
-        XmlChainIterator<Proteome, Proteome> chainingIterators =
+        XmlChainIterator<ProteomeType, ProteomeType> chainingIterators =
                 new XmlChainIterator<>(
-                        iss.iterator(), Proteome.class, PROTEOME_ROOT_ELEMENT, Function.identity());
+                        iss.iterator(), ProteomeType.class, PROTEOME_ROOT_ELEMENT, Function.identity());
         int count = 0;
         while (chainingIterators.hasNext()) {
-            Proteome proteome = chainingIterators.next();
+            ProteomeType proteome = chainingIterators.next();
             count++;
         }
         is.close();

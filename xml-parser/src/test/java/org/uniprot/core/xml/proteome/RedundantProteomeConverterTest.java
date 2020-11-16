@@ -16,7 +16,7 @@ class RedundantProteomeConverterTest {
     void testFromXml() {
         RedundantProteomeType xml = xmlFactory.createRedundantProteomeType();
         xml.setUpid("UP001231");
-        xml.setSimilarity(0.91f);
+        xml.setSimilarity("0.91");
         RedundantProteome rProteome = converter.fromXml(xml);
         assertEquals("UP001231", rProteome.getId().getValue());
         assertEquals(0.91f, rProteome.getSimilarity().doubleValue(), 0.000000001);
