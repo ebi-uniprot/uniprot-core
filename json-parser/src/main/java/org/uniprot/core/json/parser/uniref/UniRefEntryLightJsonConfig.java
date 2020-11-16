@@ -9,6 +9,7 @@ import org.uniprot.core.impl.ValueImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.json.parser.deserializer.LocalDateDeserializer;
 import org.uniprot.core.json.parser.serializer.LocalDateSerializer;
+import org.uniprot.core.json.parser.uniref.serialiser.UniRefEntryLightSerialiser;
 import org.uniprot.core.uniref.*;
 import org.uniprot.core.uniref.impl.*;
 
@@ -66,8 +67,8 @@ public class UniRefEntryLightJsonConfig extends JsonConfig {
     private ObjectMapper initPrettyObjectMapper() {
         ObjectMapper prettyObjMapper = getDefaultSimpleObjectMapper();
         SimpleModule simpleMod = new SimpleModule();
+        simpleMod.addSerializer(UniRefEntryLightImpl.class, new UniRefEntryLightSerialiser());
         simpleMod.addSerializer(LocalDate.class, new LocalDateSerializer());
-
         simpleMod.addSerializer(UniRefEntryIdImpl.class, new UniRefEntryIdSerializer());
         prettyObjMapper.registerModule(simpleMod);
         return prettyObjMapper;

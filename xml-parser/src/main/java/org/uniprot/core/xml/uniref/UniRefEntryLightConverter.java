@@ -4,6 +4,7 @@ import static org.uniprot.core.uniref.UniRefUtils.getUniProtKBIdType;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.cv.go.GoAspect;
@@ -44,13 +45,28 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
                 .name(xmlObj.getName())
                 .updated(XmlConverterHelper.dateFromXml(xmlObj.getUpdated()))
                 .sequence(xmlObj.getRepresentativeMember().getSequence().getValue())
-                .representativeId(xmlObj.getRepresentativeMember().getDbReference().getId());
+                .representativeId(getRepresentativeId(xmlObj.getRepresentativeMember()));
 
         updateMemberValuesFromXml(
                 builder, Collections.singletonList(xmlObj.getRepresentativeMember()));
         updateCommonPropertiesFromXml(builder, xmlObj);
         updateMemberValuesFromXml(builder, xmlObj.getMember());
         return builder.build();
+    }
+
+    private String getRepresentativeId(MemberType memberType) {
+        String representativeId = memberType.getDbReference().getId();
+        Optional<String> accession =
+                memberType.getDbReference().getProperty().stream()
+                        .filter(
+                                propertyType ->
+                                        propertyType.getType().equals(PROPERTY_UNIPROT_ACCESSION))
+                        .map(PropertyType::getValue)
+                        .findFirst();
+        if (accession.isPresent()) {
+            representativeId += "," + accession.get();
+        }
+        return representativeId;
     }
 
     private void updateMemberValuesFromXml(
@@ -110,6 +126,7 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
     private void updateMemberPropertiesFromXml(
             UniRefEntryLightBuilder builder, List<PropertyType> properties, String id) {
         String accession = null;
+        String seedId = null;
         for (PropertyType property : properties) {
             switch (property.getType()) {
                 case PROPERTY_SOURCE_ORGANISM:
@@ -125,7 +142,7 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
                     break;
                 case PROPERTY_IS_SEED:
                     if (Boolean.parseBoolean(property.getValue())) {
-                        builder.seedId(id);
+                        seedId = id;
                     }
                     break;
                 default:
@@ -136,6 +153,12 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
             UniRefMemberIdType idType = getUniProtKBIdType(id, accession);
             builder.membersAdd(accession + "," + idType.getMemberIdTypeId());
             builder.memberIdTypesAdd(idType);
+        }
+        if (seedId != null) {
+            if (accession != null) {
+                seedId += "," + accession;
+            }
+            builder.seedId(seedId);
         }
     }
 
