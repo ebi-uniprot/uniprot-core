@@ -53,7 +53,8 @@ public class ComponentBuilder implements Builder<Component> {
 
     @Override
     public @Nonnull Component build() {
-        return new ComponentImpl(name, description, proteinCount, genomeAnnotation, proteomeCrossReferences );
+        return new ComponentImpl(
+                name, description, proteinCount, genomeAnnotation, proteomeCrossReferences);
     }
 
     public static @Nonnull ComponentBuilder from(@Nonnull Component instance) {

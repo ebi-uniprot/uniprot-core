@@ -89,10 +89,7 @@ class ProteomeConverterTest {
     void testNormalProteome() {
         ProteomeConverter converter = new ProteomeConverter();
         ProteomeEntry proteome =
-                new ProteomeEntryBuilder()
-                        .proteomeId("UP1234567890")
-                        .proteomeType(NORMAL)
-                        .build();
+                new ProteomeEntryBuilder().proteomeId("UP1234567890").proteomeType(NORMAL).build();
         ProteomeType xml = converter.toXml(proteome);
         ProteomeEntry converted = converter.fromXml(xml);
         assertEquals(proteome, converted);
@@ -116,8 +113,7 @@ class ProteomeConverterTest {
         String id = "UP000005640";
         ProteomeId proteomeId = new ProteomeIdBuilder(id).build();
         String description = "about some proteome";
-        Taxonomy taxonomy =
-                new TaxonomyBuilder().taxonId(9606).build();
+        Taxonomy taxonomy = new TaxonomyBuilder().taxonId(9606).build();
         LocalDate modified = LocalDate.of(2015, 11, 5);
         String reId = "UP000005641";
         ProteomeId redId = new ProteomeIdBuilder(reId).build();
@@ -157,10 +153,8 @@ class ProteomeConverterTest {
         xrefs.add(xref5);
         List<Component> components = new ArrayList<>();
 
-        GenomeAnnotation genomeAnnotation = new GenomeAnnotationBuilder()
-                .source("source value")
-                .url("url value")
-                .build();
+        GenomeAnnotation genomeAnnotation =
+                new GenomeAnnotationBuilder().source("source value").url("url value").build();
 
         Component component1 =
                 new ComponentBuilder()
@@ -170,10 +164,7 @@ class ProteomeConverterTest {
                         .build();
 
         Component component2 =
-                new ComponentBuilder()
-                        .name("someName2")
-                        .description("some description 2")
-                        .build();
+                new ComponentBuilder().name("someName2").description("some description 2").build();
 
         components.add(component1);
         components.add(component2);

@@ -65,7 +65,6 @@ public class ProteomeConverter implements Converter<ProteomeType, ProteomeEntry>
                         .filter(Objects::nonNull)
                         .collect(Collectors.toList());
 
-
         ProteomeEntryBuilder builder = new ProteomeEntryBuilder();
         builder.proteomeId(proteomeId(xmlObj.getUpid()))
                 .proteomeType(getProteomeType(xmlObj))
@@ -80,8 +79,9 @@ public class ProteomeConverter implements Converter<ProteomeType, ProteomeEntry>
                 .genomeAssembly(genomeAssemblyConverter.fromXml(xmlObj.getGenomeAssembly()))
                 .proteomeCompletenessReport(getCompletenessReport(xmlObj.getScores()));
 
-        if(Utils.notNull(xmlObj.getGenomeAnnotation())){
-            builder.genomeAnnotation(genomeAnnotationConverter.fromXml(xmlObj.getGenomeAnnotation()));
+        if (Utils.notNull(xmlObj.getGenomeAnnotation())) {
+            builder.genomeAnnotation(
+                    genomeAnnotationConverter.fromXml(xmlObj.getGenomeAnnotation()));
         }
 
         if (notNull(xmlObj.getAnnotationScore())) {
@@ -177,8 +177,9 @@ public class ProteomeConverter implements Converter<ProteomeType, ProteomeEntry>
         if (notNull(uniObj.getGenomeAssembly())) {
             xmlObj.setGenomeAssembly(genomeAssemblyConverter.toXml(uniObj.getGenomeAssembly()));
         }
-        if(notNull(uniObj.getGenomeAnnotation())){
-            xmlObj.setGenomeAnnotation(genomeAnnotationConverter.toXml(uniObj.getGenomeAnnotation()));
+        if (notNull(uniObj.getGenomeAnnotation())) {
+            xmlObj.setGenomeAnnotation(
+                    genomeAnnotationConverter.toXml(uniObj.getGenomeAnnotation()));
         }
         if (notNull(uniObj.getProteomeCompletenessReport())) {
             convertCompletenessReport(uniObj.getProteomeCompletenessReport(), xmlObj);
@@ -189,7 +190,8 @@ public class ProteomeConverter implements Converter<ProteomeType, ProteomeEntry>
         return xmlObj;
     }
 
-    private void convertCompletenessReport(ProteomeCompletenessReport reports, ProteomeType xmlObj) {
+    private void convertCompletenessReport(
+            ProteomeCompletenessReport reports, ProteomeType xmlObj) {
         if (notNull(reports.getBuscoReport())) {
             xmlObj.getScores().add(scoreBuscoConverter.toXml(reports.getBuscoReport()));
         }

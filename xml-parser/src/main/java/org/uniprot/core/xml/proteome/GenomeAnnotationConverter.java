@@ -10,7 +10,8 @@ import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
  * @author lgonzales
  * @since 12/11/2020
  */
-public class GenomeAnnotationConverter implements Converter<GenomeAnnotationType, GenomeAnnotation> {
+public class GenomeAnnotationConverter
+        implements Converter<GenomeAnnotationType, GenomeAnnotation> {
 
     private final ObjectFactory xmlFactory;
 

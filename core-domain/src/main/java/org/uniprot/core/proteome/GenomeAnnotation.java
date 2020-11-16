@@ -11,5 +11,4 @@ public interface GenomeAnnotation extends Serializable {
     String getSource();
 
     String getUrl();
-
 }

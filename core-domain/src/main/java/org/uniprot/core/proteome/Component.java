@@ -15,5 +15,4 @@ public interface Component extends Serializable {
     Integer getProteinCount();
 
     GenomeAnnotation getGenomeAnnotation();
-
 }

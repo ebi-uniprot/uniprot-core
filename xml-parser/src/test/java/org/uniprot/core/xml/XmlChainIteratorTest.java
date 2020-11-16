@@ -32,7 +32,10 @@ class XmlChainIteratorTest {
 
         XmlChainIterator<ProteomeType, ProteomeType> chainingIterators =
                 new XmlChainIterator<>(
-                        iss.iterator(), ProteomeType.class, PROTEOME_ROOT_ELEMENT, Function.identity());
+                        iss.iterator(),
+                        ProteomeType.class,
+                        PROTEOME_ROOT_ELEMENT,
+                        Function.identity());
         int count = 0;
         while (chainingIterators.hasNext()) {
             ProteomeType proteome = chainingIterators.next();

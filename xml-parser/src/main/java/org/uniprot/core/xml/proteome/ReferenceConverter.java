@@ -27,7 +27,7 @@ public class ReferenceConverter implements Converter<ReferenceType, Citation> {
     @Override
     public Citation fromXml(ReferenceType xmlObj) {
         Citation result = null;
-        if(xmlObj.getCitation() != null) {
+        if (xmlObj.getCitation() != null) {
             org.uniprot.core.citation.CitationType type =
                     org.uniprot.core.citation.CitationType.typeOf(xmlObj.getCitation().getType());
             switch (type) {
@@ -54,7 +54,7 @@ public class ReferenceConverter implements Converter<ReferenceType, Citation> {
         } else {
             citationType = null;
         }
-        if(Utils.notNull(citationType)) {
+        if (Utils.notNull(citationType)) {
             ReferenceType referenceType = xmlFactory.createReferenceType();
             referenceType.setCitation(citationType);
             return referenceType;

@@ -15,9 +15,7 @@ import com.google.common.base.Strings;
 
 public class ReferenceConverterHelper {
 
-    private ReferenceConverterHelper(){
-
-    }
+    private ReferenceConverterHelper() {}
 
     private static final PublicationDateConverter dateConverter = new PublicationDateConverter();
 
