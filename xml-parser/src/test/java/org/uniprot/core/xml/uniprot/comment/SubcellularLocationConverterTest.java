@@ -1,5 +1,15 @@
 package org.uniprot.core.xml.uniprot.comment;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocation;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocationValue;
@@ -12,16 +22,6 @@ import org.uniprot.core.xml.jaxb.uniprot.SubcellularLocationType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.EvidencedStringTypeConverterTest;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
 public class SubcellularLocationConverterTest extends AbstractConverterTest {
 
