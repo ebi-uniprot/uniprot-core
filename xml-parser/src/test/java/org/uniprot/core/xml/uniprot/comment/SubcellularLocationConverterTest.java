@@ -1,12 +1,5 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocation;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocationValue;
@@ -20,13 +13,23 @@ import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.EvidencedStringTypeConverterTest;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
+
 public class SubcellularLocationConverterTest extends AbstractConverterTest {
 
     @Test
-    void test() {
+    void roundTripTest() {
         SubcellularLocationValue location =
                 create(
-                        "Membrane, caveola",
+                        "Membrane, Caveola",
                         Arrays.asList(
                                 "ECO:0000256|PIRNR:PIRNR037393", "ECO:0000256|RuleBase:RU361271"));
         SubcellularLocationValue topology =
@@ -55,6 +58,47 @@ public class SubcellularLocationConverterTest extends AbstractConverterTest {
 
         SubcellularLocation converted = converter.fromXml(xmlsubcelLocation);
         assertEquals(subcelLocation, converted);
+    }
+
+    @Test
+    void locationValuesToString_retainUppercasing() {
+        // given
+        // see: https://www.ebi.ac.uk/panda/jira/browse/TRM-24845
+        List<EvidencedStringType> evidencedStringTypes =
+                evidencedStringTypes("Nucleus", "Cajal body");
+
+        // when
+        String locationValues =
+                SubcellularLocationConverter.getLocationValues(evidencedStringTypes);
+
+        // then
+        assertThat(locationValues, is("Nucleus, Cajal body"));
+    }
+
+    @Test
+    void locationValuesToString_retainLowercasing() {
+        // given
+        // see: https://www.ebi.ac.uk/panda/jira/browse/TRM-24845
+        List<EvidencedStringType> evidencedStringTypes =
+                evidencedStringTypes("Nucleus", "lowercase");
+
+        // when
+        String locationValues =
+                SubcellularLocationConverter.getLocationValues(evidencedStringTypes);
+
+        // then
+        assertThat(locationValues, is("Nucleus, lowercase"));
+    }
+
+    private List<EvidencedStringType> evidencedStringTypes(String... values) {
+        return Arrays.stream(values)
+                .map(
+                        value -> {
+                            EvidencedStringType type = new EvidencedStringType();
+                            type.setValue(value);
+                            return type;
+                        })
+                .collect(Collectors.toList());
     }
 
     private SubcellularLocationValue create(String val, List<String> evidences) {

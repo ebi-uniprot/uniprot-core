@@ -29,7 +29,7 @@ class SCLCommentConverterTest {
     void test() {
         SubcellularLocationValue location =
                 create(
-                        "Membrane, caveola",
+                        "Membrane, Caveola",
                         Arrays.asList(
                                 "ECO:0000256|PIRNR:PIRNR037393", "ECO:0000256|RuleBase:RU361271"));
         SubcellularLocationValue topology =

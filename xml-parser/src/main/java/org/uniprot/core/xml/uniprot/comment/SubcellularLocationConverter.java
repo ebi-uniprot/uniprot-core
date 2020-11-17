@@ -68,33 +68,18 @@ public class SubcellularLocationConverter
                 .build();
     }
 
-    private String getLocationValues(List<EvidencedStringType> values) {
+    static String getLocationValues(List<EvidencedStringType> values) {
         StringBuilder sb = new StringBuilder();
         boolean isFirst = true;
-        for (int i = 0; i < values.size(); i++) {
-            String val = values.get(i).getValue();
+        for (EvidencedStringType value : values) {
+            String val = value.getValue();
             if (!isFirst) {
-                val = lowerCaseFirstLetter(val);
                 sb.append(", ");
             }
-            isFirst = false;
             sb.append(val);
+            isFirst = false;
         }
         return sb.toString();
-        // Map<EvidencedStringType, String> map = transferCase(values);
-        // return values.stream().map(val ->
-        // val.getValue()).collect(Collectors.joining(", "));
-    }
-
-    private String lowerCaseFirstLetter(String val) {
-        if (Utils.nullOrEmpty(val)) return val;
-        if (val.length() > 1) {
-            char second = val.charAt(1);
-            if ((second >= 'A') && (second <= 'Z')) {
-                return val;
-            }
-        }
-        return Utils.lowerFirstChar(val);
     }
 
     @Override
