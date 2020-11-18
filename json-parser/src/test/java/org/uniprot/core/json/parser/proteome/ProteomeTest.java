@@ -26,7 +26,7 @@ import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-class ProteomeTest {
+public class ProteomeTest {
     @Test
     void testComponent() {
         List<CrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();

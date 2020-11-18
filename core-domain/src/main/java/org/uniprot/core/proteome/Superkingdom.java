@@ -4,6 +4,8 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
+import java.util.Arrays;
+
 public enum Superkingdom implements EnumDisplay {
     ARCHAEA("archaea"),
     VIRUSES("viruses"),
@@ -22,5 +24,10 @@ public enum Superkingdom implements EnumDisplay {
 
     public static @Nonnull Superkingdom typeOf(@Nonnull String name) {
         return EnumDisplay.typeOf(name, Superkingdom.class);
+    }
+
+    public static boolean isSuperkingdom(@Nonnull String name) {
+        return Arrays.stream(Superkingdom.values())
+                .anyMatch(superkingdom -> superkingdom.name.equalsIgnoreCase(name));
     }
 }
