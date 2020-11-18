@@ -37,12 +37,21 @@ public class UniRuleEntryValueMapper implements EntityValueMapper<UniRuleEntry> 
     public Map<String, String> mapEntity(UniRuleEntry uniRuleEntry, List<String> fields) {
         Map<String, String> map = new HashMap<>();
         map.put("uniRuleId", uniRuleEntry.getUniRuleId().getValue());
-        map.put("proteins_annotated", String.valueOf(uniRuleEntry.getProteinsAnnotatedCount()));
+        map.put("proteins_annotated", String.valueOf(getProteinAnnotatedCount(uniRuleEntry)));
         map.put("taxonomic_scope", getTaxonomicScope(uniRuleEntry));
         map.put("annotation_covered", getAnnotationCovered(uniRuleEntry));
         map.put("predicted_protein_name", getPredictedProteinName(uniRuleEntry));
         map.put("template_entries", getUniProtAccessions(uniRuleEntry.getInformation()));
         return map;
+    }
+
+    private Long getProteinAnnotatedCount(UniRuleEntry uniRuleEntry){
+        Long proteinAnnotatedCount = uniRuleEntry.getProteinsAnnotatedCount();
+        if(Utils.notNull(proteinAnnotatedCount)){
+            return proteinAnnotatedCount;
+        } else {
+            return 0L;
+        }
     }
 
     private String getTaxonomicScope(UniRuleEntry uniRuleEntry) {
@@ -98,12 +107,13 @@ public class UniRuleEntryValueMapper implements EntityValueMapper<UniRuleEntry> 
     }
 
     private String getPredictedProteinName(UniRuleEntry uniRuleEntry) {
+        // get protein name from main rule
         List<Annotation> annotations = uniRuleEntry.getMainRule().getAnnotations();
         StringBuilder builder = new StringBuilder();
         if(Utils.notNullNotEmpty(annotations)){
             builder = getProteinName(annotations);
         }
-
+        // get protein name from case rules
         List<CaseRule> otherRules = uniRuleEntry.getOtherRules();
         if(Utils.notNullNotEmpty(otherRules)) {
             for (CaseRule caseRule : otherRules) {
