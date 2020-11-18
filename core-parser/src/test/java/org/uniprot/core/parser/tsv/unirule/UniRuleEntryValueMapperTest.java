@@ -1,5 +1,14 @@
 package org.uniprot.core.parser.tsv.unirule;
 
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilder;
@@ -23,17 +32,6 @@ import org.uniprot.core.unirule.impl.RuleBuilder;
 import org.uniprot.core.unirule.impl.RuleBuilderTest;
 import org.uniprot.core.unirule.impl.UniRuleEntryBuilder;
 import org.uniprot.core.unirule.impl.UniRuleIdBuilder;
-import org.uniprot.core.util.Utils;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class UniRuleEntryValueMapperTest {
 
@@ -88,9 +86,8 @@ class UniRuleEntryValueMapperTest {
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("predicted_protein_name"));
     }
 
-
     @Test
-    void testTaxonomicScope(){
+    void testTaxonomicScope() {
         String uniRuleId = "UR123456789";
         UniRuleId uniRuleIdObject = new UniRuleIdBuilder(uniRuleId).build();
         RuleStatus status = RuleStatus.APPLY;
@@ -122,7 +119,10 @@ class UniRuleEntryValueMapperTest {
         UniRuleId uniRuleIdObject = new UniRuleIdBuilder(uniRuleId).build();
         RuleStatus status = RuleStatus.APPLY;
         Information information = new InformationBuilder("sample version").build();
-        UniRuleEntry entry = new UniRuleEntryBuilder(uniRuleIdObject, status, information, mainRule).proteinsAnnotatedCount(10L).build();
+        UniRuleEntry entry =
+                new UniRuleEntryBuilder(uniRuleIdObject, status, information, mainRule)
+                        .proteinsAnnotatedCount(10L)
+                        .build();
 
         Map<String, String> mappedEntries =
                 new UniRuleEntryValueMapper().mapEntity(entry, Collections.emptyList());
@@ -138,15 +138,18 @@ class UniRuleEntryValueMapperTest {
     }
 
     @Test
-    void testPredictedProteinName(){
+    void testPredictedProteinName() {
         Rule mainRule = RuleBuilderTest.createObject(3);
         List<CaseRule> caseRules = CaseRuleBuilderTest.createObjects(1, false);
         String uniRuleId = "UR123456789";
         UniRuleId uniRuleIdObject = new UniRuleIdBuilder(uniRuleId).build();
         RuleStatus status = RuleStatus.APPLY;
         Information information = new InformationBuilder("sample version").build();
-        UniRuleEntry entry = new UniRuleEntryBuilder(uniRuleIdObject, status, information, mainRule)
-                .proteinsAnnotatedCount(10L).otherRulesSet(caseRules).build();
+        UniRuleEntry entry =
+                new UniRuleEntryBuilder(uniRuleIdObject, status, information, mainRule)
+                        .proteinsAnnotatedCount(10L)
+                        .otherRulesSet(caseRules)
+                        .build();
 
         Map<String, String> mappedEntries =
                 new UniRuleEntryValueMapper().mapEntity(entry, Collections.emptyList());
