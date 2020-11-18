@@ -1,312 +1,269 @@
-<proteomes xmlns="http://uniprot.org/uniprot" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://uniprot.org/uniprot http://www.uniprot.org/support/docs/proteome.xsd">
-    <proteome>
-        <upid>UP000000718</upid>
-        <description>Thermodesulfovibrio yellowstonii (strain ATCC 51303 / DSM 11347 / YP87) is a thermophilic sulfate-reducing bacterium isolated from a thermal vent in Yellowstone Lake in Wyoming, USA. It has the ability to use sulfate, thiosulfate, and sulfite as terminal electron acceptors. Pyruvate can support fermentative growth.</description>
-        <taxonomy>289376</taxonomy>
-        <modified>2020-06-28</modified>
-        <isReferenceProteome>true</isReferenceProteome>
-        <isRepresentativeProteome>true</isRepresentativeProteome>
-        <strain>ATCC 51303 / DSM 11347 / YP87</strain>
-        <genomeAssembly>
-            <genomeAssemblySource>ENA/EMBL</genomeAssemblySource>
-            <genomeAssembly>GCA_000020985.1</genomeAssembly>
-            <genomeAssemblyUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000020985.1</genomeAssemblyUrl>
-            <genomeRepresentation>full</genomeRepresentation>
-        </genomeAssembly>
+<?xml version="1.0" encoding="UTF-8"?>
+<proteomes xmlns="http://uniprot.org/uniprot"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://uniprot.org/uniprot http://www.uniprot.org/support/docs/proteome.xsd">
+<proteome xmlns="http://uniprot.org/uniprot">
+    <upid>UP000000718</upid>
+    <description>Thermodesulfovibrio yellowstonii (strain ATCC 51303 / DSM 11347 / YP87) is a thermophilic sulfate-reducing bacterium isolated from a thermal vent in Yellowstone Lake in Wyoming, USA. It has the ability to use sulfate, thiosulfate, and sulfite as terminal electron acceptors. Pyruvate can support fermentative growth.</description>
+    <taxonomy>289376</taxonomy>
+    <modified>2020-10-17Z</modified>
+    <isReferenceProteome>true</isReferenceProteome>
+    <isRepresentativeProteome>true</isRepresentativeProteome>
+    <strain>ATCC 51303 / DSM 11347 / YP87</strain>
+    <genomeAssembly>
+        <genomeAssemblySource>ENA/EMBL</genomeAssemblySource>
+        <genomeAssembly>GCA_000020985.1</genomeAssembly>
+        <genomeAssemblyUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000020985.1</genomeAssemblyUrl>
+        <genomeRepresentation>full</genomeRepresentation>
+    </genomeAssembly>
+    <genomeAnnotation>
+        <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
+        <genomeAnnotationUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000020985.1</genomeAnnotationUrl>
+    </genomeAnnotation>
+    <component name="Chromosome">
+        <description>Thermodesulfovibrio yellowstonii DSM 11347</description>
+        <biosampleId>SAMN02603929</biosampleId>
+        <genomeAccession>CP001147</genomeAccession>
         <genomeAnnotation>
             <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
-            <genomeAnnotationUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000020985.1</genomeAnnotationUrl>
         </genomeAnnotation>
-        <component name="Chromosome">
-            <description>Thermodesulfovibrio yellowstonii DSM 11347</description>
-            <biosampleId>SAMN02603929</biosampleId>
-            <genomeAccession>CP001147</genomeAccession>
-            <genomeAssembly>
-                <genomeAssemblySource>ENA/EMBL</genomeAssemblySource>
-            </genomeAssembly>
-            <genomeAnnotation>
-                <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
-            </genomeAnnotation>
-        </component>
-        <reference>
-            <citation type="submission" date="2008-08" db="EMBL/GenBank/DDBJ databases">
-                <title>The complete genome sequence of Thermodesulfovibrio yellowstonii strain ATCC 51303 / DSM 11347 / YP87.</title>
-                <authorList>
-                    <person name="Dodson R.J."/>
-                    <person name="Durkin A.S."/>
-                    <person name="Wu M."/>
-                    <person name="Eisen J."/>
-                    <person name="Sutton G."/>
-                </authorList>
-            </citation>
-        </reference>
-        <reference>
-            <citation type="journal article" date="2015" name="Genome Announc" volume="3" first="0" last="0">
-                <title>Genome Sequence of the Sulfate-Reducing Thermophilic Bacterium Thermodesulfovibrio yellowstonii Strain DSM 11347T (Phylum Nitrospirae).</title>
-                <authorList>
-                    <person name="Bhatnagar S."/>
-                    <person name="Badger J.H."/>
-                    <person name="Madupu R."/>
-                    <person name="Khouri H.M."/>
-                    <person name="O'Connor E.M."/>
-                    <person name="Robb F.T."/>
-                    <person name="Ward N.L."/>
-                    <person name="Eisen J.A."/>
-                </authorList>
-                <dbReference type="PubMed" id="25635016"/>
-            </citation>
-        </reference>
-        <panproteome>UP000000718</panproteome>
-        <scores name="busco">
-            <property name="fragmented" value="3"/>
-            <property name="lineage"/>
-        </scores>
-    </proteome>
-    <proteome>
-        <upid>UP000008687</upid>
-        <taxonomy>12185</taxonomy>
-        <modified>2020-06-28</modified>
-        <isReferenceProteome>true</isReferenceProteome>
-        <isRepresentativeProteome>true</isRepresentativeProteome>
-        <strain>X3</strain>
-        <genomeAssembly>
-            <genomeAssemblySource>ENA/EMBL</genomeAssemblySource>
-            <genomeAssembly>GCA_000866465.1</genomeAssembly>
-            <genomeAssemblyUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000866465.1</genomeAssemblyUrl>
-            <genomeRepresentation>full</genomeRepresentation>
-        </genomeAssembly>
+    </component>
+    <reference>
+        <citation type="submission" date="2008-08" first="0" last="0" db="EMBL/GenBank/DDBJ databases">
+            <title>The complete genome sequence of Thermodesulfovibrio yellowstonii strain ATCC 51303 / DSM 11347 / YP87.</title>
+            <authorList>
+                <person name="Dodson R.J."/>
+                <person name="Durkin A.S."/>
+                <person name="Wu M."/>
+                <person name="Eisen J."/>
+                <person name="Sutton G."/>
+            </authorList>
+        </citation>
+    </reference>
+    <reference>
+        <citation type="journal article" date="2015" name="Genome Announc" volume="3" first="0" last="0">
+            <title>Genome Sequence of the Sulfate-Reducing Thermophilic Bacterium Thermodesulfovibrio yellowstonii Strain DSM 11347T (Phylum Nitrospirae).</title>
+            <authorList>
+                <person name="Bhatnagar S."/>
+                <person name="Badger J.H."/>
+                <person name="Madupu R."/>
+                <person name="Khouri H.M."/>
+                <person name="O'Connor E.M."/>
+                <person name="Robb F.T."/>
+                <person name="Ward N.L."/>
+                <person name="Eisen J.A."/>
+            </authorList>
+            <dbReference type="PubMed" id="25635016"/>
+        </citation>
+    </reference>
+    <annotationScore normalizedAnnotationScore="2"/>
+    <scores name="busco">
+        <property name="fragmented" value="3"/>
+        <property name="lineage" value="bacteria_odb10"/>
+        <property name="missing" value="4"/>
+        <property name="completedSingle" value="111"/>
+        <property name="completed" value="117"/>
+        <property name="total" value="124"/>
+        <property name="completedDuplicated" value="6"/>
+        <property name="score" value="96"/>
+    </scores>
+    <scores name="cpd">
+        <property name="averageCds" value="3274"/>
+        <property name="status" value="Standard"/>
+        <property name="confidence" value="0"/>
+        <property name="proteomeCount" value="25"/>
+        <property name="stdCdss" value="1166.2682710251531"/>
+    </scores>
+</proteome>
+<proteome xmlns="http://uniprot.org/uniprot">
+    <upid>UP000006687</upid>
+    <taxonomy>11049</taxonomy>
+    <modified>2020-10-18Z</modified>
+    <isReferenceProteome>true</isReferenceProteome>
+    <isRepresentativeProteome>true</isRepresentativeProteome>
+    <strain>Lelystad</strain>
+    <genomeAssembly>
+        <genomeAssemblySource>ENA/EMBL</genomeAssemblySource>
+        <genomeAssembly>GCA_003971765.1</genomeAssembly>
+        <genomeAssemblyUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_003971765.1</genomeAssemblyUrl>
+        <genomeRepresentation>full</genomeRepresentation>
+    </genomeAssembly>
+    <genomeAnnotation>
+        <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
+        <genomeAnnotationUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_003971765.1</genomeAnnotationUrl>
+    </genomeAnnotation>
+    <component name="Genome">
+        <description>Lelystad virus</description>
+        <genomeAccession>M96262</genomeAccession>
         <genomeAnnotation>
             <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
-            <genomeAnnotationUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000866465.1</genomeAnnotationUrl>
         </genomeAnnotation>
-        <component name="Genome">
-            <description>Potato virus X genes for 166K protein, 25K protein, 12K protein, 8K protein, coat protein.</description>
-            <genomeAccession>D00344</genomeAccession>
-            <genomeAssembly>
-                <genomeAssemblySource>ENA/EMBL</genomeAssemblySource>
-            </genomeAssembly>
-            <genomeAnnotation>
-                <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
-            </genomeAnnotation>
-        </component>
-        <reference>
-            <citation type="journal article" date="1988" name="J. Gen. Virol." volume="69" first="1789" last="1798">
-                <title>The complete nucleotide sequence of potato virus X and its homologies at the amino acid level with various plus-stranded RNA viruses.</title>
-                <authorList>
-                    <person name="Huisman M.J."/>
-                    <person name="Linthorst H.J."/>
-                    <person name="Bol J.F."/>
-                    <person name="Cornelissen B.J."/>
-                </authorList>
-                <dbReference type="PubMed" id="3404114"/>
-            </citation>
-        </reference>
-        <scores name="cpd">
-            <property name="averageCds" value="5"/>
-            <property name="status" value="Standard"/>
-            <property name="confidence" value="2"/>
-            <property name="proteomeCount" value="3"/>
-            <property name="stdCdss" value="1.5"/>
-        </scores>
-    </proteome>
-    <proteome>
-        <upid>UP000006687</upid>
-        <taxonomy>11049</taxonomy>
-        <modified>2020-06-28</modified>
-        <isReferenceProteome>true</isReferenceProteome>
-        <isRepresentativeProteome>true</isRepresentativeProteome>
-        <strain>Lelystad</strain>
-        <genomeAssembly>
-            <genomeAssemblySource>ENA/EMBL</genomeAssemblySource>
-            <genomeAssembly>GCA_003971765.1</genomeAssembly>
-            <genomeAssemblyUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_003971765.1</genomeAssemblyUrl>
-            <genomeRepresentation>full</genomeRepresentation>
-        </genomeAssembly>
+    </component>
+    <reference>
+        <citation type="journal article" date="1993" name="Virology" volume="192" first="62" last="72">
+            <title>Lelystad virus, the causative agent of porcine epidemic abortion and respiratory syndrome (PEARS), is related to LDV and EAV.</title>
+            <authorList>
+                <person name="Meulenberg J.J."/>
+                <person name="Hulst M.M."/>
+                <person name="de Meijer E.J."/>
+                <person name="Moonen P.L."/>
+                <person name="den Besten A."/>
+                <person name="de Kluyver E.P."/>
+                <person name="Wensvoort G."/>
+                <person name="Moormann R.J."/>
+            </authorList>
+            <dbReference type="PubMed" id="8517032"/>
+            <dbReference type="DOI" id="10.1006/viro.1993.1008"/>
+        </citation>
+    </reference>
+    <annotationScore normalizedAnnotationScore="5"/>
+    <scores name="cpd">
+        <property name="averageCds" value="9"/>
+        <property name="status" value="Standard"/>
+        <property name="confidence" value="-1"/>
+        <property name="proteomeCount" value="5"/>
+        <property name="stdCdss" value="0.7483314773547883"/>
+    </scores>
+</proteome>
+<proteome xmlns="http://uniprot.org/uniprot">
+    <upid>UP000029766</upid>
+    <taxonomy>60714</taxonomy>
+    <modified>2020-10-17Z</modified>
+    <isReferenceProteome>true</isReferenceProteome>
+    <isRepresentativeProteome>true</isRepresentativeProteome>
+    <genomeAssembly>
+        <genomeAssemblySource>ENA/EMBL</genomeAssemblySource>
+        <genomeAssembly>GCA_000859945.1</genomeAssembly>
+        <genomeAssemblyUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000859945.1</genomeAssemblyUrl>
+        <genomeRepresentation>full</genomeRepresentation>
+    </genomeAssembly>
+    <genomeAnnotation>
+        <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
+        <genomeAnnotationUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000859945.1</genomeAnnotationUrl>
+    </genomeAnnotation>
+    <component name="Genome">
+        <description>Galinsoga mosaic virus</description>
+        <genomeAccession>Y13463</genomeAccession>
         <genomeAnnotation>
             <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
-            <genomeAnnotationUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_003971765.1</genomeAnnotationUrl>
         </genomeAnnotation>
-        <component name="Genome">
-            <description>Lelystad virus</description>
-            <genomeAccession>M96262</genomeAccession>
-            <genomeAssembly>
-                <genomeAssemblySource>ENA/EMBL</genomeAssemblySource>
-            </genomeAssembly>
-            <genomeAnnotation>
-                <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
-            </genomeAnnotation>
-        </component>
-        <reference>
-            <citation type="journal article" date="1993" name="Virology" volume="192" first="62" last="72">
-                <title>Lelystad virus, the causative agent of porcine epidemic abortion and respiratory syndrome (PEARS), is related to LDV and EAV.</title>
-                <authorList>
-                    <person name="Meulenberg J.J."/>
-                    <person name="Hulst M.M."/>
-                    <person name="de Meijer E.J."/>
-                    <person name="Moonen P.L."/>
-                    <person name="den Besten A."/>
-                    <person name="de Kluyver E.P."/>
-                    <person name="Wensvoort G."/>
-                    <person name="Moormann R.J."/>
-                </authorList>
-                <dbReference type="PubMed" id="8517032"/>
-                <dbReference type="DOI" id="10.1006/viro.1993.1008"/>
-            </citation>
-        </reference>
-        <panproteome>UP000006687</panproteome>
-        <scores name="cpd">
-            <property name="averageCds" value="9"/>
-            <property name="status" value="Standard"/>
-            <property name="confidence" value="-1"/>
-            <property name="proteomeCount" value="5"/>
-            <property name="stdCdss" value="0.7483314773547882"/>
-        </scores>
-    </proteome>
-    <proteome>
-        <upid>UP000029766</upid>
-        <taxonomy>60714</taxonomy>
-        <modified>2020-06-28</modified>
-        <isReferenceProteome>true</isReferenceProteome>
-        <isRepresentativeProteome>true</isRepresentativeProteome>
-        <genomeAssembly>
-            <genomeAssemblySource>ENA/EMBL</genomeAssemblySource>
-            <genomeAssembly>GCA_000859945.1</genomeAssembly>
-            <genomeAssemblyUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000859945.1</genomeAssemblyUrl>
-            <genomeRepresentation>full</genomeRepresentation>
-        </genomeAssembly>
+    </component>
+    <reference>
+        <citation type="journal article" date="1998" name="Arch. Virol." volume="143" first="173" last="180">
+            <title>Molecular cloning and complete nucleotide sequence of galinsoga mosaic virus genomic RNA.</title>
+            <authorList>
+                <person name="Ciuffreda P."/>
+                <person name="Rubino L."/>
+                <person name="Russo M."/>
+            </authorList>
+            <dbReference type="PubMed" id="9505975"/>
+            <dbReference type="DOI" id="10.1007/s007050050277"/>
+        </citation>
+    </reference>
+    <annotationScore normalizedAnnotationScore="2"/>
+    <scores name="cpd">
+        <property name="averageCds" value="5"/>
+        <property name="status" value="Standard"/>
+        <property name="confidence" value="1"/>
+        <property name="proteomeCount" value="65"/>
+        <property name="stdCdss" value="1.3700084222088114"/>
+    </scores>
+</proteome>
+<proteome xmlns="http://uniprot.org/uniprot">
+    <upid>UP000164653</upid>
+    <taxonomy>1076255</taxonomy>
+    <modified>2020-10-17Z</modified>
+    <isReferenceProteome>true</isReferenceProteome>
+    <isRepresentativeProteome>true</isRepresentativeProteome>
+    <genomeAssembly>
+        <genomeAssemblySource>ENA/EMBL</genomeAssemblySource>
+        <genomeAssembly>GCA_000892975.1</genomeAssembly>
+        <genomeAssemblyUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000892975.1</genomeAssemblyUrl>
+        <genomeRepresentation>full</genomeRepresentation>
+    </genomeAssembly>
+    <genomeAnnotation>
+        <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
+        <genomeAnnotationUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000892975.1</genomeAnnotationUrl>
+    </genomeAnnotation>
+    <component name="Genome">
+        <description>Yoka poxvirus strain DakArB 4268</description>
+        <genomeAccession>HQ849551</genomeAccession>
         <genomeAnnotation>
             <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
-            <genomeAnnotationUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000859945.1</genomeAnnotationUrl>
         </genomeAnnotation>
-        <component name="Genome">
-            <description>Galinsoga mosaic virus</description>
-            <genomeAccession>Y13463</genomeAccession>
-            <genomeAssembly>
-                <genomeAssemblySource>ENA/EMBL</genomeAssemblySource>
-            </genomeAssembly>
-            <genomeAnnotation>
-                <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
-            </genomeAnnotation>
-        </component>
-        <reference>
-            <citation type="journal article" date="1998" name="Arch. Virol." volume="143" first="173" last="180">
-                <title>Molecular cloning and complete nucleotide sequence of galinsoga mosaic virus genomic RNA.</title>
-                <authorList>
-                    <person name="Ciuffreda P."/>
-                    <person name="Rubino L."/>
-                    <person name="Russo M."/>
-                </authorList>
-                <dbReference type="PubMed" id="9505975"/>
-                <dbReference type="DOI" id="10.1007/s007050050277"/>
-            </citation>
-        </reference>
-        <scores name="cpd">
-            <property name="averageCds" value="5"/>
-            <property name="status" value="Standard"/>
-            <property name="confidence" value="1"/>
-            <property name="proteomeCount" value="65"/>
-            <property name="stdCdss" value="1.3700084222088114"/>
-        </scores>
-    </proteome>
-    <proteome>
-        <upid>UP000164653</upid>
-        <taxonomy>1076255</taxonomy>
-        <modified>2020-06-28</modified>
-        <isReferenceProteome>true</isReferenceProteome>
-        <isRepresentativeProteome>true</isRepresentativeProteome>
-        <genomeAssembly>
-            <genomeAssemblySource>ENA/EMBL</genomeAssemblySource>
-            <genomeAssembly>GCA_000892975.1</genomeAssembly>
-            <genomeAssemblyUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000892975.1</genomeAssemblyUrl>
-            <genomeRepresentation>full</genomeRepresentation>
-        </genomeAssembly>
+    </component>
+    <reference>
+        <citation type="journal article" date="2011" name="J. Virol." volume="85" first="10230" last="10238">
+            <title>The genome of yoka poxvirus.</title>
+            <authorList>
+                <person name="Zhao G."/>
+                <person name="Droit L."/>
+                <person name="Tesh R.B."/>
+                <person name="Popov V.L."/>
+                <person name="Little N.S."/>
+                <person name="Upton C."/>
+                <person name="Virgin H.W."/>
+                <person name="Wang D."/>
+            </authorList>
+            <dbReference type="PubMed" id="21813608"/>
+            <dbReference type="DOI" id="10.1128/jvi.00637-11"/>
+        </citation>
+    </reference>
+    <annotationScore normalizedAnnotationScore="2"/>
+    <scores name="cpd">
+        <property name="averageCds" value="194"/>
+        <property name="status" value="Standard"/>
+        <property name="confidence" value="1"/>
+        <property name="proteomeCount" value="431"/>
+        <property name="stdCdss" value="41.93235560500493"/>
+    </scores>
+</proteome>
+<proteome xmlns="http://uniprot.org/uniprot">
+    <upid>UP000029775</upid>
+    <taxonomy>1559365</taxonomy>
+    <modified>2020-10-17Z</modified>
+    <isReferenceProteome>true</isReferenceProteome>
+    <isRepresentativeProteome>false</isRepresentativeProteome>
+    <strain>Isolate Turnip/South Africa/B11/2006</strain>
+    <genomeAssembly>
+        <genomeAssemblySource>ENA/EMBL</genomeAssemblySource>
+        <genomeAssembly>GCA_000887455.1</genomeAssembly>
+        <genomeAssemblyUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000887455.1</genomeAssemblyUrl>
+        <genomeRepresentation>full</genomeRepresentation>
+    </genomeAssembly>
+    <genomeAnnotation>
+        <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
+        <genomeAnnotationUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000887455.1</genomeAnnotationUrl>
+    </genomeAnnotation>
+    <component name="Genome">
+        <description>Turnip curly top virus isolate IR:Zaf:B11:06</description>
+        <genomeAccession>GU456685</genomeAccession>
         <genomeAnnotation>
             <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
-            <genomeAnnotationUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000892975.1</genomeAnnotationUrl>
         </genomeAnnotation>
-        <component name="Genome">
-            <description>Yoka poxvirus strain DakArB 4268</description>
-            <genomeAccession>HQ849551</genomeAccession>
-            <genomeAssembly>
-                <genomeAssemblySource>ENA/EMBL</genomeAssemblySource>
-            </genomeAssembly>
-            <genomeAnnotation>
-                <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
-            </genomeAnnotation>
-        </component>
-        <reference>
-            <citation type="journal article" date="2011" name="J. Virol." volume="85" first="10230" last="10238">
-                <title>The genome of yoka poxvirus.</title>
-                <authorList>
-                    <person name="Zhao G."/>
-                    <person name="Droit L."/>
-                    <person name="Tesh R.B."/>
-                    <person name="Popov V.L."/>
-                    <person name="Little N.S."/>
-                    <person name="Upton C."/>
-                    <person name="Virgin H.W."/>
-                    <person name="Wang D."/>
-                </authorList>
-                <dbReference type="PubMed" id="21813608"/>
-                <dbReference type="DOI" id="10.1128/jvi.00637-11"/>
-            </citation>
-        </reference>
-        <scores name="cpd">
-            <property name="averageCds" value="195"/>
-            <property name="status" value="Standard"/>
-            <property name="confidence" value="1"/>
-            <property name="proteomeCount" value="421"/>
-            <property name="stdCdss" value="41.79708825466873"/>
-        </scores>
-    </proteome>
-    <proteome>
-        <upid>UP000029775</upid>
-        <taxonomy>1559365</taxonomy>
-        <modified>2020-06-28</modified>
-        <isReferenceProteome>true</isReferenceProteome>
-        <isRepresentativeProteome>true</isRepresentativeProteome>
-        <strain>Isolate Turnip/South Africa/B11/2006</strain>
-        <genomeAssembly>
-            <genomeAssemblySource>ENA/EMBL</genomeAssemblySource>
-            <genomeAssembly>GCA_000887455.1</genomeAssembly>
-            <genomeAssemblyUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000887455.1</genomeAssemblyUrl>
-            <genomeRepresentation>full</genomeRepresentation>
-        </genomeAssembly>
-        <genomeAnnotation>
-            <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
-            <genomeAnnotationUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000887455.1</genomeAnnotationUrl>
-        </genomeAnnotation>
-        <component name="Genome">
-            <description>Turnip curly top virus isolate IR:Zaf:B11:06</description>
-            <genomeAccession>GU456685</genomeAccession>
-            <genomeAssembly>
-                <genomeAssemblySource>ENA/EMBL</genomeAssemblySource>
-            </genomeAssembly>
-            <genomeAnnotation>
-                <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
-            </genomeAnnotation>
-        </component>
-        <reference>
-            <citation type="journal article" date="2010" name="Virus Res." volume="152" first="169" last="175">
-                <title>Turnip curly top virus, a highly divergent geminivirus infecting turnip in Iran.</title>
-                <authorList>
-                    <person name="Briddon R.W."/>
-                    <person name="Heydarnejad J."/>
-                    <person name="Khosrowfar F."/>
-                    <person name="Massumi H."/>
-                    <person name="Martin D.P."/>
-                    <person name="Varsani A."/>
-                </authorList>
-                <dbReference type="PubMed" id="20566344"/>
-                <dbReference type="DOI" id="10.1016/j.virusres.2010.05.016"/>
-            </citation>
-        </reference>
-        <scores name="cpd">
-            <property name="averageCds" value="6"/>
-            <property name="status" value="Standard"/>
-            <property name="confidence" value="2"/>
-            <property name="proteomeCount" value="3"/>
-            <property name="stdCdss" value="1.8"/>
-        </scores>
-    </proteome>
+    </component>
+    <reference>
+        <citation type="journal article" date="2010" name="Virus Res." volume="152" first="169" last="175">
+            <title>Turnip curly top virus, a highly divergent geminivirus infecting turnip in Iran.</title>
+            <authorList>
+                <person name="Briddon R.W."/>
+                <person name="Heydarnejad J."/>
+                <person name="Khosrowfar F."/>
+                <person name="Massumi H."/>
+                <person name="Martin D.P."/>
+                <person name="Varsani A."/>
+            </authorList>
+            <dbReference type="PubMed" id="20566344"/>
+            <dbReference type="DOI" id="10.1016/j.virusres.2010.05.016"/>
+        </citation>
+    </reference>
+    <annotationScore normalizedAnnotationScore="2"/>
+    <scores name="cpd">
+        <property name="averageCds" value="6"/>
+        <property name="status" value="Standard"/>
+        <property name="confidence" value="2"/>
+        <property name="proteomeCount" value="3"/>
+        <property name="stdCdss" value="1.8"/>
+    </scores>
+</proteome>
 </proteomes>
