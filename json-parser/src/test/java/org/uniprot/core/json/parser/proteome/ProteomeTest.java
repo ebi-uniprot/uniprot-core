@@ -19,7 +19,6 @@ import org.uniprot.core.proteome.impl.*;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
 import org.uniprot.core.taxonomy.impl.TaxonomyLineageBuilder;
-import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 
@@ -132,10 +131,8 @@ public class ProteomeTest {
                         .rank(TaxonomyRank.FAMILY)
                         .build();
 
-        GenomeAnnotation genomeAnnotation = new GenomeAnnotationBuilder()
-                .source("source value")
-                .url("URL value")
-                .build();
+        GenomeAnnotation genomeAnnotation =
+                new GenomeAnnotationBuilder().source("source value").url("URL value").build();
 
         Component component =
                 new ComponentBuilder()

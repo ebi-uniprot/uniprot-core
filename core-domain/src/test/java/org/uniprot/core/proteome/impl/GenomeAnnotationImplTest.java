@@ -1,9 +1,9 @@
 package org.uniprot.core.proteome.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.GenomeAnnotation;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author lgonzales

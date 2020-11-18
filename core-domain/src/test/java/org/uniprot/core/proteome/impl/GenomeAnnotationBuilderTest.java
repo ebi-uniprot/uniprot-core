@@ -1,10 +1,9 @@
 package org.uniprot.core.proteome.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.GenomeAnnotation;
-import org.uniprot.core.proteome.ProteomeId;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author lgonzales
@@ -15,9 +14,7 @@ class GenomeAnnotationBuilderTest {
     @Test
     void source() {
         String source = "source Value";
-        GenomeAnnotation genomeAnnotation = new GenomeAnnotationBuilder()
-                .source(source)
-                .build();
+        GenomeAnnotation genomeAnnotation = new GenomeAnnotationBuilder().source(source).build();
         assertNotNull(genomeAnnotation);
         assertEquals(source, genomeAnnotation.getSource());
     }
@@ -25,19 +22,15 @@ class GenomeAnnotationBuilderTest {
     @Test
     void url() {
         String url = "URL value";
-        GenomeAnnotation genomeAnnotation = new GenomeAnnotationBuilder()
-                .url(url)
-                .build();
+        GenomeAnnotation genomeAnnotation = new GenomeAnnotationBuilder().url(url).build();
         assertNotNull(genomeAnnotation);
         assertEquals(url, genomeAnnotation.getUrl());
     }
 
     @Test
     void from() {
-        GenomeAnnotation genomeAnnotation = new GenomeAnnotationBuilder()
-                .source("source value")
-                .url("URL value")
-                .build();
+        GenomeAnnotation genomeAnnotation =
+                new GenomeAnnotationBuilder().source("source value").url("URL value").build();
         GenomeAnnotation fromGenome = GenomeAnnotationBuilder.from(genomeAnnotation).build();
         assertNotNull(fromGenome);
         assertEquals(genomeAnnotation, fromGenome);

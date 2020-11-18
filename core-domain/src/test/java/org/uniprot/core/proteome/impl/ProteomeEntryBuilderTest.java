@@ -150,16 +150,10 @@ class ProteomeEntryBuilderTest {
     @Test
     void testAddComponentWithoutProteinCount() {
         Component component1 =
-                new ComponentBuilder()
-                        .name("someName1")
-                        .description("some description")
-                        .build();
+                new ComponentBuilder().name("someName1").description("some description").build();
 
         Component component2 =
-                new ComponentBuilder()
-                        .name("someName2")
-                        .description("some description 2")
-                        .build();
+                new ComponentBuilder().name("someName2").description("some description 2").build();
 
         ProteomeEntry proteome =
                 new ProteomeEntryBuilder()
@@ -301,13 +295,9 @@ class ProteomeEntryBuilderTest {
 
     @Test
     void testGenomeAnnotation() {
-        GenomeAnnotation genomeAnnotation = new GenomeAnnotationBuilder()
-                .source("source value")
-                .url("url value")
-                .build();
-        ProteomeEntry entry = new ProteomeEntryBuilder()
-                .genomeAnnotation(genomeAnnotation)
-                .build();
+        GenomeAnnotation genomeAnnotation =
+                new GenomeAnnotationBuilder().source("source value").url("url value").build();
+        ProteomeEntry entry = new ProteomeEntryBuilder().genomeAnnotation(genomeAnnotation).build();
         assertEquals(genomeAnnotation, entry.getGenomeAnnotation());
     }
 

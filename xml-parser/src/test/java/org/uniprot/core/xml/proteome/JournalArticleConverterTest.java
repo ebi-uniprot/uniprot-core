@@ -3,7 +3,6 @@ package org.uniprot.core.xml.proteome;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
@@ -32,7 +31,8 @@ class JournalArticleConverterTest {
     @Test
     void testFromXml() {
         CitationType citationType = xmlFactory.createCitationType();
-        citationType.setType(org.uniprot.core.citation.CitationType.JOURNAL_ARTICLE.getDisplayName());
+        citationType.setType(
+                org.uniprot.core.citation.CitationType.JOURNAL_ARTICLE.getDisplayName());
         citationType.setDate("2018");
         NameListType nameList = xmlFactory.createNameListType();
         ConsortiumType consortium = xmlFactory.createConsortiumType();
@@ -92,7 +92,8 @@ class JournalArticleConverterTest {
                 .publicationDate(date)
                 .authorsAdd("Sulson J.E.")
                 .authorsAdd("JWaterston R.")
-                .authoringGroupsSet(Collections.singletonList("The C. elegans sequencing consortium"))
+                .authoringGroupsSet(
+                        Collections.singletonList("The C. elegans sequencing consortium"))
                 .citationCrossReferencesAdd(
                         new CrossReferenceBuilder<CitationDatabase>()
                                 .database(CitationDatabase.PUBMED)

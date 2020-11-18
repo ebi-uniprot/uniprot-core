@@ -18,7 +18,7 @@ public class ComponentImpl implements Component {
     private final List<CrossReference<ProteomeDatabase>> proteomeCrossReferences;
 
     ComponentImpl() {
-        this(null, null,  null, null, null);
+        this(null, null, null, null, null);
     }
 
     public ComponentImpl(
@@ -61,7 +61,8 @@ public class ComponentImpl implements Component {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, proteinCount, proteomeCrossReferences, genomeAnnotation);
+        return Objects.hash(
+                name, description, proteinCount, proteomeCrossReferences, genomeAnnotation);
     }
 
     @Override

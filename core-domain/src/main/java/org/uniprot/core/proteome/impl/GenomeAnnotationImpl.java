@@ -1,8 +1,8 @@
 package org.uniprot.core.proteome.impl;
 
-import org.uniprot.core.proteome.GenomeAnnotation;
-
 import java.util.Objects;
+
+import org.uniprot.core.proteome.GenomeAnnotation;
 
 /**
  * @author lgonzales
@@ -16,7 +16,7 @@ public class GenomeAnnotationImpl implements GenomeAnnotation {
 
     private final String url;
 
-    GenomeAnnotationImpl(){
+    GenomeAnnotationImpl() {
         this(null, null);
     }
 
@@ -40,8 +40,7 @@ public class GenomeAnnotationImpl implements GenomeAnnotation {
         if (this == o) return true;
         if (!(o instanceof GenomeAnnotationImpl)) return false;
         GenomeAnnotationImpl that = (GenomeAnnotationImpl) o;
-        return Objects.equals(source, that.source) &&
-                Objects.equals(url, that.url);
+        return Objects.equals(source, that.source) && Objects.equals(url, that.url);
     }
 
     @Override

@@ -42,10 +42,8 @@ class ComponentConverterTest {
                         .id("genome Value")
                         .build();
 
-        GenomeAnnotation genomeAnnotation = new GenomeAnnotationBuilder()
-                .source("source value")
-                .url("url value")
-                .build();
+        GenomeAnnotation genomeAnnotation =
+                new GenomeAnnotationBuilder().source("source value").url("url value").build();
 
         Component component =
                 new ComponentBuilder()

@@ -37,7 +37,9 @@ public class ProteomeEntryImpl implements ProteomeEntry {
 
     // no arg constructor for JSON deserialization
     ProteomeEntryImpl() {
-        this(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+        this(
+                null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+                null, null, null, null, null, null);
     }
 
     ProteomeEntryImpl(
@@ -78,12 +80,13 @@ public class ProteomeEntryImpl implements ProteomeEntry {
         this.annotationScore = annotationScore;
         this.superkingdom = superkingdom;
         this.geneCount = geneCount;
-        if(Utils.notNull(components)) {
-            int count = components.stream()
-                    .filter(c -> Utils.notNull(c.getProteinCount()))
-                    .mapToInt(Component::getProteinCount)
-                    .sum();
-            if(count > 0){
+        if (Utils.notNull(components)) {
+            int count =
+                    components.stream()
+                            .filter(c -> Utils.notNull(c.getProteinCount()))
+                            .mapToInt(Component::getProteinCount)
+                            .sum();
+            if (count > 0) {
                 this.proteinCount = count;
             } else {
                 proteinCount = null;

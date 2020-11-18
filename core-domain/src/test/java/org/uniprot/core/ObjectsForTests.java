@@ -33,7 +33,6 @@ import org.uniprot.core.uniparc.*;
 import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
 import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
-import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.comment.impl.*;
 import org.uniprot.core.uniprotkb.description.EC;
@@ -558,18 +557,11 @@ public class ObjectsForTests {
     }
 
     public static ProteomeEntry createProteomeEntry() {
-        GenomeAnnotation genomeAnnotation = new GenomeAnnotationBuilder()
-                .source("source value")
-                .url("url value")
-                .build();
+        GenomeAnnotation genomeAnnotation =
+                new GenomeAnnotationBuilder().source("source value").url("url value").build();
 
         ComponentImpl component =
-                new ComponentImpl(
-                        "name",
-                        "desc",
-                        5,
-                        genomeAnnotation,
-                        proteomeXReferenceTypes());
+                new ComponentImpl("name", "desc", 5, genomeAnnotation, proteomeXReferenceTypes());
         JournalArticleBuilder builder = new JournalArticleBuilder();
         RedundantProteome rp =
                 new RedundantProteomeBuilder().proteomeId("id").similarity(4.5F).build();

@@ -1,12 +1,12 @@
 package org.uniprot.core.xml.proteome;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.GenomeAnnotation;
 import org.uniprot.core.proteome.impl.GenomeAnnotationBuilder;
 import org.uniprot.core.xml.jaxb.proteome.GenomeAnnotationType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author lgonzales
@@ -19,7 +19,7 @@ class GenomeAnnotationConverterTest {
 
     @Test
     void testFromXml() {
-        GenomeAnnotationType  genomeAnnotationType = xmlFactory.createGenomeAnnotationType();
+        GenomeAnnotationType genomeAnnotationType = xmlFactory.createGenomeAnnotationType();
         genomeAnnotationType.setGenomeAnnotationUrl("url value 1");
         genomeAnnotationType.setGenomeAnnotationSource("source value 1");
 
@@ -31,12 +31,10 @@ class GenomeAnnotationConverterTest {
 
     @Test
     void testToXml() {
-        GenomeAnnotation genomeAnnotation = new GenomeAnnotationBuilder()
-                .source("source value")
-                .url("URL value")
-                .build();
+        GenomeAnnotation genomeAnnotation =
+                new GenomeAnnotationBuilder().source("source value").url("URL value").build();
 
-        GenomeAnnotationType  converted = converter.toXml(genomeAnnotation);
+        GenomeAnnotationType converted = converter.toXml(genomeAnnotation);
         assertNotNull(converted);
         assertEquals("source value", converted.getGenomeAnnotationSource());
         assertEquals("URL value", converted.getGenomeAnnotationUrl());
@@ -44,12 +42,10 @@ class GenomeAnnotationConverterTest {
 
     @Test
     void testRoundTrip() {
-        GenomeAnnotation genomeAnnotation = new GenomeAnnotationBuilder()
-                .source("source value")
-                .url("URL value")
-                .build();
+        GenomeAnnotation genomeAnnotation =
+                new GenomeAnnotationBuilder().source("source value").url("URL value").build();
 
-        GenomeAnnotationType  convertedType = converter.toXml(genomeAnnotation);
+        GenomeAnnotationType convertedType = converter.toXml(genomeAnnotation);
         assertNotNull(convertedType);
         GenomeAnnotation converted = converter.fromXml(convertedType);
         assertNotNull(converted);
@@ -60,7 +56,7 @@ class GenomeAnnotationConverterTest {
     void testRoundTripEmptyGenomeAnnotation() {
         GenomeAnnotation genomeAnnotation = new GenomeAnnotationBuilder().build();
 
-        GenomeAnnotationType  convertedType = converter.toXml(genomeAnnotation);
+        GenomeAnnotationType convertedType = converter.toXml(genomeAnnotation);
         assertNotNull(convertedType);
         GenomeAnnotation converted = converter.fromXml(convertedType);
         assertNotNull(converted);

@@ -1,9 +1,9 @@
 package org.uniprot.core.proteome.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.proteome.GenomeAnnotation;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author lgonzales
@@ -32,8 +32,6 @@ public class GenomeAnnotationBuilder implements Builder<GenomeAnnotation> {
     }
 
     public static @Nonnull GenomeAnnotationBuilder from(@Nonnull GenomeAnnotation instance) {
-        return new GenomeAnnotationBuilder()
-                .source(instance.getSource())
-                .url(instance.getUrl());
+        return new GenomeAnnotationBuilder().source(instance.getSource()).url(instance.getUrl());
     }
 }

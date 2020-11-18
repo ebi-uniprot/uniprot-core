@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.proteome;
 
+import static org.uniprot.core.util.Utils.notNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +16,6 @@ import org.uniprot.core.xml.jaxb.proteome.ComponentType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 
 import com.google.common.base.Strings;
-
-import static org.uniprot.core.util.Utils.notNull;
 
 public class ComponentConverter implements Converter<ComponentType, Component> {
     private final ObjectFactory xmlFactory;
@@ -55,8 +55,9 @@ public class ComponentConverter implements Converter<ComponentType, Component> {
         }
         builder.proteomeCrossReferencesSet(xrefs);
 
-        if(Utils.notNull(xmlObj.getGenomeAnnotation())){
-            builder.genomeAnnotation(genomeAnnotationConverter.fromXml(xmlObj.getGenomeAnnotation()));
+        if (Utils.notNull(xmlObj.getGenomeAnnotation())) {
+            builder.genomeAnnotation(
+                    genomeAnnotationConverter.fromXml(xmlObj.getGenomeAnnotation()));
         }
         return builder.build();
     }
@@ -70,15 +71,18 @@ public class ComponentConverter implements Converter<ComponentType, Component> {
         uniObj.getProteomeCrossReferences().stream()
                 .filter(val -> val.getDatabase() == ProteomeDatabase.BIOSAMPLE)
                 .findFirst()
-                .ifPresent(proteomeDatabaseCrossReference -> xmlObj.setBiosampleId(proteomeDatabaseCrossReference.getId()));
+                .ifPresent(
+                        proteomeDatabaseCrossReference ->
+                                xmlObj.setBiosampleId(proteomeDatabaseCrossReference.getId()));
 
         uniObj.getProteomeCrossReferences().stream()
                 .filter(val -> val.getDatabase() == ProteomeDatabase.GENOME_ACCESSION)
                 .map(CrossReference::getId)
                 .forEach(val -> xmlObj.getGenomeAccession().add(val));
 
-        if(notNull(uniObj.getGenomeAnnotation())){
-            xmlObj.setGenomeAnnotation(genomeAnnotationConverter.toXml(uniObj.getGenomeAnnotation()));
+        if (notNull(uniObj.getGenomeAnnotation())) {
+            xmlObj.setGenomeAnnotation(
+                    genomeAnnotationConverter.toXml(uniObj.getGenomeAnnotation()));
         }
         return xmlObj;
     }

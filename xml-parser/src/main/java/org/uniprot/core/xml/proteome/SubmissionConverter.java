@@ -4,8 +4,8 @@ import org.uniprot.core.citation.Submission;
 import org.uniprot.core.citation.SubmissionDatabase;
 import org.uniprot.core.citation.impl.SubmissionBuilder;
 import org.uniprot.core.xml.Converter;
-import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 import org.uniprot.core.xml.jaxb.proteome.CitationType;
+import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 
 import com.google.common.base.Strings;
 
