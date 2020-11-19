@@ -11,7 +11,7 @@ public enum UniProtDatabaseCategory implements EnumDisplay {
     CHEMISTRY("CHEMISTRY", "Chemistry"),
     PROTEIN_FAMILY_GROUP_DATABASES("PFAM", "Protein family/group databases"),
     PTM_DATABASES("PTM", "PTM databases"),
-    POLYMORPHISM_AND_MUTATION_DATABASES("PMD", "Polymorphism and mutation databases"),
+    POLYMORPHISM_AND_MUTATION_DATABASES("PMD", "Genetic variation databases"),
     D2_GEL_DATABASES("2DG", "2D gel databases"),
     PROTEOMIC_DATABASES("PROTEOMIC", "Proteomic databases"),
     PROTOCOLS_AND_MATERIALS_DATABASES("PAM", "Protocols and materials databases"),
