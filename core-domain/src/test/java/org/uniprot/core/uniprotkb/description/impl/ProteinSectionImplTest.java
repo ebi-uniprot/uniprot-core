@@ -1,21 +1,19 @@
 package org.uniprot.core.uniprotkb.description.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.description.EC;
+import org.uniprot.core.uniprotkb.description.Name;
+import org.uniprot.core.uniprotkb.description.ProteinName;
+import org.uniprot.core.uniprotkb.description.ProteinSection;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.description.EC;
-import org.uniprot.core.uniprotkb.description.Name;
-import org.uniprot.core.uniprotkb.description.ProteinAltName;
-import org.uniprot.core.uniprotkb.description.ProteinRecName;
-import org.uniprot.core.uniprotkb.description.ProteinSection;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
-import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ProteinSectionImplTest {
 
@@ -24,13 +22,13 @@ class ProteinSectionImplTest {
         List<Evidence> evidences = createEvidences();
         Name fullName = new NameBuilder().value("a full Name").evidencesSet(evidences).build();
         List<Name> shortNames = createShortNames();
-        ProteinRecName recName =
-                new ProteinRecNameBuilder()
+        ProteinName recName =
+                new ProteinNameBuilder()
                         .fullName(fullName)
                         .shortNamesSet(shortNames)
                         .ecNumbersSet(null)
                         .build();
-        List<ProteinAltName> altNames = createAltName();
+        List<ProteinName> altNames = createAltName();
         ProteinSection section =
                 new ProteinSectionBuilder()
                         .recommendedName(recName)
@@ -45,13 +43,13 @@ class ProteinSectionImplTest {
         List<Evidence> evidences = createEvidences();
         Name fullName = new NameBuilder().value("a full Name").evidencesSet(evidences).build();
         List<Name> shortNames = createShortNames();
-        ProteinRecName recName =
-                new ProteinRecNameBuilder()
+        ProteinName recName =
+                new ProteinNameBuilder()
                         .fullName(fullName)
                         .shortNamesSet(shortNames)
                         .ecNumbersSet(null)
                         .build();
-        List<ProteinAltName> altNames = null;
+        List<ProteinName> altNames = null;
         ProteinSection section =
                 new ProteinSectionBuilder()
                         .recommendedName(recName)
@@ -75,7 +73,7 @@ class ProteinSectionImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         ProteinSection impl =
                 new ProteinSectionImpl(
-                        new ProteinRecNameImpl(),
+                        new ProteinNameImpl(),
                         Collections.emptyList(),
                         new NameImpl(),
                         new NameImpl(),
@@ -96,8 +94,8 @@ class ProteinSectionImplTest {
         return shortNames;
     }
 
-    private List<ProteinAltName> createAltName() {
-        List<ProteinAltName> alternativeNames = new ArrayList<>();
+    private List<ProteinName> createAltName() {
+        List<ProteinName> alternativeNames = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
         Name fullName = new NameBuilder().value("a full alt Name").evidencesSet(evidences).build();
         List<Name> shortNames = new ArrayList<>();
@@ -107,7 +105,7 @@ class ProteinSectionImplTest {
         ecNumbers.add(new ECBuilder().value("1.2.3.4").evidencesSet(evidences).build());
 
         alternativeNames.add(
-                new ProteinAltNameBuilder()
+                new ProteinNameBuilder()
                         .fullName(fullName)
                         .shortNamesSet(shortNames)
                         .ecNumbersSet(ecNumbers)

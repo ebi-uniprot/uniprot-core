@@ -1,25 +1,27 @@
 package org.uniprot.core.uniprotkb.description.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.description.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.description.*;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.uniprotkb.description.impl.ProteinNameImplTest.createProteinAltNames;
+import static org.uniprot.core.uniprotkb.description.impl.ProteinNameImplTest.createProteinRecName;
 
 public class ProteinDescriptionBuilderTest {
 
-    private ProteinAltName altName = new ProteinAltNameBuilder().build();
+    private ProteinName altName = new ProteinNameBuilder().build();
     private Name name = new NameBuilder().value("name").build();
     private List<Name> names = Collections.singletonList(name);
     private ProteinSection pSection = new ProteinSectionBuilder().build();
 
     @Test
     void canSetRecommendedName_whichIsNotValid() {
-        ProteinRecName recName = new ProteinRecNameBuilder().build();
+        ProteinName recName = new ProteinNameBuilder().build();
         ProteinDescription obj = new ProteinDescriptionBuilder().recommendedName(recName).build();
         assertFalse(obj.hasRecommendedName());
         assertEquals(recName, obj.getRecommendedName());
@@ -27,7 +29,7 @@ public class ProteinDescriptionBuilderTest {
 
     @Test
     void canSetRecommendedName_valid() {
-        ProteinRecName recName = new ProteinRecNameBuilder().fullName(name).build();
+        ProteinName recName = new ProteinNameBuilder().fullName(name).build();
         ProteinDescription obj = new ProteinDescriptionBuilder().recommendedName(recName).build();
         assertTrue(obj.hasRecommendedName());
         assertEquals(recName, obj.getRecommendedName());
@@ -247,8 +249,7 @@ public class ProteinDescriptionBuilderTest {
         int rIndex = ThreadLocalRandom.current().nextInt(0, FlagType.values().length);
         FlagType flagType = FlagType.values()[rIndex];
         builder.flag(flagType);
-        ProteinRecName recommendedName =
-                ProteinRecNameBuilderTest.createObject(listSize, includeAll);
+        ProteinName recommendedName = createProteinRecName(listSize, includeAll);
         builder.recommendedName(recommendedName);
         List<ProteinSection> contains =
                 ProteinSectionBuilderTest.createObjects(listSize, includeAll);
@@ -269,8 +270,7 @@ public class ProteinDescriptionBuilderTest {
         builder.biotechName(biotechName);
         Name allergenName = NameBuilderTest.createObject(listSize, includeAll);
         builder.allergenName(allergenName);
-        List<ProteinAltName> alternativeNames =
-                ProteinAltNameBuilderTest.createObjects(listSize, includeAll);
+        List<ProteinName> alternativeNames = createProteinAltNames(listSize, includeAll);
         builder.alternativeNamesSet(alternativeNames);
         return builder.build();
     }

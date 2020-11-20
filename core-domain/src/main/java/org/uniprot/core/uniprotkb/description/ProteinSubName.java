@@ -1,5 +1,7 @@
 package org.uniprot.core.uniprotkb.description;
 
+import org.uniprot.core.util.Utils;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -8,9 +10,13 @@ public interface ProteinSubName extends Serializable {
 
     List<EC> getEcNumbers();
 
-    boolean hasFullName();
-
-    boolean hasEcNumbers();
-
     boolean isValid();
+
+    default boolean hasFullName() {
+        return Utils.notNull(getFullName());
+    }
+
+    default boolean hasEcNumbers() {
+        return Utils.notNullNotEmpty(getEcNumbers());
+    }
 }

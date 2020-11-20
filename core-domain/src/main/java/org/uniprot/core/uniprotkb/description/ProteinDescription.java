@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface ProteinDescription extends Serializable {
 
-    ProteinRecName getRecommendedName();
+    ProteinName getRecommendedName();
 
-    List<ProteinAltName> getAlternativeNames();
+    List<ProteinName> getAlternativeNames();
 
     Name getAllergenName();
 

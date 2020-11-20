@@ -1,11 +1,5 @@
 package org.uniprot.core.flatfile.parser.impl.de;
 
-import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.EQUAL_SIGN;
-import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEMICOLON;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
@@ -13,6 +7,12 @@ import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.uniprotkb.description.*;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.EQUAL_SIGN;
+import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEMICOLON;
 
 public class DELineBuilder extends FFLineBuilderAbstr<ProteinDescription>
         implements FFLineBuilder<ProteinDescription> {
@@ -177,12 +177,12 @@ public class DELineBuilder extends FFLineBuilderAbstr<ProteinDescription>
     }
 
     private List<String> buildAlternativeNameLine(
-            List<ProteinAltName> protAltNames,
+            List<ProteinName> protAltNames,
             String deLinePrefix,
             boolean includeFlatFileMarkings,
             boolean showEvidence) {
         List<String> lines = new ArrayList<>();
-        for (ProteinAltName altName : protAltNames) {
+        for (ProteinName altName : protAltNames) {
             lines.addAll(
                     buildNameLine(
                             altName,
@@ -214,56 +214,7 @@ public class DELineBuilder extends FFLineBuilderAbstr<ProteinDescription>
     }
 
     private List<String> buildNameLine(
-            ProteinRecName name,
-            String type,
-            String deLinePrefix,
-            boolean includeFlatFileMarkings,
-            boolean showEvidence) {
-        List<String> lines = new ArrayList<>();
-        boolean first = true;
-
-        if (name.getFullName() != null) {
-            lines.add(
-                    buildNameLine1(
-                            name.getFullName(),
-                            FULL,
-                            type,
-                            deLinePrefix,
-                            includeFlatFileMarkings,
-                            showEvidence,
-                            first));
-            first = false;
-        }
-        for (Name shortName : name.getShortNames()) {
-            lines.add(
-                    buildNameLine1(
-                            shortName,
-                            SHORT,
-                            type,
-                            deLinePrefix,
-                            includeFlatFileMarkings,
-                            showEvidence,
-                            first));
-            first = false;
-        }
-        for (EC ecNumber : name.getEcNumbers()) {
-            lines.add(
-                    buildNameLine1(
-                            ecNumber,
-                            EC,
-                            type,
-                            deLinePrefix,
-                            includeFlatFileMarkings,
-                            showEvidence,
-                            first));
-            first = false;
-        }
-
-        return lines;
-    }
-
-    private List<String> buildNameLine(
-            ProteinAltName name,
+            ProteinName name,
             String type,
             String deLinePrefix,
             boolean includeFlatFileMarkings,

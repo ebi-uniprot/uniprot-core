@@ -1,20 +1,18 @@
 package org.uniprot.core.uniprotkb.description.impl;
 
-import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.modifiableList;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.description.ProteinSubName;
 
-public class ProteinSubNameBuilder implements Builder<ProteinSubName> {
+import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
+
+public class ProteinSubNameBuilder implements Builder<ProteinSubName> {
     private Name fullName;
     private List<EC> ecNumbers = new ArrayList<>();
 

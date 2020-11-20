@@ -1,6 +1,9 @@
 package org.uniprot.core.uniprotkb.description.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.description.Name;
+import org.uniprot.core.uniprotkb.description.ProteinName;
+import org.uniprot.core.uniprotkb.description.ProteinSection;
 
 import java.util.Collections;
 import java.util.List;
@@ -8,14 +11,12 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.description.Name;
-import org.uniprot.core.uniprotkb.description.ProteinAltName;
-import org.uniprot.core.uniprotkb.description.ProteinRecName;
-import org.uniprot.core.uniprotkb.description.ProteinSection;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.uniprotkb.description.impl.ProteinNameImplTest.createProteinAltNames;
+import static org.uniprot.core.uniprotkb.description.impl.ProteinNameImplTest.createProteinRecName;
 
 class ProteinSectionBuilderTest {
-    private ProteinAltName altName = new ProteinAltNameBuilder().build();
+    private ProteinName altName = new ProteinNameBuilder().build();
     private Name name = new NameBuilder().value("name").build();
     private List<Name> names = Collections.singletonList(name);
 
@@ -161,11 +162,9 @@ class ProteinSectionBuilderTest {
 
     public static ProteinSection createObject(int listSize, boolean includeEvidences) {
         ProteinSectionBuilder builder = new ProteinSectionBuilder();
-        ProteinRecName recommendedName =
-                ProteinRecNameBuilderTest.createObject(listSize, includeEvidences);
+        ProteinName recommendedName = createProteinRecName(listSize, includeEvidences);
         builder.recommendedName(recommendedName);
-        List<ProteinAltName> alternativeNames =
-                ProteinAltNameBuilderTest.createObjects(listSize, includeEvidences);
+        List<ProteinName> alternativeNames = createProteinAltNames(listSize, includeEvidences);
         builder.alternativeNamesSet(alternativeNames);
         Name allergenName = NameBuilderTest.createObject(listSize, includeEvidences);
         builder.allergenName(allergenName);

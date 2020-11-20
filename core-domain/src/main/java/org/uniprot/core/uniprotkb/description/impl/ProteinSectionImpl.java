@@ -1,19 +1,18 @@
 package org.uniprot.core.uniprotkb.description.impl;
 
-import java.util.Collections;
-import java.util.List;
-
 import org.uniprot.core.uniprotkb.description.Name;
-import org.uniprot.core.uniprotkb.description.ProteinAltName;
-import org.uniprot.core.uniprotkb.description.ProteinRecName;
+import org.uniprot.core.uniprotkb.description.ProteinName;
 import org.uniprot.core.uniprotkb.description.ProteinSection;
 import org.uniprot.core.util.Utils;
+
+import java.util.Collections;
+import java.util.List;
 
 public class ProteinSectionImpl implements ProteinSection {
 
     private static final long serialVersionUID = -8215290595530427991L;
-    private ProteinRecName recommendedName;
-    private List<ProteinAltName> alternativeNames;
+    private ProteinName recommendedName;
+    private List<ProteinName> alternativeNames;
     private Name allergenName;
     private Name biotechName;
     private List<Name> cdAntigenNames;
@@ -27,8 +26,8 @@ public class ProteinSectionImpl implements ProteinSection {
     }
 
     ProteinSectionImpl(
-            ProteinRecName recommendedName,
-            List<ProteinAltName> alternativeNames,
+            ProteinName recommendedName,
+            List<ProteinName> alternativeNames,
             Name allergenName,
             Name biotechName,
             List<Name> cdAntigenNames,
@@ -43,12 +42,12 @@ public class ProteinSectionImpl implements ProteinSection {
     }
 
     @Override
-    public ProteinRecName getRecommendedName() {
+    public ProteinName getRecommendedName() {
         return recommendedName;
     }
 
     @Override
-    public List<ProteinAltName> getAlternativeNames() {
+    public List<ProteinName> getAlternativeNames() {
         return alternativeNames;
     }
 

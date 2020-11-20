@@ -562,7 +562,7 @@ public class UniProtKBEntryImpl implements UniProtKBEntry {
         }
     }
 
-    private void updateProteinRecNameEvidences(Set<Evidence> evidences, ProteinRecName pn) {
+    private void updateProteinRecNameEvidences(Set<Evidence> evidences, ProteinName pn) {
         if (pn == null) {
             return;
         }
@@ -571,7 +571,7 @@ public class UniProtKBEntryImpl implements UniProtKBEntry {
         updateHasEvidences(evidences, pn.getEcNumbers());
     }
 
-    private void updateProteinAltNameEvidences(Set<Evidence> evidences, ProteinAltName pn) {
+    private void updateProteinAltNameEvidences(Set<Evidence> evidences, ProteinName pn) {
         updateHasEvidence(evidences, pn.getFullName());
         updateHasEvidences(evidences, pn.getShortNames());
         updateHasEvidences(evidences, pn.getEcNumbers());

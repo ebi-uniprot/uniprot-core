@@ -3,15 +3,15 @@ package org.uniprot.core.xml.uniprot.description;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.uniprotkb.description.ProteinAltName;
-import org.uniprot.core.uniprotkb.description.impl.ProteinAltNameBuilder;
+import org.uniprot.core.uniprotkb.description.ProteinName;
+import org.uniprot.core.uniprotkb.description.impl.ProteinNameBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.ProteinType.AlternativeName;
 
 public class AltNameConverter
-        implements Converter<AlternativeName, ProteinAltName>, ToXmlDbReferences<ProteinAltName> {
+        implements Converter<AlternativeName, ProteinName>, ToXmlDbReferences<ProteinName> {
     private final NameConverter nameConverter;
     private final ECConverter ecConverter;
     private final ObjectFactory xmlUniprotFactory;
@@ -28,8 +28,8 @@ public class AltNameConverter
     }
 
     @Override
-    public ProteinAltName fromXml(AlternativeName xmlObj) {
-        return new ProteinAltNameBuilder()
+    public ProteinName fromXml(AlternativeName xmlObj) {
+        return new ProteinNameBuilder()
                 .fullName(nameConverter.fromXml(xmlObj.getFullName()))
                 .shortNamesSet(
                         xmlObj.getShortName().stream()
@@ -43,7 +43,7 @@ public class AltNameConverter
     }
 
     @Override
-    public AlternativeName toXml(ProteinAltName uniObj) {
+    public AlternativeName toXml(ProteinName uniObj) {
         AlternativeName altName = xmlUniprotFactory.createProteinTypeAlternativeName();
         altName.setFullName(nameConverter.toXml(uniObj.getFullName()));
         uniObj.getShortNames().forEach(val -> altName.getShortName().add(nameConverter.toXml(val)));
@@ -51,7 +51,7 @@ public class AltNameConverter
         return altName;
     }
 
-    public List<DbReferenceType> toXmlDbReferences(ProteinAltName uniObj) {
+    public List<DbReferenceType> toXmlDbReferences(ProteinName uniObj) {
         return uniObj.getEcNumbers().stream()
                 .map(ecConverter::toXmlDbReference)
                 .collect(Collectors.toList());

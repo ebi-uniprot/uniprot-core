@@ -1,10 +1,10 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.description.*;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class EntryProteinMap implements NamedValueMap {
     private static final String EC2 = "EC";
@@ -205,7 +205,7 @@ public class EntryProteinMap implements NamedValueMap {
         return sb.toString();
     }
 
-    private String convertProteinAltNameToString(ProteinAltName name) {
+    private String convertProteinAltNameToString(ProteinName name) {
         StringBuilder sb = new StringBuilder();
         sb.append(name.getFullName().getValue());
         String sname =
@@ -238,7 +238,7 @@ public class EntryProteinMap implements NamedValueMap {
         return sb.toString();
     }
 
-    private String convertProteinNameToString(ProteinRecName name) {
+    private String convertProteinNameToString(ProteinName name) {
         StringBuilder sb = new StringBuilder();
         sb.append(name.getFullName().getValue());
         String sname =
@@ -265,7 +265,7 @@ public class EntryProteinMap implements NamedValueMap {
         }
         if (section.getAlternativeNames() != null) {
             List<String> ecs = new ArrayList<>();
-            for (ProteinAltName proteinName : section.getAlternativeNames()) {
+            for (ProteinName proteinName : section.getAlternativeNames()) {
                 ecs.addAll(convertProteinNameEcNumbersToString(proteinName));
             }
             ec.addAll(ecs);
@@ -273,11 +273,7 @@ public class EntryProteinMap implements NamedValueMap {
         return ec;
     }
 
-    private List<String> convertProteinNameEcNumbersToString(ProteinRecName name) {
-        return name.getEcNumbers().stream().map(EC::getValue).collect(Collectors.toList());
-    }
-
-    private List<String> convertProteinNameEcNumbersToString(ProteinAltName name) {
+    private List<String> convertProteinNameEcNumbersToString(ProteinName name) {
         return name.getEcNumbers().stream().map(EC::getValue).collect(Collectors.toList());
     }
 

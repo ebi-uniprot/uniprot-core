@@ -1,23 +1,13 @@
 package org.uniprot.core.xml.uniprot.description;
 
-import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
+import org.uniprot.core.uniprotkb.description.*;
+import org.uniprot.core.uniprotkb.description.impl.*;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.uniprot.core.uniprotkb.description.EC;
-import org.uniprot.core.uniprotkb.description.Name;
-import org.uniprot.core.uniprotkb.description.ProteinAltName;
-import org.uniprot.core.uniprotkb.description.ProteinRecName;
-import org.uniprot.core.uniprotkb.description.ProteinSection;
-import org.uniprot.core.uniprotkb.description.ProteinSubName;
-import org.uniprot.core.uniprotkb.description.impl.ECBuilder;
-import org.uniprot.core.uniprotkb.description.impl.NameBuilder;
-import org.uniprot.core.uniprotkb.description.impl.ProteinAltNameBuilder;
-import org.uniprot.core.uniprotkb.description.impl.ProteinRecNameBuilder;
-import org.uniprot.core.uniprotkb.description.impl.ProteinSectionBuilder;
-import org.uniprot.core.uniprotkb.description.impl.ProteinSubNameBuilder;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
+import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
 /**
  * Created 30/01/19
@@ -41,25 +31,25 @@ public class DescriptionHelper {
     }
 
     public static ProteinSection createProteinNameSection(
-            ProteinRecName name, List<ProteinAltName> altNames) {
+            ProteinName name, List<ProteinName> altNames) {
         return new ProteinSectionBuilder()
                 .recommendedName(name)
                 .alternativeNamesSet(altNames)
                 .build();
     }
 
-    public static ProteinRecName createProteinRecName(
+    public static ProteinName createProteinRecName(
             Name fullName, List<Name> shortNames, List<EC> ecNumbers) {
-        return new ProteinRecNameBuilder()
+        return new ProteinNameBuilder()
                 .fullName(fullName)
                 .shortNamesSet(shortNames)
                 .ecNumbersSet(ecNumbers)
                 .build();
     }
 
-    public static ProteinAltName createProteinAltName(
+    public static ProteinName createProteinAltName(
             Name fullName, List<Name> shortNames, List<EC> ecNumbers) {
-        return new ProteinAltNameBuilder()
+        return new ProteinNameBuilder()
                 .fullName(fullName)
                 .shortNamesSet(shortNames)
                 .ecNumbersSet(ecNumbers)

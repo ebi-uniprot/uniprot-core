@@ -24,7 +24,7 @@ class ProteinDescriptionImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         ProteinDescriptionImpl impl =
                 new ProteinDescriptionImpl(
-                        new ProteinRecNameImpl(),
+                        new ProteinNameImpl(),
                         Collections.emptyList(),
                         new NameImpl(),
                         new NameImpl(),

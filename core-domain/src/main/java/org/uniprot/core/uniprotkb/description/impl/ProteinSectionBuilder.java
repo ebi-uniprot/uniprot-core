@@ -1,40 +1,37 @@
 package org.uniprot.core.uniprotkb.description.impl;
 
-import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.modifiableList;
+import org.uniprot.core.Builder;
+import org.uniprot.core.uniprotkb.description.Name;
+import org.uniprot.core.uniprotkb.description.ProteinName;
+import org.uniprot.core.uniprotkb.description.ProteinSection;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Nonnull;
-
-import org.uniprot.core.Builder;
-import org.uniprot.core.uniprotkb.description.Name;
-import org.uniprot.core.uniprotkb.description.ProteinAltName;
-import org.uniprot.core.uniprotkb.description.ProteinRecName;
-import org.uniprot.core.uniprotkb.description.ProteinSection;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 public class ProteinSectionBuilder implements Builder<ProteinSection> {
 
-    private ProteinRecName recommendedName;
-    private List<ProteinAltName> alternativeNames = new ArrayList<>();
+    private ProteinName recommendedName;
+    private List<ProteinName> alternativeNames = new ArrayList<>();
     private Name allergenName;
     private Name biotechName;
     private List<Name> cdAntigenNames = new ArrayList<>();
     private List<Name> innNames = new ArrayList<>();
 
-    public @Nonnull ProteinSectionBuilder recommendedName(ProteinRecName recommendedName) {
+    public @Nonnull ProteinSectionBuilder recommendedName(ProteinName recommendedName) {
         this.recommendedName = recommendedName;
         return this;
     }
 
-    public @Nonnull ProteinSectionBuilder alternativeNamesSet(
-            List<ProteinAltName> alternativeNames) {
+    public @Nonnull ProteinSectionBuilder alternativeNamesSet(List<ProteinName> alternativeNames) {
         this.alternativeNames = modifiableList(alternativeNames);
         return this;
     }
 
-    public @Nonnull ProteinSectionBuilder alternativeNamesAdd(ProteinAltName alternativeNames) {
+    public @Nonnull ProteinSectionBuilder alternativeNamesAdd(ProteinName alternativeNames) {
         addOrIgnoreNull(alternativeNames, this.alternativeNames);
         return this;
     }

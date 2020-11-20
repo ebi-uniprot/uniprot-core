@@ -1,29 +1,28 @@
 package org.uniprot.core.uniprotkb.description.impl;
 
-import static org.uniprot.core.util.Utils.unmodifiableList;
+import org.uniprot.core.uniprotkb.description.EC;
+import org.uniprot.core.uniprotkb.description.Name;
+import org.uniprot.core.uniprotkb.description.ProteinName;
+import org.uniprot.core.util.Utils;
 
 import java.util.Collections;
 import java.util.List;
 
-import org.uniprot.core.uniprotkb.description.EC;
-import org.uniprot.core.uniprotkb.description.Name;
-import org.uniprot.core.uniprotkb.description.ProteinRecName;
-import org.uniprot.core.util.Utils;
+import static org.uniprot.core.util.Utils.unmodifiableList;
 
-public class ProteinRecNameImpl implements ProteinRecName {
-
-    private static final long serialVersionUID = 7043082383411142667L;
+public class ProteinNameImpl implements ProteinName {
+    private static final long serialVersionUID = 2539291178732249294L;
     private Name fullName;
-    private List<Name> shortNames;
-    private List<EC> ecNumbers;
+    private final List<Name> shortNames;
+    private final List<EC> ecNumbers;
 
     // no arg constructor for JSON deserialization
-    ProteinRecNameImpl() {
+    ProteinNameImpl() {
         shortNames = Collections.emptyList();
         ecNumbers = Collections.emptyList();
     }
 
-    ProteinRecNameImpl(Name fullName, List<Name> shortNames, List<EC> ecNumbers) {
+    ProteinNameImpl(Name fullName, List<Name> shortNames, List<EC> ecNumbers) {
         this.fullName = fullName;
         this.shortNames = unmodifiableList(shortNames);
         this.ecNumbers = unmodifiableList(ecNumbers);
@@ -80,7 +79,7 @@ public class ProteinRecNameImpl implements ProteinRecName {
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
-        ProteinRecNameImpl other = (ProteinRecNameImpl) obj;
+        ProteinNameImpl other = (ProteinNameImpl) obj;
         if (!ecNumbers.equals(other.ecNumbers)) return false;
         if (fullName == null) {
             if (other.fullName != null) return false;

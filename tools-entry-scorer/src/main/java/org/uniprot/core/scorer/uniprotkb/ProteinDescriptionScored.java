@@ -1,26 +1,16 @@
 package org.uniprot.core.scorer.uniprotkb;
 
-import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
-import static org.uniprot.core.util.Utils.emptyOrList;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import org.uniprot.core.uniprotkb.description.EC;
-import org.uniprot.core.uniprotkb.description.Name;
-import org.uniprot.core.uniprotkb.description.ProteinAltName;
-import org.uniprot.core.uniprotkb.description.ProteinDescription;
-import org.uniprot.core.uniprotkb.description.ProteinRecName;
-import org.uniprot.core.uniprotkb.description.ProteinSubName;
+import org.uniprot.core.uniprotkb.description.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprotkb.evidence.HasEvidences;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
+import static org.uniprot.core.util.Utils.emptyOrList;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 13:34:03 To change this template
@@ -59,7 +49,7 @@ public class ProteinDescriptionScored implements HasScore {
         }
 
         // altname only in main section
-        for (ProteinAltName name : description.getAlternativeNames()) {
+        for (ProteinName name : description.getAlternativeNames()) {
             if (hasValidEvidences(name)) {
                 score += 2;
             }
@@ -96,14 +86,7 @@ public class ProteinDescriptionScored implements HasScore {
         return ScoreUtil.hasEvidence(name.getEvidences(), evidenceDatabases);
     }
 
-    private boolean hasValidEvidences(ProteinAltName name) {
-
-        List<Evidence> evidences = extractProteinAltNameEvidences(name);
-        return ScoreUtil.hasEvidence(evidences, evidenceDatabases);
-    }
-
-    private boolean hasValidEvidences(ProteinRecName name) {
-
+    private boolean hasValidEvidences(ProteinName name) {
         List<Evidence> evidences = extractProteinRecNameEvidences(name);
         return ScoreUtil.hasEvidence(evidences, evidenceDatabases);
     }
@@ -130,16 +113,16 @@ public class ProteinDescriptionScored implements HasScore {
         return ecs;
     }
 
-    private void addECsFromRecName(ProteinRecName proteinName, Set<EC> ecs) {
+    private void addECsFromRecName(ProteinName proteinName, Set<EC> ecs) {
         if (nonNull(proteinName)) {
             ecs.addAll(emptyOrList(proteinName.getEcNumbers()));
         }
     }
 
-    private void addECsFromAltName(List<ProteinAltName> proteinNames, Set<EC> ecs) {
+    private void addECsFromAltName(List<ProteinName> proteinNames, Set<EC> ecs) {
         ecs.addAll(
                 proteinNames.stream()
-                        .map(ProteinAltName::getEcNumbers)
+                        .map(ProteinName::getEcNumbers)
                         .filter(Objects::nonNull)
                         .flatMap(Collection::stream)
                         .collect(Collectors.toSet()));
@@ -154,7 +137,7 @@ public class ProteinDescriptionScored implements HasScore {
                         .collect(Collectors.toSet()));
     }
 
-    private List<Evidence> extractProteinAltNameEvidences(ProteinAltName name) {
+    private List<Evidence> extractProteinAltNameEvidences(ProteinName name) {
         List<Evidence> evs = new ArrayList<>();
         insertAllEvidences(name.getEcNumbers(), evs);
         insertAllEvidences(name.getShortNames(), evs);
@@ -169,7 +152,7 @@ public class ProteinDescriptionScored implements HasScore {
         return evs;
     }
 
-    private List<Evidence> extractProteinRecNameEvidences(ProteinRecName name) {
+    private List<Evidence> extractProteinRecNameEvidences(ProteinName name) {
         List<Evidence> evs = new ArrayList<>();
         insertAllEvidences(name.getEcNumbers(), evs);
         insertAllEvidences(name.getShortNames(), evs);

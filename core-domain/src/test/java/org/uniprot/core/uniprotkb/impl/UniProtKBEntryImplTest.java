@@ -1,13 +1,5 @@
 package org.uniprot.core.uniprotkb.impl;
 
-import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.ObjectsForTests.*;
-
-import java.util.Collections;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.ObjectsForTests;
 import org.uniprot.core.UniProtKBDatabaseMock;
@@ -29,6 +21,15 @@ import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
+
+import java.util.Collections;
+import java.util.List;
+
+import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.ObjectsForTests.createEvidence;
+import static org.uniprot.core.ObjectsForTests.createEvidenceValueWithSingleEvidence;
 
 class UniProtKBEntryImplTest {
     private UniProtKBEntry minEntry =
@@ -199,7 +200,7 @@ class UniProtKBEntryImplTest {
                 UniProtKBEntryBuilder.from(minEntry)
                         .proteinDescription(
                                 new ProteinDescriptionBuilder()
-                                        .recommendedName(new ProteinRecNameBuilder().build())
+                                        .recommendedName(new ProteinNameBuilder().build())
                                         .build())
                         .organism(new OrganismBuilder().build())
                         .build()
@@ -214,7 +215,7 @@ class UniProtKBEntryImplTest {
                         .proteinDescription(
                                 new ProteinDescriptionBuilder()
                                         .recommendedName(
-                                                new ProteinRecNameBuilder()
+                                                new ProteinNameBuilder()
                                                         .fullName(new NameBuilder().build())
                                                         .build())
                                         .build())
@@ -231,7 +232,7 @@ class UniProtKBEntryImplTest {
                         .proteinDescription(
                                 new ProteinDescriptionBuilder()
                                         .recommendedName(
-                                                new ProteinRecNameBuilder()
+                                                new ProteinNameBuilder()
                                                         .fullName(
                                                                 new NameBuilder()
                                                                         .evidencesAdd(
@@ -252,7 +253,7 @@ class UniProtKBEntryImplTest {
                         .proteinDescription(
                                 new ProteinDescriptionBuilder()
                                         .recommendedName(
-                                                new ProteinRecNameBuilder()
+                                                new ProteinNameBuilder()
                                                         .shortNamesAdd(new NameBuilder().build())
                                                         .build())
                                         .build())
@@ -269,7 +270,7 @@ class UniProtKBEntryImplTest {
                         .proteinDescription(
                                 new ProteinDescriptionBuilder()
                                         .recommendedName(
-                                                new ProteinRecNameBuilder()
+                                                new ProteinNameBuilder()
                                                         .shortNamesAdd(
                                                                 new NameBuilder()
                                                                         .evidencesAdd(
@@ -290,7 +291,7 @@ class UniProtKBEntryImplTest {
                         .proteinDescription(
                                 new ProteinDescriptionBuilder()
                                         .recommendedName(
-                                                new ProteinRecNameBuilder()
+                                                new ProteinNameBuilder()
                                                         .ecNumbersAdd(new ECBuilder().build())
                                                         .build())
                                         .build())
@@ -307,7 +308,7 @@ class UniProtKBEntryImplTest {
                         .proteinDescription(
                                 new ProteinDescriptionBuilder()
                                         .recommendedName(
-                                                new ProteinRecNameBuilder()
+                                                new ProteinNameBuilder()
                                                         .ecNumbersAdd(
                                                                 new ECBuilder()
                                                                         .evidencesAdd(
@@ -327,7 +328,7 @@ class UniProtKBEntryImplTest {
                 UniProtKBEntryBuilder.from(minEntry)
                         .proteinDescription(
                                 new ProteinDescriptionBuilder()
-                                        .alternativeNamesAdd(new ProteinAltNameBuilder().build())
+                                        .alternativeNamesAdd(new ProteinNameBuilder().build())
                                         .build())
                         .organism(new OrganismBuilder().build())
                         .build()
@@ -353,7 +354,7 @@ class UniProtKBEntryImplTest {
                         .proteinDescription(
                                 new ProteinDescriptionBuilder()
                                         .alternativeNamesAdd(
-                                                new ProteinAltNameBuilder()
+                                                new ProteinNameBuilder()
                                                         .fullName(new NameBuilder().build())
                                                         .build())
                                         .build())
@@ -370,7 +371,7 @@ class UniProtKBEntryImplTest {
                         .proteinDescription(
                                 new ProteinDescriptionBuilder()
                                         .alternativeNamesAdd(
-                                                new ProteinAltNameBuilder()
+                                                new ProteinNameBuilder()
                                                         .fullName(
                                                                 new NameBuilder()
                                                                         .evidencesAdd(
@@ -391,7 +392,7 @@ class UniProtKBEntryImplTest {
                         .proteinDescription(
                                 new ProteinDescriptionBuilder()
                                         .alternativeNamesAdd(
-                                                new ProteinAltNameBuilder()
+                                                new ProteinNameBuilder()
                                                         .shortNamesAdd(new NameBuilder().build())
                                                         .build())
                                         .build())
@@ -408,7 +409,7 @@ class UniProtKBEntryImplTest {
                         .proteinDescription(
                                 new ProteinDescriptionBuilder()
                                         .alternativeNamesAdd(
-                                                new ProteinAltNameBuilder()
+                                                new ProteinNameBuilder()
                                                         .shortNamesAdd(
                                                                 new NameBuilder()
                                                                         .evidencesAdd(
@@ -429,7 +430,7 @@ class UniProtKBEntryImplTest {
                         .proteinDescription(
                                 new ProteinDescriptionBuilder()
                                         .alternativeNamesAdd(
-                                                new ProteinAltNameBuilder()
+                                                new ProteinNameBuilder()
                                                         .ecNumbersAdd(new ECBuilder().build())
                                                         .build())
                                         .build())
@@ -446,7 +447,7 @@ class UniProtKBEntryImplTest {
                         .proteinDescription(
                                 new ProteinDescriptionBuilder()
                                         .alternativeNamesAdd(
-                                                new ProteinAltNameBuilder()
+                                                new ProteinNameBuilder()
                                                         .ecNumbersAdd(
                                                                 new ECBuilder()
                                                                         .evidencesAdd(
@@ -585,7 +586,7 @@ class UniProtKBEntryImplTest {
                                         .includesAdd(
                                                 new ProteinSectionBuilder()
                                                         .recommendedName(
-                                                                new ProteinRecNameBuilder().build())
+                                                                new ProteinNameBuilder().build())
                                                         .build())
                                         .build())
                         .build()
@@ -603,7 +604,7 @@ class UniProtKBEntryImplTest {
                                         .includesAdd(
                                                 new ProteinSectionBuilder()
                                                         .recommendedName(
-                                                                new ProteinRecNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .fullName(
                                                                                 new NameBuilder()
                                                                                         .build())
@@ -624,7 +625,7 @@ class UniProtKBEntryImplTest {
                                         .includesAdd(
                                                 new ProteinSectionBuilder()
                                                         .recommendedName(
-                                                                new ProteinRecNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .fullName(
                                                                                 new NameBuilder()
                                                                                         .evidencesAdd(
@@ -648,7 +649,7 @@ class UniProtKBEntryImplTest {
                                         .includesAdd(
                                                 new ProteinSectionBuilder()
                                                         .recommendedName(
-                                                                new ProteinRecNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .shortNamesAdd(
                                                                                 new NameBuilder()
                                                                                         .build())
@@ -669,7 +670,7 @@ class UniProtKBEntryImplTest {
                                         .includesAdd(
                                                 new ProteinSectionBuilder()
                                                         .recommendedName(
-                                                                new ProteinRecNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .shortNamesAdd(
                                                                                 new NameBuilder()
                                                                                         .evidencesAdd(
@@ -693,7 +694,7 @@ class UniProtKBEntryImplTest {
                                         .includesAdd(
                                                 new ProteinSectionBuilder()
                                                         .recommendedName(
-                                                                new ProteinRecNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .ecNumbersAdd(
                                                                                 new ECBuilder()
                                                                                         .build())
@@ -714,7 +715,7 @@ class UniProtKBEntryImplTest {
                                         .includesAdd(
                                                 new ProteinSectionBuilder()
                                                         .recommendedName(
-                                                                new ProteinRecNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .ecNumbersAdd(
                                                                                 new ECBuilder()
                                                                                         .evidencesAdd(
@@ -737,7 +738,7 @@ class UniProtKBEntryImplTest {
                                         .includesAdd(
                                                 new ProteinSectionBuilder()
                                                         .alternativeNamesAdd(
-                                                                new ProteinAltNameBuilder().build())
+                                                                new ProteinNameBuilder().build())
                                                         .build())
                                         .build())
                         .build()
@@ -755,7 +756,7 @@ class UniProtKBEntryImplTest {
                                         .includesAdd(
                                                 new ProteinSectionBuilder()
                                                         .alternativeNamesAdd(
-                                                                new ProteinAltNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .fullName(
                                                                                 new NameBuilder()
                                                                                         .build())
@@ -776,7 +777,7 @@ class UniProtKBEntryImplTest {
                                         .includesAdd(
                                                 new ProteinSectionBuilder()
                                                         .alternativeNamesAdd(
-                                                                new ProteinAltNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .fullName(
                                                                                 new NameBuilder()
                                                                                         .evidencesAdd(
@@ -800,7 +801,7 @@ class UniProtKBEntryImplTest {
                                         .includesAdd(
                                                 new ProteinSectionBuilder()
                                                         .alternativeNamesAdd(
-                                                                new ProteinAltNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .shortNamesAdd(
                                                                                 new NameBuilder()
                                                                                         .build())
@@ -821,7 +822,7 @@ class UniProtKBEntryImplTest {
                                         .includesAdd(
                                                 new ProteinSectionBuilder()
                                                         .alternativeNamesAdd(
-                                                                new ProteinAltNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .shortNamesAdd(
                                                                                 new NameBuilder()
                                                                                         .evidencesAdd(
@@ -845,7 +846,7 @@ class UniProtKBEntryImplTest {
                                         .includesAdd(
                                                 new ProteinSectionBuilder()
                                                         .alternativeNamesAdd(
-                                                                new ProteinAltNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .ecNumbersAdd(
                                                                                 new ECBuilder()
                                                                                         .build())
@@ -866,7 +867,7 @@ class UniProtKBEntryImplTest {
                                         .includesAdd(
                                                 new ProteinSectionBuilder()
                                                         .alternativeNamesAdd(
-                                                                new ProteinAltNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .ecNumbersAdd(
                                                                                 new ECBuilder()
                                                                                         .evidencesAdd(
@@ -903,7 +904,7 @@ class UniProtKBEntryImplTest {
                                         .containsAdd(
                                                 new ProteinSectionBuilder()
                                                         .recommendedName(
-                                                                new ProteinRecNameBuilder().build())
+                                                                new ProteinNameBuilder().build())
                                                         .build())
                                         .build())
                         .build()
@@ -921,7 +922,7 @@ class UniProtKBEntryImplTest {
                                         .containsAdd(
                                                 new ProteinSectionBuilder()
                                                         .recommendedName(
-                                                                new ProteinRecNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .fullName(
                                                                                 new NameBuilder()
                                                                                         .build())
@@ -942,7 +943,7 @@ class UniProtKBEntryImplTest {
                                         .containsAdd(
                                                 new ProteinSectionBuilder()
                                                         .recommendedName(
-                                                                new ProteinRecNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .fullName(
                                                                                 new NameBuilder()
                                                                                         .evidencesAdd(
@@ -966,7 +967,7 @@ class UniProtKBEntryImplTest {
                                         .containsAdd(
                                                 new ProteinSectionBuilder()
                                                         .recommendedName(
-                                                                new ProteinRecNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .shortNamesAdd(
                                                                                 new NameBuilder()
                                                                                         .build())
@@ -987,7 +988,7 @@ class UniProtKBEntryImplTest {
                                         .containsAdd(
                                                 new ProteinSectionBuilder()
                                                         .recommendedName(
-                                                                new ProteinRecNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .shortNamesAdd(
                                                                                 new NameBuilder()
                                                                                         .evidencesAdd(
@@ -1011,7 +1012,7 @@ class UniProtKBEntryImplTest {
                                         .containsAdd(
                                                 new ProteinSectionBuilder()
                                                         .recommendedName(
-                                                                new ProteinRecNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .ecNumbersAdd(
                                                                                 new ECBuilder()
                                                                                         .build())
@@ -1032,7 +1033,7 @@ class UniProtKBEntryImplTest {
                                         .containsAdd(
                                                 new ProteinSectionBuilder()
                                                         .recommendedName(
-                                                                new ProteinRecNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .ecNumbersAdd(
                                                                                 new ECBuilder()
                                                                                         .evidencesAdd(
@@ -1055,7 +1056,7 @@ class UniProtKBEntryImplTest {
                                         .containsAdd(
                                                 new ProteinSectionBuilder()
                                                         .alternativeNamesAdd(
-                                                                new ProteinAltNameBuilder().build())
+                                                                new ProteinNameBuilder().build())
                                                         .build())
                                         .build())
                         .build()
@@ -1073,7 +1074,7 @@ class UniProtKBEntryImplTest {
                                         .containsAdd(
                                                 new ProteinSectionBuilder()
                                                         .alternativeNamesAdd(
-                                                                new ProteinAltNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .fullName(
                                                                                 new NameBuilder()
                                                                                         .build())
@@ -1094,7 +1095,7 @@ class UniProtKBEntryImplTest {
                                         .containsAdd(
                                                 new ProteinSectionBuilder()
                                                         .alternativeNamesAdd(
-                                                                new ProteinAltNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .fullName(
                                                                                 new NameBuilder()
                                                                                         .evidencesAdd(
@@ -1118,7 +1119,7 @@ class UniProtKBEntryImplTest {
                                         .containsAdd(
                                                 new ProteinSectionBuilder()
                                                         .alternativeNamesAdd(
-                                                                new ProteinAltNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .shortNamesAdd(
                                                                                 new NameBuilder()
                                                                                         .build())
@@ -1139,7 +1140,7 @@ class UniProtKBEntryImplTest {
                                         .containsAdd(
                                                 new ProteinSectionBuilder()
                                                         .alternativeNamesAdd(
-                                                                new ProteinAltNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .shortNamesAdd(
                                                                                 new NameBuilder()
                                                                                         .evidencesAdd(
@@ -1163,7 +1164,7 @@ class UniProtKBEntryImplTest {
                                         .containsAdd(
                                                 new ProteinSectionBuilder()
                                                         .alternativeNamesAdd(
-                                                                new ProteinAltNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .ecNumbersAdd(
                                                                                 new ECBuilder()
                                                                                         .build())
@@ -1184,7 +1185,7 @@ class UniProtKBEntryImplTest {
                                         .containsAdd(
                                                 new ProteinSectionBuilder()
                                                         .alternativeNamesAdd(
-                                                                new ProteinAltNameBuilder()
+                                                                new ProteinNameBuilder()
                                                                         .ecNumbersAdd(
                                                                                 new ECBuilder()
                                                                                         .evidencesAdd(

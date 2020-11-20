@@ -12,7 +12,7 @@ import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.description.FlagType;
 import org.uniprot.core.uniprotkb.description.impl.NameBuilder;
 import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilder;
-import org.uniprot.core.uniprotkb.description.impl.ProteinRecNameBuilder;
+import org.uniprot.core.uniprotkb.description.impl.ProteinNameBuilder;
 import org.uniprot.core.uniprotkb.description.impl.ProteinSubNameBuilder;
 import org.uniprot.core.uniprotkb.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
@@ -105,7 +105,7 @@ class UniProtKBFastaParserTest {
                                 new ProteinDescriptionBuilder()
                                         .flag(FlagType.FRAGMENTS_PRECURSOR)
                                         .recommendedName(
-                                                new ProteinRecNameBuilder()
+                                                new ProteinNameBuilder()
                                                         .fullName(
                                                                 new NameBuilder()
                                                                         .value("Rec Name Value")

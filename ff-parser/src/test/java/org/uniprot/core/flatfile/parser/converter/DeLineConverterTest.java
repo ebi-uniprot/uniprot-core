@@ -1,17 +1,17 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.flatfile.parser.impl.de.DeLineConverter;
+import org.uniprot.core.flatfile.parser.impl.de.DeLineObject;
+import org.uniprot.core.uniprotkb.description.*;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.impl.de.DeLineConverter;
-import org.uniprot.core.flatfile.parser.impl.de.DeLineObject;
-import org.uniprot.core.uniprotkb.description.*;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
+import static org.junit.jupiter.api.Assertions.*;
 
 class DeLineConverterTest {
     private DeLineConverter converter = new DeLineConverter();
@@ -45,11 +45,11 @@ class DeLineConverterTest {
         deObject.getAltNames().add(createName("Anchorin CII"));
         deObject.getFlags().add(DeLineObject.FlagType.Precursor);
         ProteinDescription pDesc = converter.convert(deObject);
-        ProteinRecName recName = pDesc.getRecommendedName();
+        ProteinName recName = pDesc.getRecommendedName();
 
         validate("Annexin A5", "Annexin-5", recName);
         ;
-        List<ProteinAltName> altNames = pDesc.getAlternativeNames();
+        List<ProteinName> altNames = pDesc.getAlternativeNames();
         assertEquals(7, altNames.size());
         validate("Annexin V", null, altNames.get(0));
         validate("Lipocortin V", null, altNames.get(1));
@@ -81,10 +81,10 @@ class DeLineConverterTest {
         ecs.add("1.1.1.2");
         deObject.getAltNames().add(createName("Anchorin CII", new ArrayList<String>(), ecs));
         ProteinDescription pDesc = converter.convert(deObject);
-        ProteinRecName recName = pDesc.getRecommendedName();
+        ProteinName recName = pDesc.getRecommendedName();
 
         validate("Annexin A5", "Annexin-5", recName);
-        List<ProteinAltName> altNames = pDesc.getAlternativeNames();
+        List<ProteinName> altNames = pDesc.getAlternativeNames();
         assertEquals(7, altNames.size());
         validate("Annexin V", null, altNames.get(0));
         validate("Lipocortin V", null, altNames.get(1));
@@ -138,10 +138,10 @@ class DeLineConverterTest {
         deObject.getContainedNames().add(conName2);
         ProteinDescription pDesc = converter.convert(deObject);
 
-        ProteinRecName recName = pDesc.getRecommendedName();
+        ProteinName recName = pDesc.getRecommendedName();
 
         validate("Arginine biosynthesis bifunctional protein argJ", null, recName);
-        List<ProteinAltName> altNames = pDesc.getAlternativeNames();
+        List<ProteinName> altNames = pDesc.getAlternativeNames();
         assertTrue(altNames.isEmpty());
         List<ProteinSection> included = pDesc.getIncludes();
         assertEquals(2, included.size());
@@ -242,13 +242,13 @@ class DeLineConverterTest {
         evs.add("ECO:0000269|PubMed:15208023");
         deObject.getEvidenceInfo().getEvidences().put(DeLineObject.FlagType.Precursor, evs);
         ProteinDescription pDesc = converter.convert(deObject);
-        ProteinRecName recName = pDesc.getRecommendedName();
+        ProteinName recName = pDesc.getRecommendedName();
 
         List<String> ecs = new ArrayList<>();
 
         validate("Annexin A5", "Annexin-5", ecs, recName, evidences);
 
-        List<ProteinAltName> altNames = pDesc.getAlternativeNames();
+        List<ProteinName> altNames = pDesc.getAlternativeNames();
         validate("Annexin V", null, ecs, altNames.get(0), evidences);
         validate("Lipocortin V", null, ecs, altNames.get(1), evidences);
         validate("Placental anticoagulant protein I", "PAP-I", ecs, altNames.get(2), evidences);
@@ -260,21 +260,16 @@ class DeLineConverterTest {
         assertEquals(FlagType.PRECURSOR, flag.getType());
     }
 
-    private void validate(String fullName, String shortName, ProteinRecName proteinName) {
+    private void validate(String fullName, String shortName, ProteinName proteinName) {
         List<String> ecs = new ArrayList<>();
         validate(fullName, shortName, ecs, proteinName);
-    }
-
-    private void validate(
-            String fullName, String shortName, List<String> ecs, ProteinRecName proteinName) {
-        validate(fullName, shortName, ecs, proteinName, new TreeMap<String, List<String>>());
     }
 
     private void validate(
             String fullName,
             String shortName,
             List<String> ecs,
-            ProteinRecName proteinName,
+            ProteinName proteinName,
             Map<String, List<String>> evidences) {
         if (fullName != null) {
             assertEquals(fullName, proteinName.getFullName().getValue());
@@ -294,38 +289,9 @@ class DeLineConverterTest {
         }
     }
 
-    private void validate(String fullName, String shortName, ProteinAltName proteinName) {
-        List<String> ecs = new ArrayList<>();
-        validate(fullName, shortName, ecs, proteinName);
-    }
-
     private void validate(
-            String fullName, String shortName, List<String> ecs, ProteinAltName proteinName) {
+            String fullName, String shortName, List<String> ecs, ProteinName proteinName) {
         validate(fullName, shortName, ecs, proteinName, new TreeMap<String, List<String>>());
-    }
-
-    private void validate(
-            String fullName,
-            String shortName,
-            List<String> ecs,
-            ProteinAltName proteinName,
-            Map<String, List<String>> evidences) {
-        if (fullName != null) {
-            assertEquals(fullName, proteinName.getFullName().getValue());
-            validateEvidence(evidences.get(fullName), proteinName.getFullName().getEvidences());
-        }
-        if (shortName != null) {
-            assertEquals(1, proteinName.getShortNames().size());
-            assertEquals(shortName, proteinName.getShortNames().get(0).getValue());
-            validateEvidence(
-                    evidences.get(shortName), proteinName.getShortNames().get(0).getEvidences());
-        }
-
-        assertEquals(ecs.size(), proteinName.getEcNumbers().size());
-        for (EC ecNumber : proteinName.getEcNumbers()) {
-            validateEvidence(evidences.get(ecNumber.getValue()), ecNumber.getEvidences());
-            assertTrue(ecs.contains(ecNumber.getValue()));
-        }
     }
 
     private void validateEvidence(List<String> expected, List<Evidence> vals) {
