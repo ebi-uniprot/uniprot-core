@@ -3,7 +3,6 @@ package org.uniprot.core.uniprotkb.description.impl;
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.description.ProteinName;
-import org.uniprot.core.util.Utils;
 
 import java.util.Collections;
 import java.util.List;
@@ -41,21 +40,6 @@ public class ProteinNameImpl implements ProteinName {
     @Override
     public List<EC> getEcNumbers() {
         return ecNumbers;
-    }
-
-    @Override
-    public boolean hasFullName() {
-        return this.fullName != null;
-    }
-
-    @Override
-    public boolean hasShortNames() {
-        return Utils.notNullNotEmpty(shortNames);
-    }
-
-    @Override
-    public boolean hasEcNumbers() {
-        return Utils.notNullNotEmpty(ecNumbers);
     }
 
     @Override
