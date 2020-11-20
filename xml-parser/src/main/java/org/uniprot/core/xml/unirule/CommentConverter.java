@@ -8,6 +8,7 @@ import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.comment.CommentConverterFactory;
+import org.uniprot.core.xml.uniprot.comment.SubcellLocationNameMap;
 
 public class CommentConverter implements Converter<CommentType, Comment> {
     private final EvidenceIndexMapper evidenceIndexMapper;
@@ -16,6 +17,7 @@ public class CommentConverter implements Converter<CommentType, Comment> {
     public CommentConverter() {
         this.evidenceIndexMapper = new EvidenceIndexMapper();
         this.xmlUniprotFactory = new ObjectFactory();
+     
     }
 
     @Override
@@ -26,7 +28,7 @@ public class CommentConverter implements Converter<CommentType, Comment> {
                 org.uniprot.core.uniprotkb.comment.CommentType.typeOf(xmlObj.getType());
         Comment comment =
                 CommentConverterFactory.INSTANCE
-                        .createCommentConverter(type, evidenceIndexMapper, xmlUniprotFactory)
+                        .createCommentConverter(type, evidenceIndexMapper, xmlUniprotFactory )
                         .fromXml(xmlObj);
 
         return comment;

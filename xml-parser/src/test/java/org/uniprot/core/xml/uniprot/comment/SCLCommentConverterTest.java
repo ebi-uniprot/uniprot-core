@@ -69,7 +69,34 @@ class SCLCommentConverterTest {
         SubcellularLocationComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }
-
+    @Test
+    void middlenameWithCapitalLetter() {
+        SubcellularLocationValue location =
+                create(
+                        "Golgi apparatus, Golgi stack",
+                        Arrays.asList(
+                                "ECO:0000256|PIRNR:PIRNR037393"));
+        SubcellularLocation subcelLocation =
+                createSubcellularLocation(location, null, null);
+        List<SubcellularLocation> subcelLocations = new ArrayList<>();
+        subcelLocations.add(subcelLocation);
+        SubcellularLocationValue location2 = create("Nucleus, Cajal body", Arrays.asList("ECO:0000250"));
+        SubcellularLocation subcelLocation2 = createSubcellularLocation(location2, null, null);
+        subcelLocations.add(subcelLocation2);
+        SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
+        builder.molecule("Some mol")
+                .subcellularLocationsSet(subcelLocations);
+        SubcellularLocationComment comment = builder.build();
+        SCLCommentConverter converter = new SCLCommentConverter(new EvidenceIndexMapper());
+        CommentType xmlComment = converter.toXml(comment);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
+        SubcellularLocationComment converted = converter.fromXml(xmlComment);
+        assertEquals(comment, converted);
+        
+    }
+    
+    
     private SubcellularLocation createSubcellularLocation(
             SubcellularLocationValue location,
             SubcellularLocationValue topology,

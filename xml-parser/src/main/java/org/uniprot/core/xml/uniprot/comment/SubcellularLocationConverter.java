@@ -21,7 +21,6 @@ public class SubcellularLocationConverter
     private static final Pattern COMMA = Pattern.compile(",");
     private final ObjectFactory xmlUniprotFactory;
     private final EvidenceIndexMapper evRefMapper;
-
     public SubcellularLocationConverter(EvidenceIndexMapper evRefMapper) {
         this(evRefMapper, new ObjectFactory());
     }
@@ -80,7 +79,12 @@ public class SubcellularLocationConverter
             isFirst = false;
             sb.append(val);
         }
-        return sb.toString();
+        String name= sb.toString();
+        if(values.size()>1) {
+        	return SubcellLocationNameMap.instance.getLocationName(name);
+        }else {
+        	return name;
+        }
         // Map<EvidencedStringType, String> map = transferCase(values);
         // return values.stream().map(val ->
         // val.getValue()).collect(Collectors.joining(", "));
