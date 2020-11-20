@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprotkb.description;
 
-import org.uniprot.core.util.Utils;
-
 import java.util.List;
+
+import org.uniprot.core.util.Utils;
 
 /**
  * Created 19/11/2020

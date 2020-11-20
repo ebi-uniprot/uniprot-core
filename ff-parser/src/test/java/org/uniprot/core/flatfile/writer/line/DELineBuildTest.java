@@ -1,12 +1,6 @@
 package org.uniprot.core.flatfile.writer.line;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.impl.de.DELineBuilder;
-import org.uniprot.core.flatfile.writer.FFLine;
-import org.uniprot.core.uniprotkb.description.*;
-import org.uniprot.core.uniprotkb.description.impl.*;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.cv.evidence.EvidenceHelper;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +8,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.flatfile.parser.impl.de.DELineBuilder;
+import org.uniprot.core.flatfile.writer.FFLine;
+import org.uniprot.core.uniprotkb.description.*;
+import org.uniprot.core.uniprotkb.description.impl.*;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.cv.evidence.EvidenceHelper;
 
 class DELineBuildTest {
     private DELineBuilder builder = new DELineBuilder();

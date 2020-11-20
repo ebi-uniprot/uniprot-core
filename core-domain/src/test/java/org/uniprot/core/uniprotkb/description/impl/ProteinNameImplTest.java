@@ -1,10 +1,7 @@
 package org.uniprot.core.uniprotkb.description.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.description.EC;
-import org.uniprot.core.uniprotkb.description.Name;
-import org.uniprot.core.uniprotkb.description.ProteinName;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.ObjectsForTests.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -12,8 +9,11 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.ObjectsForTests.*;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.description.EC;
+import org.uniprot.core.uniprotkb.description.Name;
+import org.uniprot.core.uniprotkb.description.ProteinName;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 class ProteinNameImplTest {
     @Test

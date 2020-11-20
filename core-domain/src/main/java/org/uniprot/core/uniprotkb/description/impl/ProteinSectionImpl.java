@@ -1,12 +1,12 @@
 package org.uniprot.core.uniprotkb.description.impl;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.description.ProteinName;
 import org.uniprot.core.uniprotkb.description.ProteinSection;
 import org.uniprot.core.util.Utils;
-
-import java.util.Collections;
-import java.util.List;
 
 public class ProteinSectionImpl implements ProteinSection {
 

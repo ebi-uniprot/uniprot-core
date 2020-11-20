@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprotkb.description;
 
-import org.uniprot.core.util.Utils;
-
 import java.io.Serializable;
 import java.util.List;
+
+import org.uniprot.core.util.Utils;
 
 public interface ProteinSubName extends Serializable {
     Name getFullName();

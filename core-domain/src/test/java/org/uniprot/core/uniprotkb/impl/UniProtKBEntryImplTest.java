@@ -1,5 +1,14 @@
 package org.uniprot.core.uniprotkb.impl;
 
+import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.ObjectsForTests.createEvidence;
+import static org.uniprot.core.ObjectsForTests.createEvidenceValueWithSingleEvidence;
+
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.ObjectsForTests;
 import org.uniprot.core.UniProtKBDatabaseMock;
@@ -21,15 +30,6 @@ import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
-
-import java.util.Collections;
-import java.util.List;
-
-import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.ObjectsForTests.createEvidence;
-import static org.uniprot.core.ObjectsForTests.createEvidenceValueWithSingleEvidence;
 
 class UniProtKBEntryImplTest {
     private UniProtKBEntry minEntry =

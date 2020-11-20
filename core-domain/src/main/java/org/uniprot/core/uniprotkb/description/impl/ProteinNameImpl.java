@@ -1,13 +1,13 @@
 package org.uniprot.core.uniprotkb.description.impl;
 
-import org.uniprot.core.uniprotkb.description.EC;
-import org.uniprot.core.uniprotkb.description.Name;
-import org.uniprot.core.uniprotkb.description.ProteinName;
+import static org.uniprot.core.util.Utils.unmodifiableList;
 
 import java.util.Collections;
 import java.util.List;
 
-import static org.uniprot.core.util.Utils.unmodifiableList;
+import org.uniprot.core.uniprotkb.description.EC;
+import org.uniprot.core.uniprotkb.description.Name;
+import org.uniprot.core.uniprotkb.description.ProteinName;
 
 public class ProteinNameImpl implements ProteinName {
     private static final long serialVersionUID = 2539291178732249294L;
