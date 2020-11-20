@@ -1,10 +1,10 @@
 package org.uniprot.core.proteome;
 
+import java.util.Arrays;
+
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
-
-import java.util.Arrays;
 
 public enum Superkingdom implements EnumDisplay {
     ARCHAEA("archaea"),
