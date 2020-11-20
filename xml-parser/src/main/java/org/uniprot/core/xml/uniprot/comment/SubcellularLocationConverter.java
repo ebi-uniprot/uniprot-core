@@ -85,9 +85,6 @@ public class SubcellularLocationConverter
         }else {
         	return name;
         }
-        // Map<EvidencedStringType, String> map = transferCase(values);
-        // return values.stream().map(val ->
-        // val.getValue()).collect(Collectors.joining(", "));
     }
 
     private String lowerCaseFirstLetter(String val) {
