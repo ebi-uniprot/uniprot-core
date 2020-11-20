@@ -35,17 +35,7 @@ public class ProteinSubNameImpl implements ProteinSubName {
     public List<EC> getEcNumbers() {
         return ecNumbers;
     }
-
-    @Override
-    public boolean hasFullName() {
-        return this.fullName != null;
-    }
-
-    @Override
-    public boolean hasEcNumbers() {
-        return Utils.notNullNotEmpty(ecNumbers);
-    }
-
+    
     @Override
     public boolean isValid() {
         return (getFullName() != null)
