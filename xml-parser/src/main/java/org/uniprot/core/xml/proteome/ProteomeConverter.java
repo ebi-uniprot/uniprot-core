@@ -190,8 +190,7 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
         return xmlObj;
     }
 
-    private void convertCompletenessReport(
-            ProteomeCompletenessReport reports, Proteome xmlObj) {
+    private void convertCompletenessReport(ProteomeCompletenessReport reports, Proteome xmlObj) {
         if (notNull(reports.getBuscoReport())) {
             xmlObj.getScores().add(scoreBuscoConverter.toXml(reports.getBuscoReport()));
         }
