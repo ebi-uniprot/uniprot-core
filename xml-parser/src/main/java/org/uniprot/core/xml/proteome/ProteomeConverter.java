@@ -18,10 +18,10 @@ import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.*;
-import org.uniprot.core.xml.jaxb.proteome.ProteomeType;
+import org.uniprot.core.xml.jaxb.proteome.Proteome;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
 
-public class ProteomeConverter implements Converter<ProteomeType, ProteomeEntry> {
+public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
 
     private final ObjectFactory xmlFactory;
     private final ComponentConverter componentConverter;
@@ -48,7 +48,7 @@ public class ProteomeConverter implements Converter<ProteomeType, ProteomeEntry>
     }
 
     @Override
-    public ProteomeEntry fromXml(ProteomeType xmlObj) {
+    public ProteomeEntry fromXml(Proteome xmlObj) {
         List<Component> components =
                 xmlObj.getComponent().stream()
                         .map(componentConverter::fromXml)
@@ -130,14 +130,14 @@ public class ProteomeConverter implements Converter<ProteomeType, ProteomeEntry>
     }
 
     @Override
-    public ProteomeType toXml(ProteomeEntry uniObj) {
-        ProteomeType xmlObj = xmlFactory.createProteomeType();
+    public Proteome toXml(ProteomeEntry uniObj) {
+        Proteome xmlObj = xmlFactory.createProteome();
         xmlObj.setUpid(uniObj.getId().getValue());
         xmlObj.setDescription(uniObj.getDescription());
         if (notNull(uniObj.getTaxonomy())) {
             xmlObj.setTaxonomy(uniObj.getTaxonomy().getTaxonId());
         }
-        org.uniprot.core.proteome.ProteomeType type = uniObj.getProteomeType();
+        ProteomeType type = uniObj.getProteomeType();
         if (type == REFERENCE || type == REFERENCE_AND_REPRESENTATIVE) {
             xmlObj.setIsReferenceProteome(true);
         }
@@ -191,7 +191,7 @@ public class ProteomeConverter implements Converter<ProteomeType, ProteomeEntry>
     }
 
     private void convertCompletenessReport(
-            ProteomeCompletenessReport reports, ProteomeType xmlObj) {
+            ProteomeCompletenessReport reports, Proteome xmlObj) {
         if (notNull(reports.getBuscoReport())) {
             xmlObj.getScores().add(scoreBuscoConverter.toXml(reports.getBuscoReport()));
         }
@@ -200,7 +200,7 @@ public class ProteomeConverter implements Converter<ProteomeType, ProteomeEntry>
         }
     }
 
-    private void convertExclusionReasons(ProteomeEntry uniObj, ProteomeType xmlObj) {
+    private void convertExclusionReasons(ProteomeEntry uniObj, Proteome xmlObj) {
         List<String> exclusions =
                 uniObj.getExclusionReasons().stream()
                         .map(ExclusionReason::getDisplayName)
@@ -219,7 +219,7 @@ public class ProteomeConverter implements Converter<ProteomeType, ProteomeEntry>
         }
     }
 
-    private org.uniprot.core.proteome.ProteomeType getProteomeType(ProteomeType t) {
+    private ProteomeType getProteomeType(Proteome t) {
         if (t.getExcluded() != null
                 && (t.getExcluded().getExclusionReason() != null)
                 && (!t.getExcluded().getExclusionReason().isEmpty())) {

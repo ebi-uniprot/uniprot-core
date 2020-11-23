@@ -9,46 +9,50 @@
 				<xs:documentation>Describes a collection of proteome entries.</xs:documentation>
 			</xs:annotation>
 			<xs:sequence>
-				<xs:element name="proteome" type="proteomeType"
-					maxOccurs="unbounded" />
+				<xs:element name="proteome" maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	<xs:complexType name="proteomeType">
-		<xs:sequence>
-			<xs:element name="upid" type="xs:string" />
-			<xs:element name="description" type="xs:string"
-				minOccurs="0" />
-			<xs:element name="taxonomy" type="xs:long" />
-			<xs:element name="modified" type="xs:date" />
-			<xs:element name="isReferenceProteome" type="xs:boolean" />
-			<xs:element name="isRepresentativeProteome"
-				type="xs:boolean" />
-			<xs:element name="redundantTo" type="xs:string"
-				minOccurs="0" />
-			<xs:element name="strain" type="xs:string" minOccurs="0" />
-			<xs:element name="isolate" type="xs:string" minOccurs="0" />
-			<xs:element name="genomeAssembly"
-				type="genomeAssemblyType" minOccurs="0" />
-			<xs:element name="genomeAnnotation"
-				type="genomeAnnotationType" minOccurs="0" />
-			<xs:element name="component" type="componentType"
-				maxOccurs="unbounded" />
-			<xs:element name="reference" type="referenceType"
-				minOccurs="0" maxOccurs="unbounded" />
-			<xs:element name="redundantProteome"
-				type="redundantProteomeType" minOccurs="0" maxOccurs="unbounded" />
-			<xs:element name="annotationScore"
-				type="annotationScoreType" minOccurs="0" />
-			<xs:element name="panproteome" type="xs:string"
-				minOccurs="0" />
-			<xs:element name="excluded" type="exclusionType"
-				minOccurs="0" />
-			<xs:element name="scores" type="scoreType" minOccurs="0"
-				maxOccurs="unbounded" />
-		</xs:sequence>
+	<xs:element name="proteome">
+		<xs:annotation>
+			<xs:documentation>Describes a Proteome entry.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="upid" type="xs:string" />
+				<xs:element name="description" type="xs:string"
+					minOccurs="0" />
+				<xs:element name="taxonomy" type="xs:long" />
+				<xs:element name="modified" type="xs:date" />
+				<xs:element name="isReferenceProteome" type="xs:boolean" />
+				<xs:element name="isRepresentativeProteome"
+					type="xs:boolean" />
+				<xs:element name="redundantTo" type="xs:string"
+					minOccurs="0" />
+				<xs:element name="strain" type="xs:string" minOccurs="0" />
+				<xs:element name="isolate" type="xs:string" minOccurs="0" />
+				<xs:element name="genomeAssembly"
+					type="genomeAssemblyType" minOccurs="0" />
+				<xs:element name="genomeAnnotation"
+					type="genomeAnnotationType" minOccurs="0" />
+				<xs:element name="component" type="componentType"
+					maxOccurs="unbounded" />
+				<xs:element name="reference" type="referenceType"
+					minOccurs="0" maxOccurs="unbounded" />
+				<xs:element name="redundantProteome"
+					type="redundantProteomeType" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element name="annotationScore"
+					type="annotationScoreType" minOccurs="0" />
+				<xs:element name="panproteome" type="xs:string"
+					minOccurs="0" />
+				<xs:element name="excluded" type="exclusionType"
+					minOccurs="0" />
+				<xs:element name="scores" type="scoreType" minOccurs="0"
+					maxOccurs="unbounded" />
+			</xs:sequence>
 
-	</xs:complexType>
+		</xs:complexType>
+	</xs:element>
 
 	<xs:complexType name="genomeAssemblyType">
 		<xs:sequence>

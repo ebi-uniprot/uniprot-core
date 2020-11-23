@@ -18,7 +18,7 @@ import org.uniprot.core.proteome.*;
 import org.uniprot.core.proteome.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
-import org.uniprot.core.xml.jaxb.proteome.ProteomeType;
+import org.uniprot.core.xml.jaxb.proteome.Proteome;
 
 class ProteomeConverterTest {
 
@@ -26,7 +26,7 @@ class ProteomeConverterTest {
     void test() {
         ProteomeConverter converter = new ProteomeConverter();
         ProteomeEntry proteome = create();
-        ProteomeType xml = converter.toXml(proteome);
+        Proteome xml = converter.toXml(proteome);
         ProteomeEntry converted = converter.fromXml(xml);
         assertEquals(proteome, converted);
     }
@@ -41,7 +41,7 @@ class ProteomeConverterTest {
                         .exclusionReasonsAdd(ExclusionReason.MIXED_CULTURE)
                         .exclusionReasonsAdd(ExclusionReason.METAGENOME)
                         .build();
-        ProteomeType xml = converter.toXml(proteome);
+        Proteome xml = converter.toXml(proteome);
         ProteomeEntry converted = converter.fromXml(xml);
         assertEquals(proteome, converted);
     }
@@ -54,7 +54,7 @@ class ProteomeConverterTest {
                         .proteomeId("UP1234567890")
                         .proteomeType(REFERENCE)
                         .build();
-        ProteomeType xml = converter.toXml(proteome);
+        Proteome xml = converter.toXml(proteome);
         ProteomeEntry converted = converter.fromXml(xml);
         assertEquals(proteome, converted);
     }
@@ -67,7 +67,7 @@ class ProteomeConverterTest {
                         .proteomeId("UP1234567890")
                         .proteomeType(REPRESENTATIVE)
                         .build();
-        ProteomeType xml = converter.toXml(proteome);
+        Proteome xml = converter.toXml(proteome);
         ProteomeEntry converted = converter.fromXml(xml);
         assertEquals(proteome, converted);
     }
@@ -80,7 +80,7 @@ class ProteomeConverterTest {
                         .proteomeId("UP1234567890")
                         .proteomeType(REFERENCE_AND_REPRESENTATIVE)
                         .build();
-        ProteomeType xml = converter.toXml(proteome);
+        Proteome xml = converter.toXml(proteome);
         ProteomeEntry converted = converter.fromXml(xml);
         assertEquals(proteome, converted);
     }
@@ -90,7 +90,7 @@ class ProteomeConverterTest {
         ProteomeConverter converter = new ProteomeConverter();
         ProteomeEntry proteome =
                 new ProteomeEntryBuilder().proteomeId("UP1234567890").proteomeType(NORMAL).build();
-        ProteomeType xml = converter.toXml(proteome);
+        Proteome xml = converter.toXml(proteome);
         ProteomeEntry converted = converter.fromXml(xml);
         assertEquals(proteome, converted);
     }
@@ -104,7 +104,7 @@ class ProteomeConverterTest {
                         .proteomeType(REDUNDANT)
                         .redundantTo(new ProteomeIdBuilder("UP1234567891").build())
                         .build();
-        ProteomeType xml = converter.toXml(proteome);
+        Proteome xml = converter.toXml(proteome);
         ProteomeEntry converted = converter.fromXml(xml);
         assertEquals(proteome, converted);
     }
