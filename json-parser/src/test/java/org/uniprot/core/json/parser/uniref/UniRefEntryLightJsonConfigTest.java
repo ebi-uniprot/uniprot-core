@@ -1,7 +1,6 @@
 package org.uniprot.core.json.parser.uniref;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
 
@@ -66,6 +65,8 @@ class UniRefEntryLightJsonConfigTest {
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
             // uncomment the code to generate samplejson for UniRefEntryLight model.
             assertNotNull(json);
+            assertTrue(json.contains("\"representativeId\" : \"P12345\""));
+            assertTrue(json.contains("\"seedId\" : \"P12345\""));
             // System.out.println(json);
         } catch (Exception e) {
             fail(e.getMessage());
@@ -79,7 +80,7 @@ class UniRefEntryLightJsonConfigTest {
                 .organismsAdd("Human")
                 .organismIdsAdd(9606L)
                 .memberIdTypesAdd(UniRefMemberIdType.UNIPARC)
-                .representativeId("id")
+                .representativeId("P12345_HUMAN,P12345")
                 .name("Cluster: protein")
                 .sequence("AAAAA")
                 .updated(LocalDate.now())
@@ -87,7 +88,7 @@ class UniRefEntryLightJsonConfigTest {
                 .commonTaxonId(10116L)
                 .entryType(UniRefType.UniRef50)
                 .memberCount(5)
-                .seedId("P12345")
+                .seedId("P12345_HUMAN,P12345")
                 .goTermsAdd(
                         new GeneOntologyEntryBuilder()
                                 .id("GO1")
