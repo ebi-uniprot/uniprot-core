@@ -21,9 +21,11 @@ class ComponentConverterTest {
     void testFromXml() {
         ComponentType xmlObj = xmlFactory.createComponentType();
         xmlObj.setName("component name");
+        xmlObj.setProteinCount(10);
         xmlObj.setDescription("component description");
         Component component = converter.fromXml(xmlObj);
         assertEquals("component name", component.getName());
+        assertEquals(10, component.getProteinCount());
         assertEquals("component description", component.getDescription());
         assertEquals(0, component.getProteomeCrossReferences().size());
     }
@@ -48,6 +50,7 @@ class ComponentConverterTest {
         Component component =
                 new ComponentBuilder()
                         .name("some name")
+                        .proteinCount(10)
                         .description("some description")
                         .genomeAnnotation(genomeAnnotation)
                         .proteomeCrossReferencesAdd(genomeAccession)

@@ -4,6 +4,7 @@ import static org.uniprot.core.util.Utils.notNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
@@ -34,6 +35,9 @@ public class ComponentConverter implements Converter<ComponentType, Component> {
     public Component fromXml(ComponentType xmlObj) {
         ComponentBuilder builder = new ComponentBuilder();
         builder.name(xmlObj.getName());
+        if (Objects.nonNull(xmlObj.getProteinCount())) {
+            builder.proteinCount(xmlObj.getProteinCount());
+        }
         builder.description(xmlObj.getDescription());
         List<CrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
         if (!xmlObj.getGenomeAccession().isEmpty()) {
@@ -67,7 +71,9 @@ public class ComponentConverter implements Converter<ComponentType, Component> {
         ComponentType xmlObj = xmlFactory.createComponentType();
         xmlObj.setName(uniObj.getName());
         xmlObj.setDescription(uniObj.getDescription());
-
+        if (Objects.nonNull(uniObj.getProteinCount())) {
+            xmlObj.setProteinCount(uniObj.getProteinCount());
+        }
         uniObj.getProteomeCrossReferences().stream()
                 .filter(val -> val.getDatabase() == ProteomeDatabase.BIOSAMPLE)
                 .findFirst()

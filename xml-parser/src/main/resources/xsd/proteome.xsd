@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	elementFormDefault="qualified"
-	targetNamespace="http://uniprot.org/uniprot"
-	xmlns="http://uniprot.org/uniprot">
+	targetNamespace="http://uniprot.org/proteomes"
+	xmlns="http://uniprot.org/proteomes">
 	<xs:element name="proteomes">
 		<xs:complexType>
 			<xs:annotation>
@@ -14,10 +14,10 @@
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="proteome">
-		<xs:annotation>
-			<xs:documentation>Describes a Proteome entry.</xs:documentation>
-		</xs:annotation>
 		<xs:complexType>
+			<xs:annotation>
+				<xs:documentation>Describes a Proteome entry.</xs:documentation>
+			</xs:annotation>
 			<xs:sequence>
 				<xs:element name="upid" type="xs:string" />
 				<xs:element name="description" type="xs:string"
@@ -103,6 +103,7 @@
 				type="genomeAnnotationType" minOccurs="0" />
 		</xs:sequence>
 		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attribute name="proteinCount" type="xs:int"/>
 	</xs:complexType>
 
 	<!-- Reference definition begins -->

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<proteomes xmlns="http://uniprot.org/uniprot"
+<proteomes xmlns="http://uniprot.org/proteomes"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://uniprot.org/uniprot http://www.uniprot.org/support/docs/proteome.xsd">
-<proteome xmlns="http://uniprot.org/uniprot">
+<proteome>
     <upid>UP000000718</upid>
     <description>Thermodesulfovibrio yellowstonii (strain ATCC 51303 / DSM 11347 / YP87) is a thermophilic sulfate-reducing bacterium isolated from a thermal vent in Yellowstone Lake in Wyoming, USA. It has the ability to use sulfate, thiosulfate, and sulfite as terminal electron acceptors. Pyruvate can support fermentative growth.</description>
     <taxonomy>289376</taxonomy>
@@ -20,7 +20,7 @@
         <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
         <genomeAnnotationUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000020985.1</genomeAnnotationUrl>
     </genomeAnnotation>
-    <component name="Chromosome">
+    <component name="Chromosome" proteinCount="10">
         <description>Thermodesulfovibrio yellowstonii DSM 11347</description>
         <biosampleId>SAMN02603929</biosampleId>
         <genomeAccession>CP001147</genomeAccession>
@@ -75,7 +75,7 @@
         <property name="stdCdss" value="1166.2682710251531"/>
     </scores>
 </proteome>
-<proteome xmlns="http://uniprot.org/uniprot">
+<proteome>
     <upid>UP000006687</upid>
     <taxonomy>11049</taxonomy>
     <modified>2020-10-18Z</modified>
@@ -92,7 +92,7 @@
         <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
         <genomeAnnotationUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_003971765.1</genomeAnnotationUrl>
     </genomeAnnotation>
-    <component name="Genome">
+    <component name="Genome"  proteinCount="11">
         <description>Lelystad virus</description>
         <genomeAccession>M96262</genomeAccession>
         <genomeAnnotation>
@@ -125,7 +125,7 @@
         <property name="stdCdss" value="0.7483314773547883"/>
     </scores>
 </proteome>
-<proteome xmlns="http://uniprot.org/uniprot">
+<proteome>
     <upid>UP000029766</upid>
     <taxonomy>60714</taxonomy>
     <modified>2020-10-17Z</modified>
@@ -141,7 +141,7 @@
         <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
         <genomeAnnotationUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000859945.1</genomeAnnotationUrl>
     </genomeAnnotation>
-    <component name="Genome">
+    <component name="Genome" proteinCount="12">
         <description>Galinsoga mosaic virus</description>
         <genomeAccession>Y13463</genomeAccession>
         <genomeAnnotation>
@@ -169,7 +169,7 @@
         <property name="stdCdss" value="1.3700084222088114"/>
     </scores>
 </proteome>
-<proteome xmlns="http://uniprot.org/uniprot">
+<proteome>
     <upid>UP000164653</upid>
     <taxonomy>1076255</taxonomy>
     <modified>2020-10-17Z</modified>
@@ -185,7 +185,7 @@
         <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
         <genomeAnnotationUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000892975.1</genomeAnnotationUrl>
     </genomeAnnotation>
-    <component name="Genome">
+    <component name="Genome" proteinCount="13">
         <description>Yoka poxvirus strain DakArB 4268</description>
         <genomeAccession>HQ849551</genomeAccession>
         <genomeAnnotation>
@@ -218,7 +218,7 @@
         <property name="stdCdss" value="41.93235560500493"/>
     </scores>
 </proteome>
-<proteome xmlns="http://uniprot.org/uniprot">
+<proteome>
     <upid>UP000029775</upid>
     <taxonomy>1559365</taxonomy>
     <modified>2020-10-17Z</modified>
@@ -235,7 +235,7 @@
         <genomeAnnotationSource>ENA/EMBL</genomeAnnotationSource>
         <genomeAnnotationUrl>https://www.ebi.ac.uk/ena/browser/view/GCA_000887455.1</genomeAnnotationUrl>
     </genomeAnnotation>
-    <component name="Genome">
+    <component name="Genome" proteinCount="14">
         <description>Turnip curly top virus isolate IR:Zaf:B11:06</description>
         <genomeAccession>GU456685</genomeAccession>
         <genomeAnnotation>
