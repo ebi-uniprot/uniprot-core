@@ -103,7 +103,7 @@
 				type="genomeAnnotationType" minOccurs="0" />
 		</xs:sequence>
 		<xs:attribute name="name" type="xs:string" use="required" />
-		<xs:attribute name="proteinCount" type="xs:int"/>
+		<xs:attribute name="proteinCount" type="xs:int" />
 	</xs:complexType>
 
 	<!-- Reference definition begins -->
