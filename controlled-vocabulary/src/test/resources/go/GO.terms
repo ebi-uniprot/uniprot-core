@@ -1,0 +1,24 @@
+! GO.terms
+!
+! Columns:
+!      1) GO ID
+!      2) is_obsolete flag
+!      3) term name
+!      4) term definition
+!
+! Generated: 2018-07-09 17:00
+!
+GO:0000001	N	mitochondrion inheritance	The distribution of mitochondria, including the mitochondrial genome, into daughter cells after mitosis or meiosis, mediated by interactions between mitochondria and the cytoskeleton.
+GO:0000002	N	mitochondrial genome maintenance	The maintenance of the structure and integrity of the mitochondrial genome; includes replication and segregation of the mitochondrial chromosome.
+GO:0000003	N	reproduction	The production of new individuals that contain some portion of genetic material inherited from one or more parent organisms.
+GO:0000005	Y	obsolete ribosomal chaperone activity	OBSOLETE. Assists in the correct assembly of ribosomes or ribosomal subunits in vivo, but is not a component of the assembled ribosome when performing its normal biological function.
+GO:0000006	N	high-affinity zinc transmembrane transporter activity	Enables the transfer of zinc ions (Zn2+) from one side of a membrane to the other, probably powered by proton motive force. In high-affinity transport the transporter is able to bind the solute even if it is only present at very low concentrations.
+GO:0048308	N	low-affinity zinc ion transmembrane transporter activity	Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: Zn2+ = Zn2+, probably powered by proton motive force. In low-affinity transport the transporter is able to bind the solute only if it is present at very high concentrations.
+GO:0000008	Y	obsolete thioredoxin	OBSOLETE. A small disulfide-containing redox protein that serves as a general protein disulfide oxidoreductase. Interacts with a broad range of proteins by a redox mechanism, based on the reversible oxidation of 2 cysteine thiol groups to a disulfide, accompanied by the transfer of 2 electrons and 2 protons. The net result is the covalent interconversion of a disulfide and a dithiol.
+GO:0048311	N	alpha-1,6-mannosyltransferase activity	Catalysis of the transfer of a mannose residue to an oligosaccharide, forming an alpha-(1->6) linkage.
+GO:0000100	N	trans-hexaprenyltranstransferase activity	Catalysis of the reaction: all-trans-hexaprenyl diphosphate + isopentenyl diphosphate = all-trans-heptaprenyl diphosphate + diphosphate.
+GO:0000200	N	nuclear euchromatin	The dispersed less dense form of chromatin in the interphase nucleus. It exists in at least two forms, a some being in the form of transcriptionally active chromatin which is the least condensed, while the rest is inactive euchromatin which is more condensed than active chromatin but less condensed than heterochromatin.
+GO:0030863	N	cortical cytoskeleton	The portion of the cytoskeleton that lies just beneath the plasma membrane.
+GO:0071230	N	cellular response to amino acid stimulus	Any process that results in a change in state or activity of a cell (in terms of movement, secretion, enzyme production, gene expression, etc.) as a result of an amino acid stimulus. An amino acid is a carboxylic acids containing one or more amino groups.
+GO:0048168	N	regulation of neuronal synaptic plasticity	A process that modulates neuronal synaptic plasticity, the ability of neuronal synapses to change as circumstances require. They may alter function, such as increasing or decreasing their sensitivity, or they may increase or decrease in actual numbers.
+GO:0007005	N	mitochondrion organization	A process that is carried out at the cellular level which results in the assembly, arrangement of constituent parts, or disassembly of a mitochondrion; includes mitochondrial morphogenesis and distribution, and replication of the mitochondrial genome as well as synthesis of new mitochondrial components.
