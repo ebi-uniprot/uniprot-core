@@ -1,19 +1,19 @@
 package org.uniprot.cv.go.impl;
 
+import static java.util.Arrays.asList;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
+import java.util.Collections;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.cv.go.GoTerm;
 import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
 import org.uniprot.cv.go.RelationshipType;
-
-import java.util.Collections;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import static java.util.Arrays.asList;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
 
 /**
  * Created 25/11/2020
@@ -113,6 +113,7 @@ class GORepoImplTest {
 
         assertThat(
                 ancestors.stream().map(GoTerm::getId).collect(Collectors.toSet()),
-                containsInAnyOrder("GO:0000200", "GO:0000100", "GO:0048311", "GO:0048168", "GO:0048308"));
+                containsInAnyOrder(
+                        "GO:0000200", "GO:0000100", "GO:0048311", "GO:0048168", "GO:0048308"));
     }
 }
