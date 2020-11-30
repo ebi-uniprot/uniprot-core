@@ -130,6 +130,10 @@
 								<name>http.proxyPort</name>
 								<value>${http.proxyPort}</value>
 							</property>
+							<property>
+								<name>cv.dr.ord.location</name>
+								<value>${project.build.directory}/../../controlled-vocabulary/src/test/resources/xdb/dr_ord</value>
+							</property>
 						</systemProperties>
 					</configuration>
 				</plugin>
