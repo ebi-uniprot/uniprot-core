@@ -1,12 +1,12 @@
 package org.uniprot.cv.go.impl;
 
-import org.uniprot.core.cv.go.GeneOntologyEntry;
-import org.uniprot.cv.common.AbstractFileReader;
-import org.uniprot.cv.common.BaseCache;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.cv.common.AbstractFileReader;
+import org.uniprot.cv.common.BaseCache;
 
 /**
  * Created 25/11/2020

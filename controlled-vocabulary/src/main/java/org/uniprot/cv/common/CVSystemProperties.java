@@ -1,9 +1,9 @@
 package org.uniprot.cv.common;
 
-import javax.annotation.Nullable;
-
 import static org.uniprot.core.util.Utils.notNull;
 import static org.uniprot.cv.common.AbstractFileReader.isUrl;
+
+import javax.annotation.Nullable;
 
 public class CVSystemProperties {
     public static final String GO_LOCATION = "cv.go.location";

@@ -1,18 +1,18 @@
 package org.uniprot.utils.uniprotkb;
 
+import static java.util.Arrays.asList;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
+import static org.mockito.Mockito.when;
+
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.uniprot.core.cv.go.GoTerm;
 import org.uniprot.core.cv.go.impl.GoTermBuilder;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
-
-import java.util.List;
-
-import static java.util.Arrays.asList;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
-import static org.mockito.Mockito.when;
 
 /**
  * Created 30/11/2020
