@@ -12,8 +12,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.uniprotkb.description.impl.ProteinNameImplTest.createProteinAltNames;
-import static org.uniprot.core.uniprotkb.description.impl.ProteinNameImplTest.createProteinRecName;
+import static org.uniprot.core.uniprotkb.description.impl.ProteinNameImplTest.createProteinNames;
 
 class ProteinSectionBuilderTest {
     private ProteinName altName = new ProteinNameBuilder().build();
@@ -162,9 +161,10 @@ class ProteinSectionBuilderTest {
 
     public static ProteinSection createObject(int listSize, boolean includeEvidences) {
         ProteinSectionBuilder builder = new ProteinSectionBuilder();
-        ProteinName recommendedName = createProteinRecName(listSize, includeEvidences);
+        ProteinName recommendedName =
+                ProteinNameImplTest.createProteinName(listSize, includeEvidences);
         builder.recommendedName(recommendedName);
-        List<ProteinName> alternativeNames = createProteinAltNames(listSize, includeEvidences);
+        List<ProteinName> alternativeNames = createProteinNames(listSize, includeEvidences);
         builder.alternativeNamesSet(alternativeNames);
         Name allergenName = NameBuilderTest.createObject(listSize, includeEvidences);
         builder.allergenName(allergenName);

@@ -1,18 +1,15 @@
 package org.uniprot.core.uniprotkb.impl;
 
-import static org.uniprot.core.util.Utils.notNull;
-import static org.uniprot.core.util.Utils.nullOrEmpty;
-
-import java.util.*;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.Sequence;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.gene.Gene;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.uniprotkb.*;
 import org.uniprot.core.uniprotkb.comment.*;
-import org.uniprot.core.uniprotkb.description.*;
+import org.uniprot.core.uniprotkb.description.ProteinDescription;
+import org.uniprot.core.uniprotkb.description.ProteinName;
+import org.uniprot.core.uniprotkb.description.ProteinSection;
+import org.uniprot.core.uniprotkb.description.ProteinSubName;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.HasEvidences;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
@@ -22,6 +19,12 @@ import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 import org.uniprot.core.util.Utils;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static org.uniprot.core.util.Utils.notNull;
+import static org.uniprot.core.util.Utils.nullOrEmpty;
 
 public class UniProtKBEntryImpl implements UniProtKBEntry {
     private static final long serialVersionUID = 3240727057252439286L;
@@ -527,9 +530,9 @@ public class UniProtKBEntryImpl implements UniProtKBEntry {
 
     private void updateProteinDescriptionEvidences(Set<Evidence> evidences, ProteinDescription pd) {
         if (pd == null) return;
-        updateProteinRecNameEvidences(evidences, pd.getRecommendedName());
+        updateProteinNameEvidences(evidences, pd.getRecommendedName());
         if (pd.getAlternativeNames() != null) {
-            pd.getAlternativeNames().forEach(val -> updateProteinAltNameEvidences(evidences, val));
+            pd.getAlternativeNames().forEach(val -> updateProteinNameEvidences(evidences, val));
         }
         if (pd.getSubmissionNames() != null) {
             pd.getSubmissionNames().forEach(val -> updateProteinSubNameEvidences(evidences, val));
@@ -556,22 +559,14 @@ public class UniProtKBEntryImpl implements UniProtKBEntry {
     }
 
     private void updateProteinSectionEvidences(Set<Evidence> evidences, ProteinSection ps) {
-        updateProteinRecNameEvidences(evidences, ps.getRecommendedName());
+        updateProteinNameEvidences(evidences, ps.getRecommendedName());
         if (ps.getAlternativeNames() != null) {
-            ps.getAlternativeNames().forEach(val -> updateProteinAltNameEvidences(evidences, val));
+            ps.getAlternativeNames().forEach(val -> updateProteinNameEvidences(evidences, val));
         }
     }
 
-    private void updateProteinRecNameEvidences(Set<Evidence> evidences, ProteinName pn) {
-        if (pn == null) {
-            return;
-        }
-        updateHasEvidence(evidences, pn.getFullName());
-        updateHasEvidences(evidences, pn.getShortNames());
-        updateHasEvidences(evidences, pn.getEcNumbers());
-    }
-
-    private void updateProteinAltNameEvidences(Set<Evidence> evidences, ProteinName pn) {
+    private void updateProteinNameEvidences(Set<Evidence> evidences, ProteinName pn) {
+        if (pn == null) return;
         updateHasEvidence(evidences, pn.getFullName());
         updateHasEvidences(evidences, pn.getShortNames());
         updateHasEvidences(evidences, pn.getEcNumbers());

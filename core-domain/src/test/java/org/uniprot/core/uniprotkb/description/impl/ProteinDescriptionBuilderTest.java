@@ -9,8 +9,7 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.uniprotkb.description.impl.ProteinNameImplTest.createProteinAltNames;
-import static org.uniprot.core.uniprotkb.description.impl.ProteinNameImplTest.createProteinRecName;
+import static org.uniprot.core.uniprotkb.description.impl.ProteinNameImplTest.createProteinNames;
 
 public class ProteinDescriptionBuilderTest {
 
@@ -249,7 +248,7 @@ public class ProteinDescriptionBuilderTest {
         int rIndex = ThreadLocalRandom.current().nextInt(0, FlagType.values().length);
         FlagType flagType = FlagType.values()[rIndex];
         builder.flag(flagType);
-        ProteinName recommendedName = createProteinRecName(listSize, includeAll);
+        ProteinName recommendedName = ProteinNameImplTest.createProteinName(listSize, includeAll);
         builder.recommendedName(recommendedName);
         List<ProteinSection> contains =
                 ProteinSectionBuilderTest.createObjects(listSize, includeAll);
@@ -270,7 +269,7 @@ public class ProteinDescriptionBuilderTest {
         builder.biotechName(biotechName);
         Name allergenName = NameBuilderTest.createObject(listSize, includeAll);
         builder.allergenName(allergenName);
-        List<ProteinName> alternativeNames = createProteinAltNames(listSize, includeAll);
+        List<ProteinName> alternativeNames = createProteinNames(listSize, includeAll);
         builder.alternativeNamesSet(alternativeNames);
         return builder.build();
     }

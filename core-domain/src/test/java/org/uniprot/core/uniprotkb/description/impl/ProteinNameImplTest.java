@@ -8,7 +8,6 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -116,18 +115,7 @@ class ProteinNameImplTest {
         assertEquals(impl.hashCode(), obj.hashCode());
     }
 
-    public static ProteinName createProteinRecName(int listSize, boolean includeEvidences) {
-        ProteinNameBuilder builder = new ProteinNameBuilder();
-        Name fullName = NameBuilderTest.createObject(listSize, includeEvidences);
-        builder.fullName(fullName);
-        List<Name> shortNames = NameBuilderTest.createObjects(listSize, includeEvidences);
-        builder.shortNamesSet(shortNames);
-        List<EC> ecNumbers = ECBuilderTest.createObjects(listSize, includeEvidences);
-        builder.ecNumbersSet(ecNumbers);
-        return builder.build();
-    }
-
-    public static ProteinName createProteinAltName(int listSize, boolean includeEvidences) {
+    public static ProteinName createProteinName(int listSize, boolean includeEvidences) {
         ProteinNameBuilder builder = new ProteinNameBuilder();
         Name fullName = NameBuilderTest.createObject(listSize, includeEvidences);
         List<Name> shortNames = NameBuilderTest.createObjects(listSize, includeEvidences);
@@ -138,31 +126,13 @@ class ProteinNameImplTest {
         return builder.build();
     }
 
-    public static ProteinName createProteinAltName(int listSize) {
-        return createProteinAltName(listSize, false);
+    public static List<ProteinName> createProteinNames(int count) {
+        return createProteinNames(count, false);
     }
 
-    public static ProteinName createProteinAltName() {
-        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
-        return createProteinAltName(listSize);
-    }
-
-    public static List<ProteinName> createProteinAltNames(int count) {
-        return createProteinAltNames(count, false);
-    }
-
-    public static List<ProteinName> createProteinAltNames(int count, boolean includeEvidences) {
+    public static List<ProteinName> createProteinNames(int count, boolean includeEvidences) {
         return IntStream.range(0, count)
-                .mapToObj(i -> createProteinAltName(count, includeEvidences))
+                .mapToObj(i -> createProteinName(count, includeEvidences))
                 .collect(Collectors.toList());
-    }
-
-    public static ProteinName createProteinRecName(int listSize) {
-        return createProteinRecName(listSize, false);
-    }
-
-    public static ProteinName createProteinRecName() {
-        int listSize = ThreadLocalRandom.current().nextInt(1, 5);
-        return createProteinRecName(listSize);
     }
 }
