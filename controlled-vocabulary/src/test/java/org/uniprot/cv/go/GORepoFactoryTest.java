@@ -42,4 +42,10 @@ class GORepoFactoryTest {
         System.clearProperty(CVSystemProperties.GO_LOCATION);
         assertThrows(Exception.class, GORepoFactory::createRepo);
     }
+
+    @Test
+    void noPathAndWrongSystemProperty_causesException() {
+        System.setProperty(CVSystemProperties.GO_LOCATION, "/this/is/wrong");
+        assertThrows(Exception.class, GORepoFactory::createRepo);
+    }
 }

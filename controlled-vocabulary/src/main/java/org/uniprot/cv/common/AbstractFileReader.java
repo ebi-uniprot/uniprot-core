@@ -1,7 +1,9 @@
 package org.uniprot.cv.common;
 
-import static org.slf4j.LoggerFactory.getLogger;
+import org.slf4j.Logger;
+import org.uniprot.cv.FileReader;
 
+import javax.annotation.Nonnull;
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
@@ -9,10 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.annotation.Nonnull;
-
-import org.slf4j.Logger;
-import org.uniprot.cv.FileReader;
+import static org.slf4j.LoggerFactory.getLogger;
 
 public abstract class AbstractFileReader<T> implements FileReader<T> {
     private static final Logger LOGGER = getLogger(AbstractFileReader.class);
@@ -54,7 +53,9 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
                 in.close();
             }
         } catch (IOException e) {
-            LOGGER.error("Error while fetching the data from ftp url {}", ftpUrl);
+            String msg = "Error while fetching the data from ftp url " + ftpUrl;
+            LOGGER.error(msg);
+            throw new ControlledVocabularyFileLocationException(msg);
         }
         return lines;
     }
@@ -79,7 +80,9 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
                     }
                 }
             } catch (IOException e) {
-                LOGGER.error("Problem loading file.", e);
+                String msg = "Problem loading file.";
+                LOGGER.error(msg, e);
+                throw new ControlledVocabularyFileLocationException(msg);
             }
 
             return lines;

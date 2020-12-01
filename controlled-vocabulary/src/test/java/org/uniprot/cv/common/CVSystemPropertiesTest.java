@@ -108,7 +108,7 @@ class CVSystemPropertiesTest {
     void throwException_whenPropertyEmpty_getDatabaseTypesLocation() {
         System.setProperty(DATABASE_TYPES_LOCATION, "");
         assertThrows(
-                CacheFileLocationException.class, CVSystemProperties::getDatabaseTypesLocation);
+                ControlledVocabularyFileLocationException.class, CVSystemProperties::getDatabaseTypesLocation);
         System.clearProperty(DATABASE_TYPES_LOCATION);
     }
 
@@ -116,7 +116,7 @@ class CVSystemPropertiesTest {
     void throwException_whenPropertyNotURL_getDatabaseTypesLocation() {
         System.setProperty(DATABASE_TYPES_LOCATION, "/i/am/not/url");
         assertThrows(
-                CacheFileLocationException.class, CVSystemProperties::getDatabaseTypesLocation);
+                ControlledVocabularyFileLocationException.class, CVSystemProperties::getDatabaseTypesLocation);
         System.clearProperty(DATABASE_TYPES_LOCATION);
     }
 

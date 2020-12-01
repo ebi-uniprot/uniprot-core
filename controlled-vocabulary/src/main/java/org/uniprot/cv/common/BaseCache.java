@@ -14,7 +14,7 @@ public interface BaseCache<T> {
 
     default List<T> get(String dir) {
         if (nullOrEmpty(dir)) {
-            throw new CacheFileLocationException();
+            throw new ControlledVocabularyFileLocationException();
         }
 
         List<T> result = getCacheMap().get(dir);
