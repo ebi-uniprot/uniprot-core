@@ -1,14 +1,14 @@
 package org.uniprot.cv.go.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.go.GeneOntologyEntry;
-import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
-
-import java.util.List;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
 
 /**
  * Created 26/11/2020
