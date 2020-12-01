@@ -87,7 +87,7 @@ public class ProteinDescriptionScored implements HasScore {
     }
 
     private boolean hasValidEvidences(ProteinName name) {
-        List<Evidence> evidences = extractProteinRecNameEvidences(name);
+        List<Evidence> evidences = extractProteinNameEvidences(name);
         return ScoreUtil.hasEvidence(evidences, evidenceDatabases);
     }
 
@@ -137,22 +137,7 @@ public class ProteinDescriptionScored implements HasScore {
                         .collect(Collectors.toSet()));
     }
 
-    private List<Evidence> extractProteinAltNameEvidences(ProteinName name) {
-        List<Evidence> evs = new ArrayList<>();
-        insertAllEvidences(name.getEcNumbers(), evs);
-        insertAllEvidences(name.getShortNames(), evs);
-        insertAllEvidences(name.getFullName(), evs);
-
-        evs.addAll(
-                name.getEcNumbers().stream()
-                        .map(HasEvidences::getEvidences)
-                        .flatMap(Collection::stream)
-                        .collect(Collectors.toList()));
-
-        return evs;
-    }
-
-    private List<Evidence> extractProteinRecNameEvidences(ProteinName name) {
+    private List<Evidence> extractProteinNameEvidences(ProteinName name) {
         List<Evidence> evs = new ArrayList<>();
         insertAllEvidences(name.getEcNumbers(), evs);
         insertAllEvidences(name.getShortNames(), evs);
