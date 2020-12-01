@@ -1,5 +1,11 @@
 package org.uniprot.core.uniprotkb.impl;
 
+import static org.uniprot.core.util.Utils.notNull;
+import static org.uniprot.core.util.Utils.nullOrEmpty;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.Sequence;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.gene.Gene;
@@ -19,12 +25,6 @@ import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 import org.uniprot.core.util.Utils;
-
-import java.util.*;
-import java.util.stream.Collectors;
-
-import static org.uniprot.core.util.Utils.notNull;
-import static org.uniprot.core.util.Utils.nullOrEmpty;
 
 public class UniProtKBEntryImpl implements UniProtKBEntry {
     private static final long serialVersionUID = 3240727057252439286L;

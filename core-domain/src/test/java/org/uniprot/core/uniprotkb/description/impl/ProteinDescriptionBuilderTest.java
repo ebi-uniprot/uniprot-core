@@ -1,15 +1,15 @@
 package org.uniprot.core.uniprotkb.description.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.description.*;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.uniprotkb.description.impl.ProteinNameImplTest.createProteinNames;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.uniprotkb.description.impl.ProteinNameImplTest.createProteinNames;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.description.*;
 
 public class ProteinDescriptionBuilderTest {
 
