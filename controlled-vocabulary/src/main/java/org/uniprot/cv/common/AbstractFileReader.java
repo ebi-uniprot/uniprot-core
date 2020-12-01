@@ -28,12 +28,14 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
 
     public abstract List<T> parseLines(List<String> lines);
 
+    // TODO: 25/11/2020 make this a stream
     @Override
     public List<T> parse(String filename) {
         List<String> lines = readLines(filename);
         return parseLines(lines);
     }
 
+    // TODO: 25/11/2020 make this a stream
     private static List<String> fetchFromURL(String ftpUrl) {
         List<String> lines = new ArrayList<>();
         try {
@@ -57,6 +59,7 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
         return lines;
     }
 
+    // TODO: 25/11/2020 make this a stream
     public static List<String> readLines(@Nonnull String filename) {
         if (isUrl(filename)) {
             return fetchFromURL(filename);
