@@ -119,4 +119,28 @@ class CVSystemPropertiesTest {
                 CacheFileLocationException.class, CVSystemProperties::getDatabaseTypesLocation);
         System.clearProperty(DATABASE_TYPES_LOCATION);
     }
+
+    @Test
+    void whenPropertyNotSetReturnNull_getGOLocation() {
+        System.clearProperty(GO_LOCATION);
+        assertNull(CVSystemProperties.getGOLocation());
+    }
+
+    @Test
+    void returnEmpty_whenPropertySetEmpty_getGOLocation() {
+        System.setProperty(GO_LOCATION, "");
+        assertNotNull(CVSystemProperties.getGOLocation());
+        assertTrue(CVSystemProperties.getGOLocation().isEmpty());
+        System.clearProperty(GO_LOCATION);
+    }
+
+    @Test
+    void returnValue_whenPropertySet_getGOLocation() {
+        String value = "value in Property";
+        System.setProperty(GO_LOCATION, value);
+        assertNotNull(CVSystemProperties.getGOLocation());
+        assertFalse(CVSystemProperties.getGOLocation().isEmpty());
+        assertEquals(value, CVSystemProperties.getGOLocation());
+        System.clearProperty(GO_LOCATION);
+    }
 }
