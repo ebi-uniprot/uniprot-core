@@ -1,13 +1,12 @@
 package org.uniprot.cv.go.impl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
 import org.uniprot.core.util.Utils;
 import org.uniprot.cv.common.AbstractFileReader;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 class GOTermFileReader extends AbstractFileReader<GeneOntologyEntry> {
     private static final String COMMENT_PREFIX = "!";
@@ -22,7 +21,10 @@ class GOTermFileReader extends AbstractFileReader<GeneOntologyEntry> {
 
     @Override
     public List<GeneOntologyEntry> parseLines(List<String> lines) {
-        return lines.stream().map(this::readLine).filter(Utils::notNull).collect(Collectors.toList());
+        return lines.stream()
+                .map(this::readLine)
+                .filter(Utils::notNull)
+                .collect(Collectors.toList());
     }
 
     private GeneOntologyEntry readLine(String line) {

@@ -1,12 +1,12 @@
 package org.uniprot.cv.go.impl;
 
-import org.uniprot.cv.common.AbstractFileReader;
-import org.uniprot.cv.go.RelationshipType;
+import static org.uniprot.cv.go.RelationshipType.IS_A;
+import static org.uniprot.cv.go.RelationshipType.PART_OF;
 
 import java.util.*;
 
-import static org.uniprot.cv.go.RelationshipType.IS_A;
-import static org.uniprot.cv.go.RelationshipType.PART_OF;
+import org.uniprot.cv.common.AbstractFileReader;
+import org.uniprot.cv.go.RelationshipType;
 
 class GORelationFileReader extends AbstractFileReader<GORelationFileReader.GORelationshipsEntry> {
     private static final String COMMENT_PREFIX = "!";

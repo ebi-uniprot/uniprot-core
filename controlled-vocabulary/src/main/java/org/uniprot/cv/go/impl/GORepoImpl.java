@@ -1,15 +1,15 @@
 package org.uniprot.cv.go.impl;
 
-import org.uniprot.core.cv.go.GeneOntologyEntry;
-import org.uniprot.core.util.Utils;
-import org.uniprot.cv.go.GORepo;
-import org.uniprot.cv.go.RelationshipType;
+import static java.util.Arrays.asList;
+import static java.util.Collections.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static java.util.Arrays.asList;
-import static java.util.Collections.*;
+import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.util.Utils;
+import org.uniprot.cv.go.GORepo;
+import org.uniprot.cv.go.RelationshipType;
 
 /**
  * Created 25/11/2020
@@ -17,7 +17,8 @@ import static java.util.Collections.*;
  * @author Edd
  */
 public class GORepoImpl implements GORepo {
-    private static final List<RelationshipType> DEFAULT_RELATIONSHIPS_FOR_ANCESTORS = asList(RelationshipType.IS_A, RelationshipType.PART_OF);
+    private static final List<RelationshipType> DEFAULT_RELATIONSHIPS_FOR_ANCESTORS =
+            asList(RelationshipType.IS_A, RelationshipType.PART_OF);
     final Map<String, Set<GeneOntologyEntry>> ancestorCache;
     private final Map<String, GeneOntologyEntry> goTermMap;
     private final Map<String, Set<GeneOntologyEntry>> isAMap;
