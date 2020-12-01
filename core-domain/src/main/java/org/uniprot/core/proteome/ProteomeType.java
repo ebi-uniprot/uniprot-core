@@ -5,7 +5,7 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.util.EnumDisplay;
 
 public enum ProteomeType implements EnumDisplay {
-    NORMAL("Complete proteome"),
+    NORMAL("Other proteome"),
     REFERENCE("Reference proteome"),
     REPRESENTATIVE("Representative proteome"),
     REFERENCE_AND_REPRESENTATIVE("Reference and representative proteome"),
