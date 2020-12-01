@@ -1,7 +1,16 @@
 package org.uniprot.core.flatfile.parser.integration;
 
-import com.google.common.io.CharSource;
-import com.google.common.io.Resources;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.slf4j.LoggerFactory.getLogger;
+
+import java.io.IOException;
+import java.net.URL;
+import java.nio.charset.Charset;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.slf4j.Logger;
@@ -15,16 +24,8 @@ import org.uniprot.core.flatfile.writer.impl.UniProtFlatfileWriter;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 
-import java.io.IOException;
-import java.net.URL;
-import java.nio.charset.Charset;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.slf4j.LoggerFactory.getLogger;
+import com.google.common.io.CharSource;
+import com.google.common.io.Resources;
 
 class FlatfileRoundTripIT {
     private static final Logger LOGGER = getLogger(FlatfileRoundTripIT.class);
