@@ -1,19 +1,19 @@
 package org.uniprot.cv.go.impl;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.opentest4j.AssertionFailedError;
-import org.uniprot.cv.go.RelationshipType;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.cv.go.RelationshipType.IS_A;
 import static org.uniprot.cv.go.RelationshipType.PART_OF;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.opentest4j.AssertionFailedError;
+import org.uniprot.cv.go.RelationshipType;
 
 /**
  * Created 26/11/2020
@@ -39,7 +39,8 @@ class GORelationsCacheTest {
         assertThat(partOfMap.keySet(), hasSize(2));
     }
 
-    private Map<String, Set<String>> extractType(List<GORelationFileReader.GORelationshipsEntry> go, RelationshipType type) {
+    private Map<String, Set<String>> extractType(
+            List<GORelationFileReader.GORelationshipsEntry> go, RelationshipType type) {
         return go.stream()
                 .filter(t -> t.relationship.equals(type))
                 .map(t -> t.relationships)

@@ -1,14 +1,14 @@
 package org.uniprot.utils.uniprotkb;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.uniprot.core.cv.go.GoTerm;
 import org.uniprot.core.cv.go.impl.GoTermBuilder;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.cv.go.GORepo;
 import org.uniprot.cv.go.GORepoFactory;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class provides utility methods for retrieving information from a UniProtKB entry.
@@ -22,6 +22,7 @@ public class UniProtKBEntryUtils {
 
     /**
      * Retrieves a list of {@link GoTerm} objects from a {@link UniProtKBEntry} instance.
+     *
      * @param entry the entry
      * @return the list of GO terms extracted from the supplied entry
      */

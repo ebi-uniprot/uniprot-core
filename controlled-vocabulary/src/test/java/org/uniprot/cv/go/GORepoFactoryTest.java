@@ -1,12 +1,12 @@
 package org.uniprot.cv.go;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.cv.common.CVSystemProperties;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.cv.common.CVSystemProperties;
 
 /**
  * Created 27/11/2020

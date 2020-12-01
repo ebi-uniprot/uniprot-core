@@ -1,15 +1,7 @@
 package org.uniprot.core.flatfile.parser.integration;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.slf4j.LoggerFactory.getLogger;
-
-import java.io.IOException;
-import java.net.URL;
-import java.nio.charset.Charset;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
-
+import com.google.common.io.CharSource;
+import com.google.common.io.Resources;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.slf4j.Logger;
@@ -23,8 +15,16 @@ import org.uniprot.core.flatfile.writer.impl.UniProtFlatfileWriter;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 
-import com.google.common.io.CharSource;
-import com.google.common.io.Resources;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.charset.Charset;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.slf4j.LoggerFactory.getLogger;
 
 class FlatfileRoundTripIT {
     private static final Logger LOGGER = getLogger(FlatfileRoundTripIT.class);
@@ -99,11 +99,6 @@ class FlatfileRoundTripIT {
     }
 
     private void testFile(String file, boolean isPublic) {
-//            System.setProperty(
-//                    "cv.dr.ord.location",
-//                    "/home/edd/working/intellij/website/uniprot-core/controlled-vocabulary/src/test/resources/xdb/dr_ord");
-//            System.out.println("SET SYSTEM PROPERTY");
-
         System.out.println("====>" + file);
         String entryStr = readEntryFromFile(file);
         testEntry(entryStr, isPublic);
