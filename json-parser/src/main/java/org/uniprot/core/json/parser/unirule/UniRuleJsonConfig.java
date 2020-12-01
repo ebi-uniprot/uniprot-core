@@ -140,9 +140,9 @@ public class UniRuleJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(UniProtKBDatabase.class, UniProtKBDatabaseImpl.class);
 
         mod.addAbstractTypeMapping(ProteinDescription.class, ProteinDescriptionImpl.class);
-        mod.addAbstractTypeMapping(ProteinRecName.class, ProteinRecNameImpl.class);
+        mod.addAbstractTypeMapping(ProteinName.class, ProteinNameImpl.class);
         mod.addAbstractTypeMapping(ProteinSubName.class, ProteinSubNameImpl.class);
-        mod.addAbstractTypeMapping(ProteinAltName.class, ProteinAltNameImpl.class);
+        mod.addAbstractTypeMapping(ProteinName.class, ProteinNameImpl.class);
         mod.addAbstractTypeMapping(ProteinSection.class, ProteinSectionImpl.class);
         mod.addAbstractTypeMapping(Name.class, NameImpl.class);
         mod.addAbstractTypeMapping(EC.class, ECImpl.class);

@@ -9,8 +9,8 @@ import org.uniprot.core.util.Utils;
 public class ProteinDescriptionImpl implements ProteinDescription {
 
     private static final long serialVersionUID = 6554940064782470199L;
-    private ProteinRecName recommendedName;
-    private List<ProteinAltName> alternativeNames;
+    private ProteinName recommendedName;
+    private List<ProteinName> alternativeNames;
     private Name allergenName;
     private Name biotechName;
     private List<Name> cdAntigenNames;
@@ -31,8 +31,8 @@ public class ProteinDescriptionImpl implements ProteinDescription {
     }
 
     ProteinDescriptionImpl(
-            ProteinRecName recommendedName,
-            List<ProteinAltName> alternativeNames,
+            ProteinName recommendedName,
+            List<ProteinName> alternativeNames,
             Name allergenName,
             Name biotechName,
             List<Name> cdAntigenNames,
@@ -54,7 +54,7 @@ public class ProteinDescriptionImpl implements ProteinDescription {
     }
 
     @Override
-    public ProteinRecName getRecommendedName() {
+    public ProteinName getRecommendedName() {
         return recommendedName;
     }
 
@@ -64,7 +64,7 @@ public class ProteinDescriptionImpl implements ProteinDescription {
     }
 
     @Override
-    public List<ProteinAltName> getAlternativeNames() {
+    public List<ProteinName> getAlternativeNames() {
         return alternativeNames;
     }
 

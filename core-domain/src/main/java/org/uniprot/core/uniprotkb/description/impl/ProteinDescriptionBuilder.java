@@ -14,8 +14,8 @@ import org.uniprot.core.uniprotkb.description.*;
 /** @author lgonzales */
 public class ProteinDescriptionBuilder implements Builder<ProteinDescription> {
 
-    private ProteinRecName recommendedName;
-    private List<ProteinAltName> alternativeNames = new ArrayList<>();
+    private ProteinName recommendedName;
+    private List<ProteinName> alternativeNames = new ArrayList<>();
 
     private Name allergenName;
     private Name biotechName;
@@ -27,18 +27,18 @@ public class ProteinDescriptionBuilder implements Builder<ProteinDescription> {
     private List<ProteinSection> includes = new ArrayList<>();
     private List<ProteinSection> contains = new ArrayList<>();
 
-    public @Nonnull ProteinDescriptionBuilder recommendedName(ProteinRecName recommendedName) {
+    public @Nonnull ProteinDescriptionBuilder recommendedName(ProteinName recommendedName) {
         this.recommendedName = recommendedName;
         return this;
     }
 
     public @Nonnull ProteinDescriptionBuilder alternativeNamesSet(
-            List<ProteinAltName> alternativeNames) {
+            List<ProteinName> alternativeNames) {
         this.alternativeNames = modifiableList(alternativeNames);
         return this;
     }
 
-    public @Nonnull ProteinDescriptionBuilder alternativeNamesAdd(ProteinAltName alternativeNames) {
+    public @Nonnull ProteinDescriptionBuilder alternativeNamesAdd(ProteinName alternativeNames) {
         addOrIgnoreNull(alternativeNames, this.alternativeNames);
         return this;
     }

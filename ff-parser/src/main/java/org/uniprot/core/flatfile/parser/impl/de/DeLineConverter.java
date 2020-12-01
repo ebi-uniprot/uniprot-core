@@ -8,20 +8,8 @@ import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
 import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject.FlagType;
-import org.uniprot.core.uniprotkb.description.EC;
-import org.uniprot.core.uniprotkb.description.Name;
-import org.uniprot.core.uniprotkb.description.ProteinAltName;
-import org.uniprot.core.uniprotkb.description.ProteinDescription;
-import org.uniprot.core.uniprotkb.description.ProteinRecName;
-import org.uniprot.core.uniprotkb.description.ProteinSection;
-import org.uniprot.core.uniprotkb.description.ProteinSubName;
-import org.uniprot.core.uniprotkb.description.impl.ECBuilder;
-import org.uniprot.core.uniprotkb.description.impl.NameBuilder;
-import org.uniprot.core.uniprotkb.description.impl.ProteinAltNameBuilder;
-import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilder;
-import org.uniprot.core.uniprotkb.description.impl.ProteinRecNameBuilder;
-import org.uniprot.core.uniprotkb.description.impl.ProteinSectionBuilder;
-import org.uniprot.core.uniprotkb.description.impl.ProteinSubNameBuilder;
+import org.uniprot.core.uniprotkb.description.*;
+import org.uniprot.core.uniprotkb.description.impl.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 import com.google.common.base.Strings;
@@ -35,11 +23,11 @@ public class DeLineConverter extends EvidenceCollector
                 EvidenceConverterHelper.convert(f.getEvidenceInfo());
         this.addAll(evidenceMap.values());
         // ProteinDescription pd = factory.buildProteinDescription();
-        ProteinRecName recName = null;
+        ProteinName recName = null;
         if (f.getRecName() != null) {
             recName = convertRecName(f.getRecName(), evidenceMap);
         }
-        List<ProteinAltName> altNames =
+        List<ProteinName> altNames =
                 f.getAltNames().stream()
                         .map(val -> convertAltName(val, evidenceMap))
                         .collect(Collectors.toList());
@@ -116,12 +104,12 @@ public class DeLineConverter extends EvidenceCollector
 
     private ProteinSection convertProteinNameSection(
             DeLineObject.NameBlock nameBlock, Map<Object, List<Evidence>> evidenceMap) {
-        ProteinRecName recName = null;
+        ProteinName recName = null;
         if (nameBlock.getRecName() != null) {
             recName = convertRecName(nameBlock.getRecName(), evidenceMap);
         }
 
-        List<ProteinAltName> altNames =
+        List<ProteinName> altNames =
                 nameBlock.getAltNames().stream()
                         .map(val -> convertAltName(val, evidenceMap))
                         .collect(Collectors.toList());
@@ -159,7 +147,7 @@ public class DeLineConverter extends EvidenceCollector
         return builder.value(val).evidencesSet(evidenceMap.get(val)).build();
     }
 
-    private ProteinAltName convertAltName(
+    private ProteinName convertAltName(
             DeLineObject.Name val, Map<Object, List<Evidence>> evidenceMap) {
         Name fullName = null;
         if ((val.getFullName() != null) || (!val.getFullName().isEmpty())) {
@@ -192,14 +180,14 @@ public class DeLineConverter extends EvidenceCollector
                                             .build();
                                 })
                         .collect(Collectors.toList());
-        return new ProteinAltNameBuilder()
+        return new ProteinNameBuilder()
                 .fullName(fullName)
                 .shortNamesSet(shortNames)
                 .ecNumbersSet(ecNumbers)
                 .build();
     }
 
-    private ProteinRecName convertRecName(
+    private ProteinName convertRecName(
             DeLineObject.Name val, Map<Object, List<Evidence>> evidenceMap) {
         Name fullName = null;
         if ((val.getFullName() != null) || (!val.getFullName().isEmpty())) {
@@ -222,7 +210,7 @@ public class DeLineConverter extends EvidenceCollector
                 val.getEcs().stream()
                         .map(ec -> createEC(ec, val, evidenceMap))
                         .collect(Collectors.toList());
-        return new ProteinRecNameBuilder()
+        return new ProteinNameBuilder()
                 .fullName(fullName)
                 .shortNamesSet(shortNames)
                 .ecNumbersSet(ecNumbers)

@@ -18,6 +18,7 @@ import org.uniprot.core.flatfile.writer.FlatfileWriter;
 import org.uniprot.core.flatfile.writer.impl.UniProtFlatfileWriter;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 
+@Disabled
 class UniProtKBEntryIteratorIT {
     private DefaultUniProtEntryIterator entryIterator;
 
@@ -88,6 +89,7 @@ class UniProtKBEntryIteratorIT {
         }
     }
 
+    @Disabled
     @Test
     void testMultiDat() {
         try {

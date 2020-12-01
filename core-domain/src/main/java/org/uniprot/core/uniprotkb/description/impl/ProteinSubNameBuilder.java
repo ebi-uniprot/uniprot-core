@@ -14,7 +14,6 @@ import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.description.ProteinSubName;
 
 public class ProteinSubNameBuilder implements Builder<ProteinSubName> {
-
     private Name fullName;
     private List<EC> ecNumbers = new ArrayList<>();
 

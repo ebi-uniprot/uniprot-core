@@ -5,23 +5,24 @@ import static org.uniprot.core.ObjectsForTests.*;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.description.Name;
-import org.uniprot.core.uniprotkb.description.ProteinRecName;
+import org.uniprot.core.uniprotkb.description.ProteinName;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 
-class ProteinRecNameImplTest {
-
+class ProteinNameImplTest {
     @Test
     void testFull() {
         List<Evidence> evidences = createEvidences();
         Name fullName = new NameImpl("a full Name", evidences);
         List<Name> shortNames = shortNames();
         List<EC> ecNumbers = eCNumbers();
-        ProteinRecName recName =
-                new ProteinRecNameBuilder()
+        ProteinName recName =
+                new ProteinNameBuilder()
                         .fullName(fullName)
                         .shortNamesSet(shortNames)
                         .ecNumbersSet(ecNumbers)
@@ -34,12 +35,10 @@ class ProteinRecNameImplTest {
 
     @Test
     void testNotFull() {
-        //	List<Evidence> evidences = createEvidences();
-        //	Name fullName = new NameImpl("a full Name", evidences);
         List<Name> shortNames = shortNames();
         List<EC> ecNumbers = eCNumbers();
-        ProteinRecName recName =
-                new ProteinRecNameBuilder()
+        ProteinName recName =
+                new ProteinNameBuilder()
                         .fullName(null)
                         .shortNamesSet(shortNames)
                         .ecNumbersSet(ecNumbers)
@@ -51,10 +50,8 @@ class ProteinRecNameImplTest {
     void testOnlyFull() {
         List<Evidence> evidences = createEvidences();
         Name fullName = new NameImpl("a full Name", evidences);
-        //	List<Name> shortNames = createShortNames();
-        //	List<ECEntry> ecNumbers = createECNumbers();
-        ProteinRecName recName =
-                new ProteinRecNameBuilder()
+        ProteinName recName =
+                new ProteinNameBuilder()
                         .fullName(fullName)
                         .shortNamesSet(null)
                         .ecNumbersSet(null)
@@ -69,10 +66,9 @@ class ProteinRecNameImplTest {
     void testOnlyFullAndEC() {
         List<Evidence> evidences = createEvidences();
         Name fullName = new NameImpl("a full Name", evidences);
-        //	List<Name> shortNames = createShortNames();
         List<EC> ecNumbers = eCNumbers();
-        ProteinRecName recName =
-                new ProteinRecNameBuilder()
+        ProteinName recName =
+                new ProteinNameBuilder()
                         .fullName(fullName)
                         .shortNamesSet(null)
                         .ecNumbersSet(ecNumbers)
@@ -88,9 +84,8 @@ class ProteinRecNameImplTest {
         List<Evidence> evidences = createEvidences();
         Name fullName = new NameImpl("a full Name", evidences);
         List<Name> shortNames = shortNames();
-        //	List<ECEntry> ecNumbers = createECNumbers();
-        ProteinRecName recName =
-                new ProteinRecNameBuilder()
+        ProteinName recName =
+                new ProteinNameBuilder()
                         .fullName(fullName)
                         .shortNamesSet(shortNames)
                         .ecNumbersSet(null)
@@ -103,20 +98,41 @@ class ProteinRecNameImplTest {
 
     @Test
     void needDefaultConstructorForJsonDeserialization() {
-        ProteinRecName obj = new ProteinRecNameImpl();
+        ProteinName obj = new ProteinNameImpl();
         assertNotNull(obj);
         assertFalse(obj.hasFullName());
     }
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        ProteinRecName impl =
-                new ProteinRecNameImpl(
+        ProteinName impl =
+                new ProteinNameImpl(
                         new NameImpl(), Collections.emptyList(), Collections.emptyList());
-        ProteinRecName obj = ProteinRecNameBuilder.from(impl).build();
+        ProteinName obj = ProteinNameBuilder.from(impl).build();
 
         assertTrue(impl.hasFullName());
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
+    }
+
+    public static ProteinName createProteinName(int listSize, boolean includeEvidences) {
+        ProteinNameBuilder builder = new ProteinNameBuilder();
+        Name fullName = NameBuilderTest.createObject(listSize, includeEvidences);
+        List<Name> shortNames = NameBuilderTest.createObjects(listSize, includeEvidences);
+        List<EC> ecNumbers = ECBuilderTest.createObjects(listSize, includeEvidences);
+        builder.fullName(fullName);
+        builder.shortNamesSet(shortNames);
+        builder.ecNumbersSet(ecNumbers);
+        return builder.build();
+    }
+
+    public static List<ProteinName> createProteinNames(int count) {
+        return createProteinNames(count, false);
+    }
+
+    public static List<ProteinName> createProteinNames(int count, boolean includeEvidences) {
+        return IntStream.range(0, count)
+                .mapToObj(i -> createProteinName(count, includeEvidences))
+                .collect(Collectors.toList());
     }
 }
