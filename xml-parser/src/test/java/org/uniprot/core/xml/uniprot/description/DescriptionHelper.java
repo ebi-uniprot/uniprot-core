@@ -1,13 +1,13 @@
 package org.uniprot.core.xml.uniprot.description;
 
-import org.uniprot.core.uniprotkb.description.*;
-import org.uniprot.core.uniprotkb.description.impl.*;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
+import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
+import org.uniprot.core.uniprotkb.description.*;
+import org.uniprot.core.uniprotkb.description.impl.*;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 /**
  * Created 30/01/19

@@ -1,16 +1,17 @@
 package org.uniprot.core.uniprotkb.description.impl;
 
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.description.ProteinName;
-
-import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.modifiableList;
 
 /**
  * Created 19/11/2020
