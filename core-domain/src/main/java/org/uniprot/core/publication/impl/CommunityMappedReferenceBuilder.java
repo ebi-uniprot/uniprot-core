@@ -16,7 +16,7 @@ public class CommunityMappedReferenceBuilder
 
     private CommunityAnnotation annotation;
 
-    public CommunityMappedReferenceBuilder annotation(CommunityAnnotation annotation) {
+    public CommunityMappedReferenceBuilder communityAnnotation(CommunityAnnotation annotation) {
         this.annotation = annotation;
         return this;
     }
@@ -38,6 +38,6 @@ public class CommunityMappedReferenceBuilder
             @Nonnull CommunityMappedReference instance) {
         CommunityMappedReferenceBuilder builder = new CommunityMappedReferenceBuilder();
         return AbstractMappedReferenceBuilder.from(builder, instance)
-                .annotation(instance.getCommunityAnnotation());
+                .communityAnnotation(instance.getCommunityAnnotation());
     }
 }
