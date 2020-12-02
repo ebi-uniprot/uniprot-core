@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author Edd
  */
-public class ComputationallyMappedReferenceImpl extends AbstractPublicationMappedReference
+public class ComputationallyMappedReferenceImpl extends AbstractMappedReference
         implements ComputationallyMappedReference {
     private String annotation;
 
