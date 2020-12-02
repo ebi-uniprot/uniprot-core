@@ -910,10 +910,10 @@
 		"uriLink": "https://euhcvdb.ibcp.fr/euHCVdb/do/displayHCVEntry?primaryAC=%id"
 	},
 	{
-		"name": "EuPathDB",
-		"displayName": "EuPathDB",
+		"name": "VEuPathDB",
+		"displayName": "VEuPathDB",
 		"category": "ORG",
-		"uriLink": "https://www.eupathdb.org/gene/%id"
+		"uriLink": "https://www.veupathdb.org/gene/%id"
 	},
 	{
 		"name": "FlyBase",
