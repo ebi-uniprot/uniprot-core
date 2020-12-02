@@ -2,7 +2,7 @@ package org.uniprot.core.publication;
 
 import org.uniprot.core.util.Utils;
 
-public interface ComputationallyMappedReference extends PublicationMappedReference {
+public interface ComputationallyMappedReference extends MappedReference {
     String getAnnotation();
 
     default boolean hasAnnotation() {

@@ -2,7 +2,6 @@ package org.uniprot.core.publication.impl;
 
 import org.uniprot.core.publication.CommunityAnnotation;
 import org.uniprot.core.publication.CommunityMappedReference;
-import org.uniprot.core.publication.ComputationallyMappedReference;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
 import java.util.List;
@@ -12,7 +11,7 @@ import java.util.Objects;
  * Created 02/12/2020
  * @author Edd
  */
-public class CommunityMappedReferenceImpl extends AbstractPublicationMappedReference implements CommunityMappedReference {
+public class CommunityMappedReferenceImpl extends AbstractMappedReference implements CommunityMappedReference {
     private final CommunityAnnotation communityAnnotation;
 
     public CommunityMappedReferenceImpl(String source, String sourceId, String pubMedId, UniProtKBAccession uniProtKBAccession, List<String> sourceCategories, CommunityAnnotation communityAnnotation) {

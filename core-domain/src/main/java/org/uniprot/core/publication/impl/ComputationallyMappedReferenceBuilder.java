@@ -10,8 +10,8 @@ import javax.annotation.Nonnull;
  * @author Edd
  */
 public class ComputationallyMappedReferenceBuilder
-        extends AbstractPublicationMappedReferenceBuilder<
-                ComputationallyMappedReferenceBuilder, ComputationallyMappedReference> {
+        extends AbstractMappedReferenceBuilder<
+                        ComputationallyMappedReferenceBuilder, ComputationallyMappedReference> {
     private String annotation;
 
     public ComputationallyMappedReferenceBuilder annotation(String annotation) {
@@ -35,7 +35,7 @@ public class ComputationallyMappedReferenceBuilder
     public static ComputationallyMappedReferenceBuilder from(
             @Nonnull ComputationallyMappedReference instance) {
         ComputationallyMappedReferenceBuilder builder = new ComputationallyMappedReferenceBuilder();
-        return AbstractPublicationMappedReferenceBuilder.from(builder, instance)
+        return AbstractMappedReferenceBuilder.from(builder, instance)
                 .annotation(instance.getAnnotation());
     }
 }

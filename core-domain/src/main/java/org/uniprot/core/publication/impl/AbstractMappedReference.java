@@ -1,6 +1,6 @@
 package org.uniprot.core.publication.impl;
 
-import org.uniprot.core.publication.PublicationMappedReference;
+import org.uniprot.core.publication.MappedReference;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
 import java.util.List;
@@ -11,14 +11,14 @@ import java.util.Objects;
  *
  * @author Edd
  */
-public class AbstractPublicationMappedReference implements PublicationMappedReference {
+public class AbstractMappedReference implements MappedReference {
     protected final String source;
     protected final String sourceId;
     protected final String pubMedId;
     protected final UniProtKBAccession uniProtKBAccession;
     protected final List<String> sourceCategories;
 
-    public AbstractPublicationMappedReference(String source, String sourceId, String pubMedId, UniProtKBAccession uniProtKBAccession, List<String> sourceCategories) {
+    public AbstractMappedReference(String source, String sourceId, String pubMedId, UniProtKBAccession uniProtKBAccession, List<String> sourceCategories) {
         this.source = source;
         this.sourceId = sourceId;
         this.pubMedId = pubMedId;
@@ -55,7 +55,7 @@ public class AbstractPublicationMappedReference implements PublicationMappedRefe
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AbstractPublicationMappedReference that = (AbstractPublicationMappedReference) o;
+        AbstractMappedReference that = (AbstractMappedReference) o;
         return Objects.equals(source, that.source) &&
                 Objects.equals(sourceId, that.sourceId) &&
                 Objects.equals(pubMedId, that.pubMedId) &&
