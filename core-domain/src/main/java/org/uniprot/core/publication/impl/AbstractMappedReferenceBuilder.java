@@ -1,7 +1,7 @@
 package org.uniprot.core.publication.impl;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.publication.PublicationMappedReference;
+import org.uniprot.core.publication.MappedReference;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 
@@ -17,9 +17,9 @@ import static org.uniprot.core.util.Utils.modifiableList;
  *
  * @author Edd
  */
-public abstract class AbstractPublicationMappedReferenceBuilder<
-                B extends AbstractPublicationMappedReferenceBuilder<B, T>,
-                T extends PublicationMappedReference>
+public abstract class AbstractMappedReferenceBuilder<
+                B extends AbstractMappedReferenceBuilder<B, T>,
+                T extends MappedReference>
         implements Builder<T> {
     protected UniProtKBAccession uniProtKBAccession;
     protected String source;
@@ -65,8 +65,8 @@ public abstract class AbstractPublicationMappedReferenceBuilder<
     protected abstract @Nonnull B getThis();
 
     protected static <
-                    B extends AbstractPublicationMappedReferenceBuilder<B, T>,
-                    T extends PublicationMappedReference>
+                    B extends AbstractMappedReferenceBuilder<B, T>,
+                    T extends MappedReference>
             B from(@Nonnull B builder, @Nonnull T instance) {
         return builder.source(instance.getSource())
                 .sourceId(instance.getSourceId())

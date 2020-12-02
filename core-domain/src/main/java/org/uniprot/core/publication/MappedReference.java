@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Edd
  */
-public interface PublicationMappedReference extends Serializable {
+public interface MappedReference extends Serializable {
     UniProtKBAccession getUniProtKBAccession();
 
     String getSource();
