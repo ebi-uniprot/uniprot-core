@@ -11,7 +11,7 @@ import javax.annotation.Nonnull;
  */
 public class ComputationallyMappedReferenceBuilder
         extends AbstractMappedReferenceBuilder<
-                        ComputationallyMappedReferenceBuilder, ComputationallyMappedReference> {
+                ComputationallyMappedReferenceBuilder, ComputationallyMappedReference> {
     private String annotation;
 
     public ComputationallyMappedReferenceBuilder annotation(String annotation) {
@@ -23,7 +23,7 @@ public class ComputationallyMappedReferenceBuilder
     @Override
     public ComputationallyMappedReference build() {
         return new ComputationallyMappedReferenceImpl(
-                source, sourceId, pubMedId, uniProtKBAccession, sourceCategories, annotation);
+                sources, pubMedId, uniProtKBAccession, sourceCategories, annotation);
     }
 
     @Nonnull

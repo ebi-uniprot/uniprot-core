@@ -1,10 +1,12 @@
 package org.uniprot.core.publication.impl;
 
 import org.uniprot.core.publication.MappedReference;
+import org.uniprot.core.publication.MappedSource;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Created 02/12/2020
@@ -12,15 +14,17 @@ import java.util.Objects;
  * @author Edd
  */
 public class AbstractMappedReference implements MappedReference {
-    protected final String source;
-    protected final String sourceId;
+    protected final Set<MappedSource> sources;
     protected final String pubMedId;
     protected final UniProtKBAccession uniProtKBAccession;
-    protected final List<String> sourceCategories;
+    protected final Set<String> sourceCategories;
 
-    public AbstractMappedReference(String source, String sourceId, String pubMedId, UniProtKBAccession uniProtKBAccession, List<String> sourceCategories) {
-        this.source = source;
-        this.sourceId = sourceId;
+    public AbstractMappedReference(
+            Set<MappedSource> sources,
+            String pubMedId,
+            UniProtKBAccession uniProtKBAccession,
+            Set<String> sourceCategories) {
+        this.sources = sources;
         this.pubMedId = pubMedId;
         this.uniProtKBAccession = uniProtKBAccession;
         this.sourceCategories = sourceCategories;
@@ -32,13 +36,8 @@ public class AbstractMappedReference implements MappedReference {
     }
 
     @Override
-    public String getSource() {
-        return source;
-    }
-
-    @Override
-    public String getSourceId() {
-        return sourceId;
+    public Set<MappedSource> getSources() {
+        return sources;
     }
 
     @Override
@@ -47,7 +46,7 @@ public class AbstractMappedReference implements MappedReference {
     }
 
     @Override
-    public List<String> getSourceCategories() {
+    public Set<String> getSourceCategories() {
         return sourceCategories;
     }
 
@@ -56,8 +55,7 @@ public class AbstractMappedReference implements MappedReference {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AbstractMappedReference that = (AbstractMappedReference) o;
-        return Objects.equals(source, that.source) &&
-                Objects.equals(sourceId, that.sourceId) &&
+        return Objects.equals(sources, that.sources) &&
                 Objects.equals(pubMedId, that.pubMedId) &&
                 Objects.equals(uniProtKBAccession, that.uniProtKBAccession) &&
                 Objects.equals(sourceCategories, that.sourceCategories);
@@ -65,6 +63,6 @@ public class AbstractMappedReference implements MappedReference {
 
     @Override
     public int hashCode() {
-        return Objects.hash(source, sourceId, pubMedId, uniProtKBAccession, sourceCategories);
+        return Objects.hash(sources, pubMedId, uniProtKBAccession, sourceCategories);
     }
 }

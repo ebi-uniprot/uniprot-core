@@ -58,4 +58,14 @@ public class CommunityAnnotationImpl implements CommunityAnnotation {
     public int hashCode() {
         return Objects.hash(proteinOrGene, function, disease, comment);
     }
+
+    @Override
+    public String toString() {
+        return "CommunityAnnotationImpl{" +
+                "proteinOrGene='" + proteinOrGene + '\'' +
+                ", function='" + function + '\'' +
+                ", disease='" + disease + '\'' +
+                ", comment='" + comment + '\'' +
+                '}';
+    }
 }

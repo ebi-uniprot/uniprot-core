@@ -1,9 +1,11 @@
 package org.uniprot.core.publication.impl;
 
 import org.uniprot.core.publication.ComputationallyMappedReference;
+import org.uniprot.core.publication.MappedSource;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created 02/12/2020
@@ -15,13 +17,12 @@ public class ComputationallyMappedReferenceImpl extends AbstractMappedReference
     private String annotation;
 
     public ComputationallyMappedReferenceImpl(
-            String source,
-            String sourceId,
+            Set<MappedSource> sources,
             String pubMedId,
             UniProtKBAccession uniProtKBAccession,
-            List<String> sourceCategories,
+            Set<String> sourceCategories,
             String annotation) {
-        super(source, sourceId, pubMedId, uniProtKBAccession, sourceCategories);
+        super(sources, pubMedId, uniProtKBAccession, sourceCategories);
         this.annotation = annotation;
     }
 
