@@ -2,15 +2,16 @@ package org.uniprot.core.publication.impl;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.publication.MappedReference;
+import org.uniprot.core.publication.MappedSource;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.modifiableList;
+import static org.uniprot.core.util.Utils.modifiableSet;
 
 /**
  * Created 02/12/2020
@@ -18,14 +19,12 @@ import static org.uniprot.core.util.Utils.modifiableList;
  * @author Edd
  */
 public abstract class AbstractMappedReferenceBuilder<
-                B extends AbstractMappedReferenceBuilder<B, T>,
-                T extends MappedReference>
+                B extends AbstractMappedReferenceBuilder<B, T>, T extends MappedReference>
         implements Builder<T> {
     protected UniProtKBAccession uniProtKBAccession;
-    protected String source;
-    protected String sourceId;
     protected String pubMedId;
-    protected List<String> sourceCategories = new ArrayList<>();
+    protected Set<MappedSource> sources = new HashSet<>();
+    protected Set<String> sourceCategories = new HashSet<>();
 
     public B uniProtKBAccession(String accession) {
         this.uniProtKBAccession = new UniProtKBAccessionBuilder(accession).build();
@@ -37,13 +36,13 @@ public abstract class AbstractMappedReferenceBuilder<
         return getThis();
     }
 
-    public B source(String source) {
-        this.source = source;
+    public B sourcesAdd(MappedSource source) {
+        addOrIgnoreNull(source, this.sources);
         return getThis();
     }
 
-    public B sourceId(String sourceId) {
-        this.sourceId = sourceId;
+    public B sourcesSet(Set<MappedSource> sources) {
+        this.sources = modifiableSet(sources);
         return getThis();
     }
 
@@ -57,19 +56,16 @@ public abstract class AbstractMappedReferenceBuilder<
         return getThis();
     }
 
-    public B sourceCategoriesSet(List<String> sourceCategories) {
-        this.sourceCategories = modifiableList(sourceCategories);
+    public B sourceCategoriesSet(Set<String> sourceCategories) {
+        this.sourceCategories = modifiableSet(sourceCategories);
         return getThis();
     }
 
     protected abstract @Nonnull B getThis();
 
-    protected static <
-                    B extends AbstractMappedReferenceBuilder<B, T>,
-                    T extends MappedReference>
+    protected static <B extends AbstractMappedReferenceBuilder<B, T>, T extends MappedReference>
             B from(@Nonnull B builder, @Nonnull T instance) {
-        return builder.source(instance.getSource())
-                .sourceId(instance.getSourceId())
+        return builder.sourcesSet(instance.getSources())
                 .pubMedId(instance.getPubMedId())
                 .uniProtKBAccession(instance.getUniProtKBAccession())
                 .sourceCategoriesSet(instance.getSourceCategories());
