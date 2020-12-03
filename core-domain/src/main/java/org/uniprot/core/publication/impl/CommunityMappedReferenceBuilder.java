@@ -25,7 +25,7 @@ public class CommunityMappedReferenceBuilder
     @Override
     public CommunityMappedReference build() {
         return new CommunityMappedReferenceImpl(
-                source, sourceId, pubMedId, uniProtKBAccession, sourceCategories, annotation);
+                sources, pubMedId, uniProtKBAccession, sourceCategories, annotation);
     }
 
     @Nonnull
