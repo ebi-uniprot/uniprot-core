@@ -38,25 +38,17 @@ class UniRefEntryLightJsonConfigTest {
     */
     @Test
     void testFullUniRuleEntryJsonRoundTripOrganismOrder() {
-        Organism organism10 = new OrganismBuilder()
-                .taxonId(10L)
-                .scientificName("organism 10")
-                .build();
+        Organism organism10 =
+                new OrganismBuilder().taxonId(10L).scientificName("organism 10").build();
 
-        Organism organism30 = new OrganismBuilder()
-                .taxonId(30L)
-                .scientificName("organism 30")
-                .build();
+        Organism organism30 =
+                new OrganismBuilder().taxonId(30L).scientificName("organism 30").build();
 
-        Organism organism12 = new OrganismBuilder()
-                .taxonId(12L)
-                .scientificName("organism 12")
-                .build();
+        Organism organism12 =
+                new OrganismBuilder().taxonId(12L).scientificName("organism 12").build();
 
-        Organism organism11 = new OrganismBuilder()
-                .taxonId(11L)
-                .scientificName("organism 11")
-                .build();
+        Organism organism11 =
+                new OrganismBuilder().taxonId(11L).scientificName("organism 11").build();
         UniRefEntryLight entry =
                 new UniRefEntryLightBuilder()
                         .organismsAdd(organism10)
@@ -91,14 +83,16 @@ class UniRefEntryLightJsonConfigTest {
     }
 
     public static UniRefEntryLight getCompleteUniRefEntryLight() {
-        Organism organism = new OrganismBuilder()
-                .taxonId(9606L)
-                .scientificName("Human")
-                .commonName("common")
-                .synonymsAdd("syn")
-                .lineagesAdd("lineage")
-                .evidencesAdd(CreateUtils.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10025"))
-                .build();
+        Organism organism =
+                new OrganismBuilder()
+                        .taxonId(9606L)
+                        .scientificName("Human")
+                        .commonName("common")
+                        .synonymsAdd("syn")
+                        .lineagesAdd("lineage")
+                        .evidencesAdd(
+                                CreateUtils.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10025"))
+                        .build();
 
         return new UniRefEntryLightBuilder()
                 .id("UniRef50_P12345")

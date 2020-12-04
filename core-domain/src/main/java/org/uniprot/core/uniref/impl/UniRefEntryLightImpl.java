@@ -39,9 +39,7 @@ public class UniRefEntryLightImpl implements UniRefEntryLight {
 
     // no arg constructor for JSON deserialization
     UniRefEntryLightImpl() {
-        this(
-                null, null, null, null, null, null, null, null, null, 0, 0, null, null,
-                null);
+        this(null, null, null, null, null, null, null, null, null, 0, 0, null, null, null);
     }
 
     UniRefEntryLightImpl(

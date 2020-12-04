@@ -49,10 +49,8 @@ class UniRefEntryLightBuilderTest {
 
     @Test
     void canSetCommonTaxon() {
-        Organism organism = new OrganismBuilder()
-                .taxonId(9606L)
-                .scientificName("scientific")
-                .build();
+        Organism organism =
+                new OrganismBuilder().taxonId(9606L).scientificName("scientific").build();
         UniRefEntryLight entryLight = new UniRefEntryLightBuilder().commonTaxon(organism).build();
         assertThat(entryLight.getCommonTaxon(), is(organism));
     }
@@ -108,15 +106,11 @@ class UniRefEntryLightBuilderTest {
 
     @Test
     void canSetOrganisms() {
-        Organism organism = new OrganismBuilder()
-                .taxonId(9606L)
-                .scientificName("scientific")
-                .build();
+        Organism organism =
+                new OrganismBuilder().taxonId(9606L).scientificName("scientific").build();
 
-        Organism otherOrganism = new OrganismBuilder()
-                .taxonId(9607L)
-                .scientificName("new scientific")
-                .build();
+        Organism otherOrganism =
+                new OrganismBuilder().taxonId(9607L).scientificName("new scientific").build();
 
         LinkedHashSet<Organism> value = new LinkedHashSet<>(asList(organism, otherOrganism));
         UniRefEntryLight entryLight = new UniRefEntryLightBuilder().organismsSet(value).build();
@@ -125,18 +119,15 @@ class UniRefEntryLightBuilderTest {
 
     @Test
     void canAddOrganisms() {
-        Organism organism = new OrganismBuilder()
-                .taxonId(9606L)
-                .scientificName("scientific")
-                .build();
+        Organism organism =
+                new OrganismBuilder().taxonId(9606L).scientificName("scientific").build();
 
-        Organism newOrganism = new OrganismBuilder()
-                .taxonId(9607L)
-                .scientificName("new scientific")
-                .build();
+        Organism newOrganism =
+                new OrganismBuilder().taxonId(9607L).scientificName("new scientific").build();
 
         UniRefEntryLightBuilder entryLightBuilder =
-                new UniRefEntryLightBuilder().organismsSet(new LinkedHashSet<>(singletonList(organism)));
+                new UniRefEntryLightBuilder()
+                        .organismsSet(new LinkedHashSet<>(singletonList(organism)));
 
         entryLightBuilder.organismsAdd(newOrganism);
 
@@ -145,17 +136,14 @@ class UniRefEntryLightBuilderTest {
 
     @Test
     void doNotAddDuplicatedOrganisms() {
-        Organism organism = new OrganismBuilder()
-                .taxonId(9606L)
-                .scientificName("scientific")
-                .build();
+        Organism organism =
+                new OrganismBuilder().taxonId(9606L).scientificName("scientific").build();
 
-        Organism duplicated = new OrganismBuilder()
-                .taxonId(9606L)
-                .scientificName("scientific")
-                .build();
+        Organism duplicated =
+                new OrganismBuilder().taxonId(9606L).scientificName("scientific").build();
         UniRefEntryLightBuilder entryLightBuilder =
-                new UniRefEntryLightBuilder().organismsSet(new LinkedHashSet<>(singletonList(organism)));
+                new UniRefEntryLightBuilder()
+                        .organismsSet(new LinkedHashSet<>(singletonList(organism)));
 
         entryLightBuilder.organismsAdd(duplicated);
         LinkedHashSet<Organism> result = entryLightBuilder.build().getOrganisms();
@@ -234,15 +222,10 @@ class UniRefEntryLightBuilderTest {
 
     @Test
     void testFrom() {
-        Organism organism = new OrganismBuilder()
-                .taxonId(9606L)
-                .scientificName("scientific")
-                .build();
+        Organism organism =
+                new OrganismBuilder().taxonId(9606L).scientificName("scientific").build();
 
-        Organism commonTaxon = new OrganismBuilder()
-                .taxonId(10116L)
-                .scientificName("Rat")
-                .build();
+        Organism commonTaxon = new OrganismBuilder().taxonId(10116L).scientificName("Rat").build();
 
         UniRefEntryLight entry =
                 new UniRefEntryLightBuilder()

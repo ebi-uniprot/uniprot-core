@@ -1,9 +1,9 @@
 package org.uniprot.core.uniref;
 
-import org.uniprot.core.uniprotkb.taxonomy.Organism;
-
 import java.util.Optional;
 import java.util.Set;
+
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 
 /**
  * @author lgonzales

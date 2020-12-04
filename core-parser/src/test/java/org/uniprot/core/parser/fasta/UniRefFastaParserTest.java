@@ -64,14 +64,10 @@ class UniRefFastaParserTest {
 
     @Test
     void testFastaEntryLight2() {
-        Organism organism = new OrganismBuilder()
-                .taxonId(1L)
-                .scientificName("root")
-                .build();
+        Organism organism = new OrganismBuilder().taxonId(1L).scientificName("root").build();
 
         UniRefEntryLight entry = createEntryLight();
-        UniRefEntryLight entry2 =
-                UniRefEntryLightBuilder.from(entry).commonTaxon(organism).build();
+        UniRefEntryLight entry2 = UniRefEntryLightBuilder.from(entry).commonTaxon(organism).build();
 
         String fasta = UniRefFastaParser.toFasta(entry2);
 
@@ -83,15 +79,10 @@ class UniRefFastaParserTest {
     }
 
     private UniRefEntryLight createEntryLight() {
-        Organism organism = new OrganismBuilder()
-                .taxonId(1L)
-                .scientificName("organism 1")
-                .build();
+        Organism organism = new OrganismBuilder().taxonId(1L).scientificName("organism 1").build();
 
-        Organism otherOrganism = new OrganismBuilder()
-                .taxonId(2L)
-                .scientificName("organism 2")
-                .build();
+        Organism otherOrganism =
+                new OrganismBuilder().taxonId(2L).scientificName("organism 2").build();
 
         UniRefEntry entry = createEntry();
         return new UniRefEntryLightBuilder()

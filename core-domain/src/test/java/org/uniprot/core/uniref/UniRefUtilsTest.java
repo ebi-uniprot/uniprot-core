@@ -31,15 +31,11 @@ class UniRefUtilsTest {
 
     @Test
     void addOrganismNewOrganism() {
-        Organism organism = new OrganismBuilder()
-                .taxonId(9606L)
-                .scientificName("scientific")
-                .build();
+        Organism organism =
+                new OrganismBuilder().taxonId(9606L).scientificName("scientific").build();
 
-        Organism newOrganism = new OrganismBuilder()
-                .taxonId(9607L)
-                .scientificName("new scientific")
-                .build();
+        Organism newOrganism =
+                new OrganismBuilder().taxonId(9607L).scientificName("new scientific").build();
 
         Set<Organism> target = new HashSet<>();
         target.add(organism);
@@ -52,10 +48,8 @@ class UniRefUtilsTest {
 
     @Test
     void doNotAddOrganismDuplicated() {
-        Organism organism = new OrganismBuilder()
-                .taxonId(9606L)
-                .scientificName("scientific")
-                .build();
+        Organism organism =
+                new OrganismBuilder().taxonId(9606L).scientificName("scientific").build();
         Set<Organism> target = new HashSet<>();
         target.add(organism);
         UniRefUtils.addOrganism(organism, target);
@@ -65,16 +59,15 @@ class UniRefUtilsTest {
 
     @Test
     void ignoreOrganismWithCommonWhenAfter() {
-        Organism organism = new OrganismBuilder()
-                .taxonId(9606L)
-                .scientificName("scientific")
-                .build();
+        Organism organism =
+                new OrganismBuilder().taxonId(9606L).scientificName("scientific").build();
 
-        Organism organismWithCommon = new OrganismBuilder()
-                .taxonId(9606L)
-                .scientificName("scientific")
-                .commonName("common")
-                .build();
+        Organism organismWithCommon =
+                new OrganismBuilder()
+                        .taxonId(9606L)
+                        .scientificName("scientific")
+                        .commonName("common")
+                        .build();
         Set<Organism> target = new HashSet<>();
         target.add(organism);
         UniRefUtils.addOrganism(organismWithCommon, target);

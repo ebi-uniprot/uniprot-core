@@ -99,7 +99,8 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
         for (PropertyType property : jaxbEntry.getProperty()) {
             switch (property.getType()) {
                 case PROPERTY_COMMON_TAXON:
-                    commonOrganismBuilder.scientificName(getOrganismScientificName(property.getValue()));
+                    commonOrganismBuilder.scientificName(
+                            getOrganismScientificName(property.getValue()));
                     commonOrganismBuilder.commonName(getOrganismCommonName(property.getValue()));
                     break;
                 case PROPERTY_COMMON_TAXON_ID:
@@ -158,7 +159,7 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
                     break;
             }
         }
-        if(hasOrganism) {
+        if (hasOrganism) {
             builder.organismsAdd(organismBuilder.build());
         }
         if (accession != null) {

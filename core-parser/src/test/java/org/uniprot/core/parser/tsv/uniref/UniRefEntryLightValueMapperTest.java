@@ -8,7 +8,6 @@ import static org.uniprot.core.parser.tsv.uniref.AbstractUniRefEntryMapper.DELIM
 import static org.uniprot.core.uniref.UniRefMemberIdType.*;
 
 import java.time.LocalDate;
-import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -151,16 +150,14 @@ class UniRefEntryLightValueMapperTest {
         UniRefEntryId entryId = new UniRefEntryIdBuilder(id).build();
         LocalDate created = LocalDate.of(2018, 6, 21);
 
-        Organism organism = new OrganismBuilder()
-                .taxonId(1L)
-                .scientificName("organism 1")
-                .build();
+        Organism organism = new OrganismBuilder().taxonId(1L).scientificName("organism 1").build();
 
-        Organism organismWithCommon = new OrganismBuilder()
-                .taxonId(2L)
-                .scientificName("organism 2")
-                .commonName("common")
-                .build();
+        Organism organismWithCommon =
+                new OrganismBuilder()
+                        .taxonId(2L)
+                        .scientificName("organism 2")
+                        .commonName("common")
+                        .build();
 
         return new UniRefEntryLightBuilder()
                 .id(entryId)
