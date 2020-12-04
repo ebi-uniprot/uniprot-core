@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.go.GoAspect;
 import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
+import org.uniprot.core.json.parser.uniprot.CreateUtils;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniref.UniRefEntryLight;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
@@ -35,17 +38,31 @@ class UniRefEntryLightJsonConfigTest {
     */
     @Test
     void testFullUniRuleEntryJsonRoundTripOrganismOrder() {
+        Organism organism10 = new OrganismBuilder()
+                .taxonId(10L)
+                .scientificName("organism 10")
+                .build();
+
+        Organism organism30 = new OrganismBuilder()
+                .taxonId(30L)
+                .scientificName("organism 30")
+                .build();
+
+        Organism organism12 = new OrganismBuilder()
+                .taxonId(12L)
+                .scientificName("organism 12")
+                .build();
+
+        Organism organism11 = new OrganismBuilder()
+                .taxonId(11L)
+                .scientificName("organism 11")
+                .build();
         UniRefEntryLight entry =
                 new UniRefEntryLightBuilder()
-                        .organismIdsAdd(10L)
-                        .organismIdsAdd(30L)
-                        .organismIdsAdd(12L)
-                        .organismIdsAdd(11L)
-                        .organismsAdd("First organism")
-                        .organismsAdd("Second organism")
-                        .organismsAdd("Third organism")
-                        .organismsAdd("Other organism")
-                        .organismsAdd("Last organism")
+                        .organismsAdd(organism10)
+                        .organismsAdd(organism30)
+                        .organismsAdd(organism12)
+                        .organismsAdd(organism11)
                         .build();
         ValidateJson.verifyJsonRoundTripParser(
                 UniRefEntryLightJsonConfig.getInstance().getFullObjectMapper(), entry);
@@ -74,18 +91,25 @@ class UniRefEntryLightJsonConfigTest {
     }
 
     public static UniRefEntryLight getCompleteUniRefEntryLight() {
+        Organism organism = new OrganismBuilder()
+                .taxonId(9606L)
+                .scientificName("Human")
+                .commonName("common")
+                .synonymsAdd("syn")
+                .lineagesAdd("lineage")
+                .evidencesAdd(CreateUtils.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10025"))
+                .build();
+
         return new UniRefEntryLightBuilder()
                 .id("UniRef50_P12345")
                 .membersAdd("P12345")
-                .organismsAdd("Human")
-                .organismIdsAdd(9606L)
+                .organismsAdd(organism)
                 .memberIdTypesAdd(UniRefMemberIdType.UNIPARC)
                 .representativeId("P12345_HUMAN,P12345")
                 .name("Cluster: protein")
                 .sequence("AAAAA")
                 .updated(LocalDate.now())
-                .commonTaxon("Rat")
-                .commonTaxonId(10116L)
+                .commonTaxon(organism)
                 .entryType(UniRefType.UniRef50)
                 .memberCount(5)
                 .seedId("P12345_HUMAN,P12345")

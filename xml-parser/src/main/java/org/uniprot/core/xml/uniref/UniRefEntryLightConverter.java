@@ -1,5 +1,6 @@
 package org.uniprot.core.xml.uniref;
 
+import static org.uniprot.core.uniref.UniRefUtils.*;
 import static org.uniprot.core.uniref.UniRefUtils.getUniProtKBIdType;
 
 import java.util.Collections;
@@ -9,6 +10,7 @@ import java.util.Optional;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.cv.go.GoAspect;
 import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniref.UniRefEntryLight;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
@@ -93,13 +95,15 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
     }
 
     private void updateCommonPropertiesFromXml(UniRefEntryLightBuilder builder, Entry jaxbEntry) {
+        OrganismBuilder commonOrganismBuilder = new OrganismBuilder();
         for (PropertyType property : jaxbEntry.getProperty()) {
             switch (property.getType()) {
                 case PROPERTY_COMMON_TAXON:
-                    builder.commonTaxon(property.getValue());
+                    commonOrganismBuilder.scientificName(getOrganismScientificName(property.getValue()));
+                    commonOrganismBuilder.commonName(getOrganismCommonName(property.getValue()));
                     break;
                 case PROPERTY_COMMON_TAXON_ID:
-                    builder.commonTaxonId(Long.parseLong(property.getValue()));
+                    commonOrganismBuilder.taxonId(Long.parseLong(property.getValue()));
                     break;
                 case PROPERTY_MEMBER_COUNT:
                     builder.memberCount(Integer.parseInt(property.getValue()));
@@ -117,6 +121,7 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
                     break;
             }
         }
+        builder.commonTaxon(commonOrganismBuilder.build());
     }
 
     private GeneOntologyEntry createGoTerm(GoAspect aspect, String id) {
@@ -127,13 +132,17 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
             UniRefEntryLightBuilder builder, List<PropertyType> properties, String id) {
         String accession = null;
         String seedId = null;
+        boolean hasOrganism = false;
+        OrganismBuilder organismBuilder = new OrganismBuilder();
         for (PropertyType property : properties) {
             switch (property.getType()) {
                 case PROPERTY_SOURCE_ORGANISM:
-                    builder.organismsAdd(property.getValue());
+                    organismBuilder.scientificName(getOrganismScientificName(property.getValue()));
+                    organismBuilder.commonName(getOrganismCommonName(property.getValue()));
                     break;
                 case PROPERTY_ORGANISM_ID:
-                    builder.organismIdsAdd(Long.parseLong(property.getValue()));
+                    hasOrganism = true;
+                    organismBuilder.taxonId(Long.parseLong(property.getValue()));
                     break;
                 case PROPERTY_UNIPROT_ACCESSION:
                     if (accession == null) { // get first accession from xml as member.
@@ -148,6 +157,9 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
                 default:
                     break;
             }
+        }
+        if(hasOrganism) {
+            builder.organismsAdd(organismBuilder.build());
         }
         if (accession != null) {
             UniRefMemberIdType idType = getUniProtKBIdType(id, accession);

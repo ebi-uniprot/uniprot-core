@@ -1,5 +1,7 @@
 package org.uniprot.core.uniref;
 
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+
 import java.util.Optional;
 import java.util.Set;
 
@@ -29,28 +31,34 @@ public class UniRefUtils {
         return type;
     }
 
-    public static void addOrganism(String organismValue, Set<String> organismTarget) {
-        // Add this logic do avoid duplicated organism names because
-        // UniParc organisms do not contains common name in brackets.
-        Optional<String> found =
+    public static void addOrganism(Organism newOrganism, Set<Organism> organismTarget) {
+        // Add this logic do avoid duplicated organism because
+        // UniParc organisms do not contain commonName.
+        Optional<Organism> foundInTarget =
                 organismTarget.stream()
-                        .map(UniRefUtils::getOrganismWithoutCommonName)
-                        .filter(
-                                value ->
-                                        value.equalsIgnoreCase(
-                                                getOrganismWithoutCommonName(organismValue)))
+                        .filter(value -> value.getTaxonId() == newOrganism.getTaxonId())
                         .findFirst();
-        if (!found.isPresent()) {
-            organismTarget.add(organismValue);
+        if (!foundInTarget.isPresent()) {
+            organismTarget.add(newOrganism);
         }
     }
 
-    public static String getOrganismWithoutCommonName(String value) {
+    public static String getOrganismScientificName(String value) {
         int bracketIndex = value.indexOf('(');
         if (bracketIndex >= 0) {
             return value.substring(0, bracketIndex).trim();
         } else {
             return value;
         }
+    }
+
+    public static String getOrganismCommonName(String value) {
+        String commonName = "";
+        int commonNameBegin = value.indexOf('(');
+        if (commonNameBegin >= 0) {
+            int commonNameEnd = value.indexOf(')');
+            return value.substring(commonNameBegin + 1, commonNameEnd).trim();
+        }
+        return commonName;
     }
 }

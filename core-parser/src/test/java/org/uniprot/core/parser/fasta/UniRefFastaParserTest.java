@@ -13,6 +13,8 @@ import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniref.*;
 import org.uniprot.core.uniref.impl.*;
 
@@ -54,7 +56,7 @@ class UniRefFastaParserTest {
         UniRefEntryLight entry = createEntryLight();
         String fasta = UniRefFastaParser.toFasta(entry);
         String expected =
-                ">UniRef50_P03923 protein n=3 Tax=tax TaxID=8 RepID=P03923_HUMAN\n"
+                ">UniRef50_P03923 protein n=3 Tax=organism 2 TaxID=2 RepID=P03923_HUMAN\n"
                         + "MVSWGRFICLVVVTMATLSLARPSFSLVEDDFSAGSADFAFWERDGDSDGFDSHSDJHET\n"
                         + "RHJREH";
         assertEquals(expected, fasta);
@@ -62,9 +64,14 @@ class UniRefFastaParserTest {
 
     @Test
     void testFastaEntryLight2() {
+        Organism organism = new OrganismBuilder()
+                .taxonId(1L)
+                .scientificName("root")
+                .build();
+
         UniRefEntryLight entry = createEntryLight();
         UniRefEntryLight entry2 =
-                UniRefEntryLightBuilder.from(entry).commonTaxonId(1L).commonTaxon("root").build();
+                UniRefEntryLightBuilder.from(entry).commonTaxon(organism).build();
 
         String fasta = UniRefFastaParser.toFasta(entry2);
 
@@ -76,16 +83,24 @@ class UniRefFastaParserTest {
     }
 
     private UniRefEntryLight createEntryLight() {
+        Organism organism = new OrganismBuilder()
+                .taxonId(1L)
+                .scientificName("organism 1")
+                .build();
+
+        Organism otherOrganism = new OrganismBuilder()
+                .taxonId(2L)
+                .scientificName("organism 2")
+                .build();
+
         UniRefEntry entry = createEntry();
         return new UniRefEntryLightBuilder()
                 .id("UniRef50_P03923")
                 .name("Cluster: protein")
                 .representativeId("P03923_HUMAN,P03923")
                 .sequence(entry.getRepresentativeMember().getSequence().getValue())
-                .organismsSet(new LinkedHashSet<>(asList("organism1", "organism2")))
-                .organismIdsSet(new LinkedHashSet<>(asList(1L, 2L)))
-                .commonTaxonId(8L)
-                .commonTaxon("tax")
+                .organismsSet(new LinkedHashSet<>(asList(organism, otherOrganism)))
+                .commonTaxon(otherOrganism)
                 .memberCount(3)
                 .build();
     }

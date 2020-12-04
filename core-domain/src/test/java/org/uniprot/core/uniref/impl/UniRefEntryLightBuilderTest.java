@@ -1,6 +1,7 @@
 package org.uniprot.core.uniref.impl;
 
 import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
@@ -8,14 +9,13 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.uniprot.core.uniref.impl.UniRefEntryLightImpl.NAME_PREFIX;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniref.UniRefEntryLight;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
@@ -48,17 +48,13 @@ class UniRefEntryLightBuilderTest {
     }
 
     @Test
-    void canSetCommonTaxonId() {
-        long value = 1L;
-        UniRefEntryLight entryLight = new UniRefEntryLightBuilder().commonTaxonId(value).build();
-        assertThat(entryLight.getCommonTaxonId(), is(value));
-    }
-
-    @Test
     void canSetCommonTaxon() {
-        String value = "taxon";
-        UniRefEntryLight entryLight = new UniRefEntryLightBuilder().commonTaxon(value).build();
-        assertThat(entryLight.getCommonTaxon(), is(value));
+        Organism organism = new OrganismBuilder()
+                .taxonId(9606L)
+                .scientificName("scientific")
+                .build();
+        UniRefEntryLight entryLight = new UniRefEntryLightBuilder().commonTaxon(organism).build();
+        assertThat(entryLight.getCommonTaxon(), is(organism));
     }
 
     @Test
@@ -111,54 +107,61 @@ class UniRefEntryLightBuilderTest {
     }
 
     @Test
-    void canSetOrganismIds() {
-        LinkedHashSet<Long> value = new LinkedHashSet<>(asList(1L, 2L));
-        UniRefEntryLight entryLight = new UniRefEntryLightBuilder().organismIdsSet(value).build();
-        assertThat(entryLight.getOrganismIds(), is(value));
-    }
-
-    @Test
-    void canAddOrganismIds() {
-        UniRefEntryLightBuilder entryLightBuilder =
-                new UniRefEntryLightBuilder().organismIdsSet(new LinkedHashSet<>(asList(1L, 2L)));
-
-        entryLightBuilder.organismIdsAdd(3L);
-        entryLightBuilder.organismIdsAdd(4L);
-        entryLightBuilder.organismIdsAdd(5L);
-
-        assertThat(entryLightBuilder.build().getOrganismIds(), contains(1L, 2L, 3L, 4L, 5L));
-    }
-
-    @Test
     void canSetOrganisms() {
-        LinkedHashSet<String> value = new LinkedHashSet<>(asList("1", "2"));
+        Organism organism = new OrganismBuilder()
+                .taxonId(9606L)
+                .scientificName("scientific")
+                .build();
+
+        Organism otherOrganism = new OrganismBuilder()
+                .taxonId(9607L)
+                .scientificName("new scientific")
+                .build();
+
+        LinkedHashSet<Organism> value = new LinkedHashSet<>(asList(organism, otherOrganism));
         UniRefEntryLight entryLight = new UniRefEntryLightBuilder().organismsSet(value).build();
         assertThat(entryLight.getOrganisms(), is(value));
     }
 
     @Test
     void canAddOrganisms() {
+        Organism organism = new OrganismBuilder()
+                .taxonId(9606L)
+                .scientificName("scientific")
+                .build();
+
+        Organism newOrganism = new OrganismBuilder()
+                .taxonId(9607L)
+                .scientificName("new scientific")
+                .build();
+
         UniRefEntryLightBuilder entryLightBuilder =
-                new UniRefEntryLightBuilder().organismsSet(new LinkedHashSet<>(asList("1", "2")));
+                new UniRefEntryLightBuilder().organismsSet(new LinkedHashSet<>(singletonList(organism)));
 
-        entryLightBuilder.organismsAdd("3");
-        entryLightBuilder.organismsAdd("4");
-        entryLightBuilder.organismsAdd("5");
+        entryLightBuilder.organismsAdd(newOrganism);
 
-        assertThat(entryLightBuilder.build().getOrganisms(), contains("1", "2", "3", "4", "5"));
+        assertThat(entryLightBuilder.build().getOrganisms(), contains(organism, newOrganism));
     }
 
     @Test
     void doNotAddDuplicatedOrganisms() {
+        Organism organism = new OrganismBuilder()
+                .taxonId(9606L)
+                .scientificName("scientific")
+                .build();
+
+        Organism duplicated = new OrganismBuilder()
+                .taxonId(9606L)
+                .scientificName("scientific")
+                .build();
         UniRefEntryLightBuilder entryLightBuilder =
-                new UniRefEntryLightBuilder()
-                        .organismsSet(new LinkedHashSet<>(asList("1 (common)", "2")));
+                new UniRefEntryLightBuilder().organismsSet(new LinkedHashSet<>(singletonList(organism)));
 
-        entryLightBuilder.organismsAdd("1");
-        entryLightBuilder.organismsAdd("2 (common)");
-        entryLightBuilder.organismsAdd("3");
+        entryLightBuilder.organismsAdd(duplicated);
+        LinkedHashSet<Organism> result = entryLightBuilder.build().getOrganisms();
 
-        assertThat(entryLightBuilder.build().getOrganisms(), contains("1 (common)", "2", "3"));
+        assertThat(result.size(), is(1));
+        assertThat(result, contains(organism));
     }
 
     @Test
@@ -231,18 +234,26 @@ class UniRefEntryLightBuilderTest {
 
     @Test
     void testFrom() {
+        Organism organism = new OrganismBuilder()
+                .taxonId(9606L)
+                .scientificName("scientific")
+                .build();
+
+        Organism commonTaxon = new OrganismBuilder()
+                .taxonId(10116L)
+                .scientificName("Rat")
+                .build();
+
         UniRefEntryLight entry =
                 new UniRefEntryLightBuilder()
                         .id("UniRef50_P12345")
                         .name("Cluster name")
                         .membersAdd("P12345")
-                        .organismsAdd("Human")
-                        .organismIdsAdd(9606L)
+                        .organismsAdd(organism)
                         .memberIdTypesAdd(UniRefMemberIdType.UNIPARC)
                         .sequence("AAAAA")
                         .updated(LocalDate.now())
-                        .commonTaxon("Rat")
-                        .commonTaxonId(10116L)
+                        .commonTaxon(commonTaxon)
                         .entryType(UniRefType.UniRef50)
                         .memberCount(5)
                         .representativeId("P12345")
