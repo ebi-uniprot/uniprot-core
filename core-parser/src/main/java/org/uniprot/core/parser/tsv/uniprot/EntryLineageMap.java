@@ -28,15 +28,13 @@ public class EntryLineageMap implements NamedValueMap {
     }
 
     private String getAllLineages() {
-        return lineage.stream()
-                .map(this::getLineage)
-                .collect(Collectors.joining(", "));
+        return lineage.stream().map(this::getLineage).collect(Collectors.joining(", "));
     }
 
     private String getLineage(TaxonomyLineage taxonomyLineage) {
         String result = taxonomyLineage.getScientificName();
-        if(taxonomyLineage.hasRank()){
-            result += " ("+taxonomyLineage.getRank().getDisplayName()+")";
+        if (taxonomyLineage.hasRank()) {
+            result += " (" + taxonomyLineage.getRank().getDisplayName() + ")";
         }
         return result;
     }
