@@ -15,6 +15,10 @@ public class CommunityAnnotationImpl implements CommunityAnnotation {
     private final String disease;
     private final String comment;
 
+    public CommunityAnnotationImpl() {
+        this(null, null, null, null);
+    }
+
     public CommunityAnnotationImpl(
             String proteinOrGene, String function, String disease, String comment) {
         this.proteinOrGene = proteinOrGene;

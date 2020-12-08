@@ -5,7 +5,6 @@ import org.uniprot.core.publication.CommunityMappedReference;
 import org.uniprot.core.publication.MappedSource;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -17,6 +16,10 @@ import java.util.Set;
 public class CommunityMappedReferenceImpl extends AbstractMappedReference
         implements CommunityMappedReference {
     private final CommunityAnnotation communityAnnotation;
+
+    public CommunityMappedReferenceImpl() {
+        this(null, null, null, null, null);
+    }
 
     public CommunityMappedReferenceImpl(
             Set<MappedSource> sources,
@@ -34,33 +37,15 @@ public class CommunityMappedReferenceImpl extends AbstractMappedReference
     }
 
     @Override
-    public String toString() {
-        return "CommunityMappedReferenceImpl{"
-                + "communityAnnotation="
-                + communityAnnotation
-                + ", sources="
-                + sources
-                + ", pubMedId='"
-                + pubMedId
-                + '\''
-                + ", uniProtKBAccession="
-                + uniProtKBAccession
-                + ", sourceCategories="
-                + sourceCategories
-                + '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
         CommunityMappedReferenceImpl that = (CommunityMappedReferenceImpl) o;
         return Objects.equals(communityAnnotation, that.communityAnnotation);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), communityAnnotation);
+        return Objects.hash(communityAnnotation);
     }
 }
