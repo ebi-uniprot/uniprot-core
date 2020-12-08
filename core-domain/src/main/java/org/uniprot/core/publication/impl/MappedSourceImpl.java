@@ -14,6 +14,10 @@ public class MappedSourceImpl implements MappedSource {
     private final String source;
     private final Set<String> sourceIds;
 
+    public MappedSourceImpl() {
+        this(null, null);
+    }
+
     public MappedSourceImpl(String source, Set<String> sourceIds) {
         this.source = source;
         this.sourceIds = sourceIds;
