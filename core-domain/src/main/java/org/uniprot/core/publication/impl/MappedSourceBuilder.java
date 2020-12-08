@@ -4,6 +4,7 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.publication.MappedSource;
 
 import javax.annotation.Nonnull;
+import java.util.HashSet;
 import java.util.Set;
 
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
@@ -16,7 +17,7 @@ import static org.uniprot.core.util.Utils.modifiableSet;
  */
 public class MappedSourceBuilder implements Builder<MappedSource> {
     private String source;
-    private Set<String> sourceIds;
+    private Set<String> sourceIds = new HashSet<>();
 
     public MappedSourceBuilder source(String source) {
         this.source = source;

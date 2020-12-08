@@ -4,7 +4,7 @@ import org.uniprot.core.publication.ComputationallyMappedReference;
 import org.uniprot.core.publication.MappedSource;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
-import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -14,7 +14,11 @@ import java.util.Set;
  */
 public class ComputationallyMappedReferenceImpl extends AbstractMappedReference
         implements ComputationallyMappedReference {
-    private String annotation;
+    private final String annotation;
+
+    public ComputationallyMappedReferenceImpl() {
+        this(null, null, null, null, null);
+    }
 
     public ComputationallyMappedReferenceImpl(
             Set<MappedSource> sources,
@@ -29,5 +33,18 @@ public class ComputationallyMappedReferenceImpl extends AbstractMappedReference
     @Override
     public String getAnnotation() {
         return annotation;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ComputationallyMappedReferenceImpl that = (ComputationallyMappedReferenceImpl) o;
+        return Objects.equals(annotation, that.annotation);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(annotation);
     }
 }
