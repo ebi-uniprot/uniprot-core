@@ -8,7 +8,6 @@ import static org.uniprot.core.parser.tsv.uniref.AbstractUniRefEntryMapper.DELIM
 import static org.uniprot.core.uniref.UniRefMemberIdType.*;
 
 import java.time.LocalDate;
-import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -16,6 +15,8 @@ import java.util.stream.Stream;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefEntryLight;
 import org.uniprot.core.uniref.UniRefMemberIdType;
@@ -47,8 +48,8 @@ class UniRefEntryLightValueMapperTest {
 
         assertEquals("UniRef50_P03923", entryMap.get("id"));
         assertEquals("Cluster: AMP-binding enzyme family protein", entryMap.get("name"));
-        assertEquals("Homo", entryMap.get("common_taxon"));
-        assertEquals("9605", entryMap.get("common_taxonid"));
+        assertEquals("organism 1", entryMap.get("common_taxon"));
+        assertEquals("1", entryMap.get("common_taxonid"));
         assertEquals(Integer.toString(MEMBER_COUNT), entryMap.get("count"));
         assertEquals("2018-06-21", entryMap.get("created"));
         assertEquals(Integer.toString(SEQUENCE.length()), entryMap.get("length"));
@@ -62,7 +63,7 @@ class UniRefEntryLightValueMapperTest {
     @Test
     void testGetOrganism() {
         String organsms = mapper.getOrganisms(ENTRY);
-        assertEquals("organism 1; organism 2", organsms);
+        assertEquals("organism 1; organism 2 (common)", organsms);
     }
 
     @Test
@@ -149,15 +150,23 @@ class UniRefEntryLightValueMapperTest {
         UniRefEntryId entryId = new UniRefEntryIdBuilder(id).build();
         LocalDate created = LocalDate.of(2018, 6, 21);
 
+        Organism organism = new OrganismBuilder().taxonId(1L).scientificName("organism 1").build();
+
+        Organism organismWithCommon =
+                new OrganismBuilder()
+                        .taxonId(2L)
+                        .scientificName("organism 2")
+                        .commonName("common")
+                        .build();
+
         return new UniRefEntryLightBuilder()
                 .id(entryId)
                 .updated(created)
                 .entryType(type)
-                .commonTaxonId(9605L)
-                .commonTaxon("Homo")
+                .commonTaxon(organism)
                 .name(name)
-                .organismsSet(new LinkedHashSet<>(asList("organism 1", "organism 2")))
-                .organismIdsSet(new LinkedHashSet<>(asList(1L, 2L)))
+                .organismsAdd(organism)
+                .organismsAdd(organismWithCommon)
                 .sequence(SEQUENCE)
                 .memberCount(MEMBER_COUNT)
                 .membersSet(asList("P1", "P2", "P3", "P4", "P5"))

@@ -48,8 +48,8 @@ class UniRefEntryLightConverterTest {
         assertEquals("Pheromone receptor V3R6", entry.getRepresentativeProteinName());
         assertEquals("2014-11-26", entry.getUpdated().toString());
         assertEquals(UniRefType.UniRef50, entry.getEntryType());
-        assertEquals("Muroidea", entry.getCommonTaxon());
-        assertEquals(337687, entry.getCommonTaxonId());
+        assertEquals("Muroidea", entry.getCommonTaxon().getScientificName());
+        assertEquals(337687, entry.getCommonTaxon().getTaxonId());
         assertEquals("F6MB03_MOUSE,F6MB03", entry.getSeedId());
 
         assertEquals(3, entry.getGoTerms().size());
@@ -101,8 +101,8 @@ class UniRefEntryLightConverterTest {
                 entry.getRepresentativeProteinName());
         assertEquals("2018-09-12", entry.getUpdated().toString());
         assertEquals(UniRefType.UniRef100, entry.getEntryType());
-        assertEquals("Streptomyces viridosporus", entry.getCommonTaxon());
-        assertEquals(67581, entry.getCommonTaxonId());
+        assertEquals("Streptomyces viridosporus", entry.getCommonTaxon().getScientificName());
+        assertEquals(67581, entry.getCommonTaxon().getTaxonId());
         assertEquals("UPI0009BFC4AC", entry.getSeedId());
 
         assertTrue(entry.getGoTerms().isEmpty());
