@@ -22,7 +22,7 @@ public class UniRefEntryLightValueMapper extends AbstractUniRefEntryMapper<UniRe
         map.put(UNIREF_FIELDS.get(1), entry.getName());
         String organismCommon = "";
         String organismCommonId = "";
-        if(entry.getCommonTaxon() != null) {
+        if (entry.getCommonTaxon() != null) {
             organismCommon = EntryMapUtil.convertOrganism(entry.getCommonTaxon());
             organismCommonId = Long.toString(entry.getCommonTaxon().getTaxonId());
         }
