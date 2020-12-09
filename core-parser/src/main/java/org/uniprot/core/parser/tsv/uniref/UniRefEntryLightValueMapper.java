@@ -20,8 +20,14 @@ public class UniRefEntryLightValueMapper extends AbstractUniRefEntryMapper<UniRe
         Map<String, String> map = new HashMap<>();
         map.put(UNIREF_FIELDS.get(0), entry.getId().getValue());
         map.put(UNIREF_FIELDS.get(1), entry.getName());
-        map.put(UNIREF_FIELDS.get(2), EntryMapUtil.convertOrganism(entry.getCommonTaxon()));
-        map.put(UNIREF_FIELDS.get(3), Long.toString(entry.getCommonTaxon().getTaxonId()));
+        String organismCommon = "";
+        String organismCommonId = "";
+        if(entry.getCommonTaxon() != null) {
+            organismCommon = EntryMapUtil.convertOrganism(entry.getCommonTaxon());
+            organismCommonId = Long.toString(entry.getCommonTaxon().getTaxonId());
+        }
+        map.put(UNIREF_FIELDS.get(2), organismCommon);
+        map.put(UNIREF_FIELDS.get(3), organismCommonId);
         map.put(UNIREF_FIELDS.get(4), Integer.toString(entry.getMemberCount()));
         map.put(UNIREF_FIELDS.get(5), entry.getUpdated().toString());
         map.put(UNIREF_FIELDS.get(6), Integer.toString(entry.getSequenceLength()));
