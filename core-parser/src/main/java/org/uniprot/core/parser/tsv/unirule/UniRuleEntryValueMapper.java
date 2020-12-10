@@ -1,13 +1,5 @@
 package org.uniprot.core.parser.tsv.unirule;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.gene.Gene;
 import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.uniprotkb.Keyword;
@@ -28,6 +20,15 @@ import org.uniprot.core.unirule.Information;
 import org.uniprot.core.unirule.Rule;
 import org.uniprot.core.unirule.UniRuleEntry;
 import org.uniprot.core.util.Utils;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class UniRuleEntryValueMapper implements EntityValueMapper<UniRuleEntry> {
     static final String EMPTY_STRING = "";
@@ -155,11 +156,11 @@ public class UniRuleEntryValueMapper implements EntityValueMapper<UniRuleEntry> 
                         .findFirst()
                         .orElse(null);
         StringBuilder builder = new StringBuilder();
-        if (Utils.notNull(proteinDescription)) {
+        if (Objects.nonNull(proteinDescription)) {
             String fullName = null;
             List<String> ecNumbers = null;
             List<String> shortNames = null;
-            if (Utils.notNull(proteinDescription.getRecommendedName())) {
+            if (Objects.nonNull(proteinDescription.getRecommendedName())) {
                 fullName = proteinDescription.getRecommendedName().getFullName().getValue();
                 ecNumbers =
                         proteinDescription.getRecommendedName().getEcNumbers().stream()
