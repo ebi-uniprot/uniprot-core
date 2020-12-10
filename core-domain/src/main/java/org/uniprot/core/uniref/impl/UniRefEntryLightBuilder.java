@@ -24,8 +24,7 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
     private LocalDate updated;
     private UniRefType entryType;
     private Organism commonTaxon;
-    private String representativeId;
-    private String sequence;
+    private RepresentativeMember representativeMember;
     private List<String> members = new ArrayList<>();
     private LinkedHashSet<Organism> organisms = new LinkedHashSet<>();
     private Set<UniRefMemberIdType> memberIdTypes = new HashSet<>();
@@ -42,8 +41,7 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
                 updated,
                 entryType,
                 commonTaxon,
-                representativeId,
-                sequence,
+                representativeMember,
                 members,
                 organisms,
                 memberCount,
@@ -60,8 +58,7 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
                 .updated(instance.getUpdated())
                 .entryType(instance.getEntryType())
                 .commonTaxon(instance.getCommonTaxon())
-                .representativeId(instance.getRepresentativeId())
-                .sequence(instance.getSequence())
+                .representativeMember(instance.getRepresentativeMember())
                 .membersSet(instance.getMembers())
                 .organismsSet(instance.getOrganisms())
                 .memberCount(instance.getMemberCount())
@@ -101,13 +98,8 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
         return this;
     }
 
-    public @Nonnull UniRefEntryLightBuilder representativeId(String id) {
-        this.representativeId = id;
-        return this;
-    }
-
-    public @Nonnull UniRefEntryLightBuilder sequence(String sequence) {
-        this.sequence = sequence;
+    public @Nonnull UniRefEntryLightBuilder representativeMember(RepresentativeMember representativeMember) {
+        this.representativeMember = representativeMember;
         return this;
     }
 

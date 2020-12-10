@@ -15,7 +15,7 @@ public class UniRefFastaParser {
         StringBuilder sb = new StringBuilder();
         sb.append(getHeader(entry)).append("\n");
         int columnCounter = 0;
-        String sequence = entry.getSequence();
+        String sequence = entry.getRepresentativeMember().getSequence().getValue();
         for (char c : sequence.toCharArray()) {
             if (columnCounter % 60 == 0 && columnCounter > 0) {
                 sb.append("\n");
@@ -46,7 +46,7 @@ public class UniRefFastaParser {
         sb.append(">")
                 .append(entry.getId().getValue())
                 .append(" ")
-                .append(entry.getRepresentativeProteinName())
+                .append(entry.getRepresentativeMember().getProteinName())
                 .append(" n=")
                 .append(entry.getMemberCount());
 
@@ -56,12 +56,8 @@ public class UniRefFastaParser {
                     .append(" TaxID=")
                     .append(entry.getCommonTaxon().getTaxonId());
         }
-        sb.append(" RepID=").append(getRepresentativeId(entry));
+        sb.append(" RepID=").append(entry.getRepresentativeMember().getMemberId());
         return sb.toString();
-    }
-
-    private static String getRepresentativeId(UniRefEntryLight entry) {
-        return entry.getRepresentativeId().split(",")[0];
     }
 
     private static String getHeader(UniRefEntry entry) {

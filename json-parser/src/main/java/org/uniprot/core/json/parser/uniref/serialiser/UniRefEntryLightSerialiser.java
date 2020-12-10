@@ -33,7 +33,6 @@ public class UniRefEntryLightSerialiser extends StdSerializer<UniRefEntryLightIm
         value =
                 (UniRefEntryLightImpl)
                         UniRefEntryLightBuilder.from(value)
-                                .representativeId(getRepresentativeId(value))
                                 .seedId(getSeedId(value))
                                 .build();
 
@@ -49,10 +48,5 @@ public class UniRefEntryLightSerialiser extends StdSerializer<UniRefEntryLightIm
     private String getSeedId(UniRefEntryLight entry) {
         String[] splitSeedId = entry.getSeedId().split(",");
         return splitSeedId[splitSeedId.length - 1];
-    }
-
-    private String getRepresentativeId(UniRefEntryLight entry) {
-        String[] splitRepId = entry.getRepresentativeId().split(",");
-        return splitRepId[splitRepId.length - 1];
     }
 }

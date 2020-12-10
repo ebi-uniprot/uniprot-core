@@ -6,19 +6,19 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.uniprot.core.uniref.impl.UniRefEntryLightImpl.NAME_PREFIX;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
 import java.util.*;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.Sequence;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
+import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
-import org.uniprot.core.uniref.UniRefEntryLight;
-import org.uniprot.core.uniref.UniRefMemberIdType;
-import org.uniprot.core.uniref.UniRefType;
+import org.uniprot.core.uniref.*;
 
 /**
  * Created 29/06/2020
@@ -56,13 +56,6 @@ class UniRefEntryLightBuilderTest {
     }
 
     @Test
-    void canSetRepresentativeId() {
-        String value = "id";
-        UniRefEntryLight entryLight = new UniRefEntryLightBuilder().representativeId(value).build();
-        assertThat(entryLight.getRepresentativeId(), is(value));
-    }
-
-    @Test
     void canSetSeedId() {
         String value = "seedId";
         UniRefEntryLight entryLight = new UniRefEntryLightBuilder().seedId(value).build();
@@ -70,21 +63,14 @@ class UniRefEntryLightBuilderTest {
     }
 
     @Test
-    void settingNameSetsNameAndProteinName() {
-        String value = NAME_PREFIX + "name";
-        UniRefEntryLight entryLight = new UniRefEntryLightBuilder().name(value).build();
-        assertThat(entryLight.getName(), is(value));
-        assertThat(
-                entryLight.getRepresentativeProteinName(),
-                is(value.substring(NAME_PREFIX.length())));
-    }
-
-    @Test
-    void settingSequenceSetsSequenceAndSequenceLength() {
-        String value = "AAAA";
-        UniRefEntryLight entryLight = new UniRefEntryLightBuilder().sequence(value).build();
-        assertThat(entryLight.getSequence(), is(value));
-        assertThat(entryLight.getSequenceLength(), is(value.length()));
+    void testRepresentativeMember() {
+        String seq = "MVSWGRFICLVVVTMATLSLARPSFSLVED";
+        Sequence sequence = new SequenceBuilder(seq).build();
+        UniRefMemberIdType type = UniRefMemberIdType.UNIPARC;
+        RepresentativeMember member =
+                new RepresentativeMemberBuilder().memberIdType(type).sequence(sequence).build();
+        UniRefEntryLight entry = new UniRefEntryLightBuilder().representativeMember(member).build();
+        assertEquals(member, entry.getRepresentativeMember());
     }
 
     @Test
@@ -227,6 +213,11 @@ class UniRefEntryLightBuilderTest {
 
         Organism commonTaxon = new OrganismBuilder().taxonId(10116L).scientificName("Rat").build();
 
+        RepresentativeMember representativeMember = new RepresentativeMemberBuilder()
+                .memberIdType(UniRefMemberIdType.UNIPROTKB)
+                .sequence(new SequenceBuilder("AAAAA").build())
+                .build();
+
         UniRefEntryLight entry =
                 new UniRefEntryLightBuilder()
                         .id("UniRef50_P12345")
@@ -234,12 +225,11 @@ class UniRefEntryLightBuilderTest {
                         .membersAdd("P12345")
                         .organismsAdd(organism)
                         .memberIdTypesAdd(UniRefMemberIdType.UNIPARC)
-                        .sequence("AAAAA")
                         .updated(LocalDate.now())
                         .commonTaxon(commonTaxon)
                         .entryType(UniRefType.UniRef50)
                         .memberCount(5)
-                        .representativeId("P12345")
+                        .representativeMember(representativeMember)
                         .seedId("P12345")
                         .goTermsAdd(new GeneOntologyEntryBuilder().id("GoId").build())
                         .build();

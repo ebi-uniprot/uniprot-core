@@ -56,7 +56,7 @@ class UniRefFastaParserTest {
         UniRefEntryLight entry = createEntryLight();
         String fasta = UniRefFastaParser.toFasta(entry);
         String expected =
-                ">UniRef50_P03923 protein n=3 Tax=organism 2 TaxID=2 RepID=P03923_HUMAN\n"
+                ">UniRef50_P03923 AMP-binding enzyme family protein n=3 Tax=organism 2 TaxID=2 RepID=P12345_HUMAN\n"
                         + "MVSWGRFICLVVVTMATLSLARPSFSLVEDDFSAGSADFAFWERDGDSDGFDSHSDJHET\n"
                         + "RHJREH";
         assertEquals(expected, fasta);
@@ -72,7 +72,7 @@ class UniRefFastaParserTest {
         String fasta = UniRefFastaParser.toFasta(entry2);
 
         String expected =
-                ">UniRef50_P03923 protein n=3 RepID=P03923_HUMAN\n"
+                ">UniRef50_P03923 AMP-binding enzyme family protein n=3 RepID=P12345_HUMAN\n"
                         + "MVSWGRFICLVVVTMATLSLARPSFSLVEDDFSAGSADFAFWERDGDSDGFDSHSDJHET\n"
                         + "RHJREH";
         assertEquals(expected, fasta);
@@ -88,8 +88,7 @@ class UniRefFastaParserTest {
         return new UniRefEntryLightBuilder()
                 .id("UniRef50_P03923")
                 .name("Cluster: protein")
-                .representativeId("P03923_HUMAN,P03923")
-                .sequence(entry.getRepresentativeMember().getSequence().getValue())
+                .representativeMember(entry.getRepresentativeMember())
                 .organismsSet(new LinkedHashSet<>(asList(organism, otherOrganism)))
                 .commonTaxon(otherOrganism)
                 .memberCount(3)

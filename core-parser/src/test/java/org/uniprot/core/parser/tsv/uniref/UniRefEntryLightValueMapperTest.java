@@ -15,12 +15,11 @@ import java.util.stream.Stream;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
-import org.uniprot.core.uniref.UniRefEntryId;
-import org.uniprot.core.uniref.UniRefEntryLight;
-import org.uniprot.core.uniref.UniRefMemberIdType;
-import org.uniprot.core.uniref.UniRefType;
+import org.uniprot.core.uniref.*;
+import org.uniprot.core.uniref.impl.RepresentativeMemberBuilder;
 import org.uniprot.core.uniref.impl.UniRefEntryIdBuilder;
 import org.uniprot.core.uniref.impl.UniRefEntryLightBuilder;
 
@@ -159,6 +158,9 @@ class UniRefEntryLightValueMapperTest {
                         .commonName("common")
                         .build();
 
+        RepresentativeMember representativeMember = new RepresentativeMemberBuilder()
+                .sequence(new SequenceBuilder(SEQUENCE).build())
+                .build();
         return new UniRefEntryLightBuilder()
                 .id(entryId)
                 .updated(created)
@@ -167,7 +169,7 @@ class UniRefEntryLightValueMapperTest {
                 .name(name)
                 .organismsAdd(organism)
                 .organismsAdd(organismWithCommon)
-                .sequence(SEQUENCE)
+                .representativeMember(representativeMember)
                 .memberCount(MEMBER_COUNT)
                 .membersSet(asList("P1", "P2", "P3", "P4", "P5"))
                 .memberIdTypesAdd(UNIPROTKB_SWISSPROT)

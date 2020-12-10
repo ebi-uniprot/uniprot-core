@@ -31,6 +31,8 @@ public interface UniRefEntryLight extends Serializable {
 
     List<GeneOntologyEntry> getGoTerms();
 
+    RepresentativeMember getRepresentativeMember();
+
     List<String> getMembers();
 
     int getMemberCount();
@@ -39,15 +41,7 @@ public interface UniRefEntryLight extends Serializable {
 
     int getOrganismCount();
 
-    String getSequence();
-
-    int getSequenceLength();
-
-    String getRepresentativeId();
-
     String getSeedId();
-
-    String getRepresentativeProteinName();
 
     Set<UniRefMemberIdType> getMemberIdTypes();
 }
