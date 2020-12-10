@@ -29,14 +29,14 @@ public class UniRefFastaParser {
     public static String toFasta(UniRefEntry entry) {
         StringBuilder sb = new StringBuilder();
         sb.append(getHeader(entry)).append("\n");
-        int columnCounter = 0;
         String sequence = entry.getRepresentativeMember().getSequence().getValue();
+        int columnCounter = 0;
         for (char c : sequence.toCharArray()) {
             if (columnCounter % 60 == 0 && columnCounter > 0) {
                 sb.append("\n");
             }
-            sb.append(c);
             columnCounter++;
+            sb.append(c);
         }
         return sb.toString();
     }
@@ -50,11 +50,11 @@ public class UniRefFastaParser {
                 .append(" n=")
                 .append(entry.getMemberCount());
 
-        if (entry.getCommonTaxonId() != 1L) {
+        if (entry.getCommonTaxon() != null && entry.getCommonTaxon().getTaxonId() != 1L) {
             sb.append(" Tax=")
-                    .append(entry.getCommonTaxon())
+                    .append(entry.getCommonTaxon().getScientificName())
                     .append(" TaxID=")
-                    .append(entry.getCommonTaxonId());
+                    .append(entry.getCommonTaxon().getTaxonId());
         }
         sb.append(" RepID=").append(getRepresentativeId(entry));
         return sb.toString();

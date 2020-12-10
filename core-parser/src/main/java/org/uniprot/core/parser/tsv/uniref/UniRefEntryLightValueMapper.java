@@ -1,11 +1,11 @@
 package org.uniprot.core.parser.tsv.uniref;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.parser.tsv.uniprot.EntryMapUtil;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
 import org.uniprot.core.uniref.UniRefEntryLight;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 
@@ -20,8 +20,14 @@ public class UniRefEntryLightValueMapper extends AbstractUniRefEntryMapper<UniRe
         Map<String, String> map = new HashMap<>();
         map.put(UNIREF_FIELDS.get(0), entry.getId().getValue());
         map.put(UNIREF_FIELDS.get(1), entry.getName());
-        map.put(UNIREF_FIELDS.get(2), entry.getCommonTaxon());
-        map.put(UNIREF_FIELDS.get(3), Long.toString(entry.getCommonTaxonId()));
+        String organismCommon = "";
+        String organismCommonId = "";
+        if (entry.getCommonTaxon() != null) {
+            organismCommon = EntryMapUtil.convertOrganism(entry.getCommonTaxon());
+            organismCommonId = Long.toString(entry.getCommonTaxon().getTaxonId());
+        }
+        map.put(UNIREF_FIELDS.get(2), organismCommon);
+        map.put(UNIREF_FIELDS.get(3), organismCommonId);
         map.put(UNIREF_FIELDS.get(4), Integer.toString(entry.getMemberCount()));
         map.put(UNIREF_FIELDS.get(5), entry.getUpdated().toString());
         map.put(UNIREF_FIELDS.get(6), Integer.toString(entry.getSequenceLength()));
@@ -33,13 +39,17 @@ public class UniRefEntryLightValueMapper extends AbstractUniRefEntryMapper<UniRe
 
     @Override
     String getOrganisms(UniRefEntryLight entry) {
-        return String.join(DELIMITER, entry.getOrganisms());
+        return entry.getOrganisms().stream()
+                .map(organism -> (OrganismName) organism)
+                .map(EntryMapUtil::convertOrganism)
+                .collect(Collectors.joining(DELIMITER));
     }
 
     @Override
     String getOrganismTaxId(UniRefEntryLight entry) {
-        return entry.getOrganismIds().stream()
-                .map(Object::toString)
+        return entry.getOrganisms().stream()
+                .map(Organism::getTaxonId)
+                .map(String::valueOf)
                 .collect(Collectors.joining(DELIMITER));
     }
 

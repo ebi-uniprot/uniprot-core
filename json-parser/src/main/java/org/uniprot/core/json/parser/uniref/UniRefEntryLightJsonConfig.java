@@ -2,14 +2,20 @@ package org.uniprot.core.json.parser.uniref;
 
 import java.time.LocalDate;
 
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.Value;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.cv.go.impl.GeneOntologyEntryImpl;
+import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.impl.ValueImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.json.parser.deserializer.LocalDateDeserializer;
 import org.uniprot.core.json.parser.serializer.LocalDateSerializer;
 import org.uniprot.core.json.parser.uniref.serialiser.UniRefEntryLightSerialiser;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidenceImpl;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismImpl;
 import org.uniprot.core.uniref.*;
 import org.uniprot.core.uniref.impl.*;
 
@@ -59,6 +65,9 @@ public class UniRefEntryLightJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Value.class, ValueImpl.class);
         mod.addAbstractTypeMapping(UniRefEntryId.class, UniRefEntryIdImpl.class);
         mod.addAbstractTypeMapping(GeneOntologyEntry.class, GeneOntologyEntryImpl.class);
+        mod.addAbstractTypeMapping(Organism.class, OrganismImpl.class);
+        mod.addAbstractTypeMapping(Evidence.class, EvidenceImpl.class);
+        mod.addAbstractTypeMapping(CrossReference.class, CrossReferenceImpl.class);
         objMapper.registerModule(mod);
 
         return objMapper;
