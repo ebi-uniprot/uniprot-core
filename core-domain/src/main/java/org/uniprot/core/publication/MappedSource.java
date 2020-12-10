@@ -8,5 +8,5 @@ import java.util.Set;
  */
 public interface MappedSource {
     String getSource();
-    Set<String> getSourceIds();
+    String getSourceId();
 }

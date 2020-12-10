@@ -12,17 +12,17 @@ import java.util.Set;
  * @author Edd
  */
 public class AbstractMappedReference implements MappedReference {
-    protected final Set<MappedSource> sources;
+    protected final MappedSource source;
     protected final String pubMedId;
     protected final UniProtKBAccession uniProtKBAccession;
     protected final Set<String> sourceCategories;
 
     public AbstractMappedReference(
-            Set<MappedSource> sources,
+            MappedSource source,
             String pubMedId,
             UniProtKBAccession uniProtKBAccession,
             Set<String> sourceCategories) {
-        this.sources = sources;
+        this.source = source;
         this.pubMedId = pubMedId;
         this.uniProtKBAccession = uniProtKBAccession;
         this.sourceCategories = sourceCategories;
@@ -34,8 +34,8 @@ public class AbstractMappedReference implements MappedReference {
     }
 
     @Override
-    public Set<MappedSource> getSources() {
-        return sources;
+    public MappedSource getSource() {
+        return source;
     }
 
     @Override

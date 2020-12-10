@@ -23,7 +23,7 @@ public class ComputationallyMappedReferenceBuilder
     @Override
     public ComputationallyMappedReference build() {
         return new ComputationallyMappedReferenceImpl(
-                sources, pubMedId, uniProtKBAccession, sourceCategories, annotation);
+                source, pubMedId, uniProtKBAccession, sourceCategories, annotation);
     }
 
     @Nonnull

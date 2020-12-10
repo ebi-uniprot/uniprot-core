@@ -4,7 +4,6 @@ import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.util.Utils;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -15,7 +14,7 @@ import java.util.Set;
 public interface MappedReference extends Serializable {
     UniProtKBAccession getUniProtKBAccession();
 
-    Set<MappedSource> getSources();
+    MappedSource getSource();
 
     String getPubMedId();
 
@@ -24,10 +23,6 @@ public interface MappedReference extends Serializable {
     default boolean hasUniProtAccession() {
         return Utils.notNull(getUniProtKBAccession())
                 && Utils.notNullNotEmpty(getUniProtKBAccession().getValue());
-    }
-
-    default boolean hasSources() {
-        return Utils.notNullNotEmpty(getSources());
     }
 
     default boolean hasSourceCategory() {
