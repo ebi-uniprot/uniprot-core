@@ -63,35 +63,17 @@ class AbstractMappedReferenceBuilderTest {
     }
 
     @Test
-    void canAddSource() {
-        MappedSource source =
-                new MappedSourceBuilder()
-                        .source("source1")
-                        .sourceIdsAdd("value1")
-                        .sourceIdsAdd("value2")
-                        .build();
-        FakeMappedReference reference = new FakeMappedReferenceBuilder().sourcesAdd(source).build();
-        assertThat(reference.getSources(), containsInAnyOrder(source));
-    }
-
-    @Test
-    void canSetSources() {
-        Set<MappedSource> categories = new HashSet<>();
-        categories.add(
-                new MappedSourceBuilder()
-                        .source("source1")
-                        .sourceIdsAdd("value1")
-                        .sourceIdsAdd("value2")
-                        .build());
-        categories.add(
-                new MappedSourceBuilder()
-                        .source("source2")
-                        .sourceIdsAdd("value3")
-                        .sourceIdsAdd("value4")
-                        .build());
+    void canSetSource() {
+        MappedSource source = new MappedSourceBuilder()
+                .source("source1")
+                .sourceId("value1")
+                .build();
         FakeMappedReference reference =
-                new FakeMappedReferenceBuilder().sourcesSet(categories).build();
-        assertThat(reference.getSources(), is(categories));
+                new FakeMappedReferenceBuilder()
+                        .source(
+                                source)
+                        .build();
+        assertThat(reference.getSource(), is(source));
     }
 
     @Test
@@ -104,11 +86,11 @@ class AbstractMappedReferenceBuilderTest {
 
     private static class FakeMappedReference extends AbstractMappedReference {
         public FakeMappedReference(
-                Set<MappedSource> sources,
+                MappedSource source,
                 String pubMedId,
                 UniProtKBAccession uniProtKBAccession,
                 Set<String> sourceCategories) {
-            super(sources, pubMedId, uniProtKBAccession, sourceCategories);
+            super(source, pubMedId, uniProtKBAccession, sourceCategories);
         }
     }
 
@@ -118,7 +100,7 @@ class AbstractMappedReferenceBuilderTest {
         @Nonnull
         @Override
         public FakeMappedReference build() {
-            return new FakeMappedReference(sources, pubMedId, uniProtKBAccession, sourceCategories);
+            return new FakeMappedReference(source, pubMedId, uniProtKBAccession, sourceCategories);
         }
 
         @Nonnull

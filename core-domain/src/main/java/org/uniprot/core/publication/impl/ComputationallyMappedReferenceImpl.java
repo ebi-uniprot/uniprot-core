@@ -21,12 +21,12 @@ public class ComputationallyMappedReferenceImpl extends AbstractMappedReference
     }
 
     public ComputationallyMappedReferenceImpl(
-            Set<MappedSource> sources,
+            MappedSource source,
             String pubMedId,
             UniProtKBAccession uniProtKBAccession,
             Set<String> sourceCategories,
             String annotation) {
-        super(sources, pubMedId, uniProtKBAccession, sourceCategories);
+        super(source, pubMedId, uniProtKBAccession, sourceCategories);
         this.annotation = annotation;
     }
 
