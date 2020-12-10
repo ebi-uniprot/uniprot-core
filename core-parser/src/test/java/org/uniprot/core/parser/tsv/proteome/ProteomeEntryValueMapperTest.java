@@ -146,7 +146,6 @@ class ProteomeEntryValueMapperTest {
                         .modified(modified)
                         .proteomeType(ProteomeType.REFERENCE)
                         .strain("some Strain")
-                        .proteomeCrossReferencesSet(xrefs)
                         .taxonLineagesAdd(taxon1)
                         .taxonLineagesAdd(taxon2)
                         .citationsSet(Collections.emptyList())

@@ -16,15 +16,16 @@ import org.uniprot.core.xml.jaxb.proteome.ScoreType;
  */
 public class ScoreBuscoConverter implements Converter<ScoreType, BuscoReport> {
 
-    static final String NAME = "busco";
-    static final String PROPERTY_TOTAL = "total";
-    static final String PROPERTY_COMPLETED = "completed";
-    static final String PROPERTY_COMPLETED_SINGLE = "completedSingle";
-    static final String PROPERTY_COMPLETED_DUPLICATED = "completedDuplicated";
-    static final String PROPERTY_FRAGMENTED = "fragmented";
-    static final String PROPERTY_MISSING = "missing";
-    static final String PROPERTY_SCORE = "score";
-    static final String PROPERTY_LINEAGE = "lineage";
+    public static final String NAME = "busco";
+    public static final String PROPERTY_TOTAL = "total";
+    public static final String PROPERTY_COMPLETED = "completed";
+    public static final String PROPERTY_COMPLETED_SINGLE = "completedSingle";
+    public static final String PROPERTY_COMPLETED_DUPLICATED = "completedDuplicated";
+    public static final String PROPERTY_FRAGMENTED = "fragmented";
+    public static final String PROPERTY_MISSING = "missing";
+    public static final String PROPERTY_SCORE = "score";
+    public static final String PROPERTY_LINEAGE = "lineage";
+
     final ScorePropertyConverter propertyConverter;
 
     private final ObjectFactory xmlFactory;

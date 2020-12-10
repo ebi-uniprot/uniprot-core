@@ -7,7 +7,6 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.proteome.*;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
@@ -23,19 +22,17 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
     private ProteomeId redundantTo;
     private String strain;
     private String isolate;
-    private List<CrossReference<ProteomeDatabase>> proteomeCrossReferences = new ArrayList<>();
     private List<Component> components = new ArrayList<>();
     private List<Citation> citations = new ArrayList<>();
     private List<RedundantProteome> redundantProteomes = new ArrayList<>();
     private ProteomeId panproteome;
-    private int annotationScore;
+    private Integer annotationScore;
+    private Integer geneCount;
     private Superkingdom superkingdom;
-    private int geneCount;
     private List<TaxonomyLineage> taxonLineages = new ArrayList<>();
-    private List<CanonicalProtein> canonicalProteins = new ArrayList<>();
-    private String sourceDb;
     private ProteomeCompletenessReport proteomeCompletenessReport;
     private GenomeAssembly genomeAssembly;
+    private GenomeAnnotation genomeAnnotation;
     private List<ExclusionReason> exclusionReasons = new ArrayList<>();
 
     @Override
@@ -49,7 +46,6 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 redundantTo,
                 strain,
                 isolate,
-                proteomeCrossReferences,
                 components,
                 citations,
                 redundantProteomes,
@@ -58,10 +54,9 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 superkingdom,
                 geneCount,
                 taxonLineages,
-                canonicalProteins,
-                sourceDb,
                 proteomeCompletenessReport,
                 genomeAssembly,
+                genomeAnnotation,
                 exclusionReasons);
     }
 
@@ -75,19 +70,17 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 .redundantTo(instance.getRedundantTo())
                 .strain(instance.getStrain())
                 .isolate(instance.getIsolate())
-                .proteomeCrossReferencesSet(instance.getProteomeCrossReferences())
                 .componentsSet(instance.getComponents())
                 .citationsSet(instance.getCitations())
                 .redundantProteomesSet(instance.getRedudantProteomes())
-                .canonicalProteinsSet(instance.getCanonicalProteins())
                 .panproteome(instance.getPanproteome())
                 .annotationScore(instance.getAnnotationScore())
                 .superkingdom(instance.getSuperkingdom())
                 .geneCount(instance.getGeneCount())
                 .taxonLineagesSet(instance.getTaxonLineages())
-                .sourceDb(instance.getSourceDb())
                 .proteomeCompletenessReport(instance.getProteomeCompletenessReport())
                 .genomeAssembly(instance.getGenomeAssembly())
+                .genomeAnnotation(instance.getGenomeAnnotation())
                 .exclusionReasonsSet(instance.getExclusionReasons());
     }
 
@@ -136,23 +129,6 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
         return this;
     }
 
-    public @Nonnull ProteomeEntryBuilder sourceDb(String sourceDb) {
-        this.sourceDb = sourceDb;
-        return this;
-    }
-
-    public @Nonnull ProteomeEntryBuilder proteomeCrossReferencesSet(
-            List<CrossReference<ProteomeDatabase>> proteomeCrossReferences) {
-        this.proteomeCrossReferences = Utils.modifiableList(proteomeCrossReferences);
-        return this;
-    }
-
-    public @Nonnull ProteomeEntryBuilder proteomeCrossReferencesAdd(
-            CrossReference<ProteomeDatabase> proteomeCrossReference) {
-        Utils.addOrIgnoreNull(proteomeCrossReference, proteomeCrossReferences);
-        return this;
-    }
-
     public @Nonnull ProteomeEntryBuilder componentsSet(List<Component> components) {
         this.components = Utils.modifiableList(components);
         return this;
@@ -190,18 +166,18 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
         return this;
     }
 
-    public @Nonnull ProteomeEntryBuilder annotationScore(int annotationScore) {
+    public @Nonnull ProteomeEntryBuilder annotationScore(Integer annotationScore) {
         this.annotationScore = annotationScore;
+        return this;
+    }
+
+    public @Nonnull ProteomeEntryBuilder geneCount(Integer geneCount) {
+        this.geneCount = geneCount;
         return this;
     }
 
     public @Nonnull ProteomeEntryBuilder superkingdom(Superkingdom superkingdom) {
         this.superkingdom = superkingdom;
-        return this;
-    }
-
-    public @Nonnull ProteomeEntryBuilder geneCount(int geneCount) {
-        this.geneCount = geneCount;
         return this;
     }
 
@@ -215,17 +191,6 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
         return this;
     }
 
-    public @Nonnull ProteomeEntryBuilder canonicalProteinsSet(
-            List<CanonicalProtein> canonicalProteins) {
-        this.canonicalProteins = Utils.modifiableList(canonicalProteins);
-        return this;
-    }
-
-    public @Nonnull ProteomeEntryBuilder canonicalProteinsAdd(CanonicalProtein canonicalProtein) {
-        Utils.addOrIgnoreNull(canonicalProtein, canonicalProteins);
-        return this;
-    }
-
     public @Nonnull ProteomeEntryBuilder proteomeCompletenessReport(
             ProteomeCompletenessReport proteomeCompletenessReport) {
         this.proteomeCompletenessReport = proteomeCompletenessReport;
@@ -234,6 +199,11 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
 
     public @Nonnull ProteomeEntryBuilder genomeAssembly(GenomeAssembly genomeAssembly) {
         this.genomeAssembly = genomeAssembly;
+        return this;
+    }
+
+    public @Nonnull ProteomeEntryBuilder genomeAnnotation(GenomeAnnotation genomeAnnotation) {
+        this.genomeAnnotation = genomeAnnotation;
         return this;
     }
 

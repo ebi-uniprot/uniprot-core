@@ -17,8 +17,7 @@ public enum GenomeAssemblySource implements EnumDisplay {
     ENSEMBLMETAZOA("EnsemblMetazoa"),
     ENSEMBL("Ensembl"),
     REFSEQ("Refseq"),
-    WORMBASE("WormBase"),
-    VECTORBASE("VectorBase");
+    WORMBASE("WormBase");
 
     private final String name;
 

@@ -9,8 +9,8 @@ import org.uniprot.core.util.EnumDisplay;
  * @since 14/04/2020
  */
 public enum CPDStatus implements EnumDisplay {
-    CLOSE_TO_STANDARD(1, "Close to Standard"),
-    STANDARD(2, "Standard"),
+    STANDARD(1, "Standard"),
+    CLOSE_TO_STANDARD(2, "Close to Standard"),
     OUTLIER(3, "Outlier"),
     UNKNOWN(4, "Unknown");
 

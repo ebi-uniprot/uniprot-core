@@ -6,10 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.proteome.Component;
+import org.uniprot.core.proteome.GenomeAnnotation;
 import org.uniprot.core.proteome.ProteomeDatabase;
 import org.uniprot.core.proteome.impl.ComponentBuilder;
+import org.uniprot.core.proteome.impl.GenomeAnnotationBuilder;
 import org.uniprot.core.xml.jaxb.proteome.ComponentType;
-import org.uniprot.core.xml.jaxb.proteome.ComponentTypeType;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 
 class ComponentConverterTest {
@@ -20,13 +21,13 @@ class ComponentConverterTest {
     void testFromXml() {
         ComponentType xmlObj = xmlFactory.createComponentType();
         xmlObj.setName("component name");
+        xmlObj.setProteinCount(10);
         xmlObj.setDescription("component description");
-        xmlObj.setType(ComponentTypeType.CON);
         Component component = converter.fromXml(xmlObj);
         assertEquals("component name", component.getName());
+        assertEquals(10, component.getProteinCount());
         assertEquals("component description", component.getDescription());
         assertEquals(0, component.getProteomeCrossReferences().size());
-        assertEquals(org.uniprot.core.proteome.ComponentType.CON, component.getType());
     }
 
     @Test
@@ -43,12 +44,15 @@ class ComponentConverterTest {
                         .id("genome Value")
                         .build();
 
+        GenomeAnnotation genomeAnnotation =
+                new GenomeAnnotationBuilder().source("source value").url("url value").build();
+
         Component component =
                 new ComponentBuilder()
                         .name("some name")
-                        .description("some description")
-                        .type(org.uniprot.core.proteome.ComponentType.PRIMARY)
                         .proteinCount(10)
+                        .description("some description")
+                        .genomeAnnotation(genomeAnnotation)
                         .proteomeCrossReferencesAdd(genomeAccession)
                         .proteomeCrossReferencesAdd(bioSample)
                         .build();
@@ -61,14 +65,10 @@ class ComponentConverterTest {
     void testEmptyComponent() {
         Component component = new ComponentBuilder().build();
         ComponentType xmlObj = converter.toXml(component);
-        assertEquals(ComponentTypeType.UNPLACED, xmlObj.getType());
         assertNull(xmlObj.getDescription());
         assertNull(xmlObj.getName());
         assertNull(xmlObj.getBiosampleId());
         assertNotNull(xmlObj.getGenomeAccession());
         assertEquals(0, xmlObj.getGenomeAccession().size());
-        assertNotNull(xmlObj.getProtein());
-        assertEquals(0, xmlObj.getProtein().size());
-        assertEquals(0, xmlObj.getCount());
     }
 }

@@ -11,11 +11,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.citation.impl.JournalArticleBuilder;
 import org.uniprot.core.citation.impl.SubmissionBuilder;
-import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.proteome.*;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.impl.TaxonomyLineageBuilder;
@@ -98,49 +96,6 @@ class ProteomeEntryBuilderTest {
     }
 
     @Test
-    void testDbXReferences() {
-        List<CrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
-        CrossReference<ProteomeDatabase> xref1 =
-                new CrossReferenceBuilder<ProteomeDatabase>()
-                        .database(ProteomeDatabase.GENOME_ACCESSION)
-                        .id("ACA121")
-                        .build();
-        CrossReference<ProteomeDatabase> xref2 =
-                new CrossReferenceBuilder<ProteomeDatabase>()
-                        .database(ProteomeDatabase.GENOME_ANNOTATION)
-                        .id("ADFDA121")
-                        .build();
-        xrefs.add(xref1);
-        xrefs.add(xref2);
-        ProteomeEntry proteome =
-                new ProteomeEntryBuilder().proteomeCrossReferencesSet(xrefs).build();
-        assertEquals(2, proteome.getProteomeCrossReferences().size());
-        assertThat(proteome.getProteomeCrossReferences(), hasItem(xref2));
-    }
-
-    @Test
-    void testAddDbXReferences() {
-
-        CrossReference<ProteomeDatabase> xref1 =
-                new CrossReferenceBuilder<ProteomeDatabase>()
-                        .database(ProteomeDatabase.GENOME_ACCESSION)
-                        .id("ACA121")
-                        .build();
-        CrossReference<ProteomeDatabase> xref2 =
-                new CrossReferenceBuilder<ProteomeDatabase>()
-                        .database(ProteomeDatabase.GENOME_ANNOTATION)
-                        .id("ADFDA121")
-                        .build();
-        ProteomeEntry proteome =
-                new ProteomeEntryBuilder()
-                        .proteomeCrossReferencesAdd(xref1)
-                        .proteomeCrossReferencesAdd(xref2)
-                        .build();
-        assertEquals(2, proteome.getProteomeCrossReferences().size());
-        assertThat(proteome.getProteomeCrossReferences(), hasItem(xref1));
-    }
-
-    @Test
     void testComponents() {
         List<Component> components = new ArrayList<>();
         Component component1 =
@@ -161,7 +116,9 @@ class ProteomeEntryBuilderTest {
         components.add(component2);
         ProteomeEntry proteome = new ProteomeEntryBuilder().componentsSet(components).build();
         assertEquals(2, proteome.getComponents().size());
+        assertEquals(204, proteome.getProteinCount());
         assertThat(proteome.getComponents(), hasItem(component1));
+        assertThat(proteome.getComponents(), hasItem(component2));
     }
 
     @Test
@@ -186,6 +143,25 @@ class ProteomeEntryBuilderTest {
                         .componentsAdd(component2)
                         .build();
         assertEquals(2, proteome.getComponents().size());
+        assertEquals(204, proteome.getProteinCount());
+        assertThat(proteome.getComponents(), hasItem(component2));
+    }
+
+    @Test
+    void testAddComponentWithoutProteinCount() {
+        Component component1 =
+                new ComponentBuilder().name("someName1").description("some description").build();
+
+        Component component2 =
+                new ComponentBuilder().name("someName2").description("some description 2").build();
+
+        ProteomeEntry proteome =
+                new ProteomeEntryBuilder()
+                        .componentsAdd(component1)
+                        .componentsAdd(component2)
+                        .build();
+        assertEquals(2, proteome.getComponents().size());
+        assertNull(proteome.getProteinCount());
         assertThat(proteome.getComponents(), hasItem(component2));
     }
 
@@ -312,53 +288,17 @@ class ProteomeEntryBuilderTest {
     }
 
     @Test
-    void addCanonicalProtein() {
-        List<Protein> proteins = new ArrayList<>();
-        proteins.add(new ProteinBuilder().accession("P12345").build());
-        proteins.add(new ProteinBuilder().accession("P12346").build());
-        CanonicalProtein cProtein =
-                new CanonicalProteinBuilder().relatedProteinsSet(proteins).build();
-
-        Protein protein = new ProteinBuilder().accession("P22345").build();
-        CanonicalProtein cProtein2 =
-                new CanonicalProteinBuilder().relatedProteinsAdd(protein).build();
-        ProteomeEntry proteome =
-                new ProteomeEntryBuilder()
-                        .canonicalProteinsAdd(cProtein)
-                        .canonicalProteinsAdd(cProtein2)
-                        .build();
-        assertEquals(2, proteome.getCanonicalProteins().size());
-        assertThat(proteome.getCanonicalProteins(), hasItem(cProtein));
-    }
-
-    @Test
-    void canonicalProteins() {
-        List<Protein> proteins = new ArrayList<>();
-        proteins.add(new ProteinBuilder().accession("P12345").build());
-        proteins.add(new ProteinBuilder().accession("P12346").build());
-        CanonicalProtein cProtein =
-                new CanonicalProteinBuilder().relatedProteinsSet(proteins).build();
-
-        Protein protein = new ProteinBuilder().accession("P22345").build();
-        CanonicalProtein cProtein2 =
-                new CanonicalProteinBuilder().relatedProteinsAdd(protein).build();
-        List<CanonicalProtein> cProteins = Arrays.asList(cProtein, cProtein2);
-        ProteomeEntry proteome = new ProteomeEntryBuilder().canonicalProteinsSet(cProteins).build();
-        assertEquals(2, proteome.getCanonicalProteins().size());
-        assertThat(proteome.getCanonicalProteins(), hasItem(cProtein2));
-    }
-
-    @Test
     void canAddIdAsString() {
         ProteomeEntry entry = new ProteomeEntryBuilder().proteomeId("id").build();
         assertNotNull(entry.getId());
     }
 
     @Test
-    void canAddDbSouce() {
-        String db = "sd";
-        ProteomeEntry entry = new ProteomeEntryBuilder().sourceDb(db).build();
-        assertEquals(db, entry.getSourceDb());
+    void testGenomeAnnotation() {
+        GenomeAnnotation genomeAnnotation =
+                new GenomeAnnotationBuilder().source("source value").url("url value").build();
+        ProteomeEntry entry = new ProteomeEntryBuilder().genomeAnnotation(genomeAnnotation).build();
+        assertEquals(genomeAnnotation, entry.getGenomeAnnotation());
     }
 
     @Test

@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.proteome.Component;
-import org.uniprot.core.proteome.ComponentType;
 import org.uniprot.core.proteome.ProteomeDatabase;
 
 class ComponentBuilderTest {
@@ -34,12 +33,10 @@ class ComponentBuilderTest {
                         .name("someName")
                         .description("some description")
                         .proteinCount(102)
-                        .type(ComponentType.PRIMARY)
                         .build();
         assertEquals("someName", component.getName());
         assertEquals("some description", component.getDescription());
         assertEquals(102, component.getProteinCount());
-        assertEquals(ComponentType.PRIMARY, component.getType());
     }
 
     @Test

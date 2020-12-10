@@ -95,8 +95,7 @@ public class ProteomeJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(CrossReference.class, CrossReferenceImpl.class);
         mod.addAbstractTypeMapping(Database.class, DefaultDatabase.class);
 
-        mod.addAbstractTypeMapping(Protein.class, ProteinImpl.class);
-        mod.addAbstractTypeMapping(CanonicalProtein.class, CanonicalProteinImpl.class);
+        mod.addAbstractTypeMapping(GenomeAnnotation.class, GenomeAnnotationImpl.class);
         mod.addAbstractTypeMapping(UniProtKBAccession.class, UniProtKBAccessionImpl.class);
 
         mod.addAbstractTypeMapping(

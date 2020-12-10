@@ -33,7 +33,6 @@ import org.uniprot.core.uniparc.*;
 import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
 import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
-import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.comment.impl.*;
 import org.uniprot.core.uniprotkb.description.EC;
@@ -558,30 +557,15 @@ public class ObjectsForTests {
     }
 
     public static ProteomeEntry createProteomeEntry() {
+        GenomeAnnotation genomeAnnotation =
+                new GenomeAnnotationBuilder().source("source value").url("url value").build();
+
         ComponentImpl component =
-                new ComponentImpl(
-                        "name",
-                        "desc",
-                        5,
-                        ComponentType.SEGMENTED_GENOME,
-                        proteomeXReferenceTypes());
+                new ComponentImpl("name", "desc", 5, genomeAnnotation, proteomeXReferenceTypes());
         JournalArticleBuilder builder = new JournalArticleBuilder();
         RedundantProteome rp =
                 new RedundantProteomeBuilder().proteomeId("id").similarity(4.5F).build();
         updateCitationBuilderWithCommonAttributes(builder);
-        Protein protein =
-                new ProteinBuilder()
-                        .accession("val")
-                        .entryType(UniProtKBEntryType.INACTIVE)
-                        .sequenceLength(20L)
-                        .geneName("gene")
-                        .geneNameType(GeneNameType.ORF)
-                        .build();
-        CanonicalProtein canonicalProtein =
-                new CanonicalProteinBuilder()
-                        .canonicalProtein(protein)
-                        .relatedProteinsAdd(protein)
-                        .build();
         return new ProteomeEntryBuilder()
                 .proteomeId("id")
                 .taxonomy(taxonomies().get(0))
@@ -591,19 +575,16 @@ public class ObjectsForTests {
                 .redundantTo(new ProteomeIdBuilder("id1").build())
                 .strain("strain")
                 .isolate("isolate")
-                .proteomeCrossReferencesSet(proteomeXReferenceTypes())
                 .componentsAdd(component)
                 .citationsAdd(builder.build())
                 .redundantProteomesAdd(rp)
                 .panproteome(new ProteomeIdBuilder("panProteome").build())
                 .annotationScore(5)
                 .superkingdom(Superkingdom.EUKARYOTA)
-                .geneCount(90)
                 .taxonLineagesAdd(getCompleteTaxonomyLineage())
-                .canonicalProteinsAdd(canonicalProtein)
-                .sourceDb("db")
                 .proteomeCompletenessReport(createProteomeCompletenessReport())
                 .genomeAssembly(createGenomeAssembly())
+                .genomeAnnotation(genomeAnnotation)
                 .build();
     }
 
