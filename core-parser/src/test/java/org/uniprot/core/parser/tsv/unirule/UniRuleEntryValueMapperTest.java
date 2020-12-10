@@ -5,6 +5,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,7 @@ import org.uniprot.core.unirule.impl.RuleBuilder;
 import org.uniprot.core.unirule.impl.RuleBuilderTest;
 import org.uniprot.core.unirule.impl.UniRuleEntryBuilder;
 import org.uniprot.core.unirule.impl.UniRuleIdBuilder;
+import org.uniprot.core.util.Utils;
 
 class UniRuleEntryValueMapperTest {
 
