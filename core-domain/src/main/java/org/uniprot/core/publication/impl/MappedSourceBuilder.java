@@ -17,32 +17,27 @@ import static org.uniprot.core.util.Utils.modifiableSet;
  */
 public class MappedSourceBuilder implements Builder<MappedSource> {
     private String source;
-    private Set<String> sourceIds = new HashSet<>();
+    private String sourceId;
 
     public MappedSourceBuilder source(String source) {
         this.source = source;
         return this;
     }
 
-    public MappedSourceBuilder sourceIdsAdd(String sourceId) {
-        addOrIgnoreNull(sourceId, this.sourceIds);
-        return this;
-    }
-
-    public MappedSourceBuilder sourceIdsSet(Set<String> sourceIds) {
-        this.sourceIds = modifiableSet(sourceIds);
+    public MappedSourceBuilder sourceId(String sourceId) {
+        this.sourceId = sourceId;
         return this;
     }
 
     @Nonnull
     @Override
     public MappedSource build() {
-        return new MappedSourceImpl(source, sourceIds);
+        return new MappedSourceImpl(source, sourceId);
     }
 
     public static MappedSourceBuilder from(@Nonnull MappedSource instance) {
         return new MappedSourceBuilder()
                 .source(instance.getSource())
-                .sourceIdsSet(instance.getSourceIds());
+                .sourceId(instance.getSourceId());
     }
 }
