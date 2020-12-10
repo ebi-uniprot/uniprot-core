@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -56,9 +55,13 @@ public class UniRuleEntryValueMapper implements EntityValueMapper<UniRuleEntry> 
 
     private String getTaxonomicScope(UniRuleEntry uniRuleEntry) {
         Rule mainRule = uniRuleEntry.getMainRule();
-        return mainRule.getConditionSets().stream().map(ConditionSet::getConditions)
-                .flatMap(Collection::stream).filter(condition -> "taxon".equals(condition.getType())).findFirst()
-                .map(this::getConditionValues).orElse(EMPTY_STRING);
+        return mainRule.getConditionSets().stream()
+                .map(ConditionSet::getConditions)
+                .flatMap(Collection::stream)
+                .filter(condition -> "taxon".equals(condition.getType()))
+                .findFirst()
+                .map(this::getConditionValues)
+                .orElse(EMPTY_STRING);
     }
 
     private String getConditionValues(Condition condition) {
@@ -82,7 +85,9 @@ public class UniRuleEntryValueMapper implements EntityValueMapper<UniRuleEntry> 
     private String getUniProtAccessions(Information information) {
         List<UniProtKBAccession> uniProtAccessions = information.getUniProtAccessions();
         if (Utils.notNullNotEmpty(uniProtAccessions)) {
-            return uniProtAccessions.stream().map(UniProtKBAccession::getValue).collect(Collectors.joining(","));
+            return uniProtAccessions.stream()
+                    .map(UniProtKBAccession::getValue)
+                    .collect(Collectors.joining(","));
         } else {
             return EMPTY_STRING;
         }
@@ -91,11 +96,20 @@ public class UniRuleEntryValueMapper implements EntityValueMapper<UniRuleEntry> 
     private String getAnnotationCovered(UniRuleEntry entry) {
         List<Annotation> annotations = entry.getMainRule().getAnnotations();
         if (Utils.notNullNotEmpty(annotations)) {
-            List<String> commentTypes = annotations.stream().map(Annotation::getComment)
-                    .map(Comment::getCommentType).map(CommentType::getName).collect(Collectors.toList());
-            List<String> dbType = annotations.stream().map(Annotation::getDbReference)
-                    .map(UniProtKBCrossReference::getDatabase).map(UniProtKBDatabase::getName).collect(Collectors.toList());
-            Keyword keyword = annotations.stream().map(Annotation::getKeyword).findFirst().orElse(null);
+            List<String> commentTypes =
+                    annotations.stream()
+                            .map(Annotation::getComment)
+                            .map(Comment::getCommentType)
+                            .map(CommentType::getName)
+                            .collect(Collectors.toList());
+            List<String> dbType =
+                    annotations.stream()
+                            .map(Annotation::getDbReference)
+                            .map(UniProtKBCrossReference::getDatabase)
+                            .map(UniProtKBDatabase::getName)
+                            .collect(Collectors.toList());
+            Keyword keyword =
+                    annotations.stream().map(Annotation::getKeyword).findFirst().orElse(null);
             Gene gene = annotations.stream().map(Annotation::getGene).findFirst().orElse(null);
             Set<String> annotCovered = new HashSet<>(commentTypes);
             annotCovered.addAll(dbType);
@@ -135,8 +149,11 @@ public class UniRuleEntryValueMapper implements EntityValueMapper<UniRuleEntry> 
     }
 
     private StringBuilder getProteinName(List<Annotation> annotations) {
-        ProteinDescription proteinDescription = annotations.stream().map(Annotation::getProteinDescription)
-                .findFirst().orElse(null);
+        ProteinDescription proteinDescription =
+                annotations.stream()
+                        .map(Annotation::getProteinDescription)
+                        .findFirst()
+                        .orElse(null);
         StringBuilder builder = new StringBuilder();
         if (Utils.notNull(proteinDescription)) {
             String fullName = null;
@@ -144,13 +161,19 @@ public class UniRuleEntryValueMapper implements EntityValueMapper<UniRuleEntry> 
             List<String> shortNames = null;
             if (Utils.notNull(proteinDescription.getRecommendedName())) {
                 fullName = proteinDescription.getRecommendedName().getFullName().getValue();
-                ecNumbers = proteinDescription.getRecommendedName().getEcNumbers().stream()
-                        .map(EC::getValue).filter(Utils::notNullNotEmpty)
-                        .map(val -> "EC:" + val).collect(Collectors.toList());
+                ecNumbers =
+                        proteinDescription.getRecommendedName().getEcNumbers().stream()
+                                .map(EC::getValue)
+                                .filter(Utils::notNullNotEmpty)
+                                .map(val -> "EC:" + val)
+                                .collect(Collectors.toList());
 
-                shortNames = proteinDescription.getRecommendedName().getShortNames().stream()
-                        .map(Name::getValue).filter(Utils::notNullNotEmpty)
-                        .map(val -> "Short:" + val).collect(Collectors.toList());
+                shortNames =
+                        proteinDescription.getRecommendedName().getShortNames().stream()
+                                .map(Name::getValue)
+                                .filter(Utils::notNullNotEmpty)
+                                .map(val -> "Short:" + val)
+                                .collect(Collectors.toList());
             }
 
             if (Utils.notNullNotEmpty(fullName)) {

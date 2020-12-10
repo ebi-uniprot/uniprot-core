@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.unirule.Annotation;
@@ -46,7 +45,10 @@ class UniRuleEntryValueMapperTest {
         Condition condition = new ConditionBuilder("random type").build();
         ConditionSet conditionSet = new ConditionSetBuilder(condition).build();
         Rule mainRule = new RuleBuilder(conditionSet).build();
-        UniRuleEntry entry = new UniRuleEntryBuilder(uniRuleIdObject, status, information, mainRule).proteinsAnnotatedCount(10L).build();
+        UniRuleEntry entry =
+                new UniRuleEntryBuilder(uniRuleIdObject, status, information, mainRule)
+                        .proteinsAnnotatedCount(10L)
+                        .build();
 
         Map<String, String> mappedEntries =
                 new UniRuleEntryValueMapper().mapEntity(entry, Collections.emptyList());
@@ -57,7 +59,8 @@ class UniRuleEntryValueMapperTest {
         assertEquals("10", mappedEntries.get("proteins_annotated"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("taxonomic_scope"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("annotation_covered"));
-        assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("predicted_protein_name"));
+        assertEquals(
+                UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("predicted_protein_name"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("template_entries"));
     }
 
@@ -73,7 +76,10 @@ class UniRuleEntryValueMapperTest {
         Condition condition = new ConditionBuilder("random type").build();
         ConditionSet conditionSet = new ConditionSetBuilder(condition).build();
         Rule mainRule = new RuleBuilder(conditionSet).build();
-        UniRuleEntry entry = new UniRuleEntryBuilder(uniRuleIdObject, status, informationBuilder.build(), mainRule).build();
+        UniRuleEntry entry =
+                new UniRuleEntryBuilder(
+                                uniRuleIdObject, status, informationBuilder.build(), mainRule)
+                        .build();
 
         Map<String, String> mappedEntries =
                 new UniRuleEntryValueMapper().mapEntity(entry, Collections.emptyList());
@@ -85,7 +91,8 @@ class UniRuleEntryValueMapperTest {
         assertEquals("0", mappedEntries.get("proteins_annotated"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("taxonomic_scope"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("annotation_covered"));
-        assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("predicted_protein_name"));
+        assertEquals(
+                UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("predicted_protein_name"));
     }
 
     @Test
@@ -95,12 +102,16 @@ class UniRuleEntryValueMapperTest {
         RuleStatus status = RuleStatus.APPLY;
         Information information = new InformationBuilder("sample version").build();
         ConditionBuilder conditionBuilder = new ConditionBuilder("taxon");
-        conditionBuilder.conditionValuesAdd(new ConditionValueBuilder("Archaea").cvId("2157").build());
-        conditionBuilder.conditionValuesAdd(new ConditionValueBuilder("Eukaryota").cvId("2759").build());
-        conditionBuilder.conditionValuesAdd(new ConditionValueBuilder("Bacteria").cvId("2").build());
+        conditionBuilder.conditionValuesAdd(
+                new ConditionValueBuilder("Archaea").cvId("2157").build());
+        conditionBuilder.conditionValuesAdd(
+                new ConditionValueBuilder("Eukaryota").cvId("2759").build());
+        conditionBuilder.conditionValuesAdd(
+                new ConditionValueBuilder("Bacteria").cvId("2").build());
         ConditionSet conditionSet = new ConditionSetBuilder(conditionBuilder.build()).build();
         Rule mainRule = new RuleBuilder(conditionSet).build();
-        UniRuleEntry entry = new UniRuleEntryBuilder(uniRuleIdObject, status, information, mainRule).build();
+        UniRuleEntry entry =
+                new UniRuleEntryBuilder(uniRuleIdObject, status, information, mainRule).build();
 
         Map<String, String> mappedEntries =
                 new UniRuleEntryValueMapper().mapEntity(entry, Collections.emptyList());
@@ -109,13 +120,15 @@ class UniRuleEntryValueMapperTest {
         assertEquals(uniRuleId, mappedEntries.get("uniRuleId"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("template_entries"));
         assertEquals("0", mappedEntries.get("proteins_annotated"));
-        assertEquals("Archaea[2157],Eukaryota[2759],Bacteria[2]", mappedEntries.get("taxonomic_scope"));
+        assertEquals(
+                "Archaea[2157],Eukaryota[2759],Bacteria[2]", mappedEntries.get("taxonomic_scope"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("annotation_covered"));
-        assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("predicted_protein_name"));
+        assertEquals(
+                UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("predicted_protein_name"));
     }
 
     @Test
-    void testAnnotationCovered(){
+    void testAnnotationCovered() {
         Rule mainRule = RuleBuilderTest.createObject(3);
         String uniRuleId = "UR123456789";
         UniRuleId uniRuleIdObject = new UniRuleIdBuilder(uniRuleId).build();
@@ -175,7 +188,7 @@ class UniRuleEntryValueMapperTest {
     }
 
     @Test
-    void testPredictedProteinNameWithoutRecommendedName(){
+    void testPredictedProteinNameWithoutRecommendedName() {
         Rule mainRule = RuleBuilderTest.createObject(3);
         RuleBuilder ruleBuilder = RuleBuilder.from(mainRule);
         List<Annotation> updatedAnnotations = setRecommendedNameToNull(mainRule.getAnnotations());
@@ -185,8 +198,11 @@ class UniRuleEntryValueMapperTest {
         UniRuleId uniRuleIdObject = new UniRuleIdBuilder(uniRuleId).build();
         RuleStatus status = RuleStatus.APPLY;
         Information information = new InformationBuilder("sample version").build();
-        UniRuleEntry entry = new UniRuleEntryBuilder(uniRuleIdObject, status, information, ruleBuilder.build())
-                .proteinsAnnotatedCount(10L).otherRulesSet(caseRules).build();
+        UniRuleEntry entry =
+                new UniRuleEntryBuilder(uniRuleIdObject, status, information, ruleBuilder.build())
+                        .proteinsAnnotatedCount(10L)
+                        .otherRulesSet(caseRules)
+                        .build();
 
         Map<String, String> mappedEntries =
                 new UniRuleEntryValueMapper().mapEntity(entry, Collections.emptyList());
@@ -208,10 +224,11 @@ class UniRuleEntryValueMapperTest {
 
     private List<Annotation> setRecommendedNameToNull(List<Annotation> annotations) {
         List<Annotation> updatedAnnotations = new ArrayList<>();
-        for(Annotation annotation : annotations){
-            if(Utils.notNull(annotation.getProteinDescription())){
+        for (Annotation annotation : annotations) {
+            if (Utils.notNull(annotation.getProteinDescription())) {
                 AnnotationBuilder annotationBuilder = AnnotationBuilder.from(annotation);
-                ProteinDescriptionBuilder protDesBuilder = ProteinDescriptionBuilder.from(annotation.getProteinDescription());
+                ProteinDescriptionBuilder protDesBuilder =
+                        ProteinDescriptionBuilder.from(annotation.getProteinDescription());
                 protDesBuilder.recommendedName(null);
                 annotationBuilder.proteinDescription(protDesBuilder.build());
                 updatedAnnotations.add(annotationBuilder.build());
