@@ -16,7 +16,7 @@ import java.util.Set;
 /**
  * @author sahmad
  */
-public class CommunityMappedReferenceTest {
+class CommunityMappedReferenceTest {
 
     @Test
     void testSimpleCommunityMappedReference() {
@@ -40,7 +40,7 @@ public class CommunityMappedReferenceTest {
         String disease = "disease";
         String comment = "comment";
         UniProtKBAccession accession = new UniProtKBAccessionBuilder("P12345").build();
-        MappedSource mappedSource = new MappedSourceBuilder().source("src").sourceIdsAdd("srcId").build();
+        MappedSource mappedSource = new MappedSourceBuilder().source("src").sourceId("srcId").build();
         String pubMedId = "12345";
         Set<String> cats = new HashSet<>();
         cats.add("cat1");cats.add("cat2");
@@ -49,7 +49,7 @@ public class CommunityMappedReferenceTest {
         communityAnnotationBuilder.comment(comment).proteinOrGene(protOrGene).function(function).disease(disease);
         CommunityMappedReferenceBuilder builder = new CommunityMappedReferenceBuilder();
         builder.communityAnnotation(communityAnnotationBuilder.build());
-        builder.uniProtKBAccession(accession).sourcesAdd(mappedSource);
+        builder.uniProtKBAccession(accession).source(mappedSource);
         builder.pubMedId(pubMedId).sourceCategoriesSet(cats);
         return builder.build();
     }
