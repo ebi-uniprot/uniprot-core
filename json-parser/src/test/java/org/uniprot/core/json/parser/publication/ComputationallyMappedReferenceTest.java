@@ -35,7 +35,7 @@ class ComputationallyMappedReferenceTest {
 
     static ComputationallyMappedReference getCompleteComputationallyMappedReference() {
         UniProtKBAccession accession = new UniProtKBAccessionBuilder("P12345").build();
-        MappedSource mappedSource = new MappedSourceBuilder().source("src").sourceId("srcId").build();
+        MappedSource mappedSource = new MappedSourceBuilder().name("src").id("srcId").build();
         String pubMedId = "12345";
         Set<String> cats = new HashSet<>();
         cats.add("cat1");cats.add("cat2");
