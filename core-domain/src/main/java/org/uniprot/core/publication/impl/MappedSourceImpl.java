@@ -10,6 +10,8 @@ import java.util.Objects;
  * @author Edd
  */
 public class MappedSourceImpl implements MappedSource {
+    private static final long serialVersionUID = 7921806426134087556L;
+
     private final String source;
     private final String sourceId;
 
