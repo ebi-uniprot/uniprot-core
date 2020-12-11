@@ -15,23 +15,23 @@ class MappedSourceBuilderTest {
     @Test
     void canSetSource() {
         String value = "value";
-        MappedSource source = new MappedSourceBuilder().source(value).build();
-        assertThat(source.getSource(), is(value));
+        MappedSource source = new MappedSourceBuilder().name(value).build();
+        assertThat(source.getName(), is(value));
     }
 
     @Test
     void canSetSourceId() {
         String value = "value";
-        MappedSource source = new MappedSourceBuilder().sourceId(value).build();
-        assertThat(source.getSourceId(), is(value));
+        MappedSource source = new MappedSourceBuilder().id(value).build();
+        assertThat(source.getId(), is(value));
     }
 
     @Test
     void canCreateViaFrom() {
         String value = "value";
-        MappedSource ref = new MappedSourceBuilder().source(value).build();
+        MappedSource ref = new MappedSourceBuilder().name(value).build();
         MappedSourceBuilder builder = MappedSourceBuilder.from(ref);
 
-        assertThat(builder.build().getSource(), is(value));
+        assertThat(builder.build().getName(), is(value));
     }
 }

@@ -73,8 +73,8 @@ class AbstractMappedReferenceBuilderTest {
     @Test
     void canSetSource() {
         MappedSource source = new MappedSourceBuilder()
-                .source("source1")
-                .sourceId("value1")
+                .name("source1")
+                .id("value1")
                 .build();
         FakeMappedReference reference =
                 new FakeMappedReferenceBuilder()
