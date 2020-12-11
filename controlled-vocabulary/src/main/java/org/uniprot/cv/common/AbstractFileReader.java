@@ -54,7 +54,8 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
                 in.close();
             }
         } catch (IOException e) {
-            LOGGER.error("Error while fetching the data from ftp url {}", ftpUrl);
+            throw new ControlledVocabularyFileLocationException(
+                    "Error while fetching the data from ftp url " + ftpUrl);
         }
         return lines;
     }
@@ -79,7 +80,7 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
                     }
                 }
             } catch (IOException e) {
-                LOGGER.error("Problem loading file.", e);
+                throw new ControlledVocabularyFileLocationException("Problem loading file.");
             }
 
             return lines;

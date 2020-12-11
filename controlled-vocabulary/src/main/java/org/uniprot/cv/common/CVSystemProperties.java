@@ -31,7 +31,7 @@ public class CVSystemProperties {
     public static @Nullable String getDatabaseTypesLocation() {
         String property = System.getProperty(DATABASE_TYPES_LOCATION);
         if (notNull(property) && !isUrl(property)) {
-            throw new CacheFileLocationException("Code only support web url");
+            throw new ControlledVocabularyFileLocationException("Code only support web url");
         }
         return property;
     }
