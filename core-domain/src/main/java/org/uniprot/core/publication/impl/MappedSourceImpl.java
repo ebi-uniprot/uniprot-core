@@ -25,12 +25,12 @@ public class MappedSourceImpl implements MappedSource {
     }
 
     @Override
-    public String getSource() {
+    public String getName() {
         return source;
     }
 
     @Override
-    public String getSourceId() {
+    public String getId() {
         return sourceId;
     }
 

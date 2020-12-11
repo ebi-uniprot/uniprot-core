@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author Edd
  */
 public interface MappedSource extends Serializable {
-    String getSource();
+    String getName();
 
-    String getSourceId();
+    String getId();
 }
