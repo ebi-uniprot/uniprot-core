@@ -12,6 +12,7 @@ import java.util.Set;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.collection.IsEmptyCollection.empty;
 
 /**
  * Created 08/12/2020
@@ -19,6 +20,13 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
  * @author Edd
  */
 class AbstractMappedReferenceBuilderTest {
+    @Test
+    void checkEmptyReference() {
+        FakeMappedReference reference =
+                new FakeMappedReferenceBuilder().build();
+        assertThat(reference.getSourceCategories(), is(empty()));
+    }
+
     @Test
     void canSetAccessionWithString() {
         String acc = "P12345";
