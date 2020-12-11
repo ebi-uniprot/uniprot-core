@@ -4,8 +4,11 @@ import org.uniprot.core.publication.ComputationallyMappedReference;
 import org.uniprot.core.publication.MappedSource;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
+import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
+
+import static java.util.Collections.emptySet;
 
 /**
  * Created 02/12/2020
@@ -14,19 +17,21 @@ import java.util.Set;
  */
 public class ComputationallyMappedReferenceImpl extends AbstractMappedReference
         implements ComputationallyMappedReference {
+    private static final long serialVersionUID = -4834442720823846138L;
+
     private final String annotation;
 
     public ComputationallyMappedReferenceImpl() {
-        this(null, null, null, null, null);
+        this(null, null, null, emptySet(), null);
     }
 
     public ComputationallyMappedReferenceImpl(
-            Set<MappedSource> sources,
+            MappedSource source,
             String pubMedId,
             UniProtKBAccession uniProtKBAccession,
             Set<String> sourceCategories,
             String annotation) {
-        super(sources, pubMedId, uniProtKBAccession, sourceCategories);
+        super(source, pubMedId, uniProtKBAccession, sourceCategories);
         this.annotation = annotation;
     }
 

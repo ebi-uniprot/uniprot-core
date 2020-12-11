@@ -5,8 +5,11 @@ import org.uniprot.core.publication.CommunityMappedReference;
 import org.uniprot.core.publication.MappedSource;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
+import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
+
+import static java.util.Collections.emptySet;
 
 /**
  * Created 02/12/2020
@@ -15,19 +18,21 @@ import java.util.Set;
  */
 public class CommunityMappedReferenceImpl extends AbstractMappedReference
         implements CommunityMappedReference {
+    private static final long serialVersionUID = 3254591973693232714L;
+
     private final CommunityAnnotation communityAnnotation;
 
     public CommunityMappedReferenceImpl() {
-        this(null, null, null, null, null);
+        this(null, null, null, emptySet(), null);
     }
 
     public CommunityMappedReferenceImpl(
-            Set<MappedSource> sources,
+            MappedSource source,
             String pubMedId,
             UniProtKBAccession uniProtKBAccession,
             Set<String> sourceCategories,
             CommunityAnnotation communityAnnotation) {
-        super(sources, pubMedId, uniProtKBAccession, sourceCategories);
+        super(source, pubMedId, uniProtKBAccession, sourceCategories);
         this.communityAnnotation = communityAnnotation;
     }
 

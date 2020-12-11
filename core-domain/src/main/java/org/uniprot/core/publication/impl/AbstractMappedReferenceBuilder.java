@@ -23,7 +23,7 @@ public abstract class AbstractMappedReferenceBuilder<
         implements Builder<T> {
     protected UniProtKBAccession uniProtKBAccession;
     protected String pubMedId;
-    protected Set<MappedSource> sources = new HashSet<>();
+    protected MappedSource source;
     protected Set<String> sourceCategories = new HashSet<>();
 
     public B uniProtKBAccession(String accession) {
@@ -36,13 +36,8 @@ public abstract class AbstractMappedReferenceBuilder<
         return getThis();
     }
 
-    public B sourcesAdd(MappedSource source) {
-        addOrIgnoreNull(source, this.sources);
-        return getThis();
-    }
-
-    public B sourcesSet(Set<MappedSource> sources) {
-        this.sources = modifiableSet(sources);
+    public B source(MappedSource source) {
+        this.source = source;
         return getThis();
     }
 
@@ -65,7 +60,7 @@ public abstract class AbstractMappedReferenceBuilder<
 
     protected static <B extends AbstractMappedReferenceBuilder<B, T>, T extends MappedReference>
             B from(@Nonnull B builder, @Nonnull T instance) {
-        return builder.sourcesSet(instance.getSources())
+        return builder.source(instance.getSource())
                 .pubMedId(instance.getPubMedId())
                 .uniProtKBAccession(instance.getUniProtKBAccession())
                 .sourceCategoriesSet(instance.getSourceCategories());

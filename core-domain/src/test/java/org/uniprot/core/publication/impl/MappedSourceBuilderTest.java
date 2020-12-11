@@ -3,12 +3,8 @@ package org.uniprot.core.publication.impl;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.publication.MappedSource;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
 
 /**
  * Created 08/12/2020
@@ -24,19 +20,10 @@ class MappedSourceBuilderTest {
     }
 
     @Test
-    void canAddSourceId() {
+    void canSetSourceId() {
         String value = "value";
-        MappedSource source = new MappedSourceBuilder().sourceIdsAdd(value).build();
-        assertThat(source.getSourceIds(), contains(value));
-    }
-
-    @Test
-    void canSetSourceIds() {
-        Set<String> ids = new HashSet<>();
-        ids.add("one");
-        ids.add("two");
-        MappedSource reference = new MappedSourceBuilder().sourceIdsSet(ids).build();
-        assertThat(reference.getSourceIds(), is(ids));
+        MappedSource source = new MappedSourceBuilder().sourceId(value).build();
+        assertThat(source.getSourceId(), is(value));
     }
 
     @Test

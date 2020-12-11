@@ -10,6 +10,8 @@ import java.util.Objects;
  * @author Edd
  */
 public class CommunityAnnotationImpl implements CommunityAnnotation {
+    private static final long serialVersionUID = 6579256221026737892L;
+
     private final String proteinOrGene;
     private final String function;
     private final String disease;
@@ -65,11 +67,19 @@ public class CommunityAnnotationImpl implements CommunityAnnotation {
 
     @Override
     public String toString() {
-        return "CommunityAnnotationImpl{" +
-                "proteinOrGene='" + proteinOrGene + '\'' +
-                ", function='" + function + '\'' +
-                ", disease='" + disease + '\'' +
-                ", comment='" + comment + '\'' +
-                '}';
+        return "CommunityAnnotationImpl{"
+                + "proteinOrGene='"
+                + proteinOrGene
+                + '\''
+                + ", function='"
+                + function
+                + '\''
+                + ", disease='"
+                + disease
+                + '\''
+                + ", comment='"
+                + comment
+                + '\''
+                + '}';
     }
 }
