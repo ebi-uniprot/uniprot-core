@@ -2,7 +2,6 @@ package org.uniprot.core.json.parser.publication;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-
 import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.publication.CommunityAnnotation;
 import org.uniprot.core.publication.CommunityMappedReference;
@@ -14,7 +13,7 @@ import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionImpl;
 
 public class CommunityMappedReferenceJsonConfig extends JsonConfig {
-    private static CommunityMappedReferenceJsonConfig INSTANCE;
+    private static CommunityMappedReferenceJsonConfig instance;
 
     private final ObjectMapper objectMapper;
     private final ObjectMapper
@@ -26,10 +25,10 @@ public class CommunityMappedReferenceJsonConfig extends JsonConfig {
     }
 
     public static synchronized CommunityMappedReferenceJsonConfig getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new CommunityMappedReferenceJsonConfig();
+        if (instance == null) {
+            instance = new CommunityMappedReferenceJsonConfig();
         }
-        return INSTANCE;
+        return instance;
     }
 
     @Override
@@ -47,7 +46,8 @@ public class CommunityMappedReferenceJsonConfig extends JsonConfig {
 
         // customise the default mapper
         SimpleModule mod = new SimpleModule();
-        mod.addAbstractTypeMapping(CommunityMappedReference.class, CommunityMappedReferenceImpl.class);
+        mod.addAbstractTypeMapping(
+                CommunityMappedReference.class, CommunityMappedReferenceImpl.class);
         mod.addAbstractTypeMapping(CommunityAnnotation.class, CommunityAnnotationImpl.class);
         mod.addAbstractTypeMapping(UniProtKBAccession.class, UniProtKBAccessionImpl.class);
         mod.addAbstractTypeMapping(MappedSource.class, MappedSourceImpl.class);
@@ -57,7 +57,6 @@ public class CommunityMappedReferenceJsonConfig extends JsonConfig {
     }
 
     private ObjectMapper initSimpleObjectMapper() {
-        ObjectMapper simpleObjMapper = getDefaultSimpleObjectMapper();
-        return simpleObjMapper;
+        return getDefaultSimpleObjectMapper();
     }
 }
