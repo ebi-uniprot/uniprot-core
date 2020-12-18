@@ -28,13 +28,13 @@ class CommunityMappedReferenceTest {
 
     @Test
     void testCompleteCommunityMappedReference() {
-        CommunityMappedReference communityMappedReference = getCompleteCommunityMMappedReference();
+        CommunityMappedReference communityMappedReference = getCompleteCommunityMappedReference();
         ValidateJson.verifyJsonRoundTripParser(
                 CommunityMappedReferenceJsonConfig.getInstance().getFullObjectMapper(), communityMappedReference);
         ValidateJson.verifyEmptyFields(communityMappedReference);
     }
 
-    static CommunityMappedReference getCompleteCommunityMMappedReference() {
+    static CommunityMappedReference getCompleteCommunityMappedReference() {
         String protOrGene = "protOrGene";
         String function = "function";
         String disease = "disease";
