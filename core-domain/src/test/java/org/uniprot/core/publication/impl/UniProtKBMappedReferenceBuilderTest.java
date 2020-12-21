@@ -81,6 +81,14 @@ class UniProtKBMappedReferenceBuilderTest {
     }
 
     @Test
+    void canSetReferenceNumber() {
+        int refNumber = 100;
+        UniProtKBMappedReference reference =
+                new UniProtKBMappedReferenceBuilder().referenceNumber(refNumber).build();
+        assertThat(reference.getReferenceNumber(), is(refNumber));
+    }
+
+    @Test
     void canCreateViaFrom() {
         ReferenceComment comment =
                 new ReferenceCommentBuilder().type(ReferenceCommentType.PLASMID).build();

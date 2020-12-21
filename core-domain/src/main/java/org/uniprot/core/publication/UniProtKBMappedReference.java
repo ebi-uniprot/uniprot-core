@@ -16,6 +16,8 @@ public interface UniProtKBMappedReference extends MappedReference {
 
     List<String> getReferencePositions();
 
+    int getReferenceNumber();
+
     default List<ReferenceComment> getReferenceCommentsByType(ReferenceCommentType type) {
         return getReferenceComments().stream()
                 .filter(val -> val.getType() == type)

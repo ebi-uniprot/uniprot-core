@@ -20,6 +20,7 @@ public class UniProtKBMappedReferenceBuilder
                 UniProtKBMappedReferenceBuilder, UniProtKBMappedReference> {
     private List<ReferenceComment> referenceComments = new ArrayList<>();
     private List<String> referencePositions = new ArrayList<>();
+    private int referenceNumber;
 
     public UniProtKBMappedReferenceBuilder referenceCommentsAdd(ReferenceComment referenceComment) {
         addOrIgnoreNull(referenceComment, this.referenceComments);
@@ -42,6 +43,11 @@ public class UniProtKBMappedReferenceBuilder
         return getThis();
     }
 
+    public UniProtKBMappedReferenceBuilder referenceNumber(int referenceNumber){
+        this.referenceNumber = referenceNumber;
+        return getThis();
+    }
+
     @Nonnull
     @Override
     public UniProtKBMappedReference build() {
@@ -49,6 +55,7 @@ public class UniProtKBMappedReferenceBuilder
                 source,
                 pubMedId,
                 uniProtKBAccession,
+                referenceNumber,
                 sourceCategories,
                 referenceComments,
                 referencePositions);
@@ -63,6 +70,7 @@ public class UniProtKBMappedReferenceBuilder
     public static UniProtKBMappedReferenceBuilder from(@Nonnull UniProtKBMappedReference instance) {
         UniProtKBMappedReferenceBuilder builder = new UniProtKBMappedReferenceBuilder();
         return AbstractMappedReferenceBuilder.from(builder, instance)
+                .referenceNumber(instance.getReferenceNumber())
                 .referenceCommentsSet(instance.getReferenceComments())
                 .referencePositionsSet(instance.getReferencePositions());
     }
