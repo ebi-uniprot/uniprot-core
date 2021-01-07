@@ -65,7 +65,11 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
                 new SupportingDataMapImpl(
                         keywordFile, diseaseFile, accessionGoPubmedFile, subcellularLocationFile);
         logger.info("finished loading SupportingDataMap");
-        initialiseFlatFileReading(fileName);
+        try {
+            setInput2(fileName);
+        } catch (FileNotFoundException e) {
+            throw new UniProtParserException(e);
+        }
     }
 
     public boolean hasNext() {
@@ -93,8 +97,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 
     public UniProtKBEntry next() {
         try {
-            // get head of queue, but only wait up to 10 seconds before failing
-            UniProtKBEntry poll = this.entriesQueue.poll(10, TimeUnit.SECONDS);
+            UniProtKBEntry poll = this.entriesQueue.take();
 
             if (poll != null) {
                 entryCounter.getAndDecrement();
@@ -136,45 +139,43 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
         }
     }
 
-    private void initialiseFlatFileReading(String fileName) {
-        try (EntryReader entryReader = createEntryReader(fileName)) {
-            Thread splitter = new Thread(new EntryStringEmitter(entryReader));
-            splitter.setName("Entry Scanner Thread");
+    private void setInput2(String fileName) throws FileNotFoundException {
+        EntryReader entryBufferReader2 = createEntryReader(fileName);
 
-            // using the best effort to scan the file.
-            splitter.setPriority(Thread.MAX_PRIORITY);
+        Thread splitter = new Thread(new EntryStringEmitter(entryBufferReader2));
+        splitter.setName("Entry Scanner Thread");
 
-            splitter.start();
+        // using the best effort to scan the file.
+        splitter.setPriority(Thread.MAX_PRIORITY);
 
-            int threadCount = Runtime.getRuntime().availableProcessors();
-            logger.debug("Available cores in the machine {}", threadCount);
+        splitter.start();
 
-            if (this.numberOfThreads != 0) {
-                threadCount = this.numberOfThreads;
+        int threadCount = Runtime.getRuntime().availableProcessors();
+        logger.debug("Available cores in the machine {}", threadCount);
+
+        if (this.numberOfThreads != 0) {
+            threadCount = this.numberOfThreads;
+        }
+
+        logger.info("Using threads {}", threadCount);
+
+        this.parsingJobCountDownLatch = new CountDownLatch(threadCount);
+
+        for (int i = 0; i < threadCount; i++) {
+            ParsingTask parsingTask =
+                    new ParsingTask(ffQueue, entriesQueue, this.parsingJobCountDownLatch);
+            parsingTask.setName("Parsing Worker No. " + (i + 1));
+            this.workers.add(parsingTask);
+            parsingTask.start();
+        }
+
+        // wait until the entryCounter > 1, so hasNext won't return false.
+        while (entryCounter.get() == 0) {
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
             }
-
-            logger.info("Using threads {}", threadCount);
-
-            this.parsingJobCountDownLatch = new CountDownLatch(threadCount);
-
-            for (int i = 0; i < threadCount; i++) {
-                ParsingTask parsingTask =
-                        new ParsingTask(ffQueue, entriesQueue, this.parsingJobCountDownLatch);
-                parsingTask.setName("Parsing Worker No. " + (i + 1));
-                this.workers.add(parsingTask);
-                parsingTask.start();
-            }
-
-            // wait until the entryCounter > 1, so hasNext won't return false.
-            while (entryCounter.get() == 0) {
-                try {
-                    Thread.sleep(1);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-            }
-        } catch (Exception e) {
-            throw new UniProtParserException(e);
         }
     }
 
