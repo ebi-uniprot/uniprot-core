@@ -56,6 +56,7 @@ class UniProtKBMappedReferenceTest {
         builder.pubMedId(pubMedId).sourceCategoriesSet(cats);
         builder.referenceCommentsSet(comments);
         builder.referencePositionsAdd("1");
+        builder.referenceNumber(123);
         return builder.build();
     }
 }
