@@ -1,5 +1,6 @@
 package org.uniprot.core.publication.impl;
 
+import org.uniprot.core.citation.Citation;
 import org.uniprot.core.publication.MappedSource;
 import org.uniprot.core.publication.UniProtKBMappedReference;
 import org.uniprot.core.uniprotkb.ReferenceComment;
@@ -22,9 +23,10 @@ public class UniProtKBMappedReferenceImpl extends AbstractMappedReference
     private final List<ReferenceComment> referenceComments;
     private final List<String> referencePositions;
     private final int referenceNumber;
+    private Citation citation;
 
     public UniProtKBMappedReferenceImpl() {
-        this(null, null, null, 0, emptySet(), emptyList(), emptyList());
+        this(null, null, null, 0, emptySet(), emptyList(), emptyList(), null);
     }
 
     public UniProtKBMappedReferenceImpl(
@@ -34,11 +36,13 @@ public class UniProtKBMappedReferenceImpl extends AbstractMappedReference
             int referenceNumber,
             Set<String> sourceCategories,
             List<ReferenceComment> referenceComments,
-            List<String> referencePositions) {
+            List<String> referencePositions,
+            Citation citation) {
         super(source, pubMedId, uniProtKBAccession, sourceCategories);
         this.referenceNumber = referenceNumber;
         this.referenceComments = referenceComments;
         this.referencePositions = referencePositions;
+        this.citation = citation;
     }
 
     @Override
@@ -57,17 +61,21 @@ public class UniProtKBMappedReferenceImpl extends AbstractMappedReference
     }
 
     @Override
+    public Citation getCitation() { return citation;}
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UniProtKBMappedReferenceImpl that = (UniProtKBMappedReferenceImpl) o;
         return referenceNumber == that.referenceNumber &&
                 Objects.equals(referenceComments, that.referenceComments) &&
-                Objects.equals(referencePositions, that.referencePositions);
+                Objects.equals(referencePositions, that.referencePositions) &&
+                Objects.equals(citation, that.getCitation());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(referenceComments, referencePositions, referenceNumber);
+        return Objects.hash(referenceComments, referencePositions, referenceNumber, citation);
     }
 }

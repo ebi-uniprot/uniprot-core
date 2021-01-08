@@ -1,5 +1,6 @@
 package org.uniprot.core.publication.impl;
 
+import org.uniprot.core.citation.Citation;
 import org.uniprot.core.publication.UniProtKBMappedReference;
 import org.uniprot.core.uniprotkb.ReferenceComment;
 
@@ -21,6 +22,7 @@ public class UniProtKBMappedReferenceBuilder
     private List<ReferenceComment> referenceComments = new ArrayList<>();
     private List<String> referencePositions = new ArrayList<>();
     private int referenceNumber;
+    private Citation citation;
 
     public UniProtKBMappedReferenceBuilder referenceCommentsAdd(ReferenceComment referenceComment) {
         addOrIgnoreNull(referenceComment, this.referenceComments);
@@ -48,6 +50,11 @@ public class UniProtKBMappedReferenceBuilder
         return getThis();
     }
 
+    public UniProtKBMappedReferenceBuilder citation(Citation citation){
+        this.citation = citation;
+        return getThis();
+    }
+
     @Nonnull
     @Override
     public UniProtKBMappedReference build() {
@@ -58,7 +65,8 @@ public class UniProtKBMappedReferenceBuilder
                 referenceNumber,
                 sourceCategories,
                 referenceComments,
-                referencePositions);
+                referencePositions,
+                citation);
     }
 
     @Nonnull
@@ -72,6 +80,7 @@ public class UniProtKBMappedReferenceBuilder
         return AbstractMappedReferenceBuilder.from(builder, instance)
                 .referenceNumber(instance.getReferenceNumber())
                 .referenceCommentsSet(instance.getReferenceComments())
-                .referencePositionsSet(instance.getReferencePositions());
+                .referencePositionsSet(instance.getReferencePositions())
+                .citation(instance.getCitation());
     }
 }
