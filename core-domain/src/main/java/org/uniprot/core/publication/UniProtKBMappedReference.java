@@ -1,5 +1,6 @@
 package org.uniprot.core.publication;
 
+import org.uniprot.core.citation.Citation;
 import org.uniprot.core.uniprotkb.ReferenceComment;
 import org.uniprot.core.uniprotkb.ReferenceCommentType;
 
@@ -12,6 +13,8 @@ import java.util.stream.Collectors;
  * @author Edd
  */
 public interface UniProtKBMappedReference extends MappedReference {
+    Citation getCitation();
+
     List<ReferenceComment> getReferenceComments();
 
     List<String> getReferencePositions();
