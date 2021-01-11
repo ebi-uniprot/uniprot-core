@@ -12,11 +12,9 @@ import org.uniprot.core.json.parser.uniprot.serializer.UniProtKBAccessionSeriali
 import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.literature.LiteratureMappedReference;
 import org.uniprot.core.literature.LiteratureStatistics;
-import org.uniprot.core.literature.LiteratureStoreEntry;
 import org.uniprot.core.literature.impl.LiteratureEntryImpl;
 import org.uniprot.core.literature.impl.LiteratureMappedReferenceImpl;
 import org.uniprot.core.literature.impl.LiteratureStatisticsImpl;
-import org.uniprot.core.literature.impl.LiteratureStoreEntryImpl;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionImpl;
 
@@ -58,11 +56,8 @@ public class LiteratureJsonConfig extends JsonConfig {
 
         // customise the default mapper
         SimpleModule mod = new SimpleModule();
-        mod.addAbstractTypeMapping(LiteratureStoreEntry.class, LiteratureStoreEntryImpl.class);
         mod.addAbstractTypeMapping(LiteratureEntry.class, LiteratureEntryImpl.class);
         mod.addAbstractTypeMapping(LiteratureStatistics.class, LiteratureStatisticsImpl.class);
-        mod.addAbstractTypeMapping(
-                LiteratureMappedReference.class, LiteratureMappedReferenceImpl.class);
         mod.addAbstractTypeMapping(PublicationDate.class, PublicationDateImpl.class);
         mod.addAbstractTypeMapping(Author.class, AuthorImpl.class);
         mod.addAbstractTypeMapping(Journal.class, JournalImpl.class);

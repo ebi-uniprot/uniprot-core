@@ -5,9 +5,14 @@ import org.uniprot.core.Statistics;
 /** @author lgonzales */
 public interface LiteratureStatistics extends Statistics {
 
-    long getMappedProteinCount();
+    long getComputationallyMappedProteinCount();
 
-    default boolean hasMappedProteinCount() {
-        return getMappedProteinCount() > 0;
+    long getCommunityMappedProteinCount();
+
+    default boolean hasComputationallyMappedProteinCount() {
+        return getComputationallyMappedProteinCount() > 0;
+    }
+    default boolean hasCommunityMappedProteinCount() {
+        return getCommunityMappedProteinCount() > 0;
     }
 }

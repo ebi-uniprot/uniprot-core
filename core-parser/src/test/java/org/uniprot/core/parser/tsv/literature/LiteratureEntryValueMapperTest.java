@@ -110,7 +110,8 @@ class LiteratureEntryValueMapperTest {
         return new LiteratureStatisticsBuilder()
                 .reviewedProteinCount(10)
                 .unreviewedProteinCount(20)
-                .mappedProteinCount(30)
+                .computationallyMappedProteinCount(30)
+                .communityMappedProteinCount(40)
                 .build();
     }
 }

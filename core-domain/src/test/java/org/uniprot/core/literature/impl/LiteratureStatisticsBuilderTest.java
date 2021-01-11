@@ -14,7 +14,8 @@ class LiteratureStatisticsBuilderTest {
         LiteratureStatistics statistics = new LiteratureStatisticsBuilder().build();
         assertFalse(statistics.hasReviewedProteinCount());
         assertFalse(statistics.hasUnreviewedProteinCount());
-        assertFalse(statistics.hasMappedProteinCount());
+        assertFalse(statistics.hasComputationallyMappedProteinCount());
+        assertFalse(statistics.hasCommunityMappedProteinCount());
     }
 
     @Test
@@ -27,7 +28,10 @@ class LiteratureStatisticsBuilderTest {
         assertTrue(statistics.hasUnreviewedProteinCount());
         assertEquals(statistics.getUnreviewedProteinCount(), 20L);
 
-        assertTrue(statistics.hasMappedProteinCount());
-        assertEquals(statistics.getMappedProteinCount(), 30L);
+        assertTrue(statistics.hasComputationallyMappedProteinCount());
+        assertEquals(statistics.getComputationallyMappedProteinCount(), 30L);
+
+        assertTrue(statistics.hasCommunityMappedProteinCount());
+        assertEquals(statistics.getCommunityMappedProteinCount(), 40L);
     }
 }
