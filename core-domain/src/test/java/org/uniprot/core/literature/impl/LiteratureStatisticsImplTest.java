@@ -14,7 +14,7 @@ class LiteratureStatisticsImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        LiteratureStatistics impl = new LiteratureStatisticsImpl(7, 8, 10);
+        LiteratureStatistics impl = new LiteratureStatisticsImpl(7, 8, 10, 12);
         LiteratureStatistics obj = LiteratureStatisticsBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());

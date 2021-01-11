@@ -168,7 +168,7 @@ public class LiteratureEntryValueMapper implements EntityValueMapper<LiteratureE
         StringBuilder result = new StringBuilder();
         if (literatureEntry.hasStatistics()) {
             result.append("mapped:")
-                    .append(literatureEntry.getStatistics().getMappedProteinCount())
+                    .append(literatureEntry.getStatistics().getComputationallyMappedProteinCount())
                     .append("; ")
                     .append("reviewed:")
                     .append(literatureEntry.getStatistics().getReviewedProteinCount())

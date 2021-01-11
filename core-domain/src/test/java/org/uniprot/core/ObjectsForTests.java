@@ -1,15 +1,5 @@
 package org.uniprot.core;
 
-import static java.util.Arrays.asList;
-import static java.util.Collections.emptyList;
-import static java.util.Collections.singletonList;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.impl.AbstractCitationBuilder;
@@ -20,21 +10,81 @@ import org.uniprot.core.impl.ECNumberBuilder;
 import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.literature.LiteratureMappedReference;
 import org.uniprot.core.literature.LiteratureStatistics;
-import org.uniprot.core.literature.LiteratureStoreEntry;
 import org.uniprot.core.literature.impl.LiteratureEntryBuilder;
 import org.uniprot.core.literature.impl.LiteratureMappedReferenceBuilder;
 import org.uniprot.core.literature.impl.LiteratureStatisticsBuilder;
-import org.uniprot.core.literature.impl.LiteratureStoreEntryBuilder;
-import org.uniprot.core.proteome.*;
-import org.uniprot.core.proteome.impl.*;
-import org.uniprot.core.taxonomy.*;
-import org.uniprot.core.taxonomy.impl.*;
-import org.uniprot.core.uniparc.*;
+import org.uniprot.core.proteome.BuscoReport;
+import org.uniprot.core.proteome.CPDReport;
+import org.uniprot.core.proteome.CPDStatus;
+import org.uniprot.core.proteome.CanonicalProtein;
+import org.uniprot.core.proteome.ComponentType;
+import org.uniprot.core.proteome.GeneNameType;
+import org.uniprot.core.proteome.GenomeAssembly;
+import org.uniprot.core.proteome.GenomeAssemblyLevel;
+import org.uniprot.core.proteome.GenomeAssemblySource;
+import org.uniprot.core.proteome.Protein;
+import org.uniprot.core.proteome.ProteomeCompletenessReport;
+import org.uniprot.core.proteome.ProteomeDatabase;
+import org.uniprot.core.proteome.ProteomeEntry;
+import org.uniprot.core.proteome.ProteomeType;
+import org.uniprot.core.proteome.RedundantProteome;
+import org.uniprot.core.proteome.Superkingdom;
+import org.uniprot.core.proteome.impl.BuscoReportBuilder;
+import org.uniprot.core.proteome.impl.CPDReportBuilder;
+import org.uniprot.core.proteome.impl.CanonicalProteinBuilder;
+import org.uniprot.core.proteome.impl.ComponentImpl;
+import org.uniprot.core.proteome.impl.GenomeAssemblyBuilder;
+import org.uniprot.core.proteome.impl.ProteinBuilder;
+import org.uniprot.core.proteome.impl.ProteomeCompletenessReportBuilder;
+import org.uniprot.core.proteome.impl.ProteomeEntryBuilder;
+import org.uniprot.core.proteome.impl.ProteomeIdBuilder;
+import org.uniprot.core.proteome.impl.RedundantProteomeBuilder;
+import org.uniprot.core.taxonomy.TaxonomyEntry;
+import org.uniprot.core.taxonomy.TaxonomyInactiveReason;
+import org.uniprot.core.taxonomy.TaxonomyInactiveReasonType;
+import org.uniprot.core.taxonomy.TaxonomyLineage;
+import org.uniprot.core.taxonomy.TaxonomyRank;
+import org.uniprot.core.taxonomy.TaxonomyStatistics;
+import org.uniprot.core.taxonomy.TaxonomyStrain;
+import org.uniprot.core.taxonomy.impl.TaxonomyEntryBuilder;
+import org.uniprot.core.taxonomy.impl.TaxonomyInactiveReasonBuilder;
+import org.uniprot.core.taxonomy.impl.TaxonomyLineageBuilder;
+import org.uniprot.core.taxonomy.impl.TaxonomyStatisticsBuilder;
+import org.uniprot.core.taxonomy.impl.TaxonomyStrainBuilder;
+import org.uniprot.core.uniparc.InterProGroup;
+import org.uniprot.core.uniparc.SequenceFeature;
+import org.uniprot.core.uniparc.SignatureDbType;
+import org.uniprot.core.uniparc.UniParcCrossReference;
+import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
 import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
-import org.uniprot.core.uniprotkb.comment.*;
-import org.uniprot.core.uniprotkb.comment.impl.*;
+import org.uniprot.core.uniprotkb.UniProtKBEntryType;
+import org.uniprot.core.uniprotkb.comment.APIsoform;
+import org.uniprot.core.uniprotkb.comment.Absorption;
+import org.uniprot.core.uniprotkb.comment.Cofactor;
+import org.uniprot.core.uniprotkb.comment.CofactorDatabase;
+import org.uniprot.core.uniprotkb.comment.IsoformName;
+import org.uniprot.core.uniprotkb.comment.IsoformSequenceStatus;
+import org.uniprot.core.uniprotkb.comment.KineticParameters;
+import org.uniprot.core.uniprotkb.comment.MaximumVelocity;
+import org.uniprot.core.uniprotkb.comment.MichaelisConstant;
+import org.uniprot.core.uniprotkb.comment.MichaelisConstantUnit;
+import org.uniprot.core.uniprotkb.comment.Note;
+import org.uniprot.core.uniprotkb.comment.PhysiologicalDirectionType;
+import org.uniprot.core.uniprotkb.comment.PhysiologicalReaction;
+import org.uniprot.core.uniprotkb.comment.Reaction;
+import org.uniprot.core.uniprotkb.comment.ReactionDatabase;
+import org.uniprot.core.uniprotkb.comment.impl.APIsoformBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.AbsorptionBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.CofactorBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.IsoformNameBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.KineticParametersBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.MaximumVelocityBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.MichaelisConstantBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.NoteBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.PhysiologicalReactionBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.ReactionBuilder;
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.description.impl.ECBuilder;
@@ -49,6 +99,15 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static java.util.Arrays.asList;
+import static java.util.Collections.emptyList;
+import static java.util.Collections.singletonList;
 
 public class ObjectsForTests {
     public static Reaction createReaction() {
@@ -397,21 +456,6 @@ public class ObjectsForTests {
                 .sourceId("source Id");
     }
 
-    public static LiteratureStoreEntry createCompleteLiteratureStoreEntry() {
-        return new LiteratureStoreEntryBuilder()
-                .literatureEntry(createCompleteLiteratureEntry())
-                .literatureMappedReferencesSet(
-                        Collections.singletonList(createCompleteLiteratureMappedReference()))
-                .build();
-    }
-
-    public static LiteratureStoreEntry createCompleteLiteratureStoreEntryWithAdd() {
-        return new LiteratureStoreEntryBuilder()
-                .literatureEntry(createCompleteLiteratureEntry())
-                .literatureMappedReferencesAdd(createCompleteLiteratureMappedReference())
-                .build();
-    }
-
     public static LiteratureEntry createCompleteLiteratureEntry() {
         return new LiteratureEntryBuilder()
                 .citation(createCompleteLiteratureCitation())
@@ -445,7 +489,8 @@ public class ObjectsForTests {
         return new LiteratureStatisticsBuilder()
                 .reviewedProteinCount(10)
                 .unreviewedProteinCount(20)
-                .mappedProteinCount(30)
+                .computationallyMappedProteinCount(30)
+                .communityMappedProteinCount(40)
                 .build();
     }
 

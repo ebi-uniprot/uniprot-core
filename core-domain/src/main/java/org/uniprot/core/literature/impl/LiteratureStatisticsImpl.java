@@ -8,22 +8,30 @@ import org.uniprot.core.literature.LiteratureStatistics;
 /** @author lgonzales */
 public class LiteratureStatisticsImpl extends StatisticsImpl implements LiteratureStatistics {
 
-    private long mappedProteinCount;
+    private long computationallyMappedProteinCount;
+    private long communityMappedProteinCount;
 
     // no arg constructor for JSON deserialization
     LiteratureStatisticsImpl() {
-        this(0, 0, 0);
+        this(0, 0, 0, 0);
     }
 
     LiteratureStatisticsImpl(
-            long reviewedProteinCount, long unreviewedProteinCount, long mappedProteinCount) {
+            long reviewedProteinCount, long unreviewedProteinCount, long computationallyMappedProteinCount,
+            long communityMappedProteinCount) {
         super(reviewedProteinCount, unreviewedProteinCount);
-        this.mappedProteinCount = mappedProteinCount;
+        this.computationallyMappedProteinCount = computationallyMappedProteinCount;
+        this.communityMappedProteinCount = communityMappedProteinCount;
     }
 
     @Override
-    public long getMappedProteinCount() {
-        return mappedProteinCount;
+    public long getComputationallyMappedProteinCount() {
+        return computationallyMappedProteinCount;
+    }
+
+    @Override
+    public long getCommunityMappedProteinCount() {
+        return communityMappedProteinCount;
     }
 
     @Override
@@ -31,12 +39,13 @@ public class LiteratureStatisticsImpl extends StatisticsImpl implements Literatu
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LiteratureStatisticsImpl that = (LiteratureStatisticsImpl) o;
-        return super.equals(that) && getMappedProteinCount() == that.getMappedProteinCount();
+        return super.equals(that) && getComputationallyMappedProteinCount() == that.getComputationallyMappedProteinCount()
+                && getCommunityMappedProteinCount() == that.getCommunityMappedProteinCount();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getMappedProteinCount());
+        return Objects.hash(super.hashCode(), getComputationallyMappedProteinCount(), getCommunityMappedProteinCount());
     }
 
     @Override
@@ -46,8 +55,10 @@ public class LiteratureStatisticsImpl extends StatisticsImpl implements Literatu
                 + getReviewedProteinCount()
                 + ", unreviewedProteinCount="
                 + getUnreviewedProteinCount()
-                + ", mappedProteinCount="
-                + mappedProteinCount
+                + ", computationallyMappedProteinCount="
+                + computationallyMappedProteinCount
+                + ", communityMappedProteinCount="
+                + communityMappedProteinCount
                 + '}';
     }
 }
