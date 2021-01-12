@@ -106,7 +106,8 @@ class UniRefEntryLightConverterTest {
         assertNotNull(entry.getRepresentativeMember());
         RepresentativeMember repMember = entry.getRepresentativeMember();
         assertEquals("UPI0009BFC4AC", repMember.getMemberId());
-        assertEquals("NAD-dependent epimerase/dehydratase family protein", repMember.getProteinName());
+        assertEquals(
+                "NAD-dependent epimerase/dehydratase family protein", repMember.getProteinName());
         assertEquals("Streptomyces viridosporus", repMember.getOrganismName());
 
         assertEquals(

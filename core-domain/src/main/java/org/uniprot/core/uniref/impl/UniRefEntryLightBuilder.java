@@ -98,7 +98,8 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
         return this;
     }
 
-    public @Nonnull UniRefEntryLightBuilder representativeMember(RepresentativeMember representativeMember) {
+    public @Nonnull UniRefEntryLightBuilder representativeMember(
+            RepresentativeMember representativeMember) {
         this.representativeMember = representativeMember;
         return this;
     }

@@ -213,10 +213,11 @@ class UniRefEntryLightBuilderTest {
 
         Organism commonTaxon = new OrganismBuilder().taxonId(10116L).scientificName("Rat").build();
 
-        RepresentativeMember representativeMember = new RepresentativeMemberBuilder()
-                .memberIdType(UniRefMemberIdType.UNIPROTKB)
-                .sequence(new SequenceBuilder("AAAAA").build())
-                .build();
+        RepresentativeMember representativeMember =
+                new RepresentativeMemberBuilder()
+                        .memberIdType(UniRefMemberIdType.UNIPROTKB)
+                        .sequence(new SequenceBuilder("AAAAA").build())
+                        .build();
 
         UniRefEntryLight entry =
                 new UniRefEntryLightBuilder()

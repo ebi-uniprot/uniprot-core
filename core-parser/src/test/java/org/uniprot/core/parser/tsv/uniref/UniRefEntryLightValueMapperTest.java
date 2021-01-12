@@ -158,9 +158,10 @@ class UniRefEntryLightValueMapperTest {
                         .commonName("common")
                         .build();
 
-        RepresentativeMember representativeMember = new RepresentativeMemberBuilder()
-                .sequence(new SequenceBuilder(SEQUENCE).build())
-                .build();
+        RepresentativeMember representativeMember =
+                new RepresentativeMemberBuilder()
+                        .sequence(new SequenceBuilder(SEQUENCE).build())
+                        .build();
         return new UniRefEntryLightBuilder()
                 .id(entryId)
                 .updated(created)
