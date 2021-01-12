@@ -14,6 +14,16 @@ class SuperkingdomTest {
         assertSame(Superkingdom.EUKARYOTA.getName(), Superkingdom.EUKARYOTA.getDisplayName());
     }
 
+    @Test
+    void validIsSuperkingdom() {
+        assertTrue(Superkingdom.isSuperkingdom("BActErIa"));
+    }
+
+    @Test
+    void invalidIsSuperkingdom() {
+        assertFalse(Superkingdom.isSuperkingdom("Invalid"));
+    }
+
     @Nested
     class typeOf {
 

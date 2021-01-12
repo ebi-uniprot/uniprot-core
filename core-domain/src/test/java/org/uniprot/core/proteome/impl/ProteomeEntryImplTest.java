@@ -18,8 +18,6 @@ class ProteomeEntryImplTest {
         ProteomeEntry impl = createProteomeEntry();
         ProteomeEntry obj = ProteomeEntryBuilder.from(impl).build();
 
-        assertTrue(impl.getProteinCount() > 0);
-
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

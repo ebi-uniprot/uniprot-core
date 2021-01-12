@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
@@ -26,8 +25,6 @@ public interface ProteomeEntry extends Serializable {
 
     String getIsolate();
 
-    List<CrossReference<ProteomeDatabase>> getProteomeCrossReferences();
-
     List<Component> getComponents();
 
     List<Citation> getCitations();
@@ -36,23 +33,21 @@ public interface ProteomeEntry extends Serializable {
 
     ProteomeId getPanproteome();
 
-    int getAnnotationScore();
+    Integer getAnnotationScore();
 
     Superkingdom getSuperkingdom();
 
-    int getProteinCount();
+    Integer getProteinCount();
 
-    int getGeneCount();
+    Integer getGeneCount();
 
     List<TaxonomyLineage> getTaxonLineages();
-
-    List<CanonicalProtein> getCanonicalProteins();
-
-    String getSourceDb();
 
     ProteomeCompletenessReport getProteomeCompletenessReport();
 
     GenomeAssembly getGenomeAssembly();
+
+    GenomeAnnotation getGenomeAnnotation();
 
     List<ExclusionReason> getExclusionReasons();
 }

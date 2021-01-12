@@ -3,7 +3,7 @@ package org.uniprot.core.xml.proteome;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-import java.util.Arrays;
+import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Citation;
@@ -11,15 +11,10 @@ import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.JournalArticle;
 import org.uniprot.core.citation.impl.JournalArticleBuilder;
 import org.uniprot.core.impl.CrossReferenceBuilder;
-import org.uniprot.core.xml.jaxb.proteome.ConsortiumType;
-import org.uniprot.core.xml.jaxb.proteome.JournalType;
-import org.uniprot.core.xml.jaxb.proteome.NameListType;
-import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
-import org.uniprot.core.xml.jaxb.proteome.PersonType;
-import org.uniprot.core.xml.jaxb.proteome.ReferenceType;
+import org.uniprot.core.xml.jaxb.proteome.*;
 
 class JournalArticleConverterTest {
-    private ObjectFactory xmlFactory = new ObjectFactory();
+    private final ObjectFactory xmlFactory = new ObjectFactory();
     JournalArticleConverter converter = new JournalArticleConverter();
     ReferenceConverter referenceConverter = new ReferenceConverter();
 
@@ -35,8 +30,10 @@ class JournalArticleConverterTest {
 
     @Test
     void testFromXml() {
-        ReferenceType reference = xmlFactory.createReferenceType();
-        reference.setDate("2018");
+        CitationType citationType = xmlFactory.createCitationType();
+        citationType.setType(
+                org.uniprot.core.citation.CitationType.JOURNAL_ARTICLE.getDisplayName());
+        citationType.setDate("2018");
         NameListType nameList = xmlFactory.createNameListType();
         ConsortiumType consortium = xmlFactory.createConsortiumType();
         consortium.setName("Some consortium");
@@ -49,20 +46,20 @@ class JournalArticleConverterTest {
         p2.setName("James");
         nameList.getConsortiumOrPerson().add(p2);
 
-        reference.setAuthorList(nameList);
-        JournalType journal = xmlFactory.createJournalType();
-        journal.setFirst("25");
-        journal.setLast("50");
-        journal.setVolume("21");
-        journal.setName("Nature");
-        journal.setTitle("Some Protein related to Variation");
-        reference.setJournal(journal);
-        JournalArticle journalArticle = converter.fromXml(reference);
+        citationType.setAuthorList(nameList);
+        citationType.setFirst("25");
+        citationType.setLast("50");
+        citationType.setVolume("21");
+        citationType.setName("Nature");
+        citationType.setTitle("Some Protein related to Variation");
+        JournalArticle journalArticle = converter.fromXml(citationType);
         assertEquals("Nature", journalArticle.getJournal().getName());
         assertEquals("50", journalArticle.getLastPage());
         assertEquals("Some Protein related to Variation", journalArticle.getTitle());
         assertEquals("21", journalArticle.getVolume());
-        Citation converted = referenceConverter.fromXml(reference);
+        ReferenceType referenceType = xmlFactory.createReferenceType();
+        referenceType.setCitation(citationType);
+        Citation converted = referenceConverter.fromXml(referenceType);
         assertEquals(journalArticle, converted);
     }
 
@@ -75,9 +72,9 @@ class JournalArticleConverterTest {
     @Test
     void testToXml() {
         JournalArticle ja = create();
-        ReferenceType reference = converter.toXml(ja);
+        CitationType reference = converter.toXml(ja);
         ReferenceType refConverted = referenceConverter.toXml(ja);
-        assertEquals(reference, refConverted);
+        assertEquals(reference, refConverted.getCitation());
         JournalArticle converted = converter.fromXml(reference);
         assertEquals(ja, converted);
     }
@@ -95,7 +92,8 @@ class JournalArticleConverterTest {
                 .publicationDate(date)
                 .authorsAdd("Sulson J.E.")
                 .authorsAdd("JWaterston R.")
-                .authoringGroupsSet(Arrays.asList("The C. elegans sequencing consortium"))
+                .authoringGroupsSet(
+                        Collections.singletonList("The C. elegans sequencing consortium"))
                 .citationCrossReferencesAdd(
                         new CrossReferenceBuilder<CitationDatabase>()
                                 .database(CitationDatabase.PUBMED)
@@ -106,7 +104,6 @@ class JournalArticleConverterTest {
                                 .database(CitationDatabase.DOI)
                                 .id("https://doi.org/10.1126/science.282.5396.2012")
                                 .build());
-        JournalArticle citation = builder.build();
-        return citation;
+        return builder.build();
     }
 }

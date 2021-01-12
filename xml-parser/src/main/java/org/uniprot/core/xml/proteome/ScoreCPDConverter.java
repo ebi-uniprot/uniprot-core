@@ -17,12 +17,12 @@ import org.uniprot.core.xml.jaxb.proteome.ScoreType;
  */
 public class ScoreCPDConverter implements Converter<ScoreType, CPDReport> {
 
-    static final String NAME = "cpd";
-    static final String PROPERTY_AVERAGE_CDS = "averageCds";
-    static final String PROPERTY_STATUS = "status";
-    static final String PROPERTY_CONFIDENCE = "confidence";
-    static final String PROPERTY_PROTEOME_COUNT = "proteomeCount";
-    static final String PROPERTY_STD_CDSS = "stdCdss";
+    public static final String NAME = "cpd";
+    public static final String PROPERTY_AVERAGE_CDS = "averageCds";
+    public static final String PROPERTY_STATUS = "status";
+    public static final String PROPERTY_CONFIDENCE = "confidence";
+    public static final String PROPERTY_PROTEOME_COUNT = "proteomeCount";
+    public static final String PROPERTY_STD_CDSS = "stdCdss";
     private final ScorePropertyConverter propertyConverter;
     private final ObjectFactory xmlFactory;
 
