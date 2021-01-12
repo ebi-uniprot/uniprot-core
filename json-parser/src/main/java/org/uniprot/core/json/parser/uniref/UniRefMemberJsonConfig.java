@@ -1,7 +1,5 @@
 package org.uniprot.core.json.parser.uniref;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.Value;
 import org.uniprot.core.impl.SequenceImpl;
@@ -16,11 +14,14 @@ import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionImpl;
 import org.uniprot.core.uniref.*;
 import org.uniprot.core.uniref.impl.*;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+
 /**
  * @author lgonzales
  * @since 12/01/2021
  */
-public class UniRefMemberJsonConfig  extends JsonConfig {
+public class UniRefMemberJsonConfig extends JsonConfig {
 
     private static UniRefMemberJsonConfig instance;
 

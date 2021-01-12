@@ -32,9 +32,7 @@ public class UniRefEntryLightSerialiser extends StdSerializer<UniRefEntryLightIm
             throws IOException {
         value =
                 (UniRefEntryLightImpl)
-                        UniRefEntryLightBuilder.from(value)
-                                .seedId(getSeedId(value))
-                                .build();
+                        UniRefEntryLightBuilder.from(value).seedId(getSeedId(value)).build();
 
         jgen.writeStartObject();
         JavaType javaType = provider.constructType(UniRefEntryLightImpl.class);

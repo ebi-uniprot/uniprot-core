@@ -27,7 +27,7 @@ public class UniRefEntryLightValueMapper extends AbstractUniRefEntryMapper<UniRe
             organismCommon = EntryMapUtil.convertOrganism(entry.getCommonTaxon());
             organismCommonId = Long.toString(entry.getCommonTaxon().getTaxonId());
         }
-        Sequence sequence =  entry.getRepresentativeMember().getSequence();
+        Sequence sequence = entry.getRepresentativeMember().getSequence();
         map.put(UNIREF_FIELDS.get(2), organismCommon);
         map.put(UNIREF_FIELDS.get(3), organismCommonId);
         map.put(UNIREF_FIELDS.get(4), Integer.toString(entry.getMemberCount()));

@@ -50,7 +50,8 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
     public UniRefEntryLight fromXml(Entry xmlObj) {
         UniRefEntryLightBuilder builder = new UniRefEntryLightBuilder();
 
-        RepresentativeMember repMember = representativeMemberConverter.fromXml(xmlObj.getRepresentativeMember());
+        RepresentativeMember repMember =
+                representativeMemberConverter.fromXml(xmlObj.getRepresentativeMember());
         builder.representativeMember(repMember);
         builder.id(xmlObj.getId())
                 .entryType(getTypeFromId(xmlObj.getId()))
