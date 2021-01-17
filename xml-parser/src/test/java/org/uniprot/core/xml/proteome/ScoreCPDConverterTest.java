@@ -90,7 +90,8 @@ class ScoreCPDConverterTest {
                 propertyConverter.createProperty(
                         ScoreCPDConverter.PROPERTY_STATUS, CPDStatus.OUTLIER.getDisplayName());
         scoreType.getProperty().add(property);
-        property = propertyConverter.createProperty(ScoreCPDConverter.PROPERTY_STD_CDSS, "14.44444");
+        property =
+                propertyConverter.createProperty(ScoreCPDConverter.PROPERTY_STD_CDSS, "14.44444");
         scoreType.getProperty().add(property);
         return scoreType;
     }
