@@ -49,7 +49,7 @@ class ScoreCPDConverterTest {
         assertEquals(11, result.getConfidence());
         assertEquals(12, result.getProteomeCount());
         assertEquals(CPDStatus.OUTLIER, result.getStatus());
-        assertEquals(14, result.getStdCdss());
+        assertEquals(14.44, result.getStdCdss());
     }
 
     @Test
@@ -90,7 +90,7 @@ class ScoreCPDConverterTest {
                 propertyConverter.createProperty(
                         ScoreCPDConverter.PROPERTY_STATUS, CPDStatus.OUTLIER.getDisplayName());
         scoreType.getProperty().add(property);
-        property = propertyConverter.createProperty(ScoreCPDConverter.PROPERTY_STD_CDSS, "14");
+        property = propertyConverter.createProperty(ScoreCPDConverter.PROPERTY_STD_CDSS, "14.44444");
         scoreType.getProperty().add(property);
         return scoreType;
     }

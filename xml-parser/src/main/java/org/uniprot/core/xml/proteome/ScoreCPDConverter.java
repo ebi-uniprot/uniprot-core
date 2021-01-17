@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.proteome;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import org.uniprot.core.proteome.CPDReport;
@@ -53,7 +55,9 @@ public class ScoreCPDConverter implements Converter<ScoreType, CPDReport> {
                         builder.proteomeCount(Integer.parseInt(property.getValue()));
                         break;
                     case PROPERTY_STD_CDSS:
-                        builder.stdCdss(Double.parseDouble(property.getValue()));
+                        BigDecimal stdCdss = new BigDecimal(property.getValue());
+                        stdCdss = stdCdss.setScale(2, RoundingMode.HALF_DOWN);
+                        builder.stdCdss(stdCdss.doubleValue());
                         break;
                     case PROPERTY_STATUS:
                         builder.status(CPDStatus.fromValue(property.getValue()));
