@@ -1,15 +1,5 @@
 package org.uniprot.core.citation.impl;
 
-import static java.util.Arrays.asList;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.core.Is.is;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.annotation.Nonnull;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Value;
@@ -17,6 +7,15 @@ import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.impl.CrossReferenceBuilder;
+
+import javax.annotation.Nonnull;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.Arrays.asList;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.core.Is.is;
 
 class AbstractCitationBuilderTest {
     static final CitationType CITATION_TYPE = CitationType.UNPUBLISHED;
@@ -59,6 +58,21 @@ class AbstractCitationBuilderTest {
         assertThat(citation.getCitationType(), is(CITATION_TYPE));
         assertThat(citation.hasCitationCrossReferences(), is(true));
         assertThat(citation.getCitationCrossReferences(), contains(XREF1, XREF2));
+    }
+
+    @Test
+    void checkHasCitationsWorksCorrectly() {
+        String title = "a title";
+        String publicationDate = "2015-MAY";
+        List<String> authors = asList("Tom", "John");
+        TestableCitation citation =
+                new TestableCitationBuilder()
+                        .title(title)
+                        .publicationDate(publicationDate)
+                        .authorsSet(authors)
+                        .build();
+
+        assertThat(citation.hasCitationCrossReferences(), is(false));
     }
 
     void buildCitationParameters(AbstractCitationBuilder<?, ?> builder) {
