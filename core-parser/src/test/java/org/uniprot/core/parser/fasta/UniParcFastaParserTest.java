@@ -19,7 +19,9 @@ import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.uniparc.impl.UniParcEntryBuilder;
 import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 
 /**
@@ -46,23 +48,14 @@ class UniParcFastaParserTest {
         Sequence sequence = new SequenceBuilder(seq).build();
         List<UniParcCrossReference> xrefs = getXrefs();
         List<SequenceFeature> seqFeatures = getSeqFeatures();
-        List<Taxonomy> taxonomies = getTaxonomies();
         UniParcEntry entry =
                 new UniParcEntryBuilder()
                         .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
                         .uniParcCrossReferencesSet(xrefs)
                         .sequence(sequence)
                         .sequenceFeaturesSet(seqFeatures)
-                        .taxonomiesSet(taxonomies)
                         .build();
         return entry;
-    }
-
-    private List<Taxonomy> getTaxonomies() {
-        Taxonomy taxonomy =
-                new TaxonomyBuilder().taxonId(9606).scientificName("Homo sapiens").build();
-        Taxonomy taxonomy2 = new TaxonomyBuilder().taxonId(10090).scientificName("MOUSE").build();
-        return Arrays.asList(taxonomy, taxonomy2);
     }
 
     private List<SequenceFeature> getSeqFeatures() {
@@ -81,9 +74,10 @@ class UniParcFastaParserTest {
     }
 
     private List<UniParcCrossReference> getXrefs() {
+        Organism taxonomy =
+                new OrganismBuilder().taxonId(9606).scientificName("Homo sapiens").build();
         List<Property> properties = new ArrayList<>();
-        properties.add(new Property(UniParcCrossReference.PROPERTY_PROTEIN_NAME, "some pname"));
-        properties.add(new Property(UniParcCrossReference.PROPERTY_GENE_NAME, "some gname"));
+        properties.add(new Property("prop1", "pvalue"));
         UniParcCrossReference xref =
                 new UniParcCrossReferenceBuilder()
                         .versionI(3)
@@ -94,11 +88,14 @@ class UniParcFastaParserTest {
                         .created(LocalDate.of(2017, 5, 17))
                         .lastUpdated(LocalDate.of(2017, 2, 27))
                         .propertiesSet(properties)
+                        .taxonomy(taxonomy)
+                        .proteinName("some pname")
+                        .geneName("some gname")
                         .build();
 
         List<Property> properties2 = new ArrayList<>();
-        properties2.add(new Property(UniParcCrossReference.PROPERTY_PROTEIN_NAME, "some pname"));
-        properties2.add(new Property(UniParcCrossReference.PROPERTY_NCBI_TAXONOMY_ID, "9606"));
+        properties.add(new Property("prop2", "pvalue2"));
+        Organism taxonomy2 = new OrganismBuilder().taxonId(10090).scientificName("MOUSE").build();
 
         UniParcCrossReference xref2 =
                 new UniParcCrossReferenceBuilder()
@@ -110,6 +107,10 @@ class UniParcFastaParserTest {
                         .created(LocalDate.of(2017, 2, 12))
                         .lastUpdated(LocalDate.of(2017, 4, 23))
                         .propertiesSet(properties2)
+                        .taxonomy(taxonomy2)
+                        .proteinName("some pname")
+                        .proteomeId("UP00000564")
+                        .component("chromosome 1")
                         .build();
 
         return Arrays.asList(xref, xref2);

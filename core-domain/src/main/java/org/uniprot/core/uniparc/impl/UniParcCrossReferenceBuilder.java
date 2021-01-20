@@ -7,6 +7,7 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.impl.AbstractCrossReferenceBuilder;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 
 /**
  * @author jluo
@@ -20,11 +21,20 @@ public class UniParcCrossReferenceBuilder
     private boolean active;
     private LocalDate created;
     private LocalDate lastUpdated;
+    private String geneName;
+    private String proteinName;
+    private Organism taxonomy;
+    private String chain;
+    private String ncbiGi;
+    private String proteomeId;
+    private String component;
 
     @Override
     public @Nonnull UniParcCrossReference build() {
         return new UniParcCrossReferenceImpl(
-                database, id, properties, versionI, version, active, created, lastUpdated);
+                database, id, properties, versionI, version, active, created,
+                lastUpdated, geneName, proteinName, taxonomy, chain, ncbiGi,
+                proteomeId, component);
     }
 
     public @Nonnull UniParcCrossReferenceBuilder versionI(int versionI) {
@@ -52,6 +62,41 @@ public class UniParcCrossReferenceBuilder
         return this;
     }
 
+    public @Nonnull UniParcCrossReferenceBuilder geneName(String geneName){
+        this.geneName = geneName;
+        return this;
+    }
+
+    public @Nonnull UniParcCrossReferenceBuilder proteinName(String proteinName){
+        this.proteinName = proteinName;
+        return this;
+    }
+
+    public @Nonnull UniParcCrossReferenceBuilder taxonomy(Organism taxonomy){
+        this.taxonomy = taxonomy;
+        return this;
+    }
+
+    public @Nonnull UniParcCrossReferenceBuilder chain(String chain){
+        this.chain = chain;
+        return this;
+    }
+
+    public @Nonnull UniParcCrossReferenceBuilder ncbiGi(String ncbiGi){
+        this.ncbiGi = ncbiGi;
+        return this;
+    }
+
+    public @Nonnull UniParcCrossReferenceBuilder proteomeId(String proteomeId){
+        this.proteomeId = proteomeId;
+        return this;
+    }
+
+    public @Nonnull UniParcCrossReferenceBuilder component(String component){
+        this.component = component;
+        return this;
+    }
+
     public static @Nonnull UniParcCrossReferenceBuilder from(
             @Nonnull UniParcCrossReference instance) {
         UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder();
@@ -60,7 +105,14 @@ public class UniParcCrossReferenceBuilder
                 .version(instance.getVersion())
                 .active(instance.isActive())
                 .created(instance.getCreated())
-                .lastUpdated(instance.getLastUpdated());
+                .lastUpdated(instance.getLastUpdated())
+                .geneName(instance.getGeneName())
+                .proteinName(instance.getProteinName())
+                .taxonomy(instance.getTaxonomy())
+                .chain(instance.getChain())
+                .ncbiGi(instance.getNcbiGi())
+                .proteomeId(instance.getProteomeId())
+                .component(instance.getComponent());
     }
 
     @Override

@@ -1,19 +1,15 @@
 package org.uniprot.core.xml.uniparc;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniparc.impl.UniParcEntryBuilder;
 import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
-import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
-import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniparc.Entry;
 import org.uniprot.core.xml.jaxb.uniparc.ObjectFactory;
-import org.uniprot.cv.taxonomy.TaxonomicNode;
 import org.uniprot.cv.taxonomy.TaxonomyRepo;
 
 import com.google.common.base.Strings;
@@ -28,7 +24,6 @@ public class UniParcEntryConverter implements Converter<Entry, UniParcEntry> {
     private final SequenceFeatureConverter seqFeatureConverter;
     private final UniParcDBCrossReferenceConverter xrefConverter;
     private final SequenceConverter sequenceConverter;
-    private final TaxonomyRepo taxonomyRepo;
 
     public UniParcEntryConverter() {
         this(new ObjectFactory(), null);
@@ -37,9 +32,9 @@ public class UniParcEntryConverter implements Converter<Entry, UniParcEntry> {
     public UniParcEntryConverter(ObjectFactory xmlFactory, TaxonomyRepo taxonomyRepo) {
         this.xmlFactory = xmlFactory;
         this.seqFeatureConverter = new SequenceFeatureConverter(xmlFactory);
-        this.xrefConverter = new UniParcDBCrossReferenceConverter(xmlFactory);
+        this.xrefConverter = new UniParcDBCrossReferenceConverter(xmlFactory, taxonomyRepo);
         this.sequenceConverter = new SequenceConverter(xmlFactory);
-        this.taxonomyRepo = taxonomyRepo;
+
     }
 
     public UniParcEntryConverter(TaxonomyRepo taxonomyRepo) {
@@ -64,48 +59,8 @@ public class UniParcEntryConverter implements Converter<Entry, UniParcEntry> {
                         .map(xrefConverter::fromXml)
                         .collect(Collectors.toList());
         builder.uniParcCrossReferencesSet(xrefs);
-        List<Taxonomy> taxonomies =
-                xrefs.stream()
-                        .flatMap(val -> val.getProperties().stream())
-                        .filter(
-                                val ->
-                                        val.getKey()
-                                                .equals(
-                                                        UniParcCrossReference
-                                                                .PROPERTY_NCBI_TAXONOMY_ID))
-                        .map(val -> val.getValue())
-                        .distinct()
-                        .map(this::convertTaxonomy)
-                        .collect(Collectors.toList());
-        builder.taxonomiesSet(taxonomies);
 
         return builder.build();
-    }
-
-    private Taxonomy convertTaxonomy(String taxId) {
-        TaxonomyBuilder builder = new TaxonomyBuilder().taxonId(Long.parseLong(taxId));
-        Optional<TaxonomicNode> opNode = getTaxonomyNode(taxId);
-        if (opNode.isPresent()) {
-            TaxonomicNode node = opNode.get();
-            builder.scientificName(node.scientificName());
-            if (!Strings.isNullOrEmpty(node.commonName())) {
-                builder.commonName(node.commonName());
-            }
-            if (!Strings.isNullOrEmpty(node.synonymName())) {
-                builder.synonymsAdd(node.synonymName());
-            }
-            if (!Strings.isNullOrEmpty(node.mnemonic())) {
-                builder.mnemonic(node.mnemonic());
-            }
-        }
-
-        return builder.build();
-    }
-
-    private Optional<TaxonomicNode> getTaxonomyNode(String taxId) {
-        if (taxonomyRepo == null) {
-            return Optional.empty();
-        } else return taxonomyRepo.retrieveNodeUsingTaxID(Integer.parseInt(taxId));
     }
 
     @Override

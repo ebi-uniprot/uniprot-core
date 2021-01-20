@@ -3,10 +3,7 @@ package org.uniprot.core.parser.tsv.uniparc;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
@@ -21,12 +18,34 @@ import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 class UniParcCrossReferenceMapTest {
 
     @Test
+    void testSimpleAttributeValues() {
+        LocalDate created = LocalDate.of(2017, 5, 17);
+        LocalDate lastUpdated = LocalDate.of(2018, 2, 7);
+        UniParcCrossReference xref = new UniParcCrossReferenceBuilder()
+                .database(UniParcDatabase.EG_BACTERIA)
+                .id("IDVALUE")
+                .created(created)
+                .lastUpdated(lastUpdated)
+                .build();
+        UniParcCrossReferenceMap xrefMap = new UniParcCrossReferenceMap(Collections.singletonList(xref));
+        Map<String, String> result = xrefMap.attributeValues();
+        assertEquals(7, result.size());
+        assertEquals("2017-05-17", result.get("first_seen"));
+        assertEquals("2018-02-07", result.get("last_seen"));
+        assertEquals("IDVALUE", result.get("EnsemblBacteria"));
+        assertEquals("", result.get("gene"));
+        assertEquals("", result.get("protein"));
+        assertEquals("", result.get("accession"));
+        assertEquals("", result.get("proteome"));
+    }
+
+    @Test
     void testAttributeValues() {
         List<UniParcCrossReference> xrefs = create();
         UniParcCrossReferenceMap xrefMap = new UniParcCrossReferenceMap(xrefs);
         Map<String, String> result = xrefMap.attributeValues();
         assertEquals(8, result.size());
-        assertEquals(";", result.get("gene"));
+        assertEquals("geneValue", result.get("gene"));
         assertEquals("some pname;some pname2", result.get("protein"));
         assertEquals("P12345; P12347.2 (obsolete)", result.get("accession"));
         assertEquals("UP00000564:chromosome 1", result.get("proteome"));
@@ -56,8 +75,7 @@ class UniParcCrossReferenceMapTest {
         LocalDate created = LocalDate.of(2017, 5, 17);
         LocalDate lastUpdated = LocalDate.of(2018, 2, 7);
         List<Property> properties = new ArrayList<>();
-        properties.add(new Property(UniParcCrossReference.PROPERTY_PROTEIN_NAME, "some pname"));
-        //	properties.add(new Property(UniParcCrossReference.PROPERTY_GENE_NAME, "some gname"));
+        properties.add(new Property("prop1", "value"));
         UniParcCrossReference xref =
                 new UniParcCrossReferenceBuilder()
                         .versionI(3)
@@ -68,14 +86,14 @@ class UniParcCrossReferenceMapTest {
                         .created(created)
                         .lastUpdated(lastUpdated)
                         .propertiesSet(properties)
+                        .proteinName("some pname")
+                        .geneName("geneValue")
                         .build();
 
         LocalDate created2 = LocalDate.of(2015, 1, 11);
         LocalDate lastUpdated2 = LocalDate.of(2017, 2, 27);
         List<Property> properties2 = new ArrayList<>();
-        properties2.add(new Property(UniParcCrossReference.PROPERTY_PROTEIN_NAME, "some pname2"));
-        properties2.add(new Property(UniParcCrossReference.PROPERTY_PROTEOME_ID, "UP00000564"));
-        properties2.add(new Property(UniParcCrossReference.PROPERTY_COMPONENT, "chromosome 1"));
+        properties.add(new Property("prop2", "value2"));
         UniParcCrossReference xref2 =
                 new UniParcCrossReferenceBuilder()
                         .versionI(3)
@@ -86,6 +104,9 @@ class UniParcCrossReferenceMapTest {
                         .created(created2)
                         .lastUpdated(lastUpdated2)
                         .propertiesSet(properties2)
+                        .proteinName("some pname2")
+                        .proteomeId("UP00000564")
+                        .component("chromosome 1")
                         .build();
 
         return Arrays.asList(xref, xref2);

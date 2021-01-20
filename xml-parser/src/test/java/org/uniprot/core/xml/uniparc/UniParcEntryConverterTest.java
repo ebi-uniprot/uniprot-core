@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Location;
-import org.uniprot.core.Property;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.*;
@@ -17,6 +16,8 @@ import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
 import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.uniparc.impl.UniParcEntryBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.xml.jaxb.uniparc.Entry;
 
 /**
@@ -32,7 +33,6 @@ class UniParcEntryConverterTest {
         Entry xmlObj = converter.toXml(uniparcEntry);
         System.out.println(UniParcXmlTestHelper.toXmlString(xmlObj, Entry.class, "entry"));
         UniParcEntry converted = converter.fromXml(xmlObj);
-        assertEquals(2, converted.getTaxonomies().size());
         assertEquals(uniparcEntry, converted);
     }
 
@@ -84,6 +84,8 @@ class UniParcEntryConverterTest {
                                 .created(LocalDate.of(2003, 4, 1))
                                 .lastUpdated(LocalDate.of(2007, 11, 22))
                                 .build());
+        Organism taxonomy =
+                new OrganismBuilder().taxonId(9606).build();
 
         UniParcCrossReferenceBuilder xrefBuilder = new UniParcCrossReferenceBuilder();
         xrefBuilder
@@ -93,15 +95,14 @@ class UniParcEntryConverterTest {
                 .version(1)
                 .active(true)
                 .created(LocalDate.of(2015, 4, 1))
-                .lastUpdated(LocalDate.of(2019, 5, 8));
-        List<Property> properties = new ArrayList<>();
-        properties.add(new Property(UniParcCrossReference.PROPERTY_NCBI_TAXONOMY_ID, "9606"));
-        properties.add(
-                new Property(UniParcCrossReference.PROPERTY_PROTEIN_NAME, "Gelsolin, isoform J"));
-        properties.add(new Property(UniParcCrossReference.PROPERTY_GENE_NAME, "Gel"));
+                .lastUpdated(LocalDate.of(2019, 5, 8))
+                .taxonomy(taxonomy)
+                .proteinName("Gelsolin, isoform J")
+                .geneName("Gel");
 
-        xrefBuilder.propertiesSet(properties);
         builder.uniParcCrossReferencesAdd(xrefBuilder.build());
+
+        Organism taxonomy2 = new OrganismBuilder().taxonId(7227).build();
 
         // id="NC_004354_874_0" version_i="5" active="Y" created="2007-04-27" last="2007-04-27">
         UniParcCrossReferenceBuilder xrefBuilder2 = new UniParcCrossReferenceBuilder();
@@ -111,10 +112,11 @@ class UniParcEntryConverterTest {
                 .versionI(5)
                 .active(true)
                 .created(LocalDate.of(2007, 4, 27))
-                .lastUpdated(LocalDate.of(2007, 4, 27));
-        List<Property> properties2 = new ArrayList<>();
-        properties2.add(new Property(UniParcCrossReference.PROPERTY_NCBI_TAXONOMY_ID, "7227"));
-        xrefBuilder2.propertiesSet(properties2);
+                .lastUpdated(LocalDate.of(2007, 4, 27))
+                .taxonomy(taxonomy2)
+                .proteinName("some pname")
+                .proteomeId("UP00000564")
+                .component("chromosome 1");
         builder.uniParcCrossReferencesAdd(xrefBuilder2.build());
         return builder.build();
     }

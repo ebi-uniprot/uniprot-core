@@ -8,6 +8,7 @@ import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
 class UniParcCrossReferenceImplTest {
     @Test
@@ -27,7 +28,14 @@ class UniParcCrossReferenceImplTest {
                         -3,
                         true,
                         LocalDate.now(),
-                        LocalDate.now());
+                        LocalDate.now(),
+                        "geneName",
+                        "proteinName",
+                        new OrganismBuilder().taxonId(10L).build(),
+                        "chain",
+                        "ncbiGi",
+                        "proteomeId",
+                        "component");
         UniParcCrossReference obj = UniParcCrossReferenceBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());

@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 
 /**
@@ -18,7 +20,7 @@ class UniParcOrganismMapTest {
 
     @Test
     void testAttributeValues() {
-        List<Taxonomy> taxes = getTaxonomies();
+        List<Organism> taxes = getTaxonomies();
         UniParcOrganismMap organismMap = new UniParcOrganismMap(taxes);
         Map<String, String> result = organismMap.attributeValues();
         assertEquals(2, result.size());
@@ -41,14 +43,17 @@ class UniParcOrganismMapTest {
         assertEquals(UniParcOrganismMap.FIELDS, fields);
     }
 
-    private List<Taxonomy> getTaxonomies() {
-        Taxonomy taxonomy =
-                new TaxonomyBuilder()
+    private List<Organism> getTaxonomies() {
+        Organism taxonomy =
+                new OrganismBuilder()
                         .taxonId(9606)
                         .scientificName("Homo sapiens")
                         .commonName("HUMAN")
                         .build();
-        Taxonomy taxonomy2 = new TaxonomyBuilder().taxonId(10090).scientificName("MOUSE").build();
+        Organism taxonomy2 = new OrganismBuilder()
+                .taxonId(10090)
+                .scientificName("MOUSE")
+                .build();
         return Arrays.asList(taxonomy, taxonomy2);
     }
 }
