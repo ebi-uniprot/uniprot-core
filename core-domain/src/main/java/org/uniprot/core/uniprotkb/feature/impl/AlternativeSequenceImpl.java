@@ -2,6 +2,7 @@ package org.uniprot.core.uniprotkb.feature.impl;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.util.Utils;
@@ -34,13 +35,7 @@ public class AlternativeSequenceImpl implements AlternativeSequence {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result =
-                prime * result
-                        + ((alternativeSequences == null) ? 0 : alternativeSequences.hashCode());
-        result = prime * result + ((originalSequence == null) ? 0 : originalSequence.hashCode());
-        return result;
+    	return Objects.hash( originalSequence, alternativeSequences );
     }
 
     @Override
@@ -48,8 +43,9 @@ public class AlternativeSequenceImpl implements AlternativeSequence {
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
-        AlternativeSequenceImpl other = (AlternativeSequenceImpl) obj;
-        if (!alternativeSequences.equals(other.alternativeSequences)) return false;
-        return originalSequence.equals(other.originalSequence);
+        AlternativeSequenceImpl that = (AlternativeSequenceImpl) obj;
+        return  Objects.equals(originalSequence, that.originalSequence)
+                && Objects.equals(alternativeSequences, that.alternativeSequences);
+        
     }
 }
