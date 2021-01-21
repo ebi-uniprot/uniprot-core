@@ -35,7 +35,7 @@ public class AlternativeSequenceImpl implements AlternativeSequence {
 
     @Override
     public int hashCode() {
-    	return Objects.hash( originalSequence, alternativeSequences );
+        return Objects.hash(originalSequence, alternativeSequences);
     }
 
     @Override
@@ -44,8 +44,7 @@ public class AlternativeSequenceImpl implements AlternativeSequence {
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
         AlternativeSequenceImpl that = (AlternativeSequenceImpl) obj;
-        return  Objects.equals(originalSequence, that.originalSequence)
+        return Objects.equals(originalSequence, that.originalSequence)
                 && Objects.equals(alternativeSequences, that.alternativeSequences);
-        
     }
 }

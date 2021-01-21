@@ -62,8 +62,7 @@ public class FeatureIdImpl implements FeatureId {
 
     @Override
     public int hashCode() {
-    	return Objects.hash(value);
-       
+        return Objects.hash(value);
     }
 
     @Override

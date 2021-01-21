@@ -63,11 +63,11 @@ public class UniProtKBFeatureImpl
         if (!super.equals(o)) return false;
         UniProtKBFeatureImpl that = (UniProtKBFeatureImpl) o;
         return Objects.equals(getFeatureId(), that.getFeatureId())
-        		&& Objects.equals(getAlternativeSequence(), that.getAlternativeSequence()) ;
+                && Objects.equals(getAlternativeSequence(), that.getAlternativeSequence());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getFeatureId(), alternativeSequence );
+        return Objects.hash(super.hashCode(), getFeatureId(), alternativeSequence);
     }
 }
