@@ -45,10 +45,7 @@ class UniParcCrossReferenceBuilderTest {
     @Test
     void testCreated() {
         LocalDate created = LocalDate.of(2017, 5, 17);
-        UniParcCrossReference xref =
-                new UniParcCrossReferenceBuilder()
-                        .created(created)
-                        .build();
+        UniParcCrossReference xref = new UniParcCrossReferenceBuilder().created(created).build();
         assertEquals(created, xref.getCreated());
     }
 
@@ -56,9 +53,7 @@ class UniParcCrossReferenceBuilderTest {
     void testLastUpdated() {
         LocalDate lastUpdated = LocalDate.of(2017, 2, 27);
         UniParcCrossReference xref =
-                new UniParcCrossReferenceBuilder()
-                        .lastUpdated(lastUpdated)
-                        .build();
+                new UniParcCrossReferenceBuilder().lastUpdated(lastUpdated).build();
         assertEquals(lastUpdated, xref.getLastUpdated());
     }
 
@@ -68,84 +63,61 @@ class UniParcCrossReferenceBuilderTest {
         properties.add(new Property("prop1", "some pname"));
         properties.add(new Property("prop2", "some gname"));
         UniParcCrossReference xref =
-                new UniParcCrossReferenceBuilder()
-                        .propertiesSet(properties)
-                        .build();
+                new UniParcCrossReferenceBuilder().propertiesSet(properties).build();
         assertEquals(properties, xref.getProperties());
     }
 
     @Test
-    void testGeneName(){
+    void testGeneName() {
         String geneName = "gene Name value";
-        UniParcCrossReference xref =
-                new UniParcCrossReferenceBuilder()
-                        .geneName(geneName)
-                        .build();
+        UniParcCrossReference xref = new UniParcCrossReferenceBuilder().geneName(geneName).build();
         assertEquals(geneName, xref.getGeneName());
     }
 
     @Test
-    void testProteinName(){
+    void testProteinName() {
         String proteinName = "protein Name value";
         UniParcCrossReference xref =
-                new UniParcCrossReferenceBuilder()
-                        .proteinName(proteinName)
-                        .build();
+                new UniParcCrossReferenceBuilder().proteinName(proteinName).build();
         assertEquals(proteinName, xref.getProteinName());
     }
 
     @Test
-    void testTaxonomy(){
-        Organism organism = new OrganismBuilder()
-                .taxonId(123L)
-                .build();
-        UniParcCrossReference xref =
-                new UniParcCrossReferenceBuilder()
-                        .taxonomy(organism)
-                        .build();
+    void testTaxonomy() {
+        Organism organism = new OrganismBuilder().taxonId(123L).build();
+        UniParcCrossReference xref = new UniParcCrossReferenceBuilder().taxonomy(organism).build();
         assertEquals(organism, xref.getTaxonomy());
     }
 
     @Test
-    void testChain(){
+    void testChain() {
         String chain = "chain value";
-        UniParcCrossReference xref =
-                new UniParcCrossReferenceBuilder()
-                        .chain(chain)
-                        .build();
+        UniParcCrossReference xref = new UniParcCrossReferenceBuilder().chain(chain).build();
         assertEquals(chain, xref.getChain());
     }
 
     @Test
-    void testNcbiGi(){
+    void testNcbiGi() {
         String ncbiGi = "ncbiGi value";
-        UniParcCrossReference xref =
-                new UniParcCrossReferenceBuilder()
-                        .ncbiGi(ncbiGi)
-                        .build();
+        UniParcCrossReference xref = new UniParcCrossReferenceBuilder().ncbiGi(ncbiGi).build();
         assertEquals(ncbiGi, xref.getNcbiGi());
     }
 
     @Test
-    void testProteomeId(){
+    void testProteomeId() {
         String proteomeId = "proteomeId value";
         UniParcCrossReference xref =
-                new UniParcCrossReferenceBuilder()
-                        .proteomeId(proteomeId)
-                        .build();
+                new UniParcCrossReferenceBuilder().proteomeId(proteomeId).build();
         assertEquals(proteomeId, xref.getProteomeId());
     }
 
     @Test
-    void testComponent(){
+    void testComponent() {
         String component = "component value";
         UniParcCrossReference xref =
-                new UniParcCrossReferenceBuilder()
-                        .component(component)
-                        .build();
+                new UniParcCrossReferenceBuilder().component(component).build();
         assertEquals(component, xref.getComponent());
     }
-
 
     @Test
     void testFromUniParcDBCrossReference() {

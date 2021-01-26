@@ -13,11 +13,11 @@ import org.uniprot.core.json.parser.uniprot.CreateUtils;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * @author jluo

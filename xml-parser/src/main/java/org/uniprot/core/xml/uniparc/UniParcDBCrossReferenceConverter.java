@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.google.common.base.Strings;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
@@ -19,6 +18,8 @@ import org.uniprot.core.xml.jaxb.uniparc.PropertyType;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
 import org.uniprot.cv.taxonomy.TaxonomicNode;
 import org.uniprot.cv.taxonomy.TaxonomyRepo;
+
+import com.google.common.base.Strings;
 
 /**
  * @author jluo
@@ -81,8 +82,11 @@ public class UniParcDBCrossReferenceConverter
                     builder.taxonomy(convertTaxonomy(property.getValue()));
                     break;
                 default:
-                    throw new XmlReaderException("Unable to read xml property: "
-                            +xmlObj.getType() + "value: "+property.getValue());
+                    throw new XmlReaderException(
+                            "Unable to read xml property: "
+                                    + xmlObj.getType()
+                                    + "value: "
+                                    + property.getValue());
             }
         }
         if (xmlObj.getVersion() != null) builder.version(xmlObj.getVersion());
@@ -101,25 +105,25 @@ public class UniParcDBCrossReferenceConverter
         xmlObj.setLast(XmlConverterHelper.dateToXml(uniObj.getLastUpdated()));
 
         List<PropertyType> properties = new ArrayList<>();
-        if(Utils.notNullNotEmpty(uniObj.getGeneName())){
+        if (Utils.notNullNotEmpty(uniObj.getGeneName())) {
             properties.add(createProperty(PROPERTY_GENE_NAME, uniObj.getGeneName()));
         }
-        if(Utils.notNullNotEmpty(uniObj.getProteinName())){
+        if (Utils.notNullNotEmpty(uniObj.getProteinName())) {
             properties.add(createProperty(PROPERTY_PROTEIN_NAME, uniObj.getProteinName()));
         }
-        if(Utils.notNullNotEmpty(uniObj.getChain())){
+        if (Utils.notNullNotEmpty(uniObj.getChain())) {
             properties.add(createProperty(PROPERTY_CHAIN, uniObj.getChain()));
         }
-        if(Utils.notNullNotEmpty(uniObj.getNcbiGi())){
-            properties.add(createProperty(PROPERTY_NCBI_GI,uniObj.getNcbiGi()));
+        if (Utils.notNullNotEmpty(uniObj.getNcbiGi())) {
+            properties.add(createProperty(PROPERTY_NCBI_GI, uniObj.getNcbiGi()));
         }
-        if(Utils.notNullNotEmpty(uniObj.getProteomeId())){
-            properties.add(createProperty(PROPERTY_PROTEOME_ID,uniObj.getProteomeId()));
+        if (Utils.notNullNotEmpty(uniObj.getProteomeId())) {
+            properties.add(createProperty(PROPERTY_PROTEOME_ID, uniObj.getProteomeId()));
         }
-        if(Utils.notNullNotEmpty(uniObj.getComponent())){
-            properties.add(createProperty(PROPERTY_COMPONENT,uniObj.getComponent()));
+        if (Utils.notNullNotEmpty(uniObj.getComponent())) {
+            properties.add(createProperty(PROPERTY_COMPONENT, uniObj.getComponent()));
         }
-        if(Utils.notNull(uniObj.getTaxonomy())){
+        if (Utils.notNull(uniObj.getTaxonomy())) {
             String taxonId = String.valueOf(uniObj.getTaxonomy().getTaxonId());
             properties.add(createProperty(PROPERTY_NCBI_TAXONOMY_ID, taxonId));
         }

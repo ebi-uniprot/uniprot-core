@@ -24,11 +24,11 @@ public class UniParcEntryValueMapper implements EntityValueMapper<UniParcEntry> 
             map.putAll(getSimpleAttributeValues(entry));
         }
         if (UniParcOrganismMap.contains(fields)) {
-            List<Organism> organisms = entry.getUniParcCrossReferences()
-                    .stream()
-                    .map(UniParcCrossReference::getTaxonomy)
-                    .filter(Objects::nonNull)
-                    .collect(Collectors.toList());
+            List<Organism> organisms =
+                    entry.getUniParcCrossReferences().stream()
+                            .map(UniParcCrossReference::getTaxonomy)
+                            .filter(Objects::nonNull)
+                            .collect(Collectors.toList());
             addData(map, new UniParcOrganismMap(organisms));
         }
         if (UniParcSequenceFeatureMap.contains(fields)) {

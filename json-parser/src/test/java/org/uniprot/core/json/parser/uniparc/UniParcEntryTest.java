@@ -15,7 +15,6 @@ import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
 import org.uniprot.core.uniparc.*;
-import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
 import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
@@ -23,7 +22,6 @@ import org.uniprot.core.uniparc.impl.UniParcEntryBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
-import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -106,7 +104,8 @@ public class UniParcEntryTest {
                 .version(1)
                 .active(true)
                 .created(LocalDate.of(2015, 4, 1))
-                .lastUpdated(LocalDate.of(2019, 5, 8))                                .taxonomy(organism)
+                .lastUpdated(LocalDate.of(2019, 5, 8))
+                .taxonomy(organism)
                 .geneName("Gel")
                 .proteomeId("UPI")
                 .component("ComponentValue")

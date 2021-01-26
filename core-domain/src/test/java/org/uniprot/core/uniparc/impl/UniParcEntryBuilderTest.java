@@ -157,5 +157,4 @@ class UniParcEntryBuilderTest {
         assertNotNull(obj.getSequenceFeatures());
         assertTrue(obj.getSequenceFeatures().isEmpty());
     }
-
 }

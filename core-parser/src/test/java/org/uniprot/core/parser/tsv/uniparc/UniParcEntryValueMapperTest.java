@@ -21,9 +21,7 @@ import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.uniparc.impl.UniParcEntryBuilder;
 import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
-import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
-import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 
 /**
  * @author jluo
@@ -102,11 +100,11 @@ class UniParcEntryValueMapperTest {
         List<UniParcCrossReference> xrefs = getXrefs();
         List<SequenceFeature> seqFeatures = getSeqFeatures();
         return new UniParcEntryBuilder()
-                        .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
-                        .uniParcCrossReferencesSet(xrefs)
-                        .sequence(sequence)
-                        .sequenceFeaturesSet(seqFeatures)
-                        .build();
+                .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
+                .uniParcCrossReferencesSet(xrefs)
+                .sequence(sequence)
+                .sequenceFeaturesSet(seqFeatures)
+                .build();
     }
 
     private List<SequenceFeature> getSeqFeatures() {

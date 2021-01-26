@@ -34,5 +34,4 @@ public interface UniParcCrossReference extends CrossReference<UniParcDatabase> {
     String getProteomeId();
 
     String getComponent();
-
 }

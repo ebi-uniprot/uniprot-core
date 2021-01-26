@@ -32,9 +32,21 @@ public class UniParcCrossReferenceBuilder
     @Override
     public @Nonnull UniParcCrossReference build() {
         return new UniParcCrossReferenceImpl(
-                database, id, properties, versionI, version, active, created,
-                lastUpdated, geneName, proteinName, taxonomy, chain, ncbiGi,
-                proteomeId, component);
+                database,
+                id,
+                properties,
+                versionI,
+                version,
+                active,
+                created,
+                lastUpdated,
+                geneName,
+                proteinName,
+                taxonomy,
+                chain,
+                ncbiGi,
+                proteomeId,
+                component);
     }
 
     public @Nonnull UniParcCrossReferenceBuilder versionI(int versionI) {
@@ -62,37 +74,37 @@ public class UniParcCrossReferenceBuilder
         return this;
     }
 
-    public @Nonnull UniParcCrossReferenceBuilder geneName(String geneName){
+    public @Nonnull UniParcCrossReferenceBuilder geneName(String geneName) {
         this.geneName = geneName;
         return this;
     }
 
-    public @Nonnull UniParcCrossReferenceBuilder proteinName(String proteinName){
+    public @Nonnull UniParcCrossReferenceBuilder proteinName(String proteinName) {
         this.proteinName = proteinName;
         return this;
     }
 
-    public @Nonnull UniParcCrossReferenceBuilder taxonomy(Organism taxonomy){
+    public @Nonnull UniParcCrossReferenceBuilder taxonomy(Organism taxonomy) {
         this.taxonomy = taxonomy;
         return this;
     }
 
-    public @Nonnull UniParcCrossReferenceBuilder chain(String chain){
+    public @Nonnull UniParcCrossReferenceBuilder chain(String chain) {
         this.chain = chain;
         return this;
     }
 
-    public @Nonnull UniParcCrossReferenceBuilder ncbiGi(String ncbiGi){
+    public @Nonnull UniParcCrossReferenceBuilder ncbiGi(String ncbiGi) {
         this.ncbiGi = ncbiGi;
         return this;
     }
 
-    public @Nonnull UniParcCrossReferenceBuilder proteomeId(String proteomeId){
+    public @Nonnull UniParcCrossReferenceBuilder proteomeId(String proteomeId) {
         this.proteomeId = proteomeId;
         return this;
     }
 
-    public @Nonnull UniParcCrossReferenceBuilder component(String component){
+    public @Nonnull UniParcCrossReferenceBuilder component(String component) {
         this.component = component;
         return this;
     }

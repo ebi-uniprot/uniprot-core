@@ -4,11 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.Property;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
@@ -42,14 +39,15 @@ class UniParcCrossReferenceConverterTest {
 
     @Test
     void testInvalidPropertyThrowsException() {
-        UniParcCrossReference xref = new UniParcCrossReferenceBuilder()
-                .database(UniParcDatabase.ENSEMBL_VERTEBRATE)
-                .id("CG1106-PB")
-                .versionI(1)
-                .active(false)
-                .created(LocalDate.of(2003, 4, 1))
-                .lastUpdated(LocalDate.of(2007, 11, 22))
-                .build();
+        UniParcCrossReference xref =
+                new UniParcCrossReferenceBuilder()
+                        .database(UniParcDatabase.ENSEMBL_VERTEBRATE)
+                        .id("CG1106-PB")
+                        .versionI(1)
+                        .active(false)
+                        .created(LocalDate.of(2003, 4, 1))
+                        .lastUpdated(LocalDate.of(2007, 11, 22))
+                        .build();
 
         UniParcDBCrossReferenceConverter converter = new UniParcDBCrossReferenceConverter();
         DbReferenceType xmlObj = converter.toXml(xref);
@@ -60,7 +58,6 @@ class UniParcCrossReferenceConverterTest {
         xmlObj.getProperty().add(invalidProperty);
 
         assertThrows(XmlReaderException.class, () -> converter.fromXml(xmlObj));
-
     }
 
     @Test

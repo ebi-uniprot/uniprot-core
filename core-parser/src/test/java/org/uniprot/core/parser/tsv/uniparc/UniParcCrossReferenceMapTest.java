@@ -21,13 +21,15 @@ class UniParcCrossReferenceMapTest {
     void testSimpleAttributeValues() {
         LocalDate created = LocalDate.of(2017, 5, 17);
         LocalDate lastUpdated = LocalDate.of(2018, 2, 7);
-        UniParcCrossReference xref = new UniParcCrossReferenceBuilder()
-                .database(UniParcDatabase.EG_BACTERIA)
-                .id("IDVALUE")
-                .created(created)
-                .lastUpdated(lastUpdated)
-                .build();
-        UniParcCrossReferenceMap xrefMap = new UniParcCrossReferenceMap(Collections.singletonList(xref));
+        UniParcCrossReference xref =
+                new UniParcCrossReferenceBuilder()
+                        .database(UniParcDatabase.EG_BACTERIA)
+                        .id("IDVALUE")
+                        .created(created)
+                        .lastUpdated(lastUpdated)
+                        .build();
+        UniParcCrossReferenceMap xrefMap =
+                new UniParcCrossReferenceMap(Collections.singletonList(xref));
         Map<String, String> result = xrefMap.attributeValues();
         assertEquals(7, result.size());
         assertEquals("2017-05-17", result.get("first_seen"));

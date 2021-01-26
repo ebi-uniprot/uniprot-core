@@ -31,7 +31,9 @@ public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabas
     private final String component;
 
     UniParcCrossReferenceImpl() {
-        this(null, null, null, 0, null, false, null,null, null, null, null, null, null, null, null);
+        this(
+                null, null, null, 0, null, false, null, null, null, null, null, null, null, null,
+                null);
     }
 
     UniParcCrossReferenceImpl(
@@ -131,25 +133,35 @@ public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabas
         if (!(o instanceof UniParcCrossReferenceImpl)) return false;
         if (!super.equals(o)) return false;
         UniParcCrossReferenceImpl that = (UniParcCrossReferenceImpl) o;
-        return getVersionI() == that.getVersionI() &&
-                isActive() == that.isActive() &&
-                Objects.equals(getVersion(), that.getVersion()) &&
-                Objects.equals(getCreated(), that.getCreated()) &&
-                Objects.equals(getLastUpdated(), that.getLastUpdated()) &&
-                Objects.equals(getGeneName(), that.getGeneName()) &&
-                Objects.equals(getProteinName(), that.getProteinName()) &&
-                Objects.equals(getTaxonomy(), that.getTaxonomy()) &&
-                Objects.equals(getChain(), that.getChain()) &&
-                Objects.equals(getNcbiGi(), that.getNcbiGi()) &&
-                Objects.equals(getProteomeId(), that.getProteomeId()) &&
-                Objects.equals(getComponent(), that.getComponent());
+        return getVersionI() == that.getVersionI()
+                && isActive() == that.isActive()
+                && Objects.equals(getVersion(), that.getVersion())
+                && Objects.equals(getCreated(), that.getCreated())
+                && Objects.equals(getLastUpdated(), that.getLastUpdated())
+                && Objects.equals(getGeneName(), that.getGeneName())
+                && Objects.equals(getProteinName(), that.getProteinName())
+                && Objects.equals(getTaxonomy(), that.getTaxonomy())
+                && Objects.equals(getChain(), that.getChain())
+                && Objects.equals(getNcbiGi(), that.getNcbiGi())
+                && Objects.equals(getProteomeId(), that.getProteomeId())
+                && Objects.equals(getComponent(), that.getComponent());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getVersionI(), getVersion(),
-                isActive(), getCreated(), getLastUpdated(), getGeneName(),
-                getProteinName(), getTaxonomy(), getChain(), getNcbiGi(),
-                getProteomeId(), getComponent());
+        return Objects.hash(
+                super.hashCode(),
+                getVersionI(),
+                getVersion(),
+                isActive(),
+                getCreated(),
+                getLastUpdated(),
+                getGeneName(),
+                getProteinName(),
+                getTaxonomy(),
+                getChain(),
+                getNcbiGi(),
+                getProteomeId(),
+                getComponent());
     }
 }

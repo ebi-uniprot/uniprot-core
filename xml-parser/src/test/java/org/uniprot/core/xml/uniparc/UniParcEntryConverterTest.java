@@ -84,8 +84,7 @@ class UniParcEntryConverterTest {
                                 .created(LocalDate.of(2003, 4, 1))
                                 .lastUpdated(LocalDate.of(2007, 11, 22))
                                 .build());
-        Organism taxonomy =
-                new OrganismBuilder().taxonId(9606).build();
+        Organism taxonomy = new OrganismBuilder().taxonId(9606).build();
 
         UniParcCrossReferenceBuilder xrefBuilder = new UniParcCrossReferenceBuilder();
         xrefBuilder

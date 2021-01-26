@@ -8,9 +8,7 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
-import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
-import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 
 /**
  * @author jluo
@@ -50,10 +48,7 @@ class UniParcOrganismMapTest {
                         .scientificName("Homo sapiens")
                         .commonName("HUMAN")
                         .build();
-        Organism taxonomy2 = new OrganismBuilder()
-                .taxonId(10090)
-                .scientificName("MOUSE")
-                .build();
+        Organism taxonomy2 = new OrganismBuilder().taxonId(10090).scientificName("MOUSE").build();
         return Arrays.asList(taxonomy, taxonomy2);
     }
 }

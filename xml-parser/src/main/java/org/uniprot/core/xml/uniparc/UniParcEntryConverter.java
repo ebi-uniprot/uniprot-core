@@ -34,7 +34,6 @@ public class UniParcEntryConverter implements Converter<Entry, UniParcEntry> {
         this.seqFeatureConverter = new SequenceFeatureConverter(xmlFactory);
         this.xrefConverter = new UniParcDBCrossReferenceConverter(xmlFactory, taxonomyRepo);
         this.sequenceConverter = new SequenceConverter(xmlFactory);
-
     }
 
     public UniParcEntryConverter(TaxonomyRepo taxonomyRepo) {
