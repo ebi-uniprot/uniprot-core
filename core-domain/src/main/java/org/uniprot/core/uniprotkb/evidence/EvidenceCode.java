@@ -94,14 +94,14 @@ public enum EvidenceCode implements EnumDisplay {
             "Combinatorial",
             "combinatorial computational and experimental evidence used in manual assertion",
             Collections.singletonList("Combined sources"),
-            EnumSet.of(Category.MANUAL)),    //replacing ECO_0000244 from 2021.2 release
-    
+            EnumSet.of(Category.MANUAL)), // replacing ECO_0000244 from 2021.2 release
+
     ECO_0007829(
             "ECO:0007829",
             "Combinatorial",
             "combinatorial computational and experimental evidence used in automatic assertion",
             Collections.singletonList("Combined sources"),
-            EnumSet.of(Category.AUTOMATIC)); //replacing ECO_0000213 from 2021.2 release
+            EnumSet.of(Category.AUTOMATIC)); // replacing ECO_0000213 from 2021.2 release
 
     private final String code;
     private final String name;
