@@ -1,5 +1,6 @@
 package org.uniprot.core.json.parser.uniref;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
@@ -11,6 +12,8 @@ import org.uniprot.core.uniref.impl.OverlapRegionBuilder;
 import org.uniprot.core.uniref.impl.RepresentativeMemberBuilder;
 import org.uniprot.core.uniref.impl.UniRefEntryIdBuilder;
 
+import static org.junit.jupiter.api.Assertions.fail;
+
 /**
  * @author lgonzales
  * @since 12/01/2021
@@ -21,7 +24,14 @@ class UniRefMemberJsonConfigTest {
     void testFullUniRefMemberJsonRoundTrip() {
         UniRefMember entry = createRepresentativeMember();
         ValidateJson.verifyJsonRoundTripParser(
-                UniRefEntryLightJsonConfig.getInstance().getFullObjectMapper(), entry);
+                UniRefMemberJsonConfig.getInstance().getFullObjectMapper(), entry);
+        try {
+            ObjectMapper mapper = UniRefMemberJsonConfig.getInstance().getSimpleObjectMapper();
+            String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
+            System.out.println(json);
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
     }
 
     @Test
