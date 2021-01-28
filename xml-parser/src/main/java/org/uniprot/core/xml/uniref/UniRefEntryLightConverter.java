@@ -5,21 +5,18 @@ import static org.uniprot.core.uniref.UniRefUtils.getUniProtKBIdType;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.cv.go.GoAspect;
 import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefEntryLight;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
 import org.uniprot.core.uniref.impl.UniRefEntryLightBuilder;
 import org.uniprot.core.xml.Converter;
-import org.uniprot.core.xml.jaxb.uniref.DbReferenceType;
-import org.uniprot.core.xml.jaxb.uniref.Entry;
-import org.uniprot.core.xml.jaxb.uniref.MemberType;
-import org.uniprot.core.xml.jaxb.uniref.PropertyType;
+import org.uniprot.core.xml.jaxb.uniref.*;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
 
 /**
@@ -39,36 +36,33 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
     private static final String PROPERTY_GO_PROCESS = "GO Biological Process";
     private static final String PROPERTY_IS_SEED = "isSeed";
 
+    private final RepresentativeMemberConverter representativeMemberConverter;
+
+    public UniRefEntryLightConverter() {
+        this(new ObjectFactory());
+    }
+
+    public UniRefEntryLightConverter(ObjectFactory jaxbFactory) {
+        representativeMemberConverter = new RepresentativeMemberConverter(jaxbFactory);
+    }
+
     @Override
     public UniRefEntryLight fromXml(Entry xmlObj) {
         UniRefEntryLightBuilder builder = new UniRefEntryLightBuilder();
+
+        RepresentativeMember repMember =
+                representativeMemberConverter.fromXml(xmlObj.getRepresentativeMember());
+        builder.representativeMember(repMember);
         builder.id(xmlObj.getId())
                 .entryType(getTypeFromId(xmlObj.getId()))
                 .name(xmlObj.getName())
-                .updated(XmlConverterHelper.dateFromXml(xmlObj.getUpdated()))
-                .sequence(xmlObj.getRepresentativeMember().getSequence().getValue())
-                .representativeId(getRepresentativeId(xmlObj.getRepresentativeMember()));
+                .updated(XmlConverterHelper.dateFromXml(xmlObj.getUpdated()));
 
         updateMemberValuesFromXml(
                 builder, Collections.singletonList(xmlObj.getRepresentativeMember()));
         updateCommonPropertiesFromXml(builder, xmlObj);
         updateMemberValuesFromXml(builder, xmlObj.getMember());
         return builder.build();
-    }
-
-    private String getRepresentativeId(MemberType memberType) {
-        String representativeId = memberType.getDbReference().getId();
-        Optional<String> accession =
-                memberType.getDbReference().getProperty().stream()
-                        .filter(
-                                propertyType ->
-                                        propertyType.getType().equals(PROPERTY_UNIPROT_ACCESSION))
-                        .map(PropertyType::getValue)
-                        .findFirst();
-        if (accession.isPresent()) {
-            representativeId += "," + accession.get();
-        }
-        return representativeId;
     }
 
     private void updateMemberValuesFromXml(
