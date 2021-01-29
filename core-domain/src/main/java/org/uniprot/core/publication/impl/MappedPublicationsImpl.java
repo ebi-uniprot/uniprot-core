@@ -14,34 +14,27 @@ import java.util.Objects;
  * @created 18/12/2020
  */
 public class MappedPublicationsImpl implements MappedPublications {
-
     private static final long serialVersionUID = -6303466445944690517L;
-    private UniProtKBMappedReference unreviewedMappedReference;
-    private UniProtKBMappedReference reviewedMappedReference;
-    private List<ComputationallyMappedReference> computationalMappedReferences;
-    private List<CommunityMappedReference> communityMappedReferences;
+    private final UniProtKBMappedReference uniProtKBMappedReference;
+    private final List<ComputationallyMappedReference> computationalMappedReferences;
+    private final List<CommunityMappedReference> communityMappedReferences;
 
-    public MappedPublicationsImpl(){
-        this(null, null, null, null);
+    public MappedPublicationsImpl() {
+        this(null, null, null);
     }
-    public MappedPublicationsImpl(UniProtKBMappedReference unreviewedMappedReference,
-                                  UniProtKBMappedReference reviewedMappedReference,
-                                  List<ComputationallyMappedReference> computationalMappedReferences,
-                                  List<CommunityMappedReference> communityMappedReferences) {
-        this.unreviewedMappedReference = unreviewedMappedReference;
-        this.reviewedMappedReference = reviewedMappedReference;
+
+    public MappedPublicationsImpl(
+            UniProtKBMappedReference uniProtKBMappedReference,
+            List<ComputationallyMappedReference> computationalMappedReferences,
+            List<CommunityMappedReference> communityMappedReferences) {
+        this.uniProtKBMappedReference = uniProtKBMappedReference;
         this.computationalMappedReferences = Utils.unmodifiableList(computationalMappedReferences);
         this.communityMappedReferences = Utils.unmodifiableList(communityMappedReferences);
     }
 
     @Override
-    public UniProtKBMappedReference getReviewedMappedReference() {
-        return this.reviewedMappedReference;
-    }
-
-    @Override
-    public UniProtKBMappedReference getUnreviewedMappedReference() {
-        return this.unreviewedMappedReference;
+    public UniProtKBMappedReference getUniProtKBMappedReference() {
+        return this.uniProtKBMappedReference;
     }
 
     @Override
@@ -59,15 +52,14 @@ public class MappedPublicationsImpl implements MappedPublications {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MappedPublicationsImpl that = (MappedPublicationsImpl) o;
-        return Objects.equals(unreviewedMappedReference, that.unreviewedMappedReference) &&
-                Objects.equals(reviewedMappedReference, that.reviewedMappedReference) &&
-                Objects.equals(computationalMappedReferences, that.computationalMappedReferences) &&
-                Objects.equals(communityMappedReferences, that.communityMappedReferences);
+        return Objects.equals(uniProtKBMappedReference, that.uniProtKBMappedReference)
+                && Objects.equals(computationalMappedReferences, that.computationalMappedReferences)
+                && Objects.equals(communityMappedReferences, that.communityMappedReferences);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(unreviewedMappedReference, reviewedMappedReference,
-                computationalMappedReferences, communityMappedReferences);
+        return Objects.hash(
+                uniProtKBMappedReference, computationalMappedReferences, communityMappedReferences);
     }
 }

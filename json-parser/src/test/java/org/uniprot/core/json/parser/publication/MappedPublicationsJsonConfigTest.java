@@ -32,8 +32,7 @@ public class MappedPublicationsJsonConfigTest {
 
     static MappedPublications getCompleteMappedPublications() {
         MappedPublicationsBuilder builder = new MappedPublicationsBuilder();
-        builder.unreviewedMappedReference(getCompleteUniProtKBMappedReference());
-        builder.reviewedMappedReference(getCompleteUniProtKBMappedReference());
+        builder.uniProtKBMappedReference(getCompleteUniProtKBMappedReference());
         builder.computationalMappedReferencesAdd(getCompleteComputationallyMappedReference());
         builder.communityMappedReferencesAdd(getCompleteCommunityMappedReference());
         return builder.build();

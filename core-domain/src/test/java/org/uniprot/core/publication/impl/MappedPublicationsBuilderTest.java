@@ -26,34 +26,19 @@ public class MappedPublicationsBuilderTest {
     void checkEmptyReference() {
         MappedPublications obj = new MappedPublicationsBuilder().build();
         assertThat(obj, is(notNullValue()));
-        assertThat(obj.getUnreviewedMappedReference(), is(nullValue()));
-        assertThat(obj.getReviewedMappedReference(), is(nullValue()));
+        assertThat(obj.getUniProtKBMappedReference(), is(nullValue()));
         assertThat(obj.getCommunityMappedReferences(), is(empty()));
         assertThat(obj.getComputationalMappedReferences(), is(empty()));
     }
 
     @Test
-    void canSetUnreviewedMappedReference(){
+    void canSetUniProtKBMappedReference(){
         MappedPublicationsBuilder builder = new MappedPublicationsBuilder();
         UniProtKBMappedReference reference = new UniProtKBMappedReferenceImpl();
-        builder.unreviewedMappedReference(reference);
+        builder.uniProtKBMappedReference(reference);
         MappedPublications mappedPubs = builder.build();
         assertThat(mappedPubs, is(notNullValue()));
-        assertThat(mappedPubs.getUnreviewedMappedReference(), is(reference));
-        assertThat(mappedPubs.getReviewedMappedReference(), is(nullValue()));
-        assertThat(mappedPubs.getComputationalMappedReferences(), is(empty()));
-        assertThat(mappedPubs.getCommunityMappedReferences(), is(empty()));
-    }
-
-    @Test
-    void canSetReviewedMappedReference(){
-        MappedPublicationsBuilder builder = new MappedPublicationsBuilder();
-        UniProtKBMappedReference reference = new UniProtKBMappedReferenceImpl();
-        builder.reviewedMappedReference(reference);
-        MappedPublications mappedPubs = builder.build();
-        assertThat(mappedPubs, is(notNullValue()));
-        assertThat(mappedPubs.getReviewedMappedReference(), is(reference));
-        assertThat(mappedPubs.getUnreviewedMappedReference(), is(nullValue()));
+        assertThat(mappedPubs.getUniProtKBMappedReference(), is(reference));
         assertThat(mappedPubs.getComputationalMappedReferences(), is(empty()));
         assertThat(mappedPubs.getCommunityMappedReferences(), is(empty()));
     }
@@ -66,8 +51,7 @@ public class MappedPublicationsBuilderTest {
         MappedPublications mappedPubs = builder.build();
 
         assertThat(mappedPubs.getComputationalMappedReferences(), hasSize(1));
-        assertThat(mappedPubs.getReviewedMappedReference(), is(nullValue()));
-        assertThat(mappedPubs.getUnreviewedMappedReference(), is(nullValue()));
+        assertThat(mappedPubs.getUniProtKBMappedReference(), is(nullValue()));
         assertThat(mappedPubs.getCommunityMappedReferences(), is(empty()));
     }
 
@@ -80,8 +64,7 @@ public class MappedPublicationsBuilderTest {
         MappedPublications mappedPubs = builder.build();
 
         assertThat(mappedPubs.getComputationalMappedReferences(), hasSize(2));
-        assertThat(mappedPubs.getReviewedMappedReference(), is(nullValue()));
-        assertThat(mappedPubs.getUnreviewedMappedReference(), is(nullValue()));
+        assertThat(mappedPubs.getUniProtKBMappedReference(), is(nullValue()));
         assertThat(mappedPubs.getCommunityMappedReferences(), is(empty()));
     }
 
@@ -93,8 +76,7 @@ public class MappedPublicationsBuilderTest {
         MappedPublications mappedPubs = builder.build();
 
         assertThat(mappedPubs.getCommunityMappedReferences(), hasSize(1));
-        assertThat(mappedPubs.getReviewedMappedReference(), is(nullValue()));
-        assertThat(mappedPubs.getUnreviewedMappedReference(), is(nullValue()));
+        assertThat(mappedPubs.getUniProtKBMappedReference(), is(nullValue()));
         assertThat(mappedPubs.getComputationalMappedReferences(), is(empty()));
     }
 
@@ -107,8 +89,7 @@ public class MappedPublicationsBuilderTest {
         MappedPublications mappedPubs = builder.build();
 
         assertThat(mappedPubs.getCommunityMappedReferences(), hasSize(2));
-        assertThat(mappedPubs.getReviewedMappedReference(), is(nullValue()));
-        assertThat(mappedPubs.getUnreviewedMappedReference(), is(nullValue()));
+        assertThat(mappedPubs.getUniProtKBMappedReference(), is(nullValue()));
         assertThat(mappedPubs.getComputationalMappedReferences(), is(empty()));
     }
 

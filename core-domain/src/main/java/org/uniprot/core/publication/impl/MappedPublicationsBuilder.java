@@ -7,30 +7,22 @@ import org.uniprot.core.publication.MappedPublications;
 import org.uniprot.core.publication.UniProtKBMappedReference;
 import org.uniprot.core.util.Utils;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author sahmad
  * @created 18/12/2020
  */
 public class MappedPublicationsBuilder implements Builder<MappedPublications> {
-    private UniProtKBMappedReference unreviewedMappedReference;
-    private UniProtKBMappedReference reviewedMappedReference;
+    private UniProtKBMappedReference uniProtKBMappedReference;
     private List<ComputationallyMappedReference> computationalMappedReferences = new ArrayList<>();
     private List<CommunityMappedReference> communityMappedReferences = new ArrayList<>();
 
-    public @Nonnull
-    MappedPublicationsBuilder unreviewedMappedReference(UniProtKBMappedReference unreviewedMappedReference) {
-        this.unreviewedMappedReference = unreviewedMappedReference;
-        return this;
-    }
-
-    public @Nonnull
-    MappedPublicationsBuilder reviewedMappedReference(UniProtKBMappedReference reviewedMappedReference) {
-        this.reviewedMappedReference = reviewedMappedReference;
+    public @Nonnull MappedPublicationsBuilder uniProtKBMappedReference(
+            UniProtKBMappedReference uniProtKBMappedReference) {
+        this.uniProtKBMappedReference = uniProtKBMappedReference;
         return this;
     }
 
@@ -61,17 +53,13 @@ public class MappedPublicationsBuilder implements Builder<MappedPublications> {
     @Nonnull
     @Override
     public MappedPublications build() {
-        return new MappedPublicationsImpl(unreviewedMappedReference, reviewedMappedReference,
-                computationalMappedReferences, communityMappedReferences);
+        return new MappedPublicationsImpl(
+                uniProtKBMappedReference, computationalMappedReferences, communityMappedReferences);
     }
 
-
-    public static @Nonnull
-    MappedPublicationsBuilder from(
-            @Nonnull MappedPublications instance) {
+    public static @Nonnull MappedPublicationsBuilder from(@Nonnull MappedPublications instance) {
         return new MappedPublicationsBuilder()
-                .unreviewedMappedReference(instance.getUnreviewedMappedReference())
-                .reviewedMappedReference(instance.getReviewedMappedReference())
+                .uniProtKBMappedReference(instance.getUniProtKBMappedReference())
                 .communityMappedReferencesSet(instance.getCommunityMappedReferences())
                 .computationalMappedReferencesSet(instance.getComputationalMappedReferences());
     }
