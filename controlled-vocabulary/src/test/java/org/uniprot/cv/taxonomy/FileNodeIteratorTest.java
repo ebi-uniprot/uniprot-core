@@ -1,5 +1,7 @@
 package org.uniprot.cv.taxonomy;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -9,8 +11,6 @@ import java.util.NoSuchElementException;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class FileNodeIteratorTest {
     private static final String FIELD_SEPARATOR = "\t";
@@ -44,7 +44,7 @@ class FileNodeIteratorTest {
         assertEquals("Avian leukosis virus RSA", avian.scientificName());
         assertEquals("RSV-SRA", avian.commonName());
         assertEquals("Rous sarcoma virus (strain Schmidt-Ruppin A)", avian.synonymName());
-        assertTrue( avian.hidden());
+        assertTrue(avian.hidden());
     }
 
     @Test
