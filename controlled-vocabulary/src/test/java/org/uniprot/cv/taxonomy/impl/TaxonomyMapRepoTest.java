@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.cv.taxonomy.FileNodeIterable;
 import org.uniprot.cv.taxonomy.TaxonomicNode;
 
-public class TaxonomyMapRepoTest {
+class TaxonomyMapRepoTest {
 
     private FileNodeIterable fileNodeIterable;
 
@@ -34,6 +34,7 @@ public class TaxonomyMapRepoTest {
         Assertions.assertEquals("Eukaryota", node.get().scientificName());
         Assertions.assertEquals("eucaryotes", node.get().commonName());
         Assertions.assertEquals("9EUKA", node.get().mnemonic());
+        Assertions.assertFalse(node.get().hidden());
         Assertions.assertNull(node.get().synonymName());
     }
 
@@ -50,5 +51,6 @@ public class TaxonomyMapRepoTest {
         Assertions.assertNull(node.get().commonName());
         Assertions.assertEquals("9ZZZZ", node.get().mnemonic());
         Assertions.assertNull(node.get().synonymName());
+        Assertions.assertTrue(node.get().hidden());
     }
 }

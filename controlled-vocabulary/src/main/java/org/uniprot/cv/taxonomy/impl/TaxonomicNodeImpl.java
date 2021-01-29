@@ -14,13 +14,14 @@ import org.uniprot.cv.taxonomy.TaxonomicNode;
 public class TaxonomicNodeImpl implements TaxonomicNode {
     public static final String UNDEFINED_SCIENTIFIC_NAME = "Undefined";
 
-    private int id;
-    private String scientificName;
-    private String commonName;
-    private String synonymName;
-    private String mnemonic;
+    private final int id;
+    private final String scientificName;
+    private final String commonName;
+    private final String synonymName;
+    private final String mnemonic;
+    private final boolean hidden;
 
-    private TaxonomicNode parent;
+    private final TaxonomicNode parent;
 
     private TaxonomicNodeImpl(
             int id,
@@ -28,12 +29,14 @@ public class TaxonomicNodeImpl implements TaxonomicNode {
             String commonName,
             String synonymName,
             String mnemonic,
+            boolean hidden,
             TaxonomicNode parent) {
         this.id = id;
         this.scientificName = scientificName;
         this.commonName = commonName;
         this.synonymName = synonymName;
         this.mnemonic = mnemonic;
+        this.hidden = hidden;
         this.parent = parent;
     }
 
@@ -63,6 +66,11 @@ public class TaxonomicNodeImpl implements TaxonomicNode {
     }
 
     @Override
+    public boolean hidden() {
+        return hidden;
+    }
+
+    @Override
     public TaxonomicNode parent() {
         return this.parent;
     }
@@ -72,11 +80,12 @@ public class TaxonomicNodeImpl implements TaxonomicNode {
     }
 
     public static class Builder {
-        private int id;
-        private String scientificName;
+        private final int id;
+        private final String scientificName;
         private String commonName;
         private String synonymName;
         private String mnemonic;
+        private boolean hidden;
         private TaxonomicNode parent;
 
         public Builder(int id, String scientificName) {
@@ -99,6 +108,11 @@ public class TaxonomicNodeImpl implements TaxonomicNode {
             return this;
         }
 
+        public Builder withHidden(boolean hidden) {
+            this.hidden = hidden;
+            return this;
+        }
+
         public Builder childOf(TaxonomicNode parent) {
             this.parent = parent;
             return this;
@@ -106,7 +120,7 @@ public class TaxonomicNodeImpl implements TaxonomicNode {
 
         public TaxonomicNodeImpl build() {
             return new TaxonomicNodeImpl(
-                    id, scientificName, commonName, synonymName, mnemonic, parent);
+                    id, scientificName, commonName, synonymName, mnemonic, hidden, parent);
         }
     }
 
@@ -137,7 +151,8 @@ public class TaxonomicNodeImpl implements TaxonomicNode {
                 this.parent,
                 this.scientificName,
                 this.synonymName,
-                this.mnemonic);
+                this.mnemonic,
+                this.hidden);
     }
 
     @Override
@@ -154,6 +169,8 @@ public class TaxonomicNodeImpl implements TaxonomicNode {
                 + ", synonymName='"
                 + synonymName
                 + '\''
+                + ", hidden="
+                + hidden
                 + ", parent="
                 + parent
                 + '}';

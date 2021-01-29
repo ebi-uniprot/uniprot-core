@@ -12,6 +12,8 @@ public interface TaxonomicNode {
 
     String mnemonic();
 
+    boolean hidden();
+
     /**
      * Returns a taxonomic node representing the parent of the current node
      *
