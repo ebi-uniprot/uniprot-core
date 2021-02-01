@@ -4,10 +4,10 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.Property;
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
+import org.uniprot.core.util.Utils;
 
 /**
  * @author jluo
@@ -37,17 +37,12 @@ public class UniParcCrossReferenceMap implements NamedValueMap {
     @Override
     public Map<String, String> attributeValues() {
         Map<String, String> map = new HashMap<>();
-        String proteins = getData(UniParcCrossReference.PROPERTY_PROTEIN_NAME);
-        String genes = getData(UniParcCrossReference.PROPERTY_GENE_NAME);
-        ;
-        String accessions = getUniProtAccessions();
-        String proteomes = getProteomes();
         Optional<LocalDate> firstSeen = getFirstSeenDate();
         Optional<LocalDate> lastSeen = getLastSeenDate();
-        map.put(FIELDS.get(0), genes);
-        map.put(FIELDS.get(1), proteins);
-        map.put(FIELDS.get(2), proteomes);
-        map.put(FIELDS.get(3), accessions);
+        map.put(FIELDS.get(0), getGeneNames());
+        map.put(FIELDS.get(1), getProteinNames());
+        map.put(FIELDS.get(2), getProteomes());
+        map.put(FIELDS.get(3), getUniProtKBAccessions());
         map.put(FIELDS.get(4), firstSeen.map(LocalDate::toString).orElse(""));
         map.put(FIELDS.get(5), lastSeen.map(LocalDate::toString).orElse(""));
         map.putAll(getDatabasesMap());
@@ -58,9 +53,7 @@ public class UniParcCrossReferenceMap implements NamedValueMap {
     private Map<String, String> getDatabasesMap() {
         Map<String, String> result = new HashMap<>();
         uniParcCrossReferences.forEach(
-                xref -> {
-                    result.put(xref.getDatabase().getName(), xref.getId());
-                });
+                xref -> result.put(xref.getDatabase().getName(), xref.getId()));
         return result;
     }
 
@@ -88,20 +81,17 @@ public class UniParcCrossReferenceMap implements NamedValueMap {
     }
 
     private String getProteome(UniParcCrossReference xref) {
-        Optional<Property> opUpid = getProperty(xref, UniParcCrossReference.PROPERTY_PROTEOME_ID);
-        if (opUpid.isPresent()) {
-            Optional<Property> opPComponent =
-                    getProperty(xref, UniParcCrossReference.PROPERTY_COMPONENT);
-            String proteome = opUpid.get().getValue();
-            if (opPComponent.isPresent()) {
-                proteome += ":" + opPComponent.get().getValue();
+        String proteome = xref.getProteomeId();
+        if (Utils.notNullNotEmpty(proteome)) {
+            if (Utils.notNullNotEmpty(xref.getComponent())) {
+                proteome += ":" + xref.getComponent();
             }
             return proteome;
         }
         return null;
     }
 
-    private String getUniProtAccessions() {
+    private String getUniProtKBAccessions() {
         return uniParcCrossReferences.stream()
                 .map(this::getUniProtAccession)
                 .filter(Objects::nonNull)
@@ -122,16 +112,17 @@ public class UniParcCrossReferenceMap implements NamedValueMap {
         return null;
     }
 
-    private String getData(String propertyType) {
+    private String getGeneNames() {
         return uniParcCrossReferences.stream()
-                .map(val -> getProperty(val, propertyType))
-                .map(val -> val.map(Property::getValue).orElse(""))
+                .map(UniParcCrossReference::getGeneName)
+                .filter(Objects::nonNull)
                 .collect(Collectors.joining(DELIMITER2));
     }
 
-    private Optional<Property> getProperty(UniParcCrossReference xref, String propertyType) {
-        return xref.getProperties().stream()
-                .filter(val -> val.getKey().equals(propertyType))
-                .findFirst();
+    private String getProteinNames() {
+        return uniParcCrossReferences.stream()
+                .map(UniParcCrossReference::getProteinName)
+                .filter(Objects::nonNull)
+                .collect(Collectors.joining(DELIMITER2));
     }
 }

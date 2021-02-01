@@ -1,10 +1,13 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.parser.tsv.NamedValueMap;
+import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcEntry;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 
 /**
  * @author jluo
@@ -14,9 +17,6 @@ public class UniParcEntryValueMapper implements EntityValueMapper<UniParcEntry> 
 
     private static final List<String> UNIPARC_FIELDS = Collections.singletonList("upi");
 
-    // TODO: FIX IT!!!
-    public static final List<String> UNSUPORTED_FIELDS = Collections.singletonList("matched");
-
     @Override
     public Map<String, String> mapEntity(UniParcEntry entry, List<String> fields) {
         Map<String, String> map = new HashMap<>();
@@ -24,7 +24,12 @@ public class UniParcEntryValueMapper implements EntityValueMapper<UniParcEntry> 
             map.putAll(getSimpleAttributeValues(entry));
         }
         if (UniParcOrganismMap.contains(fields)) {
-            addData(map, new UniParcOrganismMap(entry.getTaxonomies()));
+            List<Organism> organisms =
+                    entry.getUniParcCrossReferences().stream()
+                            .map(UniParcCrossReference::getTaxonomy)
+                            .filter(Objects::nonNull)
+                            .collect(Collectors.toList());
+            addData(map, new UniParcOrganismMap(organisms));
         }
         if (UniParcSequenceFeatureMap.contains(fields)) {
             addData(map, new UniParcSequenceFeatureMap(entry.getSequenceFeatures()));
@@ -35,9 +40,6 @@ public class UniParcEntryValueMapper implements EntityValueMapper<UniParcEntry> 
         if (UniParcCrossReferenceMap.contains(fields)) {
             addData(map, new UniParcCrossReferenceMap(entry.getUniParcCrossReferences()));
         }
-        if (containsUnsuported(fields)) {
-            map.put(UNSUPORTED_FIELDS.get(0), "TODO: UNSUPORTED FIELD");
-        }
         return map;
     }
 
@@ -47,10 +49,6 @@ public class UniParcEntryValueMapper implements EntityValueMapper<UniParcEntry> 
 
     private static boolean contains(List<String> fields) {
         return fields.stream().anyMatch(UNIPARC_FIELDS::contains);
-    }
-
-    private static boolean containsUnsuported(List<String> fields) {
-        return fields.stream().anyMatch(UNSUPORTED_FIELDS::contains);
     }
 
     private Map<String, String> getSimpleAttributeValues(UniParcEntry entry) {

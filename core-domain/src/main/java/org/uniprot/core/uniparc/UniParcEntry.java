@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.uniprot.core.Sequence;
-import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 
 /**
  * @author jluo
@@ -20,6 +19,4 @@ public interface UniParcEntry extends Serializable {
     String getUniProtExclusionReason();
 
     List<SequenceFeature> getSequenceFeatures();
-
-    List<Taxonomy> getTaxonomies();
 }

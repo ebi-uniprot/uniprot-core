@@ -11,7 +11,6 @@ import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniparc.UniParcId;
-import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.util.Utils;
 
 /**
@@ -24,7 +23,6 @@ public class UniParcEntryBuilder implements Builder<UniParcEntry> {
     private Sequence sequence;
     private String uniprotExclusionReason;
     private List<SequenceFeature> sequenceFeatures = new ArrayList<>();
-    private List<Taxonomy> taxonomies = new ArrayList<>();
 
     @Override
     public @Nonnull UniParcEntry build() {
@@ -33,7 +31,6 @@ public class UniParcEntryBuilder implements Builder<UniParcEntry> {
                 uniParcCrossReferences,
                 sequence,
                 sequenceFeatures,
-                taxonomies,
                 uniprotExclusionReason);
     }
 
@@ -79,23 +76,12 @@ public class UniParcEntryBuilder implements Builder<UniParcEntry> {
         return this;
     }
 
-    public @Nonnull UniParcEntryBuilder taxonomiesSet(List<Taxonomy> taxonomies) {
-        this.taxonomies = Utils.modifiableList(taxonomies);
-        return this;
-    }
-
-    public @Nonnull UniParcEntryBuilder taxonomiesAdd(Taxonomy taxonomy) {
-        Utils.addOrIgnoreNull(taxonomy, taxonomies);
-        return this;
-    }
-
     public static @Nonnull UniParcEntryBuilder from(@Nonnull UniParcEntry instance) {
         return new UniParcEntryBuilder()
                 .uniParcId(instance.getUniParcId())
                 .uniParcCrossReferencesSet(instance.getUniParcCrossReferences())
                 .sequence(instance.getSequence())
                 .uniprotExclusionReason(instance.getUniProtExclusionReason())
-                .sequenceFeaturesSet(instance.getSequenceFeatures())
-                .taxonomiesSet(instance.getTaxonomies());
+                .sequenceFeaturesSet(instance.getSequenceFeatures());
     }
 }
