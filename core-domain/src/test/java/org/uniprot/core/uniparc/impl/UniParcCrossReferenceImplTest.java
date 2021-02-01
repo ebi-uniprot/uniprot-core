@@ -31,7 +31,7 @@ class UniParcCrossReferenceImplTest {
                         LocalDate.now(),
                         "geneName",
                         "proteinName",
-                        new OrganismBuilder().taxonId(10L).build(),
+                        new OrganismBuilder().taxonId(10L).scientificName("sName").build(),
                         "chain",
                         "ncbiGi",
                         "proteomeId",

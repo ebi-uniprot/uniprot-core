@@ -84,7 +84,7 @@ class UniParcCrossReferenceBuilderTest {
 
     @Test
     void testTaxonomy() {
-        Organism organism = new OrganismBuilder().taxonId(123L).build();
+        Organism organism = new OrganismBuilder().taxonId(123L).scientificName("sName").build();
         UniParcCrossReference xref = new UniParcCrossReferenceBuilder().taxonomy(organism).build();
         assertEquals(organism, xref.getTaxonomy());
     }

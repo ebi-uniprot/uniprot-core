@@ -16,7 +16,7 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
  */
 public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabase>
         implements UniParcCrossReference {
-    private static final long serialVersionUID = 1387909162449408089L;
+    private static final long serialVersionUID = -7841684434107589839L;
     private final int versionI;
     private final Integer version;
     private final boolean active;
