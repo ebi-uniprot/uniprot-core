@@ -28,8 +28,8 @@ class EvidenceCodeTest {
     @Test
     void canGetSource() {
         assertEquals(
-                "a PDB entry or literature reference (for large-scale proteomics publications)",
-                EvidenceCode.ECO_0000244.getSource());
+                "combinatorial computational and experimental evidence used in manual assertion",
+                EvidenceCode.ECO_0007744.getSource());
     }
 
     @ParameterizedTest

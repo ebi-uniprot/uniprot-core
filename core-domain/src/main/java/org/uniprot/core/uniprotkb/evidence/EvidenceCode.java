@@ -47,6 +47,7 @@ public enum EvidenceCode implements EnumDisplay {
                     "Prosite ProRule annotation",
                     "SAAS annotation"),
             EnumSet.of(Category.MANUAL)),
+    @Deprecated
     ECO_0000244(
             "ECO:0000244",
             "Combinatorial",
@@ -68,6 +69,7 @@ public enum EvidenceCode implements EnumDisplay {
                     "UniRule annotation (RuleBase, HAMAP or PIRNR/PIRSR)",
                     "SAAS annotation"),
             EnumSet.of(Category.AUTOMATIC)),
+    @Deprecated
     ECO_0000213(
             "ECO:0000213",
             "Combinatorial",
@@ -86,7 +88,20 @@ public enum EvidenceCode implements EnumDisplay {
             "Sequence motif match (InterPro)",
             "An entry in an InterPro member database",
             Collections.singletonList("InterPro annotation"),
-            EnumSet.of(Category.AUTOMATIC));
+            EnumSet.of(Category.AUTOMATIC)),
+    ECO_0007744(
+            "ECO:0007744",
+            "Combinatorial",
+            "combinatorial computational and experimental evidence used in manual assertion",
+            Collections.singletonList("Combined sources"),
+            EnumSet.of(Category.MANUAL)),    //replacing ECO_0000244 from 2021.2 release
+
+    ECO_0007829(
+            "ECO:0007829",
+            "Combinatorial",
+            "combinatorial computational and experimental evidence used in automatic assertion",
+            Collections.singletonList("Combined sources"),
+            EnumSet.of(Category.AUTOMATIC)); //replacing ECO_0000213 from 2021.2 release
 
     private final String code;
     private final String name;

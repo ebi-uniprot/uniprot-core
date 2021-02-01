@@ -260,7 +260,7 @@ class Q04756ScoredTest {
                     + "DR   UCSC; uc003ghc.4; human.\n"
                     + "DR   CTD; 3083; -.\n"
                     + "DR   DisGeNET; 3083; -.\n"
-                    + "DR   EuPathDB; HostDB:ENSG00000109758.8; -.\n"
+                    + "DR   VEuPathDB; HostDB:ENSG00000109758.8; -.\n"
                     + "DR   GeneCards; HGFAC; -.\n"
                     + "DR   HGNC; HGNC:4894; HGFAC.\n"
                     + "DR   HPA; HPA058279; -.\n"
