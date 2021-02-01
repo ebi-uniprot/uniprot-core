@@ -1,9 +1,16 @@
 package org.uniprot.core.uniprotkb.feature;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class UniprotKBFeatureTypeTest {
@@ -36,18 +43,6 @@ class UniprotKBFeatureTypeTest {
     }
 
     @Test
-    void valueAndDisplayNameAreEqual() {
-        assertEquals(
-                UniprotKBFeatureType.CHAIN.getDisplayName(), UniprotKBFeatureType.CHAIN.getValue());
-    }
-
-    @Test
-    void nameAndDisplayNameAreNotEqual() {
-        assertNotEquals(
-                UniprotKBFeatureType.CHAIN.getDisplayName(), UniprotKBFeatureType.CHAIN.getName());
-    }
-
-    @Test
     void canReturnCategory() {
         assertEquals(FeatureCategory.MOLECULE_PROCESSING, UniprotKBFeatureType.CHAIN.getCategory());
     }
@@ -66,5 +61,18 @@ class UniprotKBFeatureTypeTest {
     void compareOnIsEqualsValue() {
         assertEquals(
                 UniprotKBFeatureType.CHAIN.getValue(), UniprotKBFeatureType.CHAIN.getCompareOn());
+    }
+
+    @ParameterizedTest(name = "Starts with capital? : {0}")
+    @MethodSource("featureTypeDisplayNames")
+    void displayNameAlwaysStartsWithCapital(String featureTypeDisplayName) {
+        char firstChar = featureTypeDisplayName.charAt(0);
+        assertThat(Character.isUpperCase(firstChar), is(true));
+    }
+
+    private static Stream<Arguments> featureTypeDisplayNames() {
+        return Stream.of(UniprotKBFeatureType.values())
+                .map(UniprotKBFeatureType::getDisplayName)
+                .map(Arguments::of);
     }
 }

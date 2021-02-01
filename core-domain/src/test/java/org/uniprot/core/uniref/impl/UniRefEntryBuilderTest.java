@@ -43,6 +43,7 @@ class UniRefEntryBuilderTest {
                         .updated(LocalDate.now())
                         .entryType(type)
                         .commonTaxonId(9606L)
+                        .seedId("seedId")
                         .commonTaxon("Homo sapiens")
                         .representativeMember(member)
                         .build();
@@ -91,6 +92,14 @@ class UniRefEntryBuilderTest {
 
         UniRefEntry entry = new UniRefEntryBuilder().commonTaxon(commonTax).build();
         assertEquals(commonTax, entry.getCommonTaxon());
+    }
+
+    @Test
+    void testSeedId() {
+        String seedId = "P21802";
+
+        UniRefEntry entry = new UniRefEntryBuilder().seedId(seedId).build();
+        assertEquals(seedId, entry.getSeedId());
     }
 
     @Test

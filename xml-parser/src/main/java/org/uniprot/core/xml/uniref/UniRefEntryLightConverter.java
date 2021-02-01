@@ -1,5 +1,6 @@
 package org.uniprot.core.xml.uniref;
 
+import static org.uniprot.core.uniref.UniRefUtils.*;
 import static org.uniprot.core.uniref.UniRefUtils.getUniProtKBIdType;
 
 import java.util.Collections;
@@ -8,15 +9,14 @@ import java.util.List;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.cv.go.GoAspect;
 import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefEntryLight;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
 import org.uniprot.core.uniref.impl.UniRefEntryLightBuilder;
 import org.uniprot.core.xml.Converter;
-import org.uniprot.core.xml.jaxb.uniref.DbReferenceType;
-import org.uniprot.core.xml.jaxb.uniref.Entry;
-import org.uniprot.core.xml.jaxb.uniref.MemberType;
-import org.uniprot.core.xml.jaxb.uniref.PropertyType;
+import org.uniprot.core.xml.jaxb.uniref.*;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
 
 /**
@@ -36,15 +36,27 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
     private static final String PROPERTY_GO_PROCESS = "GO Biological Process";
     private static final String PROPERTY_IS_SEED = "isSeed";
 
+    private final RepresentativeMemberConverter representativeMemberConverter;
+
+    public UniRefEntryLightConverter() {
+        this(new ObjectFactory());
+    }
+
+    public UniRefEntryLightConverter(ObjectFactory jaxbFactory) {
+        representativeMemberConverter = new RepresentativeMemberConverter(jaxbFactory);
+    }
+
     @Override
     public UniRefEntryLight fromXml(Entry xmlObj) {
         UniRefEntryLightBuilder builder = new UniRefEntryLightBuilder();
+
+        RepresentativeMember repMember =
+                representativeMemberConverter.fromXml(xmlObj.getRepresentativeMember());
+        builder.representativeMember(repMember);
         builder.id(xmlObj.getId())
                 .entryType(getTypeFromId(xmlObj.getId()))
                 .name(xmlObj.getName())
-                .updated(XmlConverterHelper.dateFromXml(xmlObj.getUpdated()))
-                .sequence(xmlObj.getRepresentativeMember().getSequence().getValue())
-                .representativeId(xmlObj.getRepresentativeMember().getDbReference().getId());
+                .updated(XmlConverterHelper.dateFromXml(xmlObj.getUpdated()));
 
         updateMemberValuesFromXml(
                 builder, Collections.singletonList(xmlObj.getRepresentativeMember()));
@@ -77,13 +89,16 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
     }
 
     private void updateCommonPropertiesFromXml(UniRefEntryLightBuilder builder, Entry jaxbEntry) {
+        OrganismBuilder commonOrganismBuilder = new OrganismBuilder();
         for (PropertyType property : jaxbEntry.getProperty()) {
             switch (property.getType()) {
                 case PROPERTY_COMMON_TAXON:
-                    builder.commonTaxon(property.getValue());
+                    commonOrganismBuilder.scientificName(
+                            getOrganismScientificName(property.getValue()));
+                    commonOrganismBuilder.commonName(getOrganismCommonName(property.getValue()));
                     break;
                 case PROPERTY_COMMON_TAXON_ID:
-                    builder.commonTaxonId(Long.parseLong(property.getValue()));
+                    commonOrganismBuilder.taxonId(Long.parseLong(property.getValue()));
                     break;
                 case PROPERTY_MEMBER_COUNT:
                     builder.memberCount(Integer.parseInt(property.getValue()));
@@ -101,6 +116,7 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
                     break;
             }
         }
+        builder.commonTaxon(commonOrganismBuilder.build());
     }
 
     private GeneOntologyEntry createGoTerm(GoAspect aspect, String id) {
@@ -110,13 +126,18 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
     private void updateMemberPropertiesFromXml(
             UniRefEntryLightBuilder builder, List<PropertyType> properties, String id) {
         String accession = null;
+        String seedId = null;
+        boolean hasOrganism = false;
+        OrganismBuilder organismBuilder = new OrganismBuilder();
         for (PropertyType property : properties) {
             switch (property.getType()) {
                 case PROPERTY_SOURCE_ORGANISM:
-                    builder.organismsAdd(property.getValue());
+                    organismBuilder.scientificName(getOrganismScientificName(property.getValue()));
+                    organismBuilder.commonName(getOrganismCommonName(property.getValue()));
                     break;
                 case PROPERTY_ORGANISM_ID:
-                    builder.organismIdsAdd(Long.parseLong(property.getValue()));
+                    hasOrganism = true;
+                    organismBuilder.taxonId(Long.parseLong(property.getValue()));
                     break;
                 case PROPERTY_UNIPROT_ACCESSION:
                     if (accession == null) { // get first accession from xml as member.
@@ -125,17 +146,26 @@ public class UniRefEntryLightConverter implements Converter<Entry, UniRefEntryLi
                     break;
                 case PROPERTY_IS_SEED:
                     if (Boolean.parseBoolean(property.getValue())) {
-                        builder.seedId(id);
+                        seedId = id;
                     }
                     break;
                 default:
                     break;
             }
         }
+        if (hasOrganism) {
+            builder.organismsAdd(organismBuilder.build());
+        }
         if (accession != null) {
             UniRefMemberIdType idType = getUniProtKBIdType(id, accession);
             builder.membersAdd(accession + "," + idType.getMemberIdTypeId());
             builder.memberIdTypesAdd(idType);
+        }
+        if (seedId != null) {
+            if (accession != null) {
+                seedId += "," + accession;
+            }
+            builder.seedId(seedId);
         }
     }
 

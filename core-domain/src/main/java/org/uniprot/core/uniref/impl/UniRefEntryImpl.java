@@ -26,13 +26,14 @@ public class UniRefEntryImpl implements UniRefEntry {
     private final UniRefType entryType;
     private final Long commonTaxonId;
     private final String commonTaxon;
+    private final String seedId;
     private final List<GeneOntologyEntry> goTerms;
     private final RepresentativeMember representativeMember;
     private final List<UniRefMember> members;
 
     // no arg constructor for JSON deserialization
     UniRefEntryImpl() {
-        this(null, null, null, null, null, null, null, null, null, null);
+        this(null, null, null, null, null, null, null, null, null, null, null);
     }
 
     UniRefEntryImpl(
@@ -43,6 +44,7 @@ public class UniRefEntryImpl implements UniRefEntry {
             UniRefType entryType,
             Long commonTaxonId,
             String commonTaxon,
+            String seedId,
             List<GeneOntologyEntry> goTerms,
             RepresentativeMember representativeMember,
             List<UniRefMember> members) {
@@ -52,6 +54,7 @@ public class UniRefEntryImpl implements UniRefEntry {
         this.entryType = entryType;
         this.commonTaxonId = commonTaxonId;
         this.commonTaxon = commonTaxon;
+        this.seedId = seedId;
         this.goTerms = Utils.unmodifiableList(goTerms);
         this.representativeMember = representativeMember;
         this.members = Utils.unmodifiableList(members);
@@ -89,6 +92,11 @@ public class UniRefEntryImpl implements UniRefEntry {
     }
 
     @Override
+    public String getSeedId() {
+        return seedId;
+    }
+
+    @Override
     public List<GeneOntologyEntry> getGoTerms() {
         return goTerms;
     }
@@ -112,6 +120,7 @@ public class UniRefEntryImpl implements UniRefEntry {
                 entryType,
                 commonTaxonId,
                 commonTaxon,
+                seedId,
                 goTerms,
                 representativeMember,
                 members,
@@ -131,6 +140,7 @@ public class UniRefEntryImpl implements UniRefEntry {
                 && Objects.equals(entryType, other.entryType)
                 && Objects.equals(commonTaxonId, other.commonTaxonId)
                 && Objects.equals(commonTaxon, other.commonTaxon)
+                && Objects.equals(seedId, other.seedId)
                 && Objects.equals(goTerms, other.goTerms)
                 && Objects.equals(representativeMember, other.representativeMember)
                 && Objects.equals(members, other.members);

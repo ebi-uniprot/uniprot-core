@@ -20,8 +20,10 @@ import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniparc.impl.*;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceImpl;
-import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
-import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyImpl;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidenceImpl;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismImpl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -31,7 +33,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
  * @date: 24 May 2019
  */
 public class UniParcJsonConfig extends JsonConfig {
-    private static UniParcJsonConfig INSTANCE;
+    private static UniParcJsonConfig instance;
 
     private final ObjectMapper objectMapper;
     private final ObjectMapper prettyMapper;
@@ -42,10 +44,10 @@ public class UniParcJsonConfig extends JsonConfig {
     }
 
     public static synchronized UniParcJsonConfig getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new UniParcJsonConfig();
+        if (instance == null) {
+            instance = new UniParcJsonConfig();
         }
-        return INSTANCE;
+        return instance;
     }
 
     @Override
@@ -67,7 +69,8 @@ public class UniParcJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(UniParcEntry.class, UniParcEntryImpl.class);
         mod.addAbstractTypeMapping(InterProGroup.class, InterProGroupImpl.class);
         mod.addAbstractTypeMapping(SequenceFeature.class, SequenceFeatureImpl.class);
-        mod.addAbstractTypeMapping(Taxonomy.class, TaxonomyImpl.class);
+        mod.addAbstractTypeMapping(Organism.class, OrganismImpl.class);
+        mod.addAbstractTypeMapping(Evidence.class, EvidenceImpl.class);
         mod.addAbstractTypeMapping(UniParcCrossReference.class, UniParcCrossReferenceImpl.class);
 
         mod.addAbstractTypeMapping(Value.class, ValueImpl.class);

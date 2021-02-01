@@ -8,20 +8,19 @@ import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.impl.AbstractCitationBuilder;
 import org.uniprot.core.citation.impl.AuthorBuilder;
-import org.uniprot.core.xml.jaxb.proteome.ConsortiumType;
-import org.uniprot.core.xml.jaxb.proteome.NameListType;
-import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
-import org.uniprot.core.xml.jaxb.proteome.PersonType;
-import org.uniprot.core.xml.jaxb.proteome.ReferenceType;
+import org.uniprot.core.xml.jaxb.proteome.*;
 import org.uniprot.core.xml.uniprot.citation.PublicationDateConverter;
 
 import com.google.common.base.Strings;
 
 public class ReferenceConverterHelper {
+
+    private ReferenceConverterHelper() {}
+
     private static final PublicationDateConverter dateConverter = new PublicationDateConverter();
 
-    public static <T extends Citation> void updateFromXmlCitaiton(
-            ReferenceType xmlCitation,
+    public static void updateFromXmlCitaiton(
+            CitationType xmlCitation,
             AbstractCitationBuilder<? extends AbstractCitationBuilder<?, ?>, ? extends Citation>
                     builder) {
 
@@ -63,7 +62,7 @@ public class ReferenceConverterHelper {
     }
 
     public static void updateToXmlCitatation(
-            ObjectFactory xmlUniprotFactory, ReferenceType xmlCitation, Citation citation) {
+            ObjectFactory xmlUniprotFactory, CitationType xmlCitation, Citation citation) {
 
         if ((citation.getPublicationDate() != null)
                 && !Strings.isNullOrEmpty(citation.getPublicationDate().getValue()))

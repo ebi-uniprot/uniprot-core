@@ -34,8 +34,9 @@ import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.uniprotkb.feature.FeatureId;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
-import org.uniprot.core.uniprotkb.feature.impl.*;
 import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
+import org.uniprot.core.uniprotkb.feature.impl.FeatureIdBuilder;
+import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
 import org.uniprot.core.uniprotkb.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
@@ -316,13 +317,13 @@ public class UniProtKBEntryConverterTest {
         Name fullName = createName("a full Name", evidences);
         List<Name> shortNames = createShortNames();
         List<EC> ecNumbers = createECNumbers();
-        ProteinRecName recommendedName = createProteinRecName(fullName, shortNames, ecNumbers);
+        ProteinName recommendedName = createProteinRecName(fullName, shortNames, ecNumbers);
         Name allergenName = createName("allergen", evidences);
         Name biotechName = createName("biotech", evidences);
         List<Name> antigenNames = new ArrayList<>();
         antigenNames.add(createName("cd antigen", evidences));
 
-        List<ProteinAltName> proteinAltName = createAltName();
+        List<ProteinName> proteinAltName = createAltName();
         Name fullName1 = createName("a full Name", evidences);
 
         List<EC> ecNumbers1 = createECNumbers();
@@ -339,7 +340,7 @@ public class UniProtKBEntryConverterTest {
                 .build();
     }
 
-    private List<ProteinAltName> createAltName() {
+    private List<ProteinName> createAltName() {
         List<Evidence> evidences = createEvidences();
         Name fullName = createName("a full alt Name", evidences);
         List<Name> shortNames = new ArrayList<>();
@@ -348,9 +349,9 @@ public class UniProtKBEntryConverterTest {
         List<EC> ecNumbers = new ArrayList<>();
         ecNumbers.add(createEC("1.2.3.4", evidences));
 
-        ProteinAltName altName = createProteinAltName(fullName, shortNames, ecNumbers);
+        ProteinName altName = createProteinAltName(fullName, shortNames, ecNumbers);
 
-        List<ProteinAltName> altNames = new ArrayList<>();
+        List<ProteinName> altNames = new ArrayList<>();
         altNames.add(altName);
         return altNames;
     }

@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.parser.tsv.uniprot.EntryMapUtil;
-import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 
 import com.google.common.base.Strings;
 
@@ -18,10 +18,10 @@ import com.google.common.base.Strings;
  */
 public class UniParcOrganismMap implements NamedValueMap {
     private static final String DELIMITER = "; ";
-    public static final List<String> FIELDS = Arrays.asList("organism", "organism_id");
-    private final List<Taxonomy> organisms;
+    protected static final List<String> FIELDS = Arrays.asList("organism", "organism_id");
+    private final List<Organism> organisms;
 
-    public UniParcOrganismMap(List<Taxonomy> organisms) {
+    public UniParcOrganismMap(List<Organism> organisms) {
         this.organisms = organisms;
     }
 
@@ -30,12 +30,13 @@ public class UniParcOrganismMap implements NamedValueMap {
         Map<String, String> map = new HashMap<>();
         String organismNames =
                 organisms.stream()
-                        .map(val -> EntryMapUtil.convertOrganism(val))
+                        .map(EntryMapUtil::convertOrganism)
                         .filter(val -> !Strings.isNullOrEmpty(val))
                         .collect(Collectors.joining(DELIMITER));
         String taxIds =
                 organisms.stream()
-                        .map(val -> "" + val.getTaxonId())
+                        .map(Organism::getTaxonId)
+                        .map(String::valueOf)
                         .filter(val -> !Strings.isNullOrEmpty(val) && !val.equals("O"))
                         .collect(Collectors.joining(DELIMITER));
 

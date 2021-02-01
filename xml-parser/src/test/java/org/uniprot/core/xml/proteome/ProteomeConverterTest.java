@@ -1,10 +1,11 @@
 package org.uniprot.core.xml.proteome;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.uniprot.core.proteome.ProteomeType.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -14,12 +15,10 @@ import org.uniprot.core.citation.impl.JournalArticleBuilder;
 import org.uniprot.core.citation.impl.SubmissionBuilder;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.proteome.*;
-import org.uniprot.core.proteome.impl.ComponentBuilder;
-import org.uniprot.core.proteome.impl.ProteomeCompletenessReportBuilder;
-import org.uniprot.core.proteome.impl.ProteomeEntryBuilder;
-import org.uniprot.core.proteome.impl.ProteomeIdBuilder;
+import org.uniprot.core.proteome.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
+import org.uniprot.core.xml.jaxb.proteome.Proteome;
 
 class ProteomeConverterTest {
 
@@ -27,7 +26,85 @@ class ProteomeConverterTest {
     void test() {
         ProteomeConverter converter = new ProteomeConverter();
         ProteomeEntry proteome = create();
-        org.uniprot.core.xml.jaxb.proteome.Proteome xml = converter.toXml(proteome);
+        Proteome xml = converter.toXml(proteome);
+        ProteomeEntry converted = converter.fromXml(xml);
+        assertEquals(proteome, converted);
+    }
+
+    @Test
+    void testExcludedProteome() {
+        ProteomeConverter converter = new ProteomeConverter();
+        ProteomeEntry proteome =
+                new ProteomeEntryBuilder()
+                        .proteomeId("UP1234567890")
+                        .proteomeType(EXCLUDED)
+                        .exclusionReasonsAdd(ExclusionReason.MIXED_CULTURE)
+                        .exclusionReasonsAdd(ExclusionReason.METAGENOME)
+                        .build();
+        Proteome xml = converter.toXml(proteome);
+        ProteomeEntry converted = converter.fromXml(xml);
+        assertEquals(proteome, converted);
+    }
+
+    @Test
+    void testReferenceProteome() {
+        ProteomeConverter converter = new ProteomeConverter();
+        ProteomeEntry proteome =
+                new ProteomeEntryBuilder()
+                        .proteomeId("UP1234567890")
+                        .proteomeType(REFERENCE)
+                        .build();
+        Proteome xml = converter.toXml(proteome);
+        ProteomeEntry converted = converter.fromXml(xml);
+        assertEquals(proteome, converted);
+    }
+
+    @Test
+    void testRepresentativeProteome() {
+        ProteomeConverter converter = new ProteomeConverter();
+        ProteomeEntry proteome =
+                new ProteomeEntryBuilder()
+                        .proteomeId("UP1234567890")
+                        .proteomeType(REPRESENTATIVE)
+                        .build();
+        Proteome xml = converter.toXml(proteome);
+        ProteomeEntry converted = converter.fromXml(xml);
+        assertEquals(proteome, converted);
+    }
+
+    @Test
+    void testRepresentativeAndReferenceProteome() {
+        ProteomeConverter converter = new ProteomeConverter();
+        ProteomeEntry proteome =
+                new ProteomeEntryBuilder()
+                        .proteomeId("UP1234567890")
+                        .proteomeType(REFERENCE_AND_REPRESENTATIVE)
+                        .build();
+        Proteome xml = converter.toXml(proteome);
+        ProteomeEntry converted = converter.fromXml(xml);
+        assertEquals(proteome, converted);
+    }
+
+    @Test
+    void testNormalProteome() {
+        ProteomeConverter converter = new ProteomeConverter();
+        ProteomeEntry proteome =
+                new ProteomeEntryBuilder().proteomeId("UP1234567890").proteomeType(NORMAL).build();
+        Proteome xml = converter.toXml(proteome);
+        ProteomeEntry converted = converter.fromXml(xml);
+        assertEquals(proteome, converted);
+    }
+
+    @Test
+    void testRedundantProteome() {
+        ProteomeConverter converter = new ProteomeConverter();
+        ProteomeEntry proteome =
+                new ProteomeEntryBuilder()
+                        .proteomeId("UP1234567890")
+                        .proteomeType(REDUNDANT)
+                        .redundantTo(new ProteomeIdBuilder("UP1234567891").build())
+                        .build();
+        Proteome xml = converter.toXml(proteome);
         ProteomeEntry converted = converter.fromXml(xml);
         assertEquals(proteome, converted);
     }
@@ -36,8 +113,7 @@ class ProteomeConverterTest {
         String id = "UP000005640";
         ProteomeId proteomeId = new ProteomeIdBuilder(id).build();
         String description = "about some proteome";
-        Taxonomy taxonomy =
-                new TaxonomyBuilder().taxonId(9606).scientificName("Homo sapiens").build();
+        Taxonomy taxonomy = new TaxonomyBuilder().taxonId(9606).build();
         LocalDate modified = LocalDate.of(2015, 11, 5);
         String reId = "UP000005641";
         ProteomeId redId = new ProteomeIdBuilder(reId).build();
@@ -52,22 +128,43 @@ class ProteomeConverterTest {
                         .database(ProteomeDatabase.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
+
+        CrossReference<ProteomeDatabase> xref3 =
+                new CrossReferenceBuilder<ProteomeDatabase>()
+                        .database(ProteomeDatabase.ASSEMBLY_ID)
+                        .id("ADA121")
+                        .build();
+
+        CrossReference<ProteomeDatabase> xref4 =
+                new CrossReferenceBuilder<ProteomeDatabase>()
+                        .database(ProteomeDatabase.GENOME_ASSEMBLY)
+                        .id("AFA121")
+                        .build();
+
+        CrossReference<ProteomeDatabase> xref5 =
+                new CrossReferenceBuilder<ProteomeDatabase>()
+                        .database(ProteomeDatabase.BIOSAMPLE)
+                        .id("BDA121")
+                        .build();
         xrefs.add(xref1);
         xrefs.add(xref2);
+        xrefs.add(xref3);
+        xrefs.add(xref4);
+        xrefs.add(xref5);
         List<Component> components = new ArrayList<>();
+
+        GenomeAnnotation genomeAnnotation =
+                new GenomeAnnotationBuilder().source("source value").url("url value").build();
+
         Component component1 =
                 new ComponentBuilder()
                         .name("someName1")
                         .description("some description")
-                        .type(org.uniprot.core.proteome.ComponentType.UNPLACED)
+                        .genomeAnnotation(genomeAnnotation)
                         .build();
 
         Component component2 =
-                new ComponentBuilder()
-                        .name("someName2")
-                        .description("some description 2")
-                        .type(org.uniprot.core.proteome.ComponentType.SEGMENTED_GENOME)
-                        .build();
+                new ComponentBuilder().name("someName2").description("some description 2").build();
 
         components.add(component1);
         components.add(component2);
@@ -86,17 +183,20 @@ class ProteomeConverterTest {
                         .proteomeId(proteomeId)
                         .description(description)
                         .taxonomy(taxonomy)
+                        .isolate("isolate value")
+                        .strain("strain value")
                         .modified(modified)
-                        .proteomeType(ProteomeType.REFERENCE)
+                        .proteomeType(EXCLUDED)
                         .redundantTo(redId)
                         .panproteome(redId)
-                        .proteomeCrossReferencesSet(xrefs)
                         .componentsSet(components)
-                        .superkingdom(Superkingdom.EUKARYOTA)
                         .citationsSet(citations)
                         .annotationScore(15)
                         .genomeAssembly(GenomeAssemblyConverterTest.createGenomeAssembly())
-                        .proteomeCompletenessReport(report);
+                        .proteomeCompletenessReport(report)
+                        .genomeAnnotation(genomeAnnotation)
+                        .exclusionReasonsAdd(ExclusionReason.METAGENOME)
+                        .exclusionReasonsAdd(ExclusionReason.CONTAMINATED);
         return builder.build();
     }
 
@@ -113,7 +213,8 @@ class ProteomeConverterTest {
                 .publicationDate(date)
                 .authorsAdd("Sulson J.E.")
                 .authorsAdd("JWaterston R.")
-                .authoringGroupsSet(Arrays.asList("The C. elegans sequencing consortium"))
+                .authoringGroupsSet(
+                        Collections.singletonList("The C. elegans sequencing consortium"))
                 .citationCrossReferencesAdd(
                         new CrossReferenceBuilder<CitationDatabase>()
                                 .database(CitationDatabase.PUBMED)
@@ -124,8 +225,7 @@ class ProteomeConverterTest {
                                 .database(CitationDatabase.DOI)
                                 .id("https://doi.org/10.1126/science.282.5396.2012")
                                 .build());
-        JournalArticle citation = builder.build();
-        return citation;
+        return builder.build();
     }
 
     private Submission createSubmission() {

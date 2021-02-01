@@ -42,8 +42,7 @@ class GenomeAssemblySourceTest {
 
         @Test
         void canConvertMixCase() {
-            assertEquals(
-                    GenomeAssemblySource.VECTORBASE, GenomeAssemblySource.fromValue("VecTORBasE"));
+            assertEquals(GenomeAssemblySource.REFSEQ, GenomeAssemblySource.fromValue("RefSeq"));
         }
 
         @ParameterizedTest

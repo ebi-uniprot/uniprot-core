@@ -8,6 +8,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
 /**
  * @author lgonzales
@@ -29,45 +31,78 @@ class UniRefUtilsTest {
 
     @Test
     void addOrganismNewOrganism() {
-        Set<String> target = new HashSet<>();
-        target.add("scientific");
-        UniRefUtils.addOrganism("scientific new", target);
+        Organism organism =
+                new OrganismBuilder().taxonId(9606L).scientificName("scientific").build();
+
+        Organism newOrganism =
+                new OrganismBuilder().taxonId(9607L).scientificName("new scientific").build();
+
+        Set<Organism> target = new HashSet<>();
+        target.add(organism);
+
+        UniRefUtils.addOrganism(newOrganism, target);
         assertEquals(2, target.size());
-        assertTrue(target.contains("scientific new"));
+        assertTrue(target.contains(organism));
+        assertTrue(target.contains(newOrganism));
     }
 
     @Test
     void doNotAddOrganismDuplicated() {
-        Set<String> target = new HashSet<>();
-        target.add("scientific");
-        UniRefUtils.addOrganism("scientific", target);
+        Organism organism =
+                new OrganismBuilder().taxonId(9606L).scientificName("scientific").build();
+        Set<Organism> target = new HashSet<>();
+        target.add(organism);
+        UniRefUtils.addOrganism(organism, target);
         assertEquals(1, target.size());
-        assertTrue(target.contains("scientific"));
+        assertTrue(target.contains(organism));
     }
 
     @Test
     void ignoreOrganismWithCommonWhenAfter() {
-        Set<String> target = new HashSet<>();
-        target.add("scientific");
-        target.add("scientific other");
-        UniRefUtils.addOrganism("scientific (common)", target);
-        assertEquals(2, target.size());
-        assertTrue(target.contains("scientific"));
-        assertTrue(target.contains("scientific other"));
+        Organism organism =
+                new OrganismBuilder().taxonId(9606L).scientificName("scientific").build();
+
+        Organism organismWithCommon =
+                new OrganismBuilder()
+                        .taxonId(9606L)
+                        .scientificName("scientific")
+                        .commonName("common")
+                        .build();
+        Set<Organism> target = new HashSet<>();
+        target.add(organism);
+        UniRefUtils.addOrganism(organismWithCommon, target);
+        assertEquals(1, target.size());
+        assertTrue(target.contains(organism));
+        assertFalse(target.contains(organismWithCommon));
     }
 
     @Test
-    void cleanOrganismWithBrackets() {
-        String cleanedOrganism = UniRefUtils.getOrganismWithoutCommonName("scientific (common)");
-        assertNotNull(cleanedOrganism);
-        assertEquals("scientific", cleanedOrganism);
+    void canGetOrganismScientificName() {
+        String scientific = UniRefUtils.getOrganismScientificName("scientific (common)");
+        assertNotNull(scientific);
+        assertEquals("scientific", scientific);
     }
 
     @Test
-    void cleanOrganismWithoutBrackets() {
+    void canGetOrganismScientificNameWithoutCommon() {
         String organism = "scientific only";
-        String cleanedOrganism = UniRefUtils.getOrganismWithoutCommonName(organism);
-        assertNotNull(cleanedOrganism);
-        assertEquals(organism, cleanedOrganism);
+        String scientific = UniRefUtils.getOrganismScientificName(organism);
+        assertNotNull(scientific);
+        assertEquals(organism, scientific);
+    }
+
+    @Test
+    void canGetOrganismCommonName() {
+        String commonName = UniRefUtils.getOrganismCommonName("scientific (common)");
+        assertNotNull(commonName);
+        assertEquals("common", commonName);
+    }
+
+    @Test
+    void canGetOrganismCommonNameWithoutCommon() {
+        String organism = "scientific only";
+        String scientific = UniRefUtils.getOrganismCommonName(organism);
+        assertNotNull(scientific);
+        assertEquals("", scientific);
     }
 }

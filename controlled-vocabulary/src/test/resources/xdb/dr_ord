@@ -6,11 +6,8 @@ EMBL 0
 CCDS 1
 PIR 1
 RefSeq 1
-UniGene 1
 PDB 1
 PDBsum 1
-DisProt 1
-ProteinModelPortal 1
 SMR 1
 BioGrid 1
 ComplexPortal 1
@@ -23,6 +20,7 @@ STRING 1
 BindingDB 1
 ChEMBL 1
 DrugBank 2
+DrugCentral 1
 GuidetoPHARMACOLOGY 1
 SwissLipids 1
 Allergome 1
@@ -41,6 +39,7 @@ CarbonylDB 1
 DEPOD 1
 GlyConnect 1
 iPTMnet 1
+MetOSite 1
 PhosphoSitePlus 1
 SwissPalm 1
 UniCarbKB 1
@@ -54,8 +53,10 @@ REPRODUCTION-2DPAGE 1
 SWISS-2DPAGE 1
 UCD-2DPAGE 1
 World-2DPAGE 1
+CPTAC 1
 EPD 1
 jPOST 1
+MassIVE 1
 MaxQB 1
 PaxDb 1
 PeptideAtlas 1
@@ -63,6 +64,8 @@ PRIDE 1
 ProMEX 1
 ProteomicsDB 1
 TopDownProteomics 1
+ABCD 1
+Antibodypedia 1
 DNASU 1
 Ensembl 1
 EnsemblBacteria 1
@@ -86,13 +89,11 @@ CTD 1
 dictyBase 2
 DisGeNET 1
 EchoBASE 1
-EcoGene 2
 euHCVdb 1
 EuPathDB 1
 FlyBase 2
 GeneCards 1
 GeneReviews 1
-H-InvDB 1
 HGNC 2
 HPA 1
 LegioList 1
@@ -102,6 +103,7 @@ MalaCards 1
 MGI 2
 MIM 1
 neXtProt 1
+NIAGADS 1
 OpenTargets 1
 Orphanet 2
 PharmGKB 1
@@ -118,7 +120,6 @@ ZFIN 2
 eggNOG 2
 GeneTree 1
 HOGENOM 1
-HOVERGEN 1
 InParanoid 1
 KO 1
 OMA 1
@@ -127,6 +128,7 @@ PhylomeDB 1
 TreeFam 1
 BioCyc 1
 BRENDA 1
+PlantReactome 1
 Reactome 1
 SABIO-RK 1
 SignaLink 1
@@ -136,15 +138,18 @@ ChiTaRS 1
 EvolutionaryTrace 1
 GeneWiki 1
 GenomeRNAi 1
-PMAP-CutDB 1
+Pharos 1
+PHI-base 1
 PRO 1
 Proteomes 1
+RNAct 1
 Bgee 1
 CollecTF 1
 ExpressionAtlas 1
 Genevisible 1
 GO 2
 CDD 2
+DisProt 1
 Gene3D 2
 HAMAP 2
 InterPro 2
@@ -152,7 +157,6 @@ PANTHER 2
 Pfam 2
 PIRSF 2
 PRINTS 2
-ProDom 2
 SFLD 1
 SMART 2
 SUPFAM 2

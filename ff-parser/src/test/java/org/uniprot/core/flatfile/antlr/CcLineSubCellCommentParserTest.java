@@ -287,6 +287,22 @@ class CcLineSubCellCommentParserTest {
     }
 
     @Test
+    void testWithComma() {
+        String lines = "CC   -!- SUBCELLULAR LOCATION: Cell junction, adherens junction.\n";
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
+        CcLineObject obj = parser.parse(lines);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof SubcullarLocation);
+        SubcullarLocation sl = (SubcullarLocation) cc.getObject();
+        assertEquals(1, sl.getLocations().size());
+        assertEquals(
+                "Cell junction, adherens junction",
+                sl.getLocations().get(0).getSubcellularLocation().getValue());
+    }
+
+    @Test
     void testSublocatWithEvidence() {
         String lines =
                 "CC   -!- SUBCELLULAR LOCATION: Mitochondrion inner membrane; Multi-pass\n"

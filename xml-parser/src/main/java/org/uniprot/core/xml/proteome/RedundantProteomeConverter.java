@@ -23,7 +23,7 @@ public class RedundantProteomeConverter
     public RedundantProteome fromXml(RedundantProteomeType xmlObj) {
         RedundantProteomeBuilder builder = new RedundantProteomeBuilder();
         builder.proteomeId(new ProteomeIdBuilder(xmlObj.getUpid()).build());
-        builder.similarity(xmlObj.getSimilarity());
+        builder.similarity(Float.valueOf(xmlObj.getSimilarity()));
         return builder.build();
     }
 
@@ -31,7 +31,7 @@ public class RedundantProteomeConverter
     public RedundantProteomeType toXml(RedundantProteome uniObj) {
         RedundantProteomeType rpType = xmlFactory.createRedundantProteomeType();
         rpType.setUpid(uniObj.getId().getValue());
-        rpType.setSimilarity(uniObj.getSimilarity());
+        rpType.setSimilarity(String.valueOf(uniObj.getSimilarity()));
         return rpType;
     }
 }

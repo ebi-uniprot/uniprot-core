@@ -1,6 +1,7 @@
 package org.uniprot.core.flatfile.parser.integration;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import java.io.IOException;
@@ -99,6 +100,12 @@ class FlatfileRoundTripIT {
     }
 
     private void testFile(String file, boolean isPublic) {
+        //            System.setProperty(
+        //                    "cv.dr.ord.location",
+        //
+        // "/home/edd/working/intellij/website/uniprot-core/controlled-vocabulary/src/test/resources/xdb/dr_ord");
+        //            System.out.println("SET SYSTEM PROPERTY");
+
         System.out.println("====>" + file);
         String entryStr = readEntryFromFile(file);
         testEntry(entryStr, isPublic);

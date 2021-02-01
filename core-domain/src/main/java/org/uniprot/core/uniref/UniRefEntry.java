@@ -23,6 +23,8 @@ public interface UniRefEntry extends Serializable {
 
     String getCommonTaxon();
 
+    String getSeedId();
+
     List<GeneOntologyEntry> getGoTerms();
 
     RepresentativeMember getRepresentativeMember();

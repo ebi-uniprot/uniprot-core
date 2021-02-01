@@ -1,0 +1,8 @@
+Rhea Id	EC numbers	Equation	Participants Ids	LeftToRight reaction Id	RightToLeft reaction Id	EC reaction mapping status
+10000	3.5.1.50	H2O + pentanamide = NH4(+) + pentanoate	ChEBI:CHEBI:15377, ChEBI:CHEBI:16459, ChEBI:CHEBI:28938, ChEBI:CHEBI:31011	10001	10002	
+10004	5.99.1.1		ChEBI:CHEBI:16017, ChEBI:CHEBI:17484	10005	10006	
+22460	1.3.1.8	a 2,3-saturated acyl-CoA + NADP(+) = a 2,3-dehydroacyl-CoA + H(+) + NADPH	ChEBI:CHEBI:15378, ChEBI:CHEBI:57783, ChEBI:CHEBI:58349, ChEBI:CHEBI:60015, ChEBI:CHEBI:65111	22461	22462	
+22464		L-tyrosine + O2 + reduced [NADPH--hemoprotein reductase] = 2 H(+) + H2O + N-hydroxy-L-tyrosine + oxidized [NADPH--hemoprotein reductase]	Rhea:RHEA-COMP:11964, Rhea:RHEA-COMP:11965, ChEBI:CHEBI:15377, ChEBI:CHEBI:15378, ChEBI:CHEBI:15379, ChEBI:CHEBI:57618, ChEBI:CHEBI:58210, ChEBI:CHEBI:58315, ChEBI:CHEBI:58547	22465	22466	
+22468	3.5.4.29	GTP + 3 H2O = 2-amino-5-formylamino-6-(5-phospho-D-ribosylamino)pyrimidin-4(3H)-one + 2 H(+) + 2 phosphate	ChEBI:CHEBI:15377, ChEBI:CHEBI:15378, ChEBI:CHEBI:37565, ChEBI:CHEBI:43474, ChEBI:CHEBI:57258	22469	22470	
+22472	2.7.1.34	(R)-pantetheine + ATP = ADP + D-pantetheine 4'-phosphate + H(+)	ChEBI:CHEBI:15378, ChEBI:CHEBI:16753, ChEBI:CHEBI:30616, ChEBI:CHEBI:61723, ChEBI:CHEBI:456216	22473	22474	
+22476	1.7.1.9	4-(hydroxyamino)quinoline N-oxide + H2O + 2 NADP(+) = 4-nitroquinoline N-oxide + 2 H(+) + 2 NADPH	ChEBI:CHEBI:15377, ChEBI:CHEBI:15378, ChEBI:CHEBI:16907, ChEBI:CHEBI:28469, ChEBI:CHEBI:57783, ChEBI:CHEBI:58349	22477	22478	

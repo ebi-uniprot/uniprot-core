@@ -10,9 +10,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.description.Name;
-import org.uniprot.core.uniprotkb.description.ProteinRecName;
+import org.uniprot.core.uniprotkb.description.ProteinName;
 import org.uniprot.core.uniprotkb.description.impl.NameBuilder;
-import org.uniprot.core.uniprotkb.description.impl.ProteinRecNameBuilder;
+import org.uniprot.core.uniprotkb.description.impl.ProteinNameBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
@@ -28,8 +28,8 @@ class RecNameConverterTest {
         Name fullName = new NameBuilder().value("a full Name").evidencesSet(evidences).build();
         List<Name> shortNames = createShortNames();
         List<EC> ecNumbers = createECNumbers();
-        ProteinRecName recName =
-                new ProteinRecNameBuilder()
+        ProteinName recName =
+                new ProteinNameBuilder()
                         .fullName(fullName)
                         .shortNamesSet(shortNames)
                         .ecNumbersSet(ecNumbers)
@@ -43,7 +43,7 @@ class RecNameConverterTest {
 
         System.out.println(
                 UniProtXmlTestHelper.toXmlString(xmlObj, RecommendedName.class, "recommendedName"));
-        ProteinRecName converted = converter.fromXml(xmlObj);
+        ProteinName converted = converter.fromXml(xmlObj);
         assertEquals(recName, converted);
     }
 
@@ -53,7 +53,7 @@ class RecNameConverterTest {
         Name fullName = createName("a full Name", evidences);
         List<Name> shortNames = Collections.emptyList();
         List<EC> ecNumbers = createECNumbers();
-        ProteinRecName recName = createProteinRecName(fullName, shortNames, ecNumbers);
+        ProteinName recName = createProteinRecName(fullName, shortNames, ecNumbers);
         EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
         ECConverter ecConverter = new ECConverter(evRefMapper);
         NameConverter nameConverter = new NameConverter(evRefMapper);
@@ -63,7 +63,7 @@ class RecNameConverterTest {
 
         System.out.println(
                 UniProtXmlTestHelper.toXmlString(xmlObj, RecommendedName.class, "recommendedName"));
-        ProteinRecName converted = converter.fromXml(xmlObj);
+        ProteinName converted = converter.fromXml(xmlObj);
         assertEquals(recName, converted);
     }
 
@@ -73,7 +73,7 @@ class RecNameConverterTest {
         Name fullName = createName("a full Name", evidences);
         List<Name> shortNames = createShortNames();
         List<EC> ecNumbers = Collections.emptyList();
-        ProteinRecName recName = createProteinRecName(fullName, shortNames, ecNumbers);
+        ProteinName recName = createProteinRecName(fullName, shortNames, ecNumbers);
         EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
         ECConverter ecConverter = new ECConverter(evRefMapper);
         NameConverter nameConverter = new NameConverter(evRefMapper);
@@ -83,7 +83,7 @@ class RecNameConverterTest {
 
         System.out.println(
                 UniProtXmlTestHelper.toXmlString(xmlObj, RecommendedName.class, "recommendedName"));
-        ProteinRecName converted = converter.fromXml(xmlObj);
+        ProteinName converted = converter.fromXml(xmlObj);
         assertEquals(recName, converted);
     }
 

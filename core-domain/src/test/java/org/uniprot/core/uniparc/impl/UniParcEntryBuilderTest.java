@@ -11,7 +11,6 @@ import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcEntry;
-import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 
 /**
  * @author jluo
@@ -95,41 +94,17 @@ class UniParcEntryBuilderTest {
     }
 
     @Test
-    void testTaxonomies() {
-        String seq = "MVSWGRFICLVVVTMATLSLARPSFSLVED";
-        Sequence sequence = new SequenceBuilder(seq).build();
-        List<UniParcCrossReference> xrefs = uniParcDBCrossReferences();
-        List<SequenceFeature> seqFeatures = sequenceFeatures();
-        List<Taxonomy> taxonomies = taxonomies();
-        UniParcEntry entry =
-                new UniParcEntryBuilder()
-                        .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
-                        .uniParcCrossReferencesSet(xrefs)
-                        .sequence(sequence)
-                        .sequenceFeaturesSet(seqFeatures)
-                        .taxonomiesSet(taxonomies)
-                        .build();
-        assertEquals("UPI0000083A08", entry.getUniParcId().getValue());
-        assertEquals(xrefs, entry.getUniParcCrossReferences());
-        assertEquals(sequence, entry.getSequence());
-        assertEquals(seqFeatures, entry.getSequenceFeatures());
-        assertEquals(taxonomies, entry.getTaxonomies());
-    }
-
-    @Test
     void testFrom() {
         String seq = "MVSWGRFICLVVVTMATLSLARPSFSLVED";
         Sequence sequence = new SequenceBuilder(seq).build();
         List<UniParcCrossReference> xrefs = uniParcDBCrossReferences();
         List<SequenceFeature> seqFeatures = sequenceFeatures();
-        List<Taxonomy> taxonomies = taxonomies();
         UniParcEntry entry =
                 new UniParcEntryBuilder()
                         .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
                         .uniParcCrossReferencesSet(xrefs)
                         .sequence(sequence)
                         .sequenceFeaturesSet(seqFeatures)
-                        .taxonomiesSet(taxonomies)
                         .build();
 
         UniParcEntry entry2 = UniParcEntryBuilder.from(entry).build();
@@ -143,7 +118,6 @@ class UniParcEntryBuilderTest {
         assertEquals(xrefs, entry3.getUniParcCrossReferences());
         assertEquals(sequence, entry3.getSequence());
         assertEquals(seqFeatures, entry3.getSequenceFeatures());
-        assertEquals(taxonomies, entry3.getTaxonomies());
     }
 
     @Test
@@ -182,19 +156,5 @@ class UniParcEntryBuilderTest {
         UniParcEntry obj = new UniParcEntryBuilder().sequenceFeaturesAdd(null).build();
         assertNotNull(obj.getSequenceFeatures());
         assertTrue(obj.getSequenceFeatures().isEmpty());
-    }
-
-    @Test
-    void canAddSingleTaxonomy() {
-        UniParcEntry obj = new UniParcEntryBuilder().taxonomiesAdd(taxonomies().get(0)).build();
-        assertNotNull(obj.getTaxonomies());
-        assertFalse(obj.getTaxonomies().isEmpty());
-    }
-
-    @Test
-    void nullTaxonomy_willBeIgnore() {
-        UniParcEntry obj = new UniParcEntryBuilder().taxonomiesAdd(null).build();
-        assertNotNull(obj.getTaxonomies());
-        assertTrue(obj.getTaxonomies().isEmpty());
     }
 }

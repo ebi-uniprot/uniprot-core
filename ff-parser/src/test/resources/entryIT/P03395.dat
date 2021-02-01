@@ -68,7 +68,6 @@ DR   PIR; S20285; VCFMLV.
 DR   SMR; P03395; -.
 DR   GlyConnect; 315; -.
 DR   iPTMnet; P03395; -.
-DR   UniCarbKB; P03395; -.
 DR   PRIDE; P03395; -.
 DR   GO; GO:0020002; C:host cell plasma membrane; IEA:UniProtKB-SubCell.
 DR   GO; GO:0019031; C:viral envelope; IEA:UniProtKB-KW.

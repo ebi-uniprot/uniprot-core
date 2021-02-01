@@ -7,6 +7,7 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniref.*;
 import org.uniprot.core.util.Utils;
 
@@ -22,13 +23,10 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
     private String name;
     private LocalDate updated;
     private UniRefType entryType;
-    private long commonTaxonId;
-    private String commonTaxon;
-    private String representativeId;
-    private String sequence;
+    private Organism commonTaxon;
+    private RepresentativeMember representativeMember;
     private List<String> members = new ArrayList<>();
-    private LinkedHashSet<Long> organismIds = new LinkedHashSet<>();
-    private LinkedHashSet<String> organisms = new LinkedHashSet<>();
+    private LinkedHashSet<Organism> organisms = new LinkedHashSet<>();
     private Set<UniRefMemberIdType> memberIdTypes = new HashSet<>();
     private List<GeneOntologyEntry> goTerms = new ArrayList<>();
     private String seedId;
@@ -42,12 +40,9 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
                 name,
                 updated,
                 entryType,
-                commonTaxonId,
                 commonTaxon,
-                representativeId,
-                sequence,
+                representativeMember,
                 members,
-                organismIds,
                 organisms,
                 memberCount,
                 organismCount,
@@ -62,12 +57,9 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
                 .name(instance.getName())
                 .updated(instance.getUpdated())
                 .entryType(instance.getEntryType())
-                .commonTaxonId(instance.getCommonTaxonId())
                 .commonTaxon(instance.getCommonTaxon())
-                .representativeId(instance.getRepresentativeId())
-                .sequence(instance.getSequence())
+                .representativeMember(instance.getRepresentativeMember())
                 .membersSet(instance.getMembers())
-                .organismIdsSet(instance.getOrganismIds())
                 .organismsSet(instance.getOrganisms())
                 .memberCount(instance.getMemberCount())
                 .organismCount(instance.getOrganismCount())
@@ -101,23 +93,14 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
         return this;
     }
 
-    public @Nonnull UniRefEntryLightBuilder commonTaxonId(long commonTaxonId) {
-        this.commonTaxonId = commonTaxonId;
-        return this;
-    }
-
-    public @Nonnull UniRefEntryLightBuilder commonTaxon(String commonTaxon) {
+    public @Nonnull UniRefEntryLightBuilder commonTaxon(Organism commonTaxon) {
         this.commonTaxon = commonTaxon;
         return this;
     }
 
-    public @Nonnull UniRefEntryLightBuilder representativeId(String id) {
-        this.representativeId = id;
-        return this;
-    }
-
-    public @Nonnull UniRefEntryLightBuilder sequence(String sequence) {
-        this.sequence = sequence;
+    public @Nonnull UniRefEntryLightBuilder representativeMember(
+            RepresentativeMember representativeMember) {
+        this.representativeMember = representativeMember;
         return this;
     }
 
@@ -131,23 +114,13 @@ public class UniRefEntryLightBuilder implements Builder<UniRefEntryLight> {
         return this;
     }
 
-    public @Nonnull UniRefEntryLightBuilder organismIdsSet(LinkedHashSet<Long> ids) {
-        this.organismIds = ids;
+    public @Nonnull UniRefEntryLightBuilder organismsSet(LinkedHashSet<Organism> organisms) {
+        this.organisms = organisms;
         return this;
     }
 
-    public @Nonnull UniRefEntryLightBuilder organismIdsAdd(Long id) {
-        Utils.addOrIgnoreNull(id, this.organismIds);
-        return this;
-    }
-
-    public @Nonnull UniRefEntryLightBuilder organismsSet(LinkedHashSet<String> ids) {
-        this.organisms = ids;
-        return this;
-    }
-
-    public @Nonnull UniRefEntryLightBuilder organismsAdd(String organism) {
-        if (Utils.notNullNotEmpty(organism)) {
+    public @Nonnull UniRefEntryLightBuilder organismsAdd(Organism organism) {
+        if (Utils.notNull(organism)) {
             UniRefUtils.addOrganism(organism, this.organisms);
         }
         return this;

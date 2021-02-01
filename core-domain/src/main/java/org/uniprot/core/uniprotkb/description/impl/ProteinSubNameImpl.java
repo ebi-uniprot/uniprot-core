@@ -8,7 +8,6 @@ import java.util.List;
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.description.ProteinSubName;
-import org.uniprot.core.util.Utils;
 
 public class ProteinSubNameImpl implements ProteinSubName {
 
@@ -34,16 +33,6 @@ public class ProteinSubNameImpl implements ProteinSubName {
     @Override
     public List<EC> getEcNumbers() {
         return ecNumbers;
-    }
-
-    @Override
-    public boolean hasFullName() {
-        return this.fullName != null;
-    }
-
-    @Override
-    public boolean hasEcNumbers() {
-        return Utils.notNullNotEmpty(ecNumbers);
     }
 
     @Override

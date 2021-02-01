@@ -1,18 +1,13 @@
 package org.uniprot.core.uniparc.impl;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
-import org.uniprot.core.Property;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniparc.UniParcId;
-import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
-import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 import org.uniprot.core.util.Utils;
 
 /**
@@ -24,17 +19,14 @@ public class UniParcEntryImpl implements UniParcEntry {
     /** */
     private static final long serialVersionUID = 1558006779501834241L;
 
-    private UniParcId uniParcId;
-    private List<UniParcCrossReference> uniParcCrossReferences;
-    private Sequence sequence;
-    private String uniprotExclusionReason;
-    private List<SequenceFeature> sequenceFeatures;
-    private List<Taxonomy> taxonomies;
+    private final UniParcId uniParcId;
+    private final List<UniParcCrossReference> uniParcCrossReferences;
+    private final Sequence sequence;
+    private final String uniprotExclusionReason;
+    private final List<SequenceFeature> sequenceFeatures;
 
     UniParcEntryImpl() {
-        this.uniParcCrossReferences = Collections.emptyList();
-        this.sequenceFeatures = Collections.emptyList();
-        this.taxonomies = Collections.emptyList();
+        this(null, null, null, null, null);
     }
 
     UniParcEntryImpl(
@@ -42,15 +34,12 @@ public class UniParcEntryImpl implements UniParcEntry {
             List<UniParcCrossReference> uniParcCrossReferences,
             Sequence sequence,
             List<SequenceFeature> sequenceFeatures,
-            List<Taxonomy> taxonomies,
             String uniprotExclusionReason) {
         super();
         this.uniParcId = uniParcId;
         this.uniParcCrossReferences = Utils.unmodifiableList(uniParcCrossReferences);
         this.sequence = sequence;
-
         this.sequenceFeatures = Utils.unmodifiableList(sequenceFeatures);
-        this.taxonomies = Utils.unmodifiableList(taxonomies);
         this.uniprotExclusionReason = uniprotExclusionReason;
     }
 
@@ -77,30 +66,6 @@ public class UniParcEntryImpl implements UniParcEntry {
     @Override
     public List<SequenceFeature> getSequenceFeatures() {
         return sequenceFeatures;
-    }
-
-    @Override
-    public List<Taxonomy> getTaxonomies() {
-        if ((taxonomies == null) || taxonomies.isEmpty()) {
-            taxonomies =
-                    uniParcCrossReferences.stream()
-                            .flatMap(val -> val.getProperties().stream())
-                            .filter(
-                                    val ->
-                                            val.getKey()
-                                                    .equals(
-                                                            UniParcCrossReference
-                                                                    .PROPERTY_NCBI_TAXONOMY_ID))
-                            .map(Property::getValue)
-                            .distinct()
-                            .map(this::convertTaxonomy)
-                            .collect(Collectors.toList());
-        }
-        return taxonomies;
-    }
-
-    private Taxonomy convertTaxonomy(String taxId) {
-        return new TaxonomyBuilder().taxonId(Long.parseLong(taxId)).build();
     }
 
     @Override

@@ -28,9 +28,9 @@ class ProteinDescriptionConverterTest {
         Name fullName = createName("a full Name", evidences);
         List<Name> shortNames = createShortNames();
         List<EC> ecNumbers = createECNumbers();
-        ProteinRecName recommendedName = createProteinRecName(fullName, shortNames, ecNumbers);
+        ProteinName recommendedName = createProteinRecName(fullName, shortNames, ecNumbers);
 
-        List<ProteinAltName> proteinAltNames = createAltName();
+        List<ProteinName> proteinAltNames = createAltName();
         Name fullName1 = createName("a full Name", evidences);
 
         List<EC> ecNumbers1 = createECNumbers();
@@ -65,8 +65,8 @@ class ProteinDescriptionConverterTest {
         Name fullName = createName("a full Name", evidences);
         List<Name> shortNames = createShortNames();
         List<EC> ecNumbers = createECNumbers();
-        ProteinRecName recommendedName = createProteinRecName(fullName, shortNames, ecNumbers);
-        List<ProteinAltName> proteinAltNames = createAltName();
+        ProteinName recommendedName = createProteinRecName(fullName, shortNames, ecNumbers);
+        List<ProteinName> proteinAltNames = createAltName();
         Name fullName1 = createName("a full Name", evidences);
         List<EC> ecNumbers1 = createECNumbers();
         ProteinSubName subName = createProteinSubName(fullName1, ecNumbers1);
@@ -107,8 +107,8 @@ class ProteinDescriptionConverterTest {
                 recNameConverter, altNameConverter, subNameConverter, nameConverter);
     }
 
-    private List<ProteinAltName> createAltName() {
-        List<ProteinAltName> alternativeNames = new ArrayList<>();
+    private List<ProteinName> createAltName() {
+        List<ProteinName> alternativeNames = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
         Name fullName = createName("a full alt Name", evidences);
         List<Name> shortNames = new ArrayList<>();

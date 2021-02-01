@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
+import org.uniprot.core.util.Utils;
 
 public class UniProtKBDatabaseMock implements UniProtKBDatabase {
     private String name;
@@ -17,7 +18,11 @@ public class UniProtKBDatabaseMock implements UniProtKBDatabase {
     }
 
     public @Nonnull UniProtDatabaseDetail getUniProtDatabaseDetail() {
-        return new UniProtDatabaseDetail("dummy", "dummyName", null, null, null, false, null);
+        if (Utils.notNullNotEmpty(this.name)) {
+            return new UniProtDatabaseDetail(this.name, this.name, null, null, null, false, null);
+        } else {
+            return new UniProtDatabaseDetail("dummy", "dummyName", null, null, null, false, null);
+        }
     }
 
     public @Nullable UniProtDatabaseAttribute getUniProtDatabaseAttribute(int position) {

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 
 /**
  * Represents a "light-weight" {@link UniRefEntry}, containing less detailed information when
@@ -26,31 +27,21 @@ public interface UniRefEntryLight extends Serializable {
 
     UniRefType getEntryType();
 
-    long getCommonTaxonId();
-
-    String getCommonTaxon();
+    Organism getCommonTaxon();
 
     List<GeneOntologyEntry> getGoTerms();
+
+    RepresentativeMember getRepresentativeMember();
 
     List<String> getMembers();
 
     int getMemberCount();
 
-    LinkedHashSet<String> getOrganisms();
-
-    LinkedHashSet<Long> getOrganismIds();
+    LinkedHashSet<Organism> getOrganisms();
 
     int getOrganismCount();
 
-    String getSequence();
-
-    int getSequenceLength();
-
-    String getRepresentativeId();
-
     String getSeedId();
-
-    String getRepresentativeProteinName();
 
     Set<UniRefMemberIdType> getMemberIdTypes();
 }

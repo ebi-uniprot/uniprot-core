@@ -125,8 +125,24 @@
 		"category": "3DS",
 		"uriLink": "https://www.ebi.ac.uk/pdbsum/%id"
 	},
-	
-	
+	{
+		"name": "PCDDB",
+		"displayName": "PCDDB",
+		"category": "3DS",
+		"uriLink": "https://pcddb.cryst.bbk.ac.uk/uniprot/%id"
+	},
+	{
+		"name": "SASBDB",
+		"displayName": "SASBDB",
+		"category": "3DS",
+		"uriLink": "https://www.sasbdb.org/uniprot/%id"
+	},
+	{
+		"name": "BMRB",
+		"displayName": "BMRB",
+		"category": "3DS",
+		"uriLink": "http://www.bmrb.wisc.edu/data_library/summary/protein.php?uniprot=%id"
+	},
 	{
 		"name": "ModBase",
 		"displayName": "ModBase",
@@ -894,10 +910,10 @@
 		"uriLink": "https://euhcvdb.ibcp.fr/euHCVdb/do/displayHCVEntry?primaryAC=%id"
 	},
 	{
-		"name": "EuPathDB",
-		"displayName": "EuPathDB",
+		"name": "VEuPathDB",
+		"displayName": "VEuPathDB",
 		"category": "ORG",
-		"uriLink": "https://www.eupathdb.org/gene/%id"
+		"uriLink": "https://www.veupathdb.org/gene/%id"
 	},
 	{
 		"name": "FlyBase",
@@ -1692,7 +1708,17 @@
 			}
 		]
 	},
-	
+	{
+		"name": "CPTC",
+		"displayName": "CPTC",
+		"category": "PAM",
+		"uriLink": "https://antibodies.cancer.gov/uniprot/%id",
+		"attributes": [		
+			{	"name": "antibodies",
+				"xmlTag": "antibodies"			
+			}
+		]
+	},
 	{
 		"name": "RNAct",
 		"displayName": "RNAct",

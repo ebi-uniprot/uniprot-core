@@ -101,9 +101,8 @@ public class UniprotKBJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(OrganismHost.class, OrganismHostImpl.class);
 
         mod.addAbstractTypeMapping(ProteinDescription.class, ProteinDescriptionImpl.class);
-        mod.addAbstractTypeMapping(ProteinRecName.class, ProteinRecNameImpl.class);
+        mod.addAbstractTypeMapping(ProteinName.class, ProteinNameImpl.class);
         mod.addAbstractTypeMapping(ProteinSubName.class, ProteinSubNameImpl.class);
-        mod.addAbstractTypeMapping(ProteinAltName.class, ProteinAltNameImpl.class);
         mod.addAbstractTypeMapping(ProteinSection.class, ProteinSectionImpl.class);
         mod.addAbstractTypeMapping(Name.class, NameImpl.class);
         mod.addAbstractTypeMapping(EC.class, ECImpl.class);
@@ -259,5 +258,6 @@ public class UniprotKBJsonConfig extends JsonConfig {
         prettyWriterModule.addSerializer(
                 FeatureDescriptionImpl.class, new FeatureDescriptionSerializer());
         prettyWriterModule.addSerializer(FeatureIdImpl.class, new FeatureIdSerializer());
+        prettyWriterModule.addSerializer(Position.class, new PositionSerializer());
     }
 }

@@ -1,11 +1,9 @@
 package org.uniprot.core.proteome.impl;
 
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.proteome.*;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
@@ -15,38 +13,33 @@ import org.uniprot.core.util.Utils;
 public class ProteomeEntryImpl implements ProteomeEntry {
 
     private static final long serialVersionUID = 1962327704149624243L;
-    private ProteomeId id;
-    private String description;
-    private Taxonomy taxonomy;
-    private LocalDate modified;
-    private ProteomeType proteomeType;
-    private ProteomeId redundantTo;
-    private String strain;
-    private String isolate;
-    private List<CrossReference<ProteomeDatabase>> proteomeCrossReferences;
-    private List<Component> components;
-    private List<Citation> citations;
-    private List<RedundantProteome> redundantProteomes;
-    private ProteomeId panproteome;
-    private int annotationScore;
-    private Superkingdom superkingdom;
-    private ProteomeCompletenessReport proteomeCompletenessReport;
-    private GenomeAssembly genomeAssembly;
-
-    private int geneCount;
-    private int proteinCount;
-    private List<TaxonomyLineage> taxonLineage;
-    private List<CanonicalProtein> canonicalProteins;
-    private String sourceDb;
+    private final ProteomeId id;
+    private final String description;
+    private final Taxonomy taxonomy;
+    private final LocalDate modified;
+    private final ProteomeType proteomeType;
+    private final ProteomeId redundantTo;
+    private final String strain;
+    private final String isolate;
+    private final List<Component> components;
+    private final List<Citation> citations;
+    private final List<RedundantProteome> redundantProteomes;
+    private final ProteomeId panproteome;
+    private final Integer annotationScore;
+    private final Superkingdom superkingdom;
+    private final ProteomeCompletenessReport proteomeCompletenessReport;
+    private final GenomeAssembly genomeAssembly;
+    private final Integer geneCount;
+    private final Integer proteinCount;
+    private final GenomeAnnotation genomeAnnotation;
+    private final List<TaxonomyLineage> taxonLineage;
+    private final List<ExclusionReason> exclusionReasons;
 
     // no arg constructor for JSON deserialization
     ProteomeEntryImpl() {
-        proteomeCrossReferences = Collections.emptyList();
-        components = Collections.emptyList();
-        citations = Collections.emptyList();
-        redundantProteomes = Collections.emptyList();
-        taxonLineage = Collections.emptyList();
-        canonicalProteins = Collections.emptyList();
+        this(
+                null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+                null, null, null, null, null, null);
     }
 
     ProteomeEntryImpl(
@@ -58,19 +51,18 @@ public class ProteomeEntryImpl implements ProteomeEntry {
             ProteomeId redundantTo,
             String strain,
             String isolate,
-            List<CrossReference<ProteomeDatabase>> proteomeCrossReferences,
             List<Component> components,
             List<Citation> citations,
             List<RedundantProteome> redundantProteomes,
             ProteomeId panproteome,
-            int annotationScore,
+            Integer annotationScore,
             Superkingdom superkingdom,
-            int geneCount,
+            Integer geneCount,
             List<TaxonomyLineage> taxonLineage,
-            List<CanonicalProtein> canonicalProteins,
-            String sourceDb,
             ProteomeCompletenessReport proteomeCompletenessReport,
-            GenomeAssembly genomeAssembly) {
+            GenomeAssembly genomeAssembly,
+            GenomeAnnotation genomeAnnotation,
+            List<ExclusionReason> exclusionReasons) {
         super();
         this.id = id;
         this.taxonomy = taxonomy;
@@ -81,7 +73,6 @@ public class ProteomeEntryImpl implements ProteomeEntry {
         this.redundantTo = redundantTo;
         this.strain = strain;
         this.isolate = isolate;
-        this.proteomeCrossReferences = Utils.unmodifiableList(proteomeCrossReferences);
         this.components = Utils.unmodifiableList(components);
         this.citations = Utils.unmodifiableList(citations);
         this.redundantProteomes = Utils.unmodifiableList(redundantProteomes);
@@ -89,12 +80,25 @@ public class ProteomeEntryImpl implements ProteomeEntry {
         this.annotationScore = annotationScore;
         this.superkingdom = superkingdom;
         this.geneCount = geneCount;
-        this.proteinCount = components.stream().mapToInt(Component::getProteinCount).sum();
+        if (Utils.notNull(components)) {
+            int count =
+                    components.stream()
+                            .filter(c -> Utils.notNull(c.getProteinCount()))
+                            .mapToInt(Component::getProteinCount)
+                            .sum();
+            if (count > 0) {
+                this.proteinCount = count;
+            } else {
+                proteinCount = null;
+            }
+        } else {
+            this.proteinCount = null;
+        }
         this.taxonLineage = Utils.unmodifiableList(taxonLineage);
-        this.canonicalProteins = Utils.unmodifiableList(canonicalProteins);
-        this.sourceDb = sourceDb;
         this.proteomeCompletenessReport = proteomeCompletenessReport;
         this.genomeAssembly = genomeAssembly;
+        this.genomeAnnotation = genomeAnnotation;
+        this.exclusionReasons = Utils.unmodifiableList(exclusionReasons);
     }
 
     @Override
@@ -138,11 +142,6 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     }
 
     @Override
-    public List<CrossReference<ProteomeDatabase>> getProteomeCrossReferences() {
-        return proteomeCrossReferences;
-    }
-
-    @Override
     public List<Component> getComponents() {
         return components;
     }
@@ -163,7 +162,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     }
 
     @Override
-    public int getAnnotationScore() {
+    public Integer getAnnotationScore() {
         return annotationScore;
     }
 
@@ -173,28 +172,18 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     }
 
     @Override
-    public int getProteinCount() {
+    public Integer getProteinCount() {
         return proteinCount;
     }
 
     @Override
-    public int getGeneCount() {
+    public Integer getGeneCount() {
         return geneCount;
     }
 
     @Override
     public List<TaxonomyLineage> getTaxonLineages() {
         return taxonLineage;
-    }
-
-    @Override
-    public List<CanonicalProtein> getCanonicalProteins() {
-        return this.canonicalProteins;
-    }
-
-    @Override
-    public String getSourceDb() {
-        return sourceDb;
     }
 
     @Override
@@ -208,10 +197,19 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     }
 
     @Override
+    public GenomeAnnotation getGenomeAnnotation() {
+        return genomeAnnotation;
+    }
+
+    @Override
+    public List<ExclusionReason> getExclusionReasons() {
+        return exclusionReasons;
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(
                 components,
-                proteomeCrossReferences,
                 description,
                 id,
                 isolate,
@@ -224,9 +222,9 @@ public class ProteomeEntryImpl implements ProteomeEntry {
                 superkingdom,
                 taxonomy,
                 proteomeType,
-                sourceDb,
                 proteomeCompletenessReport,
-                genomeAssembly);
+                genomeAssembly,
+                genomeAnnotation);
     }
 
     @Override
@@ -236,7 +234,6 @@ public class ProteomeEntryImpl implements ProteomeEntry {
         if (getClass() != obj.getClass()) return false;
         ProteomeEntryImpl other = (ProteomeEntryImpl) obj;
         return Objects.equals(components, other.components)
-                && Objects.equals(proteomeCrossReferences, other.proteomeCrossReferences)
                 && Objects.equals(description, other.description)
                 && Objects.equals(id, other.id)
                 && Objects.equals(isolate, other.isolate)
@@ -249,8 +246,10 @@ public class ProteomeEntryImpl implements ProteomeEntry {
                 && Objects.equals(superkingdom, other.superkingdom)
                 && Objects.equals(taxonomy, other.taxonomy)
                 && Objects.equals(proteomeType, other.proteomeType)
-                && Objects.equals(sourceDb, other.sourceDb)
                 && Objects.equals(proteomeCompletenessReport, other.proteomeCompletenessReport)
-                && Objects.equals(genomeAssembly, other.genomeAssembly);
+                && Objects.equals(genomeAssembly, other.genomeAssembly)
+                && Objects.equals(geneCount, other.geneCount)
+                && Objects.equals(proteinCount, other.proteinCount)
+                && Objects.equals(genomeAnnotation, other.genomeAnnotation);
     }
 }

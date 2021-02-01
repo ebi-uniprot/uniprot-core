@@ -27,6 +27,7 @@ public class UniRefEntryBuilder implements Builder<UniRefEntry> {
     private UniRefType entryType;
     private Long commonTaxonId;
     private String commonTaxon;
+    private String seedId;
     private List<GeneOntologyEntry> goTerms = new ArrayList<>();
     private RepresentativeMember representativeMember;
     private List<UniRefMember> members = new ArrayList<>();
@@ -41,6 +42,7 @@ public class UniRefEntryBuilder implements Builder<UniRefEntry> {
                 entryType,
                 commonTaxonId,
                 commonTaxon,
+                seedId,
                 goTerms,
                 representativeMember,
                 members);
@@ -54,6 +56,7 @@ public class UniRefEntryBuilder implements Builder<UniRefEntry> {
                 .entryType(instance.getEntryType())
                 .commonTaxonId(instance.getCommonTaxonId())
                 .commonTaxon(instance.getCommonTaxon())
+                .seedId(instance.getSeedId())
                 .goTermsSet(instance.getGoTerms())
                 .representativeMember(instance.getRepresentativeMember())
                 .membersSet(instance.getMembers());
@@ -91,6 +94,11 @@ public class UniRefEntryBuilder implements Builder<UniRefEntry> {
 
     public @Nonnull UniRefEntryBuilder commonTaxon(String commonTaxon) {
         this.commonTaxon = commonTaxon;
+        return this;
+    }
+
+    public @Nonnull UniRefEntryBuilder seedId(String seedId) {
+        this.seedId = seedId;
         return this;
     }
 

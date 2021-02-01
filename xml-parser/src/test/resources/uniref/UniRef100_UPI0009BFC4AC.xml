@@ -1,0 +1,20 @@
+<UniRef xmlns="http://uniprot.org/uniref" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://uniprot.org/uniref http://www.uniprot.org/docs/uniref.xsd" version="2020_05" releaseDate="2020-10-07">
+    <entry id="UniRef100_UPI0009BFC4AC" updated="2018-09-12">
+        <name>Cluster: NAD-dependent epimerase/dehydratase family protein</name>
+        <property type="member count" value="1"/>
+        <property type="common taxon" value="Streptomyces viridosporus"/>
+        <property type="common taxon ID" value="67581"/>
+        <representativeMember>
+            <dbReference type="UniParc ID" id="UPI0009BFC4AC">
+                <property type="UniRef90 ID" value="UniRef90_A0A003"/>
+                <property type="UniRef50 ID" value="UniRef50_A0A1A9J849"/>
+                <property type="protein name" value="NAD-dependent epimerase/dehydratase family protein"/>
+                <property type="source organism" value="Streptomyces viridosporus"/>
+                <property type="NCBI taxonomy" value="67581"/>
+                <property type="length" value="325"/>
+                <property type="isSeed" value="true"/>
+            </dbReference>
+            <sequence length="325" checksum="2D399FDEAF652EA2">MVTGAAGFIGSHLVTELRNSGRNVVAVDRRPLPDDPGSTSPPFTGSLREIRGDLNALNLVDRLKNISTVFHLAALPGVRPSWTQFPEYLRCNVLATQRLMEACVQAGVERVVVASSSSVYGGADGVMSEDDLPRPLSPYGVTKLAAERLALAFAARGDAELSVGALRFFTVYGPGQRPDMFISRLIRATLRGEPIEIYGDGTQLRDFTHVSDVVRALLLTASVRDRDSAVLNIGTGSAVSVNEVVSMTAELTGLRPCTAYGSARIGDVRSTTADVRQARNVLGFTARTGLREGLATQIEWTRRSLSGAEQDTVPVGGSSVSVPRL</sequence>
+        </representativeMember>
+    </entry>
+</UniRef>

@@ -275,7 +275,6 @@ class Q04756ScoredTest {
                     + "DR   GeneTree; ENSGT00940000159778; -.\n"
                     + "DR   HOGENOM; HOG000237314; -.\n"
                     + "DR   InParanoid; Q04756; -.\n"
-                    + "DR   KO; K09631; -.\n"
                     + "DR   OrthoDB; 1314811at2759; -.\n"
                     + "DR   PhylomeDB; Q04756; -.\n"
                     + "DR   TreeFam; TF329901; -.\n"

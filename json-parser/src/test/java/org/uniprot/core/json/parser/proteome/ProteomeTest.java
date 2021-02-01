@@ -19,7 +19,6 @@ import org.uniprot.core.proteome.impl.*;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
 import org.uniprot.core.taxonomy.impl.TaxonomyLineageBuilder;
-import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 
@@ -48,7 +47,6 @@ public class ProteomeTest {
                         .description("some description")
                         .proteinCount(102)
                         .proteomeCrossReferencesSet(xrefs)
-                        .type(ComponentType.PRIMARY)
                         .build();
         ValidateJson.verifyJsonRoundTripParser(
                 ProteomeJsonConfig.getInstance().getFullObjectMapper(), component);
@@ -133,27 +131,16 @@ public class ProteomeTest {
                         .rank(TaxonomyRank.FAMILY)
                         .build();
 
+        GenomeAnnotation genomeAnnotation =
+                new GenomeAnnotationBuilder().source("source value").url("URL value").build();
+
         Component component =
                 new ComponentBuilder()
                         .description("description")
                         .name("name")
                         .proteinCount(18)
-                        .type(ComponentType.PRIMARY)
                         .proteomeCrossReferencesAdd(xref2)
-                        .build();
-        Protein protein =
-                new ProteinBuilder()
-                        .accession("P12345")
-                        .geneNameType(GeneNameType.MOD)
-                        .geneName("name")
-                        .entryType(UniProtKBEntryType.TREMBL)
-                        .sequenceLength(20L)
-                        .build();
-
-        CanonicalProtein canonicalProtein =
-                new CanonicalProteinBuilder()
-                        .canonicalProtein(protein)
-                        .relatedProteinsAdd(protein)
+                        .genomeAnnotation(genomeAnnotation)
                         .build();
 
         return new ProteomeEntryBuilder()
@@ -164,7 +151,6 @@ public class ProteomeTest {
                 .proteomeType(ProteomeType.REDUNDANT)
                 .redundantTo(redId)
                 .strain("some Strain")
-                .proteomeCrossReferencesSet(xrefs)
                 .citationsSet(getCitations())
                 .superkingdom(Superkingdom.EUKARYOTA)
                 .panproteome(new ProteomeIdBuilder("UP000005649").build())
@@ -179,10 +165,10 @@ public class ProteomeTest {
                 .annotationScore(20)
                 .geneCount(28)
                 .taxonLineagesAdd(taxonomyLineage)
-                .canonicalProteinsAdd(canonicalProtein)
-                .sourceDb("source db")
                 .proteomeCompletenessReport(createProteomeCompletenessReport())
                 .genomeAssembly(createGenomeAssembly())
+                .genomeAnnotation(genomeAnnotation)
+                .exclusionReasonsAdd(ExclusionReason.MIXED_CULTURE)
                 .build();
     }
 
@@ -274,7 +260,6 @@ public class ProteomeTest {
                         .modified(modified)
                         .proteomeType(ProteomeType.REFERENCE)
                         .strain("some Strain")
-                        .proteomeCrossReferencesSet(xrefs)
                         .taxonLineagesAdd(taxon1)
                         //		.addTaxonLineage(taxon2)
                         .citationsSet(getCitations())

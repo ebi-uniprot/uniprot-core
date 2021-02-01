@@ -62,10 +62,7 @@ public class FeatureIdImpl implements FeatureId {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((value == null) ? 0 : value.hashCode());
-        return result;
+        return Objects.hash(value);
     }
 
     @Override
@@ -73,7 +70,7 @@ public class FeatureIdImpl implements FeatureId {
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
-        FeatureIdImpl other = (FeatureIdImpl) obj;
-        return value.equals(other.value);
+        FeatureIdImpl that = (FeatureIdImpl) obj;
+        return Objects.equals(value, that.value);
     }
 }

@@ -80,10 +80,12 @@ public class SubcellularLocationConverter
             isFirst = false;
             sb.append(val);
         }
-        return sb.toString();
-        // Map<EvidencedStringType, String> map = transferCase(values);
-        // return values.stream().map(val ->
-        // val.getValue()).collect(Collectors.joining(", "));
+        String name = sb.toString();
+        if (values.size() > 1) {
+            return SubcellLocationNameMap.instance.getLocationName(name);
+        } else {
+            return name;
+        }
     }
 
     private String lowerCaseFirstLetter(String val) {

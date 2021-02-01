@@ -1,5 +1,6 @@
 package org.uniprot.core.xml.proteome;
 
+import static org.uniprot.core.proteome.ProteomeType.*;
 import static org.uniprot.core.util.Utils.*;
 
 import java.util.List;
@@ -7,7 +8,6 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.proteome.*;
 import org.uniprot.core.proteome.impl.ProteomeCompletenessReportBuilder;
@@ -15,19 +15,20 @@ import org.uniprot.core.proteome.impl.ProteomeEntryBuilder;
 import org.uniprot.core.proteome.impl.ProteomeIdBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
+import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.*;
+import org.uniprot.core.xml.jaxb.proteome.Proteome;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
 
 public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
 
     private final ObjectFactory xmlFactory;
     private final ComponentConverter componentConverter;
-    private final CanonicalProteinConverter canonicalProteinConverter;
     private final RedundantProteomeConverter redundantProteomeConverter;
-    private final CrossReferenceConverter xrefConverter;
     private final ReferenceConverter referenceConverter;
     private final GenomeAssemblyConverter genomeAssemblyConverter;
+    private final GenomeAnnotationConverter genomeAnnotationConverter;
     private final ScoreBuscoConverter scoreBuscoConverter;
     private final ScoreCPDConverter scoreCPDConverter;
 
@@ -38,13 +39,12 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
     public ProteomeConverter(ObjectFactory xmlFactory) {
         this.xmlFactory = xmlFactory;
         this.componentConverter = new ComponentConverter(xmlFactory);
-        this.canonicalProteinConverter = new CanonicalProteinConverter(xmlFactory);
         this.redundantProteomeConverter = new RedundantProteomeConverter(xmlFactory);
-        this.xrefConverter = new CrossReferenceConverter(xmlFactory);
         this.referenceConverter = new ReferenceConverter(xmlFactory);
         this.genomeAssemblyConverter = new GenomeAssemblyConverter(xmlFactory);
         this.scoreBuscoConverter = new ScoreBuscoConverter(xmlFactory);
         this.scoreCPDConverter = new ScoreCPDConverter(xmlFactory);
+        this.genomeAnnotationConverter = new GenomeAnnotationConverter(xmlFactory);
     }
 
     @Override
@@ -53,18 +53,10 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
                 xmlObj.getComponent().stream()
                         .map(componentConverter::fromXml)
                         .collect(Collectors.toList());
-        List<CanonicalProtein> canonicalProteins =
-                xmlObj.getCanonicalGene().stream()
-                        .map(canonicalProteinConverter::fromXml)
-                        .collect(Collectors.toList());
-        org.uniprot.core.proteome.ProteomeType proteomeType = getProteomeType(xmlObj);
+
         List<RedundantProteome> redundantProteomes =
                 xmlObj.getRedundantProteome().stream()
                         .map(redundantProteomeConverter::fromXml)
-                        .collect(Collectors.toList());
-        List<CrossReference<ProteomeDatabase>> xrefs =
-                xmlObj.getDbReference().stream()
-                        .map(xrefConverter::fromXml)
                         .collect(Collectors.toList());
 
         List<Citation> citations =
@@ -75,22 +67,22 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
 
         ProteomeEntryBuilder builder = new ProteomeEntryBuilder();
         builder.proteomeId(proteomeId(xmlObj.getUpid()))
-                .proteomeType(proteomeType)
+                .proteomeType(getProteomeType(xmlObj))
                 .description(xmlObj.getDescription())
-                .taxonomy(getTaxonomy(xmlObj.getTaxonomy(), xmlObj.getName()))
+                .taxonomy(getTaxonomy(xmlObj.getTaxonomy()))
                 .modified(XmlConverterHelper.dateFromXml(xmlObj.getModified()))
                 .strain(xmlObj.getStrain())
                 .isolate(xmlObj.getIsolate())
-                .sourceDb(xmlObj.getSource())
                 .componentsSet(components)
-                .canonicalProteinsSet(canonicalProteins)
-                .geneCount(canonicalProteins.size())
                 .redundantProteomesSet(redundantProteomes)
-                .proteomeCrossReferencesSet(xrefs)
-                .superkingdom(Superkingdom.typeOf(xmlObj.getSuperregnum().value()))
                 .citationsSet(citations)
                 .genomeAssembly(genomeAssemblyConverter.fromXml(xmlObj.getGenomeAssembly()))
                 .proteomeCompletenessReport(getCompletenessReport(xmlObj.getScores()));
+
+        if (Utils.notNull(xmlObj.getGenomeAnnotation())) {
+            builder.genomeAnnotation(
+                    genomeAnnotationConverter.fromXml(xmlObj.getGenomeAnnotation()));
+        }
 
         if (notNull(xmlObj.getAnnotationScore())) {
             builder.annotationScore(xmlObj.getAnnotationScore().getNormalizedAnnotationScore());
@@ -102,7 +94,12 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
         if (notNullNotEmpty(xmlObj.getPanproteome())) {
             builder.panproteome(proteomeId(xmlObj.getPanproteome()));
         }
-
+        if (notNull(xmlObj.getExcluded())
+                && notNullNotEmpty(xmlObj.getExcluded().getExclusionReason())) {
+            xmlObj.getExcluded().getExclusionReason().stream()
+                    .map(ExclusionReason::typeOf)
+                    .forEach(builder::exclusionReasonsAdd);
+        }
         return builder.build();
     }
 
@@ -137,37 +134,27 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
         Proteome xmlObj = xmlFactory.createProteome();
         xmlObj.setUpid(uniObj.getId().getValue());
         xmlObj.setDescription(uniObj.getDescription());
-        xmlObj.setTaxonomy(uniObj.getTaxonomy().getTaxonId());
-        xmlObj.setName(uniObj.getTaxonomy().getScientificName());
-        org.uniprot.core.proteome.ProteomeType type = uniObj.getProteomeType();
-        if (type == org.uniprot.core.proteome.ProteomeType.REFERENCE) {
+        if (notNull(uniObj.getTaxonomy())) {
+            xmlObj.setTaxonomy(uniObj.getTaxonomy().getTaxonId());
+        }
+        ProteomeType type = uniObj.getProteomeType();
+        if (type == REFERENCE || type == REFERENCE_AND_REPRESENTATIVE) {
             xmlObj.setIsReferenceProteome(true);
-        } else if (type == org.uniprot.core.proteome.ProteomeType.REPRESENTATIVE) {
+        }
+        if (type == REPRESENTATIVE || type == REFERENCE_AND_REPRESENTATIVE) {
             xmlObj.setIsRepresentativeProteome(true);
-        } else if (type == org.uniprot.core.proteome.ProteomeType.REDUNDANT) {
-            xmlObj.setIsReferenceProteome(true);
         }
         xmlObj.setModified(XmlConverterHelper.dateToXml(uniObj.getModified()));
         xmlObj.setStrain(uniObj.getStrain());
         xmlObj.setIsolate(uniObj.getIsolate());
-        xmlObj.setSource(uniObj.getSourceDb());
-        xmlObj.setSuperregnum(SuperregnumType.fromValue(uniObj.getSuperkingdom().getName()));
 
         uniObj.getComponents().stream()
                 .map(componentConverter::toXml)
                 .forEach(val -> xmlObj.getComponent().add(val));
 
-        uniObj.getCanonicalProteins().stream()
-                .map(canonicalProteinConverter::toXml)
-                .forEach(val -> xmlObj.getCanonicalGene().add(val));
-
         uniObj.getRedudantProteomes().stream()
                 .map(redundantProteomeConverter::toXml)
                 .forEach(val -> xmlObj.getRedundantProteome().add(val));
-
-        uniObj.getProteomeCrossReferences().stream()
-                .map(xrefConverter::toXml)
-                .forEach(val -> xmlObj.getDbReference().add(val));
 
         uniObj.getCitations().stream()
                 .map(referenceConverter::toXml)
@@ -179,38 +166,73 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
             xmlObj.setRedundantTo(uniObj.getRedundantTo().getValue());
         }
 
-        AnnotationScoreType annotationScore = xmlFactory.createAnnotationScoreType();
-        annotationScore.setNormalizedAnnotationScore(uniObj.getAnnotationScore());
-        xmlObj.setAnnotationScore(annotationScore);
+        if (notNull(uniObj.getAnnotationScore())) {
+            AnnotationScoreType annotationScore = xmlFactory.createAnnotationScoreType();
+            annotationScore.setNormalizedAnnotationScore(uniObj.getAnnotationScore());
+            xmlObj.setAnnotationScore(annotationScore);
+        }
         if (notNull(uniObj.getPanproteome())) {
             xmlObj.setPanproteome(uniObj.getPanproteome().getValue());
         }
         if (notNull(uniObj.getGenomeAssembly())) {
             xmlObj.setGenomeAssembly(genomeAssemblyConverter.toXml(uniObj.getGenomeAssembly()));
         }
+        if (notNull(uniObj.getGenomeAnnotation())) {
+            xmlObj.setGenomeAnnotation(
+                    genomeAnnotationConverter.toXml(uniObj.getGenomeAnnotation()));
+        }
         if (notNull(uniObj.getProteomeCompletenessReport())) {
-            ProteomeCompletenessReport reports = uniObj.getProteomeCompletenessReport();
-            if (notNull(reports.getBuscoReport())) {
-                xmlObj.getScores().add(scoreBuscoConverter.toXml(reports.getBuscoReport()));
-            }
-            if (notNull(reports.getCPDReport())) {
-                xmlObj.getScores().add(scoreCPDConverter.toXml(reports.getCPDReport()));
-            }
+            convertCompletenessReport(uniObj.getProteomeCompletenessReport(), xmlObj);
+        }
+        if (notNullNotEmpty(uniObj.getExclusionReasons())) {
+            convertExclusionReasons(uniObj, xmlObj);
         }
         return xmlObj;
     }
 
-    private Taxonomy getTaxonomy(Long taxonId, String name) {
-        TaxonomyBuilder builder = new TaxonomyBuilder();
-        return builder.taxonId(taxonId).scientificName(name).build();
+    private void convertCompletenessReport(ProteomeCompletenessReport reports, Proteome xmlObj) {
+        if (notNull(reports.getBuscoReport())) {
+            xmlObj.getScores().add(scoreBuscoConverter.toXml(reports.getBuscoReport()));
+        }
+        if (notNull(reports.getCPDReport())) {
+            xmlObj.getScores().add(scoreCPDConverter.toXml(reports.getCPDReport()));
+        }
     }
 
-    private org.uniprot.core.proteome.ProteomeType getProteomeType(Proteome t) {
-        if (t.isIsReferenceProteome()) return org.uniprot.core.proteome.ProteomeType.REFERENCE;
-        else if (t.isIsRepresentativeProteome()) {
-            return org.uniprot.core.proteome.ProteomeType.REPRESENTATIVE;
+    private void convertExclusionReasons(ProteomeEntry uniObj, Proteome xmlObj) {
+        List<String> exclusions =
+                uniObj.getExclusionReasons().stream()
+                        .map(ExclusionReason::getDisplayName)
+                        .collect(Collectors.toList());
+        ExclusionType exclusionType = xmlFactory.createExclusionType();
+        exclusionType.getExclusionReason().addAll(exclusions);
+        xmlObj.setExcluded(exclusionType);
+    }
+
+    private Taxonomy getTaxonomy(Long taxonId) {
+        if (taxonId != null && taxonId > 0L) {
+            TaxonomyBuilder builder = new TaxonomyBuilder();
+            return builder.taxonId(taxonId).build();
+        } else {
+            return null;
+        }
+    }
+
+    private ProteomeType getProteomeType(Proteome t) {
+        if (t.getExcluded() != null
+                && (t.getExcluded().getExclusionReason() != null)
+                && (!t.getExcluded().getExclusionReason().isEmpty())) {
+            return EXCLUDED;
+        } else if (t.isIsRepresentativeProteome() && (t.isIsReferenceProteome())) {
+            return REFERENCE_AND_REPRESENTATIVE;
+        } else if (t.isIsReferenceProteome()) {
+            return REFERENCE;
+        } else if (t.isIsRepresentativeProteome()) {
+            return REPRESENTATIVE;
         } else if ((t.getRedundantTo() != null) && (!t.getRedundantTo().isEmpty())) {
-            return org.uniprot.core.proteome.ProteomeType.REDUNDANT;
-        } else return org.uniprot.core.proteome.ProteomeType.NORMAL;
+            return REDUNDANT;
+        } else {
+            return NORMAL;
+        }
     }
 }

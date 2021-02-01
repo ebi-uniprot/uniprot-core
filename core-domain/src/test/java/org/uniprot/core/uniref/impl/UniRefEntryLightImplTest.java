@@ -16,7 +16,6 @@ class UniRefEntryLightImplTest {
         assertNotNull(obj);
         assertTrue(obj.getMembers().isEmpty());
         assertTrue(obj.getMemberIdTypes().isEmpty());
-        assertTrue(obj.getOrganismIds().isEmpty());
         assertTrue(obj.getOrganisms().isEmpty());
     }
 }
