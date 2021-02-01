@@ -32,10 +32,7 @@ public class UniRefEntryLightSerialiser extends StdSerializer<UniRefEntryLightIm
             throws IOException {
         value =
                 (UniRefEntryLightImpl)
-                        UniRefEntryLightBuilder.from(value)
-                                .representativeId(getRepresentativeId(value))
-                                .seedId(getSeedId(value))
-                                .build();
+                        UniRefEntryLightBuilder.from(value).seedId(getSeedId(value)).build();
 
         jgen.writeStartObject();
         JavaType javaType = provider.constructType(UniRefEntryLightImpl.class);
@@ -49,10 +46,5 @@ public class UniRefEntryLightSerialiser extends StdSerializer<UniRefEntryLightIm
     private String getSeedId(UniRefEntryLight entry) {
         String[] splitSeedId = entry.getSeedId().split(",");
         return splitSeedId[splitSeedId.length - 1];
-    }
-
-    private String getRepresentativeId(UniRefEntryLight entry) {
-        String[] splitRepId = entry.getRepresentativeId().split(",");
-        return splitRepId[splitRepId.length - 1];
     }
 }
