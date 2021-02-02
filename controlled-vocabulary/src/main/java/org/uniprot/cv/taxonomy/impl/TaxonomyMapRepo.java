@@ -55,6 +55,7 @@ public class TaxonomyMapRepo implements TaxonomyRepo {
         proxyNode.synonymName = node.synonymName();
         proxyNode.mnemonic = node.mnemonic();
         proxyNode.hidden = node.hidden();
+        proxyNode.rank = node.rank();
 
         if (node.hasParent()) {
             proxyNode.parentTaxID = node.parent().id();
@@ -77,6 +78,7 @@ public class TaxonomyMapRepo implements TaxonomyRepo {
         String synonymName;
         String mnemonic;
         boolean hidden;
+        String rank;
 
         @Override
         public int id() {
@@ -106,6 +108,11 @@ public class TaxonomyMapRepo implements TaxonomyRepo {
         @Override
         public boolean hidden() {
             return hidden;
+        }
+
+        @Override
+        public String rank() {
+            return rank;
         }
 
         @Override
@@ -148,6 +155,7 @@ public class TaxonomyMapRepo implements TaxonomyRepo {
                     && Objects.equals(this.scientificName, that.scientificName)
                     && Objects.equals(this.synonymName, that.synonymName)
                     && Objects.equals(this.hidden, that.hidden)
+                    && Objects.equals(this.rank, that.rank)
                     && Objects.equals(this.mnemonic, that.mnemonic);
         }
 
@@ -160,7 +168,8 @@ public class TaxonomyMapRepo implements TaxonomyRepo {
                     this.commonName,
                     this.synonymName,
                     this.mnemonic,
-                    hidden);
+                    this.hidden,
+                    this.rank);
         }
 
         @Override
@@ -181,6 +190,9 @@ public class TaxonomyMapRepo implements TaxonomyRepo {
                     + '\''
                     + ", hidden="
                     + hidden
+                    + ", rank='"
+                    + rank
+                    + '\''
                     + ", mnemonic='"
                     + mnemonic
                     + '\''

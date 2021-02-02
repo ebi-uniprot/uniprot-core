@@ -14,6 +14,8 @@ public interface TaxonomicNode {
 
     boolean hidden();
 
+    String rank();
+
     /**
      * Returns a taxonomic node representing the parent of the current node
      *

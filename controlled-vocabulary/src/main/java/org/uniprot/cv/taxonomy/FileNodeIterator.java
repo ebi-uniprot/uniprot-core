@@ -106,6 +106,7 @@ public class FileNodeIterator implements Iterator<TaxonomicNode> {
                 .withCommonName(commonName)
                 .withSynonymName(parseString(nodeElements[11]))
                 .withMnemonic(parseString(nodeElements[12]))
+                .withRank(parseString(nodeElements[4]))
                 .withHidden(isHidden)
                 .childOf(parentNode)
                 .build();

@@ -20,6 +20,7 @@ public class TaxonomicNodeImpl implements TaxonomicNode {
     private final String synonymName;
     private final String mnemonic;
     private final boolean hidden;
+    private final String rank;
 
     private final TaxonomicNode parent;
 
@@ -30,6 +31,7 @@ public class TaxonomicNodeImpl implements TaxonomicNode {
             String synonymName,
             String mnemonic,
             boolean hidden,
+            String rank,
             TaxonomicNode parent) {
         this.id = id;
         this.scientificName = scientificName;
@@ -37,6 +39,7 @@ public class TaxonomicNodeImpl implements TaxonomicNode {
         this.synonymName = synonymName;
         this.mnemonic = mnemonic;
         this.hidden = hidden;
+        this.rank = rank;
         this.parent = parent;
     }
 
@@ -71,6 +74,11 @@ public class TaxonomicNodeImpl implements TaxonomicNode {
     }
 
     @Override
+    public String rank() {
+        return this.rank;
+    }
+
+    @Override
     public TaxonomicNode parent() {
         return this.parent;
     }
@@ -86,6 +94,7 @@ public class TaxonomicNodeImpl implements TaxonomicNode {
         private String synonymName;
         private String mnemonic;
         private boolean hidden;
+        private String rank;
         private TaxonomicNode parent;
 
         public Builder(int id, String scientificName) {
@@ -113,6 +122,11 @@ public class TaxonomicNodeImpl implements TaxonomicNode {
             return this;
         }
 
+        public Builder withRank(String rank) {
+            this.rank = rank;
+            return this;
+        }
+
         public Builder childOf(TaxonomicNode parent) {
             this.parent = parent;
             return this;
@@ -120,7 +134,7 @@ public class TaxonomicNodeImpl implements TaxonomicNode {
 
         public TaxonomicNodeImpl build() {
             return new TaxonomicNodeImpl(
-                    id, scientificName, commonName, synonymName, mnemonic, hidden, parent);
+                    id, scientificName, commonName, synonymName, mnemonic, hidden, rank, parent);
         }
     }
 
@@ -140,6 +154,8 @@ public class TaxonomicNodeImpl implements TaxonomicNode {
                 && Objects.equals(this.parent, that.parent)
                 && Objects.equals(this.scientificName, that.scientificName)
                 && Objects.equals(this.synonymName, that.synonymName)
+                && Objects.equals(this.hidden, that.hidden)
+                && Objects.equals(this.rank, that.rank)
                 && Objects.equals(this.mnemonic, that.mnemonic);
     }
 
@@ -152,7 +168,8 @@ public class TaxonomicNodeImpl implements TaxonomicNode {
                 this.scientificName,
                 this.synonymName,
                 this.mnemonic,
-                this.hidden);
+                this.hidden,
+                this.rank);
     }
 
     @Override
@@ -171,6 +188,9 @@ public class TaxonomicNodeImpl implements TaxonomicNode {
                 + '\''
                 + ", hidden="
                 + hidden
+                + ", rank='"
+                + rank
+                + '\''
                 + ", parent="
                 + parent
                 + '}';

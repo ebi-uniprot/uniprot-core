@@ -37,6 +37,7 @@ class FileNodeIteratorTest {
         assertEquals("eubacteria", bacteria.commonName());
         assertNull(bacteria.synonymName());
         assertFalse(bacteria.hidden());
+        assertEquals("superkingdom", bacteria.rank());
 
         TaxonomicNode avian = resultMap.get(269446);
         assertNotNull(avian);
@@ -44,6 +45,7 @@ class FileNodeIteratorTest {
         assertEquals("Avian leukosis virus RSA", avian.scientificName());
         assertEquals("RSV-SRA", avian.commonName());
         assertEquals("Rous sarcoma virus (strain Schmidt-Ruppin A)", avian.synonymName());
+        assertEquals("no rank", avian.rank());
         assertTrue( avian.hidden());
     }
 
