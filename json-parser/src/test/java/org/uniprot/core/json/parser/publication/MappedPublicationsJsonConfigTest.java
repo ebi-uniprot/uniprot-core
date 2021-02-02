@@ -1,34 +1,36 @@
 package org.uniprot.core.json.parser.publication;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreType;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.Value;
-import org.uniprot.core.impl.ValueImpl;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.ObjectsForTests;
+import org.uniprot.core.citation.CitationDatabase;
+import org.uniprot.core.citation.Submission;
+import org.uniprot.core.citation.SubmissionDatabase;
+import org.uniprot.core.citation.impl.AuthorBuilder;
+import org.uniprot.core.citation.impl.PublicationDateBuilder;
+import org.uniprot.core.citation.impl.SubmissionBuilder;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
-import org.uniprot.core.publication.MappedPublications;
-import org.uniprot.core.publication.impl.MappedPublicationsBuilder;
+import org.uniprot.core.publication.*;
+import org.uniprot.core.publication.impl.*;
+import org.uniprot.core.uniprotkb.ReferenceComment;
+import org.uniprot.core.uniprotkb.ReferenceCommentType;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
+import org.uniprot.core.uniprotkb.impl.ReferenceCommentBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
-import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionImpl;
-import org.uniprot.core.util.Utils;
 
-import java.io.Serializable;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
-import static org.uniprot.core.json.parser.publication.CommunityMappedReferenceTest.getCompleteCommunityMappedReference;
-import static org.uniprot.core.json.parser.publication.ComputationallyMappedReferenceTest.getCompleteComputationallyMappedReference;
-import static org.uniprot.core.json.parser.publication.UniProtKBMappedReferenceTest.getCompleteUniProtKBMappedReference;
 
-/**
- * @author sahmad
- * Created 18/12/2020
- */
+/** @author sahmad Created 18/12/2020 */
 class MappedPublicationsJsonConfigTest {
     @Test
     void testSimpleMappedPublications() {
@@ -42,17 +44,19 @@ class MappedPublicationsJsonConfigTest {
     void testCompleteMappedPublications() {
         MappedPublications mappedPublications = getCompleteMappedPublications();
         ValidateJson.verifyJsonRoundTripParser(
-                MappedPublicationsJsonConfig.getInstance().getFullObjectMapper(), mappedPublications);
+                MappedPublicationsJsonConfig.getInstance().getFullObjectMapper(),
+                mappedPublications);
         ValidateJson.verifyEmptyFields(mappedPublications);
     }
 
     @Test
-    void testPrettyPrintedMappedPublicationsIgnoresUniProtKBAccession() throws JsonProcessingException {
+    void testPrettyPrintedMappedPublicationsIgnoresUniProtKBAccession()
+            throws JsonProcessingException {
         MappedPublications mappedPublications = getCompleteMappedPublications();
         ObjectMapper mapper = MappedPublicationsJsonConfig.getInstance().getSimpleObjectMapper();
-        String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(mappedPublications);
+        String json =
+                mapper.writerWithDefaultPrettyPrinter().writeValueAsString(mappedPublications);
 
-        System.out.println(json);
         assertThat(json, containsString("uniProtKBMappedReference"));
         assertThat(json, not(containsString("uniProtKBAccession")));
     }
@@ -65,104 +69,87 @@ class MappedPublicationsJsonConfigTest {
         return builder.build();
     }
 
-    public class Item {
-        private int id;
+    static UniProtKBMappedReference getCompleteUniProtKBMappedReference() {
+        SubmissionBuilder citationBuilder = new SubmissionBuilder();
+        citationBuilder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ);
+        citationBuilder.authoringGroupsAdd("sample author");
+        citationBuilder.authorsAdd(new AuthorBuilder("auth name").build());
+        CrossReference<CitationDatabase> xref =
+                new CrossReferenceBuilder<CitationDatabase>()
+                        .database(CitationDatabase.AGRICOLA)
+                        .id("id2")
+                        .build();
+        citationBuilder
+                .title("book title")
+                .publicationDate(new PublicationDateBuilder("12-12-20").build());
+        citationBuilder.citationCrossReferencesAdd(xref);
+        Submission citation = citationBuilder.build();
+        UniProtKBAccession accession = new UniProtKBAccessionBuilder("P12345").build();
+        MappedSource mappedSource = new MappedSourceBuilder().name("src").id("srcId").build();
+        String pubMedId = "12345";
+        Set<String> cats = new HashSet<>();
+        cats.add("cat1");
+        cats.add("cat2");
+        List<ReferenceComment> comments = new ArrayList<>();
+        comments.add(
+                new ReferenceCommentBuilder()
+                        .type(ReferenceCommentType.PLASMID)
+                        .value("val1")
+                        .evidencesAdd(ObjectsForTests.createEvidence())
+                        .build());
+        comments.add(
+                new ReferenceCommentBuilder()
+                        .type(ReferenceCommentType.STRAIN)
+                        .value("val2")
+                        .evidencesAdd(ObjectsForTests.createEvidence())
+                        .build());
 
-        public int getId() {
-            return id;
-        }
-
-        private UniProtKBAccession uniProtKBAccession;
-        private Value value;
-        private User owner;
-
-        public UniProtKBAccession getUniProtKBAccession() {
-            return uniProtKBAccession;
-        }
-
-        public Value getValue() {
-            return value;
-        }
-
-        public User getOwner() {
-            return owner;
-        }
+        UniProtKBMappedReferenceBuilder builder = new UniProtKBMappedReferenceBuilder();
+        builder.uniProtKBAccession(accession).source(mappedSource);
+        builder.pubMedId(pubMedId).sourceCategoriesSet(cats);
+        builder.referenceCommentsSet(comments);
+        builder.referencePositionsAdd("1");
+        builder.referenceNumber(123);
+        builder.citation(citation);
+        return builder.build();
     }
 
-    public interface UserIn extends Serializable {
-        String getName();
-        UniProtKBAccession getUniProtKBAccession();
+    static CommunityMappedReference getCompleteCommunityMappedReference() {
+        String protOrGene = "protOrGene";
+        String function = "function";
+        String disease = "disease";
+        String comment = "comment";
+        UniProtKBAccession accession = new UniProtKBAccessionBuilder("P12345").build();
+        MappedSource mappedSource = new MappedSourceBuilder().name("src").id("srcId").build();
+        String pubMedId = "12345";
+        Set<String> cats = new HashSet<>();
+        cats.add("cat1");
+        cats.add("cat2");
 
-        default boolean hasName() {
-            return Utils.notNullNotEmpty(getName());
-        }
+        CommunityAnnotationBuilder communityAnnotationBuilder = new CommunityAnnotationBuilder();
+        communityAnnotationBuilder
+                .comment(comment)
+                .proteinOrGene(protOrGene)
+                .function(function)
+                .disease(disease);
+        CommunityMappedReferenceBuilder builder = new CommunityMappedReferenceBuilder();
+        builder.communityAnnotation(communityAnnotationBuilder.build());
+        builder.uniProtKBAccession(accession).source(mappedSource);
+        builder.pubMedId(pubMedId).sourceCategoriesSet(cats);
+        return builder.build();
     }
 
-    public class User implements UserIn {
-        private static final long serialVersionUID = -5830200688641831547L;
-        private String name;
-        private UniProtKBAccession uniProtKBAccession;
-
-        User() {}
-        public User(String string) {
-            name = string;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        @Override
-        public UniProtKBAccession getUniProtKBAccession() {
-            return uniProtKBAccession;
-        }
-
-        @Override
-        public String toString() {
-            return name;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            User user = (User) o;
-            return Objects.equals(name, user.name) && Objects
-                    .equals(uniProtKBAccession, user.uniProtKBAccession);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(name, uniProtKBAccession);
-        }
-    }
-
-    @JsonIgnoreType
-    public class MyMixInForIgnoreType {}
-
-    @Test
-    void doIt() throws JsonProcessingException {
-        //        u1.name = "thing";
-
-        Item item = new Item();
-        item.id = 1;
-        item.uniProtKBAccession = new UniProtKBAccessionBuilder("acc").build();
-        item.value = new ValueImpl("my value");
-        User thing = new User("thing");
-        thing.uniProtKBAccession = new UniProtKBAccessionBuilder("acc2").build();
-        item.owner = thing;
-
-        String result = new ObjectMapper().writeValueAsString(item);
-        System.out.println(result);
-//        assertThat(result, containsString("owner"));
-
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.addMixIn(Value.class, MyMixInForIgnoreType.class);
-//        mapper.addMixIn(UserIn.class, MyMixInForIgnoreType.class);
-        mapper.addMixIn(UniProtKBAccession.class, MyMixInForIgnoreType.class);
-
-        result = mapper.writeValueAsString(item);
-        System.out.println(result);
-//        assertThat(result, not(containsString("owner")));
+    static ComputationallyMappedReference getCompleteComputationallyMappedReference() {
+        UniProtKBAccession accession = new UniProtKBAccessionBuilder("P12345").build();
+        MappedSource mappedSource = new MappedSourceBuilder().name("src").id("srcId").build();
+        String pubMedId = "12345";
+        Set<String> cats = new HashSet<>();
+        cats.add("cat1");
+        cats.add("cat2");
+        ComputationallyMappedReferenceBuilder builder = new ComputationallyMappedReferenceBuilder();
+        builder.annotation("annotation");
+        builder.uniProtKBAccession(accession).source(mappedSource);
+        builder.pubMedId(pubMedId).sourceCategoriesSet(cats);
+        return builder.build();
     }
 }
