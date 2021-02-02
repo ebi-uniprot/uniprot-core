@@ -11,6 +11,8 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.github.bohnman.squiggly.filter.SquigglyPropertyFilter;
 import com.github.bohnman.squiggly.filter.SquigglyPropertyFilterMixin;
 
+import java.util.Set;
+
 /** @author lgonzales */
 public abstract class JsonConfig {
 
@@ -25,10 +27,15 @@ public abstract class JsonConfig {
         return objMapper;
     }
 
-    // common setting applicable to skinny object mapper
     public ObjectMapper getDefaultSimpleObjectMapper() {
         ObjectMapper objMapper = getDefaultObjectMapper();
         objMapper.setAnnotationIntrospector(new SimpleAnnotationIntrospector());
+        return objMapper;
+    }
+
+    protected ObjectMapper getSimpleObjectMapperWithIgnoredTypes(Set<Class<?>> ignoredTypes) {
+        ObjectMapper objMapper = getDefaultObjectMapper();
+        objMapper.setAnnotationIntrospector(new SimpleAnnotationIntrospector(ignoredTypes));
         return objMapper;
     }
 
