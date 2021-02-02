@@ -157,7 +157,14 @@ class TaxonomicNodeImplTest {
     }
 
     public static TaxonomicNode createTaxonomicNode(
-            int id, String sn, String cn, String sy, String mn, boolean hidden, String rank, TaxonomicNode parent) {
+            int id,
+            String sn,
+            String cn,
+            String sy,
+            String mn,
+            boolean hidden,
+            String rank,
+            TaxonomicNode parent) {
         TaxonomicNodeImpl.Builder builder = new TaxonomicNodeImpl.Builder(id, sn);
         builder.withCommonName(cn)
                 .withSynonymName(sy)

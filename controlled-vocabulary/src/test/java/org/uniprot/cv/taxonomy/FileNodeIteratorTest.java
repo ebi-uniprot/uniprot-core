@@ -1,5 +1,7 @@
 package org.uniprot.cv.taxonomy;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -46,7 +48,7 @@ class FileNodeIteratorTest {
         assertEquals("RSV-SRA", avian.commonName());
         assertEquals("Rous sarcoma virus (strain Schmidt-Ruppin A)", avian.synonymName());
         assertEquals("no rank", avian.rank());
-        assertTrue( avian.hidden());
+        assertTrue(avian.hidden());
     }
 
     @Test
