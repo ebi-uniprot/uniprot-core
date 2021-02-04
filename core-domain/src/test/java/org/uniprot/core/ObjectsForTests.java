@@ -45,7 +45,9 @@ import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 
 public class ObjectsForTests {
@@ -182,13 +184,16 @@ public class ObjectsForTests {
     }
 
     public static EvidencedValue createEvidenceValueWithSingleEvidence() {
-        Evidence evidence =
-                new EvidenceBuilder()
-                        .databaseName("CGD")
-                        .databaseId("CGD")
-                        .evidenceCode(EvidenceCode.ECO_0000259)
-                        .build();
+        Evidence evidence = getCompleteEvidence();
         return new EvidencedValueBuilder().evidencesAdd(evidence).value("CGD").build();
+    }
+
+    public static Evidence getCompleteEvidence() {
+        return new EvidenceBuilder()
+                .databaseName("CGD")
+                .databaseId("CGD")
+                .evidenceCode(EvidenceCode.ECO_0000259)
+                .build();
     }
 
     public static List<EvidencedValue> createEvidenceValuesWithEvidences() {
@@ -237,8 +242,7 @@ public class ObjectsForTests {
 
     public static List<UniParcCrossReference> uniParcDBCrossReferences() {
         List<Property> properties = new ArrayList<>();
-        properties.add(new Property(UniParcCrossReference.PROPERTY_PROTEIN_NAME, "some pname"));
-        properties.add(new Property(UniParcCrossReference.PROPERTY_GENE_NAME, "some gname"));
+        properties.add(new Property("propertyOne", "some pname"));
         UniParcCrossReference xref =
                 new UniParcCrossReferenceBuilder()
                         .versionI(3)
@@ -249,11 +253,17 @@ public class ObjectsForTests {
                         .created(LocalDate.of(2017, 5, 17))
                         .lastUpdated(LocalDate.of(2017, 2, 27))
                         .propertiesSet(properties)
+                        .chain("chainValue")
+                        .component("componentValue")
+                        .geneName("geneNameValue")
+                        .ncbiGi("ncbiGiValue")
+                        .proteinName("proteinNameValue")
+                        .proteomeId("proteomeId")
+                        .taxonomy(getCompleteOrganism())
                         .build();
 
         List<Property> properties2 = new ArrayList<>();
-        properties2.add(new Property(UniParcCrossReference.PROPERTY_PROTEIN_NAME, "some pname"));
-        properties2.add(new Property(UniParcCrossReference.PROPERTY_NCBI_TAXONOMY_ID, "9606"));
+        properties.add(new Property("propertyTwo", "some pname"));
 
         UniParcCrossReference xref2 =
                 new UniParcCrossReferenceBuilder()
@@ -265,6 +275,13 @@ public class ObjectsForTests {
                         .created(LocalDate.of(2017, 2, 12))
                         .lastUpdated(LocalDate.of(2017, 4, 23))
                         .propertiesSet(properties2)
+                        .chain("chainValue")
+                        .component("componentValue")
+                        .geneName("geneNameValue")
+                        .ncbiGi("ncbiGiValue")
+                        .proteinName("proteinNameValue")
+                        .proteomeId("proteomeId")
+                        .taxonomy(getCompleteOrganism())
                         .build();
 
         return Arrays.asList(xref, xref2);
@@ -478,6 +495,17 @@ public class ObjectsForTests {
         builder.inactiveReason(getCompleteTaxonomyInactiveReason());
         builder.statistics(getCompleteTaxonomyStatistics());
         return builder;
+    }
+
+    private static Organism getCompleteOrganism() {
+        return new OrganismBuilder()
+                .taxonId(9606)
+                .scientificName("Homo sapiens")
+                .commonName("Human")
+                .synonymsSet(singletonList("Some name"))
+                .lineagesAdd("lineageVAlue")
+                .evidencesAdd(getCompleteEvidence())
+                .build();
     }
 
     public static Taxonomy getCompleteTaxonomy() {

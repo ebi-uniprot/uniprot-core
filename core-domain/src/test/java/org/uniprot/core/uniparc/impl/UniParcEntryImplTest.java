@@ -22,20 +22,9 @@ class UniParcEntryImplTest {
                         uniParcDBCrossReferences(),
                         new SequenceBuilder("seq").build(),
                         sequenceFeatures(),
-                        taxonomies(),
                         "reason");
         UniParcEntry obj = UniParcEntryBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
-    }
-
-    @Test
-    void canGetTaxonomiesFromDbCrossRef_whenTaxonomiesNotPresent() {
-        UniParcEntry obj =
-                new UniParcEntryBuilder()
-                        .uniParcCrossReferencesSet(uniParcDBCrossReferences())
-                        .build();
-        assertNotNull(obj.getTaxonomies());
-        assertFalse(obj.getUniParcCrossReferences().isEmpty());
     }
 }

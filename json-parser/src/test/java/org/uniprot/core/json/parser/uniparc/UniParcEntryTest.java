@@ -13,13 +13,15 @@ import org.uniprot.core.Property;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
+import org.uniprot.core.json.parser.uniprot.CreateUtils;
 import org.uniprot.core.uniparc.*;
-import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
 import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.uniparc.impl.UniParcEntryBuilder;
-import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -61,6 +63,18 @@ public class UniParcEntryTest {
                         signatureType -> {
                             sfs.add(getSeqFeature(signatureType));
                         });
+
+        List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730");
+        Organism organism =
+                new OrganismBuilder()
+                        .taxonId(123L)
+                        .scientificName("ScientificName")
+                        .lineagesAdd("Lineage 1")
+                        .commonName("common Name")
+                        .synonymsAdd("syn name")
+                        .evidencesSet(evidences)
+                        .build();
+
         builder.uniParcId("UPI0000083A08")
                 .sequence(uniSeq)
                 .sequenceFeaturesSet(sfs)
@@ -73,6 +87,13 @@ public class UniParcEntryTest {
                                 .active(true)
                                 .created(LocalDate.of(2003, 4, 1))
                                 .lastUpdated(LocalDate.of(2007, 11, 22))
+                                .taxonomy(organism)
+                                .geneName("Gel")
+                                .proteomeId("UPI")
+                                .component("ComponentValue")
+                                .chain("chainValue")
+                                .ncbiGi("ncbiGiValue")
+                                .proteinName("proteinNameValue")
                                 .build());
 
         UniParcCrossReferenceBuilder xrefBuilder = new UniParcCrossReferenceBuilder();
@@ -83,25 +104,20 @@ public class UniParcEntryTest {
                 .version(1)
                 .active(true)
                 .created(LocalDate.of(2015, 4, 1))
-                .lastUpdated(LocalDate.of(2019, 5, 8));
+                .lastUpdated(LocalDate.of(2019, 5, 8))
+                .taxonomy(organism)
+                .geneName("Gel")
+                .proteomeId("UPI")
+                .component("ComponentValue")
+                .chain("chainValue")
+                .ncbiGi("ncbiGiValue")
+                .proteinName("proteinNameValue");
         List<Property> properties = new ArrayList<>();
-        properties.add(new Property(UniParcCrossReference.PROPERTY_NCBI_TAXONOMY_ID, "9606"));
-        properties.add(
-                new Property(UniParcCrossReference.PROPERTY_PROTEIN_NAME, "Gelsolin, isoform J"));
-        properties.add(new Property(UniParcCrossReference.PROPERTY_GENE_NAME, "Gel"));
-        properties.add(new Property(UniParcCrossReference.PROPERTY_PROTEOME_ID, "UPI"));
+        properties.add(new Property("Prop1", "Prop1Value"));
         xrefBuilder.propertiesSet(properties);
         builder.uniParcCrossReferencesAdd(xrefBuilder.build());
 
         builder.uniprotExclusionReason("good reason");
-        builder.taxonomiesAdd(
-                new TaxonomyBuilder()
-                        .taxonId(9606)
-                        .scientificName("Homo Sapiens")
-                        .commonName("human")
-                        .mnemonic("value")
-                        .synonymsAdd("syn value")
-                        .build());
         return builder.build();
     }
 
