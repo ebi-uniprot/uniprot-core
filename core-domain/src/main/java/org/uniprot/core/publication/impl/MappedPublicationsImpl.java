@@ -16,7 +16,7 @@ import java.util.Objects;
 public class MappedPublicationsImpl implements MappedPublications {
     private static final long serialVersionUID = -6303466445944690517L;
     private final UniProtKBMappedReference uniProtKBMappedReference;
-    private final List<ComputationallyMappedReference> computationalMappedReferences;
+    private final List<ComputationallyMappedReference> computationallyMappedReferences;
     private final List<CommunityMappedReference> communityMappedReferences;
 
     public MappedPublicationsImpl() {
@@ -25,10 +25,10 @@ public class MappedPublicationsImpl implements MappedPublications {
 
     public MappedPublicationsImpl(
             UniProtKBMappedReference uniProtKBMappedReference,
-            List<ComputationallyMappedReference> computationalMappedReferences,
+            List<ComputationallyMappedReference> computationallyMappedReferences,
             List<CommunityMappedReference> communityMappedReferences) {
         this.uniProtKBMappedReference = uniProtKBMappedReference;
-        this.computationalMappedReferences = Utils.unmodifiableList(computationalMappedReferences);
+        this.computationallyMappedReferences = Utils.unmodifiableList(computationallyMappedReferences);
         this.communityMappedReferences = Utils.unmodifiableList(communityMappedReferences);
     }
 
@@ -38,8 +38,8 @@ public class MappedPublicationsImpl implements MappedPublications {
     }
 
     @Override
-    public List<ComputationallyMappedReference> getComputationalMappedReferences() {
-        return this.computationalMappedReferences;
+    public List<ComputationallyMappedReference> getComputationallyMappedReferences() {
+        return this.computationallyMappedReferences;
     }
 
     @Override
@@ -53,13 +53,13 @@ public class MappedPublicationsImpl implements MappedPublications {
         if (o == null || getClass() != o.getClass()) return false;
         MappedPublicationsImpl that = (MappedPublicationsImpl) o;
         return Objects.equals(uniProtKBMappedReference, that.uniProtKBMappedReference)
-                && Objects.equals(computationalMappedReferences, that.computationalMappedReferences)
+                && Objects.equals(computationallyMappedReferences, that.computationallyMappedReferences)
                 && Objects.equals(communityMappedReferences, that.communityMappedReferences);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
-                uniProtKBMappedReference, computationalMappedReferences, communityMappedReferences);
+                uniProtKBMappedReference, computationallyMappedReferences, communityMappedReferences);
     }
 }

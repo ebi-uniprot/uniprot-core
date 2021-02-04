@@ -12,26 +12,26 @@ import java.util.Objects;
 public class MappedSourceImpl implements MappedSource {
     private static final long serialVersionUID = 7921806426134087556L;
 
-    private final String source;
-    private final String sourceId;
+    private final String name;
+    private final String id;
 
     public MappedSourceImpl() {
         this(null, null);
     }
 
-    public MappedSourceImpl(String source, String sourceId) {
-        this.source = source;
-        this.sourceId = sourceId;
+    public MappedSourceImpl(String name, String id) {
+        this.name = name;
+        this.id = id;
     }
 
     @Override
     public String getName() {
-        return source;
+        return name;
     }
 
     @Override
     public String getId() {
-        return sourceId;
+        return id;
     }
 
     @Override
@@ -39,11 +39,11 @@ public class MappedSourceImpl implements MappedSource {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MappedSourceImpl that = (MappedSourceImpl) o;
-        return Objects.equals(source, that.source) && Objects.equals(sourceId, that.sourceId);
+        return Objects.equals(name, that.name) && Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(source, sourceId);
+        return Objects.hash(name, id);
     }
 }

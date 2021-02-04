@@ -15,8 +15,7 @@ import java.util.Collections;
 import java.util.Set;
 
 class SimpleAnnotationIntrospector extends AnnotationIntrospector {
-    private static final long serialVersionUID = 7321338666065917109L;
-
+    private static final long serialVersionUID = -7042796944330655565L;
     private final Set<Class<?>> ignorableTypes;
 
     SimpleAnnotationIntrospector() {

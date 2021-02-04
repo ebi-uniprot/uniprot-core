@@ -71,7 +71,7 @@ public class UniProtKBMappedReferenceImpl extends AbstractMappedReference
         return referenceNumber == that.referenceNumber &&
                 Objects.equals(referenceComments, that.referenceComments) &&
                 Objects.equals(referencePositions, that.referencePositions) &&
-                Objects.equals(citation, that.getCitation());
+                Objects.equals(citation, that.citation);
     }
 
     @Override

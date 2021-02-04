@@ -61,6 +61,6 @@ public class MappedPublicationsBuilder implements Builder<MappedPublications> {
         return new MappedPublicationsBuilder()
                 .uniProtKBMappedReference(instance.getUniProtKBMappedReference())
                 .communityMappedReferencesSet(instance.getCommunityMappedReferences())
-                .computationalMappedReferencesSet(instance.getComputationalMappedReferences());
+                .computationalMappedReferencesSet(instance.getComputationallyMappedReferences());
     }
 }
