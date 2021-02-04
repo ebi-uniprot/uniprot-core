@@ -95,7 +95,7 @@ class UniParcEntryConverterTest {
                 .active(true)
                 .created(LocalDate.of(2015, 4, 1))
                 .lastUpdated(LocalDate.of(2019, 5, 8))
-                .taxonomy(taxonomy)
+                .organism(taxonomy)
                 .proteinName("Gelsolin, isoform J")
                 .geneName("Gel");
 
@@ -112,7 +112,7 @@ class UniParcEntryConverterTest {
                 .active(true)
                 .created(LocalDate.of(2007, 4, 27))
                 .lastUpdated(LocalDate.of(2007, 4, 27))
-                .taxonomy(taxonomy2)
+                .organism(taxonomy2)
                 .proteinName("some pname")
                 .proteomeId("UP00000564")
                 .component("chromosome 1");

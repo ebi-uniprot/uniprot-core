@@ -86,7 +86,7 @@ class UniParcFastaParserTest {
                         .created(LocalDate.of(2017, 5, 17))
                         .lastUpdated(LocalDate.of(2017, 2, 27))
                         .propertiesSet(properties)
-                        .taxonomy(taxonomy)
+                        .organism(taxonomy)
                         .proteinName("some pname")
                         .geneName("some gname")
                         .build();
@@ -105,7 +105,7 @@ class UniParcFastaParserTest {
                         .created(LocalDate.of(2017, 2, 12))
                         .lastUpdated(LocalDate.of(2017, 4, 23))
                         .propertiesSet(properties2)
-                        .taxonomy(taxonomy2)
+                        .organism(taxonomy2)
                         .proteinName("some pname")
                         .proteomeId("UP00000564")
                         .component("chromosome 1")

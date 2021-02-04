@@ -259,7 +259,7 @@ public class ObjectsForTests {
                         .ncbiGi("ncbiGiValue")
                         .proteinName("proteinNameValue")
                         .proteomeId("proteomeId")
-                        .taxonomy(getCompleteOrganism())
+                        .organism(getCompleteOrganism())
                         .build();
 
         List<Property> properties2 = new ArrayList<>();
@@ -281,7 +281,7 @@ public class ObjectsForTests {
                         .ncbiGi("ncbiGiValue")
                         .proteinName("proteinNameValue")
                         .proteomeId("proteomeId")
-                        .taxonomy(getCompleteOrganism())
+                        .organism(getCompleteOrganism())
                         .build();
 
         return Arrays.asList(xref, xref2);

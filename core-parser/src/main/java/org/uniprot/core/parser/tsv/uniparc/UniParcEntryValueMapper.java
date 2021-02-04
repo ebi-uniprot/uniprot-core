@@ -26,7 +26,7 @@ public class UniParcEntryValueMapper implements EntityValueMapper<UniParcEntry> 
         if (UniParcOrganismMap.contains(fields)) {
             List<Organism> organisms =
                     entry.getUniParcCrossReferences().stream()
-                            .map(UniParcCrossReference::getTaxonomy)
+                            .map(UniParcCrossReference::getOrganism)
                             .filter(Objects::nonNull)
                             .collect(Collectors.toList());
             addData(map, new UniParcOrganismMap(organisms));

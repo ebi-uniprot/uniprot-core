@@ -24,7 +24,7 @@ public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabas
     private final LocalDate lastUpdated;
     private final String geneName;
     private final String proteinName;
-    private final Organism taxonomy;
+    private final Organism organism;
     private final String chain;
     private final String ncbiGi;
     private final String proteomeId;
@@ -47,7 +47,7 @@ public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabas
             LocalDate lastUpdated,
             String geneName,
             String proteinName,
-            Organism taxonomy,
+            Organism organism,
             String chain,
             String ncbiGi,
             String proteomeId,
@@ -60,7 +60,7 @@ public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabas
         this.lastUpdated = lastUpdated;
         this.geneName = geneName;
         this.proteinName = proteinName;
-        this.taxonomy = taxonomy;
+        this.organism = organism;
         this.chain = chain;
         this.ncbiGi = ncbiGi;
         this.proteomeId = proteomeId;
@@ -103,8 +103,8 @@ public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabas
     }
 
     @Override
-    public Organism getTaxonomy() {
-        return taxonomy;
+    public Organism getOrganism() {
+        return organism;
     }
 
     @Override
@@ -140,7 +140,7 @@ public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabas
                 && Objects.equals(getLastUpdated(), that.getLastUpdated())
                 && Objects.equals(getGeneName(), that.getGeneName())
                 && Objects.equals(getProteinName(), that.getProteinName())
-                && Objects.equals(getTaxonomy(), that.getTaxonomy())
+                && Objects.equals(getOrganism(), that.getOrganism())
                 && Objects.equals(getChain(), that.getChain())
                 && Objects.equals(getNcbiGi(), that.getNcbiGi())
                 && Objects.equals(getProteomeId(), that.getProteomeId())
@@ -158,7 +158,7 @@ public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabas
                 getLastUpdated(),
                 getGeneName(),
                 getProteinName(),
-                getTaxonomy(),
+                getOrganism(),
                 getChain(),
                 getNcbiGi(),
                 getProteomeId(),

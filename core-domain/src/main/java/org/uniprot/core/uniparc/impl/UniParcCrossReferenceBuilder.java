@@ -23,7 +23,7 @@ public class UniParcCrossReferenceBuilder
     private LocalDate lastUpdated;
     private String geneName;
     private String proteinName;
-    private Organism taxonomy;
+    private Organism organism;
     private String chain;
     private String ncbiGi;
     private String proteomeId;
@@ -42,7 +42,7 @@ public class UniParcCrossReferenceBuilder
                 lastUpdated,
                 geneName,
                 proteinName,
-                taxonomy,
+                organism,
                 chain,
                 ncbiGi,
                 proteomeId,
@@ -84,8 +84,8 @@ public class UniParcCrossReferenceBuilder
         return this;
     }
 
-    public @Nonnull UniParcCrossReferenceBuilder taxonomy(Organism taxonomy) {
-        this.taxonomy = taxonomy;
+    public @Nonnull UniParcCrossReferenceBuilder organism(Organism taxonomy) {
+        this.organism = taxonomy;
         return this;
     }
 
@@ -120,7 +120,7 @@ public class UniParcCrossReferenceBuilder
                 .lastUpdated(instance.getLastUpdated())
                 .geneName(instance.getGeneName())
                 .proteinName(instance.getProteinName())
-                .taxonomy(instance.getTaxonomy())
+                .organism(instance.getOrganism())
                 .chain(instance.getChain())
                 .ncbiGi(instance.getNcbiGi())
                 .proteomeId(instance.getProteomeId())

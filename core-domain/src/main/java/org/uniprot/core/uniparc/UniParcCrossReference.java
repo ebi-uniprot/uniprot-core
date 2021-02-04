@@ -25,7 +25,7 @@ public interface UniParcCrossReference extends CrossReference<UniParcDatabase> {
 
     String getProteinName();
 
-    Organism getTaxonomy();
+    Organism getOrganism();
 
     String getChain();
 
