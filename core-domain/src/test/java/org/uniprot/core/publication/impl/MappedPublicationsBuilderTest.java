@@ -28,7 +28,7 @@ public class MappedPublicationsBuilderTest {
         assertThat(obj, is(notNullValue()));
         assertThat(obj.getUniProtKBMappedReference(), is(nullValue()));
         assertThat(obj.getCommunityMappedReferences(), is(empty()));
-        assertThat(obj.getComputationalMappedReferences(), is(empty()));
+        assertThat(obj.getComputationallyMappedReferences(), is(empty()));
     }
 
     @Test
@@ -39,7 +39,7 @@ public class MappedPublicationsBuilderTest {
         MappedPublications mappedPubs = builder.build();
         assertThat(mappedPubs, is(notNullValue()));
         assertThat(mappedPubs.getUniProtKBMappedReference(), is(reference));
-        assertThat(mappedPubs.getComputationalMappedReferences(), is(empty()));
+        assertThat(mappedPubs.getComputationallyMappedReferences(), is(empty()));
         assertThat(mappedPubs.getCommunityMappedReferences(), is(empty()));
     }
 
@@ -50,7 +50,7 @@ public class MappedPublicationsBuilderTest {
         builder.computationalMappedReferencesAdd(reference);
         MappedPublications mappedPubs = builder.build();
 
-        assertThat(mappedPubs.getComputationalMappedReferences(), hasSize(1));
+        assertThat(mappedPubs.getComputationallyMappedReferences(), hasSize(1));
         assertThat(mappedPubs.getUniProtKBMappedReference(), is(nullValue()));
         assertThat(mappedPubs.getCommunityMappedReferences(), is(empty()));
     }
@@ -63,7 +63,7 @@ public class MappedPublicationsBuilderTest {
         builder.computationalMappedReferencesSet(Arrays.asList(reference1, reference2));
         MappedPublications mappedPubs = builder.build();
 
-        assertThat(mappedPubs.getComputationalMappedReferences(), hasSize(2));
+        assertThat(mappedPubs.getComputationallyMappedReferences(), hasSize(2));
         assertThat(mappedPubs.getUniProtKBMappedReference(), is(nullValue()));
         assertThat(mappedPubs.getCommunityMappedReferences(), is(empty()));
     }
@@ -77,7 +77,7 @@ public class MappedPublicationsBuilderTest {
 
         assertThat(mappedPubs.getCommunityMappedReferences(), hasSize(1));
         assertThat(mappedPubs.getUniProtKBMappedReference(), is(nullValue()));
-        assertThat(mappedPubs.getComputationalMappedReferences(), is(empty()));
+        assertThat(mappedPubs.getComputationallyMappedReferences(), is(empty()));
     }
 
     @Test
@@ -90,7 +90,7 @@ public class MappedPublicationsBuilderTest {
 
         assertThat(mappedPubs.getCommunityMappedReferences(), hasSize(2));
         assertThat(mappedPubs.getUniProtKBMappedReference(), is(nullValue()));
-        assertThat(mappedPubs.getComputationalMappedReferences(), is(empty()));
+        assertThat(mappedPubs.getComputationallyMappedReferences(), is(empty()));
     }
 
     @Test

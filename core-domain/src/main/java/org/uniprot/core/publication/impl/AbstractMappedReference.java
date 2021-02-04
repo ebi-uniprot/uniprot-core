@@ -3,6 +3,7 @@ package org.uniprot.core.publication.impl;
 import org.uniprot.core.publication.MappedReference;
 import org.uniprot.core.publication.MappedSource;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
+import org.uniprot.core.util.Utils;
 
 import java.util.Set;
 
@@ -25,7 +26,7 @@ public class AbstractMappedReference implements MappedReference {
         this.source = source;
         this.pubMedId = pubMedId;
         this.uniProtKBAccession = uniProtKBAccession;
-        this.sourceCategories = sourceCategories;
+        this.sourceCategories = Utils.unmodifiableSet(sourceCategories);
     }
 
     @Override

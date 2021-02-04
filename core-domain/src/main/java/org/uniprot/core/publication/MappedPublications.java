@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface MappedPublications extends Serializable {
     UniProtKBMappedReference getUniProtKBMappedReference();
-    List<ComputationallyMappedReference> getComputationalMappedReferences();
+    List<ComputationallyMappedReference> getComputationallyMappedReferences();
     List<CommunityMappedReference> getCommunityMappedReferences();
 }

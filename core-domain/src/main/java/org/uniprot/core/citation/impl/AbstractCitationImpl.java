@@ -47,7 +47,7 @@ public abstract class AbstractCitationImpl implements Citation {
 
     @Override
     public boolean hasCitationCrossReferences() {
-        return citationCrossReferences != null && !citationCrossReferences.isEmpty();
+        return Utils.notNullNotEmpty(citationCrossReferences);
     }
 
     @Override
