@@ -48,4 +48,12 @@ class UniParcDatabaseTest {
     void canTellWhichDataBaseAlive() {
         assertTrue(UniParcDatabase.TAIR_ARABIDOPSIS.isAlive());
     }
+    @Test 
+    void hasUrl() {
+    	 assertEquals("https://www.ensembl.org/id/%id", UniParcDatabase.ENSEMBL_VERTEBRATE.getUrl());
+    }
+    @Test
+    void hasNoUrl() {
+    	assertEquals("", UniParcDatabase.VECTORBASE.getUrl());
+    }
 }
