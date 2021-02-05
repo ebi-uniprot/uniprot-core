@@ -12,8 +12,6 @@ import java.util.NoSuchElementException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class FileNodeIteratorTest {
     private static final String FIELD_SEPARATOR = "\t";
     private static final String NULL_PLACEHOLDER = "\\N";
