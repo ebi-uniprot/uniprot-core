@@ -45,7 +45,7 @@ class UniParcDbCrossReferenceTest {
                 .active(true)
                 .created(LocalDate.of(2015, 4, 1))
                 .lastUpdated(LocalDate.of(2019, 5, 8))
-                .taxonomy(organism)
+                .organism(organism)
                 .geneName("Gel")
                 .proteomeId("UPI")
                 .component("ComponentValue")
