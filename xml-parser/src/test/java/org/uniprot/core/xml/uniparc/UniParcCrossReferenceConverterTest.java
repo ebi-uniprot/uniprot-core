@@ -77,7 +77,7 @@ class UniParcCrossReferenceConverterTest {
                 .versionI(1)
                 .version(1)
                 .active(true)
-                .taxonomy(taxonomy)
+                .organism(taxonomy)
                 .proteinName("Gelsolin, isoform J")
                 .proteomeId("proteomeValue")
                 .geneName("Gel")

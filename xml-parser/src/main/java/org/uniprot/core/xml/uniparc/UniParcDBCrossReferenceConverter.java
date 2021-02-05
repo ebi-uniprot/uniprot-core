@@ -79,7 +79,7 @@ public class UniParcDBCrossReferenceConverter
                     builder.component(property.getValue());
                     break;
                 case PROPERTY_NCBI_TAXONOMY_ID:
-                    builder.taxonomy(convertTaxonomy(property.getValue()));
+                    builder.organism(convertTaxonomy(property.getValue()));
                     break;
                 default:
                     throw new XmlReaderException(
@@ -123,8 +123,8 @@ public class UniParcDBCrossReferenceConverter
         if (Utils.notNullNotEmpty(uniObj.getComponent())) {
             properties.add(createProperty(PROPERTY_COMPONENT, uniObj.getComponent()));
         }
-        if (Utils.notNull(uniObj.getTaxonomy())) {
-            String taxonId = String.valueOf(uniObj.getTaxonomy().getTaxonId());
+        if (Utils.notNull(uniObj.getOrganism())) {
+            String taxonId = String.valueOf(uniObj.getOrganism().getTaxonId());
             properties.add(createProperty(PROPERTY_NCBI_TAXONOMY_ID, taxonId));
         }
         xmlObj.getProperty().addAll(properties);
