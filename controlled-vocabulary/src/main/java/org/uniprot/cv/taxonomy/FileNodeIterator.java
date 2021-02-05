@@ -16,8 +16,8 @@ public class FileNodeIterator implements Iterator<TaxonomicNode> {
     private FileReader fileReader;
     private BufferedReader bufferedReader;
     private TaxonomicNode next;
-    private String fieldSeparator;
-    private String nullPlaceholder;
+    private final String fieldSeparator;
+    private final String nullPlaceholder;
 
     private static final String READER_ERROR_MSG = "An exception occurred when closing the reader.";
 
@@ -98,7 +98,7 @@ public class FileNodeIterator implements Iterator<TaxonomicNode> {
         if (commonName == null || commonName.equalsIgnoreCase("\\N")) {
             commonName = parseString(nodeElements[8]); // ncbi_common
         }
-
+        boolean isHidden = "1".equals(nodeElements[2]);
         Integer parentId = parseInteger(nodeElements[1]);
         TaxonomicNode parentNode = createParentNode(parentId);
 
@@ -106,6 +106,8 @@ public class FileNodeIterator implements Iterator<TaxonomicNode> {
                 .withCommonName(commonName)
                 .withSynonymName(parseString(nodeElements[11]))
                 .withMnemonic(parseString(nodeElements[12]))
+                .withRank(parseString(nodeElements[4]))
+                .withHidden(isHidden)
                 .childOf(parentNode)
                 .build();
     }

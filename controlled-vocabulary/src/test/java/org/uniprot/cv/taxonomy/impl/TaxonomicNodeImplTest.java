@@ -8,13 +8,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.cv.taxonomy.TaxonomicNode;
 
-public class TaxonomicNodeImplTest {
+class TaxonomicNodeImplTest {
     private String random;
     private int id;
     private String scientificName;
     private String commonName;
     private String synonymName;
     private String mnemonic;
+    private boolean hidden;
+    private String rank;
     private TaxonomicNode parent;
 
     @BeforeEach
@@ -25,6 +27,8 @@ public class TaxonomicNodeImplTest {
         this.commonName = "cn-" + this.random;
         this.synonymName = "syn-" + this.random;
         this.mnemonic = "mn-" + this.random;
+        this.rank = "rk-" + this.random;
+        this.hidden = true;
         this.parent =
                 new TaxonomicNodeImpl.Builder(this.id - 1, this.scientificName + "parent").build();
     }
@@ -38,6 +42,8 @@ public class TaxonomicNodeImplTest {
                         this.commonName,
                         this.synonymName,
                         this.mnemonic,
+                        this.hidden,
+                        this.rank,
                         null);
         Assertions.assertNotNull(node);
         Assertions.assertEquals(this.id, node.id());
@@ -58,6 +64,8 @@ public class TaxonomicNodeImplTest {
                         this.commonName,
                         this.synonymName,
                         this.mnemonic,
+                        this.hidden,
+                        this.rank,
                         this.parent);
         Assertions.assertNotNull(node);
         Assertions.assertEquals(this.id, node.id());
@@ -65,6 +73,8 @@ public class TaxonomicNodeImplTest {
         Assertions.assertEquals(this.commonName, node.commonName());
         Assertions.assertEquals(this.synonymName, node.synonymName());
         Assertions.assertEquals(this.mnemonic, node.mnemonic());
+        Assertions.assertEquals(this.hidden, node.hidden());
+        Assertions.assertEquals(this.rank, node.rank());
         Assertions.assertNotNull(node.parent());
         Assertions.assertTrue(node.hasParent());
     }
@@ -78,6 +88,8 @@ public class TaxonomicNodeImplTest {
                         this.commonName,
                         this.synonymName,
                         this.mnemonic,
+                        this.hidden,
+                        this.rank,
                         this.parent);
         String str =
                 "TaxonomicNodeImpl{"
@@ -92,6 +104,11 @@ public class TaxonomicNodeImplTest {
                         + ", synonymName='"
                         + this.synonymName
                         + '\''
+                        + ", hidden="
+                        + this.hidden
+                        + ", rank='"
+                        + rank
+                        + '\''
                         + ", parent="
                         + this.parent
                         + '}';
@@ -102,21 +119,21 @@ public class TaxonomicNodeImplTest {
     void testValueEqual() {
         TaxonomicNode n1 = createTaxonomicNode();
         TaxonomicNode n2 = createTaxonomicNode();
-        Assertions.assertTrue(n1.equals(n2));
-        Assertions.assertTrue(n1.hashCode() == n2.hashCode());
+        Assertions.assertEquals(n1, n2);
+        Assertions.assertEquals(n1.hashCode(), n2.hashCode());
     }
 
     @Test
     void testRefEqual() {
         TaxonomicNode n1 = createTaxonomicNode();
-        Assertions.assertTrue(n1.equals(n1));
-        Assertions.assertTrue(n1.hashCode() == n1.hashCode());
+        Assertions.assertEquals(n1, n1);
+        Assertions.assertEquals(n1.hashCode(), n1.hashCode());
     }
 
     @Test
     void testEqualWithNull() {
         TaxonomicNode n1 = createTaxonomicNode();
-        Assertions.assertFalse(n1.equals(null));
+        Assertions.assertNotEquals(null, n1);
     }
 
     @Test
@@ -124,7 +141,7 @@ public class TaxonomicNodeImplTest {
         TaxonomicNode n1 = createTaxonomicNode();
         this.parent = null;
         TaxonomicNode n2 = createTaxonomicNode();
-        Assertions.assertFalse(n1.equals(n2));
+        Assertions.assertNotEquals(n1, n2);
     }
 
     private TaxonomicNode createTaxonomicNode() {
@@ -134,13 +151,27 @@ public class TaxonomicNodeImplTest {
                 this.commonName,
                 this.synonymName,
                 this.mnemonic,
+                this.hidden,
+                this.rank,
                 this.parent);
     }
 
     public static TaxonomicNode createTaxonomicNode(
-            int id, String sn, String cn, String sy, String mn, TaxonomicNode parent) {
+            int id,
+            String sn,
+            String cn,
+            String sy,
+            String mn,
+            boolean hidden,
+            String rank,
+            TaxonomicNode parent) {
         TaxonomicNodeImpl.Builder builder = new TaxonomicNodeImpl.Builder(id, sn);
-        builder.withCommonName(cn).withSynonymName(sy).withMnemonic(mn).childOf(parent);
+        builder.withCommonName(cn)
+                .withSynonymName(sy)
+                .withMnemonic(mn)
+                .withHidden(hidden)
+                .withRank(rank)
+                .childOf(parent);
         return builder.build();
     }
 }
