@@ -20,7 +20,7 @@ public class ProteomeEntryValueMapper implements EntityValueMapper<ProteomeEntry
 
     public static final List<String> PROTEOME_FIELDS =
             Collections.unmodifiableList(
-                    Arrays.asList("upid", "genome_assembly", "protein_count", "busco", "cpd"));
+                    Arrays.asList("upid", "genome_assembly", "protein_count", "busco", "cpd", "genome_representation"));
 
     @Override
     public Map<String, String> mapEntity(ProteomeEntry entry, List<String> fields) {
@@ -51,6 +51,7 @@ public class ProteomeEntryValueMapper implements EntityValueMapper<ProteomeEntry
         map.put(PROTEOME_FIELDS.get(2), "" + entry.getProteinCount());
         map.put(PROTEOME_FIELDS.get(3), "" + getBuscoReport(entry));
         map.put(PROTEOME_FIELDS.get(4), "" + getCPDReport(entry));
+        map.put(PROTEOME_FIELDS.get(5), "" + getGenomeRepresentation(entry));
 
         return map;
     }
@@ -85,6 +86,15 @@ public class ProteomeEntryValueMapper implements EntityValueMapper<ProteomeEntry
         String result = "";
         if (Utils.notNull(entry.getGenomeAssembly())) {
             result = entry.getGenomeAssembly().getAssemblyId();
+        }
+        return result;
+    }
+
+    private String getGenomeRepresentation(ProteomeEntry entry) {
+        String result = "";
+        if (Utils.notNull(entry.getGenomeAssembly()) &&
+                Utils.notNull(entry.getGenomeAssembly().getLevel())) {
+            result = entry.getGenomeAssembly().getLevel().getName();
         }
         return result;
     }

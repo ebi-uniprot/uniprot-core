@@ -25,7 +25,7 @@ class ProteomeEntryValueMapperTest {
     void testGetDataSimple() {
         ProteomeEntry entry = create();
         List<String> fields =
-                Arrays.asList("upid", "genome_assembly", "protein_count", "busco", "cpd");
+                Arrays.asList("upid", "genome_assembly", "protein_count", "busco", "cpd", "genome_representation");
         Map<String, String> entryMap = new ProteomeEntryValueMapper().mapEntity(entry, fields);
 
         assertEquals(fields.size(), entryMap.size());
@@ -34,6 +34,7 @@ class ProteomeEntryValueMapperTest {
         verify("assembly id", "genome_assembly", entryMap);
         verify("C:130.0%[S:140.0%,D:150.0%],F:110.0%,M:120.0%,n:100", "busco", entryMap);
         verify("Close to Standard", "cpd", entryMap);
+        verify("partial", "genome_representation", entryMap);
     }
 
     @Test
@@ -42,7 +43,7 @@ class ProteomeEntryValueMapperTest {
         List<String> fields = Arrays.asList("upid", "lineage");
         Map<String, String> entryMap = new ProteomeEntryValueMapper().mapEntity(entry, fields);
 
-        assertEquals(6, entryMap.size());
+        assertEquals(7, entryMap.size());
         verify("UP000005640", "upid", entryMap);
         verify("Hominidae, Homo", "lineage", entryMap);
     }
@@ -53,7 +54,7 @@ class ProteomeEntryValueMapperTest {
         List<String> fields = Arrays.asList("upid", "components");
         Map<String, String> entryMap = new ProteomeEntryValueMapper().mapEntity(entry, fields);
 
-        assertEquals(6, entryMap.size());
+        assertEquals(7, entryMap.size());
         verify("UP000005640", "upid", entryMap);
         verify("someName1; someName2", "components", entryMap);
     }
@@ -64,7 +65,7 @@ class ProteomeEntryValueMapperTest {
         List<String> fields = Arrays.asList("upid", "organism", "organism_id", "mnemonic");
         Map<String, String> entryMap = new ProteomeEntryValueMapper().mapEntity(entry, fields);
 
-        assertEquals(8, entryMap.size());
+        assertEquals(9, entryMap.size());
         verify("UP000005640", "upid", entryMap);
         verify("Homo sapiens (Human)", "organism", entryMap);
         verify("9606", "organism_id", entryMap);
