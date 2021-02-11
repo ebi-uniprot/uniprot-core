@@ -2,6 +2,7 @@ package org.uniprot.core.xml.uniparc;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.uniprot.core.xml.uniparc.UniParcDBCrossReferenceConverter.PROPERTY_UNIPROTKB_ACCESSION;
 
 import java.time.LocalDate;
 
@@ -19,7 +20,7 @@ import org.uniprot.core.xml.jaxb.uniparc.PropertyType;
  * @author jluo
  * @date: 24 May 2019
  */
-class UniParcCrossReferenceConverterTest {
+class UniParcDBCrossReferenceConverterTest {
 
     @Test
     void testNoProperty() {
@@ -84,6 +85,7 @@ class UniParcCrossReferenceConverterTest {
                 .component("ComponentValue")
                 .ncbiGi("ncbiGiValue")
                 .chain("chainValue")
+                .propertiesAdd(PROPERTY_UNIPROTKB_ACCESSION, "P21802")
                 .created(LocalDate.of(2015, 4, 1))
                 .lastUpdated(LocalDate.of(2019, 5, 8));
 
