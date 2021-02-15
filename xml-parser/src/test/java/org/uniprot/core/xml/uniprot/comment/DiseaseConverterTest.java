@@ -6,6 +6,7 @@ import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
@@ -16,6 +17,7 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
+@Slf4j
 class DiseaseConverterTest {
 
     @Test
@@ -52,7 +54,7 @@ class DiseaseConverterTest {
         assertEquals("CSTNU", xmlObj.getAcronym());
         assertEquals("DI-01465", xmlObj.getId());
         assertEquals("Cystathioninuria", xmlObj.getName());
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, CommentType.Disease.class, "disease"));
     }
 

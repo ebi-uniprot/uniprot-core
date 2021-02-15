@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.description.impl.ECBuilder;
@@ -17,6 +18,7 @@ import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
+@Slf4j
 class ECConverterTest {
 
     @Test
@@ -45,7 +47,7 @@ class ECConverterTest {
         EC converted = converter.fromXml(xmlObj);
         assertEquals(ecObj, converted);
         DbReferenceType dbReference = converter.toXmlDbReference(ecObj);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(
                         dbReference, DbReferenceType.class, "dbReference"));
     }

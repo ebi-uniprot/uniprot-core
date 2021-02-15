@@ -7,8 +7,9 @@ import java.math.BigInteger;
 import java.util.*;
 import java.util.regex.Pattern;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-
+@Slf4j
 class PropertyObjectTest {
 
     /**
@@ -83,7 +84,7 @@ class PropertyObjectTest {
             }
         }
         final long elapsedNano1 = System.nanoTime() - startTime;
-        System.out.println("new BigDecimal(testData[]) : " + elapsedNano1 / 1000000 + " ms");
+        log.debug("new BigDecimal(testData[]) : " + elapsedNano1 / 1000000 + " ms");
 
         startTime = System.nanoTime();
         for (int i = 0; i < iterations; i++) {
@@ -96,8 +97,10 @@ class PropertyObjectTest {
             }
         }
         final long elapsedNano2 = System.nanoTime() - startTime;
-        System.out.println(
+        log.debug(
                 "NUMBER_PATTERN.matcher(testData[]).matches() : " + elapsedNano2 / 1000000 + " ms");
+        assertTrue(elapsedNano1 > 0);
+        assertTrue(elapsedNano2 > 0);
         // don't assert normally as the testing is machine dependent.
         // assertTrue("Expected Pattern matching to be faster than BigDecimal
         // constructor",elapsedNano2<elapsedNano1);
@@ -137,7 +140,7 @@ class PropertyObjectTest {
         assert str.equals(actualKey) : "Incorrect key value. Got " + actualKey + " expected " + str;
 
         final long actualLong = json.optLong("key", 0L);
-        assert actualLong != 0 : "Unable to extract long value for string " + str;
+        assertTrue(actualLong > 0, "Unable to extract long value for string " + str);
         assert 26315000000253009L == actualLong
                 : "Incorrect key value. Got " + actualLong + " expected " + str;
 
@@ -335,8 +338,8 @@ class PropertyObjectTest {
          */
         Object obj = PropertyObject.stringToValue("299792.457999999984");
         assertEquals(
-                obj,
                 299792.458,
+                obj,
                 "evaluates to 299792.458 double instead of 299792.457999999984 BigDecimal!");
         assertTrue(PropertyObject.stringToValue("1") instanceof Integer, "1 should be an Integer!");
         assertTrue(
@@ -380,15 +383,15 @@ class PropertyObjectTest {
         PropertyObject jsonObject = new PropertyObject(str);
         // Comes back as a double, but loses precision
         assertEquals(
-                jsonObject.get("numberWithDecimals"),
                 299792.458,
+                jsonObject.get("numberWithDecimals"),
                 "numberWithDecimals currently evaluates to double 299792.458");
         Object obj = jsonObject.get("largeNumber");
         assertEquals("12345678901234567890", obj, "largeNumber currently evaluates to string");
         // comes back as a double but loses precision
         assertEquals(
-                jsonObject.get("preciseNumber"),
                 0.2,
+                jsonObject.get("preciseNumber"),
                 "preciseNumber currently evaluates to double 0.2");
         obj = jsonObject.get("largeExponent");
         assertEquals("-23.45e2327", obj, "largeExponent should currently evaluates as a string");
@@ -424,28 +427,28 @@ class PropertyObjectTest {
         obj = jsonObject.get("negativeNaN");
         assertEquals("-NaN", obj, "negativeNaN currently evaluates to string");
         assertEquals(
-                jsonObject.get("negativeFraction"),
                 -0.01,
+                jsonObject.get("negativeFraction"),
                 "negativeFraction currently evaluates to double -0.01");
         assertEquals(
-                jsonObject.get("tooManyZerosFraction"),
                 0.001,
+                jsonObject.get("tooManyZerosFraction"),
                 "tooManyZerosFraction currently evaluates to double 0.001");
         assertEquals(
-                jsonObject.get("negativeHexFloat"),
                 -3.99951171875,
+                jsonObject.get("negativeHexFloat"),
                 "negativeHexFloat currently evaluates to double -3.99951171875");
         assertEquals(
-                jsonObject.get("hexFloat"),
                 4.9E-324,
+                jsonObject.get("hexFloat"),
                 "hexFloat currently evaluates to double 4.9E-324");
         assertEquals(
-                jsonObject.get("floatIdentifier"),
                 0.1,
+                jsonObject.get("floatIdentifier"),
                 "floatIdentifier currently evaluates to double 0.1");
         assertEquals(
-                jsonObject.get("doubleIdentifier"),
                 0.1,
+                jsonObject.get("doubleIdentifier"),
                 "doubleIdentifier currently evaluates to double 0.1");
     }
 
@@ -531,7 +534,7 @@ class PropertyObjectTest {
          * support for big numbers, it remains a BigDecimal
          */
         Object bdWrap = PropertyObject.wrap(BigDecimal.ONE);
-        assertEquals(bdWrap, BigDecimal.ONE, "BigDecimal.ONE evaluates to ONE");
+        assertEquals(BigDecimal.ONE, bdWrap, "BigDecimal.ONE evaluates to ONE");
 
         // wrap PropertyObject returns PropertyObject
         String jsonObjectStr =
@@ -1083,19 +1086,19 @@ class PropertyObjectTest {
         List<?> key1List = (List<?>) map.get("key1");
         assertNotNull(key1List, "key1 should not be null");
         assertEquals(3, key1List.size(), "key1 list should have 3 elements");
-        assertEquals(key1List.get(0), 1, "key1 value 1 should be 1");
-        assertEquals(key1List.get(1), 2, "key1 value 2 should be 2");
+        assertEquals(1, key1List.get(0), "key1 value 1 should be 1");
+        assertEquals(2, key1List.get(1), "key1 value 2 should be 2");
 
         Map<?, ?> key1Value3Map = (Map<?, ?>) key1List.get(2);
         assertNotNull(key1Value3Map, "Map should not be null");
         assertEquals(1, key1Value3Map.size(), "Map should have 1 element");
-        assertEquals(key1Value3Map.get("key3"), Boolean.TRUE, "Map key3 should be true");
+        assertEquals(Boolean.TRUE, key1Value3Map.get("key3"), "Map key3 should be true");
 
         Map<?, ?> key2Map = (Map<?, ?>) map.get("key2");
         assertNotNull(key2Map, "key2 should not be null");
         assertEquals(3, key2Map.size(), "key2 map should have 3 elements");
         assertEquals("val1", key2Map.get("key1"), "key2 map key 1 should be val1");
-        assertEquals(key2Map.get("key3"), 42, "key2 map key 3 should be 42");
+        assertEquals(42, key2Map.get("key3"), "key2 map key 3 should be 42");
 
         Map<?, ?> key2Val2Map = (Map<?, ?>) key2Map.get("key2");
         assertNotNull(key2Val2Map, "key2 map key 2 should not be null");
@@ -1142,8 +1145,9 @@ class PropertyObjectTest {
     void testPutNullCollection() {
         // null put key
         PropertyObject jsonObject = new PropertyObject("{}");
+        Set<Object> emptySet = Collections.emptySet();
         assertThrows(
-                NullPointerException.class, () -> jsonObject.put(null, Collections.emptySet()));
+                NullPointerException.class, () -> jsonObject.put(null, emptySet));
     }
 
     @Test
@@ -1178,15 +1182,17 @@ class PropertyObjectTest {
     void testPutNullMap() {
         // null put key
         PropertyObject jsonObject = new PropertyObject("{}");
+        Map<Object, Object> emptyMap = Collections.emptyMap();
         assertThrows(
-                NullPointerException.class, () -> jsonObject.put(null, Collections.emptyMap()));
+                NullPointerException.class, () -> jsonObject.put(null, emptyMap));
     }
 
     @Test
     void testPutNullObject() {
         // null put key
         PropertyObject jsonObject = new PropertyObject("{}");
-        assertThrows(NullPointerException.class, () -> jsonObject.put(null, new Object()));
+        Object obj = new Object();
+        assertThrows(NullPointerException.class, () -> jsonObject.put(null, obj));
     }
 
     @Test

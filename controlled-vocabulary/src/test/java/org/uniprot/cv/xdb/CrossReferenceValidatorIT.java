@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,7 @@ import org.uniprot.cv.xdb.validator.CrossReferenceReader;
 import org.uniprot.cv.xdb.validator.CrossReferenceValidator;
 import org.uniprot.cv.xdb.validator.DBXRef;
 
+@Slf4j
 class CrossReferenceValidatorIT {
     private static Set<String> IGNORED_DBS;
     private static Set<String> NEW_DBS;
@@ -87,7 +89,7 @@ class CrossReferenceValidatorIT {
         // check if all the drlineconfig.json is in sync with dbxref.txt
         for (UniProtDatabaseDetail dbTypeDetail : UniProtDatabaseTypes.INSTANCE.getAllDbTypes()) {
             if (!NEW_DBS.contains(dbTypeDetail.getName())) {
-                System.out.println(dbTypeDetail.getName());
+                log.debug(dbTypeDetail.getName());
                 List<Pair<String, String>> mismatches =
                         CrossReferenceValidator.validate(dbTypeDetail);
                 assertTrue(

@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.xml.jaxb.proteome.Proteome;
 import org.uniprot.core.xml.jaxb.uniref.Entry;
@@ -17,6 +18,7 @@ import org.uniprot.core.xml.writer.DefaultXmlWriter;
  * @author jluo
  * @date: 11 Jun 2019
  */
+@Slf4j
 class XmlChainIteratorTest {
     static final String PROTEOME_ROOT_ELEMENT = "proteome";
     static final String UNIREF_ROOT_ELEMENT = "entry";
@@ -65,7 +67,7 @@ class XmlChainIteratorTest {
             xmlWriter.write(entry);
         }
         is.close();
-        System.out.println(writer.toString());
+        log.debug(writer.toString());
 
         assertEquals(2, count);
     }

@@ -3,6 +3,7 @@ package org.uniprot.core.flatfile.transformer;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CCLineBuilderFactory;
@@ -12,6 +13,7 @@ import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.comment.FreeTextComment;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
+@Slf4j
 class CommentTransformerTest {
     @Test
     void testTextOnly1() {
@@ -178,9 +180,9 @@ class CommentTransformerTest {
         String converted = null;
         if (evidence) converted = fbuilder.buildStringWithEvidence(comment);
         else converted = fbuilder.buildString(comment);
-        System.out.println(tString);
+        log.debug(tString);
 
-        System.out.println(converted);
+        log.debug(converted);
         assertEquals(tString, converted);
     }
 

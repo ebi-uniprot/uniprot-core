@@ -2,11 +2,13 @@ package org.uniprot.core.xml.uniprot;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismHostBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.OrganismType;
 
+@Slf4j
 class OrganismHostConverterTest {
 
     @Test
@@ -14,7 +16,7 @@ class OrganismHostConverterTest {
         OrganismHost organismHost = createOrganismHost();
         OrganismHostConverter converter = new OrganismHostConverter();
         OrganismType xmlOrganism = converter.toXml(organismHost);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlOrganism, OrganismType.class, "organism"));
         OrganismHost converted = converter.fromXml(xmlOrganism);
         assertEquals(organismHost, converted);

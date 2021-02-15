@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
@@ -17,12 +18,13 @@ import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import com.google.common.io.CharSource;
 import com.google.common.io.Resources;
 
+@Slf4j
 class EntryConverterIT {
     @Test
     void testA0A0A0MSM0() {
         String filename = "/entryIT/A0A0A0MSM0.dat";
         String entryStr = readEntryFromFile(filename);
-        System.out.println(entryStr);
+        log.debug(entryStr);
         testEntry(entryStr);
     }
 
@@ -30,7 +32,7 @@ class EntryConverterIT {
     void testD6RDV7() {
         String filename = "/entryIT/D6RDV7.dat";
         String entryStr = readEntryFromFile(filename);
-        System.out.println(entryStr);
+        log.debug(entryStr);
         testEntry(entryStr);
     }
 
@@ -38,7 +40,7 @@ class EntryConverterIT {
     void testQ15758() {
         String filename = "/entryIT/Q15758.dat";
         String entryStr = readEntryFromFile(filename);
-        System.out.println(entryStr);
+        log.debug(entryStr);
         testEntry(entryStr);
     }
 
@@ -46,7 +48,7 @@ class EntryConverterIT {
     void testQ3SYC2() {
         String filename = "/entryIT/Q3SYC2.dat";
         String entryStr = readEntryFromFile(filename);
-        System.out.println(entryStr);
+        log.debug(entryStr);
         testEntry(entryStr);
     }
 
@@ -54,7 +56,7 @@ class EntryConverterIT {
     void testQ63HN8() {
         String filename = "/entryIT/Q63HN8.dat";
         String entryStr = readEntryFromFile(filename);
-        System.out.println(entryStr);
+        log.debug(entryStr);
         testEntry(entryStr);
     }
 
@@ -62,7 +64,7 @@ class EntryConverterIT {
     void testQ9NYP9() {
         String filename = "/entryIT/Q9NYP9.dat";
         String entryStr = readEntryFromFile(filename);
-        // System.out.println(entryStr);
+        // log.debug(entryStr);
         testEntry(entryStr);
     }
 
@@ -70,7 +72,7 @@ class EntryConverterIT {
     void testP05067() {
         String filename = "/entryIT/P05067.dat";
         String entryStr = readEntryFromFile(filename);
-        System.out.println(entryStr);
+        log.debug(entryStr);
         testEntry(entryStr);
     }
 
@@ -92,7 +94,7 @@ class EntryConverterIT {
         try {
             return charSource.read();
         } catch (IOException e) {
-            System.out.println("io exceptions.");
+            log.debug("io exceptions.");
             return "";
         }
     }

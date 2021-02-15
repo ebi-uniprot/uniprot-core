@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.comment.impl.APIsoformBuilder;
@@ -21,6 +22,7 @@ import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
+@Slf4j
 class APCommentConverterTest {
 
     @Test
@@ -37,7 +39,7 @@ class APCommentConverterTest {
         APCommentConverter converter = new APCommentConverter(new EvidenceIndexMapper());
 
         CommentType xmlComment = converter.toXml(comment);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         AlternativeProductsComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);

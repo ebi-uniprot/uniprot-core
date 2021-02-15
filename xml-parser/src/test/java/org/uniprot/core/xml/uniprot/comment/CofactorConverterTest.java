@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
@@ -22,6 +23,7 @@ import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
+@Slf4j
 class CofactorConverterTest {
     CofactorConverter converter;
 
@@ -75,7 +77,7 @@ class CofactorConverterTest {
         assertEquals(2, evs.size());
         assertEquals(1, evs.get(0).intValue());
         assertEquals(3, evs.get(1).intValue());
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(cofactorType, CofactorType.class, "cofactor"));
 
         Cofactor converted = converter.fromXml(cofactorType);

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
@@ -24,6 +25,7 @@ import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
+@Slf4j
 class DiseaseCommentConverterTest {
 
     @Test
@@ -64,7 +66,7 @@ class DiseaseCommentConverterTest {
         DiseaseCommentConverter converter = new DiseaseCommentConverter(new EvidenceIndexMapper());
         CommentType xmlObj = converter.toXml(comment);
 
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj, CommentType.class, "comment"));
+        log.debug(UniProtXmlTestHelper.toXmlString(xmlObj, CommentType.class, "comment"));
         DiseaseComment converted = converter.fromXml(xmlObj);
         assertEquals(comment, converted);
     }

@@ -9,12 +9,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
+@Slf4j
 class CofactorCommentTransformerTest {
     private final CofactorCommentTransformer transformer = new CofactorCommentTransformer();
 
@@ -325,7 +327,7 @@ class CofactorCommentTransformerTest {
         String refsStr1 = "Name=" + nameStr1 + "; Xref=ChEBI:" + refStr1 + ";";
 
         String val = "[" + moleculeStr + "]:\n" + refsStr1;
-        System.out.println(val);
+        log.debug(val);
         CofactorComment comment = transformer.transform(CommentType.COFACTOR, val);
         assertNotNull(comment);
     }

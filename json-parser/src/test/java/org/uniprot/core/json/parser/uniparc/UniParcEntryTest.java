@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Location;
 import org.uniprot.core.Property;
@@ -29,6 +30,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author jluo
  * @date: 24 May 2019
  */
+@Slf4j
 public class UniParcEntryTest {
     @Test
     void test() {
@@ -40,7 +42,7 @@ public class UniParcEntryTest {
         try {
             ObjectMapper mapper = UniParcJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
-            System.out.println(json);
+            log.debug(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }

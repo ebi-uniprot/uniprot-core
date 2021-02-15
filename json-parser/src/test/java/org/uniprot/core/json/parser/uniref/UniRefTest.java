@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.time.LocalDate;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.cv.go.GoAspect;
@@ -26,6 +27,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author jluo
  * @date: 14 Aug 2019
  */
+@Slf4j
 public class UniRefTest {
     @Test
     void testUniRefMember() {
@@ -36,7 +38,7 @@ public class UniRefTest {
         try {
             ObjectMapper mapper = UniRefEntryJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(member);
-            System.out.println(json);
+            log.debug(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }
@@ -77,7 +79,7 @@ public class UniRefTest {
         try {
             ObjectMapper mapper = UniRefEntryJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(member);
-            System.out.println(json);
+            log.debug(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }
@@ -123,7 +125,7 @@ public class UniRefTest {
         try {
             ObjectMapper mapper = UniRefEntryJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
-            System.out.println(json);
+            log.debug(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }

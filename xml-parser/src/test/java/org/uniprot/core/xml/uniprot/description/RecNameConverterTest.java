@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.description.Name;
@@ -20,6 +21,7 @@ import org.uniprot.core.xml.jaxb.uniprot.ProteinType.RecommendedName;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
+@Slf4j
 class RecNameConverterTest {
 
     @Test
@@ -41,7 +43,7 @@ class RecNameConverterTest {
 
         RecommendedName xmlObj = converter.toXml(recName);
 
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, RecommendedName.class, "recommendedName"));
         ProteinName converted = converter.fromXml(xmlObj);
         assertEquals(recName, converted);
@@ -61,7 +63,7 @@ class RecNameConverterTest {
 
         RecommendedName xmlObj = converter.toXml(recName);
 
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, RecommendedName.class, "recommendedName"));
         ProteinName converted = converter.fromXml(xmlObj);
         assertEquals(recName, converted);
@@ -81,7 +83,7 @@ class RecNameConverterTest {
 
         RecommendedName xmlObj = converter.toXml(recName);
 
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, RecommendedName.class, "recommendedName"));
         ProteinName converted = converter.fromXml(xmlObj);
         assertEquals(recName, converted);

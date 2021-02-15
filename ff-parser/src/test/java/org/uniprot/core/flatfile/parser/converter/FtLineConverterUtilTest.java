@@ -4,9 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.regex.Matcher;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineConverterUtil;
 
+@Slf4j
 class FtLineConverterUtilTest {
     @Test
     void testCardohydNoDescr() {
@@ -55,10 +57,10 @@ class FtLineConverterUtilTest {
     private void printMatcher(Matcher matcher) {
         if (matcher.matches()) {
             for (int i = 0; i <= matcher.groupCount(); i++) {
-                System.out.println(i + "\t" + matcher.group(i));
+                log.debug(i + "\t" + matcher.group(i));
             }
         } else {
-            System.out.println("NOT MATCHED");
+            log.debug("NOT MATCHED");
         }
     }
 

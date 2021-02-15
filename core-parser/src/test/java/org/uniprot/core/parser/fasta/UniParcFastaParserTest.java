@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Location;
 import org.uniprot.core.Property;
@@ -26,13 +27,14 @@ import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
  * @author jluo
  * @date: 24 Jun 2019
  */
+@Slf4j
 class UniParcFastaParserTest {
 
     @Test
     void testToFasta() {
         UniParcEntry entry = create();
         String fasta = UniParcFastaParser.toFasta(entry);
-        System.out.println(fasta);
+        log.debug(fasta);
         String expected =
                 ">UPI0000083A08 status=active\n"
                         + "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT\n"

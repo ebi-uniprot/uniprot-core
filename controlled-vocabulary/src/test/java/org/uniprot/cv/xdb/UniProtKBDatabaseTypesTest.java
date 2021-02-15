@@ -7,12 +7,14 @@ import static org.uniprot.core.cv.xdb.UniProtDatabaseCategory.*;
 
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
 import org.uniprot.core.cv.xdb.UniProtDatabaseCategory;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 
+@Slf4j
 class UniProtKBDatabaseTypesTest {
 
     @Test
@@ -20,7 +22,7 @@ class UniProtKBDatabaseTypesTest {
         List<UniProtDatabaseDetail> types = UniProtDatabaseTypes.INSTANCE.getAllDbTypes();
 
         assertFalse(types.isEmpty());
-        System.out.println(types.size());
+        log.debug("types:"+types.size());
     }
 
     @Test

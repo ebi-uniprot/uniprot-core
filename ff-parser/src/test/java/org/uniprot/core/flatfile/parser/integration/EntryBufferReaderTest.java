@@ -6,9 +6,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.EntryBufferedReader;
 
+@Slf4j
 class EntryBufferReaderTest {
     @Test
     void testSimple() {
@@ -77,7 +79,7 @@ class EntryBufferReaderTest {
         String expected = data;
         if (!hasEnd) expected = data + "\n//\n";
         String entry = reader.next();
-        System.out.println(entry);
+        log.debug(entry);
         assertEquals(expected, entry);
     }
 

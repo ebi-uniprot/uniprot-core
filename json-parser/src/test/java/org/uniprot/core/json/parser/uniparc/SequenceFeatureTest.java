@@ -2,6 +2,7 @@ package org.uniprot.core.json.parser.uniparc;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Location;
 import org.uniprot.core.json.parser.ValidateJson;
@@ -17,6 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author jluo
  * @date: 24 May 2019
  */
+@Slf4j
 class SequenceFeatureTest {
     @Test
     void testInterProGroup() {
@@ -29,7 +31,7 @@ class SequenceFeatureTest {
         try {
             ObjectMapper mapper = UniParcJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(domain);
-            System.out.println(json);
+            log.debug(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }
@@ -57,7 +59,7 @@ class SequenceFeatureTest {
         try {
             ObjectMapper mapper = UniParcJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(sf);
-            System.out.println(json);
+            log.debug(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }

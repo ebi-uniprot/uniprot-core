@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocation;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocationValue;
@@ -20,6 +21,7 @@ import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.EvidencedStringTypeConverterTest;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
+@Slf4j
 public class SubcellularLocationConverterTest extends AbstractConverterTest {
 
     @Test
@@ -49,7 +51,7 @@ public class SubcellularLocationConverterTest extends AbstractConverterTest {
         SubcellularLocationConverter converter =
                 new SubcellularLocationConverter(new EvidenceIndexMapper());
         SubcellularLocationType xmlsubcelLocation = converter.toXml(subcelLocation);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(
                         xmlsubcelLocation, SubcellularLocationType.class, "subcellularLocation"));
 

@@ -2,6 +2,7 @@ package org.uniprot.core.flatfile.writer.line;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.OrganismNameLineParser;
 import org.uniprot.core.flatfile.parser.impl.os.OSLineBuilder;
@@ -10,6 +11,7 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
+@Slf4j
 class OSLineBuildTest {
     private OSLineBuilder builder = new OSLineBuilder();
 
@@ -22,8 +24,8 @@ class OSLineBuildTest {
                         createOrganism("Rous sarcoma virus (strain Schmidt-Ruppin B) (RSV-SRB)"));
 
         String resultString = ffLine.toString();
-        // System.out.println(text.getText());
-        System.out.println(resultString);
+        // log.debug(text.getText());
+        log.debug(resultString);
         assertEquals(osLine, resultString);
     }
 
@@ -50,8 +52,8 @@ class OSLineBuildTest {
                                         + " (Protomonas extorquens)"));
 
         String resultString = ffLine.toString();
-        System.out.println(osLine);
-        System.out.println(resultString);
+        log.debug(osLine);
+        log.debug(resultString);
         assertEquals(osLine, resultString);
     }
 }

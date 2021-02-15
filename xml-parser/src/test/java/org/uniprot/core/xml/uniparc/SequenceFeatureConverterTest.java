@@ -2,6 +2,7 @@ package org.uniprot.core.xml.uniparc;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Location;
 import org.uniprot.core.uniparc.SequenceFeature;
@@ -14,6 +15,7 @@ import org.uniprot.core.xml.jaxb.uniparc.SeqFeatureType;
  * @author jluo
  * @date: 24 May 2019
  */
+@Slf4j
 class SequenceFeatureConverterTest {
 
     @Test
@@ -34,7 +36,7 @@ class SequenceFeatureConverterTest {
     private void verify(SequenceFeature sf) {
         SequenceFeatureConverter converter = new SequenceFeatureConverter();
         SeqFeatureType xmlObj = converter.toXml(sf);
-        System.out.println(
+        log.debug(
                 UniParcXmlTestHelper.toXmlString(
                         xmlObj, SeqFeatureType.class, "signatureSequenceMatch"));
         SequenceFeature converted = converter.fromXml(xmlObj);

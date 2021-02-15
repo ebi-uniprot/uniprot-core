@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.json.parser.ValidateJson;
@@ -23,6 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author jluo
  * @date: 24 May 2019
  */
+@Slf4j
 class UniParcDbCrossReferenceTest {
     @Test
     void test() {
@@ -64,7 +66,7 @@ class UniParcDbCrossReferenceTest {
         try {
             ObjectMapper mapper = UniParcJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(xref);
-            System.out.println(json);
+            log.debug(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }
@@ -86,7 +88,7 @@ class UniParcDbCrossReferenceTest {
         try {
             ObjectMapper mapper = UniParcJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(xref);
-            System.out.println(json);
+            log.debug(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }

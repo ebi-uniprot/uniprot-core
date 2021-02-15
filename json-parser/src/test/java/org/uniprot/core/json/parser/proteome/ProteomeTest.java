@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
@@ -25,6 +26,7 @@ import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Slf4j
 public class ProteomeTest {
     @Test
     void testComponent() {
@@ -275,7 +277,7 @@ public class ProteomeTest {
         try {
             ObjectMapper mapper = ProteomeJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(proteome);
-            System.out.println(json);
+            log.debug(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }

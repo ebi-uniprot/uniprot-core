@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.TreeSet;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniProtEntryIterator;
 import org.uniprot.core.flatfile.parser.UniProtParserHelper;
@@ -17,6 +18,7 @@ import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import com.google.common.io.CharSource;
 import com.google.common.io.Resources;
 
+@Slf4j
 class UniProtParserIT {
     @Test
     void testParse() {
@@ -61,7 +63,7 @@ class UniProtParserIT {
         try {
             return charSource.read();
         } catch (IOException e) {
-            System.out.println("io exceptions.");
+            log.debug("io exceptions.");
             return "";
         }
     }

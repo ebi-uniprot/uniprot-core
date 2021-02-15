@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.APIsoform;
 import org.uniprot.core.uniprotkb.comment.IsoformName;
@@ -19,6 +20,7 @@ import org.uniprot.core.xml.jaxb.uniprot.IsoformType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
+@Slf4j
 class APIsoformConverterTest {
 
     @Test
@@ -26,7 +28,7 @@ class APIsoformConverterTest {
         APIsoform apisoform = createAPIsoform();
         APIsoformConverter converter = new APIsoformConverter(new EvidenceIndexMapper());
         IsoformType xmlIsoform = converter.toXml(apisoform);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlIsoform, IsoformType.class, "isoform"));
         APIsoform converted = converter.fromXml(xmlIsoform);
         assertEquals(apisoform, converted);

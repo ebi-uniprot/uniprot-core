@@ -5,11 +5,13 @@ import static org.uniprot.core.xml.uniprot.EvidenceHelper.createEvidences;
 
 import java.util.Arrays;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.OrganismType;
 
+@Slf4j
 class OrganismConverterTest {
 
     @Test
@@ -18,7 +20,7 @@ class OrganismConverterTest {
         EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
         OrganismConverter converter = new OrganismConverter(evRefMapper);
         OrganismType xmlOrganism = converter.toXml(organism);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlOrganism, OrganismType.class, "organism"));
         Organism converted = converter.fromXml(xmlOrganism);
         assertEquals(organism, converted);

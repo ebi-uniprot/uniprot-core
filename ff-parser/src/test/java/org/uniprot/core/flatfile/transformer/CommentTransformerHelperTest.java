@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
-public class CommentTransformerHelperTest {
+@Slf4j
+class CommentTransformerHelperTest {
 
     public void testSemiComma() {
         String value =
@@ -22,7 +24,7 @@ public class CommentTransformerHelperTest {
                         + " hypermutation mechanism resulting in nucleotide transitions.";
         List<EvidencedValue> evValues = CommentTransformerHelper.parseEvidencedValues(value, true);
         for (EvidencedValue ev : evValues) {
-            System.out.println(ev.getValue());
+            log.debug(ev.getValue());
         }
     }
 

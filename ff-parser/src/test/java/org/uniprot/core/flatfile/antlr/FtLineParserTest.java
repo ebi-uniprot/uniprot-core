@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.Arrays;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
@@ -13,6 +14,7 @@ import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject.FTType;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 
+@Slf4j
 class FtLineParserTest {
     @Test
     void testChain() {
@@ -122,11 +124,11 @@ class FtLineParserTest {
                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(1, obj.getFts().size());
-        System.out.println(obj.getFts().get(0).getFtText());
+        log.debug(obj.getFts().get(0).getFtText());
         String desc =
                 "MLTCNKAGSRMVVDAANSNGPFQPVVLLHIR -> MPNKNKKEKESPKAGKSGKSSKEGQDTVESEQISVRKNSLVAVPSTV"
                         + "SAKIKVPVSQPIVKKDKRQNSSRFSASNNRELQKLPSLK(in isoform 4)";
-        System.out.println(desc);
+        log.debug(desc);
         // verify(obj.getFts().get(0), FTType.VAR_SEQ, "1", "31",  desc, "VSP_043645");
         FtLineConverter converter = new FtLineConverter();
         List<UniProtKBFeature> features = converter.convert(obj);
@@ -154,11 +156,11 @@ class FtLineParserTest {
                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(1, obj.getFts().size());
-        System.out.println(obj.getFts().get(0).getFtText());
+        log.debug(obj.getFts().get(0).getFtText());
         String desc =
                 "M -> MTDRQTDTAPSPSAHLLAGGLPTVDAAASREEPKPA"
                         + "SPSRRGSASRAGPGRASETM (in isoform L-VEGF-1). {ECO:0000305}";
-        System.out.println(desc);
+        log.debug(desc);
         // verify(obj.getFts().get(0), FTType.VAR_SEQ, "1", "31",  desc, "VSP_043645");
         FtLineConverter converter = new FtLineConverter();
         List<UniProtKBFeature> features = converter.convert(obj);
@@ -368,7 +370,7 @@ class FtLineParserTest {
                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
         assertEquals(1, obj.getFts().size());
-        System.out.println(obj.getFts().get(0).getFtText());
+        log.debug(obj.getFts().get(0).getFtText());
         verify(
                 obj.getFts().get(0),
                 FTType.CONFLICT,
@@ -391,7 +393,7 @@ class FtLineParserTest {
                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
         assertEquals(1, obj.getFts().size());
-        System.out.println(obj.getFts().get(0).getFtText());
+        log.debug(obj.getFts().get(0).getFtText());
         verify(
                 obj.getFts().get(0),
                 FTType.CONFLICT,
@@ -412,7 +414,7 @@ class FtLineParserTest {
                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
         assertEquals(1, obj.getFts().size());
-        System.out.println(obj.getFts().get(0).getFtText());
+        log.debug(obj.getFts().get(0).getFtText());
         verify(
                 obj.getFts().get(0),
                 FTType.VARIANT,
@@ -435,7 +437,7 @@ class FtLineParserTest {
                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
         assertEquals(1, obj.getFts().size());
-        System.out.println(obj.getFts().get(0).getFtText());
+        log.debug(obj.getFts().get(0).getFtText());
         verify(
                 obj.getFts().get(0),
                 FTType.VARIANT,
@@ -456,7 +458,7 @@ class FtLineParserTest {
                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
         assertEquals(1, obj.getFts().size());
-        System.out.println(obj.getFts().get(0).getFtText());
+        log.debug(obj.getFts().get(0).getFtText());
         verify(
                 obj.getFts().get(0),
                 FTType.VAR_SEQ,

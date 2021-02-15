@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.gn.GNLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
@@ -17,6 +18,7 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.impl.*;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
+@Slf4j
 class GNLineBuildTest {
     GNLineBuilder builder = new GNLineBuilder();
 
@@ -48,9 +50,9 @@ class GNLineBuildTest {
     private void doTest(String deLine, List<Gene> genes) {
         FFLine ffLine = builder.buildWithEvidence(genes);
         String resultString = ffLine.toString();
-        System.out.println(resultString);
-        System.out.println("\n");
-        //	System.out.println(deLine);
+        log.debug(resultString);
+        log.debug("\n");
+        //	log.debug(deLine);
         assertEquals(deLine, resultString);
     }
 

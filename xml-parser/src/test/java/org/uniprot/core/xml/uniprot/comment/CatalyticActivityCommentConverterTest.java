@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
@@ -27,6 +28,7 @@ import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
 import com.google.common.base.Strings;
 
+@Slf4j
 class CatalyticActivityCommentConverterTest {
     private static ObjectFactory objectFactory;
     private static CatalyticActivityCommentConverter converter;
@@ -158,7 +160,7 @@ class CatalyticActivityCommentConverterTest {
         assertEquals(1, evs.get(0).intValue());
         assertEquals(3, evs.get(1).intValue());
 
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(commentType, CommentType.class, "comment"));
     }
 

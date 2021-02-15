@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Sequence;
@@ -48,6 +49,7 @@ import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.Entry;
 import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 
+@Slf4j
 public class UniProtKBEntryConverterTest {
 
     @Test
@@ -124,7 +126,7 @@ public class UniProtKBEntryConverterTest {
                         .build();
         UniProtEntryConverter converter = new UniProtEntryConverter();
         Entry xmlEntry = converter.toXml(entry);
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlEntry, Entry.class, "entry"));
+        log.debug(UniProtXmlTestHelper.toXmlString(xmlEntry, Entry.class, "entry"));
         UniProtKBEntry converted = converter.fromXml(xmlEntry);
         assertEquals(entry, converted);
     }

@@ -2,6 +2,7 @@ package org.uniprot.core.flatfile.antlr;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
@@ -11,6 +12,7 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.AlternativeProducts
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
 
+@Slf4j
 class CcLineAPCommentParserTest {
     @Test
     void testParser() {
@@ -361,7 +363,7 @@ class CcLineAPCommentParserTest {
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineStringEvidence);
-        System.out.println(lines);
+        log.debug(lines);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);
     }

@@ -3,10 +3,12 @@ package org.uniprot.core.xml.uniprot;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.xml.jaxb.uniprot.EvidenceType;
 
+@Slf4j
 class EvidenceConverterTest {
     private final EvidenceConverter converter = new EvidenceConverter();
 
@@ -24,7 +26,7 @@ class EvidenceConverterTest {
         verify1(xmlObj, ecoCode, typeStr, attribute);
         Evidence converted = converter.fromXml(xmlObj);
         assertEquals(evidence, converted);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, EvidenceType.class, "evidence"));
     }
 
@@ -41,7 +43,7 @@ class EvidenceConverterTest {
         verify1(xmlObj, ecoCode, typeStr, attribute);
         Evidence converted = converter.fromXml(xmlObj);
         assertEquals(evidence, converted);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, EvidenceType.class, "evidence"));
     }
 
@@ -59,7 +61,7 @@ class EvidenceConverterTest {
         verify1(xmlObj, ecoCode, typeStr, attribute);
         Evidence converted = converter.fromXml(xmlObj);
         assertEquals(evidence, converted);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, EvidenceType.class, "evidence"));
     }
 
@@ -76,7 +78,7 @@ class EvidenceConverterTest {
         verify1(xmlObj, ecoCode, typeStr, attribute);
         Evidence converted = converter.fromXml(xmlObj);
         assertEquals(evidence, converted);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, EvidenceType.class, "evidence"));
     }
 
@@ -93,7 +95,7 @@ class EvidenceConverterTest {
         assertEquals(3, xmlObj.getSource().getRef().intValue());
         Evidence converted = converter.fromXml(xmlObj);
         assertEquals(evidence, converted);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, EvidenceType.class, "evidence"));
     }
 
@@ -111,7 +113,7 @@ class EvidenceConverterTest {
         verify1(xmlObj, ecoCode, typeStr, attribute);
         Evidence converted = converter.fromXml(xmlObj);
         assertEquals(evidence, converted);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, EvidenceType.class, "evidence"));
     }
 
@@ -128,7 +130,7 @@ class EvidenceConverterTest {
         verify1(xmlObj, ecoCode, typeStr, attribute);
         Evidence converted = converter.fromXml(xmlObj);
         assertEquals(evidence, converted);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, EvidenceType.class, "evidence"));
     }
 
@@ -143,7 +145,7 @@ class EvidenceConverterTest {
         verify2(xmlObj, ecoCode, 1);
         Evidence converted = converter.fromXml(xmlObj);
         assertEquals(evidence, converted);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, EvidenceType.class, "evidence"));
     }
 
@@ -160,7 +162,7 @@ class EvidenceConverterTest {
         verify1(xmlObj, ecoCode, typeStr, attribute);
         Evidence converted = converter.fromXml(xmlObj);
         assertEquals(evidence, converted);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, EvidenceType.class, "evidence"));
     }
 
@@ -177,7 +179,7 @@ class EvidenceConverterTest {
         verify1(xmlObj, ecoCode, typeStr, attribute);
         Evidence converted = converter.fromXml(xmlObj);
         assertEquals(evidence, converted);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, EvidenceType.class, "evidence"));
     }
 
@@ -194,7 +196,7 @@ class EvidenceConverterTest {
         verify1(xmlObj, ecoCode, typeStr, attribute);
         Evidence converted = converter.fromXml(xmlObj);
         assertEquals(evidence, converted);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, EvidenceType.class, "evidence"));
     }
 
@@ -211,7 +213,7 @@ class EvidenceConverterTest {
         verify1(xmlObj, ecoCode, typeStr, attribute);
         Evidence converted = converter.fromXml(xmlObj);
         assertEquals(evidence, converted);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, EvidenceType.class, "evidence"));
     }
 
@@ -228,7 +230,7 @@ class EvidenceConverterTest {
         verify1(xmlObj, ecoCode, typeStr, attribute);
         Evidence converted = converter.fromXml(xmlObj);
         assertEquals(evidence, converted);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, EvidenceType.class, "evidence"));
     }
 
@@ -247,7 +249,7 @@ class EvidenceConverterTest {
         verify1(xmlObj, ecoCode, typeStr, attribute);
         Evidence converted = converter.fromXml(xmlObj);
         assertEquals(evidence, converted);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, EvidenceType.class, "evidence"));
     }
 
@@ -265,7 +267,7 @@ class EvidenceConverterTest {
         verify1(xmlObj, ecoCode, typeStr, attribute);
         Evidence converted = converter.fromXml(xmlObj);
         assertEquals(evidence, converted);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, EvidenceType.class, "evidence"));
     }
 
@@ -282,7 +284,7 @@ class EvidenceConverterTest {
         verify1(xmlObj, ecoCode, typeStr, attribute);
         Evidence converted = converter.fromXml(xmlObj);
         assertEquals(evidence, converted);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, EvidenceType.class, "evidence"));
     }
 
@@ -299,7 +301,7 @@ class EvidenceConverterTest {
         verify1(xmlObj, ecoCode, typeStr, attribute);
         Evidence converted = converter.fromXml(xmlObj);
         assertEquals(evidence, converted);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, EvidenceType.class, "evidence"));
     }
 

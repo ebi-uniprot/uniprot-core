@@ -2,12 +2,14 @@ package org.uniprot.core.xml.uniprot.comment;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.WebResourceComment;
 import org.uniprot.core.uniprotkb.comment.impl.WebResourceCommentBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
+@Slf4j
 class WRCommentConverterTest {
 
     @Test
@@ -21,7 +23,7 @@ class WRCommentConverterTest {
                         .build();
         WRCommentConverter converter = new WRCommentConverter();
         CommentType xmlComment = converter.toXml(comment);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         WebResourceComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
@@ -36,7 +38,7 @@ class WRCommentConverterTest {
                         .build();
         WRCommentConverter converter = new WRCommentConverter();
         CommentType xmlComment = converter.toXml(comment);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         WebResourceComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);

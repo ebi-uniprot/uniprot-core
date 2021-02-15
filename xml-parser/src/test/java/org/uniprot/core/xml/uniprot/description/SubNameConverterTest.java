@@ -9,6 +9,7 @@ import static org.uniprot.core.xml.uniprot.description.DescriptionHelper.createP
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.description.Name;
@@ -18,6 +19,7 @@ import org.uniprot.core.xml.jaxb.uniprot.ProteinType.SubmittedName;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
+@Slf4j
 class SubNameConverterTest {
 
     @Test
@@ -33,7 +35,7 @@ class SubNameConverterTest {
         SubNameConverter converter = new SubNameConverter(nameConverter, ecConverter);
         SubmittedName xmlObj = converter.toXml(subName);
 
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, SubmittedName.class, "submittedName"));
         ProteinSubName converted = converter.fromXml(xmlObj);
         assertEquals(subName, converted);

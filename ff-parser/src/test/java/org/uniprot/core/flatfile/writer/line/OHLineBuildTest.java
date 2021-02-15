@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.OrganismNameLineParser;
 import org.uniprot.core.flatfile.parser.impl.oh.OHLineBuilder;
@@ -13,6 +14,7 @@ import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismHostBuilder;
 
+@Slf4j
 class OHLineBuildTest {
     private OHLineBuilder builder = new OHLineBuilder();
 
@@ -45,9 +47,9 @@ class OHLineBuildTest {
         FFLine ffLine = builder.build(hosts);
         String resultString = ffLine.toString();
 
-        System.out.println(resultString);
-        System.out.println();
-        System.out.println(ogLine);
+        log.debug(resultString);
+        log.debug("");
+        log.debug(ogLine);
         assertEquals(ogLine, resultString);
     }
 

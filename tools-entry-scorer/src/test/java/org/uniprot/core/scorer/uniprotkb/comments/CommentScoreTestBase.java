@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineTransformer;
 import org.uniprot.core.scorer.uniprotkb.UniProtEntryScored;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
@@ -13,6 +14,7 @@ import org.uniprot.core.uniprotkb.comment.CommentType;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
 
+@Slf4j
 class CommentScoreTestBase {
     private CcLineTransformer ccLineTransformer = new CcLineTransformer("", "");
 
@@ -68,6 +70,6 @@ class CommentScoreTestBase {
         CcLineTransformer ccLineTransformer = new CcLineTransformer("", "");
         String line = "ALLERGEN: Causes an allergic reaction in human. Binds to IgE and\n" + "IgG.";
         List<Comment> comments = ccLineTransformer.transformNoHeader(line);
-        System.out.println(comments);
+        log.debug("comments: "+comments);
     }
 }

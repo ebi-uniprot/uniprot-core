@@ -7,12 +7,14 @@ import static org.uniprot.core.xml.uniprot.description.DescriptionHelper.createN
 import java.util.Arrays;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 
+@Slf4j
 class NameConverterTest {
 
     @Test
@@ -27,8 +29,8 @@ class NameConverterTest {
         assertEquals(val, xmlObj.getValue());
         assertEquals(Arrays.asList(1, 2), xmlObj.getEvidence());
         Name converted = converter.fromXml(xmlObj);
-        System.out.println(nameObj.toString());
-        System.out.println(converted.toString());
+        log.debug(nameObj.toString());
+        log.debug(converted.toString());
         assertEquals(nameObj, converted);
     }
 }

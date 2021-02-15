@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CCAPCommentLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
@@ -15,6 +16,7 @@ import org.uniprot.core.uniprotkb.comment.impl.IsoformNameBuilder;
 import org.uniprot.core.uniprotkb.comment.impl.NoteBuilder;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
+@Slf4j
 class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
     CCAPCommentLineBuilder ccLineBuilder = new CCAPCommentLineBuilder();
 
@@ -570,23 +572,23 @@ class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
     private void doTest(String ccLine, AlternativeProductsComment comment) {
         FFLine ffLine = ccLineBuilder.buildWithEvidence(comment);
         String resultString = ffLine.toString();
-        System.out.println(resultString);
-        System.out.println("\n");
-        // System.out.println(ccLine);
+        log.debug(resultString);
+        log.debug("\n");
+        // log.debug(ccLine);
         assertEquals(ccLine, resultString);
     }
 
     private void doTestString(String ccLine, AlternativeProductsComment comment) {
         String value = ccLineBuilder.buildString(comment);
 
-        System.out.println(value);
+        log.debug(value);
         assertEquals(ccLine, value);
     }
 
     private void doTestStringEv(String ccLine, AlternativeProductsComment comment) {
         String value = ccLineBuilder.buildStringWithEvidence(comment);
 
-        System.out.println(value);
+        log.debug(value);
         assertEquals(ccLine, value);
     }
 }

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CCSequenceCautionCommentLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
@@ -12,6 +13,7 @@ import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
 import org.uniprot.core.uniprotkb.comment.SequenceCautionType;
 import org.uniprot.core.uniprotkb.comment.impl.SequenceCautionCommentBuilder;
 
+@Slf4j
 class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
     private CCSequenceCautionCommentLineBuilder builder = new CCSequenceCautionCommentLineBuilder();
 
@@ -120,22 +122,22 @@ class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
     private void doTest(String ccLine, SequenceCautionComment comment) {
         FFLine ffLine = builder.buildWithEvidence(comment);
         String resultString = ffLine.toString();
-        System.out.println(resultString);
-        System.out.println(ccLine);
+        log.debug(resultString);
+        log.debug(ccLine);
         assertEquals(ccLine, resultString);
     }
 
     private void doTestString(String ccLine, SequenceCautionComment comment) {
         String value = builder.buildString(comment);
 
-        System.out.println(value);
+        log.debug(value);
         assertEquals(ccLine, value);
     }
 
     private void doTestStringEv(String ccLine, SequenceCautionComment comment) {
         String value = builder.buildStringWithEvidence(comment);
 
-        System.out.println(value);
+        log.debug(value);
         assertEquals(ccLine, value);
     }
 }

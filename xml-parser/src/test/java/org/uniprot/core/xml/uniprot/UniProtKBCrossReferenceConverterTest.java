@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
@@ -16,6 +17,7 @@ import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 
 import com.google.common.base.Strings;
 
+@Slf4j
 public class UniProtKBCrossReferenceConverterTest extends AbstractConverterTest {
     private final UniProtCrossReferenceConverter converter = new UniProtCrossReferenceConverter();
 
@@ -131,7 +133,7 @@ public class UniProtKBCrossReferenceConverterTest extends AbstractConverterTest 
 
     private void verifyXml(DbReferenceType xmlObj, String db, String id) {
         String xml = UniProtXmlTestHelper.toXmlString(xmlObj, DbReferenceType.class, "dbReference");
-        System.out.println(xml);
+        log.debug(xml);
         assertEquals(db, xmlObj.getType());
         assertEquals(id, xmlObj.getId());
     }

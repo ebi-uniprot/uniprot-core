@@ -6,6 +6,7 @@ import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.impl.CrossReferenceBuilder;
@@ -19,6 +20,7 @@ import org.uniprot.core.xml.jaxb.uniprot.ReactionType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
+@Slf4j
 class CAReactionConverterTest {
     ObjectFactory objectFactory = new ObjectFactory();
 
@@ -81,7 +83,7 @@ class CAReactionConverterTest {
 
         ReactionType reactionType = converter.toXml(reaction);
 
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(reactionType, ReactionType.class, "reaction"));
 
         assertEquals("Some value", reactionType.getText());
@@ -118,7 +120,7 @@ class CAReactionConverterTest {
         CAReactionConverter converter = new CAReactionConverter(new EvidenceIndexMapper());
 
         ReactionType reactionType = converter.toXml(reaction);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(reactionType, ReactionType.class, "reaction"));
         Reaction converted = converter.fromXml(reactionType);
         assertEquals(reaction, converted);

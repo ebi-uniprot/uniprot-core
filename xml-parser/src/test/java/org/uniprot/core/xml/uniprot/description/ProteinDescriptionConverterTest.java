@@ -6,6 +6,7 @@ import static org.uniprot.core.xml.uniprot.description.DescriptionHelper.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.description.*;
 import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilder;
@@ -15,6 +16,7 @@ import org.uniprot.core.xml.jaxb.uniprot.ProteinType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
+@Slf4j
 class ProteinDescriptionConverterTest {
 
     @Test
@@ -48,13 +50,13 @@ class ProteinDescriptionConverterTest {
                         .build();
         ProteinDescriptionConverter converter = createConverter();
         ProteinType xmlObj = converter.toXml(description);
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj, ProteinType.class, "protein"));
+        log.debug(UniProtXmlTestHelper.toXmlString(xmlObj, ProteinType.class, "protein"));
         ProteinDescription converted = converter.fromXml(xmlObj);
         assertEquals(description, converted);
         List<DbReferenceType> dbReferences = converter.toXmlDbReferences(description);
         dbReferences.forEach(
                 val ->
-                        System.out.println(
+                        log.debug(
                                 UniProtXmlTestHelper.toXmlString(
                                         val, DbReferenceType.class, "dbReference")));
     }
@@ -90,7 +92,7 @@ class ProteinDescriptionConverterTest {
         ProteinDescription description = builder.build();
         ProteinDescriptionConverter converter = createConverter();
         ProteinType xmlObj = converter.toXml(description);
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj, ProteinType.class, "protein"));
+        log.debug(UniProtXmlTestHelper.toXmlString(xmlObj, ProteinType.class, "protein"));
         ProteinDescription converted = converter.fromXml(xmlObj);
         assertEquals(description, converted);
     }

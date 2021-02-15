@@ -16,6 +16,7 @@
 		<failsafe-version>2.22.2</failsafe-version>
 		<mockito-version>3.0.0</mockito-version>
 		<slf4j.version>1.7.28</slf4j.version>
+		<lombok.version>1.18.18</lombok.version>
 		<logback.version>1.2.3</logback.version>
 		<junit-jupiter.version>5.5.2</junit-jupiter.version>
 		<hamcrest.version>1.3</hamcrest.version>
@@ -48,6 +49,13 @@
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
 				<version>28.0-jre</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>test</scope>
 			</dependency>
 
 			<!-- Logging -->
@@ -121,6 +129,7 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${surefire-version}</version>
 					<configuration>
+						<argLine>-Dlogback.configurationFile=${project.basedir}/../logback-test.xml</argLine>
 						<systemProperties>
 							<property>
 								<name>http.proxyHost</name>

@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.og.OGLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
@@ -16,6 +17,7 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.impl.GeneLocationBuilder;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
+@Slf4j
 class OGLineBuildTest {
     private OGLineBuilder builder = new OGLineBuilder();
 
@@ -35,9 +37,9 @@ class OGLineBuildTest {
         FFLine ffLine = builder.buildWithEvidence(organelles);
         String resultString = ffLine.toString();
 
-        System.out.println(resultString);
-        System.out.println();
-        System.out.println(ogLine);
+        log.debug(resultString);
+        log.debug("");
+        log.debug(ogLine);
         assertEquals(ogLine, resultString);
     }
 

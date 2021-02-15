@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.gene.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
@@ -14,6 +15,7 @@ import org.uniprot.core.uniprotkb.impl.*;
 import org.uniprot.core.xml.jaxb.uniprot.GeneNameType;
 import org.uniprot.core.xml.jaxb.uniprot.GeneType;
 
+@Slf4j
 class GeneConverterTest {
 
     @Test
@@ -34,7 +36,7 @@ class GeneConverterTest {
         GeneType xmlGene = converter.toXml(gene);
         assertEquals(1, xmlGene.getName().size());
         verify(xmlGene.getName().get(0), GeneConverter.GENENAME_XMLTAG, val, Arrays.asList(1));
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlGene, GeneType.class, "gene"));
+        log.debug(UniProtXmlTestHelper.toXmlString(xmlGene, GeneType.class, "gene"));
         Gene converted = converter.fromXml(xmlGene);
         assertEquals(gene, converted);
     }
@@ -72,7 +74,7 @@ class GeneConverterTest {
         assertEquals(2, xmlGene.getName().size());
         verify(xmlGene.getName().get(0), GeneConverter.GENENAME_XMLTAG, val, Arrays.asList(1));
         verify(xmlGene.getName().get(1), GeneConverter.SYNONYM_XMLTAG, valSyn, Arrays.asList(1, 2));
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlGene, GeneType.class, "gene"));
+        log.debug(UniProtXmlTestHelper.toXmlString(xmlGene, GeneType.class, "gene"));
         Gene converted = converter.fromXml(xmlGene);
         assertEquals(gene, converted);
     }
@@ -101,7 +103,7 @@ class GeneConverterTest {
         GeneType xmlGene = converter.toXml(gene);
         assertEquals(1, xmlGene.getName().size());
         verify(xmlGene.getName().get(0), GeneConverter.OLN_XMLTAG, val, Arrays.asList(1, 2));
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlGene, GeneType.class, "gene"));
+        log.debug(UniProtXmlTestHelper.toXmlString(xmlGene, GeneType.class, "gene"));
         Gene converted = converter.fromXml(xmlGene);
         assertEquals(gene, converted);
     }
@@ -140,7 +142,7 @@ class GeneConverterTest {
         assertEquals(2, xmlGene.getName().size());
         verify(xmlGene.getName().get(0), GeneConverter.GENENAME_XMLTAG, val, Arrays.asList(1));
         verify(xmlGene.getName().get(1), GeneConverter.ORF_XMLTAG, orfVal, Arrays.asList(2, 3));
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlGene, GeneType.class, "gene"));
+        log.debug(UniProtXmlTestHelper.toXmlString(xmlGene, GeneType.class, "gene"));
         Gene converted = converter.fromXml(xmlGene);
         assertEquals(gene, converted);
     }

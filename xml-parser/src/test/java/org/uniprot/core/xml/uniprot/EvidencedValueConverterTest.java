@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
@@ -14,6 +15,7 @@ import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 
+@Slf4j
 class EvidencedValueConverterTest {
 
     @Test
@@ -34,7 +36,7 @@ class EvidencedValueConverterTest {
         converter =
                 new EvidencedValueConverter(new EvidenceIndexMapper(), new ObjectFactory(), true);
         xmlObj = converter.toXml(evValue);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, EvidencedStringType.class, "text"));
         assertEquals(text + ".", xmlObj.getValue());
 

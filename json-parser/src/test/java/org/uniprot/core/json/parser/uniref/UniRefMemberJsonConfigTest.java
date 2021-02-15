@@ -2,6 +2,7 @@ package org.uniprot.core.json.parser.uniref;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
@@ -19,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author lgonzales
  * @since 12/01/2021
  */
+@Slf4j
 class UniRefMemberJsonConfigTest {
 
     @Test
@@ -29,7 +31,7 @@ class UniRefMemberJsonConfigTest {
         try {
             ObjectMapper mapper = UniRefMemberJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
-            System.out.println(json);
+            log.debug(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }

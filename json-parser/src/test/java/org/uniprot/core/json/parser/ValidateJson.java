@@ -6,6 +6,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.*;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.impl.CrossReferenceImpl;
@@ -16,9 +17,8 @@ import org.uniprot.core.util.Utils;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Slf4j
 public class ValidateJson {
-
-    private static final Logger logger = LoggerFactory.getLogger(ValidateJson.class);
 
     public static <T> void verifyJsonRoundTripParser(T obj) {
         try {
@@ -45,7 +45,7 @@ public class ValidateJson {
         JsonNode jsonNode = null;
         try {
             String jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
-            logger.info(jsonString);
+            log.debug(jsonString);
             jsonNode = mapper.reader().readTree(jsonString);
         } catch (Exception e) {
             fail(e.getMessage());
@@ -145,7 +145,7 @@ public class ValidateJson {
                 || (Utils.notNullNotEmpty(ignoredField) && !propertyName.equals(ignoredField))) {
             fail(propertyName + message);
         } else {
-            logger.warn("property ignored: " + ignoredField);
+            log.warn("property ignored: " + ignoredField);
         }
     }
 

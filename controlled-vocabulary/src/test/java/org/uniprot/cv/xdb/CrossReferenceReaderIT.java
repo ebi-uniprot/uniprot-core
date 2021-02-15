@@ -10,11 +10,13 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.cv.xdb.validator.CrossReferenceReader;
 import org.uniprot.cv.xdb.validator.CrossReferenceValidator;
 import org.uniprot.cv.xdb.validator.DBXRef;
 
+@Slf4j
 class CrossReferenceReaderIT {
     private static Set<String> ACCESSION_WITHOUT_REF =
             new HashSet<>(
@@ -30,7 +32,7 @@ class CrossReferenceReaderIT {
         String ftpUrl =
                 Optional.ofNullable(getDatabaseTypesLocation())
                         .orElse(CrossReferenceValidator.DBREF_FTP);
-        System.out.println("FTP location found: " + ftpUrl);
+        log.debug("FTP location found: " + ftpUrl);
         try (CrossReferenceReader reader = new CrossReferenceReader(ftpUrl)) {
             DBXRef dbxRef;
             while ((dbxRef = reader.read()) != null) {
@@ -42,7 +44,7 @@ class CrossReferenceReaderIT {
     }
 
     private void verifyDBXRef(DBXRef dbxRef) {
-        System.out.println(dbxRef.toString());
+        log.debug(dbxRef.toString());
         assertNotNull(dbxRef.getAccession(), "Accession is null");
         assertNotNull(dbxRef.getAbbr(), "Abbr is null");
         assertNotNull(dbxRef.getName(), "Name is null");

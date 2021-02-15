@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.de.DELineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
@@ -16,6 +17,7 @@ import org.uniprot.core.uniprotkb.description.impl.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
+@Slf4j
 class DELineBuildTest {
     private DELineBuilder builder = new DELineBuilder();
 
@@ -90,9 +92,9 @@ class DELineBuildTest {
     private void doTest(String deLine, ProteinDescription pd) {
         FFLine ffLine = builder.buildWithEvidence(pd);
         String resultString = ffLine.toString();
-        System.out.println(resultString);
-        System.out.println("\n");
-        System.out.println(deLine);
+        log.debug(resultString);
+        log.debug("\n");
+        log.debug(deLine);
         assertEquals(deLine, resultString);
     }
 

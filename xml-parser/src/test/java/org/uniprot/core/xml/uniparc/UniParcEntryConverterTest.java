@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Location;
 import org.uniprot.core.Sequence;
@@ -24,6 +25,7 @@ import org.uniprot.core.xml.jaxb.uniparc.Entry;
  * @author jluo
  * @date: 24 May 2019
  */
+@Slf4j
 class UniParcEntryConverterTest {
 
     @Test
@@ -31,7 +33,7 @@ class UniParcEntryConverterTest {
         UniParcEntry uniparcEntry = createEntry();
         UniParcEntryConverter converter = new UniParcEntryConverter();
         Entry xmlObj = converter.toXml(uniparcEntry);
-        System.out.println(UniParcXmlTestHelper.toXmlString(xmlObj, Entry.class, "entry"));
+        log.debug(UniParcXmlTestHelper.toXmlString(xmlObj, Entry.class, "entry"));
         UniParcEntry converted = converter.fromXml(xmlObj);
         assertEquals(uniparcEntry, converted);
     }

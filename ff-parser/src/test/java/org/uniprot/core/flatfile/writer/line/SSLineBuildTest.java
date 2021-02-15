@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ss.SSEvidenceLineBuilder;
 import org.uniprot.core.flatfile.parser.impl.ss.SSInternalLineBuilder;
@@ -22,6 +23,7 @@ import org.uniprot.core.uniprotkb.impl.InternalLineBuilder;
 import org.uniprot.core.uniprotkb.impl.InternalSectionBuilder;
 import org.uniprot.core.uniprotkb.impl.SourceLineBuilder;
 
+@Slf4j
 class SSLineBuildTest {
     @Test
     void testEvidenceLines() {
@@ -37,8 +39,8 @@ class SSLineBuildTest {
         FFLine ffLine = builder.build(evidenceLines);
 
         String resultString = ffLine.toString();
-        // System.out.println(text.getText());
-        System.out.println(resultString);
+        // log.debug(text.getText());
+        log.debug(resultString);
         assertEquals(ssLines, resultString);
     }
 
@@ -65,8 +67,8 @@ class SSLineBuildTest {
         FFLine ffLine = builder.build(internalLines);
 
         String resultString = ffLine.toString();
-        // System.out.println(text.getText());
-        System.out.println(resultString);
+        // log.debug(text.getText());
+        log.debug(resultString);
         assertEquals(ssLines, resultString);
     }
 
@@ -83,8 +85,8 @@ class SSLineBuildTest {
         FFLine ffLine = builder.build(sourceLines);
 
         String resultString = ffLine.toString();
-        // System.out.println(text.getText());
-        System.out.println(resultString);
+        // log.debug(text.getText());
+        log.debug(resultString);
         assertEquals(ssLines, resultString);
     }
 
@@ -114,8 +116,8 @@ class SSLineBuildTest {
         FFLine ffLine = builder.build(is);
 
         String resultString = ffLine.toString();
-        // System.out.println(text.getText());
-        System.out.println(resultString);
+        // log.debug(text.getText());
+        log.debug(resultString);
         assertEquals(ssLines, resultString);
     }
 
@@ -153,8 +155,8 @@ class SSLineBuildTest {
         FFLine ffLine = builder.build(is);
 
         String resultString = ffLine.toString();
-        // System.out.println(text.getText());
-        System.out.println(resultString);
+        // log.debug(text.getText());
+        log.debug(resultString);
         assertEquals(ssLines, resultString);
     }
 

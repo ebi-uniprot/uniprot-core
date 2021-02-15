@@ -83,7 +83,7 @@ class UniRefEntryLightJsonConfigTest {
             // uncomment the code to generate samplejson for UniRefEntryLight model.
             assertNotNull(json);
             assertTrue(json.contains("\"seedId\" : \"P12345\""));
-            // System.out.println(json);
+            // log.debug(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }

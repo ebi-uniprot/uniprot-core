@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import lombok.extern.slf4j.Slf4j;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.feature.FeatureLocation;
 import org.uniprot.core.flatfile.parser.impl.ft.FeatureLineBuilderFactory;
@@ -18,14 +19,15 @@ import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
+@Slf4j
 class FTBuildTestAbstr {
     void doTest(String ftLine, UniProtKBFeature feature) {
         FFLineBuilder<UniProtKBFeature> builder = FeatureLineBuilderFactory.create(feature);
 
         FFLine ffLine = builder.buildWithEvidence(feature);
         String resultString = ffLine.toString();
-        System.out.println(resultString);
-        System.out.println(ftLine);
+        log.debug(resultString);
+        log.debug(ftLine);
         assertEquals(ftLine, resultString);
     }
 
@@ -33,7 +35,7 @@ class FTBuildTestAbstr {
 
         FFLineBuilder<UniProtKBFeature> builder = FeatureLineBuilderFactory.create(feature);
         String value = builder.buildString(feature);
-        System.out.println(value);
+        log.debug(value);
         assertEquals(ftLine, value);
     }
 
@@ -42,7 +44,7 @@ class FTBuildTestAbstr {
         FFLineBuilder<UniProtKBFeature> builder = FeatureLineBuilderFactory.create(feature);
         String value = builder.buildStringWithEvidence(feature);
 
-        System.out.println(value);
+        log.debug(value);
         assertEquals(ccLine, value);
     }
 

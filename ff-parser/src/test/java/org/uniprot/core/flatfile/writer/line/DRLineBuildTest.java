@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.dr.DRLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
@@ -15,6 +16,7 @@ import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
 import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 
+@Slf4j
 class DRLineBuildTest {
     private DRLineBuilder builder = new DRLineBuilder();
 
@@ -28,9 +30,9 @@ class DRLineBuildTest {
         xrefs.add(createUniProtDBCrossReference("MINT", "MINT-1356407", "-"));
         FFLine ffLine = builder.build(xrefs);
         String resultString = ffLine.toString();
-        System.out.println(resultString);
-        System.out.println("\n");
-        System.out.println(drLine);
+        log.debug(resultString);
+        log.debug("\n");
+        log.debug(drLine);
         assertEquals(drLine, resultString);
     }
 
@@ -135,9 +137,9 @@ class DRLineBuildTest {
 
         FFLine ffLine = builder.build(xrefs);
         String resultString = ffLine.toString();
-        System.out.println(resultString);
-        System.out.println("\n");
-        System.out.println(drLine);
+        log.debug(resultString);
+        log.debug("\n");
+        log.debug(drLine);
         assertEquals(drLine, resultString);
     }
 
@@ -172,9 +174,9 @@ class DRLineBuildTest {
                         "PROSITE", "PS00157", "RUBISCO_LARGE", "1", null, "P21235-2"));
         FFLine ffLine = builder.build(xrefs);
         String resultString = ffLine.toString();
-        System.out.println(resultString);
-        System.out.println("\n");
-        System.out.println(drLine);
+        log.debug(resultString);
+        log.debug("\n");
+        log.debug(drLine);
         assertEquals(drLine, resultString);
     }
 

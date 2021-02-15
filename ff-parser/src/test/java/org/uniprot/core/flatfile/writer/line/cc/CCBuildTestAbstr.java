@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import lombok.extern.slf4j.Slf4j;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CCLineBuilder;
@@ -26,6 +27,7 @@ import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
 
 import com.google.common.base.Strings;
 
+@Slf4j
 abstract class CCBuildTestAbstr {
     CCLineBuilder builder = new CCLineBuilder();
 
@@ -34,8 +36,8 @@ abstract class CCBuildTestAbstr {
 
         FFLine ffLine = builder.buildWithEvidence(comment);
         String resultString = ffLine.toString();
-        System.out.println(resultString);
-        System.out.println(ftLine);
+        log.debug(resultString);
+        log.debug(ftLine);
         assertEquals(ftLine, resultString);
     }
 
@@ -43,7 +45,7 @@ abstract class CCBuildTestAbstr {
         FFLineBuilder<T> builder = CCLineBuilderFactory.create(comment);
         String value = builder.buildString(comment);
 
-        System.out.println(value);
+        log.debug(value);
         assertEquals(ccLine, value);
     }
 
@@ -51,7 +53,7 @@ abstract class CCBuildTestAbstr {
         FFLineBuilder<Comment> builder = CCLineBuilderFactory.create(comment);
         String value = builder.buildStringWithEvidence(comment);
 
-        System.out.println(value);
+        log.debug(value);
         assertEquals(ccLine, value);
     }
 
@@ -63,10 +65,10 @@ abstract class CCBuildTestAbstr {
         List<Comment> comments = converter.convert(obj);
         FFLine ffLine = builder.buildWithEvidence(comments);
         String resultString = ffLine.toString();
-        System.out.println(resultString);
-        System.out.println(ccLine);
+        log.debug(resultString);
+        log.debug(ccLine);
         assertEquals(ccLine, resultString);
-        System.out.println(builder.buildString(comments));
+        log.debug(builder.buildString(comments));
     }
 
     protected List<Evidence> createEvidence(List<String> evIds) {

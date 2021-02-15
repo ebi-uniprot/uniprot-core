@@ -2,6 +2,7 @@ package org.uniprot.core.scorer.uniprotkb;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniProtParser;
 import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
@@ -11,6 +12,7 @@ import org.uniprot.core.uniprotkb.UniProtKBEntry;
  * Created by IntelliJ IDEA. User: spatient Date: 08-Mar-2010 Time: 13:47:47 To change this template
  * use File | Settings | File Templates.
  */
+@Slf4j
 class Q04756ScoredTest {
 
     private String entry =
@@ -531,7 +533,7 @@ class Q04756ScoredTest {
         UniProtKBEntry entry =
                 new DefaultUniProtParser(new SupportingDataMapImpl(), true).parse(this.entry);
         UniProtEntryScored scored = new UniProtEntryScored(entry);
-        System.out.println(scored.score());
+        log.debug("score"+scored.score());
         assertTrue(scored.score() > 0);
     }
 }

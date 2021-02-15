@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
@@ -29,6 +30,7 @@ import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
+@Slf4j
 class CofactorCommentConverterTest {
     CofactorCommentConverter converter;
 
@@ -88,7 +90,7 @@ class CofactorCommentConverterTest {
         assertEquals(comment, convertedComment);
         String createdXmlText =
                 UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment");
-        System.out.println(createdXmlText);
+        log.debug(createdXmlText);
     }
 
     private void assertCofactorType(

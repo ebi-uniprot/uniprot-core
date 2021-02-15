@@ -6,6 +6,7 @@ import static org.uniprot.core.xml.uniparc.UniParcDBCrossReferenceConverter.PROP
 
 import java.time.LocalDate;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
@@ -20,6 +21,7 @@ import org.uniprot.core.xml.jaxb.uniparc.PropertyType;
  * @author jluo
  * @date: 24 May 2019
  */
+@Slf4j
 class UniParcDBCrossReferenceConverterTest {
 
     @Test
@@ -96,7 +98,7 @@ class UniParcDBCrossReferenceConverterTest {
     private void verify(UniParcCrossReference xref) {
         UniParcDBCrossReferenceConverter converter = new UniParcDBCrossReferenceConverter();
         DbReferenceType xmlObj = converter.toXml(xref);
-        System.out.println(
+        log.debug(
                 UniParcXmlTestHelper.toXmlString(xmlObj, DbReferenceType.class, "dbReference"));
         UniParcCrossReference converted = converter.fromXml(xmlObj);
         assertEquals(xref, converted);

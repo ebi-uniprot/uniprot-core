@@ -2,6 +2,7 @@ package org.uniprot.core.xml.uniprot.citation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Book;
 import org.uniprot.core.citation.Citation;
@@ -9,6 +10,7 @@ import org.uniprot.core.citation.impl.BookBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CitationType;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
+@Slf4j
 class BookConverterTest {
 
     @Test
@@ -16,7 +18,7 @@ class BookConverterTest {
         Book citation = create();
         BookConverter converter = new BookConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Book converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
@@ -28,7 +30,7 @@ class BookConverterTest {
         Citation citation = create();
         CitationConverter converter = new CitationConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Citation converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);

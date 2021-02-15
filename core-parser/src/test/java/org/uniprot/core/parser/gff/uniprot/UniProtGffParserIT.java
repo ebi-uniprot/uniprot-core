@@ -14,6 +14,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
@@ -28,8 +29,8 @@ import org.uniprot.core.uniprotkb.UniProtKBEntry;
  *
  * @author Edd
  */
+@Slf4j
 class UniProtGffParserIT {
-    private static final Logger LOGGER = getLogger(UniProtGffParserIT.class);
     private static final String TEST_FILE_PATH = "/uniprotkb/entry/";
 
     @Test
@@ -43,7 +44,7 @@ class UniProtGffParserIT {
                 readEntryFromFile(gffPath)
                         .orElseThrow(
                                 () -> new IllegalStateException("Could not read file: " + gffPath));
-        LOGGER.info(entryGff);
+        log.debug(entryGff);
         verify(entryGff, gffAsString);
     }
 
@@ -58,7 +59,7 @@ class UniProtGffParserIT {
                 readEntryFromFile(gffPath)
                         .orElseThrow(
                                 () -> new IllegalStateException("Could not read file: " + gffPath));
-        LOGGER.info(entryGff);
+        log.debug(entryGff);
         verify(entryGff, gffAsString);
     }
 
@@ -73,7 +74,7 @@ class UniProtGffParserIT {
                 readEntryFromFile(gffPath)
                         .orElseThrow(
                                 () -> new IllegalStateException("Could not read file: " + gffPath));
-        LOGGER.info(entryGff);
+        log.debug(entryGff);
         verify(entryGff, gffAsString);
     }
 
@@ -82,9 +83,9 @@ class UniProtGffParserIT {
         String[] expectedGff = gffAsString.split("\n");
         for (int i = 0; i < Math.min(givenGff.length, expectedGff.length); i++) {
             if (!givenGff[i].equals(expectedGff[i])) {
-                LOGGER.warn("");
-                LOGGER.warn("Given:    " + givenGff[i]);
-                LOGGER.warn("Expected: " + expectedGff[i]);
+                log.warn("");
+                log.warn("Given:    " + givenGff[i]);
+                log.warn("Expected: " + expectedGff[i]);
                 fail();
             }
         }
@@ -112,7 +113,7 @@ class UniProtGffParserIT {
             lines = Files.lines(path);
             return Optional.of(lines.collect(Collectors.joining("\n")));
         } catch (URISyntaxException | IOException ex) {
-            LOGGER.error("Could not read file", ex);
+            log.error("Could not read file", ex);
         } finally {
             if (lines != null) {
                 lines.close();

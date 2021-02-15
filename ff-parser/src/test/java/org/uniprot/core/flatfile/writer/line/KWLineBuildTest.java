@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.flatfile.parser.impl.kw.KWLineBuilder;
@@ -17,6 +18,7 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.impl.KeywordBuilder;
 import org.uniprot.cv.evidence.EvidenceHelper;
 
+@Slf4j
 class KWLineBuildTest {
     KWLineBuilder builder = new KWLineBuilder();
 
@@ -256,8 +258,8 @@ class KWLineBuildTest {
     private void doTest(String deLine, List<Keyword> genes) {
         FFLine ffLine = builder.buildWithEvidence(genes);
         String resultString = ffLine.toString();
-        System.out.println(resultString);
-        System.out.println("\n");
+        log.debug(resultString);
+        log.debug("\n");
         assertEquals(deLine, resultString);
     }
 

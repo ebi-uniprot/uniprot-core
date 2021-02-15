@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.slf4j.Logger;
@@ -27,9 +28,8 @@ import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import com.google.common.io.CharSource;
 import com.google.common.io.Resources;
 
+@Slf4j
 class FlatfileRoundTripIT {
-    private static final Logger LOGGER = getLogger(FlatfileRoundTripIT.class);
-
     @ParameterizedTest
     @CsvSource({
         "/entryIT/A0A0A0MSM0.dat, true",
@@ -104,9 +104,9 @@ class FlatfileRoundTripIT {
         //                    "cv.dr.ord.location",
         //
         // "/home/edd/working/intellij/website/uniprot-core/controlled-vocabulary/src/test/resources/xdb/dr_ord");
-        //            System.out.println("SET SYSTEM PROPERTY");
+        //            log.debug("SET SYSTEM PROPERTY");
 
-        System.out.println("====>" + file);
+        log.debug("====>" + file);
         String entryStr = readEntryFromFile(file);
         testEntry(entryStr, isPublic);
     }
@@ -126,7 +126,7 @@ class FlatfileRoundTripIT {
         String convertedEntryStr = writer.write(converted, isPublic);
 
         String diff = compareFF(entryToParse, convertedEntryStr + "\n");
-        LOGGER.info(diff);
+        log.debug(diff);
 
         EntryObject parse2 = entryParser.parse(convertedEntryStr);
         UniProtKBEntry converted2 = entryObjectConverter.convert(parse2);
@@ -147,7 +147,7 @@ class FlatfileRoundTripIT {
         String[] expected2 = expected.split("\n");
         String[] returned2 = returned.split("\n");
         if (expected2.length != returned2.length) {
-            LOGGER.info(
+            log.debug(
                     "number of line is different: " + expected2.length + "\t" + returned2.length);
         }
         int j = 0;
@@ -161,7 +161,7 @@ class FlatfileRoundTripIT {
                 drExpected.add(s);
 
             } else if (j >= returnLength) {
-                LOGGER.error(s);
+                log.error(s);
             } else if (!s.equals(returned2[j])) {
                 boolean found = false;
                 int found1 = find(returned2, s, j);
@@ -173,8 +173,8 @@ class FlatfileRoundTripIT {
                     value += "Expected:" + s + "\n";
                     value += "Parsed==:" + returned2[j] + "\n";
 
-                    LOGGER.error("Expected:" + s);
-                    LOGGER.error("Parsed==:" + returned2[j]);
+                    log.error("Expected:" + s);
+                    log.error("Parsed==:" + returned2[j]);
                 }
 
                 if (j >= returned2.length) break;
@@ -184,7 +184,7 @@ class FlatfileRoundTripIT {
 
         drReturned.removeAll(drExpected);
         if (drReturned.size() != 0) {
-            LOGGER.error(drReturned.toString());
+            log.error(drReturned.toString());
         }
         return value;
     }
@@ -202,7 +202,7 @@ class FlatfileRoundTripIT {
         try {
             return charSource.read();
         } catch (IOException e) {
-            LOGGER.error("IO exception.", e);
+            log.error("IO exception.", e);
             return "";
         }
     }

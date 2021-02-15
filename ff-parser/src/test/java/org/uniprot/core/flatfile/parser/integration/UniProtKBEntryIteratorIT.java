@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,7 @@ import org.uniprot.core.flatfile.writer.impl.UniProtFlatfileWriter;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 
 @Disabled
+@Slf4j
 class UniProtKBEntryIteratorIT {
     private DefaultUniProtEntryIterator entryIterator;
 
@@ -82,7 +84,7 @@ class UniProtKBEntryIteratorIT {
             UniProtKBEntry entry = entryIterator.next();
             FlatfileWriter<UniProtKBEntry> writer = new UniProtFlatfileWriter();
             String convertedEntryStr = writer.write(entry, true);
-            System.out.println(convertedEntryStr);
+            log.debug(convertedEntryStr);
             assertEquals(entryStr, convertedEntryStr + "\n");
         } catch (Exception e) {
             fail("test failed");

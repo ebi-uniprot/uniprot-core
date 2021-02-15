@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.ReferenceComment;
 import org.uniprot.core.uniprotkb.ReferenceCommentType;
@@ -16,6 +17,7 @@ import org.uniprot.core.xml.jaxb.uniprot.SourceDataType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
+@Slf4j
 class ReferenceCommentConverterTest {
 
     @Test
@@ -34,7 +36,7 @@ class ReferenceCommentConverterTest {
                 new ReferenceCommentConverter(new EvidenceIndexMapper());
 
         SourceDataType sourceType = converter.toXml(refComments);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(sourceType, SourceDataType.class, "source"));
         List<ReferenceComment> converted = converter.fromXml(sourceType);
         assertEquals(refComments, converted);

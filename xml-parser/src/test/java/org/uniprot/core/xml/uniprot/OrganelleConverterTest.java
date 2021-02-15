@@ -6,6 +6,7 @@ import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.GeneEncodingType;
 import org.uniprot.core.uniprotkb.GeneLocation;
@@ -13,6 +14,7 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.impl.GeneLocationBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.GeneLocationType;
 
+@Slf4j
 class OrganelleConverterTest {
 
     @Test
@@ -28,7 +30,7 @@ class OrganelleConverterTest {
                         .build();
         OrganelleConverter converter = new OrganelleConverter(new EvidenceIndexMapper());
         GeneLocationType xml = converter.toXml(organelle);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xml, GeneLocationType.class, "geneLocation"));
 
         GeneLocation converted = converter.fromXml(xml);
@@ -48,7 +50,7 @@ class OrganelleConverterTest {
                         .build();
         OrganelleConverter converter = new OrganelleConverter(new EvidenceIndexMapper());
         GeneLocationType xml = converter.toXml(organelle);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xml, GeneLocationType.class, "geneLocation"));
 
         GeneLocation converted = converter.fromXml(xml);

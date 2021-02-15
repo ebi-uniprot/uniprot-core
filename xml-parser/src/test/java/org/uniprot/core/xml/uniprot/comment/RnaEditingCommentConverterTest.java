@@ -6,6 +6,7 @@ import static org.uniprot.core.xml.uniprot.EvidenceHelper.evidencesFromLines;
 import java.util.Arrays;
 import java.util.Collections;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.RnaEdPosition;
 import org.uniprot.core.uniprotkb.comment.RnaEditingComment;
@@ -19,6 +20,7 @@ import org.uniprot.core.xml.jaxb.uniprot.LocationType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
+@Slf4j
 class RnaEditingCommentConverterTest {
 
     @Test
@@ -38,7 +40,7 @@ class RnaEditingCommentConverterTest {
 
         LocationType xmlLocation = converter.toXml(position);
 
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlLocation, LocationType.class, "location"));
         RnaEdPosition converted = converter.fromXml(xmlLocation);
         assertEquals(position, converted);
@@ -69,7 +71,7 @@ class RnaEditingCommentConverterTest {
                 new RnaEditingCommentConverter(new EvidenceIndexMapper());
 
         CommentType xmlComment = converter.toXml(comment);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         RnaEditingComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);

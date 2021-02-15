@@ -5,9 +5,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.rg.RGLineBuilder;
 
+@Slf4j
 class RGLineBuilderTest {
     private final RGLineBuilder builder = new RGLineBuilder();
 
@@ -16,7 +18,7 @@ class RGLineBuilderTest {
         List<String> ags = build();
         List<String> lines = builder.buildLine(ags, true, true);
         for (String line : lines) {
-            System.out.println(line);
+            log.debug(line);
         }
         assertEquals(3, lines.size());
         String expected = "RG   Institute for Genomic Research;";
@@ -28,7 +30,7 @@ class RGLineBuilderTest {
         List<String> ags = build();
         List<String> lines = builder.buildLine(ags, false, true);
         for (String line : lines) {
-            System.out.println(line);
+            log.debug(line);
         }
         assertEquals(1, lines.size());
         String expected =

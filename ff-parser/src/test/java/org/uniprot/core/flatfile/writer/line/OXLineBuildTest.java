@@ -2,12 +2,14 @@ package org.uniprot.core.flatfile.writer.line;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ox.OXLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
+@Slf4j
 class OXLineBuildTest {
     private OXLineBuilder builder = new OXLineBuilder();
 
@@ -20,8 +22,8 @@ class OXLineBuildTest {
         FFLine ffLine = builder.build(taxId);
 
         String resultString = ffLine.toString();
-        // System.out.println(text.getText());
-        System.out.println(resultString);
+        // log.debug(text.getText());
+        log.debug(resultString);
         assertEquals(oxLine, resultString);
     }
 }

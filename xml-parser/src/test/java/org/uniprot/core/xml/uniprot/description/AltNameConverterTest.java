@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.description.Name;
@@ -16,6 +17,7 @@ import org.uniprot.core.xml.jaxb.uniprot.ProteinType.AlternativeName;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
+@Slf4j
 class AltNameConverterTest {
     @Test
     void testAll() {
@@ -31,7 +33,7 @@ class AltNameConverterTest {
 
         AlternativeName xmlObj = converter.toXml(altName);
 
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, AlternativeName.class, "alternativeName"));
         ProteinName converted = converter.fromXml(xmlObj);
         assertEquals(altName, converted);
@@ -51,7 +53,7 @@ class AltNameConverterTest {
 
         AlternativeName xmlObj = converter.toXml(altName);
 
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, AlternativeName.class, "alternativeName"));
         ProteinName converted = converter.fromXml(xmlObj);
         assertEquals(altName, converted);
@@ -71,7 +73,7 @@ class AltNameConverterTest {
 
         AlternativeName xmlObj = converter.toXml(altName);
 
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlObj, AlternativeName.class, "alternativeName"));
         ProteinName converted = converter.fromXml(xmlObj);
         assertEquals(altName, converted);

@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.citation.impl.BookBuilder;
@@ -25,6 +26,7 @@ import org.uniprot.core.xml.jaxb.uniprot.ReferenceType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
+@Slf4j
 class ReferenceConverterTest {
 
     @Test
@@ -41,7 +43,7 @@ class ReferenceConverterTest {
                         submission, referencePositions, refComments, Collections.emptyList());
         ReferenceConverter converter = new ReferenceConverter(new EvidenceIndexMapper());
         ReferenceType xmlReference = converter.toXml(uniReference);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlReference, ReferenceType.class, "reference"));
         UniProtKBReference converted = converter.fromXml(xmlReference);
         assertEquals(uniReference, converted);
@@ -82,7 +84,7 @@ class ReferenceConverterTest {
                 createUniProtReference(citation, referencePositions, refComments, evidences);
         ReferenceConverter converter = new ReferenceConverter(new EvidenceIndexMapper());
         ReferenceType xmlReference = converter.toXml(uniReference);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlReference, ReferenceType.class, "reference"));
         UniProtKBReference converted = converter.fromXml(xmlReference);
         assertEquals(uniReference, converted);
@@ -103,7 +105,7 @@ class ReferenceConverterTest {
                 createUniProtReference(citation, referencePositions, refComments, evidences);
         ReferenceConverter converter = new ReferenceConverter(new EvidenceIndexMapper());
         ReferenceType xmlReference = converter.toXml(uniReference);
-        System.out.println(
+        log.debug(
                 UniProtXmlTestHelper.toXmlString(xmlReference, ReferenceType.class, "reference"));
         UniProtKBReference converted = converter.fromXml(xmlReference);
         assertEquals(uniReference, converted);
