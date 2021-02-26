@@ -19,6 +19,7 @@ public class UniProtDatabaseDetail implements Serializable {
 
     private boolean implicit = false;
     private String linkedReason = null;
+    private String idMappingName;
 
     UniProtDatabaseDetail() {
         this.attributes = new ArrayList<>();
@@ -32,7 +33,8 @@ public class UniProtDatabaseDetail implements Serializable {
             String uriLink,
             List<UniProtDatabaseAttribute> attributes,
             boolean implicit,
-            String linkedReason) {
+            String linkedReason,
+            String idMappingName) {
         super();
         this.name = name;
         this.displayName = displayName;
@@ -44,6 +46,7 @@ public class UniProtDatabaseDetail implements Serializable {
         this.attributes = new ArrayList<>();
         if ((attributes != null) && !attributes.isEmpty()) this.attributes.addAll(attributes);
         else this.attributes.add(DEFAULT_ATTRIBUTE);
+        this.idMappingName = idMappingName;
     }
 
     public String getName() {
@@ -74,10 +77,15 @@ public class UniProtDatabaseDetail implements Serializable {
         return linkedReason;
     }
 
+    public String getIdMappingName(){
+        return idMappingName;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
-                this.attributes, this.category, this.displayName, this.name, this.uriLink);
+                this.attributes, this.category, this.displayName, this.name,
+                this.uriLink, this.implicit, this.linkedReason, this.idMappingName);
     }
 
     @Override
@@ -92,6 +100,9 @@ public class UniProtDatabaseDetail implements Serializable {
                 && Objects.equals(this.category, other.category)
                 && Objects.equals(this.displayName, other.displayName)
                 && Objects.equals(this.name, other.name)
-                && Objects.equals(this.uriLink, other.uriLink);
+                && Objects.equals(this.uriLink, other.uriLink)
+                && Objects.equals(this.implicit, other.implicit)
+                && Objects.equals(this.linkedReason, other.linkedReason)
+                && Objects.equals(this.idMappingName, other.idMappingName);
     }
 }

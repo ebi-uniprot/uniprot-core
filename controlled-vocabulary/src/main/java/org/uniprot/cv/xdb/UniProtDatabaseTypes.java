@@ -70,6 +70,7 @@ public enum UniProtDatabaseTypes {
                     boolean isImplicit = Boolean.parseBoolean(implicit);
 
                     String linkedReason = item.optString("linkedReason", null);
+                    String idMappingName = item.optString("idMappingName", null);
 
                     List<UniProtDatabaseAttribute> attributes = new ArrayList<>();
                     List<Property> properties = item.getProperties("attributes");
@@ -94,7 +95,8 @@ public enum UniProtDatabaseTypes {
                                     uriLink,
                                     attributes,
                                     isImplicit,
-                                    linkedReason);
+                                    linkedReason,
+                                    idMappingName);
                     types.add(xdbType);
                 });
         typeMap =

@@ -68,7 +68,7 @@ class CrossReferenceValidatorIT {
                         opType.getUriLink(),
                         opType.getAttributes(),
                         false,
-                        null);
+                        null, null);
 
         // validate, the category should mismatch
         List<Pair<String, String>> mismatches = CrossReferenceValidator.validate(actualOpType);

@@ -17,6 +17,7 @@ class UniProtKBDatabaseDetailTest {
     private UniProtDatabaseCategory category;
     private String uriLink;
     private List<UniProtDatabaseAttribute> attributes;
+    private String idMappingName;
 
     @BeforeEach
     void setUp() {
@@ -32,6 +33,7 @@ class UniProtKBDatabaseDetailTest {
                                         UniProtKBDatabaseAttributeTest.createDBXRefTypeAttribute(
                                                 this.name, this.displayName, this.uriLink))
                         .collect(Collectors.toList());
+        this.idMappingName = "idMappingName-" + random;
     }
 
     @Test
@@ -46,6 +48,7 @@ class UniProtKBDatabaseDetailTest {
         assertEquals("Description", dbType.getAttributes().get(0).getName());
         assertEquals("description", dbType.getAttributes().get(0).getXmlTag());
         Assertions.assertNull(dbType.getAttributes().get(0).getUriLink());
+        assertEquals(this.idMappingName, dbType.getIdMappingName());
     }
 
     @Test
@@ -57,6 +60,7 @@ class UniProtKBDatabaseDetailTest {
         assertEquals(this.category, dbType.getCategory());
         assertEquals(this.uriLink, dbType.getUriLink());
         assertEquals(3, dbType.getAttributes().size());
+        assertNull(dbType.getIdMappingName());
     }
 
     @Test
@@ -100,10 +104,10 @@ class UniProtKBDatabaseDetailTest {
     private UniProtDatabaseDetail createUniProtDatabaseDetail(boolean passAttribute) {
         if (passAttribute) {
             return createUniProtDatabaseDetail(
-                    this.name, this.displayName, this.category, this.uriLink, this.attributes);
+                    this.name, this.displayName, this.category, this.uriLink, this.attributes, null);
         } else {
             return createUniProtDatabaseDetail(
-                    this.name, this.displayName, this.category, this.uriLink, null);
+                    this.name, this.displayName, this.category, this.uriLink, null, this.idMappingName);
         }
     }
 
@@ -112,8 +116,9 @@ class UniProtKBDatabaseDetailTest {
             String displayName,
             UniProtDatabaseCategory category,
             String uriLink,
-            List<UniProtDatabaseAttribute> attributes) {
+            List<UniProtDatabaseAttribute> attributes,
+            String idMappingName) {
         return new UniProtDatabaseDetail(
-                name, displayName, category, uriLink, attributes, false, null);
+                name, displayName, category, uriLink, attributes, false, null, idMappingName);
     }
 }
