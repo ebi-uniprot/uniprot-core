@@ -117,7 +117,7 @@ public class FeatureTest {
         assertEquals("EXACT", end.get("modifier").asText());
 
         assertNotNull(jsonNode.get("description"));
-        assertEquals("description value CHAIN", jsonNode.get("description").asText());
+        assertEquals("description value 123", jsonNode.get("description").asText());
 
         assertNotNull(jsonNode.get("featureId"));
         assertEquals("id value CHAIN", jsonNode.get("featureId").asText());
@@ -170,7 +170,7 @@ public class FeatureTest {
                 .type(featureType)
                 .alternativeSequence(alternativeSequence)
                 .featureCrossReference(xrefs)
-                .description("description value " + featureType)
+                .description("description value " + 123)
                 .evidencesSet(evidences)
                 .featureId("id value " + featureType)
                 .location(location)

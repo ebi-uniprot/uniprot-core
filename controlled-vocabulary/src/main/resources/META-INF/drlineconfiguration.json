@@ -4,7 +4,6 @@
 		"displayName": "EMBL",
 		"category": "SEQ",
 		"uriLink": "https://www.ebi.ac.uk/ena/data/view/%id",
-        "idMappingName": "EMBL_ID",
 		"attributes": [
 			{
 				"name": "ProteinId",
@@ -28,7 +27,6 @@
 		"uriLink": "https://www.ncbi.nlm.nih.gov/protein/%id",
 		"implicit": true,
 		"linkedReason": "DR:EMBL",
-        "idMappingName": "EMBL_ID",
 		"attributes": [
 			{
 				"name": "ProteinId",
@@ -53,7 +51,6 @@
 		"uriLink": "http://getentry.ddbj.nig.ac.jp/getentry/dad/%id",
 		"implicit": true,
 		"linkedReason": "DR:EMBL",
-        "idMappingName": "EMBL_ID",
 		"attributes": [
 			{
 				"name": "ProteinId",
