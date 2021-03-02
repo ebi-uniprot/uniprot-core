@@ -52,6 +52,11 @@ class UtilsTest {
                 assertTrue(Utils.nullOrEmpty(""));
             }
 
+            @Test
+            void whenBlank_returnTrue() {
+                assertTrue(Utils.nullOrEmpty("  "));
+            }
+
             @ParameterizedTest
             @ValueSource(
                     strings = {
@@ -63,7 +68,6 @@ class UtilsTest {
                         "Ab",
                         " s ",
                         "NULL",
-                        "   ",
                         "123432"
                     })
             void nonEmpty_shouldAlwaysReturnFalse(String test) {
@@ -125,6 +129,7 @@ class UtilsTest {
             void whenNullOrEmpty_returnFalse() {
                 assertAll(
                         () -> assertFalse(Utils.notNullNotEmpty((String) null)),
+                        () -> assertFalse(Utils.notNullNotEmpty("   ")),
                         () -> assertFalse(Utils.notNullNotEmpty("")));
             }
 
@@ -139,7 +144,6 @@ class UtilsTest {
                         "Ab",
                         " s ",
                         "NULL",
-                        "   ",
                         "123432"
                     })
             void nonEmpty_shouldAlwaysReturnTrue(String test) {

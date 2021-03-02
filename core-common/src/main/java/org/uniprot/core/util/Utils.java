@@ -132,7 +132,7 @@ public class Utils {
     }
 
     public static boolean nullOrEmpty(@Nullable String value) {
-        return value == null || value.isEmpty();
+        return value == null || value.trim().isEmpty();
     }
 
     public static boolean nullOrEmpty(@Nullable Collection<?> value) {
@@ -144,7 +144,7 @@ public class Utils {
     }
 
     public static boolean notNullNotEmpty(@Nullable String value) {
-        return value != null && !value.isEmpty();
+        return value != null && !value.trim().isEmpty();
     }
 
     public static boolean notNullNotEmpty(@Nullable Collection<?> value) {
