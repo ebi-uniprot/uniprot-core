@@ -15,12 +15,17 @@ import org.uniprot.core.Sequence;
 import org.uniprot.core.gene.Gene;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.uniprotkb.*;
+import org.uniprot.core.uniprotkb.comment.AlternativeProductsComment;
 import org.uniprot.core.uniprotkb.comment.Comment;
+import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.InteractionComment;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
+import org.uniprot.core.util.Pair;
+import org.uniprot.core.util.PairImpl;
 
 public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
     public static final String COUNT_BY_COMMENT_TYPE_ATTRIB = "countByCommentType";
@@ -340,14 +345,28 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
             countByCommentType =
                     comments.stream()
                             .filter(comment -> comment.getCommentType() != null)
+                            .map(this::mapCommentsCount)
                             .collect(
                                     Collectors.groupingBy(
-                                            comment -> comment.getCommentType().getDisplayName(),
+                                            pair -> pair.getKey().getDisplayName(),
                                             LinkedHashMap::new,
-                                            Collectors.summingInt(comment -> 1)));
+                                            Collectors.summingInt(Pair::getValue)));
         }
 
         return countByCommentType;
+    }
+
+    private Pair<CommentType,Integer> mapCommentsCount(Comment comment) {
+        int count = 1;
+        if(comment.getCommentType().equals(CommentType.INTERACTION)){
+            InteractionComment interaction = (InteractionComment) comment;
+            count = interaction.getInteractions().size();
+        }
+        if(comment.getCommentType().equals(CommentType.ALTERNATIVE_PRODUCTS)){
+            AlternativeProductsComment alternativeProducts = (AlternativeProductsComment) comment;
+            count = alternativeProducts.getIsoforms().size();
+        }
+        return new PairImpl<>(comment.getCommentType(), count);
     }
 
     private Map<String, Integer> createCountByFeatureTypeMap(List<UniProtKBFeature> features) {
