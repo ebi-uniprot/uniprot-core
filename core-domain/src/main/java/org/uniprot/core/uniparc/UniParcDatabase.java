@@ -31,7 +31,7 @@ public enum UniParcDatabase implements Database, EnumDisplay {
             "PDB",
             true,
             "https://www.ebi.ac.uk/pdbe/entry/pdb/%id"), // need to remove the chain, eg "4q8n_A",
-                                                         // just use "4q8n" as id
+    // just use "4q8n" as id
     PIR("PIR", false),
 
     PIRARC("PIRARC", false),
