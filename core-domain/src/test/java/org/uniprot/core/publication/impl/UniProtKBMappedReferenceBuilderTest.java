@@ -1,5 +1,14 @@
 package org.uniprot.core.publication.impl;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.collection.IsEmptyCollection.empty;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Submission;
 import org.uniprot.core.citation.SubmissionDatabase;
@@ -8,15 +17,6 @@ import org.uniprot.core.publication.UniProtKBMappedReference;
 import org.uniprot.core.uniprotkb.ReferenceComment;
 import org.uniprot.core.uniprotkb.ReferenceCommentType;
 import org.uniprot.core.uniprotkb.impl.ReferenceCommentBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.collection.IsEmptyCollection.empty;
 
 /**
  * Other tests covered by {@link AbstractMappedReferenceBuilderTest}.
@@ -92,7 +92,7 @@ class UniProtKBMappedReferenceBuilderTest {
     }
 
     @Test
-    void canSetCitation(){
+    void canSetCitation() {
         SubmissionBuilder builder = new SubmissionBuilder();
         builder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ);
         Submission citation = builder.build();

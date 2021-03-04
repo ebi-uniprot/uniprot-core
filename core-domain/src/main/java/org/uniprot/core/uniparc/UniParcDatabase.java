@@ -27,7 +27,11 @@ public enum UniParcDatabase implements Database, EnumDisplay {
     JPO("JPO", true, "https://www.ebi.ac.uk/Tools/dbfetch/dbfetch?db=jpo_prt&id=%id"),
     KIPO("KIPO", true, "https://www.ebi.ac.uk/Tools/dbfetch/dbfetch?db=kipo_prt&id=%id"),
     PATRIC("PATRIC", true, "https://www.patricbrc.org/view/Feature/%id"),
-    PDB("PDB", true, "https://www.ebi.ac.uk/pdbe/entry/pdb/%id"),   //need to remove the chain, eg "4q8n_A", just use "4q8n" as id
+    PDB(
+            "PDB",
+            true,
+            "https://www.ebi.ac.uk/pdbe/entry/pdb/%id"), // need to remove the chain, eg "4q8n_A",
+                                                         // just use "4q8n" as id
     PIR("PIR", false),
 
     PIRARC("PIRARC", false),
@@ -38,13 +42,19 @@ public enum UniParcDatabase implements Database, EnumDisplay {
 
     SGD("SGD", true, "https://www.yeastgenome.org/locus/%id"),
     SWISSPROT("UniProtKB/Swiss-Prot", true, "https://www.uniprot.org/uniprot/%id"),
-    SWISSPROT_VARSPLIC("UniProtKB/Swiss-Prot protein isoforms", true, "https://www.uniprot.org/uniprot/%id"),  //swissprot isoform
-    TAIR_ARABIDOPSIS("TAIR", true, "https://www.arabidopsis.org/servlets/TairObject?type=aa_sequence&name=%id"),
+    SWISSPROT_VARSPLIC(
+            "UniProtKB/Swiss-Prot protein isoforms",
+            true,
+            "https://www.uniprot.org/uniprot/%id"), // swissprot isoform
+    TAIR_ARABIDOPSIS(
+            "TAIR",
+            true,
+            "https://www.arabidopsis.org/servlets/TairObject?type=aa_sequence&name=%id"),
     TREMBL("UniProtKB/TrEMBL", true, "https://www.uniprot.org/uniprot/%id"),
 
     TREMBLNEW("TREMBLNEW", false),
     TREMBL_VARSPLIC("TREMBL_VARSPLIC", false),
-    TROME("TROME", true), //no link
+    TROME("TROME", true), // no link
     UNIMES("UNIMES", false),
     USPTO("USPTO", true, "https://www.ebi.ac.uk/Tools/dbfetch/dbfetch?db=uspto_prt&id=%id"),
 
@@ -58,14 +68,15 @@ public enum UniParcDatabase implements Database, EnumDisplay {
     private final String url;
 
     UniParcDatabase(String displayName, boolean alive) {
-       this(displayName, alive, "");
+        this(displayName, alive, "");
     }
 
     UniParcDatabase(String displayName, boolean alive, String url) {
         this.displayName = displayName;
         this.alive = alive;
-        this.url= url;
+        this.url = url;
     }
+
     public @Nonnull String getName() {
         return displayName;
     }
@@ -75,10 +86,10 @@ public enum UniParcDatabase implements Database, EnumDisplay {
     }
 
     public String getUrl() {
-		return url;
-	}
+        return url;
+    }
 
-	public static @Nonnull UniParcDatabase typeOf(@Nonnull String displayName) {
+    public static @Nonnull UniParcDatabase typeOf(@Nonnull String displayName) {
         return EnumDisplay.typeOf(displayName, UniParcDatabase.class);
     }
 }

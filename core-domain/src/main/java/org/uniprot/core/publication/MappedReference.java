@@ -1,9 +1,9 @@
 package org.uniprot.core.publication;
 
-import org.uniprot.core.uniprotkb.UniProtKBAccession;
-
 import java.io.Serializable;
 import java.util.Set;
+
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
 /**
  * Created 02/12/2020

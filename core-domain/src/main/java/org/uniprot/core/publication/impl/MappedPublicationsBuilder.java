@@ -1,15 +1,16 @@
 package org.uniprot.core.publication.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.publication.CommunityMappedReference;
 import org.uniprot.core.publication.ComputationallyMappedReference;
 import org.uniprot.core.publication.MappedPublications;
 import org.uniprot.core.publication.UniProtKBMappedReference;
 import org.uniprot.core.util.Utils;
-
-import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author sahmad

@@ -17,7 +17,9 @@ public class LiteratureStatisticsImpl extends StatisticsImpl implements Literatu
     }
 
     LiteratureStatisticsImpl(
-            long reviewedProteinCount, long unreviewedProteinCount, long computationallyMappedProteinCount,
+            long reviewedProteinCount,
+            long unreviewedProteinCount,
+            long computationallyMappedProteinCount,
             long communityMappedProteinCount) {
         super(reviewedProteinCount, unreviewedProteinCount);
         this.computationallyMappedProteinCount = computationallyMappedProteinCount;
@@ -39,13 +41,18 @@ public class LiteratureStatisticsImpl extends StatisticsImpl implements Literatu
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LiteratureStatisticsImpl that = (LiteratureStatisticsImpl) o;
-        return super.equals(that) && getComputationallyMappedProteinCount() == that.getComputationallyMappedProteinCount()
+        return super.equals(that)
+                && getComputationallyMappedProteinCount()
+                        == that.getComputationallyMappedProteinCount()
                 && getCommunityMappedProteinCount() == that.getCommunityMappedProteinCount();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getComputationallyMappedProteinCount(), getCommunityMappedProteinCount());
+        return Objects.hash(
+                super.hashCode(),
+                getComputationallyMappedProteinCount(),
+                getCommunityMappedProteinCount());
     }
 
     @Override

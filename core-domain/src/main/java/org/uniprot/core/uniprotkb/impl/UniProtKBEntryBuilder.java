@@ -356,13 +356,13 @@ public class UniProtKBEntryBuilder implements Builder<UniProtKBEntry> {
         return countByCommentType;
     }
 
-    private Pair<CommentType,Integer> mapCommentsCount(Comment comment) {
+    private Pair<CommentType, Integer> mapCommentsCount(Comment comment) {
         int count = 1;
-        if(comment.getCommentType().equals(CommentType.INTERACTION)){
+        if (comment.getCommentType().equals(CommentType.INTERACTION)) {
             InteractionComment interaction = (InteractionComment) comment;
             count = interaction.getInteractions().size();
         }
-        if(comment.getCommentType().equals(CommentType.ALTERNATIVE_PRODUCTS)){
+        if (comment.getCommentType().equals(CommentType.ALTERNATIVE_PRODUCTS)) {
             AlternativeProductsComment alternativeProducts = (AlternativeProductsComment) comment;
             count = alternativeProducts.getIsoforms().size();
         }

@@ -1,12 +1,10 @@
 package org.uniprot.core.publication.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.publication.CommunityAnnotation;
-import org.uniprot.core.publication.CommunityMappedReference;
-import org.uniprot.core.publication.ComputationallyMappedReference;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.publication.ComputationallyMappedReference;
 
 /**
  * Other tests covered by {@link AbstractMappedReferenceBuilderTest}.
@@ -27,8 +25,10 @@ class ComputationallyMappedReferenceBuilderTest {
     @Test
     void canCreateViaFrom() {
         String value = "value";
-        ComputationallyMappedReference ref = new ComputationallyMappedReferenceBuilder().annotation(value).build();
-        ComputationallyMappedReferenceBuilder builder = ComputationallyMappedReferenceBuilder.from(ref);
+        ComputationallyMappedReference ref =
+                new ComputationallyMappedReferenceBuilder().annotation(value).build();
+        ComputationallyMappedReferenceBuilder builder =
+                ComputationallyMappedReferenceBuilder.from(ref);
 
         assertThat(builder.build().getAnnotation(), is(value));
     }

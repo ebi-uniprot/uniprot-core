@@ -229,16 +229,18 @@ class UniProtKBEntryBuilderTest {
 
     @Test
     void canAddExtraAttributesOnCommentTypeInteractionAndAlternativeProductsCount() {
-        Comment interaction = new InteractionCommentBuilder()
-                .interactionsAdd(new InteractionBuilder().build())
-                .interactionsAdd(new InteractionBuilder().build())
-                .build();
+        Comment interaction =
+                new InteractionCommentBuilder()
+                        .interactionsAdd(new InteractionBuilder().build())
+                        .interactionsAdd(new InteractionBuilder().build())
+                        .build();
 
-        Comment alternativeProducts = new AlternativeProductsCommentBuilder()
-                .isoformsAdd(new APIsoformBuilder().build())
-                .isoformsAdd(new APIsoformBuilder().build())
-                .isoformsAdd(new APIsoformBuilder().build())
-                .build();
+        Comment alternativeProducts =
+                new AlternativeProductsCommentBuilder()
+                        .isoformsAdd(new APIsoformBuilder().build())
+                        .isoformsAdd(new APIsoformBuilder().build())
+                        .isoformsAdd(new APIsoformBuilder().build())
+                        .build();
         UniProtKBEntry entry =
                 UniProtKBEntryBuilder.from(minEntry)
                         .commentsAdd(interaction)
@@ -252,8 +254,10 @@ class UniProtKBEntryBuilderTest {
         assertTrue(
                 entry.getExtraAttributes()
                         .containsKey(UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB));
-        LinkedHashMap<String,Integer> commentCounts = (LinkedHashMap<String, Integer>) entry.getExtraAttributes()
-                .get(UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB);
+        LinkedHashMap<String, Integer> commentCounts =
+                (LinkedHashMap<String, Integer>)
+                        entry.getExtraAttributes()
+                                .get(UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB);
 
         assertEquals(4, commentCounts.size());
         assertTrue(commentCounts.containsKey("INTERACTION"));
