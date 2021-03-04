@@ -1,15 +1,14 @@
 package org.uniprot.core.publication.impl;
 
+import static java.util.Collections.emptySet;
+
+import java.util.Objects;
+import java.util.Set;
+
 import org.uniprot.core.publication.CommunityAnnotation;
 import org.uniprot.core.publication.CommunityMappedReference;
 import org.uniprot.core.publication.MappedSource;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
-
-import java.util.Collections;
-import java.util.Objects;
-import java.util.Set;
-
-import static java.util.Collections.emptySet;
 
 /**
  * Created 02/12/2020

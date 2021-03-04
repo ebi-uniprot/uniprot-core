@@ -4,6 +4,7 @@ import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,8 +18,7 @@ import org.uniprot.core.taxonomy.impl.TaxonomyLineageBuilder;
 import org.uniprot.core.uniprotkb.*;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
-import org.uniprot.core.uniprotkb.comment.impl.CofactorCommentBuilder;
-import org.uniprot.core.uniprotkb.comment.impl.DiseaseCommentBuilder;
+import org.uniprot.core.uniprotkb.comment.impl.*;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilder;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
@@ -225,6 +225,52 @@ class UniProtKBEntryBuilderTest {
                         .containsKey(UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB));
         assertTrue(entry.getExtraAttributes().containsKey(commentAttrib));
         assertEquals("value1", entry.getExtraAttributes().get(commentAttrib));
+    }
+
+    @Test
+    void canAddExtraAttributesOnCommentTypeInteractionAndAlternativeProductsCount() {
+        Comment interaction =
+                new InteractionCommentBuilder()
+                        .interactionsAdd(new InteractionBuilder().build())
+                        .interactionsAdd(new InteractionBuilder().build())
+                        .build();
+
+        Comment alternativeProducts =
+                new AlternativeProductsCommentBuilder()
+                        .isoformsAdd(new APIsoformBuilder().build())
+                        .isoformsAdd(new APIsoformBuilder().build())
+                        .isoformsAdd(new APIsoformBuilder().build())
+                        .build();
+        UniProtKBEntry entry =
+                UniProtKBEntryBuilder.from(minEntry)
+                        .commentsAdd(interaction)
+                        .commentsAdd(alternativeProducts)
+                        .commentsAdd(new CofactorCommentBuilder().build())
+                        .commentsAdd(new CofactorCommentBuilder().build())
+                        .commentsAdd(new DiseaseCommentBuilder().build())
+                        .build();
+        assertNotNull(entry);
+        assertEquals(1, entry.getExtraAttributes().size());
+        assertTrue(
+                entry.getExtraAttributes()
+                        .containsKey(UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB));
+        LinkedHashMap<String, Integer> commentCounts =
+                (LinkedHashMap<String, Integer>)
+                        entry.getExtraAttributes()
+                                .get(UniProtKBEntryBuilder.COUNT_BY_COMMENT_TYPE_ATTRIB);
+
+        assertEquals(4, commentCounts.size());
+        assertTrue(commentCounts.containsKey("INTERACTION"));
+        assertEquals(2, commentCounts.get("INTERACTION"));
+
+        assertTrue(commentCounts.containsKey("ALTERNATIVE PRODUCTS"));
+        assertEquals(3, commentCounts.get("ALTERNATIVE PRODUCTS"));
+
+        assertTrue(commentCounts.containsKey("COFACTOR"));
+        assertEquals(2, commentCounts.get("COFACTOR"));
+
+        assertTrue(commentCounts.containsKey("DISEASE"));
+        assertEquals(1, commentCounts.get("DISEASE"));
     }
 
     @Nested

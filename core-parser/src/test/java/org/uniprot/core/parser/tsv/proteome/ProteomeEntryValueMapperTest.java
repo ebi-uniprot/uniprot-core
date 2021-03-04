@@ -25,7 +25,13 @@ class ProteomeEntryValueMapperTest {
     void testGetDataSimple() {
         ProteomeEntry entry = create();
         List<String> fields =
-                Arrays.asList("upid", "genome_assembly", "protein_count", "busco", "cpd", "genome_representation");
+                Arrays.asList(
+                        "upid",
+                        "genome_assembly",
+                        "protein_count",
+                        "busco",
+                        "cpd",
+                        "genome_representation");
         Map<String, String> entryMap = new ProteomeEntryValueMapper().mapEntity(entry, fields);
 
         assertEquals(fields.size(), entryMap.size());

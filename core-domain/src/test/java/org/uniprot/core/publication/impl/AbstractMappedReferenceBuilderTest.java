@@ -1,18 +1,19 @@
 package org.uniprot.core.publication.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.publication.MappedSource;
-import org.uniprot.core.uniprotkb.UniProtKBAccession;
-import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
-
-import javax.annotation.Nonnull;
-import java.util.HashSet;
-import java.util.Set;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.collection.IsEmptyCollection.empty;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.annotation.Nonnull;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.publication.MappedSource;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
+import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 
 /**
  * Created 08/12/2020
@@ -22,8 +23,7 @@ import static org.hamcrest.collection.IsEmptyCollection.empty;
 class AbstractMappedReferenceBuilderTest {
     @Test
     void checkEmptyReference() {
-        FakeMappedReference reference =
-                new FakeMappedReferenceBuilder().build();
+        FakeMappedReference reference = new FakeMappedReferenceBuilder().build();
         assertThat(reference.getSourceCategories(), is(empty()));
     }
 
@@ -72,15 +72,8 @@ class AbstractMappedReferenceBuilderTest {
 
     @Test
     void canSetSource() {
-        MappedSource source = new MappedSourceBuilder()
-                .name("source1")
-                .id("value1")
-                .build();
-        FakeMappedReference reference =
-                new FakeMappedReferenceBuilder()
-                        .source(
-                                source)
-                        .build();
+        MappedSource source = new MappedSourceBuilder().name("source1").id("value1").build();
+        FakeMappedReference reference = new FakeMappedReferenceBuilder().source(source).build();
         assertThat(reference.getSource(), is(source));
     }
 

@@ -1,15 +1,16 @@
 package org.uniprot.core.publication.impl;
 
-import org.uniprot.core.citation.Citation;
-import org.uniprot.core.publication.UniProtKBMappedReference;
-import org.uniprot.core.uniprotkb.ReferenceComment;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
 
-import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.modifiableList;
+import javax.annotation.Nonnull;
+
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.publication.UniProtKBMappedReference;
+import org.uniprot.core.uniprotkb.ReferenceComment;
 
 /**
  * Created 02/12/2020
@@ -45,12 +46,12 @@ public class UniProtKBMappedReferenceBuilder
         return getThis();
     }
 
-    public UniProtKBMappedReferenceBuilder referenceNumber(int referenceNumber){
+    public UniProtKBMappedReferenceBuilder referenceNumber(int referenceNumber) {
         this.referenceNumber = referenceNumber;
         return getThis();
     }
 
-    public UniProtKBMappedReferenceBuilder citation(Citation citation){
+    public UniProtKBMappedReferenceBuilder citation(Citation citation) {
         this.citation = citation;
         return getThis();
     }

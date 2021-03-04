@@ -1,13 +1,13 @@
 package org.uniprot.core.publication.impl;
 
+import java.util.List;
+import java.util.Objects;
+
 import org.uniprot.core.publication.CommunityMappedReference;
 import org.uniprot.core.publication.ComputationallyMappedReference;
 import org.uniprot.core.publication.MappedPublications;
 import org.uniprot.core.publication.UniProtKBMappedReference;
 import org.uniprot.core.util.Utils;
-
-import java.util.List;
-import java.util.Objects;
 
 /**
  * @author sahmad
@@ -28,7 +28,8 @@ public class MappedPublicationsImpl implements MappedPublications {
             List<ComputationallyMappedReference> computationallyMappedReferences,
             List<CommunityMappedReference> communityMappedReferences) {
         this.uniProtKBMappedReference = uniProtKBMappedReference;
-        this.computationallyMappedReferences = Utils.unmodifiableList(computationallyMappedReferences);
+        this.computationallyMappedReferences =
+                Utils.unmodifiableList(computationallyMappedReferences);
         this.communityMappedReferences = Utils.unmodifiableList(communityMappedReferences);
     }
 
@@ -53,13 +54,16 @@ public class MappedPublicationsImpl implements MappedPublications {
         if (o == null || getClass() != o.getClass()) return false;
         MappedPublicationsImpl that = (MappedPublicationsImpl) o;
         return Objects.equals(uniProtKBMappedReference, that.uniProtKBMappedReference)
-                && Objects.equals(computationallyMappedReferences, that.computationallyMappedReferences)
+                && Objects.equals(
+                        computationallyMappedReferences, that.computationallyMappedReferences)
                 && Objects.equals(communityMappedReferences, that.communityMappedReferences);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
-                uniProtKBMappedReference, computationallyMappedReferences, communityMappedReferences);
+                uniProtKBMappedReference,
+                computationallyMappedReferences,
+                communityMappedReferences);
     }
 }

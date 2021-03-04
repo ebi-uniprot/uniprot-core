@@ -1,15 +1,13 @@
 package org.uniprot.core.json.parser.publication;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.jsontype.NamedType;
-import com.fasterxml.jackson.databind.module.SimpleModule;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.uniprot.core.CrossReference;
-import org.uniprot.core.Position;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.citation.impl.*;
-import org.uniprot.core.feature.impl.FeatureDescriptionImpl;
 import org.uniprot.core.impl.CrossReferenceImpl;
-import org.uniprot.core.impl.ECNumberImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.json.parser.serializer.*;
 import org.uniprot.core.json.parser.uniprot.serializer.*;
@@ -17,24 +15,20 @@ import org.uniprot.core.publication.*;
 import org.uniprot.core.publication.impl.*;
 import org.uniprot.core.uniprotkb.ReferenceComment;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
-import org.uniprot.core.uniprotkb.comment.impl.APIsoformImpl;
-import org.uniprot.core.uniprotkb.description.impl.FlagImpl;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceImpl;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueImpl;
-import org.uniprot.core.uniprotkb.feature.impl.FeatureIdImpl;
 import org.uniprot.core.uniprotkb.impl.ReferenceCommentImpl;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionImpl;
-import org.uniprot.core.uniprotkb.impl.UniProtKBIdImpl;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtKBCrossReferenceImpl;
 import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.NamedType;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 public class MappedPublicationsJsonConfig extends JsonConfig {
     private static MappedPublicationsJsonConfig instance;

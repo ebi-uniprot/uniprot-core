@@ -1,11 +1,11 @@
 package org.uniprot.core.publication.impl;
 
+import java.util.Set;
+
 import org.uniprot.core.publication.MappedReference;
 import org.uniprot.core.publication.MappedSource;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.util.Utils;
-
-import java.util.Set;
 
 /**
  * Created 02/12/2020

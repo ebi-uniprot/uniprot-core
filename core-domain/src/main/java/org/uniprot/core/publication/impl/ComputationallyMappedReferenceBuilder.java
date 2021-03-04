@@ -1,8 +1,8 @@
 package org.uniprot.core.publication.impl;
 
-import org.uniprot.core.publication.ComputationallyMappedReference;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.publication.ComputationallyMappedReference;
 
 /**
  * Created 02/12/2020
