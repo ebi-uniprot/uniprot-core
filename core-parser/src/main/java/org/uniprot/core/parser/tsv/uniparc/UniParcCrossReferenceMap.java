@@ -63,12 +63,14 @@ public class UniParcCrossReferenceMap implements NamedValueMap {
 
     private Optional<LocalDate> getFirstSeenDate() {
         return uniParcCrossReferences.stream()
+                .filter(xref -> Utils.notNull(xref.getCreated()))
                 .map(UniParcCrossReference::getCreated)
                 .min(Comparator.comparing(LocalDate::toEpochDay));
     }
 
     private Optional<LocalDate> getLastSeenDate() {
         return uniParcCrossReferences.stream()
+                .filter(xref -> Utils.notNull(xref.getLastUpdated()))
                 .map(UniParcCrossReference::getLastUpdated)
                 .max(Comparator.comparing(LocalDate::toEpochDay));
     }
