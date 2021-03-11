@@ -52,12 +52,12 @@ class TaxonomyEntryValueMapperTest {
         assertEquals(14, mappedEntries.size());
         assertEquals("9606", mappedEntries.get("id"));
         assertEquals("9605", mappedEntries.get("parent"));
-        assertEquals("name", mappedEntries.get("strain"));
+        assertEquals("name", mappedEntries.get("strains"));
         assertEquals("link", mappedEntries.get("links"));
         assertEquals("scientificName", mappedEntries.get("scientific_name"));
         assertEquals("otherName", mappedEntries.get("other_names"));
-        assertEquals("synonym", mappedEntries.get("synonym"));
-        assertEquals("Homo sapiens", mappedEntries.get("host"));
+        assertEquals("synonym", mappedEntries.get("synonyms"));
+        assertEquals("Homo sapiens", mappedEntries.get("hosts"));
         assertEquals("mnemonic", mappedEntries.get("mnemonic"));
         assertEquals("kingdom", mappedEntries.get("rank"));
         assertEquals("reviewed", mappedEntries.get("reviewed"));
