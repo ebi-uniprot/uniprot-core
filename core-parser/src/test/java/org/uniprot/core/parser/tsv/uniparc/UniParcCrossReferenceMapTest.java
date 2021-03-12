@@ -73,9 +73,31 @@ class UniParcCrossReferenceMapTest {
         assertTrue(UniParcCrossReferenceMap.contains(fields));
     }
 
+    @Test
+    void testAttributeValuesWithoutDates(){
+        List<UniParcCrossReference> xrefs = createWithoutDates();
+        UniParcCrossReferenceMap xrefMap = new UniParcCrossReferenceMap(xrefs);
+        Map<String, String> result = xrefMap.attributeValues();
+        assertEquals(8, result.size());
+        assertTrue(result.get("first_seen").isEmpty());
+        assertTrue(result.get("last_seen").isEmpty());
+    }
+
     List<UniParcCrossReference> create() {
         LocalDate created = LocalDate.of(2017, 5, 17);
         LocalDate lastUpdated = LocalDate.of(2018, 2, 7);
+        List<UniParcCrossReference> xrefs = createWithoutDates();
+        UniParcCrossReference xref1 = UniParcCrossReferenceBuilder.from(xrefs.get(0)).created(created)
+                .lastUpdated(lastUpdated).build();
+
+        LocalDate created2 = LocalDate.of(2015, 1, 11);
+        LocalDate lastUpdated2 = LocalDate.of(2017, 2, 27);
+        UniParcCrossReference xref2 = UniParcCrossReferenceBuilder.from(xrefs.get(1)).created(created2)
+                .lastUpdated(lastUpdated2).build();
+        return List.of(xref1, xref2);
+    }
+
+    List<UniParcCrossReference> createWithoutDates(){
         List<Property> properties = new ArrayList<>();
         properties.add(new Property("prop1", "value"));
         UniParcCrossReference xref =
@@ -85,15 +107,11 @@ class UniParcCrossReferenceMapTest {
                         .id("P12345")
                         .version(7)
                         .active(true)
-                        .created(created)
-                        .lastUpdated(lastUpdated)
                         .propertiesSet(properties)
                         .proteinName("some pname")
                         .geneName("geneValue")
                         .build();
 
-        LocalDate created2 = LocalDate.of(2015, 1, 11);
-        LocalDate lastUpdated2 = LocalDate.of(2017, 2, 27);
         List<Property> properties2 = new ArrayList<>();
         properties.add(new Property("prop2", "value2"));
         UniParcCrossReference xref2 =
@@ -103,14 +121,12 @@ class UniParcCrossReferenceMapTest {
                         .id("P12347")
                         .version(2)
                         .active(false)
-                        .created(created2)
-                        .lastUpdated(lastUpdated2)
                         .propertiesSet(properties2)
                         .proteinName("some pname2")
                         .proteomeId("UP00000564")
                         .component("chromosome 1")
                         .build();
 
-        return Arrays.asList(xref, xref2);
+        return List.of(xref, xref2);
     }
 }
