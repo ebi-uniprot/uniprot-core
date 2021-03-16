@@ -77,15 +77,21 @@ public class UniProtDatabaseDetail implements Serializable {
         return linkedReason;
     }
 
-    public String getIdMappingName(){
+    public String getIdMappingName() {
         return idMappingName;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
-                this.attributes, this.category, this.displayName, this.name,
-                this.uriLink, this.implicit, this.linkedReason, this.idMappingName);
+                this.attributes,
+                this.category,
+                this.displayName,
+                this.name,
+                this.uriLink,
+                this.implicit,
+                this.linkedReason,
+                this.idMappingName);
     }
 
     @Override

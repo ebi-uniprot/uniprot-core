@@ -74,7 +74,7 @@ class UniParcCrossReferenceMapTest {
     }
 
     @Test
-    void testAttributeValuesWithoutDates(){
+    void testAttributeValuesWithoutDates() {
         List<UniParcCrossReference> xrefs = createWithoutDates();
         UniParcCrossReferenceMap xrefMap = new UniParcCrossReferenceMap(xrefs);
         Map<String, String> result = xrefMap.attributeValues();
@@ -87,17 +87,23 @@ class UniParcCrossReferenceMapTest {
         LocalDate created = LocalDate.of(2017, 5, 17);
         LocalDate lastUpdated = LocalDate.of(2018, 2, 7);
         List<UniParcCrossReference> xrefs = createWithoutDates();
-        UniParcCrossReference xref1 = UniParcCrossReferenceBuilder.from(xrefs.get(0)).created(created)
-                .lastUpdated(lastUpdated).build();
+        UniParcCrossReference xref1 =
+                UniParcCrossReferenceBuilder.from(xrefs.get(0))
+                        .created(created)
+                        .lastUpdated(lastUpdated)
+                        .build();
 
         LocalDate created2 = LocalDate.of(2015, 1, 11);
         LocalDate lastUpdated2 = LocalDate.of(2017, 2, 27);
-        UniParcCrossReference xref2 = UniParcCrossReferenceBuilder.from(xrefs.get(1)).created(created2)
-                .lastUpdated(lastUpdated2).build();
+        UniParcCrossReference xref2 =
+                UniParcCrossReferenceBuilder.from(xrefs.get(1))
+                        .created(created2)
+                        .lastUpdated(lastUpdated2)
+                        .build();
         return List.of(xref1, xref2);
     }
 
-    List<UniParcCrossReference> createWithoutDates(){
+    List<UniParcCrossReference> createWithoutDates() {
         List<Property> properties = new ArrayList<>();
         properties.add(new Property("prop1", "value"));
         UniParcCrossReference xref =
