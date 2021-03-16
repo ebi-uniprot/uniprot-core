@@ -1,14 +1,13 @@
 package org.uniprot.core.publication.impl;
 
-import org.uniprot.core.publication.ComputationallyMappedReference;
-import org.uniprot.core.publication.MappedSource;
-import org.uniprot.core.uniprotkb.UniProtKBAccession;
+import static java.util.Collections.emptySet;
 
-import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
 
-import static java.util.Collections.emptySet;
+import org.uniprot.core.publication.ComputationallyMappedReference;
+import org.uniprot.core.publication.MappedSource;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
 /**
  * Created 02/12/2020

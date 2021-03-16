@@ -1,11 +1,11 @@
 package org.uniprot.core.publication.impl;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.publication.CommunityAnnotation;
 import org.uniprot.core.publication.CommunityMappedReference;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Other tests covered by {@link AbstractMappedReferenceBuilderTest}.

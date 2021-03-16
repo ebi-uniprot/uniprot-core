@@ -104,10 +104,20 @@ class UniProtKBDatabaseDetailTest {
     private UniProtDatabaseDetail createUniProtDatabaseDetail(boolean passAttribute) {
         if (passAttribute) {
             return createUniProtDatabaseDetail(
-                    this.name, this.displayName, this.category, this.uriLink, this.attributes, null);
+                    this.name,
+                    this.displayName,
+                    this.category,
+                    this.uriLink,
+                    this.attributes,
+                    null);
         } else {
             return createUniProtDatabaseDetail(
-                    this.name, this.displayName, this.category, this.uriLink, null, this.idMappingName);
+                    this.name,
+                    this.displayName,
+                    this.category,
+                    this.uriLink,
+                    null,
+                    this.idMappingName);
         }
     }
 

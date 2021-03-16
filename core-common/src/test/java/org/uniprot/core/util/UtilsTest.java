@@ -59,17 +59,7 @@ class UtilsTest {
 
             @ParameterizedTest
             @ValueSource(
-                    strings = {
-                        "1",
-                        "AB",
-                        "a%^b",
-                        "()+^£$^%%",
-                        "aB",
-                        "Ab",
-                        " s ",
-                        "NULL",
-                        "123432"
-                    })
+                    strings = {"1", "AB", "a%^b", "()+^£$^%%", "aB", "Ab", " s ", "NULL", "123432"})
             void nonEmpty_shouldAlwaysReturnFalse(String test) {
                 assertFalse(Utils.nullOrEmpty(test));
             }
@@ -135,17 +125,7 @@ class UtilsTest {
 
             @ParameterizedTest
             @ValueSource(
-                    strings = {
-                        "1",
-                        "AB",
-                        "a%^b",
-                        "()+^£$^%%",
-                        "aB",
-                        "Ab",
-                        " s ",
-                        "NULL",
-                        "123432"
-                    })
+                    strings = {"1", "AB", "a%^b", "()+^£$^%%", "aB", "Ab", " s ", "NULL", "123432"})
             void nonEmpty_shouldAlwaysReturnTrue(String test) {
                 assertTrue(Utils.notNullNotEmpty(test));
             }

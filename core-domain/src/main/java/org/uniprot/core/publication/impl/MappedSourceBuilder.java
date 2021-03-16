@@ -1,9 +1,9 @@
 package org.uniprot.core.publication.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.publication.MappedSource;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 03/12/2020
@@ -31,8 +31,6 @@ public class MappedSourceBuilder implements Builder<MappedSource> {
     }
 
     public static MappedSourceBuilder from(@Nonnull MappedSource instance) {
-        return new MappedSourceBuilder()
-                .name(instance.getName())
-                .id(instance.getId());
+        return new MappedSourceBuilder().name(instance.getName()).id(instance.getId());
     }
 }

@@ -1,17 +1,17 @@
 package org.uniprot.core.publication.impl;
 
-import org.uniprot.core.citation.Citation;
-import org.uniprot.core.publication.MappedSource;
-import org.uniprot.core.publication.UniProtKBMappedReference;
-import org.uniprot.core.uniprotkb.ReferenceComment;
-import org.uniprot.core.uniprotkb.UniProtKBAccession;
+import static java.util.Collections.emptyList;
+import static java.util.Collections.emptySet;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-import static java.util.Collections.emptyList;
-import static java.util.Collections.emptySet;
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.publication.MappedSource;
+import org.uniprot.core.publication.UniProtKBMappedReference;
+import org.uniprot.core.uniprotkb.ReferenceComment;
+import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
 /**
  * Created 02/12/2020
@@ -61,17 +61,19 @@ public class UniProtKBMappedReferenceImpl extends AbstractMappedReference
     }
 
     @Override
-    public Citation getCitation() { return citation;}
+    public Citation getCitation() {
+        return citation;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UniProtKBMappedReferenceImpl that = (UniProtKBMappedReferenceImpl) o;
-        return referenceNumber == that.referenceNumber &&
-                Objects.equals(referenceComments, that.referenceComments) &&
-                Objects.equals(referencePositions, that.referencePositions) &&
-                Objects.equals(citation, that.citation);
+        return referenceNumber == that.referenceNumber
+                && Objects.equals(referenceComments, that.referenceComments)
+                && Objects.equals(referencePositions, that.referencePositions)
+                && Objects.equals(citation, that.citation);
     }
 
     @Override
