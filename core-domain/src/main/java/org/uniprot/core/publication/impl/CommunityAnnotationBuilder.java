@@ -1,9 +1,9 @@
 package org.uniprot.core.publication.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.publication.CommunityAnnotation;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 02/12/2020

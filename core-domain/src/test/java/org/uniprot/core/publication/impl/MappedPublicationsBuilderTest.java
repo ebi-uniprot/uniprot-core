@@ -1,13 +1,5 @@
 package org.uniprot.core.publication.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.publication.CommunityMappedReference;
-import org.uniprot.core.publication.ComputationallyMappedReference;
-import org.uniprot.core.publication.MappedPublications;
-import org.uniprot.core.publication.UniProtKBMappedReference;
-
-import java.util.Arrays;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -15,6 +7,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.collection.IsEmptyCollection.empty;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.Arrays;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.publication.CommunityMappedReference;
+import org.uniprot.core.publication.ComputationallyMappedReference;
+import org.uniprot.core.publication.MappedPublications;
+import org.uniprot.core.publication.UniProtKBMappedReference;
 
 /**
  * @author sahmad
@@ -32,7 +32,7 @@ public class MappedPublicationsBuilderTest {
     }
 
     @Test
-    void canSetUniProtKBMappedReference(){
+    void canSetUniProtKBMappedReference() {
         MappedPublicationsBuilder builder = new MappedPublicationsBuilder();
         UniProtKBMappedReference reference = new UniProtKBMappedReferenceImpl();
         builder.uniProtKBMappedReference(reference);

@@ -1,8 +1,8 @@
 package org.uniprot.core.publication.impl;
 
-import org.uniprot.core.publication.CommunityAnnotation;
-
 import java.util.Objects;
+
+import org.uniprot.core.publication.CommunityAnnotation;
 
 /**
  * Created 02/12/2020

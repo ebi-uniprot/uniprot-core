@@ -1,9 +1,9 @@
 package org.uniprot.core.literature.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.literature.LiteratureStatistics;
-
-import javax.annotation.Nonnull;
 
 /** @author lgonzales */
 public class LiteratureStatisticsBuilder implements Builder<LiteratureStatistics> {
@@ -24,12 +24,14 @@ public class LiteratureStatisticsBuilder implements Builder<LiteratureStatistics
         return this;
     }
 
-    public @Nonnull LiteratureStatisticsBuilder computationallyMappedProteinCount(long computationallyMappedProteinCount) {
+    public @Nonnull LiteratureStatisticsBuilder computationallyMappedProteinCount(
+            long computationallyMappedProteinCount) {
         this.computationallyMappedProteinCount = computationallyMappedProteinCount;
         return this;
     }
 
-    public @Nonnull LiteratureStatisticsBuilder communityMappedProteinCount(long communityMappedProteinCount) {
+    public @Nonnull LiteratureStatisticsBuilder communityMappedProteinCount(
+            long communityMappedProteinCount) {
         this.communityMappedProteinCount = communityMappedProteinCount;
         return this;
     }
@@ -37,7 +39,10 @@ public class LiteratureStatisticsBuilder implements Builder<LiteratureStatistics
     @Override
     public @Nonnull LiteratureStatistics build() {
         return new LiteratureStatisticsImpl(
-                reviewedProteinCount, unreviewedProteinCount, computationallyMappedProteinCount, communityMappedProteinCount);
+                reviewedProteinCount,
+                unreviewedProteinCount,
+                computationallyMappedProteinCount,
+                communityMappedProteinCount);
     }
 
     public static @Nonnull LiteratureStatisticsBuilder from(

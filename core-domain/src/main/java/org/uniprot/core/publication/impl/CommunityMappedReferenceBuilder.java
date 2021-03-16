@@ -1,9 +1,9 @@
 package org.uniprot.core.publication.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.publication.CommunityAnnotation;
 import org.uniprot.core.publication.CommunityMappedReference;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 02/12/2020
@@ -12,7 +12,7 @@ import javax.annotation.Nonnull;
  */
 public class CommunityMappedReferenceBuilder
         extends AbstractMappedReferenceBuilder<
-                        CommunityMappedReferenceBuilder, CommunityMappedReference> {
+                CommunityMappedReferenceBuilder, CommunityMappedReference> {
 
     private CommunityAnnotation annotation;
 
@@ -34,8 +34,7 @@ public class CommunityMappedReferenceBuilder
         return this;
     }
 
-    public static CommunityMappedReferenceBuilder from(
-            @Nonnull CommunityMappedReference instance) {
+    public static CommunityMappedReferenceBuilder from(@Nonnull CommunityMappedReference instance) {
         CommunityMappedReferenceBuilder builder = new CommunityMappedReferenceBuilder();
         return AbstractMappedReferenceBuilder.from(builder, instance)
                 .communityAnnotation(instance.getCommunityAnnotation());

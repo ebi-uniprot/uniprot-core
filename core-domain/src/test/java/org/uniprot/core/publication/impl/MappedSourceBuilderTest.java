@@ -1,10 +1,10 @@
 package org.uniprot.core.publication.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.publication.MappedSource;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.publication.MappedSource;
 
 /**
  * Created 08/12/2020

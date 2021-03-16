@@ -1,8 +1,8 @@
 package org.uniprot.core.publication.impl;
 
-import org.uniprot.core.publication.MappedSource;
-
 import java.util.Objects;
+
+import org.uniprot.core.publication.MappedSource;
 
 /**
  * Created 03/12/2020
