@@ -1,6 +1,8 @@
 package org.uniprot.core.taxonomy;
 
-public interface TaxonomyInactiveReason {
+import java.io.Serializable;
+
+public interface TaxonomyInactiveReason extends Serializable {
 
     TaxonomyInactiveReasonType getInactiveReasonType();
 

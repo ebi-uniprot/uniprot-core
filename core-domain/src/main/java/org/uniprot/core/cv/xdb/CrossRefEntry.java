@@ -1,5 +1,7 @@
 package org.uniprot.core.cv.xdb;
 
+import org.uniprot.core.Statistics;
+
 import java.io.Serializable;
 
 public interface CrossRefEntry extends Serializable {
@@ -26,7 +28,5 @@ public interface CrossRefEntry extends Serializable {
 
     String getCategory();
 
-    Long getReviewedProteinCount();
-
-    Long getUnreviewedProteinCount();
+    Statistics getStatistics();
 }

@@ -26,15 +26,13 @@ class TaxonomyEntryValueMapperTest {
 
     @Test
     void checkSimpleEntryAttributeValues() {
-        TaxonomyEntry entry = new TaxonomyEntryBuilder().taxonId(9606L).parentId(100L).build();
+        TaxonomyEntry entry = new TaxonomyEntryBuilder().taxonId(9606L).build();
         Map<String, String> mappedEntries =
                 new TaxonomyEntryValueMapper().mapEntity(entry, Collections.emptyList());
         assertThat(mappedEntries, notNullValue());
         assertEquals(14, mappedEntries.size());
         assertEquals("9606", mappedEntries.get("id"));
         mappedEntries.remove("id");
-        assertEquals("100", mappedEntries.get("parent"));
-        mappedEntries.remove("parent");
         List<String> result =
                 mappedEntries.values().stream()
                         .filter(val -> !val.isEmpty())
@@ -85,7 +83,7 @@ class TaxonomyEntryValueMapperTest {
         builder.scientificName("scientificName");
         builder.commonName("commonName");
         builder.mnemonic("mnemonic");
-        builder.parentId(9605L);
+        builder.parent(getTaxonomy());
         builder.rank(TaxonomyRank.KINGDOM);
         builder.synonymsSet(Collections.singletonList("synonym"));
         builder.otherNamesSet(Collections.singletonList("otherName"));
@@ -110,6 +108,6 @@ class TaxonomyEntryValueMapperTest {
     }
 
     private Taxonomy getTaxonomy() {
-        return new TaxonomyBuilder().scientificName("Homo sapiens").build();
+        return new TaxonomyBuilder().taxonId(9605L).scientificName("Homo sapiens").build();
     }
 }

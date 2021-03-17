@@ -25,7 +25,7 @@ class TaxonomyEntryImplTest {
                         "commonName",
                         Collections.singletonList("syn"),
                         "mnemo",
-                        4L,
+                        new TaxonomyEntryImpl(),
                         TaxonomyRank.NO_RANK,
                         false,
                         true,

@@ -3,7 +3,9 @@ package org.uniprot.core.cv.xdb.impl;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.xdb.CrossRefEntry;
+import org.uniprot.core.impl.StatisticsBuilder;
 
 class CrossRefEntryBuilderTest {
 
@@ -71,20 +73,16 @@ class CrossRefEntryBuilderTest {
     }
 
     @Test
-    void canSet_reviewedProteinCount() {
-        Long reviewedProteinCount = 36L;
+    void canSet_statistics() {
+        Statistics statistics = new StatisticsBuilder()
+                .reviewedProteinCount(10)
+                .unreviewedProteinCount(100)
+                .build();
         CrossRefEntry obj =
-                new CrossRefEntryBuilder().reviewedProteinCount(reviewedProteinCount).build();
-        assertEquals(reviewedProteinCount, obj.getReviewedProteinCount());
+                new CrossRefEntryBuilder().statistics(statistics).build();
+        assertEquals(statistics, obj.getStatistics());
     }
 
-    @Test
-    void canSet_unreviewedProteinCount() {
-        Long unreviewedProteinCount = 106L;
-        CrossRefEntry obj =
-                new CrossRefEntryBuilder().unreviewedProteinCount(unreviewedProteinCount).build();
-        assertEquals(unreviewedProteinCount, obj.getUnreviewedProteinCount());
-    }
 
     @Test
     void canCreateBuilderFromInstance() {
