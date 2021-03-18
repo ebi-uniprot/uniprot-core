@@ -24,7 +24,7 @@ public class KeywordEntryValueMapper implements EntityValueMapper<KeywordEntry> 
                     "keyword",
                     keywordEntry.getKeyword().getId() + " " + keywordEntry.getKeyword().getName());
         }
-        map.put("description", getOrDefaultEmpty(keywordEntry.getDefinition()));
+        map.put("definition", getOrDefaultEmpty(keywordEntry.getDefinition()));
         if (Utils.notNull(keywordEntry.getCategory())) {
             map.put("category", getOrDefaultEmpty(keywordEntry.getCategory().getName()));
         }

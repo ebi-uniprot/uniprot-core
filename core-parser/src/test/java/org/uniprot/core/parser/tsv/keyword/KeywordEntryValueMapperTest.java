@@ -48,7 +48,7 @@ class KeywordEntryValueMapperTest {
         assertEquals("KW-9993", mappedEntries.get("id"));
         assertEquals("Ligand", mappedEntries.get("name"));
         assertEquals("KW-9993 Ligand", mappedEntries.get("keyword"));
-        assertEquals("Definition value", mappedEntries.get("description"));
+        assertEquals("Definition value", mappedEntries.get("definition"));
         assertEquals("Ligand", mappedEntries.get("category"));
         assertEquals("synonym", mappedEntries.get("synonyms"));
         assertEquals("goId:goTerm", mappedEntries.get("gene_ontologies"));
