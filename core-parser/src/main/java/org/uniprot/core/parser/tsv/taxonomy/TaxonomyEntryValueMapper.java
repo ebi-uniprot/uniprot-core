@@ -20,7 +20,7 @@ public class TaxonomyEntryValueMapper implements EntityValueMapper<TaxonomyEntry
     public Map<String, String> mapEntity(TaxonomyEntry taxonomyEntry, List<String> fieldNames) {
         Map<String, String> map = new HashMap<>();
         map.put("id", String.valueOf(taxonomyEntry.getTaxonId()));
-        if(taxonomyEntry.hasParent()) {
+        if (taxonomyEntry.hasParent()) {
             map.put("parent", String.valueOf(taxonomyEntry.getParent().getTaxonId()));
         } else {
             map.put("parent", "");

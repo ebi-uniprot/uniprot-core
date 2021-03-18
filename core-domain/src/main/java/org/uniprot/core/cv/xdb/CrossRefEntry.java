@@ -1,8 +1,8 @@
 package org.uniprot.core.cv.xdb;
 
-import org.uniprot.core.Statistics;
-
 import java.io.Serializable;
+
+import org.uniprot.core.Statistics;
 
 public interface CrossRefEntry extends Serializable {
     /**

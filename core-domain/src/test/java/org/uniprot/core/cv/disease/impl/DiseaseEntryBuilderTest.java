@@ -69,12 +69,12 @@ class DiseaseEntryBuilderTest {
 
     @Test
     void canCreateWith_statistics() {
-        Statistics statistics = new StatisticsBuilder()
-                .reviewedProteinCount(10)
-                .unreviewedProteinCount(100)
-                .build();
-        DiseaseEntry disease =
-                new DiseaseEntryBuilder().statistics(statistics).build();
+        Statistics statistics =
+                new StatisticsBuilder()
+                        .reviewedProteinCount(10)
+                        .unreviewedProteinCount(100)
+                        .build();
+        DiseaseEntry disease = new DiseaseEntryBuilder().statistics(statistics).build();
         assertNotNull(disease);
         assertEquals(statistics, disease.getStatistics());
     }
@@ -127,10 +127,11 @@ class DiseaseEntryBuilderTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        Statistics statistics = new StatisticsBuilder()
-                .reviewedProteinCount(10)
-                .unreviewedProteinCount(100)
-                .build();
+        Statistics statistics =
+                new StatisticsBuilder()
+                        .reviewedProteinCount(10)
+                        .unreviewedProteinCount(100)
+                        .build();
 
         DiseaseEntry impl =
                 new DiseaseEntryImpl(

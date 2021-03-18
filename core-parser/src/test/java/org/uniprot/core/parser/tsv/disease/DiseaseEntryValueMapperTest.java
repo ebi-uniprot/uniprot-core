@@ -101,10 +101,11 @@ class DiseaseEntryValueMapperTest {
         DiseaseEntryBuilder builder = new DiseaseEntryBuilder();
         builder.id(accession).acronym(acronym).name(id);
         builder.definition(def);
-        Statistics statistics = new StatisticsBuilder()
-                .reviewedProteinCount(revCount)
-                .unreviewedProteinCount(unrevCount)
-                .build();
+        Statistics statistics =
+                new StatisticsBuilder()
+                        .reviewedProteinCount(revCount)
+                        .unreviewedProteinCount(unrevCount)
+                        .build();
         builder.statistics(statistics);
         return builder;
     }

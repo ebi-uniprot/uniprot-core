@@ -25,10 +25,12 @@ public class DiseaseEntryValueMapper implements EntityValueMapper<DiseaseEntry> 
         map.put("alternative_names", getAlternativeNames(diseaseEntry.getAlternativeNames()));
         map.put("cross_references", getCrossReferences(diseaseEntry.getCrossReferences()));
         map.put("keywords", getKewords(diseaseEntry.getKeywords()));
-        if(Utils.notNull(diseaseEntry.getStatistics())) {
+        if (Utils.notNull(diseaseEntry.getStatistics())) {
             Statistics statistics = diseaseEntry.getStatistics();
             map.put("reviewed_protein_count", String.valueOf(statistics.getReviewedProteinCount()));
-            map.put("unreviewed_protein_count", String.valueOf(statistics.getUnreviewedProteinCount()));
+            map.put(
+                    "unreviewed_protein_count",
+                    String.valueOf(statistics.getUnreviewedProteinCount()));
         }
         return map;
     }

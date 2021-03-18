@@ -17,13 +17,23 @@ class CrossRefEntryImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        Statistics statistics = new StatisticsBuilder()
-                .reviewedProteinCount(10)
-                .unreviewedProteinCount(100)
-                .build();
+        Statistics statistics =
+                new StatisticsBuilder()
+                        .reviewedProteinCount(10)
+                        .unreviewedProteinCount(100)
+                        .build();
         CrossRefEntry impl =
                 new CrossRefEntryImpl(
-                        "name", "acc", "abb", "pub", "doild", "link", "server", "dburk", "cat", statistics);
+                        "name",
+                        "acc",
+                        "abb",
+                        "pub",
+                        "doild",
+                        "link",
+                        "server",
+                        "dburk",
+                        "cat",
+                        statistics);
         CrossRefEntry obj = CrossRefEntryBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());

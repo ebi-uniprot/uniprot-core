@@ -74,15 +74,14 @@ class CrossRefEntryBuilderTest {
 
     @Test
     void canSet_statistics() {
-        Statistics statistics = new StatisticsBuilder()
-                .reviewedProteinCount(10)
-                .unreviewedProteinCount(100)
-                .build();
-        CrossRefEntry obj =
-                new CrossRefEntryBuilder().statistics(statistics).build();
+        Statistics statistics =
+                new StatisticsBuilder()
+                        .reviewedProteinCount(10)
+                        .unreviewedProteinCount(100)
+                        .build();
+        CrossRefEntry obj = new CrossRefEntryBuilder().statistics(statistics).build();
         assertEquals(statistics, obj.getStatistics());
     }
-
 
     @Test
     void canCreateBuilderFromInstance() {

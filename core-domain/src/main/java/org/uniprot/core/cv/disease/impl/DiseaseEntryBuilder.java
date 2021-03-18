@@ -108,5 +108,4 @@ public class DiseaseEntryBuilder implements Builder<DiseaseEntry> {
         this.statistics = statistics;
         return this;
     }
-
 }
