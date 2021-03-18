@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
@@ -24,10 +25,11 @@ public class DiseaseEntryValueMapper implements EntityValueMapper<DiseaseEntry> 
         map.put("alternative_names", getAlternativeNames(diseaseEntry.getAlternativeNames()));
         map.put("cross_references", getCrossReferences(diseaseEntry.getCrossReferences()));
         map.put("keywords", getKewords(diseaseEntry.getKeywords()));
-        map.put("reviewed_protein_count", String.valueOf(diseaseEntry.getReviewedProteinCount()));
-        map.put(
-                "unreviewed_protein_count",
-                String.valueOf(diseaseEntry.getUnreviewedProteinCount()));
+        if(Utils.notNull(diseaseEntry.getStatistics())) {
+            Statistics statistics = diseaseEntry.getStatistics();
+            map.put("reviewed_protein_count", String.valueOf(statistics.getReviewedProteinCount()));
+            map.put("unreviewed_protein_count", String.valueOf(statistics.getUnreviewedProteinCount()));
+        }
         return map;
     }
 

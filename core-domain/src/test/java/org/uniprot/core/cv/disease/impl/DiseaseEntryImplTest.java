@@ -13,10 +13,12 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
+import org.uniprot.core.impl.StatisticsBuilder;
 
 class DiseaseEntryImplTest {
     private String uuid;
@@ -27,8 +29,7 @@ class DiseaseEntryImplTest {
     private List<String> altNames;
     private List<DiseaseCrossReference> xrefs;
     private List<KeywordId> kws;
-    private Long rc;
-    private Long urc;
+    private Statistics stat;
 
     @BeforeEach
     void setUp() {
@@ -43,8 +44,10 @@ class DiseaseEntryImplTest {
                         .collect(Collectors.toList());
         this.xrefs = IntStream.range(0, 5).mapToObj(i -> getXRef(i)).collect(Collectors.toList());
         this.kws = IntStream.range(0, 5).mapToObj(i -> getKeyword(i)).collect(Collectors.toList());
-        this.rc = ThreadLocalRandom.current().nextLong(10000);
-        this.urc = ThreadLocalRandom.current().nextLong(10000);
+        this.stat = new StatisticsBuilder()
+                .reviewedProteinCount(10000)
+                .unreviewedProteinCount(10000)
+                .build();
     }
 
     @Test
@@ -57,8 +60,7 @@ class DiseaseEntryImplTest {
         Assertions.assertIterableEquals(altNames, disease.getAlternativeNames());
         Assertions.assertIterableEquals(xrefs, disease.getCrossReferences());
         Assertions.assertIterableEquals(kws, disease.getKeywords());
-        assertEquals(rc, disease.getReviewedProteinCount());
-        assertEquals(urc, disease.getUnreviewedProteinCount());
+        assertEquals(stat, disease.getStatistics());
     }
 
     @Test
@@ -92,8 +94,7 @@ class DiseaseEntryImplTest {
                 this.altNames,
                 this.xrefs,
                 this.kws,
-                this.rc,
-                this.urc);
+                this.stat);
     }
 
     private KeywordId getKeyword(int i) {

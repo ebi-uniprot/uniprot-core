@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
+import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
@@ -18,8 +19,7 @@ public class DiseaseEntryBuilder implements Builder<DiseaseEntry> {
     private List<String> alternativeNames;
     private List<DiseaseCrossReference> crossReferences;
     private List<KeywordId> keywords;
-    private Long reviewedProteinCount;
-    private Long unreviewedProteinCount;
+    private Statistics statistics;
 
     @Override
     public @Nonnull DiseaseEntry build() {
@@ -31,8 +31,7 @@ public class DiseaseEntryBuilder implements Builder<DiseaseEntry> {
                 this.alternativeNames,
                 this.crossReferences,
                 this.keywords,
-                this.reviewedProteinCount,
-                this.unreviewedProteinCount);
+                this.statistics);
     }
 
     public static @Nonnull DiseaseEntryBuilder from(@Nonnull DiseaseEntry instance) {
@@ -44,8 +43,7 @@ public class DiseaseEntryBuilder implements Builder<DiseaseEntry> {
                 .alternativeNamesSet(instance.getAlternativeNames())
                 .crossReferencesSet(instance.getCrossReferences())
                 .keywordsSet(instance.getKeywords())
-                .reviewedProteinCount(instance.getReviewedProteinCount())
-                .unreviewedProteinCount(instance.getUnreviewedProteinCount());
+                .statistics(instance.getStatistics());
         return builder;
     }
 
@@ -106,13 +104,9 @@ public class DiseaseEntryBuilder implements Builder<DiseaseEntry> {
         return this;
     }
 
-    public @Nonnull DiseaseEntryBuilder reviewedProteinCount(Long reviewedProteinCount) {
-        this.reviewedProteinCount = reviewedProteinCount;
+    public @Nonnull DiseaseEntryBuilder statistics(Statistics statistics) {
+        this.statistics = statistics;
         return this;
     }
 
-    public @Nonnull DiseaseEntryBuilder unreviewedProteinCount(Long unreviewedProteinCount) {
-        this.unreviewedProteinCount = unreviewedProteinCount;
-        return this;
-    }
 }

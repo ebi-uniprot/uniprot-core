@@ -10,12 +10,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceBuilder;
 import org.uniprot.core.cv.disease.impl.DiseaseEntryBuilder;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
+import org.uniprot.core.impl.StatisticsBuilder;
 
 class DiseaseEntryValueMapperTest {
 
@@ -99,7 +101,11 @@ class DiseaseEntryValueMapperTest {
         DiseaseEntryBuilder builder = new DiseaseEntryBuilder();
         builder.id(accession).acronym(acronym).name(id);
         builder.definition(def);
-        builder.reviewedProteinCount(revCount).unreviewedProteinCount(unrevCount);
+        Statistics statistics = new StatisticsBuilder()
+                .reviewedProteinCount(revCount)
+                .unreviewedProteinCount(unrevCount)
+                .build();
+        builder.statistics(statistics);
         return builder;
     }
 
