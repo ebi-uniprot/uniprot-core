@@ -30,7 +30,7 @@ public class CrossRefEntryBuilder implements Builder<CrossRefEntry> {
                 this.server,
                 this.dbUrl,
                 this.category,
-                statistics);
+                this.statistics);
     }
 
     public static @Nonnull CrossRefEntryBuilder from(@Nonnull CrossRefEntry instance) {

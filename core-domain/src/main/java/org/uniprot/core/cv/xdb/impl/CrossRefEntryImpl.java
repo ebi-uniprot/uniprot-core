@@ -94,7 +94,7 @@ public class CrossRefEntryImpl implements CrossRefEntry {
 
     @Override
     public Statistics getStatistics() {
-        return statistics;
+        return this.statistics;
     }
 
 
