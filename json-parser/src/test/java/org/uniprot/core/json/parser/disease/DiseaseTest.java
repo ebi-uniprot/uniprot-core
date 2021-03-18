@@ -75,12 +75,12 @@ public class DiseaseTest {
         DiseaseEntryBuilder builder = new DiseaseEntryBuilder();
         builder.name(id).id(accession).acronym(acronym).definition(def);
         builder.alternativeNamesSet(altNames).crossReferencesAdd(cr);
-        Statistics statistics = new StatisticsBuilder()
-                .reviewedProteinCount(reviwedProteinCount)
-                .unreviewedProteinCount(unreviwedProteinCount)
-                .build();
-        builder.keywordsAdd(keyword)
-                .statistics(statistics);
+        Statistics statistics =
+                new StatisticsBuilder()
+                        .reviewedProteinCount(reviwedProteinCount)
+                        .unreviewedProteinCount(unreviwedProteinCount)
+                        .build();
+        builder.keywordsAdd(keyword).statistics(statistics);
 
         return builder.build();
     }

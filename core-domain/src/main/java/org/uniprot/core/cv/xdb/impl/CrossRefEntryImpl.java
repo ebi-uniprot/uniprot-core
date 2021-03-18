@@ -97,7 +97,6 @@ public class CrossRefEntryImpl implements CrossRefEntry {
         return this.statistics;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

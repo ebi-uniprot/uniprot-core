@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -44,10 +43,11 @@ class DiseaseEntryImplTest {
                         .collect(Collectors.toList());
         this.xrefs = IntStream.range(0, 5).mapToObj(i -> getXRef(i)).collect(Collectors.toList());
         this.kws = IntStream.range(0, 5).mapToObj(i -> getKeyword(i)).collect(Collectors.toList());
-        this.stat = new StatisticsBuilder()
-                .reviewedProteinCount(10000)
-                .unreviewedProteinCount(10000)
-                .build();
+        this.stat =
+                new StatisticsBuilder()
+                        .reviewedProteinCount(10000)
+                        .unreviewedProteinCount(10000)
+                        .build();
     }
 
     @Test

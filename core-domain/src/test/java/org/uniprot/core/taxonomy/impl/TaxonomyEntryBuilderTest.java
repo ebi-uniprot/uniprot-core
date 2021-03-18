@@ -6,7 +6,6 @@ import static org.uniprot.core.ObjectsForTests.*;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.ObjectsForTests;
 import org.uniprot.core.taxonomy.TaxonomyEntry;
 import org.uniprot.core.taxonomy.TaxonomyRank;
 
@@ -88,8 +87,7 @@ class TaxonomyEntryBuilderTest {
         assertEquals("mnemonic", taxonomyEntry.getMnemonic());
 
         assertTrue(taxonomyEntry.hasStatistics());
-        assertEquals(
-                taxonomyEntry.getStatistics(), getCompleteTaxonomyStatistics());
+        assertEquals(taxonomyEntry.getStatistics(), getCompleteTaxonomyStatistics());
 
         assertTrue(taxonomyEntry.hasSynonyms());
         MatcherAssert.assertThat(taxonomyEntry.getSynonyms(), Matchers.contains("synonym"));
@@ -100,8 +98,7 @@ class TaxonomyEntryBuilderTest {
 
         assertTrue(taxonomyEntry.hasLineage());
         MatcherAssert.assertThat(
-                taxonomyEntry.getLineages(),
-                Matchers.contains(getCompleteTaxonomyLineage()));
+                taxonomyEntry.getLineages(), Matchers.contains(getCompleteTaxonomyLineage()));
 
         assertTrue(taxonomyEntry.hasLinks());
         MatcherAssert.assertThat(taxonomyEntry.getLinks(), Matchers.contains("link"));
@@ -110,13 +107,10 @@ class TaxonomyEntryBuilderTest {
         MatcherAssert.assertThat(taxonomyEntry.getOtherNames(), Matchers.contains("otherName"));
 
         assertTrue(taxonomyEntry.hasInactiveReason());
-        assertEquals(
-                taxonomyEntry.getInactiveReason(),
-                getCompleteTaxonomyInactiveReason());
+        assertEquals(taxonomyEntry.getInactiveReason(), getCompleteTaxonomyInactiveReason());
 
         assertTrue(taxonomyEntry.hasStrains());
         MatcherAssert.assertThat(
-                taxonomyEntry.getStrains(),
-                Matchers.contains(getCompleteTaxonomyStrain()));
+                taxonomyEntry.getStrains(), Matchers.contains(getCompleteTaxonomyStrain()));
     }
 }
