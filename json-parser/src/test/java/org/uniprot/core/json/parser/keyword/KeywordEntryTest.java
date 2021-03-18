@@ -33,7 +33,7 @@ public class KeywordEntryTest {
                         .keyword(KeywordTest.getCompleteKeyword())
                         .geneOntologiesAdd(KeywordGeneOntologyTest.getCompleteGeneOntology())
                         .synonymsAdd("synonym")
-                        .sitesAdd("site")
+                        .linksAdd("link")
                         .parentsAdd(getKeywordEntryParent())
                         .category(KeywordTest.getCompleteKeyword())
                         .statistics(statistics)

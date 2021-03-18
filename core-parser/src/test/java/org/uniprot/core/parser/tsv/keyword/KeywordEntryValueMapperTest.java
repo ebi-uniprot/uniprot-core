@@ -52,7 +52,7 @@ class KeywordEntryValueMapperTest {
         assertEquals("Ligand", mappedEntries.get("category"));
         assertEquals("synonym", mappedEntries.get("synonyms"));
         assertEquals("goId:goTerm", mappedEntries.get("gene_ontologies"));
-        assertEquals("site", mappedEntries.get("sites"));
+        assertEquals("link", mappedEntries.get("links"));
         assertEquals("Ligand, Ligand", mappedEntries.get("children"));
         assertEquals("Ligand, Ligand", mappedEntries.get("parents"));
         assertEquals("reviewed:10; annotated:20", mappedEntries.get("statistics"));
@@ -73,7 +73,7 @@ class KeywordEntryValueMapperTest {
                         .keyword(getKeyword())
                         .geneOntologiesAdd(go)
                         .synonymsAdd("synonym")
-                        .sitesAdd("site")
+                        .linksAdd("link")
                         .parentsAdd(parent)
                         .category(getKeyword())
                         .statistics(statistics)

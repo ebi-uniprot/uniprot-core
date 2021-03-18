@@ -137,8 +137,8 @@ class KeywordFileReaderTest {
         assertNotNull(kw.getChildren());
         assertEquals(2, kw.getChildren().size());
 
-        assertNotNull(kw.getSites());
-        assertTrue(kw.getSites().isEmpty());
+        assertNotNull(kw.getLinks());
+        assertTrue(kw.getLinks().isEmpty());
     }
 
     private static class WrongKeywordEntry implements KeywordEntry {
@@ -168,7 +168,7 @@ class KeywordFileReaderTest {
         }
 
         @Override
-        public List<String> getSites() {
+        public List<String> getLinks() {
             return null;
         }
 
@@ -212,8 +212,8 @@ class KeywordFileReaderTest {
         assertTrue(kw.getParents().isEmpty());
         assertNull(kw.getCategory());
 
-        assertNotNull(kw.getSites());
-        assertFalse(kw.getSites().isEmpty());
-        assertEquals("http://www.webelements.com/tungsten/", kw.getSites().get(0));
+        assertNotNull(kw.getLinks());
+        assertFalse(kw.getLinks().isEmpty());
+        assertEquals("http://www.webelements.com/tungsten/", kw.getLinks().get(0));
     }
 }

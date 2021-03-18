@@ -30,7 +30,7 @@ public class KeywordEntryValueMapper implements EntityValueMapper<KeywordEntry> 
         }
         map.put("synonyms", getOrDefaultEmpty(keywordEntry.getSynonyms()));
         map.put("gene_ontologies", getGeneOntology(keywordEntry));
-        map.put("sites", getOrDefaultEmpty(keywordEntry.getSites()));
+        map.put("links", getOrDefaultEmpty(keywordEntry.getLinks()));
         map.put("children", getChildren(keywordEntry));
         map.put("parents", getParent(keywordEntry));
         map.put("statistics", getStatistics(keywordEntry));
