@@ -3,19 +3,22 @@ package org.uniprot.core.citation.impl;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
+import org.uniprot.core.util.Crc64;
 import org.uniprot.core.util.Utils;
 
 public abstract class AbstractCitationImpl implements Citation {
     private static final long serialVersionUID = -2752460607884626559L;
-    private CitationType citationType;
-    private List<String> authoringGroup;
-    private List<Author> authors;
-    private List<CrossReference<CitationDatabase>> citationCrossReferences;
-    private String title;
-    private PublicationDate publicationDate;
+    private final String id;
+    private final CitationType citationType;
+    private final List<String> authoringGroup;
+    private final List<Author> authors;
+    private final List<CrossReference<CitationDatabase>> citationCrossReferences;
+    private final String title;
+    private final PublicationDate publicationDate;
 
     AbstractCitationImpl(
             CitationType citationType,
@@ -30,6 +33,50 @@ public abstract class AbstractCitationImpl implements Citation {
         this.citationCrossReferences = Utils.unmodifiableList(citationCrossReferences);
         this.title = Utils.emptyOrString(title);
         this.publicationDate = publicationDate;
+        this.id = generateId();
+    }
+
+    private String generateId() {
+        return getDatabaseId(CitationDatabase.PUBMED)
+                .orElse(getDatabaseId(CitationDatabase.AGRICOLA)
+                        .orElse(generateHash()));
+
+    }
+
+    private Optional<String> getDatabaseId(CitationDatabase database) {
+        return citationCrossReferences
+                .stream()
+                .filter(xref -> database == xref.getDatabase())
+                .map(CrossReference::getId)
+                .findFirst();
+    }
+
+    private String generateHash() {
+        StringBuilder idInput = new StringBuilder();
+        idInput.append(this.citationType.getName());
+        if(this.hasTitle()) {
+            idInput.append(this.title);
+        }
+        if(this.hasAuthors()) {
+            String authorsStr = this.authors.stream()
+                    .map(Author::getValue)
+                    .collect(Collectors.joining(" "));
+            idInput.append(authorsStr);
+        }
+        if(this.hasAuthoringGroup()) {
+            String authorsStr = String.join(" ", this.authoringGroup);
+            idInput.append(authorsStr);
+        }
+        if(this.hasPublicationDate()){
+            idInput.append(this.publicationDate.getValue());
+        }
+        String citationTypePrefix = this.citationType.name().substring(0,2);
+        return citationTypePrefix+"-"+Crc64.getCrc64(idInput.toString());
+    }
+
+    @Override
+    public String getId() {
+        return id;
     }
 
     @Override

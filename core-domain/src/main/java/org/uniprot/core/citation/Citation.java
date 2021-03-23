@@ -16,6 +16,8 @@ import org.uniprot.core.CrossReference;
  */
 public interface Citation extends Serializable {
 
+    String getId();
+
     List<CrossReference<CitationDatabase>> getCitationCrossReferences();
 
     Optional<CrossReference<CitationDatabase>> getCitationCrossReferenceByType(
