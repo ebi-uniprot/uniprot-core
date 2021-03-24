@@ -13,8 +13,9 @@ import org.uniprot.core.util.Utils;
  * @author Edd
  */
 public class AbstractMappedReference implements MappedReference {
+    private static final long serialVersionUID = -4074123500981969799L;
     protected final MappedSource source;
-    protected final String pubMedId;
+    protected final String citationId;
     protected final UniProtKBAccession uniProtKBAccession;
     protected final Set<String> sourceCategories;
 
@@ -24,7 +25,7 @@ public class AbstractMappedReference implements MappedReference {
             UniProtKBAccession uniProtKBAccession,
             Set<String> sourceCategories) {
         this.source = source;
-        this.pubMedId = pubMedId;
+        this.citationId = pubMedId;
         this.uniProtKBAccession = uniProtKBAccession;
         this.sourceCategories = Utils.unmodifiableSet(sourceCategories);
     }
@@ -40,8 +41,8 @@ public class AbstractMappedReference implements MappedReference {
     }
 
     @Override
-    public String getPubMedId() {
-        return pubMedId;
+    public String getCitationId() {
+        return citationId;
     }
 
     @Override

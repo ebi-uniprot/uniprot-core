@@ -1,5 +1,6 @@
 package org.uniprot.core.citation.impl;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -146,8 +147,11 @@ public abstract class AbstractCitationImpl implements Citation {
 
     private String generateHash() {
         String hashInput = getHashInput();
-        String citationTypePrefix = this.citationType.name().substring(0,2);
-        return citationTypePrefix+"-"+Crc64.getCrc64(hashInput);
+        String base16Hash = Crc64.getCrc64(hashInput);
+        String base32Hash = new BigInteger(base16Hash,16)
+                .toString(32)
+                .toUpperCase();
+        return "CI-"+base32Hash;
     }
 
     @Override

@@ -27,11 +27,11 @@ public class CommunityMappedReferenceImpl extends AbstractMappedReference
 
     public CommunityMappedReferenceImpl(
             MappedSource source,
-            String pubMedId,
+            String citationId,
             UniProtKBAccession uniProtKBAccession,
             Set<String> sourceCategories,
             CommunityAnnotation communityAnnotation) {
-        super(source, pubMedId, uniProtKBAccession, sourceCategories);
+        super(source, citationId, uniProtKBAccession, sourceCategories);
         this.communityAnnotation = communityAnnotation;
     }
 

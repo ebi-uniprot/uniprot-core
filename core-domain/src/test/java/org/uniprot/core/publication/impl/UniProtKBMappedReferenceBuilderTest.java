@@ -92,16 +92,6 @@ class UniProtKBMappedReferenceBuilderTest {
     }
 
     @Test
-    void canSetCitation() {
-        SubmissionBuilder builder = new SubmissionBuilder();
-        builder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ);
-        Submission citation = builder.build();
-        UniProtKBMappedReference reference =
-                new UniProtKBMappedReferenceBuilder().citation(citation).build();
-        assertThat(reference.getCitation(), is(citation));
-    }
-
-    @Test
     void canCreateViaFrom() {
         ReferenceComment comment =
                 new ReferenceCommentBuilder().type(ReferenceCommentType.PLASMID).build();

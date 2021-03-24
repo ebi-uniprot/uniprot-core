@@ -23,7 +23,7 @@ public abstract class AbstractMappedReferenceBuilder<
                 B extends AbstractMappedReferenceBuilder<B, T>, T extends MappedReference>
         implements Builder<T> {
     protected UniProtKBAccession uniProtKBAccession;
-    protected String pubMedId;
+    protected String citationId;
     protected MappedSource source;
     protected Set<String> sourceCategories = new HashSet<>();
 
@@ -42,8 +42,8 @@ public abstract class AbstractMappedReferenceBuilder<
         return getThis();
     }
 
-    public B pubMedId(String pubMedId) {
-        this.pubMedId = pubMedId;
+    public B citationId(String citationId) {
+        this.citationId = citationId;
         return getThis();
     }
 
@@ -62,7 +62,7 @@ public abstract class AbstractMappedReferenceBuilder<
     protected static <B extends AbstractMappedReferenceBuilder<B, T>, T extends MappedReference>
             B from(@Nonnull B builder, @Nonnull T instance) {
         return builder.source(instance.getSource())
-                .pubMedId(instance.getPubMedId())
+                .citationId(instance.getCitationId())
                 .uniProtKBAccession(instance.getUniProtKBAccession())
                 .sourceCategoriesSet(instance.getSourceCategories());
     }

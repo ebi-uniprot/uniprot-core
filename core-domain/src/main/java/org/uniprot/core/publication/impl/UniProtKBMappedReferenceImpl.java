@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-import org.uniprot.core.citation.Citation;
 import org.uniprot.core.publication.MappedSource;
 import org.uniprot.core.publication.UniProtKBMappedReference;
 import org.uniprot.core.uniprotkb.ReferenceComment;
@@ -20,29 +19,27 @@ import org.uniprot.core.uniprotkb.UniProtKBAccession;
  */
 public class UniProtKBMappedReferenceImpl extends AbstractMappedReference
         implements UniProtKBMappedReference {
+    private static final long serialVersionUID = 2716462716407632063L;
     private final List<ReferenceComment> referenceComments;
     private final List<String> referencePositions;
     private final int referenceNumber;
-    private Citation citation;
 
     public UniProtKBMappedReferenceImpl() {
-        this(null, null, null, 0, emptySet(), emptyList(), emptyList(), null);
+        this(null, null, null , 0, emptySet(), emptyList(), emptyList());
     }
 
     public UniProtKBMappedReferenceImpl(
+            String citationId,
             MappedSource source,
-            String pubMedId,
             UniProtKBAccession uniProtKBAccession,
             int referenceNumber,
             Set<String> sourceCategories,
             List<ReferenceComment> referenceComments,
-            List<String> referencePositions,
-            Citation citation) {
-        super(source, pubMedId, uniProtKBAccession, sourceCategories);
+            List<String> referencePositions) {
+        super(source, citationId, uniProtKBAccession, sourceCategories);
         this.referenceNumber = referenceNumber;
         this.referenceComments = referenceComments;
         this.referencePositions = referencePositions;
-        this.citation = citation;
     }
 
     @Override
@@ -61,23 +58,17 @@ public class UniProtKBMappedReferenceImpl extends AbstractMappedReference
     }
 
     @Override
-    public Citation getCitation() {
-        return citation;
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UniProtKBMappedReferenceImpl that = (UniProtKBMappedReferenceImpl) o;
         return referenceNumber == that.referenceNumber
                 && Objects.equals(referenceComments, that.referenceComments)
-                && Objects.equals(referencePositions, that.referencePositions)
-                && Objects.equals(citation, that.citation);
+                && Objects.equals(referencePositions, that.referencePositions);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(referenceComments, referencePositions, referenceNumber, citation);
+        return Objects.hash(referenceComments, referencePositions, referenceNumber);
     }
 }

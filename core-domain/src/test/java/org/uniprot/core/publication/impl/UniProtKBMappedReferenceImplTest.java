@@ -18,7 +18,7 @@ class UniProtKBMappedReferenceImplTest {
     void twoObjectsAreTheSame() {
         String pubMedId = "1";
         assertThat(
-                new UniProtKBMappedReferenceBuilder().pubMedId(pubMedId).build(),
-                is(new UniProtKBMappedReferenceBuilder().pubMedId(pubMedId).build()));
+                new UniProtKBMappedReferenceBuilder().citationId(pubMedId).build(),
+                is(new UniProtKBMappedReferenceBuilder().citationId(pubMedId).build()));
     }
 }

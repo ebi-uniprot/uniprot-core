@@ -13,7 +13,6 @@ import org.uniprot.core.uniprotkb.ReferenceCommentType;
  * @author Edd
  */
 public interface UniProtKBMappedReference extends MappedReference {
-    Citation getCitation();
 
     List<ReferenceComment> getReferenceComments();
 
