@@ -13,6 +13,14 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
     private Journal journal;
     private Locator locator;
 
+    @Override
+    public String toString() {
+        return "ElectronicArticleImpl{" +
+                "journal=" + journal +
+                ", locator=" + locator +
+                "} " + super.toString();
+    }
+
     // no arg constructor for JSON deserialization
     ElectronicArticleImpl() {
         this(emptyList(), emptyList(), emptyList(), null, null, null, null);
@@ -121,6 +129,13 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
             if (getClass() != obj.getClass()) return false;
             LocatorImpl other = (LocatorImpl) obj;
             return Objects.equals(this.value, other.value);
+        }
+
+        @Override
+        public String toString() {
+            return "LocatorImpl{" +
+                    "value='" + value + '\'' +
+                    '}';
         }
     }
 }

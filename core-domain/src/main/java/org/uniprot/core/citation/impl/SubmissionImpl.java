@@ -69,4 +69,11 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
         SubmissionImpl other = (SubmissionImpl) obj;
         return submissionDatabase == other.submissionDatabase;
     }
+
+    @Override
+    public String toString() {
+        return "SubmissionImpl{" +
+                "submissionDatabase=" + submissionDatabase +
+                "} " + super.toString();
+    }
 }

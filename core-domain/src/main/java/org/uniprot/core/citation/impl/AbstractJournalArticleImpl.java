@@ -121,4 +121,14 @@ public abstract class AbstractJournalArticleImpl extends AbstractCitationImpl
         return Objects.hash(
                 super.hashCode(), getJournal(), getFirstPage(), getLastPage(), getVolume());
     }
+
+    @Override
+    public String toString() {
+        return "AbstractJournalArticleImpl{" +
+                "journal=" + journal +
+                ", firstPage='" + firstPage + '\'' +
+                ", lastPage='" + lastPage + '\'' +
+                ", volume='" + volume + '\'' +
+                "} " + super.toString();
+    }
 }

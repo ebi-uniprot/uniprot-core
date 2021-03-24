@@ -184,4 +184,17 @@ public abstract class AbstractCitationImpl implements Citation {
                 && Objects.equals(this.publicationDate, other.publicationDate)
                 && Objects.equals(this.title, other.title);
     }
+
+    @Override
+    public String toString() {
+        return "AbstractCitationImpl{" +
+                "id='" + id + '\'' +
+                ", citationType=" + citationType +
+                ", authoringGroup=" + authoringGroup +
+                ", authors=" + authors +
+                ", citationCrossReferences=" + citationCrossReferences +
+                ", title='" + title + '\'' +
+                ", publicationDate=" + publicationDate +
+                '}';
+    }
 }

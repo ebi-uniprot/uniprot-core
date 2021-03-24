@@ -101,4 +101,12 @@ public class LiteratureImpl extends AbstractJournalArticleImpl implements Litera
     public int hashCode() {
         return Objects.hash(super.hashCode(), isCompleteAuthorList(), getLiteratureAbstract());
     }
+
+    @Override
+    public String toString() {
+        return "LiteratureImpl{" +
+                "completeAuthorList=" + completeAuthorList +
+                ", literatureAbstract='" + literatureAbstract + '\'' +
+                "} " + super.toString();
+    }
 }

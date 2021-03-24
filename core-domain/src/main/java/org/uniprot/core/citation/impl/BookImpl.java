@@ -181,4 +181,17 @@ public class BookImpl extends AbstractCitationImpl implements Book {
                 && Objects.equals(this.publisher, other.publisher)
                 && Objects.equals(this.volume, other.volume);
     }
+
+    @Override
+    public String toString() {
+        return "BookImpl{" +
+                "bookName='" + bookName + '\'' +
+                ", editors=" + editors +
+                ", firstPage='" + firstPage + '\'' +
+                ", lastPage='" + lastPage + '\'' +
+                ", volume='" + volume + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", address='" + address + '\'' +
+                "} " + super.toString();
+    }
 }

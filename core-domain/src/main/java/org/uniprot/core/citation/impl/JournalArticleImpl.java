@@ -37,4 +37,9 @@ public class JournalArticleImpl extends AbstractJournalArticleImpl implements Jo
                 lastPage,
                 volume);
     }
+
+    @Override
+    public String toString() {
+        return "JournalArticleImpl{} " + super.toString();
+    }
 }

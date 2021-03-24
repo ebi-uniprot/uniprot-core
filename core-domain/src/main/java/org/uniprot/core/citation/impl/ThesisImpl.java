@@ -88,4 +88,12 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
         return Objects.equals(this.address, other.address)
                 && Objects.equals(this.institute, other.institute);
     }
+
+    @Override
+    public String toString() {
+        return "ThesisImpl{" +
+                "institute='" + institute + '\'' +
+                ", address='" + address + '\'' +
+                "} " + super.toString();
+    }
 }

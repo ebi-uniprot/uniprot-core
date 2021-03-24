@@ -70,4 +70,11 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
         PatentImpl other = (PatentImpl) obj;
         return Objects.equals(this.patentNumber, other.patentNumber);
     }
+
+    @Override
+    public String toString() {
+        return "PatentImpl{" +
+                "patentNumber='" + patentNumber + '\'' +
+                "} " + super.toString();
+    }
 }
