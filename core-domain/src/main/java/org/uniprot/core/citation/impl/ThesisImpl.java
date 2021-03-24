@@ -11,8 +11,8 @@ import org.uniprot.core.util.Utils;
 
 public class ThesisImpl extends AbstractCitationImpl implements Thesis {
     private static final long serialVersionUID = -8487467468767628311L;
-    private String institute;
-    private String address;
+    private final String institute;
+    private final String address;
 
     // no arg constructor for JSON deserialization
     ThesisImpl() {
@@ -56,6 +56,18 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
     @Override
     public boolean hasAddress() {
         return Utils.notNullNotEmpty(this.address);
+    }
+
+    @Override
+    protected String getHashInput() {
+        String hashInput = super.getHashInput();
+        if(hasInstitute()) {
+            hashInput += institute;
+        }
+        if(hasAddress()) {
+            hashInput += address;
+        }
+        return hashInput;
     }
 
     @Override

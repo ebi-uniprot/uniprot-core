@@ -9,7 +9,7 @@ import org.uniprot.core.citation.*;
 
 public class SubmissionImpl extends AbstractCitationImpl implements Submission {
     private static final long serialVersionUID = 7406371948424303592L;
-    private SubmissionDatabase submissionDatabase;
+    private final SubmissionDatabase submissionDatabase;
 
     // no arg constructor for JSON deserialization
     SubmissionImpl() {
@@ -41,6 +41,15 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
     @Override
     public boolean hasSubmissionDatabase() {
         return this.submissionDatabase != null;
+    }
+
+    @Override
+    protected String getHashInput() {
+        String hashInput = super.getHashInput();
+        if(hasSubmissionDatabase()) {
+            hashInput += submissionDatabase;
+        }
+        return hashInput;
     }
 
     @Override

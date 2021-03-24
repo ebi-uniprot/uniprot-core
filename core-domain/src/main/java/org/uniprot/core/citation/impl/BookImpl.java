@@ -4,6 +4,7 @@ import static java.util.Collections.emptyList;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
@@ -11,13 +12,13 @@ import org.uniprot.core.util.Utils;
 
 public class BookImpl extends AbstractCitationImpl implements Book {
     private static final long serialVersionUID = 7240686919749710678L;
-    private String bookName;
-    private List<Author> editors;
-    private String firstPage;
-    private String lastPage;
-    private String volume;
-    private String publisher;
-    private String address;
+    private final String bookName;
+    private final List<Author> editors;
+    private final String firstPage;
+    private final String lastPage;
+    private final String volume;
+    private final String publisher;
+    private final String address;
 
     // no arg constructor for JSON deserialization
     BookImpl() {
@@ -133,6 +134,23 @@ public class BookImpl extends AbstractCitationImpl implements Book {
     @Override
     public boolean hasAddress() {
         return Utils.notNullNotEmpty(this.address);
+    }
+
+    @Override
+    protected String getHashInput() {
+        String hashInput = super.getHashInput();
+        if(hasBookName()) {
+            hashInput += bookName;
+        }
+        if(hasPublisher()) {
+            hashInput += publisher;
+        }
+        if(hasEditors()) {
+            hashInput += editors.stream()
+                    .map(Author::getValue)
+                    .collect(Collectors.joining(" "));
+        }
+        return hashInput;
     }
 
     @Override

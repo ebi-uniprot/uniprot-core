@@ -60,6 +60,18 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
     }
 
     @Override
+    protected String getHashInput() {
+        String hashInput = super.getHashInput();
+        if(hasJournal()) {
+            hashInput += journal;
+        }
+        if(hasLocator()) {
+            hashInput += locator.getValue();
+        }
+        return hashInput;
+    }
+
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();

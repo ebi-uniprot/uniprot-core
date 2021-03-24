@@ -36,44 +36,6 @@ public abstract class AbstractCitationImpl implements Citation {
         this.id = generateId();
     }
 
-    private String generateId() {
-        return getDatabaseId(CitationDatabase.PUBMED)
-                .orElse(getDatabaseId(CitationDatabase.AGRICOLA)
-                        .orElse(generateHash()));
-
-    }
-
-    private Optional<String> getDatabaseId(CitationDatabase database) {
-        return citationCrossReferences
-                .stream()
-                .filter(xref -> database == xref.getDatabase())
-                .map(CrossReference::getId)
-                .findFirst();
-    }
-
-    private String generateHash() {
-        StringBuilder idInput = new StringBuilder();
-        idInput.append(this.citationType.getName());
-        if(this.hasTitle()) {
-            idInput.append(this.title);
-        }
-        if(this.hasAuthors()) {
-            String authorsStr = this.authors.stream()
-                    .map(Author::getValue)
-                    .collect(Collectors.joining(" "));
-            idInput.append(authorsStr);
-        }
-        if(this.hasAuthoringGroup()) {
-            String authorsStr = String.join(" ", this.authoringGroup);
-            idInput.append(authorsStr);
-        }
-        if(this.hasPublicationDate()){
-            idInput.append(this.publicationDate.getValue());
-        }
-        String citationTypePrefix = this.citationType.name().substring(0,2);
-        return citationTypePrefix+"-"+Crc64.getCrc64(idInput.toString());
-    }
-
     @Override
     public String getId() {
         return id;
@@ -140,6 +102,52 @@ public abstract class AbstractCitationImpl implements Citation {
     @Override
     public boolean hasPublicationDate() {
         return this.publicationDate != null;
+    }
+
+    protected String getHashInput() {
+        StringBuilder idInput = new StringBuilder();
+        idInput.append(this.citationType.getName());
+
+        getDatabaseId(CitationDatabase.DOI)
+                .ifPresent(idInput::append);
+
+        if(this.hasTitle()) {
+            idInput.append(this.title);
+        }
+        if(this.hasAuthors()) {
+            String authorsStr = this.authors.stream()
+                    .map(Author::getValue)
+                    .collect(Collectors.joining(" "));
+            idInput.append(authorsStr);
+        }
+        if(this.hasAuthoringGroup()) {
+            String authorsStr = String.join(" ", this.authoringGroup);
+            idInput.append(authorsStr);
+        }
+        if(this.hasPublicationDate()){
+            idInput.append(this.publicationDate.getValue());
+        }
+        return idInput.toString();
+    }
+
+    private String generateId() {
+        return getDatabaseId(CitationDatabase.PUBMED)
+                .orElse(getDatabaseId(CitationDatabase.AGRICOLA)
+                        .orElse(generateHash()));
+    }
+
+    private Optional<String> getDatabaseId(CitationDatabase database) {
+        return citationCrossReferences
+                .stream()
+                .filter(xref -> database == xref.getDatabase())
+                .map(CrossReference::getId)
+                .findFirst();
+    }
+
+    private String generateHash() {
+        String hashInput = getHashInput();
+        String citationTypePrefix = this.citationType.name().substring(0,2);
+        return citationTypePrefix+"-"+Crc64.getCrc64(hashInput);
     }
 
     @Override

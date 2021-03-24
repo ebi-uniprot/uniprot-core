@@ -47,6 +47,24 @@ public abstract class AbstractJournalArticleImpl extends AbstractCitationImpl
     }
 
     @Override
+    protected String getHashInput() {
+        String hashInput = super.getHashInput();
+        if(hasJournal()) {
+            hashInput += journal;
+        }
+        if(hasVolume()) {
+            hashInput += volume;
+        }
+        if(hasFirstPage()) {
+            hashInput += firstPage;
+        }
+        if(hasLastPage()) {
+            hashInput += lastPage;
+        }
+        return hashInput;
+    }
+
+    @Override
     public Journal getJournal() {
         return journal;
     }
