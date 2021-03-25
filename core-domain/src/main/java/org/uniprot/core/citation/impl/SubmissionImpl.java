@@ -44,7 +44,7 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
     }
 
     @Override
-    protected String getHashInput() {
+    public String getHashInput() {
         String hashInput = super.getHashInput();
         if(hasSubmissionDatabase()) {
             hashInput += submissionDatabase;

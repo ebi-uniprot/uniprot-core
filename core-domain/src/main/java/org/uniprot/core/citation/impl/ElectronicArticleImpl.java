@@ -68,7 +68,7 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
     }
 
     @Override
-    protected String getHashInput() {
+    public String getHashInput() {
         String hashInput = super.getHashInput();
         if(hasJournal()) {
             hashInput += journal;

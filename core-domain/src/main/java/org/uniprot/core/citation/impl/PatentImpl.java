@@ -46,7 +46,7 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
     }
 
     @Override
-    protected String getHashInput() {
+    public String getHashInput() {
         String hashInput = super.getHashInput();
         if(hasPatentNumber()) {
             hashInput += patentNumber;

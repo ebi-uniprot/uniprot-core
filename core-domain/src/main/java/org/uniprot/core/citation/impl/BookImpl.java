@@ -137,7 +137,7 @@ public class BookImpl extends AbstractCitationImpl implements Book {
     }
 
     @Override
-    protected String getHashInput() {
+    public String getHashInput() {
         String hashInput = super.getHashInput();
         if(hasBookName()) {
             hashInput += bookName;

@@ -59,7 +59,7 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
     }
 
     @Override
-    protected String getHashInput() {
+    public String getHashInput() {
         String hashInput = super.getHashInput();
         if(hasInstitute()) {
             hashInput += institute;
