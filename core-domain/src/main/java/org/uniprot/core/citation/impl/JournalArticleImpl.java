@@ -39,8 +39,4 @@ public class JournalArticleImpl extends AbstractJournalArticleImpl implements Jo
         super.id = generateId();
     }
 
-    @Override
-    public String toString() {
-        return "JournalArticleImpl{} " + super.toString();
-    }
 }

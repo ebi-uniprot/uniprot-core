@@ -47,7 +47,7 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
     }
 
     @Override
-    public String getHashInput() {
+    protected String getHashInput() {
         String hashInput = super.getHashInput();
         if(hasPatentNumber()) {
             hashInput += " pn-" + patentNumber;
@@ -72,10 +72,4 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
         return Objects.equals(this.patentNumber, other.patentNumber);
     }
 
-    @Override
-    public String toString() {
-        return "PatentImpl{" +
-                "patentNumber='" + patentNumber + '\'' +
-                "} " + super.toString();
-    }
 }
