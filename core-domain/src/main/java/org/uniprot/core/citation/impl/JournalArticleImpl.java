@@ -36,6 +36,7 @@ public class JournalArticleImpl extends AbstractJournalArticleImpl implements Jo
                 firstPage,
                 lastPage,
                 volume);
+        super.id = generateId();
     }
 
     @Override

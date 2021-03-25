@@ -33,6 +33,7 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
                 title,
                 publicationDate);
         this.patentNumber = Utils.emptyOrString(patentNumber);
+        super.id = generateId();
     }
 
     @Override

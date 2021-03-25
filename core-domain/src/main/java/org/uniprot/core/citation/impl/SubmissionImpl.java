@@ -31,6 +31,7 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
                 title,
                 publicationDate);
         this.submissionDatabase = submissionDatabase;
+        super.id = generateId();
     }
 
     @Override

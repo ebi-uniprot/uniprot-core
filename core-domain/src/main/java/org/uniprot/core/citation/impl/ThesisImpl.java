@@ -36,6 +36,7 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
                 publicationDate);
         this.institute = Utils.emptyOrString(institute);
         this.address = Utils.emptyOrString(address);
+        super.id = generateId();
     }
 
     @Override

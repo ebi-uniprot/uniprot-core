@@ -45,6 +45,7 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
             this.journal = new JournalImpl(journalName);
         }
         this.locator = locator;
+        super.id = generateId();
     }
 
     @Override

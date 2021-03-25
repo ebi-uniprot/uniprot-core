@@ -61,6 +61,7 @@ public class LiteratureImpl extends AbstractJournalArticleImpl implements Litera
                 volume);
         this.completeAuthorList = completeAuthorList;
         this.literatureAbstract = Utils.emptyOrString(literatureAbstract);
+        super.id = generateId();
     }
 
     @Override

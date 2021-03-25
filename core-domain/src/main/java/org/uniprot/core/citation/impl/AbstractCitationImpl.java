@@ -13,7 +13,7 @@ import org.uniprot.core.util.Utils;
 
 public abstract class AbstractCitationImpl implements Citation {
     private static final long serialVersionUID = -2752460607884626559L;
-    private final String id;
+    protected String id;
     private final CitationType citationType;
     private final List<String> authoringGroup;
     private final List<Author> authors;
@@ -34,7 +34,6 @@ public abstract class AbstractCitationImpl implements Citation {
         this.citationCrossReferences = Utils.unmodifiableList(citationCrossReferences);
         this.title = Utils.emptyOrString(title);
         this.publicationDate = publicationDate;
-        this.id = generateId();
     }
 
     @Override
@@ -131,7 +130,7 @@ public abstract class AbstractCitationImpl implements Citation {
         return idInput.toString();
     }
 
-    private String generateId() {
+    protected String generateId() {
         return getDatabaseId(CitationDatabase.PUBMED)
                 .orElse(getDatabaseId(CitationDatabase.AGRICOLA)
                         .orElse(generateHash()));

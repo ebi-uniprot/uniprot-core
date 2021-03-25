@@ -64,6 +64,7 @@ public class BookImpl extends AbstractCitationImpl implements Book {
         this.volume = Utils.emptyOrString(volume);
         this.publisher = Utils.emptyOrString(publisher);
         this.address = Utils.emptyOrString(address);
+        super.id = generateId();
     }
 
     @Override

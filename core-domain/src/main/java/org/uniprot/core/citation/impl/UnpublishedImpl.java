@@ -28,5 +28,6 @@ public class UnpublishedImpl extends AbstractCitationImpl implements Unpublished
                 citationCrossReferences,
                 title,
                 publicationDate);
+        super.id = generateId();
     }
 }
