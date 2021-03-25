@@ -50,16 +50,16 @@ public abstract class AbstractJournalArticleImpl extends AbstractCitationImpl
     protected String getHashInput() {
         String hashInput = super.getHashInput();
         if(hasJournal()) {
-            hashInput += journal;
+            hashInput += " jo-" + journal.getName();
         }
         if(hasVolume()) {
-            hashInput += volume;
+            hashInput += " vo-" + volume;
         }
         if(hasFirstPage()) {
-            hashInput += firstPage;
+            hashInput += " fp-" + firstPage;
         }
         if(hasLastPage()) {
-            hashInput += lastPage;
+            hashInput += " lp-" + lastPage;
         }
         return hashInput;
     }

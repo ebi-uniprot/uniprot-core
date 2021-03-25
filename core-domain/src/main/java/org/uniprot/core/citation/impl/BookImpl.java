@@ -141,15 +141,24 @@ public class BookImpl extends AbstractCitationImpl implements Book {
     public String getHashInput() {
         String hashInput = super.getHashInput();
         if(hasBookName()) {
-            hashInput += bookName;
+            hashInput += " bn-"+bookName;
         }
         if(hasPublisher()) {
-            hashInput += publisher;
+            hashInput += " pu-"+publisher;
         }
         if(hasEditors()) {
-            hashInput += editors.stream()
+            hashInput += " ed-"+editors.stream()
                     .map(Author::getValue)
                     .collect(Collectors.joining(" "));
+        }
+        if(hasFirstPage()) {
+            hashInput += " fp-"+firstPage;
+        }
+        if(hasLastPage()) {
+            hashInput += " lp-"+lastPage;
+        }
+        if(hasVolume()) {
+            hashInput += " vo-"+volume;
         }
         return hashInput;
     }

@@ -50,7 +50,7 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
     public String getHashInput() {
         String hashInput = super.getHashInput();
         if(hasPatentNumber()) {
-            hashInput += patentNumber;
+            hashInput += " pn-" + patentNumber;
         }
         return hashInput;
     }

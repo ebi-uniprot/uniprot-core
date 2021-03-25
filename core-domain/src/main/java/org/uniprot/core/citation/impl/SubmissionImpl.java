@@ -48,7 +48,7 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
     public String getHashInput() {
         String hashInput = super.getHashInput();
         if(hasSubmissionDatabase()) {
-            hashInput += submissionDatabase;
+            hashInput += " sd-" + submissionDatabase.name();
         }
         return hashInput;
     }

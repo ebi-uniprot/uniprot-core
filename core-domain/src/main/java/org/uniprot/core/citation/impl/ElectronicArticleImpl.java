@@ -72,10 +72,10 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
     public String getHashInput() {
         String hashInput = super.getHashInput();
         if(hasJournal()) {
-            hashInput += journal;
+            hashInput += " jo-" + journal;
         }
         if(hasLocator()) {
-            hashInput += locator.getValue();
+            hashInput += " lo-" + locator.getValue();
         }
         return hashInput;
     }

@@ -3,7 +3,6 @@ package org.uniprot.core.publication;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.citation.Citation;
 import org.uniprot.core.uniprotkb.ReferenceComment;
 import org.uniprot.core.uniprotkb.ReferenceCommentType;
 
