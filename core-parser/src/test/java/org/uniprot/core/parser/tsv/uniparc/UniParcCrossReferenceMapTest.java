@@ -68,8 +68,18 @@ class UniParcCrossReferenceMapTest {
         List<String> fields = new ArrayList<>();
         fields.addAll(
                 Arrays.asList(
-                        "gene", "protein", "proteome", "accession", "first_seen", "last_seen",
-                        "database", "active", "ncbiGi", "timeline", "version", "version_uniparc"));
+                        "gene",
+                        "protein",
+                        "proteome",
+                        "accession",
+                        "first_seen",
+                        "last_seen",
+                        "database",
+                        "active",
+                        "ncbiGi",
+                        "timeline",
+                        "version",
+                        "version_uniparc"));
         Arrays.stream(UniParcDatabase.values()).map(UniParcDatabase::getName).forEach(fields::add);
         assertEquals(UniParcCrossReferenceMap.FIELDS, fields);
     }

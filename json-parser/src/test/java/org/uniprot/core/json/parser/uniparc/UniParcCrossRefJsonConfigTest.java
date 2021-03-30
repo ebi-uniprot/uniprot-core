@@ -1,13 +1,13 @@
 package org.uniprot.core.json.parser.uniparc;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.uniprot.core.json.parser.uniparc.UniParcEntryTest.getCompleteUniParcEntry;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 
-import static org.junit.jupiter.api.Assertions.fail;
-import static org.uniprot.core.json.parser.uniparc.UniParcEntryTest.getCompleteUniParcEntry;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 class UniParcCrossRefJsonConfigTest {
     @Test
