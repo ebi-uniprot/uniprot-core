@@ -49,16 +49,16 @@ public abstract class AbstractJournalArticleImpl extends AbstractCitationImpl
     @Override
     protected String getHashInput() {
         String hashInput = super.getHashInput();
-        if(hasJournal()) {
+        if (hasJournal()) {
             hashInput += " jo-" + journal.getName();
         }
-        if(hasVolume()) {
+        if (hasVolume()) {
             hashInput += " vo-" + volume;
         }
-        if(hasFirstPage()) {
+        if (hasFirstPage()) {
             hashInput += " fp-" + firstPage;
         }
-        if(hasLastPage()) {
+        if (hasLastPage()) {
             hashInput += " lp-" + lastPage;
         }
         return hashInput;
@@ -121,5 +121,4 @@ public abstract class AbstractJournalArticleImpl extends AbstractCitationImpl
         return Objects.hash(
                 super.hashCode(), getJournal(), getFirstPage(), getLastPage(), getVolume());
     }
-
 }

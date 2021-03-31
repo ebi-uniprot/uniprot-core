@@ -140,25 +140,27 @@ public class BookImpl extends AbstractCitationImpl implements Book {
     @Override
     protected String getHashInput() {
         String hashInput = super.getHashInput();
-        if(hasBookName()) {
-            hashInput += " bn-"+bookName;
+        if (hasBookName()) {
+            hashInput += " bn-" + bookName;
         }
-        if(hasPublisher()) {
-            hashInput += " pu-"+publisher;
+        if (hasPublisher()) {
+            hashInput += " pu-" + publisher;
         }
-        if(hasEditors()) {
-            hashInput += " ed-"+editors.stream()
-                    .map(Author::getValue)
-                    .collect(Collectors.joining(" "));
+        if (hasEditors()) {
+            hashInput +=
+                    " ed-"
+                            + editors.stream()
+                                    .map(Author::getValue)
+                                    .collect(Collectors.joining(" "));
         }
-        if(hasFirstPage()) {
-            hashInput += " fp-"+firstPage;
+        if (hasFirstPage()) {
+            hashInput += " fp-" + firstPage;
         }
-        if(hasLastPage()) {
-            hashInput += " lp-"+lastPage;
+        if (hasLastPage()) {
+            hashInput += " lp-" + lastPage;
         }
-        if(hasVolume()) {
-            hashInput += " vo-"+volume;
+        if (hasVolume()) {
+            hashInput += " vo-" + volume;
         }
         return hashInput;
     }
@@ -191,5 +193,4 @@ public class BookImpl extends AbstractCitationImpl implements Book {
                 && Objects.equals(this.publisher, other.publisher)
                 && Objects.equals(this.volume, other.volume);
     }
-
 }

@@ -38,5 +38,4 @@ public class JournalArticleImpl extends AbstractJournalArticleImpl implements Jo
                 volume);
         super.id = generateId();
     }
-
 }

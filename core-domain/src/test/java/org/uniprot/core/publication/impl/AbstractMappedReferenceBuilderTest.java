@@ -48,7 +48,8 @@ class AbstractMappedReferenceBuilderTest {
     @Test
     void canSetCitationId() {
         String citationId = "1243";
-        FakeMappedReference reference = new FakeMappedReferenceBuilder().citationId(citationId).build();
+        FakeMappedReference reference =
+                new FakeMappedReferenceBuilder().citationId(citationId).build();
         assertThat(reference.getCitationId(), is(citationId));
     }
 
@@ -101,7 +102,8 @@ class AbstractMappedReferenceBuilderTest {
         @Nonnull
         @Override
         public FakeMappedReference build() {
-            return new FakeMappedReference(source, citationId, uniProtKBAccession, sourceCategories);
+            return new FakeMappedReference(
+                    source, citationId, uniProtKBAccession, sourceCategories);
         }
 
         @Nonnull

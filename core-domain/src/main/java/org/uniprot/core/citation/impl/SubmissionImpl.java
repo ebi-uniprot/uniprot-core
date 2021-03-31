@@ -47,7 +47,7 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
     @Override
     protected String getHashInput() {
         String hashInput = super.getHashInput();
-        if(hasSubmissionDatabase()) {
+        if (hasSubmissionDatabase()) {
             hashInput += " sd-" + submissionDatabase.name();
         }
         return hashInput;
@@ -70,5 +70,4 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
         SubmissionImpl other = (SubmissionImpl) obj;
         return submissionDatabase == other.submissionDatabase;
     }
-
 }
