@@ -58,7 +58,6 @@ class AbstractCitationBuilderTest {
         assertThat(citation.getId(), is("id1"));
     }
 
-
     @Test
     void checkCitationIdIsAgricola() {
         String title = "a title";
