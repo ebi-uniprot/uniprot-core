@@ -25,7 +25,7 @@ public class UniProtKBMappedReferenceImpl extends AbstractMappedReference
     private final int referenceNumber;
 
     public UniProtKBMappedReferenceImpl() {
-        this(null, null, null , 0, emptySet(), emptyList(), emptyList());
+        this(null, null, null, 0, emptySet(), emptyList(), emptyList());
     }
 
     public UniProtKBMappedReferenceImpl(

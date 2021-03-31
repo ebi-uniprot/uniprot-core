@@ -10,9 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.citation.Submission;
-import org.uniprot.core.citation.SubmissionDatabase;
-import org.uniprot.core.citation.impl.SubmissionBuilder;
 import org.uniprot.core.publication.UniProtKBMappedReference;
 import org.uniprot.core.uniprotkb.ReferenceComment;
 import org.uniprot.core.uniprotkb.ReferenceCommentType;

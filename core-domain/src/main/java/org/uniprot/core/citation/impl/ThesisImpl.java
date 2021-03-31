@@ -62,10 +62,10 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
     @Override
     protected String getHashInput() {
         String hashInput = super.getHashInput();
-        if(hasInstitute()) {
+        if (hasInstitute()) {
             hashInput += " in-" + institute;
         }
-        if(hasAddress()) {
+        if (hasAddress()) {
             hashInput += " ad-" + address;
         }
         return hashInput;
@@ -89,5 +89,4 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
         return Objects.equals(this.address, other.address)
                 && Objects.equals(this.institute, other.institute);
     }
-
 }
