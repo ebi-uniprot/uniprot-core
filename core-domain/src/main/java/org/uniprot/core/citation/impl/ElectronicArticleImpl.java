@@ -123,12 +123,5 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
             LocatorImpl other = (LocatorImpl) obj;
             return Objects.equals(this.value, other.value);
         }
-
-        @Override
-        public String toString() {
-            return "LocatorImpl{" +
-                    "value='" + value + '\'' +
-                    '}';
-        }
     }
 }

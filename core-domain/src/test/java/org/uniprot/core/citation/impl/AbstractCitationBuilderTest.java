@@ -35,6 +35,81 @@ class AbstractCitationBuilderTest {
                     .id("id2")
                     .build();
 
+    static final CrossReference<CitationDatabase> XREF3 =
+            new CrossReferenceBuilder<CitationDatabase>()
+                    .database(CitationDatabase.DOI)
+                    .id("doi-id3")
+                    .build();
+
+    @Test
+    void checkCitationIdIsPubMed() {
+        String title = "a title";
+        String publicationDate = "2015-MAY";
+        List<String> authoringGroup = asList("G1", "G2");
+        List<String> authors = asList("Tom", "John");
+        TestableCitation citation =
+                new TestableCitationBuilder()
+                        .title(title)
+                        .publicationDate(publicationDate)
+                        .authoringGroupsSet(authoringGroup)
+                        .authorsSet(authors)
+                        .citationCrossReferencesAdd(XREF1)
+                        .build();
+        assertThat(citation.getId(), is("id1"));
+    }
+
+
+    @Test
+    void checkCitationIdIsAgricola() {
+        String title = "a title";
+        String publicationDate = "2015-MAY";
+        List<String> authoringGroup = asList("G1", "G2");
+        List<String> authors = asList("Tom", "John");
+        TestableCitation citation =
+                new TestableCitationBuilder()
+                        .title(title)
+                        .publicationDate(publicationDate)
+                        .authoringGroupsSet(authoringGroup)
+                        .authorsSet(authors)
+                        .citationCrossReferencesAdd(XREF2)
+                        .build();
+        assertThat(citation.getId(), is("id2"));
+    }
+
+    @Test
+    void checkCitationIdIsDoiHashGenerated() {
+        String title = "a title";
+        String publicationDate = "2015-MAY";
+        List<String> authoringGroup = asList("G1", "G2");
+        List<String> authors = asList("Tom", "John");
+        TestableCitation citation =
+                new TestableCitationBuilder()
+                        .title(title)
+                        .publicationDate(publicationDate)
+                        .authoringGroupsSet(authoringGroup)
+                        .authorsSet(authors)
+                        .citationCrossReferencesAdd(XREF3)
+                        .build();
+        assertThat(citation.getId(), is("CI-2V34M1IJ67J60"));
+        assertThat(citation.generateHash("doi-id3"), is("CI-2V34M1IJ67J60"));
+    }
+
+    @Test
+    void checkCitationIdIsHashGenerated() {
+        String title = "a title";
+        String publicationDate = "2015-MAY";
+        List<String> authoringGroup = asList("G1", "G2");
+        List<String> authors = asList("Tom", "John");
+        TestableCitation citation =
+                new TestableCitationBuilder()
+                        .title(title)
+                        .publicationDate(publicationDate)
+                        .authoringGroupsSet(authoringGroup)
+                        .authorsSet(authors)
+                        .build();
+        assertThat(citation.getId(), is("CI-7TL5R4DGOC4O8"));
+    }
+
     @Test
     void checkAbstractCitationCreationIsAsExpected() {
         String title = "a title";
@@ -95,6 +170,7 @@ class AbstractCitationBuilderTest {
     }
 
     void verifyCitation(Citation citation, CitationType citationType) {
+        assertThat(citation.getId(), is("id1"));
         assertThat(citation.getTitle(), is(TITLE));
         assertThat(citation.getPublicationDate().getValue(), is(PUBLICATION_DATE));
         assertThat(citation.getAuthoringGroups(), is(GROUPS));
@@ -125,6 +201,8 @@ class AbstractCitationBuilderTest {
     }
 
     private static class TestableCitation extends AbstractCitationImpl {
+        private static final long serialVersionUID = -8191941562478700666L;
+
         TestableCitation(TestableCitationBuilder builder) {
             super(
                     CITATION_TYPE,
@@ -133,6 +211,7 @@ class AbstractCitationBuilderTest {
                     builder.citationCrossReferences,
                     builder.title,
                     builder.publicationDate);
+            super.id = generateId();
         }
     }
 }

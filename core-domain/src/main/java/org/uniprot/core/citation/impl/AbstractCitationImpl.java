@@ -135,20 +135,20 @@ public abstract class AbstractCitationImpl implements Citation {
                                 .orElseGet(() -> generateHash(getHashInput()))));
     }
 
+    String generateHash(String hashInput) {
+        String base16Hash = Crc64.getCrc64(hashInput);
+        String base32Hash = new BigInteger(base16Hash,16)
+                .toString(32)
+                .toUpperCase();
+        return "CI-"+base32Hash;
+    }
+
     private Optional<String> getDatabaseId(CitationDatabase database) {
         return citationCrossReferences
                 .stream()
                 .filter(xref -> database == xref.getDatabase())
                 .map(CrossReference::getId)
                 .findFirst();
-    }
-
-    private String generateHash(String hashInput) {
-        String base16Hash = Crc64.getCrc64(hashInput);
-        String base32Hash = new BigInteger(base16Hash,16)
-                .toString(32)
-                .toUpperCase();
-        return "CI-"+base32Hash;
     }
 
     @Override
