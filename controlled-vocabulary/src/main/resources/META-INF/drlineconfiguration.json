@@ -84,7 +84,8 @@
 				"name": "EntryName",
 				"xmlTag":"entry name" 
 			}		
-		]
+		],
+      "idMappingName": "PIR_ID"
 	},
 	{
 		"name": "RefSeq",
@@ -98,7 +99,8 @@
 				"uriLink":"https://www.ncbi.nlm.nih.gov/nuccore/%necleotideId"		
 			
 			}
-		]
+		],
+      "idMappingName": "P_REFSEQ_AC"
 	},
 	{
 		"name": "PDB",
