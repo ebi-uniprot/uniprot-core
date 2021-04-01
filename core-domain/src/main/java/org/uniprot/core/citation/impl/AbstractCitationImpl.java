@@ -108,20 +108,19 @@ public abstract class AbstractCitationImpl implements Citation {
         StringBuilder idInput = new StringBuilder();
         idInput.append(" ct-").append(this.citationType.getName());
 
-        if(this.hasTitle()) {
+        if (this.hasTitle()) {
             idInput.append(" tt-").append(this.title);
         }
-        if(this.hasAuthors()) {
-            String authorsStr = this.authors.stream()
-                    .map(Author::getValue)
-                    .collect(Collectors.joining(" "));
+        if (this.hasAuthors()) {
+            String authorsStr =
+                    this.authors.stream().map(Author::getValue).collect(Collectors.joining(" "));
             idInput.append(" au-").append(authorsStr);
         }
-        if(this.hasAuthoringGroup()) {
+        if (this.hasAuthoringGroup()) {
             String authorsStr = String.join(" ", this.authoringGroup);
             idInput.append(" ag-").append(authorsStr);
         }
-        if(this.hasPublicationDate()){
+        if (this.hasPublicationDate()) {
             idInput.append(" pd-").append(this.publicationDate.getValue());
         }
         return idInput.toString();
@@ -129,23 +128,26 @@ public abstract class AbstractCitationImpl implements Citation {
 
     protected String generateId() {
         return getDatabaseId(CitationDatabase.PUBMED)
-                .orElse(getDatabaseId(CitationDatabase.AGRICOLA)
-                        .orElseGet(() -> getDatabaseId(CitationDatabase.DOI)
-                                .map(this::generateHash)
-                                .orElseGet(() -> generateHash(getHashInput()))));
+                .orElse(
+                        getDatabaseId(CitationDatabase.AGRICOLA)
+                                .orElseGet(
+                                        () ->
+                                                getDatabaseId(CitationDatabase.DOI)
+                                                        .map(this::generateHash)
+                                                        .orElseGet(
+                                                                () ->
+                                                                        generateHash(
+                                                                                getHashInput()))));
     }
 
     String generateHash(String hashInput) {
         String base16Hash = Crc64.getCrc64(hashInput);
-        String base32Hash = new BigInteger(base16Hash,16)
-                .toString(32)
-                .toUpperCase();
-        return "CI-"+base32Hash;
+        String base32Hash = new BigInteger(base16Hash, 16).toString(32).toUpperCase();
+        return "CI-" + base32Hash;
     }
 
     private Optional<String> getDatabaseId(CitationDatabase database) {
-        return citationCrossReferences
-                .stream()
+        return citationCrossReferences.stream()
                 .filter(xref -> database == xref.getDatabase())
                 .map(CrossReference::getId)
                 .findFirst();
@@ -181,5 +183,4 @@ public abstract class AbstractCitationImpl implements Citation {
                 && Objects.equals(this.publicationDate, other.publicationDate)
                 && Objects.equals(this.title, other.title);
     }
-
 }

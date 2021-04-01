@@ -1,8 +1,8 @@
 package org.uniprot.cv;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * @author lgonzales
@@ -25,5 +25,4 @@ class FileParseExceptionTest {
         assertEquals(msg, e.getMessage());
         assertEquals(throwable, e.getCause());
     }
-
 }
