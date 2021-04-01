@@ -25,11 +25,11 @@ public class LiteratureEntryValueMapper implements EntityValueMapper<LiteratureE
         map.put("doi", getDoiId(literature));
         map.put("title", getTittle(literature));
         map.put("lit_abstract", getAbstract(literature));
-        map.put("author", getAuthors(literature));
+        map.put("authors", getAuthors(literature));
         map.put("authoring_group", getAuthoringGroup(literature));
         map.put("author_and_group", getAuthorsAndAuthoringGroups(literature));
         map.put("journal", getJournal(literature));
-        map.put("publication", getPublication(literature));
+        map.put("publication_date", getPublication(literature));
         map.put("first_page", getFirstPage(literature));
         map.put("last_page", getLastPage(literature));
         map.put("volume", getVolume(literature));
