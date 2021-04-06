@@ -1,5 +1,10 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
@@ -9,24 +14,20 @@ import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 /**
  * @author sahmad
  * @created 29/03/2021
  */
 class UniParcEntryCrossRefValueMapperTest {
     @Test
-    void testMapObjectWithRequiredFields(){
-        UniParcCrossReference xref = new UniParcCrossReferenceBuilder()
-                .database(UniParcDatabase.EG_BACTERIA)
-                .id("id")
-                .active(true)
-                .versionI(1)
-                .build();
+    void testMapObjectWithRequiredFields() {
+        UniParcCrossReference xref =
+                new UniParcCrossReferenceBuilder()
+                        .database(UniParcDatabase.EG_BACTERIA)
+                        .id("id")
+                        .active(true)
+                        .versionI(1)
+                        .build();
         UniParcEntryCrossRefValueMapper mapper = new UniParcEntryCrossRefValueMapper();
         Map<String, String> results = mapper.mapEntity(xref, null);
         Assertions.assertNotNull(results);
@@ -48,7 +49,7 @@ class UniParcEntryCrossRefValueMapperTest {
     }
 
     @Test
-    void testMapObjectWithAllFieldsPopulated(){
+    void testMapObjectWithAllFieldsPopulated() {
         UniParcCrossReference xref = createCrossRef();
         UniParcEntryCrossRefValueMapper mapper = new UniParcEntryCrossRefValueMapper();
         Map<String, String> results = mapper.mapEntity(xref, null);
@@ -70,7 +71,7 @@ class UniParcEntryCrossRefValueMapperTest {
         Assertions.assertEquals("3", results.get("version_uniparc"));
     }
 
-    private UniParcCrossReference createCrossRef(){
+    private UniParcCrossReference createCrossRef() {
         Organism taxonomy =
                 new OrganismBuilder().taxonId(9606).scientificName("Homo sapiens").build();
         List<Property> properties = new ArrayList<>();

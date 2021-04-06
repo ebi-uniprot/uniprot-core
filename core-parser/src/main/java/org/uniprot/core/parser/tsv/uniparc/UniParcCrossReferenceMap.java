@@ -1,12 +1,6 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
-import org.uniprot.core.parser.tsv.NamedValueMap;
-import org.uniprot.core.uniparc.UniParcCrossReference;
-import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.util.Utils;
-
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +12,11 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.parser.tsv.NamedValueMap;
+import org.uniprot.core.uniparc.UniParcCrossReference;
+import org.uniprot.core.uniparc.UniParcDatabase;
+import org.uniprot.core.util.Utils;
 
 /**
  * @author jluo
@@ -33,8 +32,18 @@ public class UniParcCrossReferenceMap implements NamedValueMap {
         List<String> fields = new ArrayList<>();
         fields.addAll(
                 Arrays.asList(
-                        "gene", "protein", "proteome", "accession", "first_seen", "last_seen",
-                        "database", "active", "ncbiGi", "timeline", "version", "version_uniparc"));
+                        "gene",
+                        "protein",
+                        "proteome",
+                        "accession",
+                        "first_seen",
+                        "last_seen",
+                        "database",
+                        "active",
+                        "ncbiGi",
+                        "timeline",
+                        "version",
+                        "version_uniparc"));
         Arrays.stream(UniParcDatabase.values()).map(UniParcDatabase::getName).forEach(fields::add);
         FIELDS = Collections.unmodifiableList(fields);
     }
@@ -153,21 +162,21 @@ public class UniParcCrossReferenceMap implements NamedValueMap {
                 .collect(Collectors.joining(DELIMITER2));
     }
 
-    private String getActives(){
+    private String getActives() {
         return uniParcCrossReferences.stream()
                 .map(UniParcCrossReference::isActive)
                 .map(String::valueOf)
                 .collect(Collectors.joining(DELIMITER2));
     }
 
-    private String getNcbiGis(){
+    private String getNcbiGis() {
         return uniParcCrossReferences.stream()
                 .map(UniParcCrossReference::getNcbiGi)
                 .filter(Objects::nonNull)
                 .collect(Collectors.joining(DELIMITER2));
     }
 
-    private String getTimelines(){
+    private String getTimelines() {
         return uniParcCrossReferences.stream()
                 .map(xref -> getDiff(xref.getCreated(), xref.getLastUpdated()))
                 .filter(Objects::nonNull)
@@ -175,7 +184,7 @@ public class UniParcCrossReferenceMap implements NamedValueMap {
                 .collect(Collectors.joining(DELIMITER2));
     }
 
-    private String getVersions(){
+    private String getVersions() {
         return uniParcCrossReferences.stream()
                 .map(UniParcCrossReference::getVersion)
                 .filter(Objects::nonNull)
@@ -183,7 +192,7 @@ public class UniParcCrossReferenceMap implements NamedValueMap {
                 .collect(Collectors.joining(DELIMITER2));
     }
 
-    private String getVersionIs(){
+    private String getVersionIs() {
         return uniParcCrossReferences.stream()
                 .map(UniParcCrossReference::getVersionI)
                 .filter(Objects::nonNull)
@@ -191,8 +200,8 @@ public class UniParcCrossReferenceMap implements NamedValueMap {
                 .collect(Collectors.joining(DELIMITER2));
     }
 
-    private Long getDiff(LocalDate start, LocalDate end){
-        if(Objects.isNull(start) || Objects.isNull(end)){
+    private Long getDiff(LocalDate start, LocalDate end) {
+        if (Objects.isNull(start) || Objects.isNull(end)) {
             return null;
         }
         return ChronoUnit.DAYS.between(end, start);
