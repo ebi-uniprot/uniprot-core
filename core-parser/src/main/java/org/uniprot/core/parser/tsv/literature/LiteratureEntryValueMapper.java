@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.citation.Author;
-import org.uniprot.core.citation.Literature;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.citation.*;
 import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.util.Utils;
@@ -19,27 +19,41 @@ public class LiteratureEntryValueMapper implements EntityValueMapper<LiteratureE
 
     @Override
     public Map<String, String> mapEntity(LiteratureEntry entry, List<String> fields) {
-        Literature literature = (Literature) entry.getCitation();
+        Citation literature = entry.getCitation();
         Map<String, String> map = new HashMap<>();
         map.put("id", getPubmedId(literature));
         map.put("doi", getDoiId(literature));
         map.put("title", getTittle(literature));
-        map.put("lit_abstract", getAbstract(literature));
         map.put("authors", getAuthors(literature));
         map.put("authoring_group", getAuthoringGroup(literature));
         map.put("author_and_group", getAuthorsAndAuthoringGroups(literature));
-        map.put("journal", getJournal(literature));
         map.put("publication_date", getPublication(literature));
-        map.put("first_page", getFirstPage(literature));
-        map.put("last_page", getLastPage(literature));
-        map.put("volume", getVolume(literature));
-        map.put("reference", getReference(literature));
+        if(literature instanceof JournalArticle) {
+            JournalArticle journalArticle = (JournalArticle) literature;
+            map.put("journal", getJournal(journalArticle));
+            map.put("first_page", getFirstPage(journalArticle));
+            map.put("last_page", getLastPage(journalArticle));
+            map.put("volume", getVolume(journalArticle));
+            map.put("reference", getReference(journalArticle));
+        } else {
+            map.put("journal", "");
+            map.put("first_page", "");
+            map.put("last_page", "");
+            map.put("volume", "");
+            map.put("reference", "");
+        }
+        if(literature instanceof Literature) {
+            Literature lit = (Literature) literature;
+            map.put("lit_abstract", getAbstract(lit));
+        } else {
+            map.put("lit_abstract", "");
+        }
         map.put("statistics", getStatistics(entry));
 
         return map;
     }
 
-    private String getLastPage(Literature literature) {
+    private String getLastPage(JournalArticle literature) {
         String result = "";
         if (Utils.notNull(literature)) {
             result = Utils.emptyOrString(literature.getLastPage());
@@ -47,7 +61,7 @@ public class LiteratureEntryValueMapper implements EntityValueMapper<LiteratureE
         return result;
     }
 
-    private String getFirstPage(Literature literature) {
+    private String getFirstPage(JournalArticle literature) {
         String result = "";
         if (Utils.notNull(literature)) {
             result = Utils.emptyOrString(literature.getFirstPage());
@@ -55,7 +69,7 @@ public class LiteratureEntryValueMapper implements EntityValueMapper<LiteratureE
         return result;
     }
 
-    private String getVolume(Literature literature) {
+    private String getVolume(JournalArticle literature) {
         String result = "";
         if (Utils.notNull(literature)) {
             result = Utils.emptyOrString(literature.getVolume());
@@ -71,7 +85,7 @@ public class LiteratureEntryValueMapper implements EntityValueMapper<LiteratureE
         return result;
     }
 
-    private String getTittle(Literature literature) {
+    private String getTittle(Citation literature) {
         String result = "";
         if (Utils.notNull(literature)) {
             result = Utils.emptyOrString(literature.getTitle());
@@ -79,23 +93,27 @@ public class LiteratureEntryValueMapper implements EntityValueMapper<LiteratureE
         return result;
     }
 
-    private String getDoiId(Literature literature) {
+    private String getDoiId(Citation literature) {
         String result = "";
         if (Utils.notNull(literature)) {
-            result = Utils.emptyOrString(literature.getDoiId());
+            result = literature.getCitationCrossReferenceByType(CitationDatabase.DOI)
+                    .map(CrossReference::getId)
+                    .orElse("");
         }
         return result;
     }
 
-    private String getPubmedId(Literature literature) {
+    private String getPubmedId(Citation literature) {
         String result = "";
         if (Utils.notNull(literature)) {
-            result = String.valueOf(literature.getPubmedId());
+            result = literature.getCitationCrossReferenceByType(CitationDatabase.PUBMED)
+                    .map(CrossReference::getId)
+                    .orElse("");
         }
         return result;
     }
 
-    private String getPublication(Literature literature) {
+    private String getPublication(Citation literature) {
         String result = "";
         if (Utils.notNull(literature) && literature.hasPublicationDate()) {
             result = literature.getPublicationDate().getValue();
@@ -103,7 +121,7 @@ public class LiteratureEntryValueMapper implements EntityValueMapper<LiteratureE
         return result;
     }
 
-    private String getJournal(Literature literature) {
+    private String getJournal(JournalArticle literature) {
         String result = "";
         if (Utils.notNull(literature) && literature.hasJournal()) {
             result = literature.getJournal().getName();
@@ -111,7 +129,7 @@ public class LiteratureEntryValueMapper implements EntityValueMapper<LiteratureE
         return result;
     }
 
-    private String getAuthorsAndAuthoringGroups(Literature literature) {
+    private String getAuthorsAndAuthoringGroups(Citation literature) {
         String result = getAuthoringGroup(literature);
         if (Utils.notNullNotEmpty(result)) {
             result += "; " + getAuthors(literature);
@@ -119,7 +137,7 @@ public class LiteratureEntryValueMapper implements EntityValueMapper<LiteratureE
         return result;
     }
 
-    private String getAuthors(Literature literature) {
+    private String getAuthors(Citation literature) {
         String result = "";
         if (Utils.notNull(literature)) {
             result =
@@ -130,7 +148,7 @@ public class LiteratureEntryValueMapper implements EntityValueMapper<LiteratureE
         return result;
     }
 
-    private String getAuthoringGroup(Literature literature) {
+    private String getAuthoringGroup(Citation literature) {
         String result = "";
         if (Utils.notNull(literature)) {
             result = String.join(", ", literature.getAuthoringGroups());
@@ -138,7 +156,7 @@ public class LiteratureEntryValueMapper implements EntityValueMapper<LiteratureE
         return result;
     }
 
-    private String getReference(Literature literature) {
+    private String getReference(JournalArticle literature) {
         StringBuilder result = new StringBuilder();
         if (Utils.notNull(literature)) {
             if (literature.hasJournal()) {
