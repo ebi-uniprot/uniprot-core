@@ -42,13 +42,13 @@ public class UniParcCrossRefJsonConfig extends JsonConfig {
     }
 
     @Override
-    public ObjectMapper getSimpleObjectMapper() {
-        return this.prettyMapper;
+    public ObjectMapper getFullObjectMapper() {
+        return this.objectMapper;
     }
 
     @Override
-    public ObjectMapper getFullObjectMapper() {
-        return this.objectMapper;
+    public ObjectMapper getSimpleObjectMapper() {
+        return this.prettyMapper;
     }
 
     private ObjectMapper initObjectMapper() {
