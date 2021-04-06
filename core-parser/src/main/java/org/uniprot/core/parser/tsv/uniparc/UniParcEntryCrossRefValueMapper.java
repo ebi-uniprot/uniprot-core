@@ -18,6 +18,7 @@ import org.uniprot.core.util.Utils;
  */
 public class UniParcEntryCrossRefValueMapper implements EntityValueMapper<UniParcCrossReference> {
     private static final String EMPTY_STRING = "";
+
     @Override
     public Map<String, String> mapEntity(UniParcCrossReference entity, List<String> fieldNames) {
         Map<String, String> fieldValue = new HashMap<>();
@@ -62,28 +63,28 @@ public class UniParcEntryCrossRefValueMapper implements EntityValueMapper<UniPar
         return date.toString();
     }
 
-    private String getNullSafeOrganism(Organism organism){
-        if(Objects.nonNull(organism)){
+    private String getNullSafeOrganism(Organism organism) {
+        if (Objects.nonNull(organism)) {
             return organism.getScientificName();
         }
         return EMPTY_STRING;
     }
 
-    private String getNullSafeOrganismId(Organism organism){
-        if(Objects.nonNull(organism)){
+    private String getNullSafeOrganismId(Organism organism) {
+        if (Objects.nonNull(organism)) {
             return String.valueOf(organism.getTaxonId());
         }
-        return  EMPTY_STRING;
+        return EMPTY_STRING;
     }
 
-    private String getNullSafeVersion(Integer version){
-        if(Objects.nonNull(version)){
+    private String getNullSafeVersion(Integer version) {
+        if (Objects.nonNull(version)) {
             return String.valueOf(version);
         }
         return EMPTY_STRING;
     }
 
-    private String getNullSafeValue(String value){
+    private String getNullSafeValue(String value) {
         return Objects.isNull(value) ? EMPTY_STRING : value;
     }
 
