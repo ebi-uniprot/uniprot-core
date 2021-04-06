@@ -47,7 +47,7 @@ class UniParcEntryValueMapperTest {
         UniParcEntry entry = create();
         List<String> fields = Arrays.asList("upi", "protein", "gene", "accession");
         Map<String, String> result = new UniParcEntryValueMapper().mapEntity(entry, fields);
-        assertEquals(9, result.size());
+        assertEquals(15, result.size());
         verify("UPI0000083A08", "upi", result);
         verify("some pname;some pname", "protein", result);
         verify("some gname", "gene", result);
@@ -59,7 +59,7 @@ class UniParcEntryValueMapperTest {
         UniParcEntry entry = create();
         List<String> fields = Arrays.asList("upi", "first_seen", "last_seen");
         Map<String, String> result = new UniParcEntryValueMapper().mapEntity(entry, fields);
-        assertEquals(9, result.size());
+        assertEquals(15, result.size());
         verify("UPI0000083A08", "upi", result);
         verify("2017-02-12", "first_seen", result);
         verify("2017-04-23", "last_seen", result);
