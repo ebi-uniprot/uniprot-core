@@ -28,7 +28,7 @@ public class LiteratureEntryValueMapper implements EntityValueMapper<LiteratureE
         map.put("authoring_group", getAuthoringGroup(literature));
         map.put("author_and_group", getAuthorsAndAuthoringGroups(literature));
         map.put("publication_date", getPublication(literature));
-        if(literature instanceof JournalArticle) {
+        if (literature instanceof JournalArticle) {
             JournalArticle journalArticle = (JournalArticle) literature;
             map.put("journal", getJournal(journalArticle));
             map.put("first_page", getFirstPage(journalArticle));
@@ -42,7 +42,7 @@ public class LiteratureEntryValueMapper implements EntityValueMapper<LiteratureE
             map.put("volume", "");
             map.put("reference", "");
         }
-        if(literature instanceof Literature) {
+        if (literature instanceof Literature) {
             Literature lit = (Literature) literature;
             map.put("lit_abstract", getAbstract(lit));
         } else {
@@ -96,9 +96,11 @@ public class LiteratureEntryValueMapper implements EntityValueMapper<LiteratureE
     private String getDoiId(Citation literature) {
         String result = "";
         if (Utils.notNull(literature)) {
-            result = literature.getCitationCrossReferenceByType(CitationDatabase.DOI)
-                    .map(CrossReference::getId)
-                    .orElse("");
+            result =
+                    literature
+                            .getCitationCrossReferenceByType(CitationDatabase.DOI)
+                            .map(CrossReference::getId)
+                            .orElse("");
         }
         return result;
     }
@@ -106,9 +108,11 @@ public class LiteratureEntryValueMapper implements EntityValueMapper<LiteratureE
     private String getPubmedId(Citation literature) {
         String result = "";
         if (Utils.notNull(literature)) {
-            result = literature.getCitationCrossReferenceByType(CitationDatabase.PUBMED)
-                    .map(CrossReference::getId)
-                    .orElse("");
+            result =
+                    literature
+                            .getCitationCrossReferenceByType(CitationDatabase.PUBMED)
+                            .map(CrossReference::getId)
+                            .orElse("");
         }
         return result;
     }
