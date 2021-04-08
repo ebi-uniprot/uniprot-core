@@ -1,14 +1,17 @@
 package org.uniprot.utils.uniprotkb;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.uniprot.core.Property;
+import org.uniprot.core.cv.go.Go;
+import org.uniprot.core.cv.go.GoAspect;
+import org.uniprot.core.cv.go.GoEvidenceType;
 import org.uniprot.core.cv.go.GoTerm;
-import org.uniprot.core.cv.go.impl.GoTermBuilder;
+import org.uniprot.core.cv.go.impl.GoBuilder;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
-import org.uniprot.cv.go.GORepo;
-import org.uniprot.cv.go.GORepoFactory;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 
 /**
  * This class provides utility methods for retrieving information from a UniProtKB entry.
@@ -18,7 +21,6 @@ import org.uniprot.cv.go.GORepoFactory;
  * @author Edd
  */
 public class UniProtKBEntryUtils {
-    private static final GORepo GO_REPO = GORepoFactory.createRepo();
 
     /**
      * Retrieves a list of {@link GoTerm} objects from a {@link UniProtKBEntry} instance.
@@ -26,13 +28,30 @@ public class UniProtKBEntryUtils {
      * @param entry the entry
      * @return the list of GO terms extracted from the supplied entry
      */
-    public static List<GoTerm> getGOTerms(UniProtKBEntry entry) {
-        List<GoTerm> goTerms = new ArrayList<>();
+    public static List<Go> getGOTerms(UniProtKBEntry entry) {
         List<UniProtKBCrossReference> goXRefs = entry.getUniProtCrossReferencesByType("GO");
-        for (UniProtKBCrossReference goXRef : goXRefs) {
-            String name = GO_REPO.getById(goXRef.getId()).getName();
-            goTerms.add(new GoTermBuilder().id(goXRef.getId()).name(name).build());
-        }
-        return goTerms;
+       return goXRefs.stream().map(UniProtKBEntryUtils::toGo)
+        .filter(val ->val !=null)
+        .collect(Collectors.toList());
+    }
+    public static Go toGo(UniProtKBCrossReference  xref) {
+    	UniProtKBDatabase db =xref.getDatabase();
+    	if(!db.getName().equals("GO"))
+    		return null;
+    
+    	String id = xref.getId();
+    	List<Property> properties =xref.getProperties();
+    	String description = properties.get(0).getValue();
+    	String evidence = properties.get(1).getValue();
+    	String[] aspectName=description.split(":");
+    	String [] evidenceToken = evidence.split(":");
+    	GoAspect aspect = GoAspect.typeOf(aspectName[0]);
+    	String name = aspectName[1];
+    	GoEvidenceType goEvidenceType =GoEvidenceType.typeOf(evidenceToken[0]);
+    	String goEvidenceSource = evidenceToken[1];
+    	GoBuilder builder = new GoBuilder();
+    	return builder.id(id).name(name).aspect(aspect).goEvidenceType(goEvidenceType)
+    	.goEvidenceSource(goEvidenceSource)
+    	.build();
     }
 }

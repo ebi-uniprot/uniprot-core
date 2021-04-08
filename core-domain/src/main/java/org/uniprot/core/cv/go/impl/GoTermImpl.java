@@ -5,7 +5,11 @@ import java.util.Objects;
 import org.uniprot.core.cv.go.GoTerm;
 
 public class GoTermImpl implements GoTerm {
-    private final String goId;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8033194717925160409L;
+	private final String goId;
     private final String name;
 
     GoTermImpl() {

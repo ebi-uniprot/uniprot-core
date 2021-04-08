@@ -18,7 +18,14 @@ public enum GoAspect implements EnumDisplay {
         return name;
     }
 
-    public static @Nonnull GoAspect typeOf(@Nonnull String displayName) {
-        return EnumDisplay.typeOf(displayName, GoAspect.class);
+    public static @Nonnull GoAspect typeOf(@Nonnull String name) {
+    	if(name.equals("F")) {
+    		return GoAspect.FUNCTION;
+    	}else if (name.equals("P")) {
+    		return GoAspect.PROCESS;
+    	}else if (name.equals("C")) {
+    		return GoAspect.COMPONENT;
+    	}else
+    		return EnumDisplay.typeOf(name, GoAspect.class);
     }
 }
