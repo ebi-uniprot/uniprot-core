@@ -13,27 +13,27 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
 
     private static final long serialVersionUID = -319775179301440773L;
 
-    private Long parentId;
+    private final Taxonomy parent;
 
-    private TaxonomyRank rank;
+    private final TaxonomyRank rank;
 
-    private Boolean hidden;
+    private final Boolean hidden;
 
-    private Boolean active;
+    private final Boolean active;
 
-    private List<String> otherNames;
+    private final List<String> otherNames;
 
-    private List<TaxonomyLineage> lineage;
+    private final List<TaxonomyLineage> lineage;
 
-    private List<TaxonomyStrain> strains;
+    private final List<TaxonomyStrain> strains;
 
-    private List<Taxonomy> hosts;
+    private final List<Taxonomy> hosts;
 
-    private List<String> links;
+    private final List<String> links;
 
-    private TaxonomyStatistics statistics;
+    private final TaxonomyStatistics statistics;
 
-    private TaxonomyInactiveReason inactiveReason;
+    private final TaxonomyInactiveReason inactiveReason;
 
     // no arg constructor for JSON deserialization
     TaxonomyEntryImpl() {
@@ -48,7 +48,7 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
             String commonName,
             List<String> synonyms,
             String mnemonic,
-            Long parentId,
+            Taxonomy parent,
             TaxonomyRank rank,
             Boolean hidden,
             Boolean active,
@@ -60,7 +60,7 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
             TaxonomyStatistics statistics,
             TaxonomyInactiveReason inactiveReason) {
         super(taxonId, scientificName, commonName, synonyms, mnemonic);
-        this.parentId = parentId;
+        this.parent = parent;
         this.rank = rank;
         this.hidden = hidden;
         this.active = active;
@@ -74,8 +74,8 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
     }
 
     @Override
-    public Long getParentId() {
-        return parentId;
+    public Taxonomy getParent() {
+        return parent;
     }
 
     @Override
@@ -129,8 +129,8 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
     }
 
     @Override
-    public boolean hasParentId() {
-        return parentId != null && parentId > 0;
+    public boolean hasParent() {
+        return parent != null;
     }
 
     @Override
@@ -184,8 +184,8 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
                 + getCommonName()
                 + ", mnemonic="
                 + getMnemonic()
-                + ", parentId="
-                + parentId
+                + ", parent="
+                + parent
                 + ", rank="
                 + rank
                 + ", hidden="
@@ -215,7 +215,7 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         TaxonomyEntryImpl that = (TaxonomyEntryImpl) o;
-        return Objects.equals(getParentId(), that.getParentId())
+        return Objects.equals(getParent(), that.getParent())
                 && isHidden() == that.isHidden()
                 && isActive() == that.isActive()
                 && getRank() == that.getRank()
@@ -232,7 +232,7 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
     public int hashCode() {
         return Objects.hash(
                 super.hashCode(),
-                getParentId(),
+                getParent(),
                 getRank(),
                 isHidden(),
                 isActive(),

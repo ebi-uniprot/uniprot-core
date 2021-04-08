@@ -3,6 +3,7 @@ package org.uniprot.core.cv.xdb.impl;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
+import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.xdb.CrossRefEntry;
 
 public class CrossRefEntryBuilder implements Builder<CrossRefEntry> {
@@ -15,8 +16,7 @@ public class CrossRefEntryBuilder implements Builder<CrossRefEntry> {
     private String server;
     private String dbUrl;
     private String category;
-    private Long reviewedProteinCount;
-    private Long unreviewedProteinCount;
+    private Statistics statistics;
 
     @Override
     public @Nonnull CrossRefEntry build() {
@@ -30,8 +30,7 @@ public class CrossRefEntryBuilder implements Builder<CrossRefEntry> {
                 this.server,
                 this.dbUrl,
                 this.category,
-                this.reviewedProteinCount,
-                this.unreviewedProteinCount);
+                this.statistics);
     }
 
     public static @Nonnull CrossRefEntryBuilder from(@Nonnull CrossRefEntry instance) {
@@ -45,8 +44,7 @@ public class CrossRefEntryBuilder implements Builder<CrossRefEntry> {
                 .server(instance.getServer())
                 .dbUrl(instance.getDbUrl())
                 .category(instance.getCategory())
-                .reviewedProteinCount(instance.getReviewedProteinCount())
-                .unreviewedProteinCount(instance.getUnreviewedProteinCount());
+                .statistics(instance.getStatistics());
     }
 
     public @Nonnull CrossRefEntryBuilder name(String name) {
@@ -94,13 +92,8 @@ public class CrossRefEntryBuilder implements Builder<CrossRefEntry> {
         return this;
     }
 
-    public @Nonnull CrossRefEntryBuilder reviewedProteinCount(Long reviewedProteinCount) {
-        this.reviewedProteinCount = reviewedProteinCount;
-        return this;
-    }
-
-    public @Nonnull CrossRefEntryBuilder unreviewedProteinCount(Long unreviewedProteinCount) {
-        this.unreviewedProteinCount = unreviewedProteinCount;
+    public @Nonnull CrossRefEntryBuilder statistics(Statistics statistics) {
+        this.statistics = statistics;
         return this;
     }
 }

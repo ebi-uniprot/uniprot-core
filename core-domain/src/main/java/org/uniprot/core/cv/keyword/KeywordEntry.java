@@ -30,7 +30,7 @@ public interface KeywordEntry extends Serializable {
      */
     Set<KeywordEntry> getParents();
 
-    List<String> getSites();
+    List<String> getLinks();
 
     KeywordCategory getCategory();
 

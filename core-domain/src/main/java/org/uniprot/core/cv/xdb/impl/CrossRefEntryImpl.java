@@ -2,10 +2,12 @@ package org.uniprot.core.cv.xdb.impl;
 
 import java.util.Objects;
 
+import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.xdb.CrossRefEntry;
 
 public class CrossRefEntryImpl implements CrossRefEntry {
 
+    private static final long serialVersionUID = -8749883690893371220L;
     private String name;
     private String id;
     private String abbrev;
@@ -15,8 +17,7 @@ public class CrossRefEntryImpl implements CrossRefEntry {
     private String server;
     private String dbUrl;
     private String category;
-    private Long reviewedProteinCount;
-    private Long unreviewedProteinCount;
+    private Statistics statistics;
 
     // no arg constructor for JSON deserialization
     CrossRefEntryImpl() {
@@ -33,8 +34,7 @@ public class CrossRefEntryImpl implements CrossRefEntry {
             String server,
             String dbUrl,
             String category,
-            Long reviewedProteinCount,
-            Long unreviewedProteinCount) {
+            Statistics statistics) {
         this.name = name;
         this.id = id;
         this.abbrev = abbrev;
@@ -44,8 +44,7 @@ public class CrossRefEntryImpl implements CrossRefEntry {
         this.server = server;
         this.dbUrl = dbUrl;
         this.category = category;
-        this.reviewedProteinCount = reviewedProteinCount;
-        this.unreviewedProteinCount = unreviewedProteinCount;
+        this.statistics = statistics;
     }
 
     @Override
@@ -94,13 +93,8 @@ public class CrossRefEntryImpl implements CrossRefEntry {
     }
 
     @Override
-    public Long getReviewedProteinCount() {
-        return this.reviewedProteinCount;
-    }
-
-    @Override
-    public Long getUnreviewedProteinCount() {
-        return this.unreviewedProteinCount;
+    public Statistics getStatistics() {
+        return this.statistics;
     }
 
     @Override
@@ -117,8 +111,7 @@ public class CrossRefEntryImpl implements CrossRefEntry {
                 && Objects.equals(this.server, that.server)
                 && Objects.equals(this.dbUrl, that.dbUrl)
                 && Objects.equals(this.category, that.category)
-                && Objects.equals(this.reviewedProteinCount, that.reviewedProteinCount)
-                && Objects.equals(this.unreviewedProteinCount, that.unreviewedProteinCount);
+                && Objects.equals(this.statistics, that.statistics);
     }
 
     @Override
@@ -133,7 +126,6 @@ public class CrossRefEntryImpl implements CrossRefEntry {
                 this.server,
                 this.dbUrl,
                 this.category,
-                this.reviewedProteinCount,
-                this.unreviewedProteinCount);
+                this.statistics);
     }
 }

@@ -4,12 +4,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.disease.impl.DiseaseCrossReferenceBuilder;
 import org.uniprot.core.cv.disease.impl.DiseaseEntryBuilder;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
+import org.uniprot.core.impl.StatisticsBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
 public class DiseaseTest {
@@ -48,8 +50,8 @@ public class DiseaseTest {
     public static DiseaseEntry getDiseaseEntry() {
         String def = "This is sample definition.";
         List<String> altNames = Arrays.asList("name1", "name2", "name3");
-        Long reviwedProteinCount = 100L;
-        Long unreviwedProteinCount = 200L;
+        long reviwedProteinCount = 100L;
+        long unreviwedProteinCount = 200L;
         String id = "Sample DiseaseEntry";
         String accession = "DI-12345";
         String acronym = "SAMPLE-DIS";
@@ -73,9 +75,12 @@ public class DiseaseTest {
         DiseaseEntryBuilder builder = new DiseaseEntryBuilder();
         builder.name(id).id(accession).acronym(acronym).definition(def);
         builder.alternativeNamesSet(altNames).crossReferencesAdd(cr);
-        builder.keywordsAdd(keyword)
-                .reviewedProteinCount(reviwedProteinCount)
-                .unreviewedProteinCount(unreviwedProteinCount);
+        Statistics statistics =
+                new StatisticsBuilder()
+                        .reviewedProteinCount(reviwedProteinCount)
+                        .unreviewedProteinCount(unreviwedProteinCount)
+                        .build();
+        builder.keywordsAdd(keyword).statistics(statistics);
 
         return builder.build();
     }

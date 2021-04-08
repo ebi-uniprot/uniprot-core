@@ -13,7 +13,7 @@ import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.impl.StatisticsBuilder;
 
-public class KeywordEntryBuilderTest {
+class KeywordEntryBuilderTest {
     private GoTerm goTerm = new GoTermBuilder().id("id").name("name").build();
 
     @Test
@@ -146,38 +146,38 @@ public class KeywordEntryBuilderTest {
     }
 
     @Test
-    void canAddSingleSites() {
-        KeywordEntry obj = new KeywordEntryBuilder().sitesAdd("site").build();
-        assertNotNull(obj.getSites());
-        assertFalse(obj.getSites().isEmpty());
-        assertEquals(1, obj.getSites().size());
+    void canAddSingleLinks() {
+        KeywordEntry obj = new KeywordEntryBuilder().linksAdd("site").build();
+        assertNotNull(obj.getLinks());
+        assertFalse(obj.getLinks().isEmpty());
+        assertEquals(1, obj.getLinks().size());
     }
 
     @Test
-    void nullSites_willBeIgnore() {
-        KeywordEntry obj = new KeywordEntryBuilder().sitesAdd(null).build();
-        assertNotNull(obj.getSites());
-        assertTrue(obj.getSites().isEmpty());
+    void nullLinks_willBeIgnore() {
+        KeywordEntry obj = new KeywordEntryBuilder().linksAdd(null).build();
+        assertNotNull(obj.getLinks());
+        assertTrue(obj.getLinks().isEmpty());
     }
 
     @Test
-    void sites_willConvertUnModifiable_toModifiable() {
+    void links_willConvertUnModifiable_toModifiable() {
         KeywordEntry obj =
                 new KeywordEntryBuilder()
-                        .sitesSet(Collections.emptyList())
-                        .sitesAdd("site")
+                        .linksSet(Collections.emptyList())
+                        .linksAdd("link")
                         .build();
-        assertNotNull(obj.getSites());
-        assertFalse(obj.getSites().isEmpty());
-        assertEquals(1, obj.getSites().size());
+        assertNotNull(obj.getLinks());
+        assertFalse(obj.getLinks().isEmpty());
+        assertEquals(1, obj.getLinks().size());
     }
 
     @Test
-    void canAddListSites() {
-        KeywordEntry obj = new KeywordEntryBuilder().sitesSet(Arrays.asList("1", "2", "3")).build();
-        assertNotNull(obj.getSites());
-        assertFalse(obj.getSites().isEmpty());
-        assertEquals(3, obj.getSites().size());
+    void canAddListLinks() {
+        KeywordEntry obj = new KeywordEntryBuilder().linksSet(Arrays.asList("1", "2", "3")).build();
+        assertNotNull(obj.getLinks());
+        assertFalse(obj.getLinks().isEmpty());
+        assertEquals(3, obj.getLinks().size());
     }
 
     @Test

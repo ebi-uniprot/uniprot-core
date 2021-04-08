@@ -22,7 +22,7 @@ public class KeywordEntryBuilder implements Builder<KeywordEntry> {
     private List<String> synonyms = new ArrayList<>();
     private List<GoTerm> geneOntologies = new ArrayList<>();
     private Set<KeywordEntry> parents = new HashSet<>();
-    private List<String> sites = new ArrayList<>();
+    private List<String> links = new ArrayList<>();
     private KeywordId category;
     private List<KeywordEntry> children = new ArrayList<>();
     private Statistics statistics;
@@ -67,13 +67,13 @@ public class KeywordEntryBuilder implements Builder<KeywordEntry> {
         return this;
     }
 
-    public @Nonnull KeywordEntryBuilder sitesSet(List<String> sites) {
-        this.sites = modifiableList(sites);
+    public @Nonnull KeywordEntryBuilder linksSet(List<String> links) {
+        this.links = modifiableList(links);
         return this;
     }
 
-    public @Nonnull KeywordEntryBuilder sitesAdd(String site) {
-        addOrIgnoreNull(site, this.sites);
+    public @Nonnull KeywordEntryBuilder linksAdd(String link) {
+        addOrIgnoreNull(link, this.links);
         return this;
     }
 
@@ -109,7 +109,7 @@ public class KeywordEntryBuilder implements Builder<KeywordEntry> {
                 synonyms,
                 geneOntologies,
                 parents,
-                sites,
+                links,
                 category,
                 children,
                 statistics);
@@ -122,7 +122,7 @@ public class KeywordEntryBuilder implements Builder<KeywordEntry> {
                 .synonymsSet(instance.getSynonyms())
                 .geneOntologiesSet(instance.getGeneOntologies())
                 .parentsSet(instance.getParents())
-                .sitesSet(instance.getSites())
+                .linksSet(instance.getLinks())
                 .category(instance.getCategory())
                 .childrenSet(instance.getChildren())
                 .statistics(instance.getStatistics());

@@ -2,10 +2,10 @@ package org.uniprot.core.cv.disease.impl;
 
 import static org.uniprot.core.util.Utils.unmodifiableList;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
@@ -13,24 +13,19 @@ import org.uniprot.core.cv.keyword.KeywordId;
 public class DiseaseEntryImpl implements DiseaseEntry {
 
     private static final long serialVersionUID = 3059038050252487022L;
-    private String name;
+    private final String name;
 
     private final String id;
 
-    private String acronym;
-    private String definition;
-    private List<String> alternativeNames;
-    private List<DiseaseCrossReference> crossReferences;
-    private List<KeywordId> keywords;
-    private Long reviewedProteinCount;
-    private Long unreviewedProteinCount;
+    private final String acronym;
+    private final String definition;
+    private final List<String> alternativeNames;
+    private final List<DiseaseCrossReference> crossReferences;
+    private final List<KeywordId> keywords;
+    private final Statistics statistics;
 
     DiseaseEntryImpl() {
-        // do nothing.. just to satisfy the objectmapper
-        this.id = null;
-        this.alternativeNames = Collections.emptyList();
-        this.crossReferences = Collections.emptyList();
-        this.keywords = Collections.emptyList();
+        this(null, null, null, null, null, null, null, null);
     }
 
     DiseaseEntryImpl(
@@ -41,8 +36,7 @@ public class DiseaseEntryImpl implements DiseaseEntry {
             List<String> alternativeNames,
             List<DiseaseCrossReference> crossReferences,
             List<KeywordId> keywords,
-            Long reviewedProteinCount,
-            Long unreviewedProteinCount) {
+            Statistics statistics) {
 
         super();
         this.name = name;
@@ -52,8 +46,7 @@ public class DiseaseEntryImpl implements DiseaseEntry {
         this.alternativeNames = unmodifiableList(alternativeNames);
         this.crossReferences = unmodifiableList(crossReferences);
         this.keywords = unmodifiableList(keywords);
-        this.reviewedProteinCount = reviewedProteinCount;
-        this.unreviewedProteinCount = unreviewedProteinCount;
+        this.statistics = statistics;
     }
 
     public String getName() {
@@ -80,18 +73,13 @@ public class DiseaseEntryImpl implements DiseaseEntry {
         return keywords;
     }
 
+    @Override
+    public Statistics getStatistics() {
+        return statistics;
+    }
+
     public String getId() {
         return id;
-    }
-
-    @Override
-    public Long getReviewedProteinCount() {
-        return this.reviewedProteinCount;
-    }
-
-    @Override
-    public Long getUnreviewedProteinCount() {
-        return this.unreviewedProteinCount;
     }
 
     @Override
@@ -106,8 +94,7 @@ public class DiseaseEntryImpl implements DiseaseEntry {
                 && Objects.equals(alternativeNames, disease.alternativeNames)
                 && Objects.equals(crossReferences, disease.crossReferences)
                 && Objects.equals(keywords, disease.keywords)
-                && Objects.equals(reviewedProteinCount, disease.reviewedProteinCount)
-                && Objects.equals(unreviewedProteinCount, disease.unreviewedProteinCount);
+                && Objects.equals(statistics, disease.statistics);
     }
 
     @Override
@@ -120,7 +107,6 @@ public class DiseaseEntryImpl implements DiseaseEntry {
                 alternativeNames,
                 crossReferences,
                 keywords,
-                reviewedProteinCount,
-                unreviewedProteinCount);
+                statistics);
     }
 }

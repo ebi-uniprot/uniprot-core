@@ -471,7 +471,7 @@ public class ObjectsForTests {
         builder.scientificName("scientificName");
         builder.commonName("commonName");
         builder.mnemonic("mnemonic");
-        builder.parentId(9605L);
+        builder.parent(getCompleteTaxonomy());
         builder.rank(TaxonomyRank.KINGDOM);
         builder.hidden(true);
         builder.active(true);

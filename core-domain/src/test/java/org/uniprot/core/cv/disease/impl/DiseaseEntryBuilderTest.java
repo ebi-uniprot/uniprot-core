@@ -7,10 +7,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.disease.DiseaseCrossReference;
 import org.uniprot.core.cv.disease.DiseaseEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
+import org.uniprot.core.impl.StatisticsBuilder;
 
 class DiseaseEntryBuilderTest {
 
@@ -66,21 +68,15 @@ class DiseaseEntryBuilderTest {
     }
 
     @Test
-    void canCreateWith_reviewedProteinCount() {
-        Long reviewedProteinCount = 435L;
-        DiseaseEntry disease =
-                new DiseaseEntryBuilder().reviewedProteinCount(reviewedProteinCount).build();
+    void canCreateWith_statistics() {
+        Statistics statistics =
+                new StatisticsBuilder()
+                        .reviewedProteinCount(10)
+                        .unreviewedProteinCount(100)
+                        .build();
+        DiseaseEntry disease = new DiseaseEntryBuilder().statistics(statistics).build();
         assertNotNull(disease);
-        assertEquals(reviewedProteinCount, disease.getReviewedProteinCount());
-    }
-
-    @Test
-    void canCreateWith_unreviewedProteinCount() {
-        Long unreviewedProteinCount = -435L;
-        DiseaseEntry disease =
-                new DiseaseEntryBuilder().unreviewedProteinCount(unreviewedProteinCount).build();
-        assertNotNull(disease);
-        assertEquals(unreviewedProteinCount, disease.getUnreviewedProteinCount());
+        assertEquals(statistics, disease.getStatistics());
     }
 
     @Test
@@ -131,6 +127,12 @@ class DiseaseEntryBuilderTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
+        Statistics statistics =
+                new StatisticsBuilder()
+                        .reviewedProteinCount(10)
+                        .unreviewedProteinCount(100)
+                        .build();
+
         DiseaseEntry impl =
                 new DiseaseEntryImpl(
                         "name",
@@ -144,8 +146,7 @@ class DiseaseEntryBuilderTest {
                                         .id("2")
                                         .build()),
                         singletonList(kw("1", "key")),
-                        3L,
-                        6L);
+                        statistics);
         DiseaseEntry obj = DiseaseEntryBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());

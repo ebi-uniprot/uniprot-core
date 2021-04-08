@@ -8,7 +8,7 @@ import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 /** @author lgonzales */
 public interface TaxonomyEntry extends Taxonomy, Serializable {
 
-    Long getParentId();
+    Taxonomy getParent();
 
     TaxonomyRank getRank();
 
@@ -30,7 +30,7 @@ public interface TaxonomyEntry extends Taxonomy, Serializable {
 
     TaxonomyInactiveReason getInactiveReason();
 
-    boolean hasParentId();
+    boolean hasParent();
 
     boolean hasRank();
 

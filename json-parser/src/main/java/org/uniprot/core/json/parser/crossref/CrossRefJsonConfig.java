@@ -1,7 +1,9 @@
 package org.uniprot.core.json.parser.crossref;
 
+import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.xdb.CrossRefEntry;
 import org.uniprot.core.cv.xdb.impl.CrossRefEntryImpl;
+import org.uniprot.core.impl.StatisticsImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -42,6 +44,7 @@ public class CrossRefJsonConfig extends JsonConfig {
         // customise the default mapper
         SimpleModule mod = new SimpleModule();
         mod.addAbstractTypeMapping(CrossRefEntry.class, CrossRefEntryImpl.class);
+        mod.addAbstractTypeMapping(Statistics.class, StatisticsImpl.class);
 
         objMapper.registerModule(mod);
 
@@ -49,7 +52,6 @@ public class CrossRefJsonConfig extends JsonConfig {
     }
 
     private ObjectMapper initSimpleObjectMapper() {
-        ObjectMapper simpleObjMapper = getDefaultSimpleObjectMapper();
-        return simpleObjMapper;
+        return getDefaultSimpleObjectMapper();
     }
 }

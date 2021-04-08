@@ -15,22 +15,18 @@ import org.uniprot.core.util.Utils;
 public class KeywordEntryImpl implements KeywordEntry {
 
     private static final long serialVersionUID = 226389200105459588L;
-    private KeywordId keyword;
-    private String definition;
-    private List<String> synonyms;
-    private List<GoTerm> geneOntologies;
-    private Set<KeywordEntry> parents;
-    private List<String> sites;
+    private final KeywordId keyword;
+    private final String definition;
+    private final List<String> synonyms;
+    private final List<GoTerm> geneOntologies;
+    private final Set<KeywordEntry> parents;
+    private final List<String> links;
     private KeywordCategory category;
-    private List<KeywordEntry> children;
-    private Statistics statistics;
+    private final List<KeywordEntry> children;
+    private final Statistics statistics;
 
     KeywordEntryImpl() {
-        children = Collections.emptyList();
-        parents = Collections.emptySet();
-        synonyms = Collections.emptyList();
-        geneOntologies = Collections.emptyList();
-        sites = Collections.emptyList();
+        this(null, null, null, null, null, null, null, null, null);
     }
 
     KeywordEntryImpl(
@@ -39,7 +35,7 @@ public class KeywordEntryImpl implements KeywordEntry {
             List<String> synonyms,
             List<GoTerm> geneOntologies,
             Set<KeywordEntry> parents,
-            List<String> sites,
+            List<String> links,
             KeywordId category,
             List<KeywordEntry> children,
             Statistics statistics) {
@@ -48,7 +44,7 @@ public class KeywordEntryImpl implements KeywordEntry {
         this.synonyms = unmodifiableList(synonyms);
         this.geneOntologies = unmodifiableList(geneOntologies);
         this.parents = unmodifiableSet(parents);
-        this.sites = unmodifiableList(sites);
+        this.links = unmodifiableList(links);
         if (Utils.notNull(category)) this.category = KeywordCategory.typeOf(category.getName());
         this.children = unmodifiableList(children);
         this.statistics = statistics;
@@ -78,8 +74,8 @@ public class KeywordEntryImpl implements KeywordEntry {
         return geneOntologies;
     }
 
-    public List<String> getSites() {
-        return sites;
+    public List<String> getLinks() {
+        return links;
     }
 
     public List<KeywordEntry> getChildren() {
@@ -103,7 +99,7 @@ public class KeywordEntryImpl implements KeywordEntry {
                 && Objects.equals(getSynonyms(), that.getSynonyms())
                 && Objects.equals(getGeneOntologies(), that.getGeneOntologies())
                 && Objects.equals(getParents(), that.getParents())
-                && Objects.equals(getSites(), that.getSites())
+                && Objects.equals(getLinks(), that.getLinks())
                 && Objects.equals(getCategory(), that.getCategory())
                 && Objects.equals(getChildren(), that.getChildren())
                 && Objects.equals(getStatistics(), that.getStatistics());
@@ -115,7 +111,7 @@ public class KeywordEntryImpl implements KeywordEntry {
                 getDefinition(),
                 getSynonyms(),
                 getGeneOntologies(),
-                getSites(),
+                getLinks(),
                 getCategory(),
                 getChildren(),
                 getStatistics());

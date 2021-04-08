@@ -157,7 +157,7 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         retObj.geneOntologiesSet(goList);
 
         // Sites
-        retObj.sitesSet(entry.ww);
+        retObj.linksSet(entry.ww);
 
         return retObj;
     }

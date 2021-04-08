@@ -1,11 +1,11 @@
 package org.uniprot.core.taxonomy.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.ObjectsForTests.*;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.ObjectsForTests;
 import org.uniprot.core.taxonomy.TaxonomyEntry;
 import org.uniprot.core.taxonomy.TaxonomyRank;
 
@@ -17,9 +17,9 @@ class TaxonomyEntryBuilderTest {
         builder.taxonId(9606L);
 
         TaxonomyEntry taxonomyEntry = builder.build();
-        assertEquals(taxonomyEntry.getTaxonId(), 9606L);
+        assertEquals(9606L, taxonomyEntry.getTaxonId());
 
-        assertFalse(taxonomyEntry.hasParentId());
+        assertFalse(taxonomyEntry.hasParent());
         assertFalse(taxonomyEntry.hasRank());
         assertFalse(taxonomyEntry.hasScientificName());
         assertFalse(taxonomyEntry.hasCommonName());
@@ -48,19 +48,19 @@ class TaxonomyEntryBuilderTest {
 
     @Test
     void testCompleteTaxonomyEntry() {
-        TaxonomyEntry taxonomyEntry = ObjectsForTests.getCompleteTaxonomyEntry();
+        TaxonomyEntry taxonomyEntry = getCompleteTaxonomyEntry();
         validateTaxonomy(taxonomyEntry);
     }
 
     @Test
     void testAddMethodsTaxonomyEntry() {
-        TaxonomyEntry taxonomyEntry = ObjectsForTests.getCompleteTaxonomyEntryUsingAdd();
+        TaxonomyEntry taxonomyEntry = getCompleteTaxonomyEntryUsingAdd();
         validateTaxonomy(taxonomyEntry);
     }
 
     @Test
     void testFromTaxonomyEntry() {
-        TaxonomyEntry taxonomyEntry = ObjectsForTests.getCompleteTaxonomyEntry();
+        TaxonomyEntry taxonomyEntry = getCompleteTaxonomyEntry();
 
         TaxonomyEntry otherEntry = TaxonomyEntryBuilder.from(taxonomyEntry).build();
         assertEquals(taxonomyEntry.toString(), otherEntry.toString());
@@ -69,38 +69,36 @@ class TaxonomyEntryBuilderTest {
     }
 
     private void validateTaxonomy(TaxonomyEntry taxonomyEntry) {
-        assertEquals(taxonomyEntry.getTaxonId(), 9606L);
+        assertEquals(9606L, taxonomyEntry.getTaxonId());
 
-        assertTrue(taxonomyEntry.hasParentId());
-        assertEquals(taxonomyEntry.getParentId(), Long.valueOf(9605L));
+        assertTrue(taxonomyEntry.hasParent());
+        assertEquals(getCompleteTaxonomy(), taxonomyEntry.getParent());
 
         assertTrue(taxonomyEntry.hasRank());
-        assertEquals(taxonomyEntry.getRank(), TaxonomyRank.KINGDOM);
+        assertEquals(TaxonomyRank.KINGDOM, taxonomyEntry.getRank());
 
         assertTrue(taxonomyEntry.hasScientificName());
-        assertEquals(taxonomyEntry.getScientificName(), "scientificName");
+        assertEquals("scientificName", taxonomyEntry.getScientificName());
 
         assertTrue(taxonomyEntry.hasCommonName());
-        assertEquals(taxonomyEntry.getCommonName(), "commonName");
+        assertEquals("commonName", taxonomyEntry.getCommonName());
 
         assertTrue(taxonomyEntry.hasMnemonic());
-        assertEquals(taxonomyEntry.getMnemonic(), "mnemonic");
+        assertEquals("mnemonic", taxonomyEntry.getMnemonic());
 
         assertTrue(taxonomyEntry.hasStatistics());
-        assertEquals(
-                taxonomyEntry.getStatistics(), ObjectsForTests.getCompleteTaxonomyStatistics());
+        assertEquals(taxonomyEntry.getStatistics(), getCompleteTaxonomyStatistics());
 
         assertTrue(taxonomyEntry.hasSynonyms());
         MatcherAssert.assertThat(taxonomyEntry.getSynonyms(), Matchers.contains("synonym"));
 
         assertTrue(taxonomyEntry.hasHosts());
         MatcherAssert.assertThat(
-                taxonomyEntry.getHosts(), Matchers.contains(ObjectsForTests.getCompleteTaxonomy()));
+                taxonomyEntry.getHosts(), Matchers.contains(getCompleteTaxonomy()));
 
         assertTrue(taxonomyEntry.hasLineage());
         MatcherAssert.assertThat(
-                taxonomyEntry.getLineages(),
-                Matchers.contains(ObjectsForTests.getCompleteTaxonomyLineage()));
+                taxonomyEntry.getLineages(), Matchers.contains(getCompleteTaxonomyLineage()));
 
         assertTrue(taxonomyEntry.hasLinks());
         MatcherAssert.assertThat(taxonomyEntry.getLinks(), Matchers.contains("link"));
@@ -109,13 +107,10 @@ class TaxonomyEntryBuilderTest {
         MatcherAssert.assertThat(taxonomyEntry.getOtherNames(), Matchers.contains("otherName"));
 
         assertTrue(taxonomyEntry.hasInactiveReason());
-        assertEquals(
-                taxonomyEntry.getInactiveReason(),
-                ObjectsForTests.getCompleteTaxonomyInactiveReason());
+        assertEquals(taxonomyEntry.getInactiveReason(), getCompleteTaxonomyInactiveReason());
 
         assertTrue(taxonomyEntry.hasStrains());
         MatcherAssert.assertThat(
-                taxonomyEntry.getStrains(),
-                Matchers.contains(ObjectsForTests.getCompleteTaxonomyStrain()));
+                taxonomyEntry.getStrains(), Matchers.contains(getCompleteTaxonomyStrain()));
     }
 }

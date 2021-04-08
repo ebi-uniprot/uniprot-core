@@ -2,6 +2,8 @@ package org.uniprot.core.cv.xdb;
 
 import java.io.Serializable;
 
+import org.uniprot.core.Statistics;
+
 public interface CrossRefEntry extends Serializable {
     /**
      * Uniprot accession as an id to identify CrossRef uniquely
@@ -26,7 +28,5 @@ public interface CrossRefEntry extends Serializable {
 
     String getCategory();
 
-    Long getReviewedProteinCount();
-
-    Long getUnreviewedProteinCount();
+    Statistics getStatistics();
 }
