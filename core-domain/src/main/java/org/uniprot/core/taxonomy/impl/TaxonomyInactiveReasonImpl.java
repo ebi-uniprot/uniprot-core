@@ -8,9 +8,10 @@ import org.uniprot.core.taxonomy.TaxonomyInactiveReasonType;
 /** @author lgonzales */
 public class TaxonomyInactiveReasonImpl implements TaxonomyInactiveReason {
 
-    private TaxonomyInactiveReasonType inactiveReasonType;
+    private static final long serialVersionUID = -154580848213747663L;
+    private final TaxonomyInactiveReasonType inactiveReasonType;
 
-    private long mergedTo;
+    private final long mergedTo;
 
     TaxonomyInactiveReasonImpl() {
         this(null, 0);

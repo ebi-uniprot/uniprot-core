@@ -20,18 +20,22 @@ public class TaxonomyEntryValueMapper implements EntityValueMapper<TaxonomyEntry
     public Map<String, String> mapEntity(TaxonomyEntry taxonomyEntry, List<String> fieldNames) {
         Map<String, String> map = new HashMap<>();
         map.put("id", String.valueOf(taxonomyEntry.getTaxonId()));
-        map.put("parent", String.valueOf(taxonomyEntry.getParentId()));
+        if (taxonomyEntry.hasParent()) {
+            map.put("parent", String.valueOf(taxonomyEntry.getParent().getTaxonId()));
+        } else {
+            map.put("parent", "");
+        }
         map.put("mnemonic", getOrDefaultEmpty(taxonomyEntry.getMnemonic()));
         map.put("scientific_name", getOrDefaultEmpty(taxonomyEntry.getScientificName()));
         map.put("common_name", getOrDefaultEmpty(taxonomyEntry.getCommonName()));
-        map.put("synonym", getOrDefaultEmpty(taxonomyEntry.getSynonyms()));
+        map.put("synonyms", getOrDefaultEmpty(taxonomyEntry.getSynonyms()));
         map.put("other_names", getOrDefaultEmpty(taxonomyEntry.getOtherNames()));
         map.put("links", getOrDefaultEmpty(taxonomyEntry.getLinks()));
         map.put("rank", getRank(taxonomyEntry));
         map.put("reviewed", getReviewed(taxonomyEntry));
         map.put("lineage", getLineage(taxonomyEntry));
-        map.put("strain", getStrains(taxonomyEntry));
-        map.put("host", getHosts(taxonomyEntry));
+        map.put("strains", getStrains(taxonomyEntry));
+        map.put("hosts", getHosts(taxonomyEntry));
         map.put("statistics", getStatistics(taxonomyEntry));
         return map;
     }

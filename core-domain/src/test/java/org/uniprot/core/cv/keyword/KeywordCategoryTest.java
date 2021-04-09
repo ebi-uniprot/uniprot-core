@@ -22,7 +22,7 @@ class KeywordCategoryTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"BIOLOGICAL PROCESS", "diseaseEntry", "ptm"})
+    @ValueSource(strings = {"BIOLOGICAL PROCESS", "disease", "ptm"})
     void caseWillIgnoreWhileConvertingFromNameString(String val) {
         assertNotEquals(KeywordCategory.UNKNOWN, KeywordCategory.typeOf(val));
     }

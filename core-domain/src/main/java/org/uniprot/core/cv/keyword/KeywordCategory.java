@@ -9,7 +9,7 @@ public enum KeywordCategory implements EnumDisplay, KeywordId {
     CELLULAR_COMPONENT("Cellular component", "KW-9998"),
     CODING_SEQUENCE_DIVERSITY("Coding sequence diversity", "KW-9997"),
     DEVELOPMENTAL_STAGE("Developmental stage", "KW-9996"),
-    DISEASE("DiseaseEntry", "KW-9995"),
+    DISEASE("Disease", "KW-9995"),
     DOMAIN("Domain", "KW-9994"),
     LIGAND("Ligand", "KW-9993"),
     MOLECULAR_FUNCTION("Molecular function", "KW-9992"),

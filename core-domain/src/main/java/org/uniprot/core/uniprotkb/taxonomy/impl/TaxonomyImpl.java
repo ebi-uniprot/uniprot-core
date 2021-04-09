@@ -9,8 +9,8 @@ import org.uniprot.core.util.Utils;
 public class TaxonomyImpl extends AbstractOrganismNameImpl implements Taxonomy {
 
     private static final long serialVersionUID = -319775179301440772L;
-    private long taxonId;
-    private String mnemonic;
+    private final long taxonId;
+    private final String mnemonic;
 
     TaxonomyImpl() {
         this(-1, null, null, null, null);

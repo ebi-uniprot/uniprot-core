@@ -19,7 +19,7 @@ public class TaxonomyEntryBuilder
 
     private String mnemonic;
 
-    private Long parentId;
+    private Taxonomy parent;
 
     private TaxonomyRank rank;
 
@@ -56,13 +56,8 @@ public class TaxonomyEntryBuilder
         return this;
     }
 
-    public @Nonnull TaxonomyEntryBuilder parentId(long parentId) {
-        this.parentId = parentId;
-        return this;
-    }
-
-    public @Nonnull TaxonomyEntryBuilder parentId(Long parentId) {
-        this.parentId = parentId;
+    public @Nonnull TaxonomyEntryBuilder parent(Taxonomy parent) {
+        this.parent = parent;
         return this;
     }
 
@@ -154,7 +149,7 @@ public class TaxonomyEntryBuilder
                 commonName,
                 synonyms,
                 mnemonic,
-                parentId,
+                parent,
                 rank,
                 hidden,
                 active,
@@ -172,7 +167,7 @@ public class TaxonomyEntryBuilder
         AbstractOrganismNameBuilder.init(builder, instance);
         builder.taxonId(instance.getTaxonId())
                 .mnemonic(instance.getMnemonic())
-                .parentId(instance.getParentId())
+                .parent(instance.getParent())
                 .rank(instance.getRank())
                 .hidden(instance.isHidden())
                 .active(instance.isActive())

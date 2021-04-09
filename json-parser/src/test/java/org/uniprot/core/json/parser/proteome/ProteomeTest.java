@@ -110,6 +110,11 @@ public class ProteomeTest {
                         .database(ProteomeDatabase.GENOME_ASSEMBLY)
                         .id("ADFDA121")
                         .build();
+        CrossReference<ProteomeDatabase> xref3 =
+                new CrossReferenceBuilder<ProteomeDatabase>()
+                        .database(ProteomeDatabase.GENOME_ACCESSION)
+                        .id("ACA122")
+                        .build();
         xrefs.add(xref1);
         xrefs.add(xref2);
         Taxonomy taxonomy =
@@ -139,7 +144,9 @@ public class ProteomeTest {
                         .description("description")
                         .name("name")
                         .proteinCount(18)
+                        .proteomeCrossReferencesAdd(xref1)
                         .proteomeCrossReferencesAdd(xref2)
+                        .proteomeCrossReferencesAdd(xref3)
                         .genomeAnnotation(genomeAnnotation)
                         .build();
 

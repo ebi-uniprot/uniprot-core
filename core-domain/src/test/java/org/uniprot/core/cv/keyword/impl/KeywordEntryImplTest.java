@@ -69,7 +69,7 @@ class KeywordEntryImplTest {
         assertTrue(keywordEntry.getParents().isEmpty());
         assertNotNull(keywordEntry.getChildren());
         assertTrue(keywordEntry.getChildren().isEmpty());
-        assertArrayEquals(this.sites.toArray(), keywordEntry.getSites().toArray());
+        assertArrayEquals(this.sites.toArray(), keywordEntry.getLinks().toArray());
         assertEquals(KeywordCategory.typeOf(this.category.getName()), keywordEntry.getCategory());
         assertEquals(this.statistics, keywordEntry.getStatistics());
     }
@@ -87,8 +87,8 @@ class KeywordEntryImplTest {
         assertTrue(keywordEntry.getParents().isEmpty());
         assertNotNull(keywordEntry.getChildren());
         assertTrue(keywordEntry.getChildren().isEmpty());
-        assertNotNull(keywordEntry.getSites());
-        assertTrue(keywordEntry.getSites().isEmpty());
+        assertNotNull(keywordEntry.getLinks());
+        assertTrue(keywordEntry.getLinks().isEmpty());
         assertNull(keywordEntry.getCategory());
         assertNull(keywordEntry.getStatistics());
     }
@@ -97,21 +97,21 @@ class KeywordEntryImplTest {
     void testValueEqual() {
         KeywordEntry kw1 = createKeywordEntry();
         KeywordEntry kw2 = createKeywordEntry();
-        assertTrue(kw1.equals(kw2));
+        assertEquals(kw1, kw2);
         assertTrue(kw1.hashCode() == kw2.hashCode());
     }
 
     @Test
     void testRefEqual() {
         KeywordEntry kw1 = createKeywordEntry();
-        assertTrue(kw1.equals(kw1));
-        assertTrue(kw1.hashCode() == kw1.hashCode());
+        assertEquals(kw1, kw1);
+        assertEquals(kw1.hashCode(), kw1.hashCode());
     }
 
     @Test
     void testEqualWithNull() {
         KeywordEntry kw1 = createKeywordEntry();
-        Assertions.assertFalse(kw1.equals(null));
+        assertNotEquals(null, kw1);
     }
 
     @Test
@@ -119,7 +119,7 @@ class KeywordEntryImplTest {
         KeywordEntry kw1 = createKeywordEntry();
         this.statistics = null;
         KeywordEntry kw2 = createKeywordEntry();
-        Assertions.assertFalse(kw1.equals(kw2));
+        assertNotEquals(kw1, kw2);
     }
 
     private KeywordEntry createKeywordEntry() {
