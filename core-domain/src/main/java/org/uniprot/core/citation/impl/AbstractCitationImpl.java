@@ -149,13 +149,14 @@ public abstract class AbstractCitationImpl implements Citation {
 
     protected String generateId() {
         return getDatabaseId(CitationDatabase.PUBMED)
-                .orElse(getDatabaseId(CitationDatabase.AGRICOLA)
-                        .orElseGet(getCitationId()));
+                .orElse(getDatabaseId(CitationDatabase.AGRICOLA).orElseGet(getCitationId()));
     }
+
     private Supplier<String> getCitationId() {
-        return () -> getDatabaseId(CitationDatabase.DOI)
-                .map(this::generateHash)
-                .orElseGet(() -> generateHash(getHashInput()));
+        return () ->
+                getDatabaseId(CitationDatabase.DOI)
+                        .map(this::generateHash)
+                        .orElseGet(() -> generateHash(getHashInput()));
     }
 
     String generateHash(String hashInput) {
