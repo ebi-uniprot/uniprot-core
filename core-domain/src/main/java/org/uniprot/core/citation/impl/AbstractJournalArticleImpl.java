@@ -16,9 +16,9 @@ public abstract class AbstractJournalArticleImpl extends AbstractCitationImpl
 
     private static final long serialVersionUID = 567103717651131572L;
     private Journal journal;
-    private String firstPage;
-    private String lastPage;
-    private String volume;
+    private final String firstPage;
+    private final String lastPage;
+    private final String volume;
 
     AbstractJournalArticleImpl(
             CitationType citationType,
@@ -44,6 +44,24 @@ public abstract class AbstractJournalArticleImpl extends AbstractCitationImpl
         this.firstPage = Utils.emptyOrString(firstPage);
         this.lastPage = Utils.emptyOrString(lastPage);
         this.volume = Utils.emptyOrString(volume);
+    }
+
+    @Override
+    protected String getHashInput() {
+        String hashInput = super.getHashInput();
+        if (hasJournal()) {
+            hashInput += JOURNAL_PREFIX + journal.getName();
+        }
+        if (hasVolume()) {
+            hashInput += VOLUME_PREFIX + volume;
+        }
+        if (hasFirstPage()) {
+            hashInput += FIRST_PAGE_PREFIX + firstPage;
+        }
+        if (hasLastPage()) {
+            hashInput += LAST_PAGE_PREFIX + lastPage;
+        }
+        return hashInput;
     }
 
     @Override

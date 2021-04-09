@@ -1,21 +1,46 @@
 package org.uniprot.core.citation.impl;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
+import org.uniprot.core.util.Crc64;
 import org.uniprot.core.util.Utils;
 
 public abstract class AbstractCitationImpl implements Citation {
-    private static final long serialVersionUID = -2752460607884626559L;
-    private CitationType citationType;
-    private List<String> authoringGroup;
-    private List<Author> authors;
-    private List<CrossReference<CitationDatabase>> citationCrossReferences;
-    private String title;
-    private PublicationDate publicationDate;
+    private static final long serialVersionUID = 3081031699917057612L;
+    protected static final String CITATION_TYPE_PREFIX = " citationType-";
+    protected static final String TITLE_PREFIX = " title-";
+    protected static final String AUTHORS_PREFIX = " authors-";
+    protected static final String AUTHORING_GROUP_PREFIX = " authoringGroup-";
+    protected static final String PUBLICATION_DATE_PREFIX = " publicationDate-";
+    protected static final String JOURNAL_PREFIX = " journal-";
+    protected static final String BOOK_NAME_PREFIX = " bookName-";
+    protected static final String ELECTRONIC_JOURNAL_PREFIX = " electronicJournal-";
+    protected static final String VOLUME_PREFIX = " volume-";
+    protected static final String BOOK_VOLUME_PREFIX = " bookVolume-";
+    protected static final String FIRST_PAGE_PREFIX = " firstPage-";
+    protected static final String BOOK_FIRST_PAGE_PREFIX = " bookFirstPage-";
+    protected static final String LAST_PAGE_PREFIX = " lastPage-";
+    protected static final String BOOK_LAST_PAGE_PREFIX = " bookLastPage-";
+    protected static final String PUBLISHER_PREFIX = " publisher-";
+    protected static final String LOCATOR_PREFIX = " locator-";
+    protected static final String PATENT_NUMBER_PREFIX = " patentNumber-";
+    protected static final String SUBMISSION_DATABASE_PREFIX = " submissionDatabase-";
+    protected static final String INSTITUTE_PREFIX = " institute-";
+    protected static final String ADDRESS_PREFIX = " address-";
+    protected String id;
+    private final CitationType citationType;
+    private final List<String> authoringGroup;
+    private final List<Author> authors;
+    private final List<CrossReference<CitationDatabase>> citationCrossReferences;
+    private final String title;
+    private final PublicationDate publicationDate;
 
     AbstractCitationImpl(
             CitationType citationType,
@@ -30,6 +55,11 @@ public abstract class AbstractCitationImpl implements Citation {
         this.citationCrossReferences = Utils.unmodifiableList(citationCrossReferences);
         this.title = Utils.emptyOrString(title);
         this.publicationDate = publicationDate;
+    }
+
+    @Override
+    public String getId() {
+        return id;
     }
 
     @Override
@@ -93,6 +123,53 @@ public abstract class AbstractCitationImpl implements Citation {
     @Override
     public boolean hasPublicationDate() {
         return this.publicationDate != null;
+    }
+
+    protected String getHashInput() {
+        StringBuilder idInput = new StringBuilder();
+        idInput.append(CITATION_TYPE_PREFIX).append(this.citationType.getName());
+
+        if (this.hasTitle()) {
+            idInput.append(TITLE_PREFIX).append(this.title);
+        }
+        if (this.hasAuthors()) {
+            String authorsStr =
+                    this.authors.stream().map(Author::getValue).collect(Collectors.joining(" "));
+            idInput.append(AUTHORS_PREFIX).append(authorsStr);
+        }
+        if (this.hasAuthoringGroup()) {
+            String authorsStr = String.join(" ", this.authoringGroup);
+            idInput.append(AUTHORING_GROUP_PREFIX).append(authorsStr);
+        }
+        if (this.hasPublicationDate()) {
+            idInput.append(PUBLICATION_DATE_PREFIX).append(this.publicationDate.getValue());
+        }
+        return idInput.toString();
+    }
+
+    protected String generateId() {
+        return getDatabaseId(CitationDatabase.PUBMED)
+                .orElse(getDatabaseId(CitationDatabase.AGRICOLA).orElseGet(getCitationId()));
+    }
+
+    private Supplier<String> getCitationId() {
+        return () ->
+                getDatabaseId(CitationDatabase.DOI)
+                        .map(this::generateHash)
+                        .orElseGet(() -> generateHash(getHashInput()));
+    }
+
+    String generateHash(String hashInput) {
+        String base16Hash = Crc64.getCrc64(hashInput);
+        String base32Hash = new BigInteger(base16Hash, 16).toString(32).toUpperCase();
+        return "CI-" + base32Hash;
+    }
+
+    private Optional<String> getDatabaseId(CitationDatabase database) {
+        return citationCrossReferences.stream()
+                .filter(xref -> database == xref.getDatabase())
+                .map(CrossReference::getId)
+                .findFirst();
     }
 
     @Override

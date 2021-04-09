@@ -8,8 +8,8 @@ import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
 
 public class SubmissionImpl extends AbstractCitationImpl implements Submission {
-    private static final long serialVersionUID = 7406371948424303592L;
-    private SubmissionDatabase submissionDatabase;
+    private static final long serialVersionUID = 8471181839577113515L;
+    private final SubmissionDatabase submissionDatabase;
 
     // no arg constructor for JSON deserialization
     SubmissionImpl() {
@@ -31,6 +31,7 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
                 title,
                 publicationDate);
         this.submissionDatabase = submissionDatabase;
+        super.id = generateId();
     }
 
     @Override
@@ -41,6 +42,15 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
     @Override
     public boolean hasSubmissionDatabase() {
         return this.submissionDatabase != null;
+    }
+
+    @Override
+    protected String getHashInput() {
+        String hashInput = super.getHashInput();
+        if (hasSubmissionDatabase()) {
+            hashInput += SUBMISSION_DATABASE_PREFIX + submissionDatabase.name();
+        }
+        return hashInput;
     }
 
     @Override

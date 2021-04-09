@@ -57,8 +57,8 @@ class LiteratureEntryValueMapperTest {
                 mappedEntries.get("reference"));
         assertEquals("authoring group; author name", mappedEntries.get("author_and_group"));
         assertEquals("journal Name", mappedEntries.get("journal"));
-        assertEquals("author name", mappedEntries.get("author"));
-        assertEquals("21-06-2019", mappedEntries.get("publication"));
+        assertEquals("author name", mappedEntries.get("authors"));
+        assertEquals("21-06-2019", mappedEntries.get("publication_date"));
         assertEquals("authoring group", mappedEntries.get("authoring_group"));
         assertEquals("literature Abstract", mappedEntries.get("lit_abstract"));
 

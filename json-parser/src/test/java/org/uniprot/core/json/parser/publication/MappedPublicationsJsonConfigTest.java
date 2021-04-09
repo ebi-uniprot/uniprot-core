@@ -10,15 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.CrossReference;
 import org.uniprot.core.ObjectsForTests;
-import org.uniprot.core.citation.CitationDatabase;
-import org.uniprot.core.citation.Submission;
-import org.uniprot.core.citation.SubmissionDatabase;
-import org.uniprot.core.citation.impl.AuthorBuilder;
-import org.uniprot.core.citation.impl.PublicationDateBuilder;
-import org.uniprot.core.citation.impl.SubmissionBuilder;
-import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.publication.*;
 import org.uniprot.core.publication.impl.*;
@@ -71,23 +63,9 @@ class MappedPublicationsJsonConfigTest {
     }
 
     static UniProtKBMappedReference getCompleteUniProtKBMappedReference() {
-        SubmissionBuilder citationBuilder = new SubmissionBuilder();
-        citationBuilder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ);
-        citationBuilder.authoringGroupsAdd("sample author");
-        citationBuilder.authorsAdd(new AuthorBuilder("auth name").build());
-        CrossReference<CitationDatabase> xref =
-                new CrossReferenceBuilder<CitationDatabase>()
-                        .database(CitationDatabase.AGRICOLA)
-                        .id("id2")
-                        .build();
-        citationBuilder
-                .title("book title")
-                .publicationDate(new PublicationDateBuilder("12-12-20").build());
-        citationBuilder.citationCrossReferencesAdd(xref);
-        Submission citation = citationBuilder.build();
         UniProtKBAccession accession = new UniProtKBAccessionBuilder("P12345").build();
         MappedSource mappedSource = new MappedSourceBuilder().name("src").id("srcId").build();
-        String pubMedId = "12345";
+        String citationId = "12345";
         Set<String> cats = new HashSet<>();
         cats.add("cat1");
         cats.add("cat2");
@@ -107,11 +85,10 @@ class MappedPublicationsJsonConfigTest {
 
         UniProtKBMappedReferenceBuilder builder = new UniProtKBMappedReferenceBuilder();
         builder.uniProtKBAccession(accession).source(mappedSource);
-        builder.pubMedId(pubMedId).sourceCategoriesSet(cats);
+        builder.citationId(citationId).sourceCategoriesSet(cats);
         builder.referenceCommentsSet(comments);
         builder.referencePositionsAdd("1");
         builder.referenceNumber(123);
-        builder.citation(citation);
         return builder.build();
     }
 
@@ -136,7 +113,7 @@ class MappedPublicationsJsonConfigTest {
         CommunityMappedReferenceBuilder builder = new CommunityMappedReferenceBuilder();
         builder.communityAnnotation(communityAnnotationBuilder.build());
         builder.uniProtKBAccession(accession).source(mappedSource);
-        builder.pubMedId(pubMedId).sourceCategoriesSet(cats);
+        builder.citationId(pubMedId).sourceCategoriesSet(cats);
         return builder.build();
     }
 
@@ -150,7 +127,7 @@ class MappedPublicationsJsonConfigTest {
         ComputationallyMappedReferenceBuilder builder = new ComputationallyMappedReferenceBuilder();
         builder.annotation("annotation");
         builder.uniProtKBAccession(accession).source(mappedSource);
-        builder.pubMedId(pubMedId).sourceCategoriesSet(cats);
+        builder.citationId(pubMedId).sourceCategoriesSet(cats);
         return builder.build();
     }
 }

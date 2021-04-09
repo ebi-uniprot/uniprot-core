@@ -10,9 +10,9 @@ import org.uniprot.core.citation.*;
 import org.uniprot.core.util.Utils;
 
 public class ThesisImpl extends AbstractCitationImpl implements Thesis {
-    private static final long serialVersionUID = -8487467468767628311L;
-    private String institute;
-    private String address;
+    private static final long serialVersionUID = 5471065023272161719L;
+    private final String institute;
+    private final String address;
 
     // no arg constructor for JSON deserialization
     ThesisImpl() {
@@ -36,6 +36,7 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
                 publicationDate);
         this.institute = Utils.emptyOrString(institute);
         this.address = Utils.emptyOrString(address);
+        super.id = generateId();
     }
 
     @Override
@@ -56,6 +57,18 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
     @Override
     public boolean hasAddress() {
         return Utils.notNullNotEmpty(this.address);
+    }
+
+    @Override
+    protected String getHashInput() {
+        String hashInput = super.getHashInput();
+        if (hasInstitute()) {
+            hashInput += INSTITUTE_PREFIX + institute;
+        }
+        if (hasAddress()) {
+            hashInput += ADDRESS_PREFIX + address;
+        }
+        return hashInput;
     }
 
     @Override

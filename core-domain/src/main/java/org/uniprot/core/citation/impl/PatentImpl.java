@@ -10,7 +10,7 @@ import org.uniprot.core.citation.*;
 import org.uniprot.core.util.Utils;
 
 public class PatentImpl extends AbstractCitationImpl implements Patent {
-    private static final long serialVersionUID = 7708555945786333862L;
+    private static final long serialVersionUID = -7296535735360564782L;
     private final String patentNumber;
 
     // no arg constructor for JSON deserialization
@@ -33,6 +33,7 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
                 title,
                 publicationDate);
         this.patentNumber = Utils.emptyOrString(patentNumber);
+        super.id = generateId();
     }
 
     @Override
@@ -43,6 +44,15 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
     @Override
     public boolean hasPatentNumber() {
         return Utils.notNullNotEmpty(this.patentNumber);
+    }
+
+    @Override
+    protected String getHashInput() {
+        String hashInput = super.getHashInput();
+        if (hasPatentNumber()) {
+            hashInput += PATENT_NUMBER_PREFIX + patentNumber;
+        }
+        return hashInput;
     }
 
     @Override

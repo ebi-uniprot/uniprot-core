@@ -8,7 +8,6 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
-import org.uniprot.core.citation.Citation;
 import org.uniprot.core.publication.UniProtKBMappedReference;
 import org.uniprot.core.uniprotkb.ReferenceComment;
 
@@ -23,7 +22,6 @@ public class UniProtKBMappedReferenceBuilder
     private List<ReferenceComment> referenceComments = new ArrayList<>();
     private List<String> referencePositions = new ArrayList<>();
     private int referenceNumber;
-    private Citation citation;
 
     public UniProtKBMappedReferenceBuilder referenceCommentsAdd(ReferenceComment referenceComment) {
         addOrIgnoreNull(referenceComment, this.referenceComments);
@@ -51,23 +49,17 @@ public class UniProtKBMappedReferenceBuilder
         return getThis();
     }
 
-    public UniProtKBMappedReferenceBuilder citation(Citation citation) {
-        this.citation = citation;
-        return getThis();
-    }
-
     @Nonnull
     @Override
     public UniProtKBMappedReference build() {
         return new UniProtKBMappedReferenceImpl(
+                citationId,
                 source,
-                pubMedId,
                 uniProtKBAccession,
                 referenceNumber,
                 sourceCategories,
                 referenceComments,
-                referencePositions,
-                citation);
+                referencePositions);
     }
 
     @Nonnull
@@ -81,7 +73,6 @@ public class UniProtKBMappedReferenceBuilder
         return AbstractMappedReferenceBuilder.from(builder, instance)
                 .referenceNumber(instance.getReferenceNumber())
                 .referenceCommentsSet(instance.getReferenceComments())
-                .referencePositionsSet(instance.getReferencePositions())
-                .citation(instance.getCitation());
+                .referencePositionsSet(instance.getReferencePositions());
     }
 }

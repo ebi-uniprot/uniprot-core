@@ -16,9 +16,9 @@ import org.uniprot.core.util.Utils;
  */
 public class LiteratureImpl extends AbstractJournalArticleImpl implements Literature {
 
-    private static final long serialVersionUID = 5322959407211153467L;
-    private boolean completeAuthorList;
-    private String literatureAbstract;
+    private static final long serialVersionUID = 4021303425320812064L;
+    private final boolean completeAuthorList;
+    private final String literatureAbstract;
 
     // no arg constructor for JSON deserialization
     LiteratureImpl() {
@@ -61,6 +61,7 @@ public class LiteratureImpl extends AbstractJournalArticleImpl implements Litera
                 volume);
         this.completeAuthorList = completeAuthorList;
         this.literatureAbstract = Utils.emptyOrString(literatureAbstract);
+        super.id = generateId();
     }
 
     @Override

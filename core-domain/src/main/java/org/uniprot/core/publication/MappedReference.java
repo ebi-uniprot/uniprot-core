@@ -15,7 +15,7 @@ public interface MappedReference extends Serializable {
 
     MappedSource getSource();
 
-    String getPubMedId();
+    String getCitationId();
 
     Set<String> getSourceCategories();
 }

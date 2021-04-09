@@ -4,20 +4,21 @@ import static java.util.Collections.emptyList;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.util.Utils;
 
 public class BookImpl extends AbstractCitationImpl implements Book {
-    private static final long serialVersionUID = 7240686919749710678L;
-    private String bookName;
-    private List<Author> editors;
-    private String firstPage;
-    private String lastPage;
-    private String volume;
-    private String publisher;
-    private String address;
+    private static final long serialVersionUID = -2690761884935625865L;
+    private final String bookName;
+    private final List<Author> editors;
+    private final String firstPage;
+    private final String lastPage;
+    private final String volume;
+    private final String publisher;
+    private final String address;
 
     // no arg constructor for JSON deserialization
     BookImpl() {
@@ -63,6 +64,7 @@ public class BookImpl extends AbstractCitationImpl implements Book {
         this.volume = Utils.emptyOrString(volume);
         this.publisher = Utils.emptyOrString(publisher);
         this.address = Utils.emptyOrString(address);
+        super.id = generateId();
     }
 
     @Override
@@ -133,6 +135,34 @@ public class BookImpl extends AbstractCitationImpl implements Book {
     @Override
     public boolean hasAddress() {
         return Utils.notNullNotEmpty(this.address);
+    }
+
+    @Override
+    protected String getHashInput() {
+        String hashInput = super.getHashInput();
+        if (hasBookName()) {
+            hashInput += BOOK_NAME_PREFIX + bookName;
+        }
+        if (hasPublisher()) {
+            hashInput += PUBLISHER_PREFIX + publisher;
+        }
+        if (hasEditors()) {
+            hashInput +=
+                    " editors-"
+                            + editors.stream()
+                                    .map(Author::getValue)
+                                    .collect(Collectors.joining(" "));
+        }
+        if (hasFirstPage()) {
+            hashInput += BOOK_FIRST_PAGE_PREFIX + firstPage;
+        }
+        if (hasLastPage()) {
+            hashInput += BOOK_LAST_PAGE_PREFIX + lastPage;
+        }
+        if (hasVolume()) {
+            hashInput += BOOK_VOLUME_PREFIX + volume;
+        }
+        return hashInput;
     }
 
     @Override

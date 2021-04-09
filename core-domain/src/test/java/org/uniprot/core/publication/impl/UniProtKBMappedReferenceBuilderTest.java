@@ -10,9 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.citation.Submission;
-import org.uniprot.core.citation.SubmissionDatabase;
-import org.uniprot.core.citation.impl.SubmissionBuilder;
 import org.uniprot.core.publication.UniProtKBMappedReference;
 import org.uniprot.core.uniprotkb.ReferenceComment;
 import org.uniprot.core.uniprotkb.ReferenceCommentType;
@@ -89,16 +86,6 @@ class UniProtKBMappedReferenceBuilderTest {
         UniProtKBMappedReference reference =
                 new UniProtKBMappedReferenceBuilder().referenceNumber(refNumber).build();
         assertThat(reference.getReferenceNumber(), is(refNumber));
-    }
-
-    @Test
-    void canSetCitation() {
-        SubmissionBuilder builder = new SubmissionBuilder();
-        builder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ);
-        Submission citation = builder.build();
-        UniProtKBMappedReference reference =
-                new UniProtKBMappedReferenceBuilder().citation(citation).build();
-        assertThat(reference.getCitation(), is(citation));
     }
 
     @Test

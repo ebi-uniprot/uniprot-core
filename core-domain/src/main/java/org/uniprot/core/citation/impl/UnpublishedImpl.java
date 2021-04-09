@@ -8,7 +8,7 @@ import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
 
 public class UnpublishedImpl extends AbstractCitationImpl implements Unpublished {
-    private static final long serialVersionUID = -5673746978175138190L;
+    private static final long serialVersionUID = 3567359908619574041L;
 
     // no arg constructor for JSON deserialization
     UnpublishedImpl() {
@@ -28,5 +28,6 @@ public class UnpublishedImpl extends AbstractCitationImpl implements Unpublished
                 citationCrossReferences,
                 title,
                 publicationDate);
+        super.id = generateId();
     }
 }
