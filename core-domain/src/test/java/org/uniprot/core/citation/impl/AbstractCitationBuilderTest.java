@@ -106,7 +106,7 @@ class AbstractCitationBuilderTest {
                         .authoringGroupsSet(authoringGroup)
                         .authorsSet(authors)
                         .build();
-        assertThat(citation.getId(), is("CI-7TL5R4DGOC4O8"));
+        assertThat(citation.getId(), is("CI-8AJ620I4BUF91"));
     }
 
     @Test
@@ -124,6 +124,7 @@ class AbstractCitationBuilderTest {
                         .citationCrossReferencesSet(asList(XREF1, XREF2))
                         .build();
 
+        assertThat(citation.getId(), is("id1"));
         assertThat(citation.getTitle(), is(title));
         assertThat(citation.getPublicationDate().getValue(), is(publicationDate));
         assertThat(citation.getAuthoringGroups(), is(authoringGroup));

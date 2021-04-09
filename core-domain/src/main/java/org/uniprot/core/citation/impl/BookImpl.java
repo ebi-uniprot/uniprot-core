@@ -11,7 +11,7 @@ import org.uniprot.core.citation.*;
 import org.uniprot.core.util.Utils;
 
 public class BookImpl extends AbstractCitationImpl implements Book {
-    private static final long serialVersionUID = 7240686919749710678L;
+    private static final long serialVersionUID = -2690761884935625865L;
     private final String bookName;
     private final List<Author> editors;
     private final String firstPage;
@@ -141,26 +141,26 @@ public class BookImpl extends AbstractCitationImpl implements Book {
     protected String getHashInput() {
         String hashInput = super.getHashInput();
         if (hasBookName()) {
-            hashInput += " bn-" + bookName;
+            hashInput += BOOK_NAME_PREFIX + bookName;
         }
         if (hasPublisher()) {
-            hashInput += " pu-" + publisher;
+            hashInput += PUBLISHER_PREFIX + publisher;
         }
         if (hasEditors()) {
             hashInput +=
-                    " ed-"
+                    " editors-"
                             + editors.stream()
                                     .map(Author::getValue)
                                     .collect(Collectors.joining(" "));
         }
         if (hasFirstPage()) {
-            hashInput += " fp-" + firstPage;
+            hashInput += BOOK_FIRST_PAGE_PREFIX + firstPage;
         }
         if (hasLastPage()) {
-            hashInput += " lp-" + lastPage;
+            hashInput += BOOK_LAST_PAGE_PREFIX + lastPage;
         }
         if (hasVolume()) {
-            hashInput += " vo-" + volume;
+            hashInput += BOOK_VOLUME_PREFIX + volume;
         }
         return hashInput;
     }

@@ -10,7 +10,7 @@ import org.uniprot.core.citation.*;
 import org.uniprot.core.util.Utils;
 
 public class ThesisImpl extends AbstractCitationImpl implements Thesis {
-    private static final long serialVersionUID = -8487467468767628311L;
+    private static final long serialVersionUID = 5471065023272161719L;
     private final String institute;
     private final String address;
 
@@ -63,10 +63,10 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
     protected String getHashInput() {
         String hashInput = super.getHashInput();
         if (hasInstitute()) {
-            hashInput += " in-" + institute;
+            hashInput += INSTITUTE_PREFIX + institute;
         }
         if (hasAddress()) {
-            hashInput += " ad-" + address;
+            hashInput += ADDRESS_PREFIX + address;
         }
         return hashInput;
     }

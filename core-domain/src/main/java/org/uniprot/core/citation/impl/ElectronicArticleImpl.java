@@ -9,7 +9,7 @@ import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
 
 public class ElectronicArticleImpl extends AbstractCitationImpl implements ElectronicArticle {
-    private static final long serialVersionUID = -8389378286532442748L;
+    private static final long serialVersionUID = 3915485792101904039L;
     private Journal journal;
     private Locator locator;
 
@@ -64,10 +64,10 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
     protected String getHashInput() {
         String hashInput = super.getHashInput();
         if (hasJournal()) {
-            hashInput += " jo-" + journal;
+            hashInput += ELECTRONIC_JOURNAL_PREFIX + journal;
         }
         if (hasLocator()) {
-            hashInput += " lo-" + locator.getValue();
+            hashInput += LOCATOR_PREFIX + locator.getValue();
         }
         return hashInput;
     }

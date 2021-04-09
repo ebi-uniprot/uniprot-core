@@ -21,11 +21,11 @@ public class AbstractMappedReference implements MappedReference {
 
     public AbstractMappedReference(
             MappedSource source,
-            String pubMedId,
+            String citationId,
             UniProtKBAccession uniProtKBAccession,
             Set<String> sourceCategories) {
         this.source = source;
-        this.citationId = pubMedId;
+        this.citationId = citationId;
         this.uniProtKBAccession = uniProtKBAccession;
         this.sourceCategories = Utils.unmodifiableSet(sourceCategories);
     }

@@ -8,7 +8,7 @@ import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.*;
 
 public class JournalArticleImpl extends AbstractJournalArticleImpl implements JournalArticle {
-    private static final long serialVersionUID = -1925700851366460680L;
+    private static final long serialVersionUID = 5116315043316919718L;
 
     // no arg constructor for JSON deserialization
     JournalArticleImpl() {
