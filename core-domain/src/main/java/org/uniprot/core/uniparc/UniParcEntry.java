@@ -1,6 +1,8 @@
 package org.uniprot.core.uniparc;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 
 import org.uniprot.core.Sequence;
@@ -19,4 +21,8 @@ public interface UniParcEntry extends Serializable {
     String getUniProtExclusionReason();
 
     List<SequenceFeature> getSequenceFeatures();
+
+    LocalDate getOldestCrossRefCreated();
+
+    LocalDate getMostRecentCrossRefUpdated();
 }
