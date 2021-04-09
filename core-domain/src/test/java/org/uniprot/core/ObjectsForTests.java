@@ -247,7 +247,7 @@ public class ObjectsForTests {
                         .id("P12345")
                         .version(7)
                         .active(true)
-                        .created(LocalDate.of(2017, 5, 17))
+                        .created(LocalDate.of(2017, 1, 17))
                         .lastUpdated(LocalDate.of(2017, 2, 27))
                         .propertiesSet(properties)
                         .chain("chainValue")

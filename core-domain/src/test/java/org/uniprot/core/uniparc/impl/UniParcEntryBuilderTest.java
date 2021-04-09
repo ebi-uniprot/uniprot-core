@@ -3,6 +3,7 @@ package org.uniprot.core.uniparc.impl;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -25,6 +26,8 @@ class UniParcEntryBuilderTest {
                         .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
                         .build();
         assertEquals("UPI0000083A08", entry.getUniParcId().getValue());
+        assertNull(entry.getOldestCrossRefCreated());
+        assertNull(entry.getMostRecentCrossRefUpdated());
     }
 
     @Test
@@ -37,6 +40,10 @@ class UniParcEntryBuilderTest {
                         .build();
         assertEquals("UPI0000083A08", entry.getUniParcId().getValue());
         assertEquals(xrefs, entry.getUniParcCrossReferences());
+        assertNotNull(entry.getOldestCrossRefCreated());
+        assertNotNull(entry.getMostRecentCrossRefUpdated());
+        assertEquals(LocalDate.of(2017, 1, 17), entry.getOldestCrossRefCreated());
+        assertEquals(LocalDate.of(2017, 4, 23), entry.getMostRecentCrossRefUpdated());
     }
 
     @Test
@@ -53,6 +60,8 @@ class UniParcEntryBuilderTest {
         assertEquals("UPI0000083A08", entry.getUniParcId().getValue());
         assertEquals(xrefs, entry.getUniParcCrossReferences());
         assertEquals(sequence, entry.getSequence());
+        assertNotNull(entry.getOldestCrossRefCreated());
+        assertNotNull(entry.getMostRecentCrossRefUpdated());
     }
 
     @Test
@@ -141,6 +150,8 @@ class UniParcEntryBuilderTest {
         UniParcEntry obj = new UniParcEntryBuilder().uniParcCrossReferencesAdd(null).build();
         assertNotNull(obj.getUniParcCrossReferences());
         assertTrue(obj.getUniParcCrossReferences().isEmpty());
+        assertNull(obj.getOldestCrossRefCreated());
+        assertNull(obj.getMostRecentCrossRefUpdated());
     }
 
     @Test
