@@ -1,16 +1,16 @@
 package org.uniprot.core.uniparc.impl;
 
+import java.time.LocalDate;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
+
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.util.Utils;
-
-import java.time.LocalDate;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * @author jluo
@@ -76,24 +76,26 @@ public class UniParcEntryImpl implements UniParcEntry {
 
     @Override
     public LocalDate getOldestCrossRefCreated() {
-        if(Objects.isNull(this.oldestCrossRefCreated)) {
-            this.oldestCrossRefCreated = getUniParcCrossReferences().stream()
-                    .filter(xref -> xref.getCreated() != null)
-                    .map(UniParcCrossReference::getCreated)
-                    .min(Comparator.comparing(LocalDate::toEpochDay))
-                    .orElse(null);
+        if (Objects.isNull(this.oldestCrossRefCreated)) {
+            this.oldestCrossRefCreated =
+                    getUniParcCrossReferences().stream()
+                            .filter(xref -> xref.getCreated() != null)
+                            .map(UniParcCrossReference::getCreated)
+                            .min(Comparator.comparing(LocalDate::toEpochDay))
+                            .orElse(null);
         }
         return this.oldestCrossRefCreated;
     }
 
     @Override
     public LocalDate getMostRecentCrossRefUpdated() {
-        if(Objects.isNull(this.mostRecentCrossRefUpdated)) {
-            this.mostRecentCrossRefUpdated = getUniParcCrossReferences().stream()
-                    .filter(xref -> xref.getLastUpdated() != null)
-                    .map(UniParcCrossReference::getLastUpdated)
-                    .max(Comparator.comparing(LocalDate::toEpochDay))
-                    .orElse(null);
+        if (Objects.isNull(this.mostRecentCrossRefUpdated)) {
+            this.mostRecentCrossRefUpdated =
+                    getUniParcCrossReferences().stream()
+                            .filter(xref -> xref.getLastUpdated() != null)
+                            .map(UniParcCrossReference::getLastUpdated)
+                            .max(Comparator.comparing(LocalDate::toEpochDay))
+                            .orElse(null);
         }
 
         return this.mostRecentCrossRefUpdated;
