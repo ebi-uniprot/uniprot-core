@@ -6,12 +6,9 @@ import org.uniprot.core.impl.AbstractValueBuilder;
 import org.uniprot.core.interpro.InterProAc;
 
 /**
- *
  * @author jluo
  * @date: 9 Apr 2021
- *
-*/
-
+ */
 public class InterProAcBuilder extends AbstractValueBuilder<InterProAc> {
 
     public InterProAcBuilder(String value) {
@@ -27,4 +24,3 @@ public class InterProAcBuilder extends AbstractValueBuilder<InterProAc> {
         return new InterProAcBuilder(instance.getValue());
     }
 }
-

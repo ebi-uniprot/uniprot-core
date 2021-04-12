@@ -5,22 +5,19 @@ import java.io.Serializable;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
 /**
- *
  * @author jluo
  * @date: 12 Apr 2021
- *
  */
-
 public interface InterProGroup extends Serializable {
-	Abstract getEntryAbstract();
+    Abstract getEntryAbstract();
 
-	String getName();
+    String getName();
 
-	InterProAc getInterProAc();
+    InterProAc getInterProAc();
 
-	String getShortName();
+    String getShortName();
 
-	UniProtKBAccession getUniProtAccession();
+    UniProtKBAccession getUniProtAccession();
 
-	InterProType getType();
+    InterProType getType();
 }

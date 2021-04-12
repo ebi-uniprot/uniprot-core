@@ -6,24 +6,21 @@ import java.util.Set;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
 /**
- *
  * @author jluo
  * @date: 12 Apr 2021
- *
  */
-
 public interface InterProEntry extends Serializable {
-	InterProAc getInterProAc();
+    InterProAc getInterProAc();
 
-	boolean isChecked();
+    boolean isChecked();
 
-	String getName();
+    String getName();
 
-	String getShortName();
+    String getShortName();
 
-	Set<UniProtKBAccession> getSwissProtAccessions();
+    Set<UniProtKBAccession> getSwissProtAccessions();
 
-	Set<UniProtKBAccession> getTremblAccessions();
+    Set<UniProtKBAccession> getTremblAccessions();
 
-	Abstract getEntryAbstract();
+    Abstract getEntryAbstract();
 }

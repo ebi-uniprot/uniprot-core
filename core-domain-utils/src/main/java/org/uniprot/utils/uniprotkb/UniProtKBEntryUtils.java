@@ -30,28 +30,32 @@ public class UniProtKBEntryUtils {
      */
     public static List<Go> getGOTerms(UniProtKBEntry entry) {
         List<UniProtKBCrossReference> goXRefs = entry.getUniProtCrossReferencesByType("GO");
-       return goXRefs.stream().map(UniProtKBEntryUtils::toGo)
-        .filter(val ->val !=null)
-        .collect(Collectors.toList());
+        return goXRefs.stream()
+                .map(UniProtKBEntryUtils::toGo)
+                .filter(val -> val != null)
+                .collect(Collectors.toList());
     }
-    public static Go toGo(UniProtKBCrossReference  xref) {
-    	UniProtKBDatabase db =xref.getDatabase();
-    	if(!db.getName().equals("GO"))
-    		return null;
-    
-    	String id = xref.getId();
-    	List<Property> properties =xref.getProperties();
-    	String description = properties.get(0).getValue();
-    	String evidence = properties.get(1).getValue();
-    	String[] aspectName=description.split(":");
-    	String [] evidenceToken = evidence.split(":");
-    	GoAspect aspect = GoAspect.typeOf(aspectName[0]);
-    	String name = aspectName[1];
-    	GoEvidenceType goEvidenceType =GoEvidenceType.typeOf(evidenceToken[0]);
-    	String goEvidenceSource = evidenceToken[1];
-    	GoBuilder builder = new GoBuilder();
-    	return builder.id(id).name(name).aspect(aspect).goEvidenceType(goEvidenceType)
-    	.goEvidenceSource(goEvidenceSource)
-    	.build();
+
+    public static Go toGo(UniProtKBCrossReference xref) {
+        UniProtKBDatabase db = xref.getDatabase();
+        if (!db.getName().equals("GO")) return null;
+
+        String id = xref.getId();
+        List<Property> properties = xref.getProperties();
+        String description = properties.get(0).getValue();
+        String evidence = properties.get(1).getValue();
+        String[] aspectName = description.split(":");
+        String[] evidenceToken = evidence.split(":");
+        GoAspect aspect = GoAspect.typeOf(aspectName[0]);
+        String name = aspectName[1];
+        GoEvidenceType goEvidenceType = GoEvidenceType.typeOf(evidenceToken[0]);
+        String goEvidenceSource = evidenceToken[1];
+        GoBuilder builder = new GoBuilder();
+        return builder.id(id)
+                .name(name)
+                .aspect(aspect)
+                .goEvidenceType(goEvidenceType)
+                .goEvidenceSource(goEvidenceSource)
+                .build();
     }
 }
