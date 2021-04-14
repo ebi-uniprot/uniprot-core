@@ -20,6 +20,7 @@ import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
+import org.uniprot.core.Property;
 import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 
 /**
@@ -90,14 +91,43 @@ class UniProtKBEntryUtilsTest {
     	  assertEquals(GoEvidenceType.IEA, go.getGoEvidenceType());
     	  assertEquals("InterPro", go.getGoEvidenceSource());
     	  
+    	  UniProtKBCrossReference roundTrip = UniProtKBEntryUtils.buildXrefFromGoTerm(go);
+    	  assertEquals(xref, roundTrip);
+    	  
     }
     
     private UniProtKBCrossReference createGoXref(String id, String description, String evidence) {
     	  UniProtKBDatabase type = new UniProtKBDatabaseImpl("GO");
     	  return new UniProtCrossReferenceBuilder().database(type)
   		    	.id(id)
-  		    	.propertiesAdd("GoTerm", description)
-  		    	.propertiesAdd("GoEvidenceType", evidence)
+  		    	.propertiesAdd(type.getUniProtDatabaseAttribute(0), description)
+  		    	.propertiesAdd(type.getUniProtDatabaseAttribute(1), evidence)
   		    	.build();
+    }
+    
+    @Test
+    void testBuildXrefFromGoTerm() {
+    	//DR   GO; GO:0005509; F:calcium ion binding; IEA:InterPro.
+		String id = "GO:0005509";
+		String name = "calcium ion binding";
+		GoAspect aspect = GoAspect.FUNCTION;
+		GoEvidenceType goEvidenceType = GoEvidenceType.IEA;
+		String goEvidenceSource = "InterPro";
+		Go go = new GoBuilder()
+				.id(id)
+				.name(name)
+				.aspect(aspect)
+				.goEvidenceType(goEvidenceType)
+				.goEvidenceSource(goEvidenceSource).build();
+		
+		 UniProtKBCrossReference xref = UniProtKBEntryUtils.buildXrefFromGoTerm(go);
+		 assertEquals(id, xref.getId());
+		 assertEquals("GO", xref.getDatabase().getName());
+		List<Property> properties= xref.getProperties();
+		assertEquals(2, properties.size());
+		assertEquals("F:calcium ion binding", properties.get(0).getValue());
+		assertEquals("IEA:InterPro", properties.get(1).getValue());
+		 Go roundTrip= UniProtKBEntryUtils.toGo(xref);
+		 assertEquals(go, roundTrip);
     }
 }
