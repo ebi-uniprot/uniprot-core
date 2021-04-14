@@ -3,6 +3,7 @@ package org.uniprot.core.json.parser.keyword;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.go.GoTerm;
 import org.uniprot.core.cv.go.impl.GoTermImpl;
+import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.impl.KeywordEntryImpl;
@@ -12,6 +13,7 @@ import org.uniprot.core.json.parser.JsonConfig;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import org.uniprot.core.json.parser.keyword.serializer.KeywordCategorySerializer;
 
 /** @author lgonzales */
 public class KeywordJsonConfig extends JsonConfig {
@@ -60,6 +62,9 @@ public class KeywordJsonConfig extends JsonConfig {
 
     private ObjectMapper initSimpleObjectMapper() {
         ObjectMapper simpleObjMapper = getDefaultSimpleObjectMapper();
+        SimpleModule simpleMod = new SimpleModule();
+        simpleMod.addSerializer(KeywordCategory.class, new KeywordCategorySerializer());
+        simpleObjMapper.registerModule(simpleMod);
         return simpleObjMapper;
     }
 }

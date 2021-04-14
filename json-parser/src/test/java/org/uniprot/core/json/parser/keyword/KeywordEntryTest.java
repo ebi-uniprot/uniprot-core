@@ -1,11 +1,17 @@
 package org.uniprot.core.json.parser.keyword;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
+import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.cv.keyword.impl.KeywordEntryBuilder;
 import org.uniprot.core.impl.StatisticsBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /** @author lgonzales */
 public class KeywordEntryTest {
@@ -22,6 +28,20 @@ public class KeywordEntryTest {
         KeywordEntry keywordEntry = getCompleteKeywordEntry(true);
         ValidateJson.verifyJsonRoundTripParser(
                 KeywordJsonConfig.getInstance().getFullObjectMapper(), keywordEntry);
+    }
+
+    @Test
+    void testKeywordCategoryForSimpleObjectMapper() throws JsonProcessingException {
+        KeywordEntry keywordEntry = getCompleteKeywordEntry(true);
+        keywordEntry = KeywordEntryBuilder.from(keywordEntry)
+                .category(KeywordCategory.LIGAND)
+                .build();
+
+        ObjectMapper mapper = KeywordJsonConfig.getInstance().getSimpleObjectMapper();
+        String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(keywordEntry);
+        assertNotNull(json);
+        assertTrue(json.contains("\"name\" : \"Ligand\""));
+        assertTrue(json.contains("\"id\" : \"KW-9993\""));
     }
 
     public static KeywordEntry getCompleteKeywordEntry(boolean hierarchy) {
