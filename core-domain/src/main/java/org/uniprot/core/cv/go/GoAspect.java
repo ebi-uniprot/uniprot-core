@@ -29,5 +29,6 @@ public enum GoAspect implements EnumDisplay {
     		}
     	}
     	return EnumDisplay.typeOf(name, GoAspect.class);
+
     }
 }

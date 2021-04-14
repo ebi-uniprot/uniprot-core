@@ -5,14 +5,10 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.impl.AbstractValueBuilder;
 import org.uniprot.core.interpro.Abstract;
 
-
 /**
- *
  * @author jluo
  * @date: 12 Apr 2021
- *
-*/
-
+ */
 public class AbstractBuilder extends AbstractValueBuilder<Abstract> {
     public AbstractBuilder(String value) {
         super(value);

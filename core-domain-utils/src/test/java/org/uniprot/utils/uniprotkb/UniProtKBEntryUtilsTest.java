@@ -32,26 +32,22 @@ class UniProtKBEntryUtilsTest {
     @Test
     void canExtractGOTermsFromEntry() {
         UniProtKBEntry entry = Mockito.mock(UniProtKBEntry.class);
-  //      DR   GO; GO:0005737; C:cytoplasm; IEA:UniProtKB-SubCell.
-   //     DR   GO; GO:0005524; F:ATP binding; IEA:UniProtKB-UniRule.
-    	  String id1 = "GO:0005737";
-    	  String description1 = "C:cytoplasm";
-    	  String evidence1 ="IBA:UniProtKB-SubCell";
-    	  UniProtKBCrossReference xref1	=createGoXref(id1, description1, evidence1);
-    	  String id2 = "GO:0005524";
-    	  String description2 = "F:ATP binding";
-    	  String evidence2 ="IEA:UniProtKB-UniRule";
-    	  UniProtKBCrossReference xref2	=createGoXref(id2, description2, evidence2);
-        when(entry.getUniProtCrossReferencesByType("GO"))
-                .thenReturn(
-                        asList(xref1, xref2));
+        //      DR   GO; GO:0005737; C:cytoplasm; IEA:UniProtKB-SubCell.
+        //     DR   GO; GO:0005524; F:ATP binding; IEA:UniProtKB-UniRule.
+        String id1 = "GO:0005737";
+        String description1 = "C:cytoplasm";
+        String evidence1 = "IBA:UniProtKB-SubCell";
+        UniProtKBCrossReference xref1 = createGoXref(id1, description1, evidence1);
+        String id2 = "GO:0005524";
+        String description2 = "F:ATP binding";
+        String evidence2 = "IEA:UniProtKB-UniRule";
+        UniProtKBCrossReference xref2 = createGoXref(id2, description2, evidence2);
+        when(entry.getUniProtCrossReferencesByType("GO")).thenReturn(asList(xref1, xref2));
 
         List<Go> goes = UniProtKBEntryUtils.getGOTerms(entry);
-       
-        
-        
+
         assertThat(
-        		goes,
+                goes,
                 contains(
                         new GoBuilder()
                                 .id("GO:0005737")
@@ -61,22 +57,23 @@ class UniProtKBEntryUtilsTest {
                                 .goEvidenceSource("UniProtKB-SubCell")
                                 .build(),
                         new GoBuilder()
-                        .id("GO:0005524")
-                        .name("ATP binding")
-                        .aspect(GoAspect.FUNCTION)
-                        .goEvidenceType(GoEvidenceType.IEA)
-                        .goEvidenceSource("UniProtKB-UniRule")
-                        .build()));
+                                .id("GO:0005524")
+                                .name("ATP binding")
+                                .aspect(GoAspect.FUNCTION)
+                                .goEvidenceType(GoEvidenceType.IEA)
+                                .goEvidenceSource("UniProtKB-UniRule")
+                                .build()));
     }
-    
+
     @Test
     void testToGoNotGo() {
-    	   UniProtKBDatabase type = new UniProtKBDatabaseImpl("EMBL");
-    	   UniProtKBCrossReference xref	=new UniProtCrossReferenceBuilder().database(type)
-    	.id("AE013218").build();
-    	Go go= UniProtKBEntryUtils.toGo(xref);
-    	assertNull(go);
+        UniProtKBDatabase type = new UniProtKBDatabaseImpl("EMBL");
+        UniProtKBCrossReference xref =
+                new UniProtCrossReferenceBuilder().database(type).id("AE013218").build();
+        Go go = UniProtKBEntryUtils.toGo(xref);
+        assertNull(go);
     }
+
     @Test
     void testToGo() {
     	  String id = "GO:0002161";
@@ -93,9 +90,8 @@ class UniProtKBEntryUtilsTest {
     	  
     	  UniProtKBCrossReference roundTrip = UniProtKBEntryUtils.buildXrefFromGoTerm(go);
     	  assertEquals(xref, roundTrip);
-    	  
     }
-    
+
     private UniProtKBCrossReference createGoXref(String id, String description, String evidence) {
     	  UniProtKBDatabase type = new UniProtKBDatabaseImpl("GO");
     	  return new UniProtCrossReferenceBuilder().database(type)

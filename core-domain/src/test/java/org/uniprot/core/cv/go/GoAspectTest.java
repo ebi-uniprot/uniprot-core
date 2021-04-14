@@ -23,11 +23,12 @@ class GoAspectTest {
         assertEquals("GO Cellular Component", GoAspect.COMPONENT.getDisplayName());
         assertEquals("C", GoAspect.COMPONENT.getCode());
     }
+
     @Test
     void testTypeof() {
-    	assertEquals(GoAspect.FUNCTION, GoAspect.typeOf("F"));
-    	assertEquals(GoAspect.COMPONENT, GoAspect.typeOf("C"));
-    	assertEquals(GoAspect.PROCESS, GoAspect.typeOf("P"));
-    	assertEquals(GoAspect.FUNCTION, GoAspect.typeOf("GO Molecular Function"));
+        assertEquals(GoAspect.FUNCTION, GoAspect.typeOf("F"));
+        assertEquals(GoAspect.COMPONENT, GoAspect.typeOf("C"));
+        assertEquals(GoAspect.PROCESS, GoAspect.typeOf("P"));
+        assertEquals(GoAspect.FUNCTION, GoAspect.typeOf("GO Molecular Function"));
     }
 }
