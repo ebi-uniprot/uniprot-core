@@ -1,8 +1,7 @@
 package org.uniprot.core.json.parser.keyword;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.keyword.KeywordCategory;
@@ -11,7 +10,8 @@ import org.uniprot.core.cv.keyword.impl.KeywordEntryBuilder;
 import org.uniprot.core.impl.StatisticsBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /** @author lgonzales */
 public class KeywordEntryTest {
@@ -33,9 +33,8 @@ public class KeywordEntryTest {
     @Test
     void testKeywordCategoryForSimpleObjectMapper() throws JsonProcessingException {
         KeywordEntry keywordEntry = getCompleteKeywordEntry(true);
-        keywordEntry = KeywordEntryBuilder.from(keywordEntry)
-                .category(KeywordCategory.LIGAND)
-                .build();
+        keywordEntry =
+                KeywordEntryBuilder.from(keywordEntry).category(KeywordCategory.LIGAND).build();
 
         ObjectMapper mapper = KeywordJsonConfig.getInstance().getSimpleObjectMapper();
         String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(keywordEntry);

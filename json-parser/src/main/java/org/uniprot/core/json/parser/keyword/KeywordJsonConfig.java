@@ -10,10 +10,10 @@ import org.uniprot.core.cv.keyword.impl.KeywordEntryImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordIdImpl;
 import org.uniprot.core.impl.StatisticsImpl;
 import org.uniprot.core.json.parser.JsonConfig;
+import org.uniprot.core.json.parser.keyword.serializer.KeywordCategorySerializer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import org.uniprot.core.json.parser.keyword.serializer.KeywordCategorySerializer;
 
 /** @author lgonzales */
 public class KeywordJsonConfig extends JsonConfig {

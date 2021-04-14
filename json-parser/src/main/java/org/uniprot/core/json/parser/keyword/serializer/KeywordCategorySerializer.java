@@ -1,11 +1,12 @@
 package org.uniprot.core.json.parser.keyword.serializer;
 
+import java.io.IOException;
+
+import org.uniprot.core.cv.keyword.KeywordCategory;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import org.uniprot.core.cv.keyword.KeywordCategory;
-
-import java.io.IOException;
 
 /**
  * @author lgonzales
@@ -21,7 +22,9 @@ public class KeywordCategorySerializer extends StdSerializer<KeywordCategory> {
 
     @Override
     public void serialize(
-            KeywordCategory category, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
+            KeywordCategory category,
+            JsonGenerator jsonGenerator,
+            SerializerProvider serializerProvider)
             throws IOException {
         jsonGenerator.writeStartObject();
         jsonGenerator.writeStringField("name", category.getName());
