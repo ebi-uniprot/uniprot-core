@@ -1,0 +1,1071 @@
+ID   R1A_SARS2               Reviewed;        4405 AA.
+AC   P0DTC1;
+DT   22-APR-2020, integrated into UniProtKB/Swiss-Prot.
+DT   22-APR-2020, sequence version 1.
+DT   07-APR-2021, entry version 7.
+DE   RecName: Full=Replicase polyprotein 1a;
+DE            Short=pp1a;
+DE   AltName: Full=ORF1a polyprotein;
+DE   Contains:
+DE     RecName: Full=Host translation inhibitor nsp1;
+DE     AltName: Full=Leader protein;
+DE     AltName: Full=Non-structural protein 1;
+DE              Short=nsp1;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 2;
+DE              Short=nsp2;
+DE     AltName: Full=p65 homolog;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 3;
+DE              Short=nsp3;
+DE              EC=3.4.19.12 {ECO:0000269|PubMed:32726803};
+DE              EC=3.4.22.-;
+DE     AltName: Full=PL2-PRO;
+DE     AltName: Full=Papain-like protease {ECO:0000303|PubMed:32726803};
+DE     AltName: Full=Papain-like proteinase;
+DE              Short=PL-PRO;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 4;
+DE              Short=nsp4;
+DE   Contains:
+DE     RecName: Full=3C-like proteinase;
+DE              Short=3CL-PRO;
+DE              Short=3CLp;
+DE              EC=3.4.22.69;
+DE     AltName: Full=Main protease;
+DE              Short=Mpro {ECO:0000303|PubMed:32272481};
+DE     AltName: Full=Non-structural protein 5;
+DE              Short=nsp5;
+DE     AltName: Full=SARS coronavirus main proteinase;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 6;
+DE              Short=nsp6;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 7;
+DE              Short=nsp7;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 8;
+DE              Short=nsp8;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 9;
+DE              Short=nsp9;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 10;
+DE              Short=nsp10;
+DE     AltName: Full=Growth factor-like peptide;
+DE              Short=GFL;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 11;
+DE              Short=nsp11;
+OS   Severe acute respiratory syndrome coronavirus 2 (2019-nCoV) (SARS-CoV-2).
+OC   Viruses; Riboviria; Orthornavirae; Pisuviricota; Pisoniviricetes;
+OC   Nidovirales; Cornidovirineae; Coronaviridae; Orthocoronavirinae;
+OC   Betacoronavirus; Sarbecovirus.
+OX   NCBI_TaxID=2697049;
+OH   NCBI_TaxID=9606; Homo sapiens (Human).
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC RNA].
+RX   PubMed=32015508; DOI=10.1038/s41586-020-2008-3;
+RA   Wu F., Zhao S., Yu B., Chen Y.-M., Wang W., Song Z.-G., Hu Y., Tao Z.-W.,
+RA   Tian J.-H., Pei Y.-Y., Yuan M.-L., Zhang Y.-L., Dai F.-H., Liu Y.,
+RA   Wang Q.-M., Zheng J.-J., Xu L., Holmes E.C., Zhang Y.-Z.;
+RT   "A new coronavirus associated with human respiratory disease in China.";
+RL   Nature 579:265-269(2020).
+RN   [2]
+RP   VARIANTS ILE-1001; ASP-1708; THR-2230 AND 3675-SER--PHE-3677.
+RC   STRAIN=20B/501Y.V1, B.1.1.7, VOC-202012/01, and VUI-202012/01;
+RX   PubMed=33413740; DOI=10.2807/1560-7917.es.2020.26.1.2002106;
+RA   Leung K., Shum M.H., Leung G.M., Lam T.T., Wu J.T.;
+RT   "Early transmissibility assessment of the N501Y mutant strains of SARS-CoV-
+RT   2 in the United Kingdom, October to November 2020.";
+RL   Eurosurveillance 26:0-0(2021).
+RN   [3]
+RP   X-RAY CRYSTALLOGRAPHY (2.16 ANGSTROMS) OF 3C-LIKE PROTEINASE AND IN COMPLEX
+RP   WITH MICHAEL ACCEPTOR INHIBITOR N3.
+RA   Liu X., Zhang B., Jin Z., Yang H., Rao Z.;
+RT   "The crystal structure of 2019-nCoV main protease in complex with an
+RT   inhibitor N3.";
+RL   Submitted (FEB-2020) to the PDB data bank.
+RN   [4]
+RP   X-RAY CRYSTALLOGRAPHY (1.75 ANGSTROMS) OF 3C-LIKE PROTEINASE IN COMPLEX
+RP   WITH ALPHA-KETOAMIDE INHIBITORS, SUBUNIT (3C-LIKE PROTEINASE), ACTIVE SITE,
+RP   AND ACTIVITY REGULATION.
+RX   PubMed=32198291; DOI=10.1126/science.abb3405;
+RA   Zhang L., Lin D., Sun X., Curth U., Drosten C., Sauerhering L., Becker S.,
+RA   Rox K., Hilgenfeld R.;
+RT   "Crystal structure of SARS-CoV-2 main protease provides a basis for design
+RT   of improved alpha-ketoamide inhibitors.";
+RL   Science 0:0-0(2020).
+RN   [5]
+RP   X-RAY CRYSTALLOGRAPHY (1.7 ANGSTROMS) OF 3C-LIKE PROTEINASE APOENZYME AND
+RP   IN COMPLEX WITH MICHAEL ACCEPTOR INHIBITOR N3, FUNCTION, AND CATALYTIC
+RP   ACTIVITY.
+RX   PubMed=32272481; DOI=10.1038/s41586-020-2223-y;
+RA   Jin Z., Du X., Xu Y., Deng Y., Liu M., Zhao Y., Zhang B., Li X., Zhang L.,
+RA   Peng C., Duan Y., Yu J., Wang L., Yang K., Liu F., Jiang R., Yang X.,
+RA   You T., Liu X., Yang X., Bai F., Liu H., Liu X., Guddat L.W., Xu W.,
+RA   Xiao G., Qin C., Shi Z., Jiang H., Rao Z., Yang H.;
+RT   "Structure of Mpro from COVID-19 virus and discovery of its inhibitors.";
+RL   Nature 0:0-0(2020).
+RN   [6]
+RP   STRUCTURE BY ELECTRON MICROSCOPY (2.9 ANGSTROMS) OF NON-STRUCTURAL PROTEIN
+RP   7 AND NON-STRUCTURAL PROTEIN 8, SUBUNIT (NON-STRUCTURAL PROTEIN 7), SUBUNIT
+RP   (NON-STRUCTURAL PROTEIN 8), FUNCTION (NON-STRUCTURAL PROTEIN 7), AND
+RP   FUNCTION (NON-STRUCTURAL PROTEIN 8).
+RX   PubMed=32277040; DOI=10.1126/science.abb7498;
+RA   Gao Y., Yan L., Huang Y., Liu F., Zhao Y., Cao L., Wang T., Sun Q.,
+RA   Ming Z., Zhang L., Ge J., Zheng L., Zhang Y., Wang H., Zhu Y., Zhu C.,
+RA   Hu T., Hua T., Zhang B., Yang X., Li J., Yang H., Liu Z., Xu W.,
+RA   Guddat L.W., Wang Q., Lou Z., Rao Z.;
+RT   "Structure of the RNA-dependent RNA polymerase from COVID-19 virus.";
+RL   Science 0:0-0(2020).
+RN   [7]
+RP   STRUCTURE BY ELECTRON MICROSCOPY (2.5 ANGSTROMS) OF NON-STRUCTURAL PROTEIN
+RP   7 AND NON-STRUCTURAL PROTEIN 8, SUBUNIT (NON-STRUCTURAL PROTEIN 7), SUBUNIT
+RP   (NON-STRUCTURAL PROTEIN 8), FUNCTION (NON-STRUCTURAL PROTEIN 7), AND
+RP   FUNCTION (NON-STRUCTURAL PROTEIN 8).
+RX   PubMed=32358203; DOI=10.1126/science.abc1560;
+RA   Yin W., Mao C., Luan X., Shen D.D., Shen Q., Su H., Wang X., Zhou F.,
+RA   Zhao W., Gao M., Chang S., Xie Y.C., Tian G., Jiang H.W., Tao S.C.,
+RA   Shen J., Jiang Y., Jiang H., Xu Y., Zhang S., Zhang Y., Xu H.E.;
+RT   "Structural basis for inhibition of the RNA-dependent RNA polymerase from
+RT   SARS-CoV-2 by remdesivir.";
+RL   Science 0:0-0(2020).
+RN   [8]
+RP   X-RAY CRYSTALLOGRAPHY (1.5 ANGSTROMS) OF 3C-LIKE PROTEINASE APOENZYME IN
+RP   COMPLEX WITH COMPOUND 11A AND COMPOUND 11B, FUNCTION (3C-LIKE PROTEINASE),
+RP   CATALYTIC ACTIVITY (3C-LIKE PROTEINASE), AND ACTIVITY REGULATION (3C-LIKE
+RP   PROTEINASE).
+RX   PubMed=32321856; DOI=10.1126/science.abb4489;
+RA   Dai W., Zhang B., Su H., Li J., Zhao Y., Xie X., Jin Z., Liu F., Li C.,
+RA   Li Y., Bai F., Wang H., Cheng X., Cen X., Hu S., Yang X., Wang J., Liu X.,
+RA   Xiao G., Jiang H., Rao Z., Zhang L.K., Xu Y., Yang H., Liu H.;
+RT   "Structure-based design of antiviral drug candidates targeting the SARS-
+RT   CoV-2 main protease.";
+RL   Science 0:0-0(2020).
+RN   [9]
+RP   STRUCTURE BY ELECTRON MICROSCOPY (2.9 ANGSTROMS) OF NON-STRUCTURAL PROTEIN
+RP   7 AND NON-STRUCTURAL PROTEIN 8, SUBUNIT (NON-STRUCTURAL PROTEIN 7), SUBUNIT
+RP   (NON-STRUCTURAL PROTEIN 8), FUNCTION (NON-STRUCTURAL PROTEIN 7), AND
+RP   FUNCTION (NON-STRUCTURAL PROTEIN 8).
+RX   PubMed=32438371; DOI=10.1038/s41586-020-2368-8;
+RA   Hillen H.S., Kokic G., Farnung L., Dienemann C., Tegunov D., Cramer P.;
+RT   "Structure of replicating SARS-CoV-2 polymerase.";
+RL   Nature 0:0-0(2020).
+RN   [10]
+RP   X-RAY CRYSTALLOGRAPHY (0.95 ANGSTROMS) OF NON-STRUCTURAL PROTEIN 3 MACRO
+RP   DOMAIN, AND FUNCTION OF NON-STRUCTURAL PROTEIN 3.
+RX   PubMed=32578982; DOI=10.1021/acs.biochem.0c00309;
+RA   Frick D.N., Virdi R.S., Vuksanovic N., Dahal N., Silvaggi N.R.;
+RT   "Molecular Basis for ADP-ribose Binding to the Mac1 Domain of SARS-CoV-2
+RT   Nsp3.";
+RL   Biochemistry 0:0-0(2020).
+RN   [11]
+RP   STRUCTURE BY ELECTRON MICROSCOPY (2.93 ANGSTROMS) OF NON-STRUCTURAL PROTEIN
+RP   7 AND NON-STRUCTURAL PROTEIN 8 IN COMPLEX WITH ZINC ION, SUBUNIT
+RP   (NON-STRUCTURAL PROTEIN 7), SUBUNIT (NON-STRUCTURAL PROTEIN 8), FUNCTION
+RP   (NON-STRUCTURAL PROTEIN 7), AND FUNCTION (NON-STRUCTURAL PROTEIN 8).
+RX   PubMed=32526208; DOI=10.1016/j.cell.2020.05.034;
+RA   Wang Q., Wu J., Wang H., Gao Y., Liu Q., Mu A., Ji W., Yan L., Zhu Y.,
+RA   Zhu C., Fang X., Yang X., Huang Y., Gao H., Liu F., Ge J., Sun Q., Yang X.,
+RA   Xu W., Liu Z., Yang H., Lou Z., Jiang B., Guddat L.W., Gong P., Rao Z.;
+RT   "Structural Basis for RNA Replication by the SARS-CoV-2 Polymerase.";
+RL   Cell 182:417-428(2020).
+RN   [12]
+RP   X-RAY CRYSTALLOGRAPHY (3.18 ANGSTROMS) OF NON-STRUCTURAL PROTEIN 3,
+RP   FUNCTION (NON-STRUCTURAL PROTEIN 3), CATALYTIC ACTIVITY (NON-STRUCTURAL
+RP   PROTEIN 3), ACTIVITY REGULATION (NON-STRUCTURAL PROTEIN 3), AND MUTAGENESIS
+RP   OF VAL-1629; PHE-1632; THR-1638; CYS-1674 AND TYR-1831.
+RX   PubMed=32726803; DOI=10.1038/s41586-020-2601-5;
+RA   Shin D., Mukherjee R., Grewe D., Bojkova D., Baek K., Bhattacharya A.,
+RA   Schulz L., Widera M., Mehdipour A.R., Tascher G., Geurink P.P., Wilhelm A.,
+RA   van der Heden van Noort G.J., Ovaa H., Mueller S., Knobeloch K.P.,
+RA   Rajalingam K., Schulman B.A., Cinatl J., Hummer G., Ciesek S., Dikic I.;
+RT   "Papain-like protease regulates SARS-CoV-2 viral spread and innate
+RT   immunity.";
+RL   Nature 0:0-0(2020).
+RN   [13]
+RP   STRUCTURE BY ELECTRON MICROSCOPY (2.6 ANGSTROMS) OF NON-STRUCTURAL PROTEIN
+RP   1, FUNCTION (NON-STRUCTURAL PROTEIN 1), AND MUTAGENESIS OF LYS-164 AND
+RP   HIS-165.
+RX   PubMed=32680882; DOI=10.1126/science.abc8665;
+RA   Thoms M., Buschauer R., Ameismeier M., Koepke L., Denk T.,
+RA   Hirschenberger M., Kratzat H., Hayn M., Mackens-Kiani T., Cheng J.,
+RA   Straub J.H., Stuerzel C.M., Froehlich T., Berninghausen O., Becker T.,
+RA   Kirchhoff F., Sparrer K.M.J., Beckmann R.;
+RT   "Structural basis for translational shutdown and immune evasion by the Nsp1
+RT   protein of SARS-CoV-2.";
+RL   Science 0:0-0(2020).
+RN   [14]
+RP   FUNCTION (NON-STRUCTURAL PROTEIN 1).
+RX   PubMed=32733001; DOI=10.1038/s41467-020-17665-9;
+RA   Lei X., Dong X., Ma R., Wang W., Xiao X., Tian Z., Wang C., Wang Y., Li L.,
+RA   Ren L., Guo F., Zhao Z., Zhou Z., Xiang Z., Wang J.;
+RT   "Activation and evasion of type I interferon responses by SARS-CoV-2.";
+RL   Nat. Commun. 11:3810-3810(2020).
+RN   [15]
+RP   FUNCTION (NON-STRUCTURAL PROTEIN 1), FUNCTION (NON-STRUCTURAL PROTEIN 6),
+RP   AND INTERACTION WITH HOST TBK1 (NON-STRUCTURAL PROTEIN 6).
+RX   PubMed=32979938; DOI=10.1016/j.celrep.2020.108234;
+RA   Xia H., Cao Z., Xie X., Zhang X., Chen J.Y., Wang H., Menachery V.D.,
+RA   Rajsbaum R., Shi P.Y.;
+RT   "Evasion of Type I Interferon by SARS-CoV-2.";
+RL   Cell Rep. 33:108234-108234(2020).
+RN   [16]
+RP   SUBCELLULAR LOCATION (NON-STRUCTURAL PROTEIN 1), SUBCELLULAR LOCATION
+RP   (NON-STRUCTURAL PROTEIN 2), SUBCELLULAR LOCATION (3C-LIKE PROTEINASE),
+RP   SUBCELLULAR LOCATION (NON-STRUCTURAL PROTEIN 7), SUBCELLULAR LOCATION
+RP   (NON-STRUCTURAL PROTEIN 8), SUBCELLULAR LOCATION (NON-STRUCTURAL PROTEIN
+RP   9), AND SUBCELLULAR LOCATION (NON-STRUCTURAL PROTEIN 10).
+RX   PubMed=33060197; DOI=10.1126/science.abe9403;
+RG   QCRG Structural Biology Consortium;
+RG   Zoonomia Consortium;
+RA   Gordon D.E., Hiatt J., Bouhaddou M., Rezelj V.V., Ulferts S., Braberg H.,
+RA   Jureka A.S., Obernier K., Guo J.Z., Batra J., Kaake R.M., Weckstein A.R.,
+RA   Owens T.W., Gupta M., Pourmal S., Titus E.W., Cakir M., Soucheray M.,
+RA   McGregor M., Cakir Z., Jang G., O'Meara M.J., Tummino T.A., Zhang Z.,
+RA   Foussard H., Rojc A., Zhou Y., Kuchenov D., Huettenhain R., Xu J.,
+RA   Eckhardt M., Swaney D.L., Fabius J.M., Ummadi M., Tutuncuoglu B.,
+RA   Rathore U., Modak M., Haas P., Haas K.M., Naing Z.Z.C., Pulido E.H.,
+RA   Shi Y., Barrio-Hernandez I., Memon D., Petsalaki E., Dunham A.,
+RA   Marrero M.C., Burke D., Koh C., Vallet T., Silvas J.A., Azumaya C.M.,
+RA   Billesboelle C., Brilot A.F., Campbell M.G., Diallo A., Dickinson M.S.,
+RA   Diwanji D., Herrera N., Hoppe N., Kratochvil H.T., Liu Y., Merz G.E.,
+RA   Moritz M., Nguyen H.C., Nowotny C., Puchades C., Rizo A.N.,
+RA   Schulze-Gahmen U., Smith A.M., Sun M., Young I.D., Zhao J., Asarnow D.,
+RA   Biel J., Bowen A., Braxton J.R., Chen J., Chio C.M., Chio U.S.,
+RA   Deshpande I., Doan L., Faust B., Flores S., Jin M., Kim K., Lam V.L.,
+RA   Li F., Li J., Li Y.L., Li Y., Liu X., Lo M., Lopez K.E., Melo A.A.,
+RA   Moss F.R. III, Nguyen P., Paulino J., Pawar K.I., Peters J.K.,
+RA   Pospiech T.H. Jr., Safari M., Sangwan S., Schaefer K., Thomas P.V.,
+RA   Thwin A.C., Trenker R., Tse E., Tsui T.K.M., Wang F., Whitis N., Yu Z.,
+RA   Zhang K., Zhang Y., Zhou F., Saltzberg D., Hodder A.J., Shun-Shion A.S.,
+RA   Williams D.M., White K.M., Rosales R., Kehrer T., Miorin L., Moreno E.,
+RA   Patel A.H., Rihn S., Khalid M.M., Vallejo-Gracia A., Fozouni P.,
+RA   Simoneau C.R., Roth T.L., Wu D., Karim M.A., Ghoussaini M., Dunham I.,
+RA   Berardi F., Weigang S., Chazal M., Park J., Logue J., McGrath M.,
+RA   Weston S., Haupt R., Hastie C.J., Elliott M., Brown F., Burness K.A.,
+RA   Reid E., Dorward M., Johnson C., Wilkinson S.G., Geyer A., Giesel D.M.,
+RA   Baillie C., Raggett S., Leech H., Toth R., Goodman N., Keough K.C.,
+RA   Lind A.L., Klesh R.J., Hemphill K.R., Carlson-Stevermer J., Oki J.,
+RA   Holden K., Maures T., Pollard K.S., Sali A., Agard D.A., Cheng Y.,
+RA   Fraser J.S., Frost A., Jura N., Kortemme T., Manglik A., Southworth D.R.,
+RA   Stroud R.M., Alessi D.R., Davies P., Frieman M.B., Ideker T., Abate C.,
+RA   Jouvenet N., Kochs G., Shoichet B., Ott M., Palmarini M., Shokat K.M.,
+RA   Garcia-Sastre A., Rassen J.A., Grosse R., Rosenberg O.S., Verba K.A.,
+RA   Basler C.F., Vignuzzi M., Peden A.A., Beltrao P., Krogan N.J.;
+RT   "Comparative host-coronavirus protein interaction networks reveal pan-viral
+RT   disease mechanisms.";
+RL   Science 0:0-0(2020).
+RN   [17]
+RP   STRUCTURE BY ELECTRON MICROSCOPY (2.8 ANGSTROMS) OF NON-STRUCTURAL PROTEIN
+RP   1, FUNCTION (NON-STRUCTURAL PROTEIN 1), AND MUTAGENESIS OF
+RP   154-TYR--PHE-157; 164-LYS-HIS-165 AND 171-ARG--ARG-175.
+RX   PubMed=32908316; DOI=10.1038/s41594-020-0511-8;
+RA   Schubert K., Karousis E.D., Jomaa A., Scaiola A., Echeverria B.,
+RA   Gurzeler L.A., Leibundgut M., Thiel V., Muehlemann O., Ban N.;
+RT   "SARS-CoV-2 Nsp1 binds the ribosomal mRNA channel to inhibit translation.";
+RL   Nat. Struct. Mol. Biol. 27:959-966(2020).
+CC   -!- FUNCTION: [Replicase polyprotein 1a]: Multifunctional protein involved
+CC       in the transcription and replication of viral RNAs. Contains the
+CC       proteinases responsible for the cleavages of the polyprotein.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- FUNCTION: [Host translation inhibitor nsp1]: Inhibits host translation
+CC       by interacting with binds to the host 40S subunit in ribosomal
+CC       complexes, including the 43S pre-initiation complex and the non-
+CC       translating 80S ribosome (PubMed:32680882,PubMed:32908316). The C-
+CC       terminus binds to and obstructs ribosomal mRNA entry tunnel
+CC       (PubMed:32680882,PubMed:32908316). Thereby inhibits antiviral response
+CC       triggered by innate immunity or interferons
+CC       (PubMed:32680882,PubMed:32979938). The nsp1-40S ribosome complex
+CC       further induces an endonucleolytic cleavage near the 5'UTR of host
+CC       mRNAs, targeting them for degradation (By similarity). Viral mRNAs less
+CC       susceptible to nsp1-mediated inhibition of translation, because of
+CC       their 5'-end leader sequence (PubMed:32908316). By suppressing host
+CC       gene expression, nsp1 facilitates efficient viral gene expression in
+CC       infected cells and evasion from host immune response (By similarity).
+CC       {ECO:0000250|UniProtKB:P0C6X7, ECO:0000269|PubMed:32680882,
+CC       ECO:0000269|PubMed:32908316, ECO:0000269|PubMed:32979938}.
+CC   -!- FUNCTION: [Non-structural protein 2]: May play a role in the modulation
+CC       of host cell survival signaling pathway by interacting with host PHB
+CC       and PHB2. Indeed, these two proteins play a role in maintaining the
+CC       functional integrity of the mitochondria and protecting cells from
+CC       various stresses. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- FUNCTION: [Non-structural protein 3]: Responsible for the cleavages
+CC       located at the N-terminus of the replicase polyprotein. Participates
+CC       together with nsp4 in the assembly of virally-induced cytoplasmic
+CC       double-membrane vesicles necessary for viral replication (By
+CC       similarity). Antagonizes innate immune induction of type I interferon
+CC       by blocking the phosphorylation, dimerization and subsequent nuclear
+CC       translocation of host IRF3 (By similarity) (PubMed:32733001). Prevents
+CC       also host NF-kappa-B signaling (By similarity). In addition, PL-PRO
+CC       possesses a deubiquitinating/deISGylating activity and processes both
+CC       'Lys-48'- and 'Lys-63'-linked polyubiquitin chains from cellular
+CC       substrates. Cleaves preferentially ISG15 from substrates in vitro
+CC       (PubMed:32726803). Can play a role in host ADP-ribosylation by binding
+CC       ADP-ribose (PubMed:32578982). {ECO:0000250|UniProtKB:P0C6X7,
+CC       ECO:0000269|PubMed:32578982, ECO:0000269|PubMed:32726803,
+CC       ECO:0000269|PubMed:32733001}.
+CC   -!- FUNCTION: [Non-structural protein 4]: Participates in the assembly of
+CC       virally-induced cytoplasmic double-membrane vesicles necessary for
+CC       viral replication. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- FUNCTION: [3C-like proteinase]: Cleaves the C-terminus of replicase
+CC       polyprotein at 11 sites (PubMed:32321856). Recognizes substrates
+CC       containing the core sequence [ILMVF]-Q-|-[SGACN] (PubMed:32198291,
+CC       PubMed:32272481). Also able to bind an ADP-ribose-1''-phosphate (ADRP)
+CC       (By similarity) (PubMed:32198291, PubMed:32272481).
+CC       {ECO:0000250|UniProtKB:P0C6X7, ECO:0000269|PubMed:32198291,
+CC       ECO:0000269|PubMed:32272481, ECO:0000269|PubMed:32321856}.
+CC   -!- FUNCTION: [Non-structural protein 6]: Plays a role in the initial
+CC       induction of autophagosomes from host reticulum endoplasmic (By
+CC       similarity). Later, limits the expansion of these phagosomes that are
+CC       no longer able to deliver viral components to lysosomes (By
+CC       similarity). Binds to host TBK1 without affecting TBK1 phosphorylation;
+CC       the interaction with TBK1 decreases IRF3 phosphorylation, which leads
+CC       to reduced IFN-beta production (PubMed:32979938).
+CC       {ECO:0000250|UniProtKB:P0C6X7, ECO:0000269|PubMed:32979938}.
+CC   -!- FUNCTION: [Non-structural protein 7]: Plays a role in viral RNA
+CC       synthesis (PubMed:32358203, PubMed:32277040, PubMed:32438371,
+CC       PubMed:32526208). Forms a hexadecamer with nsp8 (8 subunits of each)
+CC       that may participate in viral replication by acting as a primase.
+CC       Alternatively, may synthesize substantially longer products than
+CC       oligonucleotide primers (By similarity). {ECO:0000250|UniProtKB:P0C6X7,
+CC       ECO:0000269|PubMed:32277040, ECO:0000269|PubMed:32358203,
+CC       ECO:0000269|PubMed:32438371, ECO:0000269|PubMed:32526208}.
+CC   -!- FUNCTION: [Non-structural protein 8]: Plays a role in viral RNA
+CC       synthesis (PubMed:32358203, PubMed:32277040, PubMed:32438371,
+CC       PubMed:32526208). Forms a hexadecamer with nsp7 (8 subunits of each)
+CC       that may participate in viral replication by acting as a primase.
+CC       Alternatively, may synthesize substantially longer products than
+CC       oligonucleotide primers (By similarity). {ECO:0000250|UniProtKB:P0C6X7,
+CC       ECO:0000269|PubMed:32277040, ECO:0000269|PubMed:32358203,
+CC       ECO:0000269|PubMed:32438371, ECO:0000269|PubMed:32526208}.
+CC   -!- FUNCTION: [Non-structural protein 9]: May participate in viral
+CC       replication by acting as a ssRNA-binding protein.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- FUNCTION: [Non-structural protein 10]: Plays a pivotal role in viral
+CC       transcription by stimulating both nsp14 3'-5' exoribonuclease and nsp16
+CC       2'-O-methyltransferase activities. Therefore plays an essential role in
+CC       viral mRNAs cap methylation. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- CATALYTIC ACTIVITY: [Non-structural protein 3]:
+CC       Reaction=Thiol-dependent hydrolysis of ester, thioester, amide, peptide
+CC         and isopeptide bonds formed by the C-terminal Gly of ubiquitin (a 76-
+CC         residue protein attached to proteins as an intracellular targeting
+CC         signal).; EC=3.4.19.12; Evidence={ECO:0000269|PubMed:32726803};
+CC   -!- CATALYTIC ACTIVITY: [3C-like proteinase]:
+CC       Reaction=TSAVLQ-|-SGFRK-NH(2) and SGVTFQ-|-GKFKK the two peptides
+CC         corresponding to the two self-cleavage sites of the SARS 3C-like
+CC         proteinase are the two most reactive peptide substrates. The enzyme
+CC         exhibits a strong preference for substrates containing Gln at P1
+CC         position and Leu at P2 position.; EC=3.4.22.69;
+CC         Evidence={ECO:0000269|PubMed:32198291, ECO:0000269|PubMed:32272481,
+CC         ECO:0000269|PubMed:32321856};
+CC   -!- ACTIVITY REGULATION: [Non-structural protein 3]: Inhibited in vitro by
+CC       GRL-0617. {ECO:0000269|PubMed:32726803}.
+CC   -!- ACTIVITY REGULATION: [3C-like proteinase]: Inhibited by pyridone-
+CC       containing alpha-ketoamides compounds 13a and 13b. In turn, alpha-
+CC       ketoamide 13b (tert-butyl (1-((S)-1-(((S)-4-(benzylamino)-3,4-dioxo-1-
+CC       ((S)-2-oxopyrrolidin-3-yl)butan-2-yl)amino)-3-cyclopropyl-1-oxopropan-
+CC       2-yl)-2-oxo-1,2-dihydropyridin-3-yl)carbamate) inhibits SARS-CoV-2
+CC       replication in human lung cells (PubMed:32198291). Inhibited ex vivo by
+CC       michael acceptor inhibitor N3 (PubMed:32272481). Inhibited ex vivo by
+CC       compound 11a and 11b (PubMed:32321856). {ECO:0000269|PubMed:32198291,
+CC       ECO:0000269|PubMed:32272481, ECO:0000269|PubMed:32321856}.
+CC   -!- SUBUNIT: [Non-structural protein 2]: Interacts with host PHB and PHB2.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBUNIT: [3C-like proteinase]: 3CL-PRO exists as monomer and homodimer.
+CC       Only the homodimer shows catalytic activity.
+CC       {ECO:0000269|PubMed:32198291}.
+CC   -!- SUBUNIT: [Non-structural protein 4]: Interacts with PL-PRO and nsp6.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBUNIT: [Non-structural protein 6]: Interacts with host TBK1; this
+CC       interaction decreases IRF3 phosphorylation by 57%, which leads to
+CC       reduced IFN-beta production. {ECO:0000269|PubMed:32979938}.
+CC   -!- SUBUNIT: [Non-structural protein 7]: Eight copies of nsp7 and eight
+CC       copies of nsp8 assemble to form a heterohexadecamer dsRNA-encircling
+CC       ring structure (By similarity). Interacts with RNA-directed RNA
+CC       polymerase (PubMed:32277040, PubMed:32358203, PubMed:32438371,
+CC       PubMed:32526208). {ECO:0000250|UniProtKB:P0C6X7,
+CC       ECO:0000269|PubMed:32277040, ECO:0000269|PubMed:32358203,
+CC       ECO:0000269|PubMed:32438371, ECO:0000269|PubMed:32526208}.
+CC   -!- SUBUNIT: [Non-structural protein 8]: Eight copies of nsp7 and eight
+CC       copies of nsp8 assemble to form a heterohexadecamer dsRNA-encircling
+CC       ring structure (By similarity). Interacts with RNA-directed RNA
+CC       polymerase (PubMed:32277040, PubMed:32358203, PubMed:32438371,
+CC       PubMed:32526208). {ECO:0000250|UniProtKB:P0C6X7,
+CC       ECO:0000269|PubMed:32277040, ECO:0000269|PubMed:32358203,
+CC       ECO:0000269|PubMed:32438371, ECO:0000269|PubMed:32526208}.
+CC   -!- SUBUNIT: [Non-structural protein 9]: Is a dimer.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBUNIT: [Non-structural protein 10]: Forms a dodecamer and interacts
+CC       with nsp14 and nsp16; these interactions enhance nsp14 and nsp16
+CC       enzymatic activities. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- INTERACTION:
+CC       PRO_0000449645; O75347: TBCA; Xeno; NbExp=2; IntAct=EBI-25475882, EBI-2686341;
+CC   -!- SUBCELLULAR LOCATION: [Host translation inhibitor nsp1]: Host cytoplasm
+CC       {ECO:0000269|PubMed:33060197}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 2]: Host cytoplasm
+CC       {ECO:0000269|PubMed:33060197}. Host endosome
+CC       {ECO:0000269|PubMed:33060197}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 3]: Host membrane
+CC       {ECO:0000250|UniProtKB:P0C6X7}; Multi-pass membrane protein
+CC       {ECO:0000250|UniProtKB:P0C6X7}. Host cytoplasm
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 4]: Host membrane
+CC       {ECO:0000250|UniProtKB:P0C6X7}; Multi-pass membrane protein
+CC       {ECO:0000250|UniProtKB:P0C6X7}. Host cytoplasm
+CC       {ECO:0000250|UniProtKB:P0C6X7}. Note=Localizes in virally-induced
+CC       cytoplasmic double-membrane vesicles. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBCELLULAR LOCATION: [3C-like proteinase]: Host cytoplasm
+CC       {ECO:0000269|PubMed:33060197}. Host Golgi apparatus
+CC       {ECO:0000269|PubMed:33060197}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 6]: Host membrane
+CC       {ECO:0000250|UniProtKB:P0C6X7}; Multi-pass membrane protein
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 7]: Host cytoplasm, host
+CC       perinuclear region {ECO:0000250|UniProtKB:P0C6X9}. Host cytoplasm
+CC       {ECO:0000269|PubMed:33060197}. Host endoplasmic reticulum
+CC       {ECO:0000269|PubMed:33060197}. Note=nsp7, nsp8, nsp9 and nsp10 are
+CC       localized in cytoplasmic foci, largely perinuclear. Late in infection,
+CC       they merge into confluent complexes. {ECO:0000250|UniProtKB:P0C6X9}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 8]: Host cytoplasm, host
+CC       perinuclear region {ECO:0000250|UniProtKB:P0C6X9}. Host cytoplasm
+CC       {ECO:0000269|PubMed:33060197}. Host endoplasmic reticulum
+CC       {ECO:0000269|PubMed:33060197}. Note=nsp7, nsp8, nsp9 and nsp10 are
+CC       localized in cytoplasmic foci, largely perinuclear. Late in infection,
+CC       they merge into confluent complexes. {ECO:0000250|UniProtKB:P0C6X9}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 9]: Host cytoplasm, host
+CC       perinuclear region {ECO:0000250|UniProtKB:P0C6X9}. Host cytoplasm
+CC       {ECO:0000269|PubMed:33060197}. Host endoplasmic reticulum
+CC       {ECO:0000269|PubMed:33060197}. Note=nsp7, nsp8, nsp9 and nsp10 are
+CC       localized in cytoplasmic foci, largely perinuclear. Late in infection,
+CC       they merge into confluent complexes. {ECO:0000250|UniProtKB:P0C6X9}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 10]: Host cytoplasm, host
+CC       perinuclear region {ECO:0000250|UniProtKB:P0C6X9}. Host cytoplasm
+CC       {ECO:0000269|PubMed:33060197}. Host endoplasmic reticulum
+CC       {ECO:0000269|PubMed:33060197}. Note=nsp7, nsp8, nsp9 and nsp10 are
+CC       localized in cytoplasmic foci, largely perinuclear. Late in infection,
+CC       they merge into confluent complexes. {ECO:0000250|UniProtKB:P0C6X9}.
+CC   -!- ALTERNATIVE PRODUCTS:
+CC       Event=Ribosomal frameshifting; Named isoforms=2;
+CC         Comment=Normal translation results in Replicase polyprotein 1a.
+CC         Ribosomal frameshifting at the end of this protein occurs at low
+CC         frequency and produces Replicase polyprotein 1ab.;
+CC       Name=Replicase polyprotein 1a;
+CC         IsoId=P0DTC1-1; Sequence=Displayed;
+CC       Name=Replicase polyprotein 1ab;
+CC         IsoId=P0DTD1-1; Sequence=External;
+CC   -!- DOMAIN: The hydrophobic domains (HD) could mediate the membrane
+CC       association of the replication complex and thereby alter the
+CC       architecture of the host cell membrane. {ECO:0000250|UniProtKB:P0C6U8}.
+CC   -!- PTM: Specific enzymatic cleavages in vivo by its own proteases yield
+CC       mature proteins. 3CL-PRO and PL-PRO proteinases are autocatalytically
+CC       processed. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- POLYMORPHISM: Variant B.1.1.7 is also called Variant Of Concern (VOC)
+CC       202012/01, Variant Under Investigation (VUI) 202012/01, or 20B/501Y.V1.
+CC       {ECO:0000305|PubMed:33413740}.
+CC   -!- MISCELLANEOUS: [Replicase polyprotein 1a]: Produced by conventional
+CC       translation. {ECO:0000250|UniProtKB:P0C6U8}.
+CC   -!- SIMILARITY: Belongs to the coronaviruses polyprotein 1ab family.
+CC       {ECO:0000305}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; MN908947; QHD43415.1; ALT_FRAME; Genomic_RNA.
+DR   RefSeq; YP_009725295.1; NC_045512.2.
+DR   PDB; 6Y2E; X-ray; 1.75 A; A=3264-3569.
+DR   PDB; 6Y2F; X-ray; 2.16 A; A=3264-3569.
+DR   PDB; 6Y2G; X-ray; 2.16 A; A=3264-3569.
+DR   PDB; 6YHU; X-ray; 2.00 A; A/C=3860-3930, B/D=4018-4134.
+DR   PDB; 6YYT; EM; 2.90 A; B=3948-4133, C=3860-3932.
+DR   PDB; 7BV2; EM; 2.50 A; C=3860-3942, B=3943-4140.
+DR   PDB; 7C33; X-ray; 3.83 A; A/B/C/D=1025-1195.
+DR   PDB; 7CZ4; X-ray; 2.64 A; A/B=1025-1195.
+DR   PDB; 7D3I; X-ray; 2.00 A; A=3264-3569.
+DR   PDB; 7D47; X-ray; 1.97 A; A/B=1564-1880.
+DR   PDB; 7D6H; X-ray; 1.60 A; A=1563-1878.
+DR   PDB; 7D7T; X-ray; 3.15 A; A/B=1563-1878.
+DR   PDB; 7JIR; X-ray; 2.09 A; A=1564-1878.
+DR   PDB; 7JIT; X-ray; 1.95 A; A=1564-1878.
+DR   PDB; 7JIV; X-ray; 2.05 A; A=1564-1878.
+DR   PDB; 7JIW; X-ray; 2.30 A; A=1564-1878.
+DR   PDB; 7JN2; X-ray; 1.93 A; A=1564-1878.
+DR   PDB; 7JRN; X-ray; 2.48 A; A/J=1564-1878.
+DR   PDB; 7KOJ; X-ray; 2.02 A; A=1564-1878.
+DR   PDB; 7KOK; X-ray; 2.00 A; A=1564-1878.
+DR   PDB; 7KOL; X-ray; 2.58 A; A=1564-1878.
+DR   PDB; 7KRX; X-ray; 2.72 A; A=1564-1878.
+DR   PDBsum; 6Y2E; -.
+DR   PDBsum; 6Y2F; -.
+DR   PDBsum; 6Y2G; -.
+DR   PDBsum; 6YHU; -.
+DR   PDBsum; 6YYT; -.
+DR   PDBsum; 7BV2; -.
+DR   PDBsum; 7C33; -.
+DR   PDBsum; 7CZ4; -.
+DR   PDBsum; 7D3I; -.
+DR   PDBsum; 7D47; -.
+DR   PDBsum; 7D6H; -.
+DR   PDBsum; 7D7T; -.
+DR   PDBsum; 7JIR; -.
+DR   PDBsum; 7JIT; -.
+DR   PDBsum; 7JIV; -.
+DR   PDBsum; 7JIW; -.
+DR   PDBsum; 7JN2; -.
+DR   PDBsum; 7JRN; -.
+DR   PDBsum; 7KOJ; -.
+DR   PDBsum; 7KOK; -.
+DR   PDBsum; 7KOL; -.
+DR   PDBsum; 7KRX; -.
+DR   SASBDB; P0DTC1; -.
+DR   SMR; P0DTC1; -.
+DR   BioGRID; 4383866; 4.
+DR   IntAct; P0DTC1; 38.
+DR   DrugBank; DB15797; GC-373.
+DR   DrugBank; DB15796; GC-376 free acid.
+DR   GeneID; 43740578; -.
+DR   Reactome; R-HSA-9694271; Assembly of the SARS-CoV-2 Replication-Transcription Complex (RTC).
+DR   Reactome; R-HSA-9694301; Maturation of replicase proteins.
+DR   Reactome; R-HSA-9694676; Translation of Replicase and Assembly of the Replication Transcription Complex.
+DR   Reactome; R-HSA-9694686; Replication of the SARS-CoV-2 genome.
+DR   Reactome; R-HSA-9694786; Transcription of SARS-CoV-2 sgRNAs.
+DR   Proteomes; UP000464024; Genome.
+DR   GO; GO:0039714; C:cytoplasmic viral factory; ISS:UniProtKB.
+DR   GO; GO:0005829; C:cytosol; TAS:Reactome.
+DR   GO; GO:0062243; C:double membrane vesicle viral factory outer membrane; TAS:Reactome.
+DR   GO; GO:0030430; C:host cell cytoplasm; ISS:UniProtKB.
+DR   GO; GO:0044165; C:host cell endoplasmic reticulum; IEA:UniProtKB-SubCell.
+DR   GO; GO:0044174; C:host cell endosome; IEA:UniProtKB-SubCell.
+DR   GO; GO:0044177; C:host cell Golgi apparatus; IEA:UniProtKB-SubCell.
+DR   GO; GO:0044220; C:host cell perinuclear region of cytoplasm; IEA:UniProtKB-SubCell.
+DR   GO; GO:0016021; C:integral component of membrane; IEA:UniProtKB-KW.
+DR   GO; GO:0004197; F:cysteine-type endopeptidase activity; ISS:UniProtKB.
+DR   GO; GO:0008234; F:cysteine-type peptidase activity; IDA:UniProtKB.
+DR   GO; GO:0004519; F:endonuclease activity; IEA:UniProtKB-KW.
+DR   GO; GO:0002151; F:G-quadruplex RNA binding; IEA:InterPro.
+DR   GO; GO:0019785; F:ISG15-specific protease activity; ISS:UniProtKB.
+DR   GO; GO:0046983; F:protein dimerization activity; ISS:UniProtKB.
+DR   GO; GO:0042803; F:protein homodimerization activity; IDA:UniProtKB.
+DR   GO; GO:0003727; F:single-stranded RNA binding; ISS:UniProtKB.
+DR   GO; GO:0004843; F:thiol-dependent ubiquitin-specific protease activity; IEA:UniProtKB-EC.
+DR   GO; GO:0016740; F:transferase activity; IEA:InterPro.
+DR   GO; GO:0008270; F:zinc ion binding; IEA:InterPro.
+DR   GO; GO:0039595; P:induction by virus of catabolism of host mRNA; IEA:UniProtKB-KW.
+DR   GO; GO:0039520; P:induction by virus of host autophagy; IEA:UniProtKB-KW.
+DR   GO; GO:0039519; P:modulation by virus of host autophagy; ISS:UniProtKB.
+DR   GO; GO:0039648; P:modulation by virus of host protein ubiquitination; IEA:UniProtKB-KW.
+DR   GO; GO:0039690; P:positive stranded viral RNA replication; ISS:UniProtKB.
+DR   GO; GO:0016540; P:protein autoprocessing; ISS:UniProtKB.
+DR   GO; GO:0071108; P:protein K48-linked deubiquitination; ISS:UniProtKB.
+DR   GO; GO:0070536; P:protein K63-linked deubiquitination; ISS:UniProtKB.
+DR   GO; GO:0039548; P:suppression by virus of host IRF3 activity; ISS:UniProtKB.
+DR   GO; GO:0039579; P:suppression by virus of host ISG15 activity; ISS:UniProtKB.
+DR   GO; GO:0039644; P:suppression by virus of host NF-kappaB transcription factor activity; ISS:UniProtKB.
+DR   GO; GO:0039722; P:suppression by virus of host toll-like receptor signaling pathway; ISS:UniProtKB.
+DR   GO; GO:0039547; P:suppression by virus of host TRAF activity; ISS:UniProtKB.
+DR   GO; GO:0039604; P:suppression by virus of host translation; ISS:UniProtKB.
+DR   GO; GO:0039501; P:suppression by virus of host type I interferon production; ISS:UniProtKB.
+DR   GO; GO:0039502; P:suppression by virus of host type I interferon-mediated signaling pathway; ISS:UniProtKB.
+DR   GO; GO:0019079; P:viral genome replication; IEA:InterPro.
+DR   GO; GO:0019082; P:viral protein processing; IEA:InterPro.
+DR   GO; GO:0039694; P:viral RNA genome replication; ISS:UniProtKB.
+DR   CDD; cd21560; betaCoV-Nsp6; 1.
+DR   CDD; cd21666; betaCoV_Nsp5_Mpro; 1.
+DR   CDD; cd21516; cv_beta_Nsp2_SARS-like; 1.
+DR   CDD; cd21473; cv_Nsp4_TM; 1.
+DR   CDD; cd21563; Macro_cv_SUD-M_Nsp3-like; 1.
+DR   CDD; cd21557; Macro_X_Nsp3-like; 1.
+DR   CDD; cd21525; SUD_C_SARS-CoV_Nsp3; 1.
+DR   CDD; cd21467; Ubl1_cv_Nsp3_N-like; 1.
+DR   CDD; cd21466; Ubl2_cv_PLpro_N_Nsp3-like; 1.
+DR   Gene3D; 1.10.150.420; -; 1.
+DR   Gene3D; 1.10.1840.10; -; 1.
+DR   Gene3D; 1.10.8.1190; -; 1.
+DR   Gene3D; 1.10.8.370; -; 1.
+DR   Gene3D; 2.30.30.590; -; 1.
+DR   Gene3D; 2.40.10.10; -; 2.
+DR   Gene3D; 2.40.10.250; -; 1.
+DR   Gene3D; 2.40.10.290; -; 1.
+DR   Gene3D; 3.10.20.350; -; 1.
+DR   Gene3D; 3.10.20.540; -; 1.
+DR   Gene3D; 3.40.220.10; -; 1.
+DR   Gene3D; 3.40.220.20; -; 1.
+DR   Gene3D; 3.40.220.30; -; 1.
+DR   Gene3D; 3.40.50.11020; -; 1.
+DR   Gene3D; 3.90.70.90; -; 1.
+DR   InterPro; IPR043613; CoV_NSP2_C.
+DR   InterPro; IPR043611; CoV_NSP3_C.
+DR   InterPro; IPR043612; CoV_NSP4_N.
+DR   InterPro; IPR022733; DPUP_SUD_C_bCoV.
+DR   InterPro; IPR002589; Macro_dom.
+DR   InterPro; IPR043472; Macro_dom-like.
+DR   InterPro; IPR044371; Macro_X_NSP3-like.
+DR   InterPro; IPR042570; NAR_sf.
+DR   InterPro; IPR036333; NSP10_sf_CoV.
+DR   InterPro; IPR021590; NSP1_bCoV.
+DR   InterPro; IPR038030; NSP1_sf_bCoV.
+DR   InterPro; IPR043615; NSP2_N_CoV.
+DR   InterPro; IPR044389; NSP2_SARS-CoV-like.
+DR   InterPro; IPR024375; NSP3_bCoV.
+DR   InterPro; IPR024358; NSP3_N_bCoV.
+DR   InterPro; IPR032592; NSP3_NAR_bCoV.
+DR   InterPro; IPR038166; NSP3_PL2pro_sf_CoV.
+DR   InterPro; IPR038400; NSP3_SUD-M_sf_bCoV.
+DR   InterPro; IPR043478; NSP3_SUD-N_bCoV.
+DR   InterPro; IPR044357; NSP3_Ubl1_dom_CoV.
+DR   InterPro; IPR044353; Nsp3_Ubl2_dom_CoV.
+DR   InterPro; IPR038083; NSP3A-like.
+DR   InterPro; IPR032505; NSP4_C_CoV.
+DR   InterPro; IPR038123; NSP4_C_sf_CoV.
+DR   InterPro; IPR044367; NSP6_betaCoV.
+DR   InterPro; IPR043610; NSP6_CoV.
+DR   InterPro; IPR014828; NSP7_CoV.
+DR   InterPro; IPR037204; NSP7_sf_CoV.
+DR   InterPro; IPR014829; NSP8_CoV-like.
+DR   InterPro; IPR037230; NSP8_sf_CoV.
+DR   InterPro; IPR014822; NSP9_CoV.
+DR   InterPro; IPR036499; NSP9_sf_CoV.
+DR   InterPro; IPR013016; Peptidase_C16_CoV.
+DR   InterPro; IPR008740; Peptidase_C30_CoV.
+DR   InterPro; IPR043477; Peptidase_C30_dom3_CoV.
+DR   InterPro; IPR009003; Peptidase_S1_PA.
+DR   InterPro; IPR043504; Peptidase_S1_PA_chymotrypsin.
+DR   InterPro; IPR043177; PLpro_N_sf_CoV.
+DR   InterPro; IPR043503; PLpro_palm_finger_dom_CoV.
+DR   InterPro; IPR043178; PLpro_thumb_sf_CoV.
+DR   InterPro; IPR018995; RNA_synth_NSP10_CoV.
+DR   Pfam; PF16251; bCoV_NAR; 1.
+DR   Pfam; PF11501; bCoV_NSP1; 1.
+DR   Pfam; PF12379; bCoV_NSP3_N; 1.
+DR   Pfam; PF12124; bCoV_SUD_C; 1.
+DR   Pfam; PF11633; bCoV_SUD_M; 1.
+DR   Pfam; PF09401; CoV_NSP10; 1.
+DR   Pfam; PF19212; CoV_NSP2_C; 1.
+DR   Pfam; PF19211; CoV_NSP2_N; 1.
+DR   Pfam; PF19218; CoV_NSP3_C; 1.
+DR   Pfam; PF16348; CoV_NSP4_C; 1.
+DR   Pfam; PF19217; CoV_NSP4_N; 1.
+DR   Pfam; PF19213; CoV_NSP6; 1.
+DR   Pfam; PF08716; CoV_NSP7; 1.
+DR   Pfam; PF08717; CoV_NSP8; 1.
+DR   Pfam; PF08710; CoV_NSP9; 1.
+DR   Pfam; PF08715; CoV_peptidase; 1.
+DR   Pfam; PF01661; Macro; 1.
+DR   Pfam; PF05409; Peptidase_C30; 1.
+DR   SMART; SM00506; A1pp; 1.
+DR   SUPFAM; SSF101816; SSF101816; 1.
+DR   SUPFAM; SSF140367; SSF140367; 1.
+DR   SUPFAM; SSF143076; SSF143076; 1.
+DR   SUPFAM; SSF144246; SSF144246; 1.
+DR   SUPFAM; SSF159936; SSF159936; 1.
+DR   SUPFAM; SSF160099; SSF160099; 1.
+DR   SUPFAM; SSF50494; SSF50494; 1.
+DR   SUPFAM; SSF52949; SSF52949; 1.
+DR   PROSITE; PS51942; BCOV_NSP3C_C; 1.
+DR   PROSITE; PS51941; BCOV_NSP3C_M; 1.
+DR   PROSITE; PS51945; BCOV_NSP3E_NAB; 1.
+DR   PROSITE; PS51952; COV_EXON_MTASE_COACT; 1.
+DR   PROSITE; PS51943; COV_NSP3A_UBL; 1.
+DR   PROSITE; PS51944; COV_NSP3D_UBL; 1.
+DR   PROSITE; PS51946; COV_NSP4C; 1.
+DR   PROSITE; PS51949; COV_NSP7; 1.
+DR   PROSITE; PS51950; COV_NSP8; 1.
+DR   PROSITE; PS51951; COV_NSP9_SSRNA_BD; 1.
+DR   PROSITE; PS00867; CPSASE_2; 1.
+DR   PROSITE; PS51442; M_PRO; 1.
+DR   PROSITE; PS51154; MACRO; 1.
+DR   PROSITE; PS51124; PEPTIDASE_C16; 1.
+DR   PROSITE; PS51940; SARS_NSP3C_N; 1.
+PE   1: Evidence at protein level;
+KW   3D-structure; Activation of host autophagy by virus;
+KW   Decay of host mRNAs by virus; Endonuclease;
+KW   Eukaryotic host gene expression shutoff by virus;
+KW   Eukaryotic host translation shutoff by virus; Host cytoplasm;
+KW   Host endoplasmic reticulum; Host endosome;
+KW   Host gene expression shutoff by virus; Host Golgi apparatus; Host membrane;
+KW   Host mRNA suppression by virus; Host-virus interaction; Hydrolase;
+KW   Inhibition of host innate immune response by virus;
+KW   Inhibition of host interferon signaling pathway by virus;
+KW   Inhibition of host IRF3 by virus; Inhibition of host ISG15 by virus;
+KW   Inhibition of host RLR pathway by virus; Membrane; Metal-binding;
+KW   Modulation of host ubiquitin pathway by viral deubiquitinase;
+KW   Modulation of host ubiquitin pathway by virus; Nuclease; Protease;
+KW   Reference proteome; Repeat; Ribosomal frameshifting; RNA-binding;
+KW   Thiol protease; Transmembrane; Transmembrane helix;
+KW   Ubl conjugation pathway; Viral immunoevasion; Zinc; Zinc-finger.
+FT   CHAIN           1..4405
+FT                   /note="Replicase polyprotein 1a"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6U8"
+FT                   /id="PRO_0000449634"
+FT   CHAIN           1..180
+FT                   /note="Host translation inhibitor nsp1"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449635"
+FT   CHAIN           181..818
+FT                   /note="Non-structural protein 2"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449636"
+FT   CHAIN           819..2763
+FT                   /note="Non-structural protein 3"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449637"
+FT   CHAIN           2764..3263
+FT                   /note="Non-structural protein 4"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449638"
+FT   CHAIN           3264..3569
+FT                   /note="3C-like proteinase"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449639"
+FT   CHAIN           3570..3859
+FT                   /note="Non-structural protein 6"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449640"
+FT   CHAIN           3860..3942
+FT                   /note="Non-structural protein 7"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449641"
+FT   CHAIN           3943..4140
+FT                   /note="Non-structural protein 8"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449642"
+FT   CHAIN           4141..4253
+FT                   /note="Non-structural protein 9"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449643"
+FT   CHAIN           4254..4392
+FT                   /note="Non-structural protein 10"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449644"
+FT   CHAIN           4393..4405
+FT                   /note="Non-structural protein 11"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449645"
+FT   TRANSMEM        2226..2246
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        2318..2338
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        2339..2359
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        2361..2381
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        2776..2796
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3045..3065
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3077..3097
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3100..3120
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3128..3148
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3165..3185
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3587..3607
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3609..3629
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3635..3655
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3674..3694
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3730..3750
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3779..3799
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   DOMAIN          820..929
+FT                   /note="Ubiquitin-like 1"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00214"
+FT   DOMAIN          1025..1194
+FT                   /note="Macro 1"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00490"
+FT   DOMAIN          1231..1359
+FT                   /note="Macro 2"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00490"
+FT   DOMAIN          1367..1494
+FT                   /note="Macro 3"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00490"
+FT   DOMAIN          1496..1561
+FT                   /note="DPUP"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01289"
+FT   DOMAIN          1565..1620
+FT                   /note="Ubiquitin-like 2"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00214"
+FT   DOMAIN          1634..1898
+FT                   /note="Peptidase C16"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00444"
+FT   DOMAIN          1911..2021
+FT                   /note="Nucleic acid-binding"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01290"
+FT   DOMAIN          3165..3263
+FT                   /note="Nsp4C"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01291"
+FT   DOMAIN          3264..3569
+FT                   /note="Peptidase C30"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00772"
+FT   DOMAIN          3860..3942
+FT                   /note="RdRp Nsp7 cofactor"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01294"
+FT   DOMAIN          3943..4140
+FT                   /note="RdRp Nsp8 cofactor"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01295"
+FT   DOMAIN          4141..4253
+FT                   /note="Nsp9 ssRNA-binding"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01296"
+FT   DOMAIN          4254..4392
+FT                   /note="ExoN/MTase coactivator"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01297"
+FT   ZN_FING         1752..1789
+FT                   /note="C4-type"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00444"
+FT   REGION          154..180
+FT                   /note="Binding to 40s ribosome mRNA entry channel"
+FT                   /evidence="ECO:0000269|PubMed:32680882"
+FT   ACT_SITE        1674
+FT                   /note="For PL1-PRO activity"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00444,
+FT                   ECO:0000269|PubMed:32726803"
+FT   ACT_SITE        1835
+FT                   /note="For PL2-PRO activity"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00444"
+FT   ACT_SITE        3304
+FT                   /note="For 3CL-PRO activity"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00772,
+FT                   ECO:0000269|PubMed:32198291"
+FT   ACT_SITE        3408
+FT                   /note="For 3CL-PRO activity"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00772,
+FT                   ECO:0000269|PubMed:32198291"
+FT   METAL           4327
+FT                   /note="Zinc 1"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01297"
+FT   METAL           4330
+FT                   /note="Zinc 1"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01297"
+FT   METAL           4336
+FT                   /note="Zinc 1"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01297"
+FT   METAL           4343
+FT                   /note="Zinc 1"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01297"
+FT   METAL           4370
+FT                   /note="Zinc 2"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01297"
+FT   METAL           4373
+FT                   /note="Zinc 2"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01297"
+FT   METAL           4381
+FT                   /note="Zinc 2"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01297"
+FT   METAL           4383
+FT                   /note="Zinc 2"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01297"
+FT   SITE            180..181
+FT                   /note="Cleavage; by PL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            818..819
+FT                   /note="Cleavage; by PL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            2763..2764
+FT                   /note="Cleavage; by PL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            3263..3264
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            3569..3570
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            3859..3860
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            3942..3943
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            4140..4141
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            4253..4254
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            4392..4393
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   VARIANT         1001
+FT                   /note="T -> I (in strain: B.1.1.7)"
+FT                   /evidence="ECO:0000305|PubMed:33413740"
+FT   VARIANT         1708
+FT                   /note="A -> D (in strain: B.1.1.7)"
+FT                   /evidence="ECO:0000305|PubMed:33413740"
+FT   VARIANT         2230
+FT                   /note="I -> T (in strain: B.1.1.7)"
+FT                   /evidence="ECO:0000305|PubMed:33413740"
+FT   VARIANT         3675..3677
+FT                   /note="Missing (in strain: B.1.1.7)"
+FT                   /evidence="ECO:0000305|PubMed:33413740"
+FT   MUTAGEN         154..157
+FT                   /note="YEDF->AEDA: Complete loss of ribosome binding and
+FT                   cellular translation inhibition."
+FT                   /evidence="ECO:0000269|PubMed:32908316"
+FT   MUTAGEN         164..165
+FT                   /note="KH->AA: Complete loss of ribosome binding and
+FT                   cellular translation inhibition."
+FT                   /evidence="ECO:0000269|PubMed:32908316"
+FT   MUTAGEN         164
+FT                   /note="K->A: Complete loss of ribosome binding and cellular
+FT                   translation inhibition."
+FT                   /evidence="ECO:0000269|PubMed:32680882"
+FT   MUTAGEN         165
+FT                   /note="H->A: Complete loss of ribosome binding and cellular
+FT                   translation inhibition."
+FT                   /evidence="ECO:0000269|PubMed:32680882"
+FT   MUTAGEN         171..175
+FT                   /note="RELMR->EELME: Complete loss of ribosome binding and
+FT                   cellular translation inhibition."
+FT                   /evidence="ECO:0000269|PubMed:32908316"
+FT   MUTAGEN         1629
+FT                   /note="V->A: Partial loss of ISG15 cleavage in vitro."
+FT                   /evidence="ECO:0000269|PubMed:32726803"
+FT   MUTAGEN         1632
+FT                   /note="F->A: Partial loss of ISG15 cleavage in vitro."
+FT                   /evidence="ECO:0000269|PubMed:32726803"
+FT   MUTAGEN         1638
+FT                   /note="T->A: Partial loss of ubiquitin cleavage in vitro;
+FT                   no effect on ISG15 cleavage in vitro."
+FT                   /evidence="ECO:0000269|PubMed:32726803"
+FT   MUTAGEN         1638
+FT                   /note="T->L: Increased cleavage of ubiquitin in vitro; no
+FT                   effect on ISG15 cleavage in vitro."
+FT                   /evidence="ECO:0000269|PubMed:32726803"
+FT   MUTAGEN         1674
+FT                   /note="C->S: Complete loss of PL-pro activity."
+FT                   /evidence="ECO:0000269|PubMed:32726803"
+FT   MUTAGEN         1831
+FT                   /note="Y->G,T: Reduced inhibition by GRL-0617."
+FT                   /evidence="ECO:0000269|PubMed:32726803"
+FT   HELIX           3861..3878
+FT                   /evidence="ECO:0007744|PDB:6YHU"
+FT   HELIX           3881..3883
+FT                   /evidence="ECO:0007744|PDB:6YHU"
+FT   HELIX           3885..3899
+FT                   /evidence="ECO:0007744|PDB:6YHU"
+FT   HELIX           3904..3919
+FT                   /evidence="ECO:0007744|PDB:6YHU"
+FT   TURN            3922..3924
+FT                   /evidence="ECO:0007744|PDB:6YHU"
+FT   HELIX           3927..3929
+FT                   /evidence="ECO:0007744|PDB:6YHU"
+FT   HELIX           4019..4040
+FT                   /evidence="ECO:0007744|PDB:6YHU"
+FT   HELIX           4043..4053
+FT                   /evidence="ECO:0007744|PDB:6YHU"
+FT   STRAND          4057..4060
+FT                   /evidence="ECO:0007744|PDB:6YHU"
+FT   STRAND          4070..4074
+FT                   /evidence="ECO:0007744|PDB:6YHU"
+FT   HELIX           4077..4083
+FT                   /evidence="ECO:0007744|PDB:6YHU"
+FT   STRAND          4088..4091
+FT                   /evidence="ECO:0007744|PDB:6YHU"
+FT   STRAND          4094..4102
+FT                   /evidence="ECO:0007744|PDB:6YHU"
+FT   HELIX           4111..4113
+FT                   /evidence="ECO:0007744|PDB:6YHU"
+FT   TURN            4116..4118
+FT                   /evidence="ECO:0007744|PDB:6YHU"
+FT   HELIX           4119..4121
+FT                   /evidence="ECO:0007744|PDB:6YHU"
+FT   STRAND          4124..4132
+FT                   /evidence="ECO:0007744|PDB:6YHU"
+SQ   SEQUENCE   4405 AA;  489989 MW;  7F8A21148A7A7E2A CRC64;
+     MESLVPGFNE KTHVQLSLPV LQVRDVLVRG FGDSVEEVLS EARQHLKDGT CGLVEVEKGV
+     LPQLEQPYVF IKRSDARTAP HGHVMVELVA ELEGIQYGRS GETLGVLVPH VGEIPVAYRK
+     VLLRKNGNKG AGGHSYGADL KSFDLGDELG TDPYEDFQEN WNTKHSSGVT RELMRELNGG
+     AYTRYVDNNF CGPDGYPLEC IKDLLARAGK ASCTLSEQLD FIDTKRGVYC CREHEHEIAW
+     YTERSEKSYE LQTPFEIKLA KKFDTFNGEC PNFVFPLNSI IKTIQPRVEK KKLDGFMGRI
+     RSVYPVASPN ECNQMCLSTL MKCDHCGETS WQTGDFVKAT CEFCGTENLT KEGATTCGYL
+     PQNAVVKIYC PACHNSEVGP EHSLAEYHNE SGLKTILRKG GRTIAFGGCV FSYVGCHNKC
+     AYWVPRASAN IGCNHTGVVG EGSEGLNDNL LEILQKEKVN INIVGDFKLN EEIAIILASF
+     SASTSAFVET VKGLDYKAFK QIVESCGNFK VTKGKAKKGA WNIGEQKSIL SPLYAFASEA
+     ARVVRSIFSR TLETAQNSVR VLQKAAITIL DGISQYSLRL IDAMMFTSDL ATNNLVVMAY
+     ITGGVVQLTS QWLTNIFGTV YEKLKPVLDW LEEKFKEGVE FLRDGWEIVK FISTCACEIV
+     GGQIVTCAKE IKESVQTFFK LVNKFLALCA DSIIIGGAKL KALNLGETFV THSKGLYRKC
+     VKSREETGLL MPLKAPKEII FLEGETLPTE VLTEEVVLKT GDLQPLEQPT SEAVEAPLVG
+     TPVCINGLML LEIKDTEKYC ALAPNMMVTN NTFTLKGGAP TKVTFGDDTV IEVQGYKSVN
+     ITFELDERID KVLNEKCSAY TVELGTEVNE FACVVADAVI KTLQPVSELL TPLGIDLDEW
+     SMATYYLFDE SGEFKLASHM YCSFYPPDED EEEGDCEEEE FEPSTQYEYG TEDDYQGKPL
+     EFGATSAALQ PEEEQEEDWL DDDSQQTVGQ QDGSEDNQTT TIQTIVEVQP QLEMELTPVV
+     QTIEVNSFSG YLKLTDNVYI KNADIVEEAK KVKPTVVVNA ANVYLKHGGG VAGALNKATN
+     NAMQVESDDY IATNGPLKVG GSCVLSGHNL AKHCLHVVGP NVNKGEDIQL LKSAYENFNQ
+     HEVLLAPLLS AGIFGADPIH SLRVCVDTVR TNVYLAVFDK NLYDKLVSSF LEMKSEKQVE
+     QKIAEIPKEE VKPFITESKP SVEQRKQDDK KIKACVEEVT TTLEETKFLT ENLLLYIDIN
+     GNLHPDSATL VSDIDITFLK KDAPYIVGDV VQEGVLTAVV IPTKKAGGTT EMLAKALRKV
+     PTDNYITTYP GQGLNGYTVE EAKTVLKKCK SAFYILPSII SNEKQEILGT VSWNLREMLA
+     HAEETRKLMP VCVETKAIVS TIQRKYKGIK IQEGVVDYGA RFYFYTSKTT VASLINTLND
+     LNETLVTMPL GYVTHGLNLE EAARYMRSLK VPATVSVSSP DAVTAYNGYL TSSSKTPEEH
+     FIETISLAGS YKDWSYSGQS TQLGIEFLKR GDKSVYYTSN PTTFHLDGEV ITFDNLKTLL
+     SLREVRTIKV FTTVDNINLH TQVVDMSMTY GQQFGPTYLD GADVTKIKPH NSHEGKTFYV
+     LPNDDTLRVE AFEYYHTTDP SFLGRYMSAL NHTKKWKYPQ VNGLTSIKWA DNNCYLATAL
+     LTLQQIELKF NPPALQDAYY RARAGEAANF CALILAYCNK TVGELGDVRE TMSYLFQHAN
+     LDSCKRVLNV VCKTCGQQQT TLKGVEAVMY MGTLSYEQFK KGVQIPCTCG KQATKYLVQQ
+     ESPFVMMSAP PAQYELKHGT FTCASEYTGN YQCGHYKHIT SKETLYCIDG ALLTKSSEYK
+     GPITDVFYKE NSYTTTIKPV TYKLDGVVCT EIDPKLDNYY KKDNSYFTEQ PIDLVPNQPY
+     PNASFDNFKF VCDNIKFADD LNQLTGYKKP ASRELKVTFF PDLNGDVVAI DYKHYTPSFK
+     KGAKLLHKPI VWHVNNATNK ATYKPNTWCI RCLWSTKPVE TSNSFDVLKS EDAQGMDNLA
+     CEDLKPVSEE VVENPTIQKD VLECNVKTTE VVGDIILKPA NNSLKITEEV GHTDLMAAYV
+     DNSSLTIKKP NELSRVLGLK TLATHGLAAV NSVPWDTIAN YAKPFLNKVV STTTNIVTRC
+     LNRVCTNYMP YFFTLLLQLC TFTRSTNSRI KASMPTTIAK NTVKSVGKFC LEASFNYLKS
+     PNFSKLINII IWFLLLSVCL GSLIYSTAAL GVLMSNLGMP SYCTGYREGY LNSTNVTIAT
+     YCTGSIPCSV CLSGLDSLDT YPSLETIQIT ISSFKWDLTA FGLVAEWFLA YILFTRFFYV
+     LGLAAIMQLF FSYFAVHFIS NSWLMWLIIN LVQMAPISAM VRMYIFFASF YYVWKSYVHV
+     VDGCNSSTCM MCYKRNRATR VECTTIVNGV RRSFYVYANG GKGFCKLHNW NCVNCDTFCA
+     GSTFISDEVA RDLSLQFKRP INPTDQSSYI VDSVTVKNGS IHLYFDKAGQ KTYERHSLSH
+     FVNLDNLRAN NTKGSLPINV IVFDGKSKCE ESSAKSASVY YSQLMCQPIL LLDQALVSDV
+     GDSAEVAVKM FDAYVNTFSS TFNVPMEKLK TLVATAEAEL AKNVSLDNVL STFISAARQG
+     FVDSDVETKD VVECLKLSHQ SDIEVTGDSC NNYMLTYNKV ENMTPRDLGA CIDCSARHIN
+     AQVAKSHNIA LIWNVKDFMS LSEQLRKQIR SAAKKNNLPF KLTCATTRQV VNVVTTKIAL
+     KGGKIVNNWL KQLIKVTLVF LFVAAIFYLI TPVHVMSKHT DFSSEIIGYK AIDGGVTRDI
+     ASTDTCFANK HADFDTWFSQ RGGSYTNDKA CPLIAAVITR EVGFVVPGLP GTILRTTNGD
+     FLHFLPRVFS AVGNICYTPS KLIEYTDFAT SACVLAAECT IFKDASGKPV PYCYDTNVLE
+     GSVAYESLRP DTRYVLMDGS IIQFPNTYLE GSVRVVTTFD SEYCRHGTCE RSEAGVCVST
+     SGRWVLNNDY YRSLPGVFCG VDAVNLLTNM FTPLIQPIGA LDISASIVAG GIVAIVVTCL
+     AYYFMRFRRA FGEYSHVVAF NTLLFLMSFT VLCLTPVYSF LPGVYSVIYL YLTFYLTNDV
+     SFLAHIQWMV MFTPLVPFWI TIAYIICIST KHFYWFFSNY LKRRVVFNGV SFSTFEEAAL
+     CTFLLNKEMY LKLRSDVLLP LTQYNRYLAL YNKYKYFSGA MDTTSYREAA CCHLAKALND
+     FSNSGSDVLY QPPQTSITSA VLQSGFRKMA FPSGKVEGCM VQVTCGTTTL NGLWLDDVVY
+     CPRHVICTSE DMLNPNYEDL LIRKSNHNFL VQAGNVQLRV IGHSMQNCVL KLKVDTANPK
+     TPKYKFVRIQ PGQTFSVLAC YNGSPSGVYQ CAMRPNFTIK GSFLNGSCGS VGFNIDYDCV
+     SFCYMHHMEL PTGVHAGTDL EGNFYGPFVD RQTAQAAGTD TTITVNVLAW LYAAVINGDR
+     WFLNRFTTTL NDFNLVAMKY NYEPLTQDHV DILGPLSAQT GIAVLDMCAS LKELLQNGMN
+     GRTILGSALL EDEFTPFDVV RQCSGVTFQS AVKRTIKGTH HWLLLTILTS LLVLVQSTQW
+     SLFFFLYENA FLPFAMGIIA MSAFAMMFVK HKHAFLCLFL LPSLATVAYF NMVYMPASWV
+     MRIMTWLDMV DTSLSGFKLK DCVMYASAVV LLILMTARTV YDDGARRVWT LMNVLTLVYK
+     VYYGNALDQA ISMWALIISV TSNYSGVVTT VMFLARGIVF MCVEYCPIFF ITGNTLQCIM
+     LVYCFLGYFC TCYFGLFCLL NRYFRLTLGV YDYLVSTQEF RYMNSQGLLP PKNSIDAFKL
+     NIKLLGVGGK PCIKVATVQS KMSDVKCTSV VLLSVLQQLR VESSSKLWAQ CVQLHNDILL
+     AKDTTEAFEK MVSLLSVLLS MQGAVDINKL CEEMLDNRAT LQAIASEFSS LPSYAAFATA
+     QEAYEQAVAN GDSEVVLKKL KKSLNVAKSE FDRDAAMQRK LEKMADQAMT QMYKQARSED
+     KRAKVTSAMQ TMLFTMLRKL DNDALNNIIN NARDGCVPLN IIPLTTAAKL MVVIPDYNTY
+     KNTCDGTTFT YASALWEIQQ VVDADSKIVQ LSEISMDNSP NLAWPLIVTA LRANSAVKLQ
+     NNELSPVALR QMSCAAGTTQ TACTDDNALA YYNTTKGGRF VLALLSDLQD LKWARFPKSD
+     GTGTIYTELE PPCRFVTDTP KGPKVKYLYF IKGLNNLNRG MVLGSLAATV RLQAGNATEV
+     PANSTVLSFC AFAVDAAKAY KDYLASGGQP ITNCVKMLCT HTGTGQAITV TPEANMDQES
+     FGGASCCLYC RCHIDHPNPK GFCDLKGKYV QIPTTCANDP VGFTLKNTVC TVCGMWKGYG
+     CSCDQLREPM LQSADAQSFL NGFAV
+//
