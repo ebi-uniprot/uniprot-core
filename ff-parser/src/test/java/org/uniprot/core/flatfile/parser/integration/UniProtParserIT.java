@@ -44,7 +44,7 @@ class UniProtParserIT {
         assertNotNull(entry);
         assertEquals("P0DTC1", entry.getPrimaryAccession().getValue());
     }
-    
+
     @Test
     void testParseFile() {
         String filename = "src/test/resources/entryIT/A8EZU1_D6RDV7.dat";
