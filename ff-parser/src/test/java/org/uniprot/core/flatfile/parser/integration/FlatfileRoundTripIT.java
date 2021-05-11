@@ -92,7 +92,8 @@ class FlatfileRoundTripIT {
         "/entryIT/Q9U299.txl, false",
         "/entryIT/Q401N2.txl, false",
         "/entryIT/P87498.dat, true",
-        "/entryIT/A0A663DJA2.dat, true"
+        "/entryIT/A0A663DJA2.dat, true",
+        "/entryIT/P0DTC1.dat, true"
     })
     void roundTripTest(String fileName, boolean isPublic) {
         testFile(fileName, isPublic);
