@@ -123,9 +123,9 @@ class CCCatalyticActivityBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    void testNoXref() {
+    void testNoXrefWithMolecule() {
         String ccLine =
-                "CC   -!- CATALYTIC ACTIVITY:\n"
+                "CC   -!- CATALYTIC ACTIVITY: [3C-like proteinase]:\n"
                         + "CC       Reaction=Preferential cleavage of Arg-|-Xaa bonds in small"
                         + " molecule\n"
                         + "CC         substrates. Highly selective action to release kallidin"
@@ -134,6 +134,8 @@ class CCCatalyticActivityBuildTest extends CCBuildTestAbstr {
                         + " Leu-|-\n"
                         + "CC         Xaa.; EC=3.4.21.35;";
         CatalyticActivityComment comment = convert(ccLine + "\n");
+        assertNotNull(comment);
+        assertEquals("3C-like proteinase", comment.getMolecule());
         doTest(ccLine, comment);
     }
 

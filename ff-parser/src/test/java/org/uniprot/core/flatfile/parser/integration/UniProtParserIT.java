@@ -37,6 +37,15 @@ class UniProtParserIT {
     }
 
     @Test
+    void testParseWithCatalyticActivity() {
+        String filename = "/entryIT/P0DTC1.dat";
+        String entryStr = readEntryFromFile(filename);
+        UniProtKBEntry entry = UniProtParserHelper.parse(entryStr);
+        assertNotNull(entry);
+        assertEquals("P0DTC1", entry.getPrimaryAccession().getValue());
+    }
+
+    @Test
     void testParseFile() {
         String filename = "src/test/resources/entryIT/A8EZU1_D6RDV7.dat";
         UniProtEntryIterator iterator = UniProtParserHelper.parseFile(filename, "", "", "", "");
