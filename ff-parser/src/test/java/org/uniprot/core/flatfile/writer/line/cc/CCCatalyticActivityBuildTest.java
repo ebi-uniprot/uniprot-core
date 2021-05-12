@@ -134,6 +134,8 @@ class CCCatalyticActivityBuildTest extends CCBuildTestAbstr {
                         + " Leu-|-\n"
                         + "CC         Xaa.; EC=3.4.21.35;";
         CatalyticActivityComment comment = convert(ccLine + "\n");
+        assertNotNull(comment);
+        assertEquals("3C-like proteinase", comment.getMolecule());
         doTest(ccLine, comment);
     }
 
