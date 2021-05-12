@@ -23,7 +23,7 @@ public enum SubcellLocationNameMap implements Serializable {
     private static final long serialVersionUID = -9031742801112342533L;
     private Map<String, String> subcellularLocationMap = new HashMap<>();
     private static final String DEFAULT_FILE =
-            "ftp://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/docs/subcell.txt";
+            "https://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/complete/docs/subcell.txt";
 
     SubcellLocationNameMap() {
         loadSubcellularLocationMap(DEFAULT_FILE);
