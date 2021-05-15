@@ -888,6 +888,13 @@ public class CcLineModelListener extends CcLineParserBaseListener
         CatalyticActivity dd = new CatalyticActivity();
         cc.setObject(dd);
 
+        Cc_molecule2Context moleculeCtx = ctx.cc_molecule2();
+        if (moleculeCtx != null) {
+            String mol = moleculeCtx.getText();
+            if ((mol != null) && (mol.length() > 2))
+                dd.setMolecule(mol.substring(1, mol.length() - 1));
+        }
+
         Cc_cat_act_reaction_lineContext reactionLine = ctx.cc_cat_act_reaction_line();
         if (reactionLine != null) {
             CAReaction reaction = new CAReaction();
