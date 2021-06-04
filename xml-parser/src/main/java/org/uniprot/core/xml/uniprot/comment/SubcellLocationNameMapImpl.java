@@ -13,18 +13,14 @@ import org.uniprot.cv.subcell.SubcellularLocationFileReader;
 import com.google.common.base.Strings;
 
 /**
- *
  * @author jluo
  * @date: 4 Jun 2021
- *
-*/
-
+ */
 public class SubcellLocationNameMapImpl implements SubcellLocationNameMap {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8992760196010310897L;
-	private Map<String, String> subcellularLocationMap = new HashMap<>();
+    /** */
+    private static final long serialVersionUID = -8992760196010310897L;
+
+    private Map<String, String> subcellularLocationMap = new HashMap<>();
     private static final String DEFAULT_FILE =
             "https://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/complete/docs/subcell.txt";
 
@@ -33,14 +29,16 @@ public class SubcellLocationNameMapImpl implements SubcellLocationNameMap {
     }
 
     public SubcellLocationNameMapImpl(String subcellFile) {
-    	if(Strings.isNullOrEmpty(subcellFile)) {
-    		subcellFile = DEFAULT_FILE;
-    	}
-    	loadSubcellularLocationMap(subcellFile);
+        if (Strings.isNullOrEmpty(subcellFile)) {
+            subcellFile = DEFAULT_FILE;
+        }
+        loadSubcellularLocationMap(subcellFile);
     }
-    public SubcellLocationNameMapImpl( Map<String, String> subcellularLocationMap) {
-    	this.subcellularLocationMap =Collections.unmodifiableMap(subcellularLocationMap);
+
+    public SubcellLocationNameMapImpl(Map<String, String> subcellularLocationMap) {
+        this.subcellularLocationMap = Collections.unmodifiableMap(subcellularLocationMap);
     }
+
     public String getLocationName(String name) {
         return subcellularLocationMap.getOrDefault(name.toLowerCase(), name);
     }
@@ -66,4 +64,3 @@ public class SubcellLocationNameMapImpl implements SubcellLocationNameMap {
         return entry.getContent().toLowerCase();
     }
 }
-

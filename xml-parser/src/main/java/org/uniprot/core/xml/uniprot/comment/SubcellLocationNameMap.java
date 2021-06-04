@@ -11,6 +11,5 @@ import java.io.Serializable;
  */
 public interface SubcellLocationNameMap extends Serializable {
 
-	String getLocationName(String name) ;
-   
+    String getLocationName(String name);
 }
