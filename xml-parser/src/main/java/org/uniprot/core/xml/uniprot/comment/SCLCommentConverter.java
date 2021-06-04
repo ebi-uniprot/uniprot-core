@@ -19,13 +19,13 @@ public class SCLCommentConverter implements CommentConverter<SubcellularLocation
     private final SubcellularLocationConverter locationConverter;
     private final EvidencedValueConverter evValueConverter;
 
-    public SCLCommentConverter(EvidenceIndexMapper evRefMapper) {
-        this(evRefMapper, new ObjectFactory());
+    public SCLCommentConverter(EvidenceIndexMapper evRefMapper, SubcellLocationNameMap subcellLocationNameMap) {
+        this(evRefMapper, new ObjectFactory(), subcellLocationNameMap);
     }
 
-    public SCLCommentConverter(EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
+    public SCLCommentConverter(EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory, SubcellLocationNameMap subcellLocationNameMap) {
         this.xmlUniprotFactory = xmlUniprotFactory;
-        this.locationConverter = new SubcellularLocationConverter(evRefMapper, xmlUniprotFactory);
+        this.locationConverter = new SubcellularLocationConverter(evRefMapper, xmlUniprotFactory, subcellLocationNameMap);
         this.evValueConverter = new EvidencedValueConverter(evRefMapper, xmlUniprotFactory, true);
     }
 

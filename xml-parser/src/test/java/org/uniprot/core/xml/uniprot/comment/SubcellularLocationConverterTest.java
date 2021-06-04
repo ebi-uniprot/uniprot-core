@@ -47,7 +47,7 @@ public class SubcellularLocationConverterTest extends AbstractConverterTest {
                         .orientation(orientation)
                         .build();
         SubcellularLocationConverter converter =
-                new SubcellularLocationConverter(new EvidenceIndexMapper());
+                new SubcellularLocationConverter(new EvidenceIndexMapper(), new SubcellLocationNameMapImpl() );
         SubcellularLocationType xmlsubcelLocation = converter.toXml(subcelLocation);
         System.out.println(
                 UniProtXmlTestHelper.toXmlString(

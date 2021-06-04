@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.comment.Note;
 import org.uniprot.core.uniprotkb.comment.SubcellularLocation;
@@ -24,7 +25,12 @@ import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
 class SCLCommentConverterTest {
-
+	private static SubcellLocationNameMap subcellLocationNameMap;
+	@BeforeAll
+	static void setup() {
+		subcellLocationNameMap =new SubcellLocationNameMapImpl();
+	}
+	
     @Test
     void test() {
         SubcellularLocationValue location =
@@ -61,7 +67,7 @@ class SCLCommentConverterTest {
                                         "ECO:0000256|RuleBase:RU361271",
                                         "ECO:0000256|SAAS:SAAS00583323")));
         SubcellularLocationComment comment = builder.build();
-        SCLCommentConverter converter = new SCLCommentConverter(new EvidenceIndexMapper());
+        SCLCommentConverter converter = new SCLCommentConverter(new EvidenceIndexMapper(), subcellLocationNameMap);
         CommentType xmlComment = converter.toXml(comment);
         System.out.println(
                 UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
@@ -86,7 +92,7 @@ class SCLCommentConverterTest {
         SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
         builder.molecule("Some mol").subcellularLocationsSet(subcelLocations);
         SubcellularLocationComment comment = builder.build();
-        SCLCommentConverter converter = new SCLCommentConverter(new EvidenceIndexMapper());
+        SCLCommentConverter converter = new SCLCommentConverter(new EvidenceIndexMapper(), subcellLocationNameMap);
         CommentType xmlComment = converter.toXml(comment);
         System.out.println(
                 UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
