@@ -23,12 +23,15 @@ public class SubcellularLocationConverter
     private final EvidenceIndexMapper evRefMapper;
     private final SubcellLocationNameMap subcellLocationNameMap;
 
-    public SubcellularLocationConverter(EvidenceIndexMapper evRefMapper, SubcellLocationNameMap subcellLocationNameMap) {
+    public SubcellularLocationConverter(
+            EvidenceIndexMapper evRefMapper, SubcellLocationNameMap subcellLocationNameMap) {
         this(evRefMapper, new ObjectFactory(), subcellLocationNameMap);
     }
 
     public SubcellularLocationConverter(
-            EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory, SubcellLocationNameMap subcellLocationNameMap) {
+            EvidenceIndexMapper evRefMapper,
+            ObjectFactory xmlUniprotFactory,
+            SubcellLocationNameMap subcellLocationNameMap) {
         this.xmlUniprotFactory = xmlUniprotFactory;
         this.evRefMapper = evRefMapper;
         this.subcellLocationNameMap = subcellLocationNameMap;

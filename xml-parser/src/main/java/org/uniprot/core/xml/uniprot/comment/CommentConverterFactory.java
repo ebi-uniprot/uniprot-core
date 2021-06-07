@@ -11,12 +11,15 @@ public enum CommentConverterFactory {
     @SuppressWarnings("unchecked")
     public <T extends Comment> CommentConverter<T> createCommentConverter(
             CommentType type, EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
-    	return createCommentConverter(type, evRefMapper, xmlUniprotFactory, "");
+        return createCommentConverter(type, evRefMapper, xmlUniprotFactory, "");
     }
-    
+
     @SuppressWarnings("unchecked")
     public <T extends Comment> CommentConverter<T> createCommentConverter(
-            CommentType type, EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory, String subcellFile) {
+            CommentType type,
+            EvidenceIndexMapper evRefMapper,
+            ObjectFactory xmlUniprotFactory,
+            String subcellFile) {
         switch (type) {
             case CATALYTIC_ACTIVITY:
                 return (CommentConverter<T>)
@@ -31,7 +34,10 @@ public enum CommentConverterFactory {
                 return null;
             case SUBCELLULAR_LOCATION:
                 return (CommentConverter<T>)
-                        new SCLCommentConverter(evRefMapper, xmlUniprotFactory, new SubcellLocationNameMapImpl(subcellFile));
+                        new SCLCommentConverter(
+                                evRefMapper,
+                                xmlUniprotFactory,
+                                new SubcellLocationNameMapImpl(subcellFile));
             case ALTERNATIVE_PRODUCTS:
                 return (CommentConverter<T>) new APCommentConverter(evRefMapper, xmlUniprotFactory);
             case RNA_EDITING:
@@ -52,14 +58,12 @@ public enum CommentConverterFactory {
         }
     }
 
-
     @SuppressWarnings("unchecked")
     public <T extends Comment> CommentConverter<T> createCommentConverter(
             CommentType type, EvidenceIndexMapper evRefMapper) {
-    	return createCommentConverter(type, evRefMapper, "");
-      
+        return createCommentConverter(type, evRefMapper, "");
     }
-    
+
     @SuppressWarnings("unchecked")
     public <T extends Comment> CommentConverter<T> createCommentConverter(
             CommentType type, EvidenceIndexMapper evRefMapper, String subcellFile) {
@@ -73,7 +77,9 @@ public enum CommentConverterFactory {
             case INTERACTION:
                 return null;
             case SUBCELLULAR_LOCATION:
-                return (CommentConverter<T>) new SCLCommentConverter(evRefMapper,  new SubcellLocationNameMapImpl(subcellFile));
+                return (CommentConverter<T>)
+                        new SCLCommentConverter(
+                                evRefMapper, new SubcellLocationNameMapImpl(subcellFile));
             case ALTERNATIVE_PRODUCTS:
                 return (CommentConverter<T>) new APCommentConverter(evRefMapper);
             case RNA_EDITING:

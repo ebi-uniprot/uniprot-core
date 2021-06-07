@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 class SubcellLocationNameMapTest {
     @Test
     void middleNameStartWithCapital() {
-    	SubcellLocationNameMap subcellLocationNameMap =new SubcellLocationNameMapImpl();
+        SubcellLocationNameMap subcellLocationNameMap = new SubcellLocationNameMapImpl();
         String name = "Golgi apparatus, golgi stack lumen";
         String validName = subcellLocationNameMap.getLocationName(name);
         assertEquals("Golgi apparatus, Golgi stack lumen", validName);
@@ -21,10 +21,13 @@ class SubcellLocationNameMapTest {
 
     @Test
     void normalMiddleName() {
-    	Map<String, String> subcellularLocationMap =Map.of("cell projection, attachment organelle membrane", 
-    			"Cell projection, Attachment organelle membrane");
-    	SubcellLocationNameMap subcellLocationNameMap =new SubcellLocationNameMapImpl(subcellularLocationMap);
-    	
+        Map<String, String> subcellularLocationMap =
+                Map.of(
+                        "cell projection, attachment organelle membrane",
+                        "Cell projection, Attachment organelle membrane");
+        SubcellLocationNameMap subcellLocationNameMap =
+                new SubcellLocationNameMapImpl(subcellularLocationMap);
+
         String name = "Cell projection, attachment organelle membrane";
         String validName = subcellLocationNameMap.getLocationName(name);
         assertEquals("Cell projection, Attachment organelle membrane", validName);
