@@ -13,8 +13,9 @@ public class CommentConverter implements Converter<CommentType, Comment> {
     private final EvidenceIndexMapper evidenceIndexMapper;
     private final ObjectFactory xmlUniprotFactory;
     private final String subcellFile;
+
     public CommentConverter() {
-    	this("");
+        this("");
     }
 
     public CommentConverter(String subcellFile) {
@@ -22,7 +23,7 @@ public class CommentConverter implements Converter<CommentType, Comment> {
         this.xmlUniprotFactory = new ObjectFactory();
         this.subcellFile = subcellFile;
     }
-    
+
     @Override
     public Comment fromXml(CommentType xmlObj) {
         if (Objects.isNull(xmlObj)) return null;
@@ -31,7 +32,8 @@ public class CommentConverter implements Converter<CommentType, Comment> {
                 org.uniprot.core.uniprotkb.comment.CommentType.typeOf(xmlObj.getType());
         Comment comment =
                 CommentConverterFactory.INSTANCE
-                        .createCommentConverter(type, evidenceIndexMapper, xmlUniprotFactory, this.subcellFile)
+                        .createCommentConverter(
+                                type, evidenceIndexMapper, xmlUniprotFactory, this.subcellFile)
                         .fromXml(xmlObj);
 
         return comment;
@@ -44,7 +46,10 @@ public class CommentConverter implements Converter<CommentType, Comment> {
         CommentType commentType =
                 CommentConverterFactory.INSTANCE
                         .createCommentConverter(
-                                uniObj.getCommentType(), evidenceIndexMapper, xmlUniprotFactory, this.subcellFile)
+                                uniObj.getCommentType(),
+                                evidenceIndexMapper,
+                                xmlUniprotFactory,
+                                this.subcellFile)
                         .toXml(uniObj);
 
         return commentType;
