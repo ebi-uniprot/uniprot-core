@@ -22,7 +22,7 @@ public class SubcellLocationNameMapImpl implements SubcellLocationNameMap {
 
     private Map<String, String> subcellularLocationMap = new HashMap<>();
     private static final String DEFAULT_FILE =
-            "https://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/complete/docs/subcell.txt";
+            "ftp://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/complete/docs/subcell.txt";
 
     public SubcellLocationNameMapImpl() {
         this(DEFAULT_FILE);
