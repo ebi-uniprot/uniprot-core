@@ -38,6 +38,11 @@ class ProteinExistenceTest {
     }
 
     @Test
+    void canGetId() {
+        assertEquals(2, ProteinExistence.TRANSCRIPT_LEVEL.getId());
+    }
+
+    @Test
     void getValue_displayName_areNotSame() {
         assertNotEquals(
                 ProteinExistence.TRANSCRIPT_LEVEL.getName(),
