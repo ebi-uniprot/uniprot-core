@@ -16,7 +16,8 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
  */
 public class UniParcEntryValueMapper implements EntityValueMapper<UniParcEntry> {
 
-    private static final List<String> UNIPARC_FIELDS = List.of("upi", "oldestCrossRefCreated", "mostRecentCrossRefUpdated");
+    private static final List<String> UNIPARC_FIELDS =
+            List.of("upi", "oldestCrossRefCreated", "mostRecentCrossRefUpdated");
 
     @Override
     public Map<String, String> mapEntity(UniParcEntry entry, List<String> fields) {
@@ -54,21 +55,28 @@ public class UniParcEntryValueMapper implements EntityValueMapper<UniParcEntry> 
 
     private Map<String, String> getSimpleAttributeValues(UniParcEntry entry, List<String> fields) {
         Map<String, String> map = new HashMap<>();
-        for(String field : fields) {
-            switch (field){
+        for (String field : fields) {
+            switch (field) {
                 case "upi":
                     map.put(UNIPARC_FIELDS.get(0), entry.getUniParcId().getValue());
                     break;
                 case "oldestCrossRefCreated":
-                    map.put(UNIPARC_FIELDS.get(1), Optional.of(entry.getOldestCrossRefCreated()).map(LocalDate::toString).orElse(""));
+                    map.put(
+                            UNIPARC_FIELDS.get(1),
+                            Optional.of(entry.getOldestCrossRefCreated())
+                                    .map(LocalDate::toString)
+                                    .orElse(""));
                     break;
                 case "mostRecentCrossRefUpdated":
-                    map.put(UNIPARC_FIELDS.get(2), Optional.of(entry.getMostRecentCrossRefUpdated()).map(LocalDate::toString).orElse(""));
+                    map.put(
+                            UNIPARC_FIELDS.get(2),
+                            Optional.of(entry.getMostRecentCrossRefUpdated())
+                                    .map(LocalDate::toString)
+                                    .orElse(""));
                     break;
                 default:
-                    //do nothing
+                    // do nothing
             }
-
         }
         return map;
     }
