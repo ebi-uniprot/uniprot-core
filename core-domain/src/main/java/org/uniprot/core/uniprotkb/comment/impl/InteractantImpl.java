@@ -13,7 +13,7 @@ public class InteractantImpl implements Interactant {
 
     private static final long serialVersionUID = 4480365784795150723L;
 
-    private UniProtKBAccession uniProtkbAccession;
+    private UniProtKBAccession uniProtKBAccession;
     private String geneName;
     private String chainId;
     private String intActId;
@@ -21,12 +21,12 @@ public class InteractantImpl implements Interactant {
     InteractantImpl() {}
 
     InteractantImpl(
-            UniProtKBAccession uniProtkbAccession,
+            UniProtKBAccession uniProtKBAccession,
             String geneName,
             String chainId,
             String intActId) {
         super();
-        this.uniProtkbAccession = uniProtkbAccession;
+        this.uniProtKBAccession = uniProtKBAccession;
         this.geneName = geneName;
         this.chainId = chainId;
         this.intActId = intActId;
@@ -39,7 +39,7 @@ public class InteractantImpl implements Interactant {
 
     @Override
     public UniProtKBAccession getUniProtKBAccession() {
-        return uniProtkbAccession;
+        return uniProtKBAccession;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class InteractantImpl implements Interactant {
 
     @Override
     public int hashCode() {
-        return Objects.hash(uniProtkbAccession, geneName, chainId, intActId);
+        return Objects.hash(uniProtKBAccession, geneName, chainId, intActId);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class InteractantImpl implements Interactant {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InteractantImpl interactor = (InteractantImpl) o;
-        return Objects.equals(uniProtkbAccession, interactor.uniProtkbAccession)
+        return Objects.equals(uniProtKBAccession, interactor.uniProtKBAccession)
                 && Objects.equals(geneName, interactor.geneName)
                 && Objects.equals(chainId, interactor.chainId)
                 && Objects.equals(intActId, interactor.intActId);
