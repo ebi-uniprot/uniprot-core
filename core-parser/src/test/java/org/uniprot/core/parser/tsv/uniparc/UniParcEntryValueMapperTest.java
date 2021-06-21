@@ -90,6 +90,16 @@ class UniParcEntryValueMapperTest {
         verify("sigId2", "PROSITE", result);
     }
 
+    @Test
+    void testGetDates() {
+        UniParcEntry entry = create();
+        List<String> fields = Arrays.asList("oldestCrossRefCreated", "mostRecentCrossRefUpdated");
+        Map<String, String> result = new UniParcEntryValueMapper().mapEntity(entry, fields);
+        assertEquals(2, result.size());
+        verify("2017-02-12", "oldestCrossRefCreated", result);
+        verify("2017-04-23", "mostRecentCrossRefUpdated", result);
+    }
+
     private void verify(String expected, String field, Map<String, String> result) {
         assertEquals(expected, result.get(field));
     }
