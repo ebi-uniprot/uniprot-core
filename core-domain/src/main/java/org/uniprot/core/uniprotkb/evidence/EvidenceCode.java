@@ -60,6 +60,10 @@ public enum EvidenceCode implements EnumDisplay {
 	ECO_0000305("ECO:0000305", "Curator inference", "Literature reference (optional)",
 			Arrays.asList("Curated", "x Publication(s) with 'Manual assertion inferred by curator from'"),
 			EnumSet.of(Category.MANUAL)),
+	
+	ECO_0000307("ECO:0000307", "Manual no Evidence", "no evidence data found used in manual assertion",
+			Arrays.asList("Curated"),
+			EnumSet.of(Category.MANUAL)),
 
 	ECO_0000312("ECO:0000312", "Imported information",
 			"an entry from nucleotide sequence databases, PDB, model organism databases",
