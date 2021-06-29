@@ -117,13 +117,12 @@ public enum EvidenceCode implements EnumDisplay {
             Arrays.asList(
                     "Curated", "x Publication(s) with 'Manual assertion inferred by curator from'"),
             EnumSet.of(Category.MANUAL)),
-    
+
     ECO_0000307(
             "ECO:0000307",
             "Manual no evidence",
             "no evidence data found used in manual assertion",
-            Arrays.asList(
-                    "Manual"),
+            Arrays.asList("Manual"),
             EnumSet.of(Category.MANUAL)),
 
     ECO_0000312(
