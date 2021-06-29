@@ -27,7 +27,8 @@ public enum UniParcDatabase implements Database, EnumDisplay {
     JPO(18, "JPO", true, "https://www.ebi.ac.uk/Tools/dbfetch/dbfetch?db=jpo_prt&id=%id"),
     KIPO(19, "KIPO", true, "https://www.ebi.ac.uk/Tools/dbfetch/dbfetch?db=kipo_prt&id=%id"),
     PATRIC(20, "PATRIC", true, "https://www.patricbrc.org/view/Feature/%id"),
-    PDB(21,
+    PDB(
+            21,
             "PDB",
             true,
             "https://www.ebi.ac.uk/pdbe/entry/pdb/%id"), // need to remove the chain, eg "4q8n_A",
@@ -38,15 +39,21 @@ public enum UniParcDatabase implements Database, EnumDisplay {
     PRF(24, "PRF", false, "http://www.prf.or.jp/cgi-bin/seqget.pl?id=%id"),
     REFSEQ(25, "RefSeq", true, "https://www.ncbi.nlm.nih.gov/protein/%id"),
     REMTREMBL(26, "REMTREMBL", false),
-    SEED(27, "SEED", true, "https://pubseed.theseed.org/seedviewer.cgi?page=Annotation&feature=%id"),
+    SEED(
+            27,
+            "SEED",
+            true,
+            "https://pubseed.theseed.org/seedviewer.cgi?page=Annotation&feature=%id"),
 
     SGD(28, "SGD", true, "https://www.yeastgenome.org/locus/%id"),
     SWISSPROT(1, "UniProtKB/Swiss-Prot", true, "https://www.uniprot.org/uniprot/%id"),
-    SWISSPROT_VARSPLIC(2,
+    SWISSPROT_VARSPLIC(
+            2,
             "UniProtKB/Swiss-Prot protein isoforms",
             true,
             "https://www.uniprot.org/uniprot/%id"), // swissprot isoform
-    TAIR_ARABIDOPSIS(29,
+    TAIR_ARABIDOPSIS(
+            29,
             "TAIR",
             true,
             "https://www.arabidopsis.org/servlets/TairObject?type=aa_sequence&name=%id"),
