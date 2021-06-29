@@ -34,13 +34,12 @@ class EvidenceCodeTest {
                 "combinatorial computational and experimental evidence used in manual assertion",
                 EvidenceCode.ECO_0007744.getSource());
     }
-    
+
     @Test
-    void canGetCategory() {  	
-    	  assertEquals(
-    			  EnumSet.of(Category.EXPERIMENTAL, Category.MANUAL),
-                  EvidenceCode.ECO_0000314.getCategories());
-    	
+    void canGetCategory() {
+        assertEquals(
+                EnumSet.of(Category.EXPERIMENTAL, Category.MANUAL),
+                EvidenceCode.ECO_0000314.getCategories());
     }
 
     @ParameterizedTest
