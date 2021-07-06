@@ -1,5 +1,6 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -15,13 +16,14 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
  */
 public class UniParcEntryValueMapper implements EntityValueMapper<UniParcEntry> {
 
-    private static final List<String> UNIPARC_FIELDS = Collections.singletonList("upi");
+    private static final List<String> UNIPARC_FIELDS =
+            List.of("upi", "oldestCrossRefCreated", "mostRecentCrossRefUpdated");
 
     @Override
     public Map<String, String> mapEntity(UniParcEntry entry, List<String> fields) {
         Map<String, String> map = new HashMap<>();
         if (contains(fields)) {
-            map.putAll(getSimpleAttributeValues(entry));
+            map.putAll(getSimpleAttributeValues(entry, fields));
         }
         if (UniParcOrganismMap.contains(fields)) {
             List<Organism> organisms =
@@ -51,9 +53,31 @@ public class UniParcEntryValueMapper implements EntityValueMapper<UniParcEntry> 
         return fields.stream().anyMatch(UNIPARC_FIELDS::contains);
     }
 
-    private Map<String, String> getSimpleAttributeValues(UniParcEntry entry) {
+    private Map<String, String> getSimpleAttributeValues(UniParcEntry entry, List<String> fields) {
         Map<String, String> map = new HashMap<>();
-        map.put(UNIPARC_FIELDS.get(0), entry.getUniParcId().getValue());
+        for (String field : fields) {
+            switch (field) {
+                case "upi":
+                    map.put(UNIPARC_FIELDS.get(0), entry.getUniParcId().getValue());
+                    break;
+                case "oldestCrossRefCreated":
+                    map.put(
+                            UNIPARC_FIELDS.get(1),
+                            Optional.of(entry.getOldestCrossRefCreated())
+                                    .map(LocalDate::toString)
+                                    .orElse(""));
+                    break;
+                case "mostRecentCrossRefUpdated":
+                    map.put(
+                            UNIPARC_FIELDS.get(2),
+                            Optional.of(entry.getMostRecentCrossRefUpdated())
+                                    .map(LocalDate::toString)
+                                    .orElse(""));
+                    break;
+                default:
+                    // do nothing
+            }
+        }
         return map;
     }
 }

@@ -2,10 +2,13 @@ package org.uniprot.core.uniprotkb.evidence;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.EnumSet;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.uniprot.core.uniprotkb.evidence.EvidenceCode.Category;
 
 class EvidenceCodeTest {
 
@@ -30,6 +33,13 @@ class EvidenceCodeTest {
         assertEquals(
                 "combinatorial computational and experimental evidence used in manual assertion",
                 EvidenceCode.ECO_0007744.getSource());
+    }
+
+    @Test
+    void canGetCategory() {
+        assertEquals(
+                EnumSet.of(Category.EXPERIMENTAL, Category.MANUAL),
+                EvidenceCode.ECO_0000314.getCategories());
     }
 
     @ParameterizedTest

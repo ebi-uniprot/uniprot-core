@@ -56,7 +56,7 @@ public class InteractionCommentTest {
         assertEquals("PROC_12344", interactantOne.get("chainId").asText());
         assertEquals("EBI-0001", interactantOne.get("intActId").asText());
 
-        assertEquals("P12345-1", interactantTwo.get("uniProtkbAccession").asText());
+        assertEquals("P12345-1", interactantTwo.get("uniProtKBAccession").asText());
         assertEquals("gene1", interactantTwo.get("geneName").asText());
         assertEquals("EBI-0002", interactantTwo.get("intActId").asText());
         assertNotNull(interaction.get("numberOfExperiments"));
@@ -70,10 +70,10 @@ public class InteractionCommentTest {
         assertNotNull(interactantOne);
         assertNotNull(interactantTwo);
 
-        assertEquals("P12345", interactantOne.get("uniProtkbAccession").asText());
+        assertEquals("P12345", interactantOne.get("uniProtKBAccession").asText());
         assertEquals("EBI-00011", interactantOne.get("intActId").asText());
 
-        assertEquals("P12346", interactantTwo.get("uniProtkbAccession").asText());
+        assertEquals("P12346", interactantTwo.get("uniProtKBAccession").asText());
         assertEquals("gene1", interactantTwo.get("geneName").asText());
         assertEquals("EBI-00012", interactantTwo.get("intActId").asText());
         assertNotNull(interactantTwo.get("chainId"));
