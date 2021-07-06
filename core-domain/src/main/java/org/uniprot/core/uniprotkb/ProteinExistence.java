@@ -5,27 +5,34 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.util.EnumDisplay;
 
 public enum ProteinExistence implements EnumDisplay {
-    PROTEIN_LEVEL("Evidence at protein level", "1: Evidence at protein level"),
-    TRANSCRIPT_LEVEL("Evidence at transcript level", "2: Evidence at transcript level"),
-    HOMOLOGY("Inferred from homology", "3: Inferred from homology"),
-    PREDICTED("Predicted", "4: Predicted"),
-    UNCERTAIN("Uncertain", "5: Uncertain"),
-    UNKNOWN("UNKNOWN", "UNKNOWN");
+    PROTEIN_LEVEL(1, "Evidence at protein level", "1: Evidence at protein level"),
+    TRANSCRIPT_LEVEL(2, "Evidence at transcript level", "2: Evidence at transcript level"),
+    HOMOLOGY(3, "Inferred from homology", "3: Inferred from homology"),
+    PREDICTED(4, "Predicted", "4: Predicted"),
+    UNCERTAIN(5, "Uncertain", "5: Uncertain"),
+    UNKNOWN(6, "UNKNOWN", "UNKNOWN");
 
-    private String name;
-    private String displayName;
+    private int id;
+    private final String name;
+    private final String displayName;
 
-    ProteinExistence(String name, String displayName) {
+    ProteinExistence(int id, String name, String displayName) {
+        this.id = id;
         this.name = name;
         this.displayName = displayName;
     }
 
+    @Override
     public @Nonnull String getDisplayName() {
         return displayName;
     }
 
     public @Nonnull String getName() {
         return name;
+    }
+
+    public @Nonnull int getId() {
+        return id;
     }
 
     public @Nonnull String toString() {
