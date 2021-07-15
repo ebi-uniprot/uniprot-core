@@ -23,7 +23,7 @@ public final class InteractionBuilder implements Builder<Interaction> {
         builder.interactantOne(instance.getInteractantOne())
                 .interactantTwo(instance.getInteractantTwo())
                 .numberOfExperiments(instance.getNumberOfExperiments())
-                .isOrganismDiffer(instance.isOrganismsDiffer());
+                .isOrganismDiffer(instance.isOrganismDiffer());
         return builder;
     }
 
