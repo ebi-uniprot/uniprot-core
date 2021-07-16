@@ -11,7 +11,7 @@ public interface Interaction extends Serializable {
 
     int getNumberOfExperiments();
 
-    boolean isOrganismsDiffer();
+    boolean isOrganismDiffer();
 
     default boolean hasInteractantOne() {
         return Utils.notNull(getInteractantOne());

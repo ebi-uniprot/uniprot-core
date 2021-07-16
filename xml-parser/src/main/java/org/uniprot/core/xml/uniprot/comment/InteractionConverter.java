@@ -53,7 +53,7 @@ public class InteractionConverter implements Converter<CommentType, Interaction>
 
         commentType.getInteractant().add(interactantConverter.toXml(uniObj.getInteractantOne()));
         commentType.getInteractant().add(interactantConverter.toXml(uniObj.getInteractantTwo()));
-        commentType.setOrganismsDiffer(uniObj.isOrganismsDiffer());
+        commentType.setOrganismsDiffer(uniObj.isOrganismDiffer());
 
         commentType.setExperiments(uniObj.getNumberOfExperiments());
 

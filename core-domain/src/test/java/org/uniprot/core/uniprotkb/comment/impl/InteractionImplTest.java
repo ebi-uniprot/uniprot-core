@@ -38,7 +38,7 @@ class InteractionImplTest {
         assertEquals(interactant1, interaction.getInteractantOne());
         assertEquals(interactant2, interaction.getInteractantTwo());
         assertEquals(3, interaction.getNumberOfExperiments());
-        assertFalse(interaction.isOrganismsDiffer());
+        assertFalse(interaction.isOrganismDiffer());
     }
 
     @Test
@@ -47,7 +47,7 @@ class InteractionImplTest {
         assertTrue(interaction.hasInteractantOne());
         assertTrue(interaction.hasInteractantTwo());
         assertTrue(interaction.hasNumberOfExperiments());
-        assertTrue(interaction.isOrganismsDiffer());
+        assertTrue(interaction.isOrganismDiffer());
     }
 
     @Test

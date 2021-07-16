@@ -26,7 +26,7 @@ class InteractionBuilderTest {
         Interaction interaction = builder.numberOfExperiments(3).build();
 
         assertEquals(3, interaction.getNumberOfExperiments());
-        assertFalse(interaction.isOrganismsDiffer());
+        assertFalse(interaction.isOrganismDiffer());
         assertNull(interaction.getInteractantOne());
         assertNull(interaction.getInteractantTwo());
     }
@@ -42,7 +42,7 @@ class InteractionBuilderTest {
         assertEquals(3, interaction.getNumberOfExperiments());
         assertEquals(interactor1, interaction.getInteractantOne());
         assertNull(interaction.getInteractantTwo());
-        assertFalse(interaction.isOrganismsDiffer());
+        assertFalse(interaction.isOrganismDiffer());
     }
 
     @Test
@@ -62,7 +62,7 @@ class InteractionBuilderTest {
         assertEquals(interactor1, interaction.getInteractantOne());
 
         assertEquals(interactor2, interaction.getInteractantTwo());
-        assertFalse(interaction.isOrganismsDiffer());
+        assertFalse(interaction.isOrganismDiffer());
     }
 
     @Test
@@ -83,7 +83,7 @@ class InteractionBuilderTest {
         assertEquals(interactor1, interaction.getInteractantOne());
 
         assertEquals(interactor2, interaction.getInteractantTwo());
-        assertTrue(interaction.isOrganismsDiffer());
+        assertTrue(interaction.isOrganismDiffer());
     }
 
     @Test
