@@ -36,7 +36,7 @@ public class UniRuleEntryValueMapper implements EntityValueMapper<UniRuleEntry> 
     @Override
     public Map<String, String> mapEntity(UniRuleEntry uniRuleEntry, List<String> fields) {
         Map<String, String> map = new HashMap<>();
-        map.put("uniRuleId", uniRuleEntry.getUniRuleId().getValue());
+        map.put("rule_id", uniRuleEntry.getUniRuleId().getValue());
         map.put("proteins_annotated", String.valueOf(getProteinAnnotatedCount(uniRuleEntry)));
         map.put("taxonomic_scope", getTaxonomicScope(uniRuleEntry));
         map.put("annotation_covered", getAnnotationCovered(uniRuleEntry));
