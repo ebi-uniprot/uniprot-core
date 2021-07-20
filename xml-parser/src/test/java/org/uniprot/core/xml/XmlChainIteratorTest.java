@@ -65,7 +65,6 @@ class XmlChainIteratorTest {
             xmlWriter.write(entry);
         }
         is.close();
-        System.out.println(writer.toString());
 
         assertEquals(2, count);
     }
