@@ -230,7 +230,7 @@
 								<skipITs>${skipUTs}</skipITs>
 								<exclude>**/*IT.java</exclude>
 							</excludes>
-							<argLine>${jacoco.agent.ut.arg}</argLine>
+							<argLine>-Dlogback.configurationFile=${project.basedir}/../logback-test.xml ${jacoco.agent.ut.arg}</argLine>
 						</configuration>
 					</plugin>
 
