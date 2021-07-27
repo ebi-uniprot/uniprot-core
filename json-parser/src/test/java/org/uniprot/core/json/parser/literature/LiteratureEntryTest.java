@@ -2,6 +2,7 @@ package org.uniprot.core.json.parser.literature;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
+import org.uniprot.core.json.parser.uniprot.citation.ElectronicArticleTest;
 import org.uniprot.core.json.parser.uniprot.citation.LiteratureTest;
 import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.literature.impl.LiteratureEntryBuilder;
@@ -21,6 +22,17 @@ public class LiteratureEntryTest {
     @Test
     void testCompleteLiteratureEntry() {
         LiteratureEntry literatureEntry = getCompleteLiteratureEntry();
+        ValidateJson.verifyJsonRoundTripParser(
+                LiteratureJsonConfig.getInstance().getFullObjectMapper(), literatureEntry);
+        ValidateJson.verifyEmptyFields(literatureEntry);
+    }
+
+    @Test
+    void testCompleteLiteratureEntryWithElectronicArticleCitation() {
+        LiteratureEntry literatureEntry = new LiteratureEntryBuilder()
+                .citation(ElectronicArticleTest.getElectronicArticle())
+                .statistics(LiteratureStatisticsTest.getCompleteLiteratureStatistics())
+                .build();
         ValidateJson.verifyJsonRoundTripParser(
                 LiteratureJsonConfig.getInstance().getFullObjectMapper(), literatureEntry);
         ValidateJson.verifyEmptyFields(literatureEntry);

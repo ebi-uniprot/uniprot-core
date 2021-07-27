@@ -7,6 +7,7 @@ import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.json.parser.serializer.AuthorSerializer;
 import org.uniprot.core.json.parser.serializer.JournalSerializer;
+import org.uniprot.core.json.parser.serializer.LocatorSerializer;
 import org.uniprot.core.json.parser.serializer.PublicationDateSerializer;
 import org.uniprot.core.json.parser.uniprot.serializer.UniProtKBAccessionSerializer;
 import org.uniprot.core.literature.LiteratureEntry;
@@ -70,6 +71,7 @@ public class LiteratureJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Literature.class, LiteratureImpl.class);
         mod.addAbstractTypeMapping(Book.class, BookImpl.class);
         mod.addAbstractTypeMapping(JournalArticle.class, JournalArticleImpl.class);
+        mod.addAbstractTypeMapping(Locator.class, ElectronicArticleImpl.LocatorImpl.class);
 
         mod.registerSubtypes(new NamedType(ElectronicArticleImpl.class, "ElectronicArticle"));
         mod.registerSubtypes(new NamedType(BookImpl.class, "Book"));
@@ -92,6 +94,8 @@ public class LiteratureJsonConfig extends JsonConfig {
         simpleMod.addSerializer(AuthorImpl.class, new AuthorSerializer());
         simpleMod.addSerializer(PublicationDateImpl.class, new PublicationDateSerializer());
         simpleMod.addSerializer(JournalImpl.class, new JournalSerializer());
+        simpleMod.addSerializer(
+                ElectronicArticleImpl.LocatorImpl.class, new LocatorSerializer());
         simpleMod.addSerializer(UniProtKBAccessionImpl.class, new UniProtKBAccessionSerializer());
 
         prettyObjMapper.registerModule(simpleMod);

@@ -92,6 +92,7 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
     }
 
     public static class LocatorImpl implements Locator {
+        private static final long serialVersionUID = -401693854431035094L;
         private String value;
 
         // no arg constructor for JSON deserialization
