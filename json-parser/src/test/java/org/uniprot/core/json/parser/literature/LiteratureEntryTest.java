@@ -29,10 +29,11 @@ public class LiteratureEntryTest {
 
     @Test
     void testCompleteLiteratureEntryWithElectronicArticleCitation() {
-        LiteratureEntry literatureEntry = new LiteratureEntryBuilder()
-                .citation(ElectronicArticleTest.getElectronicArticle())
-                .statistics(LiteratureStatisticsTest.getCompleteLiteratureStatistics())
-                .build();
+        LiteratureEntry literatureEntry =
+                new LiteratureEntryBuilder()
+                        .citation(ElectronicArticleTest.getElectronicArticle())
+                        .statistics(LiteratureStatisticsTest.getCompleteLiteratureStatistics())
+                        .build();
         ValidateJson.verifyJsonRoundTripParser(
                 LiteratureJsonConfig.getInstance().getFullObjectMapper(), literatureEntry);
         ValidateJson.verifyEmptyFields(literatureEntry);

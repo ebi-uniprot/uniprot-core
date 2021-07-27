@@ -94,8 +94,7 @@ public class LiteratureJsonConfig extends JsonConfig {
         simpleMod.addSerializer(AuthorImpl.class, new AuthorSerializer());
         simpleMod.addSerializer(PublicationDateImpl.class, new PublicationDateSerializer());
         simpleMod.addSerializer(JournalImpl.class, new JournalSerializer());
-        simpleMod.addSerializer(
-                ElectronicArticleImpl.LocatorImpl.class, new LocatorSerializer());
+        simpleMod.addSerializer(ElectronicArticleImpl.LocatorImpl.class, new LocatorSerializer());
         simpleMod.addSerializer(UniProtKBAccessionImpl.class, new UniProtKBAccessionSerializer());
 
         prettyObjMapper.registerModule(simpleMod);
