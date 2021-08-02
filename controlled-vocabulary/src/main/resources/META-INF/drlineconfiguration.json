@@ -1813,7 +1813,7 @@
 		"name": "BioGRID-ORCS",
 		"displayName": "BioGRID-ORCS",
 		"category": "OTHER",
-		"uriLink": "ttps://orcs.thebiogrid.org/Gene/%id",
+		"uriLink": "https://orcs.thebiogrid.org/Gene/%id",
 		"attributes": [		
 			{	"name": "hits",
 				"xmlTag": "hits"			
