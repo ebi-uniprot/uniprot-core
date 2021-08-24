@@ -169,7 +169,7 @@
 		"category": "3DS",
 		"implicit": true,
 		"linkedReason": "DR:SMR<1",
-		"uriLink": "http://salilab.org/modbase-cgi/model_search.cgi?searchkw=name&kword=%accession"
+		"uriLink": "http://salilab.org/modbase-cgi/model_search.cgi?searchkw=name&kword=%primaryAccession"
 	},
 	{
 		"name": "PDBe-KB",
