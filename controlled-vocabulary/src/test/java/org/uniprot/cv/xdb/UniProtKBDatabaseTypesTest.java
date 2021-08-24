@@ -18,7 +18,6 @@ class UniProtKBDatabaseTypesTest {
     @Test
     void testGetAllTypes() {
         List<UniProtDatabaseDetail> types = UniProtDatabaseTypes.INSTANCE.getAllDbTypes();
-
         assertFalse(types.isEmpty());
         System.out.println(types.size());
     }
@@ -207,7 +206,7 @@ class UniProtKBDatabaseTypesTest {
         assertEquals("eggNOG", opType.getDisplayName());
         assertEquals(PHYLOGENOMIC_DATABASES, opType.getCategory());
         assertEquals(
-                "http://eggnogdb.embl.de/#/app/results?seqid=%accession&target_nogs=%id",
+                "http://eggnogdb.embl.de/#/app/results?seqid=%primaryAccession&target_nogs=%id",
                 opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "ToxonomicScope", "taxonomic scope", null);
@@ -221,7 +220,7 @@ class UniProtKBDatabaseTypesTest {
         assertEquals("Reactome", opType.getDisplayName());
         assertEquals(ENZYME_AND_PATHWAY_DATABASES, opType.getCategory());
         assertEquals(
-                "https://www.reactome.org/PathwayBrowser/#%id&FLG=%accession", opType.getUriLink());
+                "https://www.reactome.org/PathwayBrowser/#%id&FLG=%primaryAccession", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "PathwayName", "pathway name", null);
     }

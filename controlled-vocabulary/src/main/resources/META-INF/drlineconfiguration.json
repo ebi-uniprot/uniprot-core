@@ -153,13 +153,13 @@
 		"category": "3DS",
 		"implicit": true,
 		"linkedReason": "All UniProtKB entries",
-		"uriLink": "http://salilab.org/modbase-cgi/model_search.cgi?searchkw=name&kword=%accession"
+		"uriLink": "http://salilab.org/modbase-cgi/model_search.cgi?searchkw=name&kword=%primaryAccession"
 	},
 	{
 		"name": "SMR",
 		"displayName": "SMR",
 		"category": "3DS",
-		"uriLink": "https://swissmodel.expasy.org/repository/uniprot/%id?csm=%src64"
+		"uriLink": "https://swissmodel.expasy.org/repository/uniprot/%id?csm=%crc64"
 	},
 	
 	
@@ -177,7 +177,7 @@
 		"category": "3DS",
 		"implicit": true,
 		"linkedReason": "DR: PDB",
-		"uriLink": "https://pdbe-kb.org/proteins/%id"
+		"uriLink": "https://pdbe-kb.org/proteins/%primaryAccession"
 	},
 	{
 		"name": "PDBj",
@@ -1257,7 +1257,7 @@
 		"name": "eggNOG",
 		"displayName": "eggNOG",
 		"category": "PLG",
-		"uriLink": "http://eggnogdb.embl.de/#/app/results?seqid=%accession&target_nogs=%id",
+		"uriLink": "http://eggnogdb.embl.de/#/app/results?seqid=%primaryAccession&target_nogs=%id",
         "idMappingName": "EGGNOG_ID",
 		"attributes": [		
 			{	"name": "ToxonomicScope",
@@ -1335,7 +1335,7 @@
 		"name": "BRENDA",
 		"displayName": "BRENDA",
 		"category": "EAP",
-		"uriLink": "https://www.brenda-enzymes.org/enzyme.php?ecno=%id&UniProtAcc=%accession&OrganismID=%OrganismId",
+		"uriLink": "https://www.brenda-enzymes.org/enzyme.php?ecno=%id&UniProtAcc=%primaryAccession&OrganismID=%OrganismId",
 		"attributes": [		
 			{	"name": "OrganismId",
 				"xmlTag":"organism ID"		
@@ -1346,7 +1346,7 @@
 		"name": "Reactome",
 		"displayName": "Reactome",
 		"category": "EAP",
-		"uriLink": "https://www.reactome.org/PathwayBrowser/#%id&FLG=%accession",
+		"uriLink": "https://www.reactome.org/PathwayBrowser/#%id&FLG=%primaryAccession",
         "idMappingName": "REACTOME_ID",
 		"attributes": [		
 			{	"name": "PathwayName",
@@ -1389,7 +1389,7 @@
 		"name": "PlantReactome",
 		"displayName": "PlantReactome",
 		"category": "EAP",
-		"uriLink": "https://plantreactome.gramene.org/PathwayBrowser/#/%id&FLG=%accession",
+		"uriLink": "https://plantreactome.gramene.org/PathwayBrowser/#/%id&FLG=%primaryAccession",
         "idMappingName": "PLANT_REACTOME_ID",
 		"attributes": [		
 			{	"name": "pathwayName",
@@ -1713,7 +1713,7 @@
 		"category": "FMD",
 		"implicit": true,
 		"linkedReason": "All UniProtKB entries",
-		"uriLink": "http://mobidb.bio.unipd.it/entries/%accession"
+		"uriLink": "http://mobidb.bio.unipd.it/entries/%primaryAccession"
 	},
 	{
 		"name": "ProtoNet",
@@ -1721,7 +1721,7 @@
 		"category": "FMD",
 		"implicit": true,
 		"linkedReason": "All UniProtKB entries",
-		"uriLink": "http://www.protonet.cs.huji.ac.il/sp.php?prot=%accession"
+		"uriLink": "http://www.protonet.cs.huji.ac.il/sp.php?prot=%primaryAccession"
 		
 	},	
 	{
