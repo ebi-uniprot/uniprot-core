@@ -42,7 +42,7 @@ public class InteractionImpl implements Interaction {
     }
 
     @Override
-    public boolean isOrganismsDiffer() {
+    public boolean isOrganismDiffer() {
         return this.organismDiffer;
     }
 
