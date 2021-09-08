@@ -9,6 +9,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
+import org.uniprot.core.Statistics;
 import org.uniprot.core.unirule.*;
 
 public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
@@ -19,7 +20,7 @@ public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
     private List<CaseRule> otherRules = new ArrayList<>();
     private List<SamFeatureSet> samFeatureSets = new ArrayList<>();
     private List<PositionFeatureSet> positionFeatureSets = new ArrayList<>();
-    private Long proteinsAnnotatedCount;
+    private Statistics statistics;
     private String createdBy;
     private String modifiedBy;
     private LocalDate createdDate;
@@ -85,8 +86,8 @@ public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
         return this;
     }
 
-    public @Nonnull UniRuleEntryBuilder proteinsAnnotatedCount(Long proteinsAnnotatedCount) {
-        this.proteinsAnnotatedCount = proteinsAnnotatedCount;
+    public @Nonnull UniRuleEntryBuilder statistics(Statistics statistics) {
+        this.statistics = statistics;
         return this;
     }
 
@@ -121,7 +122,7 @@ public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
                 otherRules,
                 samFeatureSets,
                 positionFeatureSets,
-                proteinsAnnotatedCount,
+                statistics,
                 createdBy,
                 modifiedBy,
                 createdDate,
@@ -141,7 +142,7 @@ public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
         builder.otherRulesSet(instance.getOtherRules())
                 .samFeatureSetsSet(instance.getSamFeatureSets())
                 .positionFeatureSetsSet(instance.getPositionFeatureSets())
-                .proteinsAnnotatedCount(instance.getProteinsAnnotatedCount())
+                .statistics(instance.getStatistics())
                 .createdBy(instance.getCreatedBy())
                 .modifiedBy(instance.getModifiedBy())
                 .createdDate(instance.getCreatedDate())

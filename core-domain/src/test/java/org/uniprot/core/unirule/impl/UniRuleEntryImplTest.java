@@ -10,6 +10,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
+import org.uniprot.core.Statistics;
+import org.uniprot.core.impl.StatisticsBuilder;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.unirule.*;
@@ -86,7 +88,9 @@ public class UniRuleEntryImplTest {
         String modifiedBy = "sample author2";
         LocalDate createdDate = LocalDate.now();
         LocalDate modifiedDate = LocalDate.now();
-        Long proteinsAnnotatedCount = ThreadLocalRandom.current().nextLong();
+        Statistics statistics = new StatisticsBuilder().reviewedProteinCount(ThreadLocalRandom.current().nextLong())
+                .unreviewedProteinCount(ThreadLocalRandom.current().nextLong())
+                .build();
 
         UniRuleEntry uniRuleEntry =
                 new UniRuleEntryImpl(
@@ -97,7 +101,7 @@ public class UniRuleEntryImplTest {
                         otherRules,
                         samFeatureSets,
                         positionFeatureSets,
-                        proteinsAnnotatedCount,
+                        statistics,
                         createdBy,
                         modifiedBy,
                         createdDate,
@@ -110,7 +114,7 @@ public class UniRuleEntryImplTest {
         assertEquals(otherRules, uniRuleEntry.getOtherRules());
         assertEquals(samFeatureSets, uniRuleEntry.getSamFeatureSets());
         assertEquals(positionFeatureSets, uniRuleEntry.getPositionFeatureSets());
-        assertEquals(proteinsAnnotatedCount, uniRuleEntry.getProteinsAnnotatedCount());
+        assertEquals(statistics, uniRuleEntry.getStatistics());
         assertEquals(createdBy, uniRuleEntry.getCreatedBy());
         assertEquals(modifiedBy, uniRuleEntry.getModifiedBy());
         assertEquals(createdDate, uniRuleEntry.getCreatedDate());
