@@ -335,9 +335,12 @@ public class UniRuleEntryBuilderTest {
                 .collect(Collectors.toList());
     }
 
-    private static Statistics getStatistics(){
+    private static Statistics getStatistics() {
         long reviewed = ThreadLocalRandom.current().nextLong();
         long unreviewed = ThreadLocalRandom.current().nextLong();
-        return new StatisticsBuilder().reviewedProteinCount(reviewed).unreviewedProteinCount(unreviewed).build();
+        return new StatisticsBuilder()
+                .reviewedProteinCount(reviewed)
+                .unreviewedProteinCount(unreviewed)
+                .build();
     }
 }
