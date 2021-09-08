@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.Statistics;
+import org.uniprot.core.impl.StatisticsBuilder;
 import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.unirule.Annotation;
@@ -45,18 +47,20 @@ class UniRuleEntryValueMapperTest {
         Condition condition = new ConditionBuilder("random type").build();
         ConditionSet conditionSet = new ConditionSetBuilder(condition).build();
         Rule mainRule = new RuleBuilder(conditionSet).build();
+        Statistics statistics = new StatisticsBuilder().reviewedProteinCount(10L).unreviewedProteinCount(5L).build();
         UniRuleEntry entry =
                 new UniRuleEntryBuilder(uniRuleIdObject, status, information, mainRule)
-                        .proteinsAnnotatedCount(10L)
+                        .statistics(statistics)
                         .build();
 
         Map<String, String> mappedEntries =
                 new UniRuleEntryValueMapper().mapEntity(entry, Collections.emptyList());
 
         assertThat(mappedEntries, notNullValue());
-        assertEquals(6, mappedEntries.size());
+        assertEquals(7, mappedEntries.size());
         assertEquals(uniRuleId, mappedEntries.get("rule_id"));
-        assertEquals("10", mappedEntries.get("proteins_annotated"));
+        assertEquals("10", mappedEntries.get("reviewed_protein_count"));
+        assertEquals("5", mappedEntries.get("unreviewed_protein_count"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("taxonomic_scope"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("annotation_covered"));
         assertEquals(
@@ -85,10 +89,11 @@ class UniRuleEntryValueMapperTest {
                 new UniRuleEntryValueMapper().mapEntity(entry, Collections.emptyList());
 
         assertThat(mappedEntries, notNullValue());
-        assertEquals(6, mappedEntries.size());
+        assertEquals(7, mappedEntries.size());
         assertEquals(uniRuleId, mappedEntries.get("rule_id"));
         assertEquals("P12345,Q12345,R12345", mappedEntries.get("template_entries"));
-        assertEquals("0", mappedEntries.get("proteins_annotated"));
+        assertEquals("0", mappedEntries.get("reviewed_protein_count"));
+        assertEquals("0", mappedEntries.get("unreviewed_protein_count"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("taxonomic_scope"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("annotation_covered"));
         assertEquals(
@@ -116,10 +121,11 @@ class UniRuleEntryValueMapperTest {
         Map<String, String> mappedEntries =
                 new UniRuleEntryValueMapper().mapEntity(entry, Collections.emptyList());
         assertThat(mappedEntries, notNullValue());
-        assertEquals(6, mappedEntries.size());
+        assertEquals(7, mappedEntries.size());
         assertEquals(uniRuleId, mappedEntries.get("rule_id"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("template_entries"));
-        assertEquals("0", mappedEntries.get("proteins_annotated"));
+        assertEquals("0", mappedEntries.get("reviewed_protein_count"));
+        assertEquals("0", mappedEntries.get("unreviewed_protein_count"));
         assertEquals(
                 "Archaea[2157],Eukaryota[2759],Bacteria[2]", mappedEntries.get("taxonomic_scope"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("annotation_covered"));
@@ -134,18 +140,20 @@ class UniRuleEntryValueMapperTest {
         UniRuleId uniRuleIdObject = new UniRuleIdBuilder(uniRuleId).build();
         RuleStatus status = RuleStatus.APPLY;
         Information information = new InformationBuilder("sample version").build();
+        Statistics statistics = new StatisticsBuilder().reviewedProteinCount(10L).build();
         UniRuleEntry entry =
                 new UniRuleEntryBuilder(uniRuleIdObject, status, information, mainRule)
-                        .proteinsAnnotatedCount(10L)
+                        .statistics(statistics)
                         .build();
 
         Map<String, String> mappedEntries =
                 new UniRuleEntryValueMapper().mapEntity(entry, Collections.emptyList());
 
         assertThat(mappedEntries, notNullValue());
-        assertEquals(6, mappedEntries.size());
+        assertEquals(7, mappedEntries.size());
         assertEquals(uniRuleId, mappedEntries.get("rule_id"));
-        assertEquals("10", mappedEntries.get("proteins_annotated"));
+        assertEquals("10", mappedEntries.get("reviewed_protein_count"));
+        assertEquals("0", mappedEntries.get("unreviewed_protein_count"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("taxonomic_scope"));
         assertEquals("DOMAIN,EMBL,gene,keyword", mappedEntries.get("annotation_covered"));
         assertTrue(mappedEntries.get("predicted_protein_name").startsWith("Full:"));
@@ -160,9 +168,10 @@ class UniRuleEntryValueMapperTest {
         UniRuleId uniRuleIdObject = new UniRuleIdBuilder(uniRuleId).build();
         RuleStatus status = RuleStatus.APPLY;
         Information information = new InformationBuilder("sample version").build();
+        Statistics statistics = new StatisticsBuilder().unreviewedProteinCount(5L).build();
         UniRuleEntry entry =
                 new UniRuleEntryBuilder(uniRuleIdObject, status, information, mainRule)
-                        .proteinsAnnotatedCount(10L)
+                        .statistics(statistics)
                         .otherRulesSet(caseRules)
                         .build();
 
@@ -170,9 +179,10 @@ class UniRuleEntryValueMapperTest {
                 new UniRuleEntryValueMapper().mapEntity(entry, Collections.emptyList());
 
         assertThat(mappedEntries, notNullValue());
-        assertEquals(6, mappedEntries.size());
+        assertEquals(7, mappedEntries.size());
         assertEquals(uniRuleId, mappedEntries.get("rule_id"));
-        assertEquals("10", mappedEntries.get("proteins_annotated"));
+        assertEquals("0", mappedEntries.get("reviewed_protein_count"));
+        assertEquals("5", mappedEntries.get("unreviewed_protein_count"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("taxonomic_scope"));
         assertEquals("DOMAIN,EMBL,gene,keyword", mappedEntries.get("annotation_covered"));
         String proteinNames = mappedEntries.get("predicted_protein_name");
@@ -198,9 +208,10 @@ class UniRuleEntryValueMapperTest {
         UniRuleId uniRuleIdObject = new UniRuleIdBuilder(uniRuleId).build();
         RuleStatus status = RuleStatus.APPLY;
         Information information = new InformationBuilder("sample version").build();
+        Statistics statistics = new StatisticsBuilder().reviewedProteinCount(10L).unreviewedProteinCount(5L).build();
         UniRuleEntry entry =
                 new UniRuleEntryBuilder(uniRuleIdObject, status, information, ruleBuilder.build())
-                        .proteinsAnnotatedCount(10L)
+                        .statistics(statistics)
                         .otherRulesSet(caseRules)
                         .build();
 
@@ -208,9 +219,10 @@ class UniRuleEntryValueMapperTest {
                 new UniRuleEntryValueMapper().mapEntity(entry, Collections.emptyList());
 
         assertThat(mappedEntries, notNullValue());
-        assertEquals(6, mappedEntries.size());
+        assertEquals(7, mappedEntries.size());
         assertEquals(uniRuleId, mappedEntries.get("rule_id"));
-        assertEquals("10", mappedEntries.get("proteins_annotated"));
+        assertEquals("10", mappedEntries.get("reviewed_protein_count"));
+        assertEquals("5", mappedEntries.get("unreviewed_protein_count"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("taxonomic_scope"));
         assertEquals("DOMAIN,EMBL,gene,keyword", mappedEntries.get("annotation_covered"));
         String proteinNames = mappedEntries.get("predicted_protein_name");

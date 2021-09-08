@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.Statistics;
+import org.uniprot.core.impl.StatisticsBuilder;
 import org.uniprot.core.unirule.*;
 
 public class UniRuleEntryBuilderTest {
@@ -268,11 +270,11 @@ public class UniRuleEntryBuilderTest {
         assertNotNull(entry);
         UniRuleEntryBuilder builder = UniRuleEntryBuilder.from(entry);
         // update protein count
-        Long proteinCount = 12L;
-        builder.proteinsAnnotatedCount(proteinCount);
+        Statistics stats = getStatistics();
+        builder.statistics(stats);
         UniRuleEntry updatedEntry = builder.build();
         assertNotNull(updatedEntry);
-        assertEquals(proteinCount, updatedEntry.getProteinsAnnotatedCount());
+        assertEquals(stats, updatedEntry.getStatistics());
     }
 
     public static UniRuleEntry createObject(int listSize, boolean includeEvidences) {
@@ -287,7 +289,7 @@ public class UniRuleEntryBuilderTest {
                 SamFeatureSetBuilderTest.createObjects(listSize, includeEvidences);
         List<PositionFeatureSet> positionFeatureSets =
                 PositionFeatureSetBuilderTest.createObjects(listSize, includeEvidences);
-        Long proteinCount = ThreadLocalRandom.current().nextLong();
+        Statistics stats = getStatistics();
         String createdBy = "createdBy" + random;
         String modifiedBy = "modifiedBy" + random;
         LocalDate createdDate = LocalDate.now();
@@ -297,7 +299,7 @@ public class UniRuleEntryBuilderTest {
                 new UniRuleEntryBuilder(uniRuleId, ruleStatus, information, mainRule);
         builder.otherRulesSet(otherRules).samFeatureSetsSet(samFeatureSets);
         builder.positionFeatureSetsSet(positionFeatureSets);
-        builder.proteinsAnnotatedCount(proteinCount);
+        builder.statistics(stats);
         builder.createdBy(createdBy).modifiedBy(modifiedBy);
         builder.createdDate(createdDate).modifiedDate(modifiedDate);
 
@@ -310,7 +312,7 @@ public class UniRuleEntryBuilderTest {
         assertEquals(otherRules, uniRuleEntry.getOtherRules());
         assertEquals(samFeatureSets, uniRuleEntry.getSamFeatureSets());
         assertEquals(positionFeatureSets, uniRuleEntry.getPositionFeatureSets());
-        assertEquals(proteinCount, uniRuleEntry.getProteinsAnnotatedCount());
+        assertEquals(stats, uniRuleEntry.getStatistics());
         assertEquals(createdBy, uniRuleEntry.getCreatedBy());
         assertEquals(modifiedBy, uniRuleEntry.getModifiedBy());
         assertEquals(createdDate, uniRuleEntry.getCreatedDate());
@@ -331,5 +333,11 @@ public class UniRuleEntryBuilderTest {
         return IntStream.range(0, count)
                 .mapToObj(i -> createObject(count))
                 .collect(Collectors.toList());
+    }
+
+    private static Statistics getStatistics(){
+        long reviewed = ThreadLocalRandom.current().nextLong();
+        long unreviewed = ThreadLocalRandom.current().nextLong();
+        return new StatisticsBuilder().reviewedProteinCount(reviewed).unreviewedProteinCount(unreviewed).build();
     }
 }

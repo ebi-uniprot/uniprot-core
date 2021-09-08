@@ -1,5 +1,7 @@
 package org.uniprot.core.unirule;
 
+import org.uniprot.core.Statistics;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
@@ -20,7 +22,7 @@ public interface UniRuleEntry extends Serializable {
 
     List<PositionFeatureSet> getPositionFeatureSets();
 
-    Long getProteinsAnnotatedCount();
+    Statistics getStatistics();
 
     String getCreatedBy();
 

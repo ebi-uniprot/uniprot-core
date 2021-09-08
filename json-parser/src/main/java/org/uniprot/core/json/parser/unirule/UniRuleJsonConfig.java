@@ -4,9 +4,11 @@ import java.time.LocalDate;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.ECNumber;
+import org.uniprot.core.Statistics;
 import org.uniprot.core.gene.*;
 import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.impl.ECNumberImpl;
+import org.uniprot.core.impl.StatisticsImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.json.parser.deserializer.LocalDateDeserializer;
 import org.uniprot.core.json.parser.serializer.LocalDateSerializer;
@@ -110,6 +112,7 @@ public class UniRuleJsonConfig extends JsonConfig {
                 SubcellularLocationComment.class, SubcellularLocationCommentImpl.class);
         mod.addAbstractTypeMapping(Note.class, NoteImpl.class);
         mod.addAbstractTypeMapping(SubcellularLocation.class, SubcellularLocationImpl.class);
+        mod.addAbstractTypeMapping(Statistics.class, StatisticsImpl.class);
         mod.registerSubtypes(new NamedType(AlternativeProductsCommentImpl.class, "AP"));
         mod.registerSubtypes(new NamedType(BPCPCommentImpl.class, "BPCP"));
         mod.registerSubtypes(
