@@ -38,7 +38,9 @@ public class UniRuleEntryValueMapper implements EntityValueMapper<UniRuleEntry> 
         Map<String, String> map = new HashMap<>();
         map.put("rule_id", uniRuleEntry.getUniRuleId().getValue());
         map.put("reviewed_protein_count", String.valueOf(getReviewedProteinCount(uniRuleEntry)));
-        map.put("unreviewed_protein_count", String.valueOf(getUnreviewedProteinCount(uniRuleEntry)));
+        map.put(
+                "unreviewed_protein_count",
+                String.valueOf(getUnreviewedProteinCount(uniRuleEntry)));
         map.put("taxonomic_scope", getTaxonomicScope(uniRuleEntry));
         map.put("annotation_covered", getAnnotationCovered(uniRuleEntry));
         map.put("predicted_protein_name", getPredictedProteinName(uniRuleEntry));
@@ -48,15 +50,15 @@ public class UniRuleEntryValueMapper implements EntityValueMapper<UniRuleEntry> 
 
     private Long getReviewedProteinCount(UniRuleEntry uniRuleEntry) {
         long reviewedProteinCount = 0l;
-        if(Objects.nonNull(uniRuleEntry.getStatistics())){
+        if (Objects.nonNull(uniRuleEntry.getStatistics())) {
             reviewedProteinCount = uniRuleEntry.getStatistics().getReviewedProteinCount();
         }
-       return reviewedProteinCount;
+        return reviewedProteinCount;
     }
 
     private Long getUnreviewedProteinCount(UniRuleEntry uniRuleEntry) {
         long unreviewedProteinCount = 0l;
-        if(Objects.nonNull(uniRuleEntry.getStatistics())){
+        if (Objects.nonNull(uniRuleEntry.getStatistics())) {
             unreviewedProteinCount = uniRuleEntry.getStatistics().getUnreviewedProteinCount();
         }
         return unreviewedProteinCount;

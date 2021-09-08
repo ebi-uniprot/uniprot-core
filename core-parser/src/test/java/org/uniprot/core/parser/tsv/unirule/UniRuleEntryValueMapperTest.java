@@ -47,7 +47,11 @@ class UniRuleEntryValueMapperTest {
         Condition condition = new ConditionBuilder("random type").build();
         ConditionSet conditionSet = new ConditionSetBuilder(condition).build();
         Rule mainRule = new RuleBuilder(conditionSet).build();
-        Statistics statistics = new StatisticsBuilder().reviewedProteinCount(10L).unreviewedProteinCount(5L).build();
+        Statistics statistics =
+                new StatisticsBuilder()
+                        .reviewedProteinCount(10L)
+                        .unreviewedProteinCount(5L)
+                        .build();
         UniRuleEntry entry =
                 new UniRuleEntryBuilder(uniRuleIdObject, status, information, mainRule)
                         .statistics(statistics)
@@ -208,7 +212,11 @@ class UniRuleEntryValueMapperTest {
         UniRuleId uniRuleIdObject = new UniRuleIdBuilder(uniRuleId).build();
         RuleStatus status = RuleStatus.APPLY;
         Information information = new InformationBuilder("sample version").build();
-        Statistics statistics = new StatisticsBuilder().reviewedProteinCount(10L).unreviewedProteinCount(5L).build();
+        Statistics statistics =
+                new StatisticsBuilder()
+                        .reviewedProteinCount(10L)
+                        .unreviewedProteinCount(5L)
+                        .build();
         UniRuleEntry entry =
                 new UniRuleEntryBuilder(uniRuleIdObject, status, information, ruleBuilder.build())
                         .statistics(statistics)

@@ -104,9 +104,7 @@ public class UniRuleConvertersTest extends AbstractUniRuleConvertersTest {
             long proteinCount = ThreadLocalRandom.current().nextLong();
             Statistics stats = new StatisticsBuilder().reviewedProteinCount(proteinCount).build();
             uniObject =
-                    UniRuleEntryBuilder.from((UniRuleEntry) uniObject)
-                            .statistics(stats)
-                            .build();
+                    UniRuleEntryBuilder.from((UniRuleEntry) uniObject).statistics(stats).build();
         }
         verifyBean(uniObject);
     }

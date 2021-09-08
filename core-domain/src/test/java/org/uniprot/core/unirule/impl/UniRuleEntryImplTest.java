@@ -88,9 +88,11 @@ public class UniRuleEntryImplTest {
         String modifiedBy = "sample author2";
         LocalDate createdDate = LocalDate.now();
         LocalDate modifiedDate = LocalDate.now();
-        Statistics statistics = new StatisticsBuilder().reviewedProteinCount(ThreadLocalRandom.current().nextLong())
-                .unreviewedProteinCount(ThreadLocalRandom.current().nextLong())
-                .build();
+        Statistics statistics =
+                new StatisticsBuilder()
+                        .reviewedProteinCount(ThreadLocalRandom.current().nextLong())
+                        .unreviewedProteinCount(ThreadLocalRandom.current().nextLong())
+                        .build();
 
         UniRuleEntry uniRuleEntry =
                 new UniRuleEntryImpl(
