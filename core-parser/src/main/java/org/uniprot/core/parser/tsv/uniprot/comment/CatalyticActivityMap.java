@@ -1,13 +1,18 @@
 package org.uniprot.core.parser.tsv.uniprot.comment;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.CrossReference;
 import org.uniprot.core.flatfile.parser.impl.cc.CatalyticActivityCCLineBuilder;
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.comment.CatalyticActivityComment;
+import org.uniprot.core.uniprotkb.comment.Reaction;
+import org.uniprot.core.uniprotkb.comment.ReactionDatabase;
+import org.uniprot.core.util.Utils;
 
 public class CatalyticActivityMap implements NamedValueMap {
 
@@ -33,11 +38,26 @@ public class CatalyticActivityMap implements NamedValueMap {
                             .collect(Collectors.joining(" "));
 
             catalyticActivityMap.put("cc_catalytic_activity", catalyticActivityString);
+            String rheaIds = extractRheaIds(catalyticActivityComments);
+            if(Utils.notNullNotEmpty(rheaIds)){
+                catalyticActivityMap.put("rhea_id", rheaIds);
+            }
         }
         return catalyticActivityMap;
     }
 
     private String getCatalyticActivityString(CatalyticActivityComment catalyticActivityComment) {
         return lineBuilder.buildString(catalyticActivityComment, true, true).replaceAll("\n", " ");
+    }
+    private String extractRheaIds(List<CatalyticActivityComment> caComments) {
+        return caComments.stream()
+                .map(CatalyticActivityComment::getReaction)
+                .filter(Reaction::hasReactionCrossReferences)
+                .map(Reaction::getReactionCrossReferences)
+                .flatMap(Collection::stream)
+                .filter(rr -> ReactionDatabase.RHEA.equals(rr.getDatabase()))
+                .map(CrossReference::getId)
+                .collect(Collectors.joining(" "));
+
     }
 }
