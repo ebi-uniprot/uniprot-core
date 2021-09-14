@@ -53,12 +53,17 @@ public class CatalyticActivityCommentTest {
         assertNotNull(reaction.get("name"));
         assertEquals("some reaction", reaction.get("name").asText());
         assertNotNull(reaction.get("reactionCrossReferences"));
-        assertEquals(1, reaction.get("reactionCrossReferences").size());
+        assertEquals(2, reaction.get("reactionCrossReferences").size());
         JsonNode reactionCrossReferences = reaction.get("reactionCrossReferences").get(0);
         assertNotNull(reactionCrossReferences.get("database"));
         assertEquals("ChEBI", reactionCrossReferences.get("database").asText());
         assertNotNull(reactionCrossReferences.get("id"));
         assertEquals("ChEBI:3243", reactionCrossReferences.get("id").asText());
+        JsonNode rheaCrossRef = reaction.get("reactionCrossReferences").get(1);
+        assertNotNull(rheaCrossRef.get("database"));
+        assertEquals("Rhea", rheaCrossRef.get("database").asText());
+        assertNotNull(rheaCrossRef.get("id"));
+        assertEquals("RHEA:12345", rheaCrossRef.get("id").asText());
         assertNotNull(reaction.get("ecNumber"));
         assertEquals("1.2.4.5", reaction.get("ecNumber").asText());
         assertNotNull(reaction.get("evidences"));
@@ -122,6 +127,11 @@ public class CatalyticActivityCommentTest {
                         new CrossReferenceBuilder<ReactionDatabase>()
                                 .database(ReactionDatabase.CHEBI)
                                 .id("ChEBI:3243")
+                                .build())
+                .reactionCrossReferencesAdd(
+                        new CrossReferenceBuilder<ReactionDatabase>()
+                                .database(ReactionDatabase.RHEA)
+                                .id("RHEA:12345")
                                 .build())
                 .ecNumber(ecNumber)
                 .evidencesSet(evidences)

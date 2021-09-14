@@ -45,6 +45,7 @@ public class EntryCommentsMap implements NamedValueMap {
                     "kinetics",
                     "ph_dependence",
                     "redox_potential",
+                    "rhea_id",
                     "temp_dependence",
                     "error_gmodel_pred",
                     "protein_families");
