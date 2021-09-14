@@ -43,7 +43,9 @@ class CatalyticActivityMapTest {
                         + " ChEBI:CHEBI:83400; EC=2.7.7.48; "
                         + "Evidence={ECO:0000255|PROSITE-ProRule:PRU00539};";
         assertEquals(expectedValue, value);
-        assertEquals("RHEA:21248 RHEA-COMP:11128 RHEA-COMP:11129", mappedCatalyticActivity.get("rhea_id"));
+        assertEquals(
+                "RHEA:21248 RHEA-COMP:11128 RHEA-COMP:11129",
+                mappedCatalyticActivity.get("rhea_id"));
     }
 
     @Test
@@ -90,7 +92,8 @@ class CatalyticActivityMapTest {
                         + " Reaction=Endonucleolytic cleavage to 5'-phosphomonoester.; EC=3.1.26.4;"
                         + " Evidence={ECO:0000255|PROSITE-ProRule:PRU00408};";
         assertEquals(expectedValue, value);
-        assertEquals("RHEA:22508 RHEA-COMP:11130 RHEA-COMP:11131 RHEA:22508 RHEA-COMP:11130 RHEA-COMP:11131",
+        assertEquals(
+                "RHEA:22508 RHEA-COMP:11130 RHEA-COMP:11131 RHEA:22508 RHEA-COMP:11130 RHEA-COMP:11131",
                 mappedCatalyticActivity.get("rhea_id"));
     }
 }

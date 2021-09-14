@@ -39,7 +39,7 @@ public class CatalyticActivityMap implements NamedValueMap {
 
             catalyticActivityMap.put("cc_catalytic_activity", catalyticActivityString);
             String rheaIds = extractRheaIds(catalyticActivityComments);
-            if(Utils.notNullNotEmpty(rheaIds)){
+            if (Utils.notNullNotEmpty(rheaIds)) {
                 catalyticActivityMap.put("rhea_id", rheaIds);
             }
         }
@@ -49,6 +49,7 @@ public class CatalyticActivityMap implements NamedValueMap {
     private String getCatalyticActivityString(CatalyticActivityComment catalyticActivityComment) {
         return lineBuilder.buildString(catalyticActivityComment, true, true).replaceAll("\n", " ");
     }
+
     private String extractRheaIds(List<CatalyticActivityComment> caComments) {
         return caComments.stream()
                 .map(CatalyticActivityComment::getReaction)
@@ -58,6 +59,5 @@ public class CatalyticActivityMap implements NamedValueMap {
                 .filter(rr -> ReactionDatabase.RHEA.equals(rr.getDatabase()))
                 .map(CrossReference::getId)
                 .collect(Collectors.joining(" "));
-
     }
 }
