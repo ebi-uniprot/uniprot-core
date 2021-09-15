@@ -1,18 +1,16 @@
 package org.uniprot.core.unirule;
 
+import org.uniprot.core.Statistics;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
-
-import org.uniprot.core.Statistics;
 
 /** @author sahmad */
 public interface UniRuleEntry extends Serializable {
     UniRuleId getUniRuleId();
 
     Information getInformation();
-
-    RuleStatus getRuleStatus();
 
     Rule getMainRule();
 
@@ -23,10 +21,6 @@ public interface UniRuleEntry extends Serializable {
     List<PositionFeatureSet> getPositionFeatureSets();
 
     Statistics getStatistics();
-
-    String getCreatedBy();
-
-    String getModifiedBy();
 
     LocalDate getCreatedDate();
 

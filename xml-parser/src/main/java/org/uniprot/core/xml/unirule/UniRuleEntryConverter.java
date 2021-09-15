@@ -16,7 +16,6 @@ import org.uniprot.core.xml.uniprot.XmlConverterHelper;
 public class UniRuleEntryConverter implements Converter<UniRuleType, UniRuleEntry> {
     private final ObjectFactory objectFactory;
     private final InformationConverter informationConverter;
-    private final RuleStatusConverter ruleStatusConverter;
     private final MainTypeConverter mainTypeConverter;
     private final CaseTypeConverter caseTypeConverter;
     private final SamFeatureSetConverter samFeatureSetConverter;
@@ -29,7 +28,6 @@ public class UniRuleEntryConverter implements Converter<UniRuleType, UniRuleEntr
     public UniRuleEntryConverter(ObjectFactory objectFactory) {
         this.objectFactory = objectFactory;
         this.informationConverter = new InformationConverter(objectFactory);
-        this.ruleStatusConverter = new RuleStatusConverter(objectFactory);
         this.mainTypeConverter = new MainTypeConverter(objectFactory);
         this.caseTypeConverter = new CaseTypeConverter(objectFactory);
         this.samFeatureSetConverter = new SamFeatureSetConverter(objectFactory);
@@ -41,12 +39,11 @@ public class UniRuleEntryConverter implements Converter<UniRuleType, UniRuleEntr
         if (Objects.isNull(xmlObj)) return null;
 
         UniRuleId uniRuleId = new UniRuleIdBuilder(xmlObj.getId()).build();
-        RuleStatus ruleStatus = this.ruleStatusConverter.fromXml(xmlObj.getStatus());
         Information information = this.informationConverter.fromXml(xmlObj.getInformation());
         Rule rule = this.mainTypeConverter.fromXml(xmlObj.getMain());
 
         UniRuleEntryBuilder builder =
-                new UniRuleEntryBuilder(uniRuleId, ruleStatus, information, rule);
+                new UniRuleEntryBuilder(uniRuleId, information, rule);
 
         if (Objects.nonNull(xmlObj.getCases())) {
             List<CaseRule> caseRules =
@@ -70,8 +67,6 @@ public class UniRuleEntryConverter implements Converter<UniRuleType, UniRuleEntr
         if (!positionFeatureSets.isEmpty()) {
             builder.positionFeatureSetsSet(positionFeatureSets);
         }
-        builder.createdBy(xmlObj.getCreator());
-        builder.modifiedBy(xmlObj.getModifiedBy());
         builder.createdDate(XmlConverterHelper.dateFromXml(xmlObj.getCreated()));
         builder.modifiedDate(XmlConverterHelper.dateFromXml(xmlObj.getModified()));
 
@@ -113,10 +108,7 @@ public class UniRuleEntryConverter implements Converter<UniRuleType, UniRuleEntr
             xmlObj.getPositionalFeatureSet().addAll(positionalFeatureSetTypes);
         }
 
-        xmlObj.setStatus(this.ruleStatusConverter.toXml(uniObj.getRuleStatus()));
         xmlObj.setId(uniObj.getUniRuleId().getValue());
-        xmlObj.setCreator(uniObj.getCreatedBy());
-        xmlObj.setModifiedBy(uniObj.getModifiedBy());
         xmlObj.setCreated(XmlConverterHelper.dateToXml(uniObj.getCreatedDate()));
         xmlObj.setModified(XmlConverterHelper.dateToXml(uniObj.getModifiedDate()));
 

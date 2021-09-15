@@ -134,10 +134,12 @@ public abstract class AbstractUniRuleConvertersTest extends AbstractConverterTes
     protected static void verifyBean(Object xmlObject) throws Exception {
         for (PropertyDescriptor pd :
                 Introspector.getBeanInfo(xmlObject.getClass()).getPropertyDescriptors()) {
-            if (pd.getReadMethod() != null && !"class".equals(pd.getName())) {
+            if (pd.getReadMethod() != null && (!"class".equals(pd.getName()))) {
                 Object fieldVal = pd.getReadMethod().invoke(xmlObject);
-                assertNotNull(
-                        fieldVal, xmlObject.getClass() + " field `" + pd.getName() + "` is null");
+                if(!"creator".equals(pd.getName()) && !"modifiedBy".equals(pd.getName()) && !"status".equals(pd.getName())) {
+                    assertNotNull(
+                            fieldVal, xmlObject.getClass() + " field `" + pd.getName() + "` is null");
+                }
                 if (fieldVal instanceof Collection) {
                     assertFalse(
                             ((List) fieldVal).isEmpty(),
