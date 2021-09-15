@@ -202,7 +202,7 @@ public enum EvidenceCode implements EnumDisplay {
             EnumSet.of(Category.EXPERIMENTAL, Category.MANUAL)),
 
     ECO_0000501(
-            "ECO:0000501",
+            "ECO:0007669",
             "Physical interaction",
             "evidence used in automatic assertion",
             Collections.singletonList("Imported"),
