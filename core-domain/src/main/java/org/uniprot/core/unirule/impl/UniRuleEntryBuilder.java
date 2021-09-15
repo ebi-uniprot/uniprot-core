@@ -1,6 +1,14 @@
 package org.uniprot.core.unirule.impl;
 
-import static org.uniprot.core.util.Utils.*;
+import org.uniprot.core.Builder;
+import org.uniprot.core.Statistics;
+import org.uniprot.core.unirule.CaseRule;
+import org.uniprot.core.unirule.Information;
+import org.uniprot.core.unirule.PositionFeatureSet;
+import org.uniprot.core.unirule.Rule;
+import org.uniprot.core.unirule.SamFeatureSet;
+import org.uniprot.core.unirule.UniRuleEntry;
+import org.uniprot.core.unirule.UniRuleId;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -8,28 +16,24 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
-import org.uniprot.core.Builder;
-import org.uniprot.core.Statistics;
-import org.uniprot.core.unirule.*;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
+import static org.uniprot.core.util.Utils.nullThrowIllegalArgument;
 
 public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
     private UniRuleId uniRuleId;
     private Information information;
-    private RuleStatus ruleStatus;
     private Rule mainRule;
     private List<CaseRule> otherRules = new ArrayList<>();
     private List<SamFeatureSet> samFeatureSets = new ArrayList<>();
     private List<PositionFeatureSet> positionFeatureSets = new ArrayList<>();
     private Statistics statistics;
-    private String createdBy;
-    private String modifiedBy;
     private LocalDate createdDate;
     private LocalDate modifiedDate;
 
     public UniRuleEntryBuilder(
-            UniRuleId uniRuleId, RuleStatus ruleStatus, Information information, Rule mainRule) {
+            UniRuleId uniRuleId, Information information, Rule mainRule) {
         this.uniRuleId = uniRuleId;
-        this.ruleStatus = ruleStatus;
         this.information = information;
         this.mainRule = mainRule;
     }
@@ -41,11 +45,6 @@ public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
 
     public @Nonnull UniRuleEntryBuilder information(Information information) {
         this.information = information;
-        return this;
-    }
-
-    public @Nonnull UniRuleEntryBuilder ruleStatus(RuleStatus ruleStatus) {
-        this.ruleStatus = ruleStatus;
         return this;
     }
 
@@ -91,16 +90,6 @@ public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
         return this;
     }
 
-    public @Nonnull UniRuleEntryBuilder createdBy(String createdBy) {
-        this.createdBy = createdBy;
-        return this;
-    }
-
-    public @Nonnull UniRuleEntryBuilder modifiedBy(String modifiedBy) {
-        this.modifiedBy = modifiedBy;
-        return this;
-    }
-
     public @Nonnull UniRuleEntryBuilder createdDate(LocalDate createdDate) {
         this.createdDate = createdDate;
         return this;
@@ -117,14 +106,11 @@ public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
         return new UniRuleEntryImpl(
                 uniRuleId,
                 information,
-                ruleStatus,
                 mainRule,
                 otherRules,
                 samFeatureSets,
                 positionFeatureSets,
                 statistics,
-                createdBy,
-                modifiedBy,
                 createdDate,
                 modifiedDate);
     }
@@ -132,19 +118,16 @@ public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
     public static @Nonnull UniRuleEntryBuilder from(@Nonnull UniRuleEntry instance) {
         nullThrowIllegalArgument(instance);
         UniRuleId uniRuleId = instance.getUniRuleId();
-        RuleStatus ruleStatus = instance.getRuleStatus();
         Information information = instance.getInformation();
         Rule mainRule = instance.getMainRule();
 
         UniRuleEntryBuilder builder =
-                new UniRuleEntryBuilder(uniRuleId, ruleStatus, information, mainRule);
+                new UniRuleEntryBuilder(uniRuleId, information, mainRule);
 
         builder.otherRulesSet(instance.getOtherRules())
                 .samFeatureSetsSet(instance.getSamFeatureSets())
                 .positionFeatureSetsSet(instance.getPositionFeatureSets())
                 .statistics(instance.getStatistics())
-                .createdBy(instance.getCreatedBy())
-                .modifiedBy(instance.getModifiedBy())
                 .createdDate(instance.getCreatedDate())
                 .modifiedDate(instance.getModifiedDate());
         return builder;

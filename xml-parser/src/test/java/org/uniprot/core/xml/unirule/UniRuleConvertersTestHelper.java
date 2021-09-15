@@ -1,14 +1,29 @@
 package org.uniprot.core.xml.unirule;
 
-import java.util.stream.Stream;
-
 import org.junit.jupiter.params.provider.Arguments;
 import org.uniprot.core.RangeTest;
 import org.uniprot.core.uniprotkb.comment.impl.FreeTextCommentBuilderTest;
 import org.uniprot.core.uniprotkb.description.impl.ProteinDescriptionBuilderTest;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilderTest;
-import org.uniprot.core.unirule.impl.*;
-import org.uniprot.core.xml.jaxb.unirule.*;
+import org.uniprot.core.unirule.impl.AnnotationBuilderTest;
+import org.uniprot.core.unirule.impl.AnnotationRuleExceptionBuilderTest;
+import org.uniprot.core.unirule.impl.CaseRuleBuilderTest;
+import org.uniprot.core.unirule.impl.ConditionBuilderTest;
+import org.uniprot.core.unirule.impl.ConditionSetBuilderTest;
+import org.uniprot.core.unirule.impl.ConditionValueBuilderTest;
+import org.uniprot.core.unirule.impl.FeatureTagConditionValueBuilderTest;
+import org.uniprot.core.unirule.impl.FusionBuilderTest;
+import org.uniprot.core.unirule.impl.InformationBuilderTest;
+import org.uniprot.core.unirule.impl.MultiValueBuilderTest;
+import org.uniprot.core.unirule.impl.PositionFeatureSetBuilderTest;
+import org.uniprot.core.unirule.impl.PositionalFeatureBuilderTest;
+import org.uniprot.core.unirule.impl.PositionalRuleExceptionBuilderTest;
+import org.uniprot.core.unirule.impl.RuleBuilderTest;
+import org.uniprot.core.unirule.impl.SamFeatureSetBuilderTest;
+import org.uniprot.core.unirule.impl.SamTriggerBuilderTest;
+import org.uniprot.core.unirule.impl.UniRuleEntryBuilderTest;
+
+import java.util.stream.Stream;
 
 public class UniRuleConvertersTestHelper {
     public static Stream<Arguments> provideConverterClass() {
@@ -29,7 +44,6 @@ public class UniRuleConvertersTestHelper {
                 Arguments.of(ProteinConverter.class),
                 Arguments.of(RangeConverter.class),
                 Arguments.of(RuleExceptionConverter.class),
-                Arguments.of(RuleStatusConverter.class),
                 Arguments.of(SamFeatureSetConverter.class),
                 Arguments.of(SamTriggerConverter.class),
                 Arguments.of(UniProtKBAccessionConverter.class),
@@ -59,7 +73,6 @@ public class UniRuleConvertersTestHelper {
                         AnnotationRuleExceptionBuilderTest.class, RuleExceptionConverter.class),
                 Arguments.of(
                         PositionalRuleExceptionBuilderTest.class, RuleExceptionConverter.class),
-                Arguments.of(RuleStatusTest.class, RuleStatusConverter.class),
                 Arguments.of(SamFeatureSetBuilderTest.class, SamFeatureSetConverter.class),
                 Arguments.of(SamTriggerBuilderTest.class, SamTriggerConverter.class),
                 Arguments.of(
@@ -87,7 +100,6 @@ public class UniRuleConvertersTestHelper {
                         PositionalFeatureSetConverterTest.class),
                 Arguments.of(RangeConverter.class, RangeConverterTest.class),
                 Arguments.of(RuleExceptionConverter.class, RuleExceptionConverterTest.class),
-                Arguments.of(RuleStatusConverter.class, RuleStatusConverterTest.class),
                 Arguments.of(SamFeatureSetConverter.class, SamFeatureSetConverterTest.class),
                 Arguments.of(SamTriggerConverter.class, SamTriggerConverterTest.class),
                 Arguments.of(UniRuleEntryConverter.class, UniRuleEntryConverterTest.class));

@@ -28,27 +28,23 @@ public class UniRuleEntryConverterTest extends AbstractConverterTest {
         assertNotNull(xmlObj);
         assertNotNull(xmlObj.getInformation());
         assertNotNull(xmlObj.getMain());
-        assertNotNull(xmlObj.getStatus());
         assertNotNull(xmlObj.getId());
         assertNull(xmlObj.getCases());
         assertTrue(xmlObj.getSamFeatureSet().isEmpty());
         assertTrue(xmlObj.getPositionalFeatureSet().isEmpty());
         assertNull(xmlObj.getCreated());
         assertNull(xmlObj.getModified());
-        assertNull(xmlObj.getCreator());
-        assertNull(xmlObj.getModifiedBy());
         // convert back to uniObj- test round trip
         UniRuleEntry updatedUniObj = (UniRuleEntry) converter.fromXml(xmlObj);
         assertEquals(uniObj, updatedUniObj);
     }
 
     private UniRuleEntry createSkinnyUniObject() {
-        // UniRuleId uniRuleId, RuleStatus ruleStatus, Information information, Rule mainRule)
-        RuleStatus ruleStatus = RuleStatus.APPLY;
+        // UniRuleId uniRuleId, Information information, Rule mainRule)
         Information info = InformationConverterTest.createSkinnyUniObject();
         Rule rule = MainTypeConverterTest.createSkinnyUniObject();
         UniRuleId uniRuleid = new UniRuleIdBuilder("uid").build();
-        UniRuleEntryBuilder builder = new UniRuleEntryBuilder(uniRuleid, ruleStatus, info, rule);
+        UniRuleEntryBuilder builder = new UniRuleEntryBuilder(uniRuleid, info, rule);
         return builder.build();
     }
 

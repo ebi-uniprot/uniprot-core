@@ -26,10 +26,7 @@ public class UniRuleEntryImplTest {
         assertTrue(uniRuleEntry.getPositionFeatureSets().isEmpty());
         assertNull(uniRuleEntry.getUniRuleId());
         assertNull(uniRuleEntry.getInformation());
-        assertNull(uniRuleEntry.getRuleStatus());
         assertNull(uniRuleEntry.getMainRule());
-        assertNull(uniRuleEntry.getCreatedBy());
-        assertNull(uniRuleEntry.getModifiedBy());
         assertNull(uniRuleEntry.getCreatedDate());
         assertNull(uniRuleEntry.getModifiedDate());
     }
@@ -38,7 +35,6 @@ public class UniRuleEntryImplTest {
     void testCreateObject() {
         UniRuleId uniRuleId = new UniRuleIdBuilder("UR123456789").build();
         Information information = new InformationBuilder("version").build();
-        RuleStatus ruleStatus = RuleStatus.APPLY;
         Condition condition1 = new ConditionBuilder("type1").build();
         Condition condition2 = new ConditionBuilder("type2").build();
         Condition condition3 = new ConditionBuilder("type3").build();
@@ -98,27 +94,21 @@ public class UniRuleEntryImplTest {
                 new UniRuleEntryImpl(
                         uniRuleId,
                         information,
-                        ruleStatus,
                         mainRule,
                         otherRules,
                         samFeatureSets,
                         positionFeatureSets,
                         statistics,
-                        createdBy,
-                        modifiedBy,
                         createdDate,
                         modifiedDate);
         assertNotNull(uniRuleEntry);
         assertEquals(uniRuleId, uniRuleEntry.getUniRuleId());
         assertEquals(information, uniRuleEntry.getInformation());
-        assertEquals(ruleStatus, uniRuleEntry.getRuleStatus());
         assertEquals(mainRule, uniRuleEntry.getMainRule());
         assertEquals(otherRules, uniRuleEntry.getOtherRules());
         assertEquals(samFeatureSets, uniRuleEntry.getSamFeatureSets());
         assertEquals(positionFeatureSets, uniRuleEntry.getPositionFeatureSets());
         assertEquals(statistics, uniRuleEntry.getStatistics());
-        assertEquals(createdBy, uniRuleEntry.getCreatedBy());
-        assertEquals(modifiedBy, uniRuleEntry.getModifiedBy());
         assertEquals(createdDate, uniRuleEntry.getCreatedDate());
         assertEquals(modifiedDate, uniRuleEntry.getModifiedDate());
     }

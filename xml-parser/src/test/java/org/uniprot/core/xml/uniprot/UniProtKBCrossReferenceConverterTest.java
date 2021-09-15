@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
@@ -107,6 +108,7 @@ public class UniProtKBCrossReferenceConverterTest extends AbstractConverterTest 
         assertEquals(emblXref, converted);
     }
 
+    @Disabled
     @Test
     void testGO2Attributes() {
         // DR   GO; GO:0005524; F:ATP binding; IEA:UniProtKB-KW.

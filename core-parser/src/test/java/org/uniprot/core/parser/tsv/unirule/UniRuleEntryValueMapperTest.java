@@ -1,15 +1,5 @@
 package org.uniprot.core.parser.tsv.unirule;
 
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.impl.StatisticsBuilder;
@@ -21,7 +11,6 @@ import org.uniprot.core.unirule.Condition;
 import org.uniprot.core.unirule.ConditionSet;
 import org.uniprot.core.unirule.Information;
 import org.uniprot.core.unirule.Rule;
-import org.uniprot.core.unirule.RuleStatus;
 import org.uniprot.core.unirule.UniRuleEntry;
 import org.uniprot.core.unirule.UniRuleId;
 import org.uniprot.core.unirule.impl.AnnotationBuilder;
@@ -36,13 +25,22 @@ import org.uniprot.core.unirule.impl.UniRuleEntryBuilder;
 import org.uniprot.core.unirule.impl.UniRuleIdBuilder;
 import org.uniprot.core.util.Utils;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 class UniRuleEntryValueMapperTest {
 
     @Test
     void checkWithoutUniProtAccessionEntity() {
         String uniRuleId = "UR123456789";
         UniRuleId uniRuleIdObject = new UniRuleIdBuilder(uniRuleId).build();
-        RuleStatus status = RuleStatus.APPLY;
         Information information = new InformationBuilder("sample version").build();
         Condition condition = new ConditionBuilder("random type").build();
         ConditionSet conditionSet = new ConditionSetBuilder(condition).build();
@@ -53,7 +51,7 @@ class UniRuleEntryValueMapperTest {
                         .unreviewedProteinCount(5L)
                         .build();
         UniRuleEntry entry =
-                new UniRuleEntryBuilder(uniRuleIdObject, status, information, mainRule)
+                new UniRuleEntryBuilder(uniRuleIdObject, information, mainRule)
                         .statistics(statistics)
                         .build();
 
@@ -76,7 +74,6 @@ class UniRuleEntryValueMapperTest {
     void checkWithUniProtAccessionEntity() {
         String uniRuleId = "UR123456789";
         UniRuleId uniRuleIdObject = new UniRuleIdBuilder(uniRuleId).build();
-        RuleStatus status = RuleStatus.APPLY;
         InformationBuilder informationBuilder = new InformationBuilder("sample version");
         informationBuilder.uniProtAccessionsAdd(new UniProtKBAccessionBuilder("P12345").build());
         informationBuilder.uniProtAccessionsAdd(new UniProtKBAccessionBuilder("Q12345").build());
@@ -86,7 +83,7 @@ class UniRuleEntryValueMapperTest {
         Rule mainRule = new RuleBuilder(conditionSet).build();
         UniRuleEntry entry =
                 new UniRuleEntryBuilder(
-                                uniRuleIdObject, status, informationBuilder.build(), mainRule)
+                                uniRuleIdObject, informationBuilder.build(), mainRule)
                         .build();
 
         Map<String, String> mappedEntries =
@@ -108,7 +105,6 @@ class UniRuleEntryValueMapperTest {
     void testTaxonomicScope() {
         String uniRuleId = "UR123456789";
         UniRuleId uniRuleIdObject = new UniRuleIdBuilder(uniRuleId).build();
-        RuleStatus status = RuleStatus.APPLY;
         Information information = new InformationBuilder("sample version").build();
         ConditionBuilder conditionBuilder = new ConditionBuilder("taxon");
         conditionBuilder.conditionValuesAdd(
@@ -120,7 +116,7 @@ class UniRuleEntryValueMapperTest {
         ConditionSet conditionSet = new ConditionSetBuilder(conditionBuilder.build()).build();
         Rule mainRule = new RuleBuilder(conditionSet).build();
         UniRuleEntry entry =
-                new UniRuleEntryBuilder(uniRuleIdObject, status, information, mainRule).build();
+                new UniRuleEntryBuilder(uniRuleIdObject, information, mainRule).build();
 
         Map<String, String> mappedEntries =
                 new UniRuleEntryValueMapper().mapEntity(entry, Collections.emptyList());
@@ -142,11 +138,10 @@ class UniRuleEntryValueMapperTest {
         Rule mainRule = RuleBuilderTest.createObject(3);
         String uniRuleId = "UR123456789";
         UniRuleId uniRuleIdObject = new UniRuleIdBuilder(uniRuleId).build();
-        RuleStatus status = RuleStatus.APPLY;
         Information information = new InformationBuilder("sample version").build();
         Statistics statistics = new StatisticsBuilder().reviewedProteinCount(10L).build();
         UniRuleEntry entry =
-                new UniRuleEntryBuilder(uniRuleIdObject, status, information, mainRule)
+                new UniRuleEntryBuilder(uniRuleIdObject, information, mainRule)
                         .statistics(statistics)
                         .build();
 
@@ -170,11 +165,10 @@ class UniRuleEntryValueMapperTest {
         List<CaseRule> caseRules = CaseRuleBuilderTest.createObjects(1, false);
         String uniRuleId = "UR123456789";
         UniRuleId uniRuleIdObject = new UniRuleIdBuilder(uniRuleId).build();
-        RuleStatus status = RuleStatus.APPLY;
         Information information = new InformationBuilder("sample version").build();
         Statistics statistics = new StatisticsBuilder().unreviewedProteinCount(5L).build();
         UniRuleEntry entry =
-                new UniRuleEntryBuilder(uniRuleIdObject, status, information, mainRule)
+                new UniRuleEntryBuilder(uniRuleIdObject, information, mainRule)
                         .statistics(statistics)
                         .otherRulesSet(caseRules)
                         .build();
@@ -210,7 +204,6 @@ class UniRuleEntryValueMapperTest {
         List<CaseRule> caseRules = CaseRuleBuilderTest.createObjects(1, false);
         String uniRuleId = "UR123456789";
         UniRuleId uniRuleIdObject = new UniRuleIdBuilder(uniRuleId).build();
-        RuleStatus status = RuleStatus.APPLY;
         Information information = new InformationBuilder("sample version").build();
         Statistics statistics =
                 new StatisticsBuilder()
@@ -218,7 +211,7 @@ class UniRuleEntryValueMapperTest {
                         .unreviewedProteinCount(5L)
                         .build();
         UniRuleEntry entry =
-                new UniRuleEntryBuilder(uniRuleIdObject, status, information, ruleBuilder.build())
+                new UniRuleEntryBuilder(uniRuleIdObject, information, ruleBuilder.build())
                         .statistics(statistics)
                         .otherRulesSet(caseRules)
                         .build();
