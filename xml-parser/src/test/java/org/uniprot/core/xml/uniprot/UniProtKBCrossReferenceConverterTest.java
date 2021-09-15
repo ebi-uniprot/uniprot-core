@@ -108,7 +108,6 @@ public class UniProtKBCrossReferenceConverterTest extends AbstractConverterTest 
         assertEquals(emblXref, converted);
     }
 
-    @Disabled
     @Test
     void testGO2Attributes() {
         // DR   GO; GO:0005524; F:ATP binding; IEA:UniProtKB-KW.
