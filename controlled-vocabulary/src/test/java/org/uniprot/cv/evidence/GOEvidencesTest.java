@@ -20,7 +20,7 @@ class GOEvidencesTest {
     void testConvertGAFToECODefault() {
         // IBA	Default	ECO:0000318
         Optional<String> eco = GOEvidences.INSTANCE.convertGAFToECO("IEA");
-        assertEquals("ECO:0000501", eco.orElse(WRONG));
+        assertEquals("ECO:0007669", eco.orElse(WRONG));
     }
 
     @Test
@@ -35,7 +35,7 @@ class GOEvidencesTest {
         Optional<String> gaf = GOEvidences.INSTANCE.convertECOToGAF("ECO:0000322");
         assertEquals("IEA", gaf.orElse(WRONG));
 
-        gaf = GOEvidences.INSTANCE.convertECOToGAF("ECO:0000501");
+        gaf = GOEvidences.INSTANCE.convertECOToGAF("ECO:0007669");
         assertEquals("IEA", gaf.orElse(WRONG));
 
         gaf = GOEvidences.INSTANCE.convertECOToGAF("ECO:0000318");
