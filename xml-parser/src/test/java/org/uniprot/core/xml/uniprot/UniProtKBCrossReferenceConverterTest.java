@@ -124,7 +124,7 @@ public class UniProtKBCrossReferenceConverterTest extends AbstractConverterTest 
         verifyXml(xmlObj, dbName, id);
         assertEquals(3, xmlObj.getProperty().size());
         verifyXmlAttr(xmlObj, "term", description);
-        verifyXmlAttr(xmlObj, "evidence", "ECO:0000501");
+        verifyXmlAttr(xmlObj, "evidence", "ECO:0007669");
         verifyXmlAttr(xmlObj, "project", "UniProtKB-KW");
         UniProtKBCrossReference converted = converter.fromXml(xmlObj);
         assertEquals(emblXref, converted);
