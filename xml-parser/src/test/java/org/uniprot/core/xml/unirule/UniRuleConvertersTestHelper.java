@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.unirule;
 
+import java.util.stream.Stream;
+
 import org.junit.jupiter.params.provider.Arguments;
 import org.uniprot.core.RangeTest;
 import org.uniprot.core.uniprotkb.comment.impl.FreeTextCommentBuilderTest;
@@ -22,8 +24,6 @@ import org.uniprot.core.unirule.impl.RuleBuilderTest;
 import org.uniprot.core.unirule.impl.SamFeatureSetBuilderTest;
 import org.uniprot.core.unirule.impl.SamTriggerBuilderTest;
 import org.uniprot.core.unirule.impl.UniRuleEntryBuilderTest;
-
-import java.util.stream.Stream;
 
 public class UniRuleConvertersTestHelper {
     public static Stream<Arguments> provideConverterClass() {

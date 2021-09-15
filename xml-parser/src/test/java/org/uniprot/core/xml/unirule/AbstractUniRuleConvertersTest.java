@@ -136,9 +136,12 @@ public abstract class AbstractUniRuleConvertersTest extends AbstractConverterTes
                 Introspector.getBeanInfo(xmlObject.getClass()).getPropertyDescriptors()) {
             if (pd.getReadMethod() != null && (!"class".equals(pd.getName()))) {
                 Object fieldVal = pd.getReadMethod().invoke(xmlObject);
-                if(!"creator".equals(pd.getName()) && !"modifiedBy".equals(pd.getName()) && !"status".equals(pd.getName())) {
+                if (!"creator".equals(pd.getName())
+                        && !"modifiedBy".equals(pd.getName())
+                        && !"status".equals(pd.getName())) {
                     assertNotNull(
-                            fieldVal, xmlObject.getClass() + " field `" + pd.getName() + "` is null");
+                            fieldVal,
+                            xmlObject.getClass() + " field `" + pd.getName() + "` is null");
                 }
                 if (fieldVal instanceof Collection) {
                     assertFalse(

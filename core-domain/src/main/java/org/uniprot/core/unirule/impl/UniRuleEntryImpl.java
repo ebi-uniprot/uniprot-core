@@ -1,5 +1,10 @@
 package org.uniprot.core.unirule.impl;
 
+import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+
 import org.uniprot.core.Statistics;
 import org.uniprot.core.unirule.CaseRule;
 import org.uniprot.core.unirule.Information;
@@ -9,11 +14,6 @@ import org.uniprot.core.unirule.SamFeatureSet;
 import org.uniprot.core.unirule.UniRuleEntry;
 import org.uniprot.core.unirule.UniRuleId;
 import org.uniprot.core.util.Utils;
-
-import java.time.LocalDate;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
 
 /** @author sahmad */
 public class UniRuleEntryImpl implements UniRuleEntry {

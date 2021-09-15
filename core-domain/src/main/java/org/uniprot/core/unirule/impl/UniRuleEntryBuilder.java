@@ -1,5 +1,15 @@
 package org.uniprot.core.unirule.impl;
 
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
+import static org.uniprot.core.util.Utils.nullThrowIllegalArgument;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.unirule.CaseRule;
@@ -9,16 +19,6 @@ import org.uniprot.core.unirule.Rule;
 import org.uniprot.core.unirule.SamFeatureSet;
 import org.uniprot.core.unirule.UniRuleEntry;
 import org.uniprot.core.unirule.UniRuleId;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
-import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.modifiableList;
-import static org.uniprot.core.util.Utils.nullThrowIllegalArgument;
 
 public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
     private UniRuleId uniRuleId;
@@ -31,8 +31,7 @@ public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
     private LocalDate createdDate;
     private LocalDate modifiedDate;
 
-    public UniRuleEntryBuilder(
-            UniRuleId uniRuleId, Information information, Rule mainRule) {
+    public UniRuleEntryBuilder(UniRuleId uniRuleId, Information information, Rule mainRule) {
         this.uniRuleId = uniRuleId;
         this.information = information;
         this.mainRule = mainRule;
@@ -121,8 +120,7 @@ public class UniRuleEntryBuilder implements Builder<UniRuleEntry> {
         Information information = instance.getInformation();
         Rule mainRule = instance.getMainRule();
 
-        UniRuleEntryBuilder builder =
-                new UniRuleEntryBuilder(uniRuleId, information, mainRule);
+        UniRuleEntryBuilder builder = new UniRuleEntryBuilder(uniRuleId, information, mainRule);
 
         builder.otherRulesSet(instance.getOtherRules())
                 .samFeatureSetsSet(instance.getSamFeatureSets())
