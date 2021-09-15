@@ -1,6 +1,7 @@
 package org.uniprot.core.flatfile.antlr;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
@@ -443,4 +444,32 @@ class CcLineTextCommentParserTest {
                         + "similarity to the rat sequence",
                 Collections.emptyList());
     }
+    
+	@Test
+	 void testTextEndWithDots() throws Exception {
+		String ccLine ="CC   -!- PTM: Contains 2 disulfide bonds that can be either 'C1-C3, C2-C4' or\n"
+				+ "CC       'C1-C4, C2-C3', since these disulfide connectivities have been observed\n"
+				+ "CC       for conotoxins with cysteine framework V (for examples, see AC P0DQQ7\n"
+				+ "CC       and AC P81755)... {ECO:0000305}.\n";
+		
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
+        CcLineObject obj = parser.parse(ccLine);
+        assertNotNull(obj);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CC.CCTopicEnum.PTM, cc.getTopic());
+
+        assertTrue(cc.getObject() instanceof FreeText);
+        FreeText texts = (FreeText) cc.getObject();
+        assertEquals(1, texts.getTexts().size());
+        verify(
+                texts.getTexts().get(0),
+                "Contains 2 disulfide bonds that can be either 'C1-C3, C2-C4' or "
+                		 + "'C1-C4, C2-C3', since these disulfide connectivities have been observed "
+                		 + "for conotoxins with cysteine framework V (for examples, see AC P0DQQ7 "
+                        + "and AC P81755)..",
+                List.of("ECO:0000305"));
+        
+	}
 }

@@ -56,7 +56,7 @@ cc_common: CC_TOPIC_START CC_TOPIC_COMMON  (CC_COMMON_COLON_SPACE | CC_COMMON_CO
 cc_common_texts: cc_common_text_with_ev ((SPACE|CHANGE_OF_LINE) cc_common_text_with_ev)* ;
 cc_common_text_with_ev: cc_common_text DOT  ((SPACE|CHANGE_OF_LINE)evidence DOT)?;
 
-cc_common_text: (cc_common_text_word (SPACE|CHANGE_OF_LINE))* cc_common_text_word ;
+cc_common_text: (cc_common_text_word (SPACE|CHANGE_OF_LINE))* cc_common_text_word (DOT)*;
 cc_common_text_word: (CC_COMMON_TEXT_WORD (DOT|SEMICOLON)?| cc_common_text_in_bracket)+;
 cc_common_text_in_bracket: LEFT_B (NON_EV_TAG|COMA)+ (CHANGE_OF_LINE (NON_EV_TAG|COMA)+)* RIGHT_B;
 
