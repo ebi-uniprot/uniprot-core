@@ -1,10 +1,10 @@
 package org.uniprot.core.unirule;
 
-import org.uniprot.core.Statistics;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
+
+import org.uniprot.core.Statistics;
 
 /** @author sahmad */
 public interface UniRuleEntry extends Serializable {

@@ -42,8 +42,7 @@ public class UniRuleEntryConverter implements Converter<UniRuleType, UniRuleEntr
         Information information = this.informationConverter.fromXml(xmlObj.getInformation());
         Rule rule = this.mainTypeConverter.fromXml(xmlObj.getMain());
 
-        UniRuleEntryBuilder builder =
-                new UniRuleEntryBuilder(uniRuleId, information, rule);
+        UniRuleEntryBuilder builder = new UniRuleEntryBuilder(uniRuleId, information, rule);
 
         if (Objects.nonNull(xmlObj.getCases())) {
             List<CaseRule> caseRules =

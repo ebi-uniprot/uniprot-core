@@ -1,5 +1,15 @@
 package org.uniprot.core.parser.tsv.unirule;
 
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.impl.StatisticsBuilder;
@@ -24,16 +34,6 @@ import org.uniprot.core.unirule.impl.RuleBuilderTest;
 import org.uniprot.core.unirule.impl.UniRuleEntryBuilder;
 import org.uniprot.core.unirule.impl.UniRuleIdBuilder;
 import org.uniprot.core.util.Utils;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class UniRuleEntryValueMapperTest {
 
@@ -82,8 +82,7 @@ class UniRuleEntryValueMapperTest {
         ConditionSet conditionSet = new ConditionSetBuilder(condition).build();
         Rule mainRule = new RuleBuilder(conditionSet).build();
         UniRuleEntry entry =
-                new UniRuleEntryBuilder(
-                                uniRuleIdObject, informationBuilder.build(), mainRule)
+                new UniRuleEntryBuilder(uniRuleIdObject, informationBuilder.build(), mainRule)
                         .build();
 
         Map<String, String> mappedEntries =
