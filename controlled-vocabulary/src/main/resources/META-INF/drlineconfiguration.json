@@ -431,15 +431,7 @@
 		"displayName": "UniLectin",
 		"category": "PFAM",
 		"uriLink": "https://www.unilectin.eu/curated/protein/%id"
-	},	
-	
-	{
-		"name": "IDEAL",
-		"displayName": "IDEAL",
-		"category": "PFAM",
-		"uriLink": "http://idp1.force.cs.is.nagoya-u.ac.jp/IDEAL/ideal.php?id=%id",
-        "idMappingName": "IDEAL_ID"
-	},	
+	},
 	{
 		"name": "GPCRDB",
 		"displayName": "GPCRDB",
@@ -513,21 +505,21 @@
 	{
 		"name": "BioMuta",
 		"displayName": "BioMuta",
-		"category": "PMD",
+		"category": "GVD",
 		"uriLink": "https://hive.biochemistry.gwu.edu/tools/biomuta/biomuta.php?gene=%id",
         "idMappingName": "BIOMUTA_ID"
 	},
 	{
 		"name": "DMDM",
 		"displayName": "DMDM",
-		"category": "PMD",
+		"category": "GVD",
 		"uriLink": "http://bioinf.umbc.edu/dmdm/gene_prot_page.php?search_type=protein&id=%id",
         "idMappingName": "DMDM_ID"
 	},
 	{
 		"name": "dbSNP",
 		"displayName": "dbSNP",
-		"category": "PMD",
+		"category": "GVD",
 		"uriLink": "https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?type=rs&rs=%id"
 	},
 	
@@ -1230,13 +1222,6 @@
 		]
 	},
 	{
-		"name": "PHI-base",
-		"displayName": "PHI-base",
-		"category": "ORG",
-		"uriLink": "http://www.phi-base.org/searchFacet.htm?queryTerm=%id",
-        "idMappingName": "PHI_BASE_ID"
-	},
-	{
 		"name": "HUGE",
 		"displayName": "HUGE",
 		"category": "ORG",
@@ -1410,7 +1395,7 @@
 	{
 		"name": "ChiTaRS",
 		"displayName": "ChiTaRS",
-		"category": "OTHER",
+		"category": "MISC",
 		"uriLink": "http://chitars.md.biu.ac.il/bin/search.pl?searchtype=gene_name&searchstr=%id&%d=1",
         "idMappingName": "CHITARS_ID",
 		"attributes": [		
@@ -1422,33 +1407,40 @@
 	{
 		"name": "EvolutionaryTrace",
 		"displayName": "EvolutionaryTrace",
-		"category": "OTHER",
+		"category": "MISC",
 		"uriLink": "http://mammoth.bcm.tmc.edu/cgi-bin/report_maker_ls/uniprotTraceServerResults.pl?identifier=%id"	
 	},
 	{
 		"name": "GeneWiki",
 		"displayName": "GeneWiki",
-		"category": "OTHER",
+		"category": "MISC",
 		"uriLink": "https://en.wikipedia.org/wiki/%id",
         "idMappingName": "GENEWIKI_ID"
 	},
 	{
 		"name": "GenomeRNAi",
 		"displayName": "GenomeRNAi",
-		"category": "OTHER",
+		"category": "MISC",
 		"uriLink": "http://genomernai.org/genedetails/%id",
         "idMappingName": "GENOMERNAI_ID"
     },
 	{
+		"name": "PHI-base",
+		"displayName": "PHI-base",
+		"category": "MISC",
+		"uriLink": "http://www.phi-base.org/searchFacet.htm?queryTerm=%id",
+		"idMappingName": "PHI_BASE_ID"
+	},
+	{
 		"name": "PRO",
 		"displayName": "PRO",
-		"category": "OTHER",
+		"category": "MISC",
 		"uriLink": "https://proconsortium.org/app/entry/%id"	
 	},
 	{
 		"name": "SOURCE_MIM",
 		"displayName": "SOURCE",
-		"category": "OTHER",
+		"category": "MISC",
 		"implicit": true,
 		"linkedReason": "DR:MIM",
 		"uriLink": "https://puma.princeton.edu/cgi-bin/source/sourceResult?criteria=%GeneName&choice=Gene&option=Symbol&organism=Hs"	
@@ -1456,7 +1448,7 @@
 	{
 		"name": "SOURCE_MGI",
 		"displayName": "SOURCE",
-		"category": "OTHER",
+		"category": "MISC",
 		"implicit": true,
 		"linkedReason": "DR:MGI",
 		"uriLink": "https://puma.princeton.edu/cgi-bin/source/sourceResult?criteria=%GeneName&choice=Gene&option=Symbol&organism=Mm"	
@@ -1550,6 +1542,13 @@
 				"xmlTag":"match status"			
 			}
 		]
+	},
+	{
+		"name": "IDEAL",
+		"displayName": "IDEAL",
+		"category": "FMD",
+		"uriLink": "http://idp1.force.cs.is.nagoya-u.ac.jp/IDEAL/ideal.php?id=%id",
+		"idMappingName": "IDEAL_ID"
 	},
 	{
 		"name": "InterPro",
@@ -1761,7 +1760,7 @@
 	{
 		"name": "Pharos",
 		"displayName": "Pharos",
-		"category": "OTHER",
+		"category": "MISC",
 		"uriLink": "https://pharos.nih.gov/targets/%id"
 	},
 	{
@@ -1801,7 +1800,7 @@
 	{
 		"name": "RNAct",
 		"displayName": "RNAct",
-		"category": "OTHER",
+		"category": "MISC",
 		"uriLink": "https://rnact.crg.eu/protein?query=%id",
 		"attributes": [		
 			{	"name": "moleculeType",
@@ -1812,7 +1811,7 @@
 	{
 		"name": "BioGRID-ORCS",
 		"displayName": "BioGRID-ORCS",
-		"category": "OTHER",
+		"category": "MISC",
 		"uriLink": "https://orcs.thebiogrid.org/Gene/%id",
 		"attributes": [		
 			{	"name": "hits",
