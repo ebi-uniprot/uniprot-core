@@ -120,7 +120,7 @@ class UniProtKBDatabaseTypesTest {
         UniProtDatabaseDetail opType = UniProtDatabaseTypes.INSTANCE.getDbTypeByName("dbSNP");
         assertEquals("dbSNP", opType.getName());
         assertEquals("dbSNP", opType.getDisplayName());
-        assertEquals(POLYMORPHISM_AND_MUTATION_DATABASES, opType.getCategory());
+        assertEquals(GENETIC_VARIATION_DATABASES, opType.getCategory());
         assertEquals(
                 "https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?type=rs&rs=%id", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
@@ -305,7 +305,7 @@ class UniProtKBDatabaseTypesTest {
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PTM_DATABASES), 9);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(
-                        POLYMORPHISM_AND_MUTATION_DATABASES),
+                        GENETIC_VARIATION_DATABASES),
                 3);
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(D2_GEL_DATABASES), 7);
         verifyGroupSize(
