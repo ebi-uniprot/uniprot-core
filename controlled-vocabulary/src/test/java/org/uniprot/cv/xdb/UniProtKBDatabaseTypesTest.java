@@ -120,7 +120,7 @@ class UniProtKBDatabaseTypesTest {
         UniProtDatabaseDetail opType = UniProtDatabaseTypes.INSTANCE.getDbTypeByName("dbSNP");
         assertEquals("dbSNP", opType.getName());
         assertEquals("dbSNP", opType.getDisplayName());
-        assertEquals(GENETIC_VARIATION_DATABASES, opType.getCategory());
+        assertEquals(GENERIC_VARIATION_DATABASES, opType.getCategory());
         assertEquals(
                 "https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?type=rs&rs=%id", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
@@ -231,7 +231,7 @@ class UniProtKBDatabaseTypesTest {
         UniProtDatabaseDetail opType = UniProtDatabaseTypes.INSTANCE.getDbTypeByName("ChiTaRS");
         assertEquals("ChiTaRS", opType.getName());
         assertEquals("ChiTaRS", opType.getDisplayName());
-        assertEquals(OTHER, opType.getCategory());
+        assertEquals(MISCELLANEOUS, opType.getCategory());
         assertEquals(
                 "http://chitars.md.biu.ac.il/bin/search.pl?searchtype=gene_name&searchstr=%id&%d=1",
                 opType.getUriLink());
@@ -301,10 +301,10 @@ class UniProtKBDatabaseTypesTest {
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(CHEMISTRY), 6);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PROTEIN_FAMILY_GROUP_DATABASES),
-                14);
+                13);
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PTM_DATABASES), 9);
         verifyGroupSize(
-                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(GENETIC_VARIATION_DATABASES), 3);
+                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(GENERIC_VARIATION_DATABASES), 3);
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(D2_GEL_DATABASES), 7);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PROTEOMIC_DATABASES), 11);
@@ -317,18 +317,18 @@ class UniProtKBDatabaseTypesTest {
                 14);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(ORGANISM_SPECIFIC_DATABASES),
-                40);
+                39);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PHYLOGENOMIC_DATABASES), 9);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(ENZYME_AND_PATHWAY_DATABASES),
                 10);
-        verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(OTHER), 10);
+        verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(MISCELLANEOUS), 11);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(GENE_EXPRESSION_DATABASES), 5);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(FAMILY_AND_DOMAIN_DATABASES),
-                17);
+                18);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(GENE_ONTOLOGY_DATABASES), 1);
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PROTEOMES_DATABASES), 1);

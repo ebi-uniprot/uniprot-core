@@ -11,7 +11,7 @@ public enum UniProtDatabaseCategory implements EnumDisplay {
     CHEMISTRY("CHEMISTRY", "Chemistry"),
     PROTEIN_FAMILY_GROUP_DATABASES("PFAM", "Protein family/group databases"),
     PTM_DATABASES("PTM", "PTM databases"),
-    GENETIC_VARIATION_DATABASES("PMD", "Genetic variation databases"),
+    GENERIC_VARIATION_DATABASES("GVD", "Genetic variation databases"),
     D2_GEL_DATABASES("2DG", "2D gel databases"),
     PROTEOMIC_DATABASES("PROTEOMIC", "Proteomic databases"),
     PROTOCOLS_AND_MATERIALS_DATABASES("PAM", "Protocols and materials databases"),
@@ -19,7 +19,7 @@ public enum UniProtDatabaseCategory implements EnumDisplay {
     ORGANISM_SPECIFIC_DATABASES("ORG", "Organism-specific databases"),
     PHYLOGENOMIC_DATABASES("PLG", "Phylogenomic databases"),
     ENZYME_AND_PATHWAY_DATABASES("EAP", "Enzyme and pathway databases"),
-    OTHER("OTHER", "Other"),
+    MISCELLANEOUS("MISC", "Miscellaneous"),
     GENE_EXPRESSION_DATABASES("GEP", "Gene expression databases"),
     FAMILY_AND_DOMAIN_DATABASES("FMD", "Family and domain databases"),
 
