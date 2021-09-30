@@ -304,9 +304,7 @@ class UniProtKBDatabaseTypesTest {
                 14);
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PTM_DATABASES), 9);
         verifyGroupSize(
-                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(
-                        GENETIC_VARIATION_DATABASES),
-                3);
+                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(GENETIC_VARIATION_DATABASES), 3);
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(D2_GEL_DATABASES), 7);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PROTEOMIC_DATABASES), 11);
