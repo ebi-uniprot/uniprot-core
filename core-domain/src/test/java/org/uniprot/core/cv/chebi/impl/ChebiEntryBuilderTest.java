@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.chebi.ChebiEntry;
 
+import java.util.List;
+
 class ChebiEntryBuilderTest {
 
     @Test
@@ -38,15 +40,40 @@ class ChebiEntryBuilderTest {
     }
 
     @Test
+    void canSetRelatedIds() {
+        List<ChebiEntry> relatedIds = List.of(new ChebiEntryBuilder().inchiKey("relK").id("relId").name("relName").build());
+        ChebiEntry chebi = new ChebiEntryBuilder().relatedIdsSet(relatedIds).build();
+
+        assertEquals(relatedIds, chebi.getRelatedIds());
+        assertNull(chebi.getName());
+        assertNull(chebi.getId());
+    }
+
+    @Test
+    void canAddRelatedIds() {
+        ChebiEntry related = new ChebiEntryBuilder().inchiKey("relK").id("relId").name("relName").build();
+        ChebiEntry chebi = new ChebiEntryBuilder()
+                .relatedIdsAdd(related)
+                .build();
+
+        assertNotNull(chebi.getRelatedIds());
+        assertTrue(chebi.getRelatedIds().contains(related));
+        assertNull(chebi.getName());
+        assertNull(chebi.getId());
+    }
+
+    @Test
     void canBuildCompleteObject() {
+        List<ChebiEntry> relatedIds = List.of(new ChebiEntryBuilder().inchiKey("relK").id("relId").name("relName").build());
         String inchiKey = "inchiKey";
         String id = "id";
         String name = "name";
-        ChebiEntry chebi = new ChebiEntryBuilder().inchiKey(inchiKey).id(id).name(name).build();
+        ChebiEntry chebi = new ChebiEntryBuilder().inchiKey(inchiKey).id(id).name(name).relatedIdsSet(relatedIds).build();
 
         assertEquals(inchiKey, chebi.getInchiKey());
         assertEquals(id, chebi.getId());
         assertEquals(name, chebi.getName());
+        assertEquals(relatedIds, chebi.getRelatedIds());
     }
 
     @Test

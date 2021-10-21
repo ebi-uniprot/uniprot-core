@@ -3,7 +3,13 @@ package org.uniprot.core.cv.chebi.impl;
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
+import org.uniprot.core.antigen.AntigenFeature;
+import org.uniprot.core.antigen.impl.AntigenEntryBuilder;
 import org.uniprot.core.cv.chebi.ChebiEntry;
+import org.uniprot.core.util.Utils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created 07/06/19
@@ -14,6 +20,7 @@ public class ChebiEntryBuilder implements Builder<ChebiEntry> {
     private String id;
     private String name;
     private String inchiKey;
+    private List<ChebiEntry> relatedIds = new ArrayList<>();
 
     public @Nonnull ChebiEntryBuilder id(String id) {
         this.id = id;
@@ -30,14 +37,25 @@ public class ChebiEntryBuilder implements Builder<ChebiEntry> {
         return this;
     }
 
+    public @Nonnull ChebiEntryBuilder relatedIdsAdd(ChebiEntry relatedId) {
+        Utils.addOrIgnoreNull(relatedId, this.relatedIds);
+        return this;
+    }
+
+    public @Nonnull ChebiEntryBuilder relatedIdsSet(List<ChebiEntry> relatedIds) {
+        this.relatedIds = Utils.modifiableList(relatedIds);
+        return this;
+    }
+
     public @Nonnull ChebiEntry build() {
-        return new ChebiEntryImpl(id, name, inchiKey);
+        return new ChebiEntryImpl(id, name, inchiKey, relatedIds);
     }
 
     public static @Nonnull ChebiEntryBuilder from(@Nonnull ChebiEntry instance) {
         return new ChebiEntryBuilder()
                 .id(instance.getId())
                 .name(instance.getName())
-                .inchiKey(instance.getInchiKey());
+                .inchiKey(instance.getInchiKey())
+                .relatedIdsSet(instance.getRelatedIds());
     }
 }

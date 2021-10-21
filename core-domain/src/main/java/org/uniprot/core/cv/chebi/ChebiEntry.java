@@ -1,6 +1,7 @@
 package org.uniprot.core.cv.chebi;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created 05/06/19
@@ -13,4 +14,6 @@ public interface ChebiEntry extends Serializable {
     String getName();
 
     String getInchiKey();
+
+    List<ChebiEntry> getRelatedIds();
 }
