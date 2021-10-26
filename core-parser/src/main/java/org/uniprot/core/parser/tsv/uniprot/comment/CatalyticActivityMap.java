@@ -40,7 +40,7 @@ public class CatalyticActivityMap implements NamedValueMap {
             catalyticActivityMap.put("cc_catalytic_activity", catalyticActivityString);
             String rheaIds = extractRheaIds(catalyticActivityComments);
             if (Utils.notNullNotEmpty(rheaIds)) {
-                catalyticActivityMap.put("rhea_id", rheaIds);
+                catalyticActivityMap.put("rhea", rheaIds);
             }
         }
         return catalyticActivityMap;

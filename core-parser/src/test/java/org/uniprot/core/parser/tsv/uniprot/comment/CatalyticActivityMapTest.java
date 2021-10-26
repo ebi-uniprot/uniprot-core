@@ -45,7 +45,7 @@ class CatalyticActivityMapTest {
         assertEquals(expectedValue, value);
         assertEquals(
                 "RHEA:21248 RHEA-COMP:11128 RHEA-COMP:11129",
-                mappedCatalyticActivity.get("rhea_id"));
+                mappedCatalyticActivity.get("rhea"));
     }
 
     @Test
@@ -94,6 +94,6 @@ class CatalyticActivityMapTest {
         assertEquals(expectedValue, value);
         assertEquals(
                 "RHEA:22508 RHEA-COMP:11130 RHEA-COMP:11131 RHEA:22508 RHEA-COMP:11130 RHEA-COMP:11131",
-                mappedCatalyticActivity.get("rhea_id"));
+                mappedCatalyticActivity.get("rhea"));
     }
 }
