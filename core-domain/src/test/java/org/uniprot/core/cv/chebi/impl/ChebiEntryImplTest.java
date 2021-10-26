@@ -2,14 +2,20 @@ package org.uniprot.core.cv.chebi.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.chebi.ChebiEntry;
 
-import java.util.List;
-
 class ChebiEntryImplTest {
-    private ChebiEntry impl = new ChebiEntryImpl("id", "name", "inchiKey",
-            List.of(new ChebiEntryImpl("relatedId", "relatedName", "relatedInchiKey", null)));
+    private ChebiEntry impl =
+            new ChebiEntryImpl(
+                    "id",
+                    "name",
+                    "inchiKey",
+                    List.of(
+                            new ChebiEntryImpl(
+                                    "relatedId", "relatedName", "relatedInchiKey", null)));
 
     @Test
     void needDefaultConstructorForJsonDeserialization() {
@@ -26,6 +32,8 @@ class ChebiEntryImplTest {
 
     @Test
     void toStringTest() {
-        assertEquals("ChebiEntryImpl{id='id', inchiKey='inchiKey', name='name', relatedIds=[ChebiEntryImpl{id='relatedId', inchiKey='relatedInchiKey', name='relatedName', relatedIds=null}]}", impl.toString());
+        assertEquals(
+                "ChebiEntryImpl{id='id', inchiKey='inchiKey', name='name', relatedIds=[ChebiEntryImpl{id='relatedId', inchiKey='relatedInchiKey', name='relatedName', relatedIds=null}]}",
+                impl.toString());
     }
 }

@@ -3,7 +3,6 @@ package org.uniprot.core.cv.chebi.impl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 import org.uniprot.core.cv.chebi.ChebiEntry;
 
@@ -62,7 +61,8 @@ public class ChebiEntryImpl implements ChebiEntry {
                 + '\''
                 + ", name='"
                 + name
-                + "', relatedIds=" + relatedIds
+                + "', relatedIds="
+                + relatedIds
                 + '}';
     }
 

@@ -44,8 +44,7 @@ class CatalyticActivityMapTest {
                         + "Evidence={ECO:0000255|PROSITE-ProRule:PRU00539};";
         assertEquals(expectedValue, value);
         assertEquals(
-                "RHEA:21248 RHEA-COMP:11128 RHEA-COMP:11129",
-                mappedCatalyticActivity.get("rhea"));
+                "RHEA:21248 RHEA-COMP:11128 RHEA-COMP:11129", mappedCatalyticActivity.get("rhea"));
     }
 
     @Test

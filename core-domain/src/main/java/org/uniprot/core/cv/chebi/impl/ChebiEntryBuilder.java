@@ -1,15 +1,13 @@
 package org.uniprot.core.cv.chebi.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.antigen.AntigenFeature;
-import org.uniprot.core.antigen.impl.AntigenEntryBuilder;
 import org.uniprot.core.cv.chebi.ChebiEntry;
 import org.uniprot.core.util.Utils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created 07/06/19
