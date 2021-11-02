@@ -49,5 +49,4 @@ public class ChebiFileReader extends AbstractFileReader<ChebiEntry> {
         }
         return chebiList;
     }
-
 }
