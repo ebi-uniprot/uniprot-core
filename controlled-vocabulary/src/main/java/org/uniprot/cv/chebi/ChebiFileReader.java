@@ -2,8 +2,7 @@ package org.uniprot.cv.chebi;
 
 import static org.uniprot.core.util.Utils.notNull;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,6 +13,7 @@ import org.uniprot.cv.common.AbstractFileReader;
 public class ChebiFileReader extends AbstractFileReader<ChebiEntry> {
     private static final String ID_PREFIX = "id: CHEBI:";
     private static final String NAME_PREFIX = "name: ";
+    private static final String RELATED_PREFIX = "is_a: CHEBI:";
     private static final Pattern INCHI_PATTERN =
             Pattern.compile("^property_value: \\S+chebi/inchikey\\s+\"(.*)\"\\s.*$");
 
@@ -35,6 +35,9 @@ public class ChebiFileReader extends AbstractFileReader<ChebiEntry> {
                     chebiBuilder.id(line.substring(ID_PREFIX.length()));
                 } else if (line.startsWith(NAME_PREFIX)) {
                     chebiBuilder.name(line.substring(NAME_PREFIX.length()));
+                } else if (line.startsWith(RELATED_PREFIX)) {
+                    String id = line.substring(RELATED_PREFIX.length());
+                    chebiBuilder.relatedIdsAdd(new ChebiEntryBuilder().id(id).build());
                 } else if (inchiMatcher.matches()) {
                     chebiBuilder.inchiKey(inchiMatcher.group(1));
                 }
@@ -44,7 +47,6 @@ public class ChebiFileReader extends AbstractFileReader<ChebiEntry> {
         if (chebiBuilder != null) { // add the most recently created builder
             chebiList.add(chebiBuilder.build());
         }
-
         return chebiList;
     }
 }

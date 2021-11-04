@@ -1,5 +1,7 @@
 package org.uniprot.core.cv.chebi.impl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.uniprot.core.cv.chebi.ChebiEntry;
@@ -15,15 +17,17 @@ public class ChebiEntryImpl implements ChebiEntry {
     private final String id;
     private final String inchiKey;
     private final String name;
+    private final List<ChebiEntry> relatedIds;
 
     ChebiEntryImpl() {
-        this(null, null, null);
+        this(null, null, null, new ArrayList<>());
     }
 
-    ChebiEntryImpl(String id, String name, String inchiKey) {
+    ChebiEntryImpl(String id, String name, String inchiKey, List<ChebiEntry> relatedIds) {
         this.id = id;
         this.name = name;
         this.inchiKey = inchiKey;
+        this.relatedIds = relatedIds;
     }
 
     @Override
@@ -42,6 +46,11 @@ public class ChebiEntryImpl implements ChebiEntry {
     }
 
     @Override
+    public List<ChebiEntry> getRelatedIds() {
+        return relatedIds;
+    }
+
+    @Override
     public String toString() {
         return "ChebiEntryImpl{"
                 + "id='"
@@ -52,7 +61,8 @@ public class ChebiEntryImpl implements ChebiEntry {
                 + '\''
                 + ", name='"
                 + name
-                + '\''
+                + "', relatedIds="
+                + relatedIds
                 + '}';
     }
 
