@@ -29,7 +29,7 @@ public class ChebiFileReader extends AbstractFileReader<ChebiEntry> {
                 // start of new term
                 chebiBuilder = new ChebiEntryBuilder();
             }
-            if (notNull(chebiBuilder)) {
+            if (Objects.nonNull(chebiBuilder)) {
                 Matcher inchiMatcher = INCHI_PATTERN.matcher(line);
                 if (line.startsWith(ID_PREFIX)) {
                     chebiBuilder.id(line.substring(ID_PREFIX.length()));
