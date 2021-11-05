@@ -10,9 +10,11 @@ import org.uniprot.core.util.EnumDisplay;
  */
 public enum CPDStatus implements EnumDisplay {
     STANDARD(1, "Standard"),
-    CLOSE_TO_STANDARD(2, "Close to Standard"),
-    OUTLIER(3, "Outlier"),
-    UNKNOWN(4, "Unknown");
+    CLOSE_TO_STANDARD_HIGH(2, "Close to standard (high value)"),
+    CLOSE_TO_STANDARD_LOW(3, "Close to standard (low value)"),
+    OUTLIER_HIGH(4, "Outlier (high value)"),
+    OUTLIER_LOW(5, "Outlier (low value)"),
+    UNKNOWN(6, "Unknown");
 
     private final int id;
     private final String displayName;

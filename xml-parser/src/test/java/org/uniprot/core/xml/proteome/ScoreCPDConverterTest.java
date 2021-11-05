@@ -48,7 +48,7 @@ class ScoreCPDConverterTest {
         assertEquals(10, result.getAverageCdss());
         assertEquals(11, result.getConfidence());
         assertEquals(12, result.getProteomeCount());
-        assertEquals(CPDStatus.OUTLIER, result.getStatus());
+        assertEquals(CPDStatus.OUTLIER_LOW, result.getStatus());
         assertEquals(14.44, result.getStdCdss());
     }
 
@@ -69,7 +69,7 @@ class ScoreCPDConverterTest {
         assertEquals("110", propMap.get(ScoreCPDConverter.PROPERTY_CONFIDENCE));
         assertEquals("120", propMap.get(ScoreCPDConverter.PROPERTY_PROTEOME_COUNT));
         assertEquals(
-                CPDStatus.CLOSE_TO_STANDARD.getDisplayName(),
+                CPDStatus.CLOSE_TO_STANDARD_HIGH.getDisplayName(),
                 propMap.get(ScoreCPDConverter.PROPERTY_STATUS));
         assertEquals("12.3", propMap.get(ScoreCPDConverter.PROPERTY_STD_CDSS));
     }
@@ -88,7 +88,7 @@ class ScoreCPDConverterTest {
         scoreType.getProperty().add(property);
         property =
                 propertyConverter.createProperty(
-                        ScoreCPDConverter.PROPERTY_STATUS, CPDStatus.OUTLIER.getDisplayName());
+                        ScoreCPDConverter.PROPERTY_STATUS, CPDStatus.OUTLIER_LOW.getDisplayName());
         scoreType.getProperty().add(property);
         property =
                 propertyConverter.createProperty(ScoreCPDConverter.PROPERTY_STD_CDSS, "14.44444");
@@ -101,7 +101,7 @@ class ScoreCPDConverterTest {
                 .averageCdss(100)
                 .confidence(110)
                 .proteomeCount(120)
-                .status(CPDStatus.CLOSE_TO_STANDARD)
+                .status(CPDStatus.CLOSE_TO_STANDARD_HIGH)
                 .stdCdss(12.3d)
                 .build();
     }
