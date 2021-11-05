@@ -25,7 +25,7 @@ class CPDStatusTest {
 
     @Test
     void testGetId() {
-        assertSame(3, CPDStatus.OUTLIER.getId());
+        assertSame(4, CPDStatus.OUTLIER_HIGH.getId());
     }
 
     @Nested
@@ -33,12 +33,12 @@ class CPDStatusTest {
 
         @Test
         void canConvertLowerCase() {
-            assertEquals(CPDStatus.CLOSE_TO_STANDARD, CPDStatus.fromValue("close to standard"));
+            assertEquals(CPDStatus.CLOSE_TO_STANDARD_HIGH, CPDStatus.fromValue("close to standard (high value)"));
         }
 
         @Test
         void canConvertUpperCase() {
-            assertEquals(CPDStatus.OUTLIER, CPDStatus.fromValue("OUTLIER"));
+            assertEquals(CPDStatus.OUTLIER_HIGH, CPDStatus.fromValue("OUTLIER (high value)"));
         }
 
         @Test

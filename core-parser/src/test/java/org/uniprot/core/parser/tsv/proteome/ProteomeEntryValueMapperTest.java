@@ -39,7 +39,7 @@ class ProteomeEntryValueMapperTest {
         verify("204", "protein_count", entryMap);
         verify("assembly id", "genome_assembly", entryMap);
         verify("C:130.0%[S:140.0%,D:150.0%],F:110.0%,M:120.0%,n:100", "busco", entryMap);
-        verify("Close to Standard", "cpd", entryMap);
+        verify("Close to standard (low value)", "cpd", entryMap);
         verify("partial", "genome_representation", entryMap);
     }
 
@@ -191,7 +191,7 @@ class ProteomeEntryValueMapperTest {
                         .averageCdss(100)
                         .confidence(110)
                         .proteomeCount(120)
-                        .status(CPDStatus.CLOSE_TO_STANDARD)
+                        .status(CPDStatus.CLOSE_TO_STANDARD_LOW)
                         .stdCdss(12.3d)
                         .build();
 
