@@ -33,7 +33,9 @@ class CPDStatusTest {
 
         @Test
         void canConvertLowerCase() {
-            assertEquals(CPDStatus.CLOSE_TO_STANDARD_HIGH, CPDStatus.fromValue("close to standard (high value)"));
+            assertEquals(
+                    CPDStatus.CLOSE_TO_STANDARD_HIGH,
+                    CPDStatus.fromValue("close to standard (high value)"));
         }
 
         @Test
