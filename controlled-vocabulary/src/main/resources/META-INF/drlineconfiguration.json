@@ -99,8 +99,7 @@
 				"uriLink":"https://www.ncbi.nlm.nih.gov/nuccore/%necleotideId"		
 			
 			}
-		],
-      "idMappingName": "P_REFSEQ_AC"
+		]
 	},
 	{
 		"name": "PDB",
