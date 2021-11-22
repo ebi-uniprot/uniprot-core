@@ -133,7 +133,8 @@ class PublicationDateFormatterTest {
     private void verifyDate(Date date, int expectedYear, int expectedMonth, int expectedDay) {
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(date);
-        assertEquals(TimeZone.getTimeZone("UTC").getRawOffset(), calendar.getTimeZone().getRawOffset());
+        assertEquals(
+                TimeZone.getTimeZone("UTC").getRawOffset(), calendar.getTimeZone().getRawOffset());
         assertEquals(expectedYear, calendar.get(Calendar.YEAR));
         if (expectedMonth != -1) {
             assertEquals(expectedMonth, calendar.get(Calendar.MONTH));
