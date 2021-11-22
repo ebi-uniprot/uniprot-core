@@ -1,7 +1,7 @@
 package org.uniprot.core.util;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
@@ -42,7 +42,7 @@ public enum PublicationDateFormatter {
     public @Nonnull Date convertStringToDate(@Nonnull String publicationDate) {
         try {
             LocalDate localDate = LocalDate.parse(publicationDate, dateFormat);
-            return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            return Date.from(localDate.atStartOfDay(ZoneOffset.UTC).toInstant());
         } catch (DateTimeParseException e) {
             System.err.println("failed to parse: " + publicationDate);
             throw e;
