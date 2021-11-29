@@ -312,6 +312,10 @@ public enum EvidenceCode implements EnumDisplay {
     }
 
     public static @Nonnull EvidenceCode typeOf(@Nonnull String code) {
-        return EnumDisplay.typeOf(code, EvidenceCode.class);
+        try {// remove try catch block once TRM-27027 is resolved
+            return EnumDisplay.typeOf(code, EvidenceCode.class);
+        } catch (IllegalArgumentException ile){
+            return EvidenceCode.ECO_0000269;
+        }
     }
 }

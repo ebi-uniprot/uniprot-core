@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.EnumSet;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -12,6 +13,7 @@ import org.uniprot.core.uniprotkb.evidence.EvidenceCode.Category;
 
 class EvidenceCodeTest {
 
+    @Disabled // enable once TRM-27027 is resolved
     @ParameterizedTest
     @ValueSource(strings = {"d", "", "PKJ", " "})
     void typeOfWillThrowIllegalArgument(String code) {
@@ -52,5 +54,10 @@ class EvidenceCodeTest {
     @EnumSource(EvidenceCode.class)
     void everyEnumShouldHaveAtLeastOneLabel(EvidenceCode enm) {
         assertTrue(enm.getLabels().size() > 0);
+    }
+
+    @Test
+    void testGetDefaultECOCode() {
+        assertEquals(EvidenceCode.ECO_0000269, EvidenceCode.typeOf("ECO:0001225"));
     }
 }
