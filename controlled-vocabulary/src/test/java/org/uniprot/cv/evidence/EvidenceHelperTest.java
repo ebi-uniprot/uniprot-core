@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -22,6 +23,7 @@ class EvidenceHelperTest {
         assertEquals(2, evidences.size());
     }
 
+    @Disabled // enable once TRM-27027 is fixed
     @ParameterizedTest
     @ValueSource(strings = {"abc", " ", "abc|def", "|ab"})
     void illegalEvidenceWillThrowRte(String evd) {
