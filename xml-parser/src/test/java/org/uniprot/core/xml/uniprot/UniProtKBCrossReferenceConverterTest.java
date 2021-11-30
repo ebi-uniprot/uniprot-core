@@ -152,19 +152,24 @@ public class UniProtKBCrossReferenceConverterTest extends AbstractConverterTest 
         assertEquals(xref, converted);
     }
 
-    private static Stream<Arguments> provideDRLineProperty(){
+    private static Stream<Arguments> provideDRLineProperty() {
         return Stream.of(
-                // DR   GlyGen; P14210; 5 sites, 14 N-linked glycans (4 sites), 2 O-linked glycans (1 site).
-                Arguments.of("GlyGen", "P14210", "5 sites, 14 N-linked glycans (4 sites), 2 O-linked glycans (1 site)", "glycosylation"),
-                //DR   RNAct; Q9GZX5; protein.
+                // DR   GlyGen; P14210; 5 sites, 14 N-linked glycans (4 sites), 2 O-linked glycans
+                // (1 site).
+                Arguments.of(
+                        "GlyGen",
+                        "P14210",
+                        "5 sites, 14 N-linked glycans (4 sites), 2 O-linked glycans (1 site)",
+                        "glycosylation"),
+                // DR   RNAct; Q9GZX5; protein.
                 Arguments.of("RNAct", "Q9GZX5", "protein", "molecule type"),
-                //DR   HPA; ENSG00000256683; Low tissue specificity.
-                Arguments.of("HPA", "ENSG00000256683", "Low tissue specificity", "expression patterns"),
-                //DR   ABCD; O15156; 4 sequenced antibodies.
+                // DR   HPA; ENSG00000256683; Low tissue specificity.
+                Arguments.of(
+                        "HPA", "ENSG00000256683", "Low tissue specificity", "expression patterns"),
+                // DR   ABCD; O15156; 4 sequenced antibodies.
                 Arguments.of("ABCD", "O15156", "4 sequenced antibodies", "antibodies"),
-                //DR   Pharos; Q9GZX5; Tbio.
-                Arguments.of("Pharos", "Q9GZX5", "Tbio", "development level")
-        );
+                // DR   Pharos; Q9GZX5; Tbio.
+                Arguments.of("Pharos", "Q9GZX5", "Tbio", "development level"));
     }
 
     private void verifyXml(DbReferenceType xmlObj, String db, String id) {
