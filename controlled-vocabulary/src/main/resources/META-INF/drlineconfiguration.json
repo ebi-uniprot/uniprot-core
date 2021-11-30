@@ -469,7 +469,13 @@
 		"name": "GlyGen",
 		"displayName": "GlyGen",
 		"category": "PTM",
-		"uriLink": "https://www.glygen.org/glycoprotein_detail.html?uniprot_canonical_ac=%id"
+		"uriLink": "https://www.glygen.org/glycoprotein_detail.html?uniprot_canonical_ac=%id",
+        "attributes": [
+        {
+          "name": "glycosylation",
+          "xmlTag":"glycosylation"
+        }
+      ]
 	},
 	{
 		"name": "iPTMnet",
@@ -1001,7 +1007,13 @@
 		"name": "HPA",
 		"displayName": "HPA",
 		"category": "ORG",
-		"uriLink": "http://www.proteinatlas.org/tissue_profile.php?antibody_id=%id"
+		"uriLink": "http://www.proteinatlas.org/tissue_profile.php?antibody_id=%id",
+        "attributes": [
+          {
+            "name": "ExpressionPatterns",
+            "xmlTag":"expression patterns"
+          }
+        ]
 	},
 	{
 		"name": "LegioList",
@@ -1760,7 +1772,13 @@
 		"name": "Pharos",
 		"displayName": "Pharos",
 		"category": "MISC",
-		"uriLink": "https://pharos.nih.gov/targets/%id"
+		"uriLink": "https://pharos.nih.gov/targets/%id",
+        "attributes": [
+          {
+            "name": "DevelopmentLevel",
+            "xmlTag":"development level"
+          }
+        ]
 	},
 	{
 		"name": "DrugCentral",
@@ -1772,7 +1790,13 @@
 		"name": "ABCD",
 		"displayName": "ABCD",
 		"category": "PAM",
-		"uriLink": "https://web.expasy.org/cgi-bin/abcd/search_abcd.pl?input=%id"
+		"uriLink": "https://web.expasy.org/cgi-bin/abcd/search_abcd.pl?input=%id",
+        "attributes": [
+          {
+            "name": "antibodies",
+            "xmlTag": "antibodies"
+          }
+      ]
 	},
 	{
 		"name": "Antibodypedia",
@@ -1803,7 +1827,7 @@
 		"uriLink": "https://rnact.crg.eu/protein?query=%id",
 		"attributes": [		
 			{	"name": "moleculeType",
-				"xmlTag": "moleculeType"			
+				"xmlTag": "molecule type"
 			}
 		]
 	},
