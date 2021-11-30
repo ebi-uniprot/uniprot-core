@@ -4,8 +4,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBDatabase;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
@@ -127,6 +132,39 @@ public class UniProtKBCrossReferenceConverterTest extends AbstractConverterTest 
         verifyXmlAttr(xmlObj, "project", "UniProtKB-KW");
         UniProtKBCrossReference converted = converter.fromXml(xmlObj);
         assertEquals(emblXref, converted);
+    }
+
+    @DisplayName("Test DB Ref property type")
+    @ParameterizedTest(name = "[{0} = {3}]")
+    @MethodSource("provideDRLineProperty")
+    void testDBRefPropertyName(String dbName, String id, String description, String xmlTag) {
+        String thirdAttribute = null;
+        String fourthAttribute = null;
+        String isoformId = null;
+        UniProtKBCrossReference xref =
+                createUniProtDBCrossReference(
+                        dbName, id, description, thirdAttribute, fourthAttribute, isoformId);
+        DbReferenceType xmlObj = converter.toXml(xref);
+        verifyXml(xmlObj, dbName, id);
+        assertEquals(1, xmlObj.getProperty().size());
+        verifyXmlAttr(xmlObj, xmlTag, description);
+        UniProtKBCrossReference converted = converter.fromXml(xmlObj);
+        assertEquals(xref, converted);
+    }
+
+    private static Stream<Arguments> provideDRLineProperty(){
+        return Stream.of(
+                // DR   GlyGen; P14210; 5 sites, 14 N-linked glycans (4 sites), 2 O-linked glycans (1 site).
+                Arguments.of("GlyGen", "P14210", "5 sites, 14 N-linked glycans (4 sites), 2 O-linked glycans (1 site)", "glycosylation"),
+                //DR   RNAct; Q9GZX5; protein.
+                Arguments.of("RNAct", "Q9GZX5", "protein", "molecule type"),
+                //DR   HPA; ENSG00000256683; Low tissue specificity.
+                Arguments.of("HPA", "ENSG00000256683", "Low tissue specificity", "expression patterns"),
+                //DR   ABCD; O15156; 4 sequenced antibodies.
+                Arguments.of("ABCD", "O15156", "4 sequenced antibodies", "antibodies"),
+                //DR   Pharos; Q9GZX5; Tbio.
+                Arguments.of("Pharos", "Q9GZX5", "Tbio", "development level")
+        );
     }
 
     private void verifyXml(DbReferenceType xmlObj, String db, String id) {
