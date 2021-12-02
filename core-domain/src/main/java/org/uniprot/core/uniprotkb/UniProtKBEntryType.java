@@ -1,10 +1,11 @@
 package org.uniprot.core.uniprotkb;
 
-import org.uniprot.core.util.EnumDisplay;
-import org.uniprot.core.util.Utils;
+import java.util.Arrays;
 
 import javax.annotation.Nonnull;
-import java.util.Arrays;
+
+import org.uniprot.core.util.EnumDisplay;
+import org.uniprot.core.util.Utils;
 
 public enum UniProtKBEntryType implements EnumDisplay {
     SWISSPROT("UniProtKB reviewed (Swiss-Prot)", "Swiss-Prot"),
