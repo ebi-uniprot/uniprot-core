@@ -50,12 +50,15 @@ class GOEvidencesTest {
 
     @ParameterizedTest(name = "[Code {0} exists?]")
     @MethodSource("provideAllGAFCode")
-    void testGAFToECO(String gaf){
+    void testGAFToECO(String gaf) {
         assertFalse(GOEvidences.INSTANCE.convertGAFToECO(gaf).isEmpty());
     }
 
-    private static Stream<Arguments> provideAllGAFCode(){
-        return List.of("EXP", "HDA", "HEP", "HGI", "HMP", "IBA", "IC", "IDA", "IEP", "IGC",
-                "IGI", "IMP", "IPI", "ISA", "ISM", "ISO", "ISS", "NAS", "TAS").stream().map(Arguments::of);
+    private static Stream<Arguments> provideAllGAFCode() {
+        return List.of(
+                        "EXP", "HDA", "HEP", "HGI", "HMP", "IBA", "IC", "IDA", "IEP", "IGC", "IGI",
+                        "IMP", "IPI", "ISA", "ISM", "ISO", "ISS", "NAS", "TAS")
+                .stream()
+                .map(Arguments::of);
     }
 }
