@@ -1,10 +1,16 @@
 package org.uniprot.cv.evidence;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class GOEvidencesTest {
     private static final String WRONG = "WRONG";
@@ -40,5 +46,16 @@ class GOEvidencesTest {
 
         gaf = GOEvidences.INSTANCE.convertECOToGAF("ECO:0000318");
         assertEquals("IBA", gaf.orElse(WRONG));
+    }
+
+    @ParameterizedTest(name = "[Code {0} exists?]")
+    @MethodSource("provideAllGAFCode")
+    void testGAFToECO(String gaf){
+        assertFalse(GOEvidences.INSTANCE.convertGAFToECO(gaf).isEmpty());
+    }
+
+    private static Stream<Arguments> provideAllGAFCode(){
+        return List.of("EXP", "HDA", "HEP", "HGI", "HMP", "IBA", "IC", "IDA", "IEP", "IGC",
+                "IGI", "IMP", "IPI", "ISA", "ISM", "ISO", "ISS", "NAS", "TAS").stream().map(Arguments::of);
     }
 }
