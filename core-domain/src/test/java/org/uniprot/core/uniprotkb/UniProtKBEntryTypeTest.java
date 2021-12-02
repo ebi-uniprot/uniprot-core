@@ -27,7 +27,7 @@ class UniProtKBEntryTypeTest {
             "inactive,inactive",
             "sausage-monkey,unknown"
         })
-        void canConvertLowerCase(String input, String expected) {
+        void canConvertDatasetCorrectly(String input, String expected) {
             UniProtKBEntryType expectedType = UniProtKBEntryType.UNKNOWN;
             if ("trembl".equalsIgnoreCase(expected)) {
                 expectedType = UniProtKBEntryType.TREMBL;
