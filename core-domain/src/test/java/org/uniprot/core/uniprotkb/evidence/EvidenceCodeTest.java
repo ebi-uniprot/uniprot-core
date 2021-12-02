@@ -1,17 +1,17 @@
 package org.uniprot.core.uniprotkb.evidence;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.EnumSet;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode.Category;
-
-import java.util.EnumSet;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class EvidenceCodeTest {
 
@@ -56,5 +56,4 @@ class EvidenceCodeTest {
     void everyEnumShouldHaveAtLeastOneLabel(EvidenceCode enm) {
         assertTrue(enm.getLabels().size() > 0);
     }
-
 }
