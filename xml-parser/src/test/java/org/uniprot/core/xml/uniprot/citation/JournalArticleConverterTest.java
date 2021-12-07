@@ -43,9 +43,7 @@ class JournalArticleConverterTest {
     @Test
     void testSimpleObject() {
 
-        JournalArticle citation = new JournalArticleBuilder()
-                .journalName("JournalSample")
-                .build();
+        JournalArticle citation = new JournalArticleBuilder().journalName("JournalSample").build();
         JournalArticleConverter converter = new JournalArticleConverter();
         CitationType xmlCitation = converter.toXml(citation);
         assertNull(xmlCitation.getVolume());
@@ -58,14 +56,15 @@ class JournalArticleConverterTest {
     }
 
     @Test
-    void testJournalFirstAndLastPageWithZero() { //TRM-27014
+    void testJournalFirstAndLastPageWithZero() { // TRM-27014
 
-        JournalArticle citation = new JournalArticleBuilder()
-                .journalName("JournalSample")
-                .volume("0")
-                .firstPage("0")
-                .lastPage("0")
-                .build();
+        JournalArticle citation =
+                new JournalArticleBuilder()
+                        .journalName("JournalSample")
+                        .volume("0")
+                        .firstPage("0")
+                        .lastPage("0")
+                        .build();
         JournalArticleConverter converter = new JournalArticleConverter();
         CitationType xmlCitation = converter.toXml(citation);
         assertNull(xmlCitation.getVolume());

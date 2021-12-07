@@ -1,11 +1,12 @@
 package org.uniprot.core.xml.uniprot.citation;
 
-import com.google.common.base.Strings;
 import org.uniprot.core.citation.JournalArticle;
 import org.uniprot.core.citation.impl.JournalArticleBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CitationType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
+
+import com.google.common.base.Strings;
 
 public class JournalArticleConverter implements Converter<CitationType, JournalArticle> {
 
@@ -38,16 +39,13 @@ public class JournalArticleConverter implements Converter<CitationType, JournalA
         CitationConverterHelper.updateToXmlCitatation(xmlUniprotFactory, xmlCitation, uniObj);
         xmlCitation.setType(uniObj.getCitationType().getName());
         xmlCitation.setName(uniObj.getJournal().getName());
-        if (!Strings.isNullOrEmpty(uniObj.getFirstPage()) &&
-                !uniObj.getFirstPage().equals("0")){
+        if (!Strings.isNullOrEmpty(uniObj.getFirstPage()) && !uniObj.getFirstPage().equals("0")) {
             xmlCitation.setFirst(pageConverter.toXml(uniObj.getFirstPage()));
         }
-        if (!Strings.isNullOrEmpty(uniObj.getLastPage()) &&
-                !uniObj.getLastPage().equals("0")){
+        if (!Strings.isNullOrEmpty(uniObj.getLastPage()) && !uniObj.getLastPage().equals("0")) {
             xmlCitation.setLast(pageConverter.toXml(uniObj.getLastPage()));
         }
-        if (!Strings.isNullOrEmpty(uniObj.getVolume()) &&
-                !uniObj.getVolume().equals("0")){
+        if (!Strings.isNullOrEmpty(uniObj.getVolume()) && !uniObj.getVolume().equals("0")) {
             xmlCitation.setVolume(uniObj.getVolume());
         }
 
