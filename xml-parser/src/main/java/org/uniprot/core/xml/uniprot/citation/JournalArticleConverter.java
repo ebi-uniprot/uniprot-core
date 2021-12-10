@@ -39,16 +39,20 @@ public class JournalArticleConverter implements Converter<CitationType, JournalA
         CitationConverterHelper.updateToXmlCitatation(xmlUniprotFactory, xmlCitation, uniObj);
         xmlCitation.setType(uniObj.getCitationType().getName());
         xmlCitation.setName(uniObj.getJournal().getName());
-        if (!Strings.isNullOrEmpty(uniObj.getFirstPage()) && !uniObj.getFirstPage().equals("0")) {
+        if (notBlankNotZero(uniObj.getFirstPage())) {
             xmlCitation.setFirst(pageConverter.toXml(uniObj.getFirstPage()));
         }
-        if (!Strings.isNullOrEmpty(uniObj.getLastPage()) && !uniObj.getLastPage().equals("0")) {
+        if (notBlankNotZero(uniObj.getLastPage())) {
             xmlCitation.setLast(pageConverter.toXml(uniObj.getLastPage()));
         }
-        if (!Strings.isNullOrEmpty(uniObj.getVolume()) && !uniObj.getVolume().equals("0")) {
+        if (notBlankNotZero(uniObj.getVolume())) {
             xmlCitation.setVolume(uniObj.getVolume());
         }
 
         return xmlCitation;
+    }
+
+    private boolean notBlankNotZero(String value) {
+        return !Strings.isNullOrEmpty(value) && !value.equals("0");
     }
 }
