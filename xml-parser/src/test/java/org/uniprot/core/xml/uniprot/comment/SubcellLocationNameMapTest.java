@@ -13,7 +13,8 @@ import org.junit.jupiter.api.Test;
 class SubcellLocationNameMapTest {
     @Test
     void middleNameStartWithCapital() {
-        SubcellLocationNameMap subcellLocationNameMap = new SubcellLocationNameMapImpl("subcell.txt");
+        SubcellLocationNameMap subcellLocationNameMap =
+                new SubcellLocationNameMapImpl("subcell.txt");
         String name = "Golgi apparatus, golgi stack lumen";
         String validName = subcellLocationNameMap.getLocationName(name);
         assertEquals("Golgi apparatus, Golgi stack lumen", validName);
