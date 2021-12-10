@@ -29,7 +29,7 @@ class SCLCommentConverterTest {
 
     @BeforeAll
     static void setup() {
-        subcellLocationNameMap = new SubcellLocationNameMapImpl();
+        subcellLocationNameMap = new SubcellLocationNameMapImpl("subcell.txt");
     }
 
     @Test

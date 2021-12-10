@@ -66,6 +66,90 @@ SL   Plastid envelope.
 HP   Plastid.
 GO   GO:0009526; plastid envelope
 //
+ID   Golgi apparatus.
+AC   SL-0132
+DE   The Golgi apparatus is a series of flattened, cisternal membranes and
+DE   similar vesicles usually arranged in close apposition to each other to
+DE   form stacks. In mammalian cells, the Golgi apparatus is juxtanuclear,
+DE   often pericentriolar. The stacks are connected laterally by tubules to
+DE   create a perinuclear ribbon structure, the 'Golgi ribbon'. In plants
+DE   and lower animal cells, the Golgi exists as many copies of discrete
+DE   stacks dispersed throughout the cytoplasm. The Golgi is a polarized
+DE   structure with, in most higher eukaryotic cells, a cis-face associated
+DE   with a tubular reticular network of membranes facing the endoplasmic
+DE   reticulum, the cis-Golgi network (CGN), a medial area of disk-shaped
+DE   flattened cisternae, and a trans-face associated with another tubular
+DE   reticular membrane network, the trans-Golgi network (TGN) directed
+DE   toward the plasma membrane and compartments of the endocytic pathway.
+DE   The Golgi apparatus receives the entire output of de novo synthesized
+DE   polypeptides from the ER, and functions to posttranslationally process
+DE   and sort them within vesicles destined to their proper final
+DE   destination (e.g. plasma membrane, endosomes, lysosomes).
+SY   Apparatus golgiensis; Complexus golgiensis; Golgi; Golgi complex.
+SL   Golgi apparatus.
+KW   KW-0333
+GO   GO:0005794; Golgi apparatus
+AN   Compartment specific marker: GolgB1/Giantin.
+//
+ID   Golgi stack lumen.
+AC   SL-0334
+DE   The Golgi stack compartment bounded by the membrane of the Golgi
+DE   stack.
+SY   Dictyosome lumen; Golgi bodies lumen; Golgi body lumen.
+SL   Golgi apparatus, Golgi stack lumen.
+HI   Golgi apparatus lumen.
+HP   Golgi stack.
+GO   GO:0034469; Golgi stack lumen
+//
+ID   Golgi stack.
+AC   SL-0135
+DE   The Golgi stack consist of a series of flattened curved and parallel
+DE   series saccules, called cisternae or dictyosomes, that form the
+DE   central portion of the Golgi complex. The stack usually comprises cis,
+DE   medial, and trans cisternae; the cis- and trans-Golgi networks are not
+DE   considered part of the stack.
+SY   Dictyosome; Golgi bodies; Golgi body.
+SL   Golgi apparatus, Golgi stack.
+HP   Golgi apparatus.
+GO   GO:0005795; Golgi stack
+AN   Compartment specific marker: Mannosidase II.
+//
+ID   Nucleus.
+AC   SL-0191
+DE   The nucleus is the most obvious organelle in any eukaryotic cell. It
+DE   is a membrane-bound organelle surrounded by double membranes which
+DE   contains most of the cell's genetic material. It communicates with the
+DE   surrounding cytosol via numerous nuclear pores.
+SY   Nuclear; Nuclei.
+SL   Nucleus.
+KW   KW-0539
+GO   GO:0005634; nucleus
+//
+ID   Cajal body.
+AC   SL-0031
+DE   The nuclear Cajal bodies (CBs) are small subnuclear membraneless
+DE   organelles present either free in the nucleoplasm and/or physically
+DE   associated to specific regions of chromatin. CBs contain newly
+DE   assembled small nuclear ribonucleoproteins (snRNPs) and small
+DE   nucleolar ribonucleoproteins (snoRNPs) particles, which are involved
+DE   in pre-mRNA splicing and in ribosomal RNA processing, respectively.
+DE   Mammalian nucleus in interphase, show 2-6 CBs, as irregular, punctuate
+DE   structures, which vary in size and shape and which are often
+DE   juxtaposed to nucleoli. At the electronic-microscope level, they are
+DE   composed of heterogeneous mixture of electro-dense particles with
+DE   diameters ranging from 20-25 nm and are called coiled body. Structures
+DE   similar to CBs have been identified in the amphibian oocyte nucleus
+DE   (called sphere organelles) and in insect (called endobodies). CBs are
+DE   motile and dynamic structures. Both their protein and RNA-protein
+DE   components can cycle continuously between CBs and other nuclear
+DE   locations depending on the transcriptional state of the cell.
+SY   Cajal bodies; Coiled body; Endobodies; Nucleolar accessory bodies;
+SY   Sphere organelles.
+SL   Nucleus, Cajal body.
+HI   Nuclear body.
+HP   Nucleus.
+GO   GO:0015030; Cajal body
+//
 -----------------------------------------------------------------------
 Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
 Distributed under the Creative Commons Attribution (CC BY 4.0) License
