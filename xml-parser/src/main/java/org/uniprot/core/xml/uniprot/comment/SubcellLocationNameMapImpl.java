@@ -54,7 +54,7 @@ public class SubcellLocationNameMapImpl implements SubcellLocationNameMap {
             subcellularLocationMap =
                     entries.stream()
                             .collect(
-                                    Collectors.toMap(
+                                    Collectors.toUnmodifiableMap(
                                             this::getLowercaseContent,
                                             SubcellularLocationEntry::getContent));
         }
