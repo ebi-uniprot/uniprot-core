@@ -6,6 +6,8 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CitationType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 
+import com.google.common.base.Strings;
+
 public class JournalArticleConverter implements Converter<CitationType, JournalArticle> {
 
     private final ObjectFactory xmlUniprotFactory;
@@ -37,10 +39,20 @@ public class JournalArticleConverter implements Converter<CitationType, JournalA
         CitationConverterHelper.updateToXmlCitatation(xmlUniprotFactory, xmlCitation, uniObj);
         xmlCitation.setType(uniObj.getCitationType().getName());
         xmlCitation.setName(uniObj.getJournal().getName());
-        xmlCitation.setFirst(pageConverter.toXml(uniObj.getFirstPage()));
-        xmlCitation.setLast(pageConverter.toXml(uniObj.getLastPage()));
-        xmlCitation.setVolume(uniObj.getVolume());
+        if (notBlankNotZero(uniObj.getFirstPage())) {
+            xmlCitation.setFirst(pageConverter.toXml(uniObj.getFirstPage()));
+        }
+        if (notBlankNotZero(uniObj.getLastPage())) {
+            xmlCitation.setLast(pageConverter.toXml(uniObj.getLastPage()));
+        }
+        if (notBlankNotZero(uniObj.getVolume())) {
+            xmlCitation.setVolume(uniObj.getVolume());
+        }
 
         return xmlCitation;
+    }
+
+    private boolean notBlankNotZero(String value) {
+        return !Strings.isNullOrEmpty(value) && !value.equals("0");
     }
 }

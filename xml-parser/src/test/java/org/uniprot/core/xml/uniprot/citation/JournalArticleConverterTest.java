@@ -1,6 +1,7 @@
 package org.uniprot.core.xml.uniprot.citation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.Arrays;
 
@@ -37,6 +38,38 @@ class JournalArticleConverterTest {
                 UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Citation converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
+    }
+
+    @Test
+    void testSimpleObject() {
+
+        JournalArticle citation = new JournalArticleBuilder().journalName("JournalSample").build();
+        JournalArticleConverter converter = new JournalArticleConverter();
+        CitationType xmlCitation = converter.toXml(citation);
+        assertNull(xmlCitation.getVolume());
+        assertNull(xmlCitation.getFirst());
+        assertNull(xmlCitation.getLast());
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
+        JournalArticle converted = converter.fromXml(xmlCitation);
+        assertEquals(citation, converted);
+    }
+
+    @Test
+    void testJournalFirstAndLastPageWithZero() { // TRM-27014
+
+        JournalArticle citation =
+                new JournalArticleBuilder()
+                        .journalName("JournalSample")
+                        .volume("0")
+                        .firstPage("0")
+                        .lastPage("0")
+                        .build();
+        JournalArticleConverter converter = new JournalArticleConverter();
+        CitationType xmlCitation = converter.toXml(citation);
+        assertNull(xmlCitation.getVolume());
+        assertNull(xmlCitation.getFirst());
+        assertNull(xmlCitation.getLast());
     }
 
     private JournalArticle create() {
