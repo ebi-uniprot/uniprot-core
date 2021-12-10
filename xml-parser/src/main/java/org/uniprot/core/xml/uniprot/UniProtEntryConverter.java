@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprotkb.*;
-import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
@@ -18,12 +17,7 @@ import org.uniprot.core.uniprotkb.impl.EntryAuditBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
 import org.uniprot.core.xml.Converter;
-import org.uniprot.core.xml.jaxb.uniprot.Entry;
-import org.uniprot.core.xml.jaxb.uniprot.EvidenceType;
-import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
-import org.uniprot.core.xml.jaxb.uniprot.ProteinExistenceType;
-import org.uniprot.core.xml.jaxb.uniprot.ReferenceType;
-import org.uniprot.core.xml.jaxb.uniprot.SequenceType;
+import org.uniprot.core.xml.jaxb.uniprot.*;
 import org.uniprot.core.xml.uniprot.citation.ReferenceConverter;
 import org.uniprot.core.xml.uniprot.comment.CommentConverterFactory;
 import org.uniprot.core.xml.uniprot.description.ProteinDescriptionConverter;
@@ -265,7 +259,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtKBEntry> {
     }
 
     private void updateMetaDataToXml(Entry xmlEntry, UniProtKBEntry entry) {
-        xmlEntry.setDataset(entry.getEntryType().getName());
+        xmlEntry.setDataset(entry.getEntryType().getXmlName());
         ProteinExistenceType pet = xmlUniprotFactory.createProteinExistenceType();
         pet.setType(entry.getProteinExistence().getName().toLowerCase());
         xmlEntry.setProteinExistence(pet);
