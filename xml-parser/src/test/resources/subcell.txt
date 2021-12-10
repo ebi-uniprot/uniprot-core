@@ -1,0 +1,72 @@
+---------------------------------------------------------------------------
+        UniProt - Swiss-Prot Protein Knowledgebase
+        SIB Swiss Institute of Bioinformatics; Geneva, Switzerland
+        European Bioinformatics Institute (EBI); Hinxton, United Kingdom
+        Protein Information Resource (PIR); Washington DC, USA
+---------------------------------------------------------------------------
+
+Description: Controlled vocabulary of subcellular locations and membrane
+             topologies and orientations
+Name:        subcell.txt
+Release:     2019_02 of 13-Feb-2019
+
+---------------------------------------------------------------------------
+
+ This document lists the UniProtKB controlled vocabulary used for the
+ subcellular locations (including the membrane topologies and orientations
+ terms) in the SUBCELLULAR LOCATION lines.
+
+ It provides definitions of the terms as well as other relevant information
+ in the following format:
+
+  ---------  -------------------------------   ----------------------------
+  Line code  Content                           Occurrence in an entry
+  ---------  -------------------------------   ----------------------------
+  ID         Identifier (location)             Once; starts an entry
+  IT         Identifier (topology)             Once; starts a 'topology' entry
+  IO         Identifier (orientation)          Once; starts an 'orientation' entry
+  AC         Accession (SL-xxxx)               Once
+  DE         Definition                        Once or more
+  SY         Synonyms                          Optional; Once or more
+  SL         Content of subc. loc. lines       Once
+  HI         Hierarchy ('is-a')                Optional; Once or more
+  HP         Hierarchy ('part-of')             Optional; Once or more
+  KW         Associated keyword (accession)    Optional; Once
+  GO         Gene ontology (GO) mapping        Optional; Once or more
+  AN         Annotation note                   Optional; Once or more
+  RX         Interesting references            Optional; Once or more
+  WW         Interesting links                 Optional; Once or more
+  //         Terminator                        Once; ends an entry
+
+
+AN   Next free AC: SL-0510
+___________________________________________________________________________
+ID   Plastid.
+AC   SL-0209
+DE   The plastid is a semi-autonomous, self-reproducing organelle. Plastids
+DE   are remnants of a photosynthetic organism that was engulfed by the
+DE   host, although not all are now photosynthetic. Plastid genomes encode
+DE   genes for rRNAs, tRNAs and between about 28 and 150 proteins. Plastids
+DE   can be categorized in 4 main groups: chloroplasts, cyanelles,
+DE   apicoplasts and non-photosynthetic. The later is found is some land
+DE   plants (Epifagus virginiana), chlorophyte algae (Prototheca
+DE   wickerhamii) and euglenoids (Astasis longa), which do not encode the
+DE   genes necessary for photosynthesis and so are not photosynthetic but
+DE   still contain a plastid. They probably do not contain thylakoids.
+SL   Plastid.
+KW   KW-0934
+GO   GO:0009536; plastid
+//
+ID   Plastid envelope.
+AC   SL-0210
+DE   The envelope of a plastid comprises the inner and outer plastid
+DE   membrane including the intermembrane space.
+SY   Plastidic envelope.
+SL   Plastid envelope.
+HP   Plastid.
+GO   GO:0009526; plastid envelope
+//
+-----------------------------------------------------------------------
+Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+Distributed under the Creative Commons Attribution (CC BY 4.0) License
+-----------------------------------------------------------------------

@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 import org.uniprot.core.util.Utils;
-import org.uniprot.cv.subcell.SubcellularLocationFileReader;
+import org.uniprot.cv.subcell.SubcellularLocationCache;
 
 import com.google.common.base.Strings;
 
@@ -50,11 +50,11 @@ public class SubcellLocationNameMapImpl implements SubcellLocationNameMap {
     private void loadSubcellularLocationMap(String filename) {
         if (Utils.notNullNotEmpty(filename)) {
             List<SubcellularLocationEntry> entries =
-                    new SubcellularLocationFileReader().parse(filename);
+                    SubcellularLocationCache.INSTANCE.get(filename);
             subcellularLocationMap =
                     entries.stream()
                             .collect(
-                                    Collectors.toMap(
+                                    Collectors.toUnmodifiableMap(
                                             this::getLowercaseContent,
                                             SubcellularLocationEntry::getContent));
         }
