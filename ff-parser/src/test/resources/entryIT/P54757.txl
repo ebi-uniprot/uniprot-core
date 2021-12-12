@@ -2,7 +2,7 @@ ID   EPHA5_RAT               Reviewed;        1005 AA.
 AC   P54757;
 DT   01-OCT-1996, integrated into UniProtKB/Swiss-Prot.
 DT   01-OCT-1996, sequence version 1.
-DT   16-JAN-2019, entry version 166.
+DT   29-SEP-2021, entry version 178.
 DE   RecName: Full=Ephrin type-A receptor 5;
 DE            EC=2.7.10.1;
 DE   AltName: Full=EPH homology kinase 1;
@@ -96,8 +96,6 @@ CC       Name=2;
 CC         IsoId=P54757-2; Sequence=VSP_003001;
 CC       Name=3;
 CC         IsoId=P54757-3; Sequence=VSP_003002;
-CC         Note=Ref.2 (CAA55357) sequence differs from that shown due to several
-CC         frameshifts. {ECO:0000305};
 CC       Name=4;
 CC         IsoId=P54757-4; Sequence=VSP_003002, VSP_003003;
 CC       Name=5;
@@ -111,6 +109,12 @@ CC       {ECO:0000250}.
 CC   -!- SIMILARITY: Belongs to the protein kinase superfamily. Tyr protein
 CC       kinase family. Ephrin receptor subfamily. {ECO:0000255|PROSITE-
 CC       ProRule:PRU00159}.
+CC   -!- SEQUENCE CAUTION: [Isoform 3]:
+CC       Sequence=CAA55357.1; Type=Frameshift; Evidence={ECO:0000305};
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
 DR   EMBL; X78689; CAA55357.1; ALT_FRAME; mRNA.
 DR   PIR; PT0186; PT0186.
 DR   PIR; S47489; S47489.
@@ -121,9 +125,11 @@ DR   RefSeq; NP_077343.1; NM_024367.1.
 DR   SMR; P54757; -.
 DR   STRING; 10116.ENSRNOP00000002793; -.
 DR   GuidetoPHARMACOLOGY; 1825; -.
+DR   GlyGen; P54757; 6 sites.
 DR   iPTMnet; P54757; -.
 DR   PhosphoSitePlus; P54757; -.
 DR   SwissPalm; P54757; -.
+DR   jPOST; P54757; -.
 DR   PaxDb; P54757; -.
 DR   PRIDE; P54757; -.
 DR   GeneID; 79208; -.
@@ -132,39 +138,50 @@ DR   UCSC; RGD:620831; rat. [P54757-1]
 DR   CTD; 2044; -.
 DR   RGD; 620831; Epha5.
 DR   eggNOG; KOG0196; Eukaryota.
-DR   eggNOG; COG0515; LUCA.
-DR   HOGENOM; HOG000233856; -.
 DR   InParanoid; P54757; -.
-DR   KO; K05106; -.
 DR   OrthoDB; 933071at2759; -.
 DR   PhylomeDB; P54757; -.
 DR   BRENDA; 2.7.10.1; 5301.
+DR   Reactome; R-RNO-2682334; EPH-Ephrin signaling.
+DR   Reactome; R-RNO-3928663; EPHA-mediated growth cone collapse.
+DR   Reactome; R-RNO-3928665; EPH-ephrin mediated repulsion of cells.
 DR   PRO; PR:P54757; -.
 DR   Proteomes; UP000002494; Unplaced.
+DR   GO; GO:0005912; C:adherens junction; ISO:RGD.
 DR   GO; GO:0030424; C:axon; IDA:UniProtKB.
+DR   GO; GO:0071944; C:cell periphery; ISO:RGD.
 DR   GO; GO:0030425; C:dendrite; ISS:UniProtKB.
+DR   GO; GO:0009897; C:external side of plasma membrane; ISO:RGD.
 DR   GO; GO:0005887; C:integral component of plasma membrane; IBA:GO_Central.
 DR   GO; GO:0043005; C:neuron projection; IBA:GO_Central.
+DR   GO; GO:0043025; C:neuronal cell body; ISO:RGD.
+DR   GO; GO:0048471; C:perinuclear region of cytoplasm; ISO:RGD.
 DR   GO; GO:0005886; C:plasma membrane; IDA:UniProtKB.
 DR   GO; GO:0043235; C:receptor complex; IBA:GO_Central.
+DR   GO; GO:0005791; C:rough endoplasmic reticulum; ISO:RGD.
 DR   GO; GO:0005524; F:ATP binding; IEA:UniProtKB-KW.
 DR   GO; GO:0005003; F:ephrin receptor activity; IDA:UniProtKB.
 DR   GO; GO:0005004; F:GPI-linked ephrin receptor activity; ISS:UniProtKB.
+DR   GO; GO:0019838; F:growth factor binding; IPI:ARUK-UCL.
 DR   GO; GO:0004714; F:transmembrane receptor protein tyrosine kinase activity; IBA:GO_Central.
 DR   GO; GO:0005005; F:transmembrane-ephrin receptor activity; IBA:GO_Central.
 DR   GO; GO:0007411; P:axon guidance; ISS:UniProtKB.
 DR   GO; GO:0019933; P:cAMP-mediated signaling; IDA:UniProtKB.
+DR   GO; GO:0071372; P:cellular response to follicle-stimulating hormone stimulus; ISO:RGD.
+DR   GO; GO:1904322; P:cellular response to forskolin; ISO:RGD.
 DR   GO; GO:0060997; P:dendritic spine morphogenesis; IDA:UniProtKB.
 DR   GO; GO:0048013; P:ephrin receptor signaling pathway; IDA:UniProtKB.
 DR   GO; GO:0021766; P:hippocampus development; ISS:UniProtKB.
 DR   GO; GO:0007162; P:negative regulation of cell adhesion; IDA:MGI.
+DR   GO; GO:0048666; P:neuron development; ISO:RGD.
 DR   GO; GO:0032793; P:positive regulation of CREB transcription factor activity; IMP:UniProtKB.
+DR   GO; GO:0033674; P:positive regulation of kinase activity; IBA:GO_Central.
 DR   GO; GO:0032956; P:regulation of actin cytoskeleton organization; ISS:UniProtKB.
 DR   GO; GO:0043087; P:regulation of GTPase activity; ISS:UniProtKB.
 DR   GO; GO:0061178; P:regulation of insulin secretion involved in cellular response to glucose stimulus; ISS:UniProtKB.
 DR   GO; GO:0007169; P:transmembrane receptor protein tyrosine kinase signaling pathway; IBA:GO_Central.
 DR   CDD; cd00063; FN3; 2.
-DR   Gene3D; 2.60.120.260; -; 1.
+DR   Gene3D; 1.10.150.50; -; 1.
 DR   Gene3D; 2.60.40.10; -; 2.
 DR   InterPro; IPR027936; Eph_TM.
 DR   InterPro; IPR001090; Ephrin_rcpt_lig-bd_dom.
@@ -178,7 +195,6 @@ DR   InterPro; IPR000719; Prot_kinase_dom.
 DR   InterPro; IPR001660; SAM.
 DR   InterPro; IPR013761; SAM/pointed_sf.
 DR   InterPro; IPR001245; Ser-Thr/Tyr_kinase_cat_dom.
-DR   InterPro; IPR011641; Tyr-kin_ephrin_A/B_rcpt-like.
 DR   InterPro; IPR008266; Tyr_kinase_AS.
 DR   InterPro; IPR020635; Tyr_kinase_cat_dom.
 DR   InterPro; IPR016257; Tyr_kinase_ephrin_rcpt.
@@ -186,12 +202,11 @@ DR   InterPro; IPR001426; Tyr_kinase_rcpt_V_CS.
 DR   Pfam; PF14575; EphA2_TM; 1.
 DR   Pfam; PF01404; Ephrin_lbd; 1.
 DR   Pfam; PF00041; fn3; 2.
-DR   Pfam; PF07714; Pkinase_Tyr; 1.
+DR   Pfam; PF07714; PK_Tyr_Ser-Thr; 1.
 DR   Pfam; PF00536; SAM_1; 1.
 DR   PIRSF; PIRSF000666; TyrPK_ephrin_receptor; 1.
 DR   PRINTS; PR00109; TYRKINASE.
 DR   SMART; SM00615; EPH_lbd; 1.
-DR   SMART; SM01411; Ephrin_rec_like; 1.
 DR   SMART; SM00060; FN3; 2.
 DR   SMART; SM00219; TyrKc; 1.
 DR   SUPFAM; SSF47769; SSF47769; 1.
@@ -209,10 +224,9 @@ DR   PROSITE; PS00791; RECEPTOR_TYR_KIN_V_2; 1.
 DR   PROSITE; PS50105; SAM_DOMAIN; 1.
 PE   1: Evidence at protein level;
 KW   Alternative splicing; ATP-binding; Cell membrane; Cell projection;
-KW   Complete proteome; Glycoprotein; Kinase; Membrane; Neurogenesis;
-KW   Nucleotide-binding; Phosphoprotein; Receptor; Reference proteome; Repeat;
-KW   Signal; Transferase; Transmembrane; Transmembrane helix;
-KW   Tyrosine-protein kinase.
+KW   Glycoprotein; Kinase; Membrane; Neurogenesis; Nucleotide-binding;
+KW   Phosphoprotein; Receptor; Reference proteome; Repeat; Signal; Transferase;
+KW   Transmembrane; Transmembrane helix; Tyrosine-protein kinase.
 FT   SIGNAL          1..26
 FT                   /evidence="ECO:0000250"
 FT   CHAIN           27..1005
@@ -245,8 +259,9 @@ FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00184"
 FT   NP_BIND         683..691
 FT                   /note="ATP"
 FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00159"
-FT   COMPBIAS        222..356
-FT                   /note="Cys-rich"
+FT   REGION          1..24
+FT                   /note="Disordered"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
 FT   ACT_SITE        802
 FT                   /note="Proton acceptor"
 FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00159,
@@ -320,26 +335,6 @@ FT                   /evidence="ECO:0000305"
 FT   CONFLICT        979
 FT                   /note="T -> I (in Ref. 2; CAA55357)"
 FT                   /evidence="ECO:0000305"
-**
-**   #################    INTERNAL SECTION    ##################
-**EV ECO:0000250; -; XXX; 08-APR-2017.
-**EV ECO:0000250; UniProtKB:P54756; ANS; 30-NOV-2018.
-**EV ECO:0000250; UniProtKB:Q60629; UHI; 30-NOV-2018.
-**EV ECO:0000255; -; ANS; 08-APR-2017.
-**EV ECO:0000255; PROSITE-ProRule:PRU00159; XXX; 08-APR-2017.
-**EV ECO:0000255; PROSITE-ProRule:PRU00184; XXX; 08-APR-2017.
-**EV ECO:0000255; PROSITE-ProRule:PRU00316; XXX; 08-APR-2017.
-**EV ECO:0000255; PROSITE-ProRule:PRU00883; XXX; 08-APR-2017.
-**EV ECO:0000255; PROSITE-ProRule:PRU10028; XXX; 08-APR-2017.
-**EV ECO:0000269; PubMed:20824214; ANS; 30-NOV-2018.
-**EV ECO:0000269; PubMed:7748564; ANS; 30-NOV-2018.
-**EV ECO:0000269; PubMed:9698392; XXX; 30-NOV-2018.
-**EV ECO:0000303; PubMed:7504232; XXX; 08-APR-2017.
-**EV ECO:0000303; PubMed:7898646; XXX; 08-APR-2017.
-**EV ECO:0000305; -; XXX; 08-APR-2017.
-**DR PROSITE; PS00107; PROTEIN_KINASE_ATP; FALSE_NEG.
-**ZB KAX, 14-MAR-2006; MCB, 31-JUL-2007; ANS, 24-JUL-2018; UHI, 19-NOV-2018;
-**ZC LIB, 23-AUG-2011; Major revision.
 SQ   SEQUENCE   1005 AA;  111007 MW;  1AED42C99693C574 CRC64;
      MRGSGPRGAG RRRTQGRGGG GDTPRVPASL AGCYSAPLKG PLWTCLLLCA ALRTLLASPS
      NEVNLLDSRT VLGDLGWIAF PKNGWEEIGE VDENYAPIHT YQVCKVMEQN QNNWLLTSWI

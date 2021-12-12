@@ -2,7 +2,7 @@ ID   CSF3_HUMAN              Reviewed;         207 AA.
 AC   P09919; A8MXR7;
 DT   01-JUL-1989, integrated into UniProtKB/Swiss-Prot.
 DT   01-JUL-1989, sequence version 1.
-DT   13-FEB-2019, entry version 201.
+DT   29-SEP-2021, entry version 218.
 DE   RecName: Full=Granulocyte colony-stimulating factor;
 DE            Short=G-CSF;
 DE   AltName: Full=Pluripoietin;
@@ -26,7 +26,7 @@ RL   Nature 319:415-418(1986).
 RN   [2]
 RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA / MRNA] (ISOFORM SHORT), AND ALTERNATIVE
 RP   SPLICING.
-RX   PubMed=2423327;
+RX   PubMed=2423327; DOI=10.1002/j.1460-2075.1986.tb04249.x;
 RA   Nagata S., Tsuchiya M., Asano S., Yamamoto O., Hirata Y., Kubota N.,
 RA   Oheda M., Nomura H., Yamazaki T.;
 RT   "The chromosomal gene structure and two mRNAs for human granulocyte colony-
@@ -34,7 +34,7 @@ RT   stimulating factor.";
 RL   EMBO J. 5:575-581(1986).
 RN   [3]
 RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM SHORT).
-RX   PubMed=3494801;
+RX   PubMed=3494801; DOI=10.1002/jlb.41.4.302;
 RA   Devlin J.J., Devlin P.E., Myambo K., Lilly M.B., Rado T.A., Warren M.K.;
 RT   "Expression of granulocyte colony-stimulating factor by human cell lines.";
 RL   J. Leukoc. Biol. 41:302-306(1987).
@@ -56,7 +56,7 @@ RX   PubMed=16625196; DOI=10.1038/nature04689;
 RA   Zody M.C., Garber M., Adams D.J., Sharpe T., Harrow J., Lupski J.R.,
 RA   Nicholson C., Searle S.M., Wilming L., Young S.K., Abouelleil A.,
 RA   Allen N.R., Bi W., Bloom T., Borowsky M.L., Bugalter B.E., Butler J.,
-RA   Chang J.L., Chen C.K., Cook A., Corum B., Cuomo C.A., de Jong P.J.,
+RA   Chang J.L., Chen C.-K., Cook A., Corum B., Cuomo C.A., de Jong P.J.,
 RA   DeCaprio D., Dewar K., FitzGerald M., Gilbert J., Gibson R., Gnerre S.,
 RA   Goldstein S., Grafham D.V., Grocock R., Hafez N., Hagopian D.S., Hart E.,
 RA   Norman C.H., Humphray S., Jaffe D.B., Jones M., Kamal M., Khodiyar V.K.,
@@ -79,7 +79,7 @@ RT   "Recombinant human granulocyte colony-stimulating factor: effects on normal
 RT   and leukemic myeloid cells.";
 RL   Science 232:61-66(1986).
 RN   [8]
-RP   PROTEIN SEQUENCE OF 30-46.
+RP   PROTEIN SEQUENCE OF 31-46.
 RX   PubMed=8554326; DOI=10.1006/abbi.1995.0047;
 RA   Haniu M., Horan T., Arakawa T., Le J., Katta V., Rohde M.F.;
 RT   "Extracellular domain of granulocyte-colony stimulating factor receptor.
@@ -88,7 +88,7 @@ RT   proximity of ligand-binding region.";
 RL   Arch. Biochem. Biophys. 324:344-356(1995).
 RN   [9]
 RP   GLYCOSYLATION AT THR-166.
-RX   PubMed=7685769; DOI=10.1016/0021-9673(93)83098-D;
+RX   PubMed=7685769; DOI=10.1016/0021-9673(93)83098-d;
 RA   Clogston C.L., Hu S., Boone T.C., Lu H.S.;
 RT   "Glycosidase digestion, electrophoresis and chromatographic analysis of
 RT   recombinant human granulocyte colony-stimulating factor glycoforms produced
@@ -96,7 +96,7 @@ RT   in Chinese hamster ovary cells.";
 RL   J. Chromatogr. A 637:55-62(1993).
 RN   [10]
 RP   STRUCTURE BY NMR.
-RX   PubMed=1281794; DOI=10.1016/0014-5793(92)81521-M;
+RX   PubMed=1281794; DOI=10.1016/0014-5793(92)81521-m;
 RA   Zink T., Ross A., Ambrosius D., Rudolph R., Holak T.A.;
 RT   "Secondary structure of human granulocyte colony-stimulating factor derived
 RT   from NMR spectroscopy.";
@@ -147,7 +147,6 @@ CC       Name=Short;
 CC         IsoId=P09919-2; Sequence=VSP_002673;
 CC       Name=3;
 CC         IsoId=P09919-3; Sequence=VSP_045246;
-CC         Note=No experimental confirmation available.;
 CC   -!- PTM: O-glycan consists of Gal-GalNAc disaccharide which can be modified
 CC       with up to two sialic acid residues (done in recombinantly expressed G-
 CC       CSF from CHO cells).
@@ -156,13 +155,17 @@ CC       (Amgen/Roche) and Granocyte (Rhone-Poulenc). Used to treat neutropenia
 CC       (a disorder characterized by an extremely low number of neutrophils in
 CC       blood).
 CC   -!- SIMILARITY: Belongs to the IL-6 superfamily. {ECO:0000305}.
-CC   -!- CAUTION: PubMed:2420009 misquotes the gene name as "CSF1".
+CC   -!- CAUTION: PubMed:2420009 misquotes the gene name as 'CSF1'.
 CC       {ECO:0000305}.
 CC   -!- WEB RESOURCE: Name=Neupogen/Granulokine; Note=Clinical information on
 CC       Neupogen/Granulokine;
 CC       URL="https://www.neupogen.com";
 CC   -!- WEB RESOURCE: Name=SeattleSNPs;
 CC       URL="http://pga.gs.washington.edu/data/csf3/";
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
 DR   EMBL; X03438; CAA27168.1; -; mRNA.
 DR   EMBL; X03656; CAA27291.1; -; Genomic_DNA.
 DR   EMBL; X03655; CAA27290.1; -; mRNA.
@@ -186,27 +189,35 @@ DR   PDB; 1PGR; X-ray; 3.50 A; A/C/E/G=31-207.
 DR   PDB; 1RHG; X-ray; 2.20 A; A/B/C=31-207.
 DR   PDB; 2D9Q; X-ray; 2.80 A; A=31-207.
 DR   PDB; 5GW9; X-ray; 1.65 A; A/B/C/D=40-205.
+DR   PDB; 5ZO6; X-ray; 1.70 A; X=37-205.
 DR   PDBsum; 1CD9; -.
 DR   PDBsum; 1GNC; -.
 DR   PDBsum; 1PGR; -.
 DR   PDBsum; 1RHG; -.
 DR   PDBsum; 2D9Q; -.
 DR   PDBsum; 5GW9; -.
+DR   PDBsum; 5ZO6; -.
+DR   BMRB; P09919; -.
 DR   SMR; P09919; -.
-DR   BioGrid; 107827; 10.
+DR   BioGRID; 107827; 12.
 DR   DIP; DIP-61120N; -.
 DR   IntAct; P09919; 2.
 DR   STRING; 9606.ENSP00000225474; -.
 DR   Allergome; 8367; Hom s G-CSF.
+DR   GlyGen; P09919; 1 site.
 DR   iPTMnet; P09919; -.
+DR   MetOSite; P09919; -.
 DR   PhosphoSitePlus; P09919; -.
 DR   BioMuta; CSF3; -.
 DR   DMDM; 117564; -.
+DR   MassIVE; P09919; -.
 DR   PaxDb; P09919; -.
 DR   PeptideAtlas; P09919; -.
 DR   PRIDE; P09919; -.
-DR   ProteomicsDB; 52279; -.
+DR   ProteomicsDB; 2347; -.
+DR   ProteomicsDB; 52279; -. [P09919-1]
 DR   ProteomicsDB; 52280; -. [P09919-2]
+DR   Antibodypedia; 799; 1297 antibodies.
 DR   DNASU; 1440; -.
 DR   Ensembl; ENST00000225474; ENSP00000225474; ENSG00000108342. [P09919-1]
 DR   Ensembl; ENST00000394148; ENSP00000377704; ENSG00000108342. [P09919-3]
@@ -216,45 +227,50 @@ DR   KEGG; hsa:1440; -.
 DR   UCSC; uc002htp.4; human. [P09919-1]
 DR   CTD; 1440; -.
 DR   DisGeNET; 1440; -.
-DR   EuPathDB; HostDB:ENSG00000108342.12; -.
 DR   GeneCards; CSF3; -.
 DR   HGNC; HGNC:2438; CSF3.
+DR   HPA; ENSG00000108342; Tissue enhanced (cervix, uterine, lung).
 DR   MIM; 138970; gene.
 DR   neXtProt; NX_P09919; -.
 DR   OpenTargets; ENSG00000108342; -.
 DR   PharmGKB; PA26941; -.
-DR   eggNOG; ENOG410IIM2; Eukaryota.
-DR   eggNOG; ENOG4111DA4; LUCA.
+DR   VEuPathDB; HostDB:ENSG00000108342; -.
+DR   eggNOG; ENOG502SCNA; Eukaryota.
 DR   GeneTree; ENSGT00390000017328; -.
-DR   HOGENOM; HOG000015371; -.
 DR   InParanoid; P09919; -.
-DR   KO; K05423; -.
-DR   OMA; HKLCHPE; -.
-DR   OrthoDB; 1289639at2759; -.
+DR   OMA; TVWQQME; -.
 DR   PhylomeDB; P09919; -.
 DR   TreeFam; TF337698; -.
+DR   PathwayCommons; P09919; -.
 DR   Reactome; R-HSA-449836; Other interleukin signaling.
 DR   Reactome; R-HSA-6783783; Interleukin-10 signaling.
+DR   Reactome; R-HSA-9674555; Signaling by CSF3 (G-CSF).
+DR   Reactome; R-HSA-9705462; Inactivation of CSF3 (G-CSF) signaling.
 DR   SignaLink; P09919; -.
 DR   SIGNOR; P09919; -.
+DR   BioGRID-ORCS; 1440; 7 hits in 1007 CRISPR screens.
 DR   ChiTaRS; CSF3; human.
 DR   EvolutionaryTrace; P09919; -.
 DR   GeneWiki; Granulocyte_colony-stimulating_factor; -.
 DR   GenomeRNAi; 1440; -.
+DR   Pharos; P09919; Tbio.
 DR   PRO; PR:P09919; -.
 DR   Proteomes; UP000005640; Chromosome 17.
-DR   Bgee; ENSG00000108342; Expressed in 128 organ(s), highest expression level in smooth muscle tissue.
+DR   RNAct; P09919; protein.
+DR   Bgee; ENSG00000108342; Expressed in smooth muscle tissue and 149 other tissues.
 DR   ExpressionAtlas; P09919; baseline and differential.
 DR   Genevisible; P09919; HS.
+DR   GO; GO:0071682; C:endocytic vesicle lumen; TAS:Reactome.
 DR   GO; GO:0005576; C:extracellular region; TAS:Reactome.
 DR   GO; GO:0005615; C:extracellular space; IBA:GO_Central.
+DR   GO; GO:0043202; C:lysosomal lumen; TAS:Reactome.
 DR   GO; GO:0005125; F:cytokine activity; IDA:BHF-UCL.
 DR   GO; GO:0019899; F:enzyme binding; IPI:UniProtKB.
 DR   GO; GO:0005130; F:granulocyte colony-stimulating factor receptor binding; IBA:GO_Central.
 DR   GO; GO:0008083; F:growth factor activity; IBA:GO_Central.
 DR   GO; GO:0071345; P:cellular response to cytokine stimulus; IDA:BHF-UCL.
 DR   GO; GO:0071222; P:cellular response to lipopolysaccharide; IEA:Ensembl.
-DR   GO; GO:0019221; P:cytokine-mediated signaling pathway; TAS:Reactome.
+DR   GO; GO:0019221; P:cytokine-mediated signaling pathway; NAS:UniProtKB.
 DR   GO; GO:0030851; P:granulocyte differentiation; NAS:UniProtKB.
 DR   GO; GO:0006955; P:immune response; IEA:InterPro.
 DR   GO; GO:0007275; P:multicellular organism development; TAS:ProtInc.
@@ -271,6 +287,7 @@ DR   GO; GO:0032092; P:positive regulation of protein binding; IDA:BHF-UCL.
 DR   GO; GO:0051897; P:positive regulation of protein kinase B signaling; IDA:BHF-UCL.
 DR   GO; GO:0045944; P:positive regulation of transcription by RNA polymerase II; IDA:BHF-UCL.
 DR   GO; GO:0045471; P:response to ethanol; IEA:Ensembl.
+DR   Gene3D; 1.20.1250.10; -; 1.
 DR   InterPro; IPR009079; 4_helix_cytokine-like_core.
 DR   InterPro; IPR040117; GCSF/MGF.
 DR   InterPro; IPR030474; IL-6/GCSF/MGF.
@@ -283,12 +300,12 @@ DR   SMART; SM00126; IL6; 1.
 DR   SUPFAM; SSF47266; SSF47266; 1.
 DR   PROSITE; PS00254; INTERLEUKIN_6; 1.
 PE   1: Evidence at protein level;
-KW   3D-structure; Alternative splicing; Complete proteome; Cytokine;
-KW   Direct protein sequencing; Disulfide bond; Glycoprotein; Growth factor;
-KW   Pharmaceutical; Polymorphism; Reference proteome; Secreted; Signal.
-FT   SIGNAL          1..29
+KW   3D-structure; Alternative splicing; Cytokine; Direct protein sequencing;
+KW   Disulfide bond; Glycoprotein; Growth factor; Pharmaceutical;
+KW   Reference proteome; Secreted; Signal.
+FT   SIGNAL          1..30
 FT                   /evidence="ECO:0000305|PubMed:8554326"
-FT   CHAIN           30..207
+FT   CHAIN           31..207
 FT                   /note="Granulocyte colony-stimulating factor"
 FT                   /id="PRO_0000015570"
 FT   CARBOHYD        166
@@ -313,51 +330,30 @@ FT   VARIANT         174
 FT                   /note="A -> T (in dbSNP:rs2227330)"
 FT                   /evidence="ECO:0000269|Ref.4"
 FT                   /id="VAR_013074"
-FT   CONFLICT        30
-FT                   /note="A -> M (in Ref. 8; AA sequence)"
-FT                   /evidence="ECO:0000305"
 FT   STRAND          37..39
-FT                   /evidence="ECO:0000244|PDB:1CD9"
+FT                   /evidence="ECO:0007829|PDB:1CD9"
 FT   HELIX           41..65
-FT                   /evidence="ECO:0000244|PDB:5GW9"
+FT                   /evidence="ECO:0007829|PDB:5GW9"
 FT   HELIX           69..72
-FT                   /evidence="ECO:0000244|PDB:5GW9"
+FT                   /evidence="ECO:0007829|PDB:5GW9"
 FT   HELIX           77..87
-FT                   /evidence="ECO:0000244|PDB:5GW9"
+FT                   /evidence="ECO:0007829|PDB:5GW9"
 FT   STRAND          99..101
-FT                   /evidence="ECO:0000244|PDB:5GW9"
+FT                   /evidence="ECO:0007829|PDB:5GW9"
 FT   HELIX           104..124
-FT                   /evidence="ECO:0000244|PDB:5GW9"
+FT                   /evidence="ECO:0007829|PDB:5GW9"
 FT   TURN            125..127
-FT                   /evidence="ECO:0000244|PDB:5GW9"
+FT                   /evidence="ECO:0007829|PDB:5GW9"
 FT   TURN            130..132
-FT                   /evidence="ECO:0000244|PDB:5GW9"
+FT                   /evidence="ECO:0007829|PDB:5GW9"
 FT   HELIX           133..157
-FT                   /evidence="ECO:0000244|PDB:5GW9"
+FT                   /evidence="ECO:0007829|PDB:5GW9"
 FT   STRAND          166..168
-FT                   /evidence="ECO:0000244|PDB:1GNC"
+FT                   /evidence="ECO:0007829|PDB:1GNC"
 FT   HELIX           176..201
-FT                   /evidence="ECO:0000244|PDB:5GW9"
+FT                   /evidence="ECO:0007829|PDB:5GW9"
 FT   TURN            203..205
-FT                   /evidence="ECO:0000244|PDB:2D9Q"
-**
-**   #################    INTERNAL SECTION    ##################
-**EV ECO:0000244; PDB:1CD9; INT; 18-OCT-2017.
-**EV ECO:0000244; PDB:1GNC; INT; 18-OCT-2017.
-**EV ECO:0000244; PDB:2D9Q; INT; 18-OCT-2017.
-**EV ECO:0000244; PDB:5GW9; INT; 18-OCT-2017.
-**EV ECO:0000250; -; XXX; 18-OCT-2017.
-**EV ECO:0000269; PubMed:10537111; XXX; 05-SEP-2018.
-**EV ECO:0000269; PubMed:16492764; XXX; 05-SEP-2018.
-**EV ECO:0000269; Ref.4; XXX; 18-OCT-2017.
-**EV ECO:0000303; PubMed:15028279; XXX; 18-OCT-2017.
-**EV ECO:0000303; PubMed:2420009; XXX; 18-OCT-2017.
-**EV ECO:0000303; PubMed:2423327; XXX; 18-OCT-2017.
-**EV ECO:0000303; PubMed:3494801; XXX; 18-OCT-2017.
-**EV ECO:0000305; -; XXX; 18-OCT-2017.
-**EV ECO:0000305; PubMed:8554326; XXX; 18-OCT-2017.
-**CL 17q11.2-q12;
-**ZB UHI, 31-OCT-2008; ALG, 13-DEC-2012;
+FT                   /evidence="ECO:0007829|PDB:2D9Q"
 SQ   SEQUENCE   207 AA;  22293 MW;  421F635ECC776996 CRC64;
      MAGPATQSPM KLMALQLLLW HSALWTVQEA TPLGPASSLP QSFLLKCLEQ VRKIQGDGAA
      LQEKLVSECA TYKLCHPEEL VLLGHSLGIP WAPLSSCPSQ ALQLAGCLSQ LHSGLFLYQG

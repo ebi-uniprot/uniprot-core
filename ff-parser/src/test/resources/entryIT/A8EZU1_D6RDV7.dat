@@ -2,11 +2,10 @@ ID   YBEY_RICCK              Reviewed;         172 AA.
 AC   A8EZU1;
 DT   15-JAN-2008, integrated into UniProtKB/Swiss-Prot.
 DT   13-NOV-2007, sequence version 1.
-DT   16-JAN-2019, entry version 65.
+DT   02-JUN-2021, entry version 73.
 DE   RecName: Full=Endoribonuclease YbeY {ECO:0000255|HAMAP-Rule:MF_00009};
 DE            EC=3.1.-.- {ECO:0000255|HAMAP-Rule:MF_00009};
-GN   Name=ybeY {ECO:0000255|HAMAP-Rule:MF_00009};
-GN   OrderedLocusNames=A1E_04765;
+GN   Name=ybeY {ECO:0000255|HAMAP-Rule:MF_00009}; OrderedLocusNames=A1E_04765;
 OS   Rickettsia canadensis (strain McKiel).
 OC   Bacteria; Proteobacteria; Alphaproteobacteria; Rickettsiales;
 OC   Rickettsiaceae; Rickettsieae; Rickettsia; belli group.
@@ -36,13 +35,12 @@ DR   EMBL; CP000409; ABV73874.1; -; Genomic_DNA.
 DR   RefSeq; WP_012149069.1; NC_009879.1.
 DR   SMR; A8EZU1; -.
 DR   STRING; 293613.A1E_04765; -.
+DR   PRIDE; A8EZU1; -.
 DR   EnsemblBacteria; ABV73874; ABV73874; A1E_04765.
 DR   KEGG; rcm:A1E_04765; -.
-DR   eggNOG; ENOG4105KGE; Bacteria.
-DR   eggNOG; COG0319; LUCA.
-DR   HOGENOM; HOG000132869; -.
-DR   KO; K07042; -.
-DR   OMA; LGYDHMN; -.
+DR   eggNOG; COG0319; Bacteria.
+DR   HOGENOM; CLU_106710_0_0_5; -.
+DR   OMA; RMRIHPL; -.
 DR   OrthoDB; 1830156at2; -.
 DR   BioCyc; RCAN293613:G1G6U-965-MONOMER; -.
 DR   Proteomes; UP000007056; Chromosome.
@@ -60,8 +58,8 @@ DR   Pfam; PF02130; UPF0054; 1.
 DR   TIGRFAMs; TIGR00043; TIGR00043; 1.
 DR   PROSITE; PS01306; UPF0054; 1.
 PE   3: Inferred from homology;
-KW   Complete proteome; Cytoplasm; Endonuclease; Hydrolase; Metal-binding;
-KW   Nuclease; Ribosome biogenesis; rRNA processing; Zinc.
+KW   Cytoplasm; Endonuclease; Hydrolase; Metal-binding; Nuclease;
+KW   Ribosome biogenesis; rRNA processing; Zinc.
 FT   CHAIN           1..172
 FT                   /note="Endoribonuclease YbeY"
 FT                   /id="PRO_1000000738"
@@ -83,7 +81,7 @@ ID   D6RDV7_HUMAN            Unreviewed;       119 AA.
 AC   D6RDV7;
 DT   13-JUL-2010, integrated into UniProtKB/TrEMBL.
 DT   13-JUL-2010, sequence version 1.
-DT   12-SEP-2018, entry version 41.
+DT   29-SEP-2021, entry version 54.
 DE   SubName: Full=Neuronal membrane glycoprotein M6-a {ECO:0000313|Ensembl:ENSP00000426984};
 DE   Flags: Fragment;
 GN   Name=GPM6A {ECO:0000313|Ensembl:ENSP00000426984};
@@ -136,18 +134,17 @@ DR   EMBL; KF457837; -; NOT_ANNOTATED_CDS; Genomic_DNA.
 DR   EMBL; KF457840; -; NOT_ANNOTATED_CDS; Genomic_DNA.
 DR   PeptideAtlas; D6RDV7; -.
 DR   PRIDE; D6RDV7; -.
+DR   ProteomicsDB; 14177; -.
+DR   Antibodypedia; 17235; 311 antibodies.
 DR   Ensembl; ENST00000512610; ENSP00000426984; ENSG00000150625.
 DR   UCSC; uc063bco.1; human.
-DR   EuPathDB; HostDB:ENSG00000150625.16; -.
 DR   HGNC; HGNC:4460; GPM6A.
 DR   OpenTargets; ENSG00000150625; -.
-DR   eggNOG; KOG4800; Eukaryota.
-DR   eggNOG; ENOG4110EPW; LUCA.
+DR   VEuPathDB; HostDB:ENSG00000150625; -.
 DR   GeneTree; ENSGT00390000006915; -.
-DR   HOGENOM; HOG000231338; -.
 DR   ChiTaRS; GPM6A; human.
 DR   Proteomes; UP000005640; Chromosome 4.
-DR   Bgee; ENSG00000150625; Expressed in 194 organ(s), highest expression level in occipital lobe.
+DR   Bgee; ENSG00000150625; Expressed in occipital lobe and 212 other tissues.
 DR   ExpressionAtlas; D6RDV7; baseline and differential.
 DR   GO; GO:0016021; C:integral component of membrane; IEA:UniProtKB-KW.
 DR   InterPro; IPR001614; Myelin_PLP.
@@ -155,9 +152,9 @@ DR   PANTHER; PTHR11683; PTHR11683; 1.
 DR   Pfam; PF01275; Myelin_PLP; 1.
 DR   PRINTS; PR00214; MYELINPLP.
 PE   1: Evidence at protein level;
-KW   Complete proteome {ECO:0000313|Proteomes:UP000005640};
 KW   Membrane {ECO:0000256|SAM:Phobius};
-KW   Proteomics identification {ECO:0000213|PeptideAtlas:D6RDV7};
+KW   Proteomics identification {ECO:0007829|PeptideAtlas:D6RDV7,
+KW   ECO:0007829|ProteomicsDB:D6RDV7};
 KW   Reference proteome {ECO:0000313|Proteomes:UP000005640};
 KW   Transmembrane {ECO:0000256|SAM:Phobius};
 KW   Transmembrane helix {ECO:0000256|SAM:Phobius}.

@@ -2,11 +2,10 @@ ID   YBEY_RICCK              Reviewed;         172 AA.
 AC   A8EZU1;
 DT   15-JAN-2008, integrated into UniProtKB/Swiss-Prot.
 DT   13-NOV-2007, sequence version 1.
-DT   16-JAN-2019, entry version 65.
+DT   02-JUN-2021, entry version 73.
 DE   RecName: Full=Endoribonuclease YbeY {ECO:0000255|HAMAP-Rule:MF_00009};
 DE            EC=3.1.-.- {ECO:0000255|HAMAP-Rule:MF_00009};
-GN   Name=ybeY {ECO:0000255|HAMAP-Rule:MF_00009};
-GN   OrderedLocusNames=A1E_04765;
+GN   Name=ybeY {ECO:0000255|HAMAP-Rule:MF_00009}; OrderedLocusNames=A1E_04765;
 OS   Rickettsia canadensis (strain McKiel).
 OC   Bacteria; Proteobacteria; Alphaproteobacteria; Rickettsiales;
 OC   Rickettsiaceae; Rickettsieae; Rickettsia; belli group.
@@ -36,13 +35,12 @@ DR   EMBL; CP000409; ABV73874.1; -; Genomic_DNA.
 DR   RefSeq; WP_012149069.1; NC_009879.1.
 DR   SMR; A8EZU1; -.
 DR   STRING; 293613.A1E_04765; -.
+DR   PRIDE; A8EZU1; -.
 DR   EnsemblBacteria; ABV73874; ABV73874; A1E_04765.
 DR   KEGG; rcm:A1E_04765; -.
-DR   eggNOG; ENOG4105KGE; Bacteria.
-DR   eggNOG; COG0319; LUCA.
-DR   HOGENOM; HOG000132869; -.
-DR   KO; K07042; -.
-DR   OMA; LGYDHMN; -.
+DR   eggNOG; COG0319; Bacteria.
+DR   HOGENOM; CLU_106710_0_0_5; -.
+DR   OMA; RMRIHPL; -.
 DR   OrthoDB; 1830156at2; -.
 DR   BioCyc; RCAN293613:G1G6U-965-MONOMER; -.
 DR   Proteomes; UP000007056; Chromosome.
@@ -60,8 +58,8 @@ DR   Pfam; PF02130; UPF0054; 1.
 DR   TIGRFAMs; TIGR00043; TIGR00043; 1.
 DR   PROSITE; PS01306; UPF0054; 1.
 PE   3: Inferred from homology;
-KW   Complete proteome; Cytoplasm; Endonuclease; Hydrolase; Metal-binding;
-KW   Nuclease; Ribosome biogenesis; rRNA processing; Zinc.
+KW   Cytoplasm; Endonuclease; Hydrolase; Metal-binding; Nuclease;
+KW   Ribosome biogenesis; rRNA processing; Zinc.
 FT   CHAIN           1..172
 FT                   /note="Endoribonuclease YbeY"
 FT                   /id="PRO_1000000738"

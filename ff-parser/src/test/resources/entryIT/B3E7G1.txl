@@ -2,7 +2,7 @@ ID   NIKR_GEOLS              Reviewed;         139 AA.
 AC   B3E7G1;
 DT   14-APR-2009, integrated into UniProtKB/Swiss-Prot.
 DT   22-JUL-2008, sequence version 1.
-DT   16-JAN-2019, entry version 67.
+DT   29-SEP-2021, entry version 73.
 DE   RecName: Full=Putative nickel-responsive regulator {ECO:0000255|HAMAP-Rule:MF_00476};
 GN   OrderedLocusNames=Glov_2765;
 OS   Geobacter lovleyi (strain ATCC BAA-1151 / DSM 17278 / SZ).
@@ -27,17 +27,19 @@ CC         Evidence={ECO:0000255|HAMAP-Rule:MF_00476};
 CC       Note=Binds 1 nickel ion per subunit. {ECO:0000255|HAMAP-Rule:MF_00476};
 CC   -!- SIMILARITY: Belongs to the transcriptional regulatory CopG/NikR family.
 CC       {ECO:0000255|HAMAP-Rule:MF_00476}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
 DR   EMBL; CP001089; ACD96478.1; -; Genomic_DNA.
 DR   RefSeq; WP_012470807.1; NC_010814.1.
 DR   SMR; B3E7G1; -.
 DR   STRING; 398767.Glov_2765; -.
 DR   EnsemblBacteria; ACD96478; ACD96478; Glov_2765.
 DR   KEGG; glo:Glov_2765; -.
-DR   eggNOG; ENOG4105MRR; Bacteria.
-DR   eggNOG; COG0864; LUCA.
-DR   HOGENOM; HOG000102781; -.
-DR   KO; K07722; -.
-DR   OMA; HLDHDNC; -.
+DR   eggNOG; COG0864; Bacteria.
+DR   HOGENOM; CLU_113319_1_2_7; -.
+DR   OMA; AHNCLET; -.
 DR   OrthoDB; 1885366at2; -.
 DR   BioCyc; GLOV398767:G1GC4-2766-MONOMER; -.
 DR   Proteomes; UP000002420; Chromosome.
@@ -58,8 +60,8 @@ DR   Pfam; PF08753; NikR_C; 1.
 DR   Pfam; PF01402; RHH_1; 1.
 DR   SUPFAM; SSF47598; SSF47598; 1.
 PE   3: Inferred from homology;
-KW   Complete proteome; DNA-binding; Metal-binding; Nickel; Reference proteome;
-KW   Transcription; Transcription regulation.
+KW   DNA-binding; Metal-binding; Nickel; Reference proteome; Transcription;
+KW   Transcription regulation.
 FT   CHAIN           1..139
 FT                   /note="Putative nickel-responsive regulator"
 FT                   /id="PRO_1000125826"
@@ -75,10 +77,6 @@ FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00476"
 FT   METAL           98
 FT                   /note="Nickel"
 FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00476"
-**
-**   #################    INTERNAL SECTION    ##################
-**EV ECO:0000255; HAMAP-Rule:MF_00476; XXX; 06-NOV-2015.
-**HA SAM; Annotated by SAM 1.180; MF_00476.19; 17-MAR-2009.
 SQ   SEQUENCE   139 AA;  15668 MW;  13FCD40C7E4C4DE5 CRC64;
      MGDITRFGIS IDSDLLDSFD RLITRKGYQN RSEAIRDLIR ATIVEEKMDA GHEEMVGTVT
      MVYNHHVRDL ADKLTEHQHQ HHHQVISALH VHLDAHNCLE VLVLKGSSAE IKQIADELLG

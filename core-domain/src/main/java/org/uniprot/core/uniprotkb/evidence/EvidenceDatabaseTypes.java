@@ -86,6 +86,7 @@ public enum EvidenceDatabaseTypes {
         typeMap.put(
                 "HAMAP-Rule",
                 evd("HAMAP-Rule", "HAMAP-Rule", "A", "https://www.uniprot.org/unirule/%value"));
+        typeMap.put("ARBA", evd("ARBA", "ARBA", "A", "https://www.uniprot.org/arba/%value"));
         typeMap.put(
                 "HGNC",
                 evd(

@@ -2,12 +2,12 @@ ID   110KD_PLAKN             Reviewed;         296 AA.
 AC   P13813;
 DT   01-JAN-1990, integrated into UniProtKB/Swiss-Prot.
 DT   01-JAN-1990, sequence version 1.
-DT   10-APR-2019, entry version 43.
+DT   29-SEP-2021, entry version 49.
 DE   RecName: Full=110 kDa antigen;
 DE   AltName: Full=PK110;
 DE   Flags: Fragment;
 OS   Plasmodium knowlesi.
-OC   Eukaryota; Alveolata; Apicomplexa; Aconoidasida; Haemosporida;
+OC   Eukaryota; Sar; Alveolata; Apicomplexa; Aconoidasida; Haemosporida;
 OC   Plasmodiidae; Plasmodium; Plasmodium (Plasmodium).
 OX   NCBI_TaxID=5850;
 RN   [1]
@@ -25,9 +25,9 @@ CC   ---------------------------------------------------------------------------
 DR   EMBL; M19152; AAA29471.1; -; mRNA.
 DR   PIR; A54527; A54527.
 DR   STRING; 5850.PKH_144540; -.
-DR   GeneDB; PKNH_1448000.1:pep; -.
-DR   eggNOG; ENOG410JB7W; Eukaryota.
-DR   eggNOG; ENOG41118GC; LUCA.
+DR   VEuPathDB; PlasmoDB:PKNH_1448000; -.
+DR   VEuPathDB; PlasmoDB:PKNOH_S140266100; -.
+DR   eggNOG; ENOG502SDH0; Eukaryota.
 PE   2: Evidence at transcript level;
 KW   Malaria; Repeat.
 FT   CHAIN           <1..296
@@ -64,6 +64,21 @@ FT                   /note="14; truncated"
 FT   REGION          132..296
 FT                   /note="13.5 X 12 AA approximate tandem repeats of E-E-T-Q-
 FT                   K-T-V-E-P-E-Q-T"
+FT   REGION          133..296
+FT                   /note="Disordered"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
+FT   COMPBIAS        141..155
+FT                   /note="Polar residues"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
+FT   COMPBIAS        165..179
+FT                   /note="Polar residues"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
+FT   COMPBIAS        180..272
+FT                   /note="Basic and acidic residues"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
+FT   COMPBIAS        273..296
+FT                   /note="Polar residues"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
 FT   NON_TER         1
 SQ   SEQUENCE   296 AA;  34077 MW;  B0D7CD175C7A3625 CRC64;
      FNSNMLRGSV CEEDVSLMTS IDNMIEEIDF YEKEIYKGSH SGGVIKGMDY DLEDDENDED

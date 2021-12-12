@@ -2,7 +2,7 @@ ID   CAPP_STRR6              Reviewed;         898 AA.
 AC   Q8DPW5;
 DT   24-MAY-2004, integrated into UniProtKB/Swiss-Prot.
 DT   01-MAR-2003, sequence version 1.
-DT   05-DEC-2018, entry version 83.
+DT   07-APR-2021, entry version 90.
 DE   RecName: Full=Phosphoenolpyruvate carboxylase {ECO:0000255|HAMAP-Rule:MF_00595};
 DE            Short=PEPC {ECO:0000255|HAMAP-Rule:MF_00595};
 DE            Short=PEPCase {ECO:0000255|HAMAP-Rule:MF_00595};
@@ -15,15 +15,15 @@ OX   NCBI_TaxID=171101;
 RN   [1]
 RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
 RC   STRAIN=ATCC BAA-255 / R6;
-RX   PubMed=11544234; DOI=10.1128/JB.183.19.5709-5717.2001;
-RA   Hoskins J.A., Alborn W.Jr., Arnold J., Blaszczak L., Burgett S.,
-RA   DeHoff B.S., Estrem S., Fritz L., Fu D.-J., Fuller W., Geringer C.,
-RA   Gilmour R., Glass J.S., Khoja H., Kraft A., LaGace R., LeBlanc D.J.,
-RA   Lee L.N., Lefkowitz E.J., Lu J., Matsushima P., McAhren S., McHenney M.,
-RA   McLeaster K., Mundy C., Nicas T.I., Norris F.H., O'Gara M., Peery R.,
+RX   PubMed=11544234; DOI=10.1128/jb.183.19.5709-5717.2001;
+RA   Hoskins J., Alborn W.E. Jr., Arnold J., Blaszczak L.C., Burgett S.,
+RA   DeHoff B.S., Estrem S.T., Fritz L., Fu D.-J., Fuller W., Geringer C.,
+RA   Gilmour R., Glass J.S., Khoja H., Kraft A.R., Lagace R.E., LeBlanc D.J.,
+RA   Lee L.N., Lefkowitz E.J., Lu J., Matsushima P., McAhren S.M., McHenney M.,
+RA   McLeaster K., Mundy C.W., Nicas T.I., Norris F.H., O'Gara M., Peery R.B.,
 RA   Robertson G.T., Rockey P., Sun P.-M., Winkler M.E., Yang Y.,
-RA   Young-Bellido M., Zhao G., Zook C., Baltz R.H., Jaskunas S.Richard.,
-RA   Rosteck P.R.Jr., Skatrud P.L., Glass J.I.;
+RA   Young-Bellido M., Zhao G., Zook C.A., Baltz R.H., Jaskunas S.R.,
+RA   Rosteck P.R. Jr., Skatrud P.L., Glass J.I.;
 RT   "Genome of the bacterium Streptococcus pneumoniae strain R6.";
 RL   J. Bacteriol. 183:5709-5717(2001).
 CC   -!- FUNCTION: Forms oxaloacetate, a four-carbon dicarboxylic acid source
@@ -48,15 +48,12 @@ DR   RefSeq; NP_358568.1; NC_003098.1.
 DR   RefSeq; WP_000058147.1; NC_003098.1.
 DR   SMR; Q8DPW5; -.
 DR   STRING; 171101.spr0974; -.
-DR   PRIDE; Q8DPW5; -.
 DR   EnsemblBacteria; AAK99778; AAK99778; spr0974.
-DR   GeneID; 932953; -.
+DR   GeneID; 60232607; -.
 DR   KEGG; spr:spr0974; -.
 DR   PATRIC; fig|171101.6.peg.1060; -.
-DR   eggNOG; ENOG4105CCA; Bacteria.
-DR   eggNOG; COG2352; LUCA.
-DR   HOGENOM; HOG000238647; -.
-DR   KO; K01595; -.
+DR   eggNOG; COG2352; Bacteria.
+DR   HOGENOM; CLU_006557_2_0_9; -.
 DR   OMA; PWVFGWT; -.
 DR   BioCyc; SPNE171101:SPR0974-MONOMER; -.
 DR   Proteomes; UP000000586; Chromosome.
@@ -79,8 +76,7 @@ DR   SUPFAM; SSF51621; SSF51621; 1.
 DR   PROSITE; PS00781; PEPCASE_1; 1.
 DR   PROSITE; PS00393; PEPCASE_2; 1.
 PE   3: Inferred from homology;
-KW   Carbon dioxide fixation; Complete proteome; Lyase; Magnesium;
-KW   Reference proteome.
+KW   Carbon dioxide fixation; Lyase; Magnesium; Reference proteome.
 FT   CHAIN           1..898
 FT                   /note="Phosphoenolpyruvate carboxylase"
 FT                   /id="PRO_0000166631"

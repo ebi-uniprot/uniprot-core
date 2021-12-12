@@ -2,11 +2,11 @@ ID   AHPF_STAA8              Reviewed;         507 AA.
 AC   O05204; Q2G0Z7;
 DT   15-DEC-1998, integrated into UniProtKB/Swiss-Prot.
 DT   01-JUL-1997, sequence version 1.
-DT   10-APR-2019, entry version 125.
+DT   29-SEP-2021, entry version 136.
 DE   RecName: Full=Alkyl hydroperoxide reductase subunit F;
 DE            EC=1.8.1.-;
 GN   Name=ahpF; OrderedLocusNames=SAOUHSC_00364;
-OS   Staphylococcus aureus (strain NCTC 8325).
+OS   Staphylococcus aureus (strain NCTC 8325 / PS 47).
 OC   Bacteria; Firmicutes; Bacilli; Bacillales; Staphylococcaceae;
 OC   Staphylococcus.
 OX   NCBI_TaxID=93061;
@@ -16,7 +16,7 @@ RA   Jones E.C., Francis K.P., Stewart G.S.A.B.;
 RL   Submitted (MAR-1997) to the EMBL/GenBank/DDBJ databases.
 RN   [2]
 RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
-RC   STRAIN=NCTC 8325;
+RC   STRAIN=NCTC 8325 / PS 47;
 RA   Gillaspy A.F., Worrell V., Orvis J., Roe B.A., Dyer D.W., Iandolo J.J.;
 RT   "The Staphylococcus aureus NCTC 8325 genome.";
 RL   (In) Fischetti V., Novick R., Ferretti J., Portnoy D., Rood J. (eds.);
@@ -43,49 +43,41 @@ DR   RefSeq; WP_000930486.1; NZ_LS483365.1.
 DR   RefSeq; YP_498953.1; NC_007795.1.
 DR   SMR; O05204; -.
 DR   STRING; 1280.SAXN108_0430; -.
-DR   PRIDE; O05204; -.
 DR   EnsemblBacteria; ABD29530; ABD29530; SAOUHSC_00364.
 DR   GeneID; 3919783; -.
 DR   KEGG; sao:SAOUHSC_00364; -.
 DR   PATRIC; fig|93061.5.peg.334; -.
-DR   eggNOG; ENOG4108JU3; Bacteria.
-DR   eggNOG; COG3634; LUCA.
-DR   HOGENOM; HOG000169462; -.
-DR   KO; K03387; -.
-DR   OMA; VPLGHEF; -.
-DR   BioCyc; GCF_000013425:G1I0R-339-MONOMER; -.
-DR   BioCyc; SAUR93061:G1G5Y-339-MONOMER; -.
+DR   eggNOG; COG3634; Bacteria.
+DR   HOGENOM; CLU_031864_4_2_9; -.
+DR   OMA; VTVFEFM; -.
 DR   PRO; PR:O05204; -.
 DR   Proteomes; UP000008816; Chromosome.
-DR   GO; GO:0005623; C:cell; IEA:GOC.
 DR   GO; GO:0008785; F:alkyl hydroperoxide reductase activity; IEA:InterPro.
-DR   GO; GO:0009055; F:electron transfer activity; IEA:InterPro.
 DR   GO; GO:0050660; F:flavin adenine dinucleotide binding; IEA:InterPro.
 DR   GO; GO:0051287; F:NAD binding; IEA:InterPro.
-DR   GO; GO:0015035; F:protein disulfide oxidoreductase activity; IEA:InterPro.
-DR   GO; GO:0045454; P:cell redox homeostasis; IEA:InterPro.
 DR   GO; GO:0000302; P:response to reactive oxygen species; IEA:InterPro.
+DR   CDD; cd03026; AhpF_NTD_C; 1.
+DR   CDD; cd02974; AhpF_NTD_N; 1.
 DR   Gene3D; 3.50.50.60; -; 2.
+DR   InterPro; IPR044141; AhpF_NTD_C.
+DR   InterPro; IPR044142; AhpF_NTD_N.
 DR   InterPro; IPR012081; Alkyl_hydroperoxide_Rdtase_suF.
 DR   InterPro; IPR036188; FAD/NAD-bd_sf.
 DR   InterPro; IPR023753; FAD/NAD-binding_dom.
-DR   InterPro; IPR002109; Glutaredoxin.
 DR   InterPro; IPR008255; Pyr_nucl-diS_OxRdtase_2_AS.
-DR   InterPro; IPR000103; Pyridine_nuc-diS_OxRdtase_2.
 DR   InterPro; IPR012336; Thioredoxin-like_fold.
 DR   InterPro; IPR036249; Thioredoxin-like_sf.
 DR   Pfam; PF07992; Pyr_redox_2; 1.
 DR   Pfam; PF13192; Thioredoxin_3; 1.
 DR   PIRSF; PIRSF000238; AhpF; 1.
-DR   PRINTS; PR00469; PNDRDTASEII.
 DR   SUPFAM; SSF51905; SSF51905; 1.
 DR   SUPFAM; SSF52833; SSF52833; 2.
 DR   TIGRFAMs; TIGR03140; AhpF; 1.
 DR   PROSITE; PS51354; GLUTAREDOXIN_2; 1.
 DR   PROSITE; PS00573; PYRIDINE_REDOX_2; 1.
 PE   3: Inferred from homology;
-KW   Complete proteome; Disulfide bond; FAD; Flavoprotein; NAD; NADP;
-KW   Oxidoreductase; Redox-active center; Reference proteome.
+KW   Disulfide bond; FAD; Flavoprotein; NAD; NADP; Oxidoreductase;
+KW   Redox-active center; Reference proteome.
 FT   CHAIN           1..507
 FT                   /note="Alkyl hydroperoxide reductase subunit F"
 FT                   /id="PRO_0000166784"

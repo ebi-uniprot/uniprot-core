@@ -2,7 +2,7 @@ ID   ARBK2_HUMAN             Reviewed;         688 AA.
 AC   P35626; Q9UGW9;
 DT   01-JUN-1994, integrated into UniProtKB/Swiss-Prot.
 DT   17-OCT-2006, sequence version 2.
-DT   13-FEB-2019, entry version 186.
+DT   29-SEP-2021, entry version 201.
 DE   RecName: Full=Beta-adrenergic receptor kinase 2;
 DE            Short=Beta-ARK-2;
 DE            EC=2.7.11.15;
@@ -97,6 +97,9 @@ CC         phosphate + ADP + H(+); Xref=Rhea:RHEA:19429, Rhea:RHEA-COMP:11222,
 CC         Rhea:RHEA-COMP:11223, ChEBI:CHEBI:15378, ChEBI:CHEBI:30616,
 CC         ChEBI:CHEBI:43176, ChEBI:CHEBI:68546, ChEBI:CHEBI:456216;
 CC         EC=2.7.11.15;
+CC   -!- SUBUNIT: Interacts with GIT1. {ECO:0000250|UniProtKB:P26819}.
+CC   -!- INTERACTION:
+CC       P35626; P25098: GRK2; NbExp=2; IntAct=EBI-2875868, EBI-3904795;
 CC   -!- PTM: Ubiquitinated. {ECO:0000269|PubMed:20596523}.
 CC   -!- SIMILARITY: Belongs to the protein kinase superfamily. AGC Ser/Thr
 CC       protein kinase family. GPRK subfamily. {ECO:0000305}.
@@ -110,25 +113,28 @@ DR   CCDS; CCDS13832.1; -.
 DR   PIR; JC1469; JC1469.
 DR   RefSeq; NP_005151.2; NM_005160.3.
 DR   SMR; P35626; -.
-DR   BioGrid; 106666; 11.
-DR   IntAct; P35626; 5.
+DR   BioGRID; 106666; 12.
+DR   IntAct; P35626; 6.
 DR   STRING; 9606.ENSP00000317578; -.
 DR   BindingDB; P35626; -.
 DR   ChEMBL; CHEMBL1075166; -.
-DR   DrugBank; DB00171; Adenosine triphosphate.
+DR   DrugBank; DB00171; ATP.
 DR   GuidetoPHARMACOLOGY; 1467; -.
-DR   GlyConnect; 1034; -.
+DR   GlyConnect; 1034; 1 N-Linked glycan (1 site).
+DR   GlyGen; P35626; 1 site, 1 N-linked glycan (1 site).
 DR   iPTMnet; P35626; -.
 DR   PhosphoSitePlus; P35626; -.
 DR   BioMuta; GRK3; -.
 DR   DMDM; 116241253; -.
 DR   EPD; P35626; -.
 DR   jPOST; P35626; -.
+DR   MassIVE; P35626; -.
 DR   MaxQB; P35626; -.
 DR   PaxDb; P35626; -.
 DR   PeptideAtlas; P35626; -.
 DR   PRIDE; P35626; -.
 DR   ProteomicsDB; 55118; -.
+DR   Antibodypedia; 234; 427 antibodies.
 DR   DNASU; 157; -.
 DR   Ensembl; ENST00000324198; ENSP00000317578; ENSG00000100077.
 DR   GeneID; 157; -.
@@ -136,45 +142,50 @@ DR   KEGG; hsa:157; -.
 DR   UCSC; uc003abx.5; human.
 DR   CTD; 157; -.
 DR   DisGeNET; 157; -.
-DR   EuPathDB; HostDB:ENSG00000100077.14; -.
 DR   GeneCards; GRK3; -.
 DR   HGNC; HGNC:290; GRK3.
-DR   HPA; HPA000804; -.
+DR   HPA; ENSG00000100077; Tissue enhanced (adipose).
 DR   MIM; 109636; gene.
 DR   neXtProt; NX_P35626; -.
 DR   OpenTargets; ENSG00000100077; -.
 DR   PharmGKB; PA41; -.
+DR   VEuPathDB; HostDB:ENSG00000100077; -.
 DR   eggNOG; KOG0986; Eukaryota.
-DR   eggNOG; ENOG410YRQZ; LUCA.
 DR   GeneTree; ENSGT00940000157699; -.
-DR   HOGENOM; HOG000006742; -.
 DR   InParanoid; P35626; -.
-DR   KO; K00910; -.
-DR   OMA; DHVQTHL; -.
+DR   OMA; YGSERDA; -.
 DR   OrthoDB; 1083437at2759; -.
 DR   PhylomeDB; P35626; -.
 DR   TreeFam; TF313940; -.
 DR   BRENDA; 2.7.11.15; 2681.
+DR   PathwayCommons; P35626; -.
 DR   Reactome; R-HSA-418555; G alpha (s) signalling events.
 DR   Reactome; R-HSA-8856825; Cargo recognition for clathrin-mediated endocytosis.
 DR   SignaLink; P35626; -.
 DR   SIGNOR; P35626; -.
+DR   BioGRID-ORCS; 157; 6 hits in 1048 CRISPR screens.
 DR   ChiTaRS; GRK3; human.
 DR   GeneWiki; Beta_adrenergic_receptor_kinase-2; -.
 DR   GenomeRNAi; 157; -.
+DR   Pharos; P35626; Tchem.
 DR   PRO; PR:P35626; -.
 DR   Proteomes; UP000005640; Chromosome 22.
-DR   Bgee; ENSG00000100077; Expressed in 200 organ(s), highest expression level in Brodmann (1909) area 23.
+DR   RNAct; P35626; protein.
+DR   Bgee; ENSG00000100077; Expressed in Brodmann (1909) area 23 and 212 other tissues.
 DR   ExpressionAtlas; P35626; baseline and differential.
 DR   Genevisible; P35626; HS.
 DR   GO; GO:0005829; C:cytosol; TAS:Reactome.
 DR   GO; GO:0005886; C:plasma membrane; TAS:Reactome.
 DR   GO; GO:0005524; F:ATP binding; IEA:UniProtKB-KW.
 DR   GO; GO:0047696; F:beta-adrenergic receptor kinase activity; TAS:Reactome.
-DR   GO; GO:0004703; F:G protein-coupled receptor kinase activity; IEA:Ensembl.
-DR   GO; GO:0004672; F:protein kinase activity; TAS:ProtInc.
-DR   GO; GO:0007186; P:G protein-coupled receptor signaling pathway; TAS:Reactome.
+DR   GO; GO:0001664; F:G protein-coupled receptor binding; IBA:GO_Central.
+DR   GO; GO:0004703; F:G protein-coupled receptor kinase activity; IBA:GO_Central.
+DR   GO; GO:0004672; F:protein kinase activity; IBA:GO_Central.
+DR   GO; GO:0002029; P:desensitization of G protein-coupled receptor signaling pathway; IBA:GO_Central.
+DR   GO; GO:0007186; P:G protein-coupled receptor signaling pathway; IBA:GO_Central.
+DR   GO; GO:0006468; P:protein phosphorylation; IBA:GO_Central.
 DR   GO; GO:0031623; P:receptor internalization; IDA:UniProtKB.
+DR   GO; GO:0009966; P:regulation of signal transduction; IBA:GO_Central.
 DR   GO; GO:0007165; P:signal transduction; TAS:ProtInc.
 DR   Gene3D; 2.30.29.30; -; 1.
 DR   InterPro; IPR000961; AGC-kinase_C.
@@ -204,9 +215,8 @@ DR   PROSITE; PS50011; PROTEIN_KINASE_DOM; 1.
 DR   PROSITE; PS00108; PROTEIN_KINASE_ST; 1.
 DR   PROSITE; PS50132; RGS; 1.
 PE   1: Evidence at protein level;
-KW   ATP-binding; Complete proteome; Kinase; Nucleotide-binding; Polymorphism;
-KW   Reference proteome; Serine/threonine-protein kinase; Transferase;
-KW   Ubl conjugation.
+KW   ATP-binding; Kinase; Nucleotide-binding; Reference proteome;
+KW   Serine/threonine-protein kinase; Transferase; Ubl conjugation.
 FT   CHAIN           1..688
 FT                   /note="Beta-adrenergic receptor kinase 2"
 FT                   /id="PRO_0000085632"
@@ -218,6 +228,7 @@ FT                   /note="Protein kinase"
 FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00159"
 FT   DOMAIN          454..521
 FT                   /note="AGC-kinase C-terminal"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00618"
 FT   DOMAIN          558..652
 FT                   /note="PH"
 FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00145"
@@ -226,6 +237,9 @@ FT                   /note="ATP"
 FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00159"
 FT   REGION          1..190
 FT                   /note="N-terminal"
+FT   REGION          669..688
+FT                   /note="Disordered"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
 FT   ACT_SITE        317
 FT                   /note="Proton acceptor"
 FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00159,

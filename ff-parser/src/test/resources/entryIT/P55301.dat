@@ -2,7 +2,7 @@ ID   FTR_METBF               Reviewed;         297 AA.
 AC   P55301; Q46DU0;
 DT   01-OCT-1996, integrated into UniProtKB/Swiss-Prot.
 DT   01-OCT-1996, sequence version 1.
-DT   10-APR-2019, entry version 130.
+DT   02-JUN-2021, entry version 143.
 DE   RecName: Full=Formylmethanofuran--tetrahydromethanopterin formyltransferase;
 DE            EC=2.3.1.101;
 DE   AltName: Full=H4MPT formyltransferase;
@@ -22,7 +22,7 @@ RL   Arch. Microbiol. 165:97-105(1996).
 RN   [2]
 RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
 RC   STRAIN=Fusaro / DSM 804;
-RX   PubMed=16980466; DOI=10.1128/JB.00810-06;
+RX   PubMed=16980466; DOI=10.1128/jb.00810-06;
 RA   Maeder D.L., Anderson I., Brettin T.S., Bruce D.C., Gilna P., Han C.S.,
 RA   Lapidus A., Metcalf W.W., Saunders E., Tapia R., Sowers K.R.;
 RT   "The Methanosarcina barkeri genome: comparative analysis with
@@ -75,9 +75,7 @@ DR   EnsemblBacteria; AAZ69952; AAZ69952; Mbar_A0980.
 DR   GeneID; 3625752; -.
 DR   KEGG; mba:Mbar_A0980; -.
 DR   eggNOG; arCOG02695; Archaea.
-DR   eggNOG; COG2037; LUCA.
-DR   HOGENOM; HOG000230959; -.
-DR   KO; K00672; -.
+DR   HOGENOM; CLU_081314_0_0_2; -.
 DR   OMA; SVIMCPA; -.
 DR   OrthoDB; 62652at2157; -.
 DR   BRENDA; 2.3.1.101; 3250.
@@ -100,9 +98,8 @@ DR   PIRSF; PIRSF006414; Ftr_formyl_trnsf; 1.
 DR   SUPFAM; SSF55112; SSF55112; 2.
 DR   TIGRFAMs; TIGR03119; one_C_fhcD; 1.
 PE   1: Evidence at protein level;
-KW   3D-structure; Acyltransferase; Complete proteome; Cytoplasm;
-KW   Direct protein sequencing; Methanogenesis; One-carbon metabolism;
-KW   Transferase.
+KW   3D-structure; Acyltransferase; Cytoplasm; Direct protein sequencing;
+KW   Methanogenesis; One-carbon metabolism; Transferase.
 FT   CHAIN           1..297
 FT                   /note="Formylmethanofuran--tetrahydromethanopterin
 FT                   formyltransferase"
@@ -111,61 +108,61 @@ FT   CONFLICT        22..26
 FT                   /note="RVLIT -> VIIAA (in Ref. 3; AA sequence)"
 FT                   /evidence="ECO:0000305"
 FT   STRAND          6..8
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   STRAND          12..26
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   HELIX           30..41
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   TURN            47..49
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   STRAND          53..60
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   TURN            62..64
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   STRAND          71..80
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   HELIX           81..95
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   TURN            96..98
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   STRAND          103..107
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   STRAND          112..115
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   HELIX           117..122
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   HELIX           123..125
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   STRAND          130..134
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   STRAND          137..144
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   STRAND          147..153
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   STRAND          155..172
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   HELIX           173..187
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   HELIX           198..200
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   STRAND          202..204
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   STRAND          207..209
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   HELIX           222..224
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   HELIX           226..231
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   STRAND          243..253
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   HELIX           254..268
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   STRAND          274..278
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   STRAND          288..292
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 FT   HELIX           293..296
-FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT                   /evidence="ECO:0007829|PDB:1M5S"
 SQ   SEQUENCE   297 AA;  31697 MW;  1D584BA3006FD802 CRC64;
      MEINGVEIED TYAEAFPIKI ARVLITAATK RWALVAATEA TGFATSVIMC PAEAGIERLA
      SPSETPDGRP GVYVQICTFK YEALEEQLLE RIGQCVLTAP TTAVFNGLPE AEKQFNVGFK

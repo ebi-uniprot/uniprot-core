@@ -2,7 +2,7 @@ ID   MURD_SHIDS              Reviewed;         438 AA.
 AC   Q32K04;
 DT   31-OCT-2006, integrated into UniProtKB/Swiss-Prot.
 DT   06-DEC-2005, sequence version 1.
-DT   16-JAN-2019, entry version 88.
+DT   10-FEB-2021, entry version 97.
 DE   RecName: Full=UDP-N-acetylmuramoylalanine--D-glutamate ligase {ECO:0000255|HAMAP-Rule:MF_00639};
 DE            EC=6.3.2.9 {ECO:0000255|HAMAP-Rule:MF_00639};
 DE   AltName: Full=D-glutamic acid-adding enzyme {ECO:0000255|HAMAP-Rule:MF_00639};
@@ -49,12 +49,10 @@ DR   RefSeq; YP_401842.1; NC_007606.1.
 DR   SMR; Q32K04; -.
 DR   PRIDE; Q32K04; -.
 DR   EnsemblBacteria; ABB60353; ABB60353; SDY_0118.
-DR   GeneID; 3795924; -.
 DR   KEGG; sdy:SDY_0118; -.
 DR   PATRIC; fig|300267.13.peg.137; -.
-DR   HOGENOM; HOG000049427; -.
-DR   KO; K01925; -.
-DR   OMA; VDKGNDY; -.
+DR   HOGENOM; CLU_032540_1_0_6; -.
+DR   OMA; ACASYDQ; -.
 DR   BioCyc; SDYS300267:G1G4A-124-MONOMER; -.
 DR   UniPathway; UPA00219; -.
 DR   Proteomes; UP000002716; Chromosome.
@@ -73,18 +71,16 @@ DR   InterPro; IPR036565; Mur-like_cat_sf.
 DR   InterPro; IPR004101; Mur_ligase_C.
 DR   InterPro; IPR036615; Mur_ligase_C_dom_sf.
 DR   InterPro; IPR013221; Mur_ligase_cen.
-DR   InterPro; IPR005762; UDP-N-AcMur-Glu_ligase.
+DR   InterPro; IPR005762; MurD.
 DR   Pfam; PF02875; Mur_ligase_C; 1.
 DR   Pfam; PF08245; Mur_ligase_M; 1.
 DR   SUPFAM; SSF53244; SSF53244; 1.
 DR   SUPFAM; SSF53623; SSF53623; 1.
 DR   TIGRFAMs; TIGR01087; murD; 1.
-**   PROSITE; PS00012; PHOSPHOPANTETHEINE; 1; FALSE_POS.
-**   PROSITE; PS51257; PROKAR_LIPOPROTEIN; 1; FALSE_POS.
 PE   3: Inferred from homology;
 KW   ATP-binding; Cell cycle; Cell division; Cell shape;
-KW   Cell wall biogenesis/degradation; Complete proteome; Cytoplasm; Ligase;
-KW   Nucleotide-binding; Peptidoglycan synthesis; Reference proteome.
+KW   Cell wall biogenesis/degradation; Cytoplasm; Ligase; Nucleotide-binding;
+KW   Peptidoglycan synthesis; Reference proteome.
 FT   CHAIN           1..438
 FT                   /note="UDP-N-acetylmuramoylalanine--D-glutamate ligase"
 FT                   /id="PRO_0000257237"
