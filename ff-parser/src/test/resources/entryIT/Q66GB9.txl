@@ -2,10 +2,9 @@ ID   SECB_YERPS              Reviewed;         158 AA.
 AC   Q66GB9;
 DT   20-DEC-2005, integrated into UniProtKB/Swiss-Prot.
 DT   11-OCT-2004, sequence version 1.
-DT   10-OCT-2018, entry version 75.
+DT   29-SEP-2021, entry version 83.
 DE   RecName: Full=Protein-export protein SecB {ECO:0000255|HAMAP-Rule:MF_00821};
-GN   Name=secB {ECO:0000255|HAMAP-Rule:MF_00821};
-GN   OrderedLocusNames=YPTB0063;
+GN   Name=secB {ECO:0000255|HAMAP-Rule:MF_00821}; OrderedLocusNames=YPTB0063;
 OS   Yersinia pseudotuberculosis serotype I (strain IP32953).
 OC   Bacteria; Proteobacteria; Gammaproteobacteria; Enterobacterales;
 OC   Yersiniaceae; Yersinia.
@@ -32,14 +31,18 @@ CC       with 1 SecA dimer. {ECO:0000255|HAMAP-Rule:MF_00821}.
 CC   -!- SUBCELLULAR LOCATION: Cytoplasm {ECO:0000255|HAMAP-Rule:MF_00821}.
 CC   -!- SIMILARITY: Belongs to the SecB family. {ECO:0000255|HAMAP-
 CC       Rule:MF_00821}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
 DR   EMBL; BX936398; CAH19303.1; -; Genomic_DNA.
 DR   RefSeq; WP_002208976.1; NZ_CP009712.1.
 DR   SMR; Q66GB9; -.
 DR   EnsemblBacteria; CAH19303; CAH19303; YPTB0063.
+DR   GeneID; 49787967; -.
 DR   KEGG; ypo:BZ17_2532; -.
 DR   KEGG; yps:YPTB0063; -.
 DR   PATRIC; fig|273123.14.peg.2657; -.
-DR   HOGENOM; HOG000218192; -.
 DR   OMA; CPNVLFP; -.
 DR   Proteomes; UP000001011; Chromosome.
 DR   GO; GO:0005737; C:cytoplasm; IEA:UniProtKB-SubCell.
@@ -57,15 +60,10 @@ DR   PRINTS; PR01594; SECBCHAPRONE.
 DR   SUPFAM; SSF54611; SSF54611; 1.
 DR   TIGRFAMs; TIGR00809; secB; 1.
 PE   3: Inferred from homology;
-KW   Chaperone; Complete proteome; Cytoplasm; Protein transport; Translocation;
-KW   Transport.
+KW   Chaperone; Cytoplasm; Protein transport; Translocation; Transport.
 FT   CHAIN           1..158
 FT                   /note="Protein-export protein SecB"
 FT                   /id="PRO_0000055434"
-**
-**   #################    INTERNAL SECTION    ##################
-**EV ECO:0000255; HAMAP-Rule:MF_00821; XXX; 06-NOV-2015.
-**HA SAM; Annotated by SAM 1.65; MF_00821.0; 02-DEC-2005.
 SQ   SEQUENCE   158 AA;  17576 MW;  EC13DD181E4D7B7B CRC64;
      MSEQNNTEMA FQIQRIYTKD ISFEAPNAPQ VFQQDWQPEV KLDLDTASSQ LAEDVYEVVL
      RVTVTASLGE ETAFLCEVQQ GGIFSVAGIE GTQLAHCLGA YCPNILFPYA RECITSLVSR

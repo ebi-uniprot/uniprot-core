@@ -2,7 +2,7 @@ ID   1433B_PONAB             Reviewed;         246 AA.
 AC   A4K2U9;
 DT   29-MAY-2007, integrated into UniProtKB/Swiss-Prot.
 DT   01-MAY-2007, sequence version 1.
-DT   16-JAN-2019, entry version 87.
+DT   02-JUN-2021, entry version 96.
 DE   RecName: Full=14-3-3 protein beta/alpha;
 DE   Contains:
 DE     RecName: Full=14-3-3 protein beta/alpha, N-terminally processed;
@@ -49,8 +49,12 @@ CC       Interacts with SYNPO2 (phosphorylated form); YWHAB competes with ACTN2
 CC       for interaction with SYNPO2 (By similarity). Interacts with RIPOR2 (via
 CC       phosphorylated form); this interaction occurs in a chemokine-dependent
 CC       manner and does not compete for binding of RIPOR2 with RHOA nor blocks
-CC       inhibition of RIPOR2-mediated RHOA activity (By similarity).
-CC       {ECO:0000250|UniProtKB:P31946, ECO:0000250|UniProtKB:Q9CQV8}.
+CC       inhibition of RIPOR2-mediated RHOA activity (By similarity). Interacts
+CC       with MARK2 and MARK3 (By similarity). Interacts with TESK1; the
+CC       interaction is dependent on the phosphorylation of TESK1 'Ser-437' and
+CC       inhibits TESK1 kinase activity (By similarity). Interacts with MEFV (By
+CC       similarity). {ECO:0000250|UniProtKB:P31946,
+CC       ECO:0000250|UniProtKB:Q9CQV8}.
 CC   -!- SUBCELLULAR LOCATION: Cytoplasm {ECO:0000250|UniProtKB:P31946}.
 CC       Melanosome {ECO:0000250|UniProtKB:P31946}.
 CC   -!- ALTERNATIVE PRODUCTS:
@@ -59,13 +63,12 @@ CC       Name=Long;
 CC         IsoId=A4K2U9-1; Sequence=Displayed;
 CC       Name=Short;
 CC         IsoId=A4K2U9-2; Sequence=VSP_026021;
-CC         Note=No experimental confirmation available. Inferred by similarity.
-CC         Contains a N-acetylmethionine at position 1. {ECO:0000250};
 CC   -!- PTM: The alpha, brain-specific form differs from the beta form in being
 CC       phosphorylated. Phosphorylated on Ser-60 by protein kinase C delta type
 CC       catalytic subunit in a sphingosine-dependent fashion. {ECO:0000250}.
 CC   -!- PTM: Isoform Short contains a N-acetylmethionine at position 1.
 CC       {ECO:0000250}.
+CC   -!- MISCELLANEOUS: [Isoform Short]: Inferred by similarity. {ECO:0000305}.
 CC   -!- SIMILARITY: Belongs to the 14-3-3 family. {ECO:0000305}.
 CC   ---------------------------------------------------------------------------
 CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
@@ -81,12 +84,12 @@ DR   GeneID; 100137177; -.
 DR   KEGG; pon:100137177; -.
 DR   CTD; 7529; -.
 DR   eggNOG; KOG0841; Eukaryota.
-DR   eggNOG; COG5040; LUCA.
+DR   HOGENOM; CLU_058290_1_0_1; -.
 DR   InParanoid; A4K2U9; -.
 DR   OrthoDB; 1176818at2759; -.
 DR   Proteomes; UP000001595; Unplaced.
 DR   GO; GO:0042470; C:melanosome; IEA:UniProtKB-SubCell.
-DR   GO; GO:0019904; F:protein domain specific binding; IEA:InterPro.
+DR   GO; GO:0004860; F:protein kinase inhibitor activity; ISS:UniProtKB.
 DR   GO; GO:0045744; P:negative regulation of G protein-coupled receptor signaling pathway; ISS:UniProtKB.
 DR   Gene3D; 1.20.190.20; -; 1.
 DR   InterPro; IPR000308; 14-3-3.
@@ -102,9 +105,8 @@ DR   SUPFAM; SSF48445; SSF48445; 1.
 DR   PROSITE; PS00796; 1433_1; 1.
 DR   PROSITE; PS00797; 1433_2; 1.
 PE   3: Inferred from homology;
-KW   Acetylation; Alternative initiation; Complete proteome; Cytoplasm;
-KW   Isopeptide bond; Nitration; Phosphoprotein; Reference proteome;
-KW   Ubl conjugation.
+KW   Acetylation; Alternative initiation; Cytoplasm; Isopeptide bond; Nitration;
+KW   Phosphoprotein; Reference proteome; Ubl conjugation.
 FT   CHAIN           1..246
 FT                   /note="14-3-3 protein beta/alpha"
 FT                   /id="PRO_0000289632"
@@ -145,10 +147,10 @@ FT   MOD_RES         70
 FT                   /note="N6-acetyllysine"
 FT                   /evidence="ECO:0000250|UniProtKB:P31946"
 FT   MOD_RES         84
-FT                   /note="Nitrated tyrosine"
+FT                   /note="3'-nitrotyrosine"
 FT                   /evidence="ECO:0000250|UniProtKB:Q9CQV8"
 FT   MOD_RES         106
-FT                   /note="Nitrated tyrosine"
+FT                   /note="3'-nitrotyrosine"
 FT                   /evidence="ECO:0000250|UniProtKB:Q9CQV8"
 FT   MOD_RES         117
 FT                   /note="N6-acetyllysine"
@@ -167,6 +169,9 @@ FT   VAR_SEQ         1..2
 FT                   /note="Missing (in isoform Short)"
 FT                   /evidence="ECO:0000305"
 FT                   /id="VSP_026021"
+FT   MOD_RES         A4K2U9-2:1
+FT                   /note="N-acetylmethionine"
+FT                   /evidence="ECO:0000305"
 SQ   SEQUENCE   246 AA;  28082 MW;  6BE1A9BF97468017 CRC64;
      MTMDKSELVQ KAKLAEQAER YDDMAAAMKA VTEQGHELSN EERNLLSVAY KNVVGARRSS
      WRVISSIEQK TERNEKKQQM GKEYREKIEA ELQDICNDVL ELLDKYLIPN ATQPESKVFY

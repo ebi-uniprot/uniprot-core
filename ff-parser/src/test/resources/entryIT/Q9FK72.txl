@@ -2,7 +2,7 @@ ID   HFA4C_ARATH             Reviewed;         345 AA.
 AC   Q9FK72;
 DT   09-JAN-2007, integrated into UniProtKB/Swiss-Prot.
 DT   01-MAR-2001, sequence version 1.
-DT   13-FEB-2019, entry version 137.
+DT   29-SEP-2021, entry version 150.
 DE   RecName: Full=Heat stress transcription factor A-4c;
 DE            Short=AtHsfA4c;
 DE   AltName: Full=AtHsf-20;
@@ -11,7 +11,7 @@ GN   Name=HSFA4C; Synonyms=HSF20, RHA1; OrderedLocusNames=At5g45710;
 GN   ORFNames=MRA19.11;
 OS   Arabidopsis thaliana (Mouse-ear cress).
 OC   Eukaryota; Viridiplantae; Streptophyta; Embryophyta; Tracheophyta;
-OC   Spermatophyta; Magnoliophyta; eudicotyledons; Gunneridae; Pentapetalae;
+OC   Spermatophyta; Magnoliopsida; eudicotyledons; Gunneridae; Pentapetalae;
 OC   rosids; malvids; Brassicales; Brassicaceae; Camelineae; Arabidopsis.
 OX   NCBI_TaxID=3702;
 RN   [1]
@@ -58,7 +58,7 @@ RT   "Large-scale analysis of RIKEN Arabidopsis full-length (RAFL) cDNAs.";
 RL   Submitted (JUL-2006) to the EMBL/GenBank/DDBJ databases.
 RN   [6]
 RP   GENE FAMILY, NOMENCLATURE, AND DOMAIN AHA.
-RX   PubMed=11599559;
+RX   PubMed=11599559; DOI=10.1379/1466-1268(2001)006<0177:aathst>2.0.co;2;
 RA   Nover L., Bharti K., Doering P., Mishra S.K., Ganguli A., Scharf K.-D.;
 RT   "Arabidopsis and the heat stress transcription factor world: how many heat
 RT   stress transcription factors do we need?";
@@ -72,7 +72,7 @@ RT   and gravitropism defines a gene that encodes a heat-shock factor.";
 RL   J. Exp. Bot. 59:1363-1374(2008).
 RN   [8]
 RP   GENE FAMILY, AND NOMENCLATURE.
-RX   PubMed=18407058; DOI=10.1016/S1673-8527(08)60016-8;
+RX   PubMed=18407058; DOI=10.1016/s1673-8527(08)60016-8;
 RA   Guo J., Wu J., Ji Q., Wang C., Luo L., Yuan Y., Wang Y., Wang J.;
 RT   "Genome-wide analysis of heat shock transcription factor families in rice
 RT   and Arabidopsis.";
@@ -104,6 +104,10 @@ CC       reduced size of shoot and root in the seedlings and increased
 CC       resistance to 2,4-D. {ECO:0000269|PubMed:18381353}.
 CC   -!- SIMILARITY: Belongs to the HSF family. Class A subfamily.
 CC       {ECO:0000305}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
 DR   EMBL; AY350739; AAQ54332.1; -; Genomic_DNA.
 DR   EMBL; AB012245; BAB09213.1; -; Genomic_DNA.
 DR   EMBL; CP002688; AED95287.1; -; Genomic_DNA.
@@ -114,11 +118,12 @@ DR   EMBL; AK229058; BAF00940.1; -; mRNA.
 DR   RefSeq; NP_001331800.1; NM_001344637.1. [Q9FK72-1]
 DR   RefSeq; NP_199383.1; NM_123938.4. [Q9FK72-1]
 DR   SMR; Q9FK72; -.
-DR   BioGrid; 19859; 9.
+DR   BioGRID; 19859; 9.
 DR   IntAct; Q9FK72; 9.
 DR   STRING; 3702.AT5G45710.1; -.
 DR   PaxDb; Q9FK72; -.
 DR   PRIDE; Q9FK72; -.
+DR   ProteomicsDB; 230274; -. [Q9FK72-1]
 DR   EnsemblPlants; AT5G45710.1; AT5G45710.1; AT5G45710. [Q9FK72-1]
 DR   EnsemblPlants; AT5G45710.3; AT5G45710.3; AT5G45710. [Q9FK72-1]
 DR   GeneID; 834610; -.
@@ -128,29 +133,23 @@ DR   KEGG; ath:AT5G45710; -.
 DR   Araport; AT5G45710; -.
 DR   TAIR; locus:2172003; AT5G45710.
 DR   eggNOG; KOG0627; Eukaryota.
-DR   eggNOG; COG5169; LUCA.
-DR   HOGENOM; HOG000237979; -.
+DR   HOGENOM; CLU_030308_0_0_1; -.
 DR   InParanoid; Q9FK72; -.
 DR   OMA; MDENNGG; -.
-DR   OrthoDB; 1154048at2759; -.
 DR   PhylomeDB; Q9FK72; -.
-DR   Reactome; R-ATH-3371453; Regulation of HSF1-mediated heat shock response.
-DR   Reactome; R-ATH-3371511; HSF1 activation.
-DR   Reactome; R-ATH-3371568; Attenuation phase.
-DR   Reactome; R-ATH-3371571; HSF1-dependent transactivation.
 DR   PRO; PR:Q9FK72; -.
 DR   Proteomes; UP000006548; Chromosome 5.
 DR   ExpressionAtlas; Q9FK72; baseline and differential.
 DR   Genevisible; Q9FK72; AT.
 DR   GO; GO:0005634; C:nucleus; IBA:GO_Central.
 DR   GO; GO:0003700; F:DNA-binding transcription factor activity; ISS:TAIR.
-DR   GO; GO:0000978; F:RNA polymerase II proximal promoter sequence-specific DNA binding; IBA:GO_Central.
-DR   GO; GO:0043565; F:sequence-specific DNA binding; IBA:GO_Central.
+DR   GO; GO:0000978; F:RNA polymerase II cis-regulatory region sequence-specific DNA binding; IBA:GO_Central.
+DR   GO; GO:0000976; F:transcription cis-regulatory region binding; IPI:TAIR.
 DR   GO; GO:0034605; P:cellular response to heat; IBA:GO_Central.
 DR   GO; GO:0048530; P:fruit morphogenesis; IMP:TAIR.
 DR   GO; GO:0048527; P:lateral root development; IMP:TAIR.
 DR   GO; GO:0009958; P:positive gravitropism; IMP:TAIR.
-DR   GO; GO:0061408; P:positive regulation of transcription from RNA polymerase II promoter in response to heat stress; IBA:GO_Central.
+DR   GO; GO:0006357; P:regulation of transcription by RNA polymerase II; IBA:GO_Central.
 DR   GO; GO:0009733; P:response to auxin; IMP:TAIR.
 DR   GO; GO:0009408; P:response to heat; IEP:TAIR.
 DR   GO; GO:0048364; P:root development; IMP:TAIR.
@@ -159,15 +158,15 @@ DR   InterPro; IPR000232; HSF_DNA-bd.
 DR   InterPro; IPR027725; HSF_fam.
 DR   InterPro; IPR036388; WH-like_DNA-bd_sf.
 DR   InterPro; IPR036390; WH_DNA-bd_sf.
-DR   PANTHER; PTHR10015; PTHR10015; 2.
+DR   PANTHER; PTHR10015; PTHR10015; 1.
 DR   Pfam; PF00447; HSF_DNA-bind; 1.
 DR   PRINTS; PR00056; HSFDOMAIN.
 DR   SMART; SM00415; HSF; 1.
 DR   SUPFAM; SSF46785; SSF46785; 1.
 DR   PROSITE; PS00434; HSF_DOMAIN; 1.
 PE   2: Evidence at transcript level;
-KW   Activator; Alternative splicing; Complete proteome; DNA-binding; Nucleus;
-KW   Phosphoprotein; Reference proteome; Repeat; Stress response; Transcription;
+KW   Activator; Alternative splicing; DNA-binding; Nucleus; Phosphoprotein;
+KW   Reference proteome; Repeat; Stress response; Transcription;
 KW   Transcription regulation.
 FT   CHAIN           1..345
 FT                   /note="Heat stress transcription factor A-4c"
@@ -176,6 +175,9 @@ FT   DNA_BIND        11..105
 FT                   /evidence="ECO:0000250"
 FT   REGION          119..185
 FT                   /note="Hydrophobic repeat HR-A/B"
+FT   REGION          240..329
+FT                   /note="Disordered"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
 FT   MOTIF           199..203
 FT                   /note="Nuclear localization signal"
 FT                   /evidence="ECO:0000255"
@@ -183,18 +185,9 @@ FT   MOTIF           226..235
 FT                   /note="AHA1"
 FT   MOTIF           289..298
 FT                   /note="AHA2"
-**
-**   #################    INTERNAL SECTION    ##################
-**EV ECO:0000250; -; XXX; 01-JAN-1900.
-**EV ECO:0000255; -; XXX; 01-JAN-1900.
-**EV ECO:0000269; PubMed:11599559; XXX; 01-JAN-1900.
-**EV ECO:0000269; PubMed:18381353; XXX; 01-JAN-1900.
-**EV ECO:0000305; -; XXX; 01-JAN-1900.
-**DR Araport-CDS; AT5G45710.1; Araport11; -. [Q9FK72-1]
-**DR Araport-CDS; AT5G45710.3; Araport11; -. [Q9FK72-1]
-**YY According to Araport, the gene encoding this protein is alternatively spliced.
-**ZA MIT, 29-NOV-2006;
-**ZB DLI, 21-AUG-2008;
+FT   COMPBIAS        240..273
+FT                   /note="Polar residues"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
 SQ   SEQUENCE   345 AA;  39648 MW;  DFB628DDEF77F902 CRC64;
      MDENNGGSSS LPPFLTKTYE MVDDSSSDSV VAWSENNKSF IVKNPAEFSR DLLPRFFKHK
      NFSSFIRQLN TYGFRKVDPE KWEFLNDDFV RGRPYLMKNI HRRKPVHSHS LVNLQAQNPL

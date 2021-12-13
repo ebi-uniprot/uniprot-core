@@ -2,7 +2,7 @@ ID   AAS_CITK8               Reviewed;         719 AA.
 AC   A8AP56;
 DT   05-FEB-2008, integrated into UniProtKB/Swiss-Prot.
 DT   23-OCT-2007, sequence version 1.
-DT   10-APR-2019, entry version 72.
+DT   29-SEP-2021, entry version 80.
 DE   RecName: Full=Bifunctional protein Aas {ECO:0000255|HAMAP-Rule:MF_01162};
 DE   Includes:
 DE     RecName: Full=2-acylglycerophosphoethanolamine acyltransferase {ECO:0000255|HAMAP-Rule:MF_01162};
@@ -14,8 +14,7 @@ DE     RecName: Full=Acyl-[acyl-carrier-protein] synthetase {ECO:0000255|HAMAP-R
 DE              EC=6.2.1.20 {ECO:0000255|HAMAP-Rule:MF_01162};
 DE     AltName: Full=Acyl-ACP synthetase {ECO:0000255|HAMAP-Rule:MF_01162};
 DE     AltName: Full=Long-chain-fatty-acid--[acyl-carrier-protein] ligase {ECO:0000255|HAMAP-Rule:MF_01162};
-GN   Name=aas {ECO:0000255|HAMAP-Rule:MF_01162};
-GN   OrderedLocusNames=CKO_04208;
+GN   Name=aas {ECO:0000255|HAMAP-Rule:MF_01162}; OrderedLocusNames=CKO_04208;
 OS   Citrobacter koseri (strain ATCC BAA-895 / CDC 4225-83 / SGSC4696).
 OC   Bacteria; Proteobacteria; Gammaproteobacteria; Enterobacterales;
 OC   Enterobacteriaceae; Citrobacter.
@@ -61,13 +60,11 @@ CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
 CC   ---------------------------------------------------------------------------
 DR   EMBL; CP000822; ABV15269.1; -; Genomic_DNA.
 DR   RefSeq; WP_012134954.1; NC_009792.1.
-DR   PRIDE; A8AP56; -.
+DR   SMR; A8AP56; -.
 DR   EnsemblBacteria; ABV15269; ABV15269; CKO_04208.
+DR   GeneID; 45137823; -.
 DR   KEGG; cko:CKO_04208; -.
-DR   eggNOG; ENOG4105CEY; Bacteria.
-DR   eggNOG; COG0204; LUCA.
-DR   eggNOG; COG0318; LUCA.
-DR   HOGENOM; HOG000004907; -.
+DR   HOGENOM; CLU_000022_59_8_6; -.
 DR   OMA; ANWVYLE; -.
 DR   OrthoDB; 961884at2; -.
 DR   BioCyc; CKOS290338:G1G9Z-3697-MONOMER; -.
@@ -79,20 +76,21 @@ DR   GO; GO:0005524; F:ATP binding; IEA:UniProtKB-KW.
 DR   GO; GO:0008922; F:long-chain fatty acid [acyl-carrier-protein] ligase activity; IEA:UniProtKB-UniRule.
 DR   GO; GO:0006631; P:fatty acid metabolic process; IEA:InterPro.
 DR   GO; GO:0008654; P:phospholipid biosynthetic process; IEA:InterPro.
+DR   Gene3D; 3.40.50.12780; -; 1.
 DR   HAMAP; MF_01162; Aas; 1.
 DR   InterPro; IPR023775; Aas.
 DR   InterPro; IPR020845; AMP-binding_CS.
 DR   InterPro; IPR000873; AMP-dep_Synth/Lig.
+DR   InterPro; IPR042099; ANL_N_sf.
 DR   InterPro; IPR002123; Plipid/glycerol_acylTrfase.
 DR   Pfam; PF01553; Acyltransferase; 1.
 DR   Pfam; PF00501; AMP-binding; 1.
 DR   SMART; SM00563; PlsC; 1.
 DR   PROSITE; PS00455; AMP_BINDING; 1.
 PE   3: Inferred from homology;
-KW   Acyltransferase; ATP-binding; Cell inner membrane; Cell membrane;
-KW   Complete proteome; Ligase; Membrane; Multifunctional enzyme;
-KW   Nucleotide-binding; Reference proteome; Transferase; Transmembrane;
-KW   Transmembrane helix.
+KW   Acyltransferase; ATP-binding; Cell inner membrane; Cell membrane; Ligase;
+KW   Membrane; Multifunctional enzyme; Nucleotide-binding; Reference proteome;
+KW   Transferase; Transmembrane; Transmembrane helix.
 FT   CHAIN           1..719
 FT                   /note="Bifunctional protein Aas"
 FT                   /id="PRO_1000065633"

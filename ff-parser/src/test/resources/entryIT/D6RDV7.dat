@@ -2,7 +2,7 @@ ID   D6RDV7_HUMAN            Unreviewed;       119 AA.
 AC   D6RDV7;
 DT   13-JUL-2010, integrated into UniProtKB/TrEMBL.
 DT   13-JUL-2010, sequence version 1.
-DT   12-SEP-2018, entry version 41.
+DT   29-SEP-2021, entry version 54.
 DE   SubName: Full=Neuronal membrane glycoprotein M6-a {ECO:0000313|Ensembl:ENSP00000426984};
 DE   Flags: Fragment;
 GN   Name=GPM6A {ECO:0000313|Ensembl:ENSP00000426984};
@@ -55,18 +55,17 @@ DR   EMBL; KF457837; -; NOT_ANNOTATED_CDS; Genomic_DNA.
 DR   EMBL; KF457840; -; NOT_ANNOTATED_CDS; Genomic_DNA.
 DR   PeptideAtlas; D6RDV7; -.
 DR   PRIDE; D6RDV7; -.
+DR   ProteomicsDB; 14177; -.
+DR   Antibodypedia; 17235; 311 antibodies.
 DR   Ensembl; ENST00000512610; ENSP00000426984; ENSG00000150625.
 DR   UCSC; uc063bco.1; human.
-DR   EuPathDB; HostDB:ENSG00000150625.16; -.
 DR   HGNC; HGNC:4460; GPM6A.
 DR   OpenTargets; ENSG00000150625; -.
-DR   eggNOG; KOG4800; Eukaryota.
-DR   eggNOG; ENOG4110EPW; LUCA.
+DR   VEuPathDB; HostDB:ENSG00000150625; -.
 DR   GeneTree; ENSGT00390000006915; -.
-DR   HOGENOM; HOG000231338; -.
 DR   ChiTaRS; GPM6A; human.
 DR   Proteomes; UP000005640; Chromosome 4.
-DR   Bgee; ENSG00000150625; Expressed in 194 organ(s), highest expression level in occipital lobe.
+DR   Bgee; ENSG00000150625; Expressed in occipital lobe and 212 other tissues.
 DR   ExpressionAtlas; D6RDV7; baseline and differential.
 DR   GO; GO:0016021; C:integral component of membrane; IEA:UniProtKB-KW.
 DR   InterPro; IPR001614; Myelin_PLP.
@@ -74,9 +73,9 @@ DR   PANTHER; PTHR11683; PTHR11683; 1.
 DR   Pfam; PF01275; Myelin_PLP; 1.
 DR   PRINTS; PR00214; MYELINPLP.
 PE   1: Evidence at protein level;
-KW   Complete proteome {ECO:0000313|Proteomes:UP000005640};
 KW   Membrane {ECO:0000256|SAM:Phobius};
-KW   Proteomics identification {ECO:0000213|PeptideAtlas:D6RDV7};
+KW   Proteomics identification {ECO:0007829|PeptideAtlas:D6RDV7,
+KW   ECO:0007829|ProteomicsDB:D6RDV7};
 KW   Reference proteome {ECO:0000313|Proteomes:UP000005640};
 KW   Transmembrane {ECO:0000256|SAM:Phobius};
 KW   Transmembrane helix {ECO:0000256|SAM:Phobius}.

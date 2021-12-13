@@ -316,7 +316,7 @@ class UniProtKBDatabaseTypesTest {
                 4);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(GENOME_ANNOTATION_DATABASES),
-                14);
+                15);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(ORGANISM_SPECIFIC_DATABASES),
                 40);

@@ -2,13 +2,13 @@ ID   104K_THEPA              Reviewed;         924 AA.
 AC   P15711; Q4N2B5;
 DT   01-APR-1990, integrated into UniProtKB/Swiss-Prot.
 DT   01-APR-1990, sequence version 1.
-DT   23-MAY-2018, entry version 63.
+DT   02-JUN-2021, entry version 69.
 DE   RecName: Full=104 kDa microneme/rhoptry antigen;
 DE   AltName: Full=p104;
 DE   Flags: Precursor;
 GN   OrderedLocusNames=TP04_0437;
 OS   Theileria parva (East coast fever infection agent).
-OC   Eukaryota; Alveolata; Apicomplexa; Aconoidasida; Piroplasmida;
+OC   Eukaryota; Sar; Alveolata; Apicomplexa; Aconoidasida; Piroplasmida;
 OC   Theileriidae; Theileria.
 OX   NCBI_TaxID=5875;
 RN   [1]
@@ -46,18 +46,18 @@ DR   EMBL; M29954; AAA18217.1; -; Unassigned_DNA.
 DR   EMBL; AAGK01000004; EAN31789.1; -; Genomic_DNA.
 DR   PIR; A44945; A44945.
 DR   RefSeq; XP_764072.1; XM_758979.1.
-DR   PRIDE; P15711; -.
 DR   EnsemblProtists; EAN31789; EAN31789; TP04_0437.
 DR   GeneID; 3500484; -.
 DR   KEGG; tpv:TP04_0437; -.
-DR   EuPathDB; PiroplasmaDB:TP04_0437; -.
+DR   VEuPathDB; PiroplasmaDB:TP04_0437; -.
 DR   InParanoid; P15711; -.
+DR   OMA; NGHICKM; -.
 DR   Proteomes; UP000001949; Unassembled WGS sequence.
 DR   GO; GO:0031225; C:anchored component of membrane; IEA:UniProtKB-KW.
 DR   GO; GO:0005886; C:plasma membrane; IEA:UniProtKB-SubCell.
 PE   2: Evidence at transcript level;
-KW   Cell membrane; Complete proteome; Glycoprotein; GPI-anchor; Lipoprotein;
-KW   Membrane; Reference proteome; Repeat; Signal; Sporozoite.
+KW   Cell membrane; Glycoprotein; GPI-anchor; Lipoprotein; Membrane;
+KW   Reference proteome; Repeat; Signal; Sporozoite.
 FT   SIGNAL          1..19
 FT                   /evidence="ECO:0000255"
 FT   CHAIN           20..904
@@ -67,10 +67,39 @@ FT   PROPEP          905..924
 FT                   /note="Removed in mature form"
 FT                   /evidence="ECO:0000255"
 FT                   /id="PRO_0000232679"
-FT   COMPBIAS        508..753
-FT                   /note="Pro-rich"
-FT   COMPBIAS        880..883
-FT                   /note="Poly-Arg"
+FT   REGION          490..907
+FT                   /note="Disordered"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
+FT   COMPBIAS        492..510
+FT                   /note="Basic and acidic residues"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
+FT   COMPBIAS        524..565
+FT                   /note="Basic and acidic residues"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
+FT   COMPBIAS        572..592
+FT                   /note="Basic and acidic residues"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
+FT   COMPBIAS        595..614
+FT                   /note="Polar residues"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
+FT   COMPBIAS        615..629
+FT                   /note="Pro residues"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
+FT   COMPBIAS        653..677
+FT                   /note="Basic and acidic residues"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
+FT   COMPBIAS        696..725
+FT                   /note="Pro residues"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
+FT   COMPBIAS        761..785
+FT                   /note="Basic and acidic residues"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
+FT   COMPBIAS        797..839
+FT                   /note="Basic and acidic residues"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
+FT   COMPBIAS        880..897
+FT                   /note="Basic residues"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
 FT   LIPID           904
 FT                   /note="GPI-anchor amidated aspartate"
 FT                   /evidence="ECO:0000255"

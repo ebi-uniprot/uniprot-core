@@ -2,7 +2,7 @@ ID   MS18A_HUMAN             Reviewed;         233 AA.
 AC   Q9NYP9; B2R562; Q542Z0;
 DT   11-JAN-2001, integrated into UniProtKB/Swiss-Prot.
 DT   01-OCT-2000, sequence version 1.
-DT   22-APR-2020, entry version 143.
+DT   29-SEP-2021, entry version 151.
 DE   RecName: Full=Protein Mis18-alpha;
 DE   AltName: Full=FAPP1-associated protein 1;
 GN   Name=MIS18A; Synonyms=C21orf45, C21orf46, FASP1;
@@ -19,7 +19,7 @@ RT   "Identification of FAPP1 interacting proteins.";
 RL   Submitted (JUN-2001) to the EMBL/GenBank/DDBJ databases.
 RN   [2]
 RP   NUCLEOTIDE SEQUENCE [MRNA].
-RX   PubMed=10773462; DOI=10.1016/S0378-1119(00)00089-5;
+RX   PubMed=10773462; DOI=10.1016/s0378-1119(00)00089-5;
 RA   Slavov D., Hattori M., Sakaki Y., Rosenthal A., Shimizu N., Minoshima S.,
 RA   Kudoh J., Yaspo M.-L., Ramser J., Reinhardt R., Reimer C., Clancy K.,
 RA   Rynditch A., Gardiner K.;
@@ -41,22 +41,22 @@ RA   Katsuta N., Sato K., Tanikawa M., Yamazaki M., Ninomiya K., Ishibashi T.,
 RA   Yamashita H., Murakawa K., Fujimori K., Tanai H., Kimata M., Watanabe M.,
 RA   Hiraoka S., Chiba Y., Ishida S., Ono Y., Takiguchi S., Watanabe S.,
 RA   Yosida M., Hotuta T., Kusano J., Kanehori K., Takahashi-Fujii A., Hara H.,
-RA   Tanase T., Nomura Y., Togiya S., Komai F., Hara R., Takeuchi K., Arita M.,
-RA   Imose N., Musashino K., Yuuki H., Oshima A., Sasaki N., Aotsuka S.,
-RA   Yoshikawa Y., Matsunawa H., Ichihara T., Shiohata N., Sano S., Moriya S.,
-RA   Momiyama H., Satoh N., Takami S., Terashima Y., Suzuki O., Nakagawa S.,
-RA   Senoh A., Mizoguchi H., Goto Y., Shimizu F., Wakebe H., Hishigaki H.,
-RA   Watanabe T., Sugiyama A., Takemoto M., Kawakami B., Yamazaki M.,
-RA   Watanabe K., Kumagai A., Itakura S., Fukuzumi Y., Fujimori Y., Komiyama M.,
-RA   Tashiro H., Tanigami A., Fujiwara T., Ono T., Yamada K., Fujii Y.,
-RA   Ozaki K., Hirao M., Ohmori Y., Kawabata A., Hikiji T., Kobatake N.,
-RA   Inagaki H., Ikema Y., Okamoto S., Okitani R., Kawakami T., Noguchi S.,
-RA   Itoh T., Shigeta K., Senba T., Matsumura K., Nakajima Y., Mizuno T.,
-RA   Morinaga M., Sasaki M., Togashi T., Oyama M., Hata H., Watanabe M.,
-RA   Komatsu T., Mizushima-Sugano J., Satoh T., Shirai Y., Takahashi Y.,
-RA   Nakagawa K., Okumura K., Nagase T., Nomura N., Kikuchi H., Masuho Y.,
-RA   Yamashita R., Nakai K., Yada T., Nakamura Y., Ohara O., Isogai T.,
-RA   Sugano S.;
+RA   Tanase T.-O., Nomura Y., Togiya S., Komai F., Hara R., Takeuchi K.,
+RA   Arita M., Imose N., Musashino K., Yuuki H., Oshima A., Sasaki N.,
+RA   Aotsuka S., Yoshikawa Y., Matsunawa H., Ichihara T., Shiohata N., Sano S.,
+RA   Moriya S., Momiyama H., Satoh N., Takami S., Terashima Y., Suzuki O.,
+RA   Nakagawa S., Senoh A., Mizoguchi H., Goto Y., Shimizu F., Wakebe H.,
+RA   Hishigaki H., Watanabe T., Sugiyama A., Takemoto M., Kawakami B.,
+RA   Yamazaki M., Watanabe K., Kumagai A., Itakura S., Fukuzumi Y., Fujimori Y.,
+RA   Komiyama M., Tashiro H., Tanigami A., Fujiwara T., Ono T., Yamada K.,
+RA   Fujii Y., Ozaki K., Hirao M., Ohmori Y., Kawabata A., Hikiji T.,
+RA   Kobatake N., Inagaki H., Ikema Y., Okamoto S., Okitani R., Kawakami T.,
+RA   Noguchi S., Itoh T., Shigeta K., Senba T., Matsumura K., Nakajima Y.,
+RA   Mizuno T., Morinaga M., Sasaki M., Togashi T., Oyama M., Hata H.,
+RA   Watanabe M., Komatsu T., Mizushima-Sugano J., Satoh T., Shirai Y.,
+RA   Takahashi Y., Nakagawa K., Okumura K., Nagase T., Nomura N., Kikuchi H.,
+RA   Masuho Y., Yamashita R., Nakai K., Yada T., Nakamura Y., Ohara O.,
+RA   Isogai T., Sugano S.;
 RT   "Complete sequencing and characterization of 21,243 full-length human
 RT   cDNAs.";
 RL   Nat. Genet. 36:40-45(2004).
@@ -87,26 +87,6 @@ RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA].
 RC   TISSUE=Blood;
 RX   PubMed=15489334; DOI=10.1101/gr.2596504;
 RG   The MGC Project Team;
-RA   Gerhard D.S., Wagner L., Feingold E.A., Shenmen C.M., Grouse L.H.,
-RA   Schuler G., Klein S.L., Old S., Rasooly R., Good P., Guyer M., Peck A.M.,
-RA   Derge J.G., Lipman D., Collins F.S., Jang W., Sherry S., Feolo M.,
-RA   Misquitta L., Lee E., Rotmistrovsky K., Greenhut S.F., Schaefer C.F.,
-RA   Buetow K., Bonner T.I., Haussler D., Kent J., Kiekhaus M., Furey T.,
-RA   Brent M., Prange C., Schreiber K., Shapiro N., Bhat N.K., Hopkins R.F.,
-RA   Hsie F., Driscoll T., Soares M.B., Casavant T.L., Scheetz T.E.,
-RA   Brown-stein M.J., Usdin T.B., Toshiyuki S., Carninci P., Piao Y.,
-RA   Dudekula D.B., Ko M.S., Kawakami K., Suzuki Y., Sugano S., Gruber C.E.,
-RA   Smith M.R., Simmons B., Moore T., Waterman R., Johnson S.L., Ruan Y.,
-RA   Wei C.L., Mathavan S., Gunaratne P.H., Wu J., Garcia A.M., Hulyk S.W.,
-RA   Fuh E., Yuan Y., Sneed A., Kowis C., Hodgson A., Muzny D.M., McPherson J.,
-RA   Gibbs R.A., Fahey J., Helton E., Ketteman M., Madan A., Rodrigues S.,
-RA   Sanchez A., Whiting M., Madari A., Young A.C., Wetherby K.D., Granite S.J.,
-RA   Kwong P.N., Brinkley C.P., Pearson R.L., Bouffard G.G., Blakesly R.W.,
-RA   Green E.D., Dickson M.C., Rodriguez A.C., Grimwood J., Schmutz J.,
-RA   Myers R.M., Butterfield Y.S., Griffith M., Griffith O.L., Krzywinski M.I.,
-RA   Liao N., Morin R., Morrin R., Palmquist D., Petrescu A.S., Skalska U.,
-RA   Smailus D.E., Stott J.M., Schnerch A., Schein J.E., Jones S.J., Holt R.A.,
-RA   Baross A., Marra M.A., Clifton S., Makowski K.A., Bosak S., Malek J.;
 RT   "The status, quality, and expansion of the NIH full-length cDNA project:
 RT   the Mammalian Gene Collection (MGC).";
 RL   Genome Res. 14:2121-2127(2004).
@@ -141,6 +121,16 @@ RT   "Quantitative phosphoproteomics reveals widespread full phosphorylation
 RT   site occupancy during mitosis.";
 RL   Sci. Signal. 3:RA3-RA3(2010).
 RN   [10]
+RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-36; SER-39 AND SER-40, AND
+RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Cervix carcinoma, and Erythroleukemia;
+RX   PubMed=23186163; DOI=10.1021/pr300630k;
+RA   Zhou H., Di Palma S., Preisinger C., Peng M., Polat A.N., Heck A.J.,
+RA   Mohammed S.;
+RT   "Toward a comprehensive characterization of a human cancer cell
+RT   phosphoproteome.";
+RL   J. Proteome Res. 12:260-271(2013).
+RN   [11]
 RP   SUBUNIT, AND MUTAGENESIS OF VAL-82 AND TYR-176.
 RX   PubMed=26921242; DOI=10.15252/embr.201541520;
 RA   Subramanian L., Medina-Pritchard B., Barton R., Spiller F.,
@@ -149,20 +139,10 @@ RA   Arockia Jeyaprakash A.;
 RT   "Centromere localization and function of Mis18 requires Yippee-like domain-
 RT   mediated oligomerization.";
 RL   EMBO Rep. 17:496-507(2016).
-RN   [11]
-RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-36; SER-39 AND SER-40, AND
-RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
-RC   TISSUE=Cervix carcinoma, and Erythroleukemia;
-RX   PubMed=23186163;
-RA   Zhou H., Di Palma S., Preisinger C., Peng M., Polat A.N., Heck A.J.,
-RA   Mohammed S.;
-RT   "Toward a comprehensive characterization of a human cancer cell
-RT   phosphoproteome.";
-RL   J. Proteome Res. 12:260-271(2013).
 RN   [12]
 RP   SUMOYLATION [LARGE SCALE ANALYSIS] AT LYS-162, AND IDENTIFICATION BY MASS
 RP   SPECTROMETRY [LARGE SCALE ANALYSIS].
-RX   PubMed=28112733;
+RX   PubMed=28112733; DOI=10.1038/nsmb.3366;
 RA   Hendriks I.A., Lyon D., Young C., Jensen L.J., Vertegaal A.C.,
 RA   Nielsen M.L.;
 RT   "Site-specific mapping of the human SUMO proteome reveals co-modification
@@ -175,8 +155,6 @@ CC       PubMed:26921242). Identified in a complex containing MIS18A,
 CC       OIP5/MIS18B, MIS18BP1, RBBP7 and RBBP4 (PubMed:17199038).
 CC       {ECO:0000269|PubMed:17199038, ECO:0000269|PubMed:26921242}.
 CC   -!- INTERACTION:
-CC       Q9NYP9; B4DJ69; NbExp=3; IntAct=EBI-1104552, EBI-23918878;
-CC       Q9NYP9; Q9NYP9; NbExp=3; IntAct=EBI-1104552, EBI-1104552;
 CC       Q9NYP9; Q9P2A4: ABI3; NbExp=3; IntAct=EBI-1104552, EBI-742038;
 CC       Q9NYP9; Q13155: AIMP2; NbExp=6; IntAct=EBI-1104552, EBI-745226;
 CC       Q9NYP9; A2BDD9: AMOT; NbExp=3; IntAct=EBI-1104552, EBI-17286414;
@@ -190,19 +168,25 @@ CC       Q9NYP9; Q9BVV2: FNDC11; NbExp=3; IntAct=EBI-1104552, EBI-744935;
 CC       Q9NYP9; P23434: GCSH; NbExp=3; IntAct=EBI-1104552, EBI-715444;
 CC       Q9NYP9; Q8IVS8: GLYCTK; NbExp=4; IntAct=EBI-1104552, EBI-748515;
 CC       Q9NYP9; Q8IY31-3: IFT20; NbExp=3; IntAct=EBI-1104552, EBI-9091197;
+CC       Q9NYP9; O60333-2: KIF1B; NbExp=3; IntAct=EBI-1104552, EBI-10975473;
+CC       Q9NYP9; O14901: KLF11; NbExp=3; IntAct=EBI-1104552, EBI-948266;
 CC       Q9NYP9; Q9NS73-5: MBIP; NbExp=3; IntAct=EBI-1104552, EBI-10182361;
+CC       Q9NYP9; Q9NYP9: MIS18A; NbExp=3; IntAct=EBI-1104552, EBI-1104552;
 CC       Q9NYP9; Q9GZM8: NDEL1; NbExp=5; IntAct=EBI-1104552, EBI-928842;
-CC       Q9NYP9; Q9BVL2: NUP58; NbExp=3; IntAct=EBI-1104552, EBI-2811583;
+CC       Q9NYP9; Q96HA8: NTAQ1; NbExp=3; IntAct=EBI-1104552, EBI-741158;
+CC       Q9NYP9; Q9BVL2: NUP58; NbExp=6; IntAct=EBI-1104552, EBI-2811583;
 CC       Q9NYP9; O43482: OIP5; NbExp=23; IntAct=EBI-1104552, EBI-536879;
 CC       Q9NYP9; Q96KQ4: PPP1R13B; NbExp=3; IntAct=EBI-1104552, EBI-1105153;
+CC       Q9NYP9; P60891: PRPS1; NbExp=3; IntAct=EBI-1104552, EBI-749195;
 CC       Q9NYP9; Q14D33: RTP5; NbExp=3; IntAct=EBI-1104552, EBI-10217913;
 CC       Q9NYP9; O75558: STX11; NbExp=3; IntAct=EBI-1104552, EBI-714135;
 CC       Q9NYP9; Q7L2K0: TEDC2; NbExp=3; IntAct=EBI-1104552, EBI-8465456;
 CC       Q9NYP9; Q9NVV9: THAP1; NbExp=3; IntAct=EBI-1104552, EBI-741515;
 CC       Q9NYP9; Q3SY00: TSGA10IP; NbExp=3; IntAct=EBI-1104552, EBI-10241197;
 CC       Q9NYP9; P40222: TXLNA; NbExp=4; IntAct=EBI-1104552, EBI-359793;
-CC       Q9NYP9; Q96HA8: WDYHV1; NbExp=3; IntAct=EBI-1104552, EBI-741158;
+CC       Q9NYP9; O76024: WFS1; NbExp=3; IntAct=EBI-1104552, EBI-720609;
 CC       Q9NYP9; Q8N720: ZNF655; NbExp=3; IntAct=EBI-1104552, EBI-625509;
+CC       Q9NYP9; B4DJ69; NbExp=3; IntAct=EBI-1104552, EBI-23918878;
 CC   -!- SUBCELLULAR LOCATION: Nucleus {ECO:0000269|PubMed:17199038}. Chromosome
 CC       {ECO:0000269|PubMed:17199038}. Chromosome, centromere
 CC       {ECO:0000269|PubMed:17199038}. Note=Associated with centromeres in
@@ -225,12 +209,12 @@ DR   EMBL; BC042917; AAH42917.1; -; mRNA.
 DR   CCDS; CCDS13611.1; -.
 DR   RefSeq; NP_061817.1; NM_018944.2.
 DR   SMR; Q9NYP9; -.
-DR   BioGrid; 119875; 58.
+DR   BioGRID; 119875; 81.
 DR   ComplexPortal; CPX-3272; Mis18 complex.
 DR   CORUM; Q9NYP9; -.
-DR   IntAct; Q9NYP9; 72.
-DR   MINT; Q9NYP9; -.
+DR   IntAct; Q9NYP9; 77.
 DR   STRING; 9606.ENSP00000290130; -.
+DR   GlyGen; Q9NYP9; 1 site, 1 O-linked glycan (1 site).
 DR   iPTMnet; Q9NYP9; -.
 DR   PhosphoSitePlus; Q9NYP9; -.
 DR   SwissPalm; Q9NYP9; -.
@@ -244,7 +228,7 @@ DR   PaxDb; Q9NYP9; -.
 DR   PeptideAtlas; Q9NYP9; -.
 DR   PRIDE; Q9NYP9; -.
 DR   ProteomicsDB; 83261; -.
-DR   Antibodypedia; 6843; 61 antibodies.
+DR   Antibodypedia; 6843; 60 antibodies.
 DR   DNASU; 54069; -.
 DR   Ensembl; ENST00000290130; ENSP00000290130; ENSG00000159055.
 DR   GeneID; 54069; -.
@@ -258,16 +242,18 @@ DR   MIM; 618137; gene.
 DR   neXtProt; NX_Q9NYP9; -.
 DR   OpenTargets; ENSG00000159055; -.
 DR   PharmGKB; PA25840; -.
-DR   eggNOG; ENOG410IKYV; Eukaryota.
-DR   eggNOG; ENOG41125JV; LUCA.
+DR   VEuPathDB; HostDB:ENSG00000159055; -.
+DR   eggNOG; ENOG502S9R8; Eukaryota.
 DR   GeneTree; ENSGT00940000154267; -.
 DR   HOGENOM; CLU_101031_0_0_1; -.
 DR   InParanoid; Q9NYP9; -.
-DR   OMA; LQKWTSM; -.
+DR   OMA; EMKMLVM; -.
 DR   OrthoDB; 1453138at2759; -.
 DR   PhylomeDB; Q9NYP9; -.
 DR   TreeFam; TF333200; -.
+DR   PathwayCommons; Q9NYP9; -.
 DR   Reactome; R-HSA-606279; Deposition of new CENPA-containing nucleosomes at the centromere.
+DR   BioGRID-ORCS; 54069; 498 hits in 1027 CRISPR screens.
 DR   ChiTaRS; MIS18A; human.
 DR   GeneWiki; C21orf45; -.
 DR   GenomeRNAi; 54069; -.
@@ -275,13 +261,14 @@ DR   Pharos; Q9NYP9; Tbio.
 DR   PRO; PR:Q9NYP9; -.
 DR   Proteomes; UP000005640; Chromosome 21.
 DR   RNAct; Q9NYP9; protein.
-DR   Bgee; ENSG00000159055; Expressed in oocyte and 197 other tissues.
+DR   Bgee; ENSG00000159055; Expressed in oocyte and 209 other tissues.
 DR   Genevisible; Q9NYP9; HS.
 DR   GO; GO:0000785; C:chromatin; IBA:GO_Central.
 DR   GO; GO:0000775; C:chromosome, centromeric region; IBA:GO_Central.
 DR   GO; GO:0005829; C:cytosol; IDA:HPA.
 DR   GO; GO:0005654; C:nucleoplasm; IDA:HPA.
 DR   GO; GO:0005634; C:nucleus; IBA:GO_Central.
+DR   GO; GO:0042802; F:identical protein binding; IPI:IntAct.
 DR   GO; GO:0046872; F:metal ion binding; IEA:UniProtKB-KW.
 DR   GO; GO:0007049; P:cell cycle; IEA:UniProtKB-KW.
 DR   GO; GO:0051301; P:cell division; IEA:UniProtKB-KW.
@@ -316,43 +303,43 @@ FT                   /note="Zinc"
 FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01129"
 FT   MOD_RES         36
 FT                   /note="Phosphoserine"
-FT                   /evidence="ECO:0000244|PubMed:20068231,
-FT                   ECO:0000244|PubMed:23186163"
+FT                   /evidence="ECO:0007744|PubMed:20068231,
+FT                   ECO:0007744|PubMed:23186163"
 FT   MOD_RES         39
 FT                   /note="Phosphoserine"
-FT                   /evidence="ECO:0000244|PubMed:23186163"
+FT                   /evidence="ECO:0007744|PubMed:23186163"
 FT   MOD_RES         40
 FT                   /note="Phosphoserine"
-FT                   /evidence="ECO:0000244|PubMed:23186163"
+FT                   /evidence="ECO:0007744|PubMed:23186163"
 FT   MOD_RES         233
 FT                   /note="Phosphoserine"
-FT                   /evidence="ECO:0000244|PubMed:18669648"
+FT                   /evidence="ECO:0007744|PubMed:18669648"
 FT   CROSSLNK        162
 FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
 FT                   G-Cter in SUMO2)"
-FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT                   /evidence="ECO:0007744|PubMed:28112733"
 FT   MUTAGEN         82
 FT                   /note="V->E: Abolishes interaction with OIP5; when
-FT                   associated with D-176"
+FT                   associated with D-176."
 FT                   /evidence="ECO:0000269|PubMed:26921242"
 FT   MUTAGEN         85
-FT                   /note="C->A: Abolishes location at the centromere"
+FT                   /note="C->A: Abolishes location at the centromere."
 FT                   /evidence="ECO:0000269|PubMed:17199038"
 FT   MUTAGEN         88
-FT                   /note="C->A: Abolishes location at the centromere"
+FT                   /note="C->A: Abolishes location at the centromere."
 FT                   /evidence="ECO:0000269|PubMed:17199038"
 FT   MUTAGEN         134
-FT                   /note="C->A: No effect"
+FT                   /note="C->A: No effect."
 FT                   /evidence="ECO:0000269|PubMed:17199038"
 FT   MUTAGEN         141
-FT                   /note="C->A: Abolishes location at the centromere"
+FT                   /note="C->A: Abolishes location at the centromere."
 FT                   /evidence="ECO:0000269|PubMed:17199038"
 FT   MUTAGEN         144
-FT                   /note="C->A: Abolishes location at the centromere"
+FT                   /note="C->A: Abolishes location at the centromere."
 FT                   /evidence="ECO:0000269|PubMed:17199038"
 FT   MUTAGEN         176
 FT                   /note="Y->D: Abolishes interaction with OIP5; when
-FT                   associated with E-82"
+FT                   associated with E-82."
 FT                   /evidence="ECO:0000269|PubMed:26921242"
 SQ   SEQUENCE   233 AA;  25863 MW;  A07522806C4B6221 CRC64;
      MAGVRSLRCS RGCAGGCECG DKGKCSDSSL LGKRLSEDSS RHQLLQKWAS MWSSMSEDAS

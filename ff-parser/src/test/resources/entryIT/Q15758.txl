@@ -3,7 +3,7 @@ AC   Q15758; A8K9H5; B4DR77; B4DWS4; B7ZB81; D0EYG6; E9PC01; O95720; Q96RL9;
 AC   Q9BWQ3; Q9UNP2;
 DT   15-JUL-1998, integrated into UniProtKB/Swiss-Prot.
 DT   20-JUN-2002, sequence version 2.
-DT   22-APR-2020, entry version 197.
+DT   29-SEP-2021, entry version 205.
 DE   RecName: Full=Neutral amino acid transporter B(0);
 DE            Short=ATB(0);
 DE   AltName: Full=Baboon M7 virus receptor;
@@ -36,7 +36,7 @@ RL   Proc. Natl. Acad. Sci. U.S.A. 96:2129-2134(1999).
 RN   [3]
 RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM 1), AND FUNCTION AS A VIRAL RECEPTOR
 RP   (MICROBIAL INFECTION).
-RX   PubMed=10196349;
+RX   PubMed=10196349; DOI=10.1128/jvi.73.5.4470-4474.1999;
 RA   Tailor C.S., Nouri A., Zhao Y., Takeuchi Y., Kabat D.;
 RT   "A sodium-dependent neutral-amino-acid transporter mediates infections of
 RT   feline and baboon endogenous retroviruses and simian type D retroviruses.";
@@ -62,22 +62,22 @@ RA   Katsuta N., Sato K., Tanikawa M., Yamazaki M., Ninomiya K., Ishibashi T.,
 RA   Yamashita H., Murakawa K., Fujimori K., Tanai H., Kimata M., Watanabe M.,
 RA   Hiraoka S., Chiba Y., Ishida S., Ono Y., Takiguchi S., Watanabe S.,
 RA   Yosida M., Hotuta T., Kusano J., Kanehori K., Takahashi-Fujii A., Hara H.,
-RA   Tanase T., Nomura Y., Togiya S., Komai F., Hara R., Takeuchi K., Arita M.,
-RA   Imose N., Musashino K., Yuuki H., Oshima A., Sasaki N., Aotsuka S.,
-RA   Yoshikawa Y., Matsunawa H., Ichihara T., Shiohata N., Sano S., Moriya S.,
-RA   Momiyama H., Satoh N., Takami S., Terashima Y., Suzuki O., Nakagawa S.,
-RA   Senoh A., Mizoguchi H., Goto Y., Shimizu F., Wakebe H., Hishigaki H.,
-RA   Watanabe T., Sugiyama A., Takemoto M., Kawakami B., Yamazaki M.,
-RA   Watanabe K., Kumagai A., Itakura S., Fukuzumi Y., Fujimori Y., Komiyama M.,
-RA   Tashiro H., Tanigami A., Fujiwara T., Ono T., Yamada K., Fujii Y.,
-RA   Ozaki K., Hirao M., Ohmori Y., Kawabata A., Hikiji T., Kobatake N.,
-RA   Inagaki H., Ikema Y., Okamoto S., Okitani R., Kawakami T., Noguchi S.,
-RA   Itoh T., Shigeta K., Senba T., Matsumura K., Nakajima Y., Mizuno T.,
-RA   Morinaga M., Sasaki M., Togashi T., Oyama M., Hata H., Watanabe M.,
-RA   Komatsu T., Mizushima-Sugano J., Satoh T., Shirai Y., Takahashi Y.,
-RA   Nakagawa K., Okumura K., Nagase T., Nomura N., Kikuchi H., Masuho Y.,
-RA   Yamashita R., Nakai K., Yada T., Nakamura Y., Ohara O., Isogai T.,
-RA   Sugano S.;
+RA   Tanase T.-O., Nomura Y., Togiya S., Komai F., Hara R., Takeuchi K.,
+RA   Arita M., Imose N., Musashino K., Yuuki H., Oshima A., Sasaki N.,
+RA   Aotsuka S., Yoshikawa Y., Matsunawa H., Ichihara T., Shiohata N., Sano S.,
+RA   Moriya S., Momiyama H., Satoh N., Takami S., Terashima Y., Suzuki O.,
+RA   Nakagawa S., Senoh A., Mizoguchi H., Goto Y., Shimizu F., Wakebe H.,
+RA   Hishigaki H., Watanabe T., Sugiyama A., Takemoto M., Kawakami B.,
+RA   Yamazaki M., Watanabe K., Kumagai A., Itakura S., Fukuzumi Y., Fujimori Y.,
+RA   Komiyama M., Tashiro H., Tanigami A., Fujiwara T., Ono T., Yamada K.,
+RA   Fujii Y., Ozaki K., Hirao M., Ohmori Y., Kawabata A., Hikiji T.,
+RA   Kobatake N., Inagaki H., Ikema Y., Okamoto S., Okitani R., Kawakami T.,
+RA   Noguchi S., Itoh T., Shigeta K., Senba T., Matsumura K., Nakajima Y.,
+RA   Mizuno T., Morinaga M., Sasaki M., Togashi T., Oyama M., Hata H.,
+RA   Watanabe M., Komatsu T., Mizushima-Sugano J., Satoh T., Shirai Y.,
+RA   Takahashi Y., Nakagawa K., Okumura K., Nagase T., Nomura N., Kikuchi H.,
+RA   Masuho Y., Yamashita R., Nakai K., Yada T., Nakamura Y., Ohara O.,
+RA   Isogai T., Sugano S.;
 RT   "Complete sequencing and characterization of 21,243 full-length human
 RT   cDNAs.";
 RL   Nat. Genet. 36:40-45(2004).
@@ -118,33 +118,13 @@ RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (ISOFORM 1).
 RC   TISSUE=Kidney;
 RX   PubMed=15489334; DOI=10.1101/gr.2596504;
 RG   The MGC Project Team;
-RA   Gerhard D.S., Wagner L., Feingold E.A., Shenmen C.M., Grouse L.H.,
-RA   Schuler G., Klein S.L., Old S., Rasooly R., Good P., Guyer M., Peck A.M.,
-RA   Derge J.G., Lipman D., Collins F.S., Jang W., Sherry S., Feolo M.,
-RA   Misquitta L., Lee E., Rotmistrovsky K., Greenhut S.F., Schaefer C.F.,
-RA   Buetow K., Bonner T.I., Haussler D., Kent J., Kiekhaus M., Furey T.,
-RA   Brent M., Prange C., Schreiber K., Shapiro N., Bhat N.K., Hopkins R.F.,
-RA   Hsie F., Driscoll T., Soares M.B., Casavant T.L., Scheetz T.E.,
-RA   Brown-stein M.J., Usdin T.B., Toshiyuki S., Carninci P., Piao Y.,
-RA   Dudekula D.B., Ko M.S., Kawakami K., Suzuki Y., Sugano S., Gruber C.E.,
-RA   Smith M.R., Simmons B., Moore T., Waterman R., Johnson S.L., Ruan Y.,
-RA   Wei C.L., Mathavan S., Gunaratne P.H., Wu J., Garcia A.M., Hulyk S.W.,
-RA   Fuh E., Yuan Y., Sneed A., Kowis C., Hodgson A., Muzny D.M., McPherson J.,
-RA   Gibbs R.A., Fahey J., Helton E., Ketteman M., Madan A., Rodrigues S.,
-RA   Sanchez A., Whiting M., Madari A., Young A.C., Wetherby K.D., Granite S.J.,
-RA   Kwong P.N., Brinkley C.P., Pearson R.L., Bouffard G.G., Blakesly R.W.,
-RA   Green E.D., Dickson M.C., Rodriguez A.C., Grimwood J., Schmutz J.,
-RA   Myers R.M., Butterfield Y.S., Griffith M., Griffith O.L., Krzywinski M.I.,
-RA   Liao N., Morin R., Morrin R., Palmquist D., Petrescu A.S., Skalska U.,
-RA   Smailus D.E., Stott J.M., Schnerch A., Schein J.E., Jones S.J., Holt R.A.,
-RA   Baross A., Marra M.A., Clifton S., Makowski K.A., Bosak S., Malek J.;
 RT   "The status, quality, and expansion of the NIH full-length cDNA project:
 RT   the Mammalian Gene Collection (MGC).";
 RL   Genome Res. 14:2121-2127(2004).
 RN   [9]
 RP   NUCLEOTIDE SEQUENCE [MRNA] OF 14-541 (ISOFORM 1), AND ALTERNATIVE
 RP   INITIATION.
-RX   PubMed=11350958; DOI=10.1074/jbc.M100737200;
+RX   PubMed=11350958; DOI=10.1074/jbc.m100737200;
 RA   Tailor C.S., Marin M., Nouri A., Kavanaugh M.P., Kabat D.;
 RT   "Truncated forms of the dual function human ASCT2 neutral amino acid
 RT   transporter/retroviral receptor are translationally initiated at multiple
@@ -152,7 +132,7 @@ RT   alternative CUG and GUG codons.";
 RL   J. Biol. Chem. 276:27221-27230(2001).
 RN   [10]
 RP   FUNCTION.
-RX   PubMed=10708449; DOI=10.1128/JVI.74.7.3321-3329.2000;
+RX   PubMed=10708449; DOI=10.1128/jvi.74.7.3321-3329.2000;
 RA   Blond J.-L., Lavillette D., Cheynet V., Bouton O., Oriol G.,
 RA   Chapel-Fernandes S., Mandrand B., Mallet F., Cosset F.-L.;
 RT   "An envelope glycoprotein of the human endogenous retrovirus HERV-W is
@@ -210,7 +190,7 @@ RP   [LARGE SCALE ANALYSIS] LEU-512, AND IDENTIFICATION BY MASS SPECTROMETRY
 RP   [LARGE SCALE ANALYSIS].
 RC   TISSUE=Leukemic T-cell;
 RX   PubMed=19690332; DOI=10.1126/scisignal.2000007;
-RA   Mayya V., Lundgren D.H., Hwang S.I., Rezaul K., Wu L., Eng J.K.,
+RA   Mayya V., Lundgren D.H., Hwang S.-I., Rezaul K., Wu L., Eng J.K.,
 RA   Rodionov V., Han D.K.;
 RT   "Quantitative phosphoproteomic analysis of T cell receptor signaling
 RT   reveals system-wide modulation of protein-protein interactions.";
@@ -228,7 +208,7 @@ RL   Sci. Signal. 3:RA3-RA3(2010).
 RN   [18]
 RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
 RX   PubMed=21269460; DOI=10.1186/1752-0509-5-17;
-RA   Burkard T.R., Planyavsky M., Kaupe I., Breitwieser F.P., Burckstummer T.,
+RA   Burkard T.R., Planyavsky M., Kaupe I., Breitwieser F.P., Buerckstuemmer T.,
 RA   Bennett K.L., Superti-Furga G., Colinge J.;
 RT   "Initial characterization of the human central proteome.";
 RL   BMC Syst. Biol. 5:17-17(2011).
@@ -255,7 +235,7 @@ RN   [21]
 RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-493; THR-494; SER-535 AND
 RP   SER-539, AND IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
 RC   TISSUE=Cervix carcinoma, and Erythroleukemia;
-RX   PubMed=23186163;
+RX   PubMed=23186163; DOI=10.1021/pr300630k;
 RA   Zhou H., Di Palma S., Preisinger C., Peng M., Polat A.N., Heck A.J.,
 RA   Mohammed S.;
 RT   "Toward a comprehensive characterization of a human cancer cell
@@ -263,12 +243,13 @@ RT   phosphoproteome.";
 RL   J. Proteome Res. 12:260-271(2013).
 RN   [22]
 RP   FUNCTION, INTERACTION WITH ERVH48-1, AND SUBCELLULAR LOCATION.
+RX   PubMed=23492904; DOI=10.1038/srep01462;
 RA   Sugimoto J., Sugimoto M., Bernstein H., Jinno Y., Schust D.;
 RT   "A novel human endogenous retroviral protein inhibits cell-cell fusion.";
 RL   Sci. Rep. 3:1462-1462(2013).
 RN   [23]
 RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
-RX   PubMed=25944712;
+RX   PubMed=25944712; DOI=10.1002/pmic.201400617;
 RA   Vaca Jacome A.S., Rabilloud T., Schaeffer-Reiss C., Rompais M., Ayoub D.,
 RA   Lane L., Bairoch A., Van Dorsselaer A., Carapito C.;
 RT   "N-terminome analysis of the human mitochondrial proteome.";
@@ -335,6 +316,10 @@ CC   -!- TISSUE SPECIFICITY: Placenta, lung, skeletal muscle, kidney, pancreas,
 CC       and intestine.
 CC   -!- SIMILARITY: Belongs to the dicarboxylate/amino acid:cation symporter
 CC       (DAACS) (TC 2.A.23) family. SLC1A5 subfamily. {ECO:0000305}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
 DR   EMBL; U53347; AAC50629.1; -; mRNA.
 DR   EMBL; AF102826; AAD09812.1; -; mRNA.
 DR   EMBL; AF105423; AAD27806.1; -; mRNA.
@@ -372,8 +357,8 @@ DR   PDBsum; 6MPB; -.
 DR   PDBsum; 6RVX; -.
 DR   PDBsum; 6RVY; -.
 DR   SMR; Q15758; -.
-DR   BioGrid; 112401; 97.
-DR   IntAct; Q15758; 75.
+DR   BioGRID; 112401; 150.
+DR   IntAct; Q15758; 80.
 DR   MINT; Q15758; -.
 DR   STRING; 9606.ENSP00000444408; -.
 DR   BindingDB; Q15758; -.
@@ -383,7 +368,8 @@ DR   DrugBank; DB13146; Fluciclovine (18F).
 DR   DrugBank; DB00130; L-Glutamine.
 DR   GuidetoPHARMACOLOGY; 874; -.
 DR   TCDB; 2.A.23.3.3; the dicarboxylate/amino acid:cation (na(+) or h(+)) symporter (daacs) family.
-DR   GlyConnect; 1562; -.
+DR   GlyConnect; 1562; 3 N-Linked glycans (1 site).
+DR   GlyGen; Q15758; 3 sites, 3 N-linked glycans (1 site), 1 O-linked glycan (1 site).
 DR   iPTMnet; Q15758; -.
 DR   MetOSite; Q15758; -.
 DR   PhosphoSitePlus; Q15758; -.
@@ -400,8 +386,8 @@ DR   PRIDE; Q15758; -.
 DR   ProteomicsDB; 19331; -.
 DR   ProteomicsDB; 5376; -.
 DR   ProteomicsDB; 60744; -. [Q15758-1]
-DR   ABCD; Q15758; -.
-DR   Antibodypedia; 18149; 272 antibodies.
+DR   ABCD; Q15758; 10 sequenced antibodies.
+DR   Antibodypedia; 18149; 295 antibodies.
 DR   DNASU; 6510; -.
 DR   Ensembl; ENST00000412532; ENSP00000397924; ENSG00000105281. [Q15758-3]
 DR   Ensembl; ENST00000434726; ENSP00000406532; ENSG00000105281. [Q15758-2]
@@ -418,15 +404,22 @@ DR   MIM; 109190; gene.
 DR   neXtProt; NX_Q15758; -.
 DR   OpenTargets; ENSG00000105281; -.
 DR   PharmGKB; PA35830; -.
+DR   VEuPathDB; HostDB:ENSG00000105281; -.
 DR   eggNOG; KOG3787; Eukaryota.
-DR   eggNOG; COG1301; LUCA.
 DR   GeneTree; ENSGT00940000159485; -.
 DR   HOGENOM; CLU_019375_3_3_1; -.
 DR   InParanoid; Q15758; -.
-DR   OMA; GNLIGNC; -.
+DR   OMA; IMNLAPY; -.
 DR   PhylomeDB; Q15758; -.
 DR   TreeFam; TF315206; -.
+DR   PathwayCommons; Q15758; -.
 DR   Reactome; R-HSA-352230; Amino acid transport across the plasma membrane.
+DR   Reactome; R-HSA-9013149; RAC1 GTPase cycle.
+DR   Reactome; R-HSA-9013406; RHOQ GTPase cycle.
+DR   Reactome; R-HSA-9013407; RHOH GTPase cycle.
+DR   Reactome; R-HSA-9013409; RHOJ GTPase cycle.
+DR   Reactome; R-HSA-9013423; RAC3 GTPase cycle.
+DR   BioGRID-ORCS; 6510; 110 hits in 1036 CRISPR screens.
 DR   ChiTaRS; SLC1A5; human.
 DR   GeneWiki; SLC1A5; -.
 DR   GenomeRNAi; 6510; -.
@@ -434,9 +427,10 @@ DR   Pharos; Q15758; Tchem.
 DR   PRO; PR:Q15758; -.
 DR   Proteomes; UP000005640; Chromosome 19.
 DR   RNAct; Q15758; protein.
-DR   Bgee; ENSG00000105281; Expressed in urinary bladder and 219 other tissues.
+DR   Bgee; ENSG00000105281; Expressed in stromal cell of endometrium and 234 other tissues.
 DR   ExpressionAtlas; Q15758; baseline and differential.
 DR   Genevisible; Q15758; HS.
+DR   GO; GO:0009925; C:basal plasma membrane; ISS:ARUK-UCL.
 DR   GO; GO:0070062; C:extracellular exosome; HDA:UniProtKB.
 DR   GO; GO:0016021; C:integral component of membrane; IDA:UniProtKB.
 DR   GO; GO:0005887; C:integral component of plasma membrane; TAS:ProtInc.
@@ -444,6 +438,7 @@ DR   GO; GO:0042470; C:melanosome; IEA:UniProtKB-SubCell.
 DR   GO; GO:0016020; C:membrane; HDA:UniProtKB.
 DR   GO; GO:0005886; C:plasma membrane; IDA:UniProtKB.
 DR   GO; GO:0015171; F:amino acid transmembrane transporter activity; TAS:Reactome.
+DR   GO; GO:0015183; F:L-aspartate transmembrane transporter activity; ISS:ARUK-UCL.
 DR   GO; GO:0015186; F:L-glutamine transmembrane transporter activity; IDA:UniProtKB.
 DR   GO; GO:0015194; F:L-serine transmembrane transporter activity; IEA:Ensembl.
 DR   GO; GO:0046872; F:metal ion binding; IEA:UniProtKB-KW.
@@ -454,9 +449,11 @@ DR   GO; GO:0001618; F:virus receptor activity; IEA:UniProtKB-KW.
 DR   GO; GO:0006865; P:amino acid transport; TAS:Reactome.
 DR   GO; GO:0010585; P:glutamine secretion; IEA:Ensembl.
 DR   GO; GO:0006868; P:glutamine transport; IDA:UniProtKB.
+DR   GO; GO:0140009; P:L-aspartate import across plasma membrane; ISS:ARUK-UCL.
 DR   GO; GO:1903803; P:L-glutamine import across plasma membrane; IEA:Ensembl.
 DR   GO; GO:0015804; P:neutral amino acid transport; TAS:ProtInc.
 DR   GO; GO:0070207; P:protein homotrimerization; IDA:UniProtKB.
+DR   GO; GO:0150104; P:transport across blood-brain barrier; ISS:ARUK-UCL.
 DR   Gene3D; 1.10.3860.10; -; 1.
 DR   InterPro; IPR001991; Na-dicarboxylate_symporter.
 DR   InterPro; IPR018107; Na-dicarboxylate_symporter_CS.
@@ -469,8 +466,8 @@ PE   1: Evidence at protein level;
 KW   3D-structure; Acetylation; Alternative initiation; Alternative splicing;
 KW   Amino-acid transport; Cell membrane; Glycoprotein;
 KW   Host cell receptor for virus entry; Host-virus interaction; Membrane;
-KW   Metal-binding; Phosphoprotein; Polymorphism; Receptor; Reference proteome;
-KW   Sodium; Symport; Transmembrane; Transmembrane helix; Transport.
+KW   Metal-binding; Phosphoprotein; Receptor; Reference proteome; Sodium;
+KW   Symport; Transmembrane; Transmembrane helix; Transport.
 FT   CHAIN           1..541
 FT                   /note="Neutral amino acid transporter B(0)"
 FT                   /id="PRO_0000202082"
@@ -537,6 +534,9 @@ FT                   /evidence="ECO:0000305|PubMed:29872227"
 FT   TOPO_DOM        483..541
 FT                   /note="Cytoplasmic"
 FT                   /evidence="ECO:0000305"
+FT   REGION          511..541
+FT                   /note="Disordered"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
 FT   METAL           382
 FT                   /note="Sodium 1; via carbonyl oxygen"
 FT                   /evidence="ECO:0000250|UniProtKB:O59010"
@@ -554,25 +554,26 @@ FT                   /note="Sodium 1"
 FT                   /evidence="ECO:0000250|UniProtKB:O59010"
 FT   MOD_RES         1
 FT                   /note="N-acetylmethionine"
-FT                   /evidence="ECO:0000244|PubMed:19413330,
-FT                   ECO:0000244|PubMed:22814378"
+FT                   /evidence="ECO:0007744|PubMed:19413330,
+FT                   ECO:0007744|PubMed:22814378"
 FT   MOD_RES         493
 FT                   /note="Phosphoserine"
-FT                   /evidence="ECO:0000244|PubMed:21406692,
-FT                   ECO:0000244|PubMed:23186163"
+FT                   /evidence="ECO:0007744|PubMed:21406692,
+FT                   ECO:0007744|PubMed:23186163"
 FT   MOD_RES         494
 FT                   /note="Phosphothreonine"
-FT                   /evidence="ECO:0000244|PubMed:23186163"
+FT                   /evidence="ECO:0007744|PubMed:23186163"
 FT   MOD_RES         503
 FT                   /note="Phosphoserine"
-FT                   /evidence="ECO:0000244|PubMed:19690332"
+FT                   /evidence="ECO:0007744|PubMed:19690332"
 FT   MOD_RES         535
 FT                   /note="Phosphoserine"
-FT                   /evidence="ECO:0000244|PubMed:17081983,
-FT                   ECO:0000244|PubMed:18669648, ECO:0000244|PubMed:19690332"
+FT                   /evidence="ECO:0007744|PubMed:17081983,
+FT                   ECO:0007744|PubMed:18669648, ECO:0007744|PubMed:19690332,
+FT                   ECO:0007744|PubMed:20068231, ECO:0007744|PubMed:23186163"
 FT   MOD_RES         539
 FT                   /note="Phosphoserine"
-FT                   /evidence="ECO:0000244|PubMed:23186163"
+FT                   /evidence="ECO:0007744|PubMed:23186163"
 FT   CARBOHYD        163
 FT                   /note="N-linked (GlcNAc...) asparagine"
 FT                   /evidence="ECO:0000255"
@@ -595,8 +596,8 @@ FT                   /note="P -> A (in dbSNP:rs3027956)"
 FT                   /id="VAR_020439"
 FT   VARIANT         512
 FT                   /note="V -> L (in dbSNP:rs3027961)"
-FT                   /evidence="ECO:0000244|PubMed:19690332,
-FT                   ECO:0000269|PubMed:14702039"
+FT                   /evidence="ECO:0000269|PubMed:14702039,
+FT                   ECO:0007744|PubMed:19690332"
 FT                   /id="VAR_013517"
 FT   CONFLICT        18..24
 FT                   /note="TANGGLA -> PPTGAWQ (in Ref. 1; AAC50629)"
@@ -623,64 +624,31 @@ FT   CONFLICT        508
 FT                   /note="D -> G (in Ref. 2; AAD09812)"
 FT                   /evidence="ECO:0000305"
 FT   HELIX           54..62
-FT                   /evidence="ECO:0000244|PDB:5LM4"
+FT                   /evidence="ECO:0007829|PDB:5LM4"
 FT   HELIX           66..69
-FT                   /evidence="ECO:0000244|PDB:5LM4"
+FT                   /evidence="ECO:0007829|PDB:5LM4"
 FT   HELIX           104..107
-FT                   /evidence="ECO:0000244|PDB:5LM4"
+FT                   /evidence="ECO:0007829|PDB:5LM4"
 FT   HELIX           180..191
-FT                   /evidence="ECO:0000244|PDB:5LM4"
+FT                   /evidence="ECO:0007829|PDB:5LM4"
 FT   HELIX           196..199
-FT                   /evidence="ECO:0000244|PDB:5LM4"
+FT                   /evidence="ECO:0007829|PDB:5LM4"
 FT   STRAND          202..204
-FT                   /evidence="ECO:0000244|PDB:5LM4"
+FT                   /evidence="ECO:0007829|PDB:5LM4"
 FT   STRAND          225..228
-FT                   /evidence="ECO:0000244|PDB:5LM4"
+FT                   /evidence="ECO:0007829|PDB:5LM4"
 FT   HELIX           231..237
-FT                   /evidence="ECO:0000244|PDB:5LM4"
+FT                   /evidence="ECO:0007829|PDB:5LM4"
 FT   HELIX           239..245
-FT                   /evidence="ECO:0000244|PDB:5LM4"
+FT                   /evidence="ECO:0007829|PDB:5LM4"
 FT   HELIX           254..261
-FT                   /evidence="ECO:0000244|PDB:5LM4"
+FT                   /evidence="ECO:0007829|PDB:5LM4"
 FT   HELIX           266..270
-FT                   /evidence="ECO:0000244|PDB:5LM4"
+FT                   /evidence="ECO:0007829|PDB:5LM4"
 FT   HELIX           324..329
-FT                   /evidence="ECO:0000244|PDB:5LM4"
+FT                   /evidence="ECO:0007829|PDB:5LM4"
 FT   HELIX           476..480
-FT                   /evidence="ECO:0000244|PDB:5LM4"
-**
-**   #################    INTERNAL SECTION    ##################
-**EV ECO:0000244; PDB:5LM4; INT; 16-JUL-2018.
-**EV ECO:0000244; PubMed:17081983; 001; 16-JUL-2018.
-**EV ECO:0000244; PubMed:18669648; 001; 16-JUL-2018.
-**EV ECO:0000244; PubMed:19413330; 001; 16-JUL-2018.
-**EV ECO:0000244; PubMed:19690332; 001; 16-JUL-2018.
-**EV ECO:0000244; PubMed:21406692; 001; 16-JUL-2018.
-**EV ECO:0000244; PubMed:22814378; 001; 16-JUL-2018.
-**EV ECO:0000244; PubMed:23186163; 001; 16-JUL-2018.
-**EV ECO:0000250; UniProtKB:O59010; UHI; 16-JUL-2018.
-**EV ECO:0000250; UniProtKB:P43003; UHI; 16-JUL-2018.
-**EV ECO:0000255; -; XXX; 16-JUL-2018.
-**EV ECO:0000269; PubMed:10051606; LIB; 06-FEB-2020.
-**EV ECO:0000269; PubMed:10196349; LIB; 06-FEB-2020.
-**EV ECO:0000269; PubMed:10708449; LIB; 06-FEB-2020.
-**EV ECO:0000269; PubMed:11350958; XXX; 06-FEB-2020.
-**EV ECO:0000269; PubMed:14702039; XXX; 16-JUL-2018.
-**EV ECO:0000269; PubMed:19349973; XXX; 16-JUL-2018.
-**EV ECO:0000269; PubMed:23492904; LIB; 06-FEB-2020.
-**EV ECO:0000269; PubMed:29872227; UHI; 06-FEB-2020.
-**EV ECO:0000269; PubMed:8702519; UHI; 06-FEB-2020.
-**EV ECO:0000303; PubMed:14702039; XXX; 16-JUL-2018.
-**EV ECO:0000305; -; UHI; 16-JUL-2018.
-**EV ECO:0000305; PubMed:28424515; UHI; 06-FEB-2020.
-**EV ECO:0000305; PubMed:29872227; UHI; 16-JUL-2018.
-**CL 19q13.3;
-**SO UPD; 124955; 11-OCT-2016.
-**ZB MCB, 12-MAY-2006; LYG, 15-DEC-2006; ALG/LYG, 31-JAN-2007; ANN, 13-MAY-2008;
-**ZB GAP, 21-JAN-2009; GAP, 20-MAR-2009; ALG/GAP, 15-JUN-2009; SIJ, 04-FEB-2011;
-**ZB ALB/EMB, 16-OCT-2009; ALG/EMB, 03-NOV-2009; SIJ, 22-APR-2010;
-**ZB ALB, 28-FEB-2013; ALG, 14-MAY-2013; LIB, 12-JUN-2014; LIB, 11-OCT-2016;
-**ZB UHI, 18-MAY-2017; UHI, 14-JUN-2018;
+FT                   /evidence="ECO:0007829|PDB:5LM4"
 SQ   SEQUENCE   541 AA;  56598 MW;  AD61C789CCFFE934 CRC64;
      MVADPPRDSK GLAAAEPTAN GGLALASIED QGAAAGGYCG SRDQVRRCLR ANLLVLLTVV
      AVVAGVALGL GVSGAGGALA LGPERLSAFV FPGELLLRLL RMIILPLVVC SLIGGAASLD
