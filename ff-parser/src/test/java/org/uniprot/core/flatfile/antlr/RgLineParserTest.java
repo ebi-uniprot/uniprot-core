@@ -2,7 +2,6 @@ package org.uniprot.core.flatfile.antlr;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -34,12 +33,12 @@ class RgLineParserTest {
         RgLineObject obj = parser.parse(rgLines);
         verify(
                 obj,
-                List.of("The mouse genome sequencing consortium",
-                            "The something else consortium"
-                        ));
-    }  @Test
+                List.of("The mouse genome sequencing consortium", "The something else consortium"));
+    }
+
+    @Test
     void testRGWithSemicolon() {
-    	 String rgLines = "RG   Zhuo Wei;Zhenhong Lu;\n";
+        String rgLines = "RG   Zhuo Wei;Zhenhong Lu;\n";
         UniprotKBLineParser<RgLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createRgLineParser();
         RgLineObject obj = parser.parse(rgLines);
