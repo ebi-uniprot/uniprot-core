@@ -12,5 +12,6 @@ mode RG_CONTENT;
 RG_END: ';\n'        ->popMode;
 CHANGE_OF_LINE : '\nRG   ' {replaceChangeOfLine();};
 SPACE: ' ';
+SEMICOLON: ';';
 WORD: LD+;
 fragment LD: ~[ ;\n\r\t];

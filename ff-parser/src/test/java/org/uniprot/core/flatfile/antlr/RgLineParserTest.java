@@ -17,7 +17,7 @@ class RgLineParserTest {
         UniprotKBLineParser<RgLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createRgLineParser();
         RgLineObject obj = parser.parse(rgLines);
-        verify(obj, Arrays.asList(new String[] {"The mouse genome sequencing consortium"}));
+        verify(obj, List.of("The mouse genome sequencing consortium"));
     }
 
     private void verify(RgLineObject obj, List<String> groups) {
@@ -34,10 +34,15 @@ class RgLineParserTest {
         RgLineObject obj = parser.parse(rgLines);
         verify(
                 obj,
-                Arrays.asList(
-                        new String[] {
-                            "The mouse genome sequencing consortium",
+                List.of("The mouse genome sequencing consortium",
                             "The something else consortium"
-                        }));
+                        ));
+    }  @Test
+    void testRGWithSemicolon() {
+    	 String rgLines = "RG   Zhuo Wei;Zhenhong Lu;\n";
+        UniprotKBLineParser<RgLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRgLineParser();
+        RgLineObject obj = parser.parse(rgLines);
+        verify(obj, List.of("Zhuo Wei;Zhenhong Lu"));
     }
 }
