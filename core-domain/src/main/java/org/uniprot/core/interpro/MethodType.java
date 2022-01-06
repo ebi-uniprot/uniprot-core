@@ -23,6 +23,7 @@ public enum MethodType implements EnumDisplay {
     HAMAP("HAMAP", "Q"),
     CDD("CDD", "J"),
     SFLD("SFLD", "B"),
+    COILS("COILS", "x"),
     UNKNOWN("UNKNOWN", "na");
 
     private String name;
