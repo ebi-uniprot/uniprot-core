@@ -32,6 +32,7 @@ class MethodTypeTest {
         type = MethodType.typeOf("PANTHER");
         assertEquals(MethodType.PANTHER, type);
     }
+
     @Test
     void testCOILS() {
         MethodType type = MethodType.typeOf("COILS");
