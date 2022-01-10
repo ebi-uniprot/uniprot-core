@@ -15,6 +15,8 @@ import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniref.*;
 import org.uniprot.core.uniref.impl.RepresentativeMemberBuilder;
 import org.uniprot.core.uniref.impl.UniRefEntryBuilder;
@@ -132,13 +134,14 @@ class UniRefEntryValueMapperTest {
         String name = "Cluster: AMP-binding enzyme family protein";
         UniRefEntryId entryId = new UniRefEntryIdBuilder(id).build();
         LocalDate created = LocalDate.of(2018, 6, 21);
+        Organism organism = new OrganismBuilder().taxonId(9605L).scientificName("Homo").build();
+
         return new UniRefEntryBuilder()
                 .id(entryId)
                 .name(name)
                 .updated(created)
                 .entryType(type)
-                .commonTaxonId(9605L)
-                .commonTaxon("Homo")
+                .commonTaxon(organism)
                 .representativeMember(createReprestativeMember())
                 .memberCount(2)
                 .membersAdd(createMember())

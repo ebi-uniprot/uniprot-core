@@ -12,6 +12,8 @@ import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefEntryId;
@@ -133,14 +135,18 @@ public class UniRefTest {
         String id = "UniRef50_P03923";
         UniRefType type = UniRefType.UniRef100;
 
+        Organism organism = new OrganismBuilder()
+                .taxonId(9606L)
+                .scientificName("Homo sapiens")
+                .build();
+
         UniRefEntryId entryId = new UniRefEntryIdBuilder(id).build();
         return new UniRefEntryBuilder()
                 .id(entryId)
                 .name("Some UniRef Name")
                 .updated(LocalDate.now())
                 .entryType(type)
-                .commonTaxonId(9606L)
-                .commonTaxon("Homo sapiens")
+                .commonTaxon(organism)
                 .representativeMember(createReprestativeMember())
                 .membersAdd(createMember())
                 .goTermsAdd(

@@ -17,6 +17,8 @@ import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniparc.impl.UniParcIdImpl;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionImpl;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismImpl;
 import org.uniprot.core.uniref.OverlapRegion;
 import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefEntry;
@@ -78,6 +80,7 @@ public class UniRefEntryJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Value.class, ValueImpl.class);
         mod.addAbstractTypeMapping(UniParcId.class, UniParcIdImpl.class);
         mod.addAbstractTypeMapping(UniRefEntryId.class, UniRefEntryIdImpl.class);
+        mod.addAbstractTypeMapping(Organism.class, OrganismImpl.class);
         mod.addAbstractTypeMapping(UniRefMember.class, UniRefMemberImpl.class);
         mod.addAbstractTypeMapping(RepresentativeMember.class, RepresentativeMemberImpl.class);
         mod.addAbstractTypeMapping(Sequence.class, SequenceImpl.class);

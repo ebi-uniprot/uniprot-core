@@ -8,6 +8,7 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefEntryId;
@@ -25,8 +26,7 @@ public class UniRefEntryBuilder implements Builder<UniRefEntry> {
     private Integer memberCount;
     private LocalDate updated;
     private UniRefType entryType;
-    private Long commonTaxonId;
-    private String commonTaxon;
+    private Organism commonTaxon;
     private String seedId;
     private List<GeneOntologyEntry> goTerms = new ArrayList<>();
     private RepresentativeMember representativeMember;
@@ -40,7 +40,6 @@ public class UniRefEntryBuilder implements Builder<UniRefEntry> {
                 memberCount,
                 updated,
                 entryType,
-                commonTaxonId,
                 commonTaxon,
                 seedId,
                 goTerms,
@@ -54,7 +53,6 @@ public class UniRefEntryBuilder implements Builder<UniRefEntry> {
                 .name(instance.getName())
                 .updated(instance.getUpdated())
                 .entryType(instance.getEntryType())
-                .commonTaxonId(instance.getCommonTaxonId())
                 .commonTaxon(instance.getCommonTaxon())
                 .seedId(instance.getSeedId())
                 .goTermsSet(instance.getGoTerms())
@@ -87,12 +85,7 @@ public class UniRefEntryBuilder implements Builder<UniRefEntry> {
         return this;
     }
 
-    public @Nonnull UniRefEntryBuilder commonTaxonId(Long commonTaxonId) {
-        this.commonTaxonId = commonTaxonId;
-        return this;
-    }
-
-    public @Nonnull UniRefEntryBuilder commonTaxon(String commonTaxon) {
+    public @Nonnull UniRefEntryBuilder commonTaxon(Organism commonTaxon) {
         this.commonTaxon = commonTaxon;
         return this;
     }

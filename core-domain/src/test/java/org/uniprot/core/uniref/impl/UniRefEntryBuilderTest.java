@@ -12,6 +12,8 @@ import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.cv.go.GoAspect;
 import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
 import org.uniprot.core.impl.SequenceBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefEntryId;
@@ -36,15 +38,18 @@ class UniRefEntryBuilderTest {
         UniRefMemberIdType umtype = UniRefMemberIdType.UNIPARC;
         RepresentativeMember member =
                 new RepresentativeMemberBuilder().memberIdType(umtype).sequence(sequence).build();
+
+        Organism organism =
+                new OrganismBuilder().taxonId(9606L).scientificName("scientific").build();
+
         UniRefEntry entry =
                 new UniRefEntryBuilder()
                         .id(entryId)
                         .name("Some Name")
                         .updated(LocalDate.now())
                         .entryType(type)
-                        .commonTaxonId(9606L)
                         .seedId("seedId")
-                        .commonTaxon("Homo sapiens")
+                        .commonTaxon(organism)
                         .representativeMember(member)
                         .build();
 
@@ -79,19 +84,12 @@ class UniRefEntryBuilderTest {
     }
 
     @Test
-    void testCommonTaxonId() {
-        long commonTax = 9606L;
-
-        UniRefEntry entry = new UniRefEntryBuilder().commonTaxonId(commonTax).build();
-        assertEquals(commonTax, entry.getCommonTaxonId());
-    }
-
-    @Test
     void testCommonTaxonName() {
-        String commonTax = "Homo sapiens";
+        Organism organism =
+                new OrganismBuilder().taxonId(9606L).scientificName("scientific").build();
 
-        UniRefEntry entry = new UniRefEntryBuilder().commonTaxon(commonTax).build();
-        assertEquals(commonTax, entry.getCommonTaxon());
+        UniRefEntry entry = new UniRefEntryBuilder().commonTaxon(organism).build();
+        assertEquals(organism, entry.getCommonTaxon());
     }
 
     @Test

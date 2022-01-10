@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
 import org.uniprot.core.cv.go.GoAspect;
 import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefType;
 import org.uniprot.core.uniref.impl.UniRefEntryBuilder;
@@ -17,6 +19,9 @@ import org.uniprot.core.xml.jaxb.uniref.PropertyType;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
 
 import com.google.common.base.Strings;
+
+import static org.uniprot.core.uniref.UniRefUtils.getOrganismCommonName;
+import static org.uniprot.core.uniref.UniRefUtils.getOrganismScientificName;
 
 /**
  * @author jluo
@@ -73,13 +78,16 @@ public class UniRefEntryConverter implements Converter<Entry, UniRefEntry> {
     }
 
     private void updatePropertFromXml(UniRefEntryBuilder builder, Entry jaxbEntry) {
+        OrganismBuilder commonOrganismBuilder = new OrganismBuilder();
         for (PropertyType property : jaxbEntry.getProperty()) {
             switch (property.getType()) {
                 case PROPERTY_COMMON_TAXON:
-                    builder.commonTaxon(property.getValue());
+                    commonOrganismBuilder.scientificName(
+                            getOrganismScientificName(property.getValue()));
+                    commonOrganismBuilder.commonName(getOrganismCommonName(property.getValue()));
                     break;
                 case PROPERTY_COMMON_TAXON_ID:
-                    builder.commonTaxonId(Long.parseLong(property.getValue()));
+                    commonOrganismBuilder.taxonId(Long.parseLong(property.getValue()));
                     break;
                 case PROPERTY_GO_FUNCTION:
                     builder.goTermsAdd(createGoTerm(GoAspect.FUNCTION, property.getValue()));
@@ -98,6 +106,7 @@ public class UniRefEntryConverter implements Converter<Entry, UniRefEntry> {
                     break;
             }
         }
+        builder.commonTaxon(commonOrganismBuilder.build());
     }
 
     private GeneOntologyEntry createGoTerm(GoAspect aspect, String id) {
@@ -126,17 +135,23 @@ public class UniRefEntryConverter implements Converter<Entry, UniRefEntry> {
             count = uniObj.getMembers().size() + 1;
         }
         jaxbEntry.getProperty().add(createProperty(PROPERTY_MEMBER_COUNT, String.valueOf(count)));
-        if (!Strings.isNullOrEmpty(uniObj.getCommonTaxon())) {
+        if (uniObj.getCommonTaxon() != null) {
+            Organism commonTaxon = uniObj.getCommonTaxon();
+            String commonTaxonStr = commonTaxon.getScientificName();
+            if(commonTaxon.hasCommonName()){
+                commonTaxonStr += " ("+ commonTaxon.getCommonName() + ")";
+            }
             jaxbEntry
                     .getProperty()
-                    .add(createProperty(PROPERTY_COMMON_TAXON, uniObj.getCommonTaxon()));
+                    .add(createProperty(PROPERTY_COMMON_TAXON, commonTaxonStr));
+
+            jaxbEntry
+                    .getProperty()
+                    .add(
+                            createProperty(
+                                    PROPERTY_COMMON_TAXON_ID,
+                                    String.valueOf(commonTaxon.getTaxonId())));
         }
-        jaxbEntry
-                .getProperty()
-                .add(
-                        createProperty(
-                                PROPERTY_COMMON_TAXON_ID,
-                                String.valueOf(uniObj.getCommonTaxonId())));
         uniObj.getGoTerms().stream().map(this::convert).forEach(jaxbEntry.getProperty()::add);
     }
 
