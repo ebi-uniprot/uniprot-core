@@ -4,7 +4,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.parser.tsv.uniprot.EntryMapUtil;
-import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.UniRefMemberIdType;

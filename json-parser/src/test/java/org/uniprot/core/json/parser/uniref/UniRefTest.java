@@ -135,10 +135,8 @@ public class UniRefTest {
         String id = "UniRef50_P03923";
         UniRefType type = UniRefType.UniRef100;
 
-        Organism organism = new OrganismBuilder()
-                .taxonId(9606L)
-                .scientificName("Homo sapiens")
-                .build();
+        Organism organism =
+                new OrganismBuilder().taxonId(9606L).scientificName("Homo sapiens").build();
 
         UniRefEntryId entryId = new UniRefEntryIdBuilder(id).build();
         return new UniRefEntryBuilder()

@@ -141,5 +141,4 @@ public class UniRefEntryImpl implements UniRefEntry {
                 && Objects.equals(representativeMember, other.representativeMember)
                 && Objects.equals(members, other.members);
     }
-
 }

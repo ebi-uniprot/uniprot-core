@@ -1,5 +1,8 @@
 package org.uniprot.core.xml.uniref;
 
+import static org.uniprot.core.uniref.UniRefUtils.getOrganismCommonName;
+import static org.uniprot.core.uniref.UniRefUtils.getOrganismScientificName;
+
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -17,11 +20,6 @@ import org.uniprot.core.xml.jaxb.uniref.Entry;
 import org.uniprot.core.xml.jaxb.uniref.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniref.PropertyType;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
-
-import com.google.common.base.Strings;
-
-import static org.uniprot.core.uniref.UniRefUtils.getOrganismCommonName;
-import static org.uniprot.core.uniref.UniRefUtils.getOrganismScientificName;
 
 /**
  * @author jluo
@@ -138,12 +136,10 @@ public class UniRefEntryConverter implements Converter<Entry, UniRefEntry> {
         if (uniObj.getCommonTaxon() != null) {
             Organism commonTaxon = uniObj.getCommonTaxon();
             String commonTaxonStr = commonTaxon.getScientificName();
-            if(commonTaxon.hasCommonName()){
-                commonTaxonStr += " ("+ commonTaxon.getCommonName() + ")";
+            if (commonTaxon.hasCommonName()) {
+                commonTaxonStr += " (" + commonTaxon.getCommonName() + ")";
             }
-            jaxbEntry
-                    .getProperty()
-                    .add(createProperty(PROPERTY_COMMON_TAXON, commonTaxonStr));
+            jaxbEntry.getProperty().add(createProperty(PROPERTY_COMMON_TAXON, commonTaxonStr));
 
             jaxbEntry
                     .getProperty()

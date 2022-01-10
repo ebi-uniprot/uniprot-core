@@ -40,8 +40,7 @@ class UniRefFastaParserTest {
     void testFastaEntry2() {
         UniRefEntry entry = createEntry();
         Organism organism = new OrganismBuilder().taxonId(1L).scientificName("root").build();
-        UniRefEntry entry2 =
-                UniRefEntryBuilder.from(entry).commonTaxon(organism).build();
+        UniRefEntry entry2 = UniRefEntryBuilder.from(entry).commonTaxon(organism).build();
 
         String fasta = UniRefFastaParser.toFasta(entry2);
 
@@ -101,7 +100,8 @@ class UniRefFastaParserTest {
         UniRefType type = UniRefType.UniRef100;
         String name = "Cluster: AMP-binding enzyme family protein";
         UniRefEntryId entryId = new UniRefEntryIdBuilder(id).build();
-        Organism organism = new OrganismBuilder().taxonId(9606L).scientificName("Homo sapiens").build();
+        Organism organism =
+                new OrganismBuilder().taxonId(9606L).scientificName("Homo sapiens").build();
 
         return new UniRefEntryBuilder()
                 .id(entryId)

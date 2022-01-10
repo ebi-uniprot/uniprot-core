@@ -51,24 +51,28 @@ class UniRefEntryConverterTest {
     @Test
     void testCommonOrganismWithCommonName() throws Exception {
         UniRefEntryConverter converter = new UniRefEntryConverter();
-        UniRefEntry uniRefEntry = new UniRefEntryBuilder()
-                .id("UniRef50_P12345")
-                .entryType(UniRefType.UniRef50)
-                .commonTaxon(new OrganismBuilder()
-                        .taxonId(9606L)
-                        .scientificName("Homo Sapiens")
-                        .commonName("Human")
-                        .build())
-                .memberCount(1)
-                .representativeMember(new RepresentativeMemberBuilder()
-                        .memberId("P12345_HUMAN")
-                        .memberIdType(UniRefMemberIdType.UNIPROTKB_TREMBL)
-                        .accessionsAdd(new UniProtKBAccessionBuilder("P12345").build())
-                        .sequence(new SequenceBuilder("AAAAA").build())
-                        .organismName("Homo Sapiens (Human)")
-                        .organismTaxId(9606L)
-                        .build())
-                .build();
+        UniRefEntry uniRefEntry =
+                new UniRefEntryBuilder()
+                        .id("UniRef50_P12345")
+                        .entryType(UniRefType.UniRef50)
+                        .commonTaxon(
+                                new OrganismBuilder()
+                                        .taxonId(9606L)
+                                        .scientificName("Homo Sapiens")
+                                        .commonName("Human")
+                                        .build())
+                        .memberCount(1)
+                        .representativeMember(
+                                new RepresentativeMemberBuilder()
+                                        .memberId("P12345_HUMAN")
+                                        .memberIdType(UniRefMemberIdType.UNIPROTKB_TREMBL)
+                                        .accessionsAdd(
+                                                new UniProtKBAccessionBuilder("P12345").build())
+                                        .sequence(new SequenceBuilder("AAAAA").build())
+                                        .organismName("Homo Sapiens (Human)")
+                                        .organismTaxId(9606L)
+                                        .build())
+                        .build();
         Entry xmlConverter = converter.toXml(uniRefEntry);
         assertNotNull(xmlConverter);
         UniRefEntry entryConverted = converter.fromXml(xmlConverter);
@@ -76,27 +80,30 @@ class UniRefEntryConverterTest {
         assertEquals(uniRefEntry, entryConverted);
     }
 
-
     @Test
     void testCommonOrganismWithoutCommonName() throws Exception {
         UniRefEntryConverter converter = new UniRefEntryConverter();
-        UniRefEntry uniRefEntry = new UniRefEntryBuilder()
-                .id("UniRef50_P12345")
-                .entryType(UniRefType.UniRef50)
-                .commonTaxon(new OrganismBuilder()
-                        .taxonId(9606L)
-                        .scientificName("Homo Sapiens")
-                        .build())
-                .memberCount(1)
-                .representativeMember(new RepresentativeMemberBuilder()
-                        .memberId("P12345_HUMAN")
-                        .memberIdType(UniRefMemberIdType.UNIPROTKB_TREMBL)
-                        .accessionsAdd(new UniProtKBAccessionBuilder("P12345").build())
-                        .sequence(new SequenceBuilder("AAAAA").build())
-                        .organismName("Homo Sapiens")
-                        .organismTaxId(9606L)
-                        .build())
-                .build();
+        UniRefEntry uniRefEntry =
+                new UniRefEntryBuilder()
+                        .id("UniRef50_P12345")
+                        .entryType(UniRefType.UniRef50)
+                        .commonTaxon(
+                                new OrganismBuilder()
+                                        .taxonId(9606L)
+                                        .scientificName("Homo Sapiens")
+                                        .build())
+                        .memberCount(1)
+                        .representativeMember(
+                                new RepresentativeMemberBuilder()
+                                        .memberId("P12345_HUMAN")
+                                        .memberIdType(UniRefMemberIdType.UNIPROTKB_TREMBL)
+                                        .accessionsAdd(
+                                                new UniProtKBAccessionBuilder("P12345").build())
+                                        .sequence(new SequenceBuilder("AAAAA").build())
+                                        .organismName("Homo Sapiens")
+                                        .organismTaxId(9606L)
+                                        .build())
+                        .build();
         Entry xmlConverter = converter.toXml(uniRefEntry);
         assertNotNull(xmlConverter);
         UniRefEntry entryConverted = converter.fromXml(xmlConverter);
