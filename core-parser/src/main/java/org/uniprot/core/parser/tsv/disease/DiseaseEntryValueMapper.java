@@ -3,6 +3,7 @@ package org.uniprot.core.parser.tsv.disease;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.Statistics;
@@ -25,13 +26,7 @@ public class DiseaseEntryValueMapper implements EntityValueMapper<DiseaseEntry> 
         map.put("alternative_names", getAlternativeNames(diseaseEntry.getAlternativeNames()));
         map.put("cross_references", getCrossReferences(diseaseEntry.getCrossReferences()));
         map.put("keywords", getKewords(diseaseEntry.getKeywords()));
-        if (Utils.notNull(diseaseEntry.getStatistics())) {
-            Statistics statistics = diseaseEntry.getStatistics();
-            map.put("reviewed_protein_count", String.valueOf(statistics.getReviewedProteinCount()));
-            map.put(
-                    "unreviewed_protein_count",
-                    String.valueOf(statistics.getUnreviewedProteinCount()));
-        }
+        map.put("statistics", getStatistics(diseaseEntry));
         return map;
     }
 
@@ -58,6 +53,18 @@ public class DiseaseEntryValueMapper implements EntityValueMapper<DiseaseEntry> 
             return String.join(",", alternativeNames);
         } else {
             return EMPTY_STRING;
+        }
+    }
+
+    private String getStatistics(DiseaseEntry diseaseEntry) {
+        if (Objects.nonNull(diseaseEntry.getStatistics())) {
+            return "reviewed:"
+                    + diseaseEntry.getStatistics().getReviewedProteinCount()
+                    + "; "
+                    + "annotated:"
+                    + diseaseEntry.getStatistics().getUnreviewedProteinCount();
+        } else {
+            return "";
         }
     }
 }
