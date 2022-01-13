@@ -37,13 +37,12 @@ class DiseaseEntryValueMapperTest {
                 new DiseaseEntryValueMapper().mapEntity(diseaseEntry, Collections.emptyList());
 
         assertThat(mappedEntries, notNullValue());
-        assertEquals(9, mappedEntries.size());
+        assertEquals(8, mappedEntries.size());
         assertEquals(id, mappedEntries.get("id"));
         assertEquals(acronym, mappedEntries.get("acronym"));
         assertEquals(name, mappedEntries.get("name"));
         assertEquals(def, mappedEntries.get("definition"));
-        assertEquals(String.valueOf(revCount), mappedEntries.get("reviewed_protein_count"));
-        assertEquals(String.valueOf(unrevCount), mappedEntries.get("unreviewed_protein_count"));
+        assertEquals("reviewed:10; annotated:20", mappedEntries.get("statistics"));
         assertEquals(DiseaseEntryValueMapper.EMPTY_STRING, mappedEntries.get("alternative_names"));
         assertEquals(DiseaseEntryValueMapper.EMPTY_STRING, mappedEntries.get("cross_references"));
         assertEquals(DiseaseEntryValueMapper.EMPTY_STRING, mappedEntries.get("keywords"));
@@ -77,13 +76,12 @@ class DiseaseEntryValueMapperTest {
                 new DiseaseEntryValueMapper().mapEntity(entry, Collections.emptyList());
 
         assertThat(mappedEntries, notNullValue());
-        assertEquals(9, mappedEntries.size());
+        assertEquals(8, mappedEntries.size());
         assertEquals(id, mappedEntries.get("id"));
         assertEquals(acronym, mappedEntries.get("acronym"));
         assertEquals(name, mappedEntries.get("name"));
         assertEquals(def, mappedEntries.get("definition"));
-        assertEquals(String.valueOf(revCount), mappedEntries.get("reviewed_protein_count"));
-        assertEquals(String.valueOf(unrevCount), mappedEntries.get("unreviewed_protein_count"));
+        assertEquals("reviewed:10; annotated:20", mappedEntries.get("statistics"));
         assertEquals(String.join(",", alternativeNames), mappedEntries.get("alternative_names"));
         assertEquals(
                 String.join(",", Arrays.asList("ID1", "ID2")),
