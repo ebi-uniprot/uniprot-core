@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.uniprot.core.cv.go.GeneOntologyEntry;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 
 /**
  * @author jluo
@@ -19,9 +20,7 @@ public interface UniRefEntry extends Serializable {
 
     UniRefType getEntryType();
 
-    Long getCommonTaxonId();
-
-    String getCommonTaxon();
+    Organism getCommonTaxon();
 
     String getSeedId();
 

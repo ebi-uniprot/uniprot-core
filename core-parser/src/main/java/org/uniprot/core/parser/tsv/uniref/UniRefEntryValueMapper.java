@@ -3,6 +3,7 @@ package org.uniprot.core.parser.tsv.uniref;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.parser.tsv.uniprot.EntryMapUtil;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.UniRefMemberIdType;
@@ -18,12 +19,14 @@ public class UniRefEntryValueMapper extends AbstractUniRefEntryMapper<UniRefEntr
         Map<String, String> map = new HashMap<>();
         map.put(UNIREF_FIELDS.get(0), entry.getId().getValue());
         map.put(UNIREF_FIELDS.get(1), Utils.emptyOrString(entry.getName()));
-        map.put(UNIREF_FIELDS.get(2), Utils.emptyOrString(entry.getCommonTaxon()));
-        if (entry.getCommonTaxonId() != null) {
-            map.put(UNIREF_FIELDS.get(3), entry.getCommonTaxonId().toString());
-        } else {
-            map.put(UNIREF_FIELDS.get(3), "");
+        String organismCommonName = "";
+        String organismCommonId = "";
+        if (entry.getCommonTaxon() != null) {
+            organismCommonId = Long.toString(entry.getCommonTaxon().getTaxonId());
+            organismCommonName = EntryMapUtil.convertOrganism(entry.getCommonTaxon());
         }
+        map.put(UNIREF_FIELDS.get(2), organismCommonName);
+        map.put(UNIREF_FIELDS.get(3), organismCommonId);
         if (entry.getMemberCount() != null) {
             map.put(UNIREF_FIELDS.get(4), entry.getMemberCount().toString());
         } else {

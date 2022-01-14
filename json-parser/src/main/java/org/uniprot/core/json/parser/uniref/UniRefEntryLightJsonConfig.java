@@ -13,6 +13,7 @@ import org.uniprot.core.impl.ValueImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.json.parser.deserializer.LocalDateDeserializer;
 import org.uniprot.core.json.parser.serializer.LocalDateSerializer;
+import org.uniprot.core.json.parser.uniparc.UniParcIdSerializer;
 import org.uniprot.core.json.parser.uniprot.serializer.UniProtKBAccessionSerializer;
 import org.uniprot.core.json.parser.uniref.serialiser.UniRefEntryLightSerialiser;
 import org.uniprot.core.uniparc.UniParcId;
@@ -94,6 +95,7 @@ public class UniRefEntryLightJsonConfig extends JsonConfig {
         simpleMod.addSerializer(LocalDate.class, new LocalDateSerializer());
         simpleMod.addSerializer(UniRefEntryIdImpl.class, new UniRefEntryIdSerializer());
         simpleMod.addSerializer(UniProtKBAccessionImpl.class, new UniProtKBAccessionSerializer());
+        simpleMod.addSerializer(UniParcIdImpl.class, new UniParcIdSerializer());
         prettyObjMapper.registerModule(simpleMod);
         return prettyObjMapper;
     }

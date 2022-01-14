@@ -1,5 +1,6 @@
 package org.uniprot.core.parser.fasta;
 
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefEntryLight;
 
@@ -69,11 +70,12 @@ public class UniRefFastaParser {
                 .append(" n=")
                 .append(entry.getMembers().size() + 1);
 
-        if (entry.getCommonTaxonId() != 1L) {
+        if (entry.getCommonTaxon() != null && entry.getCommonTaxon().getTaxonId() != 1L) {
+            Organism commonTaxon = entry.getCommonTaxon();
             sb.append(" Tax=")
-                    .append(entry.getCommonTaxon())
+                    .append(commonTaxon.getScientificName())
                     .append(" TaxID=")
-                    .append(entry.getCommonTaxonId());
+                    .append(commonTaxon.getTaxonId());
         }
         sb.append(" RepID=").append(entry.getRepresentativeMember().getMemberId());
         return sb.toString();
