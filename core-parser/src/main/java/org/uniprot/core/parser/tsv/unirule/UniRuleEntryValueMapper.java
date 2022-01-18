@@ -1,14 +1,5 @@
 package org.uniprot.core.parser.tsv.unirule;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.gene.Gene;
 import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.uniprotkb.Keyword;
@@ -30,6 +21,15 @@ import org.uniprot.core.unirule.Rule;
 import org.uniprot.core.unirule.UniRuleEntry;
 import org.uniprot.core.util.Utils;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 public class UniRuleEntryValueMapper implements EntityValueMapper<UniRuleEntry> {
     static final String EMPTY_STRING = "";
 
@@ -37,31 +37,12 @@ public class UniRuleEntryValueMapper implements EntityValueMapper<UniRuleEntry> 
     public Map<String, String> mapEntity(UniRuleEntry uniRuleEntry, List<String> fields) {
         Map<String, String> map = new HashMap<>();
         map.put("rule_id", uniRuleEntry.getUniRuleId().getValue());
-        map.put("reviewed_protein_count", String.valueOf(getReviewedProteinCount(uniRuleEntry)));
-        map.put(
-                "unreviewed_protein_count",
-                String.valueOf(getUnreviewedProteinCount(uniRuleEntry)));
+        map.put("statistics", getStatistics(uniRuleEntry));
         map.put("taxonomic_scope", getTaxonomicScope(uniRuleEntry));
         map.put("annotation_covered", getAnnotationCovered(uniRuleEntry));
         map.put("predicted_protein_name", getPredictedProteinName(uniRuleEntry));
         map.put("template_entries", getUniProtAccessions(uniRuleEntry.getInformation()));
         return map;
-    }
-
-    private Long getReviewedProteinCount(UniRuleEntry uniRuleEntry) {
-        long reviewedProteinCount = 0l;
-        if (Objects.nonNull(uniRuleEntry.getStatistics())) {
-            reviewedProteinCount = uniRuleEntry.getStatistics().getReviewedProteinCount();
-        }
-        return reviewedProteinCount;
-    }
-
-    private Long getUnreviewedProteinCount(UniRuleEntry uniRuleEntry) {
-        long unreviewedProteinCount = 0l;
-        if (Objects.nonNull(uniRuleEntry.getStatistics())) {
-            unreviewedProteinCount = uniRuleEntry.getStatistics().getUnreviewedProteinCount();
-        }
-        return unreviewedProteinCount;
     }
 
     private String getTaxonomicScope(UniRuleEntry uniRuleEntry) {
@@ -205,5 +186,17 @@ public class UniRuleEntryValueMapper implements EntityValueMapper<UniRuleEntry> 
             }
         }
         return builder;
+    }
+
+    private String getStatistics(UniRuleEntry uniRuleEntry) {
+        if (Objects.nonNull(uniRuleEntry.getStatistics())) {
+            return "reviewed:"
+                    + uniRuleEntry.getStatistics().getReviewedProteinCount()
+                    + "; "
+                    + "annotated:"
+                    + uniRuleEntry.getStatistics().getUnreviewedProteinCount();
+        } else {
+            return "";
+        }
     }
 }
