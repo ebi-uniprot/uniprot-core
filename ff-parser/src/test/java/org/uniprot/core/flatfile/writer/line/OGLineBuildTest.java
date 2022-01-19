@@ -280,6 +280,28 @@ class OGLineBuildTest {
         doTestOrganelle(ogLine, organelles);
     }
 
+    @Test
+    void testOGLongPlasmids() {
+        String ogLine =
+                "OG   Plasmid pAeca3 {ECO:0000313|EMBL:QLI59503.1},\n"
+                        + "OG   Plasmid paeca3 {ECO:0000313|Proteomes:UP000266783}, and\n"
+                        + "OG   Plasmid pfbaot6 from aeromonas punctata (aeromonas caviae) hgb5\n"
+                        + "OG   {ECO:0000313|Proteomes:UP000464386}.";
+        String ev1 = "ECO:0000313|EMBL:QLI59503.1";
+        String ev2 = "ECO:0000313|Proteomes:UP000266783";
+        String ev3 = "ECO:0000313|Proteomes:UP000464386";
+
+        List<GeneLocation> organelles = new ArrayList<>();
+        organelles.add(createPlasmid("pAeca3", List.of(ev1)));
+
+        organelles.add(createPlasmid("paeca3", List.of(ev2)));
+        organelles.add(
+                createPlasmid(
+                        "pfbaot6 from aeromonas punctata (aeromonas caviae) hgb5", List.of(ev3)));
+
+        doTestOrganelle(ogLine, organelles);
+    }
+
     private GeneLocation createPlasmid(String value, List<String> evs) {
         return new GeneLocationBuilder()
                 .geneEncodingType(GeneEncodingType.PLASMID)

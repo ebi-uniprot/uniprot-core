@@ -25,7 +25,6 @@ CC   ---------------------------------------------------------------------------
 DR   EMBL; M19152; AAA29471.1; -; mRNA.
 DR   PIR; A54527; A54527.
 DR   STRING; 5850.PKH_144540; -.
-DR   GeneDB; PKNH_1448000.1:pep; -.
 DR   eggNOG; ENOG410JB7W; Eukaryota.
 DR   eggNOG; ENOG41118GC; LUCA.
 PE   2: Evidence at transcript level;

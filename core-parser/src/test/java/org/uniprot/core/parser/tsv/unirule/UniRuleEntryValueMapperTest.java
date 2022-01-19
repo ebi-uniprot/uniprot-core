@@ -59,10 +59,9 @@ class UniRuleEntryValueMapperTest {
                 new UniRuleEntryValueMapper().mapEntity(entry, Collections.emptyList());
 
         assertThat(mappedEntries, notNullValue());
-        assertEquals(7, mappedEntries.size());
+        assertEquals(6, mappedEntries.size());
         assertEquals(uniRuleId, mappedEntries.get("rule_id"));
-        assertEquals("10", mappedEntries.get("reviewed_protein_count"));
-        assertEquals("5", mappedEntries.get("unreviewed_protein_count"));
+        assertEquals("reviewed:10; annotated:5", mappedEntries.get("statistics"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("taxonomic_scope"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("annotation_covered"));
         assertEquals(
@@ -89,11 +88,10 @@ class UniRuleEntryValueMapperTest {
                 new UniRuleEntryValueMapper().mapEntity(entry, Collections.emptyList());
 
         assertThat(mappedEntries, notNullValue());
-        assertEquals(7, mappedEntries.size());
+        assertEquals(6, mappedEntries.size());
         assertEquals(uniRuleId, mappedEntries.get("rule_id"));
         assertEquals("P12345,Q12345,R12345", mappedEntries.get("template_entries"));
-        assertEquals("0", mappedEntries.get("reviewed_protein_count"));
-        assertEquals("0", mappedEntries.get("unreviewed_protein_count"));
+        assertEquals("", mappedEntries.get("statistics"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("taxonomic_scope"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("annotation_covered"));
         assertEquals(
@@ -120,11 +118,10 @@ class UniRuleEntryValueMapperTest {
         Map<String, String> mappedEntries =
                 new UniRuleEntryValueMapper().mapEntity(entry, Collections.emptyList());
         assertThat(mappedEntries, notNullValue());
-        assertEquals(7, mappedEntries.size());
+        assertEquals(6, mappedEntries.size());
         assertEquals(uniRuleId, mappedEntries.get("rule_id"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("template_entries"));
-        assertEquals("0", mappedEntries.get("reviewed_protein_count"));
-        assertEquals("0", mappedEntries.get("unreviewed_protein_count"));
+        assertEquals("", mappedEntries.get("statistics"));
         assertEquals(
                 "Archaea[2157],Eukaryota[2759],Bacteria[2]", mappedEntries.get("taxonomic_scope"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("annotation_covered"));
@@ -148,10 +145,9 @@ class UniRuleEntryValueMapperTest {
                 new UniRuleEntryValueMapper().mapEntity(entry, Collections.emptyList());
 
         assertThat(mappedEntries, notNullValue());
-        assertEquals(7, mappedEntries.size());
+        assertEquals(6, mappedEntries.size());
         assertEquals(uniRuleId, mappedEntries.get("rule_id"));
-        assertEquals("10", mappedEntries.get("reviewed_protein_count"));
-        assertEquals("0", mappedEntries.get("unreviewed_protein_count"));
+        assertEquals("reviewed:10; annotated:0", mappedEntries.get("statistics"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("taxonomic_scope"));
         assertEquals("DOMAIN,EMBL,gene,keyword", mappedEntries.get("annotation_covered"));
         assertTrue(mappedEntries.get("predicted_protein_name").startsWith("Full:"));
@@ -176,10 +172,9 @@ class UniRuleEntryValueMapperTest {
                 new UniRuleEntryValueMapper().mapEntity(entry, Collections.emptyList());
 
         assertThat(mappedEntries, notNullValue());
-        assertEquals(7, mappedEntries.size());
+        assertEquals(6, mappedEntries.size());
         assertEquals(uniRuleId, mappedEntries.get("rule_id"));
-        assertEquals("0", mappedEntries.get("reviewed_protein_count"));
-        assertEquals("5", mappedEntries.get("unreviewed_protein_count"));
+        assertEquals("reviewed:0; annotated:5", mappedEntries.get("statistics"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("taxonomic_scope"));
         assertEquals("DOMAIN,EMBL,gene,keyword", mappedEntries.get("annotation_covered"));
         String proteinNames = mappedEntries.get("predicted_protein_name");
@@ -219,10 +214,9 @@ class UniRuleEntryValueMapperTest {
                 new UniRuleEntryValueMapper().mapEntity(entry, Collections.emptyList());
 
         assertThat(mappedEntries, notNullValue());
-        assertEquals(7, mappedEntries.size());
+        assertEquals(6, mappedEntries.size());
         assertEquals(uniRuleId, mappedEntries.get("rule_id"));
-        assertEquals("10", mappedEntries.get("reviewed_protein_count"));
-        assertEquals("5", mappedEntries.get("unreviewed_protein_count"));
+        assertEquals("reviewed:10; annotated:5", mappedEntries.get("statistics"));
         assertEquals(UniRuleEntryValueMapper.EMPTY_STRING, mappedEntries.get("taxonomic_scope"));
         assertEquals("DOMAIN,EMBL,gene,keyword", mappedEntries.get("annotation_covered"));
         String proteinNames = mappedEntries.get("predicted_protein_name");
