@@ -2,8 +2,7 @@ package org.uniprot.cv.chebi;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.Matchers.*;
 import static org.hamcrest.core.Is.is;
 
 import java.util.List;
@@ -45,6 +44,61 @@ class ChebiFileReaderTest {
         assertThat(chebi.getName(), is(name));
         assertThat(chebi.getId(), is(nullValue()));
         assertThat(chebi.getInchiKey(), is(nullValue()));
+    }
+
+    @Test
+    void extractRelatedIdsWithName(){
+        String line = "is_a: CHEBI:138675 ! gas molecular entity";
+        List<ChebiEntry> chebis = reader.parseLines(asList("[Term]", line));
+        assertThat(chebis, hasSize(1));
+        ChebiEntry chebi = chebis.get(0);
+        assertThat(chebi.getRelatedIds(), not(nullValue()));
+        assertThat(chebi.getRelatedIds().size(), is(1));
+        ChebiEntry relatedId = chebi.getRelatedIds().get(0);
+        assertThat(relatedId.getId(), is("138675"));
+        assertThat(relatedId.getName(), is(nullValue()));
+        assertThat(relatedId.getInchiKey(), is(nullValue()));
+    }
+
+    @Test
+    void extractRelatedIds(){
+        List<ChebiEntry> chebis = reader.parseLines(asList("[Term]", "is_a: CHEBI:138675"));
+        assertThat(chebis, hasSize(1));
+        ChebiEntry chebi = chebis.get(0);
+        assertThat(chebi.getRelatedIds(), not(nullValue()));
+        assertThat(chebi.getRelatedIds().size(), is(1));
+        ChebiEntry relatedId = chebi.getRelatedIds().get(0);
+        assertThat(relatedId.getId(), is("138675"));
+        assertThat(relatedId.getName(), is(nullValue()));
+        assertThat(relatedId.getInchiKey(), is(nullValue()));
+    }
+
+    @Test
+    void extractRelatedIdsFromIsConjugateBaseOf(){
+        String line = "relationship: is_conjugate_base_of CHEBI:138675 ! gas molecular entity";
+        List<ChebiEntry> chebis = reader.parseLines(asList("[Term]", line));
+        assertThat(chebis, hasSize(1));
+        ChebiEntry chebi = chebis.get(0);
+        assertThat(chebi.getRelatedIds(), not(nullValue()));
+        assertThat(chebi.getRelatedIds().size(), is(1));
+        ChebiEntry relatedId = chebi.getRelatedIds().get(0);
+        assertThat(relatedId.getId(), is("138675"));
+        assertThat(relatedId.getName(), is(nullValue()));
+        assertThat(relatedId.getInchiKey(), is(nullValue()));
+    }
+
+    @Test
+    void extractRelatedIdsFromMicrospecies(){
+        String line = "relationship: has_major_microspecies_at_pH_7_3 CHEBI:138675 ! gas molecular entity";
+        List<ChebiEntry> chebis = reader.parseLines(asList("[Term]", line));
+        assertThat(chebis, hasSize(1));
+        ChebiEntry chebi = chebis.get(0);
+        assertThat(chebi.getRelatedIds(), not(nullValue()));
+        assertThat(chebi.getRelatedIds().size(), is(1));
+        ChebiEntry relatedId = chebi.getRelatedIds().get(0);
+        assertThat(relatedId.getId(), is("138675"));
+        assertThat(relatedId.getName(), is(nullValue()));
+        assertThat(relatedId.getInchiKey(), is(nullValue()));
     }
 
     @Test
