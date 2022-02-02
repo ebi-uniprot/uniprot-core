@@ -1,9 +1,12 @@
 package org.uniprot.cv.subcell;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -12,6 +15,13 @@ import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 class SubcellLocationReaderTest {
 
     private final SubcellularLocationFileReader parser = new SubcellularLocationFileReader();
+
+    @Test
+    void readAll(){
+        List<SubcellularLocationEntry> sls = parser.parse("src/test/resources/subcell.txt");
+        assertNotNull(sls);
+        assertFalse(sls.isEmpty());
+    }
 
     @Test
     void testSingleSubCellEntry() {
