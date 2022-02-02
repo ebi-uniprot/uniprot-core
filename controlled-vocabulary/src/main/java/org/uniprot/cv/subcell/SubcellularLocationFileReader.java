@@ -1,11 +1,5 @@
 package org.uniprot.cv.subcell;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.go.GeneOntologyEntry;
@@ -15,7 +9,24 @@ import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
 import org.uniprot.core.cv.subcell.SubcellLocationCategory;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryBuilder;
+import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryImpl;
 import org.uniprot.cv.common.AbstractFileReader;
+import org.uniprot.cv.go.RelationshipType;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+import static org.uniprot.cv.go.RelationshipType.IS_A;
+import static org.uniprot.cv.go.RelationshipType.PART_OF;
 
 public class SubcellularLocationFileReader extends AbstractFileReader<SubcellularLocationEntry> {
     private static final String HP_LINE = "HP";
@@ -36,9 +47,22 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
     private static final Logger LOG = LoggerFactory.getLogger(SubcellularLocationFileReader.class);
 
     public List<SubcellularLocationEntry> parseLines(List<String> lines) {
-        List<SubcellularFileEntry> rawList = convertLinesIntoInMemoryObjectList(lines);
-        List<SubcellularLocationEntry> list = parseSubcellularFileEntryList(rawList);
-        return updateListWithRelationShips(list, rawList);
+        List<SubcellularFileEntry> rawEntryList = convertLinesIntoInMemoryObjectList(lines);
+        Map<String, SubcellularFileEntry> idFileEntryMap = getIdFileEntryMap(rawEntryList);
+        List<SubcellularLocationEntryImpl> entryList = parseSubcellularFileEntryList(rawEntryList);
+        Map<String, SubcellularLocationEntryImpl> nameEntryMap = getNameEntryMap(entryList);
+        Set<String> processedIsAIds = new HashSet<>();
+        Set<String> processedPartOfIds = new HashSet<>();
+        for(SubcellularFileEntry rawEntry : rawEntryList){
+            try {
+                updateRelationship(IS_A, rawEntry.hi, rawEntry, idFileEntryMap, processedIsAIds, nameEntryMap);
+                updateRelationship(PART_OF, rawEntry.hp, rawEntry, idFileEntryMap, processedPartOfIds, nameEntryMap);
+            } catch (Exception e) {
+                throw new IllegalArgumentException(e);
+            }
+        }
+
+        return entryList.stream().map(SubcellularLocationEntry.class::cast).collect(Collectors.toList());
     }
 
     public Map<String, String> parseFileToAccessionMap(String fileName) {
@@ -48,6 +72,66 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
                         Collectors.toMap(
                                 SubcellularLocationEntry::getContent,
                                 SubcellularLocationEntry::getId));
+    }
+
+    /**
+     *
+     * @param relationType isA or partOf
+     * @param relatedIds list of names of entry which is either part of or is a
+     * @param rawEntry object representation of an entry from input file
+     * @param idFileEntryMap map which has id as key and raw entry as value
+     * @param processedIds - list of ids which has processed isA or partOf relationship
+     * @param nameEntryMap - map with key as entry name and value as SubcellularFileEntry
+     * @throws Exception
+     */
+    private void updateRelationship(RelationshipType relationType, List<String> relatedIds, SubcellularFileEntry rawEntry,
+                                    Map<String, SubcellularFileEntry> idFileEntryMap, Set<String> processedIds,
+                                    Map<String, SubcellularLocationEntryImpl> nameEntryMap) throws Exception{
+
+        SubcellularLocationEntryImpl node = nameEntryMap.get(trimSpacesAndRemoveLastDot(getIdentifier(rawEntry)));
+        if (Objects.nonNull(node) && !processedIds.contains(node.getId())) {
+            processedIds.add(node.getId());
+            if (!relatedIds.isEmpty()) {// process children in dfs fashion
+                for (String child : relatedIds) {
+                    SubcellularLocationEntryImpl childNode = nameEntryMap.get(trimSpacesAndRemoveLastDot(child));
+                    Field relationField;
+                    List<SubcellularLocationEntry> children;
+                    if(relationType == IS_A) {
+                        relationField = node.getClass().getDeclaredField("isA");
+                        children = node.getIsA().isEmpty() ? new ArrayList<>() : node.getIsA();
+                    } else {
+                        relationField = node.getClass().getDeclaredField("partOf");
+                        children = node.getPartOf().isEmpty() ? new ArrayList<>() : node.getPartOf();
+                    }
+                    relationField.setAccessible(true);
+                    children.add(childNode);
+                    relationField.set(node, children);
+                    SubcellularFileEntry rawChildEntry = idFileEntryMap.get(child);
+                    if(Objects.nonNull(rawChildEntry)) {
+                        List<String> childRelatedIds;
+                        if (relationType == IS_A) {
+                            childRelatedIds = rawChildEntry.hi;
+                        } else {
+                            childRelatedIds = rawChildEntry.hp;
+                        }
+                        // call for the child
+                        updateRelationship(relationType, childRelatedIds, rawChildEntry, idFileEntryMap, processedIds, nameEntryMap);
+                    }
+                }
+            }
+        }
+    }
+
+    private Map<String, SubcellularFileEntry> getIdFileEntryMap(List<SubcellularFileEntry> rawList) {
+        Map<String, SubcellularFileEntry> idFileEntryMap = new HashMap<>();
+        for(SubcellularFileEntry raw : rawList){
+            idFileEntryMap.put(getIdentifier(raw), raw);
+        }
+        return idFileEntryMap;
+    }
+
+    private Map<String, SubcellularLocationEntryImpl> getNameEntryMap(List<SubcellularLocationEntryImpl> entryList){
+        return entryList.stream().collect(Collectors.toMap(SubcellularLocationEntryImpl::getName, Function.identity()));
     }
 
     private List<SubcellularFileEntry> convertLinesIntoInMemoryObjectList(List<String> lines) {
@@ -137,7 +221,7 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
         return retList;
     }
 
-    private List<SubcellularLocationEntry> parseSubcellularFileEntryList(
+    private List<SubcellularLocationEntryImpl> parseSubcellularFileEntryList(
             List<SubcellularFileEntry> list) {
         return list.stream().map(this::parseSubcellularFileEntry).collect(Collectors.toList());
     }
@@ -149,7 +233,7 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
      * @param entry SubcellularFileEntry
      * @return SubcellularLocationEntry
      */
-    private SubcellularLocationEntry parseSubcellularFileEntry(SubcellularFileEntry entry) {
+    private SubcellularLocationEntryImpl parseSubcellularFileEntry(SubcellularFileEntry entry) {
         SubcellularLocationEntryBuilder retObj = new SubcellularLocationEntryBuilder();
         retObj.id(entry.ac);
         retObj.content(trimSpacesAndRemoveLastDot(entry.sl));
@@ -200,55 +284,12 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
                         .collect(Collectors.toList());
         retObj.synonymsSet(synList);
 
-        return retObj.build();
-    }
-
-    private List<SubcellularLocationEntry> updateListWithRelationShips(
-            List<SubcellularLocationEntry> list, List<SubcellularFileEntry> rawList) {
-        List<SubcellularLocationEntryBuilder> retList = new ArrayList<>(list.size());
-        for (SubcellularFileEntry raw : rawList) {
-            SubcellularLocationEntry targetFromList = findByIdentifier(list, getIdentifier(raw));
-            assert (targetFromList != null);
-            SubcellularLocationEntryBuilder target =
-                    SubcellularLocationEntryBuilder.from(targetFromList);
-
-            // Only check for those who have relationships
-            if (raw.hi.isEmpty() && raw.hp.isEmpty()) {
-                retList.add(target);
-                continue;
-            }
-
-            if (!raw.hi.isEmpty()) {
-                List<SubcellularLocationEntry> isA = new ArrayList<>();
-
-                for (String id : raw.hi) {
-                    isA.add(findByIdentifier(list, id));
-                }
-                target.isASet(isA);
-            }
-            if (!raw.hp.isEmpty()) {
-                for (String id : raw.hp) {
-                    target.partOfAdd(findByIdentifier(list, id));
-                }
-            }
-            retList.add(target);
-        }
-        return retList.stream()
-                .map(SubcellularLocationEntryBuilder::build)
-                .collect(Collectors.toList());
+        return (SubcellularLocationEntryImpl) retObj.build();
     }
 
     private String getIdentifier(SubcellularFileEntry raw) {
         if (raw.id != null) return raw.id;
         return raw.it != null ? raw.it : raw.io;
-    }
-
-    private SubcellularLocationEntry findByIdentifier(
-            List<SubcellularLocationEntry> list, String id) {
-        return list.stream()
-                .filter(s -> s.getName().equals(trimSpacesAndRemoveLastDot(id)))
-                .findFirst()
-                .orElse(null);
     }
 
     private GeneOntologyEntry parseGeneOntology(String go) {
