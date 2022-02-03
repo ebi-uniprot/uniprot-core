@@ -49,10 +49,11 @@ class ChebiFileReaderTest {
     @Test
     void extractsSynonym() {
         String synonym = "synonym value";
-        List<ChebiEntry> chebis = reader.parseLines(
-                asList(
-                        "[Term]",
-                        "property_value: hasSynonym \"" + synonym + "\" xsd:string"));
+        List<ChebiEntry> chebis =
+                reader.parseLines(
+                        asList(
+                                "[Term]",
+                                "property_value: hasSynonym \"" + synonym + "\" xsd:string"));
         assertThat(chebis, hasSize(1));
         ChebiEntry chebi = chebis.get(0);
         assertThat(chebi.getSynonyms(), hasSize(1));
@@ -66,11 +67,12 @@ class ChebiFileReaderTest {
     void extractsMultipleSynonyms() {
         String synonym = "synonym value";
         String synonym2 = "synonym value 2";
-        List<ChebiEntry> chebis = reader.parseLines(
-                asList(
-                        "[Term]",
-                        "property_value: hasSynonym \"" + synonym + "\" xsd:string",
-                        "property_value: hasSynonym \"" + synonym2 + "\" xsd:string"));
+        List<ChebiEntry> chebis =
+                reader.parseLines(
+                        asList(
+                                "[Term]",
+                                "property_value: hasSynonym \"" + synonym + "\" xsd:string",
+                                "property_value: hasSynonym \"" + synonym2 + "\" xsd:string"));
         assertThat(chebis, hasSize(1));
         ChebiEntry chebi = chebis.get(0);
         assertThat(chebi.getSynonyms(), hasSize(2));
@@ -82,7 +84,7 @@ class ChebiFileReaderTest {
     }
 
     @Test
-    void extractRelatedIdsWithName(){
+    void extractRelatedIdsWithName() {
         String line = "is_a: CHEBI:138675 ! gas molecular entity";
         List<ChebiEntry> chebis = reader.parseLines(asList("[Term]", line));
         assertThat(chebis, hasSize(1));
@@ -96,7 +98,7 @@ class ChebiFileReaderTest {
     }
 
     @Test
-    void extractRelatedIds(){
+    void extractRelatedIds() {
         List<ChebiEntry> chebis = reader.parseLines(asList("[Term]", "is_a: CHEBI:138675"));
         assertThat(chebis, hasSize(1));
         ChebiEntry chebi = chebis.get(0);
@@ -109,7 +111,7 @@ class ChebiFileReaderTest {
     }
 
     @Test
-    void extractRelatedIdsFromIsConjugateBaseOf(){
+    void extractRelatedIdsFromIsConjugateBaseOf() {
         String line = "relationship: is_conjugate_base_of CHEBI:138675 ! gas molecular entity";
         List<ChebiEntry> chebis = reader.parseLines(asList("[Term]", line));
         assertThat(chebis, hasSize(1));
@@ -123,7 +125,7 @@ class ChebiFileReaderTest {
     }
 
     @Test
-    void extractRelatedIdsFromIsConjugateAcidOf(){
+    void extractRelatedIdsFromIsConjugateAcidOf() {
         String line = "relationship: is_conjugate_acid_of CHEBI:138675 ! gas molecular entity";
         List<ChebiEntry> chebis = reader.parseLines(asList("[Term]", line));
         assertThat(chebis, hasSize(1));
@@ -137,8 +139,9 @@ class ChebiFileReaderTest {
     }
 
     @Test
-    void extractRelatedIdsFromMicrospecies(){
-        String line = "relationship: has_major_microspecies_at_pH_7_3 CHEBI:138675 ! gas molecular entity";
+    void extractRelatedIdsFromMicrospecies() {
+        String line =
+                "relationship: has_major_microspecies_at_pH_7_3 CHEBI:138675 ! gas molecular entity";
         List<ChebiEntry> chebis = reader.parseLines(asList("[Term]", line));
         assertThat(chebis, hasSize(1));
         ChebiEntry chebi = chebis.get(0);
