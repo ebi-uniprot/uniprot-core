@@ -15,7 +15,8 @@ class ChebiEntryImplTest {
                     "inchiKey",
                     List.of(
                             new ChebiEntryImpl(
-                                    "relatedId", "relatedName", "relatedInchiKey", null)));
+                                    "relatedId", "relatedName", "relatedInchiKey", null, null)),
+                    List.of("synonym1"));
 
     @Test
     void needDefaultConstructorForJsonDeserialization() {
@@ -33,7 +34,7 @@ class ChebiEntryImplTest {
     @Test
     void toStringTest() {
         assertEquals(
-                "ChebiEntryImpl{id='id', inchiKey='inchiKey', name='name', relatedIds=[ChebiEntryImpl{id='relatedId', inchiKey='relatedInchiKey', name='relatedName', relatedIds=null}]}",
+                "ChebiEntryImpl{id='id', inchiKey='inchiKey', name='name', relatedIds=[ChebiEntryImpl{id='relatedId', inchiKey='relatedInchiKey', name='relatedName', relatedIds=null, synonyms=null}], synonyms=[synonym1]}",
                 impl.toString());
     }
 }

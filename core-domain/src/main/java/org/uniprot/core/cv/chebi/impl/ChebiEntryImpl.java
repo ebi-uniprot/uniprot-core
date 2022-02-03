@@ -18,16 +18,18 @@ public class ChebiEntryImpl implements ChebiEntry {
     private final String inchiKey;
     private final String name;
     private final List<ChebiEntry> relatedIds;
+    private final List<String> synonyms;
 
     ChebiEntryImpl() {
-        this(null, null, null, new ArrayList<>());
+        this(null, null, null, new ArrayList<>() , new ArrayList<>());
     }
 
-    ChebiEntryImpl(String id, String name, String inchiKey, List<ChebiEntry> relatedIds) {
+    ChebiEntryImpl(String id, String name, String inchiKey, List<ChebiEntry> relatedIds, List<String> synonyms) {
         this.id = id;
         this.name = name;
         this.inchiKey = inchiKey;
         this.relatedIds = relatedIds;
+        this.synonyms = synonyms;
     }
 
     @Override
@@ -51,6 +53,11 @@ public class ChebiEntryImpl implements ChebiEntry {
     }
 
     @Override
+    public List<String> getSynonyms() {
+        return synonyms;
+    }
+
+    @Override
     public String toString() {
         return "ChebiEntryImpl{"
                 + "id='"
@@ -63,6 +70,8 @@ public class ChebiEntryImpl implements ChebiEntry {
                 + name
                 + "', relatedIds="
                 + relatedIds
+                + ", synonyms="
+                + synonyms
                 + '}';
     }
 
