@@ -44,7 +44,9 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
     public Map<String, String> parseFileToAccessionMap(String fileName) {
         List<SubcellularLocationEntry> list = parse(fileName);
         return list.stream()
-                .collect(Collectors.toMap(SubcellularLocationEntry::getContent,
+                .collect(
+                        Collectors.toMap(
+                                SubcellularLocationEntry::getContent,
                                 SubcellularLocationEntry::getId));
     }
 
@@ -278,8 +280,8 @@ class SubcellularFileEntry {
     List<String> ww;
 
     SubcellularFileEntry() {
-        de = new ArrayList<String>();
-        sy = new ArrayList<String>();
+        de = new ArrayList<>();
+        sy = new ArrayList<>();
         hi = new ArrayList<>();
         hp = new ArrayList<>();
         go = new ArrayList<>();

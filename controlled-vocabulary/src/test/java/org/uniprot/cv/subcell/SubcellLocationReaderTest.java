@@ -13,6 +13,37 @@ class SubcellLocationReaderTest {
 
     private final SubcellularLocationFileReader parser = new SubcellularLocationFileReader();
 
+    @Test
+    void testSingleSubCellEntry() {
+        List<String> input =
+                Arrays.asList(
+                        "_______________________________",
+                        "ID   Cell tip.",
+                        "AC   SL-0456",
+                        "DE   The region at either end of the longest axis of a cylindrical or",
+                        "DE   elongated cell, where polarized growth may occur.",
+                        "SL   Cell tip.",
+                        "GO   GO:0051286; cell tip",
+                        "//");
+        List<SubcellularLocationEntry> retList = parser.parseLines(input);
+
+        assertEquals(1, retList.size(), "Size shoud be exactly 1");
+        SubcellularLocationEntry retObj = retList.get(0);
+        assertEquals("Cell tip", retObj.getName(), "name check");
+        assertEquals("SL-0456", retObj.getId(), "id test");
+        assertEquals(
+                "The region at either end of the longest axis of a cylindrical or elongated cell,"
+                        + " where polarized growth may occur.",
+                retObj.getDefinition(),
+                "Definition match");
+        assertEquals("Cell tip", retObj.getContent(), "Content of subc. loc. lines match");
+
+        assertEquals(1, retObj.getGeneOntologies().size(), "Size of GO mapping shoud be exactly 1");
+        Assertions.assertEquals(
+                "GO:0051286", retObj.getGeneOntologies().get(0).getId(), "GO id check");
+        Assertions.assertEquals(
+                "cell tip", retObj.getGeneOntologies().get(0).getName(), "GO definition check");
+    }
 
     @Test
     void testRelationShip() {
