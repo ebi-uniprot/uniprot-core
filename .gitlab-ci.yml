@@ -37,6 +37,8 @@ core:settings:
     expire_in: 2 days
     paths:
       - ./${MAVEN_SETTINGS}
+  only:
+    - master
 
 core:test:
   stage: test
