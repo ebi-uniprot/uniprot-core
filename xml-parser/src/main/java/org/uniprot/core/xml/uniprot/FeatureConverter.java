@@ -12,6 +12,7 @@ import org.uniprot.core.uniprotkb.feature.FeatureId;
 import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.FeatureIdBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
+import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.FeatureType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
@@ -24,6 +25,8 @@ public class FeatureConverter implements Converter<FeatureType, UniProtKBFeature
     private final EvidenceIndexMapper evRefMapper;
     private final ObjectFactory xmlUniprotFactory;
     private final FeatureLocationConverter locationConverter;
+    private final FeatureLigandConverter ligandConverter;
+    private final FeatureLigandPartConverter ligandPartConverter;
 
     public FeatureConverter(EvidenceIndexMapper evRefMapper) {
         this(evRefMapper, new ObjectFactory());
@@ -31,6 +34,8 @@ public class FeatureConverter implements Converter<FeatureType, UniProtKBFeature
 
     public FeatureConverter(EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
         this.locationConverter = new FeatureLocationConverter(xmlUniprotFactory);
+        this.ligandConverter = new FeatureLigandConverter(xmlUniprotFactory);
+        this.ligandPartConverter = new FeatureLigandPartConverter(xmlUniprotFactory);
         this.evRefMapper = evRefMapper;
         this.xmlUniprotFactory = xmlUniprotFactory;
     }
@@ -70,14 +75,26 @@ public class FeatureConverter implements Converter<FeatureType, UniProtKBFeature
                             .build();
         }
 
-        return new UniProtKBFeatureBuilder()
+        UniProtKBFeatureBuilder builder =  new UniProtKBFeatureBuilder()
                 .type(type)
                 .location(location)
                 .featureId(featureId)
                 .description(description)
                 .alternativeSequence(altSeq)
-                .evidencesSet(evidences)
-                .build();
+                .evidencesSet(evidences);
+       
+        if(Utils.notNull(xmlObj.getLigand())) {
+        	Ligand ligand = ligandConverter.fromXml(xmlObj.getLigand());
+        	builder.ligand(ligand);
+        }
+        
+        if(Utils.notNull(xmlObj.getLigandPart())) {
+        	LigandPart ligandPart = ligandPartConverter.fromXml(xmlObj.getLigandPart());
+        	builder.ligandPart(ligandPart);
+        }
+        
+        return builder.build();
+
     }
 
     @Override
@@ -116,6 +133,16 @@ public class FeatureConverter implements Converter<FeatureType, UniProtKBFeature
                 xmlFeature.getVariation().addAll(altSeq.getAlternativeSequences());
         }
         updateConflictFeature(xmlFeature, uniObj);
+        
+        if(Utils.notNull(uniObj.getLigand())){
+        	xmlFeature.setLigand(ligandConverter.toXml(uniObj.getLigand()));
+        }
+        
+        if(Utils.notNull(uniObj.getLigandPart())){
+        	xmlFeature.setLigandPart(ligandPartConverter.toXml(uniObj.getLigandPart()));
+        }
+        
+        
         return xmlFeature;
     }
 

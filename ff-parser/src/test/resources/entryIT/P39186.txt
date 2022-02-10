@@ -1,0 +1,197 @@
+ID   NAPB_CUPNH              Reviewed;         169 AA.
+AC   P39186;
+DT   01-FEB-1995, integrated into UniProtKB/Swiss-Prot.
+DT   01-FEB-1995, sequence version 1.
+DT   29-SEP-2021, entry version 134.
+DE   RecName: Full=Periplasmic nitrate reductase, electron transfer subunit;
+DE   AltName: Full=Diheme cytochrome c NapB;
+DE   Flags: Precursor;
+GN   Name=napB; OrderedLocusNames=PHG212;
+OS   Cupriavidus necator (strain ATCC 17699 / DSM 428 / KCTC 22496 / NCIMB 10442
+OS   / H16 / Stanier 337) (Ralstonia eutropha).
+OG   Plasmid megaplasmid pHG1.
+OC   Bacteria; Proteobacteria; Betaproteobacteria; Burkholderiales;
+OC   Burkholderiaceae; Cupriavidus.
+OX   NCBI_TaxID=381666;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA], PROTEIN SEQUENCE OF 36-50, FUNCTION, AND
+RP   SUBUNIT.
+RC   STRAIN=ATCC 17699 / DSM 428 / KCTC 22496 / NCIMB 10442 / H16;
+RC   PLASMID=megaplasmid pHG1;
+RX   PubMed=8376334; DOI=10.1128/jb.175.18.5867-5876.1993;
+RA   Siddiqui R.A., Warnecke-Eberz U., Hengsberger A., Schneider B., Kostka S.,
+RA   Friedrich B.;
+RT   "Structure and function of a periplasmic nitrate reductase in Alcaligenes
+RT   eutrophus H16.";
+RL   J. Bacteriol. 175:5867-5876(1993).
+RN   [2]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
+RC   STRAIN=ATCC 17699 / DSM 428 / KCTC 22496 / NCIMB 10442 / H16;
+RX   PubMed=12948488; DOI=10.1016/s0022-2836(03)00894-5;
+RA   Schwartz E., Henne A., Cramm R., Eitinger T., Friedrich B., Gottschalk G.;
+RT   "Complete nucleotide sequence of pHG1: a Ralstonia eutropha H16 megaplasmid
+RT   encoding key enzymes of H(2)-based lithoautotrophy and anaerobiosis.";
+RL   J. Mol. Biol. 332:369-383(2003).
+RN   [3]
+RP   CRYSTALLIZATION, SUBUNIT, SUBCELLULAR LOCATION, AND PTM.
+RC   STRAIN=ATCC 17699 / DSM 428 / KCTC 22496 / NCIMB 10442 / H16;
+RC   PLASMID=megaplasmid pHG1;
+RX   PubMed=17554176; DOI=10.1107/s1744309107022129;
+RA   Coelho C., Gonzalez P.J., Trincao J., Carvalho A.L., Najmudin S.,
+RA   Hettman T., Dieckman S., Moura J.J., Moura I., Romao M.J.;
+RT   "Heterodimeric nitrate reductase (NapAB) from Cupriavidus necator H16:
+RT   purification, crystallization and preliminary X-ray analysis.";
+RL   Acta Crystallogr. F 63:516-519(2007).
+RN   [4]
+RP   X-RAY CRYSTALLOGRAPHY (1.60 ANGSTROMS) OF 35-169 IN COMPLEX WITH NAPA AND
+RP   HEME C, EPR SPECTROSCOPY, ABSORPTION SPECTROSCOPY, SUBUNIT, SUBCELLULAR
+RP   LOCATION, AND PTM.
+RC   STRAIN=ATCC 17699 / DSM 428 / KCTC 22496 / NCIMB 10442 / H16;
+RC   PLASMID=megaplasmid pHG1;
+RX   PubMed=21419779; DOI=10.1016/j.jmb.2011.03.016;
+RA   Coelho C., Gonzalez P.J., Moura J.G., Moura I., Trincao J., Joao Romao M.;
+RT   "The crystal structure of Cupriavidus necator nitrate reductase in oxidized
+RT   and partially reduced states.";
+RL   J. Mol. Biol. 408:932-948(2011).
+CC   -!- FUNCTION: Electron transfer subunit of the periplasmic nitrate
+CC       reductase complex NapAB. Receives electrons from the membrane-anchored
+CC       tetraheme c-type NapC protein and transfers these to NapA subunit, thus
+CC       allowing electron flow between membrane and periplasm. Essential for
+CC       periplasmic nitrate reduction with nitrate as the terminal electron
+CC       acceptor. {ECO:0000269|PubMed:8376334}.
+CC   -!- SUBUNIT: Component of the periplasmic nitrate reductase NapAB complex
+CC       composed of NapA and NapB. {ECO:0000269|PubMed:17554176,
+CC       ECO:0000269|PubMed:21419779, ECO:0000269|PubMed:8376334}.
+CC   -!- SUBCELLULAR LOCATION: Periplasm {ECO:0000269|PubMed:17554176,
+CC       ECO:0000269|PubMed:21419779}.
+CC   -!- INDUCTION: Expressed independently of nitrate induction and
+CC       anaerobiosis.
+CC   -!- PTM: Binds 2 heme C groups per subunit.
+CC   -!- SIMILARITY: Belongs to the NapB family. {ECO:0000305}.
+DR   EMBL; X71385; CAA50508.1; -; Genomic_DNA.
+DR   EMBL; AY305378; AAP85964.1; -; Genomic_DNA.
+DR   PIR; B48489; B48489.
+DR   RefSeq; WP_011154127.1; NZ_CP039289.1.
+DR   PDB; 3ML1; X-ray; 1.60 A; B=35-169.
+DR   PDB; 3O5A; X-ray; 1.72 A; B=35-169.
+DR   PDBsum; 3ML1; -.
+DR   PDBsum; 3O5A; -.
+DR   SMR; P39186; -.
+DR   STRING; 381666.PHG212; -.
+DR   EnsemblBacteria; AAP85964; AAP85964; PHG212.
+DR   GeneID; 39976367; -.
+DR   KEGG; reh:PHG212; -.
+DR   PATRIC; fig|381666.6.peg.160; -.
+DR   eggNOG; COG3043; Bacteria.
+DR   HOGENOM; CLU_103367_2_0_4; -.
+DR   OMA; KCMSCHA; -.
+DR   OrthoDB; 1650975at2; -.
+DR   Proteomes; UP000008210; Plasmid megaplasmid pHG1.
+DR   GO; GO:0042597; C:periplasmic space; IEA:UniProtKB-SubCell.
+DR   GO; GO:0046872; F:metal ion binding; IEA:UniProtKB-KW.
+DR   GO; GO:0009061; P:anaerobic respiration; IEA:InterPro.
+DR   InterPro; IPR036280; Multihaem_cyt_sf.
+DR   InterPro; IPR005591; NapB.
+DR   PANTHER; PTHR38604; PTHR38604; 1.
+DR   Pfam; PF03892; NapB; 1.
+DR   PIRSF; PIRSF006105; NapB; 1.
+DR   SUPFAM; SSF48695; SSF48695; 1.
+DR   PROSITE; PS51008; MULTIHEME_CYTC; 1.
+PE   1: Evidence at protein level;
+KW   3D-structure; Direct protein sequencing; Electron transport; Heme; Iron;
+KW   Metal-binding; Periplasm; Plasmid; Reference proteome; Signal; Transport.
+FT   SIGNAL          1..35
+FT                   /evidence="ECO:0000269|PubMed:8376334"
+FT   CHAIN           36..169
+FT                   /note="Periplasmic nitrate reductase, electron transfer
+FT                   subunit"
+FT                   /id="PRO_0000006587"
+FT   METAL           79
+FT                   /note="Iron (heme C 1 axial ligand); via tele nitrogen"
+FT   METAL           97
+FT                   /note="Iron (heme C 1 axial ligand); via tele nitrogen"
+FT   METAL           114
+FT                   /note="Iron (heme C 2 axial ligand); via tele nitrogen"
+FT   METAL           137
+FT                   /note="Iron (heme C 2 axial ligand); via tele nitrogen"
+FT   BINDING         79
+FT                   /ligand="heme c"
+FT                   /ligand_id="ChEBI:CHEBI:61717"
+FT                   /ligand_label="1"
+FT                   /ligand_part="Fe"
+FT                   /ligand_part_id="ChEBI:CHEBI:18248"
+FT                   /note="axial binding residue"
+FT   BINDING         93
+FT                   /ligand="heme c"
+FT                   /ligand_id="ChEBI:CHEBI:61717"
+FT                   /ligand_label="1"
+FT                   /note="covalent"
+FT                   /evidence="ECO:0000269|PubMed:21419779"
+FT   BINDING         96
+FT                   /ligand="heme c"
+FT                   /ligand_id="ChEBI:CHEBI:61717"
+FT                   /ligand_label="1"
+FT                   /note="covalent"
+FT                   /evidence="ECO:0000269|PubMed:21419779"
+FT   BINDING         97
+FT                   /ligand="heme c"
+FT                   /ligand_id="ChEBI:CHEBI:61717"
+FT                   /ligand_label="1"
+FT                   /ligand_part="Fe"
+FT                   /ligand_part_id="ChEBI:CHEBI:18248"
+FT                   /note="axial binding residue"
+FT   BINDING         114
+FT                   /ligand="heme c"
+FT                   /ligand_id="ChEBI:CHEBI:61717"
+FT                   /ligand_label="2"
+FT                   /ligand_part="Fe"
+FT                   /ligand_part_id="ChEBI:CHEBI:18248"
+FT                   /note="axial binding residue"
+FT   BINDING         133
+FT                   /ligand="heme c"
+FT                   /ligand_id="ChEBI:CHEBI:61717"
+FT                   /ligand_label="2"
+FT                   /note="covalent"
+FT                   /evidence="ECO:0000269|PubMed:21419779"
+FT   BINDING         136
+FT                   /ligand="heme c"
+FT                   /ligand_id="ChEBI:CHEBI:61717"
+FT                   /ligand_label="2"
+FT                   /note="covalent"
+FT                   /evidence="ECO:0000269|PubMed:21419779"
+FT   BINDING         137
+FT                   /ligand="heme c"
+FT                   /ligand_id="ChEBI:CHEBI:61717"
+FT                   /ligand_label="2"
+FT                   /ligand_part="Fe"
+FT                   /ligand_part_id="ChEBI:CHEBI:18248"
+FT                   /note="axial binding residue"
+FT   TURN            40..42
+FT                   /evidence="ECO:0007829|PDB:3ML1"
+FT   STRAND          77..79
+FT                   /evidence="ECO:0007829|PDB:3ML1"
+FT   HELIX           92..97
+FT                   /evidence="ECO:0007829|PDB:3ML1"
+FT   HELIX           112..115
+FT                   /evidence="ECO:0007829|PDB:3ML1"
+FT   HELIX           128..131
+FT                   /evidence="ECO:0007829|PDB:3ML1"
+FT   HELIX           133..135
+FT                   /evidence="ECO:0007829|PDB:3ML1"
+FT   STRAND          141..143
+FT                   /evidence="ECO:0007829|PDB:3ML1"
+FT   HELIX           154..157
+FT                   /evidence="ECO:0007829|PDB:3ML1"
+**
+**   #################    INTERNAL SECTION    ##################
+**EV ECO:0000269; PubMed:17554176; XXX; 01-JAN-1900.
+**EV ECO:0000269; PubMed:21419779; XXX; 01-JAN-1900.
+**EV ECO:0000269; PubMed:8376334; XXX; 01-JAN-1900.
+**EV ECO:0000305; -; XXX; 01-JAN-1900.
+**EV ECO:0007829; PDB:3ML1; -; 08-OCT-2014.
+**ZB THN, 28-FEB-2012;
+SQ   SEQUENCE   169 AA;  18924 MW;  186AA597E012232D CRC64;
+     MKPSRSWASL LAVCAVLLAA LAMQAIFFPA PARAQGLVDA MRGPTAIANE PRAPLLYPTE
+     NKDIRRTRNY TMQPPTIPHK IDGYQLDKDF NRCMFCHART RTEETQAIPV SITHYMDRDN
+     NVLADVSPRR YFCTQCHVPQ ADTKPLIGNN FVDVDTILKR RPGAKGAAK
+//

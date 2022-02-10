@@ -44,12 +44,17 @@ public abstract class AbstractFeatureLineBuilder extends FFLineBuilderAbstr<UniP
             UniProtKBFeature f, boolean includeFFMarkings, boolean addEvidence) {
         List<String> lines = new ArrayList<>();
         lines.addAll(buildFtHeaderLines(f, includeFFMarkings));
+        lines.addAll(buildLigands(f, includeFFMarkings));
         lines.addAll(buildFtNoteLines(f, includeFFMarkings));
         if (addEvidence) {
             lines.addAll(buildFtEvidenceLines(f, includeFFMarkings));
         }
         lines.addAll(buildFtIdLines(f, includeFFMarkings));
         return lines;
+    }
+    
+    protected List<String> buildLigands (UniProtKBFeature f, boolean includeFFMarkings){
+    	return List.of();
     }
 
     protected List<String> buildFtHeaderLines(UniProtKBFeature f, boolean includeFFMarkings) {

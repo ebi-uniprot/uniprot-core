@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.uniprotkb.feature.FeatureId;
+import org.uniprot.core.uniprotkb.feature.Ligand;
+import org.uniprot.core.uniprotkb.feature.LigandPart;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
@@ -35,6 +37,20 @@ class UniProtKBFeatureBuilderTest {
         FeatureId id = new FeatureIdBuilder("id").build();
         UniProtKBFeature obj = new UniProtKBFeatureBuilder().featureId(id).build();
         assertEquals(id, obj.getFeatureId());
+    }
+
+    @Test
+    void canSetLigand() {
+    	Ligand ligand = new LigandImpl("aname", "aId", "alabel", "anote");
+        UniProtKBFeature obj = new UniProtKBFeatureBuilder().ligand(ligand).build();
+        assertEquals(ligand, obj.getLigand());
+    }
+    
+    @Test
+    void canSetLigandPart() {
+    	LigandPart ligandPart = new LigandPartImpl("aname", "aId", "alabel", "anote");
+        UniProtKBFeature obj = new UniProtKBFeatureBuilder().ligandPart(ligandPart).build();
+        assertEquals(ligandPart, obj.getLigandPart());
     }
 
     @Test

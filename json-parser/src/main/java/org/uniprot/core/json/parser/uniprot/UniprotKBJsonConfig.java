@@ -29,10 +29,14 @@ import org.uniprot.core.uniprotkb.evidence.impl.EvidenceLineImpl;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueImpl;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.uniprotkb.feature.FeatureId;
+import org.uniprot.core.uniprotkb.feature.Ligand;
+import org.uniprot.core.uniprotkb.feature.LigandPart;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceImpl;
 import org.uniprot.core.uniprotkb.feature.impl.FeatureIdImpl;
+import org.uniprot.core.uniprotkb.feature.impl.LigandImpl;
+import org.uniprot.core.uniprotkb.feature.impl.LigandPartImpl;
 import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureImpl;
 import org.uniprot.core.uniprotkb.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
@@ -194,6 +198,10 @@ public class UniprotKBJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(FeatureType.class, UniprotKBFeatureType.class);
         mod.addAbstractTypeMapping(FeatureDescription.class, FeatureDescriptionImpl.class);
         mod.addAbstractTypeMapping(UniProtKBFeature.class, UniProtKBFeatureImpl.class);
+        mod.addAbstractTypeMapping(Ligand.class, LigandImpl.class);
+        mod.addAbstractTypeMapping(LigandPart.class, LigandPartImpl.class);
+        
+        
         mod.addAbstractTypeMapping(UniProtKBDatabase.class, UniProtKBDatabaseImpl.class);
 
         mod.addAbstractTypeMapping(Database.class, DefaultDatabase.class);

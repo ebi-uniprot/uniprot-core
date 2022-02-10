@@ -80,7 +80,8 @@ class UniProtKBFeatureFeatureImplTest {
                         new FeatureIdBuilder("1").build(),
                         new AlternativeSequenceBuilder().build(),
                         xrefs,
-                        createEvidences());
+                        createEvidences(),
+                        null, null);
         UniProtKBFeature obj = UniProtKBFeatureBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());

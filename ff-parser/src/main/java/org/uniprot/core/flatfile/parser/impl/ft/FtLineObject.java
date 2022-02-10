@@ -45,6 +45,9 @@ public class FtLineObject implements HasEvidenceInfo {
         private String ftText;
         private String ftId;
         private String sequence;
+        private FTLigand ligand;
+        private FTLigandPart ligandPart;
+        
 
         public FTType getType() {
             return type;
@@ -93,8 +96,88 @@ public class FtLineObject implements HasEvidenceInfo {
         public void setSequence(String sequence) {
             this.sequence = sequence;
         }
+
+		public FTLigand getLigand() {
+			return ligand;
+		}
+
+		public void setLigand(FTLigand ligand) {
+			this.ligand = ligand;
+		}
+
+		public FTLigandPart getLigandPart() {
+			return ligandPart;
+		}
+
+		public void setLigandPart(FTLigandPart ligandPart) {
+			this.ligandPart = ligandPart;
+		}
+        
     }
 
+    public static class FTLigand {
+    	private String name;
+    	private String id;
+    	private String label;
+    	private String note;
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+		public String getId() {
+			return id;
+		}
+		public void setId(String id) {
+			this.id = id;
+		}
+		public String getLabel() {
+			return label;
+		}
+		public void setLabel(String label) {
+			this.label = label;
+		}
+		public String getNote() {
+			return note;
+		}
+		public void setNote(String note) {
+			this.note = note;
+		}
+    	
+    }
+    
+    public static class FTLigandPart {
+    	private String name;
+    	private String id;
+    	private String label;
+    	private String note;
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+		public String getId() {
+			return id;
+		}
+		public void setId(String id) {
+			this.id = id;
+		}
+		public String getLabel() {
+			return label;
+		}
+		public void setLabel(String label) {
+			this.label = label;
+		}
+		public String getNote() {
+			return note;
+		}
+		public void setNote(String note) {
+			this.note = note;
+		}
+    	
+    }
     public enum FTType {
         INIT_MET,
         SIGNAL,

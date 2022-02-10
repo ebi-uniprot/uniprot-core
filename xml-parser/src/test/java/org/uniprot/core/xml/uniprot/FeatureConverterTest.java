@@ -13,10 +13,14 @@ import org.uniprot.core.feature.FeatureLocation;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.uniprotkb.feature.FeatureId;
+import org.uniprot.core.uniprotkb.feature.Ligand;
+import org.uniprot.core.uniprotkb.feature.LigandPart;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.FeatureIdBuilder;
+import org.uniprot.core.uniprotkb.feature.impl.LigandBuilder;
+import org.uniprot.core.uniprotkb.feature.impl.LigandPartBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
 
 import com.google.common.base.Strings;
@@ -444,6 +448,52 @@ class FeatureConverterTest {
         assertEquals(feature, converted);
     }
 
+    @Test
+    void testBinding(){
+    	/*
+    	 * FT   BINDING         97
+FT                   /ligand="heme c"
+FT                   /ligand_id="ChEBI:CHEBI:61717"
+FT                   /ligand_label="1"
+FT                   /ligand_part="Fe"
+FT                   /ligand_part_id="ChEBI:CHEBI:18248"
+FT                   /note="axial binding residue"
+    	 */
+    	 EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
+         FeatureConverter converter = new FeatureConverter(evRefMapper);
+    	Ligand ligand =  new LigandBuilder().name("heme c").id("ChEBI:CHEBI:61717").label("1").build();
+    	LigandPart ligandPart =  new LigandPartBuilder().name("Fe").id("ChEBI:CHEBI:18248").build();
+    	
+    	UniProtKBFeature feature =  new UniProtKBFeatureBuilder()
+                 .type(UniprotKBFeatureType.BINDING)
+                 .location(new FeatureLocation(97, 97))
+                 .description("axial binding residue")
+                 .ligand(ligand)
+                 .ligandPart(ligandPart)
+                 .build();
+    	 org.uniprot.core.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+    	 String expectedXml =
+    			 "<feature type=\"binding site\" description=\"axial binding residue\" xmlns=\"http://uniprot.org/uniprot\">\n"
+    			 + "    <location>\n"
+    			 + "        <position position=\"97\"/>\n"
+    			 + "    </location>\n"
+    			 + "    <ligand>\n"
+    			 + "        <name>heme c</name>\n"
+    			 + "        <dbReference type=\"ChEBI\" id=\"CHEBI:61717\"/>\n"
+    			 + "        <label>1</label>\n"
+    			 + "    </ligand>\n"
+    			 + "    <ligandPart>\n"
+    			 + "        <name>Fe</name>\n"
+    			 + "        <dbReference type=\"ChEBI\" id=\"CHEBI:18248\"/>\n"
+    			 + "    </ligandPart>\n"
+    			 + "</feature>";
+    	 assertEquals( expectedXml,
+                 UniProtXmlTestHelper.toXmlString(
+                         xmlObj, org.uniprot.core.xml.jaxb.uniprot.FeatureType.class, "feature"));
+    	 UniProtKBFeature converted = converter.fromXml(xmlObj);
+         assertEquals(feature, converted);
+    	 
+    }
     private UniProtKBFeature createFeature(
             UniprotKBFeatureType type,
             int start,

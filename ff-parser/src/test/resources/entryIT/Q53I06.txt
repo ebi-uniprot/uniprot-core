@@ -1,0 +1,257 @@
+ID   DEFPL_PSENR             Reviewed;          95 AA.
+AC   Q53I06;
+DT   08-NOV-2005, integrated into UniProtKB/Swiss-Prot.
+DT   24-MAY-2005, sequence version 1.
+DT   23-FEB-2022, entry version 57.
+DE   RecName: Full=Fungal defensin plectasin {ECO:0000303|PubMed:16222292, ECO:0000303|PubMed:19414576, ECO:0000303|PubMed:19472324, ECO:0000303|PubMed:20508130};
+DE   Flags: Precursor;
+GN   Name=DEF;
+OS   Pseudoplectania nigrella (Ebony cup) (Peziza nigrella).
+OC   Eukaryota; Fungi; Dikarya; Ascomycota; Pezizomycotina; Pezizomycetes;
+OC   Pezizales; Sarcosomataceae; Pseudoplectania.
+OX   NCBI_TaxID=96584;
+RN   [1] {ECO:0000312|PDB:1ZFU}
+RP   NUCLEOTIDE SEQUENCE [MRNA], PROTEIN SEQUENCE OF N-TERMINUS, STRUCTURE BY
+RP   NMR OF 56-95, FUNCTION, MASS SPECTROMETRY, AND DISULFIDE BONDS.
+RX   PubMed=16222292; DOI=10.1038/nature04051;
+RA   Mygind P.H., Fischer R.L., Schnorr K.M., Hansen M.T., Soenksen C.P.,
+RA   Ludvigsen S., Raventos D.S., Buskov S., Christensen B., De Maria L.,
+RA   Taboureau O., Yaver D., Elvig-Joergensen S.G., Soerensen M.V.,
+RA   Christensen B.E., Kjaerulf S., Frimodt-Moller N., Lehrer R.I., Zasloff M.,
+RA   Kristensen H.-H.;
+RT   "Plectasin is a peptide antibiotic with therapeutic potential from a
+RT   saprophytic fungus.";
+RL   Nature 437:975-980(2005).
+RN   [2]
+RP   PHARMACEUTICAL.
+RX   PubMed=19414576; DOI=10.1128/aac.01584-08;
+RA   Andes D., Craig W., Nielsen L.A., Kristensen H.H.;
+RT   "In vivo pharmacodynamic characterization of a novel plectasin antibiotic,
+RT   NZ2114, in a murine infection model.";
+RL   Antimicrob. Agents Chemother. 53:3003-3009(2009).
+RN   [3]
+RP   FUNCTION, 3D-STRUCTURE MODELING, MUTAGENESIS OF ASP-67; TYR-84; ALA-86;
+RP   GLY-88 AND LYS-93, BINDING TO MEMBRANE INTERFACE, AND BINDING TO LIPID II.
+RX   PubMed=20508130; DOI=10.1126/science.1185723;
+RA   Schneider T., Kruse T., Wimmer R., Wiedemann I., Sass V., Pag U.,
+RA   Jansen A., Nielsen A.K., Mygind P.H., Raventos D.S., Neve S., Ravn B.,
+RA   Bonvin A.M., De Maria L., Andersen A.S., Gammelgaard L.K., Sahl H.G.,
+RA   Kristensen H.H.;
+RT   "Plectasin, a fungal defensin, targets the bacterial cell wall precursor
+RT   Lipid II.";
+RL   Science 328:1168-1172(2010).
+RN   [4]
+RP   FUNCTION.
+RX   PubMed=25568977; DOI=10.3390/toxins7010034;
+RA   Xiang F., Xie Z., Feng J., Yang W., Cao Z., Li W., Chen Z., Wu Y.;
+RT   "Plectasin, first animal toxin-like fungal defensin blocking potassium
+RT   channels through recognizing channel pore region.";
+RL   Toxins 7:34-42(2015).
+RN   [5] {ECO:0000312|PDB:3E7R, ECO:0000312|PDB:3E7U}
+RP   X-RAY CRYSTALLOGRAPHY (1.0 ANGSTROMS) OF 56-95 OF L- AND D-PLECTASIN,
+RP   FUNCTION, AND SYNTHESIS OF 56-95.
+RX   PubMed=19472324; DOI=10.1002/pro.127;
+RA   Mandal K., Pentelute B.L., Tereshko V., Thammavongsa V., Schneewind O.,
+RA   Kossiakoff A.A., Kent S.B.;
+RT   "Racemic crystallography of synthetic protein enantiomers used to determine
+RT   the X-ray structure of plectasin by direct methods.";
+RL   Protein Sci. 18:1146-1154(2009).
+RN   [6] {ECO:0000312|PDB:6K50, ECO:0000312|PDB:6K51}
+RP   STRUCTURE BY NMR OF 56-95 OF PLECTASIN DERIVATIVE NZ2114, AND MUTAGENESIS
+RP   OF 64-ASP--GLN-69.
+RA   Wang J.H., Mao R.Y., Liu X.H.;
+RT   "Solution structure of plectasin derivative NZ2114.";
+RL   Submitted (MAY-2019) to the PDB data bank.
+CC   -!- FUNCTION: Antimicrobial peptide that potently acts against several
+CC       species of Gram-positive bacteria (PubMed:16222292, PubMed:19472324).
+CC       It selectively inhibits peptidoglycan biosynthesis through complex
+CC       formation with the cell wall precursor lipid II (1:1 molar ratio) thus
+CC       inhibiting cell wall synthesis (PubMed:20508130). It does not disrupt
+CC       cell membranes (PubMed:20508130). Is especially active against numerous
+CC       clinical isolates of S.pneumoniae, including all 90 different serotypes
+CC       and isolates resistant to clinically used antibiotics
+CC       (PubMed:16222292). In vitro, shows considerable selectivity for
+CC       bacteria over mammalian cells (PubMed:16222292). The peptide
+CC       synthesized in D-amino acids does not show antibacterial activity
+CC       (PubMed:19472324). In vitro, acts on voltage-gated potassium channels
+CC       by moderately inhibiting mammalian Kv1.3/KCNA3 (IC(50)=2.8 uM), and
+CC       moderately inhibiting others potassium channels (PubMed:25568977).
+CC       {ECO:0000269|PubMed:16222292, ECO:0000269|PubMed:25568977}.
+CC   -!- SUBCELLULAR LOCATION: Secreted {ECO:0000305}. Host cell membrane
+CC       {ECO:0000269|PubMed:20508130}.
+CC   -!- MASS SPECTROMETRY: Mass=4398.8; Method=Electrospray;
+CC       Evidence={ECO:0000269|PubMed:16222292};
+CC   -!- PHARMACEUTICAL: Plectasin could be used as a possible antibiotic,
+CC       especially against S.pneumoniae infections.
+CC       {ECO:0000305|PubMed:16222292}.
+CC   -!- PHARMACEUTICAL: An improved derivative NZ2114 can be used as an
+CC       antibiotic for the methicillin-resistant S.aureus (MRSA).
+CC       {ECO:0000305|PubMed:19414576}.
+CC   -!- MISCELLANEOUS: In mice infected by S.pneumoniae, it has an efficacy
+CC       comparable to vancomycin in the peritoneal model and to penicillin in
+CC       the pneumonia model. {ECO:0000269|PubMed:16222292}.
+CC   -!- SIMILARITY: Belongs to the invertebrate defensin family. Type 2
+CC       subfamily. {ECO:0000255|PROSITE-ProRule:PRU00710}.
+CC   -!- WEB RESOURCE: Name=The antimicrobial peptide database;
+CC       URL="https://wangapd3.com/database/query_output.php?ID=00549";
+DR   EMBL; AJ964941; CAI83768.1; -; mRNA.
+DR   PDB; 1ZFU; NMR; -; A=56-95.
+DR   PDB; 3E7R; X-ray; 1.00 A; L=56-95.
+DR   PDB; 3E7U; X-ray; 1.35 A; X=56-95.
+DR   PDB; 6K50; NMR; -; A=56-95.
+DR   PDB; 6K51; NMR; -; A=56-95.
+DR   PDBsum; 1ZFU; -.
+DR   PDBsum; 3E7R; -.
+DR   PDBsum; 3E7U; -.
+DR   PDBsum; 6K50; -.
+DR   PDBsum; 6K51; -.
+DR   SMR; Q53I06; -.
+DR   TCDB; 1.C.47.2.1; the insect/fungal defensin (insect/fungal defensin) family.
+DR   EvolutionaryTrace; Q53I06; -.
+DR   GO; GO:0005576; C:extracellular region; IEA:UniProtKB-SubCell.
+DR   GO; GO:0020002; C:host cell plasma membrane; IEA:UniProtKB-SubCell.
+DR   GO; GO:0016020; C:membrane; IEA:UniProtKB-KW.
+DR   GO; GO:0015459; F:potassium channel regulator activity; IEA:UniProtKB-KW.
+DR   GO; GO:0090729; F:toxin activity; IEA:UniProtKB-KW.
+DR   GO; GO:0042742; P:defense response to bacterium; IEA:UniProtKB-KW.
+DR   CDD; cd00107; Knot1; 1.
+DR   Gene3D; 3.30.30.10; -; 1.
+DR   InterPro; IPR001542; Defensin_invertebrate/fungal.
+DR   InterPro; IPR003614; Scorpion_toxin-like.
+DR   InterPro; IPR036574; Scorpion_toxin-like_sf.
+DR   Pfam; PF01097; Defensin_2; 1.
+DR   SUPFAM; SSF57095; SSF57095; 1.
+DR   PROSITE; PS51378; INVERT_DEFENSINS; 1.
+PE   1: Evidence at protein level;
+KW   3D-structure; Antibiotic; Antimicrobial;
+KW   Cleavage on pair of basic residues; Defensin; Direct protein sequencing;
+KW   Disulfide bond; Host cell membrane; Host membrane;
+KW   Ion channel impairing toxin; Membrane; Pharmaceutical;
+KW   Potassium channel impairing toxin; Secreted; Signal; Toxin;
+KW   Voltage-gated potassium channel impairing toxin.
+FT   SIGNAL          1..23
+FT                   /evidence="ECO:0000255"
+FT   PROPEP          24..55
+FT                   /evidence="ECO:0000269|PubMed:16222292"
+FT                   /id="PRO_0000042753"
+FT   CHAIN           56..95
+FT                   /note="Fungal defensin plectasin"
+FT                   /id="PRO_0000042754"
+FT   REGION          61..64
+FT                   /note="Binds to membrane interface"
+FT                   /evidence="ECO:0000305|PubMed:20508130"
+FT   REGION          86..92
+FT                   /note="Binds to membrane interface"
+FT                   /evidence="ECO:0000305|PubMed:20508130"
+FT   BINDING         59
+FT                   /ligand="beta-D-GlcNAc-(1->4)-Mur2Ac(oyl-L-Ala-gamma-D-Glu-
+FT                   L-Lys-D-Ala-D-Ala)-di-trans,octa-cis-undecaprenyl
+FT                   diphosphate"
+FT                   /ligand_id="ChEBI:CHEBI:60033"
+FT                   /ligand_part="diphosphate group"
+FT                   /ligand_part_id="ChEBI:CHEBI:68549"
+FT                   /evidence="ECO:0000305|PubMed:20508130"
+FT   BINDING         67
+FT                   /ligand="beta-D-GlcNAc-(1->4)-Mur2Ac(oyl-L-Ala-gamma-D-Glu-
+FT                   L-Lys-D-Ala-D-Ala)-di-trans,octa-cis-undecaprenyl
+FT                   diphosphate"
+FT                   /ligand_id="ChEBI:CHEBI:60033"
+FT                   /evidence="ECO:0000305|PubMed:20508130"
+FT   BINDING         73
+FT                   /ligand="beta-D-GlcNAc-(1->4)-Mur2Ac(oyl-L-Ala-gamma-D-Glu-
+FT                   L-Lys-D-Ala-D-Ala)-di-trans,octa-cis-undecaprenyl
+FT                   diphosphate"
+FT                   /ligand_id="ChEBI:CHEBI:60033"
+FT                   /ligand_part="D-gamma-glutamate residue"
+FT                   /evidence="ECO:0000305|PubMed:20508130"
+FT   DISULFID        59..85
+FT                   /evidence="ECO:0000269|PubMed:16222292,
+FT                   ECO:0000269|PubMed:19472324, ECO:0007744|PDB:1ZFU,
+FT                   ECO:0007744|PDB:3E7U"
+FT   DISULFID        70..92
+FT                   /evidence="ECO:0000269|PubMed:16222292,
+FT                   ECO:0000269|PubMed:19472324, ECO:0007744|PDB:1ZFU,
+FT                   ECO:0007744|PDB:3E7U"
+FT   DISULFID        74..94
+FT                   /evidence="ECO:0000269|PubMed:16222292,
+FT                   ECO:0000269|PubMed:19472324, ECO:0007744|PDB:1ZFU,
+FT                   ECO:0007744|PDB:3E7U"
+FT   MUTAGEN         64..69
+FT                   /note="DEDDMQ->NEDDLR: Plectasin derivative NZ2114;
+FT                   increase in antibacterial spectrum by including the
+FT                   methicillin-resistant A.aureus (MRSA)."
+FT                   /evidence="ECO:0000269|PubMed:19414576, ECO:0000305|Ref.6"
+FT   MUTAGEN         67
+FT                   /note="D->A,C,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y: Complete
+FT                   loss of antibacterial activity."
+FT                   /evidence="ECO:0000269|PubMed:20508130"
+FT   MUTAGEN         84
+FT                   /note="Y->A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W: Complete
+FT                   loss of antibacterial activity."
+FT                   /evidence="ECO:0000269|PubMed:20508130"
+FT   MUTAGEN         86
+FT                   /note="A->C,D,E,F,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y: Complete
+FT                   loss of antibacterial activity."
+FT                   /evidence="ECO:0000269|PubMed:20508130"
+FT   MUTAGEN         86
+FT                   /note="A->G: No change of antibacterial activity."
+FT                   /evidence="ECO:0000269|PubMed:20508130"
+FT   MUTAGEN         88
+FT                   /note="G->A,C,D,E,F,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y: Complete
+FT                   loss of antibacterial activity."
+FT                   /evidence="ECO:0000269|PubMed:20508130"
+FT   MUTAGEN         93
+FT                   /note="K->A,C,D,E,F,G,H,I,L,M,N,P,Q,S,T,V,W,Y: Complete
+FT                   loss of antibacterial activity."
+FT                   /evidence="ECO:0000269|PubMed:20508130"
+FT   MUTAGEN         93
+FT                   /note="K->R: No change of antibacterial activity."
+FT                   /evidence="ECO:0000269|PubMed:20508130"
+FT   TURN            57..59
+FT                   /evidence="ECO:0007829|PDB:6K51"
+FT   STRAND          62..64
+FT                   /evidence="ECO:0007829|PDB:1ZFU"
+FT   HELIX           67..76
+FT                   /evidence="ECO:0007829|PDB:3E7R"
+FT   STRAND          82..86
+FT                   /evidence="ECO:0007829|PDB:3E7R"
+FT   TURN            87..90
+FT                   /evidence="ECO:0007829|PDB:3E7R"
+FT   STRAND          91..95
+FT                   /evidence="ECO:0007829|PDB:3E7R"
+**
+**   #################    INTERNAL SECTION    ##################
+**EV ECO:0000255; -; XXX; 01-JAN-1900.
+**EV ECO:0000255; PROSITE-ProRule:PRU00710; XXX; 01-JAN-1900.
+**EV ECO:0000269; PubMed:16222292; FLO; 19-DEC-2019.
+**EV ECO:0000269; PubMed:19414576; FLO; 18-DEC-2019.
+**EV ECO:0000269; PubMed:19472324; FLO; 19-DEC-2019.
+**EV ECO:0000269; PubMed:20508130; FLO; 19-DEC-2019.
+**EV ECO:0000269; PubMed:25568977; FLO; 17-DEC-2019.
+**EV ECO:0000303; PubMed:16222292; FLO; 16-DEC-2019.
+**EV ECO:0000303; PubMed:19414576; FLO; 19-DEC-2019.
+**EV ECO:0000303; PubMed:19472324; FLO; 16-DEC-2019.
+**EV ECO:0000303; PubMed:20508130; FLO; 19-DEC-2019.
+**EV ECO:0000305; -; XXX; 01-JAN-1900.
+**EV ECO:0000305; PubMed:16222292; FLO; 16-DEC-2019.
+**EV ECO:0000305; PubMed:19414576; FLO; 19-DEC-2019.
+**EV ECO:0000305; PubMed:20508130; FLO; 20-DEC-2019.
+**EV ECO:0000305; Ref.6; FLO; 19-DEC-2019.
+**EV ECO:0000312; PDB:1ZFU; FLO; 16-DEC-2019.
+**EV ECO:0000312; PDB:3E7R; FLO; 16-DEC-2019.
+**EV ECO:0000312; PDB:3E7U; FLO; 16-DEC-2019.
+**EV ECO:0000312; PDB:6K50; FLO; 18-DEC-2019.
+**EV ECO:0000312; PDB:6K51; FLO; 18-DEC-2019.
+**EV ECO:0007744; PDB:1ZFU; FLO; 19-DEC-2019.
+**EV ECO:0007744; PDB:3E7U; FLO; 19-DEC-2019.
+**EV ECO:0007829; PDB:1ZFU; -; 19-DEC-2019.
+**EV ECO:0007829; PDB:3E7R; -; 08-JAN-2020.
+**EV ECO:0007829; PDB:6K51; -; 08-JAN-2020.
+**YY The difference between calculated (4401.99) and measured (4398.8)
+**YY mass cannot be explained by annotated PTMs.
+**ZA SYP/KAX, 14-OCT-2005;
+**ZB FLO, 25-MAR-2020; FLO, 26-MAY-2021;
+SQ   SEQUENCE   95 AA;  10254 MW;  882903AB610AB018 CRC64;
+     MQFTTILSIG ITVFGLLNTG AFAAPQPVPE AYAVSDPEAH PDDFAGMDAN QLQKRGFGCN
+     GPWDEDDMQC HNHCKSIKGY KGGYCAKGGF VCKCY
+//

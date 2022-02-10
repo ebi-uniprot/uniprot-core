@@ -420,7 +420,7 @@ class FtLineConverterTest {
         assertEquals(target, altSeq);
     }
 
-    private void validateLocation(
+    static void validateLocation(
             Range floc, int start, int end, PositionModifier startF, PositionModifier endF) {
         assertEquals(floc.getStart().getModifier(), startF);
         assertEquals(floc.getEnd().getModifier(), endF);
