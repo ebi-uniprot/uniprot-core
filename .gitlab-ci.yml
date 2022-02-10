@@ -40,6 +40,7 @@ core:settings:
   rules:
     - if: '$CI_COMMIT_REF_NAME == "master"'
     - when: manual
+      allow_failure: true
 
 core:test:
   stage: test
@@ -60,6 +61,7 @@ core:test:
   rules:
     - if: '$CI_COMMIT_REF_NAME == "master"'
     - when: manual
+      allow_failure: true
 
 core:sonar:
   stage: quality
@@ -76,6 +78,7 @@ core:sonar:
   rules:
     - if: '$CI_COMMIT_REF_NAME == "master"'
     - when: manual
+      allow_failure: true
 
 core:deploy:
   stage: deploy
