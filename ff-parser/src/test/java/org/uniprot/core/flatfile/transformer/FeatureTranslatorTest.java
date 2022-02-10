@@ -362,40 +362,40 @@ class FeatureTranslatorTest {
         String converted = builder.buildString(feature);
         assertEquals(testString, converted);
     }
-    
+
     @Test
     void testBindingWithLigand() {
-       String testString = "BINDING 138\n" 
-               + "/ligand=\"heme c\"\n"
-               + "/ligand_id=\"ChEBI:CHEBI:61717\"\n"
-               + "/ligand_label=\"1\"\n"
-               + "/ligand_note=\"note 1\"\n"
-               + "/ligand_part=\"Fe\"\n"
-               + "/ligand_part_id=\"ChEBI:CHEBI:18248\"\n"               
-               + "/note=\"NAD(P)HX; via amide nitrogen\"";
+        String testString =
+                "BINDING 138\n"
+                        + "/ligand=\"heme c\"\n"
+                        + "/ligand_id=\"ChEBI:CHEBI:61717\"\n"
+                        + "/ligand_label=\"1\"\n"
+                        + "/ligand_note=\"note 1\"\n"
+                        + "/ligand_part=\"Fe\"\n"
+                        + "/ligand_part_id=\"ChEBI:CHEBI:18248\"\n"
+                        + "/note=\"NAD(P)HX; via amide nitrogen\"";
 
-       UniProtKBFeature feature = transformer.transform(testString);
-       assertNotNull(feature);
-       assertEquals(UniprotKBFeatureType.BINDING, feature.getType());
-       assertEquals(138, feature.getLocation().getStart().getValue().intValue());
-       assertEquals(PositionModifier.EXACT, feature.getLocation().getStart().getModifier());
-       assertEquals(138, feature.getLocation().getEnd().getValue().intValue());
-       assertEquals(PositionModifier.EXACT, feature.getLocation().getEnd().getModifier());
+        UniProtKBFeature feature = transformer.transform(testString);
+        assertNotNull(feature);
+        assertEquals(UniprotKBFeatureType.BINDING, feature.getType());
+        assertEquals(138, feature.getLocation().getStart().getValue().intValue());
+        assertEquals(PositionModifier.EXACT, feature.getLocation().getStart().getModifier());
+        assertEquals(138, feature.getLocation().getEnd().getValue().intValue());
+        assertEquals(PositionModifier.EXACT, feature.getLocation().getEnd().getModifier());
 
-       Ligand ligand = feature.getLigand();
-       assertNotNull(ligand);
-       assertEquals("heme c", ligand.getName());
-       assertEquals("ChEBI:CHEBI:61717", ligand.getId());
-       assertEquals("1", ligand.getLabel());
-       assertEquals("note 1", ligand.getNote());
-       
-       LigandPart ligandPart = feature.getLigandPart();
-       assertEquals("Fe", ligandPart.getName());
-       assertEquals("ChEBI:CHEBI:18248", ligandPart.getId());
-       assertNull(ligandPart.getLabel());
-       assertNull(ligandPart.getNote());
-       
-       assertEquals("NAD(P)HX; via amide nitrogen", feature.getDescription().getValue());
-      
-   }
+        Ligand ligand = feature.getLigand();
+        assertNotNull(ligand);
+        assertEquals("heme c", ligand.getName());
+        assertEquals("ChEBI:CHEBI:61717", ligand.getId());
+        assertEquals("1", ligand.getLabel());
+        assertEquals("note 1", ligand.getNote());
+
+        LigandPart ligandPart = feature.getLigandPart();
+        assertEquals("Fe", ligandPart.getName());
+        assertEquals("ChEBI:CHEBI:18248", ligandPart.getId());
+        assertNull(ligandPart.getLabel());
+        assertNull(ligandPart.getNote());
+
+        assertEquals("NAD(P)HX; via amide nitrogen", feature.getDescription().getValue());
+    }
 }

@@ -75,26 +75,26 @@ public class FeatureConverter implements Converter<FeatureType, UniProtKBFeature
                             .build();
         }
 
-        UniProtKBFeatureBuilder builder =  new UniProtKBFeatureBuilder()
-                .type(type)
-                .location(location)
-                .featureId(featureId)
-                .description(description)
-                .alternativeSequence(altSeq)
-                .evidencesSet(evidences);
-       
-        if(Utils.notNull(xmlObj.getLigand())) {
-        	Ligand ligand = ligandConverter.fromXml(xmlObj.getLigand());
-        	builder.ligand(ligand);
-        }
-        
-        if(Utils.notNull(xmlObj.getLigandPart())) {
-        	LigandPart ligandPart = ligandPartConverter.fromXml(xmlObj.getLigandPart());
-        	builder.ligandPart(ligandPart);
-        }
-        
-        return builder.build();
+        UniProtKBFeatureBuilder builder =
+                new UniProtKBFeatureBuilder()
+                        .type(type)
+                        .location(location)
+                        .featureId(featureId)
+                        .description(description)
+                        .alternativeSequence(altSeq)
+                        .evidencesSet(evidences);
 
+        if (Utils.notNull(xmlObj.getLigand())) {
+            Ligand ligand = ligandConverter.fromXml(xmlObj.getLigand());
+            builder.ligand(ligand);
+        }
+
+        if (Utils.notNull(xmlObj.getLigandPart())) {
+            LigandPart ligandPart = ligandPartConverter.fromXml(xmlObj.getLigandPart());
+            builder.ligandPart(ligandPart);
+        }
+
+        return builder.build();
     }
 
     @Override
@@ -133,16 +133,15 @@ public class FeatureConverter implements Converter<FeatureType, UniProtKBFeature
                 xmlFeature.getVariation().addAll(altSeq.getAlternativeSequences());
         }
         updateConflictFeature(xmlFeature, uniObj);
-        
-        if(Utils.notNull(uniObj.getLigand())){
-        	xmlFeature.setLigand(ligandConverter.toXml(uniObj.getLigand()));
+
+        if (Utils.notNull(uniObj.getLigand())) {
+            xmlFeature.setLigand(ligandConverter.toXml(uniObj.getLigand()));
         }
-        
-        if(Utils.notNull(uniObj.getLigandPart())){
-        	xmlFeature.setLigandPart(ligandPartConverter.toXml(uniObj.getLigandPart()));
+
+        if (Utils.notNull(uniObj.getLigandPart())) {
+            xmlFeature.setLigandPart(ligandPartConverter.toXml(uniObj.getLigandPart()));
         }
-        
-        
+
         return xmlFeature;
     }
 
