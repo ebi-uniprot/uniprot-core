@@ -92,30 +92,30 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
         if (Objects.nonNull(node) && !processedIds.contains(node.getId())) {
             processedIds.add(node.getId());
             if (!relatedIds.isEmpty()) {// process children in dfs fashion
-                for (String child : relatedIds) {
-                    SubcellularLocationEntryImpl childNode = nameEntryMap.get(trimSpacesAndRemoveLastDot(child));
+                for (String relatedId : relatedIds) {
+                    SubcellularLocationEntryImpl relatedSLEntry = nameEntryMap.get(trimSpacesAndRemoveLastDot(relatedId));
                     Field relationField;
-                    List<SubcellularLocationEntry> children;
+                    List<SubcellularLocationEntry> relatedSLEntries;
                     if(relationType == IS_A) {
                         relationField = node.getClass().getDeclaredField("isA");
-                        children = node.getIsA().isEmpty() ? new ArrayList<>() : node.getIsA();
+                        relatedSLEntries = node.getIsA().isEmpty() ? new ArrayList<>() : node.getIsA();
                     } else {
                         relationField = node.getClass().getDeclaredField("partOf");
-                        children = node.getPartOf().isEmpty() ? new ArrayList<>() : node.getPartOf();
+                        relatedSLEntries = node.getPartOf().isEmpty() ? new ArrayList<>() : node.getPartOf();
                     }
                     relationField.setAccessible(true);
-                    children.add(childNode);
-                    relationField.set(node, children);
-                    SubcellularFileEntry rawChildEntry = idFileEntryMap.get(child);
-                    if(Objects.nonNull(rawChildEntry)) {
+                    relatedSLEntries.add(relatedSLEntry);
+                    relationField.set(node, relatedSLEntries);
+                    SubcellularFileEntry relatedSLFileEntry = idFileEntryMap.get(relatedId);
+                    if(Objects.nonNull(relatedSLFileEntry)) {
                         List<String> childRelatedIds;
                         if (relationType == IS_A) {
-                            childRelatedIds = rawChildEntry.hi;
+                            childRelatedIds = relatedSLFileEntry.hi;
                         } else {
-                            childRelatedIds = rawChildEntry.hp;
+                            childRelatedIds = relatedSLFileEntry.hp;
                         }
                         // call for the child
-                        updateRelationship(relationType, childRelatedIds, rawChildEntry, idFileEntryMap, processedIds, nameEntryMap);
+                        updateRelationship(relationType, childRelatedIds, relatedSLFileEntry, idFileEntryMap, processedIds, nameEntryMap);
                     }
                 }
             }
