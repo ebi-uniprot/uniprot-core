@@ -21,7 +21,7 @@ public class ChebiFileReader extends AbstractFileReader<ChebiEntry> {
     private static final String RELATED_MICROSPECIES_PREFIX =
             "relationship: has_major_microspecies_at_pH_7_3 CHEBI:";
     private static final Pattern SYNONYM_PATTERN =
-            Pattern.compile("^property_value: hasSynonym\\s+\"(.*)\"\\s.*$");
+            Pattern.compile("^property_value: hasSynonym\\s{1,4}\"(.*)\"\\s.*$");
     private static final Pattern INCHI_PATTERN =
             Pattern.compile("^property_value: \\S+chebi/inchikey\\s+\"(.*)\"\\s.*$");
 
