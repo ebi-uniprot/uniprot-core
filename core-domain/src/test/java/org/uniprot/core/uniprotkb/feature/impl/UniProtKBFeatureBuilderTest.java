@@ -41,14 +41,14 @@ class UniProtKBFeatureBuilderTest {
 
     @Test
     void canSetLigand() {
-    	Ligand ligand = new LigandImpl("aname", "aId", "alabel", "anote");
+        Ligand ligand = new LigandImpl("aname", "aId", "alabel", "anote");
         UniProtKBFeature obj = new UniProtKBFeatureBuilder().ligand(ligand).build();
         assertEquals(ligand, obj.getLigand());
     }
-    
+
     @Test
     void canSetLigandPart() {
-    	LigandPart ligandPart = new LigandPartImpl("aname", "aId", "alabel", "anote");
+        LigandPart ligandPart = new LigandPartImpl("aname", "aId", "alabel", "anote");
         UniProtKBFeature obj = new UniProtKBFeatureBuilder().ligandPart(ligandPart).build();
         assertEquals(ligandPart, obj.getLigandPart());
     }

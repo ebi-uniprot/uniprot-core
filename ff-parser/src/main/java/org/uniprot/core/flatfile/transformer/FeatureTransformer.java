@@ -113,10 +113,9 @@ public class FeatureTransformer {
                 builder.description(result.getKey());
             }
         }
-        
-        if(featureType == UniprotKBFeatureType.BINDING) {         
-            annotation = extractLigand(builder,  annotation) ;   
-            
+
+        if (featureType == UniprotKBFeatureType.BINDING) {
+            annotation = extractLigand(builder, annotation);
         }
         String sequence = "";
         String[] sToken = annotation.split(":");
@@ -136,7 +135,7 @@ public class FeatureTransformer {
     }
 
     private String extractLigand(UniProtKBFeatureBuilder builder, String annotation) {
-    	Map.Entry<String, String> entry = extractToken(annotation, LIGAND_PART_NOTE);
+        Map.Entry<String, String> entry = extractToken(annotation, LIGAND_PART_NOTE);
         annotation = entry.getKey();
         String ligandPartNote = entry.getValue();
         entry = extractToken(annotation, LIGAND_PART_LABEL);
@@ -147,20 +146,17 @@ public class FeatureTransformer {
         String ligandPartId = entry.getValue();
         entry = extractToken(annotation, LIGAND_PART);
         annotation = entry.getKey();
-        String ligandPartName= entry.getValue();
-        
-        if(!Strings.isNullOrEmpty(ligandPartName)) {
-        	LigandPartBuilder ligandPartBuilder = new LigandPartBuilder();
-        	
-        	ligandPartBuilder.name(ligandPartName);
-            if(!Strings.isNullOrEmpty(ligandPartId))
-            	ligandPartBuilder.id(ligandPartId);
-            if(!Strings.isNullOrEmpty(ligandPartLabel))
-            	ligandPartBuilder.label(ligandPartLabel);
-            if(!Strings.isNullOrEmpty(ligandPartNote))
-            	ligandPartBuilder.note(ligandPartNote);
+        String ligandPartName = entry.getValue();
+
+        if (!Strings.isNullOrEmpty(ligandPartName)) {
+            LigandPartBuilder ligandPartBuilder = new LigandPartBuilder();
+
+            ligandPartBuilder.name(ligandPartName);
+            if (!Strings.isNullOrEmpty(ligandPartId)) ligandPartBuilder.id(ligandPartId);
+            if (!Strings.isNullOrEmpty(ligandPartLabel)) ligandPartBuilder.label(ligandPartLabel);
+            if (!Strings.isNullOrEmpty(ligandPartNote)) ligandPartBuilder.note(ligandPartNote);
             builder.ligandPart(ligandPartBuilder.build());
-         }
+        }
         entry = extractToken(annotation, LIGAND_NOTE);
         annotation = entry.getKey();
         String ligandNote = entry.getValue();
@@ -172,24 +168,20 @@ public class FeatureTransformer {
         String ligandId = entry.getValue();
         entry = extractToken(annotation, LIGAND);
         annotation = entry.getKey();
-        String ligandName= entry.getValue();
-        if(!Strings.isNullOrEmpty(ligandName)) {
-           LigandBuilder ligandBuilder = new LigandBuilder();
-           ligandBuilder.name(ligandName);
-           if(!Strings.isNullOrEmpty(ligandId))
-        	   ligandBuilder.id(ligandId);
-           if(!Strings.isNullOrEmpty(ligandLabel))
-        	   ligandBuilder.label(ligandLabel);
-           if(!Strings.isNullOrEmpty(ligandNote))
-        	   ligandBuilder.note(ligandNote);
-           builder.ligand(ligandBuilder.build());
+        String ligandName = entry.getValue();
+        if (!Strings.isNullOrEmpty(ligandName)) {
+            LigandBuilder ligandBuilder = new LigandBuilder();
+            ligandBuilder.name(ligandName);
+            if (!Strings.isNullOrEmpty(ligandId)) ligandBuilder.id(ligandId);
+            if (!Strings.isNullOrEmpty(ligandLabel)) ligandBuilder.label(ligandLabel);
+            if (!Strings.isNullOrEmpty(ligandNote)) ligandBuilder.note(ligandNote);
+            builder.ligand(ligandBuilder.build());
         }
-       
-        return annotation;
-        
-	}
 
-	private Pair<String, AlternativeSequence> updateFeatureDescription(
+        return annotation;
+    }
+
+    private Pair<String, AlternativeSequence> updateFeatureDescription(
             UniprotKBFeatureType type, String text) {
         String description = "";
         if (type == UniprotKBFeatureType.CONFLICT) {

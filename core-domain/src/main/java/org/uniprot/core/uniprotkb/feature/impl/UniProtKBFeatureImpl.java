@@ -71,31 +71,32 @@ public class UniProtKBFeatureImpl
         return Objects.equals(getFeatureId(), that.getFeatureId())
                 && Objects.equals(getAlternativeSequence(), that.getAlternativeSequence())
                 && Objects.equals(ligand, that.ligand)
-                && Objects.equals(ligandPart, that.ligandPart)
-                ;
+                && Objects.equals(ligandPart, that.ligandPart);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getFeatureId(), alternativeSequence, ligand, ligandPart);
+        return Objects.hash(
+                super.hashCode(), getFeatureId(), alternativeSequence, ligand, ligandPart);
     }
 
-	@Override
-	public Ligand getLigand() {
-		return this.ligand;
-	}
-	
-	@Override
-	public LigandPart getLigandPart() {
-		return this.ligandPart;
-	}
+    @Override
+    public Ligand getLigand() {
+        return this.ligand;
+    }
 
-	@Override
-	public boolean hasLigand() {
-		 return Utils.notNull(this.ligand) && (getType() ==UniprotKBFeatureType.BINDING);
-	}
-	@Override
-	public boolean hasLigandPart() {
-		 return Utils.notNull(this.ligandPart) && (getType() ==UniprotKBFeatureType.BINDING);
-	}
+    @Override
+    public LigandPart getLigandPart() {
+        return this.ligandPart;
+    }
+
+    @Override
+    public boolean hasLigand() {
+        return Utils.notNull(this.ligand) && (getType() == UniprotKBFeatureType.BINDING);
+    }
+
+    @Override
+    public boolean hasLigandPart() {
+        return Utils.notNull(this.ligandPart) && (getType() == UniprotKBFeatureType.BINDING);
+    }
 }

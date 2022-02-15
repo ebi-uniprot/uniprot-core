@@ -200,8 +200,7 @@ public class UniprotKBJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(UniProtKBFeature.class, UniProtKBFeatureImpl.class);
         mod.addAbstractTypeMapping(Ligand.class, LigandImpl.class);
         mod.addAbstractTypeMapping(LigandPart.class, LigandPartImpl.class);
-        
-        
+
         mod.addAbstractTypeMapping(UniProtKBDatabase.class, UniProtKBDatabaseImpl.class);
 
         mod.addAbstractTypeMapping(Database.class, DefaultDatabase.class);

@@ -52,9 +52,9 @@ public abstract class AbstractFeatureLineBuilder extends FFLineBuilderAbstr<UniP
         lines.addAll(buildFtIdLines(f, includeFFMarkings));
         return lines;
     }
-    
-    protected List<String> buildLigands (UniProtKBFeature f, boolean includeFFMarkings){
-    	return List.of();
+
+    protected List<String> buildLigands(UniProtKBFeature f, boolean includeFFMarkings) {
+        return List.of();
     }
 
     protected List<String> buildFtHeaderLines(UniProtKBFeature f, boolean includeFFMarkings) {
