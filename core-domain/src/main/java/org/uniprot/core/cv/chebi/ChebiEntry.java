@@ -16,4 +16,6 @@ public interface ChebiEntry extends Serializable {
     String getInchiKey();
 
     List<ChebiEntry> getRelatedIds();
+
+    List<String> getSynonyms();
 }
