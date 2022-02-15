@@ -120,6 +120,12 @@ Generated on: 2020.04.04 at 07:45:45 PM BST
     <bindings scd="~tns:evidencedStringType">
       <class ref="org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType"/>
     </bindings>
+     <bindings scd="~tns:ligandType">
+      <class ref="org.uniprot.core.xml.jaxb.uniprot.LigandType"/>
+    </bindings>
+     <bindings scd="~tns:ligandPartType">
+      <class ref="org.uniprot.core.xml.jaxb.uniprot.LigandPartType"/>
+    </bindings>
   </bindings>
 </bindings>
 
