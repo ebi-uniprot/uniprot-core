@@ -36,7 +36,8 @@ public enum ExclusionReason implements EnumDisplay {
     FRAGMENTED_ASSEMBLY("fragmented assembly"),
     REFSEQ_ANNOTATION_FAILED("RefSeq annotation failed"),
     DERIVED_FROM_LARGE_SCALE_PROJECT("derived from large-scale project"),
-    FROM_LARGE_MULTI_ISOLATE_PROJECT("from large multi-isolate project");
+    FROM_LARGE_MULTI_ISOLATE_PROJECT("from large multi-isolate project"),
+    DELAYED_FOR_FURTHER_ANALYSIS("delayed for further analysis");
 
     private final String displayName;
 
