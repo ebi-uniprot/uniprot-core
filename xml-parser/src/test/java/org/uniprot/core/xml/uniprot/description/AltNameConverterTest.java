@@ -77,6 +77,25 @@ class AltNameConverterTest {
         assertEquals(altName, converted);
     }
 
+    @Test
+    void testNoFullName() {
+        List<Evidence> evidences = createEvidences();
+        List<Name> shortNames = createShortNames();
+        List<EC> ecNumbers = createECNumbers();
+        ProteinName altName = createProteinAltName(null, shortNames, ecNumbers);
+        EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
+        ECConverter ecConverter = new ECConverter(evRefMapper);
+        NameConverter nameConverter = new NameConverter(evRefMapper);
+        AltNameConverter converter = new AltNameConverter(nameConverter, ecConverter);
+
+        AlternativeName xmlObj = converter.toXml(altName);
+
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlObj, AlternativeName.class, "alternativeName"));
+        ProteinName converted = converter.fromXml(xmlObj);
+        assertEquals(altName, converted);
+    }
+
     private List<Name> createShortNames() {
         List<Evidence> evidences = createEvidences();
         List<Name> shortNames = new ArrayList<>();
