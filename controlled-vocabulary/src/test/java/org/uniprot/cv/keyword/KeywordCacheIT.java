@@ -10,8 +10,10 @@ import java.util.Set;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class KeywordCacheIT {
     private static List<KeywordEntry> keywords;
 
