@@ -29,9 +29,9 @@ class KeywordCacheIT {
                 keywords.stream().filter(val -> val.getKeyword().getId().equals(acc)).findFirst();
         assertTrue(opVal.isPresent());
         List<KeywordEntry> children =
-                opVal.map(val -> val.getChildren()).orElse(Collections.emptyList());
+                opVal.map(KeywordEntry::getChildren).orElse(Collections.emptyList());
         Set<KeywordEntry> parents =
-                opVal.map(val -> val.getParents()).orElse(Collections.emptySet());
+                opVal.map(KeywordEntry::getParents).orElse(Collections.emptySet());
         assertFalse(children.isEmpty());
         assertTrue(parents.isEmpty());
     }
@@ -58,9 +58,9 @@ class KeywordCacheIT {
                 keywords.stream().filter(val -> val.getKeyword().getId().equals(acc)).findFirst();
         assertTrue(opVal.isPresent());
         List<KeywordEntry> children =
-                opVal.map(val -> val.getChildren()).orElse(Collections.emptyList());
+                opVal.map(KeywordEntry::getChildren).orElse(Collections.emptyList());
         Set<KeywordEntry> parents =
-                opVal.map(val -> val.getParents()).orElse(Collections.emptySet());
+                opVal.map(KeywordEntry::getParents).orElse(Collections.emptySet());
         assertFalse(parents.isEmpty());
         assertFalse(children.isEmpty());
     }
