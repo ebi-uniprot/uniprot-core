@@ -9,6 +9,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.uniprot.core.cv.keyword.KeywordEntry;
@@ -22,6 +23,7 @@ class KeywordCacheIT {
         keywords = KeywordCache.INSTANCE.get("keyword/keywlist.txt");
     }
 
+    @Disabled("Enable after TRM-27638")
     @Test
     void testWithMultiChildren() {
         String acc = "KW-0869";
@@ -51,6 +53,7 @@ class KeywordCacheIT {
         assertTrue(children.isEmpty());
     }
 
+    @Disabled("Enable after TRM-27638")
     @Test
     void testWithParentsAndChildren() {
         String acc = "KW-0540";
