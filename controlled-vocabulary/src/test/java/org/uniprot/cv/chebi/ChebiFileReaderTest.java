@@ -111,15 +111,15 @@ class ChebiFileReaderTest {
     }
 
     @Test
-    void extractRelatedIdsFromMicrospecies() {
+    void extractRelatedIdsFromMajorMicrospecies() {
         String line =
                 "relationship: has_major_microspecies_at_pH_7_3 CHEBI:138675 ! gas molecular entity";
         List<ChebiEntry> chebis = reader.parseLines(asList("[Term]", line));
         assertThat(chebis, hasSize(1));
         ChebiEntry chebi = chebis.get(0);
-        assertThat(chebi.getRelatedIds(), not(nullValue()));
-        assertThat(chebi.getRelatedIds().size(), is(1));
-        ChebiEntry relatedId = chebi.getRelatedIds().get(0);
+        assertThat(chebi.getMajorMicrospecies(), not(nullValue()));
+        assertThat(chebi.getMajorMicrospecies().size(), is(1));
+        ChebiEntry relatedId = chebi.getMajorMicrospecies().get(0);
         assertThat(relatedId.getId(), is("138675"));
         assertThat(relatedId.getName(), is(nullValue()));
         assertThat(relatedId.getInchiKey(), is(nullValue()));
