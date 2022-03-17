@@ -43,7 +43,7 @@ public class ChebiFileReader extends AbstractFileReader<ChebiEntry> {
                 } else if (line.startsWith(RELATED_PREFIX)) {
                     chebiBuilder.relatedIdsAdd(getRelatedEntry(line, RELATED_PREFIX));
                 } else if (line.startsWith(RELATED_MICROSPECIES_PREFIX)) {
-                    chebiBuilder.relatedIdsAdd(getRelatedEntry(line, RELATED_MICROSPECIES_PREFIX));
+                    chebiBuilder.majorMicrospeciesAdd(getRelatedEntry(line, RELATED_MICROSPECIES_PREFIX));
                 } else if (inchiMatcher.matches()) {
                     chebiBuilder.inchiKey(inchiMatcher.group(1));
                 } else if (synonymMatcher.matches()) {

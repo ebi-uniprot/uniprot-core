@@ -17,5 +17,7 @@ public interface ChebiEntry extends Serializable {
 
     List<ChebiEntry> getRelatedIds();
 
+    List<ChebiEntry> getMajorMicrospecies();
+
     List<String> getSynonyms();
 }

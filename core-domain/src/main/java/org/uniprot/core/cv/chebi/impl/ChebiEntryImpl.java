@@ -18,10 +18,11 @@ public class ChebiEntryImpl implements ChebiEntry {
     private final String inchiKey;
     private final String name;
     private final List<ChebiEntry> relatedIds;
+    private final List<ChebiEntry> majorMicrospecies;
     private final List<String> synonyms;
 
     ChebiEntryImpl() {
-        this(null, null, null, new ArrayList<>(), new ArrayList<>());
+        this(null, null, null, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
     }
 
     ChebiEntryImpl(
@@ -29,12 +30,14 @@ public class ChebiEntryImpl implements ChebiEntry {
             String name,
             String inchiKey,
             List<ChebiEntry> relatedIds,
-            List<String> synonyms) {
+            List<String> synonyms,
+            List<ChebiEntry> majorMicrospecies) {
         this.id = id;
         this.name = name;
         this.inchiKey = inchiKey;
         this.relatedIds = relatedIds;
         this.synonyms = synonyms;
+        this.majorMicrospecies = majorMicrospecies;
     }
 
     @Override
@@ -58,6 +61,11 @@ public class ChebiEntryImpl implements ChebiEntry {
     }
 
     @Override
+    public List<ChebiEntry> getMajorMicrospecies() {
+        return majorMicrospecies;
+    }
+
+    @Override
     public List<String> getSynonyms() {
         return synonyms;
     }
@@ -77,6 +85,8 @@ public class ChebiEntryImpl implements ChebiEntry {
                 + relatedIds
                 + ", synonyms="
                 + synonyms
+                + ", majorMicrospecies="
+                + majorMicrospecies
                 + '}';
     }
 
