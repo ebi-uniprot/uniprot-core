@@ -64,9 +64,10 @@ public enum GOEvidences {
         String[] tokens = line.split("\t");
         if (tokens.length < 3) return;
         if (tokens[1].equalsIgnoreCase(DEFAULT)) {
-            // FIXME Hardcoded until https://raw.githubusercontent.com/evidenceontology/evidenceontology/master/gaf-eco-mapping.txt is fixed
+            // FIXME Hardcoded until
+            // https://raw.githubusercontent.com/evidenceontology/evidenceontology/master/gaf-eco-mapping.txt is fixed
             // Remove once upstream fix the issue TRM-27651
-            if("ECO:0000501".equalsIgnoreCase(tokens[2])){
+            if ("ECO:0000501".equalsIgnoreCase(tokens[2])) {
                 tokens[2] = "ECO:0007669";
             }
             defaultMapping.put(tokens[0], tokens[2]);
