@@ -53,7 +53,7 @@ public class ChebiFileReader extends AbstractFileReader<ChebiEntry> {
                     chebiBuilder.relatedIdsAdd(
                             getRelatedEntry(line, RELATED_CONJUGATE_ACID_PREFIX));
                 } else if (line.startsWith(RELATED_MICROSPECIES_PREFIX)) {
-                    chebiBuilder.relatedIdsAdd(getRelatedEntry(line, RELATED_MICROSPECIES_PREFIX));
+                    chebiBuilder.majorMicrospeciesAdd(getRelatedEntry(line, RELATED_MICROSPECIES_PREFIX));
                 } else if (inchiMatcher.matches()) {
                     chebiBuilder.inchiKey(inchiMatcher.group(1));
                 } else if (synonymMatcher.matches()) {

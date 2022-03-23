@@ -68,6 +68,34 @@ class ChebiEntryBuilderTest {
     }
 
     @Test
+    void canSetMajorMicrospeciesIds() {
+        List<ChebiEntry> majorMicrospecie =
+                List.of(
+                        new ChebiEntryBuilder()
+                                .inchiKey("majorK")
+                                .id("majorId")
+                                .name("majorName")
+                                .build());
+        ChebiEntry chebi = new ChebiEntryBuilder().majorMicrospeciesSet(majorMicrospecie).build();
+
+        assertEquals(majorMicrospecie, chebi.getMajorMicrospecies());
+        assertNull(chebi.getName());
+        assertNull(chebi.getId());
+    }
+
+    @Test
+    void canAddMajorMicrospeciesIds() {
+        ChebiEntry majorMicrospecie =
+                new ChebiEntryBuilder().inchiKey("majorK").id("majorId").name("majorName").build();
+        ChebiEntry chebi = new ChebiEntryBuilder().majorMicrospeciesAdd(majorMicrospecie).build();
+
+        assertNotNull(chebi.getRelatedIds());
+        assertTrue(chebi.getMajorMicrospecies().contains(majorMicrospecie));
+        assertNull(chebi.getName());
+        assertNull(chebi.getId());
+    }
+
+    @Test
     void canSetSynonyms() {
         List<String> synonyms = List.of("synonym");
         ChebiEntry chebi = new ChebiEntryBuilder().synonymsSet(synonyms).build();
