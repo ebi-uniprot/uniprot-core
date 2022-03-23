@@ -33,7 +33,7 @@ class GOEvidencesTest {
     void testConvertGAFToECOStringString() {
         // IEA	GO_REF:0000037	ECO:0000501
         Optional<String> eco = GOEvidences.INSTANCE.convertGAFToECO("IEA", "GO_REF:0000037");
-        assertEquals("ECO:0000501", eco.orElse(WRONG));
+        assertEquals("ECO:0007669", eco.orElse(WRONG));
     }
 
     @Test

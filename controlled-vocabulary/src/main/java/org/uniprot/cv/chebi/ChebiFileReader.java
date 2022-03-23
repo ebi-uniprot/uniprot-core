@@ -14,6 +14,10 @@ public class ChebiFileReader extends AbstractFileReader<ChebiEntry> {
     private static final String ID_PREFIX = "id: CHEBI:";
     private static final String NAME_PREFIX = "name: ";
     private static final String RELATED_PREFIX = "is_a: CHEBI:";
+    private static final String RELATED_CONJUGATE_BASE_PREFIX =
+            "relationship: is_conjugate_base_of CHEBI:";
+    private static final String RELATED_CONJUGATE_ACID_PREFIX =
+            "relationship: is_conjugate_acid_of CHEBI:";
     private static final String RELATED_MICROSPECIES_PREFIX =
             "relationship: has_major_microspecies_at_pH_7_3 CHEBI:";
     private static final Pattern SYNONYM_PATTERN =
@@ -42,6 +46,12 @@ public class ChebiFileReader extends AbstractFileReader<ChebiEntry> {
                     chebiBuilder.name(line.substring(NAME_PREFIX.length()));
                 } else if (line.startsWith(RELATED_PREFIX)) {
                     chebiBuilder.relatedIdsAdd(getRelatedEntry(line, RELATED_PREFIX));
+                } else if (line.startsWith(RELATED_CONJUGATE_BASE_PREFIX)) {
+                    chebiBuilder.relatedIdsAdd(
+                            getRelatedEntry(line, RELATED_CONJUGATE_BASE_PREFIX));
+                } else if (line.startsWith(RELATED_CONJUGATE_ACID_PREFIX)) {
+                    chebiBuilder.relatedIdsAdd(
+                            getRelatedEntry(line, RELATED_CONJUGATE_ACID_PREFIX));
                 } else if (line.startsWith(RELATED_MICROSPECIES_PREFIX)) {
                     chebiBuilder.majorMicrospeciesAdd(getRelatedEntry(line, RELATED_MICROSPECIES_PREFIX));
                 } else if (inchiMatcher.matches()) {
