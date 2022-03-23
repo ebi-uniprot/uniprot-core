@@ -15,11 +15,21 @@ class ChebiEntryImplTest {
                     "inchiKey",
                     List.of(
                             new ChebiEntryImpl(
-                                    "relatedId", "relatedName", "relatedInchiKey", null, null, null)),
+                                    "relatedId",
+                                    "relatedName",
+                                    "relatedInchiKey",
+                                    null,
+                                    null,
+                                    null)),
                     List.of("synonym1"),
                     List.of(
                             new ChebiEntryImpl(
-                                    "majorMicrospeciesId", "majorMicrospeciesName", "majorMicrospeciesInchiKey", null, null, null)));
+                                    "majorMicrospeciesId",
+                                    "majorMicrospeciesName",
+                                    "majorMicrospeciesInchiKey",
+                                    null,
+                                    null,
+                                    null)));
 
     @Test
     void needDefaultConstructorForJsonDeserialization() {
