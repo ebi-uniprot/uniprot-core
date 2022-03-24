@@ -1864,5 +1864,11 @@
 				"xmlTag": "hits"			
 			}
 		]
-	}
+	},
+    {
+      "name": "AlphaFoldDB",
+      "displayName": "AlphaFoldDB",
+      "category": "3DS",
+      "uriLink": "https://alphafold.ebi.ac.uk/entry/%id"
+    }
 ]
