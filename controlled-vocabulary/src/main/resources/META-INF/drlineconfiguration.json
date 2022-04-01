@@ -760,6 +760,13 @@
 		]
 	},
 	{
+		"name": "GeneDB",
+		"displayName": "GeneDB",
+		"category": "GMA",
+		"uriLink": "https://www.genedb.org/gene/%id",
+		"idMappingName": "GENEDB_ID"
+	},
+	{
 		"name": "GeneID",
 		"displayName": "GeneID",
 		"category": "GMA",
@@ -877,13 +884,6 @@
 			}
 		]
 	},
-    {
-      "name": "WBParaSiteTranscriptProtein",
-      "displayName": "WBParaSite Transcript/Protein",
-      "category": "GMA",
-      "uriLink": "https://parasite.wormbase.org/id/%id",
-      "idMappingName": "WBPARASITE_TRS_PRO_ID"
-    },
 	{
 		"name": "ArachnoServer",
 		"displayName": "ArachnoServer",
@@ -1863,11 +1863,5 @@
 				"xmlTag": "hits"			
 			}
 		]
-	},
-    {
-      "name": "AlphaFoldDB",
-      "displayName": "AlphaFoldDB",
-      "category": "3DS",
-      "uriLink": "https://alphafold.ebi.ac.uk/entry/%id"
-    }
+	}
 ]
