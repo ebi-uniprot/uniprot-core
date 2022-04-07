@@ -126,6 +126,34 @@ class ChebiFileReaderTest {
     }
 
     @Test
+    void extractRelatedIdsFromIsConjugateBaseOf() {
+        String line = "relationship: is_conjugate_base_of CHEBI:138675 ! gas molecular entity";
+        List<ChebiEntry> chebis = reader.parseLines(asList("[Term]", line));
+        assertThat(chebis, hasSize(1));
+        ChebiEntry chebi = chebis.get(0);
+        assertThat(chebi.getRelatedIds(), not(nullValue()));
+        assertThat(chebi.getRelatedIds().size(), is(1));
+        ChebiEntry relatedId = chebi.getRelatedIds().get(0);
+        assertThat(relatedId.getId(), is("138675"));
+        assertThat(relatedId.getName(), is(nullValue()));
+        assertThat(relatedId.getInchiKey(), is(nullValue()));
+    }
+
+    @Test
+    void extractRelatedIdsFromIsConjugateAcidOf() {
+        String line = "relationship: is_conjugate_acid_of CHEBI:138675 ! gas molecular entity";
+        List<ChebiEntry> chebis = reader.parseLines(asList("[Term]", line));
+        assertThat(chebis, hasSize(1));
+        ChebiEntry chebi = chebis.get(0);
+        assertThat(chebi.getRelatedIds(), not(nullValue()));
+        assertThat(chebi.getRelatedIds().size(), is(1));
+        ChebiEntry relatedId = chebi.getRelatedIds().get(0);
+        assertThat(relatedId.getId(), is("138675"));
+        assertThat(relatedId.getName(), is(nullValue()));
+        assertThat(relatedId.getInchiKey(), is(nullValue()));
+    }
+
+    @Test
     void extractsInchikey() {
         String inchikey = "SBLSYFIUPXRQRY-UHFFFAOYSA-N";
         List<ChebiEntry> chebis =
