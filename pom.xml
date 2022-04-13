@@ -25,6 +25,7 @@
 		<java.version>11</java.version>
 		<skipITs>false</skipITs>
 		<skipUTs>false</skipUTs>
+		<guava.version>30.0-jre</guava.version>
 
 		<!-- Auto-formatting -->
 		<spotless.version>1.24.1</spotless.version>
@@ -47,7 +48,7 @@
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
-				<version>[30.0-jre,)</version>
+				<version>${guava.version}</version>
 			</dependency>
 
 			<!-- Logging -->
