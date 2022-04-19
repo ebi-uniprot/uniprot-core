@@ -1,7 +1,5 @@
 package org.uniprot.core.parser.fasta.uniprot;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.fasta.UniProtKBFasta;
 import org.uniprot.core.fasta.impl.UniProtKBFastaBuilder;
@@ -9,8 +7,9 @@ import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniprotkb.ProteinExistence;
 import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.description.FlagType;
-import org.uniprot.core.uniprotkb.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author lgonzales
@@ -19,7 +18,7 @@ import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 class UniProtKBFastaParserWriterTest {
 
     @Test
-    void canParseEntryWithFragmentSequence() {
+    void canWriteFastaStringWithFragmentSequence() {
         UniProtKBFasta entry =
                 new UniProtKBFastaBuilder()
                         .id("P12345")
@@ -52,7 +51,7 @@ class UniProtKBFastaParserWriterTest {
     }
 
     @Test
-    void canParseEntry() {
+    void canWriteFastaString() {
         UniProtKBFasta entry =
                 new UniProtKBFastaBuilder()
                         .id("P21802")
@@ -79,6 +78,41 @@ class UniProtKBFastaParserWriterTest {
         assertTrue(fastaValue.contains(" Protein Name Value"));
         assertTrue(fastaValue.contains(" OS=Organism Name Value OX=9606 "));
         assertTrue(fastaValue.contains("GN=Gene Name Value PE=4 SV=2\n"));
+        assertTrue(
+                fastaValue.contains(
+                        "AAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBB\nAAAAAAAAAABBBBBBBBBB"));
+    }
+
+    @Test
+    void canWriteFastaStringForIsoformEntry() {
+        UniProtKBFasta entry =
+                new UniProtKBFastaBuilder()
+                        .id("P21802-1")
+                        .uniProtkbId("P21802_HUMAN")
+                        .entryType(UniProtKBEntryType.SWISSPROT)
+                        .sequence(
+                                new SequenceBuilder(
+                                                "AAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBB")
+                                        .build())
+                        .geneName("Gene Name Value")
+                        .proteinName("Protein Name Value")
+                        .organism(
+                                new OrganismBuilder()
+                                        .taxonId(9606L)
+                                        .scientificName("Organism Name Value")
+                                        .build())
+                        .sequenceVersion(2)
+                        .proteinExistence(ProteinExistence.PREDICTED)
+                        .flagType(FlagType.PRECURSOR)
+                        .build();
+        String fastaValue = UniProtKBFastaParserWriter.toString(entry);
+        assertNotNull(fastaValue);
+        assertTrue(fastaValue.contains(">sp|P21802-1|P21802_HUMAN"));
+        assertTrue(fastaValue.contains(" Protein Name Value"));
+        assertTrue(fastaValue.contains(" OS=Organism Name Value OX=9606 "));
+        assertTrue(fastaValue.contains("GN=Gene Name Value\n"));
+        assertFalse(fastaValue.contains("PE=4"));
+        assertFalse(fastaValue.contains("SV=2"));
         assertTrue(
                 fastaValue.contains(
                         "AAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBB\nAAAAAAAAAABBBBBBBBBB"));
