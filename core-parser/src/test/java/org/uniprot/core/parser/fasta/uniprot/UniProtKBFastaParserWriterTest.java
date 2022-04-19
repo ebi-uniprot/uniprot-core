@@ -1,5 +1,7 @@
 package org.uniprot.core.parser.fasta.uniprot;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.fasta.UniProtKBFasta;
 import org.uniprot.core.fasta.impl.UniProtKBFastaBuilder;
@@ -8,8 +10,6 @@ import org.uniprot.core.uniprotkb.ProteinExistence;
 import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.description.FlagType;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author lgonzales
