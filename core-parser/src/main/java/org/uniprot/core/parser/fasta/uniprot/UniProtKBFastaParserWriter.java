@@ -12,6 +12,7 @@ import org.uniprot.core.util.Utils;
  * @since 22/10/2020
  */
 class UniProtKBFastaParserWriter {
+    private static final String ISOFORM_ACCESSION_PART = "-";
 
     private UniProtKBFastaParserWriter() {}
 
@@ -30,11 +31,20 @@ class UniProtKBFastaParserWriter {
         if (Utils.notNullNotEmpty(entry.getGeneName())) {
             sb.append(" GN=").append(entry.getGeneName());
         }
-        sb.append(" PE=").append(getProteinExist(entry.getProteinExistence()));
-        sb.append(" SV=").append(entry.getSequenceVersion());
+
+        if (isNotSwissProtIsoform(entry)) {
+            sb.append(" PE=").append(getProteinExist(entry.getProteinExistence()));
+            sb.append(" SV=").append(entry.getSequenceVersion());
+        }
+
         sb.append("\n");
         sb.append(getSequence(entry.getSequence()));
         return sb.toString();
+    }
+
+    private static boolean isNotSwissProtIsoform(UniProtKBFasta entry) {
+        return !(entry.getId().contains(ISOFORM_ACCESSION_PART)
+                && entry.getEntryType() == UniProtKBEntryType.SWISSPROT);
     }
 
     private static String getUniProtKBEntryType(UniProtKBEntryType entryType) {
