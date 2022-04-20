@@ -2,6 +2,8 @@ package org.uniprot.core.flatfile.antlr;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotKBLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotKBLineParserFactory;
@@ -9,6 +11,7 @@ import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.BiophysicochemicalProperties;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CC;
 import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.CcLineObject;
+import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.EvidencedString;
 
 class CcLineBioPhyChemPCommentParserTest {
     @Test
@@ -483,5 +486,107 @@ class CcLineBioPhyChemPCommentParserTest {
                 bp.getKpNote().get(0).getValue());
         assertEquals(
                 "ECO:0000256|HAMAP-Rule:MF_00205", bp.getKpNote().get(0).getEvidences().get(0));
+    }
+
+    @Test
+    void testKmCurlyBracket() {
+        String ccLine =
+                "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
+                        + "CC       Kinetic parameters:\n"
+                        + "CC         KM=1.04 mM for N(4)-{beta-D-GlcNAc-(1->2)-alpha-D-Man-(1->3)-[beta-D-\n"
+                        + "CC         GlcNAc-(1->2)-alpha-D-Man-(1->6)]-beta-D-Man-(1->4)-beta-D-GlcNAc-\n"
+                        + "CC         (1->4)-beta-D-GlcNAc] (soluble form) {ECO:0000269|PubMed:17006639,"
+                        + "ECO:0000269|PubMed:21592966};\n";
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
+        CcLineObject obj = parser.parse(ccLine);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof BiophysicochemicalProperties);
+        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.getObject();
+        List<String> evs = List.of("ECO:0000269|PubMed:17006639", "ECO:0000269|PubMed:21592966");
+        String text =
+                "1.04 mM for N(4)-{beta-D-GlcNAc-(1->2)-alpha-D-Man-(1->3)-[beta-D-GlcNAc-(1->2)-alpha-D-Man-(1->6)]-beta-D-Man-(1->4)-beta-D-GlcNAc-"
+                        + "(1->4)-beta-D-GlcNAc] (soluble form)";
+        EvidencedString expected = new EvidencedString(text, evs);
+        EvidencedString km1 = bp.getKms().get(0);
+        assertEquals(expected.getValue(), km1.getValue());
+        assertEquals(expected.getEvidences(), km1.getEvidences());
+    }
+
+    @Test
+    void testVmaxCurlyBracket() {
+        String ccLine =
+                "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
+                        + "CC       Kinetic parameters:\n"
+                        + "CC         Vmax=1.17 pmol/min/mg enzyme (for N(4)-{beta-D-GlcNAc-(1->2)-alpha-D-\n"
+                        + "CC         Man-(1->3)-[beta-D-GlcNAc-(1->2)-{beta-D-GlcNAc-(1->6)}-alpha-D-Man-\n"
+                        + "CC         (1->6)]-beta-D-Man-(1->4)-beta-D-GlcNAc-(1->4)-beta-D-GlcNAc}-L-Asn\n"
+                        + "CC         residue) {ECO:0000269|PubMed:17006639, ECO:0000269|PubMed:21592966};\n";
+        String text =
+                "1.17 pmol/min/mg enzyme (for N(4)-{beta-D-GlcNAc-(1->2)-alpha-D-"
+                        + "Man-(1->3)-[beta-D-GlcNAc-(1->2)-{beta-D-GlcNAc-(1->6)}-alpha-D-Man-"
+                        + "(1->6)]-beta-D-Man-(1->4)-beta-D-GlcNAc-(1->4)-beta-D-GlcNAc}-L-Asn residue)";
+
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
+        CcLineObject obj = parser.parse(ccLine);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof BiophysicochemicalProperties);
+        BiophysicochemicalProperties bp = (BiophysicochemicalProperties) cc.getObject();
+
+        List<String> evs = List.of("ECO:0000269|PubMed:17006639", "ECO:0000269|PubMed:21592966");
+
+        EvidencedString expected = new EvidencedString(text, evs);
+        EvidencedString vmax = bp.getVmaxs().get(0);
+        assertEquals(expected.getValue(), vmax.getValue());
+        assertEquals(expected.getEvidences(), vmax.getEvidences());
+    }
+
+    @Test
+    void testCurlyBracket() {
+        String ccLine =
+                "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
+                        + "CC       Kinetic parameters:\n"
+                        + "CC         KM=0.118 mM for UDP-GlcNAc {ECO:0000269|PubMed:17006639};\n"
+                        + "CC         KM=3.19 mM for N(4)-{beta-D-GlcNAc-(1->2)-alpha-D-Man-(1->3)-[beta-D-\n"
+                        + "CC         GlcNAc-(1->2)-{beta-D-GlcNAc-(1->6)}-alpha-D-Man-(1->6)]-beta-D-Man-\n"
+                        + "CC         (1->4)-beta-D-GlcNAc-(1->4)-beta-D-GlcNAc}-L-Asn residue\n"
+                        + "CC         {ECO:0000269|PubMed:17006639};\n"
+                        + "CC         KM=0.971 mM for N(4)-{beta-D-GlcNAc-(1->2)-alpha-D-Man-(1->3)-[beta-\n"
+                        + "CC         D-GlcNAc-(1->2)-alpha-D-Man-(1->6)]-beta-D-Man-(1->4)-beta-D-GlcNAc-\n"
+                        + "CC         (1->4)-beta-D-GlcNAc}-L-Asn residue {ECO:0000269|PubMed:17006639};\n"
+                        + "CC         KM=0.532 mM for N(4)-{beta-D-GlcNAc-(1->2)-alpha-D-Man-(1->3)-[beta-\n"
+                        + "CC         D-GlcNAc-(1->2)-{beta-D-GlcNAc-(1->6)}-alpha-D-Man-(1->6)]-beta-D-\n"
+                        + "CC         Man-(1->4)-beta-D-GlcNAc-(1->4)-beta-D-GlcNAc}-Asn residue\n"
+                        + "CC         {ECO:0000269|PubMed:17006639};\n"
+                        + "CC         KM=0.358 mM for UDP-GlcNAc (soluble form)\n"
+                        + "CC         {ECO:0000269|PubMed:17006639};\n"
+                        + "CC         KM=1.04 mM for N(4)-{beta-D-GlcNAc-(1->2)-alpha-D-Man-(1->3)-[beta-D-\n"
+                        + "CC         GlcNAc-(1->2)-alpha-D-Man-(1->6)]-beta-D-Man-(1->4)-beta-D-GlcNAc-\n"
+                        + "CC         (1->4)-beta-D-GlcNAc} (soluble form) {ECO:0000269|PubMed:17006639};\n"
+                        + "CC         Vmax=1.17 pmol/min/mg enzyme (for N(4)-{beta-D-GlcNAc-(1->2)-alpha-D-\n"
+                        + "CC         Man-(1->3)-[beta-D-GlcNAc-(1->2)-{beta-D-GlcNAc-(1->6)}-alpha-D-Man-\n"
+                        + "CC         (1->6)]-beta-D-Man-(1->4)-beta-D-GlcNAc-(1->4)-beta-D-GlcNAc}-L-Asn\n"
+                        + "CC         residue) {ECO:0000269|PubMed:17006639};\n"
+                        + "CC         Vmax=0.934 pmol/min/mg enzyme (for N(4)-{beta-D-GlcNAc-(1->2)-alpha-\n"
+                        + "CC         D-Man-(1->3)-[beta-D-GlcNAc-(1->2)-alpha-D-Man-(1->6)]-beta-D-Man-\n"
+                        + "CC         (1->4)-beta-D-GlcNAc-(1->4)-beta-D-GlcNAc}-L-Asn residue)\n"
+                        + "CC         {ECO:0000269|PubMed:17006639};\n"
+                        + "CC         Vmax=1.52 pmol/min/mg enzyme (for N(4)-{beta-D-GlcNAc-(1->2)-alpha-D-\n"
+                        + "CC         Man-(1->3)-[beta-D-GlcNAc-(1->2)-{beta-D-GlcNAc-(1->6)}-alpha-D-Man-\n"
+                        + "CC         (1->6)]-beta-D-Man-(1->4)-beta-D-GlcNAc-(1->4)-beta-D-GlcNAc}-Asn\n"
+                        + "CC         residue) {ECO:0000269|PubMed:17006639};\n"
+                        + "CC         Vmax=70.3 nmol/min/mg enzyme (for N(4)-{beta-D-GlcNAc-(1->2)-alpha-D-\n"
+                        + "CC         Man-(1->3)-[beta-D-GlcNAc-(1->2)-alpha-D-Man-(1->6)]-beta-D-Man-\n"
+                        + "CC         (1->4)-beta-D-GlcNAc-(1->4)-beta-D-GlcNAc-L-Asn residue} with soluble\n"
+                        + "CC         form) {ECO:0000269|PubMed:17006639};\n";
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
+        CcLineObject obj = parser.parse(ccLine);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertTrue(cc.getObject() instanceof BiophysicochemicalProperties);
     }
 }

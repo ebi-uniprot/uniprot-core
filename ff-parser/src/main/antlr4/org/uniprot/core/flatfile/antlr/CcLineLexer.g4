@@ -170,13 +170,22 @@ CC_BP_ABSORPTION: 'Absorption';
 CC_BP_ABS: 'Abs(max)='                        -> pushMode( CC_PROPERTIES_TEXT_MODE );
 CC_BP_NOTE: 'Note='                           -> pushMode( CC_NOTE_LEVEL_2_MODE );
 CC_BP_KINETIC_PARAMETERS: 'Kinetic parameters';
-CC_BP_KM: 'KM='                               -> pushMode( CC_PROPERTIES_TEXT_MODE );
-CC_BP_VMAX: 'Vmax='                           -> pushMode( CC_PROPERTIES_TEXT_MODE );
+CC_BP_KM: 'KM='                               -> pushMode( CC_PROPERTIES_TEXT1_MODE );
+CC_BP_VMAX: 'Vmax='                           -> pushMode( CC_PROPERTIES_TEXT1_MODE );
 CC_BP_PH_DEPENDENCE: 'pH dependence:'         -> pushMode( CC_NOTE_LEVEL_2_MODE );
 CC_BP_REDOX_POTENTIAL: 'Redox potential:'     -> pushMode( CC_NOTE_LEVEL_2_MODE );
 CC_BP_TEMPERATURE_DEPENDENCE: 'Temperature dependence:' -> pushMode( CC_NOTE_LEVEL_2_MODE );
 CC_BP_NM : 'nm';
 CC_BP_DIGIT: '~'?[1-9][0-9]*;
+
+
+mode CC_PROPERTIES_TEXT1_MODE;
+CC_PROPERTIES_TEXT1_END : ';'                                -> type (SEMICOLON), popMode;
+CC_PROPERTIES_TEXT1_CHANGE_LINE_1: '\nCC         '           {setType(CHANGE_OF_LINE_LEVEL2);replaceChangeOfLine();};
+CC_PROPERTIES_TEXT1_CHANGE_LINE_2: '\nCC       '             {setType(CHANGE_OF_LINE);replaceChangeOfLine();};
+CC_PROPERTIES_TEXT1:                   CC_PROPERTIES_TEXT1_LETTER+ (CC_PROPERTIES_TEXT1_SPACE CC_PROPERTIES_TEXT1_LETTER+)*;
+CC_PROPERTIES_TEXT1_SPACE: ' '                               -> type (SPACE);
+fragment CC_PROPERTIES_TEXT1_LETTER: ~[ ;\n\t\r];
 
 /*
 CC   -!- INTERACTION:

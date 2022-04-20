@@ -26,6 +26,15 @@ cc_properties_text_level2 : CHANGE_OF_LINE_LEVEL2 ?
 
 cc_properties_text_level2_with_ev:
     (cc_properties_text_level2 ((SPACE|CHANGE_OF_LINE_LEVEL2) evidence)? SEMICOLON);
+    
+cc_properties2_with_bracket: (CC_PROPERTIES_TEXT1 | cc_common_text_in_bracket)+;
+    
+    cc_properties_text2_level2 : CHANGE_OF_LINE_LEVEL2 ?
+           cc_properties2_with_bracket (CHANGE_OF_LINE_LEVEL2 cc_properties2_with_bracket)*;
+           
+cc_properties_text2_level2_with_ev:
+    (cc_properties_text2_level2 SEMICOLON);
+    
 
 
 //cc_properties_note_level2 : CHANGE_OF_LINE_LEVEL2 ?
@@ -97,8 +106,8 @@ cc_biophyiochemical_kinetic: CC_HEADER_1 CC_BP_KINETIC_PARAMETERS COLON NEW_LINE
                   ((CC_HEADER_1|CC_HEADER_2) cc_biophyiochemical_kinetic_km NEW_LINE)*
                   ((CC_HEADER_1|CC_HEADER_2) cc_biophyiochemical_kinetic_bpmax NEW_LINE)*
                   ((CC_HEADER_1|CC_HEADER_2) cc_biophyiochemical_kinetic_note NEW_LINE)?;
-cc_biophyiochemical_kinetic_km: CC_BP_KM cc_properties_text_level2_with_ev;
-cc_biophyiochemical_kinetic_bpmax: CC_BP_VMAX cc_properties_text_level2_with_ev;
+cc_biophyiochemical_kinetic_km: CC_BP_KM cc_properties_text2_level2_with_ev;
+cc_biophyiochemical_kinetic_bpmax: CC_BP_VMAX cc_properties_text2_level2_with_ev;
 cc_biophyiochemical_kinetic_note: CC_BP_NOTE SPACE* cc_properties_notes_level_2;
 
 cc_interaction: CC_TOPIC_START  CC_TOPIC_INTERACTION  NEW_LINE
