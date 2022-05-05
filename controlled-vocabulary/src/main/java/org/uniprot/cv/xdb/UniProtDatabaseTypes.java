@@ -51,7 +51,8 @@ public enum UniProtDatabaseTypes {
     }
 
     private void init() {
-        String source =
+ 
+    	 String source =
                 String.join(
                         "",
                         AbstractFileReader.readLines(

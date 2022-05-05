@@ -25,8 +25,7 @@ public class CatalyticActivityFileRepository implements CatalyticActivityReposit
     private static final String RHEA_PREFIX = "RHEA:";
 
     private static final String CV_HEADER =
-            "Rhea Id\tEC numbers\tEquation\tParticipants Ids\tLeftToRight reaction Id\tRightToLeft reaction Id\t"
-                    + "EC reaction mapping status";
+            "Rhea Id\tEC numbers\tEquation\tParticipants Ids\tLeftToRight reaction Id\tRightToLeft reaction Id";
 
     public CatalyticActivityFileRepository(InputStream rheaStream) {
         oldTextToEcs = new HashMap<>();
@@ -84,7 +83,7 @@ public class CatalyticActivityFileRepository implements CatalyticActivityReposit
     }
 
     private void verifyFormat(String[] splittedLine) {
-        if (splittedLine.length < 4 || splittedLine.length > 7) {
+        if (splittedLine.length < 3 || splittedLine.length > 6) {
             throw new CatalyticActivityMappingException(
                     String.format(
                             "Malformed line. Expected between 4 and 6 columns splitted by TAB but found %d. "
@@ -119,7 +118,10 @@ public class CatalyticActivityFileRepository implements CatalyticActivityReposit
         }
 
         List<String> ecs = extractMultipleString(splittedLine[1]);
-        List<String> reactantIds = extractMultipleString(splittedLine[3]);
+        List<String> reactantIds =  List.of();
+        if(splittedLine.length > 3)
+            reactantIds= extractMultipleString(splittedLine[3]);
+
 
         return new CatalyticActivity(rheaUn, text, reactantIds, ecs, rheaLr, rheaRl);
     }

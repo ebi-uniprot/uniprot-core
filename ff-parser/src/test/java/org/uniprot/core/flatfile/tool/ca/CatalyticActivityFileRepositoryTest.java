@@ -41,7 +41,7 @@ class CatalyticActivityFileRepositoryTest {
 
     @Test
     void testGetByOldTextValid() {
-        String text = "Erythro-3-hydroxy-L-aspartate = oxaloacetate + NH(3).";
+        String text = "(6-4) photoproduct (in DNA) = 2 pyrimidine residues (in DNA).";
         CatalyticActivity catalyticActivity = repository.getByOldText(text);
         assertNotNull(catalyticActivity);
         assertEquals(text, catalyticActivity.getText());
@@ -49,7 +49,7 @@ class CatalyticActivityFileRepositoryTest {
 
     @Test
     void testGetByOldTextInValid() {
-        String text = "Erythro-3-hydroxy-L-aspartate = oxaloacetate + NH(3)";
+        String text = "(6-4) photoproduct (in DNA) = 2 pyrimidine residues (in DNA)";
         CatalyticActivity catalyticActivity = repository.getByOldText(text);
         assertNull(catalyticActivity);
     }
