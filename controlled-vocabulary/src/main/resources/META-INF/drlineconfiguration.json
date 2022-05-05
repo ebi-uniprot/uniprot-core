@@ -1026,6 +1026,15 @@
 		
 	},
 	{
+		"name": "ClinGen",
+		"displayName": "ClinGen",
+		"category": "GVD",
+		"implicit": true,
+		"linkedReason": "DR:HGNC",
+		"uriLink": "https://search.clinicalgenome.org/kb/genes/%id"
+		
+	},
+	{
 		"name": "HPA",
 		"displayName": "HPA",
 		"category": "ORG",
