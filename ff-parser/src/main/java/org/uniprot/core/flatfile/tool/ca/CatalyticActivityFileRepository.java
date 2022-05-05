@@ -118,10 +118,8 @@ public class CatalyticActivityFileRepository implements CatalyticActivityReposit
         }
 
         List<String> ecs = extractMultipleString(splittedLine[1]);
-        List<String> reactantIds =  List.of();
-        if(splittedLine.length > 3)
-            reactantIds= extractMultipleString(splittedLine[3]);
-
+        List<String> reactantIds = List.of();
+        if (splittedLine.length > 3) reactantIds = extractMultipleString(splittedLine[3]);
 
         return new CatalyticActivity(rheaUn, text, reactantIds, ecs, rheaLr, rheaRl);
     }
