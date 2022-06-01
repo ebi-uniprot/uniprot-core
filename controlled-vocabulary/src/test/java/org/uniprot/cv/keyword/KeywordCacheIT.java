@@ -9,9 +9,12 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class KeywordCacheIT {
     private static List<KeywordEntry> keywords;
 
@@ -20,6 +23,7 @@ class KeywordCacheIT {
         keywords = KeywordCache.INSTANCE.get("keyword/keywlist.txt");
     }
 
+    @Disabled("Enable after TRM-27638")
     @Test
     void testWithMultiChildren() {
         String acc = "KW-0869";
@@ -27,9 +31,9 @@ class KeywordCacheIT {
                 keywords.stream().filter(val -> val.getKeyword().getId().equals(acc)).findFirst();
         assertTrue(opVal.isPresent());
         List<KeywordEntry> children =
-                opVal.map(val -> val.getChildren()).orElse(Collections.emptyList());
+                opVal.map(KeywordEntry::getChildren).orElse(Collections.emptyList());
         Set<KeywordEntry> parents =
-                opVal.map(val -> val.getParents()).orElse(Collections.emptySet());
+                opVal.map(KeywordEntry::getParents).orElse(Collections.emptySet());
         assertFalse(children.isEmpty());
         assertTrue(parents.isEmpty());
     }
@@ -49,6 +53,7 @@ class KeywordCacheIT {
         assertTrue(children.isEmpty());
     }
 
+    @Disabled("Enable after TRM-27638")
     @Test
     void testWithParentsAndChildren() {
         String acc = "KW-0540";
@@ -56,9 +61,9 @@ class KeywordCacheIT {
                 keywords.stream().filter(val -> val.getKeyword().getId().equals(acc)).findFirst();
         assertTrue(opVal.isPresent());
         List<KeywordEntry> children =
-                opVal.map(val -> val.getChildren()).orElse(Collections.emptyList());
+                opVal.map(KeywordEntry::getChildren).orElse(Collections.emptyList());
         Set<KeywordEntry> parents =
-                opVal.map(val -> val.getParents()).orElse(Collections.emptySet());
+                opVal.map(KeywordEntry::getParents).orElse(Collections.emptySet());
         assertFalse(parents.isEmpty());
         assertFalse(children.isEmpty());
     }

@@ -19,6 +19,8 @@ public class ChebiEntryBuilder implements Builder<ChebiEntry> {
     private String name;
     private String inchiKey;
     private List<ChebiEntry> relatedIds = new ArrayList<>();
+    private List<String> synonyms = new ArrayList<>();
+    private List<ChebiEntry> majorMicrospecies = new ArrayList<>();
 
     public @Nonnull ChebiEntryBuilder id(String id) {
         this.id = id;
@@ -45,8 +47,28 @@ public class ChebiEntryBuilder implements Builder<ChebiEntry> {
         return this;
     }
 
+    public @Nonnull ChebiEntryBuilder synonymsAdd(String synonym) {
+        Utils.addOrIgnoreNull(synonym, this.synonyms);
+        return this;
+    }
+
+    public @Nonnull ChebiEntryBuilder synonymsSet(List<String> synonyms) {
+        this.synonyms = Utils.modifiableList(synonyms);
+        return this;
+    }
+
+    public @Nonnull ChebiEntryBuilder majorMicrospeciesAdd(ChebiEntry majorMicrospecies) {
+        Utils.addOrIgnoreNull(majorMicrospecies, this.majorMicrospecies);
+        return this;
+    }
+
+    public @Nonnull ChebiEntryBuilder majorMicrospeciesSet(List<ChebiEntry> majorMicrospecies) {
+        this.majorMicrospecies = Utils.modifiableList(majorMicrospecies);
+        return this;
+    }
+
     public @Nonnull ChebiEntry build() {
-        return new ChebiEntryImpl(id, name, inchiKey, relatedIds);
+        return new ChebiEntryImpl(id, name, inchiKey, relatedIds, synonyms, majorMicrospecies);
     }
 
     public static @Nonnull ChebiEntryBuilder from(@Nonnull ChebiEntry instance) {
@@ -54,6 +76,8 @@ public class ChebiEntryBuilder implements Builder<ChebiEntry> {
                 .id(instance.getId())
                 .name(instance.getName())
                 .inchiKey(instance.getInchiKey())
-                .relatedIdsSet(instance.getRelatedIds());
+                .relatedIdsSet(instance.getRelatedIds())
+                .synonymsSet(instance.getSynonyms())
+                .majorMicrospeciesSet(instance.getMajorMicrospecies());
     }
 }

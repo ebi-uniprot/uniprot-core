@@ -52,5 +52,12 @@ class ExclusionReasonTest {
         void forNullWillReturnException() {
             assertThrows(IllegalArgumentException.class, () -> ExclusionReason.typeOf(null));
         }
+
+        @Test
+        void hasDelayedForFurtherAnalysis() {
+            assertEquals(
+                    ExclusionReason.DELAYED_FOR_FURTHER_ANALYSIS,
+                    ExclusionReason.typeOf("delayed for further analysis"));
+        }
     }
 }

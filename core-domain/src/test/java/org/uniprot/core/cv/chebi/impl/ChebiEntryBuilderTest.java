@@ -68,6 +68,53 @@ class ChebiEntryBuilderTest {
     }
 
     @Test
+    void canSetMajorMicrospeciesIds() {
+        List<ChebiEntry> majorMicrospecie =
+                List.of(
+                        new ChebiEntryBuilder()
+                                .inchiKey("majorK")
+                                .id("majorId")
+                                .name("majorName")
+                                .build());
+        ChebiEntry chebi = new ChebiEntryBuilder().majorMicrospeciesSet(majorMicrospecie).build();
+
+        assertEquals(majorMicrospecie, chebi.getMajorMicrospecies());
+        assertNull(chebi.getName());
+        assertNull(chebi.getId());
+    }
+
+    @Test
+    void canAddMajorMicrospeciesIds() {
+        ChebiEntry majorMicrospecie =
+                new ChebiEntryBuilder().inchiKey("majorK").id("majorId").name("majorName").build();
+        ChebiEntry chebi = new ChebiEntryBuilder().majorMicrospeciesAdd(majorMicrospecie).build();
+
+        assertNotNull(chebi.getRelatedIds());
+        assertTrue(chebi.getMajorMicrospecies().contains(majorMicrospecie));
+        assertNull(chebi.getName());
+        assertNull(chebi.getId());
+    }
+
+    @Test
+    void canSetSynonyms() {
+        List<String> synonyms = List.of("synonym");
+        ChebiEntry chebi = new ChebiEntryBuilder().synonymsSet(synonyms).build();
+
+        assertEquals(synonyms, chebi.getSynonyms());
+    }
+
+    @Test
+    void canAddSynonyms() {
+        String synonym = "synonym";
+        ChebiEntry chebi = new ChebiEntryBuilder().synonymsAdd(synonym).build();
+
+        assertNotNull(chebi.getSynonyms());
+        assertTrue(chebi.getSynonyms().contains(synonym));
+        assertNull(chebi.getName());
+        assertNull(chebi.getId());
+    }
+
+    @Test
     void canBuildCompleteObject() {
         List<ChebiEntry> relatedIds =
                 List.of(
@@ -79,25 +126,36 @@ class ChebiEntryBuilderTest {
         String inchiKey = "inchiKey";
         String id = "id";
         String name = "name";
+        List<String> synonyms = List.of("synonym");
         ChebiEntry chebi =
                 new ChebiEntryBuilder()
                         .inchiKey(inchiKey)
                         .id(id)
                         .name(name)
                         .relatedIdsSet(relatedIds)
+                        .synonymsSet(synonyms)
                         .build();
 
         assertEquals(inchiKey, chebi.getInchiKey());
         assertEquals(id, chebi.getId());
         assertEquals(name, chebi.getName());
         assertEquals(relatedIds, chebi.getRelatedIds());
+        assertEquals(synonyms, chebi.getSynonyms());
     }
 
     @Test
     void canCreateBuilderFromInstance() {
-        ChebiEntry obj = new ChebiEntryBuilder().build();
+        ChebiEntry obj =
+                new ChebiEntryBuilder()
+                        .inchiKey("inchiKey")
+                        .id("id")
+                        .name("name")
+                        .relatedIdsSet(List.of(new ChebiEntryBuilder().build()))
+                        .synonymsSet(List.of("synonym"))
+                        .build();
         ChebiEntryBuilder builder = ChebiEntryBuilder.from(obj);
         assertNotNull(builder);
+        assertEquals(obj, builder.build());
     }
 
     @Test

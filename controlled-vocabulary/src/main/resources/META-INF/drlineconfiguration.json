@@ -168,7 +168,7 @@
 		"category": "3DS",
 		"implicit": true,
 		"linkedReason": "DR:SMR<1",
-		"uriLink": "http://salilab.org/modbase-cgi/model_search.cgi?searchkw=name&kword=%primaryAccession"
+		"uriLink": "https://swissmodel.expasy.org/interactive/?ac=%primaryAccession"
 	},
 	{
 		"name": "PDBe-KB",
@@ -760,13 +760,6 @@
 		]
 	},
 	{
-		"name": "GeneDB",
-		"displayName": "GeneDB",
-		"category": "GMA",
-		"uriLink": "https://www.genedb.org/gene/%id",
-        "idMappingName": "GENEDB_ID"
-	},
-	{
 		"name": "GeneID",
 		"displayName": "GeneID",
 		"category": "GMA",
@@ -884,7 +877,13 @@
 			}
 		]
 	},
-	
+    {
+      "name": "WBParaSiteTranscriptProtein",
+      "displayName": "WBParaSite Transcript/Protein",
+      "category": "GMA",
+      "uriLink": "https://parasite.wormbase.org/id/%id",
+      "idMappingName": "WBPARASITE_TRS_PRO_ID"
+    },
 	{
 		"name": "ArachnoServer",
 		"displayName": "ArachnoServer",
@@ -1024,6 +1023,24 @@
 		"implicit": true,
 		"linkedReason": "DR:HGNC",
 		"uriLink": "http://genatlas.medecine.univ-paris5.fr/fiche.php?symbol=%GeneName"
+		
+	},
+	{
+		"name": "ClinGen",
+		"displayName": "ClinGen",
+		"category": "GVD",
+		"implicit": true,
+		"linkedReason": "DR:HGNC",
+		"uriLink": "https://search.clinicalgenome.org/kb/genes/%id"
+		
+	},
+	{
+		"name": "GenCC",
+		"displayName": "GenCC",
+		"category": "GVD",
+		"implicit": true,
+		"linkedReason": "DR:HGNC",
+		"uriLink": "https://search.thegencc.org/genes/%id"
 		
 	},
 	{
@@ -1666,7 +1683,7 @@
 		"name": "SFLD",
 		"displayName": "SFLD",
 		"category": "FMD",
-		"uriLink": "http://sfld.rbvi.ucsf.edu/django/lookup/%id",
+		"uriLink": "https://www.ebi.ac.uk/interpro/entry/sfld/%id",
 		"attributes": [		
 			{	"name": "EntryName",
 				"xmlTag":"entry name"			
@@ -1864,5 +1881,11 @@
 				"xmlTag": "hits"			
 			}
 		]
-	}
+	},
+    {
+      "name": "AlphaFoldDB",
+      "displayName": "AlphaFoldDB",
+      "category": "3DS",
+      "uriLink": "https://alphafold.ebi.ac.uk/entry/%id"
+    }
 ]

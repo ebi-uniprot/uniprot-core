@@ -18,18 +18,30 @@ import org.uniprot.core.flatfile.parser.impl.cc.cclineobject.*;
 public class CcLineModelListener extends CcLineParserBaseListener
         implements ParseTreeObjectExtractor<CcLineObject> {
 
+    private static final String ECO = "{ECO:";
+
     /** */
     private static final long serialVersionUID = -5176453367383322865L;
 
     private CcLineObject object;
 
-    private EvidencedString getEvidencedString(
-            CcLineParser.Cc_properties_text_level2_with_evContext context) {
-        String text = context.cc_properties_text_level2().getText().trim();
-        List<String> evidence =
-                context.evidence() == null
-                        ? null
-                        : EvidenceInfo.processEvidence(context.evidence().EV_TAG());
+    private EvidencedString getEvidencedString(Cc_properties_text2_level2_with_evContext context) {
+        String text = context.cc_properties_text2_level2().getText().trim();
+        List<String> evidence = null;
+        if (text.contains(ECO)) {
+            int index1 = text.indexOf(ECO) + 1;
+            int index2 = text.lastIndexOf("}");
+            if (index2 > index1) {
+                String ev1 = text.substring(index1, index2);
+                String[] evs = ev1.split(",");
+                evidence = new ArrayList<>();
+                for (String ev : evs) {
+                    evidence.add(ev.trim());
+                }
+                text = text.substring(0, index1 - 1).trim();
+            }
+        }
+
         return EvidencedString.get(text, evidence);
     }
 
@@ -360,16 +372,16 @@ public class CcLineModelListener extends CcLineParserBaseListener
                             kineticContext.cc_biophyiochemical_kinetic_km();
             for (CcLineParser.Cc_biophyiochemical_kinetic_kmContext km :
                     ccBiophyiochemicalKineticKmContexts) {
-                CcLineParser.Cc_properties_text_level2_with_evContext c =
-                        km.cc_properties_text_level2_with_ev();
+                Cc_properties_text2_level2_with_evContext c =
+                        km.cc_properties_text2_level2_with_ev();
                 bp.getKms().add(getEvidencedString(c));
             }
 
             List<CcLineParser.Cc_biophyiochemical_kinetic_bpmaxContext> maxcontext =
                     kineticContext.cc_biophyiochemical_kinetic_bpmax();
-            for (CcLineParser.Cc_biophyiochemical_kinetic_bpmaxContext c : maxcontext) {
-                CcLineParser.Cc_properties_text_level2_with_evContext cc =
-                        c.cc_properties_text_level2_with_ev();
+            for (CcLineParser.Cc_biophyiochemical_kinetic_bpmaxContext mx : maxcontext) {
+                Cc_properties_text2_level2_with_evContext cc =
+                        mx.cc_properties_text2_level2_with_ev();
                 bp.getVmaxs().add(getEvidencedString(cc));
             }
 

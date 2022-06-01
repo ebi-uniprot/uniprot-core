@@ -293,7 +293,7 @@ class UniProtKBDatabaseTypesTest {
     void testDatabaseFieldSize() {
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(SEQUENCE_DATABASES), 6);
         verifyGroupSize(
-                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(D3_STRUCTURE_DATABASES), 11);
+                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(D3_STRUCTURE_DATABASES), 12);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(
                         PROTEIN_PROTEIN_INTERACTION_DATABASES),
@@ -304,7 +304,7 @@ class UniProtKBDatabaseTypesTest {
                 13);
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PTM_DATABASES), 9);
         verifyGroupSize(
-                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(GENERIC_VARIATION_DATABASES), 3);
+                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(GENERIC_VARIATION_DATABASES), 5);
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(D2_GEL_DATABASES), 7);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PROTEOMIC_DATABASES), 11);

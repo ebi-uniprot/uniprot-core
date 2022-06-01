@@ -51,6 +51,7 @@ public enum UniProtDatabaseTypes {
     }
 
     private void init() {
+
         String source =
                 String.join(
                         "",
