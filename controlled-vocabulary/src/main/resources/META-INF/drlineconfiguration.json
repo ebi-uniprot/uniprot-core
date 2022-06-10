@@ -95,8 +95,8 @@
 		"attributes": [
 			{
 				"name": "NucleotideSequenceId",
-				"xmlTag":"nucleotide sequence ID",
-				"uriLink":"https://www.ncbi.nlm.nih.gov/nuccore/%necleotideId"		
+				"xmlTag":"nucleotide sequence ID",	
+			    "uriLink": "https://www.ncbi.nlm.nih.gov/nuccore/%NucleotideSequenceId"
 			
 			}
 		]
