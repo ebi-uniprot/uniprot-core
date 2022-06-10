@@ -246,7 +246,7 @@
 		"name": "IntAct",
 		"displayName": "IntAct",
 		"category": "PPI",
-		"uriLink": "https://www.ebi.ac.uk/intact/interactors/id:%id*",
+		"uriLink": "https://www.ebi.ac.uk/intact/search?query=id:%primaryAccession*#interactor",
 		"attributes": [
 			{
 				"name": "Interactions",
