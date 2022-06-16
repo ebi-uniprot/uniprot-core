@@ -1,12 +1,16 @@
 package org.uniprot.core.flatfile.transformer;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.flatfile.parser.impl.ft.FeatureLineBuilderFactory;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
+import org.uniprot.core.uniprotkb.feature.Ligand;
+import org.uniprot.core.uniprotkb.feature.LigandPart;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
@@ -60,15 +64,38 @@ class FeatureTranslatorTest {
 
     @Test
     void testBinding() {
-        String testString = "BINDING 138\n/note=\"NAD(P)HX; via amide nitrogen\"";
-        UniProtKBFeature feature = transformer.transform(testString);
+    	String testString = "BINDING 138\n" 
+                + "/ligand=\"heme c\"\n"
+                + "/ligand_id=\"ChEBI:CHEBI:61717\"\n"
+                + "/ligand_label=\"1\"\n"
+                + "/ligand_note=\"note 1\"\n"
+                + "/ligand_part=\"Fe\"\n"
+                + "/ligand_part_id=\"ChEBI:CHEBI:18248\"\n"               
+                + "/note=\"NAD(P)HX; via amide nitrogen\"";
+
+    	UniProtKBFeature feature = transformer.transform(testString);
         assertNotNull(feature);
         assertEquals(UniprotKBFeatureType.BINDING, feature.getType());
         assertEquals(138, feature.getLocation().getStart().getValue().intValue());
         assertEquals(PositionModifier.EXACT, feature.getLocation().getStart().getModifier());
         assertEquals(138, feature.getLocation().getEnd().getValue().intValue());
         assertEquals(PositionModifier.EXACT, feature.getLocation().getEnd().getModifier());
-        assertEquals(UniprotKBFeatureType.BINDING, feature.getType());
+        
+        Ligand ligand = feature.getLigand();
+        assertNotNull(ligand);
+        assertEquals("heme c", ligand.getName());
+        assertEquals("ChEBI:CHEBI:61717", ligand.getId());
+        assertEquals("1", ligand.getLabel());
+        assertEquals("note 1", ligand.getNote());
+        
+       Optional<LigandPart> opligandPart = ligand.getLigandPart();
+       assertTrue(opligandPart .isPresent());
+       LigandPart ligandPart =opligandPart.get();
+        assertEquals("Fe", ligandPart.getName());
+        assertEquals("ChEBI:CHEBI:18248", ligandPart.getId());
+        assertNull(ligandPart.getLabel());
+        assertNull(ligandPart.getNote());
+        
         assertEquals("NAD(P)HX; via amide nitrogen", feature.getDescription().getValue());
         FFLineBuilder<UniProtKBFeature> builder = FeatureLineBuilderFactory.create(feature);
 

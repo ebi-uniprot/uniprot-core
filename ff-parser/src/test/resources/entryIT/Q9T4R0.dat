@@ -2,7 +2,7 @@ ID   CYB_ELIMA               Reviewed;         380 AA.
 AC   Q9T4R0; Q9T7R5; Q9T7R7;
 DT   09-MAY-2003, integrated into UniProtKB/Swiss-Prot.
 DT   01-MAY-2000, sequence version 1.
-DT   31-JAN-2018, entry version 83.
+DT   03-AUG-2022, entry version 89.
 DE   RecName: Full=Cytochrome b;
 DE   AltName: Full=Complex III subunit 3;
 DE   AltName: Full=Complex III subunit III;
@@ -31,9 +31,9 @@ CC       transfer from ubiquinol to cytochrome c. Contributes to the generation
 CC       of a proton gradient across the mitochondrial membrane that is then
 CC       used for ATP synthesis. {ECO:0000250|UniProtKB:P00157}.
 CC   -!- COFACTOR:
-CC       Name=heme; Xref=ChEBI:CHEBI:30413;
+CC       Name=heme b; Xref=ChEBI:CHEBI:60344;
 CC         Evidence={ECO:0000250|UniProtKB:P00157};
-CC       Note=Binds 2 heme groups non-covalently.
+CC       Note=Binds 2 heme b groups non-covalently.
 CC       {ECO:0000250|UniProtKB:P00157};
 CC   -!- SUBUNIT: The cytochrome bc1 complex contains 11 subunits: 3 respiratory
 CC       subunits (MT-CYB, CYC1 and UQCRFS1), 2 core proteins (UQCRC1 and
@@ -64,13 +64,13 @@ DR   EMBL; AF160555; AAF15171.1; -; Genomic_DNA.
 DR   EMBL; AF160558; AAF15174.1; -; Genomic_DNA.
 DR   EMBL; AF160559; AAF15175.1; -; Genomic_DNA.
 DR   EMBL; AF160560; AAF15176.1; -; Genomic_DNA.
+DR   AlphaFoldDB; Q9T4R0; -.
 DR   SMR; Q9T4R0; -.
-DR   GO; GO:0016021; C:integral component of membrane; IEA:UniProtKB-KW.
 DR   GO; GO:0005743; C:mitochondrial inner membrane; IEA:UniProtKB-SubCell.
 DR   GO; GO:0045275; C:respiratory chain complex III; IEA:InterPro.
 DR   GO; GO:0046872; F:metal ion binding; IEA:UniProtKB-KW.
 DR   GO; GO:0008121; F:ubiquinol-cytochrome-c reductase activity; IEA:InterPro.
-DR   GO; GO:0006122; P:mitochondrial electron transport, ubiquinol to cytochrome c; IEA:InterPro.
+DR   GO; GO:0022904; P:respiratory electron transport chain; IEA:InterPro.
 DR   CDD; cd00290; cytochrome_b_C; 1.
 DR   CDD; cd00284; Cytochrome_b_N; 1.
 DR   Gene3D; 1.20.810.10; -; 1.
@@ -118,20 +118,41 @@ FT                   /evidence="ECO:0000250|UniProtKB:P00157"
 FT   TRANSMEM        347..367
 FT                   /note="Helical"
 FT                   /evidence="ECO:0000250|UniProtKB:P00157"
-FT   METAL           83
-FT                   /note="Iron 1 (heme b562 axial ligand)"
+FT   BINDING         83
+FT                   /ligand="heme b"
+FT                   /ligand_id="ChEBI:CHEBI:60344"
+FT                   /ligand_label="b562"
+FT                   /ligand_part="Fe"
+FT                   /ligand_part_id="ChEBI:CHEBI:18248"
+FT                   /note="axial binding residue"
 FT                   /evidence="ECO:0000250|UniProtKB:P00157"
-FT   METAL           97
-FT                   /note="Iron 2 (heme b566 axial ligand)"
+FT   BINDING         97
+FT                   /ligand="heme b"
+FT                   /ligand_id="ChEBI:CHEBI:60344"
+FT                   /ligand_label="b566"
+FT                   /ligand_part="Fe"
+FT                   /ligand_part_id="ChEBI:CHEBI:18248"
+FT                   /note="axial binding residue"
 FT                   /evidence="ECO:0000250|UniProtKB:P00157"
-FT   METAL           182
-FT                   /note="Iron 1 (heme b562 axial ligand)"
+FT   BINDING         182
+FT                   /ligand="heme b"
+FT                   /ligand_id="ChEBI:CHEBI:60344"
+FT                   /ligand_label="b562"
+FT                   /ligand_part="Fe"
+FT                   /ligand_part_id="ChEBI:CHEBI:18248"
+FT                   /note="axial binding residue"
 FT                   /evidence="ECO:0000250|UniProtKB:P00157"
-FT   METAL           196
-FT                   /note="Iron 2 (heme b566 axial ligand)"
+FT   BINDING         196
+FT                   /ligand="heme b"
+FT                   /ligand_id="ChEBI:CHEBI:60344"
+FT                   /ligand_label="b566"
+FT                   /ligand_part="Fe"
+FT                   /ligand_part_id="ChEBI:CHEBI:18248"
+FT                   /note="axial binding residue"
 FT                   /evidence="ECO:0000250|UniProtKB:P00157"
 FT   BINDING         201
-FT                   /note="Ubiquinone"
+FT                   /ligand="a ubiquinone"
+FT                   /ligand_id="ChEBI:CHEBI:16389"
 FT                   /evidence="ECO:0000250|UniProtKB:P00157"
 FT   VARIANT         39
 FT                   /note="I -> V (in strain: Isolate Emaj614)"

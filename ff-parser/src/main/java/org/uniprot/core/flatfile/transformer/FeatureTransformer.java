@@ -15,13 +15,18 @@ import org.uniprot.core.Position;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.feature.FeatureLocation;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
+import org.uniprot.core.uniprotkb.feature.Ligand;
+import org.uniprot.core.uniprotkb.feature.LigandPart;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBAlternativeSequenceHelper;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
+import org.uniprot.core.uniprotkb.feature.impl.LigandBuilder;
+import org.uniprot.core.uniprotkb.feature.impl.LigandPartBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
+import org.uniprot.core.util.Utils;
 
 import com.google.common.base.Strings;
 
@@ -30,6 +35,7 @@ import com.google.common.base.Strings;
  * @date: 18 Nov 2019
  */
 public class FeatureTransformer {
+	
     private static final String FTID = "/id=\"";
     private static final String NOTE = "/note=\"";
     private static final String EVIDENCE = "/evidence=\"";
@@ -40,6 +46,14 @@ public class FeatureTransformer {
     private static final String MISSING = "Missing";
     private static final String LINE_END = "\n";
     private static final String IN_REF = "in Ref. ";
+    private static final String LIGAND = "/ligand=\"";
+    private static final String LIGAND_ID = "/ligand_id=\"";
+    private static final String LIGAND_LABEL = "/ligand_label=\"";
+    private static final String LIGAND_NOTE = "/ligand_note=\"";
+    private static final String LIGAND_PART = "/ligand_part=\"";
+    private static final String LIGAND_PART_ID = "/ligand_part_id=\"";
+    private static final String LIGAND_PART_LABEL = "/ligand_part_label=\"";
+    private static final String LIGAND_PART_NOTE = "/ligand_part_note=\"";
 
     public UniProtKBFeature transform(String annotation) {
         int index = annotation.indexOf(SPACE);
@@ -103,6 +117,12 @@ public class FeatureTransformer {
                 builder.description(result.getKey());
             }
         }
+        if(featureType ==UniprotKBFeatureType.BINDING) {
+        	Map.Entry<String, Ligand> ligandEntry = extractLigand(annotation) ; 
+        	builder.ligand(ligandEntry.getValue());
+        	annotation = ligandEntry.getKey();
+        }
+        
         String sequence = "";
         String[] sToken = annotation.split(":");
         if (sToken.length == 2) {
@@ -120,7 +140,65 @@ public class FeatureTransformer {
         return builder.build();
     }
 
-    private Pair<String, AlternativeSequence> updateFeatureDescription(
+    private Map.Entry<String, Ligand> extractLigand(String annotation) {
+    	 Map.Entry<String, String> entry = extractToken(annotation, LIGAND_PART_NOTE);
+         annotation = entry.getKey();
+         String ligandPartNote = entry.getValue();
+         entry = extractToken(annotation, LIGAND_PART_LABEL);
+         annotation = entry.getKey();
+         String ligandPartLabel = entry.getValue();
+         entry = extractToken(annotation, LIGAND_PART_ID);
+         annotation = entry.getKey();
+         String ligandPartId = entry.getValue();
+         entry = extractToken(annotation, LIGAND_PART);
+         annotation = entry.getKey();
+         String ligandPartName= entry.getValue();
+         LigandPart ligandPart = null;
+         if(!Utils.nullOrEmpty(ligandPartName)) {
+        	 LigandPartBuilder lpBuilder =new LigandPartBuilder();
+        	 lpBuilder.name(ligandPartName);
+        	 if(!Utils.nullOrEmpty(ligandPartId))
+				lpBuilder.id(ligandPartId);
+        	 if(!Utils.nullOrEmpty(ligandPartLabel))
+				lpBuilder.label(ligandPartLabel);
+        	 if(!Utils.nullOrEmpty(ligandPartNote))
+ 				lpBuilder.note(ligandPartNote);
+ 
+        	 ligandPart =  lpBuilder.build();
+          }
+         
+         entry = extractToken(annotation, LIGAND_NOTE);
+         annotation = entry.getKey();
+         String ligandNote = entry.getValue();
+         entry = extractToken(annotation, LIGAND_LABEL);
+         annotation = entry.getKey();
+         String ligandLabel = entry.getValue();
+         entry = extractToken(annotation, LIGAND_ID);
+         annotation = entry.getKey();
+         String ligandId = entry.getValue();
+         entry = extractToken(annotation, LIGAND);
+         annotation = entry.getKey();
+         String ligandName= entry.getValue();
+         Ligand ligand =null;
+         if(!Strings.isNullOrEmpty(ligandName)) {
+        	 LigandBuilder builder =new LigandBuilder();
+        	 builder.name(ligandName);
+        	 if(!Utils.nullOrEmpty(ligandId))
+        		 builder.id(ligandId);
+        	 if(!Utils.nullOrEmpty(ligandLabel))
+        		 builder.label(ligandLabel);
+        	 if(!Utils.nullOrEmpty(ligandNote))
+        		 builder.note(ligandNote);
+        	 if(ligandPart !=null) {
+        		 builder.ligandPart(ligandPart);
+        	 }
+        	 ligand =builder.build();
+         }
+        
+         return new AbstractMap.SimpleEntry<>(annotation, ligand);
+	}
+
+	private Pair<String, AlternativeSequence> updateFeatureDescription(
             UniprotKBFeatureType type, String text) {
         String description = "";
         if (type == UniprotKBFeatureType.CONFLICT) {
