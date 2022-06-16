@@ -5,7 +5,15 @@ options { tokenVocab=FtLineLexer; superClass=org.uniprot.core.flatfile.antlr.Abs
 
 ft_ft: ft_line+;
 
-ft_line: FT_HEADER ft_key ft_locations   
+ft_line: FT_HEADER ft_key ft_locations 
+		  (ft_ligand_name)?
+		  (ft_ligand_id)?
+		  (ft_ligand_label)?
+		  (ft_ligand_note)?
+		  (ft_ligand_part_name)?
+		  (ft_ligand_part_id)?
+		  (ft_ligand_part_label)?
+		  (ft_ligand_part_note)?
           (ft_note)?
           (ft_evidence )?
         (ft_id)?
@@ -22,6 +30,30 @@ ft_line: FT_HEADER ft_key ft_locations
  //ft_isoform: FT_ISOFORM_WORD (SPACE FT_ISOFORM_WORD)*;
 loc_start:   (FT_LOCATION_ISO|FT_LOCATION_2) (SPACE FT_LOCATION_ISO|FT_LOCATION_2)*;
 loc_end:    FT_LOCATION_2;
+
+ft_ligand_name: FT_LIGAND ligand_name DOUBLE_QUOTE;
+ligand_name: (FT_LIGAND_WORD)+ ((SPACE|CHANGE_OF_LINE) (FT_LIGAND_WORD)+)*;
+
+ft_ligand_id: FT_LIGAND_ID ligand_id DOUBLE_QUOTE;
+ligand_id: (FT_LIGAND_ID_WORD)+ ((SPACE|CHANGE_OF_LINE) (FT_LIGAND_ID_WORD)+)*;
+
+ft_ligand_label: FT_LIGAND_LABEL ligand_label DOUBLE_QUOTE;
+ligand_label: (FT_LIGAND_LABEL_WORD)+ ((SPACE|CHANGE_OF_LINE) (FT_LIGAND_LABEL_WORD)+)*;
+
+ft_ligand_note: FT_LIGAND_NOTE ligand_note DOUBLE_QUOTE;
+ligand_note: (FT_LIGAND_NOTE_WORD)+ ((SPACE|CHANGE_OF_LINE) (FT_LIGAND_NOTE_WORD)+)*;
+
+ft_ligand_part_name: FT_LIGAND_PT ligand_part_name DOUBLE_QUOTE;
+ligand_part_name: (FT_LIGAND_PT_WORD)+ ((SPACE|CHANGE_OF_LINE) (FT_LIGAND_PT_WORD)+)*;
+
+ft_ligand_part_id: FT_LIGAND_PT_ID ligand_part_id DOUBLE_QUOTE;
+ligand_part_id: (FT_LIGAND_PT_ID_WORD)+ ((SPACE|CHANGE_OF_LINE) (FT_LIGAND_PT_ID_WORD)+)*;
+
+ft_ligand_part_label: FT_LIGAND_PT_LABEL ligand_part_label DOUBLE_QUOTE;
+ligand_part_label: (FT_LIGAND_PT_LABEL_WORD)+ ((SPACE|CHANGE_OF_LINE) (FT_LIGAND_PT_LABEL_WORD)+)*;
+
+ft_ligand_part_note: FT_LIGAND_PT_NOTE ligand_part_note DOUBLE_QUOTE;
+ligand_part_note: (FT_LIGAND_PT_NOTE_WORD)+ ((SPACE|CHANGE_OF_LINE) (FT_LIGAND_PT_NOTE_WORD)+)*;
 
 ft_note: FT_NOTE note_text DOUBLE_QUOTE;
 note_text: (FT_NOTE_WORD)+ ((SPACE|CHANGE_OF_LINE) (FT_NOTE_WORD)+)*;

@@ -11,10 +11,13 @@ import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
 import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
+import org.uniprot.core.uniprotkb.feature.Ligand;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureDatabase;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
+import org.uniprot.core.uniprotkb.feature.impl.LigandBuilder;
+import org.uniprot.core.uniprotkb.feature.impl.LigandPartBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
 
 import com.google.common.base.Strings;
@@ -63,6 +66,8 @@ public class FtLineConverter extends EvidenceCollector
                 return convertConflictFeature(type, location, ft, evidences);
             case MUTAGEN:
                 return convertMutagenFeature(type, location, ft, evidences);
+            case BINDING:
+                return convertBindingFeature(type, location, ft, evidences);
             default:
                 return convertSimpleFeature(type, location, ft, evidences);
         }
@@ -290,7 +295,7 @@ public class FtLineConverter extends EvidenceCollector
                 .description(description)
                 .build();
     }
-
+    
     private UniProtKBFeature convertSimpleFeature(
             UniprotKBFeatureType type,
             FeatureLocation location,
@@ -310,6 +315,42 @@ public class FtLineConverter extends EvidenceCollector
         return featureBuilder.build();
     }
 
+    private UniProtKBFeature convertBindingFeature(
+            UniprotKBFeatureType type,
+            FeatureLocation location,
+            FtLineObject.FT ft,
+            List<Evidence> evidences) {
+        UniProtKBFeatureBuilder featureBuilder =
+                new UniProtKBFeatureBuilder()
+                        .type(type)
+                        .location(location)
+                        .evidencesSet(evidences)
+                        .description(ft.getFtText())
+                        .ligand(convertLigand(ft));
+
+
+        return featureBuilder.build();
+    }
+
+    private Ligand convertLigand(FtLineObject.FT ft) {
+    	LigandBuilder builder = new LigandBuilder();
+    	if (ft.getLigand() !=null) {
+    		builder.name(ft.getLigand().getName())
+    		.id(ft.getLigand().getId())
+    		.label(ft.getLigand().getLabel())
+    		.note(ft.getLigand().getNote());
+    		if(ft.getLigandPart() !=null) {
+    			LigandPartBuilder partBuilder = new LigandPartBuilder();
+    			partBuilder.name(ft.getLigandPart().getName())
+        		.id(ft.getLigandPart().getId())
+        		.label(ft.getLigandPart().getLabel())
+        		.note(ft.getLigandPart().getNote());
+    			builder.ligandPart(partBuilder.build());
+    		}
+        }
+    	return builder.build();
+    }
+    
     private FeatureLocation convertFeatureLocation(
             String sequence, String locationStart, String locationEnd) {
         Map.Entry<PositionModifier, Integer> start = convertLocation(locationStart, '<');

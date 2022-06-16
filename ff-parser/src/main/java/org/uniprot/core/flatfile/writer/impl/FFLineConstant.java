@@ -23,4 +23,5 @@ public final class FFLineConstant {
     public static final String[] SEPS = new String[] {SEPARATOR, DASH};
     public static final String SQUARE_BRACKET_LEFT = "[";
     public static final String SQUARE_BRACKET_RIGHT = "]";
+    public static final String DOUBLE_QUOTE = "\"";
 }
