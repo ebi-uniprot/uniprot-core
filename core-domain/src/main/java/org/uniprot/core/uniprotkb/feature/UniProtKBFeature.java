@@ -7,8 +7,14 @@ public interface UniProtKBFeature extends Feature<UniprotKBFeatureDatabase, Unip
     FeatureId getFeatureId();
 
     AlternativeSequence getAlternativeSequence();
+    
+    Ligand getLigand();
 
     boolean hasFeatureId();
 
     boolean hasAlternativeSequence();
+    
+    default boolean hasLigand() {
+    	return this.getType() == UniprotKBFeatureType.BINDING;
+    }
 }

@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.uniprotkb.feature.FeatureId;
+import org.uniprot.core.uniprotkb.feature.Ligand;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
@@ -37,6 +38,14 @@ class UniProtKBFeatureBuilderTest {
         assertEquals(id, obj.getFeatureId());
     }
 
+    @Test
+    void canSetLigand() {
+    	Ligand ligand = new LigandBuilder().name("Some name").id("ChEBI:CHEBI:5432").build();
+
+        UniProtKBFeature obj = new UniProtKBFeatureBuilder().ligand(ligand).build();
+        assertEquals(ligand, obj.getLigand());
+    }
+    
     @Test
     void canCreateBuilderFromInstance() {
         UniProtKBFeature obj = new UniProtKBFeatureBuilder().build();

@@ -19,6 +19,7 @@ public class UniProtKBFeatureBuilder
 
     private AlternativeSequence alternativeSequence;
     private FeatureId featureId;
+    private Ligand ligand;
 
     @Override
     public @Nonnull UniProtKBFeature build() {
@@ -28,6 +29,7 @@ public class UniProtKBFeatureBuilder
                 description,
                 featureId,
                 alternativeSequence,
+                ligand,
                 featureCrossReference,
                 evidences);
     }
@@ -48,11 +50,18 @@ public class UniProtKBFeatureBuilder
         return this;
     }
 
+    public @Nonnull UniProtKBFeatureBuilder ligand(
+            Ligand ligand) {
+        this.ligand = ligand;
+        return this;
+    }
+    
     public static @Nonnull UniProtKBFeatureBuilder from(@Nonnull UniProtKBFeature instance) {
         UniProtKBFeatureBuilder builder = new UniProtKBFeatureBuilder();
         return AbstractFeatureBuilder.from(builder, instance)
                 .alternativeSequence(instance.getAlternativeSequence())
-                .featureId(instance.getFeatureId());
+                .featureId(instance.getFeatureId())
+                .ligand(instance.getLigand());
     }
 
     @Nonnull

@@ -16,10 +16,11 @@ public class UniProtKBFeatureImpl
     private static final long serialVersionUID = -5308576363211194641L;
     private final FeatureId featureId;
     private final AlternativeSequence alternativeSequence;
+    private final Ligand ligand;
 
     // no arg constructor for JSON deserialization
     UniProtKBFeatureImpl() {
-        this(null, null, null, null, null, null, null);
+        this(null, null, null, null, null, null, null, null);
     }
 
     UniProtKBFeatureImpl(
@@ -28,11 +29,13 @@ public class UniProtKBFeatureImpl
             FeatureDescription description,
             FeatureId featureId,
             AlternativeSequence alternativeSequence,
+            Ligand ligand,
             CrossReference<UniprotKBFeatureDatabase> featureCrossReference,
             List<Evidence> evidences) {
         super(type, location, description, featureCrossReference, evidences);
         this.featureId = featureId;
         this.alternativeSequence = alternativeSequence;
+        this.ligand = ligand;
     }
 
     @Override
@@ -57,6 +60,11 @@ public class UniProtKBFeatureImpl
     }
 
     @Override
+	public Ligand getLigand() {
+		return ligand;
+	}
+    
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -70,4 +78,6 @@ public class UniProtKBFeatureImpl
     public int hashCode() {
         return Objects.hash(super.hashCode(), getFeatureId(), alternativeSequence);
     }
+
+	
 }
