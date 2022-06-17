@@ -13,6 +13,7 @@ import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.uniprotkb.feature.Ligand;
+import org.uniprot.core.uniprotkb.feature.LigandPart;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
@@ -72,7 +73,7 @@ class FTBuildTestAbstr {
             String description,
             String ftId,
             List<String> evs,
-            Ligand ligand) {
+            Ligand ligand, LigandPart ligandPart) {
         return createFeature(
                 type,
                 null,
@@ -82,7 +83,7 @@ class FTBuildTestAbstr {
                 PositionModifier.EXACT,
                 description,
                 ftId,
-                evs, ligand);
+                evs, ligand, ligandPart);
     }
     
     UniProtKBFeature createFeature(
@@ -117,7 +118,7 @@ class FTBuildTestAbstr {
             String description,
             String ftId,
             List<String> evs,
-            Ligand ligand) {
+            Ligand ligand, LigandPart ligandPart) {
         FeatureLocation location =
                 new FeatureLocation(sequence, nstart, nend, sfModifier, efModifier);
 
@@ -127,6 +128,7 @@ class FTBuildTestAbstr {
                 .description(description)
                 .featureId(ftId)
                 .ligand(ligand)
+                .ligandPart(ligandPart)
                 .evidencesSet(createEvidence(evs))
                 .build();
     }

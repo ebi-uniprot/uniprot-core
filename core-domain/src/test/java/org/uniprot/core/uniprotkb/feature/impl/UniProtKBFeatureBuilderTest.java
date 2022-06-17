@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.uniprotkb.feature.FeatureId;
 import org.uniprot.core.uniprotkb.feature.Ligand;
+import org.uniprot.core.uniprotkb.feature.LigandPart;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
@@ -44,6 +45,13 @@ class UniProtKBFeatureBuilderTest {
 
         UniProtKBFeature obj = new UniProtKBFeatureBuilder().ligand(ligand).build();
         assertEquals(ligand, obj.getLigand());
+    }
+    @Test
+    void canSetLigandPart() {
+    	LigandPart ligandPart = new LigandPartBuilder().name("Some name").id("ChEBI:CHEBI:5432").build();
+
+        UniProtKBFeature obj = new UniProtKBFeatureBuilder().ligandPart(ligandPart).build();
+        assertEquals(ligandPart, obj.getLigandPart());
     }
     
     @Test

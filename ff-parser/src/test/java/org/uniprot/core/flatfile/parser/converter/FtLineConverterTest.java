@@ -467,8 +467,8 @@ class FtLineConverterTest {
         assertEquals("ChEBI:CHEBI:1234", ftLigand.getId());
         assertEquals("A1", ftLigand.getLabel());
         assertNull(ftLigand.getNote());
-        assertTrue(ftLigand.getLigandPart().isPresent());
-        LigandPart ftLigandPart  = ftLigand.getLigandPart().get();
+        LigandPart ftLigandPart  = feature1.getLigandPart();
+        assertNotNull(ftLigandPart);
         assertEquals("Mg", ftLigandPart.getName());
         assertEquals("ChEBI:CHEBI:4325", ftLigandPart.getId());
         assertNull(ftLigandPart.getLabel());

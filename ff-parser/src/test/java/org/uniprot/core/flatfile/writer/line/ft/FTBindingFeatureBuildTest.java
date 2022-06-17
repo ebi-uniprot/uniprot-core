@@ -11,13 +11,12 @@ import org.uniprot.core.uniprotkb.feature.impl.LigandBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.LigandPartBuilder;
 
 public class FTBindingFeatureBuildTest extends FTBuildTestAbstr {
-	private Ligand createLigand(String name, String id, String label, String note, LigandPart ligandPart) {
+	private Ligand createLigand(String name, String id, String label, String note) {
 		return new LigandBuilder()
         		.name(name)
         		.id(id)
         		.label(label)
         		.note(note)
-        		.ligandPart(ligandPart)
         		.build();
     }
     
@@ -49,10 +48,10 @@ public class FTBindingFeatureBuildTest extends FTBuildTestAbstr {
         
         List<String> evs = List.of("ECO:0000255|PROSITE-ProRule:PRU01239");
 
-        Ligand ligand =createLigand("Zn(2+)", "ChEBI:CHEBI:29105", "1", "structural", null);
+        Ligand ligand =createLigand("Zn(2+)", "ChEBI:CHEBI:29105", "1", "structural");
         
         UniProtKBFeature feature =
-                createFeature(UniprotKBFeatureType.BINDING, 152, 152, null, null, evs, ligand);
+                createFeature(UniprotKBFeatureType.BINDING, 152, 152, null, null, evs, ligand, null);
         
         doTest(ftLine, feature);
         doTestStringEv(ftLineStringEv, feature);
@@ -77,10 +76,10 @@ public class FTBindingFeatureBuildTest extends FTBuildTestAbstr {
         
         List<String> evs = List.of("ECO:0000255|PROSITE-ProRule:PRU01239");
 
-        Ligand ligand =createLigand("Zn(2+)", "ChEBI:CHEBI:29105", "1", "structural", null);
+        Ligand ligand =createLigand("Zn(2+)", "ChEBI:CHEBI:29105", "1", "structural");
         
         UniProtKBFeature feature =
-                createFeature(UniprotKBFeatureType.BINDING, 152, 152, "axial binding residue", null, evs, ligand);
+                createFeature(UniprotKBFeatureType.BINDING, 152, 152, "axial binding residue", null, evs, ligand, null);
         
         doTest(ftLine, feature);
         doTestStringEv(ftLineStringEv, feature);
@@ -101,10 +100,10 @@ public class FTBindingFeatureBuildTest extends FTBuildTestAbstr {
         
         List<String> evs = List.of("ECO:0000255|PROSITE-ProRule:PRU01239");
 
-        Ligand ligand =createLigand("Zn(2+)", "ChEBI:CHEBI:29105", "1", null, null);
+        Ligand ligand =createLigand("Zn(2+)", "ChEBI:CHEBI:29105", "1", null);
         
         UniProtKBFeature feature =
-                createFeature(UniprotKBFeatureType.BINDING, 152, 152, null, null, evs, ligand);
+                createFeature(UniprotKBFeatureType.BINDING, 152, 152, null, null, evs, ligand, null);
         doTest(ftLine, feature);
         doTestStringEv(ftLineStringEv, feature);
         
@@ -126,10 +125,10 @@ public class FTBindingFeatureBuildTest extends FTBuildTestAbstr {
         
         List<String> evs = List.of("ECO:0000255|PROSITE-ProRule:PRU01239");
 
-        Ligand ligand =createLigand("Zn(2+)", "ChEBI:CHEBI:29105", null, "structural", null);
+        Ligand ligand =createLigand("Zn(2+)", "ChEBI:CHEBI:29105", null, "structural");
         
         UniProtKBFeature feature =
-                createFeature(UniprotKBFeatureType.BINDING, 152, 152, null, null, evs, ligand);
+                createFeature(UniprotKBFeatureType.BINDING, 152, 152, null, null, evs, ligand, null);
         
         doTest(ftLine, feature);
         doTestStringEv(ftLineStringEv, feature);
@@ -150,10 +149,10 @@ public class FTBindingFeatureBuildTest extends FTBuildTestAbstr {
         
         List<String> evs = List.of("ECO:0000269|PubMed:10319817");
 
-        Ligand ligand =createLigand("tRNA(Thr)", "ChEBI:CHEBI:29180", null, null, null);
+        Ligand ligand =createLigand("tRNA(Thr)", "ChEBI:CHEBI:29180", null, null);
         
         UniProtKBFeature feature =
-                createFeature(UniprotKBFeatureType.BINDING, 348, 349, null, null, evs, ligand);
+                createFeature(UniprotKBFeatureType.BINDING, 348, 349, null, null, evs, ligand, null);
         
         doTest(ftLine, feature);
         doTestStringEv(ftLineStringEv, feature);
@@ -171,10 +170,10 @@ public class FTBindingFeatureBuildTest extends FTBuildTestAbstr {
         
         List<String> evs = List.of("ECO:0000269|PubMed:10319817");
 
-        Ligand ligand =createLigand("Substrate",null, null, null, null);
+        Ligand ligand =createLigand("Substrate",null, null, null);
         
         UniProtKBFeature feature =
-                createFeature(UniprotKBFeatureType.BINDING, 348, 349, null, null, evs, ligand);
+                createFeature(UniprotKBFeatureType.BINDING, 348, 349, null, null, evs, ligand, null);
         
         doTest(ftLine, feature);
         doTestStringEv(ftLineStringEv, feature);
@@ -204,10 +203,10 @@ public class FTBindingFeatureBuildTest extends FTBuildTestAbstr {
         List<String> evs = List.of("ECO:0000255|HAMAP-Rule:MF_00458");
         LigandPart ligandPart =createLigandPart("Mg","ChEBI:CHEBI:?????", null, null);
         
-        Ligand ligand =createLigand("divinyl chlorophyll-a'", "ChEBI:CHEBI:?????", "A1", null, ligandPart);
+        Ligand ligand =createLigand("divinyl chlorophyll-a'", "ChEBI:CHEBI:?????", "A1", null);
         
         UniProtKBFeature feature =
-                createFeature(UniprotKBFeatureType.BINDING, 692, 692, "axial ligand", null, evs, ligand);
+                createFeature(UniprotKBFeatureType.BINDING, 692, 692, "axial ligand", null, evs, ligand, ligandPart);
         
         
         doTest(ftLine, feature);
@@ -231,10 +230,10 @@ public class FTBindingFeatureBuildTest extends FTBuildTestAbstr {
         List<String> evs = List.of("ECO:0000269|PubMed:10319817");
         LigandPart ligandPart =createLigandPart("tRNA acceptor stem",null, null, null);
         
-        Ligand ligand =createLigand("tRNA(Thr)", "ChEBI:CHEBI:29180", null, null, ligandPart);
+        Ligand ligand =createLigand("tRNA(Thr)", "ChEBI:CHEBI:29180", null, null);
         
         UniProtKBFeature feature =
-                createFeature(UniprotKBFeatureType.BINDING, 200, 219, null, null, evs, ligand);
+                createFeature(UniprotKBFeatureType.BINDING, 200, 219, null, null, evs, ligand, ligandPart);
 
         
         doTest(ftLine, feature);
@@ -261,10 +260,10 @@ public class FTBindingFeatureBuildTest extends FTBuildTestAbstr {
         LigandPart ligandPart =createLigandPart("tRNA 3'-terminal nucleotidyl-cytidyl-cytidyl-adenosine residue","ChEBI:CHEBI:83071", null, null);
         
         
-        Ligand ligand =createLigand("tRNA(Thr)", "ChEBI:CHEBI:29180", null, null, ligandPart);
+        Ligand ligand =createLigand("tRNA(Thr)", "ChEBI:CHEBI:29180", null, null);
         
         UniProtKBFeature feature =
-                createFeature(UniprotKBFeatureType.BINDING, 313, 317, null, null, evs, ligand);
+                createFeature(UniprotKBFeatureType.BINDING, 313, 317, null, null, evs, ligand, ligandPart);
           
         doTest(ftLine, feature);
         doTestStringEv(ftLineStringEv, feature);

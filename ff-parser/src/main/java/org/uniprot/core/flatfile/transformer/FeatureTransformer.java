@@ -118,6 +118,12 @@ public class FeatureTransformer {
             }
         }
         if(featureType ==UniprotKBFeatureType.BINDING) {
+        	Map.Entry<String, LigandPart> ligandPartEntry = extractLigandPart(annotation) ; 
+        	if(ligandPartEntry.getValue() !=null) {
+        		builder.ligandPart(ligandPartEntry.getValue());
+        	}
+        	annotation = ligandPartEntry.getKey();
+        	
         	Map.Entry<String, Ligand> ligandEntry = extractLigand(annotation) ; 
         	builder.ligand(ligandEntry.getValue());
         	annotation = ligandEntry.getKey();
@@ -139,35 +145,42 @@ public class FeatureTransformer {
 
         return builder.build();
     }
+    
+    private Map.Entry<String, LigandPart> extractLigandPart(String annotation) {
+   	 Map.Entry<String, String> entry = extractToken(annotation, LIGAND_PART_NOTE);
+        annotation = entry.getKey();
+        String ligandPartNote = entry.getValue();
+        entry = extractToken(annotation, LIGAND_PART_LABEL);
+        annotation = entry.getKey();
+        String ligandPartLabel = entry.getValue();
+        entry = extractToken(annotation, LIGAND_PART_ID);
+        annotation = entry.getKey();
+        String ligandPartId = entry.getValue();
+        entry = extractToken(annotation, LIGAND_PART);
+        annotation = entry.getKey();
+        String ligandPartName= entry.getValue();
+        LigandPart ligandPart = null;
+        if(!Utils.nullOrEmpty(ligandPartName)) {
+       	 LigandPartBuilder lpBuilder =new LigandPartBuilder();
+       	 lpBuilder.name(ligandPartName);
+       	 if(!Utils.nullOrEmpty(ligandPartId))
+				lpBuilder.id(ligandPartId);
+       	 if(!Utils.nullOrEmpty(ligandPartLabel))
+				lpBuilder.label(ligandPartLabel);
+       	 if(!Utils.nullOrEmpty(ligandPartNote))
+				lpBuilder.note(ligandPartNote);
+
+       	 ligandPart =  lpBuilder.build();
+         }
+
+       
+        return new AbstractMap.SimpleEntry<>(annotation, ligandPart);
+	}
+    
 
     private Map.Entry<String, Ligand> extractLigand(String annotation) {
-    	 Map.Entry<String, String> entry = extractToken(annotation, LIGAND_PART_NOTE);
-         annotation = entry.getKey();
-         String ligandPartNote = entry.getValue();
-         entry = extractToken(annotation, LIGAND_PART_LABEL);
-         annotation = entry.getKey();
-         String ligandPartLabel = entry.getValue();
-         entry = extractToken(annotation, LIGAND_PART_ID);
-         annotation = entry.getKey();
-         String ligandPartId = entry.getValue();
-         entry = extractToken(annotation, LIGAND_PART);
-         annotation = entry.getKey();
-         String ligandPartName= entry.getValue();
-         LigandPart ligandPart = null;
-         if(!Utils.nullOrEmpty(ligandPartName)) {
-        	 LigandPartBuilder lpBuilder =new LigandPartBuilder();
-        	 lpBuilder.name(ligandPartName);
-        	 if(!Utils.nullOrEmpty(ligandPartId))
-				lpBuilder.id(ligandPartId);
-        	 if(!Utils.nullOrEmpty(ligandPartLabel))
-				lpBuilder.label(ligandPartLabel);
-        	 if(!Utils.nullOrEmpty(ligandPartNote))
- 				lpBuilder.note(ligandPartNote);
- 
-        	 ligandPart =  lpBuilder.build();
-          }
-         
-         entry = extractToken(annotation, LIGAND_NOTE);
+    	 
+    	 Map.Entry<String, String> entry = extractToken(annotation, LIGAND_NOTE);
          annotation = entry.getKey();
          String ligandNote = entry.getValue();
          entry = extractToken(annotation, LIGAND_LABEL);
@@ -189,9 +202,7 @@ public class FeatureTransformer {
         		 builder.label(ligandLabel);
         	 if(!Utils.nullOrEmpty(ligandNote))
         		 builder.note(ligandNote);
-        	 if(ligandPart !=null) {
-        		 builder.ligandPart(ligandPart);
-        	 }
+        	 
         	 ligand =builder.build();
          }
         

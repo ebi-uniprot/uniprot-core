@@ -13,17 +13,16 @@ public class LigandImpl implements Ligand {
 	private final String id;
 	private final String label;
 	private final String note;
-	private final Optional<LigandPart> ligandPart;
+	
 	LigandImpl() {
-		this("", null, null, null, null);
+		this("", null, null, null);
 	}
 
-	LigandImpl(String name, String id, String label, String note, LigandPart ligandPart) {
+	LigandImpl(String name, String id, String label, String note) {
 		this.name = name;
 		this.id = id;
 		this.label = label;
 		this.note = note;
-		this.ligandPart = Optional.ofNullable(ligandPart);
 	}
 	
 	@Override
@@ -47,12 +46,8 @@ public class LigandImpl implements Ligand {
 	}
 
 	@Override
-	public Optional<LigandPart> getLigandPart() {
-		return ligandPart;
-	}
-	@Override
 	public int hashCode() {
-		return Objects.hash(name, id, label, note, ligandPart);
+		return Objects.hash(name, id, label, note);
 	}
 
 	@Override
@@ -65,7 +60,6 @@ public class LigandImpl implements Ligand {
 			return false;
 		LigandImpl that = (LigandImpl) obj;
 		return Objects.equals(name, that.name) && Objects.equals(id, that.id) && Objects.equals(label, that.label)
-				&& Objects.equals(note, that.note)
-				&& Objects.equals(ligandPart, that.ligandPart);
+				&& Objects.equals(note, that.note);
 	}
 }

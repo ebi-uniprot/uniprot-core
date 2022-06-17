@@ -12,10 +12,10 @@ public class LigandBuilder implements Builder<Ligand> {
 	private String id;
 	private String label;
 	private String note;
-	private LigandPart ligandPart;
+
 	@Override
 	public Ligand build() {
-		return new LigandImpl(name, id, label, note, ligandPart);
+		return new LigandImpl(name, id, label, note);
 	}
 	
     public static @Nonnull LigandBuilder from(@Nonnull Ligand instance) {
@@ -24,7 +24,7 @@ public class LigandBuilder implements Builder<Ligand> {
                 .id(instance.getId())
                 .label(instance.getLabel())
                 .note(instance.getNote())     
-                .ligandPart(instance.getLigandPart().orElse(null))
+                
                 ;       
     }
 	
@@ -44,11 +44,6 @@ public class LigandBuilder implements Builder<Ligand> {
 
 	public LigandBuilder note(String note) {
 		this.note = note;
-		return this;
-	}
-	
-	public LigandBuilder ligandPart(LigandPart ligandPart) {
-		this.ligandPart = ligandPart;
 		return this;
 	}
 }

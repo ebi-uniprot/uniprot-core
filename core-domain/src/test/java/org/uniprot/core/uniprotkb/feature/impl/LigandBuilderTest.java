@@ -32,12 +32,7 @@ class LigandBuilderTest {
 		assertEquals("some note", Ligand.getNote());
 	}
 
-	@Test
-	void canSetLigandPart() {
-		LigandPart ligandPart = new LigandPartBuilder().name("Some name").id("ChEBI:CHEBI:5432").build();
-		Ligand Ligand = new LigandBuilder().ligandPart(ligandPart).build();
-		assertEquals(ligandPart, Ligand.getLigandPart().get());
-	}
+
 	
 	@Test
 	void canCreateBuilderFromInstance() {

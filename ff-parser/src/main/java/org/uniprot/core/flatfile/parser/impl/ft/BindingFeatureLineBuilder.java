@@ -30,8 +30,8 @@ public class BindingFeatureLineBuilder extends AbstractFeatureLineBuilder {
 			lines.addAll(buildLigandLine(LIGAND_ID_PREFIX, ligand.getId(), includeFFMarkup));
 			lines.addAll(buildLigandLine(LIGAND_LABEL_PREFIX, ligand.getLabel(), includeFFMarkup));
 			lines.addAll(buildLigandLine(LIGAND_NOTE_PREFIX, ligand.getNote(), includeFFMarkup));
-			if (ligand.getLigandPart().isPresent()) {
-				LigandPart ligandPart = ligand.getLigandPart().get();
+			LigandPart ligandPart = f.getLigandPart();
+			if (ligandPart !=null) {
 				lines.addAll(buildLigandLine(LIGAND_PART_PREFIX, ligandPart.getName(), includeFFMarkup));
 				lines.addAll(buildLigandLine(LIGAND_PART_ID_PREFIX, ligandPart.getId(), includeFFMarkup));
 				lines.addAll(buildLigandLine(LIGAND_PART_LABEL_PREFIX, ligandPart.getLabel(), includeFFMarkup));

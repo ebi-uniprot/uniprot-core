@@ -80,6 +80,7 @@ class UniProtKBFeatureFeatureImplTest {
                         new FeatureIdBuilder("1").build(),
                         new AlternativeSequenceBuilder().build(),
                         null,
+                        null,
                         xrefs,
                         createEvidences());
         UniProtKBFeature obj = UniProtKBFeatureBuilder.from(impl).build();

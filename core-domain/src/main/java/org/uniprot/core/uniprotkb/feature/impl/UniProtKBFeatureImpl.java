@@ -17,10 +17,11 @@ public class UniProtKBFeatureImpl
     private final FeatureId featureId;
     private final AlternativeSequence alternativeSequence;
     private final Ligand ligand;
+    private final LigandPart ligandPart;
 
     // no arg constructor for JSON deserialization
     UniProtKBFeatureImpl() {
-        this(null, null, null, null, null, null, null, null);
+        this(null, null, null, null, null, null, null, null, null);
     }
 
     UniProtKBFeatureImpl(
@@ -30,12 +31,14 @@ public class UniProtKBFeatureImpl
             FeatureId featureId,
             AlternativeSequence alternativeSequence,
             Ligand ligand,
+            LigandPart ligandPart,
             CrossReference<UniprotKBFeatureDatabase> featureCrossReference,
             List<Evidence> evidences) {
         super(type, location, description, featureCrossReference, evidences);
         this.featureId = featureId;
         this.alternativeSequence = alternativeSequence;
         this.ligand = ligand;
+        this.ligandPart = ligandPart;
     }
 
     @Override
@@ -63,6 +66,16 @@ public class UniProtKBFeatureImpl
 	public Ligand getLigand() {
 		return ligand;
 	}
+	@Override
+	public LigandPart getLigandPart() {
+		return ligandPart;
+	}
+
+	@Override
+	public boolean hasLigandPart() {
+		return (this.getType() == UniprotKBFeatureType.BINDING)
+				&& (ligandPart ==null);
+	}
     
     @Override
     public boolean equals(Object o) {
@@ -71,13 +84,17 @@ public class UniProtKBFeatureImpl
         if (!super.equals(o)) return false;
         UniProtKBFeatureImpl that = (UniProtKBFeatureImpl) o;
         return Objects.equals(getFeatureId(), that.getFeatureId())
-                && Objects.equals(getAlternativeSequence(), that.getAlternativeSequence());
+                && Objects.equals(getAlternativeSequence(), that.getAlternativeSequence())
+                && Objects.equals(getLigand(), that.getLigand())
+                && Objects.equals(getLigandPart(), that.getLigandPart());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getFeatureId(), alternativeSequence);
+        return Objects.hash(super.hashCode(), getFeatureId(), alternativeSequence, ligand, ligandPart);
     }
+
+
 
 	
 }

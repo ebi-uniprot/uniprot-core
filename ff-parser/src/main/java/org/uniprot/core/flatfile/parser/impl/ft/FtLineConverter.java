@@ -12,6 +12,7 @@ import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.uniprotkb.feature.Ligand;
+import org.uniprot.core.uniprotkb.feature.LigandPart;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureDatabase;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
@@ -328,7 +329,10 @@ public class FtLineConverter extends EvidenceCollector
                         .description(ft.getFtText())
                         .ligand(convertLigand(ft));
 
-
+        LigandPart ligandPart = convertLigandPart(ft);
+        if(ligandPart !=null) {
+        	featureBuilder.ligandPart(ligandPart);
+        }
         return featureBuilder.build();
     }
 
@@ -339,16 +343,23 @@ public class FtLineConverter extends EvidenceCollector
     		.id(ft.getLigand().getId())
     		.label(ft.getLigand().getLabel())
     		.note(ft.getLigand().getNote());
+    		
+        }
+    	return builder.build();
+    }
+    
+    private LigandPart convertLigandPart(FtLineObject.FT ft) {
+
     		if(ft.getLigandPart() !=null) {
     			LigandPartBuilder partBuilder = new LigandPartBuilder();
     			partBuilder.name(ft.getLigandPart().getName())
         		.id(ft.getLigandPart().getId())
         		.label(ft.getLigandPart().getLabel())
         		.note(ft.getLigandPart().getNote());
-    			builder.ligandPart(partBuilder.build());
+    			return partBuilder.build();
     		}
-        }
-    	return builder.build();
+    		else
+    			return null;
     }
     
     private FeatureLocation convertFeatureLocation(
