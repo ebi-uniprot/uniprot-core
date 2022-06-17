@@ -13,10 +13,14 @@ import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
+import org.uniprot.core.uniprotkb.feature.Ligand;
+import org.uniprot.core.uniprotkb.feature.LigandPart;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureDatabase;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
+import org.uniprot.core.uniprotkb.feature.impl.LigandBuilder;
+import org.uniprot.core.uniprotkb.feature.impl.LigandPartBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -166,6 +170,18 @@ public class FeatureTest {
                 new FeatureLocation(
                         "sequence 1", 2, 8, PositionModifier.EXACT, PositionModifier.EXACT);
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730");
+        Ligand ligand = new LigandBuilder()
+        		.name("Ca(2+)")
+        		.id("ChEBICHEBI:3214")
+        		.label("A1")
+        		.note("Some note")
+        		.build();
+        LigandPart ligandPart = new LigandPartBuilder()
+        		.name("Cu(2+)")
+        		.id("ChEBICHEBI:3314")
+        		.label("A2")
+        		.note("Some note")
+        		.build();
         return new UniProtKBFeatureBuilder()
                 .type(featureType)
                 .alternativeSequence(alternativeSequence)
@@ -174,6 +190,8 @@ public class FeatureTest {
                 .evidencesSet(evidences)
                 .featureId("id value " + featureType)
                 .location(location)
+                .ligand(ligand)
+                .ligandPart(ligandPart)
                 .build();
     }
 }
