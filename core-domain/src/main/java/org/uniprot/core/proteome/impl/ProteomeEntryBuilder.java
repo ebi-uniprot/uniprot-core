@@ -34,6 +34,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
     private GenomeAssembly genomeAssembly;
     private GenomeAnnotation genomeAnnotation;
     private List<ExclusionReason> exclusionReasons = new ArrayList<>();
+    private Integer proteinCount;
 
     @Override
     public @Nonnull ProteomeEntry build() {
@@ -57,7 +58,8 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 proteomeCompletenessReport,
                 genomeAssembly,
                 genomeAnnotation,
-                exclusionReasons);
+                exclusionReasons,
+                proteinCount);
     }
 
     public static @Nonnull ProteomeEntryBuilder from(@Nonnull ProteomeEntry instance) {
@@ -81,11 +83,17 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 .proteomeCompletenessReport(instance.getProteomeCompletenessReport())
                 .genomeAssembly(instance.getGenomeAssembly())
                 .genomeAnnotation(instance.getGenomeAnnotation())
-                .exclusionReasonsSet(instance.getExclusionReasons());
+                .exclusionReasonsSet(instance.getExclusionReasons())
+                .proteinCount(instance.getProteinCount());
     }
 
     public @Nonnull ProteomeEntryBuilder proteomeId(ProteomeId id) {
         this.id = id;
+        return this;
+    }
+    
+    public @Nonnull ProteomeEntryBuilder proteinCount(Integer proteinCount) {
+        this.proteinCount = proteinCount;
         return this;
     }
 

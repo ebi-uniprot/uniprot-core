@@ -66,6 +66,7 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
                         .collect(Collectors.toList());
 
         ProteomeEntryBuilder builder = new ProteomeEntryBuilder();
+        Integer proteinCount = xmlObj.getProteinCount();
         builder.proteomeId(proteomeId(xmlObj.getUpid()))
                 .proteomeType(getProteomeType(xmlObj))
                 .description(xmlObj.getDescription())
@@ -77,7 +78,8 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
                 .redundantProteomesSet(redundantProteomes)
                 .citationsSet(citations)
                 .genomeAssembly(genomeAssemblyConverter.fromXml(xmlObj.getGenomeAssembly()))
-                .proteomeCompletenessReport(getCompletenessReport(xmlObj.getScores()));
+                .proteomeCompletenessReport(getCompletenessReport(xmlObj.getScores()))
+                .proteinCount(proteinCount);
 
         if (Utils.notNull(xmlObj.getGenomeAnnotation())) {
             builder.genomeAnnotation(
@@ -147,6 +149,7 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
         xmlObj.setModified(XmlConverterHelper.dateToXml(uniObj.getModified()));
         xmlObj.setStrain(uniObj.getStrain());
         xmlObj.setIsolate(uniObj.getIsolate());
+        xmlObj.setProteinCount(uniObj.getProteinCount());
 
         uniObj.getComponents().stream()
                 .map(componentConverter::toXml)

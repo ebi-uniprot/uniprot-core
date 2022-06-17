@@ -176,6 +176,7 @@ public class ProteomeTest {
                 .genomeAssembly(createGenomeAssembly())
                 .genomeAnnotation(genomeAnnotation)
                 .exclusionReasonsAdd(ExclusionReason.MIXED_CULTURE)
+                .proteinCount(250)
                 .build();
     }
 
