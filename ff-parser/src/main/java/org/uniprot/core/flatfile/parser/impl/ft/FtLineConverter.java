@@ -2,13 +2,16 @@ package org.uniprot.core.flatfile.parser.impl.ft;
 
 import java.util.*;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.PositionModifier;
+import org.uniprot.core.antigen.AntigenDatabase;
 import org.uniprot.core.feature.FeatureLocation;
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
 import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
+import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.uniprotkb.feature.Ligand;
@@ -20,6 +23,7 @@ import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.LigandBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.LigandPartBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
+import org.uniprot.core.util.Utils;
 
 import com.google.common.base.Strings;
 
@@ -31,6 +35,7 @@ public class FtLineConverter extends EvidenceCollector
     private static final String CONFLICT_REGEX = ", | and ";
     private static final String MISSING = "Missing";
     private static final String ISOFORM_REGEX = ", isoform | and isoform ";
+    private static Pattern DBSNP_PATTERN  = Pattern.compile("(.*)(dbSNP\\:)(rs[0-9]+)(.*)");
 
     @Override
     public List<UniProtKBFeature> convert(FtLineObject f) {
@@ -207,7 +212,7 @@ public class FtLineConverter extends EvidenceCollector
                         .alternativeSequencesSet(alternativeSequences)
                         .build();
         //		factory.createReport(reports));
-        CrossReference<UniprotKBFeatureDatabase> dbXref = null;
+        List<CrossReference<UniprotKBFeatureDatabase>>  dbXrefs = convertDbSnpXref(description);
         return new UniProtKBFeatureBuilder()
                 .type(type)
                 .location(location)
@@ -215,10 +220,24 @@ public class FtLineConverter extends EvidenceCollector
                 .featureId(ft.getFtId())
                 .alternativeSequence(altSeq)
                 .evidencesSet(evidences)
-                .featureCrossReference(dbXref)
+                .featureCrossReferenceSet(dbXrefs)
                 .build();
     }
 
+    private  List<CrossReference<UniprotKBFeatureDatabase>> convertDbSnpXref(String description){
+    	List<CrossReference<UniprotKBFeatureDatabase>> xrefs = new ArrayList<>();
+    	if(Utils.notNullNotEmpty(description)){
+    		Matcher matcher = DBSNP_PATTERN.matcher(description);
+    		if(matcher.matches()) {
+    			String id = matcher.group(3);
+    			CrossReferenceBuilder<UniprotKBFeatureDatabase> builder = new CrossReferenceBuilder<>();
+    			builder.database(UniprotKBFeatureDatabase.DBSNP)
+    			.id(id);
+    			xrefs.add(builder.build());
+    		}
+    	}
+    	return xrefs;
+    }
     private UniProtKBFeature convertConflictFeature(
             UniprotKBFeatureType type,
             FeatureLocation location,
@@ -321,21 +340,52 @@ public class FtLineConverter extends EvidenceCollector
             FeatureLocation location,
             FtLineObject.FT ft,
             List<Evidence> evidences) {
+
         UniProtKBFeatureBuilder featureBuilder =
                 new UniProtKBFeatureBuilder()
                         .type(type)
                         .location(location)
                         .evidencesSet(evidences)
-                        .description(ft.getFtText())
-                        .ligand(convertLigand(ft));
+                        .description(ft.getFtText());
+    	Ligand ligand = convertLigand(ft);
+        featureBuilder.ligand(ligand);
+        if(ligand.getId() !=null) {
+        	CrossReference<UniprotKBFeatureDatabase> xref= convertChebiReference(ligand.getId());
+        	if(xref !=null) {
+        		featureBuilder.featureCrossReferenceAdd(xref);
+        	}
+        }
 
         LigandPart ligandPart = convertLigandPart(ft);
         if(ligandPart !=null) {
         	featureBuilder.ligandPart(ligandPart);
+        	if(ligandPart.getId() !=null) {
+            	CrossReference<UniprotKBFeatureDatabase> xref= convertChebiReference(ligandPart.getId());
+            	if(xref !=null) {
+            		featureBuilder.featureCrossReferenceAdd(xref);
+            	}
+            }
         }
         return featureBuilder.build();
     }
-
+    private CrossReference<UniprotKBFeatureDatabase> convertChebiReference(String val) {
+    	  int index = val.indexOf(':');
+    	  if(index ==-1) {
+    		  return null;
+    	  }
+          String type = val.substring(0, index);
+          UniprotKBFeatureDatabase db = UniprotKBFeatureDatabase.typeOf(type);
+          if(db ==null) {
+        	  return null;
+          }
+          String id = val.substring(index + 1);
+		CrossReferenceBuilder<UniprotKBFeatureDatabase> builder = new CrossReferenceBuilder<>();
+		builder.database(db)
+		.id(id);
+		return builder.build();
+    	
+       
+    }
     private Ligand convertLigand(FtLineObject.FT ft) {
     	LigandBuilder builder = new LigandBuilder();
     	if (ft.getLigand() !=null) {

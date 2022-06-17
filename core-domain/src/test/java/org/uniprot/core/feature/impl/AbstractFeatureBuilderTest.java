@@ -48,8 +48,8 @@ class AbstractFeatureBuilderTest {
                         .database(TestableFeatureDatabase.TEST_DATABASE)
                         .id("db id")
                         .build();
-        TestableFeature obj = new TestableFeatureBuilder().featureCrossReference(xrefs).build();
-        assertEquals(xrefs, obj.getFeatureCrossReference());
+        TestableFeature obj = new TestableFeatureBuilder().featureCrossReferenceAdd(xrefs).build();
+        assertEquals(xrefs, obj.getFeatureCrossReferences().get(0));
         assertTrue(obj.hasFeatureCrossReference());
     }
 
@@ -136,7 +136,7 @@ class AbstractFeatureBuilderTest {
                     builder.type,
                     builder.location,
                     builder.description,
-                    builder.featureCrossReference,
+                    builder.featureCrossReferences,
                     builder.evidences);
         }
     }

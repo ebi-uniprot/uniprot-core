@@ -32,7 +32,7 @@ public class UniProtKBFeatureBuilder
                 alternativeSequence,
                 ligand,
                 ligandPart,
-                featureCrossReference,
+                featureCrossReferences,
                 evidences);
     }
 

@@ -32,9 +32,9 @@ public class UniProtKBFeatureImpl
             AlternativeSequence alternativeSequence,
             Ligand ligand,
             LigandPart ligandPart,
-            CrossReference<UniprotKBFeatureDatabase> featureCrossReference,
+           List< CrossReference<UniprotKBFeatureDatabase>> featureCrossReferences,
             List<Evidence> evidences) {
-        super(type, location, description, featureCrossReference, evidences);
+        super(type, location, description, featureCrossReferences, evidences);
         this.featureId = featureId;
         this.alternativeSequence = alternativeSequence;
         this.ligand = ligand;
@@ -71,12 +71,6 @@ public class UniProtKBFeatureImpl
 		return ligandPart;
 	}
 
-	@Override
-	public boolean hasLigandPart() {
-		return (this.getType() == UniprotKBFeatureType.BINDING)
-				&& (ligandPart ==null);
-	}
-    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

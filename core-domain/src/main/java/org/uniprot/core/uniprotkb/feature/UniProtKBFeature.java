@@ -1,6 +1,7 @@
 package org.uniprot.core.uniprotkb.feature;
 
 import org.uniprot.core.feature.Feature;
+import org.uniprot.core.util.Utils;
 
 public interface UniProtKBFeature extends Feature<UniprotKBFeatureDatabase, UniprotKBFeatureType> {
 
@@ -18,5 +19,7 @@ public interface UniProtKBFeature extends Feature<UniprotKBFeatureDatabase, Unip
     default boolean hasLigand() {
     	return this.getType() == UniprotKBFeatureType.BINDING;
     }
-    boolean hasLigandPart();
+   default boolean hasLigandPart() {
+	   return (this.getType() == UniprotKBFeatureType.BINDING) && Utils.notNull(getLigandPart()); 
+   }
 }

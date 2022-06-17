@@ -1,5 +1,7 @@
 package org.uniprot.core.feature;
 
+import java.util.List;
+
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprotkb.evidence.HasEvidences;
 import org.uniprot.core.util.Utils;
@@ -16,7 +18,7 @@ public interface Feature<T extends FeatureDatabase, F extends FeatureType> exten
 
     FeatureDescription getDescription();
 
-    CrossReference<T> getFeatureCrossReference();
+    List<CrossReference<T>> getFeatureCrossReferences();
 
     default boolean hasLocation() {
         return Utils.notNull(getLocation());
@@ -27,6 +29,6 @@ public interface Feature<T extends FeatureDatabase, F extends FeatureType> exten
     }
 
     default boolean hasFeatureCrossReference() {
-        return Utils.notNull(getFeatureCrossReference());
+        return Utils.notNullNotEmpty(getFeatureCrossReferences());
     }
 }

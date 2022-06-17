@@ -136,8 +136,10 @@ public class FeatureTest {
                 "alternative value",
                 alternativeSequence.get("alternativeSequences").get(0).asText());
 
-        assertNotNull(jsonNode.get("featureCrossReference"));
-        JsonNode dbXref = jsonNode.get("featureCrossReference");
+        assertNotNull(jsonNode.get("featureCrossReferences"));
+        JsonNode dbXrefs = jsonNode.get("featureCrossReferences");
+        assertEquals(1, dbXrefs.size());
+        JsonNode dbXref = dbXrefs.get(0);
         assertNotNull(dbXref.get("database"));
         assertEquals("dbSNP", dbXref.get("database").asText());
         assertNotNull(dbXref.get("id"));
@@ -185,7 +187,7 @@ public class FeatureTest {
         return new UniProtKBFeatureBuilder()
                 .type(featureType)
                 .alternativeSequence(alternativeSequence)
-                .featureCrossReference(xrefs)
+                .featureCrossReferenceAdd(xrefs)
                 .description("description value " + 123)
                 .evidencesSet(evidences)
                 .featureId("id value " + featureType)

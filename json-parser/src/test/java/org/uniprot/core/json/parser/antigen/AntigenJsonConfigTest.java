@@ -97,7 +97,7 @@ class AntigenJsonConfigTest {
         return new AntigenFeatureBuilder()
                 .type(AntigenFeatureType.ANTIGEN)
                 .description("Description value")
-                .featureCrossReference(crossReference)
+                .featureCrossReferenceAdd(crossReference)
                 .location(location)
                 .evidencesAdd(evidence)
                 .matchScore(98)
