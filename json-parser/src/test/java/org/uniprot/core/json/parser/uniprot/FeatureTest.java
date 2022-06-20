@@ -172,18 +172,20 @@ public class FeatureTest {
                 new FeatureLocation(
                         "sequence 1", 2, 8, PositionModifier.EXACT, PositionModifier.EXACT);
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730");
-        Ligand ligand = new LigandBuilder()
-        		.name("Ca(2+)")
-        		.id("ChEBICHEBI:3214")
-        		.label("A1")
-        		.note("Some note")
-        		.build();
-        LigandPart ligandPart = new LigandPartBuilder()
-        		.name("Cu(2+)")
-        		.id("ChEBICHEBI:3314")
-        		.label("A2")
-        		.note("Some note")
-        		.build();
+        Ligand ligand =
+                new LigandBuilder()
+                        .name("Ca(2+)")
+                        .id("ChEBICHEBI:3214")
+                        .label("A1")
+                        .note("Some note")
+                        .build();
+        LigandPart ligandPart =
+                new LigandPartBuilder()
+                        .name("Cu(2+)")
+                        .id("ChEBICHEBI:3314")
+                        .label("A2")
+                        .note("Some note")
+                        .build();
         return new UniProtKBFeatureBuilder()
                 .type(featureType)
                 .alternativeSequence(alternativeSequence)

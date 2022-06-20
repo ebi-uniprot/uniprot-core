@@ -66,6 +66,7 @@ class FTBuildTestAbstr {
                 ftId,
                 evs);
     }
+
     UniProtKBFeature createFeature(
             UniprotKBFeatureType type,
             int nstart,
@@ -73,7 +74,8 @@ class FTBuildTestAbstr {
             String description,
             String ftId,
             List<String> evs,
-            Ligand ligand, LigandPart ligandPart) {
+            Ligand ligand,
+            LigandPart ligandPart) {
         return createFeature(
                 type,
                 null,
@@ -83,9 +85,11 @@ class FTBuildTestAbstr {
                 PositionModifier.EXACT,
                 description,
                 ftId,
-                evs, ligand, ligandPart);
+                evs,
+                ligand,
+                ligandPart);
     }
-    
+
     UniProtKBFeature createFeature(
             UniprotKBFeatureType type,
             String sequence,
@@ -107,7 +111,7 @@ class FTBuildTestAbstr {
                 .evidencesSet(createEvidence(evs))
                 .build();
     }
-    
+
     UniProtKBFeature createFeature(
             UniprotKBFeatureType type,
             String sequence,
@@ -118,7 +122,8 @@ class FTBuildTestAbstr {
             String description,
             String ftId,
             List<String> evs,
-            Ligand ligand, LigandPart ligandPart) {
+            Ligand ligand,
+            LigandPart ligandPart) {
         FeatureLocation location =
                 new FeatureLocation(sequence, nstart, nend, sfModifier, efModifier);
 

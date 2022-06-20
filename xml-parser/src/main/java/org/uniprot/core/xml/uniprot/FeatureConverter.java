@@ -36,8 +36,8 @@ public class FeatureConverter implements Converter<FeatureType, UniProtKBFeature
         this.locationConverter = new FeatureLocationConverter(xmlUniprotFactory);
         this.evRefMapper = evRefMapper;
         this.xmlUniprotFactory = xmlUniprotFactory;
-        this.ligandConverter =new LigandConverter(xmlUniprotFactory);
-        this.ligandPartConverter =new LigandPartConverter(xmlUniprotFactory);
+        this.ligandConverter = new LigandConverter(xmlUniprotFactory);
+        this.ligandPartConverter = new LigandPartConverter(xmlUniprotFactory);
     }
 
     @Override
@@ -75,12 +75,12 @@ public class FeatureConverter implements Converter<FeatureType, UniProtKBFeature
                             .build();
         }
         Ligand ligand = null;
-        if(Utils.notNull(xmlObj.getLigand())) {
-        	ligand = this.ligandConverter.fromXml(xmlObj.getLigand());
+        if (Utils.notNull(xmlObj.getLigand())) {
+            ligand = this.ligandConverter.fromXml(xmlObj.getLigand());
         }
         LigandPart ligandPart = null;
-        if(Utils.notNull(xmlObj.getLigandPart())) {
-        	ligandPart = this.ligandPartConverter.fromXml(xmlObj.getLigandPart());
+        if (Utils.notNull(xmlObj.getLigandPart())) {
+            ligandPart = this.ligandPartConverter.fromXml(xmlObj.getLigandPart());
         }
         return new UniProtKBFeatureBuilder()
                 .type(type)
@@ -129,13 +129,13 @@ public class FeatureConverter implements Converter<FeatureType, UniProtKBFeature
             if (!altSeq.getAlternativeSequences().isEmpty())
                 xmlFeature.getVariation().addAll(altSeq.getAlternativeSequences());
         }
-        if(Utils.notNull(uniObj.getLigand())) {
-        	xmlFeature.setLigand(ligandConverter.toXml(uniObj.getLigand()));
+        if (Utils.notNull(uniObj.getLigand())) {
+            xmlFeature.setLigand(ligandConverter.toXml(uniObj.getLigand()));
         }
-        if(Utils.notNull(uniObj.getLigandPart())) {
-        	xmlFeature.setLigandPart(ligandPartConverter.toXml(uniObj.getLigandPart()));
+        if (Utils.notNull(uniObj.getLigandPart())) {
+            xmlFeature.setLigandPart(ligandPartConverter.toXml(uniObj.getLigandPart()));
         }
-        
+
         updateConflictFeature(xmlFeature, uniObj);
         return xmlFeature;
     }

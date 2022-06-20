@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.PositionModifier;
-import org.uniprot.core.antigen.AntigenDatabase;
 import org.uniprot.core.feature.FeatureLocation;
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
@@ -35,7 +34,7 @@ public class FtLineConverter extends EvidenceCollector
     private static final String CONFLICT_REGEX = ", | and ";
     private static final String MISSING = "Missing";
     private static final String ISOFORM_REGEX = ", isoform | and isoform ";
-    private static Pattern DBSNP_PATTERN  = Pattern.compile("(.*)(dbSNP\\:)(rs[0-9]+)(.*)");
+    private static Pattern DBSNP_PATTERN = Pattern.compile("(.*)(dbSNP\\:)(rs[0-9]+)(.*)");
 
     @Override
     public List<UniProtKBFeature> convert(FtLineObject f) {
@@ -212,7 +211,7 @@ public class FtLineConverter extends EvidenceCollector
                         .alternativeSequencesSet(alternativeSequences)
                         .build();
         //		factory.createReport(reports));
-        List<CrossReference<UniprotKBFeatureDatabase>>  dbXrefs = convertDbSnpXref(description);
+        List<CrossReference<UniprotKBFeatureDatabase>> dbXrefs = convertDbSnpXref(description);
         return new UniProtKBFeatureBuilder()
                 .type(type)
                 .location(location)
@@ -224,20 +223,21 @@ public class FtLineConverter extends EvidenceCollector
                 .build();
     }
 
-    private  List<CrossReference<UniprotKBFeatureDatabase>> convertDbSnpXref(String description){
-    	List<CrossReference<UniprotKBFeatureDatabase>> xrefs = new ArrayList<>();
-    	if(Utils.notNullNotEmpty(description)){
-    		Matcher matcher = DBSNP_PATTERN.matcher(description);
-    		if(matcher.matches()) {
-    			String id = matcher.group(3);
-    			CrossReferenceBuilder<UniprotKBFeatureDatabase> builder = new CrossReferenceBuilder<>();
-    			builder.database(UniprotKBFeatureDatabase.DBSNP)
-    			.id(id);
-    			xrefs.add(builder.build());
-    		}
-    	}
-    	return xrefs;
+    private List<CrossReference<UniprotKBFeatureDatabase>> convertDbSnpXref(String description) {
+        List<CrossReference<UniprotKBFeatureDatabase>> xrefs = new ArrayList<>();
+        if (Utils.notNullNotEmpty(description)) {
+            Matcher matcher = DBSNP_PATTERN.matcher(description);
+            if (matcher.matches()) {
+                String id = matcher.group(3);
+                CrossReferenceBuilder<UniprotKBFeatureDatabase> builder =
+                        new CrossReferenceBuilder<>();
+                builder.database(UniprotKBFeatureDatabase.DBSNP).id(id);
+                xrefs.add(builder.build());
+            }
+        }
+        return xrefs;
     }
+
     private UniProtKBFeature convertConflictFeature(
             UniprotKBFeatureType type,
             FeatureLocation location,
@@ -315,7 +315,7 @@ public class FtLineConverter extends EvidenceCollector
                 .description(description)
                 .build();
     }
-    
+
     private UniProtKBFeature convertSimpleFeature(
             UniprotKBFeatureType type,
             FeatureLocation location,
@@ -347,71 +347,69 @@ public class FtLineConverter extends EvidenceCollector
                         .location(location)
                         .evidencesSet(evidences)
                         .description(ft.getFtText());
-    	Ligand ligand = convertLigand(ft);
+        Ligand ligand = convertLigand(ft);
         featureBuilder.ligand(ligand);
-        if(ligand.getId() !=null) {
-        	CrossReference<UniprotKBFeatureDatabase> xref= convertChebiReference(ligand.getId());
-        	if(xref !=null) {
-        		featureBuilder.featureCrossReferenceAdd(xref);
-        	}
+        if (ligand.getId() != null) {
+            CrossReference<UniprotKBFeatureDatabase> xref = convertChebiReference(ligand.getId());
+            if (xref != null) {
+                featureBuilder.featureCrossReferenceAdd(xref);
+            }
         }
 
         LigandPart ligandPart = convertLigandPart(ft);
-        if(ligandPart !=null) {
-        	featureBuilder.ligandPart(ligandPart);
-        	if(ligandPart.getId() !=null) {
-            	CrossReference<UniprotKBFeatureDatabase> xref= convertChebiReference(ligandPart.getId());
-            	if(xref !=null) {
-            		featureBuilder.featureCrossReferenceAdd(xref);
-            	}
+        if (ligandPart != null) {
+            featureBuilder.ligandPart(ligandPart);
+            if (ligandPart.getId() != null) {
+                CrossReference<UniprotKBFeatureDatabase> xref =
+                        convertChebiReference(ligandPart.getId());
+                if (xref != null) {
+                    featureBuilder.featureCrossReferenceAdd(xref);
+                }
             }
         }
         return featureBuilder.build();
     }
+
     private CrossReference<UniprotKBFeatureDatabase> convertChebiReference(String val) {
-    	  int index = val.indexOf(':');
-    	  if(index ==-1) {
-    		  return null;
-    	  }
-          String type = val.substring(0, index);
-          UniprotKBFeatureDatabase db = UniprotKBFeatureDatabase.typeOf(type);
-          if(db ==null) {
-        	  return null;
-          }
-          String id = val.substring(index + 1);
-		CrossReferenceBuilder<UniprotKBFeatureDatabase> builder = new CrossReferenceBuilder<>();
-		builder.database(db)
-		.id(id);
-		return builder.build();
-    	
-       
-    }
-    private Ligand convertLigand(FtLineObject.FT ft) {
-    	LigandBuilder builder = new LigandBuilder();
-    	if (ft.getLigand() !=null) {
-    		builder.name(ft.getLigand().getName())
-    		.id(ft.getLigand().getId())
-    		.label(ft.getLigand().getLabel())
-    		.note(ft.getLigand().getNote());
-    		
+        int index = val.indexOf(':');
+        if (index == -1) {
+            return null;
         }
-    	return builder.build();
+        String type = val.substring(0, index);
+        UniprotKBFeatureDatabase db = UniprotKBFeatureDatabase.typeOf(type);
+        if (db == null) {
+            return null;
+        }
+        String id = val.substring(index + 1);
+        CrossReferenceBuilder<UniprotKBFeatureDatabase> builder = new CrossReferenceBuilder<>();
+        builder.database(db).id(id);
+        return builder.build();
     }
-    
+
+    private Ligand convertLigand(FtLineObject.FT ft) {
+        LigandBuilder builder = new LigandBuilder();
+        if (ft.getLigand() != null) {
+            builder.name(ft.getLigand().getName())
+                    .id(ft.getLigand().getId())
+                    .label(ft.getLigand().getLabel())
+                    .note(ft.getLigand().getNote());
+        }
+        return builder.build();
+    }
+
     private LigandPart convertLigandPart(FtLineObject.FT ft) {
 
-    		if(ft.getLigandPart() !=null) {
-    			LigandPartBuilder partBuilder = new LigandPartBuilder();
-    			partBuilder.name(ft.getLigandPart().getName())
-        		.id(ft.getLigandPart().getId())
-        		.label(ft.getLigandPart().getLabel())
-        		.note(ft.getLigandPart().getNote());
-    			return partBuilder.build();
-    		}
-    		else
-    			return null;
+        if (ft.getLigandPart() != null) {
+            LigandPartBuilder partBuilder = new LigandPartBuilder();
+            partBuilder
+                    .name(ft.getLigandPart().getName())
+                    .id(ft.getLigandPart().getId())
+                    .label(ft.getLigandPart().getLabel())
+                    .note(ft.getLigandPart().getNote());
+            return partBuilder.build();
+        } else return null;
     }
-    
+
     private FeatureLocation convertFeatureLocation(
             String sequence, String locationStart, String locationEnd) {
         Map.Entry<PositionModifier, Integer> start = convertLocation(locationStart, '<');

@@ -94,7 +94,7 @@ class ProteomeEntryBuilderTest {
         ProteomeEntry proteome = new ProteomeEntryBuilder().isolate(isolate).build();
         assertEquals(isolate, proteome.getIsolate());
     }
-    
+
     @Test
     void testProteinCount() {
         int proteinCount = 25;

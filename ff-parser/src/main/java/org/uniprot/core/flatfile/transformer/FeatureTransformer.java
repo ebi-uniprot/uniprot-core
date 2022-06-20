@@ -35,7 +35,7 @@ import com.google.common.base.Strings;
  * @date: 18 Nov 2019
  */
 public class FeatureTransformer {
-	
+
     private static final String FTID = "/id=\"";
     private static final String NOTE = "/note=\"";
     private static final String EVIDENCE = "/evidence=\"";
@@ -117,18 +117,18 @@ public class FeatureTransformer {
                 builder.description(result.getKey());
             }
         }
-        if(featureType ==UniprotKBFeatureType.BINDING) {
-        	Map.Entry<String, LigandPart> ligandPartEntry = extractLigandPart(annotation) ; 
-        	if(ligandPartEntry.getValue() !=null) {
-        		builder.ligandPart(ligandPartEntry.getValue());
-        	}
-        	annotation = ligandPartEntry.getKey();
-        	
-        	Map.Entry<String, Ligand> ligandEntry = extractLigand(annotation) ; 
-        	builder.ligand(ligandEntry.getValue());
-        	annotation = ligandEntry.getKey();
+        if (featureType == UniprotKBFeatureType.BINDING) {
+            Map.Entry<String, LigandPart> ligandPartEntry = extractLigandPart(annotation);
+            if (ligandPartEntry.getValue() != null) {
+                builder.ligandPart(ligandPartEntry.getValue());
+            }
+            annotation = ligandPartEntry.getKey();
+
+            Map.Entry<String, Ligand> ligandEntry = extractLigand(annotation);
+            builder.ligand(ligandEntry.getValue());
+            annotation = ligandEntry.getKey();
         }
-        
+
         String sequence = "";
         String[] sToken = annotation.split(":");
         if (sToken.length == 2) {
@@ -145,9 +145,9 @@ public class FeatureTransformer {
 
         return builder.build();
     }
-    
+
     private Map.Entry<String, LigandPart> extractLigandPart(String annotation) {
-   	 Map.Entry<String, String> entry = extractToken(annotation, LIGAND_PART_NOTE);
+        Map.Entry<String, String> entry = extractToken(annotation, LIGAND_PART_NOTE);
         annotation = entry.getKey();
         String ligandPartNote = entry.getValue();
         entry = extractToken(annotation, LIGAND_PART_LABEL);
@@ -158,58 +158,50 @@ public class FeatureTransformer {
         String ligandPartId = entry.getValue();
         entry = extractToken(annotation, LIGAND_PART);
         annotation = entry.getKey();
-        String ligandPartName= entry.getValue();
+        String ligandPartName = entry.getValue();
         LigandPart ligandPart = null;
-        if(!Utils.nullOrEmpty(ligandPartName)) {
-       	 LigandPartBuilder lpBuilder =new LigandPartBuilder();
-       	 lpBuilder.name(ligandPartName);
-       	 if(!Utils.nullOrEmpty(ligandPartId))
-				lpBuilder.id(ligandPartId);
-       	 if(!Utils.nullOrEmpty(ligandPartLabel))
-				lpBuilder.label(ligandPartLabel);
-       	 if(!Utils.nullOrEmpty(ligandPartNote))
-				lpBuilder.note(ligandPartNote);
+        if (!Utils.nullOrEmpty(ligandPartName)) {
+            LigandPartBuilder lpBuilder = new LigandPartBuilder();
+            lpBuilder.name(ligandPartName);
+            if (!Utils.nullOrEmpty(ligandPartId)) lpBuilder.id(ligandPartId);
+            if (!Utils.nullOrEmpty(ligandPartLabel)) lpBuilder.label(ligandPartLabel);
+            if (!Utils.nullOrEmpty(ligandPartNote)) lpBuilder.note(ligandPartNote);
 
-       	 ligandPart =  lpBuilder.build();
-         }
+            ligandPart = lpBuilder.build();
+        }
 
-       
         return new AbstractMap.SimpleEntry<>(annotation, ligandPart);
-	}
-    
+    }
 
     private Map.Entry<String, Ligand> extractLigand(String annotation) {
-    	 
-    	 Map.Entry<String, String> entry = extractToken(annotation, LIGAND_NOTE);
-         annotation = entry.getKey();
-         String ligandNote = entry.getValue();
-         entry = extractToken(annotation, LIGAND_LABEL);
-         annotation = entry.getKey();
-         String ligandLabel = entry.getValue();
-         entry = extractToken(annotation, LIGAND_ID);
-         annotation = entry.getKey();
-         String ligandId = entry.getValue();
-         entry = extractToken(annotation, LIGAND);
-         annotation = entry.getKey();
-         String ligandName= entry.getValue();
-         Ligand ligand =null;
-         if(!Strings.isNullOrEmpty(ligandName)) {
-        	 LigandBuilder builder =new LigandBuilder();
-        	 builder.name(ligandName);
-        	 if(!Utils.nullOrEmpty(ligandId))
-        		 builder.id(ligandId);
-        	 if(!Utils.nullOrEmpty(ligandLabel))
-        		 builder.label(ligandLabel);
-        	 if(!Utils.nullOrEmpty(ligandNote))
-        		 builder.note(ligandNote);
-        	 
-        	 ligand =builder.build();
-         }
-        
-         return new AbstractMap.SimpleEntry<>(annotation, ligand);
-	}
 
-	private Pair<String, AlternativeSequence> updateFeatureDescription(
+        Map.Entry<String, String> entry = extractToken(annotation, LIGAND_NOTE);
+        annotation = entry.getKey();
+        String ligandNote = entry.getValue();
+        entry = extractToken(annotation, LIGAND_LABEL);
+        annotation = entry.getKey();
+        String ligandLabel = entry.getValue();
+        entry = extractToken(annotation, LIGAND_ID);
+        annotation = entry.getKey();
+        String ligandId = entry.getValue();
+        entry = extractToken(annotation, LIGAND);
+        annotation = entry.getKey();
+        String ligandName = entry.getValue();
+        Ligand ligand = null;
+        if (!Strings.isNullOrEmpty(ligandName)) {
+            LigandBuilder builder = new LigandBuilder();
+            builder.name(ligandName);
+            if (!Utils.nullOrEmpty(ligandId)) builder.id(ligandId);
+            if (!Utils.nullOrEmpty(ligandLabel)) builder.label(ligandLabel);
+            if (!Utils.nullOrEmpty(ligandNote)) builder.note(ligandNote);
+
+            ligand = builder.build();
+        }
+
+        return new AbstractMap.SimpleEntry<>(annotation, ligand);
+    }
+
+    private Pair<String, AlternativeSequence> updateFeatureDescription(
             UniprotKBFeatureType type, String text) {
         String description = "";
         if (type == UniprotKBFeatureType.CONFLICT) {

@@ -41,19 +41,21 @@ class UniProtKBFeatureBuilderTest {
 
     @Test
     void canSetLigand() {
-    	Ligand ligand = new LigandBuilder().name("Some name").id("ChEBI:CHEBI:5432").build();
+        Ligand ligand = new LigandBuilder().name("Some name").id("ChEBI:CHEBI:5432").build();
 
         UniProtKBFeature obj = new UniProtKBFeatureBuilder().ligand(ligand).build();
         assertEquals(ligand, obj.getLigand());
     }
+
     @Test
     void canSetLigandPart() {
-    	LigandPart ligandPart = new LigandPartBuilder().name("Some name").id("ChEBI:CHEBI:5432").build();
+        LigandPart ligandPart =
+                new LigandPartBuilder().name("Some name").id("ChEBI:CHEBI:5432").build();
 
         UniProtKBFeature obj = new UniProtKBFeatureBuilder().ligandPart(ligandPart).build();
         assertEquals(ligandPart, obj.getLigandPart());
     }
-    
+
     @Test
     void canCreateBuilderFromInstance() {
         UniProtKBFeature obj = new UniProtKBFeatureBuilder().build();

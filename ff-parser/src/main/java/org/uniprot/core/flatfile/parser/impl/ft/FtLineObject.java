@@ -96,55 +96,62 @@ public class FtLineObject implements HasEvidenceInfo {
             this.sequence = sequence;
         }
 
-		public Ligand getLigand() {
-			return ligand;
-		}
+        public Ligand getLigand() {
+            return ligand;
+        }
 
-		public void setLigand(Ligand ligand) {
-			this.ligand = ligand;
-		}
+        public void setLigand(Ligand ligand) {
+            this.ligand = ligand;
+        }
 
-		public Ligand getLigandPart() {
-			return ligandPart;
-		}
+        public Ligand getLigandPart() {
+            return ligandPart;
+        }
 
-		public void setLigandPart(Ligand ligandPart) {
-			this.ligandPart = ligandPart;
-		}
-        
+        public void setLigandPart(Ligand ligandPart) {
+            this.ligandPart = ligandPart;
+        }
     }
 
     public static class Ligand {
-    	private String name;
-    	private String id;
-    	private String label;
-    	private String note;
-		public String getName() {
-			return name;
-		}
-		public void setName(String name) {
-			this.name = name;
-		}
-		public String getId() {
-			return id;
-		}
-		public void setId(String id) {
-			this.id = id;
-		}
-		public String getLabel() {
-			return label;
-		}
-		public void setLabel(String label) {
-			this.label = label;
-		}
-		public String getNote() {
-			return note;
-		}
-		public void setNote(String note) {
-			this.note = note;
-		}
-    	
+        private String name;
+        private String id;
+        private String label;
+        private String note;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getLabel() {
+            return label;
+        }
+
+        public void setLabel(String label) {
+            this.label = label;
+        }
+
+        public String getNote() {
+            return note;
+        }
+
+        public void setNote(String note) {
+            this.note = note;
+        }
     }
+
     public enum FTType {
         INIT_MET,
         SIGNAL,

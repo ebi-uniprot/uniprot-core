@@ -452,48 +452,49 @@ class FeatureConverterTest {
 
     @Test
     void testBinding() {
-    	List<String> evs = List.of("ECO:0000255|PROSITE-ProRule:PRU01239");
-    	 LigandPart ligandPart =createLigandPart("tRNA 3'-terminal nucleotidyl-cytidyl-cytidyl-adenosine residue","ChEBI:CHEBI:83071", null, null);
-         
-         
-         Ligand ligand =createLigand("tRNA(Thr)", "ChEBI:CHEBI:29180", "A1", null);
-         String description ="Some value";
-         String ftid =null;
-         
-         EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
-         FeatureConverter converter = new FeatureConverter(evRefMapper);
-         
-         UniProtKBFeature feature =
-                 createFeature(UniprotKBFeatureType.BINDING, 313, 317, description, ftid, evs, ligand, ligandPart);
-         
-         org.uniprot.core.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
-         System.out.println(
-                 UniProtXmlTestHelper.toXmlString(
-                         xmlObj, org.uniprot.core.xml.jaxb.uniprot.FeatureType.class, "feature"));
-         verify(xmlObj, 313, 317, description, ftid, null, Arrays.asList(1));
-         UniProtKBFeature converted = converter.fromXml(xmlObj);
-         assertEquals(feature, converted);
+        List<String> evs = List.of("ECO:0000255|PROSITE-ProRule:PRU01239");
+        LigandPart ligandPart =
+                createLigandPart(
+                        "tRNA 3'-terminal nucleotidyl-cytidyl-cytidyl-adenosine residue",
+                        "ChEBI:CHEBI:83071",
+                        null,
+                        null);
+
+        Ligand ligand = createLigand("tRNA(Thr)", "ChEBI:CHEBI:29180", "A1", null);
+        String description = "Some value";
+        String ftid = null;
+
+        EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
+        FeatureConverter converter = new FeatureConverter(evRefMapper);
+
+        UniProtKBFeature feature =
+                createFeature(
+                        UniprotKBFeatureType.BINDING,
+                        313,
+                        317,
+                        description,
+                        ftid,
+                        evs,
+                        ligand,
+                        ligandPart);
+
+        org.uniprot.core.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(
+                        xmlObj, org.uniprot.core.xml.jaxb.uniprot.FeatureType.class, "feature"));
+        verify(xmlObj, 313, 317, description, ftid, null, Arrays.asList(1));
+        UniProtKBFeature converted = converter.fromXml(xmlObj);
+        assertEquals(feature, converted);
     }
-    
-    
-	private Ligand createLigand(String name, String id, String label, String note) {
-		return new LigandBuilder()
-        		.name(name)
-        		.id(id)
-        		.label(label)
-        		.note(note)
-        		.build();
+
+    private Ligand createLigand(String name, String id, String label, String note) {
+        return new LigandBuilder().name(name).id(id).label(label).note(note).build();
     }
-    
+
     private LigandPart createLigandPart(String name, String id, String label, String note) {
-        return new LigandPartBuilder()
-        		.name(name)
-        		.id(id)
-        		.label(label)
-        		.note(note)
-        		.build();
-      
+        return new LigandPartBuilder().name(name).id(id).label(label).note(note).build();
     }
+
     private UniProtKBFeature createFeature(
             UniprotKBFeatureType type,
             int start,
@@ -525,7 +526,7 @@ class FeatureConverterTest {
                 .evidencesSet(evidences)
                 .build();
     }
-    
+
     private UniProtKBFeature createFeature(
             UniprotKBFeatureType type,
             int start,
@@ -549,8 +550,8 @@ class FeatureConverterTest {
                 .ligandPart(ligandPart)
                 .build();
     }
-    
-   private List<Evidence> createEvidence(List<String> evIds) {
+
+    private List<Evidence> createEvidence(List<String> evIds) {
         return evIds.stream().map(EvidenceHelper::parseEvidenceLine).collect(Collectors.toList());
     }
 }

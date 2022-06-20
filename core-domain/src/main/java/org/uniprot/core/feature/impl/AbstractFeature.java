@@ -14,7 +14,7 @@ public abstract class AbstractFeature<T extends FeatureDatabase, F extends Featu
     private final F type;
     private final FeatureLocation location;
     private final FeatureDescription description;
-    private final List<CrossReference<T> > featureCrossReferences;
+    private final List<CrossReference<T>> featureCrossReferences;
     private final List<Evidence> evidences;
 
     protected AbstractFeature(
@@ -27,7 +27,7 @@ public abstract class AbstractFeature<T extends FeatureDatabase, F extends Featu
         this.type = type;
         this.location = location;
         this.description = description;
-        this.featureCrossReferences =Utils.unmodifiableList(featureCrossReferences);
+        this.featureCrossReferences = Utils.unmodifiableList(featureCrossReferences);
         this.evidences = Utils.unmodifiableList(evidences);
     }
 

@@ -32,7 +32,7 @@ public class UniProtKBFeatureImpl
             AlternativeSequence alternativeSequence,
             Ligand ligand,
             LigandPart ligandPart,
-           List< CrossReference<UniprotKBFeatureDatabase>> featureCrossReferences,
+            List<CrossReference<UniprotKBFeatureDatabase>> featureCrossReferences,
             List<Evidence> evidences) {
         super(type, location, description, featureCrossReferences, evidences);
         this.featureId = featureId;
@@ -63,13 +63,14 @@ public class UniProtKBFeatureImpl
     }
 
     @Override
-	public Ligand getLigand() {
-		return ligand;
-	}
-	@Override
-	public LigandPart getLigandPart() {
-		return ligandPart;
-	}
+    public Ligand getLigand() {
+        return ligand;
+    }
+
+    @Override
+    public LigandPart getLigandPart() {
+        return ligandPart;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -85,10 +86,7 @@ public class UniProtKBFeatureImpl
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getFeatureId(), alternativeSequence, ligand, ligandPart);
+        return Objects.hash(
+                super.hashCode(), getFeatureId(), alternativeSequence, ligand, ligandPart);
     }
-
-
-
-	
 }

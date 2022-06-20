@@ -226,79 +226,60 @@ class FtLineParserTest {
                 "N-linked (GlcNAc...); by host (Potential)",
                 null);
     }
-    
-    @Test 
+
+    @Test
     void testBindingFeature() {
-    	 String ftLines = "FT   BINDING         152\n"
-                 + "FT                   /ligand=\"Zn(2+)\"\n"
-                 + "FT                   /ligand_id=\"ChEBI:CHEBI:29105\"\n"
-                 + "FT                   /ligand_label=\"1\"\n"
-                 + "FT                   /ligand_note=\"structural\"\n"
-                 + "FT                   /evidence=\"ECO:0000255|PROSITE-ProRule:PRU01239\"\n";
-    	 
-    	 UniprotKBLineParser<FtLineObject> parser =
-                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
-         FtLineObject obj = parser.parse(ftLines);
-         assertEquals(1, obj.getFts().size());
-         verify(
-                 obj.getFts().get(0),
-                 FTType.BINDING,
-                 "152",
-                 "152",
-                 null,
-                 null);
-         verifyEvidences(
-                 obj,
-                 obj.getFts().get(0),
-                 List.of("ECO:0000255|PROSITE-ProRule:PRU01239"
-                         ));
-         Ligand ligand = obj.getFts().get(0).getLigand();
-         Ligand ligandPart = obj.getFts().get(0).getLigandPart();
-         verifyLigand(ligand, "Zn(2+)", "ChEBI:CHEBI:29105", "1", "structural");
-         assertNull(ligandPart);
+        String ftLines =
+                "FT   BINDING         152\n"
+                        + "FT                   /ligand=\"Zn(2+)\"\n"
+                        + "FT                   /ligand_id=\"ChEBI:CHEBI:29105\"\n"
+                        + "FT                   /ligand_label=\"1\"\n"
+                        + "FT                   /ligand_note=\"structural\"\n"
+                        + "FT                   /evidence=\"ECO:0000255|PROSITE-ProRule:PRU01239\"\n";
+
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
+        FtLineObject obj = parser.parse(ftLines);
+        assertEquals(1, obj.getFts().size());
+        verify(obj.getFts().get(0), FTType.BINDING, "152", "152", null, null);
+        verifyEvidences(obj, obj.getFts().get(0), List.of("ECO:0000255|PROSITE-ProRule:PRU01239"));
+        Ligand ligand = obj.getFts().get(0).getLigand();
+        Ligand ligandPart = obj.getFts().get(0).getLigandPart();
+        verifyLigand(ligand, "Zn(2+)", "ChEBI:CHEBI:29105", "1", "structural");
+        assertNull(ligandPart);
     }
-    
+
     @Test
     void testBindingFeatureWithLigandPart() {
-    	  String ftLines = "FT   BINDING         692..697\n"
-                  + "FT                   /ligand=\"divinyl chlorophyll-a'\"\n"
-                  + "FT                   /ligand_id=\"ChEBI:CHEBI:?????\"\n"
-                  + "FT                   /ligand_label=\"A1\"\n"
-                  + "FT                   /ligand_part=\"Mg\"\n"
-                  + "FT                   /ligand_part_id=\"ChEBI:CHEBI:4325\"\n"
-                  + "FT                   /note=\"axial ligand\"\n"
-                  + "FT                   /evidence=\"ECO:0000255|HAMAP-Rule:MF_00458\"\n";
-    	  
-    	  UniprotKBLineParser<FtLineObject> parser =
-                  new DefaultUniprotKBLineParserFactory().createFtLineParser();
-          FtLineObject obj = parser.parse(ftLines);
-          assertEquals(1, obj.getFts().size());
-          verify(
-                  obj.getFts().get(0),
-                  FTType.BINDING,
-                  "692",
-                  "697",
-                  "axial ligand",
-                  null);
-          verifyEvidences(
-                  obj,
-                  obj.getFts().get(0),
-                  List.of("ECO:0000255|HAMAP-Rule:MF_00458"
-                          ));
-          Ligand ligand = obj.getFts().get(0).getLigand();
-          Ligand ligandPart = obj.getFts().get(0).getLigandPart();
-          verifyLigand(ligand, "divinyl chlorophyll-a'", "ChEBI:CHEBI:?????", "A1", null);
-          verifyLigand(ligandPart, "Mg", "ChEBI:CHEBI:4325", null, null);
-    	  
+        String ftLines =
+                "FT   BINDING         692..697\n"
+                        + "FT                   /ligand=\"divinyl chlorophyll-a'\"\n"
+                        + "FT                   /ligand_id=\"ChEBI:CHEBI:?????\"\n"
+                        + "FT                   /ligand_label=\"A1\"\n"
+                        + "FT                   /ligand_part=\"Mg\"\n"
+                        + "FT                   /ligand_part_id=\"ChEBI:CHEBI:4325\"\n"
+                        + "FT                   /note=\"axial ligand\"\n"
+                        + "FT                   /evidence=\"ECO:0000255|HAMAP-Rule:MF_00458\"\n";
+
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
+        FtLineObject obj = parser.parse(ftLines);
+        assertEquals(1, obj.getFts().size());
+        verify(obj.getFts().get(0), FTType.BINDING, "692", "697", "axial ligand", null);
+        verifyEvidences(obj, obj.getFts().get(0), List.of("ECO:0000255|HAMAP-Rule:MF_00458"));
+        Ligand ligand = obj.getFts().get(0).getLigand();
+        Ligand ligandPart = obj.getFts().get(0).getLigandPart();
+        verifyLigand(ligand, "divinyl chlorophyll-a'", "ChEBI:CHEBI:?????", "A1", null);
+        verifyLigand(ligandPart, "Mg", "ChEBI:CHEBI:4325", null, null);
     }
 
     private void verifyLigand(Ligand ligand, String name, String id, String label, String note) {
-    	assertEquals(name, ligand.getName());
-    	assertEquals(id, ligand.getId());
-    	assertEquals(label, ligand.getLabel());
-    	assertEquals(note, ligand.getNote());
-    	
+        assertEquals(name, ligand.getName());
+        assertEquals(id, ligand.getId());
+        assertEquals(label, ligand.getLabel());
+        assertEquals(note, ligand.getNote());
     }
+
     @Test
     void testUnknown() {
         String ftLines =
@@ -345,9 +326,7 @@ class FtLineParserTest {
         verifyEvidences(
                 obj,
                 obj.getFts().get(0),
-                List.of(
-                            "ECO:0000006|PubMed:20858735", "ECO:0000006|PubMed:23640942"
-                        ));
+                List.of("ECO:0000006|PubMed:20858735", "ECO:0000006|PubMed:23640942"));
     }
 
     @Test
@@ -384,9 +363,7 @@ class FtLineParserTest {
         verifyEvidences(obj, obj.getFts().get(0), null);
         verify(obj.getFts().get(1), FTType.REGION, "275", "277", "Phosphate 2 binding", null);
         verifyEvidences(
-                obj,
-                obj.getFts().get(1),
-                List.of("ECO:0000006|PubMed:20858735", "ECO:0000006"));
+                obj, obj.getFts().get(1), List.of("ECO:0000006|PubMed:20858735", "ECO:0000006"));
     }
 
     @Test

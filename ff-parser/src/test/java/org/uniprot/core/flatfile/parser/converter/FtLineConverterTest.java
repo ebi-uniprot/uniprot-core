@@ -415,20 +415,20 @@ class FtLineConverterTest {
                 feature1.getLocation(), 150, 150, PositionModifier.EXACT, PositionModifier.EXACT);
         assertEquals(UniprotKBFeatureType.ACT_SITE, feature1.getType());
     }
-    
+
     /*
-     * "FT   BINDING         692..697\n"
-                  + "FT                   /ligand=\"divinyl chlorophyll-a'\"\n"
-                  + "FT                   /ligand_id=\"ChEBI:CHEBI:1234\"\n"
-                  + "FT                   /ligand_label=\"A1\"\n"
-                  + "FT                   /ligand_part=\"Mg\"\n"
-                  + "FT                   /ligand_part_id=\"ChEBI:CHEBI:4325\"\n"
-                  + "FT                   /note=\"axial ligand\"\n"
-                  + "FT                   /evidence=\"ECO:0000255|HAMAP-Rule:MF_00458\"\n";
-     */
+    * "FT   BINDING         692..697\n"
+                 + "FT                   /ligand=\"divinyl chlorophyll-a'\"\n"
+                 + "FT                   /ligand_id=\"ChEBI:CHEBI:1234\"\n"
+                 + "FT                   /ligand_label=\"A1\"\n"
+                 + "FT                   /ligand_part=\"Mg\"\n"
+                 + "FT                   /ligand_part_id=\"ChEBI:CHEBI:4325\"\n"
+                 + "FT                   /note=\"axial ligand\"\n"
+                 + "FT                   /evidence=\"ECO:0000255|HAMAP-Rule:MF_00458\"\n";
+    */
     @Test
     void testBindingFeature() {
-    	FtLineObject fobj = new FtLineObject();
+        FtLineObject fobj = new FtLineObject();
         FtLineObject.FT ft = new FtLineObject.FT();
         ft.setType(FtLineObject.FTType.BINDING);
         ft.setLocationStart("692");
@@ -443,7 +443,7 @@ class FtLineConverterTest {
         ligandPart.setName("Mg");
         ligandPart.setId("ChEBI:CHEBI:4325");
         ft.setLigandPart(ligandPart);
-        List<String> evIds =List.of("ECO:0000255|HAMAP-Rule:MF_00458");
+        List<String> evIds = List.of("ECO:0000255|HAMAP-Rule:MF_00458");
         fobj.getEvidenceInfo().getEvidences().put(ft, evIds);
         fobj.getFts().add(ft);
 
@@ -467,14 +467,12 @@ class FtLineConverterTest {
         assertEquals("ChEBI:CHEBI:1234", ftLigand.getId());
         assertEquals("A1", ftLigand.getLabel());
         assertNull(ftLigand.getNote());
-        LigandPart ftLigandPart  = feature1.getLigandPart();
+        LigandPart ftLigandPart = feature1.getLigandPart();
         assertNotNull(ftLigandPart);
         assertEquals("Mg", ftLigandPart.getName());
         assertEquals("ChEBI:CHEBI:4325", ftLigandPart.getId());
         assertNull(ftLigandPart.getLabel());
         assertNull(ftLigandPart.getNote());
-        
-        
     }
 
     private void validateAltSeq(UniProtKBFeature as, String val, List<String> target) {

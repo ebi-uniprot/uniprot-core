@@ -91,7 +91,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
         this.id = id;
         return this;
     }
-    
+
     public @Nonnull ProteomeEntryBuilder proteinCount(Integer proteinCount) {
         this.proteinCount = proteinCount;
         return this;

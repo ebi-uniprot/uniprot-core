@@ -93,12 +93,12 @@ public abstract class AbstractFeatureLineBuilder extends FFLineBuilderAbstr<UniP
             return Collections.emptyList();
         }
     }
-    protected List<String> buildLigands(UniProtKBFeature f, boolean includeFFMarkings){
+
+    protected List<String> buildLigands(UniProtKBFeature f, boolean includeFFMarkings) {
         return List.of();
     }
 
     protected StringBuilder getDescription(UniProtKBFeature f) {
         return FTLineBuilderHelper.getDescriptionString(f);
     }
-
 }

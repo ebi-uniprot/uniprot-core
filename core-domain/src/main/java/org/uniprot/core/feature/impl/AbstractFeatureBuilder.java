@@ -32,7 +32,7 @@ public abstract class AbstractFeatureBuilder<
     protected F type;
     protected FeatureLocation location;
     protected FeatureDescription description;
-    protected List<CrossReference<D>> featureCrossReferences =new ArrayList<>();
+    protected List<CrossReference<D>> featureCrossReferences = new ArrayList<>();
     protected List<Evidence> evidences = new ArrayList<>();
 
     public @Nonnull B type(F type) {
@@ -55,16 +55,15 @@ public abstract class AbstractFeatureBuilder<
         return getThis();
     }
 
-
     public @Nonnull B featureCrossReferenceAdd(CrossReference<D> featureCrossReference) {
-    	 addOrIgnoreNull(featureCrossReference, this.featureCrossReferences);
+        addOrIgnoreNull(featureCrossReference, this.featureCrossReferences);
         return getThis();
     }
-    
+
     public @Nonnull B featureCrossReferenceSet(List<CrossReference<D>> featureCrossReferences) {
-    	this.featureCrossReferences = featureCrossReferences;
-       return getThis();
-   }
+        this.featureCrossReferences = featureCrossReferences;
+        return getThis();
+    }
 
     public @Nonnull B evidencesSet(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);

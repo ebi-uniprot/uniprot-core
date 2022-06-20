@@ -81,13 +81,13 @@ public class ProteomeEntryImpl implements ProteomeEntry {
         this.annotationScore = annotationScore;
         this.superkingdom = superkingdom;
         this.geneCount = geneCount;
-       
+
         this.taxonLineage = Utils.unmodifiableList(taxonLineage);
         this.proteomeCompletenessReport = proteomeCompletenessReport;
         this.genomeAssembly = genomeAssembly;
         this.genomeAnnotation = genomeAnnotation;
         this.exclusionReasons = Utils.unmodifiableList(exclusionReasons);
-        this.proteinCount =proteinCount;
+        this.proteinCount = proteinCount;
     }
 
     @Override
