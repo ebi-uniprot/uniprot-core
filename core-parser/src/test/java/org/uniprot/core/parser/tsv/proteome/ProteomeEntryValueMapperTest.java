@@ -36,7 +36,7 @@ class ProteomeEntryValueMapperTest {
 
         assertEquals(fields.size(), entryMap.size());
         verify("UP000005640", "upid", entryMap);
-        verify("204", "protein_count", entryMap);
+        verify("200", "protein_count", entryMap);
         verify("assembly id", "genome_assembly", entryMap);
         verify("C:130.0%[S:140.0%,D:150.0%],F:110.0%,M:120.0%,n:100", "busco", entryMap);
         verify("Close to standard (low value)", "cpd", entryMap);
@@ -148,6 +148,7 @@ class ProteomeEntryValueMapperTest {
         ProteomeEntry proteome =
                 new ProteomeEntryBuilder()
                         .proteomeId(proteomeId)
+                        .proteinCount(200)
                         .description(description)
                         .taxonomy(taxonomy)
                         .modified(modified)

@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.slf4j.Logger;
@@ -27,6 +28,7 @@ import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import com.google.common.io.CharSource;
 import com.google.common.io.Resources;
 
+@Disabled
 class FlatfileRoundTripIT {
     private static final Logger LOGGER = getLogger(FlatfileRoundTripIT.class);
 
