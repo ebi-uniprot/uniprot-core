@@ -362,70 +362,70 @@ class UniProtKBEntryValueMapperTest {
         verify("Q15758", "accession", result);
 
         String chain =
-                "CHAIN 1..541 /note=\"Neutral amino acid transporter B(0)\" /id=\"PRO_0000202082\"";
+                "CHAIN 1..541; /note=\"Neutral amino acid transporter B(0)\"; /id=\"PRO_0000202082\"";
         String topo_dom =
-                "TOPO_DOM 1..51 /note=\"Cytoplasmic\" /evidence=\"ECO:0000305\";"
-                        + " TOPO_DOM 82..94 /note=\"Extracellular\" /evidence=\"ECO:0000305\";"
-                        + " TOPO_DOM 117..130 /note=\"Cytoplasmic\" /evidence=\"ECO:0000305\";"
-                        + " TOPO_DOM 154..224 /note=\"Extracellular\" /evidence=\"ECO:0000305\";"
-                        + " TOPO_DOM 249..257 /note=\"Cytoplasmic\" /evidence=\"ECO:0000305\";"
-                        + " TOPO_DOM 286..306 /note=\"Extracellular\" /evidence=\"ECO:0000305\";"
-                        + " TOPO_DOM 329..333 /note=\"Cytoplasmic\" /evidence=\"ECO:0000305\";"
-                        + " TOPO_DOM 365..373 /note=\"Cytoplasmic\" /evidence=\"ECO:0000305\";"
-                        + " TOPO_DOM 401..413 /note=\"Extracellular\" /evidence=\"ECO:0000305\";"
-                        + " TOPO_DOM 448..460 /note=\"Extracellular\" /evidence=\"ECO:0000305\";"
-                        + " TOPO_DOM 483..541 /note=\"Cytoplasmic\" /evidence=\"ECO:0000305\"";
+                "TOPO_DOM 1..51; /note=\"Cytoplasmic\"; /evidence=\"ECO:0000305\";"
+                        + " TOPO_DOM 82..94; /note=\"Extracellular\"; /evidence=\"ECO:0000305\";"
+                        + " TOPO_DOM 117..130; /note=\"Cytoplasmic\"; /evidence=\"ECO:0000305\";"
+                        + " TOPO_DOM 154..224; /note=\"Extracellular\"; /evidence=\"ECO:0000305\";"
+                        + " TOPO_DOM 249..257; /note=\"Cytoplasmic\"; /evidence=\"ECO:0000305\";"
+                        + " TOPO_DOM 286..306; /note=\"Extracellular\"; /evidence=\"ECO:0000305\";"
+                        + " TOPO_DOM 329..333; /note=\"Cytoplasmic\"; /evidence=\"ECO:0000305\";"
+                        + " TOPO_DOM 365..373; /note=\"Cytoplasmic\"; /evidence=\"ECO:0000305\";"
+                        + " TOPO_DOM 401..413; /note=\"Extracellular\"; /evidence=\"ECO:0000305\";"
+                        + " TOPO_DOM 448..460; /note=\"Extracellular\"; /evidence=\"ECO:0000305\";"
+                        + " TOPO_DOM 483..541; /note=\"Cytoplasmic\"; /evidence=\"ECO:0000305\"";
         String transmem =
-                "TRANSMEM 52..81 /note=\"Helical; Name=1\""
-                        + " /evidence=\"ECO:0000305|PubMed:29872227\"; TRANSMEM 95..116"
-                        + " /note=\"Helical; Name=2\" /evidence=\"ECO:0000305|PubMed:29872227\";"
-                        + " TRANSMEM 131..153 /note=\"Helical; Name=3\""
-                        + " /evidence=\"ECO:0000305|PubMed:29872227\"; TRANSMEM 225..248"
-                        + " /note=\"Helical; Name=4\" /evidence=\"ECO:0000305|PubMed:29872227\";"
-                        + " TRANSMEM 258..285 /note=\"Helical; Name=5\""
-                        + " /evidence=\"ECO:0000305|PubMed:29872227\"; TRANSMEM 307..328"
-                        + " /note=\"Helical; Name=6\" /evidence=\"ECO:0000305|PubMed:29872227\";"
-                        + " TRANSMEM 374..400 /note=\"Helical; Name=7\""
-                        + " /evidence=\"ECO:0000305|PubMed:29872227\"; TRANSMEM 461..482"
-                        + " /note=\"Helical; Name=8\" /evidence=\"ECO:0000305|PubMed:29872227\"";
+                "TRANSMEM 52..81; /note=\"Helical; Name=1\""
+                        + "; /evidence=\"ECO:0000305|PubMed:29872227\"; TRANSMEM 95..116;"
+                        + " /note=\"Helical; Name=2\"; /evidence=\"ECO:0000305|PubMed:29872227\";"
+                        + " TRANSMEM 131..153; /note=\"Helical; Name=3\""
+                        + "; /evidence=\"ECO:0000305|PubMed:29872227\"; TRANSMEM 225..248;"
+                        + " /note=\"Helical; Name=4\"; /evidence=\"ECO:0000305|PubMed:29872227\";"
+                        + " TRANSMEM 258..285; /note=\"Helical; Name=5\""
+                        + "; /evidence=\"ECO:0000305|PubMed:29872227\"; TRANSMEM 307..328;"
+                        + " /note=\"Helical; Name=6\"; /evidence=\"ECO:0000305|PubMed:29872227\";"
+                        + " TRANSMEM 374..400; /note=\"Helical; Name=7\""
+                        + "; /evidence=\"ECO:0000305|PubMed:29872227\"; TRANSMEM 461..482;"
+                        + " /note=\"Helical; Name=8\"; /evidence=\"ECO:0000305|PubMed:29872227\"";
         String modRes =
-                "MOD_RES 1 /note=\"N-acetylmethionine\" /evidence=\"ECO:0000244|PubMed:19413330,"
-                        + " ECO:0000244|PubMed:22814378\"; MOD_RES 493 /note=\"Phosphoserine\""
-                        + " /evidence=\"ECO:0000244|PubMed:21406692, ECO:0000244|PubMed:23186163\";"
-                        + " MOD_RES 494 /note=\"Phosphothreonine\""
-                        + " /evidence=\"ECO:0000244|PubMed:23186163\"; MOD_RES 503"
-                        + " /note=\"Phosphoserine\" /evidence=\"ECO:0000244|PubMed:19690332\"; MOD_RES"
-                        + " 535 /note=\"Phosphoserine\" /evidence=\"ECO:0000244|PubMed:17081983,"
-                        + " ECO:0000244|PubMed:18669648, ECO:0000244|PubMed:19690332\"; MOD_RES 539"
-                        + " /note=\"Phosphoserine\" /evidence=\"ECO:0000244|PubMed:23186163\"";
+                "MOD_RES 1; /note=\"N-acetylmethionine\"; /evidence=\"ECO:0000244|PubMed:19413330,"
+                        + " ECO:0000244|PubMed:22814378\"; MOD_RES 493; /note=\"Phosphoserine\""
+                        + "; /evidence=\"ECO:0000244|PubMed:21406692, ECO:0000244|PubMed:23186163\";"
+                        + " MOD_RES 494; /note=\"Phosphothreonine\""
+                        + "; /evidence=\"ECO:0000244|PubMed:23186163\"; MOD_RES 503;"
+                        + " /note=\"Phosphoserine\"; /evidence=\"ECO:0000244|PubMed:19690332\"; MOD_RES"
+                        + " 535; /note=\"Phosphoserine\"; /evidence=\"ECO:0000244|PubMed:17081983,"
+                        + " ECO:0000244|PubMed:18669648, ECO:0000244|PubMed:19690332\"; MOD_RES 539;"
+                        + " /note=\"Phosphoserine\"; /evidence=\"ECO:0000244|PubMed:23186163\"";
         String carbohyd =
-                "CARBOHYD 163 /note=\"N-linked (GlcNAc...) asparagine\" /evidence=\"ECO:0000255\";"
-                        + " CARBOHYD 212 /note=\"N-linked (GlcNAc...) asparagine\""
-                        + " /evidence=\"ECO:0000269|PubMed:19349973\"";
+                "CARBOHYD 163; /note=\"N-linked (GlcNAc...) asparagine\"; /evidence=\"ECO:0000255\";"
+                        + " CARBOHYD 212; /note=\"N-linked (GlcNAc...) asparagine\""
+                        + "; /evidence=\"ECO:0000269|PubMed:19349973\"";
         String varSeq =
-                "VAR_SEQ 1..228 /note=\"Missing (in isoform 3)\""
-                        + " /evidence=\"ECO:0000303|PubMed:14702039\" /id=\"VSP_046851\"; VAR_SEQ"
-                        + " 1..203"
+                "VAR_SEQ 1..228; /note=\"Missing (in isoform 3)\""
+                        + "; /evidence=\"ECO:0000303|PubMed:14702039\"; /id=\"VSP_046851\"; VAR_SEQ"
+                        + " 1..203;"
                         + " /note=\"MVADPPRDSKGLAAAEPTANGGLALASIEDQGAAAGGYCGSRDQVRRCLRANLLVLLTVVAVVAGVALGLG"
                         + "VSGAGGALALGPERLSAFVFPGELLLRLLRMIILPLVVCSLIGGAASLDPGALGRLGAWALLFFLVTTLLASALGVGLALALQPGAASAAINASVGAAGSAENAPSKEVLDSFLDLARNIFPSNLVSAAFRS"
-                        + " -> M (in isoform 2)\" /evidence=\"ECO:0000303|PubMed:14702039\""
-                        + " /id=\"VSP_046354\"";
+                        + " -> M (in isoform 2)\"; /evidence=\"ECO:0000303|PubMed:14702039\""
+                        + "; /id=\"VSP_046354\"";
         String variant =
-                "VARIANT 17 /note=\"P -> A (in dbSNP:rs3027956)\" /id=\"VAR_020439\"; VARIANT 512"
-                        + " /note=\"V -> L (in dbSNP:rs3027961)\""
-                        + " /evidence=\"ECO:0000244|PubMed:19690332, ECO:0000269|PubMed:14702039\""
-                        + " /id=\"VAR_013517\"";
+                "VARIANT 17; /note=\"P -> A (in dbSNP:rs3027956)\"; /id=\"VAR_020439\"; VARIANT 512"
+                        + "; /note=\"V -> L (in dbSNP:rs3027961)\""
+                        + "; /evidence=\"ECO:0000244|PubMed:19690332, ECO:0000269|PubMed:14702039\""
+                        + "; /id=\"VAR_013517\"";
         String conflict =
-                "CONFLICT 18..24 /note=\"TANGGLA -> PPTGAWQ (in Ref. 1; AAC50629)\""
-                        + " /evidence=\"ECO:0000305\"; CONFLICT 44 /note=\"Q -> L (in Ref. 1;"
-                        + " AAC50629)\" /evidence=\"ECO:0000305\"; CONFLICT 84..87 /note=\"ERLS ->"
-                        + " GALE (in Ref. 1; AAC50629)\" /evidence=\"ECO:0000305\"; CONFLICT 341"
-                        + " /note=\"V -> A (in Ref. 5; BAH14917)\" /evidence=\"ECO:0000305\"; CONFLICT"
-                        + " 453 /note=\"I -> V (in Ref. 2; AAD09812)\" /evidence=\"ECO:0000305\";"
-                        + " CONFLICT 460 /note=\"D -> G (in Ref. 2; AAD09812)\""
-                        + " /evidence=\"ECO:0000305\"; CONFLICT 463 /note=\"V -> A (in Ref. 2;"
-                        + " AAD09812)\" /evidence=\"ECO:0000305\"; CONFLICT 508 /note=\"D -> G (in"
-                        + " Ref. 2; AAD09812)\" /evidence=\"ECO:0000305\"";
+                "CONFLICT 18..24; /note=\"TANGGLA -> PPTGAWQ (in Ref. 1; AAC50629)\""
+                        + "; /evidence=\"ECO:0000305\"; CONFLICT 44; /note=\"Q -> L (in Ref. 1;"
+                        + " AAC50629)\"; /evidence=\"ECO:0000305\"; CONFLICT 84..87; /note=\"ERLS ->"
+                        + " GALE (in Ref. 1; AAC50629)\"; /evidence=\"ECO:0000305\"; CONFLICT 341;"
+                        + " /note=\"V -> A (in Ref. 5; BAH14917)\"; /evidence=\"ECO:0000305\"; CONFLICT"
+                        + " 453; /note=\"I -> V (in Ref. 2; AAD09812)\"; /evidence=\"ECO:0000305\";"
+                        + " CONFLICT 460; /note=\"D -> G (in Ref. 2; AAD09812)\""
+                        + "; /evidence=\"ECO:0000305\"; CONFLICT 463; /note=\"V -> A (in Ref. 2;"
+                        + " AAD09812)\"; /evidence=\"ECO:0000305\"; CONFLICT 508; /note=\"D -> G (in"
+                        + " Ref. 2; AAD09812)\"; /evidence=\"ECO:0000305\"";
 
         verify(chain, "ft_chain", result);
         verify(topo_dom, "ft_topo_dom", result);
