@@ -54,17 +54,19 @@ public class UniProtKBEntryValueMapper implements EntityValueMapper<UniProtKBEnt
     }
 
     public Map<String, String> mapEntity(UniProtKBEntry entry, List<String> fields) {
-        if(entry.isActive()){
+        if (entry.isActive()) {
             return mapActiveEntry(entry, fields);
         } else {
             Map<String, String> map = new HashMap<>();
             map.put("accession", entry.getPrimaryAccession().getValue());
-            if(Objects.nonNull(entry.getUniProtkbId())) {
+            if (Objects.nonNull(entry.getUniProtkbId())) {
                 map.put("id", entry.getUniProtkbId().getValue());
             }
 
-            if(Objects.nonNull(entry.getInactiveReason())) {
-                map.put("protein_name", entry.getInactiveReason().getInactiveReasonType().getName().toLowerCase());
+            if (Objects.nonNull(entry.getInactiveReason())) {
+                map.put(
+                        "protein_name",
+                        entry.getInactiveReason().getInactiveReasonType().getName().toLowerCase());
             }
             return map;
         }

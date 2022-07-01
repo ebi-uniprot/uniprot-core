@@ -16,7 +16,7 @@ class EntryLineageMapTest {
     @Test
     void testFields() {
         List<String> fields = EntryLineageMap.FIELDS;
-        List<String> expected = List.of("lineage","lineage_ids");
+        List<String> expected = List.of("lineage", "lineage_ids");
         assertEquals(expected, fields);
     }
 
@@ -67,8 +67,7 @@ class EntryLineageMapTest {
         assertEquals(expectedLineage, dl.attributeValues().get("lineage"));
 
         assertTrue(dl.attributeValues().containsKey("lineage_ids"));
-        String expectedLineageIds =
-                "10 (superkingdom), 20 (kingdom), 30 (order), 40 (species)";
+        String expectedLineageIds = "10 (superkingdom), 20 (kingdom), 30 (order), 40 (species)";
         assertEquals(expectedLineageIds, dl.attributeValues().get("lineage_ids"));
     }
 }

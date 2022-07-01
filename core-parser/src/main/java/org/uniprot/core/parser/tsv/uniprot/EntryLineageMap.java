@@ -10,7 +10,7 @@ import org.uniprot.core.taxonomy.TaxonomyLineage;
 
 public class EntryLineageMap implements NamedValueMap {
     private final List<TaxonomyLineage> lineage;
-    public static final List<String> FIELDS = List.of("lineage","lineage_ids");
+    public static final List<String> FIELDS = List.of("lineage", "lineage_ids");
 
     public EntryLineageMap(List<TaxonomyLineage> lineage) {
         if (notNull(lineage)) {

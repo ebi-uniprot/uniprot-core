@@ -76,10 +76,13 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testInactiveEntries() {
-        List<String> fields = Arrays.asList("accession", "id","protein_name");
-        EntryInactiveReason inactiveReason = new EntryInactiveReasonBuilder().type(InactiveReasonType.DELETED).build();
-        UniProtKBEntry inactiveEntry = new UniProtKBEntryBuilder("Q15758", "AAAT_HUMAN", inactiveReason).build();
-        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(inactiveEntry, fields);
+        List<String> fields = Arrays.asList("accession", "id", "protein_name");
+        EntryInactiveReason inactiveReason =
+                new EntryInactiveReasonBuilder().type(InactiveReasonType.DELETED).build();
+        UniProtKBEntry inactiveEntry =
+                new UniProtKBEntryBuilder("Q15758", "AAAT_HUMAN", inactiveReason).build();
+        Map<String, String> result =
+                new UniProtKBEntryValueMapper().mapEntity(inactiveEntry, fields);
 
         verify("Q15758", "accession", result);
         verify("AAAT_HUMAN", "id", result);
