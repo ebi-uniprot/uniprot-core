@@ -10,7 +10,7 @@ import org.uniprot.core.taxonomy.TaxonomyLineage;
 
 public class EntryLineageMap implements NamedValueMap {
     private final List<TaxonomyLineage> lineage;
-    public static final List<String> DEFAULT_FIELDS = Collections.singletonList("lineage");
+    public static final List<String> FIELDS = List.of("lineage", "lineage_ids");
 
     public EntryLineageMap(List<TaxonomyLineage> lineage) {
         if (notNull(lineage)) {
@@ -23,8 +23,21 @@ public class EntryLineageMap implements NamedValueMap {
     @Override
     public Map<String, String> attributeValues() {
         Map<String, String> map = new HashMap<>();
-        map.put("lineage", getAllLineages());
+        map.put(FIELDS.get(0), getAllLineages());
+        map.put(FIELDS.get(1), getAllLineageIds());
         return map;
+    }
+
+    private String getAllLineageIds() {
+        return lineage.stream().map(this::getLineageIds).collect(Collectors.joining(", "));
+    }
+
+    private String getLineageIds(TaxonomyLineage taxonomyLineage) {
+        String result = String.valueOf(taxonomyLineage.getTaxonId());
+        if (taxonomyLineage.hasRank()) {
+            result += " (" + taxonomyLineage.getRank().getDisplayName() + ")";
+        }
+        return result;
     }
 
     private String getAllLineages() {
@@ -40,6 +53,6 @@ public class EntryLineageMap implements NamedValueMap {
     }
 
     public static boolean contains(List<String> fields) {
-        return fields.stream().anyMatch(DEFAULT_FIELDS::contains);
+        return fields.stream().anyMatch(FIELDS::contains);
     }
 }

@@ -16,7 +16,10 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniProtParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniProtParser;
 import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
+import org.uniprot.core.uniprotkb.EntryInactiveReason;
+import org.uniprot.core.uniprotkb.InactiveReasonType;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
+import org.uniprot.core.uniprotkb.impl.EntryInactiveReasonBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
 
 class UniProtKBEntryValueMapperTest {
@@ -69,6 +72,21 @@ class UniProtKBEntryValueMapperTest {
             e.printStackTrace();
         }
         return result;
+    }
+
+    @Test
+    void testInactiveEntries() {
+        List<String> fields = Arrays.asList("accession", "id", "protein_name");
+        EntryInactiveReason inactiveReason =
+                new EntryInactiveReasonBuilder().type(InactiveReasonType.DELETED).build();
+        UniProtKBEntry inactiveEntry =
+                new UniProtKBEntryBuilder("Q15758", "AAAT_HUMAN", inactiveReason).build();
+        Map<String, String> result =
+                new UniProtKBEntryValueMapper().mapEntity(inactiveEntry, fields);
+
+        verify("Q15758", "accession", result);
+        verify("AAAT_HUMAN", "id", result);
+        verify("deleted", "protein_name", result);
     }
 
     @Test
