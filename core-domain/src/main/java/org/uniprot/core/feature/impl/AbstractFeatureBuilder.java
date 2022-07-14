@@ -61,7 +61,7 @@ public abstract class AbstractFeatureBuilder<
     }
 
     public @Nonnull B featureCrossReferenceSet(List<CrossReference<D>> featureCrossReferences) {
-        this.featureCrossReferences = featureCrossReferences;
+        this.featureCrossReferences = modifiableList(featureCrossReferences);
         return getThis();
     }
 

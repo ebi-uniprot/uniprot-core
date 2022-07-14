@@ -18,10 +18,10 @@ public interface UniProtKBFeature extends Feature<UniprotKBFeatureDatabase, Unip
     boolean hasAlternativeSequence();
 
     default boolean hasLigand() {
-        return this.getType() == UniprotKBFeatureType.BINDING;
+        return Utils.notNull(getLigand());
     }
 
     default boolean hasLigandPart() {
-        return (this.getType() == UniprotKBFeatureType.BINDING) && Utils.notNull(getLigandPart());
+        return Utils.notNull(getLigandPart());
     }
 }
