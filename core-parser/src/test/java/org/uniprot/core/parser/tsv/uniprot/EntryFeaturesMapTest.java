@@ -28,13 +28,13 @@ class EntryFeaturesMapTest {
         Map<String, String> result = dl.attributeValues();
         assertEquals(4, result.size());
         verify("rs1064793108 rs1064793121", "xref_dbsnp", result);
-        verify("DOMAIN 23 /note=\"some domain\"", "ft_domain", result);
-        verify("HELIX 7..10 /evidence=\"ECO:0000244|PDB:2LO1\"", "ft_helix", result);
+        verify("DOMAIN 23; /note=\"some domain\"", "ft_domain", result);
+        verify("HELIX 7..10; /evidence=\"ECO:0000244|PDB:2LO1\"", "ft_helix", result);
         String variantExp =
-                "VARIANT 23 /note=\"A -> G (in SCN1; dbSNP:rs1064793108)\" /id=\"VAR_064512\";"
-                        + " VARIANT 27 /note=\"B -> D (in another; dbSNP:rs1064793121)\""
-                        + " /evidence=\"ECO:0000269|PubMed:12345, ECO:0000269|PubMed:6142052\""
-                        + " /id=\"VAR_064556\"";
+                "VARIANT 23; /note=\"A -> G (in SCN1; dbSNP:rs1064793108)\"; /id=\"VAR_064512\";"
+                        + " VARIANT 27; /note=\"B -> D (in another; dbSNP:rs1064793121)\""
+                        + "; /evidence=\"ECO:0000269|PubMed:12345, ECO:0000269|PubMed:6142052\""
+                        + "; /id=\"VAR_064556\"";
 
         verify(variantExp, "ft_variant", result);
     }
@@ -110,7 +110,7 @@ class EntryFeaturesMapTest {
                         createAlternativeSequence("A", "G"));
         String result = EntryFeaturesMap.featureToString(feature);
         String expected =
-                "VARIANT 23 /note=\"A -> G (in SCN1; dbSNP:rs1064793108)\" /id=\"VAR_064512\"";
+                "VARIANT 23; /note=\"A -> G (in SCN1; dbSNP:rs1064793108)\"; /id=\"VAR_064512\"";
         assertEquals(result, expected);
     }
 
@@ -130,9 +130,9 @@ class EntryFeaturesMapTest {
                         createAlternativeSequence("A", "G"));
         String result = EntryFeaturesMap.featureToString(feature);
         String expected =
-                "VARIANT 23 /note=\"A -> G (in SCN1; dbSNP:rs1064793108)\""
-                        + " /evidence=\"ECO:0000269|PubMed:12345, ECO:0000269|PubMed:6142052\""
-                        + " /id=\"VAR_064512\"";
+                "VARIANT 23; /note=\"A -> G (in SCN1; dbSNP:rs1064793108)\""
+                        + "; /evidence=\"ECO:0000269|PubMed:12345, ECO:0000269|PubMed:6142052\""
+                        + "; /id=\"VAR_064512\"";
         assertEquals(result, expected);
     }
 
@@ -147,7 +147,7 @@ class EntryFeaturesMapTest {
                         null,
                         null);
         String result = EntryFeaturesMap.featureToString(feature);
-        String expected = "DOMAIN 23 /note=\"some domain\"";
+        String expected = "DOMAIN 23; /note=\"some domain\"";
         assertEquals(result, expected);
     }
 
@@ -167,7 +167,7 @@ class EntryFeaturesMapTest {
 
         String result = EntryFeaturesMap.featureToString(feature);
         String expected =
-                "DOMAIN 23 /note=\"some domain\" /evidence=\"ECO:0000269|PubMed:12345,"
+                "DOMAIN 23; /note=\"some domain\"; /evidence=\"ECO:0000269|PubMed:12345,"
                         + " ECO:0000269|PubMed:6142052\"";
         assertEquals(result, expected);
     }
@@ -185,7 +185,7 @@ class EntryFeaturesMapTest {
                         evidences,
                         null);
         String result = EntryFeaturesMap.featureToString(feature);
-        String expected = "HELIX 7..10 /evidence=\"ECO:0000244|PDB:2LO1\"";
+        String expected = "HELIX 7..10; /evidence=\"ECO:0000244|PDB:2LO1\"";
         assertEquals(result, expected);
     }
 

@@ -180,7 +180,7 @@ public class EntryFeaturesMap implements NamedValueMap {
 
     public static String featureToString(UniProtKBFeature feature) {
         FFLineBuilder<UniProtKBFeature> fbuilder = FeatureLineBuilderFactory.create(feature);
-        return fbuilder.buildStringWithEvidence(feature).replaceAll("\n", " ");
+        return fbuilder.buildStringWithEvidence(feature).replaceAll("\n", "; ");
     }
 
     public static boolean contains(List<String> fields) {
