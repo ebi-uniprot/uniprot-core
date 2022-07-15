@@ -96,6 +96,13 @@ class ProteomeEntryBuilderTest {
     }
 
     @Test
+    void testProteinCount() {
+        int proteinCount = 25;
+        ProteomeEntry proteome = new ProteomeEntryBuilder().proteinCount(proteinCount).build();
+        assertEquals(proteinCount, proteome.getProteinCount());
+    }
+
+    @Test
     void testComponents() {
         List<Component> components = new ArrayList<>();
         Component component1 =
@@ -116,7 +123,6 @@ class ProteomeEntryBuilderTest {
         components.add(component2);
         ProteomeEntry proteome = new ProteomeEntryBuilder().componentsSet(components).build();
         assertEquals(2, proteome.getComponents().size());
-        assertEquals(204, proteome.getProteinCount());
         assertThat(proteome.getComponents(), hasItem(component1));
         assertThat(proteome.getComponents(), hasItem(component2));
     }
@@ -143,7 +149,6 @@ class ProteomeEntryBuilderTest {
                         .componentsAdd(component2)
                         .build();
         assertEquals(2, proteome.getComponents().size());
-        assertEquals(204, proteome.getProteinCount());
         assertThat(proteome.getComponents(), hasItem(component2));
     }
 

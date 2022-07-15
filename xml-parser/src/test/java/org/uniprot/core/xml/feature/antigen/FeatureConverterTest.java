@@ -37,7 +37,7 @@ class FeatureConverterTest {
     static AntigenFeature getAntigenFeature() {
         return new AntigenFeatureBuilder()
                 .type(AntigenFeatureType.ANTIGEN)
-                .featureCrossReference(CrossReferenceConverterTest.createCrossReference())
+                .featureCrossReferenceAdd(CrossReferenceConverterTest.createCrossReference())
                 .location(FeatureLocationConverterTest.createFeatureLocation())
                 .evidencesAdd(FeatureEvidenceConverterTest.createEvidence())
                 .matchScore(98)

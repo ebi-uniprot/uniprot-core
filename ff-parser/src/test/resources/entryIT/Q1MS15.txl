@@ -2,7 +2,7 @@ ID   RISB_LAWIP              Reviewed;         157 AA.
 AC   Q1MS15;
 DT   15-JAN-2008, integrated into UniProtKB/Swiss-Prot.
 DT   30-MAY-2006, sequence version 1.
-DT   16-JAN-2019, entry version 81.
+DT   03-AUG-2022, entry version 90.
 DE   RecName: Full=6,7-dimethyl-8-ribityllumazine synthase {ECO:0000255|HAMAP-Rule:MF_00178};
 DE            Short=DMRL synthase {ECO:0000255|HAMAP-Rule:MF_00178};
 DE            Short=LS {ECO:0000255|HAMAP-Rule:MF_00178};
@@ -39,15 +39,14 @@ CC   -!- SIMILARITY: Belongs to the DMRL synthase family. {ECO:0000255|HAMAP-
 CC       Rule:MF_00178}.
 DR   EMBL; AM180252; CAJ54210.1; -; Genomic_DNA.
 DR   RefSeq; WP_011526237.1; NC_008011.1.
+DR   AlphaFoldDB; Q1MS15; -.
 DR   SMR; Q1MS15; -.
 DR   STRING; 363253.LI0154; -.
 DR   KEGG; lip:LI0154; -.
-DR   eggNOG; ENOG4108UTT; Bacteria.
-DR   eggNOG; COG0054; LUCA.
-DR   HOGENOM; HOG000229249; -.
-DR   OMA; HGNKGTE; -.
+DR   eggNOG; COG0054; Bacteria.
+DR   HOGENOM; CLU_089358_1_1_7; -.
+DR   OMA; CQGVTQG; -.
 DR   OrthoDB; 1680292at2; -.
-DR   BioCyc; LINT363253:G1GJC-173-MONOMER; -.
 DR   UniPathway; UPA00275; UER00404.
 DR   Proteomes; UP000002430; Chromosome.
 DR   GO; GO:0009349; C:riboflavin synthase complex; IEA:InterPro.
@@ -64,32 +63,36 @@ DR   Pfam; PF00885; DMRL_synthase; 1.
 DR   SUPFAM; SSF52121; SSF52121; 1.
 DR   TIGRFAMs; TIGR00114; lumazine-synth; 1.
 PE   3: Inferred from homology;
-KW   Complete proteome; Reference proteome; Riboflavin biosynthesis;
-KW   Transferase.
+KW   Reference proteome; Riboflavin biosynthesis; Transferase.
 FT   CHAIN           1..157
 FT                   /note="6,7-dimethyl-8-ribityllumazine synthase"
 FT                   /id="PRO_1000040439"
-FT   REGION          59..61
-FT                   /note="5-amino-6-(D-ribitylamino)uracil binding"
-FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00178"
-FT   REGION          83..85
-FT                   /note="5-amino-6-(D-ribitylamino)uracil binding"
-FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00178"
-FT   REGION          88..89
-FT                   /note="1-deoxy-L-glycero-tetrulose 4-phosphate binding"
-FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00178"
 FT   ACT_SITE        91
 FT                   /note="Proton donor"
 FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00178"
 FT   BINDING         25
-FT                   /note="5-amino-6-(D-ribitylamino)uracil"
+FT                   /ligand="5-amino-6-(D-ribitylamino)uracil"
+FT                   /ligand_id="ChEBI:CHEBI:15934"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00178"
+FT   BINDING         59..61
+FT                   /ligand="5-amino-6-(D-ribitylamino)uracil"
+FT                   /ligand_id="ChEBI:CHEBI:15934"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00178"
+FT   BINDING         83..85
+FT                   /ligand="5-amino-6-(D-ribitylamino)uracil"
+FT                   /ligand_id="ChEBI:CHEBI:15934"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00178"
+FT   BINDING         88..89
+FT                   /ligand="(2S)-2-hydroxy-3-oxobutyl phosphate"
+FT                   /ligand_id="ChEBI:CHEBI:58830"
 FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00178"
 FT   BINDING         116
-FT                   /note="5-amino-6-(D-ribitylamino)uracil; via amide nitrogen
-FT                   and carbonyl oxygen"
+FT                   /ligand="5-amino-6-(D-ribitylamino)uracil"
+FT                   /ligand_id="ChEBI:CHEBI:15934"
 FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00178"
 FT   BINDING         130
-FT                   /note="1-deoxy-L-glycero-tetrulose 4-phosphate"
+FT                   /ligand="(2S)-2-hydroxy-3-oxobutyl phosphate"
+FT                   /ligand_id="ChEBI:CHEBI:58830"
 FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00178"
 **
 **   #################    INTERNAL SECTION    ##################

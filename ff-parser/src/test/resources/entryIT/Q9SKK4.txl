@@ -2,18 +2,20 @@ ID   GSL_ARATH               Reviewed;         359 AA.
 AC   Q9SKK4; Q56WB2;
 DT   16-DEC-2008, integrated into UniProtKB/Swiss-Prot.
 DT   01-MAY-2000, sequence version 1.
-DT   13-FEB-2019, entry version 109.
-DE   RecName: Full=Probable 2-oxoacid dependent dioxygenase;
-DE            EC=1.14.-.-;
-GN   Name=GSL-OH; OrderedLocusNames=At2g25450; ORFNames=F13B15.11;
+DT   03-AUG-2022, entry version 125.
+DE   RecName: Full=Probable 2-oxoacid dependent dioxygenase {ECO:0000305};
+DE            EC=1.14.-.- {ECO:0000269|PubMed:18945935};
+GN   Name=GSL-OH {ECO:0000303|PubMed:18945935};
+GN   OrderedLocusNames=At2g25450 {ECO:0000312|Araport:AT2G25450};
+GN   ORFNames=F13B15.11 {ECO:0000312|EMBL:AAD20704.1};
 OS   Arabidopsis thaliana (Mouse-ear cress).
 OC   Eukaryota; Viridiplantae; Streptophyta; Embryophyta; Tracheophyta;
-OC   Spermatophyta; Magnoliophyta; eudicotyledons; Gunneridae; Pentapetalae;
+OC   Spermatophyta; Magnoliopsida; eudicotyledons; Gunneridae; Pentapetalae;
 OC   rosids; malvids; Brassicales; Brassicaceae; Camelineae; Arabidopsis.
 OX   NCBI_TaxID=3702;
 RN   [1]
-RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA], FUNCTION, DISRUPTION PHENOTYPE,
-RP   POLYMORPHISM, AND TISSUE SPECIFICITY.
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA], FUNCTION, CATALYTIC ACTIVITY, DISRUPTION
+RP   PHENOTYPE, POLYMORPHISM, AND TISSUE SPECIFICITY.
 RC   STRAIN=cv. Abd-0, cv. Ag-0, cv. Ang-0, cv. Bla-10, cv. Bs-1, cv.
 RC   Bur-0, cv. Cal-0, cv. Cnt-1, cv. Columbia, cv. Cvi-0, cv. Di-0, cv.
 RC   Di-1, cv. Edi-0, cv. Ei-2, cv. Ema-1, cv. Et-0, cv. Ge-0, cv. HOG, cv.
@@ -32,9 +34,9 @@ RN   [2]
 RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
 RC   STRAIN=cv. Columbia;
 RX   PubMed=10617197; DOI=10.1038/45471;
-RA   Lin X., Kaul S., Rounsley S., Shea T.P., Benito M.I., Town C.D.,
-RA   Fujii C.Y., Mason T., Bowman C.L., Barnstead M., Feldblyum T.V.,
-RA   Buell C.R., Ketchum K.A., Lee J., Ronning C.M., Koo H.L., Moffat K.S.,
+RA   Lin X., Kaul S., Rounsley S.D., Shea T.P., Benito M.-I., Town C.D.,
+RA   Fujii C.Y., Mason T.M., Bowman C.L., Barnstead M.E., Feldblyum T.V.,
+RA   Buell C.R., Ketchum K.A., Lee J.J., Ronning C.M., Koo H.L., Moffat K.S.,
 RA   Cronin L.A., Shen M., Pai G., Van Aken S., Umayam L., Tallon L.J.,
 RA   Gill J.E., Adams M.D., Carrera A.J., Creasy T.H., Goodman H.M.,
 RA   Somerville C.R., Copenhaver G.P., Preuss D., Nierman W.C., White O.,
@@ -83,8 +85,18 @@ CC   -!- FUNCTION: Necessary for the hydroxylation of but-3-enyl glucosinolate
 CC       to 2-hydroxybut-3-enyl glucosinolate, which is toxic to insects,
 CC       bacteria and nematodes, inhibits seed germination and produces bitter
 CC       flavors. {ECO:0000269|PubMed:18945935}.
+CC   -!- CATALYTIC ACTIVITY:
+CC       Reaction=AH2 + gluconapin + O2 = A + H2O + progoitrin;
+CC         Xref=Rhea:RHEA:60628, ChEBI:CHEBI:5411, ChEBI:CHEBI:13193,
+CC         ChEBI:CHEBI:15377, ChEBI:CHEBI:15379, ChEBI:CHEBI:17499,
+CC         ChEBI:CHEBI:183096; Evidence={ECO:0000269|PubMed:18945935};
+CC       PhysiologicalDirection=left-to-right; Xref=Rhea:RHEA:60629;
+CC         Evidence={ECO:0000269|PubMed:18945935};
 CC   -!- COFACTOR:
-CC       Name=Fe cation; Xref=ChEBI:CHEBI:24875; Evidence={ECO:0000250};
+CC       Name=Fe(2+); Xref=ChEBI:CHEBI:29033;
+CC         Evidence={ECO:0000255|PROSITE-ProRule:PRU00805};
+CC       Note=Binds 1 Fe(2+) ion per subunit. {ECO:0000255|PROSITE-
+CC       ProRule:PRU00805};
 CC   -!- TISSUE SPECIFICITY: Expressed in leaves and seeds. All cultivars with
 CC       seed-only-functional allele have low to non-detectable GSL-OH
 CC       expression in the leaves. {ECO:0000269|PubMed:18945935}.
@@ -92,7 +104,7 @@ CC   -!- POLYMORPHISM: Cv. Adb-0, cv. Ag-0, cv. Ang-0, cv. Bla-10, cv. Bs-1, cv.
 CC       Bur-0, cv. Cal-0, cv. Cnt-1, cv. Columbia, cv. Di-1, cv. Edi-0, cv. Ei-
 CC       2, cv. Ema-1, cv. Et-0, cv. Ge-0, cv. Lc-0, cv. Lo-2, cv. Mir-0, cv.
 CC       Mrk-0, cv. Mt-0, cv. Pog-0, cv. Rd-0, cv. Rou-0, cv. Sf-1, cv. Tac-0,
-CC       cv. Wei-0 and cv. Yo-0 contain a leaf-and seed-functional allele. Cv.
+CC       cv. Wei-0 and cv. Yo-0 contain a leaf- and seed-functional allele. Cv.
 CC       Di-0, cv. Kas-1, cv. Lip-0, cv. Landsberg erecta, cv. Sha, cv. Sorbo,
 CC       cv. Tsu-1 and cv. Wassilewskija contain a seed-only-functional allele.
 CC       Cv. Cvi-0, cv. Hodja-Obi-Garm and cv. Kon contain a null allele. The
@@ -106,7 +118,7 @@ CC       to generalist herbivory. {ECO:0000269|PubMed:18945935}.
 CC   -!- SIMILARITY: Belongs to the iron/ascorbate-dependent oxidoreductase
 CC       family. {ECO:0000305}.
 CC   -!- SEQUENCE CAUTION:
-CC       Sequence=BAD95147.1; Type=Erroneous initiation; Evidence={ECO:0000305};
+CC       Sequence=BAD95147.1; Type=Erroneous initiation; Note=Truncated N-terminus.; Evidence={ECO:0000305};
 DR   EMBL; AC006300; AAD20704.1; -; Genomic_DNA.
 DR   EMBL; CP002685; AEC07703.1; -; Genomic_DNA.
 DR   EMBL; AY050787; AAK92722.1; -; mRNA.
@@ -114,11 +126,15 @@ DR   EMBL; AY114055; AAM45103.1; -; mRNA.
 DR   EMBL; AK222132; BAD95147.1; ALT_INIT; mRNA.
 DR   PIR; E84648; E84648.
 DR   RefSeq; NP_180115.1; NM_128102.6.
-DR   BioGrid; 2435; 1.
+DR   AlphaFoldDB; Q9SKK4; -.
+DR   SMR; Q9SKK4; -.
+DR   BioGRID; 2435; 1.
 DR   STRING; 3702.AT2G25450.1; -.
 DR   iPTMnet; Q9SKK4; -.
+DR   MetOSite; Q9SKK4; -.
 DR   PaxDb; Q9SKK4; -.
 DR   PRIDE; Q9SKK4; -.
+DR   ProteomicsDB; 248495; -.
 DR   EnsemblPlants; AT2G25450.1; AT2G25450.1; AT2G25450.
 DR   GeneID; 817083; -.
 DR   Gramene; AT2G25450.1; AT2G25450.1; AT2G25450.
@@ -126,47 +142,58 @@ DR   KEGG; ath:AT2G25450; -.
 DR   Araport; AT2G25450; -.
 DR   TAIR; locus:2040045; AT2G25450.
 DR   eggNOG; KOG0143; Eukaryota.
-DR   eggNOG; COG3491; LUCA.
-DR   HOGENOM; HOG000276735; -.
+DR   HOGENOM; CLU_010119_0_0_1; -.
 DR   InParanoid; Q9SKK4; -.
-DR   OMA; WASINHY; -.
+DR   OMA; IMREYSK; -.
 DR   OrthoDB; 755305at2759; -.
 DR   PhylomeDB; Q9SKK4; -.
-DR   BioCyc; ARA:AT2G25450-MONOMER; -.
-DR   BioCyc; MetaCyc:AT2G25450-MONOMER; -.
+DR   BioCyc; ARA:AT2G25450-MON; -.
+DR   BioCyc; MetaCyc:AT2G25450-MON; -.
 DR   PRO; PR:Q9SKK4; -.
 DR   Proteomes; UP000006548; Chromosome 2.
+DR   ExpressionAtlas; Q9SKK4; baseline and differential.
 DR   Genevisible; Q9SKK4; AT.
-DR   GO; GO:0009506; C:plasmodesma; IDA:TAIR.
+DR   GO; GO:0005829; C:cytosol; HDA:TAIR.
+DR   GO; GO:0009506; C:plasmodesma; HDA:TAIR.
+DR   GO; GO:0005773; C:vacuole; HDA:TAIR.
 DR   GO; GO:0009815; F:1-aminocyclopropane-1-carboxylate oxidase activity; ISS:TAIR.
-DR   GO; GO:0051213; F:dioxygenase activity; IBA:GO_Central.
+DR   GO; GO:0062131; F:3-butenylglucosinolate 2-hydroxylase activity; IDA:UniProtKB.
 DR   GO; GO:0046872; F:metal ion binding; IEA:UniProtKB-KW.
 DR   GO; GO:0019761; P:glucosinolate biosynthetic process; IMP:TAIR.
 DR   GO; GO:0010439; P:regulation of glucosinolate biosynthetic process; IMP:TAIR.
 DR   Gene3D; 2.60.120.330; -; 1.
 DR   InterPro; IPR026992; DIOX_N.
-DR   InterPro; IPR027443; IPNS-like.
+DR   InterPro; IPR044861; IPNS-like_FE2OG_OXY.
+DR   InterPro; IPR027443; IPNS-like_sf.
 DR   InterPro; IPR005123; Oxoglu/Fe-dep_dioxygenase.
 DR   Pfam; PF03171; 2OG-FeII_Oxy; 1.
 DR   Pfam; PF14226; DIOX_N; 1.
 DR   PROSITE; PS51471; FE2OG_OXY; 1.
-PE   2: Evidence at transcript level;
-KW   Complete proteome; Dioxygenase; Iron; Metal-binding; Oxidoreductase;
-KW   Reference proteome.
+PE   1: Evidence at protein level;
+KW   Dioxygenase; Iron; Metal-binding; Oxidoreductase; Reference proteome.
 FT   CHAIN           1..359
 FT                   /note="Probable 2-oxoacid dependent dioxygenase"
 FT                   /id="PRO_0000357026"
 FT   DOMAIN          207..308
 FT                   /note="Fe2OG dioxygenase"
 FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00805"
-FT   METAL           231
-FT                   /note="Iron"
+FT   REGION          329..359
+FT                   /note="Disordered"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
+FT   COMPBIAS        330..348
+FT                   /note="Polar residues"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
+FT   BINDING         231
+FT                   /ligand="Fe cation"
+FT                   /ligand_id="ChEBI:CHEBI:24875"
 FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00805"
-FT   METAL           233
-FT                   /note="Iron"
+FT   BINDING         233
+FT                   /ligand="Fe cation"
+FT                   /ligand_id="ChEBI:CHEBI:24875"
 FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00805"
-FT   METAL           287
-FT                   /note="Iron"
+FT   BINDING         287
+FT                   /ligand="Fe cation"
+FT                   /ligand_id="ChEBI:CHEBI:24875"
 FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00805"
 FT   VARIANT         105
 FT                   /note="G -> S (in strain: cv. Cvi-0)"
@@ -180,12 +207,16 @@ FT   VARIANT         288
 FT                   /note="R -> I (in strain: cv. Cvi-0)"
 **
 **   #################    INTERNAL SECTION    ##################
-**EV ECO:0000250; -; XXX; 13-JAN-2017.
-**EV ECO:0000255; PROSITE-ProRule:PRU00805; XXX; 01-JAN-1900.
-**EV ECO:0000269; PubMed:18945935; ANS; 13-JAN-2017.
-**EV ECO:0000305; -; XXX; 13-JAN-2017.
+**EV ECO:0000255; PROSITE-ProRule:PRU00805; DLI; 23-MAY-2022.
+**EV ECO:0000256; SAM:MobiDB-lite; -; 23-MAY-2022.
+**EV ECO:0000269; PubMed:18945935; DLI; 11-SEP-2019.
+**EV ECO:0000303; PubMed:18945935; DLI; 06-FEB-2020.
+**EV ECO:0000305; -; DLI; 11-SEP-2019.
+**EV ECO:0000312; Araport:AT2G25450; DLI; 06-FEB-2020.
+**EV ECO:0000312; EMBL:AAD20704.1; DLI; 06-FEB-2020.
 **DR Araport-CDS; AT2G25450.1; Araport11; -.
 **ZA MIS, 20-NOV-2008;
+**ZB DLI, 16-AUG-2019;
 SQ   SEQUENCE   359 AA;  40351 MW;  14CC7C503796EA96 CRC64;
      MAENYDRASE LKAFDEMKIG VKGLVDAGVT KVPRIFHNPH VNVANPKPTS TVVMIPTIDL
      GGVFESTVVR ESVVAKVKDA MEKFGFFQAI NHGVPLDVME KMINGIRRFH DQDPEVRKMF

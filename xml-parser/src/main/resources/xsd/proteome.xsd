@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	elementFormDefault="qualified"
-	targetNamespace="http://uniprot.org/proteomes"
-	xmlns="http://uniprot.org/proteomes">
+	targetNamespace="http://uniprot.org/proteome"
+	xmlns="http://uniprot.org/proteome">
 	<xs:element name="proteomes">
 		<xs:complexType>
 			<xs:annotation>
 				<xs:documentation>Describes a collection of proteome entries.</xs:documentation>
 			</xs:annotation>
 			<xs:sequence>
-				<xs:element name="proteome" maxOccurs="unbounded" />
+				<xs:element ref="proteome" maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="proteome">
 		<xs:complexType>
 			<xs:annotation>
-				<xs:documentation>Describes a Proteome entry.</xs:documentation>
+				<xs:documentation>Describes proteome type.</xs:documentation>
 			</xs:annotation>
 			<xs:sequence>
 				<xs:element name="upid" type="xs:string" />
@@ -50,7 +50,7 @@
 				<xs:element name="scores" type="scoreType" minOccurs="0"
 					maxOccurs="unbounded" />
 			</xs:sequence>
-
+			<xs:attribute name="proteinCount" type="xs:int" />
 		</xs:complexType>
 	</xs:element>
 

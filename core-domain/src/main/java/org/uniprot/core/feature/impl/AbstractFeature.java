@@ -14,20 +14,20 @@ public abstract class AbstractFeature<T extends FeatureDatabase, F extends Featu
     private final F type;
     private final FeatureLocation location;
     private final FeatureDescription description;
-    private final CrossReference<T> featureCrossReference;
+    private final List<CrossReference<T>> featureCrossReferences;
     private final List<Evidence> evidences;
 
     protected AbstractFeature(
             F type,
             FeatureLocation location,
             FeatureDescription description,
-            CrossReference<T> featureCrossReference,
+            List<CrossReference<T>> featureCrossReferences,
             List<Evidence> evidences) {
 
         this.type = type;
         this.location = location;
         this.description = description;
-        this.featureCrossReference = featureCrossReference;
+        this.featureCrossReferences = Utils.unmodifiableList(featureCrossReferences);
         this.evidences = Utils.unmodifiableList(evidences);
     }
 
@@ -47,8 +47,8 @@ public abstract class AbstractFeature<T extends FeatureDatabase, F extends Featu
     }
 
     @Override
-    public CrossReference<T> getFeatureCrossReference() {
-        return featureCrossReference;
+    public List<CrossReference<T>> getFeatureCrossReferences() {
+        return featureCrossReferences;
     }
 
     @Override
@@ -64,7 +64,7 @@ public abstract class AbstractFeature<T extends FeatureDatabase, F extends Featu
         return Objects.equals(getType(), that.getType())
                 && Objects.equals(getLocation(), that.getLocation())
                 && Objects.equals(getDescription(), that.getDescription())
-                && Objects.equals(getFeatureCrossReference(), that.getFeatureCrossReference())
+                && Objects.equals(getFeatureCrossReferences(), that.getFeatureCrossReferences())
                 && Objects.equals(getEvidences(), that.getEvidences());
     }
 
@@ -74,7 +74,7 @@ public abstract class AbstractFeature<T extends FeatureDatabase, F extends Featu
                 getType(),
                 getLocation(),
                 getDescription(),
-                getFeatureCrossReference(),
+                getFeatureCrossReferences(),
                 getEvidences());
     }
 }

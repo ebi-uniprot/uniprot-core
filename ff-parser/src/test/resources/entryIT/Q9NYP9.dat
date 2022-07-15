@@ -2,7 +2,7 @@ ID   MS18A_HUMAN             Reviewed;         233 AA.
 AC   Q9NYP9; B2R562; Q542Z0;
 DT   11-JAN-2001, integrated into UniProtKB/Swiss-Prot.
 DT   01-OCT-2000, sequence version 1.
-DT   22-APR-2020, entry version 143.
+DT   03-AUG-2022, entry version 154.
 DE   RecName: Full=Protein Mis18-alpha;
 DE   AltName: Full=FAPP1-associated protein 1;
 GN   Name=MIS18A; Synonyms=C21orf45, C21orf46, FASP1;
@@ -175,8 +175,6 @@ CC       PubMed:26921242). Identified in a complex containing MIS18A,
 CC       OIP5/MIS18B, MIS18BP1, RBBP7 and RBBP4 (PubMed:17199038).
 CC       {ECO:0000269|PubMed:17199038, ECO:0000269|PubMed:26921242}.
 CC   -!- INTERACTION:
-CC       Q9NYP9; B4DJ69; NbExp=3; IntAct=EBI-1104552, EBI-23918878;
-CC       Q9NYP9; Q9NYP9; NbExp=3; IntAct=EBI-1104552, EBI-1104552;
 CC       Q9NYP9; Q9P2A4: ABI3; NbExp=3; IntAct=EBI-1104552, EBI-742038;
 CC       Q9NYP9; Q13155: AIMP2; NbExp=6; IntAct=EBI-1104552, EBI-745226;
 CC       Q9NYP9; A2BDD9: AMOT; NbExp=3; IntAct=EBI-1104552, EBI-17286414;
@@ -190,19 +188,25 @@ CC       Q9NYP9; Q9BVV2: FNDC11; NbExp=3; IntAct=EBI-1104552, EBI-744935;
 CC       Q9NYP9; P23434: GCSH; NbExp=3; IntAct=EBI-1104552, EBI-715444;
 CC       Q9NYP9; Q8IVS8: GLYCTK; NbExp=4; IntAct=EBI-1104552, EBI-748515;
 CC       Q9NYP9; Q8IY31-3: IFT20; NbExp=3; IntAct=EBI-1104552, EBI-9091197;
+CC       Q9NYP9; O60333-2: KIF1B; NbExp=3; IntAct=EBI-1104552, EBI-10975473;
+CC       Q9NYP9; O14901: KLF11; NbExp=3; IntAct=EBI-1104552, EBI-948266;
 CC       Q9NYP9; Q9NS73-5: MBIP; NbExp=3; IntAct=EBI-1104552, EBI-10182361;
+CC       Q9NYP9; Q9NYP9: MIS18A; NbExp=3; IntAct=EBI-1104552, EBI-1104552;
 CC       Q9NYP9; Q9GZM8: NDEL1; NbExp=5; IntAct=EBI-1104552, EBI-928842;
-CC       Q9NYP9; Q9BVL2: NUP58; NbExp=3; IntAct=EBI-1104552, EBI-2811583;
+CC       Q9NYP9; Q96HA8: NTAQ1; NbExp=3; IntAct=EBI-1104552, EBI-741158;
+CC       Q9NYP9; Q9BVL2: NUP58; NbExp=6; IntAct=EBI-1104552, EBI-2811583;
 CC       Q9NYP9; O43482: OIP5; NbExp=23; IntAct=EBI-1104552, EBI-536879;
 CC       Q9NYP9; Q96KQ4: PPP1R13B; NbExp=3; IntAct=EBI-1104552, EBI-1105153;
+CC       Q9NYP9; P60891: PRPS1; NbExp=3; IntAct=EBI-1104552, EBI-749195;
 CC       Q9NYP9; Q14D33: RTP5; NbExp=3; IntAct=EBI-1104552, EBI-10217913;
 CC       Q9NYP9; O75558: STX11; NbExp=3; IntAct=EBI-1104552, EBI-714135;
 CC       Q9NYP9; Q7L2K0: TEDC2; NbExp=3; IntAct=EBI-1104552, EBI-8465456;
 CC       Q9NYP9; Q9NVV9: THAP1; NbExp=3; IntAct=EBI-1104552, EBI-741515;
 CC       Q9NYP9; Q3SY00: TSGA10IP; NbExp=3; IntAct=EBI-1104552, EBI-10241197;
 CC       Q9NYP9; P40222: TXLNA; NbExp=4; IntAct=EBI-1104552, EBI-359793;
-CC       Q9NYP9; Q96HA8: WDYHV1; NbExp=3; IntAct=EBI-1104552, EBI-741158;
+CC       Q9NYP9; O76024: WFS1; NbExp=3; IntAct=EBI-1104552, EBI-720609;
 CC       Q9NYP9; Q8N720: ZNF655; NbExp=3; IntAct=EBI-1104552, EBI-625509;
+CC       Q9NYP9; B4DJ69; NbExp=3; IntAct=EBI-1104552, EBI-23918878;
 CC   -!- SUBCELLULAR LOCATION: Nucleus {ECO:0000269|PubMed:17199038}. Chromosome
 CC       {ECO:0000269|PubMed:17199038}. Chromosome, centromere
 CC       {ECO:0000269|PubMed:17199038}. Note=Associated with centromeres in
@@ -224,13 +228,14 @@ DR   EMBL; CH471079; EAX09881.1; -; Genomic_DNA.
 DR   EMBL; BC042917; AAH42917.1; -; mRNA.
 DR   CCDS; CCDS13611.1; -.
 DR   RefSeq; NP_061817.1; NM_018944.2.
-DR   SMR; Q9NYP9; -.
-DR   BioGrid; 119875; 58.
+DR   AlphaFoldDB; Q9NYP9; -.
+DR   BioGRID; 119875; 88.
 DR   ComplexPortal; CPX-3272; Mis18 complex.
 DR   CORUM; Q9NYP9; -.
-DR   IntAct; Q9NYP9; 72.
+DR   IntAct; Q9NYP9; 77.
 DR   MINT; Q9NYP9; -.
 DR   STRING; 9606.ENSP00000290130; -.
+DR   GlyGen; Q9NYP9; 1 site, 1 O-linked glycan (1 site).
 DR   iPTMnet; Q9NYP9; -.
 DR   PhosphoSitePlus; Q9NYP9; -.
 DR   SwissPalm; Q9NYP9; -.
@@ -244,11 +249,12 @@ DR   PaxDb; Q9NYP9; -.
 DR   PeptideAtlas; Q9NYP9; -.
 DR   PRIDE; Q9NYP9; -.
 DR   ProteomicsDB; 83261; -.
-DR   Antibodypedia; 6843; 61 antibodies.
+DR   Antibodypedia; 6843; 63 antibodies from 18 providers.
 DR   DNASU; 54069; -.
-DR   Ensembl; ENST00000290130; ENSP00000290130; ENSG00000159055.
+DR   Ensembl; ENST00000290130.4; ENSP00000290130.3; ENSG00000159055.4.
 DR   GeneID; 54069; -.
 DR   KEGG; hsa:54069; -.
+DR   MANE-Select; ENST00000290130.4; ENSP00000290130.3; NM_018944.3; NP_061817.1.
 DR   UCSC; uc002ypi.4; human.
 DR   CTD; 54069; -.
 DR   GeneCards; MIS18A; -.
@@ -258,16 +264,19 @@ DR   MIM; 618137; gene.
 DR   neXtProt; NX_Q9NYP9; -.
 DR   OpenTargets; ENSG00000159055; -.
 DR   PharmGKB; PA25840; -.
-DR   eggNOG; ENOG410IKYV; Eukaryota.
-DR   eggNOG; ENOG41125JV; LUCA.
+DR   VEuPathDB; HostDB:ENSG00000159055; -.
+DR   eggNOG; ENOG502S9R8; Eukaryota.
 DR   GeneTree; ENSGT00940000154267; -.
 DR   HOGENOM; CLU_101031_0_0_1; -.
 DR   InParanoid; Q9NYP9; -.
-DR   OMA; LQKWTSM; -.
+DR   OMA; EMKMLVM; -.
 DR   OrthoDB; 1453138at2759; -.
 DR   PhylomeDB; Q9NYP9; -.
 DR   TreeFam; TF333200; -.
+DR   PathwayCommons; Q9NYP9; -.
 DR   Reactome; R-HSA-606279; Deposition of new CENPA-containing nucleosomes at the centromere.
+DR   SignaLink; Q9NYP9; -.
+DR   BioGRID-ORCS; 54069; 505 hits in 1088 CRISPR screens.
 DR   ChiTaRS; MIS18A; human.
 DR   GeneWiki; C21orf45; -.
 DR   GenomeRNAi; 54069; -.
@@ -275,17 +284,18 @@ DR   Pharos; Q9NYP9; Tbio.
 DR   PRO; PR:Q9NYP9; -.
 DR   Proteomes; UP000005640; Chromosome 21.
 DR   RNAct; Q9NYP9; protein.
-DR   Bgee; ENSG00000159055; Expressed in oocyte and 197 other tissues.
+DR   Bgee; ENSG00000159055; Expressed in oocyte and 172 other tissues.
 DR   Genevisible; Q9NYP9; HS.
 DR   GO; GO:0000785; C:chromatin; IBA:GO_Central.
 DR   GO; GO:0000775; C:chromosome, centromeric region; IBA:GO_Central.
 DR   GO; GO:0005829; C:cytosol; IDA:HPA.
 DR   GO; GO:0005654; C:nucleoplasm; IDA:HPA.
 DR   GO; GO:0005634; C:nucleus; IBA:GO_Central.
+DR   GO; GO:0042802; F:identical protein binding; IPI:IntAct.
 DR   GO; GO:0046872; F:metal ion binding; IEA:UniProtKB-KW.
 DR   GO; GO:0007049; P:cell cycle; IEA:UniProtKB-KW.
 DR   GO; GO:0051301; P:cell division; IEA:UniProtKB-KW.
-DR   GO; GO:0034080; P:CENP-A containing nucleosome assembly; IBA:GO_Central.
+DR   GO; GO:0034080; P:CENP-A containing chromatin assembly; IBA:GO_Central.
 DR   GO; GO:0007059; P:chromosome segregation; IBA:GO_Central.
 DR   GO; GO:0044030; P:regulation of DNA methylation; IEA:Ensembl.
 DR   InterPro; IPR034752; Mis18.
@@ -302,35 +312,39 @@ FT                   /id="PRO_0000079515"
 FT   DOMAIN          80..178
 FT                   /note="Mis18"
 FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01129"
-FT   METAL           85
-FT                   /note="Zinc"
+FT   BINDING         85
+FT                   /ligand="Zn(2+)"
+FT                   /ligand_id="ChEBI:CHEBI:29105"
 FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01129"
-FT   METAL           88
-FT                   /note="Zinc"
+FT   BINDING         88
+FT                   /ligand="Zn(2+)"
+FT                   /ligand_id="ChEBI:CHEBI:29105"
 FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01129"
-FT   METAL           141
-FT                   /note="Zinc"
+FT   BINDING         141
+FT                   /ligand="Zn(2+)"
+FT                   /ligand_id="ChEBI:CHEBI:29105"
 FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01129"
-FT   METAL           144
-FT                   /note="Zinc"
+FT   BINDING         144
+FT                   /ligand="Zn(2+)"
+FT                   /ligand_id="ChEBI:CHEBI:29105"
 FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01129"
 FT   MOD_RES         36
 FT                   /note="Phosphoserine"
-FT                   /evidence="ECO:0000244|PubMed:20068231,
-FT                   ECO:0000244|PubMed:23186163"
+FT                   /evidence="ECO:0007744|PubMed:20068231,
+FT                   ECO:0007744|PubMed:23186163"
 FT   MOD_RES         39
 FT                   /note="Phosphoserine"
-FT                   /evidence="ECO:0000244|PubMed:23186163"
+FT                   /evidence="ECO:0007744|PubMed:23186163"
 FT   MOD_RES         40
 FT                   /note="Phosphoserine"
-FT                   /evidence="ECO:0000244|PubMed:23186163"
+FT                   /evidence="ECO:0007744|PubMed:23186163"
 FT   MOD_RES         233
 FT                   /note="Phosphoserine"
-FT                   /evidence="ECO:0000244|PubMed:18669648"
+FT                   /evidence="ECO:0007744|PubMed:18669648"
 FT   CROSSLNK        162
 FT                   /note="Glycyl lysine isopeptide (Lys-Gly) (interchain with
 FT                   G-Cter in SUMO2)"
-FT                   /evidence="ECO:0000244|PubMed:28112733"
+FT                   /evidence="ECO:0007744|PubMed:28112733"
 FT   MUTAGEN         82
 FT                   /note="V->E: Abolishes interaction with OIP5; when
 FT                   associated with D-176"

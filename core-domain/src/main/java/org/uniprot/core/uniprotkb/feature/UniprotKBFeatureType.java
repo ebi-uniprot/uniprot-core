@@ -20,15 +20,19 @@ public enum UniprotKBFeatureType implements FeatureType {
     INTRAMEM("intramembrane region", "Intramembrane", FeatureCategory.REGIONS),
     DOMAIN("domain", "Domain", FeatureCategory.REGIONS),
     REPEAT("repeat", "Repeat", FeatureCategory.REGIONS),
+    @Deprecated
     CA_BIND("calcium-binding region", "Calcium binding", FeatureCategory.REGIONS),
     ZN_FING("zinc finger region", "Zinc finger", FeatureCategory.REGIONS),
+    @Deprecated
     DNA_BIND("DNA-binding region", "DNA binding", FeatureCategory.REGIONS),
+    @Deprecated
     NP_BIND("nucleotide phosphate-binding region", "Nucleotide binding", FeatureCategory.REGIONS),
     REGION("region of interest", "Region", FeatureCategory.REGIONS),
     COILED("coiled-coil region", "Coiled coil", FeatureCategory.REGIONS),
     MOTIF("short sequence motif", "Motif", FeatureCategory.REGIONS),
     COMPBIAS("compositionally biased region", "Compositional bias", FeatureCategory.REGIONS),
     ACT_SITE("active site", "Active site", FeatureCategory.SITES),
+    @Deprecated
     METAL("metal ion-binding site", "Metal binding", FeatureCategory.SITES),
     BINDING("binding site", "Binding site", FeatureCategory.SITES),
     SITE("site", "Site", FeatureCategory.SITES),

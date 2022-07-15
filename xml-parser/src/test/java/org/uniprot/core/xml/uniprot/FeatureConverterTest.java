@@ -7,17 +7,23 @@ import static org.uniprot.core.xml.uniprot.EvidenceHelper.createEvidences;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.feature.FeatureLocation;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
 import org.uniprot.core.uniprotkb.feature.FeatureId;
+import org.uniprot.core.uniprotkb.feature.Ligand;
+import org.uniprot.core.uniprotkb.feature.LigandPart;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.FeatureIdBuilder;
+import org.uniprot.core.uniprotkb.feature.impl.LigandBuilder;
+import org.uniprot.core.uniprotkb.feature.impl.LigandPartBuilder;
 import org.uniprot.core.uniprotkb.feature.impl.UniProtKBFeatureBuilder;
+import org.uniprot.cv.evidence.EvidenceHelper;
 
 import com.google.common.base.Strings;
 
@@ -444,6 +450,51 @@ class FeatureConverterTest {
         assertEquals(feature, converted);
     }
 
+    @Test
+    void testBinding() {
+        List<String> evs = List.of("ECO:0000255|PROSITE-ProRule:PRU01239");
+        LigandPart ligandPart =
+                createLigandPart(
+                        "tRNA 3'-terminal nucleotidyl-cytidyl-cytidyl-adenosine residue",
+                        "ChEBI:CHEBI:83071",
+                        null,
+                        null);
+
+        Ligand ligand = createLigand("tRNA(Thr)", "ChEBI:CHEBI:29180", "A1", null);
+        String description = "Some value";
+        String ftid = null;
+
+        EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
+        FeatureConverter converter = new FeatureConverter(evRefMapper);
+
+        UniProtKBFeature feature =
+                createFeature(
+                        UniprotKBFeatureType.BINDING,
+                        313,
+                        317,
+                        description,
+                        ftid,
+                        evs,
+                        ligand,
+                        ligandPart);
+
+        org.uniprot.core.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(
+                        xmlObj, org.uniprot.core.xml.jaxb.uniprot.FeatureType.class, "feature"));
+        verify(xmlObj, 313, 317, description, ftid, null, Arrays.asList(1));
+        UniProtKBFeature converted = converter.fromXml(xmlObj);
+        assertEquals(feature, converted);
+    }
+
+    private Ligand createLigand(String name, String id, String label, String note) {
+        return new LigandBuilder().name(name).id(id).label(label).note(note).build();
+    }
+
+    private LigandPart createLigandPart(String name, String id, String label, String note) {
+        return new LigandPartBuilder().name(name).id(id).label(label).note(note).build();
+    }
+
     private UniProtKBFeature createFeature(
             UniprotKBFeatureType type,
             int start,
@@ -474,5 +525,33 @@ class FeatureConverterTest {
                 .alternativeSequence(altSeq)
                 .evidencesSet(evidences)
                 .build();
+    }
+
+    private UniProtKBFeature createFeature(
+            UniprotKBFeatureType type,
+            int start,
+            int end,
+            String description,
+            String ftid,
+            List<String> evidences,
+            Ligand ligand,
+            LigandPart ligandPart) {
+        FeatureId featureId = null;
+        if (!Strings.isNullOrEmpty(ftid)) {
+            featureId = new FeatureIdBuilder(ftid).build();
+        }
+        return new UniProtKBFeatureBuilder()
+                .type(type)
+                .location(new FeatureLocation(start, end))
+                .description(description)
+                .featureId(featureId)
+                .evidencesSet(createEvidence(evidences))
+                .ligand(ligand)
+                .ligandPart(ligandPart)
+                .build();
+    }
+
+    private List<Evidence> createEvidence(List<String> evIds) {
+        return evIds.stream().map(EvidenceHelper::parseEvidenceLine).collect(Collectors.toList());
     }
 }

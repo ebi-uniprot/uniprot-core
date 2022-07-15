@@ -3,6 +3,8 @@ package org.uniprot.core.uniprotkb.feature.impl;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.PositionModifier;
@@ -56,7 +58,7 @@ class UniProtKBFeatureFeatureImplTest {
         assertTrue(feature.hasFeatureId());
         assertEquals(featureId, feature.getFeatureId());
         assertNull(feature.getAlternativeSequence());
-        assertNull(feature.getFeatureCrossReference());
+        assertTrue(feature.getFeatureCrossReferences().isEmpty());
     }
 
     @Test
@@ -79,7 +81,9 @@ class UniProtKBFeatureFeatureImplTest {
                         new FeatureDescriptionBuilder("abc").build(),
                         new FeatureIdBuilder("1").build(),
                         new AlternativeSequenceBuilder().build(),
-                        xrefs,
+                        null,
+                        null,
+                        List.of(xrefs),
                         createEvidences());
         UniProtKBFeature obj = UniProtKBFeatureBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));

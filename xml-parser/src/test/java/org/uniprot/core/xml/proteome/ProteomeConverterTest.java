@@ -89,7 +89,11 @@ class ProteomeConverterTest {
     void testNormalProteome() {
         ProteomeConverter converter = new ProteomeConverter();
         ProteomeEntry proteome =
-                new ProteomeEntryBuilder().proteomeId("UP1234567890").proteomeType(NORMAL).build();
+                new ProteomeEntryBuilder()
+                        .proteomeId("UP1234567890")
+                        .proteomeType(NORMAL)
+                        .proteinCount(245)
+                        .build();
         Proteome xml = converter.toXml(proteome);
         ProteomeEntry converted = converter.fromXml(xml);
         assertEquals(proteome, converted);

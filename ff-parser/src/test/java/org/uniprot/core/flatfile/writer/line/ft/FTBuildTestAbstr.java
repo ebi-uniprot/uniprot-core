@@ -12,6 +12,8 @@ import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.feature.AlternativeSequence;
+import org.uniprot.core.uniprotkb.feature.Ligand;
+import org.uniprot.core.uniprotkb.feature.LigandPart;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 import org.uniprot.core.uniprotkb.feature.impl.AlternativeSequenceBuilder;
@@ -67,6 +69,29 @@ class FTBuildTestAbstr {
 
     UniProtKBFeature createFeature(
             UniprotKBFeatureType type,
+            int nstart,
+            int nend,
+            String description,
+            String ftId,
+            List<String> evs,
+            Ligand ligand,
+            LigandPart ligandPart) {
+        return createFeature(
+                type,
+                null,
+                nstart,
+                nend,
+                PositionModifier.EXACT,
+                PositionModifier.EXACT,
+                description,
+                ftId,
+                evs,
+                ligand,
+                ligandPart);
+    }
+
+    UniProtKBFeature createFeature(
+            UniprotKBFeatureType type,
             String sequence,
             int nstart,
             int nend,
@@ -83,6 +108,32 @@ class FTBuildTestAbstr {
                 .location(location)
                 .description(description)
                 .featureId(ftId)
+                .evidencesSet(createEvidence(evs))
+                .build();
+    }
+
+    UniProtKBFeature createFeature(
+            UniprotKBFeatureType type,
+            String sequence,
+            int nstart,
+            int nend,
+            PositionModifier sfModifier,
+            PositionModifier efModifier,
+            String description,
+            String ftId,
+            List<String> evs,
+            Ligand ligand,
+            LigandPart ligandPart) {
+        FeatureLocation location =
+                new FeatureLocation(sequence, nstart, nend, sfModifier, efModifier);
+
+        return new UniProtKBFeatureBuilder()
+                .type(type)
+                .location(location)
+                .description(description)
+                .featureId(ftId)
+                .ligand(ligand)
+                .ligandPart(ligandPart)
                 .evidencesSet(createEvidence(evs))
                 .build();
     }

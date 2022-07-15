@@ -3,14 +3,14 @@ AC   Q9G0S9; Q35043; Q8HEG1; Q9G935; Q9G936; Q9G937; Q9G938; Q9G939; Q9G940;
 AC   Q9G941;
 DT   09-MAY-2003, integrated into UniProtKB/Swiss-Prot.
 DT   01-MAR-2001, sequence version 1.
-DT   16-JAN-2019, entry version 90.
+DT   03-AUG-2022, entry version 101.
 DE   RecName: Full=Cytochrome b;
 DE   AltName: Full=Complex III subunit 3;
 DE   AltName: Full=Complex III subunit III;
 DE   AltName: Full=Cytochrome b-c1 complex subunit 3;
 DE   AltName: Full=Ubiquinol-cytochrome-c reductase complex cytochrome b subunit;
 GN   Name=MT-CYB; Synonyms=COB, CYTB, MTCYB;
-OS   Microcebus murinus (Lesser mouse lemur) (Gray Mouse Lemur).
+OS   Microcebus murinus (Gray mouse lemur) (Lemur murinus).
 OG   Mitochondrion.
 OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi; Mammalia;
 OC   Eutheria; Euarchontoglires; Primates; Strepsirrhini; Lemuriformes;
@@ -47,9 +47,9 @@ CC       transfer from ubiquinol to cytochrome c. Contributes to the generation
 CC       of a proton gradient across the mitochondrial membrane that is then
 CC       used for ATP synthesis. {ECO:0000250|UniProtKB:P00157}.
 CC   -!- COFACTOR:
-CC       Name=heme; Xref=ChEBI:CHEBI:30413;
+CC       Name=heme b; Xref=ChEBI:CHEBI:60344;
 CC         Evidence={ECO:0000250|UniProtKB:P00157};
-CC       Note=Binds 2 heme groups non-covalently.
+CC       Note=Binds 2 heme b groups non-covalently.
 CC       {ECO:0000250|UniProtKB:P00157};
 CC   -!- SUBUNIT: The cytochrome bc1 complex contains 11 subunits: 3 respiratory
 CC       subunits (MT-CYB, CYC1 and UQCRFS1), 2 core proteins (UQCRC1 and
@@ -85,16 +85,20 @@ DR   EMBL; AF285565; AAG30710.1; -; Genomic_DNA.
 DR   EMBL; AF285566; AAG30711.1; -; Genomic_DNA.
 DR   EMBL; AY167071; AAN86562.1; -; Genomic_DNA.
 DR   RefSeq; YP_009192261.1; NC_028718.1.
+DR   AlphaFoldDB; Q9G0S9; -.
 DR   SMR; Q9G0S9; -.
 DR   Ensembl; ENSMICT00000053028; ENSMICP00000022746; ENSMICG00000037851.
 DR   GeneID; 26823990; -.
+DR   KEGG; mmur:26823990; -.
 DR   CTD; 4519; -.
+DR   GeneTree; ENSGT00390000017948; -.
 DR   OrthoDB; 1125966at2759; -.
+DR   Bgee; ENSMICG00000037851; Expressed in adult mammalian kidney and 8 other tissues.
 DR   GO; GO:0031305; C:integral component of mitochondrial inner membrane; IEA:Ensembl.
-DR   GO; GO:0045275; C:respiratory chain complex III; IEA:InterPro.
+DR   GO; GO:0005750; C:mitochondrial respiratory chain complex III; IEA:Ensembl.
 DR   GO; GO:0046872; F:metal ion binding; IEA:UniProtKB-KW.
 DR   GO; GO:0008121; F:ubiquinol-cytochrome-c reductase activity; IEA:InterPro.
-DR   GO; GO:0006122; P:mitochondrial electron transport, ubiquinol to cytochrome c; IEA:InterPro.
+DR   GO; GO:0022904; P:respiratory electron transport chain; IEA:InterPro.
 DR   CDD; cd00290; cytochrome_b_C; 1.
 DR   CDD; cd00284; Cytochrome_b_N; 1.
 DR   Gene3D; 1.20.810.10; -; 1.
@@ -142,20 +146,41 @@ FT                   /evidence="ECO:0000250|UniProtKB:P00157"
 FT   TRANSMEM        347..367
 FT                   /note="Helical"
 FT                   /evidence="ECO:0000250|UniProtKB:P00157"
-FT   METAL           83
-FT                   /note="Iron 1 (heme b562 axial ligand)"
+FT   BINDING         83
+FT                   /ligand="heme b"
+FT                   /ligand_id="ChEBI:CHEBI:60344"
+FT                   /ligand_label="b562"
+FT                   /ligand_part="Fe"
+FT                   /ligand_part_id="ChEBI:CHEBI:18248"
+FT                   /note="axial binding residue"
 FT                   /evidence="ECO:0000250|UniProtKB:P00157"
-FT   METAL           97
-FT                   /note="Iron 2 (heme b566 axial ligand)"
+FT   BINDING         97
+FT                   /ligand="heme b"
+FT                   /ligand_id="ChEBI:CHEBI:60344"
+FT                   /ligand_label="b566"
+FT                   /ligand_part="Fe"
+FT                   /ligand_part_id="ChEBI:CHEBI:18248"
+FT                   /note="axial binding residue"
 FT                   /evidence="ECO:0000250|UniProtKB:P00157"
-FT   METAL           182
-FT                   /note="Iron 1 (heme b562 axial ligand)"
+FT   BINDING         182
+FT                   /ligand="heme b"
+FT                   /ligand_id="ChEBI:CHEBI:60344"
+FT                   /ligand_label="b562"
+FT                   /ligand_part="Fe"
+FT                   /ligand_part_id="ChEBI:CHEBI:18248"
+FT                   /note="axial binding residue"
 FT                   /evidence="ECO:0000250|UniProtKB:P00157"
-FT   METAL           196
-FT                   /note="Iron 2 (heme b566 axial ligand)"
+FT   BINDING         196
+FT                   /ligand="heme b"
+FT                   /ligand_id="ChEBI:CHEBI:60344"
+FT                   /ligand_label="b566"
+FT                   /ligand_part="Fe"
+FT                   /ligand_part_id="ChEBI:CHEBI:18248"
+FT                   /note="axial binding residue"
 FT                   /evidence="ECO:0000250|UniProtKB:P00157"
 FT   BINDING         201
-FT                   /note="Ubiquinone"
+FT                   /ligand="a ubiquinone"
+FT                   /ligand_id="ChEBI:CHEBI:16389"
 FT                   /evidence="ECO:0000250|UniProtKB:P00157"
 FT   VARIANT         2
 FT                   /note="T -> A (in strain: Isolate RMR 24)"

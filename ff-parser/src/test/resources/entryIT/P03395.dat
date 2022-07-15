@@ -2,7 +2,7 @@ ID   ENV_MLVFR               Reviewed;         445 AA.
 AC   P03395;
 DT   21-JUL-1986, integrated into UniProtKB/Swiss-Prot.
 DT   01-MAR-1992, sequence version 2.
-DT   20-JUN-2018, entry version 106.
+DT   03-AUG-2022, entry version 116.
 DE   RecName: Full=Envelope glycoprotein;
 DE   AltName: Full=Env polyprotein;
 DE   Contains:
@@ -13,7 +13,8 @@ DE              Short=gp70;
 DE   Flags: Fragment;
 GN   Name=env;
 OS   Friend murine leukemia virus (FrMLV).
-OC   Viruses; Ortervirales; Retroviridae; Orthoretrovirinae; Gammaretrovirus;
+OC   Viruses; Riboviria; Pararnavirae; Artverviricota; Revtraviricetes;
+OC   Ortervirales; Retroviridae; Orthoretrovirinae; Gammaretrovirus;
 OC   Murine leukemia virus.
 OX   NCBI_TaxID=11795;
 OH   NCBI_TaxID=10090; Mus musculus (Mouse).
@@ -55,7 +56,7 @@ CC       Note=The surface protein is not anchored to the viral envelope, but
 CC       associates with the virion surface through its binding to TM.
 CC       {ECO:0000250}.
 CC   -!- PTM: Specific enzymatic cleavages in vivo yield mature proteins.
-CC       Envelope glycoproteins are synthesized as a inactive precursor that is
+CC       Envelope glycoproteins are synthesized as an inactive precursor that is
 CC       N-glycosylated and processed likely by host cell furin or by a furin-
 CC       like protease in the Golgi to yield the mature SU and TM proteins. The
 CC       cleavage site between SU and TM requires the minimal sequence [KR]-X-
@@ -66,14 +67,15 @@ CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
 CC   ---------------------------------------------------------------------------
 DR   PIR; S20285; VCFMLV.
 DR   SMR; P03395; -.
-DR   GlyConnect; 315; -.
+DR   GlyConnect; 315; 50 N-Linked glycans (8 sites), 2 O-Linked glycans (7 sites).
 DR   iPTMnet; P03395; -.
-DR   PRIDE; P03395; -.
 DR   GO; GO:0020002; C:host cell plasma membrane; IEA:UniProtKB-SubCell.
+DR   GO; GO:0016020; C:membrane; IEA:UniProtKB-KW.
 DR   GO; GO:0019031; C:viral envelope; IEA:UniProtKB-KW.
 DR   GO; GO:0055036; C:virion membrane; IEA:UniProtKB-SubCell.
 DR   GO; GO:0046872; F:metal ion binding; IEA:UniProtKB-KW.
 DR   GO; GO:0019064; P:fusion of virus membrane with host plasma membrane; IEA:UniProtKB-KW.
+DR   GO; GO:0046718; P:viral entry into host cell; IEA:UniProtKB-KW.
 DR   GO; GO:0019062; P:virion attachment to host cell; IEA:UniProtKB-KW.
 DR   Gene3D; 3.90.310.10; -; 1.
 DR   InterPro; IPR008981; FMuLV_rcpt-bd.
@@ -99,15 +101,18 @@ FT                   /id="PRO_0000125471"
 FT   TOPO_DOM        1..>445
 FT                   /note="Extracellular"
 FT                   /evidence="ECO:0000255"
+FT   REGION          253..286
+FT                   /note="Disordered"
+FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
 FT   MOTIF           312..315
 FT                   /note="CXXC"
-FT   COMPBIAS        233..283
-FT                   /note="Pro-rich"
-FT   METAL           55
-FT                   /note="Zinc"
+FT   BINDING         55
+FT                   /ligand="Zn(2+)"
+FT                   /ligand_id="ChEBI:CHEBI:29105"
 FT                   /evidence="ECO:0000250"
-FT   METAL           86
-FT                   /note="Zinc"
+FT   BINDING         86
+FT                   /ligand="Zn(2+)"
+FT                   /ligand_id="ChEBI:CHEBI:29105"
 FT                   /evidence="ECO:0000250"
 FT   CARBOHYD        12
 FT                   /note="N-linked (GlcNAc...) (hybrid) asparagine; by host"

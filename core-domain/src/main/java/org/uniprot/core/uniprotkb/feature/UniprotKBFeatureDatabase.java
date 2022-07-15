@@ -6,7 +6,8 @@ import org.uniprot.core.feature.FeatureDatabase;
 import org.uniprot.core.util.EnumDisplay;
 
 public enum UniprotKBFeatureDatabase implements FeatureDatabase {
-    DBSNP("dbSNP");
+    DBSNP("dbSNP"),
+    CHEBI("ChEBI");
     private final String name;
 
     UniprotKBFeatureDatabase(String name) {

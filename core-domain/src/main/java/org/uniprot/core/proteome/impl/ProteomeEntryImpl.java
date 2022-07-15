@@ -39,7 +39,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     ProteomeEntryImpl() {
         this(
                 null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null);
+                null, null, null, null, null, null, null);
     }
 
     ProteomeEntryImpl(
@@ -62,7 +62,8 @@ public class ProteomeEntryImpl implements ProteomeEntry {
             ProteomeCompletenessReport proteomeCompletenessReport,
             GenomeAssembly genomeAssembly,
             GenomeAnnotation genomeAnnotation,
-            List<ExclusionReason> exclusionReasons) {
+            List<ExclusionReason> exclusionReasons,
+            Integer proteinCount) {
         super();
         this.id = id;
         this.taxonomy = taxonomy;
@@ -80,25 +81,13 @@ public class ProteomeEntryImpl implements ProteomeEntry {
         this.annotationScore = annotationScore;
         this.superkingdom = superkingdom;
         this.geneCount = geneCount;
-        if (Utils.notNull(components)) {
-            int count =
-                    components.stream()
-                            .filter(c -> Utils.notNull(c.getProteinCount()))
-                            .mapToInt(Component::getProteinCount)
-                            .sum();
-            if (count > 0) {
-                this.proteinCount = count;
-            } else {
-                proteinCount = null;
-            }
-        } else {
-            this.proteinCount = null;
-        }
+
         this.taxonLineage = Utils.unmodifiableList(taxonLineage);
         this.proteomeCompletenessReport = proteomeCompletenessReport;
         this.genomeAssembly = genomeAssembly;
         this.genomeAnnotation = genomeAnnotation;
         this.exclusionReasons = Utils.unmodifiableList(exclusionReasons);
+        this.proteinCount = proteinCount;
     }
 
     @Override
@@ -224,6 +213,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
                 proteomeType,
                 proteomeCompletenessReport,
                 genomeAssembly,
+                proteinCount,
                 genomeAnnotation);
     }
 

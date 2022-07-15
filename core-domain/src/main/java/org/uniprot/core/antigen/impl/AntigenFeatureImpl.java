@@ -32,11 +32,11 @@ public class AntigenFeatureImpl extends AbstractFeature<AntigenDatabase, Antigen
             AntigenFeatureType type,
             FeatureLocation location,
             FeatureDescription description,
-            CrossReference<AntigenDatabase> featureCrossReference,
+            List<CrossReference<AntigenDatabase>> featureCrossReferences,
             List<Evidence> evidences,
             String antigenSequence,
             int matchScore) {
-        super(type, location, description, featureCrossReference, evidences);
+        super(type, location, description, featureCrossReferences, evidences);
         this.antigenSequence = antigenSequence;
         this.matchScore = matchScore;
     }

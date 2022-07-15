@@ -1049,6 +1049,19 @@
 						annotation.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="ligand" type="ligandType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Describes the chemical entity that is bound in
+						annotations that describe binding sites.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ligandPart" type="ligandPartType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Describes the specific part of a molecule that is
+						bound in annotations that describe binding sites.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 		<xs:attribute name="type" use="required">
 			<xs:annotation>
@@ -1145,6 +1158,32 @@
 		</xs:attribute>
 		<xs:attribute name="evidence" type="intListType"
 			use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="ligandType">
+		<xs:annotation>
+			<xs:documentation>Describes a ligand.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="dbReference" type="dbReferenceType"
+				minOccurs="0" />
+			<xs:element name="label" type="xs:string" minOccurs="0" />
+			<xs:element name="note" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ligandPartType">
+		<xs:annotation>
+			<xs:documentation>Describes a ligand part.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="dbReference" type="dbReferenceType"
+				minOccurs="0" />
+			<xs:element name="label" type="xs:string" minOccurs="0" />
+			<xs:element name="note" type="xs:string" minOccurs="0" />
+		</xs:sequence>
 	</xs:complexType>
 	<!-- Feature definition ends -->
 

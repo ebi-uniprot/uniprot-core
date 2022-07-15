@@ -52,7 +52,7 @@ public class FeatureConverter implements Converter<FeatureType, AntigenFeature> 
         if (Utils.notNullNotEmpty(xmlObj.getXrefs())) {
             CrossReference<AntigenDatabase> features =
                     crossReferenceConverter.fromXml(xmlObj.getXrefs().get(0));
-            builder.featureCrossReference(features);
+            builder.featureCrossReferenceAdd(features);
         }
 
         if (Utils.notNullNotEmpty(xmlObj.getEvidence())) {
@@ -89,7 +89,7 @@ public class FeatureConverter implements Converter<FeatureType, AntigenFeature> 
 
         if (uniObj.hasFeatureCrossReference()) {
             DbReferenceType crossReference =
-                    crossReferenceConverter.toXml(uniObj.getFeatureCrossReference());
+                    crossReferenceConverter.toXml(uniObj.getFeatureCrossReferences().get(0));
             xmlFeature.getXrefs().add(crossReference);
         }
 

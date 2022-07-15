@@ -41,7 +41,7 @@ public class AntigenFeatureBuilder
                 type,
                 location,
                 description,
-                featureCrossReference,
+                featureCrossReferences,
                 evidences,
                 antigenSequence,
                 matchScore);

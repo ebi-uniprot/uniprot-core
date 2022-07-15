@@ -23,6 +23,8 @@ public class FtLineModelListener extends FtLineParserBaseListener
     private FtLineObject object;
 
     private FtLineObject.FT ft;
+    private FtLineObject.Ligand ligand;
+    private FtLineObject.Ligand ligandPart;
 
     @Override
     public FtLineObject getObject() {
@@ -91,6 +93,74 @@ public class FtLineModelListener extends FtLineParserBaseListener
     @Override
     public void exitLoc_end(FtLineParser.Loc_endContext ctx) {
         ft.setLocationEnd(ctx.FT_LOCATION_2().getText().trim());
+    }
+
+    @Override
+    public void enterFt_ligand_name(FtLineParser.Ft_ligand_nameContext ctx) {
+        ligand = new FtLineObject.Ligand();
+        ft.setLigand(ligand);
+    }
+
+    @Override
+    public void exitFt_ligand_name(FtLineParser.Ft_ligand_nameContext ctx) {
+        if (ctx.ligand_name() != null) {
+            ligand.setName(ctx.ligand_name().getText());
+        }
+    }
+
+    @Override
+    public void exitFt_ligand_id(FtLineParser.Ft_ligand_idContext ctx) {
+        if (ctx.ligand_id() != null) {
+            ligand.setId(ctx.ligand_id().getText());
+        }
+    }
+
+    @Override
+    public void exitFt_ligand_label(FtLineParser.Ft_ligand_labelContext ctx) {
+        if (ctx.ligand_label() != null) {
+            ligand.setLabel(ctx.ligand_label().getText());
+        }
+    }
+
+    @Override
+    public void exitFt_ligand_note(FtLineParser.Ft_ligand_noteContext ctx) {
+        if (ctx.ligand_note() != null) {
+            ligand.setNote(ctx.ligand_note().getText());
+        }
+    }
+
+    @Override
+    public void enterFt_ligand_part_name(FtLineParser.Ft_ligand_part_nameContext ctx) {
+        ligandPart = new FtLineObject.Ligand();
+        ft.setLigandPart(ligandPart);
+    }
+
+    @Override
+    public void exitFt_ligand_part_name(FtLineParser.Ft_ligand_part_nameContext ctx) {
+        if (ctx.ligand_part_name() != null) {
+            ligandPart.setName(ctx.ligand_part_name().getText());
+        }
+    }
+
+    @Override
+    public void exitFt_ligand_part_id(FtLineParser.Ft_ligand_part_idContext ctx) {
+        if (ctx.ligand_part_id() != null) {
+            ligandPart.setId(ctx.ligand_part_id().getText());
+        }
+    }
+
+    @Override
+    public void exitFt_ligand_part_label(FtLineParser.Ft_ligand_part_labelContext ctx) {
+        if (ctx.ligand_part_label() != null) {
+            ligandPart.setLabel(ctx.ligand_part_label().getText());
+        }
+    }
+
+    @Override
+    public void exitFt_ligand_part_note(FtLineParser.Ft_ligand_part_noteContext ctx) {
+        if (ctx.ligand_part_note() != null) {
+            ligandPart.setNote(ctx.ligand_part_note().getText());
+        }
     }
 
     private String updateAltSeqText(String text) {
