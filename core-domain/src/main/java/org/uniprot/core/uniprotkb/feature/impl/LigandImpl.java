@@ -59,5 +59,4 @@ public class LigandImpl implements Ligand {
     public int hashCode() {
         return Objects.hash(name, id, label, note);
     }
-
 }
