@@ -27,11 +27,11 @@ public class LigandPartConverter implements Converter<LigandPartType, LigandPart
         if (Utils.notNull(xmlObj.getDbReference())) {
             builder.id(xmlObj.getDbReference().getType() + COLON + xmlObj.getDbReference().getId());
         }
-        if (Utils.notNullNotEmpty(xmlObj.getLabel())) {
-            builder.label(xmlObj.getLabel());
-        }
         if (Utils.notNullNotEmpty(xmlObj.getNote())) {
             builder.note(xmlObj.getNote());
+        }
+        if (Utils.notNullNotEmpty(xmlObj.getLabel())) {
+            builder.label(xmlObj.getLabel());
         }
         return builder.build();
     }
@@ -43,11 +43,11 @@ public class LigandPartConverter implements Converter<LigandPartType, LigandPart
         if (Utils.notNullNotEmpty(uniObj.getId())) {
             ligandType.setDbReference(convertDbReferenceType(uniObj.getId()));
         }
-        if (Utils.notNullNotEmpty(uniObj.getLabel())) {
-            ligandType.setLabel(uniObj.getLabel());
-        }
         if (Utils.notNullNotEmpty(uniObj.getNote())) {
             ligandType.setNote(uniObj.getNote());
+        }
+        if (Utils.notNullNotEmpty(uniObj.getLabel())) {
+            ligandType.setLabel(uniObj.getLabel());
         }
         return ligandType;
     }
@@ -57,8 +57,8 @@ public class LigandPartConverter implements Converter<LigandPartType, LigandPart
         String type = val.substring(0, index);
         String id = val.substring(index + 1);
         DbReferenceType dbRef = xmlUniprotFactory.createDbReferenceType();
-        dbRef.setType(type);
         dbRef.setId(id);
+        dbRef.setType(type);
         return dbRef;
     }
 }

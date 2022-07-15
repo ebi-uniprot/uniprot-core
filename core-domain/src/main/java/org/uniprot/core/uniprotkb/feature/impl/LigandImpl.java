@@ -17,20 +17,20 @@ public class LigandImpl implements Ligand {
     }
 
     LigandImpl(String name, String id, String label, String note) {
-        this.name = name;
         this.id = id;
+        this.name = name;
         this.label = label;
         this.note = note;
     }
 
     @Override
-    public String getName() {
-        return name;
+    public String getId() {
+        return id;
     }
 
     @Override
-    public String getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
     @Override
@@ -44,11 +44,6 @@ public class LigandImpl implements Ligand {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(name, id, label, note);
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
@@ -59,4 +54,10 @@ public class LigandImpl implements Ligand {
                 && Objects.equals(label, that.label)
                 && Objects.equals(note, that.note);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, id, label, note);
+    }
+
 }

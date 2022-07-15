@@ -23,10 +23,10 @@ public class LigandConverter implements Converter<LigandType, Ligand> {
     @Override
     public Ligand fromXml(LigandType xmlObj) {
         LigandBuilder builder = new LigandBuilder();
-        builder.name(xmlObj.getName());
         if (Utils.notNull(xmlObj.getDbReference())) {
             builder.id(xmlObj.getDbReference().getType() + COLON + xmlObj.getDbReference().getId());
         }
+        builder.name(xmlObj.getName());
         if (Utils.notNullNotEmpty(xmlObj.getLabel())) {
             builder.label(xmlObj.getLabel());
         }
@@ -39,10 +39,10 @@ public class LigandConverter implements Converter<LigandType, Ligand> {
     @Override
     public LigandType toXml(Ligand uniObj) {
         LigandType ligandType = xmlUniprotFactory.createLigandType();
-        ligandType.setName(uniObj.getName());
         if (Utils.notNullNotEmpty(uniObj.getId())) {
             ligandType.setDbReference(convertDbReferenceType(uniObj.getId()));
         }
+        ligandType.setName(uniObj.getName());
         if (Utils.notNullNotEmpty(uniObj.getLabel())) {
             ligandType.setLabel(uniObj.getLabel());
         }
@@ -54,8 +54,8 @@ public class LigandConverter implements Converter<LigandType, Ligand> {
 
     private DbReferenceType convertDbReferenceType(String val) {
         int index = val.indexOf(':');
-        String type = val.substring(0, index);
         String id = val.substring(index + 1);
+        String type = val.substring(0, index);
         DbReferenceType dbRef = xmlUniprotFactory.createDbReferenceType();
         dbRef.setType(type);
         dbRef.setId(id);
