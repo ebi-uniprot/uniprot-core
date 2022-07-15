@@ -377,9 +377,6 @@ public class FtLineConverter extends EvidenceCollector
         }
         String type = val.substring(0, index);
         UniprotKBFeatureDatabase db = UniprotKBFeatureDatabase.typeOf(type);
-        if (db == null) {
-            return null;
-        }
         String id = val.substring(index + 1);
         CrossReferenceBuilder<UniprotKBFeatureDatabase> builder = new CrossReferenceBuilder<>();
         builder.database(db).id(id);
