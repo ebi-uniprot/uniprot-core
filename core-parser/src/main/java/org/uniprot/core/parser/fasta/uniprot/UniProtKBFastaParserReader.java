@@ -81,7 +81,9 @@ class UniProtKBFastaParserReader {
         if (indexAfterOX < 0) {
             indexAfterOX = line.indexOf(" PE=", organismIdIndex);
         }
-
+        if(indexAfterOX < 0){
+            indexAfterOX = line.length();
+        }
         OrganismBuilder organismBuilder = new OrganismBuilder();
         organismBuilder.scientificName(line.substring(organismNameIndex + 4, organismIdIndex));
         String taxId = line.substring(organismIdIndex + 4, indexAfterOX);
