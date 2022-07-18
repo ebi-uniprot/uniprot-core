@@ -90,10 +90,10 @@ class UniProtKBFastaParserReaderTest {
     @Test
     void parseIsoform() {
         String fastaInput =
-                ">sp|P26512-2|AK_CORGL Isoform of P26512, Isoform Beta of Aspartokinase " +
-                        "OS=Corynebacterium glutamicum OX=196627 GN=lysC\n" +
-                        "MEEAVLTGVATDKSEAKVTVLGISDKPGEAAKVFRALADAEINIDMVLQNVSSVEDGTTD\n" +
-                        "ITFTCPRSDGRRAMEILKKLQVQGNWTNVLYDDQVGKVSLVGAGMKSHPGVTAEFMEALR";
+                ">sp|P26512-2|AK_CORGL Isoform of P26512, Isoform Beta of Aspartokinase "
+                        + "OS=Corynebacterium glutamicum OX=196627 GN=lysC\n"
+                        + "MEEAVLTGVATDKSEAKVTVLGISDKPGEAAKVFRALADAEINIDMVLQNVSSVEDGTTD\n"
+                        + "ITFTCPRSDGRRAMEILKKLQVQGNWTNVLYDDQVGKVSLVGAGMKSHPGVTAEFMEALR";
         UniProtKBFasta result = UniProtKBFastaParserReader.parse(fastaInput);
         assertNotNull(result);
         assertEquals("P26512-2", result.getId());
