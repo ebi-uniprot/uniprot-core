@@ -46,14 +46,19 @@ class UniProtKBFastaParserReader {
         builder.organism(parseOrganism(line));
 
         if (geneIndex >= 0) {
-            builder.geneName(line.substring(geneIndex + 4, proteinExistenceIndex));
+            if(proteinExistenceIndex > 0) {
+                builder.geneName(line.substring(geneIndex + 4, proteinExistenceIndex));
+            } else {
+                builder.geneName(line.substring(geneIndex + 4));
+            }
         }
+        if(proteinExistenceIndex > 0) {
+            String proteinExistence = line.substring(proteinExistenceIndex + 4, sequenceVersionIndex);
+            builder.proteinExistence(parseProteinExistence(proteinExistence));
 
-        String proteinExistence = line.substring(proteinExistenceIndex + 4, sequenceVersionIndex);
-        builder.proteinExistence(parseProteinExistence(proteinExistence));
-
-        String sequenceVersion = line.substring(sequenceVersionIndex + 4);
-        builder.sequenceVersion(Integer.parseInt(sequenceVersion));
+            String sequenceVersion = line.substring(sequenceVersionIndex + 4);
+            builder.sequenceVersion(Integer.parseInt(sequenceVersion));
+        }
     }
 
     private static void parseProteinName(UniProtKBFastaBuilder builder, String line) {

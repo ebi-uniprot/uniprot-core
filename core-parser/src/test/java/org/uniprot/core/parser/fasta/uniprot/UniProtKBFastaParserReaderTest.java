@@ -86,4 +86,25 @@ class UniProtKBFastaParserReaderTest {
                 "MDLEGADYDPEQFPGLVYRLDEPSVVALLFGSGKLVITGGKHPVDAEHAVDTIDSRLEDLGLLDGYGDRAK",
                 result.getSequence().getValue());
     }
+
+    @Test
+    void parseIsoform() {
+        String fastaInput =
+                ">sp|P26512-2|AK_CORGL Isoform of P26512, Isoform Beta of Aspartokinase " +
+                        "OS=Corynebacterium glutamicum OX=196627 GN=lysC\n" +
+                        "MEEAVLTGVATDKSEAKVTVLGISDKPGEAAKVFRALADAEINIDMVLQNVSSVEDGTTD\n" +
+                        "ITFTCPRSDGRRAMEILKKLQVQGNWTNVLYDDQVGKVSLVGAGMKSHPGVTAEFMEALR";
+        UniProtKBFasta result = UniProtKBFastaParserReader.parse(fastaInput);
+        assertNotNull(result);
+        assertEquals("P26512-2", result.getId());
+        assertEquals("AK_CORGL", result.getUniProtkbId().getValue());
+        assertEquals("Isoform of P26512, Isoform Beta of Aspartokinase", result.getProteinName());
+        assertNotNull(result.getOrganism());
+        assertEquals(196627L, result.getOrganism().getTaxonId());
+        assertEquals("Corynebacterium glutamicum", result.getOrganism().getScientificName());
+        assertEquals("lysC", result.getGeneName());
+        assertNull(result.getProteinExistence());
+        assertNull(result.getSequenceVersion());
+        assertNotNull(result.getSequence().getValue());
+    }
 }
