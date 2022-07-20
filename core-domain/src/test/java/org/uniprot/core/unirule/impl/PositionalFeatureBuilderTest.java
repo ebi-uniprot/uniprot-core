@@ -11,6 +11,10 @@ import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
+import org.uniprot.core.uniprotkb.feature.Ligand;
+import org.uniprot.core.uniprotkb.feature.LigandPart;
+import org.uniprot.core.uniprotkb.feature.impl.LigandBuilder;
+import org.uniprot.core.uniprotkb.feature.impl.LigandPartBuilder;
 import org.uniprot.core.unirule.PositionalFeature;
 
 public class PositionalFeatureBuilderTest {
@@ -36,14 +40,37 @@ public class PositionalFeatureBuilderTest {
         int end = ThreadLocalRandom.current().nextInt(start + 1, Integer.MAX_VALUE);
         Range position = new Range(start, end);
         boolean inGroup = true;
+
+        Ligand ligand =
+                new LigandBuilder()
+                        .id("CHEBI:12345")
+                        .label("label-" + random)
+                        .name("name-" + random)
+                        .note("note-" + random)
+                        .build();
+        LigandPart ligandPart =
+                new LigandPartBuilder()
+                        .id("CHEBI:54321")
+                        .label("label-" + random)
+                        .name("name-" + random)
+                        .note("note-" + random)
+                        .build();
+        String description = "description-" + random;
+
         PositionalFeatureBuilder builder = new PositionalFeatureBuilder(position);
-        builder.type(type).pattern(pattern).value(value);
+        builder.type(type)
+                .pattern(pattern)
+                .ligand(ligand)
+                .ligandPart(ligandPart)
+                .description(description);
         builder.inGroup(inGroup);
         PositionalFeature positionFeature = builder.build();
         assertNotNull(positionFeature);
         assertEquals(type, positionFeature.getType());
         assertEquals(pattern, positionFeature.getPattern());
-        assertEquals(value, positionFeature.getValue());
+        assertEquals(ligand, positionFeature.getLigand());
+        assertEquals(ligandPart, positionFeature.getLigandPart());
+        assertEquals(description, positionFeature.getDescription());
         assertEquals(position, positionFeature.getPosition());
         assertEquals(inGroup, positionFeature.isInGroup());
         return positionFeature;

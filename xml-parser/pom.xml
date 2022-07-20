@@ -195,7 +195,7 @@
 								</xsdOption>
 								<xsdOption>
 									<extension>true</extension>
-									<xsd>${xsd-location}/unirule-1.2.xsd</xsd>
+									<xsd>${xsd-location}/unirule-1.3.xsd</xsd>
 									<packagename>${unirule-xsd-pojo-package}</packagename>
 									<extensionArgs>
 										<extensionArg>-verbose</extensionArg>

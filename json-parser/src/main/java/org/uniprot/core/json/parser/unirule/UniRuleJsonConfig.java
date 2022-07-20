@@ -26,6 +26,10 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceImpl;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueImpl;
+import org.uniprot.core.uniprotkb.feature.Ligand;
+import org.uniprot.core.uniprotkb.feature.LigandPart;
+import org.uniprot.core.uniprotkb.feature.impl.LigandImpl;
+import org.uniprot.core.uniprotkb.feature.impl.LigandPartImpl;
 import org.uniprot.core.uniprotkb.impl.GeneImpl;
 import org.uniprot.core.uniprotkb.impl.KeywordImpl;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionImpl;
@@ -154,6 +158,8 @@ public class UniRuleJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Flag.class, FlagImpl.class);
 
         mod.addAbstractTypeMapping(PositionalFeature.class, PositionalFeatureImpl.class);
+        mod.addAbstractTypeMapping(Ligand.class, LigandImpl.class);
+        mod.addAbstractTypeMapping(LigandPart.class, LigandPartImpl.class);
         mod.addAbstractTypeMapping(CaseRule.class, CaseRuleImpl.class);
         mod.addAbstractTypeMapping(SamFeatureSet.class, SamFeatureSetImpl.class);
         mod.addAbstractTypeMapping(SamTrigger.class, SamTriggerImpl.class);

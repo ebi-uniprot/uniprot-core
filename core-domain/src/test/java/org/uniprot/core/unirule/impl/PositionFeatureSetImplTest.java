@@ -36,9 +36,12 @@ public class PositionFeatureSetImplTest {
         Annotation annotation2 = new AnnotationBuilder().build();
         List<Annotation> annotations = Arrays.asList(annotation1, annotation2);
         Range position = new Range(1, 2);
-        PositionalFeature feature1 = new PositionalFeatureBuilder(position).value("f1").build();
-        PositionalFeature feature2 = new PositionalFeatureBuilder(position).value("f2").build();
-        PositionalFeature feature3 = new PositionalFeatureBuilder(position).value("f3").build();
+        PositionalFeature feature1 =
+                new PositionalFeatureBuilder(position).description("f1").build();
+        PositionalFeature feature2 =
+                new PositionalFeatureBuilder(position).description("f2").build();
+        PositionalFeature feature3 =
+                new PositionalFeatureBuilder(position).description("f3").build();
         List<PositionalFeature> positionalFeatures = Arrays.asList(feature1, feature2, feature3);
 
         String note = "sample note";

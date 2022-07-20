@@ -3,9 +3,9 @@
 	UniRule.xsd Version: $Revision$ Date: $Date$ Copyright (c) 2012 UniProt Consortium 
 	All rights reserved. ******************************************************************************* -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns="http://uniprot.org/unirule-1.2"
+	xmlns="http://uniprot.org/unirule-1.3"
 	xmlns:uniprot="http://uniprot.org/uniprot"
-	targetNamespace="http://uniprot.org/unirule-1.2"
+	targetNamespace="http://uniprot.org/unirule-1.3"
 	elementFormDefault="qualified">
 
 	<!-- Where possible types are those defined in the uniprot.xsd -->
@@ -115,11 +115,9 @@
 		<xs:annotation>
 			<xs:documentation>Cases are discreet units of conditions and
 				annotations that are a
-				specialization of the containing rule. They
-				are only applied against accessions
+				specialization of the containing rule. They are only applied against accessions
 				that meet the criteria
-				of the
-				containing rule.
+				of the containing rule.
 			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
@@ -400,17 +398,13 @@
 			<!-- todo replace the term SAM with a more conducive term -->
 			<xs:documentation>Sam Features capture annotation based on the
 				following Sequence Analysis Methods
-				- occurrences of SignalP;
-				Transmembrane and Coiled Coil. If the
+				- occurrences of SignalP; Transmembrane and Coiled Coil. If the
 				selected SAM is detected in a
-				candidate protein (and within the hit count range) then the
-				candidate protein
+				candidate protein (and within the hit count range) then the candidate protein
 				is
-				tested against a discrete rule. The condition
-				type below holds the SAM
+				tested against a discrete rule. The condition type below holds the SAM
 				method to test, the
-				annotation type below
-				holds a reference to the discrete rule to apply.
+				annotation type below holds a reference to the discrete rule to apply.
 			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
@@ -477,10 +471,8 @@
 		<xs:annotation>
 			<xs:documentation>A container for both standard condition and
 				annotations, as well as
-				positional features. There is a dependency
-				between ConditionSet and
-				annotations - either both should exist or
-				neither.</xs:documentation>
+				positional features. There is a dependency between ConditionSet and
+				annotations - either both should exist or neither.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="conditionSet" type="conditionSetType"
@@ -504,12 +496,9 @@
 		<xs:annotation>
 			<xs:documentation>Positional Features specify annotation based on the
 				annotation already applied to an example
-				accession (template). There
-				is a one to one mapping between the 'condition'
-				which specifies the
-				section
-				of signature from the template sequence to use as a
-				comparator, and
+				accession (template). There is a one to one mapping between the 'condition'
+				which specifies the section
+				of signature from the template sequence to use as a comparator, and
 				the annotation to be applied.
 			</xs:documentation>
 		</xs:annotation>
@@ -542,11 +531,15 @@
 
 	<!-- Start of Positional Annotation Type -->
 	<xs:complexType name="positionalAnnotationType">
-		<xs:simpleContent>
-			<xs:extension base="xs:string">
-				<xs:attribute name="type" type="xs:string" />
-			</xs:extension>
-		</xs:simpleContent>
+		<xs:sequence>
+			<xs:element name="ligand" type="uniprot:ligandType"
+				minOccurs="0" />
+			<xs:element name="ligandPart"
+				type="uniprot:ligandPartType" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="type" type="xs:string" use="required" />
+		<xs:attribute name="description" type="xs:string"
+			use="optional" />
 	</xs:complexType>
 	<!-- End of Positional Annotation Type -->
 
