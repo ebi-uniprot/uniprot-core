@@ -7,10 +7,15 @@ import org.uniprot.core.unirule.PositionalFeature;
 import org.uniprot.core.unirule.impl.PositionalFeatureBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.unirule.*;
+import org.uniprot.core.xml.uniprot.LigandConverter;
+import org.uniprot.core.xml.uniprot.LigandPartConverter;
 
 public class PositionalFeatureConverter
         implements Converter<PositionalFeatureType, PositionalFeature> {
     private final ObjectFactory objectFactory;
+    private final org.uniprot.core.xml.jaxb.uniprot.ObjectFactory uniProtObjectFactory;
+    private final LigandConverter ligandConverter;
+    private final LigandPartConverter ligandPartConverter;
 
     public PositionalFeatureConverter() {
         this(new ObjectFactory());
@@ -18,6 +23,9 @@ public class PositionalFeatureConverter
 
     public PositionalFeatureConverter(ObjectFactory objectFactory) {
         this.objectFactory = objectFactory;
+        this.uniProtObjectFactory = new org.uniprot.core.xml.jaxb.uniprot.ObjectFactory();
+        this.ligandConverter = new LigandConverter(uniProtObjectFactory);
+        this.ligandPartConverter = new LigandPartConverter(uniProtObjectFactory);
     }
 
     @Override
@@ -35,7 +43,17 @@ public class PositionalFeatureConverter
         PositionalFeatureBuilder builder = new PositionalFeatureBuilder(position);
         builder.pattern(xmlObj.getPositionalCondition().getPattern());
         if (Objects.nonNull(xmlObj.getPositionalAnnotation())) {
-            builder.value(xmlObj.getPositionalAnnotation().getValue());
+            builder.description(xmlObj.getPositionalAnnotation().getDescription());
+            if (Objects.nonNull(xmlObj.getPositionalAnnotation().getLigand())) {
+                builder.ligand(
+                        ligandConverter.fromXml(xmlObj.getPositionalAnnotation().getLigand()));
+            }
+            if (Objects.nonNull(xmlObj.getPositionalAnnotation().getLigandPart())) {
+                builder.ligandPart(
+                        ligandPartConverter.fromXml(
+                                xmlObj.getPositionalAnnotation().getLigandPart()));
+            }
+            builder.description(xmlObj.getPositionalAnnotation().getDescription());
             builder.type(xmlObj.getPositionalAnnotation().getType());
         }
         builder.inGroup(xmlObj.isInGroup());
@@ -63,7 +81,14 @@ public class PositionalFeatureConverter
         PositionalAnnotationType positionalAnnotationType =
                 this.objectFactory.createPositionalAnnotationType();
         positionalAnnotationType.setType(uniObj.getType());
-        positionalAnnotationType.setValue(uniObj.getValue());
+        positionalAnnotationType.setDescription(uniObj.getDescription());
+        if (Objects.nonNull(uniObj.getLigand())) {
+            positionalAnnotationType.setLigand(ligandConverter.toXml(uniObj.getLigand()));
+        }
+        if (Objects.nonNull(uniObj.getLigandPart())) {
+            positionalAnnotationType.setLigandPart(
+                    ligandPartConverter.toXml(uniObj.getLigandPart()));
+        }
         positionalFeatureType.setPositionalAnnotation(positionalAnnotationType);
         positionalFeatureType.setInGroup(uniObj.isInGroup());
         return positionalFeatureType;

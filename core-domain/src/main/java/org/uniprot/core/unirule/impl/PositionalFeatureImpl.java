@@ -3,6 +3,8 @@ package org.uniprot.core.unirule.impl;
 import java.util.Objects;
 
 import org.uniprot.core.Range;
+import org.uniprot.core.uniprotkb.feature.Ligand;
+import org.uniprot.core.uniprotkb.feature.LigandPart;
 import org.uniprot.core.unirule.PositionalFeature;
 
 public class PositionalFeatureImpl extends RuleExceptionAnnotationImpl
@@ -15,16 +17,26 @@ public class PositionalFeatureImpl extends RuleExceptionAnnotationImpl
 
     private boolean inGroup;
 
-    private String value;
-
     private String type;
+
+    private Ligand ligand;
+
+    private LigandPart ligandPart;
+
+    private String description;
 
     PositionalFeatureImpl() {
         super(RuleExceptionAnnotationType.POSITIONAL_FEATURE);
     }
 
     PositionalFeatureImpl(
-            Range position, String pattern, boolean inGroup, String value, String type) {
+            Range position,
+            String pattern,
+            boolean inGroup,
+            Ligand ligand,
+            LigandPart ligandPart,
+            String description,
+            String type) {
         super(RuleExceptionAnnotationType.POSITIONAL_FEATURE);
 
         if (Objects.isNull(position)) {
@@ -35,7 +47,9 @@ public class PositionalFeatureImpl extends RuleExceptionAnnotationImpl
         this.position = position;
         this.pattern = pattern;
         this.inGroup = inGroup;
-        this.value = value;
+        this.ligand = ligand;
+        this.ligandPart = ligandPart;
+        this.description = description;
         this.type = type;
     }
 
@@ -55,8 +69,18 @@ public class PositionalFeatureImpl extends RuleExceptionAnnotationImpl
     }
 
     @Override
-    public String getValue() {
-        return value;
+    public Ligand getLigand() {
+        return ligand;
+    }
+
+    @Override
+    public LigandPart getLigandPart() {
+        return ligandPart;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
     }
 
     @Override
@@ -73,12 +97,22 @@ public class PositionalFeatureImpl extends RuleExceptionAnnotationImpl
         return inGroup == that.inGroup
                 && Objects.equals(position, that.position)
                 && Objects.equals(pattern, that.pattern)
-                && Objects.equals(value, that.value)
+                && Objects.equals(ligand, that.ligand)
+                && Objects.equals(ligandPart, that.ligandPart)
+                && Objects.equals(description, that.description)
                 && Objects.equals(type, that.type);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), position, pattern, inGroup, value, type);
+        return Objects.hash(
+                super.hashCode(),
+                position,
+                pattern,
+                inGroup,
+                ligand,
+                ligandPart,
+                description,
+                type);
     }
 }
