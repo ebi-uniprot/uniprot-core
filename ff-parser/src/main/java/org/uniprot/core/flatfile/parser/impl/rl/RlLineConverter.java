@@ -88,7 +88,7 @@ public class RlLineConverter
             builder.journalName("Worm Breeder's Gazette");
             builder.locator(line.substring(line.lastIndexOf(" ") + 1, line.length()));
         } else {
-            builder.locator(ep.getTitle());
+            builder.locator(line);
         }
         return builder;
     }

@@ -12,6 +12,7 @@ import java.util.TreeSet;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniProtEntryIterator;
 import org.uniprot.core.flatfile.parser.UniProtParserHelper;
+import org.uniprot.core.flatfile.writer.impl.UniProtFlatfileWriter;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 
 import com.google.common.io.CharSource;
@@ -26,7 +27,18 @@ class UniProtParserIT {
         assertNotNull(entry);
         assertEquals("Q32K04", entry.getPrimaryAccession().getValue());
     }
+    @Test
+    void testParseQ6P2Q9() {
+        String filename = "/entryIT/Q6P2Q9.dat";
+        String entryStr = readEntryFromFile(filename);
+        UniProtKBEntry entry = UniProtParserHelper.parse(entryStr);
+        assertNotNull(entry);
+        System.out.println(UniProtFlatfileWriter.write(entry));
+        assertEquals("Q6P2Q9", entry.getPrimaryAccession().getValue());
+    }
 
+    
+    
     @Test
     void testParseWithIgnore() {
         String filename = "/entryIT/A0A176EY13.txl";

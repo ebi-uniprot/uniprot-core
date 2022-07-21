@@ -1,0 +1,1405 @@
+ID   PRP8_HUMAN              Reviewed;        2335 AA.
+AC   Q6P2Q9; O14547; O75965;
+DT   07-JUN-2005, integrated into UniProtKB/Swiss-Prot.
+DT   07-JUN-2005, sequence version 2.
+DT   25-MAY-2022, entry version 188.
+DE   RecName: Full=Pre-mRNA-processing-splicing factor 8;
+DE   AltName: Full=220 kDa U5 snRNP-specific protein;
+DE   AltName: Full=PRP8 homolog;
+DE   AltName: Full=Splicing factor Prp8;
+DE   AltName: Full=p220;
+GN   Name=PRPF8; Synonyms=PRPC8;
+OS   Homo sapiens (Human).
+OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi; Mammalia;
+OC   Eutheria; Euarchontoglires; Primates; Haplorrhini; Catarrhini; Hominidae;
+OC   Homo.
+OX   NCBI_TaxID=9606;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [MRNA], TISSUE SPECIFICITY, FUNCTION, SUBUNIT, AND
+RP   IDENTIFICATION IN U2- AND U12-DEPENDENT SPLICEOSOME COMPLEXES.
+RX   PubMed=10411133; DOI=10.1017/s1355838299990520;
+RA   Luo H.R., Moreau G.A., Levin N., Moore M.J.;
+RT   "The human Prp8 protein is a component of both U2- and U12-dependent
+RT   spliceosomes.";
+RL   RNA 5:893-908(1999).
+RN   [2]
+RP   NUCLEOTIDE SEQUENCE [MRNA], AND VARIANTS 68-GLU; LEU-874 AND HIS-1293.
+RA   Shimada Y., Fujiwara T., Kawai A., Shimizu F., Okuno S., Ozaki K.,
+RA   Takeda S., Watanabe T., Nagata M., Takahashi E.;
+RT   "Human homologue of Saccharomyces cerevisiae PRP8, pre-mRNA splicing
+RT   factor.";
+RL   Submitted (SEP-1997) to the EMBL/GenBank/DDBJ databases.
+RN   [3]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA], AND VARIANT HIS-227.
+RC   TISSUE=Testis;
+RX   PubMed=15489334; DOI=10.1101/gr.2596504;
+RG   The MGC Project Team;
+RT   "The status, quality, and expansion of the NIH full-length cDNA project:
+RT   the Mammalian Gene Collection (MGC).";
+RL   Genome Res. 14:2121-2127(2004).
+RN   [4]
+RP   PROTEIN SEQUENCE OF 2-8; 51-58; 218-227; 268-278; 421-428; 453-460;
+RP   556-565; 610-623; 643-650; 677-702; 747-758; 822-833; 838-845; 988-995;
+RP   999-1032; 1113-1131; 1142-1158; 1225-1231; 1246-1258; 1311-1320; 1345-1354;
+RP   1371-1392; 1450-1459; 1464-1491; 1524-1532; 1571-1578; 1642-1649;
+RP   1668-1678; 1724-1732; 1736-1744; 1814-1831; 1841-1859; 1902-1908;
+RP   1926-1935; 1995-2031; 2035-2045; 2050-2070; 2087-2108; 2114-2121;
+RP   2199-2210; 2230-2239; 2250-2266 AND 2288-2302, CLEAVAGE OF INITIATOR
+RP   METHIONINE, ACETYLATION AT ALA-2, AND IDENTIFICATION BY MASS SPECTROMETRY.
+RC   TISSUE=Ovarian carcinoma;
+RA   Bienvenut W.V., Lilla S., von Kriegsheim A., Lempens A., Kolch W.;
+RL   Submitted (DEC-2008) to UniProtKB.
+RN   [5]
+RP   IDENTIFICATION IN U5 SNRNP COMPLEX.
+RX   PubMed=2532307; DOI=10.1038/342819a0;
+RA   Anderson G.J., Bach M., Luehrmann R., Beggs J.D.;
+RT   "Conservation between yeast and man of a protein associated with U5 small
+RT   nuclear ribonucleoprotein.";
+RL   Nature 342:819-821(1989).
+RN   [6]
+RP   IDENTIFICATION IN U5 SNRNP COMPLEX.
+RX   PubMed=2527369; DOI=10.1073/pnas.86.16.6038;
+RA   Bach M., Winkelmann G., Luehrmann R.;
+RT   "20S small nuclear ribonucleoprotein U5 shows a surprisingly complex
+RT   protein composition.";
+RL   Proc. Natl. Acad. Sci. U.S.A. 86:6038-6042(1989).
+RN   [7]
+RP   IDENTIFICATION IN U5 SNRNP; U5/4/6 SNRNP AND SPLICEOSOME COMPLEXES.
+RX   PubMed=2479028; DOI=10.1073/pnas.86.22.8742;
+RA   Pinto A.L., Steitz J.A.;
+RT   "The mammalian analogue of the yeast PRP8 splicing protein is present in
+RT   the U4/5/6 small nuclear ribonucleoprotein particle and the spliceosome.";
+RL   Proc. Natl. Acad. Sci. U.S.A. 86:8742-8746(1989).
+RN   [8]
+RP   IDENTIFICATION IN SPLICEOSOME COMPLEX, AND INTERACTION WITH PRE-MRNA.
+RX   PubMed=2139226; DOI=10.1073/pnas.87.8.3082;
+RA   Garcia-Blanco M.A., Anderson G.J., Beggs J., Sharp P.A.;
+RT   "A mammalian protein of 220 kDa binds pre-mRNAs in the spliceosome: a
+RT   potential homologue of the yeast PRP8 protein.";
+RL   Proc. Natl. Acad. Sci. U.S.A. 87:3082-3086(1990).
+RN   [9]
+RP   IDENTIFICATION IN U5 SNRNP COMPLEX, AND INTERACTION WITH U5 SNRNA.
+RX   PubMed=8702566; DOI=10.1074/jbc.271.31.19001;
+RA   Hinz M., Moore M.J., Bindereif A.;
+RT   "Domain analysis of human U5 RNA. Cap trimethylation, protein binding, and
+RT   spliceosome assembly.";
+RL   J. Biol. Chem. 271:19001-19007(1996).
+RN   [10]
+RP   INTERACTION WITH PRE-MRNA.
+RX   PubMed=8608445;
+RA   Reyes J.L., Kois P., Konforti B.B., Konarska M.M.;
+RT   "The canonical GU dinucleotide at the 5' splice site is recognized by p220
+RT   of the U5 snRNP within the spliceosome.";
+RL   RNA 2:213-225(1996).
+RN   [11]
+RP   IDENTIFICATION IN SPLICEOSOME COMPLEX, AND INTERACTION WITH PRE-MRNA.
+RX   PubMed=9303319; DOI=10.1093/emboj/16.15.4746;
+RA   Chiara M.D., Palandjian L., Feld Kramer R., Reed R.;
+RT   "Evidence that U5 snRNP recognizes the 3' splice site for catalytic step II
+RT   in mammals.";
+RL   EMBO J. 16:4746-4759(1997).
+RN   [12]
+RP   IDENTIFICATION IN U5 SNRP COMPLEX, AND INTERACTION WITH SNRP116 AND
+RP   SNRNP40.
+RX   PubMed=9774689; DOI=10.1128/mcb.18.11.6756;
+RA   Achsel T., Ahrens K., Brahms H., Teigelkamp S., Luehrmann R.;
+RT   "The human U5-220kD protein (hPrp8) forms a stable RNA-free complex with
+RT   several U5-specific proteins, including an RNA unwindase, a homologue of
+RT   ribosomal elongation factor EF-2, and a novel WD-40 protein.";
+RL   Mol. Cell. Biol. 18:6756-6766(1998).
+RN   [13]
+RP   INTERACTION WITH PRE-MRNA.
+RX   PubMed=10024169; DOI=10.1017/s1355838299981785;
+RA   Reyes J.L., Gustafson E.H., Luo H.R., Moore M.J., Konarska M.M.;
+RT   "The C-terminal region of hPrp8 interacts with the conserved GU
+RT   dinucleotide at the 5' splice site.";
+RL   RNA 5:167-179(1999).
+RN   [14]
+RP   IDENTIFICATION IN A MRNA SPLICING-DEPENDENT EXON JUNCTION COMPLEX (EJC)
+RP   WITH SRRM1.
+RX   PubMed=10809668;
+RA   Le Hir H., Moore M.J., Maquat L.E.;
+RT   "Pre-mRNA splicing alters mRNP composition: evidence for stable association
+RT   of proteins at exon-exon junctions.";
+RL   Genes Dev. 14:1098-1108(2000).
+RN   [15]
+RP   INTERACTION WITH U5 SNRNA.
+RX   PubMed=11006293; DOI=10.1074/jbc.m007434200;
+RA   Urlaub H., Hartmuth K., Kostka S., Grelle G., Luehrmann R.;
+RT   "A general approach for identification of RNA-protein cross-linking sites
+RT   within native human spliceosomal small nuclear ribonucleoproteins (snRNPs).
+RT   Analysis of RNA-protein contacts in native U1 and U4/U6.U5 snRNPs.";
+RL   J. Biol. Chem. 275:41458-41468(2000).
+RN   [16]
+RP   INTERACTION WITH PRE-MRNA, AND IDENTIFICATION IN U5/4/6 SNRNP COMPLEX.
+RX   PubMed=10983979; DOI=10.1016/s1097-2765(00)00032-0;
+RA   Maroney P.A., Romfo C.M., Nilsen T.W.;
+RT   "Functional recognition of 5' splice site by U4/U6.U5 tri-snRNP defines a
+RT   novel ATP-dependent step in early spliceosome assembly.";
+RL   Mol. Cell 6:317-328(2000).
+RN   [17]
+RP   IDENTIFICATION IN U12-DEPENDENT SPLICEOSOME.
+RX   PubMed=11971955; DOI=10.1128/mcb.22.10.3219-3229.2002;
+RA   Schneider C., Will C.L., Makarova O.V., Makarov E.M., Luehrmann R.;
+RT   "Human U4/U6.U5 and U4atac/U6atac.U5 tri-snRNPs exhibit similar protein
+RT   compositions.";
+RL   Mol. Cell. Biol. 22:3219-3229(2002).
+RN   [18]
+RP   IDENTIFICATION BY MASS SPECTROMETRY.
+RC   TISSUE=Lymphoblast;
+RX   PubMed=14654843; DOI=10.1038/nature02166;
+RA   Andersen J.S., Wilkinson C.J., Mayor T., Mortensen P., Nigg E.A., Mann M.;
+RT   "Proteomic characterization of the human centrosome by protein correlation
+RT   profiling.";
+RL   Nature 426:570-574(2003).
+RN   [19]
+RP   REVIEW.
+RX   PubMed=15840809; DOI=10.1261/rna.2220705;
+RA   Grainger R.J., Beggs J.D.;
+RT   "Prp8 protein: at the heart of the spliceosome.";
+RL   RNA 11:533-557(2005).
+RN   [20]
+RP   SUBUNIT.
+RX   PubMed=16723661; DOI=10.1261/rna.55406;
+RA   Liu S., Rauhut R., Vornlocher H.-P., Luehrmann R.;
+RT   "The network of protein-protein interactions within the human U4/U6.U5 tri-
+RT   snRNP.";
+RL   RNA 12:1418-1430(2006).
+RN   [21]
+RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Embryonic kidney;
+RX   PubMed=17525332; DOI=10.1126/science.1140321;
+RA   Matsuoka S., Ballif B.A., Smogorzewska A., McDonald E.R. III, Hurov K.E.,
+RA   Luo J., Bakalarski C.E., Zhao Z., Solimini N., Lerenthal Y., Shiloh Y.,
+RA   Gygi S.P., Elledge S.J.;
+RT   "ATM and ATR substrate analysis reveals extensive protein networks
+RT   responsive to DNA damage.";
+RL   Science 316:1160-1166(2007).
+RN   [22]
+RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Cervix carcinoma;
+RX   PubMed=18220336; DOI=10.1021/pr0705441;
+RA   Cantin G.T., Yi W., Lu B., Park S.K., Xu T., Lee J.-D., Yates J.R. III;
+RT   "Combining protein-based IMAC, peptide-based IMAC, and MudPIT for efficient
+RT   phosphoproteomic analysis.";
+RL   J. Proteome Res. 7:1346-1351(2008).
+RN   [23]
+RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Cervix carcinoma;
+RX   PubMed=18669648; DOI=10.1073/pnas.0805139105;
+RA   Dephoure N., Zhou C., Villen J., Beausoleil S.A., Bakalarski C.E.,
+RA   Elledge S.J., Gygi S.P.;
+RT   "A quantitative atlas of mitotic phosphorylation.";
+RL   Proc. Natl. Acad. Sci. U.S.A. 105:10762-10767(2008).
+RN   [24]
+RP   ACETYLATION [LARGE SCALE ANALYSIS] AT ALA-2, CLEAVAGE OF INITIATOR
+RP   METHIONINE [LARGE SCALE ANALYSIS], AND IDENTIFICATION BY MASS SPECTROMETRY
+RP   [LARGE SCALE ANALYSIS].
+RX   PubMed=19413330; DOI=10.1021/ac9004309;
+RA   Gauci S., Helbig A.O., Slijper M., Krijgsveld J., Heck A.J., Mohammed S.;
+RT   "Lys-N and trypsin cover complementary parts of the phosphoproteome in a
+RT   refined SCX-based approach.";
+RL   Anal. Chem. 81:4493-4501(2009).
+RN   [25]
+RP   ACETYLATION [LARGE SCALE ANALYSIS] AT LYS-1463, AND IDENTIFICATION BY MASS
+RP   SPECTROMETRY [LARGE SCALE ANALYSIS].
+RX   PubMed=19608861; DOI=10.1126/science.1175371;
+RA   Choudhary C., Kumar C., Gnad F., Nielsen M.L., Rehman M., Walther T.C.,
+RA   Olsen J.V., Mann M.;
+RT   "Lysine acetylation targets protein complexes and co-regulates major
+RT   cellular functions.";
+RL   Science 325:834-840(2009).
+RN   [26]
+RP   FUNCTION, AND INTERACTION WITH PRPF3.
+RX   PubMed=20595234; DOI=10.1101/gad.1925010;
+RA   Song E.J., Werner S.L., Neubauer J., Stegmeier F., Aspden J., Rio D.,
+RA   Harper J.W., Elledge S.J., Kirschner M.W., Rape M.;
+RT   "The Prp19 complex and the Usp4Sart3 deubiquitinating enzyme control
+RT   reversible ubiquitination at the spliceosome.";
+RL   Genes Dev. 24:1434-1447(2010).
+RN   [27]
+RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-859, AND IDENTIFICATION BY
+RP   MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Cervix carcinoma;
+RX   PubMed=20068231; DOI=10.1126/scisignal.2000475;
+RA   Olsen J.V., Vermeulen M., Santamaria A., Kumar C., Miller M.L.,
+RA   Jensen L.J., Gnad F., Cox J., Jensen T.S., Nigg E.A., Brunak S., Mann M.;
+RT   "Quantitative phosphoproteomics reveals widespread full phosphorylation
+RT   site occupancy during mitosis.";
+RL   Sci. Signal. 3:RA3-RA3(2010).
+RN   [28]
+RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RX   PubMed=21269460; DOI=10.1186/1752-0509-5-17;
+RA   Burkard T.R., Planyavsky M., Kaupe I., Breitwieser F.P., Buerckstuemmer T.,
+RA   Bennett K.L., Superti-Furga G., Colinge J.;
+RT   "Initial characterization of the human central proteome.";
+RL   BMC Syst. Biol. 5:17-17(2011).
+RN   [29]
+RP   ACETYLATION [LARGE SCALE ANALYSIS] AT ALA-2, CLEAVAGE OF INITIATOR
+RP   METHIONINE [LARGE SCALE ANALYSIS], AND IDENTIFICATION BY MASS SPECTROMETRY
+RP   [LARGE SCALE ANALYSIS].
+RX   PubMed=22223895; DOI=10.1074/mcp.m111.015131;
+RA   Bienvenut W.V., Sumpton D., Martinez A., Lilla S., Espagne C., Meinnel T.,
+RA   Giglione C.;
+RT   "Comparative large-scale characterisation of plant vs. mammal proteins
+RT   reveals similar and idiosyncratic N-alpha acetylation features.";
+RL   Mol. Cell. Proteomics 11:M111.015131-M111.015131(2012).
+RN   [30]
+RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-1358, AND IDENTIFICATION BY
+RP   MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Erythroleukemia;
+RX   PubMed=23186163; DOI=10.1021/pr300630k;
+RA   Zhou H., Di Palma S., Preisinger C., Peng M., Polat A.N., Heck A.J.,
+RA   Mohammed S.;
+RT   "Toward a comprehensive characterization of a human cancer cell
+RT   phosphoproteome.";
+RL   J. Proteome Res. 12:260-271(2013).
+RN   [31]
+RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Liver;
+RX   PubMed=24275569; DOI=10.1016/j.jprot.2013.11.014;
+RA   Bian Y., Song C., Cheng K., Dong M., Wang F., Huang J., Sun D., Wang L.,
+RA   Ye M., Zou H.;
+RT   "An enzyme assisted RP-RPLC approach for in-depth analysis of human liver
+RT   phosphoproteome.";
+RL   J. Proteomics 96:253-262(2014).
+RN   [32]
+RP   METHYLATION [LARGE SCALE ANALYSIS] AT LYS-1425, AND IDENTIFICATION BY MASS
+RP   SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Colon carcinoma;
+RX   PubMed=24129315; DOI=10.1074/mcp.o113.027870;
+RA   Guo A., Gu H., Zhou J., Mulhern D., Wang Y., Lee K.A., Yang V., Aguiar M.,
+RA   Kornhauser J., Jia X., Ren J., Beausoleil S.A., Silva J.C., Vemulapalli V.,
+RA   Bedford M.T., Comb M.J.;
+RT   "Immunoaffinity enrichment and mass spectrometry analysis of protein
+RT   methylation.";
+RL   Mol. Cell. Proteomics 13:372-387(2014).
+RN   [33]
+RP   CRYSTALLIZATION, AND INTERACTION WITH AAR2.
+RX   PubMed=26527271; DOI=10.1107/s2053230x15019202;
+RA   Santos K., Preussner M., Heroven A.C., Weber G.;
+RT   "Crystallization and biochemical characterization of the human spliceosomal
+RT   Aar2-Prp8(RNaseH) complex.";
+RL   Acta Crystallogr. F 71:1421-1428(2015).
+RN   [34]
+RP   INTERACTION WITH RPAP3 AND URI1.
+RX   PubMed=28561026; DOI=10.1038/ncomms15615;
+RA   Cloutier P., Poitras C., Durand M., Hekmat O., Fiola-Masson E.,
+RA   Bouchard A., Faubert D., Chabot B., Coulombe B.;
+RT   "R2TP/Prefoldin-like component RUVBL1/RUVBL2 directly interacts with ZNHIT2
+RT   to regulate assembly of U5 small nuclear ribonucleoprotein.";
+RL   Nat. Commun. 8:15615-15615(2017).
+RN   [35]
+RP   X-RAY CRYSTALLOGRAPHY (1.95 ANGSTROMS) OF 1760-2016, DOMAIN, AND LACK OF
+RP   METAL-BINDING.
+RX   PubMed=18843295; DOI=10.1038/emboj.2008.209;
+RA   Pena V., Rozov A., Fabrizio P., Luehrmann R., Wahl M.C.;
+RT   "Structure and function of an RNase H domain at the heart of the
+RT   spliceosome.";
+RL   EMBO J. 27:2929-2940(2008).
+RN   [36]
+RP   X-RAY CRYSTALLOGRAPHY (1.85 ANGSTROMS) OF 1769-1990, IDENTIFICATION BY MASS
+RP   SPECTROMETRY, RNA-BINDING, MUTAGENESIS OF VAL-1788 AND THR-1789, AND LACK
+RP   OF METAL-BINDING SITE.
+RX   PubMed=18836455; DOI=10.1038/nsmb.1505;
+RA   Ritchie D.B., Schellenberg M.J., Gesner E.M., Raithatha S.A., Stuart D.T.,
+RA   Macmillan A.M.;
+RT   "Structural elucidation of a PRP8 core domain from the heart of the
+RT   spliceosome.";
+RL   Nat. Struct. Mol. Biol. 15:1199-1205(2008).
+RN   [37] {ECO:0007744|PDB:3JCR}
+RP   STRUCTURE BY ELECTRON MICROSCOPY (7.00 ANGSTROMS), SUBCELLULAR LOCATION,
+RP   SUBUNIT, AND IDENTIFICATION BY MASS SPECTROMETRY.
+RX   PubMed=26912367; DOI=10.1126/science.aad2085;
+RA   Agafonov D.E., Kastner B., Dybkov O., Hofele R.V., Liu W.T., Urlaub H.,
+RA   Luhrmann R., Stark H.;
+RT   "Molecular architecture of the human U4/U6.U5 tri-snRNP.";
+RL   Science 351:1416-1420(2016).
+RN   [38] {ECO:0007744|PDB:5XJC}
+RP   STRUCTURE BY ELECTRON MICROSCOPY (3.60 ANGSTROMS), FUNCTION, SUBCELLULAR
+RP   LOCATION, AND SUBUNIT.
+RX   PubMed=28502770; DOI=10.1016/j.cell.2017.04.033;
+RA   Zhang X., Yan C., Hang J., Finci L.I., Lei J., Shi Y.;
+RT   "An Atomic Structure of the Human Spliceosome.";
+RL   Cell 169:918-929(2017).
+RN   [39] {ECO:0007744|PDB:5O9Z}
+RP   STRUCTURE BY ELECTRON MICROSCOPY (4.50 ANGSTROMS), FUNCTION, SUBCELLULAR
+RP   LOCATION, AND SUBUNIT.
+RX   PubMed=28781166; DOI=10.1016/j.cell.2017.07.011;
+RA   Bertram K., Agafonov D.E., Dybkov O., Haselbach D., Leelaram M.N.,
+RA   Will C.L., Urlaub H., Kastner B., Luhrmann R., Stark H.;
+RT   "Cryo-EM Structure of a Pre-catalytic Human Spliceosome Primed for
+RT   Activation.";
+RL   Cell 170:701-713(2017).
+RN   [40] {ECO:0007744|PDB:5MQF}
+RP   STRUCTURE BY ELECTRON MICROSCOPY (5.90 ANGSTROMS), FUNCTION, SUBCELLULAR
+RP   LOCATION, AND SUBUNIT.
+RX   PubMed=28076346; DOI=10.1038/nature21079;
+RA   Bertram K., Agafonov D.E., Liu W.T., Dybkov O., Will C.L., Hartmuth K.,
+RA   Urlaub H., Kastner B., Stark H., Luhrmann R.;
+RT   "Cryo-EM structure of a human spliceosome activated for step 2 of
+RT   splicing.";
+RL   Nature 542:318-323(2017).
+RN   [41] {ECO:0007744|PDB:6FF4, ECO:0007744|PDB:6FF7}
+RP   STRUCTURE BY ELECTRON MICROSCOPY (3.40 ANGSTROMS), FUNCTION, SUBCELLULAR
+RP   LOCATION, AND SUBUNIT.
+RX   PubMed=29361316; DOI=10.1016/j.cell.2018.01.010;
+RA   Haselbach D., Komarov I., Agafonov D.E., Hartmuth K., Graf B., Dybkov O.,
+RA   Urlaub H., Kastner B., Luhrmann R., Stark H.;
+RT   "Structure and Conformational Dynamics of the Human Spliceosomal Bact
+RT   Complex.";
+RL   Cell 172:454-464(2018).
+RN   [42] {ECO:0007744|PDB:6AH0, ECO:0007744|PDB:6AHD}
+RP   STRUCTURE BY ELECTRON MICROSCOPY (3.80 ANGSTROMS), FUNCTION, SUBCELLULAR
+RP   LOCATION, AND SUBUNIT.
+RX   PubMed=30315277; DOI=10.1038/s41422-018-0094-7;
+RA   Zhan X., Yan C., Zhang X., Lei J., Shi Y.;
+RT   "Structures of the human pre-catalytic spliceosome and its precursor
+RT   spliceosome.";
+RL   Cell Res. 28:1129-1140(2018).
+RN   [43] {ECO:0007744|PDB:5Z56, ECO:0007744|PDB:5Z57, ECO:0007744|PDB:5Z58}
+RP   STRUCTURE BY ELECTRON MICROSCOPY (4.90 ANGSTROMS), FUNCTION, SUBCELLULAR
+RP   LOCATION, AND SUBUNIT.
+RX   PubMed=29360106; DOI=10.1038/cr.2018.14;
+RA   Zhang X., Yan C., Zhan X., Li L., Lei J., Shi Y.;
+RT   "Structure of the human activated spliceosome in three conformational
+RT   states.";
+RL   Cell Res. 28:307-322(2018).
+RN   [44] {ECO:0007744|PDB:5YZG}
+RP   STRUCTURE BY ELECTRON MICROSCOPY (4.10 ANGSTROMS), FUNCTION, SUBCELLULAR
+RP   LOCATION, AND SUBUNIT.
+RX   PubMed=29301961; DOI=10.1126/science.aar6401;
+RA   Zhan X., Yan C., Zhang X., Lei J., Shi Y.;
+RT   "Structure of a human catalytic step I spliceosome.";
+RL   Science 359:537-545(2018).
+RN   [45] {ECO:0007744|PDB:6ICZ, ECO:0007744|PDB:6ID0, ECO:0007744|PDB:6ID1}
+RP   STRUCTURE BY ELECTRON MICROSCOPY (2.86 ANGSTROMS), FUNCTION, SUBUNIT, AND
+RP   SUBCELLULAR LOCATION.
+RX   PubMed=30728453; DOI=10.1038/s41422-019-0143-x;
+RA   Zhang X., Zhan X., Yan C., Zhang W., Liu D., Lei J., Shi Y.;
+RT   "Structures of the human spliceosomes before and after release of the
+RT   ligated exon.";
+RL   Cell Res. 29:274-285(2019).
+RN   [46] {ECO:0007744|PDB:6QDV}
+RP   STRUCTURE BY ELECTRON MICROSCOPY (3.30 ANGSTROMS), FUNCTION, SUBCELLULAR
+RP   LOCATION, AND SUBUNIT.
+RX   PubMed=30705154; DOI=10.1126/science.aaw5569;
+RA   Fica S.M., Oubridge C., Wilkinson M.E., Newman A.J., Nagai K.;
+RT   "A human postcatalytic spliceosome structure reveals essential roles of
+RT   metazoan factors for exon ligation.";
+RL   Science 363:710-714(2019).
+RN   [47]
+RP   VARIANTS RP13 THR-2301; LEU-2304; ARG-2309; PRO-2309; GLY-2310; LYS-2310
+RP   AND LEU-2314.
+RX   PubMed=11468273; DOI=10.1093/hmg/10.15.1555;
+RA   McKie A.B., McHale J.C., Keen T.J., Tarttelin E.E., Goliath R.,
+RA   van Lith-Verhoeven J.J., Greenberg J., Ramesar R.S., Hoyng C.B.,
+RA   Cremers F.P., Mackey D.A., Bhattacharya S.S., Bird A.C., Markham A.F.,
+RA   Inglehearn C.F.;
+RT   "Mutations in the pre-mRNA splicing factor gene PRPC8 in autosomal dominant
+RT   retinitis pigmentosa (RP13).";
+RL   Hum. Mol. Genet. 10:1555-1562(2001).
+RN   [48]
+RP   VARIANTS RP13 GLY-2310 AND ASN-2334.
+RA   De Erkenez A.C., Berson E.L., Dryja T.P.;
+RT   "Novel mutations in the PRPC8 gene, encoding a pre-mRNA splicing factor in
+RT   patients with autosomal dominant retinitis pigmentosa.";
+RL   (er) Invest. Ophthalmol. Vis. Sci. 43:ARVO E-Abstract 791(2002).
+RN   [49]
+RP   VARIANT RP13 LYS-2310.
+RX   PubMed=11910553; DOI=10.1076/opge.23.1.1.2206;
+RA   van Lith-Verhoeven J.J., van der Velde-Visser S.D., Sohocki M.M.,
+RA   Deutman A.F., Brink H.M., Cremers F.P., Hoyng C.B.;
+RT   "Clinical characterization, linkage analysis, and PRPC8 mutation analysis
+RT   of a family with autosomal dominant retinitis pigmentosa type 13 (RP13).";
+RL   Ophthalmic Genet. 23:1-12(2002).
+RN   [50]
+RP   VARIANT RP13 GLY-2310.
+RX   PubMed=12714658; DOI=10.1167/iovs.02-0871;
+RA   Martinez-Gimeno M., Gamundi M.J., Hernan I., Maseras M., Milla E.,
+RA   Ayuso C., Garcia-Sandoval B., Beneyto M., Vilela C., Baiget M.,
+RA   Antinolo G., Carballo M.;
+RT   "Mutations in the pre-mRNA splicing-factor genes PRPF3, PRPF8, and PRPF31
+RT   in Spanish families with autosomal dominant retinitis pigmentosa.";
+RL   Invest. Ophthalmol. Vis. Sci. 44:2171-2177(2003).
+RN   [51]
+RP   CHARACTERIZATION OF VARIANTS RP13 LEU-2304; PRO-2309; ARG-2309; GLY-2310;
+RP   LYS-2310 AND LEU-2314, AND INTERACTION WITH EFTUD2 AND SNRNP200.
+RX   PubMed=17317632; DOI=10.1016/j.molcel.2007.01.023;
+RA   Pena V., Liu S., Bujnicki J.M., Luehrmann R., Wahl M.C.;
+RT   "Structure of a multipartite protein-protein interaction domain in splicing
+RT   factor Prp8 and its link to retinitis pigmentosa.";
+RL   Mol. Cell 25:615-624(2007).
+CC   -!- FUNCTION: Plays role in pre-mRNA splicing as core component of
+CC       precatalytic, catalytic and postcatalytic spliceosomal complexes, both
+CC       of the predominant U2-type spliceosome and the minor U12-type
+CC       spliceosome (PubMed:10411133, PubMed:11971955, PubMed:28502770,
+CC       PubMed:28781166, PubMed:28076346, PubMed:29361316, PubMed:30315277,
+CC       PubMed:29360106, PubMed:29301961, PubMed:30728453, PubMed:30705154).
+CC       Functions as a scaffold that mediates the ordered assembly of
+CC       spliceosomal proteins and snRNAs. Required for the assembly of the
+CC       U4/U6-U5 tri-snRNP complex, a building block of the spliceosome.
+CC       Functions as scaffold that positions spliceosomal U2, U5 and U6 snRNAs
+CC       at splice sites on pre-mRNA substrates, so that splicing can occur.
+CC       Interacts with both the 5' and the 3' splice site.
+CC       {ECO:0000269|PubMed:10411133, ECO:0000269|PubMed:11971955,
+CC       ECO:0000269|PubMed:20595234, ECO:0000269|PubMed:28076346,
+CC       ECO:0000269|PubMed:28502770, ECO:0000269|PubMed:28781166,
+CC       ECO:0000269|PubMed:29301961, ECO:0000269|PubMed:29360106,
+CC       ECO:0000269|PubMed:29361316, ECO:0000269|PubMed:30315277,
+CC       ECO:0000269|PubMed:30705154, ECO:0000269|PubMed:30728453,
+CC       ECO:0000303|PubMed:15840809}.
+CC   -!- SUBUNIT: Part of the U5 snRNP complex (PubMed:2532307, PubMed:2527369).
+CC       Component of the U4/U6-U5 tri-snRNP complex composed of the U4, U6 and
+CC       U5 snRNAs and at least PRPF3, PRPF4, PRPF6, PRPF8, PRPF31, SNRNP200,
+CC       TXNL4A, SNRNP40, DDX23, CD2BP2, PPIH, SNU13, EFTUD2, SART1 and USP39
+CC       (PubMed:2479028, PubMed:16723661, PubMed:26912367). Component of the
+CC       U5.U4atac/U6atac snRNP complexes in U12-dependent spliceosomes
+CC       (PubMed:11971955). Core component of U2-type precatalytic, catalytic
+CC       and postcatalytic spliceosomal complexes (PubMed:10411133,
+CC       PubMed:28502770, PubMed:28781166, PubMed:28076346, PubMed:29361316,
+CC       PubMed:30315277, PubMed:29360106, PubMed:29301961, PubMed:30728453,
+CC       PubMed:30705154). Found in a mRNA splicing-dependent exon junction
+CC       complex (EJC) with SRRM1. Interacts with U5 snRNP proteins SNRP116 and
+CC       SNRNP40. Interacts with EFTUD2 and SNRNP200. Interacts (via the MPN
+CC       (JAB/Mov34) domain) with PRPF3 ('Lys-63'-linked polyubiquitinated); may
+CC       stabilize the U4/U6-U5 tri-snRNP complex. Interacts (via RNase H
+CC       homology domain) with AAR2 (PubMed:26527271). Interacts with RPAP3 and
+CC       URI1 in a ZNHIT2-dependent manner (PubMed:28561026).
+CC       {ECO:0000269|PubMed:10024169, ECO:0000269|PubMed:10411133,
+CC       ECO:0000269|PubMed:10809668, ECO:0000269|PubMed:10983979,
+CC       ECO:0000269|PubMed:11006293, ECO:0000269|PubMed:11971955,
+CC       ECO:0000269|PubMed:16723661, ECO:0000269|PubMed:17317632,
+CC       ECO:0000269|PubMed:20595234, ECO:0000269|PubMed:2139226,
+CC       ECO:0000269|PubMed:2479028, ECO:0000269|PubMed:2527369,
+CC       ECO:0000269|PubMed:2532307, ECO:0000269|PubMed:26527271,
+CC       ECO:0000269|PubMed:26912367, ECO:0000269|PubMed:28076346,
+CC       ECO:0000269|PubMed:28502770, ECO:0000269|PubMed:28561026,
+CC       ECO:0000269|PubMed:28781166, ECO:0000269|PubMed:29301961,
+CC       ECO:0000269|PubMed:29360106, ECO:0000269|PubMed:29361316,
+CC       ECO:0000269|PubMed:30315277, ECO:0000269|PubMed:30705154,
+CC       ECO:0000269|PubMed:30728453, ECO:0000269|PubMed:8608445,
+CC       ECO:0000269|PubMed:8702566, ECO:0000269|PubMed:9303319,
+CC       ECO:0000269|PubMed:9774689}.
+CC   -!- INTERACTION:
+CC       Q6P2Q9; P54253: ATXN1; NbExp=6; IntAct=EBI-538479, EBI-930964;
+CC       Q6P2Q9; O75934: BCAS2; NbExp=2; IntAct=EBI-538479, EBI-1050106;
+CC       Q6P2Q9; O95905: ECD; NbExp=3; IntAct=EBI-538479, EBI-2557598;
+CC       Q6P2Q9; Q15029: EFTUD2; NbExp=6; IntAct=EBI-538479, EBI-357897;
+CC       Q6P2Q9; Q92917: GPKOW; NbExp=2; IntAct=EBI-538479, EBI-746309;
+CC       Q6P2Q9; Q15365: PCBP1; NbExp=2; IntAct=EBI-538479, EBI-946095;
+CC       Q6P2Q9; Q9UMS4: PRPF19; NbExp=2; IntAct=EBI-538479, EBI-395746;
+CC       Q6P2Q9; O94906: PRPF6; NbExp=4; IntAct=EBI-538479, EBI-536755;
+CC       Q6P2Q9; Q13435: SF3B2; NbExp=3; IntAct=EBI-538479, EBI-749111;
+CC       Q6P2Q9; Q15427: SF3B4; NbExp=2; IntAct=EBI-538479, EBI-348469;
+CC       Q6P2Q9; O95391: SLU7; NbExp=2; IntAct=EBI-538479, EBI-750559;
+CC       Q6P2Q9; O75643: SNRNP200; NbExp=3; IntAct=EBI-538479, EBI-1045395;
+CC       Q6P2Q9; O75643-1: SNRNP200; NbExp=2; IntAct=EBI-538479, EBI-5456052;
+CC       Q6P2Q9; Q96DI7: SNRNP40; NbExp=4; IntAct=EBI-538479, EBI-538492;
+CC       Q6P2Q9; Q13148: TARDBP; NbExp=3; IntAct=EBI-538479, EBI-372899;
+CC       Q6P2Q9; Q9BRX9: WDR83; NbExp=2; IntAct=EBI-538479, EBI-7705033;
+CC       Q6P2Q9; Q96NB3: ZNF830; NbExp=2; IntAct=EBI-538479, EBI-3920997;
+CC   -!- SUBCELLULAR LOCATION: Nucleus {ECO:0000269|PubMed:26912367,
+CC       ECO:0000269|PubMed:28076346, ECO:0000269|PubMed:28502770,
+CC       ECO:0000269|PubMed:28781166, ECO:0000269|PubMed:29301961,
+CC       ECO:0000269|PubMed:29360106, ECO:0000269|PubMed:29361316,
+CC       ECO:0000269|PubMed:30315277, ECO:0000269|PubMed:30705154,
+CC       ECO:0000269|PubMed:30728453}. Nucleus speckle {ECO:0000305}.
+CC   -!- TISSUE SPECIFICITY: Widely expressed. {ECO:0000269|PubMed:10411133}.
+CC   -!- DOMAIN: The MPN (JAB/Mov34) domain has structural similarity with
+CC       deubiquitinating enzymes, but lacks the residues that would bind the
+CC       catalytic metal ion. {ECO:0000250}.
+CC   -!- DOMAIN: Contains a region with structural similarity to reverse
+CC       transcripase, presenting the classical thumb, fingers and palm
+CC       architecture, but lacks enzyme activity, since the essential metal-
+CC       binding residues are not conserved. {ECO:0000250}.
+CC   -!- DOMAIN: Contains a region with structural similarity to type-2
+CC       restriction endonucleases, but the residues that would bind catalytic
+CC       metal ions in endonucleases are instead involved in hydrogen bonds that
+CC       stabilize the protein structure. {ECO:0000250}.
+CC   -!- DOMAIN: Contains a region with structural similarity to RNase H, but
+CC       lacks RNase H activity. {ECO:0000250}.
+CC   -!- DISEASE: Retinitis pigmentosa 13 (RP13) [MIM:600059]: A retinal
+CC       dystrophy belonging to the group of pigmentary retinopathies. Retinitis
+CC       pigmentosa is characterized by retinal pigment deposits visible on
+CC       fundus examination and primary loss of rod photoreceptor cells followed
+CC       by secondary loss of cone photoreceptors. Patients typically have night
+CC       vision blindness and loss of midperipheral visual field. As their
+CC       condition progresses, they lose their far peripheral visual field and
+CC       eventually central vision as well. {ECO:0000269|PubMed:11468273,
+CC       ECO:0000269|PubMed:11910553, ECO:0000269|PubMed:12714658,
+CC       ECO:0000269|PubMed:17317632, ECO:0000269|Ref.48}. Note=The disease is
+CC       caused by variants affecting the gene represented in this entry.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; AF092565; AAC61776.1; -; mRNA.
+DR   EMBL; AB007510; BAA22563.1; -; mRNA.
+DR   EMBL; BC064370; AAH64370.1; -; mRNA.
+DR   CCDS; CCDS11010.1; -.
+DR   RefSeq; NP_006436.3; NM_006445.3.
+DR   PDB; 3E9L; X-ray; 1.95 A; A=1760-2016.
+DR   PDB; 3ENB; X-ray; 1.85 A; A/B=1769-1990.
+DR   PDB; 3JCR; EM; 7.00 A; A=1-2335.
+DR   PDB; 3LRU; X-ray; 1.85 A; A/B=1831-1990.
+DR   PDB; 4JK7; X-ray; 1.40 A; A/B=1769-1990.
+DR   PDB; 4JK8; X-ray; 1.15 A; A/B=1769-1990.
+DR   PDB; 4JK9; X-ray; 1.50 A; A/B=1769-1990.
+DR   PDB; 4JKA; X-ray; 1.32 A; A/B=1769-1990.
+DR   PDB; 4JKB; X-ray; 1.30 A; A/B=1769-1990.
+DR   PDB; 4JKC; X-ray; 1.50 A; A/B=1769-1990.
+DR   PDB; 4JKD; X-ray; 1.55 A; A/B=1769-1990.
+DR   PDB; 4JKE; X-ray; 1.65 A; A/B=1769-1990.
+DR   PDB; 4JKF; X-ray; 1.95 A; A/B=1769-1990.
+DR   PDB; 4JKG; X-ray; 1.80 A; A/B=1769-1990.
+DR   PDB; 4JKH; X-ray; 1.80 A; A/B=1769-1990.
+DR   PDB; 4KIT; X-ray; 3.60 A; C=2064-2335.
+DR   PDB; 5MQF; EM; 5.90 A; A=1-2335.
+DR   PDB; 5O9Z; EM; 4.50 A; A=1-2335.
+DR   PDB; 5XJC; EM; 3.60 A; A=1-2335.
+DR   PDB; 5YZG; EM; 4.10 A; A=1-2335.
+DR   PDB; 5Z56; EM; 5.10 A; A=1-2335.
+DR   PDB; 5Z57; EM; 6.50 A; A=1-2335.
+DR   PDB; 5Z58; EM; 4.90 A; A=1-2335.
+DR   PDB; 6AH0; EM; 5.70 A; A=1-2335.
+DR   PDB; 6AHD; EM; 3.80 A; A=1-2335.
+DR   PDB; 6FF4; EM; 16.00 A; A=1-2335.
+DR   PDB; 6FF7; EM; 4.50 A; A=1-2335.
+DR   PDB; 6ICZ; EM; 3.00 A; A=1-2335.
+DR   PDB; 6ID0; EM; 2.90 A; A=1-2335.
+DR   PDB; 6ID1; EM; 2.86 A; A=1-2335.
+DR   PDB; 6QDV; EM; 3.30 A; A=1-2335.
+DR   PDB; 6QW6; EM; 2.92 A; 5A=25-2335.
+DR   PDB; 6QX9; EM; 3.28 A; 5A=25-2335.
+DR   PDB; 6S8Q; X-ray; 2.39 A; J=2064-2320.
+DR   PDB; 6S9I; X-ray; 2.60 A; J=2064-2320.
+DR   PDB; 6ZYM; EM; 3.40 A; A=1-1755.
+DR   PDB; 7A5P; EM; 5.00 A; A=1-2335.
+DR   PDB; 7AAV; EM; 4.20 A; A=1-2335.
+DR   PDB; 7ABF; EM; 3.90 A; A=1-2335.
+DR   PDB; 7ABG; EM; 7.80 A; A=1-2335.
+DR   PDB; 7ABI; EM; 8.00 A; A=1-2335.
+DR   PDB; 7BDI; X-ray; 2.80 A; J=2064-2320.
+DR   PDB; 7BDJ; X-ray; 2.59 A; J=2064-2320.
+DR   PDB; 7BDK; X-ray; 2.52 A; J=2064-2320.
+DR   PDB; 7BDL; X-ray; 2.69 A; J=2064-2320.
+DR   PDB; 7DVQ; EM; 2.89 A; A=1-2335.
+DR   PDB; 7PX3; EM; 3.05 A; J=2064-2320.
+DR   PDBsum; 3E9L; -.
+DR   PDBsum; 3ENB; -.
+DR   PDBsum; 3JCR; -.
+DR   PDBsum; 3LRU; -.
+DR   PDBsum; 4JK7; -.
+DR   PDBsum; 4JK8; -.
+DR   PDBsum; 4JK9; -.
+DR   PDBsum; 4JKA; -.
+DR   PDBsum; 4JKB; -.
+DR   PDBsum; 4JKC; -.
+DR   PDBsum; 4JKD; -.
+DR   PDBsum; 4JKE; -.
+DR   PDBsum; 4JKF; -.
+DR   PDBsum; 4JKG; -.
+DR   PDBsum; 4JKH; -.
+DR   PDBsum; 4KIT; -.
+DR   PDBsum; 5MQF; -.
+DR   PDBsum; 5O9Z; -.
+DR   PDBsum; 5XJC; -.
+DR   PDBsum; 5YZG; -.
+DR   PDBsum; 5Z56; -.
+DR   PDBsum; 5Z57; -.
+DR   PDBsum; 5Z58; -.
+DR   PDBsum; 6AH0; -.
+DR   PDBsum; 6AHD; -.
+DR   PDBsum; 6FF4; -.
+DR   PDBsum; 6FF7; -.
+DR   PDBsum; 6ICZ; -.
+DR   PDBsum; 6ID0; -.
+DR   PDBsum; 6ID1; -.
+DR   PDBsum; 6QDV; -.
+DR   PDBsum; 6QW6; -.
+DR   PDBsum; 6QX9; -.
+DR   PDBsum; 6S8Q; -.
+DR   PDBsum; 6S9I; -.
+DR   PDBsum; 6ZYM; -.
+DR   PDBsum; 7A5P; -.
+DR   PDBsum; 7AAV; -.
+DR   PDBsum; 7ABF; -.
+DR   PDBsum; 7ABG; -.
+DR   PDBsum; 7ABI; -.
+DR   PDBsum; 7BDI; -.
+DR   PDBsum; 7BDJ; -.
+DR   PDBsum; 7BDK; -.
+DR   PDBsum; 7BDL; -.
+DR   PDBsum; 7DVQ; -.
+DR   PDBsum; 7PX3; -.
+DR   AlphaFoldDB; Q6P2Q9; -.
+DR   SMR; Q6P2Q9; -.
+DR   BioGRID; 115842; 692.
+DR   CORUM; Q6P2Q9; -.
+DR   DIP; DIP-29614N; -.
+DR   IntAct; Q6P2Q9; 118.
+DR   MINT; Q6P2Q9; -.
+DR   STRING; 9606.ENSP00000460348; -.
+DR   CarbonylDB; Q6P2Q9; -.
+DR   GlyGen; Q6P2Q9; 1 site, 1 O-linked glycan (1 site).
+DR   iPTMnet; Q6P2Q9; -.
+DR   MetOSite; Q6P2Q9; -.
+DR   PhosphoSitePlus; Q6P2Q9; -.
+DR   SwissPalm; Q6P2Q9; -.
+DR   BioMuta; PRPF8; -.
+DR   DMDM; 67460824; -.
+DR   EPD; Q6P2Q9; -.
+DR   jPOST; Q6P2Q9; -.
+DR   MassIVE; Q6P2Q9; -.
+DR   MaxQB; Q6P2Q9; -.
+DR   PaxDb; Q6P2Q9; -.
+DR   PeptideAtlas; Q6P2Q9; -.
+DR   PRIDE; Q6P2Q9; -.
+DR   ProteomicsDB; 66917; -.
+DR   Antibodypedia; 4094; 160 antibodies from 31 providers.
+DR   DNASU; 10594; -.
+DR   Ensembl; ENST00000304992.11; ENSP00000304350.6; ENSG00000174231.17.
+DR   Ensembl; ENST00000572621.5; ENSP00000460348.1; ENSG00000174231.17.
+DR   Ensembl; ENST00000614672.2; ENSP00000479194.1; ENSG00000274442.2.
+DR   Ensembl; ENST00000634039.1; ENSP00000488611.1; ENSG00000274442.2.
+DR   GeneID; 10594; -.
+DR   KEGG; hsa:10594; -.
+DR   MANE-Select; ENST00000304992.11; ENSP00000304350.6; NM_006445.4; NP_006436.3.
+DR   UCSC; uc002fte.3; human.
+DR   CTD; 10594; -.
+DR   DisGeNET; 10594; -.
+DR   GeneCards; PRPF8; -.
+DR   GeneReviews; PRPF8; -.
+DR   HGNC; HGNC:17340; PRPF8.
+DR   HPA; ENSG00000174231; Low tissue specificity.
+DR   MalaCards; PRPF8; -.
+DR   MIM; 600059; phenotype.
+DR   MIM; 607300; gene.
+DR   neXtProt; NX_Q6P2Q9; -.
+DR   OpenTargets; ENSG00000174231; -.
+DR   Orphanet; 791; Retinitis pigmentosa.
+DR   PharmGKB; PA33815; -.
+DR   VEuPathDB; HostDB:ENSG00000174231; -.
+DR   eggNOG; KOG1795; Eukaryota.
+DR   GeneTree; ENSGT00390000015210; -.
+DR   HOGENOM; CLU_000380_3_0_1; -.
+DR   InParanoid; Q6P2Q9; -.
+DR   OMA; VCMRREK; -.
+DR   OrthoDB; 156083at2759; -.
+DR   PhylomeDB; Q6P2Q9; -.
+DR   TreeFam; TF105613; -.
+DR   PathwayCommons; Q6P2Q9; -.
+DR   Reactome; R-HSA-72163; mRNA Splicing - Major Pathway.
+DR   Reactome; R-HSA-72165; mRNA Splicing - Minor Pathway.
+DR   SignaLink; Q6P2Q9; -.
+DR   BioGRID-ORCS; 10594; 799 hits in 1089 CRISPR screens.
+DR   ChiTaRS; PRPF8; human.
+DR   EvolutionaryTrace; Q6P2Q9; -.
+DR   GeneWiki; PRPF8; -.
+DR   GenomeRNAi; 10594; -.
+DR   Pharos; Q6P2Q9; Tbio.
+DR   PRO; PR:Q6P2Q9; -.
+DR   Proteomes; UP000005640; Chromosome 17.
+DR   RNAct; Q6P2Q9; protein.
+DR   Bgee; ENSG00000174231; Expressed in adenohypophysis and 242 other tissues.
+DR   ExpressionAtlas; Q6P2Q9; baseline and differential.
+DR   Genevisible; Q6P2Q9; HS.
+DR   GO; GO:0071013; C:catalytic step 2 spliceosome; IDA:UniProtKB.
+DR   GO; GO:0016020; C:membrane; HDA:UniProtKB.
+DR   GO; GO:0016607; C:nuclear speck; IEA:UniProtKB-SubCell.
+DR   GO; GO:0005654; C:nucleoplasm; TAS:Reactome.
+DR   GO; GO:0005634; C:nucleus; IDA:UniProtKB.
+DR   GO; GO:0071006; C:U2-type catalytic step 1 spliceosome; IDA:UniProtKB.
+DR   GO; GO:0071007; C:U2-type catalytic step 2 spliceosome; IDA:UniProtKB.
+DR   GO; GO:0071005; C:U2-type precatalytic spliceosome; IDA:UniProtKB.
+DR   GO; GO:0046540; C:U4/U6 x U5 tri-snRNP complex; IDA:CAFA.
+DR   GO; GO:0005682; C:U5 snRNP; IBA:GO_Central.
+DR   GO; GO:0070530; F:K63-linked polyubiquitin modification-dependent protein binding; IDA:UniProtKB.
+DR   GO; GO:0097157; F:pre-mRNA intronic binding; IBA:GO_Central.
+DR   GO; GO:0003723; F:RNA binding; HDA:UniProtKB.
+DR   GO; GO:0030619; F:U1 snRNA binding; IBA:GO_Central.
+DR   GO; GO:0030620; F:U2 snRNA binding; IBA:GO_Central.
+DR   GO; GO:0030623; F:U5 snRNA binding; IBA:GO_Central.
+DR   GO; GO:0017070; F:U6 snRNA binding; IBA:GO_Central.
+DR   GO; GO:0071222; P:cellular response to lipopolysaccharide; IEA:Ensembl.
+DR   GO; GO:0071356; P:cellular response to tumor necrosis factor; IEA:Ensembl.
+DR   GO; GO:0006397; P:mRNA processing; TAS:ProtInc.
+DR   GO; GO:0000398; P:mRNA splicing, via spliceosome; IDA:UniProtKB.
+DR   GO; GO:0008380; P:RNA splicing; TAS:UniProtKB.
+DR   GO; GO:0000375; P:RNA splicing, via transesterification reactions; TAS:UniProtKB.
+DR   GO; GO:0000244; P:spliceosomal tri-snRNP complex assembly; IDA:UniProtKB.
+DR   CDD; cd13838; RNase_H_like_Prp8_IV; 1.
+DR   Gene3D; 1.20.80.40; -; 1.
+DR   Gene3D; 3.30.420.230; -; 1.
+DR   Gene3D; 3.30.43.40; -; 1.
+DR   InterPro; IPR000555; JAMM/MPN+_dom.
+DR   InterPro; IPR037518; MPN.
+DR   InterPro; IPR012591; PRO8NT.
+DR   InterPro; IPR012592; PROCN.
+DR   InterPro; IPR012984; PROCT.
+DR   InterPro; IPR027652; PRP8.
+DR   InterPro; IPR021983; PRP8_domainIV.
+DR   InterPro; IPR043173; Prp8_domainIV_fingers.
+DR   InterPro; IPR043172; Prp8_domainIV_palm.
+DR   InterPro; IPR019581; Prp8_U5-snRNA-bd.
+DR   InterPro; IPR042516; Prp8_U5-snRNA-bd_sf.
+DR   InterPro; IPR019580; Prp8_U6-snRNA-bd.
+DR   InterPro; IPR012337; RNaseH-like_sf.
+DR   InterPro; IPR019582; RRM_spliceosomal_PrP8.
+DR   PANTHER; PTHR11140; PTHR11140; 1.
+DR   Pfam; PF01398; JAB; 1.
+DR   Pfam; PF08082; PRO8NT; 1.
+DR   Pfam; PF08083; PROCN; 1.
+DR   Pfam; PF08084; PROCT; 1.
+DR   Pfam; PF12134; PRP8_domainIV; 1.
+DR   Pfam; PF10598; RRM_4; 1.
+DR   Pfam; PF10597; U5_2-snRNA_bdg; 1.
+DR   Pfam; PF10596; U6-snRNA_bdg; 1.
+DR   SMART; SM00232; JAB_MPN; 1.
+DR   SUPFAM; SSF53098; SSF53098; 2.
+DR   PROSITE; PS50249; MPN; 1.
+PE   1: Evidence at protein level;
+KW   3D-structure; Acetylation; Direct protein sequencing; Disease variant;
+KW   Methylation; mRNA processing; mRNA splicing; Nucleus; Phosphoprotein;
+KW   Reference proteome; Retinitis pigmentosa; Ribonucleoprotein; RNA-binding;
+KW   Spliceosome.
+FT   INIT_MET        1
+FT                   /note="Removed"
+FT                   /evidence="ECO:0000269|Ref.4, ECO:0007744|PubMed:19413330,
+FT                   ECO:0007744|PubMed:22223895"
+FT   CHAIN           2..2335
+FT                   /note="Pre-mRNA-processing-splicing factor 8"
+FT                   /id="PRO_0000097040"
+FT   DOMAIN          2103..2234
+FT                   /note="MPN"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU01182"
+FT   REGION          812..1303
+FT                   /note="Reverse transcriptase homology domain"
+FT   REGION          1304..1577
+FT                   /note="Linker"
+FT   REGION          1513..1526
+FT                   /note="Important for branch point selection"
+FT                   /evidence="ECO:0000250"
+FT   REGION          1581..1752
+FT                   /note="Restriction endonuclease homology domain"
+FT   REGION          1669..2034
+FT                   /note="Involved in interaction with pre-mRNA 5' splice
+FT                   site"
+FT   REGION          1767..2020
+FT                   /note="RNase H homology domain"
+FT   REGION          2301..2335
+FT                   /note="Required for interaction with EFTUD2 and SNRNP200"
+FT                   /evidence="ECO:0000269|PubMed:17317632"
+FT   MOD_RES         2
+FT                   /note="N-acetylalanine"
+FT                   /evidence="ECO:0000269|Ref.4, ECO:0007744|PubMed:19413330,
+FT                   ECO:0007744|PubMed:22223895"
+FT   MOD_RES         859
+FT                   /note="Phosphoserine"
+FT                   /evidence="ECO:0007744|PubMed:20068231"
+FT   MOD_RES         1358
+FT                   /note="Phosphoserine"
+FT                   /evidence="ECO:0007744|PubMed:23186163"
+FT   MOD_RES         1425
+FT                   /note="N6,N6-dimethyllysine"
+FT                   /evidence="ECO:0007744|PubMed:24129315"
+FT   MOD_RES         1463
+FT                   /note="N6-acetyllysine"
+FT                   /evidence="ECO:0007744|PubMed:19608861"
+FT   VARIANT         68
+FT                   /note="K -> E (in dbSNP:rs1043391)"
+FT                   /id="VAR_022622"
+FT   VARIANT         227
+FT                   /note="R -> H (in dbSNP:rs11559304)"
+FT                   /evidence="ECO:0000269|PubMed:15489334"
+FT                   /id="VAR_022623"
+FT   VARIANT         874
+FT                   /note="P -> L (in dbSNP:rs1043396)"
+FT                   /evidence="ECO:0000269|Ref.2"
+FT                   /id="VAR_022624"
+FT   VARIANT         1293
+FT                   /note="N -> H (in dbSNP:rs1043399)"
+FT                   /evidence="ECO:0000269|Ref.2"
+FT                   /id="VAR_022625"
+FT   VARIANT         2301
+FT                   /note="P -> T (in RP13; no effect on interaction with
+FT                   SNRNP200 and EFTUD2; dbSNP:rs121434239)"
+FT                   /evidence="ECO:0000269|PubMed:11468273"
+FT                   /id="VAR_022626"
+FT   VARIANT         2304
+FT                   /note="F -> L (in RP13; dbSNP:rs121434240)"
+FT                   /evidence="ECO:0000269|PubMed:11468273,
+FT                   ECO:0000269|PubMed:17317632"
+FT                   /id="VAR_022627"
+FT   VARIANT         2309
+FT                   /note="H -> P (in RP13; no effect on interaction with
+FT                   SNRNP200 and EFTUD2; dbSNP:rs121434236)"
+FT                   /evidence="ECO:0000269|PubMed:11468273,
+FT                   ECO:0000269|PubMed:17317632"
+FT                   /id="VAR_022628"
+FT   VARIANT         2309
+FT                   /note="H -> R (in RP13; no effect on interaction with
+FT                   SNRNP200 and EFTUD2; dbSNP:rs121434236)"
+FT                   /evidence="ECO:0000269|PubMed:11468273,
+FT                   ECO:0000269|PubMed:17317632"
+FT                   /id="VAR_022629"
+FT   VARIANT         2310
+FT                   /note="R -> G (in RP13; reduces interaction with SNRNP200
+FT                   and EFTUD2)"
+FT                   /evidence="ECO:0000269|PubMed:11468273,
+FT                   ECO:0000269|PubMed:12714658, ECO:0000269|PubMed:17317632,
+FT                   ECO:0000269|Ref.48"
+FT                   /id="VAR_022630"
+FT   VARIANT         2310
+FT                   /note="R -> K (in RP13; reduces interaction with SNRNP200
+FT                   and EFTUD2; dbSNP:rs121434238)"
+FT                   /evidence="ECO:0000269|PubMed:11468273,
+FT                   ECO:0000269|PubMed:11910553, ECO:0000269|PubMed:17317632"
+FT                   /id="VAR_022631"
+FT   VARIANT         2314
+FT                   /note="F -> L (in RP13; reduces interaction with EFTUD2,
+FT                   but not with SNRNP200)"
+FT                   /evidence="ECO:0000269|PubMed:11468273,
+FT                   ECO:0000269|PubMed:17317632"
+FT                   /id="VAR_022632"
+FT   VARIANT         2334
+FT                   /note="Y -> N (in RP13)"
+FT                   /evidence="ECO:0000269|Ref.48"
+FT                   /id="VAR_022633"
+FT   MUTAGEN         1788
+FT                   /note="V->D: Strongly reduced interaction with RNA."
+FT                   /evidence="ECO:0000269|PubMed:18836455"
+FT   MUTAGEN         1789
+FT                   /note="T->P: Strongly reduced interaction with RNA."
+FT                   /evidence="ECO:0000269|PubMed:18836455"
+FT   CONFLICT        184
+FT                   /note="D -> N (in Ref. 2; BAA22563)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        492..493
+FT                   /note="VG -> GW (in Ref. 2; BAA22563)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        604
+FT                   /note="M -> V (in Ref. 2; BAA22563)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        806
+FT                   /note="A -> T (in Ref. 2; BAA22563)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        997
+FT                   /note="L -> V (in Ref. 2; BAA22563)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        1390
+FT                   /note="A -> S (in Ref. 2; BAA22563)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        1867
+FT                   /note="G -> D (in Ref. 2; BAA22563)"
+FT                   /evidence="ECO:0000305"
+FT   HELIX           27..44
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           47..49
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          55..57
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+FT   HELIX           64..72
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           74..76
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+FT   STRAND          78..81
+FT                   /evidence="ECO:0007829|PDB:6ZYM"
+FT   HELIX           82..84
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           85..91
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           92..94
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           95..104
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          115..121
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          127..129
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           137..156
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          166..169
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+FT   STRAND          171..173
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+FT   HELIX           178..181
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            182..184
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            197..208
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          209..211
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            212..215
+FT                   /evidence="ECO:0007829|PDB:6ICZ"
+FT   TURN            217..219
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            222..224
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          227..229
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           232..241
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            243..245
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           252..255
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          256..259
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           260..268
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          274..276
+FT                   /evidence="ECO:0007829|PDB:6ICZ"
+FT   TURN            286..289
+FT                   /evidence="ECO:0007829|PDB:6ZYM"
+FT   HELIX           291..297
+FT                   /evidence="ECO:0007829|PDB:6FF4"
+FT   HELIX           312..315
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            317..320
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          345..347
+FT                   /evidence="ECO:0007829|PDB:6ICZ"
+FT   STRAND          354..356
+FT                   /evidence="ECO:0007829|PDB:6ICZ"
+FT   STRAND          374..377
+FT                   /evidence="ECO:0007829|PDB:6ICZ"
+FT   HELIX           381..383
+FT                   /evidence="ECO:0007829|PDB:6ZYM"
+FT   STRAND          389..391
+FT                   /evidence="ECO:0007829|PDB:6ID0"
+FT   HELIX           398..405
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            409..412
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          414..417
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          419..421
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+FT   HELIX           428..432
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          437..439
+FT                   /evidence="ECO:0007829|PDB:6ICZ"
+FT   HELIX           441..459
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           472..476
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          479..488
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           489..510
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          516..518
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          520..522
+FT                   /evidence="ECO:0007829|PDB:6FF4"
+FT   STRAND          524..528
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           532..537
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           542..565
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           572..583
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           585..588
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           591..593
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           596..598
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           599..616
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          619..621
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          623..625
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           631..661
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          674..676
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           677..696
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           706..721
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          729..731
+FT                   /evidence="ECO:0007829|PDB:6ZYM"
+FT   HELIX           733..763
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           769..796
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           804..819
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           835..847
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           849..851
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           858..872
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           874..886
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          894..900
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          902..910
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           913..932
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          940..942
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+FT   HELIX           948..960
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            963..966
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+FT   STRAND          969..971
+FT                   /evidence="ECO:0007829|PDB:6ICZ"
+FT   STRAND          972..980
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            982..987
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           990..1000
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1003..1013
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1016..1019
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1022..1025
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1027..1029
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1037..1053
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1055..1062
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1065..1067
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1077..1080
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1083..1091
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1094..1102
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1103..1116
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1123..1125
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1132..1134
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            1136..1138
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1144..1158
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1159..1161
+FT                   /evidence="ECO:0007829|PDB:6FF4"
+FT   TURN            1163..1165
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            1170..1172
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1174..1178
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1185..1188
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1190..1202
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1203..1205
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+FT   STRAND          1209..1212
+FT                   /evidence="ECO:0007829|PDB:6FF4"
+FT   STRAND          1213..1217
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            1219..1221
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1223..1232
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1234..1248
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1249..1251
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1254..1257
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1258..1273
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            1275..1280
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1282..1303
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            1308..1310
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+FT   HELIX           1314..1317
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1320..1322
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1331..1333
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+FT   HELIX           1337..1339
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1340..1345
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1350..1356
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1360..1362
+FT                   /evidence="ECO:0007829|PDB:6ICZ"
+FT   TURN            1368..1371
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1375..1398
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1405..1410
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            1411..1413
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            1415..1418
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1419..1423
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            1425..1428
+FT                   /evidence="ECO:0007829|PDB:6ZYM"
+FT   HELIX           1430..1432
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1436..1441
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            1442..1446
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1447..1449
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+FT   TURN            1452..1455
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+FT   TURN            1458..1460
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1469..1478
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1480..1485
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            1486..1489
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1490..1493
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1498..1500
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+FT   STRAND          1501..1503
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1507..1509
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1512..1515
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1520..1522
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            1523..1527
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1529..1531
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1532..1537
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1539..1542
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            1545..1547
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1550..1555
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+FT   STRAND          1556..1558
+FT                   /evidence="ECO:0007829|PDB:6ICZ"
+FT   STRAND          1561..1564
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+FT   HELIX           1569..1576
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            1578..1580
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1581..1597
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1601..1603
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1606..1611
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+FT   TURN            1617..1620
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1628..1631
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1632..1635
+FT                   /evidence="ECO:0007829|PDB:6ZYM"
+FT   STRAND          1642..1644
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1656..1658
+FT                   /evidence="ECO:0007829|PDB:6FF4"
+FT   STRAND          1660..1667
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1671..1673
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1676..1687
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1688..1693
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1696..1698
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+FT   STRAND          1701..1706
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            1707..1710
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1711..1717
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            1720..1722
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1723..1733
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   TURN            1734..1736
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1738..1751
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1753..1757
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   STRAND          1761..1763
+FT                   /evidence="ECO:0007829|PDB:3E9L"
+FT   TURN            1765..1767
+FT                   /evidence="ECO:0007829|PDB:3E9L"
+FT   HELIX           1768..1772
+FT                   /evidence="ECO:0007829|PDB:3E9L"
+FT   STRAND          1773..1775
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   STRAND          1777..1781
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   STRAND          1785..1792
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   STRAND          1794..1796
+FT                   /evidence="ECO:0007829|PDB:3E9L"
+FT   STRAND          1798..1803
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   STRAND          1805..1810
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   TURN            1812..1814
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   STRAND          1816..1822
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   HELIX           1824..1827
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   HELIX           1833..1851
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   HELIX           1854..1856
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   STRAND          1859..1865
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   HELIX           1866..1868
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   HELIX           1869..1875
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   TURN            1876..1878
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   STRAND          1883..1886
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   HELIX           1893..1898
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   HELIX           1900..1908
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   STRAND          1913..1918
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   TURN            1919..1922
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   HELIX           1923..1925
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   HELIX           1929..1945
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   HELIX           1947..1953
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   STRAND          1957..1959
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+FT   STRAND          1966..1968
+FT                   /evidence="ECO:0007829|PDB:6ID1"
+FT   HELIX           1973..1989
+FT                   /evidence="ECO:0007829|PDB:4JK8"
+FT   HELIX           1999..2001
+FT                   /evidence="ECO:0007829|PDB:3E9L"
+FT   HELIX           2004..2012
+FT                   /evidence="ECO:0007829|PDB:3E9L"
+FT   HELIX           2072..2080
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   HELIX           2081..2088
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   STRAND          2089..2092
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   STRAND          2099..2101
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+FT   STRAND          2103..2107
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   HELIX           2108..2116
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   STRAND          2120..2122
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   STRAND          2125..2131
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   STRAND          2139..2146
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   STRAND          2149..2152
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   HELIX           2167..2169
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   STRAND          2172..2183
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   HELIX           2190..2202
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   TURN            2208..2210
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   STRAND          2212..2217
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   STRAND          2222..2230
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   HELIX           2232..2240
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   STRAND          2245..2247
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   HELIX           2253..2255
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   STRAND          2256..2259
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   STRAND          2261..2267
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   STRAND          2270..2277
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   HELIX           2285..2287
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   STRAND          2296..2298
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   HELIX           2307..2309
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   HELIX           2311..2315
+FT                   /evidence="ECO:0007829|PDB:6S8Q"
+FT   TURN            2316..2318
+FT                   /evidence="ECO:0007829|PDB:7BDK"
+FT   HELIX           2321..2325
+FT                   /evidence="ECO:0007829|PDB:7DVQ"
+SQ   SEQUENCE   2335 AA;  273600 MW;  E823A15C60EA61C9 CRC64;
+     MAGVFPYRGP GNPVPGPLAP LPDYMSEEKL QEKARKWQQL QAKRYAEKRK FGFVDAQKED
+     MPPEHVRKII RDHGDMTNRK FRHDKRVYLG ALKYMPHAVL KLLENMPMPW EQIRDVPVLY
+     HITGAISFVN EIPWVIEPVY ISQWGSMWIM MRREKRDRRH FKRMRFPPFD DEEPPLDYAD
+     NILDVEPLEA IQLELDPEED APVLDWFYDH QPLRDSRKYV NGSTYQRWQF TLPMMSTLYR
+     LANQLLTDLV DDNYFYLFDL KAFFTSKALN MAIPGGPKFE PLVRDINLQD EDWNEFNDIN
+     KIIIRQPIRT EYKIAFPYLY NNLPHHVHLT WYHTPNVVFI KTEDPDLPAF YFDPLINPIS
+     HRHSVKSQEP LPDDDEEFEL PEFVEPFLKD TPLYTDNTAN GIALLWAPRP FNLRSGRTRR
+     ALDIPLVKNW YREHCPAGQP VKVRVSYQKL LKYYVLNALK HRPPKAQKKR YLFRSFKATK
+     FFQSTKLDWV EVGLQVCRQG YNMLNLLIHR KNLNYLHLDY NFNLKPVKTL TTKERKKSRF
+     GNAFHLCREV LRLTKLVVDS HVQYRLGNVD AFQLADGLQY IFAHVGQLTG MYRYKYKLMR
+     QIRMCKDLKH LIYYRFNTGP VGKGPGCGFW AAGWRVWLFF MRGITPLLER WLGNLLARQF
+     EGRHSKGVAK TVTKQRVESH FDLELRAAVM HDILDMMPEG IKQNKARTIL QHLSEAWRCW
+     KANIPWKVPG LPTPIENMIL RYVKAKADWW TNTAHYNRER IRRGATVDKT VCKKNLGRLT
+     RLYLKAEQER QHNYLKDGPY ITAEEAVAVY TTTVHWLESR RFSPIPFPPL SYKHDTKLLI
+     LALERLKEAY SVKSRLNQSQ REELGLIEQA YDNPHEALSR IKRHLLTQRA FKEVGIEFMD
+     LYSHLVPVYD VEPLEKITDA YLDQYLWYEA DKRRLFPPWI KPADTEPPPL LVYKWCQGIN
+     NLQDVWETSE GECNVMLESR FEKMYEKIDL TLLNRLLRLI VDHNIADYMT AKNNVVINYK
+     DMNHTNSYGI IRGLQFASFI VQYYGLVMDL LVLGLHRASE MAGPPQMPND FLSFQDIATE
+     AAHPIRLFCR YIDRIHIFFR FTADEARDLI QRYLTEHPDP NNENIVGYNN KKCWPRDARM
+     RLMKHDVNLG RAVFWDIKNR LPRSVTTVQW ENSFVSVYSK DNPNLLFNMC GFECRILPKC
+     RTSYEEFTHK DGVWNLQNEV TKERTAQCFL RVDDESMQRF HNRVRQILMA SGSTTFTKIV
+     NKWNTALIGL MTYFREAVVN TQELLDLLVK CENKIQTRIK IGLNSKMPSR FPPVVFYTPK
+     ELGGLGMLSM GHVLIPQSDL RWSKQTDVGI THFRSGMSHE EDQLIPNLYR YIQPWESEFI
+     DSQRVWAEYA LKRQEAIAQN RRLTLEDLED SWDRGIPRIN TLFQKDRHTL AYDKGWRVRT
+     DFKQYQVLKQ NPFWWTHQRH DGKLWNLNNY RTDMIQALGG VEGILEHTLF KGTYFPTWEG
+     LFWEKASGFE ESMKWKKLTN AQRSGLNQIP NRRFTLWWSP TINRANVYVG FQVQLDLTGI
+     FMHGKIPTLK ISLIQIFRAH LWQKIHESIV MDLCQVFDQE LDALEIETVQ KETIHPRKSY
+     KMNSSCADIL LFASYKWNVS RPSLLADSKD VMDSTTTQKY WIDIQLRWGD YDSHDIERYA
+     RAKFLDYTTD NMSIYPSPTG VLIAIDLAYN LHSAYGNWFP GSKPLIQQAM AKIMKANPAL
+     YVLRERIRKG LQLYSSEPTE PYLSSQNYGE LFSNQIIWFV DDTNVYRVTI HKTFEGNLTT
+     KPINGAIFIF NPRTGQLFLK IIHTSVWAGQ KRLGQLAKWK TAEEVAALIR SLPVEEQPKQ
+     IIVTRKGMLD PLEVHLLDFP NIVIKGSELQ LPFQACLKVE KFGDLILKAT EPQMVLFNLY
+     DDWLKTISSY TAFSRLILIL RALHVNNDRA KVILKPDKTT ITEPHHIWPT LTDEEWIKVE
+     VQLKDLILAD YGKKNNVNVA SLTQSEIRDI ILGMEISAPS QQRQQIAEIE KQTKEQSQLT
+     ATQTRTVNKH GDEIITSTTS NYETQTFSSK TEWRVRAISA ANLHLRTNHI YVSSDDIKET
+     GYTYILPKNV LKKFICISDL RAQIAGYLYG VSPPDNPQVK EIRCIVMVPQ WGTHQTVHLP
+     GQLPQHEYLK EMEPLGWIHT QPNESPQLSP QDVTTHAKIM ADNPSWDGEK TIIITCSFTP
+     GSCTLTAYKL TPSGYEWGRQ NTDKGNNPKG YLPSHYERVQ MLLSDRFLGF FMVPAQSSWN
+     YNFMGVRHDP NMKYELQLAN PKEFYHEVHR PSHFLNFALL QEGEVYSADR EDLYA
+//
