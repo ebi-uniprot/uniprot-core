@@ -27,6 +27,7 @@ import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 
 import com.google.common.io.CharSource;
 import com.google.common.io.Resources;
+
 @Disabled
 class FlatfileRoundTripIT {
     private static final Logger LOGGER = getLogger(FlatfileRoundTripIT.class);
