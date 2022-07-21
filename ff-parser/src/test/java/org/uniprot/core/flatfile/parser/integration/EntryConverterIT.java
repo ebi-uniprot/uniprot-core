@@ -88,9 +88,6 @@ class EntryConverterIT {
      
         testEntry(entryStr);
     }
-    
-    
-    
     private void testEntry(String entryToParse) {
         UniprotKBLineParser<EntryObject> entryParser =
                 new DefaultUniprotKBLineParserFactory().createEntryParser();
