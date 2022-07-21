@@ -666,7 +666,6 @@ class RlLineParserTest {
                 "abstract#501734213", ((RlLineObject.Book) obj.getReference()).getPageString());
     }
 
-  
     @Test
     void testBookStrange7() {
         String rgLines =
@@ -690,15 +689,16 @@ class RlLineParserTest {
                 "London, United Kingdom",
                 2000);
     }
+
     @Test
     void testElectronicJournal() {
-    	String rlLine = "RL   (er) Invest. Ophthalmol. Vis. Sci. 43:ARVO E-Abstract 791(2002).\n";
-    	  UniprotKBLineParser<RlLineObject> parser =
-                  new DefaultUniprotKBLineParserFactory().createRlLineParser();
-          RlLineObject obj = parser.parse(rlLine);
-          assertTrue(obj.getReference() instanceof RlLineObject.EPub);
-          assertEquals("Invest. Ophthalmol. Vis. Sci. 43:ARVO E-Abstract 791(2002)", 
-        		  ((RlLineObject.EPub) obj.getReference()).getTitle());
-          
+        String rlLine = "RL   (er) Invest. Ophthalmol. Vis. Sci. 43:ARVO E-Abstract 791(2002).\n";
+        UniprotKBLineParser<RlLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createRlLineParser();
+        RlLineObject obj = parser.parse(rlLine);
+        assertTrue(obj.getReference() instanceof RlLineObject.EPub);
+        assertEquals(
+                "Invest. Ophthalmol. Vis. Sci. 43:ARVO E-Abstract 791(2002)",
+                ((RlLineObject.EPub) obj.getReference()).getTitle());
     }
 }

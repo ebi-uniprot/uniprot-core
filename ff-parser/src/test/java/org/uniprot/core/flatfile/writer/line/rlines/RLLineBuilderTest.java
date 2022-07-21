@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Book;
-import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.ElectronicArticle;
 import org.uniprot.core.citation.JournalArticle;
 import org.uniprot.core.citation.Submission;
@@ -99,18 +98,19 @@ class RLLineBuilderTest {
                         + " CONSERVATION GENETICS, pp.205-227, Birkhaeuser Verlag, Basel (1994).";
         assertEquals(expected, lines.get(0));
     }
-    @Test 
-    void testElectronicArticle(){
-    	//RL   (er) Invest. Ophthalmol. Vis. Sci. 43:ARVO E-Abstract 791(2002)(2002).
-    	ElectronicArticleBuilder eabuilder = new ElectronicArticleBuilder();
-    	eabuilder.locator("Invest. Ophthalmol. Vis. Sci. 43:ARVO E-Abstract 791(2002)")
-    	.publicationDate(new PublicationDateBuilder("2002").build());
-    	ElectronicArticle ea = eabuilder.build();
-    	 List<String> lines = builder.buildLine(ea, true, true);
-    	 assertEquals(1, lines.size());
-    	 String expected =
-                 "RL   (er) Invest. Ophthalmol. Vis. Sci. 43:ARVO E-Abstract 791(2002)(2002).";
-    	 assertEquals(expected, lines.get(0));
-    	
+
+    @Test
+    void testElectronicArticle() {
+        // RL   (er) Invest. Ophthalmol. Vis. Sci. 43:ARVO E-Abstract 791(2002)(2002).
+        ElectronicArticleBuilder eabuilder = new ElectronicArticleBuilder();
+        eabuilder
+                .locator("Invest. Ophthalmol. Vis. Sci. 43:ARVO E-Abstract 791(2002)")
+                .publicationDate(new PublicationDateBuilder("2002").build());
+        ElectronicArticle ea = eabuilder.build();
+        List<String> lines = builder.buildLine(ea, true, true);
+        assertEquals(1, lines.size());
+        String expected =
+                "RL   (er) Invest. Ophthalmol. Vis. Sci. 43:ARVO E-Abstract 791(2002)(2002).";
+        assertEquals(expected, lines.get(0));
     }
 }

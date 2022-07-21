@@ -27,6 +27,7 @@ class UniProtParserIT {
         assertNotNull(entry);
         assertEquals("Q32K04", entry.getPrimaryAccession().getValue());
     }
+
     @Test
     void testParseQ6P2Q9() {
         String filename = "/entryIT/Q6P2Q9.dat";
@@ -37,8 +38,6 @@ class UniProtParserIT {
         assertEquals("Q6P2Q9", entry.getPrimaryAccession().getValue());
     }
 
-    
-    
     @Test
     void testParseWithIgnore() {
         String filename = "/entryIT/A0A176EY13.txl";

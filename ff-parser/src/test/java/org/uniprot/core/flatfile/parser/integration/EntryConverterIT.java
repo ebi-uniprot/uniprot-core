@@ -81,13 +81,15 @@ class EntryConverterIT {
         System.out.println(entryStr);
         testEntry(entryStr);
     }
+
     @Test
     void testQ6P2Q9() {
         String filename = "/entryIT/Q6P2Q9.dat";
         String entryStr = readEntryFromFile(filename);
-     
+
         testEntry(entryStr);
     }
+
     private void testEntry(String entryToParse) {
         UniprotKBLineParser<EntryObject> entryParser =
                 new DefaultUniprotKBLineParserFactory().createEntryParser();
