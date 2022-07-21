@@ -155,7 +155,7 @@ class RlLineConverterTest {
         ElectronicArticle ea = ((ElectronicArticleBuilder) builder).build();
         assertEquals(CitationType.ELECTRONIC_ARTICLE, ea.getCitationType());
         // assertEquals("Plant Gene Register", ea.getJournal().getName());
-        assertEquals("J. Am. Chem. Soc. 121:9223-9224(1999)", ea.getLocator().getValue());
+        assertEquals("J. Am. Chem. Soc. 121:9223-9224", ea.getLocator().getValue());
     }
 
     @Test
