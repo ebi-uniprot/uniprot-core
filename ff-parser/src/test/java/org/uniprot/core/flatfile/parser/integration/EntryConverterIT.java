@@ -74,6 +74,14 @@ class EntryConverterIT {
         testEntry(entryStr);
     }
 
+    @Test
+    void testQ4WI89() {
+        String filename = "/entryIT/Q4WI89.txl";
+        String entryStr = readEntryFromFile(filename);
+        System.out.println(entryStr);
+        testEntry(entryStr);
+    }
+    
     private void testEntry(String entryToParse) {
         UniprotKBLineParser<EntryObject> entryParser =
                 new DefaultUniprotKBLineParserFactory().createEntryParser();

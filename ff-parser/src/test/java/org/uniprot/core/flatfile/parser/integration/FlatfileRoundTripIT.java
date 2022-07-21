@@ -27,7 +27,6 @@ import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 
 import com.google.common.io.CharSource;
 import com.google.common.io.Resources;
-
 @Disabled
 class FlatfileRoundTripIT {
     private static final Logger LOGGER = getLogger(FlatfileRoundTripIT.class);
@@ -96,7 +95,8 @@ class FlatfileRoundTripIT {
         "/entryIT/Q401N2.txl, false",
         "/entryIT/P87498.dat, true",
         "/entryIT/A0A663DJA2.dat, true",
-        "/entryIT/P0DTC1.dat, true"
+        "/entryIT/P0DTC1.dat, true",
+        "/entryIT/Q4WI89.txl, false"
     })
     void roundTripTest(String fileName, boolean isPublic) {
         testFile(fileName, isPublic);

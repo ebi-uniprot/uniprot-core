@@ -167,7 +167,6 @@ public class FtLineObject implements HasEvidenceInfo {
         @Deprecated
         CA_BIND,
         ZN_FING,
-        @Deprecated
         DNA_BIND,
         @Deprecated
         NP_BIND,
