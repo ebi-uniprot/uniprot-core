@@ -23,7 +23,6 @@ public enum UniprotKBFeatureType implements FeatureType {
     @Deprecated
     CA_BIND("calcium-binding region", "Calcium binding", FeatureCategory.REGIONS),
     ZN_FING("zinc finger region", "Zinc finger", FeatureCategory.REGIONS),
-    @Deprecated
     DNA_BIND("DNA-binding region", "DNA binding", FeatureCategory.REGIONS),
     @Deprecated
     NP_BIND("nucleotide phosphate-binding region", "Nucleotide binding", FeatureCategory.REGIONS),
