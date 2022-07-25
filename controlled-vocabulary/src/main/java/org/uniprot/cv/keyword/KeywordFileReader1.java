@@ -78,6 +78,8 @@ public class KeywordFileReader1 extends AbstractFileReader<KeywordEntry> {
                     .map(ancestors -> ancestors[ancestors.length - 2])
                     .map(this::trimSpacesAndRemoveLastDot)
                     .collect(Collectors.toSet());
+            // TODO this if code block has a bug. see https://www.ebi.ac.uk/panda/jira/browse/TRM-28103
+            // also see https://www.uniprot.org/keywords/KW-0407 and https://legacy.uniprot.org/keywords/KW-0407
             if(immediateParents.isEmpty() && Objects.nonNull(currentEntry.getCategory())){ // in case of no immediate parent, category is the parent
                 KeywordEntry parentEntry = nameEntryMap.get(category);
                 if(Objects.nonNull(parentEntry)){
