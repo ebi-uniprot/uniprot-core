@@ -28,7 +28,7 @@ public interface KeywordEntry extends Serializable {
      *
      * @return list of keywords which will always keywords (never a category)
      */
-    Set<KeywordEntry> getParents();
+    List<KeywordEntry> getParents();
 
     List<String> getLinks();
 

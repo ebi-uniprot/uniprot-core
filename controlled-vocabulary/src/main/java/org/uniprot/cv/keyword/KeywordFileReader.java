@@ -328,7 +328,7 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
                 KeywordEntry limitedParent =
                         KeywordEntryBuilder.from(key.build())
                                 .childrenSet(Collections.emptyList())
-                                .parentsSet(Collections.emptySet())
+                                .parentsSet(List.of())
                                 .build();
                 currentKeyword.parentsAdd(limitedParent);
             }

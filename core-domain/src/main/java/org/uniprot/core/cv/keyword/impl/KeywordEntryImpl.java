@@ -1,16 +1,16 @@
 package org.uniprot.core.cv.keyword.impl;
 
-import static org.uniprot.core.util.Utils.unmodifiableList;
-import static org.uniprot.core.util.Utils.unmodifiableSet;
-
-import java.util.*;
-
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.go.GoTerm;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.util.Utils;
+
+import java.util.List;
+import java.util.Objects;
+
+import static org.uniprot.core.util.Utils.unmodifiableList;
 
 public class KeywordEntryImpl implements KeywordEntry {
 
@@ -19,7 +19,7 @@ public class KeywordEntryImpl implements KeywordEntry {
     private final String definition;
     private final List<String> synonyms;
     private final List<GoTerm> geneOntologies;
-    private final Set<KeywordEntry> parents;
+    private final List<KeywordEntry> parents;
     private final List<String> links;
     private KeywordCategory category;
     private final List<KeywordEntry> children;
@@ -34,7 +34,7 @@ public class KeywordEntryImpl implements KeywordEntry {
             String definition,
             List<String> synonyms,
             List<GoTerm> geneOntologies,
-            Set<KeywordEntry> parents,
+            List<KeywordEntry> parents,
             List<String> links,
             KeywordId category,
             List<KeywordEntry> children,
@@ -43,14 +43,14 @@ public class KeywordEntryImpl implements KeywordEntry {
         this.definition = definition;
         this.synonyms = unmodifiableList(synonyms);
         this.geneOntologies = unmodifiableList(geneOntologies);
-        this.parents = unmodifiableSet(parents);
+        this.parents = unmodifiableList(parents);
         this.links = unmodifiableList(links);
         if (Utils.notNull(category)) this.category = KeywordCategory.typeOf(category.getName());
         this.children = unmodifiableList(children);
         this.statistics = statistics;
     }
 
-    public Set<KeywordEntry> getParents() {
+    public List<KeywordEntry> getParents() {
         return parents;
     }
 

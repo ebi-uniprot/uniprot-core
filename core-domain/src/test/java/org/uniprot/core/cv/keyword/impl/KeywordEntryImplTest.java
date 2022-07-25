@@ -27,7 +27,7 @@ class KeywordEntryImplTest {
     private String definition;
     private List<String> synonyms;
     private List<GoTerm> geneOntologies;
-    private Set<KeywordEntry> parents;
+    private List<KeywordEntry> parents;
     private List<String> sites;
     private KeywordId category;
     private List<KeywordEntry> children;

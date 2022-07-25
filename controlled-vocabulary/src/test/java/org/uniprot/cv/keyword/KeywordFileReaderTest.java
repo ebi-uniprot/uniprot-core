@@ -16,7 +16,7 @@ import org.uniprot.core.cv.keyword.KeywordId;
 
 class KeywordFileReaderTest {
 
-    private final KeywordFileReader parser = new KeywordFileReader();
+    private final KeywordFileReader1 parser = new KeywordFileReader1();
 
     @Test
     void testParseDefaultFile() {
@@ -134,8 +134,8 @@ class KeywordFileReaderTest {
         assertNotNull(kw.getCategory());
         assertEquals("KW-9993", kw.getCategory().getId());
 
-        assertNotNull(kw.getChildren());
-        assertEquals(2, kw.getChildren().size());
+        assertNotNull(kw.getParents());
+        assertEquals(2, kw.getParents().size());
 
         assertNotNull(kw.getLinks());
         assertTrue(kw.getLinks().isEmpty());
@@ -163,7 +163,7 @@ class KeywordFileReaderTest {
         }
 
         @Override
-        public Set<KeywordEntry> getParents() {
+        public List<KeywordEntry> getParents() {
             return null;
         }
 

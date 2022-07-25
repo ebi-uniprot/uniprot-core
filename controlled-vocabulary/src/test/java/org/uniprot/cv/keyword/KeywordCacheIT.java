@@ -32,8 +32,8 @@ class KeywordCacheIT {
         assertTrue(opVal.isPresent());
         List<KeywordEntry> children =
                 opVal.map(KeywordEntry::getChildren).orElse(Collections.emptyList());
-        Set<KeywordEntry> parents =
-                opVal.map(KeywordEntry::getParents).orElse(Collections.emptySet());
+        List<KeywordEntry> parents =
+                opVal.map(KeywordEntry::getParents).orElse(List.of());
         assertFalse(children.isEmpty());
         assertTrue(parents.isEmpty());
     }
@@ -46,8 +46,8 @@ class KeywordCacheIT {
         assertTrue(opVal.isPresent());
         List<KeywordEntry> children =
                 opVal.map(KeywordEntry::getChildren).orElse(Collections.emptyList());
-        Set<KeywordEntry> parents =
-                opVal.map(KeywordEntry::getParents).orElse(Collections.emptySet());
+        List<KeywordEntry> parents =
+                opVal.map(KeywordEntry::getParents).orElse(List.of());
 
         assertTrue(parents.size() > 1);
         assertTrue(children.isEmpty());
@@ -62,8 +62,8 @@ class KeywordCacheIT {
         assertTrue(opVal.isPresent());
         List<KeywordEntry> children =
                 opVal.map(KeywordEntry::getChildren).orElse(Collections.emptyList());
-        Set<KeywordEntry> parents =
-                opVal.map(KeywordEntry::getParents).orElse(Collections.emptySet());
+        List<KeywordEntry> parents =
+                opVal.map(KeywordEntry::getParents).orElse(List.of());
         assertFalse(parents.isEmpty());
         assertFalse(children.isEmpty());
     }
