@@ -43,8 +43,10 @@ public class KeywordFileReader1 extends AbstractFileReader<KeywordEntry> {
     public List<KeywordEntry> parseLines(List<String> lines) {
         List<KeywordFileEntry> rawKeywordList = convertLinesIntoInMemoryObjectList(lines);
         Map<String, KeywordFileEntry> idRawKeywordMap = getIdRawKeywordMap(rawKeywordList);
-        List<KeywordEntry> entryList = parseRawKeywordList(rawKeywordList);
+
+        List<KeywordEntry> entryList = parseRawKeywordList(rawKeywordList);// thin, it doesnt have hierarchical
         Map<String, KeywordEntry> nameEntryMap = getNameEntryMap(entryList);
+
         Set<String> processedKeywordIds = new HashSet<>();
         for (KeywordFileEntry rawKeyword : rawKeywordList) {
             try {
@@ -62,13 +64,18 @@ public class KeywordFileReader1 extends AbstractFileReader<KeywordEntry> {
 
         KeywordEntry currentEntry = nameEntryMap.get(trimSpacesAndRemoveLastDot(rawKeyword.getIdentifier()));
         String category = trimSpacesAndRemoveLastDot(rawKeyword.ca);
-        // update category
+        // update category - no need TODO through reflection.. we can set it during basic parsing
         if (Utils.notNullNotEmpty(category) && nameEntryMap.containsKey(category)) {
             updateCategory(currentEntry, nameEntryMap.get(category));
         }
         if (Objects.nonNull(currentEntry) && !processedKeywordIds.contains(currentEntry.getKeyword().getName())) {
-            processedKeywordIds.add(currentEntry.getKeyword().getName());
+            processedKeywordIds.add(currentEntry.getKeyword().getName());// set as processed
             List<String> hierarchies = rawKeyword.hi;
+
+            String categoryAsParent = hierarchies.stream().map(hierarchy -> hierarchy.split(HIERARCHY_SEPARATOR))
+                    .filter(ancestors -> ancestors.length == 1).findAny().map(hierarchy -> hierarchy[0]
+                            .split(CATEGORY_SEPARATOR)).map(tokens -> tokens[0]).orElse(null);
+
             List<String> hierarchiesMinusCat = hierarchies.stream()
                     .map(hierarchy -> hierarchy.substring(hierarchy.indexOf(CATEGORY_SEPARATOR) + 1))
                     .collect(Collectors.toList());
@@ -78,28 +85,17 @@ public class KeywordFileReader1 extends AbstractFileReader<KeywordEntry> {
                     .map(ancestors -> ancestors[ancestors.length - 2])
                     .map(this::trimSpacesAndRemoveLastDot)
                     .collect(Collectors.toSet());
-            // TODO this if code block has a bug. see https://www.ebi.ac.uk/panda/jira/browse/TRM-28103
-            // also see https://www.uniprot.org/keywords/KW-0407 and https://legacy.uniprot.org/keywords/KW-0407
-            if(immediateParents.isEmpty() && Objects.nonNull(currentEntry.getCategory())){ // in case of no immediate parent, category is the parent
-                KeywordEntry parentEntry = nameEntryMap.get(category);
+            if(Objects.nonNull(categoryAsParent)){
+                immediateParents.add(categoryAsParent);
+            }
+            for (String parent : immediateParents) {
+                KeywordEntry parentEntry = nameEntryMap.get(trimSpacesAndRemoveLastDot(parent));
                 if(Objects.nonNull(parentEntry)){
                     updateParentChild(currentEntry, parentEntry);
-                    KeywordFileEntry parentRawKeyword = idRawKeywordMap.get(category);
+                    KeywordFileEntry parentRawKeyword = idRawKeywordMap.get(parent);
                     if (Objects.nonNull(parentRawKeyword)) {
                         // call for the parent
                         updateRelationships(parentRawKeyword, idRawKeywordMap, processedKeywordIds, nameEntryMap);
-                    }
-                }
-            } else {
-                for (String parent : immediateParents) {
-                    KeywordEntry parentEntry = nameEntryMap.get(trimSpacesAndRemoveLastDot(parent));
-                    if(Objects.nonNull(parentEntry)){
-                        updateParentChild(currentEntry, parentEntry);
-                        KeywordFileEntry parentRawKeyword = idRawKeywordMap.get(parent);
-                        if (Objects.nonNull(parentRawKeyword)) {
-                            // call for the parent
-                            updateRelationships(parentRawKeyword, idRawKeywordMap, processedKeywordIds, nameEntryMap);
-                        }
                     }
                 }
             }
