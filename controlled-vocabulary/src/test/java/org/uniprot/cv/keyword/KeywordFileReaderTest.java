@@ -16,7 +16,7 @@ import org.uniprot.core.cv.keyword.KeywordId;
 
 class KeywordFileReaderTest {
 
-    private final KeywordFileReader1 parser = new KeywordFileReader1();
+    private final KeywordFileReader parser = new KeywordFileReader();
 
     @Test
     void testParseDefaultFile() {

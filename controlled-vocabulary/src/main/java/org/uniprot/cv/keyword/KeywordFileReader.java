@@ -1,8 +1,5 @@
 package org.uniprot.cv.keyword;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.go.GoTerm;
@@ -14,7 +11,19 @@ import org.uniprot.core.cv.keyword.impl.KeywordEntryBuilder;
 import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
+import org.uniprot.core.util.Utils;
 import org.uniprot.cv.common.AbstractFileReader;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
     private static final String WW_LINE = "WW";
@@ -32,12 +41,22 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
     private static final Logger LOG = LoggerFactory.getLogger(KeywordFileReader.class);
 
     public List<KeywordEntry> parseLines(List<String> lines) {
-        List<KeyFileEntry> rawList = convertLinesIntoInMemoryObjectList(lines);
-        List<KEFRBuilder> inMemoryGraph = parseKeywordFileEntryList(rawList);
-        updateListWithRelationShips(inMemoryGraph, rawList);
-        return inMemoryGraph.stream()
-                .map(KEFRBuilder::builderLimitedKeywordEntry)
-                .collect(Collectors.toList());
+        List<KeywordFileEntry> rawKeywordList = convertLinesIntoInMemoryObjectList(lines);
+        Map<String, KeywordFileEntry> idRawKeywordMap = getIdRawKeywordMap(rawKeywordList);
+
+        List<KeywordEntry> entryList = parseRawKeywordList(rawKeywordList);// thin, it doesn't have hierarchical
+        Map<String, KeywordEntry> nameEntryMap = getNameEntryMap(entryList);
+
+        Set<String> processedKeywordIds = new HashSet<>();
+        for (KeywordFileEntry rawKeyword : rawKeywordList) {
+            try {
+                updateRelationships(rawKeyword, idRawKeywordMap, processedKeywordIds, nameEntryMap);
+            } catch (Exception e) {
+                throw new IllegalArgumentException(e);
+            }
+        }
+
+        return entryList;
     }
 
     public Map<String, Pair<String, KeywordCategory>> parseFileToAccessionMap(String fileName) {
@@ -47,6 +66,79 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
                         Collectors.toMap(
                                 KeywordFileReader::getId,
                                 KeywordFileReader::getAccessionCategoryPair));
+    }
+
+    private void updateRelationships(KeywordFileEntry rawKeyword, Map<String, KeywordFileEntry> idRawKeywordMap,
+                                    Set<String> processedKeywordIds, Map<String, KeywordEntry> nameEntryMap) throws NoSuchFieldException, IllegalAccessException {
+
+        KeywordEntry currentEntry = nameEntryMap.get(trimSpacesAndRemoveLastDot(rawKeyword.getIdentifier()));
+        String category = trimSpacesAndRemoveLastDot(rawKeyword.ca);
+        if (Utils.notNullNotEmpty(category) && nameEntryMap.containsKey(category)) {
+            updateCategory(currentEntry, nameEntryMap.get(category));
+        }
+        if (Objects.nonNull(currentEntry) && !processedKeywordIds.contains(currentEntry.getKeyword().getName())) {
+            processedKeywordIds.add(currentEntry.getKeyword().getName());// set as processed
+            List<String> hierarchies = rawKeyword.hi;
+
+            String categoryAsParent = hierarchies.stream().map(hierarchy -> hierarchy.split(HIERARCHY_SEPARATOR))
+                    .filter(ancestors -> ancestors.length == 1).findAny().map(hierarchy -> hierarchy[0]
+                            .split(CATEGORY_SEPARATOR)).map(tokens -> tokens[0]).orElse(null);
+
+            List<String> hierarchiesMinusCat = hierarchies.stream()
+                    .map(hierarchy -> hierarchy.substring(hierarchy.indexOf(CATEGORY_SEPARATOR) + 1))
+                    .collect(Collectors.toList());
+            Set<String> immediateParents = hierarchiesMinusCat.stream()
+                    .map(hierarchy -> hierarchy.split(HIERARCHY_SEPARATOR))
+                    .filter(ancestors -> ancestors.length >= 2)
+                    .map(ancestors -> ancestors[ancestors.length - 2])
+                    .map(this::trimSpacesAndRemoveLastDot)
+                    .collect(Collectors.toSet());
+            if(Objects.nonNull(categoryAsParent)){
+                immediateParents.add(categoryAsParent);
+            }
+            for (String parent : immediateParents) {
+                KeywordEntry parentEntry = nameEntryMap.get(trimSpacesAndRemoveLastDot(parent));
+                if(Objects.nonNull(parentEntry)){
+                    updateParentChild(currentEntry, parentEntry);
+                    KeywordFileEntry parentRawKeyword = idRawKeywordMap.get(parent);
+                    if (Objects.nonNull(parentRawKeyword)) {
+                        // call for the parent
+                        updateRelationships(parentRawKeyword, idRawKeywordMap, processedKeywordIds, nameEntryMap);
+                    }
+                }
+            }
+        }
+    }
+
+    private void updateParentChild(KeywordEntry currentEntry, KeywordEntry parentEntry) throws NoSuchFieldException, IllegalAccessException {
+        // add as a parent
+        Field parentsField = currentEntry.getClass().getDeclaredField("parents");
+        List<KeywordEntry> parentEntries = currentEntry.getParents().isEmpty() ? new ArrayList<>() : currentEntry.getParents();
+        parentEntries.add(parentEntry);
+        parentsField.setAccessible(true);
+        parentsField.set(currentEntry, parentEntries);
+        // add current node as a child of parent
+        Field childrenField = parentEntry.getClass().getDeclaredField("children");
+        List<KeywordEntry> childrenEntries = parentEntry.getChildren().isEmpty() ? new ArrayList<>() : parentEntry.getChildren();
+        childrenEntries.add(currentEntry);
+        childrenField.setAccessible(true);
+        childrenField.set(parentEntry, childrenEntries);
+    }
+
+    private void updateCategory(KeywordEntry currentEntry, KeywordEntry categoryEntry) throws NoSuchFieldException, IllegalAccessException {
+        Field categoryField = currentEntry.getClass().getDeclaredField("category");
+        categoryField.setAccessible(true);
+        categoryField.set(currentEntry, KeywordCategory.typeOf(categoryEntry.getKeyword().getName()));
+    }
+
+    private Map<String, KeywordEntry> getNameEntryMap(List<KeywordEntry> entryList) {
+        return entryList.stream().collect(Collectors.toMap(entry -> entry.getKeyword().getName(), Function.identity()));
+    }
+
+    private Map<String, KeywordFileEntry> getIdRawKeywordMap(List<KeywordFileEntry> rawKeywordList) {
+        Map<String, KeywordFileEntry> idFileEntryMap = rawKeywordList.stream()
+                .collect(Collectors.toMap(KeywordFileEntry::getIdentifier, Function.identity()));
+        return idFileEntryMap;
     }
 
     public static String getId(KeywordEntry keyword) {
@@ -66,73 +158,14 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         return new PairImpl<>(accession, category);
     }
 
-    private void updateListWithRelationShips(List<KEFRBuilder> list, List<KeyFileEntry> rawList) {
-        for (KeyFileEntry raw : rawList) {
-            // category will not have relationship, so ignore them
-            if (raw.hi.isEmpty()) {
-                continue;
-            }
 
-            // Only getting keywords
-            KEFRBuilder target = findByIdentifier(list, raw.id);
-            assert (target != null);
-
-            // Setting the category
-            KEFRBuilder category = findByIdentifier(list, raw.ca);
-            if (category != null) {
-                target.category(category.build().getKeyword());
-            }
-
-            final List<String> withOutCategory =
-                    raw.hi.stream()
-                            .map(s -> s.substring(s.indexOf(CATEGORY_SEPARATOR) + 1))
-                            .collect(Collectors.toList());
-
-            final Set<String> directRelations =
-                    withOutCategory.stream()
-                            .map(s -> s.split(HIERARCHY_SEPARATOR))
-                            .filter(arr -> arr.length >= 2)
-                            .map(arr -> arr[arr.length - 2])
-                            .map(this::trimSpacesAndRemoveLastDot)
-                            .collect(Collectors.toSet());
-
-            // getting relationships and update it parents for directRelations
-            final List<KEFRBuilder> relations =
-                    directRelations.stream()
-                            .map(s -> findByIdentifier(list, s))
-                            .filter(Objects::nonNull)
-                            .peek(
-                                    kwb -> {
-                                        kwb.parentsAdd(target);
-                                    })
-                            .collect(Collectors.toList());
-
-            // Only setting hierarchy if present
-            relations.forEach(target::childrenAdd);
-
-            // no relationship means children is category
-            if (relations.isEmpty() && (category != null)) {
-                target.childrenAdd(category);
-                category.parentsAdd(target);
-            }
-        }
-    }
-
-    private KEFRBuilder findByIdentifier(List<KEFRBuilder> list, String id) {
-        for (KEFRBuilder builder : list) {
-            if (builder.build().getKeyword().getName().equals(trimSpacesAndRemoveLastDot(id)))
-                return builder;
-        }
-        return null;
-    }
-
-    private List<KEFRBuilder> parseKeywordFileEntryList(List<KeyFileEntry> rawList) {
+    private List<KeywordEntry> parseRawKeywordList(List<KeywordFileEntry> rawList) {
         return rawList.stream().map(this::parseKeywordFileEntry).collect(Collectors.toList());
     }
 
-    private KEFRBuilder parseKeywordFileEntry(KeyFileEntry entry) {
-        final String identifier = entry.id != null ? entry.id : entry.ic;
-        KEFRBuilder retObj = new KEFRBuilder();
+    private KeywordEntry parseKeywordFileEntry(KeywordFileEntry entry) {
+        final String identifier = entry.getIdentifier();
+        KeywordEntryBuilder retObj = new KeywordEntryBuilder();
         KeywordId keyword =
                 new KeywordIdBuilder()
                         .name(trimSpacesAndRemoveLastDot(identifier))
@@ -159,7 +192,7 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         // Sites
         retObj.linksSet(entry.ww);
 
-        return retObj;
+        return retObj.build();
     }
 
     private String trimSpacesAndRemoveLastDot(String str) {
@@ -175,9 +208,9 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         return new GoTermBuilder().id(tokens[0]).name(tokens[1].trim()).build();
     }
 
-    private List<KeyFileEntry> convertLinesIntoInMemoryObjectList(List<String> lines) {
+    private List<KeywordFileEntry> convertLinesIntoInMemoryObjectList(List<String> lines) {
         // At the time of writing code there was 1200 entries in file
-        List<KeyFileEntry> retList = new ArrayList<>(1250);
+        List<KeywordFileEntry> retList = new ArrayList<>(1250);
 
         int i = 0;
 
@@ -193,7 +226,7 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         i++;
 
         // reached entries lines
-        KeyFileEntry entry = new KeyFileEntry();
+        KeywordFileEntry entry = new KeywordFileEntry();
 
         // create in memory list of objects
         while (i < lines.size()) {
@@ -205,7 +238,7 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
             // For terminating line no need to complete loop
             if (line.equals("//")) {
                 retList.add(entry);
-                entry = new KeyFileEntry();
+                entry = new KeywordFileEntry();
                 i++;
                 continue;
             }
@@ -249,7 +282,7 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         return retList;
     }
 
-    private static class KeyFileEntry {
+    private class KeywordFileEntry {
         String id;
         String ic;
         String ac;
@@ -260,94 +293,17 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         List<String> ww;
         String ca;
 
-        KeyFileEntry() {
+        KeywordFileEntry() {
             de = new ArrayList<>();
             sy = new ArrayList<>();
             hi = new ArrayList<>();
             go = new ArrayList<>();
             ww = new ArrayList<>();
         }
-    }
 
-    private static class KEFRBuilder extends KeywordEntryBuilder {
-        List<KEFRBuilder> parents = new ArrayList<>();
-        List<KEFRBuilder> children = new ArrayList<>();
-        private static final List<KeywordEntry> completedChildren = new ArrayList<>();
-
-        private Optional<KeywordEntry> findInCompletedChildren(KeywordEntry child) {
-            return completedChildren.stream()
-                    .filter(
-                            keywordEntry ->
-                                    keywordEntry
-                                                    .getKeyword()
-                                                    .getId()
-                                                    .equals(child.getKeyword().getId())
-                                            && keywordEntry
-                                                    .getKeyword()
-                                                    .getName()
-                                                    .equals(child.getKeyword().getName()))
-                    .findFirst();
-        }
-
-        private void addInCompletedChildrenIfAbsent(KeywordEntry keywordEntry) {
-            Optional<KeywordEntry> found = findInCompletedChildren(keywordEntry);
-            if (!found.isPresent()) {
-                completedChildren.add(keywordEntry);
-            }
-        }
-
-        private KeywordEntry retainAllChildrenWithConcreteImplementation(
-                KEFRBuilder currentKeyword, List<KEFRBuilder> children) {
-
-            Optional<KeywordEntry> currentInCompletedChildren =
-                    findInCompletedChildren(currentKeyword.build());
-            if (currentInCompletedChildren.isPresent()) {
-                return currentInCompletedChildren.get();
-            }
-
-            if (children.isEmpty()) {
-                KeywordEntry retKeyword = currentKeyword.build();
-                addInCompletedChildrenIfAbsent(retKeyword);
-                return retKeyword;
-            }
-
-            for (KEFRBuilder child : children) {
-                KeywordEntry completed =
-                        retainAllChildrenWithConcreteImplementation(child, child.children);
-                currentKeyword.childrenAdd(completed);
-            }
-
-            KeywordEntry current = currentKeyword.build();
-            addInCompletedChildrenIfAbsent(current);
-            return current;
-        }
-
-        private void retainImmediateParentsOnlyWithOutChildren(
-                KEFRBuilder currentKeyword, List<KEFRBuilder> parents) {
-            for (KEFRBuilder key : parents) {
-                KeywordEntry limitedParent =
-                        KeywordEntryBuilder.from(key.build())
-                                .childrenSet(Collections.emptyList())
-                                .parentsSet(List.of())
-                                .build();
-                currentKeyword.parentsAdd(limitedParent);
-            }
-        }
-
-        KEFRBuilder parentsAdd(KEFRBuilder parent) {
-            parents.add(parent);
-            return this;
-        }
-
-        KEFRBuilder childrenAdd(KEFRBuilder child) {
-            children.add(child);
-            return this;
-        }
-
-        KeywordEntry builderLimitedKeywordEntry() {
-            retainAllChildrenWithConcreteImplementation(this, this.children);
-            retainImmediateParentsOnlyWithOutChildren(this, this.parents);
-            return super.build();
+        public String getIdentifier(){
+             String identifier = Utils.notNullNotEmpty(this.id) ? this.id : this.ic;
+             return trimSpacesAndRemoveLastDot(identifier);
         }
     }
 }

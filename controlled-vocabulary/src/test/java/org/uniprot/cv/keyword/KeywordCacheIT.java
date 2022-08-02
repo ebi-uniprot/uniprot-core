@@ -23,7 +23,6 @@ class KeywordCacheIT {
         keywords = KeywordCache.INSTANCE.get("keyword/keywlist.txt");
     }
 
-    @Disabled("Enable after TRM-27638")
     @Test
     void testWithMultiChildren() {
         String acc = "KW-0869";
@@ -34,8 +33,8 @@ class KeywordCacheIT {
                 opVal.map(KeywordEntry::getChildren).orElse(Collections.emptyList());
         List<KeywordEntry> parents =
                 opVal.map(KeywordEntry::getParents).orElse(List.of());
-        assertFalse(children.isEmpty());
-        assertTrue(parents.isEmpty());
+        assertTrue(children.isEmpty());
+        assertTrue(parents.size() > 1);
     }
 
     @Test
@@ -49,11 +48,10 @@ class KeywordCacheIT {
         List<KeywordEntry> parents =
                 opVal.map(KeywordEntry::getParents).orElse(List.of());
 
-        assertTrue(parents.size() > 1);
-        assertTrue(children.isEmpty());
+        assertTrue(parents.isEmpty());
+        assertTrue(children.size() > 1);
     }
 
-    @Disabled("Enable after TRM-27638")
     @Test
     void testWithParentsAndChildren() {
         String acc = "KW-0540";
