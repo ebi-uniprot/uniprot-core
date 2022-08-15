@@ -363,4 +363,41 @@ class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
         doTestString(ftLineString, feature);
         doTestStringEv(ftLineStringEv, feature);
     }
+
+    @Test
+    void testVarsplicRemovetrailSpace() {
+
+        String ftLine =
+                "FT   VAR_SEQ         1..166\n"
+                        + "FT                   /note=\"MRREFCWDAYSKAAGSRASSPLPRQDRDSFCHQMSFCLTELHLWSLKNTLHI\n"
+                        + "FT                   ADRDIGIYQYYDKKDPPATEHGNLEKKQKLAESRDYPWTLKNRRPEKLRDSLKELEELM\n"
+                        + "FT                   QNSRCVLSKWKNKYVCQLLFGSGVLVSLSLSGPQLEKVVIDRSLVGKLISDTISD ->\n"
+                        + "FT                   MFSSLHS (in isoform 3)\"\n"
+                        + "FT                   /evidence=\"ECO:0000303|PubMed:15489334, ECO:0000303|Ref.1\"\n"
+                        + "FT                   /id=\"VSP_032408\"";
+
+        String originalSequence =
+                "MRREFCWDAYSKAAGSRASSPLPRQDRDSFCHQMSFCLTELHLWSLKNTLHIADRDIGIYQYYDKKDPPATEHGNLEKKQKLAESRDYPWTLKNRRPEKLRDSLKELEELM"
+                        + "QNSRCVLSKWKNKYVCQLLFGSGVLVSLSLSGPQLEKVVIDRSLVGKLISDTISD";
+        List<String> alternativeSequences = new ArrayList<>();
+        alternativeSequences.add("MFSSLHS");
+        FeatureLocation location = new FeatureLocation(1, 166);
+        String featureId = "VSP_032408";
+        String description = "in isoform 3";
+        List<String> evs = new ArrayList<>();
+        evs.add("ECO:0000303|PubMed:15489334");
+        evs.add("ECO:0000303|Ref.1");
+        AlternativeSequence altSeq =
+                createAlternativeSequence(originalSequence, alternativeSequences);
+        UniProtKBFeature feature =
+                createFeature(
+                        UniprotKBFeatureType.VAR_SEQ,
+                        location,
+                        description,
+                        featureId,
+                        altSeq,
+                        evs);
+
+        doTest(ftLine, feature);
+    }
 }

@@ -329,7 +329,7 @@ public class FTLineBuilderHelper {
             if (i == (lines2.size() - 1)) {
                 sb = new StringBuilder(lines2.get(i));
             } else {
-                lines.add(lines2.get(i));
+                lines.add(lines2.get(i).trim());
             }
         }
         return sb;
