@@ -91,7 +91,7 @@ public enum EvidenceDatabaseTypes {
                 evd("FlyBase", "FlyBase", "I", "http://flybase.org/reports/%value.html"));
         typeMap.put(
                 "HAMAP-Rule",
-                evd("HAMAP-Rule", "HAMAP-Rule", "A", "https://www.uniprot.org/unirule/%value"));
+                evd("HAMAP-Rule", "HAMAP-Rule", "A", "https://hamap.expasy.org/rule/%value"));
         typeMap.put("ARBA", evd("ARBA", "ARBA", "A", "https://www.uniprot.org/arba/%value"));
         typeMap.put(
                 "HGNC",
@@ -117,7 +117,7 @@ public enum EvidenceDatabaseTypes {
         typeMap.put("PIRNR", evd("PIRNR", "PIRNR", "A", "https://www.uniprot.org/unirule/%value"));
         typeMap.put("PIRSR", evd("PIRSR", "PIRSR", "A", "https://www.uniprot.org/unirule/%value"));
         typeMap.put(
-                "PROSITE", evd("PROSITE", "PROSITE", "A", "https://prosite.expasy.org/doc/%value"));
+                "PROSITE", evd("PROSITE", "PROSITE", "A", "https://prosite.expasy.org/%value"));
         typeMap.put(
                 "PROSITE-ProRule",
                 evd(
