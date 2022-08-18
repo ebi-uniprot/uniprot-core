@@ -116,8 +116,7 @@ public enum EvidenceDatabaseTypes {
                 evd("PIR", "PIR", "I", "http://pir.georgetown.edu/cgi-bin/nbrfget?uid=%value"));
         typeMap.put("PIRNR", evd("PIRNR", "PIRNR", "A", "https://www.uniprot.org/unirule/%value"));
         typeMap.put("PIRSR", evd("PIRSR", "PIRSR", "A", "https://www.uniprot.org/unirule/%value"));
-        typeMap.put(
-                "PROSITE", evd("PROSITE", "PROSITE", "A", "https://prosite.expasy.org/%value"));
+        typeMap.put("PROSITE", evd("PROSITE", "PROSITE", "A", "https://prosite.expasy.org/%value"));
         typeMap.put(
                 "PROSITE-ProRule",
                 evd(
