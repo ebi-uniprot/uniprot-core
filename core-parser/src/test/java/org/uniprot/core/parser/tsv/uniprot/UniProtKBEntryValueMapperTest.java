@@ -139,9 +139,7 @@ class UniProtKBEntryValueMapperTest {
         verify("Q15758", "accession", result);
         verify("AAAT_HUMAN", "id", result);
         String proteinName =
-                "Neutral amino acid transporter B(0), ATB(0) (Baboon M7 virus receptor)"
-                        + " (RD114/simian type D retrovirus receptor) (Sodium-dependent neutral amino"
-                        + " acid transporter type 2) (Solute carrier family 1 member 5)";
+                "Neutral amino acid transporter B(0) (ATB(0)) (Baboon M7 virus receptor) (RD114/simian type D retrovirus receptor) (Sodium-dependent neutral amino acid transporter type 2) (Solute carrier family 1 member 5)";
         verify(proteinName, "protein_name", result);
         verify("SLC1A5 ASCT2 M7V1 RDR RDRC", "gene_names", result);
         verify("Homo sapiens (Human)", "organism_name", result);
@@ -153,8 +151,7 @@ class UniProtKBEntryValueMapperTest {
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
 
         String proteinName =
-                "RNA-directed RNA polymerase catalytic subunit, EC 2.7.7.48 (Polymerase basic"
-                        + " protein 1, PB1) (RNA-directed RNA polymerase subunit P1)";
+                "RNA-directed RNA polymerase catalytic subunit (EC 2.7.7.48) (Polymerase basic protein 1) (PB1) (RNA-directed RNA polymerase subunit P1)";
         verify("P03431", "accession", result);
         verify(proteinName, "protein_name", result);
         verify("2.7.7.48", "ec", result);
