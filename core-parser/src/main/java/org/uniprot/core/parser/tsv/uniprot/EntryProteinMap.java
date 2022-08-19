@@ -224,7 +224,8 @@ public class EntryProteinMap implements NamedValueMap {
                         .map(val -> EC2 + SPACE + val.getValue())
                         .collect(Collectors.joining(DELIMITER));
         if (ec != null && !ec.isEmpty()) {
-            sb.append(" ").append(BLACKET_LEFT).append(ec).append(BLACKET_RIGHT);;
+            sb.append(" ").append(BLACKET_LEFT).append(ec).append(BLACKET_RIGHT);
+            ;
         }
         return sb.toString();
     }
@@ -244,7 +245,8 @@ public class EntryProteinMap implements NamedValueMap {
             sb.append(" ").append(BLACKET_LEFT).append(sname).append(BLACKET_RIGHT);
         }
         if (ec != null && !ec.isEmpty()) {
-            sb.append(" ").append(BLACKET_LEFT).append(ec).append(BLACKET_RIGHT);;
+            sb.append(" ").append(BLACKET_LEFT).append(ec).append(BLACKET_RIGHT);
+            ;
         }
         return sb.toString();
     }
