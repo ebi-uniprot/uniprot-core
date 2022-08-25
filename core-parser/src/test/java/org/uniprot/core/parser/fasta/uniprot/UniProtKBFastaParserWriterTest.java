@@ -117,4 +117,18 @@ class UniProtKBFastaParserWriterTest {
                 fastaValue.contains(
                         "AAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBB\nAAAAAAAAAABBBBBBBBBB"));
     }
+
+    @Test
+    void canWriteFastaStringWithSubSequence() {
+        UniProtKBFasta entry =
+                new UniProtKBFastaBuilder()
+                        .id("P21802")
+                        .uniProtkbId("1-5")
+                        .entryType(UniProtKBEntryType.SWISSPROT)
+                        .sequence(new SequenceBuilder("ABCDE").build())
+                        .build();
+        String fastaValue = UniProtKBFastaParserWriter.toString(entry);
+        assertNotNull(fastaValue);
+        assertEquals(">sp|P21802|1-5\nABCDE", fastaValue);
+    }
 }

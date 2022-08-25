@@ -24,15 +24,19 @@ class UniProtKBFastaParserWriter {
         sb.append(entry.getId());
         sb.append('|');
         sb.append(entry.getUniProtkbId().getValue());
-        sb.append(' ').append(getProteinName(entry));
-        sb.append(" OS=").append(entry.getOrganism().getScientificName());
-        sb.append(" OX=").append(entry.getOrganism().getTaxonId());
+        if(Utils.notNullNotEmpty(entry.getProteinName())) {
+            sb.append(' ').append(getProteinName(entry));
+        }
+        if (Utils.notNull(entry.getOrganism())) {
+            sb.append(" OS=").append(entry.getOrganism().getScientificName());
+            sb.append(" OX=").append(entry.getOrganism().getTaxonId());
+        }
 
         if (Utils.notNullNotEmpty(entry.getGeneName())) {
             sb.append(" GN=").append(entry.getGeneName());
         }
 
-        if (isNotSwissProtIsoform(entry)) {
+        if (isNotSwissProtIsoform(entry) && Utils.notNull(entry.getSequenceVersion())) {
             sb.append(" PE=").append(getProteinExist(entry.getProteinExistence()));
             sb.append(" SV=").append(entry.getSequenceVersion());
         }
