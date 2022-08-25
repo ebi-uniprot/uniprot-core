@@ -24,7 +24,7 @@ class UniProtKBFastaParserWriter {
         sb.append(entry.getId());
         sb.append('|');
         sb.append(entry.getUniProtkbId().getValue());
-        if(Utils.notNullNotEmpty(entry.getProteinName())) {
+        if (Utils.notNullNotEmpty(entry.getProteinName())) {
             sb.append(' ').append(getProteinName(entry));
         }
         if (Utils.notNull(entry.getOrganism())) {
