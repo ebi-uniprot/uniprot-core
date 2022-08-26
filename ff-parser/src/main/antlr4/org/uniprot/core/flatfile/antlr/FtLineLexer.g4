@@ -71,11 +71,90 @@ fragment FT_ISOFORM_LT : [0-9a-zA-Z\-];
 
 SPACES: SPACE_+;
 fragment SPACE_: ' ';
+FT_LIGAND:          '\nFT                   /ligand="'                         ->  pushMode( FT_LIGAND_MODE );
+FT_LIGAND_ID:       '\nFT                   /ligand_id="'                      ->  pushMode( FT_LIGAND_ID_MODE);
+FT_LIGAND_LABEL:    '\nFT                   /ligand_label="'                   ->  pushMode( FT_LIGAND_LABEL_MODE);
+FT_LIGAND_NOTE:     '\nFT                   /ligand_note="'                    ->  pushMode( FT_LIGAND_NOTE_MODE);
+FT_LIGAND_PT:       '\nFT                   /ligand_part="'                    ->  pushMode( FT_LIGAND_PT_MODE );
+FT_LIGAND_PT_ID:    '\nFT                   /ligand_part_id="'                 ->  pushMode( FT_LIGAND_PT_ID_MODE);
+FT_LIGAND_PT_LABEL: '\nFT                   /ligand_part_label="'              ->  pushMode( FT_LIGAND_PT_LABEL_MODE);
+FT_LIGAND_PT_NOTE:  '\nFT                   /ligand_part_note="'               ->  pushMode( FT_LIGAND_PT_NOTE_MODE);
 FT_NOTE:            '\nFT                   /note="'                           ->  pushMode( FT_NOTE_MODE );
-FT_EVIDENCE:        '\nFT                   /evidence="'                           -> pushMode( FT_EVIDENCE_MODE );
-FT_ID:              '\nFT                   /id="'      -> pushMode(FT_ID_MODE);
-FT_NEW_LINE_: '\n'                                      -> type (NEW_LINE), popMode;
+FT_EVIDENCE:        '\nFT                   /evidence="'                       -> pushMode( FT_EVIDENCE_MODE );
+FT_ID:              '\nFT                   /id="'                             -> pushMode(FT_ID_MODE);
+FT_NEW_LINE_: '\n'                                                             -> type (NEW_LINE), popMode;
 
+mode FT_LIGAND_MODE;
+FT_LIGAND_DOUBLE_QUOTE : '""'                         {replaceDoubleQuote(); setType(FT_LIGAND_WORD);};
+FT_LIGAND_QUOTE : '"'                              -> popMode, type (DOUBLE_QUOTE);
+FT_LIGAND_SPACE : ' '                            -> type (SPACE);
+FT_LIGAND_COMA : ','                             -> type (COMA);
+FT_LIGAND_CHANGE_OF_LINE : '\nFT                   '   {replaceChangeOfLine(inVarSeq); setType(CHANGE_OF_LINE);};
+FT_LIGAND_WORD: FT_LIGAND_LT (FT_LIGAND_LT)* ;
+fragment FT_LIGAND_LT : ~[ \"\r\n\t];
+
+mode FT_LIGAND_ID_MODE;
+FT_LIGAND_ID_DOUBLE_QUOTE : '""'                         {replaceDoubleQuote(); setType(FT_LIGAND_ID_WORD);};
+FT_LIGAND_ID_QUOTE : '"'                              -> popMode, type (DOUBLE_QUOTE);
+FT_LIGAND_ID_SPACE : ' '                            -> type (SPACE);
+FT_LIGAND_ID_COMA : ','                             -> type (COMA);
+FT_LIGAND_ID_CHANGE_OF_LINE : '\nFT                   '   {replaceChangeOfLine(inVarSeq); setType(CHANGE_OF_LINE);};
+FT_LIGAND_ID_WORD: FT_LIGAND_ID_LT (FT_LIGAND_ID_LT)* ;
+fragment FT_LIGAND_ID_LT : ~[ \"\r\n\t];
+
+mode FT_LIGAND_LABEL_MODE;
+FT_LIGAND_LABEL_DOUBLE_QUOTE : '""'                         {replaceDoubleQuote(); setType(FT_LIGAND_LABEL_WORD);};
+FT_LIGAND_LABEL_QUOTE : '"'                              -> popMode, type (DOUBLE_QUOTE);
+FT_LIGAND_LABEL_SPACE : ' '                            -> type (SPACE);
+FT_LIGAND_LABEL_COMA : ','                             -> type (COMA);
+FT_LIGAND_LABEL_CHANGE_OF_LINE : '\nFT                   '   {replaceChangeOfLine(inVarSeq); setType(CHANGE_OF_LINE);};
+FT_LIGAND_LABEL_WORD: FT_LIGAND_LABEL_LT (FT_LIGAND_LABEL_LT)* ;
+fragment FT_LIGAND_LABEL_LT : ~[ \"\r\n\t];
+
+mode FT_LIGAND_NOTE_MODE;
+FT_LIGAND_NOTE_DOUBLE_QUOTE : '""'                         {replaceDoubleQuote(); setType(FT_LIGAND_NOTE_WORD);};
+FT_LIGAND_NOTE_QUOTE : '"'                              -> popMode, type (DOUBLE_QUOTE);
+FT_LIGAND_NOTE_SPACE : ' '                            -> type (SPACE);
+FT_LIGAND_NOTE_COMA : ','                             -> type (COMA);
+FT_LIGAND_NOTE_CHANGE_OF_LINE : '\nFT                   '   {replaceChangeOfLine(inVarSeq); setType(CHANGE_OF_LINE);};
+FT_LIGAND_NOTE_WORD: FT_LIGAND_NOTE_LT (FT_LIGAND_NOTE_LT)* ;
+fragment FT_LIGAND_NOTE_LT : ~[ \"\r\n\t];
+
+mode FT_LIGAND_PT_MODE;
+FT_LIGAND_PT_DOUBLE_QUOTE : '""'                         {replaceDoubleQuote(); setType(FT_LIGAND_PT_WORD);};
+FT_LIGAND_PT_QUOTE : '"'                              -> popMode, type (DOUBLE_QUOTE);
+FT_LIGAND_PT_SPACE : ' '                            -> type (SPACE);
+FT_LIGAND_PT_COMA : ','                             -> type (COMA);
+FT_LIGAND_PT_CHANGE_OF_LINE : '\nFT                   '   {replaceChangeOfLine(inVarSeq); setType(CHANGE_OF_LINE);};
+FT_LIGAND_PT_WORD: FT_LIGAND_PT_LT (FT_LIGAND_PT_LT)* ;
+fragment FT_LIGAND_PT_LT : ~[ \"\r\n\t];
+
+mode FT_LIGAND_PT_ID_MODE;
+FT_LIGAND_PT_ID_DOUBLE_QUOTE : '""'                         {replaceDoubleQuote(); setType(FT_LIGAND_PT_ID_WORD);};
+FT_LIGAND_PT_ID_QUOTE : '"'                              -> popMode, type (DOUBLE_QUOTE);
+FT_LIGAND_PT_ID_SPACE : ' '                            -> type (SPACE);
+FT_LIGAND_PT_ID_COMA : ','                             -> type (COMA);
+FT_LIGAND_PT_ID_CHANGE_OF_LINE : '\nFT                   '   {replaceChangeOfLine(inVarSeq); setType(CHANGE_OF_LINE);};
+FT_LIGAND_PT_ID_WORD: FT_LIGAND_PT_ID_LT (FT_LIGAND_PT_ID_LT)* ;
+fragment FT_LIGAND_PT_ID_LT : ~[ \"\r\n\t];
+
+mode FT_LIGAND_PT_LABEL_MODE;
+FT_LIGAND_PT_LABEL_DOUBLE_QUOTE : '""'                         {replaceDoubleQuote(); setType(FT_LIGAND_PT_LABEL_WORD);};
+FT_LIGAND_PT_LABEL_QUOTE : '"'                              -> popMode, type (DOUBLE_QUOTE);
+FT_LIGAND_PT_LABEL_SPACE : ' '                            -> type (SPACE);
+FT_LIGAND_PT_LABEL_COMA : ','                             -> type (COMA);
+FT_LIGAND_PT_LABEL_CHANGE_OF_LINE : '\nFT                   '   {replaceChangeOfLine(inVarSeq); setType(CHANGE_OF_LINE);};
+FT_LIGAND_PT_LABEL_WORD: FT_LIGAND_PT_LABEL_LT (FT_LIGAND_PT_LABEL_LT)* ;
+fragment FT_LIGAND_PT_LABEL_LT : ~[ \"\r\n\t];
+
+mode FT_LIGAND_PT_NOTE_MODE;
+FT_LIGAND_PT_NOTE_DOUBLE_QUOTE : '""'                         {replaceDoubleQuote(); setType(FT_LIGAND_PT_NOTE_WORD);};
+FT_LIGAND_PT_NOTE_QUOTE : '"'                              -> popMode, type (DOUBLE_QUOTE);
+FT_LIGAND_PT_NOTE_SPACE : ' '                            -> type (SPACE);
+FT_LIGAND_PT_NOTE_COMA : ','                             -> type (COMA);
+FT_LIGAND_PT_NOTE_CHANGE_OF_LINE : '\nFT                   '   {replaceChangeOfLine(inVarSeq); setType(CHANGE_OF_LINE);};
+FT_LIGAND_PT_NOTE_WORD: FT_LIGAND_PT_NOTE_LT (FT_LIGAND_PT_NOTE_LT)* ;
+fragment FT_LIGAND_PT_NOTE_LT : ~[ \"\r\n\t];
 
 mode FT_NOTE_MODE;
 FT_NOTE_DOUBLE_QUOTE : '""'                         {replaceDoubleQuote(); setType(FT_NOTE_WORD);};
