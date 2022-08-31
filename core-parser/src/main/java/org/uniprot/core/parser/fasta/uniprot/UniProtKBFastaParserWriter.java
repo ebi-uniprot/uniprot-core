@@ -51,7 +51,7 @@ class UniProtKBFastaParserWriter {
 
     private static boolean isSubSequenceEntry(UniProtKBFasta entry) {
         boolean result = false;
-        if(entry.getUniProtkbId()!= null) {
+        if (entry.getUniProtkbId() != null) {
             String id = entry.getUniProtkbId().getValue();
             result = id.matches("\\d{1,5}-\\d{1,5}");
         }
