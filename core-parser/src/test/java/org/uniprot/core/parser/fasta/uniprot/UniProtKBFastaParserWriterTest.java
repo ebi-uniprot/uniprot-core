@@ -123,12 +123,12 @@ class UniProtKBFastaParserWriterTest {
         UniProtKBFasta entry =
                 new UniProtKBFastaBuilder()
                         .id("P21802")
-                        .uniProtkbId("1-5")
+                        .uniProtkbId("10-15")
                         .entryType(UniProtKBEntryType.SWISSPROT)
                         .sequence(new SequenceBuilder("ABCDE").build())
                         .build();
         String fastaValue = UniProtKBFastaParserWriter.toString(entry);
         assertNotNull(fastaValue);
-        assertEquals(">sp|P21802|1-5\nABCDE", fastaValue);
+        assertEquals(">sp|P21802|10-15\nABCDE", fastaValue);
     }
 }
