@@ -120,9 +120,17 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         // add current node as a child of parent
         Field childrenField = parentEntry.getClass().getDeclaredField("children");
         List<KeywordEntry> childrenEntries = parentEntry.getChildren().isEmpty() ? new ArrayList<>() : parentEntry.getChildren();
-        childrenEntries.add(currentEntry);
+        KeywordEntry thinEntry = getEntryWithoutHierarchy(currentEntry);
+        childrenEntries.add(thinEntry);
         childrenField.setAccessible(true);
         childrenField.set(parentEntry, childrenEntries);
+    }
+
+    private KeywordEntry getEntryWithoutHierarchy(KeywordEntry currentEntry) {
+        KeywordEntryBuilder builder = KeywordEntryBuilder.from(currentEntry);
+        builder.parentsSet(List.of());
+        builder.childrenSet(List.of());
+        return builder.build();
     }
 
     private void updateCategory(KeywordEntry currentEntry, KeywordEntry categoryEntry) throws NoSuchFieldException, IllegalAccessException {
