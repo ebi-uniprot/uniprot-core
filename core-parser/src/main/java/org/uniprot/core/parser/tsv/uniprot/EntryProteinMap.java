@@ -18,6 +18,7 @@ public class EntryProteinMap implements NamedValueMap {
     private static final String ALLERGEN = "allergen";
     private static final String BLACKET_RIGHT = ")";
     private static final String BLACKET_LEFT = "(";
+    public static final String BRACKET_DELIMITER = BLACKET_RIGHT + " " + BLACKET_LEFT;
     private static final String SPACE = " ";
     private static final String DELIMITER = ", ";
 
@@ -66,11 +67,7 @@ public class EntryProteinMap implements NamedValueMap {
             }
             sb.append(
                     protein.getAlternativeNames().stream()
-                            .map(
-                                    val ->
-                                            BLACKET_LEFT
-                                                    + convertProteinAltNameToString(val)
-                                                    + BLACKET_RIGHT)
+                            .map(this::convertProteinAltNameToString)
                             .collect(Collectors.joining(SPACE)));
         }
         if ((protein.getSubmissionNames() != null) && !protein.getSubmissionNames().isEmpty()) {
@@ -134,7 +131,6 @@ public class EntryProteinMap implements NamedValueMap {
                             protein.getContains().stream()
                                     .map(this::convertProteinSectionToString)
                                     .collect(Collectors.joining(SEMICOLON)))
-                    .append(SPACE)
                     .append(SQUARE_BLACKET_RIGHT);
         }
 
@@ -147,7 +143,6 @@ public class EntryProteinMap implements NamedValueMap {
                             protein.getIncludes().stream()
                                     .map(this::convertProteinSectionToString)
                                     .collect(Collectors.joining(SEMICOLON)))
-                    .append(SPACE)
                     .append(SQUARE_BLACKET_RIGHT);
         }
         return sb.toString();
@@ -194,11 +189,7 @@ public class EntryProteinMap implements NamedValueMap {
             }
             String alternativeNames =
                     section.getAlternativeNames().stream()
-                            .map(
-                                    val ->
-                                            BLACKET_LEFT
-                                                    + convertProteinAltNameToString(val)
-                                                    + BLACKET_RIGHT)
+                            .map(this::convertProteinAltNameToString)
                             .collect(Collectors.joining(SPACE));
             sb.append(alternativeNames);
         }
@@ -207,20 +198,20 @@ public class EntryProteinMap implements NamedValueMap {
 
     private String convertProteinAltNameToString(ProteinName name) {
         StringBuilder sb = new StringBuilder();
-        sb.append(name.getFullName().getValue());
+        sb.append(BLACKET_LEFT).append(name.getFullName().getValue()).append(BLACKET_RIGHT);
         String sname =
                 name.getShortNames().stream()
                         .map(Name::getValue)
-                        .collect(Collectors.joining(DELIMITER));
+                        .collect(Collectors.joining(BRACKET_DELIMITER));
         String ec =
                 name.getEcNumbers().stream()
                         .map(val -> EC2 + SPACE + val.getValue())
                         .collect(Collectors.joining(DELIMITER));
         if (sname != null && !sname.isEmpty()) {
-            sb.append(DELIMITER).append(sname);
+            sb.append(" ").append(BLACKET_LEFT).append(sname).append(BLACKET_RIGHT);
         }
         if (ec != null && !ec.isEmpty()) {
-            sb.append(DELIMITER).append(ec);
+            sb.append(" ").append(BLACKET_LEFT).append(ec).append(BLACKET_RIGHT);
         }
         return sb.toString();
     }
@@ -233,7 +224,8 @@ public class EntryProteinMap implements NamedValueMap {
                         .map(val -> EC2 + SPACE + val.getValue())
                         .collect(Collectors.joining(DELIMITER));
         if (ec != null && !ec.isEmpty()) {
-            sb.append(DELIMITER).append(ec);
+            sb.append(" ").append(BLACKET_LEFT).append(ec).append(BLACKET_RIGHT);
+            ;
         }
         return sb.toString();
     }
@@ -244,16 +236,17 @@ public class EntryProteinMap implements NamedValueMap {
         String sname =
                 name.getShortNames().stream()
                         .map(Name::getValue)
-                        .collect(Collectors.joining(DELIMITER));
+                        .collect(Collectors.joining(BRACKET_DELIMITER));
         String ec =
                 name.getEcNumbers().stream()
                         .map(val -> EC2 + SPACE + val.getValue())
-                        .collect(Collectors.joining(DELIMITER));
+                        .collect(Collectors.joining(BRACKET_DELIMITER));
         if (sname != null && !sname.isEmpty()) {
-            sb.append(DELIMITER).append(sname);
+            sb.append(" ").append(BLACKET_LEFT).append(sname).append(BLACKET_RIGHT);
         }
         if (ec != null && !ec.isEmpty()) {
-            sb.append(DELIMITER).append(ec);
+            sb.append(" ").append(BLACKET_LEFT).append(ec).append(BLACKET_RIGHT);
+            ;
         }
         return sb.toString();
     }
