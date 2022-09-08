@@ -2,7 +2,6 @@ package org.uniprot.core.cv.keyword;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.go.GoTerm;

@@ -1,5 +1,16 @@
 package org.uniprot.cv.keyword;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.go.GoTerm;
@@ -13,17 +24,6 @@ import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
 import org.uniprot.core.util.Utils;
 import org.uniprot.cv.common.AbstractFileReader;
-
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
     private static final String WW_LINE = "WW";
@@ -44,7 +44,8 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         List<KeywordFileEntry> rawKeywordList = convertLinesIntoInMemoryObjectList(lines);
         Map<String, KeywordFileEntry> idRawKeywordMap = getIdRawKeywordMap(rawKeywordList);
 
-        List<KeywordEntry> entryList = parseRawKeywordList(rawKeywordList);// thin, it doesn't have hierarchical
+        List<KeywordEntry> entryList =
+                parseRawKeywordList(rawKeywordList); // thin, it doesn't have hierarchical
         Map<String, KeywordEntry> nameEntryMap = getNameEntryMap(entryList);
 
         Set<String> processedKeywordIds = new HashSet<>();
@@ -68,52 +69,74 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
                                 KeywordFileReader::getAccessionCategoryPair));
     }
 
-    private void updateRelationships(KeywordFileEntry rawKeyword, Map<String, KeywordFileEntry> idRawKeywordMap,
-                                    Set<String> processedKeywordIds, Map<String, KeywordEntry> nameEntryMap) throws NoSuchFieldException, IllegalAccessException {
+    private void updateRelationships(
+            KeywordFileEntry rawKeyword,
+            Map<String, KeywordFileEntry> idRawKeywordMap,
+            Set<String> processedKeywordIds,
+            Map<String, KeywordEntry> nameEntryMap)
+            throws NoSuchFieldException, IllegalAccessException {
 
-        KeywordEntry currentEntry = nameEntryMap.get(trimSpacesAndRemoveLastDot(rawKeyword.getIdentifier()));
+        KeywordEntry currentEntry =
+                nameEntryMap.get(trimSpacesAndRemoveLastDot(rawKeyword.getIdentifier()));
         String category = trimSpacesAndRemoveLastDot(rawKeyword.ca);
         if (Utils.notNullNotEmpty(category) && nameEntryMap.containsKey(category)) {
             updateCategory(currentEntry, nameEntryMap.get(category));
         }
-        if (Objects.nonNull(currentEntry) && !processedKeywordIds.contains(currentEntry.getKeyword().getName())) {
-            processedKeywordIds.add(currentEntry.getKeyword().getName());// set as processed
+        if (Objects.nonNull(currentEntry)
+                && !processedKeywordIds.contains(currentEntry.getKeyword().getName())) {
+            processedKeywordIds.add(currentEntry.getKeyword().getName()); // set as processed
             List<String> hierarchies = rawKeyword.hi;
 
-            String categoryAsParent = hierarchies.stream().map(hierarchy -> hierarchy.split(HIERARCHY_SEPARATOR))
-                    .filter(ancestors -> ancestors.length == 1).findAny().map(hierarchy -> hierarchy[0]
-                            .split(CATEGORY_SEPARATOR)).map(tokens -> tokens[0]).orElse(null);
+            String categoryAsParent =
+                    hierarchies.stream()
+                            .map(hierarchy -> hierarchy.split(HIERARCHY_SEPARATOR))
+                            .filter(ancestors -> ancestors.length == 1)
+                            .findAny()
+                            .map(hierarchy -> hierarchy[0].split(CATEGORY_SEPARATOR))
+                            .map(tokens -> tokens[0])
+                            .orElse(null);
 
-            List<String> hierarchiesMinusCat = hierarchies.stream()
-                    .map(hierarchy -> hierarchy.substring(hierarchy.indexOf(CATEGORY_SEPARATOR) + 1))
-                    .collect(Collectors.toList());
-            Set<String> immediateParents = hierarchiesMinusCat.stream()
-                    .map(hierarchy -> hierarchy.split(HIERARCHY_SEPARATOR))
-                    .filter(ancestors -> ancestors.length >= 2)
-                    .map(ancestors -> ancestors[ancestors.length - 2])
-                    .map(this::trimSpacesAndRemoveLastDot)
-                    .collect(Collectors.toSet());
-            if(Objects.nonNull(categoryAsParent)){
+            List<String> hierarchiesMinusCat =
+                    hierarchies.stream()
+                            .map(
+                                    hierarchy ->
+                                            hierarchy.substring(
+                                                    hierarchy.indexOf(CATEGORY_SEPARATOR) + 1))
+                            .collect(Collectors.toList());
+            Set<String> immediateParents =
+                    hierarchiesMinusCat.stream()
+                            .map(hierarchy -> hierarchy.split(HIERARCHY_SEPARATOR))
+                            .filter(ancestors -> ancestors.length >= 2)
+                            .map(ancestors -> ancestors[ancestors.length - 2])
+                            .map(this::trimSpacesAndRemoveLastDot)
+                            .collect(Collectors.toSet());
+            if (Objects.nonNull(categoryAsParent)) {
                 immediateParents.add(categoryAsParent);
             }
             for (String parent : immediateParents) {
                 KeywordEntry parentEntry = nameEntryMap.get(trimSpacesAndRemoveLastDot(parent));
-                if(Objects.nonNull(parentEntry)){
+                if (Objects.nonNull(parentEntry)) {
                     updateParentChild(currentEntry, parentEntry);
                     KeywordFileEntry parentRawKeyword = idRawKeywordMap.get(parent);
                     if (Objects.nonNull(parentRawKeyword)) {
                         // call for the parent
-                        updateRelationships(parentRawKeyword, idRawKeywordMap, processedKeywordIds, nameEntryMap);
+                        updateRelationships(
+                                parentRawKeyword,
+                                idRawKeywordMap,
+                                processedKeywordIds,
+                                nameEntryMap);
                     }
                 }
             }
         }
     }
 
-    private void updateParentChild(KeywordEntry currentEntry, KeywordEntry parentEntry) throws NoSuchFieldException, IllegalAccessException {
+    private void updateParentChild(KeywordEntry currentEntry, KeywordEntry parentEntry)
+            throws NoSuchFieldException, IllegalAccessException {
         // add as a parent
         Field parentsField = currentEntry.getClass().getDeclaredField("parents");
-        List<KeywordEntry> parentEntries = currentEntry.getParents().isEmpty() ? new ArrayList<>() : currentEntry.getParents();
+        List<KeywordEntry> parentEntries =
+                currentEntry.getParents().isEmpty() ? new ArrayList<>() : currentEntry.getParents();
         parentEntries.add(parentEntry);
         parentsField.setAccessible(true);
         parentsField.set(currentEntry, parentEntries);
@@ -136,16 +159,24 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
     private void updateCategory(KeywordEntry currentEntry, KeywordEntry categoryEntry) throws NoSuchFieldException, IllegalAccessException {
         Field categoryField = currentEntry.getClass().getDeclaredField("category");
         categoryField.setAccessible(true);
-        categoryField.set(currentEntry, KeywordCategory.typeOf(categoryEntry.getKeyword().getName()));
+        categoryField.set(
+                currentEntry, KeywordCategory.typeOf(categoryEntry.getKeyword().getName()));
     }
 
     private Map<String, KeywordEntry> getNameEntryMap(List<KeywordEntry> entryList) {
-        return entryList.stream().collect(Collectors.toMap(entry -> entry.getKeyword().getName(), Function.identity()));
+        return entryList.stream()
+                .collect(
+                        Collectors.toMap(
+                                entry -> entry.getKeyword().getName(), Function.identity()));
     }
 
-    private Map<String, KeywordFileEntry> getIdRawKeywordMap(List<KeywordFileEntry> rawKeywordList) {
-        Map<String, KeywordFileEntry> idFileEntryMap = rawKeywordList.stream()
-                .collect(Collectors.toMap(KeywordFileEntry::getIdentifier, Function.identity()));
+    private Map<String, KeywordFileEntry> getIdRawKeywordMap(
+            List<KeywordFileEntry> rawKeywordList) {
+        Map<String, KeywordFileEntry> idFileEntryMap =
+                rawKeywordList.stream()
+                        .collect(
+                                Collectors.toMap(
+                                        KeywordFileEntry::getIdentifier, Function.identity()));
         return idFileEntryMap;
     }
 
@@ -165,7 +196,6 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
 
         return new PairImpl<>(accession, category);
     }
-
 
     private List<KeywordEntry> parseRawKeywordList(List<KeywordFileEntry> rawList) {
         return rawList.stream().map(this::parseKeywordFileEntry).collect(Collectors.toList());
@@ -309,9 +339,9 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
             ww = new ArrayList<>();
         }
 
-        public String getIdentifier(){
-             String identifier = Utils.notNullNotEmpty(this.id) ? this.id : this.ic;
-             return trimSpacesAndRemoveLastDot(identifier);
+        public String getIdentifier() {
+            String identifier = Utils.notNullNotEmpty(this.id) ? this.id : this.ic;
+            return trimSpacesAndRemoveLastDot(identifier);
         }
     }
 }

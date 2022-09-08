@@ -138,9 +138,7 @@ class KeywordEntryBuilderTest {
     @Test
     void canAddSetParents() {
         KeywordEntry obj =
-                new KeywordEntryBuilder()
-                        .parentsSet(List.of(new KeywordEntryImpl()))
-                        .build();
+                new KeywordEntryBuilder().parentsSet(List.of(new KeywordEntryImpl())).build();
         assertNotNull(obj.getParents());
         assertFalse(obj.getParents().isEmpty());
         assertEquals(1, obj.getParents().size());

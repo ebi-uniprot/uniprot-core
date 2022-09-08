@@ -6,10 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.uniprot.core.cv.keyword.KeywordEntry;
@@ -31,8 +29,7 @@ class KeywordCacheIT {
         assertTrue(opVal.isPresent());
         List<KeywordEntry> children =
                 opVal.map(KeywordEntry::getChildren).orElse(Collections.emptyList());
-        List<KeywordEntry> parents =
-                opVal.map(KeywordEntry::getParents).orElse(List.of());
+        List<KeywordEntry> parents = opVal.map(KeywordEntry::getParents).orElse(List.of());
         assertTrue(children.isEmpty());
         assertTrue(parents.size() > 1);
     }
@@ -45,8 +42,7 @@ class KeywordCacheIT {
         assertTrue(opVal.isPresent());
         List<KeywordEntry> children =
                 opVal.map(KeywordEntry::getChildren).orElse(Collections.emptyList());
-        List<KeywordEntry> parents =
-                opVal.map(KeywordEntry::getParents).orElse(List.of());
+        List<KeywordEntry> parents = opVal.map(KeywordEntry::getParents).orElse(List.of());
 
         assertTrue(parents.isEmpty());
         assertTrue(children.size() > 1);
@@ -60,8 +56,7 @@ class KeywordCacheIT {
         assertTrue(opVal.isPresent());
         List<KeywordEntry> children =
                 opVal.map(KeywordEntry::getChildren).orElse(Collections.emptyList());
-        List<KeywordEntry> parents =
-                opVal.map(KeywordEntry::getParents).orElse(List.of());
+        List<KeywordEntry> parents = opVal.map(KeywordEntry::getParents).orElse(List.of());
         assertFalse(parents.isEmpty());
         assertFalse(children.isEmpty());
     }
