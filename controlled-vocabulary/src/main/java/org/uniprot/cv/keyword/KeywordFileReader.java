@@ -49,14 +49,14 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         Map<String, KeywordEntry> nameEntryMap = getNameEntryMap(entryList);
 
         Set<String> processedKeywordIds = new HashSet<>();
-        for (KeywordFileEntry rawKeyword : rawKeywordList) {
-            try {
+        try {
+            for (KeywordFileEntry rawKeyword : rawKeywordList) {
                 updateRelationships(rawKeyword, idRawKeywordMap, processedKeywordIds, nameEntryMap);
-            } catch (Exception e) {
-                throw new IllegalArgumentException(e);
             }
+            cleanParent(entryList);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e);
         }
-
         return entryList;
     }
 
@@ -144,16 +144,15 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
         Field childrenField = parentEntry.getClass().getDeclaredField("children");
         List<KeywordEntry> childrenEntries =
                 parentEntry.getChildren().isEmpty() ? new ArrayList<>() : parentEntry.getChildren();
-        KeywordEntry thinEntry = getEntryWithoutHierarchy(currentEntry);
+        KeywordEntry thinEntry = getThinEntry(currentEntry);
         childrenEntries.add(thinEntry);
         childrenField.setAccessible(true);
         childrenField.set(parentEntry, childrenEntries);
     }
 
-    private KeywordEntry getEntryWithoutHierarchy(KeywordEntry currentEntry) {
-        KeywordEntryBuilder builder = KeywordEntryBuilder.from(currentEntry);
-        builder.parentsSet(List.of());
-        builder.childrenSet(List.of());
+    private KeywordEntry getThinEntry(KeywordEntry currentEntry) {
+        KeywordEntryBuilder builder = new KeywordEntryBuilder();
+        builder.keyword(currentEntry.getKeyword());
         return builder.build();
     }
 
@@ -180,6 +179,27 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
                                 Collectors.toMap(
                                         KeywordFileEntry::getIdentifier, Function.identity()));
         return idFileEntryMap;
+    }
+
+    private void cleanParent(List<KeywordEntry> list)
+            throws NoSuchFieldException, IllegalAccessException {
+        for (KeywordEntry entry : list) {
+            List<KeywordEntry> newParentList = cleanParentChildren(entry.getParents());
+            Field parentsField = entry.getClass().getDeclaredField("parents");
+            parentsField.setAccessible(true);
+            parentsField.set(entry, newParentList);
+        }
+    }
+
+    private List<KeywordEntry> cleanParentChildren(List<KeywordEntry> list) {
+        List<KeywordEntry> result = new ArrayList<>();
+        for (KeywordEntry entry : list) {
+            KeywordEntryBuilder builder = new KeywordEntryBuilder();
+            builder.keyword(entry.getKeyword());
+            builder.parentsSet(cleanParentChildren(entry.getParents()));
+            result.add(builder.build());
+        }
+        return result;
     }
 
     public static String getId(KeywordEntry keyword) {
