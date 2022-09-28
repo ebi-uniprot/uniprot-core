@@ -1,11 +1,10 @@
 package org.uniprot.core.cv.keyword.impl;
 
-import static org.uniprot.core.util.Utils.*;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.annotation.Nonnull;
 
@@ -21,7 +20,7 @@ public class KeywordEntryBuilder implements Builder<KeywordEntry> {
     private String definition;
     private List<String> synonyms = new ArrayList<>();
     private List<GoTerm> geneOntologies = new ArrayList<>();
-    private Set<KeywordEntry> parents = new HashSet<>();
+    private List<KeywordEntry> parents = new ArrayList<>();
     private List<String> links = new ArrayList<>();
     private KeywordId category;
     private List<KeywordEntry> children = new ArrayList<>();
@@ -57,8 +56,8 @@ public class KeywordEntryBuilder implements Builder<KeywordEntry> {
         return this;
     }
 
-    public @Nonnull KeywordEntryBuilder parentsSet(Set<KeywordEntry> parents) {
-        this.parents = modifiableSet(parents);
+    public @Nonnull KeywordEntryBuilder parentsSet(List<KeywordEntry> parents) {
+        this.parents = modifiableList(parents);
         return this;
     }
 

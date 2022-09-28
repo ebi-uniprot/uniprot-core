@@ -64,7 +64,7 @@ class KeywordEntryValueMapperTest {
         GeneOntologyEntry go = new GeneOntologyEntryBuilder().id("goId").name("goTerm").build();
         KeywordEntry parent =
                 KeywordEntryBuilder.from(getKeywordEntryParent())
-                        .parentsSet(Collections.singleton(getKeywordEntryParent()))
+                        .parentsSet(List.of(getKeywordEntryParent()))
                         .build();
 
         KeywordEntry keywordEntry =

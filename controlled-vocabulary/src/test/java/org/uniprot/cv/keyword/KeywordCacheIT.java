@@ -6,10 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.uniprot.core.cv.keyword.KeywordEntry;
@@ -23,37 +21,33 @@ class KeywordCacheIT {
         keywords = KeywordCache.INSTANCE.get("keyword/keywlist.txt");
     }
 
-    @Disabled("Enable after TRM-27638")
     @Test
-    void testWithMultiChildren() {
+    void testWithMultiParent() {
         String acc = "KW-0869";
         Optional<KeywordEntry> opVal =
                 keywords.stream().filter(val -> val.getKeyword().getId().equals(acc)).findFirst();
         assertTrue(opVal.isPresent());
         List<KeywordEntry> children =
                 opVal.map(KeywordEntry::getChildren).orElse(Collections.emptyList());
-        Set<KeywordEntry> parents =
-                opVal.map(KeywordEntry::getParents).orElse(Collections.emptySet());
-        assertFalse(children.isEmpty());
-        assertTrue(parents.isEmpty());
+        List<KeywordEntry> parents = opVal.map(KeywordEntry::getParents).orElse(List.of());
+        assertTrue(children.isEmpty());
+        assertTrue(parents.size() > 1);
     }
 
     @Test
-    void testCategoryMultiParent() {
+    void testCategoryMultiChildren() {
         String acc = "KW-9990";
         Optional<KeywordEntry> opVal =
                 keywords.stream().filter(val -> val.getKeyword().getId().equals(acc)).findFirst();
         assertTrue(opVal.isPresent());
         List<KeywordEntry> children =
                 opVal.map(KeywordEntry::getChildren).orElse(Collections.emptyList());
-        Set<KeywordEntry> parents =
-                opVal.map(KeywordEntry::getParents).orElse(Collections.emptySet());
+        List<KeywordEntry> parents = opVal.map(KeywordEntry::getParents).orElse(List.of());
 
-        assertTrue(parents.size() > 1);
-        assertTrue(children.isEmpty());
+        assertTrue(parents.isEmpty());
+        assertTrue(children.size() > 1);
     }
 
-    @Disabled("Enable after TRM-27638")
     @Test
     void testWithParentsAndChildren() {
         String acc = "KW-0540";
@@ -62,8 +56,7 @@ class KeywordCacheIT {
         assertTrue(opVal.isPresent());
         List<KeywordEntry> children =
                 opVal.map(KeywordEntry::getChildren).orElse(Collections.emptyList());
-        Set<KeywordEntry> parents =
-                opVal.map(KeywordEntry::getParents).orElse(Collections.emptySet());
+        List<KeywordEntry> parents = opVal.map(KeywordEntry::getParents).orElse(List.of());
         assertFalse(parents.isEmpty());
         assertFalse(children.isEmpty());
     }

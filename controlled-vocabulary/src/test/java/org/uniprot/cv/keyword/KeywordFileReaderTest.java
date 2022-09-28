@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -134,8 +133,8 @@ class KeywordFileReaderTest {
         assertNotNull(kw.getCategory());
         assertEquals("KW-9993", kw.getCategory().getId());
 
-        assertNotNull(kw.getChildren());
-        assertEquals(2, kw.getChildren().size());
+        assertNotNull(kw.getParents());
+        assertEquals(2, kw.getParents().size());
 
         assertNotNull(kw.getLinks());
         assertTrue(kw.getLinks().isEmpty());
@@ -163,7 +162,7 @@ class KeywordFileReaderTest {
         }
 
         @Override
-        public Set<KeywordEntry> getParents() {
+        public List<KeywordEntry> getParents() {
             return null;
         }
 

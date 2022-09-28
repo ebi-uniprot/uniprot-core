@@ -3,7 +3,6 @@ package org.uniprot.core.cv.keyword.impl;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
@@ -27,7 +26,7 @@ class KeywordEntryImplTest {
     private String definition;
     private List<String> synonyms;
     private List<GoTerm> geneOntologies;
-    private Set<KeywordEntry> parents;
+    private List<KeywordEntry> parents;
     private List<String> sites;
     private KeywordId category;
     private List<KeywordEntry> children;
