@@ -24,6 +24,7 @@ import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
 import org.uniprot.core.util.Utils;
 import org.uniprot.cv.common.AbstractFileReader;
+
 @SuppressWarnings("squid:S3011")
 public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
     private static final String WW_LINE = "WW";
