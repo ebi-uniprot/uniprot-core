@@ -220,7 +220,7 @@ public enum EvidenceDatabaseTypes {
                         "ProteomicsDB",
                         "C",
                         "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/proteomics_mapping/README"));
-        typeMap.put("Google", evd("Google", "Google", "A", ""));
+        typeMap.put("Google", evd("Google", "Google", "A", "https://www.uniprot.org/help/Google"));
     }
 
     private EvidenceDatabaseDetail evd(
