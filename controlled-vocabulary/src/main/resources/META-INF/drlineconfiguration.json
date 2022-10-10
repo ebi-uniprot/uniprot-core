@@ -144,7 +144,7 @@
 		"name": "BMRB",
 		"displayName": "BMRB",
 		"category": "3DS",
-		"uriLink": "http://www.bmrb.wisc.edu/data_library/summary/protein.php?uniprot=%id"
+		"uriLink": "https://bmrb.io/data_library/summary/protein.php?uniprot=%id"
 	},
 	{
 		"name": "ModBase",
