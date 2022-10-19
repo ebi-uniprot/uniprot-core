@@ -187,6 +187,16 @@ public class FTLineBuilderHelper {
     private static List<String> addAlternativeSequenceNoFFMarking(
             StringBuilder sb, UniProtKBFeature featureWithAlternativeSequence, String extra) {
         List<String> lines = new ArrayList<>();
+        appendAlternativeSequenceNoFFMarking(sb, featureWithAlternativeSequence);
+        if (!Strings.isNullOrEmpty(extra)) {
+            sb.append(extra);
+        }
+        sb.append("\"");
+        lines.add(sb.toString());
+        return lines;
+    }
+
+    public static void appendAlternativeSequenceNoFFMarking(StringBuilder sb, UniProtKBFeature featureWithAlternativeSequence) {
         if (hasAlternativeSequence(featureWithAlternativeSequence)) {
             String originalSequence =
                     featureWithAlternativeSequence.getAlternativeSequence().getOriginalSequence();
@@ -204,12 +214,6 @@ public class FTLineBuilderHelper {
         } else {
             sb.append(MISSING);
         }
-        if (!Strings.isNullOrEmpty(extra)) {
-            sb.append(extra);
-        }
-        sb.append("\"");
-        lines.add(sb.toString());
-        return lines;
     }
 
     private static String getJoiner(UniProtKBFeature featureWithAlternativeSequence) {
