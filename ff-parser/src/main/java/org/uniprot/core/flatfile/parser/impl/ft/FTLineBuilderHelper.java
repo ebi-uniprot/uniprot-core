@@ -196,7 +196,8 @@ public class FTLineBuilderHelper {
         return lines;
     }
 
-    public static void appendAlternativeSequenceNoFFMarking(StringBuilder sb, UniProtKBFeature featureWithAlternativeSequence) {
+    public static void appendAlternativeSequenceNoFFMarking(
+            StringBuilder sb, UniProtKBFeature featureWithAlternativeSequence) {
         if (hasAlternativeSequence(featureWithAlternativeSequence)) {
             String originalSequence =
                     featureWithAlternativeSequence.getAlternativeSequence().getOriginalSequence();
