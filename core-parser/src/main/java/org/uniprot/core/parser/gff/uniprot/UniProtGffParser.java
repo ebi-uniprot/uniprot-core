@@ -211,14 +211,16 @@ public class UniProtGffParser {
                     || !descriptionValue.startsWith("In Ref")) {
                 ifBuilderNonEmptyThenAppendSpace(note);
                 note.append(descriptionValue);
-                note.append(".");
+                if (note.charAt(note.length() - 1) != '.') {
+                    note.append(".");
+                }
             }
         }
 
         // note - alternativeSequence
         if (feature.hasAlternativeSequence()) {
             ifBuilderNonEmptyThenAppendSpace(note);
-            FTLineBuilderHelper.addAlternativeSequence(note, feature, false, "");
+            FTLineBuilderHelper.appendAlternativeSequenceNoFFMarking(note, feature);
             if (!(featureType.equals(MUTAGEN))) {
                 // change all to arrows without space before and after
                 replaceArrow(note);

@@ -2,7 +2,6 @@ package org.uniprot.core.cv.keyword;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.go.GoTerm;
@@ -28,7 +27,7 @@ public interface KeywordEntry extends Serializable {
      *
      * @return list of keywords which will always keywords (never a category)
      */
-    Set<KeywordEntry> getParents();
+    List<KeywordEntry> getParents();
 
     List<String> getLinks();
 

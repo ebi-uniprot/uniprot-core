@@ -24,7 +24,7 @@ class EvidenceDatabaseTypesTest {
         List<EvidenceDatabaseDetail> evidenceDatabases =
                 EvidenceDatabaseTypes.INSTANCE.getAllEvidenceDatabases();
         assertNotNull(evidenceDatabases);
-        assertEquals(50, evidenceDatabases.size());
+        assertEquals(51, evidenceDatabases.size());
     }
 
     @Test

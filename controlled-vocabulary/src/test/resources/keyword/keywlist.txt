@@ -9,7 +9,7 @@
 
 Description: Controlled vocabulary of keywords
 Name:        keywlist.txt
-Release:     2020_01 of 26-Feb-2020
+Release:     2022_03 of 03-Aug-2022
 
 ---------------------------------------------------------------------------
 
@@ -242,7 +242,7 @@ DE   such as inflammation, immunity, differentiation, cell growth,
 DE   tumorigenesis and apoptosis. Several viruses have developed strategies
 DE   to activate the NF-kappa-B pathway in order to promote viral
 DE   replication and prevent virus-induced apoptosis.
-GO   GO:0039652; activation by virus of host NF-kappaB transcription factor activity
+GO   GO:0039652; induction by virus of host NF-kappaB cascade
 HI   Biological process: Host-virus interaction; Activation of host NF-kappa-B by virus.
 CA   Biological process.
 //
@@ -268,7 +268,7 @@ CA   Biological process.
 ID   Acyltransferase.
 AC   KW-0012
 DE   Enzyme catalyzing the transfer of acyl- (RCO-) groups.
-GO   GO:0016746; transferase activity, transferring acyl groups
+GO   GO:0016746; acyltransferase activity
 HI   Molecular function: Transferase; Acyltransferase.
 CA   Molecular function.
 //
@@ -292,7 +292,7 @@ DE   reinvasion.
 SY   Acquired immunity.
 GO   GO:0002250; adaptive immune response
 HI   Biological process: Immunity; Adaptive immunity.
-WW   http://www.nature.com/nri/journal/v10/n1/full/nri2686.html
+WW   https://www.nature.com/articles/nri2686
 CA   Biological process.
 //
 ID   ADP-ribosylation.
@@ -550,7 +550,6 @@ DE   Its transport across cellular membranes is thus of high biological
 DE   relevance. Ammonia (NH3) is a weak base and exists predominantly as
 DE   the ammonium ion (NH4+) in biological fluids.
 SY   Ammonium transport.
-GO   GO:0015696; ammonium transport
 HI   Biological process: Transport; Ammonia transport.
 CA   Biological process.
 //
@@ -1249,6 +1248,21 @@ DE   off host RNA synthesis.
 HI   Biological process: Host-virus interaction; Host gene expression shutoff by virus; Bacterial host gene expression shutoff by virus; Bacterial host transcription shutoff by virus.
 CA   Biological process.
 //
+ID   Bacterial microcompartment.
+AC   KW-1283
+DE   Protein located in or on a bacterial microcompartment (BMC),
+DE   proteinaceous polyhedral shells that encapsulate enzymes. The
+DE   selectively permeable organelles protect their contents from the
+DE   cytoplasm and/or the cytoplasm from reactants in their interior.
+DE   Examples of BMCs include carboxysomes, which enhance autotrophic CO(2)
+DE   fixation by encapsulating RuBisCO and carbonic anhydrase, as well as
+DE   BMCs involved in ethanolamine or propanediol degradation; both
+DE   pathways make toxic intermediates. Artifical BMCs can be expressed and
+DE   filled with cargo proteins for biotechnological uses. BMCs are found
+DE   in many bacterial phyla; in most cases their cargo is unknown.
+HI   Cellular component: Bacterial microcompartment.
+CA   Cellular component.
+//
 ID   Bacteriochlorophyll.
 AC   KW-0076
 DE   Protein interacting with bacteriochlorophyll, a photosynthetic pigment
@@ -1335,9 +1349,9 @@ AC   KW-0083
 DE   Protein which, if defective, causes Bardet-Biedl syndrome (BBS), a
 DE   genetically heterogeneous, autosomal recessive disorder. It is
 DE   characterized by pigmentary retinopathy, obesity, polydactyly,
-DE   hypogenitalism, renal malformation and mental retardation. Secondary
-DE   features include diabetes mellitus, hypertension and congenital heart
-DE   disease.
+DE   hypogenitalism, renal malformation and intellectual disability.
+DE   Secondary features include diabetes mellitus, hypertension and
+DE   congenital heart disease.
 SY   BBS.
 HI   Disease: Ciliopathy; Bardet-Biedl syndrome.
 CA   Disease.
@@ -1644,7 +1658,7 @@ DE   function is cadmium-dependent. Cadmium is a heavy metal, chemical
 DE   symbol Cd.
 SY   Cadmium ion; Cd.
 HI   Ligand: Cadmium.
-WW   http://www.webelements.com/webelements/elements/text/Cd/
+WW   https://www.webelements.com/webelements/elements/text/Cd/
 CA   Ligand.
 //
 ID   Cadmium resistance.
@@ -1665,7 +1679,7 @@ DE   Calcium is essential for a variety of bodily functions, such as
 DE   neurotransmission, muscle contraction and proper heart function.
 SY   Ca; Calcium ion.
 HI   Ligand: Calcium.
-WW   http://www.webelements.com/calcium/
+WW   https://www.webelements.com/calcium/
 CA   Ligand.
 //
 ID   Calcium channel.
@@ -1689,7 +1703,7 @@ DE   are membrane proteins forming a channel in a biological membrane
 DE   selectively permeable to calcium ions. They are found in various
 DE   venoms from snakes, scorpions and spiders.
 SY   Ca channel inhibitor; Calcium ion channel inhibitor.
-GO   GO:0019855; calcium channel inhibitor activity
+GO   GO:0005246; calcium channel regulator activity
 HI   Molecular function: Toxin; Ion channel impairing toxin; Calcium channel impairing toxin.
 CA   Molecular function.
 //
@@ -1908,6 +1922,20 @@ DE   chains.
 GO   GO:0004180; carboxypeptidase activity
 HI   Molecular function: Hydrolase; Protease; Carboxypeptidase.
 CA   Molecular function.
+//
+ID   Carboxysome.
+AC   KW-1282
+DE   Protein located in or on the carboxysome, bacterial microcompartments
+DE   in which ribulose bisphosphate carboxylase (RuBisCO)-mediated CO(2)
+DE   fixation occurs. The cytoplasmic polyhedral inclusion bodies are
+DE   surrounded by a thin protein coat. Found in cyanobacteria and some
+DE   chemoautotrophs, they enhance autotrophic CO(2) fixation in air by
+DE   increasing the CO(2) concentration around RuBisCO, thus reducing its
+DE   reaction with O(2), a competing substrate. They contain carbonic
+DE   anhydrase as part of the CO(2) concentration mechanism.
+GO   GO:0031470; carboxysome
+HI   Cellular component: Bacterial microcompartment; Carboxysome.
+CA   Cellular component.
 //
 ID   Cardiomyopathy.
 AC   KW-0122
@@ -2135,12 +2163,12 @@ ID   Cell wall.
 AC   KW-0134
 DE   Protein found in or associated with a complex and rigid layer
 DE   surrounding the cell. Cell walls are found in bacteria, archaea,
-DE   fungi, plants, and algae. The cell wall is surrounded by the outer
-DE   membrane in gram-negative bacteria, and envelopes the inner or plasma
-DE   membrane in gram-negative, gram-positive and acid-fast bacteria. Cell
-DE   walls of bacteria contain peptidoglycan whereas those of archaea do
-DE   not. Some archaea may contain pseudopeptidoglycan, which is composed
-DE   of N-acetyltalosaminuronic acid, instead of N-acetyl muramic acid in
+DE   fungi, plants, and algae. The cell wall envelopes the inner or plasma
+DE   membrane in all bacteria and is surrounded by the outer membrane in
+DE   bacteria with 2 membranes (Gram-negative). Bacterial cell walls
+DE   contain peptidoglycan whereas those of archaea do not. Some archaea
+DE   may contain pseudopeptidoglycan, which is composed of N-
+DE   acetyltalosaminuronic acid, instead of N-acetyl muramic acid in
 DE   peptidoglycan. The plant cell wall is made of fibrils of cellulose
 DE   embedded in a matrix of several other kinds of polymers such as pectin
 DE   and lignin. Algal cell walls are usually composed of cellulose,
@@ -2356,7 +2384,7 @@ DE   is chloride-dependent. Chloride is a negatively-charged ion, which is
 DE   abbreviated Cl(-).
 SY   Chloride anion; Chloride ion; Cl-.
 HI   Ligand: Chloride.
-WW   http://www.webelements.com/chlorine/
+WW   https://www.webelements.com/chlorine/
 CA   Ligand.
 //
 ID   Chloride channel.
@@ -2768,7 +2796,7 @@ DE   function is cobalt-dependent. Cobalt is a metallic element, chemical
 DE   symbol Co.
 SY   Co; Cobalt cation; Cobalt ion; Co cation; Co ion.
 HI   Ligand: Cobalt.
-WW   http://www.webelements.com/cobalt/
+WW   https://www.webelements.com/cobalt/
 CA   Ligand.
 //
 ID   Cobalt transport.
@@ -3022,8 +3050,8 @@ DE   develop or function properly. In most cases, the thyroid gland is
 DE   absent, abnormally located, or severely reduced in size. In the
 DE   remaining cases, a normal-sized or enlarged thyroid gland is present,
 DE   but production of thyroid hormones is decreased or absent. If
-DE   untreated, congenital hypothyroidism can lead to mental retardation
-DE   and growth failure.
+DE   untreated, congenital hypothyroidism can lead to intellectual
+DE   disability and growth failure.
 HI   Disease: Congenital hypothyroidism.
 CA   Disease.
 //
@@ -3032,8 +3060,8 @@ AC   KW-0912
 DE   The congenital muscular dystrophies (CMD) are a heterogeneous group of
 DE   disorders characterized by hypotonia, muscle weakness, dystrophic
 DE   changes on skeletal muscle biopsy, and joint contractures that present
-DE   at birth or during the first 6 months of life. Mental retardation with
-DE   or without structural brain changes is an additional feature of
+DE   at birth or during the first 6 months of life. Intellectual disability
+DE   with or without structural brain changes is an additional feature of
 DE   several CMD syndromes.
 HI   Disease: Congenital muscular dystrophy.
 CA   Disease.
@@ -3090,7 +3118,7 @@ DE   function is copper-dependent. Copper is a trace metallic element,
 DE   chemical symbol Cu.
 SY   Copper cation; Copper ion; Cu; Cu cation; Cu ion.
 HI   Ligand: Copper.
-WW   http://www.webelements.com/copper/
+WW   https://www.webelements.com/copper/
 CA   Ligand.
 //
 ID   Copper transport.
@@ -3164,7 +3192,7 @@ DE   CRISPR locus. These stored fragments (called spacers) are transcribed
 DE   and processed into small crRNA which are used to destroy matching DNA
 DE   in future viral and plasmid invasion. Some prokaryotic viruses express
 DE   specific genes that allow them to evade CRISPR-cas system.
-GO   GO:0098672; evasion by virus of CRISPR-cas system
+GO   GO:0098672; inhibition of host CRISPR-cas system by virus
 HI   Biological process: Host-virus interaction; CRISPR-cas system evasion by virus.
 CA   Biological process.
 //
@@ -3221,10 +3249,9 @@ DE   are surrounded by a double membrane and, in between, a peptidoglycan
 DE   wall. The cyanelle genome is of chloroplast size and contains genes
 DE   for tRNAs, rRNAs and approx. 150 proteins, which is more than found in
 DE   higher plant chloroplast genomes (this feature is also shared by other
-DE   primitive plastids). Thylakoid membrane architecture and the presence
-DE   of carboxysomes are cyanobacteria-like. Historically, the term
-DE   cyanelle is derived from a classification as endosymbiotic
-DE   cyanobacteria, and thus is not fully correct.
+DE   primitive plastids). Thylakoid membrane architecture is cyanobacteria-
+DE   like. Historically, the term cyanelle is derived from a classification
+DE   as endosymbiotic cyanobacteria, and thus is not fully correct.
 SY   Cyanoplast; Muroplast.
 GO   GO:0009842; cyanelle
 HI   Cellular component: Plastid; Cyanelle.
@@ -3406,12 +3433,16 @@ CA   Biological process.
 ID   Cytoskeleton.
 AC   KW-0206
 DE   Protein which is a component or which is associated with the
-DE   cytoskeleton, a dynamic three-dimensional structure that fills the
-DE   cytoplasm of eukaryotic cells. The cytoskeleton is both a muscle and a
-DE   skeleton, and is responsible for cell movement, cytokinesis, and the
-DE   organization of the organelles within the cell. The major components
-DE   of cytoskeleton are the microfilaments (of actin), microtubules (of
-DE   tubulin) and intermediate filament systems in cells.
+DE   cytoskeleton, a dynamic three-dimensional filamentous structure in the
+DE   cytoplasm. The cytoskeleton is both a muscle and a skeleton, and its
+DE   roles include maintenance of cell shape, cell movement (in
+DE   eukaryotes), cytokinesis, and the organization of the organelles
+DE   within the cell. This includes the major components of cytoskeleton;
+DE   microfilaments (actin-like proteins), microtubules (tubulin-like
+DE   proteins) and intermediate filaments (mostly in eukaryotes) and
+DE   prokaryotic MinD-ParA proteins. Originally not thought to exist in
+DE   prokaryotes, but now known to have the same functions as in
+DE   eukyaryotes.
 GO   GO:0005856; cytoskeleton
 HI   Cellular component: Cytoplasm; Cytoskeleton.
 CA   Cellular component.
@@ -3729,11 +3760,12 @@ AC   KW-9995
 DE   Keywords assigned to proteins because they are involved in a specific
 DE   disease.
 //
-ID   Disease mutation.
+ID   Disease variant.
 AC   KW-0225
-DE   Protein for which at least one variant, responsible for a disease, is
-DE   described in the feature table of its Swiss-Prot entry.
-HI   Disease: Disease mutation.
+DE   Protein for which at least one genetic variant involved in a disease
+DE   is reported in the feature table of the UniProtKB/Swiss-Prot entry.
+HI   Disease: Disease variant.
+HI   Coding sequence diversity: Disease variant.
 CA   Disease.
 //
 ID   Disulfide bond.
@@ -3823,7 +3855,7 @@ ID   DNA invertase.
 AC   KW-0230
 DE   Specific recombinases which catalyze the inversion of a DNA segment
 DE   within a nucleoprotein structure termed invertasome.
-GO   GO:0000150; recombinase activity
+GO   GO:0000150; DNA strand exchange activity
 GO   GO:0003677; DNA binding
 GO   GO:0006310; DNA recombination
 HI   Biological process: DNA recombination; DNA invertase.
@@ -3913,7 +3945,7 @@ DE   subject to stringent regulatory mechanisms. Eukaryotes have type I
 DE   that synthesizes all rRNA except the 5S component, type II that
 DE   synthesizes mRNA and hnRNA and type III that synthesizes tRNA and the
 DE   5S component of rRNA.
-GO   GO:0003899; DNA-directed 5'-3' RNA polymerase activity
+GO   GO:0000428; DNA-directed RNA polymerase complex
 HI   Biological process: Transcription; DNA-directed RNA polymerase.
 HI   Cellular component: DNA-directed RNA polymerase.
 CA   Cellular component.
@@ -3927,10 +3959,11 @@ ID   Down syndrome.
 AC   KW-0241
 DE   Protein which, if defective, causes Down's syndrome, a condition due
 DE   to the presence of three copies of chromosome 21 (trisomy 21),
-DE   characterized by some degree of mental retardation, short stature and
-DE   poor muscle tone. Common (1 in 700 live births); incidence increases
-DE   with maternal age. The cause is usually non-disjunction at meiosis but
-DE   occasionally a translocation of fused chromosomes 21 and 14.
+DE   characterized by some degree of intellectual disability, short stature
+DE   and poor muscle tone. Common (1 in 700 live births); incidence
+DE   increases with maternal age. The cause is usually non-disjunction at
+DE   meiosis but occasionally a translocation of fused chromosomes 21 and
+DE   14.
 SY   Down's syndrome.
 HI   Disease: Down syndrome.
 CA   Disease.
@@ -3951,7 +3984,6 @@ DE   chromosomes along microtubules (cytosolic dynein). Constitutes the
 DE   side arms of the outer microtubule doublets in the ciliary axoneme and
 DE   is responsible for the sliding. Also used for the dynein-associated
 DE   microtubule-binding proteins (MTBs), e.g. dynactin.
-GO   GO:0003774; motor activity
 GO   GO:0030286; dynein complex
 HI   Cellular component: Dynein.
 CA   Cellular component.
@@ -4048,7 +4080,6 @@ DE   electrons are transported through a series of reactions from the
 DE   reductant, or electron donor, to the oxidant, or electron acceptor,
 DE   with concomitant energy conversion. Necessary for both photosynthesis
 DE   and aerobic respiration.
-GO   GO:0055114; oxidation-reduction process
 HI   Biological process: Transport; Electron transport.
 CA   Biological process.
 //
@@ -4084,6 +4115,19 @@ DE   tendon and posterior cervical muscles, and cardiac features.
 SY   Scapuloperoneal muscular dystrophy.
 HI   Disease: Emery-Dreifuss muscular dystrophy.
 CA   Disease.
+//
+ID   Encapsulin nanocompartment.
+AC   KW-1284
+DE   Protein located in or on an encapsulin nanocompartment, proteinaceous
+DE   shells that encapsulate enzymes. The selectively permeable, self-
+DE   assembling 25-42 nm shell is made of only 1 protein, unlike the larger
+DE   bacterial microcompartment. The shell protein has an HK97-like fold
+DE   and probably evolved from a viral protein. Artificial encapsulin
+DE   nanocompartments can be expressed and filled with cargo proteins for
+DE   biotechnological uses. They are found in many bacterial and a few
+DE   archaeal phyla.
+HI   Cellular component: Encapsulin nanocompartment.
+CA   Cellular component.
 //
 ID   Endocytosis.
 AC   KW-0254
@@ -4155,7 +4199,6 @@ AC   KW-0260
 DE   Toxin which, either when ingested or when produced by enterobacteria
 DE   within the intestine, acts on the intestinal mucosa and induces
 DE   diarrhea by perturbing ion and water transport systems.
-GO   GO:0009405; pathogenesis
 HI   Molecular function: Toxin; Enterotoxin.
 CA   Molecular function.
 //
@@ -4320,7 +4363,7 @@ DE   regulating growth, mobility and differentiation of lymphoid and other
 DE   cells. Several viruses encode interleukin-like proteins playing a role
 DE   in immune evasion. Additionally, viral interleukins have been shown to
 DE   activate cellular signaling cascades that enhance virus replication.
-GO   GO:0030683; evasion or tolerance by virus of host immune response
+GO   GO:0030683; mitigation of host immune response by virus
 HI   Biological process: Host-virus interaction; Viral immunoevasion; Evasion of host immunity by viral interleukin-like protein.
 CA   Biological process.
 //
@@ -4397,6 +4440,7 @@ DE   collagen, laminin, fibronectin and glycosaminoglycans. It can
 DE   influence the properties of the cells that it supports. In certain
 DE   tissues, specific modifications to the extracellular matrix occur. For
 DE   instance, the matrix of bone is mineralized to resist compression.
+GO   GO:0031012; extracellular matrix
 HI   Cellular component: Secreted; Extracellular matrix.
 CA   Cellular component.
 //
@@ -4683,7 +4727,7 @@ ID   Fungicide.
 AC   KW-0295
 DE   Protein capable of killing or inhibiting growth of fungi.
 SY   Anti-fungal.
-GO   GO:0031640; killing of cells of other organism
+GO   GO:0031640; killing of cells of another organism
 GO   GO:0050832; defense response to fungus
 HI   Molecular function: Antimicrobial; Fungicide.
 CA   Molecular function.
@@ -5198,7 +5242,7 @@ DE   phosphate) and during biosynthesis of polysaccharides, glycoproteins
 DE   and glycolipids. In biosynthetic glycosyl transfers, the common
 DE   activated monomeric sugar intermediate is a nucleoside diphosphate
 DE   sugar.
-GO   GO:0016757; transferase activity, transferring glycosyl groups
+GO   GO:0016757; glycosyltransferase activity
 HI   Molecular function: Transferase; Glycosyltransferase.
 CA   Molecular function.
 //
@@ -5331,7 +5375,6 @@ AC   KW-0338
 DE   Protein involved in growth arrest, a phenomenon occurring when a cell
 DE   does not proceed through the cell cycle.
 SY   Cell cycle arrest; Cellular quiescence.
-GO   GO:0007050; cell cycle arrest
 HI   Biological process: Cell cycle; Growth arrest.
 CA   Biological process.
 //
@@ -5491,7 +5534,7 @@ AC   KW-0354
 DE   Protein involved in hemolysis, the disruption of the integrity of the
 DE   red cell membrane, thus causing the release of hemoglobin.
 SY   Haemolysis.
-GO   GO:0044179; hemolysis in other organism
+GO   GO:0044179; hemolysis in another organism
 HI   Biological process: Cytolysis; Hemolysis.
 CA   Biological process.
 //
@@ -5793,7 +5836,7 @@ DE   permeabilizes the inner membrane and an endolysin which then gains
 DE   access to and degrades the host peptidoglycans. Some bacterioviruses
 DE   express a signal-containing endolysin and thus do not need the holin
 DE   function.
-GO   GO:0044659; cytolysis by virus of host cell
+GO   GO:0044659; viral release from host cell by cytolysis
 HI   Biological process: Cytolysis; Host cell lysis by virus.
 HI   Biological process: Viral release from host cell; Host cell lysis by virus.
 CA   Biological process.
@@ -6073,7 +6116,7 @@ DE   target cell. In a chemical synapse, the signal is carried by a
 DE   neurotransmitter which diffuses across a narrow synaptic cleft and
 DE   activates a receptor on the postsynaptic membrane of the target cell.
 GO   GO:0044221; host cell synapse
-HI   Cellular component: Host cell junction; Host synapse.
+HI   Cellular component: Host synapse.
 CA   Cellular component.
 //
 ID   Host thylakoid.
@@ -6099,7 +6142,6 @@ DE   require specific interactions between the virus and its host.
 DE   Additionally, the evasion from the host immune response requires a lot
 DE   of viral proteins to associate with and inhibit cellular proteins with
 DE   antiviral functions.
-GO   GO:0016032; viral process
 HI   Biological process: Host-virus interaction.
 CA   Biological process.
 //
@@ -6546,7 +6588,7 @@ DE   phosphorylated, IRF3 and IRF7 translocate into the nucleus to drive
 DE   transcription of interferons. Several viruses including arenaviruses
 DE   or ebola virus interact directly with and inhibit IKBKE/IKK-epsilon to
 DE   prevent IRFs activation.
-GO   GO:0039724; suppression by virus of host IKBKE activity
+GO   GO:0039724; suppression by virus of host viral-induced cytoplasmic pattern recognition receptor signaling pathway via inhibition of IKBKE activity
 HI   Biological process: Host-virus interaction; Viral immunoevasion; Inhibition of host innate immune response by virus; Inhibition of host RLR pathway by virus; Inhibition of host IKBKE by virus.
 CA   Biological process.
 //
@@ -6598,7 +6640,7 @@ DE   transcription coactivator CREBBP/EP300, leading to the transcriptional
 DE   activation of the IFN-alpha and IFN-beta genes. Several viral proteins
 DE   directly bind to IRF3 and inhibit its transcriptional activity while
 DE   others target it to the proteasome for degradation.
-GO   GO:0039548; suppression by virus of host IRF3 activity
+GO   GO:0039548; suppression by virus of host viral-induced cytoplasmic pattern recognition receptor signaling pathway via inhibition of IRF3 activity
 HI   Biological process: Host-virus interaction; Viral immunoevasion; Inhibition of host innate immune response by virus; Inhibition of host RLR pathway by virus; Inhibition of host IRF3 by virus.
 CA   Biological process.
 //
@@ -6613,7 +6655,7 @@ DE   prevent IRF7 phosphorylation and nuclear activation. Ebola virus VP35
 DE   interacts with IRF7 and hijacks the cellular SUMOylation machinery for
 DE   its advantage to increase IRF7 SUMOylation thereby disabling its
 DE   activity.
-GO   GO:0039557; suppression by virus of host IRF7 activity
+GO   GO:0039557; suppression by virus of host viral-induced cytoplasmic pattern recognition receptor signaling pathway via inhibition of IRF7 activity
 HI   Biological process: Host-virus interaction; Viral immunoevasion; Inhibition of host innate immune response by virus; Inhibition of host RLR pathway by virus; Inhibition of host IRF7 by virus.
 CA   Biological process.
 //
@@ -6627,7 +6669,7 @@ DE   transcriptional activation of several hundred IFN-responsive genes.
 DE   Some viral proteins inhibit IRF9 activation by preventing its nuclear
 DE   localization upon infection or by sending it to the nucleus in an
 DE   inactive state.
-GO   GO:0039560; suppression by virus of host IRF9 activity
+GO   GO:0039560; suppression by virus of host JAK-STAT cascade via inhibition of host IRF9 activity
 HI   Biological process: Host-virus interaction; Viral immunoevasion; Inhibition of host innate immune response by virus; Inhibition of host interferon signaling pathway by virus; Inhibition of host IRF9 by virus.
 CA   Biological process.
 //
@@ -6640,7 +6682,7 @@ DE   is conjugated to lysines on numerous target proteins through its
 DE   conserved C-terminal region. Viruses escape from the antiviral
 DE   activity of ISG15 by direct interaction or by cleavage of ISG15
 DE   derivatives.
-GO   GO:0039579; suppression by virus of host ISG15 activity
+GO   GO:0039579; suppression by virus of host ISG15-protein conjugation
 HI   Biological process: Host-virus interaction; Viral immunoevasion; Inhibition of host innate immune response by virus; Inhibition of host interferon signaling pathway by virus; Inhibition of host ISG15 by virus.
 CA   Biological process.
 //
@@ -6652,7 +6694,7 @@ DE   infection, JAK1 is activated by the interferon-alpha/beta, -gamma, and
 DE   -lambda signal transduction pathways. Several viral proteins can
 DE   directly interact with JAK1 to prevent its ability to phosphorylate
 DE   the downstream partners STAT1 or STAT2.
-GO   GO:0039576; suppression by virus of host JAK1 activity
+GO   GO:0039576; suppression by virus of host JAK-STAT cascade via inhibition of JAK1 activity
 HI   Biological process: Host-virus interaction; Viral immunoevasion; Inhibition of host innate immune response by virus; Inhibition of host interferon signaling pathway by virus; Inhibition of host JAK1 by virus.
 CA   Biological process.
 //
@@ -6665,7 +6707,7 @@ DE   MAVS to coordinate pathways leading to induction of antiviral
 DE   cytokines. Several viral proteins including NS3/4A from Hepatitis C,
 DE   or protease 3C from hepatitis A virus, cleave MAVS to abrogate its
 DE   activity.
-GO   GO:0039545; suppression by virus of host MAVS activity
+GO   GO:0039545; suppression by virus of host viral-induced cytoplasmic pattern recognition receptor signaling pathway via inhibition of MAVS activity
 HI   Biological process: Host-virus interaction; Viral immunoevasion; Inhibition of host innate immune response by virus; Inhibition of host RLR pathway by virus; Inhibition of host MAVS by virus.
 CA   Biological process.
 //
@@ -6677,7 +6719,7 @@ DE   dsRNAs, IFIH1/MDA5 initiates an antiviral signaling cascade by
 DE   interacting with downstream partners. Some viral proteins including
 DE   paramyxovirus V proteins interact with IFIH1/MDA5 and blocks its
 DE   binding with its downstream partner MAVS.
-GO   GO:0039554; suppression by virus of host MDA-5 activity
+GO   GO:0039554; suppression by virus of host viral-induced cytoplasmic pattern recognition receptor signaling pathway via inhibition of host MDA-5 activity
 HI   Biological process: Host-virus interaction; Viral immunoevasion; Inhibition of host innate immune response by virus; Inhibition of host RLR pathway by virus; Inhibition of host MDA5 by virus.
 CA   Biological process.
 //
@@ -6736,7 +6778,7 @@ DE   such as inflammation, immunity, differentiation, cell growth,
 DE   tumorigenesis and apoptosis. Many viruses have developed strategies to
 DE   inhibit the NF-kappa-B pathway in order to evade host immunity and
 DE   inhibit production of proinflammatory cytokines.
-GO   GO:0039644; suppression by virus of host NF-kappaB transcription factor activity
+GO   GO:0039644; suppression by virus of host NF-kappaB cascade
 HI   Biological process: Host-virus interaction; Inhibition of host NF-kappa-B by virus.
 CA   Biological process.
 //
@@ -6751,7 +6793,8 @@ DE   substrates including the translation initiation factor EIF2S1, leading
 DE   to the inhibition of the initiation of protein synthesis. Several
 DE   viral proteins prevent PKR/EIF2AK2 activation by direct interaction
 DE   while others target PKR/EIF2AK2 to degradation.
-GO   GO:0039580; suppression by virus of host PKR activity
+GO   GO:0030291; protein serine/threonine kinase inhibitor activity
+GO   GO:0039580; suppression by virus of host PKR signaling
 HI   Biological process: Host-virus interaction; Viral immunoevasion; Inhibition of host innate immune response by virus; Inhibition of host interferon signaling pathway by virus; Inhibition of host PKR by virus.
 CA   Biological process.
 //
@@ -6765,7 +6808,7 @@ DE   synthesis serves to ensure maximal viral gene expression and to evade
 DE   host immune response. One common target is the translation initiation
 DE   factor PABPC1. Some viruses proteolytically cleave PABPC1, while
 DE   others displace PABPC1 from EIF4G1.
-GO   GO:0039647; suppression by virus of host poly(A)-binding protein activity
+GO   GO:0039604; suppression by virus of host translation
 HI   Biological process: Host-virus interaction; Host gene expression shutoff by virus; Eukaryotic host gene expression shutoff by virus; Eukaryotic host translation shutoff by virus; Inhibition of host poly(A)-binding protein by virus.
 CA   Biological process.
 //
@@ -6805,7 +6848,7 @@ DE   cytosolic receptor DDX58/RIG-I initiates an antiviral signaling
 DE   cascade by interacting with downstream partners. Several viral
 DE   proteins inhibit DDX58/RIG-I via direct interaction while others via
 DE   proteolytic cleavage.
-GO   GO:0039540; suppression by virus of host RIG-I activity
+GO   GO:0039540; suppression by virus of host viral-induced cytoplasmic pattern recognition receptor signaling pathway via inhibition of host RIG-I activity
 HI   Biological process: Host-virus interaction; Viral immunoevasion; Inhibition of host innate immune response by virus; Inhibition of host RLR pathway by virus; Inhibition of host RIG-I by virus.
 CA   Biological process.
 //
@@ -6833,7 +6876,7 @@ DE   Among these, shutoff of host transcription by targeting RNA polymerase
 DE   II is commonly used. Indeed, many viruses are able to modify RNAP II
 DE   CTD including Herpes virus, HIV, Epstein-Barr virus or Bunyamwera
 DE   virus.
-GO   GO:0039523; suppression by virus of host RNA polymerase II activity
+GO   GO:0039523; suppression by virus of host mRNA transcription via inhibition of RNA polymerase II activity
 HI   Biological process: Host-virus interaction; Host gene expression shutoff by virus; Eukaryotic host gene expression shutoff by virus; Eukaryotic host transcription shutoff by virus; Inhibition of host RNA polymerase II by virus.
 CA   Biological process.
 //
@@ -6848,7 +6891,7 @@ DE   stimulate heterodimerization of STAT1 and STAT2, both leading to STAT1
 DE   nuclear localization and subsequent induction of IFN-stimulated genes.
 DE   Many viruses interfere with STAT1 activation, often by preventing
 DE   STAT1 phosphorylation and nuclear localization.
-GO   GO:0039563; suppression by virus of host STAT1 activity
+GO   GO:0039563; suppression by virus of host JAK-STAT cascade via inhibition of STAT1 activity
 HI   Biological process: Host-virus interaction; Viral immunoevasion; Inhibition of host innate immune response by virus; Inhibition of host interferon signaling pathway by virus; Inhibition of host STAT1 by virus.
 CA   Biological process.
 //
@@ -6862,7 +6905,7 @@ DE   heterodimerization of STAT1 and STAT2 by phosphorylation, leading to
 DE   STAT2 nuclear localization and subsequent induction of IFN-stimulated
 DE   genes. Many viruses interfere with STAT2 activation, often by
 DE   preventing STAT2 phosphorylation and nuclear localization.
-GO   GO:0039564; suppression by virus of host STAT2 activity
+GO   GO:0039564; suppression by virus of host JAK-STAT cascade via inhibition of STAT2 activity
 HI   Biological process: Host-virus interaction; Viral immunoevasion; Inhibition of host innate immune response by virus; Inhibition of host interferon signaling pathway by virus; Inhibition of host STAT2 by virus.
 CA   Biological process.
 //
@@ -6889,7 +6932,7 @@ DE   MHC class I molecules on host cell surface. Its helps the MHC class I
 DE   molecules to remain in a peptide receptive state, avoiding
 DE   irreversible denaturation. Several retroviruses and DNA viruses encode
 DE   proteins interacting with tapasin/TAPBP and inhibiting its activity.
-GO   GO:0039591; suppression by virus of host tapasin activity
+GO   GO:0046776; suppression by virus of host antigen processing and presentation of peptide antigen via MHC class I
 HI   Biological process: Host-virus interaction; Viral immunoevasion; Inhibition of host adaptive immune response by virus; Inhibition of host tapasin by virus.
 CA   Biological process.
 //
@@ -6903,7 +6946,7 @@ DE   IRF3 and IRF7. Once phosphorylated, IRF3 and/or IRF7 translocate into
 DE   the nucleus to drive transcription of interferons. Several viruses
 DE   including herpes simplex virus 1 or vaccinia virus interact directly
 DE   with and inhibit TBK1 to prevent IRFs activation.
-GO   GO:0039723; suppression by virus of host TBK1 activity
+GO   GO:0039723; suppression by virus of host viral-induced cytoplasmic pattern recognition receptor signaling pathway via inhibition of TBK1 activity
 HI   Biological process: Host-virus interaction; Viral immunoevasion; Inhibition of host innate immune response by virus; Inhibition of host TLR pathway by virus; Inhibition of host TBK1 by virus.
 CA   Biological process.
 //
@@ -6958,7 +7001,7 @@ DE   stimulation leading to a series of phosphorylation events that induce
 DE   transcription of several hundred IFN-responsive genes. Several viruses
 DE   have evolved mechanisms to inhibit TYK2 activity thereby preventing
 DE   the subsequent activation of downstream partners STAT1 and STAT2.
-GO   GO:0039574; suppression by virus of host TYK2 activity
+GO   GO:0039574; suppression by virus of host JAK-STAT cascade via inhibition of host TYK2 activity
 HI   Biological process: Host-virus interaction; Viral immunoevasion; Inhibition of host innate immune response by virus; Inhibition of host interferon signaling pathway by virus; Inhibition of host TYK2 by virus.
 CA   Biological process.
 //
@@ -6997,7 +7040,7 @@ DE   helicases and C-type lectin receptors.
 GO   GO:0045087; innate immune response
 HI   Biological process: Immunity; Innate immunity.
 WW   http://users.rcn.com/jkimball.ma.ultranet/BiologyPages/I/Innate.html
-WW   http://www.nature.com/nri/journal/v10/n1/full/nri2686.html
+WW   https://www.nature.com/articles/nri2686
 CA   Biological process.
 //
 ID   Inner capsid protein.
@@ -7050,6 +7093,15 @@ GO   GO:0007229; integrin-mediated signaling pathway
 HI   Molecular function: Integrin.
 CA   Molecular function.
 //
+ID   Intellectual disability.
+AC   KW-0991
+DE   Protein which, if defective, is involved in intellectual disability, a
+DE   disorder appearing during development and characterized by subnormal
+DE   intellectual functioning and impaired adaptive behavior.
+SY   Mental deficiency; Mental retardation; Mental subnormality.
+HI   Disease: Intellectual disability.
+CA   Disease.
+//
 ID   Interferon antiviral system evasion.
 AC   KW-0922
 DE   Viral protein which prevents the activation of the antiviral state
@@ -7059,7 +7111,7 @@ DE   signaling pathway induced by IFN-alpha or IFN-beta following viral
 DE   infection. It leads to the transcription of various cellular antiviral
 DE   genes coding for host defense proteins.
 SY   Antiviral state evasion; Interferon response evasion.
-GO   GO:0030683; evasion or tolerance by virus of host immune response
+GO   GO:0030683; mitigation of host immune response by virus
 HI   Biological process: Interferon antiviral system evasion.
 CA   Biological process.
 //
@@ -7137,7 +7189,7 @@ AC   KW-0872
 DE   Protein which interferes with the function of ion channels, which are
 DE   hydrophilic channels across the lipid bilayer through which specific
 DE   inorganic ions can diffuse down their electrochemical gradients.
-GO   GO:0008200; ion channel inhibitor activity
+GO   GO:0099106; ion channel regulator activity
 HI   Molecular function: Toxin; Ion channel impairing toxin.
 CA   Molecular function.
 //
@@ -7172,7 +7224,7 @@ DE   Protein which binds at least one iron atom, or protein whose function
 DE   is iron-dependent. Iron is a metal, chemical symbol Fe.
 SY   Fe; Fe cation; Fe ion; Iron cation; Iron ion.
 HI   Ligand: Iron.
-WW   http://www.webelements.com/iron/
+WW   https://www.webelements.com/iron/
 CA   Ligand.
 //
 ID   Iron storage.
@@ -7508,7 +7560,7 @@ DE   Protein which binds at least one lead atom, or protein whose function
 DE   is lead-dependent. Lead is a metal, chemical symbol Pb.
 SY   Lead cation; Lead ion; Pb; Pb cation; Pb ion.
 HI   Ligand: Lead.
-WW   http://www.webelements.com/lead/
+WW   https://www.webelements.com/lead/
 CA   Ligand.
 //
 ID   Leader peptide.
@@ -7533,10 +7585,10 @@ CA   Disease.
 ID   Leber hereditary optic neuropathy.
 AC   KW-0429
 DE   Protein which, if defective, causes Leber hereditary optic neuropathy,
-DE   a maternally inherited disease resulting from a deficit of ATP and
-DE   leading to acute bilateral blindness, predominantly in young men. It
-DE   is characterized by degeneration of the optic nerve and papillomacular
-DE   bundle.
+DE   a mitochondrial disease leading to bilateral, painless loss of central
+DE   vision due to selective degeneration of the retinal ganglion cells and
+DE   their axons. The disease arises during young adult life and displays
+DE   sex-dependent incomplete penetrance and male predominance.
 HI   Disease: Primary mitochondrial disease; Leber hereditary optic neuropathy.
 CA   Disease.
 //
@@ -7823,7 +7875,7 @@ DE   Protein whose function is lithium-dependent. Lithium is an alkali
 DE   metal, chemical symbol Li.
 SY   Li; Li cation; Li ion; Lithium cation; Lithium ion.
 HI   Ligand: Lithium.
-WW   http://www.webelements.com/lithium/
+WW   https://www.webelements.com/lithium/
 CA   Ligand.
 //
 ID   Long QT syndrome.
@@ -7896,7 +7948,7 @@ DE   function is magnesium-dependent. Magnesium is a metallic element,
 DE   chemical symbol Mg.
 SY   Magnesium cation; Magnesium ion; Mg; Mg cation; Mg ion.
 HI   Ligand: Magnesium.
-WW   http://www.webelements.com/magnesium/
+WW   https://www.webelements.com/magnesium/
 CA   Ligand.
 //
 ID   Magnetosome.
@@ -7947,7 +7999,7 @@ DE   function is manganese-dependent. Manganese is a metallic element,
 DE   chemical symbol Mn.
 SY   Manganese cation; Manganese ion; Mn; Mn cation; Mn ion.
 HI   Ligand: Manganese.
-WW   http://www.webelements.com/manganese/
+WW   https://www.webelements.com/manganese/
 CA   Ligand.
 //
 ID   Mannose-binding.
@@ -8080,16 +8132,6 @@ GO   GO:0009234; menaquinone biosynthetic process
 HI   Biological process: Menaquinone biosynthesis.
 CA   Biological process.
 //
-ID   Mental retardation.
-AC   KW-0991
-DE   Protein which, if defective, causes mental retardation, a disorder
-DE   characterized by subnormal intellectual functioning and manifested
-DE   during the developmental period. Mental retardation is associated with
-DE   impaired adaptive behavior.
-SY   Intellectual disability; Mental deficiency; Mental subnormality.
-HI   Disease: Mental retardation.
-CA   Disease.
-//
 ID   Mercuric resistance.
 AC   KW-0475
 DE   Protein that confers bacteria or other microorganisms the ability to
@@ -8107,7 +8149,7 @@ DE   carbon-mercury bonds. Mercury is the only liquid metallic element,
 DE   chemical symbol is Hg.
 SY   Hg; Hg cation; Hg ion; Mercury cation; Mercury ion.
 HI   Ligand: Mercury.
-WW   http://www.webelements.com/mercury/
+WW   https://www.webelements.com/mercury/
 CA   Ligand.
 //
 ID   Merozoite.
@@ -8635,7 +8677,7 @@ DE   (Moco), which is highly conserved in eukaryotes, eubacteria, and
 DE   archaebacteria.
 SY   Mo; Mo cation; Mo ion; Molybdenum cation; Molybdenum ion.
 HI   Ligand: Molybdenum.
-WW   http://www.webelements.com/molybdenum/
+WW   https://www.webelements.com/molybdenum/
 CA   Ligand.
 //
 ID   Molybdenum cofactor biosynthesis.
@@ -9033,7 +9075,7 @@ DE   Protein which binds at least one nickel atom, or protein whose
 DE   function is nickel-dependent. Nickel is a metal, chemical symbol Ni.
 SY   Ni; Ni cation; Nickel cation; Nickel ion; Ni ion.
 HI   Ligand: Nickel.
-WW   http://www.webelements.com/nickel/
+WW   https://www.webelements.com/nickel/
 CA   Ligand.
 //
 ID   Nickel insertion.
@@ -9302,15 +9344,14 @@ ID   Organellar chromatophore.
 AC   KW-0994
 DE   Protein encoded by the organellar chromatophore genome or a protein
 DE   targeted to the organellar chromatophore. The organellar chromatophore
-DE   is the photosynthetic inclusion found in Paulinella chromatophora, a
+DE   is the photosynthetic inclusion found in Paulinella species, which are
 DE   photosynthetic thecate amoeba. It probably derives from a different
-DE   endosymbiotic event than that which led to all other plastids; the
-DE   question is open as to whether or not this is a true plastid. It
-DE   encodes and houses the machinery necessary for photosynthesis and
-DE   CO(2) fixation; it also has the genetic capacity to synthesize some
-DE   amino acids, some fatty acids and a few cofactors. It contains
-DE   thylakoid membranes, and a residual peptidoglycan wall between the 2
-DE   envelope membranes. There are 1 or 2 chromatophores per cell.
+DE   endosymbiotic event than that which led to all other plastids. Houses
+DE   the machinery necessary for photosynthesis and CO(2) fixation; it also
+DE   has the genetic capacity to synthesize some amino acids, some fatty
+DE   acids and a few cofactors. It contains thylakoid membranes, and a
+DE   residual peptidoglycan wall between the 2 envelope membranes. There
+DE   are 1 or 2 chromatophores per cell.
 GO   GO:0070111; organellar chromatophore
 HI   Cellular component: Plastid; Organellar chromatophore.
 CA   Cellular component.
@@ -9383,7 +9424,6 @@ AC   KW-0560
 DE   Enzyme that catalyzes the oxidation of one compound with the reduction
 DE   of another.
 GO   GO:0016491; oxidoreductase activity
-GO   GO:0055114; oxidation-reduction process
 HI   Molecular function: Oxidoreductase.
 CA   Molecular function.
 //
@@ -9734,7 +9774,7 @@ AC   KW-0586
 DE   Protein which, if defective, causes phenylketonuria, an autosomal
 DE   recessive disorder in which the body is unable to break down the amino
 DE   acid phenylalanine. The resulting buildup of phenylalanine in the body
-DE   causes mental retardation, mental disturbances, eczema and skin
+DE   causes intellectual disability, mental disturbances, eczema and skin
 DE   pigmentation.
 HI   Disease: Phenylketonuria.
 CA   Disease.
@@ -9985,7 +10025,7 @@ DE   cyanobacteria and red algae. Phycobilisomes are mainly composed of
 DE   phycobiliproteins (such as allophycocyanin, phycocyanin and
 DE   phycoerythrin) together with linker polypeptides.
 GO   GO:0030089; phycobilisome
-HI   Cellular component: Phycobilisome.
+HI   Cellular component: Antenna complex; Phycobilisome.
 CA   Cellular component.
 //
 ID   Phytochrome signaling pathway.
@@ -10071,11 +10111,12 @@ DE   organism that was engulfed by the host, although not all are now
 DE   photosynthetic. Plastid genomes encode genes for rRNAs, tRNAs and
 DE   between about 28 and 150 proteins. Plastids can be categorized in 4
 DE   main groups: chloroplasts, cyanelles, apicoplasts and non-
-DE   photosynthetic. The later is found is some land plants (Epifagus
+DE   photosynthetic. The latter are found is some land plants (Epifagus
 DE   virginiana), chlorophyte algae (Prototheca wickerhamii) and euglenoids
 DE   (Astasis longa), which do not encode the genes necessary for
 DE   photosynthesis and so are not photosynthetic but still contain a
-DE   plastid. They probably do not contain thylakoids.
+DE   plastid. Non-photosynthetic plastids probably do not contain
+DE   thylakoids.
 GO   GO:0009536; plastid
 HI   Cellular component: Plastid.
 CA   Cellular component.
@@ -10138,14 +10179,6 @@ DE   cells.
 GO   GO:0006596; polyamine biosynthetic process
 HI   Biological process: Polyamine biosynthesis.
 CA   Biological process.
-//
-ID   Polymorphism.
-AC   KW-0621
-DE   Protein for which there is at least one variant within the same
-DE   species, that is not directly responsible for a disease. We make use
-DE   of this keyword only in the context of multicellular organisms.
-HI   Coding sequence diversity: Polymorphism.
-CA   Coding sequence diversity.
 //
 ID   Polysaccharide degradation.
 AC   KW-0624
@@ -10228,7 +10261,7 @@ DE   separated from the presynaptic membrane by the synaptic cleft.
 SY   Postsynaptic membrane.
 GO   GO:0045211; postsynaptic membrane
 HI   Cellular component: Membrane; Postsynaptic cell membrane.
-HI   Cellular component: Cell junction; Synapse; Postsynaptic cell membrane.
+HI   Cellular component: Synapse; Postsynaptic cell membrane.
 CA   Cellular component.
 //
 ID   Postsynaptic neurotoxin.
@@ -10245,7 +10278,7 @@ DE   Protein which binds at least one potassium, or protein whose function
 DE   is potassium-dependent. Potassium is an alkali metal, chemical symbol
 DE   K.
 HI   Ligand: Potassium.
-WW   http://www.webelements.com/potassium/
+WW   https://www.webelements.com/potassium/
 CA   Ligand.
 //
 ID   Potassium channel.
@@ -10270,7 +10303,7 @@ DE   Protein which interferes with the function of potassium channels which
 DE   are membrane proteins forming a channel in a biological membrane
 DE   selectively permeable to potassium ions. They are found in various
 DE   venoms from snakes, scorpions and spiders.
-GO   GO:0019870; potassium channel inhibitor activity
+GO   GO:0015459; potassium channel regulator activity
 HI   Molecular function: Toxin; Ion channel impairing toxin; Potassium channel impairing toxin.
 CA   Molecular function.
 //
@@ -10978,7 +11011,8 @@ AC   KW-0684
 DE   Protein involved in the biochemical reactions of rhamnose. Rhamnose is
 DE   a methylpentose sugar structurally derived from mannose. The L-isomer
 DE   occurs naturally as a component of many plant glycosides and in
-DE   lipopolysaccharides of some gram-negative bacteria.
+DE   lipopolysaccharides of some bacteria with 2 membranes (Gram-negative
+DE   bacteria).
 SY   6-deoxy-L-mannose metabolism.
 GO   GO:0019299; rhamnose metabolic process
 HI   Biological process: Rhamnose metabolism.
@@ -10989,7 +11023,7 @@ AC   KW-0685
 DE   Protein which, if defective, causes rhizomelic chondrodysplasia
 DE   punctata (RCDP). This lethal autosomal recessive disease is
 DE   characterized by proximal limb shortening, severely disturbed
-DE   endochondrial bone formation, and mental retardation. RCDP type 1
+DE   endochondrial bone formation, and intellectual disability. RCDP type 1
 DE   (RCDP1) is the classical and most common form. It is a peroxisome
 DE   biogenesis disorder caused by mutations in the PEX7 gene, which
 DE   encodes the PTS2-receptor peroxin-7. RCDP type 2 (RCDP2) and RCDP type
@@ -11320,7 +11354,7 @@ DE   Protein which binds at least one selenium, or protein whose function
 DE   is selenium-dependent. Selenium is a nonmetallic trace element,
 DE   chemical symbol Se.
 HI   Ligand: Selenium.
-WW   http://www.webelements.com/selenium/
+WW   https://www.webelements.com/selenium/
 CA   Ligand.
 //
 ID   Selenocysteine.
@@ -11596,7 +11630,7 @@ AC   KW-0915
 DE   Protein which binds at least one sodium, or protein whose function is
 DE   sodium-dependent. Sodium is an alkali metal, chemical symbol Na.
 HI   Ligand: Sodium.
-WW   http://www.webelements.com/sodium/
+WW   https://www.webelements.com/sodium/
 CA   Ligand.
 //
 ID   Sodium channel.
@@ -11679,7 +11713,7 @@ DE   spermatocytogenesis (successive mitotic and meiotic divisions) and
 DE   spermiogenesis (a metamorphic change).
 GO   GO:0007283; spermatogenesis
 HI   Biological process: Differentiation; Spermatogenesis.
-WW   http://en.wikipedia.org/wiki/Spermatogenesis
+WW   https://en.wikipedia.org/wiki/Spermatogenesis
 CA   Biological process.
 //
 ID   Spermidine biosynthesis.
@@ -12009,7 +12043,7 @@ DE   region of a muscle or a secretory cell. In an electrical synapse, a
 DE   direct connection is made between the cytoplasms of two cells via gap
 DE   junctions.
 GO   GO:0045202; synapse
-HI   Cellular component: Cell junction; Synapse.
+HI   Cellular component: Synapse.
 CA   Cellular component.
 //
 ID   Synaptosome.
@@ -12020,7 +12054,7 @@ DE   subsynaptic area of the membrane of the postsynaptic cell. They are
 DE   largely artificial structures produced by fractionation after
 DE   selective centrifugation of nervous tissue homogenates.
 GO   GO:0043005; neuron projection
-HI   Cellular component: Cell junction; Synapse; Synaptosome.
+HI   Cellular component: Synapse; Synaptosome.
 CA   Cellular component.
 //
 ID   Syncytium formation induced by viral infection.
@@ -12234,7 +12268,6 @@ DE   cytoplasm from its surroundings. This term is used to describe a toxin
 DE   located to the cell membrane of a target cell.
 SY   Target cytoplasmic membrane; Target plasmalemma;
 SY   Target plasma membrane.
-GO   GO:0044218; other organism cell membrane
 HI   Cellular component: Membrane; Target membrane; Target cell membrane.
 CA   Cellular component.
 //
@@ -12907,7 +12940,7 @@ DE   Protein which binds at least one tungsten atom, or protein whose
 DE   function is tungsten-dependent. Tungsten is a metallic element,
 DE   chemical symbol W.
 HI   Ligand: Tungsten.
-WW   http://www.webelements.com/tungsten/
+WW   https://www.webelements.com/tungsten/
 CA   Ligand.
 //
 ID   Two-component regulatory system.
@@ -13091,7 +13124,7 @@ AC   KW-0837
 DE   Protein whose function is vanadium-dependent. Vanadium is a transition
 DE   metal, chemical symbol V.
 HI   Ligand: Vanadium.
-WW   http://www.webelements.com/vanadium/
+WW   https://www.webelements.com/vanadium/
 CA   Ligand.
 //
 ID   Vasoactive.
@@ -13160,12 +13193,13 @@ CA   Biological process.
 ID   Viral attachment to host cell pilus.
 AC   KW-1175
 DE   Virion protein involved in the interaction with bacterial pili, which
-DE   are retractile filaments that protrude from gram-negative bacteria.
-DE   Binding to the pilus is followed by retraction of the pilus, which
-DE   translocates the bound virion to the bacterial surface and allows
-DE   subsequent viral genome penetration into host cytoplasm.
-DE   Bacteriophages M13, f1, fd, R17, Qbeta, Pf1, Pf3, phiKMV or phi6 for
-DE   example utilize the host cell pilus as an attachment structure.
+DE   are retractile filaments that protrude from bacteria with 2 membranes
+DE   (Gram-negative bacteria). Binding to the pilus is followed by
+DE   retraction of the pilus, which translocates the bound virion to the
+DE   bacterial surface and allows subsequent viral genome penetration into
+DE   host cytoplasm. Bacteriophages M13, f1, fd, R17, Qbeta, Pf1, Pf3,
+DE   phiKMV or phi6 for example utilize the host cell pilus as an
+DE   attachment structure.
 GO   GO:0039666; virion attachment to host cell pilus
 HI   Cellular component: Virion; Viral attachment to host cell pilus.
 HI   Biological process: Host-virus interaction; Viral attachment to host cell; Viral attachment to host cell pilus.
@@ -13389,7 +13423,7 @@ DE   expression of the transporter associated with antigen processing TAP).
 DE   Some proteins of these virus families also down-regulate other
 DE   molecules involved in immune recognition.
 SY   Immunoevasin; Viral host defense evasion; Viral immune evasion.
-GO   GO:0030683; evasion or tolerance by virus of host immune response
+GO   GO:0030683; mitigation of host immune response by virus
 HI   Biological process: Host-virus interaction; Viral immunoevasion.
 CA   Biological process.
 //
@@ -13533,12 +13567,12 @@ ID   Viral penetration into host cytoplasm via pilus retraction.
 AC   KW-1241
 DE   Viral protein involved in the entry of the virion into the host
 DE   cytoplasm via the host pili, which are retractile filaments that
-DE   protrude from gram-negative bacteria. Entry of bound prokaryotic
-DE   viruses such as filamentous viruses is achieved through the retraction
-DE   of host pilus and translocation of the virion through the basis of the
-DE   pilus to reach the host cytoplasm. Examples of bacteriophages which
-DE   utilize the host cell pilus to penetrate into host cytoplasm are
-DE   bacteriophages M13, f1, fd, R17.
+DE   protrude from bacteria with 2 membranes (Gram-negative bacteria).
+DE   Entry of bound prokaryotic viruses such as filamentous viruses is
+DE   achieved through the retraction of host pilus and translocation of the
+DE   virion through the basis of the pilus to reach the host cytoplasm.
+DE   Examples of bacteriophages which utilize the host cell pilus to
+DE   penetrate into host cytoplasm are bacteriophages M13, f1, fd, R17.
 GO   GO:0039667; viral entry into host cell via pilus retraction
 HI   Cellular component: Virion; Viral penetration into host cytoplasm via pilus retraction.
 HI   Biological process: Virus entry into host cell; Viral penetration into host cytoplasm; Viral penetration into host cytoplasm via pilus retraction.
@@ -13758,7 +13792,6 @@ CA   Biological process.
 ID   Virion.
 AC   KW-0946
 DE   Viral protein detected in the virion.
-GO   GO:0019012; virion
 HI   Cellular component: Virion.
 CA   Cellular component.
 //
@@ -13792,7 +13825,6 @@ DE   by another organism in symbiosis with the one whose virulence is
 DE   increased. Some prokaryotic viruses/proviruses for example bear
 DE   exotoxins that increase the virulence of their host. A well-known
 DE   bacterial exotoxin encoded by a provirus is the diphtheria toxin.
-GO   GO:0009405; pathogenesis
 HI   Biological process: Virulence.
 CA   Biological process.
 //
@@ -13917,7 +13949,7 @@ DE   channels (ClC) which are membrane proteins forming a channel in a
 DE   biological membrane selectively permeable to chloride ions, and open
 DE   in response to a change in membrane potential. They are found in
 DE   venoms from scorpions.
-GO   GO:0019869; chloride channel inhibitor activity
+GO   GO:0017081; chloride channel regulator activity
 HI   Molecular function: Toxin; Ion channel impairing toxin; Chloride channel impairing toxin; Voltage-gated chloride channel impairing toxin.
 CA   Molecular function.
 //
@@ -13938,7 +13970,7 @@ DE   channels (Nav) which are membrane proteins forming a channel in a
 DE   biological membrane selectively permeable to sodium ions, and open in
 DE   response to a change in membrane potential. They are found in various
 DE   venoms from snakes, scorpions and spiders.
-GO   GO:0019871; sodium channel inhibitor activity
+GO   GO:0017080; sodium channel regulator activity
 HI   Molecular function: Toxin; Ion channel impairing toxin; Voltage-gated sodium channel impairing toxin.
 CA   Molecular function.
 //
@@ -14066,7 +14098,7 @@ DE   Protein which binds at least one zinc atom, or protein whose function
 DE   is zinc-dependent. Zinc is a metallic trace element, chemical symbol
 DE   Zn.
 HI   Ligand: Zinc.
-WW   http://www.webelements.com/zinc/
+WW   https://www.webelements.com/zinc/
 CA   Ligand.
 //
 ID   Zinc transport.

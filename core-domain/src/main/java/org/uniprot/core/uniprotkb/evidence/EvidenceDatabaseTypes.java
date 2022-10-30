@@ -9,6 +9,7 @@ import javax.annotation.Nonnull;
 
 public enum EvidenceDatabaseTypes {
     INSTANCE;
+    private static final String GOOGLE = "Google";
     private final Map<String, EvidenceDatabaseDetail> typeMap = new HashMap<>();
 
     EvidenceDatabaseTypes() {
@@ -220,6 +221,7 @@ public enum EvidenceDatabaseTypes {
                         "ProteomicsDB",
                         "C",
                         "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/proteomics_mapping/README"));
+        typeMap.put(GOOGLE, evd(GOOGLE, GOOGLE, "A", "https://www.uniprot.org/help/ProtNLM"));
     }
 
     private EvidenceDatabaseDetail evd(

@@ -17,14 +17,14 @@ Q8IWB6	UniProtKB	Modified residue	1106	1106	.	.	.	Note=Phosphoserine;Ontology_te
 Q8IWB6	UniProtKB	Modified residue	1404	1404	.	.	.	Note=Phosphoserine;Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:Q7M6U3	
 Q8IWB6	UniProtKB	Modified residue	1459	1459	.	.	.	Note=Phosphoserine;Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:Q7M6U3	
 Q8IWB6	UniProtKB	Modified residue	1496	1496	.	.	.	Note=Phosphoserine;Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:Q7M6U3	
-Q8IWB6	UniProtKB	Alternative sequence	213	218	.	.	.	ID=VSP_019868;Note=In isoform 2 and isoform 3. Missing";Ontology_term=ECO:0000303,ECO:0000303;evidence=ECO:0000303|PubMed:11279525,ECO:0000303|PubMed:17974005;Dbxref=PMID:11279525,PMID:17974005	
-Q8IWB6	UniProtKB	Alternative sequence	1064	1103	.	.	.	ID=VSP_019869;Note=In isoform 3. Missing";Ontology_term=ECO:0000303,ECO:0000303;evidence=ECO:0000303|PubMed:11279525,ECO:0000303|PubMed:17974005;Dbxref=PMID:11279525,PMID:17974005	
-Q8IWB6	UniProtKB	Natural variant	88	88	.	.	.	ID=VAR_041388;Note=D->G";Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:17344846;Dbxref=dbSNP:rs56292204,PMID:17344846	
-Q8IWB6	UniProtKB	Natural variant	321	321	.	.	.	ID=VAR_041389;Note=In a gastric adenocarcinoma sample%3B somatic mutation. K->E";Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:17344846;Dbxref=PMID:17344846	
-Q8IWB6	UniProtKB	Natural variant	443	443	.	.	.	ID=VAR_041390;Note=S->C";Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:17344846;Dbxref=PMID:17344846	
-Q8IWB6	UniProtKB	Natural variant	559	559	.	.	.	ID=VAR_041391;Note=I->M";Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:17344846;Dbxref=PMID:17344846	
-Q8IWB6	UniProtKB	Mutagenesis	614	618	.	.	.	Note=In PBD-1%3B reduced ability to interact with PLK1. SSPST->AAPAA";Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22405274;Dbxref=PMID:22405274	
-Q8IWB6	UniProtKB	Mutagenesis	726	728	.	.	.	Note=In PBD-5%3B reduced ability to interact with PLK1. STT->AAA";Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22405274;Dbxref=PMID:22405274	
-Q8IWB6	UniProtKB	Sequence conflict	1326	1326	.	.	.	Note=H->R";Ontology_term=ECO:0000305;evidence=ECO:0000305	
-Q8IWB6	UniProtKB	Sequence conflict	1387	1387	.	.	.	Note=L->P";Ontology_term=ECO:0000305;evidence=ECO:0000305	
+Q8IWB6	UniProtKB	Alternative sequence	213	218	.	.	.	ID=VSP_019868;Note=In isoform 2 and isoform 3. Missing;Ontology_term=ECO:0000303,ECO:0000303;evidence=ECO:0000303|PubMed:11279525,ECO:0000303|PubMed:17974005;Dbxref=PMID:11279525,PMID:17974005	
+Q8IWB6	UniProtKB	Alternative sequence	1064	1103	.	.	.	ID=VSP_019869;Note=In isoform 3. Missing;Ontology_term=ECO:0000303,ECO:0000303;evidence=ECO:0000303|PubMed:11279525,ECO:0000303|PubMed:17974005;Dbxref=PMID:11279525,PMID:17974005	
+Q8IWB6	UniProtKB	Natural variant	88	88	.	.	.	ID=VAR_041388;Note=D->G;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:17344846;Dbxref=dbSNP:rs56292204,PMID:17344846	
+Q8IWB6	UniProtKB	Natural variant	321	321	.	.	.	ID=VAR_041389;Note=In a gastric adenocarcinoma sample%3B somatic mutation. K->E;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:17344846;Dbxref=PMID:17344846	
+Q8IWB6	UniProtKB	Natural variant	443	443	.	.	.	ID=VAR_041390;Note=S->C;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:17344846;Dbxref=PMID:17344846	
+Q8IWB6	UniProtKB	Natural variant	559	559	.	.	.	ID=VAR_041391;Note=I->M;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:17344846;Dbxref=PMID:17344846	
+Q8IWB6	UniProtKB	Mutagenesis	614	618	.	.	.	Note=In PBD-1%3B reduced ability to interact with PLK1. SSPST->AAPAA;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22405274;Dbxref=PMID:22405274	
+Q8IWB6	UniProtKB	Mutagenesis	726	728	.	.	.	Note=In PBD-5%3B reduced ability to interact with PLK1. STT->AAA;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22405274;Dbxref=PMID:22405274	
+Q8IWB6	UniProtKB	Sequence conflict	1326	1326	.	.	.	Note=H->R;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+Q8IWB6	UniProtKB	Sequence conflict	1387	1387	.	.	.	Note=L->P;Ontology_term=ECO:0000305;evidence=ECO:0000305	
 Q8IWB6	UniProtKB	Beta strand	797	800	.	.	.	Ontology_term=ECO:0000244;evidence=ECO:0000244|PDB:3WUT	

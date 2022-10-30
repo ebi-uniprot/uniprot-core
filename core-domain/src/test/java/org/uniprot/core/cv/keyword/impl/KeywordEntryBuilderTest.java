@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
@@ -126,7 +127,7 @@ class KeywordEntryBuilderTest {
     void parents_willConvertUnModifiable_toModifiable() {
         KeywordEntry obj =
                 new KeywordEntryBuilder()
-                        .parentsSet(Collections.emptySet())
+                        .parentsSet(List.of())
                         .parentsAdd(new KeywordEntryImpl())
                         .build();
         assertNotNull(obj.getParents());
@@ -137,9 +138,7 @@ class KeywordEntryBuilderTest {
     @Test
     void canAddSetParents() {
         KeywordEntry obj =
-                new KeywordEntryBuilder()
-                        .parentsSet(Collections.singleton(new KeywordEntryImpl()))
-                        .build();
+                new KeywordEntryBuilder().parentsSet(List.of(new KeywordEntryImpl())).build();
         assertNotNull(obj.getParents());
         assertFalse(obj.getParents().isEmpty());
         assertEquals(1, obj.getParents().size());
