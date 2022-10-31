@@ -1126,7 +1126,8 @@
 		"name": "OpenTargets",
 		"displayName": "OpenTargets",
 		"category": "ORG",
-		"uriLink": "https://www.targetvalidation.org/target/%id/associations"
+		"uriLink": "https://www.targetvalidation.org/target/%id/associations",
+        "idMappingName": "OPENTARGETS_ID"
 	},
 	{
 		"name": "Orphanet",
