@@ -38,4 +38,10 @@ class MethodTypeTest {
         MethodType type = MethodType.typeOf("COILS");
         assertEquals(MethodType.COILS, type);
     }
+
+    @Test
+    void testFUNFAM() {
+        MethodType type = MethodType.typeOf("FUNFAM");
+        assertEquals(MethodType.FUNFAM, type);
+    }
 }
