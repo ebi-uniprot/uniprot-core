@@ -508,6 +508,18 @@
 		"uriLink": "https://metosite.uma.es/scan/%id"
 	},
 	{
+		"name": "GlyCosmos",
+		"displayName": "GlyCosmos",
+		"category": "PTM",
+		"uriLink": "https://glycosmos.org/glycoproteins/show/uniprot/%id",
+		"attributes": [
+        {
+          "name": "glycosylation",
+          "xmlTag":"glycosylation"
+        }
+      ]       
+	},
+	{
 		"name": "BioMuta",
 		"displayName": "BioMuta",
 		"category": "GVD",
