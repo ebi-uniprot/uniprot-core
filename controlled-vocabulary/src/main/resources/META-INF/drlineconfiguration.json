@@ -1020,7 +1020,7 @@
 		"name": "AGR",
 		"displayName": "AGR",
 		"category": "ORG",
-		"uriLink": "https://www.alliancegenome.org/gene/%id",
+		"uriLink": "https://www.alliancegenome.org/gene/%id"
 	},
 	
 	{
