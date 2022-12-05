@@ -13,10 +13,10 @@ public enum UniParcDatabase implements Database, EnumDisplay {
     EG_PROTISTS(1300, "EnsemblProtists", true, "https://www.ensemblgenomes.org/id/%id"),
 
     EMBL(300, "EMBL", true, "https://www.ebi.ac.uk/ena/browser/view/%id"),
-    EMBLWGS(400, "EMBLWGS", true, "https://www.ebi.ac.uk/ena/browser/view/%id"),
-    EMBL_CON(500, "EMBL_CON", true, "https://www.ebi.ac.uk/ena/browser/view/%id"),
-    EMBL_TPA(600, "EMBL_TPA", false, "https://www.ebi.ac.uk/ena/browser/view/%id"),
-    EMBL_TSA(700, "EMBL_TSA", true, "https://www.ebi.ac.uk/ena/browser/view/%id"),
+    EMBL_CON(400, "EMBL_CON", true, "https://www.ebi.ac.uk/ena/browser/view/%id"),
+    EMBL_TPA(500, "EMBL_TPA", false, "https://www.ebi.ac.uk/ena/browser/view/%id"),
+    EMBL_TSA(600, "EMBL_TSA", true, "https://www.ebi.ac.uk/ena/browser/view/%id"),
+    EMBLWGS(700, "EMBLWGS", true, "https://www.ebi.ac.uk/ena/browser/view/%id"),
 
     ENSEMBL_VERTEBRATE(800, "Ensembl", true, "https://www.ensembl.org/id/%id"),
     ENSEMBL_RAPID(1350, "EnsemblRapid", true, "https://rapid.ensembl.org/id/%id"),
@@ -69,8 +69,8 @@ public enum UniParcDatabase implements Database, EnumDisplay {
 
     VECTORBASE(3500, "VectorBase", false),
     VEGA(3600, "VEGA", true, "https://vega.sanger.ac.uk/id/%id"),
-    WORMBASE(3700, "WormBase", true, "https://wormbase.org/db/seq/protein?name=%id;class=CDS"),
-    WORMBASE_PARASITE(3800, "WBParaSite", true, "https://parasite.wormbase.org/id/%id");
+    WORMBASE_PARASITE(3700, "WBParaSite", true, "https://parasite.wormbase.org/id/%id"),
+    WORMBASE(3800, "WormBase", true, "https://wormbase.org/db/seq/protein?name=%id;class=CDS");
 
     private final String displayName;
     private final boolean alive;

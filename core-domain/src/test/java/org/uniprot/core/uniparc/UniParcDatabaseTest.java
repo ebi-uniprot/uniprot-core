@@ -2,10 +2,16 @@ package org.uniprot.core.uniparc;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 class UniParcDatabaseTest {
     @Nested
@@ -58,4 +64,52 @@ class UniParcDatabaseTest {
     void hasNoUrl() {
         assertEquals("", UniParcDatabase.VECTORBASE.getUrl());
     }
+
+    @Test
+    void canGetIndex(){
+        assertEquals(100, UniParcDatabase.SWISSPROT.getIndex());}
+
+    @Test
+    void uniprotDatabaseIsTheLowestIndex(){
+        List<UniParcDatabase> sortedValues = Arrays.stream(UniParcDatabase.values())
+                .sorted((db1, db2) -> {
+                    if(db1.getIndex() == db2.getIndex()){
+                        return db1.getName().compareTo(db2.getName());
+                    } else {
+                        return db1.getIndex() - db2.getIndex();
+                    }
+                })
+                .collect(Collectors.toList());
+        assertNotNull(sortedValues);
+        assertEquals(UniParcDatabase.SWISSPROT, sortedValues.get(0));
+        assertEquals(UniParcDatabase.TREMBL, sortedValues.get(1));
+        assertEquals(UniParcDatabase.SWISSPROT_VARSPLIC, sortedValues.get(2));
+    }
+
+    @Test
+    void checkOtherIndexesAreSorted(){
+        List<UniParcDatabase> sortedValuesByIndex = Arrays.stream(UniParcDatabase.values())
+                .filter(db -> !db.equals(UniParcDatabase.SWISSPROT) &&
+                        !db.equals(UniParcDatabase.SWISSPROT_VARSPLIC) &&
+                        !db.equals(UniParcDatabase.TREMBL))
+                .sorted(Comparator.comparingInt(UniParcDatabase::getIndex))
+                .collect(Collectors.toList());
+
+        List<UniParcDatabase> sortedValuesByName = Arrays.stream(UniParcDatabase.values())
+                .filter(db -> !db.equals(UniParcDatabase.SWISSPROT) &&
+                        !db.equals(UniParcDatabase.SWISSPROT_VARSPLIC) &&
+                        !db.equals(UniParcDatabase.TREMBL))
+                .sorted(Comparator.comparing(this::getCleanDisplayName))
+                .collect(Collectors.toList());
+
+        assertEquals(sortedValuesByIndex, sortedValuesByName);
+    }
+
+    private String getCleanDisplayName(UniParcDatabase db1) {
+        String result = db1.getDisplayName().toLowerCase()
+                .replaceAll("_", "")
+                .replaceAll(" ", "");
+        return result;
+    }
+
 }
