@@ -424,6 +424,12 @@
     ]
   },
   {
+    "name": "GlyCosmos",
+    "displayName": "GlyCosmos",
+    "category": "PTM",
+    "uriLink": "https://glycosmos.org/glycoproteins/show/uniprot/%id"
+  },
+  {
     "name": "iPTMnet",
     "displayName": "iPTMnet",
     "category": "PTM",
