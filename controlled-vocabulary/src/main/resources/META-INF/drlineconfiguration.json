@@ -450,7 +450,7 @@
 		"name": "DEPOD",
 		"displayName": "DEPOD",
 		"category": "PTM",
-		"uriLink": "http://depod.bioss.uni-freiburg.de/showp.php?AC=%id"
+		"uriLink": "http://depod.bioss.uni-freiburg.de/showp.php?name=%id"
 	},
 	{
 		"name": "GlyConnect",
@@ -831,7 +831,7 @@
 		"name": "UCSC",
 		"displayName": "UCSC",
 		"category": "GMA",	
-		"uriLink": "https://genome.ucsc.edu/cgi-bin/hgLinkIn?resource=uniprot&id=%id",
+		"uriLink": "https://genome.ucsc.edu/cgi-bin/hgLinkIn?resource=uniprot&id=%primaryAccession",
         "idMappingName": "UCSC_ID",
 		"attributes": [
 			{
@@ -1320,7 +1320,7 @@
 		"name": "HOGENOM",
 		"displayName": "HOGENOM",
 		"category": "PLG",
-		"uriLink": "http://doua.prabi.fr/cgi-bin/acnuc-ac2tree?query=%id&db=HOGENOM6",
+		"uriLink": "http://doua.prabi.fr/cgi-bin/acnuc-ac2tree?query=%primaryAccession&db=HOGENOM6",
         "idMappingName": "HOGENOM_ID"
 	},
 	{
@@ -1339,7 +1339,7 @@
 		"name": "OMA",
 		"displayName": "OMA",
 		"category": "PLG",
-		"uriLink": "https://omabrowser.org/oma/group/%id",
+		"uriLink": "https://omabrowser.org/oma/group/%primaryAccession",
         "idMappingName": "OMA_ID",
 		"attributes": [		
 			{	"name": "Fingerprint",
@@ -1351,7 +1351,7 @@
 		"name": "OrthoDB",
 		"displayName": "OrthoDB",
 		"category": "PLG",
-		"uriLink": "https://www.orthodb.org/?query=%id",
+		"uriLink": "https://www.orthodb.org/?gene=%primaryAccession",
         "idMappingName": "ORTHODB_ID"
     },
 	{
