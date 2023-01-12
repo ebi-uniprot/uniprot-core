@@ -1638,7 +1638,7 @@
 		"name": "Pfam",
 		"displayName": "Pfam",
 		"category": "FMD",
-		"uriLink": "http://pfam.xfam.org/family/%id",
+		"uriLink": "https://www.ebi.ac.uk/interpro/entry/pfam/%id",
 		"attributes": [		
 			{	"name": "EntryName",
 				"xmlTag":"entry name"			
