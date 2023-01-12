@@ -1320,7 +1320,7 @@
 		"name": "HOGENOM",
 		"displayName": "HOGENOM",
 		"category": "PLG",
-		"uriLink": "http://doua.prabi.fr/cgi-bin/acnuc-ac2tree?query=%primaryAccession&db=HOGENOM6",
+		"uriLink": "http://hogenom.univ-lyon1.fr/query_sequence?seq=%primaryAccession",
         "idMappingName": "HOGENOM_ID"
 	},
 	{
