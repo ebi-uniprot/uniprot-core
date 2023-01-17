@@ -23,12 +23,6 @@ public enum UniParcDatabase implements Database, EnumDisplay {
 
     EPO(1400, "EPO", true, "https://www.ebi.ac.uk/Tools/dbfetch/dbfetch?db=epo_prt&id=%id"),
     FLYBASE(1500, "FlyBase", true, "https://flybase.org/reports/%id.html"),
-    FUSION_GDB(
-            1550,
-            "FusionGDB",
-            true,
-            "https://compbio.uth.edu/FusionGDB2/gene_search_result.cgi?type=quick_search&quick_search=%id"),
-
     H_INV(1600, "H-InvDB", false),
     IPI(1700, "IPI", false),
 
