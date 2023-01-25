@@ -53,11 +53,11 @@ public class BPCPCommentTest {
         assertEquals(1, absorption.get("note").get("texts").size());
         JsonNode valueEvidence = absorption.get("note").get("texts").get(0);
         ValidateJson.validateValueEvidence(
-                valueEvidence, "value1", "ECO:0000255", "PROSITE-ProRule", "PRU10028");
+                valueEvidence, "value1", "ECO:0000269", "PROSITE-ProRule", "PRU10028");
         assertNotNull(absorption.get("evidences"));
         assertEquals(1, absorption.get("evidences").size());
         ValidateJson.validateEvidence(
-                absorption.get("evidences").get(0), "ECO:0000255", "PROSITE-ProRule", "PRU10028");
+                absorption.get("evidences").get(0), "ECO:0000269", "PROSITE-ProRule", "PRU10028");
 
         assertNotNull(jsonNode.get("kineticParameters"));
         JsonNode kineticParameters = jsonNode.get("kineticParameters");
@@ -75,7 +75,7 @@ public class BPCPCommentTest {
         assertEquals(1, maximumVelocities.get("evidences").size());
         ValidateJson.validateEvidence(
                 maximumVelocities.get("evidences").get(0),
-                "ECO:0000255",
+                "ECO:0000269",
                 "PROSITE-ProRule",
                 "PRU10028");
 
@@ -90,7 +90,7 @@ public class BPCPCommentTest {
         assertEquals(1, michaelisConstants.get("evidences").size());
         ValidateJson.validateEvidence(
                 michaelisConstants.get("evidences").get(0),
-                "ECO:0000255",
+                "ECO:0000269",
                 "PROSITE-ProRule",
                 "PRU10028");
 
@@ -99,7 +99,7 @@ public class BPCPCommentTest {
         assertEquals(1, kineticParameters.get("note").get("texts").size());
         JsonNode kinectEvidence = kineticParameters.get("note").get("texts").get(0);
         ValidateJson.validateValueEvidence(
-                kinectEvidence, "value1", "ECO:0000255", "PROSITE-ProRule", "PRU10028");
+                kinectEvidence, "value1", "ECO:0000269", "PROSITE-ProRule", "PRU10028");
 
         assertNotNull(jsonNode.get("phDependence"));
         JsonNode phDependence = jsonNode.get("phDependence");
@@ -107,7 +107,7 @@ public class BPCPCommentTest {
         assertEquals(1, phDependence.get("texts").size());
         JsonNode phDependenceEvidence = phDependence.get("texts").get(0);
         ValidateJson.validateValueEvidence(
-                phDependenceEvidence, "value1", "ECO:0000255", "PROSITE-ProRule", "PRU10028");
+                phDependenceEvidence, "value1", "ECO:0000269", "PROSITE-ProRule", "PRU10028");
 
         assertNotNull(jsonNode.get("redoxPotential"));
         JsonNode redoxPotential = jsonNode.get("redoxPotential");
@@ -115,7 +115,7 @@ public class BPCPCommentTest {
         assertEquals(1, redoxPotential.get("texts").size());
         JsonNode redoxPotentialEvidence = redoxPotential.get("texts").get(0);
         ValidateJson.validateValueEvidence(
-                redoxPotentialEvidence, "value1", "ECO:0000255", "PROSITE-ProRule", "PRU10028");
+                redoxPotentialEvidence, "value1", "ECO:0000269", "PROSITE-ProRule", "PRU10028");
 
         assertNotNull(jsonNode.get("temperatureDependence"));
         JsonNode temperatureDependence = jsonNode.get("temperatureDependence");
@@ -125,17 +125,17 @@ public class BPCPCommentTest {
         ValidateJson.validateValueEvidence(
                 temperatureDependenceEvidence,
                 "value1",
-                "ECO:0000255",
+                "ECO:0000269",
                 "PROSITE-ProRule",
                 "PRU10028");
     }
 
     public static BPCPComment getBpcpComment() {
         List<Evidence> evidences =
-                CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10028");
+                CreateUtils.createEvidenceList("ECO:0000269|PROSITE-ProRule:PRU10028");
         List<EvidencedValue> texts =
                 CreateUtils.createEvidencedValueList(
-                        "value1", "ECO:0000255|PROSITE-ProRule:PRU10028");
+                        "value1", "ECO:0000269|PROSITE-ProRule:PRU10028");
         Note note = new NoteBuilder(texts).build();
         Absorption absorption =
                 new AbsorptionBuilder()

@@ -57,14 +57,14 @@ public class DiseaseCommentTest {
         assertNotNull(disease.get("evidences"));
         assertEquals(1, disease.get("evidences").size());
         ValidateJson.validateEvidence(
-                disease.get("evidences").get(0), "ECO:0000256", "PIRNR", "PIRNR001362");
+                disease.get("evidences").get(0), "ECO:0000269", "PIRNR", "PIRNR001362");
 
         assertNotNull(jsonNode.get("note"));
         assertNotNull(jsonNode.get("note").get("texts"));
         assertEquals(1, jsonNode.get("note").get("texts").size());
         JsonNode valueEvidence = jsonNode.get("note").get("texts").get(0);
         ValidateJson.validateValueEvidence(
-                valueEvidence, "value2", "ECO:0000256", "PIRNR", "PIRNR001362");
+                valueEvidence, "value2", "ECO:0000269", "PIRNR", "PIRNR001362");
     }
 
     public static DiseaseComment getDiseaseComment() {
@@ -80,13 +80,13 @@ public class DiseaseCommentTest {
                         .description("some description")
                         .diseaseCrossReference(reference)
                         .diseaseAc("DiseaseEntry AC")
-                        .evidencesAdd(CreateUtils.createEvidence("ECO:0000256|PIRNR:PIRNR001362"))
+                        .evidencesAdd(CreateUtils.createEvidence("ECO:0000269|PIRNR:PIRNR001362"))
                         .build();
 
         Note note =
                 new NoteBuilder(
                                 CreateUtils.createEvidencedValueList(
-                                        "value2", "ECO:0000256|PIRNR:PIRNR001362"))
+                                        "value2", "ECO:0000269|PIRNR:PIRNR001362"))
                         .build();
         return new DiseaseCommentBuilder()
                 .molecule("Isoform 3")

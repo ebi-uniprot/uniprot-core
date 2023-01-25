@@ -55,7 +55,7 @@ public class SequenceCautionCommentTest {
         assertNotNull(jsonNode.get("evidences"));
         assertEquals(1, jsonNode.get("evidences").size());
         ValidateJson.validateEvidence(
-                jsonNode.get("evidences").get(0), "ECO:0000256", "PIRNR", "PIRNR001361");
+                jsonNode.get("evidences").get(0), "ECO:0000269", "PIRNR", "PIRNR001361");
     }
 
     public static SequenceCautionComment getSequenceCautionComment() {
@@ -64,7 +64,7 @@ public class SequenceCautionCommentTest {
                 .sequenceCautionType(SequenceCautionType.ERRONEOUS_PREDICTION)
                 .sequence("sequence")
                 .note("Text note")
-                .evidencesSet(CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361"))
+                .evidencesSet(CreateUtils.createEvidenceList("ECO:0000269|PIRNR:PIRNR001361"))
                 .build();
     }
 }

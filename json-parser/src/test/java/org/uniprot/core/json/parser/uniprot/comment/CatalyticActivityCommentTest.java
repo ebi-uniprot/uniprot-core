@@ -69,7 +69,7 @@ public class CatalyticActivityCommentTest {
         assertNotNull(reaction.get("evidences"));
         assertEquals(1, reaction.get("evidences").size());
         ValidateJson.validateEvidence(
-                reaction.get("evidences").get(0), "ECO:0000256", "PIRNR", "PIRNR001361");
+                reaction.get("evidences").get(0), "ECO:0000269", "PIRNR", "PIRNR001361");
 
         assertNotNull(jsonNode.get("physiologicalReactions"));
         assertEquals(1, jsonNode.get("physiologicalReactions").size());
@@ -118,7 +118,7 @@ public class CatalyticActivityCommentTest {
     }
 
     private static Reaction createReaction() {
-        List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361");
+        List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PIRNR:PIRNR001361");
         String name = "some reaction";
         ECNumber ecNumber = new ECNumberBuilder("1.2.4.5").build();
         return new ReactionBuilder()

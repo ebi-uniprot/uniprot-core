@@ -59,7 +59,7 @@ public class CofactorCommentTest {
         assertNotNull(cofactor.get("evidences"));
         assertEquals(1, cofactor.get("evidences").size());
         ValidateJson.validateEvidence(
-                cofactor.get("evidences").get(0), "ECO:0000256", "PIRNR", "PIRNR001361");
+                cofactor.get("evidences").get(0), "ECO:0000269", "PIRNR", "PIRNR001361");
         assertNotNull(cofactor.get("cofactorCrossReference"));
         JsonNode cofactorCrossReference = cofactor.get("cofactorCrossReference");
         assertNotNull(cofactorCrossReference.get("database"));
@@ -72,7 +72,7 @@ public class CofactorCommentTest {
         assertEquals(1, jsonNode.get("note").get("texts").size());
         JsonNode valueEvidence = jsonNode.get("note").get("texts").get(0);
         ValidateJson.validateValueEvidence(
-                valueEvidence, "value2", "ECO:0000256", "PIRNR", "PIRNR001361");
+                valueEvidence, "value2", "ECO:0000269", "PIRNR", "PIRNR001361");
     }
 
     public static CofactorComment getCofactorComment() {
@@ -98,10 +98,10 @@ public class CofactorCommentTest {
     }
 
     private static List<Evidence> createEvidences() {
-        return CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361");
+        return CreateUtils.createEvidenceList("ECO:0000269|PIRNR:PIRNR001361");
     }
 
     private static List<EvidencedValue> createEvidenceValues() {
-        return CreateUtils.createEvidencedValueList("value2", "ECO:0000256|PIRNR:PIRNR001361");
+        return CreateUtils.createEvidencedValueList("value2", "ECO:0000269|PIRNR:PIRNR001361");
     }
 }
