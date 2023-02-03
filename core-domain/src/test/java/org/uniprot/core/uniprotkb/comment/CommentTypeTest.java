@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 
 class CommentTypeTest {
 
@@ -52,5 +53,10 @@ class CommentTypeTest {
         assertNotSame(
                 CommentType.PHARMACEUTICAL.toXmlDisplayName(),
                 CommentType.PHARMACEUTICAL.getDisplayName());
+    }
+
+    @Test
+    void canGetDefaultEvidenceCode() {
+         assertEquals(EvidenceCode.ECO_0000269, CommentType.PHARMACEUTICAL.getDefaultEvidenceCode());
     }
 }

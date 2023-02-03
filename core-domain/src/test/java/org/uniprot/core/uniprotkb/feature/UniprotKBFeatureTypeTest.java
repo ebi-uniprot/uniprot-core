@@ -12,6 +12,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 
 class UniprotKBFeatureTypeTest {
 
@@ -61,6 +62,11 @@ class UniprotKBFeatureTypeTest {
     void compareOnIsEqualsValue() {
         assertEquals(
                 UniprotKBFeatureType.CHAIN.getValue(), UniprotKBFeatureType.CHAIN.getCompareOn());
+    }
+
+    @Test
+    void canGetDefaultEvidenceCode() {
+        assertEquals(EvidenceCode.ECO_0000269, UniprotKBFeatureType.INIT_MET.getDefaultEvidenceCode());
     }
 
     @ParameterizedTest(name = "Starts with capital? : {0}")
