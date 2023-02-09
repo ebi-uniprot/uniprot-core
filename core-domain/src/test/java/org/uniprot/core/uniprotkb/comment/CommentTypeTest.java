@@ -56,7 +56,7 @@ class CommentTypeTest {
     }
 
     @Test
-    void canGetDefaultEvidenceCode() {
-         assertEquals(EvidenceCode.ECO_0000269, CommentType.PHARMACEUTICAL.getDefaultEvidenceCode());
+    void canGetIsAddExperimental() {
+        assertTrue(CommentType.PHARMACEUTICAL.isAddExperimental());
     }
 }

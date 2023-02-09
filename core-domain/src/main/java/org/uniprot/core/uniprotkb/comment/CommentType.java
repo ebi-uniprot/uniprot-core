@@ -20,53 +20,58 @@ import org.uniprot.core.util.EnumDisplay;
  * CC -!- SEQUENCE CAUTION: Text. CC -!- WEB RESOURCE: Text.
  */
 public enum CommentType implements EnumDisplay {
-    FUNCTION("FUNCTION", "function", EvidenceCode.ECO_0000269),
-    CATALYTIC_ACTIVITY("CATALYTIC ACTIVITY", "catalytic activity", EvidenceCode.ECO_0000269),
-    COFACTOR("COFACTOR", "cofactor", EvidenceCode.ECO_0000269),
-    ACTIVITY_REGULATION("ACTIVITY REGULATION", "activity regulation", EvidenceCode.ECO_0000269),
-    BIOPHYSICOCHEMICAL_PROPERTIES("BIOPHYSICOCHEMICAL PROPERTIES", "biophysicochemical properties", EvidenceCode.ECO_0000269),
-    PATHWAY("PATHWAY", "pathway", EvidenceCode.ECO_0000269),
-    SUBUNIT("SUBUNIT", "subunit", EvidenceCode.ECO_0000269),
-    INTERACTION("INTERACTION", "interaction", EvidenceCode.ECO_0000305),
-    SUBCELLULAR_LOCATION("SUBCELLULAR LOCATION", "subcellular location", EvidenceCode.ECO_0000269),
-    ALTERNATIVE_PRODUCTS("ALTERNATIVE PRODUCTS", "alternative products", EvidenceCode.ECO_0000269),
-    TISSUE_SPECIFICITY("TISSUE SPECIFICITY", "tissue specificity", EvidenceCode.ECO_0000269),
-    DEVELOPMENTAL_STAGE("DEVELOPMENTAL STAGE", "developmental stage", EvidenceCode.ECO_0000269),
-    INDUCTION("INDUCTION", "induction", EvidenceCode.ECO_0000269),
-    DOMAIN("DOMAIN", "domain", EvidenceCode.ECO_0000305),
-    PTM("PTM", "PTM", EvidenceCode.ECO_0000269),
-    RNA_EDITING("RNA EDITING", "RNA editing", EvidenceCode.ECO_0000269),
-    MASS_SPECTROMETRY("MASS SPECTROMETRY", "mass spectrometry", EvidenceCode.ECO_0000269),
-    POLYMORPHISM("POLYMORPHISM", "polymorphism", EvidenceCode.ECO_0000269),
-    DISEASE("DISEASE", "disease", EvidenceCode.ECO_0000269),
-    DISRUPTION_PHENOTYPE("DISRUPTION PHENOTYPE", "disruption phenotype", EvidenceCode.ECO_0000269),
-    ALLERGEN("ALLERGEN", "allergen", EvidenceCode.ECO_0000269),
-    TOXIC_DOSE("TOXIC DOSE", "toxic dose", EvidenceCode.ECO_0000269),
-    BIOTECHNOLOGY("BIOTECHNOLOGY", "biotechnology", EvidenceCode.ECO_0000269),
-    PHARMACEUTICAL("PHARMACEUTICAL", "pharmaceutical", EvidenceCode.ECO_0000269),
-    MISCELLANEOUS("MISCELLANEOUS", "miscellaneous", EvidenceCode.ECO_0000305),
-    SIMILARITY("SIMILARITY", "similarity", EvidenceCode.ECO_0000305),
-    CAUTION("CAUTION", "caution", EvidenceCode.ECO_0000305),
-    SEQUENCE_CAUTION("SEQUENCE CAUTION", "sequence caution", EvidenceCode.ECO_0000305),
-    WEBRESOURCE("WEB RESOURCE", "online information", null),
-    UNKNOWN("UNKOWN", "unknown", null);
+    FUNCTION("FUNCTION", "function", true),
+    CATALYTIC_ACTIVITY("CATALYTIC ACTIVITY", "catalytic activity", true),
+    COFACTOR("COFACTOR", "cofactor", true),
+    ACTIVITY_REGULATION("ACTIVITY REGULATION", "activity regulation", true),
+    BIOPHYSICOCHEMICAL_PROPERTIES("BIOPHYSICOCHEMICAL PROPERTIES", "biophysicochemical properties", true),
+    PATHWAY("PATHWAY", "pathway", true),
+    SUBUNIT("SUBUNIT", "subunit", true),
+    INTERACTION("INTERACTION", "interaction", false),
+    SUBCELLULAR_LOCATION("SUBCELLULAR LOCATION", "subcellular location", true),
+    ALTERNATIVE_PRODUCTS("ALTERNATIVE PRODUCTS", "alternative products", false),
+    TISSUE_SPECIFICITY("TISSUE SPECIFICITY", "tissue specificity", true),
+    DEVELOPMENTAL_STAGE("DEVELOPMENTAL STAGE", "developmental stage", true),
+    INDUCTION("INDUCTION", "induction", true),
+    DOMAIN("DOMAIN", "domain", false),
+    PTM("PTM", "PTM", true),
+    RNA_EDITING("RNA EDITING", "RNA editing", true),
+    MASS_SPECTROMETRY("MASS SPECTROMETRY", "mass spectrometry", true),
+    POLYMORPHISM("POLYMORPHISM", "polymorphism", true),
+    DISEASE("DISEASE", "disease", true),
+    DISRUPTION_PHENOTYPE("DISRUPTION PHENOTYPE", "disruption phenotype", true),
+    ALLERGEN("ALLERGEN", "allergen", true),
+    TOXIC_DOSE("TOXIC DOSE", "toxic dose", true),
+    BIOTECHNOLOGY("BIOTECHNOLOGY", "biotechnology", true),
+    PHARMACEUTICAL("PHARMACEUTICAL", "pharmaceutical", true),
+    MISCELLANEOUS("MISCELLANEOUS", "miscellaneous", false),
+    SIMILARITY("SIMILARITY", "similarity", false),
+    CAUTION("CAUTION", "caution", false),
+    SEQUENCE_CAUTION("SEQUENCE CAUTION", "sequence caution", false),
+    WEBRESOURCE("WEB RESOURCE", "online information", false),
+    UNKNOWN("UNKOWN", "unknown", false);
 
-    private String name;
+    private final String name;
     private final String xmlDisplayValue;
-    private final EvidenceCode defaultEvidenceCode;
+    private final boolean addExperimental;
 
-    CommentType(String name, String xmlDisplayValue, EvidenceCode defaultEvidenceCode) {
+    CommentType(String name, String xmlDisplayValue, boolean addExperimental) {
         this.name = name;
         this.xmlDisplayValue = xmlDisplayValue;
-        this.defaultEvidenceCode = defaultEvidenceCode;
+        this.addExperimental = addExperimental;
     }
 
     public @Nonnull String getName() {
         return name;
     }
 
-    public EvidenceCode getDefaultEvidenceCode() {
-        return defaultEvidenceCode;
+    /**
+     * Return if we can add implicit experimental evidence for this CommentType.
+     *
+     * @return
+     */
+    public boolean isAddExperimental() {
+        return addExperimental;
     }
 
     /**

@@ -2,8 +2,7 @@ package org.uniprot.core.uniprotkb.feature;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.stream.Stream;
 
@@ -65,8 +64,8 @@ class UniprotKBFeatureTypeTest {
     }
 
     @Test
-    void canGetDefaultEvidenceCode() {
-        assertEquals(EvidenceCode.ECO_0000269, UniprotKBFeatureType.INIT_MET.getDefaultEvidenceCode());
+    void canGetIsAddExperimental() {
+        assertTrue(UniprotKBFeatureType.INIT_MET.isAddExperimental());
     }
 
     @ParameterizedTest(name = "Starts with capital? : {0}")
