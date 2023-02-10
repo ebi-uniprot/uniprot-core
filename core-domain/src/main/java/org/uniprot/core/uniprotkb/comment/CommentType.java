@@ -2,7 +2,6 @@ package org.uniprot.core.uniprotkb.comment;
 
 import javax.annotation.Nonnull;
 
-import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.util.EnumDisplay;
 
 /**
@@ -24,7 +23,8 @@ public enum CommentType implements EnumDisplay {
     CATALYTIC_ACTIVITY("CATALYTIC ACTIVITY", "catalytic activity", true),
     COFACTOR("COFACTOR", "cofactor", true),
     ACTIVITY_REGULATION("ACTIVITY REGULATION", "activity regulation", true),
-    BIOPHYSICOCHEMICAL_PROPERTIES("BIOPHYSICOCHEMICAL PROPERTIES", "biophysicochemical properties", true),
+    BIOPHYSICOCHEMICAL_PROPERTIES(
+            "BIOPHYSICOCHEMICAL PROPERTIES", "biophysicochemical properties", true),
     PATHWAY("PATHWAY", "pathway", true),
     SUBUNIT("SUBUNIT", "subunit", true),
     INTERACTION("INTERACTION", "interaction", false),
