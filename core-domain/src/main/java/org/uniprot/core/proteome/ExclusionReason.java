@@ -1,7 +1,9 @@
 package org.uniprot.core.proteome;
+
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
+
 /**
  * @author lgonzales
  * @since 07/10/2020
