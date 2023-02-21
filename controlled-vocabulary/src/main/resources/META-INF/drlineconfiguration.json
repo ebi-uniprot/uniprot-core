@@ -3,7 +3,7 @@
 		"name": "EMBL",
 		"displayName": "EMBL",
 		"category": "SEQ",
-		"uriLink": "https://www.ebi.ac.uk/ena/data/view/%id",
+		"uriLink": "https://www.ebi.ac.uk/ena/browser/view/%id",
 		"attributes": [
 			{
 				"name": "ProteinId",
@@ -48,7 +48,7 @@
 		"name": "DDBJ",
 		"displayName": "DDBJ",
 		"category": "SEQ",
-		"uriLink": "http://getentry.ddbj.nig.ac.jp/getentry/dad/%id",
+		"uriLink": "http://getentry.ddbj.nig.ac.jp/search/get_entry?accnumber=%id",
 		"implicit": true,
 		"linkedReason": "DR:EMBL",
 		"attributes": [
@@ -152,7 +152,7 @@
 		"category": "3DS",
 		"implicit": true,
 		"linkedReason": "All UniProtKB entries",
-		"uriLink": "http://salilab.org/modbase-cgi/model_search.cgi?searchkw=name&kword=%primaryAccession"
+		"uriLink": "https://salilab.org/modbase-cgi/model_search.cgi?searchkw=name&kword=%primaryAccession"
 	},
 	{
 		"name": "SMR",
@@ -272,7 +272,7 @@
 		"name": "BindingDB",
 		"displayName": "BindingDB",
 		"category": "CHEMISTRY",
-		"uriLink": "http://www.bindingdb.org/uniprot/%id"
+		"uriLink": "https://www.bindingdb.org/uniprot/%id"
 	},
 	{
 		"name": "ChEMBL",
@@ -298,7 +298,7 @@
 		"name": "GuidetoPHARMACOLOGY",
 		"displayName": "GuidetoPHARMACOLOGY",
 		"category": "CHEMISTRY",
-		"uriLink": "http://www.guidetopharmacology.org/GRAC/ObjectDisplayForward?objectId=%id",
+		"uriLink": "https://www.guidetopharmacology.org/GRAC/ObjectDisplayForward?objectId=%id",
         "idMappingName": "GUIDETOPHARMACOLOGY_ID"
 	},
 	{
@@ -339,7 +339,7 @@
 		"name": "ESTHER",
 		"displayName": "ESTHER",
 		"category": "PFAM",
-		"uriLink": "http://bioweb.supagro.inra.fr/ESTHER/gene_locus?name=%id&class=Gene_locus",
+		"uriLink": "https://bioweb.supagro.inra.fr/ESTHER/gene_locus?name=%id&class=Gene_locus",
         "idMappingName": "ESTHER_ID",
 		"attributes": [
 			{
@@ -352,7 +352,7 @@
 		"name": "IMGT_GENE-DB",
 		"displayName": "IMGT_GENE-DB",
 		"category": "PFAM",
-		"uriLink": "http://www.imgt.org/IMGT_GENE-DB/GENElect?query=2+%id&species=Homo+sapiens"
+		"uriLink": "https://www.imgt.org/IMGT_GENE-DB/GENElect?query=2+%id&species=Homo+sapiens"
 	},
 	{
 		"name": "MEROPS",
@@ -383,7 +383,7 @@
 		"name": "CLAE",
 		"displayName": "CLAE",
 		"category": "PFAM",
-		"uriLink": "https://mycoclap.fungalgenomics.ca/mycoCLAP/clap/GeneView/%id",
+		"uriLink": "https://clae.fungalgenomics.ca/enzyme/%id",
         "idMappingName": "CLAE_ID"
 	},
 	{
@@ -481,7 +481,7 @@
 		"name": "GlyGen",
 		"displayName": "GlyGen",
 		"category": "PTM",
-		"uriLink": "https://www.glygen.org/protein/%id",
+		"uriLink": "https://glygen.org/protein/%id#glycosylation",
         "attributes": [
         {
           "name": "glycosylation",
@@ -530,14 +530,14 @@
 		"name": "DMDM",
 		"displayName": "DMDM",
 		"category": "GVD",
-		"uriLink": "http://bioinf.umbc.edu/dmdm/gene_prot_page.php?search_type=protein&id=%id",
+		"uriLink": "https://bioinf.umbc.edu/dmdm/gene_prot_page.php?search_type=protein&id=%id",
         "idMappingName": "DMDM_ID"
 	},
 	{
 		"name": "dbSNP",
 		"displayName": "dbSNP",
 		"category": "GVD",
-		"uriLink": "https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?type=rs&rs=%id"
+		"uriLink": "https://www.ncbi.nlm.nih.gov/snp/%id"
 	},
 	
 	{
@@ -574,7 +574,7 @@
 		"name": "UCD-2DPAGE",
 		"displayName": "UCD-2DPAGE",
 		"category": "2DG",
-		"uriLink": "http://proteomics-portal.ucd.ie/cgi-bin/2d/2d.cgi?%id"
+		"uriLink": "https://proteomics-portal.ucd.ie/cgi-bin/2d/2d.cgi?%id"
 	},
 	{
 		"name": "World-2DPAGE",
@@ -619,7 +619,7 @@
 		"name": "PRIDE",
 		"displayName": "PRIDE",
 		"category": "PROTEOMIC",
-		"uriLink": "https://www.ebi.ac.uk/pride/peptidome/peptidesearch?keyword=%id"
+		"uriLink": "https://www.ebi.ac.uk/pride/searchSummary.do?queryTypeSelected=identification%20accession%20number&identificationAccessionNumber=%id"
 	},
 	{
 		"name": "ProMEX",
@@ -685,7 +685,7 @@
 		"name": "EnsemblBacteria",
 		"displayName": "EnsemblBacteria",
 		"category": "GMA",
-		"uriLink": "http://www.ensemblgenomes.org/id/%id",
+		"uriLink": "https://www.ensemblgenomes.org/id/%id",
 		"attributes": [
 			{
 				"name": "ProteinId",
@@ -703,7 +703,7 @@
 		"name": "EnsemblFungi",
 		"displayName": "EnsemblFungi",
 		"category": "GMA",
-		"uriLink": "http://www.ensemblgenomes.org/id/%id",
+		"uriLink": "https://www.ensemblgenomes.org/id/%id",
 		"attributes": [
 			{
 				"name": "ProteinId",
@@ -721,7 +721,7 @@
 		"name": "EnsemblMetazoa",
 		"displayName": "EnsemblMetazoa",
 		"category": "GMA",
-		"uriLink": "http://www.ensemblgenomes.org/id/%id",
+		"uriLink": "https://www.ensemblgenomes.org/id/%id",
 		"attributes": [
 			{
 				"name": "ProteinId",
@@ -739,7 +739,7 @@
 		"name": "EnsemblPlants",
 		"displayName": "EnsemblPlants",
 		"category": "GMA",
-		"uriLink": "http://www.ensemblgenomes.org/id/%id",
+		"uriLink": "https://www.ensemblgenomes.org/id/%id",
 		"attributes": [
 			{
 				"name": "ProteinId",
@@ -757,7 +757,7 @@
 		"name": "EnsemblProtists",
 		"displayName": "EnsemblProtists",
 		"category": "GMA",
-		"uriLink": "http://www.ensemblgenomes.org/id/%id",
+		"uriLink": "https://www.ensemblgenomes.org/id/%id",
 		"attributes": [
 			{
 				"name": "ProteinId",
@@ -782,7 +782,7 @@
 		"name": "Gramene",
 		"displayName": "Gramene",
 		"category": "GMA",
-		"uriLink": "http://ensembl.gramene.org/id/%id",
+		"uriLink": "https://ensembl.gramene.org/id/%id",
 		"attributes": [
 			{
 				"name": "ProteinId",
@@ -914,7 +914,7 @@
 		"displayName": "Araport",
 		"category": "ORG",
         "idMappingName": "ARAPORT_ID",
-		"uriLink": "https://apps.araport.org/thalemine/portal.do?externalids=%id"
+		"uriLink": "https://bar.utoronto.ca/thalemine/portal.do?externalids=%id"
 	},
 	{
 		"name": "CGD",
@@ -946,7 +946,7 @@
 		"name": "CTD",
 		"displayName": "CTD",
 		"category": "ORG",
-		"uriLink": "http://ctdbase.org/detail.go?type=gene&db=GENE&acc=%id"
+		"uriLink": "https://ctdbase.org/detail.go?type=gene&db=GENE&acc=%id"
 	},
 	{
 		"name": "dictyBase",
@@ -965,20 +965,20 @@
 		"name": "DisGeNET",
 		"displayName": "DisGeNET",
 		"category": "ORG",
-		"uriLink": "http://disgenet.org/search?q=%id"
+		"uriLink": "https://disgenet.org/search?q=%id"
 	},
 	{
 		"name": "EchoBASE",
 		"displayName": "EchoBASE",
 		"category": "ORG",
-		"uriLink": "http://www.york.ac.uk/res/thomas/Gene.cfm?recordID=%id",
+		"uriLink": "https://www.york.ac.uk/res/thomas/Gene.cfm?recordID=%id",
         "idMappingName": "ECHOBASE_ID"
     },
 	{
 		"name": "euHCVdb",
 		"displayName": "euHCVdb",
 		"category": "ORG",
-		"uriLink": "https://euhcvdb.ibcp.fr/euHCVdb/do/displayHCVEntry?primaryAC=%id",
+		"uriLink": "https://euhcvdb.lyon.inserm.fr/euHCVdb/do/displayHCVEntry?primaryAC=%id",
         "idMappingName": "EUHCVDB_ID"
 	},
 	{
@@ -992,7 +992,7 @@
 		"name": "FlyBase",
 		"displayName": "FlyBase",
 		"category": "ORG",
-		"uriLink": "http://flybase.org/reports/%id.html",
+		"uriLink": "https://flybase.org/reports/%id.html",
         "idMappingName": "FLYBASE_ID",
 		"attributes": [
 			{
@@ -1032,7 +1032,7 @@
 		"name": "AGR",
 		"displayName": "AGR",
 		"category": "ORG",
-		"uriLink": "https://www.alliancegenome.org/gene/%id"
+		"uriLink": "https://alliancegenome.org/gene/%id"
 	},
 	
 	{
@@ -1066,7 +1066,7 @@
 		"name": "HPA",
 		"displayName": "HPA",
 		"category": "ORG",
-		"uriLink": "http://www.proteinatlas.org/tissue_profile.php?antibody_id=%id",
+		"uriLink": "https://www.proteinatlas.org/%id",
         "attributes": [
           {
             "name": "ExpressionPatterns",
@@ -1145,7 +1145,7 @@
 		"name": "OpenTargets",
 		"displayName": "OpenTargets",
 		"category": "ORG",
-		"uriLink": "https://www.targetvalidation.org/target/%id/associations",
+		"uriLink": "https://platform.opentargets.org/target/%id/associations",
         "idMappingName": "OPENTARGETS_ID"
 	},
 	{
@@ -1172,7 +1172,7 @@
 		"name": "PomBase",
 		"displayName": "PomBase",
 		"category": "ORG",
-		"uriLink": "https://www.pombase.org/spombe/result/%id",
+		"uriLink": "https://www.pombase.org/gene/%id",
         "idMappingName": "POMBASE_ID",
 		"attributes": [
 			{
@@ -1185,14 +1185,14 @@
 		"name": "PseudoCAP",
 		"displayName": "PseudoCAP",
 		"category": "ORG",
-		"uriLink": "http://www.pseudomonas.com/feature/show?locus_tag=%id",
+		"uriLink": "https://www.pseudomonas.com/feature/show?locus_tag=%id",
         "idMappingName": "PSEUDOCAP_ID"
     },
 	{
 		"name": "RGD",
 		"displayName": "RGD",
 		"category": "ORG",
-		"uriLink": "http://rgd.mcw.edu/tools/genes/genes_view.cgi?id=%id",
+		"uriLink": "https://rgd.mcw.edu/rgdweb/report/gene/main.html?id=%id",
         "idMappingName": "RGD_ID",
 		"attributes": [
 			{
@@ -1218,7 +1218,7 @@
 		"name": "TAIR",
 		"displayName": "TAIR",
 		"category": "ORG",
-		"uriLink": "http://www.arabidopsis.org/servlets/TairObject?accession=%id",
+		"uriLink": "https://www.arabidopsis.org/servlets/TairObject?accession=%id",
 		"attributes": [
 			{
 				"name": "GeneName",
@@ -1250,7 +1250,7 @@
 		"name": "WormBase",
 		"displayName": "WormBase",
 		"category": "ORG",
-		"uriLink": "https://wormbase.org/species/c_elegans/cds/%id",
+		"uriLink": "https://wormbase.org/db/seq/protein?name=%id;class=CDS ",
         "idMappingName": "WORMBASE_ID",
 		"attributes": [
 			{
@@ -1272,7 +1272,7 @@
 		"name": "Xenbase",
 		"displayName": "Xenbase",
 		"category": "ORG",
-		"uriLink": "http://www.xenbase.org/gene/showgene.do?method=display&geneId=%id",
+		"uriLink": "https://www.xenbase.org/gene/showgene.do?method=display&geneId=%id",
         "idMappingName": "XENBASE_ID",
 		"attributes": [		
 			{	"name": "GeneName",
@@ -1325,7 +1325,7 @@
 		"name": "GeneTree",
 		"displayName": "GeneTree",
 		"category": "PLG",
-		"uriLink": "http://www.ensemblgenomes.org/id-genetree/%id",
+		"uriLink": "https://www.ensemblgenomes.org/id-genetree/%id",
         "idMappingName": "GENETREE_ID"
     },
 	{
@@ -1339,7 +1339,7 @@
 		"name": "InParanoid",
 		"displayName": "InParanoid",
 		"category": "PLG",
-		"uriLink": "http://inparanoid.sbc.su.se/cgi-bin/gene_search.cgi?id=%id"
+		"uriLink": "https://inparanoid.sbc.su.se/cgi-bin/gene_search.cgi?id=%id"
 	},
 	{
 		"name": "KO",
@@ -1370,7 +1370,7 @@
 		"name": "PhylomeDB",
 		"displayName": "PhylomeDB",
 		"category": "PLG",
-		"uriLink": "http://phylomedb.org/?q=search_tree&seqid=%id"
+		"uriLink": "http://phylomedb.org/search_phylome/?seqid=%id"
 	},
 	{
 		"name": "TreeFam",
@@ -1467,7 +1467,7 @@
 		"name": "ChiTaRS",
 		"displayName": "ChiTaRS",
 		"category": "MISC",
-		"uriLink": "http://chitars.md.biu.ac.il/bin/search.pl?searchtype=gene_name&searchstr=%id&%d=1",
+		"uriLink": "http://biosrv.org/chmb/search?GEN=%id",
         "idMappingName": "CHITARS_ID",
 		"attributes": [		
 			{	"name": "OrganismName",
@@ -1529,7 +1529,7 @@
 		"name": "Bgee",
 		"displayName": "Bgee",
 		"category": "GEP",
-		"uriLink": "https://bgee.org/?page=gene&gene_id=%id"	,
+		"uriLink": "https://bgee.org/gene/%id",
 		"attributes": [		
 			{	"name": "ExpressionPatterns",
 				"xmlTag":"expression patterns"			
@@ -1618,7 +1618,7 @@
 		"name": "IDEAL",
 		"displayName": "IDEAL",
 		"category": "FMD",
-		"uriLink": "http://idp1.force.cs.is.nagoya-u.ac.jp/IDEAL/ideal.php?id=%id",
+		"uriLink": "https://www.ideal-db.org/ideal.php?id=%id",
 		"idMappingName": "IDEAL_ID"
 	},
 	{
@@ -1731,7 +1731,7 @@
 		"name": "SUPFAM",
 		"displayName": "SUPFAM",
 		"category": "FMD",
-		"uriLink": "http://supfam.org/SUPERFAMILY/cgi-bin/scop.cgi?ipid=%id",
+		"uriLink": "https://supfam.org/SUPERFAMILY/cgi-bin/scop.cgi?ipid=%id",
 		"attributes": [		
 			{	"name": "EntryName",
 				"xmlTag":"entry name"			
@@ -1745,7 +1745,7 @@
 		"name": "TIGRFAMs",
 		"displayName": "TIGRFAMs",
 		"category": "FMD",
-		"uriLink": "http://tigrfams.jcvi.org/cgi-bin/HmmReportPage.cgi?acc=%id",
+		"uriLink": "https://www.ncbi.nlm.nih.gov/genome/annotation_prok/evidence/%id/",
 		"attributes": [		
 			{	"name": "EntryName",
 				"xmlTag":"entry name"			
@@ -1783,7 +1783,7 @@
 		"category": "FMD",
 		"implicit": true,
 		"linkedReason": "All UniProtKB entries",
-		"uriLink": "http://mobidb.bio.unipd.it/entries/%primaryAccession"
+		"uriLink": "https://mobidb.bio.unipd.it/entries/%primaryAccession"
 	},
 	{
 		"name": "ProtoNet",
@@ -1844,7 +1844,7 @@
 		"name": "DrugCentral",
 		"displayName": "DrugCentral",
 		"category": "CHEMISTRY",
-		"uriLink": "http://drugcentral.org/target/%id"
+		"uriLink": "https://drugcentral.org/target/%id"
 	},
 	{
 		"name": "ABCD",
@@ -1862,7 +1862,7 @@
 		"name": "Antibodypedia",
 		"displayName": "Antibodypedia",
 		"category": "PAM",
-		"uriLink": "https://www.antibodypedia.com/protein/%id",
+		"uriLink": "https://antibodypedia.com/gene/%id",
 		"attributes": [		
 			{	"name": "antibodies",
 				"xmlTag": "antibodies"			
