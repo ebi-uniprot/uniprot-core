@@ -49,7 +49,7 @@ public class MassSpectrometryCommentTest {
         assertNotNull(jsonNode.get("evidences"));
         assertEquals(1, jsonNode.get("evidences").size());
         JsonNode evidence = jsonNode.get("evidences").get(0);
-        ValidateJson.validateEvidence(evidence, "ECO:0000256", "PIRNR", "PIRNR001361");
+        ValidateJson.validateEvidence(evidence, "ECO:0000269", "PIRNR", "PIRNR001361");
     }
 
     public static MassSpectrometryComment getMassSpectrometryComment() {
@@ -60,7 +60,7 @@ public class MassSpectrometryCommentTest {
                 .molWeight(2.1f)
                 .molWeightError(1.2f)
                 .note("note value")
-                .evidencesSet(CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361"))
+                .evidencesSet(CreateUtils.createEvidenceList("ECO:0000269|PIRNR:PIRNR001361"))
                 .build();
     }
 }

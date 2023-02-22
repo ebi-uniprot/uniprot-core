@@ -45,7 +45,7 @@ public class FreeTextCommentTest {
         assertEquals(1, jsonNode.get("texts").size());
         JsonNode valueEvidence = jsonNode.get("texts").get(0);
         ValidateJson.validateValueEvidence(
-                valueEvidence, "value", "ECO:0000256", "PIRNR", "PIRNR001360");
+                valueEvidence, "value", "ECO:0000269", "PIRNR", "PIRNR001360");
     }
 
     public static FreeTextComment getFreeTextComment() {
@@ -58,7 +58,7 @@ public class FreeTextCommentTest {
                 .molecule("Isoform 4")
                 .textsSet(
                         CreateUtils.createEvidencedValueList(
-                                "value", "ECO:0000256|PIRNR:PIRNR001360"))
+                                "value", "ECO:0000269|PIRNR:PIRNR001360"))
                 .build();
     }
 
@@ -68,7 +68,7 @@ public class FreeTextCommentTest {
                 .molecule("Isoform 4 dfs")
                 .textsSet(
                         CreateUtils.createEvidencedValueList(
-                                "value", "ECO:0000256|PIRNR:PIRNR001365"))
+                                "value", "ECO:0000269|PIRNR:PIRNR001365"))
                 .build();
     }
 }

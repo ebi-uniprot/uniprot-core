@@ -53,4 +53,9 @@ class CommentTypeTest {
                 CommentType.PHARMACEUTICAL.toXmlDisplayName(),
                 CommentType.PHARMACEUTICAL.getDisplayName());
     }
+
+    @Test
+    void canGetIsAddExperimental() {
+        assertTrue(CommentType.PHARMACEUTICAL.isAddExperimental());
+    }
 }

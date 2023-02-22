@@ -53,27 +53,27 @@ public class RnaEditingCommentTest {
         assertNotNull(position.get("evidences"));
         assertEquals(1, position.get("evidences").size());
         ValidateJson.validateEvidence(
-                position.get("evidences").get(0), "ECO:0000256", "PIRNR", "PIRNR001361");
+                position.get("evidences").get(0), "ECO:0000269", "PIRNR", "PIRNR001361");
 
         assertNotNull(jsonNode.get("note"));
         assertNotNull(jsonNode.get("note").get("texts"));
         assertEquals(1, jsonNode.get("note").get("texts").size());
         JsonNode valueEvidence = jsonNode.get("note").get("texts").get(0);
         ValidateJson.validateValueEvidence(
-                valueEvidence, "value", "ECO:0000256", "PIRNR", "PIRNR001361");
+                valueEvidence, "value", "ECO:0000269", "PIRNR", "PIRNR001361");
     }
 
     public static RnaEditingComment getRnaEditingComment() {
         Note note =
                 new NoteBuilder(
                                 CreateUtils.createEvidencedValueList(
-                                        "value", "ECO:0000256|PIRNR:PIRNR001361"))
+                                        "value", "ECO:0000269|PIRNR:PIRNR001361"))
                         .build();
         RnaEdPosition rnaEdPositions =
                 new RnaEditingPositionBuilder()
                         .position("rna position")
                         .evidencesSet(
-                                CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361"))
+                                CreateUtils.createEvidenceList("ECO:0000269|PIRNR:PIRNR001361"))
                         .build();
 
         return new RnaEditingCommentBuilder()

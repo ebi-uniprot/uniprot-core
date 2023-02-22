@@ -19,47 +19,59 @@ import org.uniprot.core.util.EnumDisplay;
  * CC -!- SEQUENCE CAUTION: Text. CC -!- WEB RESOURCE: Text.
  */
 public enum CommentType implements EnumDisplay {
-    FUNCTION("FUNCTION", "function"),
-    CATALYTIC_ACTIVITY("CATALYTIC ACTIVITY", "catalytic activity"),
-    COFACTOR("COFACTOR", "cofactor"),
-    ACTIVITY_REGULATION("ACTIVITY REGULATION", "activity regulation"),
-    BIOPHYSICOCHEMICAL_PROPERTIES("BIOPHYSICOCHEMICAL PROPERTIES", "biophysicochemical properties"),
-    PATHWAY("PATHWAY", "pathway"),
-    SUBUNIT("SUBUNIT", "subunit"),
-    INTERACTION("INTERACTION", "interaction"),
-    SUBCELLULAR_LOCATION("SUBCELLULAR LOCATION", "subcellular location"),
-    ALTERNATIVE_PRODUCTS("ALTERNATIVE PRODUCTS", "alternative products"),
-    TISSUE_SPECIFICITY("TISSUE SPECIFICITY", "tissue specificity"),
-    DEVELOPMENTAL_STAGE("DEVELOPMENTAL STAGE", "developmental stage"),
-    INDUCTION("INDUCTION", "induction"),
-    DOMAIN("DOMAIN", "domain"),
-    PTM("PTM", "PTM"),
-    RNA_EDITING("RNA EDITING", "RNA editing"),
-    MASS_SPECTROMETRY("MASS SPECTROMETRY", "mass spectrometry"),
-    POLYMORPHISM("POLYMORPHISM", "polymorphism"),
-    DISEASE("DISEASE", "disease"),
-    DISRUPTION_PHENOTYPE("DISRUPTION PHENOTYPE", "disruption phenotype"),
-    ALLERGEN("ALLERGEN", "allergen"),
-    TOXIC_DOSE("TOXIC DOSE", "toxic dose"),
-    BIOTECHNOLOGY("BIOTECHNOLOGY", "biotechnology"),
-    PHARMACEUTICAL("PHARMACEUTICAL", "pharmaceutical"),
-    MISCELLANEOUS("MISCELLANEOUS", "miscellaneous"),
-    SIMILARITY("SIMILARITY", "similarity"),
-    CAUTION("CAUTION", "caution"),
-    SEQUENCE_CAUTION("SEQUENCE CAUTION", "sequence caution"),
-    WEBRESOURCE("WEB RESOURCE", "online information"),
-    UNKNOWN("UNKOWN", "unknown");
+    FUNCTION("FUNCTION", "function", true),
+    CATALYTIC_ACTIVITY("CATALYTIC ACTIVITY", "catalytic activity", true),
+    COFACTOR("COFACTOR", "cofactor", true),
+    ACTIVITY_REGULATION("ACTIVITY REGULATION", "activity regulation", true),
+    BIOPHYSICOCHEMICAL_PROPERTIES(
+            "BIOPHYSICOCHEMICAL PROPERTIES", "biophysicochemical properties", true),
+    PATHWAY("PATHWAY", "pathway", true),
+    SUBUNIT("SUBUNIT", "subunit", true),
+    INTERACTION("INTERACTION", "interaction", false),
+    SUBCELLULAR_LOCATION("SUBCELLULAR LOCATION", "subcellular location", true),
+    ALTERNATIVE_PRODUCTS("ALTERNATIVE PRODUCTS", "alternative products", false),
+    TISSUE_SPECIFICITY("TISSUE SPECIFICITY", "tissue specificity", true),
+    DEVELOPMENTAL_STAGE("DEVELOPMENTAL STAGE", "developmental stage", true),
+    INDUCTION("INDUCTION", "induction", true),
+    DOMAIN("DOMAIN", "domain", false),
+    PTM("PTM", "PTM", true),
+    RNA_EDITING("RNA EDITING", "RNA editing", true),
+    MASS_SPECTROMETRY("MASS SPECTROMETRY", "mass spectrometry", true),
+    POLYMORPHISM("POLYMORPHISM", "polymorphism", true),
+    DISEASE("DISEASE", "disease", true),
+    DISRUPTION_PHENOTYPE("DISRUPTION PHENOTYPE", "disruption phenotype", true),
+    ALLERGEN("ALLERGEN", "allergen", true),
+    TOXIC_DOSE("TOXIC DOSE", "toxic dose", true),
+    BIOTECHNOLOGY("BIOTECHNOLOGY", "biotechnology", true),
+    PHARMACEUTICAL("PHARMACEUTICAL", "pharmaceutical", true),
+    MISCELLANEOUS("MISCELLANEOUS", "miscellaneous", false),
+    SIMILARITY("SIMILARITY", "similarity", false),
+    CAUTION("CAUTION", "caution", false),
+    SEQUENCE_CAUTION("SEQUENCE CAUTION", "sequence caution", false),
+    WEBRESOURCE("WEB RESOURCE", "online information", false),
+    UNKNOWN("UNKOWN", "unknown", false);
 
-    private String name;
+    private final String name;
     private final String xmlDisplayValue;
+    private final boolean addExperimental;
 
-    CommentType(String name, String xmlDisplayValue) {
+    CommentType(String name, String xmlDisplayValue, boolean addExperimental) {
         this.name = name;
         this.xmlDisplayValue = xmlDisplayValue;
+        this.addExperimental = addExperimental;
     }
 
     public @Nonnull String getName() {
         return name;
+    }
+
+    /**
+     * Return if we can add implicit experimental evidence for this CommentType.
+     *
+     * @return
+     */
+    public boolean isAddExperimental() {
+        return addExperimental;
     }
 
     /**
