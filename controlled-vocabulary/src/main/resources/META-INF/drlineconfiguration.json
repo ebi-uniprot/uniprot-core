@@ -619,7 +619,7 @@
 		"name": "PRIDE",
 		"displayName": "PRIDE",
 		"category": "PROTEOMIC",
-		"uriLink": "https://www.ebi.ac.uk/pride/searchSummary.do?queryTypeSelected=identification%20accession%20number&identificationAccessionNumber=%id"
+		"uriLink": "https://www.ebi.ac.uk/pride/peptidome/peptidesearch?keyword=%id"
 	},
 	{
 		"name": "ProMEX",
