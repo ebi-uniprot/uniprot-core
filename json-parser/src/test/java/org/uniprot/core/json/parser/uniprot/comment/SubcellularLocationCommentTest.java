@@ -56,7 +56,7 @@ public class SubcellularLocationCommentTest {
         ValidateJson.validateValueEvidence(
                 subcellularLocation.get("location"),
                 "location value",
-                "ECO:0000256",
+                "ECO:0000269",
                 "PIRNR",
                 "PIRNR001361");
 
@@ -64,7 +64,7 @@ public class SubcellularLocationCommentTest {
         ValidateJson.validateValueEvidence(
                 subcellularLocation.get("topology"),
                 "topology value",
-                "ECO:0000256",
+                "ECO:0000269",
                 "PIRNR",
                 "PIRNR001361");
 
@@ -72,7 +72,7 @@ public class SubcellularLocationCommentTest {
         ValidateJson.validateValueEvidence(
                 subcellularLocation.get("orientation"),
                 "orientation value",
-                "ECO:0000256",
+                "ECO:0000269",
                 "PIRNR",
                 "PIRNR001361");
 
@@ -81,11 +81,11 @@ public class SubcellularLocationCommentTest {
         assertEquals(1, jsonNode.get("note").get("texts").size());
         JsonNode valueEvidence = jsonNode.get("note").get("texts").get(0);
         ValidateJson.validateValueEvidence(
-                valueEvidence, "value", "ECO:0000256", "PIRNR", "PIRNR001361");
+                valueEvidence, "value", "ECO:0000269", "PIRNR", "PIRNR001361");
     }
 
     public static SubcellularLocationComment getSubcellularLocationComment() {
-        List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361");
+        List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PIRNR:PIRNR001361");
         SubcellularLocation sublocation =
                 new SubcellularLocationBuilder()
                         .location(
@@ -112,7 +112,7 @@ public class SubcellularLocationCommentTest {
         Note note =
                 new NoteBuilder(
                                 CreateUtils.createEvidencedValueList(
-                                        "value", "ECO:0000256|PIRNR:PIRNR001361"))
+                                        "value", "ECO:0000269|PIRNR:PIRNR001361"))
                         .build();
         return new SubcellularLocationCommentBuilder()
                 .molecule("molecule value")

@@ -54,14 +54,14 @@ public class AlternativeProductsCommentTest {
 
         assertNotNull(isoforms.get("name"));
         ValidateJson.validateValueEvidence(
-                isoforms.get("name"), "name", "ECO:0000255", "PROSITE-ProRule", "PRU10028");
+                isoforms.get("name"), "name", "ECO:0000269", "PROSITE-ProRule", "PRU10028");
 
         assertNotNull(isoforms.get("synonyms"));
         assertEquals(1, isoforms.get("synonyms").size());
         ValidateJson.validateValueEvidence(
                 isoforms.get("synonyms").get(0),
                 "syn value",
-                "ECO:0000255",
+                "ECO:0000269",
                 "PROSITE-ProRule",
                 "PRU10028");
 
@@ -70,7 +70,7 @@ public class AlternativeProductsCommentTest {
         assertEquals(1, isoforms.get("note").get("texts").size());
         JsonNode noteIsoform = isoforms.get("note").get("texts").get(0);
         ValidateJson.validateValueEvidence(
-                noteIsoform, "value1", "ECO:0000255", "PROSITE-ProRule", "PRU10028");
+                noteIsoform, "value1", "ECO:0000269", "PROSITE-ProRule", "PRU10028");
 
         assertNotNull(isoforms.get("isoformIds"));
         assertEquals(1, isoforms.get("isoformIds").size());
@@ -90,12 +90,12 @@ public class AlternativeProductsCommentTest {
         assertEquals(1, jsonNode.get("note").get("texts").size());
         JsonNode note = jsonNode.get("note").get("texts").get(0);
         ValidateJson.validateValueEvidence(
-                note, "value1", "ECO:0000255", "PROSITE-ProRule", "PRU10028");
+                note, "value1", "ECO:0000269", "PROSITE-ProRule", "PRU10028");
     }
 
     public static AlternativeProductsComment getAlternativeProductsComment() {
         List<Evidence> evidences =
-                CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10028");
+                CreateUtils.createEvidenceList("ECO:0000269|PROSITE-ProRule:PRU10028");
         List<IsoformName> isoformSynonyms =
                 Collections.singletonList(new IsoformNameBuilder("syn value", evidences).build());
         List<EvidencedValue> evidencedValues =
