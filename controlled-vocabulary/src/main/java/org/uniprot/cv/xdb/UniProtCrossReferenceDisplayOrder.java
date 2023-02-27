@@ -17,7 +17,7 @@ public enum UniProtCrossReferenceDisplayOrder
     INSTANCE;
 
     private Map<String, DatabaseDisplayOrder> databaseType2DefsNoCase;
-    private static final String DR_ORD_LOCATION = "https://www.ebi.ac.uk/~trembl/generator/dr_ord";
+    private static final String DR_ORD_LOCATION = "https://www.ebi.ac.uk/uniprot/prod/generator/dr_ord";
     private boolean init = false;
 
     UniProtCrossReferenceDisplayOrder() {
