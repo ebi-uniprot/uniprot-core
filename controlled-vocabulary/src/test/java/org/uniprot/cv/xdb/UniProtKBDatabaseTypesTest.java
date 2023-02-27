@@ -28,7 +28,7 @@ class UniProtKBDatabaseTypesTest {
         assertEquals("EMBL", opType.getName());
         assertFalse(opType.isImplicit());
         assertEquals(SEQUENCE_DATABASES, opType.getCategory());
-        assertEquals("https://www.ebi.ac.uk/ena/data/view/%id", opType.getUriLink());
+        assertEquals("https://www.ebi.ac.uk/ena/browser/view/%id", opType.getUriLink());
         assertEquals(3, opType.getAttributes().size());
         verifyAttribute(
                 opType.getAttributes().get(0),
@@ -121,8 +121,7 @@ class UniProtKBDatabaseTypesTest {
         assertEquals("dbSNP", opType.getName());
         assertEquals("dbSNP", opType.getDisplayName());
         assertEquals(GENERIC_VARIATION_DATABASES, opType.getCategory());
-        assertEquals(
-                "https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?type=rs&rs=%id", opType.getUriLink());
+        assertEquals("https://www.ncbi.nlm.nih.gov/snp/%id", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "Description", "description", null);
     }
@@ -232,9 +231,7 @@ class UniProtKBDatabaseTypesTest {
         assertEquals("ChiTaRS", opType.getName());
         assertEquals("ChiTaRS", opType.getDisplayName());
         assertEquals(MISCELLANEOUS, opType.getCategory());
-        assertEquals(
-                "http://chitars.md.biu.ac.il/bin/search.pl?searchtype=gene_name&searchstr=%id&%d=1",
-                opType.getUriLink());
+        assertEquals("http://biosrv.org/chmb/search?GEN=%id", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "OrganismName", "organism name", null);
     }
