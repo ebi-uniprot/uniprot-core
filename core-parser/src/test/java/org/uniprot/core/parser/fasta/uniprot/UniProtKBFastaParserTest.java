@@ -2,6 +2,9 @@ package org.uniprot.core.parser.fasta.uniprot;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.fasta.UniProtKBFasta;
 import org.uniprot.core.fasta.impl.UniProtKBFastaBuilder;
@@ -17,9 +20,6 @@ import org.uniprot.core.uniprotkb.description.impl.ProteinNameBuilder;
 import org.uniprot.core.uniprotkb.description.impl.ProteinSubNameBuilder;
 import org.uniprot.core.uniprotkb.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author lgonzales
@@ -169,18 +169,10 @@ class UniProtKBFastaParserTest {
     @Test
     void canParseToFastaWithMultipleGeneNames() {
         List<Gene> genes = new ArrayList<>();
-        genes.add(new GeneBuilder()
-                .geneName(
-                        new GeneNameBuilder()
-                                .value("Gene 1")
-                                .build())
-                .build());
-        genes.add(new GeneBuilder()
-                .geneName(
-                        new GeneNameBuilder()
-                                .value("Gene 2")
-                                .build())
-                .build());
+        genes.add(
+                new GeneBuilder().geneName(new GeneNameBuilder().value("Gene 1").build()).build());
+        genes.add(
+                new GeneBuilder().geneName(new GeneNameBuilder().value("Gene 2").build()).build());
         UniProtKBEntry entry = getEntryWithGene(genes);
         String fastaValue = UniProtKBFastaParser.toFasta(entry);
         assertNotNull(fastaValue);
@@ -194,18 +186,14 @@ class UniProtKBFastaParserTest {
     @Test
     void canParseToFastaWithMultipleOlnGeneNames() {
         List<Gene> genes = new ArrayList<>();
-        genes.add(new GeneBuilder()
-                .orderedLocusNamesAdd(
-                        new OrderedLocusNameBuilder()
-                                .value("OLN 1")
-                                .build())
-                .build());
-        genes.add(new GeneBuilder()
-                .orderedLocusNamesAdd(
-                        new OrderedLocusNameBuilder()
-                                .value("OLN 2")
-                                .build())
-                .build());
+        genes.add(
+                new GeneBuilder()
+                        .orderedLocusNamesAdd(new OrderedLocusNameBuilder().value("OLN 1").build())
+                        .build());
+        genes.add(
+                new GeneBuilder()
+                        .orderedLocusNamesAdd(new OrderedLocusNameBuilder().value("OLN 2").build())
+                        .build());
         UniProtKBEntry entry = getEntryWithGene(genes);
         String fastaValue = UniProtKBFastaParser.toFasta(entry);
         assertNotNull(fastaValue);
@@ -219,18 +207,10 @@ class UniProtKBFastaParserTest {
     @Test
     void canParseToFastaWithMultipleOrfGeneNames() {
         List<Gene> genes = new ArrayList<>();
-        genes.add(new GeneBuilder()
-                .orfNamesAdd(
-                        new ORFNameBuilder()
-                                .value("ORF 1")
-                                .build())
-                .build());
-        genes.add(new GeneBuilder()
-                .orfNamesAdd(
-                        new ORFNameBuilder()
-                                .value("ORF 2")
-                                .build())
-                .build());
+        genes.add(
+                new GeneBuilder().orfNamesAdd(new ORFNameBuilder().value("ORF 1").build()).build());
+        genes.add(
+                new GeneBuilder().orfNamesAdd(new ORFNameBuilder().value("ORF 2").build()).build());
         UniProtKBEntry entry = getEntryWithGene(genes);
         String fastaValue = UniProtKBFastaParser.toFasta(entry);
         assertNotNull(fastaValue);
