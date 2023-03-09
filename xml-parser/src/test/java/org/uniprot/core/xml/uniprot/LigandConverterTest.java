@@ -31,6 +31,17 @@ class LigandConverterTest {
     }
 
     @Test
+    void testNameAndIdWithoutChebiPrefix() {
+        Ligand ligand = createLigand("Ca(2+)", "3245", null, null);
+        LigandType ligandType = converter.toXml(ligand);
+        assertNotNull(ligandType);
+        assertEquals("Ca(2+)", ligandType.getName());
+        assertNotNull(ligandType.getDbReference());
+        assertEquals("CHEBI:3245", ligandType.getDbReference().getId());
+        assertEquals("ChEBI", ligandType.getDbReference().getType());
+    }
+
+    @Test
     void testFull() {
         Ligand ligand = createLigand("Ca(2+)", "ChEBI:CHEBI:3245", "A1", "Some note");
         LigandType ligandType = converter.toXml(ligand);
