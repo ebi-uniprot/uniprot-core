@@ -54,7 +54,7 @@ public class LigandConverter implements Converter<LigandType, Ligand> {
     }
 
     private DbReferenceType convertDbReferenceType(String val) {
-        if(!val.contains(COLON)){
+        if (!val.contains(COLON)) {
             val = CHEBI_ID_PREFIX + val;
         }
         int index = val.indexOf(':');
