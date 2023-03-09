@@ -54,10 +54,11 @@ public class UniProtKBFastaParser {
         String orfName = null;
         String olnName = null;
         for (Gene gene : genes) {
-            if (gene.hasGeneName()) geneName = gene.getGeneName().getValue();
-            else if (Utils.notNullNotEmpty(gene.getOrderedLocusNames())) {
+            if (gene.hasGeneName() && geneName == null) {
+                geneName = gene.getGeneName().getValue();
+            } else if (Utils.notNullNotEmpty(gene.getOrderedLocusNames()) && olnName == null) {
                 olnName = gene.getOrderedLocusNames().get(0).getValue();
-            } else if (Utils.notNullNotEmpty(gene.getOrfNames())) {
+            } else if (Utils.notNullNotEmpty(gene.getOrfNames()) && orfName == null) {
                 orfName = gene.getOrfNames().get(0).getValue();
             }
         }
