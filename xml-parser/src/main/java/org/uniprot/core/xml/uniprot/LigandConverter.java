@@ -10,6 +10,7 @@ import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 
 public class LigandConverter implements Converter<LigandType, Ligand> {
     private static final String COLON = ":";
+    private static final String CHEBI_ID_PREFIX = "ChEBI:CHEBI:";
     private final ObjectFactory xmlUniprotFactory;
 
     public LigandConverter() {
@@ -53,6 +54,9 @@ public class LigandConverter implements Converter<LigandType, Ligand> {
     }
 
     private DbReferenceType convertDbReferenceType(String val) {
+        if(!val.contains(COLON)){
+            val = CHEBI_ID_PREFIX + val;
+        }
         int index = val.indexOf(':');
         String id = val.substring(index + 1);
         String type = val.substring(0, index);
