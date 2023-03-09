@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.fasta.UniProtKBFasta;
 import org.uniprot.core.fasta.impl.UniProtKBFastaBuilder;
+import org.uniprot.core.gene.Gene;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniprotkb.ProteinExistence;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
@@ -16,6 +17,9 @@ import org.uniprot.core.uniprotkb.description.impl.ProteinNameBuilder;
 import org.uniprot.core.uniprotkb.description.impl.ProteinSubNameBuilder;
 import org.uniprot.core.uniprotkb.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author lgonzales
@@ -160,5 +164,107 @@ class UniProtKBFastaParserTest {
         assertTrue(
                 fastaValue.contains(
                         "AAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBBAAAAAAAAAABBBBBBBBBB\nAAAAAAAAAABBBBBBBBBB"));
+    }
+
+    @Test
+    void canParseToFastaWithMultipleGeneNames() {
+        List<Gene> genes = new ArrayList<>();
+        genes.add(new GeneBuilder()
+                .geneName(
+                        new GeneNameBuilder()
+                                .value("Gene 1")
+                                .build())
+                .build());
+        genes.add(new GeneBuilder()
+                .geneName(
+                        new GeneNameBuilder()
+                                .value("Gene 2")
+                                .build())
+                .build());
+        UniProtKBEntry entry = getEntryWithGene(genes);
+        String fastaValue = UniProtKBFastaParser.toFasta(entry);
+        assertNotNull(fastaValue);
+        assertTrue(fastaValue.contains(">tr|P12345|P12345_PROT"));
+        assertTrue(fastaValue.contains(" Rec Name Value (Fragment) "));
+        assertTrue(fastaValue.contains(" OS=Organism Name Value OX=9606 "));
+        assertTrue(fastaValue.contains("GN=Gene 1 PE=1 SV=2\n"));
+        assertTrue(fastaValue.contains("AAAAAAAAAABBBBBBBBBBAAAAAAAAAA"));
+    }
+
+    @Test
+    void canParseToFastaWithMultipleOlnGeneNames() {
+        List<Gene> genes = new ArrayList<>();
+        genes.add(new GeneBuilder()
+                .orderedLocusNamesAdd(
+                        new OrderedLocusNameBuilder()
+                                .value("OLN 1")
+                                .build())
+                .build());
+        genes.add(new GeneBuilder()
+                .orderedLocusNamesAdd(
+                        new OrderedLocusNameBuilder()
+                                .value("OLN 2")
+                                .build())
+                .build());
+        UniProtKBEntry entry = getEntryWithGene(genes);
+        String fastaValue = UniProtKBFastaParser.toFasta(entry);
+        assertNotNull(fastaValue);
+        assertTrue(fastaValue.contains(">tr|P12345|P12345_PROT"));
+        assertTrue(fastaValue.contains(" Rec Name Value (Fragment) "));
+        assertTrue(fastaValue.contains(" OS=Organism Name Value OX=9606 "));
+        assertTrue(fastaValue.contains("GN=OLN 1 PE=1 SV=2\n"));
+        assertTrue(fastaValue.contains("AAAAAAAAAABBBBBBBBBBAAAAAAAAAA"));
+    }
+
+    @Test
+    void canParseToFastaWithMultipleOrfGeneNames() {
+        List<Gene> genes = new ArrayList<>();
+        genes.add(new GeneBuilder()
+                .orfNamesAdd(
+                        new ORFNameBuilder()
+                                .value("ORF 1")
+                                .build())
+                .build());
+        genes.add(new GeneBuilder()
+                .orfNamesAdd(
+                        new ORFNameBuilder()
+                                .value("ORF 2")
+                                .build())
+                .build());
+        UniProtKBEntry entry = getEntryWithGene(genes);
+        String fastaValue = UniProtKBFastaParser.toFasta(entry);
+        assertNotNull(fastaValue);
+        assertTrue(fastaValue.contains(">tr|P12345|P12345_PROT"));
+        assertTrue(fastaValue.contains(" Rec Name Value (Fragment) "));
+        assertTrue(fastaValue.contains(" OS=Organism Name Value OX=9606 "));
+        assertTrue(fastaValue.contains("GN=ORF 1 PE=1 SV=2\n"));
+        assertTrue(fastaValue.contains("AAAAAAAAAABBBBBBBBBBAAAAAAAAAA"));
+    }
+
+    private UniProtKBEntry getEntryWithGene(List<Gene> genes) {
+        UniProtKBEntry entry =
+                new UniProtKBEntryBuilder("P12345", "P12345_PROT", UniProtKBEntryType.TREMBL)
+                        .sequence(new SequenceBuilder("AAAAAAAAAABBBBBBBBBBAAAAAAAAAA").build())
+                        .genesSet(genes)
+                        .proteinDescription(
+                                new ProteinDescriptionBuilder()
+                                        .flag(FlagType.FRAGMENTS_PRECURSOR)
+                                        .recommendedName(
+                                                new ProteinNameBuilder()
+                                                        .fullName(
+                                                                new NameBuilder()
+                                                                        .value("Rec Name Value")
+                                                                        .build())
+                                                        .build())
+                                        .build())
+                        .organism(
+                                new OrganismBuilder()
+                                        .taxonId(9606L)
+                                        .scientificName("Organism Name Value")
+                                        .build())
+                        .entryAudit(new EntryAuditBuilder().sequenceVersion(2).build())
+                        .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
+                        .build();
+        return entry;
     }
 }
