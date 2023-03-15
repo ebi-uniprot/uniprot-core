@@ -1339,7 +1339,7 @@
 		"name": "InParanoid",
 		"displayName": "InParanoid",
 		"category": "PLG",
-		"uriLink": "https://inparanoid.sbc.su.se/cgi-bin/gene_search.cgi?id=%id"
+		"uriLink": "https://inparanoidb.sbc.su.se/orthologs/%id&1/"
 	},
 	{
 		"name": "KO",
