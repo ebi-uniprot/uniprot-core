@@ -325,7 +325,7 @@ class UniProtKBDatabaseTypesTest {
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(GENE_EXPRESSION_DATABASES), 5);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(FAMILY_AND_DOMAIN_DATABASES),
-                18);
+                17);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(GENE_ONTOLOGY_DATABASES), 1);
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PROTEOMES_DATABASES), 1);

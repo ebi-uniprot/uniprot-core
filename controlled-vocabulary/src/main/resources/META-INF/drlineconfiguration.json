@@ -1786,15 +1786,6 @@
 		"uriLink": "https://mobidb.bio.unipd.it/entries/%primaryAccession"
 	},
 	{
-		"name": "ProtoNet",
-		"displayName": "ProtoNet",
-		"category": "FMD",
-		"implicit": true,
-		"linkedReason": "All UniProtKB entries",
-		"uriLink": "http://www.protonet.cs.huji.ac.il/sp.php?prot=%primaryAccession"
-		
-	},	
-	{
 		"name": "GO",
 		"displayName": "GO",
 		"category": "OTG",
