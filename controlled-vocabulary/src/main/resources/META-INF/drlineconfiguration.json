@@ -327,7 +327,7 @@
 		"name": "CAZy",
 		"displayName": "CAZy",
 		"category": "PFAM",
-		"uriLink": "http://www.cazy.org/fam/%id.html",
+		"uriLink": "http://www.cazy.org/%id.html",
 		"attributes": [
 			{
 				"name": "FamilyName",
