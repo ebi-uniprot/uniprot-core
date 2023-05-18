@@ -19,7 +19,7 @@ public enum MethodType implements EnumDisplay {
     PROSITE("PROSITE", "P"),
     SMART("SMART", "R"),
     SSF("SSF", "Y"),
-    TIGRFAMs("TIGRFAMs", "N"),
+    NCBIFAM("NCBIfam", "N"),
     HAMAP("HAMAP", "Q"),
     CDD("CDD", "J"),
     SFLD("SFLD", "B"),
