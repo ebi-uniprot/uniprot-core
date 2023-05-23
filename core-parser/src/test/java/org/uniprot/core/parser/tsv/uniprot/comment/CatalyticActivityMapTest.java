@@ -1,8 +1,5 @@
 package org.uniprot.core.parser.tsv.uniprot.comment;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.comment.CatalyticActivityComment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class CatalyticActivityMapTest {
 
@@ -43,8 +42,9 @@ class CatalyticActivityMapTest {
                         + " ChEBI:CHEBI:83400; EC=2.7.7.48; "
                         + "Evidence={ECO:0000255|PROSITE-ProRule:PRU00539};";
         assertEquals(expectedValue, value);
+        assertTrue(!mappedCatalyticActivity.get("rhea").contains("RHEA-COMP:"));
         assertEquals(
-                "RHEA:21248 RHEA-COMP:11128 RHEA-COMP:11129", mappedCatalyticActivity.get("rhea"));
+                "RHEA:21248", mappedCatalyticActivity.get("rhea"));
     }
 
     @Test
@@ -91,8 +91,9 @@ class CatalyticActivityMapTest {
                         + " Reaction=Endonucleolytic cleavage to 5'-phosphomonoester.; EC=3.1.26.4;"
                         + " Evidence={ECO:0000255|PROSITE-ProRule:PRU00408};";
         assertEquals(expectedValue, value);
+        assertTrue(!mappedCatalyticActivity.get("rhea").contains("RHEA-COMP:"));
         assertEquals(
-                "RHEA:22508 RHEA-COMP:11130 RHEA-COMP:11131 RHEA:22508 RHEA-COMP:11130 RHEA-COMP:11131",
+                "RHEA:22508 RHEA:22508",
                 mappedCatalyticActivity.get("rhea"));
     }
 }
