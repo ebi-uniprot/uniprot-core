@@ -1,5 +1,7 @@
 package org.uniprot.core.parser.tsv.uniprot.comment;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.List;
 import java.util.Map;
 
@@ -7,8 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.comment.CatalyticActivityComment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CatalyticActivityMapTest {
 
@@ -43,8 +43,7 @@ class CatalyticActivityMapTest {
                         + "Evidence={ECO:0000255|PROSITE-ProRule:PRU00539};";
         assertEquals(expectedValue, value);
         assertTrue(!mappedCatalyticActivity.get("rhea").contains("RHEA-COMP:"));
-        assertEquals(
-                "RHEA:21248", mappedCatalyticActivity.get("rhea"));
+        assertEquals("RHEA:21248", mappedCatalyticActivity.get("rhea"));
     }
 
     @Test
@@ -92,8 +91,6 @@ class CatalyticActivityMapTest {
                         + " Evidence={ECO:0000255|PROSITE-ProRule:PRU00408};";
         assertEquals(expectedValue, value);
         assertTrue(!mappedCatalyticActivity.get("rhea").contains("RHEA-COMP:"));
-        assertEquals(
-                "RHEA:22508 RHEA:22508",
-                mappedCatalyticActivity.get("rhea"));
+        assertEquals("RHEA:22508 RHEA:22508", mappedCatalyticActivity.get("rhea"));
     }
 }
