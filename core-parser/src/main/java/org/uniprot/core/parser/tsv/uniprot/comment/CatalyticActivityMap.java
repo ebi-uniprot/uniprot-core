@@ -60,6 +60,7 @@ public class CatalyticActivityMap implements NamedValueMap {
                 .map(CrossReference::getId)
                 .collect(Collectors.joining(" "));
     }
+
     private boolean filterOutRheaCompIds(CrossReference<ReactionDatabase> rr) {
         return ReactionDatabase.RHEA.equals(rr.getDatabase()) && !rr.getId().contains("RHEA-COMP:");
     }
