@@ -56,7 +56,7 @@ public class CatalyticActivityMap implements NamedValueMap {
                 .filter(Reaction::hasReactionCrossReferences)
                 .map(Reaction::getReactionCrossReferences)
                 .flatMap(Collection::stream)
-                .filter(rr -> filterOutRheaCompIds(rr))
+                .filter(this::filterOutRheaCompIds)
                 .map(CrossReference::getId)
                 .collect(Collectors.joining(" "));
     }
