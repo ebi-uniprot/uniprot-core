@@ -429,7 +429,7 @@
 		"name": "UniLectin",
 		"displayName": "UniLectin",
 		"category": "PFAM",
-		"uriLink": "https://www.unilectin.eu/curated/protein/%id"
+		"uriLink": "https://unilectin.unige.ch/unilectin3D/display_lectin?uniprot=%id"
 	},
 	{
 		"name": "GPCRDB",
