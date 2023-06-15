@@ -84,7 +84,7 @@ class DiseaseEntryValueMapperTest {
         assertEquals("reviewed:10; annotated:20", mappedEntries.get("statistics"));
         assertEquals(String.join(",", alternativeNames), mappedEntries.get("alternative_names"));
         assertEquals(
-                String.join(",", Arrays.asList("ID1", "ID2")),
+                String.join(",", Arrays.asList("DB1:ID1", "DB1:ID2")),
                 mappedEntries.get("cross_references"));
         assertEquals(String.join(",", "KW1", "KW2", "KW3", "KW4"), mappedEntries.get("keywords"));
     }
