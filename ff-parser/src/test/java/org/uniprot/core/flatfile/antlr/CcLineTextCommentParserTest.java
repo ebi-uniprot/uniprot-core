@@ -472,4 +472,39 @@ class CcLineTextCommentParserTest {
                         + "and AC P81755)..",
                 List.of("ECO:0000305"));
     }
+    
+    @Test
+    void testWithCurlyBracket() throws Exception {
+        String ccLine = "CC   -!- ACTIVITY REGULATION: Two trans-stilbene derivatives, 4,4'-[(E)-ethene-\n"
+                + "CC       1,2 diylbis({5[(phenylcarbonyl)amino]benzene-2,1-diyl}sulfonylimino)]\n"
+                + "CC       dibenzoic acid and its methoxy derivative 4,4'-[1,2-ethenediylbis({ 5-\n"
+                + "CC       [(4-methoxybenzoyl)amino]-2,1phenylene}sulfonylimino)] dibenzoic acid,\n"
+                + "CC       respectively SD1 and SD4, inhibit DNA binding with 50% inhibition at 20\n"
+                + "CC       uM for SD1 and 1.7 uM for SD4. SD1 and SD4 have minimal inhibitory\n"
+                + "CC       concentrations of 400 and 800 uM on strain H37Ra respectively.\n"
+                + "CC       {ECO:0000269|PubMed:24916461}.\n";
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
+        CcLineObject obj = parser.parse(ccLine);
+        assertNotNull(obj);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CC.CCTopicEnum.ACTIVITY_REGULATION, cc.getTopic());
+
+        assertTrue(cc.getObject() instanceof FreeText);
+        FreeText texts = (FreeText) cc.getObject();
+        assertEquals(1, texts.getTexts().size());
+        String text ="Two trans-stilbene derivatives, 4,4'-[(E)-ethene-"
+                + "1,2 diylbis({5[(phenylcarbonyl)amino]benzene-2,1-diyl}sulfonylimino)]"
+                + " dibenzoic acid and its methoxy derivative 4,4'-[1,2-ethenediylbis({ 5-"
+                + "[(4-methoxybenzoyl)amino]-2,1phenylene}sulfonylimino)] dibenzoic acid,"
+                + " respectively SD1 and SD4, inhibit DNA binding with 50% inhibition at 20"
+                + " uM for SD1 and 1.7 uM for SD4. SD1 and SD4 have minimal inhibitory"
+                + " concentrations of 400 and 800 uM on strain H37Ra respectively";
+        List<String> evs = List.of("ECO:0000269|PubMed:24916461");
+        
+        verify(texts.getTexts().get(0), text, evs);
+        
+
+    }
 }
