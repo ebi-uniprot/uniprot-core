@@ -1,6 +1,5 @@
 package org.uniprot.core.util;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -188,12 +187,13 @@ public class Utils {
 
     public static String httpGetRequest(String url) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(url))
-                .version(HttpClient.Version.HTTP_1_1)
-                .headers("Content-Type", "application/json;charset=UTF-8")
-                .GET()
-                .build();
+        HttpRequest request =
+                HttpRequest.newBuilder()
+                        .uri(new URI(url))
+                        .version(HttpClient.Version.HTTP_1_1)
+                        .headers("Content-Type", "application/json;charset=UTF-8")
+                        .GET()
+                        .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         return response.body();
