@@ -89,42 +89,40 @@ public class CcLineModelListener extends CcLineParserBaseListener
             while (true) {
                 int evStart = text.indexOf(ECO);
                 int evEnd = text.indexOf(CURLY_END, evStart);
-                if(evEnd == text.length()-1) {
+                if (evEnd == text.length() - 1) {
                     String[] tokens = EvidenceInfo.splitEvidenceString(text);
                     String text1 = tokens[0].trim();
-                    if(text1.endsWith(".")) {
-                        text1=text1.substring(0, text1.length()-1);
+                    if (text1.endsWith(".")) {
+                        text1 = text1.substring(0, text1.length() - 1);
                     }
                     List<String> evidence = EvidenceInfo.parseEvidenceFromString(tokens[1]);
                     result.add(EvidencedString.get(text1, evidence));
                     break;
                 } else {
                     String text1 = text.substring(0, evEnd + 1);
-                    
+
                     text = text.substring(evEnd + 2).trim();
 
                     String[] tokens = EvidenceInfo.splitEvidenceString(text1);
                     String text11 = tokens[0];
-                    if(text11.endsWith(".")) {
-                        text11= text11.substring(0, text11.length()-1);
+                    if (text11.endsWith(".")) {
+                        text11 = text11.substring(0, text11.length() - 1);
                     }
                     List<String> evidence = EvidenceInfo.parseEvidenceFromString(tokens[1]);
                     result.add(EvidencedString.get(text11, evidence));
                 }
-
             }
 
         } else {
-            if(text.endsWith(".")) {
-                text=text.substring(0, text.length()-1);
+            if (text.endsWith(".")) {
+                text = text.substring(0, text.length() - 1);
             }
             result.add(EvidencedString.get(text, List.of()));
         }
 
         return result;
-
     }
-    
+
     @Override
     public void exitCc_common(CcLineParser.Cc_commonContext ctx) {
         CC ccCommon = new CC();
@@ -132,9 +130,9 @@ public class CcLineModelListener extends CcLineParserBaseListener
         ccCommon.setTopic(CC.CCTopicEnum.fromString(terminalNode.getText()));
 
         FreeText ftext = new FreeText();
-        
+
         Cc_common2_textsContext ccCommonTextsContext = ctx.cc_common2_texts();
-        
+
         List<EvidencedString> texts = getEvidencedStrings(ccCommonTextsContext.getText());
         ftext.setTexts(texts);
 
