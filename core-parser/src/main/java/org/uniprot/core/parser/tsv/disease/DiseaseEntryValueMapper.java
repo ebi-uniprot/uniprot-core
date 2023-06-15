@@ -48,7 +48,7 @@ public class DiseaseEntryValueMapper implements EntityValueMapper<DiseaseEntry> 
     }
 
     private String getCrossReferenceDatabaseTypeAndId(DiseaseCrossReference crossReferences) {
-        return crossReferences.getDatabaseType()+":"+crossReferences.getId();
+        return crossReferences.getDatabaseType() + ":" + crossReferences.getId();
     }
 
     private String getAlternativeNames(List<String> alternativeNames) {
