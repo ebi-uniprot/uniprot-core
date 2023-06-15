@@ -1,5 +1,10 @@
 package org.uniprot.core.util;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.*;
 
 import javax.annotation.Nonnull;
@@ -179,5 +184,18 @@ public class Utils {
         if (Objects.nonNull(map) && Objects.nonNull(value) && notNullNotEmpty(key)) {
             map.put(key, value);
         }
+    }
+
+    public static String httpGetRequest(String url) throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(new URI(url))
+                .version(HttpClient.Version.HTTP_1_1)
+                .headers("Content-Type", "application/json;charset=UTF-8")
+                .GET()
+                .build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        return response.body();
     }
 }
