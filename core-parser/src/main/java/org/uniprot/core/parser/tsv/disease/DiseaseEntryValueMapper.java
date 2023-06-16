@@ -40,11 +40,15 @@ public class DiseaseEntryValueMapper implements EntityValueMapper<DiseaseEntry> 
     private String getCrossReferences(List<DiseaseCrossReference> crossReferences) {
         if (Utils.notNullNotEmpty(crossReferences)) {
             return crossReferences.stream()
-                    .map(DiseaseCrossReference::getId)
+                    .map(this::getCrossReferenceDatabaseTypeAndId)
                     .collect(Collectors.joining(","));
         } else {
             return EMPTY_STRING;
         }
+    }
+
+    private String getCrossReferenceDatabaseTypeAndId(DiseaseCrossReference crossReferences) {
+        return crossReferences.getDatabaseType() + ":" + crossReferences.getId();
     }
 
     private String getAlternativeNames(List<String> alternativeNames) {
