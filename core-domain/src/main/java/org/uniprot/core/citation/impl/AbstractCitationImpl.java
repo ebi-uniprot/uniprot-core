@@ -160,9 +160,15 @@ public abstract class AbstractCitationImpl implements Citation {
     }
 
     String generateHash(String hashInput) {
+        String prefix=getCitationPrefix(hashInput);
         String base16Hash = Crc64.getCrc64(hashInput);
         String base32Hash = new BigInteger(base16Hash, 16).toString(32).toUpperCase();
-        return "CI-" + base32Hash;
+        return prefix + base32Hash;
+    }
+
+    String getCitationPrefix(String hashInput) {
+        String prefix="CI-"+getCitationType().getPrefix()+"-";
+        return prefix;
     }
 
     private Optional<String> getDatabaseId(CitationDatabase database) {

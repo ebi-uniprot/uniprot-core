@@ -89,8 +89,8 @@ class AbstractCitationBuilderTest {
                         .authorsSet(authors)
                         .citationCrossReferencesAdd(XREF3)
                         .build();
-        assertThat(citation.getId(), is("CI-2V34M1IJ67J60"));
-        assertThat(citation.generateHash("doi-id3"), is("CI-2V34M1IJ67J60"));
+        assertThat(citation.getId(), is("CI-UNP-2V34M1IJ67J60"));
+        assertThat(citation.generateHash("doi-id3"), is("CI-UNP-2V34M1IJ67J60"));
     }
 
     @Test
@@ -106,7 +106,7 @@ class AbstractCitationBuilderTest {
                         .authoringGroupsSet(authoringGroup)
                         .authorsSet(authors)
                         .build();
-        assertThat(citation.getId(), is("CI-8AJ620I4BUF91"));
+        assertThat(citation.getId(), is("CI-UNP-8AJ620I4BUF91"));
     }
 
     @Test
