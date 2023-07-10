@@ -1742,8 +1742,8 @@
 		]
 	},
 	{
-		"name": "TIGRFAMs",
-		"displayName": "TIGRFAMs",
+		"name": "NCBIfam",
+		"displayName": "NCBIfam",
 		"category": "FMD",
 		"uriLink": "https://www.ncbi.nlm.nih.gov/genome/annotation_prok/evidence/%id/",
 		"attributes": [		

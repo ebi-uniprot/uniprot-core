@@ -255,8 +255,13 @@ public enum EvidenceCode implements EnumDisplay {
             "Combinatorial",
             "combinatorial computational and experimental evidence used in automatic assertion",
             Collections.singletonList("Combined sources"),
-            EnumSet.of(Category.AUTOMATIC)); // replacing ECO_0000213
-    // from 2021.2 release
+            EnumSet.of(Category.AUTOMATIC)), // replacing ECO_0000213
+
+    ECO_0008006("ECO:0008006",
+            "Deep learning",
+            "deep learning method evidence used in automatic assertion",
+            Collections.singletonList("Automatic Annotation"),
+            EnumSet.of(Category.AUTOMATIC));
 
     private final String code;
     private final String name;
