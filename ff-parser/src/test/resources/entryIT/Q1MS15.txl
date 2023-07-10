@@ -61,7 +61,7 @@ DR   InterPro; IPR036467; LS/RS_sf.
 DR   PANTHER; PTHR21058; PTHR21058; 1.
 DR   Pfam; PF00885; DMRL_synthase; 1.
 DR   SUPFAM; SSF52121; SSF52121; 1.
-DR   TIGRFAMs; TIGR00114; lumazine-synth; 1.
+DR   NCBIfam; NF00114; lumazine-synth; 1.
 PE   3: Inferred from homology;
 KW   Reference proteome; Riboflavin biosynthesis; Transferase.
 FT   CHAIN           1..157

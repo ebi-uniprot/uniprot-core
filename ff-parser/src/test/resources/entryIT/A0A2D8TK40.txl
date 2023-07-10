@@ -35,7 +35,7 @@ DR   Pfam; PF00394; Cu-oxidase; 1.
 DR   Pfam; PF07731; Cu-oxidase_2; 1.
 DR   Pfam; PF07732; Cu-oxidase_3; 1.
 DR   SUPFAM; SSF49503; SSF49503; 3.
-DR   TIGRFAMs; TIGR01409; TAT_signal_seq; 1.
+DR   NCBIfam; NF01409; TAT_signal_seq; 1.
 DR   PROSITE; PS00080; MULTICOPPER_OXIDASE2; 1.
 DR   PROSITE; PS51318; TAT; 1.
 PE   4: Predicted;

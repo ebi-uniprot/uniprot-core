@@ -59,7 +59,7 @@ class UniParcSequenceFeatureMapTest {
                         "SFLD",
                         "SMART",
                         "SUPFAM",
-                        "TIGRFAMs");
+                        "NCBIfam");
         assertEquals(UniParcSequenceFeatureMap.FIELDS, fields);
     }
 

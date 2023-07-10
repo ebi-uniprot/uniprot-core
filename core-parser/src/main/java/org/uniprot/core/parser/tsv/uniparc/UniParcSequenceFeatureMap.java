@@ -30,7 +30,7 @@ public class UniParcSequenceFeatureMap implements NamedValueMap {
                             "SFLD",
                             "SMART",
                             "SUPFAM",
-                            "TIGRFAMs"));
+                            "NCBIfam"));
 
     private final List<SequenceFeature> features;
 
@@ -56,7 +56,7 @@ public class UniParcSequenceFeatureMap implements NamedValueMap {
         map.put(FIELDS.get(10), getData(SignatureDbType.SFLD));
         map.put(FIELDS.get(11), getData(SignatureDbType.SMART));
         map.put(FIELDS.get(12), getData(SignatureDbType.SUPFAM));
-        map.put(FIELDS.get(13), getData(SignatureDbType.TIGRFAMS));
+        map.put(FIELDS.get(13), getData(SignatureDbType.NCBIFAM));
 
         return map;
     }
