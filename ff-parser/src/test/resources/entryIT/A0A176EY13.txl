@@ -39,8 +39,8 @@ DR   Pfam; PF00590; TP_methylase; 1.
 DR   PIRSF; PIRSF036428; CobL; 1.
 DR   SUPFAM; SSF53335; SSF53335; 1.
 DR   SUPFAM; SSF53790; SSF53790; 1.
-DR   TIGRFAMs; TIGR02467; CbiE; 1.
-DR   TIGRFAMs; TIGR02469; CbiT; 1.
+DR   NCBIfam; NF02467; CbiE; 1.
+DR   NCBIfam; NF02469; CbiT; 1.
 PE   4: Predicted;
 KW   Complete proteome {ECO:0000313|Proteomes:UP000077043};
 KW   Methyltransferase {ECO:0000313|EMBL:KZY30980.1};

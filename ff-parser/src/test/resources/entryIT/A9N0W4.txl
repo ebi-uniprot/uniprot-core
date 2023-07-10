@@ -36,7 +36,7 @@ DR   InterPro; IPR001150; Gly_radical.
 DR   InterPro; IPR011140; Glycyl_radical_cofactor_GrcA.
 DR   Pfam; PF01228; Gly_radical; 1.
 DR   PIRSF; PIRSF000378; Gly_radicl_yfiD; 1.
-DR   TIGRFAMs; TIGR04365; spare_glycyl; 1.
+DR   NCBIfam; NF04365; spare_glycyl; 1.
 DR   PROSITE; PS00850; GLY_RADICAL_1; 1.
 DR   PROSITE; PS51149; GLY_RADICAL_2; 1.
 PE   3: Inferred from homology;
