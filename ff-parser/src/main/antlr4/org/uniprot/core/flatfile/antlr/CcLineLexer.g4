@@ -51,8 +51,18 @@ CC_TOPIC_CATALYTIC_ACTIVITY:
 mode CC_COMMON;
 CC_COMMON_CC_HEADER  : 'CC   '                      -> popMode, type(CC_HEADER);
 CC_COMMON_TOPIC_START  : '-!- '                     -> popMode, type(CC_TOPIC_START) ;
-CC_COMMON_COLON_SPACE: ': '                         -> pushMode (CC_COMMON_TEXT) ;
-CC_COMMON_COLON_CHANGE_OF_LINE: ':\nCC       '      -> pushMode (CC_COMMON_TEXT) ;
+CC_COMMON_COLON_SPACE: ': '                         -> pushMode (CC_COMMON2_TEXT) ;
+CC_COMMON_COLON_CHANGE_OF_LINE: ':\nCC       '      -> pushMode (CC_COMMON2_TEXT) ;
+
+mode CC_COMMON2_TEXT;
+CC_COMMON2_CHANGE_OF_LINE: '\nCC       '              {setType(CHANGE_OF_LINE);replaceChangeOfLine();} ;
+CC_COMMON2_SPACE : ' '                                -> type (SPACE);
+CC_COMMON2_DOT: '.'                                   -> type (DOT);
+CC_COMMON2_SEMICOLON: ';'                                   -> type (SEMICOLON);
+CC_COMMON2_NEW_LINE : '\n'                            -> type (NEW_LINE), popMode;
+CC_COMMON2_TEXT_WORD: TL2 ((TL2|'.'|' '|';')* TL2)?           ; //force a word not to end with space, or dot, or a semicolon.
+fragment TL2: ~[ ;.\n\r\t];
+
 
 mode CC_COMMON_TEXT;
 CC_COMMON_CHANGE_OF_LINE: '\nCC       '              {setType(CHANGE_OF_LINE);replaceChangeOfLine();} ;

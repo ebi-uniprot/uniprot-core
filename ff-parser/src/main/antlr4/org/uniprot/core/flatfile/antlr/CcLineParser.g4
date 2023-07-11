@@ -59,8 +59,12 @@ cc_properties_notes_level_2 : cc_properties_note_text_level2_with_ev
     
 
 cc_common: CC_TOPIC_START CC_TOPIC_COMMON  (CC_COMMON_COLON_SPACE | CC_COMMON_COLON_CHANGE_OF_LINE)
-            cc_common_texts
+            cc_common2_texts DOT
 		    NEW_LINE;
+
+cc_common2_texts: cc_common2_text_word ((SPACE|CHANGE_OF_LINE) cc_common2_text_word)*;		    
+cc_common2_text_word: (CC_COMMON2_TEXT_WORD (DOT|SEMICOLON)?| cc_common_text_in_bracket)+;   		    
+		    
 
 cc_common_texts: cc_common_text_with_ev ((SPACE|CHANGE_OF_LINE) cc_common_text_with_ev)* ;
 cc_common_text_with_ev: cc_common_text DOT  ((SPACE|CHANGE_OF_LINE)evidence DOT)?;
