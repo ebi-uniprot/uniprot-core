@@ -507,4 +507,30 @@ class CcLineTextCommentParserTest {
 
         verify(texts.getTexts().get(0), text, evs);
     }
+    @Test
+    void testMultiLines() {
+        String lines =
+                "CC   -!- FUNCTION: May play a cri{tical role in virion formation. Essential\n"
+                        + "CC       replication in vitro. {ECO:0000313|PDB:3OW2}. Other functional\n"
+                        + "CC       component. {ECO:0000269|PubMed:24916461}.\n";
+        UniprotKBLineParser<CcLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createCcLineParser();
+        CcLineObject obj = parser.parse(lines);
+        assertEquals(1, obj.getCcs().size());
+        CC cc = obj.getCcs().get(0);
+        assertEquals(CC.CCTopicEnum.FUNCTION, cc.getTopic());
+
+        assertTrue(cc.getObject() instanceof FreeText);
+        FreeText texts = (FreeText) cc.getObject();
+        assertEquals(2, texts.getTexts().size());
+        verify(
+                texts.getTexts().get(0),
+                "May play a cri{tical role in virion formation. Essential replication"
+                        + " in vitro",
+                Arrays.asList(new String[] {"ECO:0000313|PDB:3OW2"}));
+        verify(
+                texts.getTexts().get(1),
+                "Other functional component",
+                Arrays.asList(new String[] {"ECO:0000269|PubMed:24916461"}));
+    }
 }
