@@ -507,6 +507,7 @@ class CcLineTextCommentParserTest {
 
         verify(texts.getTexts().get(0), text, evs);
     }
+
     @Test
     void testMultiLines() {
         String lines =
