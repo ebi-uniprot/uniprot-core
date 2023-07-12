@@ -257,7 +257,8 @@ public enum EvidenceCode implements EnumDisplay {
             Collections.singletonList("Combined sources"),
             EnumSet.of(Category.AUTOMATIC)), // replacing ECO_0000213
 
-    ECO_0008006("ECO:0008006",
+    ECO_0008006(
+            "ECO:0008006",
             "Deep learning",
             "deep learning method evidence used in automatic assertion",
             Collections.singletonList("Automatic Annotation"),
