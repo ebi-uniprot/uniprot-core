@@ -167,7 +167,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtKBEntry> {
     // ..with multiple interactions.
     private List<Comment> fromXmlForComments(Entry xmlEntry) {
         List<Comment> uniComments = new ArrayList<>();
-        if(Utils.notNullNotEmpty(xmlEntry.getComment())) {
+        if (Utils.notNullNotEmpty(xmlEntry.getComment())) {
             List<org.uniprot.core.xml.jaxb.uniprot.CommentType> comments = xmlEntry.getComment();
             List<org.uniprot.core.xml.jaxb.uniprot.CommentType> interactionComment =
                     comments.stream()
@@ -248,7 +248,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtKBEntry> {
 
     private ProteinExistence getProteinExistence(Entry xmlEntry) {
         ProteinExistence proteinExistence = ProteinExistence.UNKNOWN;
-        if(xmlEntry.getProteinExistence() != null){
+        if (xmlEntry.getProteinExistence() != null) {
             proteinExistence = ProteinExistence.typeOf(xmlEntry.getProteinExistence().getType());
         }
         return proteinExistence;
@@ -256,7 +256,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtKBEntry> {
 
     private String getUniProtId(Entry xmlEntry) {
         String uniProtId = "";
-        if(Utils.notNullNotEmpty(xmlEntry.getName())){
+        if (Utils.notNullNotEmpty(xmlEntry.getName())) {
             uniProtId = xmlEntry.getName().get(0);
         }
         return uniProtId;
@@ -268,7 +268,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtKBEntry> {
         LocalDate lastUpdated = XmlConverterHelper.dateFromXml(xmlEntry.getModified());
         int seqVersion = 0;
         LocalDate seqDate = null;
-        if(xmlEntry.getSequence() != null) {
+        if (xmlEntry.getSequence() != null) {
             seqVersion = xmlEntry.getSequence().getVersion();
             seqDate = XmlConverterHelper.dateFromXml(xmlEntry.getSequence().getModified());
         }

@@ -20,7 +20,7 @@ public class SequenceConverter implements Converter<SequenceType, Sequence> {
     @Override
     public Sequence fromXml(SequenceType xmlObj) {
         String sequence = "";
-        if(xmlObj != null){
+        if (xmlObj != null) {
             sequence = xmlObj.getValue();
         }
         //	sequence = sequence.replaceAll(" ", "");

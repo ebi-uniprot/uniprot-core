@@ -17,8 +17,9 @@ public class FlagUpdater implements Updater<SequenceType, ProteinDescription> {
     @Override
     public ProteinDescription fromXml(ProteinDescription modelObject, SequenceType xmlObject) {
         ProteinDescriptionBuilder result = ProteinDescriptionBuilder.from(modelObject);
-        if(xmlObject != null) {
-            FlagType fType = Optional.ofNullable(modelObject.getFlag()).map(Flag::getType).orElse(null);
+        if (xmlObject != null) {
+            FlagType fType =
+                    Optional.ofNullable(modelObject.getFlag()).map(Flag::getType).orElse(null);
             String frag = xmlObject.getFragment();
             if (xmlObject.isPrecursor() != null && xmlObject.isPrecursor()) {
                 if (SINGLE.equals(frag)) {

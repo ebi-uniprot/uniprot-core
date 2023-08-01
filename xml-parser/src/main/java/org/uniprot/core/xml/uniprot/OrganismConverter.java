@@ -25,7 +25,7 @@ public class OrganismConverter implements Converter<OrganismType, Organism> {
     @Override
     public Organism fromXml(OrganismType xmlObj) {
         OrganismBuilder builder = new OrganismBuilder();
-        if(xmlObj != null) {
+        if (xmlObj != null) {
             if (Utils.notNullNotEmpty(xmlObj.getDbReference())) {
                 builder.taxonId(Long.parseLong(xmlObj.getDbReference().get(0).getId()));
             }

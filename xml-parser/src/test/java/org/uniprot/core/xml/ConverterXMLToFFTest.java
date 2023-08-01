@@ -1,5 +1,15 @@
 package org.uniprot.core.xml;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.time.LocalDate;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.writer.impl.UniProtFlatfileWriter;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
@@ -8,39 +18,31 @@ import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.Uniprot;
 import org.uniprot.core.xml.uniprot.UniProtEntryConverter;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.time.LocalDate;
-
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 class ConverterXMLToFFTest {
 
     @Test
     void testLeo() throws Exception {
 
-        String xmlInput = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
-                "<uniprot xmlns=\"http://uniprot.org/uniprot\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://uniprot.org/uniprot http://www.uniprot.org/docs/uniprot.xsd\">\n" +
-                "<entry dataset=\"TrEMBL\" created=\"2018-01-31\" modified=\"2023-02-22\" version=\"11\">\n" +
-                "<accession>A0A2E0WTX0</accession>\n" +
-                "<name>TEMPLATE_VALUE</name>\n" +
-                "<protein>\n" +
-                "<submittedName>\n" +
-                "<fullName>NAD(P)H-dependent oxidoreductase</fullName>\n" +
-                "</submittedName>\n" +
-                "</protein>\n" +
-                "<proteinExistence type=\"UNKNOWN\"/>\n" +
-                "<comment >\n" +
-                "<type>similarity</type>\n" +
-                "<text>Belongs to the nitroreductase family.</text>\n" +
-                "</comment>\n" +
-                "<sequence length=\"1\" mass=\"1\" checksum=\"1\" modified=\"2018-01-31\" version=\"1\">A</sequence>\n" +
-                "</entry>" +
-                "<copyright> Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms Distributed under the Creative Commons Attribution (CC BY 4.0) License </copyright>" +
-                "</uniprot>";
+        String xmlInput =
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                        + "<uniprot xmlns=\"http://uniprot.org/uniprot\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://uniprot.org/uniprot http://www.uniprot.org/docs/uniprot.xsd\">\n"
+                        + "<entry dataset=\"TrEMBL\" created=\"2018-01-31\" modified=\"2023-02-22\" version=\"11\">\n"
+                        + "<accession>A0A2E0WTX0</accession>\n"
+                        + "<name>TEMPLATE_VALUE</name>\n"
+                        + "<protein>\n"
+                        + "<submittedName>\n"
+                        + "<fullName>NAD(P)H-dependent oxidoreductase</fullName>\n"
+                        + "</submittedName>\n"
+                        + "</protein>\n"
+                        + "<proteinExistence type=\"UNKNOWN\"/>\n"
+                        + "<comment >\n"
+                        + "<type>similarity</type>\n"
+                        + "<text>Belongs to the nitroreductase family.</text>\n"
+                        + "</comment>\n"
+                        + "<sequence length=\"1\" mass=\"1\" checksum=\"1\" modified=\"2018-01-31\" version=\"1\">A</sequence>\n"
+                        + "</entry>"
+                        + "<copyright> Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms Distributed under the Creative Commons Attribution (CC BY 4.0) License </copyright>"
+                        + "</uniprot>";
 
         String xmlInput2 =
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -162,24 +164,22 @@ class ConverterXMLToFFTest {
                         + "<copyright> Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms Distributed under the Creative Commons Attribution (CC BY 4.0) License </copyright>\n"
                         + "</uniprot>";
 
-
-
-
-        String inputAddHeader = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
-                "<uniprot xmlns=\"http://uniprot.org/uniprot\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://uniprot.org/uniprot http://www.uniprot.org/docs/uniprot.xsd\">\n" +
-                "<entry>\n" +
-                "<accession>A0A2E0WTX0</accession>\n" +
-                "<name>TEMPLATE_VALUE</name>\n" +
-                "<protein>\n" +
-                "<submittedName>\n" +
-                "<fullName>NAD(P)H-dependent oxidoreductase</fullName>\n" +
-                "</submittedName>\n" +
-                "</protein>\n" +
-                "<comment type=\"similarity\">\n" +
-                "<text>Belongs to the nitroreductase family.</text>\n" +
-                "</comment>\n" +
-                "</entry>" +
-                "</uniprot>";
+        String inputAddHeader =
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                        + "<uniprot xmlns=\"http://uniprot.org/uniprot\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://uniprot.org/uniprot http://www.uniprot.org/docs/uniprot.xsd\">\n"
+                        + "<entry>\n"
+                        + "<accession>A0A2E0WTX0</accession>\n"
+                        + "<name>TEMPLATE_VALUE</name>\n"
+                        + "<protein>\n"
+                        + "<submittedName>\n"
+                        + "<fullName>NAD(P)H-dependent oxidoreductase</fullName>\n"
+                        + "</submittedName>\n"
+                        + "</protein>\n"
+                        + "<comment type=\"similarity\">\n"
+                        + "<text>Belongs to the nitroreductase family.</text>\n"
+                        + "</comment>\n"
+                        + "</entry>"
+                        + "</uniprot>";
 
         InputStream targetStream = new ByteArrayInputStream(inputAddHeader.getBytes());
         JAXBContext jaxbContext = JAXBContext.newInstance("org.uniprot.core.xml.jaxb.uniprot");
@@ -189,18 +189,21 @@ class ConverterXMLToFFTest {
         assertNotNull(xmlEntry);
 
         UniProtEntryConverter converter = new UniProtEntryConverter();
-        UniProtKBEntry uniprotEntry = xmlEntry.getEntry().stream().map(converter::fromXml).findFirst().orElse(null);
+        UniProtKBEntry uniprotEntry =
+                xmlEntry.getEntry().stream().map(converter::fromXml).findFirst().orElse(null);
         assertNotNull(uniprotEntry);
 
-        UniProtKBEntry auditedEntry = UniProtKBEntryBuilder.from(uniprotEntry)
-                .entryAudit(new EntryAuditBuilder()
-                        .firstPublic(LocalDate.now())
-                        .lastAnnotationUpdate(LocalDate.now())
-                        .lastSequenceUpdate(LocalDate.now())
-                        .build())
-                .build();
+        UniProtKBEntry auditedEntry =
+                UniProtKBEntryBuilder.from(uniprotEntry)
+                        .entryAudit(
+                                new EntryAuditBuilder()
+                                        .firstPublic(LocalDate.now())
+                                        .lastAnnotationUpdate(LocalDate.now())
+                                        .lastSequenceUpdate(LocalDate.now())
+                                        .build())
+                        .build();
 
-        //"XML FILE" --> "FF PARTIAL" (Curator can use to validate)
+        // "XML FILE" --> "FF PARTIAL" (Curator can use to validate)
 
         String ffResult = UniProtFlatfileWriter.write(auditedEntry);
         assertNotNull(ffResult);
@@ -217,5 +220,4 @@ class ConverterXMLToFFTest {
             throw new RuntimeException("JAXB marshaller creation failed", e);
         }
     }
-
 }
