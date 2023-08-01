@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.OrganismType;
@@ -24,10 +25,18 @@ public class OrganismConverter implements Converter<OrganismType, Organism> {
     @Override
     public Organism fromXml(OrganismType xmlObj) {
         OrganismBuilder builder = new OrganismBuilder();
-        builder.taxonId(Long.parseLong(xmlObj.getDbReference().get(0).getId()));
-        OrganismConverterUtil.updateOrganismNameFromXml(xmlObj.getName(), builder);
-        builder.lineagesSet(xmlObj.getLineage().getTaxon());
-        builder.evidencesSet(evRefMapper.parseEvidenceIds(xmlObj.getEvidence()));
+        if(xmlObj != null) {
+            if (Utils.notNullNotEmpty(xmlObj.getDbReference())) {
+                builder.taxonId(Long.parseLong(xmlObj.getDbReference().get(0).getId()));
+            }
+            if (Utils.notNullNotEmpty(xmlObj.getName())) {
+                OrganismConverterUtil.updateOrganismNameFromXml(xmlObj.getName(), builder);
+            }
+            if (xmlObj.getLineage() != null) {
+                builder.lineagesSet(xmlObj.getLineage().getTaxon());
+            }
+            builder.evidencesSet(evRefMapper.parseEvidenceIds(xmlObj.getEvidence()));
+        }
         return builder.build();
     }
 

@@ -16,22 +16,26 @@ public class FlagUpdater implements Updater<SequenceType, ProteinDescription> {
 
     @Override
     public ProteinDescription fromXml(ProteinDescription modelObject, SequenceType xmlObject) {
-        FlagType fType = Optional.ofNullable(modelObject.getFlag()).map(Flag::getType).orElse(null);
-        String frag = xmlObject.getFragment();
-        if (xmlObject.isPrecursor() != null && xmlObject.isPrecursor()) {
-            if (SINGLE.equals(frag)) {
-                fType = FlagType.FRAGMENT_PRECURSOR;
+        ProteinDescriptionBuilder result = ProteinDescriptionBuilder.from(modelObject);
+        if(xmlObject != null) {
+            FlagType fType = Optional.ofNullable(modelObject.getFlag()).map(Flag::getType).orElse(null);
+            String frag = xmlObject.getFragment();
+            if (xmlObject.isPrecursor() != null && xmlObject.isPrecursor()) {
+                if (SINGLE.equals(frag)) {
+                    fType = FlagType.FRAGMENT_PRECURSOR;
+                } else if (MULTIPLE.equals(frag)) {
+                    fType = FlagType.FRAGMENTS_PRECURSOR;
+                } else {
+                    fType = FlagType.PRECURSOR;
+                }
+            } else if (SINGLE.equals(frag)) {
+                fType = FlagType.FRAGMENT;
             } else if (MULTIPLE.equals(frag)) {
-                fType = FlagType.FRAGMENTS_PRECURSOR;
-            } else {
-                fType = FlagType.PRECURSOR;
+                fType = FlagType.FRAGMENTS;
             }
-        } else if (SINGLE.equals(frag)) {
-            fType = FlagType.FRAGMENT;
-        } else if (MULTIPLE.equals(frag)) {
-            fType = FlagType.FRAGMENTS;
+            result.flag(fType);
         }
-        return ProteinDescriptionBuilder.from(modelObject).flag(fType).build();
+        return result.build();
     }
 
     @Override
