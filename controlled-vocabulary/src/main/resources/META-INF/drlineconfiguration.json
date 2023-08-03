@@ -772,13 +772,6 @@
 		]
 	},
 	{
-		"name": "GeneDB",
-		"displayName": "GeneDB",
-		"category": "GMA",
-		"uriLink": "https://www.genedb.org/gene/%id",
-		"idMappingName": "GENEDB_ID"
-	},
-	{
 		"name": "GeneID",
 		"displayName": "GeneID",
 		"category": "GMA",
