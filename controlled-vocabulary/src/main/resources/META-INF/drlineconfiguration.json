@@ -444,7 +444,7 @@
 		"name": "CarbonylDB",
 		"displayName": "CarbonylDB",
 		"category": "PTM",
-		"uriLink": "http://digbio.missouri.edu/CarbonylDB/index.php/detail/protein/%id"
+		"uriLink": "http://carbonyldb.missouri.edu/CarbonylDB/index.php/detail/protein/%id"
 	},
 	{
 		"name": "DEPOD",
@@ -607,7 +607,7 @@
 		"name": "PaxDb",
 		"displayName": "PaxDb",
 		"category": "PROTEOMIC",
-		"uriLink": "https://pax-db.org/#!protein/%id"	
+		"uriLink": "https://pax-db.org/search?q=%id"
 	},
 	{
 		"name": "PeptideAtlas",
@@ -965,7 +965,7 @@
 		"name": "DisGeNET",
 		"displayName": "DisGeNET",
 		"category": "ORG",
-		"uriLink": "https://disgenet.org/search?q=%id"
+		"uriLink": "https://www.disgenetplus.com/examples?view=GENES&idents=%id&source=ALL&tab=GDA&newSearch=false"
 	},
 	{
 		"name": "EchoBASE",
@@ -1678,7 +1678,7 @@
 		"name": "PRINTS",
 		"displayName": "PRINTS",
 		"category": "FMD",
-		"uriLink": "http://umber.sbs.man.ac.uk/cgi-bin/dbbrowser/sprint/searchprintss.cgi?display_opts=Prints&category=None&queryform=false&prints_accn=%id",
+		"uriLink": "https://www.ebi.ac.uk/interpro/entry/prints/%id",
 		"attributes": [		
 			{	"name": "EntryName",
 				"xmlTag":"entry name"			
