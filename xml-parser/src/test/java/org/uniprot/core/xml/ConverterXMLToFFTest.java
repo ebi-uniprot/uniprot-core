@@ -18,15 +18,16 @@ import org.uniprot.core.xml.jaxb.uniprot.Uniprot;
 import org.uniprot.core.xml.uniprot.UniProtEntryConverter;
 
 class ConverterXMLToFFTest {
+    //XSD --> https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot.xsd
 
     @Test
     void testXMLToFF() throws Exception {
         String file = "/google/entry_v4_modified.xml";
-        InputStream targetStream = ConverterXMLToFFTest.class.getResourceAsStream(file);
+        InputStream inputStream = ConverterXMLToFFTest.class.getResourceAsStream(file);
         JAXBContext jaxbContext = JAXBContext.newInstance("org.uniprot.core.xml.jaxb.uniprot");
 
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-        Uniprot xmlEntry = (Uniprot) jaxbUnmarshaller.unmarshal(targetStream);
+        Uniprot xmlEntry = (Uniprot) jaxbUnmarshaller.unmarshal(inputStream);
         assertNotNull(xmlEntry);
 
         UniProtEntryConverter converter = new UniProtEntryConverter();
