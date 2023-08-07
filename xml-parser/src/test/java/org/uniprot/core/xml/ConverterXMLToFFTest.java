@@ -18,7 +18,8 @@ import org.uniprot.core.xml.jaxb.uniprot.Uniprot;
 import org.uniprot.core.xml.uniprot.UniProtEntryConverter;
 
 class ConverterXMLToFFTest {
-    //XSD --> https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot.xsd
+    // XSD -->
+    // https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot.xsd
 
     @Test
     void testXMLToFF() throws Exception {
