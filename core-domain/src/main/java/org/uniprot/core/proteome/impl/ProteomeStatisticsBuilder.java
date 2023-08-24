@@ -21,8 +21,8 @@ public class ProteomeStatisticsBuilder implements Builder<ProteomeStatistics> {
         return this;
     }
 
-    public @Nonnull ProteomeStatisticsBuilder isoformProteinCount(long referenceProteomeCount) {
-        this.isoformProteinCount = referenceProteomeCount;
+    public @Nonnull ProteomeStatisticsBuilder isoformProteinCount(long isoformProteinCount) {
+        this.isoformProteinCount = isoformProteinCount;
         return this;
     }
 
