@@ -1,9 +1,9 @@
 package org.uniprot.core.proteome.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.proteome.ProteomeStatistics;
-
-import javax.annotation.Nonnull;
 
 public class ProteomeStatisticsBuilder implements Builder<ProteomeStatistics> {
 
@@ -29,9 +29,7 @@ public class ProteomeStatisticsBuilder implements Builder<ProteomeStatistics> {
     @Override
     public @Nonnull ProteomeStatistics build() {
         return new ProteomeStatisticsImpl(
-                reviewedProteinCount,
-                unreviewedProteinCount,
-                isoformProteinCount);
+                reviewedProteinCount, unreviewedProteinCount, isoformProteinCount);
     }
 
     public static @Nonnull ProteomeStatisticsBuilder from(@Nonnull ProteomeStatistics instance) {
