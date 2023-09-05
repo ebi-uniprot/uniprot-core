@@ -1,8 +1,8 @@
 package org.uniprot.core.proteome.impl;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 class ProteomeStatisticsImplTest {
     public static final int REVIEWED_PROTEIN_COUNT = 98;
@@ -32,7 +32,9 @@ class ProteomeStatisticsImplTest {
     void equals_whenFalse() {
         ProteomeStatisticsImpl that =
                 new ProteomeStatisticsImpl(
-                        REVIEWED_PROTEIN_COUNT, UNREVIEWED_PROTEIN_COUNT, ISOFORM_PROTEIN_COUNT_DIFF);
+                        REVIEWED_PROTEIN_COUNT,
+                        UNREVIEWED_PROTEIN_COUNT,
+                        ISOFORM_PROTEIN_COUNT_DIFF);
         assertNotEquals(PROTEOME_STATISTICS, that);
     }
 
@@ -48,7 +50,9 @@ class ProteomeStatisticsImplTest {
     void hashCode_whenFalse() {
         ProteomeStatisticsImpl that =
                 new ProteomeStatisticsImpl(
-                        REVIEWED_PROTEIN_COUNT, UNREVIEWED_PROTEIN_COUNT, ISOFORM_PROTEIN_COUNT_DIFF);
+                        REVIEWED_PROTEIN_COUNT,
+                        UNREVIEWED_PROTEIN_COUNT,
+                        ISOFORM_PROTEIN_COUNT_DIFF);
         assertNotEquals(PROTEOME_STATISTICS.hashCode(), that.hashCode());
     }
 }
