@@ -1,13 +1,14 @@
 package org.uniprot.core.proteome.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class ProteomeStatisticsImplTest {
     public static final int REVIEWED_PROTEIN_COUNT = 98;
     public static final int UNREVIEWED_PROTEIN_COUNT = 33;
     public static final int ISOFORM_PROTEIN_COUNT = 7;
+    private static final long ISOFORM_PROTEIN_COUNT_DIFF = 70;
     public static final ProteomeStatisticsImpl PROTEOME_STATISTICS =
             new ProteomeStatisticsImpl(
                     REVIEWED_PROTEIN_COUNT, UNREVIEWED_PROTEIN_COUNT, ISOFORM_PROTEIN_COUNT);
@@ -20,7 +21,7 @@ class ProteomeStatisticsImplTest {
     }
 
     @Test
-    void testEquals() {
+    void equals_whenTrue() {
         ProteomeStatisticsImpl that =
                 new ProteomeStatisticsImpl(
                         REVIEWED_PROTEIN_COUNT, UNREVIEWED_PROTEIN_COUNT, ISOFORM_PROTEIN_COUNT);
@@ -28,10 +29,26 @@ class ProteomeStatisticsImplTest {
     }
 
     @Test
-    void testHashCode() {
+    void equals_whenFalse() {
+        ProteomeStatisticsImpl that =
+                new ProteomeStatisticsImpl(
+                        REVIEWED_PROTEIN_COUNT, UNREVIEWED_PROTEIN_COUNT, ISOFORM_PROTEIN_COUNT_DIFF);
+        assertNotEquals(PROTEOME_STATISTICS, that);
+    }
+
+    @Test
+    void hashCode_whenTrue() {
         ProteomeStatisticsImpl that =
                 new ProteomeStatisticsImpl(
                         REVIEWED_PROTEIN_COUNT, UNREVIEWED_PROTEIN_COUNT, ISOFORM_PROTEIN_COUNT);
-        assertEquals(PROTEOME_STATISTICS, that);
+        assertEquals(PROTEOME_STATISTICS.hashCode(), that.hashCode());
+    }
+
+    @Test
+    void hashCode_whenFalse() {
+        ProteomeStatisticsImpl that =
+                new ProteomeStatisticsImpl(
+                        REVIEWED_PROTEIN_COUNT, UNREVIEWED_PROTEIN_COUNT, ISOFORM_PROTEIN_COUNT_DIFF);
+        assertNotEquals(PROTEOME_STATISTICS.hashCode(), that.hashCode());
     }
 }
