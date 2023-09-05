@@ -1,10 +1,10 @@
 package org.uniprot.core.proteome.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.proteome.ProteomeStatistics;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.proteome.ProteomeStatistics;
 
 class ProteomeStatisticsBuilderTest {
     public static final int REVIEWED_PROTEIN_COUNT = 32;
