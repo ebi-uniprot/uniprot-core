@@ -1,10 +1,10 @@
 package org.uniprot.core.proteome.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.ProteomeStatistics;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class ProteomeStatisticsBuilderTest {
     public static final int REVIEWED_PROTEIN_COUNT = 32;
@@ -41,5 +41,19 @@ class ProteomeStatisticsBuilderTest {
                         .isoformProteinCount(ISOFORM_PROTEIN_COUNT)
                         .build();
         assertNotNull(build);
+    }
+
+    @Test
+    void from() {
+        ProteomeStatistics build =
+                new ProteomeStatisticsBuilder()
+                        .reviewedProteinCount(REVIEWED_PROTEIN_COUNT)
+                        .unreviewedProteinCount(UNREVIEWED_PROTEIN_COUNT)
+                        .isoformProteinCount(ISOFORM_PROTEIN_COUNT)
+                        .build();
+
+        ProteomeStatisticsBuilder builder = ProteomeStatisticsBuilder.from(build);
+
+        assertEquals(build, builder.build());
     }
 }
