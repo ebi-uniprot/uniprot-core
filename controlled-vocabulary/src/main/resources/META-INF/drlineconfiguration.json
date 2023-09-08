@@ -264,7 +264,7 @@
 		"name": "STRING",
 		"displayName": "STRING",
 		"category": "PPI",
-		"uriLink": "https://string-db.org/network/%id",
+		"uriLink": "https://version-11-5.string-db.org/network/%id",
         "idMappingName": "STRING_ID"
 	},
 	
