@@ -1,17 +1,16 @@
 package org.uniprot.core.proteome.impl;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.Builder;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.proteome.*;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.util.Utils;
+
+import javax.annotation.Nonnull;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
     private ProteomeId id;
@@ -35,6 +34,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
     private GenomeAnnotation genomeAnnotation;
     private List<ExclusionReason> exclusionReasons = new ArrayList<>();
     private Integer proteinCount;
+    private ProteomeStatistics proteomeStatistics;
 
     @Override
     public @Nonnull ProteomeEntry build() {
@@ -59,7 +59,8 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 genomeAssembly,
                 genomeAnnotation,
                 exclusionReasons,
-                proteinCount);
+                proteinCount,
+                proteomeStatistics);
     }
 
     public static @Nonnull ProteomeEntryBuilder from(@Nonnull ProteomeEntry instance) {
@@ -84,7 +85,8 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 .genomeAssembly(instance.getGenomeAssembly())
                 .genomeAnnotation(instance.getGenomeAnnotation())
                 .exclusionReasonsSet(instance.getExclusionReasons())
-                .proteinCount(instance.getProteinCount());
+                .proteinCount(instance.getProteinCount())
+                .proteomeStatistics(instance.getProteomeStatistics());
     }
 
     public @Nonnull ProteomeEntryBuilder proteomeId(ProteomeId id) {
@@ -223,6 +225,11 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
 
     public @Nonnull ProteomeEntryBuilder exclusionReasonsAdd(ExclusionReason exclusionReason) {
         Utils.addOrIgnoreNull(exclusionReason, exclusionReasons);
+        return this;
+    }
+
+    public @Nonnull ProteomeEntryBuilder proteomeStatistics(ProteomeStatistics proteomeStatistics) {
+        this.proteomeStatistics = proteomeStatistics;
         return this;
     }
 }
