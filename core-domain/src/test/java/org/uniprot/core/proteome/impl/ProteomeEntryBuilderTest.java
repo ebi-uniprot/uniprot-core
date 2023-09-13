@@ -1,5 +1,15 @@
 package org.uniprot.core.proteome.impl;
 
+import static org.hamcrest.CoreMatchers.hasItem;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.ObjectsForTests.updateCitationBuilderWithCommonAttributes;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.JournalArticle;
@@ -12,16 +22,6 @@ import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.impl.TaxonomyLineageBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.ObjectsForTests.updateCitationBuilderWithCommonAttributes;
 
 class ProteomeEntryBuilderTest {
 
@@ -357,7 +357,8 @@ class ProteomeEntryBuilderTest {
     @Test
     void testProteomeStatistics() {
         ProteomeStatistics proteomeStatistics = new ProteomeStatisticsBuilder().build();
-        ProteomeEntry proteome = new ProteomeEntryBuilder().proteomeStatistics(proteomeStatistics).build();
+        ProteomeEntry proteome =
+                new ProteomeEntryBuilder().proteomeStatistics(proteomeStatistics).build();
         assertSame(proteomeStatistics, proteome.getProteomeStatistics());
     }
 }
