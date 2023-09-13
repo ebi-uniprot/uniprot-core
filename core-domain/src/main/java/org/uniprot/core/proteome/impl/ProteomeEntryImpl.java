@@ -222,7 +222,8 @@ public class ProteomeEntryImpl implements ProteomeEntry {
                 proteomeCompletenessReport,
                 genomeAssembly,
                 proteinCount,
-                genomeAnnotation);
+                genomeAnnotation,
+                proteomeStatistics);
     }
 
     @Override
@@ -248,6 +249,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
                 && Objects.equals(genomeAssembly, other.genomeAssembly)
                 && Objects.equals(geneCount, other.geneCount)
                 && Objects.equals(proteinCount, other.proteinCount)
-                && Objects.equals(genomeAnnotation, other.genomeAnnotation);
+                && Objects.equals(genomeAnnotation, other.genomeAnnotation)
+                && Objects.equals(proteomeStatistics, other.proteomeStatistics);
     }
 }
