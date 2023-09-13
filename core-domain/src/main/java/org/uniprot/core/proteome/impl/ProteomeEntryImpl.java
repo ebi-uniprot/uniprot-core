@@ -1,14 +1,14 @@
 package org.uniprot.core.proteome.impl;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Objects;
-
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.proteome.*;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.util.Utils;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Objects;
 
 public class ProteomeEntryImpl implements ProteomeEntry {
 
@@ -34,12 +34,13 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     private final GenomeAnnotation genomeAnnotation;
     private final List<TaxonomyLineage> taxonLineage;
     private final List<ExclusionReason> exclusionReasons;
+    private final ProteomeStatistics proteomeStatistics;
 
     // no arg constructor for JSON deserialization
     ProteomeEntryImpl() {
         this(
                 null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null);
+                null, null, null, null, null, null, null, null);
     }
 
     ProteomeEntryImpl(
@@ -63,7 +64,8 @@ public class ProteomeEntryImpl implements ProteomeEntry {
             GenomeAssembly genomeAssembly,
             GenomeAnnotation genomeAnnotation,
             List<ExclusionReason> exclusionReasons,
-            Integer proteinCount) {
+            Integer proteinCount,
+            ProteomeStatistics proteomeStatistics) {
         super();
         this.id = id;
         this.taxonomy = taxonomy;
@@ -88,6 +90,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
         this.genomeAnnotation = genomeAnnotation;
         this.exclusionReasons = Utils.unmodifiableList(exclusionReasons);
         this.proteinCount = proteinCount;
+        this.proteomeStatistics = proteomeStatistics;
     }
 
     @Override
@@ -193,6 +196,11 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     @Override
     public List<ExclusionReason> getExclusionReasons() {
         return exclusionReasons;
+    }
+
+    @Override
+    public ProteomeStatistics getProteomeStatistics() {
+        return proteomeStatistics;
     }
 
     @Override
