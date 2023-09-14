@@ -94,10 +94,37 @@ public class EntryCrossReferenceMap implements NamedValueMap {
     public static String dbXrefToString(UniProtKBCrossReference xref) {
         StringBuilder sb = new StringBuilder();
         sb.append(xref.getId());
+        boolean addQuote = false;
+        if (xref.hasProperties()) {
+            String values = dbXrefPropertiesToString(xref);
+            if(!values.isEmpty()){
+                sb.append("; ").append(values).append(".");
+                addQuote = true;
+            }
+        }
         if (xref.getIsoformId() != null && !xref.getIsoformId().isEmpty()) {
             sb.append(" [").append(xref.getIsoformId()).append("]");
         }
+
+        if (addQuote) {
+            sb.insert(0, "\"");
+            sb.append("\"");
+        }
         return sb.toString();
+    }
+
+    private static String dbXrefPropertiesToString(UniProtKBCrossReference xref) {
+        List<Property> properties = xref.getProperties();
+        if (xref.getProperties().size() == 1) {
+            properties = xref.getProperties().stream()
+                    .filter(p -> !p.getValue().strip().equals("-"))
+                    .collect(Collectors.toList());
+        }
+
+        return properties.stream()
+                .map(Property::getValue)
+                .map(String::strip)
+                .collect(Collectors.joining("; "));
     }
 
     public static String proteomeXrefToString(UniProtKBCrossReference xref) {
