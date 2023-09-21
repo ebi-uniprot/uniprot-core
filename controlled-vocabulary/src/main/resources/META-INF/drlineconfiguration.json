@@ -1218,7 +1218,7 @@
 		"name": "TAIR",
 		"displayName": "TAIR",
 		"category": "ORG",
-		"uriLink": "https://www.arabidopsis.org/servlets/TairObject?accession=%id",
+		"uriLink": "https://www.arabidopsis.org/servlets/TairObject?type=locus&name=%id",
 		"attributes": [
 			{
 				"name": "GeneName",
