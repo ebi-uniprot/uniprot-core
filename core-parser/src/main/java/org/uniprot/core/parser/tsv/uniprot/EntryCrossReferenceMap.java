@@ -13,6 +13,10 @@ public class EntryCrossReferenceMap implements NamedValueMap {
     private final List<UniProtKBCrossReference> dbReferences;
     private static final Map<String, String> D3MethodMAP = new HashMap<>();
 
+    private static final List<String> MULTIPLE_IDS_XREF = List.of("EMBL", "Ensembl", "EnsemblBacteria", "EnsemblFungi", "EnsemblMetazoa", "EnsemblPlants", "EnsemblProtists",  "MANE-Select", "RefSeq", "WormBase", "WBParaSite");
+
+    private static final List<String> NOT_ID_ATTRIBUTES = List.of("GeneName", "Status", "MoleculeType");
+
     static {
         D3MethodMAP.put("X-ray", "X-ray crystallography");
         D3MethodMAP.put("NMR", "NMR spectroscopy");
@@ -95,7 +99,7 @@ public class EntryCrossReferenceMap implements NamedValueMap {
         StringBuilder sb = new StringBuilder();
         sb.append(xref.getId());
         boolean addQuote = false;
-        if (xref.hasProperties()) {
+        if (MULTIPLE_IDS_XREF.contains(xref.getDatabase().getName())) {
             String values = dbXrefPropertiesToString(xref);
             if(!values.isEmpty()){
                 sb.append("; ").append(values).append(".");
@@ -114,16 +118,11 @@ public class EntryCrossReferenceMap implements NamedValueMap {
     }
 
     private static String dbXrefPropertiesToString(UniProtKBCrossReference xref) {
-        List<Property> properties = xref.getProperties();
-        if (xref.getProperties().size() == 1) {
-            properties = xref.getProperties().stream()
-                    .filter(p -> !p.getValue().strip().equals("-"))
-                    .collect(Collectors.toList());
-        }
-
-        return properties.stream()
+        return xref.getProperties().stream()
+                .filter(p -> !NOT_ID_ATTRIBUTES.contains(p.getKey()))
                 .map(Property::getValue)
                 .map(String::strip)
+                .filter(value -> !value.equals("-"))
                 .collect(Collectors.joining("; "));
     }
 

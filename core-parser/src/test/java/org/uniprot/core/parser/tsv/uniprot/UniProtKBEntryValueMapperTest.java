@@ -553,11 +553,22 @@ class UniProtKBEntryValueMapperTest {
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
-        String embl =
-                "U53347;AF102826;AF105423;GQ919058;AK292690;AK299137;AK301661;AK316546;AC008622;CH471126;BC000062;AF334818;";
+        String embl = "\"U53347; AAC50629.1.\";" +
+                "\"AF102826; AAD09812.1.\";" +
+                "\"AF105423; AAD27806.1.\";" +
+                "\"GQ919058; ACX53626.1.\";" +
+                "\"AK292690; BAF85379.1.\";" +
+                "\"AK299137; BAG61189.1.\";" +
+                "\"AK301661; BAG63136.1.\";" +
+                "\"AK316546; BAH14917.1.\";" +
+                "AC008622;" +
+                "\"CH471126; EAW57446.1.\";" +
+                "\"BC000062; AAH00062.1.\";" +
+                "\"AF334818; AAK77026.1.\";";
         String ccds = "CCDS12692.1 [Q15758-1];CCDS46125.1 [Q15758-2];CCDS46126.1 [Q15758-3];";
-        String refseq =
-                "NP_001138616.1 [Q15758-3];NP_001138617.1 [Q15758-2];NP_005619.1 [Q15758-1];";
+        String refseq = "\"NP_001138616.1; NM_001145144.1. [Q15758-3]\";" +
+                "\"NP_001138617.1; NM_001145145.1. [Q15758-2]\";" +
+                "\"NP_005619.1; NM_005628.2. [Q15758-1]\";";
         String smr = "Q15758;";
         verify(embl, "xref_embl", result);
         verify(ccds, "xref_ccds", result);
@@ -653,8 +664,9 @@ class UniProtKBEntryValueMapperTest {
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
-        String ensembl =
-                "ENST00000412532 [Q15758-3];ENST00000434726 [Q15758-2];ENST00000542575 [Q15758-1];";
+        String ensembl = "\"ENST00000412532; ENSP00000397924; ENSG00000105281. [Q15758-3]\";" +
+                "\"ENST00000434726; ENSP00000406532; ENSG00000105281. [Q15758-2]\";" +
+                "\"ENST00000542575; ENSP00000444408; ENSG00000105281. [Q15758-1]\";";
         String reactome = "R-HSA-352230;";
         String interpro = "IPR001991;IPR018107;IPR036458;";
         String prosite = "PS00713;PS00714;";

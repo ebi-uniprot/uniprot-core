@@ -44,7 +44,7 @@ class EntryCrossReferenceMapTest {
         EntryCrossReferenceMap dl = new EntryCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(1, result.size());
-        verify("AY189288;AK022746;", "xref_embl", result);
+        verify("\"AY189288; AAO86732.1.\";\"AK022746; BAB14220.1.\";", "xref_embl", result);
     }
 
     @Test
@@ -87,8 +87,8 @@ class EntryCrossReferenceMapTest {
         EntryCrossReferenceMap dl = new EntryCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(2, result.size());
-        verify("AY189288;AK022746;", "xref_embl", result);
-        verify("ENST00000330899 [P31689-1];ENST00000439351;", "xref_ensembl", result);
+        verify("\"AY189288; AAO86732.1.\";\"AK022746; BAB14220.1.\";", "xref_embl", result);
+        verify("\"ENST00000330899; ENSP00000369127; ENSG00000086061. [P31689-1]\";\"ENST00000439351; ENSP00000414398; ENSG00000090520.\";", "xref_ensembl", result);
     }
 
     @Test
@@ -174,7 +174,7 @@ class EntryCrossReferenceMapTest {
                         "mRNA",
                         null);
         String result = EntryCrossReferenceMap.dbXrefToString(dbxref);
-        assertEquals("AY189288", result);
+        assertEquals("\"AY189288; AAO86732.1.\"", result);
     }
 
     @Test
