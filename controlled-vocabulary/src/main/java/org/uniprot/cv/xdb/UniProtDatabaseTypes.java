@@ -50,6 +50,11 @@ public enum UniProtDatabaseTypes {
                 .collect(Collectors.toList());
     }
 
+    public List<UniProtDatabaseDetail> getInternalDatabaseDetails(){
+        return UniProtDatabaseTypes.INSTANCE.getAllDbTypes().stream()
+                .filter(dbDetail -> "internal".equals(dbDetail.getType())).collect(Collectors.toList());
+    }
+
     private void init() {
 
         String source =
@@ -72,6 +77,7 @@ public enum UniProtDatabaseTypes {
 
                     String linkedReason = item.optString("linkedReason", null);
                     String idMappingName = item.optString("idMappingName", null);
+                    String type = item.optString("type", null);
 
                     List<UniProtDatabaseAttribute> attributes = new ArrayList<>();
                     List<Property> properties = item.getProperties("attributes");
@@ -97,7 +103,8 @@ public enum UniProtDatabaseTypes {
                                     attributes,
                                     isImplicit,
                                     linkedReason,
-                                    idMappingName);
+                                    idMappingName,
+                                    type);
                     types.add(xdbType);
                 });
         typeMap =
