@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.uniprot.core.cv.xdb.UniProtDatabaseCategory.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -333,8 +332,9 @@ class UniProtKBDatabaseTypesTest {
     }
 
     @Test
-    void testInternalCrossRefs(){
-        List<UniProtDatabaseDetail> internalCrossRefs = UniProtDatabaseTypes.INSTANCE.getInternalDatabaseDetails();
+    void testInternalCrossRefs() {
+        List<UniProtDatabaseDetail> internalCrossRefs =
+                UniProtDatabaseTypes.INSTANCE.getInternalDatabaseDetails();
 
         assertEquals(7, internalCrossRefs.size());
     }

@@ -50,9 +50,10 @@ public enum UniProtDatabaseTypes {
                 .collect(Collectors.toList());
     }
 
-    public List<UniProtDatabaseDetail> getInternalDatabaseDetails(){
+    public List<UniProtDatabaseDetail> getInternalDatabaseDetails() {
         return UniProtDatabaseTypes.INSTANCE.getAllDbTypes().stream()
-                .filter(dbDetail -> "internal".equals(dbDetail.getType())).collect(Collectors.toList());
+                .filter(dbDetail -> "internal".equals(dbDetail.getType()))
+                .collect(Collectors.toList());
     }
 
     private void init() {

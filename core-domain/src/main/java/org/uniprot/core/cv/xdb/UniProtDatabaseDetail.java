@@ -36,8 +36,18 @@ public class UniProtDatabaseDetail implements Serializable {
             boolean implicit,
             String linkedReason,
             String idMappingName) {
-        this(name, displayName, category, uriLink, attributes, implicit, linkedReason, idMappingName, null);
+        this(
+                name,
+                displayName,
+                category,
+                uriLink,
+                attributes,
+                implicit,
+                linkedReason,
+                idMappingName,
+                null);
     }
+
     public UniProtDatabaseDetail(
             String name,
             String displayName,
@@ -95,7 +105,7 @@ public class UniProtDatabaseDetail implements Serializable {
         return idMappingName;
     }
 
-    public String getType(){
+    public String getType() {
         return this.type;
     }
 
