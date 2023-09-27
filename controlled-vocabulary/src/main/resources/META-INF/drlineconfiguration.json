@@ -1898,5 +1898,54 @@
       "displayName": "AlphaFoldDB",
       "category": "3DS",
       "uriLink": "https://alphafold.ebi.ac.uk/entry/%id"
-    }
+    },
+	{
+		"name": "eMIND",
+		"displayName": "eMIND",
+		"category": "MISC",
+		"uriLink": "https://research.bioinformatics.udel.edu/itextmine/integrate/doc/emind/medline/%id",
+		"type": "internal"
+	},
+	{
+		"name":"PGenN",
+		"displayName":"PGenN",
+		"category":"MISC",
+		"uriLink":"https://research.bioinformatics.udel.edu/itextmine/pgenn/doc/pgenn/medline/%id",
+		"type":"internal"
+	},
+	{
+		"name":"Alzforum",
+		"displayName":"Alzforum",
+		"category":"GVD",
+		"uriLink":"https://www.alzforum.org/node/%id",
+		"type":"internal"
+	},
+	{
+		"name":"GeneRIF",
+		"displayName":"GeneRIF",
+		"category":"SEQ",
+		"uriLink":"https://www.ncbi.nlm.nih.gov/gene?Db=gene&Cmd=DetailsSearch&Term=%id",
+		"type":"internal"
+	},
+	{
+		"name":"IC4R",
+		"displayName":"IC4R",
+		"category":"ORG",
+		"uriLink":"http://ic4r.org/osGene/%id",
+		"type":"internal"
+	},
+	{
+		"name":"ORCID",
+		"displayName":"ORCID",
+		"category":"MISC",
+		"uriLink":"https://orcid.org/%id",
+		"type":"internal"
+	},
+	{
+		"name":"PubTator",
+		"displayName":"PubTator",
+		"category":"MISC",
+		"uriLink":"https://www.ncbi.nlm.nih.gov/research/pubtator/?query=%id",
+		"type":"internal"
+	}
 ]
