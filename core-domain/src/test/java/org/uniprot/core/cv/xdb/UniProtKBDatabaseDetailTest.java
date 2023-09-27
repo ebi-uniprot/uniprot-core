@@ -113,7 +113,8 @@ class UniProtKBDatabaseDetailTest {
                     this.category,
                     this.uriLink,
                     this.attributes,
-                    null, null);
+                    null,
+                    null);
         } else {
             return createUniProtDatabaseDetail(
                     this.name,
@@ -132,7 +133,8 @@ class UniProtKBDatabaseDetailTest {
             UniProtDatabaseCategory category,
             String uriLink,
             List<UniProtDatabaseAttribute> attributes,
-            String idMappingName, String type) {
+            String idMappingName,
+            String type) {
         return new UniProtDatabaseDetail(
                 name, displayName, category, uriLink, attributes, false, null, idMappingName, type);
     }
