@@ -635,6 +635,12 @@
         "idMappingName": "PROTEOMICSDB_ID"
 	},
 	{
+		"name": "Pumba",
+		"displayName": "Pumba",
+		"category": "PROTEOMIC",
+		"uriLink": "https://pumba.dcsr.unil.ch/lanes/%id"
+	},
+	{
 		"name": "TopDownProteomics",
 		"displayName": "TopDownProteomics",
 		"category": "PROTEOMIC",
