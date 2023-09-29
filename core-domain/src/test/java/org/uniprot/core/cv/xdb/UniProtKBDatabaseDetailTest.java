@@ -51,7 +51,6 @@ class UniProtKBDatabaseDetailTest {
         assertEquals("description", dbType.getAttributes().get(0).getXmlTag());
         Assertions.assertNull(dbType.getAttributes().get(0).getUriLink());
         assertEquals(this.idMappingName, dbType.getIdMappingName());
-        assertEquals(this.type, dbType.getType());
     }
 
     @Test
@@ -105,6 +104,15 @@ class UniProtKBDatabaseDetailTest {
         assertNull(obj.getType());
     }
 
+    @Test
+    void testCreateObjectWithType(){
+        UniProtDatabaseDetail dbDetails = new UniProtDatabaseDetail(this.name, this.displayName,
+                this.category, this.uriLink, this.attributes, false,
+                null, this.idMappingName, this.type);
+        assertNotNull(dbDetails);
+        assertEquals(this.type, dbDetails.getType());
+    }
+
     private UniProtDatabaseDetail createUniProtDatabaseDetail(boolean passAttribute) {
         if (passAttribute) {
             return createUniProtDatabaseDetail(
@@ -113,7 +121,6 @@ class UniProtKBDatabaseDetailTest {
                     this.category,
                     this.uriLink,
                     this.attributes,
-                    null,
                     null);
         } else {
             return createUniProtDatabaseDetail(
@@ -122,8 +129,7 @@ class UniProtKBDatabaseDetailTest {
                     this.category,
                     this.uriLink,
                     null,
-                    this.idMappingName,
-                    this.type);
+                    this.idMappingName);
         }
     }
 
@@ -133,9 +139,8 @@ class UniProtKBDatabaseDetailTest {
             UniProtDatabaseCategory category,
             String uriLink,
             List<UniProtDatabaseAttribute> attributes,
-            String idMappingName,
-            String type) {
+            String idMappingName) {
         return new UniProtDatabaseDetail(
-                name, displayName, category, uriLink, attributes, false, null, idMappingName, type);
+                name, displayName, category, uriLink, attributes, false, null, idMappingName);
     }
 }
