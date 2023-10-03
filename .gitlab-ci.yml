@@ -4,7 +4,7 @@ variables:
   SONAR_PROPS: "-Dsonar.organization=ebi-uniprot -Dsonar.qualitygate.timeout=1800 -Dsonar.qualitygate.wait=true"
   SONAR_HOST_URL: "https://sonarcloud.io"
   MAVEN_SETTINGS: "maven-settings.xml"
-  URL_MAVEN_SETTINGS: "https://gitlab.ebi.ac.uk/api/v4/projects/${CONFIG_PROJECT_ID}/repository/files/${MAVEN_SETTINGS}/raw?ref=master&private_token=${GITLAB_USER_API_TOKEN}"
+  URL_MAVEN_SETTINGS: "https://gitlab.ebi.ac.uk/api/v4/projects/${CONFIG_PROJECT_ID}/repository/files/${MAVEN_SETTINGS}/raw?ref=main&private_token=${GITLAB_USER_API_TOKEN}"
   UNIPROT_RESOURCES: "-Dcv.db.types.location=ftp://ftp.ebi.ac.uk/pub/databases/uniprot/current_release/knowledgebase/complete/docs/dbxref.txt"
   GIT_DEPTH: 0 # Tells git to fetch all the branches of the project, required by the analysis task
   SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"
@@ -38,7 +38,7 @@ core:settings:
     paths:
       - ./${MAVEN_SETTINGS}
   rules:
-    - if: '$CI_COMMIT_REF_NAME == "master"'
+    - if: '$CI_COMMIT_REF_NAME == "main"'
     - when: manual
       allow_failure: true
 
@@ -59,7 +59,7 @@ core:test:
       junit:
         - ./*/target/surefire-reports/TEST-*.xml
   rules:
-    - if: '$CI_COMMIT_REF_NAME == "master"'
+    - if: '$CI_COMMIT_REF_NAME == "main"'
     - when: manual
       allow_failure: true
 
@@ -76,7 +76,7 @@ core:sonar:
       - ./target
       - ./*/target
   rules:
-    - if: '$CI_COMMIT_REF_NAME == "master"'
+    - if: '$CI_COMMIT_REF_NAME == "main"'
     - when: manual
       allow_failure: true
 
@@ -87,7 +87,7 @@ core:deploy:
     - core:settings
     - core:sonar
   only:
-    - master
+    - main
 
 #after_script:
 #  - 'pwd'
@@ -101,4 +101,4 @@ store:downstream:
   trigger: uniprot/deployment/mirror-uniprot-store
   when: on_success
   only:
-    - master
+    - main
