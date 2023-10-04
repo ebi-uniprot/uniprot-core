@@ -105,10 +105,18 @@ class UniProtKBDatabaseDetailTest {
     }
 
     @Test
-    void testCreateObjectWithType(){
-        UniProtDatabaseDetail dbDetails = new UniProtDatabaseDetail(this.name, this.displayName,
-                this.category, this.uriLink, this.attributes, false,
-                null, this.idMappingName, this.type);
+    void testCreateObjectWithType() {
+        UniProtDatabaseDetail dbDetails =
+                new UniProtDatabaseDetail(
+                        this.name,
+                        this.displayName,
+                        this.category,
+                        this.uriLink,
+                        this.attributes,
+                        false,
+                        null,
+                        this.idMappingName,
+                        this.type);
         assertNotNull(dbDetails);
         assertEquals(this.type, dbDetails.getType());
     }
