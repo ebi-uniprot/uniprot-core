@@ -16,7 +16,7 @@ public enum GenomeAssemblySource implements EnumDisplay {
     ENSEMBLPROTISTS("EnsemblProtists"),
     ENSEMBLMETAZOA("EnsemblMetazoa"),
     ENSEMBL("Ensembl"),
-    REFSEQ("Refseq"),
+    REFSEQ("RefSeq"),
     WORMBASE("WormBase");
 
     private final String name;

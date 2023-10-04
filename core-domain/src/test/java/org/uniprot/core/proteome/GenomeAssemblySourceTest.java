@@ -23,6 +23,7 @@ class GenomeAssemblySourceTest {
     @Test
     void testToDisplayName() {
         assertSame("EnsemblFungi", GenomeAssemblySource.ENSEMBLFUNGI.getDisplayName());
+        assertSame("RefSeq", GenomeAssemblySource.REFSEQ.getDisplayName());
     }
 
     @Nested
