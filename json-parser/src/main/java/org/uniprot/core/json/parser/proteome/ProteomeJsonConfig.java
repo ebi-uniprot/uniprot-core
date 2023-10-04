@@ -1,41 +1,19 @@
 package org.uniprot.core.json.parser.proteome;
 
-import java.time.LocalDate;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.NamedType;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Database;
 import org.uniprot.core.Value;
-import org.uniprot.core.citation.Author;
-import org.uniprot.core.citation.Book;
-import org.uniprot.core.citation.ElectronicArticle;
-import org.uniprot.core.citation.Journal;
-import org.uniprot.core.citation.JournalArticle;
-import org.uniprot.core.citation.Locator;
-import org.uniprot.core.citation.Patent;
-import org.uniprot.core.citation.PublicationDate;
-import org.uniprot.core.citation.Submission;
-import org.uniprot.core.citation.Thesis;
-import org.uniprot.core.citation.Unpublished;
-import org.uniprot.core.citation.impl.AuthorImpl;
-import org.uniprot.core.citation.impl.BookImpl;
-import org.uniprot.core.citation.impl.ElectronicArticleImpl;
-import org.uniprot.core.citation.impl.JournalArticleImpl;
-import org.uniprot.core.citation.impl.JournalImpl;
-import org.uniprot.core.citation.impl.PatentImpl;
-import org.uniprot.core.citation.impl.PublicationDateImpl;
-import org.uniprot.core.citation.impl.SubmissionImpl;
-import org.uniprot.core.citation.impl.ThesisImpl;
-import org.uniprot.core.citation.impl.UnpublishedImpl;
+import org.uniprot.core.citation.*;
+import org.uniprot.core.citation.impl.*;
 import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.impl.DefaultDatabase;
 import org.uniprot.core.impl.ValueImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.json.parser.deserializer.LocalDateDeserializer;
-import org.uniprot.core.json.parser.serializer.AuthorSerializer;
-import org.uniprot.core.json.parser.serializer.JournalSerializer;
-import org.uniprot.core.json.parser.serializer.LocalDateSerializer;
-import org.uniprot.core.json.parser.serializer.LocatorSerializer;
-import org.uniprot.core.json.parser.serializer.PublicationDateSerializer;
+import org.uniprot.core.json.parser.serializer.*;
 import org.uniprot.core.json.parser.uniprot.serializer.UniProtKBAccessionSerializer;
 import org.uniprot.core.proteome.*;
 import org.uniprot.core.proteome.impl.*;
@@ -46,9 +24,7 @@ import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionImpl;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyImpl;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.jsontype.NamedType;
-import com.fasterxml.jackson.databind.module.SimpleModule;
+import java.time.LocalDate;
 
 public class ProteomeJsonConfig extends JsonConfig {
     private static ProteomeJsonConfig instance;
@@ -89,6 +65,7 @@ public class ProteomeJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(ProteomeId.class, ProteomeIdImpl.class);
         mod.addAbstractTypeMapping(Taxonomy.class, TaxonomyImpl.class);
         mod.addAbstractTypeMapping(TaxonomyLineage.class, TaxonomyLineageImpl.class);
+        mod.addAbstractTypeMapping(ProteomeStatistics.class, ProteomeStatisticsImpl.class);
 
         mod.addAbstractTypeMapping(Value.class, ValueImpl.class);
         mod.addAbstractTypeMapping(RedundantProteome.class, RedundantProteomeImpl.class);
