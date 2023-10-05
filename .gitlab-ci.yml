@@ -89,13 +89,6 @@ core:deploy:
   only:
     - main
 
-#after_script:
-#  - 'pwd'
-#  - 'ls -al'
-#  - 'ls -al */'
-#  - 'ls -al */*/'
-#  - 'ls -al */*/*/'
-
 store:downstream:
   stage: bridge
   trigger: uniprot/deployment/mirror-uniprot-store
