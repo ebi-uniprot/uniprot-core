@@ -24,8 +24,8 @@ public abstract class AbstractConverterTest {
                     XMLGregorianCalendar.class,
                     new MethodBasedFactory<>(
                             AbstractConverterTest.class.getMethod("createXMLGregorianCalendar")));
-        } catch (NoSuchMethodException nsme) {
-            nsme.printStackTrace();
+        } catch (NoSuchMethodException nse) {
+            nse.printStackTrace();
             System.exit(0);
         }
         objectCreator = new LoremIpsumObjectCreator(classBindings);
