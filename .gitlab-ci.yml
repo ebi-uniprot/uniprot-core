@@ -91,7 +91,7 @@ core:deploy:
 
 store:downstream:
   stage: bridge
-  trigger: uniprot/deployment/uniprot-store
+  trigger: uniprot/deployment/mirror-uniprot-store
   when: on_success
   only:
     - main
