@@ -4,18 +4,17 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.Property;
+import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
-import org.uniprot.core.util.Utils;
+
+import static org.uniprot.core.util.Utils.*;
 
 public class EntryCrossReferenceMap implements NamedValueMap {
     private static final String CROSS_REF = "xref_";
+    private static final String FULL_SUFFIX = "_full";
     private final List<UniProtKBCrossReference> dbReferences;
     private static final Map<String, String> D3MethodMAP = new HashMap<>();
-
-    private static final List<String> MULTIPLE_IDS_XREF = List.of("EMBL", "Ensembl", "EnsemblBacteria", "EnsemblFungi", "EnsemblMetazoa", "EnsemblPlants", "EnsemblProtists",  "MANE-Select", "RefSeq", "WormBase", "WBParaSite");
-
-    private static final List<String> NOT_ID_ATTRIBUTES = List.of("GeneName", "Status", "MoleculeType");
 
     static {
         D3MethodMAP.put("X-ray", "X-ray crystallography");
@@ -37,7 +36,7 @@ public class EntryCrossReferenceMap implements NamedValueMap {
     }
 
     public EntryCrossReferenceMap(List<UniProtKBCrossReference> dbReferences) {
-        this.dbReferences = Utils.unmodifiableList(dbReferences);
+        this.dbReferences = unmodifiableList(dbReferences);
     }
 
     @Override
@@ -72,10 +71,39 @@ public class EntryCrossReferenceMap implements NamedValueMap {
                     xrefs.stream()
                             .map(EntryCrossReferenceMap::dbXrefToString)
                             .collect(Collectors.joining(";", "", ";")));
+
+            if (isMultiValueXref(xrefs)) {
+                map.put(
+                        CROSS_REF + type.toLowerCase() + FULL_SUFFIX,
+                        xrefs.stream()
+                                .map(EntryCrossReferenceMap::dbXrefFullToString)
+                                .collect(Collectors.joining(";", "", ";")));
+            }
+
             if (type.equalsIgnoreCase("PDB")) {
                 map.put("structure_3d", pdbXrefTo3DString(xrefs));
             }
         }
+    }
+
+    private static boolean isMultiValueXref(List<UniProtKBCrossReference> xrefs) {
+        boolean result = false;
+        UniProtKBCrossReference xref = xrefs.get(0);
+        if (notNullNotEmpty(xref.getProperties())) {
+            if (xref.getProperties().size() > 1) {
+                result = true;
+            } else { // else only one property
+                Property firstProperty = xref.getProperties().get(0);
+                if (notDefaultProperty(firstProperty)) {
+                    result = true;
+                }
+            }
+        }
+        return result;
+    }
+
+    private static boolean notDefaultProperty(Property property) {
+        return !property.getKey().equalsIgnoreCase(UniProtDatabaseDetail.DEFAULT_ATTRIBUTE.getName());
     }
 
     private String pdbXrefTo3DString(List<UniProtKBCrossReference> xrefs) {
@@ -98,31 +126,36 @@ public class EntryCrossReferenceMap implements NamedValueMap {
     public static String dbXrefToString(UniProtKBCrossReference xref) {
         StringBuilder sb = new StringBuilder();
         sb.append(xref.getId());
-        boolean addQuote = false;
-        if (MULTIPLE_IDS_XREF.contains(xref.getDatabase().getName())) {
+
+        if (xref.getIsoformId() != null && !xref.getIsoformId().isEmpty()) {
+            sb.append(" [").append(xref.getIsoformId()).append("]");
+        }
+
+        return sb.toString();
+    }
+
+    public static String dbXrefFullToString(UniProtKBCrossReference xref) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("\"").append(xref.getId());
+        if (xref.hasProperties()) {
             String values = dbXrefPropertiesToString(xref);
-            if(!values.isEmpty()){
+            if (!values.isEmpty()) {
                 sb.append("; ").append(values).append(".");
-                addQuote = true;
             }
         }
         if (xref.getIsoformId() != null && !xref.getIsoformId().isEmpty()) {
             sb.append(" [").append(xref.getIsoformId()).append("]");
         }
-
-        if (addQuote) {
-            sb.insert(0, "\"");
-            sb.append("\"");
-        }
+        sb.append("\"");
         return sb.toString();
     }
 
     private static String dbXrefPropertiesToString(UniProtKBCrossReference xref) {
-        return xref.getProperties().stream()
-                .filter(p -> !NOT_ID_ATTRIBUTES.contains(p.getKey()))
+        List<Property> properties = xref.getProperties();
+        return properties.stream()
                 .map(Property::getValue)
                 .map(String::strip)
-                .filter(value -> !value.equals("-"))
                 .collect(Collectors.joining("; "));
     }
 

@@ -23,7 +23,7 @@ class EntryCrossReferenceMapTest {
     }
 
     @Test
-    void hasEmbl() {
+    void hasMultipleEmblAndFullMaps() {
         List<UniProtKBCrossReference> xrefs = new ArrayList<>();
         xrefs.add(
                 createXref(
@@ -43,12 +43,16 @@ class EntryCrossReferenceMapTest {
                         null));
         EntryCrossReferenceMap dl = new EntryCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
-        assertEquals(1, result.size());
-        verify("\"AY189288; AAO86732.1.\";\"AK022746; BAB14220.1.\";", "xref_embl", result);
+        assertEquals(2, result.size());
+        verify("AY189288;AK022746;", "xref_embl", result);
+        verify(
+                "\"AY189288; AAO86732.1; -; mRNA.\";\"AK022746; BAB14220.1; -; mRNA.\";",
+                "xref_embl_full",
+                result);
     }
 
     @Test
-    void hasEmblAndEnsembl() {
+    void hasMultipleEmblAndEnsemblWithFullMap() {
         List<UniProtKBCrossReference> xrefs = new ArrayList<>();
         xrefs.add(
                 createXref(
@@ -86,13 +90,21 @@ class EntryCrossReferenceMapTest {
                         null));
         EntryCrossReferenceMap dl = new EntryCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
-        assertEquals(2, result.size());
-        verify("\"AY189288; AAO86732.1.\";\"AK022746; BAB14220.1.\";", "xref_embl", result);
-        verify("\"ENST00000330899; ENSP00000369127; ENSG00000086061. [P31689-1]\";\"ENST00000439351; ENSP00000414398; ENSG00000090520.\";", "xref_ensembl", result);
+        assertEquals(4, result.size());
+        verify("AY189288;AK022746;", "xref_embl", result);
+        verify(
+                "\"AY189288; AAO86732.1; -; mRNA.\";\"AK022746; BAB14220.1; -; mRNA.\";",
+                "xref_embl_full",
+                result);
+        verify("ENST00000330899 [P31689-1];ENST00000439351;", "xref_ensembl", result);
+        verify(
+                "\"ENST00000330899; ENSP00000369127; ENSG00000086061. [P31689-1]\";\"ENST00000439351; ENSP00000414398; ENSG00000090520.\";",
+                "xref_ensembl_full",
+                result);
     }
 
     @Test
-    void hasPdbAndSmr() {
+    void hasPdbAndSmrAlsoHasFullMapped() {
         List<UniProtKBCrossReference> xrefs = new ArrayList<>();
         xrefs.add(createXref(new UniProtKBDatabaseImpl("PDB"), "2LO1", "NMR", "-", "A=1-70", null));
         xrefs.add(createXref(new UniProtKBDatabaseImpl("PDB"), "2M6Y", "NMR", "-", "A=1-67", null));
@@ -108,15 +120,19 @@ class EntryCrossReferenceMapTest {
         xrefs.add(createXref(new UniProtKBDatabaseImpl("SMR"), "P31689", "-", null, null, null));
         EntryCrossReferenceMap dl = new EntryCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
-        assertEquals(3, result.size());
+        assertEquals(4, result.size());
         verify("2LO1;2M6Y;5TKG;", "xref_pdb", result);
+        verify(
+                "\"2LO1; NMR; -; A=1-70.\";\"2M6Y; NMR; -; A=1-67.\";\"5TKG; X-ray; 1.20 A; A/B=16-23.\";",
+                "xref_pdb_full",
+                result);
         verify("P31689;", "xref_smr", result);
         String pdb3d = "NMR spectroscopy (2); X-ray crystallography (1)";
         verify(pdb3d, "structure_3d", result);
     }
 
     @Test
-    void hasIntactAndString() {
+    void hasIntactAndStringMixedFullAndSingleIds() {
         List<UniProtKBCrossReference> xrefs = new ArrayList<>();
         xrefs.add(
                 createXref(new UniProtKBDatabaseImpl("IntAct"), "P31689", "97", null, null, null));
@@ -131,13 +147,14 @@ class EntryCrossReferenceMapTest {
                         null));
         EntryCrossReferenceMap dl = new EntryCrossReferenceMap(xrefs);
         Map<String, String> result = dl.attributeValues();
-        assertEquals(2, result.size());
+        assertEquals(3, result.size());
         verify("P31689;", "xref_intact", result);
+        verify("\"P31689; 97.\";", "xref_intact_full", result);
         verify("9606.ENSP00000369127;", "xref_string", result);
     }
 
     @Test
-    void hasChemblAndSwissLipids() {
+    void hasChemblAndSwissLipidsOnlySingleIds() {
         List<UniProtKBCrossReference> xrefs = new ArrayList<>();
         xrefs.add(
                 createXref(
@@ -174,7 +191,63 @@ class EntryCrossReferenceMapTest {
                         "mRNA",
                         null);
         String result = EntryCrossReferenceMap.dbXrefToString(dbxref);
-        assertEquals("\"AY189288; AAO86732.1.\"", result);
+        assertEquals("AY189288", result);
+    }
+
+    @Test
+    void testBbXrefToStringWithIsoforms() {
+        UniProtKBCrossReference dbxref =
+                createXref(
+                        new UniProtKBDatabaseImpl("EMBL"),
+                        "AY189288",
+                        "AAO86732.1",
+                        "-",
+                        "mRNA",
+                        "P12345-2");
+        String result = EntryCrossReferenceMap.dbXrefToString(dbxref);
+        assertEquals("AY189288 [P12345-2]", result);
+    }
+
+    @Test
+    void testDbXrefFullToStringAllIds() {
+        UniProtKBCrossReference dbxref =
+                createXref(
+                        new UniProtKBDatabaseImpl("EMBL"),
+                        "AY189288",
+                        "AAO86732.1",
+                        "AAO86732.2",
+                        "mRNA",
+                        null);
+        String result = EntryCrossReferenceMap.dbXrefFullToString(dbxref);
+        assertEquals("\"AY189288; AAO86732.1; AAO86732.2; mRNA.\"", result);
+    }
+
+    @Test
+    void testDbXrefFullToStringMissingIdsWithDash() {
+        UniProtKBCrossReference dbxref =
+                createXref(
+                        new UniProtKBDatabaseImpl("EMBL"),
+                        "AY189288",
+                        "AAO86732.1",
+                        "-",
+                        "mRNA",
+                        null);
+        String result = EntryCrossReferenceMap.dbXrefFullToString(dbxref);
+        assertEquals("\"AY189288; AAO86732.1; -; mRNA.\"", result);
+    }
+
+    @Test
+    void testDbXrefFullToStringWithIsoforms() {
+        UniProtKBCrossReference dbxref =
+                createXref(
+                        new UniProtKBDatabaseImpl("EMBL"),
+                        "AY189288",
+                        "-",
+                        "AAO86732.2",
+                        "mRNA",
+                        "P12345-2");
+        String result = EntryCrossReferenceMap.dbXrefFullToString(dbxref);
+        assertEquals("\"AY189288; -; AAO86732.2; mRNA. [P12345-2]\"", result);
     }
 
     @Test

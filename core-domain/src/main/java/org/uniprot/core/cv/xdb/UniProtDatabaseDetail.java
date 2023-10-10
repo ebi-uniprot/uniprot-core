@@ -9,7 +9,7 @@ public class UniProtDatabaseDetail implements Serializable {
 
     private static final long serialVersionUID = 8751881513996820892L;
 
-    private static final UniProtDatabaseAttribute DEFAULT_ATTRIBUTE =
+    public static final UniProtDatabaseAttribute DEFAULT_ATTRIBUTE =
             new UniProtDatabaseAttribute("Description", "description", null);
     private String name;
     private String displayName;
