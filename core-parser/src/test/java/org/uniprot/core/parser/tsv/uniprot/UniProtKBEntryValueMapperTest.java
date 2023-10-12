@@ -213,8 +213,7 @@ class UniProtKBEntryValueMapperTest {
     @Test
     void testComments() {
         List<String> fields =
-                List.of(
-                        "accession", "cc_function", "cc_domain", "cc_subunit", "cc_interaction");
+                List.of("accession", "cc_function", "cc_domain", "cc_subunit", "cc_interaction");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
@@ -295,8 +294,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testSequenceCaution() {
-        List<String> fields =
-                List.of("accession", "cc_sequence_caution", "error_gmodel_pred");
+        List<String> fields = List.of("accession", "cc_sequence_caution", "error_gmodel_pred");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ84MC7, fields);
 
         verify("Q84MC7", "accession", result);
@@ -553,11 +551,13 @@ class UniProtKBEntryValueMapperTest {
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
-        String embl = "U53347;AF102826;AF105423;GQ919058;" +
-                "AK292690;AK299137;AK301661;AK316546;" +
-                "AC008622;CH471126;BC000062;AF334818;";
+        String embl =
+                "U53347;AF102826;AF105423;GQ919058;"
+                        + "AK292690;AK299137;AK301661;AK316546;"
+                        + "AC008622;CH471126;BC000062;AF334818;";
         String ccds = "CCDS12692.1 [Q15758-1];CCDS46125.1 [Q15758-2];CCDS46126.1 [Q15758-3];";
-        String refseq = "NP_001138616.1 [Q15758-3];NP_001138617.1 [Q15758-2];NP_005619.1 [Q15758-1];";
+        String refseq =
+                "NP_001138616.1 [Q15758-3];NP_001138617.1 [Q15758-2];NP_005619.1 [Q15758-1];";
         String smr = "Q15758;";
         verify(embl, "xref_embl", result);
         verify(ccds, "xref_ccds", result);
@@ -568,7 +568,12 @@ class UniProtKBEntryValueMapperTest {
     @Test
     void testXRefs1Full() {
         List<String> fields =
-                List.of("accession", "xref_embl_full", "xref_ccds_full", "xref_refseq_full", "xref_smr_full");
+                List.of(
+                        "accession",
+                        "xref_embl_full",
+                        "xref_ccds_full",
+                        "xref_refseq_full",
+                        "xref_smr_full");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
@@ -684,8 +689,10 @@ class UniProtKBEntryValueMapperTest {
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
-        String drugbank = "\"DB00174; Asparagine.\";\"DB13146; Fluciclovine (18F).\";\"DB00130; L-Glutamine.\";";
-        String tcdb = "\"2.A.23.3.3; the dicarboxylate/amino acid:cation (na(+) or h(+)) symporter (daacs) family.\";";
+        String drugbank =
+                "\"DB00174; Asparagine.\";\"DB13146; Fluciclovine (18F).\";\"DB00130; L-Glutamine.\";";
+        String tcdb =
+                "\"2.A.23.3.3; the dicarboxylate/amino acid:cation (na(+) or h(+)) symporter (daacs) family.\";";
 
         String maxqb = "Q15758;";
         verify(drugbank, "xref_drugbank_full", result);
@@ -708,7 +715,8 @@ class UniProtKBEntryValueMapperTest {
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
-        String ensembl = "ENST00000412532 [Q15758-3];ENST00000434726 [Q15758-2];ENST00000542575 [Q15758-1];";
+        String ensembl =
+                "ENST00000412532 [Q15758-3];ENST00000434726 [Q15758-2];ENST00000542575 [Q15758-1];";
         String reactome = "R-HSA-352230;";
         String interpro = "IPR001991;IPR018107;IPR036458;";
         String prosite = "PS00713;PS00714;";
@@ -739,8 +747,10 @@ class UniProtKBEntryValueMapperTest {
                         + "\"ENST00000434726; ENSP00000406532; ENSG00000105281. [Q15758-2]\";"
                         + "\"ENST00000542575; ENSP00000444408; ENSG00000105281. [Q15758-1]\";";
         String reactomeFull = "\"R-HSA-352230; Amino acid transport across the plasma membrane.\";";
-        String interproFull = "\"IPR001991; Na-dicarboxylate_symporter.\";\"IPR018107; Na-dicarboxylate_symporter_CS.\";\"IPR036458; Na:dicarbo_symporter_sf.\";";
-        String prositeFull = "\"PS00713; NA_DICARBOXYL_SYMP_1; 1.\";\"PS00714; NA_DICARBOXYL_SYMP_2; 1.\";";
+        String interproFull =
+                "\"IPR001991; Na-dicarboxylate_symporter.\";\"IPR018107; Na-dicarboxylate_symporter_CS.\";\"IPR036458; Na:dicarbo_symporter_sf.\";";
+        String prositeFull =
+                "\"PS00713; NA_DICARBOXYL_SYMP_1; 1.\";\"PS00714; NA_DICARBOXYL_SYMP_2; 1.\";";
         String pfamFull = "\"PF00375; SDF; 1.\";";
         verify(ensemblFull, "xref_ensembl_full", result);
         verify(reactomeFull, "xref_reactome_full", result);
@@ -766,7 +776,8 @@ class UniProtKBEntryValueMapperTest {
 
         verify("P03431", "accession", result);
         String pdb = "2ZNL;2ZTT;3A1G;";
-        String pdbFull = "\"2ZNL; X-ray; 2.30 A; B=1-81.\";\"2ZTT; X-ray; 2.10 A; A/C=679-757.\";\"3A1G; X-ray; 1.70 A; A/C=678-757.\";";
+        String pdbFull =
+                "\"2ZNL; X-ray; 2.30 A; B=1-81.\";\"2ZTT; X-ray; 2.10 A; A/C=679-757.\";\"3A1G; X-ray; 1.70 A; A/C=678-757.\";";
         String d3d = "X-ray crystallography (3)";
         verify(pdb, "xref_pdb", result);
         verify(pdbFull, "xref_pdb_full", result);

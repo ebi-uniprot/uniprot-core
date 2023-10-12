@@ -1,5 +1,7 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
+import static org.uniprot.core.util.Utils.*;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -7,8 +9,6 @@ import org.uniprot.core.Property;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
-
-import static org.uniprot.core.util.Utils.*;
 
 public class EntryCrossReferenceMap implements NamedValueMap {
     private static final String CROSS_REF = "xref_";
@@ -103,7 +103,8 @@ public class EntryCrossReferenceMap implements NamedValueMap {
     }
 
     private static boolean notDefaultProperty(Property property) {
-        return !property.getKey().equalsIgnoreCase(UniProtDatabaseDetail.DEFAULT_ATTRIBUTE.getName());
+        return !property.getKey()
+                .equalsIgnoreCase(UniProtDatabaseDetail.DEFAULT_ATTRIBUTE.getName());
     }
 
     private String pdbXrefTo3DString(List<UniProtKBCrossReference> xrefs) {
