@@ -195,7 +195,7 @@ class EntryCrossReferenceMapTest {
     }
 
     @Test
-    void testBbXrefToStringWithIsoforms() {
+    void testDbXrefToStringWithIsoforms() {
         UniProtKBCrossReference dbxref =
                 createXref(
                         new UniProtKBDatabaseImpl("EMBL"),

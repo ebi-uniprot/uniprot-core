@@ -14,16 +14,16 @@ public class EntryCrossReferenceMap implements NamedValueMap {
     private static final String CROSS_REF = "xref_";
     private static final String FULL_SUFFIX = "_full";
     private final List<UniProtKBCrossReference> dbReferences;
-    private static final Map<String, String> D3MethodMAP = new HashMap<>();
+    private static final Map<String, String> d3MethodMap = new HashMap<>();
 
     static {
-        D3MethodMAP.put("X-ray", "X-ray crystallography");
-        D3MethodMAP.put("NMR", "NMR spectroscopy");
-        D3MethodMAP.put("EM", "Electron microscopy");
-        D3MethodMAP.put("Model", "Model");
-        D3MethodMAP.put("Neutron", "Neutron diffraction");
-        D3MethodMAP.put("Fiber", "Fiber diffraction");
-        D3MethodMAP.put("IR", "Infrared spectroscopy");
+        d3MethodMap.put("X-ray", "X-ray crystallography");
+        d3MethodMap.put("NMR", "NMR spectroscopy");
+        d3MethodMap.put("EM", "Electron microscopy");
+        d3MethodMap.put("Model", "Model");
+        d3MethodMap.put("Neutron", "Neutron diffraction");
+        d3MethodMap.put("Fiber", "Fiber diffraction");
+        d3MethodMap.put("IR", "Infrared spectroscopy");
     }
 
     public static boolean contains(List<String> fields) {
@@ -58,7 +58,7 @@ public class EntryCrossReferenceMap implements NamedValueMap {
         if (type.equalsIgnoreCase("GO")) {
             EntryGoCrossReferenceMap dlGoXref = new EntryGoCrossReferenceMap(xrefs);
             Map<String, String> goMap = dlGoXref.attributeValues();
-            goMap.forEach(map::put);
+            map.putAll(goMap);
         } else if (type.equalsIgnoreCase("PROTEOMES")) {
             map.put(
                     CROSS_REF + type.toLowerCase(),
@@ -94,9 +94,7 @@ public class EntryCrossReferenceMap implements NamedValueMap {
                 result = true;
             } else { // else only one property
                 Property firstProperty = xref.getProperties().get(0);
-                if (notDefaultProperty(firstProperty)) {
-                    result = true;
-                }
+                result = notDefaultProperty(firstProperty);
             }
         }
         return result;
@@ -113,7 +111,7 @@ public class EntryCrossReferenceMap implements NamedValueMap {
                         .flatMap(val -> val.getProperties().stream())
                         .filter(val -> val.getKey().equalsIgnoreCase("Method"))
                         .map(Property::getValue)
-                        .map(D3MethodMAP::get)
+                        .map(d3MethodMap::get)
                         .filter(Objects::nonNull)
                         .collect(
                                 Collectors.groupingBy(
