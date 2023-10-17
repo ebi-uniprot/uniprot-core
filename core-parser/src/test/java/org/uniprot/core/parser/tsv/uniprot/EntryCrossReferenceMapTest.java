@@ -181,7 +181,7 @@ class EntryCrossReferenceMapTest {
     }
 
     @Test
-    void testBbXrefToString() {
+    void testSingleDbXrefToString() {
         UniProtKBCrossReference dbxref =
                 createXref(
                         new UniProtKBDatabaseImpl("EMBL"),
@@ -190,12 +190,13 @@ class EntryCrossReferenceMapTest {
                         "-",
                         "mRNA",
                         null);
-        String result = EntryCrossReferenceMap.dbXrefToString(dbxref);
-        assertEquals("AY189288", result);
+        EntryCrossReferenceMap dl = new EntryCrossReferenceMap(List.of(dbxref));
+        Map<String, String> result = dl.attributeValues();
+        verify("AY189288;", "xref_embl", result);
     }
 
     @Test
-    void testDbXrefToStringWithIsoforms() {
+    void testSingleDbXrefToStringWithIsoforms() {
         UniProtKBCrossReference dbxref =
                 createXref(
                         new UniProtKBDatabaseImpl("EMBL"),
@@ -204,12 +205,13 @@ class EntryCrossReferenceMapTest {
                         "-",
                         "mRNA",
                         "P12345-2");
-        String result = EntryCrossReferenceMap.dbXrefToString(dbxref);
-        assertEquals("AY189288 [P12345-2]", result);
+        EntryCrossReferenceMap dl = new EntryCrossReferenceMap(List.of(dbxref));
+        Map<String, String> result = dl.attributeValues();
+        verify("AY189288 [P12345-2];", "xref_embl", result);
     }
 
     @Test
-    void testDbXrefFullToStringAllIds() {
+    void testSingleDbXrefFullToStringAllIds() {
         UniProtKBCrossReference dbxref =
                 createXref(
                         new UniProtKBDatabaseImpl("EMBL"),
@@ -218,12 +220,13 @@ class EntryCrossReferenceMapTest {
                         "AAO86732.2",
                         "mRNA",
                         null);
-        String result = EntryCrossReferenceMap.dbXrefFullToString(dbxref);
-        assertEquals("\"AY189288; AAO86732.1; AAO86732.2; mRNA.\"", result);
+        EntryCrossReferenceMap dl = new EntryCrossReferenceMap(List.of(dbxref));
+        Map<String, String> result = dl.attributeValues();
+        verify("\"AY189288; AAO86732.1; AAO86732.2; mRNA.\";", "xref_embl_full", result);
     }
 
     @Test
-    void testDbXrefFullToStringMissingIdsWithDash() {
+    void testSingleDbXrefFullToStringMissingIdsWithDash() {
         UniProtKBCrossReference dbxref =
                 createXref(
                         new UniProtKBDatabaseImpl("EMBL"),
@@ -232,12 +235,13 @@ class EntryCrossReferenceMapTest {
                         "-",
                         "mRNA",
                         null);
-        String result = EntryCrossReferenceMap.dbXrefFullToString(dbxref);
-        assertEquals("\"AY189288; AAO86732.1; -; mRNA.\"", result);
+        EntryCrossReferenceMap dl = new EntryCrossReferenceMap(List.of(dbxref));
+        Map<String, String> result = dl.attributeValues();
+        verify("\"AY189288; AAO86732.1; -; mRNA.\";", "xref_embl_full", result);
     }
 
     @Test
-    void testDbXrefFullToStringWithIsoforms() {
+    void testSingleDbXrefFullToStringWithIsoforms() {
         UniProtKBCrossReference dbxref =
                 createXref(
                         new UniProtKBDatabaseImpl("EMBL"),
@@ -246,8 +250,9 @@ class EntryCrossReferenceMapTest {
                         "AAO86732.2",
                         "mRNA",
                         "P12345-2");
-        String result = EntryCrossReferenceMap.dbXrefFullToString(dbxref);
-        assertEquals("\"AY189288; -; AAO86732.2; mRNA. [P12345-2]\"", result);
+        EntryCrossReferenceMap dl = new EntryCrossReferenceMap(List.of(dbxref));
+        Map<String, String> result = dl.attributeValues();
+        verify("\"AY189288; -; AAO86732.2; mRNA. [P12345-2]\";", "xref_embl_full", result);
     }
 
     @Test
@@ -261,8 +266,9 @@ class EntryCrossReferenceMapTest {
                         null,
                         null,
                         null);
-        String result = EntryCrossReferenceMap.proteomeXrefToString(dbxref);
-        assertEquals("UP000006548: Chromosome 4", result);
+        EntryCrossReferenceMap dl = new EntryCrossReferenceMap(List.of(dbxref));
+        Map<String, String> result = dl.attributeValues();
+        verify("UP000006548: Chromosome 4", "xref_proteomes", result);
     }
 
     private void verify(String expected, String field, Map<String, String> result) {

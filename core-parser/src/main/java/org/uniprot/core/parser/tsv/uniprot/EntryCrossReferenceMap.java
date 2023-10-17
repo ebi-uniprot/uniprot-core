@@ -63,20 +63,20 @@ public class EntryCrossReferenceMap implements NamedValueMap {
             map.put(
                     CROSS_REF + type.toLowerCase(),
                     xrefs.stream()
-                            .map(EntryCrossReferenceMap::proteomeXrefToString)
+                            .map(this::proteomeXrefToString)
                             .collect(Collectors.joining("; ")));
         } else {
             map.put(
                     CROSS_REF + type.toLowerCase(),
                     xrefs.stream()
-                            .map(EntryCrossReferenceMap::dbXrefToString)
+                            .map(this::dbXrefToString)
                             .collect(Collectors.joining(";", "", ";")));
 
             if (isMultiValueXref(xrefs)) {
                 map.put(
                         CROSS_REF + type.toLowerCase() + FULL_SUFFIX,
                         xrefs.stream()
-                                .map(EntryCrossReferenceMap::dbXrefFullToString)
+                                .map(this::dbXrefFullToString)
                                 .collect(Collectors.joining(";", "", ";")));
             }
 
@@ -122,7 +122,7 @@ public class EntryCrossReferenceMap implements NamedValueMap {
                 .collect(Collectors.joining("; "));
     }
 
-    public static String dbXrefToString(UniProtKBCrossReference xref) {
+    private String dbXrefToString(UniProtKBCrossReference xref) {
         StringBuilder sb = new StringBuilder();
         sb.append(xref.getId());
 
@@ -133,7 +133,7 @@ public class EntryCrossReferenceMap implements NamedValueMap {
         return sb.toString();
     }
 
-    public static String dbXrefFullToString(UniProtKBCrossReference xref) {
+    private String dbXrefFullToString(UniProtKBCrossReference xref) {
         StringBuilder sb = new StringBuilder();
 
         sb.append("\"").append(xref.getId());
@@ -150,7 +150,7 @@ public class EntryCrossReferenceMap implements NamedValueMap {
         return sb.toString();
     }
 
-    private static String dbXrefPropertiesToString(UniProtKBCrossReference xref) {
+    private String dbXrefPropertiesToString(UniProtKBCrossReference xref) {
         List<Property> properties = xref.getProperties();
         return properties.stream()
                 .map(Property::getValue)
@@ -158,7 +158,7 @@ public class EntryCrossReferenceMap implements NamedValueMap {
                 .collect(Collectors.joining("; "));
     }
 
-    public static String proteomeXrefToString(UniProtKBCrossReference xref) {
+    private String proteomeXrefToString(UniProtKBCrossReference xref) {
         StringBuilder sb = new StringBuilder();
         sb.append(xref.getId()).append(": ").append(xref.getProperties().get(0).getValue());
 
