@@ -150,6 +150,13 @@ public class ProteomeTest {
                         .genomeAnnotation(genomeAnnotation)
                         .build();
 
+        ProteomeStatistics proteomeStatistics =
+                new ProteomeStatisticsBuilder()
+                        .reviewedProteinCount(1)
+                        .unreviewedProteinCount(10)
+                        .isoformProteinCount(23)
+                        .build();
+
         return new ProteomeEntryBuilder()
                 .proteomeId(proteomeId)
                 .description(description)
@@ -177,6 +184,7 @@ public class ProteomeTest {
                 .genomeAnnotation(genomeAnnotation)
                 .exclusionReasonsAdd(ExclusionReason.MIXED_CULTURE)
                 .proteinCount(250)
+                .proteomeStatistics(proteomeStatistics)
                 .build();
     }
 
