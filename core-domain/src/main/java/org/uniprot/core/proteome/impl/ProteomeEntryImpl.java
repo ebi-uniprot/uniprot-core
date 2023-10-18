@@ -34,12 +34,13 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     private final GenomeAnnotation genomeAnnotation;
     private final List<TaxonomyLineage> taxonLineage;
     private final List<ExclusionReason> exclusionReasons;
+    private final ProteomeStatistics proteomeStatistics;
 
     // no arg constructor for JSON deserialization
     ProteomeEntryImpl() {
         this(
                 null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null);
+                null, null, null, null, null, null, null, null);
     }
 
     ProteomeEntryImpl(
@@ -63,7 +64,8 @@ public class ProteomeEntryImpl implements ProteomeEntry {
             GenomeAssembly genomeAssembly,
             GenomeAnnotation genomeAnnotation,
             List<ExclusionReason> exclusionReasons,
-            Integer proteinCount) {
+            Integer proteinCount,
+            ProteomeStatistics proteomeStatistics) {
         super();
         this.id = id;
         this.taxonomy = taxonomy;
@@ -88,6 +90,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
         this.genomeAnnotation = genomeAnnotation;
         this.exclusionReasons = Utils.unmodifiableList(exclusionReasons);
         this.proteinCount = proteinCount;
+        this.proteomeStatistics = proteomeStatistics;
     }
 
     @Override
@@ -196,6 +199,11 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     }
 
     @Override
+    public ProteomeStatistics getProteomeStatistics() {
+        return proteomeStatistics;
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(
                 components,
@@ -214,7 +222,8 @@ public class ProteomeEntryImpl implements ProteomeEntry {
                 proteomeCompletenessReport,
                 genomeAssembly,
                 proteinCount,
-                genomeAnnotation);
+                genomeAnnotation,
+                proteomeStatistics);
     }
 
     @Override
@@ -240,6 +249,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
                 && Objects.equals(genomeAssembly, other.genomeAssembly)
                 && Objects.equals(geneCount, other.geneCount)
                 && Objects.equals(proteinCount, other.proteinCount)
-                && Objects.equals(genomeAnnotation, other.genomeAnnotation);
+                && Objects.equals(genomeAnnotation, other.genomeAnnotation)
+                && Objects.equals(proteomeStatistics, other.proteomeStatistics);
     }
 }

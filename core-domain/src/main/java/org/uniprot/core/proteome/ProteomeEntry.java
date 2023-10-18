@@ -50,4 +50,6 @@ public interface ProteomeEntry extends Serializable {
     GenomeAnnotation getGenomeAnnotation();
 
     List<ExclusionReason> getExclusionReasons();
+
+    ProteomeStatistics getProteomeStatistics();
 }
