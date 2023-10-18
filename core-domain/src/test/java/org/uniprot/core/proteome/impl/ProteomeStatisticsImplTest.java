@@ -1,9 +1,9 @@
 package org.uniprot.core.proteome.impl;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import org.junit.jupiter.api.Test;
 
 class ProteomeStatisticsImplTest {
     public static final int REVIEWED_PROTEIN_COUNT = 98;
@@ -23,8 +23,7 @@ class ProteomeStatisticsImplTest {
 
     @Test
     void defaultConstructor() {
-        ProteomeStatisticsImpl that =
-                new ProteomeStatisticsImpl();
+        ProteomeStatisticsImpl that = new ProteomeStatisticsImpl();
         assertEquals(new ProteomeStatisticsImpl(0, 0, 0), that);
     }
 
