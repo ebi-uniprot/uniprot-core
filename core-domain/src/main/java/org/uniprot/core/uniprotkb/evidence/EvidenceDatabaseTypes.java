@@ -161,6 +161,13 @@ public enum EvidenceDatabaseTypes {
                         "A",
                         "http://smart.embl.de/smart/do_annotation.pl?DOMAIN=%value"));
         typeMap.put(
+                "TAIR",
+                evd(
+                        "TAIR",
+                        "TAIR",
+                        "I",
+                        "https://www.arabidopsis.org/servlets/TairObject?type=locus&name=%value"));
+        typeMap.put(
                 "UniRule",
                 evd("UniRule", "UniRule", "A", "https://www.uniprot.org/unirule/%value"));
         typeMap.put(
