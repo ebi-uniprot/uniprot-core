@@ -30,7 +30,7 @@ core:settings:
     - 'wget --no-cache --no-cookies -O ${MAVEN_SETTINGS} "${URL_MAVEN_SETTINGS}"'
   script:
     - if [ ! -f ${MAVEN_SETTINGS} ];
-        then echo "CI settings missing";
+        then echo "CI settings file missing";
       fi
   artifacts:
     when: always
@@ -38,7 +38,7 @@ core:settings:
     paths:
       - ./${MAVEN_SETTINGS}
   rules:
-    - if: '$CI_COMMIT_REF_NAME == "master"'
+    - if: '$CI_COMMIT_REF_NAME == "main"'
     - when: manual
       allow_failure: true
 
@@ -59,7 +59,7 @@ core:test:
       junit:
         - ./*/target/surefire-reports/TEST-*.xml
   rules:
-    - if: '$CI_COMMIT_REF_NAME == "master"'
+    - if: '$CI_COMMIT_REF_NAME == "main"'
     - when: manual
       allow_failure: true
 
@@ -76,7 +76,7 @@ core:sonar:
       - ./target
       - ./*/target
   rules:
-    - if: '$CI_COMMIT_REF_NAME == "master"'
+    - if: '$CI_COMMIT_REF_NAME == "main"'
     - when: manual
       allow_failure: true
 
@@ -87,18 +87,11 @@ core:deploy:
     - core:settings
     - core:sonar
   only:
-    - master
-
-#after_script:
-#  - 'pwd'
-#  - 'ls -al'
-#  - 'ls -al */'
-#  - 'ls -al */*/'
-#  - 'ls -al */*/*/'
+    - main
 
 store:downstream:
   stage: bridge
-  trigger: uniprot/deployment/mirror-uniprot-store
+  trigger: uniprot/deployment/uniprot-store
   when: on_success
   only:
-    - master
+    - main

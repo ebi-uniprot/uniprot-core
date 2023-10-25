@@ -11,7 +11,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.citation.*;
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.citation.JournalArticle;
+import org.uniprot.core.citation.Submission;
+import org.uniprot.core.citation.SubmissionDatabase;
 import org.uniprot.core.citation.impl.JournalArticleBuilder;
 import org.uniprot.core.citation.impl.SubmissionBuilder;
 import org.uniprot.core.proteome.*;
@@ -349,5 +352,13 @@ class ProteomeEntryBuilderTest {
         assertEquals(2, proteome.getExclusionReasons().size());
         assertThat(proteome.getExclusionReasons(), hasItem(ExclusionReason.METAGENOME));
         assertThat(proteome.getExclusionReasons(), hasItem(ExclusionReason.MIXED_CULTURE));
+    }
+
+    @Test
+    void testProteomeStatistics() {
+        ProteomeStatistics proteomeStatistics = new ProteomeStatisticsBuilder().build();
+        ProteomeEntry proteome =
+                new ProteomeEntryBuilder().proteomeStatistics(proteomeStatistics).build();
+        assertSame(proteomeStatistics, proteome.getProteomeStatistics());
     }
 }

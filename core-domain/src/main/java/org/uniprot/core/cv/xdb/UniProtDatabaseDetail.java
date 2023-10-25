@@ -9,7 +9,7 @@ public class UniProtDatabaseDetail implements Serializable {
 
     private static final long serialVersionUID = 8751881513996820892L;
 
-    private static final UniProtDatabaseAttribute DEFAULT_ATTRIBUTE =
+    public static final UniProtDatabaseAttribute DEFAULT_ATTRIBUTE =
             new UniProtDatabaseAttribute("Description", "description", null);
     private String name;
     private String displayName;
@@ -20,6 +20,7 @@ public class UniProtDatabaseDetail implements Serializable {
     private boolean implicit = false;
     private String linkedReason = null;
     private String idMappingName;
+    private String type;
 
     UniProtDatabaseDetail() {
         this.attributes = new ArrayList<>();
@@ -35,6 +36,28 @@ public class UniProtDatabaseDetail implements Serializable {
             boolean implicit,
             String linkedReason,
             String idMappingName) {
+        this(
+                name,
+                displayName,
+                category,
+                uriLink,
+                attributes,
+                implicit,
+                linkedReason,
+                idMappingName,
+                null);
+    }
+
+    public UniProtDatabaseDetail(
+            String name,
+            String displayName,
+            UniProtDatabaseCategory category,
+            String uriLink,
+            List<UniProtDatabaseAttribute> attributes,
+            boolean implicit,
+            String linkedReason,
+            String idMappingName,
+            String type) {
         super();
         this.name = name;
         this.displayName = displayName;
@@ -47,6 +70,7 @@ public class UniProtDatabaseDetail implements Serializable {
         if ((attributes != null) && !attributes.isEmpty()) this.attributes.addAll(attributes);
         else this.attributes.add(DEFAULT_ATTRIBUTE);
         this.idMappingName = idMappingName;
+        this.type = type;
     }
 
     public String getName() {
@@ -81,6 +105,10 @@ public class UniProtDatabaseDetail implements Serializable {
         return idMappingName;
     }
 
+    public String getType() {
+        return this.type;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
@@ -91,7 +119,8 @@ public class UniProtDatabaseDetail implements Serializable {
                 this.uriLink,
                 this.implicit,
                 this.linkedReason,
-                this.idMappingName);
+                this.idMappingName,
+                this.type);
     }
 
     @Override
@@ -109,6 +138,7 @@ public class UniProtDatabaseDetail implements Serializable {
                 && Objects.equals(this.uriLink, other.uriLink)
                 && Objects.equals(this.implicit, other.implicit)
                 && Objects.equals(this.linkedReason, other.linkedReason)
-                && Objects.equals(this.idMappingName, other.idMappingName);
+                && Objects.equals(this.idMappingName, other.idMappingName)
+                && Objects.equals(this.type, other.type);
     }
 }

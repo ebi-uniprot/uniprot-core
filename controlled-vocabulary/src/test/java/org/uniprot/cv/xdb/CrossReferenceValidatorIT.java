@@ -69,6 +69,7 @@ class CrossReferenceValidatorIT {
                         opType.getAttributes(),
                         false,
                         null,
+                        null,
                         null);
 
         // validate, the category should mismatch

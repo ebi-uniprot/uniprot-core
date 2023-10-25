@@ -18,6 +18,7 @@ class UniProtKBDatabaseDetailTest {
     private String uriLink;
     private List<UniProtDatabaseAttribute> attributes;
     private String idMappingName;
+    private String type;
 
     @BeforeEach
     void setUp() {
@@ -34,6 +35,7 @@ class UniProtKBDatabaseDetailTest {
                                                 this.name, this.displayName, this.uriLink))
                         .collect(Collectors.toList());
         this.idMappingName = "idMappingName-" + random;
+        this.type = "type-" + random;
     }
 
     @Test
@@ -99,6 +101,24 @@ class UniProtKBDatabaseDetailTest {
         assertEquals(1, obj.getAttributes().size());
         assertNull(obj.getLinkedReason());
         assertFalse(obj.isImplicit());
+        assertNull(obj.getType());
+    }
+
+    @Test
+    void testCreateObjectWithType() {
+        UniProtDatabaseDetail dbDetails =
+                new UniProtDatabaseDetail(
+                        this.name,
+                        this.displayName,
+                        this.category,
+                        this.uriLink,
+                        this.attributes,
+                        false,
+                        null,
+                        this.idMappingName,
+                        this.type);
+        assertNotNull(dbDetails);
+        assertEquals(this.type, dbDetails.getType());
     }
 
     private UniProtDatabaseDetail createUniProtDatabaseDetail(boolean passAttribute) {
