@@ -2,7 +2,6 @@ package org.uniprot.core.parser.tsv.uniprot;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.CitationDatabase;
@@ -27,11 +26,16 @@ public class EntryReferenceMap implements NamedValueMap {
             return Collections.emptyMap();
         }
 
-        Map<CitationDatabase, String> idMaps = references.stream()
-                .map(UniProtKBReference::getCitation)
-                .filter(val -> val.getCitationCrossReferences() != null)
-                .flatMap(val -> val.getCitationCrossReferences().stream())
-                .collect(Collectors.groupingBy(CrossReference::getDatabase, Collectors.mapping(CrossReference::getId, Collectors.joining("; "))));
+        Map<CitationDatabase, String> idMaps =
+                references.stream()
+                        .map(UniProtKBReference::getCitation)
+                        .filter(val -> val.getCitationCrossReferences() != null)
+                        .flatMap(val -> val.getCitationCrossReferences().stream())
+                        .collect(
+                                Collectors.groupingBy(
+                                        CrossReference::getDatabase,
+                                        Collectors.mapping(
+                                                CrossReference::getId, Collectors.joining("; "))));
 
         Map<String, String> map = new HashMap<>();
         map.put(FIELDS.get(0), idMaps.getOrDefault(CitationDatabase.PUBMED, ""));
