@@ -2,6 +2,7 @@ package org.uniprot.core.parser.tsv.uniprot;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.CitationDatabase;
@@ -9,7 +10,7 @@ import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.UniProtKBReference;
 
 public class EntryReferenceMap implements NamedValueMap {
-    static final List<String> FIELDS = Arrays.asList("lit_pubmed_id");
+    static final List<String> FIELDS = Arrays.asList("lit_pubmed_id", "lit_doi_id");
     private final List<UniProtKBReference> references;
 
     public EntryReferenceMap(List<UniProtKBReference> references) {
@@ -26,16 +27,15 @@ public class EntryReferenceMap implements NamedValueMap {
             return Collections.emptyMap();
         }
 
-        String result =
-                references.stream()
-                        .map(UniProtKBReference::getCitation)
-                        .filter(val -> val.getCitationCrossReferences() != null)
-                        .flatMap(val -> val.getCitationCrossReferences().stream())
-                        .filter(val -> val.getDatabase().equals(CitationDatabase.PUBMED))
-                        .map(CrossReference::getId)
-                        .collect(Collectors.joining("; "));
+        Map<CitationDatabase, String> idMaps = references.stream()
+                .map(UniProtKBReference::getCitation)
+                .filter(val -> val.getCitationCrossReferences() != null)
+                .flatMap(val -> val.getCitationCrossReferences().stream())
+                .collect(Collectors.groupingBy(CrossReference::getDatabase, Collectors.mapping(CrossReference::getId, Collectors.joining("; "))));
+
         Map<String, String> map = new HashMap<>();
-        map.put(FIELDS.get(0), result);
+        map.put(FIELDS.get(0), idMaps.getOrDefault(CitationDatabase.PUBMED, ""));
+        map.put(FIELDS.get(1), idMaps.getOrDefault(CitationDatabase.DOI, ""));
         return map;
     }
 
