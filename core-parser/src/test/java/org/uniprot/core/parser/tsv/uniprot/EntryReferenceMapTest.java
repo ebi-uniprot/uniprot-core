@@ -1,6 +1,7 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.parser.tsv.uniprot.EntryReferenceMap.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,9 +22,8 @@ class EntryReferenceMapTest {
 
     @Test
     void testFields() {
-        List<String> fields = EntryReferenceMap.FIELDS;
-        List<String> expected = Arrays.asList("lit_pubmed_id", "lit_doi_id");
-        assertEquals(expected, fields);
+        List<String> expected = Arrays.asList(LIT_PUBMED_ID, LIT_DOI_ID);
+        assertEquals(expected, FIELDS);
     }
 
     @Test
@@ -33,7 +33,7 @@ class EntryReferenceMapTest {
         EntryReferenceMap mapper = new EntryReferenceMap(references);
         Map<String, String> result = mapper.attributeValues();
 
-        verifyFieldValue(result, EntryReferenceMap.FIELDS.get(1), doiId);
+        verifyFieldValue(result, LIT_DOI_ID, doiId);
     }
 
     @Test
@@ -45,7 +45,7 @@ class EntryReferenceMapTest {
         EntryReferenceMap mapper = new EntryReferenceMap(references);
         Map<String, String> result = mapper.attributeValues();
 
-        verifyFieldValue(result, EntryReferenceMap.FIELDS.get(1), doiId + FIELD_SEPARATOR + doiId2);
+        verifyFieldValue(result, LIT_DOI_ID, doiId + FIELD_SEPARATOR + doiId2);
     }
 
     @Test
@@ -56,7 +56,7 @@ class EntryReferenceMapTest {
         EntryReferenceMap mapper = new EntryReferenceMap(references);
         Map<String, String> result = mapper.attributeValues();
 
-        verifyFieldValue(result, EntryReferenceMap.FIELDS.get(0), pubmedId);
+        verifyFieldValue(result, LIT_PUBMED_ID, pubmedId);
     }
 
     @Test
@@ -70,7 +70,7 @@ class EntryReferenceMapTest {
         Map<String, String> result = mapper.attributeValues();
 
         verifyFieldValue(
-                result, EntryReferenceMap.FIELDS.get(0), pubmedId + FIELD_SEPARATOR + pubmedId2);
+                result, LIT_PUBMED_ID, pubmedId + FIELD_SEPARATOR + pubmedId2);
     }
 
     @Test
@@ -87,8 +87,8 @@ class EntryReferenceMapTest {
         Map<String, String> result = mapper.attributeValues();
 
         verifyFieldValue(
-                result, EntryReferenceMap.FIELDS.get(0), pubmedId + FIELD_SEPARATOR + pubmedId2);
-        verifyFieldValue(result, EntryReferenceMap.FIELDS.get(1), doiId + FIELD_SEPARATOR + doiId2);
+                result, LIT_PUBMED_ID, pubmedId + FIELD_SEPARATOR + pubmedId2);
+        verifyFieldValue(result, LIT_DOI_ID, doiId + FIELD_SEPARATOR + doiId2);
     }
 
     private List<UniProtKBReference> getUniProtKBReferences(
