@@ -9,7 +9,9 @@ import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.UniProtKBReference;
 
 public class EntryReferenceMap implements NamedValueMap {
-    static final List<String> FIELDS = Arrays.asList("lit_pubmed_id");
+    static final String LIT_PUBMED_ID = "lit_pubmed_id";
+    static final String LIT_DOI_ID = "lit_doi_id";
+    static final List<String> FIELDS = Arrays.asList(LIT_PUBMED_ID, LIT_DOI_ID);
     private final List<UniProtKBReference> references;
 
     public EntryReferenceMap(List<UniProtKBReference> references) {
@@ -26,16 +28,20 @@ public class EntryReferenceMap implements NamedValueMap {
             return Collections.emptyMap();
         }
 
-        String result =
+        Map<CitationDatabase, String> idMaps =
                 references.stream()
                         .map(UniProtKBReference::getCitation)
                         .filter(val -> val.getCitationCrossReferences() != null)
                         .flatMap(val -> val.getCitationCrossReferences().stream())
-                        .filter(val -> val.getDatabase().equals(CitationDatabase.PUBMED))
-                        .map(CrossReference::getId)
-                        .collect(Collectors.joining("; "));
+                        .collect(
+                                Collectors.groupingBy(
+                                        CrossReference::getDatabase,
+                                        Collectors.mapping(
+                                                CrossReference::getId, Collectors.joining("; "))));
+
         Map<String, String> map = new HashMap<>();
-        map.put(FIELDS.get(0), result);
+        map.put(LIT_PUBMED_ID, idMaps.getOrDefault(CitationDatabase.PUBMED, ""));
+        map.put(LIT_DOI_ID, idMaps.getOrDefault(CitationDatabase.DOI, ""));
         return map;
     }
 
