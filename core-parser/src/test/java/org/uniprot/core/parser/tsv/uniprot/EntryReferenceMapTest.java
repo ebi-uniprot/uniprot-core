@@ -69,8 +69,7 @@ class EntryReferenceMapTest {
         EntryReferenceMap mapper = new EntryReferenceMap(references);
         Map<String, String> result = mapper.attributeValues();
 
-        verifyFieldValue(
-                result, LIT_PUBMED_ID, pubmedId + FIELD_SEPARATOR + pubmedId2);
+        verifyFieldValue(result, LIT_PUBMED_ID, pubmedId + FIELD_SEPARATOR + pubmedId2);
     }
 
     @Test
@@ -86,8 +85,7 @@ class EntryReferenceMapTest {
         EntryReferenceMap mapper = new EntryReferenceMap(references);
         Map<String, String> result = mapper.attributeValues();
 
-        verifyFieldValue(
-                result, LIT_PUBMED_ID, pubmedId + FIELD_SEPARATOR + pubmedId2);
+        verifyFieldValue(result, LIT_PUBMED_ID, pubmedId + FIELD_SEPARATOR + pubmedId2);
         verifyFieldValue(result, LIT_DOI_ID, doiId + FIELD_SEPARATOR + doiId2);
     }
 
