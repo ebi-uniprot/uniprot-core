@@ -41,6 +41,7 @@ public abstract class JsonConfig {
 
     private ObjectMapper getDefaultObjectMapper() {
         ObjectMapper objMapper = new ObjectMapper();
+        objMapper.findAndRegisterModules();
         objMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
         objMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         objMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);

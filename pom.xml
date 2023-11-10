@@ -22,7 +22,7 @@
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 		<jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
 		<http-uniprot-private-url>https://wwwdev.ebi.ac.uk/uniprot/artifactory</http-uniprot-private-url>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 		<skipITs>false</skipITs>
 		<skipUTs>false</skipUTs>
 		<guava.version>30.0-jre</guava.version>
@@ -40,7 +40,7 @@
 		<!-- Integration test report path -->
 		<jacoco.out.it.file>jacoco-it.exec</jacoco.out.it.file>
 		<jacoco.itReportPath>${jacoco.outputDir}/${jacoco.out.it.file}</jacoco.itReportPath>
-		<jacoco.version>0.8.5</jacoco.version>
+		<jacoco.version>0.8.8</jacoco.version>
 	</properties>
 
 	<dependencyManagement>
@@ -184,6 +184,7 @@
 					<includes>
 						<include>*</include>
 					</includes>
+					<argLine>--add-opens java.base/java.time=ALL-UNNAMED</argLine>
 				</configuration>
 			</plugin>
 			<plugin>
