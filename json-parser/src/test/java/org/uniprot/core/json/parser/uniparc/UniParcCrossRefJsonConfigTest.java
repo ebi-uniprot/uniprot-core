@@ -3,6 +3,7 @@ package org.uniprot.core.json.parser.uniparc;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.uniprot.core.json.parser.uniparc.UniParcEntryTest.getCompleteUniParcEntry;
 
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniparc.UniParcCrossReference;
