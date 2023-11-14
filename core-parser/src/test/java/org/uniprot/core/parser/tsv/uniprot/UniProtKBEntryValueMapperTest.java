@@ -1,13 +1,13 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -76,7 +76,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testInactiveEntries() {
-        List<String> fields = Arrays.asList("accession", "id", "protein_name");
+        List<String> fields = List.of("accession", "id", "protein_name");
         EntryInactiveReason inactiveReason =
                 new EntryInactiveReasonBuilder().type(InactiveReasonType.DELETED).build();
         UniProtKBEntry inactiveEntry =
@@ -91,7 +91,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testIdAccession() {
-        List<String> fields = Arrays.asList("accession", "id");
+        List<String> fields = List.of("accession", "id");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
@@ -100,7 +100,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testInfo() {
-        List<String> fields = Arrays.asList("reviewed", "version", "protein_existence");
+        List<String> fields = List.of("reviewed", "version", "protein_existence");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("reviewed", "reviewed", result);
@@ -110,7 +110,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testSequence() {
-        List<String> fields = Arrays.asList("length", "mass", "sequence_version", "sequence");
+        List<String> fields = List.of("length", "mass", "sequence_version", "sequence");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("541", "length", result);
@@ -133,7 +133,7 @@ class UniProtKBEntryValueMapperTest {
     @Test
     void testDefault() {
         List<String> fields =
-                Arrays.asList("accession", "id", "protein_name", "gene_names", "organism_name");
+                List.of("accession", "id", "protein_name", "gene_names", "organism_name");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
@@ -147,7 +147,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testECnumber() {
-        List<String> fields = Arrays.asList("accession", "protein_name", "ec");
+        List<String> fields = List.of("accession", "protein_name", "ec");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
 
         String proteinName =
@@ -160,7 +160,7 @@ class UniProtKBEntryValueMapperTest {
     @Test
     void testGene() {
         List<String> fields =
-                Arrays.asList("gene_names", "gene_primary", "gene_synonym", "gene_oln", "gene_orf");
+                List.of("gene_names", "gene_primary", "gene_synonym", "gene_oln", "gene_orf");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("SLC1A5 ASCT2 M7V1 RDR RDRC", "gene_names", result);
@@ -172,7 +172,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testOrganism() {
-        List<String> fields = Arrays.asList("organism_name", "organism_id");
+        List<String> fields = List.of("organism_name", "organism_id");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Homo sapiens (Human)", "organism_name", result);
@@ -181,7 +181,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testVirusHosts() {
-        List<String> fields = Arrays.asList("accession", "organism_name", "virus_hosts", "lineage");
+        List<String> fields = List.of("accession", "organism_name", "virus_hosts", "lineage");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
 
         verify("P03431", "accession", result);
@@ -195,7 +195,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testAlterProduct() {
-        List<String> fields = Arrays.asList("accession", "cc_alternative_products");
+        List<String> fields = List.of("accession", "cc_alternative_products");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
@@ -213,8 +213,7 @@ class UniProtKBEntryValueMapperTest {
     @Test
     void testComments() {
         List<String> fields =
-                Arrays.asList(
-                        "accession", "cc_function", "cc_domain", "cc_subunit", "cc_interaction");
+                List.of("accession", "cc_function", "cc_domain", "cc_subunit", "cc_interaction");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
@@ -253,7 +252,7 @@ class UniProtKBEntryValueMapperTest {
     @Test
     void testComments2() {
         List<String> fields =
-                Arrays.asList(
+                List.of(
                         "accession",
                         "cc_interaction",
                         "cc_subcellular_location",
@@ -281,7 +280,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testProteinFamily() {
-        List<String> fields = Arrays.asList("accession", "protein_families", "cc_similarity");
+        List<String> fields = List.of("accession", "protein_families", "cc_similarity");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
 
         verify("P03431", "accession", result);
@@ -295,8 +294,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testSequenceCaution() {
-        List<String> fields =
-                Arrays.asList("accession", "cc_sequence_caution", "error_gmodel_pred");
+        List<String> fields = List.of("accession", "cc_sequence_caution", "error_gmodel_pred");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ84MC7, fields);
 
         verify("Q84MC7", "accession", result);
@@ -310,7 +308,7 @@ class UniProtKBEntryValueMapperTest {
     @Test
     void testBPCP() {
         List<String> fields =
-                Arrays.asList(
+                List.of(
                         "accession",
                         "absorption",
                         "kinetics",
@@ -361,7 +359,7 @@ class UniProtKBEntryValueMapperTest {
     @Test
     void testFeatures() {
         List<String> fields =
-                Arrays.asList(
+                List.of(
                         "accession",
                         "ft_chain",
                         "ft_topo_dom",
@@ -455,7 +453,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testNumberOfFeatures() {
-        List<String> fields = Arrays.asList("accession", "feature");
+        List<String> fields = List.of("accession", "feature");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
@@ -469,7 +467,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testReferences() {
-        List<String> fields = Arrays.asList("accession", "lit_pubmed_id");
+        List<String> fields = List.of("accession", "lit_pubmed_id");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
@@ -482,7 +480,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testGOTerm() {
-        List<String> fields = Arrays.asList("accession", "go", "go_c", "go_f", "go_p", "go_id");
+        List<String> fields = List.of("accession", "go", "go_c", "go_f", "go_p", "go_id");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
@@ -549,12 +547,14 @@ class UniProtKBEntryValueMapperTest {
     @Test
     void testXRefs1() {
         List<String> fields =
-                Arrays.asList("accession", "xref_embl", "xref_ccds", "xref_refseq", "xref_smr");
+                List.of("accession", "xref_embl", "xref_ccds", "xref_refseq", "xref_smr");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
         String embl =
-                "U53347;AF102826;AF105423;GQ919058;AK292690;AK299137;AK301661;AK316546;AC008622;CH471126;BC000062;AF334818;";
+                "U53347;AF102826;AF105423;GQ919058;"
+                        + "AK292690;AK299137;AK301661;AK316546;"
+                        + "AC008622;CH471126;BC000062;AF334818;";
         String ccds = "CCDS12692.1 [Q15758-1];CCDS46125.1 [Q15758-2];CCDS46126.1 [Q15758-3];";
         String refseq =
                 "NP_001138616.1 [Q15758-3];NP_001138617.1 [Q15758-2];NP_005619.1 [Q15758-1];";
@@ -566,9 +566,47 @@ class UniProtKBEntryValueMapperTest {
     }
 
     @Test
+    void testXRefs1Full() {
+        List<String> fields =
+                List.of(
+                        "accession",
+                        "xref_embl_full",
+                        "xref_ccds_full",
+                        "xref_refseq_full",
+                        "xref_smr_full");
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("Q15758", "accession", result);
+
+        String emblFull =
+                "\"U53347; AAC50629.1; -; mRNA.\";"
+                        + "\"AF102826; AAD09812.1; -; mRNA.\";"
+                        + "\"AF105423; AAD27806.1; -; mRNA.\";"
+                        + "\"GQ919058; ACX53626.1; -; mRNA.\";"
+                        + "\"AK292690; BAF85379.1; -; mRNA.\";"
+                        + "\"AK299137; BAG61189.1; -; mRNA.\";"
+                        + "\"AK301661; BAG63136.1; -; mRNA.\";"
+                        + "\"AK316546; BAH14917.1; -; mRNA.\";"
+                        + "\"AC008622; -; NOT_ANNOTATED_CDS; Genomic_DNA.\";"
+                        + "\"CH471126; EAW57446.1; -; Genomic_DNA.\";"
+                        + "\"BC000062; AAH00062.1; -; mRNA.\";"
+                        + "\"AF334818; AAK77026.1; -; mRNA.\";";
+        verify(emblFull, "xref_embl_full", result);
+        assertNull(result.get("xref_ccds_full"));
+
+        String refseqFull =
+                "\"NP_001138616.1; NM_001145144.1. [Q15758-3]\";"
+                        + "\"NP_001138617.1; NM_001145145.1. [Q15758-2]\";"
+                        + "\"NP_005619.1; NM_005628.2. [Q15758-1]\";";
+        verify(refseqFull, "xref_refseq_full", result);
+
+        assertNull(result.get("xref_smr_full"));
+    }
+
+    @Test
     void testXRefs2() {
         List<String> fields =
-                Arrays.asList(
+                List.of(
                         "accession",
                         "xref_smr",
                         "xref_biogrid",
@@ -591,9 +629,32 @@ class UniProtKBEntryValueMapperTest {
     }
 
     @Test
+    void testXRefs2FullXrefs() {
+        List<String> fields =
+                List.of(
+                        "accession",
+                        "xref_smr_full",
+                        "xref_biogrid_full",
+                        "xref_intact_full",
+                        "xref_mint_full",
+                        "xref_string_full");
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("Q15758", "accession", result);
+
+        String biogrid = "\"112401; 92.\";";
+        String intact = "\"Q15758; 73.\";";
+        assertNull(result.get("xref_smr_full"));
+        verify(biogrid, "xref_biogrid_full", result);
+        verify(intact, "xref_intact_full", result);
+        assertNull(result.get("xref_mint_full"));
+        assertNull(result.get("xref_string_full"));
+    }
+
+    @Test
     void testXRefs3() {
         List<String> fields =
-                Arrays.asList(
+                List.of(
                         "accession",
                         "xref_drugbank",
                         "xref_guidetopharmacology",
@@ -613,37 +674,38 @@ class UniProtKBEntryValueMapperTest {
         verify(tcdb, "xref_tcdb", result);
         verify(dmdm, "xref_dmdm", result);
         verify(maxqb, "xref_maxqb", result);
+    }
+
+    @Test
+    void testXRefs3Full() {
+        List<String> fields =
+                List.of(
+                        "accession",
+                        "xref_drugbank_full",
+                        "xref_guidetopharmacology_full",
+                        "xref_tcdb_full",
+                        "xref_dmdm_full",
+                        "xref_maxqb_full");
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("Q15758", "accession", result);
+        String drugbank =
+                "\"DB00174; Asparagine.\";\"DB13146; Fluciclovine (18F).\";\"DB00130; L-Glutamine.\";";
+        String tcdb =
+                "\"2.A.23.3.3; the dicarboxylate/amino acid:cation (na(+) or h(+)) symporter (daacs) family.\";";
+
+        String maxqb = "Q15758;";
+        verify(drugbank, "xref_drugbank_full", result);
+        assertNull(result.get("xref_guidetopharmacology_full"));
+        verify(tcdb, "xref_tcdb_full", result);
+        assertNull(result.get("xref_dmdm_full"));
+        assertNull(result.get("xref_maxqb_full"));
     }
 
     @Test
     void testXRefs4() {
         List<String> fields =
-                Arrays.asList(
-                        "accession",
-                        "xref_drugbank",
-                        "xref_guidetopharmacology",
-                        "xref_tcdb",
-                        "xref_dmdm",
-                        "xref_maxqb");
-        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
-
-        verify("Q15758", "accession", result);
-        String drugbank = "DB00174;DB13146;DB00130;";
-        String guidetopharmacology = "874;";
-        String tcdb = "2.A.23.3.3;";
-        String dmdm = "21542389;";
-        String maxqb = "Q15758;";
-        verify(drugbank, "xref_drugbank", result);
-        verify(guidetopharmacology, "xref_guidetopharmacology", result);
-        verify(tcdb, "xref_tcdb", result);
-        verify(dmdm, "xref_dmdm", result);
-        verify(maxqb, "xref_maxqb", result);
-    }
-
-    @Test
-    void testXRefs5() {
-        List<String> fields =
-                Arrays.asList(
+                List.of(
                         "accession",
                         "xref_ensembl",
                         "xref_reactome",
@@ -667,8 +729,39 @@ class UniProtKBEntryValueMapperTest {
     }
 
     @Test
+    void testXRefs4Full() {
+        List<String> fields =
+                List.of(
+                        "accession",
+                        "xref_ensembl_full",
+                        "xref_reactome_full",
+                        "xref_interpro_full",
+                        "xref_prosite_full",
+                        "xref_pfam_full");
+        Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
+
+        verify("Q15758", "accession", result);
+
+        String ensemblFull =
+                "\"ENST00000412532; ENSP00000397924; ENSG00000105281. [Q15758-3]\";"
+                        + "\"ENST00000434726; ENSP00000406532; ENSG00000105281. [Q15758-2]\";"
+                        + "\"ENST00000542575; ENSP00000444408; ENSG00000105281. [Q15758-1]\";";
+        String reactomeFull = "\"R-HSA-352230; Amino acid transport across the plasma membrane.\";";
+        String interproFull =
+                "\"IPR001991; Na-dicarboxylate_symporter.\";\"IPR018107; Na-dicarboxylate_symporter_CS.\";\"IPR036458; Na:dicarbo_symporter_sf.\";";
+        String prositeFull =
+                "\"PS00713; NA_DICARBOXYL_SYMP_1; 1.\";\"PS00714; NA_DICARBOXYL_SYMP_2; 1.\";";
+        String pfamFull = "\"PF00375; SDF; 1.\";";
+        verify(ensemblFull, "xref_ensembl_full", result);
+        verify(reactomeFull, "xref_reactome_full", result);
+        verify(interproFull, "xref_interpro_full", result);
+        verify(prositeFull, "xref_prosite_full", result);
+        verify(pfamFull, "xref_pfam_full", result);
+    }
+
+    @Test
     void testProteome() {
-        List<String> fields = Arrays.asList("accession", "xref_proteomes");
+        List<String> fields = List.of("accession", "xref_proteomes");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
 
         verify("P03431", "accession", result);
@@ -678,19 +771,22 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testPdb() {
-        List<String> fields = Arrays.asList("accession", "xref_pdb", "structure_3d");
+        List<String> fields = List.of("accession", "xref_pdb", "structure_3d");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
 
         verify("P03431", "accession", result);
         String pdb = "2ZNL;2ZTT;3A1G;";
+        String pdbFull =
+                "\"2ZNL; X-ray; 2.30 A; B=1-81.\";\"2ZTT; X-ray; 2.10 A; A/C=679-757.\";\"3A1G; X-ray; 1.70 A; A/C=678-757.\";";
         String d3d = "X-ray crystallography (3)";
         verify(pdb, "xref_pdb", result);
+        verify(pdbFull, "xref_pdb_full", result);
         verify(d3d, "structure_3d", result);
     }
 
     @Test
-    void testkeyword() {
-        List<String> fields = Arrays.asList("accession", "keyword", "keywordid");
+    void testKeyword() {
+        List<String> fields = List.of("accession", "keyword", "keywordid");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
 
         verify("P03431", "accession", result);
@@ -711,7 +807,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testExtraAttributeCommentCountForQ15758() {
-        List<String> fields = Arrays.asList("comment_count");
+        List<String> fields = List.of("comment_count");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         String expectedCommentCount =
@@ -723,7 +819,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testExtraAttributeCommentCountForP03431() {
-        List<String> fields = Arrays.asList("comment_count");
+        List<String> fields = List.of("comment_count");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
 
         String expectedCommentCount =
@@ -735,7 +831,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testExtraAttributeFeatureCount() {
-        List<String> fields = Arrays.asList("feature_count");
+        List<String> fields = List.of("feature_count");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         String expectedCommentCount =
@@ -746,7 +842,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testExtraAttributeUniParcId() {
-        List<String> fields = Arrays.asList("uniparc_id");
+        List<String> fields = List.of("uniparc_id");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryP03431, fields);
 
         verify("UP1234567890", "uniparc_id", result);
