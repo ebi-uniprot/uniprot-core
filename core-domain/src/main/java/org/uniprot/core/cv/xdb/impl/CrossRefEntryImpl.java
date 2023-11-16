@@ -1,5 +1,6 @@
 package org.uniprot.core.cv.xdb.impl;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.uniprot.core.Statistics;
@@ -7,14 +8,14 @@ import org.uniprot.core.cv.xdb.CrossRefEntry;
 
 public class CrossRefEntryImpl implements CrossRefEntry {
 
-    private static final long serialVersionUID = -8749883690893371220L;
+    private static final long serialVersionUID = -6498172017920571803L;
     private String name;
     private String id;
     private String abbrev;
     private String pubMedId;
     private String doiId;
     private String linkType;
-    private String server;
+    private List<String> servers;
     private String dbUrl;
     private String category;
     private Statistics statistics;
@@ -31,7 +32,7 @@ public class CrossRefEntryImpl implements CrossRefEntry {
             String pubMedId,
             String doiId,
             String linkType,
-            String server,
+            List<String> servers,
             String dbUrl,
             String category,
             Statistics statistics) {
@@ -41,7 +42,7 @@ public class CrossRefEntryImpl implements CrossRefEntry {
         this.pubMedId = pubMedId;
         this.doiId = doiId;
         this.linkType = linkType;
-        this.server = server;
+        this.servers = servers;
         this.dbUrl = dbUrl;
         this.category = category;
         this.statistics = statistics;
@@ -78,8 +79,8 @@ public class CrossRefEntryImpl implements CrossRefEntry {
     }
 
     @Override
-    public String getServer() {
-        return this.server;
+    public List<String> getServers() {
+        return this.servers;
     }
 
     @Override
@@ -108,7 +109,7 @@ public class CrossRefEntryImpl implements CrossRefEntry {
                 && Objects.equals(this.pubMedId, that.pubMedId)
                 && Objects.equals(this.doiId, that.doiId)
                 && Objects.equals(this.linkType, that.linkType)
-                && Objects.equals(this.server, that.server)
+                && Objects.equals(this.servers, that.servers)
                 && Objects.equals(this.dbUrl, that.dbUrl)
                 && Objects.equals(this.category, that.category)
                 && Objects.equals(this.statistics, that.statistics);
@@ -123,7 +124,7 @@ public class CrossRefEntryImpl implements CrossRefEntry {
                 this.pubMedId,
                 this.doiId,
                 this.linkType,
-                this.server,
+                this.servers,
                 this.dbUrl,
                 this.category,
                 this.statistics);
