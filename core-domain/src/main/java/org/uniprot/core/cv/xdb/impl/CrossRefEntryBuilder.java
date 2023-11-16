@@ -1,14 +1,14 @@
 package org.uniprot.core.cv.xdb.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.xdb.CrossRefEntry;
 import org.uniprot.core.util.Utils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CrossRefEntryBuilder implements Builder<CrossRefEntry> {
     private String name;
