@@ -1,6 +1,7 @@
 package org.uniprot.core.cv.xdb;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.uniprot.core.Statistics;
 
@@ -22,7 +23,7 @@ public interface CrossRefEntry extends Serializable {
 
     String getLinkType();
 
-    String getServer();
+    List<String> getServers();
 
     String getDbUrl();
 

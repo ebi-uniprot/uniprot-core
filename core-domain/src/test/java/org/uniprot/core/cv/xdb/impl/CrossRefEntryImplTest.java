@@ -7,6 +7,8 @@ import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.xdb.CrossRefEntry;
 import org.uniprot.core.impl.StatisticsBuilder;
 
+import java.util.List;
+
 class CrossRefEntryImplTest {
 
     @Test
@@ -30,7 +32,7 @@ class CrossRefEntryImplTest {
                         "pub",
                         "doild",
                         "link",
-                        "server",
+                        List.of("server"),
                         "dburk",
                         "cat",
                         statistics);
