@@ -2,12 +2,12 @@ package org.uniprot.core.cv.xdb.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.xdb.CrossRefEntry;
 import org.uniprot.core.impl.StatisticsBuilder;
-
-import java.util.List;
 
 class CrossRefEntryBuilderTest {
 
