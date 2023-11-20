@@ -1953,5 +1953,17 @@
 		"category":"MISC",
 		"uriLink":"https://www.ncbi.nlm.nih.gov/research/pubtator/?query=%id",
 		"type":"internal"
+	},
+	{
+		"name":"EMDB",
+		"displayName":"EMDB",
+		"category":"3DS",
+		"uriLink":"https://www.ebi.ac.uk/emdb/%id"
+	},
+	{
+		"name":"JaponicusDB",
+		"displayName":"JaponicusDB",
+		"category":"ORG",
+		"uriLink":"https://www.japonicusdb.org/gene/%id"
 	}
 ]
