@@ -1964,6 +1964,11 @@
 		"name":"JaponicusDB",
 		"displayName":"JaponicusDB",
 		"category":"ORG",
-		"uriLink":"https://www.japonicusdb.org/gene/%id"
+		"uriLink":"https://www.japonicusdb.org/gene/%id",
+		"attributes": [
+			{	"name": "GeneDesignation",
+				"xmlTag": "gene designation"
+			}
+		]
 	}
 ]
