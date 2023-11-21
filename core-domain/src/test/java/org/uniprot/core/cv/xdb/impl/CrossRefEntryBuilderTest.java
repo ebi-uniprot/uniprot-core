@@ -61,6 +61,13 @@ class CrossRefEntryBuilderTest {
     }
 
     @Test
+    void canSet_Empty_Servers() {
+        CrossRefEntry obj = new CrossRefEntryBuilder().serversSet(null).build();
+        assertNotNull(obj.getServers());
+        assertTrue(obj.getServers().isEmpty());
+    }
+
+    @Test
     void canSet_dbUrl() {
         String dbUrl = "dbUrl";
         CrossRefEntry obj = new CrossRefEntryBuilder().dbUrl(dbUrl).build();
