@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.xdb.CrossRefEntry;
+import org.uniprot.core.util.Utils;
 
 public class CrossRefEntryImpl implements CrossRefEntry {
 
@@ -42,7 +43,7 @@ public class CrossRefEntryImpl implements CrossRefEntry {
         this.pubMedId = pubMedId;
         this.doiId = doiId;
         this.linkType = linkType;
-        this.servers = servers;
+        this.servers = Utils.unmodifiableList(servers);
         this.dbUrl = dbUrl;
         this.category = category;
         this.statistics = statistics;
