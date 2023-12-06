@@ -49,9 +49,7 @@ public class UniParcCrossRefJsonConfig extends JsonConfig {
 
     @Override
     public ObjectMapper getSimpleObjectMapper() {
-        ObjectMapper simpleObjectMapper = getDefaultSimpleObjectMapper();
-        simpleObjectMapper.registerModule(new JavaTimeModule());
-        return simpleObjectMapper;
+        return this.prettyMapper;
     }
 
     private ObjectMapper initObjectMapper() {
@@ -70,6 +68,8 @@ public class UniParcCrossRefJsonConfig extends JsonConfig {
     }
 
     private ObjectMapper initPrettyObjectMapper() {
-        return getDefaultSimpleObjectMapper();
+        ObjectMapper simpleObjectMapper = getDefaultSimpleObjectMapper();
+        simpleObjectMapper.registerModule(new JavaTimeModule());
+        return simpleObjectMapper;
     }
 }
