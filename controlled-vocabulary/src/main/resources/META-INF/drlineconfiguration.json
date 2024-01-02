@@ -481,7 +481,7 @@
 		"name": "GlyGen",
 		"displayName": "GlyGen",
 		"category": "PTM",
-		"uriLink": "https://glygen.org/protein/%id#glycosylation",
+		"uriLink": "https://glygen.org/protein/%id#Glycosylation",
         "attributes": [
         {
           "name": "glycosylation",
