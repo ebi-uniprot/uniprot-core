@@ -2,6 +2,8 @@ package org.uniprot.core.cv.xdb.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.xdb.CrossRefEntry;
@@ -30,7 +32,7 @@ class CrossRefEntryImplTest {
                         "pub",
                         "doild",
                         "link",
-                        "server",
+                        List.of("server"),
                         "dburk",
                         "cat",
                         statistics);

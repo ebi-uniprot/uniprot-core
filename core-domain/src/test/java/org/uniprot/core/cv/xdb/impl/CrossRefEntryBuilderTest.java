@@ -2,6 +2,8 @@ package org.uniprot.core.cv.xdb.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.xdb.CrossRefEntry;
@@ -45,10 +47,24 @@ class CrossRefEntryBuilderTest {
     }
 
     @Test
-    void canSet_server() {
+    void canSet_servers() {
+        List<String> servers = List.of("server1", "server2");
+        CrossRefEntry obj = new CrossRefEntryBuilder().serversSet(servers).build();
+        assertEquals(servers, obj.getServers());
+    }
+
+    @Test
+    void canAdd_servers() {
         String server = "server";
-        CrossRefEntry obj = new CrossRefEntryBuilder().server(server).build();
-        assertEquals(server, obj.getServer());
+        CrossRefEntry obj = new CrossRefEntryBuilder().serversAdd(server).build();
+        assertEquals(List.of(server), obj.getServers());
+    }
+
+    @Test
+    void canSet_Empty_Servers() {
+        CrossRefEntry obj = new CrossRefEntryBuilder().serversSet(null).build();
+        assertNotNull(obj.getServers());
+        assertTrue(obj.getServers().isEmpty());
     }
 
     @Test

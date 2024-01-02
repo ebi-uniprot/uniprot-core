@@ -1,10 +1,14 @@
 package org.uniprot.core.cv.xdb.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.Statistics;
 import org.uniprot.core.cv.xdb.CrossRefEntry;
+import org.uniprot.core.util.Utils;
 
 public class CrossRefEntryBuilder implements Builder<CrossRefEntry> {
     private String name;
@@ -13,7 +17,7 @@ public class CrossRefEntryBuilder implements Builder<CrossRefEntry> {
     private String pubMedId;
     private String doiId;
     private String linkType;
-    private String server;
+    private List<String> servers = new ArrayList<>();
     private String dbUrl;
     private String category;
     private Statistics statistics;
@@ -27,7 +31,7 @@ public class CrossRefEntryBuilder implements Builder<CrossRefEntry> {
                 this.pubMedId,
                 this.doiId,
                 this.linkType,
-                this.server,
+                this.servers,
                 this.dbUrl,
                 this.category,
                 this.statistics);
@@ -41,7 +45,7 @@ public class CrossRefEntryBuilder implements Builder<CrossRefEntry> {
                 .pubMedId(instance.getPubMedId())
                 .doiId(instance.getDoiId())
                 .linkType(instance.getLinkType())
-                .server(instance.getServer())
+                .serversSet(instance.getServers())
                 .dbUrl(instance.getDbUrl())
                 .category(instance.getCategory())
                 .statistics(instance.getStatistics());
@@ -77,8 +81,13 @@ public class CrossRefEntryBuilder implements Builder<CrossRefEntry> {
         return this;
     }
 
-    public @Nonnull CrossRefEntryBuilder server(String server) {
-        this.server = server;
+    public @Nonnull CrossRefEntryBuilder serversAdd(String server) {
+        Utils.addOrIgnoreNull(server, this.servers);
+        return this;
+    }
+
+    public @Nonnull CrossRefEntryBuilder serversSet(List<String> servers) {
+        this.servers = Utils.modifiableList(servers);
         return this;
     }
 
