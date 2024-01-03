@@ -607,7 +607,7 @@
 		"name": "PaxDb",
 		"displayName": "PaxDb",
 		"category": "PROTEOMIC",
-		"uriLink": "https://pax-db.org/search?q=%id"
+		"uriLink": "https://pax-db.org/uniprot_redirect/%id"
 	},
 	{
 		"name": "PeptideAtlas",
