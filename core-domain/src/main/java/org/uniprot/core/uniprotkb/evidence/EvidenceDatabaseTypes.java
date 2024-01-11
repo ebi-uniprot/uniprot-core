@@ -1,11 +1,10 @@
 package org.uniprot.core.uniprotkb.evidence;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.annotation.Nonnull;
 
 public enum EvidenceDatabaseTypes {
     INSTANCE;
@@ -102,6 +101,7 @@ public enum EvidenceDatabaseTypes {
                         "I",
                         "https://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=%value"));
         typeMap.put("HPA", evd("HPA", "HPA", "I", "https://www.proteinatlas.org/search/%value"));
+        typeMap.put("JaponicusDB", evd("JaponicusDB", "JaponicusDB", "I", "https://www.japonicusdb.org/gene/%value"));
         typeMap.put("MGI", evd("MGI", "MGI", "I", "http://www.informatics.jax.org/marker/%value"));
         typeMap.put(
                 "MaxQB",
