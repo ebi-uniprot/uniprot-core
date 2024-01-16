@@ -103,7 +103,7 @@ class FtLineParserTest {
                 FTType.VAR_SEQ,
                 "33",
                 "83",
-                "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL-> SECLTYGKQPLTSFHPFTSQMPP (in isoform"
+                "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL -> SECLTYGKQPLTSFHPFTSQMPP (in isoform"
                         + " 2)",
                 "VSP_004370");
     }
@@ -126,7 +126,7 @@ class FtLineParserTest {
         System.out.println(obj.getFts().get(0).getFtText());
         String desc =
                 "MLTCNKAGSRMVVDAANSNGPFQPVVLLHIR -> MPNKNKKEKESPKAGKSGKSSKEGQDTVESEQISVRKNSLVAVPSTV"
-                        + "SAKIKVPVSQPIVKKDKRQNSSRFSASNNRELQKLPSLK(in isoform 4)";
+                        + "SAKIKVPVSQPIVKKDKRQNSSRFSASNNRELQKLPSLK (in isoform 4)";
         System.out.println(desc);
         // verify(obj.getFts().get(0), FTType.VAR_SEQ, "1", "31",  desc, "VSP_043645");
         FtLineConverter converter = new FtLineConverter();
@@ -145,7 +145,7 @@ class FtLineParserTest {
     @Test
     void testVarSeq2() {
         String ftLines =
-                "FT   VAR_SEQ         1\n"
+                          "FT   VAR_SEQ         1\n"
                         + "FT                   /note=\"M -> MTDRQTDTAPSPSAHLLAGGLPTVDAAASREEPKPA\n"
                         + "FT                   SPSRRGSASRAGPGRASETM (in isoform L-VEGF-1)\"\n"
                         + "FT                   /evidence=\"ECO:0000305\"\n"
@@ -171,6 +171,69 @@ class FtLineParserTest {
                 "MTDRQTDTAPSPSAHLLAGGLPTVDAAASREEPKPASPSRRGSASRAGPGRASETM",
                 feature.getAlternativeSequence().getAlternativeSequences().get(0));
         assertEquals("in isoform L-VEGF-1", feature.getDescription().getValue());
+    }
+    
+    
+    @Test
+    void testVarSeqNotSeqBreak() {
+    	 String ftLines =
+    			   "FT   VAR_SEQ         24\n"
+                 + "FT                   /note=\"R -> RDSLKLHPSQNFHRAGLLE (in isoform B, isoform D\n"
+                 + "FT                   and isoform E)\"\n"
+                 + "FT                   /evidence=\"ECO:0000303|PubMed:11528118,\n"
+                 + "FT                   ECO:0000303|PubMed:15489334, ECO:0000305|PubMed:11528118\"\n"
+                 + "FT                   /id=\"VSP_058785\"\n";
+
+         UniprotKBLineParser<FtLineObject> parser =
+                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
+         FtLineObject obj = parser.parse(ftLines);
+         assertEquals(1, obj.getFts().size());
+         System.out.println(obj.getFts().get(0).getFtText());
+         String desc =
+                 "R -> RDSLKLHPSQNFHRAGLLE (in isoform B, isoform D and isoform E)";
+         System.out.println(desc);
+         // verify(obj.getFts().get(0), FTType.VAR_SEQ, "1", "31",  desc, "VSP_043645");
+         FtLineConverter converter = new FtLineConverter();
+         List<UniProtKBFeature> features = converter.convert(obj);
+         assertEquals(1, features.size());
+         UniProtKBFeature feature = features.get(0);
+         assertEquals("R", feature.getAlternativeSequence().getOriginalSequence());
+
+         assertEquals(
+                 "RDSLKLHPSQNFHRAGLLE",
+                 feature.getAlternativeSequence().getAlternativeSequences().get(0));
+         assertEquals("in isoform B, isoform D and isoform E", feature.getDescription().getValue());
+    }
+
+    @Test
+    void testVarSeqNotSeqBreak2() {
+    	 String ftLines =
+    			   "FT   VAR_SEQ         24\n"
+                 + "FT                   /note=\"R -> RDSLKLHPSQNFHRAGLLE (in isoform B, isoform\n"
+                 + "FT                   D and isoform E)\"\n"
+                 + "FT                   /evidence=\"ECO:0000303|PubMed:11528118,\n"
+                 + "FT                   ECO:0000303|PubMed:15489334, ECO:0000305|PubMed:11528118\"\n"
+                 + "FT                   /id=\"VSP_058785\"\n";
+
+         UniprotKBLineParser<FtLineObject> parser =
+                 new DefaultUniprotKBLineParserFactory().createFtLineParser();
+         FtLineObject obj = parser.parse(ftLines);
+         assertEquals(1, obj.getFts().size());
+         System.out.println(obj.getFts().get(0).getFtText());
+         String desc =
+                 "R -> RDSLKLHPSQNFHRAGLLE (in isoform B, isoform D and isoform E)";
+         System.out.println(desc);
+         // verify(obj.getFts().get(0), FTType.VAR_SEQ, "1", "31",  desc, "VSP_043645");
+         FtLineConverter converter = new FtLineConverter();
+         List<UniProtKBFeature> features = converter.convert(obj);
+         assertEquals(1, features.size());
+         UniProtKBFeature feature = features.get(0);
+         assertEquals("R", feature.getAlternativeSequence().getOriginalSequence());
+
+         assertEquals(
+                 "RDSLKLHPSQNFHRAGLLE",
+                 feature.getAlternativeSequence().getAlternativeSequences().get(0));
+         assertEquals("in isoform B, isoform D and isoform E", feature.getDescription().getValue());
     }
 
     @Test

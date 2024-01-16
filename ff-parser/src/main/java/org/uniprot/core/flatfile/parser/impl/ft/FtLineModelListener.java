@@ -5,6 +5,7 @@ import java.util.List;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.uniprot.core.flatfile.antlr.FtLineParser;
 import org.uniprot.core.flatfile.antlr.FtLineParserBaseListener;
+import org.uniprot.core.flatfile.antlr.RememberLastTokenLexer;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 
@@ -63,9 +64,44 @@ public class FtLineModelListener extends FtLineParserBaseListener
     public void exitFt_note(FtLineParser.Ft_noteContext ctx) {
         if (ctx.note_text() != null) {
             String result = ctx.note_text().getText();
+            result = replaceVarSeqSpaceNoSpace(result);
             result = result.replaceAll("''", "\"");
             ft.setFtText(updateAltSeqText(result));
         }
+    }
+    
+    private String replaceVarSeqSpaceNoSpace(String text1) {
+        if(Strings.isNullOrEmpty(text1)){
+            return text1;
+        }
+        String newText = text1;
+        while(newText.contains(RememberLastTokenLexer.VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER)) {
+           String restText = newText.substring(newText.indexOf(RememberLastTokenLexer.VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER)
+                   +RememberLastTokenLexer.VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER.length() );
+           String token = restText;
+           int indexSpace = restText.indexOf(" ");
+           int indexLess = restText.indexOf("<");
+           if(indexSpace>0) {
+               if(indexLess>0) {
+                   if(indexLess<indexSpace) {
+                       token =restText.substring(0, restText.indexOf("<"));
+                   }else {
+                       token =restText.substring(0, restText.indexOf(" "));
+                   }
+               }else {
+                   token =restText.substring(0, restText.indexOf(" "));
+               }
+           } else  if(indexLess>0) {
+               token =restText.substring(0, restText.indexOf("<"));
+           }
+       
+          if(RememberLastTokenLexer.isSequenceLetter(token)) {
+              newText = newText.replace(RememberLastTokenLexer.VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER, "");
+          }else {
+              newText = newText.replace(RememberLastTokenLexer.VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER, " ");
+          }
+        }
+        return newText;
     }
 
     @Override
