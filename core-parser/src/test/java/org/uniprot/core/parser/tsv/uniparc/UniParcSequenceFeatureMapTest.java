@@ -25,7 +25,7 @@ class UniParcSequenceFeatureMapTest {
         List<SequenceFeature> sfs = create();
         UniParcSequenceFeatureMap sfMap = new UniParcSequenceFeatureMap(sfs);
         Map<String, String> result = sfMap.attributeValues();
-        assertEquals(14, result.size());
+        assertEquals(13, result.size());
         assertEquals("id1,id2", result.get("InterPro"));
         assertEquals("", result.get("CDD"));
         assertEquals("sigId1,sigId2", result.get("HAMAP"));
@@ -54,7 +54,6 @@ class UniParcSequenceFeatureMapTest {
                         "Pfam",
                         "PIRSF",
                         "PRINTS",
-                        "ProPom",
                         "PROSITE",
                         "SFLD",
                         "SMART",
