@@ -1692,20 +1692,6 @@
 		]
 	},
 	{
-		"name": "ProDom",
-		"displayName": "ProDom",
-		"category": "FMD",
-		"uriLink": "http://prodom.prabi.fr/prodom/current/cgi-bin/request.pl?question=SPTR&query=%id",
-		"attributes": [		
-			{	"name": "EntryName",
-				"xmlTag":"entry name"			
-			},
-			{	"name": "MatchStatus",
-				"xmlTag":"match status"			
-			}
-		]
-	},
-	{
 		"name": "SFLD",
 		"displayName": "SFLD",
 		"category": "FMD",
