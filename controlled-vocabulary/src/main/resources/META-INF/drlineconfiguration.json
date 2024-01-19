@@ -264,7 +264,7 @@
 		"name": "STRING",
 		"displayName": "STRING",
 		"category": "PPI",
-		"uriLink": "https://version-11-5.string-db.org/network/%id",
+		"uriLink": "https://string-db.org/network/%id",
         "idMappingName": "STRING_ID"
 	},
 	
@@ -1939,5 +1939,22 @@
 		"category":"MISC",
 		"uriLink":"https://www.ncbi.nlm.nih.gov/research/pubtator/?query=%id",
 		"type":"internal"
+	},
+	{
+		"name":"EMDB",
+		"displayName":"EMDB",
+		"category":"3DS",
+		"uriLink":"https://www.ebi.ac.uk/emdb/%id"
+	},
+	{
+		"name":"JaponicusDB",
+		"displayName":"JaponicusDB",
+		"category":"ORG",
+		"uriLink":"https://www.japonicusdb.org/gene/%id",
+		"attributes": [
+			{	"name": "GeneDesignation",
+				"xmlTag": "gene designation"
+			}
+		]
 	}
 ]
