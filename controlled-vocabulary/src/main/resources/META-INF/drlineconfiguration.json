@@ -895,13 +895,6 @@
 			}
 		]
 	},
-    {
-      "name": "WBParaSiteTranscriptProtein",
-      "displayName": "WBParaSite Transcript/Protein",
-      "category": "GMA",
-      "uriLink": "https://parasite.wormbase.org/id/%id",
-      "idMappingName": "WBPARASITE_TRS_PRO_ID"
-    },
 	{
 		"name": "ArachnoServer",
 		"displayName": "ArachnoServer",
