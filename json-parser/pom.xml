@@ -13,7 +13,6 @@
 	<artifactId>json-parser</artifactId>
 
 	<properties>
-		<jackson.version>2.11.4</jackson.version>
 		<mbknor-jackson-jsonschema.version>1.0.31</mbknor-jackson-jsonschema.version>
 	</properties>
 
@@ -36,6 +35,11 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jdk8</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
 		<dependency>

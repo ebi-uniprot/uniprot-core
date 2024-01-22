@@ -2,6 +2,7 @@ package org.uniprot.core.json.parser.uniparc;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Database;
 import org.uniprot.core.impl.CrossReferenceImpl;
@@ -67,6 +68,8 @@ public class UniParcCrossRefJsonConfig extends JsonConfig {
     }
 
     private ObjectMapper initPrettyObjectMapper() {
-        return getDefaultSimpleObjectMapper();
+        ObjectMapper simpleObjectMapper = getDefaultSimpleObjectMapper();
+        simpleObjectMapper.registerModule(new JavaTimeModule());
+        return simpleObjectMapper;
     }
 }

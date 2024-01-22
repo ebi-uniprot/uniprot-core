@@ -12,7 +12,6 @@ public enum SignatureDbType implements EnumDisplay {
     PFAM("Pfam"),
     PIRSF("PIRSF"),
     PRINTS("PRINTS"),
-    PRODOM("ProDom"),
     PROSITE("PROSITE"),
     SFLD("SFLD"),
     SMART("SMART"),

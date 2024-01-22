@@ -10,7 +10,7 @@ variables:
   SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"
   JACOCO_AGGREGATE_REPORT: "jacoco-aggregate-report/target/site/jacoco-aggregate/jacoco.xml"
 
-image: maven:3.6.3-jdk-11
+image: maven:3.8.5-openjdk-17
 cache:
   key: "$CI_COMMIT_REF_SLUG"
   paths:
@@ -27,7 +27,7 @@ stages:
 core:settings:
   stage: build
   before_script:
-    - 'wget --no-cache --no-cookies -O ${MAVEN_SETTINGS} "${URL_MAVEN_SETTINGS}"'
+    - 'curl --location "${URL_MAVEN_SETTINGS}" --output ${MAVEN_SETTINGS}'
   script:
     - if [ ! -f ${MAVEN_SETTINGS} ];
         then echo "CI settings file missing";

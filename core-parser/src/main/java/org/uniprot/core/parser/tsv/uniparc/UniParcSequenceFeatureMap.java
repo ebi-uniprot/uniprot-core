@@ -25,7 +25,6 @@ public class UniParcSequenceFeatureMap implements NamedValueMap {
                             "Pfam",
                             "PIRSF",
                             "PRINTS",
-                            "ProPom",
                             "PROSITE",
                             "SFLD",
                             "SMART",
@@ -50,13 +49,12 @@ public class UniParcSequenceFeatureMap implements NamedValueMap {
 
         map.put(FIELDS.get(6), getData(SignatureDbType.PIRSF));
         map.put(FIELDS.get(7), getData(SignatureDbType.PRINTS));
-        map.put(FIELDS.get(8), getData(SignatureDbType.PRODOM));
-        map.put(FIELDS.get(9), getData(SignatureDbType.PROSITE));
+        map.put(FIELDS.get(8), getData(SignatureDbType.PROSITE));
 
-        map.put(FIELDS.get(10), getData(SignatureDbType.SFLD));
-        map.put(FIELDS.get(11), getData(SignatureDbType.SMART));
-        map.put(FIELDS.get(12), getData(SignatureDbType.SUPFAM));
-        map.put(FIELDS.get(13), getData(SignatureDbType.NCBIFAM));
+        map.put(FIELDS.get(9), getData(SignatureDbType.SFLD));
+        map.put(FIELDS.get(10), getData(SignatureDbType.SMART));
+        map.put(FIELDS.get(11), getData(SignatureDbType.SUPFAM));
+        map.put(FIELDS.get(12), getData(SignatureDbType.NCBIFAM));
 
         return map;
     }

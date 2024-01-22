@@ -264,7 +264,7 @@
 		"name": "STRING",
 		"displayName": "STRING",
 		"category": "PPI",
-		"uriLink": "https://version-11-5.string-db.org/network/%id",
+		"uriLink": "https://string-db.org/network/%id",
         "idMappingName": "STRING_ID"
 	},
 	
@@ -607,7 +607,7 @@
 		"name": "PaxDb",
 		"displayName": "PaxDb",
 		"category": "PROTEOMIC",
-		"uriLink": "https://pax-db.org/search?q=%id"
+		"uriLink": "https://pax-db.org/uniprot_redirect/%id"
 	},
 	{
 		"name": "PeptideAtlas",
@@ -895,13 +895,6 @@
 			}
 		]
 	},
-    {
-      "name": "WBParaSiteTranscriptProtein",
-      "displayName": "WBParaSite Transcript/Protein",
-      "category": "GMA",
-      "uriLink": "https://parasite.wormbase.org/id/%id",
-      "idMappingName": "WBPARASITE_TRS_PRO_ID"
-    },
 	{
 		"name": "ArachnoServer",
 		"displayName": "ArachnoServer",
@@ -1688,20 +1681,6 @@
 		"attributes": [		
 			{	"name": "EntryName",
 				"xmlTag":"entry name"			
-			}
-		]
-	},
-	{
-		"name": "ProDom",
-		"displayName": "ProDom",
-		"category": "FMD",
-		"uriLink": "http://prodom.prabi.fr/prodom/current/cgi-bin/request.pl?question=SPTR&query=%id",
-		"attributes": [		
-			{	"name": "EntryName",
-				"xmlTag":"entry name"			
-			},
-			{	"name": "MatchStatus",
-				"xmlTag":"match status"			
 			}
 		]
 	},
