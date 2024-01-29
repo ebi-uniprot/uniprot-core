@@ -1,6 +1,7 @@
 package org.uniprot.core.parser.fasta.uniprot;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.parser.fasta.uniprot.UniProtKBFastaParser.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -221,6 +222,24 @@ class UniProtKBFastaParserTest {
         assertTrue(fastaValue.contains("AAAAAAAAAABBBBBBBBBBAAAAAAAAAA"));
     }
 
+    @Test
+    void testToUniProtKBFasta(){
+        List<Gene> genes = List.of(new GeneBuilder().orfNamesAdd(new ORFNameBuilder().value("ORF 1").build()).build());
+        UniProtKBEntry entry = getEntryWithGene(genes);
+        UniProtKBFasta result = UniProtKBFastaParser.toUniProtKBFasta(entry);
+        assertNotNull(result);
+        assertEquals(entry.getPrimaryAccession().getValue(), result.getId());
+        assertEquals(entry.getEntryType(), result.getEntryType());
+        assertEquals(entry.getUniProtkbId(), result.getUniProtkbId());
+        assertEquals(getProteinDescription(entry.getProteinDescription()), result.getProteinName());
+        assertEquals(getGeneName(entry.getGenes()), result.getGeneName());
+        assertEquals(entry.getOrganism(), result.getOrganism());
+        assertEquals(getProteinFlag(entry.getProteinDescription()), result.getFlagType());
+        assertEquals(entry.getProteinExistence(), result.getProteinExistence());
+        assertEquals(entry.getEntryAudit().getSequenceVersion(), result.getSequenceVersion());
+        assertEquals(entry.getSequence(), result.getSequence());
+    }
+
     private UniProtKBEntry getEntryWithGene(List<Gene> genes) {
         UniProtKBEntry entry =
                 new UniProtKBEntryBuilder("P12345", "P12345_PROT", UniProtKBEntryType.TREMBL)
@@ -247,4 +266,5 @@ class UniProtKBFastaParserTest {
                         .build();
         return entry;
     }
+
 }

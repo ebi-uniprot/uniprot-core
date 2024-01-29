@@ -16,21 +16,23 @@ public class UniProtKBFastaParser {
     private UniProtKBFastaParser() {}
 
     public static String toFasta(UniProtKBEntry entry) {
-        UniProtKBFasta uniProtKBFasta =
-                new UniProtKBFastaBuilder()
-                        .id(entry.getPrimaryAccession().getValue())
-                        .entryType(entry.getEntryType())
-                        .uniProtkbId(entry.getUniProtkbId())
-                        .proteinName(getProteinDescription(entry.getProteinDescription()))
-                        .geneName(getGeneName(entry.getGenes()))
-                        .organism(entry.getOrganism())
-                        .flagType(getProteinFlag(entry.getProteinDescription()))
-                        .proteinExistence(entry.getProteinExistence())
-                        .sequenceVersion(entry.getEntryAudit().getSequenceVersion())
-                        .sequence(entry.getSequence())
-                        .build();
-
+        UniProtKBFasta uniProtKBFasta = toUniProtKBFasta(entry);
         return toFasta(uniProtKBFasta);
+    }
+
+    public static UniProtKBFasta toUniProtKBFasta(UniProtKBEntry entry) {
+        return new UniProtKBFastaBuilder()
+                .id(entry.getPrimaryAccession().getValue())
+                .entryType(entry.getEntryType())
+                .uniProtkbId(entry.getUniProtkbId())
+                .proteinName(getProteinDescription(entry.getProteinDescription()))
+                .geneName(getGeneName(entry.getGenes()))
+                .organism(entry.getOrganism())
+                .flagType(getProteinFlag(entry.getProteinDescription()))
+                .proteinExistence(entry.getProteinExistence())
+                .sequenceVersion(entry.getEntryAudit().getSequenceVersion())
+                .sequence(entry.getSequence())
+                .build();
     }
 
     public static String toFasta(UniProtKBFasta entry) {
@@ -41,7 +43,7 @@ public class UniProtKBFastaParser {
         return UniProtKBFastaParserReader.parse(fastaInput);
     }
 
-    private static FlagType getProteinFlag(ProteinDescription proteinDescription) {
+    static FlagType getProteinFlag(ProteinDescription proteinDescription) {
         FlagType result = null;
         if (proteinDescription.hasFlag()) {
             result = proteinDescription.getFlag().getType();
@@ -49,7 +51,7 @@ public class UniProtKBFastaParser {
         return result;
     }
 
-    private static String getGeneName(List<Gene> genes) {
+    static String getGeneName(List<Gene> genes) {
         String geneName = null;
         String orfName = null;
         String olnName = null;
@@ -67,7 +69,7 @@ public class UniProtKBFastaParser {
         else return orfName;
     }
 
-    private static String getProteinDescription(ProteinDescription pd) {
+    static String getProteinDescription(ProteinDescription pd) {
         StringBuilder desc = new StringBuilder();
         Name name;
         if (pd.getRecommendedName() != null) {
