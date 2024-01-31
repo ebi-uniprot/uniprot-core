@@ -231,10 +231,10 @@ class UniProtKBFastaParserTest {
         assertEquals(entry.getPrimaryAccession().getValue(), result.getId());
         assertEquals(entry.getEntryType(), result.getEntryType());
         assertEquals(entry.getUniProtkbId(), result.getUniProtkbId());
-        assertEquals(getProteinDescription(entry.getProteinDescription()), result.getProteinName());
-        assertEquals(getGeneName(entry.getGenes()), result.getGeneName());
+        assertEquals("Rec Name Value", result.getProteinName());
+        assertEquals("ORF 1", result.getGeneName());
         assertEquals(entry.getOrganism(), result.getOrganism());
-        assertEquals(getProteinFlag(entry.getProteinDescription()), result.getFlagType());
+        assertEquals("FRAGMENTS_PRECURSOR", result.getFlagType().name());
         assertEquals(entry.getProteinExistence(), result.getProteinExistence());
         assertEquals(entry.getEntryAudit().getSequenceVersion(), result.getSequenceVersion());
         assertEquals(entry.getSequence(), result.getSequence());
