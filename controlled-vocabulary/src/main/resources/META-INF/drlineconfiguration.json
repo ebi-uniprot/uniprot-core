@@ -1528,7 +1528,7 @@
 		"name": "Bgee",
 		"displayName": "Bgee",
 		"category": "GEP",
-		"uriLink": "https://bgee.org/gene/%id",
+		"uriLink": "https://www.bgee.org/gene/%id",
 		"attributes": [		
 			{	"name": "ExpressionPatterns",
 				"xmlTag":"expression patterns"			
