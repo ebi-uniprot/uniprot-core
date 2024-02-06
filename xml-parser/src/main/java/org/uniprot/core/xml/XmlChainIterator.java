@@ -9,11 +9,12 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.zip.GZIPInputStream;
 
-import javax.xml.bind.JAXBException;
-import javax.xml.stream.XMLStreamException;
 
+import jakarta.xml.bind.JAXBException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.xml.stream.XMLStreamException;
 
 public class XmlChainIterator<T, R> implements Iterator<R> {
     private static final Logger logger = LoggerFactory.getLogger(XmlChainIterator.class);

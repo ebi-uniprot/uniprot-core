@@ -15,9 +15,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.Marshaller;
 
+import org.glassfish.jaxb.core.marshaller.DataWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.flatfile.parser.impl.EntryBufferedReader2;
@@ -28,7 +29,6 @@ import org.uniprot.core.xml.XmlFileMerger;
 import org.uniprot.core.xml.jaxb.uniprot.Entry;
 
 import com.codahale.metrics.Timer;
-import com.sun.xml.bind.marshaller.DataWriter;
 
 public class UniProtFFToXmlBuilder implements XmlBuilder {
     private static final Logger LOGGER = LoggerFactory.getLogger(UniProtFFToXmlBuilder.class);

@@ -1,11 +1,12 @@
 package org.uniprot.core.xml.uniparc;
 
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.Marshaller;
+
+import javax.xml.namespace.QName;
 import java.io.StringWriter;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.Marshaller;
-import javax.xml.namespace.QName;
 
 /**
  * @author jluo
@@ -15,7 +16,8 @@ class UniParcXmlTestHelper {
     private static final String TARGET_PACKAGE = "org.uniprot.core.xml.jaxb.uniparc";
 
     @SuppressWarnings("unchecked")
-    static <T> String toXmlString(T obj, Class<T> clazz, String element) {
+    static <T> String
+    toXmlString(T obj, Class<T> clazz, String element) {
         try {
             StringWriter stringWriter = new StringWriter();
             JAXBContext jc = JAXBContext.newInstance(TARGET_PACKAGE);
