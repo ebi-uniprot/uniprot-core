@@ -27,8 +27,10 @@ public class UniProtKBFastaImpl extends ProteinFastaImpl implements UniProtKBFas
     private final FlagType flagType;
     private final Integer sequenceVersion;
 
+    private final String sequenceRange;
+
     UniProtKBFastaImpl() {
-        this(null, null, null, null, null, null, null, null, null, 0);
+        this(null, null, null, null, null, null, null, null, null, 0, null);
     }
 
     public UniProtKBFastaImpl(
@@ -41,7 +43,8 @@ public class UniProtKBFastaImpl extends ProteinFastaImpl implements UniProtKBFas
             ProteinExistence proteinExistence,
             FlagType flagType,
             Sequence sequence,
-            Integer sequenceVersion) {
+            Integer sequenceVersion,
+            String sequenceRange) {
         super(id, sequence);
         this.entryType = entryType;
         this.uniProtkbId = uniProtkbId;
@@ -51,6 +54,7 @@ public class UniProtKBFastaImpl extends ProteinFastaImpl implements UniProtKBFas
         this.proteinExistence = proteinExistence;
         this.flagType = flagType;
         this.sequenceVersion = sequenceVersion;
+        this.sequenceRange = sequenceRange;
     }
 
     public UniProtKBEntryType getEntryType() {
@@ -86,6 +90,11 @@ public class UniProtKBFastaImpl extends ProteinFastaImpl implements UniProtKBFas
     }
 
     @Override
+    public String getSequenceRange() {
+        return sequenceRange;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -98,7 +107,8 @@ public class UniProtKBFastaImpl extends ProteinFastaImpl implements UniProtKBFas
                 && Objects.equals(getGeneName(), that.getGeneName())
                 && getProteinExistence() == that.getProteinExistence()
                 && getFlagType() == that.getFlagType()
-                && Objects.equals(getSequenceVersion(), that.getSequenceVersion());
+                && Objects.equals(getSequenceVersion(), that.getSequenceVersion())
+                && Objects.equals(getSequenceRange(), that.getSequenceRange());
     }
 
     @Override
@@ -112,6 +122,7 @@ public class UniProtKBFastaImpl extends ProteinFastaImpl implements UniProtKBFas
                 getGeneName(),
                 getProteinExistence(),
                 getFlagType(),
-                getSequenceVersion());
+                getSequenceVersion(),
+                getSequenceRange());
     }
 }

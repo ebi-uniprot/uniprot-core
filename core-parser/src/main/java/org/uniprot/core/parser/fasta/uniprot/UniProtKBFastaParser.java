@@ -2,9 +2,12 @@ package org.uniprot.core.parser.fasta.uniprot;
 
 import java.util.List;
 
+
+import org.uniprot.core.Sequence;
 import org.uniprot.core.fasta.UniProtKBFasta;
 import org.uniprot.core.fasta.impl.UniProtKBFastaBuilder;
 import org.uniprot.core.gene.Gene;
+import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.description.FlagType;
 import org.uniprot.core.uniprotkb.description.Name;
@@ -15,12 +18,10 @@ public class UniProtKBFastaParser {
 
     private UniProtKBFastaParser() {}
 
-    public static String toFasta(UniProtKBEntry entry) {
-        UniProtKBFasta uniProtKBFasta = toUniProtKBFasta(entry);
-        return toFasta(uniProtKBFasta);
-    }
-
     public static UniProtKBFasta toUniProtKBFasta(UniProtKBEntry entry) {
+        return toUniProtKBFasta(entry, null);
+    }
+    public static UniProtKBFasta toUniProtKBFasta(UniProtKBEntry entry, String sequenceRange) {
         return new UniProtKBFastaBuilder()
                 .id(entry.getPrimaryAccession().getValue())
                 .entryType(entry.getEntryType())
@@ -31,15 +32,21 @@ public class UniProtKBFastaParser {
                 .flagType(getProteinFlag(entry.getProteinDescription()))
                 .proteinExistence(entry.getProteinExistence())
                 .sequenceVersion(entry.getEntryAudit().getSequenceVersion())
-                .sequence(entry.getSequence())
+                .sequence(getSequence(entry.getSequence(), sequenceRange))
+                .sequenceRange(sequenceRange)
                 .build();
     }
 
-    public static String toFasta(UniProtKBFasta entry) {
+    public static String toFastaString(UniProtKBEntry entry) {
+        UniProtKBFasta uniProtKBFasta = toUniProtKBFasta(entry);
+        return toFastaString(uniProtKBFasta);
+    }
+
+    public static String toFastaString(UniProtKBFasta entry) {
         return UniProtKBFastaParserWriter.toString(entry);
     }
 
-    public static UniProtKBFasta fromFasta(String fastaInput) {
+    public static UniProtKBFasta fromFastaString(String fastaInput) {
         return UniProtKBFastaParserReader.parse(fastaInput);
     }
 
@@ -79,5 +86,19 @@ public class UniProtKBFastaParser {
         }
         desc.append(name.getValue());
         return desc.toString();
+    }
+
+    private static Sequence getSequence(Sequence sequence, String sequenceRange) {
+        if(Utils.notNullNotEmpty(sequenceRange) && sequenceRange.contains("-")) {
+            String[] rangeTokens = sequenceRange.split("-");
+            int start = Integer.parseInt(rangeTokens[0]);
+            int end = Integer.parseInt(rangeTokens[1]);
+            String sequenceString = sequence.getValue()
+                    .substring(
+                            Math.min(start - 1, sequence.getLength()),
+                            Math.min(end, sequence.getLength()));
+            return new SequenceBuilder(sequenceString).build();
+        }
+        return sequence;
     }
 }

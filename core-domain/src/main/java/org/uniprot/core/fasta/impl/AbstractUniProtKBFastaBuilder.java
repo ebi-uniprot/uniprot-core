@@ -35,6 +35,8 @@ public abstract class AbstractUniProtKBFastaBuilder<
 
     protected Integer sequenceVersion;
 
+    protected String sequenceRange;
+
     public @Nonnull B entryType(UniProtKBEntryType entryType) {
         this.entryType = entryType;
         return getThis();
@@ -80,6 +82,11 @@ public abstract class AbstractUniProtKBFastaBuilder<
         return getThis();
     }
 
+    public @Nonnull B sequenceRange(String sequenceRange) {
+        this.sequenceRange = sequenceRange;
+        return getThis();
+    }
+
     protected abstract B getThis();
 
     protected static <B extends AbstractUniProtKBFastaBuilder<B, T>, T extends UniProtKBFasta>
@@ -92,6 +99,7 @@ public abstract class AbstractUniProtKBFastaBuilder<
                 .geneName(instance.getGeneName())
                 .proteinExistence(instance.getProteinExistence())
                 .flagType(instance.getFlagType())
-                .sequenceVersion(instance.getSequenceVersion());
+                .sequenceVersion(instance.getSequenceVersion())
+                .sequenceRange(instance.getSequenceRange());
     }
 }

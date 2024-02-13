@@ -27,4 +27,6 @@ public interface UniProtKBFasta extends ProteinFasta {
     FlagType getFlagType();
 
     Integer getSequenceVersion();
+
+    String getSequenceRange();
 }

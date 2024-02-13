@@ -119,13 +119,28 @@ class UniProtKBFastaParserWriterTest {
     }
 
     @Test
-    void canWriteFastaStringWithSubSequence() {
+    void canWriteFastaStringWithSubsequence() {
+        String seqRange = "10-15";
         UniProtKBFasta entry =
                 new UniProtKBFastaBuilder()
                         .id("P21802")
-                        .uniProtkbId("10-15")
+                        .uniProtkbId("P12345_PROT")
                         .entryType(UniProtKBEntryType.SWISSPROT)
-                        .sequence(new SequenceBuilder("ABCDE").build())
+                        .sequence(
+                                new SequenceBuilder(
+                                        "ABCDE")
+                                        .build())
+                        .geneName("Gene Name Value")
+                        .proteinName("Protein Name Value")
+                        .organism(
+                                new OrganismBuilder()
+                                        .taxonId(9606L)
+                                        .scientificName("Organism Name Value")
+                                        .build())
+                        .sequenceVersion(2)
+                        .proteinExistence(ProteinExistence.UNCERTAIN)
+                        .flagType(FlagType.FRAGMENT)
+                        .sequenceRange(seqRange)
                         .build();
         String fastaValue = UniProtKBFastaParserWriter.toString(entry);
         assertNotNull(fastaValue);

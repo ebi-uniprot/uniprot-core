@@ -7,6 +7,8 @@ import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.description.FlagType;
 import org.uniprot.core.util.Utils;
 
+import java.util.Objects;
+
 /**
  * @author lgonzales
  * @since 22/10/2020
@@ -23,20 +25,23 @@ class UniProtKBFastaParserWriter {
         sb.append('|');
         sb.append(entry.getId());
         sb.append('|');
-        sb.append(entry.getUniProtkbId().getValue());
-        if (!isSubSequenceEntry(entry)) {
+
+        if (Objects.isNull(entry.getSequenceRange())) {
+            sb.append(entry.getUniProtkbId().getValue());
             sb.append(' ').append(getProteinName(entry));
             sb.append(" OS=").append(entry.getOrganism().getScientificName());
             sb.append(" OX=").append(entry.getOrganism().getTaxonId());
-        }
 
-        if (Utils.notNullNotEmpty(entry.getGeneName())) {
-            sb.append(" GN=").append(entry.getGeneName());
-        }
+            if (Utils.notNullNotEmpty(entry.getGeneName())) {
+                sb.append(" GN=").append(entry.getGeneName());
+            }
 
-        if (isNotSwissProtIsoform(entry) && !isSubSequenceEntry(entry)) {
-            sb.append(" PE=").append(getProteinExist(entry.getProteinExistence()));
-            sb.append(" SV=").append(entry.getSequenceVersion());
+            if (isNotSwissProtIsoform(entry)) {
+                sb.append(" PE=").append(getProteinExist(entry.getProteinExistence()));
+                sb.append(" SV=").append(entry.getSequenceVersion());
+            }
+        } else {
+            sb.append(entry.getSequenceRange());
         }
 
         sb.append("\n");
@@ -47,15 +52,6 @@ class UniProtKBFastaParserWriter {
     private static boolean isNotSwissProtIsoform(UniProtKBFasta entry) {
         return !(entry.getId().contains(ISOFORM_ACCESSION_PART)
                 && entry.getEntryType() == UniProtKBEntryType.SWISSPROT);
-    }
-
-    private static boolean isSubSequenceEntry(UniProtKBFasta entry) {
-        boolean result = false;
-        if (entry.getUniProtkbId() != null) {
-            String id = entry.getUniProtkbId().getValue();
-            result = id.matches("\\d{1,5}-\\d{1,5}");
-        }
-        return result;
     }
 
     private static String getUniProtKBEntryType(UniProtKBEntryType entryType) {

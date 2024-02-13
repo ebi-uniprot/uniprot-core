@@ -35,7 +35,8 @@ public class UniProtKBFastaBuilder
                 proteinExistence,
                 flagType,
                 sequence,
-                sequenceVersion);
+                sequenceVersion,
+                sequenceRange);
     }
 
     @Override
