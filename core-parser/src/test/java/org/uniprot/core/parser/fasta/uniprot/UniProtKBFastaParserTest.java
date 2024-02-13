@@ -1,11 +1,5 @@
 package org.uniprot.core.parser.fasta.uniprot;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.parser.fasta.uniprot.UniProtKBFastaParser.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.fasta.UniProtKBFasta;
 import org.uniprot.core.fasta.impl.UniProtKBFastaBuilder;
@@ -22,6 +16,11 @@ import org.uniprot.core.uniprotkb.description.impl.ProteinSubNameBuilder;
 import org.uniprot.core.uniprotkb.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 /**
  * @author lgonzales
  * @since 22/10/2020
@@ -33,7 +32,7 @@ class UniProtKBFastaParserTest {
         String fastaInput =
                 ">tr|Q9HI14|Q9HI14_HALSA Isoform of O51971, Transcription initiation factor IID OS=Halobacterium salinarum (strain ATCC 700922 / JCM 11081 / NRC-1) (Halobacterium halobium) OX=64091 GN=tbpA PE=3 SV=1\n"
                         + "MDLEGADYDPEQFPGLVYRLDEPSVVALLFGSGKLVITGGKHPVDAEHAVDTIDSRLEDL\nGLLDGYGDRAK";
-        UniProtKBFasta result = UniProtKBFastaParser.fromFasta(fastaInput);
+        UniProtKBFasta result = UniProtKBFastaParser.fromFastaString(fastaInput);
         assertNotNull(result);
         assertEquals(UniProtKBEntryType.TREMBL, result.getEntryType());
         assertNotNull(result.getId());
@@ -85,7 +84,7 @@ class UniProtKBFastaParserTest {
                         .entryAudit(new EntryAuditBuilder().sequenceVersion(2).build())
                         .proteinExistence(ProteinExistence.UNCERTAIN)
                         .build();
-        String fastaValue = UniProtKBFastaParser.toFasta(entry);
+        String fastaValue = UniProtKBFastaParser.toFastaString(entry);
         assertNotNull(fastaValue);
         assertTrue(fastaValue.contains(">tr|P12345|P12345_PROT"));
         assertTrue(fastaValue.contains(" Sub Name Value (Fragment) "));
@@ -125,7 +124,7 @@ class UniProtKBFastaParserTest {
                         .entryAudit(new EntryAuditBuilder().sequenceVersion(2).build())
                         .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
                         .build();
-        String fastaValue = UniProtKBFastaParser.toFasta(entry);
+        String fastaValue = UniProtKBFastaParser.toFastaString(entry);
         assertNotNull(fastaValue);
         assertTrue(fastaValue.contains(">tr|P12345|P12345_PROT"));
         assertTrue(fastaValue.contains(" Rec Name Value (Fragment) "));
@@ -156,7 +155,7 @@ class UniProtKBFastaParserTest {
                         .proteinExistence(ProteinExistence.PREDICTED)
                         .flagType(FlagType.FRAGMENT)
                         .build();
-        String fastaValue = UniProtKBFastaParser.toFasta(entry);
+        String fastaValue = UniProtKBFastaParser.toFastaString(entry);
         assertNotNull(fastaValue);
         assertTrue(fastaValue.contains(">sp|P21802|P21802_HUMAN"));
         assertTrue(fastaValue.contains(" Protein Name Value (Fragment) "));
@@ -175,7 +174,7 @@ class UniProtKBFastaParserTest {
         genes.add(
                 new GeneBuilder().geneName(new GeneNameBuilder().value("Gene 2").build()).build());
         UniProtKBEntry entry = getEntryWithGene(genes);
-        String fastaValue = UniProtKBFastaParser.toFasta(entry);
+        String fastaValue = UniProtKBFastaParser.toFastaString(entry);
         assertNotNull(fastaValue);
         assertTrue(fastaValue.contains(">tr|P12345|P12345_PROT"));
         assertTrue(fastaValue.contains(" Rec Name Value (Fragment) "));
@@ -196,7 +195,7 @@ class UniProtKBFastaParserTest {
                         .orderedLocusNamesAdd(new OrderedLocusNameBuilder().value("OLN 2").build())
                         .build());
         UniProtKBEntry entry = getEntryWithGene(genes);
-        String fastaValue = UniProtKBFastaParser.toFasta(entry);
+        String fastaValue = UniProtKBFastaParser.toFastaString(entry);
         assertNotNull(fastaValue);
         assertTrue(fastaValue.contains(">tr|P12345|P12345_PROT"));
         assertTrue(fastaValue.contains(" Rec Name Value (Fragment) "));
@@ -213,7 +212,7 @@ class UniProtKBFastaParserTest {
         genes.add(
                 new GeneBuilder().orfNamesAdd(new ORFNameBuilder().value("ORF 2").build()).build());
         UniProtKBEntry entry = getEntryWithGene(genes);
-        String fastaValue = UniProtKBFastaParser.toFasta(entry);
+        String fastaValue = UniProtKBFastaParser.toFastaString(entry);
         assertNotNull(fastaValue);
         assertTrue(fastaValue.contains(">tr|P12345|P12345_PROT"));
         assertTrue(fastaValue.contains(" Rec Name Value (Fragment) "));
@@ -238,6 +237,27 @@ class UniProtKBFastaParserTest {
         assertEquals(entry.getProteinExistence(), result.getProteinExistence());
         assertEquals(entry.getEntryAudit().getSequenceVersion(), result.getSequenceVersion());
         assertEquals(entry.getSequence(), result.getSequence());
+        assertNull(result.getSequenceRange());
+    }
+
+    @Test
+    void testToUniProtKBFastaWithSubsequenceRange(){
+        List<Gene> genes = List.of(new GeneBuilder().orfNamesAdd(new ORFNameBuilder().value("ORF 1").build()).build());
+        UniProtKBEntry entry = getEntryWithGene(genes);
+        String sequenceRange = "10-20";
+        UniProtKBFasta result = UniProtKBFastaParser.toUniProtKBFasta(entry, sequenceRange);
+        assertNotNull(result);
+        assertEquals(entry.getPrimaryAccession().getValue(), result.getId());
+        assertEquals(entry.getEntryType(), result.getEntryType());
+        assertEquals(entry.getUniProtkbId(), result.getUniProtkbId());
+        assertEquals("Rec Name Value", result.getProteinName());
+        assertEquals("ORF 1", result.getGeneName());
+        assertEquals(entry.getOrganism(), result.getOrganism());
+        assertEquals("FRAGMENTS_PRECURSOR", result.getFlagType().name());
+        assertEquals(entry.getProteinExistence(), result.getProteinExistence());
+        assertEquals(entry.getEntryAudit().getSequenceVersion(), result.getSequenceVersion());
+        assertEquals(entry.getSequence().getValue().substring(9, 20), result.getSequence().getValue());
+        assertEquals(sequenceRange, result.getSequenceRange());
     }
 
     private UniProtKBEntry getEntryWithGene(List<Gene> genes) {

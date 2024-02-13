@@ -35,15 +35,19 @@ class UniProtKBFastaParserReader {
         int geneIndex = line.indexOf(" GN=", spaceIndex);
         int proteinExistenceIndex = line.indexOf(" PE=", spaceIndex);
         int sequenceVersionIndex = line.indexOf(" SV=", proteinExistenceIndex);
+        String[] proteinIds;
+        if(spaceIndex > 0) {
+            proteinIds = line.substring(0, spaceIndex).split("\\|");
+            builder.uniProtkbId(proteinIds[2]);
+            parseProteinName(builder, line);
+            builder.organism(parseOrganism(line));
+        } else {
+            proteinIds = line.split("\\|");
+            builder.sequenceRange(proteinIds[2]);
+        }
 
-        String[] proteinIds = line.substring(0, spaceIndex).split("\\|");
         builder.entryType(parseEntryType(proteinIds[0]));
         builder.id(proteinIds[1]);
-        builder.uniProtkbId(proteinIds[2]);
-
-        parseProteinName(builder, line);
-
-        builder.organism(parseOrganism(line));
 
         if (geneIndex >= 0) {
             if (proteinExistenceIndex > 0) {

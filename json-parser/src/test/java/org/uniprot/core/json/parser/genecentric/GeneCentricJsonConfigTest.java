@@ -78,6 +78,7 @@ class GeneCentricJsonConfigTest {
                         .sequence("AAAAA")
                         .sequenceVersion(2)
                         .uniProtkbId("P21802_ID")
+                        .sequenceRange("10-20")
                         .build();
 
         return new GeneCentricEntryBuilder()

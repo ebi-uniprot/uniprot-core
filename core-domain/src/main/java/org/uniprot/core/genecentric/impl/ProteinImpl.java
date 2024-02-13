@@ -18,7 +18,7 @@ public class ProteinImpl extends UniProtKBFastaImpl implements Protein {
     private static final long serialVersionUID = -2231166801909993211L;
 
     ProteinImpl() {
-        this(null, null, null, null, null, null, null, null, null, null);
+        this(null, null, null, null, null, null, null, null, null, null, null);
     }
 
     public ProteinImpl(
@@ -31,7 +31,8 @@ public class ProteinImpl extends UniProtKBFastaImpl implements Protein {
             ProteinExistence proteinExistence,
             FlagType flagType,
             Sequence sequence,
-            Integer sequenceVersion) {
+            Integer sequenceVersion,
+            String sequenceRange) {
         super(
                 entryType,
                 id,
@@ -42,6 +43,7 @@ public class ProteinImpl extends UniProtKBFastaImpl implements Protein {
                 proteinExistence,
                 flagType,
                 sequence,
-                sequenceVersion);
+                sequenceVersion,
+                sequenceRange);
     }
 }

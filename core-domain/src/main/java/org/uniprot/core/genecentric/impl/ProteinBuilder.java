@@ -35,7 +35,8 @@ public class ProteinBuilder extends AbstractUniProtKBFastaBuilder<ProteinBuilder
                 proteinExistence,
                 flagType,
                 sequence,
-                sequenceVersion);
+                sequenceVersion,
+                sequenceRange);
     }
 
     @Override

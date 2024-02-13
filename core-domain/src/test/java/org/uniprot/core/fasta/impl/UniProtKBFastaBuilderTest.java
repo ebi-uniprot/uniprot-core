@@ -140,6 +140,13 @@ class UniProtKBFastaBuilderTest {
         assertTrue(proteinFasta.equals(proteinFastaFrom) && proteinFastaFrom.equals(proteinFasta));
     }
 
+    @Test
+    void canSetSequenceRange() {
+        String sequenceRange = "20-30";
+        UniProtKBFasta entry = new UniProtKBFastaBuilder().sequenceRange(sequenceRange).build();
+        assertEquals(sequenceRange, entry.getSequenceRange());
+    }
+
     private UniProtKBFasta getUniProtKBFasta() {
         return new UniProtKBFastaBuilder()
                 .id("P21802")
@@ -152,6 +159,7 @@ class UniProtKBFastaBuilderTest {
                 .sequence("AAAAA")
                 .sequenceVersion(2)
                 .uniProtkbId("P21802_ID")
+                .sequenceRange("10-20")
                 .build();
     }
 }

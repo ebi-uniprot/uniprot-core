@@ -128,4 +128,22 @@ class UniProtKBFastaParserReaderTest {
         assertNull(result.getSequenceVersion());
         assertNotNull(result.getSequence().getValue());
     }
+
+    @Test
+    void parseFastaWithSequenceRange() {
+        String fastaInput =
+                ">sp|P12345|10-20\n"
+                        + "ITFTCPRSDG";
+        UniProtKBFasta result = UniProtKBFastaParserReader.parse(fastaInput);
+        assertNotNull(result);
+        assertEquals(UniProtKBEntryType.SWISSPROT, result.getEntryType());
+        assertEquals("P12345", result.getId());
+        assertNull(result.getUniProtkbId());
+        assertNull(result.getProteinName());
+        assertNull(result.getOrganism());
+        assertNull(result.getGeneName());
+        assertNull(result.getProteinExistence());
+        assertNull(result.getSequenceVersion());
+        assertEquals("ITFTCPRSDG", result.getSequence().getValue());
+    }
 }
