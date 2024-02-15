@@ -260,6 +260,30 @@ class UniProtKBFastaParserTest {
         assertEquals(sequenceRange, result.getSequenceRange());
     }
 
+    @Test
+    void testToUniProtKBFastaWithSubsequenceOutOfRange(){
+        List<Gene> genes = List.of(new GeneBuilder().orfNamesAdd(new ORFNameBuilder().value("ORF 1").build()).build());
+        UniProtKBEntry entry = getEntryWithGene(genes);
+        String sequenceRange = "40-50";
+        UniProtKBFasta result = UniProtKBFastaParser.toUniProtKBFasta(entry, sequenceRange);
+        assertNotNull(result);
+        assertEquals(entry.getPrimaryAccession().getValue(), result.getId());
+        assertTrue(result.getSequence().getValue().isEmpty());
+        assertEquals(sequenceRange, result.getSequenceRange());
+    }
+
+    @Test
+    void testToUniProtKBFastaWithSubsequenceOutOfRangeEnd(){
+        List<Gene> genes = List.of(new GeneBuilder().orfNamesAdd(new ORFNameBuilder().value("ORF 1").build()).build());
+        UniProtKBEntry entry = getEntryWithGene(genes);
+        String sequenceRange = "20-100";
+        UniProtKBFasta result = UniProtKBFastaParser.toUniProtKBFasta(entry, sequenceRange);
+        assertNotNull(result);
+        assertEquals(entry.getPrimaryAccession().getValue(), result.getId());
+        assertEquals(entry.getSequence().getValue().substring(19), result.getSequence().getValue());
+        assertEquals(sequenceRange, result.getSequenceRange());
+    }
+
     private UniProtKBEntry getEntryWithGene(List<Gene> genes) {
         UniProtKBEntry entry =
                 new UniProtKBEntryBuilder("P12345", "P12345_PROT", UniProtKBEntryType.TREMBL)
