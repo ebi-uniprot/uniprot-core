@@ -115,6 +115,13 @@ class ProteinBuilderTest {
     }
 
     @Test
+    void canSetSequenceRange() {
+        String seqRange = "20-30";
+        Protein entry = new ProteinBuilder().sequenceRange(seqRange).build();
+        assertEquals(seqRange, entry.getSequenceRange());
+    }
+
+    @Test
     void fromEmptyProtein() {
         Protein protein = new ProteinBuilder().build();
         Protein proteinFrom = ProteinBuilder.from(protein).build();
