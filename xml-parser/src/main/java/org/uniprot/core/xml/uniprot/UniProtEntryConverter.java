@@ -16,6 +16,7 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.impl.EntryAuditBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
+import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.*;
 import org.uniprot.core.xml.uniprot.citation.ReferenceConverter;
@@ -166,30 +167,32 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtKBEntry> {
     // ..with multiple interactions.
     private List<Comment> fromXmlForComments(Entry xmlEntry) {
         List<Comment> uniComments = new ArrayList<>();
-        List<org.uniprot.core.xml.jaxb.uniprot.CommentType> comments = xmlEntry.getComment();
-        List<org.uniprot.core.xml.jaxb.uniprot.CommentType> interactionComment =
-                comments.stream()
-                        .filter(val -> val.getType().equals(INTERACTION))
-                        .collect(Collectors.toList());
+        if (Utils.notNullNotEmpty(xmlEntry.getComment())) {
+            List<org.uniprot.core.xml.jaxb.uniprot.CommentType> comments = xmlEntry.getComment();
+            List<org.uniprot.core.xml.jaxb.uniprot.CommentType> interactionComment =
+                    comments.stream()
+                            .filter(val -> val.getType().equals(INTERACTION))
+                            .collect(Collectors.toList());
 
-        boolean interactionsFirst = true;
-        for (org.uniprot.core.xml.jaxb.uniprot.CommentType commentType : comments) {
-            if (commentType.getType().equals(INTERACTION)) {
-                if (interactionsFirst) {
-                    interactionsFirst = false;
+            boolean interactionsFirst = true;
+            for (org.uniprot.core.xml.jaxb.uniprot.CommentType commentType : comments) {
+                if (commentType.getType().equals(INTERACTION)) {
+                    if (interactionsFirst) {
+                        interactionsFirst = false;
+                        uniComments.add(
+                                CommentConverterFactory.INSTANCE
+                                        .createInteractionCommentConverter(this.xmlUniprotFactory)
+                                        .fromXml(interactionComment));
+                    }
+                } else {
+                    org.uniprot.core.uniprotkb.comment.CommentType type =
+                            org.uniprot.core.uniprotkb.comment.CommentType.typeOf(
+                                    commentType.getType());
                     uniComments.add(
                             CommentConverterFactory.INSTANCE
-                                    .createInteractionCommentConverter(this.xmlUniprotFactory)
-                                    .fromXml(interactionComment));
+                                    .createCommentConverter(type, evRefMapper, xmlUniprotFactory)
+                                    .fromXml(commentType));
                 }
-            } else {
-                org.uniprot.core.uniprotkb.comment.CommentType type =
-                        org.uniprot.core.uniprotkb.comment.CommentType.typeOf(
-                                commentType.getType());
-                uniComments.add(
-                        CommentConverterFactory.INSTANCE
-                                .createCommentConverter(type, evRefMapper, xmlUniprotFactory)
-                                .fromXml(commentType));
             }
         }
         return uniComments;
@@ -233,9 +236,9 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtKBEntry> {
         List<String> accessions = xmlEntry.getAccession();
         return new UniProtKBEntryBuilder(
                         accessions.get(0),
-                        xmlEntry.getName().get(0),
+                        getUniProtId(xmlEntry),
                         UniProtKBEntryType.typeOf(xmlEntry.getDataset()))
-                .proteinExistence(ProteinExistence.typeOf(xmlEntry.getProteinExistence().getType()))
+                .proteinExistence(getProteinExistence(xmlEntry))
                 .secondaryAccessionsSet(
                         accessions.subList(1, accessions.size()).stream()
                                 .map(sec -> new UniProtKBAccessionBuilder(sec).build())
@@ -243,12 +246,32 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtKBEntry> {
                 .entryAudit(entryAuditFromXml(xmlEntry));
     }
 
+    private ProteinExistence getProteinExistence(Entry xmlEntry) {
+        ProteinExistence proteinExistence = ProteinExistence.UNKNOWN;
+        if (xmlEntry.getProteinExistence() != null) {
+            proteinExistence = ProteinExistence.typeOf(xmlEntry.getProteinExistence().getType());
+        }
+        return proteinExistence;
+    }
+
+    private String getUniProtId(Entry xmlEntry) {
+        String uniProtId = "";
+        if (Utils.notNullNotEmpty(xmlEntry.getName())) {
+            uniProtId = xmlEntry.getName().get(0);
+        }
+        return uniProtId;
+    }
+
     private EntryAudit entryAuditFromXml(Entry xmlEntry) {
         int version = xmlEntry.getVersion();
         LocalDate firstPublic = XmlConverterHelper.dateFromXml(xmlEntry.getCreated());
         LocalDate lastUpdated = XmlConverterHelper.dateFromXml(xmlEntry.getModified());
-        int seqVersion = xmlEntry.getSequence().getVersion();
-        LocalDate seqDate = XmlConverterHelper.dateFromXml(xmlEntry.getSequence().getModified());
+        int seqVersion = 0;
+        LocalDate seqDate = null;
+        if (xmlEntry.getSequence() != null) {
+            seqVersion = xmlEntry.getSequence().getVersion();
+            seqDate = XmlConverterHelper.dateFromXml(xmlEntry.getSequence().getModified());
+        }
         return new EntryAuditBuilder()
                 .firstPublic(firstPublic)
                 .lastAnnotationUpdate(lastUpdated)
