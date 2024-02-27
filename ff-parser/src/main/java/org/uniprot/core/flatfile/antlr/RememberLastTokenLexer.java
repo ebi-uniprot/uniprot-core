@@ -23,6 +23,9 @@ public abstract class RememberLastTokenLexer extends AbstractUniProtLexer {
 
     /** */
     private static final long serialVersionUID = 1L;
+    
+    public static final String VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER ="<<SPACE_NO_SPACE_PLACEHOLDER>>";
+
 
     private Token lastToken;
     private Token nextToken;
@@ -101,14 +104,14 @@ public abstract class RememberLastTokenLexer extends AbstractUniProtLexer {
             replaceChangeOfLineForFT();
         } else {
             if (isSequenceLetter(lastToken.getText())) {
-                this.setText("");
+                this.setText(VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER);
             } else {
                 replaceChangeOfLineForFT();
             }
         }
     }
 
-    public boolean isSequenceLetter(String se) {
+    public static boolean isSequenceLetter(String se) {
         for (int i = 0; i < se.length(); i++) {
             if (se.charAt(i) > 'Z' || se.charAt(i) < 'A') return false;
         }
