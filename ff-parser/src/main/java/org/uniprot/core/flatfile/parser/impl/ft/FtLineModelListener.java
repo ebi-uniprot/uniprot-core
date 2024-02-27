@@ -96,9 +96,9 @@ public class FtLineModelListener extends FtLineParserBaseListener
            }
        
           if(RememberLastTokenLexer.isSequenceLetter(token)) {
-              newText = newText.replace(RememberLastTokenLexer.VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER, "");
+              newText = newText.replaceFirst(RememberLastTokenLexer.VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER, "");
           }else {
-              newText = newText.replace(RememberLastTokenLexer.VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER, " ");
+              newText = newText.replaceFirst(RememberLastTokenLexer.VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER, " ");
           }
         }
         return newText;
