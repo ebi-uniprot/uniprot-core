@@ -16,11 +16,20 @@ import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
 class UniProtKBReferenceBuilderTest {
 
     @Test
+    void canSetReferenceNumber() {
+        int referenceNumber = 10;
+        UniProtKBReference reference = new UniProtKBReferenceBuilder().referenceNumber(referenceNumber).build();
+        assertEquals(referenceNumber, reference.getReferenceNumber());
+        assertTrue(reference.hasReferenceNumber());
+    }
+
+    @Test
     void canSetCitation() {
         ElectronicArticle ea = new ElectronicArticleBuilder().journalName("abc").build();
         UniProtKBReference reference = new UniProtKBReferenceBuilder().citation(ea).build();
         assertEquals(ea, reference.getCitation());
         assertTrue(reference.hasCitation());
+        assertFalse(reference.hasReferenceNumber());
     }
 
     @Test

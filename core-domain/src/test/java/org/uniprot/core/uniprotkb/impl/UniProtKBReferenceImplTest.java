@@ -24,6 +24,7 @@ class UniProtKBReferenceImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         UniProtKBReferenceImpl impl =
                 new UniProtKBReferenceImpl(
+                        1,
                         new ElectronicArticleBuilder().build(),
                         Collections.emptyList(),
                         Collections.emptyList(),

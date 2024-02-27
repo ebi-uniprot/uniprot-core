@@ -36,6 +36,10 @@ public class ReferenceObjectConverter extends EvidenceCollector
     public UniProtKBReference convert(ReferenceObject f) {
         AbstractCitationBuilder<? extends AbstractCitationBuilder<?, ?>, ? extends Citation>
                 builder = rlLineConverter.convert(f.rl);
+        int referenceNumber = 0;
+        if (f.rn != null) {
+           referenceNumber = f.rn.number;
+        }
         if (f.ra != null) {
             List<Author> authors = raLineConverter.convert(f.ra);
             builder.authorsSet(authors);
@@ -63,6 +67,7 @@ public class ReferenceObjectConverter extends EvidenceCollector
         }
         UniProtKBReference uniprotReference =
                 new UniProtKBReferenceBuilder()
+                        .referenceNumber(referenceNumber)
                         .referencePositionsSet(referencePositions)
                         .referenceCommentsSet(referenceComments)
                         .evidencesSet(rnLineConverter.convert(f.rn))
