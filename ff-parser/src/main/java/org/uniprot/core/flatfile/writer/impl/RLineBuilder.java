@@ -27,14 +27,9 @@ public class RLineBuilder extends FFLineBuilderAbstr<UniProtKBReference>
     private static final RALineBuilder raLineBuilder = new RALineBuilder();
     private static final RTLineBuilder rtLineBuilder = new RTLineBuilder();
     private static final RLLineBuilder rlLineBuilder = new RLLineBuilder();
-    private int rn;
 
     public RLineBuilder() {
         super(LineType.RN);
-    }
-
-    public void setRN(int rn) {
-        this.rn = rn;
     }
 
     @Override
@@ -56,7 +51,7 @@ public class RLineBuilder extends FFLineBuilderAbstr<UniProtKBReference>
         List<String> lines = new ArrayList<>();
         // RN LINE
 
-        lines.addAll(buildRNLine(rn, f, includeFFMarkup, showEvidence));
+        lines.addAll(buildRNLine(f.getReferenceNumber(), f, includeFFMarkup, showEvidence));
 
         // RP Line rLine.append(RPLineNew.export(citation));
         lines.addAll(

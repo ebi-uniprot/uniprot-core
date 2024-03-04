@@ -48,11 +48,13 @@ class UniProtKBEntryImplTest {
             asList(
                     new UniProtKBReferenceImpl(),
                     new UniProtKBReferenceImpl(
+                            1,
                             new BookBuilder().build(),
                             asList("ref1", "ref2", "ref3"),
                             singletonList(new ReferenceCommentBuilder().build()),
                             ObjectsForTests.createEvidences()),
                     new UniProtKBReferenceImpl(
+                            2,
                             new PatentBuilder().build(),
                             asList("pos1", "pos2", "pos3"),
                             singletonList(

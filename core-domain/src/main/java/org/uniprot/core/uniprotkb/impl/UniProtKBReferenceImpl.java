@@ -14,6 +14,8 @@ import org.uniprot.core.util.Utils;
 
 public class UniProtKBReferenceImpl implements UniProtKBReference {
     private static final long serialVersionUID = 4132545544902388006L;
+
+    private int referenceNumber;
     private Citation citation;
     private List<String> referencePositions;
     private List<ReferenceComment> referenceComments;
@@ -27,10 +29,12 @@ public class UniProtKBReferenceImpl implements UniProtKBReference {
     }
 
     UniProtKBReferenceImpl(
+            int referenceNumber,
             Citation citation,
             List<String> referencePositions,
             List<ReferenceComment> referenceComments,
             List<Evidence> evidences) {
+        this.referenceNumber = referenceNumber;
         this.citation = citation;
         this.referencePositions = Utils.unmodifiableList(referencePositions);
         this.referenceComments = Utils.unmodifiableList(referenceComments);
@@ -48,6 +52,11 @@ public class UniProtKBReferenceImpl implements UniProtKBReference {
     }
 
     @Override
+    public int getReferenceNumber() {
+        return referenceNumber;
+    }
+
+    @Override
     public Citation getCitation() {
         return citation;
     }
@@ -62,6 +71,11 @@ public class UniProtKBReferenceImpl implements UniProtKBReference {
     @Override
     public List<String> getReferencePositions() {
         return referencePositions;
+    }
+
+    @Override
+    public boolean hasReferenceNumber() {
+        return referenceNumber > 0;
     }
 
     @Override
@@ -89,7 +103,8 @@ public class UniProtKBReferenceImpl implements UniProtKBReference {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UniProtKBReferenceImpl that = (UniProtKBReferenceImpl) o;
-        return Objects.equals(citation, that.citation)
+        return Objects.equals(referenceNumber, that.referenceNumber)
+                && Objects.equals(citation, that.citation)
                 && Objects.equals(referencePositions, that.referencePositions)
                 && Objects.equals(referenceComments, that.referenceComments)
                 && Objects.equals(evidences, that.evidences);
@@ -97,6 +112,6 @@ public class UniProtKBReferenceImpl implements UniProtKBReference {
 
     @Override
     public int hashCode() {
-        return Objects.hash(citation, referencePositions, referenceComments, evidences);
+        return Objects.hash(referenceNumber, citation, referencePositions, referenceComments, evidences);
     }
 }

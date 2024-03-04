@@ -20,6 +20,7 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
  * @author Edd
  */
 public class UniProtKBReferenceBuilder implements Builder<UniProtKBReference> {
+    private int referenceNumber;
     private Citation citation;
     private List<String> referencePositions = new ArrayList<>();
     private List<ReferenceComment> referenceComments = new ArrayList<>();
@@ -28,15 +29,21 @@ public class UniProtKBReferenceBuilder implements Builder<UniProtKBReference> {
     @Override
     public @Nonnull UniProtKBReference build() {
         return new UniProtKBReferenceImpl(
-                citation, referencePositions, referenceComments, evidences);
+                referenceNumber, citation, referencePositions, referenceComments, evidences);
     }
 
     public static @Nonnull UniProtKBReferenceBuilder from(@Nonnull UniProtKBReference instance) {
         return new UniProtKBReferenceBuilder()
+                .referenceNumber(instance.getReferenceNumber())
                 .citation(instance.getCitation())
                 .evidencesSet(instance.getEvidences())
                 .referenceCommentsSet(instance.getReferenceComments())
                 .referencePositionsSet(instance.getReferencePositions());
+    }
+
+    public @Nonnull UniProtKBReferenceBuilder referenceNumber(int referenceNumber) {
+        this.referenceNumber = referenceNumber;
+        return this;
     }
 
     public @Nonnull UniProtKBReferenceBuilder citation(Citation citation) {

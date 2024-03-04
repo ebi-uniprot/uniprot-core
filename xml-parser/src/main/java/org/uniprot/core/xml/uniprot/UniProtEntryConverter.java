@@ -220,12 +220,9 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtKBEntry> {
     }
 
     private void toXmlForCitations(Entry xmlEntry, UniProtKBEntry uniProtkbEntry) {
-        int keyVal = 0;
         for (UniProtKBReference citation : uniProtkbEntry.getReferences()) {
             final ReferenceType referenceType = referenceConverter.toXml(citation);
-            referenceType.setKey(String.valueOf(++keyVal)); // todo required??
             xmlEntry.getReference().add(referenceType);
-            // citationHandler.addIndex(keyVal);
         }
     }
 
