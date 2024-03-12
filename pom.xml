@@ -7,7 +7,7 @@
 	<groupId>org.uniprot</groupId>
 	<artifactId>core-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.28.4</version>
+	<version>1.0.28.5</version>
 	<name>UniProt Core Aggregator</name>
 
 	<properties>
