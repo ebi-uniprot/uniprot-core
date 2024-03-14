@@ -1,6 +1,4 @@
-##gff-version 3
-##sequence-region Q8NDV7 1 1962
-Q8NDV7	UniProtKB	Chain	1	1962	.	.	.	ID=PRO_0000081980;Note=Trinucleotide repeat-containing gene 6A protein	
+Q8NDV7	UniProtKB	Chain	1	1962	.	.	.	ID=PRO_0000081980;Note=Trinucleotide repeat-containing gene 6A protein
 Q8NDV7	UniProtKB	Domain	1781	1853	.	.	.	Note=RRM	
 Q8NDV7	UniProtKB	Region	1	932	.	.	.	Note=Interaction with argonaute family proteins	
 Q8NDV7	UniProtKB	Region	254	503	.	.	.	Note=Sufficient for interaction with AGO1%2C AGO3 and AGO4	

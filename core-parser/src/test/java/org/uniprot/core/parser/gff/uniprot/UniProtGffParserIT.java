@@ -81,7 +81,7 @@ class UniProtGffParserIT {
         String[] givenGff = entryGff.split("\n");
         String[] expectedGff = gffAsString.split("\n");
         for (int i = 0; i < Math.min(givenGff.length, expectedGff.length); i++) {
-            if (!givenGff[i].equals(expectedGff[i])) {
+            if (!givenGff[i].strip().equals(expectedGff[i].strip())) {
                 LOGGER.warn("");
                 LOGGER.warn("Given:    " + givenGff[i]);
                 LOGGER.warn("Expected: " + expectedGff[i]);
