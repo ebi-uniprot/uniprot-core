@@ -1,6 +1,4 @@
-##gff-version 3
-##sequence-region P21802 1 821
-P21802	UniProtKB	Signal peptide	1	21	.	.	.	Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P21802	UniProtKB	Signal peptide	1	21	.	.	.	Ontology_term=ECO:0000255;evidence=ECO:0000255
 P21802	UniProtKB	Chain	22	821	.	.	.	ID=PRO_0000016783;Note=Fibroblast growth factor receptor 2	
 P21802	UniProtKB	Topological domain	22	377	.	.	.	Note=Extracellular;Ontology_term=ECO:0000255;evidence=ECO:0000255	
 P21802	UniProtKB	Transmembrane	378	398	.	.	.	Note=Helical;Ontology_term=ECO:0000255;evidence=ECO:0000255	

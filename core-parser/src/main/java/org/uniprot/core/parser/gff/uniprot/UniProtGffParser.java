@@ -19,8 +19,6 @@ import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
 /** @author gqi */
 public class UniProtGffParser {
-    private static final String GFF_HEADER = "##gff-version 3";
-    private static final String ENTRY_PREFIX = "##sequence-region ";
     private static final String FEATURE_SOURCE = "UniProtKB";
     private static final String EMPTY_COLUMN = ".";
     private static final String COLUMN_SEPARATOR = "\t";
@@ -37,12 +35,7 @@ public class UniProtGffParser {
                         .map(f -> convert(f, entry))
                         .collect(Collectors.joining("\t" + LINE_SEPARATOR));
 
-        return getGFFheader()
-                + LINE_SEPARATOR
-                + getEntryHeader(entry)
-                + LINE_SEPARATOR
-                + lines
-                + "\t";
+        return lines + "\t";
     }
 
     private static String convert(UniProtKBFeature feature, UniProtKBEntry entry) {
@@ -142,17 +135,6 @@ public class UniProtGffParser {
             sb.replace(m.start(), m.end(), replacement);
             start = m.start() + replacement.length();
         }
-    }
-
-    private static String getGFFheader() {
-        return GFF_HEADER;
-    }
-
-    private static String getEntryHeader(UniProtKBEntry entry) {
-        return ENTRY_PREFIX
-                + entry.getPrimaryAccession().getValue()
-                + " 1 "
-                + entry.getSequence().getLength();
     }
 
     private static String getFeatureAttributes(UniProtKBFeature feature) {
