@@ -1130,8 +1130,7 @@
 		"name": "NIAGADS",
 		"displayName": "NIAGADS",
 		"category": "ORG",
-		"uriLink": "https://www.niagads.org/genomics/showRecord.do?name=GeneRecordClasses.GeneRecordClass&source_id=%id"
-	
+		"uriLink": "https://www.niagads.org/genomics/app/record/gene/%id"
 	},
 	{
 		"name": "neXtProt",
