@@ -1859,7 +1859,7 @@
 		"name": "RNAct",
 		"displayName": "RNAct",
 		"category": "MISC",
-		"uriLink": "https://rnact.crg.eu/protein?query=%id",
+		"uriLink": " https://rnact.tartaglialab.com/protein?query=%id",
 		"attributes": [		
 			{	"name": "moleculeType",
 				"xmlTag": "molecule type"
