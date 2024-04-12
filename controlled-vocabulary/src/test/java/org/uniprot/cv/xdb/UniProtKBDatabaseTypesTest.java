@@ -1,8 +1,6 @@
 package org.uniprot.cv.xdb;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.cv.xdb.UniProtDatabaseCategory.*;
 
 import java.util.List;
@@ -128,15 +126,7 @@ class UniProtKBDatabaseTypesTest {
 
     @Test
     void testSwiss2dpageType() {
-        UniProtDatabaseDetail opType =
-                UniProtDatabaseTypes.INSTANCE.getDbTypeByName("SWISS-2DPAGE");
-
-        assertEquals("SWISS-2DPAGE", opType.getName());
-        assertEquals("SWISS-2DPAGE", opType.getDisplayName());
-        assertEquals(D2_GEL_DATABASES, opType.getCategory());
-        assertEquals("https://world-2dpage.expasy.org/swiss-2dpage/%id", opType.getUriLink());
-        assertEquals(1, opType.getAttributes().size());
-        verifyAttribute(opType.getAttributes().get(0), "Description", "description", null);
+        assertThrows(IllegalArgumentException.class,()->UniProtDatabaseTypes.INSTANCE.getDbTypeByName("SWISS-2DPAGE"));
     }
 
     @Test
@@ -302,7 +292,7 @@ class UniProtKBDatabaseTypesTest {
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PTM_DATABASES), 10);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(GENERIC_VARIATION_DATABASES), 6);
-        verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(D2_GEL_DATABASES), 7);
+        verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(D2_GEL_DATABASES), 3);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PROTEOMIC_DATABASES), 12);
         verifyGroupSize(
@@ -322,7 +312,7 @@ class UniProtKBDatabaseTypesTest {
                 10);
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(MISCELLANEOUS), 15);
         verifyGroupSize(
-                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(GENE_EXPRESSION_DATABASES), 5);
+                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(GENE_EXPRESSION_DATABASES), 4);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(FAMILY_AND_DOMAIN_DATABASES),
                 16);

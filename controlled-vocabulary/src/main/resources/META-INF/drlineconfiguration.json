@@ -539,13 +539,6 @@
 		"category": "GVD",
 		"uriLink": "https://www.ncbi.nlm.nih.gov/snp/%id"
 	},
-	
-	{
-		"name": "COMPLUYEAST-2DPAGE",
-		"displayName": "COMPLUYEAST-2DPAGE",
-		"category": "2DG",
-		"uriLink": "http://compluyeast2dpage.dacya.ucm.es/cgi-bin/2d/2d.cgi?ac=%id"	
-	},
 	{
 		"name": "DOSAC-COBS-2DPAGE",
 		"displayName": "DOSAC-COBS-2DPAGE",
@@ -564,26 +557,6 @@
 		"category": "2DG",	
 		"uriLink": "http://reprod.njmu.edu.cn/cgi-bin/2d/2d.cgi?%id"	
 	},
-	{
-		"name": "SWISS-2DPAGE",
-		"displayName": "SWISS-2DPAGE",
-		"category": "2DG",
-		"uriLink": "https://world-2dpage.expasy.org/swiss-2dpage/%id"
-	},
-	{
-		"name": "UCD-2DPAGE",
-		"displayName": "UCD-2DPAGE",
-		"category": "2DG",
-		"uriLink": "https://proteomics-portal.ucd.ie/cgi-bin/2d/2d.cgi?%id"
-	},
-	{
-		"name": "World-2DPAGE",
-		"displayName": "World-2DPAGE",
-		"category": "2DG",
-		"uriLink": "https://world-2dpage.expasy.org/repository/%id",
-        "idMappingName": "WORLD_2DPAGE_ID"
-	},
-	
 	{
 		"name": "CPTAC",
 		"displayName": "CPTAC",
@@ -1558,18 +1531,6 @@
 			}
 		]
 	},
-	{
-		"name": "Genevisible",
-		"displayName": "Genevisible",
-		"category": "GEP",
-		"uriLink": "https://genevisible.com/tissues/%OrganismId/UniProt/%id",
-		"attributes": [		
-			{	"name": "OrganismId",
-				"xmlTag":"organism ID"			
-			}
-		]
-	},
-	
 	{
 		"name": "CDD",
 		"displayName": "CDD",
