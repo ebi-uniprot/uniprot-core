@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.DeletedReason;
 import org.uniprot.core.uniprotkb.EntryInactiveReason;
 import org.uniprot.core.uniprotkb.InactiveReasonType;
 
@@ -35,12 +36,15 @@ class EntryInactiveReasonImplTest {
 
     @Test
     void testEntryInactiveReasonImplDelete() {
+        DeletedReason deletedReason = DeletedReason.PROTEOME_REDUNDANCY;
         EntryInactiveReason reason =
                 new EntryInactiveReasonBuilder()
                         .type(InactiveReasonType.DELETED)
+                        .deletedReason(deletedReason)
                         .mergeDemergeTosSet(null)
                         .build();
         assertEquals(InactiveReasonType.DELETED, reason.getInactiveReasonType());
+        assertEquals(deletedReason, reason.getDeletedReason());
         assertTrue(reason.getMergeDemergeTos().isEmpty());
     }
 
