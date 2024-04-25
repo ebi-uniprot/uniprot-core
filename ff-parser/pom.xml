@@ -137,6 +137,8 @@
 							<goal>shade</goal>
 						</goals>
 						<configuration>
+							<shadedArtifactAttached>true</shadedArtifactAttached>
+							<shadedClassifierName>exec</shadedClassifierName>
 							<transformers>
 								<!-- add Main-Class to manifest file -->
 								<transformer
