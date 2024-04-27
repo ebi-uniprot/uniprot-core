@@ -5,6 +5,8 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.util.EnumDisplay;
 
 public enum TaxonomyRank implements EnumDisplay {
+
+    STRAIN("strain"),
     FORMA("forma"),
     VARIETAS("varietas"),
     SUBSPECIES("subspecies"),
