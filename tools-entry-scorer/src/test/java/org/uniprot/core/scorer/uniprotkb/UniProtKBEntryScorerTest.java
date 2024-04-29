@@ -53,7 +53,6 @@ class UniProtKBEntryScorerTest {
                     + "DR   RefSeq; YP_654585.1; NC_008187.1.\n"
                     + "DR   SMR; Q197E7; -.\n"
                     + "DR   GeneID; 4156262; -.\n"
-                    + "DR   KEGG; vg:4156262; -.\n"
                     + "DR   OrthoDB; 14281at10239; -.\n"
                     + "DR   Proteomes; UP000001358; Genome.\n"
                     + "DR   GO; GO:0033644; C:host cell membrane; IEA:UniProtKB-SubCell.\n"
@@ -82,7 +81,7 @@ class UniProtKBEntryScorerTest {
         scored.scoreEntry(entry);
         scored.shutDown();
         assertEquals(1, scored.getTotalScore().getCount());
-        assertEquals(14.7, scored.getTotalScore().getSum(), 0.0001);
-        assertEquals(14.7, scored.getTotalScore().getMax(), 0.0001);
+        assertEquals(14.6, scored.getTotalScore().getSum(), 0.0001);
+        assertEquals(14.6, scored.getTotalScore().getMax(), 0.0001);
     }
 }

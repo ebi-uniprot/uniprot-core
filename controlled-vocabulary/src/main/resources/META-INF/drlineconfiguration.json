@@ -782,13 +782,6 @@
 		]
 	},
 	{
-		"name": "KEGG",
-		"displayName": "KEGG",
-		"category": "GMA",
-		"uriLink": "https://www.genome.jp/dbget-bin/www_bget?%id",
-        "idMappingName": "KEGG_ID"
-	},
-	{
 		"name": "MANE-Select",
 		"displayName": "MANE-Select",
 		"category": "GMA",
