@@ -15,7 +15,7 @@ class DeletedReasonTest {
 
     @Test
     void canGetName() {
-        assertEquals("Overrepresented sequence", DeletedReason.OVERREPRESENTED.getName());
+        assertEquals("Over-represented sequence", DeletedReason.OVERREPRESENTED.getName());
     }
 
     @Test
