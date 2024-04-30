@@ -5,6 +5,20 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.util.EnumDisplay;
 
 public enum TaxonomyRank implements EnumDisplay {
+
+    STRAIN("strain"),
+    SEROTYPE("serotype"),
+    SERIES("series"),
+    MORPH("morph"),
+    BIOTYPE("biotype"),
+    CLADE("clade"),
+    GENOTYPE("genotype"),
+    ISOLATE("isolate"),
+    FORMA_SPECIALIS("forma specialis"),
+    PATHOGROUP("pathogroup"),
+    SEROGROUP("serogroup"),
+    SECTION("section"),
+    SUBSECTION("subsection"),
     FORMA("forma"),
     VARIETAS("varietas"),
     SUBSPECIES("subspecies"),
