@@ -3,6 +3,7 @@ package org.uniprot.core.uniprotkb.impl;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprotkb.DeletedReason;
 import org.uniprot.core.uniprotkb.EntryInactiveReason;
 
 class EntryInactiveReasonBuilderTest {
@@ -14,6 +15,16 @@ class EntryInactiveReasonBuilderTest {
         assertNotNull(reason.getMergeDemergeTos());
         assertFalse(reason.getMergeDemergeTos().isEmpty());
         assertEquals("merge", reason.getMergeDemergeTos().get(0));
+    }
+
+    @Test
+    void canBuildWithDeletedReason() {
+        DeletedReason deletedReason = DeletedReason.SWISSPROT_DELETION;
+        EntryInactiveReason reason = new EntryInactiveReasonBuilder()
+                .deletedReason(deletedReason)
+                .build();
+        assertNotNull(reason.getDeletedReason());
+        assertEquals(deletedReason, reason.getDeletedReason());
     }
 
     @Test
