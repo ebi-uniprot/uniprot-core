@@ -34,13 +34,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /** @author lgonzales */
 public class UniProtKBEntryIT {
 
-    private static Logger logger = LoggerFactory.getLogger(UniProtKBEntryIT.class);
+    private static final Logger logger = LoggerFactory.getLogger(UniProtKBEntryIT.class);
 
     @Test
     void testInactiveUniProtEntryComplete() {
         EntryInactiveReason inactiveReason =
                 new EntryInactiveReasonBuilder()
                         .type(InactiveReasonType.MERGED)
+                        .deletedReason(DeletedReason.SWISSPROT_DELETION)
                         .mergeDemergeTosAdd("merge id")
                         .build();
 

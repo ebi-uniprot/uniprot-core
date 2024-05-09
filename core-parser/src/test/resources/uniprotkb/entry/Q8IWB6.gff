@@ -1,8 +1,6 @@
-##gff-version 3
-##sequence-region Q8IWB6 1 1497
-Q8IWB6	UniProtKB	Chain	1	1497	.	.	.	ID=PRO_0000246995;Note=Inactive serine/threonine-protein kinase TEX14	
+Q8IWB6	UniProtKB	Chain	1	1497	.	.	.	ID=PRO_0000246995;Note=Inactive serine/threonine-protein kinase TEX14
 Q8IWB6	UniProtKB	Repeat	27	54	.	.	.	Note=ANK 1	
-Q8IWB6	UniProtKB	Repeat	55	84	.	.	.	Note=ANK 2	
+Q8IWB6	UniProtKB	Repeat	55	84	.	.	.	Note=ANK 2
 Q8IWB6	UniProtKB	Repeat	88	117	.	.	.	Note=ANK 3	
 Q8IWB6	UniProtKB	Domain	227	518	.	.	.	Note=Protein kinase;Ontology_term=ECO:0000255;evidence=ECO:0000255|PROSITE-ProRule:PRU00159	
 Q8IWB6	UniProtKB	Nucleotide binding	233	241	.	.	.	Note=ATP;Ontology_term=ECO:0000255;evidence=ECO:0000255|PROSITE-ProRule:PRU00159	

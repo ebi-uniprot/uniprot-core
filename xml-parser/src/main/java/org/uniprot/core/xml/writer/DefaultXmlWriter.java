@@ -5,8 +5,8 @@ import java.io.Writer;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.Marshaller;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
 
 import org.uniprot.core.xml.XmlWriter;
 import org.uniprot.core.xml.XmlWriterException;

@@ -7,4 +7,6 @@ public interface EntryInactiveReason extends Serializable {
     InactiveReasonType getInactiveReasonType();
 
     List<String> getMergeDemergeTos();
+
+    DeletedReason getDeletedReason();
 }

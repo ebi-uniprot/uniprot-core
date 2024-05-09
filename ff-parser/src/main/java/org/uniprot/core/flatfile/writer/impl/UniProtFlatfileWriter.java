@@ -191,10 +191,7 @@ public class UniProtFlatfileWriter implements FlatfileWriter<UniProtKBEntry> {
                 || (types.contains(LineType.RT))
                 || (types.contains(LineType.RG))
                 || (types.contains(LineType.RX))) {
-            int citationNum = 0;
             for (UniProtKBReference reference : entry.getReferences()) {
-                citationNum++;
-                rLineBuilder.setRN(citationNum);
                 entryLines.add(rLineBuilder.buildWithEvidence(reference));
             }
         }

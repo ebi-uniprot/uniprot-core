@@ -37,7 +37,7 @@ class ReferenceConverterTest {
         refComments.add(createReferenceComment(ReferenceCommentType.STRAIN, "S1", evidences));
         refComments.add(createReferenceComment(ReferenceCommentType.TISSUE, "S11", evidences));
         UniProtKBReference uniReference =
-                createUniProtReference(
+                createUniProtReference(2,
                         submission, referencePositions, refComments, Collections.emptyList());
         ReferenceConverter converter = new ReferenceConverter(new EvidenceIndexMapper());
         ReferenceType xmlReference = converter.toXml(uniReference);
@@ -48,11 +48,13 @@ class ReferenceConverterTest {
     }
 
     private UniProtKBReference createUniProtReference(
+            int referenceNumber,
             Citation citation,
             List<String> referencePositions,
             List<ReferenceComment> refComments,
             List<Evidence> evidences) {
         return new UniProtKBReferenceBuilder()
+                .referenceNumber(referenceNumber)
                 .referenceCommentsSet(refComments)
                 .citation(citation)
                 .referencePositionsSet(referencePositions)
@@ -79,7 +81,7 @@ class ReferenceConverterTest {
         refComments.add(createReferenceComment(ReferenceCommentType.STRAIN, "S1", evidences));
         refComments.add(createReferenceComment(ReferenceCommentType.TISSUE, "S11", evidences));
         UniProtKBReference uniReference =
-                createUniProtReference(citation, referencePositions, refComments, evidences);
+                createUniProtReference(3, citation, referencePositions, refComments, evidences);
         ReferenceConverter converter = new ReferenceConverter(new EvidenceIndexMapper());
         ReferenceType xmlReference = converter.toXml(uniReference);
         System.out.println(
@@ -100,7 +102,7 @@ class ReferenceConverterTest {
         //		refComments.add(
         //				createReferenceComment(ReferenceCommentType.TISSUE, "S11", evidences));
         UniProtKBReference uniReference =
-                createUniProtReference(citation, referencePositions, refComments, evidences);
+                createUniProtReference(4, citation, referencePositions, refComments, evidences);
         ReferenceConverter converter = new ReferenceConverter(new EvidenceIndexMapper());
         ReferenceType xmlReference = converter.toXml(uniReference);
         System.out.println(

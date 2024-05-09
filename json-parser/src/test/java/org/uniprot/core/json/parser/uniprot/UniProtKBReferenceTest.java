@@ -60,21 +60,21 @@ public class UniProtKBReferenceTest {
 
     public static List<UniProtKBReference> getUniProtReferences() {
         List<UniProtKBReference> uniProtKBReferences = new ArrayList<>();
-        uniProtKBReferences.add(getUniProtReference(BookTest.getBook()));
-        uniProtKBReferences.add(getUniProtReference(ElectronicArticleTest.getElectronicArticle()));
-        uniProtKBReferences.add(getUniProtReference(JournalArticleTest.getJournalArticle()));
-        uniProtKBReferences.add(getUniProtReference(PatentTest.getPatent()));
-        uniProtKBReferences.add(getUniProtReference(SubmissionTest.getSubmission()));
-        uniProtKBReferences.add(getUniProtReference(ThesisTest.getThesis()));
-        uniProtKBReferences.add(getUniProtReference(UnpublishedTest.getUnpublished()));
+        uniProtKBReferences.add(getUniProtReference(1, BookTest.getBook()));
+        uniProtKBReferences.add(getUniProtReference(2, ElectronicArticleTest.getElectronicArticle()));
+        uniProtKBReferences.add(getUniProtReference(3, JournalArticleTest.getJournalArticle()));
+        uniProtKBReferences.add(getUniProtReference(4, PatentTest.getPatent()));
+        uniProtKBReferences.add(getUniProtReference(5, SubmissionTest.getSubmission()));
+        uniProtKBReferences.add(getUniProtReference(6, ThesisTest.getThesis()));
+        uniProtKBReferences.add(getUniProtReference(7, UnpublishedTest.getUnpublished()));
         return uniProtKBReferences;
     }
 
     private static UniProtKBReference getUniProtReference() {
-        return getUniProtReference(BookTest.getBook());
+        return getUniProtReference(1, BookTest.getBook());
     }
 
-    private static UniProtKBReference getUniProtReference(Citation citation) {
+    private static UniProtKBReference getUniProtReference(int referenceNumber, Citation citation) {
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730");
         ReferenceComment referenceComment =
                 new ReferenceCommentBuilder()
@@ -84,6 +84,7 @@ public class UniProtKBReferenceTest {
                         .build();
 
         return new UniProtKBReferenceBuilder()
+                .referenceNumber(referenceNumber)
                 .citation(citation)
                 .referenceCommentsAdd(referenceComment)
                 .referencePositionsAdd("position 1")

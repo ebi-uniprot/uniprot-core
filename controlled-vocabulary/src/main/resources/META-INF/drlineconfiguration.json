@@ -539,12 +539,11 @@
 		"category": "GVD",
 		"uriLink": "https://www.ncbi.nlm.nih.gov/snp/%id"
 	},
-	
 	{
 		"name": "COMPLUYEAST-2DPAGE",
 		"displayName": "COMPLUYEAST-2DPAGE",
 		"category": "2DG",
-		"uriLink": "http://compluyeast2dpage.dacya.ucm.es/cgi-bin/2d/2d.cgi?ac=%id"	
+		"uriLink": "http://compluyeast2dpage.dacya.ucm.es/cgi-bin/2d/2d.cgi?ac=%id"
 	},
 	{
 		"name": "DOSAC-COBS-2DPAGE",
@@ -564,26 +563,6 @@
 		"category": "2DG",	
 		"uriLink": "http://reprod.njmu.edu.cn/cgi-bin/2d/2d.cgi?%id"	
 	},
-	{
-		"name": "SWISS-2DPAGE",
-		"displayName": "SWISS-2DPAGE",
-		"category": "2DG",
-		"uriLink": "https://world-2dpage.expasy.org/swiss-2dpage/%id"
-	},
-	{
-		"name": "UCD-2DPAGE",
-		"displayName": "UCD-2DPAGE",
-		"category": "2DG",
-		"uriLink": "https://proteomics-portal.ucd.ie/cgi-bin/2d/2d.cgi?%id"
-	},
-	{
-		"name": "World-2DPAGE",
-		"displayName": "World-2DPAGE",
-		"category": "2DG",
-		"uriLink": "https://world-2dpage.expasy.org/repository/%id",
-        "idMappingName": "WORLD_2DPAGE_ID"
-	},
-	
 	{
 		"name": "CPTAC",
 		"displayName": "CPTAC",
@@ -801,13 +780,6 @@
 				"uriLink":"http://ensembl.gramene.org/id/%GeneId"	
 			}
 		]
-	},
-	{
-		"name": "KEGG",
-		"displayName": "KEGG",
-		"category": "GMA",
-		"uriLink": "https://www.genome.jp/dbget-bin/www_bget?%id",
-        "idMappingName": "KEGG_ID"
 	},
 	{
 		"name": "MANE-Select",
@@ -1130,8 +1102,7 @@
 		"name": "NIAGADS",
 		"displayName": "NIAGADS",
 		"category": "ORG",
-		"uriLink": "https://www.niagads.org/genomics/showRecord.do?name=GeneRecordClasses.GeneRecordClass&source_id=%id"
-	
+		"uriLink": "https://www.niagads.org/genomics/app/record/gene/%id"
 	},
 	{
 		"name": "neXtProt",
@@ -1560,18 +1531,6 @@
 		]
 	},
 	{
-		"name": "Genevisible",
-		"displayName": "Genevisible",
-		"category": "GEP",
-		"uriLink": "https://genevisible.com/tissues/%OrganismId/UniProt/%id",
-		"attributes": [		
-			{	"name": "OrganismId",
-				"xmlTag":"organism ID"			
-			}
-		]
-	},
-	
-	{
 		"name": "CDD",
 		"displayName": "CDD",
 		"category": "FMD",
@@ -1860,7 +1819,7 @@
 		"name": "RNAct",
 		"displayName": "RNAct",
 		"category": "MISC",
-		"uriLink": "https://rnact.crg.eu/protein?query=%id",
+		"uriLink": " https://rnact.tartaglialab.com/protein?query=%id",
 		"attributes": [		
 			{	"name": "moleculeType",
 				"xmlTag": "molecule type"

@@ -7,7 +7,7 @@
 	<groupId>org.uniprot</groupId>
 	<artifactId>core-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.29-SNAPSHOT</version>
+	<version>1.0.31-SNAPSHOT</version>
 	<name>UniProt Core Aggregator</name>
 
 	<properties>
@@ -17,8 +17,8 @@
 		<surefire-version>2.22.2</surefire-version>
 		<failsafe-version>2.22.2</failsafe-version>
 		<mockito-version>4.5.1</mockito-version>
-		<slf4j.version>1.7.28</slf4j.version>
-		<logback.version>1.2.3</logback.version>
+		<slf4j.version>1.7.36</slf4j.version>
+		<logback.version>1.2.12</logback.version>
 		<junit-jupiter.version>5.8.2</junit-jupiter.version>
 		<hamcrest.version>1.3</hamcrest.version>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -30,7 +30,7 @@
 		<guava.version>30.0-jre</guava.version>
 
 		<!-- Auto-formatting -->
-		<spotless.version>1.24.1</spotless.version>
+		<spotless.version>2.43.0</spotless.version>
 
 		<!-- Test coverage -->
 		<jacoco.outputDir>${project.basedir}/../target</jacoco.outputDir>
@@ -315,7 +315,7 @@
 						<configuration>
 							<java>
 								<googleJavaFormat>
-									<version>1.7</version>
+									<version>1.15.0</version>
 									<!-- Optional, available versions: GOOGLE, AOSP https://github.com/google/google-java-format/blob/master/core/src/main/java/com/google/googlejavaformat/java/JavaFormatterOptions.java -->
 									<style>AOSP</style>
 								</googleJavaFormat>

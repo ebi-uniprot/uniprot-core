@@ -28,6 +28,7 @@ public class ReferenceConverter implements Converter<ReferenceType, UniProtKBRef
     @Override
     public UniProtKBReference fromXml(ReferenceType xmlObj) {
         return new UniProtKBReferenceBuilder()
+                .referenceNumber(Integer.parseInt(xmlObj.getKey()))
                 .citation(citationConverter.fromXml(xmlObj.getCitation()))
                 .evidencesSet(evRefMapper.parseEvidenceIds(xmlObj.getEvidence()))
                 .referencePositionsSet(xmlObj.getScope())
@@ -38,6 +39,7 @@ public class ReferenceConverter implements Converter<ReferenceType, UniProtKBRef
     @Override
     public ReferenceType toXml(UniProtKBReference uniObj) {
         ReferenceType xmlReference = xmlUniprotFactory.createReferenceType();
+        xmlReference.setKey(String.valueOf(uniObj.getReferenceNumber()));
         // SCOPE
         if (uniObj.getReferencePositions() != null) {
             uniObj.getReferencePositions().forEach(val -> xmlReference.getScope().add(val));
