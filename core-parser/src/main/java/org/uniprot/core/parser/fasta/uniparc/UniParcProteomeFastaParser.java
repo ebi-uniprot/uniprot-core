@@ -6,10 +6,7 @@ import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.util.Utils;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 import static org.uniprot.core.parser.fasta.FastaUtils.parseSequence;
 
@@ -20,34 +17,53 @@ public class UniParcProteomeFastaParser {
 
     public static String toFasta(UniParcEntry entry, String proteomeID) {
         String id = entry.getUniParcId().getValue();
-        Set<String> sourceIds = new HashSet<>();
-        Set<Organism> organisms = new HashSet<>();
-        Set<String> component = new HashSet<>();
-        entry.getUniParcCrossReferences().stream()
+        Organism organism = entry.getUniParcCrossReferences().stream()
                 .filter(UniParcCrossReference::isActive)
                 .filter(xref -> Objects.nonNull(xref.getProteomeId()))
                 .filter(xref -> xref.getProteomeId().equals(proteomeID))
+                .filter(xref -> Utils.notNull(xref.getOrganism()))
+                .findFirst()
+                .map(UniParcCrossReference::getOrganism)
+                .orElse(null);
+
+        List<String> proteinName = new ArrayList<>();
+        List<String> geneNames = new ArrayList<>();
+        List<String> accessions = new ArrayList<>();
+
+        entry.getUniParcCrossReferences().stream()
+                .filter(UniParcCrossReference::isActive)
+                .filter(xref -> filterOrganism(xref, organism))
+                .filter(xref -> uniProtDatabases.contains(xref.getDatabase()))
                 .forEach(xref -> {
-                    if(xref.hasDatabase() && xref.getDatabase().isSource()){
-                        sourceIds.add(xref.getDatabase().getName() + ":" + xref.getId());
+                    if(Utils.notNullNotEmpty(xref.getId())){
+                        accessions.add(xref.getId());
                     }
-                    if(Utils.notNull(xref.getOrganism())){
-                        organisms.add(xref.getOrganism());
+                    if(Utils.notNullNotEmpty(xref.getProteinName())){
+                        proteinName.add(xref.getProteinName());
                     }
-                    if(Utils.notNullNotEmpty(xref.getComponent())){
-                        component.add(xref.getComponent());
+                    if(Utils.notNullNotEmpty(xref.getGeneName())){
+                        geneNames.add(xref.getGeneName());
                     }
                 });
+
         StringBuilder sb = new StringBuilder();
         sb.append(">").append(id);
-        if(!sourceIds.isEmpty()){
-            sb.append("|").append(String.join("|", sourceIds));
+        if(!accessions.isEmpty()){
+            sb.append("|").append(String.join("|", accessions));
         }
-        sb.append(" UP=").append(proteomeID);
-        if(!component.isEmpty()){
-            sb.append(":").append(String.join("|", component));
+        if(!proteinName.isEmpty()){
+            sb.append(" ").append(String.join("|", proteinName));
         }
-        sb.append(parseOrganismAndAccession(entry.getUniParcCrossReferences(), organisms));
+        if (Utils.notNull(organism)) {
+            if (organism.hasScientificName()) {
+                sb.append(" OS=").append(organism.getScientificName());
+            }
+            sb.append(" OX=").append(organism.getTaxonId());
+        }
+
+        if(!geneNames.isEmpty()){
+            sb.append(" GN=").append(String.join("|", geneNames));
+        }
         sb.append("\n");
         sb.append(parseSequence(entry.getSequence().getValue()));
         return sb.toString();
