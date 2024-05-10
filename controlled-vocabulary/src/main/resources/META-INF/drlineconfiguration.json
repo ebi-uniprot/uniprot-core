@@ -278,7 +278,7 @@
 		"name": "ChEMBL",
 		"displayName": "ChEMBL",
 		"category": "CHEMISTRY",
-		"uriLink": "https://www.ebi.ac.uk/chembldb/target/inspect/%id",
+		"uriLink": "https://www.ebi.ac.uk/chembl/target_report_card/%id",
         "idMappingName": "CHEMBL_ID"
 	},
 	{
