@@ -29,6 +29,8 @@ public class UniParcProteomeFastaParser {
         List<String> proteinName = new ArrayList<>();
         List<String> geneNames = new ArrayList<>();
         List<String> accessions = new ArrayList<>();
+        Set<String> sourceIds = new HashSet<>();
+        Set<String> component = new HashSet<>();
 
         entry.getUniParcCrossReferences().stream()
                 .filter(UniParcCrossReference::isActive)
@@ -44,13 +46,18 @@ public class UniParcProteomeFastaParser {
                     if(Utils.notNullNotEmpty(xref.getGeneName())){
                         geneNames.add(xref.getGeneName());
                     }
+                    if(proteomeID.equals(xref.getProteomeId())) {
+                        if (xref.hasDatabase() && xref.getDatabase().isSource()) {
+                            sourceIds.add(xref.getDatabase().getName() + ":" + xref.getId());
+                        }
+                        if (Utils.notNullNotEmpty(xref.getComponent())) {
+                            component.add(xref.getComponent());
+                        }
+                    }
                 });
 
         StringBuilder sb = new StringBuilder();
         sb.append(">").append(id);
-        if(!accessions.isEmpty()){
-            sb.append("|").append(String.join("|", accessions));
-        }
         if(!proteinName.isEmpty()){
             sb.append(" ").append(String.join("|", proteinName));
         }
@@ -63,6 +70,17 @@ public class UniParcProteomeFastaParser {
 
         if(!geneNames.isEmpty()){
             sb.append(" GN=").append(String.join("|", geneNames));
+        }
+        if(!accessions.isEmpty()){
+            sb.append(" AC=").append(String.join("|", accessions));
+        }
+        if(!sourceIds.isEmpty()){
+            sb.append(" SS=").append(String.join("|", sourceIds));
+        }
+        sb.append(" UP=").append(proteomeID);
+        if(!component.isEmpty()){
+            sb.append(" UP=").append(proteomeID);
+            sb.append(":").append(String.join("|", component));
         }
         sb.append("\n");
         sb.append(parseSequence(entry.getSequence().getValue()));
