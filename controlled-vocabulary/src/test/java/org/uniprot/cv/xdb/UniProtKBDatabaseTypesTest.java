@@ -85,7 +85,7 @@ class UniProtKBDatabaseTypesTest {
         assertEquals("ChEMBL", opType.getName());
         assertEquals("ChEMBL", opType.getDisplayName());
         assertEquals(CHEMISTRY, opType.getCategory());
-        assertEquals("https://www.ebi.ac.uk/chembldb/target/inspect/%id", opType.getUriLink());
+        assertEquals("https://www.ebi.ac.uk/chembl/target_report_card/%id", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "Description", "description", null);
     }
