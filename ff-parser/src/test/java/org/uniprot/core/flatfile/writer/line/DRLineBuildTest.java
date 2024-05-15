@@ -52,6 +52,7 @@ class DRLineBuildTest {
                         + "DR   CAZy; GT4; Glycosyltransferase Family 4.\n"
                         + "DR   EnsemblFungi; YNL048W; YNL048W; YNL048W.\n"
                         + "DR   GeneID; 855679; -.\n"
+                        + "DR   KEGG; sce:YNL048W; -.\n"
                         + "DR   SGD; S000004993; ALG11.\n"
                         + "DR   eggNOG; fuNOG07615; -.\n"
                         + "DR   GeneTree; EFGT00050000003720; -.\n"
@@ -97,6 +98,7 @@ class DRLineBuildTest {
         xrefs.add(createUniProtDBCrossReference("CAZy", "GT4", "Glycosyltransferase Family 4"));
         xrefs.add(createUniProtDBCrossReference("EnsemblFungi", "YNL048W", "YNL048W", "YNL048W"));
         xrefs.add(createUniProtDBCrossReference("GeneID", "855679", "-"));
+        xrefs.add(createUniProtDBCrossReference("KEGG", "sce:YNL048W", "-"));
         xrefs.add(createUniProtDBCrossReference("SGD", "S000004993", "ALG11"));
         xrefs.add(createUniProtDBCrossReference("eggNOG", "fuNOG07615", "-"));
         xrefs.add(createUniProtDBCrossReference("GeneTree", "EFGT00050000003720", "-"));
