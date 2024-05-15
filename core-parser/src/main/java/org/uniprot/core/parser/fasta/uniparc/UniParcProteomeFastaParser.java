@@ -35,16 +35,17 @@ public class UniParcProteomeFastaParser {
         entry.getUniParcCrossReferences().stream()
                 .filter(UniParcCrossReference::isActive)
                 .filter(xref -> filterOrganism(xref, organism))
-                .filter(xref -> uniProtDatabases.contains(xref.getDatabase()))
                 .forEach(xref -> {
-                    if(Utils.notNullNotEmpty(xref.getId())){
-                        accessions.add(xref.getId());
-                    }
-                    if(Utils.notNullNotEmpty(xref.getProteinName())){
-                        proteinName.add(xref.getProteinName());
-                    }
-                    if(Utils.notNullNotEmpty(xref.getGeneName())){
-                        geneNames.add(xref.getGeneName());
+                    if(uniProtDatabases.contains(xref.getDatabase())) {
+                        if (Utils.notNullNotEmpty(xref.getId())) {
+                            accessions.add(xref.getId());
+                        }
+                        if (Utils.notNullNotEmpty(xref.getProteinName())) {
+                            proteinName.add(xref.getProteinName());
+                        }
+                        if (Utils.notNullNotEmpty(xref.getGeneName())) {
+                            geneNames.add(xref.getGeneName());
+                        }
                     }
                     if(proteomeID.equals(xref.getProteomeId())) {
                         if (xref.hasDatabase() && xref.getDatabase().isSource()) {
@@ -79,9 +80,9 @@ public class UniParcProteomeFastaParser {
         }
         sb.append(" UP=").append(proteomeID);
         if(!component.isEmpty()){
-            sb.append(" UP=").append(proteomeID);
             sb.append(":").append(String.join("|", component));
         }
+
         sb.append("\n");
         sb.append(parseSequence(entry.getSequence().getValue()));
         return sb.toString();

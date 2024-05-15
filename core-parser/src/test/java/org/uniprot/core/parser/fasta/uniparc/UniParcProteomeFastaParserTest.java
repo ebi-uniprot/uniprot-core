@@ -33,8 +33,8 @@ class UniParcProteomeFastaParserTest {
         String proteomeId = "UP000005640";
         Organism organism = getOrganism(9606L, "Homo Sapiens");
         List<UniParcCrossReference> xrefs = new ArrayList<>();
-        xrefs.add(getXref(UniParcDatabase.SWISSPROT, "P21802", true, organism));
-        xrefs.add(getXref(UniParcDatabase.TREMBL, "P12345", true, organism));
+        xrefs.add(getXref(UniParcDatabase.SWISSPROT, "P21802", true, organism, null, null, "Protein Name 1", "Gene Name1"));
+        xrefs.add(getXref(UniParcDatabase.TREMBL, "P12345", true, organism, null, null, "Protein Name 2", "Gene Name2"));
         xrefs.add(getXref(UniParcDatabase.EMBL_CON, "XP12345", true, organism, proteomeId, "C1"));
         xrefs.add(getXref(UniParcDatabase.EMBL_TPA, "XP54321", true, organism, proteomeId, "C2"));
         UniParcEntry entry = new UniParcEntryBuilder()

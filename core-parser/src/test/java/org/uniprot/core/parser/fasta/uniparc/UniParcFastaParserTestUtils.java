@@ -33,7 +33,7 @@ public class UniParcFastaParserTestUtils {
         List<UniParcCrossReference> result = new ArrayList<>();
         Organism human = getOrganism(9606, "Homo sapiens");
 
-        result.add(getXref(UniParcDatabase.SWISSPROT, "P12345", active, human));
+        result.add(getXref(UniParcDatabase.SWISSPROT, "P12345", active, human, null, null, "Protein Name One", "Gene Name One"));
 
         return result;
     }
@@ -47,11 +47,17 @@ public class UniParcFastaParserTestUtils {
     }
 
     static UniParcCrossReference getXref(UniParcDatabase database, String id, boolean active, Organism organism, String proteomeId, String component) {
+        return getXref(database,id, active, organism, proteomeId, component, null, null);
+    }
+
+    static UniParcCrossReference getXref(UniParcDatabase database, String id, boolean active, Organism organism, String proteomeId, String component, String proteinName, String geneName) {
         return new UniParcCrossReferenceBuilder()
                 .database(database)
                 .id(id)
                 .active(active)
                 .organism(organism)
+                .proteinName(proteinName)
+                .geneName(geneName)
                 .proteomeId(proteomeId)
                 .component(component)
                 .build();
