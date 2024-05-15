@@ -13,7 +13,7 @@ import static org.uniprot.core.parser.fasta.FastaUtils.parseSequence;
 public class UniParcProteomeFastaParser {
 
     private static final Set<UniParcDatabase> uniProtDatabases = Set.of(
-            UniParcDatabase.SWISSPROT, UniParcDatabase.TREMBL);
+            UniParcDatabase.SWISSPROT, UniParcDatabase.TREMBL, UniParcDatabase.SWISSPROT_VARSPLIC);
 
     public static String toFasta(UniParcEntry entry, String proteomeID) {
         String id = entry.getUniParcId().getValue();
