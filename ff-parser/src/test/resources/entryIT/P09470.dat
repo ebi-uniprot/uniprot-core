@@ -534,7 +534,6 @@ DR   GlyGen; P09470; 14 sites, 9 N-linked glycans (5 sites).
 DR   iPTMnet; P09470; -.
 DR   PhosphoSitePlus; P09470; -.
 DR   jPOST; P09470; -.
-DR   MaxQB; P09470; -.
 DR   PaxDb; P09470; -.
 DR   PeptideAtlas; P09470; -.
 DR   PRIDE; P09470; -.
@@ -1020,10 +1019,8 @@ DR   iPTMnet; P35626; -.
 DR   PhosphoSitePlus; P35626; -.
 DR   BioMuta; GRK3; -.
 DR   DMDM; 116241253; -.
-DR   EPD; P35626; -.
 DR   jPOST; P35626; -.
 DR   MassIVE; P35626; -.
-DR   MaxQB; P35626; -.
 DR   PaxDb; P35626; -.
 DR   PeptideAtlas; P35626; -.
 DR   PRIDE; P35626; -.

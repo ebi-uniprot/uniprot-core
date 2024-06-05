@@ -248,7 +248,6 @@ class Q04756ScoredTest {
                     + "DR   DMDM; 547643; -.\n"
                     + "DR   jPOST; Q04756; -.\n"
                     + "DR   MassIVE; Q04756; -.\n"
-                    + "DR   MaxQB; Q04756; -.\n"
                     + "DR   PaxDb; Q04756; -.\n"
                     + "DR   PeptideAtlas; Q04756; -.\n"
                     + "DR   PRIDE; Q04756; -.\n"

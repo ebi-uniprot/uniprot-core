@@ -130,17 +130,6 @@ class UniProtKBDatabaseTypesTest {
     }
 
     @Test
-    void testMaxQBType() {
-        UniProtDatabaseDetail opType = UniProtDatabaseTypes.INSTANCE.getDbTypeByName("MaxQB");
-        assertEquals("MaxQB", opType.getName());
-        assertEquals("MaxQB", opType.getDisplayName());
-        assertEquals(PROTEOMIC_DATABASES, opType.getCategory());
-        assertEquals("http://maxqb.biochem.mpg.de/mxdb/protein/show/%id", opType.getUriLink());
-        assertEquals(1, opType.getAttributes().size());
-        verifyAttribute(opType.getAttributes().get(0), "Description", "description", null);
-    }
-
-    @Test
     void testDNASUType() {
         UniProtDatabaseDetail opType = UniProtDatabaseTypes.INSTANCE.getDbTypeByName("DNASU");
 
@@ -288,13 +277,13 @@ class UniProtKBDatabaseTypesTest {
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(CHEMISTRY), 6);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PROTEIN_FAMILY_GROUP_DATABASES),
-                13);
+                12);
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PTM_DATABASES), 10);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(GENERIC_VARIATION_DATABASES), 6);
-        verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(D2_GEL_DATABASES), 4);
+        verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(D2_GEL_DATABASES), 3);
         verifyGroupSize(
-                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PROTEOMIC_DATABASES), 12);
+                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PROTEOMIC_DATABASES), 10);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(
                         PROTOCOLS_AND_MATERIALS_DATABASES),

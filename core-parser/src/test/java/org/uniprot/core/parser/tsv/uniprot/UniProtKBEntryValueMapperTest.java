@@ -659,8 +659,7 @@ class UniProtKBEntryValueMapperTest {
                         "xref_drugbank",
                         "xref_guidetopharmacology",
                         "xref_tcdb",
-                        "xref_dmdm",
-                        "xref_maxqb");
+                        "xref_dmdm");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
@@ -668,12 +667,10 @@ class UniProtKBEntryValueMapperTest {
         String guidetopharmacology = "874;";
         String tcdb = "2.A.23.3.3;";
         String dmdm = "21542389;";
-        String maxqb = "Q15758;";
         verify(drugbank, "xref_drugbank", result);
         verify(guidetopharmacology, "xref_guidetopharmacology", result);
         verify(tcdb, "xref_tcdb", result);
         verify(dmdm, "xref_dmdm", result);
-        verify(maxqb, "xref_maxqb", result);
     }
 
     @Test
@@ -684,8 +681,7 @@ class UniProtKBEntryValueMapperTest {
                         "xref_drugbank_full",
                         "xref_guidetopharmacology_full",
                         "xref_tcdb_full",
-                        "xref_dmdm_full",
-                        "xref_maxqb_full");
+                        "xref_dmdm_full");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ15758, fields);
 
         verify("Q15758", "accession", result);
@@ -694,12 +690,10 @@ class UniProtKBEntryValueMapperTest {
         String tcdb =
                 "\"2.A.23.3.3; the dicarboxylate/amino acid:cation (na(+) or h(+)) symporter (daacs) family.\";";
 
-        String maxqb = "Q15758;";
         verify(drugbank, "xref_drugbank_full", result);
         assertNull(result.get("xref_guidetopharmacology_full"));
         verify(tcdb, "xref_tcdb_full", result);
         assertNull(result.get("xref_dmdm_full"));
-        assertNull(result.get("xref_maxqb_full"));
     }
 
     @Test

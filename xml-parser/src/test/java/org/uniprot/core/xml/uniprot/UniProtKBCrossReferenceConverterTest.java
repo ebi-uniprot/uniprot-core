@@ -48,9 +48,9 @@ public class UniProtKBCrossReferenceConverterTest extends AbstractConverterTest 
     }
 
     @Test
-    void testEPDNoAttributes() {
-        // DR   EPD; Q9U3D6; -.
-        String dbName = "EPD";
+    void testPRIDENoAttributes() {
+        // DR   PRIDE; Q9U3D6; -.
+        String dbName = "PRIDE";
         String id = "Q9U3D6";
         String description = "-";
         String thirdAttribute = null;
