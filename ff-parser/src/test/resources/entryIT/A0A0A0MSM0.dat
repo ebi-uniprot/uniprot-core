@@ -115,7 +115,6 @@ CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
 CC   ---------------------------------------------------------------------------
 DR   EMBL; AL137142; -; NOT_ANNOTATED_CDS; Genomic_DNA.
 DR   RefSeq; NP_001273434.1; NM_001286505.1.
-DR   EPD; A0A0A0MSM0; -.
 DR   jPOST; A0A0A0MSM0; -.
 DR   PeptideAtlas; A0A0A0MSM0; -.
 DR   PRIDE; A0A0A0MSM0; -.
@@ -151,8 +150,7 @@ DR   PROSITE; PS01036; HSP70_3; 1.
 PE   1: Evidence at protein level;
 KW   Coiled coil {ECO:0000256|SAM:Coils};
 KW   Complete proteome {ECO:0000313|Proteomes:UP000005640};
-KW   Proteomics identification {ECO:0000213|EPD:A0A0A0MSM0,
-KW   ECO:0000213|MaxQB:A0A0A0MSM0, ECO:0000213|PeptideAtlas:A0A0A0MSM0};
+KW   Proteomics identification {ECO:0000213|PeptideAtlas:A0A0A0MSM0};
 KW   Reference proteome {ECO:0000313|Proteomes:UP000005640}.
 FT   COILED          544..568
 FT                   /evidence="ECO:0000256|SAM:Coils"
