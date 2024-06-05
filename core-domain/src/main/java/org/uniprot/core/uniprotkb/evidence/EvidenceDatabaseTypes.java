@@ -99,7 +99,7 @@ public enum EvidenceDatabaseTypes {
                 "JaponicusDB",
                 evd("JaponicusDB", "JaponicusDB", "I", "https://www.japonicusdb.org/gene/%value"));
         typeMap.put("MGI", evd("MGI", "MGI", "I", "http://www.informatics.jax.org/marker/%value"));
-        typeMap.put("NCIfam", evd("NCIfam", "NCIfam", "A", "https://www.uniprot.org/arba/%value"));
+        typeMap.put("NCBIfam", evd("NCBIfam", "NCBIfam", "A", "https://www.ebi.ac.uk/interpro/entry/ncbifam/%value"));
         typeMap.put(
                 "PDB", evd("PDB", "PDB", "I", "https://www.ebi.ac.uk/pdbe-srv/view/entry/%value"));
         typeMap.put(
