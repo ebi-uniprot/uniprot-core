@@ -25,7 +25,7 @@ class DeletedReasonTest {
 
     @Test
     void canGetFromIdWithValidMultipleId() {
-        assertEquals(DeletedReason.SOURCE_DELETION, DeletedReason.fromId("8"));
+        assertEquals(DeletedReason.UNKNOWN, DeletedReason.fromId("10"));
     }
 
     @Test

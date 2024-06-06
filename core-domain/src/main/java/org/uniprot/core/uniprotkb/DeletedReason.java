@@ -8,11 +8,15 @@ import java.util.List;
 
 public enum DeletedReason implements EnumDisplay {
 
-    UNKNOWN( "Reason unknown", 0, 4, 5, 7, 9, 12),
-    SOURCE_DELETION( "Deletion by sequence source", 1, 6, 8, 11),
-    SWISSPROT_DELETION( "SwissProt deletion", 2),
+    UNKNOWN( "", 0, 7, 9, 10, 12),
+    SOURCE_DELETION_EMBL( "Deleted from sequence source (EMBL)", 1),
+    SOURCE_DELETION_TAIR( "Deleted from sequence source (TAIR)", 4),
+    SOURCE_DELETION_SGD( "Deleted from sequence source (SGD)", 5),
+    SOURCE_DELETION_ENSEMBL( "Deleted from sequence source (ENSEMBL)", 6),
+    SOURCE_DELETION_PDB( "Deleted from sequence source (PDB)", 8),
+    SOURCE_DELETION_REFSEQ( "Deleted from sequence source (RefSeq)", 11),
+    SWISSPROT_DELETION( "Deleted from Swiss-Prot", 2),
     REDUNDANCY( "Redundant sequence", 3),
-    ENTRY_TYPE_CHANGE( "Change of entry type", 10),
     PROTEOME_REDUNDANCY( "Redundant proteome", 13),
     PROTEOME_EXCLUSION( "Excluded proteome", 14),
     OVERREPRESENTED( "Over-represented sequence", 15);
