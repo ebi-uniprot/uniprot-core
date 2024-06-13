@@ -33,8 +33,8 @@ public class UniParcProteomeFastaParser {
         Set<String> component = new HashSet<>();
 
         entry.getUniParcCrossReferences().stream()
-                .filter(UniParcCrossReference::isActive)
                 .filter(xref -> filterOrganism(xref, organism))
+                .sorted(Comparator.comparing(UniParcCrossReference::isActive,Comparator.reverseOrder()))
                 .forEach(xref -> {
                     if(uniProtDatabases.contains(xref.getDatabase())) {
                         if (Utils.notNullNotEmpty(xref.getId())) {
