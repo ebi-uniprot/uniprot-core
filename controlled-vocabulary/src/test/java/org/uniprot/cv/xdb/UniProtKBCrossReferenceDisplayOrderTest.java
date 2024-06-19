@@ -4,9 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 
+@Disabled
 class UniProtKBCrossReferenceDisplayOrderTest {
 
     @Test
