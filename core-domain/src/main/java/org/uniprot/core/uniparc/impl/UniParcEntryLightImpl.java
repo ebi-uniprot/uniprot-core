@@ -5,6 +5,7 @@ import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.UniParcEntryLight;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.util.Pair;
+import org.uniprot.core.util.Utils;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -54,18 +55,18 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
                                  List<Pair<Integer, String>> organisms, List<String> proteinNames, List<String> geneNames,
                                  List<String> proteomeIds) {
         this.uniParcId = uniParcId;
-        this.uniParcCrossReferences = uniParcCrossReferences;
-        this.commonTaxons = commonTaxons;
-        this.uniProtKBAccessions = uniProtKBAccessions;
+        this.uniParcCrossReferences = Utils.unmodifiableList(uniParcCrossReferences);
+        this.commonTaxons = Utils.unmodifiableList(commonTaxons);
+        this.uniProtKBAccessions = Utils.unmodifiableList(uniProtKBAccessions);
         this.uniProtExclusionReason = uniProtExclusionReason;
         this.sequence = sequence;
-        this.sequenceFeatures = sequenceFeatures;
+        this.sequenceFeatures = Utils.unmodifiableList(sequenceFeatures);
         this.oldestCrossRefCreated = oldestCrossRefCreated;
         this.mostRecentCrossRefUpdated = mostRecentCrossRefUpdated;
-        this.organisms = organisms;
-        this.proteinNames = proteinNames;
-        this.geneNames = geneNames;
-        this.proteomeIds = proteomeIds;
+        this.organisms = Utils.unmodifiableList(organisms);
+        this.proteinNames = Utils.unmodifiableList(proteinNames);
+        this.geneNames = Utils.unmodifiableList(geneNames);
+        this.proteomeIds = Utils.unmodifiableList(proteomeIds);
     }
 
     @Override
