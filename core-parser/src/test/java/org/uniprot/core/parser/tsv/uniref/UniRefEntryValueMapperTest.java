@@ -3,6 +3,7 @@ package org.uniprot.core.parser.tsv.uniref;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +48,7 @@ class UniRefEntryValueMapperTest {
                         "common_taxon",
                         "common_taxonid",
                         "count",
-                        "created",
+                        "updated",
                         "length",
                         "sequence",
                         "identity",
@@ -59,7 +60,7 @@ class UniRefEntryValueMapperTest {
         assertEquals("Homo", entryMap.get("common_taxon"));
         assertEquals("9605", entryMap.get("common_taxonid"));
         assertEquals("2", entryMap.get("count"));
-        assertEquals("2018-06-21", entryMap.get("created"));
+        assertEquals("2018-06-21", entryMap.get("updated"));
         assertEquals("312", entryMap.get("length"));
         assertEquals(
                 "MVSWGRFICLVVVTMATLSLARPSFSLVEDDFSAGSADFAFWERDGDSDGFDSHSDJHETRHJREH",
@@ -70,10 +71,11 @@ class UniRefEntryValueMapperTest {
 
     @Test
     void testNoCommonNumbers() {
+        LocalDate updated = LocalDate.now();
         UniRefEntry entry =
                 new UniRefEntryBuilder()
                         .id("UniRef50_P03923")
-                        .updated(LocalDate.now())
+                        .updated(updated)
                         .entryType(UniRefType.UniRef50)
                         .representativeMember(createReprestativeMember())
                         .build();
@@ -85,7 +87,7 @@ class UniRefEntryValueMapperTest {
                         "common_taxon",
                         "common_taxonid",
                         "count",
-                        "created",
+                        "updated",
                         "length",
                         "sequence",
                         "identity",
@@ -98,6 +100,8 @@ class UniRefEntryValueMapperTest {
         assertEquals("", entryMap.get("common_taxon"));
         assertEquals("", entryMap.get("common_taxonid"));
         assertEquals("", entryMap.get("count"));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        assertEquals(updated.format(formatter), entryMap.get("updated"));
         assertEquals(
                 "MVSWGRFICLVVVTMATLSLARPSFSLVEDDFSAGSADFAFWERDGDSDGFDSHSDJHETRHJREH",
                 entryMap.get("sequence"));

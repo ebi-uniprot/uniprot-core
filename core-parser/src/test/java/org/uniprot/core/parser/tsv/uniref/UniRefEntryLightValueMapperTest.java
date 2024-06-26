@@ -50,7 +50,7 @@ class UniRefEntryLightValueMapperTest {
         assertEquals("organism 1", entryMap.get("common_taxon"));
         assertEquals("1", entryMap.get("common_taxonid"));
         assertEquals(Integer.toString(MEMBER_COUNT), entryMap.get("count"));
-        assertEquals("2018-06-21", entryMap.get("created"));
+        assertEquals("2018-06-21", entryMap.get("updated"));
         assertEquals(Integer.toString(SEQUENCE.length()), entryMap.get("length"));
         assertEquals(SEQUENCE, entryMap.get("sequence"));
         assertEquals("1.0", entryMap.get("identity"));
