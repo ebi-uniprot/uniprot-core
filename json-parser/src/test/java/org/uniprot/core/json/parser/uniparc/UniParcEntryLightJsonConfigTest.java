@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.uniprot.core.json.parser.uniparc.UniParcEntryTest.getSeqFeature;
@@ -47,12 +48,12 @@ class UniParcEntryLightJsonConfigTest {
                 "UPI0000000002-EMBL-67890-1"
         );
 
-        List<Pair<Integer, String>> commonTaxons = List.of(
-                new PairImpl<>(9606, "Homo sapiens"),
-                new PairImpl<>(10090, "Mus musculus")
+        List<Pair<String, String>> commonTaxons = List.of(
+                new PairImpl<>("cellular organisms", "Homo sapiens"),
+                new PairImpl<>("Viruses", "Mus musculus")
         );
 
-        List<String> uniProtKBAccessions = List.of(
+        Set<String> uniProtKBAccessions = Set.of(
                 "P12345",
                 "Q67890"
         );
@@ -94,7 +95,6 @@ class UniParcEntryLightJsonConfigTest {
                 .uniParcCrossReferencesSet(uniParcCrossReferences)
                 .commonTaxonsSet(commonTaxons)
                 .uniProtKBAccessionsSet(uniProtKBAccessions)
-                .uniProtExclusionReason(uniProtExclusionReason)
                 .sequence(sequence)
                 .sequenceFeaturesSet(sequenceFeatures)
                 .oldestCrossRefCreated(oldestCrossRefCreated)

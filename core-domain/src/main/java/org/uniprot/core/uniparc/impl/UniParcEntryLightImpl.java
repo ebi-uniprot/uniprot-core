@@ -10,15 +10,15 @@ import org.uniprot.core.util.Utils;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class UniParcEntryLightImpl implements UniParcEntryLight {
 
     private static final long serialVersionUID = -6454735710941406443L;
     private final UniParcId uniParcId;
     private final List<String> uniParcCrossReferences;
-    private final List<Pair<Integer, String>> commonTaxons;
-    private final List<String> uniProtKBAccessions;
-    private final  String uniProtExclusionReason;
+    private final List<Pair<String, String>> commonTaxons;
+    private final Set<String> uniProtKBAccessions;
 
     private final  Sequence sequence;
 
@@ -37,28 +37,27 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
     private final List<String> proteomeIds;
 
     UniParcEntryLightImpl() {
-        this(null, null, null, null, null, null, null, null, null);
+        this(null, null, null, null, null, null, null, null);
     }
 
     UniParcEntryLightImpl(UniParcId uniParcId, List<String> uniParcCrossReferences,
-                                 List<Pair<Integer, String>> commonTaxons, List<String> uniProtKBAccessions,
-                                 String uniProtExclusionReason, Sequence sequence, List<SequenceFeature> sequenceFeatures,
+                                 List<Pair<String, String>> commonTaxons, Set<String> uniProtKBAccessions,
+                                  Sequence sequence, List<SequenceFeature> sequenceFeatures,
                                  LocalDate oldestCrossRefCreated, LocalDate mostRecentCrossRefUpdated) {
-        this(uniParcId, uniParcCrossReferences, commonTaxons, uniProtKBAccessions, uniProtExclusionReason,
+        this(uniParcId, uniParcCrossReferences, commonTaxons, uniProtKBAccessions,
                 sequence, sequenceFeatures, oldestCrossRefCreated, mostRecentCrossRefUpdated,
                 null, null, null, null);
     }
     UniParcEntryLightImpl(UniParcId uniParcId, List<String> uniParcCrossReferences,
-                                 List<Pair<Integer, String>> commonTaxons, List<String> uniProtKBAccessions,
-                                 String uniProtExclusionReason, Sequence sequence, List<SequenceFeature> sequenceFeatures,
+                                 List<Pair<String, String>> commonTaxons, Set<String> uniProtKBAccessions,
+                                  Sequence sequence, List<SequenceFeature> sequenceFeatures,
                                  LocalDate oldestCrossRefCreated, LocalDate mostRecentCrossRefUpdated,
                                  List<Pair<Integer, String>> organisms, List<String> proteinNames, List<String> geneNames,
                                  List<String> proteomeIds) {
         this.uniParcId = uniParcId;
         this.uniParcCrossReferences = Utils.unmodifiableList(uniParcCrossReferences);
         this.commonTaxons = Utils.unmodifiableList(commonTaxons);
-        this.uniProtKBAccessions = Utils.unmodifiableList(uniProtKBAccessions);
-        this.uniProtExclusionReason = uniProtExclusionReason;
+        this.uniProtKBAccessions = Utils.unmodifiableSet(uniProtKBAccessions);
         this.sequence = sequence;
         this.sequenceFeatures = Utils.unmodifiableList(sequenceFeatures);
         this.oldestCrossRefCreated = oldestCrossRefCreated;
@@ -80,18 +79,13 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
     }
 
     @Override
-    public List<Pair<Integer, String>> getCommonTaxons() {
+    public List<Pair<String, String>> getCommonTaxons() {
         return commonTaxons;
     }
 
     @Override
-    public List<String> getUniProtKBAccessions() {
+    public Set<String> getUniProtKBAccessions() {
         return uniProtKBAccessions;
-    }
-
-    @Override
-    public String getUniProtExclusionReason() {
-        return uniProtExclusionReason;
     }
 
     @Override
@@ -142,7 +136,6 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
         return Objects.equals(getUniParcId(), that.getUniParcId()) && Objects.equals(getUniParcCrossReferences(),
                 that.getUniParcCrossReferences()) && Objects.equals(getCommonTaxons(), that.getCommonTaxons()) &&
                 Objects.equals(getUniProtKBAccessions(), that.getUniProtKBAccessions()) &&
-                Objects.equals(getUniProtExclusionReason(), that.getUniProtExclusionReason()) &&
                 Objects.equals(getSequence(), that.getSequence()) &&
                 Objects.equals(getSequenceFeatures(), that.getSequenceFeatures()) &&
                 Objects.equals(getOldestCrossRefCreated(), that.getOldestCrossRefCreated()) &&
@@ -156,7 +149,7 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
     @Override
     public int hashCode() {
         return Objects.hash(getUniParcId(), getUniParcCrossReferences(), getCommonTaxons(), getUniProtKBAccessions(),
-                getUniProtExclusionReason(), getSequence(), getSequenceFeatures(), getOldestCrossRefCreated(),
+                 getSequence(), getSequenceFeatures(), getOldestCrossRefCreated(),
                 getMostRecentCrossRefUpdated(), getOrganisms(), getProteinNames(), getGeneNames(), getProteomeIds());
     }
 }

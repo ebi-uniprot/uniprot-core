@@ -11,14 +11,15 @@ import org.uniprot.core.util.Utils;
 import javax.annotation.Nonnull;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
     private UniParcId uniParcId;
     private List<String> uniParcCrossReferences = new ArrayList<>();
-    private List<Pair<Integer, String>> commonTaxons = new ArrayList<>();
-    private List<String> uniProtKBAccessions = new ArrayList<>();
-    private String uniProtExclusionReason;
+    private List<Pair<String, String>> commonTaxons = new ArrayList<>();
+    private Set<String> uniProtKBAccessions = new LinkedHashSet<>();
 
     private Sequence sequence;
 
@@ -40,7 +41,7 @@ public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
     @Override
     public UniParcEntryLight build() {
         return new UniParcEntryLightImpl(uniParcId, uniParcCrossReferences, commonTaxons, uniProtKBAccessions,
-                uniProtExclusionReason, sequence, sequenceFeatures, oldestCrossRefCreated,
+                sequence, sequenceFeatures, oldestCrossRefCreated,
                 mostRecentCrossRefUpdated, organisms, proteinNames, geneNames, proteomeIds);
     }
 
@@ -64,28 +65,23 @@ public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
         return this;
     }
 
-    public @Nonnull UniParcEntryLightBuilder commonTaxonsSet(List<Pair<Integer, String>> commonTaxons){
+    public @Nonnull UniParcEntryLightBuilder commonTaxonsSet(List<Pair<String, String>> commonTaxons){
         this.commonTaxons = Utils.modifiableList(commonTaxons);
         return this;
     }
 
-    public @Nonnull UniParcEntryLightBuilder commonTaxonsAdd(Pair<Integer, String> commonTaxon){
+    public @Nonnull UniParcEntryLightBuilder commonTaxonsAdd(Pair<String, String> commonTaxon){
         Utils.addOrIgnoreNull(commonTaxon, this.commonTaxons);
         return this;
     }
 
-    public @Nonnull UniParcEntryLightBuilder uniProtKBAccessionsSet(List<String> uniProtKBAccessions){
-        this.uniProtKBAccessions = Utils.modifiableList(uniProtKBAccessions);
+    public @Nonnull UniParcEntryLightBuilder uniProtKBAccessionsSet(Set<String> uniProtKBAccessions){
+        this.uniProtKBAccessions = Utils.modifiableSet(uniProtKBAccessions);
         return this;
     }
 
     public @Nonnull UniParcEntryLightBuilder uniProtKBAccessionsAdd(String uniProtKBAccession){
          Utils.addOrIgnoreNull(uniProtKBAccession, this.uniProtKBAccessions);
-        return this;
-    }
-
-    public @Nonnull UniParcEntryLightBuilder uniProtExclusionReason(String uniProtExclusionReason){
-        this.uniProtExclusionReason = uniProtExclusionReason;
         return this;
     }
 
@@ -159,7 +155,6 @@ public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
                 .uniParcCrossReferencesSet(uniParcEntryLight.getUniParcCrossReferences())
                 .commonTaxonsSet(uniParcEntryLight.getCommonTaxons())
                 .uniProtKBAccessionsSet(uniParcEntryLight.getUniProtKBAccessions())
-                .uniProtExclusionReason(uniParcEntryLight.getUniProtExclusionReason())
                 .sequence(uniParcEntryLight.getSequence())
                 .sequenceFeaturesSet(uniParcEntryLight.getSequenceFeatures())
                 .oldestCrossRefCreated(uniParcEntryLight.getOldestCrossRefCreated())

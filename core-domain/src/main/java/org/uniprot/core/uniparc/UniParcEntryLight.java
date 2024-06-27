@@ -6,16 +6,15 @@ import org.uniprot.core.util.Pair;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 public interface UniParcEntryLight extends Serializable {
     UniParcId getUniParcId();
 
     List<String> getUniParcCrossReferences();
-    List<Pair<Integer, String>> getCommonTaxons();// taxonId and name pair
+    List<Pair<String, String>> getCommonTaxons();// taxonId and name pair
 
-    List<String> getUniProtKBAccessions();
-
-    String getUniProtExclusionReason();
+    Set<String> getUniProtKBAccessions();
 
     Sequence getSequence();
 

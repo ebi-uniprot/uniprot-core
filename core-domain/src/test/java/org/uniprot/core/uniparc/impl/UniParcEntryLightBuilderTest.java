@@ -10,6 +10,7 @@ import org.uniprot.core.util.PairImpl;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.sequenceFeatures;
@@ -73,9 +74,9 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testCommonTaxonsSet() {
-        List<Pair<Integer, String>> commonTaxons = List.of(
-                new PairImpl<>(9606, "Homo sapiens"),
-                new PairImpl<>(10090, "Mus musculus")
+        List<Pair<String, String>> commonTaxons = List.of(
+                new PairImpl<>("Viruses", "Homo sapiens"),
+                new PairImpl<>("unclassified", "Mus musculus")
         );
         UniParcEntryLight entry = new UniParcEntryLightBuilder().commonTaxonsSet(commonTaxons).build();
         assertEquals(commonTaxons, entry.getCommonTaxons());
@@ -83,7 +84,7 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testCommonTaxonsAdd() {
-        Pair<Integer, String> commonTaxon = new PairImpl<>(9606, "Homo sapiens");
+        Pair<String, String> commonTaxon = new PairImpl<>("Viruses", "Homo sapiens");
         UniParcEntryLight entry = new UniParcEntryLightBuilder().commonTaxonsAdd(commonTaxon).build();
         assertTrue(entry.getCommonTaxons().contains(commonTaxon));
     }
@@ -96,24 +97,24 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testCommonTaxonsSetThenAdd() {
-        List<Pair<Integer, String>> commonTaxons = List.of(
-                new PairImpl<>(9606, "Homo sapiens")
+        List<Pair<String, String>> commonTaxons = List.of(
+                new PairImpl<>("Viruses", "Homo sapiens")
         );
-        Pair<Integer, String> additionalCommonTaxon = new PairImpl<>(10090, "Mus musculus");
+        Pair<String, String> additionalCommonTaxon = new PairImpl<>("Other type", "Mus musculus");
         UniParcEntryLight entry = new UniParcEntryLightBuilder()
                 .commonTaxonsSet(commonTaxons)
                 .commonTaxonsAdd(additionalCommonTaxon)
                 .build();
         assertEquals(2, entry.getCommonTaxons().size());
         assertTrue(entry.getCommonTaxons().containsAll(List.of(
-                new PairImpl<>(9606, "Homo sapiens"),
-                new PairImpl<>(10090, "Mus musculus")
+                new PairImpl<>("Viruses", "Homo sapiens"),
+                new PairImpl<>("Other type", "Mus musculus")
         )));
     }
 
     @Test
     void testUniProtKBAccessionsSet() {
-        List<String> accessions = List.of("P12345", "Q67890");
+        Set<String> accessions = Set.of("P12345", "Q67890");
         UniParcEntryLight entry = new UniParcEntryLightBuilder().uniProtKBAccessionsSet(accessions).build();
         assertEquals(accessions, entry.getUniProtKBAccessions());
     }
@@ -133,7 +134,7 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testUniProtKBAccessionsSetThenAdd() {
-        List<String> accessions = List.of("P12345");
+        Set<String> accessions = Set.of("P12345");
         String additionalAccession = "Q67890";
         UniParcEntryLight entry = new UniParcEntryLightBuilder()
                 .uniProtKBAccessionsSet(accessions)
@@ -142,14 +143,6 @@ class UniParcEntryLightBuilderTest {
         assertEquals(2, entry.getUniProtKBAccessions().size());
         assertTrue(entry.getUniProtKBAccessions().containsAll(List.of("P12345", "Q67890")));
     }
-
-    @Test
-    void testUniProtExclusionReason() {
-        String exclusionReason = "Outdated sequence";
-        UniParcEntryLight entry = new UniParcEntryLightBuilder().uniProtExclusionReason(exclusionReason).build();
-        assertEquals(exclusionReason, entry.getUniProtExclusionReason());
-    }
-
 
     @Test
     void testSequence() {
@@ -316,7 +309,7 @@ class UniParcEntryLightBuilderTest {
     void testFrom() {
         String uniParcId = "UPI0000000001";
         List<String> uniParcCrossReferences = List.of("UPI0000000001-REFSEQ-12345-3", "UPI0000000002-EMBL-67890-1");
-        List<Pair<Integer, String>> commonTaxons = List.of(new PairImpl<>(9606, "Homo sapiens"), new PairImpl<>(10090, "Mus musculus"));
+        List<Pair<String, String>> commonTaxons = List.of(new PairImpl<>("Viruses", "Homo sapiens"), new PairImpl<>("unclassified", "Mus musculus"));
         String uniProtExclusionReason = "Reason";
         String seq = "MVSWGRFICLVVVTMATLSLARPSFSLVED";
         Sequence sequence = new SequenceBuilder(seq).build();
@@ -332,7 +325,6 @@ class UniParcEntryLightBuilderTest {
                 .uniParcId(uniParcId)
                 .uniParcCrossReferencesSet(uniParcCrossReferences)
                 .commonTaxonsSet(commonTaxons)
-                .uniProtExclusionReason(uniProtExclusionReason)
                 .sequence(sequence)
                 .sequenceFeaturesSet(sequenceFeatures)
                 .oldestCrossRefCreated(oldestCrossRefCreated)
@@ -348,7 +340,6 @@ class UniParcEntryLightBuilderTest {
         assertEquals(originalEntry.getUniParcId(), newEntry.getUniParcId());
         assertEquals(originalEntry.getUniParcCrossReferences(), newEntry.getUniParcCrossReferences());
         assertEquals(originalEntry.getCommonTaxons(), newEntry.getCommonTaxons());
-        assertEquals(originalEntry.getUniProtExclusionReason(), newEntry.getUniProtExclusionReason());
         assertEquals(originalEntry.getSequence(), newEntry.getSequence());
         assertEquals(originalEntry.getSequenceFeatures(), newEntry.getSequenceFeatures());
         assertEquals(originalEntry.getOldestCrossRefCreated(), newEntry.getOldestCrossRefCreated());
