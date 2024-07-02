@@ -19,7 +19,7 @@ public abstract class AbstractUniRefEntryMapper<T> implements EntityValueMapper<
                             "common_taxon",
                             "common_taxonid",
                             "count",
-                            "updated",
+                            "date_modified",
                             "length",
                             "sequence",
                             "identity",

@@ -48,7 +48,7 @@ class UniRefEntryValueMapperTest {
                         "common_taxon",
                         "common_taxonid",
                         "count",
-                        "updated",
+                        "date_modified",
                         "length",
                         "sequence",
                         "identity",
@@ -60,7 +60,7 @@ class UniRefEntryValueMapperTest {
         assertEquals("Homo", entryMap.get("common_taxon"));
         assertEquals("9605", entryMap.get("common_taxonid"));
         assertEquals("2", entryMap.get("count"));
-        assertEquals("2018-06-21", entryMap.get("updated"));
+        assertEquals("2018-06-21", entryMap.get("date_modified"));
         assertEquals("312", entryMap.get("length"));
         assertEquals(
                 "MVSWGRFICLVVVTMATLSLARPSFSLVEDDFSAGSADFAFWERDGDSDGFDSHSDJHETRHJREH",
@@ -87,7 +87,7 @@ class UniRefEntryValueMapperTest {
                         "common_taxon",
                         "common_taxonid",
                         "count",
-                        "updated",
+                        "date_modified",
                         "length",
                         "sequence",
                         "identity",
@@ -101,7 +101,7 @@ class UniRefEntryValueMapperTest {
         assertEquals("", entryMap.get("common_taxonid"));
         assertEquals("", entryMap.get("count"));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        assertEquals(updated.format(formatter), entryMap.get("updated"));
+        assertEquals(updated.format(formatter), entryMap.get("date_modified"));
         assertEquals(
                 "MVSWGRFICLVVVTMATLSLARPSFSLVEDDFSAGSADFAFWERDGDSDGFDSHSDJHETRHJREH",
                 entryMap.get("sequence"));
@@ -137,13 +137,13 @@ class UniRefEntryValueMapperTest {
         UniRefType type = UniRefType.UniRef100;
         String name = "Cluster: AMP-binding enzyme family protein";
         UniRefEntryId entryId = new UniRefEntryIdBuilder(id).build();
-        LocalDate created = LocalDate.of(2018, 6, 21);
+        LocalDate updated = LocalDate.of(2018, 6, 21);
         Organism organism = new OrganismBuilder().taxonId(9605L).scientificName("Homo").build();
 
         return new UniRefEntryBuilder()
                 .id(entryId)
                 .name(name)
-                .updated(created)
+                .updated(updated)
                 .entryType(type)
                 .commonTaxon(organism)
                 .representativeMember(createReprestativeMember())
