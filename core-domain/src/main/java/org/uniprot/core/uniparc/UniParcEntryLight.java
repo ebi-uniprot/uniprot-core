@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface UniParcEntryLight extends Serializable {
-    UniParcId getUniParcId();
+    String getUniParcId();
 
     List<String> getUniParcCrossReferences();
     List<Pair<String, String>> getCommonTaxons();// taxonId and name pair

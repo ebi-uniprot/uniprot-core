@@ -4,7 +4,6 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.UniParcEntryLight;
-import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.Utils;
 
@@ -16,7 +15,7 @@ import java.util.List;
 import java.util.Set;
 
 public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
-    private UniParcId uniParcId;
+    private String uniParcId;
     private List<String> uniParcCrossReferences = new ArrayList<>();
     private List<Pair<String, String>> commonTaxons = new ArrayList<>();
     private Set<String> uniProtKBAccessions = new LinkedHashSet<>();
@@ -45,12 +44,7 @@ public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
                 mostRecentCrossRefUpdated, organisms, proteinNames, geneNames, proteomeIds);
     }
 
-
-    public @Nonnull UniParcEntryLightBuilder uniParcId(String uniParcId) {
-        return uniParcId(new UniParcIdBuilder(uniParcId).build());
-    }
-
-    public  @Nonnull UniParcEntryLightBuilder uniParcId(UniParcId uniParcId) {
+    public  @Nonnull UniParcEntryLightBuilder uniParcId(String uniParcId) {
         this.uniParcId = uniParcId;
         return this;
     }

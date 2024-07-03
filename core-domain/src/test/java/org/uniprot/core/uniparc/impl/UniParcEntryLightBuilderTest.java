@@ -19,23 +19,12 @@ import static org.uniprot.core.ObjectsForTests.sequenceFeatures;
 class UniParcEntryLightBuilderTest {
 
     @Test
-    void testUniParcId() {
-        UniParcEntryLight entry =
-                new UniParcEntryLightBuilder()
-                        .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
-                        .build();
-        assertEquals("UPI0000083A08", entry.getUniParcId().getValue());
-        assertNull(entry.getOldestCrossRefCreated());
-        assertNull(entry.getMostRecentCrossRefUpdated());
-    }
-
-    @Test
     void testUniParcIdString() {
         UniParcEntryLight entry =
                 new UniParcEntryLightBuilder()
                         .uniParcId("UPI0000083A08")
                         .build();
-        assertEquals("UPI0000083A08", entry.getUniParcId().getValue());
+        assertEquals("UPI0000083A08", entry.getUniParcId());
         assertNull(entry.getOldestCrossRefCreated());
         assertNull(entry.getMostRecentCrossRefUpdated());
     }

@@ -3,7 +3,6 @@ package org.uniprot.core.uniparc.impl;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.UniParcEntryLight;
-import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.Utils;
 
@@ -15,7 +14,7 @@ import java.util.Set;
 public class UniParcEntryLightImpl implements UniParcEntryLight {
 
     private static final long serialVersionUID = -6454735710941406443L;
-    private final UniParcId uniParcId;
+    private final String uniParcId;
     private final List<String> uniParcCrossReferences;
     private final List<Pair<String, String>> commonTaxons;
     private final Set<String> uniProtKBAccessions;
@@ -40,7 +39,7 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
         this(null, null, null, null, null, null, null, null);
     }
 
-    UniParcEntryLightImpl(UniParcId uniParcId, List<String> uniParcCrossReferences,
+    UniParcEntryLightImpl(String uniParcId, List<String> uniParcCrossReferences,
                                  List<Pair<String, String>> commonTaxons, Set<String> uniProtKBAccessions,
                                   Sequence sequence, List<SequenceFeature> sequenceFeatures,
                                  LocalDate oldestCrossRefCreated, LocalDate mostRecentCrossRefUpdated) {
@@ -48,7 +47,7 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
                 sequence, sequenceFeatures, oldestCrossRefCreated, mostRecentCrossRefUpdated,
                 null, null, null, null);
     }
-    UniParcEntryLightImpl(UniParcId uniParcId, List<String> uniParcCrossReferences,
+    UniParcEntryLightImpl(String uniParcId, List<String> uniParcCrossReferences,
                                  List<Pair<String, String>> commonTaxons, Set<String> uniProtKBAccessions,
                                   Sequence sequence, List<SequenceFeature> sequenceFeatures,
                                  LocalDate oldestCrossRefCreated, LocalDate mostRecentCrossRefUpdated,
@@ -69,7 +68,7 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
     }
 
     @Override
-    public UniParcId getUniParcId() {
+    public String getUniParcId() {
         return uniParcId;
     }
 
