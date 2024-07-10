@@ -14,11 +14,7 @@ import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.*;
 import org.uniprot.core.uniparc.UniParcCrossReference;
-import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
-import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
-import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
-import org.uniprot.core.uniparc.impl.UniParcEntryBuilder;
-import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
+import org.uniprot.core.uniparc.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
@@ -28,22 +24,27 @@ import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
  */
 class UniParcFastaParserTest {
 
+    public static final String EXPECTED_FASTA_RESULT = """
+            >UPI0000083A08 status=active
+            MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT
+            LLRAIDWFRDNGYFNA""";
+
     @Test
-    void testToFasta() {
+    void testUniParcEntryToFasta() {
         UniParcEntry entry = create();
         String fasta = UniParcFastaParser.toFasta(entry);
-        System.out.println(fasta);
-        String expected =
-                ">UPI0000083A08 status=active\n"
-                        + "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT\n"
-                        + "LLRAIDWFRDNGYFNA";
-        assertEquals(expected, fasta);
+        assertEquals(EXPECTED_FASTA_RESULT, fasta);
+    }
+
+    @Test
+    void testUniParcEntryLightToFasta() {
+        UniParcEntryLight entry = createEntryLight();
+        String fasta = UniParcFastaParser.toFasta(entry);
+        assertEquals(EXPECTED_FASTA_RESULT, fasta);
     }
 
     private UniParcEntry create() {
-        String seq =
-                "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT" + "LLRAIDWFRDNGYFNA";
-        Sequence sequence = new SequenceBuilder(seq).build();
+        Sequence sequence = getSequence();
         List<UniParcCrossReference> xrefs = getXrefs();
         List<SequenceFeature> seqFeatures = getSeqFeatures();
         UniParcEntry entry =
@@ -54,6 +55,20 @@ class UniParcFastaParserTest {
                         .sequenceFeaturesSet(seqFeatures)
                         .build();
         return entry;
+    }
+
+    private UniParcEntryLight createEntryLight() {
+        return new UniParcEntryLightBuilder()
+                .uniParcId("UPI0000083A08")
+                .sequence(getSequence())
+                .build();
+    }
+
+    private static Sequence getSequence() {
+        String seq =
+                "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT" + "LLRAIDWFRDNGYFNA";
+        Sequence sequence = new SequenceBuilder(seq).build();
+        return sequence;
     }
 
     private List<SequenceFeature> getSeqFeatures() {
