@@ -57,6 +57,35 @@ public class SubcellularLocationConverterTest extends AbstractConverterTest {
         SubcellularLocation converted = converter.fromXml(xmlsubcelLocation);
         assertEquals(subcelLocation, converted);
     }
+    
+    @Test
+    void testLocationWithLowercase() {
+    	 SubcellularLocationValue location =
+                 create(
+                         "Golgi apparatus, trans-Golgi network membrane",
+                         List.of(
+                                 "ECO:0000256|PIRNR:PIRNR037393"));
+        
+         SubcellularLocation subcelLocation =
+                 new SubcellularLocationBuilder()
+                         .location(location)
+                         .build();
+         SubcellularLocationConverter converter =
+                 new SubcellularLocationConverter(
+                         new EvidenceIndexMapper(), new SubcellLocationNameMapImpl());
+         SubcellularLocationType xmlsubcelLocation = converter.toXml(subcelLocation);
+         String xml =UniProtXmlTestHelper.toXmlString(
+                 xmlsubcelLocation, SubcellularLocationType.class, "subcellularLocation");
+         String expectedXml ="""
+<subcellularLocation xmlns="http://uniprot.org/uniprot">
+    <location evidence="1">Golgi apparatus</location>
+    <location evidence="1">trans-Golgi network membrane</location>
+</subcellularLocation>\
+         		""";
+        assertEquals(expectedXml, xml ) ;		 
+         SubcellularLocation converted = converter.fromXml(xmlsubcelLocation);
+         assertEquals(subcelLocation, converted);
+    }
 
     private SubcellularLocationValue create(String val, List<String> evidences) {
         return new SubcellularLocationValueBuilder()
