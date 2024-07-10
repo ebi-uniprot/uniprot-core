@@ -4,21 +4,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Sequence;
-import org.uniprot.core.Value;
 import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.impl.SequenceImpl;
-import org.uniprot.core.impl.ValueImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.json.parser.deserializer.LocalDateDeserializer;
 import org.uniprot.core.json.parser.serializer.LocalDateSerializer;
 import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.UniParcEntryLight;
-import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniparc.impl.InterProGroupImpl;
 import org.uniprot.core.uniparc.impl.SequenceFeatureImpl;
 import org.uniprot.core.uniparc.impl.UniParcEntryLightImpl;
-import org.uniprot.core.uniparc.impl.UniParcIdImpl;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
 
@@ -61,8 +57,6 @@ public class UniParcEntryLightJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(UniParcEntryLight.class, UniParcEntryLightImpl.class);
         mod.addAbstractTypeMapping(InterProGroup.class, InterProGroupImpl.class);
         mod.addAbstractTypeMapping(SequenceFeature.class, SequenceFeatureImpl.class);
-        mod.addAbstractTypeMapping(Value.class, ValueImpl.class);
-        mod.addAbstractTypeMapping(UniParcId.class, UniParcIdImpl.class);
         mod.addAbstractTypeMapping(CrossReference.class, CrossReferenceImpl.class);
         mod.addAbstractTypeMapping(Sequence.class, SequenceImpl.class);
         mod.addAbstractTypeMapping(Pair.class, PairImpl.class);
@@ -75,7 +69,6 @@ public class UniParcEntryLightJsonConfig extends JsonConfig {
         ObjectMapper prettyObjMapper = getDefaultSimpleObjectMapper();
         SimpleModule simpleMod = new SimpleModule();
         simpleMod.addSerializer(LocalDate.class, new LocalDateSerializer());
-        simpleMod.addSerializer(UniParcIdImpl.class, new UniParcIdSerializer());
         prettyObjMapper.registerModule(simpleMod);
         return prettyObjMapper;
     }
