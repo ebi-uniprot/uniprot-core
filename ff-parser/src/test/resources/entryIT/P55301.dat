@@ -97,7 +97,7 @@ DR   Pfam; PF01913; FTR; 1.
 DR   Pfam; PF02741; FTR_C; 1.
 DR   PIRSF; PIRSF006414; Ftr_formyl_trnsf; 1.
 DR   SUPFAM; SSF55112; SSF55112; 2.
-DR   NCBIfam; NF03119; one_C_fhcD; 1.
+DR   NCBIFam; NF03119; one_C_fhcD; 1.
 PE   1: Evidence at protein level;
 KW   3D-structure; Acyltransferase; Complete proteome; Cytoplasm;
 KW   Direct protein sequencing; Methanogenesis; One-carbon metabolism;

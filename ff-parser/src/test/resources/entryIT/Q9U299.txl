@@ -120,7 +120,6 @@ DR   ComplexPortal; CPX-420; xtbd-paxt-1 complex.
 DR   DIP; DIP-24636N; -.
 DR   IntAct; Q9U299; 3.
 DR   STRING; 6239.Y48B6A.3; -.
-DR   EPD; Q9U299; -.
 DR   PaxDb; Q9U299; -.
 DR   PeptideAtlas; Q9U299; -.
 DR   PRIDE; Q9U299; -.

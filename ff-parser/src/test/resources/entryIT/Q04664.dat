@@ -101,7 +101,7 @@ DR   GO; GO:0000271; P:polysaccharide biosynthetic process; IEA:UniProtKB-KW.
 DR   InterPro; IPR003362; Bact_transf.
 DR   InterPro; IPR017475; EPS_sugar_tfrase.
 DR   Pfam; PF02397; Bac_transf; 1.
-DR   NCBIfam; NF03025; EPS_sugtrans; 1.
+DR   NCBIFam; NF03025; EPS_sugtrans; 1.
 PE   3: Inferred from homology;
 KW   Capsule biogenesis/degradation; Cell membrane; Complete proteome;
 KW   Exopolysaccharide synthesis; Membrane; Transferase; Transmembrane;
