@@ -44,13 +44,6 @@ public enum EvidenceDatabaseTypes {
                         "I",
                         "http://www.candidagenome.org/cgi-bin/locus.pl?dbid=%value"));
         typeMap.put("EMBL", evd("EMBL", "EMBL", "I", "https://www.ebi.ac.uk/ena/data/view/%value"));
-        typeMap.put(
-                "EPD",
-                evd(
-                        "EPD",
-                        "EPD",
-                        "C",
-                        "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/proteomics_mapping/README"));
         typeMap.put("Ensembl", evd("Ensembl", "Ensembl", "I", "https://www.ensembl.org/id/%value"));
         typeMap.put(
                 "EnsemblBacteria",
@@ -106,13 +99,7 @@ public enum EvidenceDatabaseTypes {
                 "JaponicusDB",
                 evd("JaponicusDB", "JaponicusDB", "I", "https://www.japonicusdb.org/gene/%value"));
         typeMap.put("MGI", evd("MGI", "MGI", "I", "http://www.informatics.jax.org/marker/%value"));
-        typeMap.put(
-                "MaxQB",
-                evd(
-                        "MaxQB",
-                        "MaxQB",
-                        "C",
-                        "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/proteomics_mapping/README"));
+        typeMap.put("NCBIfam", evd("NCBIfam", "NCBIfam", "A", "https://www.ebi.ac.uk/interpro/entry/ncbifam/%value"));
         typeMap.put(
                 "PDB", evd("PDB", "PDB", "I", "https://www.ebi.ac.uk/pdbe-srv/view/entry/%value"));
         typeMap.put(
