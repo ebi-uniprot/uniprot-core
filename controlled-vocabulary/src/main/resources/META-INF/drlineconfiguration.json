@@ -380,13 +380,6 @@
 		"uriLink": "http://www.moonlightingproteins.org/proteins/?q=%id"
 	},
 	{
-		"name": "CLAE",
-		"displayName": "CLAE",
-		"category": "PFAM",
-		"uriLink": "https://clae.fungalgenomics.ca/enzyme/%id",
-        "idMappingName": "CLAE_ID"
-	},
-	{
 		"name": "PeroxiBase",
 		"displayName": "PeroxiBase",
 		"category": "PFAM",
@@ -546,12 +539,6 @@
 		"uriLink": "http://compluyeast2dpage.dacya.ucm.es/cgi-bin/2d/2d.cgi?ac=%id"
 	},
 	{
-		"name": "DOSAC-COBS-2DPAGE",
-		"displayName": "DOSAC-COBS-2DPAGE",
-		"category": "2DG",
-		"uriLink": "http://www.dosac.unipa.it/cgi-bin/2d/2d.cgi?ac=%id"
-	},
-	{
 		"name": "OGP",
 		"displayName": "OGP",
 		"category": "2DG",
@@ -569,18 +556,6 @@
 		"category": "PROTEOMIC",
 		"uriLink": "https://assays.cancer.gov/%id",
         "idMappingName": "CPTAC_ID"
-	},
-	{
-		"name": "EPD",
-		"displayName": "EPD",
-		"category": "PROTEOMIC",
-		"uriLink": "https://www.peptracker.com/epd/analytics/?protein_id=%id"
-	},
-	{
-		"name": "MaxQB",
-		"displayName": "MaxQB",
-		"category": "PROTEOMIC",
-		"uriLink": "http://maxqb.biochem.mpg.de/mxdb/protein/show/%id"
 	},
 	{
 		"name": "PaxDb",
