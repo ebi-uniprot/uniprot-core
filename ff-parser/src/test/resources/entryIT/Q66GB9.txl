@@ -55,7 +55,7 @@ DR   PANTHER; PTHR36918; PTHR36918; 1.
 DR   Pfam; PF02556; SecB; 1.
 DR   PRINTS; PR01594; SECBCHAPRONE.
 DR   SUPFAM; SSF54611; SSF54611; 1.
-DR   NCBIfam; NF00809; secB; 1.
+DR   NCBIFam; NF00809; secB; 1.
 PE   3: Inferred from homology;
 KW   Chaperone; Complete proteome; Cytoplasm; Protein transport; Translocation;
 KW   Transport.

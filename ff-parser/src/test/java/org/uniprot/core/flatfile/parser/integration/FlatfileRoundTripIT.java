@@ -28,7 +28,6 @@ import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import com.google.common.io.CharSource;
 import com.google.common.io.Resources;
 
-@Disabled
 class FlatfileRoundTripIT {
     private static final Logger LOGGER = getLogger(FlatfileRoundTripIT.class);
 
@@ -85,19 +84,18 @@ class FlatfileRoundTripIT {
         "/entryIT/P09230.txl, false",
         "/entryIT/P0CH48.txl, false",
         "/entryIT/P09919.txl, false",
-        //                "/entryIT/P58928.txl, false", // line dash issue
+       
         "/entryIT/Q9FK72.txl, false",
         "/entryIT/Q00731.txl, false",
         "/entryIT/P54757.txl, false",
         "/entryIT/Q93NG3.txl, false",
-        //                "/entryIT/Q9SKK4.txl, false", // disabled
-        //                "/entryIT/O93383.txl, false", // line dash issue
         "/entryIT/Q9U299.txl, false",
         "/entryIT/Q401N2.txl, false",
         "/entryIT/P87498.dat, true",
         "/entryIT/A0A663DJA2.dat, true",
         "/entryIT/P0DTC1.dat, true",
-        "/entryIT/Q4WI89.txl, false"
+        "/entryIT/Q4WI89.txl, false",
+        "/entryIT/O75398.dat, true"
     })
     void roundTripTest(String fileName, boolean isPublic) {
         testFile(fileName, isPublic);
