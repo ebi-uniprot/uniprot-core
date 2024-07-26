@@ -2,7 +2,6 @@ package org.uniprot.core.parser.tsv.uniparc;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Location;
-import org.uniprot.core.Property;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.*;
@@ -98,13 +97,22 @@ class UniParcEntryLightValueMapperTest {
         String seq = "MVSWGRFICLVVVTMATLSLARPSFSLVED";
         Sequence sequence = new SequenceBuilder(seq).build();
         List<SequenceFeature> seqFeatures = getSeqFeatures();
+
+        Organism organism1 = new OrganismBuilder().taxonId(9606).scientificName("Homo sapiens").build();
+        Organism organism2 = new OrganismBuilder().taxonId(10090).scientificName("MOUSE").build();
+        LinkedHashSet<Organism> organisms = new LinkedHashSet<>(List.of(organism1, organism2));
+
+        LinkedHashSet<String> proteinNames = new LinkedHashSet<>(List.of("protein1", "protein2"));
+        LinkedHashSet<String> geneNames = new LinkedHashSet<>(List.of("gene1", "gene2"));
+        LinkedHashSet<String> proteomes = new LinkedHashSet<>(List.of("proteome1", "proteome2"));
+
         return new UniParcEntryLightBuilder()
                 .uniParcId("UPI0000083A08")
-                .uniProtKBAccessionsSet(Set.of("P12345", "P52346"))
-                .organismsSet(List.of(new PairImpl<>(9606, "Homo sapiens"), new PairImpl<>(10090, "MOUSE")))
-                .proteomeIdsSet(List.of("proteome1", "proteome2"))
-                .geneNamesSet(List.of("gene1", "gene2"))
-                .proteinNamesSet(List.of("protein1", "protein2"))
+                .uniProtKBAccessionsSet(new LinkedHashSet<>(List.of("P52346", "P12345")))
+                .organismsSet(organisms)
+                .proteomesSet(proteomes)
+                .geneNamesSet(geneNames)
+                .proteinNamesSet(proteinNames)
                 .mostRecentCrossRefUpdated(LocalDate.of(2020, 10, 25))
                 .oldestCrossRefCreated(LocalDate.of(2017, 2, 12))
                 .sequence(sequence)

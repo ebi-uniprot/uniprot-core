@@ -1,10 +1,12 @@
 package org.uniprot.core.uniparc;
 
 import org.uniprot.core.Sequence;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.util.Pair;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -12,7 +14,7 @@ public interface UniParcEntryLight extends Serializable {
     String getUniParcId();
 
     List<String> getUniParcCrossReferences();
-    List<Pair<String, String>> getCommonTaxons();// taxonId and name pair
+    List<CommonOrganism> getCommonTaxons();
 
     Set<String> getUniProtKBAccessions();
 
@@ -25,11 +27,11 @@ public interface UniParcEntryLight extends Serializable {
     LocalDate getMostRecentCrossRefUpdated();
 
     // lazily loaded fields
-    List<Pair<Integer, String>> getOrganisms();// organism id and name pair
+    Set<Organism> getOrganisms();// organism id and name pair
 
-    List<String> getProteinNames();
+    Set<String> getProteinNames();
 
-    List<String> getGeneNames();
+    Set<String> getGeneNames();
 
-    List<String> getProteomeIds();
+    Set<String> getProteomes();
 }

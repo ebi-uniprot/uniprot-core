@@ -3,12 +3,16 @@ package org.uniprot.core.uniparc.impl;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
+import org.uniprot.core.uniparc.CommonOrganism;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.UniParcEntryLight;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
 
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -63,9 +67,9 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testCommonTaxonsSet() {
-        List<Pair<String, String>> commonTaxons = List.of(
-                new PairImpl<>("Viruses", "Homo sapiens"),
-                new PairImpl<>("unclassified", "Mus musculus")
+        List<CommonOrganism> commonTaxons = List.of(
+                new CommonOrganismBuilder().topLevel("Viruses").commonTaxon("HIV").build(),
+                new CommonOrganismBuilder().topLevel("unclassified").commonTaxon("Mus musculus").build()
         );
         UniParcEntryLight entry = new UniParcEntryLightBuilder().commonTaxonsSet(commonTaxons).build();
         assertEquals(commonTaxons, entry.getCommonTaxons());
@@ -73,7 +77,7 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testCommonTaxonsAdd() {
-        Pair<String, String> commonTaxon = new PairImpl<>("Viruses", "Homo sapiens");
+        CommonOrganism commonTaxon = new CommonOrganismBuilder().topLevel("Viruses").commonTaxon("Homo sapiens").build();
         UniParcEntryLight entry = new UniParcEntryLightBuilder().commonTaxonsAdd(commonTaxon).build();
         assertTrue(entry.getCommonTaxons().contains(commonTaxon));
     }
@@ -86,24 +90,26 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testCommonTaxonsSetThenAdd() {
-        List<Pair<String, String>> commonTaxons = List.of(
-                new PairImpl<>("Viruses", "Homo sapiens")
-        );
-        Pair<String, String> additionalCommonTaxon = new PairImpl<>("Other type", "Mus musculus");
+        List<CommonOrganism> commonTaxons = List.of(
+                new CommonOrganismBuilder().topLevel("Viruses").commonTaxon("HIV").build());
+        CommonOrganism additionalCommonTaxon = new CommonOrganismBuilder()
+                .topLevel("Other type")
+                .commonTaxon("Mus musculus")
+                .build();
         UniParcEntryLight entry = new UniParcEntryLightBuilder()
                 .commonTaxonsSet(commonTaxons)
                 .commonTaxonsAdd(additionalCommonTaxon)
                 .build();
         assertEquals(2, entry.getCommonTaxons().size());
         assertTrue(entry.getCommonTaxons().containsAll(List.of(
-                new PairImpl<>("Viruses", "Homo sapiens"),
-                new PairImpl<>("Other type", "Mus musculus")
+                new CommonOrganismBuilder().topLevel("Viruses").commonTaxon("HIV").build(),
+                new CommonOrganismBuilder().topLevel("Other type").commonTaxon("Mus musculus").build()
         )));
     }
 
     @Test
     void testUniProtKBAccessionsSet() {
-        Set<String> accessions = Set.of("P12345", "Q67890");
+        LinkedHashSet<String> accessions = new LinkedHashSet<>(Set.of("P12345", "Q67890"));
         UniParcEntryLight entry = new UniParcEntryLightBuilder().uniProtKBAccessionsSet(accessions).build();
         assertEquals(accessions, entry.getUniProtKBAccessions());
     }
@@ -123,7 +129,7 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testUniProtKBAccessionsSetThenAdd() {
-        Set<String> accessions = Set.of("P12345");
+        LinkedHashSet<String> accessions = new LinkedHashSet<>(Set.of("P12345"));
         String additionalAccession = "Q67890";
         UniParcEntryLight entry = new UniParcEntryLightBuilder()
                 .uniProtKBAccessionsSet(accessions)
@@ -188,23 +194,23 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testOrganismsSet() {
-        Pair<Integer, String> organism1 = new PairImpl<>(9606, "Homo sapiens");
-        Pair<Integer, String> organism2 = new PairImpl<>(10090, "Mus musculus");
-        List<Pair<Integer, String>> organisms = List.of(organism1, organism2);
+        Organism organism1 = new OrganismBuilder().taxonId(9606).scientificName("Homo sapiens").build();
+        Organism organism2 = new OrganismBuilder().taxonId(10090).scientificName("Mus musculus").build();
+        LinkedHashSet<Organism> organisms = new LinkedHashSet<>(List.of(organism1, organism2));
         UniParcEntryLight entry = new UniParcEntryLightBuilder().organismsSet(organisms).build();
         assertEquals(organisms, entry.getOrganisms());
     }
 
     @Test
     void testOrganismsAdd() {
-        Pair<Integer, String> organism = new PairImpl<>(9606, "Homo sapiens");
+        Organism organism = new OrganismBuilder().taxonId(9606).scientificName("Homo sapiens").build();
         UniParcEntryLight entry = new UniParcEntryLightBuilder().organismsAdd(organism).build();
         assertTrue(entry.getOrganisms().contains(organism));
     }
 
     @Test
     void testProteinNamesSet() {
-        List<String> proteinNames = List.of("Protein1", "Protein2");
+        LinkedHashSet<String> proteinNames = new LinkedHashSet<>(Set.of("Protein1", "Protein2"));
         UniParcEntryLight entry = new UniParcEntryLightBuilder().proteinNamesSet(proteinNames).build();
         assertEquals(proteinNames, entry.getProteinNames());
     }
@@ -218,7 +224,7 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testGeneNamesSet() {
-        List<String> geneNames = List.of("Gene1", "Gene2");
+        LinkedHashSet<String> geneNames = new LinkedHashSet<>(List.of("Gene1", "Gene2"));
         UniParcEntryLight entry = new UniParcEntryLightBuilder().geneNamesSet(geneNames).build();
         assertEquals(geneNames, entry.getGeneNames());
     }
@@ -232,23 +238,23 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testProteomeIdsSet() {
-        List<String> proteomeIds = List.of("UP000005640", "UP000002494");
-        UniParcEntryLight entry = new UniParcEntryLightBuilder().proteomeIdsSet(proteomeIds).build();
-        assertEquals(proteomeIds, entry.getProteomeIds());
+        LinkedHashSet<String> proteomeIds = new LinkedHashSet<>(List.of("UP000005640", "UP000002494"));
+        UniParcEntryLight entry = new UniParcEntryLightBuilder().proteomesSet(proteomeIds).build();
+        assertEquals(proteomeIds, entry.getProteomes());
     }
 
     @Test
     void testProteomeIdsAdd() {
         String proteomeId = "UP000005640";
-        UniParcEntryLight entry = new UniParcEntryLightBuilder().proteomeIdsAdd(proteomeId).build();
-        assertTrue(entry.getProteomeIds().contains(proteomeId));
+        UniParcEntryLight entry = new UniParcEntryLightBuilder().proteomesAdd(proteomeId).build();
+        assertTrue(entry.getProteomes().contains(proteomeId));
     }
 
     @Test
     void testOrganismsSetThenAdd() {
-        Pair<Integer, String> organism1 = new PairImpl<>(9606, "Homo sapiens");
-        Pair<Integer, String> organism2 = new PairImpl<>(10090, "Mus musculus");
-        List<Pair<Integer, String>> organisms = List.of(organism1);
+        Organism organism1 = new OrganismBuilder().taxonId(9606).scientificName("Homo sapiens").build();
+        Organism organism2 = new OrganismBuilder().taxonId(10090).scientificName("Mus musculus").build();
+        LinkedHashSet<Organism> organisms = new LinkedHashSet<>(Set.of(organism1));
         UniParcEntryLight entry = new UniParcEntryLightBuilder()
                 .organismsSet(organisms)
                 .organismsAdd(organism2)
@@ -259,7 +265,7 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testProteinNamesSetThenAdd() {
-        List<String> proteinNames = List.of("Protein1");
+        LinkedHashSet<String> proteinNames = new LinkedHashSet<>(Set.of("Protein1"));
         String proteinName = "Protein2";
         UniParcEntryLight entry = new UniParcEntryLightBuilder()
                 .proteinNamesSet(proteinNames)
@@ -271,7 +277,7 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testGeneNamesSetThenAdd() {
-        List<String> geneNames = List.of("Gene1");
+        LinkedHashSet<String> geneNames = new LinkedHashSet<>(Set.of("Gene1"));
         String geneName = "Gene2";
         UniParcEntryLight entry = new UniParcEntryLightBuilder()
                 .geneNamesSet(geneNames)
@@ -283,14 +289,14 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testProteomeIdsSetThenAdd() {
-        List<String> proteomeIds = List.of("UP000005640");
-        String proteomeId = "UP000002494";
+        LinkedHashSet<String> proteomes = new LinkedHashSet<>(Set.of("UP000005640:chromosome"));
+        String proteome = "UP000002494:chromosome";
         UniParcEntryLight entry = new UniParcEntryLightBuilder()
-                .proteomeIdsSet(proteomeIds)
-                .proteomeIdsAdd(proteomeId)
+                .proteomesSet(proteomes)
+                .proteomesAdd(proteome)
                 .build();
-        assertEquals(2, entry.getProteomeIds().size());
-        assertTrue(entry.getProteomeIds().containsAll(List.of("UP000005640", "UP000002494")));
+        assertEquals(2, entry.getProteomes().size());
+        assertTrue(entry.getProteomes().containsAll(List.of("UP000005640:chromosome", "UP000002494:chromosome")));
     }
 
 
@@ -298,17 +304,22 @@ class UniParcEntryLightBuilderTest {
     void testFrom() {
         String uniParcId = "UPI0000000001";
         List<String> uniParcCrossReferences = List.of("UPI0000000001-REFSEQ-12345-3", "UPI0000000002-EMBL-67890-1");
-        List<Pair<String, String>> commonTaxons = List.of(new PairImpl<>("Viruses", "Homo sapiens"), new PairImpl<>("unclassified", "Mus musculus"));
-        String uniProtExclusionReason = "Reason";
+        List<CommonOrganism> commonTaxons = List.of(
+                new CommonOrganismBuilder().topLevel("Viruses").commonTaxon("HIV").build(),
+                new CommonOrganismBuilder().topLevel("unclassified").commonTaxon("Mus musculus").build());
         String seq = "MVSWGRFICLVVVTMATLSLARPSFSLVED";
         Sequence sequence = new SequenceBuilder(seq).build();
         List<SequenceFeature> sequenceFeatures = sequenceFeatures();
         LocalDate oldestCrossRefCreated = LocalDate.of(2022, 1, 1);
         LocalDate mostRecentCrossRefUpdated = LocalDate.of(2023, 1, 1);
-        List<Pair<Integer, String>> organisms = List.of(new PairImpl<>(9606, "Homo sapiens"), new PairImpl<>(10090, "Mus musculus"));
-        List<String> proteinNames = List.of("Protein1", "Protein2");
-        List<String> geneNames = List.of("Gene1", "Gene2");
-        List<String> proteomeIds = List.of("UP000005640", "UP000002494");
+
+        Organism organism1 = new OrganismBuilder().taxonId(9606).scientificName("Homo sapiens").build();
+        Organism organism2 = new OrganismBuilder().taxonId(10090).scientificName("Mus musculus").build();
+        LinkedHashSet<Organism> organisms = new LinkedHashSet<>(List.of(organism1, organism2));
+
+        LinkedHashSet<String> proteinNames = new LinkedHashSet(Set.of("Protein1", "Protein2"));
+        LinkedHashSet<String> geneNames = new LinkedHashSet(Set.of("Gene1", "Gene2"));
+        LinkedHashSet<String> proteomes = new LinkedHashSet(Set.of("UP000005640", "UP000002494"));
 
         UniParcEntryLight originalEntry = new UniParcEntryLightBuilder()
                 .uniParcId(uniParcId)
@@ -321,7 +332,7 @@ class UniParcEntryLightBuilderTest {
                 .organismsSet(organisms)
                 .proteinNamesSet(proteinNames)
                 .geneNamesSet(geneNames)
-                .proteomeIdsSet(proteomeIds)
+                .proteomesSet(proteomes)
                 .build();
 
         UniParcEntryLight newEntry = UniParcEntryLightBuilder.from(originalEntry).build();
@@ -336,7 +347,7 @@ class UniParcEntryLightBuilderTest {
         assertEquals(originalEntry.getOrganisms(), newEntry.getOrganisms());
         assertEquals(originalEntry.getProteinNames(), newEntry.getProteinNames());
         assertEquals(originalEntry.getGeneNames(), newEntry.getGeneNames());
-        assertEquals(originalEntry.getProteomeIds(), newEntry.getProteomeIds());
+        assertEquals(originalEntry.getProteomes(), newEntry.getProteomes());
         assertEquals(originalEntry, newEntry);
     }
 

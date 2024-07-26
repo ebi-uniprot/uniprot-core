@@ -5,21 +5,25 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
+import org.uniprot.core.json.parser.uniprot.CreateUtils;
+import org.uniprot.core.uniparc.CommonOrganism;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.SignatureDbType;
 import org.uniprot.core.uniparc.UniParcEntryLight;
+import org.uniprot.core.uniparc.impl.CommonOrganismBuilder;
 import org.uniprot.core.uniparc.impl.UniParcEntryLightBuilder;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.uniprot.core.json.parser.uniparc.UniParcEntryTest.getSeqFeature;
+
 
 class UniParcEntryLightJsonConfigTest {
 
@@ -48,15 +52,12 @@ class UniParcEntryLightJsonConfigTest {
                 "UPI0000000002-EMBL-67890-1"
         );
 
-        List<Pair<String, String>> commonTaxons = List.of(
-                new PairImpl<>("cellular organisms", "Homo sapiens"),
-                new PairImpl<>("Viruses", "Mus musculus")
+        List<CommonOrganism> commonTaxons = List.of(
+                new CommonOrganismBuilder().topLevel("cellular organisms").commonTaxon("Homo sapiens").build(),
+                new CommonOrganismBuilder().topLevel("Viruses").commonTaxon("Mus musculus").build()
         );
 
-        Set<String> uniProtKBAccessions = Set.of(
-                "P12345",
-                "Q67890"
-        );
+        LinkedHashSet<String> uniProtKBAccessions = new LinkedHashSet<>(Set.of("P12345", "Q67890"));
 
         String uniProtExclusionReason = "Excluded due to redundancy";
 
@@ -69,25 +70,20 @@ class UniParcEntryLightJsonConfigTest {
         LocalDate oldestCrossRefCreated = LocalDate.of(2020, 1, 1);
         LocalDate mostRecentCrossRefUpdated = LocalDate.of(2023, 6, 19);
 
-        List<Pair<Integer, String>> organisms = List.of(
-                new PairImpl<>(9606, "Homo sapiens"),
-                new PairImpl<>(10090, "Mus musculus")
-        );
+        List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730");
+        Organism organism = new OrganismBuilder()
+                .taxonId(123L)
+                .scientificName("ScientificName")
+                .lineagesAdd("Lineage 1")
+                .commonName("common Name")
+                .synonymsAdd("syn name")
+                .evidencesSet(evidences)
+                .build();
 
-        List<String> proteinNames = List.of(
-                "Protein Alpha",
-                "Protein Beta"
-        );
-
-        List<String> geneNames = List.of(
-                "Gene1",
-                "Gene2"
-        );
-
-        List<String> proteomeIds = List.of(
-                "UP000005640",
-                "UP000000589"
-        );
+        LinkedHashSet<Organism> organisms = new LinkedHashSet<>(List.of(organism));
+        LinkedHashSet<String> proteinNames = new LinkedHashSet<>(List.of("Protein Alpha", "Protein Beta"));
+        LinkedHashSet<String> geneNames = new LinkedHashSet<>(List.of("Gene1", "Gene2"));
+        LinkedHashSet<String> proteomes = new LinkedHashSet<>(List.of("UP000005640:Chromosome 1", "UP000000589:Chromosome 2"));
 
         // Use the builder to create a complete UniParcEntryLight
         return new UniParcEntryLightBuilder()
@@ -102,7 +98,7 @@ class UniParcEntryLightJsonConfigTest {
                 .organismsSet(organisms)
                 .proteinNamesSet(proteinNames)
                 .geneNamesSet(geneNames)
-                .proteomeIdsSet(proteomeIds)
+                .proteomesSet(proteomes)
                 .build();
     }
 }

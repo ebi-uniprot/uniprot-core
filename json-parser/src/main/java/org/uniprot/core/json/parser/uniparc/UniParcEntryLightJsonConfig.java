@@ -9,12 +9,18 @@ import org.uniprot.core.impl.SequenceImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.json.parser.deserializer.LocalDateDeserializer;
 import org.uniprot.core.json.parser.serializer.LocalDateSerializer;
+import org.uniprot.core.uniparc.CommonOrganism;
 import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.UniParcEntryLight;
+import org.uniprot.core.uniparc.impl.CommonOrganismImpl;
 import org.uniprot.core.uniparc.impl.InterProGroupImpl;
 import org.uniprot.core.uniparc.impl.SequenceFeatureImpl;
 import org.uniprot.core.uniparc.impl.UniParcEntryLightImpl;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.impl.EvidenceImpl;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismImpl;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
 
@@ -59,7 +65,9 @@ public class UniParcEntryLightJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(SequenceFeature.class, SequenceFeatureImpl.class);
         mod.addAbstractTypeMapping(CrossReference.class, CrossReferenceImpl.class);
         mod.addAbstractTypeMapping(Sequence.class, SequenceImpl.class);
-        mod.addAbstractTypeMapping(Pair.class, PairImpl.class);
+        mod.addAbstractTypeMapping(CommonOrganism.class, CommonOrganismImpl.class);
+        mod.addAbstractTypeMapping(Organism.class, OrganismImpl.class);
+        mod.addAbstractTypeMapping(Evidence.class, EvidenceImpl.class);
         objMapper.registerModule(mod);
 
         return objMapper;

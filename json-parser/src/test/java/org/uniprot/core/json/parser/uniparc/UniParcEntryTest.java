@@ -33,7 +33,7 @@ import static org.junit.jupiter.api.Assertions.fail;
  */
 public class UniParcEntryTest {
     @Test
-    void test() {
+    void testUniParcEntryJsonParser() {
         UniParcEntry entry = getCompleteUniParcEntry();
 
         ValidateJson.verifyJsonRoundTripParser(
