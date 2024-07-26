@@ -3,7 +3,6 @@ package org.uniprot.core.parser.tsv.uniparc;
 import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.uniparc.UniParcEntryLight;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
-import org.uniprot.core.util.Pair;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -91,7 +90,7 @@ public class UniParcEntryLightValueMapper implements EntityValueMapper<UniParcEn
                     map.put(UNIPARC_FIELDS.get(6),String.join(DELIMITER2, entry.getProteinNames()));
                     break;
                 case "proteome":
-                    map.put(UNIPARC_FIELDS.get(7),String.join(DELIMITER2, entry.getProteomes()));
+                    map.put(UNIPARC_FIELDS.get(7),entry.getProteomes().stream().map(e -> e.getId()+":"+e.getComponent()).collect(Collectors.joining(DELIMITER2)));
                     break;
                 case "accession":
                     map.put(UNIPARC_FIELDS.get(8),String.join(DELIMITER2, entry.getUniProtKBAccessions()));

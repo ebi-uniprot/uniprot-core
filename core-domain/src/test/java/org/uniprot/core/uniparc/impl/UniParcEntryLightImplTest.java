@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.CommonOrganism;
+import org.uniprot.core.uniparc.Proteome;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.UniParcEntryLight;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
@@ -12,7 +13,6 @@ import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.sequenceFeatures;
@@ -41,10 +41,10 @@ class UniParcEntryLightImplTest {
         Organism organism2 = new OrganismBuilder().taxonId(10090).scientificName("Mus musculus").build();
         LinkedHashSet<Organism> organisms = new LinkedHashSet<>(List.of(organism1, organism2));
 
-        LinkedHashSet<String> proteinNames = new LinkedHashSet<>(Set.of("Protein1", "Protein2"));
-        LinkedHashSet<String> geneNames = new LinkedHashSet<>(Set.of("Gene1", "Gene2"));
-        LinkedHashSet<String> proteomes = new LinkedHashSet<>(Set.of("UP000005640", "UP000002494"));
-        LinkedHashSet<String> uniProtKBAccessions = new LinkedHashSet<>(Set.of("P21802", "P12345"));
+        LinkedHashSet<String> proteinNames = new LinkedHashSet<>(List.of("Protein1", "Protein2"));
+        LinkedHashSet<String> geneNames = new LinkedHashSet<>(List.of("Gene1", "Gene2"));
+        LinkedHashSet<Proteome> proteomes = new LinkedHashSet<>(List.of(new ProteomeBuilder().id("UP000005640").component("C1").build(), new ProteomeBuilder().id("UP000002494").component("C2").build()));
+        LinkedHashSet<String> uniProtKBAccessions = new LinkedHashSet<>(List.of("P21802", "P12345"));
 
         UniParcEntryLight impl = new UniParcEntryLightImpl(uniParcId, uniParcCrossReferences, commonTaxons, uniProtKBAccessions,
                 sequence, sequenceFeatures, oldestCrossRefCreated, mostRecentCrossRefUpdated, organisms, proteinNames, geneNames, proteomes);

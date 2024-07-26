@@ -2,10 +2,10 @@ package org.uniprot.core.uniparc.impl;
 
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniparc.CommonOrganism;
+import org.uniprot.core.uniparc.Proteome;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.UniParcEntryLight;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
-import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.Utils;
 
 import java.time.LocalDate;
@@ -16,7 +16,7 @@ import java.util.Set;
 
 public class UniParcEntryLightImpl implements UniParcEntryLight {
 
-    private static final long serialVersionUID = -6454735710941406443L;
+    private static final long serialVersionUID = -5488878159071674580L;
     private final String uniParcId;
     private final List<String> uniParcCrossReferences;
     private final List<CommonOrganism> commonTaxons;
@@ -29,7 +29,7 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
     private final Set<Organism> organisms;
     private final Set<String> proteinNames;
     private final Set<String> geneNames;
-    private final Set<String> proteomes;
+    private final Set<Proteome> proteomes;
 
     UniParcEntryLightImpl() {
         this(null, null, null, null, null, null, null, null);
@@ -48,7 +48,7 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
                                   Sequence sequence, List<SequenceFeature> sequenceFeatures,
                                  LocalDate oldestCrossRefCreated, LocalDate mostRecentCrossRefUpdated,
                           LinkedHashSet<Organism> organisms, LinkedHashSet<String> proteinNames, LinkedHashSet<String> geneNames,
-                          LinkedHashSet<String> proteomes) {
+                          LinkedHashSet<Proteome> proteomes) {
         this.uniParcId = uniParcId;
         this.uniParcCrossReferences = Utils.unmodifiableList(uniParcCrossReferences);
         this.commonTaxons = Utils.unmodifiableList(commonTaxons);
@@ -119,7 +119,7 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
     }
 
     @Override
-    public Set<String> getProteomes() {
+    public Set<Proteome> getProteomes() {
         return proteomes;
     }
 

@@ -8,7 +8,6 @@ import org.uniprot.core.uniparc.*;
 import org.uniprot.core.uniparc.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
-import org.uniprot.core.util.PairImpl;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -28,7 +27,7 @@ class UniParcEntryLightValueMapperTest {
         verify("UPI0000083A08", "upi", result);
         verify("Homo sapiens; MOUSE", "organism", result);
         verify("9606; 10090", "organism_id", result);
-        verify("proteome1; proteome2", "proteome", result);
+        verify("UP000005640:C1; UP000002494:C2", "proteome", result);
     }
 
     @Test
@@ -104,7 +103,7 @@ class UniParcEntryLightValueMapperTest {
 
         LinkedHashSet<String> proteinNames = new LinkedHashSet<>(List.of("protein1", "protein2"));
         LinkedHashSet<String> geneNames = new LinkedHashSet<>(List.of("gene1", "gene2"));
-        LinkedHashSet<String> proteomes = new LinkedHashSet<>(List.of("proteome1", "proteome2"));
+        LinkedHashSet<Proteome> proteomes = new LinkedHashSet<>(List.of(new ProteomeBuilder().id("UP000005640").component("C1").build(), new ProteomeBuilder().id("UP000002494").component("C2").build()));
 
         return new UniParcEntryLightBuilder()
                 .uniParcId("UPI0000083A08")

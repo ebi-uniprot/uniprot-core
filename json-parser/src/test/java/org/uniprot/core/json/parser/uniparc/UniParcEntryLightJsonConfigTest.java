@@ -6,17 +6,13 @@ import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
-import org.uniprot.core.uniparc.CommonOrganism;
-import org.uniprot.core.uniparc.SequenceFeature;
-import org.uniprot.core.uniparc.SignatureDbType;
-import org.uniprot.core.uniparc.UniParcEntryLight;
+import org.uniprot.core.uniparc.*;
 import org.uniprot.core.uniparc.impl.CommonOrganismBuilder;
+import org.uniprot.core.uniparc.impl.ProteomeBuilder;
 import org.uniprot.core.uniparc.impl.UniParcEntryLightBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
-import org.uniprot.core.util.Pair;
-import org.uniprot.core.util.PairImpl;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -57,7 +53,7 @@ class UniParcEntryLightJsonConfigTest {
                 new CommonOrganismBuilder().topLevel("Viruses").commonTaxon("Mus musculus").build()
         );
 
-        LinkedHashSet<String> uniProtKBAccessions = new LinkedHashSet<>(Set.of("P12345", "Q67890"));
+        LinkedHashSet<String> uniProtKBAccessions = new LinkedHashSet<>(List.of("P12345", "Q67890"));
 
         String uniProtExclusionReason = "Excluded due to redundancy";
 
@@ -83,7 +79,7 @@ class UniParcEntryLightJsonConfigTest {
         LinkedHashSet<Organism> organisms = new LinkedHashSet<>(List.of(organism));
         LinkedHashSet<String> proteinNames = new LinkedHashSet<>(List.of("Protein Alpha", "Protein Beta"));
         LinkedHashSet<String> geneNames = new LinkedHashSet<>(List.of("Gene1", "Gene2"));
-        LinkedHashSet<String> proteomes = new LinkedHashSet<>(List.of("UP000005640:Chromosome 1", "UP000000589:Chromosome 2"));
+        LinkedHashSet<Proteome> proteomes = new LinkedHashSet<>(List.of(new ProteomeBuilder().id("UP000005640").component("Chromosome 1").build(), new ProteomeBuilder().id("UP000000589").component("Chromosome 2").build()));
 
         // Use the builder to create a complete UniParcEntryLight
         return new UniParcEntryLightBuilder()

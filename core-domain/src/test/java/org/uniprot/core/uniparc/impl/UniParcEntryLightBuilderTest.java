@@ -4,17 +4,15 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.CommonOrganism;
+import org.uniprot.core.uniparc.Proteome;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.UniParcEntryLight;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
-import org.uniprot.core.util.Pair;
-import org.uniprot.core.util.PairImpl;
 
 import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.sequenceFeatures;
@@ -109,7 +107,7 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testUniProtKBAccessionsSet() {
-        LinkedHashSet<String> accessions = new LinkedHashSet<>(Set.of("P12345", "Q67890"));
+        LinkedHashSet<String> accessions = new LinkedHashSet<>(List.of("P12345", "Q67890"));
         UniParcEntryLight entry = new UniParcEntryLightBuilder().uniProtKBAccessionsSet(accessions).build();
         assertEquals(accessions, entry.getUniProtKBAccessions());
     }
@@ -129,7 +127,7 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testUniProtKBAccessionsSetThenAdd() {
-        LinkedHashSet<String> accessions = new LinkedHashSet<>(Set.of("P12345"));
+        LinkedHashSet<String> accessions = new LinkedHashSet<>(List.of("P12345"));
         String additionalAccession = "Q67890";
         UniParcEntryLight entry = new UniParcEntryLightBuilder()
                 .uniProtKBAccessionsSet(accessions)
@@ -210,7 +208,7 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testProteinNamesSet() {
-        LinkedHashSet<String> proteinNames = new LinkedHashSet<>(Set.of("Protein1", "Protein2"));
+        LinkedHashSet<String> proteinNames = new LinkedHashSet<>(List.of("Protein1", "Protein2"));
         UniParcEntryLight entry = new UniParcEntryLightBuilder().proteinNamesSet(proteinNames).build();
         assertEquals(proteinNames, entry.getProteinNames());
     }
@@ -238,14 +236,14 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testProteomeIdsSet() {
-        LinkedHashSet<String> proteomeIds = new LinkedHashSet<>(List.of("UP000005640", "UP000002494"));
-        UniParcEntryLight entry = new UniParcEntryLightBuilder().proteomesSet(proteomeIds).build();
-        assertEquals(proteomeIds, entry.getProteomes());
+        LinkedHashSet<Proteome> proteomes = new LinkedHashSet<>(List.of(new ProteomeBuilder().id("UP000005640").component("C1").build(), new ProteomeBuilder().id("UP000002494").component("C2").build()));
+        UniParcEntryLight entry = new UniParcEntryLightBuilder().proteomesSet(proteomes).build();
+        assertEquals(proteomes, entry.getProteomes());
     }
 
     @Test
     void testProteomeIdsAdd() {
-        String proteomeId = "UP000005640";
+        Proteome proteomeId = new ProteomeBuilder().id("UP000005640").component("C1").build();
         UniParcEntryLight entry = new UniParcEntryLightBuilder().proteomesAdd(proteomeId).build();
         assertTrue(entry.getProteomes().contains(proteomeId));
     }
@@ -254,7 +252,7 @@ class UniParcEntryLightBuilderTest {
     void testOrganismsSetThenAdd() {
         Organism organism1 = new OrganismBuilder().taxonId(9606).scientificName("Homo sapiens").build();
         Organism organism2 = new OrganismBuilder().taxonId(10090).scientificName("Mus musculus").build();
-        LinkedHashSet<Organism> organisms = new LinkedHashSet<>(Set.of(organism1));
+        LinkedHashSet<Organism> organisms = new LinkedHashSet<>(List.of(organism1));
         UniParcEntryLight entry = new UniParcEntryLightBuilder()
                 .organismsSet(organisms)
                 .organismsAdd(organism2)
@@ -265,7 +263,7 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testProteinNamesSetThenAdd() {
-        LinkedHashSet<String> proteinNames = new LinkedHashSet<>(Set.of("Protein1"));
+        LinkedHashSet<String> proteinNames = new LinkedHashSet<>(List.of("Protein1"));
         String proteinName = "Protein2";
         UniParcEntryLight entry = new UniParcEntryLightBuilder()
                 .proteinNamesSet(proteinNames)
@@ -277,7 +275,7 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testGeneNamesSetThenAdd() {
-        LinkedHashSet<String> geneNames = new LinkedHashSet<>(Set.of("Gene1"));
+        LinkedHashSet<String> geneNames = new LinkedHashSet<>(List.of("Gene1"));
         String geneName = "Gene2";
         UniParcEntryLight entry = new UniParcEntryLightBuilder()
                 .geneNamesSet(geneNames)
@@ -289,14 +287,16 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testProteomeIdsSetThenAdd() {
-        LinkedHashSet<String> proteomes = new LinkedHashSet<>(Set.of("UP000005640:chromosome"));
-        String proteome = "UP000002494:chromosome";
+        Proteome proteome1 = new ProteomeBuilder().id("UP000005640").component("chromosome").build();
+        LinkedHashSet<Proteome> proteomes = new LinkedHashSet<>(List.of(proteome1));
+        Proteome proteome2 = new ProteomeBuilder().id("UP000002494").component("chromosome").build();
+
         UniParcEntryLight entry = new UniParcEntryLightBuilder()
                 .proteomesSet(proteomes)
-                .proteomesAdd(proteome)
+                .proteomesAdd(proteome2)
                 .build();
         assertEquals(2, entry.getProteomes().size());
-        assertTrue(entry.getProteomes().containsAll(List.of("UP000005640:chromosome", "UP000002494:chromosome")));
+        assertTrue(entry.getProteomes().containsAll(List.of(proteome1, proteome2)));
     }
 
 
@@ -317,9 +317,9 @@ class UniParcEntryLightBuilderTest {
         Organism organism2 = new OrganismBuilder().taxonId(10090).scientificName("Mus musculus").build();
         LinkedHashSet<Organism> organisms = new LinkedHashSet<>(List.of(organism1, organism2));
 
-        LinkedHashSet<String> proteinNames = new LinkedHashSet(Set.of("Protein1", "Protein2"));
-        LinkedHashSet<String> geneNames = new LinkedHashSet(Set.of("Gene1", "Gene2"));
-        LinkedHashSet<String> proteomes = new LinkedHashSet(Set.of("UP000005640", "UP000002494"));
+        LinkedHashSet<String> proteinNames = new LinkedHashSet(List.of("Protein1", "Protein2"));
+        LinkedHashSet<String> geneNames = new LinkedHashSet(List.of("Gene1", "Gene2"));
+        LinkedHashSet<Proteome> proteomes = new LinkedHashSet<>(List.of(new ProteomeBuilder().id("UP000005640").component("C1").build(), new ProteomeBuilder().id("UP000002494").component("C2").build()));
 
         UniParcEntryLight originalEntry = new UniParcEntryLightBuilder()
                 .uniParcId(uniParcId)

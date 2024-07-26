@@ -2,11 +2,9 @@ package org.uniprot.core.uniparc;
 
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
-import org.uniprot.core.util.Pair;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -33,5 +31,5 @@ public interface UniParcEntryLight extends Serializable {
 
     Set<String> getGeneNames();
 
-    Set<String> getProteomes();
+    Set<Proteome> getProteomes();
 }
