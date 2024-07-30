@@ -533,12 +533,6 @@
 		"uriLink": "https://www.ncbi.nlm.nih.gov/snp/%id"
 	},
 	{
-		"name": "COMPLUYEAST-2DPAGE",
-		"displayName": "COMPLUYEAST-2DPAGE",
-		"category": "2DG",
-		"uriLink": "http://compluyeast2dpage.dacya.ucm.es/cgi-bin/2d/2d.cgi?ac=%id"
-	},
-	{
 		"name": "OGP",
 		"displayName": "OGP",
 		"category": "2DG",
