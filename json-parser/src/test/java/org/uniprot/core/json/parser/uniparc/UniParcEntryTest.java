@@ -8,17 +8,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.Location;
 import org.uniprot.core.Property;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
 import org.uniprot.core.uniparc.*;
-import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
-import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
-import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
-import org.uniprot.core.uniparc.impl.UniParcEntryBuilder;
+import org.uniprot.core.uniparc.impl.*;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
@@ -125,7 +121,7 @@ public class UniParcEntryTest {
         return new SequenceFeatureBuilder()
                 .signatureDbType(signatureType)
                 .signatureDbId("id-" + signatureType)
-                .locationsAdd(new Location(81, 163))
+                .locationsAdd(new SequenceFeatureLocationBuilder().range(81, 163).alignment("48M").build())
                 .interproGroup(
                         new InterProGroupBuilder()
                                 .id("IPR007123")

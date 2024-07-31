@@ -2,12 +2,13 @@ package org.uniprot.core.xml.uniparc;
 
 import java.util.stream.Collectors;
 
-import org.uniprot.core.Location;
 import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
+import org.uniprot.core.uniparc.SequenceFeatureLocation;
 import org.uniprot.core.uniparc.SignatureDbType;
 import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
 import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
+import org.uniprot.core.uniparc.impl.SequenceFeatureLocationBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniparc.LocationType;
 import org.uniprot.core.xml.jaxb.uniparc.ObjectFactory;
@@ -36,13 +37,15 @@ public class SequenceFeatureConverter implements Converter<SeqFeatureType, Seque
     @Override
     public SequenceFeature fromXml(SeqFeatureType xmlObj) {
         SequenceFeatureBuilder builder = new SequenceFeatureBuilder();
-        builder.interproGroup(interproGroupConverter.fromXml(xmlObj.getIpr()))
-                .signatureDbType(SignatureDbType.typeOf(xmlObj.getDatabase()))
+                builder.signatureDbType(SignatureDbType.typeOf(xmlObj.getDatabase()))
                 .signatureDbId(xmlObj.getId())
                 .locationsSet(
                         xmlObj.getLcn().stream()
                                 .map(locationConverter::fromXml)
                                 .collect(Collectors.toList()));
+        if(xmlObj.getIpr() != null){
+            builder.interproGroup(interproGroupConverter.fromXml(xmlObj.getIpr()));
+        }
 
         return builder.build();
     }
@@ -52,7 +55,9 @@ public class SequenceFeatureConverter implements Converter<SeqFeatureType, Seque
         SeqFeatureType xmlObj = xmlFactory.createSeqFeatureType();
         xmlObj.setDatabase(uniObj.getSignatureDbType().getDisplayName());
         xmlObj.setId(uniObj.getSignatureDbId());
-        xmlObj.setIpr(interproGroupConverter.toXml(uniObj.getInterProDomain()));
+        if(uniObj.getInterProDomain() != null) {
+            xmlObj.setIpr(interproGroupConverter.toXml(uniObj.getInterProDomain()));
+        }
 
         uniObj.getLocations().stream()
                 .map(locationConverter::toXml)
@@ -81,7 +86,7 @@ public class SequenceFeatureConverter implements Converter<SeqFeatureType, Seque
         }
     }
 
-    class LocationConverter implements Converter<LocationType, Location> {
+    class LocationConverter implements Converter<LocationType, SequenceFeatureLocation> {
         private final ObjectFactory xmlFactory;
 
         LocationConverter(ObjectFactory xmlFactory) {
@@ -89,15 +94,23 @@ public class SequenceFeatureConverter implements Converter<SeqFeatureType, Seque
         }
 
         @Override
-        public Location fromXml(LocationType xmlObj) {
-            return new Location(xmlObj.getStart(), xmlObj.getEnd());
+        public SequenceFeatureLocation fromXml(LocationType xmlObj) {
+            SequenceFeatureLocationBuilder builder = new SequenceFeatureLocationBuilder();
+            builder.range(xmlObj.getStart(), xmlObj.getEnd());
+            if (xmlObj.getAlignment() != null) {
+                builder.alignment(xmlObj.getAlignment());
+            }
+            return builder.build();
         }
 
         @Override
-        public LocationType toXml(Location uniObj) {
+        public LocationType toXml(SequenceFeatureLocation uniObj) {
             LocationType xmlObj = xmlFactory.createLocationType();
             xmlObj.setStart(uniObj.getStart());
             xmlObj.setEnd(uniObj.getEnd());
+            if (uniObj.getAlignment() != null) {
+                xmlObj.setAlignment(uniObj.getAlignment());
+            }
             return xmlObj;
         }
     }

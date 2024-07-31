@@ -29,6 +29,7 @@ import org.uniprot.core.taxonomy.impl.*;
 import org.uniprot.core.uniparc.*;
 import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
 import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
+import org.uniprot.core.uniparc.impl.SequenceFeatureLocationBuilder;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.comment.impl.*;
@@ -223,7 +224,7 @@ public class ObjectsForTests {
     }
 
     public static List<SequenceFeature> sequenceFeatures() {
-        List<Location> locations = Arrays.asList(new Location(12, 23), new Location(45, 89));
+        List<SequenceFeatureLocation> locations = Arrays.asList(new SequenceFeatureLocationBuilder().range(12, 23).alignment("55M").build(), new SequenceFeatureLocationBuilder().range(45, 89).build());
         InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
         SequenceFeature sf =
                 new SequenceFeatureBuilder()
