@@ -52,7 +52,7 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
         this.uniParcId = uniParcId;
         this.uniParcCrossReferences = Utils.unmodifiableList(uniParcCrossReferences);
         this.commonTaxons = Utils.unmodifiableList(commonTaxons);
-        this.uniProtKBAccessions = uniProtKBAccessions;
+        this.uniProtKBAccessions = Utils.unmodifiableSet(uniProtKBAccessions);
         this.sequence = sequence;
         this.sequenceFeatures = Utils.unmodifiableList(sequenceFeatures);
         this.oldestCrossRefCreated = oldestCrossRefCreated;

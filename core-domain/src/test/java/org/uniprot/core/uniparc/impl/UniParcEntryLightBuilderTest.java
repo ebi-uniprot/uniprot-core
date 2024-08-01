@@ -1,5 +1,6 @@
 package org.uniprot.core.uniparc.impl;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
@@ -349,6 +350,19 @@ class UniParcEntryLightBuilderTest {
         assertEquals(originalEntry.getGeneNames(), newEntry.getGeneNames());
         assertEquals(originalEntry.getProteomes(), newEntry.getProteomes());
         assertEquals(originalEntry, newEntry);
+    }
+
+    @Test
+    void testFromWithEmptyAccessions(){
+        UniParcEntryLight entry =
+                new UniParcEntryLightBuilder()
+                        .uniParcId("UPI0000083A08")
+                        .uniProtKBAccessionsSet(null)
+                        .build();
+        Assertions.assertDoesNotThrow(() -> UniParcEntryLightBuilder.from(entry));
+        UniParcEntryLightBuilder builder = UniParcEntryLightBuilder.from(entry);
+        builder.uniProtKBAccessionsAdd(null);
+        Assertions.assertDoesNotThrow(() -> UniParcEntryLightBuilder.from(builder.build()));
     }
 
 }

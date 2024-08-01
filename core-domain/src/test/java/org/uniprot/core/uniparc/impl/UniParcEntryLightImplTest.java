@@ -1,5 +1,6 @@
 package org.uniprot.core.uniparc.impl;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
@@ -22,6 +23,7 @@ class UniParcEntryLightImplTest {
     void needDefaultConstructorForJsonDeserialization() {
         UniParcEntryLight lightObject = new UniParcEntryLightImpl();
         assertNotNull(lightObject);
+        UniParcEntryLightBuilder.from(lightObject);
     }
 
     @Test
@@ -52,5 +54,12 @@ class UniParcEntryLightImplTest {
         UniParcEntryLight obj = UniParcEntryLightBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
+    }
+
+    @Test
+    void defaultConstructorAndBuilderFrom() {
+        UniParcEntryLight lightObject = new UniParcEntryLightImpl();
+        assertNotNull(lightObject);
+        Assertions.assertDoesNotThrow(() -> UniParcEntryLightBuilder.from(lightObject));
     }
 }
