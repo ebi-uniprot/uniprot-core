@@ -43,10 +43,7 @@ class UniParcEntryLightJsonConfigTest {
         // Create sample data for all the fields
         String uniParcId = "UPI0000000001";
 
-        List<String> uniParcCrossReferences = List.of(
-                "UPI0000000001-REFSEQ-12345-3",
-                "UPI0000000002-EMBL-67890-1"
-        );
+        int numberOfUniParcCrossReferences = 19;
 
         List<CommonOrganism> commonTaxons = List.of(
                 new CommonOrganismBuilder().topLevel("cellular organisms").commonTaxon("Homo sapiens").build(),
@@ -54,8 +51,6 @@ class UniParcEntryLightJsonConfigTest {
         );
 
         LinkedHashSet<String> uniProtKBAccessions = new LinkedHashSet<>(List.of("P12345", "Q67890"));
-
-        String uniProtExclusionReason = "Excluded due to redundancy";
 
         String sequenceStr = "MVSWGRFICLVVVTMATLSLARPSFSLVED";
         Sequence sequence = new SequenceBuilder(sequenceStr).build();
@@ -84,7 +79,7 @@ class UniParcEntryLightJsonConfigTest {
         // Use the builder to create a complete UniParcEntryLight
         return new UniParcEntryLightBuilder()
                 .uniParcId(uniParcId)
-                .uniParcCrossReferencesSet(uniParcCrossReferences)
+                .numberOfUniParcCrossReferences(numberOfUniParcCrossReferences)
                 .commonTaxonsSet(commonTaxons)
                 .uniProtKBAccessionsSet(uniProtKBAccessions)
                 .sequence(sequence)

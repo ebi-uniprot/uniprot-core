@@ -18,7 +18,7 @@ import java.util.Set;
 
 public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
     private String uniParcId;
-    private List<String> uniParcCrossReferences = new ArrayList<>();
+    private int numberOfUniParcCrossReferences;
     private List<CommonOrganism> commonTaxons = new ArrayList<>();
     private LinkedHashSet<String> uniProtKBAccessions = new LinkedHashSet<>();
 
@@ -41,7 +41,7 @@ public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
     @Nonnull
     @Override
     public UniParcEntryLight build() {
-        return new UniParcEntryLightImpl(uniParcId, uniParcCrossReferences, commonTaxons, uniProtKBAccessions,
+        return new UniParcEntryLightImpl(uniParcId, numberOfUniParcCrossReferences, commonTaxons, uniProtKBAccessions,
                 sequence, sequenceFeatures, oldestCrossRefCreated,
                 mostRecentCrossRefUpdated, (LinkedHashSet<Organism>) organisms, (LinkedHashSet<String>) proteinNames, (LinkedHashSet<String>) geneNames, (LinkedHashSet<Proteome>) proteomes);
     }
@@ -51,13 +51,8 @@ public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
         return this;
     }
 
-    public @Nonnull UniParcEntryLightBuilder uniParcCrossReferencesSet(List<String> uniParcCrossReferences){
-        this.uniParcCrossReferences = Utils.modifiableList(uniParcCrossReferences);
-        return this;
-    }
-
-    public @Nonnull UniParcEntryLightBuilder uniParcCrossReferencesAdd(String uniParcCrossReferenceId){
-        Utils.addOrIgnoreNull(uniParcCrossReferenceId, this.uniParcCrossReferences);
+    public @Nonnull UniParcEntryLightBuilder numberOfUniParcCrossReferences(int numberOfUniParcCrossReferences){
+        this.numberOfUniParcCrossReferences = numberOfUniParcCrossReferences;
         return this;
     }
 
@@ -153,7 +148,7 @@ public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
         LinkedHashSet<String> geneNames = new LinkedHashSet<>(uniParcEntryLight.getGeneNames());
         LinkedHashSet<Proteome> proteomes = new LinkedHashSet<>(uniParcEntryLight.getProteomes());
         return new UniParcEntryLightBuilder().uniParcId(uniParcEntryLight.getUniParcId())
-                .uniParcCrossReferencesSet(uniParcEntryLight.getUniParcCrossReferences())
+                .numberOfUniParcCrossReferences(uniParcEntryLight.getNumberOfUniParcCrossReferences())
                 .commonTaxonsSet(uniParcEntryLight.getCommonTaxons())
                 .uniProtKBAccessionsSet(uniprotKbAccessions)
                 .sequence(uniParcEntryLight.getSequence())

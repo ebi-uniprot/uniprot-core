@@ -32,35 +32,10 @@ class UniParcEntryLightBuilderTest {
     }
 
     @Test
-    void testUniParcCrossReferencesSet() {
-        List<String> crossReferences = List.of("UPI0000000001-REFSEQ-12345-3", "UPI0000000002-EMBL-67890-1");
-        UniParcEntryLight entry = new UniParcEntryLightBuilder().uniParcCrossReferencesSet(crossReferences).build();
-        assertEquals(crossReferences, entry.getUniParcCrossReferences());
-    }
-
-    @Test
-    void testUniParcCrossReferencesAdd() {
-        String crossReference = "UPI0000000001-REFSEQ-12345-3";
-        UniParcEntryLight entry = new UniParcEntryLightBuilder().uniParcCrossReferencesAdd(crossReference).build();
-        assertTrue(entry.getUniParcCrossReferences().contains(crossReference));
-    }
-
-    @Test
-    void testUniParcCrossReferencesAddNull() {
-        UniParcEntryLight entry = new UniParcEntryLightBuilder().uniParcCrossReferencesSet(null).build();
-        assertTrue(entry.getUniParcCrossReferences().isEmpty()); // Null should not be added
-    }
-
-    @Test
-    void testUniParcCrossReferencesSetThenAdd() {
-        List<String> crossReferences = List.of("UPI0000000001-REFSEQ-12345-3");
-        String additionalCrossReference = "UPI0000000002-EMBL-67890-1";
-        UniParcEntryLight entry = new UniParcEntryLightBuilder()
-                .uniParcCrossReferencesSet(crossReferences)
-                .uniParcCrossReferencesAdd(additionalCrossReference)
-                .build();
-        assertEquals(2, entry.getUniParcCrossReferences().size());
-        assertTrue(entry.getUniParcCrossReferences().containsAll(List.of("UPI0000000001-REFSEQ-12345-3", "UPI0000000002-EMBL-67890-1")));
+    void testNumberOfUniParcCrossReferences() {
+        int numberOfUniParcCrossReferences = 20;
+        UniParcEntryLight entry = new UniParcEntryLightBuilder().numberOfUniParcCrossReferences(numberOfUniParcCrossReferences).build();
+        assertEquals(numberOfUniParcCrossReferences, entry.getNumberOfUniParcCrossReferences());
     }
 
     @Test
@@ -303,7 +278,7 @@ class UniParcEntryLightBuilderTest {
     @Test
     void testFrom() {
         String uniParcId = "UPI0000000001";
-        List<String> uniParcCrossReferences = List.of("UPI0000000001-REFSEQ-12345-3", "UPI0000000002-EMBL-67890-1");
+        int numberOfUniParcCrossReferences = 18;
         List<CommonOrganism> commonTaxons = List.of(
                 new CommonOrganismBuilder().topLevel("Viruses").commonTaxon("HIV").build(),
                 new CommonOrganismBuilder().topLevel("unclassified").commonTaxon("Mus musculus").build());
@@ -323,7 +298,7 @@ class UniParcEntryLightBuilderTest {
 
         UniParcEntryLight originalEntry = new UniParcEntryLightBuilder()
                 .uniParcId(uniParcId)
-                .uniParcCrossReferencesSet(uniParcCrossReferences)
+                .numberOfUniParcCrossReferences(numberOfUniParcCrossReferences)
                 .commonTaxonsSet(commonTaxons)
                 .sequence(sequence)
                 .sequenceFeaturesSet(sequenceFeatures)
@@ -338,7 +313,7 @@ class UniParcEntryLightBuilderTest {
         UniParcEntryLight newEntry = UniParcEntryLightBuilder.from(originalEntry).build();
 
         assertEquals(originalEntry.getUniParcId(), newEntry.getUniParcId());
-        assertEquals(originalEntry.getUniParcCrossReferences(), newEntry.getUniParcCrossReferences());
+        assertEquals(originalEntry.getNumberOfUniParcCrossReferences(), newEntry.getNumberOfUniParcCrossReferences());
         assertEquals(originalEntry.getCommonTaxons(), newEntry.getCommonTaxons());
         assertEquals(originalEntry.getSequence(), newEntry.getSequence());
         assertEquals(originalEntry.getSequenceFeatures(), newEntry.getSequenceFeatures());
