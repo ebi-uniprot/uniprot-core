@@ -5,11 +5,14 @@ import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.util.Pair;
 
 import java.util.List;
+import java.util.Objects;
 
 public class UniParcCrossRefPair implements Pair<String, List<UniParcCrossReference>>{
-
-    private final String key;
-    private final List<UniParcCrossReference> value;
+    private String key;
+    private List<UniParcCrossReference> value;
+    public UniParcCrossRefPair(){
+        this(null, null);
+    }
 
     public UniParcCrossRefPair(String key, List<UniParcCrossReference> value) {
         this.key = key;
@@ -25,5 +28,18 @@ public class UniParcCrossRefPair implements Pair<String, List<UniParcCrossRefere
     @Override
     public List<UniParcCrossReference> getValue() {
         return value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UniParcCrossRefPair that = (UniParcCrossRefPair) o;
+        return Objects.equals(getKey(), that.getKey()) && Objects.equals(getValue(), that.getValue());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getKey(), getValue());
     }
 }
