@@ -23,6 +23,7 @@ class UniParcEntryLightImplTest {
     void needDefaultConstructorForJsonDeserialization() {
         UniParcEntryLight lightObject = new UniParcEntryLightImpl();
         assertNotNull(lightObject);
+        assertNull(lightObject.getUniParcCrossReferencesLink());
         UniParcEntryLightBuilder.from(lightObject);
     }
 
@@ -51,6 +52,7 @@ class UniParcEntryLightImplTest {
         UniParcEntryLight impl = new UniParcEntryLightImpl(uniParcId, uniParcCrossReferences, commonTaxons, uniProtKBAccessions,
                 sequence, sequenceFeatures, oldestCrossRefCreated, mostRecentCrossRefUpdated, organisms, proteinNames, geneNames, proteomes);
 
+        assertEquals("/uniparc/"+uniParcId+"/databases?size=25", impl.getUniParcCrossReferencesLink());
         UniParcEntryLight obj = UniParcEntryLightBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());

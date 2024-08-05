@@ -23,13 +23,15 @@ class UniParcEntryLightBuilderTest {
 
     @Test
     void testUniParcIdString() {
+        String uniParcid = "UPI0000083A08";
         UniParcEntryLight entry =
                 new UniParcEntryLightBuilder()
-                        .uniParcId("UPI0000083A08")
+                        .uniParcId(uniParcid)
                         .build();
-        assertEquals("UPI0000083A08", entry.getUniParcId());
+        assertEquals(uniParcid, entry.getUniParcId());
         assertNull(entry.getOldestCrossRefCreated());
         assertNull(entry.getMostRecentCrossRefUpdated());
+        assertEquals("/uniparc/"+uniParcid+"/databases?size=25", entry.getUniParcCrossReferencesLink());
     }
 
     @Test

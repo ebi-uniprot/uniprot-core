@@ -48,7 +48,6 @@ public abstract class JsonConfig {
         objMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
         objMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
         objMapper.addMixIn(Object.class, SquigglyPropertyFilterMixin.class);
-
         PropertyFilter filter = SimpleBeanPropertyFilter.serializeAll();
         SimpleFilterProvider filterProvider =
                 new SimpleFilterProvider().addFilter(SquigglyPropertyFilter.FILTER_ID, filter);

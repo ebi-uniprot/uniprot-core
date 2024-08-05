@@ -32,4 +32,6 @@ public interface UniParcEntryLight extends Serializable {
     Set<String> getGeneNames();
 
     Set<Proteome> getProteomes();
+
+    String getUniParcCrossReferencesLink();
 }

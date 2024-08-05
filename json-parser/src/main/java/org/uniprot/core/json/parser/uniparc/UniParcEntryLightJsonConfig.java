@@ -2,6 +2,10 @@ package org.uniprot.core.json.parser.uniparc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.databind.ser.PropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import com.github.bohnman.squiggly.filter.SquigglyPropertyFilter;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.CrossReferenceImpl;
@@ -20,6 +24,7 @@ import java.time.LocalDate;
 
 public class UniParcEntryLightJsonConfig extends JsonConfig {
     private static UniParcEntryLightJsonConfig instance;
+    private static final String IGNORED_FIELD = "uniParcCrossReferences";
 
     private final ObjectMapper objectMapper;
     private final ObjectMapper prettyMapper;
@@ -71,6 +76,10 @@ public class UniParcEntryLightJsonConfig extends JsonConfig {
         SimpleModule simpleMod = new SimpleModule();
         simpleMod.addSerializer(LocalDate.class, new LocalDateSerializer());
         prettyObjMapper.registerModule(simpleMod);
+        PropertyFilter filter = SimpleBeanPropertyFilter.serializeAllExcept(IGNORED_FIELD);
+        SimpleFilterProvider filterProvider =
+                new SimpleFilterProvider().addFilter(SquigglyPropertyFilter.FILTER_ID, filter);
+        prettyObjMapper.setFilterProvider(filterProvider);
         return prettyObjMapper;
     }
 }

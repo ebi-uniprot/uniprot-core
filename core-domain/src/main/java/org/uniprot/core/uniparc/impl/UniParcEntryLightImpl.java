@@ -17,6 +17,8 @@ import java.util.Set;
 public class UniParcEntryLightImpl implements UniParcEntryLight {
 
     private static final long serialVersionUID = -5488878159071674580L;
+    private static final String BASE_URL = "/uniparc/%s/databases?size=%d";
+    private static final int DEFAULT_SIZE = 25;
     private final String uniParcId;
     private final List<String> uniParcCrossReferences;
     private final List<CommonOrganism> commonTaxons;
@@ -30,6 +32,8 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
     private final Set<String> proteinNames;
     private final Set<String> geneNames;
     private final Set<Proteome> proteomes;
+
+    private final String uniParcCrossReferencesLink;
 
     UniParcEntryLightImpl() {
         this(null, null, null, null, null, null, null, null);
@@ -61,6 +65,7 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
         this.proteinNames = Utils.unmodifiableSet(proteinNames);
         this.geneNames = Utils.unmodifiableSet(geneNames);
         this.proteomes = Utils.unmodifiableSet(proteomes);
+        this.uniParcCrossReferencesLink = getUniParcCrossReferencesLink();
     }
 
     @Override
@@ -121,6 +126,12 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
     @Override
     public Set<Proteome> getProteomes() {
         return proteomes;
+    }
+
+    @Override
+    public String getUniParcCrossReferencesLink() {
+        return Objects.nonNull(this.uniParcId) ? String.format(BASE_URL, this.uniParcId, DEFAULT_SIZE)
+                : null;
     }
 
     @Override
