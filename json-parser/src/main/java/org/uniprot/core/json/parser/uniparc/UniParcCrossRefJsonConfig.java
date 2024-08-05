@@ -12,6 +12,7 @@ import org.uniprot.core.json.parser.deserializer.LocalDateDeserializer;
 import org.uniprot.core.json.parser.serializer.LocalDateSerializer;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceImpl;
+import org.uniprot.core.uniparc.impl.UniParcCrossReferencePair;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceImpl;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
@@ -65,7 +66,7 @@ public class UniParcCrossRefJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Evidence.class, EvidenceImpl.class);
         mod.addAbstractTypeMapping(CrossReference.class, CrossReferenceImpl.class);
         mod.addAbstractTypeMapping(Database.class, DefaultDatabase.class);
-        mod.addAbstractTypeMapping(Pair.class, PairImpl.class);
+        mod.addAbstractTypeMapping(Pair.class, UniParcCrossReferencePair.class);
         objMapper.registerModule(mod);
         return objMapper;
     }

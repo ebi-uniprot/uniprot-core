@@ -10,6 +10,7 @@ import org.uniprot.core.uniparc.UniParcCrossReference;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.uniprot.core.uniparc.UniParcEntry;
+import org.uniprot.core.uniparc.impl.UniParcCrossReferencePair;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
 
@@ -20,7 +21,7 @@ class UniParcCrossRefJsonConfigTest {
     @Test
     void test() {
         UniParcEntry completeUniParcEntry = getCompleteUniParcEntry();
-        Pair<String, List<UniParcCrossReference>> entry = new UniParcCrossRefPair(completeUniParcEntry.getUniParcId().getValue(), completeUniParcEntry.getUniParcCrossReferences());
+        Pair<String, List<UniParcCrossReference>> entry = new UniParcCrossReferencePair(completeUniParcEntry.getUniParcId().getValue(), completeUniParcEntry.getUniParcCrossReferences());
 /*
         ValidateJson.verifyJsonRoundTripParser(
                 UniParcCrossRefJsonConfig.getInstance().getFullObjectMapper(), completeUniParcEntry.getUniParcCrossReferences().get(0));
