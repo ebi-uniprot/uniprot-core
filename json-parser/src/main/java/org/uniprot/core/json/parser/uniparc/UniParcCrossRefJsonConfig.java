@@ -19,6 +19,8 @@ import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismImpl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import org.uniprot.core.util.Pair;
+import org.uniprot.core.util.PairImpl;
 
 /**
  * @author jluo
@@ -63,6 +65,7 @@ public class UniParcCrossRefJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Evidence.class, EvidenceImpl.class);
         mod.addAbstractTypeMapping(CrossReference.class, CrossReferenceImpl.class);
         mod.addAbstractTypeMapping(Database.class, DefaultDatabase.class);
+        mod.addAbstractTypeMapping(Pair.class, PairImpl.class);
         objMapper.registerModule(mod);
         return objMapper;
     }
