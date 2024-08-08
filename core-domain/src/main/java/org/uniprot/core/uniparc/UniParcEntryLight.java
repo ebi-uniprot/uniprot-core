@@ -11,7 +11,7 @@ import java.util.Set;
 public interface UniParcEntryLight extends Serializable {
     String getUniParcId();
 
-    int getNumberOfUniParcCrossReferences();
+    int getCrossReferenceCount();
 
     List<CommonOrganism> getCommonTaxons();
 

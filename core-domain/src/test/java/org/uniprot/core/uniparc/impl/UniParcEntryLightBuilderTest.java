@@ -33,10 +33,10 @@ class UniParcEntryLightBuilderTest {
     }
 
     @Test
-    void testNumberOfUniParcCrossReferences() {
-        int numberOfUniParcCrossReferences = 20;
-        UniParcEntryLight entry = new UniParcEntryLightBuilder().numberOfUniParcCrossReferences(numberOfUniParcCrossReferences).build();
-        assertEquals(numberOfUniParcCrossReferences, entry.getNumberOfUniParcCrossReferences());
+    void testCrossReferenceCount() {
+        int crossReferenceCount = 20;
+        UniParcEntryLight entry = new UniParcEntryLightBuilder().crossReferenceCount(crossReferenceCount).build();
+        assertEquals(crossReferenceCount, entry.getCrossReferenceCount());
     }
 
     @Test
@@ -279,7 +279,7 @@ class UniParcEntryLightBuilderTest {
     @Test
     void testFrom() {
         String uniParcId = "UPI0000000001";
-        int numberOfUniParcCrossReferences = 18;
+        int crossReferenceCount = 18;
         List<CommonOrganism> commonTaxons = List.of(
                 new CommonOrganismBuilder().topLevel("Viruses").commonTaxon("HIV").build(),
                 new CommonOrganismBuilder().topLevel("unclassified").commonTaxon("Mus musculus").build());
@@ -299,7 +299,7 @@ class UniParcEntryLightBuilderTest {
 
         UniParcEntryLight originalEntry = new UniParcEntryLightBuilder()
                 .uniParcId(uniParcId)
-                .numberOfUniParcCrossReferences(numberOfUniParcCrossReferences)
+                .crossReferenceCount(crossReferenceCount)
                 .commonTaxonsSet(commonTaxons)
                 .sequence(sequence)
                 .sequenceFeaturesSet(sequenceFeatures)
@@ -314,7 +314,7 @@ class UniParcEntryLightBuilderTest {
         UniParcEntryLight newEntry = UniParcEntryLightBuilder.from(originalEntry).build();
 
         assertEquals(originalEntry.getUniParcId(), newEntry.getUniParcId());
-        assertEquals(originalEntry.getNumberOfUniParcCrossReferences(), newEntry.getNumberOfUniParcCrossReferences());
+        assertEquals(originalEntry.getCrossReferenceCount(), newEntry.getCrossReferenceCount());
         assertEquals(originalEntry.getCommonTaxons(), newEntry.getCommonTaxons());
         assertEquals(originalEntry.getSequence(), newEntry.getSequence());
         assertEquals(originalEntry.getSequenceFeatures(), newEntry.getSequenceFeatures());

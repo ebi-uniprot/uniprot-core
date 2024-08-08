@@ -29,7 +29,7 @@ class UniParcEntryLightImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         String uniParcId = "UPI0000000001";
-        int numberOfUniParcCrossReferences = 30;
+        int crossReferenceCount = 30;
         List<CommonOrganism> commonTaxons = List.of(
                 new CommonOrganismBuilder().topLevel("Viruses").commonTaxon("HIV").build(),
                 new CommonOrganismBuilder().topLevel("unclassified").commonTaxon("Mus musculus").build());
@@ -48,7 +48,7 @@ class UniParcEntryLightImplTest {
         LinkedHashSet<Proteome> proteomes = new LinkedHashSet<>(List.of(new ProteomeBuilder().id("UP000005640").component("C1").build(), new ProteomeBuilder().id("UP000002494").component("C2").build()));
         LinkedHashSet<String> uniProtKBAccessions = new LinkedHashSet<>(List.of("P21802", "P12345"));
 
-        UniParcEntryLight impl = new UniParcEntryLightImpl(uniParcId, numberOfUniParcCrossReferences, commonTaxons, uniProtKBAccessions,
+        UniParcEntryLight impl = new UniParcEntryLightImpl(uniParcId, crossReferenceCount, commonTaxons, uniProtKBAccessions,
                 sequence, sequenceFeatures, oldestCrossRefCreated, mostRecentCrossRefUpdated, organisms, proteinNames, geneNames, proteomes);
 
         UniParcEntryLight obj = UniParcEntryLightBuilder.from(impl).build();

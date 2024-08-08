@@ -43,7 +43,7 @@ class UniParcEntryLightJsonConfigTest {
         // Create sample data for all the fields
         String uniParcId = "UPI0000000001";
 
-        int numberOfUniParcCrossReferences = 19;
+        int crossReferenceCount = 19;
 
         List<CommonOrganism> commonTaxons = List.of(
                 new CommonOrganismBuilder().topLevel("cellular organisms").commonTaxon("Homo sapiens").build(),
@@ -79,7 +79,7 @@ class UniParcEntryLightJsonConfigTest {
         // Use the builder to create a complete UniParcEntryLight
         return new UniParcEntryLightBuilder()
                 .uniParcId(uniParcId)
-                .numberOfUniParcCrossReferences(numberOfUniParcCrossReferences)
+                .crossReferenceCount(crossReferenceCount)
                 .commonTaxonsSet(commonTaxons)
                 .uniProtKBAccessionsSet(uniProtKBAccessions)
                 .sequence(sequence)

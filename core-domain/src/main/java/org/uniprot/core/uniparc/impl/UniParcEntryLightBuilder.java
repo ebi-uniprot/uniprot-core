@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
     private String uniParcId;
-    private int numberOfUniParcCrossReferences;
+    private int crossReferenceCount;
     private List<CommonOrganism> commonTaxons = new ArrayList<>();
     private LinkedHashSet<String> uniProtKBAccessions = new LinkedHashSet<>();
 
@@ -40,7 +40,7 @@ public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
     @Nonnull
     @Override
     public UniParcEntryLight build() {
-        return new UniParcEntryLightImpl(uniParcId, numberOfUniParcCrossReferences, commonTaxons, uniProtKBAccessions,
+        return new UniParcEntryLightImpl(uniParcId, crossReferenceCount, commonTaxons, uniProtKBAccessions,
                 sequence, sequenceFeatures, oldestCrossRefCreated,
                 mostRecentCrossRefUpdated, (LinkedHashSet<Organism>) organisms, (LinkedHashSet<String>) proteinNames, (LinkedHashSet<String>) geneNames, (LinkedHashSet<Proteome>) proteomes);
     }
@@ -50,8 +50,8 @@ public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
         return this;
     }
 
-    public @Nonnull UniParcEntryLightBuilder numberOfUniParcCrossReferences(int numberOfUniParcCrossReferences){
-        this.numberOfUniParcCrossReferences = numberOfUniParcCrossReferences;
+    public @Nonnull UniParcEntryLightBuilder crossReferenceCount(int crossReferenceCount){
+        this.crossReferenceCount = crossReferenceCount;
         return this;
     }
 
@@ -147,7 +147,7 @@ public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
         LinkedHashSet<String> geneNames = new LinkedHashSet<>(uniParcEntryLight.getGeneNames());
         LinkedHashSet<Proteome> proteomes = new LinkedHashSet<>(uniParcEntryLight.getProteomes());
         return new UniParcEntryLightBuilder().uniParcId(uniParcEntryLight.getUniParcId())
-                .numberOfUniParcCrossReferences(uniParcEntryLight.getNumberOfUniParcCrossReferences())
+                .crossReferenceCount(uniParcEntryLight.getCrossReferenceCount())
                 .commonTaxonsSet(uniParcEntryLight.getCommonTaxons())
                 .uniProtKBAccessionsSet(uniprotKbAccessions)
                 .sequence(uniParcEntryLight.getSequence())

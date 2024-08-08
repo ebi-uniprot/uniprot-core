@@ -18,7 +18,7 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
 
     private static final long serialVersionUID = 6932484977764108673L;
     private final String uniParcId;
-    private final int numberOfUniParcCrossReferences;
+    private final int crossReferenceCount;
     private final List<CommonOrganism> commonTaxons;
     private final Set<String> uniProtKBAccessions;
     private final  Sequence sequence;
@@ -35,22 +35,22 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
         this(null, 0, null, null, null, null, null, null);
     }
 
-    UniParcEntryLightImpl(String uniParcId, int numberOfUniParcCrossReferences,
+    UniParcEntryLightImpl(String uniParcId, int crossReferenceCount,
                           List<CommonOrganism> commonTaxons, LinkedHashSet<String> uniProtKBAccessions,
                                   Sequence sequence, List<SequenceFeature> sequenceFeatures,
                                  LocalDate oldestCrossRefCreated, LocalDate mostRecentCrossRefUpdated) {
-        this(uniParcId, numberOfUniParcCrossReferences, commonTaxons, uniProtKBAccessions,
+        this(uniParcId, crossReferenceCount, commonTaxons, uniProtKBAccessions,
                 sequence, sequenceFeatures, oldestCrossRefCreated, mostRecentCrossRefUpdated,
                 null, null, null, null);
     }
-    UniParcEntryLightImpl(String uniParcId, int numberOfUniParcCrossReferences,
+    UniParcEntryLightImpl(String uniParcId, int crossReferenceCount,
                           List<CommonOrganism> commonTaxons, LinkedHashSet<String> uniProtKBAccessions,
                                   Sequence sequence, List<SequenceFeature> sequenceFeatures,
                                  LocalDate oldestCrossRefCreated, LocalDate mostRecentCrossRefUpdated,
                           LinkedHashSet<Organism> organisms, LinkedHashSet<String> proteinNames, LinkedHashSet<String> geneNames,
                           LinkedHashSet<Proteome> proteomes) {
         this.uniParcId = uniParcId;
-        this.numberOfUniParcCrossReferences = numberOfUniParcCrossReferences;
+        this.crossReferenceCount = crossReferenceCount;
         this.commonTaxons = Utils.unmodifiableList(commonTaxons);
         this.uniProtKBAccessions = Utils.unmodifiableSet(uniProtKBAccessions);
         this.sequence = sequence;
@@ -69,8 +69,8 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
     }
 
     @Override
-    public int getNumberOfUniParcCrossReferences() {
-        return numberOfUniParcCrossReferences;
+    public int getCrossReferenceCount() {
+        return crossReferenceCount;
     }
 
     @Override
@@ -128,8 +128,8 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UniParcEntryLightImpl that = (UniParcEntryLightImpl) o;
-        return Objects.equals(getUniParcId(), that.getUniParcId()) && Objects.equals(getNumberOfUniParcCrossReferences(),
-                that.getNumberOfUniParcCrossReferences()) && Objects.equals(getCommonTaxons(), that.getCommonTaxons()) &&
+        return Objects.equals(getUniParcId(), that.getUniParcId()) && Objects.equals(getCrossReferenceCount(),
+                that.getCrossReferenceCount()) && Objects.equals(getCommonTaxons(), that.getCommonTaxons()) &&
                 Objects.equals(getUniProtKBAccessions(), that.getUniProtKBAccessions()) &&
                 Objects.equals(getSequence(), that.getSequence()) &&
                 Objects.equals(getSequenceFeatures(), that.getSequenceFeatures()) &&
@@ -143,7 +143,7 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUniParcId(), getNumberOfUniParcCrossReferences(), getCommonTaxons(), getUniProtKBAccessions(),
+        return Objects.hash(getUniParcId(), getCrossReferenceCount(), getCommonTaxons(), getUniProtKBAccessions(),
                  getSequence(), getSequenceFeatures(), getOldestCrossRefCreated(),
                 getMostRecentCrossRefUpdated(), getOrganisms(), getProteinNames(), getGeneNames(), getProteomes());
     }
