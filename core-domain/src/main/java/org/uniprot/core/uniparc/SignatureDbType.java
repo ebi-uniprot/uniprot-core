@@ -1,8 +1,8 @@
 package org.uniprot.core.uniparc;
 
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.util.EnumDisplay;
+
+import javax.annotation.Nonnull;
 
 public enum SignatureDbType implements EnumDisplay {
     CDD("CDD"),
@@ -16,7 +16,8 @@ public enum SignatureDbType implements EnumDisplay {
     SFLD("SFLD"),
     SMART("SMART"),
     SUPFAM("SUPFAM"),
-    NCBIFAM("NCBIfam");
+    NCBIFAM("NCBIfam"),
+    FUNFAM("FUNFAM");
 
     private final String name;
 
