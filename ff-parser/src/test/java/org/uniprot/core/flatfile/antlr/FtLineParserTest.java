@@ -34,6 +34,28 @@ class FtLineParserTest {
                 "PRO_0000232680");
     }
 
+    
+    @Test
+    void testChainWithThreeSingleQuote() {
+        String ftLines =
+                "FT   CHAIN           1..468\n"
+                        + "FT                   /note=\"Anthocyanidin 3-O-glucoside 2'''-O-\n"
+                		+"FT                   xylosyltransferase\"\n"
+                        + "FT                   /id=\"PRO_0000409107\"\n";
+        UniprotKBLineParser<FtLineObject> parser =
+                new DefaultUniprotKBLineParserFactory().createFtLineParser();
+        FtLineObject obj = parser.parse(ftLines);
+        assertEquals(1, obj.getFts().size());
+        verify(
+                obj.getFts().get(0),
+                FTType.CHAIN,
+                "1",
+                "468",
+                "Anthocyanidin 3-O-glucoside 2'''-O-xylosyltransferase",
+                "PRO_0000409107");
+    }
+
+    
     @Test
     void testHelix() {
         String ftLines = "FT   HELIX           33..83\n";

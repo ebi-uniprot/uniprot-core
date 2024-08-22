@@ -65,7 +65,6 @@ public class FtLineModelListener extends FtLineParserBaseListener
         if (ctx.note_text() != null) {
             String result = ctx.note_text().getText();
             result = replaceVarSeqSpaceNoSpace(result);
-            result = result.replaceAll("''", "\"");
             ft.setFtText(updateAltSeqText(result));
         }
     }

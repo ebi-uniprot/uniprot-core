@@ -56,7 +56,7 @@ DR   InterPro; IPR023091; MetalPrtase_cat_dom_sf_prd.
 DR   InterPro; IPR002036; YbeY.
 DR   InterPro; IPR020549; YbeY_CS.
 DR   Pfam; PF02130; YbeY; 1.
-DR   NCBIfam; NF00043; NF00043; 1.
+DR   NCBIFam; NF00043; NF00043; 1.
 DR   PROSITE; PS01306; UPF0054; 1.
 PE   3: Inferred from homology;
 KW   Cytoplasm; Endonuclease; Hydrolase; Metal-binding; Nuclease;
