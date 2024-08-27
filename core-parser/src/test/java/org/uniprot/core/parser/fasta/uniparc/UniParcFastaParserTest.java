@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.parser.fasta.uniparc.UniParcFastaParserTestUtils.*;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.parser.fasta.UniParcFastaParser;
 import org.uniprot.core.uniparc.*;
 import org.uniprot.core.uniparc.impl.UniParcEntryBuilder;
 import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
