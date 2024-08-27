@@ -224,6 +224,54 @@ class UtilsTest {
         }
 
         @Nested
+        class unmodifiableSet {
+            @Test
+            void passingNullReturnEmptySet() {
+                Set l = Utils.unmodifiableSet(null);
+                assertTrue(l.isEmpty());
+            }
+
+            @Test
+            void passing_emptySet_returnEmptySet() {
+                Set l = Utils.unmodifiableSet(new HashSet<>());
+                assertTrue(l.isEmpty());
+            }
+
+            @Test
+            void passingNullReturnEmptySet_unmodifiable() {
+                Set<String> l = Utils.unmodifiableSet(null);
+                assertThrows(UnsupportedOperationException.class, () -> l.add("abc"));
+            }
+
+            @Test
+            void passing_emptySet_returnEmptySet_unmodifiable() {
+                Set<String> l = Utils.unmodifiableSet(new HashSet<>());
+                assertThrows(UnsupportedOperationException.class, () -> l.add("abc"));
+            }
+
+            @Test
+            void passingSet_returnUnmodifiable() {
+                Set<String> list = new HashSet<>();
+                list.add("a");
+                list.add("b");
+                Set<String> l = Utils.unmodifiableSet(list);
+                assertThrows(UnsupportedOperationException.class, () -> l.add("c"));
+            }
+
+            @Test
+            void passingLinkedHashSet_returnUnmodifiable() {
+                Set<String> list = new LinkedHashSet<>();
+                list.add("a");
+                list.add("b");
+                list.add("d");
+                list.add("c");
+                Set<String> l = Utils.unmodifiableSet(list);
+                assertEquals(list,l);
+                assertThrows(UnsupportedOperationException.class, () -> l.add("c"));
+            }
+        }
+
+        @Nested
         class addOrIgnoreNull {
             @Test
             void addingNullValueInNullList_nullList() {
