@@ -14,6 +14,7 @@ import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.sequenceFeatures;
@@ -47,9 +48,11 @@ class UniParcEntryLightImplTest {
         LinkedHashSet<String> geneNames = new LinkedHashSet<>(List.of("Gene1", "Gene2"));
         LinkedHashSet<Proteome> proteomes = new LinkedHashSet<>(List.of(new ProteomeBuilder().id("UP000005640").component("C1").build(), new ProteomeBuilder().id("UP000002494").component("C2").build()));
         LinkedHashSet<String> uniProtKBAccessions = new LinkedHashSet<>(List.of("P21802", "P12345"));
+        Map<String, Object> extraAttributes = Map.of("hasActiveCrossRef", true);
 
         UniParcEntryLight impl = new UniParcEntryLightImpl(uniParcId, crossReferenceCount, commonTaxons, uniProtKBAccessions,
-                sequence, sequenceFeatures, oldestCrossRefCreated, mostRecentCrossRefUpdated, organisms, proteinNames, geneNames, proteomes);
+                sequence, sequenceFeatures, oldestCrossRefCreated, mostRecentCrossRefUpdated, organisms,
+                proteinNames, geneNames, proteomes, extraAttributes);
 
         UniParcEntryLight obj = UniParcEntryLightBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
