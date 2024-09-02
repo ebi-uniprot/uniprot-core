@@ -137,7 +137,7 @@ public class SubcellularLocationConverter
     private EvidencedStringType buildLocation(
             String value, SubcellularLocationValue locationValue) {
         EvidencedStringType typeLocation = xmlUniprotFactory.createEvidencedStringType();
-        typeLocation.setValue(Utils.upperFirstChar(value));
+        typeLocation.setValue(capitalizeFirstLetter(value));
 
         // Evidences
         List<Evidence> evidenceIds = locationValue.getEvidences();
@@ -148,6 +148,15 @@ public class SubcellularLocationConverter
         return typeLocation;
     }
 
+    
+    private String capitalizeFirstLetter(String value) {
+        if(Character.isUpperCase(value.charAt(0))) {
+            return value;
+        }
+        String loc = subcellLocationNameMap.getName(value); 
+        return loc==null?Utils.upperFirstChar(value):loc;      
+    }
+    
     private EvidencedStringType buildLocation(SubcellularLocationValue locationValue) {
         if ((locationValue != null) && (!locationValue.getValue().isEmpty())) {
             return buildLocation(locationValue.getValue(), locationValue);
