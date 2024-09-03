@@ -36,6 +36,7 @@ public class UniParcDBCrossReferenceConverter
     public static final String PROPERTY_COMPONENT = "component";
     public static final String PROPERTY_NCBI_TAXONOMY_ID = "NCBI_taxonomy_id";
     public static final String PROPERTY_UNIPROTKB_ACCESSION = "UniProtKB_accession";
+    public static final String PROPERTY_SOURCE = "source";
 
     private final ObjectFactory xmlFactory;
     private final TaxonomyRepo taxonomyRepo;
@@ -84,6 +85,9 @@ public class UniParcDBCrossReferenceConverter
                     break;
                 case PROPERTY_UNIPROTKB_ACCESSION:
                     builder.propertiesAdd(PROPERTY_UNIPROTKB_ACCESSION, property.getValue());
+                    break;
+                case PROPERTY_SOURCE:
+                    builder.propertiesAdd(PROPERTY_SOURCE, property.getValue());
                     break;
                 default:
                     throw new XmlReaderException(
