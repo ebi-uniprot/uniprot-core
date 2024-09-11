@@ -5,30 +5,31 @@
            xmlns="http://uniprot.org/dbReference">
     <xs:element name="dbReferences">
         <xs:complexType>
+            <xs:annotation>
+                <xs:documentation>Describes a collection of dbReference entries.</xs:documentation>
+            </xs:annotation>
             <xs:sequence>
-                <xs:element ref="dbReference" minOccurs="0"
-                            maxOccurs="unbounded" />
+                <xs:element ref="dbReference" minOccurs="0" maxOccurs="unbounded" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-
-    <xs:element name="dbReference" type="dbReferenceType"/>
-
-    <xs:complexType name="dbReferenceType">
-        <xs:sequence>
-            <xs:element name="property" type="propertyType"
-                        minOccurs="0" maxOccurs="unbounded" />
-        </xs:sequence>
-        <xs:attribute name="type" type="xs:string" use="required" />
-        <xs:attribute name="id" type="xs:string" use="required" />
-        <xs:attribute name="version_i" type="xs:int"
-                      use="required" />
-        <xs:attribute name="active" type="xs:string"
-                      use="required" />
-        <xs:attribute name="version" type="xs:int" />
-        <xs:attribute name="created" type="xs:date" />
-        <xs:attribute name="last" type="xs:date" />
-    </xs:complexType>
+    <xs:element name="dbReference">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="property" type="propertyType"
+                            minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+            <xs:attribute name="type" type="xs:string" use="required" />
+            <xs:attribute name="id" type="xs:string" use="required" />
+            <xs:attribute name="version_i" type="xs:int"
+                          use="required" />
+            <xs:attribute name="active" type="xs:string"
+                          use="required" />
+            <xs:attribute name="version" type="xs:int" />
+            <xs:attribute name="created" type="xs:date" />
+            <xs:attribute name="last" type="xs:date" />
+        </xs:complexType>
+    </xs:element>
 
     <xs:complexType name="propertyType">
         <xs:attribute name="type" type="xs:string" use="required" />
