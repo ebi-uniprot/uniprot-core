@@ -82,6 +82,7 @@
 	<xs:complexType name="locationType">
 		<xs:attribute name="start" type="xs:int" use="required" />
 		<xs:attribute name="end" type="xs:int" use="required" />
+		<xs:attribute name="alignment" type="xs:string" use="optional"/>
 	</xs:complexType>
 
 
