@@ -1,7 +1,6 @@
 package org.uniprot.core.parser.fasta;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.Location;
 import org.uniprot.core.Property;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
@@ -83,7 +82,7 @@ class UniParcFastaParserTest {
     }
 
     private List<SequenceFeature> getSeqFeatures() {
-        List<Location> locations = Arrays.asList(new Location(12, 23), new Location(45, 89));
+        List<SequenceFeatureLocation> locations = Arrays.asList(new SequenceFeatureLocationBuilder().range(12, 23).alignment("55M").build(), new SequenceFeatureLocationBuilder().range(45, 89).build());
         InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
         SequenceFeature sf =
                 new SequenceFeatureBuilder()

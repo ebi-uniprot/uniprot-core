@@ -120,14 +120,17 @@ class UniParcEntryLightValueMapperTest {
     }
 
     private List<SequenceFeature> getSeqFeatures() {
-        List<Location> locations = Arrays.asList(new Location(12, 23), new Location(45, 89));
+        SequenceFeatureLocationBuilder sflBuilder = new SequenceFeatureLocationBuilder();
+        SequenceFeatureLocation sfl1 = sflBuilder.range(12, 13).alignment("M55").build();
+        SequenceFeatureLocation sfl2 = sflBuilder.range(45, 89).alignment("Alignment").build();
+        List<SequenceFeatureLocation> sfls = List.of(sfl1, sfl2);
         InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
         SequenceFeature sf =
                 new SequenceFeatureBuilder()
                         .interproGroup(domain)
                         .signatureDbType(SignatureDbType.PFAM)
                         .signatureDbId("sigId2")
-                        .locationsSet(locations)
+                        .locationsSet(sfls)
                         .build();
         SequenceFeature sf3 =
                 SequenceFeatureBuilder.from(sf).signatureDbType(SignatureDbType.PROSITE).build();

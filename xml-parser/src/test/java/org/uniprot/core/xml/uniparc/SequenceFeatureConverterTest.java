@@ -3,11 +3,11 @@ package org.uniprot.core.xml.uniparc;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.Location;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.SignatureDbType;
 import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
 import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
+import org.uniprot.core.uniparc.impl.SequenceFeatureLocationBuilder;
 import org.uniprot.core.xml.jaxb.uniparc.SeqFeatureType;
 
 /**
@@ -25,7 +25,22 @@ class SequenceFeatureConverterTest {
         SequenceFeatureBuilder builder = new SequenceFeatureBuilder();
         builder.signatureDbType(SignatureDbType.PANTHER)
                 .signatureDbId("PTHR11977")
-                .locationsAdd(new Location(49, 790))
+                .locationsAdd(new SequenceFeatureLocationBuilder().range(49, 790).build())
+                .interproGroup(
+                        new InterProGroupBuilder().id("IPR007122").name("Villin/Gelsolin").build());
+        verify(builder.build());
+    }
+
+    @Test
+    void testSingleLocationWithAlignment() {
+        //		<signatureSequenceMatch database="PANTHER" id="PTHR11977">
+        //		<ipr id="IPR007122" name="Villin/Gelsolin"/>
+        //		<lcn start="49" end="790"/>
+        //		</signatureSequenceMatch>
+        SequenceFeatureBuilder builder = new SequenceFeatureBuilder();
+        builder.signatureDbType(SignatureDbType.PANTHER)
+                .signatureDbId("PTHR11977")
+                .locationsAdd(new SequenceFeatureLocationBuilder().range(49, 790).alignment("55M").build())
                 .interproGroup(
                         new InterProGroupBuilder().id("IPR007122").name("Villin/Gelsolin").build());
         verify(builder.build());
@@ -54,11 +69,11 @@ class SequenceFeatureConverterTest {
         SequenceFeatureBuilder builder = new SequenceFeatureBuilder();
         builder.signatureDbType(SignatureDbType.PFAM)
                 .signatureDbId("PF00626")
-                .locationsAdd(new Location(81, 163))
-                .locationsAdd(new Location(202, 267))
-                .locationsAdd(new Location(330, 398))
-                .locationsAdd(new Location(586, 653))
-                .locationsAdd(new Location(692, 766))
+                .locationsAdd(new SequenceFeatureLocationBuilder().range(81, 163).build())
+                .locationsAdd(new SequenceFeatureLocationBuilder().range(202, 267).alignment("21M").build())
+                .locationsAdd(new SequenceFeatureLocationBuilder().range(330, 398).build())
+                .locationsAdd(new SequenceFeatureLocationBuilder().range(586, 653).alignment("55M").build())
+                .locationsAdd(new SequenceFeatureLocationBuilder().range(692, 766).build())
                 .interproGroup(
                         new InterProGroupBuilder()
                                 .id("IPR007123")

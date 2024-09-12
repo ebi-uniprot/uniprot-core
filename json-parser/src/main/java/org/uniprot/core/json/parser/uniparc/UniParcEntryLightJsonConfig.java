@@ -55,6 +55,7 @@ public class UniParcEntryLightJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(UniParcEntryLight.class, UniParcEntryLightImpl.class);
         mod.addAbstractTypeMapping(InterProGroup.class, InterProGroupImpl.class);
         mod.addAbstractTypeMapping(SequenceFeature.class, SequenceFeatureImpl.class);
+        mod.addAbstractTypeMapping(SequenceFeatureLocation.class, SequenceFeatureLocationImpl.class);
         mod.addAbstractTypeMapping(CrossReference.class, CrossReferenceImpl.class);
         mod.addAbstractTypeMapping(Sequence.class, SequenceImpl.class);
         mod.addAbstractTypeMapping(CommonOrganism.class, CommonOrganismImpl.class);
