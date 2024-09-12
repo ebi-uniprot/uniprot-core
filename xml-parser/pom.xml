@@ -218,7 +218,7 @@
 								</xsdOption>
 								<xsdOption>
 									<extension>true</extension>
-									<xsd>${xsd-location}/dbReference.xsd</xsd>
+									<xsd>${xsd-location}/uniparc-dbreference.xsd</xsd>
 									<packagename>${dbreference-xsd-pojo-package}</packagename>
 									<extensionArgs>
 										<extensionArg>-verbose</extensionArg>
