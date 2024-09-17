@@ -1,6 +1,9 @@
 package org.uniprot.core.publication;
 
+import org.uniprot.core.util.Utils;
+
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * Created 02/12/2020
@@ -15,4 +18,6 @@ public interface CommunityAnnotation extends Serializable {
     String getDisease();
 
     String getComment();
+
+    LocalDate getSubmissionDate();
 }

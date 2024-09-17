@@ -9,6 +9,7 @@ import org.uniprot.core.citation.*;
 import org.uniprot.core.citation.impl.*;
 import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.json.parser.JsonConfig;
+import org.uniprot.core.json.parser.deserializer.LocalDateDeserializer;
 import org.uniprot.core.json.parser.serializer.*;
 import org.uniprot.core.json.parser.uniprot.serializer.*;
 import org.uniprot.core.publication.*;
@@ -64,6 +65,8 @@ public class MappedPublicationsJsonConfig extends JsonConfig {
 
         // customise the default mapper
         SimpleModule mod = new SimpleModule();
+        mod.addSerializer(LocalDate.class, new LocalDateSerializer());
+        mod.addDeserializer(LocalDate.class, new LocalDateDeserializer());
         mod.addAbstractTypeMapping(MappedPublications.class, MappedPublicationsImpl.class);
         mod.addAbstractTypeMapping(
                 CommunityMappedReference.class, CommunityMappedReferenceImpl.class);
