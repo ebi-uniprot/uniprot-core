@@ -4,6 +4,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -109,7 +110,8 @@ class MappedPublicationsJsonConfigTest {
                 .comment(comment)
                 .proteinOrGene(protOrGene)
                 .function(function)
-                .disease(disease);
+                .disease(disease)
+                .submissionDate(LocalDate.of(2024,9,16));
         CommunityMappedReferenceBuilder builder = new CommunityMappedReferenceBuilder();
         builder.communityAnnotation(communityAnnotationBuilder.build());
         builder.uniProtKBAccession(accession).source(mappedSource);
