@@ -19,6 +19,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.uniprot.core.json.parser.uniparc.UniParcEntryTest.getSeqFeature;
+import static org.uniprot.core.uniparc.impl.UniParcEntryLightBuilder.HAS_ACTIVE_CROSS_REF;
 
 
 class UniParcEntryLightJsonConfigTest {
@@ -90,6 +91,7 @@ class UniParcEntryLightJsonConfigTest {
                 .proteinNamesSet(proteinNames)
                 .geneNamesSet(geneNames)
                 .proteomesSet(proteomes)
+                .extraAttributesAdd(HAS_ACTIVE_CROSS_REF, true)
                 .build();
     }
 }

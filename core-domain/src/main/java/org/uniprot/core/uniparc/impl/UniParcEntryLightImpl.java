@@ -9,10 +9,7 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.util.Utils;
 
 import java.time.LocalDate;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class UniParcEntryLightImpl implements UniParcEntryLight {
 
@@ -31,6 +28,8 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
     private final Set<String> geneNames;
     private final Set<Proteome> proteomes;
 
+    private final Map<String, Object> extraAttributes;
+
     UniParcEntryLightImpl() {
         this(null, 0, null, null, null, null, null, null);
     }
@@ -41,14 +40,14 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
                                  LocalDate oldestCrossRefCreated, LocalDate mostRecentCrossRefUpdated) {
         this(uniParcId, crossReferenceCount, commonTaxons, uniProtKBAccessions,
                 sequence, sequenceFeatures, oldestCrossRefCreated, mostRecentCrossRefUpdated,
-                null, null, null, null);
+                null, null, null, null, null);
     }
     UniParcEntryLightImpl(String uniParcId, int crossReferenceCount,
                           List<CommonOrganism> commonTaxons, LinkedHashSet<String> uniProtKBAccessions,
                                   Sequence sequence, List<SequenceFeature> sequenceFeatures,
                                  LocalDate oldestCrossRefCreated, LocalDate mostRecentCrossRefUpdated,
                           LinkedHashSet<Organism> organisms, LinkedHashSet<String> proteinNames, LinkedHashSet<String> geneNames,
-                          LinkedHashSet<Proteome> proteomes) {
+                          LinkedHashSet<Proteome> proteomes, Map<String, Object> extraAttributes) {
         this.uniParcId = uniParcId;
         this.crossReferenceCount = crossReferenceCount;
         this.commonTaxons = Utils.unmodifiableList(commonTaxons);
@@ -61,6 +60,7 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
         this.proteinNames = Utils.unmodifiableSet(proteinNames);
         this.geneNames = Utils.unmodifiableSet(geneNames);
         this.proteomes = Utils.unmodifiableSet(proteomes);
+        this.extraAttributes = Objects.isNull(extraAttributes) ? Map.of() : extraAttributes;
     }
 
     @Override
@@ -124,6 +124,11 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
     }
 
     @Override
+    public Map<String, Object> getExtraAttributes() {
+        return this.extraAttributes;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -138,13 +143,15 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
                 Objects.equals(getOrganisms(), that.getOrganisms()) &&
                 Objects.equals(getProteinNames(), that.getProteinNames()) &&
                 Objects.equals(getGeneNames(), that.getGeneNames()) &&
-                Objects.equals(getProteomes(), that.getProteomes());
+                Objects.equals(getProteomes(), that.getProteomes()) &&
+                Objects.equals(getExtraAttributes(), that.getExtraAttributes());
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(getUniParcId(), getCrossReferenceCount(), getCommonTaxons(), getUniProtKBAccessions(),
                  getSequence(), getSequenceFeatures(), getOldestCrossRefCreated(),
-                getMostRecentCrossRefUpdated(), getOrganisms(), getProteinNames(), getGeneNames(), getProteomes());
+                getMostRecentCrossRefUpdated(), getOrganisms(), getProteinNames(), getGeneNames(), getProteomes(),
+                getExtraAttributes());
     }
 }

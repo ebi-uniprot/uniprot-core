@@ -3,7 +3,6 @@ package org.uniprot.core.json.parser.uniparc;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.Location;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
@@ -12,6 +11,7 @@ import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
 import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.uniprot.core.uniparc.impl.SequenceFeatureLocationBuilder;
 
 /**
  * @author jluo
@@ -40,11 +40,11 @@ class SequenceFeatureTest {
         SequenceFeatureBuilder builder = new SequenceFeatureBuilder();
         builder.signatureDbType(SignatureDbType.PFAM)
                 .signatureDbId("PF00626")
-                .locationsAdd(new Location(81, 163))
-                .locationsAdd(new Location(202, 267))
-                .locationsAdd(new Location(330, 398))
-                .locationsAdd(new Location(586, 653))
-                .locationsAdd(new Location(692, 766))
+                .locationsAdd(new SequenceFeatureLocationBuilder().range(81, 163).alignment("81M").build())
+                .locationsAdd(new SequenceFeatureLocationBuilder().range(202, 267).alignment("202M").build())
+                .locationsAdd(new SequenceFeatureLocationBuilder().range(330, 398).alignment("81M").build())
+                .locationsAdd(new SequenceFeatureLocationBuilder().range(586, 653).alignment("586M").build())
+                .locationsAdd(new SequenceFeatureLocationBuilder().range(692, 766).alignment("81M").build())
                 .interproGroup(
                         new InterProGroupBuilder()
                                 .id("IPR007123")

@@ -5,11 +5,15 @@ import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniparc.UniParcEntryLight;
 
+import static org.uniprot.core.uniparc.impl.UniParcEntryLightBuilder.HAS_ACTIVE_CROSS_REF;
+
 /**
  * @author jluo
  * @date: 24 Jun 2019
  */
 public class UniParcFastaParser {
+    private UniParcFastaParser(){}
+
     public static String toFasta(UniParcEntry entry) {
         String status = "active";
         boolean isActive = entry.getUniParcCrossReferences()
@@ -22,14 +26,11 @@ public class UniParcFastaParser {
     }
 
     public static String toFasta(UniParcEntryLight entry) {
-        StringBuilder sb = new StringBuilder();
         String status = "active";
-        //TODO: We currently do not have active attribute in UniParcEntryLight object
-        //boolean isActive =
-        //        entry.getUniParcCrossReferences().stream().anyMatch(val -> val.isActive());
-        //if (!isActive) {
-        //    status = "inactive";
-        //}
+        if(entry.getExtraAttributes().containsKey(HAS_ACTIVE_CROSS_REF) &&
+                entry.getExtraAttributes().get(HAS_ACTIVE_CROSS_REF).equals(false)){
+            status = "inactive";
+        }
         return getFastaString(entry.getUniParcId(), status, entry.getSequence());
     }
 

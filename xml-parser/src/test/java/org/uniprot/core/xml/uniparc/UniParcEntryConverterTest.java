@@ -7,15 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.Location;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.*;
 import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
-import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
-import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
-import org.uniprot.core.uniparc.impl.UniParcEntryBuilder;
+import org.uniprot.core.uniparc.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.xml.jaxb.uniparc.Entry;
@@ -52,7 +48,7 @@ class UniParcEntryConverterTest {
         sfBuilder
                 .signatureDbType(SignatureDbType.PANTHER)
                 .signatureDbId("PTHR11977")
-                .locationsAdd(new Location(49, 790))
+                .locationsAdd(new SequenceFeatureLocationBuilder().range(49, 790).build())
                 .interproGroup(
                         new InterProGroupBuilder().id("IPR007122").name("Villin/Gelsolin").build());
 
@@ -60,16 +56,11 @@ class UniParcEntryConverterTest {
         sfBuilder2
                 .signatureDbType(SignatureDbType.PFAM)
                 .signatureDbId("PF00626")
-                .locationsAdd(new Location(81, 163))
-                .locationsAdd(new Location(202, 267))
-                .locationsAdd(new Location(330, 398))
-                .locationsAdd(new Location(586, 653))
-                .locationsAdd(new Location(692, 766))
-                .interproGroup(
-                        new InterProGroupBuilder()
-                                .id("IPR007123")
-                                .name("Gelsolin-like domain")
-                                .build());
+                .locationsAdd(new SequenceFeatureLocationBuilder().range(81, 163).build())
+                .locationsAdd(new SequenceFeatureLocationBuilder().range(202, 267).alignment("22M").build())
+                .locationsAdd(new SequenceFeatureLocationBuilder().range(330, 398).build())
+                .locationsAdd(new SequenceFeatureLocationBuilder().range(586, 653).alignment("57M").build())
+                .locationsAdd(new SequenceFeatureLocationBuilder().range(692, 766).build());
         sfs.add(sfBuilder.build());
         sfs.add(sfBuilder2.build());
         builder.uniParcId("UPI0000083A08")

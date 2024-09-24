@@ -6,6 +6,7 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public interface UniParcEntryLight extends Serializable {
@@ -24,6 +25,8 @@ public interface UniParcEntryLight extends Serializable {
     LocalDate getOldestCrossRefCreated();
 
     LocalDate getMostRecentCrossRefUpdated();
+
+    Map<String, Object> getExtraAttributes();
 
     // lazily loaded fields
     Set<Organism> getOrganisms();// organism id and name pair

@@ -6,9 +6,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.Location;
 import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
+import org.uniprot.core.uniparc.SequenceFeatureLocation;
 import org.uniprot.core.uniparc.SignatureDbType;
 
 /**
@@ -52,7 +52,7 @@ class SequenceFeatureBuilderTest {
 
     @Test
     void testLocations() {
-        List<Location> locations = Arrays.asList(new Location(12, 23), new Location(45, 89));
+        List<SequenceFeatureLocation> locations = Arrays.asList(new SequenceFeatureLocationBuilder().range(12, 23).alignment("55M").build(), new SequenceFeatureLocationBuilder().range(45, 89).build());
         InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
         SequenceFeature sf =
                 new SequenceFeatureBuilder()
@@ -69,7 +69,7 @@ class SequenceFeatureBuilderTest {
 
     @Test
     void testAddLocation() {
-        List<Location> locations = Arrays.asList(new Location(12, 23), new Location(45, 89));
+        List<SequenceFeatureLocation> locations = Arrays.asList(new SequenceFeatureLocationBuilder().range(12, 23).alignment("55M").build(), new SequenceFeatureLocationBuilder().range(45, 89).build());
         InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
         SequenceFeature sf =
                 new SequenceFeatureBuilder()
@@ -77,7 +77,7 @@ class SequenceFeatureBuilderTest {
                         .signatureDbType(SignatureDbType.PFAM)
                         .signatureDbId("sigId2")
                         .locationsSet(locations)
-                        .locationsAdd(new Location(100, 300))
+                        .locationsAdd(new SequenceFeatureLocationBuilder().range(100, 300).build())
                         .build();
         assertEquals(domain, sf.getInterProDomain());
         assertEquals(SignatureDbType.PFAM, sf.getSignatureDbType());
@@ -87,7 +87,7 @@ class SequenceFeatureBuilderTest {
 
     @Test
     void testFrom() {
-        List<Location> locations = Arrays.asList(new Location(12, 23), new Location(45, 89));
+        List<SequenceFeatureLocation> locations = Arrays.asList(new SequenceFeatureLocationBuilder().range(12, 23).alignment("55M").build(), new SequenceFeatureLocationBuilder().range(45, 89).build());
         InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
         SequenceFeature sf =
                 new SequenceFeatureBuilder()

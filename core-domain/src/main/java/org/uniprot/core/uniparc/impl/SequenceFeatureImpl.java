@@ -4,9 +4,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import org.uniprot.core.Location;
 import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
+import org.uniprot.core.uniparc.SequenceFeatureLocation;
 import org.uniprot.core.uniparc.SignatureDbType;
 import org.uniprot.core.util.Utils;
 
@@ -17,19 +17,19 @@ import org.uniprot.core.util.Utils;
 public class SequenceFeatureImpl implements SequenceFeature {
 
     /** */
-    private static final long serialVersionUID = -8511912268843073779L;
+    private static final long serialVersionUID = 5234475851615797849L;
 
     private InterProGroup interproGroup;
     private SignatureDbType database;
     private String databaseId;
-    private List<Location> locations;
+    private List<SequenceFeatureLocation> locations;
 
     SequenceFeatureImpl() {
         this.locations = Collections.emptyList();
     }
 
     SequenceFeatureImpl(
-            InterProGroup domain, SignatureDbType dbType, String dbId, List<Location> locations) {
+            InterProGroup domain, SignatureDbType dbType, String dbId, List<SequenceFeatureLocation> locations) {
         super();
         this.interproGroup = domain;
         this.database = dbType;
@@ -53,7 +53,7 @@ public class SequenceFeatureImpl implements SequenceFeature {
     }
 
     @Override
-    public List<Location> getLocations() {
+    public List<SequenceFeatureLocation> getLocations() {
         return locations;
     }
 

@@ -340,4 +340,25 @@ class UniParcEntryLightBuilderTest {
         Assertions.assertDoesNotThrow(() -> UniParcEntryLightBuilder.from(builder.build()));
     }
 
+    @Test
+    void testExtraAttributes(){
+        UniParcEntryLight entry = new UniParcEntryLightBuilder().uniParcId("UPI0000083A08")
+                .extraAttributesAdd("hasActiveCrossRef", true).build();
+        assertEquals("UPI0000083A08", entry.getUniParcId());
+        assertEquals(1, entry.getExtraAttributes().size());
+        assertEquals(true, entry.getExtraAttributes().get("hasActiveCrossRef"));
+    }
+    @Test
+    void testAddExtraAttributes(){
+        UniParcEntryLight entry = new UniParcEntryLightBuilder().uniParcId("UPI0000083A08").build();
+        assertEquals("UPI0000083A08", entry.getUniParcId());
+        assertTrue(entry.getExtraAttributes().isEmpty());
+        // add extra attribute
+        UniParcEntryLight updatedEntry = UniParcEntryLightBuilder.from(entry)
+                .extraAttributesAdd("hasActiveCrossRef", false).build();
+        assertEquals("UPI0000083A08", updatedEntry.getUniParcId());
+        assertEquals(1, updatedEntry.getExtraAttributes().size());
+        assertEquals(false, updatedEntry.getExtraAttributes().get("hasActiveCrossRef"));
+    }
+
 }
