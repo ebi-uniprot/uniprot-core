@@ -20,7 +20,7 @@ public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
     private String uniParcId;
     private int crossReferenceCount;
     private List<CommonOrganism> commonTaxons = new ArrayList<>();
-    private LinkedHashSet<String> uniProtKBAccessions = new LinkedHashSet<>();
+    private Set<String> uniProtKBAccessions = new LinkedHashSet<>();
 
     private Sequence sequence;
 
@@ -45,8 +45,8 @@ public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
     public UniParcEntryLight build() {
         return new UniParcEntryLightImpl(uniParcId, crossReferenceCount, commonTaxons, uniProtKBAccessions,
                 sequence, sequenceFeatures, oldestCrossRefCreated,
-                mostRecentCrossRefUpdated, (LinkedHashSet<Organism>) organisms, (LinkedHashSet<String>) proteinNames,
-                (LinkedHashSet<String>) geneNames, (LinkedHashSet<Proteome>) proteomes, extraAttributes);
+                mostRecentCrossRefUpdated, organisms, proteinNames,
+                geneNames, proteomes, extraAttributes);
     }
 
     public  @Nonnull UniParcEntryLightBuilder uniParcId(String uniParcId) {
@@ -149,6 +149,11 @@ public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
         return this;
     }
 
+    public @Nonnull UniParcEntryLightBuilder extraAttributesSet(Map<String, Object> extraAttributes) {
+        this.extraAttributes = new LinkedHashMap<>(extraAttributes);
+        return this;
+    }
+
     public static @Nonnull UniParcEntryLightBuilder from(UniParcEntryLight uniParcEntryLight){
         LinkedHashSet<String> uniProtKBAccessions = new LinkedHashSet<>(uniParcEntryLight.getUniProtKBAccessions());
         LinkedHashSet<Organism> organisms = new LinkedHashSet<>(uniParcEntryLight.getOrganisms());
@@ -167,8 +172,8 @@ public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
                 .organismsSet(organisms)
                 .proteinNamesSet(proteinNames)
                 .geneNamesSet(geneNames)
-                .proteomesSet(proteomes);
-        builder.extraAttributes = new LinkedHashMap<>(uniParcEntryLight.getExtraAttributes());
+                .proteomesSet(proteomes)
+                .extraAttributesSet(uniParcEntryLight.getExtraAttributes());
         return builder;
     }
 }

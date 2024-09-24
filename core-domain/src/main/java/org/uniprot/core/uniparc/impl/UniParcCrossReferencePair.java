@@ -12,15 +12,12 @@ public class UniParcCrossReferencePair implements Pair<String, List<UniParcCross
     private static final long serialVersionUID = 7906365717659009263L;
     private String key;
     private List<UniParcCrossReference> value;
-    public UniParcCrossReferencePair(){
-        this(null, null);
-    }
+
 
     public UniParcCrossReferencePair(String key, List<UniParcCrossReference> value) {
         this.key = key;
         this.value = value;
     }
-
 
     @Override
     public String getKey() {

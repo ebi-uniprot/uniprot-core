@@ -24,7 +24,6 @@ class UniParcEntryLightImplTest {
     void needDefaultConstructorForJsonDeserialization() {
         UniParcEntryLight lightObject = new UniParcEntryLightImpl();
         assertNotNull(lightObject);
-        UniParcEntryLightBuilder.from(lightObject);
     }
 
     @Test

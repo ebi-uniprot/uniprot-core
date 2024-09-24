@@ -14,6 +14,7 @@ import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.sequenceFeatures;
@@ -225,6 +226,20 @@ class UniParcEntryLightBuilderTest {
     }
 
     @Test
+    void testProteomesSetThenAdd() {
+        Proteome proteome1 = new ProteomeBuilder().id("UP000005640").component("chromosome").build();
+        LinkedHashSet<Proteome> proteomes = new LinkedHashSet<>(List.of(proteome1));
+        Proteome proteome2 = new ProteomeBuilder().id("UP000002494").component("chromosome").build();
+
+        UniParcEntryLight entry = new UniParcEntryLightBuilder()
+                .proteomesSet(proteomes)
+                .proteomesAdd(proteome2)
+                .build();
+        assertEquals(2, entry.getProteomes().size());
+        assertTrue(entry.getProteomes().containsAll(List.of(proteome1, proteome2)));
+    }
+
+    @Test
     void testOrganismsSetThenAdd() {
         Organism organism1 = new OrganismBuilder().taxonId(9606).scientificName("Homo sapiens").build();
         Organism organism2 = new OrganismBuilder().taxonId(10090).scientificName("Mus musculus").build();
@@ -259,20 +274,6 @@ class UniParcEntryLightBuilderTest {
                 .build();
         assertEquals(2, entry.getGeneNames().size());
         assertTrue(entry.getGeneNames().containsAll(List.of("Gene1", "Gene2")));
-    }
-
-    @Test
-    void testProteomeIdsSetThenAdd() {
-        Proteome proteome1 = new ProteomeBuilder().id("UP000005640").component("chromosome").build();
-        LinkedHashSet<Proteome> proteomes = new LinkedHashSet<>(List.of(proteome1));
-        Proteome proteome2 = new ProteomeBuilder().id("UP000002494").component("chromosome").build();
-
-        UniParcEntryLight entry = new UniParcEntryLightBuilder()
-                .proteomesSet(proteomes)
-                .proteomesAdd(proteome2)
-                .build();
-        assertEquals(2, entry.getProteomes().size());
-        assertTrue(entry.getProteomes().containsAll(List.of(proteome1, proteome2)));
     }
 
 
@@ -313,18 +314,7 @@ class UniParcEntryLightBuilderTest {
 
         UniParcEntryLight newEntry = UniParcEntryLightBuilder.from(originalEntry).build();
 
-        assertEquals(originalEntry.getUniParcId(), newEntry.getUniParcId());
-        assertEquals(originalEntry.getCrossReferenceCount(), newEntry.getCrossReferenceCount());
-        assertEquals(originalEntry.getCommonTaxons(), newEntry.getCommonTaxons());
-        assertEquals(originalEntry.getSequence(), newEntry.getSequence());
-        assertEquals(originalEntry.getSequenceFeatures(), newEntry.getSequenceFeatures());
-        assertEquals(originalEntry.getOldestCrossRefCreated(), newEntry.getOldestCrossRefCreated());
-        assertEquals(originalEntry.getMostRecentCrossRefUpdated(), newEntry.getMostRecentCrossRefUpdated());
-        assertEquals(originalEntry.getOrganisms(), newEntry.getOrganisms());
-        assertEquals(originalEntry.getProteinNames(), newEntry.getProteinNames());
-        assertEquals(originalEntry.getGeneNames(), newEntry.getGeneNames());
-        assertEquals(originalEntry.getProteomes(), newEntry.getProteomes());
-        assertEquals(originalEntry, newEntry);
+        verifyOriginalAndNewEntry(originalEntry, newEntry);
     }
 
     @Test
@@ -359,6 +349,35 @@ class UniParcEntryLightBuilderTest {
         assertEquals("UPI0000083A08", updatedEntry.getUniParcId());
         assertEquals(1, updatedEntry.getExtraAttributes().size());
         assertEquals(false, updatedEntry.getExtraAttributes().get("hasActiveCrossRef"));
+    }
+
+    @Test
+    void testSetExtraAttributes(){
+        UniParcEntryLight entry = new UniParcEntryLightBuilder().uniParcId("UPI0000083A08").build();
+        assertEquals("UPI0000083A08", entry.getUniParcId());
+        assertTrue(entry.getExtraAttributes().isEmpty());
+        // set extra attribute
+        UniParcEntryLight updatedEntry = UniParcEntryLightBuilder.from(entry)
+                .extraAttributesSet(Map.of("hasActiveCrossRef", false, "another", "random")).build();
+        assertEquals("UPI0000083A08", updatedEntry.getUniParcId());
+        assertEquals(2, updatedEntry.getExtraAttributes().size());
+        assertEquals(false, updatedEntry.getExtraAttributes().get("hasActiveCrossRef"));
+        assertEquals("random", updatedEntry.getExtraAttributes().get("another"));
+    }
+
+    private void verifyOriginalAndNewEntry(UniParcEntryLight originalEntry, UniParcEntryLight newEntry) {
+        assertEquals(originalEntry.getUniParcId(), newEntry.getUniParcId());
+        assertEquals(originalEntry.getCrossReferenceCount(), newEntry.getCrossReferenceCount());
+        assertEquals(originalEntry.getCommonTaxons(), newEntry.getCommonTaxons());
+        assertEquals(originalEntry.getSequence(), newEntry.getSequence());
+        assertEquals(originalEntry.getSequenceFeatures(), newEntry.getSequenceFeatures());
+        assertEquals(originalEntry.getOldestCrossRefCreated(), newEntry.getOldestCrossRefCreated());
+        assertEquals(originalEntry.getMostRecentCrossRefUpdated(), newEntry.getMostRecentCrossRefUpdated());
+        assertEquals(originalEntry.getOrganisms(), newEntry.getOrganisms());
+        assertEquals(originalEntry.getProteinNames(), newEntry.getProteinNames());
+        assertEquals(originalEntry.getGeneNames(), newEntry.getGeneNames());
+        assertEquals(originalEntry.getProteomes(), newEntry.getProteomes());
+        assertEquals(originalEntry, newEntry);
     }
 
 }
