@@ -212,17 +212,17 @@ class UniParcEntryLightBuilderTest {
     }
 
     @Test
-    void testProteomeIdsSet() {
+    void testProteomesSet() {
         LinkedHashSet<Proteome> proteomes = new LinkedHashSet<>(List.of(new ProteomeBuilder().id("UP000005640").component("C1").build(), new ProteomeBuilder().id("UP000002494").component("C2").build()));
         UniParcEntryLight entry = new UniParcEntryLightBuilder().proteomesSet(proteomes).build();
         assertEquals(proteomes, entry.getProteomes());
     }
 
     @Test
-    void testProteomeIdsAdd() {
-        Proteome proteomeId = new ProteomeBuilder().id("UP000005640").component("C1").build();
-        UniParcEntryLight entry = new UniParcEntryLightBuilder().proteomesAdd(proteomeId).build();
-        assertTrue(entry.getProteomes().contains(proteomeId));
+    void testProteomeAdd() {
+        Proteome proteome = new ProteomeBuilder().id("UP000005640").component("C1").build();
+        UniParcEntryLight entry = new UniParcEntryLightBuilder().proteomesAdd(proteome).build();
+        assertTrue(entry.getProteomes().contains(proteome));
     }
 
     @Test
