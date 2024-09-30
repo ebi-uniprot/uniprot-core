@@ -1,7 +1,6 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.Location;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.*;
@@ -10,9 +9,12 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class UniParcEntryLightValueMapperTest {
 
@@ -76,16 +78,6 @@ class UniParcEntryLightValueMapperTest {
         verify("id1", "InterPro", result);
         verify("sigId2", "Pfam", result);
         verify("sigId2", "PROSITE", result);
-    }
-
-    @Test
-    void testGetDates() {
-        UniParcEntryLight entry = create();
-        List<String> fields = Arrays.asList("oldestCrossRefCreated", "mostRecentCrossRefUpdated");
-        Map<String, String> result = new UniParcEntryLightValueMapper().mapEntity(entry, fields);
-        assertEquals(2, result.size());
-        verify("2017-02-12", "oldestCrossRefCreated", result);
-        verify("2020-10-25", "mostRecentCrossRefUpdated", result);
     }
 
     private void verify(String expected, String field, Map<String, String> result) {

@@ -12,8 +12,6 @@ public class UniParcEntryLightValueMapper implements EntityValueMapper<UniParcEn
 
     private static final List<String> UNIPARC_FIELDS =
             List.of("upi",
-                    "oldestCrossRefCreated",
-                    "mostRecentCrossRefUpdated",
                     "organism",
                     "organism_id",
                     "gene",
@@ -54,57 +52,43 @@ public class UniParcEntryLightValueMapper implements EntityValueMapper<UniParcEn
                 case "upi":
                     map.put(UNIPARC_FIELDS.get(0), entry.getUniParcId());
                     break;
-                case "oldestCrossRefCreated":
-                    map.put(
-                            UNIPARC_FIELDS.get(1),
-                            Optional.of(entry.getOldestCrossRefCreated())
-                                    .map(LocalDate::toString)
-                                    .orElse(""));
-                    break;
-                case "mostRecentCrossRefUpdated":
-                    map.put(
-                            UNIPARC_FIELDS.get(2),
-                            Optional.of(entry.getMostRecentCrossRefUpdated())
-                                    .map(LocalDate::toString)
-                                    .orElse(""));
-                    break;
                 case "organism":
                     map.put(
-                            UNIPARC_FIELDS.get(3),
+                            UNIPARC_FIELDS.get(1),
                             entry.getOrganisms().stream()
                                     .map(Organism::getScientificName)
                                     .collect(Collectors.joining(DELIMITER2)));
                     break;
                 case "organism_id":
                     map.put(
-                            UNIPARC_FIELDS.get(4),
+                            UNIPARC_FIELDS.get(2),
                             entry.getOrganisms().stream()
                                     .map(Organism::getTaxonId)
                                     .map(String::valueOf)
                                     .collect(Collectors.joining(DELIMITER2)));
                     break;
                 case "gene":
-                    map.put(UNIPARC_FIELDS.get(5),String.join(DELIMITER2, entry.getGeneNames()));
+                    map.put(UNIPARC_FIELDS.get(3),String.join(DELIMITER2, entry.getGeneNames()));
                     break;
                 case "protein":
-                    map.put(UNIPARC_FIELDS.get(6),String.join(DELIMITER2, entry.getProteinNames()));
+                    map.put(UNIPARC_FIELDS.get(4),String.join(DELIMITER2, entry.getProteinNames()));
                     break;
                 case "proteome":
-                    map.put(UNIPARC_FIELDS.get(7),entry.getProteomes().stream().map(e -> e.getId()+":"+e.getComponent()).collect(Collectors.joining(DELIMITER2)));
+                    map.put(UNIPARC_FIELDS.get(5),entry.getProteomes().stream().map(e -> e.getId()+":"+e.getComponent()).collect(Collectors.joining(DELIMITER2)));
                     break;
                 case "accession":
-                    map.put(UNIPARC_FIELDS.get(8),String.join(DELIMITER2, entry.getUniProtKBAccessions()));
+                    map.put(UNIPARC_FIELDS.get(6),String.join(DELIMITER2, entry.getUniProtKBAccessions()));
                     break;
                 case "first_seen":
                     map.put(
-                            UNIPARC_FIELDS.get(9),
+                            UNIPARC_FIELDS.get(7),
                             Optional.of(entry.getOldestCrossRefCreated())
                                     .map(LocalDate::toString)
                                     .orElse(""));
                     break;
                 case "last_seen":
                     map.put(
-                            UNIPARC_FIELDS.get(10),
+                            UNIPARC_FIELDS.get(8),
                             Optional.of(entry.getMostRecentCrossRefUpdated())
                                     .map(LocalDate::toString)
                                     .orElse(""));

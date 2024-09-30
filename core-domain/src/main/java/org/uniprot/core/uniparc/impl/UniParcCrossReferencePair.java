@@ -13,7 +13,7 @@ public class UniParcCrossReferencePair implements Pair<String, List<UniParcCross
     private String key;
     private List<UniParcCrossReference> value;
 
-
+    UniParcCrossReferencePair(){}
     public UniParcCrossReferencePair(String key, List<UniParcCrossReference> value) {
         this.key = key;
         this.value = value;
