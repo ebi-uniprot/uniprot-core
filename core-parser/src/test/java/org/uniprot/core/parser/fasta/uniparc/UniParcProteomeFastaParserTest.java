@@ -20,7 +20,7 @@ class UniParcProteomeFastaParserTest {
     @Test
     void toFastaFullSingleValues() {
         UniParcEntry entry = create();
-        String fasta = UniParcProteomeFastaParser.toFasta(entry, "UP000005640");
+        String fasta = UniParcProteomeFastaParser.toFasta(entry);
         String expected =
                 ">UPI0000083A08|EMBL:CQR81549 UP=UP000005640:Chromosome 1 OX=9606 OS=Homo Sapiens AC=P12345\n" +
                         "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT\n" +
@@ -42,7 +42,7 @@ class UniParcProteomeFastaParserTest {
                 .uniParcCrossReferencesSet(xrefs)
                 .sequence(getSequence())
                 .build();
-        String fasta = UniParcProteomeFastaParser.toFasta(entry, proteomeId);
+        String fasta = UniParcProteomeFastaParser.toFasta(entry);
         String expected =
                 ">UPI0000083A09|EMBL_CON:XP12345|EMBL_TPA:XP54321 UP=UP000005640:C1|C2 OX=9606 OS=Homo Sapiens AC=P21802|P12345\n" +
                         "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT\n" +
@@ -62,7 +62,7 @@ class UniParcProteomeFastaParserTest {
                 .uniParcCrossReferencesSet(xrefs)
                 .sequence(getSequence())
                 .build();
-        String fasta = UniParcProteomeFastaParser.toFasta(entry, proteomeId);
+        String fasta = UniParcProteomeFastaParser.toFasta(entry);
         String expected =
                 ">UPI0000083A09|EMBL_CON:XP12345 UP=UP000005640:C1 OX=9606 OS=Homo Sapiens\n" +
                         "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT\n" +
@@ -81,7 +81,7 @@ class UniParcProteomeFastaParserTest {
                 .uniParcCrossReferencesSet(xrefs)
                 .sequence(getSequence())
                 .build();
-        String fasta = UniParcProteomeFastaParser.toFasta(entry, proteomeId);
+        String fasta = UniParcProteomeFastaParser.toFasta(entry);
         String expected =
                 ">UPI0000083A09|EMBL_CON:XP12345 UP=UP000005640 OX=9606 OS=Homo Sapiens\n" +
                         "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT\n" +
@@ -99,7 +99,7 @@ class UniParcProteomeFastaParserTest {
                 .uniParcCrossReferencesSet(xrefs)
                 .sequence(getSequence())
                 .build();
-        String fasta = UniParcProteomeFastaParser.toFasta(entry, proteomeId);
+        String fasta = UniParcProteomeFastaParser.toFasta(entry);
         String expected =
                 ">UPI0000083A09|EMBL_CON:XP12345 UP=UP000005640:C8\n" +
                         "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT\n" +
@@ -117,7 +117,7 @@ class UniParcProteomeFastaParserTest {
                 .uniParcCrossReferencesSet(xrefs)
                 .sequence(getSequence())
                 .build();
-        String fasta = UniParcProteomeFastaParser.toFasta(entry, proteomeId);
+        String fasta = UniParcProteomeFastaParser.toFasta(entry);
         String expected =
                 ">UPI0000083A09 UP=UP000005640:C9\n" +
                         "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT\n" +
@@ -136,7 +136,7 @@ class UniParcProteomeFastaParserTest {
                 .uniParcCrossReferencesSet(xrefs)
                 .sequence(getSequence())
                 .build();
-        String fasta = UniParcProteomeFastaParser.toFasta(entry, proteomeId);
+        String fasta = UniParcProteomeFastaParser.toFasta(entry);
         String expected =
                 ">UPI0000083A09|EMBL_CON:XP12345 UP=UP000005640:C5\n" +
                         "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT\n" +
