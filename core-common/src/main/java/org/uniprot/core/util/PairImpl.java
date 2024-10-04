@@ -5,6 +5,10 @@ public class PairImpl<K, V> implements Pair<K, V> {
     private final K key;
     private final V value;
 
+    PairImpl(){ // do not use, just to make Jackson serializer happy
+        this(null, null);
+    }
+
     public PairImpl(K key, V value) {
         this.key = key;
         this.value = value;

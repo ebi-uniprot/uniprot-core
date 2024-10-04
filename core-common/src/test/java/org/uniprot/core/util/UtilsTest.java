@@ -191,26 +191,26 @@ class UtilsTest {
         class unmodifiableList {
             @Test
             void passingNullReturnEmptyList() {
-                List l = Utils.unmodifiableList(null);
-                assertTrue(l.isEmpty());
+                List<Object> unmodifiableList = Utils.unmodifiableList(null);
+                assertTrue(unmodifiableList.isEmpty());
             }
 
             @Test
             void passing_emptyList_returnEmptyList() {
-                List l = Utils.unmodifiableList(new ArrayList<>());
-                assertTrue(l.isEmpty());
+                List<Object> unmodifiableList = Utils.unmodifiableList(new ArrayList<>());
+                assertTrue(unmodifiableList.isEmpty());
             }
 
             @Test
             void passingNullReturnEmptyList_unmodifiable() {
-                List<String> l = Utils.unmodifiableList(null);
-                assertThrows(UnsupportedOperationException.class, () -> l.add("abc"));
+                List<String> unmodifiableList = Utils.unmodifiableList(null);
+                assertThrows(UnsupportedOperationException.class, () -> unmodifiableList.add("abc"));
             }
 
             @Test
             void passing_emptyList_returnEmptyList_unmodifiable() {
-                List<String> l = Utils.unmodifiableList(new ArrayList<>());
-                assertThrows(UnsupportedOperationException.class, () -> l.add("abc"));
+                List<String> unmodifiableList = Utils.unmodifiableList(new ArrayList<>());
+                assertThrows(UnsupportedOperationException.class, () -> unmodifiableList.add("abc"));
             }
 
             @Test
@@ -218,7 +218,55 @@ class UtilsTest {
                 List<String> list = new ArrayList<>();
                 list.add("a");
                 list.add("b");
-                List<String> l = Utils.unmodifiableList(list);
+                List<String> unmodifiableList = Utils.unmodifiableList(list);
+                assertThrows(UnsupportedOperationException.class, () -> unmodifiableList.add("c"));
+            }
+        }
+
+        @Nested
+        class unmodifiableSet {
+            @Test
+            void passingNullReturnEmptySet() {
+                Set<Object> unmodifiableSet = Utils.unmodifiableSet(null);
+                assertTrue(unmodifiableSet.isEmpty());
+            }
+
+            @Test
+            void passing_emptySet_returnEmptySet() {
+                Set<String> unmodifiableSet = Utils.unmodifiableSet(new HashSet<>());
+                assertTrue(unmodifiableSet.isEmpty());
+            }
+
+            @Test
+            void passingNullReturnEmptySet_unmodifiable() {
+                Set<String> unmodifiableSet = Utils.unmodifiableSet(null);
+                assertThrows(UnsupportedOperationException.class, () -> unmodifiableSet.add("abc"));
+            }
+
+            @Test
+            void passing_emptySet_returnEmptySet_unmodifiable() {
+                Set<String> unmodifiableSet = Utils.unmodifiableSet(new HashSet<>());
+                assertThrows(UnsupportedOperationException.class, () -> unmodifiableSet.add("abc"));
+            }
+
+            @Test
+            void passingSet_returnUnmodifiable() {
+                Set<String> set = new HashSet<>();
+                set.add("a");
+                set.add("b");
+                Set<String> unmodifiableSet = Utils.unmodifiableSet(set);
+                assertThrows(UnsupportedOperationException.class, () -> unmodifiableSet.add("c"));
+            }
+
+            @Test
+            void passingLinkedHashSet_returnUnmodifiable() {
+                Set<String> list = new LinkedHashSet<>();
+                list.add("a");
+                list.add("b");
+                list.add("d");
+                list.add("c");
+                Set<String> l = Utils.unmodifiableSet(list);
+                assertEquals(list,l);
                 assertThrows(UnsupportedOperationException.class, () -> l.add("c"));
             }
         }

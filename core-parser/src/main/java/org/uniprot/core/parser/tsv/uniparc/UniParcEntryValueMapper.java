@@ -17,7 +17,7 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
 public class UniParcEntryValueMapper implements EntityValueMapper<UniParcEntry> {
 
     private static final List<String> UNIPARC_FIELDS =
-            List.of("upi", "oldestCrossRefCreated", "mostRecentCrossRefUpdated");
+            List.of("upi", "first_seen", "last_seen");
 
     @Override
     public Map<String, String> mapEntity(UniParcEntry entry, List<String> fields) {
@@ -60,14 +60,14 @@ public class UniParcEntryValueMapper implements EntityValueMapper<UniParcEntry> 
                 case "upi":
                     map.put(UNIPARC_FIELDS.get(0), entry.getUniParcId().getValue());
                     break;
-                case "oldestCrossRefCreated":
+                case "first_seen":
                     map.put(
                             UNIPARC_FIELDS.get(1),
                             Optional.of(entry.getOldestCrossRefCreated())
                                     .map(LocalDate::toString)
                                     .orElse(""));
                     break;
-                case "mostRecentCrossRefUpdated":
+                case "last_seen":
                     map.put(
                             UNIPARC_FIELDS.get(2),
                             Optional.of(entry.getMostRecentCrossRefUpdated())
