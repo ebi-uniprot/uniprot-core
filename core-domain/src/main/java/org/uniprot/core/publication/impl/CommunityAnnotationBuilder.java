@@ -5,6 +5,8 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.Builder;
 import org.uniprot.core.publication.CommunityAnnotation;
 
+import java.time.LocalDate;
+
 /**
  * Created 02/12/2020
  *
@@ -15,6 +17,7 @@ public class CommunityAnnotationBuilder implements Builder<CommunityAnnotation> 
     private String function;
     private String disease;
     private String comment;
+    private LocalDate submissionDate;
 
     public CommunityAnnotationBuilder proteinOrGene(String proteinOrGene) {
         this.proteinOrGene = proteinOrGene;
@@ -36,10 +39,20 @@ public class CommunityAnnotationBuilder implements Builder<CommunityAnnotation> 
         return this;
     }
 
+    public CommunityAnnotationBuilder submissionDate(String submissionDate) {
+        this.submissionDate = LocalDate.parse(submissionDate);
+        return this;
+    }
+
+    public CommunityAnnotationBuilder submissionDate(LocalDate submissionDate) {
+        this.submissionDate = submissionDate;
+        return this;
+    }
+
     @Nonnull
     @Override
     public CommunityAnnotation build() {
-        return new CommunityAnnotationImpl(proteinOrGene, function, disease, comment);
+        return new CommunityAnnotationImpl(proteinOrGene, function, disease, comment, submissionDate);
     }
 
     public static CommunityAnnotationBuilder from(@Nonnull CommunityAnnotation instance) {
@@ -47,6 +60,7 @@ public class CommunityAnnotationBuilder implements Builder<CommunityAnnotation> 
                 .function(instance.getFunction())
                 .disease(instance.getDisease())
                 .comment(instance.getComment())
-                .proteinOrGene(instance.getProteinOrGene());
+                .proteinOrGene(instance.getProteinOrGene())
+                .submissionDate(instance.getSubmissionDate());
     }
 }
