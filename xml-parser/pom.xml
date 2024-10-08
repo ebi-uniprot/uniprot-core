@@ -24,6 +24,7 @@
 		<coordinate-xsd-pojo-package>org.uniprot.core.xml.jaxb.coordinate</coordinate-xsd-pojo-package>
 		<uniref-xsd-pojo-package>org.uniprot.core.xml.jaxb.uniref</uniref-xsd-pojo-package>
 		<uniparc-xsd-pojo-package>org.uniprot.core.xml.jaxb.uniparc</uniparc-xsd-pojo-package>
+		<dbreference-xsd-pojo-package>org.uniprot.core.xml.jaxb.dbreference</dbreference-xsd-pojo-package>
 		<unirule-xsd-pojo-package>org.uniprot.core.xml.jaxb.unirule</unirule-xsd-pojo-package>
 		<feature-xsd-pojo-package>org.uniprot.core.xml.jaxb.feature</feature-xsd-pojo-package>
 	</properties>
@@ -209,6 +210,16 @@
 									<extension>true</extension>
 									<xsd>${xsd-location}/feature.xsd</xsd>
 									<packagename>${feature-xsd-pojo-package}</packagename>
+									<extensionArgs>
+										<extensionArg>-verbose</extensionArg>
+										<extensionArg>-Xequals</extensionArg>
+										<extensionArg>-XhashCode</extensionArg>
+									</extensionArgs>
+								</xsdOption>
+								<xsdOption>
+									<extension>true</extension>
+									<xsd>${xsd-location}/uniparc-dbreference.xsd</xsd>
+									<packagename>${dbreference-xsd-pojo-package}</packagename>
 									<extensionArgs>
 										<extensionArg>-verbose</extensionArg>
 										<extensionArg>-Xequals</extensionArg>

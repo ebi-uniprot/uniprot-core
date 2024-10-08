@@ -25,7 +25,7 @@
 				<xs:element name="accession" type="xs:string"
 					minOccurs="1" maxOccurs="1" />
 				<xs:element name="dbReference" type="dbReferenceType"
-					minOccurs="1" maxOccurs="unbounded" />
+					minOccurs="0" maxOccurs="unbounded" />
 				<xs:element name="signatureSequenceMatch"
 					type="seqFeatureType" minOccurs="0" maxOccurs="unbounded" />
 				<xs:element ref="sequence" minOccurs="1" maxOccurs="1" />
