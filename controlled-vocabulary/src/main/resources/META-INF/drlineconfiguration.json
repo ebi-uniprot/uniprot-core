@@ -912,7 +912,7 @@
 		"name": "DisGeNET",
 		"displayName": "DisGeNET",
 		"category": "ORG",
-		"uriLink": "https://www.disgenetplus.com/examples?view=GENES&idents=%id&source=ALL&tab=GDA&newSearch=false"
+		"uriLink": "https://www.disgenet.com/search?view=GENES&idents=%id&source=ALL&tab=GDA"
 	},
 	{
 		"name": "EchoBASE",
@@ -1501,6 +1501,17 @@
 		]
 	},
 	{
+		"name": "AntiFam",
+		"displayName": "AntiFam",
+		"category": "FMD",
+		"uriLink": "https://www.ebi.ac.uk/interpro/entry/antifam/%id",
+		"attributes": [
+			{	"name": "EntryName",
+				"xmlTag":"entry name"
+			}
+		]
+	},
+	{
 		"name": "CDD",
 		"displayName": "CDD",
 		"category": "FMD",
@@ -1511,6 +1522,20 @@
 			},
 			{	"name": "MatchStatus",
 				"xmlTag":"match status"			
+			}
+		]
+	},
+	{
+		"name": "FunFam",
+		"displayName": "FunFam",
+		"category": "FMD",
+		"uriLink": "https://www.cathdb.info/version/latest/superfamily/%id",
+		"attributes": [
+			{	"name": "EntryName",
+				"xmlTag":"entry name"
+			},
+			{	"name": "MatchStatus",
+				"xmlTag":"match status"
 			}
 		]
 	},
