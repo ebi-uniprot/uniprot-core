@@ -1,13 +1,19 @@
 package org.uniprot.cv.xdb;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
+import org.uniprot.cv.common.CVSystemProperties;
 
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
+import static org.junit.jupiter.api.Assertions.*;
 
 class UniProtKBCrossReferenceDisplayOrderTest {
+    @BeforeAll
+    static void setSystemProperty(){
+        System.setProperty(CVSystemProperties.DR_ORD_LOCATION,"src/test/resources/xdb/dr_ord");
+    }
 
     @Test
     void testCreateUniProtXDbDisplayOrder() {

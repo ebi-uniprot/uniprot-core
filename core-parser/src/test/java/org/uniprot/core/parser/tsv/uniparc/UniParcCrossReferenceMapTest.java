@@ -1,15 +1,16 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.time.LocalDate;
-import java.util.*;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
+
+import java.time.LocalDate;
+import java.util.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author jluo
@@ -31,9 +32,7 @@ class UniParcCrossReferenceMapTest {
         UniParcCrossReferenceMap xrefMap =
                 new UniParcCrossReferenceMap(Collections.singletonList(xref));
         Map<String, String> result = xrefMap.attributeValues();
-        assertEquals(13, result.size());
-        assertEquals("2017-05-17", result.get("first_seen"));
-        assertEquals("2018-02-07", result.get("last_seen"));
+        assertEquals(11, result.size());
         assertEquals("IDVALUE", result.get("EnsemblBacteria"));
         assertEquals("", result.get("gene"));
         assertEquals("", result.get("protein"));
@@ -52,13 +51,11 @@ class UniParcCrossReferenceMapTest {
         List<UniParcCrossReference> xrefs = create();
         UniParcCrossReferenceMap xrefMap = new UniParcCrossReferenceMap(xrefs);
         Map<String, String> result = xrefMap.attributeValues();
-        assertEquals(14, result.size());
+        assertEquals(12, result.size());
         assertEquals("geneValue", result.get("gene"));
         assertEquals("some pname;some pname2", result.get("protein"));
         assertEquals("P12345; P12347.2 (obsolete)", result.get("accession"));
         assertEquals("UP00000564:chromosome 1", result.get("proteome"));
-        assertEquals("2015-01-11", result.get("first_seen"));
-        assertEquals("2018-02-07", result.get("last_seen"));
         assertEquals("P12345", result.get("UniProtKB/Swiss-Prot"));
         assertEquals("P12347", result.get("UniProtKB/TrEMBL"));
     }
@@ -72,8 +69,6 @@ class UniParcCrossReferenceMapTest {
                         "protein",
                         "proteome",
                         "accession",
-                        "first_seen",
-                        "last_seen",
                         "database",
                         "active",
                         "ncbiGi",
@@ -95,9 +90,7 @@ class UniParcCrossReferenceMapTest {
         List<UniParcCrossReference> xrefs = createWithoutDates();
         UniParcCrossReferenceMap xrefMap = new UniParcCrossReferenceMap(xrefs);
         Map<String, String> result = xrefMap.attributeValues();
-        assertEquals(14, result.size());
-        assertTrue(result.get("first_seen").isEmpty());
-        assertTrue(result.get("last_seen").isEmpty());
+        assertEquals(12, result.size());
         assertTrue(result.get("timeline").isEmpty());
     }
 
