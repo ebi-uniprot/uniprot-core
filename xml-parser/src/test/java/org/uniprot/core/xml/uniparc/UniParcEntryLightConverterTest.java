@@ -24,7 +24,6 @@ class UniParcEntryLightConverterTest {
         UniParcEntryLight uniParcEntryLight = createUniParcEntryLight();
         UniParcEntryLightConverter converter = new UniParcEntryLightConverter();
         Entry xmlObj = converter.toXml(uniParcEntryLight);
-        System.out.println(UniParcXmlTestHelper.toXmlString(xmlObj, Entry.class, "entry"));
         UniParcEntryLight converted = converter.fromXml(xmlObj);
         assertEquals(uniParcEntryLight, converted);
     }

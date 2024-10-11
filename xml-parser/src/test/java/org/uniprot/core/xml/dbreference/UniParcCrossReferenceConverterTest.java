@@ -11,7 +11,8 @@ import org.uniprot.core.xml.jaxb.dbreference.DbReference;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.uniprot.core.xml.uniparc.UniParcDBCrossReferenceConverter.PROPERTY_UNIPROTKB_ACCESSION;
+import static org.uniprot.core.xml.CrossReferenceConverterUtils.PROPERTY_UNIPROTKB_ACCESSION;
+
 
 class UniParcCrossReferenceConverterTest {
     @Test

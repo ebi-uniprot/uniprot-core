@@ -8,11 +8,10 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
-import org.uniprot.core.xml.XmlReaderException;
+import org.uniprot.core.xml.CrossReferenceConverterUtils;
 import org.uniprot.core.xml.jaxb.dbreference.DbReference;
 import org.uniprot.core.xml.jaxb.dbreference.ObjectFactory;
 import org.uniprot.core.xml.jaxb.dbreference.PropertyType;
-
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
 import org.uniprot.cv.taxonomy.TaxonomicNode;
 import org.uniprot.cv.taxonomy.TaxonomyRepo;
@@ -21,18 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static org.uniprot.core.xml.CrossReferenceConverterUtils.*;
+
 public class UniParcCrossReferenceConverter
         implements Converter<DbReference, UniParcCrossReference> {
-
-    public static final String PROPERTY_GENE_NAME = "gene_name";
-    public static final String PROPERTY_PROTEIN_NAME = "protein_name";
-    public static final String PROPERTY_CHAIN = "chain";
-    public static final String PROPERTY_NCBI_GI = "NCBI_GI";
-    public static final String PROPERTY_PROTEOME_ID = "proteome_id";
-    public static final String PROPERTY_COMPONENT = "component";
-    public static final String PROPERTY_NCBI_TAXONOMY_ID = "NCBI_taxonomy_id";
-    public static final String PROPERTY_UNIPROTKB_ACCESSION = "UniProtKB_accession";
-
     private final ObjectFactory xmlFactory;
     private final TaxonomyRepo taxonomyRepo;
 
@@ -56,38 +47,7 @@ public class UniParcCrossReferenceConverter
                 .lastUpdated(XmlConverterHelper.dateFromXml(xmlObj.getLast()));
 
         for (PropertyType property : xmlObj.getProperty()) {
-            switch (property.getType()) {
-                case PROPERTY_GENE_NAME:
-                    builder.geneName(property.getValue());
-                    break;
-                case PROPERTY_PROTEIN_NAME:
-                    builder.proteinName(property.getValue());
-                    break;
-                case PROPERTY_CHAIN:
-                    builder.chain(property.getValue());
-                    break;
-                case PROPERTY_NCBI_GI:
-                    builder.ncbiGi(property.getValue());
-                    break;
-                case PROPERTY_PROTEOME_ID:
-                    builder.proteomeId(property.getValue());
-                    break;
-                case PROPERTY_COMPONENT:
-                    builder.component(property.getValue());
-                    break;
-                case PROPERTY_NCBI_TAXONOMY_ID:
-                    builder.organism(convertTaxonomy(property.getValue()));
-                    break;
-                case PROPERTY_UNIPROTKB_ACCESSION:
-                    builder.propertiesAdd(PROPERTY_UNIPROTKB_ACCESSION, property.getValue());
-                    break;
-                default:
-                    throw new XmlReaderException(
-                            "Unable to read xml property: "
-                                    + xmlObj.getType()
-                                    + "value: "
-                                    + property.getValue());
-            }
+            CrossReferenceConverterUtils.populateUniParcCrossReferenceBuilder(xmlObj.getType(), property.getValue(), builder, taxonomyRepo);
         }
         if (xmlObj.getVersion() != null) builder.version(xmlObj.getVersion());
         return builder.build();
@@ -135,29 +95,6 @@ public class UniParcCrossReferenceConverter
         }
 
         return xmlObj;
-    }
-
-    private Organism convertTaxonomy(String taxId) {
-        OrganismBuilder builder = new OrganismBuilder().taxonId(Long.parseLong(taxId));
-        Optional<TaxonomicNode> opNode = getTaxonomyNode(taxId);
-        if (opNode.isPresent()) {
-            TaxonomicNode node = opNode.get();
-            builder.scientificName(node.scientificName());
-            if (!Strings.isNullOrEmpty(node.commonName())) {
-                builder.commonName(node.commonName());
-            }
-            if (!Strings.isNullOrEmpty(node.synonymName())) {
-                builder.synonymsAdd(node.synonymName());
-            }
-        }
-
-        return builder.build();
-    }
-
-    private Optional<TaxonomicNode> getTaxonomyNode(String taxId) {
-        if (taxonomyRepo == null) {
-            return Optional.empty();
-        } else return taxonomyRepo.retrieveNodeUsingTaxID(Integer.parseInt(taxId));
     }
 
     private PropertyType createProperty(String key, String value) {
