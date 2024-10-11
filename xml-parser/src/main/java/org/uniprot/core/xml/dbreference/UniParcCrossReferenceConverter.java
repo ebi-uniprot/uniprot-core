@@ -1,11 +1,8 @@
 package org.uniprot.core.xml.dbreference;
 
-import com.google.common.base.Strings;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
-import org.uniprot.core.uniprotkb.taxonomy.Organism;
-import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.CrossReferenceConverterUtils;
@@ -13,12 +10,10 @@ import org.uniprot.core.xml.jaxb.dbreference.DbReference;
 import org.uniprot.core.xml.jaxb.dbreference.ObjectFactory;
 import org.uniprot.core.xml.jaxb.dbreference.PropertyType;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
-import org.uniprot.cv.taxonomy.TaxonomicNode;
 import org.uniprot.cv.taxonomy.TaxonomyRepo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.uniprot.core.xml.CrossReferenceConverterUtils.*;
 
@@ -47,7 +42,7 @@ public class UniParcCrossReferenceConverter
                 .lastUpdated(XmlConverterHelper.dateFromXml(xmlObj.getLast()));
 
         for (PropertyType property : xmlObj.getProperty()) {
-            CrossReferenceConverterUtils.populateUniParcCrossReferenceBuilder(xmlObj.getType(), property.getValue(), builder, taxonomyRepo);
+            CrossReferenceConverterUtils.populateUniParcCrossReferenceBuilder(property.getType(), property.getValue(), builder, taxonomyRepo);
         }
         if (xmlObj.getVersion() != null) builder.version(xmlObj.getVersion());
         return builder.build();

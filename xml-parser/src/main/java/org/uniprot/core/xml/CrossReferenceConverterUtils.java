@@ -22,7 +22,7 @@ public class CrossReferenceConverterUtils {
     private CrossReferenceConverterUtils(){}
 
     public static void populateUniParcCrossReferenceBuilder(String propertyType, String propertyValue, UniParcCrossReferenceBuilder builder, TaxonomyRepo taxonomyRepo) {
-        switch (propertyValue) {
+        switch (propertyType) {
             case PROPERTY_GENE_NAME:
                 builder.geneName(propertyValue);
                 break;

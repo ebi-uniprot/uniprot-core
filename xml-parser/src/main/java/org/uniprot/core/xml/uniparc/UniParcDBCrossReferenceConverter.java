@@ -48,7 +48,7 @@ public class UniParcDBCrossReferenceConverter
                 .lastUpdated(XmlConverterHelper.dateFromXml(xmlObj.getLast()));
 
         for (PropertyType property : xmlObj.getProperty()) {
-            CrossReferenceConverterUtils.populateUniParcCrossReferenceBuilder(xmlObj.getType(), property.getValue(), builder, taxonomyRepo);
+            CrossReferenceConverterUtils.populateUniParcCrossReferenceBuilder(property.getType(), property.getValue(), builder, taxonomyRepo);
         }
         if (xmlObj.getVersion() != null) builder.version(xmlObj.getVersion());
         return builder.build();
