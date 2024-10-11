@@ -5,10 +5,12 @@ import org.uniprot.core.Location;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.SequenceFeature;
+import org.uniprot.core.uniparc.SequenceFeatureLocation;
 import org.uniprot.core.uniparc.SignatureDbType;
 import org.uniprot.core.uniparc.UniParcEntryLight;
 import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
 import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
+import org.uniprot.core.uniparc.impl.SequenceFeatureLocationBuilder;
 import org.uniprot.core.uniparc.impl.UniParcEntryLightBuilder;
 import org.uniprot.core.xml.jaxb.uniparc.Entry;
 
@@ -44,7 +46,7 @@ class UniParcEntryLightConverterTest {
         sfBuilder
                 .signatureDbType(SignatureDbType.PANTHER)
                 .signatureDbId("PTHR11977")
-                .locationsAdd(new Location(49, 790))
+                .locationsAdd(createSequenceFeatureLocationObject(49, 790, "component"))
                 .interproGroup(
                         new InterProGroupBuilder().id("IPR007122").name("Villin/Gelsolin").build());
 
@@ -52,11 +54,11 @@ class UniParcEntryLightConverterTest {
         sfBuilder2
                 .signatureDbType(SignatureDbType.PFAM)
                 .signatureDbId("PF00626")
-                .locationsAdd(new Location(81, 163))
-                .locationsAdd(new Location(202, 267))
-                .locationsAdd(new Location(330, 398))
-                .locationsAdd(new Location(586, 653))
-                .locationsAdd(new Location(692, 766))
+                .locationsAdd(createSequenceFeatureLocationObject(81, 163, "component"))
+                .locationsAdd(createSequenceFeatureLocationObject(202, 267, "component"))
+                .locationsAdd(createSequenceFeatureLocationObject(330, 398, "component"))
+                .locationsAdd(createSequenceFeatureLocationObject(586, 653, "component"))
+                .locationsAdd(createSequenceFeatureLocationObject(692, 766, "component"))
                 .interproGroup(
                         new InterProGroupBuilder()
                                 .id("IPR007123")
@@ -67,6 +69,13 @@ class UniParcEntryLightConverterTest {
         builder.uniParcId("UPI0000083A08")
                 .sequence(sequence)
                 .sequenceFeaturesSet(sfs);
+        return builder.build();
+    }
+
+    private SequenceFeatureLocation createSequenceFeatureLocationObject(int start, int end, String alignment){
+        SequenceFeatureLocationBuilder builder = new SequenceFeatureLocationBuilder();
+        builder.range(start, end);
+        builder.alignment(alignment);
         return builder.build();
     }
 }
