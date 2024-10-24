@@ -1,6 +1,7 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
 import org.uniprot.core.parser.tsv.EntityValueMapper;
+import org.uniprot.core.uniparc.CommonOrganism;
 import org.uniprot.core.uniparc.UniParcEntryLight;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 
@@ -19,7 +20,8 @@ public class UniParcEntryLightValueMapper implements EntityValueMapper<UniParcEn
                     "proteome",
                     "accession",
                     "first_seen",
-                    "last_seen");
+                    "last_seen",
+                    "common_taxons");
     private static final String DELIMITER2 = "; ";
 
     @Override
@@ -91,6 +93,13 @@ public class UniParcEntryLightValueMapper implements EntityValueMapper<UniParcEn
                             UNIPARC_FIELDS.get(8),
                             Optional.of(entry.getMostRecentCrossRefUpdated())
                                     .map(LocalDate::toString)
+                                    .orElse(""));
+                    break;
+                case "common_taxons":
+                    map.put(
+                            UNIPARC_FIELDS.get(9),
+                            Optional.of(entry.getCommonTaxons())
+                                    .map(ct -> ct.stream().map(CommonOrganism::getCommonTaxon).collect(Collectors.joining("; ")))
                                     .orElse(""));
                     break;
                 default:
