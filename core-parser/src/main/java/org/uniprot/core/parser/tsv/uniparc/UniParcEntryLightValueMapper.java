@@ -99,7 +99,7 @@ public class UniParcEntryLightValueMapper implements EntityValueMapper<UniParcEn
                     map.put(
                             UNIPARC_FIELDS.get(9),
                             Optional.of(entry.getCommonTaxons())
-                                    .map(ct -> ct.stream().map(CommonOrganism::getCommonTaxon).collect(Collectors.joining("; ")))
+                                    .map(this::getCommonTaxonString)
                                     .orElse(""));
                     break;
                 default:
@@ -107,5 +107,9 @@ public class UniParcEntryLightValueMapper implements EntityValueMapper<UniParcEn
             }
         }
         return map;
+    }
+
+    private String getCommonTaxonString(List<CommonOrganism> commonTaxons) {
+        return commonTaxons.stream().map(CommonOrganism::getCommonTaxon).collect(Collectors.joining("; "));
     }
 }

@@ -9,10 +9,7 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -31,6 +28,22 @@ class UniParcEntryLightValueMapperTest {
         verify("9606; 10090", "organism_id", result);
         verify("UP000005640:C1; UP000002494:C2", "proteome", result);
         verify("Bacteroides; Enterococcus", "common_taxons", result);
+    }
+
+    @Test
+    void testGetDataOrganism_withEmptyCommonTaxons() {
+        UniParcEntryLight entry = create();
+        UniParcEntryLight entryWithEmptyCommonTaxons = UniParcEntryLightBuilder.from(entry).commonTaxonsSet(List.of()).build();
+        List<String> fields = Arrays.asList("upi", "organism", "organism_id", "proteome", "common_taxons");
+
+        Map<String, String> result = new UniParcEntryLightValueMapper().mapEntity(entryWithEmptyCommonTaxons, fields);
+
+        assertEquals(fields.size(), result.size());
+        verify("UPI0000083A08", "upi", result);
+        verify("Homo sapiens; MOUSE", "organism", result);
+        verify("9606; 10090", "organism_id", result);
+        verify("UP000005640:C1; UP000002494:C2", "proteome", result);
+        verify("", "common_taxons", result);
     }
 
     @Test
