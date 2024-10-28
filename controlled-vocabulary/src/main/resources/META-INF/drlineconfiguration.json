@@ -1845,7 +1845,7 @@
 		"name":"IC4R",
 		"displayName":"IC4R",
 		"category":"ORG",
-		"uriLink":"http://ic4r.org/osGene/%id",
+		"uriLink":"https://ngdc.cncb.ac.cn/ic4r/osGene/%id",
 		"type":"internal"
 	},
 	{
