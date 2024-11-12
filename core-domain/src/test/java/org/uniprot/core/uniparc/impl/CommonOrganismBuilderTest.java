@@ -19,12 +19,19 @@ class CommonOrganismBuilderTest {
     }
 
     @Test
+    void testTaxonId() {
+        CommonOrganism common = new CommonOrganismBuilder().commonTaxonId(1234L).build();
+        assertEquals(1234L, common.getCommonTaxonId());
+    }
+
+    @Test
     void testFrom() {
-        CommonOrganism common = new CommonOrganismBuilder().topLevel("toLevel1").commonTaxon("common1").build();
+        CommonOrganism common = new CommonOrganismBuilder().topLevel("toLevel1").commonTaxon("common1").commonTaxonId(987L).build();
         CommonOrganism common1 = CommonOrganismBuilder.from(common).build();
         assertEquals(common, common1);
         CommonOrganism common3 = CommonOrganismBuilder.from(common).commonTaxon("common3").build();
         assertEquals("toLevel1", common3.getTopLevel());
         assertEquals("common3", common3.getCommonTaxon());
+        assertEquals(987L, common3.getCommonTaxonId());
     }
 }
