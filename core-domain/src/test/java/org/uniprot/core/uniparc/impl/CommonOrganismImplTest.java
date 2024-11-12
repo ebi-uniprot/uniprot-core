@@ -16,7 +16,7 @@ class CommonOrganismImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        CommonOrganism impl = new CommonOrganismImpl("id", "name");
+        CommonOrganism impl = new CommonOrganismImpl("id", "name", 123L);
         CommonOrganism obj = CommonOrganismBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
