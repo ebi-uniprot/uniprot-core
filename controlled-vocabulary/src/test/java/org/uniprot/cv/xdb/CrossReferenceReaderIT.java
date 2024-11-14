@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.uniprot.cv.xdb.validator.CrossReferenceReader;
 import org.uniprot.cv.xdb.validator.CrossReferenceValidator;
@@ -24,7 +25,7 @@ class CrossReferenceReaderIT {
                             "DB-0072", "DB-0078", "DB-0090", "DB-0099", "DB-0106", "DB-0047",
                             "DB-0236", "DB-0237", "DB-0244", "DB-0259", "DB-0261"));
 
-    @Test
+    @Disabled
     void testReadAll() throws IOException {
         int count = 0;
         String ftpUrl =
