@@ -21,7 +21,6 @@ import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.uniprot.core.util.Pair;
-import org.uniprot.core.util.PairImpl;
 
 /**
  * @author jluo
@@ -74,6 +73,9 @@ public class UniParcCrossRefJsonConfig extends JsonConfig {
     private ObjectMapper initPrettyObjectMapper() {
         ObjectMapper simpleObjectMapper = getDefaultSimpleObjectMapper();
         simpleObjectMapper.registerModule(new JavaTimeModule());
+        SimpleModule simpleMod = new SimpleModule();
+        simpleMod.addSerializer(LocalDate.class, new LocalDateSerializer());
+        simpleObjectMapper.registerModule(simpleMod);
         return simpleObjectMapper;
     }
 }
