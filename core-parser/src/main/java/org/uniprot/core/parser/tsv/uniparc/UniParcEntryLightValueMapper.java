@@ -21,7 +21,8 @@ public class UniParcEntryLightValueMapper implements EntityValueMapper<UniParcEn
                     "accession",
                     "first_seen",
                     "last_seen",
-                    "common_taxons");
+                    "common_taxons",
+                    "common_taxon_ids");
     private static final String DELIMITER2 = "; ";
 
     @Override
@@ -102,6 +103,13 @@ public class UniParcEntryLightValueMapper implements EntityValueMapper<UniParcEn
                                     .map(this::getCommonTaxonString)
                                     .orElse(""));
                     break;
+                case "common_taxon_ids":
+                    map.put(
+                            UNIPARC_FIELDS.get(10),
+                            Optional.of(entry.getCommonTaxons())
+                                    .map(this::getCommonTaxonIdString)
+                                    .orElse(""));
+                    break;
                 default:
                     // do nothing
             }
@@ -111,5 +119,9 @@ public class UniParcEntryLightValueMapper implements EntityValueMapper<UniParcEn
 
     private String getCommonTaxonString(List<CommonOrganism> commonTaxons) {
         return commonTaxons.stream().map(CommonOrganism::getCommonTaxon).collect(Collectors.joining("; "));
+    }
+
+    private String getCommonTaxonIdString(List<CommonOrganism> commonTaxons) {
+        return commonTaxons.stream().map(commonOrganism -> String.valueOf(commonOrganism.getCommonTaxonId())).collect(Collectors.joining("; "));
     }
 }
