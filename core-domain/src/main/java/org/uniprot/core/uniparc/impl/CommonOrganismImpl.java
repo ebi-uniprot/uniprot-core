@@ -11,12 +11,15 @@ public class CommonOrganismImpl implements CommonOrganism {
     private String topLevel;
     private String commonTaxon;
 
+    private Long commonTaxonId;
+
     CommonOrganismImpl(){
     }
 
-    CommonOrganismImpl(String topLevel, String commonTaxon) {
+    CommonOrganismImpl(String topLevel, String commonTaxon, Long commonTaxonId) {
         this.topLevel = topLevel;
         this.commonTaxon = commonTaxon;
+        this.commonTaxonId = commonTaxonId;
     }
 
     @Override
@@ -30,15 +33,21 @@ public class CommonOrganismImpl implements CommonOrganism {
     }
 
     @Override
+    public Long getCommonTaxonId() {
+        return this.commonTaxonId;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CommonOrganismImpl that = (CommonOrganismImpl) o;
-        return Objects.equals(topLevel, that.topLevel) && Objects.equals(commonTaxon, that.commonTaxon);
+        return Objects.equals(topLevel, that.topLevel) && Objects.equals(commonTaxon, that.commonTaxon)
+                && Objects.equals(this.commonTaxonId, that.commonTaxonId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(topLevel, commonTaxon);
+        return Objects.hash(topLevel, commonTaxon, this.commonTaxonId);
     }
 }

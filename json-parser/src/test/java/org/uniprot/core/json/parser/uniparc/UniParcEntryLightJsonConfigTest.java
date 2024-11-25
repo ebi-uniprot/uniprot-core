@@ -47,8 +47,8 @@ class UniParcEntryLightJsonConfigTest {
         int crossReferenceCount = 19;
 
         List<CommonOrganism> commonTaxons = List.of(
-                new CommonOrganismBuilder().topLevel("cellular organisms").commonTaxon("Homo sapiens").build(),
-                new CommonOrganismBuilder().topLevel("Viruses").commonTaxon("Mus musculus").build()
+                new CommonOrganismBuilder().topLevel("cellular organisms").commonTaxon("Homo sapiens").commonTaxonId(1234L).build(),
+                new CommonOrganismBuilder().topLevel("Viruses").commonTaxon("Mus musculus").commonTaxonId(9876l).build()
         );
 
         LinkedHashSet<String> uniProtKBAccessions = new LinkedHashSet<>(List.of("P12345", "Q67890"));

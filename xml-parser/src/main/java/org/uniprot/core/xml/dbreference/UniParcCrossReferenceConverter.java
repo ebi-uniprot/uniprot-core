@@ -1,4 +1,4 @@
-package org.uniprot.core.xml.uniparc;
+package org.uniprot.core.xml.dbreference;
 
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
@@ -6,9 +6,9 @@ import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.CrossReferenceConverterUtils;
-import org.uniprot.core.xml.jaxb.uniparc.DbReferenceType;
-import org.uniprot.core.xml.jaxb.uniparc.ObjectFactory;
-import org.uniprot.core.xml.jaxb.uniparc.PropertyType;
+import org.uniprot.core.xml.jaxb.dbreference.DbReference;
+import org.uniprot.core.xml.jaxb.dbreference.ObjectFactory;
+import org.uniprot.core.xml.jaxb.dbreference.PropertyType;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
 import org.uniprot.cv.taxonomy.TaxonomyRepo;
 
@@ -17,37 +17,22 @@ import java.util.List;
 
 import static org.uniprot.core.xml.CrossReferenceConverterUtils.*;
 
-/**
- * @author jluo
- * @date: 23 May 2019
- */
-public class UniParcDBCrossReferenceConverter
-        implements Converter<DbReferenceType, UniParcCrossReference> {
-
-    public static final String PROPERTY_GENE_NAME = "gene_name";
-    public static final String PROPERTY_PROTEIN_NAME = "protein_name";
-    public static final String PROPERTY_CHAIN = "chain";
-    public static final String PROPERTY_NCBI_GI = "NCBI_GI";
-    public static final String PROPERTY_PROTEOME_ID = "proteome_id";
-    public static final String PROPERTY_COMPONENT = "component";
-    public static final String PROPERTY_NCBI_TAXONOMY_ID = "NCBI_taxonomy_id";
-    public static final String PROPERTY_UNIPROTKB_ACCESSION = "UniProtKB_accession";
-    public static final String PROPERTY_SOURCE = "source";
-
+public class UniParcCrossReferenceConverter
+        implements Converter<DbReference, UniParcCrossReference> {
     private final ObjectFactory xmlFactory;
     private final TaxonomyRepo taxonomyRepo;
 
-    public UniParcDBCrossReferenceConverter() {
+    public UniParcCrossReferenceConverter() {
         this(new ObjectFactory(), null);
     }
 
-    public UniParcDBCrossReferenceConverter(ObjectFactory xmlFactory, TaxonomyRepo taxonomyRepo) {
+    public UniParcCrossReferenceConverter(ObjectFactory xmlFactory, TaxonomyRepo taxonomyRepo) {
         this.xmlFactory = xmlFactory;
         this.taxonomyRepo = taxonomyRepo;
     }
 
     @Override
-    public UniParcCrossReference fromXml(DbReferenceType xmlObj) {
+    public UniParcCrossReference fromXml(DbReference xmlObj) {
         UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder();
         builder.database(UniParcDatabase.typeOf(xmlObj.getType()))
                 .id(xmlObj.getId())
@@ -57,13 +42,6 @@ public class UniParcDBCrossReferenceConverter
                 .lastUpdated(XmlConverterHelper.dateFromXml(xmlObj.getLast()));
 
         for (PropertyType property : xmlObj.getProperty()) {
-
-            //TODO: Change it
-            /*
-                            case PROPERTY_SOURCE:
-                    builder.propertiesAdd(PROPERTY_SOURCE, property.getValue());
-                    break;
-             */
             CrossReferenceConverterUtils.populateUniParcCrossReferenceBuilder(property.getType(), property.getValue(), builder, taxonomyRepo);
         }
         if (xmlObj.getVersion() != null) builder.version(xmlObj.getVersion());
@@ -71,8 +49,8 @@ public class UniParcDBCrossReferenceConverter
     }
 
     @Override
-    public DbReferenceType toXml(UniParcCrossReference uniObj) {
-        DbReferenceType xmlObj = xmlFactory.createDbReferenceType();
+    public DbReference toXml(UniParcCrossReference uniObj) {
+        DbReference xmlObj = xmlFactory.createDbReference();
         xmlObj.setActive(uniObj.isActive() ? "Y" : "N");
         xmlObj.setId(uniObj.getId());
         xmlObj.setType(uniObj.getDatabase().getDisplayName());

@@ -1,5 +1,6 @@
 package org.uniprot.core.publication.impl;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 import org.uniprot.core.publication.CommunityAnnotation;
@@ -10,23 +11,25 @@ import org.uniprot.core.publication.CommunityAnnotation;
  * @author Edd
  */
 public class CommunityAnnotationImpl implements CommunityAnnotation {
-    private static final long serialVersionUID = 6579256221026737892L;
+    private static final long serialVersionUID = 8368111594497409648L;
 
     private final String proteinOrGene;
     private final String function;
     private final String disease;
     private final String comment;
+    private final LocalDate submissionDate;
 
     public CommunityAnnotationImpl() {
-        this(null, null, null, null);
+        this(null, null, null, null, null);
     }
 
     public CommunityAnnotationImpl(
-            String proteinOrGene, String function, String disease, String comment) {
+            String proteinOrGene, String function, String disease, String comment, LocalDate submissionDate) {
         this.proteinOrGene = proteinOrGene;
         this.function = function;
         this.disease = disease;
         this.comment = comment;
+        this.submissionDate = submissionDate;
     }
 
     @Override
@@ -50,6 +53,11 @@ public class CommunityAnnotationImpl implements CommunityAnnotation {
     }
 
     @Override
+    public LocalDate getSubmissionDate() {
+        return submissionDate;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -57,12 +65,13 @@ public class CommunityAnnotationImpl implements CommunityAnnotation {
         return Objects.equals(proteinOrGene, that.proteinOrGene)
                 && Objects.equals(function, that.function)
                 && Objects.equals(disease, that.disease)
-                && Objects.equals(comment, that.comment);
+                && Objects.equals(comment, that.comment)
+                && Objects.equals(submissionDate, that.submissionDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(proteinOrGene, function, disease, comment);
+        return Objects.hash(proteinOrGene, function, disease, comment, submissionDate);
     }
 
     @Override
@@ -79,6 +88,9 @@ public class CommunityAnnotationImpl implements CommunityAnnotation {
                 + '\''
                 + ", comment='"
                 + comment
+                + '\''
+                + ", submissionDate='"
+                + submissionDate
                 + '\''
                 + '}';
     }

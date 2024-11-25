@@ -1,6 +1,7 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
 import org.uniprot.core.parser.tsv.EntityValueMapper;
+import org.uniprot.core.uniparc.CommonOrganism;
 import org.uniprot.core.uniparc.UniParcEntryLight;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 
@@ -12,8 +13,6 @@ public class UniParcEntryLightValueMapper implements EntityValueMapper<UniParcEn
 
     private static final List<String> UNIPARC_FIELDS =
             List.of("upi",
-                    "oldestCrossRefCreated",
-                    "mostRecentCrossRefUpdated",
                     "organism",
                     "organism_id",
                     "gene",
@@ -21,7 +20,9 @@ public class UniParcEntryLightValueMapper implements EntityValueMapper<UniParcEn
                     "proteome",
                     "accession",
                     "first_seen",
-                    "last_seen");
+                    "last_seen",
+                    "common_taxons",
+                    "common_taxon_ids");
     private static final String DELIMITER2 = "; ";
 
     @Override
@@ -54,59 +55,59 @@ public class UniParcEntryLightValueMapper implements EntityValueMapper<UniParcEn
                 case "upi":
                     map.put(UNIPARC_FIELDS.get(0), entry.getUniParcId());
                     break;
-                case "oldestCrossRefCreated":
-                    map.put(
-                            UNIPARC_FIELDS.get(1),
-                            Optional.of(entry.getOldestCrossRefCreated())
-                                    .map(LocalDate::toString)
-                                    .orElse(""));
-                    break;
-                case "mostRecentCrossRefUpdated":
-                    map.put(
-                            UNIPARC_FIELDS.get(2),
-                            Optional.of(entry.getMostRecentCrossRefUpdated())
-                                    .map(LocalDate::toString)
-                                    .orElse(""));
-                    break;
                 case "organism":
                     map.put(
-                            UNIPARC_FIELDS.get(3),
+                            UNIPARC_FIELDS.get(1),
                             entry.getOrganisms().stream()
                                     .map(Organism::getScientificName)
                                     .collect(Collectors.joining(DELIMITER2)));
                     break;
                 case "organism_id":
                     map.put(
-                            UNIPARC_FIELDS.get(4),
+                            UNIPARC_FIELDS.get(2),
                             entry.getOrganisms().stream()
                                     .map(Organism::getTaxonId)
                                     .map(String::valueOf)
                                     .collect(Collectors.joining(DELIMITER2)));
                     break;
                 case "gene":
-                    map.put(UNIPARC_FIELDS.get(5),String.join(DELIMITER2, entry.getGeneNames()));
+                    map.put(UNIPARC_FIELDS.get(3),String.join(DELIMITER2, entry.getGeneNames()));
                     break;
                 case "protein":
-                    map.put(UNIPARC_FIELDS.get(6),String.join(DELIMITER2, entry.getProteinNames()));
+                    map.put(UNIPARC_FIELDS.get(4),String.join(DELIMITER2, entry.getProteinNames()));
                     break;
                 case "proteome":
-                    map.put(UNIPARC_FIELDS.get(7),entry.getProteomes().stream().map(e -> e.getId()+":"+e.getComponent()).collect(Collectors.joining(DELIMITER2)));
+                    map.put(UNIPARC_FIELDS.get(5),entry.getProteomes().stream().map(e -> e.getId()+":"+e.getComponent()).collect(Collectors.joining(DELIMITER2)));
                     break;
                 case "accession":
-                    map.put(UNIPARC_FIELDS.get(8),String.join(DELIMITER2, entry.getUniProtKBAccessions()));
+                    map.put(UNIPARC_FIELDS.get(6),String.join(DELIMITER2, entry.getUniProtKBAccessions()));
                     break;
                 case "first_seen":
                     map.put(
-                            UNIPARC_FIELDS.get(9),
+                            UNIPARC_FIELDS.get(7),
                             Optional.of(entry.getOldestCrossRefCreated())
                                     .map(LocalDate::toString)
                                     .orElse(""));
                     break;
                 case "last_seen":
                     map.put(
-                            UNIPARC_FIELDS.get(10),
+                            UNIPARC_FIELDS.get(8),
                             Optional.of(entry.getMostRecentCrossRefUpdated())
                                     .map(LocalDate::toString)
+                                    .orElse(""));
+                    break;
+                case "common_taxons":
+                    map.put(
+                            UNIPARC_FIELDS.get(9),
+                            Optional.of(entry.getCommonTaxons())
+                                    .map(this::getCommonTaxonString)
+                                    .orElse(""));
+                    break;
+                case "common_taxon_ids":
+                    map.put(
+                            UNIPARC_FIELDS.get(10),
+                            Optional.of(entry.getCommonTaxons())
+                                    .map(this::getCommonTaxonIdString)
                                     .orElse(""));
                     break;
                 default:
@@ -114,5 +115,13 @@ public class UniParcEntryLightValueMapper implements EntityValueMapper<UniParcEn
             }
         }
         return map;
+    }
+
+    private String getCommonTaxonString(List<CommonOrganism> commonTaxons) {
+        return commonTaxons.stream().map(CommonOrganism::getCommonTaxon).collect(Collectors.joining("; "));
+    }
+
+    private String getCommonTaxonIdString(List<CommonOrganism> commonTaxons) {
+        return commonTaxons.stream().map(commonOrganism -> String.valueOf(commonOrganism.getCommonTaxonId())).collect(Collectors.joining("; "));
     }
 }

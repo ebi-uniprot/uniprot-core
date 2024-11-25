@@ -43,11 +43,11 @@ public class UniParcEntryLightImpl implements UniParcEntryLight {
                 null, null, null, null, null);
     }
     UniParcEntryLightImpl(String uniParcId, int crossReferenceCount,
-                          List<CommonOrganism> commonTaxons, LinkedHashSet<String> uniProtKBAccessions,
+                          List<CommonOrganism> commonTaxons, Set<String> uniProtKBAccessions,
                                   Sequence sequence, List<SequenceFeature> sequenceFeatures,
                                  LocalDate oldestCrossRefCreated, LocalDate mostRecentCrossRefUpdated,
-                          LinkedHashSet<Organism> organisms, LinkedHashSet<String> proteinNames, LinkedHashSet<String> geneNames,
-                          LinkedHashSet<Proteome> proteomes, Map<String, Object> extraAttributes) {
+                          Set<Organism> organisms, Set<String> proteinNames, Set<String> geneNames,
+                          Set<Proteome> proteomes, Map<String, Object> extraAttributes) {
         this.uniParcId = uniParcId;
         this.crossReferenceCount = crossReferenceCount;
         this.commonTaxons = Utils.unmodifiableList(commonTaxons);

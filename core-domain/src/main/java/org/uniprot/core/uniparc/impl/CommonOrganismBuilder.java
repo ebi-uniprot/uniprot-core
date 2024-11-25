@@ -10,10 +10,12 @@ public class CommonOrganismBuilder implements Builder<CommonOrganism> {
     private String topLevel;
     private String commonTaxon;
 
+    private Long commonTaxonId;
+
     @Nonnull
     @Override
     public CommonOrganism build() {
-        return new CommonOrganismImpl(topLevel, commonTaxon);
+        return new CommonOrganismImpl(topLevel, commonTaxon, commonTaxonId);
     }
 
     public CommonOrganismBuilder topLevel(String topLevel) {
@@ -27,10 +29,16 @@ public class CommonOrganismBuilder implements Builder<CommonOrganism> {
         return this;
     }
 
+    public CommonOrganismBuilder commonTaxonId(Long commonTaxonId) {
+        this.commonTaxonId = commonTaxonId;
+        return this;
+    }
+
     public static @Nonnull CommonOrganismBuilder from(@Nonnull CommonOrganism instance) {
         CommonOrganismBuilder builder = new CommonOrganismBuilder()
                 .topLevel(instance.getTopLevel())
-                .commonTaxon(instance.getCommonTaxon());
+                .commonTaxon(instance.getCommonTaxon())
+                .commonTaxonId(instance.getCommonTaxonId());
         return builder;
     }
 }

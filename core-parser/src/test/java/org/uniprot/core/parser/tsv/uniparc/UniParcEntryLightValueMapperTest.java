@@ -1,7 +1,6 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.Location;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.*;
@@ -12,14 +11,14 @@ import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import java.time.LocalDate;
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class UniParcEntryLightValueMapperTest {
 
     @Test
     void testGetDataOrganism() {
         UniParcEntryLight entry = create();
-        List<String> fields = Arrays.asList("upi", "organism", "organism_id", "proteome");
+        List<String> fields = Arrays.asList("upi", "organism", "organism_id", "proteome", "common_taxons", "common_taxon_ids");
 
         Map<String, String> result = new UniParcEntryLightValueMapper().mapEntity(entry, fields);
 
@@ -28,6 +27,26 @@ class UniParcEntryLightValueMapperTest {
         verify("Homo sapiens; MOUSE", "organism", result);
         verify("9606; 10090", "organism_id", result);
         verify("UP000005640:C1; UP000002494:C2", "proteome", result);
+        verify("Bacteroides; Enterococcus", "common_taxons", result);
+        verify("12345; 9876", "common_taxon_ids", result);
+    }
+
+    @Test
+    void testGetDataOrganism_withEmptyCommonTaxons() {
+        UniParcEntryLight entry = create();
+        UniParcEntryLight entryWithEmptyCommonTaxons = UniParcEntryLightBuilder.from(entry).commonTaxonsSet(List.of()).build();
+        List<String> fields = Arrays.asList("upi", "organism", "organism_id", "proteome", "common_taxons", "common_taxon_ids");
+
+        Map<String, String> result = new UniParcEntryLightValueMapper().mapEntity(entryWithEmptyCommonTaxons, fields);
+
+        assertEquals(fields.size(), result.size());
+        verify("UPI0000083A08", "upi", result);
+        verify("Homo sapiens; MOUSE", "organism", result);
+        verify("9606; 10090", "organism_id", result);
+        verify("UP000005640:C1; UP000002494:C2", "proteome", result);
+        verify("", "common_taxons", result);
+        verify("", "common_taxons", result);
+        verify("", "common_taxon_ids", result);
     }
 
     @Test
@@ -78,15 +97,7 @@ class UniParcEntryLightValueMapperTest {
         verify("sigId2", "PROSITE", result);
     }
 
-    @Test
-    void testGetDates() {
-        UniParcEntryLight entry = create();
-        List<String> fields = Arrays.asList("oldestCrossRefCreated", "mostRecentCrossRefUpdated");
-        Map<String, String> result = new UniParcEntryLightValueMapper().mapEntity(entry, fields);
-        assertEquals(2, result.size());
-        verify("2017-02-12", "oldestCrossRefCreated", result);
-        verify("2020-10-25", "mostRecentCrossRefUpdated", result);
-    }
+
 
     private void verify(String expected, String field, Map<String, String> result) {
         assertEquals(expected, result.get(field));
@@ -103,6 +114,7 @@ class UniParcEntryLightValueMapperTest {
 
         LinkedHashSet<String> proteinNames = new LinkedHashSet<>(List.of("protein1", "protein2"));
         LinkedHashSet<String> geneNames = new LinkedHashSet<>(List.of("gene1", "gene2"));
+        List<CommonOrganism> commonTaxons = List.of(new CommonOrganismBuilder().commonTaxon("Bacteroides").commonTaxonId(12345L).build(),new CommonOrganismBuilder().commonTaxon("Enterococcus").commonTaxonId(9876L).build());
         LinkedHashSet<Proteome> proteomes = new LinkedHashSet<>(List.of(new ProteomeBuilder().id("UP000005640").component("C1").build(), new ProteomeBuilder().id("UP000002494").component("C2").build()));
 
         return new UniParcEntryLightBuilder()
@@ -111,6 +123,7 @@ class UniParcEntryLightValueMapperTest {
                 .organismsSet(organisms)
                 .proteomesSet(proteomes)
                 .geneNamesSet(geneNames)
+                .commonTaxonsSet(commonTaxons)
                 .proteinNamesSet(proteinNames)
                 .mostRecentCrossRefUpdated(LocalDate.of(2020, 10, 25))
                 .oldestCrossRefCreated(LocalDate.of(2017, 2, 12))

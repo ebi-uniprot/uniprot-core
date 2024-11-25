@@ -30,7 +30,7 @@ public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabas
     private final String proteomeId;
     private final String component;
 
-    protected UniParcCrossReferenceImpl() {
+    UniParcCrossReferenceImpl() {
         this(
                 null, null, null, 0, null, false, null, null, null, null, null, null, null, null,
                 null);
