@@ -110,7 +110,7 @@ public class UniParcProteomeFastaParser {
         if(!sourceIds.isEmpty()){
             sb.append(" SS=").append(String.join("|", sourceIds));
         }
-        sb.append(" UP=").append(proteomeId);
+        sb.append(" PC=").append(proteomeId);
         if(!component.isEmpty()){
             sb.append(":").append(String.join("|", component));
         }

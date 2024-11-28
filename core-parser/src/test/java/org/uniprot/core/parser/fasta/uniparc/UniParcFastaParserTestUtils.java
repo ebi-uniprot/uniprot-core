@@ -1,5 +1,6 @@
 package org.uniprot.core.parser.fasta.uniparc;
 
+import org.uniprot.core.Property;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.*;
@@ -33,7 +34,7 @@ public class UniParcFastaParserTestUtils {
         List<UniParcCrossReference> result = new ArrayList<>();
         Organism human = getOrganism(9606, "Homo sapiens");
 
-        result.add(getXref(UniParcDatabase.SWISSPROT, "P12345", active, human, null, null, "Protein Name One", "Gene Name One"));
+        result.add(getXref(UniParcDatabase.SWISSPROT, "P12345", active, human, null, null, "Protein Name One", "Gene Name One", new Property(UniParcCrossReference.PROPERTY_SOURCES, "ABC01415:UP000005640:Chromosome 1")));
 
         return result;
     }
@@ -47,10 +48,14 @@ public class UniParcFastaParserTestUtils {
     }
 
     static UniParcCrossReference getXref(UniParcDatabase database, String id, boolean active, Organism organism, String proteomeId, String component) {
-        return getXref(database,id, active, organism, proteomeId, component, null, null);
+        return getXref(database,id, active, organism, proteomeId, component, null, null,null);
     }
 
-    static UniParcCrossReference getXref(UniParcDatabase database, String id, boolean active, Organism organism, String proteomeId, String component, String proteinName, String geneName) {
+    static UniParcCrossReference getXref(UniParcDatabase database, String id, boolean active, Organism organism, String geneName, String proteinName, Property property) {
+        return getXref(database,id, active, organism, null, null, proteinName, geneName, property);
+    }
+
+    static UniParcCrossReference getXref(UniParcDatabase database, String id, boolean active, Organism organism, String proteomeId, String component, String proteinName, String geneName, Property property) {
         return new UniParcCrossReferenceBuilder()
                 .database(database)
                 .id(id)
@@ -60,6 +65,7 @@ public class UniParcFastaParserTestUtils {
                 .geneName(geneName)
                 .proteomeId(proteomeId)
                 .component(component)
+                .propertiesAdd(property)
                 .build();
     }
 }
