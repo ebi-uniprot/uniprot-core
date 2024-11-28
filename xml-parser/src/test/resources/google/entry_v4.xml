@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<entry>
+    <accession>A0A2E0WTX0</accession>
+    <protein>
+        <submittedName>
+            <fullName>NAD(P)H-dependent oxidoreductase</fullName>
+        </submittedName>
+    </protein>
+    <comment>
+        <type>similarity</type>
+        <text>Belongs to the nitroreductase family.</text>
+    </comment>
+</entry>

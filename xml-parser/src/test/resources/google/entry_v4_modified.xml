@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<uniprot xmlns="http://uniprot.org/uniprot" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://uniprot.org/uniprot http://www.uniprot.org/docs/uniprot.xsd">
+<entry>
+    <accession>A0A2E0WTX0</accession>
+    <name>Dummy Value</name>
+    <protein>
+        <submittedName>
+            <fullName>NAD(P)H-dependent oxidoreductase</fullName>
+        </submittedName>
+    </protein>
+    <comment type="similarity">
+        <text>Belongs to the nitroreductase family.</text>
+    </comment>
+</entry>
+</uniprot>
