@@ -32,7 +32,6 @@ public class UniParcDBCrossReferenceConverter
     public static final String PROPERTY_COMPONENT = "component";
     public static final String PROPERTY_NCBI_TAXONOMY_ID = "NCBI_taxonomy_id";
     public static final String PROPERTY_UNIPROTKB_ACCESSION = "UniProtKB_accession";
-    public static final String PROPERTY_SOURCE = "source";
 
     private final ObjectFactory xmlFactory;
     private final TaxonomyRepo taxonomyRepo;
@@ -57,13 +56,6 @@ public class UniParcDBCrossReferenceConverter
                 .lastUpdated(XmlConverterHelper.dateFromXml(xmlObj.getLast()));
 
         for (PropertyType property : xmlObj.getProperty()) {
-
-            //TODO: Change it
-            /*
-                            case PROPERTY_SOURCE:
-                    builder.propertiesAdd(PROPERTY_SOURCE, property.getValue());
-                    break;
-             */
             CrossReferenceConverterUtils.populateUniParcCrossReferenceBuilder(property.getType(), property.getValue(), builder, taxonomyRepo);
         }
         if (xmlObj.getVersion() != null) builder.version(xmlObj.getVersion());
