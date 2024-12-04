@@ -1529,7 +1529,7 @@
 		"name": "FunFam",
 		"displayName": "FunFam",
 		"category": "FMD",
-		"uriLink": "https://www.cathdb.info/version/latest/superfamily/%id",
+		"uriLink": "https://www.cathdb.info/version/latest/funfam/%id",
 		"attributes": [
 			{	"name": "EntryName",
 				"xmlTag":"entry name"
