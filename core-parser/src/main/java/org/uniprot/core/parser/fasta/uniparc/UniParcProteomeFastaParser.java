@@ -29,6 +29,9 @@ public class UniParcProteomeFastaParser {
         for(UniParcCrossReference xref: entry.getUniParcCrossReferences()){
             if(uniProtDatabases.contains(xref.getDatabase())){
                 uniProtXrefs.add(xref);
+                if(proteomeId == null && xref.hasProperties()){
+                    proteomeId = getProteomeId(xref.getProperties().get(0));
+                }
                 if(xref.isActive()){
                     hasActive = true;
                 }
@@ -49,6 +52,18 @@ public class UniParcProteomeFastaParser {
         sb.append("\n");
         sb.append(parseSequence(entry.getSequence().getValue()));
         return sb.toString();
+    }
+
+    private static String getProteomeId(Property property) {
+        String result = null;
+        String[] sourcePropertyValues = property.getValue().split(",");
+        if(sourcePropertyValues.length == 1){
+            String[] propertyValue = sourcePropertyValues[0].split(":");
+            if(propertyValue.length > 1){
+                result = propertyValue[1];
+            }
+        }
+        return result;
     }
 
     private static StringBuilder getFastaHeader(List<UniParcCrossReference> xrefs, boolean hasActive, String id, String proteomeId, boolean isSource) {
