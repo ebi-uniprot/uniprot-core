@@ -1,4 +1,7 @@
-package org.uniprot.core.parser.fasta;
+package org.uniprot.core.parser.fasta.uniparc;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.uniparc.impl.UniParcEntryLightBuilder.HAS_ACTIVE_CROSS_REF;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
@@ -13,9 +16,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.uniprot.core.uniparc.impl.UniParcEntryLightBuilder.HAS_ACTIVE_CROSS_REF;
 
 /**
  * @author jluo
@@ -56,15 +56,11 @@ class UniParcFastaParserTest {
     private UniParcEntry create() {
         Sequence sequence = getSequence();
         List<UniParcCrossReference> xrefs = getXrefs();
-        List<SequenceFeature> seqFeatures = getSeqFeatures();
-        UniParcEntry entry =
-                new UniParcEntryBuilder()
+        return new UniParcEntryBuilder()
                         .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
                         .uniParcCrossReferencesSet(xrefs)
                         .sequence(sequence)
-                        .sequenceFeaturesSet(seqFeatures)
                         .build();
-        return entry;
     }
 
     private UniParcEntryLight createEntryLight() {
@@ -79,21 +75,6 @@ class UniParcFastaParserTest {
                 "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT" + "LLRAIDWFRDNGYFNA";
         Sequence sequence = new SequenceBuilder(seq).build();
         return sequence;
-    }
-
-    private List<SequenceFeature> getSeqFeatures() {
-        List<SequenceFeatureLocation> locations = Arrays.asList(new SequenceFeatureLocationBuilder().range(12, 23).alignment("55M").build(), new SequenceFeatureLocationBuilder().range(45, 89).build());
-        InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
-        SequenceFeature sf =
-                new SequenceFeatureBuilder()
-                        .interproGroup(domain)
-                        .signatureDbType(SignatureDbType.PFAM)
-                        .signatureDbId("sigId2")
-                        .locationsSet(locations)
-                        .build();
-        SequenceFeature sf3 =
-                SequenceFeatureBuilder.from(sf).signatureDbType(SignatureDbType.PROSITE).build();
-        return Arrays.asList(sf, sf3);
     }
 
     private List<UniParcCrossReference> getXrefs() {
@@ -138,4 +119,5 @@ class UniParcFastaParserTest {
 
         return Arrays.asList(xref, xref2);
     }
+
 }

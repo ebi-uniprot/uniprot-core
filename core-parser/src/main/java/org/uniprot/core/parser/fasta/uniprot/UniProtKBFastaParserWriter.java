@@ -1,6 +1,5 @@
 package org.uniprot.core.parser.fasta.uniprot;
 
-import org.uniprot.core.Sequence;
 import org.uniprot.core.fasta.UniProtKBFasta;
 import org.uniprot.core.uniprotkb.ProteinExistence;
 import org.uniprot.core.uniprotkb.UniProtKBEntryType;
@@ -8,6 +7,8 @@ import org.uniprot.core.uniprotkb.description.FlagType;
 import org.uniprot.core.util.Utils;
 
 import java.util.Objects;
+
+import static org.uniprot.core.parser.fasta.FastaUtils.*;
 
 /**
  * @author lgonzales
@@ -45,7 +46,7 @@ class UniProtKBFastaParserWriter {
         }
 
         sb.append("\n");
-        sb.append(getSequence(entry.getSequence()));
+        sb.append(parseSequence(entry.getSequence().getValue()));
         return sb.toString();
     }
 
@@ -79,17 +80,5 @@ class UniProtKBFastaParserWriter {
             desc.append(" (Fragment)");
         }
         return desc.toString();
-    }
-
-    private static String getSequence(Sequence sequence) {
-        StringBuilder sb = new StringBuilder();
-        int columnCounter = 0;
-        for (char c : sequence.getValue().toCharArray()) {
-            sb.append(c);
-            if ((++columnCounter % 60 == 0) && (columnCounter < sequence.getLength())) {
-                sb.append("\n");
-            }
-        }
-        return sb.toString();
     }
 }

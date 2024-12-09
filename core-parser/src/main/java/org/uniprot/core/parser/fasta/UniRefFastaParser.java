@@ -4,6 +4,8 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefEntryLight;
 
+import static org.uniprot.core.parser.fasta.FastaUtils.parseSequence;
+
 /**
  * @author jluo
  * @date: 22 Aug 2019
@@ -15,30 +17,14 @@ public class UniRefFastaParser {
     public static String toFasta(UniRefEntryLight entry) {
         StringBuilder sb = new StringBuilder();
         sb.append(getHeader(entry)).append("\n");
-        int columnCounter = 0;
-        String sequence = entry.getRepresentativeMember().getSequence().getValue();
-        for (char c : sequence.toCharArray()) {
-            if (columnCounter % 60 == 0 && columnCounter > 0) {
-                sb.append("\n");
-            }
-            sb.append(c);
-            columnCounter++;
-        }
+        sb.append(parseSequence(entry.getRepresentativeMember().getSequence().getValue()));
         return sb.toString();
     }
 
     public static String toFasta(UniRefEntry entry) {
         StringBuilder sb = new StringBuilder();
         sb.append(getHeader(entry)).append("\n");
-        String sequence = entry.getRepresentativeMember().getSequence().getValue();
-        int columnCounter = 0;
-        for (char c : sequence.toCharArray()) {
-            if (columnCounter % 60 == 0 && columnCounter > 0) {
-                sb.append("\n");
-            }
-            columnCounter++;
-            sb.append(c);
-        }
+        sb.append(parseSequence(entry.getRepresentativeMember().getSequence().getValue()));
         return sb.toString();
     }
 

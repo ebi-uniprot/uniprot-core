@@ -11,6 +11,8 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
  */
 public interface UniParcCrossReference extends CrossReference<UniParcDatabase> {
 
+    public static final String PROPERTY_SOURCES = "sources";
+
     int getVersionI();
 
     Integer getVersion();

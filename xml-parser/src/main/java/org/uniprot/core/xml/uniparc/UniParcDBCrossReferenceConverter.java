@@ -23,8 +23,6 @@ import static org.uniprot.core.xml.CrossReferenceConverterUtils.*;
  */
 public class UniParcDBCrossReferenceConverter
         implements Converter<DbReferenceType, UniParcCrossReference> {
-
-
     private final ObjectFactory xmlFactory;
     private final TaxonomyRepo taxonomyRepo;
 

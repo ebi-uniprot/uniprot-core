@@ -1,6 +1,7 @@
 package org.uniprot.core.xml;
 
 import com.google.common.base.Strings;
+import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
@@ -18,6 +19,7 @@ public class CrossReferenceConverterUtils {
     public static final String PROPERTY_COMPONENT = "component";
     public static final String PROPERTY_NCBI_TAXONOMY_ID = "NCBI_taxonomy_id";
     public static final String PROPERTY_UNIPROTKB_ACCESSION = "UniProtKB_accession";
+    public static final String PROPERTY_SOURCES = UniParcCrossReference.PROPERTY_SOURCES;
 
     private CrossReferenceConverterUtils(){}
 
@@ -46,6 +48,9 @@ public class CrossReferenceConverterUtils {
                 break;
             case PROPERTY_UNIPROTKB_ACCESSION:
                 builder.propertiesAdd(PROPERTY_UNIPROTKB_ACCESSION, propertyValue);
+                break;
+            case PROPERTY_SOURCES:
+                builder.propertiesAdd(PROPERTY_SOURCES, propertyValue);
                 break;
             default:
                 throw new XmlReaderException(
