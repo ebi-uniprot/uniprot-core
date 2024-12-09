@@ -23,16 +23,6 @@ import static org.uniprot.core.xml.CrossReferenceConverterUtils.*;
  */
 public class UniParcDBCrossReferenceConverter
         implements Converter<DbReferenceType, UniParcCrossReference> {
-
-    public static final String PROPERTY_GENE_NAME = "gene_name";
-    public static final String PROPERTY_PROTEIN_NAME = "protein_name";
-    public static final String PROPERTY_CHAIN = "chain";
-    public static final String PROPERTY_NCBI_GI = "NCBI_GI";
-    public static final String PROPERTY_PROTEOME_ID = "proteome_id";
-    public static final String PROPERTY_COMPONENT = "component";
-    public static final String PROPERTY_NCBI_TAXONOMY_ID = "NCBI_taxonomy_id";
-    public static final String PROPERTY_UNIPROTKB_ACCESSION = "UniProtKB_accession";
-
     private final ObjectFactory xmlFactory;
     private final TaxonomyRepo taxonomyRepo;
 
