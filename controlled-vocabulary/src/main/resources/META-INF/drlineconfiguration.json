@@ -847,7 +847,7 @@
 		"name": "ArachnoServer",
 		"displayName": "ArachnoServer",
 		"category": "ORG",
-		"uriLink": "https://www.arachnoserver.org/toxincard.html?id=%id",
+		"uriLink": "http://www.arachnoserver.org/toxincard.html?id=%id",
         "idMappingName": "ARACHNOSERVER_ID",
 		"attributes": [
 			{
