@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.uniprot.core.uniparc.impl.UniParcEntryLightBuilder.HAS_ACTIVE_CROSS_REF;
 
 /**
@@ -51,6 +52,29 @@ class UniParcFastaParserTest {
         entry = UniParcEntryLightBuilder.from(entry).extraAttributesAdd(HAS_ACTIVE_CROSS_REF, false).build();
         String fasta = UniParcFastaParser.toFasta(entry);
         assertEquals(EXPECTED_FASTA_RESULT_INACTIVE, fasta);
+    }
+
+    @Test
+    void testUniParcLightFastaSeqRange(){
+        String expectedFasta = ">UPI0000083A08|5-10 status=active\n" +
+                "MARALA";
+        UniParcEntryLight entry = createEntryLight();
+        String seqRange = "5-10";
+        String fasta = UniParcFastaParser.toFasta(entry, seqRange);
+        assertNotNull(fasta);
+        assertEquals(expectedFasta, fasta);
+    }
+
+    @Test
+    void testUniParcLightFastaSeqRangeOutOfRangeShouldReturnTillEnd(){
+        String expectedFasta = ">UPI0000083A08|5-1000000 status=active\n" +
+                "MARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDTLLRA\n" +
+                "IDWFRDNGYFNA";
+        UniParcEntryLight entry = createEntryLight();
+        String seqRange = "5-1000000";
+        String fasta = UniParcFastaParser.toFasta(entry, seqRange);
+        assertNotNull(fasta);
+        assertEquals(expectedFasta, fasta);
     }
 
     private UniParcEntry create() {

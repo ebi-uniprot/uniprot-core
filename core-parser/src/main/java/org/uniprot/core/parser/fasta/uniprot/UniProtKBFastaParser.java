@@ -1,18 +1,17 @@
 package org.uniprot.core.parser.fasta.uniprot;
 
-import java.util.List;
-
-
-import org.uniprot.core.Sequence;
 import org.uniprot.core.fasta.UniProtKBFasta;
 import org.uniprot.core.fasta.impl.UniProtKBFastaBuilder;
 import org.uniprot.core.gene.Gene;
-import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.description.FlagType;
 import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.util.Utils;
+
+import java.util.List;
+
+import static org.uniprot.core.parser.fasta.FastaParserUtils.getSequence;
 
 public class UniProtKBFastaParser {
 
@@ -86,19 +85,5 @@ public class UniProtKBFastaParser {
         }
         desc.append(name.getValue());
         return desc.toString();
-    }
-
-    private static Sequence getSequence(Sequence sequence, String sequenceRange) {
-        if(Utils.notNullNotEmpty(sequenceRange) && sequenceRange.contains("-")) {
-            String[] rangeTokens = sequenceRange.split("-");
-            int start = Integer.parseInt(rangeTokens[0]);
-            int end = Integer.parseInt(rangeTokens[1]);
-            String sequenceString = sequence.getValue()
-                    .substring(
-                            Math.min(start - 1, sequence.getLength()),
-                            Math.min(end, sequence.getLength()));
-            return new SequenceBuilder(sequenceString).build();
-        }
-        return sequence;
     }
 }
