@@ -5,10 +5,8 @@ import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
-import org.uniprot.core.util.Utils;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicReference;
 
 import static org.uniprot.core.parser.fasta.FastaUtils.parseSequence;
 import static org.uniprot.core.util.Utils.*;
@@ -80,7 +78,8 @@ public class UniParcProteomeFastaParser {
                 organism = xref.getOrganism();
 
                 if (isSource) {
-                    addOrIgnoreNull(xref.getId(), sourceIds);
+                    String source = xref.getDatabase().getName() + ":" + xref.getId();
+                    addOrIgnoreNull(source, sourceIds);
                     addOrIgnoreNull(xref.getComponent(), component);
                 } else {
                     addOrIgnoreNull(xref.getId(), accessions);

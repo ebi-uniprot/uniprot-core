@@ -87,7 +87,7 @@ class UniParcProteomeFastaParserTest {
                 .build();
         String fasta = UniParcProteomeFastaParser.toFasta(entry);
         String expected =
-                ">UPI0000083A09 OS=Homo Sapiens OX=9606 SS=XP12345 PC=UP000005640:C1\n" +
+                ">UPI0000083A09 OS=Homo Sapiens OX=9606 SS=EMBL_CON:XP12345 PC=UP000005640:C1\n" +
                         "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT\n" +
                         "LLRAIDWFRDNGYFNA";
         assertEquals(expected, fasta);
@@ -105,7 +105,7 @@ class UniParcProteomeFastaParserTest {
                 .build();
         String fasta = UniParcProteomeFastaParser.toFasta(entry);
         String expected =
-                ">UPI0000083A09 OS=Homo Sapiens OX=9606 SS=XP12345 PC=UP000005640\n" +
+                ">UPI0000083A09 OS=Homo Sapiens OX=9606 SS=EMBL_CON:XP12345 PC=UP000005640\n" +
                         "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT\n" +
                         "LLRAIDWFRDNGYFNA";
         assertEquals(expected, fasta);
@@ -123,7 +123,7 @@ class UniParcProteomeFastaParserTest {
                 .build();
         String fasta = UniParcProteomeFastaParser.toFasta(entry);
         String expected =
-                ">UPI0000083A09 SS=XP12345 PC=UP000005640:C8\n" +
+                ">UPI0000083A09 SS=EMBL_CON:XP12345 PC=UP000005640:C8\n" +
                         "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT\n" +
                         "LLRAIDWFRDNGYFNA";
         assertEquals(expected, fasta);
@@ -142,7 +142,7 @@ class UniParcProteomeFastaParserTest {
                 .build();
         String fasta = UniParcProteomeFastaParser.toFasta(entry);
         String expected =
-                ">UPI0000083A09 OS=Homo Sapiens OX=9606 SS=XP12345 PC=UP000005640:C5\n" +
+                ">UPI0000083A09 OS=Homo Sapiens OX=9606 SS=EMBL_CON:XP12345 PC=UP000005640:C5\n" +
                         "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT\n" +
                         "LLRAIDWFRDNGYFNA";
         assertEquals(expected, fasta);
