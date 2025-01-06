@@ -108,7 +108,7 @@ class UniProtKBDatabaseTypesTest {
         assertEquals("iPTMnet", opType.getDisplayName());
         assertEquals(PTM_DATABASES, opType.getCategory());
         assertEquals(
-                "http://research.bioinformatics.udel.edu/iptmnet/entry/%id", opType.getUriLink());
+                "https://research.bioinformatics.udel.edu/iptmnet/entry/%id", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "Description", "description", null);
     }
