@@ -20,7 +20,7 @@ public class UniParcProteomeFastaParser {
         String id = entry.getUniParcId().getValue();
 
         List<UniParcCrossReference> uniProtXrefs = new ArrayList<>();
-        List<UniParcCrossReference> sourceXrefs = new ArrayList<>();
+        Map<String, UniParcCrossReference> sourceXrefs = new HashMap<>();
         boolean hasActive = false;
         boolean hasSourceActive = false;
         String proteomeId = null;
@@ -34,7 +34,7 @@ public class UniParcProteomeFastaParser {
                     hasActive = true;
                 }
             } else {
-                sourceXrefs.add(xref);
+                sourceXrefs.put(xref.getId(), xref);
                 proteomeId = xref.getProteomeId();
                 if(xref.isActive()){
                     hasSourceActive = true;
@@ -43,9 +43,9 @@ public class UniParcProteomeFastaParser {
         }
         StringBuilder sb = new StringBuilder();
         if(!uniProtXrefs.isEmpty()){
-            sb.append(getFastaHeader(uniProtXrefs, hasActive, id, proteomeId, false));
+            sb.append(getFastaHeader(uniProtXrefs, hasActive, id, proteomeId, sourceXrefs));
         } else {
-            sb.append(getFastaHeader(sourceXrefs, hasSourceActive, id, proteomeId, true));
+            sb.append(getFastaHeader(sourceXrefs.values(), hasSourceActive, id, proteomeId, sourceXrefs));
         }
         sb.append("\n");
         sb.append(parseSequence(entry.getSequence().getValue()));
@@ -64,7 +64,7 @@ public class UniParcProteomeFastaParser {
         return result;
     }
 
-    private static StringBuilder getFastaHeader(List<UniParcCrossReference> xrefs, boolean hasActive, String id, String proteomeId, boolean isSource) {
+    private static StringBuilder getFastaHeader(Collection<UniParcCrossReference> xrefs, boolean hasActive, String id, String proteomeId, Map<String, UniParcCrossReference> sourceXrefs) {
         Set<String> proteinName = new LinkedHashSet<>();
         Set<String> geneNames = new LinkedHashSet<>();
         Set<String> accessions = new LinkedHashSet<>();
@@ -77,7 +77,7 @@ public class UniParcProteomeFastaParser {
                 addOrIgnoreNull(xref.getGeneName(), geneNames);
                 organism = xref.getOrganism();
 
-                if (isSource) {
+                if (xref.getDatabase().isSource()) {
                     String source = xref.getDatabase().getName() + ":" + xref.getId();
                     addOrIgnoreNull(source, sourceIds);
                     addOrIgnoreNull(xref.getComponent(), component);
@@ -92,7 +92,7 @@ public class UniParcProteomeFastaParser {
                                     for (String source : sources) {
                                         String[] ids = source.split(":");
                                         if (ids.length > 1 && proteomeId.equals(ids[1])) {
-                                            sourceIds.add(ids[0]);
+                                            sourceIds.add(getSourceId(sourceXrefs, ids[0]));
                                         }
                                         if (ids.length > 2 && proteomeId.equals(ids[1])) {
                                             component.add(ids[2]);
@@ -129,5 +129,12 @@ public class UniParcProteomeFastaParser {
             sb.append(":").append(String.join("|", component));
         }
         return sb;
+    }
+
+    private static String getSourceId(Map<String, UniParcCrossReference> sourceXrefs, String sourceId) {
+        if(sourceXrefs.containsKey(sourceId)){
+            sourceId = sourceXrefs.get(sourceId).getDatabase().getName() + ":" + sourceId;
+        }
+        return sourceId;
     }
 }

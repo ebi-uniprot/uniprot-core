@@ -19,7 +19,9 @@ import static org.uniprot.core.parser.fasta.uniparc.UniParcFastaParserTestUtils.
 class UniParcProteomeFastaParserTest {
 
     private static final Property source1 = new Property(UniParcCrossReference.PROPERTY_SOURCES, "ABC01416:UP000005640:Chromosome 1");
+    private static final UniParcCrossReference xrefSource1 = getXref(UniParcDatabase.EMBL_CON, "ABC01416", true,  null, "UP000005640", "Chromosome 1");
     private static final Property source2 = new Property(UniParcCrossReference.PROPERTY_SOURCES, "ABC01417:UP000005640:Chromosome 2");
+    private static final UniParcCrossReference xrefSource2 = getXref(UniParcDatabase.REFSEQ, "ABC01417", true,  null, "UP000005640", "Chromosome 2");
     private static final Organism humanOrganism = getOrganism(9606L, "Homo Sapiens");
 
     @Test
@@ -39,8 +41,9 @@ class UniParcProteomeFastaParserTest {
         Organism organism = getOrganism(9606L, "Homo Sapiens");
         List<UniParcCrossReference> xrefs = new ArrayList<>();
         xrefs.add(getXref(UniParcDatabase.SWISSPROT, "P21802", true, organism, null, null, "Protein Name 1", "Gene Name1", source1 ));
+        xrefs.add(xrefSource1);
         xrefs.add(getXref(UniParcDatabase.TREMBL, "P12345", true, organism, null, null, "Protein Name 2", "Gene Name2", source2));
-        xrefs.add(getXref(UniParcDatabase.EMBL_CON, "XP12345", true, organism, proteomeId, "C1"));
+        xrefs.add(xrefSource2);
         UniParcEntry entry = new UniParcEntryBuilder()
                 .uniParcId(new UniParcIdBuilder("UPI0000083A09").build())
                 .uniParcCrossReferencesSet(xrefs)
@@ -48,7 +51,7 @@ class UniParcProteomeFastaParserTest {
                 .build();
         String fasta = UniParcProteomeFastaParser.toFasta(entry);
         String expected =
-                ">UPI0000083A09 Protein Name 1|Protein Name 2 OS=Homo Sapiens OX=9606 GN=Gene Name1|Gene Name2 AC=P21802|P12345 SS=ABC01416|ABC01417 PC=UP000005640:Chromosome 1|Chromosome 2\n" +
+                ">UPI0000083A09 Protein Name 1|Protein Name 2 OS=Homo Sapiens OX=9606 GN=Gene Name1|Gene Name2 AC=P21802|P12345 SS=EMBL_CON:ABC01416|RefSeq:ABC01417 PC=UP000005640:Chromosome 1|Chromosome 2\n" +
                         "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT\n" +
                         "LLRAIDWFRDNGYFNA";
         assertEquals(expected, fasta);
@@ -60,8 +63,9 @@ class UniParcProteomeFastaParserTest {
         Organism organism = getOrganism(9606L, "Homo Sapiens");
         List<UniParcCrossReference> xrefs = new ArrayList<>();
         xrefs.add(getXref(UniParcDatabase.SWISSPROT, "P21802", true, organism, null, null, "Protein Name 1", "Gene Name1", source1 ));
+        xrefs.add(xrefSource1);
         xrefs.add(getXref(UniParcDatabase.TREMBL, "P12345", false, organism, null, null, "Protein Name 2", "Gene Name2", source2));
-        xrefs.add(getXref(UniParcDatabase.EMBL_CON, "XP12345", true, organism, proteomeId, "C1"));
+        xrefs.add(xrefSource2);
         UniParcEntry entry = new UniParcEntryBuilder()
                 .uniParcId(new UniParcIdBuilder("UPI0000083A09").build())
                 .uniParcCrossReferencesSet(xrefs)
@@ -69,7 +73,7 @@ class UniParcProteomeFastaParserTest {
                 .build();
         String fasta = UniParcProteomeFastaParser.toFasta(entry);
         String expected =
-                ">UPI0000083A09 Protein Name 1 OS=Homo Sapiens OX=9606 GN=Gene Name1 AC=P21802 SS=ABC01416 PC=UP000005640:Chromosome 1\n" +
+                ">UPI0000083A09 Protein Name 1 OS=Homo Sapiens OX=9606 GN=Gene Name1 AC=P21802 SS=EMBL_CON:ABC01416 PC=UP000005640:Chromosome 1\n" +
                         "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT\n" +
                         "LLRAIDWFRDNGYFNA";
         assertEquals(expected, fasta);
