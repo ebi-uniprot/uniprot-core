@@ -11,6 +11,7 @@ import org.uniprot.core.xml.jaxb.dbreference.DbReference;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.uniprot.core.xml.CrossReferenceConverterUtils.PROPERTY_SOURCES;
 import static org.uniprot.core.xml.CrossReferenceConverterUtils.PROPERTY_UNIPROTKB_ACCESSION;
 
 
@@ -32,6 +33,7 @@ class UniParcCrossReferenceConverterTest {
                 .ncbiGi("ncbiGiValue")
                 .chain("chainValue")
                 .propertiesAdd(PROPERTY_UNIPROTKB_ACCESSION, "P21802")
+                .propertiesAdd(PROPERTY_SOURCES, "A0A0C4DHG2:UP12345:Component")
                 .created(LocalDate.of(2015, 4, 1))
                 .lastUpdated(LocalDate.of(2019, 5, 8));
 
