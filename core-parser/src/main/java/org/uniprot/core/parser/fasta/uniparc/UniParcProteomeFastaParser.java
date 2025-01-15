@@ -96,7 +96,7 @@ public class UniParcProteomeFastaParser {
                 } else {
                     addOrIgnoreNull(xref.getId(), accessions);
                     if (notNullNotEmpty(xref.getProperties())) {
-                        String[] sources = getSourceValue(xref).split(",");
+                        List<String> sources = getSourceValues(xref);
                         for (String source : sources) {
                             String[] ids = source.split(":");
                             if (ids.length > 1 && proteomeId.equals(ids[1])) {
@@ -140,11 +140,11 @@ public class UniParcProteomeFastaParser {
         return sb;
     }
 
-    private static String getSourceValue(UniParcCrossReference xref) {
+    private static List<String> getSourceValues(UniParcCrossReference xref) {
         return xref.getProperties().stream()
                 .filter(p -> UniParcCrossReference.PROPERTY_SOURCES.equals(p.getKey()))
                 .map(Property::getValue)
-                .findFirst().orElse("");
+                .toList();
     }
 
     private static String getSourceId(Map<String, UniParcCrossReference> sourceXrefs, String sourceId) {
