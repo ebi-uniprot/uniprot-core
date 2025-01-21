@@ -7,7 +7,7 @@ import org.uniprot.core.util.Utils;
 public class FastaParserUtils {
     private FastaParserUtils(){}
     public static Sequence getSequence(Sequence sequence, String sequenceRange) {
-        if(Utils.notNullNotEmpty(sequenceRange) && sequenceRange.contains("-")) {
+        if(containsSequenceRange(sequenceRange)) {
             String[] rangeTokens = sequenceRange.split("-");
             int start = Integer.parseInt(rangeTokens[0]);
             int end = Integer.parseInt(rangeTokens[1]);
@@ -18,5 +18,9 @@ public class FastaParserUtils {
             return new SequenceBuilder(sequenceString).build();
         }
         return sequence;
+    }
+
+    private static boolean containsSequenceRange(String sequenceRange) {
+        return Utils.notNullNotEmpty(sequenceRange) && sequenceRange.contains("-");
     }
 }
