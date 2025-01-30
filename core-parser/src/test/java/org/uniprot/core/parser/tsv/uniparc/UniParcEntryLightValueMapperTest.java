@@ -89,7 +89,7 @@ class UniParcEntryLightValueMapperTest {
         UniParcEntryLight entry = create();
         List<String> fields = Arrays.asList("upi", "HAMAP", "InterPro", "Pfam", "PROSITE");
         Map<String, String> result = new UniParcEntryLightValueMapper().mapEntity(entry, fields);
-        assertEquals(14, result.size());
+        assertEquals(15, result.size());
         verify("UPI0000083A08", "upi", result);
         verify("", "HAMAP", result);
         verify("id1", "InterPro", result);
