@@ -85,6 +85,7 @@ public class UniParcCrossReferenceConverter
         xmlObj.getProperty().addAll(properties);
         if (Utils.notNullNotEmpty(uniObj.getProperties())) {
             uniObj.getProperties().stream()
+                    .filter(prop -> !SOURCES.equals(prop.getKey()))
                     .map(prop -> createProperty(prop.getKey(), prop.getValue()))
                     .forEach(val -> xmlObj.getProperty().add(val));
         }

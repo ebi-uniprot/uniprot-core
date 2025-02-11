@@ -1,4 +1,4 @@
-package org.uniprot.core.parser.fasta;
+package org.uniprot.core.parser.fasta.uniparc;
 
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniparc.UniParcCrossReference;
@@ -6,6 +6,7 @@ import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniparc.UniParcEntryLight;
 import org.uniprot.core.util.Utils;
 
+import static org.uniprot.core.parser.fasta.FastaUtils.*;
 import static org.uniprot.core.parser.fasta.FastaParserUtils.getSequence;
 import static org.uniprot.core.uniparc.impl.UniParcEntryLightBuilder.HAS_ACTIVE_CROSS_REF;
 
@@ -15,6 +16,7 @@ import static org.uniprot.core.uniparc.impl.UniParcEntryLightBuilder.HAS_ACTIVE_
  */
 public class UniParcFastaParser {
     private UniParcFastaParser(){}
+
 
     public static String toFasta(UniParcEntry entry) {
         String status = "active";
@@ -49,14 +51,7 @@ public class UniParcFastaParser {
         sb.append(" ");
         sb.append("status=").append(status);
         sb.append("\n");
-        int columnCounter = 0;
-        for (char c : sequence.getValue().toCharArray()) {
-            if (columnCounter % 60 == 0 && columnCounter > 0) {
-                sb.append("\n");
-            }
-            sb.append(c);
-            columnCounter++;
-        }
+        sb.append(parseSequence(sequence.getValue()));
         return sb.toString();
     }
 }

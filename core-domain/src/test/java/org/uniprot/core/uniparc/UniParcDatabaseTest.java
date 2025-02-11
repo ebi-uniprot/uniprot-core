@@ -65,6 +65,16 @@ class UniParcDatabaseTest {
     }
 
     @Test
+    void isSource() {
+        assertTrue( UniParcDatabase.EMBL.isSource());
+    }
+
+    @Test
+    void isNotSource() {
+        assertFalse( UniParcDatabase.FLYBASE.isSource());
+    }
+
+    @Test
     void canGetIndex() {
         assertEquals(100, UniParcDatabase.SWISSPROT.getIndex());
     }
