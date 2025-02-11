@@ -20,6 +20,7 @@ public class CrossReferenceConverterUtils {
     public static final String PROPERTY_NCBI_TAXONOMY_ID = "NCBI_taxonomy_id";
     public static final String PROPERTY_UNIPROTKB_ACCESSION = "UniProtKB_accession";
     public static final String PROPERTY_SOURCES = UniParcCrossReference.PROPERTY_SOURCES;
+    public static final String SOURCES = "sources";
 
     private CrossReferenceConverterUtils(){}
 
