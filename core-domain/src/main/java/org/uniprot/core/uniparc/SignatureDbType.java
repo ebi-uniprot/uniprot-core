@@ -17,7 +17,7 @@ public enum SignatureDbType implements EnumDisplay {
     SMART("SMART"),
     SUPFAM("SUPFAM"),
     NCBIFAM("NCBIfam"),
-    FUNFAM("FUNFAM");
+    FUNFAM("FunFam");
 
     private final String name;
 

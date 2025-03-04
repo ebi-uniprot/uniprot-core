@@ -24,7 +24,7 @@ public enum MethodType implements EnumDisplay {
     CDD("CDD", "J"),
     SFLD("SFLD", "B"),
     COILS("COILS", "x"),
-    FUNFAM("Funfam", "f"),
+    FUNFAM("FunFam", "f"),
     UNKNOWN("UNKNOWN", "na");
 
     private String name;
