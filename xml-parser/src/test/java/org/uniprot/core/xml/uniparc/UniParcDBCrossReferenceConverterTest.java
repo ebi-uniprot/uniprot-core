@@ -2,6 +2,7 @@ package org.uniprot.core.xml.uniparc;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.uniprot.core.xml.CrossReferenceConverterUtils.PROPERTY_SOURCES;
 import static org.uniprot.core.xml.CrossReferenceConverterUtils.PROPERTY_UNIPROTKB_ACCESSION;
 
 import java.time.LocalDate;
