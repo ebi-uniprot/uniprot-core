@@ -40,7 +40,7 @@ class MethodTypeTest {
     }
 
     @Test
-    void testFUNFAM() {
+    void testFunFam() {
         MethodType type = MethodType.typeOf("FUNFAM");
         assertEquals(MethodType.FUNFAM, type);
     }

@@ -30,7 +30,7 @@ public class UniParcSequenceFeatureMap implements NamedValueMap {
                             "SMART",
                             "SUPFAM",
                             "NCBIfam",
-                            "FUNFAM"));
+                            "FunFam"));
 
     private final List<SequenceFeature> features;
 
