@@ -1917,6 +1917,18 @@
 		]
 	},
 	{
+		"name":"STRENDA-DB",
+		"displayName":"STRENDA-DB",
+		"category":"EAP",
+		"uriLink":"https://beilstein-strenda-db.org/strenda/public/doiQuery.xhtml?doi=10.22011/strenda_db.%id",
+		"attributes" : [
+			{
+				"name": "ExperimentDescription",
+				"xmlTag" : "experiment description"
+			}
+		]
+	},
+	{
 		"name": "YCharOS",
 		"displayName": "YCharOS",
 		"category": "PAM",
