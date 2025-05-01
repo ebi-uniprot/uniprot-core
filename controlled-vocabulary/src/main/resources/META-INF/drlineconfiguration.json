@@ -1917,6 +1917,50 @@
 		]
 	},
 	{
+		"name":"FunCoup",
+		"displayName":"FunCoup",
+		"category":"PPI",
+		"uriLink":"https://funcoup.org/uniprot/%u",
+		"attributes" : [
+			{
+				"name": "Number of interactors",
+				"xmlTag" : "interactions"
+			}
+		]
+	},
+	{
+		"name":"PAN-GO",
+		"displayName":"PAN-GO",
+		"category":"PLG",
+		"uriLink":"https://functionome.geneontology.org/gene/UniProtKB:%u",
+		"attributes" : [
+			{
+				"name": "Number of GO annotations",
+				"xmlTag" : "GO annotations"
+			}
+		]
+	},
+	{
+		"name":"CARD",
+		"displayName":"CARD",
+		"category":"PFAM",
+		"uriLink":"https://card.mcmaster.ca/aro/%s",
+		"attributes" : [
+			{
+				"name": "CARD short name",
+				"xmlTag" : "molecule name"
+			},
+			{
+				"name": "Resistance mechanism identifier",
+				"xmlTag" : "mechanism identifier"
+			},
+			{
+				"name": "Resistance mechanism name",
+				"xmlTag" : "mechanism name"
+			}
+		]
+	},
+	{
 		"name":"STRENDA-DB",
 		"displayName":"STRENDA-DB",
 		"category":"EAP",
