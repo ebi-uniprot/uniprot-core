@@ -17,6 +17,8 @@ class TaxonomyRankTest {
         assertEquals(TaxonomyRank.NO_RANK, TaxonomyRank.typeOf("No Rank"));
         assertEquals(TaxonomyRank.FAMILY, TaxonomyRank.typeOf("family"));
         assertEquals(TaxonomyRank.CLASS, TaxonomyRank.typeOf("CLASS"));
+        assertEquals(TaxonomyRank.REALM, TaxonomyRank.typeOf("realm"));
+        assertEquals(TaxonomyRank.DOMAIN, TaxonomyRank.typeOf("domain"));
     }
 
     @ParameterizedTest
