@@ -19,6 +19,7 @@ class TaxonomyRankTest {
         assertEquals(TaxonomyRank.CLASS, TaxonomyRank.typeOf("CLASS"));
         assertEquals(TaxonomyRank.REALM, TaxonomyRank.typeOf("realm"));
         assertEquals(TaxonomyRank.DOMAIN, TaxonomyRank.typeOf("domain"));
+        assertEquals(TaxonomyRank.SUBVARIETY, TaxonomyRank.typeOf("subvariety"));
     }
 
     @ParameterizedTest

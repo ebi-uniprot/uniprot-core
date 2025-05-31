@@ -51,6 +51,7 @@ public enum TaxonomyRank implements EnumDisplay {
     SUPERKINGDOM("superkingdom"),
     REALM("realm"),
     DOMAIN("domain"),
+    SUBVARIETY("subvariety"),
     NO_RANK("no rank");
 
     private final String name;
