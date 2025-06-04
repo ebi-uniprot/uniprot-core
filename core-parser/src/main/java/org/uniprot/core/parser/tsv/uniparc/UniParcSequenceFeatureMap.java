@@ -68,7 +68,9 @@ public class UniParcSequenceFeatureMap implements NamedValueMap {
     private String getInterPro() {
         return features.stream()
                 .map(val -> val.getInterProDomain())
+                .filter(Objects::nonNull)
                 .map(val -> val.getId())
+                .filter(Objects::nonNull)
                 .sorted()
                 .distinct()
                 .collect(Collectors.joining(DELIMITER));
@@ -78,6 +80,7 @@ public class UniParcSequenceFeatureMap implements NamedValueMap {
         return features.stream()
                 .filter(val -> val.getSignatureDbType() == type)
                 .map(val -> val.getSignatureDbId())
+                .filter(Objects::nonNull)
                 .collect(Collectors.joining(DELIMITER));
     }
 }

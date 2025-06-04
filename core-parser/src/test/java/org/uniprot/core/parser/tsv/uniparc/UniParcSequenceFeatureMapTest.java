@@ -63,6 +63,21 @@ class UniParcSequenceFeatureMapTest {
         assertEquals(UniParcSequenceFeatureMap.FIELDS, fields);
     }
 
+    @Test
+    void testAttributeValuesWithMissingInterProDomain() {
+        SequenceFeature sf =
+                new SequenceFeatureBuilder()
+                        .signatureDbType(SignatureDbType.PFAM)
+                        .signatureDbId("sigId1")
+                        .build();
+        List<SequenceFeature> sfs = List.of(sf);
+        UniParcSequenceFeatureMap sfMap = new UniParcSequenceFeatureMap(sfs);
+        Map<String, String> result = sfMap.attributeValues();
+        assertEquals(14, result.size());
+        assertEquals("", result.get("InterPro"));
+        assertEquals("sigId1", result.get("Pfam"));
+    }
+
     private List<SequenceFeature> create() {
         InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
         SequenceFeature sf =
