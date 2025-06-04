@@ -19,7 +19,10 @@ public class SequenceConverter implements Converter<SequenceType, Sequence> {
 
     @Override
     public Sequence fromXml(SequenceType xmlObj) {
-        String sequence = xmlObj.getValue();
+        String sequence = "";
+        if (xmlObj != null) {
+            sequence = xmlObj.getValue();
+        }
         //	sequence = sequence.replaceAll(" ", "");
         return new SequenceBuilder(sequence).build();
     }
