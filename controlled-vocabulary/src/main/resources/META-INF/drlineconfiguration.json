@@ -1952,7 +1952,8 @@
 			},
 			{
 				"name": "Resistance mechanism identifier",
-				"xmlTag" : "mechanism identifier"
+				"xmlTag" : "mechanism identifier",
+				"uriLink":"https://card.mcmaster.ca/%id"
 			},
 			{
 				"name": "Resistance mechanism name",
