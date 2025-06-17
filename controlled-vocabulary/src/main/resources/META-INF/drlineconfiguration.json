@@ -1944,7 +1944,7 @@
 		"name":"CARD",
 		"displayName":"CARD",
 		"category":"PFAM",
-		"uriLink":"https://card.mcmaster.ca/aro/%id",
+		"uriLink":"https://card.mcmaster.ca/%id",
 		"attributes" : [
 			{
 				"name": "CARD short name",
