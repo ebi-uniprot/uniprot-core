@@ -9,6 +9,8 @@ variables:
   GIT_DEPTH: 0 # Tells git to fetch all the branches of the project, required by the analysis task
   SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"
   JACOCO_AGGREGATE_REPORT: "jacoco-aggregate-report/target/site/jacoco-aggregate/jacoco.xml"
+  ftp_proxy: "hh-wwwcache.ebi.ac.uk:3128"
+  no_proxy: "localhost,127.0.0.1"
 
 image: maven:3.8.5-openjdk-17
 cache:
