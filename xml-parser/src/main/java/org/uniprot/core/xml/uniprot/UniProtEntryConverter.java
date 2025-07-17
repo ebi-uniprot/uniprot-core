@@ -16,6 +16,7 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.impl.EntryAuditBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
+import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.*;
 import org.uniprot.core.xml.uniprot.citation.ReferenceConverter;
@@ -51,7 +52,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtKBEntry> {
         geneConverter = new GeneConverter(evRefMapper, xmlUniprotFactory);
         organelleConverter = new OrganelleConverter(evRefMapper, xmlUniprotFactory);
         this.referenceConverter = new ReferenceConverter(evRefMapper, xmlUniprotFactory);
-        this.xrefConverter = new UniProtCrossReferenceConverter(xmlUniprotFactory);
+        this.xrefConverter = new UniProtCrossReferenceConverter(evRefMapper, xmlUniprotFactory);
         this.keywordConverter = new KeywordConverter(evRefMapper, xmlUniprotFactory);
         this.featureConverter = new FeatureConverter(evRefMapper, xmlUniprotFactory);
         this.sequenceConverter = new SequenceConverter(xmlUniprotFactory);
@@ -135,6 +136,30 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtKBEntry> {
         xmlEntry.setSequence(toXmlForSequence(entry));
         updateEvidence(xmlEntry);
         return xmlEntry;
+    }
+
+    protected void reset(Map<Evidence, Integer> evidenceIdMap) {
+        evRefMapper.reset(evidenceIdMap);
+    }
+
+    protected ProteinDescription fromXml(ProteinType proteinType){
+        return descriptionConverter.fromXml(proteinType);
+    }
+
+    ProteinDescription fromXml(ProteinDescription modelObject, SequenceType xmlObject){
+        return flagUpdater.fromXml(modelObject, xmlObject);
+    }
+
+    UniProtKBReference fromXml(ReferenceType xmlObj) {
+        return referenceConverter.fromXml(xmlObj);
+    }
+
+    UniProtKBCrossReference fromXml(DbReferenceType xmlObj) {
+        return xrefConverter.fromXml(xmlObj);
+    }
+
+    Keyword fromXml(KeywordType xmlObj) {
+        return keywordConverter.fromXml(xmlObj);
     }
 
     private void updateEvidence(Entry xmlEntry) {
@@ -226,7 +251,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtKBEntry> {
         }
     }
 
-    private UniProtKBEntryBuilder createUniprotEntryBuilderFromXml(Entry xmlEntry) {
+    UniProtKBEntryBuilder createUniprotEntryBuilderFromXml(Entry xmlEntry) {
         List<String> accessions = xmlEntry.getAccession();
         return new UniProtKBEntryBuilder(
                         accessions.get(0),
@@ -270,7 +295,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtKBEntry> {
         xmlEntry.setVersion(entry.getEntryAudit().getEntryVersion());
     }
 
-    private Map<Evidence, Integer> fromXmlForEvidences(Entry xmlEntry) {
+    Map<Evidence, Integer> fromXmlForEvidences(Entry xmlEntry) {
         Map<Evidence, Integer> evIdMap = new HashMap<>();
         for (org.uniprot.core.xml.jaxb.uniprot.EvidenceType xmlEvidence : xmlEntry.getEvidence()) {
             Evidence evidence = evidenceConverter.fromXml(xmlEvidence);

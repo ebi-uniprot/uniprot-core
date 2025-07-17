@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.xdb.*;
 import org.uniprot.core.uniprotkb.xdb.impl.UniProtCrossReferenceBuilder;
 import org.uniprot.core.xml.Converter;
@@ -23,13 +24,15 @@ public class UniProtCrossReferenceConverter
     private static final String GO = "GO";
     private static final String DASH = "-";
     private final ObjectFactory xmlUniprotFactory;
+    private final EvidenceIndexMapper evRefMapper;
 
-    public UniProtCrossReferenceConverter() {
-        this(new ObjectFactory());
+    public UniProtCrossReferenceConverter(EvidenceIndexMapper evRefMapper) {
+        this(evRefMapper, new ObjectFactory());
     }
 
-    public UniProtCrossReferenceConverter(ObjectFactory xmlUniprotFactory) {
+    public UniProtCrossReferenceConverter(EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
         this.xmlUniprotFactory = xmlUniprotFactory;
+        this.evRefMapper = evRefMapper;
     }
 
     @Override
@@ -59,7 +62,7 @@ public class UniProtCrossReferenceConverter
                 }
             }
         }
-
+        List<Evidence> evidences = this.evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
         UniProtKBDatabase type = new UniProtKBDatabaseImpl(databaseName);
         return new UniProtCrossReferenceBuilder()
                 .database(type)
@@ -68,6 +71,7 @@ public class UniProtCrossReferenceConverter
                 .propertiesAdd(type.getUniProtDatabaseAttribute(0), description)
                 .propertiesAdd(type.getUniProtDatabaseAttribute(1), thirdAttribute)
                 .propertiesAdd(type.getUniProtDatabaseAttribute(2), fourthAttribute)
+                .evidencesSet(evidences)
                 .build();
     }
 

@@ -19,10 +19,13 @@ public class EvidenceBuilder implements Builder<Evidence> {
     private EvidenceCode evidenceCode;
     private String databaseName;
     private String databaseId;
+    private CrossReference<EvidenceDatabase> crossReference;
 
     @Override
     public @Nonnull Evidence build() {
-        if (databaseName == null && databaseId == null) {
+        if(crossReference != null){
+            return new EvidenceImpl(evidenceCode, crossReference);
+        } else if (databaseName == null && databaseId == null) {
             return new EvidenceImpl(evidenceCode, null);
         } else {
             return new EvidenceImpl(evidenceCode, databaseName, databaseId);
@@ -50,6 +53,10 @@ public class EvidenceBuilder implements Builder<Evidence> {
 
     public @Nonnull EvidenceBuilder databaseId(String databaseId) {
         this.databaseId = databaseId;
+        return this;
+    }
+    public @Nonnull EvidenceBuilder crossReference(CrossReference<EvidenceDatabase> crossReference) {
+        this.crossReference = crossReference;
         return this;
     }
 }
