@@ -22,7 +22,7 @@ import org.uniprot.cv.xdb.UniProtKBDatabaseImpl;
 import com.google.common.base.Strings;
 
 public class UniProtKBCrossReferenceConverterTest extends AbstractConverterTest {
-    private final UniProtCrossReferenceConverter converter = new UniProtCrossReferenceConverter();
+    private final UniProtCrossReferenceConverter converter = new UniProtCrossReferenceConverter(new EvidenceIndexMapper(EvidenceHelper.createEvidences()));
 
     @Test
     void testEmbl3Attributes() {
