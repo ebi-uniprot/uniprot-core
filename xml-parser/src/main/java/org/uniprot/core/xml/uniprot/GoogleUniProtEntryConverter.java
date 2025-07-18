@@ -9,12 +9,23 @@ import org.uniprot.core.xml.jaxb.uniprot.Entry;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+
 public class GoogleUniProtEntryConverter extends UniProtEntryConverter {
 
     public GoogleUniProtEntryConverter() {
         super();
     }
 
+    /*
+    Predicted values by ProtLM2:
+    1. Protein name
+    2. EC
+    3. comment - Function
+    4. comment - Catalytic activity/Rhea
+    5. comment - Subcellular location
+    6. Keywords
+    7. GO
+ */
     @Override
     public UniProtKBEntry fromXml(Entry xmlEntry) {
         Map<Evidence, Integer> evidenceIdMap = fromXmlForEvidences(xmlEntry);
@@ -26,6 +37,7 @@ public class GoogleUniProtEntryConverter extends UniProtEntryConverter {
                 xmlEntry.getReference().stream()
                         .map(this::fromXml)
                         .collect(Collectors.toList()));
+        activeEntryBuilder.commentsSet(fromXmlForComments(xmlEntry));
         activeEntryBuilder.uniProtCrossReferencesSet(
                 xmlEntry.getDbReference().stream()
                         .filter(val -> !val.getType().equals("EC"))
