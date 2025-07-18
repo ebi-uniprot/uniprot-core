@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Google's ProtLM2 predicted entry -->
+<uniprot xmlns="http://uniprot.org/uniprot">
+    <entry dataset="TrEMBL" created="1111-11-11" modified="1111-11-11" version="1">
+        <accession>A0A6A5BR32</accession>
+        <name>PLACEHOLDER</name>
+        <protein>
+            <recommendedName>
+                <fullName>Uncharacterized protein</fullName>
+            </recommendedName>
+        </protein>
+        <organism>
+            <name type="scientific">PLACEHOLDER</name>
+            <dbReference type="PLACEHOLDER" id="PLACEHOLDER"></dbReference>
+        </organism>
+        <reference key="1">
+            <citation type="unpublished observations"></citation>
+            <scope>required field</scope>
+        </reference>
+        <dbReference id="GO:0016020" type="GO" evidence="6"></dbReference>
+        <dbReference id="PF01094" type="Pfam" evidence="5"></dbReference>
+        <proteinExistence type="uncertain"></proteinExistence>
+        <keyword id="KW-0325" evidence="3"></keyword>
+        <keyword id="KW-0472" evidence="2"></keyword>
+        <keyword id="KW-0812" evidence="1"></keyword>
+        <keyword id="KW-1133" evidence="4"></keyword>
+        <evidence type="ECO:0008006" key="1">
+            <source>
+                <dbReference type="Google" id="ProtNLM2">
+                    <property type="model_score" value="0.09"></property>
+                    <property type="tmalign_accession" value="A7XY94"></property>
+                    <property type="tmalign_score_chain_1" value="0.56106"></property>
+                    <property type="tmalign_score_chain_2" value="0.13104"></property>
+                </dbReference>
+            </source>
+        </evidence>
+        <evidence type="ECO:0008006" key="2">
+            <source>
+                <dbReference type="Google" id="ProtNLM2">
+                    <property type="model_score" value="0.09"></property>
+                    <property type="tmalign_accession" value="A8AD27"></property>
+                    <property type="tmalign_score_chain_1" value="0.56479"></property>
+                    <property type="tmalign_score_chain_2" value="0.34167"></property>
+                </dbReference>
+            </source>
+        </evidence>
+        <evidence type="ECO:0008006" key="3">
+            <source>
+                <dbReference type="Google" id="ProtNLM2">
+                    <property type="model_score" value="0.09"></property>
+                    <property type="tmalign_accession" value="P22756"></property>
+                    <property type="tmalign_score_chain_1" value="0.57725"></property>
+                    <property type="tmalign_score_chain_2" value="0.20145"></property>
+                </dbReference>
+            </source>
+        </evidence>
+        <evidence type="ECO:0008006" key="4">
+            <source>
+                <dbReference type="Google" id="ProtNLM2">
+                    <property type="model_score" value="0.09"></property>
+                    <property type="tmalign_accession" value="Q296F7"></property>
+                    <property type="tmalign_score_chain_1" value="0.57911"></property>
+                    <property type="tmalign_score_chain_2" value="0.1902"></property>
+                </dbReference>
+            </source>
+        </evidence>
+        <evidence type="ECO:0008006" key="5">
+            <source>
+                <dbReference type="Google" id="ProtNLM2">
+                    <property type="model_score" value="0.13"></property>
+                    <property type="tmalign_accession" value="A0A2I3MJ91"></property>
+                    <property type="tmalign_score_chain_1" value="0.52774"></property>
+                    <property type="tmalign_score_chain_2" value="0.21398"></property>
+                </dbReference>
+            </source>
+        </evidence>
+        <evidence type="ECO:0008006" key="6">
+            <source>
+                <dbReference type="Google" id="ProtNLM2">
+                    <property type="model_score" value="0.32"></property>
+                    <property type="tmalign_accession" value="P0A4F9"></property>
+                    <property type="tmalign_score_chain_1" value="0.57156"></property>
+                    <property type="tmalign_score_chain_2" value="0.61333"></property>
+                </dbReference>
+            </source>
+        </evidence>
+        <sequence length="0" mass="0" checksum="0" modified="1111-11-11" version="1">PLACEHOLDER</sequence>
+    </entry>
+</uniprot>

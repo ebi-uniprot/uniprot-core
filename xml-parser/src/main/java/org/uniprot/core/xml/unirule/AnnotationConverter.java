@@ -31,7 +31,7 @@ public class AnnotationConverter implements Converter<AnnotationType, Annotation
         this.evRefMapper = new EvidenceIndexMapper();
         this.keywordConverter = new KeywordConverter(this.evRefMapper);
         this.geneConverter = new GeneConverter(this.evRefMapper);
-        this.crossReferenceConverter = new UniProtCrossReferenceConverter();
+        this.crossReferenceConverter = new UniProtCrossReferenceConverter(this.evRefMapper);
         this.proteinConverter = new ProteinConverter(objectFactory);
     }
 
