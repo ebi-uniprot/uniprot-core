@@ -220,9 +220,7 @@ class GoogleUniProtEntryConverterTest {
 
         EvidencedValue functionCommentText = functionComment.getTexts().get(0);
         assertNotNull(functionCommentText);
-        assertEquals("Shows cytolytic activity on many different cells by forming pore in lipid membranes. In vivo, increases heart rate or kills the animal by card\n" +
-                "                iac arrest. In addition, it binds to heparin with high affinity, interacts with Kv channel-interacting protein 1 (KCNIP1) in a calcium-independent manner, and binds to integrin\n" +
-                "                alpha-V/beta-3 (ITGAV/ITGB3) with moderate affinity", functionCommentText.getValue());
+        assertEquals("Shows cytolytic activity on many different cells by forming pore in lipid membranes. In vivo, increases heart rate or kills the animal by cardiac arrest. In addition, it binds to heparin with high affinity, interacts with Kv channel-interacting protein 1 (KCNIP1) in a calcium-independent manner, and binds to integrin alpha-V/beta-3 (ITGAV/ITGB3) with moderate affinity", functionCommentText.getValue());
 
         assertEquals(1, functionCommentText.getEvidences().size());
         Evidence functionCommentTextEvidence = functionCommentText.getEvidences().get(0);

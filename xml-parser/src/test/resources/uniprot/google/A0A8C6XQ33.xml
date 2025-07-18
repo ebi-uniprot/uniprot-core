@@ -22,9 +22,7 @@
             <text evidence="1">Belongs to the ZIP transporter (TC 2.A.5) family.</text>
         </comment>
         <comment type="function">
-            <text evidence="1">Shows cytolytic activity on many different cells by forming pore in lipid membranes. In vivo, increases heart rate or kills the animal by card
-                iac arrest. In addition, it binds to heparin with high affinity, interacts with Kv channel-interacting protein 1 (KCNIP1) in a calcium-independent manner, and binds to integrin
-                alpha-V/beta-3 (ITGAV/ITGB3) with moderate affinity.</text>
+            <text evidence="1">Shows cytolytic activity on many different cells by forming pore in lipid membranes. In vivo, increases heart rate or kills the animal by cardiac arrest. In addition, it binds to heparin with high affinity, interacts with Kv channel-interacting protein 1 (KCNIP1) in a calcium-independent manner, and binds to integrin alpha-V/beta-3 (ITGAV/ITGB3) with moderate affinity.</text>
         </comment>
         <comment type="subcellular location">
             <subcellularLocation>
