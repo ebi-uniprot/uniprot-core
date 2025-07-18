@@ -8,13 +8,18 @@ import org.uniprot.core.uniprotkb.Keyword;
 import org.uniprot.core.uniprotkb.ProteinExistence;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.UniProtKBReference;
+import org.uniprot.core.uniprotkb.comment.*;
+import org.uniprot.core.uniprotkb.description.EC;
+import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
+import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.xml.jaxb.uniprot.Uniprot;
 
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.InputStream;
 import java.util.List;
@@ -136,5 +141,122 @@ class GoogleUniProtEntryConverterTest {
         assertNull(uniProtEntry.getSequence());
         assertTrue(uniProtEntry.getGenes().isEmpty());
         assertTrue(uniProtEntry.getFeatures().isEmpty());
+    }
+
+    @Test
+    void testGoogleEntryWithCommentsAndECNumberConversion() throws JAXBException {
+        String file = "/uniprot/google/A0A8C6XQ33.xml";
+        InputStream inputStream = GoogleUniProtEntryConverterTest.class.getResourceAsStream(file);
+
+        JAXBContext jaxbContext = JAXBContext.newInstance("org.uniprot.core.xml.jaxb.uniprot");
+
+        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+        Uniprot xmlEntry = (Uniprot) jaxbUnmarshaller.unmarshal(inputStream);
+        assertNotNull(xmlEntry);
+
+        GoogleUniProtEntryConverter converter = new GoogleUniProtEntryConverter();
+        List<UniProtKBEntry> uniProtEntries =
+                xmlEntry.getEntry().stream().map(converter::fromXml).toList();
+        assertNotNull(uniProtEntries);
+        assertEquals(1, uniProtEntries.size());
+        UniProtKBEntry uniProtEntry = uniProtEntries.get(0);
+        assertNotNull(uniProtEntry);
+        assertEquals("A0A8C6XQ33", uniProtEntry.getPrimaryAccession().getValue());
+        // protein description
+        ProteinDescription descr = uniProtEntry.getProteinDescription();
+        assertNotNull(descr);
+        assertEquals("Cytotoxin 5", descr.getRecommendedName().getFullName().getValue());
+        List<Evidence> nameEvidence = descr.getRecommendedName().getFullName().getEvidences();
+        assertNotNull(nameEvidence);
+        assertEquals(1, nameEvidence.size());
+        assertEquals(EvidenceCode.ECO_0008006, nameEvidence.get(0).getEvidenceCode());
+        CrossReference<EvidenceDatabase> nameEvidenceXref = nameEvidence.get(0).getEvidenceCrossReference();
+        assertNotNull(nameEvidenceXref);
+        assertEquals("Google", nameEvidenceXref.getDatabase().getName());
+        assertEquals("ProtNLM2", nameEvidenceXref.getId());
+        assertEquals(3, nameEvidenceXref.getProperties().size());
+        assertNotNull(descr.getRecommendedName().getEcNumbers());
+        assertEquals(1, descr.getRecommendedName().getEcNumbers().size());
+        // ec number
+        EC ecNumber = descr.getRecommendedName().getEcNumbers().get(0);
+        assertNotNull(ecNumber);
+        assertEquals("3.4.24.-", ecNumber.getValue());
+        assertEquals(1, ecNumber.getEvidences().size());
+        Evidence ecEvidence = ecNumber.getEvidences().get(0);
+        assertNotNull(ecEvidence);
+        assertEquals(EvidenceCode.ECO_0008006, ecEvidence.getEvidenceCode());
+        CrossReference<EvidenceDatabase> ecEvidenceXref = ecEvidence.getEvidenceCrossReference();
+        assertNotNull(ecEvidenceXref);
+        assertEquals("Google", ecEvidenceXref.getDatabase().getName());
+        assertEquals("ProtNLM2", ecEvidenceXref.getId());
+        assertEquals(3, ecEvidenceXref.getProperties().size());
+        // comments
+        List<Comment> comments = uniProtEntry.getComments();
+        assertNotNull(comments);
+        assertEquals(3, comments.size());
+
+        // similarity comment
+        FreeTextComment similarityComment = (FreeTextComment) comments.get(0);
+        assertNotNull(similarityComment);
+        assertEquals(CommentType.SIMILARITY, similarityComment.getCommentType());
+        assertEquals(1, similarityComment.getTexts().size());
+        EvidencedValue similarityCommentText = similarityComment.getTexts().get(0);
+        assertNotNull(similarityCommentText);
+        assertEquals("Belongs to the ZIP transporter (TC 2.A.5) family", similarityCommentText.getValue());
+        assertEquals(1, similarityCommentText.getEvidences().size());
+        Evidence similarityCommentTextEvidence = similarityCommentText.getEvidences().get(0);
+        assertNotNull(similarityCommentTextEvidence);
+        assertEquals(EvidenceCode.ECO_0008006, similarityCommentTextEvidence.getEvidenceCode());
+        CrossReference<EvidenceDatabase> similarityCommentTextEvidenceXref = similarityCommentTextEvidence.getEvidenceCrossReference();
+        assertNotNull(similarityCommentTextEvidenceXref);
+        assertEquals("Google", similarityCommentTextEvidenceXref.getDatabase().getName());
+        assertEquals("ProtNLM2", similarityCommentTextEvidenceXref.getId());
+        assertEquals(3, similarityCommentTextEvidenceXref.getProperties().size());
+        // comment function
+        FreeTextComment functionComment = (FreeTextComment) comments.get(1); // assuming this is the second comment
+        assertNotNull(functionComment);
+        assertEquals(CommentType.FUNCTION, functionComment.getCommentType());
+        assertEquals(1, functionComment.getTexts().size());
+
+        EvidencedValue functionCommentText = functionComment.getTexts().get(0);
+        assertNotNull(functionCommentText);
+        assertEquals("Shows cytolytic activity on many different cells by forming pore in lipid membranes. In vivo, increases heart rate or kills the animal by card\n" +
+                "                iac arrest. In addition, it binds to heparin with high affinity, interacts with Kv channel-interacting protein 1 (KCNIP1) in a calcium-independent manner, and binds to integrin\n" +
+                "                alpha-V/beta-3 (ITGAV/ITGB3) with moderate affinity", functionCommentText.getValue());
+
+        assertEquals(1, functionCommentText.getEvidences().size());
+        Evidence functionCommentTextEvidence = functionCommentText.getEvidences().get(0);
+        assertNotNull(functionCommentTextEvidence);
+        assertEquals(EvidenceCode.ECO_0008006, functionCommentTextEvidence.getEvidenceCode());
+
+        CrossReference<EvidenceDatabase> functionCommentTextEvidenceXref = functionCommentTextEvidence.getEvidenceCrossReference();
+        assertNotNull(functionCommentTextEvidenceXref);
+        assertEquals("Google", functionCommentTextEvidenceXref.getDatabase().getName());
+        assertEquals("ProtNLM2", functionCommentTextEvidenceXref.getId());
+        assertEquals(3, functionCommentTextEvidenceXref.getProperties().size());
+        // comment subcellular location
+        SubcellularLocationComment subcellularComment = (SubcellularLocationComment) comments.get(2);
+        assertNotNull(subcellularComment);
+        assertEquals(CommentType.SUBCELLULAR_LOCATION, subcellularComment.getCommentType());
+        assertEquals(1, subcellularComment.getSubcellularLocations().size());
+
+        SubcellularLocation subcellularLocation = subcellularComment.getSubcellularLocations().get(0);
+        assertNotNull(subcellularLocation);
+
+        EvidencedValue location = subcellularLocation.getLocation();
+        assertNotNull(location);
+        assertEquals("Target cell membrane", location.getValue());
+        assertEquals(1, location.getEvidences().size());
+
+        Evidence locationEvidence = location.getEvidences().get(0);
+        assertNotNull(locationEvidence);
+        assertEquals(EvidenceCode.ECO_0008006, locationEvidence.getEvidenceCode());
+
+        CrossReference<EvidenceDatabase> locationEvidenceXref = locationEvidence.getEvidenceCrossReference();
+        assertNotNull(locationEvidenceXref);
+        assertEquals("Google", locationEvidenceXref.getDatabase().getName());
+        assertEquals("ProtNLM2", locationEvidenceXref.getId());
+        assertEquals(3, locationEvidenceXref.getProperties().size());
+
     }
 }

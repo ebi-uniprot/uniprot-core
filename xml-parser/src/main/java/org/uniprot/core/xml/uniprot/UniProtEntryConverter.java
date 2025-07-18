@@ -189,7 +189,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtKBEntry> {
     // For interactions, multiple comment lines must be wrapped up into one comment
     // line in the flat file..
     // ..with multiple interactions.
-    private List<Comment> fromXmlForComments(Entry xmlEntry) {
+    List<Comment> fromXmlForComments(Entry xmlEntry) {
         List<Comment> uniComments = new ArrayList<>();
         List<org.uniprot.core.xml.jaxb.uniprot.CommentType> comments = xmlEntry.getComment();
         List<org.uniprot.core.xml.jaxb.uniprot.CommentType> interactionComment =
