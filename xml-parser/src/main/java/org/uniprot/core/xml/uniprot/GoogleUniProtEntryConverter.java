@@ -7,6 +7,7 @@ import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.Entry;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -42,7 +43,7 @@ public class GoogleUniProtEntryConverter extends UniProtEntryConverter {
                 xmlEntry.getDbReference().stream()
                         .filter(val -> !val.getType().equals("EC"))
                         .map(this::fromXml)
-                        .filter(val -> val != null)
+                        .filter(Objects::nonNull)
                         .collect(Collectors.toList()));
         activeEntryBuilder.keywordsSet(
                 xmlEntry.getKeyword().stream()
