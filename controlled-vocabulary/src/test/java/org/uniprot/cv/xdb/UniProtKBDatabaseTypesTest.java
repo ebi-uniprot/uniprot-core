@@ -186,7 +186,7 @@ class UniProtKBDatabaseTypesTest {
         assertEquals("eggNOG", opType.getDisplayName());
         assertEquals(PHYLOGENOMIC_DATABASES, opType.getCategory());
         assertEquals(
-                "http://eggnogdb.embl.de/#/app/results?seqid=%primaryAccession&target_nogs=%id",
+                "http://eggnog.embl.de/search/ogs/%id",
                 opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "ToxonomicScope", "taxonomic scope", null);
