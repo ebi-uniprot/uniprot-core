@@ -1259,7 +1259,7 @@
 		"name": "eggNOG",
 		"displayName": "eggNOG",
 		"category": "PLG",
-		"uriLink": "http://eggnogdb.embl.de/#/app/results?seqid=%primaryAccession&target_nogs=%id",
+		"uriLink": "http://eggnog.embl.de/search/ogs/%id",
         "idMappingName": "EGGNOG_ID",
 		"attributes": [		
 			{	"name": "ToxonomicScope",
