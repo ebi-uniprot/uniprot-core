@@ -18,7 +18,7 @@ public class GoogleUniProtEntryConverter extends UniProtEntryConverter {
     }
 
     /*
-    Predicted values by ProtLM2:
+    Predicted values by ProtNLM2:
     1. Protein name
     2. EC
     3. comment - Function
