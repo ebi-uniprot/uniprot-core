@@ -1,18 +1,17 @@
 package org.uniprot.core.xml.uniprot;
 
 import java.math.BigInteger;
+import java.util.List;
 
 import org.uniprot.core.CrossReference;
+import org.uniprot.core.Property;
 import org.uniprot.core.impl.CrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
 import org.uniprot.core.xml.Converter;
-import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
-import org.uniprot.core.xml.jaxb.uniprot.EvidenceType;
-import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
-import org.uniprot.core.xml.jaxb.uniprot.SourceType;
+import org.uniprot.core.xml.jaxb.uniprot.*;
 
 public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
     private final ObjectFactory xmlUniprotFactory;
@@ -34,7 +33,7 @@ public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
         EvidenceBuilder evidenceBuilder = new EvidenceBuilder().evidenceCode(evCode);
         if (xmlObj.getSource() != null) {
             CrossReference<EvidenceDatabase> xref = xrefConverter.fromXml(xmlObj.getSource());
-            evidenceBuilder.databaseId(xref.getId()).databaseName(xref.getDatabase().getName());
+            evidenceBuilder.databaseId(xref.getId()).databaseName(xref.getDatabase().getName()).crossReference(xref);
         }
 
         return evidenceBuilder.build();
@@ -69,9 +68,14 @@ public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
         @Override
         public CrossReference<EvidenceDatabase> fromXml(SourceType xmlObj) {
             if (xmlObj.getDbReference() != null) {
+                List<Property> properties = xmlObj.getDbReference().getProperty()
+                        .stream()
+                        .map(propertyType -> new Property(propertyType.getType(), propertyType.getValue()))
+                        .toList();
                 return new CrossReferenceBuilder<EvidenceDatabase>()
                         .database(new EvidenceDatabase(xmlObj.getDbReference().getType()))
                         .id(xmlObj.getDbReference().getId())
+                        .propertiesSet(properties)
                         .build();
             } else {
                 String attr = REF + xmlObj.getRef().toString();
@@ -94,6 +98,15 @@ public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
                 DbReferenceType dbRef = xmlUniprotFactory.createDbReferenceType();
                 dbRef.setType(uniObj.getDatabase().getName());
                 dbRef.setId(uniObj.getId());
+                if(uniObj.getProperties() != null && !uniObj.getProperties().isEmpty()) {
+                    List<Property> properties = uniObj.getProperties();
+                    for (Property property : properties) {
+                        PropertyType propertyType = xmlUniprotFactory.createPropertyType();
+                        propertyType.setType(property.getKey());
+                        propertyType.setValue(property.getValue());
+                        dbRef.getProperty().add(propertyType);
+                    }
+                }
                 source.setDbReference(dbRef);
             }
             return source;

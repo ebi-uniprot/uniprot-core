@@ -1,7 +1,9 @@
 package org.uniprot.core.json.parser.uniprot.serializer;
 
 import java.io.IOException;
+import java.util.List;
 
+import org.uniprot.core.Property;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceImpl;
 
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -28,6 +30,17 @@ public class EvidenceSerializer extends StdSerializer<EvidenceImpl> {
                         "source", evidence.getEvidenceCrossReference().getDatabase().getName());
             }
             gen.writeStringField("id", evidence.getEvidenceCrossReference().getId());
+            List<Property> properties = evidence.getEvidenceCrossReference().getProperties();
+            if (properties != null && !properties.isEmpty()) {
+                gen.writeArrayFieldStart("properties");
+                for (Property property : properties) {
+                    gen.writeStartObject();
+                    gen.writeStringField("key", property.getKey());
+                    gen.writeStringField("value", property.getValue());
+                    gen.writeEndObject();
+                }
+                gen.writeEndArray();
+            }
         }
         gen.writeEndObject();
     }
