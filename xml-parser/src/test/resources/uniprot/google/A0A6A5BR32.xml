@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--Google's ProtLM2 predicted entry -->
+<!--Google's ProtNLM2 predicted entry -->
 <uniprot xmlns="http://uniprot.org/uniprot">
     <entry dataset="TrEMBL" created="1111-11-11" modified="1111-11-11" version="1">
         <accession>A0A6A5BR32</accession>
