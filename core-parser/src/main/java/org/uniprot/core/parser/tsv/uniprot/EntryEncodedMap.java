@@ -7,7 +7,7 @@ import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniprotkb.GeneLocation;
 
 public class EntryEncodedMap implements NamedValueMap {
-    static final List<String> FIELDS = Arrays.asList(new String[] {"organelle"});
+    static final List<String> FIELDS = Arrays.asList("encoded_in");
     private final List<GeneLocation> geneLocations;
 
     EntryEncodedMap(List<GeneLocation> geneLocations) {
