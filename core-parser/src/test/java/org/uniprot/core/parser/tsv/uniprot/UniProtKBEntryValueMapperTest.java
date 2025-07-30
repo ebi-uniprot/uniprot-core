@@ -294,7 +294,7 @@ class UniProtKBEntryValueMapperTest {
 
     @Test
     void testSequenceCaution() {
-        List<String> fields = List.of("accession", "cc_sequence_caution", "error_gmodel_pred");
+        List<String> fields = List.of("accession", "cc_sequence_caution", "cc_sc_epred");
         Map<String, String> result = new UniProtKBEntryValueMapper().mapEntity(entryQ84MC7, fields);
 
         verify("Q84MC7", "accession", result);

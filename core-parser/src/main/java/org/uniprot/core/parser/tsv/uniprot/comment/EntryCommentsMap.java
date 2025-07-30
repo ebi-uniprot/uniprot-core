@@ -47,7 +47,7 @@ public class EntryCommentsMap implements NamedValueMap {
                     "redox_potential",
                     "rhea",
                     "temp_dependence",
-                    "error_gmodel_pred",
+                    "cc_sc_epred",
                     "protein_families");
 
     private final List<Comment> comments;
