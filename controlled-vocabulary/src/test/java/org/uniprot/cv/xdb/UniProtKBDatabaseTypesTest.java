@@ -299,7 +299,7 @@ class UniProtKBDatabaseTypesTest {
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(ENZYME_AND_PATHWAY_DATABASES),
                 11);
-        verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(MISCELLANEOUS), 16);
+        verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(MISCELLANEOUS), 14);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(GENE_EXPRESSION_DATABASES), 4);
         verifyGroupSize(
