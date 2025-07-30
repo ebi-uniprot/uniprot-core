@@ -111,7 +111,6 @@ class GoogleUniProtEntryConverterTest {
         // keywords
         assertEquals(4, uniProtEntry.getKeywords().size());
         Keyword kw1 = uniProtEntry.getKeywords().get(0);
-        assertEquals(1,1);
         assertEquals("KW-0325", kw1.getId());
         assertEquals("NAME NOT SET", kw1.getName());
         assertEquals(1, kw1.getEvidences().size());
