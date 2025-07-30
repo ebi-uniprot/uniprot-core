@@ -1449,23 +1449,6 @@
 		"uriLink": "https://proconsortium.org/app/entry/%id"	
 	},
 	{
-		"name": "SOURCE_MIM",
-		"displayName": "SOURCE",
-		"category": "MISC",
-		"implicit": true,
-		"linkedReason": "DR:MIM",
-		"uriLink": "https://puma.princeton.edu/cgi-bin/source/sourceResult?criteria=%GeneName&choice=Gene&option=Symbol&organism=Hs"	
-	},
-	{
-		"name": "SOURCE_MGI",
-		"displayName": "SOURCE",
-		"category": "MISC",
-		"implicit": true,
-		"linkedReason": "DR:MGI",
-		"uriLink": "https://puma.princeton.edu/cgi-bin/source/sourceResult?criteria=%GeneName&choice=Gene&option=Symbol&organism=Mm"	
-	},
-	
-	{
 		"name": "Bgee",
 		"displayName": "Bgee",
 		"category": "GEP",
