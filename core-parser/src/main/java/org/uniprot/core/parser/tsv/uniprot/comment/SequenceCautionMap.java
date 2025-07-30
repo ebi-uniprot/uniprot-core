@@ -45,7 +45,7 @@ public class SequenceCautionMap implements NamedValueMap {
                                                                     .ERRONEOUS_PREDICTION))
                             .map(this::sequenceCautionToString)
                             .collect(Collectors.joining("  "));
-            sequenceCautionMap.put("error_gmodel_pred", error_gmodel_pred);
+            sequenceCautionMap.put("cc_sc_epred", error_gmodel_pred);
         }
         return sequenceCautionMap;
     }
