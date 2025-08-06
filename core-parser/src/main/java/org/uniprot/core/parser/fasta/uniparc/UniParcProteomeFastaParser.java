@@ -69,8 +69,8 @@ public class UniParcProteomeFastaParser {
         String[] sourcePropertyValues = property.getValue().split(",");
         if(sourcePropertyValues.length == 1){
             String[] propertyValue = sourcePropertyValues[0].split(":");
-            if(propertyValue.length > 1){
-                result = propertyValue[1];
+            if(propertyValue.length > 2){
+                result = propertyValue[2];
             }
         }
         return result;
@@ -99,11 +99,11 @@ public class UniParcProteomeFastaParser {
                         List<String> sources = getSourceValues(xref);
                         for (String source : sources) {
                             String[] ids = source.split(":");
-                            if (ids.length > 1 && proteomeId.equals(ids[1])) {
-                                sourceIds.add(getSourceId(sourceXrefs, ids[0]));
-                            }
-                            if (ids.length > 2 && proteomeId.equals(ids[1])) {
-                                components.add(ids[2]);
+                            if (ids.length > 2 && proteomeId.equals(ids[2])) {
+                                sourceIds.add(getSourceId(sourceXrefs, ids[1]));
+                                if (ids.length > 3) {
+                                    components.add(ids[3]);
+                                }
                             }
                         }
                     }

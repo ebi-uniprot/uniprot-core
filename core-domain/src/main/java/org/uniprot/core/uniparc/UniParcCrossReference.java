@@ -12,8 +12,8 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
 public interface UniParcCrossReference extends CrossReference<UniParcDatabase> {
 
     /**
-     * sources property will store sourceXrefId:ProteomeId:ComponentName
-     * For example: ABC01415:UP000005640:Chromosome 1
+     * sources property will store UniParcDatabaseName:sourceXrefId:ProteomeId:ComponentName
+     * For example: UniProtKB/Swiss-Prot:ABC01415:UP000005640:Chromosome 1
      */
     String PROPERTY_SOURCES = "sources";
 
