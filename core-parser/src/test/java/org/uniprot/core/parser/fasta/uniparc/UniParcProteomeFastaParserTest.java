@@ -17,10 +17,14 @@ import static org.uniprot.core.parser.fasta.uniparc.UniParcFastaParserTestUtils.
 
 class UniParcProteomeFastaParserTest {
 
-    private static final Property source1 = new Property(UniParcCrossReference.PROPERTY_SOURCES, "ABC01416:UP000005640:Chromosome 1");
-    private static final UniParcCrossReference xrefSource1 = getXref(UniParcDatabase.EMBL_CON, "ABC01416", true,  null, "UP000005640", "Chromosome 1");
-    private static final Property source2 = new Property(UniParcCrossReference.PROPERTY_SOURCES, "ABC01417:UP000005640:Chromosome 2");
-    private static final UniParcCrossReference xrefSource2 = getXref(UniParcDatabase.REFSEQ, "ABC01417", true,  null, "UP000005640", "Chromosome 2");
+    private static final Property source1 = new Property(UniParcCrossReference.PROPERTY_SOURCES,
+            UniParcDatabase.SWISSPROT.getName() + ":" + "ABC01416:UP000005640:Chromosome 1");
+    private static final UniParcCrossReference xrefSource1 = getXref(UniParcDatabase.EMBL_CON, "ABC01416", true,
+            null, "UP000005640", "Chromosome 1");
+    private static final Property source2 = new Property(UniParcCrossReference.PROPERTY_SOURCES,
+            UniParcDatabase.TREMBL.getName() + ":" + "ABC01417:UP000005640:Chromosome 2");
+    private static final UniParcCrossReference xrefSource2 = getXref(UniParcDatabase.REFSEQ, "ABC01417", true,
+            null, "UP000005640", "Chromosome 2");
     private static final Organism humanOrganism = getOrganism(9606L, "Homo Sapiens");
 
     @Test
@@ -39,7 +43,8 @@ class UniParcProteomeFastaParserTest {
     void toFastaFullSingleValues() {
         Organism organism = getOrganism(9606L, "Homo Sapiens");
         List<UniParcCrossReference> xrefs = new ArrayList<>();
-        xrefs.add(getXref(UniParcDatabase.SWISSPROT, "P21802", true, organism, null, null, "Protein Name 1", "Gene Name1", source1 ));
+        xrefs.add(getXref(UniParcDatabase.SWISSPROT, "P21802", true, organism, null, null,
+                "Protein Name 1", "Gene Name1", source1 ));
         xrefs.add(xrefSource1);
         UniParcEntry entry = new UniParcEntryBuilder()
                 .uniParcId(new UniParcIdBuilder("UPI0000083A09").build())
