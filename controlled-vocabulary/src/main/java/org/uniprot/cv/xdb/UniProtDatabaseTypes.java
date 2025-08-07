@@ -111,7 +111,7 @@ public enum UniProtDatabaseTypes {
                         .collect(Collectors.toMap(UniProtDatabaseDetail::getName, val -> val));
     }
 
-    private String getSourceAsString() {
+    String getSourceAsString() {
         try {
             String location = getDrDatabaseTypesLocation();
             if (location != null && !location.isBlank()) {
