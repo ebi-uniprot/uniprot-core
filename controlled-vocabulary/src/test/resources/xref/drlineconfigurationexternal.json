@@ -1,0 +1,23 @@
+[
+	{
+		"name": "EX",
+		"displayName": "External",
+		"category": "SEQ",
+		"uriLink": "https://www.external.ac.uk/ena/browser/view/%id",
+		"attributes": [
+			{
+				"name": "ProteinId",
+				"xmlTag":"protein sequence ID",
+				"uriLink":"https://www.external.ac.uk/ena/data/view/%ProteinId"
+			},
+			{
+				"name": "Status",
+				"xmlTag":"status"
+			},
+			{
+				"name": "MoleculeType",
+				"xmlTag":"molecule type"
+			}
+		]
+	}
+]
