@@ -1419,7 +1419,7 @@
 		"name": "EvolutionaryTrace",
 		"displayName": "EvolutionaryTrace",
 		"category": "MISC",
-		"uriLink": "http://mammoth.bcm.tmc.edu/cgi-bin/report_maker_ls/uniprotTraceServerResults.pl?identifier=%id"	
+		"uriLink": "https://evolution.lichtargelab.org/cgi-bin/report_maker_ls/uniprotTraceServerResults.pl?identifier=%id"
 	},
 	{
 		"name": "GeneWiki",
