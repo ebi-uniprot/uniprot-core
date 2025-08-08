@@ -1259,7 +1259,7 @@
 		"name": "eggNOG",
 		"displayName": "eggNOG",
 		"category": "PLG",
-		"uriLink": "http://eggnogdb.embl.de/#/app/results?seqid=%primaryAccession&target_nogs=%id",
+		"uriLink": "http://eggnog.embl.de/search/ogs/%id",
         "idMappingName": "EGGNOG_ID",
 		"attributes": [		
 			{	"name": "ToxonomicScope",
@@ -1448,23 +1448,6 @@
 		"category": "MISC",
 		"uriLink": "https://proconsortium.org/app/entry/%id"	
 	},
-	{
-		"name": "SOURCE_MIM",
-		"displayName": "SOURCE",
-		"category": "MISC",
-		"implicit": true,
-		"linkedReason": "DR:MIM",
-		"uriLink": "https://puma.princeton.edu/cgi-bin/source/sourceResult?criteria=%GeneName&choice=Gene&option=Symbol&organism=Hs"	
-	},
-	{
-		"name": "SOURCE_MGI",
-		"displayName": "SOURCE",
-		"category": "MISC",
-		"implicit": true,
-		"linkedReason": "DR:MGI",
-		"uriLink": "https://puma.princeton.edu/cgi-bin/source/sourceResult?criteria=%GeneName&choice=Gene&option=Symbol&organism=Mm"	
-	},
-	
 	{
 		"name": "Bgee",
 		"displayName": "Bgee",

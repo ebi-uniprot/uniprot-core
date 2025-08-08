@@ -1,22 +1,27 @@
 package org.uniprot.cv.xdb;
 
-import static org.uniprot.cv.common.CVSystemProperties.getDrDatabaseTypesLocation;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
 import org.uniprot.core.cv.xdb.UniProtDatabaseCategory;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
+import org.uniprot.core.util.Utils;
 import org.uniprot.core.util.property.Property;
 import org.uniprot.cv.common.AbstractFileReader;
 
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import static org.uniprot.cv.common.CVSystemProperties.getDrDatabaseTypesLocation;
+
 public enum UniProtDatabaseTypes {
     INSTANCE;
-    private String fileName = "META-INF/drlineconfiguration.json";
+    private final String fileName = "META-INF/drlineconfiguration.json";
 
     private List<UniProtDatabaseDetail> types = new ArrayList<>();
     private Map<String, UniProtDatabaseDetail> typeMap;
@@ -57,13 +62,7 @@ public enum UniProtDatabaseTypes {
     }
 
     private void init() {
-
-        String source =
-                String.join(
-                        "",
-                        AbstractFileReader.readLines(
-                                Optional.ofNullable(getDrDatabaseTypesLocation())
-                                        .orElse(fileName)));
+        String source = getSourceAsString();
         List<Property> jsonArray = Property.parseJsonArray(source);
 
         jsonArray.forEach(
@@ -111,5 +110,20 @@ public enum UniProtDatabaseTypes {
         typeMap =
                 types.stream()
                         .collect(Collectors.toMap(UniProtDatabaseDetail::getName, val -> val));
+    }
+
+    String getSourceAsString() {
+        try {
+            String location = getDrDatabaseTypesLocation();
+            if (Utils.notNullNotEmpty(location)) {
+                Path path = Paths.get(location);
+                if (Files.exists(path)) {
+                    return Files.readString(path);
+                }
+            }
+            return String.join("", AbstractFileReader.readLines(fileName));
+        } catch (IOException e) {
+            throw new UncheckedIOException("Failed to read source file", e);
+        }
     }
 }

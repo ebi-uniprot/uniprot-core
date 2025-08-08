@@ -2,6 +2,7 @@ package org.uniprot.cv.xdb;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.cv.xdb.UniProtDatabaseCategory.*;
+import static org.uniprot.cv.common.CVSystemProperties.DR_DATABASE_TYPES_LOCATION;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
 import org.uniprot.core.cv.xdb.UniProtDatabaseCategory;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
+import org.uniprot.core.util.property.Property;
 
 class UniProtKBDatabaseTypesTest {
 
@@ -184,7 +186,7 @@ class UniProtKBDatabaseTypesTest {
         assertEquals("eggNOG", opType.getDisplayName());
         assertEquals(PHYLOGENOMIC_DATABASES, opType.getCategory());
         assertEquals(
-                "http://eggnogdb.embl.de/#/app/results?seqid=%primaryAccession&target_nogs=%id",
+                "http://eggnog.embl.de/search/ogs/%id",
                 opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "ToxonomicScope", "taxonomic scope", null);
@@ -299,7 +301,7 @@ class UniProtKBDatabaseTypesTest {
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(ENZYME_AND_PATHWAY_DATABASES),
                 11);
-        verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(MISCELLANEOUS), 16);
+        verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(MISCELLANEOUS), 14);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(GENE_EXPRESSION_DATABASES), 4);
         verifyGroupSize(
@@ -316,6 +318,32 @@ class UniProtKBDatabaseTypesTest {
                 UniProtDatabaseTypes.INSTANCE.getInternalDatabaseDetails();
 
         assertEquals(7, internalCrossRefs.size());
+    }
+
+    @Test
+    void testWithExternalFileGetsPriority() {
+        try {
+            System.setProperty(DR_DATABASE_TYPES_LOCATION, "src/test/resources/xref/drlineconfigurationexternal.json");
+
+            String source =
+                    UniProtDatabaseTypes.INSTANCE.getSourceAsString();
+            List<Property> jsonArray = Property.parseJsonArray(source);
+            assertEquals(1, jsonArray.size());
+            Property property = jsonArray.get(0);
+            assertEquals("EX",  property.getString("name"));
+        } finally {
+            System.clearProperty(DR_DATABASE_TYPES_LOCATION);
+        }
+    }
+
+    @Test
+    void testWithExternalWhenNotConfigured() {
+            String source =
+                    UniProtDatabaseTypes.INSTANCE.getSourceAsString();
+            List<Property> jsonArray = Property.parseJsonArray(source);
+            assertEquals(195, jsonArray.size());
+            Property property = jsonArray.get(0);
+            assertEquals("EMBL",  property.getString("name"));
     }
 
     private void verifyGroupSize(List<UniProtDatabaseDetail> dbTypesByCategory, int size) {
