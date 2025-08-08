@@ -3,6 +3,7 @@ package org.uniprot.cv.xdb;
 import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
 import org.uniprot.core.cv.xdb.UniProtDatabaseCategory;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
+import org.uniprot.core.util.Utils;
 import org.uniprot.core.util.property.Property;
 import org.uniprot.cv.common.AbstractFileReader;
 
@@ -114,7 +115,7 @@ public enum UniProtDatabaseTypes {
     String getSourceAsString() {
         try {
             String location = getDrDatabaseTypesLocation();
-            if (location != null && !location.isBlank()) {
+            if (Utils.notNullNotEmpty(location)) {
                 Path path = Paths.get(location);
                 if (Files.exists(path)) {
                     return Files.readString(path);
