@@ -15,6 +15,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static org.uniprot.cv.common.CVSystemProperties.getDrDatabaseTypesLocation;
@@ -23,23 +24,28 @@ public enum UniProtDatabaseTypes {
     INSTANCE;
     private final String fileName = "META-INF/drlineconfiguration.json";
 
-    private List<UniProtDatabaseDetail> types = new ArrayList<>();
-    private Map<String, UniProtDatabaseDetail> typeMap;
+    private List<UniProtDatabaseDetail> uniProtKBDbTypes = new ArrayList<>();
+    private List<UniProtDatabaseDetail> diseaseDbTypes = new ArrayList<>();
+    private Map<String, UniProtDatabaseDetail> uniProtKBDbTypeMap;
 
     UniProtDatabaseTypes() {
         init();
     }
 
     public List<UniProtDatabaseDetail> getAllDbTypes() {
-        return types;
+        return uniProtKBDbTypes;
+    }
+
+    public List<UniProtDatabaseDetail> getDiseaseDbTypes() {
+        return diseaseDbTypes;
     }
 
     public Map<String, UniProtDatabaseDetail> getAllDbTypesMap() {
-        return this.typeMap;
+        return this.uniProtKBDbTypeMap;
     }
 
     public UniProtDatabaseDetail getDbTypeByName(String typeName) {
-        UniProtDatabaseDetail type = typeMap.get(typeName);
+        UniProtDatabaseDetail type = uniProtKBDbTypeMap.get(typeName);
         if (type == null) {
             throw new IllegalArgumentException(
                     typeName + " does not exist in UniProt database type list");
@@ -50,7 +56,7 @@ public enum UniProtDatabaseTypes {
     }
 
     public List<UniProtDatabaseDetail> getDBTypesByCategory(UniProtDatabaseCategory dbCatergory) {
-        return this.types.stream()
+        return this.uniProtKBDbTypes.stream()
                 .filter(dbType -> dbType.getCategory() == dbCatergory)
                 .collect(Collectors.toList());
     }
@@ -71,6 +77,7 @@ public enum UniProtDatabaseTypes {
                     String displayName = item.getString("displayName");
                     String category = item.getString("category");
                     String uriLink = item.getString("uriLink");
+                    String uniProtDataType = item.optString("uniProtDataType", "uniProtKB");
 
                     String implicit = item.optString("implicit", "false");
                     boolean isImplicit = Boolean.parseBoolean(implicit);
@@ -104,11 +111,16 @@ public enum UniProtDatabaseTypes {
                                     isImplicit,
                                     linkedReason,
                                     idMappingName,
-                                    type);
-                    types.add(xdbType);
+                                    type,
+                                    uniProtDataType);
+                    if (Objects.equals(xdbType.getUniProtDataType(), "disease")) {
+                        diseaseDbTypes.add(xdbType);
+                    } else {
+                        uniProtKBDbTypes.add(xdbType);
+                    }
                 });
-        typeMap =
-                types.stream()
+        uniProtKBDbTypeMap =
+                uniProtKBDbTypes.stream()
                         .collect(Collectors.toMap(UniProtDatabaseDetail::getName, val -> val));
     }
 
