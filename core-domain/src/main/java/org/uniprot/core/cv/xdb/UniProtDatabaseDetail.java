@@ -88,9 +88,7 @@ public class UniProtDatabaseDetail implements Serializable {
         else this.attributes.add(DEFAULT_ATTRIBUTE);
         this.idMappingName = idMappingName;
         this.type = type;
-        if (Utils.notNullNotEmpty(uniProtDataType)) {
-            this.uniProtDataType = uniProtDataType;
-        }
+        this.uniProtDataType = uniProtDataType;
     }
 
     public String getName() {
