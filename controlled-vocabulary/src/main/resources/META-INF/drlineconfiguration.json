@@ -1967,5 +1967,26 @@
 				"xmlTag": "antibodies"
 			}
 		]
+	},
+	{
+		"name": "MedGen",
+		"displayName": "MedGen",
+		"category": "MISC",
+		"uniProtDataType": "disease",
+		"uriLink": "https://www.ncbi.nlm.nih.gov/medgen/%id"
+	},
+	{
+		"name": "MeSH",
+		"displayName": "MeSH",
+		"category": "MISC",
+		"uniProtDataType":  "disease",
+		"uriLink": "https://meshb.nlm.nih.gov/record/ui?ui=%id"
+	},
+	{
+		"name": "MIM",
+		"displayName": "MIM",
+		"category": "MISC",
+		"uniProtDataType":  "disease",
+		"uriLink": "https://www.omim.org/entry/%id"
 	}
 ]

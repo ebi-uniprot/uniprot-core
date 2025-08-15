@@ -95,6 +95,27 @@ class UniProtKBDatabaseDetailTest {
     }
 
     @Test
+    void testEqualWithUniProtDataTypeValue() {
+        UniProtDatabaseDetail uniProtKB0 = createUniProtDatabaseDetailWithUniProtDataType("uniProtKB");
+        UniProtDatabaseDetail uniProtKB1 = createUniProtDatabaseDetailWithUniProtDataType("uniProtKB");
+        assertEquals(uniProtKB0, uniProtKB1);
+    }
+
+    @Test
+    void testNotEqualWithUniProtDataTypeValue() {
+        UniProtDatabaseDetail uniProtKB = createUniProtDatabaseDetailWithUniProtDataType("uniProtKB");
+        UniProtDatabaseDetail disease = createUniProtDatabaseDetailWithUniProtDataType("disease");
+        assertNotEquals(uniProtKB, disease);
+    }
+
+    @Test
+    void testCreateWithUniProtDataTypeReturnsSameValue() {
+        String uniProtKBType = "uniProtKB";
+        UniProtDatabaseDetail uniProtKB = createUniProtDatabaseDetailWithUniProtDataType(uniProtKBType);
+        assertSame(uniProtKB.getUniProtDataType(), uniProtKBType);
+    }
+
+    @Test
     void needDefaultConstructorForJsonDeserialization() {
         UniProtDatabaseDetail obj = new UniProtDatabaseDetail();
         assertNotNull(obj);
@@ -139,6 +160,11 @@ class UniProtKBDatabaseDetailTest {
                     null,
                     this.idMappingName);
         }
+    }
+
+    private UniProtDatabaseDetail createUniProtDatabaseDetailWithUniProtDataType(String uniProtDatabaseDetail) {
+        return new UniProtDatabaseDetail(
+                name, displayName, category, uriLink, attributes, false, null, idMappingName, null, uniProtDatabaseDetail);
     }
 
     static UniProtDatabaseDetail createUniProtDatabaseDetail(
