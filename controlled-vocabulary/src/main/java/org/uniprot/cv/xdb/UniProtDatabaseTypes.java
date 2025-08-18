@@ -12,10 +12,7 @@ import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.uniprot.cv.common.CVSystemProperties.getDrDatabaseTypesLocation;
@@ -24,15 +21,17 @@ public enum UniProtDatabaseTypes {
     INSTANCE;
     private final String fileName = "META-INF/drlineconfiguration.json";
 
-    private List<UniProtDatabaseDetail> uniProtKBDbTypes = new ArrayList<>();
-    private List<UniProtDatabaseDetail> diseaseDbTypes = new ArrayList<>();
+    private final List<UniProtDatabaseDetail> uniProtKBDbTypes = new ArrayList<>();
+    private final List<UniProtDatabaseDetail> diseaseDbTypes = new ArrayList<>();
+    private final Map<String, List<UniProtDatabaseDetail>> databaseCollectionOperations = Map.of("UNIPROTKB", uniProtKBDbTypes,
+            "DISEASE", diseaseDbTypes);
     private Map<String, UniProtDatabaseDetail> uniProtKBDbTypeMap;
 
     UniProtDatabaseTypes() {
         init();
     }
 
-    public List<UniProtDatabaseDetail> getAllDbTypes() {
+    public List<UniProtDatabaseDetail> getUniProtKBDbTypes() {
         return uniProtKBDbTypes;
     }
 
@@ -40,7 +39,7 @@ public enum UniProtDatabaseTypes {
         return diseaseDbTypes;
     }
 
-    public Map<String, UniProtDatabaseDetail> getAllDbTypesMap() {
+    public Map<String, UniProtDatabaseDetail> getUniProtKBDbTypesMap() {
         return this.uniProtKBDbTypeMap;
     }
 
@@ -62,7 +61,7 @@ public enum UniProtDatabaseTypes {
     }
 
     public List<UniProtDatabaseDetail> getInternalDatabaseDetails() {
-        return UniProtDatabaseTypes.INSTANCE.getAllDbTypes().stream()
+        return UniProtDatabaseTypes.INSTANCE.getUniProtKBDbTypes().stream()
                 .filter(dbDetail -> "internal".equals(dbDetail.getType()))
                 .collect(Collectors.toList());
     }
@@ -77,7 +76,8 @@ public enum UniProtDatabaseTypes {
                     String displayName = item.getString("displayName");
                     String category = item.getString("category");
                     String uriLink = item.getString("uriLink");
-                    String uniProtDataType = item.optString("uniProtDataType", "uniProtKB");
+                    String uniProtDataTypeString = item.optString("uniProtDataTypes", "UNIPROTKB");
+                    List<String> uniProtDataTypes = Arrays.asList(uniProtDataTypeString.split(",", -1));
 
                     String implicit = item.optString("implicit", "false");
                     boolean isImplicit = Boolean.parseBoolean(implicit);
@@ -112,16 +112,19 @@ public enum UniProtDatabaseTypes {
                                     linkedReason,
                                     idMappingName,
                                     type,
-                                    uniProtDataType);
-                    if (Objects.equals(xdbType.getUniProtDataType(), "disease")) {
-                        diseaseDbTypes.add(xdbType);
-                    } else {
-                        uniProtKBDbTypes.add(xdbType);
-                    }
+                                    uniProtDataTypes);
+
+                    uniProtDataTypes.forEach(dt -> addToDbCollection(dt, xdbType));
                 });
         uniProtKBDbTypeMap =
                 uniProtKBDbTypes.stream()
                         .collect(Collectors.toMap(UniProtDatabaseDetail::getName, val -> val));
+    }
+
+    private void addToDbCollection(String dt, UniProtDatabaseDetail xdbType) {
+        if (databaseCollectionOperations.containsKey(dt)) {
+            databaseCollectionOperations.get(dt).add(xdbType);
+        }
     }
 
     String getSourceAsString() {
