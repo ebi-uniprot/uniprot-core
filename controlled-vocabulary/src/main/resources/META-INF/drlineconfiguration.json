@@ -1067,6 +1067,7 @@
 		"category": "ORG",
 		"uriLink": "https://www.omim.org/entry/%id",
         "idMappingName": "MIM_ID",
+		"uniProtDataTypes":  "DISEASE,UNIPROTKB",
 		"attributes": [
 			{
 				"name": "Type",
@@ -1967,5 +1968,19 @@
 				"xmlTag": "antibodies"
 			}
 		]
+	},
+	{
+		"name": "MedGen",
+		"displayName": "MedGen",
+		"category": "MISC",
+		"uniProtDataTypes":  "DISEASE",
+		"uriLink": "https://www.ncbi.nlm.nih.gov/medgen/%id"
+	},
+	{
+		"name": "MeSH",
+		"displayName": "MeSH",
+		"category": "MISC",
+		"uniProtDataTypes":  "DISEASE",
+		"uriLink": "https://meshb.nlm.nih.gov/record/ui?ui=%id"
 	}
 ]

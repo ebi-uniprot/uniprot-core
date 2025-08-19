@@ -95,6 +95,27 @@ class UniProtKBDatabaseDetailTest {
     }
 
     @Test
+    void testEqualWithUniProtDataTypeValue() {
+        UniProtDatabaseDetail uniProtKB0 = createUniProtDatabaseDetailWithUniProtDataType(List.of("uniProtKB"));
+        UniProtDatabaseDetail uniProtKB1 = createUniProtDatabaseDetailWithUniProtDataType(List.of("uniProtKB"));
+        assertEquals(uniProtKB0, uniProtKB1);
+    }
+
+    @Test
+    void testNotEqualWithUniProtDataTypeValue() {
+        UniProtDatabaseDetail uniProtKB = createUniProtDatabaseDetailWithUniProtDataType(List.of("uniProtKB"));
+        UniProtDatabaseDetail disease = createUniProtDatabaseDetailWithUniProtDataType(List.of("disease"));
+        assertNotEquals(uniProtKB, disease);
+    }
+
+    @Test
+    void testCreateWithUniProtDataTypeReturnsSameValue() {
+        List<String> uniProtKBTypes = List.of("uniProtKB");
+        UniProtDatabaseDetail uniProtKB = createUniProtDatabaseDetailWithUniProtDataType(uniProtKBTypes);
+        assertSame(uniProtKB.getUniProtDataTypes(), uniProtKBTypes);
+    }
+
+    @Test
     void needDefaultConstructorForJsonDeserialization() {
         UniProtDatabaseDetail obj = new UniProtDatabaseDetail();
         assertNotNull(obj);
@@ -139,6 +160,11 @@ class UniProtKBDatabaseDetailTest {
                     null,
                     this.idMappingName);
         }
+    }
+
+    private UniProtDatabaseDetail createUniProtDatabaseDetailWithUniProtDataType(List<String> uniProtDatabaseDetail) {
+        return new UniProtDatabaseDetail(
+                name, displayName, category, uriLink, attributes, false, null, idMappingName, null, uniProtDatabaseDetail);
     }
 
     static UniProtDatabaseDetail createUniProtDatabaseDetail(

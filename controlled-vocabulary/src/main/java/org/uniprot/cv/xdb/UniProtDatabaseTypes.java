@@ -12,9 +12,7 @@ import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.uniprot.cv.common.CVSystemProperties.getDrDatabaseTypesLocation;
@@ -23,23 +21,30 @@ public enum UniProtDatabaseTypes {
     INSTANCE;
     private final String fileName = "META-INF/drlineconfiguration.json";
 
-    private List<UniProtDatabaseDetail> types = new ArrayList<>();
-    private Map<String, UniProtDatabaseDetail> typeMap;
+    private final List<UniProtDatabaseDetail> uniProtKBDbTypes = new ArrayList<>();
+    private final List<UniProtDatabaseDetail> diseaseDbTypes = new ArrayList<>();
+    private final Map<String, List<UniProtDatabaseDetail>> databaseCollectionOperations = Map.of("UNIPROTKB", uniProtKBDbTypes,
+            "DISEASE", diseaseDbTypes);
+    private Map<String, UniProtDatabaseDetail> uniProtKBDbTypeMap;
 
     UniProtDatabaseTypes() {
         init();
     }
 
-    public List<UniProtDatabaseDetail> getAllDbTypes() {
-        return types;
+    public List<UniProtDatabaseDetail> getUniProtKBDbTypes() {
+        return uniProtKBDbTypes;
     }
 
-    public Map<String, UniProtDatabaseDetail> getAllDbTypesMap() {
-        return this.typeMap;
+    public List<UniProtDatabaseDetail> getDiseaseDbTypes() {
+        return diseaseDbTypes;
+    }
+
+    public Map<String, UniProtDatabaseDetail> getUniProtKBDbTypesMap() {
+        return this.uniProtKBDbTypeMap;
     }
 
     public UniProtDatabaseDetail getDbTypeByName(String typeName) {
-        UniProtDatabaseDetail type = typeMap.get(typeName);
+        UniProtDatabaseDetail type = uniProtKBDbTypeMap.get(typeName);
         if (type == null) {
             throw new IllegalArgumentException(
                     typeName + " does not exist in UniProt database type list");
@@ -50,13 +55,13 @@ public enum UniProtDatabaseTypes {
     }
 
     public List<UniProtDatabaseDetail> getDBTypesByCategory(UniProtDatabaseCategory dbCatergory) {
-        return this.types.stream()
+        return this.uniProtKBDbTypes.stream()
                 .filter(dbType -> dbType.getCategory() == dbCatergory)
                 .collect(Collectors.toList());
     }
 
     public List<UniProtDatabaseDetail> getInternalDatabaseDetails() {
-        return UniProtDatabaseTypes.INSTANCE.getAllDbTypes().stream()
+        return UniProtDatabaseTypes.INSTANCE.getUniProtKBDbTypes().stream()
                 .filter(dbDetail -> "internal".equals(dbDetail.getType()))
                 .collect(Collectors.toList());
     }
@@ -71,6 +76,8 @@ public enum UniProtDatabaseTypes {
                     String displayName = item.getString("displayName");
                     String category = item.getString("category");
                     String uriLink = item.getString("uriLink");
+                    String uniProtDataTypeString = item.optString("uniProtDataTypes", "UNIPROTKB");
+                    List<String> uniProtDataTypes = Arrays.asList(uniProtDataTypeString.split(",", -1));
 
                     String implicit = item.optString("implicit", "false");
                     boolean isImplicit = Boolean.parseBoolean(implicit);
@@ -104,12 +111,20 @@ public enum UniProtDatabaseTypes {
                                     isImplicit,
                                     linkedReason,
                                     idMappingName,
-                                    type);
-                    types.add(xdbType);
+                                    type,
+                                    uniProtDataTypes);
+
+                    uniProtDataTypes.forEach(dt -> addToDbCollection(dt, xdbType));
                 });
-        typeMap =
-                types.stream()
+        uniProtKBDbTypeMap =
+                uniProtKBDbTypes.stream()
                         .collect(Collectors.toMap(UniProtDatabaseDetail::getName, val -> val));
+    }
+
+    private void addToDbCollection(String dt, UniProtDatabaseDetail xdbType) {
+        if (databaseCollectionOperations.containsKey(dt)) {
+            databaseCollectionOperations.get(dt).add(xdbType);
+        }
     }
 
     String getSourceAsString() {
