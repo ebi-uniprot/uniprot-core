@@ -37,7 +37,7 @@ class UniProtDatabaseTypesPropertyLocationTest {
          */
         Class<?> goEvidences =
                 Class.forName("org.uniprot.cv.xdb.UniProtDatabaseTypes", true, new Reloader());
-        enumMethod = goEvidences.getDeclaredMethod("getAllDbTypes");
+        enumMethod = goEvidences.getDeclaredMethod("getUniProtKBDbTypes");
         enumInstance = goEvidences.getField("INSTANCE").get(null);
     }
 
