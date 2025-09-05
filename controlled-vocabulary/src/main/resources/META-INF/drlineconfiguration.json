@@ -1423,6 +1423,12 @@
 		"uriLink": "https://evolution.lichtargelab.org/cgi-bin/report_maker_ls/uniprotTraceServerResults.pl?identifier=%id"
 	},
 	{
+		"name": "Agora",
+		"displayName": "Agora",
+		"category": "MISC",
+		"uriLink": "https://agora.adknowledgeportal.org/genes/%id"
+	},
+	{
 		"name": "GeneWiki",
 		"displayName": "GeneWiki",
 		"category": "MISC",
