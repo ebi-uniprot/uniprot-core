@@ -1112,7 +1112,7 @@
 		"name": "PharmGKB",
 		"displayName": "PharmGKB",
 		"category": "ORG",
-		"uriLink": "https://www.pharmgkb.org/gene/%id",
+		"uriLink": "https://www.clinpgx.org/gene/%id",
         "idMappingName": "PHARMGKB_ID"
     },
 	{
