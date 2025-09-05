@@ -1426,7 +1426,12 @@
 		"name": "Agora",
 		"displayName": "Agora",
 		"category": "MISC",
-		"uriLink": "https://agora.adknowledgeportal.org/genes/%id"
+		"uriLink": "https://agora.adknowledgeportal.org/genes/%id",
+		"attributes": [
+			{	"name": "NominatedTarget",
+				"xmlTag":"nominated target"
+			}
+		]
 	},
 	{
 		"name": "GeneWiki",
