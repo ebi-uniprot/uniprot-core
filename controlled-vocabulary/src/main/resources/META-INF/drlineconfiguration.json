@@ -1112,7 +1112,7 @@
 		"name": "PharmGKB",
 		"displayName": "PharmGKB",
 		"category": "ORG",
-		"uriLink": "https://www.pharmgkb.org/gene/%id",
+		"uriLink": "https://www.clinpgx.org/gene/%id",
         "idMappingName": "PHARMGKB_ID"
     },
 	{
@@ -1421,6 +1421,17 @@
 		"displayName": "EvolutionaryTrace",
 		"category": "MISC",
 		"uriLink": "https://evolution.lichtargelab.org/cgi-bin/report_maker_ls/uniprotTraceServerResults.pl?identifier=%id"
+	},
+	{
+		"name": "Agora",
+		"displayName": "Agora",
+		"category": "MISC",
+		"uriLink": "https://agora.adknowledgeportal.org/genes/%id",
+		"attributes": [
+			{	"name": "NominatedTarget",
+				"xmlTag":"nominated target"
+			}
+		]
 	},
 	{
 		"name": "GeneWiki",
