@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.Sequence;
 import org.uniprot.core.uniprotkb.*;
 import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
@@ -16,6 +17,7 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.impl.EntryAuditBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.*;
@@ -218,6 +220,14 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtKBEntry> {
             }
         }
         return uniComments;
+    }
+
+    Sequence fromXmlForSequence(SequenceType xmlObj) {
+        return sequenceConverter.fromXml(xmlObj);
+    }
+
+    Organism fromXmlForOrganism(OrganismType xmlObj) {
+        return organismConverter.fromXml(xmlObj);
     }
 
     // Must process interaction comments separately

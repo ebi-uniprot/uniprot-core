@@ -5,6 +5,7 @@ import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.Entry;
+import org.uniprot.core.xml.jaxb.uniprot.Uniprot;
 
 import java.util.Map;
 import java.util.Objects;
@@ -50,5 +51,12 @@ public class GoogleUniProtEntryConverter extends UniProtEntryConverter {
                         .map(this::fromXml)
                         .collect(Collectors.toList()));
         return activeEntryBuilder.build();
+    }
+
+    public UniProtKBEntry updateUniProtEntry(Entry xmlEntry, UniProtKBEntry uniProtEntry) {
+        UniProtKBEntryBuilder uniProtEntryBuilder = UniProtKBEntryBuilder.from(uniProtEntry);
+        uniProtEntryBuilder.sequence(fromXmlForSequence(xmlEntry.getSequence()));
+        uniProtEntryBuilder.organism(fromXmlForOrganism(xmlEntry.getOrganism()));
+        return uniProtEntryBuilder.build();
     }
 }
