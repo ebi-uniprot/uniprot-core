@@ -44,4 +44,10 @@ class MethodTypeTest {
         MethodType type = MethodType.typeOf("FUNFAM");
         assertEquals(MethodType.FUNFAM, type);
     }
+
+    @Test
+    void testPIRSR() {
+        MethodType type = MethodType.typeOf("PIRSR");
+        assertEquals(MethodType.PIRSR, type);
+    }
 }
