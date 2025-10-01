@@ -981,16 +981,6 @@
 		"category": "ORG",
 		"uriLink": "https://alliancegenome.org/gene/%id"
 	},
-	
-	{
-		"name": "GenAtlas",
-		"displayName": "GenAtlas",
-		"category": "ORG",
-		"implicit": true,
-		"linkedReason": "DR:HGNC",
-		"uriLink": "http://genatlas.medecine.univ-paris5.fr/fiche.php?symbol=%GeneName"
-		
-	},
 	{
 		"name": "ClinGen",
 		"displayName": "ClinGen",
