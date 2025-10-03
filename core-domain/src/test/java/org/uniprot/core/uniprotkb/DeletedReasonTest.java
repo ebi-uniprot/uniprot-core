@@ -33,4 +33,9 @@ class DeletedReasonTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> DeletedReason.fromId("99"));
         assertEquals("The DeletedReason id '99' doesn't exist.", exception.getMessage());
     }
+
+    @Test
+    void canGetReferenceProteomeExclusion() {
+        assertEquals(DeletedReason.REFERENCE_PROTEOME_EXCLUSION, DeletedReason.fromId("16"));
+    }
 }
