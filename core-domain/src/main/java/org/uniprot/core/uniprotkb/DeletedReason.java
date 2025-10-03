@@ -19,7 +19,8 @@ public enum DeletedReason implements EnumDisplay {
     REDUNDANCY( "Redundant sequence", 3),
     PROTEOME_REDUNDANCY( "Redundant proteome", 13),
     PROTEOME_EXCLUSION( "Excluded proteome", 14),
-    OVERREPRESENTED( "Over-represented sequence", 15);
+    OVERREPRESENTED( "Over-represented sequence", 15),
+    REFERENCE_PROTEOME_EXCLUSION( "Not part of a reference proteome", 16);
 
     private final List<Integer> ids;
     private final String description;
