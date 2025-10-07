@@ -29,9 +29,8 @@ class DeletedReasonTest {
     }
 
     @Test
-    void canGetFromIdWithInValidIdThrowsException() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> DeletedReason.fromId("99"));
-        assertEquals("The DeletedReason id '99' doesn't exist.", exception.getMessage());
+    void canGetFromIdWithInValidIdReturnsUndefined() {
+        assertEquals(DeletedReason.UNDEFINED, DeletedReason.fromId("99"));
     }
 
     @Test
