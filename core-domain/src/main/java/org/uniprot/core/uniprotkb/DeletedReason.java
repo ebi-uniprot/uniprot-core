@@ -9,6 +9,7 @@ import java.util.List;
 public enum DeletedReason implements EnumDisplay {
 
     UNKNOWN( "", 0, 7, 9, 10, 12),
+    UNDEFINED( "Undefined", -1),
     SOURCE_DELETION_EMBL( "Deleted from sequence source (EMBL)", 1),
     SOURCE_DELETION_TAIR( "Deleted from sequence source (TAIR)", 4),
     SOURCE_DELETION_SGD( "Deleted from sequence source (SGD)", 5),
@@ -41,13 +42,9 @@ public enum DeletedReason implements EnumDisplay {
     }
 
     public static DeletedReason fromId(String id) {
-        try {
             return Arrays.stream(DeletedReason.values())
                     .filter(reason -> reason.getIds().contains(Integer.parseInt(id)))
                     .findFirst()
-                    .orElseThrow();
-        } catch (Exception e) {
-            throw new IllegalArgumentException("The DeletedReason id '" + id + "' doesn't exist.");
-        }
+                    .orElse(DeletedReason.UNDEFINED);
     }
 }
