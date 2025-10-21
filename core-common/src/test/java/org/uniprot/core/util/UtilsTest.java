@@ -299,6 +299,51 @@ class UtilsTest {
         }
 
         @Nested
+        class addOrIgnoreEmpty {
+            @Test
+            void addingNullValueInNullList_nullList() {
+                List<String> l = null;
+                Utils.addOrIgnoreEmpty(null, l);
+                assertNull(l);
+            }
+
+            @Test
+            void addingNotNullValueInNullList_NPE() {
+                List<String> l = null;
+                boolean listChanged = Utils.addOrIgnoreEmpty("test", l);
+                assertFalse(listChanged);
+            }
+
+            @Test
+            void nonNulValue() {
+                List<String> l = new ArrayList<>();
+                boolean listChanged = Utils.addOrIgnoreEmpty("abc", l);
+                assertTrue(listChanged);
+                assertNotNull(l);
+                assertEquals(1, l.size());
+                assertEquals("abc", l.get(0));
+            }
+
+            @Test
+            void nullValue() {
+                List<String> l = new ArrayList<>();
+                boolean listChanged = Utils.addOrIgnoreEmpty(null, l);
+                assertFalse(listChanged);
+                assertNotNull(l);
+                assertEquals(0, l.size());
+            }
+
+            @Test
+            void emptyValue() {
+                List<String> l = new ArrayList<>();
+                boolean listChanged = Utils.addOrIgnoreEmpty("", l);
+                assertFalse(listChanged);
+                assertNotNull(l);
+                assertEquals(0, l.size());
+            }
+        }
+
+        @Nested
         class emptyOrList {
             @Test
             void whenNull_returnsEmptyList() {

@@ -100,6 +100,20 @@ public class Utils {
     }
 
     /**
+     * Add value in list or ignore if value is empty or target list is null
+     *
+     * @param value value or null that you want to add in list
+     * @param target list to add value, should be modifiable
+     * @return true if collection changed
+     */
+    public static boolean addOrIgnoreEmpty(@Nullable String value, @Nullable Collection<String> target) {
+        if (notNull(target) && notNullNotEmpty(value)) {
+            return target.add(value);
+        }
+        return false;
+    }
+
+    /**
      * Converts list to unmodifiable list
      *
      * @param targetList can be null or any list
