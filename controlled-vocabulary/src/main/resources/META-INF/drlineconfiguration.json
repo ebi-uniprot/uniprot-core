@@ -1837,7 +1837,7 @@
 		"name": "eMIND",
 		"displayName": "eMIND",
 		"category": "MISC",
-		"uriLink": "https://research.bioinformatics.udel.edu/itextmine/integrate/doc/emind/medline/%id",
+		"uriLink": "https://research.bioinformatics.udel.edu/emind/%id",
 		"type": "internal"
 	},
 	{
