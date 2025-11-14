@@ -1,8 +1,5 @@
 package org.uniprot.core.uniprotkb.taxonomy.impl;
 
-import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.modifiableList;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +7,8 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
+
+import static org.uniprot.core.util.Utils.*;
 
 public abstract class AbstractOrganismNameBuilder<
                 B extends AbstractOrganismNameBuilder<B, T>, T extends OrganismName>
@@ -36,7 +35,7 @@ public abstract class AbstractOrganismNameBuilder<
     }
 
     public @Nonnull B synonymsAdd(String synonym) {
-        addOrIgnoreNull(synonym, this.synonyms);
+        addOrIgnoreEmpty(synonym, this.synonyms);
         return getThis();
     }
 
