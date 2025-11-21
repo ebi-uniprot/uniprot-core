@@ -1993,5 +1993,17 @@
 		"category": "MISC",
 		"uniProtDataTypes":  "DISEASE",
 		"uriLink": "https://meshb.nlm.nih.gov/record/ui?ui=%id"
+	},
+	{
+		"name": "CIViC",
+		"displayName": "CIViC",
+		"category": "ORG",
+		"uriLink": "https://civicdb.org/links/entrez_id/%id",
+		"attributes" : [
+			{
+				"name": "Number of evidences",
+				"xmlTag" : "evidences"
+			}
+		]
 	}
 ]
