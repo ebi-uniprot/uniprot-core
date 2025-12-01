@@ -1,17 +1,17 @@
 package org.uniprot.cv.xdb;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.cv.xdb.UniProtDatabaseCategory.*;
-import static org.uniprot.cv.common.CVSystemProperties.DR_DATABASE_TYPES_LOCATION;
-
-import java.util.List;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
 import org.uniprot.core.cv.xdb.UniProtDatabaseCategory;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.util.property.Property;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.cv.xdb.UniProtDatabaseCategory.*;
+import static org.uniprot.cv.common.CVSystemProperties.DR_DATABASE_TYPES_LOCATION;
 
 class UniProtKBDatabaseTypesTest {
 
@@ -360,6 +360,14 @@ class UniProtKBDatabaseTypesTest {
         assertEquals(197, diseaseDbTypes.size());
         List<String> dbNames = diseaseDbTypes.stream().map(UniProtDatabaseDetail::getName).toList();
         assertTrue(dbNames.containsAll(List.of("EMBL", "EMDB", "CARD")));
+    }
+
+    @Test
+    void testWithCatgeoryORG() {
+        List<UniProtDatabaseDetail> orDBTypes = UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(ORGANISM_SPECIFIC_DATABASES);
+        assertEquals(43, orDBTypes.size());
+        List<String> dbNames = orDBTypes.stream().map(UniProtDatabaseDetail::getName).toList();
+        assertTrue(dbNames.contains("ClinPGx"));
     }
 
     private void verifyGroupSize(List<UniProtDatabaseDetail> dbTypesByCategory, int size) {
