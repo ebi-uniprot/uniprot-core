@@ -17,6 +17,7 @@ import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+import org.uniprot.core.util.PairImpl;
 
 /**
  * @author jluo
@@ -162,8 +163,7 @@ class UniParcEntryValueMapperTest {
                         .propertiesSet(properties2)
                         .organism(taxonomy2)
                         .proteinName("some pname")
-                        .proteomeId("UP00000564")
-                        .component("chromosome 1")
+                        .proteomeIdComponentPairsAdd(new PairImpl<>("UP00000564", "chromosome 1"))
                         .build();
 
         return Arrays.asList(xref, xref2);

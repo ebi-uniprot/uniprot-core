@@ -47,7 +47,7 @@ public class UniParcProteomeFastaParser {
                 }
             } else {
                 sourceXrefs.put(xref.getId(), xref);
-                proteomeId = xref.getProteomeId();
+//                proteomeId = xref.getProteomeId();
                 if(xref.isActive()){
                     hasSourceActive = true;
                 }
@@ -92,7 +92,7 @@ public class UniParcProteomeFastaParser {
                 if (xref.getDatabase().isSource()) {
                     String source = xref.getDatabase().getName() + ":" + xref.getId();
                     addOrIgnoreNull(source, sourceIds);
-                    addOrIgnoreNull(xref.getComponent(), components);
+//                    addOrIgnoreNull(xref.getComponent(), components);
                 } else {
                     addOrIgnoreNull(xref.getId(), accessions);
                     if (notNullNotEmpty(xref.getProperties())) {

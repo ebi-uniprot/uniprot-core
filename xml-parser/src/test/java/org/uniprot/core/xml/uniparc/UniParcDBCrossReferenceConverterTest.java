@@ -13,6 +13,8 @@ import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+import org.uniprot.core.util.Pair;
+import org.uniprot.core.util.PairImpl;
 import org.uniprot.core.xml.XmlReaderException;
 import org.uniprot.core.xml.jaxb.uniparc.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniparc.PropertyType;
@@ -72,6 +74,7 @@ class UniParcDBCrossReferenceConverterTest {
         //		</dbReference>
 
         Organism taxonomy = new OrganismBuilder().taxonId(7227).build();
+        Pair<String, String> pair = new PairImpl<>("proteomeValue", "ComponentValue");
 
         UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder();
         builder.database(UniParcDatabase.TREMBL)
@@ -81,9 +84,8 @@ class UniParcDBCrossReferenceConverterTest {
                 .active(true)
                 .organism(taxonomy)
                 .proteinName("Gelsolin, isoform J")
-                .proteomeId("proteomeValue")
+                .proteomeIdComponentPairsAdd(pair)
                 .geneName("Gel")
-                .component("ComponentValue")
                 .ncbiGi("ncbiGiValue")
                 .chain("chainValue")
                 .propertiesAdd(PROPERTY_UNIPROTKB_ACCESSION, "P21802")

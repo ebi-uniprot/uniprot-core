@@ -13,6 +13,8 @@ import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+import org.uniprot.core.util.Pair;
+import org.uniprot.core.util.PairImpl;
 
 /**
  * @author sahmad
@@ -76,6 +78,7 @@ class UniParcEntryCrossRefValueMapperTest {
                 new OrganismBuilder().taxonId(9606).scientificName("Homo sapiens").build();
         List<Property> properties = new ArrayList<>();
         properties.add(new Property("prop1", "pvalue"));
+        Pair<String, String> proteomeIdComponent = new PairImpl<>("proteoemid", "component");
         UniParcCrossReference xref =
                 new UniParcCrossReferenceBuilder()
                         .versionI(3)
@@ -90,8 +93,7 @@ class UniParcEntryCrossRefValueMapperTest {
                         .proteinName("some pname")
                         .geneName("some gname")
                         .ncbiGi("random ncbi")
-                        .proteomeId("proteoemid")
-                        .component("component")
+                        .proteomeIdComponentPairsAdd(proteomeIdComponent)
                         .build();
         return xref;
     }

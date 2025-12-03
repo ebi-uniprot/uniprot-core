@@ -11,6 +11,7 @@ import org.uniprot.core.uniparc.*;
 import org.uniprot.core.uniparc.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+import org.uniprot.core.util.PairImpl;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -138,8 +139,7 @@ class UniParcFastaParserTest {
                         .propertiesSet(properties2)
                         .organism(taxonomy2)
                         .proteinName("some pname")
-                        .proteomeId("UP00000564")
-                        .component("chromosome 1")
+                        .proteomeIdComponentPairsAdd(new PairImpl<>("UP00000564", "chromosome 1"))
                         .build();
 
         return Arrays.asList(xref, xref2);

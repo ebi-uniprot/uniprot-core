@@ -18,6 +18,8 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.uniprot.core.util.Pair;
+import org.uniprot.core.util.PairImpl;
 
 /**
  * @author jluo
@@ -25,7 +27,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 class UniParcDbCrossReferenceTest {
     @Test
-    void test() {
+    void testJsonConversion() {
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730");
         Organism organism =
                 new OrganismBuilder()
@@ -36,6 +38,7 @@ class UniParcDbCrossReferenceTest {
                         .synonymsAdd("syn name")
                         .evidencesSet(evidences)
                         .build();
+        Pair<String, String> pair = new PairImpl<>("UPI", "ComponentValue");
 
         UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder();
         builder.database(UniParcDatabase.TREMBL)
@@ -47,8 +50,7 @@ class UniParcDbCrossReferenceTest {
                 .lastUpdated(LocalDate.of(2019, 5, 8))
                 .organism(organism)
                 .geneName("Gel")
-                .proteomeId("UPI")
-                .component("ComponentValue")
+                .proteomeIdComponentPairsAdd(pair)
                 .chain("chainValue")
                 .ncbiGi("ncbiGiValue")
                 .proteinName("proteinNameValue");

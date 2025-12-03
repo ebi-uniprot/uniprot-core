@@ -7,6 +7,7 @@ import org.uniprot.core.uniparc.*;
 import org.uniprot.core.uniparc.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+import org.uniprot.core.util.PairImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,8 +64,7 @@ public class UniParcFastaParserTestUtils {
                 .organism(organism)
                 .proteinName(proteinName)
                 .geneName(geneName)
-                .proteomeId(proteomeId)
-                .component(component)
+                .proteomeIdComponentPairsAdd(new PairImpl<>(proteomeId, component))
                 .propertiesAdd(property)
                 .build();
     }

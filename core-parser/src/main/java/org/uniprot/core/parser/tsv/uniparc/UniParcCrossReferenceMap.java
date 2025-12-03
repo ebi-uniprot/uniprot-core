@@ -3,6 +3,7 @@ package org.uniprot.core.parser.tsv.uniparc;
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
+import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.Utils;
 
 import java.time.LocalDate;
@@ -89,19 +90,23 @@ public class UniParcCrossReferenceMap implements NamedValueMap {
     private String getProteomes() {
         return uniParcCrossReferences.stream()
                 .map(this::getProteome)
-                .filter(Objects::nonNull)
+                .filter(Utils::notNullNotEmpty)
                 .collect(Collectors.joining(DELIMITER));
     }
 
     private String getProteome(UniParcCrossReference xref) {
-        String proteome = xref.getProteomeId();
-        if (Utils.notNullNotEmpty(proteome)) {
-            if (Utils.notNullNotEmpty(xref.getComponent())) {
-                proteome += ":" + xref.getComponent();
+        List<Pair<String, String>> proteomeComponentPairs = xref.getProteomeIdComponentPairs();
+        List<String> proteomeComponents = new ArrayList<>();
+        for (Pair<String, String> pair : proteomeComponentPairs) {
+            String proteome = pair.getKey();
+            if (Utils.notNullNotEmpty(proteome)) {
+                if (Utils.notNullNotEmpty(pair.getValue())) {
+                    proteome += ":" + pair.getValue();
+                }
+                proteomeComponents.add(proteome);
             }
-            return proteome;
         }
-        return null;
+        return String.join(DELIMITER2, proteomeComponents);
     }
 
     private String getUniProtKBAccessions() {

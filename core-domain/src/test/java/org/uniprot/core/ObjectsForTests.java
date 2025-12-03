@@ -47,6 +47,8 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
+import org.uniprot.core.util.Pair;
+import org.uniprot.core.util.PairImpl;
 
 public class ObjectsForTests {
     public static Reaction createReaction() {
@@ -241,6 +243,7 @@ public class ObjectsForTests {
     public static List<UniParcCrossReference> uniParcDBCrossReferences() {
         List<Property> properties = new ArrayList<>();
         properties.add(new Property("propertyOne", "some pname"));
+        Pair<String, String> proteomeIdComponent = new PairImpl<>("componentValue", "proteomeId");
         UniParcCrossReference xref =
                 new UniParcCrossReferenceBuilder()
                         .versionI(3)
@@ -252,16 +255,16 @@ public class ObjectsForTests {
                         .lastUpdated(LocalDate.of(2017, 2, 27))
                         .propertiesSet(properties)
                         .chain("chainValue")
-                        .component("componentValue")
+                        .proteomeIdComponentPairsSet(List.of(proteomeIdComponent))
                         .geneName("geneNameValue")
                         .ncbiGi("ncbiGiValue")
                         .proteinName("proteinNameValue")
-                        .proteomeId("proteomeId")
                         .organism(getCompleteOrganism())
                         .build();
 
         List<Property> properties2 = new ArrayList<>();
         properties.add(new Property("propertyTwo", "some pname"));
+        Pair<String, String> proteomeIdComponent2 = new PairImpl<>("componentValue2", "proteomeId2");
 
         UniParcCrossReference xref2 =
                 new UniParcCrossReferenceBuilder()
@@ -274,11 +277,10 @@ public class ObjectsForTests {
                         .lastUpdated(LocalDate.of(2017, 4, 23))
                         .propertiesSet(properties2)
                         .chain("chainValue")
-                        .component("componentValue")
+                        .proteomeIdComponentPairsSet(List.of(proteomeIdComponent2))
                         .geneName("geneNameValue")
                         .ncbiGi("ncbiGiValue")
                         .proteinName("proteinNameValue")
-                        .proteomeId("proteomeId")
                         .organism(getCompleteOrganism())
                         .build();
 

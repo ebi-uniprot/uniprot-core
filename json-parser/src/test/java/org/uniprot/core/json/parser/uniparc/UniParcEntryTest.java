@@ -15,6 +15,8 @@ import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+import org.uniprot.core.util.Pair;
+import org.uniprot.core.util.PairImpl;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -72,7 +74,7 @@ public class UniParcEntryTest {
                         .synonymsAdd("syn name")
                         .evidencesSet(evidences)
                         .build();
-
+        Pair<String, String> pair = new PairImpl<>("UPI", "ComponentValue");
         builder.uniParcId("UPI0000083A08")
                 .sequence(uniSeq)
                 .sequenceFeaturesSet(sfs)
@@ -87,8 +89,7 @@ public class UniParcEntryTest {
                                 .lastUpdated(LocalDate.of(2007, 11, 22))
                                 .organism(organism)
                                 .geneName("Gel")
-                                .proteomeId("UPI")
-                                .component("ComponentValue")
+                                .proteomeIdComponentPairsAdd(pair)
                                 .chain("chainValue")
                                 .ncbiGi("ncbiGiValue")
                                 .proteinName("proteinNameValue")
@@ -105,8 +106,7 @@ public class UniParcEntryTest {
                 .lastUpdated(LocalDate.of(2019, 5, 8))
                 .organism(organism)
                 .geneName("Gel")
-                .proteomeId("UPI")
-                .component("ComponentValue")
+                .proteomeIdComponentPairsAdd(pair)
                 .chain("chainValue")
                 .ncbiGi("ncbiGiValue")
                 .proteinName("proteinNameValue");

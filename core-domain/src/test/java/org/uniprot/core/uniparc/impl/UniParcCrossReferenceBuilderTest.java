@@ -12,6 +12,8 @@ import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+import org.uniprot.core.util.Pair;
+import org.uniprot.core.util.PairImpl;
 
 /**
  * @author jluo
@@ -104,19 +106,30 @@ class UniParcCrossReferenceBuilderTest {
     }
 
     @Test
-    void testProteomeId() {
+    void testProteomeIdComponentPairsSet() {
         String proteomeId = "proteomeId value";
+        String component = "component value";
+        List<Pair<String, String>> pairs = List.of(new PairImpl<>(proteomeId, component));
         UniParcCrossReference xref =
-                new UniParcCrossReferenceBuilder().proteomeId(proteomeId).build();
-        assertEquals(proteomeId, xref.getProteomeId());
+                new UniParcCrossReferenceBuilder().proteomeIdComponentPairsSet(pairs).build();
+        assertEquals(pairs, xref.getProteomeIdComponentPairs());
     }
 
     @Test
-    void testComponent() {
+    void testProteomeIdComponentPairsAdd() {
+        String proteomeId = "proteomeId value";
         String component = "component value";
-        UniParcCrossReference xref =
-                new UniParcCrossReferenceBuilder().component(component).build();
-        assertEquals(component, xref.getComponent());
+        List<Pair<String, String>> pairs = new ArrayList<>();
+        pairs.add(new PairImpl<>(proteomeId, component));
+        UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder().proteomeIdComponentPairsSet(pairs);
+        UniParcCrossReference xref = builder.build();
+        assertEquals(pairs, xref.getProteomeIdComponentPairs());
+        String proteomeId2 = "proteomeId value2";
+        String component2 = "component value2";
+        Pair<String, String> pair2 = new PairImpl<>(proteomeId2, component2);
+        builder.proteomeIdComponentPairsAdd(pair2);
+        xref = builder.build();
+        assertEquals(2, xref.getProteomeIdComponentPairs().size());
     }
 
     @Test

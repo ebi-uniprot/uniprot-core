@@ -1,14 +1,16 @@
 package org.uniprot.core.uniparc.impl;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Objects;
-
 import org.uniprot.core.Property;
 import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.util.Pair;
+
+import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * @author jluo
@@ -27,13 +29,12 @@ public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabas
     private final Organism organism;
     private final String chain;
     private final String ncbiGi;
-    private final String proteomeId;
-    private final String component;
+    private final List<Pair<String, String>> proteomeIdComponentPairs;
 
     UniParcCrossReferenceImpl() {
         this(
-                null, null, null, 0, null, false, null, null, null, null, null, null, null, null,
-                null);
+                null, null, null, 0, null, false, null,
+                null, null, null, null, null, null, Collections.emptyList());
     }
 
     UniParcCrossReferenceImpl(
@@ -50,8 +51,7 @@ public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabas
             Organism organism,
             String chain,
             String ncbiGi,
-            String proteomeId,
-            String component) {
+            List<Pair<String, String>> proteomeIdComponentPairs) {
         super(database, id, properties);
         this.versionI = versionI;
         this.version = version;
@@ -63,8 +63,7 @@ public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabas
         this.organism = organism;
         this.chain = chain;
         this.ncbiGi = ncbiGi;
-        this.proteomeId = proteomeId;
-        this.component = component;
+        this.proteomeIdComponentPairs = proteomeIdComponentPairs;
     }
 
     @Override
@@ -117,15 +116,10 @@ public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabas
         return ncbiGi;
     }
 
-    @Override
-    public String getProteomeId() {
-        return proteomeId;
-    }
-
-    @Override
-    public String getComponent() {
-        return component;
-    }
+   @Override
+   public List<Pair<String, String>> getProteomeIdComponentPairs() {
+        return proteomeIdComponentPairs;
+   }
 
     @Override
     public boolean equals(Object o) {
@@ -143,8 +137,7 @@ public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabas
                 && Objects.equals(getOrganism(), that.getOrganism())
                 && Objects.equals(getChain(), that.getChain())
                 && Objects.equals(getNcbiGi(), that.getNcbiGi())
-                && Objects.equals(getProteomeId(), that.getProteomeId())
-                && Objects.equals(getComponent(), that.getComponent());
+                && Objects.equals(getProteomeIdComponentPairs(), that.getProteomeIdComponentPairs());
     }
 
     @Override
@@ -161,7 +154,6 @@ public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabas
                 getOrganism(),
                 getChain(),
                 getNcbiGi(),
-                getProteomeId(),
-                getComponent());
+                getProteomeIdComponentPairs());
     }
 }
