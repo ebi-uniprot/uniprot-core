@@ -1612,7 +1612,7 @@
 		"name": "PIRSF",
 		"displayName": "PIRSF",
 		"category": "FMD",
-		"uriLink": "https://proteininformationresource.org/cgi-bin/ipcSF?id=%id",
+		"uriLink": "https://www.ebi.ac.uk/interpro/entry/pirsf/%id",
 		"attributes": [		
 			{	"name": "EntryName",
 				"xmlTag":"entry name"			
