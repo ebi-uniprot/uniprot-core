@@ -69,6 +69,7 @@ public class UniParcJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Organism.class, OrganismImpl.class);
         mod.addAbstractTypeMapping(Evidence.class, EvidenceImpl.class);
         mod.addAbstractTypeMapping(UniParcCrossReference.class, UniParcCrossReferenceImpl.class);
+        mod.addAbstractTypeMapping(ProteomeIdComponent.class, ProteomeIdComponentImpl.class);
 
         mod.addAbstractTypeMapping(Value.class, ValueImpl.class);
         mod.addAbstractTypeMapping(UniParcId.class, UniParcIdImpl.class);

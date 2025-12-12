@@ -24,4 +24,11 @@ public class ProteomeIdComponentBuilder implements Builder<ProteomeIdComponent> 
     public ProteomeIdComponent build() {
         return new ProteomeIdComponentImpl(proteomeId, component);
     }
+
+    public static @Nonnull ProteomeIdComponentBuilder from(@Nonnull ProteomeIdComponent instance) {
+        ProteomeIdComponentBuilder builder = new ProteomeIdComponentBuilder()
+                .proteomeId(instance.getProteomeId())
+                .component(instance.getComponent());
+        return builder;
+    }
 }
