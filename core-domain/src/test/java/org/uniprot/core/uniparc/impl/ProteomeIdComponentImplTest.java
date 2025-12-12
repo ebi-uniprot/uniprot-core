@@ -11,35 +11,41 @@ class ProteomeIdComponentImplTest {
     public static final String COMPONENT = "component";
 
     @Test
+    void needDefaultConstructor() {
+        ProteomeIdComponentImpl proteomeIdComponent = new ProteomeIdComponentImpl();
+        assertNotNull(proteomeIdComponent);
+    }
+
+    @Test
     void getProteomeId() {
-        ProteomeIdComponent proteomeIdComponent = new ProteomeIdComponentBuilder().proteomeId(PROTEOME_ID).component(COMPONENT).build();
+        ProteomeIdComponent proteomeIdComponent = new ProteomeIdComponentImpl(PROTEOME_ID, COMPONENT);
         assertSame(PROTEOME_ID, proteomeIdComponent.getProteomeId());
     }
 
     @Test
     void getComponent() {
-        ProteomeIdComponent proteomeIdComponent = new ProteomeIdComponentBuilder().proteomeId(PROTEOME_ID).component(COMPONENT).build();
+        ProteomeIdComponent proteomeIdComponent = new ProteomeIdComponentImpl(PROTEOME_ID, COMPONENT);
         assertSame(COMPONENT, proteomeIdComponent.getComponent());
     }
 
     @Test
     void testEquals() {
-        ProteomeIdComponent proteomeIdComponent0 = new ProteomeIdComponentBuilder().proteomeId(PROTEOME_ID).component(COMPONENT).build();
-        ProteomeIdComponent proteomeIdComponent1 = new ProteomeIdComponentBuilder().proteomeId(PROTEOME_ID).component(COMPONENT).build();
+        ProteomeIdComponent proteomeIdComponent0 = new ProteomeIdComponentImpl(PROTEOME_ID, COMPONENT);
+        ProteomeIdComponent proteomeIdComponent1 = new ProteomeIdComponentImpl(PROTEOME_ID, COMPONENT);
         assertEquals(proteomeIdComponent0, proteomeIdComponent1);
     }
 
     @Test
     void testEqualsFalse() {
-        ProteomeIdComponent proteomeIdComponent0 = new ProteomeIdComponentBuilder().proteomeId(PROTEOME_ID).component(COMPONENT).build();
-        ProteomeIdComponent proteomeIdComponent1 = new ProteomeIdComponentBuilder().proteomeId(PROTEOME_ID).component("diff").build();
+        ProteomeIdComponent proteomeIdComponent0 = new ProteomeIdComponentImpl(PROTEOME_ID, COMPONENT);
+        ProteomeIdComponent proteomeIdComponent1 = new ProteomeIdComponentImpl(PROTEOME_ID, "diff");
         assertNotEquals(proteomeIdComponent0, proteomeIdComponent1);
     }
 
     @Test
     void testHashCode() {
-        ProteomeIdComponent proteomeIdComponent0 = new ProteomeIdComponentBuilder().proteomeId(PROTEOME_ID).component(COMPONENT).build();
-        ProteomeIdComponent proteomeIdComponent1 = new ProteomeIdComponentBuilder().proteomeId(PROTEOME_ID).component(COMPONENT).build();
+        ProteomeIdComponent proteomeIdComponent0 = new ProteomeIdComponentImpl(PROTEOME_ID, COMPONENT);
+        ProteomeIdComponent proteomeIdComponent1 = new ProteomeIdComponentImpl(PROTEOME_ID, COMPONENT);
         assertEquals(proteomeIdComponent0, proteomeIdComponent1);
         assertEquals(proteomeIdComponent0.hashCode(), proteomeIdComponent1.hashCode());
     }
