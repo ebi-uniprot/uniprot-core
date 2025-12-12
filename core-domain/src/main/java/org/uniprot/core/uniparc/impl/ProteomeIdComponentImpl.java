@@ -10,7 +10,7 @@ public class ProteomeIdComponentImpl implements ProteomeIdComponent {
     private final String component;
 
     //for the deserializer
-    ProteomeIdComponentImpl() {
+    public ProteomeIdComponentImpl() {
         this(null, null);
     }
 
