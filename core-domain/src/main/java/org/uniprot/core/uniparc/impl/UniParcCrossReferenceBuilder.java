@@ -1,10 +1,10 @@
 package org.uniprot.core.uniparc.impl;
 
 import org.uniprot.core.impl.AbstractCrossReferenceBuilder;
+import org.uniprot.core.uniparc.ProteomeIdComponent;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
-import org.uniprot.core.util.Pair;
 
 import javax.annotation.Nonnull;
 import java.time.LocalDate;
@@ -20,7 +20,7 @@ import static org.uniprot.core.util.Utils.modifiableList;
  */
 public class UniParcCrossReferenceBuilder
         extends AbstractCrossReferenceBuilder<
-                UniParcCrossReferenceBuilder, UniParcDatabase, UniParcCrossReference> {
+        UniParcCrossReferenceBuilder, UniParcDatabase, UniParcCrossReference> {
     private int versionI;
     private Integer version;
     private boolean active;
@@ -31,7 +31,7 @@ public class UniParcCrossReferenceBuilder
     private Organism organism;
     private String chain;
     private String ncbiGi;
-    private List<Pair<String, String>> proteomeIdComponentPairs = new ArrayList<>();
+    private List<ProteomeIdComponent> proteomeIdComponents = new ArrayList<>();
 
     @Override
     public @Nonnull UniParcCrossReference build() {
@@ -49,7 +49,7 @@ public class UniParcCrossReferenceBuilder
                 organism,
                 chain,
                 ncbiGi,
-                proteomeIdComponentPairs);
+                proteomeIdComponents);
     }
 
     public @Nonnull UniParcCrossReferenceBuilder versionI(int versionI) {
@@ -102,13 +102,13 @@ public class UniParcCrossReferenceBuilder
         return this;
     }
 
-    public @Nonnull UniParcCrossReferenceBuilder proteomeIdComponentPairsSet(List<Pair<String, String>> proteomeIdComponentPairs) {
-        this.proteomeIdComponentPairs = modifiableList(proteomeIdComponentPairs);
+    public @Nonnull UniParcCrossReferenceBuilder proteomeIdComponentsSet(List<ProteomeIdComponent> proteomeIdComponents) {
+        this.proteomeIdComponents = modifiableList(proteomeIdComponents);
         return this;
     }
 
-    public @Nonnull UniParcCrossReferenceBuilder proteomeIdComponentPairsAdd(Pair<String, String> proteomeIdComponentPair) {
-        addOrIgnoreNull(proteomeIdComponentPair, this.proteomeIdComponentPairs);
+    public @Nonnull UniParcCrossReferenceBuilder proteomeIdComponentsAdd(ProteomeIdComponent proteomeIdComponent) {
+        addOrIgnoreNull(proteomeIdComponent, this.proteomeIdComponents);
         return this;
     }
 
@@ -126,7 +126,7 @@ public class UniParcCrossReferenceBuilder
                 .organism(instance.getOrganism())
                 .chain(instance.getChain())
                 .ncbiGi(instance.getNcbiGi())
-                .proteomeIdComponentPairsSet(instance.getProteomeIdComponentPairs());
+                .proteomeIdComponentsSet(instance.getProteomeIdComponents());
     }
 
     @Override

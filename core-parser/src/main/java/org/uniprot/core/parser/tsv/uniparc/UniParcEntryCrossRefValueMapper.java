@@ -1,14 +1,14 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
+import org.uniprot.core.parser.tsv.EntityValueMapper;
+import org.uniprot.core.uniparc.ProteomeIdComponent;
+import org.uniprot.core.uniparc.UniParcCrossReference;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.util.Utils;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
-
-import org.uniprot.core.parser.tsv.EntityValueMapper;
-import org.uniprot.core.uniparc.UniParcCrossReference;
-import org.uniprot.core.uniprotkb.taxonomy.Organism;
-import org.uniprot.core.util.Pair;
-import org.uniprot.core.util.Utils;
 
 /**
  * @author sahmad
@@ -87,13 +87,13 @@ public class UniParcEntryCrossRefValueMapper implements EntityValueMapper<UniPar
     }
 
     private String getProteome(UniParcCrossReference entity) {
-        List<Pair<String, String>> proteomeComponentPairs = entity.getProteomeIdComponentPairs();
+        List<ProteomeIdComponent> proteomeIdComponents = entity.getProteomeIdComponents();
         List<String> proteomeComponents = new ArrayList<>();
-        for (Pair<String, String> pair : proteomeComponentPairs) {
-            String proteome = pair.getKey();
+        for (ProteomeIdComponent proteomeIdComponent : proteomeIdComponents) {
+            String proteome = proteomeIdComponent.getProteomeId();
             if (Utils.notNullNotEmpty(proteome)) {
-                if (Utils.notNullNotEmpty(pair.getValue())) {
-                    proteome += ":" + pair.getValue();
+                if (Utils.notNullNotEmpty(proteomeIdComponent.getComponent())) {
+                    proteome += ":" + proteomeIdComponent.getComponent();
                 }
                 proteomeComponents.add(proteome);
             }

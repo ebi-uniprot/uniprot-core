@@ -1,22 +1,19 @@
 package org.uniprot.core.xml.uniparc;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.Sequence;
+import org.uniprot.core.impl.SequenceBuilder;
+import org.uniprot.core.uniparc.*;
+import org.uniprot.core.uniparc.impl.*;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+import org.uniprot.core.xml.jaxb.uniparc.Entry;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.Sequence;
-import org.uniprot.core.impl.SequenceBuilder;
-import org.uniprot.core.uniparc.*;
-import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.uniparc.impl.*;
-import org.uniprot.core.uniprotkb.taxonomy.Organism;
-import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
-import org.uniprot.core.util.Pair;
-import org.uniprot.core.util.PairImpl;
-import org.uniprot.core.xml.jaxb.uniparc.Entry;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author jluo
@@ -95,7 +92,7 @@ class UniParcEntryConverterTest {
         builder.uniParcCrossReferencesAdd(xrefBuilder.build());
 
         Organism taxonomy2 = new OrganismBuilder().taxonId(7227).build();
-        Pair<String, String> pair = new PairImpl<>("UP00000564", "chromosome 1");
+        ProteomeIdComponent proteomeIdComponent = new ProteomeIdComponentBuilder().proteomeId("UP00000564").component( "chromosome 1").build();
 
         // id="NC_004354_874_0" version_i="5" active="Y" created="2007-04-27" last="2007-04-27">
         UniParcCrossReferenceBuilder xrefBuilder2 = new UniParcCrossReferenceBuilder();
@@ -108,7 +105,7 @@ class UniParcEntryConverterTest {
                 .lastUpdated(LocalDate.of(2007, 4, 27))
                 .organism(taxonomy2)
                 .proteinName("some pname")
-                .proteomeIdComponentPairsAdd(pair);
+                .proteomeIdComponentsAdd(proteomeIdComponent);
         builder.uniParcCrossReferencesAdd(xrefBuilder2.build());
         return builder.build();
     }

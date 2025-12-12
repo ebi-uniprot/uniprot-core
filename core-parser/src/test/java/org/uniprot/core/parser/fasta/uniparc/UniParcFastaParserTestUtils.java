@@ -3,11 +3,12 @@ package org.uniprot.core.parser.fasta.uniparc;
 import org.uniprot.core.Property;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
-import org.uniprot.core.uniparc.*;
+import org.uniprot.core.uniparc.UniParcCrossReference;
+import org.uniprot.core.uniparc.UniParcDatabase;
+import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniparc.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
-import org.uniprot.core.util.PairImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +65,7 @@ public class UniParcFastaParserTestUtils {
                 .organism(organism)
                 .proteinName(proteinName)
                 .geneName(geneName)
-                .proteomeIdComponentPairsAdd(new PairImpl<>(proteomeId, component))
+                .proteomeIdComponentsAdd(new ProteomeIdComponentBuilder().proteomeId(proteomeId).component(component).build())
                 .propertiesAdd(property)
                 .build();
     }

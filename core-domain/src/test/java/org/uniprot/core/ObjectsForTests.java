@@ -1,14 +1,5 @@
 package org.uniprot.core;
 
-import static java.util.Arrays.asList;
-import static java.util.Collections.emptyList;
-import static java.util.Collections.singletonList;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.impl.AbstractCitationBuilder;
@@ -27,10 +18,7 @@ import org.uniprot.core.proteome.impl.*;
 import org.uniprot.core.taxonomy.*;
 import org.uniprot.core.taxonomy.impl.*;
 import org.uniprot.core.uniparc.*;
-import org.uniprot.core.uniparc.impl.InterProGroupBuilder;
-import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
-import org.uniprot.core.uniparc.impl.SequenceFeatureLocationBuilder;
-import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
+import org.uniprot.core.uniparc.impl.*;
 import org.uniprot.core.uniprotkb.comment.*;
 import org.uniprot.core.uniprotkb.comment.impl.*;
 import org.uniprot.core.uniprotkb.description.EC;
@@ -47,8 +35,15 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
-import org.uniprot.core.util.Pair;
-import org.uniprot.core.util.PairImpl;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static java.util.Arrays.asList;
+import static java.util.Collections.emptyList;
+import static java.util.Collections.singletonList;
 
 public class ObjectsForTests {
     public static Reaction createReaction() {
@@ -243,7 +238,7 @@ public class ObjectsForTests {
     public static List<UniParcCrossReference> uniParcDBCrossReferences() {
         List<Property> properties = new ArrayList<>();
         properties.add(new Property("propertyOne", "some pname"));
-        Pair<String, String> proteomeIdComponent = new PairImpl<>("componentValue", "proteomeId");
+        ProteomeIdComponent proteomeIdComponent = new ProteomeIdComponentBuilder().proteomeId("componentValue").component("proteomeId").build();
         UniParcCrossReference xref =
                 new UniParcCrossReferenceBuilder()
                         .versionI(3)
@@ -255,7 +250,7 @@ public class ObjectsForTests {
                         .lastUpdated(LocalDate.of(2017, 2, 27))
                         .propertiesSet(properties)
                         .chain("chainValue")
-                        .proteomeIdComponentPairsSet(List.of(proteomeIdComponent))
+                        .proteomeIdComponentsSet(List.of(proteomeIdComponent))
                         .geneName("geneNameValue")
                         .ncbiGi("ncbiGiValue")
                         .proteinName("proteinNameValue")
@@ -264,7 +259,7 @@ public class ObjectsForTests {
 
         List<Property> properties2 = new ArrayList<>();
         properties.add(new Property("propertyTwo", "some pname"));
-        Pair<String, String> proteomeIdComponent2 = new PairImpl<>("componentValue2", "proteomeId2");
+        ProteomeIdComponent proteomeIdComponent2 = new ProteomeIdComponentBuilder().component("componentValue2").proteomeId("proteomeId2").build();
 
         UniParcCrossReference xref2 =
                 new UniParcCrossReferenceBuilder()
@@ -277,7 +272,7 @@ public class ObjectsForTests {
                         .lastUpdated(LocalDate.of(2017, 4, 23))
                         .propertiesSet(properties2)
                         .chain("chainValue")
-                        .proteomeIdComponentPairsSet(List.of(proteomeIdComponent2))
+                        .proteomeIdComponentsSet(List.of(proteomeIdComponent2))
                         .geneName("geneNameValue")
                         .ncbiGi("ncbiGiValue")
                         .proteinName("proteinNameValue")

@@ -1,25 +1,25 @@
 package org.uniprot.core.json.parser.uniparc;
 
-import static org.junit.jupiter.api.Assertions.fail;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
+import org.uniprot.core.uniparc.ProteomeIdComponent;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
+import org.uniprot.core.uniparc.impl.ProteomeIdComponentBuilder;
+import org.uniprot.core.uniparc.impl.ProteomeIdComponentImpl;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.uniprot.core.util.Pair;
-import org.uniprot.core.util.PairImpl;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * @author jluo
@@ -38,7 +38,7 @@ class UniParcDbCrossReferenceTest {
                         .synonymsAdd("syn name")
                         .evidencesSet(evidences)
                         .build();
-        Pair<String, String> pair = new PairImpl<>("UPI", "ComponentValue");
+        ProteomeIdComponent proteomeIdComponent = new ProteomeIdComponentBuilder().proteomeId("UPI").component("ComponentValue").build();
 
         UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder();
         builder.database(UniParcDatabase.TREMBL)
@@ -50,7 +50,7 @@ class UniParcDbCrossReferenceTest {
                 .lastUpdated(LocalDate.of(2019, 5, 8))
                 .organism(organism)
                 .geneName("Gel")
-                .proteomeIdComponentPairsAdd(pair)
+                .proteomeIdComponentsAdd(proteomeIdComponent)
                 .chain("chainValue")
                 .ncbiGi("ncbiGiValue")
                 .proteinName("proteinNameValue");
