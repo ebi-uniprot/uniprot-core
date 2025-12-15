@@ -38,6 +38,6 @@ public interface UniParcCrossReference extends CrossReference<UniParcDatabase> {
 
     String getNcbiGi();
 
-    List<ProteomeIdComponent> getProteomeIdComponents();
+    List<Proteome> getProteomes();
 
 }

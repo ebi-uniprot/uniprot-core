@@ -69,7 +69,7 @@ public class UniParcEntryTest {
                         .synonymsAdd("syn name")
                         .evidencesSet(evidences)
                         .build();
-        ProteomeIdComponent proteomeIdComponent = new ProteomeIdComponentBuilder().proteomeId("UPI").component( "ComponentValue").build();
+        Proteome proteomeIdComponent = new ProteomeBuilder().id("UPI").component( "ComponentValue").build();
         builder.uniParcId("UPI0000083A08")
                 .sequence(uniSeq)
                 .sequenceFeaturesSet(sfs)
@@ -84,7 +84,7 @@ public class UniParcEntryTest {
                                 .lastUpdated(LocalDate.of(2007, 11, 22))
                                 .organism(organism)
                                 .geneName("Gel")
-                                .proteomeIdComponentsAdd(proteomeIdComponent)
+                                .proteomesAdd(proteomeIdComponent)
                                 .chain("chainValue")
                                 .ncbiGi("ncbiGiValue")
                                 .proteinName("proteinNameValue")
@@ -101,7 +101,7 @@ public class UniParcEntryTest {
                 .lastUpdated(LocalDate.of(2019, 5, 8))
                 .organism(organism)
                 .geneName("Gel")
-                .proteomeIdComponentsAdd(proteomeIdComponent)
+                .proteomesAdd(proteomeIdComponent)
                 .chain("chainValue")
                 .ncbiGi("ncbiGiValue")
                 .proteinName("proteinNameValue");

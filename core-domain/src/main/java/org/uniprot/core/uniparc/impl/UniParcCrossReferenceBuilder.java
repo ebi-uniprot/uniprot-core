@@ -1,7 +1,7 @@
 package org.uniprot.core.uniparc.impl;
 
 import org.uniprot.core.impl.AbstractCrossReferenceBuilder;
-import org.uniprot.core.uniparc.ProteomeIdComponent;
+import org.uniprot.core.uniparc.Proteome;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
@@ -31,7 +31,7 @@ public class UniParcCrossReferenceBuilder
     private Organism organism;
     private String chain;
     private String ncbiGi;
-    private List<ProteomeIdComponent> proteomeIdComponents = new ArrayList<>();
+    private List<Proteome> proteomes = new ArrayList<>();
 
     @Override
     public @Nonnull UniParcCrossReference build() {
@@ -49,7 +49,7 @@ public class UniParcCrossReferenceBuilder
                 organism,
                 chain,
                 ncbiGi,
-                proteomeIdComponents);
+                proteomes);
     }
 
     public @Nonnull UniParcCrossReferenceBuilder versionI(int versionI) {
@@ -102,13 +102,13 @@ public class UniParcCrossReferenceBuilder
         return this;
     }
 
-    public @Nonnull UniParcCrossReferenceBuilder proteomeIdComponentsSet(List<ProteomeIdComponent> proteomeIdComponents) {
-        this.proteomeIdComponents = modifiableList(proteomeIdComponents);
+    public @Nonnull UniParcCrossReferenceBuilder proteomesSet(List<Proteome> proteomes) {
+        this.proteomes = modifiableList(proteomes);
         return this;
     }
 
-    public @Nonnull UniParcCrossReferenceBuilder proteomeIdComponentsAdd(ProteomeIdComponent proteomeIdComponent) {
-        addOrIgnoreNull(proteomeIdComponent, this.proteomeIdComponents);
+    public @Nonnull UniParcCrossReferenceBuilder proteomesAdd(Proteome proteome) {
+        addOrIgnoreNull(proteome, this.proteomes);
         return this;
     }
 
@@ -126,7 +126,7 @@ public class UniParcCrossReferenceBuilder
                 .organism(instance.getOrganism())
                 .chain(instance.getChain())
                 .ncbiGi(instance.getNcbiGi())
-                .proteomeIdComponentsSet(instance.getProteomeIdComponents());
+                .proteomesSet(instance.getProteomes());
     }
 
     @Override

@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.uniparc.impl.ProteomeIdComponentBuilder;
-import org.uniprot.core.uniparc.impl.ProteomeIdComponentImpl;
+import org.uniprot.core.uniparc.impl.ProteomeBuilder;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 
 import java.time.LocalDate;
@@ -142,7 +141,7 @@ class UniParcCrossReferenceMapTest {
                         .active(false)
                         .propertiesSet(properties2)
                         .proteinName("some pname2")
-                        .proteomeIdComponentsAdd(new ProteomeIdComponentBuilder().proteomeId("UP00000564").component("chromosome 1").build())
+                        .proteomesAdd(new ProteomeBuilder().id("UP00000564").component("chromosome 1").build())
                         .build();
 
         return List.of(xref, xref2);

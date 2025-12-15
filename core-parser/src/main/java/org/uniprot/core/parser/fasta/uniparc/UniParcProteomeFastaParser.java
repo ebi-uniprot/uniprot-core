@@ -47,9 +47,9 @@ public class UniParcProteomeFastaParser {
                 }
             } else {
                 sourceXrefs.put(xref.getId(), xref);
-                if(Utils.notNullNotEmpty(xref.getProteomeIdComponents())) {
-                    int size = xref.getProteomeIdComponents().size();
-                    proteomeId = xref.getProteomeIdComponents().get(size-1).getProteomeId();
+                if(Utils.notNullNotEmpty(xref.getProteomes())) {
+                    int size = xref.getProteomes().size();
+                    proteomeId = xref.getProteomes().get(size-1).getId();
                 }
                 if(xref.isActive()){
                     hasSourceActive = true;
@@ -95,7 +95,7 @@ public class UniParcProteomeFastaParser {
                 if (xref.getDatabase().isSource()) {
                     String source = xref.getDatabase().getName() + ":" + xref.getId();
                     addOrIgnoreNull(source, sourceIds);
-                    xref.getProteomeIdComponents().stream()
+                    xref.getProteomes().stream()
                             .forEach(pc -> addOrIgnoreNull(pc.getComponent(), components));
                 } else {
                     addOrIgnoreNull(xref.getId(), accessions);

@@ -1,6 +1,6 @@
 package org.uniprot.core.xml.uniparc;
 
-import org.uniprot.core.uniparc.ProteomeIdComponent;
+import org.uniprot.core.uniparc.Proteome;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
@@ -77,8 +77,8 @@ public class UniParcDBCrossReferenceConverter
         if (Utils.notNullNotEmpty(uniObj.getNcbiGi())) {
             properties.add(createProperty(PROPERTY_NCBI_GI, uniObj.getNcbiGi()));
         }
-        if (Utils.notNullNotEmpty(uniObj.getProteomeIdComponents())) {
-            for (ProteomeIdComponent proteomeIdComponent : uniObj.getProteomeIdComponents()) {
+        if (Utils.notNullNotEmpty(uniObj.getProteomes())) {
+            for (Proteome proteomeIdComponent : uniObj.getProteomes()) {
                 properties.add(createProperty(PROPERTY_PROTEOMEID_COMPONENT, proteomeIdComponent));
             }
 
@@ -107,10 +107,10 @@ public class UniParcDBCrossReferenceConverter
         return xmlObj;
     }
 
-    private PropertyType createProperty(String key, ProteomeIdComponent proteomeIdComponent) {
+    private PropertyType createProperty(String key, Proteome proteomeIdComponent) {
         PropertyType xmlObj = xmlFactory.createPropertyType();
         xmlObj.setType(key);
-        xmlObj.setValue(proteomeIdComponent.getProteomeId() + ":" + proteomeIdComponent.getComponent());
+        xmlObj.setValue(proteomeIdComponent.getId() + ":" + proteomeIdComponent.getComponent());
         return xmlObj;
     }
 }

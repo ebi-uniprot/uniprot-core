@@ -1,7 +1,7 @@
 package org.uniprot.core.json.parser.uniparc;
 
-import java.time.LocalDate;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Database;
 import org.uniprot.core.Sequence;
@@ -15,14 +15,12 @@ import org.uniprot.core.json.parser.deserializer.LocalDateDeserializer;
 import org.uniprot.core.json.parser.serializer.LocalDateSerializer;
 import org.uniprot.core.uniparc.*;
 import org.uniprot.core.uniparc.impl.*;
-import org.uniprot.core.uniparc.impl.UniParcCrossReferenceImpl;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceImpl;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismImpl;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
+import java.time.LocalDate;
 
 /**
  * @author jluo
@@ -69,7 +67,7 @@ public class UniParcJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Organism.class, OrganismImpl.class);
         mod.addAbstractTypeMapping(Evidence.class, EvidenceImpl.class);
         mod.addAbstractTypeMapping(UniParcCrossReference.class, UniParcCrossReferenceImpl.class);
-        mod.addAbstractTypeMapping(ProteomeIdComponent.class, ProteomeIdComponentImpl.class);
+        mod.addAbstractTypeMapping(Proteome.class, ProteomeImpl.class);
 
         mod.addAbstractTypeMapping(Value.class, ValueImpl.class);
         mod.addAbstractTypeMapping(UniParcId.class, UniParcIdImpl.class);

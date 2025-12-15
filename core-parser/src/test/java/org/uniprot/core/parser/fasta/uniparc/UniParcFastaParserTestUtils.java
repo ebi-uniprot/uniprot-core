@@ -6,7 +6,10 @@ import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.UniParcEntry;
-import org.uniprot.core.uniparc.impl.*;
+import org.uniprot.core.uniparc.impl.ProteomeBuilder;
+import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
+import org.uniprot.core.uniparc.impl.UniParcEntryBuilder;
+import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
@@ -65,7 +68,7 @@ public class UniParcFastaParserTestUtils {
                 .organism(organism)
                 .proteinName(proteinName)
                 .geneName(geneName)
-                .proteomeIdComponentsAdd(new ProteomeIdComponentBuilder().proteomeId(proteomeId).component(component).build())
+                .proteomesAdd(new ProteomeBuilder().id(proteomeId).component(component).build())
                 .propertiesAdd(property)
                 .build();
     }

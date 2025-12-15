@@ -1,11 +1,11 @@
 package org.uniprot.core.xml.dbreference;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniparc.ProteomeIdComponent;
+import org.uniprot.core.uniparc.Proteome;
+
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.uniparc.impl.ProteomeIdComponentBuilder;
-import org.uniprot.core.uniparc.impl.ProteomeIdComponentImpl;
+import org.uniprot.core.uniparc.impl.ProteomeBuilder;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
@@ -22,7 +22,7 @@ class UniParcCrossReferenceConverterTest {
     void testComplete() {
         Organism taxonomy = new OrganismBuilder().taxonId(7227).build();
         UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder();
-        ProteomeIdComponent proteomeIdComponent = new ProteomeIdComponentBuilder().proteomeId("proteomeValue").component("ComponentValue").build();
+        Proteome proteomeIdComponent = new ProteomeBuilder().id("proteomeValue").component("ComponentValue").build();
         builder.database(UniParcDatabase.TREMBL)
                 .id("A0A0C4DHG2-PB")
                 .versionI(1)
@@ -33,7 +33,7 @@ class UniParcCrossReferenceConverterTest {
                 .geneName("Gel")
                 .ncbiGi("ncbiGiValue")
                 .chain("chainValue")
-                .proteomeIdComponentsAdd(proteomeIdComponent)
+                .proteomesAdd(proteomeIdComponent)
                 .propertiesAdd(PROPERTY_UNIPROTKB_ACCESSION, "P21802")
                 .created(LocalDate.of(2015, 4, 1))
                 .lastUpdated(LocalDate.of(2019, 5, 8));

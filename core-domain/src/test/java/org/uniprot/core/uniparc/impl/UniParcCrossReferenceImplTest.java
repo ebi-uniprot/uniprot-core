@@ -35,7 +35,7 @@ class UniParcCrossReferenceImplTest {
                         new OrganismBuilder().taxonId(10L).scientificName("sName").build(),
                         "chain",
                         "ncbiGi",
-                        List.of(new ProteomeIdComponentBuilder().proteomeId("proteomeId").component("component").build()));
+                        List.of(new ProteomeBuilder().id("proteomeId").component("component").build()));
         UniParcCrossReference obj = UniParcCrossReferenceBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());

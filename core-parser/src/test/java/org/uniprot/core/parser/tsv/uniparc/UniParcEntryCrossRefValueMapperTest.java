@@ -3,11 +3,10 @@ package org.uniprot.core.parser.tsv.uniparc;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
-import org.uniprot.core.uniparc.ProteomeIdComponent;
+import org.uniprot.core.uniparc.Proteome;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.uniparc.impl.ProteomeIdComponentBuilder;
-import org.uniprot.core.uniparc.impl.ProteomeIdComponentImpl;
+import org.uniprot.core.uniparc.impl.ProteomeBuilder;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
@@ -79,7 +78,7 @@ class UniParcEntryCrossRefValueMapperTest {
                 new OrganismBuilder().taxonId(9606).scientificName("Homo sapiens").build();
         List<Property> properties = new ArrayList<>();
         properties.add(new Property("prop1", "pvalue"));
-        ProteomeIdComponent proteomeIdComponent = new ProteomeIdComponentBuilder().proteomeId("proteoemid").component("component").build();
+        Proteome proteomeIdComponent = new ProteomeBuilder().id("proteoemid").component("component").build();
         UniParcCrossReference xref =
                 new UniParcCrossReferenceBuilder()
                         .versionI(3)
@@ -94,7 +93,7 @@ class UniParcEntryCrossRefValueMapperTest {
                         .proteinName("some pname")
                         .geneName("some gname")
                         .ncbiGi("random ncbi")
-                        .proteomeIdComponentsAdd(proteomeIdComponent)
+                        .proteomesAdd(proteomeIdComponent)
                         .build();
         return xref;
     }

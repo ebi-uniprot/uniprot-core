@@ -139,7 +139,7 @@ class UniParcFastaParserTest {
                         .propertiesSet(properties2)
                         .organism(taxonomy2)
                         .proteinName("some pname")
-                        .proteomeIdComponentsAdd(new ProteomeIdComponentBuilder().proteomeId("UP00000564").component("chromosome 1").build())
+                        .proteomesAdd(new ProteomeBuilder().id("UP00000564").component("chromosome 1").build())
                         .build();
 
         return Arrays.asList(xref, xref2);

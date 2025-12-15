@@ -5,11 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
-import org.uniprot.core.uniparc.ProteomeIdComponent;
+import org.uniprot.core.uniparc.Proteome;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.uniparc.impl.ProteomeIdComponentBuilder;
-import org.uniprot.core.uniparc.impl.ProteomeIdComponentImpl;
+import org.uniprot.core.uniparc.impl.ProteomeBuilder;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
@@ -38,7 +37,7 @@ class UniParcDbCrossReferenceTest {
                         .synonymsAdd("syn name")
                         .evidencesSet(evidences)
                         .build();
-        ProteomeIdComponent proteomeIdComponent = new ProteomeIdComponentBuilder().proteomeId("UPI").component("ComponentValue").build();
+        Proteome proteomeIdComponent = new ProteomeBuilder().id("UPI").component("ComponentValue").build();
 
         UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder();
         builder.database(UniParcDatabase.TREMBL)
@@ -50,7 +49,7 @@ class UniParcDbCrossReferenceTest {
                 .lastUpdated(LocalDate.of(2019, 5, 8))
                 .organism(organism)
                 .geneName("Gel")
-                .proteomeIdComponentsAdd(proteomeIdComponent)
+                .proteomesAdd(proteomeIdComponent)
                 .chain("chainValue")
                 .ncbiGi("ncbiGiValue")
                 .proteinName("proteinNameValue");

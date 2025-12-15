@@ -1,11 +1,11 @@
 package org.uniprot.core.xml.uniparc;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniparc.ProteomeIdComponent;
+import org.uniprot.core.uniparc.Proteome;
+
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.uniparc.impl.ProteomeIdComponentBuilder;
-import org.uniprot.core.uniparc.impl.ProteomeIdComponentImpl;
+import org.uniprot.core.uniparc.impl.ProteomeBuilder;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
@@ -74,7 +74,7 @@ class UniParcDBCrossReferenceConverterTest {
         //		</dbReference>
 
         Organism taxonomy = new OrganismBuilder().taxonId(7227).build();
-        ProteomeIdComponent proteomeIdComponent = new ProteomeIdComponentBuilder().proteomeId("proteomeValue").component("ComponentValue").build();
+        Proteome proteomeIdComponent = new ProteomeBuilder().id("proteomeValue").component("ComponentValue").build();
 
         UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder();
         builder.database(UniParcDatabase.TREMBL)
@@ -84,7 +84,7 @@ class UniParcDBCrossReferenceConverterTest {
                 .active(true)
                 .organism(taxonomy)
                 .proteinName("Gelsolin, isoform J")
-                .proteomeIdComponentsAdd(proteomeIdComponent)
+                .proteomesAdd(proteomeIdComponent)
                 .geneName("Gel")
                 .ncbiGi("ncbiGiValue")
                 .chain("chainValue")

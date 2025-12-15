@@ -92,7 +92,7 @@ class UniParcEntryConverterTest {
         builder.uniParcCrossReferencesAdd(xrefBuilder.build());
 
         Organism taxonomy2 = new OrganismBuilder().taxonId(7227).build();
-        ProteomeIdComponent proteomeIdComponent = new ProteomeIdComponentBuilder().proteomeId("UP00000564").component( "chromosome 1").build();
+        Proteome proteomeIdComponent = new ProteomeBuilder().id("UP00000564").component( "chromosome 1").build();
 
         // id="NC_004354_874_0" version_i="5" active="Y" created="2007-04-27" last="2007-04-27">
         UniParcCrossReferenceBuilder xrefBuilder2 = new UniParcCrossReferenceBuilder();
@@ -105,7 +105,7 @@ class UniParcEntryConverterTest {
                 .lastUpdated(LocalDate.of(2007, 4, 27))
                 .organism(taxonomy2)
                 .proteinName("some pname")
-                .proteomeIdComponentsAdd(proteomeIdComponent);
+                .proteomesAdd(proteomeIdComponent);
         builder.uniParcCrossReferencesAdd(xrefBuilder2.build());
         return builder.build();
     }

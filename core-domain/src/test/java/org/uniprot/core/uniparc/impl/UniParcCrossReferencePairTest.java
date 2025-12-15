@@ -42,7 +42,7 @@ class UniParcCrossReferencePairTest {
                         new OrganismBuilder().taxonId(10L).scientificName("sName").build(),
                         "chain",
                         "ncbiGi",
-                        List.of(new ProteomeIdComponentBuilder().proteomeId("proteomeId").component("component").build())
+                        List.of(new ProteomeBuilder().id("proteomeId").component("component").build())
                 );
         String key = "Sample";
         UniParcCrossReferencePair pair1 = new UniParcCrossReferencePair(key, List.of(xref1));

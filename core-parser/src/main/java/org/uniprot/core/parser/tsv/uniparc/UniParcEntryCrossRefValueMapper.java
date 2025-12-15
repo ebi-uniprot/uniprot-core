@@ -1,7 +1,7 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
 import org.uniprot.core.parser.tsv.EntityValueMapper;
-import org.uniprot.core.uniparc.ProteomeIdComponent;
+import org.uniprot.core.uniparc.Proteome;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.util.Utils;
@@ -87,10 +87,10 @@ public class UniParcEntryCrossRefValueMapper implements EntityValueMapper<UniPar
     }
 
     private String getProteome(UniParcCrossReference entity) {
-        List<ProteomeIdComponent> proteomeIdComponents = entity.getProteomeIdComponents();
+        List<Proteome> proteomeIdComponents = entity.getProteomes();
         List<String> proteomeComponents = new ArrayList<>();
-        for (ProteomeIdComponent proteomeIdComponent : proteomeIdComponents) {
-            String proteome = proteomeIdComponent.getProteomeId();
+        for (Proteome proteomeIdComponent : proteomeIdComponents) {
+            String proteome = proteomeIdComponent.getId();
             if (Utils.notNullNotEmpty(proteome)) {
                 if (Utils.notNullNotEmpty(proteomeIdComponent.getComponent())) {
                     proteome += ":" + proteomeIdComponent.getComponent();

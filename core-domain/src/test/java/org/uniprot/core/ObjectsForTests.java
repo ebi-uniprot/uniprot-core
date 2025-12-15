@@ -238,7 +238,7 @@ public class ObjectsForTests {
     public static List<UniParcCrossReference> uniParcDBCrossReferences() {
         List<Property> properties = new ArrayList<>();
         properties.add(new Property("propertyOne", "some pname"));
-        ProteomeIdComponent proteomeIdComponent = new ProteomeIdComponentBuilder().proteomeId("componentValue").component("proteomeId").build();
+        Proteome proteomeIdComponent = new ProteomeBuilder().component("componentValue").id("proteomeId").build();
         UniParcCrossReference xref =
                 new UniParcCrossReferenceBuilder()
                         .versionI(3)
@@ -250,7 +250,7 @@ public class ObjectsForTests {
                         .lastUpdated(LocalDate.of(2017, 2, 27))
                         .propertiesSet(properties)
                         .chain("chainValue")
-                        .proteomeIdComponentsSet(List.of(proteomeIdComponent))
+                        .proteomesSet(List.of(proteomeIdComponent))
                         .geneName("geneNameValue")
                         .ncbiGi("ncbiGiValue")
                         .proteinName("proteinNameValue")
@@ -259,7 +259,7 @@ public class ObjectsForTests {
 
         List<Property> properties2 = new ArrayList<>();
         properties.add(new Property("propertyTwo", "some pname"));
-        ProteomeIdComponent proteomeIdComponent2 = new ProteomeIdComponentBuilder().component("componentValue2").proteomeId("proteomeId2").build();
+        Proteome proteomeIdComponent2 = new ProteomeBuilder().component("componentValue2").id("proteomeId2").build();
 
         UniParcCrossReference xref2 =
                 new UniParcCrossReferenceBuilder()
@@ -272,7 +272,7 @@ public class ObjectsForTests {
                         .lastUpdated(LocalDate.of(2017, 4, 23))
                         .propertiesSet(properties2)
                         .chain("chainValue")
-                        .proteomeIdComponentsSet(List.of(proteomeIdComponent2))
+                        .proteomesSet(List.of(proteomeIdComponent2))
                         .geneName("geneNameValue")
                         .ncbiGi("ncbiGiValue")
                         .proteinName("proteinNameValue")

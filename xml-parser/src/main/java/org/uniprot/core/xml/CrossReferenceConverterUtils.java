@@ -1,15 +1,12 @@
 package org.uniprot.core.xml;
 
 import com.google.common.base.Strings;
-import org.uniprot.core.uniparc.ProteomeIdComponent;
+import org.uniprot.core.uniparc.Proteome;
 import org.uniprot.core.uniparc.UniParcCrossReference;
-import org.uniprot.core.uniparc.impl.ProteomeIdComponentBuilder;
-import org.uniprot.core.uniparc.impl.ProteomeIdComponentImpl;
+import org.uniprot.core.uniparc.impl.ProteomeBuilder;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
-import org.uniprot.core.util.Pair;
-import org.uniprot.core.util.PairImpl;
 import org.uniprot.cv.taxonomy.TaxonomicNode;
 import org.uniprot.cv.taxonomy.TaxonomyRepo;
 
@@ -42,7 +39,7 @@ public class CrossReferenceConverterUtils {
                 builder.ncbiGi(propertyValue);
                 break;
             case PROPERTY_PROTEOMEID_COMPONENT:
-                builder.proteomeIdComponentsAdd(getProteomeIdComponent(propertyValue));
+                builder.proteomesAdd(getProteomeIdComponent(propertyValue));
                 break;
             case PROPERTY_NCBI_TAXONOMY_ID:
                 builder.organism(CrossReferenceConverterUtils.convertTaxonomy(propertyValue, taxonomyRepo));
@@ -85,11 +82,11 @@ public class CrossReferenceConverterUtils {
         } else return taxonomyRepo.retrieveNodeUsingTaxID(Integer.parseInt(taxId));
     }
 
-    private static ProteomeIdComponent getProteomeIdComponent(String propertyValue) {
+    private static Proteome getProteomeIdComponent(String propertyValue) {
         String[] proteomeIdComponentValues = propertyValue.split(":");
         if (proteomeIdComponentValues.length < 2) {
             throw new XmlReaderException("Unable to parse proteomeId component: " + propertyValue);
         }
-        return new ProteomeIdComponentBuilder().proteomeId(proteomeIdComponentValues[0]).component(proteomeIdComponentValues[1]).build();
+        return new ProteomeBuilder().id(proteomeIdComponentValues[0]).component(proteomeIdComponentValues[1]).build();
     }
 }

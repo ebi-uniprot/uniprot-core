@@ -1,7 +1,7 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
 import org.uniprot.core.parser.tsv.NamedValueMap;
-import org.uniprot.core.uniparc.ProteomeIdComponent;
+import org.uniprot.core.uniparc.Proteome;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.util.Utils;
@@ -95,10 +95,10 @@ public class UniParcCrossReferenceMap implements NamedValueMap {
     }
 
     private String getProteome(UniParcCrossReference xref) {
-        List<ProteomeIdComponent> proteomeIdComponents = xref.getProteomeIdComponents();
+        List<Proteome> proteomeIdComponents = xref.getProteomes();
         List<String> proteomeComponents = new ArrayList<>();
-        for (ProteomeIdComponent proteomeIdComponent : proteomeIdComponents) {
-            String proteome = proteomeIdComponent.getProteomeId();
+        for (Proteome proteomeIdComponent : proteomeIdComponents) {
+            String proteome = proteomeIdComponent.getId();
             if (Utils.notNullNotEmpty(proteome)) {
                 if (Utils.notNullNotEmpty(proteomeIdComponent.getComponent())) {
                     proteome += ":" + proteomeIdComponent.getComponent();
