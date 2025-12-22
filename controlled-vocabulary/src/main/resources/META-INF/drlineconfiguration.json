@@ -1109,11 +1109,11 @@
 		]
 	},
 	{
-		"name": "ClinPGx",
-		"displayName": "ClinPGx",
+		"name": "PharmGKB",
+		"displayName": "PharmGKB",
 		"category": "ORG",
 		"uriLink": "https://www.clinpgx.org/gene/%id",
-        "idMappingName": "CLINPGX_ID"
+        "idMappingName": "PHARMGKB_ID"
     },
 	{
 		"name": "PomBase",
