@@ -67,7 +67,7 @@ core:test:
 
 core:sonar:
   stage: quality
-  script: mvn $MAVEN_CLI_OPTS -Dsonar.coverage.jacoco.xmlReportPaths=$(pwd)/jacoco-report/jacoco.xml org.sonarsource.scanner.maven:sonar-maven-plugin:sonar ${SONAR_PROPS} -Dsonar.projectKey=uniprot-core
+  script: mvn $MAVEN_CLI_OPTS -Dsonar.coverage.jacoco.xmlReportPaths=$(pwd)/jacoco-report/jacoco.xml -X org.sonarsource.scanner.maven:sonar-maven-plugin:sonar ${SONAR_PROPS} -Dsonar.projectKey=uniprot-core
   dependencies:
     - core:test
   artifacts:
