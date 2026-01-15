@@ -41,7 +41,7 @@ class GOEvidencesTest {
         Optional<String> gaf = GOEvidences.INSTANCE.convertECOToGAF("ECO:0000269");
         assertEquals("EXP", gaf.orElse(WRONG));
 
-        gaf = GOEvidences.INSTANCE.convertECOToGAF("ECO:0007669");
+        gaf = GOEvidences.INSTANCE.convertECOToGAF("ECO:0000501");
         assertEquals("IEA", gaf.orElse(WRONG));
 
         gaf = GOEvidences.INSTANCE.convertECOToGAF("ECO:0000318");
