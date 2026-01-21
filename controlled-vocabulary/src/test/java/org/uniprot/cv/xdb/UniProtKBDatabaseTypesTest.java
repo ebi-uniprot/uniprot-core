@@ -237,7 +237,7 @@ class UniProtKBDatabaseTypesTest {
         assertEquals("PIRSF", opType.getDisplayName());
         assertEquals(FAMILY_AND_DOMAIN_DATABASES, opType.getCategory());
         assertEquals(
-                "https://proteininformationresource.org/cgi-bin/ipcSF?id=%id", opType.getUriLink());
+                "https://www.ebi.ac.uk/interpro/entry/pirsf/%id", opType.getUriLink());
         assertEquals(2, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "EntryName", "entry name", null);
         verifyAttribute(opType.getAttributes().get(1), "MatchStatus", "match status", null);
