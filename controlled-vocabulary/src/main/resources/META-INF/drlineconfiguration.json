@@ -1082,13 +1082,6 @@
 		"uriLink": "https://www.niagads.org/genomics/app/record/gene/%id"
 	},
 	{
-		"name": "neXtProt",
-		"displayName": "neXtProt",
-		"category": "ORG",
-		"uriLink": "https://www.nextprot.org/entry/%id",
-        "idMappingName": "NEXTPROT_ID"
-    },
-	{
 		"name": "OpenTargets",
 		"displayName": "OpenTargets",
 		"category": "ORG",
@@ -1313,14 +1306,6 @@
 		"category": "PLG",
 		"uriLink": "https://phylomedb.org/search_phylome/?seqid=%id"
 	},
-	{
-		"name": "TreeFam",
-		"displayName": "TreeFam",
-		"category": "PLG",
-		"uriLink": "http://www.treefam.org/family/%id",
-        "idMappingName": "TREEFAM_ID"
-	},
-	
 	{
 		"name": "BioCyc",
 		"displayName": "BioCyc",
