@@ -1,14 +1,15 @@
 package org.uniprot.core.uniparc.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.time.LocalDate;
-import java.util.Collections;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+
+import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class UniParcCrossReferenceImplTest {
     @Test
@@ -34,8 +35,7 @@ class UniParcCrossReferenceImplTest {
                         new OrganismBuilder().taxonId(10L).scientificName("sName").build(),
                         "chain",
                         "ncbiGi",
-                        "proteomeId",
-                        "component");
+                        List.of(new ProteomeBuilder().id("proteomeId").component("component").build()));
         UniParcCrossReference obj = UniParcCrossReferenceBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());

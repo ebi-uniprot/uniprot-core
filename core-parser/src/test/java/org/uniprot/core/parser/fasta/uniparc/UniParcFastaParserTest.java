@@ -1,13 +1,13 @@
 package org.uniprot.core.parser.fasta.uniparc;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.uniparc.impl.UniParcEntryLightBuilder.HAS_ACTIVE_CROSS_REF;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
-import org.uniprot.core.uniparc.*;
+import org.uniprot.core.uniparc.UniParcCrossReference;
+import org.uniprot.core.uniparc.UniParcDatabase;
+import org.uniprot.core.uniparc.UniParcEntry;
+import org.uniprot.core.uniparc.UniParcEntryLight;
 import org.uniprot.core.uniparc.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
@@ -19,6 +19,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.uniprot.core.uniparc.impl.UniParcEntryLightBuilder.HAS_ACTIVE_CROSS_REF;
 /**
  * @author jluo
  * @date: 24 Jun 2019
@@ -138,8 +139,7 @@ class UniParcFastaParserTest {
                         .propertiesSet(properties2)
                         .organism(taxonomy2)
                         .proteinName("some pname")
-                        .proteomeId("UP00000564")
-                        .component("chromosome 1")
+                        .proteomesAdd(new ProteomeBuilder().id("UP00000564").component("chromosome 1").build())
                         .build();
 
         return Arrays.asList(xref, xref2);

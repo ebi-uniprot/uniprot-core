@@ -1,18 +1,20 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.Property;
+import org.uniprot.core.uniparc.Proteome;
+import org.uniprot.core.uniparc.UniParcCrossReference;
+import org.uniprot.core.uniparc.UniParcDatabase;
+import org.uniprot.core.uniparc.impl.ProteomeBuilder;
+import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.Property;
-import org.uniprot.core.uniparc.UniParcCrossReference;
-import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
-import org.uniprot.core.uniprotkb.taxonomy.Organism;
-import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
 /**
  * @author sahmad
@@ -76,6 +78,7 @@ class UniParcEntryCrossRefValueMapperTest {
                 new OrganismBuilder().taxonId(9606).scientificName("Homo sapiens").build();
         List<Property> properties = new ArrayList<>();
         properties.add(new Property("prop1", "pvalue"));
+        Proteome proteomeIdComponent = new ProteomeBuilder().id("proteoemid").component("component").build();
         UniParcCrossReference xref =
                 new UniParcCrossReferenceBuilder()
                         .versionI(3)
@@ -90,8 +93,7 @@ class UniParcEntryCrossRefValueMapperTest {
                         .proteinName("some pname")
                         .geneName("some gname")
                         .ncbiGi("random ncbi")
-                        .proteomeId("proteoemid")
-                        .component("component")
+                        .proteomesAdd(proteomeIdComponent)
                         .build();
         return xref;
     }
