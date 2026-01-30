@@ -8,10 +8,13 @@ import org.uniprot.core.xml.jaxb.uniprot.Entry;
 
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
 public class GoogleUniProtEntryConverter extends UniProtEntryConverter {
+    private static final Set<String> EXCLUDED_XREF_TYPES = Set.of("EC", "Pfam");
+
 
     public GoogleUniProtEntryConverter() {
         super();
@@ -41,7 +44,7 @@ public class GoogleUniProtEntryConverter extends UniProtEntryConverter {
         activeEntryBuilder.commentsSet(fromXmlForComments(xmlEntry));
         activeEntryBuilder.uniProtCrossReferencesSet(
                 xmlEntry.getDbReference().stream()
-                        .filter(val -> !val.getType().equals("EC"))
+                        .filter(val -> !EXCLUDED_XREF_TYPES.contains(val.getType()))
                         .map(this::fromXml)
                         .filter(Objects::nonNull)
                         .collect(Collectors.toList()));
