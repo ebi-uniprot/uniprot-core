@@ -59,7 +59,7 @@ class GoogleUniProtEntryConverterTest {
         String referencePosition = reference.getReferencePositions().get(0);
         assertEquals("required field", referencePosition);
         // cross-references
-        assertEquals(2, uniProtEntry.getUniProtKBCrossReferences().size());
+        assertEquals(1, uniProtEntry.getUniProtKBCrossReferences().size());
         List<UniProtKBCrossReference> xrefs = uniProtEntry.getUniProtKBCrossReferences();
         // go cross ref
         UniProtKBCrossReference goXref = xrefs.get(0);
@@ -81,33 +81,6 @@ class GoogleUniProtEntryConverterTest {
         assertEquals("0.57156", goEvidenceXref.getProperties().get(2).getValue());
         assertEquals("tmalign_score_chain_2", goEvidenceXref.getProperties().get(3).getKey());
         assertEquals("0.61333", goEvidenceXref.getProperties().get(3).getValue());
-        // pfram cross ref
-        UniProtKBCrossReference pfamXref = xrefs.get(1);
-        assertEquals("Pfam", pfamXref.getDatabase().getName());
-        assertEquals("PF01094", pfamXref.getId());
-        assertEquals(1, pfamXref.getEvidences().size());
-
-        Evidence pfamEvidence = pfamXref.getEvidences().get(0);
-        assertEquals(EvidenceCode.ECO_0008006, pfamEvidence.getEvidenceCode());
-
-        CrossReference<EvidenceDatabase> pfamEvidenceXref = pfamEvidence.getEvidenceCrossReference();
-        assertNotNull(pfamEvidenceXref);
-        assertEquals("Google", pfamEvidenceXref.getDatabase().getName());
-        assertEquals("ProtNLM2", pfamEvidenceXref.getId());
-        assertEquals(4, pfamEvidenceXref.getProperties().size());
-
-        assertEquals("model_score", pfamEvidenceXref.getProperties().get(0).getKey());
-        assertEquals("0.13", pfamEvidenceXref.getProperties().get(0).getValue());
-
-        assertEquals("tmalign_accession", pfamEvidenceXref.getProperties().get(1).getKey());
-        assertEquals("A0A2I3MJ91", pfamEvidenceXref.getProperties().get(1).getValue());
-
-        assertEquals("tmalign_score_chain_1", pfamEvidenceXref.getProperties().get(2).getKey());
-        assertEquals("0.52774", pfamEvidenceXref.getProperties().get(2).getValue());
-
-        assertEquals("tmalign_score_chain_2", pfamEvidenceXref.getProperties().get(3).getKey());
-        assertEquals("0.21398", pfamEvidenceXref.getProperties().get(3).getValue());
-
         // keywords
         assertEquals(4, uniProtEntry.getKeywords().size());
         Keyword kw1 = uniProtEntry.getKeywords().get(0);

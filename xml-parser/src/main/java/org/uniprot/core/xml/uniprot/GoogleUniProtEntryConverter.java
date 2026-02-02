@@ -4,14 +4,18 @@ import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
+import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.Entry;
 
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
 public class GoogleUniProtEntryConverter extends UniProtEntryConverter {
+    private static final Set<String> EXCLUDED_XREF_TYPES = Set.of("EC", "Pfam");
+
 
     public GoogleUniProtEntryConverter() {
         super();
@@ -41,7 +45,7 @@ public class GoogleUniProtEntryConverter extends UniProtEntryConverter {
         activeEntryBuilder.commentsSet(fromXmlForComments(xmlEntry));
         activeEntryBuilder.uniProtCrossReferencesSet(
                 xmlEntry.getDbReference().stream()
-                        .filter(val -> !val.getType().equals("EC"))
+                        .filter(this::isValidXrefType)
                         .map(this::fromXml)
                         .filter(Objects::nonNull)
                         .collect(Collectors.toList()));
@@ -50,5 +54,9 @@ public class GoogleUniProtEntryConverter extends UniProtEntryConverter {
                         .map(this::fromXml)
                         .collect(Collectors.toList()));
         return activeEntryBuilder.build();
+    }
+
+    private boolean isValidXrefType(DbReferenceType dbReferenceType) {
+        return !EXCLUDED_XREF_TYPES.contains(dbReferenceType.getType());
     }
 }
