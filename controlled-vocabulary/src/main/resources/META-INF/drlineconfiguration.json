@@ -561,13 +561,13 @@
 		"name": "PeptideAtlas",
 		"displayName": "PeptideAtlas",
 		"category": "PROTEOMIC",
-		"uriLink": "https://db.systemsbiology.net/sbeams/cgi/PeptideAtlas/Search?action=GO&search_key=%id"	
+		"uriLink": "https://db.systemsbiology.net/sbeams/cgi/PeptideAtlas/Search?action=GO&search_key=%id"
 	},
 	{
 		"name": "PRIDE",
 		"displayName": "PRIDE",
 		"category": "PROTEOMIC",
-		"uriLink": "https://www.ebi.ac.uk/pride/peptidome/peptidesearch?keyword=%id"
+		"uriLink": "https://www.ebi.ac.uk/pride/archive/proteins/%id"
 	},
 	{
 		"name": "ProMEX",
