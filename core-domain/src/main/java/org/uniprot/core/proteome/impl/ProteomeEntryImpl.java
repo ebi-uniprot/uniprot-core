@@ -18,13 +18,10 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     private final Taxonomy taxonomy;
     private final LocalDate modified;
     private final ProteomeType proteomeType;
-    private final ProteomeId redundantTo;
     private final String strain;
     private final String isolate;
     private final List<Component> components;
     private final List<Citation> citations;
-    private final List<RedundantProteome> redundantProteomes;
-    private final ProteomeId panproteome;
     private final Integer annotationScore;
     private final Superkingdom superkingdom;
     private final ProteomeCompletenessReport proteomeCompletenessReport;
@@ -40,7 +37,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     ProteomeEntryImpl() {
         this(
                 null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null);
+                null, null, null, null, null);
     }
 
     ProteomeEntryImpl(
@@ -49,13 +46,10 @@ public class ProteomeEntryImpl implements ProteomeEntry {
             String description,
             LocalDate modified,
             ProteomeType proteomeType,
-            ProteomeId redundantTo,
             String strain,
             String isolate,
             List<Component> components,
             List<Citation> citations,
-            List<RedundantProteome> redundantProteomes,
-            ProteomeId panproteome,
             Integer annotationScore,
             Superkingdom superkingdom,
             Integer geneCount,
@@ -73,13 +67,10 @@ public class ProteomeEntryImpl implements ProteomeEntry {
 
         this.modified = modified;
         this.proteomeType = proteomeType;
-        this.redundantTo = redundantTo;
         this.strain = strain;
         this.isolate = isolate;
         this.components = Utils.unmodifiableList(components);
         this.citations = Utils.unmodifiableList(citations);
-        this.redundantProteomes = Utils.unmodifiableList(redundantProteomes);
-        this.panproteome = panproteome;
         this.annotationScore = annotationScore;
         this.superkingdom = superkingdom;
         this.geneCount = geneCount;
@@ -119,11 +110,6 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     }
 
     @Override
-    public ProteomeId getRedundantTo() {
-        return redundantTo;
-    }
-
-    @Override
     public String getStrain() {
         return strain;
     }
@@ -141,16 +127,6 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     @Override
     public List<Citation> getCitations() {
         return citations;
-    }
-
-    @Override
-    public List<RedundantProteome> getRedudantProteomes() {
-        return redundantProteomes;
-    }
-
-    @Override
-    public ProteomeId getPanproteome() {
-        return panproteome;
     }
 
     @Override
@@ -211,9 +187,6 @@ public class ProteomeEntryImpl implements ProteomeEntry {
                 id,
                 isolate,
                 modified,
-                panproteome,
-                redundantProteomes,
-                redundantTo,
                 citations,
                 strain,
                 superkingdom,
@@ -237,9 +210,6 @@ public class ProteomeEntryImpl implements ProteomeEntry {
                 && Objects.equals(id, other.id)
                 && Objects.equals(isolate, other.isolate)
                 && Objects.equals(modified, other.modified)
-                && Objects.equals(panproteome, other.panproteome)
-                && Objects.equals(redundantProteomes, other.redundantProteomes)
-                && Objects.equals(redundantTo, other.redundantTo)
                 && Objects.equals(citations, other.citations)
                 && Objects.equals(strain, other.strain)
                 && Objects.equals(superkingdom, other.superkingdom)

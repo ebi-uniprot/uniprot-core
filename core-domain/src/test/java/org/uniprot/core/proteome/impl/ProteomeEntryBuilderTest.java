@@ -67,21 +67,13 @@ class ProteomeEntryBuilderTest {
 
     @Test
     void testProteomeType() {
-        ProteomeType type = ProteomeType.NORMAL;
+        ProteomeType type = ProteomeType.EXCLUDED;
         ProteomeEntry proteome = new ProteomeEntryBuilder().proteomeType(type).build();
         assertEquals(type, proteome.getProteomeType());
 
         type = ProteomeType.REFERENCE;
         proteome = new ProteomeEntryBuilder().proteomeType(type).build();
         assertEquals(type, proteome.getProteomeType());
-    }
-
-    @Test
-    void testRedundantTo() {
-        String id = "UP000005640";
-        ProteomeId proteomeId = new ProteomeIdBuilder(id).build();
-        ProteomeEntry proteome = new ProteomeEntryBuilder().redundantTo(proteomeId).build();
-        assertEquals(proteomeId, proteome.getRedundantTo());
     }
 
     @Test
@@ -209,62 +201,6 @@ class ProteomeEntryBuilderTest {
                 new ProteomeEntryBuilder().citationsAdd(citation1).citationsAdd(citation2).build();
         assertEquals(2, proteome.getCitations().size());
         assertThat(proteome.getCitations(), hasItem(citation2));
-    }
-
-    @Test
-    void testRedundantProteomes() {
-        List<RedundantProteome> redundantProteomes = new ArrayList<>();
-        String id = "UP000004340";
-        RedundantProteome rproteome1 =
-                new RedundantProteomeBuilder()
-                        .proteomeId(new ProteomeIdBuilder(id).build())
-                        .similarity(0.98f)
-                        .build();
-        String id2 = "UP000004343";
-        RedundantProteome rproteome2 =
-                new RedundantProteomeBuilder()
-                        .proteomeId(new ProteomeIdBuilder(id2).build())
-                        .similarity(0.88f)
-                        .build();
-        redundantProteomes.add(rproteome1);
-        redundantProteomes.add(rproteome2);
-
-        ProteomeEntry proteome =
-                new ProteomeEntryBuilder().redundantProteomesSet(redundantProteomes).build();
-        assertEquals(2, proteome.getRedudantProteomes().size());
-        assertThat(proteome.getRedudantProteomes(), hasItem(rproteome1));
-    }
-
-    @Test
-    void testAddRedundantProteome() {
-        String id = "UP000004340";
-        RedundantProteome rproteome1 =
-                new RedundantProteomeBuilder()
-                        .proteomeId(new ProteomeIdBuilder(id).build())
-                        .similarity(0.98f)
-                        .build();
-        String id2 = "UP000004343";
-        RedundantProteome rproteome2 =
-                new RedundantProteomeBuilder()
-                        .proteomeId(new ProteomeIdBuilder(id2).build())
-                        .similarity(0.88f)
-                        .build();
-
-        ProteomeEntry proteome =
-                new ProteomeEntryBuilder()
-                        .redundantProteomesAdd(rproteome1)
-                        .redundantProteomesAdd(rproteome2)
-                        .build();
-        assertEquals(2, proteome.getRedudantProteomes().size());
-        assertThat(proteome.getRedudantProteomes(), hasItem(rproteome2));
-    }
-
-    @Test
-    void testPanproteome() {
-        String id = "UP000005644";
-        ProteomeId proteomeId = new ProteomeIdBuilder(id).build();
-        ProteomeEntry proteome = new ProteomeEntryBuilder().panproteome(proteomeId).build();
-        assertEquals(proteomeId, proteome.getPanproteome());
     }
 
     @Test

@@ -60,7 +60,20 @@ class ProteomeConverterTest {
     }
 
     @Test
-    void testRepresentativeProteome() {
+    void testFromSurveillanceProteome() {
+        ProteomeConverter converter = new ProteomeConverter();
+        ProteomeEntry proteome =
+                new ProteomeEntryBuilder()
+                        .proteomeId("UP1234567890")
+                        .proteomeType(SURVEILLANCE)
+                        .build();
+        Proteome xml = converter.toXml(proteome);
+        ProteomeEntry converted = converter.fromXml(xml);
+        assertEquals(EXCLUDED, converted.getProteomeType());
+    }
+
+    @Test
+    void testFromRepresentativeProteome() {
         ProteomeConverter converter = new ProteomeConverter();
         ProteomeEntry proteome =
                 new ProteomeEntryBuilder()
@@ -69,48 +82,7 @@ class ProteomeConverterTest {
                         .build();
         Proteome xml = converter.toXml(proteome);
         ProteomeEntry converted = converter.fromXml(xml);
-        assertEquals(proteome, converted);
-    }
-
-    @Test
-    void testRepresentativeAndReferenceProteome() {
-        ProteomeConverter converter = new ProteomeConverter();
-        ProteomeEntry proteome =
-                new ProteomeEntryBuilder()
-                        .proteomeId("UP1234567890")
-                        .proteomeType(REFERENCE_AND_REPRESENTATIVE)
-                        .build();
-        Proteome xml = converter.toXml(proteome);
-        ProteomeEntry converted = converter.fromXml(xml);
-        assertEquals(proteome, converted);
-    }
-
-    @Test
-    void testNormalProteome() {
-        ProteomeConverter converter = new ProteomeConverter();
-        ProteomeEntry proteome =
-                new ProteomeEntryBuilder()
-                        .proteomeId("UP1234567890")
-                        .proteomeType(NORMAL)
-                        .proteinCount(245)
-                        .build();
-        Proteome xml = converter.toXml(proteome);
-        ProteomeEntry converted = converter.fromXml(xml);
-        assertEquals(proteome, converted);
-    }
-
-    @Test
-    void testRedundantProteome() {
-        ProteomeConverter converter = new ProteomeConverter();
-        ProteomeEntry proteome =
-                new ProteomeEntryBuilder()
-                        .proteomeId("UP1234567890")
-                        .proteomeType(REDUNDANT)
-                        .redundantTo(new ProteomeIdBuilder("UP1234567891").build())
-                        .build();
-        Proteome xml = converter.toXml(proteome);
-        ProteomeEntry converted = converter.fromXml(xml);
-        assertEquals(proteome, converted);
+        assertEquals(REFERENCE, converted.getProteomeType());
     }
 
     private ProteomeEntry create() {
@@ -119,8 +91,6 @@ class ProteomeConverterTest {
         String description = "about some proteome";
         Taxonomy taxonomy = new TaxonomyBuilder().taxonId(9606).build();
         LocalDate modified = LocalDate.of(2015, 11, 5);
-        String reId = "UP000005641";
-        ProteomeId redId = new ProteomeIdBuilder(reId).build();
         List<CrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
         CrossReference<ProteomeDatabase> xref1 =
                 new CrossReferenceBuilder<ProteomeDatabase>()
@@ -191,8 +161,6 @@ class ProteomeConverterTest {
                         .strain("strain value")
                         .modified(modified)
                         .proteomeType(EXCLUDED)
-                        .redundantTo(redId)
-                        .panproteome(redId)
                         .componentsSet(components)
                         .citationsSet(citations)
                         .annotationScore(15)

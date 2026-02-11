@@ -25,7 +25,6 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
 
     private final ObjectFactory xmlFactory;
     private final ComponentConverter componentConverter;
-    private final RedundantProteomeConverter redundantProteomeConverter;
     private final ReferenceConverter referenceConverter;
     private final GenomeAssemblyConverter genomeAssemblyConverter;
     private final GenomeAnnotationConverter genomeAnnotationConverter;
@@ -39,7 +38,6 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
     public ProteomeConverter(ObjectFactory xmlFactory) {
         this.xmlFactory = xmlFactory;
         this.componentConverter = new ComponentConverter(xmlFactory);
-        this.redundantProteomeConverter = new RedundantProteomeConverter(xmlFactory);
         this.referenceConverter = new ReferenceConverter(xmlFactory);
         this.genomeAssemblyConverter = new GenomeAssemblyConverter(xmlFactory);
         this.scoreBuscoConverter = new ScoreBuscoConverter(xmlFactory);
@@ -52,11 +50,6 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
         List<Component> components =
                 xmlObj.getComponent().stream()
                         .map(componentConverter::fromXml)
-                        .collect(Collectors.toList());
-
-        List<RedundantProteome> redundantProteomes =
-                xmlObj.getRedundantProteome().stream()
-                        .map(redundantProteomeConverter::fromXml)
                         .collect(Collectors.toList());
 
         List<Citation> citations =
@@ -75,7 +68,6 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
                 .strain(xmlObj.getStrain())
                 .isolate(xmlObj.getIsolate())
                 .componentsSet(components)
-                .redundantProteomesSet(redundantProteomes)
                 .citationsSet(citations)
                 .genomeAssembly(genomeAssemblyConverter.fromXml(xmlObj.getGenomeAssembly()))
                 .proteomeCompletenessReport(getCompletenessReport(xmlObj.getScores()))
@@ -88,13 +80,6 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
 
         if (notNull(xmlObj.getAnnotationScore())) {
             builder.annotationScore(xmlObj.getAnnotationScore().getNormalizedAnnotationScore());
-        }
-
-        if (notNullNotEmpty(xmlObj.getRedundantTo())) {
-            builder.redundantTo(proteomeId(xmlObj.getRedundantTo()));
-        }
-        if (notNullNotEmpty(xmlObj.getPanproteome())) {
-            builder.panproteome(proteomeId(xmlObj.getPanproteome()));
         }
         if (notNull(xmlObj.getExcluded())
                 && notNullNotEmpty(xmlObj.getExcluded().getExclusionReason())) {
@@ -139,13 +124,7 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
         if (notNull(uniObj.getTaxonomy())) {
             xmlObj.setTaxonomy(uniObj.getTaxonomy().getTaxonId());
         }
-        ProteomeType type = uniObj.getProteomeType();
-        if (type == REFERENCE || type == REFERENCE_AND_REPRESENTATIVE) {
-            xmlObj.setIsReferenceProteome(true);
-        }
-        if (type == REPRESENTATIVE || type == REFERENCE_AND_REPRESENTATIVE) {
-            xmlObj.setIsRepresentativeProteome(true);
-        }
+        xmlObj.setProteomeStatus((uniObj.getProteomeType().getName()));
         xmlObj.setModified(XmlConverterHelper.dateToXml(uniObj.getModified()));
         xmlObj.setStrain(uniObj.getStrain());
         xmlObj.setIsolate(uniObj.getIsolate());
@@ -155,27 +134,15 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
                 .map(componentConverter::toXml)
                 .forEach(val -> xmlObj.getComponent().add(val));
 
-        uniObj.getRedudantProteomes().stream()
-                .map(redundantProteomeConverter::toXml)
-                .forEach(val -> xmlObj.getRedundantProteome().add(val));
-
         uniObj.getCitations().stream()
                 .map(referenceConverter::toXml)
                 .filter(Objects::nonNull)
                 .forEach(val -> xmlObj.getReference().add(val));
 
-        if ((notNull(uniObj.getRedundantTo()))
-                && notNullNotEmpty(uniObj.getRedundantTo().getValue())) {
-            xmlObj.setRedundantTo(uniObj.getRedundantTo().getValue());
-        }
-
         if (notNull(uniObj.getAnnotationScore())) {
             AnnotationScoreType annotationScore = xmlFactory.createAnnotationScoreType();
             annotationScore.setNormalizedAnnotationScore(uniObj.getAnnotationScore());
             xmlObj.setAnnotationScore(annotationScore);
-        }
-        if (notNull(uniObj.getPanproteome())) {
-            xmlObj.setPanproteome(uniObj.getPanproteome().getValue());
         }
         if (notNull(uniObj.getGenomeAssembly())) {
             xmlObj.setGenomeAssembly(genomeAssemblyConverter.toXml(uniObj.getGenomeAssembly()));
@@ -222,20 +189,13 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
     }
 
     private ProteomeType getProteomeType(Proteome t) {
-        if (t.getExcluded() != null
-                && (t.getExcluded().getExclusionReason() != null)
-                && (!t.getExcluded().getExclusionReason().isEmpty())) {
+        ProteomeType proteomeType = ProteomeType.typeOf(t.getProteomeStatus());
+        if (SURVEILLANCE.equals(proteomeType)) {
             return EXCLUDED;
-        } else if (t.isIsRepresentativeProteome() && (t.isIsReferenceProteome())) {
-            return REFERENCE_AND_REPRESENTATIVE;
-        } else if (t.isIsReferenceProteome()) {
-            return REFERENCE;
-        } else if (t.isIsRepresentativeProteome()) {
-            return REPRESENTATIVE;
-        } else if ((t.getRedundantTo() != null) && (!t.getRedundantTo().isEmpty())) {
-            return REDUNDANT;
-        } else {
-            return NORMAL;
         }
+        if (REPRESENTATIVE.equals(proteomeType)) {
+            return REFERENCE;
+        }
+        return proteomeType;
     }
 }

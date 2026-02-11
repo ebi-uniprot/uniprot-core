@@ -18,14 +18,11 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
     private String description;
     private Taxonomy taxonomy;
     private LocalDate modified;
-    private ProteomeType proteomeType = ProteomeType.NORMAL;
-    private ProteomeId redundantTo;
+    private ProteomeType proteomeType;
     private String strain;
     private String isolate;
     private List<Component> components = new ArrayList<>();
     private List<Citation> citations = new ArrayList<>();
-    private List<RedundantProteome> redundantProteomes = new ArrayList<>();
-    private ProteomeId panproteome;
     private Integer annotationScore;
     private Integer geneCount;
     private Superkingdom superkingdom;
@@ -45,13 +42,10 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 description,
                 modified,
                 proteomeType,
-                redundantTo,
                 strain,
                 isolate,
                 components,
                 citations,
-                redundantProteomes,
-                panproteome,
                 annotationScore,
                 superkingdom,
                 geneCount,
@@ -71,13 +65,10 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 .description(instance.getDescription())
                 .modified(instance.getModified())
                 .proteomeType(instance.getProteomeType())
-                .redundantTo(instance.getRedundantTo())
                 .strain(instance.getStrain())
                 .isolate(instance.getIsolate())
                 .componentsSet(instance.getComponents())
                 .citationsSet(instance.getCitations())
-                .redundantProteomesSet(instance.getRedudantProteomes())
-                .panproteome(instance.getPanproteome())
                 .annotationScore(instance.getAnnotationScore())
                 .superkingdom(instance.getSuperkingdom())
                 .geneCount(instance.getGeneCount())
@@ -125,11 +116,6 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
         return this;
     }
 
-    public @Nonnull ProteomeEntryBuilder redundantTo(ProteomeId redundantTo) {
-        this.redundantTo = redundantTo;
-        return this;
-    }
-
     public @Nonnull ProteomeEntryBuilder strain(String strain) {
         this.strain = strain;
         return this;
@@ -157,23 +143,6 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
 
     public @Nonnull ProteomeEntryBuilder citationsAdd(Citation citation) {
         Utils.addOrIgnoreNull(citation, citations);
-        return this;
-    }
-
-    public @Nonnull ProteomeEntryBuilder redundantProteomesSet(
-            List<RedundantProteome> redundantProteomes) {
-        this.redundantProteomes = Utils.modifiableList(redundantProteomes);
-        return this;
-    }
-
-    public @Nonnull ProteomeEntryBuilder redundantProteomesAdd(
-            RedundantProteome redundantProteome) {
-        Utils.addOrIgnoreNull(redundantProteome, redundantProteomes);
-        return this;
-    }
-
-    public @Nonnull ProteomeEntryBuilder panproteome(ProteomeId panproteome) {
-        this.panproteome = panproteome;
         return this;
     }
 

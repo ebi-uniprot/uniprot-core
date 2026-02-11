@@ -24,12 +24,10 @@
 					minOccurs="0" />
 				<xs:element name="taxonomy" type="xs:long" />
 				<xs:element name="modified" type="xs:date" />
-				<xs:element name="isReferenceProteome" type="xs:boolean" />
-				<xs:element name="isRepresentativeProteome"
-					type="xs:boolean" />
-				<xs:element name="redundantTo" type="xs:string"
-					minOccurs="0" />
+				<xs:element name="proteomeStatus" type="xs:string" />
+				<xs:element name="panproteomeTaxon" type="xs:long" minOccurs="0"/>
 				<xs:element name="strain" type="xs:string" minOccurs="0" />
+				<xs:element name="relatedTo" type="relatedToType" minOccurs="0"/>
 				<xs:element name="isolate" type="xs:string" minOccurs="0" />
 				<xs:element name="genomeAssembly"
 					type="genomeAssemblyType" minOccurs="0" />
@@ -39,12 +37,8 @@
 					maxOccurs="unbounded" />
 				<xs:element name="reference" type="referenceType"
 					minOccurs="0" maxOccurs="unbounded" />
-				<xs:element name="redundantProteome"
-					type="redundantProteomeType" minOccurs="0" maxOccurs="unbounded" />
 				<xs:element name="annotationScore"
 					type="annotationScoreType" minOccurs="0" />
-				<xs:element name="panproteome" type="xs:string"
-					minOccurs="0" />
 				<xs:element name="excluded" type="exclusionType"
 					minOccurs="0" />
 				<xs:element name="scores" type="scoreType" minOccurs="0"
@@ -79,17 +73,24 @@
 			type="xs:int" use="required" />
 	</xs:complexType>
 
-	<xs:complexType name="redundantProteomeType">
+	<xs:complexType name="relatedToType">
+		<xs:sequence>
+			<xs:element name="relatedReferenceProteome"
+						type="relatedReferenceProteome"
+						minOccurs="0"
+						maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="relatedReferenceProteome">
 		<xs:annotation>
 			<xs:documentation>
 				Describes redundant proteome
 			</xs:documentation>
 		</xs:annotation>
-		<xs:attribute name="upid" type="xs:string" use="required" />
-		<xs:attribute name="similarity" type="xs:string"
-			use="required" />
+		<xs:attribute name="upid" type="xs:string" use="required"/>
+		<xs:attribute name="similarity" type="xs:string" use="required"/>
+		<xs:attribute name="taxId" type="xs:long" use="required"/>
 	</xs:complexType>
-
 
 	<xs:complexType name="componentType">
 		<xs:sequence>

@@ -159,7 +159,6 @@ class ProteomeEntryValueMapperTest {
                         .citationsSet(Collections.emptyList())
                         .superkingdom(Superkingdom.EUKARYOTA)
                         .componentsSet(components)
-                        .redundantProteomesSet(redundantProteomes)
                         .genomeAssembly(createGenomyAssembly())
                         .proteomeCompletenessReport(createCompletenessReport())
                         .build();

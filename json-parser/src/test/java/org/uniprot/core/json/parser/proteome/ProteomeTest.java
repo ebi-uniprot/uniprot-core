@@ -162,18 +162,10 @@ public class ProteomeTest {
                 .description(description)
                 .taxonomy(taxonomy)
                 .modified(modified)
-                .proteomeType(ProteomeType.REDUNDANT)
-                .redundantTo(redId)
+                .proteomeType(ProteomeType.REFERENCE)
                 .strain("some Strain")
                 .citationsSet(getCitations())
                 .superkingdom(Superkingdom.EUKARYOTA)
-                .panproteome(new ProteomeIdBuilder("UP000005649").build())
-                .redundantProteomesAdd(
-                        new RedundantProteomeBuilder()
-                                .proteomeId("UP000005648")
-                                .similarity(10F)
-                                .build())
-                .redundantTo(new ProteomeIdBuilder("UP000005650").build())
                 .componentsAdd(component)
                 .isolate("isolate value")
                 .annotationScore(20)
@@ -281,7 +273,6 @@ public class ProteomeTest {
                         .citationsSet(getCitations())
                         .superkingdom(Superkingdom.EUKARYOTA)
                         //	.components(components)
-                        .redundantProteomesSet(redundantProteomes)
                         .proteomeCompletenessReport(createProteomeCompletenessReport())
                         .build();
 
