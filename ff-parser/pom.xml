@@ -82,11 +82,6 @@
 			<artifactId>junit-jupiter-params</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.uniprot</groupId>
-			<artifactId>common-job</artifactId>
-			<version>1.0.31-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
