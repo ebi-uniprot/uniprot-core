@@ -98,7 +98,8 @@ public class UniProtKBEntryImpl implements UniProtKBEntry {
         } else if (Objects.isNull(primaryAccession) || nullOrEmpty(primaryAccession.getValue())) {
             throw new IllegalArgumentException("primaryAccession is Mandatory for uniprot entry.");
         } else if ((Objects.isNull(uniProtkbId) || nullOrEmpty(uniProtkbId.getValue()))
-                && entryType != UniProtKBEntryType.INACTIVE) {
+                && 
+                (entryType != UniProtKBEntryType.INACTIVE && entryType != UniProtKBEntryType.AA)) {
             throw new IllegalArgumentException("uniProtkbId is Mandatory for uniprot entry.");
         } else if (notNull(inactiveReason) && entryType != UniProtKBEntryType.INACTIVE) {
             throw new IllegalArgumentException("Inactive entry must have type INACTIVE");

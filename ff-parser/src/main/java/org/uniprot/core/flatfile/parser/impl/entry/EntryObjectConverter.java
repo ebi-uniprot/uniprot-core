@@ -191,26 +191,4 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtKBEnt
         drLineConverter.clear();
     }
 
-    private List<Evidence> buildEvidences(List<Evidence> ssEvidences) {
-        List<Evidence> evidences = new ArrayList<>();
-        Collection<Evidence> evidenceIds = new HashSet<>();
-        evidenceIds.addAll(ccLineConverter.getEvidences());
-        evidenceIds.addAll(deLineConverter.getEvidences());
-        evidenceIds.addAll(ftLineConverter.getEvidences());
-        evidenceIds.addAll(gnLineConverter.getEvidences());
-        evidenceIds.addAll(kwLineConverter.getEvidences());
-        evidenceIds.addAll(ogLineConverter.getEvidences());
-        evidenceIds.addAll(oxLineConverter.getEvidences());
-        evidenceIds.addAll(refObjConverter.getEvidences());
-        evidenceIds.addAll(drLineConverter.getEvidences());
-        Collections.sort(new ArrayList<>(evidenceIds));
-
-        if ((ssEvidences == null) || (ssEvidences.isEmpty())) {
-            evidences.addAll(evidenceIds);
-        } else {
-            evidences.addAll(ssEvidences);
-        }
-
-        return evidences;
-    }
 }

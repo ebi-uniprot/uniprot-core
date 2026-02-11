@@ -11,6 +11,7 @@ public enum UniProtKBEntryType implements EnumDisplay {
     SWISSPROT("UniProtKB reviewed (Swiss-Prot)", "Swiss-Prot"),
     TREMBL("UniProtKB unreviewed (TrEMBL)", "TrEMBL"),
     INACTIVE("Inactive"),
+    AA("AA"),
     UNKNOWN("UNKNOWN");
 
     private String name;
