@@ -575,8 +575,6 @@ public class ObjectsForTests {
         ComponentImpl component =
                 new ComponentImpl("name", "desc", 5, genomeAnnotation, proteomeXReferenceTypes());
         JournalArticleBuilder builder = new JournalArticleBuilder();
-        RedundantProteome rp =
-                new RedundantProteomeBuilder().proteomeId("id").similarity(4.5F).build();
         updateCitationBuilderWithCommonAttributes(builder);
         return new ProteomeEntryBuilder()
                 .proteomeId("id")

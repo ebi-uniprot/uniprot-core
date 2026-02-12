@@ -84,7 +84,7 @@
 	<xs:complexType name="relatedReferenceProteome">
 		<xs:annotation>
 			<xs:documentation>
-				Describes redundant proteome
+				Describes related proteome
 			</xs:documentation>
 		</xs:annotation>
 		<xs:attribute name="upid" type="xs:string" use="required"/>
