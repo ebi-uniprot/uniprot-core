@@ -61,7 +61,7 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
         ProteomeEntryBuilder builder = new ProteomeEntryBuilder();
         Integer proteinCount = xmlObj.getProteinCount();
         builder.proteomeId(proteomeId(xmlObj.getUpid()))
-                .proteomeType(getProteomeType(xmlObj))
+                .proteomeType(getProteomeType(xmlObj.getProteomeStatus()))
                 .description(xmlObj.getDescription())
                 .taxonomy(getTaxonomy(xmlObj.getTaxonomy()))
                 .modified(XmlConverterHelper.dateFromXml(xmlObj.getModified()))
@@ -188,8 +188,8 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
         }
     }
 
-    public static ProteomeType getProteomeType(Proteome t) {
-        ProteomeType proteomeType = ProteomeType.typeOf(t.getProteomeStatus());
+    public static ProteomeType getProteomeType(String proteomeStatus) {
+        ProteomeType proteomeType = ProteomeType.typeOf(proteomeStatus);
         if (SURVEILLANCE.equals(proteomeType)) {
             return EXCLUDED;
         }
