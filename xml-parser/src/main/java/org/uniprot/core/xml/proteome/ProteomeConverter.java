@@ -188,7 +188,7 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
         }
     }
 
-    private ProteomeType getProteomeType(Proteome t) {
+    private static ProteomeType getProteomeType(Proteome t) {
         ProteomeType proteomeType = ProteomeType.typeOf(t.getProteomeStatus());
         if (SURVEILLANCE.equals(proteomeType)) {
             return EXCLUDED;
