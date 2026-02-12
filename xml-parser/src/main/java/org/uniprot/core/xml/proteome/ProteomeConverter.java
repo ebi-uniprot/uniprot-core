@@ -124,7 +124,7 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
         if (notNull(uniObj.getTaxonomy())) {
             xmlObj.setTaxonomy(uniObj.getTaxonomy().getTaxonId());
         }
-        xmlObj.setProteomeStatus((uniObj.getProteomeType().getName()));
+        xmlObj.setProteomeStatus((uniObj.getProteomeType().toString()));
         xmlObj.setModified(XmlConverterHelper.dateToXml(uniObj.getModified()));
         xmlObj.setStrain(uniObj.getStrain());
         xmlObj.setIsolate(uniObj.getIsolate());
@@ -189,7 +189,7 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
     }
 
     public static ProteomeType getProteomeType(String proteomeStatus) {
-        ProteomeType proteomeType = ProteomeType.typeOf(proteomeStatus);
+        ProteomeType proteomeType = ProteomeType.valueOf(proteomeStatus);
         if (SURVEILLANCE.equals(proteomeType)) {
             return EXCLUDED;
         }
