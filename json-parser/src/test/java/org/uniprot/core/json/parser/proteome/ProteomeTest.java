@@ -61,18 +61,6 @@ public class ProteomeTest {
     }
 
     @Test
-    void testRedundantProteome() {
-        String id = "UP000004340";
-        RedundantProteome rproteome =
-                new RedundantProteomeBuilder()
-                        .proteomeId(new ProteomeIdBuilder(id).build())
-                        .similarity(0.98f)
-                        .build();
-        ValidateJson.verifyJsonRoundTripParser(
-                ProteomeJsonConfig.getInstance().getFullObjectMapper(), rproteome);
-    }
-
-    @Test
     void testProteome() {
         ProteomeEntry proteome = getCompleteProteomeEntry();
 
@@ -97,8 +85,6 @@ public class ProteomeTest {
         String description = "about some proteome";
         LocalDate modified = LocalDate.of(2015, 11, 5);
         ProteomeId proteomeId = new ProteomeIdBuilder(id).build();
-        String redundantId = "UP000005642";
-        ProteomeId redId = new ProteomeIdBuilder(redundantId).build();
         List<CrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
         CrossReference<ProteomeDatabase> xref1 =
                 new CrossReferenceBuilder<ProteomeDatabase>()
@@ -162,18 +148,10 @@ public class ProteomeTest {
                 .description(description)
                 .taxonomy(taxonomy)
                 .modified(modified)
-                .proteomeType(ProteomeType.REDUNDANT)
-                .redundantTo(redId)
+                .proteomeType(ProteomeType.REFERENCE)
                 .strain("some Strain")
                 .citationsSet(getCitations())
                 .superkingdom(Superkingdom.EUKARYOTA)
-                .panproteome(new ProteomeIdBuilder("UP000005649").build())
-                .redundantProteomesAdd(
-                        new RedundantProteomeBuilder()
-                                .proteomeId("UP000005648")
-                                .similarity(10F)
-                                .build())
-                .redundantTo(new ProteomeIdBuilder("UP000005650").build())
                 .componentsAdd(component)
                 .isolate("isolate value")
                 .annotationScore(20)
@@ -242,21 +220,6 @@ public class ProteomeTest {
 
         components.add(component1);
         components.add(component2);
-        List<RedundantProteome> redundantProteomes = new ArrayList<>();
-        String rid = "UP000004340";
-        RedundantProteome rproteome1 =
-                new RedundantProteomeBuilder()
-                        .proteomeId(new ProteomeIdBuilder(rid).build())
-                        .similarity(0.98f)
-                        .build();
-        String rid2 = "UP000004343";
-        RedundantProteome rproteome2 =
-                new RedundantProteomeBuilder()
-                        .proteomeId(new ProteomeIdBuilder(rid2).build())
-                        .similarity(0.88f)
-                        .build();
-        redundantProteomes.add(rproteome1);
-        redundantProteomes.add(rproteome2);
         Taxonomy taxonomy =
                 new TaxonomyBuilder()
                         .taxonId(9606)
@@ -281,7 +244,6 @@ public class ProteomeTest {
                         .citationsSet(getCitations())
                         .superkingdom(Superkingdom.EUKARYOTA)
                         //	.components(components)
-                        .redundantProteomesSet(redundantProteomes)
                         .proteomeCompletenessReport(createProteomeCompletenessReport())
                         .build();
 
