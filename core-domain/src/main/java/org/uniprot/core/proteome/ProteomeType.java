@@ -7,7 +7,6 @@ import org.uniprot.core.util.EnumDisplay;
 public enum ProteomeType implements EnumDisplay {
     REFERENCE("Reference proteome"),
     NON_REFERENCE("Non Reference proteome"),
-    REPRESENTATIVE("Representative proteome"),
     SURVEILLANCE("Surveillance proteome"),
     EXCLUDED("Excluded");
 

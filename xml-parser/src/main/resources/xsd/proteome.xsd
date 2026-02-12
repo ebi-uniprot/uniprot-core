@@ -89,7 +89,7 @@
 		</xs:annotation>
 		<xs:attribute name="upid" type="xs:string" use="required"/>
 		<xs:attribute name="similarity" type="xs:string" use="required"/>
-		<xs:attribute name="taxId" type="xs:long" use="required"/>
+		<xs:attribute name="taxon" type="xs:long" use="required"/>
 	</xs:complexType>
 
 	<xs:complexType name="componentType">

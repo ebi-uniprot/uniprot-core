@@ -193,9 +193,6 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
         if (SURVEILLANCE.equals(proteomeType)) {
             return EXCLUDED;
         }
-        if (REPRESENTATIVE.equals(proteomeType)) {
-            return REFERENCE;
-        }
         return proteomeType;
     }
 }

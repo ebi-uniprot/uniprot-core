@@ -72,19 +72,6 @@ class ProteomeConverterTest {
         assertEquals(EXCLUDED, converted.getProteomeType());
     }
 
-    @Test
-    void testFromRepresentativeProteome() {
-        ProteomeConverter converter = new ProteomeConverter();
-        ProteomeEntry proteome =
-                new ProteomeEntryBuilder()
-                        .proteomeId("UP1234567890")
-                        .proteomeType(REPRESENTATIVE)
-                        .build();
-        Proteome xml = converter.toXml(proteome);
-        ProteomeEntry converted = converter.fromXml(xml);
-        assertEquals(REFERENCE, converted.getProteomeType());
-    }
-
     private ProteomeEntry create() {
         String id = "UP000005640";
         ProteomeId proteomeId = new ProteomeIdBuilder(id).build();
