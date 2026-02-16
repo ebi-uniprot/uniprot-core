@@ -1,15 +1,5 @@
 package org.uniprot.core.proteome.impl;
 
-import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.ObjectsForTests.updateCitationBuilderWithCommonAttributes;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.JournalArticle;
@@ -22,6 +12,16 @@ import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.impl.TaxonomyLineageBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.hamcrest.CoreMatchers.hasItem;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.ObjectsForTests.updateCitationBuilderWithCommonAttributes;
 
 class ProteomeEntryBuilderTest {
 
@@ -296,5 +296,70 @@ class ProteomeEntryBuilderTest {
         ProteomeEntry proteome =
                 new ProteomeEntryBuilder().proteomeStatistics(proteomeStatistics).build();
         assertSame(proteomeStatistics, proteome.getProteomeStatistics());
+    }
+
+    @Test
+    void testPanproteomeTaxon() {
+        Taxonomy taxonomy =
+                new TaxonomyBuilder().taxonId(9606).scientificName("Homo sapiens").build();
+        ProteomeEntry proteome = new ProteomeEntryBuilder().panproteomeTaxon(taxonomy).build();
+        assertEquals(taxonomy, proteome.getPanproteomeTaxon());
+    }
+
+    @Test
+    void testRelatedProteomes() {
+        List<RelatedProteome> relatedProteomes = new ArrayList<>();
+        Taxonomy taxonomy =
+                new TaxonomyBuilder().taxonId(9606).scientificName("Homo sapiens").build();
+        String id = "UP000004340";
+        RelatedProteome rproteome1 =
+                new RelatedProteomeBuilder()
+                        .proteomeId(new ProteomeIdBuilder(id).build())
+                        .similarity(0.98f)
+                        .taxonomy(taxonomy)
+                        .build();
+        String id2 = "UP000004343";
+        RelatedProteome rproteome2 =
+                new RelatedProteomeBuilder()
+                        .proteomeId(new ProteomeIdBuilder(id2).build())
+                        .similarity(0.88f)
+                        .taxonomy(taxonomy)
+                        .build();
+        relatedProteomes.add(rproteome1);
+        relatedProteomes.add(rproteome2);
+
+        ProteomeEntry proteome =
+                new ProteomeEntryBuilder().relatedProteomesSet(relatedProteomes).build();
+        assertEquals(2, proteome.getRelatedProteomes().size());
+        assertThat(proteome.getRelatedProteomes(), hasItem(rproteome1));
+        assertThat(proteome.getRelatedProteomes(), hasItem(rproteome2));
+    }
+
+    @Test
+    void testAddRelatedProteome() {
+        String id = "UP000004340";
+        Taxonomy taxonomy =
+                new TaxonomyBuilder().taxonId(9606).scientificName("Homo sapiens").build();
+        RelatedProteome rproteome1 =
+                new RelatedProteomeBuilder()
+                        .proteomeId(new ProteomeIdBuilder(id).build())
+                        .similarity(0.98f)
+                        .taxonomy(taxonomy)
+                        .build();
+        String id2 = "UP000004343";
+        RelatedProteome rproteome2 =
+                new RelatedProteomeBuilder()
+                        .proteomeId(new ProteomeIdBuilder(id2).build())
+                        .similarity(0.88f)
+                        .taxonomy(taxonomy)
+                        .build();
+
+        ProteomeEntry proteome =
+                new ProteomeEntryBuilder()
+                        .relatedProteomesAdd(rproteome1)
+                        .relatedProteomesAdd(rproteome2)
+                        .build();
+        assertEquals(2, proteome.getRelatedProteomes().size());
+        assertThat(proteome.getRelatedProteomes(), hasItem(rproteome2));
     }
 }

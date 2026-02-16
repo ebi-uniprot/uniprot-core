@@ -46,4 +46,8 @@ public interface ProteomeEntry extends Serializable {
     List<ExclusionReason> getExclusionReasons();
 
     ProteomeStatistics getProteomeStatistics();
+
+    Taxonomy getPanproteomeTaxon();
+
+    List<RelatedProteome> getRelatedProteomes();
 }

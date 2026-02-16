@@ -80,6 +80,27 @@ public class ProteomeTest {
         assertTrue(jsonValue.contains("\"score\":95"));
     }
 
+    @Test
+    void testRelatedProteome() {
+        String id = "UP000004340";
+        Taxonomy taxonomy =
+                new TaxonomyBuilder()
+                        .taxonId(9606)
+                        .scientificName("Homo sapiens")
+                        .commonName("Human")
+                        .mnemonic("HUMAN")
+                        .synonymsAdd("synonym")
+                        .build();
+        RelatedProteome rproteome =
+                new RelatedProteomeBuilder()
+                        .proteomeId(new ProteomeIdBuilder(id).build())
+                        .similarity(0.98f)
+                        .taxonomy(taxonomy)
+                        .build();
+        ValidateJson.verifyJsonRoundTripParser(
+                ProteomeJsonConfig.getInstance().getFullObjectMapper(), rproteome);
+    }
+
     public static ProteomeEntry getCompleteProteomeEntry() {
         String id = "UP000005640";
         String description = "about some proteome";
@@ -142,6 +163,17 @@ public class ProteomeTest {
                         .unreviewedProteinCount(10)
                         .isoformProteinCount(23)
                         .build();
+        Taxonomy panproteomeTaxon =
+                new TaxonomyBuilder()
+                        .taxonId(83333)
+                        .scientificName("Escherichia coli (strain K12)")
+                        .commonName("ECOLI")
+                        .mnemonic("ECOLI")
+                        .synonymsAdd("Escherichia coli K-12")
+                        .build();
+        ProteomeId relatedProteomeId = new ProteomeIdBuilder("UP000005641").build();
+        RelatedProteome relatedProteome = new RelatedProteomeBuilder().proteomeId(relatedProteomeId)
+                .similarity(1F).taxonomy(taxonomy).build();
 
         return new ProteomeEntryBuilder()
                 .proteomeId(proteomeId)
@@ -163,6 +195,8 @@ public class ProteomeTest {
                 .exclusionReasonsAdd(ExclusionReason.MIXED_CULTURE)
                 .proteinCount(250)
                 .proteomeStatistics(proteomeStatistics)
+                .panproteomeTaxon(panproteomeTaxon)
+                .relatedProteomesAdd(relatedProteome)
                 .build();
     }
 
