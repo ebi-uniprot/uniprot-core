@@ -222,7 +222,7 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
     public static ProteomeType getProteomeType(String proteomeStatus) {
         ProteomeType proteomeType = ProteomeType.valueOf(proteomeStatus);
         if (SURVEILLANCE.equals(proteomeType)) {
-            return EXCLUDED;
+            return NON_REFERENCE;
         }
         return proteomeType;
     }

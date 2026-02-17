@@ -71,7 +71,7 @@ class ProteomeConverterTest {
                         .build();
         Proteome xml = converter.toXml(proteome);
         ProteomeEntry converted = converter.fromXml(xml);
-        assertEquals(EXCLUDED, converted.getProteomeType());
+        assertEquals(NON_REFERENCE, converted.getProteomeType());
     }
 
     private ProteomeEntry create() {
