@@ -118,21 +118,6 @@ class ProteomeEntryValueMapperTest {
 
         components.add(component1);
         components.add(component2);
-        List<RedundantProteome> redundantProteomes = new ArrayList<>();
-        String rid = "UP000004340";
-        RedundantProteome rproteome1 =
-                new RedundantProteomeBuilder()
-                        .proteomeId(new ProteomeIdBuilder(rid).build())
-                        .similarity(0.98f)
-                        .build();
-        String rid2 = "UP000004343";
-        RedundantProteome rproteome2 =
-                new RedundantProteomeBuilder()
-                        .proteomeId(new ProteomeIdBuilder(rid2).build())
-                        .similarity(0.88f)
-                        .build();
-        redundantProteomes.add(rproteome1);
-        redundantProteomes.add(rproteome2);
         Taxonomy taxonomy =
                 new TaxonomyBuilder()
                         .taxonId(9606)
@@ -159,7 +144,6 @@ class ProteomeEntryValueMapperTest {
                         .citationsSet(Collections.emptyList())
                         .superkingdom(Superkingdom.EUKARYOTA)
                         .componentsSet(components)
-                        .redundantProteomesSet(redundantProteomes)
                         .genomeAssembly(createGenomyAssembly())
                         .proteomeCompletenessReport(createCompletenessReport())
                         .build();

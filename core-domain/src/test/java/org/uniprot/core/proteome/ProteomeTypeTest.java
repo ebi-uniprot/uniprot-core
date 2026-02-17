@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 class ProteomeTypeTest {
     @Test
     void getName_toDisplayName_areSame() {
-        assertSame(ProteomeType.REDUNDANT.getName(), ProteomeType.REDUNDANT.getDisplayName());
+        assertSame(ProteomeType.SURVEILLANCE.getName(), ProteomeType.SURVEILLANCE.getDisplayName());
     }
 
     @Test
@@ -26,7 +26,7 @@ class ProteomeTypeTest {
 
         @Test
         void canConvertUpperCase() {
-            assertEquals(ProteomeType.REDUNDANT, ProteomeType.typeOf("REDUNDANT PROTEOME"));
+            assertEquals(ProteomeType.SURVEILLANCE, ProteomeType.typeOf("SURVEILLANCE PROTEOME"));
         }
 
         @Test
