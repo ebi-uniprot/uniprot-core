@@ -1,0 +1,247 @@
+AC   A0ABM6UB92;
+DE   RecName: Full=Acetyl-coenzyme A synthetase {ECO:0000256|HAMAP-Rule:MF_01123};
+DE            Short=AcCoA synthetase {ECO:0000256|HAMAP-Rule:MF_01123};
+DE            Short=Acs {ECO:0000256|HAMAP-Rule:MF_01123};
+DE            EC=6.2.1.1 {ECO:0000256|HAMAP-Rule:MF_01123};
+DE   AltName: Full=Acetate--CoA ligase {ECO:0000256|HAMAP-Rule:MF_01123};
+DE   AltName: Full=Acyl-activating enzyme {ECO:0000256|HAMAP-Rule:MF_01123};
+GN   Name=acsA {ECO:0000256|HAMAP-Rule:MF_01123};
+CC   -!- FUNCTION: Catalyzes the conversion of acetate into acetyl-CoA (AcCoA),
+CC       an essential intermediate at the junction of anabolic and catabolic
+CC       pathways. AcsA undergoes a two-step reaction. In the first half
+CC       reaction, AcsA combines acetate with ATP to form acetyl-adenylate
+CC       (AcAMP) intermediate. In the second half reaction, it can then transfer
+CC       the acetyl group from AcAMP to the sulfhydryl group of CoA, forming the
+CC       product AcCoA. {ECO:0000256|HAMAP-Rule:MF_01123}.
+CC   -!- COFACTOR:
+CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420;
+CC         Evidence={ECO:0000256|HAMAP-Rule:MF_01123};
+CC   -!- PTM: Acetylated. Deacetylation by the SIR2-homolog deacetylase
+CC       activates the enzyme. {ECO:0000256|HAMAP-Rule:MF_01123}.
+CC   -!- SIMILARITY: Belongs to the ATP-dependent AMP-binding enzyme family.
+CC       {ECO:0000256|ARBA:ARBA00006432, ECO:0000256|HAMAP-Rule:MF_01123}.
+KW   Acetylation {ECO:0000256|ARBA:ARBA00022990, ECO:0000256|HAMAP-
+KW   Rule:MF_01123};
+KW   ATP-binding {ECO:0000256|ARBA:ARBA00022840, ECO:0000256|HAMAP-
+KW   Rule:MF_01123};
+KW   Ligase {ECO:0000256|ARBA:ARBA00022598, ECO:0000256|HAMAP-Rule:MF_01123};
+KW   Magnesium {ECO:0000256|ARBA:ARBA00022842, ECO:0000256|HAMAP-Rule:MF_01123};
+KW   Metal-binding {ECO:0000256|ARBA:ARBA00022723, ECO:0000256|HAMAP-
+KW   Rule:MF_01123};
+KW   Nucleotide-binding {ECO:0000256|ARBA:ARBA00022741, ECO:0000256|HAMAP-
+KW   Rule:MF_01123}.
+FT   DOMAIN          24..81
+FT                   /note="Acetyl-coenzyme A synthetase N-terminal"
+FT                   /evidence="ECO:0000259|Pfam:PF16177"
+FT   DOMAIN          83..466
+FT                   /note="AMP-dependent synthetase/ligase"
+FT                   /evidence="ECO:0000259|Pfam:PF00501"
+FT   DOMAIN          531..609
+FT                   /note="AMP-binding enzyme C-terminal"
+FT                   /evidence="ECO:0000259|Pfam:PF13193"
+FT   BINDING         191..194
+FT                   /ligand="CoA"
+FT                   /ligand_id="ChEBI:CHEBI:57287"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01123"
+FT   BINDING         311
+FT                   /ligand="CoA"
+FT                   /ligand_id="ChEBI:CHEBI:57287"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01123"
+FT   BINDING         335
+FT                   /ligand="CoA"
+FT                   /ligand_id="ChEBI:CHEBI:57287"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01123"
+FT   BINDING         387..389
+FT                   /ligand="ATP"
+FT                   /ligand_id="ChEBI:CHEBI:30616"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01123"
+FT   BINDING         411..416
+FT                   /ligand="ATP"
+FT                   /ligand_id="ChEBI:CHEBI:30616"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01123"
+FT   BINDING         500
+FT                   /ligand="ATP"
+FT                   /ligand_id="ChEBI:CHEBI:30616"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01123"
+FT   BINDING         515
+FT                   /ligand="ATP"
+FT                   /ligand_id="ChEBI:CHEBI:30616"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01123"
+FT   BINDING         523
+FT                   /ligand="CoA"
+FT                   /ligand_id="ChEBI:CHEBI:57287"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01123"
+FT   BINDING         526
+FT                   /ligand="ATP"
+FT                   /ligand_id="ChEBI:CHEBI:30616"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01123"
+FT   BINDING         537
+FT                   /ligand="Mg(2+)"
+FT                   /ligand_id="ChEBI:CHEBI:18420"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01123"
+FT   BINDING         539
+FT                   /ligand="Mg(2+)"
+FT                   /ligand_id="ChEBI:CHEBI:18420"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01123"
+FT   BINDING         542
+FT                   /ligand="Mg(2+)"
+FT                   /ligand_id="ChEBI:CHEBI:18420"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01123"
+FT   BINDING         584
+FT                   /ligand="CoA"
+FT                   /ligand_id="ChEBI:CHEBI:57287"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01123"
+FT   MOD_RES         609
+FT                   /note="N6-acetyllysine"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01123"
+//
+AC   A0ABM6UD37;
+DE   RecName: Full=GTPase Era {ECO:0000256|ARBA:ARBA00020484, ECO:0000256|HAMAP-Rule:MF_00367};
+GN   Name=era {ECO:0000256|HAMAP-Rule:MF_00367};
+CC   -!- FUNCTION: An essential GTPase that binds both GDP and GTP, with rapid
+CC       nucleotide exchange. Plays a role in 16S rRNA processing and 30S
+CC       ribosomal subunit biogenesis and possibly also in cell cycle regulation
+CC       and energy metabolism. {ECO:0000256|HAMAP-Rule:MF_00367}.
+CC   -!- SUBUNIT: Monomer. {ECO:0000256|HAMAP-Rule:MF_00367}.
+CC   -!- SUBCELLULAR LOCATION: Cytoplasm {ECO:0000256|HAMAP-Rule:MF_00367}. Cell
+CC       membrane {ECO:0000256|HAMAP-Rule:MF_00367}; Peripheral membrane protein
+CC       {ECO:0000256|HAMAP-Rule:MF_00367}.
+CC   -!- SIMILARITY: Belongs to the TRAFAC class TrmE-Era-EngA-EngB-Septin-like
+CC       GTPase superfamily. Era GTPase family. {ECO:0000256|ARBA:ARBA00007921,
+CC       ECO:0000256|HAMAP-Rule:MF_00367, ECO:0000256|PROSITE-ProRule:PRU01050,
+CC       ECO:0000256|RuleBase:RU003761}.
+KW   Cell membrane {ECO:0000256|HAMAP-Rule:MF_00367};
+KW   Cytoplasm {ECO:0000256|HAMAP-Rule:MF_00367};
+KW   GTP-binding {ECO:0000256|ARBA:ARBA00023134, ECO:0000256|HAMAP-
+KW   Rule:MF_00367}; Membrane {ECO:0000256|HAMAP-Rule:MF_00367};
+KW   Nucleotide-binding {ECO:0000256|ARBA:ARBA00022741, ECO:0000256|HAMAP-
+KW   Rule:MF_00367}; Ribosome biogenesis {ECO:0000256|HAMAP-Rule:MF_00367};
+KW   RNA-binding {ECO:0000256|ARBA:ARBA00022884, ECO:0000256|HAMAP-
+KW   Rule:MF_00367}; rRNA-binding {ECO:0000256|HAMAP-Rule:MF_00367}.
+FT   DOMAIN          8..176
+FT                   /note="Era-type G"
+FT                   /evidence="ECO:0000259|PROSITE:PS51713"
+FT   DOMAIN          199..283
+FT                   /note="KH type-2"
+FT                   /evidence="ECO:0000259|PROSITE:PS50823"
+FT   REGION          16..23
+FT                   /note="G1"
+FT                   /evidence="ECO:0000256|PROSITE-ProRule:PRU01050"
+FT   REGION          42..46
+FT                   /note="G2"
+FT                   /evidence="ECO:0000256|PROSITE-ProRule:PRU01050"
+FT   REGION          63..66
+FT                   /note="G3"
+FT                   /evidence="ECO:0000256|PROSITE-ProRule:PRU01050"
+FT   REGION          125..128
+FT                   /note="G4"
+FT                   /evidence="ECO:0000256|PROSITE-ProRule:PRU01050"
+FT   REGION          155..157
+FT                   /note="G5"
+FT                   /evidence="ECO:0000256|PROSITE-ProRule:PRU01050"
+FT   BINDING         16..23
+FT                   /ligand="GTP"
+FT                   /ligand_id="ChEBI:CHEBI:37565"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_00367"
+FT   BINDING         63..67
+FT                   /ligand="GTP"
+FT                   /ligand_id="ChEBI:CHEBI:37565"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_00367"
+FT   BINDING         125..128
+FT                   /ligand="GTP"
+FT                   /ligand_id="ChEBI:CHEBI:37565"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_00367"
+//
+AC   A0ABM6UN56;
+DE   RecName: Full=Pimeloyl-[acyl-carrier protein] methyl ester esterase {ECO:0000256|HAMAP-Rule:MF_01260};
+DE            EC=3.1.1.85 {ECO:0000256|HAMAP-Rule:MF_01260};
+DE   AltName: Full=Biotin synthesis protein BioH {ECO:0000256|HAMAP-Rule:MF_01260};
+DE   AltName: Full=Carboxylesterase BioH {ECO:0000256|HAMAP-Rule:MF_01260};
+GN   Name=bioH {ECO:0000256|HAMAP-Rule:MF_01260};
+CC   -!- FUNCTION: The physiological role of BioH is to remove the methyl group
+CC       introduced by BioC when the pimeloyl moiety is complete. It allows to
+CC       synthesize pimeloyl-ACP via the fatty acid synthetic pathway through
+CC       the hydrolysis of the ester bonds of pimeloyl-ACP esters.
+CC       {ECO:0000256|HAMAP-Rule:MF_01260}.
+CC   -!- PATHWAY: Cofactor biosynthesis; biotin biosynthesis.
+CC       {ECO:0000256|HAMAP-Rule:MF_01260}.
+CC   -!- SUBUNIT: Monomer. {ECO:0000256|HAMAP-Rule:MF_01260}.
+CC   -!- SUBCELLULAR LOCATION: Cytoplasm {ECO:0000256|HAMAP-Rule:MF_01260}.
+CC   -!- SIMILARITY: Belongs to the AB hydrolase superfamily. Carboxylesterase
+CC       BioH family. {ECO:0000256|HAMAP-Rule:MF_01260}.
+KW   Biotin biosynthesis {ECO:0000256|ARBA:ARBA00022756, ECO:0000256|HAMAP-
+KW   Rule:MF_01260};
+KW   Cytoplasm {ECO:0000256|ARBA:ARBA00022490, ECO:0000256|HAMAP-Rule:MF_01260};
+KW   Hydrolase {ECO:0000256|ARBA:ARBA00022801, ECO:0000256|HAMAP-Rule:MF_01260};
+KW   Serine esterase {ECO:0000256|ARBA:ARBA00022487, ECO:0000256|HAMAP-
+KW   Rule:MF_01260}.
+FT   DOMAIN          16..242
+FT                   /note="AB hydrolase-1"
+FT                   /evidence="ECO:0000259|Pfam:PF00561"
+FT   ACT_SITE        82
+FT                   /note="Nucleophile"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01260"
+FT   ACT_SITE        207
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01260"
+FT   ACT_SITE        235
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01260"
+FT   BINDING         22
+FT                   /ligand="substrate"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01260"
+FT   BINDING         82..83
+FT                   /ligand="substrate"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01260"
+FT   BINDING         143..147
+FT                   /ligand="substrate"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01260"
+FT   BINDING         235
+FT                   /ligand="substrate"
+FT                   /evidence="ECO:0000256|HAMAP-Rule:MF_01260"
+//
+AC   A0A009HMB5;
+CC   -!- SIMILARITY: Belongs to the 'phage' integrase family.
+CC       {ECO:0000256|ARBA:ARBA00008857}.
+KW   DNA integration {ECO:0000256|ARBA:ARBA00022908};
+KW   DNA recombination {ECO:0000256|ARBA:ARBA00023172};
+KW   DNA-binding {ECO:0000256|ARBA:ARBA00023125, ECO:0000256|PROSITE-
+KW   ProRule:PRU01248}.
+FT   DOMAIN          103..185
+FT                   /note="Core-binding (CB)"
+FT                   /evidence="ECO:0000259|PROSITE:PS51900"
+FT   DOMAIN          209..401
+FT                   /note="Tyr recombinase"
+FT                   /evidence="ECO:0000259|PROSITE:PS51898"
+//
+AC   A0A009HMZ2;
+KW   Metal-binding {ECO:0000256|ARBA:ARBA00022723}.
+FT   DOMAIN          14..277
+FT                   /note="CoA carboxyltransferase N-terminal"
+FT                   /evidence="ECO:0000259|PROSITE:PS50980"
+FT   DOMAIN          280..526
+FT                   /note="CoA carboxyltransferase C-terminal"
+FT                   /evidence="ECO:0000259|PROSITE:PS50989"
+//
+AC   A0A009HN62;
+CC   -!- SUBCELLULAR LOCATION: Cell membrane {ECO:0000256|ARBA:ARBA00004651};
+CC       Multi-pass membrane protein {ECO:0000256|ARBA:ARBA00004651}.
+KW   Cell membrane {ECO:0000256|ARBA:ARBA00022475};
+KW   Membrane {ECO:0000256|ARBA:ARBA00023136, ECO:0000256|SAM:Phobius};
+KW   Transmembrane {ECO:0000256|ARBA:ARBA00022692, ECO:0000256|SAM:Phobius};
+KW   Transmembrane helix {ECO:0000256|ARBA:ARBA00022989,
+KW   ECO:0000256|SAM:Phobius}.
+FT   TRANSMEM        6..26
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000256|SAM:Phobius"
+FT   TRANSMEM        38..62
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000256|SAM:Phobius"
+FT   TRANSMEM        68..89
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000256|SAM:Phobius"
+FT   TRANSMEM        157..176
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000256|SAM:Phobius"
+FT   TRANSMEM        188..209
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000256|SAM:Phobius"
+//

@@ -28,16 +28,16 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 
     private final int numberOfThreads;
     private final List<ParsingTask> workers = new ArrayList<>();
-    private final BlockingQueue<UniProtKBEntry> entriesQueue;
-    private final BlockingQueue<String> ffQueue;
+    protected final BlockingQueue<UniProtKBEntry> entriesQueue;
+    protected final BlockingQueue<String> ffQueue;
 
-    private CountDownLatch parsingJobCountDownLatch;
-    private SupportingDataMap supportingDataMap;
+    protected CountDownLatch parsingJobCountDownLatch;
+    protected SupportingDataMap supportingDataMap;
 
     // count of the entries that has been produced and consumed.
     private AtomicLong entryCounter = new AtomicLong();
 
-    private boolean ignoreWrong = false;
+    protected boolean ignoreWrong = false;
 
     public DefaultUniProtEntryIterator() {
         this(1, 5000, 50000);
@@ -162,8 +162,8 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
         this.parsingJobCountDownLatch = new CountDownLatch(threadCount);
 
         for (int i = 0; i < threadCount; i++) {
-            ParsingTask parsingTask =
-                    new ParsingTask(ffQueue, entriesQueue, this.parsingJobCountDownLatch);
+            ParsingTask parsingTask =createParsingTask();
+                    
             parsingTask.setName("Parsing Worker No. " + (i + 1));
             this.workers.add(parsingTask);
             parsingTask.start();
@@ -179,6 +179,9 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
         }
     }
 
+    protected ParsingTask createParsingTask() {
+    	return new ParsingTask(ffQueue, entriesQueue, this.parsingJobCountDownLatch);
+    }
     public class EntryStringEmitter implements Runnable {
         private final EntryReader entryReader;
 
@@ -255,14 +258,18 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
         private final AtomicBoolean notFinished = new AtomicBoolean(false);
         private UniProtParser parser;
 
-        ParsingTask(
+        public ParsingTask(
                 BlockingQueue<String> ffQueue,
                 BlockingQueue<UniProtKBEntry> queue,
                 CountDownLatch countDown) {
             this.ffQueue = ffQueue;
             this.queue = queue;
             this.countDown = countDown;
-            this.parser = new DefaultUniProtParser(supportingDataMap, ignoreWrong);
+            this.parser = createEntryParser();
+        }
+        
+        protected UniProtParser createEntryParser() {
+        	return new DefaultUniProtParser(supportingDataMap, ignoreWrong);
         }
 
         void finish() {
