@@ -1,17 +1,18 @@
 package org.uniprot.core.uniparc.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.Property;
+import org.uniprot.core.uniparc.Proteome;
+import org.uniprot.core.uniparc.UniParcCrossReference;
+import org.uniprot.core.uniparc.UniParcDatabase;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.Property;
-import org.uniprot.core.uniparc.UniParcCrossReference;
-import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.uniprotkb.taxonomy.Organism;
-import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author jluo
@@ -104,19 +105,30 @@ class UniParcCrossReferenceBuilderTest {
     }
 
     @Test
-    void testProteomeId() {
+    void testProteomeIdComponentsSet() {
         String proteomeId = "proteomeId value";
+        String component = "component value";
+        List<Proteome> proteomeIdComponents = List.of(new ProteomeBuilder().id(proteomeId).component(component).build());
         UniParcCrossReference xref =
-                new UniParcCrossReferenceBuilder().proteomeId(proteomeId).build();
-        assertEquals(proteomeId, xref.getProteomeId());
+                new UniParcCrossReferenceBuilder().proteomesSet(proteomeIdComponents).build();
+        assertEquals(proteomeIdComponents, xref.getProteomes());
     }
 
     @Test
-    void testComponent() {
+    void testProteomeIdComponentsAdd() {
+        String proteomeId = "proteomeId value";
         String component = "component value";
-        UniParcCrossReference xref =
-                new UniParcCrossReferenceBuilder().component(component).build();
-        assertEquals(component, xref.getComponent());
+        List<Proteome> proteomeIdComponents = new ArrayList<>();
+        proteomeIdComponents.add(new ProteomeBuilder().id(proteomeId).component(component).build());
+        UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder().proteomesSet(proteomeIdComponents);
+        UniParcCrossReference xref = builder.build();
+        assertEquals(proteomeIdComponents, xref.getProteomes());
+        String proteomeId2 = "proteomeId value2";
+        String component2 = "component value2";
+        Proteome proteomeIdComponent2 = new ProteomeBuilder().id(proteomeId2).component(component2).build();
+        builder.proteomesAdd(proteomeIdComponent2);
+        xref = builder.build();
+        assertEquals(2, xref.getProteomes().size());
     }
 
     @Test

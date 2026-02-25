@@ -1,6 +1,13 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.Property;
+import org.uniprot.core.Sequence;
+import org.uniprot.core.impl.SequenceBuilder;
+import org.uniprot.core.uniparc.*;
+import org.uniprot.core.uniparc.impl.*;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -8,15 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.Property;
-import org.uniprot.core.Sequence;
-import org.uniprot.core.impl.SequenceBuilder;
-import org.uniprot.core.uniparc.*;
-import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.uniparc.impl.*;
-import org.uniprot.core.uniprotkb.taxonomy.Organism;
-import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author jluo
@@ -162,8 +161,7 @@ class UniParcEntryValueMapperTest {
                         .propertiesSet(properties2)
                         .organism(taxonomy2)
                         .proteinName("some pname")
-                        .proteomeId("UP00000564")
-                        .component("chromosome 1")
+                        .proteomesAdd(new ProteomeBuilder().id("UP00000564").component("chromosome 1").build())
                         .build();
 
         return Arrays.asList(xref, xref2);

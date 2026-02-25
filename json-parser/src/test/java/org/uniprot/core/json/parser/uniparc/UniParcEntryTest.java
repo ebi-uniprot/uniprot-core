@@ -7,11 +7,8 @@ import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
-import org.uniprot.core.uniparc.SequenceFeature;
-import org.uniprot.core.uniparc.SignatureDbType;
+import org.uniprot.core.uniparc.*;
 import org.uniprot.core.uniparc.impl.*;
-import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
@@ -72,7 +69,7 @@ public class UniParcEntryTest {
                         .synonymsAdd("syn name")
                         .evidencesSet(evidences)
                         .build();
-
+        Proteome proteomeIdComponent = new ProteomeBuilder().id("UPI").component( "ComponentValue").build();
         builder.uniParcId("UPI0000083A08")
                 .sequence(uniSeq)
                 .sequenceFeaturesSet(sfs)
@@ -87,8 +84,7 @@ public class UniParcEntryTest {
                                 .lastUpdated(LocalDate.of(2007, 11, 22))
                                 .organism(organism)
                                 .geneName("Gel")
-                                .proteomeId("UPI")
-                                .component("ComponentValue")
+                                .proteomesAdd(proteomeIdComponent)
                                 .chain("chainValue")
                                 .ncbiGi("ncbiGiValue")
                                 .proteinName("proteinNameValue")
@@ -105,8 +101,7 @@ public class UniParcEntryTest {
                 .lastUpdated(LocalDate.of(2019, 5, 8))
                 .organism(organism)
                 .geneName("Gel")
-                .proteomeId("UPI")
-                .component("ComponentValue")
+                .proteomesAdd(proteomeIdComponent)
                 .chain("chainValue")
                 .ncbiGi("ncbiGiValue")
                 .proteinName("proteinNameValue");

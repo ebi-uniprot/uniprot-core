@@ -1,9 +1,10 @@
 package org.uniprot.core.uniparc;
 
-import java.time.LocalDate;
-
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
+
+import java.time.LocalDate;
+import java.util.List;
 
 /**
  * @author jluo
@@ -37,7 +38,6 @@ public interface UniParcCrossReference extends CrossReference<UniParcDatabase> {
 
     String getNcbiGi();
 
-    String getProteomeId();
+    List<Proteome> getProteomes();
 
-    String getComponent();
 }

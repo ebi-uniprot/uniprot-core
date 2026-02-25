@@ -1,7 +1,9 @@
 package org.uniprot.core.xml;
 
 import com.google.common.base.Strings;
+import org.uniprot.core.uniparc.Proteome;
 import org.uniprot.core.uniparc.UniParcCrossReference;
+import org.uniprot.core.uniparc.impl.ProteomeBuilder;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
@@ -15,8 +17,7 @@ public class CrossReferenceConverterUtils {
     public static final String PROPERTY_PROTEIN_NAME = "protein_name";
     public static final String PROPERTY_CHAIN = "chain";
     public static final String PROPERTY_NCBI_GI = "NCBI_GI";
-    public static final String PROPERTY_PROTEOME_ID = "proteome_id";
-    public static final String PROPERTY_COMPONENT = "component";
+    public static final String PROPERTY_PROTEOMEID_COMPONENT = "proteomeid_component";
     public static final String PROPERTY_NCBI_TAXONOMY_ID = "NCBI_taxonomy_id";
     public static final String PROPERTY_UNIPROTKB_ACCESSION = "UniProtKB_accession";
     public static final String PROPERTY_SOURCES = UniParcCrossReference.PROPERTY_SOURCES;
@@ -37,11 +38,8 @@ public class CrossReferenceConverterUtils {
             case PROPERTY_NCBI_GI:
                 builder.ncbiGi(propertyValue);
                 break;
-            case PROPERTY_PROTEOME_ID:
-                builder.proteomeId(propertyValue);
-                break;
-            case PROPERTY_COMPONENT:
-                builder.component(propertyValue);
+            case PROPERTY_PROTEOMEID_COMPONENT:
+                builder.proteomesAdd(getProteomeIdComponent(propertyValue));
                 break;
             case PROPERTY_NCBI_TAXONOMY_ID:
                 builder.organism(CrossReferenceConverterUtils.convertTaxonomy(propertyValue, taxonomyRepo));
@@ -82,5 +80,13 @@ public class CrossReferenceConverterUtils {
         if (taxonomyRepo == null) {
             return Optional.empty();
         } else return taxonomyRepo.retrieveNodeUsingTaxID(Integer.parseInt(taxId));
+    }
+
+    private static Proteome getProteomeIdComponent(String propertyValue) {
+        String[] proteomeIdComponentValues = propertyValue.split(":");
+        if (proteomeIdComponentValues.length < 2) {
+            throw new XmlReaderException("Unable to parse proteomeId component: " + propertyValue);
+        }
+        return new ProteomeBuilder().id(proteomeIdComponentValues[0]).component(proteomeIdComponentValues[1]).build();
     }
 }
