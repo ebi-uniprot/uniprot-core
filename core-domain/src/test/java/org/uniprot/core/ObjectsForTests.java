@@ -572,22 +572,17 @@ public class ObjectsForTests {
         ComponentImpl component =
                 new ComponentImpl("name", "desc", 5, genomeAnnotation, proteomeXReferenceTypes());
         JournalArticleBuilder builder = new JournalArticleBuilder();
-        RedundantProteome rp =
-                new RedundantProteomeBuilder().proteomeId("id").similarity(4.5F).build();
         updateCitationBuilderWithCommonAttributes(builder);
         return new ProteomeEntryBuilder()
                 .proteomeId("id")
                 .taxonomy(taxonomies().get(0))
                 .description("description")
                 .modified(LocalDate.now())
-                .proteomeType(ProteomeType.NORMAL)
-                .redundantTo(new ProteomeIdBuilder("id1").build())
+                .proteomeType(ProteomeType.REFERENCE)
                 .strain("strain")
                 .isolate("isolate")
                 .componentsAdd(component)
                 .citationsAdd(builder.build())
-                .redundantProteomesAdd(rp)
-                .panproteome(new ProteomeIdBuilder("panProteome").build())
                 .annotationScore(5)
                 .superkingdom(Superkingdom.EUKARYOTA)
                 .taxonLineagesAdd(getCompleteTaxonomyLineage())

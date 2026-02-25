@@ -1,11 +1,5 @@
 package org.uniprot.core.proteome.impl;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
 import org.uniprot.core.Builder;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.proteome.*;
@@ -13,19 +7,21 @@ import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.util.Utils;
 
+import javax.annotation.Nonnull;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
     private ProteomeId id;
     private String description;
     private Taxonomy taxonomy;
     private LocalDate modified;
-    private ProteomeType proteomeType = ProteomeType.NORMAL;
-    private ProteomeId redundantTo;
+    private ProteomeType proteomeType;
     private String strain;
     private String isolate;
     private List<Component> components = new ArrayList<>();
     private List<Citation> citations = new ArrayList<>();
-    private List<RedundantProteome> redundantProteomes = new ArrayList<>();
-    private ProteomeId panproteome;
     private Integer annotationScore;
     private Integer geneCount;
     private Superkingdom superkingdom;
@@ -36,6 +32,8 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
     private List<ExclusionReason> exclusionReasons = new ArrayList<>();
     private Integer proteinCount;
     private ProteomeStatistics proteomeStatistics;
+    private Taxonomy panproteomeTaxon;
+    private List<RelatedProteome> relatedProteomes = new ArrayList<>();
 
     @Override
     public @Nonnull ProteomeEntry build() {
@@ -45,13 +43,10 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 description,
                 modified,
                 proteomeType,
-                redundantTo,
                 strain,
                 isolate,
                 components,
                 citations,
-                redundantProteomes,
-                panproteome,
                 annotationScore,
                 superkingdom,
                 geneCount,
@@ -61,7 +56,9 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 genomeAnnotation,
                 exclusionReasons,
                 proteinCount,
-                proteomeStatistics);
+                proteomeStatistics,
+                panproteomeTaxon,
+                relatedProteomes);
     }
 
     public static @Nonnull ProteomeEntryBuilder from(@Nonnull ProteomeEntry instance) {
@@ -71,13 +68,10 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 .description(instance.getDescription())
                 .modified(instance.getModified())
                 .proteomeType(instance.getProteomeType())
-                .redundantTo(instance.getRedundantTo())
                 .strain(instance.getStrain())
                 .isolate(instance.getIsolate())
                 .componentsSet(instance.getComponents())
                 .citationsSet(instance.getCitations())
-                .redundantProteomesSet(instance.getRedudantProteomes())
-                .panproteome(instance.getPanproteome())
                 .annotationScore(instance.getAnnotationScore())
                 .superkingdom(instance.getSuperkingdom())
                 .geneCount(instance.getGeneCount())
@@ -87,7 +81,9 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
                 .genomeAnnotation(instance.getGenomeAnnotation())
                 .exclusionReasonsSet(instance.getExclusionReasons())
                 .proteinCount(instance.getProteinCount())
-                .proteomeStatistics(instance.getProteomeStatistics());
+                .proteomeStatistics(instance.getProteomeStatistics())
+                .panproteomeTaxon(instance.getPanproteomeTaxon())
+                .relatedProteomesSet(instance.getRelatedProteomes());
     }
 
     public @Nonnull ProteomeEntryBuilder proteomeId(ProteomeId id) {
@@ -125,11 +121,6 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
         return this;
     }
 
-    public @Nonnull ProteomeEntryBuilder redundantTo(ProteomeId redundantTo) {
-        this.redundantTo = redundantTo;
-        return this;
-    }
-
     public @Nonnull ProteomeEntryBuilder strain(String strain) {
         this.strain = strain;
         return this;
@@ -157,23 +148,6 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
 
     public @Nonnull ProteomeEntryBuilder citationsAdd(Citation citation) {
         Utils.addOrIgnoreNull(citation, citations);
-        return this;
-    }
-
-    public @Nonnull ProteomeEntryBuilder redundantProteomesSet(
-            List<RedundantProteome> redundantProteomes) {
-        this.redundantProteomes = Utils.modifiableList(redundantProteomes);
-        return this;
-    }
-
-    public @Nonnull ProteomeEntryBuilder redundantProteomesAdd(
-            RedundantProteome redundantProteome) {
-        Utils.addOrIgnoreNull(redundantProteome, redundantProteomes);
-        return this;
-    }
-
-    public @Nonnull ProteomeEntryBuilder panproteome(ProteomeId panproteome) {
-        this.panproteome = panproteome;
         return this;
     }
 
@@ -231,6 +205,21 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
 
     public @Nonnull ProteomeEntryBuilder proteomeStatistics(ProteomeStatistics proteomeStatistics) {
         this.proteomeStatistics = proteomeStatistics;
+        return this;
+    }
+
+    public @Nonnull ProteomeEntryBuilder panproteomeTaxon(Taxonomy panproteomeTaxon) {
+        this.panproteomeTaxon = panproteomeTaxon;
+        return this;
+    }
+
+    public @Nonnull ProteomeEntryBuilder relatedProteomesSet(List<RelatedProteome> relatedProteomes) {
+        this.relatedProteomes = Utils.modifiableList(relatedProteomes);
+        return this;
+    }
+
+    public @Nonnull ProteomeEntryBuilder relatedProteomesAdd(RelatedProteome relatedProteome) {
+        Utils.addOrIgnoreNull(relatedProteome, relatedProteomes);
         return this;
     }
 }

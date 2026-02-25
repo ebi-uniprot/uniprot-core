@@ -19,8 +19,6 @@ public interface ProteomeEntry extends Serializable {
 
     ProteomeType getProteomeType();
 
-    ProteomeId getRedundantTo();
-
     String getStrain();
 
     String getIsolate();
@@ -28,10 +26,6 @@ public interface ProteomeEntry extends Serializable {
     List<Component> getComponents();
 
     List<Citation> getCitations();
-
-    List<RedundantProteome> getRedudantProteomes();
-
-    ProteomeId getPanproteome();
 
     Integer getAnnotationScore();
 
@@ -52,4 +46,8 @@ public interface ProteomeEntry extends Serializable {
     List<ExclusionReason> getExclusionReasons();
 
     ProteomeStatistics getProteomeStatistics();
+
+    Taxonomy getPanproteomeTaxon();
+
+    List<RelatedProteome> getRelatedProteomes();
 }

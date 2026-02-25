@@ -20,6 +20,7 @@ import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 import org.uniprot.core.xml.jaxb.proteome.Proteome;
 
+
 class ProteomeConverterTest {
 
     @Test
@@ -28,6 +29,7 @@ class ProteomeConverterTest {
         ProteomeEntry proteome = create();
         Proteome xml = converter.toXml(proteome);
         ProteomeEntry converted = converter.fromXml(xml);
+        System.out.println(ProteomeXMLTestHelper.toXmlString(xml, Proteome.class, "proteome"));
         assertEquals(proteome, converted);
     }
 
@@ -60,57 +62,16 @@ class ProteomeConverterTest {
     }
 
     @Test
-    void testRepresentativeProteome() {
+    void testFromSurveillanceProteome() {
         ProteomeConverter converter = new ProteomeConverter();
         ProteomeEntry proteome =
                 new ProteomeEntryBuilder()
                         .proteomeId("UP1234567890")
-                        .proteomeType(REPRESENTATIVE)
+                        .proteomeType(SURVEILLANCE)
                         .build();
         Proteome xml = converter.toXml(proteome);
         ProteomeEntry converted = converter.fromXml(xml);
-        assertEquals(proteome, converted);
-    }
-
-    @Test
-    void testRepresentativeAndReferenceProteome() {
-        ProteomeConverter converter = new ProteomeConverter();
-        ProteomeEntry proteome =
-                new ProteomeEntryBuilder()
-                        .proteomeId("UP1234567890")
-                        .proteomeType(REFERENCE_AND_REPRESENTATIVE)
-                        .build();
-        Proteome xml = converter.toXml(proteome);
-        ProteomeEntry converted = converter.fromXml(xml);
-        assertEquals(proteome, converted);
-    }
-
-    @Test
-    void testNormalProteome() {
-        ProteomeConverter converter = new ProteomeConverter();
-        ProteomeEntry proteome =
-                new ProteomeEntryBuilder()
-                        .proteomeId("UP1234567890")
-                        .proteomeType(NORMAL)
-                        .proteinCount(245)
-                        .build();
-        Proteome xml = converter.toXml(proteome);
-        ProteomeEntry converted = converter.fromXml(xml);
-        assertEquals(proteome, converted);
-    }
-
-    @Test
-    void testRedundantProteome() {
-        ProteomeConverter converter = new ProteomeConverter();
-        ProteomeEntry proteome =
-                new ProteomeEntryBuilder()
-                        .proteomeId("UP1234567890")
-                        .proteomeType(REDUNDANT)
-                        .redundantTo(new ProteomeIdBuilder("UP1234567891").build())
-                        .build();
-        Proteome xml = converter.toXml(proteome);
-        ProteomeEntry converted = converter.fromXml(xml);
-        assertEquals(proteome, converted);
+        assertEquals(NON_REFERENCE, converted.getProteomeType());
     }
 
     private ProteomeEntry create() {
@@ -119,8 +80,6 @@ class ProteomeConverterTest {
         String description = "about some proteome";
         Taxonomy taxonomy = new TaxonomyBuilder().taxonId(9606).build();
         LocalDate modified = LocalDate.of(2015, 11, 5);
-        String reId = "UP000005641";
-        ProteomeId redId = new ProteomeIdBuilder(reId).build();
         List<CrossReference<ProteomeDatabase>> xrefs = new ArrayList<>();
         CrossReference<ProteomeDatabase> xref1 =
                 new CrossReferenceBuilder<ProteomeDatabase>()
@@ -182,6 +141,24 @@ class ProteomeConverterTest {
                         .cpdReport(ScoreCPDConverterTest.createCPDReport())
                         .build();
 
+        Taxonomy panproteomeTaxonomy = new TaxonomyBuilder().taxonId(9605).build();
+        // related proteomes
+        String id1 = "UP1234567870";
+        ProteomeId proteomeId1 = new ProteomeIdBuilder(id1).build();
+        float similarity1 = 0.5f;
+        Taxonomy taxon1 = new TaxonomyBuilder().taxonId(9600).build();
+        RelatedProteome relatedProteome1 = new RelatedProteomeBuilder().proteomeId(proteomeId1)
+                .similarity(similarity1).taxonomy(taxon1).build();
+        Taxonomy taxon2 = new TaxonomyBuilder().taxonId(9601).build();
+        float similarity2 = 0.6f;
+        String id2 = "UP1234567880";
+        ProteomeId proteomeId2 = new ProteomeIdBuilder(id2).build();
+        RelatedProteome relatedProteome2 = new RelatedProteomeBuilder().proteomeId(proteomeId2)
+                .similarity(similarity2).taxonomy(taxon2).build();
+        List<RelatedProteome> relatedProteomes = new ArrayList<>();
+        relatedProteomes.add(relatedProteome1);
+        relatedProteomes.add(relatedProteome2);
+
         ProteomeEntryBuilder builder =
                 new ProteomeEntryBuilder()
                         .proteomeId(proteomeId)
@@ -191,8 +168,6 @@ class ProteomeConverterTest {
                         .strain("strain value")
                         .modified(modified)
                         .proteomeType(EXCLUDED)
-                        .redundantTo(redId)
-                        .panproteome(redId)
                         .componentsSet(components)
                         .citationsSet(citations)
                         .annotationScore(15)
@@ -200,7 +175,9 @@ class ProteomeConverterTest {
                         .proteomeCompletenessReport(report)
                         .genomeAnnotation(genomeAnnotation)
                         .exclusionReasonsAdd(ExclusionReason.METAGENOME)
-                        .exclusionReasonsAdd(ExclusionReason.CONTAMINATED);
+                        .exclusionReasonsAdd(ExclusionReason.CONTAMINATED)
+                        .panproteomeTaxon(panproteomeTaxonomy)
+                        .relatedProteomesSet(relatedProteomes);
         return builder.build();
     }
 
