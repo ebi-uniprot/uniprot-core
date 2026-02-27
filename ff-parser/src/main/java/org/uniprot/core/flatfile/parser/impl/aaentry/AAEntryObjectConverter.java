@@ -43,15 +43,21 @@ public class AAEntryObjectConverter implements Converter<AAEntryObject, UniProtK
                 new UniProtKBEntryBuilder(
                                 acLineObj.getPrimaryAccession().getValue(),"", UniProtKBEntryType.AA);
 
-        if (f.cc != null) activeEntryBuilder.commentsSet(ccLineConverter.convert(f.cc));
-        if(f.de !=null)
-        activeEntryBuilder.proteinDescription(deLineConverter.convert(f.de));
+        if (f.cc != null){
+            activeEntryBuilder.commentsSet(ccLineConverter.convert(f.cc));
+        }
+        if (f.de != null) {
+            activeEntryBuilder.proteinDescription(deLineConverter.convert(f.de));
+        }
        
 
         if (f.ft != null) {
             activeEntryBuilder.featuresSet(ftLineConverter.convert(f.ft));
         }
-        if (f.gn != null) activeEntryBuilder.genesSet(gnLineConverter.convert(f.gn));
+        if (f.gn != null){
+            activeEntryBuilder.genesSet(gnLineConverter.convert(f.gn));
+        }
+
 
         if (f.kw != null) {
             activeEntryBuilder.keywordsSet(kwLineConverter.convert(f.kw));
