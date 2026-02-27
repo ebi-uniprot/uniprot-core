@@ -1,13 +1,10 @@
 package org.uniprot.core.flatfile.parser.impl.aaentry;
 
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.CountDownLatch;
 
 import org.uniprot.core.flatfile.parser.UniProtParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniProtEntryIterator;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniProtParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniProtEntryIterator.ParsingTask;
 import org.uniprot.core.uniprotkb.UniProtKBEntry;
 
 /**

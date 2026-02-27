@@ -27,13 +27,12 @@ import org.uniprot.core.flatfile.antlr.UniprotAAParser;
 
 
 public interface AAGrammarFactory<L extends Lexer, P extends Parser>  {
-    public enum GrammarFactoryEnum {
+    enum GrammarFactoryEnum {
         UNIPROT_AA, AC, KW, GN, DE, FT, CC;
 
         private AAGrammarFactory factory;
 
         private AAGrammarFactory createFactory() {
-            final String name = this.name();
 
             return new AAGrammarFactory() {
                 @Override

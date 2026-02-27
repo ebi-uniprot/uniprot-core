@@ -130,24 +130,22 @@ class ProteomeEntryValueMapperTest {
         TaxonomyLineage taxon2 =
                 new TaxonomyLineageBuilder().taxonId(9605).scientificName("Homo").build();
 
-        ProteomeEntry proteome =
-                new ProteomeEntryBuilder()
-                        .proteomeId(proteomeId)
-                        .proteinCount(200)
-                        .description(description)
-                        .taxonomy(taxonomy)
-                        .modified(modified)
-                        .proteomeType(ProteomeType.REFERENCE)
-                        .strain("some Strain")
-                        .taxonLineagesAdd(taxon1)
-                        .taxonLineagesAdd(taxon2)
-                        .citationsSet(Collections.emptyList())
-                        .superkingdom(Superkingdom.EUKARYOTA)
-                        .componentsSet(components)
-                        .genomeAssembly(createGenomyAssembly())
-                        .proteomeCompletenessReport(createCompletenessReport())
-                        .build();
-        return proteome;
+        return new ProteomeEntryBuilder()
+                .proteomeId(proteomeId)
+                .proteinCount(200)
+                .description(description)
+                .taxonomy(taxonomy)
+                .modified(modified)
+                .proteomeType(ProteomeType.REFERENCE)
+                .strain("some Strain")
+                .taxonLineagesAdd(taxon1)
+                .taxonLineagesAdd(taxon2)
+                .citationsSet(Collections.emptyList())
+                .superkingdom(Superkingdom.EUKARYOTA)
+                .componentsSet(components)
+                .genomeAssembly(createGenomyAssembly())
+                .proteomeCompletenessReport(createCompletenessReport())
+                .build();
     }
 
     private GenomeAssembly createGenomyAssembly() {

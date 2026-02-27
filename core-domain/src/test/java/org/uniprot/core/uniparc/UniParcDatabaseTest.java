@@ -124,7 +124,6 @@ class UniParcDatabaseTest {
     }
 
     private String getCleanDisplayName(UniParcDatabase db1) {
-        String result = db1.getDisplayName().toLowerCase().replaceAll("_", "").replaceAll(" ", "");
-        return result;
+        return db1.getDisplayName().toLowerCase().replaceAll("_", "").replaceAll(" ", "");
     }
 }

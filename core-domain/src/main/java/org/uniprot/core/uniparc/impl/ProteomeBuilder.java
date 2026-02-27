@@ -28,9 +28,8 @@ public class ProteomeBuilder  implements Builder<Proteome> {
     }
 
     public static @Nonnull ProteomeBuilder from(@Nonnull Proteome instance) {
-        ProteomeBuilder builder = new ProteomeBuilder()
+        return new ProteomeBuilder()
                 .id(instance.getId())
                 .component(instance.getComponent());
-        return builder;
     }
 }

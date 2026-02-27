@@ -35,10 +35,9 @@ public class CommonOrganismBuilder implements Builder<CommonOrganism> {
     }
 
     public static @Nonnull CommonOrganismBuilder from(@Nonnull CommonOrganism instance) {
-        CommonOrganismBuilder builder = new CommonOrganismBuilder()
+        return new CommonOrganismBuilder()
                 .topLevel(instance.getTopLevel())
                 .commonTaxon(instance.getCommonTaxon())
                 .commonTaxonId(instance.getCommonTaxonId());
-        return builder;
     }
 }

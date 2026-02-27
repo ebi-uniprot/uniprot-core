@@ -2,7 +2,6 @@ package org.uniprot.core.uniparc.impl;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniparc.CommonOrganism;
-import org.uniprot.core.uniparc.InterProGroup;
 
 import static org.junit.jupiter.api.Assertions.*;
 

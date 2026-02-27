@@ -11,13 +11,12 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
 import org.uniprot.cv.xdb.validator.CrossReferenceReader;
 import org.uniprot.cv.xdb.validator.CrossReferenceValidator;
 import org.uniprot.cv.xdb.validator.DBXRef;
 
 class CrossReferenceReaderIT {
-    private static Set<String> ACCESSION_WITHOUT_REF =
+    private static final Set<String> ACCESSION_WITHOUT_REF =
             new HashSet<>(
                     Arrays.asList(
                             "DB-0133", "DB-0225", "DB-0018", "DB-0168", "DB-0188", "DB-0227",

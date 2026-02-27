@@ -79,22 +79,20 @@ class UniParcEntryCrossRefValueMapperTest {
         List<Property> properties = new ArrayList<>();
         properties.add(new Property("prop1", "pvalue"));
         Proteome proteomeIdComponent = new ProteomeBuilder().id("proteoemid").component("component").build();
-        UniParcCrossReference xref =
-                new UniParcCrossReferenceBuilder()
-                        .versionI(3)
-                        .database(UniParcDatabase.SWISSPROT)
-                        .id("P12345")
-                        .version(7)
-                        .active(true)
-                        .created(LocalDate.of(2017, 5, 17))
-                        .lastUpdated(LocalDate.of(2017, 2, 27))
-                        .propertiesSet(properties)
-                        .organism(taxonomy)
-                        .proteinName("some pname")
-                        .geneName("some gname")
-                        .ncbiGi("random ncbi")
-                        .proteomesAdd(proteomeIdComponent)
-                        .build();
-        return xref;
+        return new UniParcCrossReferenceBuilder()
+                .versionI(3)
+                .database(UniParcDatabase.SWISSPROT)
+                .id("P12345")
+                .version(7)
+                .active(true)
+                .created(LocalDate.of(2017, 5, 17))
+                .lastUpdated(LocalDate.of(2017, 2, 27))
+                .propertiesSet(properties)
+                .organism(taxonomy)
+                .proteinName("some pname")
+                .geneName("some gname")
+                .ncbiGi("random ncbi")
+                .proteomesAdd(proteomeIdComponent)
+                .build();
     }
 }

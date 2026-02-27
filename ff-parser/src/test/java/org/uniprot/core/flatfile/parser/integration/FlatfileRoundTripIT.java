@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.slf4j.Logger;
@@ -145,6 +144,7 @@ class FlatfileRoundTripIT {
         assertEquals(converted, converted2);
     }
 
+    @SuppressWarnings("java:S1643")
     private String compareFF(String expected, String returned) {
         String[] expected2 = expected.split("\n");
         String[] returned2 = returned.split("\n");
