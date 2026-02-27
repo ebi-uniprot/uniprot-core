@@ -21,7 +21,7 @@ public class AAUniProtParser implements UniProtParser {
     public AAUniProtParser(SupportingDataMap supportingDataMap, boolean ignoreWrong) {
         this.parser = new DefaultAAUniProtKBLineParserFactory().createEntryParser();
         this.converter = new AAEntryObjectConverter(supportingDataMap, ignoreWrong);
-    };
+    }
 
     @Override
     public UniProtKBEntry parse(String entryff) {

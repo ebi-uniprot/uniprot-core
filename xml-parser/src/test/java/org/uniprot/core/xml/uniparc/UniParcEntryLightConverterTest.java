@@ -1,7 +1,6 @@
 package org.uniprot.core.xml.uniparc;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.Location;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
 import org.uniprot.core.uniparc.SequenceFeature;

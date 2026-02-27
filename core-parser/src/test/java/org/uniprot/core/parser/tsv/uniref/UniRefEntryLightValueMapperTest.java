@@ -33,7 +33,7 @@ class UniRefEntryLightValueMapperTest {
     private UniRefEntryLightValueMapper mapper;
     private static final String SEQUENCE = "GGGGGGGGGGGGGGGG";
     private static final int MEMBER_COUNT = 5;
-    private static final UniRefEntryLight ENTRY = createEntry();;
+    private static final UniRefEntryLight ENTRY = createEntry();
 
     @BeforeEach
     void setUp() {

@@ -99,8 +99,7 @@ class UniParcFastaParserTest {
     private static Sequence getSequence() {
         String seq =
                 "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT" + "LLRAIDWFRDNGYFNA";
-        Sequence sequence = new SequenceBuilder(seq).build();
-        return sequence;
+        return new SequenceBuilder(seq).build();
     }
 
     private List<UniParcCrossReference> getXrefs() {

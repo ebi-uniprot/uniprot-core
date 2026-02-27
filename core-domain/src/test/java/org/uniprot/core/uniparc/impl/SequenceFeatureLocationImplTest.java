@@ -2,12 +2,6 @@ package org.uniprot.core.uniparc.impl;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniparc.SequenceFeatureLocation;
-import org.uniprot.core.uniparc.UniParcCrossReference;
-import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
-
-import java.time.LocalDate;
-import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 

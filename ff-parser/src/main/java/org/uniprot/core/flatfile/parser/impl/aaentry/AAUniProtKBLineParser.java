@@ -85,8 +85,7 @@ public class AAUniProtKBLineParser <T, L extends Lexer, P extends Parser> implem
         CommonTokenStream commonTokenStream = new CommonTokenStream(this.lexer);
         this.parser.setTokenStream(commonTokenStream);
 
-        T t = processWithParser(this.parser, s);
-        return t;
+        return processWithParser(this.parser, s);
     }
 
     private T processWithParserNoHeader(P parser) {

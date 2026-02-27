@@ -376,7 +376,7 @@ class UniProtKBEntryValueMapperTest {
 
         String chain =
                 "CHAIN 1..541; /note=\"Neutral amino acid transporter B(0)\"; /id=\"PRO_0000202082\"";
-        String topo_dom =
+        String topoDom =
                 "TOPO_DOM 1..51; /note=\"Cytoplasmic\"; /evidence=\"ECO:0000305\";"
                         + " TOPO_DOM 82..94; /note=\"Extracellular\"; /evidence=\"ECO:0000305\";"
                         + " TOPO_DOM 117..130; /note=\"Cytoplasmic\"; /evidence=\"ECO:0000305\";"
@@ -441,7 +441,7 @@ class UniProtKBEntryValueMapperTest {
                         + " Ref. 2; AAD09812)\"; /evidence=\"ECO:0000305\"";
 
         verify(chain, "ft_chain", result);
-        verify(topo_dom, "ft_topo_dom", result);
+        verify(topoDom, "ft_topo_dom", result);
         verify(transmem, "ft_transmem", result);
         verify(modRes, "ft_mod_res", result);
         verify(carbohyd, "ft_carbohyd", result);
@@ -506,7 +506,7 @@ class UniProtKBEntryValueMapperTest {
                         + " neutral amino acid transport [GO:0015804];"
                         + " protein homotrimerization [GO:0070207]";
 
-        String go_c =
+        String goC =
                 "extracellular exosome [GO:0070062];"
                         + " integral component of membrane [GO:0016021];"
                         + " integral component of plasma membrane [GO:0005887];"
@@ -514,7 +514,7 @@ class UniProtKBEntryValueMapperTest {
                         + " membrane [GO:0016020];"
                         + " plasma membrane [GO:0005886]";
 
-        String go_f =
+        String goF =
                 "amino acid transmembrane transporter activity [GO:0015171];"
                         + " L-glutamine transmembrane transporter activity [GO:0015186];"
                         + " L-serine transmembrane transporter activity [GO:0015194];"
@@ -524,7 +524,7 @@ class UniProtKBEntryValueMapperTest {
                         + " symporter activity [GO:0015293];"
                         + " virus receptor activity [GO:0001618]";
 
-        String go_p =
+        String goP =
                 "amino acid transport [GO:0006865];"
                         + " glutamine secretion [GO:0010585];"
                         + " glutamine transport [GO:0006868];"
@@ -532,16 +532,16 @@ class UniProtKBEntryValueMapperTest {
                         + " neutral amino acid transport [GO:0015804];"
                         + " protein homotrimerization [GO:0070207]";
 
-        String go_id =
+        String goId =
                 "GO:0001618; GO:0005886; GO:0005887; GO:0006865; GO:0006868; GO:0010585;"
                         + " GO:0015171; GO:0015175; GO:0015186; GO:0015194; GO:0015293; GO:0015804;"
                         + " GO:0016020; GO:0016021; GO:0038023; GO:0042470; GO:0046872; GO:0070062;"
                         + " GO:0070207; GO:1903803";
         verify(go, "go", result);
-        verify(go_c, "go_c", result);
-        verify(go_f, "go_f", result);
-        verify(go_p, "go_p", result);
-        verify(go_id, "go_id", result);
+        verify(goC, "go_c", result);
+        verify(goF, "go_f", result);
+        verify(goP, "go_p", result);
+        verify(goId, "go_id", result);
     }
 
     @Test

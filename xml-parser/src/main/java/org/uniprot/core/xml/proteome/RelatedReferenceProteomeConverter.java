@@ -34,7 +34,7 @@ public class RelatedReferenceProteomeConverter implements Converter<RelatedRefer
         RelatedReferenceProteome rrp = objectFactory.createRelatedReferenceProteome();
         rrp.setUpid(uniObj.getId().getValue());
         rrp.setSimilarity(String.valueOf(uniObj.getSimilarity()));
-        rrp.setTaxon(Long.valueOf(uniObj.getTaxId().getTaxonId()));
+        rrp.setTaxon(uniObj.getTaxId().getTaxonId());
         return rrp;
     }
 

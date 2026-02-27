@@ -55,7 +55,7 @@ public enum GOEvidences {
                                 .orElse(GAF_ECO_URL));
         for (String line : lines) {
             line = line.trim();
-            if ((line.length() == 0) || line.startsWith("#")) continue;
+            if (lines.isEmpty() || line.startsWith("#")) continue;
             parseLine(line);
         }
     }
