@@ -443,7 +443,7 @@
 		"name": "DEPOD",
 		"displayName": "DEPOD",
 		"category": "PTM",
-		"uriLink": "https://depod.bioss.uni-freiburg.de/showp.php?name=%id"
+		"uriLink": "https://depod.zellbiologie.uni-bonn.de/showp.php?name=%id"
 	},
 	{
 		"name": "GlyConnect",
