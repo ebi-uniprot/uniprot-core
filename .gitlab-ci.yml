@@ -84,7 +84,10 @@ core:sonar:
 
 core:deploy:
   stage: deploy
-  script: mvn $MAVEN_CLI_OPTS -DskipTests deploy -s ${MAVEN_SETTINGS}
+  script:
+    - echo "Downloading Maven settings..."
+    - curl -i "$URL_MAVEN_SETTINGS" | head -n 50
+    - mvn $MAVEN_CLI_OPTS -DskipTests deploy -s ${MAVEN_SETTINGS}
   dependencies:
     - core:settings
     - core:sonar
