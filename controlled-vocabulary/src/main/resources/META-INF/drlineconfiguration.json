@@ -267,6 +267,18 @@
 		"uriLink": "https://string-db.org/network/%id",
         "idMappingName": "STRING_ID"
 	},
+	{
+		"name": "NDEx",
+		"displayName": "NDEx",
+		"category": "PPI",
+		"uriLink": "http://www.ndexbio.org/identifiers/%id",
+		"attributes": [
+			{
+				"name": "Evidences",
+				"xmlTag":"evidences"
+			}
+		]
+	},
 	
 	{
 		"name": "BindingDB",
@@ -449,7 +461,7 @@
 		"name": "GlyConnect",
 		"displayName": "GlyConnect",
 		"category": "PTM",
-		"uriLink": "https://glyconnect.expasy.org/browser/proteins/%id",
+		"uriLink": "https://glyconnect.expasy.org/gcx/search/view/glycome/Protein/%id",
         "idMappingName": "GLYCONNECT_ID",
 		"attributes": [			
 			{
@@ -1481,6 +1493,12 @@
 		]
 	},
 	{
+		"name": "AbasyAtlas",
+		"displayName": "AbasyAtlas",
+		"category": "GEP",
+		"uriLink": "https://abasy.ccg.unam.mx/details?uniprot=%id"
+	},
+	{
 		"name": "AntiFam",
 		"displayName": "AntiFam",
 		"category": "FMD",
@@ -1755,6 +1773,12 @@
 		"displayName": "DrugCentral",
 		"category": "CHEMISTRY",
 		"uriLink": "https://drugcentral.org/target/%id"
+	},
+	{
+		"name": "ChEBI",
+		"displayName": "ChEBI",
+		"category": "CHEMISTRY",
+		"uriLink": "https://www.ebi.ac.uk/chebi/%id"
 	},
 	{
 		"name": "ABCD",

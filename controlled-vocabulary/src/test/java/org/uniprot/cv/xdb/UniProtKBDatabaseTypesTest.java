@@ -275,8 +275,8 @@ class UniProtKBDatabaseTypesTest {
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(
                         PROTEIN_PROTEIN_INTERACTION_DATABASES),
-                9);
-        verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(CHEMISTRY), 6);
+                10);
+        verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(CHEMISTRY), 7);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PROTEIN_FAMILY_GROUP_DATABASES),
                 13);
@@ -303,7 +303,7 @@ class UniProtKBDatabaseTypesTest {
                 11);
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(MISCELLANEOUS), 15);
         verifyGroupSize(
-                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(GENE_EXPRESSION_DATABASES), 4);
+                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(GENE_EXPRESSION_DATABASES), 5);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(FAMILY_AND_DOMAIN_DATABASES),
                 18);
@@ -341,7 +341,7 @@ class UniProtKBDatabaseTypesTest {
             String source =
                     UniProtDatabaseTypes.INSTANCE.getSourceAsString();
             List<Property> jsonArray = Property.parseJsonArray(source);
-            assertEquals(197, jsonArray.size());
+            assertEquals(200, jsonArray.size());
             Property property = jsonArray.get(0);
             assertEquals("EMBL",  property.getString("name"));
     }
@@ -357,7 +357,7 @@ class UniProtKBDatabaseTypesTest {
     @Test
     void testWithUniProtKBDbs() {
         List<UniProtDatabaseDetail> diseaseDbTypes = UniProtDatabaseTypes.INSTANCE.getUniProtKBDbTypes();
-        assertEquals(195, diseaseDbTypes.size());
+        assertEquals(198, diseaseDbTypes.size());
         List<String> dbNames = diseaseDbTypes.stream().map(UniProtDatabaseDetail::getName).toList();
         assertTrue(dbNames.containsAll(List.of("EMBL", "EMDB", "CARD")));
     }
