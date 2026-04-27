@@ -8,7 +8,7 @@ import java.util.List;
  * @created 18/12/2020
  */
 public interface MappedPublications extends Serializable {
-    UniProtKBMappedReference getUniProtKBMappedReference();
+    List<UniProtKBMappedReference> getUniProtKBMappedReferences();
 
     List<ComputationallyMappedReference> getComputationallyMappedReferences();
 
