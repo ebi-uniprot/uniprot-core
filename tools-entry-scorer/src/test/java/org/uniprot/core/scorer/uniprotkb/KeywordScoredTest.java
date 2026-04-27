@@ -25,8 +25,10 @@ class KeywordScoredTest {
     @Test
     void shouldKeyword2Score0() {
         String lines = "KW   ATP-binding; Cell cycle; Cell division; Kinase; Mitosis.\n";
-        int score = 0;
-        for (Keyword kw : parseLines(lines)) score += new KeywordScored(kw).score();
+        double score = 0;
+        for (Keyword kw : parseLines(lines)) {
+            score = score + new KeywordScored(kw).score();
+        }
         // should be 5 as its 5 kw's
         assertEquals(0, score);
     }
@@ -39,8 +41,10 @@ class KeywordScoredTest {
         String lines =
                 "KW   ATP-binding; Cell cycle; Cell division; Kinase; Mitosis;\n"
                         + "KW   Phosphorylation; Serine/threonine-protein kinase; Transferase.\n";
-        int score = 0;
-        for (Keyword kw : parseLines(lines)) score += new KeywordScored(kw).score();
+        double score = 0;
+        for (Keyword kw : parseLines(lines)) {
+            score = score + new KeywordScored(kw).score();
+        }
         // should be 8
         assertEquals(0, score);
     }
